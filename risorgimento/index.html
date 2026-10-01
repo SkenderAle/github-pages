@@ -388,6 +388,8 @@
 
         <button class="source-card video" data-title="Inno di Mameli al Quirinale — Orchestra Sinfonica Nazionale RAI" data-video="a5ukvSU8lKU"><span class="src">YouTube · Quirinale</span><b>Il Canto degli Italiani oggi</b><span>Una moderna esecuzione orchestrale dell’inno nella sua funzione cerimoniale contemporanea.</span></button>
 
+        <button class="source-card video" data-title="Video di approfondimento sul Risorgimento" data-video="9JVjF3fMXYw" data-start="91"><span class="src">YouTube · approfondimento</span><b>Approfondimento video</b><span>Video selezionato come materiale di approfondimento; apertura dal minuto 1:31.</span></button>
+
         <button class="source-card audio" data-title="Registrazione della Banda interforze" data-audio="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno-Nazionale-Novaro.mp3" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno-Nazionale-Novaro.mp3"><span class="src">Audio ufficiale</span><b>Banda interforze</b><span>La registrazione indicata dalla Presidenza del Consiglio come riferimento istituzionale.</span></button>
 
         <button class="source-card resource" data-title="RaiPlay — Mameli, Il ragazzo che sognò l’Italia" data-url="https://www.raiplay.it/programmi/mameli-ilragazzochesognolitalia"><span class="src">RaiPlay · serie</span><b>Mameli – Il ragazzo che sognò l’Italia</b><span>Serie del 2024 sugli ultimi due anni di vita di Goffredo Mameli, da Genova alla Repubblica Romana.</span></button>
@@ -623,8 +625,10 @@
 
   document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{
     const id=el.dataset.video,t=el.dataset.title || 'Video';
-    const u=`https://www.youtube.com/watch?v=${id}`;
-    showModal(t,`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
+    const start=parseInt(el.dataset.start||'0',10) || 0;
+    const u=`https://www.youtube.com/watch?v=${id}${start ? '&t='+start+'s' : ''}`;
+    const embed=`https://www.youtube-nocookie.com/embed/${id}?rel=0${start ? '&start='+start : ''}`;
+    showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
   }));
 
   document.querySelectorAll('.audio').forEach(el=>el.addEventListener('click',()=>{
