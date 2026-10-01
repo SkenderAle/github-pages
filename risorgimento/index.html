@@ -128,10 +128,15 @@
   .modal-body img{max-width:100%;max-height:100%;object-fit:contain}
   .modal-body .audio-wrap{background:#f5efe4;color:#2c261f;width:100%;height:100%;display:grid;place-items:center;padding:2rem;text-align:center}
   .modal-body audio{width:min(680px,90%)}
-  .modal-foot{font-family:var(--sans);display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:#eee4d3;border-top:1px solid #d1c5b1;font-size:.78rem}
-  .url-box{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;color:#6c5f50}
-  .copy-btn{border:1px solid #9f8e75;background:#f8f4ea;padding:.4rem .65rem;cursor:pointer;font-weight:700}
+  .modal-foot{font-family:var(--sans);display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:#eee4d3;border-top:1px solid #d1c5b1;font-size:.78rem;flex-wrap:wrap}
+  .url-box{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:180px;color:#6c5f50}
+  .copy-btn,.open-btn{border:1px solid #9f8e75;background:#f8f4ea;padding:.48rem .72rem;cursor:pointer;font-weight:700}
+  .open-btn{background:#2b251f;color:#fff;border-color:#2b251f}
+  .copy-btn:hover,.open-btn:hover{filter:brightness(.96)}
   .notice{background:#fff8e8;border:1px solid #d1b978;padding:.75rem 1rem;font-family:var(--sans);font-size:.78rem;margin:1rem 0;color:#5f4b1e}
+  .notice-dismiss{cursor:pointer;text-align:left;width:auto}
+  .notice-dismiss:hover{background:#fff2cf}
+  .notice-dismiss strong{float:right;margin-left:1rem;font-size:1rem;line-height:1}
   .scrolltop{position:fixed;right:1rem;bottom:1rem;z-index:60;width:44px;height:44px;border-radius:50%;border:0;background:#2c261f;color:#fff;display:none;cursor:pointer;box-shadow:var(--shadow)}
   .scrolltop.show{display:grid;place-items:center}
   @media (max-width:900px){
@@ -326,7 +331,7 @@
   <section class="archive" id="archivio">
     <div class="archive-inner">
       <div class="section-title"><div class="section-no" style="color:#e0c389;border-color:#e0c389">07 · TECA</div><h2>Archivio navigabile</h2></div>
-      <p>Ogni scheda si apre in una finestra interna. Alcuni siti istituzionali possono impedire tecnicamente la visualizzazione dentro un iframe: in quel caso il popup conserva comunque l’indirizzo completo, copiabile con un tocco.</p>
+      <p>Ogni scheda si apre in una finestra interna. Alcuni siti istituzionali possono impedire tecnicamente la visualizzazione dentro un iframe: in quel caso il popup conserva comunque l’indirizzo completo, che puoi copiare oppure aprire direttamente in una nuova finestra per navigare sul sito originale.</p>
       <div class="archive-grid">
         <button class="source-card resource" data-title="Quirinale — L'Inno nazionale" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-inno-nazionale"><span class="src">Quirinale</span><b>L’Inno nazionale</b><span>Biografie, racconto di Barrili, testo, simboli e rimandi audio/video.</span></button>
         <button class="source-card resource" data-title="Quirinale — audio dell'Inno" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-audio-inno-nazionale"><span class="src">Quirinale</span><b>Quattro ascolti</b><span>Muti, registrazione 1961, trascrizione da autografo, elaborazione sinfonica.</span></button>
@@ -352,7 +357,7 @@
   <div class="modal-panel">
     <div class="modal-head"><div class="modal-title" id="modalTitle">Teca</div><button class="modal-close" id="modalClose" aria-label="Chiudi">×</button></div>
     <div class="modal-body" id="modalBody"></div>
-    <div class="modal-foot"><span class="url-box" id="modalUrl"></span><button class="copy-btn" id="copyBtn">Copia indirizzo</button></div>
+    <div class="modal-foot"><span class="url-box" id="modalUrl"></span><button class="copy-btn" id="copyBtn">Copia link</button><button class="open-btn" id="openBtn">Apri in una nuova finestra per navigare</button></div>
   </div>
 </div>
 
@@ -364,6 +369,7 @@
   const urlBox = document.getElementById('modalUrl');
   const closeBtn = document.getElementById('modalClose');
   const copyBtn = document.getElementById('copyBtn');
+  const openBtn = document.getElementById('openBtn');
   let currentUrl = '';
   let lastFocus = null;
 
@@ -373,6 +379,7 @@
     body.innerHTML = content;
     currentUrl = url;
     urlBox.textContent = url || 'Contenuto incorporato nella pagina';
+    openBtn.disabled = !url;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
@@ -390,13 +397,21 @@
   document.addEventListener('keydown',e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
   copyBtn.addEventListener('click', async()=>{
     if(!currentUrl) return;
-    try{ await navigator.clipboard.writeText(currentUrl); copyBtn.textContent='Copiato'; setTimeout(()=>copyBtn.textContent='Copia indirizzo',1200); }
+    try{ await navigator.clipboard.writeText(currentUrl); copyBtn.textContent='Copiato'; setTimeout(()=>copyBtn.textContent='Copia link',1200); }
     catch{ copyBtn.textContent='Seleziona l’indirizzo'; }
+  });
+  openBtn.addEventListener('click',()=>{
+    if(!currentUrl) return;
+    window.open(currentUrl,'_blank','noopener,noreferrer');
+  });
+  body.addEventListener('click',e=>{
+    const notice=e.target.closest('.notice-dismiss');
+    if(notice) notice.remove();
   });
 
   document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
     const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
-    const notice = `<div style="position:absolute;left:1rem;right:1rem;top:1rem;z-index:2" class="notice">Se la fonte impedisce l'incorporamento per ragioni di sicurezza, usa il pulsante “Copia indirizzo” in basso.</div>`;
+    const notice = `<button type="button" style="position:absolute;left:1rem;right:1rem;top:1rem;z-index:2" class="notice notice-dismiss" title="Clicca per chiudere questo avviso">Se la fonte impedisce l'incorporamento per ragioni di sicurezza, usa “Apri in una nuova finestra per navigare” in basso. <strong aria-hidden="true">×</strong></button>`;
     const frame = kind==='pdf'
       ? `<object data="${u}" type="application/pdf"><iframe src="${u}" title="${t}"></iframe></object>`
       : `<iframe src="${u}" title="${t}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
