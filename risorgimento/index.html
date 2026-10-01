@@ -150,10 +150,6 @@
   .copy-btn,.open-btn{border:1px solid #9f8e75;background:#f8f4ea;padding:.48rem .72rem;cursor:pointer;font-weight:700}
   .open-btn{background:#2b251f;color:#fff;border-color:#2b251f}
   .copy-btn:hover,.open-btn:hover{filter:brightness(.96)}
-  .notice{background:#fff8e8;border:1px solid #d1b978;padding:.75rem 1rem;font-family:var(--sans);font-size:.78rem;margin:1rem 0;color:#5f4b1e}
-  .notice-dismiss{cursor:pointer;text-align:left;width:auto}
-  .notice-dismiss:hover{background:#fff2cf}
-  .notice-dismiss strong{float:right;margin-left:1rem;font-size:1rem;line-height:1}
   .scrolltop{position:fixed;right:1rem;bottom:1rem;z-index:60;width:44px;height:44px;border-radius:50%;border:0;background:#2c261f;color:#fff;display:none;cursor:pointer;box-shadow:var(--shadow)}
   .scrolltop.show{display:grid;place-items:center}
   @media (max-width:900px){
@@ -254,7 +250,7 @@
       <div class="two-col">
         <p>Il vero anello di congiunzione fra Rossi e Novaro è <strong>Giuseppe Bertoldi</strong>. Nel 1848 i suoi versi vengono musicati ripetutamente anche da Novaro. Il caso più sorprendente riguarda l’<em>Inno militare</em> che comincia <em>«Coraggio, coraggio, siam oggi soldati…»</em>: lo stesso testo viene musicato <strong>sia da Luigi Felice Rossi sia da Michele Novaro</strong>.</p>
         <p>Non abbiamo ancora una corrispondenza che autorizzi a definire Rossi e Novaro amici personali, ma è difficile considerarli figure isolate: stesso ambiente torinese, stesso poeta, persino lo stesso testo. Novaro musicò inoltre <em>La Costituzione</em> e <em>Il nuovo anno</em>, ancora di Bertoldi. <button class="badge resource" data-title="Catalogo storico degli spartiti — Torino" data-url="https://www.cittametropolitana.torino.it/sites/default/files/pagina/qa5/biblioteca/Spartiti_Musicali.pdf" data-kind="pdf">catalogo</button></p>
-        <p>La collaborazione non si esaurisce nel 1848. Intorno al <strong>1861</strong>, ormai nel momento dell’unificazione politica, ritroviamo Novaro su un altro componimento di Bertoldi: <strong><em>La donna italiana</em></strong>, pubblicato a Milano da Francesco Lucca come canzone con accompagnamento di pianoforte. <button class="badge resource" data-title="La donna italiana — repertorio Bertoldi" data-url="https://cultura-barocca.com/IMPERIA/SASSA.HTM">scheda</button></p>
+        <p>La collaborazione non si esaurisce nel 1848. Intorno al <strong>1861</strong>, ormai nel momento dell’unificazione politica, ritroviamo Novaro su un altro componimento di Bertoldi: <strong><em>La donna italiana</em></strong>, pubblicato a Milano da Francesco Lucca come canzone con accompagnamento di pianoforte.</p>
         <p>Nel frattempo la rete si allarga verso Milano. Con <strong>Francesco Dall’Ongaro</strong>, poeta, giornalista e patriota, Novaro costruisce un vero catalogo di canzoni politiche. L’album <em>Viva l’Italia!</em> raccoglie tredici brani e include <strong><em>La donna lombarda</em></strong>, che non va confusa con l’antichissima ballata popolare omonima.</p>
       </div>
 
@@ -440,28 +436,27 @@
     if(!currentUrl) return;
     window.open(currentUrl,'_blank','noopener,noreferrer');
   });
-  body.addEventListener('click',e=>{
-    const notice=e.target.closest('.notice-dismiss');
-    if(notice) notice.remove();
-  });
-
-  const blockedEmbedHosts = new Set(['quirinale.it','www.quirinale.it','amazon.it','www.amazon.it']);
-  const cannotEmbed = (u)=>{
-    try{ return blockedEmbedHosts.has(new URL(u).hostname.toLowerCase()); }
+  // Le normali pagine web esterne non vengono incorporate:
+  // molti siti istituzionali/editoriali vietano gli iframe e mostrerebbero una finestra "rotta".
+  // Conserviamo il viewer interno soltanto per alcuni PDF verificati come direttamente raggiungibili.
+  const embeddablePdfHosts = new Set([
+    'www.cittametropolitana.torino.it',
+    'www.iamlitalia.it'
+  ]);
+  const canEmbedResource = (u,kind)=>{
+    if(kind!=='pdf') return false;
+    try{ return embeddablePdfHosts.has(new URL(u).hostname.toLowerCase()); }
     catch{ return false; }
   };
 
   document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
     const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
-    if(cannotEmbed(u)){
+    if(!canEmbedResource(u,kind)){
       showModal(t, '', u, true);
       return;
     }
-    const notice = `<button type="button" style="position:absolute;left:1rem;right:1rem;top:1rem;z-index:2" class="notice notice-dismiss" title="Clicca per chiudere questo avviso">Se la fonte impedisce l'incorporamento per ragioni di sicurezza, usa “Apri in una nuova finestra per navigare” in basso. <strong aria-hidden="true">×</strong></button>`;
-    const frame = kind==='pdf'
-      ? `<object data="${u}" type="application/pdf"><iframe src="${u}" title="${t}"></iframe></object>`
-      : `<iframe src="${u}" title="${t}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
-    showModal(t, notice+frame, u);
+    const frame = `<object data="${u}" type="application/pdf"><iframe src="${u}" title="${t}"></iframe></object>`;
+    showModal(t, frame, u);
   }));
 
   document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{
@@ -472,12 +467,16 @@
 
   document.querySelectorAll('.audio').forEach(el=>el.addEventListener('click',()=>{
     const u=el.dataset.audio,t=el.dataset.title || 'Audio';
-    showModal(t,`<div class="audio-wrap"><div><h3 style="margin-top:0">${t}</h3><audio controls preload="metadata" src="${u}"></audio><p style="font-family:var(--sans);font-size:.85rem;color:#6c6258">Fonte: Presidenza del Consiglio dei Ministri</p></div></div>`,u);
+    showModal(t,`<div class="audio-wrap"><div><h3 style="margin-top:0">${t}</h3><audio id="modalAudio" controls preload="metadata" src="${u}"></audio><p style="font-family:var(--sans);font-size:.85rem;color:#6c6258">Fonte: Presidenza del Consiglio dei Ministri</p></div></div>`,u);
+    const player=document.getElementById('modalAudio');
+    if(player) player.addEventListener('error',()=>showModal(t,'',u,true),{once:true});
   }));
 
   document.querySelectorAll('.image-modal').forEach(el=>el.addEventListener('click',()=>{
     const src=el.dataset.img,t=el.dataset.title || 'Immagine',u=el.dataset.url || src;
-    showModal(t,`<img src="${src}" alt="${t}">`,u);
+    showModal(t,`<img id="modalImage" src="${src}" alt="${t}">`,u);
+    const img=document.getElementById('modalImage');
+    if(img) img.addEventListener('error',()=>showModal(t,'',u,true),{once:true});
   }));
 
   // Prevent accidental navigation outside the page. Normal hash links remain internal.
@@ -489,8 +488,7 @@
     if(/^https?:/i.test(href)){
       e.preventDefault();
       const t=a.textContent.trim() || 'Fonte';
-      if(cannotEmbed(href)) showModal(t, '', href, true);
-      else showModal(t, `<iframe src="${href}" title="Fonte"></iframe>`, href);
+      showModal(t, '', href, true);
     }
   });
 
