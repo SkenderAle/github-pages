@@ -50,6 +50,8 @@
   nav::-webkit-scrollbar{display:none}
   nav a{white-space:nowrap;text-decoration:none;padding:.65rem .8rem;border-radius:999px;font-size:.83rem;font-weight:700;color:#5b5147}
   nav a.active,nav a:hover{background:#2b261f;color:#fff}
+  nav a.nav-verifica{background:#7f1d1d;color:#fff;border:1px solid #7f1d1d;box-shadow:0 2px 8px rgba(127,29,29,.18)}
+  nav a.nav-verifica:hover,nav a.nav-verifica.active{background:#a5792a;color:#fff;border-color:#a5792a}
   .content{max-width:1180px;margin:auto;padding:4.5rem 1.4rem 7rem}
   .intro-grid{display:grid;grid-template-columns:1.45fr .55fr;gap:3.5rem;margin-bottom:5rem;align-items:start}
   .lead{font-size:1.43rem;line-height:1.58;margin-top:0}
@@ -292,6 +294,7 @@
       <a href="#cari-ragazzi">Cari ragazzi…</a>
       <a href="#archivio">Archivio</a>
       <a href="#bibliografia">Fonti</a>
+      <a href="#verifica" class="nav-verifica">✦ Verifica</a>
     </nav>
   </div>
 
@@ -1053,14 +1056,65 @@
   },{passive:true});
   scrolltop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-  const sections=[...document.querySelectorAll('main section, #archivio, #bibliografia')];
-  const links=[...document.querySelectorAll('#nav a')];
-  const observer=new IntersectionObserver(entries=>{
-    const visible=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-    if(!visible) return;
-    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+visible.target.id));
-  },{rootMargin:'-20% 0px -62% 0px',threshold:[.05,.2,.5]});
-  sections.forEach(s=>observer.observe(s));
+  // Menu contestuale: determina la sezione dalla posizione reale di scorrimento.
+  // A differenza dell'IntersectionObserver, non perde sezioni quando si trascina
+  // rapidamente la barra laterale.
+  const navEl=document.getElementById('nav');
+  const navWrap=document.querySelector('.nav-wrap');
+  const links=[...document.querySelectorAll('#nav a[href^="#"]')];
+  const sectionLinks=links
+    .map(a=>({a,id:a.getAttribute('href').slice(1)}))
+    .map(x=>({...x,el:document.getElementById(x.id)}))
+    .filter(x=>x.el);
+  let activeId='';
+  let spyTick=false;
+
+  function setActiveSection(){
+    spyTick=false;
+    if(!sectionLinks.length) return;
+
+    const navH=navWrap ? navWrap.offsetHeight : 0;
+    // La linea di lettura cade poco sotto il menu: abbastanza avanti da
+    // aggiornare il titolo appena si entra davvero nella nuova sezione.
+    const probe=window.scrollY + navH + Math.min(180,window.innerHeight*.24);
+
+    let current=sectionLinks[0];
+    for(const item of sectionLinks){
+      const top=item.el.getBoundingClientRect().top + window.scrollY;
+      if(top<=probe) current=item;
+      else break;
+    }
+
+    // Vicino al fondo della pagina attiva sempre l'ultima voce, anche su schermi
+    // alti dove l'inizio dell'ultima sezione potrebbe non raggiungere la sonda.
+    if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8){
+      current=sectionLinks[sectionLinks.length-1];
+    }
+
+    if(current.id===activeId) return;
+    activeId=current.id;
+    links.forEach(a=>a.classList.toggle('active',a===current.a));
+
+    // Se il menu orizzontale è stretto, porta dolcemente in vista la voce attiva.
+    const left=current.a.offsetLeft;
+    const right=left+current.a.offsetWidth;
+    const viewLeft=navEl.scrollLeft;
+    const viewRight=viewLeft+navEl.clientWidth;
+    if(left<viewLeft+8 || right>viewRight-8){
+      current.a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+    }
+  }
+
+  function scheduleSpy(){
+    if(spyTick) return;
+    spyTick=true;
+    requestAnimationFrame(setActiveSection);
+  }
+
+  window.addEventListener('scroll',scheduleSpy,{passive:true});
+  window.addEventListener('resize',scheduleSpy,{passive:true});
+  window.addEventListener('load',setActiveSection,{once:true});
+  setActiveSection();
 })();
 </script>
 </body>
