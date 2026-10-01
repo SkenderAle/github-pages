@@ -99,6 +99,17 @@
   .women-band .img{min-height:500px;background:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg') center 25%/cover no-repeat;filter:saturate(.7) sepia(.1)}
   .women-band .txt{padding:clamp(2rem,4vw,4rem);align-self:center}
   .women-band h3{color:#fff;font-size:clamp(2rem,4vw,3.8rem);margin-top:0}
+  .women-heroes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0 3rem}
+  .heroine-card{background:#f0e5d3;border-top:4px solid var(--red);padding:1.25rem;box-shadow:0 8px 24px rgba(44,32,20,.07)}
+  .heroine-card b{display:block;font-family:var(--sans);font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:.45rem}
+  .heroine-card p{font-size:.94rem;line-height:1.58;margin:.35rem 0}
+  .verdi-women{margin:3.2rem 0;padding:2.3rem;background:#2b241f;color:#f5ecdf;position:relative;overflow:hidden}
+  .verdi-women::after{content:"V";position:absolute;right:-.7rem;bottom:-4rem;font-size:16rem;line-height:1;color:rgba(255,255,255,.035);font-family:var(--serif);font-weight:700}
+  .verdi-women h3{color:#fff;margin-top:0;font-size:clamp(2rem,4vw,3.5rem)}
+  .verdi-women p{position:relative;z-index:1}
+  .verdi-names{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 1.5rem;position:relative;z-index:1}
+  .verdi-names span{font-family:var(--sans);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);padding:.38rem .6rem;border-radius:999px;color:#e8d3ad}
+  .century-bridge{border-left:5px solid var(--gold);padding:1.25rem 1.4rem;background:#ebe2d2;margin:2.2rem 0}
   .women-band p{color:#eee0ce}
   .network{background:#e7dcc9;border:1px solid #c8b89e;padding:1rem;margin:2rem 0;overflow:hidden}
   .network svg{width:100%;height:auto;display:block}
@@ -178,7 +189,7 @@
   @media (max-width:900px){
     .hero{grid-template-columns:1fr}.hero-card{max-width:520px}.masthead{min-height:88vh}
     .intro-grid{grid-template-columns:1fr}.quote-card{position:relative;top:auto}
-    .media-row,.sheet-grid,.archive-grid{grid-template-columns:1fr 1fr}.people{grid-template-columns:1fr 1fr}.women-band{grid-template-columns:1fr}.turin-cast{grid-template-columns:1fr}.women-band .img{min-height:420px}
+    .media-row,.sheet-grid,.archive-grid{grid-template-columns:1fr 1fr}.people{grid-template-columns:1fr 1fr}.women-band{grid-template-columns:1fr}.turin-cast{grid-template-columns:1fr}.women-heroes{grid-template-columns:1fr}.women-band .img{min-height:420px}
   }
   @media (max-width:580px){
     .content{padding-left:1rem;padding-right:1rem}.section-title{grid-template-columns:1fr}.section-no{width:max-content}
@@ -296,26 +307,44 @@
     </section>
 
     <section id="donne">
-      <div class="section-title"><div class="section-no">03 · DONNE</div><h2>Non soltanto allegorie della Patria</h2></div>
+      <div class="section-title"><div class="section-no">03 · DONNE</div><h2>Le donne: dal salotto alle barricate</h2></div>
+
       <div class="women-band">
         <button class="img image-modal" aria-label="Apri ritratto di Cristina Trivulzio di Belgiojoso" data-title="Cristina Trivulzio di Belgiojoso — Francesco Hayez, 1832" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg" data-url="https://commons.wikimedia.org/wiki/File:Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg"></button>
         <div class="txt">
-          <h3>La donna risorgimentale entra nella scena pubblica</h3>
-          <p>Giuridicamente le donne dell’Ottocento erano lontanissime dall’emancipazione moderna. Eppure nel Risorgimento molte oltrepassano vistosamente i confini sociali assegnati loro: salotti politici, giornali, raccolte di fondi, ospedali, cospirazioni e perfino combattimento.</p>
-          <p>A Venezia, nel 1848, alcune donne chiesero formalmente alla Guardia civica di poter usare le armi e costituire un battaglione femminile. <button class="badge resource" data-title="Treccani — storia delle donne" data-url="https://www.treccani.it/enciclopedia/storia-delle-donne-culture-mestieri-profili_%28altro%29/">fonte</button></p>
+          <h3>Non soltanto madri della patria. Eroine, organizzatrici, combattenti.</h3>
+          <p>Giuridicamente le donne dell’Ottocento erano ancora lontanissime dall’emancipazione moderna. Ma raccontare il Risorgimento limitandole al salotto, alla beneficenza o alla funzione simbolica di madri e spose significherebbe amputarne una parte essenziale.</p>
+          <p>Nel 1848 la politica esce dai palazzi e invade le strade. E con la politica, in molti luoghi, escono anche le donne. Alcune raccolgono denaro e munizioni, altre organizzano ospedali, altre ancora <strong>imbracciano davvero il moschetto e salgono sulle barricate</strong>. La donna risorgimentale non è soltanto la Patria dipinta con la corona turrita: qualche volta è la persona che ti sta accanto dietro una barricata, con un fucile in mano.</p>
         </div>
       </div>
-      <p>La coppia di titoli <em>La donna italiana</em> e <em>La donna lombarda</em> smette allora di sembrare casuale. La figura femminile diventa un <strong>monumento morale, politico e artistico della nazione</strong>, pur dentro una società ancora patriarcale. Cristina Trivulzio di Belgiojoso finanzia iniziative politiche, anima salotti europei e dirige gli ospedali della Repubblica Romana; Clara Maffei trasforma il proprio salotto milanese in un crocevia di arte e patriottismo e sostiene gli insorti delle Cinque Giornate. <button class="badge resource" data-title="Clara Maffei — Treccani" data-url="https://www.treccani.it/enciclopedia/maffei-carrara-spinelli-clara-contessa_%28L%27Unificazione%29/">fonte</button></p>
 
-      <div class="people">
-        <button class="person image-modal" data-title="Cristina Trivulzio di Belgiojoso — Hayez" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg" data-url="https://commons.wikimedia.org/wiki/File:Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg" alt="Cristina Trivulzio di Belgiojoso"><span class="label"><b>Cristina di Belgiojoso</b><span>salotti, giornalismo, Repubblica Romana</span></span></button>
-        <button class="person image-modal" data-title="Clara Maffei — Francesco Hayez" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hayez_-_Ritratto_della_contessa_Clara_Maffei.jpg" data-url="https://commons.wikimedia.org/wiki/File:Hayez_-_Ritratto_della_contessa_Clara_Maffei.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hayez_-_Ritratto_della_contessa_Clara_Maffei.jpg" alt="Clara Maffei"><span class="label"><b>Clara Maffei</b><span>salotto milanese, Cinque Giornate, Verdi</span></span></button>
-        <button class="person image-modal" data-title="Anita Garibaldi — Gaetano Gallino" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Anita_Garibaldi_-_1839.jpg" data-url="https://commons.wikimedia.org/wiki/File:Anita_Garibaldi_-_1839.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Anita_Garibaldi_-_1839.jpg" alt="Anita Garibaldi"><span class="label"><b>Anita Garibaldi</b><span>eroina combattente</span></span></button>
-        <button class="person image-modal" data-title="Colomba Antonietti — busto al Gianicolo" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/23_Colomba_Antonietti.jpg" data-url="https://commons.wikimedia.org/wiki/File:23_Colomba_Antonietti.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/23_Colomba_Antonietti.jpg" alt="Colomba Antonietti"><span class="label"><b>Colomba Antonietti</b><span>caduta nella difesa della Repubblica Romana</span></span></button>
+      <div class="women-heroes">
+        <div class="heroine-card"><b>Luisa Battistotti Sassi</b><p>Durante le Cinque Giornate di Milano del marzo 1848 si arma, indossa abiti maschili e combatte fin dalla prima barricata di Borgo Santa Croce. La memoria iconografica milanese la rappresenta con il fucile in mano e la fascia tricolore.</p><button class="badge resource" data-title="Comune di Milano — Luisa Battistotti Sassi" data-url="https://www2.comune.milano.it/documents/462956031/487305859/Quaderni%2BRaccolte%2BStoriche%2C%2Bvolume%2B2.%2B23%2Bmarzo%2B1848.%2BUn%2Bdipinto%2Bdi%2BCarlo%2BStragliati.pdf/d38348e4-f5e4-e812-8b74-c1e3ba080012?t=1719998603217" data-kind="pdf">fonte</button></div>
+
+        <div class="heroine-card"><b>Colomba Antonietti</b><p>Segue il marito nelle campagne del 1848, combatte in uniforme e prende parte alla difesa della Repubblica Romana. Muore nel giugno 1849 durante l’assedio francese. Non è una metafora: è una combattente.</p><button class="badge resource" data-title="Roma Capitale — Colomba Antonietti" data-url="https://www.comune.roma.it/web/it/notizia/anita-garibaldi-onore-statua-equeste.page">fonte</button></div>
+
+        <div class="heroine-card"><b>Anita Garibaldi</b><p>La sua biografia appartiene già a una dimensione transnazionale e militare. Attraversa guerre e rivoluzioni al fianco di Garibaldi e diventa uno dei rarissimi casi in cui la memoria monumentale italiana rappresenta una donna esplicitamente come eroina combattente.</p><button class="badge resource" data-title="Roma Capitale — Anita Garibaldi" data-url="https://www.comune.roma.it/web/it/notizia/anita-garibaldi-eroina-gianicolo.page">fonte</button></div>
       </div>
 
-      <div class="callout"><strong>Dal Risorgimento al melodramma.</strong> La donna era già onnipresente nell’opera ottocentesca, ma con Puccini la centralità diventa quasi sistematica: Manon, Mimì, Tosca, Cio-Cio-San, Minnie, Magda, Suor Angelica, Turandot. Molto spesso è una donna a portare su di sé il peso emotivo e tragico dell’opera.</div>
-      <p>Il Novecento italiano, però, non è un progresso lineare. Il fascismo esalta la donna soprattutto come moglie e madre prolifica e adotta politiche volte anche alla <strong>riduzione dell’occupazione professionale femminile</strong>. La stessa <em>Enciclopedia Italiana</em> dell’epoca descrive esplicitamente esclusioni e limitazioni del lavoro femminile. <button class="badge resource" data-title="Politica demografica fascista — Treccani" data-url="https://www.treccani.it/enciclopedia/politica-demografica_%2528Enciclopedia-Italiana%2529/">documento</button></p>
+      <p>Accanto a loro agiscono donne che combattono con altri strumenti. <strong>Cristina Trivulzio di Belgiojoso</strong> finanzia iniziative patriottiche, raccoglie volontari, fonda giornali e nel 1849 dirige gli ospedali militari della Repubblica Romana. <strong>Margaret Fuller</strong>, scrittrice e giornalista americana vicina a Mazzini, lavora nell’organizzazione dei soccorsi ai feriti. <strong>Clara Maffei</strong> fa del proprio salotto milanese un nodo della rete politica, letteraria e musicale che unisce patriottismo, stampa e teatro. La partecipazione femminile, dunque, non è una nota a margine: va dal giornale alla corsia d’ospedale, dal salotto alla barricata. <button class="badge resource" data-title="Treccani — Le donne della Repubblica Romana" data-url="https://www.treccani.it/magazine/atlante/cultura/Le_donne_della_Repubblica_romana.html">fonte</button></p>
+
+      <p>È in questo quadro che titoli come <em>La donna italiana</em> di Bertoldi e Novaro e <em>La donna lombarda</em> di Dall’Ongaro e Novaro acquistano un significato più interessante. La donna può ancora essere usata come allegoria morale della nazione, certo, ma quella figura allegorica convive ormai con donne reali che scrivono, organizzano, finanziano, curano, disobbediscono e combattono.</p>
+
+      <div class="verdi-women">
+        <h3>Le donne di Verdi</h3>
+        <div class="verdi-names">
+          <span>Violetta</span><span>Gilda</span><span>Leonora</span><span>Azucena</span><span>Amelia</span><span>Lady Macbeth</span><span>Aida</span><span>Desdemona</span>
+        </div>
+        <p>Ed è forse proprio qui che il passaggio al melodramma diventa più interessante. Non tanto le donne della vita privata di Verdi, quanto <strong>le donne del suo teatro</strong>. In esse passa una quantità straordinaria di ciò che l’Ottocento italiano sta imparando a dire a se stesso: lingua, sentimento, sacrificio, colpa, desiderio, potere, violenza sociale, coscienza individuale e modernità.</p>
+
+        <p><strong>Violetta</strong> non è soltanto la vittima che muore: è una donna che ha costruito una propria esistenza fuori dalle regole rispettabili e che viene distrutta proprio quando tenta di entrarvi. <strong>Gilda</strong> conosce il sacrificio, ma possiede anche una volontà tragica che la conduce a scegliere. <strong>Azucena</strong> porta nel corpo e nella voce memoria, maternità, vendetta e trauma. <strong>Lady Macbeth</strong> occupa apertamente lo spazio del potere. Le diverse Leonore e Amelie verdiane attraversano desiderio, fedeltà, religione, politica e morte. <strong>Aida</strong> è contemporaneamente donna, schiava, principessa, figlia e amante, schiacciata fra identità incompatibili. <strong>Desdemona</strong>, infine, concentra nella propria fragilità apparente una delle condanne più terribili della violenza maschile costruite dal teatro musicale ottocentesco.</p>
+
+        <p>Non sono manifesti di emancipazione nel senso novecentesco del termine e sarebbe anacronistico trattarle come tali. Sono però personaggi spesso assai più complessi degli uomini che le circondano, e soprattutto sono <strong>centri drammatici e linguistici</strong>: attraverso la loro voce milioni di italiani ascoltano sentimenti, conflitti e parole che escono dal teatro e continuano a vivere nelle bande, nelle riduzioni, nelle case, nei cori e nella memoria collettiva. Se l’opera contribuisce a fare una lingua comune, una parte enorme di quella lingua passa attraverso voci femminili.</p>
+      </div>
+
+      <div class="century-bridge"><strong>Una soglia verso il Novecento.</strong> Con Puccini questa centralità femminile non scompare, anzi diventa quasi sistematica: Manon, Mimì, Tosca, Cio-Cio-San, Minnie, Suor Angelica, Turandot. Ma siamo ormai in un altro secolo e in un altro mondo. Qui basta registrare il passaggio, perché proprio il Novecento italiano mostrerà quanto la storia non proceda affatto in linea retta.</div>
+
+      <p>Il fascismo costruirà infatti un modello pubblico della donna fortemente centrato sulla funzione di moglie e madre e accompagnerà la politica demografica con misure volte anche alla <strong>riduzione dell’occupazione professionale femminile</strong>. La stessa <em>Enciclopedia Italiana</em> dell’epoca lo descrive esplicitamente fra gli strumenti della politica demografica del regime. Il contrasto con la donna armata delle barricate risorgimentali, o con la complessità delle grandi figure femminili del melodramma, non potrebbe essere più netto. <button class="badge resource" data-title="Politica demografica fascista — Treccani" data-url="https://www.treccani.it/enciclopedia/politica-demografica_%2528Enciclopedia-Italiana%2529/">documento</button></p>
     </section>
 
     <section id="mameli">
@@ -634,6 +663,21 @@
         <div class="bib-entry">
           <div class="bib-cite">RaiPlay. <em>Mameli – Lezioni di Storia</em>. 8 episodi, regia di Ago Panini, 2024. Ultimo accesso 1 ottobre 2026.</div>
           <button class="bib-open resource" data-title="RaiPlay — Mameli, Lezioni di Storia" data-url="https://www.raiplay.it/programmi/mameli-lezionidistoria">Apri RaiPlay</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Senato della Repubblica. <em>Storie d’ingegno e di coraggio. Profili di donne che hanno fatto l’Italia</em>. Roma, 2023. Sezione su Luisa Battistotti Sassi.</div>
+          <button class="bib-open resource" data-title="Senato della Repubblica — Storie d’ingegno e di coraggio" data-url="https://www.senato.it/application/xmanager/projects/leg19/file/repository/relazioni/libreria/novita/XIX/Storie_ing_cor_2023.pdf" data-kind="pdf">Apri PDF</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Treccani. “Le donne della Repubblica Romana.” <em>Atlante</em>, 3 luglio 2019.</div>
+          <button class="bib-open resource" data-title="Treccani — Le donne della Repubblica Romana" data-url="https://www.treccani.it/magazine/atlante/cultura/Le_donne_della_Repubblica_romana.html">Apri Treccani</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Roma Capitale. “Anita Garibaldi e l’onore della statua equestre.” 2 agosto 2024.</div>
+          <button class="bib-open resource" data-title="Roma Capitale — Anita Garibaldi e Colomba Antonietti" data-url="https://www.comune.roma.it/web/it/notizia/anita-garibaldi-onore-statua-equeste.page">Apri fonte</button>
         </div>
       </div>
     </div>
