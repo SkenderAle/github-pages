@@ -105,6 +105,15 @@
   .network .edge{stroke:#8f7e65;stroke-width:2;opacity:.75}
   .network .edge.red{stroke:#8b3030}.network .edge.blue{stroke:#345279}
   .network circle{stroke:#f6efe4;stroke-width:4}
+  .turin-cast{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.6rem 0 2.2rem}
+  .turin-cast .who{background:#efe5d4;border:1px solid #cbbba4;padding:1rem}
+  .turin-cast .who b{display:block;font-family:var(--sans);font-size:.84rem;letter-spacing:.04em;text-transform:uppercase;color:#6e2b27;margin-bottom:.35rem}
+  .turin-cast .who span{font-size:.9rem;line-height:1.5;color:#5f554a}
+  .essay-section{max-width:920px;margin-left:auto;margin-right:auto}
+  .essay-section .essay-lead{font-size:1.17rem;line-height:1.8}
+  .essay-section p{line-height:1.82}
+  .essay-section .essay-video{margin:3rem 0 1.4rem}
+  .essay-section .essay-signature{font-family:var(--sans);font-weight:800;letter-spacing:.04em;text-align:right;margin-top:2rem;color:#5f5142}
   .archive{background:#211d19;color:#f6ecdc;padding:3rem 1.4rem;margin-left:-1.4rem;margin-right:-1.4rem}
   .archive-inner{max-width:1180px;margin:auto}
   .archive h2{color:#fff}
@@ -168,7 +177,7 @@
   @media (max-width:900px){
     .hero{grid-template-columns:1fr}.hero-card{max-width:520px}.masthead{min-height:88vh}
     .intro-grid{grid-template-columns:1fr}.quote-card{position:relative;top:auto}
-    .media-row,.sheet-grid,.archive-grid{grid-template-columns:1fr 1fr}.people{grid-template-columns:1fr 1fr}.women-band{grid-template-columns:1fr}.women-band .img{min-height:420px}
+    .media-row,.sheet-grid,.archive-grid{grid-template-columns:1fr 1fr}.people{grid-template-columns:1fr 1fr}.women-band{grid-template-columns:1fr}.turin-cast{grid-template-columns:1fr}.women-band .img{min-height:420px}
   }
   @media (max-width:580px){
     .content{padding-left:1rem;padding-right:1rem}.section-title{grid-template-columns:1fr}.section-no{width:max-content}
@@ -183,8 +192,8 @@
 <header class="masthead" id="top">
   <div class="hero">
     <div>
-      <div class="kicker">Viaggio interattivo · Torino, Genova, Milano · 1847–1874</div>
       <div class="top-credit">Pagina a cura di Alessandro Zilli · © tutti i diritti riservati</div>
+      <div class="kicker">Viaggio interattivo · Torino, Genova, Milano · 1847–1874</div>
       <h1>Novaro, Rossi e l’officina musicale del Risorgimento</h1>
       <div class="dek">La <em>Coccarda</em>, <em>Fratelli d’Italia</em> e quella rete di poeti, musicisti, donne, tipografi ed editori che cominciò a cantare l’Italia prima ancora che l’Italia esistesse.</div>
     </div>
@@ -202,6 +211,7 @@
       <a href="#donne">Le donne</a>
       <a href="#mameli">Mameli e Botti</a>
       <a href="#musica">La musica</a>
+      <a href="#paradosso">Il paradosso</a>
       <a href="#giganti">Dietro i giganti</a>
       <a href="#archivio">Archivio</a>
       <a href="#bibliografia">Biblio-sitografia</a>
@@ -238,6 +248,12 @@
         <p>Non era l’inno ufficiale dello Stato sabaudo, funzione spettante alla <em>Marcia Reale</em>, ma un canto politico popolare capace di tenere insieme fedeltà dinastica, riformismo e nascente coscienza nazionale.</p>
         <p>Quando Novaro riceve i versi di Mameli, Torino è già piena di inni. Nella casa di <strong>Lorenzo Valerio</strong> si faceva insieme musica e politica e si provavano al pianoforte i nuovi canti patriottici. Il Quirinale conserva proprio il racconto di Barrili secondo cui, mentre si eseguivano gli inni del momento, si arrivò al recentissimo <em>«Coll’azzurra coccarda sul petto»</em> di Bertoldi e Rossi. <button class="badge resource" data-title="Quirinale — Come nacque l'inno" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-inno-nazionale">fonte</button></p>
         <p>È in questo ambiente che <strong>Ulisse Borzino</strong>, giunto da Genova, porta a Novaro il foglio con i versi di Mameli. Novaro legge, si commuove, accenna qualcosa al pianoforte e poi completa la musica a casa. Non siamo davanti a un compositore isolato che inventa un inno dal nulla, ma a un professionista del teatro immerso in una città nella quale gli inni <strong>«sbocciavano»</strong> ovunque.</p>
+      </div>
+
+      <div class="turin-cast" aria-label="La combriccola torinese">
+        <div class="who"><b>Lorenzo Valerio</b><span>Giornalista, imprenditore serico, patriota liberale e poi uomo politico: la sua casa torinese era uno dei luoghi nei quali discussione politica, letteratura e musica si mescolavano naturalmente.</span></div>
+        <div class="who"><b>Anton Giulio Barrili</b><span>Scrittore e patriota, amico e biografo di Mameli. È a lui che dobbiamo la testimonianza più celebre sulla serata in casa Valerio e sul racconto che Novaro gli fece anni dopo.</span></div>
+        <div class="who"><b>Ulisse Borzino</b><span>Pittore genovese. Arrivato da Genova, fu materialmente il tramite fra Mameli e Novaro: estrasse di tasca il foglietto con i versi e lo consegnò al compositore.</span></div>
       </div>
 
       <div class="sheet-grid">
@@ -345,8 +361,97 @@
       <p>Anche il fallimento appartiene a questa officina. Non <em>Rigoletto</em>, che fu accolto con entusiasmo nonostante la battaglia con la censura, ma la prima della <em>Traviata</em> del 1853: un fiasco, prima della definitiva affermazione l’anno seguente. Successo, insuccesso, censura, nuove versioni, ripensamenti: la cultura nazionale nasce anche da tentativi che non funzionano subito.</p>
     </section>
 
+
+    <section id="paradosso" class="essay-section">
+      <div class="section-title"><div class="section-no">06 · SAGGIO</div><h2>Novaro e il paradosso dell’Inno italiano</h2></div>
+
+      <p class="essay-lead">Se si prova, per quanto possibile, a sottrarre il <em>Canto degli Italiani</em> alla stratificazione simbolica che gli si è depositata addosso in quasi due secoli, fra Risorgimento, retorica nazionale, cerimoniale repubblicano, bande militari, stadi, podi olimpici, manifestazioni pubbliche, e lo si riporta per qualche minuto alla sua semplice condizione originaria di composizione musicale, il giudizio che ne emerge non è particolarmente benevolo nei confronti di Michele Novaro, il quale, pur essendo stato un professionista perfettamente inserito nel mondo teatrale del proprio tempo, non appartiene certo alla categoria dei compositori sui quali la storia abbia esercitato una colpevole rimozione.</p>
+
+      <p>Il materiale melodico è elementare, l'armonia non si discosta dai procedimenti più consueti del linguaggio ottocentesco, le modulazioni non rivelano alcuna particolare audacia e l'elaborazione tematica, se la si volesse giudicare secondo criteri propri della musica strumentale o del grande teatro d'opera, risulterebbe decisamente povera. Non è dunque necessario demolire Novaro, perché basterebbe ascoltarlo accanto ai maggiori contemporanei per comprendere immediatamente la distanza che lo separa da loro, né, d'altra parte, avrebbe molto senso rivalutarlo artificialmente, come talvolta accade quando si tenta di trasformare ogni autore minore in un genio dimenticato al quale la posterità dovrebbe presentare le proprie scuse.</p>
+
+      <p>La critica, del resto, non è stata tenera. Nel corso del tempo sono state rilevate la prevedibilità dei procedimenti armonici, una certa scolasticità delle modulazioni, l'insistenza su formule ritmico melodiche semplici e, soprattutto nelle esecuzioni più tarde, quell'effetto bandistico che ha contribuito non poco a fissare nell'immaginario comune l'idea di una musica piuttosto rozza. Morricone, con la consueta capacità di non girare troppo attorno alle cose che non gli piacevano, arrivò addirittura a giudicare il tema assai brutto, associandolo all'effetto prodotto da una banda di livello mediocre.</p>
+
+      <p>Un giudizio di questo tipo, per quanto volutamente tagliente, coglie qualcosa di reale, ma rischia al tempo stesso di giudicare il brano secondo parametri che non erano quelli ai quali esso doveva rispondere. Il <em>Canto degli Italiani</em>, infatti, non nasce come composizione destinata all'ascolto contemplativo, né come pagina nella quale il compositore dovesse dimostrare la propria abilità attraverso complessità formale, raffinatezza contrappuntistica o invenzione armonica. Nasce, molto più semplicemente e molto più concretamente, come canto destinato a diffondersi, essere ricordato e diventare proprietà di una collettività.</p>
+
+      <p>Ed è qui che bisogna compiere forse il maggiore sforzo di immedesimazione storica, perché quel mondo non è poi così lontano da noi cronologicamente, ma lo è moltissimo nel modo in cui la musica veniva ascoltata, imparata, riprodotta e vissuta. Era il mondo nel quale si stavano facendo gli italiani e, insieme agli italiani, si stava facendo anche la lingua italiana, che non veniva appresa soltanto sui libri o negli atti amministrativi, ma circolava attraverso il teatro, il canto, le arie d'opera, gli inni, le trascrizioni per banda, i cori di chiesa e le società musicali disseminate nei paesi.</p>
+
+      <p>Quell'italiano lirico che oggi può apparirci enfatico, artificioso o perfino pomposo era allora uno dei principali veicoli attraverso i quali una lingua comune entrava nelle orecchie di popolazioni che parlavano perlopiù dialetti e idiomi locali. Le arie dei grandi autori, le canzoni dei compositori minori, gli inni patriottici, i cori d'opera adattati per le bande municipali o per le cantorie parrocchiali costituivano una parte enorme del paesaggio sonoro collettivo.</p>
+
+      <p>E soprattutto quella musica era, molto più di quanto oggi riusciamo a immaginare, LA musica.</p>
+
+      <p>Non c'erano radio, televisioni, telefoni, dischi, registrazioni, streaming, altoparlanti portatili o cuffie attraverso le quali costruirsi quotidianamente una propria colonna sonora privata. La musica si ascoltava se qualcuno la suonava, la cantava o la faceva eseguire. Passava dal teatro alla piazza, dalla piazza alla banda, dalla banda alla chiesa, dalla chiesa alle case, e spesso un'aria d'opera sopravviveva e si diffondeva ben oltre la rappresentazione dalla quale proveniva proprio perché qualcuno l'aveva trascritta, adattata, cantata o suonata in un contesto diverso.</p>
+
+      <p>Questo spiega molte cose di quel mondo, anche se noi tendiamo facilmente a dimenticarlo, perché viviamo in una condizione opposta, nella quale la musica è ovunque e proprio per questo rischia continuamente di non essere più ascoltata davvero. Allora una melodia capace di passare da una città all'altra, da una banda all'altra, da una sala teatrale a una piazza, poteva costruire memoria, lingua, appartenenza e persino immaginario politico. Oggi, sommersi da una quantità di musica che nessuna generazione precedente avrebbe potuto neppure concepire, dovremmo forse ricordare quanto essa possa incidere sulla formazione culturale di una comunità e quanto, proprio per questo, continui ad avere importanza la musica di qualità, tanto più in mezzo alla quantità industriale di merda musicale alla quale siamo quotidianamente esposti.</p>
+
+      <p>È proprio in questo contesto che Novaro, apparentemente così modesto sul piano dell'invenzione, mostra invece un mestiere assai più solido di quanto la semplicità della partitura lascerebbe supporre.</p>
+
+      <p>Novaro era uomo di teatro, cantante e maestro dei cori, e ragionava dunque secondo categorie che appartenevano al melodramma assai più che alla musica sinfonica. Per questo il <em>Canto degli Italiani</em>, se osservato nella sua forma originaria e sottratto alla rigida scansione che molte esecuzioni militari gli hanno successivamente imposto, appare meno simile a una marcia di quanto siamo abituati a credere e molto più vicino, invece, a una piccola scena teatrale, nella quale un gesto inizialmente declamatorio viene progressivamente trasferito dalla voce individuale alla dimensione collettiva.</p>
+
+      <p>L'attacco di "Fratelli d'Italia", costruito su materiale estremamente semplice, è significativo proprio per questa ragione. Le note ribattute, la chiarezza ritmica, la brevità delle frasi e la loro immediata riconoscibilità non sembrano il risultato di un compositore che abbia molto da dire sul piano dell'invenzione melodica, ma sono perfettamente funzionali a un testo che deve essere pronunciato e ricordato senza difficoltà. La melodia non chiede di essere contemplata né analizzata. Deve entrare nell'orecchio rapidamente, legarsi alle parole e poter essere riprodotta quasi immediatamente.</p>
+
+      <p>In questo senso la povertà del materiale non è semplicemente una debolezza, perché coincide almeno in parte con una precisa efficacia comunicativa.</p>
+
+      <p>Ancora più interessante è ciò che accade quando il brano procede e il discorso comincia ad allargarsi. La musica cambia tonalità, modifica il proprio carattere, introduce il contrasto fra maggiore e minore, aumenta progressivamente la tensione e prepara l'ingresso del ritornello, nel quale la dimensione collettiva prende definitivamente il sopravvento. Da quel momento Novaro adopera, con una disinvoltura che deriva chiaramente dalla pratica teatrale, una serie di procedimenti che appartengono al lessico più comune del melodramma italiano. Il crescendo, l'accelerazione, la ripetizione insistita, la progressiva intensificazione dinamica e la stretta conclusiva sono tutti elementi perfettamente riconoscibili.</p>
+
+      <p>Non si tratta, dunque, di una pagina particolarmente originale per i materiali che utilizza. Si tratta piuttosto di una pagina che utilizza in maniera estremamente funzionale materiali già largamente condivisi.</p>
+
+      <p>È anche per questo che, quando si parla delle "citazioni" presenti nell'Inno, converrebbe evitare di trasformare la questione in una caccia al plagio melodico, cercando qua e là quattro battute somiglianti a qualcosa di già scritto. La parentela più evidente non è tanto con una singola composizione quanto con un intero linguaggio. Novaro cita, per così dire, la grammatica del melodramma italiano, il richiamo iniziale, la risposta collettiva, il passaggio attraverso una momentanea ombra del minore, l'accumulo progressivo di energia e infine lo scioglimento nel fortissimo conclusivo.</p>
+
+      <p>Da questo punto di vista il <em>Canto degli Italiani</em> è persino interessante nella sua mancanza di originalità, perché concentra in pochissimo spazio un insieme di gesti che l'ascoltatore ottocentesco riconosceva immediatamente e ai quali attribuiva una precisa funzione emotiva. L'eroe proclama, il popolo risponde, la tensione cresce, l'azione accelera e infine la collettività si riconosce in un'unica voce.</p>
+
+      <p>Che tutto questo sia stato costruito attraverso procedimenti largamente convenzionali non costituisce, di per sé, una sorpresa. Il teatro musicale dell'Ottocento viveva precisamente di convenzioni condivise, e non era necessario inventare ogni volta un nuovo linguaggio per ottenere un effetto drammatico. La qualità consisteva semmai nel sapere utilizzare quelle formule nel momento giusto, evitando che apparissero soltanto formule.</p>
+
+      <p>Ed è qui che Novaro, pur restando un compositore minore, ottiene un risultato che difficilmente gli si può negare.</p>
+
+      <p>Lo dimostra, peraltro, la storia stessa del brano. Quando Mazzini, non pienamente soddisfatto del carattere del <em>Canto degli Italiani</em>, volle tentare nuovamente la strada dell'inno patriottico, affidò ancora una volta il testo a Mameli e la musica, questa volta, a Giuseppe Verdi. Nacque così <em>Suona la tromba</em> e, sulla carta, il confronto avrebbe dovuto essere quasi imbarazzante, perché da una parte c'erano Mameli e Novaro, dall'altra Mameli e Verdi.</p>
+
+      <p>Se la fortuna di un canto politico dipendesse dalla qualità del compositore che lo firma, il problema sarebbe stato risolto prima ancora di cominciare.</p>
+
+      <p>E invece non accadde nulla del genere.</p>
+
+      <p>Il canto di Novaro sopravvisse, si diffuse e finì per radicarsi nella memoria collettiva con una forza che quello di Verdi non possedette mai. Il paradosso diventa ancora più significativo quando, alcuni anni dopo, proprio Verdi, componendo l'<em>Inno delle Nazioni</em>, dovette scegliere un tema che potesse rappresentare musicalmente l'Italia accanto a <em>God Save the Queen</em> e alla <em>Marsigliese</em>. Anziché ricorrere alla Marcia Reale, che pure era l'inno ufficiale dello Stato unitario, inserì proprio il <em>Canto degli Italiani</em>.</p>
+
+      <p>L'episodio è particolarmente istruttivo perché mostra come, indipendentemente dal valore assoluto della musica, il brano di Novaro avesse già acquisito ciò che nessuna commissione, nessun decreto e nessun giudizio critico può produrre artificialmente, cioè il riconoscimento collettivo.</p>
+
+      <p>A quel punto la questione cambia completamente.</p>
+
+      <p>Non si tratta più di chiedersi se il tema di Novaro sia particolarmente bello, se l'armonia sia raffinata o se il compositore possieda la statura dei grandi autori del secolo. Si tratta di chiedersi perché proprio quella musica, così semplice e per molti aspetti così prevedibile, sia riuscita a compiere ciò che composizioni più raffinate non hanno compiuto.</p>
+
+      <p>Una prima risposta risiede certamente nella sua facilità di memorizzazione. Il rapporto fra ritmo e parola è immediato, le frasi hanno una struttura chiara, le ripetizioni aiutano l'ascoltatore a orientarsi, mentre la progressiva intensificazione del ritornello consente al cantante di percepire con estrema chiarezza la direzione del discorso musicale. Non bisogna sapere nulla di armonia per capire che il brano sta andando verso una conclusione. La musica stessa lo rende evidente, conducendo il cantante attraverso una serie di passaggi che sembrano quasi obbligati.</p>
+
+      <p>Questa prevedibilità, che sul piano estetico può apparire un limite, sul piano della comunicazione collettiva diventa invece una forza.</p>
+
+      <p>Vi è poi un secondo elemento, forse ancora più importante. La musica tollera molto bene l'esecuzione imperfetta. Un canto nazionale, se vuole sopravvivere, deve poter essere cantato da persone prive di educazione musicale, da folle numerose, da bande non sempre eccellenti e da cori improvvisati. Deve insomma continuare a funzionare anche quando tutte le condizioni che rendono possibile una buona esecuzione vengono meno.</p>
+
+      <p>Sotto questo aspetto il <em>Canto degli Italiani</em> possiede una robustezza quasi sorprendente. Può essere accelerato, rallentato, irrigidito, urlato, suonato male e perfino trasformato in quella marcetta che probabilmente Novaro non aveva esattamente immaginato, e tuttavia la sua identità rimane perfettamente riconoscibile.</p>
+
+      <p>Non è una qualità trascurabile.</p>
+
+      <p>Anzi, se si considera la destinazione del brano, potrebbe essere una delle sue qualità principali.</p>
+
+      <p>Il giudizio su Novaro dovrebbe dunque evitare due opposti errori. Il primo consisterebbe nel confondere la straordinaria fortuna storica dell'Inno con una grandezza compositiva che la partitura, semplicemente, non possiede. Il secondo, però, sarebbe quello di liquidare il successo come puro accidente storico, perché la diffusione di un canto su scala nazionale non dipende mai soltanto dalle circostanze politiche che lo accompagnano.</p>
+
+      <p>La musica di Novaro possiede caratteristiche che spiegano almeno in parte la sua capacità di diffusione, cioè semplicità, chiarezza, adattabilità, immediata corrispondenza fra parola e ritmo, progressione drammatica facilmente percepibile e, soprattutto, una struttura che consente a chi canta di sentirsi progressivamente trascinato dall'enunciazione individuale verso la dimensione collettiva.</p>
+
+      <p>Non è grande musica nel senso in cui lo sono le grandi pagine dell'Ottocento, ma è musica costruita con notevole intelligenza rispetto alla propria funzione.</p>
+
+      <p>Forse è proprio questo il paradosso più interessante del <em>Canto degli Italiani</em>. Un compositore modesto, utilizzando un materiale altrettanto modesto e ricorrendo a procedimenti che appartengono quasi interamente al patrimonio comune del melodramma del suo tempo, riesce a produrre una pagina che possiede una capacità di sopravvivenza enormemente superiore a quella di molte composizioni musicalmente assai più ambiziose.</p>
+
+      <p>Novaro, insomma, non inventa quasi nulla, ma comprende molto bene come si costruisce un gesto collettivo e come una lingua musicale, già perfettamente comprensibile al pubblico del suo tempo, possa trasformarsi in lingua comune anche sul piano politico e nazionale.</p>
+
+      <p>Ed è probabilmente questa, più che la bellezza intrinseca del tema, la ragione per cui il suo Inno continua a funzionare.</p>
+
+      <p>Non perché contenga molta musica, ma perché contiene esattamente quella che gli serviva.</p>
+
+      <div class="essay-video">
+        <button class="media-card video" style="width:100%;min-height:260px" data-title="Corollario audiovisivo — Novaro e il paradosso dell’Inno" data-video="9JVjF3fMXYw" data-start="91"><img src="https://img.youtube.com/vi/9JVjF3fMXYw/hqdefault.jpg" alt="Video di approfondimento su Novaro e l'Inno"><span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Corollario audiovisivo · da 1:31</span><h4>Ascoltare il paradosso</h4></span></button>
+      </div>
+
+      <p class="essay-signature">Alessandro Zilli</p>
+    </section>
+
     <section id="giganti">
-      <div class="section-title"><div class="section-no">06 · EPILOGO</div><h2>Dietro i giganti</h2></div>
+      <div class="section-title"><div class="section-no">07 · EPILOGO</div><h2>Dietro i giganti</h2></div>
       <p class="lead">La storia culturale del Risorgimento viene inevitabilmente raccontata attraverso alcuni giganti: Mazzini, Garibaldi, Cavour, Manzoni, Verdi. Ma questi uomini non lavoravano nel vuoto.</p>
       <div class="two-col">
         <p>Dietro di loro esisteva un <strong>substrato artistico, intellettuale, editoriale e politico impressionante</strong>. Musicisti professionisti e dilettanti, poeti oggi dimenticati, donne che organizzavano salotti o combattevano, direttori di coro, cantanti, giornalisti, pittori, tipografi, editori, impresari, insegnanti, associazioni culturali e teatri.</p>
@@ -361,7 +466,7 @@
 
   <section class="archive" id="archivio">
     <div class="archive-inner">
-      <div class="section-title"><div class="section-no" style="color:#e0c389;border-color:#e0c389">07 · TECA</div><h2>Archivio navigabile</h2></div>
+      <div class="section-title"><div class="section-no" style="color:#e0c389;border-color:#e0c389">08 · TECA</div><h2>Archivio navigabile</h2></div>
       <p>Qui sono raccolti documenti, spartiti, fonti e materiali audiovisivi citati lungo il percorso. Quando una fonte esterna non consente l’incorporamento, compare direttamente la finestra compatta con i comandi per copiare il link o aprirlo in una nuova finestra.</p>
       <div class="archive-grid">
         <button class="source-card resource" data-title="Quirinale — L'Inno nazionale" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-inno-nazionale"><span class="src">Quirinale</span><b>L’Inno nazionale</b><span>Biografie, racconto di Barrili, testo, simboli e rimandi audio/video.</span></button>
@@ -401,7 +506,7 @@
 
   <section class="bibliography" id="bibliografia">
     <div class="bibliography-inner">
-      <div class="section-title"><div class="section-no">08 · FONTI</div><h2>Biblio-sitografia</h2></div>
+      <div class="section-title"><div class="section-no">09 · FONTI</div><h2>Biblio-sitografia</h2></div>
       <p>Fonti primarie, partiture, repertori biografici, studi e risorse web utilizzati o utili per approfondire il percorso. I collegamenti esterni si aprono con la stessa finestra compatta usata nel resto della pagina.</p>
 
       <div class="bib-group">
@@ -668,7 +773,7 @@
   },{passive:true});
   scrolltop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-  const sections=[...document.querySelectorAll('main section, #archivio')];
+  const sections=[...document.querySelectorAll('main section, #archivio, #bibliografia')];
   const links=[...document.querySelectorAll('#nav a')];
   const observer=new IntersectionObserver(entries=>{
     const visible=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
