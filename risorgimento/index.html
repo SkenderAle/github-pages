@@ -50,7 +50,398 @@
   .content{max-width:1180px;margin:auto;padding:4.5rem 1.4rem 7rem}
   .intro-grid{display:grid;grid-template-columns:1.45fr .55fr;gap:3.5rem;margin-bottom:5rem;align-items:start}
   .lead{font-size:1.43rem;line-height:1.58;margin-top:0}
-  .dropcap:first-letter{float:left;font-size:4.7rem;line-height:.77;padding:.=wMƒÅç•…ç±ïÌÕ—…Ω≠îËçòŸïôî–ÌÕ—…Ω≠îµ›•ë—†Ë—Ù(ÄÄπÖ…ç°•ŸïÌâÖç≠ù…Ω’πêËå»ƒ≈êƒ‰ÌçΩ±Ω»ËçòŸïçëåÌ¡Öëë•πúËÕ…ï¥Äƒ∏—…ï¥ÌµÖ…ù•∏µ±ïô–Ë¥ƒ∏—…ï¥ÌµÖ…ù•∏µ…•ù°–Ë¥ƒ∏—…ïµı4T4 6VÊW&RñÁ6ñV÷RfVFV«L:FñÊ7Fñ6¬&ñf˜&÷ó6÷ÚRÊ66VÁFR6˜66ñVÁ¶Ê¶ñˆÊ∆R„¬˜‡§—P–ÄL@»N[›[ôH€õôH⁄Y\Ÿ\õ»õ‹õX[Y[ùH[H›X\ôXH⁄]öXÿHH›\à\ÿ\ôHH\õZHH€‹›]Z\ôH[àò]Y€[€ôHô[[Z[ö[KàECB1ferimento per esecuzione orchestrale o bandistica.</p></span><span class="open">Apri PDF ‚Üí</span></button>MƒÖÈ•ΩπÖ±îà¯ÒÕ¡Ö∏Åç±ÖÕÃÙâÕ…åà˘E’•…•πÖ±îΩÕ¡Ö∏¯Òà˘3äe%ππºÅπÖÈ•ΩπÖ±îΩà¯ÒÕ¡Ö∏˘	•Ωù…Öô•î∞Å…ÖççΩπ—ºÅë§Å	Ö……•±§∞Å—ïÕ—º∞ÅÕ•µâΩ±§ÅîÅ…•µÖπë§ÅÖ’ë•ºΩŸ•ëïº∏ΩÕ¡Ö∏¯Ωâ’——Ω∏¯ECB1chivio')];
+  .dropcap:first-letter{float:left;font-size:4.7rem;line-height:.77;padding:.13rem .16rem 0 0;color:var(--red);font-weight:700}
+  .quote-card{border-top:4px solid var(--red);background:#ebe0cd;padding:1.5rem 1.4rem;box-shadow:0 8px 30px rgba(40,30,18,.08);position:sticky;top:5rem}
+  .quote-card p{margin:0;font-size:1.15rem;font-style:italic}
+  .quote-card cite{display:block;margin-top:1rem;font-family:var(--sans);font-style:normal;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+  section{scroll-margin-top:4.5rem;margin:0 0 6rem}
+  .section-title{display:grid;grid-template-columns:80px 1fr;gap:1rem;align-items:start;margin-bottom:2rem}
+  .section-no{font-family:var(--sans);font-size:.78rem;letter-spacing:.15em;color:var(--red);border-top:1px solid var(--red);padding-top:.55rem}
+  h2{margin:0;font-size:clamp(2.2rem,5vw,4.7rem);line-height:1.03;font-weight:600;letter-spacing:-.035em}
+  h3{font-size:1.55rem;margin:2.4rem 0 .7rem;line-height:1.2;color:#3a3128}
+  p{font-size:1.08rem}
+  .two-col{columns:2 390px;column-gap:3.5rem}
+  .two-col p{break-inside:avoid;margin-top:0;margin-bottom:1.15rem}
+  .callout{margin:2.5rem 0;padding:1.5rem 1.7rem;border-left:5px solid var(--blue);background:#ece7dc}
+  .callout strong{color:var(--blue)}
+  .media-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .media-card{position:relative;min-height:240px;overflow:hidden;background:#1e1b18;color:#fff;border:0;padding:0;cursor:pointer;text-align:left;box-shadow:var(--shadow)}
+  .media-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62;filter:sepia(.15) saturate(.7);transition:.35s}
+  .media-card:hover img{transform:scale(1.035);opacity:.78}
+  .media-card .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(16,13,11,.88))}
+  .media-card .meta{position:absolute;left:1rem;right:1rem;bottom:1rem;z-index:2}
+  .media-card .tag{font-family:var(--sans);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:#f2d498}
+  .media-card h4{font-size:1.3rem;line-height:1.15;margin:.35rem 0 0}
+  .play{position:absolute;right:1rem;top:1rem;width:42px;height:42px;border:1px solid rgba(255,255,255,.65);border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.22);z-index:3;font-family:var(--sans)}
+  .sheet-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .sheet{background:#fbf8f1;border:1px solid #d7cab3;padding:1rem;min-height:270px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 24px rgba(48,36,22,.08);cursor:pointer;transition:.2s;position:relative;overflow:hidden;text-align:left}
+  .sheet:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(48,36,22,.14)}
+  .sheet::before{content:"‚ô©";position:absolute;right:-.5rem;top:-1.4rem;font-size:8rem;color:rgba(127,29,29,.07)}
+  .sheet .year{font-family:var(--sans);font-size:.72rem;color:var(--red);letter-spacing:.14em;text-transform:uppercase}
+  .sheet h4{font-size:1.45rem;margin:.7rem 0 .3rem;line-height:1.1}
+  .sheet p{font-size:.93rem;color:var(--muted);margin:.35rem 0}
+  .sheet .open{font-family:var(--sans);font-weight:800;font-size:.77rem;text-transform:uppercase;letter-spacing:.08em;color:var(--blue)}
+  .timeline{display:flex;gap:1rem;overflow-x:auto;padding:1rem 0 1.5rem;scroll-snap-type:x mandatory}
+  .timeline::-webkit-scrollbar{height:8px}.timeline::-webkit-scrollbar-thumb{background:#b9ac96}
+  .event{min-width:265px;scroll-snap-align:start;background:#ede4d5;border-top:4px solid var(--gold);padding:1.1rem}
+  .event b{font-family:var(--sans);font-size:1.35rem;color:var(--red)}
+  .event p{font-size:.93rem;margin:.5rem 0 0;line-height:1.45}
+  .people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .person{background:#2a241f;color:#f7efe2;min-height:330px;position:relative;overflow:hidden;border:0;padding:0;text-align:left;cursor:pointer}
+  .person img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.63;filter:sepia(.3) grayscale(.15);transition:.3s}
+  .person:hover img{transform:scale(1.03);opacity:.75}
+  .person .label{position:absolute;left:0;right:0;bottom:0;padding:1.1rem;background:linear-gradient(transparent,rgba(20,16,13,.96));padding-top:5rem}
+  .person .label b{font-size:1.28rem;display:block}
+  .person .label span{font-family:var(--sans);font-size:.76rem;color:#e3cfad}
+  .women-band{margin:3rem 0;display:grid;grid-template-columns:1.1fr .9fr;background:#2f251e;color:#fff;min-height:500px}
+  .women-band .img{min-height:500px;background:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg') center 25%/cover no-repeat;filter:saturate(.7) sepia(.1)}
+  .women-band .txt{padding:clamp(2rem,4vw,4rem);align-self:center}
+  .women-band h3{color:#fff;font-size:clamp(2rem,4vw,3.8rem);margin-top:0}
+  .women-band p{color:#eee0ce}
+  .network{background:#e7dcc9;border:1px solid #c8b89e;padding:1rem;margin:2rem 0;overflow:hidden}
+  .network svg{width:100%;height:auto;display:block}
+  .network text{font-family:var(--sans);font-weight:800;fill:#2f2923}
+  .network .edge{stroke:#8f7e65;stroke-width:2;opacity:.75}
+  .network .edge.red{stroke:#8b3030}.network .edge.blue{stroke:#345279}
+  .network circle{stroke:#f6efe4;stroke-width:4}
+  .archive{background:#211d19;color:#f6ecdc;padding:3rem 1.4rem;margin-left:-1.4rem;margin-right:-1.4rem}
+  .archive-inner{max-width:1180px;margin:auto}
+  .archive h2{color:#fff}
+  .archive-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:2rem}
+  .source-card{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);padding:1rem;cursor:pointer;color:#fff;text-align:left;transition:.2s}
+  .source-card:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+  .source-card .src{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#d7bd8d}
+  .source-card b{display:block;margin:.45rem 0;font-size:1.06rem}
+  .source-card span{font-family:var(--sans);font-size:.8rem;color:#cabda9}
+  .footer{background:#15120f;color:#cfc0ad;padding:2.3rem 1.4rem;font-family:var(--sans);font-size:.78rem}
+  .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sans);font-size:.73rem;font-weight:800;padding:.3rem .55rem;border:1px solid #aa9a82;border-radius:999px;color:#6a5c4d;background:#f8f3e8;vertical-align:middle;margin-left:.4rem;cursor:pointer}
+  .badge:hover{background:#fff}
+  .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(15,12,10,.78);backdrop-filter:blur(6px)}
+  .modal.open{display:flex}
+  .modal-panel{width:min(1120px,96vw);height:min(86vh,860px);background:#f7f2e8;box-shadow:0 24px 90px rgba(0,0,0,.45);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+  .modal-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1rem;border-bottom:1px solid #d1c5b1;font-family:var(--sans)}
+  .modal-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .modal-close{border:0;background:#2b251f;color:#fff;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1.1rem}
+  .modal-body{background:#111;min-height:0;position:relative;overflow:auto;display:grid;place-items:center}
+  .modal-body iframe,.modal-body object{border:0;width:100%;height:100%;background:#fff}
+  .modal-body img{max-width:100%;max-height:100%;object-fit:contain}
+  .modal-body .audio-wrap{background:#f5efe4;color:#2c261f;width:100%;height:100%;display:grid;place-items:center;padding:2rem;text-align:center}
+  .modal-body audio{width:min(680px,90%)}
+  .modal-foot{font-family:var(--sans);display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:#eee4d3;border-top:1px solid #d1c5b1;font-size:.78rem}
+  .url-box{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;color:#6c5f50}
+  .copy-btn{border:1px solid #9f8e75;background:#f8f4ea;padding:.4rem .65rem;cursor:pointer;font-weight:700}
+  .notice{background:#fff8e8;border:1px solid #d1b978;padding:.75rem 1rem;font-family:var(--sans);font-size:.78rem;margin:1rem 0;color:#5f4b1e}
+  .scrolltop{position:fixed;right:1rem;bottom:1rem;z-index:60;width:44px;height:44px;border-radius:50%;border:0;background:#2c261f;color:#fff;display:none;cursor:pointer;box-shadow:var(--shadow)}
+  .scrolltop.show{display:grid;place-items:center}
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}.hero-card{max-width:520px}.masthead{min-height:88vh}
+    .intro-grid{grid-template-columns:1fr}.quote-card{position:relative;top:auto}
+    .media-row,.sheet-grid,.archive-grid{grid-template-columns:1fr 1fr}.people{grid-template-columns:1fr 1fr}.women-band{grid-template-columns:1fr}.women-band .img{min-height:420px}
+  }
+  @media (max-width:580px){
+    .content{padding-left:1rem;padding-right:1rem}.section-title{grid-template-columns:1fr}.section-no{width:max-content}
+    .media-row,.sheet-grid,.archive-grid,.people{grid-template-columns:1fr}.two-col{columns:1}.women-band{margin-left:-1rem;margin-right:-1rem}.archive{margin-left:-1rem;margin-right:-1rem}.modal{padding:.25rem}.modal-panel{width:100%;height:94vh}
+    h1{font-size:3.15rem}.hero{gap:1.5rem}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="masthead" id="top">
+  <div class="hero">
+    <div>
+      <div class="kicker">Viaggio interattivo ¬∑ Torino, Genova, Milano ¬∑ 1847‚Äì1874</div>
+      <h1>Novaro, Rossi e l‚Äôofficina musicale del Risorgimento</h1>
+      <div class="dek">La <em>Coccarda</em>, <em>Fratelli d‚ÄôItalia</em> e quella rete di poeti, musicisti, donne, tipografi ed editori che cominci√≤ a cantare l‚ÄôItalia prima ancora che l‚ÄôItalia esistesse.</div>
+    </div>
+    <aside class="hero-card">
+      <small>Come usare questa pagina</small>
+      <p>Scorri il racconto, apri spartiti e documenti nelle teche, ascolta le versioni storiche e usa l‚Äôindice fisso per spostarti nel viaggio senza mai uscire dalla pagina.</p>
+    </aside>
+  </div>
+</header>
+<div class="shell">
+  <div class="nav-wrap">
+    <nav id="nav">
+      <a href="#torino">Torino 1847</a>
+      <a href="#rete">La rete</a>
+      <a href="#donne">Le donne</a>
+      <a href="#mameli">Mameli e Botti</a>
+      <a href="#musica">La musica</a>
+      <a href="#giganti">Dietro i giganti</a>
+      <a href="#archivio">Archivio</a>
+    </nav>
+  </div>
+
+  <main class="content">
+    <div class="intro-grid">
+      <div>
+        <p class="lead dropcap">Nel <strong>1847 l‚ÄôItalia politicamente ancora non esiste</strong>, eppure esiste gi√† con sorprendente vitalit√† nelle poesie, nei giornali, nei teatri, nei salotti e soprattutto nelle canzoni. √à l‚Äôanno in cui nascono quasi contemporaneamente <em>La Coccarda</em>, su versi di <strong>Giuseppe Bertoldi</strong> e musica di <strong>Luigi Felice Rossi</strong>, e <em>Il Canto degli Italiani</em>, scritto dal ventenne <strong>Goffredo Mameli</strong> a Genova e musicato a Torino da <strong>Michele Novaro</strong>.</p>
+        <p>Due composizioni politicamente non identiche: la prima legata a Carlo Alberto e al liberalismo monarchico sabaudo, la seconda alimentata dall‚Äôorizzonte mazziniano e unitario di Mameli. Eppure nascono nella stessa febbre culturale, a distanza di poche settimane e dentro ambienti che si intersecano continuamente.</p>
+      </div>
+      <aside class="quote-card">
+        <p>¬´Si faceva musica e politica insieme.¬ª</p>
+        <cite>Anton Giulio Barrili, ricordo della casa di Lorenzo Valerio</cite>
+      </aside>
+    </div>
+
+    <div class="timeline" aria-label="Cronologia essenziale">
+      <div class="event"><b>1847</b><p><em>La Coccarda</em> viene pubblicata e cantata a Torino. Mameli scrive <em>Il Canto degli Italiani</em>; Novaro lo musica nello stesso anno.</p></div>
+      <div class="event"><b>1848</b><p>Gli inni invadono piazze e salotti. Rossi e Novaro musicano entrambi versi di Bertoldi. Le rivoluzioni portano uomini e donne nelle strade.</p></div>
+      <div class="event"><b>1849</b><p>Mameli combatte per la Repubblica Romana e muore a 21 anni dopo una ferita riportata durante i combattimenti.</p></div>
+      <div class="event"><b>ca. 1860</b><p>Francesco Lucca pubblica <em>Viva l‚ÄôItalia!</em>, tredici canzoni di Novaro, quasi tutte su versi di Dall‚ÄôOngaro.</p></div>
+      <div class="event"><b>ca. 1861</b><p>Novaro torna a Bertoldi con <em>La donna italiana</em>, canzone per voce e pianoforte.</p></div>
+      <div class="event"><b>1862</b><p>Verdi inserisce il tema del canto di Mameli-Novaro nell‚Äô<em>Inno delle Nazioni</em>, accanto a <em>God Save the Queen</em> e alla <em>Marsigliese</em>.</p></div>
+      <div class="event"><b>1874</b><p>Verdi dirige a Milano la <em>Messa da Requiem</em> in memoria di Alessandro Manzoni.</p></div>
+    </div>
+
+    <section id="torino">
+      <div class="section-title"><div class="section-no">01 ¬∑ TORINO</div><h2>Una citt√† che canta politica</h2></div>
+      <div class="two-col">
+        <p><em>La Coccarda</em> fu composta nel <strong>1847</strong> su versi di Giuseppe Bertoldi e musica di Luigi Felice Rossi. La coccarda √® ancora quella <strong>azzurra sabauda</strong>, Carlo Alberto √® chiamato direttamente in causa, ma il testo supera gi√† il Piemonte con il verso: <em>¬´Figli tutti d‚ÄôItalia noi siamo¬ª</em>.</p>
+        <p>Il canto nasce nel clima delle riforme carloalbertine. L‚Äôedizione musicale indica come prima esecuzione pubblica il <strong>3 novembre 1847 a Torino</strong>, in occasione della partenza di Carlo Alberto per Genova. IMSLP lo descrive come popolarissimo e noto anche come <strong>¬´Marsigliese dei Piemontesi¬ª</strong>. <button class="badge resource" data-title="La Coccarda ‚Äî IMSLP" data-url="https://imslp.org/wiki/La_coccarda_%28Rossi%2C_Luigi_Felice%29">spartito</button></p>
+        <p>Non era l‚Äôinno ufficiale dello Stato sabaudo, funzione spettante alla <em>Marcia Reale</em>, ma un canto politico popolare capace di tenere insieme fedelt√† dinastica, riformismo e nascente coscienza nazionale.</p>
+        <p>Quando Novaro riceve i versi di Mameli, Torino √® gi√† piena di inni. Nella casa di <strong>Lorenzo Valerio</strong> si faceva insieme musica e politica e si provavano al pianoforte i nuovi canti patriottici. Il Quirinale conserva proprio il racconto di Barrili secondo cui, mentre si eseguivano gli inni del momento, si arriv√≤ al recentissimo <em>¬´Coll‚Äôazzurra coccarda sul petto¬ª</em> di Bertoldi e Rossi. <button class="badge resource" data-title="Quirinale ‚Äî Come nacque l'inno" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-inno-nazionale">fonte</button></p>
+        <p>√à in questo ambiente che <strong>Ulisse Borzino</strong>, giunto da Genova, porta a Novaro il foglio con i versi di Mameli. Novaro legge, si commuove, accenna qualcosa al pianoforte e poi completa la musica a casa. Non siamo davanti a un compositore isolato che inventa un inno dal nulla, ma a un professionista del teatro immerso in una citt√† nella quale gli inni <strong>¬´sbocciavano¬ª</strong> ovunque.</p>
+      </div>
+
+      <div class="sheet-grid">
+        <button class="sheet resource" data-title="La Coccarda ‚Äî spartito originale" data-url="https://imslp.org/wiki/La_coccarda_%28Rossi%2C_Luigi_Felice%29"><span><span class="year">Torino ¬∑ 1847</span><h4>La Coccarda</h4><p>Giuseppe Bertoldi / Luigi Felice Rossi ¬∑ coro misto quasi interamente all‚Äôunisono e pianoforte.</p></span><span class="open">Apri la teca ‚Üí</span></button>
+        <button class="sheet resource" data-title="Autografi di Mameli e Novaro" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno_Nazionale_autografo.pdf" data-kind="pdf"><span><span class="year">Autografi ¬∑ 1847</span><h4>Il Canto degli Italiani</h4><p>Riproduzione digitale degli autografi del testo di Mameli e dello spartito di Novaro.</p></span><span class="open">Apri il PDF ‚Üí</span></button>
+        <button class="sheet resource" data-title="Il nuovo anno ‚Äî catalogo Biblioteca Universitaria di Genova" data-url="https://www.bibliotecauniversitaria.ge.it/collezioni/raccolte/materiali-del-risorgimento/inni-musicali.html"><span><span class="year">1848</span><h4>Il nuovo anno</h4><p>Giuseppe Bertoldi / Michele Novaro ¬∑ dedicato a Carlo Alberto.</p></span><span class="open">Apri il catalogo ‚Üí</span></button>
+        <button class="sheet resource" data-title="Viva l'Italia! ‚Äî Album completo" data-url="https://imslp.org/wiki/Viva_l%27Italia%21_%28Novaro%2C_Michele%29"><span><span class="year">Milano ¬∑ ca. 1860</span><h4>Viva l‚ÄôItalia!</h4><p>13 canzoni di Novaro, quasi tutte su versi di Francesco Dall‚ÄôOngaro.</p></span><span class="open">Apri le 60 pagine ‚Üí</span></button>
+      </div>
+    </section>
+
+    <section id="rete">
+      <div class="section-title"><div class="section-no">02 ¬∑ RETE</div><h2>Bertoldi, Rossi, Novaro, Dall‚ÄôOngaro: non storie parallele</h2></div>
+      <div class="network" aria-label="Rete dei protagonisti">
+        <svg viewBox="0 0 1000 430" role="img">
+          <line class="edge red" x1="220" y1="120" x2="490" y2="95"/><line class="edge blue" x1="220" y1="120" x2="490" y2="250"/><line class="edge" x1="490" y1="250" x2="780" y2="160"/><line class="edge" x1="490" y1="250" x2="770" y2="335"/><line class="edge" x1="490" y1="95" x2="800" y2="70"/>
+          <circle cx="220" cy="120" r="58" fill="#d7b47a"/><text x="220" y="116" text-anchor="middle" font-size="18">BERTOLDI</text><text x="220" y="140" text-anchor="middle" font-size="12">poeta</text>
+          <circle cx="490" cy="95" r="62" fill="#9db0c6"/><text x="490" y="91" text-anchor="middle" font-size="18">ROSSI</text><text x="490" y="115" text-anchor="middle" font-size="12">La Coccarda</text>
+          <circle cx="490" cy="250" r="66" fill="#c99991"/><text x="490" y="246" text-anchor="middle" font-size="18">NOVARO</text><text x="490" y="270" text-anchor="middle" font-size="12">inni e canzoni</text>
+          <circle cx="780" cy="160" r="62" fill="#9fb793"/><text x="780" y="156" text-anchor="middle" font-size="16">DALL‚ÄôONGARO</text><text x="780" y="180" text-anchor="middle" font-size="12">poeta</text>
+          <circle cx="770" cy="335" r="58" fill="#d8be8a"/><text x="770" y="331" text-anchor="middle" font-size="18">MAMELI</text><text x="770" y="355" text-anchor="middle" font-size="12">poeta-soldato</text>
+          <circle cx="800" cy="70" r="50" fill="#c8b8a8"/><text x="800" y="66" text-anchor="middle" font-size="16">TORINO</text><text x="800" y="88" text-anchor="middle" font-size="11">salotti e teatri</text>
+        </svg>
+      </div>
+      <div class="two-col">
+        <p>Il vero anello di congiunzione fra Rossi e Novaro √® <strong>Giuseppe Bertoldi</strong>. Nel 1848 i suoi versi vengono musicati ripetutamente anche da Novaro. Il caso pi√π sorprendente riguarda l‚Äô<em>Inno militare</em> che comincia <em>¬´Coraggio, coraggio, siam oggi soldati‚Ä¶¬ª</em>: lo stesso testo viene musicato <strong>sia da Luigi Felice Rossi sia da Michele Novaro</strong>.</p>
+        <p>Non abbiamo ancora una corrispondenza che autorizzi a definire Rossi e Novaro amici personali, ma √® difficile considerarli figure isolate: stesso ambiente torinese, stesso poeta, persino lo stesso testo. Novaro music√≤ inoltre <em>La Costituzione</em> e <em>Il nuovo anno</em>, ancora di Bertoldi. <button class="badge resource" data-title="Catalogo storico degli spartiti ‚Äî Torino" data-url="https://www.cittametropolitana.torino.it/sites/default/files/pagina/qa5/biblioteca/Spartiti_Musicali.pdf" data-kind="pdf">catalogo</button></p>
+        <p>La collaborazione non si esaurisce nel 1848. Intorno al <strong>1861</strong>, ormai nel momento dell‚Äôunificazione politica, ritroviamo Novaro su un altro componimento di Bertoldi: <strong><em>La donna italiana</em></strong>, pubblicato a Milano da Francesco Lucca come canzone con accompagnamento di pianoforte. <button class="badge resource" data-title="La donna italiana ‚Äî repertorio Bertoldi" data-url="https://cultura-barocca.com/IMPERIA/SASSA.HTM">scheda</button></p>
+        <p>Nel frattempo la rete si allarga verso Milano. Con <strong>Francesco Dall‚ÄôOngaro</strong>, poeta, giornalista e patriota, Novaro costruisce un vero catalogo di canzoni politiche. L‚Äôalbum <em>Viva l‚ÄôItalia!</em> raccoglie tredici brani e include <strong><em>La donna lombarda</em></strong>, che non va confusa con l‚Äôantichissima ballata popolare omonima.</p>
+      </div>
+
+      <div class="media-row">
+        <button class="media-card video" data-title="La donna lombarda ‚Äî Michele Novaro" data-video="RAr3J0xe1wI"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cinque_giornate_di_Milano.jpg" alt="Cinque giornate di Milano"><span class="shade"></span><span class="play">‚ñ∂</span><span class="meta"><span class="tag">Ascolto ¬∑ YouTube</span><h4>La donna lombarda</h4></span></button>
+        <button class="media-card resource" data-title="Viva l'Italia! ‚Äî spartito completo" data-url="https://imslp.org/wiki/Viva_l%27Italia%21_%28Novaro%2C_Michele%29"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/5_giornate_di_Milano.jpeg" alt="Combattimenti durante le Cinque giornate di Milano"><span class="shade"></span><span class="play">‚ô©</span><span class="meta"><span class="tag">Spartito ¬∑ 60 pagine</span><h4>Viva l‚ÄôItalia!</h4></span></button>
+        <button class="media-card resource" data-title="Inni musicali ‚Äî Biblioteca Universitaria di Genova" data-url="https://www.bibliotecauniversitaria.ge.it/collezioni/raccolte/materiali-del-risorgimento/inni-musicali.html"><img src="https://www.quirinale.it/allegati_statici/inno/musica-poesia-min.jpg" alt="Testo e spartito dell'Inno"><span class="shade"></span><span class="play">‚åò</span><span class="meta"><span class="tag">Archivio ¬∑ Genova</span><h4>Inni musicali del Risorgimento</h4></span></button>
+      </div>
+    </section>
+
+    <section id="donne">
+      <div class="section-title"><div class="section-no">03 ¬∑ DONNE</div><h2>Non soltanto allegorie della Patria</h2></div>
+      <div class="women-band">
+        <button class="img image-modal" aria-label="Apri ritratto di Cristina Trivulzio di Belgiojoso" data-title="Cristina Trivulzio di Belgiojoso ‚Äî Francesco Hayez, 1832" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg" data-url="https://commons.wikimedia.org/wiki/File:Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg"></button>
+        <div class="txt">
+          <h3>La donna risorgimentale entra nella scena pubblica</h3>
+          <p>Giuridicamente le donne dell‚ÄôOttocento erano lontanissime dall‚Äôemancipazione moderna. Eppure nel Risorgimento molte oltrepassano vistosamente i confini sociali assegnati loro: salotti politici, giornali, raccolte di fondi, ospedali, cospirazioni e perfino combattimento.</p>
+          <p>A Venezia, nel 1848, alcune donne chiesero formalmente alla Guardia civica di poter usare le armi e costituire un battaglione femminile. <button class="badge resource" data-title="Treccani ‚Äî storia delle donne" data-url="https://www.treccani.it/enciclopedia/storia-delle-donne-culture-mestieri-profili_%28altro%29/">fonte</button></p>
+        </div>
+      </div>
+      <p>La coppia di titoli <em>La donna italiana</em> e <em>La donna lombarda</em> smette allora di sembrare casuale. La figura femminile diventa un <strong>monumento morale, politico e artistico della nazione</strong>, pur dentro una societ√† ancora patriarcale. Cristina Trivulzio di Belgiojoso finanzia iniziative politiche, anima salotti europei e dirige gli ospedali della Repubblica Romana; Clara Maffei trasforma il proprio salotto milanese in un crocevia di arte e patriottismo e sostiene gli insorti delle Cinque Giornate. <button class="badge resource" data-title="Clara Maffei ‚Äî Treccani" data-url="https://www.treccani.it/enciclopedia/maffei-carrara-spinelli-clara-contessa_%28L%27Unificazione%29/">fonte</button></p>
+
+      <div class="people">
+        <button class="person image-modal" data-title="Cristina Trivulzio di Belgiojoso ‚Äî Hayez" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg" data-url="https://commons.wikimedia.org/wiki/File:Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg" alt="Cristina Trivulzio di Belgiojoso"><span class="label"><b>Cristina di Belgiojoso</b><span>salotti, giornalismo, Repubblica Romana</span></span></button>
+        <button class="person image-modal" data-title="Clara Maffei ‚Äî Francesco Hayez" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hayez_-_Ritratto_della_contessa_Clara_Maffei.jpg" data-url="https://commons.wikimedia.org/wiki/File:Hayez_-_Ritratto_della_contessa_Clara_Maffei.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hayez_-_Ritratto_della_contessa_Clara_Maffei.jpg" alt="Clara Maffei"><span class="label"><b>Clara Maffei</b><span>salotto milanese, Cinque Giornate, Verdi</span></span></button>
+        <button class="person image-modal" data-title="Anita Garibaldi ‚Äî Gaetano Gallino" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Anita_Garibaldi_-_1839.jpg" data-url="https://commons.wikimedia.org/wiki/File:Anita_Garibaldi_-_1839.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Anita_Garibaldi_-_1839.jpg" alt="Anita Garibaldi"><span class="label"><b>Anita Garibaldi</b><span>eroina combattente</span></span></button>
+        <button class="person image-modal" data-title="Colomba Antonietti ‚Äî busto al Gianicolo" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/23_Colomba_Antonietti.jpg" data-url="https://commons.wikimedia.org/wiki/File:23_Colomba_Antonietti.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/23_Colomba_Antonietti.jpg" alt="Colomba Antonietti"><span class="label"><b>Colomba Antonietti</b><span>caduta nella difesa della Repubblica Romana</span></span></button>
+      </div>
+
+      <div class="callout"><strong>Dal Risorgimento al melodramma.</strong> La donna era gi√† onnipresente nell‚Äôopera ottocentesca, ma con Puccini la centralit√† diventa quasi sistematica: Manon, Mim√¨, Tosca, Cio-Cio-San, Minnie, Magda, Suor Angelica, Turandot. Molto spesso √® una donna a portare su di s√© il peso emotivo e tragico dell‚Äôopera.</div>
+      <p>Il Novecento italiano, per√≤, non √® un progresso lineare. Il fascismo esalta la donna soprattutto come moglie e madre prolifica e adotta politiche volte anche alla <strong>riduzione dell‚Äôoccupazione professionale femminile</strong>. La stessa <em>Enciclopedia Italiana</em> dell‚Äôepoca descrive esplicitamente esclusioni e limitazioni del lavoro femminile. <button class="badge resource" data-title="Politica demografica fascista ‚Äî Treccani" data-url="https://www.treccani.it/enciclopedia/politica-demografica_%2528Enciclopedia-Italiana%2529/">documento</button></p>
+    </section>
+
+    <section id="mameli">
+      <div class="section-title"><div class="section-no">04 ¬∑ MAMELI</div><h2>Un inno poteva anche nascere diverso</h2></div>
+      <div class="two-col">
+        <p>I versi di Mameli <strong>non furono musicati soltanto da Novaro</strong>. Fra coloro che provarono a dar loro una veste musicale troviamo <strong>Alessandro Botti</strong>, tipografo e musicista dilettante. La Biblioteca Universitaria di Genova conserva la sua partitura, dedicata alla Guardia Civica.</p>
+        <p>Oggi possiamo anche ascoltarla. Nel cortometraggio storico-musicale diretto da <strong>Maurizio Benedetti</strong>, poi trasmesso dalla RAI, le prime soluzioni musicali sono accompagnate da eloquenti espressioni degli attori: la proposta di Botti viene cinematograficamente, diciamo cos√¨, ‚Äúschifata‚Äù. Le smorfie sono regia, non prova storica, ma il confronto fra le due versioni resta illuminante.</p>
+        <p>La versione di Botti possiede cantabilit√†, ma il rapporto fra accento verbale, scansione del verso e costruzione musicale appare meno incisivo. Novaro trova invece una forma capace di trasformare il testo in gesto collettivo.</p>
+        <p>La fortuna fu quasi immediata. Il Governo ricorda che, dopo i moti del 1848, il canto veniva eseguito dalle bande e dai soldati in partenza per la Lombardia e divenne in breve uno dei canti pi√π amati del Risorgimento. <button class="badge resource" data-title="Presidenza del Consiglio ‚Äî Inno nazionale" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/inno.html">fonte</button></p>
+      </div>
+
+      <div class="media-row">
+        <button class="media-card video" data-title="Mameli / Botti ‚Äî Il Canto degli Italiani" data-video="xPbMKyxCVnU"><img src="https://www.quirinale.it/allegati_statici/inno/musica-poesia-min.jpg" alt="Autografi dell'inno"><span class="shade"></span><span class="play">‚ñ∂</span><span class="meta"><span class="tag">Ascolto comparato</span><h4>La versione di Alessandro Botti</h4></span></button>
+        <button class="media-card resource" data-title="Il Canto degli Italiani ‚Äî cortometraggio RAI" data-url="https://www.raiplay.it/programmi/ilcantodegliitaliani"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Goffredo_Mameli_-_Roberto_Bompiani.jpg" alt="Goffredo Mameli"><span class="shade"></span><span class="play">‚ñ£</span><span class="meta"><span class="tag">Film ¬∑ RaiPlay</span><h4>Il Canto degli Italiani</h4></span></button>
+        <button class="media-card video" data-title="Inno di Mameli al Quirinale ‚Äî Orchestra Sinfonica Nazionale RAI" data-video="a5ukvSU8lKU"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Michele_novaro.jpg" alt="Michele Novaro"><span class="shade"></span><span class="play">‚ñ∂</span><span class="meta"><span class="tag">Quirinale ¬∑ 2016</span><h4>Il canto nella forma cerimoniale moderna</h4></span></button>
+      </div>
+
+      <p>Mameli pot√© godere pochissimo del successo delle proprie parole. Nel 1848 combatt√© volontario in Lombardia; nel 1849 segu√¨ Garibaldi e partecip√≤ alla difesa della <strong>Repubblica Romana</strong> contro l‚Äôintervento francese. Il 3 giugno fu gravemente ferito alla gamba; sopraggiunse un‚Äôinfezione e mor√¨ il <strong>6 luglio 1849, a 21 anni</strong>. Mentre l‚ÄôItalia cominciava a cantare le sue parole, il loro autore moriva combattendo per il progetto politico al quale le aveva affidate.</p>
+    </section>
+
+    <section id="musica">
+      <div class="section-title"><div class="section-no">05 ¬∑ MUSICA</div><h2>Novaro, Verdi e il melodramma applicato alla piazza</h2></div>
+      <p>Il <em>Canto degli Italiani</em> che ascoltiamo nelle cerimonie ufficiali, eseguito da grande banda o orchestra, <strong>non coincide con l‚Äôorganico originario</strong>. La fonte di Novaro √® per voci maschili e pianoforte; nella parte pi√π mossa la scrittura diventa corale a tre voci. Quello che oggi chiamiamo ‚Äúsuono dell‚Äôinno‚Äù √® dunque anche il risultato di orchestrazioni e strumentazioni successive.</p>
+      <div class="sheet-grid">
+        <button class="sheet resource" data-title="Autografi Mameli / Novaro" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno_Nazionale_autografo.pdf" data-kind="pdf"><span><span class="year">Fonte primaria</span><h4>Autografi</h4><p>Testo di Mameli e spartito musicale di Novaro.</p></span><span class="open">Apri PDF ‚Üí</span></button>
+        <button class="sheet resource" data-title="Partitura bandistica ufficiale" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno_Nazionale_partitura.pdf" data-kind="pdf"><span><span class="year">Riferimento ufficiale</span><h4>Partitura per banda</h4><p>Versione di riferimento per esecuzione orchestrale o bandistica.</p></span><span class="open">Apri PDF ‚Üí</span></button>
+        <button class="sheet audio" data-title="Registrazione della Banda interforze" data-audio="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno-Nazionale-Novaro.mp3" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno-Nazionale-Novaro.mp3"><span><span class="year">Audio ufficiale</span><h4>Banda interforze</h4><p>Registrazione indicata dalla Presidenza del Consiglio.</p></span><span class="open">Ascolta ‚Üí</span></button>
+        <button class="sheet resource" data-title="Quirinale ‚Äî audio storici e moderni" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-audio-inno-nazionale"><span><span class="year">Quirinale</span><h4>Quattro ascolti</h4><p>Muti, registrazione del 1961, banda dall‚Äôautografo, elaborazione sinfonica.</p></span><span class="open">Apri teca ‚Üí</span></button>
+      </div>
+
+      <p>Se misurato con i grandi parametri della letteratura musicale ottocentesca, l‚Äôinno non √® una delle pagine pi√π sofisticate del secolo: materiale armonico semplice, costruzione diretta, formule che appartengono al linguaggio condiviso del melodramma. Ma forse √® proprio qui che Novaro capisce perfettamente il compito: non deve scrivere un quartetto di Beethoven, deve scrivere qualcosa che <strong>migliaia di persone possano imparare, ricordare e gridare insieme</strong>.</p>
+      <p>La musica accelera, accumula tensione e conduce allo <em>¬´Stringiamci a coorte¬ª</em> quasi come a una cabaletta collettiva. L‚Äôultimo <strong>¬´S√¨!¬ª</strong> non appartiene al testo di Mameli: √® un intervento musicale di Novaro. Il nostro inno √®, in fondo, <strong>teatro musicale applicato alla piazza</strong>.</p>
+      <p>E dietro tutto questo si avverte inevitabilmente <strong>Giuseppe Verdi</strong>. Quando Novaro scrive nel 1847, il pubblico ha gi√† ascoltato <em>Nabucco</em>, <em>I Lombardi alla prima crociata</em>, <em>Ernani</em>, <em>Attila</em> e <em>Macbeth</em>. Parlare di ‚Äúplagio‚Äù sarebbe improprio; pi√π corretto dire che Novaro parla una lingua musicale che Verdi aveva contribuito potentemente a rendere familiare.</p>
+      <p>Nel 1848 Verdi music√≤ direttamente un altro testo di Mameli, <em>Suona la tromba</em>. Nel <strong>1862</strong>, nell‚Äô<em>Inno delle Nazioni</em>, scelse poi la melodia di Mameli-Novaro per rappresentare musicalmente l‚ÄôItalia accanto alla <em>Marsigliese</em> e a <em>God Save the Queen</em>, preferendola alla <em>Marcia Reale</em>. Il Quirinale ricorda esplicitamente questo passaggio. <button class="badge resource" data-title="Quirinale ‚Äî Inno nazionale" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-inno-nazionale">fonte</button></p>
+
+      <div class="people">
+        <button class="person image-modal" data-title="Michele Novaro" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Michele_novaro.jpg" data-url="https://commons.wikimedia.org/wiki/File:Michele_novaro.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Michele_novaro.jpg" alt="Michele Novaro"><span class="label"><b>Michele Novaro</b><span>1818‚Äì1885 ¬∑ compositore</span></span></button>
+        <button class="person image-modal" data-title="Goffredo Mameli ‚Äî ritratto dal vivo, 1849" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Goffredo_Mameli_-_Roberto_Bompiani.jpg" data-url="https://commons.wikimedia.org/wiki/File:Goffredo_Mameli_-_Roberto_Bompiani.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Goffredo_Mameli_-_Roberto_Bompiani.jpg" alt="Goffredo Mameli"><span class="label"><b>Goffredo Mameli</b><span>1827‚Äì1849 ¬∑ poeta-soldato</span></span></button>
+        <button class="person image-modal" data-title="Giuseppe Verdi ‚Äî fotografia di Ferdinand Mulnier" data-img="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giuseppe_Verdi_by_Ferdinand_Mulnier_BW.jpg" data-url="https://commons.wikimedia.org/wiki/File:Giuseppe_Verdi_by_Ferdinand_Mulnier_BW.jpg"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giuseppe_Verdi_by_Ferdinand_Mulnier_BW.jpg" alt="Giuseppe Verdi"><span class="label"><b>Giuseppe Verdi</b><span>1813‚Äì1901 ¬∑ teatro, nazione, Parlamento</span></span></button>
+        <button class="person resource" data-title="Quirinale ‚Äî ritratto e biografia di Novaro" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-inno-nazionale"><img src="https://www.quirinale.it/allegati_statici/inno/inno-novaro-min.jpg" alt="Ritratto di Michele Novaro dal Quirinale"><span class="label"><b>La teca del Quirinale</b><span>ritratti, racconto di Barrili, simboli, testo</span></span></button>
+      </div>
+
+      <p>Verdi entra anche nelle istituzioni: nel 1861 viene eletto al primo Parlamento italiano. <strong>Alessandro Manzoni</strong> era stato nominato senatore l‚Äôanno precedente. I due non furono amici di frequentazione quotidiana, ma Verdi nutr√¨ per Manzoni un‚Äôammirazione quasi reverenziale. Alla morte dello scrittore, nel 1873, gli dedic√≤ la <em>Messa da Requiem</em>, diretta a Milano il 22 maggio 1874.</p>
+      <p>Anche il fallimento appartiene a questa officina. Non <em>Rigoletto</em>, che fu accolto con entusiasmo nonostante la battaglia con la censura, ma la prima della <em>Traviata</em> del 1853: un fiasco, prima della definitiva affermazione l‚Äôanno seguente. Successo, insuccesso, censura, nuove versioni, ripensamenti: la cultura nazionale nasce anche da tentativi che non funzionano subito.</p>
+    </section>
+
+    <section id="giganti">
+      <div class="section-title"><div class="section-no">06 ¬∑ EPILOGO</div><h2>Dietro i giganti</h2></div>
+      <p class="lead">La storia culturale del Risorgimento viene inevitabilmente raccontata attraverso alcuni giganti: Mazzini, Garibaldi, Cavour, Manzoni, Verdi. Ma questi uomini non lavoravano nel vuoto.</p>
+      <div class="two-col">
+        <p>Dietro di loro esisteva un <strong>substrato artistico, intellettuale, editoriale e politico impressionante</strong>. Musicisti professionisti e dilettanti, poeti oggi dimenticati, donne che organizzavano salotti o combattevano, direttori di coro, cantanti, giornalisti, pittori, tipografi, editori, impresari, insegnanti, associazioni culturali e teatri.</p>
+        <p>Un tipografo come Alessandro Botti poteva prendere i versi di Mameli e provare a farne un inno. Bertoldi poteva consegnare le proprie poesie prima a Rossi e poi a Novaro. Rossi e Novaro potevano addirittura musicare lo stesso testo. Dall‚ÄôOngaro poteva trasformare l‚Äôesperienza politica del 1848 in poesia da cantare.</p>
+        <p>Cristina di Belgiojoso poteva passare da un salotto frequentato da artisti e intellettuali all‚Äôorganizzazione degli ospedali della Repubblica Romana. Clara Maffei poteva fare della propria casa uno dei nodi culturali di Milano. Un canto nato in un salotto poteva poche settimane dopo essere cantato da migliaia di persone in strada o al fronte.</p>
+        <p>Non erano soltanto alcune personalit√† eccezionali a ¬´fare il Risorgimento¬ª. Esisteva sotto di loro una <strong>societ√† civile culturalmente mobilitata</strong>, capace di produrre, discutere, stampare, finanziare, eseguire e diffondere idee.</p>
+      </div>
+      <div class="callout"><strong>La domanda finale.</strong> Senza idealizzare l‚ÄôOttocento ‚Äî un mondo di censura, guerre, fortissime diseguaglianze e diritti politici limitati ‚Äî resta impressionante la quantit√† di energia intellettuale spesa per immaginare qualcosa che ancora non esisteva. Quanto spazio riserviamo oggi alla costruzione culturale collettiva delle idee, invece di limitarci a consumarle?</div>
+      <p class="lead">Prima ancora di costruire l‚ÄôItalia, quegli uomini e quelle donne tentarono di <strong>scriverla, stamparla, suonarla, combatterla e cantarla</strong>. E molti non si chiamavano Verdi, Manzoni, Mazzini o Garibaldi. Si chiamavano Giuseppe Bertoldi, Luigi Felice Rossi, Michele Novaro, Alessandro Botti, Francesco Dall‚ÄôOngaro, Cristina Trivulzio di Belgiojoso, Clara Maffei, Colomba Antonietti, Anita Garibaldi. Senza quel sottobosco, probabilmente anche i giganti sarebbero stati molto pi√π soli.</p>
+    </section>
+  </main>
+
+  <section class="archive" id="archivio">
+    <div class="archive-inner">
+      <div class="section-title"><div class="section-no" style="color:#e0c389;border-color:#e0c389">07 ¬∑ TECA</div><h2>Archivio navigabile</h2></div>
+      <p>Ogni scheda si apre in una finestra interna. Alcuni siti istituzionali possono impedire tecnicamente la visualizzazione dentro un iframe: in quel caso il popup conserva comunque l‚Äôindirizzo completo, copiabile con un tocco.</p>
+      <div class="archive-grid">
+        <button class="source-card resource" data-title="Quirinale ‚Äî L'Inno nazionale" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-inno-nazionale"><span class="src">Quirinale</span><b>L‚ÄôInno nazionale</b><span>Biografie, racconto di Barrili, testo, simboli e rimandi audio/video.</span></button>
+        <button class="source-card resource" data-title="Quirinale ‚Äî audio dell'Inno" data-url="https://www.quirinale.it/it/pagine/simboli-repubblica-audio-inno-nazionale"><span class="src">Quirinale</span><b>Quattro ascolti</b><span>Muti, registrazione 1961, trascrizione da autografo, elaborazione sinfonica.</span></button>
+        <button class="source-card resource" data-title="Quirinale ‚Äî Gli inni al Quirinale" data-url="https://www.quirinale.it/it/pagine/inni-quirinale-video"><span class="src">Quirinale</span><b>Video istituzionali</b><span>Orchestra RAI / James Conlon e Riccardo Muti.</span></button>
+        <button class="source-card resource" data-title="Presidenza del Consiglio ‚Äî Inno nazionale" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/inno.html"><span class="src">Presidenza del Consiglio</span><b>Pagina ufficiale e documenti</b><span>Storia, legge 2017, decreto 2025, allegati PDF e MP3.</span></button>
+        <button class="source-card resource" data-title="Autografi Mameli / Novaro" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno_Nazionale_autografo.pdf" data-kind="pdf"><span class="src">PDF</span><b>Autografi originali</b><span>Testo di Mameli e spartito di Novaro.</span></button>
+        <button class="source-card resource" data-title="Partitura bandistica ufficiale" data-url="https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/InnoNazionale/Inno_Nazionale_partitura.pdf" data-kind="pdf"><span class="src">PDF</span><b>Partitura di riferimento</b><span>Per esecuzione orchestrale o bandistica.</span></button>
+        <button class="source-card resource" data-title="La Coccarda ‚Äî IMSLP" data-url="https://imslp.org/wiki/La_coccarda_%28Rossi%2C_Luigi_Felice%29"><span class="src">IMSLP</span><b>La Coccarda</b><span>Partitura del 1847 e dati bibliografici.</span></button>
+        <button class="source-card resource" data-title="Viva l'Italia! ‚Äî IMSLP" data-url="https://imslp.org/wiki/Viva_l%27Italia%21_%28Novaro%2C_Michele%29"><span class="src">IMSLP</span><b>Viva l‚ÄôItalia!</b><span>Album completo di 60 pagine, ca. 1860.</span></button>
+        <button class="source-card resource" data-title="Inni musicali ‚Äî Biblioteca Universitaria di Genova" data-url="https://www.bibliotecauniversitaria.ge.it/collezioni/raccolte/materiali-del-risorgimento/inni-musicali.html"><span class="src">Biblioteca Universitaria di Genova</span><b>Inni musicali</b><span>Botti, Novaro, Il nuovo anno e numerosi canti del 1847-48.</span></button>
+        <button class="source-card resource" data-title="Spartiti musicali ‚Äî Biblioteca storica Torino" data-url="https://www.cittametropolitana.torino.it/sites/default/files/pagina/qa5/biblioteca/Spartiti_Musicali.pdf" data-kind="pdf"><span class="src">PDF ¬∑ Torino</span><b>Catalogo degli spartiti</b><span>Rossi, Novaro e altra produzione risorgimentale.</span></button>
+        <button class="source-card resource" data-title="La donna italiana ‚Äî repertorio Bertoldi" data-url="https://cultura-barocca.com/IMPERIA/SASSA.HTM"><span class="src">Repertorio</span><b>La donna italiana</b><span>Riferimento bibliografico alla canzone Bertoldi / Novaro.</span></button>
+        <button class="source-card resource" data-title="La donna italiana ‚Äî stampa politica femminile" data-url="https://bsmc.cultura.gov.it/en/for-the-150th-anniversary-of-the-unification-of-italy/"><span class="src">Biblioteca di Storia Moderna</span><b>¬´La donna italiana¬ª, 1848</b><span>Un giornale politico rivolto alle donne: un parallelo sorprendente con il repertorio musicale.</span></button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-inner"><span>Pagina narrativa interattiva ¬∑ fonti istituzionali, biblioteche digitali e immagini d‚Äôepoca in pubblico dominio.</span><span>Le immagini esterne restano attribuite alle rispettive fonti; i documenti si aprono in popup interno.</span></div></footer>
+</div>
+<button class="scrolltop" id="scrolltop" aria-label="Torna in alto">‚Üë</button>
+
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-panel">
+    <div class="modal-head"><div class="modal-title" id="modalTitle">Teca</div><button class="modal-close" id="modalClose" aria-label="Chiudi">√ó</button></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot"><span class="url-box" id="modalUrl"></span><button class="copy-btn" id="copyBtn">Copia indirizzo</button></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const modal = document.getElementById('modal');
+  const body = document.getElementById('modalBody');
+  const title = document.getElementById('modalTitle');
+  const urlBox = document.getElementById('modalUrl');
+  const closeBtn = document.getElementById('modalClose');
+  const copyBtn = document.getElementById('copyBtn');
+  let currentUrl = '';
+  let lastFocus = null;
+
+  function showModal(t, content, url=''){
+    lastFocus = document.activeElement;
+    title.textContent = t;
+    body.innerHTML = content;
+    currentUrl = url;
+    urlBox.textContent = url || 'Contenuto incorporato nella pagina';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    closeBtn.focus();
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    body.innerHTML='';
+    document.body.style.overflow='';
+    if(lastFocus) lastFocus.focus();
+  }
+  closeBtn.addEventListener('click',closeModal);
+  modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+  copyBtn.addEventListener('click', async()=>{
+    if(!currentUrl) return;
+    try{ await navigator.clipboard.writeText(currentUrl); copyBtn.textContent='Copiato'; setTimeout(()=>copyBtn.textContent='Copia indirizzo',1200); }
+    catch{ copyBtn.textContent='Seleziona l‚Äôindirizzo'; }
+  });
+
+  document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
+    const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
+    const notice = `<div style="position:absolute;left:1rem;right:1rem;top:1rem;z-index:2" class="notice">Se la fonte impedisce l'incorporamento per ragioni di sicurezza, usa il pulsante ‚ÄúCopia indirizzo‚Äù in basso.</div>`;
+    const frame = kind==='pdf'
+      ? `<object data="${u}" type="application/pdf"><iframe src="${u}" title="${t}"></iframe></object>`
+      : `<iframe src="${u}" title="${t}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+    showModal(t, notice+frame, u);
+  }));
+
+  document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{
+    const id=el.dataset.video,t=el.dataset.title || 'Video';
+    const u=`https://www.youtube.com/watch?v=${id}`;
+    showModal(t,`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
+  }));
+
+  document.querySelectorAll('.audio').forEach(el=>el.addEventListener('click',()=>{
+    const u=el.dataset.audio,t=el.dataset.title || 'Audio';
+    showModal(t,`<div class="audio-wrap"><div><h3 style="margin-top:0">${t}</h3><audio controls preload="metadata" src="${u}"></audio><p style="font-family:var(--sans);font-size:.85rem;color:#6c6258">Fonte: Presidenza del Consiglio dei Ministri</p></div></div>`,u);
+  }));
+
+  document.querySelectorAll('.image-modal').forEach(el=>el.addEventListener('click',()=>{
+    const src=el.dataset.img,t=el.dataset.title || 'Immagine',u=el.dataset.url || src;
+    showModal(t,`<img src="${src}" alt="${t}">`,u);
+  }));
+
+  // Prevent accidental navigation outside the page. Normal hash links remain internal.
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a');
+    if(!a) return;
+    const href=a.getAttribute('href')||'';
+    if(href.startsWith('#')) return;
+    if(/^https?:/i.test(href)){
+      e.preventDefault();
+      showModal(a.textContent.trim() || 'Fonte', `<iframe src="${href}" title="Fonte"></iframe>`, href);
+    }
+  });
+
+  const progress=document.getElementById('progress');
+  const scrolltop=document.getElementById('scrolltop');
+  window.addEventListener('scroll',()=>{
+    const doc=document.documentElement;
+    const max=doc.scrollHeight-doc.clientHeight;
+    progress.style.width=(max ? (doc.scrollTop/max*100) : 0)+'%';
+    scrolltop.classList.toggle('show',doc.scrollTop>700);
+  },{passive:true});
+  scrolltop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  const sections=[...document.querySelectorAll('main section, #archivio')];
   const links=[...document.querySelectorAll('#nav a')];
   const observer=new IntersectionObserver(entries=>{
     const visible=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
