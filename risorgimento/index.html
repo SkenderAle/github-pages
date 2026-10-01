@@ -113,8 +113,19 @@
   .source-card .src{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#d7bd8d}
   .source-card b{display:block;margin:.45rem 0;font-size:1.06rem}
   .source-card span{font-family:var(--sans);font-size:.8rem;color:#cabda9}
+  .bibliography{background:#eee3cf;padding:3.2rem 1.4rem;border-top:1px solid #cdbfa8}
+  .bibliography-inner{max-width:1180px;margin:auto}
+  .bibliography-list{display:grid;gap:.8rem;margin-top:1.4rem}
+  .bib-item{display:grid;grid-template-columns:9rem 1fr auto;gap:1rem;align-items:center;border-top:1px solid #cdbfa8;padding:1rem 0}
+  .bib-kind{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#7f1d1d;font-weight:800}
+  .bib-item b{display:block;font-size:1.03rem}
+  .bib-item span{font-family:var(--sans);font-size:.82rem;color:#6c6258}
+  .bib-open{border:1px solid #9f8e75;background:#f8f4ea;padding:.5rem .75rem;cursor:pointer;font-family:var(--sans);font-weight:700}
   .footer{background:#15120f;color:#cfc0ad;padding:2.3rem 1.4rem;font-family:var(--sans);font-size:.78rem}
   .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .copyright{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:1rem;margin-top:.3rem;font-weight:700;color:#f1e4d2}
+  .copyright a{color:#f1d08f;text-decoration:none;border-bottom:1px solid rgba(241,208,143,.45)}
+  .copyright a:hover{color:#fff}
   .badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sans);font-size:.73rem;font-weight:800;padding:.3rem .55rem;border:1px solid #aa9a82;border-radius:999px;color:#6a5c4d;background:#f8f3e8;vertical-align:middle;margin-left:.4rem;cursor:pointer}
   .badge:hover{background:#fff}
   .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(15,12,10,.78);backdrop-filter:blur(6px)}
@@ -152,7 +163,7 @@
   }
   @media (max-width:580px){
     .content{padding-left:1rem;padding-right:1rem}.section-title{grid-template-columns:1fr}.section-no{width:max-content}
-    .media-row,.sheet-grid,.archive-grid,.people{grid-template-columns:1fr}.two-col{columns:1}.women-band{margin-left:-1rem;margin-right:-1rem}.archive{margin-left:-1rem;margin-right:-1rem}.modal{padding:.25rem}.modal-panel{width:100%;height:94vh}
+    .media-row,.sheet-grid,.archive-grid,.people{grid-template-columns:1fr}.two-col{columns:1}.women-band{margin-left:-1rem;margin-right:-1rem}.archive{margin-left:-1rem;margin-right:-1rem}.bib-item{grid-template-columns:1fr}.modal{padding:.25rem}.modal-panel{width:100%;height:94vh}
     h1{font-size:3.15rem}.hero{gap:1.5rem}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
@@ -183,6 +194,7 @@
       <a href="#musica">La musica</a>
       <a href="#giganti">Dietro i giganti</a>
       <a href="#archivio">Archivio</a>
+      <a href="#bibliografia">Bibliografia</a>
     </nav>
   </div>
 
@@ -349,13 +361,30 @@
         <button class="source-card resource" data-title="Viva l'Italia! — IMSLP" data-url="https://imslp.org/wiki/Viva_l%27Italia%21_%28Novaro%2C_Michele%29"><span class="src">IMSLP</span><b>Viva l’Italia!</b><span>Album completo di 60 pagine, ca. 1860.</span></button>
         <button class="source-card resource" data-title="Inni musicali — Biblioteca Universitaria di Genova" data-url="https://www.bibliotecauniversitaria.ge.it/collezioni/raccolte/materiali-del-risorgimento/inni-musicali.html"><span class="src">Biblioteca Universitaria di Genova</span><b>Inni musicali</b><span>Botti, Novaro, Il nuovo anno e numerosi canti del 1847-48.</span></button>
         <button class="source-card resource" data-title="Spartiti musicali — Biblioteca storica Torino" data-url="https://www.cittametropolitana.torino.it/sites/default/files/pagina/qa5/biblioteca/Spartiti_Musicali.pdf" data-kind="pdf"><span class="src">PDF · Torino</span><b>Catalogo degli spartiti</b><span>Rossi, Novaro e altra produzione risorgimentale.</span></button>
-        <button class="source-card resource" data-title="La donna italiana — repertorio Bertoldi" data-url="https://cultura-barocca.com/IMPERIA/SASSA.HTM"><span class="src">Repertorio</span><b>La donna italiana</b><span>Riferimento bibliografico alla canzone Bertoldi / Novaro.</span></button>
         <button class="source-card resource" data-title="La donna italiana — stampa politica femminile" data-url="https://bsmc.cultura.gov.it/en/for-the-150th-anniversary-of-the-unification-of-italy/"><span class="src">Biblioteca di Storia Moderna</span><b>«La donna italiana», 1848</b><span>Un giornale politico rivolto alle donne: un parallelo sorprendente con il repertorio musicale.</span></button>
       </div>
     </div>
   </section>
 
-  <footer class="footer"><div class="footer-inner"><span>Pagina narrativa interattiva · fonti istituzionali, biblioteche digitali e immagini d’epoca in pubblico dominio.</span><span>Le immagini esterne restano attribuite alle rispettive fonti; i documenti si aprono in popup interno.</span></div></footer>
+  <section class="bibliography" id="bibliografia">
+    <div class="bibliography-inner">
+      <div class="section-title"><div class="section-no">08 · FONTI</div><h2>Bibliografia e materiali di approfondimento</h2></div>
+      <p>Questa sezione raccoglie progressivamente studi, cataloghi e fonti utili per approfondire il percorso. Verrà ampliata con i materiali che saranno aggiunti in seguito.</p>
+      <div class="bibliography-list">
+        <div class="bib-item">
+          <div class="bib-kind">Studio · PDF</div>
+          <div><b>Licia Sirch — studio sull’editoria musicale e il repertorio patriottico</b><span>Contributo utile per inquadrare Novaro, la produzione vocale da camera e la circolazione editoriale dei canti risorgimentali.</span></div>
+          <button class="bib-open resource" data-title="Licia Sirch — studio sull’editoria musicale e il repertorio patriottico" data-url="https://www.iamlitalia.it/pubblicazioni/Canoni_bibliografici/06_Sirch.pdf" data-kind="pdf">Apri PDF</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-inner">
+    <span>Pagina narrativa interattiva · fonti istituzionali, biblioteche digitali e immagini d’epoca in pubblico dominio.</span>
+    <span>Le immagini esterne restano attribuite alle rispettive fonti; i documenti si aprono in popup interno.</span>
+    <div class="copyright">© Zilli Alessandro — tutti i diritti riservati — <a href="https://www.amazon.it/stores/Alessandro-Zilli/author/B0H36YZLC7?ref=sr_ntt_srch_lnk_10&shoppingPortalEnabled=true">Amazon</a></div>
+  </div></footer>
 </div>
 <button class="scrolltop" id="scrolltop" aria-label="Torna in alto">↑</button>
 
@@ -416,7 +445,7 @@
     if(notice) notice.remove();
   });
 
-  const blockedEmbedHosts = new Set(['quirinale.it','www.quirinale.it']);
+  const blockedEmbedHosts = new Set(['quirinale.it','www.quirinale.it','amazon.it','www.amazon.it']);
   const cannotEmbed = (u)=>{
     try{ return blockedEmbedHosts.has(new URL(u).hostname.toLowerCase()); }
     catch{ return false; }
