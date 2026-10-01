@@ -120,6 +120,12 @@
   .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(15,12,10,.78);backdrop-filter:blur(6px)}
   .modal.open{display:flex}
   .modal-panel{width:min(1120px,96vw);height:min(86vh,860px);background:#f7f2e8;box-shadow:0 24px 90px rgba(0,0,0,.45);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+  .modal.compact .modal-panel{width:min(690px,94vw);height:auto;grid-template-rows:auto auto}
+  .modal.compact .modal-body{display:none}
+  .modal.compact .modal-foot{border-top:0;justify-content:flex-end;padding:1rem 1.1rem 1.15rem;background:#f7f2e8}
+  .modal.compact .url-box{display:none}
+  .modal.compact .copy-btn,.modal.compact .open-btn{padding:.72rem 1rem}
+  .modal.compact .modal-title{white-space:normal}
   .modal-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1rem;border-bottom:1px solid #d1c5b1;font-family:var(--sans)}
   .modal-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .modal-close{border:0;background:#2b251f;color:#fff;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1.1rem}
@@ -373,20 +379,21 @@
   let currentUrl = '';
   let lastFocus = null;
 
-  function showModal(t, content, url=''){
+  function showModal(t, content, url='', compact=false){
     lastFocus = document.activeElement;
     title.textContent = t;
     body.innerHTML = content;
     currentUrl = url;
     urlBox.textContent = url || 'Contenuto incorporato nella pagina';
     openBtn.disabled = !url;
+    modal.classList.toggle('compact', compact);
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
     closeBtn.focus();
   }
   function closeModal(){
-    modal.classList.remove('open');
+    modal.classList.remove('open','compact');
     modal.setAttribute('aria-hidden','true');
     body.innerHTML='';
     document.body.style.overflow='';
@@ -409,8 +416,18 @@
     if(notice) notice.remove();
   });
 
+  const blockedEmbedHosts = new Set(['quirinale.it','www.quirinale.it']);
+  const cannotEmbed = (u)=>{
+    try{ return blockedEmbedHosts.has(new URL(u).hostname.toLowerCase()); }
+    catch{ return false; }
+  };
+
   document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
     const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
+    if(cannotEmbed(u)){
+      showModal(t, '', u, true);
+      return;
+    }
     const notice = `<button type="button" style="position:absolute;left:1rem;right:1rem;top:1rem;z-index:2" class="notice notice-dismiss" title="Clicca per chiudere questo avviso">Se la fonte impedisce l'incorporamento per ragioni di sicurezza, usa “Apri in una nuova finestra per navigare” in basso. <strong aria-hidden="true">×</strong></button>`;
     const frame = kind==='pdf'
       ? `<object data="${u}" type="application/pdf"><iframe src="${u}" title="${t}"></iframe></object>`
@@ -442,7 +459,9 @@
     if(href.startsWith('#')) return;
     if(/^https?:/i.test(href)){
       e.preventDefault();
-      showModal(a.textContent.trim() || 'Fonte', `<iframe src="${href}" title="Fonte"></iframe>`, href);
+      const t=a.textContent.trim() || 'Fonte';
+      if(cannotEmbed(href)) showModal(t, '', href, true);
+      else showModal(t, `<iframe src="${href}" title="Fonte"></iframe>`, href);
     }
   });
 
