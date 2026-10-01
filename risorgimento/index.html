@@ -119,11 +119,18 @@
   .bibliography{background:#eee3cf;padding:3.2rem 1.4rem;border-top:1px solid #cdbfa8}
   .bibliography-inner{max-width:1180px;margin:auto}
   .bibliography-list{display:grid;gap:.8rem;margin-top:1.4rem}
+  .bib-group{margin-top:2.6rem}
+  .bib-group:first-of-type{margin-top:1.4rem}
+  .bib-group-title{font-family:var(--sans);font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:#7f1d1d;font-weight:900;margin:0 0 .7rem;padding-bottom:.55rem;border-bottom:2px solid #b99f7b}
+  .bib-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;border-bottom:1px solid #d5c8b4;padding:.9rem 0}
+  .bib-cite{font-size:.98rem;line-height:1.55}
+  .bib-cite em{font-style:italic}
+  .bib-note{display:block;font-family:var(--sans);font-size:.77rem;color:#776b5e;margin-top:.22rem}
   .bib-item{display:grid;grid-template-columns:9rem 1fr auto;gap:1rem;align-items:center;border-top:1px solid #cdbfa8;padding:1rem 0}
   .bib-kind{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#7f1d1d;font-weight:800}
   .bib-item b{display:block;font-size:1.03rem}
   .bib-item span{font-family:var(--sans);font-size:.82rem;color:#6c6258}
-  .bib-open{border:1px solid #9f8e75;background:#f8f4ea;padding:.5rem .75rem;cursor:pointer;font-family:var(--sans);font-weight:700}
+  .bib-open{border:1px solid #9f8e75;background:#f8f4ea;padding:.5rem .75rem;cursor:pointer;font-family:var(--sans);font-weight:700;white-space:nowrap}
   .footer{background:#15120f;color:#cfc0ad;padding:2.3rem 1.4rem;font-family:var(--sans);font-size:.78rem}
   .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
   .copyright{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:1rem;margin-top:.3rem;font-weight:700;color:#f1e4d2}
@@ -165,7 +172,7 @@
   }
   @media (max-width:580px){
     .content{padding-left:1rem;padding-right:1rem}.section-title{grid-template-columns:1fr}.section-no{width:max-content}
-    .media-row,.sheet-grid,.archive-grid,.people{grid-template-columns:1fr}.two-col{columns:1}.women-band{margin-left:-1rem;margin-right:-1rem}.archive{margin-left:-1rem;margin-right:-1rem}.bib-item{grid-template-columns:1fr}.modal{padding:.25rem}.modal-panel{width:100%;height:94vh}
+    .media-row,.sheet-grid,.archive-grid,.people{grid-template-columns:1fr}.two-col{columns:1}.women-band{margin-left:-1rem;margin-right:-1rem}.archive{margin-left:-1rem;margin-right:-1rem}.bib-item,.bib-entry{grid-template-columns:1fr}.modal{padding:.25rem}.modal-panel{width:100%;height:94vh}
     h1{font-size:3.15rem}.hero{gap:1.5rem}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
@@ -196,7 +203,7 @@
       <a href="#musica">La musica</a>
       <a href="#giganti">Dietro i giganti</a>
       <a href="#archivio">Archivio</a>
-      <a href="#bibliografia">Bibliografia</a>
+      <a href="#bibliografia">Biblio-sitografia</a>
     </nav>
   </div>
 
@@ -384,13 +391,98 @@
 
   <section class="bibliography" id="bibliografia">
     <div class="bibliography-inner">
-      <div class="section-title"><div class="section-no">08 · FONTI</div><h2>Bibliografia e materiali di approfondimento</h2></div>
-      <p>Questa sezione raccoglie progressivamente studi, cataloghi e fonti utili per approfondire il percorso. Verrà ampliata con i materiali che saranno aggiunti in seguito.</p>
-      <div class="bibliography-list">
-        <div class="bib-item">
-          <div class="bib-kind">Studio · PDF</div>
-          <div><b>Licia Sirch — studio sull’editoria musicale e il repertorio patriottico</b><span>Contributo utile per inquadrare Novaro, la produzione vocale da camera e la circolazione editoriale dei canti risorgimentali.</span></div>
-          <button class="bib-open resource" data-title="Licia Sirch — studio sull’editoria musicale e il repertorio patriottico" data-url="https://www.iamlitalia.it/pubblicazioni/Canoni_bibliografici/06_Sirch.pdf" data-kind="pdf">Apri PDF</button>
+      <div class="section-title"><div class="section-no">08 · FONTI</div><h2>Biblio-sitografia</h2></div>
+      <p>Fonti primarie, partiture, repertori biografici, studi e risorse web utilizzati o utili per approfondire il percorso. I collegamenti esterni si aprono con la stessa finestra compatta usata nel resto della pagina.</p>
+
+      <div class="bib-group">
+        <h3 class="bib-group-title">Fonti primarie e partiture</h3>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Rossi, Luigi Felice. <em>La coccarda (Inno al Re)</em>. Versi di Giuseppe Bertoldi. Torino, 1847.</div>
+          <button class="bib-open resource" data-title="Luigi Felice Rossi — La coccarda (Inno al Re)" data-url="https://imslp.net/wiki/La_coccarda_(Rossi,_Luigi_Felice)">Apri fonte</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Novaro, Michele. <em>Viva l’Italia! – Album di canti popolari italiani</em>. Milano: Francesco Lucca, ca. 1860.</div>
+          <button class="bib-open resource" data-title="Michele Novaro — Viva l’Italia! (Internet Archive)" data-url="https://archive.org/details/cf-005850206-images/page/n21/mode/2up">Apri fonte</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Bertoldi, Giuseppe, e Michele Novaro. <em>La donna italiana</em>. Milano: Francesco Lucca, ca. 1861.</div>
+          <button class="bib-open resource" data-title="Bertoldi / Novaro — La donna italiana" data-url="https://search.bibliotecadigitale.consmilano.it/handle/20.500.12459/2097?mode=simple">Apri catalogo</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Novaro, Michele. <em>Viva l’Italia, album di canti popolari italiani di Francesco Dall’Ongaro posti in musica dal maestro Michele Novaro</em>. Milano: Francesco Lucca, ca. 1860.</div>
+          <button class="bib-open resource" data-title="Michele Novaro — Viva l’Italia! (Biblioteca Digitale Conservatorio di Milano)" data-url="https://search.bibliotecadigitale.consmilano.it/handle/20.500.12459/1519?mode=full">Apri catalogo</button>
+        </div>
+      </div>
+
+      <div class="bib-group">
+        <h3 class="bib-group-title">Dizionari biografici e enciclopedie</h3>
+
+        <div class="bib-entry"><div class="bib-cite">Iovino, Roberto. “NOVARO, Michele.” In <em>Dizionario Biografico degli Italiani</em>, vol. 78. Roma: Istituto dell’Enciclopedia Italiana, 2013.</div></div>
+
+        <div class="bib-entry"><div class="bib-cite">Menghini, Mario. “BERTOLDI, Giuseppe.” In <em>Enciclopedia Italiana</em>. Roma: Istituto dell’Enciclopedia Italiana, 1930.</div></div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">“Bertoldi, Giuseppe.” Archivio Storico dell’Università di Torino.</div>
+          <button class="bib-open resource" data-title="Archivio Storico dell’Università di Torino — Giuseppe Bertoldi" data-url="https://www.atom-new.unito.it/index.php/bertoldi-giuseppe?sf_culture=it">Apri fonte</button>
+        </div>
+      </div>
+
+      <div class="bib-group">
+        <h3 class="bib-group-title">Studi e monografie</h3>
+
+        <div class="bib-entry"><div class="bib-cite">Benedetti, Maurizio. <em>Michele Novaro</em>. In <em>Il Canto degli Italiani: poesia di Goffredo Mameli, musica di Michele Novaro per canto e pianoforte</em>. Edizione critica. Torino: Edizioni del Conservatorio, 2019, pp. 61–68.</div></div>
+
+        <div class="bib-entry"><div class="bib-cite">Ferraris, Gian Luigi. <em>L’opera letteraria di Giuseppe Bertoldi</em>. Alessandria: Edizioni dell’Orso, 2004.</div></div>
+
+        <div class="bib-entry"><div class="bib-cite">Gavazzeni, Giovanni, Armando Torno, e Carlo Vitali. <em>O mia patria: storia musicale del Risorgimento tra inni, eroi e melodrammi</em>. Prefazione di Philip Gossett. Milano: Dalai, 2011.</div></div>
+
+        <div class="bib-entry"><div class="bib-cite">Maiorino, Tarquinio, Giuseppe Marchetti Tricamo, e Piero Giordana. <em>Fratelli d’Italia: La vera storia dell’inno di Mameli</em>. Milano: Mondadori, 2001.</div></div>
+
+        <div class="bib-entry"><div class="bib-cite">Monterosso, Raffaello. <em>La musica del Risorgimento</em>. Milano: Vallardi, 1948.</div></div>
+
+        <div class="bib-entry"><div class="bib-cite">Sorba, Carlotta. <em>Il melodramma della nazione: politica e sentimenti nell’età del Risorgimento</em>. Roma: GLF Editori Laterza, 2015.</div></div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Sirch, Licia. Contributo IAML Italia sull’editoria musicale e il repertorio patriottico.<span class="bib-note">PDF già utilizzato fra i materiali di approfondimento del progetto.</span></div>
+          <button class="bib-open resource" data-title="Licia Sirch — contributo IAML Italia" data-url="https://www.iamlitalia.it/pubblicazioni/Canoni_bibliografici/06_Sirch.pdf" data-kind="pdf">Apri PDF</button>
+        </div>
+      </div>
+
+      <div class="bib-group">
+        <h3 class="bib-group-title">Fonti web e cataloghi</h3>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Concorso Michele Novaro. “Michele Novaro.” Ultimo accesso 1 ottobre 2026.</div>
+          <button class="bib-open resource" data-title="Concorso Michele Novaro — Michele Novaro" data-url="http://www.concorsonovaro.it/michele-novaro.php">Apri sito</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Internet Culturale. “Giuseppina Strepponi: una relazione fuori dagli schemi comuni.” Ultimo accesso 1 ottobre 2026.</div>
+          <button class="bib-open resource" data-title="Internet Culturale — Giuseppina Strepponi" data-url="https://www.internetculturale.it/it/451/getImage.php?id=41700&.jpg">Apri fonte</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Kiwix. “Giuseppe Bertoldi.” Ultimo accesso 1 ottobre 2026.</div>
+          <button class="bib-open resource" data-title="Kiwix — Giuseppe Bertoldi" data-url="https://browse.library.kiwix.org/content/wikipedia_it_all_maxi/A/Giuseppe_Bertoldi">Apri fonte</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Treccani. “Francesco Dall’Ongaro.” Ultimo accesso 1 ottobre 2026.</div>
+          <button class="bib-open resource" data-title="Treccani — Francesco Dall’Ongaro" data-url="https://www.treccani.it/enciclopedia/ricerca/francesco%20dall%20ongaro_(letteratura)/">Apri fonte</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Treccani. “Clara Maffei.” Ultimo accesso 1 ottobre 2026.</div>
+          <button class="bib-open resource" data-title="Treccani — Clara Maffei" data-url="https://www.treccani.it/enciclopedia/tag/clara-maffei/">Apri fonte</button>
+        </div>
+
+        <div class="bib-entry">
+          <div class="bib-cite">Wikipedia. “Francesco Lucca.” Ultimo accesso 1 ottobre 2026.</div>
+          <button class="bib-open resource" data-title="Wikipedia — Francesco Lucca" data-url="https://it.wikipedia.org/wiki/Francesco_Lucca">Apri fonte</button>
         </div>
       </div>
     </div>
