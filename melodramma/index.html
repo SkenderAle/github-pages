@@ -246,6 +246,17 @@
   .modal-close{border:0;background:#2b251f;color:#fff;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1.1rem}
   .modal-body{background:#111;min-height:0;position:relative;overflow:auto;display:grid;place-items:center}
   .modal-body iframe,.modal-body object{border:0;width:100%;height:100%;background:#fff}
+  .explainer-wrap{width:100%;min-height:100%;background:#f7f2e8;color:#2b251f;padding:clamp(1.4rem,4vw,3.2rem);align-self:stretch}
+  .explainer-inner{max-width:920px;margin:0 auto}
+  .explainer-kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:900;margin-bottom:.6rem}
+  .explainer-wrap h3{font-size:clamp(2rem,4vw,3.5rem);line-height:1.05;margin:.15rem 0 1.2rem;color:#262019}
+  .explainer-wrap h4{font-size:1.35rem;margin:1.7rem 0 .55rem;color:var(--blue)}
+  .explainer-wrap p{font-size:1.05rem;line-height:1.78;margin:.7rem 0}
+  .explainer-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.6rem 0}
+  .explainer-compare>div{background:#eee4d3;border-top:4px solid var(--gold);padding:1rem}
+  .explainer-arrow{margin:1.6rem 0;padding:1.2rem 1.4rem;background:#2b241f;color:#f5ecdf;font-family:var(--sans);font-weight:800;line-height:1.55}
+  .explainer-note{margin:1.5rem 0;padding:1rem 1.15rem;border-left:5px solid var(--blue);background:#ece7dc}
+  @media(max-width:700px){.explainer-compare{grid-template-columns:1fr}}
   .modal-body img{max-width:100%;max-height:100%;object-fit:contain}
   .modal-body .audio-wrap{background:#f5efe4;color:#2c261f;width:100%;height:100%;display:grid;place-items:center;padding:2rem;text-align:center}
   .modal-body audio{width:min(680px,90%)}
@@ -539,10 +550,10 @@
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Caccini_-_le_nuove_musiche.jpg" alt="Giulio Caccini">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">IMSLP · fonte</span><h4>Le nuove musiche</h4></span>
         </button>
-        <div class="sheet">
+        <button class="sheet explainer" data-explainer="monodia" data-title="Monodia · Una voce, finalmente una persona">
           <div><div class="year">Monodia</div><h4>Una voce, finalmente una persona</h4><p>La svolta non consiste soltanto nel ridurre il numero delle voci: significa permettere a una singola voce di assumere un’identità drammatica.</p></div>
           <span class="open">Verso il recitar cantando →</span>
-        </div>
+        </button>
       </div>
 
     </section>
@@ -1121,7 +1132,45 @@
     catch{ return false; }
   };
 
-  document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
+  const explainerContent = {
+    monodia: `
+      <div class="explainer-wrap">
+        <div class="explainer-inner">
+          <div class="explainer-kicker">Concetto chiave · Camerata fiorentina</div>
+          <h3>Monodia: una voce smette di essere “una parte” e diventa un personaggio</h3>
+          <p>Nel linguaggio musicale, <strong>monodia</strong> significa innanzitutto che l’attenzione si concentra su una sola linea melodica. Nel contesto fiorentino della fine del Cinquecento, però, la parola indica qualcosa di ancora più importante: una <strong>voce solista sostenuta da un accompagnamento armonico</strong>, normalmente fondato sul basso continuo. Non è quindi una voce lasciata sola nel vuoto, ma una voce liberata dalla necessità di intrecciarsi alla pari con altre quattro, cinque o sei voci indipendenti.</p>
+
+          <div class="explainer-compare">
+            <div><strong>Polifonia</strong><p>Più voci hanno una propria autonomia e costruiscono insieme il tessuto musicale. La parola può diventare meravigliosamente ricca, ma il singolo “io” teatrale tende a dissolversi nell’intreccio.</p></div>
+            <div><strong>Monodia accompagnata</strong><p>Una voce emerge in primo piano, mentre gli strumenti le forniscono il sostegno armonico. Il cantante può seguire più liberamente accenti, esitazioni, sospiri e inflessioni del testo.</p></div>
+          </div>
+
+          <p>Per il teatro questo cambia tutto, perché una voce che emerge nettamente può finalmente essere percepita non soltanto come parte di una composizione, ma come <strong>qualcuno che parla</strong>. Può dire “io”, rivolgersi a un altro personaggio, interrompersi, accelerare, trattenere una parola, trasformare un dolore o una decisione in gesto vocale. Il passaggio dalla polifonia alla monodia non è quindi soltanto una semplificazione tecnica: è la condizione che permette alla musica di costruire una vera identità drammatica.</p>
+
+          <div class="explainer-arrow">POLIFONIA → una voce emerge → il testo torna in primo piano → la voce assume un’identità → nasce la possibilità del RECITAR CANTANDO</div>
+
+          <h4>Monodia e recitar cantando non sono la stessa cosa</h4>
+          <p>La <strong>monodia accompagnata</strong> è la nuova disposizione musicale: una voce principale sostenuta armonicamente. Il <strong>recitar cantando</strong> è invece uno dei modi in cui quella voce può comportarsi, cercando una zona intermedia fra parlare e cantare, nella quale il ritmo della musica si piega al ritmo della frase e la melodia segue da vicino l’intonazione della parola.</p>
+          <p>Peri e Caccini useranno questa possibilità nel nuovo teatro fiorentino: il personaggio non deve più aspettare una “canzone” per esprimersi, ma può <strong>cantare il dialogo stesso</strong>. Da qui nascerà progressivamente il recitativo, che nel melodramma barocco diventerà il grande motore dell’azione.</p>
+
+          <div class="explainer-note"><strong>Una precisazione importante:</strong> la Camerata non inventa dal nulla il canto solistico accompagnato. Pratiche di canto a voce sola esistevano già. La novità consiste soprattutto nel trasformarle in un programma estetico consapevole, collegandole alla chiarezza della parola, all’espressione degli affetti e all’idea — storicamente molto ipotetica — di recuperare il modo in cui sarebbe stata eseguita la tragedia greca.</div>
+
+          <h4>E il basso continuo?</h4>
+          <p>Se una sola voce deve essere libera di “parlare cantando”, qualcuno deve sostenere l’armonia senza imprigionarla in altre linee vocali equivalenti. Il <strong>basso continuo</strong> risolve proprio questo problema: una linea grave fornisce la base, mentre strumenti come clavicembalo, organo, liuto o tiorba realizzano gli accordi. La voce può così muoversi sopra una struttura armonica solida mantenendo una libertà quasi declamatoria.</p>
+
+          <p><strong>È qui che nasce il personaggio musicale moderno:</strong> non perché prima non esistessero solisti, ma perché ora una singola voce può sostenere continuativamente il peso drammatico della parola e trasformare il racconto in teatro cantato.</p>
+        </div>
+      </div>`
+  };
+
+  document.querySelectorAll('.explainer').forEach(el=>el.addEventListener('click',()=>{
+    const key=el.dataset.explainer;
+    const t=el.dataset.title || 'Approfondimento';
+    const content=explainerContent[key];
+    if(content) showModal(t,content,'');
+  }));
+
+    document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
     const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
     if(!canEmbedResource(u,kind)){
       showModal(t, '', u, true);
