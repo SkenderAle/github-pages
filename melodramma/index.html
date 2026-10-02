@@ -285,6 +285,21 @@
   .compare-box:first-child{border-top:5px solid var(--gold)}
   .compare-box:last-child{border-top:5px solid var(--red)}
   .compare-box h3{margin:.1rem 0 .8rem}
+  .genre-divider{margin:2.4rem 0 2.8rem;padding:1.8rem 2rem;background:#2b241f;color:#f6ecdc;border-top:6px solid var(--gold)}
+  .genre-divider h3{color:#fff;margin:.15rem 0 1rem;font-size:clamp(1.8rem,3.5vw,3rem)}
+  .genre-divider p{color:#eadfce;line-height:1.75}
+  .genre-label{font-family:var(--sans);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#e3c98f;font-weight:900}
+  .intermezzo-strip{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr;gap:.55rem;align-items:stretch;margin:1.6rem 0 2rem}
+  .intermezzo-step{background:#f6efe2;border:1px solid #cfbea4;padding:.9rem .7rem;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:92px}
+  .intermezzo-step.serio{border-top:4px solid var(--red)}
+  .intermezzo-step.comico{border-top:4px solid var(--gold);background:#efe2ca}
+  .intermezzo-step b{font-family:var(--sans);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.28rem}
+  .intermezzo-step span{font-size:.82rem;line-height:1.35}
+  .intermezzo-arrow{display:grid;place-items:center;font-family:var(--sans);font-size:1.25rem;color:#7a6a58}
+  .europe-bridge{margin:3rem 0 0;padding:2rem 2.15rem;background:#e6dccb;border-top:5px solid var(--blue);box-shadow:0 10px 28px rgba(45,33,22,.07)}
+  .europe-bridge h3{margin:.1rem 0 1rem;color:var(--blue);font-size:clamp(1.8rem,3.4vw,3rem)}
+  .europe-bridge p{line-height:1.78}
+  @media(max-width:900px){.intermezzo-strip{grid-template-columns:1fr}.intermezzo-arrow{transform:rotate(90deg);min-height:1rem}}
   .mini-caption{font-family:var(--sans);font-size:.76rem;line-height:1.5;color:#73685b;margin-top:.5rem}
   .bridge-final{margin-top:3rem;padding:2.3rem;background:#29231e;color:#f5ecdf;border-top:5px solid var(--gold)}
   .bridge-final h3{color:#fff;font-size:clamp(1.8rem,3vw,3rem);margin-top:0}
@@ -594,10 +609,32 @@
     </section>
 
     <section id="seria">
-      <div class="section-title"><div class="section-no">12</div><h2>L’opera seria e la macchina delle convenzioni</h2></div>
+      <div class="section-title"><div class="section-no">12</div><h2>Il Barocco divide l’opera: seria e buffa, due mondi quasi stagni</h2></div>
+
+      <div class="genre-divider">
+        <div class="genre-label">La grande biforcazione settecentesca</div>
+        <h3>Una stessa lingua teatrale, due universi che tendono a separarsi</h3>
+        <p>Nel Settecento italiano il melodramma si organizza sempre più chiaramente intorno a due poli che, pur non essendo mai compartimenti ermetici in senso assoluto, diventano così riconoscibili da funzionare quasi come due sistemi distinti. Da una parte l’<strong>opera seria</strong>, che si appropria del registro alto, del mito, della storia antica, dei sovrani, degli eroi e delle passioni esemplari; dall’altra l’<strong>opera buffa</strong>, che porta in primo piano servi, padroni, mercanti, giovani innamorati, vecchi gelosi, denaro, matrimonio, fame, astuzia e conflitti della vita quotidiana. È una separazione estetica e sociale prima ancora che musicale, perché cambia il tipo di personaggio ammesso sulla scena, cambia il linguaggio con cui parla e canta, cambia il rapporto con il pubblico e cambia perfino il modo in cui il tempo teatrale viene organizzato.</p>
+      </div>
+
+      <div class="compare-band">
+        <div class="compare-box">
+          <div class="eyebrow">Opera seria</div>
+          <h3>Il mondo alto</h3>
+          <p>L’opera seria tende a collocare i propri protagonisti nella storia antica, nel mito o nelle gerarchie del potere, affidando a re, condottieri, principesse ed eroi passioni che devono apparire grandi quanto il loro rango. Il linguaggio poetico è elevato, il recitativo porta avanti l’intreccio e l’aria, sempre più spesso costruita secondo il modello col da capo, concentra l’attenzione sull’affetto e sulla magnificenza della voce.</p>
+          <p>In questo sistema primedonne e castrati possono diventare il vero centro economico e spettacolare della serata, tanto che il pubblico finisce spesso per attendere l’aria del cantante celebre quasi indipendentemente dalla continuità dell’azione. Metastasio porterà questa macchina a una straordinaria perfezione formale, proprio mentre la sua regolarità comincerà a renderne evidenti le convenzioni.</p>
+        </div>
+        <div class="compare-box">
+          <div class="eyebrow">Opera buffa</div>
+          <h3>Il mondo vicino</h3>
+          <p>L’opera buffa guarda invece verso personaggi che lo spettatore può riconoscere nella propria esperienza sociale e trasforma in materia teatrale la casa, il lavoro, il denaro, il matrimonio e la differenza di classe. La tradizione della Commedia dell’Arte non scompare, ma i suoi tipi — il vecchio, il servo astuto, la servetta, gli innamorati — perdono progressivamente la fissità della maschera e acquistano carattere individuale, esattamente mentre Goldoni compie un movimento analogo nel teatro di prosa.</p>
+          <p>Musicalmente il comico ha bisogno di una scena più mobile: la parola deve reagire rapidamente, il gesto conta, l’equivoco deve scattare al momento giusto e soprattutto i personaggi possono cantare insieme, sovrapponendo intenzioni diverse nello stesso pezzo d’insieme. È qui che il melodramma italiano sviluppa una seconda straordinaria competenza: non soltanto fermare il tempo nell’aria, ma farlo correre attraverso il dialogo e l’ensemble.</p>
+        </div>
+      </div>
+
       <div class="two-col">
-        <p>Nel Settecento l’opera seria italiana raggiunge una forma estremamente organizzata, nella quale il recitativo sviluppa l’azione mentre l’aria consente al personaggio di concentrarsi sull’affetto. La forma col da capo offre inoltre ai cantanti uno spazio privilegiato per l’ornamentazione e il virtuosismo, facendo crescere il potere delle primedonne e dei grandi castrati all’interno del sistema produttivo.</p>
-        <p>Metastasio porta questa struttura a una straordinaria perfezione poetica e drammaturgica, ma proprio la regolarità della macchina rende sempre più visibili gli automatismi. Il teatro può diventare una successione di momenti nei quali la vicenda procede nel recitativo e si arresta nell’aria, mentre il pubblico attende l’esibizione della voce celebre più ancora dello sviluppo dell’azione.</p>
+        <p>L’opera seria diventa dunque il grande modello internazionale del canto italiano, della vocalità virtuosistica e della forma, mentre l’opera buffa svilupperà l’altra metà di quella stessa identità teatrale, più mobile, quotidiana e incline alla caratterizzazione dei personaggi. Pensarle come due categorie quasi stagne è pedagogicamente utile proprio perché permette di capire quanto sarà significativa, più tardi, la loro possibilità di incontrarsi di nuovo.</p>
+        <p>La separazione, inoltre, spiega bene perché la satira di Benedetto Marcello possa colpire con tanta precisione il mondo dell’opera seria: quando un sistema ha ormai i propri ruoli, le proprie star, le proprie regole e perfino i propri difetti ricorrenti, diventa possibile riconoscerlo e prenderlo in giro. E sarà proprio contro alcune di quelle convenzioni che, alla fine del nostro percorso, Gluck proverà a intervenire.</p>
       </div>
     </section>
 
@@ -623,15 +660,45 @@
     </section>
 
     <section id="buffa">
-      <div class="section-title"><div class="section-no">15</div><h2>Il comico esce dalla parentesi</h2></div>
+      <div class="section-title"><div class="section-no">15</div><h2>La nascita dell’opera buffa: quando il comico conquista una casa propria</h2></div>
+
       <div class="two-col">
-        <p>Nel corso del Settecento il comico acquista progressivamente una propria autonomia, mentre servi, mercanti, giovani innamorati e personaggi della vita quotidiana possono occupare il centro della scena senza essere confinati alla parentesi festiva o all’intervallo fra due momenti seri. L’opera buffa non nasce da un singolo episodio, ma da un processo nel quale il rovesciamento delle gerarchie conquista una dignità teatrale sempre più stabile.</p>
-        <p>È in questo contesto che <em>La serva padrona</em> di Giovanni Battista Pergolesi assume un valore emblematico: nata come intermezzo, concentra in pochi personaggi un meccanismo sociale semplicissimo e potentissimo, perché Uberto possiede formalmente il potere mentre Serpina comprende meglio di lui la situazione e riesce a modificarla a proprio vantaggio.</p>
+        <p>L’opera buffa non nasce in un giorno e non possiede un unico certificato di nascita. All’inizio del Settecento, soprattutto a Napoli, esiste già una vivace tradizione di <em>commedia per musica</em>, mentre nelle stagioni dell’opera seria prendono sempre più spazio brevi episodi comici affidati a pochi personaggi. Queste linee non coincidono perfettamente, ma convergono nel dare al teatro musicale comico una fisionomia sempre più autonoma, finché ciò che era stato tollerato come parentesi, deviazione o alleggerimento diventa un genere capace di sostenere da solo un’intera serata.</p>
+        <p>Il punto decisivo non è soltanto che si cominci a ridere in musica, perché il comico esisteva da secoli, ma che il melodramma ammetta stabilmente nel proprio centro personaggi che l’opera seria aveva lasciato ai margini: servi, padroni, piccoli borghesi, vecchi ridicoli e giovani intraprendenti. È qui che si completa una parte essenziale dell’italianità melodrammatica, perché alla grande macchina seria del canto e dell’affetto si affianca una macchina teatrale altrettanto italiana fondata sul carattere, sul gesto, sul dialogo rapido e sull’ensemble.</p>
       </div>
+
       <div class="literary-aside">
-        <div class="eyebrow">Cameo · Pergolesi</div>
-        <h3>La serva diventa padrona</h3>
-        <p>Il titolo contiene già il rovesciamento. Senza trasformare Serpina in un manifesto politico moderno, il teatro permette ormai a un personaggio socialmente subordinato di essere più intelligente, attivo e teatrale del padrone. In questo senso l’opera buffa porta fuori dalla parentesi carnevalesca una libertà comica che per secoli aveva avuto il diritto di esistere soprattutto come eccezione.</p>
+        <div class="eyebrow">Parentesi necessaria · L’intermezzo</div>
+        <h3>Il comico abita letteralmente fra gli atti dell’opera seria</h3>
+        <p>L’<strong>intermezzo</strong> nasce come una breve azione musicale comica inserita negli intervalli di un’opera seria, normalmente con una vicenda completamente indipendente da quella principale, pochissimi personaggi, scenografia semplice e un linguaggio teatrale immediato. La cosa più interessante è che serio e comico possono così condividere la stessa serata senza condividere la stessa storia: mentre l’opera seria interrompe per un momento il proprio mondo di re, eroi e passioni solenni, sul medesimo palcoscenico entrano una serva, un padrone, un equivoco domestico o una piccola battaglia sociale; terminato l’intermezzo, il grande dramma riprende come se nulla fosse accaduto.</p>
+        <p>Questa collocazione apparentemente subordinata concede però al comico una straordinaria libertà. Con pochi cantanti, minori costi e un intreccio più concentrato, l’intermezzo può affidarsi al gesto, alla rapidità, alla caratterizzazione e alla precisione del meccanismo teatrale, fino a produrre spettacoli che il pubblico ricorda e desidera rivedere anche senza l’opera seria che li conteneva. Il passaggio decisivo avviene proprio qui: quando la parentesi dimostra di poter vivere da sola, ha già smesso di essere soltanto una parentesi.</p>
+
+        <div class="intermezzo-strip" aria-label="Esempio di struttura di una serata con intermezzo">
+          <div class="intermezzo-step serio"><b>Atto I</b><span>opera seria</span></div>
+          <div class="intermezzo-arrow">→</div>
+          <div class="intermezzo-step comico"><b>Intermezzo I</b><span>azione comica autonoma</span></div>
+          <div class="intermezzo-arrow">→</div>
+          <div class="intermezzo-step serio"><b>Atto II</b><span>riprende il dramma serio</span></div>
+          <div class="intermezzo-arrow">→</div>
+          <div class="intermezzo-step comico"><b>Intermezzo II</b><span>si conclude la vicenda comica</span></div>
+          <div class="intermezzo-arrow">→</div>
+          <div class="intermezzo-step serio"><b>Atto III</b><span>finale dell’opera seria</span></div>
+        </div>
+      </div>
+
+      <div class="literary-aside">
+        <div class="eyebrow">Cameo · Pergolesi, Napoli 1733</div>
+        <h3><em>La serva padrona</em>: quando l’intermezzo diventa più famoso dell’opera che lo ospitava</h3>
+        <p><em>La serva padrona</em> nasce come intermezzo in due parti destinato a essere rappresentato negli intervalli dell’opera seria <em>Il prigionier superbo</em>. Il libretto di Gennaro Antonio Federico riduce la macchina teatrale quasi all’osso: <strong>Serpina</strong>, serva energica e lucidissima; <strong>Uberto</strong>, padrone che possiede formalmente l’autorità ma non il controllo reale della situazione; e <strong>Vespone</strong>, servo muto che diventa parte essenziale dell’inganno scenico. Non servono dèi, guerre, regni o dinastie: basta una casa, un rapporto di potere e una donna socialmente subordinata che comprende il gioco meglio dell’uomo che dovrebbe comandarla.</p>
+        <p>Serpina vuole sposare Uberto e organizza la situazione in modo che sia lui stesso a scegliere ciò che lei ha già deciso. Il titolo contiene quindi il rovesciamento dell’intero meccanismo: la serva diventa padrona non attraverso una proclamazione astratta, ma attraverso intelligenza, recitazione, strategia e capacità di leggere l’altro. La musica aderisce strettamente al gesto e al carattere, il dialogo acquista una naturalezza che contrasta fortemente con la monumentalità dell’opera seria e l’intermezzo, proprio perché piccolo, sembra improvvisamente possedere una verità teatrale enorme.</p>
+        <p>La sua fortuna europea rende visibile la trasformazione: nel 1752, rappresentata a Parigi da una compagnia italiana ormai come spettacolo autonomo, <em>La serva padrona</em> diventa uno dei detonatori della <em>Querelle des Bouffons</em>, la disputa che contrappone i sostenitori della tradizione francese ai fautori della maggiore naturalezza melodica e teatrale degli italiani. Il piccolo intermezzo nato fra gli atti di un’opera seria è ormai capace di mettere in discussione un’intera cultura operistica nazionale.</p>
+      </div>
+
+      <div class="europe-bridge">
+        <div class="genre-label">L’altra metà dell’italianità operistica</div>
+        <h3>Dall’opera buffa al dramma giocoso, e dall’Italia all’Europa</h3>
+        <p>Se l’opera seria aveva trasformato l’italiano nella lingua internazionale del grande canto teatrale, l’opera buffa completa quella conquista mostrando che la stessa tradizione è capace di far vivere sulla scena il quotidiano, il ridicolo, la velocità del dialogo e soprattutto il rapporto simultaneo fra più personaggi. Quando, nella seconda metà del Settecento, i due mondi torneranno a contaminarsi, nasceranno forme come il <strong>dramma giocoso</strong>, nelle quali il serio e il comico possono nuovamente convivere all’interno della stessa architettura drammatica: non più come intermezzo estraneo inserito fra gli atti, ma come differenti registri della stessa vita teatrale.</p>
+        <p>Il successo internazionale dell’opera buffa esercita inoltre un’enorme pressione sugli altri teatri europei. In Francia l’<em>opéra-comique</em> possiede già una propria genealogia, nata nei teatri di fiera e nel vaudeville, quindi non deriva semplicemente dall’Italia; tuttavia l’arrivo degli intermezzi italiani e la <em>Querelle des Bouffons</em> ne accelerano profondamente la trasformazione, favorendo nuove ariette, nuovi equilibri fra parola e musica e nuove forme di sintesi. Processi analoghi, con caratteristiche locali proprie, toccheranno anche altri generi comici europei: l’opera italiana non cancella le tradizioni nazionali, ma diventa un modello con cui esse sono costrette a confrontarsi.</p>
       </div>
     </section>
 
