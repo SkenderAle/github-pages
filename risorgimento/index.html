@@ -226,6 +226,9 @@
   .webmaster-line{width:100%;display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;color:#d8c9b5}
   .webmaster-line a{color:#f1d08f;text-decoration:none;border-bottom:1px solid rgba(241,208,143,.45)}
   .webmaster-line a:hover{color:#fff}
+  .footer-video-wrap{width:200px;margin-left:auto;margin-top:.25rem;text-align:right}
+  .footer-video-wrap iframe{display:block;width:200px!important;height:200px!important;border:0;border-radius:8px;background:#000}
+  @media(max-width:520px){.footer-video-wrap{width:200px}.footer-video-wrap iframe{width:200px!important;height:200px!important}}
   .badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sans);font-size:.73rem;font-weight:800;padding:.3rem .55rem;border:1px solid #aa9a82;border-radius:999px;color:#6a5c4d;background:#f8f3e8;vertical-align:middle;margin-left:.4rem;cursor:pointer}
   .badge:hover{background:#fff}
   .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(15,12,10,.78);backdrop-filter:blur(6px)}
@@ -934,6 +937,9 @@
       <a href="mailto:alessandro.zilli@gmail.com">alessandro.zilli@gmail.com</a>
     </div>
     <div class="copyright">© Alessandro Zilli — testi originali e struttura editoriale. Materiali di terzi: diritti e licenze dei rispettivi titolari.</div>
+    <div class="footer-video-wrap" aria-label="Esecuzione musicale di accompagnamento">
+      <div id="footerMusicPlayer"></div>
+    </div>
   </div></footer>
 </div>
 <button class="scrolltop" id="scrolltop" aria-label="Torna in alto">↑</button>
@@ -1115,6 +1121,41 @@
   }
 
   window.addEventListener('scroll',scheduleSpy,{passive:true});
+  // Piccolo player musicale in fondo alla pagina: una sola esecuzione, volume 20%.
+  const footerMusicHost=document.getElementById('footerMusicPlayer');
+  if(footerMusicHost){
+    window.onYouTubeIframeAPIReady=()=>{
+      new YT.Player('footerMusicPlayer',{
+        width:'200',
+        height:'200',
+        videoId:'8D6Q-gg9fMw',
+        playerVars:{
+          autoplay:1,
+          controls:1,
+          rel:0,
+          iv_load_policy:3,
+          loop:0,
+          playsinline:1,
+          enablejsapi:1,
+          origin:window.location.origin
+        },
+        events:{
+          onReady:e=>{
+            e.target.setVolume(20);
+            e.target.unMute();
+            e.target.playVideo();
+          },
+          onStateChange:e=>{
+            if(e.data===YT.PlayerState.ENDED) e.target.stopVideo();
+          }
+        }
+      });
+    };
+    const ytApi=document.createElement('script');
+    ytApi.src='https://www.youtube.com/iframe_api';
+    ytApi.async=true;
+    document.head.appendChild(ytApi);
+  }
   window.addEventListener('resize',scheduleSpy,{passive:true});
   window.addEventListener('load',setActiveSection,{once:true});
   setActiveSection();
