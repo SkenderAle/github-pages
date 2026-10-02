@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Palcoscenico classico ispirato ai teatri rinascimentali">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bda27b"/>
+      <stop offset=".55" stop-color="#8b6c4d"/>
+      <stop offset="1" stop-color="#4d392c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".52">
+      <stop offset="0" stop-color="#ead8b2" stop-opacity=".66"/>
+      <stop offset=".55" stop-color="#c8aa7e" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#5b4332" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="8"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .09"/></feComponentTransfer>
+    </filter>
+    <filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#21150f" flood-opacity=".45"/></filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#glow)"/>
+  <g opacity=".18" filter="url(#grain)"><rect width="1600" height="1000" fill="#fff"/></g>
+
+  <!-- proscenium -->
+  <g fill="none" stroke="#241914" stroke-width="9" opacity=".78" filter="url(#shadow)">
+    <path d="M155 820V190H1445V820"/>
+    <path d="M205 820V250H1395V820"/>
+    <path d="M280 820V305H1320V820"/>
+    <path d="M800 310V820"/>
+  </g>
+
+  <!-- entablature -->
+  <g fill="#d3b88a" stroke="#3a281f" stroke-width="5" opacity=".92">
+    <rect x="150" y="165" width="1300" height="60"/>
+    <rect x="190" y="225" width="1220" height="36"/>
+    <path d="M210 165L800 65L1390 165Z"/>
+    <path d="M320 160L800 95L1280 160Z" fill="#c5a574"/>
+  </g>
+
+  <!-- columns -->
+  <g fill="#cdb07f" stroke="#3a281f" stroke-width="5">
+    <g transform="translate(235 0)">
+      <rect x="0" y="270" width="72" height="470"/><rect x="-16" y="245" width="104" height="35"/><rect x="-20" y="735" width="112" height="38"/>
+      <path d="M12 285V725M30 285V725M48 285V725M60 285V725" opacity=".28"/>
+    </g>
+    <g transform="translate(430 0)">
+      <rect x="0" y="270" width="72" height="470"/><rect x="-16" y="245" width="104" height="35"/><rect x="-20" y="735" width="112" height="38"/>
+      <path d="M12 285V725M30 285V725M48 285V725M60 285V725" opacity=".28"/>
+    </g>
+    <g transform="translate(1098 0)">
+      <rect x="0" y="270" width="72" height="470"/><rect x="-16" y="245" width="104" height="35"/><rect x="-20" y="735" width="112" height="38"/>
+      <path d="M12 285V725M30 285V725M48 285V725M60 285V725" opacity=".28"/>
+    </g>
+    <g transform="translate(1293 0)">
+      <rect x="0" y="270" width="72" height="470"/><rect x="-16" y="245" width="104" height="35"/><rect x="-20" y="735" width="112" height="38"/>
+      <path d="M12 285V725M30 285V725M48 285V725M60 285V725" opacity=".28"/>
+    </g>
+  </g>
+
+  <!-- central arch -->
+  <path d="M575 742V445C575 300 1025 300 1025 445V742" fill="#7e5d43" stroke="#2a1d17" stroke-width="9"/>
+  <path d="M640 742V470C640 375 960 375 960 470V742" fill="#35251e" stroke="#c6a979" stroke-width="6"/>
+
+  <!-- perspective street -->
+  <g stroke="#d7bd90" stroke-width="5" fill="none" opacity=".75">
+    <path d="M640 742L800 470L960 742"/>
+    <path d="M675 742L800 520L925 742"/>
+    <path d="M715 742L800 575L885 742"/>
+    <path d="M755 742L800 630L845 742"/>
+    <path d="M640 640H960M670 590H930M705 545H895"/>
+  </g>
+  <circle cx="800" cy="466" r="10" fill="#f1dbad" opacity=".85"/>
+
+  <!-- side niches/statues -->
+  <g fill="#b99a6c" stroke="#3b291f" stroke-width="4" opacity=".82">
+    <path d="M330 390h110v220H330z"/><path d="M1160 390h110v220h-110z"/>
+    <circle cx="385" cy="445" r="28"/><path d="M350 570q35-120 70 0z"/>
+    <circle cx="1215" cy="445" r="28"/><path d="M1180 570q35-120 70 0z"/>
+  </g>
+
+  <!-- stage floor -->
+  <path d="M120 820H1480L1330 1000H270Z" fill="#251a16" opacity=".76"/>
+  <g stroke="#9e7d59" stroke-width="3" opacity=".38">
+    <path d="M270 1000L800 820L1330 1000"/>
+    <path d="M460 1000L800 820L1140 1000"/>
+    <path d="M650 1000L800 820L950 1000"/>
+  </g>
+
+  <!-- masks -->
+  <g opacity=".22" fill="#ead7ad" stroke="#2c1d17" stroke-width="5">
+    <path d="M85 520q120-90 215 5q-20 150-100 205q-95-35-115-210z"/>
+    <ellipse cx="145" cy="560" rx="20" ry="11" fill="#2c1d17"/><ellipse cx="230" cy="560" rx="20" ry="11" fill="#2c1d17"/>
+    <path d="M150 650q45 25 85-8" fill="none"/>
+    <path d="M1510 530q-120-90-215 5q20 150 100 205q95-35 115-210z"/>
+    <ellipse cx="1450" cy="570" rx="20" ry="11" fill="#2c1d17"/><ellipse cx="1365" cy="570" rx="20" ry="11" fill="#2c1d17"/>
+    <path d="M1450 655q-45-28-85 8" fill="none"/>
+  </g>
+
+  <!-- vignette -->
+  <rect width="1600" height="1000" fill="none" stroke="#160f0c" stroke-width="120" opacity=".28"/>
+</svg>
