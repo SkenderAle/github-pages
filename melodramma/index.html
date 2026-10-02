@@ -175,6 +175,11 @@
   .literary-aside .key{background:#fbf7ef;border:1px solid #d3c3aa;padding:1rem}
   .literary-aside .key b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem}
   .literary-aside .key span{font-size:.92rem;line-height:1.5}
+  .literary-aside .source-card{background:#fbf7ef;border-color:#cdbb9d;color:#2b241d}
+  .literary-aside .source-card .src{color:#8a6437}
+  .literary-aside .source-card b{color:#4e321c}
+  .literary-aside .source-card span{color:#65594c}
+  .literary-aside .source-card:hover{background:#f3e7d3;border-color:#b8935f}
   .civic-final{margin-top:7rem;padding:3rem clamp(1.4rem,4vw,3.2rem);background:#e9e0cf;border-top:6px solid var(--green);border-bottom:1px solid #c8baa3;box-shadow:0 14px 34px rgba(40,30,18,.08)}
   .civic-final .section-title{margin-bottom:.6rem}
   .civic-subtitle{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:900;margin:0 0 2rem 96px}
@@ -202,11 +207,19 @@
   .archive-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:2rem}
   .archive-subtitle{font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#e0c389;margin:2.8rem 0 .4rem;font-weight:800}
   .archive h3{font-size:1.8rem;margin:.2rem 0 .5rem;color:#fff}
-  .source-card{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);padding:1rem;cursor:pointer;color:#fff;text-align:left;transition:.2s}
-  .source-card:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
-  .source-card .src{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#d7bd8d}
-  .source-card b{display:block;margin:.45rem 0;font-size:1.06rem}
-  .source-card span{font-family:var(--sans);font-size:.8rem;color:#cabda9}
+  /* Le source-card vivono soprattutto su fondo pergamena: questo è lo stile base. */
+  .source-card{border:1px solid #ccb99a;background:#f7f1e5;padding:1rem;cursor:pointer;color:#2b241d;text-align:left;transition:.2s;box-shadow:0 6px 18px rgba(44,33,22,.05)}
+  .source-card:hover{background:#efe2ce;border-color:#b99867;transform:translateY(-2px)}
+  .source-card .src{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#7a5e3d;font-weight:800}
+  .source-card b{display:block;margin:.45rem 0;font-size:1.06rem;color:#2b241d}
+  .source-card span{font-family:var(--sans);font-size:.8rem;color:#5b5147}
+
+  /* Nelle sezioni scure di archivio/videoteca il contrasto viene invertito. */
+  .archive .source-card{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:#fff;box-shadow:none}
+  .archive .source-card:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28)}
+  .archive .source-card .src{color:#d7bd8d}
+  .archive .source-card b{color:#fff}
+  .archive .source-card span{color:#cabda9}
   .bibliography{background:#eee3cf;padding:3.2rem 1.4rem;border-top:1px solid #cdbfa8}
   .bibliography-inner{max-width:1180px;margin:auto}
   .bibliography-list{display:grid;gap:.8rem;margin-top:1.4rem}
