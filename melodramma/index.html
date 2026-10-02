@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dal rito al melodramma barocco · teatro, musica e società</title>
+<meta name="description" content="Percorso interattivo dal teatro antico alla riforma di Gluck: Medioevo, Rinascimento, Camerata de’ Bardi, Monteverdi, Venezia, Francia, opera seria e buffa, donne e dissenso." />
+<meta name="author" content="Alessandro Zilli" />
+<style>
+  :root{
+    --ink:#201b17;
+    --paper:#f5efe3;
+    --paper2:#eee3cf;
+    --red:#7f1d1d;
+    --blue:#253d63;
+    --gold:#a5792a;
+    --green:#2f5e48;
+    --muted:#6c6258;
+    --line:#cdbfa8;
+    --shadow:0 16px 50px rgba(35,26,18,.15);
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:#d8cfbf}
+  body{margin:0;color:var(--ink);background:
+    radial-gradient(circle at 10% 0%, rgba(127,29,29,.06), transparent 24rem),
+    radial-gradient(circle at 90% 20%, rgba(37,61,99,.08), transparent 28rem),
+    linear-gradient(180deg,#e9e0d1,#d8cfbf 40%,#cec3b2);font-family:var(--serif);line-height:1.72}
+  a{color:inherit}
+  button{font:inherit}
+  .progress{position:fixed;z-index:100;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--blue),var(--red),var(--gold));box-shadow:0 0 12px rgba(127,29,29,.25)}
+  .masthead{position:relative;min-height:78vh;display:grid;place-items:center;padding:7rem 1.2rem 4rem;overflow:hidden;background:#211d19;color:#f9f3e7}
+  .masthead::before{content:"";position:absolute;inset:0;background:
+    linear-gradient(90deg,rgba(11,9,8,.9),rgba(11,9,8,.55) 50%,rgba(11,9,8,.82)),
+    url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Parma_interno_del_Teatro_Farnese.jpg') center/cover no-repeat;filter:saturate(.65) sepia(.18);transform:scale(1.02)}
+  .masthead::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(15,12,10,.86));pointer-events:none}
+  .hero{position:relative;z-index:2;max-width:1100px;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:3rem;align-items:end}
+  .top-credit{font-family:var(--sans);font-size:.5rem;line-height:1.2;letter-spacing:.10em;text-transform:uppercase;color:#e7d7bf;margin-bottom:.45rem;opacity:.8}
+  .kicker{font-family:var(--sans);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#e1c58c;margin-bottom:1rem}
+  h1{margin:.2rem 0 1.2rem;font-weight:600;line-height:.98;font-size:clamp(3rem,8vw,7.2rem);letter-spacing:-.045em;max-width:900px}
+  .dek{font-size:clamp(1.15rem,2vw,1.6rem);max-width:760px;color:#efe4d2;line-height:1.4}
+  .hero-card{border:1px solid rgba(255,255,255,.25);background:rgba(28,24,21,.68);backdrop-filter:blur(8px);padding:1.3rem;border-radius:2px;box-shadow:var(--shadow)}
+  .hero-card small{font-family:var(--sans);text-transform:uppercase;letter-spacing:.12em;color:#d8c29a}
+  .hero-card p{font-size:1.04rem;margin:.6rem 0 0}
+  .shell{max-width:1380px;margin:0 auto;background:var(--paper);box-shadow:0 0 70px rgba(34,28,20,.14)}
+  .nav-wrap{position:sticky;top:0;z-index:40;background:rgba(245,239,227,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font-family:var(--sans)}
+  nav{max-width:1240px;margin:auto;padding:.48rem .8rem .55rem}
+  .nav-row{display:flex;gap:.4rem;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-behavior:smooth}
+  .nav-row+.nav-row{margin-top:.18rem}
+  .nav-row::-webkit-scrollbar{display:none}
+  nav a{flex:0 0 auto;white-space:nowrap;text-decoration:none;padding:.58rem .8rem;border-radius:999px;font-size:.83rem;font-weight:700;color:#5b5147}
+  nav a.active,nav a:hover{background:#2b261f;color:#fff}
+  nav a.nav-verifica{background:#7f1d1d;color:#fff;border:1px solid #7f1d1d;box-shadow:0 2px 8px rgba(127,29,29,.18)}
+  nav a.nav-verifica:hover,nav a.nav-verifica.active{background:#a5792a;color:#fff;border-color:#a5792a}
+  nav a.nav-sos{background:#2f5e48;color:#fff;border:1px solid #2f5e48;box-shadow:0 2px 8px rgba(47,94,72,.18)}
+  nav a.nav-sos:hover{background:#a5792a;color:#fff;border-color:#a5792a}
+  .content{max-width:1180px;margin:auto;padding:4.5rem 1.4rem 7rem}
+  .intro-grid{display:grid;grid-template-columns:1.45fr .55fr;gap:3.5rem;margin-bottom:5rem;align-items:start}
+  .lead{font-size:1.43rem;line-height:1.58;margin-top:0}
+  .dropcap:first-letter{float:left;font-size:4.7rem;line-height:.77;padding:.13rem .16rem 0 0;color:var(--red);font-weight:700}
+  .quote-card{border-top:4px solid var(--red);background:#ebe0cd;padding:1.5rem 1.4rem;box-shadow:0 8px 30px rgba(40,30,18,.08);position:sticky;top:5rem}
+  .quote-card p{margin:0;font-size:1.15rem;font-style:italic}
+  .quote-card cite{display:block;margin-top:1rem;font-family:var(--sans);font-style:normal;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+  section{scroll-margin-top:7.5rem;margin:0 0 6rem}
+  .section-title{display:grid;grid-template-columns:80px 1fr;gap:1rem;align-items:start;margin-bottom:2rem}
+  .section-no{font-family:var(--sans);font-size:.78rem;letter-spacing:.15em;color:var(--red);border-top:1px solid var(--red);padding-top:.55rem}
+  h2{margin:0;font-size:clamp(2.2rem,5vw,4.7rem);line-height:1.03;font-weight:600;letter-spacing:-.035em}
+  h3{font-size:1.55rem;margin:2.4rem 0 .7rem;line-height:1.2;color:#3a3128}
+  p{font-size:1.08rem}
+  .two-col{columns:2 390px;column-gap:3.5rem}
+  .two-col p{break-inside:avoid;margin-top:0;margin-bottom:1.15rem}
+  .callout{margin:2.5rem 0;padding:1.5rem 1.7rem;border-left:5px solid var(--blue);background:#ece7dc}
+  .callout strong{color:var(--blue)}
+  .media-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .media-card{position:relative;min-height:240px;overflow:hidden;background:#1e1b18;color:#fff;border:0;padding:0;cursor:pointer;text-align:left;box-shadow:var(--shadow)}
+  .media-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62;filter:sepia(.15) saturate(.7);transition:.35s}
+  .media-card:hover img{transform:scale(1.035);opacity:.78}
+  .media-card .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(16,13,11,.88))}
+  .media-card .meta{position:absolute;left:1rem;right:1rem;bottom:1rem;z-index:2}
+  .media-card .tag{font-family:var(--sans);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:#f2d498}
+  .media-card h4{font-size:1.3rem;line-height:1.15;margin:.35rem 0 0}
+  .play{position:absolute;right:1rem;top:1rem;width:42px;height:42px;border:1px solid rgba(255,255,255,.65);border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.22);z-index:3;font-family:var(--sans)}
+  .sheet-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .sheet{background:#fbf8f1;border:1px solid #d7cab3;padding:1rem;min-height:270px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 24px rgba(48,36,22,.08);cursor:pointer;transition:.2s;position:relative;overflow:hidden;text-align:left}
+  .sheet:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(48,36,22,.14)}
+  .sheet::before{content:"♩";position:absolute;right:-.5rem;top:-1.4rem;font-size:8rem;color:rgba(127,29,29,.07)}
+  .sheet .year{font-family:var(--sans);font-size:.72rem;color:var(--red);letter-spacing:.14em;text-transform:uppercase}
+  .sheet h4{font-size:1.45rem;margin:.7rem 0 .3rem;line-height:1.1}
+  .sheet p{font-size:.93rem;color:var(--muted);margin:.35rem 0}
+  .sheet .open{font-family:var(--sans);font-weight:800;font-size:.77rem;text-transform:uppercase;letter-spacing:.08em;color:var(--blue)}
+  .timeline{display:flex;gap:1rem;overflow-x:auto;padding:1rem 0 1.5rem;scroll-snap-type:x mandatory}
+  .timeline::-webkit-scrollbar{height:8px}.timeline::-webkit-scrollbar-thumb{background:#b9ac96}
+  .event{min-width:265px;scroll-snap-align:start;background:#ede4d5;border-top:4px solid var(--gold);padding:1.1rem}
+  .event b{font-family:var(--sans);font-size:1.35rem;color:var(--red)}
+  .event p{font-size:.93rem;margin:.5rem 0 0;line-height:1.45}
+  .people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .person{background:#2a241f;color:#f7efe2;min-height:330px;position:relative;overflow:hidden;border:0;padding:0;text-align:left;cursor:pointer}
+  .person img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.63;filter:sepia(.3) grayscale(.15);transition:.3s}
+  .person:hover img{transform:scale(1.03);opacity:.75}
+  .person .label{position:absolute;left:0;right:0;bottom:0;padding:1.1rem;background:linear-gradient(transparent,rgba(20,16,13,.96));padding-top:5rem}
+  .person .label b{font-size:1.28rem;display:block}
+  .person .label span{font-family:var(--sans);font-size:.76rem;color:#e3cfad}
+  .women-band{margin:3rem 0;display:grid;grid-template-columns:1.1fr .9fr;background:#2f251e;color:#fff;min-height:500px}
+  .women-band .img{min-height:500px;background:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg') center 25%/cover no-repeat;filter:saturate(.7) sepia(.1)}
+  .women-band .txt{padding:clamp(2rem,4vw,4rem);align-self:center}
+  .women-band h3{color:#fff;font-size:clamp(2rem,4vw,3.8rem);margin-top:0}
+  .women-heroes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0 3rem}
+  .heroine-card{background:#f0e5d3;border-top:4px solid var(--red);padding:1.25rem;box-shadow:0 8px 24px rgba(44,32,20,.07)}
+  .heroine-card b{display:block;font-family:var(--sans);font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:.45rem}
+  .heroine-card p{font-size:.94rem;line-height:1.58;margin:.35rem 0}
+  .verdi-women{margin:3.2rem 0;padding:2.3rem;background:#2b241f;color:#f5ecdf;position:relative;overflow:hidden}
+  .verdi-women::after{content:"V";position:absolute;right:-.7rem;bottom:-4rem;font-size:16rem;line-height:1;color:rgba(255,255,255,.035);font-family:var(--serif);font-weight:700}
+  .verdi-women h3{color:#fff;margin-top:0;font-size:clamp(2rem,4vw,3.5rem)}
+  .verdi-women p{position:relative;z-index:1}
+  .verdi-names{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 1.5rem;position:relative;z-index:1}
+  .verdi-names span{font-family:var(--sans);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);padding:.38rem .6rem;border-radius:999px;color:#e8d3ad}
+  .women-band p{color:#eee0ce}
+  .network{background:#e7dcc9;border:1px solid #c8b89e;padding:1rem;margin:2rem 0;overflow:hidden}
+  .network svg{width:100%;height:auto;display:block}
+  .network text{font-family:var(--sans);font-weight:800;fill:#2f2923}
+  .network .edge{stroke:#8f7e65;stroke-width:2;opacity:.75}
+  .network .edge.red{stroke:#8b3030}.network .edge.blue{stroke:#345279}
+  .network circle{stroke:#f6efe4;stroke-width:4}
+  .turin-cast{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.6rem 0 2.2rem}
+  .turin-cast .who{background:#efe5d4;border:1px solid #cbbba4;padding:1rem}
+  .turin-cast .who b{display:block;font-family:var(--sans);font-size:.84rem;letter-spacing:.04em;text-transform:uppercase;color:#6e2b27;margin-bottom:.35rem}
+  .turin-cast .who span{font-size:.9rem;line-height:1.5;color:#5f554a}
+  .essay-section{max-width:920px;margin-left:auto;margin-right:auto}
+  .essay-section .essay-lead{font-size:1.17rem;line-height:1.8}
+  .essay-section p{line-height:1.82}
+  .essay-section .essay-video{margin:3rem 0 1.4rem}
+  .essay-section .essay-signature{font-family:var(--sans);font-weight:800;letter-spacing:.04em;text-align:right;margin-top:2rem;color:#5f5142}
+  .scene-inline{margin:1.8rem 0 2.2rem}
+  .scene-inline img{display:block;width:100%;height:auto;border:1px solid #4e443b;box-shadow:0 14px 34px rgba(20,15,10,.2)}
+  .scene-inline figcaption{font-family:var(--sans);font-size:.76rem;line-height:1.45;color:#74685b;margin-top:.55rem}
+  .civic-final h3{margin-top:2.8rem;color:#254636}
+  .civic-patria{border-left-color:var(--green);background:#f5efe2}
+  .civic-patria strong{color:var(--green)}
+  .student-box{margin:2.6rem 0 0;padding:1.35rem 1.5rem 1.45rem;background:#e7f0e9;border:1px solid #b9cdbd;border-left:6px solid var(--green);box-shadow:0 8px 24px rgba(40,55,42,.07)}
+  .student-box .student-label{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:#fff;background:var(--green);padding:.28rem .55rem;margin-bottom:.75rem}
+  .student-box h3{margin:.15rem 0 .7rem;color:#244936;font-size:1.45rem}
+  .student-box p{font-size:1rem;line-height:1.62;margin:.6rem 0}
+  .student-box ul{margin:.55rem 0 .6rem 1.15rem;padding:0}
+  .student-box li{margin:.3rem 0;line-height:1.5}
+  .student-box .try{margin-top:.9rem;padding-top:.8rem;border-top:1px solid #b9cdbd;font-family:var(--sans);font-size:.92rem}
+  .student-box .try strong{color:#244936}
+  .student-box blockquote{margin:.8rem 0;padding:.65rem 1rem;border-left:4px solid var(--gold);background:#f7f1e5;font-size:1.15rem;font-style:italic}
+  .student-box a{font-family:var(--sans);font-weight:800;color:var(--blue)}
+  .student-glossary{background:#f3ead7;border-left-color:var(--gold);border-color:#d8c39b}
+  .student-glossary .student-label{background:var(--gold)}
+  .student-glossary h3{color:#5d3c1f}
+  .student-glossary dl{display:grid;grid-template-columns:8rem 1fr;gap:.45rem 1rem;margin:.9rem 0 0}
+  .student-glossary dt{font-family:var(--sans);font-weight:900;color:#6e2b27}
+  .student-glossary dd{margin:0;line-height:1.5}
+  @media (max-width:580px){.student-glossary dl{grid-template-columns:1fr;gap:.15rem}.student-glossary dd{margin-bottom:.55rem}}
+  .source-caveat{margin:1.1rem 0 1.6rem;padding:.9rem 1rem;background:#f7f1e5;border-left:4px solid var(--gold);font-family:var(--sans);font-size:.84rem;line-height:1.55;color:#62574b}
+  .source-caveat strong{color:#493b2c}
+  .civic-mode-note{margin:0 0 2rem;padding:.9rem 1rem;border:1px dashed #87988d;background:#f4efe4;font-family:var(--sans);font-size:.84rem;line-height:1.55;color:#536158}
+  .rights-note{display:block;margin-top:.35rem;font-family:var(--sans);font-size:.69rem;line-height:1.45;color:#7a6e61}
+  .history-pivot{margin:3rem 0;padding:2rem 2.15rem;background:#eee5d6;border-top:4px solid var(--blue);box-shadow:0 10px 28px rgba(45,33,22,.07)}
+  .history-pivot h3{margin:.15rem 0 1.25rem;font-size:clamp(1.8rem,3.4vw,3rem);color:var(--blue)}
+  .history-pivot p:last-of-type{margin-bottom:.6rem}
+  .literary-aside{margin:3rem 0;padding:2rem 2.15rem;background:#f0e7d8;border-top:4px solid var(--gold);box-shadow:0 10px 28px rgba(45,33,22,.06)}
+  .literary-aside h3{margin:.1rem 0 1rem;font-size:clamp(1.9rem,3.5vw,3rem);color:#5d3c1f}
+  .literary-aside .eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:800}
+  .literary-aside p{line-height:1.78}
+  .literary-aside .keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.5rem 0}
+  .literary-aside .key{background:#fbf7ef;border:1px solid #d3c3aa;padding:1rem}
+  .literary-aside .key b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem}
+  .literary-aside .key span{font-size:.92rem;line-height:1.5}
+  .civic-final{margin-top:7rem;padding:3rem clamp(1.4rem,4vw,3.2rem);background:#e9e0cf;border-top:6px solid var(--green);border-bottom:1px solid #c8baa3;box-shadow:0 14px 34px rgba(40,30,18,.08)}
+  .civic-final .section-title{margin-bottom:.6rem}
+  .civic-subtitle{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:900;margin:0 0 2rem 96px}
+  .civic-final .opening{font-size:1.3rem;line-height:1.65}
+  .civic-final .civic-question{margin:2.4rem 0;padding:1.8rem 2rem;background:#253d63;color:#fff;font-size:clamp(1.4rem,2.5vw,2.15rem);line-height:1.35;font-weight:600}
+  .civic-final .civic-question strong{color:#f1d08f}
+  .civic-principles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.6rem 0 2rem}
+  .civic-principle{background:#f8f3e9;border:1px solid #cdbfa8;padding:1.15rem}
+  .civic-principle b{display:block;font-family:var(--sans);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:.35rem}
+  .civic-principle span{font-size:.94rem;line-height:1.55}
+  @media (max-width:900px){.civic-subtitle{margin-left:0}.civic-principles{grid-template-columns:1fr}}
+  @media (max-width:900px){.literary-aside .keys{grid-template-columns:1fr}}
+  .learning-check{margin:0;padding:4.2rem 1.4rem;background:linear-gradient(135deg,#253d63,#1f3029);color:#fff;border-top:6px solid var(--gold);text-align:center}
+  .learning-check-inner{max-width:900px;margin:auto}
+  .learning-check .eyebrow{font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;font-weight:900;color:#efd59f;margin-bottom:.7rem}
+  .learning-check h2{color:#fff;font-size:clamp(2.2rem,5vw,4.2rem);margin:0 0 1rem}
+  .learning-check p{max-width:720px;margin:0 auto 1.6rem;color:#eee6da;font-size:1.1rem;line-height:1.65}
+  .learning-check-button{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:1rem 1.45rem;border-radius:999px;background:#f5efe3;color:#20344f;text-decoration:none;font-family:var(--sans);font-weight:900;font-size:1rem;letter-spacing:.02em;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s,background .2s}
+  .learning-check-button:hover,.learning-check-button:focus-visible{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.3);background:#fff}
+  .learning-check small{display:block;margin-top:1rem;font-family:var(--sans);font-size:.78rem;color:#d6cdbf}
+  @media (max-width:580px){.learning-check{padding:3rem 1rem}.learning-check-button{width:100%;padding:1rem}}
+  .archive{background:#211d19;color:#f6ecdc;padding:3rem 1.4rem;margin-left:-1.4rem;margin-right:-1.4rem}
+  .archive-inner{max-width:1180px;margin:auto}
+  .archive h2{color:#fff}
+  .archive-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:2rem}
+  .archive-subtitle{font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#e0c389;margin:2.8rem 0 .4rem;font-weight:800}
+  .archive h3{font-size:1.8rem;margin:.2rem 0 .5rem;color:#fff}
+  .source-card{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);padding:1rem;cursor:pointer;color:#fff;text-align:left;transition:.2s}
+  .source-card:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+  .source-card .src{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#d7bd8d}
+  .source-card b{display:block;margin:.45rem 0;font-size:1.06rem}
+  .source-card span{font-family:var(--sans);font-size:.8rem;color:#cabda9}
+  .bibliography{background:#eee3cf;padding:3.2rem 1.4rem;border-top:1px solid #cdbfa8}
+  .bibliography-inner{max-width:1180px;margin:auto}
+  .bibliography-list{display:grid;gap:.8rem;margin-top:1.4rem}
+  .bib-group{margin-top:2.6rem}
+  .bib-group:first-of-type{margin-top:1.4rem}
+  .bib-group-title{font-family:var(--sans);font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:#7f1d1d;font-weight:900;margin:0 0 .7rem;padding-bottom:.55rem;border-bottom:2px solid #b99f7b}
+  .bib-group-note{margin:.25rem 0 1rem;padding:.8rem 1rem;background:#f7f1e5;border-left:4px solid #a5792a;font-family:var(--sans);font-size:.82rem;line-height:1.55;color:#66594c}
+  .bib-group-note strong{color:#4d3724}
+  .bib-entry .bib-role{display:inline-block;margin-top:.28rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#7b6b59;font-weight:800}
+  .bib-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;border-bottom:1px solid #d5c8b4;padding:.9rem 0}
+  .bib-cite{font-size:.98rem;line-height:1.55}
+  .bib-cite em{font-style:italic}
+  .bib-note{display:block;font-family:var(--sans);font-size:.77rem;color:#776b5e;margin-top:.22rem}
+  .bib-item{display:grid;grid-template-columns:9rem 1fr auto;gap:1rem;align-items:center;border-top:1px solid #cdbfa8;padding:1rem 0}
+  .bib-kind{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#7f1d1d;font-weight:800}
+  .bib-item b{display:block;font-size:1.03rem}
+  .bib-item span{font-family:var(--sans);font-size:.82rem;color:#6c6258}
+  .bib-open{border:1px solid #9f8e75;background:#f8f4ea;padding:.5rem .75rem;cursor:pointer;font-family:var(--sans);font-weight:700;white-space:nowrap}
+  .footer{background:#15120f;color:#cfc0ad;padding:2.3rem 1.4rem;font-family:var(--sans);font-size:.78rem}
+  .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .copyright{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:1rem;margin-top:.3rem;font-weight:700;color:#f1e4d2}
+  .copyright a{color:#f1d08f;text-decoration:none;border-bottom:1px solid rgba(241,208,143,.45)}
+  .copyright a:hover{color:#fff}
+  .webmaster-line{width:100%;display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;color:#d8c9b5}
+  .webmaster-line a{color:#f1d08f;text-decoration:none;border-bottom:1px solid rgba(241,208,143,.45)}
+  .webmaster-line a:hover{color:#fff}
+  .badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sans);font-size:.73rem;font-weight:800;padding:.3rem .55rem;border:1px solid #aa9a82;border-radius:999px;color:#6a5c4d;background:#f8f3e8;vertical-align:middle;margin-left:.4rem;cursor:pointer}
+  .badge:hover{background:#fff}
+  .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(15,12,10,.78);backdrop-filter:blur(6px)}
+  .modal.open{display:flex}
+  .modal-panel{width:min(1120px,96vw);height:min(86vh,860px);background:#f7f2e8;box-shadow:0 24px 90px rgba(0,0,0,.45);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+  .modal.compact .modal-panel{width:min(690px,94vw);height:auto;grid-template-rows:auto auto}
+  .modal.compact .modal-body{display:none}
+  .modal.compact .modal-foot{border-top:0;justify-content:flex-end;padding:1rem 1.1rem 1.15rem;background:#f7f2e8}
+  .modal.compact .url-box{display:none}
+  .modal.compact .copy-btn,.modal.compact .open-btn{padding:.72rem 1rem}
+  .modal.compact .modal-title{white-space:normal}
+  .modal-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1rem;border-bottom:1px solid #d1c5b1;font-family:var(--sans)}
+  .modal-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .modal-close{border:0;background:#2b251f;color:#fff;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1.1rem}
+  .modal-body{background:#111;min-height:0;position:relative;overflow:auto;display:grid;place-items:center}
+  .modal-body iframe,.modal-body object{border:0;width:100%;height:100%;background:#fff}
+  .modal-body img{max-width:100%;max-height:100%;object-fit:contain}
+  .modal-body .audio-wrap{background:#f5efe4;color:#2c261f;width:100%;height:100%;display:grid;place-items:center;padding:2rem;text-align:center}
+  .modal-body audio{width:min(680px,90%)}
+  .modal-foot{font-family:var(--sans);display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:#eee4d3;border-top:1px solid #d1c5b1;font-size:.78rem;flex-wrap:wrap}
+  .url-box{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:180px;color:#6c5f50}
+  .copy-btn,.open-btn{border:1px solid #9f8e75;background:#f8f4ea;padding:.48rem .72rem;cursor:pointer;font-weight:700}
+  .open-btn{background:#2b251f;color:#fff;border-color:#2b251f}
+  .copy-btn:hover,.open-btn:hover{filter:brightness(.96)}
+  .scrolltop{position:fixed;right:1rem;bottom:1rem;z-index:60;width:44px;height:44px;border-radius:50%;border:0;background:#2c261f;color:#fff;display:none;cursor:pointer;box-shadow:var(--shadow)}
+  .scrolltop.show{display:grid;place-items:center}
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}.hero-card{max-width:520px}.masthead{min-height:88vh}
+    .intro-grid{grid-template-columns:1fr}.quote-card{position:relative;top:auto}
+    .media-row,.sheet-grid,.archive-grid{grid-template-columns:1fr 1fr}.people{grid-template-columns:1fr 1fr}.women-band{grid-template-columns:1fr}.turin-cast{grid-template-columns:1fr}.women-heroes{grid-template-columns:1fr}.women-band .img{min-height:420px}
+  }
+  @media (max-width:580px){
+    .content{padding-left:1rem;padding-right:1rem}.section-title{grid-template-columns:1fr}.section-no{width:max-content}
+    .media-row,.sheet-grid,.archive-grid,.people{grid-template-columns:1fr}.two-col{columns:1}.women-band{margin-left:-1rem;margin-right:-1rem}.archive{margin-left:-1rem;margin-right:-1rem}.bib-item,.bib-entry{grid-template-columns:1fr}.modal{padding:.25rem}.modal-panel{width:100%;height:94vh}
+    h1{font-size:3.15rem}.hero{gap:1.5rem}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+
+<style>
+  .masthead::before{
+    background:
+      linear-gradient(90deg,rgba(11,9,8,.88),rgba(11,9,8,.46) 54%,rgba(11,9,8,.82)),
+      url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Uomo_Vitruviano.jpg') center 43%/cover no-repeat !important;
+    filter:saturate(.62) sepia(.22) contrast(.95) !important;
+  }
+  .hero{grid-template-columns:minmax(0,1fr) 320px}
+  .ratio-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin:1.5rem 0 2.2rem}
+  .ratio-card{background:#f7f1e5;border:1px solid #d5c6ad;padding:1.1rem;text-align:center}
+  .ratio-card b{font-family:var(--sans);font-size:1.7rem;color:var(--red);display:block}
+  .ratio-card span{font-size:.88rem;color:var(--muted)}
+  .term-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin:1.5rem 0 2rem}
+  .term-card{background:#efe6d6;border-top:4px solid var(--blue);padding:1.15rem}
+  .term-card b{font-family:var(--sans);text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;color:var(--blue)}
+  .term-card h4{margin:.35rem 0 .4rem;font-size:1.35rem}
+  .term-card p{font-size:.94rem;margin:.2rem 0}
+  .compare-band{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+  .compare-box{padding:1.3rem;background:#f2eadc;border:1px solid #d2c2a8}
+  .compare-box:first-child{border-top:5px solid var(--gold)}
+  .compare-box:last-child{border-top:5px solid var(--red)}
+  .compare-box h3{margin:.1rem 0 .8rem}
+  .mini-caption{font-family:var(--sans);font-size:.76rem;line-height:1.5;color:#73685b;margin-top:.5rem}
+  .bridge-final{margin-top:3rem;padding:2.3rem;background:#29231e;color:#f5ecdf;border-top:5px solid var(--gold)}
+  .bridge-final h3{color:#fff;font-size:clamp(1.8rem,3vw,3rem);margin-top:0}
+  .bridge-final p{color:#eee1cf}
+  .route-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+  .route-links .source-card{background:#efe6d6 !important;border:1px solid #ccb99a !important;color:#2b241d !important;box-shadow:0 6px 18px rgba(44,33,22,.06)}
+  .route-links .source-card .src{color:#7a5e3d !important;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+  .route-links .source-card b{color:#2b241d !important}
+  .route-links .source-card span{color:#4b433b !important}
+  .route-links .source-card:hover{background:#eadbc3 !important;border-color:#b99867 !important;transform:translateY(-2px)}
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:1.6rem;align-items:start}
+    .hero-card{width:100%;max-width:560px}
+    .ratio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .term-grid,.compare-band,.route-links{grid-template-columns:1fr}
+  }
+  @media(max-width:580px){
+    .masthead{min-height:auto;padding:4.6rem 1rem 2.2rem}
+    .masthead::before{background-position:center 28% !important}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;width:100%}
+    .hero>div{min-width:0}
+    .kicker{font-size:.67rem;letter-spacing:.15em;margin-bottom:.75rem}
+    h1{font-size:clamp(2.75rem,14vw,3.45rem);line-height:.94;letter-spacing:-.04em;overflow-wrap:normal;word-break:normal}
+    .dek{font-size:1.06rem;line-height:1.42;max-width:none;margin-bottom:0}
+    .hero-card{position:relative;width:100%;max-width:none;box-sizing:border-box;padding:1.05rem 1.1rem;margin:0}
+    .hero-card small{font-size:.68rem;letter-spacing:.1em}
+    .hero-card p{font-size:.94rem;line-height:1.5;margin-top:.5rem}
+  }
+</style>
+</head>
+
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="masthead" id="top">
+  <div class="hero">
+    <div>
+      <div class="top-credit">Pagina a cura di Alessandro Zilli · © tutti i diritti riservati</div>
+      <div class="kicker">Viaggio interattivo · dal rito alla riforma · Roma–Firenze–Mantova–Venezia–Parigi–Vienna</div>
+      <h1>Dal teatro perduto al melodramma barocco</h1>
+      <div class="dek">Come parola, musica, gesto, rito, potere e pubblico si sono rincorsi per secoli fino a creare l’opera e a costringerla, con Gluck, a interrogarsi di nuovo sulla propria natura.</div>
+    </div>
+    <aside class="hero-card">
+      <small>Come usare questa pagina</small>
+      <p>Scorri il racconto come un lungo viaggio: i capitoli seguono la storia, mentre i <strong>cameo</strong> fermano il tempo nei punti in cui qualcosa cambia davvero.</p>
+      <p><em>Monteverdi rappresenta, Marcello critica, Pergolesi emancipa il comico, Gluck riforma. Il capitolo sulle donne rilegge infine l’intero percorso da un altro punto di vista.</em></p>
+    </aside>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="nav-wrap">
+    <nav id="nav">
+      <div class="nav-row">
+        <a href="#prologo">Apollo e Dioniso</a>
+        <a href="#roma">Roma</a>
+        <a href="#medioevo">Medioevo</a>
+        <a href="#rinascimento">Rinascimento</a>
+        <a href="#commedia">Commedia dell’Arte</a>
+        <a href="#shakespeare">Shakespeare</a>
+        <a href="#camerata">Camerata</a>
+        <a href="#euridice">Euridice</a>
+      </div>
+      <div class="nav-row">
+        <a href="#monteverdi">Monteverdi</a>
+        <a href="#venezia">Venezia</a>
+        <a href="#francia">Francia</a>
+        <a href="#seria">Opera seria</a>
+        <a href="#goldoni">Goldoni</a>
+        <a href="#marcello">Marcello</a>
+        <a href="#buffa">Opera buffa</a>
+        <a href="#gluck">Gluck</a>
+        <a href="#donne">Le donne</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="content">
+
+    <section id="prologo">
+      <div class="section-title">
+        <div class="section-no">Prologo</div>
+        <h2>Fra Apollo e Dioniso</h2>
+      </div>
+      <div class="intro-grid">
+        <div>
+          <p class="lead dropcap">Prima ancora di chiederci quando sia nato il melodramma, vale la pena domandarci perché gli esseri umani abbiano sentito per millenni il bisogno di riunirsi davanti a qualcuno che racconta, canta, danza, indossa una maschera, assume l’identità di un altro e trasforma uno spazio reale in un luogo immaginario.</p>
+          <p>Quando Friedrich Nietzsche pubblicò <em>La nascita della tragedia</em>, interpretò il teatro greco attraverso la tensione fra due forze, l’apollinea e la dionisiaca: da una parte la forma, la misura, l’immagine e il bisogno di rendere il mondo riconoscibile, dall’altra la musica, l’ebbrezza, il ritmo, il ditirambo e quella dimensione collettiva nella quale i confini individuali sembrano temporaneamente sciogliersi. Non è una teoria storica del melodramma, ma è una chiave di lettura sorprendentemente fertile per il nostro percorso, perché anche il teatro musicale continuerà a oscillare fra ordine e vertigine, parola e canto, individuo e comunità, religione e rito.</p>
+        </div>
+        <aside class="quote-card">
+          <p>La storia che seguiremo può essere letta come il continuo tentativo di tenere insieme forma e impulso, parola e musica, racconto e rito.</p>
+          <cite>Una chiave di lettura per tutto il percorso</cite>
+        </aside>
+      </div>
+      <div class="callout"><strong>Il filo:</strong> ogni volta che uno dei due poli sembra prevalere troppo, il teatro reagisce. La polifonia renderà difficile la parola, la Camerata cercherà la monodia; il canto conquisterà uno spazio enorme, Marcello ne riderà; le convenzioni si irrigidiranno e Gluck cercherà un nuovo equilibrio.</div>
+    </section>
+
+    <section id="roma">
+      <div class="section-title"><div class="section-no">01</div><h2>Quando il teatro antico cambia pelle</h2></div>
+      <div class="two-col">
+        <p>Nella Grecia classica la tragedia e la commedia erano parte integrante della vita pubblica e religiosa, mentre Roma ne accolse forme e testi inserendoli in un sistema dello spettacolo molto più vasto, nel quale convivevano teatro, mimo, pantomima, corse, combattimenti e grandi manifestazioni popolari. Con il passare dei secoli, il teatro letterario cessò di essere l’unico centro dell’esperienza spettacolare e acquistò sempre maggiore importanza tutto ciò che agiva direttamente sul corpo e sull’emozione dello spettatore.</p>
+        <p>Con la crisi dell’Impero romano d’Occidente cambiano insieme città, istituzioni, economia e religione. Molti autori cristiani guardano con sospetto agli <em>spectacula</em>, non soltanto perché divertono, ma perché li percepiscono come legati ai culti pagani e a un mondo dell’attore moralmente ambiguo. Il teatro antico, tuttavia, non viene cancellato da un singolo divieto: perde progressivamente le strutture sociali che lo avevano sostenuto e sopravvive trasformandosi, mentre gesto, canto, racconto e rappresentazione continuano a riapparire in contesti differenti.</p>
+      </div>
+      <div class="history-pivot">
+        <h3>Un paradosso che ci accompagnerà a lungo</h3>
+        <p>La stessa Chiesa che aveva diffidato degli spettacoli romani possiede una liturgia ricchissima di parola, canto, gesto, processione e spazio simbolico: proprio all’interno di quel mondo ricominceranno a comparire forme di dialogo e rappresentazione.</p>
+      </div>
+    </section>
+
+    <section id="medioevo">
+      <div class="section-title"><div class="section-no">02</div><h2>Il Medioevo: il teatro rinasce senza chiamarsi ancora teatro</h2></div>
+      <div class="two-col">
+        <p>Il <em>Quem quaeritis?</em>, i tropi, le Passioni, i Misteri e le Moralità mostrano come la rappresentazione possa diventare uno strumento di comprensione e memoria, soprattutto in una società nella quale gran parte della popolazione non sa leggere e la liturgia utilizza una lingua non parlata quotidianamente. Vedere una storia permette di comprenderla, mentre sentirla cantata aiuta a ricordarla.</p>
+        <p>Accanto alle forme religiose continuano però a vivere giullari, narratori, musici, acrobati e artisti itineranti, mentre nelle corti si sviluppano spettacoli legati al mondo cavalleresco e alla celebrazione aristocratica. Il Medioevo consegna così al Rinascimento un patrimonio già ricchissimo di parola, musica, gesto, personaggio e pubblico, che l’Umanesimo non dovrà inventare ma riorganizzare attraverso una nuova idea dell’antico.</p>
+      </div>
+    </section>
+
+    <section id="rinascimento">
+      <div class="section-title"><div class="section-no">03</div><h2>Il Rinascimento rimette in scena gli antichi</h2></div>
+      <div class="two-col">
+        <p>L’Umanesimo restituisce alla cultura classica una nuova centralità e trasforma tragedia, commedia, retorica e filosofia in modelli da studiare e reinventare. Nelle corti italiane il teatro entra nella grande macchina del mecenatismo, attraverso la quale famiglie come i Medici, i Gonzaga e gli Este mostrano ricchezza, prestigio e capacità di attrarre artisti.</p>
+        <p>Il nuovo teatro, però, non copia semplicemente quello antico, perché porta con sé ciò che i secoli medievali hanno prodotto: feste, danze, tradizioni popolari, musica, narrazioni cavalleresche e professionisti dello spettacolo. È proprio questa miscela fra recupero dell’antico e pratiche vive a creare l’ambiente nel quale, alla fine del Cinquecento, potrà nascere il melodramma.</p>
+      </div>
+
+      <div class="media-row">
+        <button class="media-card resource" data-title="Teatro Farnese · Parma" data-url="https://commons.wikimedia.org/wiki/File:Parma_interno_del_Teatro_Farnese.jpg">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Parma_interno_del_Teatro_Farnese.jpg" alt="Interno storico del Teatro Farnese">
+          <span class="shade"></span><span class="play">＋</span>
+          <span class="meta"><span class="tag">Spazio teatrale</span><h4>Il teatro diventa architettura del potere</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Francesca Caccini · Wikimedia Commons" data-url="https://commons.wikimedia.org/wiki/File:Francesca_Caccini.jpg">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesca_Caccini.jpg" alt="Cameo di Francesca Caccini">
+          <span class="shade"></span><span class="play">＋</span>
+          <span class="meta"><span class="tag">Filone donne</span><h4>Francesca Caccini cresce dentro questo mondo</h4></span>
+        </button>
+        <button class="media-card resource" data-title="La liberazione di Ruggiero · scena del 1625" data-url="https://commons.wikimedia.org/wiki/File:F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg" alt="Scena della Liberazione di Ruggiero di Francesca Caccini">
+          <span class="shade"></span><span class="play">＋</span>
+          <span class="meta"><span class="tag">Teatro mediceo</span><h4>Macchine, scene e meraviglia</h4></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="commedia">
+      <div class="section-title"><div class="section-no">04</div><h2>La Commedia dell’Arte e il mestiere dell’attore</h2></div>
+      <div class="two-col">
+        <p>Le compagnie della Commedia dell’Arte lavorano spesso a partire da un canovaccio e costruiscono la scena attraverso l’improvvisazione, il gesto, la memoria dell’attore e il rapporto diretto con il pubblico. Le maschere trasformano caratteri e differenze sociali in figure immediatamente riconoscibili, mentre musica e danza accompagnano la rappresentazione senza essere percepite come elementi estranei.</p>
+        <p>Il servo furbo, capace di comprendere ciò che il padrone non vede, introduce già un motivo destinato a tornare con forza nel Settecento, quando il teatro comincerà a osservare con maggiore ironia le gerarchie sociali. Con Goldoni il tipo fisso lascerà progressivamente spazio alla persona, mentre le vecchie maschere verranno sempre più associate alla dimensione del Carnevale.</p>
+      </div>
+    </section>
+
+    <section id="shakespeare">
+      <div class="section-title"><div class="section-no">05</div><h2>Shakespeare e un’altra strada del teatro europeo</h2></div>
+      <div class="two-col">
+        <p>In Inghilterra il teatro diventa una vera attività pubblica e commerciale, sostenuta da compagnie professionali e da un pubblico pagante. La musica è continuamente presente nei drammi di Shakespeare, dove accompagna feste, emozioni, trasformazioni della scena e perfino alcuni personaggi, ma non sostituisce la parola parlata.</p>
+        <p>Il confronto con l’Italia è prezioso: mentre il teatro di parola raggiunge in Inghilterra una straordinaria maturità, a Firenze alcuni musicisti e intellettuali iniziano a chiedersi se sia possibile trasformare l’intera azione teatrale in musica, recuperando in modo creativo e in parte immaginario ciò che pensano fosse accaduto nella tragedia greca.</p>
+      </div>
+    </section>
+
+    <section id="camerata">
+      <div class="section-title"><div class="section-no">06</div><h2>La Camerata de’ Bardi: cercare la Grecia e trovare l’opera</h2></div>
+      <div class="two-col">
+        <p>Nella Firenze della seconda metà del Cinquecento, Giovanni de’ Bardi riunisce intorno a sé musicisti, poeti e intellettuali interessati al rapporto fra musica, parola e tragedia antica. Vincenzo Galilei, Giulio Caccini, Jacopo Peri e Ottavio Rinuccini partecipano a un ambiente nel quale la complessità polifonica viene percepita come poco adatta a rendere chiaramente il testo e l’affetto individuale.</p>
+        <p>La risposta prende forma nella monodia accompagnata e nel <em>recitar cantando</em>, mentre il basso continuo consente agli strumenti di sostenere la voce senza soffocarne la mobilità. Nel tentativo di ricostruire l’antico, la Camerata finisce così per inventare qualcosa di nuovo: una voce sola può diventare personaggio e sostenere, quasi parlando, il peso di un’intera scena.</p>
+      </div>
+      <div class="student-box">
+        <div class="student-label">✦ Per iniziare</div>
+        <h3>La parola deve farsi capire</h3>
+        <p>Ascolta mentalmente la differenza fra cinque voci indipendenti che pronunciano insieme lo stesso testo e una voce sola che può rallentare, fermarsi, insistere su una parola. Quale delle due soluzioni sembra più adatta a interpretare un personaggio?</p>
+        <div class="try"><strong>Domanda-guida:</strong> se togliamo le altre voci, che cosa dobbiamo inventare per non lasciare il cantante completamente solo?</div>
+      </div>
+    </section>
+
+    <section id="euridice">
+      <div class="section-title"><div class="section-no">07</div><h2>Firenze 1600: le due Euridice</h2></div>
+      <div class="two-col">
+        <p>Le celebrazioni per il matrimonio fra Maria de’ Medici ed Enrico IV di Francia offrono l’occasione per mettere alla prova il nuovo teatro musicale. Jacopo Peri e Giulio Caccini musicano lo stesso libretto di Ottavio Rinuccini, scegliendo il mito di Orfeo ed Euridice, nel quale la musica possiede già un potere narrativo e simbolico centrale.</p>
+        <p>Le due versioni mostrano immediatamente la tensione che attraverserà tutta la storia dell’opera: da una parte la necessità di rendere comprensibile la parola, dall’altra il desiderio della musica di acquistare una propria autonomia espressiva. Proprio Orfeo, il musicista capace di commuovere perfino le potenze infernali, diventa il protagonista ideale di un genere che pretende di dimostrare che la musica può rendere credibile il dramma.</p>
+      </div>
+      <div class="callout"><strong>Una domanda che tornerà fino a Gluck:</strong> la musica deve servire la parola e il teatro, oppure il teatro può diventare il pretesto attraverso il quale la musica conquista sempre più spazio?</div>
+    </section>
+
+    <section id="monteverdi">
+      <div class="section-title"><div class="section-no">08</div><h2>Monteverdi: l’esperimento diventa teatro</h2></div>
+      <div class="two-col">
+        <p>Con <em>L’Orfeo</em>, rappresentato a Mantova nel 1607, la corte dei Gonzaga entra nel nuovo linguaggio nato a Firenze e lo affida a un compositore capace di riunire madrigale, monodia, cori, danza e strumenti in una costruzione drammatica molto più ricca. Non è necessario immaginare una gara esplicitamente dichiarata fra Gonzaga e Medici per riconoscere quanto la competizione simbolica fra le corti fosse una parte naturale di quel mondo: Firenze aveva mostrato una strada, Mantova poteva ora dimostrare di saperla percorrere con mezzi ancora più spettacolari.</p>
+        <p>Monteverdi non cancella il Rinascimento ma lo trasforma, utilizzando forme e tecniche differenti secondo ciò che la scena richiede. Il rapporto fra aria e recitativo comincia a differenziarsi più chiaramente, ma senza la rigidità che assumerà in seguito, perché azione, affetto, coro e strumento restano ancora parte di una struttura mobile.</p>
+      </div>
+
+      <div class="literary-aside">
+        <div class="eyebrow">Cameo · Monteverdi</div>
+        <h3>Il madrigale prende le armi: Tancredi e Clorinda</h3>
+        <p>Nel <em>Combattimento di Tancredi e Clorinda</em>, tratto dalla <em>Gerusalemme liberata</em> di Torquato Tasso, il madrigale diventa “genere rappresentativo”: il Testo narra, Tancredi e Clorinda agiscono, mentre gli strumenti trasformano in suono l’agitazione del combattimento. Lo stile concitato mostra con particolare evidenza che la musica può ormai imitare il gesto e costruire direttamente l’azione scenica.</p>
+        <div class="keys">
+          <div class="key"><b>Tasso</b><span>La poesia epica fornisce una scena già drammatica, costruita su riconoscimento, violenza e pietà.</span></div>
+          <div class="key"><b>Genere rappresentativo</b><span>Il madrigale non scompare: impara a diventare teatro.</span></div>
+          <div class="key"><b>Stile concitato</b><span>La scrittura strumentale trasforma fisicamente la battaglia in suono.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="venezia">
+      <div class="section-title"><div class="section-no">09</div><h2>Venezia: dalla corte al botteghino</h2></div>
+      <div class="two-col">
+        <p>Con l’apertura del Teatro San Cassiano nel 1637 il melodramma entra stabilmente nel circuito dello spettacolo pubblico a pagamento. L’opera diventa anche impresa economica: occorre organizzare stagioni, affittare palchi, pagare artisti, allestire scene e attirare un pubblico che, proprio perché paga, comincia a esercitare un peso crescente sulle scelte artistiche.</p>
+        <p>Il nuovo sistema favorisce la crescita del divismo, la centralità delle voci e l’espansione dell’aria come momento privilegiato dell’opera, fino a creare una macchina spettacolare potentissima ma sempre più esposta al rischio della convenzione. La voce che la Camerata aveva liberato per rendere comprensibile la parola può ora diventare il motivo principale per cui lo spettatore compra il biglietto.</p>
+      </div>
+      <div class="timeline">
+        <div class="event"><b>1600</b><p>Firenze: l’opera nasce nella celebrazione dinastica.</p></div>
+        <div class="event"><b>1607</b><p>Mantova: Monteverdi trasforma l’esperimento in vero teatro musicale.</p></div>
+        <div class="event"><b>1624</b><p>Venezia: il <em>Combattimento</em> porta la rappresentazione dentro il madrigale.</p></div>
+        <div class="event"><b>1637</b><p>San Cassiano: il pubblico pagante cambia l’economia dell’opera.</p></div>
+      </div>
+    </section>
+
+    <section id="francia">
+      <div class="section-title"><div class="section-no">10</div><h2>La strada francese: il teatro passa anche attraverso il corpo</h2></div>
+      <div class="two-col">
+        <p>Mentre in Italia il melodramma procede verso il teatro pubblico e il predominio crescente del cantante, nella Francia di Luigi XIV la scena barocca sviluppa un’altra soluzione, nella quale musica, parola, danza, gesto e apparato di corte restano strettamente intrecciati. Il sovrano danza personalmente nei grandi <em>ballets de cour</em>, mentre la disciplina del corpo diventa anche una rappresentazione visibile dell’ordine monarchico.</p>
+        <p>La collaborazione fra Molière e Jean-Baptiste Lully porta alla <em>comédie-ballet</em>, dove il teatro di parola non viene semplicemente interrotto dalla musica e dalla danza, ma può incorporarle dentro lo stesso progetto scenico. Lully svilupperà poi una tradizione operistica francese nella quale coro, orchestra e danza conservano un peso molto maggiore rispetto a molta opera italiana, preparando una linea che tornerà importantissima quando arriveremo alla riforma di Gluck.</p>
+      </div>
+      <div class="callout"><strong>Due strade parallele:</strong> l’Italia concentra sempre più energia sulla voce e sul mercato teatrale; la Francia conserva più fortemente l’idea di uno spettacolo nel quale parola, corpo, coro, danza e orchestra partecipano alla stessa architettura.</div>
+    </section>
+
+    <section id="seria">
+      <div class="section-title"><div class="section-no">11</div><h2>L’opera seria e la macchina delle convenzioni</h2></div>
+      <div class="two-col">
+        <p>Nel Settecento l’opera seria italiana raggiunge una forma estremamente organizzata, nella quale il recitativo sviluppa l’azione mentre l’aria consente al personaggio di concentrarsi sull’affetto. La forma col da capo offre inoltre ai cantanti uno spazio privilegiato per l’ornamentazione e il virtuosismo, facendo crescere il potere delle primedonne e dei grandi castrati all’interno del sistema produttivo.</p>
+        <p>Metastasio porta questa struttura a una straordinaria perfezione poetica e drammaturgica, ma proprio la regolarità della macchina rende sempre più visibili gli automatismi. Il teatro può diventare una successione di momenti nei quali la vicenda procede nel recitativo e si arresta nell’aria, mentre il pubblico attende l’esibizione della voce celebre più ancora dello sviluppo dell’azione.</p>
+      </div>
+    </section>
+
+    <section id="goldoni">
+      <div class="section-title"><div class="section-no">12</div><h2>Goldoni: dalla maschera alla persona</h2></div>
+      <div class="two-col">
+        <p>Nel Settecento Carlo Goldoni trasforma progressivamente la tradizione della Commedia dell’Arte, sostituendo il canovaccio con una scrittura più definita e costruendo personaggi che non coincidono più completamente con tipi fissi. Il teatro comincia così a rappresentare con maggiore precisione lavoro, denaro, nobiltà, borghesia e rapporti sociali, mentre le maschere non scompaiono ma vengono gradualmente ricondotte verso la dimensione festiva e carnevalesca.</p>
+        <p>È qui che una figura come Mirandolina acquista particolare importanza: la protagonista della <em>Locandiera</em> lavora, amministra, legge perfettamente le debolezze degli uomini che la circondano e possiede un’autonomia che non deriva dall’appartenenza a una grande dinastia. Il comico comincia a diventare uno strumento stabile attraverso il quale la società può guardare le proprie gerarchie e scoprirne le contraddizioni.</p>
+      </div>
+    </section>
+
+    <section id="marcello">
+      <div class="section-title"><div class="section-no">13</div><h2>Quando il teatro prende in giro sé stesso</h2></div>
+      <div class="two-col">
+        <p>Nel 1720 Benedetto Marcello pubblica anonimamente <em>Il teatro alla moda</em>, fingendo di offrire consigli su come costruire un’opera secondo il gusto contemporaneo. Il manuale è naturalmente una trappola satirica: poeti, compositori, cantanti, impresari, ballerini e perfino le madri delle virtuose appaiono intenti a difendere il proprio interesse anche quando questo danneggia la coerenza del dramma.</p>
+        <p>Fra i bersagli riconoscibili compare anche Antonio Vivaldi, trasformato ironicamente nell’anagramma “Aldiviva”, un dettaglio particolarmente utile perché ricorda che Vivaldi non fu soltanto il grande autore di concerti che oggi conosciamo, ma partecipò direttamente alla vita dell’industria operistica veneziana.</p>
+      </div>
+      <div class="literary-aside">
+        <div class="eyebrow">Cameo · Benedetto Marcello</div>
+        <h3><em>Il teatro alla moda</em></h3>
+        <p>La satira ci permette di ascoltare le critiche dall’interno: non sono gli storici moderni a inventare il problema del divismo, dell’aria da applauso o dell’impresario che deve far quadrare i conti. È il teatro barocco stesso che, arrivato a piena maturità, comincia a riconoscere i propri automatismi e a riderne.</p>
+      </div>
+    </section>
+
+    <section id="buffa">
+      <div class="section-title"><div class="section-no">14</div><h2>Il comico esce dalla parentesi</h2></div>
+      <div class="two-col">
+        <p>Nel corso del Settecento il comico acquista progressivamente una propria autonomia, mentre servi, mercanti, giovani innamorati e personaggi della vita quotidiana possono occupare il centro della scena senza essere confinati alla parentesi festiva o all’intervallo fra due momenti seri. L’opera buffa non nasce da un singolo episodio, ma da un processo nel quale il rovesciamento delle gerarchie conquista una dignità teatrale sempre più stabile.</p>
+        <p>È in questo contesto che <em>La serva padrona</em> di Giovanni Battista Pergolesi assume un valore emblematico: nata come intermezzo, concentra in pochi personaggi un meccanismo sociale semplicissimo e potentissimo, perché Uberto possiede formalmente il potere mentre Serpina comprende meglio di lui la situazione e riesce a modificarla a proprio vantaggio.</p>
+      </div>
+      <div class="literary-aside">
+        <div class="eyebrow">Cameo · Pergolesi</div>
+        <h3>La serva diventa padrona</h3>
+        <p>Il titolo contiene già il rovesciamento. Senza trasformare Serpina in un manifesto politico moderno, il teatro permette ormai a un personaggio socialmente subordinato di essere più intelligente, attivo e teatrale del padrone. In questo senso l’opera buffa porta fuori dalla parentesi carnevalesca una libertà comica che per secoli aveva avuto il diritto di esistere soprattutto come eccezione.</p>
+      </div>
+    </section>
+
+    <section id="gluck">
+      <div class="section-title"><div class="section-no">15 · Finale</div><h2>Gluck: quando il melodramma prova a riformare sé stesso</h2></div>
+      <div class="two-col">
+        <p>Alla fine del percorso barocco il melodramma è diventato una macchina spettacolare capace di riunire poesia, canto, orchestra, danza e scenografia, ma proprio questa ricchezza ha prodotto convenzioni che rischiano di separare nuovamente musica e teatro. Gluck interviene su questo sistema cercando di ridurre il virtuosismo fine a sé stesso, rafforzare il ruolo del coro e dell’orchestra e restituire continuità all’azione.</p>
+        <p>La sua esperienza mette inoltre in contatto la tradizione italiana con quella francese, nella quale coro, danza e gesto avevano conservato un ruolo particolarmente importante. La riforma non cancella quindi il Barocco, ma ne raccoglie le tensioni e le conduce verso una nuova concezione del dramma musicale.</p>
+      </div>
+      <div class="history-pivot">
+        <h3>Cameo · Ancora Orfeo</h3>
+        <p>Nel 1762 <em>Orfeo ed Euridice</em> riporta sulla scena il mito che aveva accompagnato la nascita del melodramma. Questa volta Orfeo serve a dimostrare che l’emozione può nascere dalla coerenza fra musica e azione senza dipendere necessariamente dall’esibizione virtuosistica del cantante. Il cerchio si chiude: il melodramma torna alla domanda dalla quale era partito, chiedendosi ancora una volta come la musica possa diventare teatro.</p>
+      </div>
+    </section>
+
+    <section id="donne">
+      <div class="section-title"><div class="section-no">Capitolo trasversale</div><h2>Le donne: dalla corte alla scena</h2></div>
+      <div class="women-band">
+        <div class="img" style="background-image:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesca_Caccini.jpg');background-size:cover;background-position:center;"></div>
+        <div class="txt">
+          <h3>Non un’aggiunta alla storia: un altro modo di leggerla</h3>
+          <p>Le donne Medici partecipano al sistema della committenza e delle grandi celebrazioni dinastiche, Maria de’ Medici si trova al centro dell’occasione che porta all’<em>Euridice</em> del 1600, Francesca Caccini diventa compositrice e professionista della corte, le primedonne acquistano potere economico e artistico, mentre nel Settecento personaggi come Serpina e Mirandolina mostrano che una donna non aristocratica può essere il soggetto più attivo e intelligente dell’intera vicenda.</p>
+          <p>Questo capitolo rilegge quindi il percorso dall’inizio, osservando non soltanto chi compone o chi canta, ma chi finanzia, chi lavora, chi può scegliere e chi, a un certo punto, comincia persino a contestare la posizione che la società gli ha assegnato.</p>
+        </div>
+      </div>
+      <div class="women-heroes">
+        <div class="heroine-card"><b>Le donne Medici</b><p>Committenti, protagoniste dinastiche e motore di grandi eventi spettacolari.</p></div>
+        <div class="heroine-card"><b>Francesca Caccini</b><p>Cantante, strumentista e compositrice professionista nel cuore della corte fiorentina.</p></div>
+        <div class="heroine-card"><b>Primedonne</b><p>Il mercato dell’opera trasforma la cantante in una figura capace di esercitare un enorme potere sul teatro.</p></div>
+        <div class="heroine-card"><b>Serpina</b><p>La subordinazione sociale non coincide più con una subordinazione teatrale.</p></div>
+        <div class="heroine-card"><b>Mirandolina</b><p>La donna borghese entra in scena attraverso lavoro, autonomia e intelligenza sociale.</p></div>
+        <div class="heroine-card"><b>Verso l’Illuminismo</b><p>La scena diventa uno spazio nel quale le gerarchie possono essere osservate, imitate e infine messe in discussione.</p></div>
+      </div>
+    </section>
+
+    <section class="archive" id="fonti">
+      <div class="archive-inner">
+        <div class="section-title"><div class="section-no">Teca</div><h2>Prime immagini e fonti del percorso</h2></div>
+        <p>Questa teca crescerà insieme al sito con facsimili, spartiti, trattati, libretti e ascolti. Per ora raccoglie le prime immagini pubbliche che stanno definendo l’identità visiva del progetto.</p>
+        <div class="archive-grid">
+          <button class="source-card resource" data-title="Teatro Farnese · Wikimedia Commons" data-url="https://commons.wikimedia.org/wiki/File:Parma_interno_del_Teatro_Farnese.jpg"><span class="src">Wikimedia Commons · pubblico dominio</span><b>Teatro Farnese</b><span>Una grande macchina scenica del primo Seicento.</span></button>
+          <button class="source-card resource" data-title="Francesca Caccini · Wikimedia Commons" data-url="https://commons.wikimedia.org/wiki/File:Francesca_Caccini.jpg"><span class="src">Wikimedia Commons · pubblico dominio</span><b>Francesca Caccini</b><span>Il cameo tradizionalmente associato alla compositrice fiorentina.</span></button>
+          <button class="source-card resource" data-title="La liberazione di Ruggiero · scena 1625" data-url="https://commons.wikimedia.org/wiki/File:F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg"><span class="src">Wikimedia Commons · pubblico dominio</span><b>La liberazione di Ruggiero</b><span>La scena medicea come teatro di meraviglia.</span></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"><div class="footer-inner">
+    <span>Pagina narrativa interattiva · storia del teatro musicale e del melodramma barocco.</span>
+    <span>Immagini, spartiti, documenti e materiali audiovisivi di terzi restano soggetti ai diritti e alle licenze dei rispettivi titolari.</span>
+    <div class="webmaster-line">
+      <span><strong>Webmaster:</strong> Alessandro Zilli</span>
+      <span>·</span>
+      <a href="https://www.amazon.it/stores/Alessandro-Zilli/author/B0H36YZLC7?ref=sr_ntt_srch_lnk_10&shoppingPortalEnabled=true">I miei libri su Amazon</a>
+      <span>·</span>
+      <a href="mailto:alessandro.zilli@gmail.com">alessandro.zilli@gmail.com</a>
+    </div>
+    <div class="copyright">© Alessandro Zilli · testi originali e struttura editoriale.</div>
+  </div></footer>
+</div>
+
+<button class="scrolltop" id="scrolltop" aria-label="Torna in alto">↑</button>
+
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-panel">
+    <div class="modal-head"><div class="modal-title" id="modalTitle">Teca</div><button class="modal-close" id="modalClose" aria-label="Chiudi">×</button></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot"><span class="url-box" id="modalUrl"></span><button class="copy-btn" id="copyBtn">Copia link</button><button class="open-btn" id="openBtn">Apri in una nuova finestra per navigare</button></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const modal = document.getElementById('modal');
+  const body = document.getElementById('modalBody');
+  const title = document.getElementById('modalTitle');
+  const urlBox = document.getElementById('modalUrl');
+  const closeBtn = document.getElementById('modalClose');
+  const copyBtn = document.getElementById('copyBtn');
+  const openBtn = document.getElementById('openBtn');
+  let currentUrl = '';
+  let lastFocus = null;
+
+  function showModal(t, content, url='', compact=false){
+    lastFocus = document.activeElement;
+    title.textContent = t;
+    body.innerHTML = content;
+    currentUrl = url;
+    urlBox.textContent = url || 'Contenuto incorporato nella pagina';
+    openBtn.disabled = !url;
+    modal.classList.toggle('compact', compact);
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    closeBtn.focus();
+  }
+  function closeModal(){
+    modal.classList.remove('open','compact');
+    modal.setAttribute('aria-hidden','true');
+    body.innerHTML='';
+    document.body.style.overflow='';
+    if(lastFocus) lastFocus.focus();
+  }
+  closeBtn.addEventListener('click',closeModal);
+  modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+  copyBtn.addEventListener('click', async()=>{
+    if(!currentUrl) return;
+    try{ await navigator.clipboard.writeText(currentUrl); copyBtn.textContent='Copiato'; setTimeout(()=>copyBtn.textContent='Copia link',1200); }
+    catch{ copyBtn.textContent='Seleziona l’indirizzo'; }
+  });
+  openBtn.addEventListener('click',()=>{
+    if(!currentUrl) return;
+    window.open(currentUrl,'_blank','noopener,noreferrer');
+  });
+  // Le normali pagine web esterne non vengono incorporate:
+  // molti siti istituzionali/editoriali vietano gli iframe e mostrerebbero una finestra "rotta".
+  // Conserviamo il viewer interno soltanto per alcuni PDF verificati come direttamente raggiungibili.
+  const embeddablePdfHosts = new Set([
+    'www.cittametropolitana.torino.it',
+    'www.iamlitalia.it'
+  ]);
+  const canEmbedResource = (u,kind)=>{
+    if(kind!=='pdf') return false;
+    try{ return embeddablePdfHosts.has(new URL(u).hostname.toLowerCase()); }
+    catch{ return false; }
+  };
+
+  document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
+    const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
+    if(!canEmbedResource(u,kind)){
+      showModal(t, '', u, true);
+      return;
+    }
+    const frame = `<object data="${u}" type="application/pdf"><iframe src="${u}" title="${t}"></iframe></object>`;
+    showModal(t, frame, u);
+  }));
+
+  document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{
+    const id=el.dataset.video,t=el.dataset.title || 'Video';
+    const start=parseInt(el.dataset.start||'0',10) || 0;
+    const u=`https://www.youtube.com/watch?v=${id}${start ? '&t='+start+'s' : ''}`;
+    const embed=`https://www.youtube-nocookie.com/embed/${id}?rel=0${start ? '&start='+start : ''}`;
+    showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
+  }));
+
+  document.querySelectorAll('.audio').forEach(el=>el.addEventListener('click',()=>{
+    const u=el.dataset.audio,t=el.dataset.title || 'Audio';
+    showModal(t,`<div class="audio-wrap"><div><h3 style="margin-top:0">${t}</h3><audio id="modalAudio" controls preload="metadata" src="${u}"></audio><p style="font-family:var(--sans);font-size:.85rem;color:#6c6258">Fonte: Presidenza del Consiglio dei Ministri</p></div></div>`,u);
+    const player=document.getElementById('modalAudio');
+    if(player) player.addEventListener('error',()=>showModal(t,'',u,true),{once:true});
+  }));
+
+  document.querySelectorAll('.image-modal').forEach(el=>el.addEventListener('click',()=>{
+    const src=el.dataset.img,t=el.dataset.title || 'Immagine',u=el.dataset.url || src;
+    showModal(t,`<img id="modalImage" src="${src}" alt="${t}">`,u);
+    const img=document.getElementById('modalImage');
+    if(img) img.addEventListener('error',()=>showModal(t,'',u,true),{once:true});
+  }));
+
+  // Prevent accidental navigation outside the page. Normal hash links remain internal.
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a');
+    if(!a) return;
+    const href=a.getAttribute('href')||'';
+    if(href.startsWith('#')) return;
+    if(a.classList.contains('learning-check-button')) return;
+    if(/^https?:/i.test(href)){
+      e.preventDefault();
+      const t=a.textContent.trim() || 'Fonte';
+      showModal(t, '', href, true);
+    }
+  });
+
+  const progress=document.getElementById('progress');
+  const scrolltop=document.getElementById('scrolltop');
+  window.addEventListener('scroll',()=>{
+    const doc=document.documentElement;
+    const max=doc.scrollHeight-doc.clientHeight;
+    progress.style.width=(max ? (doc.scrollTop/max*100) : 0)+'%';
+    scrolltop.classList.toggle('show',doc.scrollTop>700);
+  },{passive:true});
+  scrolltop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Menu contestuale: determina la sezione dalla posizione reale di scorrimento.
+  // A differenza dell'IntersectionObserver, non perde sezioni quando si trascina
+  // rapidamente la barra laterale.
+  const navEl=document.getElementById('nav');
+  const navWrap=document.querySelector('.nav-wrap');
+  const links=[...document.querySelectorAll('#nav a[href^="#"]')];
+  const sectionLinks=links
+    .map(a=>({a,id:a.getAttribute('href').slice(1)}))
+    .map(x=>({...x,el:document.getElementById(x.id)}))
+    .filter(x=>x.el);
+  let activeId='';
+  let spyTick=false;
+
+  function setActiveSection(){
+    spyTick=false;
+    if(!sectionLinks.length) return;
+
+    const navH=navWrap ? navWrap.offsetHeight : 0;
+    // La linea di lettura cade poco sotto il menu: abbastanza avanti da
+    // aggiornare il titolo appena si entra davvero nella nuova sezione.
+    const probe=window.scrollY + navH + Math.min(180,window.innerHeight*.24);
+
+    let current=sectionLinks[0];
+    for(const item of sectionLinks){
+      const top=item.el.getBoundingClientRect().top + window.scrollY;
+      if(top<=probe) current=item;
+      else break;
+    }
+
+    // Vicino al fondo della pagina attiva sempre l'ultima voce, anche su schermi
+    // alti dove l'inizio dell'ultima sezione potrebbe non raggiungere la sonda.
+    if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8){
+      current=sectionLinks[sectionLinks.length-1];
+    }
+
+    if(current.id===activeId) return;
+    activeId=current.id;
+    links.forEach(a=>a.classList.toggle('active',a===current.a));
+
+    // Ogni riga dell'indice scorre autonomamente: quando cambia la sezione
+    // porta dolcemente al centro la voce attiva nella sua riga.
+    const row=current.a.closest('.nav-row') || navEl;
+    const left=current.a.offsetLeft;
+    const right=left+current.a.offsetWidth;
+    const viewLeft=row.scrollLeft;
+    const viewRight=viewLeft+row.clientWidth;
+    if(left<viewLeft+8 || right>viewRight-8){
+      const targetLeft=Math.max(0,left-(row.clientWidth-current.a.offsetWidth)/2);
+      row.scrollTo({left:targetLeft,behavior:'smooth'});
+    }
+  }
+
+  function scheduleSpy(){
+    if(spyTick) return;
+    spyTick=true;
+    requestAnimationFrame(setActiveSection);
+  }
+
+  window.addEventListener('scroll',scheduleSpy,{passive:true});
+  window.addEventListener('resize',scheduleSpy,{passive:true});
+  window.addEventListener('load',setActiveSection,{once:true});
+  setActiveSection();
+})();
+</script>
+</body>
+</html>
