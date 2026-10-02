@@ -256,6 +256,8 @@
   .explainer-compare>div{background:#eee4d3;border-top:4px solid var(--gold);padding:1rem}
   .explainer-arrow{margin:1.6rem 0;padding:1.2rem 1.4rem;background:#2b241f;color:#f5ecdf;font-family:var(--sans);font-weight:800;line-height:1.55}
   .explainer-note{margin:1.5rem 0;padding:1rem 1.15rem;border-left:5px solid var(--blue);background:#ece7dc}
+  .explainer-source-link{display:inline-flex;align-items:center;gap:.55rem;margin-top:1rem;padding:.85rem 1.05rem;background:#2b241f;color:#fff;text-decoration:none;font-family:var(--sans);font-weight:900;border:1px solid #2b241f}
+  .explainer-source-link:hover{background:var(--gold);border-color:var(--gold);color:#fff}
   @media(max-width:700px){.explainer-compare{grid-template-columns:1fr}}
   .modal-body img{max-width:100%;max-height:100%;object-fit:contain}
   .modal-body .audio-wrap{background:#f5efe4;color:#2c261f;width:100%;height:100%;display:grid;place-items:center;padding:2rem;text-align:center}
@@ -573,8 +575,8 @@
         <button class="sheet resource" data-title="Giulio Caccini · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29">
           <div><div class="year">Caccini</div><h4>La seconda <em>Euridice</em></h4><p>Lo stesso libretto permette di confrontare due soluzioni musicali nate nello stesso ambiente fiorentino.</p></div><span class="open">Apri IMSLP →</span>
         </button>
-        <div class="sheet"><div><div class="year">Ottavio Rinuccini</div><h4>Il librettista entra in scena</h4><p>Il testo non è una poesia qualsiasi: deve diventare azione, voce e tempo musicale.</p></div><span class="open">Parola → teatro → musica</span></div>
-        <div class="sheet"><div><div class="year">Orfeo</div><h4>Un mito perfetto</h4><p>La prima grande storia dell’opera racconta proprio di un musicista capace di modificare la realtà attraverso il canto.</p></div><span class="open">Il cerchio arriverà a Gluck</span></div>
+        <button class="sheet explainer" data-explainer="rinuccini" data-title="Ottavio Rinuccini · Il librettista entra in scena"><div><div class="year">Ottavio Rinuccini</div><h4>Il librettista entra in scena</h4><p>Il testo non è una poesia qualsiasi: deve diventare azione, voce e tempo musicale.</p></div><span class="open">Parola → teatro → musica</span></button>
+        <button class="sheet explainer" data-explainer="orfeo" data-title="Orfeo · Il mito fondativo dell’opera"><div><div class="year">Orfeo</div><h4>Un mito perfetto</h4><p>La prima grande storia dell’opera racconta proprio di un musicista capace di modificare la realtà attraverso il canto.</p></div><span class="open">Dalle Euridici fino a oggi →</span></button>
       </div>
       <aside class="student-box">
         <div class="student-label">✦ Per iniziare</div>
@@ -1159,6 +1161,55 @@
           <p>Se una sola voce deve essere libera di “parlare cantando”, qualcuno deve sostenere l’armonia senza imprigionarla in altre linee vocali equivalenti. Il <strong>basso continuo</strong> risolve proprio questo problema: una linea grave fornisce la base, mentre strumenti come clavicembalo, organo, liuto o tiorba realizzano gli accordi. La voce può così muoversi sopra una struttura armonica solida mantenendo una libertà quasi declamatoria.</p>
 
           <p><strong>È qui che nasce il personaggio musicale moderno:</strong> non perché prima non esistessero solisti, ma perché ora una singola voce può sostenere continuativamente il peso drammatico della parola e trasformare il racconto in teatro cantato.</p>
+        </div>
+      </div>`,
+
+    rinuccini: `
+      <div class="explainer-wrap">
+        <div class="explainer-inner">
+          <div class="explainer-kicker">Cameo · Il primo grande librettista</div>
+          <h3>Ottavio Rinuccini: quando la poesia impara a diventare teatro musicale</h3>
+          <p>Ottavio Rinuccini non è semplicemente “quello che scrive le parole” mentre Peri o Caccini scrivono la musica. Nella nascita del melodramma il suo ruolo è molto più radicale, perché bisogna inventare anche <strong>un nuovo tipo di testo</strong>: una poesia capace di essere cantata dall’inizio alla fine senza smettere di essere teatro.</p>
+          <p>Rinuccini, poeta fiorentino legato all’ambiente mediceo, partecipa direttamente a quella stagione di esperimenti nella quale si cerca di ricostruire la tragedia antica immaginandola come un’azione interamente cantata. Treccani lo considera per questo il primo grande librettista d’opera e collega al suo nome la <em>Dafne</em>, l’<em>Euridice</em>, poi l’<em>Arianna</em> e il <em>Ballo delle ingrate</em> di Monteverdi.</p>
+
+          <h4>Il libretto non è una poesia con della musica sopra</h4>
+          <p>Se il cantante deve poter “recitar cantando”, il testo deve lasciare spazio alla voce. Rinuccini costruisce quindi dialoghi relativamente fluidi, alterna versi più brevi e più lunghi, concentra l’azione e cerca una lingua che possa seguire il gesto teatrale senza diventare né prosa ordinaria né poesia troppo chiusa in forme rigide. In altre parole, <strong>scrive già pensando alla musica che ancora non esiste</strong>.</p>
+
+          <div class="explainer-arrow">MITO → scelta e adattamento poetico → personaggi → dialoghi e monologhi → voce cantata → azione scenica</div>
+
+          <h4>Un autore, due Euridici</h4>
+          <p>Questo rende ancora più interessante il confronto del 1600: Peri e Caccini lavorano sullo <strong>stesso testo di Rinuccini</strong>. Il libretto resta sostanzialmente la medesima architettura drammatica, mentre la musica cambia. È quasi un esperimento perfetto per capire che cosa appartiene al librettista e che cosa appartiene al compositore.</p>
+
+          <div class="explainer-note"><strong>Una correzione storica utile:</strong> Rinuccini è certamente figura decisiva dell’ambiente fiorentino, ma la sua appartenenza formale alla “Camerata de’ Bardi” è meno semplice di quanto spesso si racconti nei manuali. È più prudente parlare del vasto ambiente intellettuale e musicale fiorentino nel quale quelle idee circolavano.</div>
+
+          <h4>Da Firenze a Mantova</h4>
+          <p>Rinuccini non scompare dopo l’<em>Euridice</em>. Nel 1608 fornisce a Monteverdi il testo dell’<em>Arianna</em>, di cui sopravvive il celeberrimo <em>Lamento</em>, e quello del <em>Ballo delle ingrate</em>. Il librettista diventa così una delle figure che collegano direttamente gli esperimenti fiorentini alla grande stagione teatrale di Monteverdi.</p>
+
+          <a class="explainer-source-link" href="https://www.treccani.it/enciclopedia/ottavio-rinuccini_%28Dizionario-Biografico%29/">Approfondisci Rinuccini su Treccani →</a>
+        </div>
+      </div>`,
+
+    orfeo: `
+      <div class="explainer-wrap">
+        <div class="explainer-inner">
+          <div class="explainer-kicker">Un mito lungo quanto la storia dell’opera</div>
+          <h3>Orfeo: il musicista che dimostra che la musica può cambiare il mondo</h3>
+          <p>Per la nascita dell’opera, Orfeo è quasi un soggetto inevitabile. È un poeta e un musicista la cui arte possiede, nel mito, un potere concreto: il suo canto commuove uomini, animali, alberi e pietre e riesce perfino ad aprirgli la strada verso il regno dei morti. Quando i fiorentini cercano di dimostrare che la musica può rendere più potente la parola teatrale, scelgono dunque una storia nella quale <strong>il protagonista ottiene proprio attraverso il canto ciò che nessun uomo potrebbe ottenere con la forza</strong>.</p>
+
+          <h4>La storia</h4>
+          <p>Orfeo ama Euridice, che muore prematuramente. Egli scende negli Inferi e convince con il canto le potenze dell’oltretomba a restituirgliela, a una condizione: durante il cammino verso il mondo dei vivi non dovrà voltarsi a guardarla. Orfeo cede al dubbio, si volta e perde Euridice una seconda volta. Il mito mette quindi insieme amore, morte, memoria, fiducia e soprattutto il limite stesso dell’arte: la musica sembra poter vincere la morte, ma non può eliminare completamente la fragilità umana.</p>
+
+          <div class="explainer-arrow">PERI + RINUCCINI 1600 → CACCINI → MONTEVERDI 1607 → GLUCK 1762 → OFFENBACH → BERLIOZ, LISZT, SCHUBERT… → ORFEO CONTINUA</div>
+
+          <h4>Perché le prime opere tornano continuamente qui?</h4>
+          <p>Le due <em>Euridice</em> del 1600 mettono il mito al centro proprio mentre il nuovo genere sta cercando la propria legittimazione. Nel 1607 Monteverdi torna alla stessa vicenda con <em>L’Orfeo</em> e dimostra quanto più complesso e teatrale sia già diventato il nuovo linguaggio. Nel 1762 Gluck sceglierà ancora <em>Orfeo ed Euridice</em> per una delle opere simbolo della propria riforma: il mito che aveva accompagnato la nascita del melodramma torna così quando il melodramma sente il bisogno di interrogarsi nuovamente su sé stesso.</p>
+
+          <h4>E poi non finisce</h4>
+          <p>Orfeo sopravvive alla stagione barocca e classica e continua a cambiare volto. Offenbach ne farà una dissacrante parodia in <em>Orphée aux enfers</em>; altri compositori lo trasformeranno in cantata, poema sinfonico, Lied e nuove forme teatrali. Il mito è talmente resistente perché ogni epoca può porgli una domanda diversa: <strong>quanto può davvero la musica?</strong></p>
+
+          <div class="explainer-note"><strong>Guarda quanto è lunga la storia:</strong> IMSLP raccoglie in un’unica pagina opere, cantate, lavori orchestrali e altri brani dedicati a Orfeo o Euridice. Non è un elenco completo di tutto ciò che sia mai stato scritto, ma è perfetto per vedere a colpo d’occhio come il mito attraversi secoli e generi diversi.</div>
+
+          <a class="explainer-source-link" href="https://imslp.org/wiki/List_of_compositions_involving_Orpheus_or_Euridice">Segui Orfeo attraverso i secoli → IMSLP</a>
         </div>
       </div>`
   };
