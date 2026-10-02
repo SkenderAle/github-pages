@@ -261,7 +261,7 @@ function payload(ev){
 function renderResult(ev){
   document.getElementById('score').textContent=ev.total+'/'+MAX;
   var pct=Math.round(ev.total/MAX*100);
-  document.getElementById('message').innerHTML=pct>=80?'<p><strong>Hai raccolto molto del seminato.</strong> Ora guarda dove hai perso qualche punto.</p>':pct>=60?'<p><strong>Il percorso c\\'è.</strong> Alcuni collegamenti vanno ancora rimessi a fuoco.</p>':'<p><strong>Qualche seme è rimasto sotto terra.</strong> Guarda gli errori e prova a farlo germogliare.</p>';
+  document.getElementById('message').innerHTML=pct>=80?'<p><strong>Hai raccolto molto del seminato.</strong> Ora guarda dove hai perso qualche punto.</p>':pct>=60?'<p><strong>Il percorso c\'è.</strong> Alcuni collegamenti vanno ancora rimessi a fuoco.</p>':'<p><strong>Qualche seme è rimasto sotto terra.</strong> Guarda gli errori e prova a farlo germogliare.</p>';
   document.getElementById('breakdown').innerHTML=ev.scores.map(function(s,i){return '<div>Q'+(i+1)+' · '+s+'/'+document.querySelector('.q[data-q="'+(i+1)+'"]').getAttribute('data-max')+'</div>'}).join('');
   document.getElementById('result').classList.add('show');document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
 }
