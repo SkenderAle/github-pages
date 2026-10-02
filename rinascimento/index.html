@@ -300,6 +300,11 @@
   .bridge-final h3{color:#fff;font-size:clamp(1.8rem,3vw,3rem);margin-top:0}
   .bridge-final p{color:#eee1cf}
   .route-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+  .route-links .source-card{background:#efe6d6 !important;border:1px solid #ccb99a !important;color:#2b241d !important;box-shadow:0 6px 18px rgba(44,33,22,.06)}
+  .route-links .source-card .src{color:#7a5e3d !important;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+  .route-links .source-card b{color:#2b241d !important}
+  .route-links .source-card span{color:#4b433b !important}
+  .route-links .source-card:hover{background:#eadbc3 !important;border-color:#b99867 !important;transform:translateY(-2px)}
   @media(max-width:900px){
     .ratio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .term-grid,.compare-band,.route-links{grid-template-columns:1fr}
@@ -470,7 +475,7 @@
         <p>Gli strumenti non compaiono improvvisamente nel Rinascimento, perché appartengono da secoli alla festa, alla danza, alla strada, alla corte, alla pratica domestica e anche a contesti religiosi. Ciò che cambia è la loro organizzazione. Sempre più spesso vengono costruiti in famiglie di diverse taglie, capaci di coprire registri differenti come fanno le voci di un coro, e proprio questa imitazione del modello vocale permette loro di affrontare una polifonia completa senza dipendere necessariamente dai cantanti.</p>
         <p>Nascono così consort di flauti, viole e altri strumenti nei quali soprano, alto, tenore e basso diventano quasi una anatomia sonora. Lo strumento, però, non rimane a lungo una voce sostitutiva, perché ogni gesto tecnico produce possibilità che la voce non possiede. Le dita del liutista, l'arco della viola, il fiato del cornettista e la tastiera dell'organista trasformano progressivamente il materiale ricevuto dalla polifonia vocale in un linguaggio autonomo.</p>
         <p>La liuteria specializzata diventa uno dei luoghi più evidenti di questa trasformazione. Brescia e Cremona acquistano un ruolo crescente, mentre la famiglia del violino comincia a definire forme e proporzioni che nel Seicento diventeranno dominanti. Andrea Amati non deve essere trasformato nel singolo "inventore" del violino, ma appartiene alla generazione decisiva che contribuisce a stabilizzare il nuovo modello e a renderlo una alternativa sempre più forte alle viole.</p>
-        <p>La storia del liuto e della chitarra obbliga inoltre a pensare il Mediterraneo come spazio di scambio, perché il liuto europeo è profondamente legato alla storia dell'<em>al ud</em> arabo, mentre la chitarra costruisce la propria identità dentro un ambiente iberico nel quale convivono e si trasformano strumenti differenti. Nel Cinquecento esiste già un repertorio per chitarra a quattro cori, mentre la chitarra a cinque cori, che associamo alla stagione barocca, acquisterà più tardi una grande importanza anche per il modo accordale e ritmico del <em>rasgueado</em>.</p>
+        <p>La storia del liuto e della chitarra obbliga inoltre a pensare il Mediterraneo come spazio di scambio, perché il liuto europeo è profondamente legato alla storia dell'<em>al-ʿūd</em> arabo, mentre la chitarra costruisce la propria identità dentro un ambiente iberico nel quale convivono e si trasformano strumenti differenti. Nel Cinquecento esiste già un repertorio per chitarra a quattro cori, mentre la chitarra a cinque cori, che associamo alla stagione barocca, acquisterà più tardi una grande fortuna. Nello stesso tempo la famiglia degli strumenti a pizzico continuerà a viaggiare: nei Balcani si svilupperanno famiglie come quella della tamburica, mentre dalla Spagna e dal Portogallo gli strumenti a corde prenderanno la via delle Americhe e, per altra rotta, delle Hawaii.</p>
       </div>
 
       <div class="media-row">
@@ -493,32 +498,37 @@
       </div>
 
       <div class="migration-map">
-        <svg viewBox="0 0 1100 520" role="img" aria-label="Mappa schematica delle migrazioni e trasformazioni di alcune famiglie strumentali">
+        <svg viewBox="0 0 1100 520" role="img" aria-label="Mappa schematica delle migrazioni di alcune famiglie di strumenti a corde e a pizzico">
           <rect class="sea" x="0" y="0" width="1100" height="520" rx="8"></rect>
-          <path class="land" d="M100 105 C170 55 260 60 320 100 C365 130 420 115 465 155 C510 195 485 245 430 260 C370 277 330 322 275 338 C215 355 145 330 118 282 C90 232 55 155 100 105Z"></path>
-          <path class="land" d="M510 95 C575 65 670 70 720 115 C770 155 825 145 875 190 C915 225 900 275 850 292 C795 312 770 360 715 382 C660 404 595 370 565 325 C535 280 480 215 505 155Z"></path>
-          <path class="land" d="M885 325 C925 300 985 308 1015 340 C1045 372 1032 420 995 438 C950 462 900 438 882 402 C867 370 860 345 885 325Z"></path>
+          <path class="land" d="M105 110 C180 55 275 60 335 100 C385 132 430 118 470 152 C515 190 500 245 442 262 C388 278 338 320 278 338 C210 358 150 330 120 280 C92 232 58 156 105 110Z"></path>
+          <path class="land" d="M505 92 C575 62 670 70 725 115 C772 153 828 145 878 190 C916 224 904 274 852 292 C798 312 770 360 714 384 C655 408 592 370 560 324 C528 278 485 215 505 155Z"></path>
+          <path class="land" d="M870 330 C915 300 980 308 1012 340 C1045 373 1034 421 995 442 C952 466 900 440 880 402 C864 371 848 348 870 330Z"></path>
 
           <a href="https://en.wikipedia.org/wiki/Tamburica">
-            <path class="route r1" d="M620 190 C675 145 720 135 785 145"></path>
-            <text x="640" y="125">Balcani: tamburica</text>
+            <path class="route r1" d="M515 170 C565 145 615 130 675 132 C720 134 755 145 790 165"></path>
+            <text x="640" y="105">Medio Oriente → Balcani</text>
+            <text x="655" y="128">Liuti a manico lungo e tamburica</text>
           </a>
+
           <a href="https://en.wikipedia.org/wiki/Charango">
-            <path class="route r2" d="M545 205 C430 240 330 300 245 385"></path>
-            <text x="270" y="415">Iberia → Andes e Messico</text>
+            <path class="route r2" d="M540 182 C468 200 405 240 352 272 C305 300 258 335 228 382"></path>
+            <text x="245" y="410">Medio Oriente → Maghreb → Iberia → Americhe</text>
+            <text x="295" y="435">Liuto, vihuela, chitarre, guitarrón, charango</text>
           </a>
+
           <a href="https://en.wikipedia.org/wiki/Ukulele">
-            <path class="route r3" d="M520 235 C700 285 830 300 930 355"></path>
-            <text x="745" y="330">Madeira → Hawaii</text>
+            <path class="route r3" d="M628 220 C710 245 792 275 872 352"></path>
+            <text x="742" y="320">Madeira / area portoghese → Hawaii</text>
+            <text x="782" y="345">Braguinha, machete, cavaquinho, ukulele</text>
           </a>
         </svg>
-        <div class="mini-caption">La mappa è volutamente schematica: non pretende di descrivere genealogie lineari, ma rende visibile un principio fondamentale dell'etnomusicologia, cioè che gli strumenti viaggiano, cambiano forma, cambiano nome e vengono ricostruiti dalle culture che li adottano.</div>
+        <div class="mini-caption">La mappa è volutamente schematica: non descrive genealogie perfettamente lineari, ma rende visibile un principio fondamentale dell'etnomusicologia, cioè che gli strumenti viaggiano, cambiano forma, cambiano nome e vengono ricostruiti dalle culture che li adottano. Alcune linee passano dal Medio Oriente ai Balcani, altre attraversano il Maghreb e la penisola iberica prima di giungere nelle Americhe, mentre il ramo che porterà all'ukulele segue soprattutto la rotta portoghese verso le Hawaii.</div>
       </div>
 
       <div class="route-links">
-        <button class="source-card resource" data-title="Tamburica" data-url="https://en.wikipedia.org/wiki/Tamburica"><span class="src">Famiglia</span><b>Dalla bisernica alla berda</b><span>Una famiglia balcanica di strumenti a pizzico di taglie differenti.</span></button>
-        <button class="source-card resource" data-title="Charango" data-url="https://en.wikipedia.org/wiki/Charango"><span class="src">Trasformazione</span><b>Charango, vihuela, guitarrón</b><span>Le corde iberiche cambiano identità nelle Americhe.</span></button>
-        <button class="source-card resource" data-title="Ukulele" data-url="https://en.wikipedia.org/wiki/Ukulele"><span class="src">Migrazione</span><b>Da Madeira alle Hawaii</b><span>Machete, braguinha e rajão dentro una nuova tradizione.</span></button>
+        <button class="source-card resource" data-title="Tamburica" data-url="https://en.wikipedia.org/wiki/Tamburica"><span class="src">Famiglia</span><b>Tamburica balcanica</b><span>Una famiglia di strumenti a pizzico di taglie differenti, legata soprattutto all'area balcanica e alla storia dei liuti a manico lungo.</span></button>
+        <button class="source-card resource" data-title="Charango" data-url="https://en.wikipedia.org/wiki/Charango"><span class="src">Trasformazione</span><b>Dalla Spagna alle Americhe</b><span>La chitarra e i suoi parenti iberici viaggiano verso il Centro e il Sud America, dove generano nuove forme come guitarrón, vihuela e charango.</span></button>
+        <button class="source-card resource" data-title="Ukulele" data-url="https://en.wikipedia.org/wiki/Ukulele"><span class="src">Migrazione</span><b>Da Madeira alle Hawaii</b><span>Braguinha, machete e cavaquinho portano nelle Hawaii la tradizione che darà origine all'ukulele.</span></button>
       </div>
     </section>
 
