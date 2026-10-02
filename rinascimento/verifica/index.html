@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Missione Rinascimento · Verifica</title>
+<style>
+:root{--paper:#f5efe3;--ink:#28221c;--muted:#6f655b;--red:#7f1d1d;--blue:#253d63;--green:#2f5e48;--gold:#a5792a;--line:#d4c6b0;--card:#fffaf1;--shadow:0 14px 36px rgba(36,28,18,.12);--sans:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif)}
+header{padding:3.8rem 1rem 2.5rem;background:linear-gradient(135deg,#211d19,#253d63);color:#fff}
+.hero{max-width:980px;margin:auto}.eyebrow{font:900 .72rem/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#efd59f}
+h1{font-size:clamp(2.8rem,8vw,6rem);line-height:.94;margin:.5rem 0 1rem;letter-spacing:-.045em}header p{font-size:1.15rem;line-height:1.55;max-width:780px;color:#eee4d5}
+main{max-width:980px;margin:auto;padding:2rem 1rem 6rem}.topbar{position:sticky;top:0;z-index:30;background:rgba(245,239,227,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:.65rem 1rem}
+.topbar-inner{max-width:980px;margin:auto;display:flex;gap:.7rem;align-items:center}.progress{height:10px;flex:1;background:#dfd4c2;border-radius:999px;overflow:hidden}.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--green));transition:.25s}.counter{font:800 .78rem var(--sans);color:var(--muted);white-space:nowrap}
+.notice{background:#eee4d3;border-left:5px solid var(--gold);padding:1rem 1.1rem;margin:0 0 1.5rem;font: .94rem/1.5 var(--sans)}
+.identity{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.2rem 0 2rem}.identity label{font:800 .72rem var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}.identity input,.identity select{width:100%;margin-top:.35rem;padding:.78rem;border:1px solid #bfae94;background:#fffdf8;font:1rem var(--sans);border-radius:7px}
+.q{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:1.25rem;margin:1.25rem 0;border-radius:14px}.qhead{display:flex;gap:1rem;align-items:flex-start}.qno{font:900 .72rem var(--sans);letter-spacing:.12em;color:#fff;background:var(--red);padding:.35rem .52rem;border-radius:6px;white-space:nowrap}.q h2{font-size:clamp(1.45rem,4vw,2.15rem);margin:0 0 .4rem}.q p{line-height:1.55;margin:.45rem 0}.points{font:800 .76rem var(--sans);color:var(--gold)}
+.board{display:grid;grid-template-columns:1fr 1.3fr;gap:1rem;margin-top:1rem}.pool,.targets{min-width:0}.pool h3,.targets h3{font:900 .72rem var(--sans);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:.2rem 0 .6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;min-height:48px;padding:.6rem;border:1px dashed #baa98f;border-radius:10px;background:#f7f0e4}.chip{border:1px solid #9f8d72;background:#fff;padding:.62rem .72rem;border-radius:999px;cursor:grab;font:800 .86rem/1.25 var(--sans);touch-action:none;box-shadow:0 3px 8px rgba(40,30,20,.08);user-select:none}.chip.selected{outline:3px solid #d5b26c;background:#fff4cf}.chip.correct{background:#e5f1e8;border-color:#6f9a7a}.chip.wrong{background:#f7e1df;border-color:#b56d68}
+.target-grid{display:grid;gap:.65rem}.target{border:2px dashed #b7a88f;border-radius:11px;padding:.7rem;min-height:82px;background:#f6eee0}.target b{display:block;font:900 .76rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}.target .bucket{display:flex;flex-wrap:wrap;gap:.45rem;min-height:36px}.target.active{border-color:var(--gold);background:#fff4d7}
+.order{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:1rem}.slot{min-height:105px;border:2px dashed #b7a88f;border-radius:11px;padding:.6rem;background:#f6eee0}.slot b{font:900 .75rem var(--sans);color:var(--red)}.slot .bucket{margin-top:.45rem}
+.choices{display:grid;gap:.55rem;margin-top:.8rem}.choice{display:flex;gap:.65rem;align-items:flex-start;padding:.75rem;border:1px solid var(--line);border-radius:10px;background:#fff;font: .95rem/1.4 var(--sans)}.choice input{margin-top:.15rem;transform:scale(1.15)}
+.actions{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin:2rem 0}.btn{border:0;border-radius:999px;padding:1rem 1.35rem;font:900 .95rem var(--sans);cursor:pointer}.primary{background:var(--green);color:#fff}.secondary{background:#e4d7c2;color:#3b3026}.btn:disabled{opacity:.5;cursor:not-allowed}
+.result{display:none;margin:2rem 0;padding:1.4rem;background:#20344f;color:#fff;border-radius:14px}.result.show{display:block}.result strong.big{display:block;font:900 clamp(2.5rem,8vw,5rem)/1 var(--sans);color:#efd59f}.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:1rem}.breakdown div{background:rgba(255,255,255,.09);padding:.65rem;border-radius:8px;font:800 .82rem var(--sans)}
+.status{margin-top:.8rem;font:.86rem/1.45 var(--sans);color:#dcd2c4}.backend-badge{display:inline-block;background:#f3e3b7;color:#4d3a16;padding:.3rem .5rem;border-radius:999px;font:900 .68rem var(--sans)}
+footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(--sans);text-align:center}
+@media(max-width:760px){.identity{grid-template-columns:1fr 1fr}.board{grid-template-columns:1fr}.order{grid-template-columns:1fr}.breakdown{grid-template-columns:1fr 1fr}.q{padding:1rem}.chip{padding:.7rem .78rem}.target{min-height:95px}}
+@media(max-width:460px){header{padding-top:2.6rem}.identity{grid-template-columns:1fr}.breakdown{grid-template-columns:1fr}.qhead{display:block}.qno{display:inline-block;margin-bottom:.55rem}}
+</style>
+</head>
+<body>
+<header><div class="hero"><div class="eyebrow">Verifica degli apprendimenti · 30 punti</div><h1>Missione Rinascimento</h1><p>Quanto del seminato è rimasto? Trascina, abbina, ordina e scegli. Il primo tentativo è la verifica. Dopo la consegna potrai vedere gli errori e riprovare per allenarti.</p></div></header>
+<div class="topbar"><div class="topbar-inner"><div class="progress"><span id="bar"></span></div><div class="counter" id="counter">0/9 completate</div></div></div>
+<main>
+<div class="notice"><strong>Come si usa.</strong> Su computer puoi trascinare le tessere. Su telefono puoi anche toccare una tessera e poi toccare il riquadro in cui vuoi metterla. Puoi spostarla finché non consegni.</div>
+
+<div class="identity" id="identity">
+<label>Nome<input id="nome" autocomplete="given-name"></label>
+<label>Cognome<input id="cognome" autocomplete="family-name"></label>
+<label>Classe<select id="classe"><option value="">Scegli</option><option>1A</option><option>1B</option><option>1C</option><option>1D</option><option>2A</option><option>2B</option><option>2C</option><option>2D</option><option>3A</option><option>3B</option><option>3C</option><option>3D</option></select></label>
+<label>Email<input id="email" type="email" autocomplete="email" placeholder="solo se richiesta"></label>
+</div>
+
+<section class="q" data-q="1" data-max="5"><div class="qhead"><span class="qno">Q1</span><div><h2>Chi è chi?</h2><div class="points">5 punti</div><p>Porta ogni nome sulla descrizione corretta.</p></div></div>
+<div class="board"><div class="pool"><h3>Nomi</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="petrucci">Ottaviano Petrucci</span><span class="chip" draggable="true" data-id="lutero">Martin Lutero</span><span class="chip" draggable="true" data-id="palestrina">Palestrina</span><span class="chip" draggable="true" data-id="gabrieli">Giovanni Gabrieli</span><span class="chip" draggable="true" data-id="peri">Jacopo Peri</span>
+</div></div><div class="targets"><h3>Descrizioni</h3><div class="target-grid">
+<div class="target" data-accept="petrucci"><b>Stampa musicale</b><span>Pubblica l'Odhecaton nel 1501.</span><div class="bucket"></div></div>
+<div class="target" data-accept="lutero"><b>Riforma</b><span>Porta il canto della comunità e il volgare al centro della nuova liturgia.</span><div class="bucket"></div></div>
+<div class="target" data-accept="palestrina"><b>Roma</b><span>Grande protagonista della polifonia sacra del Cinquecento.</span><div class="bucket"></div></div>
+<div class="target" data-accept="gabrieli"><b>Venezia</b><span>Lavora con cori e strumenti distribuiti nello spazio.</span><div class="bucket"></div></div>
+<div class="target" data-accept="peri"><b>Firenze</b><span>È fra i protagonisti dei primi esperimenti di teatro musicale.</span><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="2" data-max="4"><div class="qhead"><span class="qno">Q2</span><div><h2>Voci, strumenti o danza?</h2><div class="points">4 punti</div><p>Classifica gli otto termini.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="madrigale">Madrigale</span><span class="chip" draggable="true" data-id="frottola">Frottola</span><span class="chip" draggable="true" data-id="messa">Messa</span><span class="chip" draggable="true" data-id="corale">Corale luterano</span><span class="chip" draggable="true" data-id="canzona">Canzona da sonar</span><span class="chip" draggable="true" data-id="ricercare">Ricercare</span><span class="chip" draggable="true" data-id="pavana">Pavana</span><span class="chip" draggable="true" data-id="gagliarda">Gagliarda</span>
+</div></div><div class="targets"><h3>Categorie</h3><div class="target-grid">
+<div class="target" data-accept="madrigale,frottola,messa,corale"><b>Musica vocale</b><div class="bucket"></div></div>
+<div class="target" data-accept="canzona,ricercare"><b>Musica strumentale</b><div class="bucket"></div></div>
+<div class="target" data-accept="pavana,gagliarda"><b>Danza</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="3" data-max="3"><div class="qhead"><span class="qno">Q3</span><div><h2>Petrucci mette ordine nel torchio</h2><div class="points">3 punti</div><p>Metti in ordine i tre passaggi e poi scegli la conseguenza più importante.</p></div></div>
+<div class="chips" data-pool><span class="chip" draggable="true" data-id="righi">Righi</span><span class="chip" draggable="true" data-id="note">Note</span><span class="chip" draggable="true" data-id="testo">Testo</span></div>
+<div class="order"><div class="slot target" data-order="1"><b>1</b><div class="bucket"></div></div><div class="slot target" data-order="2"><b>2</b><div class="bucket"></div></div><div class="slot target" data-order="3"><b>3</b><div class="bucket"></div></div></div>
+<div class="choices"><label class="choice"><input type="radio" name="q3mc" value="a">La musica diventa più forte.</label><label class="choice"><input type="radio" name="q3mc" value="b">Lo stesso repertorio può circolare fra persone lontane.</label><label class="choice"><input type="radio" name="q3mc" value="c">Nascono gli strumenti musicali.</label></div></section>
+
+<section class="q" data-q="4" data-max="4"><div class="qhead"><span class="qno">Q4</span><div><h2>Roma, Venezia, Firenze</h2><div class="points">4 punti</div><p>Tre città, tre modi diversi di pensare la musica.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="palestrina2">Palestrina</span><span class="chip" draggable="true" data-id="testo">Comprensibilità del testo</span><span class="chip" draggable="true" data-id="willaert">Willaert</span><span class="chip" draggable="true" data-id="cori">Cori spezzati</span><span class="chip" draggable="true" data-id="bardi">Camerata de' Bardi</span><span class="chip" draggable="true" data-id="recitar">Recitar cantando</span><span class="chip" draggable="true" data-id="sanmarco">San Marco</span><span class="chip" draggable="true" data-id="peri2">Peri</span>
+</div></div><div class="targets"><h3>Città</h3><div class="target-grid">
+<div class="target" data-accept="palestrina2,testo"><b>Roma</b><div class="bucket"></div></div>
+<div class="target" data-accept="willaert,cori,sanmarco"><b>Venezia</b><div class="bucket"></div></div>
+<div class="target" data-accept="bardi,recitar,peri2"><b>Firenze</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="5" data-max="3"><div class="qhead"><span class="qno">Q5</span><div><h2>A corte: che cos'è il mecenatismo?</h2><div class="points">3 punti</div><p>Decidi che cosa appartiene davvero al mecenatismo rinascimentale.</p></div></div>
+<div class="board"><div class="pool"><h3>Azioni</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="m1">Finanziare artisti e musicisti</span><span class="chip" draggable="true" data-id="m2">Commissionare opere e strumenti</span><span class="chip" draggable="true" data-id="m3">Ospitare e proteggere artisti</span><span class="chip" draggable="true" data-id="m4">Coltivare personalmente musica e poesia</span><span class="chip" draggable="true" data-id="n1">Comprare un biglietto per un concerto</span><span class="chip" draggable="true" data-id="n2">Pagare qualcuno perché dia sempre ragione al principe</span>
+</div></div><div class="targets"><h3>Scelta</h3><div class="target-grid">
+<div class="target" data-accept="m1,m2,m3,m4"><b>Mecenatismo</b><div class="bucket"></div></div><div class="target" data-accept="n1,n2"><b>Non è mecenatismo</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="6" data-max="2"><div class="qhead"><span class="qno">Q6</span><div><h2>Pavana o gagliarda?</h2><div class="points">2 punti</div><p>Camminare o saltare?</p></div></div>
+<div class="board"><div class="pool"><h3>Caratteri</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="p1">Lenta e solenne</span><span class="chip" draggable="true" data-id="p2">Passo misurato</span><span class="chip" draggable="true" data-id="g1">Vivace</span><span class="chip" draggable="true" data-id="g2">Ritmo ternario e salti</span>
+</div></div><div class="targets"><h3>Danze</h3><div class="target-grid"><div class="target" data-accept="p1,p2"><b>Pavana</b><div class="bucket"></div></div><div class="target" data-accept="g1,g2"><b>Gagliarda</b><div class="bucket"></div></div></div></div></div></section>
+
+<section class="q" data-q="7" data-max="4"><div class="qhead"><span class="qno">Q7</span><div><h2>Le voci si rincorrono</h2><div class="points">4 punti</div><p>Abbina i quattro concetti.</p></div></div>
+<div class="board"><div class="pool"><h3>Parole</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="imitazione">Imitazione</span><span class="chip" draggable="true" data-id="canone">Canone</span><span class="chip" draggable="true" data-id="josquin">Josquin Desprez</span><span class="chip" draggable="true" data-id="madrigalismo">Madrigalismo</span>
+</div></div><div class="targets"><h3>Definizioni</h3><div class="target-grid">
+<div class="target" data-accept="imitazione"><b>Un motivo passa da una voce all'altra</b><div class="bucket"></div></div>
+<div class="target" data-accept="canone"><b>La forma più rigorosa del rincorrersi delle voci</b><div class="bucket"></div></div>
+<div class="target" data-accept="josquin"><b>Grande esempio della polifonia imitativa franco fiamminga</b><div class="bucket"></div></div>
+<div class="target" data-accept="madrigalismo"><b>La musica interpreta e "dipinge" il significato delle parole</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="8" data-max="4"><div class="qhead"><span class="qno">Q8</span><div><h2>Riforma, Roma e Venezia</h2><div class="points">4 punti</div><p>Porta ogni idea nel suo contesto principale.</p></div></div>
+<div class="board"><div class="pool"><h3>Idee</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="r1">Corale in lingua della comunità</span><span class="chip" draggable="true" data-id="r2">Partecipazione dei fedeli al canto</span><span class="chip" draggable="true" data-id="r3">Stampa come mezzo di diffusione</span><span class="chip" draggable="true" data-id="ro1">Missa Papae Marcelli</span><span class="chip" draggable="true" data-id="ro2">Chiarezza delle parole nella polifonia</span><span class="chip" draggable="true" data-id="v1">Cori separati nello spazio</span><span class="chip" draggable="true" data-id="v2">Gabrieli</span><span class="chip" draggable="true" data-id="v3">Strumenti e voci in gruppi contrapposti</span>
+</div></div><div class="targets"><h3>Contesti</h3><div class="target-grid">
+<div class="target" data-accept="r1,r2,r3"><b>Riforma protestante</b><div class="bucket"></div></div>
+<div class="target" data-accept="ro1,ro2"><b>Roma</b><div class="bucket"></div></div>
+<div class="target" data-accept="v1,v2,v3"><b>Venezia</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="9" data-max="1"><div class="qhead"><span class="qno">Q9</span><div><h2>Il filo del Rinascimento</h2><div class="points">1 punto</div><p>Quale frase riassume meglio il percorso?</p></div></div>
+<div class="choices"><label class="choice"><input type="radio" name="q9" value="a">Nel Rinascimento la musica abbandona completamente il Medioevo e ricomincia da zero.</label><label class="choice"><input type="radio" name="q9" value="b">Il Rinascimento trasforma tecniche, strumenti, parole e modi di far circolare la musica, senza cancellare ciò che viene prima.</label><label class="choice"><input type="radio" name="q9" value="c">La principale novità del Rinascimento è che tutta la musica diventa strumentale.</label></div></section>
+
+<div class="actions"><button class="btn secondary" id="reset">Ricomincia</button><button class="btn primary" id="submit">Consegna la prova</button></div>
+
+<div class="result" id="result"><span class="backend-badge" id="backendBadge">ANTEPRIMA</span><strong class="big" id="score">0/30</strong><div id="message"></div><div class="breakdown" id="breakdown"></div><div class="status" id="saveStatus"></div><div class="actions"><button class="btn secondary" id="practice">Correggi e riprova</button></div></div>
+</main>
+<footer>Missione Rinascimento · verifica interattiva · TEST_ID <strong>rinascimento-01</strong></footer>
+
+<script>
+(function(){
+var TEST_ID='rinascimento-01', VERSION='1.0', MAX=30;
+var startedAt=new Date(), submitted=false, selected=null, dragging=null;
+var orderCorrect=['righi','note','testo'];
+
+function allChips(){return Array.prototype.slice.call(document.querySelectorAll('.chip'))}
+function allTargets(){return Array.prototype.slice.call(document.querySelectorAll('.target'))}
+function place(chip,target){
+  var bucket=target.querySelector('.bucket'); if(!bucket) return;
+  bucket.appendChild(chip); chip.classList.remove('selected'); selected=null; updateProgress();
+}
+function returnToPool(chip){
+  var q=chip.closest('.q'); var pool=q.querySelector('[data-pool]'); if(pool) pool.appendChild(chip); updateProgress();
+}
+allChips().forEach(function(chip){
+  chip.addEventListener('dragstart',function(){dragging=chip;chip.classList.add('selected')});
+  chip.addEventListener('dragend',function(){dragging=null;chip.classList.remove('selected')});
+  chip.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(submitted) return;
+    if(selected===chip){chip.classList.remove('selected');selected=null;return}
+    if(selected) selected.classList.remove('selected');
+    selected=chip; chip.classList.add('selected');
+  });
+});
+allTargets().forEach(function(t){
+  t.addEventListener('dragover',function(e){e.preventDefault();t.classList.add('active')});
+  t.addEventListener('dragleave',function(){t.classList.remove('active')});
+  t.addEventListener('drop',function(e){e.preventDefault();t.classList.remove('active');if(dragging&&!submitted)place(dragging,t)});
+  t.addEventListener('click',function(){if(selected&&!submitted)place(selected,t)});
+});
+document.querySelectorAll('[data-pool]').forEach(function(p){
+  p.addEventListener('click',function(){if(selected&&!submitted)returnToPool(selected)});
+});
+
+function qComplete(q){
+  var n=q.getAttribute('data-q');
+  if(n==='3') return q.querySelectorAll('.slot .chip').length===3 && !!q.querySelector('input[name=q3mc]:checked');
+  if(n==='9') return !!q.querySelector('input[name=q9]:checked');
+  return q.querySelectorAll('[data-pool] .chip').length===0;
+}
+function updateProgress(){
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var done=qs.filter(qComplete).length;
+  document.getElementById('bar').style.width=(done/qs.length*100)+'%';
+  document.getElementById('counter').textContent=done+'/'+qs.length+' completate';
+}
+document.querySelectorAll('input[type=radio]').forEach(function(x){x.addEventListener('change',updateProgress)});
+
+function scoreBucketQuestion(q){
+  var max=parseFloat(q.getAttribute('data-max')), chips=Array.prototype.slice.call(q.querySelectorAll('.chip')), correct=0;
+  chips.forEach(function(ch){
+    var t=ch.closest('.target'), ok=t && (t.getAttribute('data-accept')||'').split(',').indexOf(ch.getAttribute('data-id'))>=0;
+    ch.classList.toggle('correct',!!ok);ch.classList.toggle('wrong',!ok); if(ok)correct++;
+  });
+  return max*correct/chips.length;
+}
+function scoreQ3(q){
+  var slots=Array.prototype.slice.call(q.querySelectorAll('.slot')), s=0;
+  if(slots[0].querySelector('.chip') && slots[0].querySelector('.chip').getAttribute('data-id')==='righi') s++;
+  if(slots[1].querySelector('.chip') && slots[1].querySelector('.chip').getAttribute('data-id')==='note') s++;
+  var mc=q.querySelector('input[name=q3mc]:checked'); if(mc && mc.value==='b') s++;
+  Array.prototype.slice.call(q.querySelectorAll('.slot .chip')).forEach(function(ch,i){var ok=ch.getAttribute('data-id')===orderCorrect[i];ch.classList.toggle('correct',ok);ch.classList.toggle('wrong',!ok)});
+  return s;
+}
+function scoreQ9(q){var x=q.querySelector('input[name=q9]:checked');return x&&x.value==='b'?1:0}
+function evaluate(){
+  var scores=[],total=0;
+  document.querySelectorAll('.q').forEach(function(q){
+    var n=q.getAttribute('data-q'), s=n==='3'?scoreQ3(q):n==='9'?scoreQ9(q):scoreBucketQuestion(q);
+    s=Math.round(s*100)/100;scores.push(s);total+=s;
+  });
+  total=Math.round(total*100)/100; return {scores:scores,total:total};
+}
+function identityValid(){
+  var schoolMode=typeof google!=='undefined' && google.script && google.script.run;
+  if(schoolMode) return true;
+  return document.getElementById('nome').value.trim() && document.getElementById('cognome').value.trim() && document.getElementById('classe').value;
+}
+function payload(ev){
+  var now=new Date();
+  return {testId:TEST_ID,version:VERSION,max:MAX,score:ev.total,percent:Math.round(ev.total/MAX*1000)/10,duration:Math.max(1,Math.round((now-startedAt)/1000)),startedAt:startedAt.toISOString(),submittedAt:now.toISOString(),scores:ev.scores,nome:document.getElementById('nome').value.trim(),cognome:document.getElementById('cognome').value.trim(),classe:document.getElementById('classe').value,email:document.getElementById('email').value.trim()};
+}
+function renderResult(ev){
+  document.getElementById('score').textContent=ev.total+'/'+MAX;
+  var pct=Math.round(ev.total/MAX*100);
+  document.getElementById('message').innerHTML=pct>=80?'<p><strong>Hai raccolto molto del seminato.</strong> Ora guarda dove hai perso qualche punto.</p>':pct>=60?'<p><strong>Il percorso c\\'è.</strong> Alcuni collegamenti vanno ancora rimessi a fuoco.</p>':'<p><strong>Qualche seme è rimasto sotto terra.</strong> Guarda gli errori e prova a farlo germogliare.</p>';
+  document.getElementById('breakdown').innerHTML=ev.scores.map(function(s,i){return '<div>Q'+(i+1)+' · '+s+'/'+document.querySelector('.q[data-q="'+(i+1)+'"]').getAttribute('data-max')+'</div>'}).join('');
+  document.getElementById('result').classList.add('show');document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function saveOfficial(p){
+  var status=document.getElementById('saveStatus');
+  if(typeof google!=='undefined' && google.script && google.script.run){
+    document.getElementById('backendBadge').textContent='VERIFICA UFFICIALE';
+    status.textContent='Registrazione in corso…';
+    google.script.run.withSuccessHandler(function(r){
+      if(r&&r.already){status.textContent='Il primo tentativo ufficiale era già stato registrato. Questo resta un tentativo di allenamento.'}
+      else{status.textContent='Risultato registrato nel foglio della classe.'}
+    }).withFailureHandler(function(e){status.textContent='Errore di registrazione: '+(e&&e.message?e.message:e)}).registraRisultato(p);
+  }else{
+    document.getElementById('backendBadge').textContent='ANTEPRIMA GITHUB';
+    status.textContent='Anteprima funzionante: il punteggio non viene inviato a Google finché questa stessa pagina non è pubblicata come Web App Apps Script.';
+    try{localStorage.setItem(TEST_ID+':preview',JSON.stringify(p))}catch(e){}
+  }
+}
+document.getElementById('submit').addEventListener('click',function(){
+  if(!identityValid()){alert('Compila almeno nome, cognome e classe.');return}
+  var missing=Array.prototype.slice.call(document.querySelectorAll('.q')).filter(function(q){return !qComplete(q)});
+  if(missing.length){if(!confirm('Hai lasciato '+missing.length+' prova/e incomplete. Vuoi consegnare lo stesso?'))return}
+  if(!confirm('Sei davvero pronto? La prima consegna è quella ufficiale.'))return;
+  submitted=true; var ev=evaluate(); renderResult(ev); saveOfficial(payload(ev));
+});
+document.getElementById('practice').addEventListener('click',function(){
+  submitted=false; document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('correct','wrong')});document.getElementById('result').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});
+});
+document.getElementById('reset').addEventListener('click',function(){if(confirm('Vuoi davvero ricominciare da capo?'))location.reload()});
+updateProgress();
+})();
+</script>
+</body>
+</html>
