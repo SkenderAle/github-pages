@@ -1,0 +1,1058 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Il Rinascimento musicale · dalla parola allo spazio sonoro</title>
+<meta name="description" content="Un viaggio interattivo nella musica del Rinascimento: Umanesimo, stampa, corti, strumenti, temperamenti, madrigale, Riforma, Palestrina, Venezia e nascita del teatro musicale." />
+<meta name="author" content="Alessandro Zilli" />
+<style>
+  :root{
+    --ink:#201b17;
+    --paper:#f5efe3;
+    --paper2:#eee3cf;
+    --red:#7f1d1d;
+    --blue:#253d63;
+    --gold:#a5792a;
+    --green:#2f5e48;
+    --muted:#6c6258;
+    --line:#cdbfa8;
+    --shadow:0 16px 50px rgba(35,26,18,.15);
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:#d8cfbf}
+  body{margin:0;color:var(--ink);background:
+    radial-gradient(circle at 10% 0%, rgba(127,29,29,.06), transparent 24rem),
+    radial-gradient(circle at 90% 20%, rgba(37,61,99,.08), transparent 28rem),
+    linear-gradient(180deg,#e9e0d1,#d8cfbf 40%,#cec3b2);font-family:var(--serif);line-height:1.72}
+  a{color:inherit}
+  button{font:inherit}
+  .progress{position:fixed;z-index:100;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--blue),var(--red),var(--gold));box-shadow:0 0 12px rgba(127,29,29,.25)}
+  .masthead{position:relative;min-height:78vh;display:grid;place-items:center;padding:7rem 1.2rem 4rem;overflow:hidden;background:#211d19;color:#f9f3e7}
+  .masthead::before{content:"";position:absolute;inset:0;background:
+    linear-gradient(90deg,rgba(11,9,8,.9),rgba(11,9,8,.55) 50%,rgba(11,9,8,.82)),
+    url('https://commons.wikimedia.org/wiki/Special:Redirect/file/5_giornate_di_Milano.jpeg') center/cover no-repeat;filter:saturate(.65) sepia(.18);transform:scale(1.02)}
+  .masthead::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(15,12,10,.86));pointer-events:none}
+  .hero{position:relative;z-index:2;max-width:1100px;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:3rem;align-items:end}
+  .top-credit{font-family:var(--sans);font-size:.5rem;line-height:1.2;letter-spacing:.10em;text-transform:uppercase;color:#e7d7bf;margin-bottom:.45rem;opacity:.8}
+  .kicker{font-family:var(--sans);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#e1c58c;margin-bottom:1rem}
+  h1{margin:.2rem 0 1.2rem;font-weight:600;line-height:.98;font-size:clamp(3rem,8vw,7.2rem);letter-spacing:-.045em;max-width:900px}
+  .dek{font-size:clamp(1.15rem,2vw,1.6rem);max-width:760px;color:#efe4d2;line-height:1.4}
+  .hero-card{border:1px solid rgba(255,255,255,.25);background:rgba(28,24,21,.68);backdrop-filter:blur(8px);padding:1.3rem;border-radius:2px;box-shadow:var(--shadow)}
+  .hero-card small{font-family:var(--sans);text-transform:uppercase;letter-spacing:.12em;color:#d8c29a}
+  .hero-card p{font-size:1.04rem;margin:.6rem 0 0}
+  .shell{max-width:1380px;margin:0 auto;background:var(--paper);box-shadow:0 0 70px rgba(34,28,20,.14)}
+  .nav-wrap{position:sticky;top:0;z-index:40;background:rgba(245,239,227,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font-family:var(--sans)}
+  nav{max-width:1240px;margin:auto;display:flex;gap:.4rem;overflow:auto;padding:.55rem .8rem;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{white-space:nowrap;text-decoration:none;padding:.65rem .8rem;border-radius:999px;font-size:.83rem;font-weight:700;color:#5b5147}
+  nav a.active,nav a:hover{background:#2b261f;color:#fff}
+  nav a.nav-verifica{background:#7f1d1d;color:#fff;border:1px solid #7f1d1d;box-shadow:0 2px 8px rgba(127,29,29,.18)}
+  nav a.nav-verifica:hover,nav a.nav-verifica.active{background:#a5792a;color:#fff;border-color:#a5792a}
+  nav a.nav-sos{background:#2f5e48;color:#fff;border:1px solid #2f5e48;box-shadow:0 2px 8px rgba(47,94,72,.18)}
+  nav a.nav-sos:hover{background:#a5792a;color:#fff;border-color:#a5792a}
+  .content{max-width:1180px;margin:auto;padding:4.5rem 1.4rem 7rem}
+  .intro-grid{display:grid;grid-template-columns:1.45fr .55fr;gap:3.5rem;margin-bottom:5rem;align-items:start}
+  .lead{font-size:1.43rem;line-height:1.58;margin-top:0}
+  .dropcap:first-letter{float:left;font-size:4.7rem;line-height:.77;padding:.13rem .16rem 0 0;color:var(--red);font-weight:700}
+  .quote-card{border-top:4px solid var(--red);background:#ebe0cd;padding:1.5rem 1.4rem;box-shadow:0 8px 30px rgba(40,30,18,.08);position:sticky;top:5rem}
+  .quote-card p{margin:0;font-size:1.15rem;font-style:italic}
+  .quote-card cite{display:block;margin-top:1rem;font-family:var(--sans);font-style:normal;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+  section{scroll-margin-top:4.5rem;margin:0 0 6rem}
+  .section-title{display:grid;grid-template-columns:80px 1fr;gap:1rem;align-items:start;margin-bottom:2rem}
+  .section-no{font-family:var(--sans);font-size:.78rem;letter-spacing:.15em;color:var(--red);border-top:1px solid var(--red);padding-top:.55rem}
+  h2{margin:0;font-size:clamp(2.2rem,5vw,4.7rem);line-height:1.03;font-weight:600;letter-spacing:-.035em}
+  h3{font-size:1.55rem;margin:2.4rem 0 .7rem;line-height:1.2;color:#3a3128}
+  p{font-size:1.08rem}
+  .two-col{columns:2 390px;column-gap:3.5rem}
+  .two-col p{break-inside:avoid;margin-top:0;margin-bottom:1.15rem}
+  .callout{margin:2.5rem 0;padding:1.5rem 1.7rem;border-left:5px solid var(--blue);background:#ece7dc}
+  .callout strong{color:var(--blue)}
+  .media-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .media-card{position:relative;min-height:240px;overflow:hidden;background:#1e1b18;color:#fff;border:0;padding:0;cursor:pointer;text-align:left;box-shadow:var(--shadow)}
+  .media-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62;filter:sepia(.15) saturate(.7);transition:.35s}
+  .media-card:hover img{transform:scale(1.035);opacity:.78}
+  .media-card .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(16,13,11,.88))}
+  .media-card .meta{position:absolute;left:1rem;right:1rem;bottom:1rem;z-index:2}
+  .media-card .tag{font-family:var(--sans);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:#f2d498}
+  .media-card h4{font-size:1.3rem;line-height:1.15;margin:.35rem 0 0}
+  .play{position:absolute;right:1rem;top:1rem;width:42px;height:42px;border:1px solid rgba(255,255,255,.65);border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.22);z-index:3;font-family:var(--sans)}
+  .sheet-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .sheet{background:#fbf8f1;border:1px solid #d7cab3;padding:1rem;min-height:270px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 24px rgba(48,36,22,.08);cursor:pointer;transition:.2s;position:relative;overflow:hidden;text-align:left}
+  .sheet:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(48,36,22,.14)}
+  .sheet::before{content:"♩";position:absolute;right:-.5rem;top:-1.4rem;font-size:8rem;color:rgba(127,29,29,.07)}
+  .sheet .year{font-family:var(--sans);font-size:.72rem;color:var(--red);letter-spacing:.14em;text-transform:uppercase}
+  .sheet h4{font-size:1.45rem;margin:.7rem 0 .3rem;line-height:1.1}
+  .sheet p{font-size:.93rem;color:var(--muted);margin:.35rem 0}
+  .sheet .open{font-family:var(--sans);font-weight:800;font-size:.77rem;text-transform:uppercase;letter-spacing:.08em;color:var(--blue)}
+  .timeline{display:flex;gap:1rem;overflow-x:auto;padding:1rem 0 1.5rem;scroll-snap-type:x mandatory}
+  .timeline::-webkit-scrollbar{height:8px}.timeline::-webkit-scrollbar-thumb{background:#b9ac96}
+  .event{min-width:265px;scroll-snap-align:start;background:#ede4d5;border-top:4px solid var(--gold);padding:1.1rem}
+  .event b{font-family:var(--sans);font-size:1.35rem;color:var(--red)}
+  .event p{font-size:.93rem;margin:.5rem 0 0;line-height:1.45}
+  .people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .person{background:#2a241f;color:#f7efe2;min-height:330px;position:relative;overflow:hidden;border:0;padding:0;text-align:left;cursor:pointer}
+  .person img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.63;filter:sepia(.3) grayscale(.15);transition:.3s}
+  .person:hover img{transform:scale(1.03);opacity:.75}
+  .person .label{position:absolute;left:0;right:0;bottom:0;padding:1.1rem;background:linear-gradient(transparent,rgba(20,16,13,.96));padding-top:5rem}
+  .person .label b{font-size:1.28rem;display:block}
+  .person .label span{font-family:var(--sans);font-size:.76rem;color:#e3cfad}
+  .women-band{margin:3rem 0;display:grid;grid-template-columns:1.1fr .9fr;background:#2f251e;color:#fff;min-height:500px}
+  .women-band .img{min-height:500px;background:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Hayez_-_Cristina_Trivulzio_Belgiojoso.jpg') center 25%/cover no-repeat;filter:saturate(.7) sepia(.1)}
+  .women-band .txt{padding:clamp(2rem,4vw,4rem);align-self:center}
+  .women-band h3{color:#fff;font-size:clamp(2rem,4vw,3.8rem);margin-top:0}
+  .women-heroes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0 3rem}
+  .heroine-card{background:#f0e5d3;border-top:4px solid var(--red);padding:1.25rem;box-shadow:0 8px 24px rgba(44,32,20,.07)}
+  .heroine-card b{display:block;font-family:var(--sans);font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:.45rem}
+  .heroine-card p{font-size:.94rem;line-height:1.58;margin:.35rem 0}
+  .verdi-women{margin:3.2rem 0;padding:2.3rem;background:#2b241f;color:#f5ecdf;position:relative;overflow:hidden}
+  .verdi-women::after{content:"V";position:absolute;right:-.7rem;bottom:-4rem;font-size:16rem;line-height:1;color:rgba(255,255,255,.035);font-family:var(--serif);font-weight:700}
+  .verdi-women h3{color:#fff;margin-top:0;font-size:clamp(2rem,4vw,3.5rem)}
+  .verdi-women p{position:relative;z-index:1}
+  .verdi-names{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 1.5rem;position:relative;z-index:1}
+  .verdi-names span{font-family:var(--sans);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);padding:.38rem .6rem;border-radius:999px;color:#e8d3ad}
+  .women-band p{color:#eee0ce}
+  .network{background:#e7dcc9;border:1px solid #c8b89e;padding:1rem;margin:2rem 0;overflow:hidden}
+  .network svg{width:100%;height:auto;display:block}
+  .network text{font-family:var(--sans);font-weight:800;fill:#2f2923}
+  .network .edge{stroke:#8f7e65;stroke-width:2;opacity:.75}
+  .network .edge.red{stroke:#8b3030}.network .edge.blue{stroke:#345279}
+  .network circle{stroke:#f6efe4;stroke-width:4}
+  .turin-cast{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.6rem 0 2.2rem}
+  .turin-cast .who{background:#efe5d4;border:1px solid #cbbba4;padding:1rem}
+  .turin-cast .who b{display:block;font-family:var(--sans);font-size:.84rem;letter-spacing:.04em;text-transform:uppercase;color:#6e2b27;margin-bottom:.35rem}
+  .turin-cast .who span{font-size:.9rem;line-height:1.5;color:#5f554a}
+  .essay-section{max-width:920px;margin-left:auto;margin-right:auto}
+  .essay-section .essay-lead{font-size:1.17rem;line-height:1.8}
+  .essay-section p{line-height:1.82}
+  .essay-section .essay-video{margin:3rem 0 1.4rem}
+  .essay-section .essay-signature{font-family:var(--sans);font-weight:800;letter-spacing:.04em;text-align:right;margin-top:2rem;color:#5f5142}
+  .scene-inline{margin:1.8rem 0 2.2rem}
+  .scene-inline img{display:block;width:100%;height:auto;border:1px solid #4e443b;box-shadow:0 14px 34px rgba(20,15,10,.2)}
+  .scene-inline figcaption{font-family:var(--sans);font-size:.76rem;line-height:1.45;color:#74685b;margin-top:.55rem}
+  .civic-final h3{margin-top:2.8rem;color:#254636}
+  .civic-patria{border-left-color:var(--green);background:#f5efe2}
+  .civic-patria strong{color:var(--green)}
+  .student-box{margin:2.6rem 0 0;padding:1.35rem 1.5rem 1.45rem;background:#e7f0e9;border:1px solid #b9cdbd;border-left:6px solid var(--green);box-shadow:0 8px 24px rgba(40,55,42,.07)}
+  .student-box .student-label{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:#fff;background:var(--green);padding:.28rem .55rem;margin-bottom:.75rem}
+  .student-box h3{margin:.15rem 0 .7rem;color:#244936;font-size:1.45rem}
+  .student-box p{font-size:1rem;line-height:1.62;margin:.6rem 0}
+  .student-box ul{margin:.55rem 0 .6rem 1.15rem;padding:0}
+  .student-box li{margin:.3rem 0;line-height:1.5}
+  .student-box .try{margin-top:.9rem;padding-top:.8rem;border-top:1px solid #b9cdbd;font-family:var(--sans);font-size:.92rem}
+  .student-box .try strong{color:#244936}
+  .student-box blockquote{margin:.8rem 0;padding:.65rem 1rem;border-left:4px solid var(--gold);background:#f7f1e5;font-size:1.15rem;font-style:italic}
+  .student-box a{font-family:var(--sans);font-weight:800;color:var(--blue)}
+  .student-glossary{background:#f3ead7;border-left-color:var(--gold);border-color:#d8c39b}
+  .student-glossary .student-label{background:var(--gold)}
+  .student-glossary h3{color:#5d3c1f}
+  .student-glossary dl{display:grid;grid-template-columns:8rem 1fr;gap:.45rem 1rem;margin:.9rem 0 0}
+  .student-glossary dt{font-family:var(--sans);font-weight:900;color:#6e2b27}
+  .student-glossary dd{margin:0;line-height:1.5}
+  @media (max-width:580px){.student-glossary dl{grid-template-columns:1fr;gap:.15rem}.student-glossary dd{margin-bottom:.55rem}}
+  .source-caveat{margin:1.1rem 0 1.6rem;padding:.9rem 1rem;background:#f7f1e5;border-left:4px solid var(--gold);font-family:var(--sans);font-size:.84rem;line-height:1.55;color:#62574b}
+  .source-caveat strong{color:#493b2c}
+  .civic-mode-note{margin:0 0 2rem;padding:.9rem 1rem;border:1px dashed #87988d;background:#f4efe4;font-family:var(--sans);font-size:.84rem;line-height:1.55;color:#536158}
+  .rights-note{display:block;margin-top:.35rem;font-family:var(--sans);font-size:.69rem;line-height:1.45;color:#7a6e61}
+  .history-pivot{margin:3rem 0;padding:2rem 2.15rem;background:#eee5d6;border-top:4px solid var(--blue);box-shadow:0 10px 28px rgba(45,33,22,.07)}
+  .history-pivot h3{margin:.15rem 0 1.25rem;font-size:clamp(1.8rem,3.4vw,3rem);color:var(--blue)}
+  .history-pivot p:last-of-type{margin-bottom:.6rem}
+  .literary-aside{margin:3rem 0;padding:2rem 2.15rem;background:#f0e7d8;border-top:4px solid var(--gold);box-shadow:0 10px 28px rgba(45,33,22,.06)}
+  .literary-aside h3{margin:.1rem 0 1rem;font-size:clamp(1.9rem,3.5vw,3rem);color:#5d3c1f}
+  .literary-aside .eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:800}
+  .literary-aside p{line-height:1.78}
+  .literary-aside .keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.5rem 0}
+  .literary-aside .key{background:#fbf7ef;border:1px solid #d3c3aa;padding:1rem}
+  .literary-aside .key b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem}
+  .literary-aside .key span{font-size:.92rem;line-height:1.5}
+  .civic-final{margin-top:7rem;padding:3rem clamp(1.4rem,4vw,3.2rem);background:#e9e0cf;border-top:6px solid var(--green);border-bottom:1px solid #c8baa3;box-shadow:0 14px 34px rgba(40,30,18,.08)}
+  .civic-final .section-title{margin-bottom:.6rem}
+  .civic-subtitle{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:900;margin:0 0 2rem 96px}
+  .civic-final .opening{font-size:1.3rem;line-height:1.65}
+  .civic-final .civic-question{margin:2.4rem 0;padding:1.8rem 2rem;background:#253d63;color:#fff;font-size:clamp(1.4rem,2.5vw,2.15rem);line-height:1.35;font-weight:600}
+  .civic-final .civic-question strong{color:#f1d08f}
+  .civic-principles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.6rem 0 2rem}
+  .civic-principle{background:#f8f3e9;border:1px solid #cdbfa8;padding:1.15rem}
+  .civic-principle b{display:block;font-family:var(--sans);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:.35rem}
+  .civic-principle span{font-size:.94rem;line-height:1.55}
+  @media (max-width:900px){.civic-subtitle{margin-left:0}.civic-principles{grid-template-columns:1fr}}
+  @media (max-width:900px){.literary-aside .keys{grid-template-columns:1fr}}
+  .learning-check{margin:0;padding:4.2rem 1.4rem;background:linear-gradient(135deg,#253d63,#1f3029);color:#fff;border-top:6px solid var(--gold);text-align:center}
+  .learning-check-inner{max-width:900px;margin:auto}
+  .learning-check .eyebrow{font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;font-weight:900;color:#efd59f;margin-bottom:.7rem}
+  .learning-check h2{color:#fff;font-size:clamp(2.2rem,5vw,4.2rem);margin:0 0 1rem}
+  .learning-check p{max-width:720px;margin:0 auto 1.6rem;color:#eee6da;font-size:1.1rem;line-height:1.65}
+  .learning-check-button{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:1rem 1.45rem;border-radius:999px;background:#f5efe3;color:#20344f;text-decoration:none;font-family:var(--sans);font-weight:900;font-size:1rem;letter-spacing:.02em;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s,background .2s}
+  .learning-check-button:hover,.learning-check-button:focus-visible{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.3);background:#fff}
+  .learning-check small{display:block;margin-top:1rem;font-family:var(--sans);font-size:.78rem;color:#d6cdbf}
+  @media (max-width:580px){.learning-check{padding:3rem 1rem}.learning-check-button{width:100%;padding:1rem}}
+  .archive{background:#211d19;color:#f6ecdc;padding:3rem 1.4rem;margin-left:-1.4rem;margin-right:-1.4rem}
+  .archive-inner{max-width:1180px;margin:auto}
+  .archive h2{color:#fff}
+  .archive-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:2rem}
+  .archive-subtitle{font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#e0c389;margin:2.8rem 0 .4rem;font-weight:800}
+  .archive h3{font-size:1.8rem;margin:.2rem 0 .5rem;color:#fff}
+  .source-card{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);padding:1rem;cursor:pointer;color:#fff;text-align:left;transition:.2s}
+  .source-card:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+  .source-card .src{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#d7bd8d}
+  .source-card b{display:block;margin:.45rem 0;font-size:1.06rem}
+  .source-card span{font-family:var(--sans);font-size:.8rem;color:#cabda9}
+  .bibliography{background:#eee3cf;padding:3.2rem 1.4rem;border-top:1px solid #cdbfa8}
+  .bibliography-inner{max-width:1180px;margin:auto}
+  .bibliography-list{display:grid;gap:.8rem;margin-top:1.4rem}
+  .bib-group{margin-top:2.6rem}
+  .bib-group:first-of-type{margin-top:1.4rem}
+  .bib-group-title{font-family:var(--sans);font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:#7f1d1d;font-weight:900;margin:0 0 .7rem;padding-bottom:.55rem;border-bottom:2px solid #b99f7b}
+  .bib-group-note{margin:.25rem 0 1rem;padding:.8rem 1rem;background:#f7f1e5;border-left:4px solid #a5792a;font-family:var(--sans);font-size:.82rem;line-height:1.55;color:#66594c}
+  .bib-group-note strong{color:#4d3724}
+  .bib-entry .bib-role{display:inline-block;margin-top:.28rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#7b6b59;font-weight:800}
+  .bib-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;border-bottom:1px solid #d5c8b4;padding:.9rem 0}
+  .bib-cite{font-size:.98rem;line-height:1.55}
+  .bib-cite em{font-style:italic}
+  .bib-note{display:block;font-family:var(--sans);font-size:.77rem;color:#776b5e;margin-top:.22rem}
+  .bib-item{display:grid;grid-template-columns:9rem 1fr auto;gap:1rem;align-items:center;border-top:1px solid #cdbfa8;padding:1rem 0}
+  .bib-kind{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#7f1d1d;font-weight:800}
+  .bib-item b{display:block;font-size:1.03rem}
+  .bib-item span{font-family:var(--sans);font-size:.82rem;color:#6c6258}
+  .bib-open{border:1px solid #9f8e75;background:#f8f4ea;padding:.5rem .75rem;cursor:pointer;font-family:var(--sans);font-weight:700;white-space:nowrap}
+  .footer{background:#15120f;color:#cfc0ad;padding:2.3rem 1.4rem;font-family:var(--sans);font-size:.78rem}
+  .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .copyright{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:1rem;margin-top:.3rem;font-weight:700;color:#f1e4d2}
+  .copyright a{color:#f1d08f;text-decoration:none;border-bottom:1px solid rgba(241,208,143,.45)}
+  .copyright a:hover{color:#fff}
+  .webmaster-line{width:100%;display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;color:#d8c9b5}
+  .webmaster-line a{color:#f1d08f;text-decoration:none;border-bottom:1px solid rgba(241,208,143,.45)}
+  .webmaster-line a:hover{color:#fff}
+  .badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sans);font-size:.73rem;font-weight:800;padding:.3rem .55rem;border:1px solid #aa9a82;border-radius:999px;color:#6a5c4d;background:#f8f3e8;vertical-align:middle;margin-left:.4rem;cursor:pointer}
+  .badge:hover{background:#fff}
+  .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(15,12,10,.78);backdrop-filter:blur(6px)}
+  .modal.open{display:flex}
+  .modal-panel{width:min(1120px,96vw);height:min(86vh,860px);background:#f7f2e8;box-shadow:0 24px 90px rgba(0,0,0,.45);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+  .modal.compact .modal-panel{width:min(690px,94vw);height:auto;grid-template-rows:auto auto}
+  .modal.compact .modal-body{display:none}
+  .modal.compact .modal-foot{border-top:0;justify-content:flex-end;padding:1rem 1.1rem 1.15rem;background:#f7f2e8}
+  .modal.compact .url-box{display:none}
+  .modal.compact .copy-btn,.modal.compact .open-btn{padding:.72rem 1rem}
+  .modal.compact .modal-title{white-space:normal}
+  .modal-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1rem;border-bottom:1px solid #d1c5b1;font-family:var(--sans)}
+  .modal-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .modal-close{border:0;background:#2b251f;color:#fff;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1.1rem}
+  .modal-body{background:#111;min-height:0;position:relative;overflow:auto;display:grid;place-items:center}
+  .modal-body iframe,.modal-body object{border:0;width:100%;height:100%;background:#fff}
+  .modal-body img{max-width:100%;max-height:100%;object-fit:contain}
+  .modal-body .audio-wrap{background:#f5efe4;color:#2c261f;width:100%;height:100%;display:grid;place-items:center;padding:2rem;text-align:center}
+  .modal-body audio{width:min(680px,90%)}
+  .modal-foot{font-family:var(--sans);display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:#eee4d3;border-top:1px solid #d1c5b1;font-size:.78rem;flex-wrap:wrap}
+  .url-box{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:180px;color:#6c5f50}
+  .copy-btn,.open-btn{border:1px solid #9f8e75;background:#f8f4ea;padding:.48rem .72rem;cursor:pointer;font-weight:700}
+  .open-btn{background:#2b251f;color:#fff;border-color:#2b251f}
+  .copy-btn:hover,.open-btn:hover{filter:brightness(.96)}
+  .scrolltop{position:fixed;right:1rem;bottom:1rem;z-index:60;width:44px;height:44px;border-radius:50%;border:0;background:#2c261f;color:#fff;display:none;cursor:pointer;box-shadow:var(--shadow)}
+  .scrolltop.show{display:grid;place-items:center}
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}.hero-card{max-width:520px}.masthead{min-height:88vh}
+    .intro-grid{grid-template-columns:1fr}.quote-card{position:relative;top:auto}
+    .media-row,.sheet-grid,.archive-grid{grid-template-columns:1fr 1fr}.people{grid-template-columns:1fr 1fr}.women-band{grid-template-columns:1fr}.turin-cast{grid-template-columns:1fr}.women-heroes{grid-template-columns:1fr}.women-band .img{min-height:420px}
+  }
+  @media (max-width:580px){
+    .content{padding-left:1rem;padding-right:1rem}.section-title{grid-template-columns:1fr}.section-no{width:max-content}
+    .media-row,.sheet-grid,.archive-grid,.people{grid-template-columns:1fr}.two-col{columns:1}.women-band{margin-left:-1rem;margin-right:-1rem}.archive{margin-left:-1rem;margin-right:-1rem}.bib-item,.bib-entry{grid-template-columns:1fr}.modal{padding:.25rem}.modal-panel{width:100%;height:94vh}
+    h1{font-size:3.15rem}.hero{gap:1.5rem}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+
+<style>
+  .masthead::before{
+    background:
+      linear-gradient(90deg,rgba(11,9,8,.88),rgba(11,9,8,.46) 54%,rgba(11,9,8,.82)),
+      url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Uomo_Vitruviano.jpg') center 43%/cover no-repeat !important;
+    filter:saturate(.62) sepia(.22) contrast(.95) !important;
+  }
+  .hero{grid-template-columns:minmax(0,1fr) 320px}
+  .ratio-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin:1.5rem 0 2.2rem}
+  .ratio-card{background:#f7f1e5;border:1px solid #d5c6ad;padding:1.1rem;text-align:center}
+  .ratio-card b{font-family:var(--sans);font-size:1.7rem;color:var(--red);display:block}
+  .ratio-card span{font-size:.88rem;color:var(--muted)}
+  .term-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin:1.5rem 0 2rem}
+  .term-card{background:#efe6d6;border-top:4px solid var(--blue);padding:1.15rem}
+  .term-card b{font-family:var(--sans);text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;color:var(--blue)}
+  .term-card h4{margin:.35rem 0 .4rem;font-size:1.35rem}
+  .term-card p{font-size:.94rem;margin:.2rem 0}
+  .migration-map{margin:2.2rem 0;background:#e9dfcf;border:1px solid #cbbba3;padding:1rem;box-shadow:0 8px 26px rgba(44,33,22,.07)}
+  .migration-map svg{width:100%;height:auto;display:block}
+  .migration-map .land{fill:#d5c6ac;stroke:#b49f80;stroke-width:1}
+  .migration-map .sea{fill:#eaf0ee}
+  .migration-map .route{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:8 8}
+  .migration-map .r1{stroke:#7f1d1d}.migration-map .r2{stroke:#253d63}.migration-map .r3{stroke:#2f5e48}
+  .migration-map text{font-family:var(--sans);font-weight:800;fill:#352d25}
+  .migration-map a text{font-size:17px}
+  .migration-map a:hover text{text-decoration:underline}
+  .compare-band{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+  .compare-box{padding:1.3rem;background:#f2eadc;border:1px solid #d2c2a8}
+  .compare-box:first-child{border-top:5px solid var(--gold)}
+  .compare-box:last-child{border-top:5px solid var(--red)}
+  .compare-box h3{margin:.1rem 0 .8rem}
+  .mini-caption{font-family:var(--sans);font-size:.76rem;line-height:1.5;color:#73685b;margin-top:.5rem}
+  .bridge-final{margin-top:3rem;padding:2.3rem;background:#29231e;color:#f5ecdf;border-top:5px solid var(--gold)}
+  .bridge-final h3{color:#fff;font-size:clamp(1.8rem,3vw,3rem);margin-top:0}
+  .bridge-final p{color:#eee1cf}
+  .route-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+  @media(max-width:900px){
+    .ratio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .term-grid,.compare-band,.route-links{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="masthead">
+  <div class="hero">
+    <div>
+      <div class="top-credit">Alessandro Zilli · quello di musica</div>
+      <div class="kicker">Storia della musica · percorso interattivo</div>
+      <h1>Il Rinascimento musicale</h1>
+      <p class="dek">Dalla parola alla polifonia, dalla polifonia agli strumenti, dagli strumenti allo spazio, fino alla voce che torna sola sulla scena.</p>
+    </div>
+    <aside class="hero-card">
+      <small>Una chiave di lettura</small>
+      <p>Il Rinascimento non nasce in un giorno e non cancella ciò che lo precede. Prende tecniche, idee, parole e strumenti, li sposta da un ambiente all'altro e, proprio spostandoli, li trasforma.</p>
+    </aside>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="nav-wrap">
+    <nav id="nav">
+      <a href="#prologo">Prologo</a>
+      <a href="#umanesimo">Umanesimo</a>
+      <a href="#stampa">Stampa</a>
+      <a href="#corti">Corti</a>
+      <a href="#strumenti">Strumenti</a>
+      <a href="#temperamenti">Temperamenti</a>
+      <a href="#trattati">Trattati</a>
+      <a href="#parole">Parole in viaggio</a>
+      <a href="#madrigale">Madrigale</a>
+      <a href="#riforma">Riforma</a>
+      <a href="#censura">Censura</a>
+      <a href="#roma">Roma</a>
+      <a href="#venezia">Venezia</a>
+      <a href="#firenze">Firenze</a>
+      <a href="#galileo">Galileo</a>
+      <a href="#fonti">Fonti</a>
+    </nav>
+  </div>
+
+  <main class="content">
+    <div class="intro-grid">
+      <div>
+        <p class="lead dropcap">Quando diciamo "Rinascimento" siamo tentati di immaginare una porta che si apre nel 1492, lasciandosi dietro il Medioevo. La storia reale è molto meno ordinata e molto più interessante, perché mentre Colombo attraversa l'Atlantico Brunelleschi e Donatello sono già morti, Botticelli ha dipinto la <em>Primavera</em>, Leonardo sta studiando il corpo umano e Lorenzo de' Medici muore proprio in quell'anno. La musica, ancora più delle arti figurative, mostra quanto le epoche si sovrappongano: tecniche nate nella liturgia medievale passano alla poesia profana, strumenti provenienti da pratiche popolari entrano nelle corti, la polifonia vocale insegna agli strumenti come organizzarsi e, quando questi diventano autonomi, restituiscono alla voce un nuovo modo di essere accompagnata.</p>
+        <p class="lead">Questo percorso segue soprattutto queste traslazioni, perché permettono di capire il Rinascimento non come un catalogo di autori e forme, ma come una lenta trasformazione del modo europeo di pensare il suono.</p>
+      </div>
+      <aside class="quote-card">
+        <p>"Quasi 1500" è una battuta perfetta per ricordare che le epoche non hanno una data di nascita. Il calendario serve a orientarci, non a spegnere e accendere la storia.</p>
+        <cite>Una regola per tutto il percorso</cite>
+      </aside>
+    </div>
+
+    <section id="prologo">
+      <div class="section-title"><div class="section-no">01</div><div><h2>Prima del Rinascimento</h2></div></div>
+      <div class="two-col">
+        <p>Non serve trasformare questo percorso in una storia completa del Medioevo, ma alcuni fili devono essere raccolti perché il Rinascimento musicale nasce da materiali molto più antichi. Nel mondo cristiano occidentale la scrittura musicale viene sviluppata soprattutto per conservare e trasmettere il canto liturgico, mentre fuori dalla liturgia la poesia continua a vivere spesso in un rapporto stretto con il suono, come accade nella tradizione dei trovatori e dei trovieri, nelle laude e nelle forme profane che alimenteranno l'Ars nova.</p>
+        <p>Francesco d'Assisi è un passaggio particolarmente significativo. Il <em>Cantico delle creature</em>, scritto in volgare umbro, appartiene a una religiosità che non abolisce il latino della liturgia ma porta la parola sacra in uno spazio accessibile alla comunità. La tradizione manoscritta lascia persino uno spazio rigato per una musica che non ci è giunta, ricordandoci che quel testo non nasce necessariamente per una lettura silenziosa e privata.</p>
+        <p>La lauda rende ancora più evidente questa possibilità, perché confraternite, processioni e pratiche devozionali costruiscono un repertorio nel quale parola, canto comunitario e, progressivamente, dialogo possono incontrarsi. Non esiste una linea retta che dalla lauda conduca all'opera, ma si forma una possibilità che tornerà più volte: la parola cantata può diventare dialogo, il dialogo può suggerire personaggi e i personaggi possono infine produrre rappresentazione.</p>
+        <p>Dante conserva ancora la memoria di una poesia capace di essere cantata. Nel <em>Purgatorio</em>, quando Casella intona "Amor che ne la mente mi ragiona", il canto sospende per un momento il viaggio delle anime, tanto che Catone deve richiamarle al cammino. La scena è importante perché mostra già una tensione destinata a ritornare nella storia della musica sacra: la bellezza del suono può elevare, ma può anche diventare così potente da distrarre dallo scopo che dovrebbe servire.</p>
+        <p>Con Petrarca la poesia acquista una autonomia letteraria ancora maggiore, mentre la lingua dei contrasti interiori, della donna irraggiungibile, della natura e della memoria produce un materiale che i compositori cinquecenteschi troveranno irresistibile. Nel Trecento, intanto, Francesco Landini rappresenta bene un'altra Italia musicale, quella dell'Ars nova, nella quale il volgare può vivere dentro una raffinata polifonia senza coincidere ancora con ciò che nel Cinquecento chiameremo madrigale.</p>
+      </div>
+      <div class="media-row">
+        <button class="media-card video" data-video="47ZR-XzSHsI" data-title="Francesco Landini · Ecco la primavera">
+          <img src="https://img.youtube.com/vi/47ZR-XzSHsI/hqdefault.jpg" alt="Francesco Landini, Ecco la primavera">
+          <span class="shade"></span><span class="play">▶</span>
+          <span class="meta"><span class="tag">Ascolto</span><h4>Landini, Ecco la primavera</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Dante e Casella nel Purgatorio" data-url="https://www.treccani.it/enciclopedia/casella_%28Enciclopedia-Dantesca%29/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Dante_e_Casella.jpg" alt="Dante e Casella">
+          <span class="shade"></span><span class="meta"><span class="tag">Parola e canto</span><h4>Casella canta Dante</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Francesco d'Assisi" data-url="https://www.treccani.it/enciclopedia/san-francesco-d-assisi/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francis_of_Assisi-2.jpg" alt="San Francesco d'Assisi">
+          <span class="shade"></span><span class="meta"><span class="tag">Volgare sacro</span><h4>Francesco e la lauda</h4></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="umanesimo">
+      <div class="section-title"><div class="section-no">02</div><div><h2>Quando l'uomo entra al centro del suono</h2></div></div>
+      <div class="two-col">
+        <p>L'Umanesimo non sostituisce improvvisamente Dio con l'uomo. L'Europa rimane profondamente religiosa, ma lo sguardo comincia a ruotare e a interrogare con una intensità nuova il corpo, la natura, le passioni, la lingua e la capacità dell'individuo di comprendere ciò che lo circonda. L'Uomo vitruviano di Leonardo, intorno al 1490, rende visibile questa rotazione, perché il corpo umano diventa contemporaneamente oggetto di misura, proporzione e conoscenza.</p>
+        <p>Il recupero dell'antichità non consiste soltanto nel copiare modelli decorativi. I testi greci e latini vengono cercati, collazionati e interpretati, Vitruvio permette di rileggere l'architettura e il corpo, mentre miti come Orfeo, Venere, Apollo, Dafne, Bacco e Arianna tornano a parlare dell'esperienza contemporanea. La mitologia offre un vocabolario attraverso il quale desiderio, bellezza, perdita, ebbrezza e trasformazione possono essere raccontati senza perdere la distanza dell'antico.</p>
+        <p>Anche la donna irraggiungibile che attraversa lo Stil novo e Petrarca diventa musicalmente feconda, perché la distanza produce desiderio e il desiderio genera contrasti. La natura non è ancora il paesaggio romantico dell'Ottocento, ma può già funzionare come luogo in cui il sentimento si riflette attraverso luce, ombra, acqua, vento e stagioni, offrendo ai compositori immagini che più tardi potranno diventare veri gesti sonori.</p>
+        <p>Leonardo appartiene pienamente a questa cultura anche come musicista. Le fonti lo ricordano come esecutore e improvvisatore, mentre i suoi codici contengono progetti di strumenti e riflessioni sul suono. Non è corretto trasformarlo retroattivamente in un grande compositore di repertorio, ma è importante ricordare che per un uomo del Rinascimento le arti non erano compartimenti stagni e che la pratica musicale poteva convivere con anatomia, pittura, meccanica e poesia dentro la stessa curiosità.</p>
+      </div>
+
+      <div class="women-band" style="grid-template-columns:.9fr 1.1fr">
+        <div class="img" style="background-image:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Uomo_Vitruviano.jpg');background-position:center"></div>
+        <div class="txt">
+          <h3>Leonardo e Michelangelo, due anime dello stesso Rinascimento</h3>
+          <p>L'opposizione non va ridotta alla formula facile secondo cui Leonardo sarebbe lo scienziato e Michelangelo il classicista, perché entrambi studiano il corpo e l'antico. La differenza utile, per il nostro racconto, è piuttosto nel modo di guardare: Michelangelo tende a trasformare il corpo osservato verso una potenza ideale ed eroica, mentre Leonardo lo smonta, lo misura e lo disseziona per comprenderne il funzionamento. Il corpo vitruviano e il cadavere anatomico convivono così nella stessa epoca, esattamente come nella musica convivranno il rispetto delle regole polifoniche e il desiderio di piegarle all'esperienza concreta della parola.</p>
+          <button class="source-card resource" data-title="Stefano Bollani · Leonardo da Vinci, musica e alieni" data-url="https://www.listennotes.com/podcasts/pdr-il-podcast-di/pdr-95-stefano-bollani-eS2QfzXAW8p/">
+            <span class="src">Approfondimento contemporaneo</span><b>Stefano Bollani parla del Leonardo musicista</b><span>Podcast PDR, 2025</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="stampa">
+      <div class="section-title"><div class="section-no">03</div><div><h2>La scoperta del millennio</h2></div></div>
+      <div class="two-col">
+        <p>Il Rinascimento non potrebbe esistere nella forma che conosciamo senza il lavoro degli amanuensi e delle botteghe manoscritte, perché il libro stampato eredita dal manoscritto la pagina, i margini, le iniziali, l'organizzazione del testo e molte convenzioni che i primi tipografi imitano quasi con deferenza. La svolta di Gutenberg, intorno alla metà del Quattrocento, non consiste quindi nell'invenzione del libro, ma nella possibilità di produrre molte copie sufficientemente uniformi da far circolare lo stesso testo in luoghi differenti con una velocità prima inconcepibile.</p>
+        <p>Quando una pagina può essere riprodotta, il sapere non dipende più soltanto dal viaggio dell'uomo che porta con sé un codice. I testi possono essere confrontati, corretti, ristampati e discussi da lettori che non si trovano nella stessa città. La stampa moltiplica la Bibbia, ma qualche decennio più tardi moltiplicherà anche gli scritti che contestano l'autorità religiosa. Non è cattolica, protestante, monarchica o repubblicana, perché la sua potenza consiste precisamente nel moltiplicare ciò che le viene affidato.</p>
+        <p>La musica presenta però un problema tecnico molto più difficile della semplice pagina alfabetica, perché pentagrammi, note e parole devono sovrapporsi con precisione. Ottaviano Petrucci, nato a Fossombrone e attivo a Venezia, ottiene nel 1498 un privilegio per la stampa musicale e nel 1501 pubblica l'<em>Harmonice musices Odhecaton</em>, realizzato attraverso impressioni successive per righi, note e testo. Il risultato possiede una nitidezza tale da trasformare il libro di musica in un oggetto finalmente riproducibile su larga scala.</p>
+        <p>Le conseguenze sono enormi. Josquin, Obrecht, Isaac e molti altri compositori possono circolare senza essere fisicamente presenti, le frottole escono dalla corte nella quale erano state praticate, le intavolature raggiungono liutisti lontani e la musica comincia a possedere un mercato editoriale. Nel 1520 Petrucci pubblicherà inoltre la <em>Musica sopra le canzone del Petrarcha</em> di Bernardo Pisano, una delle soglie editoriali attraverso le quali la poesia petrarchesca entra nella nuova stagione musicale del Cinquecento.</p>
+      </div>
+
+      <div class="history-pivot">
+        <h3>IMSLP si chiama anche Petrucci Music Library</h3>
+        <p>Il nome non è decorativo. La grande biblioteca digitale di spartiti rende accessibili oggi, in forma digitale, opere e trattati che nel Rinascimento erano diventati riproducibili grazie alla rivoluzione della stampa musicale. Per questo, nella versione web del percorso, le fonti primarie non vengono soltanto raccontate ma possono essere aperte direttamente.</p>
+      </div>
+
+      <div class="sheet-grid">
+        <button class="sheet resource" data-title="Petrucci · Harmonice musices odhecaton" data-url="https://imslp.org/wiki/Harmonice_Musices_Odhecaton">
+          <span class="year">Venezia · 1501</span><div><h4>Odhecaton</h4><p>La grande svolta della stampa musicale a caratteri mobili.</p></div><span class="open">Apri su IMSLP</span>
+        </button>
+        <button class="sheet resource" data-title="Sebastian Virdung · Musica getutscht" data-url="https://imslp.org/wiki/Musica_getutscht_(Virdung,_Sebastian)">
+          <span class="year">Basilea · 1511</span><div><h4>Musica getutscht</h4><p>Strumenti, immagini e pratica musicale nel primo Cinquecento.</p></div><span class="open">Apri su IMSLP</span>
+        </button>
+        <button class="sheet resource" data-title="Silvestro Ganassi · Fontegara" data-url="https://imslp.org/wiki/Opera_Intitulata_Fontegara_(Ganassi,_Sylvestro)">
+          <span class="year">Venezia · 1535</span><div><h4>Fontegara</h4><p>Flauto, articolazione e diminuzione come arte dell'esecutore.</p></div><span class="open">Apri su IMSLP</span>
+        </button>
+        <button class="sheet resource" data-title="Giovanni Bassano · Ricercate, passaggi et cadentie" data-url="https://imslp.org/wiki/Ricercate%2C_passaggi_et_cadentie_(Bassano%2C_Giovanni)">
+          <span class="year">Venezia · 1585</span><div><h4>Ricercate e passaggi</h4><p>La prassi della diminuzione resa visibile sulla pagina.</p></div><span class="open">Apri su IMSLP</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="corti">
+      <div class="section-title"><div class="section-no">04</div><div><h2>Le corti, il prestigio, il piacere</h2></div></div>
+      <div class="two-col">
+        <p>Il mecenatismo rinascimentale non coincide con una semplice generosità verso gli artisti. Una corte finanzia pittori, poeti e musicisti perché la cultura produce prestigio, costruisce relazioni diplomatiche e rende visibile il livello della famiglia che governa, ma proprio dentro questo sistema il signore può essere anche un partecipante reale della cultura che protegge. Il termine "dilettante", nella sua accezione storica, non significa necessariamente incompetente, ma persona che pratica un'arte per formazione, piacere e status.</p>
+        <p>Isabella d'Este è un caso esemplare, perché canta, suona, commissiona strumenti, discute con gli artisti e sostiene musicisti come Marchetto Cara e Bartolomeo Tromboncino. A Firenze Lorenzo de' Medici scrive poesia, ha studiato musica, canta, improvvisa e suona diversi strumenti, con una particolare predilezione per il liuto, mentre la sua corte mette in relazione letteratura, filosofia, spettacolo pubblico e politica.</p>
+        <p>I canti carnascialeschi mostrano perfettamente quanto fosse poroso il confine fra cultura colta e festa urbana. Il <em>Trionfo di Bacco e Arianna</em>, con il celebre invito a godere di una giovinezza destinata a fuggire, utilizza il mito antico non come reperto da museo ma come lingua viva del presente, capace di entrare in una processione, in un canto collettivo e nell'immagine pubblica della città.</p>
+        <p>La mobilità delle corti attira inoltre musicisti provenienti dalle regioni franco fiamminghe, che portano con sé una tecnica contrappuntistica estremamente raffinata e contemporaneamente assorbono lingua e forme italiane. Heinrich Isaac a Firenze, Josquin nelle corti italiane e molti altri compositori rendono evidente che il Rinascimento musicale non appartiene a una nazione chiusa, ma a una rete europea nella quale uomini, libri e repertori viaggiano continuamente.</p>
+      </div>
+
+      <div class="people">
+        <button class="person resource" data-title="Lorenzo de' Medici" data-url="https://www.treccani.it/enciclopedia/lorenzo-de-medici_%28Dizionario-Biografico%29/">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bottega_di_Agnolo_di_Cosimo%2C_detto_il_Bronzino_%28Firenze_1503-1572%29_-_Ritratto_di_Lorenzo_il_Magnifico_-_865_-_Uffizi_Gallery.jpg" alt="Lorenzo de' Medici">
+          <span class="label"><b>Lorenzo de' Medici</b><span>Il principe umanista che partecipa alla cultura che protegge</span></span>
+        </button>
+        <button class="person resource" data-title="Isabella d'Este" data-url="https://www.treccani.it/enciclopedia/isabella-d-este-marchesa-di-mantova/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Isabella_d%27Este_by_Titian.jpg" alt="Isabella d'Este">
+          <span class="label"><b>Isabella d'Este</b><span>Musica, collezionismo e politica della corte</span></span>
+        </button>
+        <button class="person resource" data-title="Bartolomeo Tromboncino" data-url="https://www.treccani.it/enciclopedia/bartolomeo-tromboncino/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Lute_player_16th_century.jpg" alt="Liutista rinascimentale">
+          <span class="label"><b>Tromboncino e Cara</b><span>La frottola dentro la vita musicale delle corti</span></span>
+        </button>
+        <button class="person resource" data-title="Heinrich Isaac" data-url="https://www.treccani.it/enciclopedia/heinrich-isaac/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Heinrich_Isaac.jpg" alt="Heinrich Isaac">
+          <span class="label"><b>Heinrich Isaac</b><span>La tecnica nordica dentro la Firenze dei Medici</span></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="strumenti">
+      <div class="section-title"><div class="section-no">05</div><div><h2>Quando gli strumenti imparano a parlare</h2></div></div>
+      <div class="two-col">
+        <p>Gli strumenti non compaiono improvvisamente nel Rinascimento, perché appartengono da secoli alla festa, alla danza, alla strada, alla corte, alla pratica domestica e anche a contesti religiosi. Ciò che cambia è la loro organizzazione. Sempre più spesso vengono costruiti in famiglie di diverse taglie, capaci di coprire registri differenti come fanno le voci di un coro, e proprio questa imitazione del modello vocale permette loro di affrontare una polifonia completa senza dipendere necessariamente dai cantanti.</p>
+        <p>Nascono così consort di flauti, viole e altri strumenti nei quali soprano, alto, tenore e basso diventano quasi una anatomia sonora. Lo strumento, però, non rimane a lungo una voce sostitutiva, perché ogni gesto tecnico produce possibilità che la voce non possiede. Le dita del liutista, l'arco della viola, il fiato del cornettista e la tastiera dell'organista trasformano progressivamente il materiale ricevuto dalla polifonia vocale in un linguaggio autonomo.</p>
+        <p>La liuteria specializzata diventa uno dei luoghi più evidenti di questa trasformazione. Brescia e Cremona acquistano un ruolo crescente, mentre la famiglia del violino comincia a definire forme e proporzioni che nel Seicento diventeranno dominanti. Andrea Amati non deve essere trasformato nel singolo "inventore" del violino, ma appartiene alla generazione decisiva che contribuisce a stabilizzare il nuovo modello e a renderlo una alternativa sempre più forte alle viole.</p>
+        <p>La storia del liuto e della chitarra obbliga inoltre a pensare il Mediterraneo come spazio di scambio, perché il liuto europeo è profondamente legato alla storia dell'<em>al ud</em> arabo, mentre la chitarra costruisce la propria identità dentro un ambiente iberico nel quale convivono e si trasformano strumenti differenti. Nel Cinquecento esiste già un repertorio per chitarra a quattro cori, mentre la chitarra a cinque cori, che associamo alla stagione barocca, acquisterà più tardi una grande importanza anche per il modo accordale e ritmico del <em>rasgueado</em>.</p>
+      </div>
+
+      <div class="media-row">
+        <button class="media-card resource" data-title="Gironda, hurdy gurdy" data-url="https://commons.wikimedia.org/wiki/File:Hurdy-Gurdy.jpg">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hurdy-Gurdy.jpg" alt="Gironda">
+          <span class="shade"></span><span class="meta"><span class="tag">Tradizione popolare</span><h4>Gironda</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Liuto rinascimentale" data-url="https://www.clevelandart.org/art/1918.362">
+          <img src="https://openaccess-cdn.clevelandart.org/alternate/1918.362/1918.362_alt0_web.jpg" alt="Liuto rinascimentale">
+          <span class="shade"></span><span class="meta"><span class="tag">Corte e intavolatura</span><h4>Liuto</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Viola da gamba" data-url="https://www.metmuseum.org/art/collection/search/503359">
+          <img src="https://images.metmuseum.org/CRDImages/mi/original/DP164635.jpg" alt="Viola da gamba">
+          <span class="shade"></span><span class="meta"><span class="tag">Famiglie di strumenti</span><h4>Viola da gamba</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Cornetto rinascimentale" data-url="https://commons.wikimedia.org/wiki/Cornett">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Ivory_Cornetto_in_A%2C_at_the_Metropolitan_Museum_of_Art.jpg" alt="Cornetto">
+          <span class="shade"></span><span class="meta"><span class="tag">Fiato, voce e colore</span><h4>Cornetto</h4></span>
+        </button>
+      </div>
+
+      <div class="migration-map">
+        <svg viewBox="0 0 1100 520" role="img" aria-label="Mappa schematica delle migrazioni e trasformazioni di alcune famiglie strumentali">
+          <rect class="sea" x="0" y="0" width="1100" height="520" rx="8"></rect>
+          <path class="land" d="M100 105 C170 55 260 60 320 100 C365 130 420 115 465 155 C510 195 485 245 430 260 C370 277 330 322 275 338 C215 355 145 330 118 282 C90 232 55 155 100 105Z"></path>
+          <path class="land" d="M510 95 C575 65 670 70 720 115 C770 155 825 145 875 190 C915 225 900 275 850 292 C795 312 770 360 715 382 C660 404 595 370 565 325 C535 280 480 215 505 155Z"></path>
+          <path class="land" d="M885 325 C925 300 985 308 1015 340 C1045 372 1032 420 995 438 C950 462 900 438 882 402 C867 370 860 345 885 325Z"></path>
+
+          <a href="https://en.wikipedia.org/wiki/Tamburica">
+            <path class="route r1" d="M620 190 C675 145 720 135 785 145"></path>
+            <text x="640" y="125">Balcani: tamburica</text>
+          </a>
+          <a href="https://en.wikipedia.org/wiki/Charango">
+            <path class="route r2" d="M545 205 C430 240 330 300 245 385"></path>
+            <text x="270" y="415">Iberia → Andes e Messico</text>
+          </a>
+          <a href="https://en.wikipedia.org/wiki/Ukulele">
+            <path class="route r3" d="M520 235 C700 285 830 300 930 355"></path>
+            <text x="745" y="330">Madeira → Hawaii</text>
+          </a>
+        </svg>
+        <div class="mini-caption">La mappa è volutamente schematica: non pretende di descrivere genealogie lineari, ma rende visibile un principio fondamentale dell'etnomusicologia, cioè che gli strumenti viaggiano, cambiano forma, cambiano nome e vengono ricostruiti dalle culture che li adottano.</div>
+      </div>
+
+      <div class="route-links">
+        <button class="source-card resource" data-title="Tamburica" data-url="https://en.wikipedia.org/wiki/Tamburica"><span class="src">Famiglia</span><b>Dalla bisernica alla berda</b><span>Una famiglia balcanica di strumenti a pizzico di taglie differenti.</span></button>
+        <button class="source-card resource" data-title="Charango" data-url="https://en.wikipedia.org/wiki/Charango"><span class="src">Trasformazione</span><b>Charango, vihuela, guitarrón</b><span>Le corde iberiche cambiano identità nelle Americhe.</span></button>
+        <button class="source-card resource" data-title="Ukulele" data-url="https://en.wikipedia.org/wiki/Ukulele"><span class="src">Migrazione</span><b>Da Madeira alle Hawaii</b><span>Machete, braguinha e rajão dentro una nuova tradizione.</span></button>
+      </div>
+    </section>
+
+    <section id="temperamenti">
+      <div class="section-title"><div class="section-no">06</div><div><h2>Accordare il mondo</h2></div></div>
+      <div class="two-col">
+        <p>La costruzione di strumenti sempre più raffinati porta inevitabilmente a una domanda che la voce e gli strumenti senza tasti possono risolvere con una certa elasticità: che cosa accade quando le altezze devono essere fissate una volta per tutte su una tastiera o su uno strumento con posizioni determinate? Accordatura e temperamento non sono sinonimi. Accordare significa stabilire le altezze, mentre temperare significa accettare consapevolmente che alcuni intervalli debbano essere leggermente modificati per rendere utilizzabile l'intero sistema.</p>
+        <p>Gli intervalli più stabili possono essere descritti attraverso rapporti semplici, come l'ottava 2 a 1, la quinta 3 a 2 e la terza maggiore pura 5 a 4. Il problema nasce quando questi rapporti vengono concatenati, perché dodici quinte perfette non coincidono esattamente con sette ottave. La differenza, nota come comma pitagorico, mostra che la matematica stessa impedisce di costruire una tastiera nella quale tutti gli intervalli siano contemporaneamente puri.</p>
+        <p>Il temperamento mesotonico risponde sacrificando leggermente le quinte per ottenere terze molto più soddisfacenti, mentre la conseguenza inevitabile è la comparsa di intervalli fortemente sgradevoli quando ci si allontana dalle zone più favorevoli del sistema. Gioseffo Zarlino, nelle <em>Istitutioni harmoniche</em> del 1558, riflette sui rapporti che includono il numero 5 e sulla consonanza delle terze, mentre Vincenzo Galilei, suo allievo e poi avversario, sposta progressivamente il problema verso una osservazione più pratica ed esperimentale.</p>
+        <p>Non dobbiamo raccontare il Cinquecento come se stesse già cercando la libertà di modulare in tutte le tonalità maggiori e minori del sistema moderno, perché quel linguaggio non è ancora pienamente formato. Ciò che cresce è piuttosto la necessità di far convivere voci e strumenti, trasporre, utilizzare tastiere e percepire sempre più chiaramente la dimensione verticale degli accordi. Il temperamento equabile, che divide l'ottava in dodici semitoni uguali, rappresenterà una soluzione radicale, ma la sua affermazione pratica sarà lenta e per secoli continueranno a convivere sistemi differenti.</p>
+      </div>
+
+      <div class="ratio-grid">
+        <div class="ratio-card"><b>2 : 1</b><span>Ottava</span></div>
+        <div class="ratio-card"><b>3 : 2</b><span>Quinta</span></div>
+        <div class="ratio-card"><b>5 : 4</b><span>Terza maggiore pura</span></div>
+        <div class="ratio-card"><b>12 ≠ 7</b><span>Dodici quinte non coincidono con sette ottave</span></div>
+      </div>
+
+      <div class="callout"><strong>Temperare non significa accordare male.</strong> Significa distribuire una imperfezione inevitabile in modo che lo strumento possa funzionare nel repertorio per il quale viene pensato.</div>
+    </section>
+
+    <section id="trattati">
+      <div class="section-title"><div class="section-no">07</div><div><h2>La musica comincia a spiegare se stessa</h2></div></div>
+      <div class="two-col">
+        <p>La stampa non moltiplica soltanto repertori da eseguire, ma rende possibile la circolazione di libri che spiegano come costruire, suonare, ornamentare e intavolare la musica. È una trasformazione decisiva, perché molti aspetti della prassi esecutiva non vengono registrati nelle partiture e possono essere ricostruiti soltanto attraverso le parole e le immagini dei trattatisti.</p>
+        <p>Il <em>Musica getutscht</em> di Sebastian Virdung, pubblicato nel 1511, è uno dei primi grandi libri a stampa dedicati agli strumenti, mentre Silvestro Ganassi, nella <em>Fontegara</em> del 1535, insegna non soltanto a suonare il flauto diritto ma a diminuire, cioè a trasformare note lunghe in figurazioni rapide e ornamentali. Diego Ortiz, Girolamo Dalla Casa e Giovanni Bassano continueranno questa tradizione mostrando quanto l'esecutore rinascimentale fosse tutt'altro che un lettore passivo del testo scritto.</p>
+        <p>La diminuzione non consiste nel rendere il suono più debole, ma nel suddividere e fiorire una linea, trasformando una struttura relativamente semplice in una superficie ricca di passaggi. La fedeltà storica, quindi, non coincide sempre con l'esecuzione letterale di tutto ciò che è stampato, perché proprio le fonti dell'epoca mostrano che una parte dell'arte consisteva nel conoscere ciò che sulla pagina non veniva completamente specificato.</p>
+        <p>Il <em>Fronimo</em> di Vincenzo Galilei, pubblicato nel 1568 e ampliato nel 1584, affronta l'arte di intavolare per liuto. Una intavolatura non descrive soltanto quali suoni eseguire, ma indica materialmente dove mettere le dita, proprio come quando oggi un ragazzo disegna la forma di un accordo di ukulele sulle corde e sui tasti. Trasferire una composizione polifonica sul liuto significa però raccogliere più voci dentro le mani di un solo esecutore e costringe quindi a pensare la musica anche come insieme simultaneo di suoni.</p>
+      </div>
+
+      <div class="student-box student-glossary">
+        <div class="student-label">Lessico che cambia significato</div>
+        <h3>Quando il nome registra l'emancipazione degli strumenti</h3>
+        <dl>
+          <dt>Sonata</dt><dd>Nasce come musica "da sonare", distinta da ciò che deve essere cantato. Nel Rinascimento non indica ancora la forma classica e non è definita da tre movimenti. Nel Barocco la sonata da chiesa avrà spesso quattro movimenti, mentre la struttura rapido, lento, rapido diventerà tipica soprattutto del concerto italiano più tardo.</dd>
+          <dt>Sinfonia</dt><dd>Deriva dall'idea del "suonare insieme" e nel Cinquecento e nel primo Seicento può indicare realtà molto diverse, comprese sezioni strumentali e composizioni d'insieme. La grande sinfonia orchestrale è molto più tarda.</dd>
+          <dt>Concerto</dt><dd>Il termine porta con sé l'idea del mettere insieme e, progressivamente, anche del far dialogare o contrastare forze differenti. Non significa semplicemente "tanti strumenti".</dd>
+          <dt>Canzona da sonar</dt><dd>È uno dei paradossi più belli della storia delle parole musicali, perché un termine nato dal canto finisce per indicare una composizione affidata agli strumenti.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="parole">
+      <div class="section-title"><div class="section-no">08</div><div><h2>Parole in viaggio</h2></div></div>
+      <div class="two-col">
+        <p>Poche parole raccontano le traslazioni musicali meglio di "canzone". La sua origine appartiene al cantare e la <em>canso</em> trobadorica nasce dentro un rapporto strettissimo fra testo poetico e melodia, ma nella letteratura italiana la parola diventa progressivamente il nome di una forma poetica autonoma. Dante conserva ancora la memoria della sua origine sonora, mentre Petrarca porta la canzone a una altissima elaborazione letteraria.</p>
+        <p>Il titolo tradizionale <em>Canzoniere</em>, con cui indichiamo i <em>Rerum vulgarium fragmenta</em>, crea poi un cortocircuito affascinante, perché molti testi petrarcheschi, non tutti metricamente "canzoni", tornano nelle mani dei compositori e diventano materia per i libri di madrigali. La poesia che aveva conquistato la propria autonomia rispetto a una melodia specifica viene quindi nuovamente letta attraverso il suono, questa volta non per ricostruire un canto perduto ma per produrre una interpretazione musicale nuova.</p>
+        <p>La stessa parola attraversa la chanson franco fiamminga e arriva alla canzona strumentale, mentre in epoche successive tornerà a indicare repertori urbani e popolari. Le canzoni da battello veneziane appartengono soprattutto al Settecento, non al Seicento, e più tardi la parola comprenderà tradizioni di lavoro, repertori regionali, canzone napoletana e infine la moderna canzone italiana. Non esiste una genealogia rettilinea dalla <em>canso</em> trobadorica a Sanremo, ma la persistenza della parola ci ricorda quanto tenace sia l'idea di un testo che trova una parte decisiva della propria identità nel canto.</p>
+        <p>L'inglese <em>song</em> arriva allo stesso significato da un'altra strada, perché appartiene alla famiglia germanica di <em>sing</em> e non discende dal latino <em>canere</em>. La parentela è dunque semantica, non etimologica, e proprio questa convergenza mostra quanto il bisogno di nominare insieme parola e suono sia più antico delle singole lingue.</p>
+      </div>
+
+      <div class="history-pivot">
+        <h3>Da Orfeo alla Camerata fiorentina</h3>
+        <p>L'antichità aveva consegnato al Rinascimento una figura potentissima, quella del poeta musicista capace di accompagnare il canto con uno strumento. Omero viene immaginato dentro la tradizione dell'aedo, Orfeo incanta uomini e natura con la lira, mentre perfino la leggenda di Nerone che canta davanti all'incendio di Roma, storicamente molto problematica, conserva la stessa idea culturale. Quando la Camerata de' Bardi cercherà di ricostruire il teatro greco, sarà proprio questo antico legame fra parola, voce e strumento a diventare una delle sue ossessioni.</p>
+      </div>
+    </section>
+
+    <section id="madrigale">
+      <div class="section-title"><div class="section-no">09</div><div><h2>Frottola e madrigale</h2></div></div>
+      <div class="two-col">
+        <p>Frottola e madrigale non devono essere disposti come due gradini inevitabili della stessa scala. La frottola tende spesso alla regolarità strofica, alla chiarezza, alla prevalenza della voce superiore e a un andamento omoritmico che rende immediatamente percepibile il testo. Il madrigale cinquecentesco, invece, costruisce sempre più spesso una forma musicale determinata dalla poesia specifica che il compositore ha davanti e utilizza con grande libertà la polifonia imitativa.</p>
+        <p>La parentela più interessante non consiste quindi nel trasformare la frottola nella madre necessaria del madrigale, ma nel fatto che entrambi i generi attraggono musicisti formati nella tradizione franco fiamminga. Questi possono apprezzare nella frottola la chiarezza della declamazione italiana e, nello stesso tempo, trovare nel madrigale il luogo ideale nel quale riversare una tecnica polifonica capace di seguire con precisione le articolazioni del testo.</p>
+        <p>Negli anni in cui il nuovo madrigale si afferma, Pietro Bembo propone Petrarca come grande modello della lingua poetica. La poesia italiana offre così ai compositori un repertorio di suoni, immagini e opposizioni nel quale ardere e gelare, vivere e morire, salire e cadere, luce e ombra possono diventare materiale compositivo. Verdelot, Arcadelt e poi Cipriano de Rore mostrano progressivamente quanto la musica possa aderire non soltanto al metro ma al significato particolare di una parola.</p>
+        <p>È qui che il madrigalismo diventa uno dei grandi laboratori del Rinascimento. Una linea che sale può rendere una ascesa, un movimento discendente può suggerire una caduta, una pausa può trasformarsi in sospiro e una voce lasciata sola può rendere concretamente la parola "solo". Ma la ricerca diventa molto più profonda quando smette di disegnare oggetti visibili e prova a rendere udibili dolore, esitazione, desiderio, instabilità e contrasto attraverso dissonanze, cromatismi, cambiamenti di densità e improvvise trasformazioni della tessitura.</p>
+        <p>Il madrigalismo può essere letto come una vera sinestesia compositiva, perché la parola scritta viene trasformata in altezza, movimento, ritmo, tensione e colore sonoro. Il compositore non accompagna più semplicemente una poesia, ma la legge e ne propone una interpretazione. Con Marenzio, Gesualdo e infine Monteverdi questa capacità arriverà a mettere in discussione perfino la gerarchia tradizionale delle regole contrappuntistiche, preparando l'idea secondo cui, quando la parola lo richiede, la norma può essere piegata all'affetto.</p>
+      </div>
+
+      <div class="media-row">
+        <button class="media-card video" data-video="FOXMfgHNb90" data-title="Arcadelt · Il bianco e dolce cigno">
+          <img src="https://img.youtube.com/vi/FOXMfgHNb90/hqdefault.jpg" alt="Arcadelt, Il bianco e dolce cigno">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto guidato</span><h4>Il bianco e dolce cigno</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Jacques Arcadelt" data-url="https://www.treccani.it/enciclopedia/jacques-arcadelt_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Arcadelt.jpg" alt="Jacques Arcadelt">
+          <span class="shade"></span><span class="meta"><span class="tag">Madrigale</span><h4>Verdelot e Arcadelt</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Madrigale rinascimentale" data-url="https://www.treccani.it/enciclopedia/il-madrigale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">
+          <img src="https://tile.loc.gov/image-services/iiif/public%3Amusic%3Amusihas-200154760%3Amusihas-200154760.0005/full/pct%3A100.0/0/default.jpg" alt="Libro di madrigali">
+          <span class="shade"></span><span class="meta"><span class="tag">Parola e suono</span><h4>Il testo diventa forma</h4></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="riforma">
+      <div class="section-title"><div class="section-no">10</div><div><h2>La parola della fede</h2></div></div>
+      <div class="two-col">
+        <p>Quando Lutero pubblica le novantacinque tesi nel 1517, la stampa trasforma una controversia teologica in un fenomeno capace di attraversare rapidamente l'Europa. Nel 1522 il Nuovo Testamento tedesco e nel 1534 la Bibbia completa inseriscono la traduzione dentro un progetto religioso nel quale la lettura personale della Scrittura acquista un valore nuovo, pur senza abolire chiese, catechismi, scuole e nuove forme di autorità.</p>
+        <p>L'uomo rinascimentale diventa così non soltanto <em>homo faber</em>, ma anche <em>homo legens</em> e inevitabilmente <em>homo interpretans</em>. La musica partecipa a questa trasformazione perché Lutero comprende quanto un testo cantato possa essere memorizzato, pronunciato e interiorizzato dalla comunità. Il corale luterano mette quindi la lingua tedesca nella bocca dei fedeli e costruisce una forma di partecipazione che non coincide con la grande polifonia professionale.</p>
+        <p>Sarebbe però sbagliato opporre schematicamente un protestantesimo semplice a un cattolicesimo complesso. Johann Walter mostra già nel 1524 come i nuovi canti possano diventare il materiale di elaborazioni polifoniche destinate a esecutori preparati, mentre nei secoli successivi la stessa melodia corale potrà sostenere costruzioni di enorme complessità. Ciò che cambia è la possibilità che la comunità riconosca come propria una linea musicale che può essere cantata semplicemente oppure trasformata dal compositore.</p>
+        <p>La stampa, la scuola, la lingua e la musica finiscono così per sostenersi reciprocamente. La questione della comprensibilità non rimane però confinata al mondo riformato, perché proprio la centralità attribuita alla parola sacra costringerà anche Roma a interrogarsi su quanto della liturgia riesca realmente ad arrivare all'ascoltatore quando il latino viene avvolto da una polifonia sempre più complessa.</p>
+      </div>
+      <div class="callout"><strong>Francesco non è Lutero prima di Lutero.</strong> Il confronto è utile soltanto per vedere come il volgare e il canto comunitario possano avere significati completamente diversi quando operano nello spazio devozionale medievale oppure nel cuore di una nuova organizzazione liturgica protestante.</div>
+    </section>
+
+    <section id="censura">
+      <div class="section-title"><div class="section-no">11</div><div><h2>Quando stampare significa anche controllare</h2></div></div>
+      <div class="two-col">
+        <p>La stessa tecnologia che rende possibile una diffusione rapidissima dei testi produce inevitabilmente il problema opposto, perché chi detiene una autorità religiosa o politica deve ora confrontarsi con libri che possono circolare in centinaia di copie prima che sia possibile fermarli. La censura non nasce con la stampa, ma la stampa ne modifica radicalmente la scala.</p>
+        <p>La storia dell'Inquisizione deve essere distinta con attenzione. L'Inquisizione medievale, quella spagnola e quella romana appartengono a contesti istituzionali differenti. Nel 1542 Paolo III istituisce la Congregazione della romana e universale Inquisizione, mentre nel 1559 viene promulgato sotto Paolo IV il primo grande <em>Index librorum prohibitorum</em> romano. L'Indice tridentino del 1564 modifica alcune delle rigidità precedenti, ma conferma il principio che la circolazione dei libri possa essere disciplinata dall'autorità ecclesiastica.</p>
+        <p>Il problema attraversa direttamente la cultura umanistica, perché filologia, traduzioni bibliche, letteratura e critica storica possono diventare terreno di sospetto. Machiavelli entra nell'Indice, Erasmo viene colpito pesantemente e la possibilità di leggere la Scrittura in volgare rimane a lungo una questione estremamente sensibile. La stessa ansia di controllo che riguarda il libro ha un parallelo musicale nella preoccupazione per ciò che viene detto dentro la liturgia, per la presenza di materiali profani e per una bellezza sonora capace di attirare l'attenzione su se stessa.</p>
+        <p>Un eventuale frammento cinematografico del <em>Nome della rosa</em> può essere didatticamente efficace per mostrare il rapporto fra libro, autorità e paura della lettura, purché sia chiarito che la vicenda è collocata nel 1327 e riguarda un mondo medievale, non la specifica Inquisizione romana del Cinquecento che stiamo studiando.</p>
+      </div>
+      <div class="history-pivot">
+        <h3>La stampa moltiplica. L'autorità tenta di selezionare.</h3>
+        <p>È uno dei grandi paradossi della prima età moderna: la stessa invenzione che permette una circolazione senza precedenti del sapere produce apparati sempre più sofisticati per sorvegliarne la circolazione.</p>
+      </div>
+    </section>
+
+    <section id="roma">
+      <div class="section-title"><div class="section-no">12</div><div><h2>Roma, Palestrina e il problema della parola</h2></div></div>
+      <div class="two-col">
+        <p>Quando ascoltiamo una messa di Palestrina dobbiamo ricordare che la polifonia liturgica non nasce nel Cinquecento. L'organum medievale aveva già aggiunto nuove voci al canto e la scuola di Notre Dame aveva portato la polifonia direttamente dentro la liturgia, mentre l'organo era entrato progressivamente nella pratica ecclesiastica. La Chiesa non abbandona dunque una monodia assoluta per scoprire improvvisamente il contrappunto, ma attraversa secoli nei quali il canto gregoriano rimane fondamento mentre intorno ad esso crescono possibilità sempre nuove.</p>
+        <p>Nel Cinquecento il problema diventa quasi opposto. La tradizione franco fiamminga ha raggiunto una complessità tale che più voci possono pronunciare parole differenti nello stesso momento, imitarsi e costruire architetture meravigliose, ma proprio questa ricchezza può rendere difficile capire il testo. Nel clima della Riforma cattolica la questione assume un peso particolare e il Concilio di Trento interviene soprattutto sul decoro liturgico, sui materiali profani e sulla necessità che la musica non oscuri ciò che deve servire.</p>
+        <p>La <em>Missa Papae Marcelli</em>, pubblicata nel 1567 e costruita prevalentemente a sei voci, diventa il simbolo di una soluzione nella quale la polifonia non viene impoverita ma dosata. Nel <em>Kyrie</em>, dove le parole sono poche, l'imitazione può espandersi con maggiore libertà, mentre nel <em>Gloria</em> e nel <em>Credo</em> l'esigenza di percorrere testi più lunghi favorisce passaggi nei quali le voci procedono con maggiore accordo ritmico. La complessità rimane, ma viene governata in funzione della parola.</p>
+        <p>La leggenda secondo cui Palestrina avrebbe salvato da solo la polifonia davanti ai padri conciliari è una costruzione successiva. Nel 1565 alcune messe furono effettivamente ascoltate in ambiente romano per verificare se le parole risultassero comprensibili, ma non esiste la scena teatrale nella quale un unico capolavoro impedisce all'ultimo momento una proibizione generale. La realtà è più interessante, perché mostra un'intera cultura che cerca lentamente un equilibrio fra tecnica, bellezza e funzione liturgica.</p>
+      </div>
+
+      <div class="media-row">
+        <button class="media-card video" data-video="EJj0as_Mic4" data-title="Palestrina · Missa Papae Marcelli, Kyrie">
+          <img src="https://img.youtube.com/vi/EJj0as_Mic4/hqdefault.jpg" alt="Missa Papae Marcelli">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto</span><h4>Missa Papae Marcelli, Kyrie</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Giovanni Pierluigi da Palestrina" data-url="https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Palestrina">
+          <span class="shade"></span><span class="meta"><span class="tag">Roma</span><h4>Palestrina</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Sacrosanctum Concilium" data-url="https://press.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_const_19631204_sacrosanctum-concilium_it.html">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Second_Vatican_Council.jpg" alt="Concilio Vaticano II">
+          <span class="shade"></span><span class="meta"><span class="tag">Una lunga durata</span><h4>Il latino fino al Novecento</h4></span>
+        </button>
+      </div>
+
+      <div class="literary-aside">
+        <div class="eyebrow">Una continuità sorprendente</div>
+        <h3>Il latino rimane la norma fino al pieno Novecento</h3>
+        <p>Il Concilio di Trento non sceglie la via luterana del volgare e la Chiesa romana difenderà per secoli il latino come lingua normativa della liturgia. Ancora nel 1963 la costituzione <em>Sacrosanctum Concilium</em> afferma che l'uso del latino debba essere conservato nei riti latini, pur aprendo contemporaneamente uno spazio molto più ampio alle lingue nazionali. La riforma applicata negli anni successivi rovescerà progressivamente il rapporto fra norma ed eccezione.</p>
+        <p>È difficile non vedere in questa durata una fortissima resistenza conservatrice dell'istituzione romana, soprattutto se confrontata con la scelta della Riforma di affidare molto prima la parola religiosa alla lingua della comunità. La precisazione necessaria riguarda però il canto, perché Roma non ha mai imposto che ogni Messa fosse cantata: la <em>Missa lecta</em>, o Messa bassa, era comunissima. Quando la liturgia veniva cantata, invece, il latino e il gregoriano conservarono per secoli un ruolo normativo e simbolico eccezionalmente forte.</p>
+      </div>
+    </section>
+
+    <section id="venezia">
+      <div class="section-title"><div class="section-no">13</div><div><h2>Venezia, quando lo spazio diventa musica</h2></div></div>
+      <div class="two-col">
+        <p>San Marco non è ancora la cattedrale di Venezia, ma la cappella del doge, legata direttamente alla rappresentazione politica della Serenissima. Questa condizione istituzionale, insieme alla particolare architettura della basilica e alla presenza di organi e cantorie, crea un ambiente nel quale la musica può sviluppare una identità molto diversa da quella romana.</p>
+        <p>Venezia non è protestante e non vive fuori dal cattolicesimo, ma possiede una autonomia politica sufficiente per negoziare duramente con Roma. L'interdetto del 1606 appartiene già al secolo successivo, ma mostra con chiarezza quanto la Repubblica considerasse la propria sovranità un limite reale all'ingerenza pontificia. Anche la cultura musicale di San Marco cresce dentro questa sicurezza istituzionale.</p>
+        <p>Adrian Willaert, maestro di cappella dal 1527, porta la grande tecnica franco fiamminga dentro un edificio che suggerisce la separazione fisica delle masse sonore. I cori spezzati non vengono inventati dal nulla, perché pratiche antifonali sono molto più antiche, ma a Venezia diventano un principio compositivo nel quale la distanza fra gruppi differenti acquista una funzione strutturale.</p>
+        <p>Con Andrea e Giovanni Gabrieli la ricerca si spinge ancora oltre. Cornetti, tromboni, viole, organi e voci possono essere distribuiti in gruppi differenti, rispondersi e riunirsi, mentre il timbro e la dinamica acquistano una evidenza crescente. Nelle <em>Sacrae symphoniae</em> del 1597 Giovanni Gabrieli pubblica anche la celebre <em>Sonata pian e forte</em>, uno dei documenti più eloquenti del momento in cui lo strumento comincia a essere pensato non soltanto come sostituto della voce ma come portatore di colore e contrasto autonomi.</p>
+        <p>La musica, in questo modo, non occupa soltanto il tempo ma anche lo spazio. Roma aveva cercato trasparenza dentro la polifonia, mentre Venezia scopre che una composizione può essere progettata anche stabilendo da dove arrivi il suono, quale gruppo risponda a un altro e quando una massa sonora debba apparire vicina, lontana, piena o rarefatta.</p>
+      </div>
+
+      <div class="media-row">
+        <button class="media-card resource" data-title="Adrian Willaert e la scuola veneziana" data-url="https://www.europeana.eu/es/stories/adrian-willaert-and-the-foundation-of-the-venetian-school">
+          <img src="https://images.ctfassets.net/i01duvb6kq77/35c47813f8b688bfbd82a19a9c9ec51d/37e4703896521e1d6f6e37b8ed98c244/feature_adrianwillaerts.jpg?f=face&fit=fill&fm=webp&h=630&q=70&w=1200" alt="Adrian Willaert">
+          <span class="shade"></span><span class="meta"><span class="tag">San Marco</span><h4>Willaert e i cori spezzati</h4></span>
+        </button>
+        <button class="media-card video" data-video="HJbbuTV5Q_I" data-title="Giovanni Gabrieli · Sonata pian e forte">
+          <img src="https://img.youtube.com/vi/HJbbuTV5Q_I/hqdefault.jpg" alt="Gabrieli, Sonata pian e forte">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto spaziale</span><h4>Sonata pian e forte</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Basilica di San Marco · tradizione musicale" data-url="https://www.basilicasanmarco.it/basilica/tradizione-musicale/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Basilica_di_San_Marco_in_Venice.jpg" alt="Basilica di San Marco">
+          <span class="shade"></span><span class="meta"><span class="tag">Architettura sonora</span><h4>San Marco come strumento</h4></span>
+        </button>
+      </div>
+
+      <div class="network">
+        <svg viewBox="0 0 950 300" role="img" aria-label="Schema di disposizione policorale a San Marco">
+          <line class="edge blue" x1="210" y1="150" x2="475" y2="150"></line>
+          <line class="edge red" x1="740" y1="150" x2="475" y2="150"></line>
+          <circle cx="210" cy="150" r="72" fill="#253d63"></circle>
+          <circle cx="740" cy="150" r="72" fill="#7f1d1d"></circle>
+          <circle cx="475" cy="150" r="58" fill="#a5792a"></circle>
+          <text x="210" y="145" text-anchor="middle" fill="#fff">CORO I</text>
+          <text x="210" y="168" text-anchor="middle" fill="#fff">voci + strumenti</text>
+          <text x="740" y="145" text-anchor="middle" fill="#fff">CORO II</text>
+          <text x="740" y="168" text-anchor="middle" fill="#fff">voci + strumenti</text>
+          <text x="475" y="145" text-anchor="middle" fill="#fff">NAVATA</text>
+          <text x="475" y="168" text-anchor="middle" fill="#fff">ascoltatore</text>
+        </svg>
+      </div>
+    </section>
+
+    <section id="firenze">
+      <div class="section-title"><div class="section-no">14</div><div><h2>Firenze e la voce che torna sola</h2></div></div>
+      <div class="two-col">
+        <p>Il madrigale aveva portato la polifonia a una capacità straordinaria di leggere la poesia, ma proprio questa raffinatezza rendeva sempre più evidente un limite. Quando cinque o sei voci pronunciano insieme un testo, la parola può essere interpretata in profondità e nello stesso tempo perdere la presenza concreta di una persona che parla. Alla fine del Cinquecento la Camerata riunita intorno a Giovanni de' Bardi trasforma questo problema in una ricerca teorica.</p>
+        <p>Gli uomini della Camerata immaginano che la tragedia greca avesse raggiunto una unione fra parola, canto e gesto che la polifonia moderna avrebbe smarrito. La loro ricostruzione dell'antichità è inevitabilmente ipotetica e in parte sbagliata, ma proprio questo fraintendimento diventa artisticamente fecondo, perché suggerisce una musica nella quale una voce sola possa seguire con chiarezza l'andamento del discorso mentre gli strumenti la sostengono.</p>
+        <p>Vincenzo Galilei torna così al centro del nostro percorso. Il teorico che aveva discusso con Zarlino, scritto per il liuto e riflettuto sulla pratica strumentale diventa uno degli intellettuali che criticano gli eccessi della polifonia e cercano nell'antico una giustificazione per una nuova monodia. Jacopo Peri, Giulio Caccini e Ottavio Rinuccini trasformano questa idea in teatro attraverso il <em>recitar cantando</em>.</p>
+        <p>La <em>Dafne</em> di Peri, rappresentata intorno al 1598 e conservata solo frammentariamente, viene generalmente ricordata come la prima opera di questo nuovo teatro musicale, mentre l'<em>Euridice</em> del 1600 è il primo esempio giunto quasi interamente fino a noi. Il basso continuo diventa fondamentale perché una linea grave e la realizzazione armonica permettono alla voce di emergere senza essere circondata da un tessuto di parti vocali equivalenti.</p>
+        <p>Monteverdi comprende però che la nuova monodia non deve distruggere tutto ciò che il madrigale aveva conquistato. Nell'<em>Orfeo</em> del 1607 il recitar cantando, i cori, gli strumenti, la danza, il madrigale e il nuovo senso drammatico vengono assorbiti dentro un organismo molto più ricco, mentre la distinzione fra <em>prima pratica</em> e <em>seconda pratica</em> rende esplicita l'idea che, quando l'espressione della parola lo richiede, la regola contrappuntistica possa essere piegata all'affetto.</p>
+      </div>
+
+      <div class="media-row">
+        <button class="media-card resource" data-title="Camerata de' Bardi" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_de%27_Bardi.jpg" alt="Camerata de' Bardi">
+          <span class="shade"></span><span class="meta"><span class="tag">Firenze</span><h4>La Camerata de' Bardi</h4></span>
+        </button>
+        <button class="media-card resource" data-title="Jacopo Peri" data-url="https://www.treccani.it/enciclopedia/iacopo-peri_%28Enciclopedia-Italiana%29/">
+          <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacopo_Peri.jpg" alt="Jacopo Peri">
+          <span class="shade"></span><span class="meta"><span class="tag">1600</span><h4>Euridice e il recitar cantando</h4></span>
+        </button>
+        <button class="media-card video" data-video="SyPUJwGEUgA" data-title="Monteverdi · L'Orfeo, Tu se' morta">
+          <img src="https://img.youtube.com/vi/SyPUJwGEUgA/hqdefault.jpg" alt="Monteverdi, Orfeo">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">1607</span><h4>Monteverdi, Tu se' morta</h4></span>
+        </button>
+      </div>
+
+      <div class="compare-band">
+        <div class="compare-box">
+          <h3>Il mecenate rinascimentale</h3>
+          <p>Lorenzo de' Medici rappresenta bene il signore che vuole apparire partecipe della cultura che finanzia. Scrive, canta, suona, improvvisa, frequenta poeti e filosofi e utilizza naturalmente tutto questo anche come forma di prestigio e governo.</p>
+        </div>
+        <div class="compare-box">
+          <h3>La corte barocca</h3>
+          <p>Nel Seicento il mecenatismo continua, ma la corte tende sempre più a trasformarsi in spettacolo di se stessa. Palazzo, giardino, festa, balletto, opera, scenografia e macchina teatrale concorrono a mostrare la magnificenza del potere, che invita artisti e musicisti non soltanto per partecipare alla cultura ma per costruire un ambiente capace di stupire.</p>
+        </div>
+      </div>
+
+      <div class="bridge-final">
+        <h3>Il Rinascimento aveva rimesso l'uomo al centro del mondo e aveva cercato di comprenderlo. Il Barocco comincerà a metterlo in scena.</h3>
+        <p>Non è una condanna del Seicento, che sarà uno dei periodi più fertili e sorprendenti della storia della musica, ma una differenza di accento. La misura, la parola, la proporzione e l'indagine umanistica non scompaiono, però vengono investite sempre più spesso dal piacere del contrasto, della teatralità, della sorpresa e della magnificenza.</p>
+      </div>
+    </section>
+
+    <section id="galileo">
+      <div class="section-title"><div class="section-no">15</div><div><h2>Postludio · Galileo ascolta il mondo</h2></div></div>
+      <div class="essay-section">
+        <p class="essay-lead">Nel 1623 siamo ormai cronologicamente oltre il Rinascimento, ma la "favola dei suoni" inserita da Galileo nel <em>Saggiatore</em> costituisce un postludio perfetto per il nostro percorso, perché il figlio di Vincenzo Galilei racconta un uomo curioso che crede di conoscere il modo in cui nasce un suono e viene continuamente smentito dall'esperienza.</p>
+        <p>L'uomo ascolta dapprima gli uccelli, poi incontra uno zufolo, uno strumento ad arco, una porta che risuona sui cardini, un bicchiere sfregato, insetti e altri fenomeni che lo costringono ad ampliare continuamente la propria idea di ciò che possa produrre un suono. Quando cerca infine di capire la cicala, la sua indagine diventa distruttiva e non gli consegna neppure la certezza che cercava, così la conoscenza si conclude non con il trionfo di chi sa tutto, ma con una consapevolezza più profonda dei limiti del proprio sapere.</p>
+        <p>Il legame con la storia musicale che abbiamo seguito è particolarmente suggestivo. Il Rinascimento aveva moltiplicato gli strumenti, li aveva classificati, intavolati, accordati, studiati nei trattati e messi in dialogo con le voci. Galileo prende quell'universo sonoro e lo trasforma in una domanda scientifica, mostrando che ogni risposta apre un nuovo problema e che la curiosità non diminuisce quando cresce la conoscenza, ma diventa più prudente.</p>
+        <div class="essay-video">
+          <button class="media-card video" style="width:100%;min-height:330px" data-video="lvODG6n_zGw" data-title="Galileo Galilei · La favola dei suoni">
+            <img src="https://img.youtube.com/vi/lvODG6n_zGw/hqdefault.jpg" alt="Galileo, La favola dei suoni">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">1623 · Il Saggiatore</span><h4>La favola dei suoni</h4></span>
+          </button>
+        </div>
+        <p class="essay-signature">Il percorso rinascimentale finisce qui, ma il suono ha appena cominciato a diventare moderno.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><div class="section-no">Mappa</div><div><h2>Una cronologia che non è una frontiera</h2></div></div>
+      <div class="timeline">
+        <div class="event"><b>c. 1225</b><p>Francesco e il <em>Cantico delle creature</em>, volgare, devozione e memoria del canto.</p></div>
+        <div class="event"><b>Trecento</b><p>Ars nova italiana e Francesco Landini.</p></div>
+        <div class="event"><b>c. 1490</b><p>Uomo vitruviano, il corpo come misura e problema.</p></div>
+        <div class="event"><b>1501</b><p>Petrucci pubblica l'<em>Odhecaton</em>.</p></div>
+        <div class="event"><b>1511</b><p>Virdung pubblica il <em>Musica getutscht</em>.</p></div>
+        <div class="event"><b>1517</b><p>Le novantacinque tesi di Lutero entrano nel mondo della stampa.</p></div>
+        <div class="event"><b>1525</b><p>Bembo pubblica le <em>Prose della volgar lingua</em>.</p></div>
+        <div class="event"><b>c. 1530</b><p>Il madrigale cinquecentesco si definisce fra Firenze e Roma.</p></div>
+        <div class="event"><b>1542</b><p>Nasce la Congregazione della romana Inquisizione.</p></div>
+        <div class="event"><b>1558</b><p>Zarlino pubblica le <em>Istitutioni harmoniche</em>.</p></div>
+        <div class="event"><b>1567</b><p>Pubblicazione della <em>Missa Papae Marcelli</em>.</p></div>
+        <div class="event"><b>1597</b><p>Giovanni Gabrieli pubblica le <em>Sacrae symphoniae</em>.</p></div>
+        <div class="event"><b>1600</b><p><em>Euridice</em> di Peri, il recitar cantando entra nel teatro.</p></div>
+        <div class="event"><b>1607</b><p>Monteverdi, <em>Orfeo</em>.</p></div>
+        <div class="event"><b>1623</b><p>Galileo, <em>Il Saggiatore</em> e la favola dei suoni.</p></div>
+      </div>
+    </section>
+
+    <section class="archive" id="fonti">
+      <div class="archive-inner">
+        <div class="section-title"><div class="section-no">Fonti</div><div><h2>Teca digitale</h2></div></div>
+        <p>Qui la pagina torna alla propria origine documentaria: repertori, fonti primarie, istituzioni, scansioni e ascolti che permettono di verificare e approfondire ciò che il racconto ha sintetizzato.</p>
+
+        <div class="archive-subtitle">Fonti primarie e partiture</div>
+        <div class="archive-grid">
+          <button class="source-card resource" data-title="Harmonice musices odhecaton" data-url="https://imslp.org/wiki/Harmonice_Musices_Odhecaton"><span class="src">IMSLP</span><b>Petrucci · Odhecaton</b><span>Scansioni ed edizioni della raccolta del 1501.</span></button>
+          <button class="source-card resource" data-title="Musica getutscht" data-url="https://imslp.org/wiki/Musica_getutscht_(Virdung,_Sebastian)"><span class="src">IMSLP</span><b>Virdung · Musica getutscht</b><span>Trattato del 1511 con strumenti e pratica.</span></button>
+          <button class="source-card resource" data-title="Opera intitulata Fontegara" data-url="https://imslp.org/wiki/Opera_Intitulata_Fontegara_(Ganassi,_Sylvestro)"><span class="src">IMSLP</span><b>Ganassi · Fontegara</b><span>Venezia, 1535.</span></button>
+          <button class="source-card resource" data-title="Ricercate, passaggi et cadentie" data-url="https://imslp.org/wiki/Ricercate%2C_passaggi_et_cadentie_(Bassano%2C_Giovanni)"><span class="src">IMSLP</span><b>Bassano · Ricercate e passaggi</b><span>Venezia, 1585.</span></button>
+          <button class="source-card resource" data-title="Ninety-Five Theses" data-url="https://www.loc.gov/resource/gdcwdl.wdl_07497/"><span class="src">Library of Congress</span><b>Lutero · 95 tesi</b><span>Riproduzione digitale e scheda documentaria.</span></button>
+          <button class="source-card resource" data-title="Madrigali guerrieri et amorosi" data-url="https://www.loc.gov/resource/music.musihas-200154760/?sp=95&st=image"><span class="src">Library of Congress</span><b>Monteverdi · Libro VIII</b><span>Una pagina oltre la soglia rinascimentale.</span></button>
+        </div>
+
+        <div class="archive-subtitle">Quadri storici e biografici</div>
+        <div class="archive-grid">
+          <button class="source-card resource" data-title="Ottaviano Petrucci" data-url="https://www.treccani.it/enciclopedia/ottaviano-petrucci_%28Dizionario-Biografico%29/"><span class="src">Treccani</span><b>Ottaviano Petrucci</b><span>Biografia e storia della stampa musicale.</span></button>
+          <button class="source-card resource" data-title="Emancipazione della musica strumentale" data-url="https://www.treccani.it/enciclopedia/emancipazione-della-musica-strumentale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"><span class="src">Treccani</span><b>Musica strumentale</b><span>Trattati, diminuzioni e autonomia dello strumento.</span></button>
+          <button class="source-card resource" data-title="Il madrigale" data-url="https://www.treccani.it/enciclopedia/il-madrigale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"><span class="src">Treccani</span><b>Il madrigale</b><span>Origini e trasformazioni stilistiche.</span></button>
+          <button class="source-card resource" data-title="Palestrina" data-url="https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/"><span class="src">Treccani</span><b>Palestrina</b><span>Biografia, liturgia e dibattito sulla comprensibilità.</span></button>
+          <button class="source-card resource" data-title="Camerata de' Bardi" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/"><span class="src">Treccani</span><b>Camerata de' Bardi</b><span>Dal recupero dell'antico alla nuova monodia.</span></button>
+          <button class="source-card resource" data-title="Sacrosanctum Concilium" data-url="https://press.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_const_19631204_sacrosanctum-concilium_it.html"><span class="src">Vaticano</span><b>Sacrosanctum Concilium</b><span>Latino, volgare, gregoriano e polifonia nel 1963.</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="bibliography">
+    <div class="bibliography-inner">
+      <div class="section-title"><div class="section-no">Bibliografia</div><div><h2>Riferimenti essenziali</h2></div></div>
+
+      <div class="bib-group">
+        <h3 class="bib-group-title">1. Repertori e studi di consultazione</h3>
+        <div class="bib-group-note"><strong>Criterio:</strong> il percorso usa le voci enciclopediche come strumenti di orientamento e controllo, distinguendole dalle fonti primarie che sono raccolte nella teca digitale.</div>
+        <div class="bibliography-list">
+          <div class="bib-entry"><div class="bib-cite">Treccani. "Ottaviano Petrucci." <em>Dizionario Biografico degli Italiani</em>.<span class="bib-role">Stampa musicale</span></div><button class="bib-open resource" data-title="Treccani · Ottaviano Petrucci" data-url="https://www.treccani.it/enciclopedia/ottaviano-petrucci_%28Dizionario-Biografico%29/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Treccani. "Emancipazione della musica strumentale." <em>Storia della civiltà europea</em>.<span class="bib-role">Strumenti e trattatistica</span></div><button class="bib-open resource" data-title="Treccani · Emancipazione della musica strumentale" data-url="https://www.treccani.it/enciclopedia/emancipazione-della-musica-strumentale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Treccani. "Il madrigale." <em>Storia della civiltà europea</em>.<span class="bib-role">Madrigale e prassi compositiva</span></div><button class="bib-open resource" data-title="Treccani · Il madrigale" data-url="https://www.treccani.it/enciclopedia/il-madrigale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Treccani. "Jacques Arcadelt." <em>Storia della civiltà europea</em>.<span class="bib-role">Madrigale del primo Cinquecento</span></div><button class="bib-open resource" data-title="Treccani · Jacques Arcadelt" data-url="https://www.treccani.it/enciclopedia/jacques-arcadelt_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Treccani. "Giovanni Pierluigi da Palestrina." <em>Dizionario Biografico degli Italiani</em>.<span class="bib-role">Roma e Riforma cattolica</span></div><button class="bib-open resource" data-title="Treccani · Palestrina" data-url="https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Treccani. "Camerata de' Bardi."<span class="bib-role">Origini del teatro musicale</span></div><button class="bib-open resource" data-title="Treccani · Camerata de' Bardi" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/">Apri</button></div>
+        </div>
+      </div>
+
+      <div class="bib-group">
+        <h3 class="bib-group-title">2. Fonti documentarie e istituzionali</h3>
+        <div class="bibliography-list">
+          <div class="bib-entry"><div class="bib-cite">Library of Congress. <em>Ninety-Five Theses</em>.<span class="bib-role">Documento della Riforma</span></div><button class="bib-open resource" data-title="Library of Congress · 95 tesi" data-url="https://www.loc.gov/resource/gdcwdl.wdl_07497/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Concilio Vaticano II. <em>Sacrosanctum Concilium</em>, 1963.<span class="bib-role">Fonte istituzionale sulla liturgia</span></div><button class="bib-open resource" data-title="Vaticano · Sacrosanctum Concilium" data-url="https://press.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_const_19631204_sacrosanctum-concilium_it.html">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Basilica di San Marco. "Tradizione musicale."<span class="bib-role">Istituzione e storia musicale veneziana</span></div><button class="bib-open resource" data-title="Basilica di San Marco · Tradizione musicale" data-url="https://www.basilicasanmarco.it/basilica/tradizione-musicale/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">IMSLP, Petrucci Music Library. Scansioni di repertori e trattati rinascimentali.<span class="bib-role">Fonti primarie digitalizzate</span></div><button class="bib-open resource" data-title="IMSLP · Petrucci Music Library" data-url="https://imslp.org/">Apri</button></div>
+        </div>
+      </div>
+
+      <div class="bib-group">
+        <h3 class="bib-group-title">3. Censura, stampa e controllo</h3>
+        <div class="bibliography-list">
+          <div class="bib-entry"><div class="bib-cite">Treccani. "Riforma cattolica e controriforma."<span class="bib-role">Indice del 1559 e del 1564</span></div><button class="bib-open resource" data-title="Treccani · Riforma cattolica e controriforma" data-url="https://www.treccani.it/enciclopedia/riforma-cattolica-e-controriforma_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Treccani. "Censura, Inquisizione e scienza nell'Italia della Controriforma."<span class="bib-role">Cultura e controllo</span></div><button class="bib-open resource" data-title="Treccani · Censura e Inquisizione" data-url="https://www.treccani.it/enciclopedia/inquisizione-e-scienza-nell-italia-della-controriforma-censura_%28Il-Contributo-italiano-alla-storia-del-Pensiero%3A-Scienze%29/">Apri</button></div>
+        </div>
+      </div>
+
+      <div class="bib-group">
+        <h3 class="bib-group-title">4. Iconografia e materiali audiovisivi</h3>
+        <div class="bib-group-note">Le immagini provengono prevalentemente da Wikimedia Commons e da collezioni museali ad accesso aperto. I video restano incorporati dai rispettivi canali e soggetti alle condizioni dei titolari.</div>
+        <div class="bibliography-list">
+          <div class="bib-entry"><div class="bib-cite">Wikimedia Commons. <em>Uomo Vitruviano</em> e ritratti storici utilizzati nella pagina.<span class="bib-role">Iconografia</span></div><button class="bib-open resource" data-title="Wikimedia Commons · Uomo Vitruviano" data-url="https://commons.wikimedia.org/wiki/File:Uomo_Vitruviano.jpg">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">The Metropolitan Museum of Art. <em>Bass Viola da Gamba</em>, attribuita a John Rose, ca. 1600.<span class="bib-role">Organologia</span></div><button class="bib-open resource" data-title="The Met · Bass Viola da Gamba" data-url="https://www.metmuseum.org/art/collection/search/503359">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Cleveland Museum of Art. <em>Lute</em>, XVI secolo.<span class="bib-role">Organologia</span></div><button class="bib-open resource" data-title="Cleveland Museum · Lute" data-url="https://www.clevelandart.org/art/1918.362">Apri</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-inner">
+    <span>Pagina narrativa interattiva · storia della musica del Rinascimento e passaggio al Barocco.</span>
+    <span>Immagini, spartiti, documenti e materiali audiovisivi di terzi restano soggetti ai diritti e alle licenze dei rispettivi titolari.</span>
+    <div class="webmaster-line">
+      <span><strong>Webmaster:</strong> Alessandro Zilli</span>
+      <span>·</span>
+      <a href="https://www.amazon.it/stores/Alessandro-Zilli/author/B0H36YZLC7?ref=sr_ntt_srch_lnk_10&shoppingPortalEnabled=true">I miei libri su Amazon</a>
+      <span>·</span>
+      <a href="mailto:alessandro.zilli@gmail.com">alessandro.zilli@gmail.com</a>
+    </div>
+    <div class="copyright">© Alessandro Zilli · testi originali e struttura editoriale.</div>
+  </div></footer>
+</div>
+
+<button class="scrolltop" id="scrolltop" aria-label="Torna in alto">↑</button>
+
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-panel">
+    <div class="modal-head"><div class="modal-title" id="modalTitle">Teca</div><button class="modal-close" id="modalClose" aria-label="Chiudi">×</button></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot"><span class="url-box" id="modalUrl"></span><button class="copy-btn" id="copyBtn">Copia link</button><button class="open-btn" id="openBtn">Apri in una nuova finestra per navigare</button></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const modal = document.getElementById('modal');
+  const body = document.getElementById('modalBody');
+  const title = document.getElementById('modalTitle');
+  const urlBox = document.getElementById('modalUrl');
+  const closeBtn = document.getElementById('modalClose');
+  const copyBtn = document.getElementById('copyBtn');
+  const openBtn = document.getElementById('openBtn');
+  let currentUrl = '';
+  let lastFocus = null;
+
+  function showModal(t, content, url='', compact=false){
+    lastFocus = document.activeElement;
+    title.textContent = t;
+    body.innerHTML = content;
+    currentUrl = url;
+    urlBox.textContent = url || 'Contenuto incorporato nella pagina';
+    openBtn.disabled = !url;
+    modal.classList.toggle('compact', compact);
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    closeBtn.focus();
+  }
+  function closeModal(){
+    modal.classList.remove('open','compact');
+    modal.setAttribute('aria-hidden','true');
+    body.innerHTML='';
+    document.body.style.overflow='';
+    if(lastFocus) lastFocus.focus();
+  }
+  closeBtn.addEventListener('click',closeModal);
+  modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+  copyBtn.addEventListener('click', async()=>{
+    if(!currentUrl) return;
+    try{ await navigator.clipboard.writeText(currentUrl); copyBtn.textContent='Copiato'; setTimeout(()=>copyBtn.textContent='Copia link',1200); }
+    catch{ copyBtn.textContent='Seleziona l’indirizzo'; }
+  });
+  openBtn.addEventListener('click',()=>{
+    if(!currentUrl) return;
+    window.open(currentUrl,'_blank','noopener,noreferrer');
+  });
+  // Le normali pagine web esterne non vengono incorporate:
+  // molti siti istituzionali/editoriali vietano gli iframe e mostrerebbero una finestra "rotta".
+  // Conserviamo il viewer interno soltanto per alcuni PDF verificati come direttamente raggiungibili.
+  const embeddablePdfHosts = new Set([
+    'www.cittametropolitana.torino.it',
+    'www.iamlitalia.it'
+  ]);
+  const canEmbedResource = (u,kind)=>{
+    if(kind!=='pdf') return false;
+    try{ return embeddablePdfHosts.has(new URL(u).hostname.toLowerCase()); }
+    catch{ return false; }
+  };
+
+  document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
+    const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
+    if(!canEmbedResource(u,kind)){
+      showModal(t, '', u, true);
+      return;
+    }
+    const frame = `<object data="${u}" type="application/pdf"><iframe src="${u}" title="${t}"></iframe></object>`;
+    showModal(t, frame, u);
+  }));
+
+  document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{
+    const id=el.dataset.video,t=el.dataset.title || 'Video';
+    const start=parseInt(el.dataset.start||'0',10) || 0;
+    const u=`https://www.youtube.com/watch?v=${id}${start ? '&t='+start+'s' : ''}`;
+    const embed=`https://www.youtube-nocookie.com/embed/${id}?rel=0${start ? '&start='+start : ''}`;
+    showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
+  }));
+
+  document.querySelectorAll('.audio').forEach(el=>el.addEventListener('click',()=>{
+    const u=el.dataset.audio,t=el.dataset.title || 'Audio';
+    showModal(t,`<div class="audio-wrap"><div><h3 style="margin-top:0">${t}</h3><audio id="modalAudio" controls preload="metadata" src="${u}"></audio><p style="font-family:var(--sans);font-size:.85rem;color:#6c6258">Fonte: Presidenza del Consiglio dei Ministri</p></div></div>`,u);
+    const player=document.getElementById('modalAudio');
+    if(player) player.addEventListener('error',()=>showModal(t,'',u,true),{once:true});
+  }));
+
+  document.querySelectorAll('.image-modal').forEach(el=>el.addEventListener('click',()=>{
+    const src=el.dataset.img,t=el.dataset.title || 'Immagine',u=el.dataset.url || src;
+    showModal(t,`<img id="modalImage" src="${src}" alt="${t}">`,u);
+    const img=document.getElementById('modalImage');
+    if(img) img.addEventListener('error',()=>showModal(t,'',u,true),{once:true});
+  }));
+
+  // Prevent accidental navigation outside the page. Normal hash links remain internal.
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a');
+    if(!a) return;
+    const href=a.getAttribute('href')||'';
+    if(href.startsWith('#')) return;
+    if(a.classList.contains('learning-check-button')) return;
+    if(/^https?:/i.test(href)){
+      e.preventDefault();
+      const t=a.textContent.trim() || 'Fonte';
+      showModal(t, '', href, true);
+    }
+  });
+
+  const progress=document.getElementById('progress');
+  const scrolltop=document.getElementById('scrolltop');
+  window.addEventListener('scroll',()=>{
+    const doc=document.documentElement;
+    const max=doc.scrollHeight-doc.clientHeight;
+    progress.style.width=(max ? (doc.scrollTop/max*100) : 0)+'%';
+    scrolltop.classList.toggle('show',doc.scrollTop>700);
+  },{passive:true});
+  scrolltop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Menu contestuale: determina la sezione dalla posizione reale di scorrimento.
+  // A differenza dell'IntersectionObserver, non perde sezioni quando si trascina
+  // rapidamente la barra laterale.
+  const navEl=document.getElementById('nav');
+  const navWrap=document.querySelector('.nav-wrap');
+  const links=[...document.querySelectorAll('#nav a[href^="#"]')];
+  const sectionLinks=links
+    .map(a=>({a,id:a.getAttribute('href').slice(1)}))
+    .map(x=>({...x,el:document.getElementById(x.id)}))
+    .filter(x=>x.el);
+  let activeId='';
+  let spyTick=false;
+
+  function setActiveSection(){
+    spyTick=false;
+    if(!sectionLinks.length) return;
+
+    const navH=navWrap ? navWrap.offsetHeight : 0;
+    // La linea di lettura cade poco sotto il menu: abbastanza avanti da
+    // aggiornare il titolo appena si entra davvero nella nuova sezione.
+    const probe=window.scrollY + navH + Math.min(180,window.innerHeight*.24);
+
+    let current=sectionLinks[0];
+    for(const item of sectionLinks){
+      const top=item.el.getBoundingClientRect().top + window.scrollY;
+      if(top<=probe) current=item;
+      else break;
+    }
+
+    // Vicino al fondo della pagina attiva sempre l'ultima voce, anche su schermi
+    // alti dove l'inizio dell'ultima sezione potrebbe non raggiungere la sonda.
+    if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8){
+      current=sectionLinks[sectionLinks.length-1];
+    }
+
+    if(current.id===activeId) return;
+    activeId=current.id;
+    links.forEach(a=>a.classList.toggle('active',a===current.a));
+
+    // Se il menu orizzontale è stretto, porta dolcemente in vista la voce attiva.
+    const left=current.a.offsetLeft;
+    const right=left+current.a.offsetWidth;
+    const viewLeft=navEl.scrollLeft;
+    const viewRight=viewLeft+navEl.clientWidth;
+    if(left<viewLeft+8 || right>viewRight-8){
+      current.a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+    }
+  }
+
+  function scheduleSpy(){
+    if(spyTick) return;
+    spyTick=true;
+    requestAnimationFrame(setActiveSection);
+  }
+
+  window.addEventListener('scroll',scheduleSpy,{passive:true});
+  window.addEventListener('resize',scheduleSpy,{passive:true});
+  window.addEventListener('load',setActiveSection,{once:true});
+  setActiveSection();
+})();
+</script>
+</body>
+</html>
