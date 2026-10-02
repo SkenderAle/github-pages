@@ -79,7 +79,7 @@
   .callout{margin:2.5rem 0;padding:1.5rem 1.7rem;border-left:5px solid var(--blue);background:#ece7dc}
   .callout strong{color:var(--blue)}
   .media-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
-  .media-card{position:relative;min-height:240px;overflow:hidden;background:#1e1b18;color:#fff;border:0;padding:0;cursor:pointer;text-align:left;box-shadow:var(--shadow)}
+  .media-card{position:relative;min-height:240px;overflow:hidden;background:#1e1b18;color:#fff;border:0;padding:0;cursor:pointer;text-align:left;box-shadow:var(--shadow);text-decoration:none}
   .media-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62;filter:sepia(.15) saturate(.7);transition:.35s}
   .media-card:hover img{transform:scale(1.035);opacity:.78}
   .media-card .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(16,13,11,.88))}
@@ -88,7 +88,7 @@
   .media-card h4{font-size:1.3rem;line-height:1.15;margin:.35rem 0 0}
   .play{position:absolute;right:1rem;top:1rem;width:42px;height:42px;border:1px solid rgba(255,255,255,.65);border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.22);z-index:3;font-family:var(--sans)}
   .sheet-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0}
-  .sheet{background:#fbf8f1;border:1px solid #d7cab3;padding:1rem;min-height:270px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 24px rgba(48,36,22,.08);cursor:pointer;transition:.2s;position:relative;overflow:hidden;text-align:left}
+  .sheet{background:#fbf8f1;border:1px solid #d7cab3;padding:1rem;min-height:270px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 24px rgba(48,36,22,.08);cursor:pointer;transition:.2s;position:relative;overflow:hidden;text-align:left;text-decoration:none;color:inherit}
   .sheet:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(48,36,22,.14)}
   .sheet::before{content:"♩";position:absolute;right:-.5rem;top:-1.4rem;font-size:8rem;color:rgba(127,29,29,.07)}
   .sheet .year{font-family:var(--sans);font-size:.72rem;color:var(--red);letter-spacing:.14em;text-transform:uppercase}
@@ -208,7 +208,7 @@
   .archive-subtitle{font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#e0c389;margin:2.8rem 0 .4rem;font-weight:800}
   .archive h3{font-size:1.8rem;margin:.2rem 0 .5rem;color:#fff}
   /* Le source-card vivono soprattutto su fondo pergamena: questo è lo stile base. */
-  .source-card{border:1px solid #ccb99a;background:#f7f1e5;padding:1rem;cursor:pointer;color:#2b241d;text-align:left;transition:.2s;box-shadow:0 6px 18px rgba(44,33,22,.05)}
+  .source-card{border:1px solid #ccb99a;background:#f7f1e5;padding:1rem;cursor:pointer;color:#2b241d;text-align:left;transition:.2s;box-shadow:0 6px 18px rgba(44,33,22,.05);text-decoration:none}
   .source-card:hover{background:#efe2ce;border-color:#b99867;transform:translateY(-2px)}
   .source-card .src{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#7a5e3d;font-weight:800}
   .source-card b{display:block;margin:.45rem 0;font-size:1.06rem;color:#2b241d}
@@ -237,7 +237,7 @@
   .bib-kind{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#7f1d1d;font-weight:800}
   .bib-item b{display:block;font-size:1.03rem}
   .bib-item span{font-family:var(--sans);font-size:.82rem;color:#6c6258}
-  .bib-open{border:1px solid #9f8e75;background:#f8f4ea;padding:.5rem .75rem;cursor:pointer;font-family:var(--sans);font-weight:700;white-space:nowrap}
+  .bib-open{border:1px solid #9f8e75;background:#f8f4ea;padding:.5rem .75rem;cursor:pointer;font-family:var(--sans);font-weight:700;white-space:nowrap;text-decoration:none;color:#2b241d}
   .footer{background:#15120f;color:#cfc0ad;padding:2.3rem 1.4rem;font-family:var(--sans);font-size:.78rem}
   .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
   .copyright{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:1rem;margin-top:.3rem;font-weight:700;color:#f1e4d2}
@@ -455,9 +455,9 @@
       </div>
     
       <div class="route-links">
-        <button class="source-card resource" data-title="Nietzsche · La nascita della tragedia" data-url="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm"><span class="src">Testo integrale · Project Gutenberg</span><b>La nascita della tragedia</b><span>Apri il testo da cui nasce la coppia interpretativa Apollo–Dioniso usata come soglia del percorso.</span></button>
-        <button class="source-card resource" data-title="Performance and the Baroque · Victoria and Albert Museum" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque"><span class="src">V&A · approfondimento</span><b>Perché il Barocco è teatro</b><span>Opera, scenografia, macchine, luce e ingegneria come parti di una stessa arte spettacolare.</span></button>
-        <button class="source-card resource" data-title="Orfeo ed Euridice · opere sul mito" data-url="https://imslp.org/wiki/List_of_compositions_involving_Orpheus_or_Euridice"><span class="src">IMSLP · percorso</span><b>Orfeo non ci abbandonerà</b><span>Dal 1600 a Gluck, il mito del musicista attraversa l’intera storia dell’opera.</span></button>
+        <a class="source-card resource" data-title="Nietzsche · La nascita della tragedia" data-url="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm" href="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm" target="_blank" rel="noopener noreferrer"><span class="src">Testo integrale · Project Gutenberg</span><b>La nascita della tragedia</b><span>Apri il testo da cui nasce la coppia interpretativa Apollo–Dioniso usata come soglia del percorso.</span></a>
+        <a class="source-card resource" data-title="Performance and the Baroque · Victoria and Albert Museum" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque" href="https://www.vam.ac.uk/articles/performance-and-the-baroque" target="_blank" rel="noopener noreferrer"><span class="src">V&A · approfondimento</span><b>Perché il Barocco è teatro</b><span>Opera, scenografia, macchine, luce e ingegneria come parti di una stessa arte spettacolare.</span></a>
+        <a class="source-card resource" data-title="Orfeo ed Euridice · opere sul mito" data-url="https://imslp.org/wiki/List_of_compositions_involving_Orpheus_or_Euridice" href="https://imslp.org/wiki/List_of_compositions_involving_Orpheus_or_Euridice" target="_blank" rel="noopener noreferrer"><span class="src">IMSLP · percorso</span><b>Orfeo non ci abbandonerà</b><span>Dal 1600 a Gluck, il mito del musicista attraversa l’intera storia dell’opera.</span></a>
       </div>
 
     </section>
@@ -469,11 +469,11 @@
         <p>Con la crisi dell’Impero romano d’Occidente cambiano insieme città, istituzioni, economia e religione. Molti autori cristiani guardano con sospetto agli <em>spectacula</em>, non soltanto perché divertono, ma perché li percepiscono come legati ai culti pagani e a un mondo dell’attore moralmente ambiguo. Il teatro antico, tuttavia, non viene cancellato da un singolo divieto: perde progressivamente le strutture sociali che lo avevano sostenuto e sopravvive trasformandosi, mentre gesto, canto, racconto e rappresentazione continuano a riapparire in contesti differenti.</p>
       </div>
       <div class="media-row">
-        <button class="media-card resource" data-title="Teatro di Epidauro · Wikimedia Commons" data-url="https://commons.wikimedia.org/wiki/File:Ancient_Theatre_of_the_Asklepieion_at_Epidaurus_-_52002772549.jpg">
+        <a class="media-card resource" data-title="Teatro di Epidauro · Wikimedia Commons" data-url="https://commons.wikimedia.org/wiki/File:Ancient_Theatre_of_the_Asklepieion_at_Epidaurus_-_52002772549.jpg" href="https://commons.wikimedia.org/wiki/File:Ancient_Theatre_of_the_Asklepieion_at_Epidaurus_-_52002772549.jpg" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ancient_Theatre_of_the_Asklepieion_at_Epidaurus_-_52002772549.jpg" alt="Teatro antico di Epidauro">
           <span class="shade"></span><span class="play">＋</span>
           <span class="meta"><span class="tag">Prima del melodramma</span><h4>Il teatro greco: parola, coro, rito e spazio</h4></span>
-        </button>
+        </a>
         <button class="sheet explainer" data-explainer="teatro-antico" data-title="Una forma antica · Il teatro come luogo della comunità" style="grid-column:span 2;min-height:240px">
           <div>
             <div class="year">Una forma antica</div>
@@ -508,9 +508,9 @@
       </div>
 
       <div class="media-row">
-        <button class="source-card resource" data-title="Cambridge · Opera · forme preoperistiche medievali" data-url="https://assets.cambridge.org/97805217/63028/excerpt/9780521763028_excerpt.pdf">
+        <a class="source-card resource" data-title="Cambridge · Opera · forme preoperistiche medievali" data-url="https://assets.cambridge.org/97805217/63028/excerpt/9780521763028_excerpt.pdf" href="https://assets.cambridge.org/97805217/63028/excerpt/9780521763028_excerpt.pdf" target="_blank" rel="noopener noreferrer">
           <span class="src">Cambridge · fonte di studio</span><b><em>Quem quaeritis?</em>: dal canto al ruolo</b><span>Un’introduzione alle forme drammatiche medievali e al dialogo pasquale come episodio liturgico rappresentato.</span>
-        </button>
+        </a>
         <div class="sheet">
           <div><div class="year">Liturgia → scena</div><h4>Il canto organizza l’azione</h4><p>Chi canta? Da dove? A chi risponde? Quando si muove? Domande musicali che diventano già domande teatrali.</p></div><span class="open">Verso il dramma musicale →</span>
         </div>
@@ -535,21 +535,21 @@
       </div>
 
       <div class="media-row">
-        <button class="media-card resource" data-title="Teatro Farnese · Parma" data-url="https://commons.wikimedia.org/wiki/File:Parma_interno_del_Teatro_Farnese.jpg">
+        <a class="media-card resource" data-title="Teatro Farnese · Parma" data-url="https://commons.wikimedia.org/wiki/File:Parma_interno_del_Teatro_Farnese.jpg" href="https://commons.wikimedia.org/wiki/File:Parma_interno_del_Teatro_Farnese.jpg" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Parma_interno_del_Teatro_Farnese.jpg" alt="Interno storico del Teatro Farnese">
           <span class="shade"></span><span class="play">＋</span>
           <span class="meta"><span class="tag">Spazio teatrale</span><h4>Il teatro diventa architettura del potere</h4></span>
-        </button>
-        <button class="media-card resource" data-title="Francesca Caccini · Wikimedia Commons" data-url="https://commons.wikimedia.org/wiki/File:Francesca_Caccini.jpg">
+        </a>
+        <a class="media-card resource" data-title="Francesca Caccini · Wikimedia Commons" data-url="https://commons.wikimedia.org/wiki/File:Francesca_Caccini.jpg" href="https://commons.wikimedia.org/wiki/File:Francesca_Caccini.jpg" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesca_Caccini.jpg" alt="Cameo di Francesca Caccini">
           <span class="shade"></span><span class="play">＋</span>
           <span class="meta"><span class="tag">Filone donne</span><h4>Francesca Caccini cresce dentro questo mondo</h4></span>
-        </button>
-        <button class="media-card resource" data-title="La liberazione di Ruggiero · scena del 1625" data-url="https://commons.wikimedia.org/wiki/File:F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg">
+        </a>
+        <a class="media-card resource" data-title="La liberazione di Ruggiero · scena del 1625" data-url="https://commons.wikimedia.org/wiki/File:F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg" href="https://commons.wikimedia.org/wiki/File:F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg" alt="Seconda muta delle scene per l’Isola d’Alcina nella Liberazione di Ruggiero, 1625">
           <span class="shade"></span><span class="play">＋</span>
           <span class="meta"><span class="tag">Teatro mediceo</span><h4>Macchine, scene e meraviglia</h4></span>
-        </button>
+        </a>
       </div>
       <aside class="student-box">
         <div class="student-label">✦ Per iniziare</div>
@@ -578,9 +578,9 @@
       <div class="callout"><strong>Una conseguenza enorme:</strong> ciò che può essere scritto può viaggiare, essere ripreso, corretto, confrontato e trasformato. Ma la scrittura non contiene mai tutto: fra pagina ed esecuzione resta sempre uno spazio di interpretazione.</div>
 
       <div class="route-links">
-        <button class="source-card resource" data-title="Ottaviano Petrucci · Treccani" data-url="https://www.treccani.it/enciclopedia/ottaviano-petrucci_%28Dizionario-Biografico%29/"><span class="src">Stampa musicale</span><b>Ottaviano Petrucci</b><span>Dal privilegio veneziano del 1498 all’<em>Odhecaton</em> del 1501.</span></button>
-        <button class="source-card resource" data-title="Harmonice musices odhecaton · Library of Congress" data-url="https://www.loc.gov/item/2008561329/"><span class="src">Facsimile digitale</span><b>Guarda il libro</b><span>La Library of Congress permette di sfogliare una copia dell’<em>Odhecaton</em>.</span></button>
-        <button class="source-card resource" data-title="Library of Congress · manoscritto e stampa" data-url="https://guides.loc.gov/music-anthologies/anthologies-in-manuscript"><span class="src">Confronto</span><b>Manoscritto vs stampa</b><span>Dal manoscritto unico alla moltiplicazione delle copie: cambia la geografia della musica.</span></button>
+        <a class="source-card resource" data-title="Ottaviano Petrucci · Treccani" data-url="https://www.treccani.it/enciclopedia/ottaviano-petrucci_%28Dizionario-Biografico%29/" href="https://www.treccani.it/enciclopedia/ottaviano-petrucci_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer"><span class="src">Stampa musicale</span><b>Ottaviano Petrucci</b><span>Dal privilegio veneziano del 1498 all’<em>Odhecaton</em> del 1501.</span></a>
+        <a class="source-card resource" data-title="Harmonice musices odhecaton · Library of Congress" data-url="https://www.loc.gov/item/2008561329/" href="https://www.loc.gov/item/2008561329/" target="_blank" rel="noopener noreferrer"><span class="src">Facsimile digitale</span><b>Guarda il libro</b><span>La Library of Congress permette di sfogliare una copia dell’<em>Odhecaton</em>.</span></a>
+        <a class="source-card resource" data-title="Library of Congress · manoscritto e stampa" data-url="https://guides.loc.gov/music-anthologies/anthologies-in-manuscript" href="https://guides.loc.gov/music-anthologies/anthologies-in-manuscript" target="_blank" rel="noopener noreferrer"><span class="src">Confronto</span><b>Manoscritto vs stampa</b><span>Dal manoscritto unico alla moltiplicazione delle copie: cambia la geografia della musica.</span></a>
       </div>
     </section>
 
@@ -591,11 +591,11 @@
         <p>Il servo furbo, capace di comprendere ciò che il padrone non vede, introduce già un motivo destinato a tornare con forza nel Settecento, quando il teatro comincerà a osservare con maggiore ironia le gerarchie sociali. Con Goldoni il tipo fisso lascerà progressivamente spazio alla persona, mentre le vecchie maschere verranno sempre più associate alla dimensione del Carnevale.</p>
       </div>
       <div class="media-row">
-        <button class="media-card resource" data-title="Jacques Callot · Scaramuccia e Fricasso · National Gallery of Art" data-url="https://www.nga.gov/artworks/33555-scaramucia-and-fricasso">
+        <a class="media-card resource" data-title="Jacques Callot · Scaramuccia e Fricasso · National Gallery of Art" data-url="https://www.nga.gov/artworks/33555-scaramucia-and-fricasso" href="https://www.nga.gov/artworks/33555-scaramucia-and-fricasso" target="_blank" rel="noopener noreferrer">
           <img src="https://api.nga.gov/iiif/0730e83c-c523-4644-a506-716061adeba8/full/full/0/default.jpg" alt="Due personaggi della Commedia dell’Arte in un’incisione di Jacques Callot">
           <span class="shade"></span><span class="play">＋</span>
           <span class="meta"><span class="tag">Commedia dell’Arte</span><h4>Maschere, gesto e improvvisazione</h4></span>
-        </button>
+        </a>
         <button class="sheet explainer" data-explainer="persona-maschera" data-title="Persona, individuo e maschera · Prima del copione, l’attore" style="grid-column:span 2;min-height:240px">
           <div>
             <div class="year">Il teatro vive nel corpo</div>
@@ -621,10 +621,10 @@
       </div>
     
       <div class="media-row">
-        <button class="media-card resource" data-title="Folger · Shakespeare in Step and Song" data-url="https://www.folger.edu/whats-on/shakespeare-in-step-and-song/">
+        <a class="media-card resource" data-title="Folger · Shakespeare in Step and Song" data-url="https://www.folger.edu/whats-on/shakespeare-in-step-and-song/" href="https://www.folger.edu/whats-on/shakespeare-in-step-and-song/" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Globe_Theatre_Innenraum.jpg" alt="Interno del Globe Theatre ricostruito">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Teatro pubblico</span><h4>Canzoni, danze e scena inglese</h4></span>
-        </button>
+        </a>
         <button class="sheet explainer" data-explainer="inghilterra-opera" data-title="Perché l’opera non nasce qui nello stesso modo?">
           <div><div class="year">La domanda</div><h4>Perché l’opera non nasce qui nello stesso modo?</h4><p>La musica è ovunque, ma il teatro di parola possiede già una macchina commerciale e drammatica potentissima.</p></div>
           <span class="open">Confronta con Firenze →</span>
@@ -673,14 +673,14 @@
       </div>
     
       <div class="media-row">
-        <button class="media-card resource" data-title="Camerata de' Bardi · Treccani" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/">
+        <a class="media-card resource" data-title="Camerata de' Bardi · Treccani" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/" href="https://www.treccani.it/enciclopedia/camerata-de-bardi/" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_de%27_Bardi.jpg" alt="Giovanni de' Bardi">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Firenze</span><h4>Dalla Camerata al circolo di Corsi</h4></span>
-        </button>
-        <button class="media-card resource" data-title="Giulio Caccini · Le nuove musiche" data-url="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29">
+        </a>
+        <a class="media-card resource" data-title="Giulio Caccini · Le nuove musiche" data-url="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" href="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Caccini_-_le_nuove_musiche.jpg" alt="Frontespizio de Le nuove musiche di Giulio Caccini">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">IMSLP · fonte</span><h4>Le nuove musiche</h4></span>
-        </button>
+        </a>
         <button class="sheet explainer" data-explainer="monodia" data-title="Monodia · Una voce, finalmente una persona">
           <div><div class="year">Monodia</div><h4>Una voce, finalmente una persona</h4><p>La svolta non consiste soltanto nel ridurre il numero delle voci: significa permettere a una singola voce di assumere un’identità drammatica.</p></div>
           <span class="open">Verso il recitar cantando →</span>
@@ -698,28 +698,28 @@
       <div class="callout"><strong>Una domanda che tornerà fino a Gluck:</strong> la musica deve servire la parola e il teatro, oppure il teatro può diventare il pretesto attraverso il quale la musica conquista sempre più spazio?</div>
     
       <div class="sheet-grid">
-        <button class="sheet resource" data-title="Jacopo Peri · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29">
+        <a class="sheet resource" data-title="Jacopo Peri · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29" href="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29" target="_blank" rel="noopener noreferrer">
           <div><div class="year">1600 · Peri</div><h4><em>Euridice</em></h4><p>Apri la partitura e guarda come la parola viene sostenuta dal continuo senza essere sommersa dalla polifonia.</p></div><span class="open">Apri IMSLP →</span>
-        </button>
-        <button class="sheet resource" data-title="Giulio Caccini · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29">
+        </a>
+        <a class="sheet resource" data-title="Giulio Caccini · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29" href="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener noreferrer">
           <div><div class="year">1602 · Caccini</div><h4>La seconda <em>Euridice</em></h4><p>Lo stesso libretto permette di confrontare due soluzioni musicali nate nello stesso ambiente fiorentino.</p></div><span class="open">Apri IMSLP →</span>
-        </button>
+        </a>
         <button class="sheet explainer" data-explainer="rinuccini" data-title="Ottavio Rinuccini · Il librettista entra in scena"><div><div class="year">Ottavio Rinuccini</div><h4>Il librettista entra in scena</h4><p>Il testo non è una poesia qualsiasi: deve diventare azione, voce e tempo musicale.</p></div><span class="open">Parola → teatro → musica</span></button>
         <button class="sheet explainer" data-explainer="orfeo" data-title="Orfeo · Il mito fondativo dell’opera"><div><div class="year">Orfeo</div><h4>Un mito perfetto</h4><p>La prima grande storia dell’opera racconta proprio di un musicista capace di modificare la realtà attraverso il canto.</p></div><span class="open">Dalle Euridici fino a oggi →</span></button>
       </div>
             <div class="media-row">
-        <button class="media-card video" data-video="WHMJgGE5Doc" data-title="Jacopo Peri · Euridice · Accademia degli Imperfetti">
+        <a class="media-card video" data-video="WHMJgGE5Doc" data-title="Jacopo Peri · Euridice · Accademia degli Imperfetti" href="https://www.youtube.com/watch?v=WHMJgGE5Doc" target="_blank" rel="noopener noreferrer">
           <img src="https://img.youtube.com/vi/WHMJgGE5Doc/hqdefault.jpg" alt="Estratto dall'Euridice di Jacopo Peri eseguita dall'Accademia degli Imperfetti">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Peri · ascolto</span><h4><em>Euridice</em> · Accademia degli Imperfetti</h4></span>
-        </button>
-        <button class="media-card video" data-video="-NKPzXMNXW4" data-title="Giulio Caccini · Euridice · parte I">
+        </a>
+        <a class="media-card video" data-video="-NKPzXMNXW4" data-title="Giulio Caccini · Euridice · parte I" href="https://www.youtube.com/watch?v=-NKPzXMNXW4" target="_blank" rel="noopener noreferrer">
           <img src="https://img.youtube.com/vi/-NKPzXMNXW4/hqdefault.jpg" alt="Euridice di Giulio Caccini, parte prima">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Caccini · parte I</span><h4><em>Euridice</em> · prima parte</h4></span>
-        </button>
-        <button class="media-card video" data-video="ZhbRrpUEfcg" data-title="Giulio Caccini · Euridice · parte II">
+        </a>
+        <a class="media-card video" data-video="ZhbRrpUEfcg" data-title="Giulio Caccini · Euridice · parte II" href="https://www.youtube.com/watch?v=ZhbRrpUEfcg" target="_blank" rel="noopener noreferrer">
           <img src="https://img.youtube.com/vi/ZhbRrpUEfcg/hqdefault.jpg" alt="Euridice di Giulio Caccini, seconda parte">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Caccini · parte II</span><h4><em>Euridice</em> · seconda parte</h4></span>
-        </button>
+        </a>
       </div>
 
       <div class="callout"><strong>Ascolta lo stesso mito in due mani diverse:</strong> l’estratto di Peri e le due parti dell’<em>Euridice</em> di Caccini permettono di passare dalla partitura all’ascolto e di verificare concretamente quanto, sul medesimo mondo poetico di Rinuccini, la linea vocale possa assumere un profilo differente.</div>
@@ -800,9 +800,9 @@
       </div>
     
       <div class="route-links">
-        <button class="source-card resource" data-title="Metastasio · Didone abbandonata · Atto I" data-url="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo"><span class="src">Libretto · Wikisource</span><b>Apri un vero libretto</b><span>Personaggi, atto, scena, didascalia e versi: guarda materialmente la struttura che abbiamo appena descritto.</span></button>
-        <button class="source-card resource" data-title="L’opera italiana · Philharmonie de Paris" data-url="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR"><span class="src">Spiegazione · Philharmonie</span><b>Recitativo, aria, seria e buffa</b><span>Una sintesi chiara della grammatica dell’opera italiana e dell’opera “a numeri”.</span></button>
-        <button class="source-card resource" data-title="Caccini · Le nuove musiche · IMSLP" data-url="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29"><span class="src">Partitura · IMSLP</span><b>Voce + basso continuo</b><span>Una fonte primaria per vedere la nuova scrittura monodica nel momento in cui si sta formando.</span></button>
+        <a class="source-card resource" data-title="Metastasio · Didone abbandonata · Atto I" data-url="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo" href="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo" target="_blank" rel="noopener noreferrer"><span class="src">Libretto · Wikisource</span><b>Apri un vero libretto</b><span>Personaggi, atto, scena, didascalia e versi: guarda materialmente la struttura che abbiamo appena descritto.</span></a>
+        <a class="source-card resource" data-title="L’opera italiana · Philharmonie de Paris" data-url="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR" href="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR" target="_blank" rel="noopener noreferrer"><span class="src">Spiegazione · Philharmonie</span><b>Recitativo, aria, seria e buffa</b><span>Una sintesi chiara della grammatica dell’opera italiana e dell’opera “a numeri”.</span></a>
+        <a class="source-card resource" data-title="Caccini · Le nuove musiche · IMSLP" data-url="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" href="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener noreferrer"><span class="src">Partitura · IMSLP</span><b>Voce + basso continuo</b><span>Una fonte primaria per vedere la nuova scrittura monodica nel momento in cui si sta formando.</span></a>
       </div>
 
     </section>
@@ -860,9 +860,9 @@
       </div>
 
       <div class="route-links">
-        <button class="source-card resource" data-title="Teatro alla Scala · I Laboratori Ansaldo" data-url="https://www.teatroallascala.org/it/visita/i-laboratori.html"><span class="src">Oggi · Teatro alla Scala</span><b>Una fabbrica dentro il teatro</b><span>Scenografia, scultura, falegnameria, meccanica, assemblaggio, sartoria e decine di altri mestieri concentrati nei Laboratori Ansaldo.</span></button>
-        <button class="source-card resource" data-title="Teatro dell’Opera di Roma · Scenografia e costumi" data-url="https://www.operaroma.it/il-teatro/laboratori/laboratori-scenografia-e-costumi/"><span class="src">Oggi · Opera di Roma</span><b>Falegnameria, scene e costumi</b><span>Guarda come un grande teatro contemporaneo continua a produrre fisicamente i propri mondi scenici.</span></button>
-        <button class="source-card resource" data-title="V&A · Performance and the Baroque" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque"><span class="src">Seicento e Settecento · V&A</span><b>La macchina barocca</b><span>Scenografie illusionistiche, costumi, luci, ingegneria e cambi di scena: il teatro come grande arte totale.</span></button>
+        <a class="source-card resource" data-title="Teatro alla Scala · I Laboratori Ansaldo" data-url="https://www.teatroallascala.org/it/visita/i-laboratori.html" href="https://www.teatroallascala.org/it/visita/i-laboratori.html" target="_blank" rel="noopener noreferrer"><span class="src">Oggi · Teatro alla Scala</span><b>Una fabbrica dentro il teatro</b><span>Scenografia, scultura, falegnameria, meccanica, assemblaggio, sartoria e decine di altri mestieri concentrati nei Laboratori Ansaldo.</span></a>
+        <a class="source-card resource" data-title="Teatro dell’Opera di Roma · Scenografia e costumi" data-url="https://www.operaroma.it/il-teatro/laboratori/laboratori-scenografia-e-costumi/" href="https://www.operaroma.it/il-teatro/laboratori/laboratori-scenografia-e-costumi/" target="_blank" rel="noopener noreferrer"><span class="src">Oggi · Opera di Roma</span><b>Falegnameria, scene e costumi</b><span>Guarda come un grande teatro contemporaneo continua a produrre fisicamente i propri mondi scenici.</span></a>
+        <a class="source-card resource" data-title="V&A · Performance and the Baroque" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque" href="https://www.vam.ac.uk/articles/performance-and-the-baroque" target="_blank" rel="noopener noreferrer"><span class="src">Seicento e Settecento · V&A</span><b>La macchina barocca</b><span>Scenografie illusionistiche, costumi, luci, ingegneria e cambi di scena: il teatro come grande arte totale.</span></a>
       </div>
 
       <aside class="student-box">
@@ -892,28 +892,28 @@
       </div>
     
       <div class="media-row">
-        <button class="media-card video" data-video="SyPUJwGEUgA" data-title="Monteverdi · L'Orfeo · Tu se' morta">
+        <a class="media-card video" data-video="SyPUJwGEUgA" data-title="Monteverdi · L'Orfeo · Tu se' morta" href="https://www.youtube.com/watch?v=SyPUJwGEUgA" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Claudio_Monteverdi_2.jpg" alt="Claudio Monteverdi">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto</span><h4><em>Tu se’ morta</em></h4></span>
-        </button>
-        <button class="media-card resource" data-title="Monteverdi · L'Orfeo · IMSLP" data-url="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29">
+        </a>
+        <a class="media-card resource" data-title="Monteverdi · L'Orfeo · IMSLP" data-url="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29" href="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Frontispiece_of_L%27Orfeo.jpg" alt="Frontespizio dell'Orfeo di Monteverdi">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">1609 · IMSLP</span><h4>La prima edizione dell’<em>Orfeo</em></h4></span>
-        </button>
-        <button class="media-card resource" data-title="Il combattimento di Tancredi e Clorinda · IMSLP" data-url="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29">
+        </a>
+        <a class="media-card resource" data-title="Il combattimento di Tancredi e Clorinda · IMSLP" data-url="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29" href="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Agostino_Carracci%2C_Frontespizio_della_prima_edizione_illustrata_della_Gerusalemme_Liberata%2C_1590.jpg" alt="Edizione antica della Gerusalemme liberata">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Cameo · Tasso</span><h4>Il madrigale diventa rappresentazione</h4></span>
-        </button>
+        </a>
       </div>
             <div class="media-row">
-        <button class="media-card video" data-video="7MBySz9Qxbc" data-title="Monteverdi · L’Orfeo · John Eliot Gardiner">
+        <a class="media-card video" data-video="7MBySz9Qxbc" data-title="Monteverdi · L’Orfeo · John Eliot Gardiner" href="https://www.youtube.com/watch?v=7MBySz9Qxbc" target="_blank" rel="noopener noreferrer">
           <img src="https://img.youtube.com/vi/7MBySz9Qxbc/hqdefault.jpg" alt="L'Orfeo di Monteverdi diretto da John Eliot Gardiner">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Opera integrale · YouTube</span><h4><em>L’Orfeo</em> · Gardiner</h4></span>
-        </button>
-        <button class="media-card external-video" data-url="https://share.google/6qwmKnQc9sEKMyEGc" data-title="Monteverdi · Il combattimento di Tancredi e Clorinda">
+        </a>
+        <a class="media-card external-video" data-url="https://share.google/6qwmKnQc9sEKMyEGc" data-title="Monteverdi · Il combattimento di Tancredi e Clorinda" href="https://share.google/6qwmKnQc9sEKMyEGc" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tancredi_e_Clorinda.jpg" alt="Tancredi e Clorinda">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Video · link scelto</span><h4><em>Combattimento di Tancredi e Clorinda</em></h4></span>
-        </button>
+        </a>
         <div class="sheet">
           <div><div class="year">Ascolto guidato</div><h4>Dal canto alla rappresentazione</h4><p>Confronta l’<em>Orfeo</em> con il <em>Combattimento</em>: nel secondo la musica arriva a imitare corsa, urto delle armi, respiro e gesto.</p></div>
           <span class="open">Monteverdi mette il dramma nel suono →</span>
@@ -949,18 +949,18 @@
       </div>
     
       <div class="media-row">
-        <button class="media-card resource" data-title="Teatro San Cassiano · storia" data-url="https://www.teatrosancassiano.it/it/teatro-san-cassiano/">
+        <a class="media-card resource" data-title="Teatro San Cassiano · storia" data-url="https://www.teatrosancassiano.it/it/teatro-san-cassiano/" href="https://www.teatrosancassiano.it/it/teatro-san-cassiano/" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Teatro_San_Cassiano_%281763%29.jpg" alt="Teatro San Cassiano in una raffigurazione settecentesca">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">1637 · Venezia</span><h4>Nasce l’opera pubblica</h4></span>
-        </button>
-        <button class="media-card resource" data-title="Francesco Cavalli · profilo" data-url="https://www.treccani.it/enciclopedia/francesco-cavalli/">
+        </a>
+        <a class="media-card resource" data-title="Francesco Cavalli · profilo" data-url="https://www.treccani.it/enciclopedia/francesco-cavalli/" href="https://www.treccani.it/enciclopedia/francesco-cavalli/" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco_Cavalli.png" alt="Ritratto di Francesco Cavalli">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Compositore</span><h4>Cavalli e l’opera che diventa mestiere</h4></span>
-        </button>
-        <button class="media-card resource" data-title="Anna Renzi · Treccani" data-url="https://www.treccani.it/enciclopedia/anna-renzi_%28Dizionario-Biografico%29/">
+        </a>
+        <a class="media-card resource" data-title="Anna Renzi · Treccani" data-url="https://www.treccani.it/enciclopedia/anna-renzi_%28Dizionario-Biografico%29/" href="https://www.treccani.it/enciclopedia/anna-renzi_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Anna_Renzi.jpg" alt="Ritratto della cantante Anna Renzi">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Primadonna</span><h4>Anna Renzi: la voce diventa star</h4></span>
-        </button>
+        </a>
       </div>
       <aside class="student-box">
         <div class="student-label">✦ Per iniziare</div>
@@ -988,9 +988,9 @@
       </div>
 
       <div class="route-links">
-        <button class="source-card resource" data-title="Glixon & Glixon · The Audience and the Question of Patronage" data-url="https://academic.oup.com/book/32749/chapter-abstract/273099607"><span class="src">Oxford · studio</span><b>Chi sedeva in sala?</b><span>Patrizi, cittadini, uomini d’affari, stranieri e ambasciatori: il pubblico veneziano come sistema sociale.</span></button>
-        <button class="source-card resource" data-title="Ellen Rosand · Opera in Seventeenth-Century Venice" data-url="https://publishing.cdlib.org/ucpressebooks/public/book/opera-in-seventeenth-century-venice-the-creation-of-a-genre.html"><span class="src">UC Press · libro aperto</span><b>Venezia crea un pubblico prevedibile</b><span>Carnivale, palchi, famiglie patrizie e una domanda regolare rendono stabile il nuovo genere.</span></button>
-        <button class="source-card resource" data-title="The Theatrical Public Sphere · Cambridge" data-url="https://www.cambridge.org/core/books/theatrical-public-sphere/locating-the-theatrical-public-sphere/8EF93E7D3C970A6C0C7C35A68C80E0C0"><span class="src">Cambridge · contesto</span><b>Il teatro come spazio sociale</b><span>I palchi guardano il palcoscenico, ma anche gli altri palchi: la sala è una rete di visibilità.</span></button>
+        <a class="source-card resource" data-title="Glixon & Glixon · The Audience and the Question of Patronage" data-url="https://academic.oup.com/book/32749/chapter-abstract/273099607" href="https://academic.oup.com/book/32749/chapter-abstract/273099607" target="_blank" rel="noopener noreferrer"><span class="src">Oxford · studio</span><b>Chi sedeva in sala?</b><span>Patrizi, cittadini, uomini d’affari, stranieri e ambasciatori: il pubblico veneziano come sistema sociale.</span></a>
+        <a class="source-card resource" data-title="Ellen Rosand · Opera in Seventeenth-Century Venice" data-url="https://publishing.cdlib.org/ucpressebooks/public/book/opera-in-seventeenth-century-venice-the-creation-of-a-genre.html" href="https://publishing.cdlib.org/ucpressebooks/public/book/opera-in-seventeenth-century-venice-the-creation-of-a-genre.html" target="_blank" rel="noopener noreferrer"><span class="src">UC Press · libro aperto</span><b>Venezia crea un pubblico prevedibile</b><span>Carnivale, palchi, famiglie patrizie e una domanda regolare rendono stabile il nuovo genere.</span></a>
+        <a class="source-card resource" data-title="The Theatrical Public Sphere · Cambridge" data-url="https://www.cambridge.org/core/books/theatrical-public-sphere/locating-the-theatrical-public-sphere/8EF93E7D3C970A6C0C7C35A68C80E0C0" href="https://www.cambridge.org/core/books/theatrical-public-sphere/locating-the-theatrical-public-sphere/8EF93E7D3C970A6C0C7C35A68C80E0C0" target="_blank" rel="noopener noreferrer"><span class="src">Cambridge · contesto</span><b>Il teatro come spazio sociale</b><span>I palchi guardano il palcoscenico, ma anche gli altri palchi: la sala è una rete di visibilità.</span></a>
       </div>
 
       <aside class="student-box">
@@ -1014,18 +1014,18 @@
       <div class="callout"><strong>Due strade parallele:</strong> l’Italia concentra sempre più energia sulla voce e sul mercato teatrale; la Francia conserva più fortemente l’idea di uno spettacolo nel quale parola, corpo, coro, danza e orchestra partecipano alla stessa architettura.</div>
     
       <div class="media-row">
-        <button class="media-card resource" data-title="Le Bourgeois gentilhomme · BnF" data-url="https://catalogue.bnf.fr/ark:/12148/cb439979981">
+        <a class="media-card resource" data-title="Le Bourgeois gentilhomme · BnF" data-url="https://catalogue.bnf.fr/ark:/12148/cb439979981" href="https://catalogue.bnf.fr/ark:/12148/cb439979981" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Le_Bourgeois_Gentilhomme%2C_Moli%C3%A8re%2C_couverture.png" alt="Frontespizio del Bourgeois gentilhomme di Molière">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Molière + Lully</span><h4>La <em>comédie-ballet</em></h4></span>
-        </button>
-        <button class="media-card resource" data-title="Performance and the Baroque · V&A" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque">
+        </a>
+        <a class="media-card resource" data-title="Performance and the Baroque · V&A" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque" href="https://www.vam.ac.uk/articles/performance-and-the-baroque" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Louis_XIV_of_France.jpg" alt="Luigi XIV">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Corte</span><h4>Il corpo del re diventa spettacolo</h4></span>
-        </button>
-        <button class="media-card resource" data-title="Jean-Baptiste Lully · Treccani" data-url="https://www.treccani.it/enciclopedia/jean-baptiste-lully/">
+        </a>
+        <a class="media-card resource" data-title="Jean-Baptiste Lully · Treccani" data-url="https://www.treccani.it/enciclopedia/jean-baptiste-lully/" href="https://www.treccani.it/enciclopedia/jean-baptiste-lully/" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Jean-Baptiste_Lully.jpeg" alt="Jean-Baptiste Lully">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Lully + Quinault</span><h4>Dalla <em>comédie-ballet</em> alla <em>tragédie en musique</em></h4></span>
-        </button>
+        </a>
       </div>
       <aside class="student-box">
         <div class="student-label">✦ Per iniziare</div>
@@ -1071,20 +1071,20 @@
       </div>
       <div class="callout"><strong>Attenzione all’ascolto moderno:</strong> quando oggi una parte originariamente destinata a un castrato viene cantata da un controtenore, non stiamo ascoltando la stessa fisiologia vocale. È una soluzione esecutiva contemporanea che permette però di avvicinarsi a quel repertorio senza fingere di ricostruire il passato alla lettera.</div>
       <div class="media-row">
-        <button class="media-card video" data-video="CzF11RsxcWg" data-title="Vivaldi · Vedrò con mio diletto · Jakub Józef Orliński">
+        <a class="media-card video" data-video="CzF11RsxcWg" data-title="Vivaldi · Vedrò con mio diletto · Jakub Józef Orliński" href="https://www.youtube.com/watch?v=CzF11RsxcWg" target="_blank" rel="noopener noreferrer">
           <img src="https://img.youtube.com/vi/CzF11RsxcWg/hqdefault.jpg" alt="Jakub Józef Orliński interpreta Vedrò con mio diletto di Vivaldi">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Opera seria · 1724</span><h4>Vivaldi · <em>Vedrò con mio diletto</em></h4></span>
-        </button>
-        <button class="sheet resource" data-title="Vivaldi · Giustino RV 717 · IMSLP" data-url="https://imslp.org/wiki/Giustino%2C_RV_717_%28Vivaldi%2C_Antonio%29">
+        </a>
+        <a class="sheet resource" data-title="Vivaldi · Giustino RV 717 · IMSLP" data-url="https://imslp.org/wiki/Giustino%2C_RV_717_%28Vivaldi%2C_Antonio%29" href="https://imslp.org/wiki/Giustino%2C_RV_717_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener noreferrer">
           <div><div class="year">Roma · 1724</div><h4><em>Giustino</em></h4><p>L’aria appartiene all’atto I dell’opera: apri la partitura e osserva come il numero chiuso si inserisce dentro una scena più ampia.</p></div><span class="open">Apri la partitura →</span>
-        </button>
+        </a>
         <div class="sheet"><div><div class="year">La star</div><h4>Castrati e primedonne</h4><p>Il sistema vive anche di interpreti celebri, contratti, rivalità e aspettative del pubblico: la voce può diventare un marchio.</p></div><span class="open">Verso Marcello →</span></div>
       </div>
     
       <div class="route-links">
-        <button class="source-card resource" data-title="Metastasio · Didone abbandonata" data-url="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo"><span class="src">1724 · libretto</span><b>Dentro l’opera seria</b><span>Apri l’Atto I della <em>Didone abbandonata</em>: personaggi regali, recitazione, scene e lingua elevata.</span></button>
-        <button class="source-card resource" data-title="L’opera italiana · Philharmonie de Paris" data-url="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR"><span class="src">Spiegazione</span><b>Seria, buffa, recitativo e aria</b><span>Un quadro sintetico della distinzione fra i due grandi sistemi dell’opera italiana.</span></button>
-        <button class="source-card resource" data-title="Il teatro alla moda · IMSLP" data-url="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29"><span class="src">1720 · satira</span><b>La macchina vista da dentro</b><span>Marcello prende di mira cantanti, compositori, poeti e impresari proprio mentre il sistema si irrigidisce.</span></button>
+        <a class="source-card resource" data-title="Metastasio · Didone abbandonata" data-url="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo" href="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo" target="_blank" rel="noopener noreferrer"><span class="src">1724 · libretto</span><b>Dentro l’opera seria</b><span>Apri l’Atto I della <em>Didone abbandonata</em>: personaggi regali, recitazione, scene e lingua elevata.</span></a>
+        <a class="source-card resource" data-title="L’opera italiana · Philharmonie de Paris" data-url="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR" href="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR" target="_blank" rel="noopener noreferrer"><span class="src">Spiegazione</span><b>Seria, buffa, recitativo e aria</b><span>Un quadro sintetico della distinzione fra i due grandi sistemi dell’opera italiana.</span></a>
+        <a class="source-card resource" data-title="Il teatro alla moda · IMSLP" data-url="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29" href="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29" target="_blank" rel="noopener noreferrer"><span class="src">1720 · satira</span><b>La macchina vista da dentro</b><span>Marcello prende di mira cantanti, compositori, poeti e impresari proprio mentre il sistema si irrigidisce.</span></a>
       </div>
       <aside class="student-box">
         <div class="student-label">✦ Per iniziare</div>
@@ -1108,10 +1108,10 @@
       <div class="callout"><strong>La visione:</strong> l’opera non si diffonde come un prodotto identico copiato da una capitale all’altra. Viaggiano cantanti, libretti, partiture, impresari e convenzioni; ogni luogo li traduce dentro la propria lingua teatrale.</div>
 
       <div class="route-links">
-        <button class="source-card resource" data-title="John Gay · Treccani" data-url="https://www.treccani.it/enciclopedia/john-gay/"><span class="src">Londra · 1728</span><b><em>The Beggar’s Opera</em></b><span>La <em>ballad opera</em> come risposta satirica al predominio dell’opera italiana.</span></button>
-        <button class="source-card resource" data-title="Reinhard Keiser · Treccani" data-url="https://www.treccani.it/enciclopedia/reinhard-keiser_%28Enciclopedia-Italiana%29/"><span class="src">Amburgo</span><b>Reinhard Keiser</b><span>Un protagonista della tradizione operistica tedesca e un riferimento per il giovane Händel.</span></button>
-        <button class="source-card resource" data-title="Zarzuela · Treccani" data-url="https://www.treccani.it/enciclopedia/zarzuela/"><span class="src">Spagna</span><b>La zarzuela</b><span>Una tradizione autonoma di musica, parola e danza, viva già nel Seicento.</span></button>
-        <button class="source-card resource" data-title="Francesco Araja · Treccani" data-url="https://www.treccani.it/enciclopedia/francesco-araja/"><span class="src">Russia</span><b>Francesco Araja</b><span>Dall’opera italiana di corte a un libretto originale russo nel 1755.</span></button>
+        <a class="source-card resource" data-title="John Gay · Treccani" data-url="https://www.treccani.it/enciclopedia/john-gay/" href="https://www.treccani.it/enciclopedia/john-gay/" target="_blank" rel="noopener noreferrer"><span class="src">Londra · 1728</span><b><em>The Beggar’s Opera</em></b><span>La <em>ballad opera</em> come risposta satirica al predominio dell’opera italiana.</span></a>
+        <a class="source-card resource" data-title="Reinhard Keiser · Treccani" data-url="https://www.treccani.it/enciclopedia/reinhard-keiser_%28Enciclopedia-Italiana%29/" href="https://www.treccani.it/enciclopedia/reinhard-keiser_%28Enciclopedia-Italiana%29/" target="_blank" rel="noopener noreferrer"><span class="src">Amburgo</span><b>Reinhard Keiser</b><span>Un protagonista della tradizione operistica tedesca e un riferimento per il giovane Händel.</span></a>
+        <a class="source-card resource" data-title="Zarzuela · Treccani" data-url="https://www.treccani.it/enciclopedia/zarzuela/" href="https://www.treccani.it/enciclopedia/zarzuela/" target="_blank" rel="noopener noreferrer"><span class="src">Spagna</span><b>La zarzuela</b><span>Una tradizione autonoma di musica, parola e danza, viva già nel Seicento.</span></a>
+        <a class="source-card resource" data-title="Francesco Araja · Treccani" data-url="https://www.treccani.it/enciclopedia/francesco-araja/" href="https://www.treccani.it/enciclopedia/francesco-araja/" target="_blank" rel="noopener noreferrer"><span class="src">Russia</span><b>Francesco Araja</b><span>Dall’opera italiana di corte a un libretto originale russo nel 1755.</span></a>
       </div>
     </section>
 
@@ -1127,14 +1127,14 @@
       </div>
     
       <div class="media-row">
-        <button class="media-card resource" data-title="Carlo Goldoni e la riforma del teatro comico · Treccani" data-url="https://www.treccani.it/enciclopedia/carlo-goldoni_%28Enciclopedia-dell%27Italiano%29/">
+        <a class="media-card resource" data-title="Carlo Goldoni e la riforma del teatro comico · Treccani" data-url="https://www.treccani.it/enciclopedia/carlo-goldoni_%28Enciclopedia-dell%27Italiano%29/" href="https://www.treccani.it/enciclopedia/carlo-goldoni_%28Enciclopedia-dell%27Italiano%29/" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Carlo_Goldoni.jpg" alt="Carlo Goldoni">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Riforma del comico</span><h4>Dalla maschera al carattere</h4></span>
-        </button>
-        <button class="media-card resource" data-title="Goldoni · La locandiera · Wikisource" data-url="https://it.wikisource.org/wiki/La_locandiera/Atto_I">
+        </a>
+        <a class="media-card resource" data-title="Goldoni · La locandiera · Wikisource" data-url="https://it.wikisource.org/wiki/La_locandiera/Atto_I" href="https://it.wikisource.org/wiki/La_locandiera/Atto_I" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/La_locandiera_-_Goldoni.jpg" alt="Edizione o illustrazione della Locandiera">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">1753 · testo</span><h4>Mirandolina entra in scena</h4></span>
-        </button>
+        </a>
         <button class="sheet explainer" data-explainer="maschera-persona" data-title="Maschera → persona · Dal tipo alla donna che agisce"><div><div class="year">Maschera → persona</div><h4>Non sparisce il tipo, cambia profondità</h4><p>Colombina e la servetta restano alle spalle di molti personaggi nuovi, ma ora la scrittura prova a dare loro una biografia, una volontà e una capacità d’azione.</p></div><span class="open">Verso Serpina →</span></button>
       </div>
       <aside class="student-box">
@@ -1157,18 +1157,18 @@
       <div class="callout"><strong>Perché Marcello occupa tanto spazio:</strong> non perché il <em>Teatro alla moda</em> sia “più importante” di Lully o Gluck, ma perché funziona come una radiografia dell’intero sistema teatrale. Star che impongono repertorio, famiglie che gestiscono carriere, produttori ossessionati dai costi, effetti speciali usati per vendere lo spettacolo, compromessi fra arte e mercato, pubblico che giudica e mode che comandano: molte delle sue caricature possono essere tradotte quasi senza sforzo nel teatro di oggi. Per questo qui Marcello non è soltanto una tappa storica: è uno <strong>specchio critico</strong>.</div>
 
       <div class="media-row">
-        <button class="media-card resource" data-title="Benedetto Marcello · Il teatro alla moda · frontespizio" data-url="https://commons.wikimedia.org/wiki/File:Teatro_alla_moda.jpg">
+        <a class="media-card resource" data-title="Benedetto Marcello · Il teatro alla moda · frontespizio" data-url="https://commons.wikimedia.org/wiki/File:Teatro_alla_moda.jpg" href="https://commons.wikimedia.org/wiki/File:Teatro_alla_moda.jpg" target="_blank" rel="noopener noreferrer">
           <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Teatro_alla_moda.jpg" alt="Frontespizio del Teatro alla moda di Benedetto Marcello">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">1720 · Decifra la copertina</span><h4>La satira comincia prima del testo</h4></span>
-        </button>
-        <button class="media-card video" data-video="TH-mARFU2EY" data-title="Early Music Sources · How (not) to produce an opera in 1720’s Venice">
+        </a>
+        <a class="media-card video" data-video="TH-mARFU2EY" data-title="Early Music Sources · How (not) to produce an opera in 1720’s Venice" href="https://www.youtube.com/watch?v=TH-mARFU2EY" target="_blank" rel="noopener noreferrer">
           <img src="https://img.youtube.com/vi/TH-mARFU2EY/hqdefault.jpg" alt="Video di Early Music Sources sul Teatro alla moda">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Video · Early Music Sources</span><h4>Come NON produrre un’opera nel 1720</h4></span>
-        </button>
-        <button class="media-card resource" data-title="Il teatro alla moda · testo completo · IMSLP" data-url="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29">
+        </a>
+        <a class="media-card resource" data-title="Il teatro alla moda · testo completo · IMSLP" data-url="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29" href="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29" target="_blank" rel="noopener noreferrer">
           <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Teatro_alla_moda.jpg" alt="Il teatro alla moda, fonte primaria">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">Fonte primaria · IMSLP</span><h4>Leggi il libello completo</h4></span>
-        </button>
+        </a>
       </div>
 
       <div class="literary-aside">
@@ -1263,15 +1263,15 @@
       </div>
 
       <div class="route-links">
-        <button class="source-card resource" data-title="Pergolesi · La serva padrona · IMSLP" data-url="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29"><span class="src">1733 · partitura + registrazioni</span><b><em>La serva padrona</em></b><span>Apri la partitura dell’intermezzo e ascolta anche le registrazioni libere disponibili in IMSLP.</span></button>
-        <button class="source-card resource" data-title="La Querelle des Bouffons · Philharmonie de Paris" data-url="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons"><span class="src">Parigi 1752</span><b>La parentesi diventa una bomba europea</b><span>La fortuna parigina della <em>Serva padrona</em> accende la disputa fra gusto italiano e francese.</span></button>
-        <button class="source-card resource" data-title="L'opéra-comique · Philharmonie de Paris" data-url="https://pad.philharmoniedeparis.fr/contexte-l-opera-comique-lyrique-party.aspx?_lg=fr-FR"><span class="src">Francia · genealogia autonoma</span><b>Non tutto nasce dall’Italia</b><span>L’<em>opéra-comique</em> ha radici proprie nelle fiere e nel vaudeville, ma la presenza italiana ne accelera l’evoluzione.</span></button>
+        <a class="source-card resource" data-title="Pergolesi · La serva padrona · IMSLP" data-url="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29" href="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29" target="_blank" rel="noopener noreferrer"><span class="src">1733 · partitura + registrazioni</span><b><em>La serva padrona</em></b><span>Apri la partitura dell’intermezzo e ascolta anche le registrazioni libere disponibili in IMSLP.</span></a>
+        <a class="source-card resource" data-title="La Querelle des Bouffons · Philharmonie de Paris" data-url="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons" href="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons" target="_blank" rel="noopener noreferrer"><span class="src">Parigi 1752</span><b>La parentesi diventa una bomba europea</b><span>La fortuna parigina della <em>Serva padrona</em> accende la disputa fra gusto italiano e francese.</span></a>
+        <a class="source-card resource" data-title="L'opéra-comique · Philharmonie de Paris" data-url="https://pad.philharmoniedeparis.fr/contexte-l-opera-comique-lyrique-party.aspx?_lg=fr-FR" href="https://pad.philharmoniedeparis.fr/contexte-l-opera-comique-lyrique-party.aspx?_lg=fr-FR" target="_blank" rel="noopener noreferrer"><span class="src">Francia · genealogia autonoma</span><b>Non tutto nasce dall’Italia</b><span>L’<em>opéra-comique</em> ha radici proprie nelle fiere e nel vaudeville, ma la presenza italiana ne accelera l’evoluzione.</span></a>
       </div>
             <div class="media-row">
-        <button class="media-card video" data-video="NsUeywPFEgQ" data-title="Pergolesi · La serva padrona · Diego Fasolis">
+        <a class="media-card video" data-video="NsUeywPFEgQ" data-title="Pergolesi · La serva padrona · Diego Fasolis" href="https://www.youtube.com/watch?v=NsUeywPFEgQ" target="_blank" rel="noopener noreferrer">
           <img src="https://img.youtube.com/vi/NsUeywPFEgQ/hqdefault.jpg" alt="La serva padrona di Pergolesi diretta da Diego Fasolis">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Integrale · Diego Fasolis</span><h4><em>La serva padrona</em></h4></span>
-        </button>
+        </a>
         <div class="sheet">
           <div><div class="year">1733 · guardala intera</div><h4>La parentesi che sa vivere da sola</h4><p>Vista per intero, la <em>Serva padrona</em> mostra perché un intermezzo di pochi personaggi possa possedere ritmo, caratteri e autonomia teatrale sufficienti per emanciparsi dall’opera seria.</p></div>
           <span class="open">Serpina, Uberto, Vespone →</span>
@@ -1316,18 +1316,18 @@
       </div>
 
       <div class="media-row">
-        <button class="media-card video" data-video="0bUAM0ER-Dw" data-title="Gluck · Che farò senza Euridice?">
+        <a class="media-card video" data-video="0bUAM0ER-Dw" data-title="Gluck · Che farò senza Euridice?" href="https://www.youtube.com/watch?v=0bUAM0ER-Dw" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Christoph-Willibald-Gluck.jpg" alt="Christoph Willibald Gluck">
           <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto</span><h4><em>Che farò senza Euridice?</em></h4></span>
-        </button>
-        <button class="media-card resource" data-title="Gluck · Orfeo ed Euridice · IMSLP" data-url="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29">
+        </a>
+        <a class="media-card resource" data-title="Gluck · Orfeo ed Euridice · IMSLP" data-url="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29" href="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Orfeo_ed_Euridice.jpg" alt="Orfeo ed Euridice di Gluck">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">1762 · partitura</span><h4>Di nuovo Orfeo</h4></span>
-        </button>
-        <button class="media-card resource" data-title="Gluck · Alceste · prefazione e partitura · IMSLP" data-url="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29">
+        </a>
+        <a class="media-card resource" data-title="Gluck · Alceste · prefazione e partitura · IMSLP" data-url="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29" href="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29" target="_blank" rel="noopener noreferrer">
           <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Alceste_-_Trag%C3%A9die_Op%C3%A9ra_en_trois_actes_-_par_le_ch.er_Gluck_-_btv1b550005676_%28145_of_145%29.jpg" alt="Alceste di Gluck">
           <span class="shade"></span><span class="play">＋</span><span class="meta"><span class="tag">1769 · prefazione-manifesto</span><h4><em>Alceste</em>: 1767 in scena, 1769 in stampa</h4></span>
-        </button>
+        </a>
       </div>
       <aside class="student-box">
         <div class="student-label">✦ Per iniziare</div>
@@ -1363,10 +1363,10 @@
         <div class="eyebrow">Cameo · Francesca Caccini</div>
         <h3>Una compositrice professionista dentro la macchina medicea</h3>
         <p>Francesca Caccini non è semplicemente “la figlia di Giulio”. È cantante, strumentista, insegnante e compositrice stipendiata dalla corte medicea, cioè una professionista capace di occupare dall’interno il nuovo sistema dello spettacolo musicale. <em>La liberazione di Ruggiero dall’isola d’Alcina</em>, rappresentata nel 1625, consente inoltre di vedere una donna non soltanto come interprete o destinataria della festa di corte, ma come autrice di un grande spettacolo musicale.</p>
-        <button class="source-card resource" style="width:100%;margin-top:1rem" data-title="Francesca Caccini · La liberazione di Ruggiero · IMSLP" data-url="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29"><span class="src">1625 · IMSLP</span><b>Apri la partitura</b><span>Edizione/scansione della <em>Liberazione di Ruggiero</em>: quattro scene, voci, archi e continuo.</span></button>
-              <button class="source-card playlist-video" style="width:100%;margin-top:.8rem" data-playlist="PLbIIjBacefZepfxXyv85YOUzHz6wTdf5-" data-title="Francesca Caccini · La liberazione di Ruggiero dall’isola d’Alcina · playlist completa">
+        <a class="source-card resource" style="width:100%;margin-top:1rem" data-title="Francesca Caccini · La liberazione di Ruggiero · IMSLP" data-url="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29" href="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29" target="_blank" rel="noopener noreferrer"><span class="src">1625 · IMSLP</span><b>Apri la partitura</b><span>Edizione/scansione della <em>Liberazione di Ruggiero</em>: quattro scene, voci, archi e continuo.</span></a>
+              <a class="source-card playlist-video" style="width:100%;margin-top:.8rem" data-playlist="PLbIIjBacefZepfxXyv85YOUzHz6wTdf5-" data-title="Francesca Caccini · La liberazione di Ruggiero dall’isola d’Alcina · playlist completa" href="https://www.youtube.com/playlist?list=PLbIIjBacefZepfxXyv85YOUzHz6wTdf5-" target="_blank" rel="noopener noreferrer">
           <span class="src">Video · playlist completa</span><b>Guarda <em>La liberazione di Ruggiero</em></b><span>La playlist completa dello spettacolo, da seguire direttamente nel player interno del sito.</span>
-        </button>
+        </a>
 </div>
       <aside class="student-box">
         <div class="student-label">✦ Per iniziare</div>
@@ -1398,38 +1398,38 @@
         <div class="section-title"><div class="section-no">Videoteca</div><h2>Spettacoli e ascolti da vedere, non soltanto da nominare</h2></div>
         <p>Gli ascolti principali del percorso sono raccolti anche qui, dopo essere comparsi nel punto del racconto in cui servono. Non sono esempi a margine: permettono di vedere come parola, gesto, voce, orchestra e scena diventano teatro reale.</p>
         <div class="media-row">
-          <button class="media-card video" data-video="7MBySz9Qxbc" data-title="Monteverdi · L’Orfeo · John Eliot Gardiner">
+          <a class="media-card video" data-video="7MBySz9Qxbc" data-title="Monteverdi · L’Orfeo · John Eliot Gardiner" href="https://www.youtube.com/watch?v=7MBySz9Qxbc" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/7MBySz9Qxbc/hqdefault.jpg" alt="L'Orfeo di Monteverdi diretto da John Eliot Gardiner">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Monteverdi · integrale</span><h4><em>L’Orfeo</em></h4></span>
-          </button>
-          <button class="media-card external-video" data-url="https://share.google/6qwmKnQc9sEKMyEGc" data-title="Monteverdi · Il combattimento di Tancredi e Clorinda">
+          </a>
+          <a class="media-card external-video" data-url="https://share.google/6qwmKnQc9sEKMyEGc" data-title="Monteverdi · Il combattimento di Tancredi e Clorinda" href="https://share.google/6qwmKnQc9sEKMyEGc" target="_blank" rel="noopener noreferrer">
             <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tancredi_e_Clorinda.jpg" alt="Tancredi e Clorinda">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Monteverdi · video scelto</span><h4><em>Il combattimento di Tancredi e Clorinda</em></h4></span>
-          </button>
-          <button class="media-card video" data-video="NsUeywPFEgQ" data-title="Pergolesi · La serva padrona · Diego Fasolis">
+          </a>
+          <a class="media-card video" data-video="NsUeywPFEgQ" data-title="Pergolesi · La serva padrona · Diego Fasolis" href="https://www.youtube.com/watch?v=NsUeywPFEgQ" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/NsUeywPFEgQ/hqdefault.jpg" alt="La serva padrona diretta da Diego Fasolis">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Pergolesi · integrale</span><h4><em>La serva padrona</em> · Fasolis</h4></span>
-          </button>
-                  <button class="media-card video" data-video="WHMJgGE5Doc" data-title="Jacopo Peri · Euridice · Accademia degli Imperfetti">
+          </a>
+                  <a class="media-card video" data-video="WHMJgGE5Doc" data-title="Jacopo Peri · Euridice · Accademia degli Imperfetti" href="https://www.youtube.com/watch?v=WHMJgGE5Doc" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/WHMJgGE5Doc/hqdefault.jpg" alt="Estratto dall'Euridice di Jacopo Peri eseguita dall'Accademia degli Imperfetti">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Peri · estratto</span><h4><em>Euridice</em> · Accademia degli Imperfetti</h4></span>
-          </button>
-          <button class="media-card video" data-video="-NKPzXMNXW4" data-title="Giulio Caccini · Euridice · parte I">
+          </a>
+          <a class="media-card video" data-video="-NKPzXMNXW4" data-title="Giulio Caccini · Euridice · parte I" href="https://www.youtube.com/watch?v=-NKPzXMNXW4" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/-NKPzXMNXW4/hqdefault.jpg" alt="Euridice di Giulio Caccini, parte prima">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Caccini · parte I</span><h4><em>Euridice</em></h4></span>
-          </button>
-          <button class="media-card video" data-video="ZhbRrpUEfcg" data-title="Giulio Caccini · Euridice · parte II">
+          </a>
+          <a class="media-card video" data-video="ZhbRrpUEfcg" data-title="Giulio Caccini · Euridice · parte II" href="https://www.youtube.com/watch?v=ZhbRrpUEfcg" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/ZhbRrpUEfcg/hqdefault.jpg" alt="Euridice di Giulio Caccini, seconda parte">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Caccini · parte II</span><h4><em>Euridice</em></h4></span>
-          </button>
-          <button class="media-card playlist-video" data-playlist="PLbIIjBacefZepfxXyv85YOUzHz6wTdf5-" data-title="Francesca Caccini · La liberazione di Ruggiero dall’isola d’Alcina · playlist completa">
+          </a>
+          <a class="media-card playlist-video" data-playlist="PLbIIjBacefZepfxXyv85YOUzHz6wTdf5-" data-title="Francesca Caccini · La liberazione di Ruggiero dall’isola d’Alcina · playlist completa" href="https://www.youtube.com/playlist?list=PLbIIjBacefZepfxXyv85YOUzHz6wTdf5-" target="_blank" rel="noopener noreferrer">
             <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg" alt="Scena dalla Liberazione di Ruggiero dall'isola d'Alcina di Francesca Caccini">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Francesca Caccini · playlist</span><h4><em>La liberazione di Ruggiero</em></h4></span>
-          </button>
-          <button class="media-card video" data-video="CzF11RsxcWg" data-title="Vivaldi · Vedrò con mio diletto · Jakub Józef Orliński">
+          </a>
+          <a class="media-card video" data-video="CzF11RsxcWg" data-title="Vivaldi · Vedrò con mio diletto · Jakub Józef Orliński" href="https://www.youtube.com/watch?v=CzF11RsxcWg" target="_blank" rel="noopener noreferrer">
             <img src="https://img.youtube.com/vi/CzF11RsxcWg/hqdefault.jpg" alt="Jakub Józef Orliński interpreta Vedrò con mio diletto di Vivaldi">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Opera seria · Vivaldi</span><h4><em>Vedrò con mio diletto</em></h4></span>
-          </button>
+          </a>
 </div>
       </div>
     </section>
@@ -1441,30 +1441,30 @@
 
         <div class="archive-subtitle">Partiture e testi primari</div>
         <div class="archive-grid">
-          <button class="source-card resource" data-title="Jacopo Peri · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29"><span class="src">1600 · IMSLP</span><b>Peri · <em>Euridice</em></b><span>Partitura, prima edizione e materiali moderni.</span></button>
-          <button class="source-card resource" data-title="Giulio Caccini · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29"><span class="src">Caccini · IMSLP</span><b><em>Euridice</em></b><span>La seconda soluzione musicale sul libretto di Rinuccini.</span></button>
-          <button class="source-card resource" data-title="Giulio Caccini · Le nuove musiche · IMSLP" data-url="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29"><span class="src">1602 · IMSLP</span><b><em>Le nuove musiche</em></b><span>Una fonte capitale per monodia e basso continuo.</span></button>
-          <button class="source-card resource" data-title="Monteverdi · L'Orfeo · IMSLP" data-url="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29"><span class="src">1609 · IMSLP</span><b>Monteverdi · <em>L’Orfeo</em></b><span>La partitura completa e la prima edizione veneziana.</span></button>
-          <button class="source-card resource" data-title="Monteverdi · Combattimento · IMSLP" data-url="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29"><span class="src">1638 · IMSLP</span><b><em>Combattimento</em></b><span>Partitura e registrazione libera del “genere rappresentativo”.</span></button>
-          <button class="source-card resource" data-title="Francesca Caccini · La liberazione di Ruggiero · IMSLP" data-url="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29"><span class="src">1625 · IMSLP</span><b>Francesca Caccini</b><span><em>La liberazione di Ruggiero dall’isola d’Alcina</em>.</span></button>
-          <button class="source-card resource" data-title="Metastasio · Didone abbandonata" data-url="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo"><span class="src">1724 · Wikisource</span><b>Metastasio · <em>Didone</em></b><span>Un libretto di opera seria leggibile direttamente online.</span></button>
-          <button class="source-card resource" data-title="Benedetto Marcello · Il teatro alla moda · IMSLP" data-url="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29"><span class="src">1720 · IMSLP</span><b><em>Il teatro alla moda</em></b><span>Il testo completo della satira sul sistema operistico.</span></button>
-          <button class="source-card resource" data-title="Pergolesi · La serva padrona · IMSLP" data-url="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29"><span class="src">1733 · IMSLP</span><b>Pergolesi · <em>La serva padrona</em></b><span>Partitura, parti e registrazioni.</span></button>
-          <button class="source-card resource" data-title="Goldoni · La locandiera · Wikisource" data-url="https://it.wikisource.org/wiki/La_locandiera/Atto_I"><span class="src">1753 · Wikisource</span><b>Goldoni · <em>La locandiera</em></b><span>Il testo integrale per osservare Mirandolina in azione.</span></button>
-          <button class="source-card resource" data-title="Gluck · Orfeo ed Euridice · IMSLP" data-url="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29"><span class="src">1762 · IMSLP</span><b>Gluck · <em>Orfeo ed Euridice</em></b><span>Partitura e materiali dell’opera della riforma.</span></button>
-          <button class="source-card resource" data-title="Gluck · Alceste · IMSLP" data-url="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29"><span class="src">1767 / 1769 · IMSLP</span><b>Gluck · <em>Alceste</em></b><span>L’opera debutta nel 1767; la celebre prefazione programmatica accompagna l’edizione a stampa del 1769.</span></button>
+          <a class="source-card resource" data-title="Jacopo Peri · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29" href="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29" target="_blank" rel="noopener noreferrer"><span class="src">1600 · IMSLP</span><b>Peri · <em>Euridice</em></b><span>Partitura, prima edizione e materiali moderni.</span></a>
+          <a class="source-card resource" data-title="Giulio Caccini · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29" href="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener noreferrer"><span class="src">Caccini · IMSLP</span><b><em>Euridice</em></b><span>La seconda soluzione musicale sul libretto di Rinuccini.</span></a>
+          <a class="source-card resource" data-title="Giulio Caccini · Le nuove musiche · IMSLP" data-url="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" href="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener noreferrer"><span class="src">1602 · IMSLP</span><b><em>Le nuove musiche</em></b><span>Una fonte capitale per monodia e basso continuo.</span></a>
+          <a class="source-card resource" data-title="Monteverdi · L'Orfeo · IMSLP" data-url="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29" href="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener noreferrer"><span class="src">1609 · IMSLP</span><b>Monteverdi · <em>L’Orfeo</em></b><span>La partitura completa e la prima edizione veneziana.</span></a>
+          <a class="source-card resource" data-title="Monteverdi · Combattimento · IMSLP" data-url="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29" href="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener noreferrer"><span class="src">1638 · IMSLP</span><b><em>Combattimento</em></b><span>Partitura e registrazione libera del “genere rappresentativo”.</span></a>
+          <a class="source-card resource" data-title="Francesca Caccini · La liberazione di Ruggiero · IMSLP" data-url="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29" href="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29" target="_blank" rel="noopener noreferrer"><span class="src">1625 · IMSLP</span><b>Francesca Caccini</b><span><em>La liberazione di Ruggiero dall’isola d’Alcina</em>.</span></a>
+          <a class="source-card resource" data-title="Metastasio · Didone abbandonata" data-url="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo" href="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo" target="_blank" rel="noopener noreferrer"><span class="src">1724 · Wikisource</span><b>Metastasio · <em>Didone</em></b><span>Un libretto di opera seria leggibile direttamente online.</span></a>
+          <a class="source-card resource" data-title="Benedetto Marcello · Il teatro alla moda · IMSLP" data-url="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29" href="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29" target="_blank" rel="noopener noreferrer"><span class="src">1720 · IMSLP</span><b><em>Il teatro alla moda</em></b><span>Il testo completo della satira sul sistema operistico.</span></a>
+          <a class="source-card resource" data-title="Pergolesi · La serva padrona · IMSLP" data-url="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29" href="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29" target="_blank" rel="noopener noreferrer"><span class="src">1733 · IMSLP</span><b>Pergolesi · <em>La serva padrona</em></b><span>Partitura, parti e registrazioni.</span></a>
+          <a class="source-card resource" data-title="Goldoni · La locandiera · Wikisource" data-url="https://it.wikisource.org/wiki/La_locandiera/Atto_I" href="https://it.wikisource.org/wiki/La_locandiera/Atto_I" target="_blank" rel="noopener noreferrer"><span class="src">1753 · Wikisource</span><b>Goldoni · <em>La locandiera</em></b><span>Il testo integrale per osservare Mirandolina in azione.</span></a>
+          <a class="source-card resource" data-title="Gluck · Orfeo ed Euridice · IMSLP" data-url="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29" href="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29" target="_blank" rel="noopener noreferrer"><span class="src">1762 · IMSLP</span><b>Gluck · <em>Orfeo ed Euridice</em></b><span>Partitura e materiali dell’opera della riforma.</span></a>
+          <a class="source-card resource" data-title="Gluck · Alceste · IMSLP" data-url="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29" href="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29" target="_blank" rel="noopener noreferrer"><span class="src">1767 / 1769 · IMSLP</span><b>Gluck · <em>Alceste</em></b><span>L’opera debutta nel 1767; la celebre prefazione programmatica accompagna l’edizione a stampa del 1769.</span></a>
         </div>
 
         <div class="archive-subtitle">Teatro, società e contesto</div>
         <div class="archive-grid">
-          <button class="source-card resource" data-title="Nietzsche · La nascita della tragedia" data-url="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm"><span class="src">Project Gutenberg</span><b>Apollo e Dioniso</b><span>Il testo che apre filosoficamente il percorso.</span></button>
-          <button class="source-card resource" data-title="Teatro San Cassiano · storia" data-url="https://www.teatrosancassiano.it/it/teatro-san-cassiano/"><span class="src">Venezia · 1637</span><b>Il primo teatro d’opera pubblico</b><span>Dal mecenatismo di corte al pubblico pagante.</span></button>
-          <button class="source-card resource" data-title="Performance and the Baroque · V&A" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque"><span class="src">Victoria and Albert Museum</span><b>Performance e Barocco</b><span>Scene, macchine, luce, danza e ingegneria dello spettacolo.</span></button>
-          <button class="source-card resource" data-title="Le Bourgeois gentilhomme · BnF" data-url="https://catalogue.bnf.fr/ark:/12148/cb439979981"><span class="src">BnF · fonte</span><b>Molière + Lully</b><span>La <em>comédie-ballet</em> nella tradizione documentaria francese.</span></button>
-          <button class="source-card resource" data-title="Carlo Goldoni · Treccani" data-url="https://www.treccani.it/enciclopedia/carlo-goldoni_%28Enciclopedia-dell%27Italiano%29/"><span class="src">Treccani</span><b>La riforma del teatro comico</b><span>Dal canovaccio e dal tipo alla scrittura e al carattere.</span></button>
-          <button class="source-card resource" data-title="Querelle des Bouffons · Philharmonie de Paris" data-url="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons"><span class="src">Philharmonie de Paris</span><b>Querelle des Bouffons</b><span>Quando la <em>Serva padrona</em> diventa una questione europea.</span></button>
-          <button class="source-card resource" data-title="L'opéra-comique · Philharmonie de Paris" data-url="https://pad.philharmoniedeparis.fr/contexte-l-opera-comique-lyrique-party.aspx?_lg=fr-FR"><span class="src">Philharmonie de Paris</span><b>L’<em>opéra-comique</em></b><span>Una genealogia francese autonoma che entra in dialogo con il modello italiano.</span></button>
-          <button class="source-card resource" data-title="L'opera italiana · Philharmonie de Paris" data-url="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR"><span class="src">Philharmonie de Paris</span><b>La grammatica dell’opera italiana</b><span>Seria, buffa, aria, recitativo e opera a numeri in una sintesi didattica.</span></button>
+          <a class="source-card resource" data-title="Nietzsche · La nascita della tragedia" data-url="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm" href="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm" target="_blank" rel="noopener noreferrer"><span class="src">Project Gutenberg</span><b>Apollo e Dioniso</b><span>Il testo che apre filosoficamente il percorso.</span></a>
+          <a class="source-card resource" data-title="Teatro San Cassiano · storia" data-url="https://www.teatrosancassiano.it/it/teatro-san-cassiano/" href="https://www.teatrosancassiano.it/it/teatro-san-cassiano/" target="_blank" rel="noopener noreferrer"><span class="src">Venezia · 1637</span><b>Il primo teatro d’opera pubblico</b><span>Dal mecenatismo di corte al pubblico pagante.</span></a>
+          <a class="source-card resource" data-title="Performance and the Baroque · V&A" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque" href="https://www.vam.ac.uk/articles/performance-and-the-baroque" target="_blank" rel="noopener noreferrer"><span class="src">Victoria and Albert Museum</span><b>Performance e Barocco</b><span>Scene, macchine, luce, danza e ingegneria dello spettacolo.</span></a>
+          <a class="source-card resource" data-title="Le Bourgeois gentilhomme · BnF" data-url="https://catalogue.bnf.fr/ark:/12148/cb439979981" href="https://catalogue.bnf.fr/ark:/12148/cb439979981" target="_blank" rel="noopener noreferrer"><span class="src">BnF · fonte</span><b>Molière + Lully</b><span>La <em>comédie-ballet</em> nella tradizione documentaria francese.</span></a>
+          <a class="source-card resource" data-title="Carlo Goldoni · Treccani" data-url="https://www.treccani.it/enciclopedia/carlo-goldoni_%28Enciclopedia-dell%27Italiano%29/" href="https://www.treccani.it/enciclopedia/carlo-goldoni_%28Enciclopedia-dell%27Italiano%29/" target="_blank" rel="noopener noreferrer"><span class="src">Treccani</span><b>La riforma del teatro comico</b><span>Dal canovaccio e dal tipo alla scrittura e al carattere.</span></a>
+          <a class="source-card resource" data-title="Querelle des Bouffons · Philharmonie de Paris" data-url="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons" href="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons" target="_blank" rel="noopener noreferrer"><span class="src">Philharmonie de Paris</span><b>Querelle des Bouffons</b><span>Quando la <em>Serva padrona</em> diventa una questione europea.</span></a>
+          <a class="source-card resource" data-title="L'opéra-comique · Philharmonie de Paris" data-url="https://pad.philharmoniedeparis.fr/contexte-l-opera-comique-lyrique-party.aspx?_lg=fr-FR" href="https://pad.philharmoniedeparis.fr/contexte-l-opera-comique-lyrique-party.aspx?_lg=fr-FR" target="_blank" rel="noopener noreferrer"><span class="src">Philharmonie de Paris</span><b>L’<em>opéra-comique</em></b><span>Una genealogia francese autonoma che entra in dialogo con il modello italiano.</span></a>
+          <a class="source-card resource" data-title="L'opera italiana · Philharmonie de Paris" data-url="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR" href="https://edutheque.philharmoniedeparis.fr/opera-italien-au-xixe-siecle.aspx?_lg=fr-FR" target="_blank" rel="noopener noreferrer"><span class="src">Philharmonie de Paris</span><b>La grammatica dell’opera italiana</b><span>Seria, buffa, aria, recitativo e opera a numeri in una sintesi didattica.</span></a>
         </div>
       </div>
     </section>
@@ -1479,33 +1479,33 @@
         <div class="bib-group-note"><strong>Come usarle:</strong> sono il primo livello del percorso. Prima di leggere ciò che uno storico dice dell’opera, conviene guardare una partitura, un libretto, un trattato o una satira scritta da chi quel mondo lo conosceva direttamente.</div>
         <div class="bibliography-list">
 
-          <div class="bib-entry"><div class="bib-cite">Peri, Jacopo, e Ottavio Rinuccini. <em>Euridice</em>. Firenze, 1600.<span class="bib-role">Partitura e libretto · nascita del melodramma</span></div><button class="bib-open resource" data-title="Jacopo Peri · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Peri, Jacopo, e Ottavio Rinuccini. <em>Euridice</em>. Firenze, 1600.<span class="bib-role">Partitura e libretto · nascita del melodramma</span></div><a class="bib-open resource" data-title="Jacopo Peri · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29" href="https://imslp.org/wiki/Euridice_%28Peri%2C_Jacopo%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Caccini, Giulio. <em>L’Euridice</em>. Firenze, 1600/1601.<span class="bib-role">Partitura primaria · confronto con Peri</span></div><button class="bib-open resource" data-title="Giulio Caccini · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Caccini, Giulio. <em>L’Euridice</em>. Firenze, 1600/1601.<span class="bib-role">Partitura primaria · confronto con Peri</span></div><a class="bib-open resource" data-title="Giulio Caccini · Euridice · IMSLP" data-url="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29" href="https://imslp.org/wiki/Euridice_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Caccini, Giulio. <em>Le nuove musiche</em>. Firenze, 1602.<span class="bib-role">Monodia, ornamentazione e nuova prassi vocale</span></div><button class="bib-open resource" data-title="Giulio Caccini · Le nuove musiche · IMSLP" data-url="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Caccini, Giulio. <em>Le nuove musiche</em>. Firenze, 1602.<span class="bib-role">Monodia, ornamentazione e nuova prassi vocale</span></div><a class="bib-open resource" data-title="Giulio Caccini · Le nuove musiche · IMSLP" data-url="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" href="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Monteverdi, Claudio, e Alessandro Striggio. <em>L’Orfeo, favola in musica</em>. Mantova, 1607; prima edizione a stampa, Venezia, 1609.<span class="bib-role">Partitura primaria · teatro musicale monteverdiano</span></div><button class="bib-open resource" data-title="Monteverdi · L’Orfeo · IMSLP" data-url="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Monteverdi, Claudio, e Alessandro Striggio. <em>L’Orfeo, favola in musica</em>. Mantova, 1607; prima edizione a stampa, Venezia, 1609.<span class="bib-role">Partitura primaria · teatro musicale monteverdiano</span></div><a class="bib-open resource" data-title="Monteverdi · L’Orfeo · IMSLP" data-url="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29" href="https://imslp.org/wiki/L%27orfeo%2C_favola_in_musica_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Monteverdi, Claudio. <em>Il combattimento di Tancredi e Clorinda</em>. Testo da Torquato Tasso; rappresentato nel 1624, pubblicato nel <em>Libro VIII dei madrigali</em>, 1638.<span class="bib-role">Fonte primaria · genere rappresentativo e stile concitato</span></div><button class="bib-open resource" data-title="Monteverdi · Combattimento di Tancredi e Clorinda · IMSLP" data-url="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Monteverdi, Claudio. <em>Il combattimento di Tancredi e Clorinda</em>. Testo da Torquato Tasso; rappresentato nel 1624, pubblicato nel <em>Libro VIII dei madrigali</em>, 1638.<span class="bib-role">Fonte primaria · genere rappresentativo e stile concitato</span></div><a class="bib-open resource" data-title="Monteverdi · Combattimento di Tancredi e Clorinda · IMSLP" data-url="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29" href="https://imslp.org/wiki/Combattimento_di_Tancredi_e_Clorinda%2C_SV_153_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Caccini, Francesca. <em>La liberazione di Ruggiero dall’isola d’Alcina</em>. Firenze, 1625.<span class="bib-role">Fonte primaria · composizione femminile e spettacolo mediceo</span></div><button class="bib-open resource" data-title="Francesca Caccini · La liberazione di Ruggiero · IMSLP" data-url="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Caccini, Francesca. <em>La liberazione di Ruggiero dall’isola d’Alcina</em>. Firenze, 1625.<span class="bib-role">Fonte primaria · composizione femminile e spettacolo mediceo</span></div><a class="bib-open resource" data-title="Francesca Caccini · La liberazione di Ruggiero · IMSLP" data-url="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29" href="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Sabbattini, Nicola. <em>Pratica di fabricar scene e machine ne’ teatri</em>. Pesaro, 1637; edizione ampliata, Ravenna, 1638.<span class="bib-role">Trattato tecnico · scenografia, luci e macchine teatrali</span></div><button class="bib-open resource" data-title="Nicola Sabbattini · Pratica di fabricar scene e machine ne’ teatri" data-url="https://archive.org/details/praticadifabrica00sabb">Apri facsimile</button></div>
+          <div class="bib-entry"><div class="bib-cite">Sabbattini, Nicola. <em>Pratica di fabricar scene e machine ne’ teatri</em>. Pesaro, 1637; edizione ampliata, Ravenna, 1638.<span class="bib-role">Trattato tecnico · scenografia, luci e macchine teatrali</span></div><a class="bib-open resource" data-title="Nicola Sabbattini · Pratica di fabricar scene e machine ne’ teatri" data-url="https://archive.org/details/praticadifabrica00sabb" href="https://archive.org/details/praticadifabrica00sabb" target="_blank" rel="noopener noreferrer">Apri facsimile</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Marcello, Benedetto. <em>Il teatro alla moda</em>. Venezia, 1720.<span class="bib-role">Fonte satirica · sistema produttivo, divismo e mercato teatrale</span></div><button class="bib-open resource" data-title="Benedetto Marcello · Il teatro alla moda · IMSLP" data-url="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Marcello, Benedetto. <em>Il teatro alla moda</em>. Venezia, 1720.<span class="bib-role">Fonte satirica · sistema produttivo, divismo e mercato teatrale</span></div><a class="bib-open resource" data-title="Benedetto Marcello · Il teatro alla moda · IMSLP" data-url="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29" href="https://imslp.org/wiki/Il_teatro_alla_moda_%28Marcello%2C_Benedetto%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Metastasio, Pietro. <em>Didone abbandonata</em>. Napoli, 1724.<span class="bib-role">Libretto · modello dell’opera seria</span></div><button class="bib-open resource" data-title="Metastasio · Didone abbandonata · Wikisource" data-url="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Metastasio, Pietro. <em>Didone abbandonata</em>. Napoli, 1724.<span class="bib-role">Libretto · modello dell’opera seria</span></div><a class="bib-open resource" data-title="Metastasio · Didone abbandonata · Wikisource" data-url="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo" href="https://it.wikisource.org/wiki/Didone_abbandonata/Atto_primo" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Pergolesi, Giovanni Battista, e Gennaro Antonio Federico. <em>La serva padrona</em>. Napoli, 1733.<span class="bib-role">Intermezzo · teatro comico musicale</span></div><button class="bib-open resource" data-title="Pergolesi · La serva padrona · IMSLP" data-url="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Pergolesi, Giovanni Battista, e Gennaro Antonio Federico. <em>La serva padrona</em>. Napoli, 1733.<span class="bib-role">Intermezzo · teatro comico musicale</span></div><a class="bib-open resource" data-title="Pergolesi · La serva padrona · IMSLP" data-url="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29" href="https://imslp.org/wiki/La_serva_padrona_%28Pergolesi%2C_Giovanni_Battista%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Goldoni, Carlo. <em>La locandiera</em>. Venezia, 1753.<span class="bib-role">Testo teatrale · dalla maschera al carattere</span></div><button class="bib-open resource" data-title="Goldoni · La locandiera · Wikisource" data-url="https://it.wikisource.org/wiki/La_locandiera/Atto_I">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Goldoni, Carlo. <em>La locandiera</em>. Venezia, 1753.<span class="bib-role">Testo teatrale · dalla maschera al carattere</span></div><a class="bib-open resource" data-title="Goldoni · La locandiera · Wikisource" data-url="https://it.wikisource.org/wiki/La_locandiera/Atto_I" href="https://it.wikisource.org/wiki/La_locandiera/Atto_I" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Gluck, Christoph Willibald, e Ranieri de’ Calzabigi. <em>Orfeo ed Euridice</em>. Vienna, 1762.<span class="bib-role">Partitura primaria · opera della riforma</span></div><button class="bib-open resource" data-title="Gluck · Orfeo ed Euridice · IMSLP" data-url="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Gluck, Christoph Willibald, e Ranieri de’ Calzabigi. <em>Orfeo ed Euridice</em>. Vienna, 1762.<span class="bib-role">Partitura primaria · opera della riforma</span></div><a class="bib-open resource" data-title="Gluck · Orfeo ed Euridice · IMSLP" data-url="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29" href="https://imslp.org/wiki/Orfeo_ed_Euridice_%28Gluck%2C_Christoph_Willibald%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Gluck, Christoph Willibald, e Ranieri de’ Calzabigi. <em>Alceste</em>. Prima rappresentazione: Vienna, 1767; prefazione programmatica all’edizione a stampa, 1769.<span class="bib-role">Partitura e manifesto della riforma</span></div><button class="bib-open resource" data-title="Gluck · Alceste · IMSLP" data-url="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Gluck, Christoph Willibald, e Ranieri de’ Calzabigi. <em>Alceste</em>. Prima rappresentazione: Vienna, 1767; prefazione programmatica all’edizione a stampa, 1769.<span class="bib-role">Partitura e manifesto della riforma</span></div><a class="bib-open resource" data-title="Gluck · Alceste · IMSLP" data-url="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29" href="https://imslp.org/wiki/Alceste_%28Gluck%2C_Christoph_Willibald%29" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Nietzsche, Friedrich. <em>Die Geburt der Tragödie aus dem Geiste der Musik</em> [<em>La nascita della tragedia dallo spirito della musica</em>]. Leipzig, 1872.<span class="bib-role">Fonte filosofica · Apollo e Dioniso come lente interpretativa</span></div><button class="bib-open resource" data-title="Nietzsche · La nascita della tragedia · Project Gutenberg" data-url="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Nietzsche, Friedrich. <em>Die Geburt der Tragödie aus dem Geiste der Musik</em> [<em>La nascita della tragedia dallo spirito della musica</em>]. Leipzig, 1872.<span class="bib-role">Fonte filosofica · Apollo e Dioniso come lente interpretativa</span></div><a class="bib-open resource" data-title="Nietzsche · La nascita della tragedia · Project Gutenberg" data-url="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm" href="https://www.gutenberg.org/files/51356/51356-h/51356-h.htm" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
         </div>
       </div>
@@ -1515,11 +1515,11 @@
         <div class="bib-group-note"><strong>Come usarli:</strong> questi studi servono a costruire il quadro generale e a evitare che un singolo compositore venga scambiato per l’intera storia del genere. Sono particolarmente utili per distinguere nascita dell’opera, sviluppo delle convenzioni, istituzioni teatrali e ricezione.</div>
         <div class="bibliography-list">
 
-          <div class="bib-entry"><div class="bib-cite">Grout, Donald J., e Hermine Weigel Williams. <em>A Short History of Opera</em>. 4ª ed. New York: Columbia University Press, 2003.<span class="bib-role">Storia generale dell’opera</span></div><button class="bib-open resource" data-title="Grout / Williams · A Short History of Opera" data-url="https://cup.columbia.edu/book/a-short-history-of-opera/9780231507721/">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Grout, Donald J., e Hermine Weigel Williams. <em>A Short History of Opera</em>. 4ª ed. New York: Columbia University Press, 2003.<span class="bib-role">Storia generale dell’opera</span></div><a class="bib-open resource" data-title="Grout / Williams · A Short History of Opera" data-url="https://cup.columbia.edu/book/a-short-history-of-opera/9780231507721/" href="https://cup.columbia.edu/book/a-short-history-of-opera/9780231507721/" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Waeber, Jacqueline, a cura di. <em>The Cambridge Companion to Seventeenth-Century Opera</em>. Cambridge: Cambridge University Press, 2022.<span class="bib-role">Sintesi aggiornata sul primo secolo dell’opera</span></div><button class="bib-open resource" data-title="Cambridge Companion to Seventeenth-Century Opera" data-url="https://www.cambridge.org/core/books/cambridge-companion-to-seventeenthcentury-opera/1E82E83284207221342959B7866ECFF1">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Waeber, Jacqueline, a cura di. <em>The Cambridge Companion to Seventeenth-Century Opera</em>. Cambridge: Cambridge University Press, 2022.<span class="bib-role">Sintesi aggiornata sul primo secolo dell’opera</span></div><a class="bib-open resource" data-title="Cambridge Companion to Seventeenth-Century Opera" data-url="https://www.cambridge.org/core/books/cambridge-companion-to-seventeenthcentury-opera/1E82E83284207221342959B7866ECFF1" href="https://www.cambridge.org/core/books/cambridge-companion-to-seventeenthcentury-opera/1E82E83284207221342959B7866ECFF1" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Till, Nicholas, a cura di. <em>The Cambridge Companion to Opera Studies</em>. Cambridge: Cambridge University Press, 2012.<span class="bib-role">Metodologia degli opera studies e teatro musicale</span></div><button class="bib-open resource" data-title="Cambridge Companion to Opera Studies" data-url="https://www.cambridge.org/core/books/cambridge-companion-to-opera-studies/DA2BDACBE3172D75B85696106C88CA10">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Till, Nicholas, a cura di. <em>The Cambridge Companion to Opera Studies</em>. Cambridge: Cambridge University Press, 2012.<span class="bib-role">Metodologia degli opera studies e teatro musicale</span></div><a class="bib-open resource" data-title="Cambridge Companion to Opera Studies" data-url="https://www.cambridge.org/core/books/cambridge-companion-to-opera-studies/DA2BDACBE3172D75B85696106C88CA10" href="https://www.cambridge.org/core/books/cambridge-companion-to-opera-studies/DA2BDACBE3172D75B85696106C88CA10" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
           <div class="bib-entry"><div class="bib-cite">Bianconi, Lorenzo, e Giorgio Pestelli, a cura di. <em>Storia dell’opera italiana</em>. Torino: EDT, 1987–1988; edizione inglese, Chicago: University of Chicago Press.<span class="bib-role">Storia sociale, produttiva, drammaturgica e musicale dell’opera italiana</span></div></div>
 
@@ -1543,17 +1543,17 @@
         <div class="bib-group-note"><strong>Come usarli:</strong> questo gruppo sostiene il cuore del percorso: il passaggio dall’umanesimo musicale alla monodia, la nascita del teatro interamente cantato, Monteverdi come uomo di teatro e infine la trasformazione veneziana dell’opera in spettacolo pubblico e commerciale.</div>
         <div class="bibliography-list">
 
-          <div class="bib-entry"><div class="bib-cite">Palisca, Claude V. <em>The Florentine Camerata: Documentary Studies and Translations</em>. New Haven: Yale University Press, 1989.<span class="bib-role">Studio documentario fondamentale sulla Camerata</span></div><button class="bib-open resource" data-title="Claude V. Palisca · The Florentine Camerata" data-url="https://books.google.com/books/about/The_Florentine_Camerata.html?id=S3EzAAAAIAAJ">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Palisca, Claude V. <em>The Florentine Camerata: Documentary Studies and Translations</em>. New Haven: Yale University Press, 1989.<span class="bib-role">Studio documentario fondamentale sulla Camerata</span></div><a class="bib-open resource" data-title="Claude V. Palisca · The Florentine Camerata" data-url="https://books.google.com/books/about/The_Florentine_Camerata.html?id=S3EzAAAAIAAJ" href="https://books.google.com/books/about/The_Florentine_Camerata.html?id=S3EzAAAAIAAJ" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
           <div class="bib-entry"><div class="bib-cite">Pirrotta, Nino. <em>Music and Theatre from Poliziano to Monteverdi</em>. Cambridge: Cambridge University Press, 1982.<span class="bib-role">Antecedenti teatrali e nascita dell’opera</span></div></div>
 
-          <div class="bib-entry"><div class="bib-cite">Carter, Tim. <em>Monteverdi’s Musical Theatre</em>. New Haven: Yale University Press, 2002.<span class="bib-role">Monteverdi, librettisti e musica per la scena</span></div><button class="bib-open resource" data-title="Tim Carter · Monteverdi’s Musical Theatre" data-url="https://books.google.com/books/about/Monteverdi_s_Musical_Theatre.html?id=4_nEq6qfm3kC">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Carter, Tim. <em>Monteverdi’s Musical Theatre</em>. New Haven: Yale University Press, 2002.<span class="bib-role">Monteverdi, librettisti e musica per la scena</span></div><a class="bib-open resource" data-title="Tim Carter · Monteverdi’s Musical Theatre" data-url="https://books.google.com/books/about/Monteverdi_s_Musical_Theatre.html?id=4_nEq6qfm3kC" href="https://books.google.com/books/about/Monteverdi_s_Musical_Theatre.html?id=4_nEq6qfm3kC" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Rosand, Ellen. <em>Opera in Seventeenth-Century Venice: The Creation of a Genre</em>. Berkeley: University of California Press, 1991.<span class="bib-role">Venezia, convenzioni, pubblico e formazione del genere</span></div><button class="bib-open resource" data-title="Ellen Rosand · Opera in Seventeenth-Century Venice" data-url="https://www.ucpress.edu/books/opera-in-seventeenth-century-venice/paper">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Rosand, Ellen. <em>Opera in Seventeenth-Century Venice: The Creation of a Genre</em>. Berkeley: University of California Press, 1991.<span class="bib-role">Venezia, convenzioni, pubblico e formazione del genere</span></div><a class="bib-open resource" data-title="Ellen Rosand · Opera in Seventeenth-Century Venice" data-url="https://www.ucpress.edu/books/opera-in-seventeenth-century-venice/paper" href="https://www.ucpress.edu/books/opera-in-seventeenth-century-venice/paper" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Glixon, Beth L., e Jonathan E. Glixon. <em>Inventing the Business of Opera: The Impresario and His World in Seventeenth-Century Venice</em>. Oxford: Oxford University Press, 2006.<span class="bib-role">Impresariato, cantanti, finanze, scene e macchine</span></div><button class="bib-open resource" data-title="Glixon / Glixon · Inventing the Business of Opera" data-url="https://academic.oup.com/book/32749">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Glixon, Beth L., e Jonathan E. Glixon. <em>Inventing the Business of Opera: The Impresario and His World in Seventeenth-Century Venice</em>. Oxford: Oxford University Press, 2006.<span class="bib-role">Impresariato, cantanti, finanze, scene e macchine</span></div><a class="bib-open resource" data-title="Glixon / Glixon · Inventing the Business of Opera" data-url="https://academic.oup.com/book/32749" href="https://academic.oup.com/book/32749" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Glixon, Beth L. “Opera for a Paying Public (Italy c. 1637–c. 1700).” In <em>The Cambridge Companion to Seventeenth-Century Opera</em>, a cura di Jacqueline Waeber. Cambridge University Press, 2022.<span class="bib-role">Opera pubblica, mercato e istituzioni</span></div><button class="bib-open resource" data-title="Beth L. Glixon · Opera for a Paying Public" data-url="https://www.cambridge.org/core/books/abs/cambridge-companion-to-seventeenthcentury-opera/opera-for-a-paying-public-italy-c-1637c-1700/14208E41A8D6F019830093DD99F97299">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Glixon, Beth L. “Opera for a Paying Public (Italy c. 1637–c. 1700).” In <em>The Cambridge Companion to Seventeenth-Century Opera</em>, a cura di Jacqueline Waeber. Cambridge University Press, 2022.<span class="bib-role">Opera pubblica, mercato e istituzioni</span></div><a class="bib-open resource" data-title="Beth L. Glixon · Opera for a Paying Public" data-url="https://www.cambridge.org/core/books/abs/cambridge-companion-to-seventeenthcentury-opera/opera-for-a-paying-public-italy-c-1637c-1700/14208E41A8D6F019830093DD99F97299" href="https://www.cambridge.org/core/books/abs/cambridge-companion-to-seventeenthcentury-opera/opera-for-a-paying-public-italy-c-1637c-1700/14208E41A8D6F019830093DD99F97299" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
         </div>
       </div>
@@ -1563,17 +1563,17 @@
         <div class="bib-group-note"><strong>Come usarli:</strong> servono a non raccontare il Settecento come una linea esclusivamente italiana. La Francia sviluppa una propria tradizione di teatro musicale, danza e declamazione; contemporaneamente opera seria, intermezzo e opera buffa producono modelli differenti che torneranno a incontrarsi nella riforma gluckiana.</div>
         <div class="bibliography-list">
 
-          <div class="bib-entry"><div class="bib-cite">Powell, John S. <em>Music and Theatre in France, 1600–1680</em>. Oxford: Oxford University Press, 2000.<span class="bib-role">Molière, Lully, comédie-ballet e teatro musicale francese</span></div><button class="bib-open resource" data-title="John S. Powell · Music and Theatre in France 1600–1680" data-url="https://academic.oup.com/book/49261">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Powell, John S. <em>Music and Theatre in France, 1600–1680</em>. Oxford: Oxford University Press, 2000.<span class="bib-role">Molière, Lully, comédie-ballet e teatro musicale francese</span></div><a class="bib-open resource" data-title="John S. Powell · Music and Theatre in France 1600–1680" data-url="https://academic.oup.com/book/49261" href="https://academic.oup.com/book/49261" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Naudeix, Laura. “Opera in France c. 1640–c. 1710.” In <em>The Cambridge Companion to Seventeenth-Century Opera</em>, a cura di Jacqueline Waeber. Cambridge University Press, 2022.<span class="bib-role">Tradizione operistica francese</span></div><button class="bib-open resource" data-title="Laura Naudeix · Opera in France" data-url="https://www.cambridge.org/core/books/abs/cambridge-companion-to-seventeenthcentury-opera/opera-in-france-c-1640c-1710/6D57A0BC888EE8F4039FC6500966AB84">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Naudeix, Laura. “Opera in France c. 1640–c. 1710.” In <em>The Cambridge Companion to Seventeenth-Century Opera</em>, a cura di Jacqueline Waeber. Cambridge University Press, 2022.<span class="bib-role">Tradizione operistica francese</span></div><a class="bib-open resource" data-title="Laura Naudeix · Opera in France" data-url="https://www.cambridge.org/core/books/abs/cambridge-companion-to-seventeenthcentury-opera/opera-in-france-c-1640c-1710/6D57A0BC888EE8F4039FC6500966AB84" href="https://www.cambridge.org/core/books/abs/cambridge-companion-to-seventeenthcentury-opera/opera-in-france-c-1640c-1710/6D57A0BC888EE8F4039FC6500966AB84" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
           <div class="bib-entry"><div class="bib-cite">Cotticelli, Francesco, e Paologiovanni Maione. “Metastasio: The Dramaturgy of Eighteenth-Century Heroic Opera.” In <em>The Cambridge Companion to Eighteenth-Century Opera</em>, a cura di Anthony R. DelDonna e Pierpaolo Polzonetti, pp. 66–84. Cambridge: Cambridge University Press, 2009.<span class="bib-role">Opera seria e drammaturgia metastasiana</span></div></div>
 
-          <div class="bib-entry"><div class="bib-cite">Brown, Bruce Alan. <em>Gluck and the French Theatre in Vienna</em>. Oxford: Clarendon Press, 1991.<span class="bib-role">Gluck, danza, teatro francese e riforma viennese</span></div><button class="bib-open resource" data-title="Bruce Alan Brown · Gluck and the French Theatre in Vienna" data-url="https://www.cambridge.org/core/journals/cambridge-opera-journal/article/bruce-alan-brown-gluck-and-the-french-theatre-in-vienna-oxford-clarendon-press-1991-xvii-525-pp/B810F32597074F8F25C4CE097AD8CDE6">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Brown, Bruce Alan. <em>Gluck and the French Theatre in Vienna</em>. Oxford: Clarendon Press, 1991.<span class="bib-role">Gluck, danza, teatro francese e riforma viennese</span></div><a class="bib-open resource" data-title="Bruce Alan Brown · Gluck and the French Theatre in Vienna" data-url="https://www.cambridge.org/core/journals/cambridge-opera-journal/article/bruce-alan-brown-gluck-and-the-french-theatre-in-vienna-oxford-clarendon-press-1991-xvii-525-pp/B810F32597074F8F25C4CE097AD8CDE6" href="https://www.cambridge.org/core/journals/cambridge-opera-journal/article/bruce-alan-brown-gluck-and-the-french-theatre-in-vienna-oxford-clarendon-press-1991-xvii-525-pp/B810F32597074F8F25C4CE097AD8CDE6" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Oxford Bibliographies. “Christoph Willibald Ritter von Gluck.”<span class="bib-role">Bibliografia specialistica sulla riforma gluckiana</span></div><button class="bib-open resource" data-title="Oxford Bibliographies · Christoph Willibald Ritter von Gluck" data-url="https://academic.oup.com/reference/62400/reference-article-abstract/555391623?login=false">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Oxford Bibliographies. “Christoph Willibald Ritter von Gluck.”<span class="bib-role">Bibliografia specialistica sulla riforma gluckiana</span></div><a class="bib-open resource" data-title="Oxford Bibliographies · Christoph Willibald Ritter von Gluck" data-url="https://academic.oup.com/reference/62400/reference-article-abstract/555391623?login=false" href="https://academic.oup.com/reference/62400/reference-article-abstract/555391623?login=false" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Philharmonie de Paris. “La Querelle des Bouffons” e materiali sull’<em>opéra-comique</em>.<span class="bib-role">Contestualizzazione didattica · Francia e ricezione dell’opera buffa</span></div><button class="bib-open resource" data-title="Philharmonie de Paris · Querelle des Bouffons" data-url="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Philharmonie de Paris. “La Querelle des Bouffons” e materiali sull’<em>opéra-comique</em>.<span class="bib-role">Contestualizzazione didattica · Francia e ricezione dell’opera buffa</span></div><a class="bib-open resource" data-title="Philharmonie de Paris · Querelle des Bouffons" data-url="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons" href="https://philharmoniedeparis.fr/fr/activite/concert/5473-la-querelle-des-bouffons" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
         </div>
       </div>
@@ -1583,11 +1583,11 @@
         <div class="bib-group-note"><strong>Come usarli:</strong> questo gruppo permette di distinguere fra patronage femminile, professione musicale, divismo e personaggio teatrale. Non racconta una marcia lineare verso l’emancipazione, ma osserva come cambiano gli spazi nei quali una donna può finanziare, comporre, cantare o agire dentro la scena.</div>
         <div class="bibliography-list">
 
-          <div class="bib-entry"><div class="bib-cite">Cusick, Suzanne G. <em>Francesca Caccini at the Medici Court: Music and the Circulation of Power</em>. Chicago: University of Chicago Press, 2009.<span class="bib-role">Studio fondamentale su Francesca Caccini, corte e genere</span></div><button class="bib-open resource" data-title="Suzanne G. Cusick · Francesca Caccini at the Medici Court" data-url="https://press.uchicago.edu/ucp/books/book/chicago/F/bo5806979.html">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Cusick, Suzanne G. <em>Francesca Caccini at the Medici Court: Music and the Circulation of Power</em>. Chicago: University of Chicago Press, 2009.<span class="bib-role">Studio fondamentale su Francesca Caccini, corte e genere</span></div><a class="bib-open resource" data-title="Suzanne G. Cusick · Francesca Caccini at the Medici Court" data-url="https://press.uchicago.edu/ucp/books/book/chicago/F/bo5806979.html" href="https://press.uchicago.edu/ucp/books/book/chicago/F/bo5806979.html" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Glixon, Beth L., e Jonathan E. Glixon. <em>Inventing the Business of Opera</em>. Oxford University Press, 2006.<span class="bib-role">Cantanti, contratti, carriere e sistema teatrale veneziano</span></div><button class="bib-open resource" data-title="Glixon / Glixon · Inventing the Business of Opera" data-url="https://academic.oup.com/book/32749">Scheda</button></div>
+          <div class="bib-entry"><div class="bib-cite">Glixon, Beth L., e Jonathan E. Glixon. <em>Inventing the Business of Opera</em>. Oxford University Press, 2006.<span class="bib-role">Cantanti, contratti, carriere e sistema teatrale veneziano</span></div><a class="bib-open resource" data-title="Glixon / Glixon · Inventing the Business of Opera" data-url="https://academic.oup.com/book/32749" href="https://academic.oup.com/book/32749" target="_blank" rel="noopener noreferrer">Scheda</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Treccani. “Francesca Caccini.” <em>Dizionario Biografico degli Italiani</em>.<span class="bib-role">Repertorio biografico e cronologico</span></div><button class="bib-open resource" data-title="Treccani · Francesca Caccini" data-url="https://www.treccani.it/enciclopedia/francesca-caccini_%28Dizionario-Biografico%29/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Treccani. “Francesca Caccini.” <em>Dizionario Biografico degli Italiani</em>.<span class="bib-role">Repertorio biografico e cronologico</span></div><a class="bib-open resource" data-title="Treccani · Francesca Caccini" data-url="https://www.treccani.it/enciclopedia/francesca-caccini_%28Dizionario-Biografico%29/" href="https://www.treccani.it/enciclopedia/francesca-caccini_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
         </div>
       </div>
@@ -1597,17 +1597,17 @@
         <div class="bib-group-note"><strong>Come usarli:</strong> qui il teatro viene studiato come luogo di lavoro materiale. Le fonti seicentesche mostrano un mondo fatto di tela, legno, funi, carrucole, candele e forza umana; le istituzioni teatrali contemporanee permettono di vedere quanto di quell’artigianato sopravviva ancora oggi accanto a motori, elettronica e automazione.</div>
         <div class="bibliography-list">
 
-          <div class="bib-entry"><div class="bib-cite">Sabbattini, Nicola. <em>Pratica di fabricar scene e machine ne’ teatri</em>. 1637–1638.<span class="bib-role">Fonte tecnica primaria · mutazioni sceniche e macchine</span></div><button class="bib-open resource" data-title="Sabbattini · Pratica di fabricar scene e machine ne’ teatri" data-url="https://archive.org/details/praticadifabrica00sabb">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Sabbattini, Nicola. <em>Pratica di fabricar scene e machine ne’ teatri</em>. 1637–1638.<span class="bib-role">Fonte tecnica primaria · mutazioni sceniche e macchine</span></div><a class="bib-open resource" data-title="Sabbattini · Pratica di fabricar scene e machine ne’ teatri" data-url="https://archive.org/details/praticadifabrica00sabb" href="https://archive.org/details/praticadifabrica00sabb" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Victoria and Albert Museum. “Performance and the Baroque.”<span class="bib-role">Scenografia, costumi, macchine, luce e spettacolo barocco</span></div><button class="bib-open resource" data-title="V&A · Performance and the Baroque" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Victoria and Albert Museum. “Performance and the Baroque.”<span class="bib-role">Scenografia, costumi, macchine, luce e spettacolo barocco</span></div><a class="bib-open resource" data-title="V&A · Performance and the Baroque" data-url="https://www.vam.ac.uk/articles/performance-and-the-baroque" href="https://www.vam.ac.uk/articles/performance-and-the-baroque" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Sorabella, Jean. “The Opera.” <em>Heilbrunn Timeline of Art History</em>. The Metropolitan Museum of Art, 2004.<span class="bib-role">Opera come integrazione di musica, teatro, scena e costume</span></div><button class="bib-open resource" data-title="The Metropolitan Museum of Art · The Opera" data-url="https://www.metmuseum.org/it/essays/the-opera">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Sorabella, Jean. “The Opera.” <em>Heilbrunn Timeline of Art History</em>. The Metropolitan Museum of Art, 2004.<span class="bib-role">Opera come integrazione di musica, teatro, scena e costume</span></div><a class="bib-open resource" data-title="The Metropolitan Museum of Art · The Opera" data-url="https://www.metmuseum.org/it/essays/the-opera" href="https://www.metmuseum.org/it/essays/the-opera" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Glixon, Beth L. “Scenery and Machines.” In <em>Inventing the Business of Opera</em>. Oxford University Press, 2006, pp. 227–276.<span class="bib-role">Studio specialistico sulla produzione scenica veneziana</span></div><button class="bib-open resource" data-title="Beth L. Glixon · Scenery and Machines" data-url="https://academic.oup.com/book/32749/chapter-abstract/273098343">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Glixon, Beth L. “Scenery and Machines.” In <em>Inventing the Business of Opera</em>. Oxford University Press, 2006, pp. 227–276.<span class="bib-role">Studio specialistico sulla produzione scenica veneziana</span></div><a class="bib-open resource" data-title="Beth L. Glixon · Scenery and Machines" data-url="https://academic.oup.com/book/32749/chapter-abstract/273098343" href="https://academic.oup.com/book/32749/chapter-abstract/273098343" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Teatro alla Scala. “I Laboratori Ansaldo.”<span class="bib-role">Mestieri contemporanei: scene, falegnameria, sartoria, montaggio</span></div><button class="bib-open resource" data-title="Teatro alla Scala · I Laboratori Ansaldo" data-url="https://www.teatroallascala.org/it/visita/i-laboratori.html">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Teatro alla Scala. “I Laboratori Ansaldo.”<span class="bib-role">Mestieri contemporanei: scene, falegnameria, sartoria, montaggio</span></div><a class="bib-open resource" data-title="Teatro alla Scala · I Laboratori Ansaldo" data-url="https://www.teatroallascala.org/it/visita/i-laboratori.html" href="https://www.teatroallascala.org/it/visita/i-laboratori.html" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Teatro dell’Opera di Roma. “Laboratori scenografia e costumi.”<span class="bib-role">Produzione teatrale contemporanea e continuità artigianale</span></div><button class="bib-open resource" data-title="Opera di Roma · Laboratori scenografia e costumi" data-url="https://www.operaroma.it/il-teatro/laboratori/laboratori-scenografia-e-costumi/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Teatro dell’Opera di Roma. “Laboratori scenografia e costumi.”<span class="bib-role">Produzione teatrale contemporanea e continuità artigianale</span></div><a class="bib-open resource" data-title="Opera di Roma · Laboratori scenografia e costumi" data-url="https://www.operaroma.it/il-teatro/laboratori/laboratori-scenografia-e-costumi/" href="https://www.operaroma.it/il-teatro/laboratori/laboratori-scenografia-e-costumi/" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
         </div>
       </div>
@@ -1617,17 +1617,17 @@
         <div class="bib-group-note"><strong>Come usarli:</strong> IMSLP, Wikisource, biblioteche, musei e archivi digitali servono soprattutto per raggiungere fonti, facsimili, immagini e registrazioni. I video della Videoteca sono selezionati per la loro utilità didattica ed esecutiva, ma una registrazione moderna resta sempre un’interpretazione del passato, non il passato stesso.</div>
         <div class="bibliography-list">
 
-          <div class="bib-entry"><div class="bib-cite">IMSLP / Petrucci Music Library. Partiture e facsimili delle opere citate nel percorso.<span class="bib-role">Biblioteca musicale digitale</span></div><button class="bib-open resource" data-title="IMSLP · Petrucci Music Library" data-url="https://imslp.org/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">IMSLP / Petrucci Music Library. Partiture e facsimili delle opere citate nel percorso.<span class="bib-role">Biblioteca musicale digitale</span></div><a class="bib-open resource" data-title="IMSLP · Petrucci Music Library" data-url="https://imslp.org/" href="https://imslp.org/" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Wikisource. Testi di Metastasio, Goldoni e altre fonti letterarie in pubblico dominio.<span class="bib-role">Biblioteca testuale digitale</span></div><button class="bib-open resource" data-title="Wikisource Italia" data-url="https://it.wikisource.org/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Wikisource. Testi di Metastasio, Goldoni e altre fonti letterarie in pubblico dominio.<span class="bib-role">Biblioteca testuale digitale</span></div><a class="bib-open resource" data-title="Wikisource Italia" data-url="https://it.wikisource.org/" href="https://it.wikisource.org/" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Wikimedia Commons. Ritratti, frontespizi, scenografie, teatri e materiali iconografici utilizzati nella pagina.<span class="bib-role">Iconografia storica e pubblico dominio</span></div><button class="bib-open resource" data-title="Wikimedia Commons" data-url="https://commons.wikimedia.org/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Wikimedia Commons. Ritratti, frontespizi, scenografie, teatri e materiali iconografici utilizzati nella pagina.<span class="bib-role">Iconografia storica e pubblico dominio</span></div><a class="bib-open resource" data-title="Wikimedia Commons" data-url="https://commons.wikimedia.org/" href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
-          <div class="bib-entry"><div class="bib-cite">Treccani. <em>Dizionario Biografico degli Italiani</em> e voci enciclopediche dedicate a Rinuccini, Marcello, Goldoni e altri protagonisti.<span class="bib-role">Controllo biografico e cronologico</span></div><button class="bib-open resource" data-title="Treccani · Dizionario Biografico degli Italiani" data-url="https://www.treccani.it/biografico/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Treccani. <em>Dizionario Biografico degli Italiani</em> e voci enciclopediche dedicate a Rinuccini, Marcello, Goldoni e altri protagonisti.<span class="bib-role">Controllo biografico e cronologico</span></div><a class="bib-open resource" data-title="Treccani · Dizionario Biografico degli Italiani" data-url="https://www.treccani.it/biografico/" href="https://www.treccani.it/biografico/" target="_blank" rel="noopener noreferrer">Apri</a></div>
 
           <div class="bib-entry"><div class="bib-cite">Bibliothèque nationale de France, Philharmonie de Paris, Victoria and Albert Museum, Metropolitan Museum of Art e collezioni teatrali citate lungo il percorso.<span class="bib-role">Musei, istituzioni e collezioni documentarie</span></div></div>
 
-          <div class="bib-entry"><div class="bib-cite">YouTube. Esecuzioni e playlist selezionate nella Videoteca: Peri, Caccini, Monteverdi, Francesca Caccini e Pergolesi.<span class="bib-role">Audiovisivi · interpretazioni moderne</span></div><button class="bib-open resource" data-title="Videoteca del percorso" data-url="https://skenderale.github.io/github-pages/melodramma/#videoteca">Vai alla Videoteca</button></div>
+          <div class="bib-entry"><div class="bib-cite">YouTube. Esecuzioni e playlist selezionate nella Videoteca: Peri, Caccini, Monteverdi, Francesca Caccini e Pergolesi.<span class="bib-role">Audiovisivi · interpretazioni moderne</span></div><a class="bib-open resource" data-title="Videoteca del percorso" data-url="https://skenderale.github.io/github-pages/melodramma/#videoteca" href="https://skenderale.github.io/github-pages/melodramma/#videoteca" target="_blank" rel="noopener noreferrer">Vai alla Videoteca</a></div>
 
         </div>
       </div>
@@ -1990,8 +1990,10 @@
     }
   }));
 
-    document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
-    const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
+    document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    const u=el.dataset.url || el.getAttribute('href'),t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
     if(!canEmbedResource(u,kind)){
       showModal(t, '', u, true);
       return;
@@ -2000,7 +2002,9 @@
     showModal(t, frame, u);
   }));
 
-  document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{
+  document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopPropagation();
     const id=el.dataset.video,t=el.dataset.title || 'Video';
     const start=parseInt(el.dataset.start||'0',10) || 0;
     const u=`https://www.youtube.com/watch?v=${id}${start ? '&t='+start+'s' : ''}`;
@@ -2008,15 +2012,19 @@
     showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
   }));
 
-  document.querySelectorAll('.playlist-video').forEach(el=>el.addEventListener('click',()=>{
+  document.querySelectorAll('.playlist-video').forEach(el=>el.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopPropagation();
     const list=el.dataset.playlist,t=el.dataset.title || 'Playlist';
     const u=`https://www.youtube.com/playlist?list=${list}`;
     const embed=`https://www.youtube-nocookie.com/embed/videoseries?list=${list}&rel=0`;
     showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
   }));
 
-  document.querySelectorAll('.external-video').forEach(el=>el.addEventListener('click',()=>{
-    const u=el.dataset.url,t=el.dataset.title || 'Video';
+  document.querySelectorAll('.external-video').forEach(el=>el.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    const u=el.dataset.url || el.getAttribute('href'),t=el.dataset.title || 'Video';
     showModal(t,`<div class="audio-wrap"><div><h3 style="margin-top:0">${t}</h3><p style="font-family:var(--sans);font-size:1rem;line-height:1.6">Questo collegamento usa un link condiviso Google che non espone l’ID YouTube necessario per l’incorporamento. Apri qui la versione scelta senza sostituirla con un’altra esecuzione.</p><button class="open-btn" type="button" onclick="window.open('${u}','_blank','noopener,noreferrer')">Apri il video originale ↗</button></div></div>`,u);
   }));
 
@@ -2041,6 +2049,7 @@
     const href=a.getAttribute('href')||'';
     if(href.startsWith('#')) return;
     if(a.classList.contains('learning-check-button')) return;
+    if(a.matches('.resource,.video,.playlist-video,.external-video')) return;
     if(/^https?:/i.test(href)){
       e.preventDefault();
       const t=a.textContent.trim() || 'Fonte';
