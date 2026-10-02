@@ -52,22 +52,38 @@ const QUESTION_GROUPS = Object.freeze([
 
 /**
  * ROUTER DELLA WEB APP.
- * Senza parametro continua ad aprire ESATTAMENTE il quiz del Risorgimento.
- * Con ?test=rinascimento apre Rinascimento.html.
+ *
+ * ?test=risorgimento  -> Risorgimento.html
+ * ?test=rinascimento -> Rinascimento.html
+ *
+ * Per ora, senza parametro, apre ancora Risorgimento.html per compatibilità.
+ * Quando verrà creata la Home della Web App, il caso senza parametro
+ * potrà essere instradato a Index.html.
  */
 function doGet(e) {
   const test = String(
     e && e.parameter && e.parameter.test ? e.parameter.test : ''
   ).trim().toLowerCase();
 
-  const isRinascimento =
-    test === 'rinascimento' ||
-    test === 'rinascimento-01';
+  let fileName;
+  let title;
 
-  const fileName = isRinascimento ? 'Rinascimento' : 'Index';
-  const title = isRinascimento
-    ? 'Missione Rinascimento · Verifica'
-    : 'La prova dell’officina · Verifica';
+  if (test === 'rinascimento' || test === 'rinascimento-01') {
+    fileName = 'Rinascimento';
+    title = 'Missione Rinascimento · Verifica';
+
+  } else if (
+    test === 'risorgimento' ||
+    test === 'inno-risorgimento-01' ||
+    test === ''
+  ) {
+    fileName = 'Risorgimento';
+    title = 'La prova dell’officina · Verifica';
+
+  } else {
+    fileName = 'Risorgimento';
+    title = 'La prova dell’officina · Verifica';
+  }
 
   return HtmlService.createHtmlOutputFromFile(fileName)
     .setTitle(title)
@@ -76,7 +92,7 @@ function doGet(e) {
 
 /**
  * Dati iniziali RISORGIMENTO.
- * Questa funzione è lasciata con lo STESSO nome usato da Index.html.
+ * Questa funzione mantiene lo STESSO nome usato da Risorgimento.html.
  */
 function getBootstrapData() {
   return getBootstrapDataFor_(CONFIG);
