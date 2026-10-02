@@ -297,8 +297,22 @@
   .route-links .source-card span{color:#4b433b !important}
   .route-links .source-card:hover{background:#eadbc3 !important;border-color:#b99867 !important;transform:translateY(-2px)}
   @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:1.6rem;align-items:start}
+    .hero-card{width:100%;max-width:560px}
     .ratio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .term-grid,.compare-band,.route-links{grid-template-columns:1fr}
+  }
+  @media(max-width:580px){
+    .masthead{min-height:auto;padding:4.6rem 1rem 2.2rem}
+    .masthead::before{background-position:center 28% !important}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;width:100%}
+    .hero>div{min-width:0}
+    .kicker{font-size:.67rem;letter-spacing:.15em;margin-bottom:.75rem}
+    h1{font-size:clamp(2.75rem,14vw,3.45rem);line-height:.94;letter-spacing:-.04em;overflow-wrap:normal;word-break:normal}
+    .dek{font-size:1.06rem;line-height:1.42;max-width:none;margin-bottom:0}
+    .hero-card{position:relative;width:100%;max-width:none;box-sizing:border-box;padding:1.05rem 1.1rem;margin:0}
+    .hero-card small{font-size:.68rem;letter-spacing:.1em}
+    .hero-card p{font-size:.94rem;line-height:1.5;margin-top:.5rem}
   }
 </style>
 </head>
