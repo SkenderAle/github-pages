@@ -174,12 +174,16 @@ function scoreBucketQuestion(q){
   return max*correct/chips.length;
 }
 function scoreQ3(q){
-  var slots=Array.prototype.slice.call(q.querySelectorAll('.slot')), s=0;
-  if(slots[0].querySelector('.chip') && slots[0].querySelector('.chip').getAttribute('data-id')==='righi') s++;
-  if(slots[1].querySelector('.chip') && slots[1].querySelector('.chip').getAttribute('data-id')==='note') s++;
-  var mc=q.querySelector('input[name=q3mc]:checked'); if(mc && mc.value==='b') s++;
-  Array.prototype.slice.call(q.querySelectorAll('.slot .chip')).forEach(function(ch,i){var ok=ch.getAttribute('data-id')===orderCorrect[i];ch.classList.toggle('correct',ok);ch.classList.toggle('wrong',!ok)});
-  return s;
+  var slots=Array.prototype.slice.call(q.querySelectorAll('.slot')), correctOrder=0;
+  slots.forEach(function(slot,i){
+    var ch=slot.querySelector('.chip');
+    var ok=!!ch && ch.getAttribute('data-id')===orderCorrect[i];
+    if(ch){ch.classList.toggle('correct',ok);ch.classList.toggle('wrong',!ok)}
+    if(ok) correctOrder++;
+  });
+  var orderPoints=(correctOrder/3)*2;
+  var mc=q.querySelector('input[name=q3mc]:checked');
+  return orderPoints + (mc && mc.value==='b' ? 1 : 0);
 }
 function scoreQ9(q){var x=q.querySelector('input[name=q9]:checked');return x&&x.value==='b'?1:0}
 function evaluate(){
@@ -214,7 +218,7 @@ function saveOfficial(p){
     google.script.run.withSuccessHandler(function(r){
       if(r&&r.already){status.textContent='Il primo tentativo ufficiale era già stato registrato. Questo resta un tentativo di allenamento.'}
       else{status.textContent='Risultato registrato nel foglio della classe.'}
-    }).withFailureHandler(function(e){status.textContent='Errore di registrazione: '+(e&&e.message?e.message:e)}).registraRisultato(p);
+    }).withFailureHandler(function(e){status.textContent='Errore di registrazione: '+(e&&e.message?e.message:e)}).registraRisultatoRinascimento(p);
   }else{
     document.getElementById('backendBadge').textContent='ANTEPRIMA GITHUB';
     status.textContent='Anteprima funzionante: il punteggio non viene inviato a Google finché questa stessa pagina non è pubblicata come Web App Apps Script.';
