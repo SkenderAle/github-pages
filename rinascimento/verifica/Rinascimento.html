@@ -32,6 +32,7 @@ footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(-
 <header><div class="hero"><div class="eyebrow">Verifica degli apprendimenti · 30 punti</div><h1>Missione Rinascimento</h1><p>Quanto del seminato è rimasto? Trascina, abbina, ordina e scegli. Il primo tentativo è la verifica. Dopo la consegna potrai vedere gli errori e riprovare per allenarti.</p></div></header>
 <div class="topbar"><div class="topbar-inner"><div class="progress"><span id="bar"></span></div><div class="counter" id="counter">0/9 completate</div></div></div>
 <main>
+<div class="notice" id="accountStatus"><strong>Verifica account scolastico…</strong></div>
 <div class="notice"><strong>Come si usa.</strong> Su computer puoi trascinare le tessere. Su telefono puoi anche toccare una tessera e poi toccare il riquadro in cui vuoi metterla. Puoi spostarla finché non consegni.</div>
 
 <div class="identity" id="identity">
@@ -119,6 +120,7 @@ footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(-
 (function(){
 var TEST_ID='rinascimento-01', VERSION='1.0', MAX=30;
 var startedAt=new Date(), submitted=false, selected=null, dragging=null;
+var bootstrapData={loaded:false,isSchoolUser:false,isTeacherPreview:false,email:'',rosterFound:false};
 var orderCorrect=['righi','note','testo'];
 
 function allChips(){return Array.prototype.slice.call(document.querySelectorAll('.chip'))}
@@ -195,10 +197,63 @@ function evaluate(){
   total=Math.round(total*100)/100; return {scores:scores,total:total};
 }
 function identityValid(){
-  var schoolMode=typeof google!=='undefined' && google.script && google.script.run;
-  if(schoolMode) return true;
-  return document.getElementById('nome').value.trim() && document.getElementById('cognome').value.trim() && document.getElementById('classe').value;
+  if(!bootstrapData.loaded) return false;
+  if(bootstrapData.isSchoolUser) return true;
+  return document.getElementById('nome').value.trim() &&
+         document.getElementById('cognome').value.trim() &&
+         document.getElementById('email').value.trim();
 }
+function loadBootstrapRinascimento(){
+  var box=document.getElementById('accountStatus');
+
+  if(typeof google==='undefined' || !google.script || !google.script.run){
+    bootstrapData.loaded=true;
+    box.innerHTML='<strong>Modalità prova libera.</strong> Compila nome, cognome ed email.';
+    return;
+  }
+
+  box.innerHTML='<strong>Verifica account scolastico…</strong>';
+
+  google.script.run
+    .withSuccessHandler(function(data){
+      data=data||{};
+      bootstrapData={
+        loaded:true,
+        isSchoolUser:!!data.isSchoolUser,
+        isTeacherPreview:!!data.isTeacherPreview,
+        email:data.email||'',
+        rosterFound:!!data.rosterFound
+      };
+
+      if(data.isSchoolUser){
+        if(data.email){
+          var em=document.getElementById('email');
+          em.value=data.email;
+          em.readOnly=true;
+        }
+        if(data.name) document.getElementById('nome').value=data.name;
+        if(data.surname) document.getElementById('cognome').value=data.surname;
+        if(data.className) document.getElementById('classe').value=data.className;
+
+        if(data.isTeacherPreview){
+          box.innerHTML='<strong>Account scolastico riconosciuto · modalità prova docente.</strong>';
+        }else if(data.rosterFound){
+          box.innerHTML='<strong>Account scolastico riconosciuto.</strong> Identità trovata in Anagrafica.';
+        }else{
+          box.innerHTML='<strong>Account scolastico riconosciuto.</strong> L’anagrafica non è ancora compilata, ma puoi svolgere la prova.';
+        }
+      }else{
+        box.innerHTML='<strong>Prova libera.</strong> Non è stato riconosciuto un account scolastico: compila nome, cognome ed email.';
+      }
+    })
+    .withFailureHandler(function(err){
+      bootstrapData.loaded=true;
+      bootstrapData.isSchoolUser=false;
+      box.innerHTML='<strong>Non riesco a verificare l’account.</strong> Puoi comunque usare la modalità prova libera compilando nome, cognome ed email.';
+    })
+    .getBootstrapDataRinascimento();
+}
+
 function payload(ev){
   var now=new Date();
   return {testId:TEST_ID,version:VERSION,max:MAX,score:ev.total,percent:Math.round(ev.total/MAX*1000)/10,duration:Math.max(1,Math.round((now-startedAt)/1000)),startedAt:startedAt.toISOString(),submittedAt:now.toISOString(),scores:ev.scores,nome:document.getElementById('nome').value.trim(),cognome:document.getElementById('cognome').value.trim(),classe:document.getElementById('classe').value,email:document.getElementById('email').value.trim()};
@@ -226,7 +281,8 @@ function saveOfficial(p){
   }
 }
 document.getElementById('submit').addEventListener('click',function(){
-  if(!identityValid()){alert('Compila almeno nome, cognome e classe.');return}
+  if(!bootstrapData.loaded){alert('Attendi un momento: sto verificando l’account scolastico.');return}
+  if(!identityValid()){alert('Per la prova libera compila nome, cognome ed email.');return}
   var missing=Array.prototype.slice.call(document.querySelectorAll('.q')).filter(function(q){return !qComplete(q)});
   if(missing.length){if(!confirm('Hai lasciato '+missing.length+' prova/e incomplete. Vuoi consegnare lo stesso?'))return}
   if(!confirm('Sei davvero pronto? La prima consegna è quella ufficiale.'))return;
@@ -236,6 +292,7 @@ document.getElementById('practice').addEventListener('click',function(){
   submitted=false; document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('correct','wrong')});document.getElementById('result').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});
 });
 document.getElementById('reset').addEventListener('click',function(){if(confirm('Vuoi davvero ricominciare da capo?'))location.reload()});
+loadBootstrapRinascimento();
 updateProgress();
 })();
 </script>
