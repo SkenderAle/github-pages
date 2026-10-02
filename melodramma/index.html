@@ -246,6 +246,11 @@
   .modal-close{border:0;background:#2b251f;color:#fff;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1.1rem}
   .modal-body{background:#111;min-height:0;position:relative;overflow:auto;display:grid;place-items:center}
   .modal-body iframe,.modal-body object{border:0;width:100%;height:100%;background:#fff}
+  .modal.explainer-mode .modal-panel{background:#f7f2e8}
+  .modal.explainer-mode .modal-body{background:#f7f2e8;color:#2b251f;display:block;overflow-y:auto;overflow-x:hidden;place-items:initial}
+  .modal.explainer-mode .modal-foot{background:#eee4d3}
+  .modal.explainer-mode .explainer-wrap{display:block;width:100%;min-height:100%;background:#f7f2e8!important;color:#2b251f!important}
+  .modal.explainer-mode .explainer-wrap *{visibility:visible}
   .explainer-wrap{width:100%;min-height:100%;background:#f7f2e8;color:#2b251f;padding:clamp(1.4rem,4vw,3.2rem);align-self:stretch}
   .explainer-inner{max-width:920px;margin:0 auto}
   .explainer-kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:900;margin-bottom:.6rem}
@@ -1096,6 +1101,7 @@
     currentUrl = url;
     urlBox.textContent = url || 'Contenuto incorporato nella pagina';
     openBtn.disabled = !url;
+    modal.classList.remove('explainer-mode');
     modal.classList.toggle('compact', compact);
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
@@ -1103,7 +1109,7 @@
     closeBtn.focus();
   }
   function closeModal(){
-    modal.classList.remove('open','compact');
+    modal.classList.remove('open','compact','explainer-mode');
     modal.setAttribute('aria-hidden','true');
     body.innerHTML='';
     document.body.style.overflow='';
@@ -1257,7 +1263,11 @@
     const key=el.dataset.explainer;
     const t=el.dataset.title || 'Approfondimento';
     const content=explainerContent[key];
-    if(content) showModal(t,content,'');
+    if(content){
+      showModal(t,content,'');
+      modal.classList.add('explainer-mode');
+      body.scrollTop=0;
+    }
   }));
 
     document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
