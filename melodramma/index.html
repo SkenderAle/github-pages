@@ -1134,7 +1134,10 @@
         <h3>Una compositrice professionista dentro la macchina medicea</h3>
         <p>Francesca Caccini non è semplicemente “la figlia di Giulio”. È cantante, strumentista, insegnante e compositrice stipendiata dalla corte medicea, cioè una professionista capace di occupare dall’interno il nuovo sistema dello spettacolo musicale. <em>La liberazione di Ruggiero dall’isola d’Alcina</em>, rappresentata nel 1625, consente inoltre di vedere una donna non soltanto come interprete o destinataria della festa di corte, ma come autrice di un grande spettacolo musicale.</p>
         <button class="source-card resource" style="width:100%;margin-top:1rem" data-title="Francesca Caccini · La liberazione di Ruggiero · IMSLP" data-url="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29"><span class="src">1625 · IMSLP</span><b>Apri la partitura</b><span>Edizione/scansione della <em>Liberazione di Ruggiero</em>: quattro scene, voci, archi e continuo.</span></button>
-      </div>
+              <button class="source-card playlist-video" style="width:100%;margin-top:.8rem" data-playlist="PLbIIjBacefZepfxXyv85YOUzHz6wTdf5-" data-title="Francesca Caccini · La liberazione di Ruggiero dall’isola d’Alcina · playlist completa">
+          <span class="src">Video · playlist completa</span><b>Guarda <em>La liberazione di Ruggiero</em></b><span>La playlist completa dello spettacolo, da seguire direttamente nel player interno del sito.</span>
+        </button>
+</div>
       <aside class="student-box">
         <div class="student-label">✦ Per iniziare</div>
         <h3>Chi ha il potere di far esistere uno spettacolo?</h3>
@@ -1172,6 +1175,10 @@
           <button class="media-card video" data-video="ZhbRrpUEfcg" data-title="Giulio Caccini · Euridice · parte II">
             <img src="https://img.youtube.com/vi/ZhbRrpUEfcg/hqdefault.jpg" alt="Euridice di Giulio Caccini, seconda parte">
             <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Caccini · parte II</span><h4><em>Euridice</em></h4></span>
+          </button>
+          <button class="media-card playlist-video" data-playlist="PLbIIjBacefZepfxXyv85YOUzHz6wTdf5-" data-title="Francesca Caccini · La liberazione di Ruggiero dall’isola d’Alcina · playlist completa">
+            <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/F._Caccini_-_La_liberazione_di_Ruggiero_-_scene_2.jpg" alt="Scena dalla Liberazione di Ruggiero dall'isola d'Alcina di Francesca Caccini">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Francesca Caccini · playlist</span><h4><em>La liberazione di Ruggiero</em></h4></span>
           </button>
 </div>
       </div>
@@ -1516,6 +1523,13 @@
     const start=parseInt(el.dataset.start||'0',10) || 0;
     const u=`https://www.youtube.com/watch?v=${id}${start ? '&t='+start+'s' : ''}`;
     const embed=`https://www.youtube-nocookie.com/embed/${id}?rel=0${start ? '&start='+start : ''}`;
+    showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
+  }));
+
+  document.querySelectorAll('.playlist-video').forEach(el=>el.addEventListener('click',()=>{
+    const list=el.dataset.playlist,t=el.dataset.title || 'Playlist';
+    const u=`https://www.youtube.com/playlist?list=${list}`;
+    const embed=`https://www.youtube-nocookie.com/embed/videoseries?list=${list}&rel=0`;
     showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
   }));
 
