@@ -64,6 +64,11 @@
     }else if(v.type==="proportions"){
       box.innerHTML='<div class="viz-proportions">'+v.stages.map((s,i)=>`
         <div class="viz-proportion" data-viz-stage="${i}" style="flex:${s.weight||1}"><b>${s.label}</b><small>${s.weight||""}</small></div>`).join("")+'</div>';
+    }else if(v.type==="texture"){
+      box.innerHTML='<div class="viz-texture">'+v.lanes.map((l,i)=>`
+        <div class="viz-texture-lane" data-viz-lane="${i}"><b>${l.label}</b><small>${l.detail||""}</small><span></span></div>`).join("")+'</div>';
+    }else if(v.type==="growth"){
+      box.innerHTML='<div class="viz-growth"><div class="viz-growth-dots" data-growth-dots></div><b data-growth-label></b></div>';
     }
   }
 
@@ -80,6 +85,18 @@
         const el=root.querySelector('[data-viz-lane="'+i+'"]');
         if(el)el.classList.toggle("active",active);
       });
+    }else if(v.type==="texture"){
+      v.lanes.forEach((lane,i)=>{
+        const active=t>=lane.from&&t<lane.to;
+        const el=root.querySelector('[data-viz-lane="'+i+'"]');
+        if(el)el.classList.toggle("active",active);
+      });
+    }else if(v.type==="growth"){
+      const stage=v.stages.find(s=>t>=s.from&&t<s.to)||v.stages[0];
+      const dots=root.querySelector("[data-growth-dots]");
+      const label=root.querySelector("[data-growth-label]");
+      if(dots)dots.innerHTML=Array.from({length:stage.count||1},()=>"<i></i>").join("");
+      if(label)label.textContent=stage.label||"";
     }
   }
 
