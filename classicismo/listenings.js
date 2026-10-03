@@ -105,11 +105,22 @@ window.CLASSICISMO_LISTENINGS = {
 
   "mozart-k465": {
     composer:"Wolfgang Amadeus Mozart",
-    title:"Quartetto K.465 · Introduzione",
+    title:"Quartetto K.465 · Introduzione e ingresso dell’Allegro",
     videoId:"kcfDxgfHs64",
-    purpose:"Ambiguità tonale e progressiva messa a fuoco del Do maggiore",
-    layers:["voci","tonalita","armonia"],
-    events:[]
+    purpose:"Quattro voci costruiscono un territorio armonicamente ambiguo prima che il Do maggiore diventi inequivocabile",
+    layers:["voci","tonalita"],
+    provisional:true,
+    scoreMap:[
+      {bars:"1–4",form:"Entrate successive",key:"centro tonale oscurato",note:"Violoncello, viola e violini entrano uno dopo l’altro; l’accordo percepito cambia continuamente sotto le note tenute."},
+      {bars:"5–12",form:"Espansione cromatica",key:"aree instabili",note:"Semitoni, ritardi e false piste impediscono alla tonica di funzionare subito come casa."},
+      {bars:"13–22",form:"Preparazione",key:"verso Do maggiore",note:"La tensione dell’Adagio prepara senza ancora banalizzare la chiarificazione successiva."},
+      {bars:"23 →",form:"Allegro",key:"Do maggiore",note:"La casa diventa improvvisamente leggibile; l’ambiguità precedente acquista senso per contrasto."}
+    ],
+    events:[
+      {from:6,to:28,layer:"voci",label:"LE VOCI ENTRANO UNA ALLA VOLTA"},
+      {from:6,to:92,layer:"tonalita",label:"DOV’È CASA? · centro tonale sfocato"},
+      {from:92,to:125,layer:"tonalita",label:"DO MAGGIORE · la casa si mette a fuoco"}
+    ]
   },
 
   "mozart-k498": {
@@ -156,20 +167,46 @@ window.CLASSICISMO_LISTENINGS = {
 
   "beethoven-5-34": {
     composer:"Ludwig van Beethoven",
-    title:"Sinfonia n.5 · passaggio III–IV",
+    title:"Sinfonia n.5 · raccordo III–IV",
     videoId:"dhI_qDV5LwI",
-    startSeconds:884,
-    purpose:"Dissoluzione del confine fra i movimenti",
-    layers:["ciclo"],
-    events:[]
+    startSeconds:1220,
+    purpose:"Il confine fra due movimenti si dissolve e il ciclo diventa processo continuo",
+    layers:["ciclo","tonalita"],
+    provisional:true,
+    scoreMap:[
+      {bars:"III mov., ripresa finale",form:"Svuotamento",key:"Do minore",note:"Lo Scherzo perde progressivamente peso e la conclusione attesa viene rinviata."},
+      {bars:"ultime battute del III",form:"Ponte",key:"dominante di Do",note:"Timpani e frammenti orchestrali mantengono il tempo in sospensione invece di chiudere."},
+      {bars:"IV mov., attacco",form:"Esplosione del Finale",key:"Do maggiore",note:"La nuova tonalità irrompe senza vera cesura, con un’orchestrazione ampliata."}
+    ],
+    events:[
+      {from:1220,to:1270,layer:"ciclo",label:"IL III MOVIMENTO SI SVUOTA · nessuna vera chiusura"},
+      {from:1270,to:1316,layer:"ciclo",label:"LA LINEA DI CONFINE SI DISSOLVE"},
+      {from:1270,to:1316,layer:"tonalita",label:"SOSPENSIONE · la dominante prepara il salto"},
+      {from:1316,to:1355,layer:"ciclo",label:"IV MOVIMENTO · il ciclo continua senza fermarsi"},
+      {from:1316,to:1355,layer:"tonalita",label:"DO MAGGIORE · luce improvvisa"}
+    ]
   },
 
   "beethoven-9-4": {
     composer:"Ludwig van Beethoven",
     title:"Sinfonia n.9 · IV movimento",
     videoId:"fx827bYPBNw",
-    purpose:"Dal tema strumentale della Gioia alla fraternità corale",
+    purpose:"Il tema della Gioia passa dalla nudità strumentale alla comunità vocale",
     layers:["orchestrazione","testo"],
-    events:[]
+    provisional:true,
+    scoreMap:[
+      {bars:"inizio del Finale",form:"Fanfara e recitativo strumentale",key:"Re minore / instabilità",note:"Violoncelli e contrabbassi respingono i richiami ai movimenti precedenti: il Finale sembra cercare il proprio materiale."},
+      {bars:"tema della Gioia",form:"Presentazione strumentale",key:"Re maggiore",note:"Il tema nasce nei registri gravi e viene ripreso da gruppi sempre più ampi dell’orchestra."},
+      {bars:"variazioni orchestrali",form:"Crescita della comunità sonora",key:"Re maggiore",note:"La melodia rimane riconoscibile mentre cambiano densità, registro e partecipazione."},
+      {bars:"ingresso del baritono",form:"Recitativo vocale",key:"nuova soglia",note:"La voce umana interrompe la sola strumentalità della sinfonia e introduce Schiller."},
+      {bars:"coro",form:"Ode alla gioia",key:"Re maggiore e sviluppi successivi",note:"Il tema che era stato dell’orchestra diventa parola condivisa."}
+    ],
+    events:[
+      {from:0,to:175,layer:"orchestrazione",label:"CERCA UN NUOVO INIZIO · recitativo strumentale"},
+      {from:175,to:355,layer:"orchestrazione",label:"IL TEMA NASCE · prima pochi strumenti, poi sempre di più"},
+      {from:355,to:410,layer:"orchestrazione",label:"LA COMUNITÀ SONORA SI ALLARGA"},
+      {from:410,to:465,layer:"testo",label:"ENTRA LA VOCE · «O Freunde…»"},
+      {from:465,to:620,layer:"testo",label:"FRATELLANZA · il tema diventa parola e coro"}
+    ]
   }
 };
