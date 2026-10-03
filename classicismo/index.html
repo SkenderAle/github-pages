@@ -71,6 +71,17 @@ p{font-size:1.08rem}
 .ear-grid b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.2rem}
 .study-summary{margin:1.3rem 0 2.2rem;padding:.85rem 1rem;border-left:4px solid var(--blue);background:#edf0ef}
 .study-summary b{font-family:var(--sans);font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--blue)}
+.genre-system{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1.4rem 0 2.2rem}
+.genre-card{border:1px solid var(--line);background:#f5eee2;padding:1rem 1.05rem}
+.genre-card h3{margin:.05rem 0 .45rem;font-size:1.28rem;color:#3e342b}
+.genre-card b{font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.genre-card p{margin:.35rem 0;font-size:.96rem}
+.genre-card .genre-line{font-family:var(--sans);font-size:.84rem;color:var(--muted);margin-top:.45rem}
+.genre-trajectory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:1rem 0 1.8rem}
+.genre-trajectory>div{background:#f3eadc;border-top:4px solid var(--gold);padding:.9rem}
+.genre-trajectory h4{margin:.05rem 0 .35rem;font-size:1.06rem}
+.genre-trajectory p{margin:.25rem 0;font-size:.9rem}
+@media(max-width:760px){.genre-system,.genre-trajectory{grid-template-columns:1fr}}
 .sonata-schema{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin:1.2rem 0 1.8rem}
 .sonata-schema div{border:1px solid var(--line);background:#f4ede2;padding:.8rem}
 .sonata-schema b{display:block;font-family:var(--sans);color:var(--red);margin-bottom:.25rem}
@@ -740,6 +751,19 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <section id="generi">
 <div class="section-title"><div class="eyebrow">Una lingua, corpi differenti</div><h2>Una grammatica, molti generi</h2></div>
 <p>La sonata è un genere, o meglio una famiglia di generi con una storia molto più antica del Classicismo; la forma-sonata è invece un principio di organizzazione capace di attraversare movimenti appartenenti a sonate, quartetti, sinfonie e concerti. Una stessa grammatica può quindi essere pronunciata da corpi musicali profondamente differenti.</p>
+<h3>Quattro famiglie da riconoscere</h3>
+<div class="genre-system">
+  <div class="genre-card"><b>Sonata</b><h3>Uno o due strumenti</h3><p>Nel Classicismo indica soprattutto un ciclo di movimenti per tastiera sola oppure per tastiera con un altro strumento. Non va confusa con la <em>forma-sonata</em>, che è invece un principio formale utilizzabile anche altrove.</p><div class="genre-line">Spesso: veloce · lento · finale veloce</div></div>
+  <div class="genre-card"><b>Concerto</b><h3>Solista e orchestra</h3><p>Il problema centrale è il rapporto fra individuo e gruppo. Nei primi movimenti il principio del ritornello orchestrale incontra la logica della forma-sonata, mentre la cadenza conserva uno spazio di invenzione solistica.</p><div class="genre-line">Tipico ciclo: veloce · lento · veloce</div></div>
+  <div class="genre-card"><b>Sinfonia</b><h3>L’orchestra come protagonista</h3><p>Il genere tende verso un ciclo orchestrale autonomo. Nel tardo Settecento diventa frequente la sequenza veloce · lento · minuetto · finale, pur con molte varianti ed eccezioni.</p><div class="genre-line">Nessun solista permanente · memoria del ciclo</div></div>
+  <div class="genre-card"><b>Musica da camera</b><h3>Una famiglia, non un solo organico</h3><p>Duo, trio, quartetto, quintetto e gruppi di fiati condividono l’esposizione individuale delle parti. Il quartetto d’archi ne diventa il laboratorio più prestigioso, ma non esaurisce la categoria.</p><div class="genre-line">Poche parti · responsabilità individuale · dialogo</div></div>
+</div>
+<div class="callout"><strong>La cosa da ricordare.</strong> Sonata, concerto, sinfonia e quartetto sono <em>generi</em>; esposizione, sviluppo e ripresa descrivono invece una <em>forma</em> che può comparire nel primo movimento di tutti questi generi.</div>
+
+<h3>La sonata come ciclo, non come schema</h3>
+<p>La Sonata K.545 di Mozart ci è servita per analizzare la forma-sonata, ma la sonata come genere è più ampia di quel primo movimento. Una sonata classica è normalmente un ciclo di movimenti contrastanti: un primo movimento energico e strutturalmente articolato, un movimento lento e un finale più rapido; in altri casi il ciclo può essere di due o quattro movimenti. La sua identità non dipende dunque da un singolo schema, ma dal modo in cui più movimenti costruiscono un percorso complessivo.</p>
+<p>Per questo è utile affiancare Mozart a Clementi: nella sonata per tastiera il fortepiano non è soltanto un mezzo neutro, ma il luogo nel quale frase, articolazione, dinamica e tecnica strumentale vengono messe direttamente alla prova.</p>
+
 <h3>Una genealogia per pensare</h3>
 <p>Se guardiamo alla musica strumentale barocca da sufficiente distanza, la sonata rappresenta uno dei grandi tronchi del nostro racconto: una o più voci strumentali sostenute dal basso continuo. Da questa organizzazione non “discendono” meccanicamente tutti i generi successivi, ma possiamo riconoscere parentele nei problemi che vengono continuamente riorganizzati: chi possiede la voce principale, chi sostiene, chi risponde, quanto grande è il gruppo e come le funzioni vengono distribuite.</p>
 <div class="mapline"><div class="mapnode">SONATA BAROCCA</div><div class="arrow">↗</div><div class="mapnode">CONCERTO SOLISTICO</div><div class="arrow">↘</div><div class="mapnode">CONCERTO GROSSO</div></div>
@@ -875,6 +899,13 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
   <div class="analysis-lab-grid"><div class="analysis-player"><div data-player></div></div><div class="analysis-live"><div class="analysis-layer" data-analysis-layer="tonalita"></div></div></div>
   <div class="analysis-score" data-score-map></div>
   </div>
+<h3>Tre generazioni, tre problemi</h3>
+<div class="genre-trajectory">
+<div><h4>Haydn · costruire il genere</h4><p><strong>op.20</strong>: contrappunto e autonomia delle parti.<br><strong>op.33</strong>: chiarezza, scherzo, ironia, aspettativa.<br><strong>op.76</strong>: sintesi tarda, ampiezza e concentrazione.</p></div>
+<div><h4>Mozart · rispondere a Haydn</h4><p>I sei quartetti dedicati a Haydn, composti fra 1782 e 1785, trasformano il dialogo con un modello in ricerca personale: cromatismo, densità, equilibrio e tensione convivono nello stesso ciclo.</p></div>
+<div><h4>Beethoven · portarlo oltre</h4><p><strong>op.18</strong>: dentro la tradizione classica.<br><strong>op.59</strong>: scala e conflitto si ampliano.<br><strong>op.131</strong>: continuità e libertà formale appartengono ormai a una fase ulteriore.</p></div>
+</div>
+
 <h3>Dall’op.20 all’op.77: Haydn riscrive continuamente il genere</h3>
 <p>Per capire Haydn quartettista bisogna guardare a una traiettoria, non a un singolo capolavoro. Nell’op.20 degli anni Settanta la scrittura acquista una nuova serietà contrappuntistica e una maggiore autonomia delle parti. Nell’op.33, pubblicata nel 1781, Haydn lavora invece con una chiarezza più tagliente, con lo scherzo, con l’ironia e con una capacità quasi teatrale di manipolare l’aspettativa. Nei quartetti op.76 e op.77, alla fine del secolo, queste esperienze confluiscono in una scrittura più ampia e concentrata, nella quale ogni voce può diventare strutturalmente decisiva.</p>
 <div class="mini-listens"><button class="mini video" data-video="nygG4DEhKN0" data-title="Haydn · Quartetti op.76 · Quatuor Mosaïques · strumenti storici">▶ Haydn op.76 · Quatuor Mosaïques</button></div>
@@ -927,8 +958,20 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <section id="lied">
 <div class="section-title"><div class="eyebrow">Una voce, una stanza, un testo</div><h2>Il Lied e la musica vocale da camera</h2></div>
 <p>Non tutta la musica vocale del Settecento appartiene al teatro o alla chiesa. Accanto all’opera, all’oratorio e alla cantata cresce una cultura domestica nella quale una voce e una tastiera possono bastare a costruire un piccolo mondo. Il Lied tedesco, le canzoni strofische e le raccolte destinate alla pratica privata mostrano un’altra faccia del Classicismo: meno monumentale, ma importantissima per il rapporto fra poesia, melodia e accompagnamento.</p>
+<h3>Che cosa rende un Lied un genere riconoscibile</h3>
+<div class="genre-system">
+<div class="genre-card"><b>Testo</b><h3>Una poesia breve</h3><p>Il punto di partenza non è un personaggio teatrale, ma una poesia destinata a essere concentrata in pochi minuti.</p></div>
+<div class="genre-card"><b>Organico</b><h3>Voce e tastiera</h3><p>La scala ridotta permette alla parola di restare intelligibile e alla tastiera di sostenere, commentare o anticipare il testo.</p></div>
+<div class="genre-card"><b>Forma</b><h3>Strofica o variata</h3><p>Una stessa musica può servire più strofe, oppure modificarsi quando il testo richiede un diverso peso espressivo.</p></div>
+<div class="genre-card"><b>Ambiente</b><h3>Casa, salotto, cerchia privata</h3><p>La vicinanza fra interprete e ascoltatore cambia il rapporto con la parola rispetto alla proiezione pubblica dell’opera.</p></div>
+</div>
 <p>In molta produzione settecentesca il pianoforte sostiene ancora la voce con relativa discrezione, ma il problema decisivo è già presente: <strong>come può la musica interpretare un testo senza trasformarlo in teatro?</strong> Haydn e Mozart scrivono Lieder e canzoni nelle quali frase musicale e frase poetica devono trovare un equilibrio diverso da quello dell’aria operistica. L’accompagnamento non rappresenta ancora sistematicamente il paesaggio interiore come avverrà in Schubert, ma comincia a partecipare sempre più attivamente alla caratterizzazione del testo.</p>
+<h3>Haydn, Mozart, Beethoven: tre gradini verso l’Ottocento</h3>
+<p>Haydn coltiva il Lied e, negli anni londinesi, le <em>English Canzonettas</em>, dove la scrittura domestica incontra un pubblico internazionale. Mozart mostra quanto una pagina breve possa diventare psicologicamente intensa in Lieder come <em>Abendempfindung</em> K.523. Beethoven, con pagine come <em>Adelaide</em>, porta ancora più avanti il rapporto fra arco melodico, parola e pianoforte, preparando un terreno che Schubert renderà centrale senza che per questo si debba cancellare la storia settecentesca del genere.</p>
+<div class="mapline"><div class="mapnode">HAYDN<br><small>canzonetta</small></div><div class="arrow">→</div><div class="mapnode">MOZART<br><small>Lied</small></div><div class="arrow">→</div><div class="mapnode">BEETHOVEN<br><small>espansione espressiva</small></div><div class="arrow">→</div><div class="mapnode">SCHUBERT<br><small>nuovo centro romantico</small></div></div>
+
 <p>Questa linea ci porta oltre il nostro confine cronologico. Nei primi decenni dell’Ottocento il Lied diventerà uno dei luoghi privilegiati della nuova sensibilità romantica. Qui ci interessa soprattutto riconoscere che anche nel Classicismo la musica vocale da camera offre uno spazio alternativo al grande sistema teatrale: una poesia, una voce, una tastiera e un ascoltatore vicino.</p>
+<div class="study-summary"><b>In breve</b><div>Il Lied classico è una forma vocale da camera per voce e tastiera, spesso strofica o variata, nella quale la poesia viene interpretata senza assumere necessariamente la dimensione teatrale dell’aria d’opera.</div></div>
 <div class="callout"><strong>Dal salotto al Lied romantico.</strong> Non c’è una frattura improvvisa: il nuovo rapporto fra parola e pianoforte nasce anche dentro pratiche domestiche settecentesche che il Romanticismo renderà centrali.</div>
 </section>
 
@@ -982,6 +1025,10 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <div class="mini-listens"><button class="mini video" data-video="oiijreda94w" data-title="G. B. Sammartini · sinfonie · Accademia d'Arcadia, strumenti storici">▶ Sammartini</button></div>
 <h3>Il principio concertante non scompare</h3>
 <p>Mentre la sinfonia autonoma acquista centralità, la possibilità che alcuni strumenti emergano dalla massa continua a essere troppo fertile per scomparire. Nella <em>symphonie concertante</em> parigina il principio antico “alcuni ⇄ tutti” assume una forma nuova; Joseph Bologne, Chevalier de Saint-Georges, ne è uno dei protagonisti proprio negli anni nei quali Mozart incontra il genere a Parigi.</p>
+
+<h3>Il ciclo sinfonico maturo</h3>
+<p>Nel tardo Classicismo la sinfonia tende a organizzarsi in <strong>quattro movimenti</strong>: un primo movimento rapido e strutturalmente ampio, un movimento lento, un minuetto con trio e un finale rapido. Non è una legge assoluta, ma è il modello che rende immediatamente riconoscibile una parte enorme della produzione di Haydn e Mozart. La sinfonia non è dunque soltanto “un primo movimento in forma-sonata”: è un ciclo nel quale velocità, carattere, danza e ritorno conclusivo vengono distribuiti nel tempo.</p>
+<div class="mapline"><div class="mapnode">I<br><small>rapido · spesso forma-sonata</small></div><div class="arrow">→</div><div class="mapnode">II<br><small>lento</small></div><div class="arrow">→</div><div class="mapnode">III<br><small>minuetto + trio</small></div><div class="arrow">→</div><div class="mapnode">IV<br><small>finale rapido</small></div></div>
 
 <h3>Haydn a Londra: la sinfonia incontra il pubblico</h3>
 <p>Quando Haydn arriva a Londra nel 1791 non è un giovane in cerca di consacrazione, ma un compositore europeo già celebre che entra in un sistema concertistico molto diverso dalla vita di corte degli Esterházy. Le grandi serie organizzate da Johann Peter Salomon gli offrono sale più vaste, orchestre robuste, un pubblico pagante e una stampa attenta: per la prima volta una parte decisiva della sua produzione sinfonica nasce dentro un rapporto diretto con una metropoli commerciale.</p>
