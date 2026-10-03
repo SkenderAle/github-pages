@@ -382,19 +382,7 @@ window.CLASSICISMO_LISTENINGS = {
     title:"Sinfonia n.9 · IV movimento",
     videoId:"fx827bYPBNw",
     purpose:"Il tema della Gioia passa dalla nudità strumentale alla comunità vocale",
-    layers:["orchestrazione","testo"],
     provisional:true,
-    visualization:{
-      type:"growth",
-      stages:[
-        {label:"CERCA",count:1,from:0,to:175},
-        {label:"UNO",count:1,from:175,to:230},
-        {label:"POCHI",count:4,from:230,to:355},
-        {label:"ORCHESTRA",count:10,from:355,to:410},
-        {label:"VOCE",count:14,from:410,to:465},
-        {label:"CORO",count:22,from:465,to:9999}
-      ]
-    },
     scoreMap:[
       {bars:"inizio del Finale",form:"Fanfara e recitativo strumentale",key:"Re minore / instabilità",note:"Violoncelli e contrabbassi respingono i richiami ai movimenti precedenti: il Finale sembra cercare il proprio materiale."},
       {bars:"tema della Gioia",form:"Presentazione strumentale",key:"Re maggiore",note:"Il tema nasce nei registri gravi e viene ripreso da gruppi sempre più ampi dell’orchestra."},
@@ -402,12 +390,6 @@ window.CLASSICISMO_LISTENINGS = {
       {bars:"ingresso del baritono",form:"Recitativo vocale",key:"nuova soglia",note:"La voce umana interrompe la sola strumentalità della sinfonia e introduce Schiller."},
       {bars:"coro",form:"Ode alla gioia",key:"Re maggiore e sviluppi successivi",note:"Il tema che era stato dell’orchestra diventa parola condivisa."}
     ],
-    events:[
-      {from:0,to:175,layer:"orchestrazione",label:"CERCA UN NUOVO INIZIO · recitativo strumentale"},
-      {from:175,to:355,layer:"orchestrazione",label:"IL TEMA NASCE · prima pochi strumenti, poi sempre di più"},
-      {from:355,to:410,layer:"orchestrazione",label:"LA COMUNITÀ SONORA SI ALLARGA"},
-      {from:410,to:465,layer:"testo",label:"ENTRA LA VOCE · «O Freunde…»"},
-      {from:465,to:620,layer:"testo",label:"FRATELLANZA · il tema diventa parola e coro"}
-    ]
+    events:[]
   }
 };
