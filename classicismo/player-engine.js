@@ -1,4 +1,6 @@
-/* Motore generico per ascolti sincronizzati — La misura e la rivoluzione. */
+/* Motore generico per ascolti sincronizzati — La misura e la rivoluzione.
+   I player YouTube vengono creati solo quando il laboratorio si avvicina al viewport:
+   su mobile evitiamo di caricare contemporaneamente tutti gli iframe. */
 (()=>{
   const STORE=()=>window.CLASSICISMO_LISTENINGS||{};
   let apiPromise;
@@ -8,7 +10,10 @@
     if(apiPromise) return apiPromise;
     apiPromise=new Promise(resolve=>{
       const prev=window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady=()=>{ if(typeof prev==="function") prev(); resolve(window.YT); };
+      window.onYouTubeIframeAPIReady=()=>{
+        if(typeof prev==="function") prev();
+        resolve(window.YT);
+      };
       if(!document.querySelector('script[src*="youtube.com/iframe_api"]')){
         const s=document.createElement("script");
         s.src="https://www.youtube.com/iframe_api";
@@ -39,57 +44,43 @@
       </div>`).join("");
   }
 
-  function installModes(root,spec){
-    const head=root.querySelector(".analysis-lab-head");
-    if(head&&!head.querySelector(".analysis-modes")){
-      const modes=document.createElement("div");
-      modes.className="analysis-modes";
-      modes.setAttribute("role","group");
-      modes.setAttribute("aria-label","Livello di lettura");
-      modes.innerHTML='<button type="button" data-mode="listen" class="active">Ascolta</button><button type="button" data-mode="see">Vedi</button><button type="button" data-mode="analyse">Analizza</button>';
-      head.appendChild(modes);
-    }
-
-    function setMode(mode){
-      root.dataset.mode=mode;
-      root.querySelectorAll(".analysis-modes button").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode));
-      const live=root.querySelector(".analysis-live");
-      const score=root.querySelector(".analysis-score");
-      const note=root.querySelector(".analysis-note");
-      if(live) live.hidden=mode==="listen";
-      if(score) score.hidden=mode!=="analyse";
-      if(note) note.hidden=mode!=="analyse"||!spec.provisional;
-    }
-
-    root.addEventListener("click",e=>{
-      const b=e.target.closest(".analysis-modes button");
-      if(b) setMode(b.dataset.mode);
-    });
-    setMode("listen");
-  }
-
-  async function mount(root){
-    const id=root.dataset.analysisId,spec=STORE()[id];
-    if(!spec) return;
+  function decorate(root,spec){
     renderScoreMap(root,spec);
-    installModes(root,spec);
-
     const title=root.querySelector("[data-analysis-title]");
     const status=root.querySelector("[data-analysis-status]");
+    const provisional=root.querySelector("[data-provisional]");
     if(title) title.textContent=spec.title;
-    if(status) status.textContent=spec.purpose||"Ascolto guidato";
+    if(status) status.textContent=spec.videoId ? (spec.purpose||"Ascolto guidato") : "Registrazione definitiva ancora da fissare.";
+    if(provisional) provisional.hidden=!spec.provisional;
+  }
 
+  async function activate(root){
+    if(root.dataset.playerMounted) return;
+    const id=root.dataset.analysisId;
+    const spec=STORE()[id];
+    if(!spec) return;
     const target=root.querySelector("[data-player]");
     if(!target||!spec.videoId) return;
+
+    root.dataset.playerMounted="loading";
+    target.innerHTML='<div style="display:grid;place-items:center;min-height:220px;color:#d8c9b5;font-family:system-ui,sans-serif;font-size:.8rem">Caricamento ascolto…</div>';
 
     await loadYouTubeAPI();
     const player=new YT.Player(target,{
       videoId:spec.videoId,
       playerVars:{playsinline:1,rel:0,origin:location.origin,start:spec.startSeconds||0},
-      events:{onReady(){
-        if(spec.startSeconds) player.seekTo(spec.startSeconds,true);
-        tick();
-      }}
+      events:{
+        onReady(){
+          root.dataset.playerMounted="ready";
+          if(spec.startSeconds) player.seekTo(spec.startSeconds,true);
+          tick();
+        },
+        onError(){
+          root.dataset.playerMounted="error";
+          const status=root.querySelector("[data-analysis-status]");
+          if(status) status.textContent="Il video selezionato non è disponibile nell'embed: usa l'ascolto esterno della card.";
+        }
+      }
     });
 
     let raf=0,last=-1;
@@ -121,5 +112,25 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded",()=>document.querySelectorAll("[data-analysis-id]").forEach(mount));
+  document.addEventListener("DOMContentLoaded",()=>{
+    const roots=[...document.querySelectorAll("[data-analysis-id]")];
+    roots.forEach(root=>{
+      const spec=STORE()[root.dataset.analysisId];
+      if(spec) decorate(root,spec);
+    });
+
+    if("IntersectionObserver" in window){
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            activate(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },{rootMargin:"700px 0px",threshold:0});
+      roots.forEach(root=>observer.observe(root));
+    }else{
+      roots.forEach(activate);
+    }
+  });
 })();
