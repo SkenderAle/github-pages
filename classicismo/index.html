@@ -37,20 +37,25 @@ h1{font-size:clamp(3.2rem,8vw,7.6rem);line-height:.94;letter-spacing:-.05em;marg
 .hero-card p{margin:.65rem 0 0;font-size:1rem;line-height:1.6}
 .hero-credit{position:absolute;right:1rem;bottom:.65rem;z-index:3;font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.68)}
 .shell{max-width:1400px;margin:auto;background:var(--paper);box-shadow:0 0 70px rgba(30,24,18,.15)}
-.nav-wrap{position:sticky;top:0;z-index:50;background:rgba(245,239,227,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-nav{max-width:1280px;margin:auto;display:flex;gap:.35rem;overflow-x:auto;padding:.55rem .75rem;font-family:var(--sans);scrollbar-width:none}
-nav::-webkit-scrollbar{display:none}
-nav a{white-space:nowrap;text-decoration:none;padding:.62rem .78rem;border-radius:999px;font-size:.81rem;font-weight:750;color:#5d5349}
+.nav-wrap{position:sticky;top:0;z-index:50;background:rgba(245,239,227,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font-family:var(--sans)}
+nav{max-width:1280px;margin:auto;padding:.46rem .75rem .52rem}
+.nav-row{display:flex;gap:.35rem;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.nav-row+.nav-row{margin-top:.16rem}
+.nav-row::-webkit-scrollbar{display:none}
+nav a{flex:0 0 auto;white-space:nowrap;text-decoration:none;padding:.55rem .72rem;border-radius:999px;font-size:.79rem;font-weight:750;color:#5d5349}
 nav a:hover,nav a.active{background:#29231e;color:#fff}
-nav a.satellite{background:var(--plum);color:#fff}
+nav a.nav-donne{background:var(--plum);color:#fff}
+nav a.nav-donne:hover,nav a.nav-donne.active{background:#493042;color:#fff}
 nav a.method{background:var(--green);color:#fff}
+nav a.nav-verifica{background:var(--red);color:#fff;border:1px solid var(--red)}
+nav a.nav-sos{background:var(--green);color:#fff;border:1px solid var(--green)}
 .content{max-width:1180px;margin:auto;padding:4.4rem 1.35rem 6rem}
 .opening{display:grid;grid-template-columns:1.35fr .65fr;gap:3rem;align-items:start;margin-bottom:5.5rem}
 .lead{font-size:1.34rem;line-height:1.64;margin-top:0}
 .dropcap:first-letter{float:left;font-size:4.8rem;line-height:.8;padding:.12rem .15rem 0 0;color:var(--red);font-weight:700}
 .aside{background:var(--paper2);border-top:4px solid var(--red);padding:1.4rem;position:sticky;top:5rem}
 .aside b{font-family:var(--sans);text-transform:uppercase;letter-spacing:.1em;font-size:.73rem;color:var(--red)}
-section{scroll-margin-top:4.6rem;margin:0 0 6.2rem}
+section{scroll-margin-top:7.2rem;margin:0 0 6.2rem}
 .section-title{border-top:1px solid #bda98e;padding-top:1rem;margin-bottom:2rem}
 .eyebrow{font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:850;color:var(--red);margin-bottom:.5rem}
 h2{font-size:clamp(2.15rem,5vw,4.6rem);line-height:1.03;letter-spacing:-.035em;margin:.1rem 0 .4rem;font-weight:600}
@@ -197,7 +202,7 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
  .masthead::before{background-position:58% 48%}
  .hero{gap:1.5rem}.hero-card{padding:1rem}.hero-card p{font-size:.94rem}
  h1{font-size:clamp(2.85rem,15vw,4.8rem)}.dek{font-size:1.08rem}.two-col{columns:1}
- nav{padding:.45rem .55rem}.nav-wrap{overscroll-behavior-x:contain}
+ nav{padding:.36rem .45rem .42rem}.nav-row{gap:.25rem}.nav-row+.nav-row{margin-top:.1rem}nav a{padding:.5rem .62rem;font-size:.75rem}.nav-wrap{overscroll-behavior-x:contain}
  .modal{padding:0;place-items:end center}.modal-panel{width:100%;max-height:100dvh;border-radius:14px 14px 0 0}.modal-body{padding:.7rem}
  .modal-head{padding:.7rem .85rem}.modal-close{min-width:44px;min-height:44px}
  .listen-card{margin-left:-.15rem;margin-right:-.15rem}.listen-art{min-height:190px}
@@ -284,17 +289,17 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
   .analysis-score-row{grid-template-columns:1fr;gap:.2rem}
   .analysis-score-row>b{grid-row:auto}
   .analysis-player{min-height:0}
-  .analysis-modebar{position:sticky;top:3.65rem;z-index:8;box-shadow:0 4px 12px rgba(50,38,25,.08)}
+  .analysis-modebar{position:sticky;top:6.25rem;z-index:8;box-shadow:0 4px 12px rgba(50,38,25,.08)}
   .mapline{scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
   .mapnode{scroll-snap-align:start}
-  nav{-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+  .nav-row{scroll-snap-type:x proximity}
   nav a{scroll-snap-align:start}
 }
 @media(max-width:600px){
   .analysis-lab{margin-left:-.35rem;margin-right:-.35rem}
   .analysis-lab-grid{padding:.75rem}
   .analysis-lab-head{padding:.85rem}
-  .analysis-modebar{gap:.35rem;padding:.55rem .7rem;top:3.45rem;overflow-x:auto;flex-wrap:nowrap}
+  .analysis-modebar{gap:.35rem;padding:.55rem .7rem;top:6.05rem;overflow-x:auto;flex-wrap:nowrap}
   .analysis-modebar button{flex:1 0 auto;min-width:88px;min-height:44px}
   .btn,.mini{min-height:44px}
   .ensemble-builder-controls button{width:44px;height:44px}
@@ -345,12 +350,16 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 
 <div class="shell">
 <div class="nav-wrap"><nav id="nav">
+<div class="nav-row" aria-label="Indice, prima riga">
 <a href="#secolo">Il secolo</a><a href="#classico">Classico?</a><a href="#fuoco">Misura e fuoco</a>
 <a href="#pubblico">Il pubblico</a><a href="#strumenti">Strumenti</a><a href="#mannheim">Mannheim</a>
-<a href="#continuo">Continuo</a><a href="#grammatica">Grammatica</a><a href="#forma">Forma-sonata</a>
-<a href="#generi">Generi</a><a href="#quartetto">Quartetto</a><a href="#camera">Camera</a>
-<a href="#sinfonia">Sinfonia</a><a href="#vienna">Vienna</a><a href="#beethoven">Beethoven</a>
-<a href="#donne" class="satellite">Le donne</a><a href="#epilogo">1804</a><a href="#metodo" class="method">Metodo</a><a href="#fonti">Fonti</a>
+<a href="#continuo">Continuo</a><a href="#grammatica">Grammatica</a><a href="#forma">Forma-sonata</a><a href="#generi">Generi</a>
+</div>
+<div class="nav-row" aria-label="Indice, seconda riga">
+<a href="#quartetto">Quartetto</a><a href="#camera">Camera</a><a href="#sinfonia">Sinfonia</a>
+<a href="#vienna">Vienna</a><a href="#beethoven">Beethoven</a><a href="#donne" class="nav-donne">Donne</a>
+<a href="#epilogo">1804</a><a href="#metodo" class="method">Metodo</a><a href="#fonti">Fonti</a>
+</div>
 </nav></div>
 
 <main class="content">
@@ -740,13 +749,13 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 
 <section id="donne" class="satellite-section">
 <div class="satellite-inner">
-<div class="section-title"><div class="eyebrow" style="color:var(--plum)">Capitolo satellite</div><h2>Una libertà incompleta</h2></div>
+<div class="section-title"><div class="eyebrow" style="color:var(--plum)">Una libertà incompleta</div><h2>Donne</h2></div>
 <p class="lead">Quando abbiamo seguito la trasformazione della condizione del musicista, osservando il passaggio dalla corte al mercato e dal servizio stabile al concerto pubblico, abbiamo parlato soprattutto di uomini. Non perché le donne fossero assenti dalla vita musicale del Settecento: suonavano, componevano, insegnavano, animavano salotti e, in circostanze particolarmente favorevoli, potevano costruire perfino una carriera internazionale. Ciò che rimaneva profondamente diseguale era la possibilità di trasformare queste competenze in una professione riconosciuta.</p>
 <div class="callout" style="border-left-color:var(--plum)"><strong style="color:var(--plum)">La domanda storicamente interessante non è “dove sono le donne?”.</strong> È capire quali condizioni fossero necessarie perché il loro lavoro potesse essere eseguito, pubblicato, conservato e trasformato in repertorio.</div>
 <div class="women-grid">
 <div class="woman"><b>Marianna Martines · 1744–1812</b><p>Compositrice, cantante e tastierista viennese, cresce nello stesso edificio nel quale gravitano Metastasio, Porpora e il giovane Haydn. Le sue accademie domestiche diventano un punto d’incontro della vita musicale viennese e Mozart vi partecipa. La sua posizione mostra quanto prestigio e professionalizzazione non coincidessero necessariamente per una donna.</p></div><div class="analysis-box" data-mode="listen" data-analysis-id="martines-sinfonia">
 <div class="analysis-player" data-player></div>
-<div class="analysis-head"><span class="analysis-status" data-analysis-status>Ascolto satellite: Martines dentro il repertorio sinfonico classico.</span><span class="analysis-time" data-current-time>0:00</span></div>
+<div class="analysis-head"><span class="analysis-status" data-analysis-status>Martines dentro il repertorio sinfonico classico.</span><span class="analysis-time" data-current-time>0:00</span></div>
 <div class="analysis-modebar"><button data-analysis-mode="listen" class="active">ASCOLTA</button><button data-analysis-mode="see">VEDI</button><button data-analysis-mode="analyze">ANALIZZA</button></div>
 <div class="analysis-layers"><div class="analysis-layer" data-analysis-layer="forma"><b>Movimento</b><span></span></div></div>
 </div>
