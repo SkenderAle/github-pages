@@ -170,6 +170,18 @@ window.CLASSICISMO_LISTENINGS = {
     videoId:"841jxlKeAgI",
     purpose:"Pianoforte, clarinetto e viola: funzioni mobili",
     layers:["voci"],
+    visualization:{
+      type:"dialogue",
+      voices:[
+        {label:"PIANOFORTE",roles:["propone","sostiene","risponde"]},
+        {label:"CLARINETTO",roles:["propone","risponde","canta"]},
+        {label:"VIOLA",roles:["sostiene","risponde","completa"]}
+      ]
+    },
+    scoreMap:[
+      {bars:"ascolto generale",form:"Conversazione a tre",key:"Mi bemolle maggiore",note:"Nessuno strumento è condannato a una funzione unica: le responsabilità circolano."},
+      {bars:"passaggi imitativi",form:"Scambio",key:"—",note:"Il materiale passa da uno strumento all’altro e cambia colore senza perdere identità."}
+    ],
     events:[]
   },
 
@@ -179,6 +191,20 @@ window.CLASSICISMO_LISTENINGS = {
     videoId:"yQ_z_tMK6Bo",
     purpose:"Distribuzione della responsabilità musicale fra cinque timbri",
     layers:["voci"],
+    visualization:{
+      type:"dialogue",
+      voices:[
+        {label:"PIANOFORTE",roles:["propone","raccorda","risponde"]},
+        {label:"OBOE",roles:["canta","risponde"]},
+        {label:"CLARINETTO",roles:["canta","colora","risponde"]},
+        {label:"CORNO",roles:["sostiene","emerge"]},
+        {label:"FAGOTTO",roles:["sostiene","risponde","completa"]}
+      ]
+    },
+    scoreMap:[
+      {bars:"ascolto generale",form:"Quintetto concertante",key:"Mi bemolle maggiore",note:"Il pianoforte non rimane solista permanente: la responsabilità del discorso passa continuamente ai fiati."},
+      {bars:"scambi fra fiati",form:"Distribuzione timbrica",key:"—",note:"La funzione concertante può esistere anche dentro la musica da camera, senza opposizione rigida solista-orchestra."}
+    ],
     events:[]
   },
 
