@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Missione Classicismo · Verifica</title>
+<style>
+:root{--paper:#f5efe3;--ink:#28221c;--muted:#6f655b;--red:#7b2a24;--blue:#273d5b;--green:#355c49;--gold:#a77e35;--line:#d4c6b0;--card:#fffaf1;--shadow:0 14px 36px rgba(36,28,18,.12);--sans:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif)}
+header{padding:3.8rem 1rem 2.5rem;background:linear-gradient(135deg,#211d19,#273d5b);color:#fff}
+.hero{max-width:980px;margin:auto}.eyebrow{font:900 .72rem/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#efd59f}
+h1{font-size:clamp(2.8rem,8vw,6rem);line-height:.94;margin:.5rem 0 1rem;letter-spacing:-.045em}header p{font-size:1.15rem;line-height:1.55;max-width:790px;color:#eee4d5}
+main{max-width:980px;margin:auto;padding:2rem 1rem 6rem}.topbar{position:sticky;top:0;z-index:30;background:rgba(245,239,227,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:.65rem 1rem}
+.topbar-inner{max-width:980px;margin:auto;display:flex;gap:.7rem;align-items:center}.progress{height:10px;flex:1;background:#dfd4c2;border-radius:999px;overflow:hidden}.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--green));transition:.25s}.counter{font:800 .78rem var(--sans);color:var(--muted);white-space:nowrap}
+.notice{background:#eee4d3;border-left:5px solid var(--gold);padding:1rem 1.1rem;margin:0 0 1.5rem;font:.94rem/1.5 var(--sans)}
+.identity{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.2rem 0 2rem}.identity label{font:800 .72rem var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}.identity input,.identity select{width:100%;margin-top:.35rem;padding:.78rem;border:1px solid #bfae94;background:#fffdf8;font:1rem var(--sans);border-radius:7px}
+.q{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:1.25rem;margin:1.25rem 0;border-radius:14px}.qhead{display:flex;gap:1rem;align-items:flex-start}.qno{font:900 .72rem var(--sans);letter-spacing:.12em;color:#fff;background:var(--red);padding:.35rem .52rem;border-radius:6px;white-space:nowrap}.q h2{font-size:clamp(1.45rem,4vw,2.15rem);margin:0 0 .4rem}.q p{line-height:1.55;margin:.45rem 0}.points{font:800 .76rem var(--sans);color:var(--gold)}
+.board{display:grid;grid-template-columns:1fr 1.3fr;gap:1rem;margin-top:1rem}.pool,.targets{min-width:0}.pool h3,.targets h3{font:900 .72rem var(--sans);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:.2rem 0 .6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;min-height:48px;padding:.6rem;border:1px dashed #baa98f;border-radius:10px;background:#f7f0e4}.chip{border:1px solid #9f8d72;background:#fff;padding:.62rem .72rem;border-radius:999px;cursor:grab;font:800 .86rem/1.25 var(--sans);touch-action:none;box-shadow:0 3px 8px rgba(40,30,20,.08);user-select:none}.chip.selected{outline:3px solid #d5b26c;background:#fff4cf}.chip.correct{background:#e5f1e8;border-color:#6f9a7a}.chip.wrong{background:#f7e1df;border-color:#b56d68}
+.target-grid{display:grid;gap:.65rem}.target{border:2px dashed #b7a88f;border-radius:11px;padding:.7rem;min-height:82px;background:#f6eee0}.target b{display:block;font:900 .76rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}.target .bucket{display:flex;flex-wrap:wrap;gap:.45rem;min-height:36px}.target.active{border-color:var(--gold);background:#fff4d7}
+.order{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:1rem}.slot{min-height:105px;border:2px dashed #b7a88f;border-radius:11px;padding:.6rem;background:#f6eee0}.slot b{font:900 .75rem var(--sans);color:var(--red)}.slot .bucket{margin-top:.45rem}
+.choices{display:grid;gap:.55rem;margin-top:.8rem}.choice{display:flex;gap:.65rem;align-items:flex-start;padding:.75rem;border:1px solid var(--line);border-radius:10px;background:#fff;font:.95rem/1.4 var(--sans)}.choice input{margin-top:.15rem;transform:scale(1.15)}
+.listen-clue{margin:.9rem 0;padding:.85rem 1rem;border-left:4px solid var(--blue);background:#eef0f3;font:.9rem/1.45 var(--sans)}
+.actions{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin:2rem 0}.btn{border:0;border-radius:999px;padding:1rem 1.35rem;font:900 .95rem var(--sans);cursor:pointer}.primary{background:var(--green);color:#fff}.secondary{background:#e4d7c2;color:#3b3026}.btn:disabled{opacity:.5;cursor:not-allowed}
+.result{display:none;margin:2rem 0;padding:1.4rem;background:#20344f;color:#fff;border-radius:14px}.result.show{display:block}.result strong.big{display:block;font:900 clamp(2.5rem,8vw,5rem)/1 var(--sans);color:#efd59f}.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:1rem}.breakdown div{background:rgba(255,255,255,.09);padding:.65rem;border-radius:8px;font:800 .82rem var(--sans)}
+.status{margin-top:.8rem;font:.86rem/1.45 var(--sans);color:#dcd2c4}.backend-badge{display:inline-block;background:#f3e3b7;color:#4d3a16;padding:.3rem .5rem;border-radius:999px;font:900 .68rem var(--sans)}
+footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(--sans);text-align:center}
+@media(max-width:760px){.identity{grid-template-columns:1fr 1fr}.board{grid-template-columns:1fr}.order{grid-template-columns:1fr}.breakdown{grid-template-columns:1fr 1fr}.q{padding:1rem}.chip{padding:.7rem .78rem}.target{min-height:95px}}
+@media(max-width:460px){header{padding-top:2.6rem}.identity{grid-template-columns:1fr}.breakdown{grid-template-columns:1fr}.qhead{display:block}.qno{display:inline-block;margin-bottom:.55rem}}
+</style>
+</head>
+<body>
+<header><div class="hero"><div class="eyebrow">Verifica degli apprendimenti · 30 punti</div><h1>Missione Classicismo</h1><p>Non serve ricordare tutto. Serve aver capito come suona, come si organizza e come cambia. Trascina, ordina, abbina e scegli. Il primo tentativo sarà la verifica ufficiale quando collegheremo questa pagina all'Apps Script.</p></div></header>
+<div class="topbar"><div class="topbar-inner"><div class="progress"><span id="bar"></span></div><div class="counter" id="counter">0/9 completate</div></div></div>
+<main>
+<div class="notice"><strong>Come si usa.</strong> Su computer puoi trascinare le tessere. Su telefono puoi anche toccare una tessera e poi il riquadro in cui vuoi metterla. Puoi cambiare idea fino alla consegna.</div>
+
+<div class="identity" id="identity">
+<label>Nome<input id="nome" autocomplete="given-name"></label>
+<label>Cognome<input id="cognome" autocomplete="family-name"></label>
+<label>Classe<select id="classe"><option value="">Scegli</option><option>1A</option><option>1B</option><option>1C</option><option>1D</option><option>2A</option><option>2B</option><option>2C</option><option>2D</option><option>3A</option><option>3B</option><option>3C</option><option>3D</option></select></label>
+<label>Email<input id="email" type="email" autocomplete="email" placeholder="solo se richiesta"></label>
+</div>
+
+<section class="q" data-q="1" data-max="4"><div class="qhead"><span class="qno">Q1</span><div><h2>Riconoscilo all'orecchio</h2><div class="points">4 punti</div><p>Porta ogni carattere dentro il linguaggio che gli appartiene meglio.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="melodia">Melodia in primo piano con accompagnamento</span>
+<span class="chip" draggable="true" data-id="cadenze">Frasi articolate da cadenze</span>
+<span class="chip" draggable="true" data-id="tonale">Contrasto tonale percepibile</span>
+<span class="chip" draggable="true" data-id="memoria">Ritorni che giocano con la memoria</span>
+<span class="chip" draggable="true" data-id="continuo">Basso continuo indispensabile</span>
+<span class="chip" draggable="true" data-id="imitazione">Polifonia imitativa continua</span>
+</div></div><div class="targets"><h3>Contesti</h3><div class="target-grid">
+<div class="target" data-accept="melodia,cadenze,tonale,memoria"><b>Indizi ricorrenti del Classicismo</b><div class="bucket"></div></div>
+<div class="target" data-accept="continuo,imitazione"><b>Non sono tratti distintivi del nuovo linguaggio classico</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="2" data-max="4"><div class="qhead"><span class="qno">Q2</span><div><h2>Forma-sonata: che cosa succede dove?</h2><div class="points">4 punti</div><p>Abbina i concetti alle tre grandi funzioni.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="tonica">Stabilisce la tonica</span>
+<span class="chip" draggable="true" data-id="altra">Raggiunge una nuova area tonale stabile</span>
+<span class="chip" draggable="true" data-id="instabile">Aumenta l'instabilità</span>
+<span class="chip" draggable="true" data-id="trasforma">Trasforma il materiale già ascoltato</span>
+<span class="chip" draggable="true" data-id="ritorno">Riporta il materiale principale</span>
+<span class="chip" draggable="true" data-id="riequilibrio">Ristabilisce l'equilibrio nella tonica</span>
+</div></div><div class="targets"><h3>Funzioni</h3><div class="target-grid">
+<div class="target" data-accept="tonica,altra"><b>Esposizione</b><div class="bucket"></div></div>
+<div class="target" data-accept="instabile,trasforma"><b>Sviluppo</b><div class="bucket"></div></div>
+<div class="target" data-accept="ritorno,riequilibrio"><b>Ripresa</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="3" data-max="3"><div class="qhead"><span class="qno">Q3</span><div><h2>Un viaggio tonale</h2><div class="points">3 punti</div><p>Metti nell'ordine più plausibile le tre situazioni, poi scegli che cosa rende significativa la ripresa.</p></div></div>
+<div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="stabile1">Centro tonale iniziale</span>
+<span class="chip" draggable="true" data-id="mobile">Regione più mobile e instabile</span>
+<span class="chip" draggable="true" data-id="stabile2">Ritorno alla tonica</span>
+</div>
+<div class="order">
+<div class="slot target" data-order="1"><b>1</b><div class="bucket"></div></div>
+<div class="slot target" data-order="2"><b>2</b><div class="bucket"></div></div>
+<div class="slot target" data-order="3"><b>3</b><div class="bucket"></div></div>
+</div>
+<div class="choices">
+<label class="choice"><input type="radio" name="q3mc" value="a">Che torni esattamente lo stesso numero di battute.</label>
+<label class="choice"><input type="radio" name="q3mc" value="b">Che venga ristabilito l'equilibrio tonale, anche se il materiale può essere modificato.</label>
+<label class="choice"><input type="radio" name="q3mc" value="c">Che il secondo tema scompaia sempre.</label>
+</div></section>
+
+<section class="q" data-q="4" data-max="4"><div class="qhead"><span class="qno">Q4</span><div><h2>Chi cambia che cosa?</h2><div class="points">4 punti</div><p>Abbina ogni nome alla trasformazione più significativa nel nostro percorso.</p></div></div>
+<div class="board"><div class="pool"><h3>Nomi</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="cristofori">Bartolomeo Cristofori</span>
+<span class="chip" draggable="true" data-id="gluck">Christoph Willibald Gluck</span>
+<span class="chip" draggable="true" data-id="clementi">Muzio Clementi</span>
+<span class="chip" draggable="true" data-id="boccherini">Luigi Boccherini</span>
+</div></div><div class="targets"><h3>Trasformazioni</h3><div class="target-grid">
+<div class="target" data-accept="cristofori"><b>Nuovo principio meccanico della tastiera</b><span>Il martelletto permette una diversa articolazione dinamica.</span><div class="bucket"></div></div>
+<div class="target" data-accept="gluck"><b>Riforma del teatro musicale</b><span>La musica deve servire con maggiore continuità il dramma.</span><div class="bucket"></div></div>
+<div class="target" data-accept="clementi"><b>Musicista dentro il mercato</b><span>Pianista, compositore, editore, didatta e imprenditore.</span><div class="bucket"></div></div>
+<div class="target" data-accept="boccherini"><b>Camera europea fuori da Vienna</b><span>Quintetti, violoncello protagonista, Spagna.</span><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="5" data-max="3"><div class="qhead"><span class="qno">Q5</span><div><h2>Il pubblico entra nella musica</h2><div class="points">3 punti</div><p>Quali fenomeni appartengono alla nuova moltiplicazione dei pubblici?</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="subs">Concerti in sottoscrizione</span>
+<span class="chip" draggable="true" data-id="editoria">Editoria musicale</span>
+<span class="chip" draggable="true" data-id="salotti">Salotti e accademie private</span>
+<span class="chip" draggable="true" data-id="corte">Corte aristocratica</span>
+<span class="chip" draggable="true" data-id="radio">Radio</span>
+<span class="chip" draggable="true" data-id="streaming">Streaming</span>
+</div></div><div class="targets"><h3>Scelta</h3><div class="target-grid">
+<div class="target" data-accept="subs,editoria,salotti,corte"><b>Settecento</b><div class="bucket"></div></div>
+<div class="target" data-accept="radio,streaming"><b>Non appartiene a quel sistema storico</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="6" data-max="3"><div class="qhead"><span class="qno">Q6</span><div><h2>Donne: talento o accesso?</h2><div class="points">3 punti</div><p>Classifica ciò che poteva favorire una carriera e ciò che poteva limitarla.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="ospedali">Ospedali veneziani</span>
+<span class="chip" draggable="true" data-id="salon">Accademie e salotti</span>
+<span class="chip" draggable="true" data-id="reti">Reti di maestri ed editori</span>
+<span class="chip" draggable="true" data-id="domestica">Educazione limitata al decoro domestico</span>
+<span class="chip" draggable="true" data-id="viaggi">Impossibilità sociale di viaggiare liberamente</span>
+<span class="chip" draggable="true" data-id="incarichi">Minore accesso agli incarichi pubblici</span>
+</div></div><div class="targets"><h3>Condizioni</h3><div class="target-grid">
+<div class="target" data-accept="ospedali,salon,reti"><b>Può aprire possibilità</b><div class="bucket"></div></div>
+<div class="target" data-accept="domestica,viaggi,incarichi"><b>Può limitare la professionalizzazione</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="7" data-max="3"><div class="qhead"><span class="qno">Q7</span><div><h2>Haydn o Mozart?</h2><div class="points">3 punti</div><p>Porta ogni opera al compositore corretto.</p></div></div>
+<div class="board"><div class="pool"><h3>Opere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="h104">Sinfonia n.104</span>
+<span class="chip" draggable="true" data-id="h76">Quartetti op.76</span>
+<span class="chip" draggable="true" data-id="m551">Jupiter K.551</span>
+<span class="chip" draggable="true" data-id="m491">Concerto K.491</span>
+<span class="chip" draggable="true" data-id="m515">Quintetto K.515</span>
+<span class="chip" draggable="true" data-id="h33">Quartetti op.33</span>
+</div></div><div class="targets"><h3>Compositori</h3><div class="target-grid">
+<div class="target" data-accept="h104,h76,h33"><b>Haydn</b><div class="bucket"></div></div>
+<div class="target" data-accept="m551,m491,m515"><b>Mozart</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="8" data-max="3"><div class="qhead"><span class="qno">Q8</span><div><h2>1804: che cosa cambia davvero?</h2><div class="points">3 punti</div><p>Scegli la frase che descrive meglio il ruolo dell'Eroica nel percorso.</p></div></div>
+<div class="choices">
+<label class="choice"><input type="radio" name="q8" value="a">Nel 1804 il Classicismo finisce di colpo e Beethoven smette di usare forma-sonata e tonalità.</label>
+<label class="choice"><input type="radio" name="q8" value="b">L'Eroica è una soglia: la grammatica classica resta leggibile, ma proporzioni, tensioni e conseguenze cambiano profondamente.</label>
+<label class="choice"><input type="radio" name="q8" value="c">Nel 1804 Beethoven abbandona la sinfonia e passa soltanto al teatro.</label>
+</div>
+<div class="listen-clue"><strong>Indizio.</strong> Quinta, Pastorale e Nona nel sito non servono ad allungare il Classicismo fino al 1824: mostrano le conseguenze del cambiamento iniziato alla soglia dell'Eroica.</div>
+</section>
+
+<section class="q" data-q="9" data-max="3"><div class="qhead"><span class="qno">Q9</span><div><h2>Il filo del Classicismo</h2><div class="points">3 punti</div><p>Scegli le tre affermazioni corrette.</p></div></div>
+<div class="choices">
+<label class="choice"><input type="checkbox" name="q9" value="a">Il Classicismo è una categoria storica anche retrospettiva, consolidata dopo la musica che descrive.</label>
+<label class="choice"><input type="checkbox" name="q9" value="b">La forma-sonata era già una legge teorica perfettamente codificata ai tempi di Haydn e Mozart.</label>
+<label class="choice"><input type="checkbox" name="q9" value="c">Il basso continuo scompare gradualmente e può sopravvivere più a lungo nel recitativo secco.</label>
+<label class="choice"><input type="checkbox" name="q9" value="d">Il Classicismo musicale coincide semplicemente con la ricostruzione della musica dell'antica Grecia.</label>
+<label class="choice"><input type="checkbox" name="q9" value="e">Una forma chiara può contenere conflitto, sorpresa e forte espressività.</label>
+</div></section>
+
+<div class="actions"><button class="btn secondary" id="reset">Ricomincia</button><button class="btn primary" id="submit">Consegna la prova</button></div>
+
+<div class="result" id="result"><span class="backend-badge" id="backendBadge">ANTEPRIMA</span><strong class="big" id="score">0/30</strong><div id="message"></div><div class="breakdown" id="breakdown"></div><div class="status" id="saveStatus"></div><div class="actions"><button class="btn secondary" id="practice">Correggi e riprova</button></div></div>
+</main>
+<footer>Missione Classicismo · verifica interattiva · TEST_ID <strong>classicismo-01</strong></footer>
+
+<script>
+(function(){
+var TEST_ID='classicismo-01', VERSION='1.0', MAX=30;
+var startedAt=new Date(), submitted=false, selected=null, dragging=null;
+var orderCorrect=['stabile1','mobile','stabile2'];
+
+function allChips(){return Array.prototype.slice.call(document.querySelectorAll('.chip'))}
+function allTargets(){return Array.prototype.slice.call(document.querySelectorAll('.target'))}
+function place(chip,target){
+  var bucket=target.querySelector('.bucket'); if(!bucket) return;
+  bucket.appendChild(chip); chip.classList.remove('selected'); selected=null; updateProgress();
+}
+function returnToPool(chip){
+  var q=chip.closest('.q'); var pool=q.querySelector('[data-pool]'); if(pool) pool.appendChild(chip); updateProgress();
+}
+allChips().forEach(function(chip){
+  chip.addEventListener('dragstart',function(){dragging=chip;chip.classList.add('selected')});
+  chip.addEventListener('dragend',function(){dragging=null;chip.classList.remove('selected')});
+  chip.addEventListener('click',function(e){
+    e.stopPropagation(); if(submitted)return;
+    if(selected===chip){chip.classList.remove('selected');selected=null;return}
+    if(selected)selected.classList.remove('selected');
+    selected=chip;chip.classList.add('selected');
+  });
+});
+allTargets().forEach(function(t){
+  t.addEventListener('dragover',function(e){e.preventDefault();t.classList.add('active')});
+  t.addEventListener('dragleave',function(){t.classList.remove('active')});
+  t.addEventListener('drop',function(e){e.preventDefault();t.classList.remove('active');if(dragging&&!submitted)place(dragging,t)});
+  t.addEventListener('click',function(){if(selected&&!submitted)place(selected,t)});
+});
+document.querySelectorAll('[data-pool]').forEach(function(p){
+  p.addEventListener('click',function(){if(selected&&!submitted)returnToPool(selected)});
+});
+
+function qComplete(q){
+  var n=q.getAttribute('data-q');
+  if(n==='3')return q.querySelectorAll('.slot .chip').length===3 && !!q.querySelector('input[name=q3mc]:checked');
+  if(n==='8')return !!q.querySelector('input[name=q8]:checked');
+  if(n==='9')return q.querySelectorAll('input[name=q9]:checked').length===3;
+  return q.querySelectorAll('[data-pool] .chip').length===0;
+}
+function updateProgress(){
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var done=qs.filter(qComplete).length;
+  document.getElementById('bar').style.width=(done/qs.length*100)+'%';
+  document.getElementById('counter').textContent=done+'/'+qs.length+' completate';
+}
+document.querySelectorAll('input').forEach(function(x){x.addEventListener('change',updateProgress)});
+
+function scoreBucketQuestion(q){
+  var max=parseFloat(q.getAttribute('data-max')), chips=Array.prototype.slice.call(q.querySelectorAll('.chip')), correct=0;
+  chips.forEach(function(ch){
+    var t=ch.closest('.target'), ok=t && (t.getAttribute('data-accept')||'').split(',').indexOf(ch.getAttribute('data-id'))>=0;
+    ch.classList.toggle('correct',!!ok);ch.classList.toggle('wrong',!ok);if(ok)correct++;
+  });
+  return max*correct/chips.length;
+}
+function scoreQ3(q){
+  var slots=Array.prototype.slice.call(q.querySelectorAll('.slot')),correctOrder=0;
+  slots.forEach(function(slot,i){
+    var ch=slot.querySelector('.chip');var ok=!!ch&&ch.getAttribute('data-id')===orderCorrect[i];
+    if(ch){ch.classList.toggle('correct',ok);ch.classList.toggle('wrong',!ok)}
+    if(ok)correctOrder++;
+  });
+  var orderPoints=(correctOrder/3)*2;
+  var mc=q.querySelector('input[name=q3mc]:checked');
+  return orderPoints+(mc&&mc.value==='b'?1:0);
+}
+function scoreQ8(q){var x=q.querySelector('input[name=q8]:checked');return x&&x.value==='b'?3:0}
+function scoreQ9(q){
+  var vals=Array.prototype.slice.call(q.querySelectorAll('input[name=q9]:checked')).map(function(x){return x.value}).sort();
+  var good=['a','c','e'];var correct=0;
+  good.forEach(function(v){if(vals.indexOf(v)>=0)correct++});
+  vals.forEach(function(v){if(good.indexOf(v)<0)correct--});
+  return Math.max(0,Math.min(3,correct));
+}
+function evaluate(){
+  var scores=[],total=0;
+  document.querySelectorAll('.q').forEach(function(q){
+    var n=q.getAttribute('data-q'),s=n==='3'?scoreQ3(q):n==='8'?scoreQ8(q):n==='9'?scoreQ9(q):scoreBucketQuestion(q);
+    s=Math.round(s*100)/100;scores.push(s);total+=s;
+  });
+  total=Math.round(total*100)/100;return{scores:scores,total:total};
+}
+function identityValid(){
+  var schoolMode=typeof google!=='undefined'&&google.script&&google.script.run;
+  if(schoolMode)return true;
+  return document.getElementById('nome').value.trim()&&document.getElementById('cognome').value.trim()&&document.getElementById('classe').value;
+}
+function payload(ev){
+  var now=new Date();
+  return{testId:TEST_ID,version:VERSION,max:MAX,score:ev.total,percent:Math.round(ev.total/MAX*1000)/10,duration:Math.max(1,Math.round((now-startedAt)/1000)),startedAt:startedAt.toISOString(),submittedAt:now.toISOString(),scores:ev.scores,nome:document.getElementById('nome').value.trim(),cognome:document.getElementById('cognome').value.trim(),classe:document.getElementById('classe').value,email:document.getElementById('email').value.trim()};
+}
+function renderResult(ev){
+  document.getElementById('score').textContent=ev.total+'/'+MAX;
+  var pct=Math.round(ev.total/MAX*100);
+  document.getElementById('message').innerHTML=pct>=80?'<p><strong>Hai davvero raccolto il filo del Classicismo.</strong> Guarda comunque dove hai lasciato qualche punto.</p>':pct>=60?'<p><strong>La struttura c\'è.</strong> Alcuni collegamenti vanno ancora rimessi a fuoco.</p>':'<p><strong>Serve un altro ascolto.</strong> Correggi gli errori e prova a ricostruire il percorso.</p>';
+  document.getElementById('breakdown').innerHTML=ev.scores.map(function(s,i){return '<div>Q'+(i+1)+' · '+s+'/'+document.querySelector('.q[data-q="'+(i+1)+'"]').getAttribute('data-max')+'</div>'}).join('');
+  document.getElementById('result').classList.add('show');document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function saveOfficial(p){
+  var status=document.getElementById('saveStatus');
+  if(typeof google!=='undefined'&&google.script&&google.script.run){
+    document.getElementById('backendBadge').textContent='VERIFICA UFFICIALE';
+    status.textContent='Registrazione in corso…';
+    google.script.run.withSuccessHandler(function(r){
+      if(r&&r.already){status.textContent='Il primo tentativo ufficiale era già stato registrato. Questo resta un tentativo di allenamento.'}
+      else{status.textContent='Risultato registrato nel foglio della classe.'}
+    }).withFailureHandler(function(e){status.textContent='Errore di registrazione: '+(e&&e.message?e.message:e)}).registraRisultatoClassicismo(p);
+  }else{
+    document.getElementById('backendBadge').textContent='ANTEPRIMA GITHUB';
+    status.textContent='Anteprima funzionante: il punteggio non viene inviato a Google finché questa pagina non viene collegata all’Apps Script.';
+    try{localStorage.setItem(TEST_ID+':preview',JSON.stringify(p))}catch(e){}
+  }
+}
+document.getElementById('submit').addEventListener('click',function(){
+  if(!identityValid()){alert('Compila almeno nome, cognome e classe.');return}
+  var missing=Array.prototype.slice.call(document.querySelectorAll('.q')).filter(function(q){return !qComplete(q)});
+  if(missing.length){if(!confirm('Hai lasciato '+missing.length+' prova/e incomplete. Vuoi consegnare lo stesso?'))return}
+  if(!confirm('Sei davvero pronto? Quando sarà collegata alla scuola, la prima consegna sarà quella ufficiale.'))return;
+  submitted=true;var ev=evaluate();renderResult(ev);saveOfficial(payload(ev));
+});
+document.getElementById('practice').addEventListener('click',function(){
+  submitted=false;document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('correct','wrong')});document.getElementById('result').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});
+});
+document.getElementById('reset').addEventListener('click',function(){if(confirm('Vuoi davvero ricominciare da capo?'))location.reload()});
+updateProgress();
+})();
+</script>
+</body>
+</html>
