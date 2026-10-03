@@ -203,6 +203,18 @@ window.CLASSICISMO_LISTENINGS = {
     ]
   },
 
+  "martines-sinfonia": {
+    composer: "Marianna Martines",
+    title: "Sinfonia in do maggiore",
+    videoId: "EzwrrqS1638",
+    purpose: "Collocare Martines dentro il linguaggio sinfonico del Classicismo, non ai margini come curiosità biografica",
+    layers: ["forma"],
+    events: [
+      {from:0,to:320,layer:"forma",label:"I · Allegro con spirito"},
+      {from:320,to:520,layer:"forma",label:"II · Andante ma non troppo"},
+      {from:520,to:760,layer:"forma",label:"III · Allegro spiritoso"}
+    ]
+  },
   "beethoven-9-4": {
     composer:"Ludwig van Beethoven",
     title:"Sinfonia n.9 · IV movimento",
