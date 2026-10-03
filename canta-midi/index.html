@@ -236,7 +236,7 @@ function estimateBpm(){
     var beat=60/bpm,score=0,count=0;
     for(var i=1;i<onsets.length;i++){
       var d=onsets[i]-onsets[i-1];
-      if(d<.12||d>4)return;
+      if(d<.12||d>4)continue;
       var units=d/beat;
       var allowed=[.25,.333333,.5,.666667,.75,1,1.5,2,3,4];
       var err=Math.min.apply(null,allowed.map(function(a){return Math.abs(units-a)}));
