@@ -238,6 +238,23 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 .ensemble-builder-result small{display:block;color:#6c6258;margin-top:.2rem}
 @media(max-width:600px){.viz-dialogue-voice{grid-template-columns:1fr}.ensemble-builder-result{grid-template-columns:70px 1fr}}
 
+
+.genealogy-board{margin:1.4rem 0 2.2rem;padding:1rem;background:#ece3d5;border:1px solid #cdbb9f}
+.genealogy-branches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.5rem}
+.genealogy-branches button{min-height:90px;border:1px solid #c7b69b;background:#faf6ee;padding:.75rem .55rem;font-family:var(--sans);font-size:.72rem;font-weight:900;cursor:pointer}
+.genealogy-branches button small{display:block;margin-top:.35rem;font-weight:600;color:#75685a}
+.genealogy-branches button.active{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-3px);box-shadow:0 8px 18px rgba(39,61,91,.18)}
+.genealogy-branches button.active small{color:#ddd}
+.genealogy-converge{display:grid;place-items:center;padding:1rem .5rem;text-align:center}
+.genealogy-converge span{font-size:1.6rem;color:var(--red)}.genealogy-converge b{font-family:var(--sans);font-size:1.35rem;letter-spacing:.12em}
+.genealogy-converge small{font-family:var(--sans);color:#6d6256;margin-top:.15rem}
+.genealogy-result{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;background:#211d19;color:#f6eee3;padding:1rem}
+.genealogy-result b{font-family:var(--sans);letter-spacing:.07em}.genealogy-result p{margin:.25rem 0 0;font-size:.9rem;color:#e5dacb}
+.genealogy-side{margin-top:1rem;padding:.85rem;background:#f8f3ea;border-left:5px solid var(--gold);display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;font-family:var(--sans);font-size:.72rem}
+.genealogy-side>b{width:100%;color:var(--red);letter-spacing:.07em}.genealogy-side span{padding:.42rem .55rem;background:#ebe0cf;border:1px solid #cfbea5}.genealogy-side i{font-style:normal;color:var(--red);font-weight:900}
+@media(max-width:900px){.genealogy-branches{grid-template-columns:1fr 1fr}.genealogy-result{grid-template-columns:1fr}}
+@media(max-width:520px){.genealogy-branches{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -554,7 +571,24 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <p>Nel concerto grosso il piccolo <em>concertino</em> entra continuamente in relazione con il <em>ripieno</em>; nel concerto di ripieno, invece, non esiste più un solista permanente che debba emergere davanti agli altri. Rimane il gruppo e il gruppo stesso può diventare protagonista. Questo non significa che il concerto di ripieno “diventi” automaticamente sinfonia, ma costruisce una cultura nella quale l’orchestra può bastare a sé stessa.</p>
 <div class="mapline"><div class="mapnode">CONCERTINO ⇄ RIPIENO</div><div class="arrow">→</div><div class="mapnode">CONCERTO DI GRUPPO</div><div class="arrow">→</div><div class="mapnode">ORCHESTRA PROTAGONISTA</div></div>
 <h3>Una confluenza, non una discendenza</h3>
-<div class="mapline"><div class="mapnode">SINFONIA D’OPERA</div><div class="mapnode">CONCERTO GROSSO</div><div class="mapnode">RIPIENO</div><div class="mapnode">DANZA / SERENATA</div><div class="mapnode">SINTASSI CLASSICA</div></div>
+<div class="genealogy-board" data-genealogy>
+  <div class="genealogy-branches">
+    <button type="button" data-branch="opera">SINFONIA D’OPERA<small>teatro · Scarlatti</small></button>
+    <button type="button" data-branch="grosso">CONCERTO GROSSO<small>concertino ⇄ ripieno</small></button>
+    <button type="button" data-branch="ripieno">CONCERTO DI RIPIENO<small>orchestra protagonista</small></button>
+    <button type="button" data-branch="danza">DANZA / SERENATA<small>ciclo · minuetto</small></button>
+    <button type="button" data-branch="sintassi">SINTASSI CLASSICA<small>frase · tonalità · forma</small></button>
+  </div>
+  <div class="genealogy-converge"><span>↓</span><b>SINFONIA</b><small>una convergenza, non una discendenza unica</small></div>
+  <div class="genealogy-result">
+    <div><b data-genealogy-title>SINFONIA D’OPERA</b><p data-genealogy-text>Dal teatro arrivano gesto introduttivo, energia e alcune organizzazioni in più movimenti.</p></div>
+    <button class="btn video" data-genealogy-video data-video="8YYS-sqYg5s" data-title="Alessandro Scarlatti · Griselda · Sinfonia">▶ Ascolta il ramo</button>
+  </div>
+  <div class="genealogy-side">
+    <b>RAMO LATERALE · IL PRINCIPIO CONCERTANTE</b>
+    <span>CONCERTINO ⇄ RIPIENO</span><i>→</i><span>ALCUNI ⇄ TUTTI</span><i>→</i><span>SINFONIA CONCERTANTE</span>
+  </div>
+</div>
 <p>Dal teatro possono arrivare il gesto introduttivo e alcune organizzazioni in più movimenti; dal concerto l’energia ritmica, i grandi tutti e il gusto del contrasto; dal concerto grosso l’esperienza del dialogo fra gruppi; dal concerto di ripieno la possibilità di un’orchestra autosufficiente; dalla danza il minuetto; dalla nuova sintassi classica fraseologia, relazioni tonali e forma-sonata.</p>
 <p>A Milano, nelle sinfonie di Giovanni Battista Sammartini, molti di questi elementi convivono ancora senza avere raggiunto la configurazione che assoceremo poi a Haydn e Mozart. Non abbiamo bisogno di attribuirgli l’invenzione del genere: è molto più interessante ascoltare una fase nella quale il processo di emancipazione è ancora visibile.</p>
 <div class="mini-listens"><button class="mini video" data-video="oiijreda94w" data-title="G. B. Sammartini · sinfonie · Accademia d'Arcadia, strumenti storici">▶ Sammartini</button></div>
@@ -769,6 +803,29 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
     }
     buttons.forEach(b=>b.addEventListener("click",()=>select(b.dataset.ensemble)));
     select("3");
+  });
+})();
+</script>
+<script>
+(()=>{
+  const genealogyData={
+    opera:{title:"SINFONIA D’OPERA",text:"Dal teatro arrivano il gesto introduttivo, l’energia e alcune organizzazioni in più movimenti.",video:"8YYS-sqYg5s",videoTitle:"Alessandro Scarlatti · Griselda · Sinfonia"},
+    grosso:{title:"CONCERTO GROSSO",text:"Il contrasto concertino-ripieno abitua l’orecchio a pensare l’orchestra come insieme internamente articolato.",video:"mT5blCePy9g",videoTitle:"Corelli · Concerto grosso op.6 n.4"},
+    ripieno:{title:"CONCERTO DI RIPIENO",text:"Quando non esiste un solista permanente, il gruppo può diventare esso stesso il protagonista del discorso.",video:"HxmrZnk34kY",videoTitle:"Vivaldi · Concerto ripieno RV 158"},
+    danza:{title:"DANZA / SERENATA",text:"Minuetto, successione di movimenti e pratiche sociali entrano nella costruzione del ciclo sinfonico maturo.",video:"",videoTitle:""},
+    sintassi:{title:"NUOVA SINTASSI CLASSICA",text:"Frase, cadenza, gerarchia tonale e forma-sonata forniscono alla sinfonia una grammatica capace di organizzare il tempo.",video:"oiijreda94w",videoTitle:"G. B. Sammartini · Sinfonie"}
+  };
+  document.querySelectorAll("[data-genealogy]").forEach(root=>{
+    const buttons=[...root.querySelectorAll("[data-branch]")],title=root.querySelector("[data-genealogy-title]"),text=root.querySelector("[data-genealogy-text]"),listen=root.querySelector("[data-genealogy-video]");
+    function select(key){
+      buttons.forEach(b=>b.classList.toggle("active",b.dataset.branch===key));
+      const d=genealogyData[key]; if(!d)return;
+      title.textContent=d.title;text.textContent=d.text;
+      if(d.video){listen.hidden=false;listen.dataset.video=d.video;listen.dataset.title=d.videoTitle;}
+      else listen.hidden=true;
+    }
+    buttons.forEach(b=>b.addEventListener("click",()=>select(b.dataset.branch)));
+    select("opera");
   });
 })();
 </script>
