@@ -98,6 +98,15 @@ window.CLASSICISMO_LISTENINGS = {
     purpose:"Lo stesso materiale può assumere una nuova funzione quando cambia il luogo tonale",
     layers:["tema","tonalita"],
     provisional:true,
+    visualization:{
+      type:"themeShift",
+      idea:"STESSA IDEA",
+      places:[
+        {label:"RE MAGGIORE",detail:"casa"},
+        {label:"LA MAGGIORE",detail:"nuova funzione"},
+        {label:"RE MAGGIORE",detail:"ritorno"}
+      ]
+    },
     scoreMap:[
       {bars:"Adagio introduttivo",form:"Introduzione",key:"Re minore → dominante",note:"Prima dell’Allegro, Haydn oscura la tonica e costruisce una soglia solenne."},
       {bars:"Allegro · primo gruppo",form:"Esposizione",key:"Re maggiore",note:"Il materiale principale stabilisce con decisione la casa."},
@@ -115,6 +124,15 @@ window.CLASSICISMO_LISTENINGS = {
     purpose:"La forma-sonata incontra il principio concertante e conserva nella cadenza uno spazio di invenzione",
     layers:["organico","forma","cadenza"],
     provisional:true,
+    visualization:{
+      type:"concert",
+      stages:[
+        {label:"ORCHESTRA",detail:"presenta il mondo"},
+        {label:"PIANOFORTE",detail:"lo riattraversa"},
+        {label:"DIALOGO",detail:"forma + principio concertante"},
+        {label:"CADENZA",detail:"l’orchestra tace"}
+      ]
+    },
     scoreMap:[
       {bars:"Apertura orchestrale",form:"Presentazione del mondo orchestrale",key:"La maggiore",note:"L’orchestra presenta e ordina il materiale prima che il solista entri."},
       {bars:"Ingresso del pianoforte",form:"Nuovo attraversamento",key:"La maggiore → Mi maggiore",note:"Il solista non si limita a ripetere: rilegge il materiale e conduce la forma verso la nuova stabilità."},
@@ -133,6 +151,10 @@ window.CLASSICISMO_LISTENINGS = {
     purpose:"Circolazione delle funzioni e aspettativa nel Finale",
     layers:["aspettativa"],
     provisional:true,
+    visualization:{
+      type:"expectation",
+      stages:["frase","pausa","ancora?","frase","pausa","è finito?"]
+    },
     scoreMap:[
       {bars:"Finale, ritornello iniziale", form:"A", key:"Mi bemolle maggiore", note:"Il refrain rende molto forte la memoria di ciò che dovrebbe tornare."},
       {bars:"episodi e ritorni", form:"A–B–A–C–A", key:"regioni contrastanti → tonica", note:"Il rondò educa l'orecchio ad attendere il refrain."},
@@ -288,6 +310,14 @@ window.CLASSICISMO_LISTENINGS = {
     videoId: "EzwrrqS1638",
     purpose: "Collocare Martines dentro il linguaggio sinfonico del Classicismo, non ai margini come curiosità biografica",
     layers: ["forma"],
+    visualization:{
+      type:"cycle",
+      stages:[
+        {label:"I",detail:"Allegro con spirito",from:0,to:320},
+        {label:"II",detail:"Andante ma non troppo",from:320,to:520},
+        {label:"III",detail:"Allegro spiritoso",from:520,to:760}
+      ]
+    },
     events: [
       {from:0,to:320,layer:"forma",label:"I · Allegro con spirito"},
       {from:320,to:520,layer:"forma",label:"II · Andante ma non troppo"},
