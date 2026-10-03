@@ -170,17 +170,8 @@ window.CLASSICISMO_LISTENINGS = {
     title:"Quartetto K.465 · Introduzione e ingresso dell’Allegro",
     videoId:"kcfDxgfHs64",
     purpose:"Quattro voci costruiscono un territorio armonicamente ambiguo prima che il Do maggiore diventi inequivocabile",
-    layers:["voci","tonalita"],
+    layers:["tonalita"],
     provisional:true,
-    visualization:{
-      type:"quartet",
-      lanes:[
-        {label:"Violino I",events:[{from:24,to:45}]},
-        {label:"Violino II",events:[{from:18,to:40}]},
-        {label:"Viola",events:[{from:12,to:34}]},
-        {label:"Violoncello",events:[{from:6,to:28}]}
-      ]
-    },
     scoreMap:[
       {bars:"1–4",form:"Entrate successive",key:"centro tonale oscurato",note:"Violoncello, viola e violini entrano uno dopo l’altro; l’accordo percepito cambia continuamente sotto le note tenute."},
       {bars:"5–12",form:"Espansione cromatica",key:"aree instabili",note:"Semitoni, ritardi e false piste impediscono alla tonica di funzionare subito come casa."},
@@ -188,7 +179,6 @@ window.CLASSICISMO_LISTENINGS = {
       {bars:"23 →",form:"Allegro",key:"Do maggiore",note:"La casa diventa improvvisamente leggibile; l’ambiguità precedente acquista senso per contrasto."}
     ],
     events:[
-      {from:6,to:28,layer:"voci",label:"LE VOCI ENTRANO UNA ALLA VOLTA"},
       {from:6,to:92,layer:"tonalita",label:"DOV’È CASA? · centro tonale sfocato"},
       {from:92,to:125,layer:"tonalita",label:"DO MAGGIORE · la casa si mette a fuoco"}
     ]
