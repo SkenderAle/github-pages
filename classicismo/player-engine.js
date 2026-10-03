@@ -79,6 +79,14 @@
       box.innerHTML='<div class="viz-orchestra"><div class="viz-orchestra-gestures">'+(v.gestures||[]).map(g=>'<span>'+g+'</span>').join('')+'</div><div class="viz-orchestra-families">'+(v.families||[]).map(f=>'<b>'+f+'</b>').join('')+'</div></div>';
     }else if(v.type==="dialogue"){
       box.innerHTML='<div class="viz-dialogue">'+(v.voices||[]).map(voice=>'<div class="viz-dialogue-voice"><b>'+voice.label+'</b><div>'+(voice.roles||[]).map(r=>'<span>'+r+'</span>').join('')+'</div></div>').join('')+'</div>';
+    }else if(v.type==="themeShift"){
+      box.innerHTML='<div class="viz-theme-shift"><b>'+ (v.idea||"IDEA") +'</b><div>'+(v.places||[]).map((p,i)=>'<span><strong>'+p.label+'</strong><small>'+p.detail+'</small></span>'+(i<(v.places||[]).length-1?'<i>→</i>':'')).join('')+'</div></div>';
+    }else if(v.type==="concert"){
+      box.innerHTML='<div class="viz-concert">'+(v.stages||[]).map((s,i)=>'<div><b>'+s.label+'</b><small>'+s.detail+'</small></div>'+(i<(v.stages||[]).length-1?'<i>→</i>':'')).join('')+'</div>';
+    }else if(v.type==="expectation"){
+      box.innerHTML='<div class="viz-expectation">'+(v.stages||[]).map((s,i)=>'<span class="'+(String(s).includes("?")?"question-mark":"")+'">'+s+'</span>'+(i<(v.stages||[]).length-1?'<i>→</i>':'')).join('')+'</div>';
+    }else if(v.type==="cycle"){
+      box.innerHTML='<div class="viz-cycle">'+(v.stages||[]).map((s,i)=>'<div data-viz-stage="'+i+'"><b>'+s.label+'</b><small>'+s.detail+'</small></div>').join('')+'</div>';
     }
   }
 
@@ -107,6 +115,11 @@
       const label=root.querySelector("[data-growth-label]");
       if(dots)dots.innerHTML=Array.from({length:stage.count||1},()=>"<i></i>").join("");
       if(label)label.textContent=stage.label||"";
+    }else if(v.type==="cycle"){
+      v.stages.forEach((s,i)=>{
+        const el=root.querySelector('[data-viz-stage="'+i+'"]');
+        if(el)el.classList.toggle("active",t>=s.from&&t<s.to);
+      });
     }
   }
 
