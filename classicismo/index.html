@@ -255,6 +255,32 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 @media(max-width:900px){.genealogy-branches{grid-template-columns:1fr 1fr}.genealogy-result{grid-template-columns:1fr}}
 @media(max-width:520px){.genealogy-branches{grid-template-columns:1fr}}
 
+
+@media(max-width:820px){
+  .analysis-lab-grid{grid-template-columns:1fr}
+  .analysis-lab-head{flex-direction:column;align-items:stretch;gap:.45rem}
+  .analysis-clock{align-self:flex-start}
+  .analysis-score-row{grid-template-columns:1fr;gap:.2rem}
+  .analysis-score-row>b{grid-row:auto}
+  .analysis-player{min-height:0}
+  .analysis-modebar{position:sticky;top:3.65rem;z-index:8;box-shadow:0 4px 12px rgba(50,38,25,.08)}
+  .mapline{scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+  .mapnode{scroll-snap-align:start}
+  nav{-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+  nav a{scroll-snap-align:start}
+}
+@media(max-width:600px){
+  .analysis-lab{margin-left:-.35rem;margin-right:-.35rem}
+  .analysis-lab-grid{padding:.75rem}
+  .analysis-lab-head{padding:.85rem}
+  .analysis-modebar{gap:.35rem;padding:.55rem .7rem;top:3.45rem}
+  .analysis-modebar button{flex:1;min-width:88px;min-height:44px}
+  .btn,.mini{min-height:44px}
+  .ensemble-builder-controls button{width:44px;height:44px}
+  .genealogy-result .btn{width:100%}
+  .hero-credit{left:1rem;right:1rem;text-align:right}
+}
+
 </style>
 </head>
 <body>
