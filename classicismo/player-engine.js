@@ -77,6 +77,8 @@
       box.innerHTML='<div class="viz-harmonics"><div class="viz-harmonic-line">'+(v.partials||[]).map((n,i)=>'<span style="--h:'+(1+i*.12)+'">'+n+'</span>').join('')+'</div><p>'+ (v.message||'') +'</p></div>';
     }else if(v.type==="orchestra"){
       box.innerHTML='<div class="viz-orchestra"><div class="viz-orchestra-gestures">'+(v.gestures||[]).map(g=>'<span>'+g+'</span>').join('')+'</div><div class="viz-orchestra-families">'+(v.families||[]).map(f=>'<b>'+f+'</b>').join('')+'</div></div>';
+    }else if(v.type==="dialogue"){
+      box.innerHTML='<div class="viz-dialogue">'+(v.voices||[]).map(voice=>'<div class="viz-dialogue-voice"><b>'+voice.label+'</b><div>'+(voice.roles||[]).map(r=>'<span>'+r+'</span>').join('')+'</div></div>').join('')+'</div>';
     }
   }
 
