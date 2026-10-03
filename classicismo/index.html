@@ -589,14 +589,7 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
  function show(t,html){title.textContent=t;body.innerHTML=html;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
  function hide(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');body.innerHTML='';document.body.style.overflow=''}
  close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
- document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{
-   const id=el.dataset.video,t=el.dataset.title||'Ascolto';
-   show(t,\`<iframe src="https://www.youtube-nocookie.com/embed/\${id}?rel=0" title="\${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>\`)
- }));
- document.querySelectorAll('.placeholder-btn').forEach(el=>el.addEventListener('click',()=>{
-   show(el.dataset.title||'Ascolto',\`<div class="placeholder"><strong>Card pronta.</strong><br>La registrazione definitiva e i punti sincronizzati verranno fissati nella fase di regia degli ascolti, evitando di legare il sito a un video provvisorio.</div>\`)
- }));
- const progress=document.getElementById('progress'),top=document.getElementById('scrolltop');
+ document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{\n   const id=el.dataset.video,t=el.dataset.title||'Ascolto';\n   const start=parseInt(el.dataset.start||'0',10)||0;\n   const startQuery=start ? '&start='+start : '';\n   show(t,`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0${startQuery}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`)\n }));\n const progress=document.getElementById('progress'),top=document.getElementById('scrolltop');
  const links=[...document.querySelectorAll('#nav a[href^="#"]')];
  function spy(){
    const doc=document.documentElement,max=doc.scrollHeight-doc.clientHeight;
