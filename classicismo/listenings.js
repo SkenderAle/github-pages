@@ -106,7 +106,7 @@ window.CLASSICISMO_LISTENINGS = {
   "mozart-k465": {
     composer:"Wolfgang Amadeus Mozart",
     title:"Quartetto K.465 · Introduzione",
-    videoId:null,
+    videoId:"kcfDxgfHs64",
     purpose:"Ambiguità tonale e progressiva messa a fuoco del Do maggiore",
     layers:["voci","tonalita","armonia"],
     events:[]
@@ -157,7 +157,8 @@ window.CLASSICISMO_LISTENINGS = {
   "beethoven-5-34": {
     composer:"Ludwig van Beethoven",
     title:"Sinfonia n.5 · passaggio III–IV",
-    videoId:null,
+    videoId:"dhI_qDV5LwI",
+    startSeconds:884,
     purpose:"Dissoluzione del confine fra i movimenti",
     layers:["ciclo"],
     events:[]
@@ -166,7 +167,7 @@ window.CLASSICISMO_LISTENINGS = {
   "beethoven-9-4": {
     composer:"Ludwig van Beethoven",
     title:"Sinfonia n.9 · IV movimento",
-    videoId:null,
+    videoId:"fx827bYPBNw",
     purpose:"Dal tema strumentale della Gioia alla fraternità corale",
     layers:["orchestrazione","testo"],
     events:[]
