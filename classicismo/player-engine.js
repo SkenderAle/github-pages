@@ -4,6 +4,15 @@
 (()=>{
   const STORE=()=>window.CLASSICISMO_LISTENINGS||{};
   let apiPromise;
+  const mountedPlayers=new Set();
+  window.CLASSICISMO_STOP_ALL=()=>{
+    mountedPlayers.forEach(player=>{
+      try{
+        if(player&&typeof player.pauseVideo==="function")player.pauseVideo();
+        if(player&&typeof player.stopVideo==="function")player.stopVideo();
+      }catch(_){}
+    });
+  };
 
   function loadYouTubeAPI(){
     if(window.YT&&window.YT.Player) return Promise.resolve(window.YT);
@@ -232,6 +241,7 @@
       host:"https://www.youtube-nocookie.com",
       videoId:spec.videoId,
       playerVars:{
+        autoplay:0,
         playsinline:1,
         rel:0,
         modestbranding:1,
@@ -240,6 +250,7 @@
       },
       events:{
         onReady(){
+          mountedPlayers.add(player);
           root.dataset.playerMounted="ready";
           if(spec.startSeconds)player.seekTo(spec.startSeconds,true);
           last=-1;syncNow();
