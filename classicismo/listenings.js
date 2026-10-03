@@ -65,38 +65,16 @@ window.CLASSICISMO_LISTENINGS = {
   "mozart-k525-1": {
     composer:"Wolfgang Amadeus Mozart",
     title:"Eine kleine Nachtmusik K.525 · I movimento",
-    videoId:"hymFgSljttg",
-    purpose:"Mappa tonale intuitiva e successiva rivelazione della forma-sonata",
+    videoId:"KpHO4aSRqkQ",
+    purpose:"Partitura grafica animata e lettura della forma-sonata",
     layers:["tonalita","forma"],
-    provisional:true,
     scoreMap:[
       {bars:"1–18", form:"Primo gruppo", key:"Sol maggiore", note:"La casa viene stabilita con estrema evidenza."},
       {bars:"19–55", form:"Transizione, secondo gruppo e codette", key:"Sol → Re maggiore", note:"La dominante diventa una nuova regione sufficientemente stabile da sembrare un altrove."},
       {bars:"56–75", form:"Sviluppo", key:"Re → aree minori → preparazione di Sol", note:"Il materiale noto attraversa una zona meno stabile e prepara il ritorno."},
       {bars:"76–fine", form:"Ripresa e coda", key:"Sol maggiore", note:"Il materiale secondario viene ricondotto alla casa."}
     ],
-    conceptualMap:[
-      {label:"CASA",detail:"Sol maggiore"},
-      {label:"ALTROVE",detail:"Re maggiore"},
-      {label:"INSTABILITÀ",detail:"sviluppo"},
-      {label:"CASA",detail:"Sol maggiore"}
-    ],
-    visualization:{
-      type:"journey",
-      stages:[
-        {label:"CASA",detail:"Sol maggiore",from:0,to:39},
-        {label:"ALTROVE",detail:"Re maggiore",from:39,to:188},
-        {label:"INSTABILITÀ",detail:"sviluppo",from:188,to:223},
-        {label:"CASA",detail:"Sol maggiore",from:223,to:9999}
-      ]
-    },
-    events:[
-      {from:0,to:39,layer:"tonalita",label:"CASA · Sol maggiore"},
-      {from:39,to:96,layer:"tonalita",label:"ALTROVE · verso Re maggiore"},
-      {from:96,to:188,layer:"forma",label:"RIPETIZIONE DELL'ESPOSIZIONE · memoria del viaggio"},
-      {from:188,to:223,layer:"forma",label:"INSTABILITÀ · sviluppo"},
-      {from:223,to:328,layer:"tonalita",label:"CASA · Sol maggiore · ripresa"}
-    ]
+    events:[]
   },
 
   "haydn-104-1": {
