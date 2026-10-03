@@ -123,6 +123,11 @@
     }
   }
 
+  function setStatus(root,text){
+    const status=root.querySelector("[data-analysis-status]");
+    if(status&&text)status.textContent=text;
+  }
+
   function installModes(root,spec){
     let bar=root.querySelector(".analysis-modebar,.analysis-modes");
     if(!bar){
@@ -142,6 +147,7 @@
       if(viz)viz.hidden=mode==="listen";
       if(score)score.hidden=mode!=="analyze";
       if(note)note.hidden=mode!=="analyze"||!spec.provisional;
+      root.dispatchEvent(new CustomEvent("analysis:modechange",{detail:{mode}}));
     }
     root.addEventListener("click",e=>{
       const b=e.target.closest("[data-analysis-mode]");
@@ -165,43 +171,84 @@
     const spec=STORE()[root.dataset.analysisId];if(!spec)return;
     const target=root.querySelector("[data-player]");if(!target||!spec.videoId)return;
     root.dataset.playerMounted="loading";
+    setStatus(root,"Caricamento dell’ascolto…");
     target.innerHTML='<div style="display:grid;place-items:center;min-height:220px;color:#d8c9b5;font-family:system-ui,sans-serif;font-size:.8rem">Caricamento ascolto…</div>';
     await loadYouTubeAPI();
-    const player=new YT.Player(target,{
-      videoId:spec.videoId,
-      playerVars:{playsinline:1,rel:0,origin:location.origin,start:spec.startSeconds||0},
-      events:{
-        onReady(){root.dataset.playerMounted="ready";if(spec.startSeconds)player.seekTo(spec.startSeconds,true);tick();},
-        onError(){root.dataset.playerMounted="error";const s=root.querySelector("[data-analysis-status]");if(s)s.textContent="Il video selezionato non è disponibile nell'embed: usa l'ascolto esterno della card.";}
-      }
-    });
 
-    let raf=0,last=-1;
-    function tick(){
+    let raf=0,last=-1,isPlaying=false;
+    const syncNow=()=>{
+      if(!player||typeof player.getCurrentTime!=="function")return;
+      const t=player.getCurrentTime(),whole=Math.floor(t);
+      if(whole===last)return;
+      last=whole;
+      const timeEl=root.querySelector("[data-current-time]");if(timeEl)timeEl.textContent=formatTime(t);
+      const events=activeEvents(spec.events,t);
+      root.querySelectorAll("[data-analysis-layer]").forEach(el=>{
+        const layer=el.dataset.analysisLayer;
+        const current=events.filter(e=>(e.layer||e.tipo)===layer);
+        const txt=current.map(e=>e.label||e.detail).filter(Boolean).join(" · ");
+        const out=el.querySelector("span")||el;out.textContent=txt;
+        el.classList.toggle("active",current.length>0);
+      });
+      updateVisualization(root,spec,t);
+    };
+    const stopTicker=()=>{if(raf){cancelAnimationFrame(raf);raf=0;}};
+    const startTicker=()=>{
+      if(raf)return;
       const loop=()=>{
-        if(player&&typeof player.getCurrentTime==="function"){
-          const t=player.getCurrentTime(),whole=Math.floor(t);
-          if(whole!==last){
-            last=whole;
-            const timeEl=root.querySelector("[data-current-time]");if(timeEl)timeEl.textContent=formatTime(t);
-            const events=activeEvents(spec.events,t);
-            root.querySelectorAll("[data-analysis-layer]").forEach(el=>{
-              const layer=el.dataset.analysisLayer;
-              const current=events.filter(e=>(e.layer||e.tipo)===layer);
-              const txt=current.map(e=>e.label||e.detail).filter(Boolean).join(" · ");
-              const out=el.querySelector("span")||el;out.textContent=txt;
-              el.classList.toggle("active",current.length>0);
-            });
-            updateVisualization(root,spec,t);
-          }
-        }
+        raf=0;
+        if(!isPlaying||document.hidden)return;
+        syncNow();
         raf=requestAnimationFrame(loop);
       };
       raf=requestAnimationFrame(loop);
-    }
+    };
+
+    const player=new YT.Player(target,{
+      host:"https://www.youtube-nocookie.com",
+      videoId:spec.videoId,
+      playerVars:{
+        playsinline:1,
+        rel:0,
+        modestbranding:1,
+        origin:location.origin,
+        start:spec.startSeconds||0
+      },
+      events:{
+        onReady(){
+          root.dataset.playerMounted="ready";
+          if(spec.startSeconds)player.seekTo(spec.startSeconds,true);
+          last=-1;syncNow();
+          setStatus(root,spec.purpose||"Pronto all’ascolto");
+        },
+        onStateChange(e){
+          if(e.data===YT.PlayerState.PLAYING){
+            isPlaying=true;setStatus(root,"In riproduzione");startTicker();
+          }else{
+            isPlaying=false;stopTicker();last=-1;syncNow();
+            if(e.data===YT.PlayerState.PAUSED)setStatus(root,"In pausa");
+            else if(e.data===YT.PlayerState.ENDED)setStatus(root,"Ascolto terminato");
+            else if(e.data===YT.PlayerState.CUED||e.data===YT.PlayerState.UNSTARTED)setStatus(root,spec.purpose||"Pronto all’ascolto");
+          }
+        },
+        onError(){
+          isPlaying=false;stopTicker();root.dataset.playerMounted="error";
+          setStatus(root,"Il video selezionato non è disponibile nell’embed: usa l’ascolto esterno della card.");
+        }
+      }
+    });
+
     root.addEventListener("click",e=>{
       const jump=e.target.closest("[data-seek]");
-      if(jump&&player&&player.seekTo)player.seekTo(Number(jump.dataset.seek)||0,true);
+      if(jump&&player&&player.seekTo){
+        player.seekTo(Number(jump.dataset.seek)||0,true);
+        last=-1;syncNow();
+      }
+    });
+    root.addEventListener("analysis:modechange",()=>{last=-1;syncNow();});
+    document.addEventListener("visibilitychange",()=>{
+      if(document.hidden)stopTicker();
+      else if(isPlaying)startTicker();
     });
   }
 
