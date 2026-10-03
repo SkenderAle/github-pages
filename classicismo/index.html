@@ -195,6 +195,33 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
  h1{font-size:clamp(3rem,16vw,5rem)}.two-col{columns:1}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.viz-mechanism{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.viz-mechanism-card{padding:1rem;background:#eee6da;border:1px solid #d2c3ac}
+.viz-mechanism-card>b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.07em;margin-bottom:.65rem;color:var(--blue)}
+.viz-mechanism-card>div{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;font-family:var(--sans);font-size:.76rem}
+.viz-mechanism-card span{padding:.45rem .58rem;background:#faf6ef;border:1px solid #d8cab5;border-radius:999px}
+.viz-mechanism-card i{font-style:normal;color:var(--red);font-weight:900}
+.viz-register{display:grid;gap:.8rem}
+.viz-register-main,.viz-register-extension{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.viz-register span{display:grid;place-items:center;min-width:42px;height:42px;border-radius:50%;background:#e6ddd0;border:1px solid #c9baa4;font-family:var(--sans);font-size:.75rem;font-weight:850}
+.viz-register-extension{padding:.75rem;background:#e8d9d4;border-left:5px solid var(--red)}
+.viz-register-extension>b{font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;margin-right:.45rem}
+.viz-register-extension span{background:#f4e8e5;border-color:#c69289}
+.viz-harmonics{display:grid;gap:.8rem}
+.viz-harmonic-line{display:flex;align-items:end;gap:.32rem;min-height:95px;overflow-x:auto;padding-bottom:.25rem}
+.viz-harmonic-line span{display:grid;place-items:center;width:38px;min-width:38px;height:calc(28px * var(--h));background:#e5dccf;border-bottom:4px solid var(--gold);font-family:var(--sans);font-size:.7rem;font-weight:850}
+.viz-harmonics p{margin:0;font-size:.9rem;color:#62574c}
+.viz-orchestra{display:grid;gap:1rem}
+.viz-orchestra-gestures{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;align-items:center}
+.viz-orchestra-gestures span{padding:.8rem .45rem;text-align:center;background:#ede4d7;border:1px solid #d3c2aa;font-family:var(--sans);font-weight:850;font-size:.74rem}
+.viz-orchestra-gestures span:nth-child(2){font-size:.9rem;transform:scaleY(1.08)}
+.viz-orchestra-gestures span:nth-child(3){background:#e7d6d1;border-color:#bd887d}
+.viz-orchestra-gestures span:nth-child(4){background:#dde4ec;border-color:#9eafc3}
+.viz-orchestra-families{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem}
+.viz-orchestra-families b{padding:.7rem .45rem;text-align:center;background:#f8f2e8;border-top:4px solid var(--blue);font-family:var(--sans);font-size:.72rem}
+@media(max-width:600px){.viz-mechanism{grid-template-columns:1fr}.viz-orchestra-gestures,.viz-orchestra-families{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 <body>
