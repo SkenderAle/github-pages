@@ -55,6 +55,15 @@ window.CLASSICISMO_LISTENINGS = {
       {label:"INSTABILITÀ",detail:"sviluppo"},
       {label:"CASA",detail:"Sol maggiore"}
     ],
+    visualization:{
+      type:"journey",
+      stages:[
+        {label:"CASA",detail:"Sol maggiore",from:0,to:39},
+        {label:"ALTROVE",detail:"Re maggiore",from:39,to:188},
+        {label:"INSTABILITÀ",detail:"sviluppo",from:188,to:223},
+        {label:"CASA",detail:"Sol maggiore",from:223,to:9999}
+      ]
+    },
     events:[
       {from:0,to:39,layer:"tonalita",label:"CASA · Sol maggiore"},
       {from:39,to:96,layer:"tonalita",label:"ALTROVE · verso Re maggiore"},
@@ -126,6 +135,15 @@ window.CLASSICISMO_LISTENINGS = {
     purpose:"Quattro voci costruiscono un territorio armonicamente ambiguo prima che il Do maggiore diventi inequivocabile",
     layers:["voci","tonalita"],
     provisional:true,
+    visualization:{
+      type:"quartet",
+      lanes:[
+        {label:"Violino I",events:[{from:24,to:45}]},
+        {label:"Violino II",events:[{from:18,to:40}]},
+        {label:"Viola",events:[{from:12,to:34}]},
+        {label:"Violoncello",events:[{from:6,to:28}]}
+      ]
+    },
     scoreMap:[
       {bars:"1–4",form:"Entrate successive",key:"centro tonale oscurato",note:"Violoncello, viola e violini entrano uno dopo l’altro; l’accordo percepito cambia continuamente sotto le note tenute."},
       {bars:"5–12",form:"Espansione cromatica",key:"aree instabili",note:"Semitoni, ritardi e false piste impediscono alla tonica di funzionare subito come casa."},
@@ -164,6 +182,15 @@ window.CLASSICISMO_LISTENINGS = {
     purpose:"La forma-sonata sotto pressione: sviluppo e coda dilatati",
     layers:["motivo","forma"],
     provisional:true,
+    visualization:{
+      type:"proportions",
+      stages:[
+        {label:"ESPOSIZIONE",weight:151,from:45,to:260},
+        {label:"SVILUPPO",weight:243,from:260,to:650},
+        {label:"RIPRESA",weight:157,from:650,to:885},
+        {label:"CODA",weight:140,from:885,to:9999}
+      ]
+    },
     scoreMap:[
       {bars:"1–151", form:"Esposizione", key:"Mi bemolle maggiore → Si bemolle", note:"La casa è immediata, ma il Do diesis del tema incrina presto la sua stabilità."},
       {bars:"152–394 circa", form:"Sviluppo", key:"ampia mobilità tonale", note:"La zona di instabilità assume dimensioni eccezionali e introduce anche nuovo materiale."},
