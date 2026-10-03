@@ -29,7 +29,20 @@ window.CLASSICISMO_LISTENINGS = {
     videoId:"04nZ6EDWq2E",
     purpose:"Partitura sincronizzata, geografia tonale e forma-sonata",
     layers:["tonalita","forma"],
-    provisional:true,
+    provisional:false,
+    visualization:{
+      type:"journey",
+      stages:[
+        {label:"CASA",detail:"Do maggiore",from:7,to:30},
+        {label:"ALTROVE",detail:"Sol maggiore · dominante",from:30,to:60},
+        {label:"CASA",detail:"Do maggiore · ritornello",from:60,to:85},
+        {label:"ALTROVE",detail:"Sol maggiore",from:85,to:110},
+        {label:"SVILUPPO",detail:"Sol minore · modulazioni",from:110,to:132},
+        {label:"RIPRESA",detail:"Fa maggiore · sottodominante",from:132,to:166},
+        {label:"CASA",detail:"Do maggiore",from:166,to:180},
+        {label:"CODA",detail:"conclusione",from:180,to:9999}
+      ]
+    },
     scoreMap:[
       {bars:"1–12", form:"Tema iniziale", key:"Do maggiore", note:"Melodia chiarissima sopra basso albertino; la tonica funziona come casa."},
       {bars:"13–28", form:"Area secondaria e chiusa", key:"verso Sol maggiore", note:"La nuova stabilità è la dominante; la codetta conferma Sol."},
@@ -38,7 +51,14 @@ window.CLASSICISMO_LISTENINGS = {
       {bars:"58–73", form:"Area secondaria ricomposta", key:"Do maggiore", note:"La seconda area viene ricondotta alla tonica e chiude il viaggio."}
     ],
     events:[
-      {from:60,to:9999,layer:"tonalita",label:"RITORNO TONALE · Do maggiore"}
+      {from:7,to:30,layer:"tonalita",label:"CASA · Do maggiore"},
+      {from:30,to:60,layer:"tonalita",label:"ALTROVE · Sol maggiore · tonalità dominante"},
+      {from:60,to:85,layer:"tonalita",label:"RITORNO A CASA · Do maggiore · ritornello"},
+      {from:85,to:110,layer:"tonalita",label:"ANCORA ALTROVE · Sol maggiore · dominante"},
+      {from:110,to:132,layer:"forma",label:"SVILUPPO · Sol minore e modulazioni · scalette che disorientano"},
+      {from:132,to:166,layer:"forma",label:"RIPRESA · Fa maggiore · sottodominante"},
+      {from:166,to:180,layer:"tonalita",label:"RITORNO TONALE · Do maggiore"},
+      {from:180,to:9999,layer:"forma",label:"CODA CONCLUSIVA"}
     ]
   },
 
