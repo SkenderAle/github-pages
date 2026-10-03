@@ -140,6 +140,37 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 .analysis-score-row span{font-size:.93rem}
 .analysis-score-row small{font-family:var(--sans);font-size:.78rem;line-height:1.45;color:#6b6155}
 .analysis-note{margin:.75rem 1rem 1rem;padding:.7rem .85rem;background:#f3ead7;border-left:4px solid var(--gold);font-family:var(--sans);font-size:.76rem;color:#6a5c48}
+.analysis-modebar{padding:.7rem 1rem;margin:0!important;background:#f7f1e7;border-bottom:1px solid #ddd0bb}
+.analysis-viz{padding:1rem;border-top:1px solid #ddd0bb;background:#f4ecdf}
+.viz-journey{display:flex;align-items:stretch;gap:.5rem;overflow-x:auto;padding:.2rem 0}
+.viz-stage{min-width:145px;flex:1;padding:.9rem .8rem;border:1px solid #cfbea5;background:#eee5d7;opacity:.58;transition:transform .22s ease,opacity .22s ease,background .22s ease}
+.viz-stage b,.viz-stage small{display:block;font-family:var(--sans)}
+.viz-stage b{font-size:.78rem;letter-spacing:.07em}.viz-stage small{font-size:.72rem;color:#6f6256;margin-top:.18rem}
+.viz-stage.active{opacity:1;background:#efe0bc;transform:translateY(-3px);box-shadow:0 7px 18px rgba(70,50,25,.12)}
+.viz-arrow{display:grid;place-items:center;color:var(--red);font-weight:900}
+.viz-quartet{display:grid;gap:.45rem}
+.viz-lane{display:grid;grid-template-columns:110px 1fr;gap:.7rem;align-items:center;padding:.58rem .7rem;border:1px solid #d0c1ab;background:#eee6da;opacity:.56;transition:all .2s ease}
+.viz-lane b{font-family:var(--sans);font-size:.76rem}.viz-lane span{height:8px;border-radius:999px;background:#c8bba8;transition:all .2s ease}
+.viz-lane.active{opacity:1;background:#f1ded9;border-color:#ba7e72}.viz-lane.active span{background:var(--red);box-shadow:0 0 0 4px rgba(123,42,36,.09)}
+.viz-proportions{display:flex;align-items:stretch;min-height:95px;gap:.35rem}
+.viz-proportion{display:grid;place-items:center;text-align:center;padding:.65rem .35rem;background:#ded3c1;border-bottom:5px solid #b8a98e;opacity:.58;transition:all .22s ease;min-width:80px}
+.viz-proportion b,.viz-proportion small{display:block;font-family:var(--sans)}.viz-proportion b{font-size:.7rem;letter-spacing:.04em}.viz-proportion small{font-size:.66rem;color:#716659}
+.viz-proportion.active{opacity:1;background:#e9d4cf;border-bottom-color:var(--red);transform:translateY(-3px)}
+.viz-texture{display:grid;gap:.55rem}
+.viz-texture-lane{display:grid;grid-template-columns:150px 120px 1fr;gap:.7rem;align-items:center;padding:.65rem .75rem;background:#eee6da;border:1px solid #d2c3ac;opacity:.58;transition:all .2s ease}
+.viz-texture-lane b,.viz-texture-lane small{font-family:var(--sans)}.viz-texture-lane b{font-size:.76rem}.viz-texture-lane small{font-size:.7rem;color:#75695d}
+.viz-texture-lane span{height:8px;border-radius:999px;background:#c8bba8}.viz-texture-lane.active{opacity:1;background:#e9dfcf;border-color:#b89b72}
+.viz-texture-lane.active span{background:linear-gradient(90deg,var(--blue),var(--gold))}
+.viz-growth{min-height:150px;display:grid;place-items:center;gap:.8rem;padding:1rem}.viz-growth-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;max-width:520px}
+.viz-growth-dots i{width:16px;height:16px;border-radius:50%;background:var(--blue);display:block;box-shadow:0 0 0 3px rgba(39,61,91,.08);animation:popin .22s ease both}
+.viz-growth>b{font-family:var(--sans);letter-spacing:.12em;font-size:.78rem;color:var(--red)}
+@keyframes popin{from{transform:scale(.35);opacity:.2}to{transform:scale(1);opacity:1}}
+.analysis-lab[data-mode="listen"] .analysis-live,.analysis-lab[data-mode="listen"] .analysis-viz{display:none!important}
+.analysis-lab[data-mode="see"] .analysis-score,.analysis-lab[data-mode="see"] .analysis-note{display:none!important}
+.analysis-lab[data-mode="analyze"] .analysis-score{display:block}
+.analysis-viz[hidden],.analysis-score[hidden],.analysis-note[hidden],.analysis-live[hidden]{display:none!important}
+@media(max-width:600px){.viz-proportions{overflow-x:auto}.viz-proportion{min-width:100px}.viz-lane{grid-template-columns:90px 1fr}.viz-texture-lane{grid-template-columns:1fr}.viz-texture-lane span{width:100%}}
+
 @media(max-width:760px){.analysis-lab-grid{grid-template-columns:1fr}.analysis-score-row{grid-template-columns:1fr}.analysis-score-row>b{grid-row:auto}}
 \n
 .sources{background:#231f1b;color:#f4eadc;margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem}
