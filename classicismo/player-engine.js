@@ -10,7 +10,9 @@
       const prev=window.onYouTubeIframeAPIReady;
       window.onYouTubeIframeAPIReady=()=>{ if(typeof prev==="function") prev(); resolve(window.YT); };
       if(!document.querySelector('script[src*="youtube.com/iframe_api"]')){
-        const s=document.createElement("script"); s.src="https://www.youtube.com/iframe_api"; document.head.appendChild(s);
+        const s=document.createElement("script");
+        s.src="https://www.youtube.com/iframe_api";
+        document.head.appendChild(s);
       }
     });
     return apiPromise;
@@ -37,17 +39,45 @@
       </div>`).join("");
   }
 
+  function installModes(root,spec){
+    const head=root.querySelector(".analysis-lab-head");
+    if(head&&!head.querySelector(".analysis-modes")){
+      const modes=document.createElement("div");
+      modes.className="analysis-modes";
+      modes.setAttribute("role","group");
+      modes.setAttribute("aria-label","Livello di lettura");
+      modes.innerHTML='<button type="button" data-mode="listen" class="active">Ascolta</button><button type="button" data-mode="see">Vedi</button><button type="button" data-mode="analyse">Analizza</button>';
+      head.appendChild(modes);
+    }
+
+    function setMode(mode){
+      root.dataset.mode=mode;
+      root.querySelectorAll(".analysis-modes button").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode));
+      const live=root.querySelector(".analysis-live");
+      const score=root.querySelector(".analysis-score");
+      const note=root.querySelector(".analysis-note");
+      if(live) live.hidden=mode==="listen";
+      if(score) score.hidden=mode!=="analyse";
+      if(note) note.hidden=mode!=="analyse"||!spec.provisional;
+    }
+
+    root.addEventListener("click",e=>{
+      const b=e.target.closest(".analysis-modes button");
+      if(b) setMode(b.dataset.mode);
+    });
+    setMode("listen");
+  }
+
   async function mount(root){
     const id=root.dataset.analysisId,spec=STORE()[id];
     if(!spec) return;
     renderScoreMap(root,spec);
+    installModes(root,spec);
 
     const title=root.querySelector("[data-analysis-title]");
     const status=root.querySelector("[data-analysis-status]");
-    const provisional=root.querySelector("[data-provisional]");
     if(title) title.textContent=spec.title;
     if(status) status.textContent=spec.purpose||"Ascolto guidato";
-    if(provisional) provisional.hidden=!spec.provisional;
 
     const target=root.querySelector("[data-player]");
     if(!target||!spec.videoId) return;
