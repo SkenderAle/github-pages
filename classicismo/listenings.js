@@ -9,6 +9,17 @@ window.CLASSICISMO_LISTENINGS = {
     videoId:"_y6ZpoQrZzc",
     purpose:"Pubblico, attesa orchestrale e ingresso del solista",
     layers:["organico"],
+    visualization:{
+      type:"dialogue",
+      voices:[
+        {label:"ORCHESTRA",roles:["prepara","inquieta","costruisce l’attesa"]},
+        {label:"PIANOFORTE",roles:["entra dopo","risponde","trasforma"]}
+      ]
+    },
+    scoreMap:[
+      {bars:"apertura",form:"Orchestra sola",key:"Re minore",note:"Il pubblico entra in un mondo già costruito prima che il solista compaia."},
+      {bars:"ingresso del pianoforte",form:"Nuovo soggetto drammatico",key:"Re minore",note:"Il solista non viene aggiunto dall’esterno: entra in una tensione orchestrale già attiva."}
+    ],
     events:[]
   },
 
