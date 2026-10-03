@@ -63,11 +63,11 @@ select,input[type=number]{width:100%;margin-top:7px;background:#0b1020;color:#ff
 <section class="card">
   <h2>Pulizia della melodia</h2>
   <div class="settings">
-    <label>Durata minima <span id="minMsLabel">100 ms</span><input id="minMs" type="range" min="40" max="350" value="100" step="10"></label>
-    <label>Stabilità della nota <span id="stabilityLabel">65 cent</span><input id="stability" type="range" min="35" max="90" value="65" step="5"></label>
+    <label>Durata minima <span id="minMsLabel">35 ms</span><input id="minMs" type="range" min="20" max="250" value="35" step="5"></label>
+    <label>Stabilità della nota <span id="stabilityLabel">55 cent</span><input id="stability" type="range" min="35" max="90" value="55" step="5"></label>
     <label>Soglia segnale <span id="rmsLabel">0.012</span><input id="rms" type="range" min="0.004" max="0.05" value="0.012" step="0.002"></label>
   </div>
-  <p class="small">La prima altezza stabile diventa il riferimento dell'esecuzione. Le note successive vengono quantizzate soprattutto per intervallo rispetto a quel riferimento: così un ingresso sistematicamente alto o basso non trasforma un quarto di tono in una scelta arbitraria fra due note. Il nome assoluto della prima nota resta convenzionale finché non conosciamo la tonalità.</p>
+  <p class="small">La cattura ora usa una finestra temporale più fitta e riconosce anche riattacchi rapidi sulla stessa altezza. La prima altezza stabile diventa il riferimento dell'esecuzione. Le note successive vengono quantizzate soprattutto per intervallo rispetto a quel riferimento: così un ingresso sistematicamente alto o basso non trasforma un quarto di tono in una scelta arbitraria fra due note. Il nome assoluto della prima nota resta convenzionale finché non conosciamo la tonalità.</p>
 </section>
 
 <section class="card">
@@ -85,7 +85,8 @@ select,input[type=number]{width:100%;margin-top:7px;background:#0b1020;color:#ff
     </label>
     <label>Griglia ritmica
       <select id="gridSelect">
-        <option value="4">Sedicesimi</option>
+        <option value="8">Trentaduesimi</option>
+        <option value="4" selected>Sedicesimi</option>
         <option value="2">Ottavi</option>
         <option value="3">Terzine</option>
       </select>
@@ -109,7 +110,7 @@ select,input[type=number]{width:100%;margin-top:7px;background:#0b1020;color:#ff
 
 <section class="card small">
   <span class="pill">audio locale</span><span class="pill">HTTPS</span><span class="pill">MIDI Type 0</span><span class="pill">PWA</span>
-  <p>Prototipo 0.2: altezza relativa, accenti, pulsazione, metro proposto, quantizzazione ritmica e MIDI con tempo/time signature.</p>
+  <p>Prototipo 0.3: cattura rapida, riattacchi sulla stessa nota, altezza relativa, accenti, pulsazione, metro proposto e MIDI quantizzato.</p>
 </section>
 </main>
 
@@ -186,7 +187,7 @@ function tick(){
     noteEl.textContent=shown===null?'…':nameFromMidi(shown);freqEl.textContent=p.freq.toFixed(1)+' Hz';centsEl.textContent=referencePitch===null?'calibrazione':((c>0?'+':'')+c+' cent rel.');
     needle.style.left=referencePitch===null?'50%':(Math.max(0,Math.min(100,50+c/2)))+'%';samples.push({t:t,midi:m,rms:p.rms});
   }else{noteEl.textContent=referencePitch===null?'…':'—';freqEl.textContent='0.0 Hz';centsEl.textContent=referencePitch===null?'calibrazione':'0 cent rel.';needle.style.left='50%';samples.push({t:t,midi:null,rms:p.rms})}
-  timer=setTimeout(tick,55);
+  timer=setTimeout(tick,25);
 }
 function stop(){
   clearTimeout(timer);if(stream)stream.getTracks().forEach(function(t){t.stop()});if(audioCtx)audioCtx.close();analyser=null;
@@ -194,18 +195,37 @@ function stop(){
   statusEl.textContent=notes.length?'Fatto: '+notes.length+' note utili. La forma melodica ora è indipendente dall’intonazione assoluta di partenza.':'Non ho ricavato note. Prova più vicino al microfono o abbassa la soglia.'
 }
 function rebuildNotes(){
-  var minDur=Number(minMs.value)/1000,stableTol=Number(stability.value)/100,raw=[],cur=null,silence=0;
+  var minDur=Number(minMs.value)/1000,stableTol=Number(stability.value)/100,raw=[],cur=null,silence=0,lastRms=null;
   samples.forEach(function(s){
     if(s.midi==null){
-      if(cur){silence++;if(silence>=3){cur.end=s.t;raw.push(cur);cur=null;silence=0}}
+      if(cur){
+        silence++;
+        if(silence>=1){
+          cur.end=Math.max(cur.start,s.t-.012);
+          raw.push(cur);cur=null;silence=0;lastRms=null;
+        }
+      }
       return;
     }
     silence=0;
-    if(!cur) cur={start:s.t,end:s.t,pitches:[s.midi],levels:[s.rms]};
-    else{
+    if(!cur){
+      cur={start:s.t,end:s.t,pitches:[s.midi],levels:[s.rms]};
+      lastRms=s.rms;
+    } else {
       var center=median(cur.pitches);
-      if(Math.abs(s.midi-center)<=stableTol){cur.end=s.t;cur.pitches.push(s.midi);cur.levels.push(s.rms)}
-      else{raw.push(cur);cur={start:s.t,end:s.t,pitches:[s.midi],levels:[s.rms]}}
+      var samePitch=Math.abs(s.midi-center)<=stableTol;
+      var recent=cur.levels.slice(-4);
+      var localLevel=median(recent)||lastRms||s.rms;
+      var age=s.t-cur.start;
+      var reattack=samePitch && age>=Math.max(.045,minDur*.75) && localLevel>0 && s.rms>localLevel*1.55 && s.rms-lastRms>localLevel*.28;
+      if(samePitch && !reattack){
+        cur.end=s.t;cur.pitches.push(s.midi);cur.levels.push(s.rms);
+      } else {
+        cur.end=Math.max(cur.start,s.t-.012);
+        raw.push(cur);
+        cur={start:s.t,end:s.t,pitches:[s.midi],levels:[s.rms]};
+      }
+      lastRms=s.rms;
     }
   });
   if(cur){cur.end=samples.length?samples[samples.length-1].t:cur.start;raw.push(cur)}
@@ -220,7 +240,7 @@ function rebuildNotes(){
   raw.forEach(function(n){
     var q=anchorMidi+Math.round(n.pitch-referencePitch);
     var prev=notes.length?notes[notes.length-1]:null;
-    if(prev&&prev.midi===q&&n.start-prev.end<.18){
+    if(prev&&prev.midi===q&&n.start-prev.end<.028){
       prev.end=n.end;prev.rawPitches.push(n.pitch);prev.accents.push(n.accent);prev.accent=median(prev.accents);
     } else notes.push({start:n.start,end:n.end,midi:q,rawPitches:[n.pitch],accents:[n.accent],accent:n.accent});
   });
@@ -236,7 +256,7 @@ function estimateBpm(){
     var beat=60/bpm,score=0,count=0;
     for(var i=1;i<onsets.length;i++){
       var d=onsets[i]-onsets[i-1];
-      if(d<.12||d>4)continue;
+      if(d<.055||d>4)continue;
       var units=d/beat;
       var allowed=[.25,.333333,.5,.666667,.75,1,1.5,2,3,4];
       var err=Math.min.apply(null,allowed.map(function(a){return Math.abs(units-a)}));
