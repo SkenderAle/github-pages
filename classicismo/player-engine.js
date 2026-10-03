@@ -1,6 +1,6 @@
 /* Motore generico per ascolti sincronizzati — La misura e la rivoluzione.
    I player vengono caricati solo vicino al viewport. La teoria è progressiva:
-   ASCOLTA (solo musica), VEDI (mappa + segnali), ANALIZZA (anche schema per battute). */
+   ASCOLTA (solo musica), ANALIZZA (mappa, segnali e schema per battute). */
 (()=>{
   const STORE=()=>window.CLASSICISMO_LISTENINGS||{};
   let apiPromise;
@@ -132,7 +132,7 @@
     let bar=root.querySelector(".analysis-modebar,.analysis-modes");
     if(!bar){
       bar=document.createElement("div");bar.className="analysis-modebar";
-      bar.innerHTML='<button type="button" data-analysis-mode="listen" class="active">ASCOLTA</button><button type="button" data-analysis-mode="see">VEDI</button><button type="button" data-analysis-mode="analyze">ANALIZZA</button>';
+      bar.innerHTML='<button type="button" data-analysis-mode="listen" class="active">ASCOLTA</button><button type="button" data-analysis-mode="analyze">ANALIZZA</button>';
       const head=root.querySelector(".analysis-lab-head,.analysis-head");
       if(head)head.insertAdjacentElement("afterend",bar);else root.prepend(bar);
     }
