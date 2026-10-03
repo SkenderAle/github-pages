@@ -38,11 +38,7 @@ window.CLASSICISMO_LISTENINGS = {
       {bars:"58–73", form:"Area secondaria ricomposta", key:"Do maggiore", note:"La seconda area viene ricondotta alla tonica e chiude il viaggio."}
     ],
     events:[
-      {from:0,to:31,layer:"tonalita",label:"CASA · Do maggiore"},
-      {from:31,to:69,layer:"tonalita",label:"ALTROVE · Sol maggiore"},
-      {from:69,to:101,layer:"forma",label:"SVILUPPO · stabilità mobile"},
-      {from:101,to:130,layer:"tonalita",label:"IL TEMA RITORNA · Fa maggiore"},
-      {from:130,to:176,layer:"tonalita",label:"RITORNO TONALE · Do maggiore"}
+      {from:60,to:9999,layer:"tonalita",label:"RITORNO TONALE · Do maggiore"}
     ]
   },
 
