@@ -48,6 +48,8 @@ nav a.nav-donne:hover,nav a.nav-donne.active{background:#493042;color:#fff}
 nav a.method{background:var(--green);color:#fff}
 nav a.nav-verifica{background:var(--red);color:#fff;border:1px solid var(--red)}
 nav a.nav-sos{background:var(--green);color:#fff;border:1px solid var(--green)}
+nav button.nav-stop{flex:0 0 auto;white-space:nowrap;border:1px solid #7b2a24;background:#7b2a24;color:#fff;padding:.55rem .78rem;border-radius:999px;font-family:var(--sans);font-size:.79rem;font-weight:850;cursor:pointer}
+nav button.nav-stop:hover{background:#5f1f1b;border-color:#5f1f1b}
 .content{max-width:1180px;margin:auto;padding:4.4rem 1.35rem 6rem}
 .opening{display:grid;grid-template-columns:1.35fr .65fr;gap:3rem;align-items:start;margin-bottom:5.5rem}
 .lead{font-size:1.34rem;line-height:1.64;margin-top:0}
@@ -374,7 +376,7 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <div class="nav-row" aria-label="Indice, seconda riga">
 <a href="#quartetto">Quartetto</a><a href="#camera">Camera</a><a href="#sinfonia">Sinfonia</a>
 <a href="#vienna">Vienna</a><a href="#beethoven">Beethoven</a><a href="#donne" class="nav-donne">Donne</a>
-<a href="#epilogo">1804</a><a href="#metodo" class="method">Metodo</a><a href="#fonti">Fonti</a>
+<a href="#epilogo">1804</a><a href="#metodo" class="method">Metodo</a><a href="#fonti">Fonti</a><button type="button" class="nav-stop" id="stopAllMedia" aria-label="Ferma tutti gli audio e video">■ STOP</button>
 </div>
 </nav></div>
 
@@ -882,8 +884,21 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
    const id=el.dataset.video,t=el.dataset.title||'Ascolto';
    const start=parseInt(el.dataset.start||'0',10)||0;
    const startQuery=start ? '&start='+start : '';
-   show(t,`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0${startQuery}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`)
+   show(t,`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=0${startQuery}" title="${t}" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`)
  }));
+ const stopAll=document.getElementById('stopAllMedia');
+ function stopAllMedia(){
+   if(window.CLASSICISMO_STOP_ALL) window.CLASSICISMO_STOP_ALL();
+   document.querySelectorAll('iframe[src*="youtube.com"],iframe[src*="youtube-nocookie.com"]').forEach(frame=>{
+     try{
+       frame.contentWindow.postMessage(JSON.stringify({event:'command',func:'pauseVideo',args:[]}), '*');
+       frame.contentWindow.postMessage(JSON.stringify({event:'command',func:'stopVideo',args:[]}), '*');
+     }catch(_){}
+   });
+   if(modal.classList.contains('open')) hide();
+ }
+ if(stopAll) stopAll.addEventListener('click',stopAllMedia);
+
  const progress=document.getElementById('progress'),top=document.getElementById('scrolltop');
  const links=[...document.querySelectorAll('#nav a[href^="#"]')];
  function spy(){
