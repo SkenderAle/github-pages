@@ -104,7 +104,27 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 .placeholder{padding:2rem;background:#ece4d7;font-family:var(--sans);line-height:1.6;color:#5f5549}
 .scrolltop{position:fixed;right:1rem;bottom:1rem;z-index:60;width:45px;height:45px;border:0;border-radius:50%;background:#2a241f;color:#fff;font-size:1.2rem;display:none;cursor:pointer}
 .scrolltop.show{display:block}
-@media(max-width:900px){
+
+.analysis-lab{margin:2rem 0 3rem;border:1px solid #cbbba4;background:#f9f5ec;box-shadow:0 10px 30px rgba(40,30,18,.08)}
+.analysis-lab-head{padding:1rem 1.1rem;border-bottom:1px solid #d7c9b2;background:#eee5d7;display:flex;gap:1rem;justify-content:space-between;align-items:flex-start}
+.analysis-lab-head b{font-family:var(--sans);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.analysis-lab-head span{display:block;margin-top:.25rem;font-size:.95rem;color:#5f5549}
+.analysis-lab-grid{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);gap:1rem;padding:1rem}
+.analysis-player{min-height:220px;background:#181512}
+.analysis-player iframe{width:100%;aspect-ratio:16/9;border:0}
+.analysis-live{display:grid;gap:.55rem;align-content:start}
+.analysis-layer{min-height:2.6rem;border-left:4px solid #c7b89d;background:#eee7dc;padding:.65rem .8rem;font-family:var(--sans);font-weight:800;color:#62584c}
+.analysis-layer.active{border-left-color:var(--red);background:#f0dfda;color:#3c2925}
+.analysis-clock{font-family:var(--sans);font-size:.77rem;color:#7b7062}
+.analysis-score{border-top:1px solid #ddd0bb;padding:.8rem 1rem 1rem}
+.analysis-score-row{display:grid;grid-template-columns:7rem 1fr;gap:.15rem 1rem;padding:.65rem 0;border-bottom:1px solid #e4d9c8}
+.analysis-score-row:last-child{border-bottom:0}
+.analysis-score-row>b{grid-row:1/3;font-family:var(--sans);font-size:.76rem;color:var(--red)}
+.analysis-score-row span{font-size:.93rem}
+.analysis-score-row small{font-family:var(--sans);font-size:.78rem;line-height:1.45;color:#6b6155}
+.analysis-note{margin:.75rem 1rem 1rem;padding:.7rem .85rem;background:#f3ead7;border-left:4px solid var(--gold);font-family:var(--sans);font-size:.76rem;color:#6a5c48}
+@media(max-width:760px){.analysis-lab-grid{grid-template-columns:1fr}.analysis-score-row{grid-template-columns:1fr}.analysis-score-row>b{grid-row:auto}}
+\n@media(max-width:900px){
  .hero{grid-template-columns:1fr}.hero-card{max-width:520px}.opening{grid-template-columns:1fr}.aside{position:static}
  .listen-card{grid-template-columns:1fr}.listen-art{min-height:210px}.women-grid{grid-template-columns:1fr 1fr}
 }
@@ -201,14 +221,38 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <section id="grammatica">
 <div class="section-title"><div class="eyebrow">Frase, cadenza, tonalità</div><h2>La nuova grammatica</h2></div>
 <p>Il Classicismo non inventa la melodia accompagnata: seleziona e sviluppa una possibilità già centrale nella monodia e nel teatro barocco, rendendo però particolarmente leggibile la gerarchia fra linea principale, accompagnamento, frase e cadenza.</p>
-<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Primo laboratorio analitico</div><h3>Mozart · Sonata K.545, I</h3><p>Primo livello: melodia e basso albertino. Secondo: respiri e cadenze. Terzo: Do maggiore come casa, Sol maggiore come nuova stabilità. Poi la trappola: il tema ritorna in Fa. È tornato il tema, ma siamo davvero tornati a casa?</p><div class="controls"><button class="btn placeholder-btn" data-title="Mozart · K.545">Ascolta</button><button class="btn placeholder-btn" data-title="Mozart · K.331">Frasi: K.331</button><button class="btn placeholder-btn" data-title="Mozart · Jupiter, Finale">E la polifonia?</button></div></div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Primo laboratorio analitico</div><h3>Mozart · Sonata K.545, I</h3><p>Primo livello: melodia e basso albertino. Secondo: respiri e cadenze. Terzo: Do maggiore come casa, Sol maggiore come nuova stabilità. Poi la trappola: il tema ritorna in Fa. È tornato il tema, ma siamo davvero tornati a casa?</p><div class="controls"><button class="btn placeholder-btn" data-title="Mozart · K.545">Ascolta</button><button class="btn placeholder-btn" data-title="Mozart · K.331">Frasi: K.331</button><button class="btn placeholder-btn" data-title="Mozart · Jupiter, Finale">E la polifonia?</button></div></div>
+<div class="analysis-lab" data-analysis-id="mozart-k545-1">
+  <div class="analysis-lab-head">
+    <div><b>Analisi sincronizzata</b><span data-analysis-title></span><span data-analysis-status></span></div>
+    <div class="analysis-clock">⏱ <span data-current-time>0:00</span></div>
+  </div>
+  <div class="analysis-lab-grid">
+    <div class="analysis-player"><div data-player></div></div>
+    <div class="analysis-live"><div class="analysis-layer" data-analysis-layer="tessitura"></div><div class="analysis-layer" data-analysis-layer="tonalita"></div><div class="analysis-layer" data-analysis-layer="forma"></div></div>
+  </div>
+  <div class="analysis-score" data-score-map></div>
+  <div class="analysis-note" data-provisional hidden>Prima proposta di sincronizzazione: l’analisi per battute è già fissata; i secondi verranno rifiniti sulla registrazione definitiva dopo il controllo all’ascolto.</div>
+</div></div>
 </section>
 
 <section id="forma">
 <div class="section-title"><div class="eyebrow">Memoria e spazio tonale</div><h2>La forma-sonata: partire, perdersi, ritornare</h2></div>
 <p>Prima dei nomi tecnici viene il viaggio. Una regione tonale diventa casa, un’altra può diventare altrove, lo sviluppo rende più instabile il territorio e la ripresa trasforma il ritorno in un evento riconoscibile proprio perché abbiamo memoria di ciò che è accaduto.</p>
 <div class="mapline"><div class="mapnode">CASA<br><small>Sol</small></div><div class="arrow">→</div><div class="mapnode">ALTROVE<br><small>Re</small></div><div class="arrow">→</div><div class="mapnode">INSTABILITÀ</div><div class="arrow">→</div><div class="mapnode">CASA<br><small>Sol</small></div></div>
-<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Mappa tonale sincronizzata</div><h3>Mozart · Eine kleine Nachtmusik K.525, I</h3><p>Soltanto dopo l’ascolto la mappa cambierà nome: esposizione, sviluppo, ripresa. La forma-sonata non verrà presentata come una scatola obbligatoria per due temi, ma come un modo di organizzare attesa, memoria e spazio tonale.</p><div class="controls"><button class="btn placeholder-btn" data-title="Mozart · K.525, I">Ascolta</button><button class="btn placeholder-btn" data-title="Haydn · Sinfonia n.104, I">Haydn: stesso materiale, nuova funzione</button></div></div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Mappa tonale sincronizzata</div><h3>Mozart · Eine kleine Nachtmusik K.525, I</h3><p>Soltanto dopo l’ascolto la mappa cambierà nome: esposizione, sviluppo, ripresa. La forma-sonata non verrà presentata come una scatola obbligatoria per due temi, ma come un modo di organizzare attesa, memoria e spazio tonale.</p><div class="controls"><button class="btn placeholder-btn" data-title="Mozart · K.525, I">Ascolta</button><button class="btn placeholder-btn" data-title="Haydn · Sinfonia n.104, I">Haydn: stesso materiale, nuova funzione</button></div></div>
+<div class="analysis-lab" data-analysis-id="mozart-k525-1">
+  <div class="analysis-lab-head">
+    <div><b>Analisi sincronizzata</b><span data-analysis-title></span><span data-analysis-status></span></div>
+    <div class="analysis-clock">⏱ <span data-current-time>0:00</span></div>
+  </div>
+  <div class="analysis-lab-grid">
+    <div class="analysis-player"><div data-player></div></div>
+    <div class="analysis-live"><div class="analysis-layer" data-analysis-layer="tonalita"></div><div class="analysis-layer" data-analysis-layer="forma"></div></div>
+  </div>
+  <div class="analysis-score" data-score-map></div>
+  <div class="analysis-note" data-provisional hidden>Prima proposta di sincronizzazione: l’analisi per battute è già fissata; i secondi verranno rifiniti sulla registrazione definitiva dopo il controllo all’ascolto.</div>
+</div></div>
 </section>
 
 <section id="generi">
@@ -222,7 +266,19 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <div class="section-title"><div class="eyebrow">Quattro individui in una stanza</div><h2>Il quartetto</h2></div>
 <p>Due violini, viola e violoncello non costituiscono una piccola orchestra. Ogni musicista rimane esposto, e l’uguaglianza interessante del quartetto non consiste nel fare tutti la stessa cosa, ma nella possibilità che le funzioni circolino.</p>
 <div class="lanes"><div class="lane">Violino I</div><div class="lane">Violino II</div><div class="lane">Viola</div><div class="lane">Violoncello</div></div>
-<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Conversazione e aspettativa</div><h3>Haydn op.33 n.2 → Mozart K.465</h3><p>Con Haydn seguiremo la circolazione delle funzioni e il gioco del Finale con le pause; con Mozart oscureremo invece la mappa tonale dell’introduzione delle “Dissonanze” finché il Do maggiore non tornerà a mettere a fuoco la casa.</p><div class="controls"><button class="btn placeholder-btn" data-title="Haydn · op.33 n.2">Haydn</button><button class="btn placeholder-btn" data-title="Mozart · K.465">Mozart K.465</button></div></div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Conversazione e aspettativa</div><h3>Haydn op.33 n.2 → Mozart K.465</h3><p>Con Haydn seguiremo la circolazione delle funzioni e il gioco del Finale con le pause; con Mozart oscureremo invece la mappa tonale dell’introduzione delle “Dissonanze” finché il Do maggiore non tornerà a mettere a fuoco la casa.</p><div class="controls"><button class="btn placeholder-btn" data-title="Haydn · op.33 n.2">Haydn</button><button class="btn placeholder-btn" data-title="Mozart · K.465">Mozart K.465</button></div></div>
+<div class="analysis-lab" data-analysis-id="haydn-op33-2">
+  <div class="analysis-lab-head">
+    <div><b>Analisi sincronizzata</b><span data-analysis-title></span><span data-analysis-status></span></div>
+    <div class="analysis-clock">⏱ <span data-current-time>0:00</span></div>
+  </div>
+  <div class="analysis-lab-grid">
+    <div class="analysis-player"><div data-player></div></div>
+    <div class="analysis-live"><div class="analysis-layer" data-analysis-layer="aspettativa"></div></div>
+  </div>
+  <div class="analysis-score" data-score-map></div>
+  <div class="analysis-note" data-provisional hidden>Prima proposta di sincronizzazione: l’analisi per battute è già fissata; i secondi verranno rifiniti sulla registrazione definitiva dopo il controllo all’ascolto.</div>
+</div></div>
 </section>
 
 <section id="camera">
@@ -252,7 +308,19 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <div class="section-title"><div class="eyebrow">La forma sotto pressione</div><h2>Beethoven: quando la forma comincia a non bastare</h2></div>
 <p>Beethoven non entra a Vienna per distruggere un linguaggio esaurito. Impara sonata, quartetto, concerto e sinfonia da una tradizione al massimo della propria maturità, poi verifica fino a quale punto possa ampliarla senza cessare di riconoscerla.</p>
 <div class="mapline"><div class="mapnode">ESPOSIZIONE</div><div class="mapnode" style="min-width:260px">SVILUPPO</div><div class="mapnode">RIPRESA</div><div class="mapnode" style="min-width:260px">CODA</div></div>
-<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">La stessa mappa, nuove proporzioni</div><h3>Beethoven · Eroica, I movimento</h3><p>Riutilizziamo la mappa-sonata già conosciuta. Non servono nuove definizioni: basta vedere lo sviluppo e soprattutto la coda dilatarsi fino a trasformare ciò che consideravamo una conclusione in nuovo territorio di elaborazione.</p><div class="controls"><button class="btn placeholder-btn" data-title="Beethoven · Eroica, I">Eroica</button><button class="btn placeholder-btn" data-title="Beethoven · Quinta, III-IV">Quinta III → IV</button><button class="btn placeholder-btn" data-title="Beethoven · Pastorale">Un altro Beethoven</button></div></div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">La stessa mappa, nuove proporzioni</div><h3>Beethoven · Eroica, I movimento</h3><p>Riutilizziamo la mappa-sonata già conosciuta. Non servono nuove definizioni: basta vedere lo sviluppo e soprattutto la coda dilatarsi fino a trasformare ciò che consideravamo una conclusione in nuovo territorio di elaborazione.</p><div class="controls"><button class="btn placeholder-btn" data-title="Beethoven · Eroica, I">Eroica</button><button class="btn placeholder-btn" data-title="Beethoven · Quinta, III-IV">Quinta III → IV</button><button class="btn placeholder-btn" data-title="Beethoven · Pastorale">Un altro Beethoven</button></div></div>
+<div class="analysis-lab" data-analysis-id="beethoven-eroica-1">
+  <div class="analysis-lab-head">
+    <div><b>Analisi sincronizzata</b><span data-analysis-title></span><span data-analysis-status></span></div>
+    <div class="analysis-clock">⏱ <span data-current-time>0:00</span></div>
+  </div>
+  <div class="analysis-lab-grid">
+    <div class="analysis-player"><div data-player></div></div>
+    <div class="analysis-live"><div class="analysis-layer" data-analysis-layer="motivo"></div><div class="analysis-layer" data-analysis-layer="forma"></div></div>
+  </div>
+  <div class="analysis-score" data-score-map></div>
+  <div class="analysis-note" data-provisional hidden>Prima proposta di sincronizzazione: l’analisi per battute è già fissata; i secondi verranno rifiniti sulla registrazione definitiva dopo il controllo all’ascolto.</div>
+</div></div>
 </section>
 
 <section id="donne" class="satellite-section">
