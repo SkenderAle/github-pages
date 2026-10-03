@@ -166,7 +166,10 @@
     }
     root.addEventListener("click",e=>{
       const b=e.target.closest("[data-analysis-mode]");
-      if(b)setMode(b.dataset.analysisMode);
+      if(b){
+        activate(root);
+        setMode(b.dataset.analysisMode);
+      }
     });
     setMode(root.dataset.mode||"listen");
   }
@@ -252,7 +255,6 @@
         onReady(){
           mountedPlayers.add(player);
           root.dataset.playerMounted="ready";
-          if(spec.startSeconds)player.seekTo(spec.startSeconds,true);
           last=-1;syncNow();
           setStatus(root,spec.purpose||"Pronto all’ascolto");
         },
@@ -290,9 +292,7 @@
   document.addEventListener("DOMContentLoaded",()=>{
     const roots=[...document.querySelectorAll("[data-analysis-id]")];
     roots.forEach(root=>{const spec=STORE()[root.dataset.analysisId];if(spec)decorate(root,spec);});
-    if("IntersectionObserver"in window){
-      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){activate(entry.target);observer.unobserve(entry.target);}}),{rootMargin:"700px 0px",threshold:0});
-      roots.forEach(root=>observer.observe(root));
-    }else roots.forEach(activate);
+    /* I player non vengono più montati durante lo scroll.
+       Il caricamento avviene soltanto dopo un click esplicito su ASCOLTA / VEDI / ANALIZZA. */
   });
 })();
