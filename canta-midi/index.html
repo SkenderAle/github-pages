@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>Canta → MIDI</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#0b1020;color:#f8fafc;min-height:100vh}
+main{width:min(980px,100%);margin:auto;padding:22px 16px 60px}
+h1{margin:0 0 6px;font-size:clamp(2.2rem,10vw,4.5rem);letter-spacing:-.055em}
+.sub{color:#a8b3cf;line-height:1.5;margin:0 0 18px}
+.card{background:#121a2f;border:1px solid #263252;border-radius:22px;padding:18px;margin:14px 0;box-shadow:0 18px 50px rgba(0,0,0,.22)}
+.hero{text-align:center;padding:28px 18px}
+#note{font-size:clamp(4rem,24vw,8.5rem);font-weight:850;line-height:.95;letter-spacing:-.08em;min-height:1em}
+.meta{color:#9fb0d2;font-variant-numeric:tabular-nums}
+.tuner{position:relative;height:12px;border-radius:999px;background:#263252;margin-top:15px;overflow:hidden}
+.tuner:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:#fff;opacity:.7}
+#needle{position:absolute;top:0;bottom:0;width:8px;border-radius:999px;background:#22c55e;left:50%;transform:translateX(-50%)}
+.buttons{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-top:18px}
+button{border:0;border-radius:15px;padding:14px 16px;font-size:1rem;font-weight:750;cursor:pointer;background:#243256;color:#fff}
+button.primary{background:#22c55e;color:#07130b}button.danger{background:#ef4444}button:disabled{opacity:.4;cursor:not-allowed}
+.status{min-height:1.5em;color:#b9c5df;margin-top:12px;line-height:1.4}
+canvas{width:100%;height:270px;background:#0b1020;border-radius:14px;display:block}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:8px 6px;border-bottom:1px solid #263252;text-align:left}th{color:#92a3c8;font-size:.85rem}
+.small{color:#92a3c8;font-size:.9rem;line-height:1.5}
+.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#243256;margin:3px;font-size:.8rem}
+.settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+label{display:block;color:#c9d3e8;font-size:.9rem}label span{float:right;color:#8fa1c6}input[type=range]{width:100%}
+.sequence{padding:10px 12px;background:#0b1020;border-radius:12px;overflow:auto;white-space:nowrap}
+</style>
+</head>
+<body>
+<main>
+<h1>Canta → MIDI</h1>
+<p class="sub">Canticchia o fischietta una melodia. L'audio resta sul dispositivo: questa versione ricava nel browser una linea monofonica e la esporta come file MIDI.</p>
+
+<section class="card hero">
+  <div id="note">—</div>
+  <div class="meta"><span id="freq">0.0 Hz</span> · <span id="cents">0 cent</span></div>
+  <div class="tuner"><div id="needle"></div></div>
+  <div class="buttons">
+    <button id="startBtn" class="primary">🎙️ Inizia</button>
+    <button id="stopBtn" class="danger" disabled>■ Ferma</button>
+    <button id="playBtn" disabled>▶ Ascolta MIDI</button>
+    <button id="downloadBtn" disabled>⬇ Scarica MIDI</button>
+  </div>
+  <div id="status" class="status">Pronto. Al primo uso autorizza il microfono.</div>
+</section>
+
+<section class="card">
+  <h2>Piano-roll</h2>
+  <canvas id="roll" width="1200" height="420"></canvas>
+</section>
+
+<section class="card">
+  <h2>Pulizia della melodia</h2>
+  <div class="settings">
+    <label>Durata minima <span id="minMsLabel">100 ms</span><input id="minMs" type="range" min="40" max="350" value="100" step="10"></label>
+    <label>Tolleranza fusione <span id="mergeLabel">1 semitono</span><input id="merge" type="range" min="0" max="2" value="1" step="1"></label>
+    <label>Soglia segnale <span id="rmsLabel">0.012</span><input id="rms" type="range" min="0.004" max="0.05" value="0.012" step="0.002"></label>
+  </div>
+  <p class="small">Elimina frammenti brevissimi, riduce gli effetti del vibrato e arrotonda l'altezza al semitono. Per ora è pensata per una sola voce o un solo fischio, senza accompagnamento.</p>
+</section>
+
+<section class="card">
+  <h2>Impronta melodica</h2>
+  <div id="sequence" class="sequence small">Nessuna registrazione.</div>
+  <p class="small">Gli intervalli sono indipendenti dalla tonalità: saranno la base della futura funzione “Che melodia è?”.</p>
+</section>
+
+<section class="card">
+  <h2>Note rilevate</h2>
+  <div style="overflow:auto"><table><thead><tr><th>#</th><th>Nota</th><th>MIDI</th><th>Inizio</th><th>Durata</th></tr></thead><tbody id="notesBody"></tbody></table></div>
+</section>
+
+<section class="card small">
+  <span class="pill">audio locale</span><span class="pill">HTTPS</span><span class="pill">MIDI Type 0</span><span class="pill">PWA</span>
+  <p>Prototipo 0. Passo successivo: affiancare Basic Pitch e aggiungere la ricerca per somiglianza melodica.</p>
+</section>
+</main>
+
+<script>
+var noteNames=['Do','Do♯','Re','Re♯','Mi','Fa','Fa♯','Sol','Sol♯','La','La♯','Si'];
+var qs=function(s){return document.querySelector(s)};
+var startBtn=qs('#startBtn'),stopBtn=qs('#stopBtn'),playBtn=qs('#playBtn'),downloadBtn=qs('#downloadBtn');
+var noteEl=qs('#note'),freqEl=qs('#freq'),centsEl=qs('#cents'),needle=qs('#needle'),statusEl=qs('#status');
+var body=qs('#notesBody'),sequence=qs('#sequence'),canvas=qs('#roll'),ctx=canvas.getContext('2d');
+var minMs=qs('#minMs'),merge=qs('#merge'),rmsInput=qs('#rms');
+var audioCtx,analyser,stream,source,timer,startedAt=0,samples=[],notes=[],playing=false;
+
+[minMs,merge,rmsInput].forEach(function(el){el.addEventListener('input',function(){
+  qs('#minMsLabel').textContent=minMs.value+' ms';
+  qs('#mergeLabel').textContent=merge.value+' semitono'+(merge.value==='1'?'':'i');
+  qs('#rmsLabel').textContent=Number(rmsInput.value).toFixed(3);
+  if(samples.length) rebuildNotes();
+})});
+
+function midiFromFreq(f){return 69+12*Math.log2(f/440)}
+function nameFromMidi(m){var r=Math.round(m);return noteNames[(r%12+12)%12]+(Math.floor(r/12)-1)}
+function centsFromMidi(m){return Math.round((m-Math.round(m))*100)}
+function median(a){var x=a.slice().sort(function(a,b){return a-b}),n=x.length;return n?(n%2?x[(n-1)/2]:(x[n/2-1]+x[n/2])/2):null}
+
+function autoCorrelate(buf,sr){
+  var rms=0,i,j;for(i=0;i<buf.length;i++)rms+=buf[i]*buf[i];rms=Math.sqrt(rms/buf.length);
+  if(rms<Number(rmsInput.value))return{freq:-1,rms:rms};
+  var SIZE=buf.length,r1=0,r2=SIZE-1,thres=.2;
+  for(i=0;i<SIZE/2;i++){if(Math.abs(buf[i])<thres){r1=i;break}}
+  for(i=1;i<SIZE/2;i++){if(Math.abs(buf[SIZE-i])<thres){r2=SIZE-i;break}}
+  var b=buf.slice(r1,r2),n=b.length,c=new Float32Array(n);
+  for(i=0;i<n;i++){var sum=0;for(j=0;j<n-i;j++)sum+=b[j]*b[j+i];c[i]=sum}
+  var d=0;while(d+1<n&&c[d]>c[d+1])d++;
+  var maxval=-1,maxpos=-1;for(i=d;i<n;i++){if(c[i]>maxval){maxval=c[i];maxpos=i}}
+  if(maxpos<=0)return{freq:-1,rms:rms};
+  var T0=maxpos;
+  if(T0>0&&T0<n-1){var x1=c[T0-1],x2=c[T0],x3=c[T0+1],a=(x1+x3-2*x2)/2,bb=(x3-x1)/2;if(a)T0=T0-bb/(2*a)}
+  var freq=sr/T0;if(freq<65||freq>1600)return{freq:-1,rms:rms};return{freq:freq,rms:rms}
+}
+
+async function start(){
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    source=audioCtx.createMediaStreamSource(stream);analyser=audioCtx.createAnalyser();analyser.fftSize=2048;analyser.smoothingTimeConstant=0;
+    source.connect(analyser);startedAt=performance.now();samples=[];notes=[];renderNotes();drawRoll();
+    startBtn.disabled=true;stopBtn.disabled=false;playBtn.disabled=true;downloadBtn.disabled=true;
+    statusEl.textContent='Sto ascoltando… canta o fischia una nota alla volta.';tick();
+  }catch(e){statusEl.textContent='Microfono non disponibile: '+e.message}
+}
+function tick(){
+  if(!analyser)return;
+  var b=new Float32Array(analyser.fftSize);analyser.getFloatTimeDomainData(b);var p=autoCorrelate(b,audioCtx.sampleRate),t=(performance.now()-startedAt)/1000;
+  if(p.freq>0){
+    var m=midiFromFreq(p.freq),c=centsFromMidi(m);noteEl.textContent=nameFromMidi(m);freqEl.textContent=p.freq.toFixed(1)+' Hz';centsEl.textContent=(c>0?'+':'')+c+' cent';
+    needle.style.left=(Math.max(0,Math.min(100,50+c/2)))+'%';samples.push({t:t,midi:m,rms:p.rms});
+  }else{noteEl.textContent='—';freqEl.textContent='0.0 Hz';centsEl.textContent='0 cent';needle.style.left='50%';samples.push({t:t,midi:null,rms:p.rms})}
+  timer=setTimeout(tick,55);
+}
+function stop(){
+  clearTimeout(timer);if(stream)stream.getTracks().forEach(function(t){t.stop()});if(audioCtx)audioCtx.close();analyser=null;
+  startBtn.disabled=false;stopBtn.disabled=true;rebuildNotes();playBtn.disabled=!notes.length;downloadBtn.disabled=!notes.length;
+  statusEl.textContent=notes.length?'Fatto: '+notes.length+' note utili.':'Non ho ricavato note. Prova più vicino al microfono o abbassa la soglia.'
+}
+function rebuildNotes(){
+  var minDur=Number(minMs.value)/1000,mergeTol=Number(merge.value),raw=[],cur=null,silence=0;
+  samples.forEach(function(s){
+    if(s.midi==null){if(cur){silence++;if(silence>=3){cur.end=s.t;raw.push(cur);cur=null;silence=0}}return}
+    silence=0;var q=Math.round(s.midi);
+    if(!cur)cur={start:s.t,end:s.t,pitches:[s.midi],q:q};
+    else if(Math.abs(q-cur.q)<=mergeTol){cur.end=s.t;cur.pitches.push(s.midi);cur.q=Math.round(median(cur.pitches))}
+    else{raw.push(cur);cur={start:s.t,end:s.t,pitches:[s.midi],q:q}}
+  });
+  if(cur){cur.end=samples.length?samples[samples.length-1].t:cur.start;raw.push(cur)}
+  raw=raw.map(function(n){return{start:n.start,end:Math.max(n.end,n.start+.04),midi:Math.round(median(n.pitches))}}).filter(function(n){return n.end-n.start>=minDur});
+  notes=[];raw.forEach(function(n){var prev=notes.length?notes[notes.length-1]:null;if(prev&&Math.abs(prev.midi-n.midi)<=mergeTol&&n.start-prev.end<.16){prev.end=n.end;prev.midi=Math.round((prev.midi+n.midi)/2)}else notes.push({start:n.start,end:n.end,midi:n.midi})});
+  renderNotes();drawRoll();
+}
+function renderNotes(){
+  body.innerHTML='';
+  notes.forEach(function(n,i){var tr=document.createElement('tr');tr.innerHTML='<td>'+(i+1)+'</td><td>'+nameFromMidi(n.midi)+'</td><td>'+n.midi+'</td><td>'+n.start.toFixed(2)+' s</td><td>'+(n.end-n.start).toFixed(2)+' s</td>';body.appendChild(tr)});
+  if(!notes.length){sequence.textContent=samples.length?'Nessuna nota ha superato i filtri.':'Nessuna registrazione.';return}
+  var intervals=notes.slice(1).map(function(n,i){return n.midi-notes[i].midi});
+  sequence.textContent='Note: '+notes.map(function(n){return nameFromMidi(n.midi)}).join(' · ')+'   |   Intervalli: '+intervals.map(function(x){return(x>0?'+':'')+x}).join(', ')
+}
+function drawRoll(){
+  var W=canvas.width,H=canvas.height;ctx.clearRect(0,0,W,H);ctx.fillStyle='#0b1020';ctx.fillRect(0,0,W,H);ctx.strokeStyle='#243256';ctx.lineWidth=1;
+  for(var y=0;y<H;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+  if(!notes.length){ctx.fillStyle='#7183aa';ctx.font='26px system-ui';ctx.fillText('Qui comparirà la melodia',32,60);return}
+  var min=Math.min.apply(null,notes.map(function(n){return n.midi}))-2,max=Math.max.apply(null,notes.map(function(n){return n.midi}))+2,end=Math.max.apply(null,notes.map(function(n){return n.end}).concat([1]));
+  notes.forEach(function(n){var x=n.start/end*(W-40)+20,w=Math.max(8,(n.end-n.start)/end*(W-40)),y=H-20-(n.midi-min)/(max-min)*(H-40);ctx.fillStyle='#22c55e';ctx.fillRect(x,y-10,w,20)})
+}
+async function play(){
+  if(playing||!notes.length)return;playing=true;playBtn.disabled=true;
+  var ac=new(window.AudioContext||window.webkitAudioContext)(),base=ac.currentTime+.08;
+  notes.forEach(function(n){var o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=440*Math.pow(2,(n.midi-69)/12);g.gain.value=.0001;o.connect(g).connect(ac.destination);var s=base+n.start,d=n.end-n.start;g.gain.setValueAtTime(.0001,s);g.gain.exponentialRampToValueAtTime(.22,s+.015);g.gain.setValueAtTime(.22,Math.max(s+.02,s+d-.04));g.gain.exponentialRampToValueAtTime(.0001,s+d);o.start(s);o.stop(s+d+.02)});
+  var total=Math.max.apply(null,notes.map(function(n){return n.end}))+0.2;setTimeout(function(){playing=false;playBtn.disabled=false;ac.close()},total*1000)
+}
+function vlq(v){var buffer=v&127,bytes=[];while((v>>=7)){buffer<<=8;buffer|=(v&127)|128}while(true){bytes.push(buffer&255);if(buffer&128)buffer>>=8;else break}return bytes}
+function strBytes(s){return Array.from(s).map(function(c){return c.charCodeAt(0)})}
+function u32(n){return[(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255]}function u16(n){return[(n>>>8)&255,n&255]}
+function midiBytes(){
+  var ppq=480,bpm=120,ticksPerSec=ppq*bpm/60,ev=[{t:0,b:[255,81,3,7,161,32]}];
+  notes.forEach(function(n){ev.push({t:Math.max(0,Math.round(n.start*ticksPerSec)),b:[144,n.midi,96],ord:1});ev.push({t:Math.max(1,Math.round(n.end*ticksPerSec)),b:[128,n.midi,0],ord:0})});
+  ev.sort(function(a,b){return a.t-b.t||(a.ord||0)-(b.ord||0)});var track=[],last=0;ev.forEach(function(e){track.push.apply(track,vlq(e.t-last).concat(e.b));last=e.t});track.push(0,255,47,0);
+  return new Uint8Array(strBytes('MThd').concat(u32(6),u16(0),u16(1),u16(ppq),strBytes('MTrk'),u32(track.length),track))
+}
+function downloadMidi(){var blob=new Blob([midiBytes()],{type:'audio/midi'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='canta-midi.mid';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)}
+
+startBtn.addEventListener('click',start);stopBtn.addEventListener('click',stop);playBtn.addEventListener('click',play);downloadBtn.addEventListener('click',downloadMidi);drawRoll();
+if('serviceWorker'in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){})})}
+</script>
+</body>
+</html>
