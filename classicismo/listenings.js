@@ -19,6 +19,13 @@ window.CLASSICISMO_LISTENINGS = {
     purpose:"Melodia/accompagnamento, frase, cadenza e geografia tonale",
     layers:["tessitura","tonalita","forma"],
     provisional:true,
+    visualization:{
+      type:"texture",
+      lanes:[
+        {label:"MELODIA",detail:"mano destra",from:0,to:68},
+        {label:"ACCOMPAGNAMENTO",detail:"basso albertino",from:0,to:68}
+      ]
+    },
     scoreMap:[
       {bars:"1–12", form:"Tema iniziale", key:"Do maggiore", note:"Melodia chiarissima sopra basso albertino; la tonica funziona come casa."},
       {bars:"13–28", form:"Area secondaria e chiusa", key:"verso Sol maggiore", note:"La nuova stabilità è la dominante; la codetta conferma Sol."},
@@ -216,6 +223,14 @@ window.CLASSICISMO_LISTENINGS = {
     purpose:"Il confine fra due movimenti si dissolve e il ciclo diventa processo continuo",
     layers:["ciclo","tonalita"],
     provisional:true,
+    visualization:{
+      type:"journey",
+      stages:[
+        {label:"III MOVIMENTO",detail:"Do minore · si svuota",from:1220,to:1270},
+        {label:"PONTE",detail:"nessuna cesura",from:1270,to:1316},
+        {label:"IV MOVIMENTO",detail:"Do maggiore",from:1316,to:9999}
+      ]
+    },
     scoreMap:[
       {bars:"III mov., ripresa finale",form:"Svuotamento",key:"Do minore",note:"Lo Scherzo perde progressivamente peso e la conclusione attesa viene rinviata."},
       {bars:"ultime battute del III",form:"Ponte",key:"dominante di Do",note:"Timpani e frammenti orchestrali mantengono il tempo in sospensione invece di chiudere."},
@@ -249,6 +264,17 @@ window.CLASSICISMO_LISTENINGS = {
     purpose:"Il tema della Gioia passa dalla nudità strumentale alla comunità vocale",
     layers:["orchestrazione","testo"],
     provisional:true,
+    visualization:{
+      type:"growth",
+      stages:[
+        {label:"CERCA",count:1,from:0,to:175},
+        {label:"UNO",count:1,from:175,to:230},
+        {label:"POCHI",count:4,from:230,to:355},
+        {label:"ORCHESTRA",count:10,from:355,to:410},
+        {label:"VOCE",count:14,from:410,to:465},
+        {label:"CORO",count:22,from:465,to:9999}
+      ]
+    },
     scoreMap:[
       {bars:"inizio del Finale",form:"Fanfara e recitativo strumentale",key:"Re minore / instabilità",note:"Violoncelli e contrabbassi respingono i richiami ai movimenti precedenti: il Finale sembra cercare il proprio materiale."},
       {bars:"tema della Gioia",form:"Presentazione strumentale",key:"Re maggiore",note:"Il tema nasce nei registri gravi e viene ripreso da gruppi sempre più ampi dell’orchestra."},
