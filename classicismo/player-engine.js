@@ -146,7 +146,10 @@
       const viz=root.querySelector("[data-viz]");
       const score=root.querySelector("[data-score-map]");
       const note=root.querySelector("[data-provisional]");
-      if(live)live.hidden=mode==="listen";
+      if(live){
+        const hasContent=[...live.querySelectorAll(".analysis-layer")].some(el=>el.textContent.trim()!=="");
+        live.hidden=mode==="listen"||!hasContent;
+      }
       if(viz)viz.hidden=mode==="listen";
       if(score)score.hidden=mode!=="analyze";
       if(note)note.hidden=mode!=="analyze"||!spec.provisional;
