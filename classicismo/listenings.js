@@ -68,6 +68,17 @@ window.CLASSICISMO_LISTENINGS = {
     videoId:"KpHO4aSRqkQ",
     purpose:"Partitura grafica animata e lettura della forma-sonata",
     layers:["tonalita","forma"],
+    visualization:{
+      type:"journey",
+      stages:[
+        {label:"ESPOSIZIONE",detail:"prima volta",from:0,to:96},
+        {label:"ESPOSIZIONE",detail:"ritornello",from:96,to:190},
+        {label:"SVILUPPO",detail:"modulazioni",from:190,to:224},
+        {label:"RIPRESA",detail:"primo tema",from:224,to:266},
+        {label:"RIPRESA",detail:"secondo tema",from:266,to:329},
+        {label:"SVILUPPO + RIPRESA",detail:"ritornello",from:329,to:9999}
+      ]
+    },
     scoreMap:[
       {bars:"1–18", form:"Primo gruppo", key:"Sol maggiore", note:"La casa viene stabilita con estrema evidenza."},
       {bars:"19–55", form:"Transizione, secondo gruppo e codette", key:"Sol → Re maggiore", note:"La dominante diventa una nuova regione sufficientemente stabile da sembrare un altrove."},
