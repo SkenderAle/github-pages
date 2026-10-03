@@ -132,10 +132,13 @@
     let bar=root.querySelector(".analysis-modebar,.analysis-modes");
     if(!bar){
       bar=document.createElement("div");bar.className="analysis-modebar";
-      bar.innerHTML='<button type="button" data-analysis-mode="listen" class="active">ASCOLTA</button><button type="button" data-analysis-mode="analyze">ANALIZZA</button>';
       const head=root.querySelector(".analysis-lab-head,.analysis-head");
       if(head)head.insertAdjacentElement("afterend",bar);else root.prepend(bar);
     }
+    const modes=spec.keepSee
+      ? [{id:"listen",label:"ASCOLTA"},{id:"see",label:"VEDI"},{id:"analyze",label:"ANALIZZA"}]
+      : [{id:"listen",label:"ASCOLTA"},{id:"analyze",label:"ANALIZZA"}];
+    bar.innerHTML=modes.map((m,i)=>'<button type="button" data-analysis-mode="'+m.id+'"'+(i===0?' class="active"':'')+'>'+m.label+'</button>').join("");
     function setMode(mode){
       root.dataset.mode=mode;
       root.querySelectorAll("[data-analysis-mode]").forEach(b=>b.classList.toggle("active",b.dataset.analysisMode===mode));
