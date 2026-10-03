@@ -14,7 +14,9 @@
   --sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:#d5ccbe}
+html{scroll-behavior:smooth;background:#d5ccbe;overflow-x:hidden}
+body{overflow-x:hidden}
+img,iframe,svg{max-width:100%}
 body{margin:0;color:var(--ink);font-family:var(--serif);line-height:1.76;background:
 radial-gradient(circle at 10% 0,rgba(123,42,36,.06),transparent 28rem),
 linear-gradient(180deg,#e9e1d4,#d3c9ba)}
@@ -172,7 +174,7 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 @media(max-width:600px){.viz-proportions{overflow-x:auto}.viz-proportion{min-width:100px}.viz-lane{grid-template-columns:90px 1fr}.viz-texture-lane{grid-template-columns:1fr}.viz-texture-lane span{width:100%}}
 
 @media(max-width:760px){.analysis-lab-grid{grid-template-columns:1fr}.analysis-score-row{grid-template-columns:1fr}.analysis-score-row>b{grid-row:auto}}
-\n
+
 .sources{background:#231f1b;color:#f4eadc;margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem}
 .sources-inner{max-width:1180px;margin:auto}
 .sources h2,.sources h3{color:#fff}
@@ -185,14 +187,22 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 .source-link span{display:block;font-family:var(--sans);font-size:.75rem;line-height:1.45;color:#cfc2b1;margin-top:.18rem}
 .source-link:hover b{text-decoration:underline}
 @media(max-width:760px){.source-groups{grid-template-columns:1fr}}
-\n@media(max-width:900px){
+@media(max-width:900px){
  .hero{grid-template-columns:1fr}.hero-card{max-width:520px}.opening{grid-template-columns:1fr}.aside{position:static}
  .listen-card{grid-template-columns:1fr}.listen-art{min-height:210px}.women-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
- .content{padding-left:1rem;padding-right:1rem}.satellite-section,.final-band{margin-left:-1rem;margin-right:-1rem}
- .women-grid{grid-template-columns:1fr}.listen-copy{padding:1.2rem}.masthead{min-height:88vh;padding-top:6rem}
- h1{font-size:clamp(3rem,16vw,5rem)}.two-col{columns:1}
+ .content{padding-left:1rem;padding-right:1rem}.satellite-section,.final-band,.sources{margin-left:-1rem;margin-right:-1rem}
+ .women-grid{grid-template-columns:1fr}.listen-copy{padding:1.2rem;min-width:0}.masthead{min-height:100svh;padding:5.6rem 1rem 3.2rem}
+ .masthead::before{background-position:58% 48%}
+ .hero{gap:1.5rem}.hero-card{padding:1rem}.hero-card p{font-size:.94rem}
+ h1{font-size:clamp(2.85rem,15vw,4.8rem)}.dek{font-size:1.08rem}.two-col{columns:1}
+ nav{padding:.45rem .55rem}.nav-wrap{overscroll-behavior-x:contain}
+ .modal{padding:0;place-items:end center}.modal-panel{width:100%;max-height:100dvh;border-radius:14px 14px 0 0}.modal-body{padding:.7rem}
+ .modal-head{padding:.7rem .85rem}.modal-close{min-width:44px;min-height:44px}
+ .listen-card{margin-left:-.15rem;margin-right:-.15rem}.listen-art{min-height:190px}
+ .analysis-lab-grid>* , .genealogy-result>* , .ensemble-builder-result>*{min-width:0}
+ .question{padding:1.2rem;font-size:1.2rem}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
@@ -284,10 +294,12 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
   .analysis-lab{margin-left:-.35rem;margin-right:-.35rem}
   .analysis-lab-grid{padding:.75rem}
   .analysis-lab-head{padding:.85rem}
-  .analysis-modebar{gap:.35rem;padding:.55rem .7rem;top:3.45rem}
-  .analysis-modebar button{flex:1;min-width:88px;min-height:44px}
+  .analysis-modebar{gap:.35rem;padding:.55rem .7rem;top:3.45rem;overflow-x:auto;flex-wrap:nowrap}
+  .analysis-modebar button{flex:1 0 auto;min-width:88px;min-height:44px}
   .btn,.mini{min-height:44px}
   .ensemble-builder-controls button{width:44px;height:44px}
+  .ensemble-builder-result{grid-template-columns:58px minmax(0,1fr)}
+  .ensemble-builder-result small{overflow-wrap:anywhere}
   .genealogy-result .btn{width:100%}
   .hero-credit{left:1rem;right:1rem;text-align:right}
 }
@@ -820,7 +832,7 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 </div>
 </div>
 </div>
-</section>\n</main>
+</section></main>
 
 <footer class="footer"><div class="footer-inner">
 <div><strong>La misura e la rivoluzione</strong> · percorso didattico e narrativo sul Classicismo musicale.</div>
@@ -859,7 +871,7 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
  window.addEventListener('scroll',spy,{passive:true});window.addEventListener('load',spy);top.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 })();
 </script>
-<script src="listenings.js"></script>\n<script src="player-engine.js"></script>\n<script>
+<script src="listenings.js"></script><script src="player-engine.js"></script><script>
 (()=>{
   const ensembleData={
     2:["Mozart · Sonata K.304","pianoforte · violino"],
