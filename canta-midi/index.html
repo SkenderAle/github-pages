@@ -42,6 +42,7 @@ label{display:block;color:#c9d3e8;font-size:.9rem}label span{float:right;color:#
 <section class="card hero">
   <div id="note">—</div>
   <div class="meta"><span id="freq">0.0 Hz</span> · <span id="cents">0 cent</span></div>
+  <div id="calibration" class="small" style="margin-top:8px">Riferimento adattivo: in attesa della prima nota stabile.</div>
   <div class="tuner"><div id="needle"></div></div>
   <div class="buttons">
     <button id="startBtn" class="primary">🎙️ Inizia</button>
@@ -61,10 +62,10 @@ label{display:block;color:#c9d3e8;font-size:.9rem}label span{float:right;color:#
   <h2>Pulizia della melodia</h2>
   <div class="settings">
     <label>Durata minima <span id="minMsLabel">100 ms</span><input id="minMs" type="range" min="40" max="350" value="100" step="10"></label>
-    <label>Tolleranza fusione <span id="mergeLabel">1 semitono</span><input id="merge" type="range" min="0" max="2" value="1" step="1"></label>
+    <label>Stabilità della nota <span id="stabilityLabel">65 cent</span><input id="stability" type="range" min="35" max="90" value="65" step="5"></label>
     <label>Soglia segnale <span id="rmsLabel">0.012</span><input id="rms" type="range" min="0.004" max="0.05" value="0.012" step="0.002"></label>
   </div>
-  <p class="small">Elimina frammenti brevissimi, riduce gli effetti del vibrato e arrotonda l'altezza al semitono. Per ora è pensata per una sola voce o un solo fischio, senza accompagnamento.</p>
+  <p class="small">La prima altezza stabile diventa il riferimento dell'esecuzione. Le note successive vengono quantizzate soprattutto per intervallo rispetto a quel riferimento: così un ingresso sistematicamente alto o basso non trasforma un quarto di tono in una scelta arbitraria fra due note. Il nome assoluto della prima nota resta convenzionale finché non conosciamo la tonalità.</p>
 </section>
 
 <section class="card">
@@ -88,14 +89,15 @@ label{display:block;color:#c9d3e8;font-size:.9rem}label span{float:right;color:#
 var noteNames=['Do','Do♯','Re','Re♯','Mi','Fa','Fa♯','Sol','Sol♯','La','La♯','Si'];
 var qs=function(s){return document.querySelector(s)};
 var startBtn=qs('#startBtn'),stopBtn=qs('#stopBtn'),playBtn=qs('#playBtn'),downloadBtn=qs('#downloadBtn');
-var noteEl=qs('#note'),freqEl=qs('#freq'),centsEl=qs('#cents'),needle=qs('#needle'),statusEl=qs('#status');
+var noteEl=qs('#note'),freqEl=qs('#freq'),centsEl=qs('#cents'),needle=qs('#needle'),statusEl=qs('#status'),calibrationEl=qs('#calibration');
 var body=qs('#notesBody'),sequence=qs('#sequence'),canvas=qs('#roll'),ctx=canvas.getContext('2d');
-var minMs=qs('#minMs'),merge=qs('#merge'),rmsInput=qs('#rms');
+var minMs=qs('#minMs'),stability=qs('#stability'),rmsInput=qs('#rms');
 var audioCtx,analyser,stream,source,timer,startedAt=0,samples=[],notes=[],playing=false;
+var referencePitch=null,anchorMidi=null,refFrames=[];
 
-[minMs,merge,rmsInput].forEach(function(el){el.addEventListener('input',function(){
+[minMs,stability,rmsInput].forEach(function(el){el.addEventListener('input',function(){
   qs('#minMsLabel').textContent=minMs.value+' ms';
-  qs('#mergeLabel').textContent=merge.value+' semitono'+(merge.value==='1'?'':'i');
+  qs('#stabilityLabel').textContent=stability.value+' cent';
   qs('#rmsLabel').textContent=Number(rmsInput.value).toFixed(3);
   if(samples.length) rebuildNotes();
 })});
@@ -126,37 +128,69 @@ async function start(){
     stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
     audioCtx=new(window.AudioContext||window.webkitAudioContext)();
     source=audioCtx.createMediaStreamSource(stream);analyser=audioCtx.createAnalyser();analyser.fftSize=2048;analyser.smoothingTimeConstant=0;
-    source.connect(analyser);startedAt=performance.now();samples=[];notes=[];renderNotes();drawRoll();
+    source.connect(analyser);startedAt=performance.now();samples=[];notes=[];referencePitch=null;anchorMidi=null;refFrames=[];renderNotes();drawRoll();
+    calibrationEl.textContent='Riferimento adattivo: in attesa della prima nota stabile.';
     startBtn.disabled=true;stopBtn.disabled=false;playBtn.disabled=true;downloadBtn.disabled=true;
-    statusEl.textContent='Sto ascoltando… canta o fischia una nota alla volta.';tick();
+    statusEl.textContent='Sto ascoltando… tieni appena la prima nota, poi continua liberamente.';tick();
   }catch(e){statusEl.textContent='Microfono non disponibile: '+e.message}
 }
 function tick(){
   if(!analyser)return;
   var b=new Float32Array(analyser.fftSize);analyser.getFloatTimeDomainData(b);var p=autoCorrelate(b,audioCtx.sampleRate),t=(performance.now()-startedAt)/1000;
   if(p.freq>0){
-    var m=midiFromFreq(p.freq),c=centsFromMidi(m);noteEl.textContent=nameFromMidi(m);freqEl.textContent=p.freq.toFixed(1)+' Hz';centsEl.textContent=(c>0?'+':'')+c+' cent';
-    needle.style.left=(Math.max(0,Math.min(100,50+c/2)))+'%';samples.push({t:t,midi:m,rms:p.rms});
-  }else{noteEl.textContent='—';freqEl.textContent='0.0 Hz';centsEl.textContent='0 cent';needle.style.left='50%';samples.push({t:t,midi:null,rms:p.rms})}
+    var m=midiFromFreq(p.freq);
+    if(referencePitch===null){
+      if(!refFrames.length||Math.abs(m-median(refFrames))<=0.45) refFrames.push(m);
+      else refFrames=[m];
+      if(refFrames.length>=5){
+        referencePitch=median(refFrames);anchorMidi=Math.round(referencePitch);
+        var off=Math.round((referencePitch-anchorMidi)*100);
+        calibrationEl.textContent='Riferimento acquisito: '+nameFromMidi(anchorMidi)+' = '+(440*Math.pow(2,(referencePitch-69)/12)).toFixed(1)+' Hz ('+(off>0?'+':'')+off+' cent rispetto alla griglia temperata).';
+        statusEl.textContent='Riferimento acquisito. Ora seguo soprattutto gli intervalli.';
+      }
+    }
+    var shown=referencePitch===null?null:anchorMidi+Math.round(m-referencePitch);
+    var c=referencePitch===null?0:Math.round(((m-referencePitch)-Math.round(m-referencePitch))*100);
+    noteEl.textContent=shown===null?'…':nameFromMidi(shown);freqEl.textContent=p.freq.toFixed(1)+' Hz';centsEl.textContent=referencePitch===null?'calibrazione':((c>0?'+':'')+c+' cent rel.');
+    needle.style.left=referencePitch===null?'50%':(Math.max(0,Math.min(100,50+c/2)))+'%';samples.push({t:t,midi:m,rms:p.rms});
+  }else{noteEl.textContent=referencePitch===null?'…':'—';freqEl.textContent='0.0 Hz';centsEl.textContent=referencePitch===null?'calibrazione':'0 cent rel.';needle.style.left='50%';samples.push({t:t,midi:null,rms:p.rms})}
   timer=setTimeout(tick,55);
 }
 function stop(){
   clearTimeout(timer);if(stream)stream.getTracks().forEach(function(t){t.stop()});if(audioCtx)audioCtx.close();analyser=null;
   startBtn.disabled=false;stopBtn.disabled=true;rebuildNotes();playBtn.disabled=!notes.length;downloadBtn.disabled=!notes.length;
-  statusEl.textContent=notes.length?'Fatto: '+notes.length+' note utili.':'Non ho ricavato note. Prova più vicino al microfono o abbassa la soglia.'
+  statusEl.textContent=notes.length?'Fatto: '+notes.length+' note utili. La forma melodica ora è indipendente dall’intonazione assoluta di partenza.':'Non ho ricavato note. Prova più vicino al microfono o abbassa la soglia.'
 }
 function rebuildNotes(){
-  var minDur=Number(minMs.value)/1000,mergeTol=Number(merge.value),raw=[],cur=null,silence=0;
+  var minDur=Number(minMs.value)/1000,stableTol=Number(stability.value)/100,raw=[],cur=null,silence=0;
   samples.forEach(function(s){
-    if(s.midi==null){if(cur){silence++;if(silence>=3){cur.end=s.t;raw.push(cur);cur=null;silence=0}}return}
-    silence=0;var q=Math.round(s.midi);
-    if(!cur)cur={start:s.t,end:s.t,pitches:[s.midi],q:q};
-    else if(Math.abs(q-cur.q)<=mergeTol){cur.end=s.t;cur.pitches.push(s.midi);cur.q=Math.round(median(cur.pitches))}
-    else{raw.push(cur);cur={start:s.t,end:s.t,pitches:[s.midi],q:q}}
+    if(s.midi==null){
+      if(cur){silence++;if(silence>=3){cur.end=s.t;raw.push(cur);cur=null;silence=0}}
+      return;
+    }
+    silence=0;
+    if(!cur) cur={start:s.t,end:s.t,pitches:[s.midi]};
+    else{
+      var center=median(cur.pitches);
+      if(Math.abs(s.midi-center)<=stableTol){cur.end=s.t;cur.pitches.push(s.midi)}
+      else{raw.push(cur);cur={start:s.t,end:s.t,pitches:[s.midi]}}
+    }
   });
   if(cur){cur.end=samples.length?samples[samples.length-1].t:cur.start;raw.push(cur)}
-  raw=raw.map(function(n){return{start:n.start,end:Math.max(n.end,n.start+.04),midi:Math.round(median(n.pitches))}}).filter(function(n){return n.end-n.start>=minDur});
-  notes=[];raw.forEach(function(n){var prev=notes.length?notes[notes.length-1]:null;if(prev&&Math.abs(prev.midi-n.midi)<=mergeTol&&n.start-prev.end<.16){prev.end=n.end;prev.midi=Math.round((prev.midi+n.midi)/2)}else notes.push({start:n.start,end:n.end,midi:n.midi})});
+  raw=raw.map(function(n){
+    return{start:n.start,end:Math.max(n.end,n.start+.04),pitch:median(n.pitches)}
+  }).filter(function(n){return n.end-n.start>=minDur});
+  if(!raw.length){notes=[];renderNotes();drawRoll();return}
+  referencePitch=raw[0].pitch;anchorMidi=Math.round(referencePitch);
+  var off=Math.round((referencePitch-anchorMidi)*100);
+  calibrationEl.textContent='Riferimento della trascrizione: '+nameFromMidi(anchorMidi)+' = '+(440*Math.pow(2,(referencePitch-69)/12)).toFixed(1)+' Hz ('+(off>0?'+':'')+off+' cent). Gli intervalli sono quantizzati rispetto a questa altezza.';
+  notes=[];
+  raw.forEach(function(n){
+    var q=anchorMidi+Math.round(n.pitch-referencePitch);
+    var prev=notes.length?notes[notes.length-1]:null;
+    if(prev&&prev.midi===q&&n.start-prev.end<.18){prev.end=n.end;prev.rawPitches.push(n.pitch)}
+    else notes.push({start:n.start,end:n.end,midi:q,rawPitches:[n.pitch]});
+  });
   renderNotes();drawRoll();
 }
 function renderNotes(){
