@@ -107,6 +107,12 @@
     }
 
     root.addEventListener("click",e=>{
+      const modeBtn=e.target.closest("[data-analysis-mode]");
+      if(modeBtn){
+        const mode=modeBtn.dataset.analysisMode;
+        root.dataset.mode=mode;
+        root.querySelectorAll("[data-analysis-mode]").forEach(b=>b.classList.toggle("active",b===modeBtn));
+      }
       const jump=e.target.closest("[data-seek]");
       if(jump&&player&&player.seekTo) player.seekTo(Number(jump.dataset.seek)||0,true);
     });
