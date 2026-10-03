@@ -26,17 +26,10 @@ window.CLASSICISMO_LISTENINGS = {
   "mozart-k545-1": {
     composer:"Wolfgang Amadeus Mozart",
     title:"Sonata in do maggiore K.545 · I movimento",
-    videoId:"1vDxlnJVvW8",
-    purpose:"Melodia/accompagnamento, frase, cadenza e geografia tonale",
-    layers:["tessitura","tonalita","forma"],
+    videoId:"04nZ6EDWq2E",
+    purpose:"Partitura sincronizzata, geografia tonale e forma-sonata",
+    layers:["tonalita","forma"],
     provisional:true,
-    visualization:{
-      type:"texture",
-      lanes:[
-        {label:"MELODIA",detail:"mano destra",from:0,to:68},
-        {label:"ACCOMPAGNAMENTO",detail:"basso albertino",from:0,to:68}
-      ]
-    },
     scoreMap:[
       {bars:"1–12", form:"Tema iniziale", key:"Do maggiore", note:"Melodia chiarissima sopra basso albertino; la tonica funziona come casa."},
       {bars:"13–28", form:"Area secondaria e chiusa", key:"verso Sol maggiore", note:"La nuova stabilità è la dominante; la codetta conferma Sol."},
@@ -45,7 +38,6 @@ window.CLASSICISMO_LISTENINGS = {
       {bars:"58–73", form:"Area secondaria ricomposta", key:"Do maggiore", note:"La seconda area viene ricondotta alla tonica e chiude il viaggio."}
     ],
     events:[
-      {from:0,to:20,layer:"tessitura",label:"MELODIA sopra BASSO ALBERTINO"},
       {from:0,to:31,layer:"tonalita",label:"CASA · Do maggiore"},
       {from:31,to:69,layer:"tonalita",label:"ALTROVE · Sol maggiore"},
       {from:69,to:101,layer:"forma",label:"SVILUPPO · stabilità mobile"},
