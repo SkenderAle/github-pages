@@ -67,7 +67,7 @@ window.CLASSICISMO_LISTENINGS = {
   "haydn-104-1": {
     composer:"Joseph Haydn",
     title:"Sinfonia n.104 · I movimento",
-    videoId:null,
+    videoId:"N1FUw5whO-4",
     purpose:"Stesso materiale, diversa funzione tonale",
     layers:["tema","tonalita"],
     events:[]
@@ -76,7 +76,7 @@ window.CLASSICISMO_LISTENINGS = {
   "mozart-k488-1": {
     composer:"Wolfgang Amadeus Mozart",
     title:"Concerto in la maggiore K.488 · I movimento",
-    videoId:null,
+    videoId:"9pwbg37Ha64",
     purpose:"Forma-sonata e principio concertante; cadenza",
     layers:["organico","forma","cadenza"],
     events:[]
