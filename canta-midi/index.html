@@ -31,6 +31,8 @@ th,td{padding:8px 6px;border-bottom:1px solid #263252;text-align:left}th{color:#
 .pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#243256;margin:3px;font-size:.8rem}
 .settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
 label{display:block;color:#c9d3e8;font-size:.9rem}label span{float:right;color:#8fa1c6}input[type=range]{width:100%}
+select,input[type=number]{width:100%;margin-top:7px;background:#0b1020;color:#fff;border:1px solid #324168;border-radius:10px;padding:10px;font:inherit}
+.metric{font-size:1.7rem;font-weight:800}.confidence{color:#22c55e;font-weight:700}
 .sequence{padding:10px 12px;background:#0b1020;border-radius:12px;overflow:auto;white-space:nowrap}
 </style>
 </head>
@@ -69,19 +71,45 @@ label{display:block;color:#c9d3e8;font-size:.9rem}label span{float:right;color:#
 </section>
 
 <section class="card">
-  <h2>Impronta melodica</h2>
+  <h2>Struttura ritmica</h2>
+  <div class="settings">
+    <label>Pulsazione stimata <span id="bpmLabel">—</span><input id="bpmInput" type="number" min="30" max="240" step="1" value="120"></label>
+    <label>Metro
+      <select id="meterSelect">
+        <option value="auto">Automatico</option>
+        <option value="2/4">2/4</option>
+        <option value="3/4">3/4</option>
+        <option value="4/4">4/4</option>
+        <option value="6/8">6/8</option>
+      </select>
+    </label>
+    <label>Griglia ritmica
+      <select id="gridSelect">
+        <option value="4">Sedicesimi</option>
+        <option value="2">Ottavi</option>
+        <option value="3">Terzine</option>
+      </select>
+    </label>
+  </div>
+  <div id="meterResult" class="sequence small" style="margin-top:14px">Il metro verrà stimato dagli attacchi, dalle durate e dagli accenti.</div>
+  <p class="small">L'analisi metrica è una proposta: voce sola e poche battute possono rendere ambigui 2/4 e 4/4, oppure 3/4 e 6/8. Puoi correggere metro e BPM prima di ascoltare o esportare.</p>
+</section>
+
+<section class="card">
+  <h2>Impronta melodica e ritmica</h2>
   <div id="sequence" class="sequence small">Nessuna registrazione.</div>
-  <p class="small">Gli intervalli sono indipendenti dalla tonalità: saranno la base della futura funzione “Che melodia è?”.</p>
+  <div id="rhythmSequence" class="sequence small" style="margin-top:8px">Ritmo: —</div>
+  <p class="small">Intervalli, rapporti ritmici, metro e accenti formeranno insieme l'impronta utilizzata dalla futura funzione “Che melodia è?”.</p>
 </section>
 
 <section class="card">
   <h2>Note rilevate</h2>
-  <div style="overflow:auto"><table><thead><tr><th>#</th><th>Nota</th><th>MIDI</th><th>Inizio</th><th>Durata</th></tr></thead><tbody id="notesBody"></tbody></table></div>
+  <div style="overflow:auto"><table><thead><tr><th>#</th><th>Nota</th><th>MIDI</th><th>Accento</th><th>Inizio</th><th>Durata</th><th>Valore</th></tr></thead><tbody id="notesBody"></tbody></table></div>
 </section>
 
 <section class="card small">
   <span class="pill">audio locale</span><span class="pill">HTTPS</span><span class="pill">MIDI Type 0</span><span class="pill">PWA</span>
-  <p>Prototipo 0. Passo successivo: affiancare Basic Pitch e aggiungere la ricerca per somiglianza melodica.</p>
+  <p>Prototipo 0.2: altezza relativa, accenti, pulsazione, metro proposto, quantizzazione ritmica e MIDI con tempo/time signature.</p>
 </section>
 </main>
 
@@ -90,16 +118,20 @@ var noteNames=['Do','Do♯','Re','Re♯','Mi','Fa','Fa♯','Sol','Sol♯','La','
 var qs=function(s){return document.querySelector(s)};
 var startBtn=qs('#startBtn'),stopBtn=qs('#stopBtn'),playBtn=qs('#playBtn'),downloadBtn=qs('#downloadBtn');
 var noteEl=qs('#note'),freqEl=qs('#freq'),centsEl=qs('#cents'),needle=qs('#needle'),statusEl=qs('#status'),calibrationEl=qs('#calibration');
-var body=qs('#notesBody'),sequence=qs('#sequence'),canvas=qs('#roll'),ctx=canvas.getContext('2d');
+var body=qs('#notesBody'),sequence=qs('#sequence'),rhythmSequence=qs('#rhythmSequence'),canvas=qs('#roll'),ctx=canvas.getContext('2d');
 var minMs=qs('#minMs'),stability=qs('#stability'),rmsInput=qs('#rms');
-var audioCtx,analyser,stream,source,timer,startedAt=0,samples=[],notes=[],playing=false;
-var referencePitch=null,anchorMidi=null,refFrames=[];
+var bpmInput=qs('#bpmInput'),bpmLabel=qs('#bpmLabel'),meterSelect=qs('#meterSelect'),gridSelect=qs('#gridSelect'),meterResult=qs('#meterResult');
+var audioCtx,analyser,stream,source,timer,startedAt=0,samples=[],notes=[],quantizedNotes=[],playing=false;
+var referencePitch=null,anchorMidi=null,refFrames=[],analysisBpm=120,analysisMeter='4/4',meterConfidence=0;
 
 [minMs,stability,rmsInput].forEach(function(el){el.addEventListener('input',function(){
   qs('#minMsLabel').textContent=minMs.value+' ms';
   qs('#stabilityLabel').textContent=stability.value+' cent';
   qs('#rmsLabel').textContent=Number(rmsInput.value).toFixed(3);
   if(samples.length) rebuildNotes();
+})});
+[bpmInput,meterSelect,gridSelect].forEach(function(el){el.addEventListener('change',function(){
+  if(notes.length){requantize();renderNotes();drawRoll()}
 })});
 
 function midiFromFreq(f){return 69+12*Math.log2(f/440)}
@@ -128,7 +160,7 @@ async function start(){
     stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
     audioCtx=new(window.AudioContext||window.webkitAudioContext)();
     source=audioCtx.createMediaStreamSource(stream);analyser=audioCtx.createAnalyser();analyser.fftSize=2048;analyser.smoothingTimeConstant=0;
-    source.connect(analyser);startedAt=performance.now();samples=[];notes=[];referencePitch=null;anchorMidi=null;refFrames=[];renderNotes();drawRoll();
+    source.connect(analyser);startedAt=performance.now();samples=[];notes=[];quantizedNotes=[];referencePitch=null;anchorMidi=null;refFrames=[];renderNotes();drawRoll();
     calibrationEl.textContent='Riferimento adattivo: in attesa della prima nota stabile.';
     startBtn.disabled=true;stopBtn.disabled=false;playBtn.disabled=true;downloadBtn.disabled=true;
     statusEl.textContent='Sto ascoltando… tieni appena la prima nota, poi continua liberamente.';tick();
@@ -169,18 +201,18 @@ function rebuildNotes(){
       return;
     }
     silence=0;
-    if(!cur) cur={start:s.t,end:s.t,pitches:[s.midi]};
+    if(!cur) cur={start:s.t,end:s.t,pitches:[s.midi],levels:[s.rms]};
     else{
       var center=median(cur.pitches);
-      if(Math.abs(s.midi-center)<=stableTol){cur.end=s.t;cur.pitches.push(s.midi)}
-      else{raw.push(cur);cur={start:s.t,end:s.t,pitches:[s.midi]}}
+      if(Math.abs(s.midi-center)<=stableTol){cur.end=s.t;cur.pitches.push(s.midi);cur.levels.push(s.rms)}
+      else{raw.push(cur);cur={start:s.t,end:s.t,pitches:[s.midi],levels:[s.rms]}}
     }
   });
   if(cur){cur.end=samples.length?samples[samples.length-1].t:cur.start;raw.push(cur)}
   raw=raw.map(function(n){
-    return{start:n.start,end:Math.max(n.end,n.start+.04),pitch:median(n.pitches)}
+    return{start:n.start,end:Math.max(n.end,n.start+.04),pitch:median(n.pitches),accent:median(n.levels)}
   }).filter(function(n){return n.end-n.start>=minDur});
-  if(!raw.length){notes=[];renderNotes();drawRoll();return}
+  if(!raw.length){notes=[];quantizedNotes=[];renderNotes();drawRoll();return}
   referencePitch=raw[0].pitch;anchorMidi=Math.round(referencePitch);
   var off=Math.round((referencePitch-anchorMidi)*100);
   calibrationEl.textContent='Riferimento della trascrizione: '+nameFromMidi(anchorMidi)+' = '+(440*Math.pow(2,(referencePitch-69)/12)).toFixed(1)+' Hz ('+(off>0?'+':'')+off+' cent). Gli intervalli sono quantizzati rispetto a questa altezza.';
@@ -188,37 +220,165 @@ function rebuildNotes(){
   raw.forEach(function(n){
     var q=anchorMidi+Math.round(n.pitch-referencePitch);
     var prev=notes.length?notes[notes.length-1]:null;
-    if(prev&&prev.midi===q&&n.start-prev.end<.18){prev.end=n.end;prev.rawPitches.push(n.pitch)}
-    else notes.push({start:n.start,end:n.end,midi:q,rawPitches:[n.pitch]});
+    if(prev&&prev.midi===q&&n.start-prev.end<.18){
+      prev.end=n.end;prev.rawPitches.push(n.pitch);prev.accents.push(n.accent);prev.accent=median(prev.accents);
+    } else notes.push({start:n.start,end:n.end,midi:q,rawPitches:[n.pitch],accents:[n.accent],accent:n.accent});
   });
+  analyzeRhythm();
+  requantize();
   renderNotes();drawRoll();
+}
+
+function estimateBpm(){
+  if(notes.length<2)return 120;
+  var onsets=notes.map(function(n){return n.start}),best={bpm:120,score:1e9};
+  for(var bpm=45;bpm<=190;bpm++){
+    var beat=60/bpm,score=0,count=0;
+    for(var i=1;i<onsets.length;i++){
+      var d=onsets[i]-onsets[i-1];
+      if(d<.12||d>4)return;
+      var units=d/beat;
+      var allowed=[.25,.333333,.5,.666667,.75,1,1.5,2,3,4];
+      var err=Math.min.apply(null,allowed.map(function(a){return Math.abs(units-a)}));
+      score+=err*err;count++;
+    }
+    var durScore=0;
+    notes.forEach(function(n){
+      var u=(n.end-n.start)/beat;
+      var allowed=[.25,.333333,.5,.666667,.75,1,1.5,2,3,4];
+      var e=Math.min.apply(null,allowed.map(function(a){return Math.abs(u-a)}));
+      durScore+=e*e*.35;
+    });
+    score=(score+durScore)/Math.max(1,count);
+    if(score<best.score)best={bpm:bpm,score:score};
+  }
+  return best.bpm;
+}
+function phaseDistance(x,period,target){
+  var p=((x-target)%period+period)%period;return Math.min(p,period-p);
+}
+function estimateMeter(bpm){
+  if(notes.length<3)return{meter:'4/4',confidence:25,scores:{'2/4':0,'3/4':0,'4/4':0,'6/8':0}};
+  var beat=60/bpm,base=notes[0].start;
+  var levels=notes.map(function(n){return n.accent||0}),med=median(levels)||.001;
+  var candidates=['2/4','3/4','4/4'],scores={};
+  candidates.forEach(function(m){
+    var len=Number(m.split('/')[0]),score=0,total=0;
+    notes.forEach(function(n){
+      var pos=(n.start-base)/beat,accent=Math.max(.2,(n.accent||med)/med);
+      var d0=phaseDistance(pos,len,0);
+      var closeness=Math.max(0,1-d0/.45);
+      score+=closeness*accent;
+      if(m==='4/4'){
+        var d2=phaseDistance(pos,len,2);
+        score+=Math.max(0,1-d2/.4)*accent*.35;
+      }
+      total+=accent;
+    });
+    scores[m]=score/Math.max(1,total);
+  });
+  var ternary=0,binary=0;
+  for(var i=1;i<notes.length;i++){
+    var u=(notes[i].start-notes[0].start)/beat,frac=((u%1)+1)%1;
+    ternary+=Math.max(0,1-Math.min(Math.abs(frac-1/3),Math.abs(frac-2/3))/.12);
+    binary+=Math.max(0,1-Math.min(Math.abs(frac-.5),Math.abs(frac-.25),Math.abs(frac-.75))/.12);
+  }
+  scores['6/8']=scores['2/4']*.65+(ternary/Math.max(1,notes.length-1))*.7-(binary/Math.max(1,notes.length-1))*.15;
+  var ordered=Object.keys(scores).sort(function(a,b){return scores[b]-scores[a]});
+  var gap=Math.max(0,scores[ordered[0]]-scores[ordered[1]]);
+  return{meter:ordered[0],confidence:Math.round(Math.min(95,45+gap*85)),scores:scores};
+}
+function analyzeRhythm(){
+  analysisBpm=estimateBpm();
+  var meter=estimateMeter(analysisBpm);
+  analysisMeter=meter.meter;meterConfidence=meter.confidence;
+  bpmInput.value=analysisBpm;bpmLabel.textContent=analysisBpm+' BPM';
+  meterSelect.value='auto';
+  meterResult.innerHTML='<span class="metric">'+analysisMeter+'</span> · '+analysisBpm+' BPM · <span class="confidence">confidenza '+meterConfidence+'%</span>';
+}
+function currentMeter(){return meterSelect.value==='auto'?analysisMeter:meterSelect.value}
+function currentBpm(){var v=Math.max(30,Math.min(240,Number(bpmInput.value)||analysisBpm));bpmLabel.textContent=v+' BPM';return v}
+function notationValue(beats,meter){
+  var eps=.13,vals;
+  if(meter==='6/8') vals=[[2,'𝅗𝅥.' ],[1,'♩.' ],[2/3,'♩' ],[1/3,'♪' ],[1/6,'𝅘𝅥𝅯']];
+  else vals=[[4,'𝅝'],[3,'𝅗𝅥.'],[2,'𝅗𝅥'],[1.5,'♩.'],[1,'♩'],[.75,'♪.'],[.5,'♪'],[.25,'𝅘𝅥𝅯']];
+  var best=vals[0];vals.forEach(function(v){if(Math.abs(beats-v[0])<Math.abs(beats-best[0]))best=v});
+  return Math.abs(beats-best[0])<eps?best[1]:beats.toFixed(2)+' puls.';
+}
+function requantize(){
+  if(!notes.length){quantizedNotes=[];return}
+  var bpm=currentBpm(),meter=currentMeter(),beat=60/bpm;
+  var divisions=meter==='6/8'?3:Number(gridSelect.value),step=1/divisions,origin=notes[0].start;
+  quantizedNotes=notes.map(function(n){
+    var sb=(n.start-origin)/beat,eb=(n.end-origin)/beat;
+    var qStart=Math.round(sb/step)*step,qEnd=Math.round(eb/step)*step;
+    if(qEnd<=qStart)qEnd=qStart+step;
+    return Object.assign({},n,{qStart:qStart,qEnd:qEnd,qDur:qEnd-qStart});
+  });
+  var meterText=meterSelect.value==='auto'?('proposto '+meter):('impostato '+meter);
+  meterResult.innerHTML='<span class="metric">'+meter+'</span> · '+bpm+' BPM · '+meterText+(meterSelect.value==='auto'?' · <span class="confidence">confidenza '+meterConfidence+'%</span>':'');
 }
 function renderNotes(){
   body.innerHTML='';
-  notes.forEach(function(n,i){var tr=document.createElement('tr');tr.innerHTML='<td>'+(i+1)+'</td><td>'+nameFromMidi(n.midi)+'</td><td>'+n.midi+'</td><td>'+n.start.toFixed(2)+' s</td><td>'+(n.end-n.start).toFixed(2)+' s</td>';body.appendChild(tr)});
-  if(!notes.length){sequence.textContent=samples.length?'Nessuna nota ha superato i filtri.':'Nessuna registrazione.';return}
+  var src=quantizedNotes.length?quantizedNotes:notes;
+  var accents=notes.map(function(n){return n.accent||0}),medAccent=median(accents)||.001;
+  src.forEach(function(n,i){
+    var tr=document.createElement('tr'),accent=(n.accent||0)/medAccent,mark=accent>1.35?'● forte':accent>.9?'•':'·';
+    var startText=quantizedNotes.length?n.qStart.toFixed(2)+' puls.':n.start.toFixed(2)+' s';
+    var durText=quantizedNotes.length?n.qDur.toFixed(2)+' puls.':(n.end-n.start).toFixed(2)+' s';
+    var value=quantizedNotes.length?notationValue(n.qDur,currentMeter()):'—';
+    tr.innerHTML='<td>'+(i+1)+'</td><td>'+nameFromMidi(n.midi)+'</td><td>'+n.midi+'</td><td>'+mark+'</td><td>'+startText+'</td><td>'+durText+'</td><td>'+value+'</td>';body.appendChild(tr)
+  });
+  if(!notes.length){sequence.textContent=samples.length?'Nessuna nota ha superato i filtri.':'Nessuna registrazione.';rhythmSequence.textContent='Ritmo: —';return}
   var intervals=notes.slice(1).map(function(n,i){return n.midi-notes[i].midi});
-  sequence.textContent='Note: '+notes.map(function(n){return nameFromMidi(n.midi)}).join(' · ')+'   |   Intervalli: '+intervals.map(function(x){return(x>0?'+':'')+x}).join(', ')
+  sequence.textContent='Intervalli: 0, '+intervals.map(function(x){return(x>0?'+':'')+x}).join(', ');
+  if(quantizedNotes.length){
+    var first=quantizedNotes[0].qDur||1;
+    var ratios=quantizedNotes.map(function(n){return Math.round((n.qDur/first)*100)/100});
+    rhythmSequence.textContent='Ritmo relativo: '+ratios.join(', ')+'   |   Metro: '+currentMeter()+'   |   BPM: '+currentBpm();
+  }
 }
 function drawRoll(){
   var W=canvas.width,H=canvas.height;ctx.clearRect(0,0,W,H);ctx.fillStyle='#0b1020';ctx.fillRect(0,0,W,H);ctx.strokeStyle='#243256';ctx.lineWidth=1;
   for(var y=0;y<H;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
   if(!notes.length){ctx.fillStyle='#7183aa';ctx.font='26px system-ui';ctx.fillText('Qui comparirà la melodia',32,60);return}
-  var min=Math.min.apply(null,notes.map(function(n){return n.midi}))-2,max=Math.max.apply(null,notes.map(function(n){return n.midi}))+2,end=Math.max.apply(null,notes.map(function(n){return n.end}).concat([1]));
-  notes.forEach(function(n){var x=n.start/end*(W-40)+20,w=Math.max(8,(n.end-n.start)/end*(W-40)),y=H-20-(n.midi-min)/(max-min)*(H-40);ctx.fillStyle='#22c55e';ctx.fillRect(x,y-10,w,20)})
+  var src=quantizedNotes.length?quantizedNotes:notes;
+  var min=Math.min.apply(null,src.map(function(n){return n.midi}))-2,max=Math.max.apply(null,src.map(function(n){return n.midi}))+2;
+  var end=quantizedNotes.length?Math.max.apply(null,src.map(function(n){return n.qEnd}).concat([1])):Math.max.apply(null,src.map(function(n){return n.end}).concat([1]));
+  var meter=currentMeter(),beatsPerBar=meter==='6/8'?2:Number(meter.split('/')[0]);
+  if(quantizedNotes.length){
+    ctx.strokeStyle='#3b4e78';ctx.lineWidth=2;
+    for(var b=0;b<=end;b+=beatsPerBar){var bx=b/end*(W-40)+20;ctx.beginPath();ctx.moveTo(bx,0);ctx.lineTo(bx,H);ctx.stroke()}
+  }
+  src.forEach(function(n){
+    var st=quantizedNotes.length?n.qStart:n.start,en=quantizedNotes.length?n.qEnd:n.end;
+    var x=st/end*(W-40)+20,w=Math.max(8,(en-st)/end*(W-40)),y=H-20-(n.midi-min)/(max-min)*(H-40);
+    ctx.fillStyle='#22c55e';ctx.fillRect(x,y-10,w,20)
+  })
 }
 async function play(){
-  if(playing||!notes.length)return;playing=true;playBtn.disabled=true;
-  var ac=new(window.AudioContext||window.webkitAudioContext)(),base=ac.currentTime+.08;
-  notes.forEach(function(n){var o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=440*Math.pow(2,(n.midi-69)/12);g.gain.value=.0001;o.connect(g).connect(ac.destination);var s=base+n.start,d=n.end-n.start;g.gain.setValueAtTime(.0001,s);g.gain.exponentialRampToValueAtTime(.22,s+.015);g.gain.setValueAtTime(.22,Math.max(s+.02,s+d-.04));g.gain.exponentialRampToValueAtTime(.0001,s+d);o.start(s);o.stop(s+d+.02)});
-  var total=Math.max.apply(null,notes.map(function(n){return n.end}))+0.2;setTimeout(function(){playing=false;playBtn.disabled=false;ac.close()},total*1000)
+  if(playing||!notes.length)return;requantize();renderNotes();drawRoll();playing=true;playBtn.disabled=true;
+  var ac=new(window.AudioContext||window.webkitAudioContext)(),base=ac.currentTime+.08,beat=60/currentBpm(),src=quantizedNotes;
+  src.forEach(function(n){var o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=440*Math.pow(2,(n.midi-69)/12);g.gain.value=.0001;o.connect(g).connect(ac.destination);var s=base+n.qStart*beat,d=n.qDur*beat;g.gain.setValueAtTime(.0001,s);g.gain.exponentialRampToValueAtTime(.22,s+.015);g.gain.setValueAtTime(.22,Math.max(s+.02,s+d-.04));g.gain.exponentialRampToValueAtTime(.0001,s+d);o.start(s);o.stop(s+d+.02)});
+  var total=(Math.max.apply(null,src.map(function(n){return n.qEnd}))+0.2)*beat;setTimeout(function(){playing=false;playBtn.disabled=false;ac.close()},total*1000)
 }
 function vlq(v){var buffer=v&127,bytes=[];while((v>>=7)){buffer<<=8;buffer|=(v&127)|128}while(true){bytes.push(buffer&255);if(buffer&128)buffer>>=8;else break}return bytes}
 function strBytes(s){return Array.from(s).map(function(c){return c.charCodeAt(0)})}
 function u32(n){return[(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255]}function u16(n){return[(n>>>8)&255,n&255]}
 function midiBytes(){
-  var ppq=480,bpm=120,ticksPerSec=ppq*bpm/60,ev=[{t:0,b:[255,81,3,7,161,32]}];
-  notes.forEach(function(n){ev.push({t:Math.max(0,Math.round(n.start*ticksPerSec)),b:[144,n.midi,96],ord:1});ev.push({t:Math.max(1,Math.round(n.end*ticksPerSec)),b:[128,n.midi,0],ord:0})});
+  requantize();
+  var ppq=480,meter=currentMeter(),pulseBpm=currentBpm(),quarterBpm=meter==='6/8'?pulseBpm*1.5:pulseBpm;
+  var mpqn=Math.round(60000000/quarterBpm),num=Number(meter.split('/')[0]),den=Number(meter.split('/')[1]),dd=Math.round(Math.log2(den));
+  var ev=[
+    {t:0,b:[255,81,3,(mpqn>>16)&255,(mpqn>>8)&255,mpqn&255]},
+    {t:0,b:[255,88,4,num,dd,meter==='6/8'?36:24,8]}
+  ];
+  var beatToQuarter=meter==='6/8'?1.5:1;
+  quantizedNotes.forEach(function(n){
+    var velocity=Math.max(55,Math.min(120,Math.round(78+((n.accent||0)/(median(notes.map(function(x){return x.accent||0}))||.001)-1)*18)));
+    ev.push({t:Math.max(0,Math.round(n.qStart*beatToQuarter*ppq)),b:[144,n.midi,velocity],ord:1});
+    ev.push({t:Math.max(1,Math.round(n.qEnd*beatToQuarter*ppq)),b:[128,n.midi,0],ord:0});
+  });
   ev.sort(function(a,b){return a.t-b.t||(a.ord||0)-(b.ord||0)});var track=[],last=0;ev.forEach(function(e){track.push.apply(track,vlq(e.t-last).concat(e.b));last=e.t});track.push(0,255,47,0);
   return new Uint8Array(strBytes('MThd').concat(u32(6),u16(0),u16(1),u16(ppq),strBytes('MTrk'),u32(track.length),track))
 }
