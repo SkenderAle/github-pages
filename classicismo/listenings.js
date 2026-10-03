@@ -141,6 +141,7 @@ window.CLASSICISMO_LISTENINGS = {
   },
 
   "haydn-op33-2": {
+    keepSee:true,
     composer:"Joseph Haydn",
     title:"Quartetto op.33 n.2 «Lo scherzo»",
     videoId:"NGzd11FB2o0",
