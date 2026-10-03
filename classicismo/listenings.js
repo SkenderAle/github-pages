@@ -257,6 +257,71 @@ window.CLASSICISMO_LISTENINGS = {
       {from:520,to:760,layer:"forma",label:"III · Allegro spiritoso"}
     ]
   },
+
+  "cristofori-1720": {
+    composer:"Bartolomeo Cristofori",
+    title:"Pianoforte del 1720 · Metropolitan Museum",
+    videoId:"S1qDC1cjm4E",
+    purpose:"Vedere la differenza meccanica fra corda pizzicata e corda percossa",
+    layers:["meccanica"],
+    visualization:{
+      type:"mechanism",
+      items:[
+        {label:"CLAVICEMBALO",steps:["tasto","plettro","corda pizzicata"]},
+        {label:"PIANOFORTE",steps:["tasto","martelletto","corda percossa"]}
+      ]
+    },
+    events:[]
+  },
+
+  "mozart-k622-basset": {
+    composer:"Wolfgang Amadeus Mozart",
+    title:"Concerto per clarinetto K.622 · clarinetto di bassetto",
+    videoId:"rvN3YDkjAjY",
+    purpose:"Il registro grave aggiunto entra direttamente nella scrittura mozartiana",
+    layers:["registro"],
+    visualization:{
+      type:"register",
+      normal:["MI","FA","SOL","LA","SI","DO","RE","MI"],
+      extension:["MI♭","RE","DO♯","DO"]
+    },
+    events:[]
+  },
+
+  "mozart-k495-horn": {
+    composer:"Wolfgang Amadeus Mozart",
+    title:"Concerto per corno K.495 · corno naturale",
+    videoId:"aCTPve9ZGsg",
+    purpose:"Serie armonica, note aperte e tecnica della mano nella campana",
+    layers:["armonici"],
+    visualization:{
+      type:"harmonics",
+      partials:["1","2","3","4","5","6","7","8","9","10","11","12"],
+      message:"Il corno naturale non è un corno moderno incompleto: costruisce il proprio linguaggio dentro la serie armonica e la tecnica della mano."
+    },
+    events:[]
+  },
+
+  "stamitz-mannheim": {
+    composer:"Johann Stamitz",
+    title:"Sinfonia in mi bemolle op.11 n.3",
+    videoId:"X9iC55nN_lI",
+    purpose:"L’orchestra come organismo: dinamica collettiva, gesto ascendente e distribuzione fra famiglie",
+    layers:["dinamica","gesto","famiglie"],
+    provisional:true,
+    visualization:{
+      type:"orchestra",
+      families:["ARCHI","OBOI","CORNI","FAGOTTI"],
+      gestures:["p","crescendo","f","↗ Mannheim rocket"]
+    },
+    scoreMap:[
+      {bars:"ascolto 1",form:"Crescendo collettivo",key:"—",note:"Non aumentano semplicemente gli strumenti: lo stesso organismo modifica insieme il proprio peso sonoro."},
+      {bars:"ascolto 2",form:"Gesto ascendente",key:"—",note:"Il cosiddetto Mannheim rocket rende percepibile una direzione orchestrale, non soltanto un ornamento."},
+      {bars:"ascolto 3",form:"Famiglie orchestrali",key:"—",note:"I fiati acquistano progressivamente una funzione più autonoma rispetto al corpo degli archi."}
+    ],
+    events:[]
+  },
+
   "beethoven-9-4": {
     composer:"Ludwig van Beethoven",
     title:"Sinfonia n.9 · IV movimento",
