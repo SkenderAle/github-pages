@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La misura e la rivoluzione · Il Classicismo musicale in un secolo esplosivo</title>
+<meta name="description" content="Un percorso narrativo e interattivo nel Classicismo musicale: società, strumenti, forme, ascolti e trasformazioni da metà Settecento all'Eroica di Beethoven.">
+<meta name="author" content="Alessandro Zilli">
+<style>
+:root{
+  --ink:#221d18;--paper:#f5efe3;--paper2:#ebe0cc;--red:#7b2a24;--blue:#273d5b;
+  --gold:#a77e35;--green:#355c49;--plum:#5c3e55;--muted:#6f6559;--line:#cdbfa8;
+  --shadow:0 18px 55px rgba(39,29,19,.15);--serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#d5ccbe}
+body{margin:0;color:var(--ink);font-family:var(--serif);line-height:1.76;background:
+radial-gradient(circle at 10% 0,rgba(123,42,36,.06),transparent 28rem),
+linear-gradient(180deg,#e9e1d4,#d3c9ba)}
+a{color:inherit} button{font:inherit}
+.progress{position:fixed;left:0;top:0;height:4px;width:0;z-index:100;background:linear-gradient(90deg,var(--blue),var(--red),var(--gold))}
+.masthead{position:relative;min-height:84vh;display:grid;place-items:center;padding:7rem 1.3rem 4rem;overflow:hidden;background:#171513;color:#fff}
+.masthead::before{content:"";position:absolute;inset:-2%;background:
+linear-gradient(90deg,rgba(15,13,12,.90),rgba(15,13,12,.50) 48%,rgba(15,13,12,.72)),
+linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.66)),
+url("https://upload.wikimedia.org/wikipedia/commons/e/ef/0_Psych%C3%A9_ranim%C3%A9e_par_le_baiser_de_l%27Amour_-_Canova_-_Louvre_1.JPG") center 48%/cover no-repeat;
+filter:saturate(.56) sepia(.13);transform:scale(1.03)}
+.hero{position:relative;z-index:2;max-width:1160px;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:3rem;align-items:end}
+.kicker{font-family:var(--sans);letter-spacing:.19em;text-transform:uppercase;font-size:.78rem;color:#ead09b;font-weight:800}
+h1{font-size:clamp(3.2rem,8vw,7.6rem);line-height:.94;letter-spacing:-.05em;margin:.55rem 0 1rem;font-weight:600}
+.dek{font-size:clamp(1.15rem,2vw,1.58rem);line-height:1.46;color:#f0e7da;max-width:780px}
+.hero-card{border:1px solid rgba(255,255,255,.24);background:rgba(28,23,20,.66);backdrop-filter:blur(9px);padding:1.35rem;box-shadow:var(--shadow)}
+.hero-card b{font-family:var(--sans);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:#e8cd97}
+.hero-card p{margin:.65rem 0 0;font-size:1rem;line-height:1.6}
+.hero-credit{position:absolute;right:1rem;bottom:.65rem;z-index:3;font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.68)}
+.shell{max-width:1400px;margin:auto;background:var(--paper);box-shadow:0 0 70px rgba(30,24,18,.15)}
+.nav-wrap{position:sticky;top:0;z-index:50;background:rgba(245,239,227,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{max-width:1280px;margin:auto;display:flex;gap:.35rem;overflow-x:auto;padding:.55rem .75rem;font-family:var(--sans);scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{white-space:nowrap;text-decoration:none;padding:.62rem .78rem;border-radius:999px;font-size:.81rem;font-weight:750;color:#5d5349}
+nav a:hover,nav a.active{background:#29231e;color:#fff}
+nav a.satellite{background:var(--plum);color:#fff}
+nav a.method{background:var(--green);color:#fff}
+.content{max-width:1180px;margin:auto;padding:4.4rem 1.35rem 6rem}
+.opening{display:grid;grid-template-columns:1.35fr .65fr;gap:3rem;align-items:start;margin-bottom:5.5rem}
+.lead{font-size:1.34rem;line-height:1.64;margin-top:0}
+.dropcap:first-letter{float:left;font-size:4.8rem;line-height:.8;padding:.12rem .15rem 0 0;color:var(--red);font-weight:700}
+.aside{background:var(--paper2);border-top:4px solid var(--red);padding:1.4rem;position:sticky;top:5rem}
+.aside b{font-family:var(--sans);text-transform:uppercase;letter-spacing:.1em;font-size:.73rem;color:var(--red)}
+section{scroll-margin-top:4.6rem;margin:0 0 6.2rem}
+.section-title{border-top:1px solid #bda98e;padding-top:1rem;margin-bottom:2rem}
+.eyebrow{font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:850;color:var(--red);margin-bottom:.5rem}
+h2{font-size:clamp(2.15rem,5vw,4.6rem);line-height:1.03;letter-spacing:-.035em;margin:.1rem 0 .4rem;font-weight:600}
+h3{font-size:1.55rem;line-height:1.2;margin:2.4rem 0 .65rem;color:#3e342b}
+p{font-size:1.08rem}
+.two-col{columns:2 390px;column-gap:3.5rem}
+.two-col p{break-inside:avoid;margin-top:0}
+.callout{margin:2rem 0;padding:1.45rem 1.6rem;background:#ece6da;border-left:5px solid var(--blue)}
+.callout strong{color:var(--blue)}
+.question{margin:2rem 0;padding:1.55rem 1.65rem;background:#273d5b;color:#fff;font-size:clamp(1.25rem,2.5vw,1.85rem);line-height:1.35}
+.question em{color:#f0d398;font-style:normal}
+.listen-card{display:grid;grid-template-columns:340px 1fr;gap:0;background:#211d19;color:#f7efe3;margin:2.2rem 0;box-shadow:var(--shadow);overflow:hidden}
+.listen-art{min-height:240px;position:relative;background:
+radial-gradient(circle at 30% 20%,rgba(255,255,255,.13),transparent 12rem),
+linear-gradient(135deg,#2b3f5b,#2d231f)}
+.listen-art::after{content:"♪";position:absolute;right:1.1rem;bottom:-2.2rem;font-size:11rem;color:rgba(255,255,255,.08)}
+.listen-art.yt{background-size:cover;background-position:center}
+.listen-copy{padding:1.6rem 1.75rem;align-self:center}
+.listen-tag{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#dfc487}
+.listen-copy h3{color:#fff;margin:.35rem 0 .65rem;font-size:1.65rem}
+.listen-copy p{font-size:.98rem;color:#e7ddcf;margin:.5rem 0}
+.controls{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
+.btn{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;padding:.55rem .78rem;border-radius:999px;font-family:var(--sans);font-size:.78rem;font-weight:750;cursor:pointer}
+.btn:hover{background:#fff;color:#26201b}
+.mini-listens{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.15rem 0 2rem}
+.mini{border:1px solid #c8b99f;background:#fbf7ef;padding:.48rem .7rem;border-radius:999px;font-family:var(--sans);font-size:.78rem;font-weight:750;cursor:pointer}
+.mapline{display:flex;gap:.55rem;align-items:stretch;margin:1.5rem 0;overflow:auto;padding-bottom:.35rem}
+.mapnode{min-width:150px;padding:1rem;background:#eee5d6;border-top:4px solid var(--gold);font-family:var(--sans);font-weight:800;text-align:center}
+.arrow{display:grid;place-items:center;color:var(--red);font-size:1.4rem;font-weight:bold}
+.lanes{display:grid;gap:.45rem;margin:1.2rem 0}
+.lane{background:#eee5d7;border:1px solid #d2c2a8;padding:.65rem .8rem;font-family:var(--sans);font-weight:800}
+.satellite-section{background:#efe4e8;margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;border-top:6px solid var(--plum);border-bottom:1px solid #ceb8c4}
+.satellite-inner{max-width:1180px;margin:auto}
+.women-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+.woman{background:#fbf7f3;border-top:4px solid var(--plum);padding:1.2rem}
+.woman b{display:block;font-family:var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--plum);font-size:.83rem;margin-bottom:.4rem}
+.woman p{font-size:.94rem;line-height:1.58}
+.method-box{background:#e7efe9;border-left:6px solid var(--green);padding:1.4rem 1.55rem;margin:2rem 0}
+.method-box h3{color:var(--green);margin-top:.15rem}
+.final-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4.5rem 1.35rem;background:#201b18;color:#f6eddf}
+.final-inner{max-width:1000px;margin:auto}
+.final-band h2,.final-band h3{color:#fff}
+.final-band p{color:#e7ddcf}
+.footer{background:#151311;color:#d9cec1;padding:2.5rem 1.3rem;font-family:var(--sans);font-size:.78rem}
+.footer-inner{max-width:1180px;margin:auto;display:grid;gap:.55rem}
+.modal{position:fixed;inset:0;z-index:90;background:rgba(10,9,8,.87);display:none;place-items:center;padding:1rem}
+.modal.open{display:grid}
+.modal-panel{width:min(980px,100%);max-height:90vh;background:#f5efe3;display:grid;grid-template-rows:auto 1fr;box-shadow:0 25px 80px rgba(0,0,0,.45)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;border-bottom:1px solid var(--line);font-family:var(--sans);font-weight:800}
+.modal-close{border:0;background:none;font-size:1.7rem;cursor:pointer}
+.modal-body{overflow:auto;padding:1rem}
+.modal-body iframe{width:100%;aspect-ratio:16/9;border:0;background:#000}
+.placeholder{padding:2rem;background:#ece4d7;font-family:var(--sans);line-height:1.6;color:#5f5549}
+.scrolltop{position:fixed;right:1rem;bottom:1rem;z-index:60;width:45px;height:45px;border:0;border-radius:50%;background:#2a241f;color:#fff;font-size:1.2rem;display:none;cursor:pointer}
+.scrolltop.show{display:block}
+@media(max-width:900px){
+ .hero{grid-template-columns:1fr}.hero-card{max-width:520px}.opening{grid-template-columns:1fr}.aside{position:static}
+ .listen-card{grid-template-columns:1fr}.listen-art{min-height:210px}.women-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+ .content{padding-left:1rem;padding-right:1rem}.satellite-section,.final-band{margin-left:-1rem;margin-right:-1rem}
+ .women-grid{grid-template-columns:1fr}.listen-copy{padding:1.2rem}.masthead{min-height:88vh;padding-top:6rem}
+ h1{font-size:clamp(3rem,16vw,5rem)}.two-col{columns:1}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="masthead">
+  <div class="hero">
+    <div>
+      <div class="kicker">Musica · società · forme · ascolto</div>
+      <h1>La misura e la rivoluzione</h1>
+      <div class="dek">Il Classicismo musicale in un secolo esplosivo: una lingua capace di dare forma al conflitto, proprio mentre l’Europa cambia più rapidamente di quanto le sue categorie riescano a raccontare.</div>
+    </div>
+    <aside class="hero-card">
+      <b>Come usare questa pagina</b>
+      <p>Leggi in continuità, ma fermati sugli ascolti. Le categorie arrivano dopo l’orecchio: prima sentirai una relazione, poi le daremo un nome.</p>
+    </aside>
+  </div>
+  <div class="hero-credit">Antonio Canova · Psiche ranimata dal bacio di Amore · Louvre · immagine Wikimedia Commons, pubblico dominio</div>
+</header>
+
+<div class="shell">
+<div class="nav-wrap"><nav id="nav">
+<a href="#secolo">Il secolo</a><a href="#classico">Classico?</a><a href="#fuoco">Misura e fuoco</a>
+<a href="#pubblico">Il pubblico</a><a href="#strumenti">Strumenti</a><a href="#mannheim">Mannheim</a>
+<a href="#continuo">Continuo</a><a href="#grammatica">Grammatica</a><a href="#forma">Forma-sonata</a>
+<a href="#generi">Generi</a><a href="#quartetto">Quartetto</a><a href="#camera">Camera</a>
+<a href="#sinfonia">Sinfonia</a><a href="#vienna">Vienna</a><a href="#beethoven">Beethoven</a>
+<a href="#donne" class="satellite">Le donne</a><a href="#epilogo">1804</a><a href="#metodo" class="method">Metodo</a>
+</nav></div>
+
+<main class="content">
+<div class="opening">
+  <p class="lead dropcap">La parola <em>classico</em> rischia di suggerire un mondo ordinato, composto e immobile. Il Settecento nel quale quella musica prende forma è invece attraversato dall’Illuminismo, dalle rivoluzioni americana e francese, dalla trasformazione dei pubblici, dall’espansione delle città e da una nuova idea dell’individuo. Questo percorso nasce da una domanda: che cosa accade quando una cultura che vive dentro il cambiamento cerca, proprio nella musica, una forma capace di renderlo intelligibile?</p>
+  <aside class="aside"><b>Una regola del percorso</b><p>Le date e le categorie servono per orientarci, ma non sono muri. Barocco, Classicismo e Romanticismo si sovrappongono molto più di quanto un indice cronologico lasci immaginare.</p></aside>
+</div>
+
+<section id="secolo">
+<div class="section-title"><div class="eyebrow">Un mondo che cambia</div><h2>Un secolo esplosivo cerca una forma</h2></div>
+<div class="two-col"><p>L’Illuminismo sottopone alla critica istituzioni, tradizioni e autorità che per secoli erano sembrate naturali, mentre la fiducia nella ragione convive con interrogativi sempre più radicali sulla libertà, sulla religione, sulla natura e sull’origine dell’ordine sociale.</p><p>La musica non costituisce la colonna sonora passiva di questi avvenimenti. Cambiano però i luoghi nei quali viene prodotta, pagata e ascoltata, e con essi cambiano le aspettative che circondano l’esperienza musicale.</p></div>
+<div class="mapline"><div class="mapnode">COMUNITÀ<br><small>Billings · Chester</small></div><div class="arrow">→</div><div class="mapnode">PIAZZA<br><small>Gossec</small></div><div class="arrow">→</div><div class="mapnode">SALA DA CONCERTO<br><small>Haydn · 104</small></div></div>
+<div class="question">Non incontreremo una musica che ignora il conflitto, ma una musica che impara a <em>dargli una forma riconoscibile</em>.</div>
+</section>
+
+<section id="classico">
+<div class="section-title"><div class="eyebrow">Antico e moderno</div><h2>Perché lo chiamiamo classico?</h2></div>
+<p>Nelle arti figurative il Neoclassicismo può guardare direttamente statue, templi, rilievi e vasi. La musica si trova in una situazione diversa: dell’antichità possediamo testimonianze teoriche e alcuni frammenti, non un grande repertorio sonoro continuo che un compositore settecentesco possa semplicemente imitare.</p>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Confronto guidato</div><h3>Epitaffio di Sicilo → Gluck, Orfeo ed Euridice</h3><p>Prima ascoltiamo una rara testimonianza della musica antica; poi una musica settecentesca che costruisce la propria idea dell’antico. La differenza è il cuore della domanda.</p><div class="controls"><button class="btn placeholder-btn" data-title="Epitaffio di Sicilo">Ascolta l’antico</button><button class="btn placeholder-btn" data-title="Gluck · Che farò senza Euridice">Ascolta Gluck</button></div></div></div>
+<div class="callout"><strong>Classico</strong> non significherà quindi “copiare la musica dei Greci”, ma cercare chiarezza delle relazioni, proporzione, intelligibilità e misura dentro una lingua pienamente settecentesca.</div>
+</section>
+
+<section id="fuoco">
+<div class="section-title"><div class="eyebrow">Ragione e sentimento</div><h2>La misura e il fuoco</h2></div>
+<p>Ragione e sentimento non si succedono ordinatamente. Rousseau, l’<em>Empfindsamkeit</em> e lo <em>Sturm und Drang</em> mostrano quanto interiorità, spontaneità e inquietudine crescano dentro lo stesso secolo che cerca ordine, classificazione e chiarezza.</p>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Ascolto guidato</div><h3>C. P. E. Bach · Fantasia in fa diesis minore Wq 67</h3><p>Non cerchiamo subito una forma. Seguiamo il tempo percepito: continuità, sospensione, esitazione, gesto libero, accelerazione e ritorno.</p><div class="controls"><button class="btn placeholder-btn" data-title="C. P. E. Bach · Wq 67">Ascolta</button></div></div></div>
+<div class="mini-listens"><button class="mini placeholder-btn" data-title="Rousseau · Le Devin du village">▶ Rousseau</button><button class="mini placeholder-btn" data-title="Haydn · Sinfonia n. 45">♪ Anche questo è Classicismo?</button></div>
+</section>
+
+<section id="pubblico">
+<div class="section-title"><div class="eyebrow">Dalla corte alla città</div><h2>Chi ascolta?</h2></div>
+<p>Il cambiamento più importante non consiste nella sostituzione della corte con la borghesia, ma nella moltiplicazione dei pubblici. Patronato, teatri, salotti, concerti a pagamento, editoria e insegnamento privato convivono e costruiscono nuove possibilità professionali.</p>
+<div class="listen-card"><div class="listen-art yt" style="background-image:url('https://img.youtube.com/vi/_y6ZpoQrZzc/hqdefault.jpg')"></div><div class="listen-copy"><div class="listen-tag">Ascolto guidato</div><h3>Mozart · Concerto K.466, I movimento</h3><p>Il pianoforte non entra subito. L’orchestra costruisce l’attesa e soltanto dopo compare il solista: prima della forma, ascoltiamo il rapporto con un pubblico del quale bisogna governare l’attenzione.</p><div class="controls"><button class="btn video" data-video="_y6ZpoQrZzc" data-title="Mozart · Concerto K.466">▶ Ascolta</button></div></div></div>
+<div class="mini-listens"><button class="mini placeholder-btn" data-title="Haydn · Sinfonia n.94, Andante">💥 Sorprendere il pubblico</button></div>
+</section>
+
+<section id="strumenti">
+<div class="section-title"><div class="eyebrow">Organologia</div><h2>L’officina degli strumenti</h2></div>
+<p>Il Classicismo non nasce perché qualcuno inventa improvvisamente strumenti “migliori”. Molte trasformazioni decisive precedono la Rivoluzione industriale e nascono in botteghe artigiane, attraverso il dialogo fra costruttori ed esecutori.</p>
+<div class="mapline"><div class="mapnode">CRISTOFORI<br><small>corda percossa</small></div><div class="mapnode">CLARINETTO DI BASSETTO<br><small>nuovo registro grave</small></div><div class="mapnode">CORNO NATURALE<br><small>armonici e mano</small></div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Laboratorio timbrico</div><h3>Cristofori · Mozart K.622 · Mozart K.495</h3><p>Tre stazioni per capire che uno strumento storico non è la versione difettosa di quello moderno: possiede una propria logica sonora, e quella logica entra direttamente nella composizione.</p><div class="controls"><button class="btn placeholder-btn" data-title="Cristofori 1720">Fortepiano</button><button class="btn placeholder-btn" data-title="Mozart · K.622, clarinetto di bassetto">Clarinetto</button><button class="btn placeholder-btn" data-title="Mozart · K.495, corno naturale">Corno</button></div></div></div>
+</section>
+
+<section id="mannheim">
+<div class="section-title"><div class="eyebrow">L’orchestra come organismo</div><h2>Mannheim: quando l’orchestra impara a respirare</h2></div>
+<p>Il crescendo non nasce a Mannheim, né il celebre <em>rocket</em> costituisce un’invenzione isolata. Ciò che impressiona è la capacità dell’intera orchestra di realizzare trasformazioni collettive con precisione tale da renderle parte dell’architettura musicale.</p>
+<div class="mapline"><div class="mapnode">p</div><div class="arrow">→</div><div class="mapnode">CRESCENDO</div><div class="arrow">→</div><div class="mapnode">f</div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Ascolto guidato</div><h3>Johann Stamitz · Mannheim</h3><p>Il video definitivo verrà fissato scegliendo un passaggio nel quale crescendo, gesto ascendente e disciplina orchestrale siano chiaramente udibili senza trasformare Mannheim in una collezione di trucchi.</p><div class="controls"><button class="btn placeholder-btn" data-title="Johann Stamitz · ascolto Mannheim">Ascolto in definizione</button></div></div></div>
+</section>
+
+<section id="continuo">
+<div class="section-title"><div class="eyebrow">Una responsabilità redistribuita</div><h2>Sparisce il pavimento</h2></div>
+<p>Il basso continuo non è uno strumento, ma una funzione. Nella trio sonata tre parti scritte possono richiedere quattro esecutori; nel quartetto classico, invece, ciò che prima veniva completato anche attraverso una realizzazione armonica esterna viene sempre più distribuito nelle parti.</p>
+<div class="mapline"><div class="mapnode">VIOLINO I</div><div class="mapnode">VIOLINO II</div><div class="mapnode">BASSO<br><small>violoncello + cembalo</small></div><div class="arrow">→</div><div class="mapnode">4 PARTI AUTONOME</div></div>
+<div class="mini-listens"><button class="mini placeholder-btn" data-title="Corelli · Trio sonata">▶ Corelli</button><button class="mini placeholder-btn" data-title="Haydn · Quartetto op.20">▶ Haydn op.20</button><button class="mini placeholder-btn" data-title="Mozart · Figaro, recitativo secco">♪ Il continuo era davvero morto?</button></div>
+</section>
+
+<section id="grammatica">
+<div class="section-title"><div class="eyebrow">Frase, cadenza, tonalità</div><h2>La nuova grammatica</h2></div>
+<p>Il Classicismo non inventa la melodia accompagnata: seleziona e sviluppa una possibilità già centrale nella monodia e nel teatro barocco, rendendo però particolarmente leggibile la gerarchia fra linea principale, accompagnamento, frase e cadenza.</p>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Primo laboratorio analitico</div><h3>Mozart · Sonata K.545, I</h3><p>Primo livello: melodia e basso albertino. Secondo: respiri e cadenze. Terzo: Do maggiore come casa, Sol maggiore come nuova stabilità. Poi la trappola: il tema ritorna in Fa. È tornato il tema, ma siamo davvero tornati a casa?</p><div class="controls"><button class="btn placeholder-btn" data-title="Mozart · K.545">Ascolta</button><button class="btn placeholder-btn" data-title="Mozart · K.331">Frasi: K.331</button><button class="btn placeholder-btn" data-title="Mozart · Jupiter, Finale">E la polifonia?</button></div></div></div>
+</section>
+
+<section id="forma">
+<div class="section-title"><div class="eyebrow">Memoria e spazio tonale</div><h2>La forma-sonata: partire, perdersi, ritornare</h2></div>
+<p>Prima dei nomi tecnici viene il viaggio. Una regione tonale diventa casa, un’altra può diventare altrove, lo sviluppo rende più instabile il territorio e la ripresa trasforma il ritorno in un evento riconoscibile proprio perché abbiamo memoria di ciò che è accaduto.</p>
+<div class="mapline"><div class="mapnode">CASA<br><small>Sol</small></div><div class="arrow">→</div><div class="mapnode">ALTROVE<br><small>Re</small></div><div class="arrow">→</div><div class="mapnode">INSTABILITÀ</div><div class="arrow">→</div><div class="mapnode">CASA<br><small>Sol</small></div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Mappa tonale sincronizzata</div><h3>Mozart · Eine kleine Nachtmusik K.525, I</h3><p>Soltanto dopo l’ascolto la mappa cambierà nome: esposizione, sviluppo, ripresa. La forma-sonata non verrà presentata come una scatola obbligatoria per due temi, ma come un modo di organizzare attesa, memoria e spazio tonale.</p><div class="controls"><button class="btn placeholder-btn" data-title="Mozart · K.525, I">Ascolta</button><button class="btn placeholder-btn" data-title="Haydn · Sinfonia n.104, I">Haydn: stesso materiale, nuova funzione</button></div></div></div>
+</section>
+
+<section id="generi">
+<div class="section-title"><div class="eyebrow">Una lingua, corpi differenti</div><h2>Una grammatica, molti generi</h2></div>
+<p>Sonata e forma-sonata non sono la stessa cosa. La seconda può organizzare movimenti di sonate, quartetti, sinfonie e concerti, ma cambia significato quando cambia il corpo musicale che la realizza.</p>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Ascolto guidato</div><h3>Mozart · Concerto K.488, I</h3><p>Alla geografia tonale si sovrappone ora il rapporto orchestra-solista. E, nel punto della cadenza, l’orchestra tace: dentro una musica sempre più scritta sopravvive uno spazio istituzionalmente riconosciuto di invenzione dell’interprete.</p><div class="controls"><button class="btn placeholder-btn" data-title="Mozart · K.488">Concerto</button><button class="btn placeholder-btn" data-title="Mozart · K.364">Sinfonia concertante</button></div></div></div>
+<div class="callout"><strong>Genealogia didattica:</strong> sonata barocca, concerto solistico, concerto grosso e sinfonia concertante vengono collegati come famiglie di problemi — individuo, gruppo, sostegno, dialogo — non come una discendenza meccanica.</div>
+</section>
+
+<section id="quartetto">
+<div class="section-title"><div class="eyebrow">Quattro individui in una stanza</div><h2>Il quartetto</h2></div>
+<p>Due violini, viola e violoncello non costituiscono una piccola orchestra. Ogni musicista rimane esposto, e l’uguaglianza interessante del quartetto non consiste nel fare tutti la stessa cosa, ma nella possibilità che le funzioni circolino.</p>
+<div class="lanes"><div class="lane">Violino I</div><div class="lane">Violino II</div><div class="lane">Viola</div><div class="lane">Violoncello</div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">Conversazione e aspettativa</div><h3>Haydn op.33 n.2 → Mozart K.465</h3><p>Con Haydn seguiremo la circolazione delle funzioni e il gioco del Finale con le pause; con Mozart oscureremo invece la mappa tonale dell’introduzione delle “Dissonanze” finché il Do maggiore non tornerà a mettere a fuoco la casa.</p><div class="controls"><button class="btn placeholder-btn" data-title="Haydn · op.33 n.2">Haydn</button><button class="btn placeholder-btn" data-title="Mozart · K.465">Mozart K.465</button></div></div></div>
+</section>
+
+<section id="camera">
+<div class="section-title"><div class="eyebrow">Da due a tredici</div><h2>La fioritura della musica da camera</h2></div>
+<p>Il quartetto è soltanto una delle possibili combinazioni. Duo, trii, quartetti con pianoforte, quintetti e grandi ensemble di fiati rendono la camera un laboratorio nel quale numero e timbro modificano continuamente il modo di conversare.</p>
+<div class="listen-card"><div class="listen-art yt" style="background-image:url('https://img.youtube.com/vi/841jxlKeAgI/hqdefault.jpg')"></div><div class="listen-copy"><div class="listen-tag">Ascolto guidato</div><h3>Mozart · Trio K.498</h3><p>Pianoforte, clarinetto e viola: tre colori sufficientemente differenti da rendere evidente il continuo passaggio fra proporre, rispondere, sostenere e completare.</p><div class="controls"><button class="btn video" data-video="841jxlKeAgI" data-title="Mozart · Trio K.498">▶ Ascolta</button></div></div></div>
+<div class="mapline"><div class="mapnode">2</div><div class="mapnode">3</div><div class="mapnode">4</div><div class="mapnode">5</div><div class="mapnode">8</div><div class="mapnode">13</div></div>
+<div class="question">A quale numero di strumenti finisce la musica da camera e comincia l’orchestra? <em>Non cercheremo un numero magico.</em></div>
+</section>
+
+<section id="sinfonia">
+<div class="section-title"><div class="eyebrow">Una confluenza</div><h2>Molte strade verso la sinfonia</h2></div>
+<p>La sinfonia non verrà raccontata attraverso una sola freccia dall’ouverture d’opera. Teatro, concerto grosso, concerto di ripieno, danza, serenata e nuova sintassi classica formano un delta di pratiche che progressivamente convergono.</p>
+<div class="mapline"><div class="mapnode">SINFONIA D’OPERA</div><div class="mapnode">CONCERTO GROSSO</div><div class="mapnode">RIPIENO</div><div class="mapnode">DANZA</div><div class="mapnode">SINTASSI CLASSICA</div></div>
+<div class="question">La sinfonia non ha una mamma. <em>Ha una famiglia.</em></div>
+<div class="mini-listens"><button class="mini placeholder-btn" data-title="Corelli · Concerto grosso">Corelli</button><button class="mini placeholder-btn" data-title="Scarlatti · Griselda, sinfonia">Scarlatti</button><button class="mini placeholder-btn" data-title="Sammartini · Sinfonia">Sammartini</button><button class="mini placeholder-btn" data-title="Joseph Bologne · Symphonie concertante">Bologne</button></div>
+</section>
+
+<section id="vienna">
+<div class="section-title"><div class="eyebrow">Un nodo, non un’origine</div><h2>Vienna: il grande laboratorio</h2></div>
+<p>Vienna raccoglie tradizioni maturate altrove: Italia, Mannheim, Parigi, Salisburgo, Boemia, Esterháza e Londra. Corte, salotto, teatro, editoria e pubblico urbano convivono e rendono possibile una densità eccezionale di relazioni.</p>
+<div class="listen-card"><div class="listen-art yt" style="background-image:url('https://img.youtube.com/vi/yQ_z_tMK6Bo/hqdefault.jpg')"></div><div class="listen-copy"><div class="listen-tag">Ascolto guidato</div><h3>Mozart · Quintetto K.452</h3><p>Pianoforte, oboe, clarinetto, corno e fagotto. La domanda non sarà quale strumento “accompagni” il pianoforte, ma chi possieda di volta in volta la responsabilità del discorso.</p><div class="controls"><button class="btn video" data-video="yQ_z_tMK6Bo" data-title="Mozart · Quintetto K.452">▶ Ascolta</button></div></div></div>
+<div class="callout"><strong>Vienna non produce Haydn, Mozart e Beethoven.</strong> Li mette in relazione con una rete europea abbastanza fitta da rendere “Scuola viennese” una categoria utile soltanto se ricordiamo che è retrospettiva.</div>
+</section>
+
+<section id="beethoven">
+<div class="section-title"><div class="eyebrow">La forma sotto pressione</div><h2>Beethoven: quando la forma comincia a non bastare</h2></div>
+<p>Beethoven non entra a Vienna per distruggere un linguaggio esaurito. Impara sonata, quartetto, concerto e sinfonia da una tradizione al massimo della propria maturità, poi verifica fino a quale punto possa ampliarla senza cessare di riconoscerla.</p>
+<div class="mapline"><div class="mapnode">ESPOSIZIONE</div><div class="mapnode" style="min-width:260px">SVILUPPO</div><div class="mapnode">RIPRESA</div><div class="mapnode" style="min-width:260px">CODA</div></div>
+<div class="listen-card"><div class="listen-art"></div><div class="listen-copy"><div class="listen-tag">La stessa mappa, nuove proporzioni</div><h3>Beethoven · Eroica, I movimento</h3><p>Riutilizziamo la mappa-sonata già conosciuta. Non servono nuove definizioni: basta vedere lo sviluppo e soprattutto la coda dilatarsi fino a trasformare ciò che consideravamo una conclusione in nuovo territorio di elaborazione.</p><div class="controls"><button class="btn placeholder-btn" data-title="Beethoven · Eroica, I">Eroica</button><button class="btn placeholder-btn" data-title="Beethoven · Quinta, III-IV">Quinta III → IV</button><button class="btn placeholder-btn" data-title="Beethoven · Pastorale">Un altro Beethoven</button></div></div></div>
+</section>
+
+<section id="donne" class="satellite-section">
+<div class="satellite-inner">
+<div class="section-title"><div class="eyebrow" style="color:var(--plum)">Capitolo satellite</div><h2>Una libertà incompleta</h2></div>
+<p class="lead">Il secolo che proclamava con crescente forza l’universalità della libertà non distribuiva allo stesso modo le possibilità di trasformare il talento musicale in carriera, pubblicazione, insegnamento e memoria storica. Le donne non mancavano dalla musica del Classicismo: mancavano molte delle condizioni che avrebbero reso normale la loro presenza professionale.</p>
+<div class="women-grid">
+<div class="woman"><b>Marianna Martines · 1744–1812</b><p>Compositrice, cantante e tastierista viennese, formata nell’ambiente di Metastasio, Porpora, Bonno e del giovane Haydn. Le sue accademie domestiche furono un nodo importante della vita musicale viennese.</p></div>
+<div class="woman"><b>Maria Theresia von Paradis · 1759–1824</b><p>Virtuosa cieca di tastiera, costruì una carriera concertistica europea. Il Concerto K.456 di Mozart è tradizionalmente e con buoni indizi collegato a lei.</p></div>
+<div class="woman"><b>Marianna Auenbrugger · 1759–1782</b><p>Pianista ammirata da Haydn, lasciò una Sonata in mi bemolle pubblicata dopo la morte a spese di Salieri.</p></div>
+<div class="woman"><b>Maddalena Lombardini Sirmen · 1745–1818</b><p>Formata all’Ospedale dei Mendicanti e legata a Tartini, riuscì a entrare nella rete europea dei virtuosi come violinista professionista e autrice di musica strumentale.</p></div>
+<div class="woman"><b>Hélène de Montgeroult · 1764–1836</b><p>Pianista, compositrice e pedagoga, fu la prima donna a insegnare nella classe superiore di pianoforte del Conservatoire de Paris.</p></div>
+<div class="woman"><b>Maria Szymanowska · 1789–1831</b><p>Virtuosa e compositrice polacca, appartiene alla soglia sulla quale il pianismo classico comincia a trasformarsi nel nuovo linguaggio romantico.</p></div>
+</div>
+<div class="question" style="background:var(--plum)">La domanda non è: «perché non c’erano compositrici?». <em>Quali condizioni permettevano a una compositrice di essere ascoltata, pubblicata e ricordata?</em></div>
+</div>
+</section>
+
+<section id="epilogo" class="final-band">
+<div class="final-inner">
+<div class="eyebrow" style="color:#e3c98f">Una soglia, non un confine</div>
+<h2>1804: quando il secolo cambia senza aspettare di finire</h2>
+<p>Il 1827 rimane una data utile nei manuali, ma la morte di Beethoven non può determinare la morte di un linguaggio. Per questo il nostro percorso sceglie simbolicamente un’altra soglia: l’<em>Eroica</em>, la dedica a Bonaparte cancellata e una forma classica che continua a essere perfettamente leggibile proprio mentre comincia a sostenere significati e proporzioni nuove.</p>
+<h3>Dall’eroe alla fraternità</h3>
+<p>La Nona non farà di Beethoven un “primo europeista”. Attraverso Schiller, però, l’orizzonte dell’individuo può allargarsi verso una fraternità umana che due secoli dopo verrà riletta politicamente: nel 1972 il Consiglio d’Europa e nel 1985 le Comunità europee sceglieranno proprio quella melodia come inno.</p>
+<div class="mapline"><div class="mapnode">EROE</div><div class="arrow">→</div><div class="mapnode">UOMO</div><div class="arrow">→</div><div class="mapnode">UOMINI</div><div class="arrow">→</div><div class="mapnode">FRATELLANZA</div></div>
+<p style="font-size:1.35rem">La forma rimane ancora leggibile sotto la ferita della carta, mentre qualcosa che appartiene al mondo nuovo ha già cominciato ad attraversarla.</p>
+</div>
+</section>
+
+<section id="metodo">
+<div class="section-title"><div class="eyebrow">Nota metodologica</div><h2>Un’assenza voluta</h2></div>
+<div class="method-box"><h3>Perché qui non raccontiamo il melodramma</h3><p>Il teatro musicale compare quando è necessario per comprendere trasformazioni più generali — Gluck, il recitativo con continuo, la sinfonia d’opera — ma non viene affrontato sistematicamente. La scelta è deliberata: il melodramma avrà un percorso autonomo, da Gluck a Rossini passando per Mozart, nel quale opera seria, opera buffa, Singspiel, riforma teatrale, cantante e orchestra potranno essere seguiti senza ridurli a un’appendice del linguaggio strumentale.</p></div>
+</section>
+
+</main>
+
+<footer class="footer"><div class="footer-inner">
+<div><strong>La misura e la rivoluzione</strong> · percorso didattico e narrativo sul Classicismo musicale.</div>
+<div>Testi e struttura editoriale © Alessandro Zilli. Immagini, registrazioni e materiali di terzi restano soggetti ai diritti e alle licenze dei rispettivi titolari.</div>
+<div>Hero: Antonio Canova, <em>Psiche ranimata dal bacio di Amore</em>, Louvre · fotografia Wikimedia Commons.</div>
+</div></footer>
+</div>
+
+<button class="scrolltop" id="scrolltop" aria-label="Torna in alto">↑</button>
+<div class="modal" id="modal" aria-hidden="true"><div class="modal-panel">
+<div class="modal-head"><span id="modalTitle">Ascolto</span><button class="modal-close" id="modalClose" aria-label="Chiudi">×</button></div>
+<div class="modal-body" id="modalBody"></div>
+</div></div>
+
+<script>
+(()=>{
+ const modal=document.getElementById('modal'),body=document.getElementById('modalBody'),title=document.getElementById('modalTitle'),close=document.getElementById('modalClose');
+ function show(t,html){title.textContent=t;body.innerHTML=html;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+ function hide(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');body.innerHTML='';document.body.style.overflow=''}
+ close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
+ document.querySelectorAll('.video').forEach(el=>el.addEventListener('click',()=>{
+   const id=el.dataset.video,t=el.dataset.title||'Ascolto';
+   show(t,\`<iframe src="https://www.youtube-nocookie.com/embed/\${id}?rel=0" title="\${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>\`)
+ }));
+ document.querySelectorAll('.placeholder-btn').forEach(el=>el.addEventListener('click',()=>{
+   show(el.dataset.title||'Ascolto',\`<div class="placeholder"><strong>Card pronta.</strong><br>La registrazione definitiva e i punti sincronizzati verranno fissati nella fase di regia degli ascolti, evitando di legare il sito a un video provvisorio.</div>\`)
+ }));
+ const progress=document.getElementById('progress'),top=document.getElementById('scrolltop');
+ const links=[...document.querySelectorAll('#nav a[href^="#"]')];
+ function spy(){
+   const doc=document.documentElement,max=doc.scrollHeight-doc.clientHeight;
+   progress.style.width=(max?doc.scrollTop/max*100:0)+'%';top.classList.toggle('show',doc.scrollTop>700);
+   const probe=window.scrollY+120;let current=null;
+   for(const a of links){const el=document.querySelector(a.getAttribute('href'));if(el&&el.offsetTop<=probe)current=a}
+   links.forEach(a=>a.classList.toggle('active',a===current))
+ }
+ window.addEventListener('scroll',spy,{passive:true});window.addEventListener('load',spy);top.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+</script>
+</body>
+</html>
