@@ -159,9 +159,27 @@
     setMode(root.dataset.mode||"listen");
   }
 
+  function arrangeAnalysisPanel(root){
+    if(!root.classList.contains("analysis-lab"))return;
+    const grid=root.querySelector(".analysis-lab-grid");
+    if(!grid)return;
+    let side=grid.querySelector(".analysis-side");
+    if(!side){
+      side=document.createElement("div");
+      side.className="analysis-side";
+      grid.appendChild(side);
+    }
+    const live=root.querySelector(".analysis-live");
+    const viz=root.querySelector("[data-viz]");
+    const score=root.querySelector("[data-score-map]");
+    const note=root.querySelector("[data-provisional]");
+    [live,viz,score,note].forEach(el=>{if(el&&el.parentElement!==side)side.appendChild(el);});
+  }
+
   function decorate(root,spec){
     renderScoreMap(root,spec);
     renderVisualization(root,spec);
+    arrangeAnalysisPanel(root);
     installModes(root,spec);
     const title=root.querySelector("[data-analysis-title]");
     const status=root.querySelector("[data-analysis-status]");
