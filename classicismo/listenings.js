@@ -33,12 +33,13 @@ window.CLASSICISMO_LISTENINGS = {
     visualization:{
       type:"journey",
       stages:[
-        {label:"ESPOSIZIONE",detail:"Do → Sol",from:0,to:86},
-        {label:"ESPOSIZIONE",detail:"ritornello · Do → Sol",from:86,to:172},
-        {label:"SVILUPPO",detail:"Sol minore · modulazioni",from:172,to:203},
-        {label:"RIPRESA",detail:"Fa → Do",from:203,to:235},
-        {label:"SVILUPPO",detail:"ritornello · Sol minore · modulazioni",from:235,to:266},
-        {label:"RIPRESA",detail:"ritornello · Fa → Do",from:266,to:299}
+        {label:"ATTESA",detail:"prima nota a 0:08",from:0,to:8},
+        {label:"ESPOSIZIONE",detail:"Do → Sol",from:8,to:84},
+        {label:"ESPOSIZIONE",detail:"ritornello · Do → Sol",from:84,to:161},
+        {label:"SVILUPPO",detail:"Sol minore · modulazioni",from:161,to:185},
+        {label:"RIPRESA",detail:"Fa → Do",from:185,to:217},
+        {label:"SVILUPPO",detail:"ritornello · Sol minore · modulazioni",from:217,to:241},
+        {label:"RIPRESA",detail:"ritornello · Fa → Do",from:241,to:274}
       ]
     },
     scoreMap:[
@@ -53,28 +54,29 @@ window.CLASSICISMO_LISTENINGS = {
       {bars:"71–73",form:"Codetta",key:"Do maggiore",note:"Chiusura del movimento nella tonalità d’impianto."}
     ],
     events:[
-      {from:0,to:8,layer:"tonalita",label:"PRIMO TEMA · Do maggiore"},
-      {from:8,to:21,layer:"tonalita",label:"TRANSIZIONE · verso la dominante"},
-      {from:21,to:27,layer:"tonalita",label:"CADENZA · Sol maggiore"},
-      {from:27,to:86,layer:"tonalita",label:"SECONDO TEMA E CHIUSURA · Sol maggiore"},
-      {from:86,to:94,layer:"tonalita",label:"RITORNELLO · di nuovo Do maggiore"},
-      {from:94,to:107,layer:"tonalita",label:"TRANSIZIONE · verso la dominante"},
-      {from:107,to:113,layer:"tonalita",label:"CADENZA · Sol maggiore"},
-      {from:113,to:172,layer:"tonalita",label:"SECONDO TEMA E CHIUSURA · Sol maggiore"},
-      {from:172,to:176,layer:"forma",label:"SVILUPPO · Sol minore"},
-      {from:176,to:180,layer:"forma",label:"SVILUPPO · Re minore"},
-      {from:180,to:192,layer:"forma",label:"SVILUPPO · La minore e modulazioni"},
-      {from:192,to:203,layer:"forma",label:"PREPARAZIONE DELLA RIPRESA · verso Fa maggiore"},
-      {from:203,to:211,layer:"forma",label:"RIPRESA · primo tema in Fa maggiore · sottodominante"},
-      {from:211,to:222,layer:"tonalita",label:"TRANSIZIONE · ritorno verso Do maggiore"},
-      {from:222,to:235,layer:"tonalita",label:"SECONDO TEMA E CHIUSURA · Do maggiore"},
-      {from:235,to:239,layer:"forma",label:"RITORNELLO · SVILUPPO · Sol minore"},
-      {from:239,to:243,layer:"forma",label:"SVILUPPO · Re minore"},
-      {from:243,to:255,layer:"forma",label:"SVILUPPO · La minore e modulazioni"},
-      {from:255,to:266,layer:"forma",label:"PREPARAZIONE DELLA RIPRESA · verso Fa maggiore"},
-      {from:266,to:274,layer:"forma",label:"RIPRESA · primo tema in Fa maggiore · sottodominante"},
-      {from:274,to:285,layer:"tonalita",label:"TRANSIZIONE · ritorno verso Do maggiore"},
-      {from:285,to:299,layer:"tonalita",label:"SECONDO TEMA E CHIUSURA · Do maggiore"}
+      {from:0,to:8,layer:"forma",label:"ATTESA · la prima nota arriva a 0:08"},
+      {from:8,to:15,layer:"tonalita",label:"PRIMO TEMA · Do maggiore"},
+      {from:15,to:26,layer:"tonalita",label:"TRANSIZIONE · verso la dominante"},
+      {from:26,to:32,layer:"tonalita",label:"CADENZA · Sol maggiore"},
+      {from:32,to:84,layer:"tonalita",label:"SECONDO TEMA E CHIUSURA · Sol maggiore"},
+      {from:84,to:92,layer:"tonalita",label:"RITORNELLO · di nuovo Do maggiore"},
+      {from:92,to:103,layer:"tonalita",label:"TRANSIZIONE · verso la dominante"},
+      {from:103,to:108,layer:"tonalita",label:"CADENZA · Sol maggiore"},
+      {from:108,to:161,layer:"tonalita",label:"SECONDO TEMA E CHIUSURA · Sol maggiore"},
+      {from:161,to:165,layer:"forma",label:"SVILUPPO · Sol minore"},
+      {from:165,to:168,layer:"forma",label:"SVILUPPO · Re minore"},
+      {from:168,to:179,layer:"forma",label:"SVILUPPO · La minore e modulazioni"},
+      {from:179,to:185,layer:"forma",label:"PREPARAZIONE DELLA RIPRESA · verso Fa maggiore"},
+      {from:185,to:192,layer:"forma",label:"RIPRESA · primo tema in Fa maggiore · sottodominante"},
+      {from:192,to:202,layer:"tonalita",label:"TRANSIZIONE · ritorno verso Do maggiore"},
+      {from:202,to:217,layer:"tonalita",label:"SECONDO TEMA E CHIUSURA · Do maggiore"},
+      {from:217,to:221,layer:"forma",label:"RITORNELLO · SVILUPPO · Sol minore"},
+      {from:221,to:225,layer:"forma",label:"SVILUPPO · Re minore"},
+      {from:225,to:236,layer:"forma",label:"SVILUPPO · La minore e modulazioni"},
+      {from:236,to:241,layer:"forma",label:"PREPARAZIONE DELLA RIPRESA · verso Fa maggiore"},
+      {from:241,to:249,layer:"forma",label:"RIPRESA · primo tema in Fa maggiore · sottodominante"},
+      {from:249,to:259,layer:"tonalita",label:"TRANSIZIONE · ritorno verso Do maggiore"},
+      {from:259,to:274,layer:"tonalita",label:"SECONDO TEMA E CHIUSURA · Do maggiore · accordo finale a 4:34"}
     ]
   },
 
