@@ -66,10 +66,18 @@ window.CLASSICISMO_LISTENINGS = {
 
   "haydn-104-1": {
     composer:"Joseph Haydn",
-    title:"Sinfonia n.104 · I movimento",
+    title:"Sinfonia n.104 «London» · I movimento",
     videoId:"N1FUw5whO-4",
-    purpose:"Stesso materiale, diversa funzione tonale",
+    purpose:"Lo stesso materiale può assumere una nuova funzione quando cambia il luogo tonale",
     layers:["tema","tonalita"],
+    provisional:true,
+    scoreMap:[
+      {bars:"Adagio introduttivo",form:"Introduzione",key:"Re minore → dominante",note:"Prima dell’Allegro, Haydn oscura la tonica e costruisce una soglia solenne."},
+      {bars:"Allegro · primo gruppo",form:"Esposizione",key:"Re maggiore",note:"Il materiale principale stabilisce con decisione la casa."},
+      {bars:"Area secondaria",form:"Esposizione",key:"La maggiore",note:"La dominante diventa nuova stabilità, ma il materiale resta strettamente imparentato con ciò che abbiamo già ascoltato."},
+      {bars:"Sviluppo",form:"Instabilità",key:"regioni mobili",note:"Il materiale viene frammentato e ricombinato mentre la stabilità tonale si indebolisce."},
+      {bars:"Ripresa",form:"Ritorno",key:"Re maggiore",note:"Il materiale secondario viene ricondotto alla tonica: è la funzione tonale, non il numero dei temi, a organizzare il ritorno."}
+    ],
     events:[]
   },
 
@@ -77,8 +85,16 @@ window.CLASSICISMO_LISTENINGS = {
     composer:"Wolfgang Amadeus Mozart",
     title:"Concerto in la maggiore K.488 · I movimento",
     videoId:"9pwbg37Ha64",
-    purpose:"Forma-sonata e principio concertante; cadenza",
+    purpose:"La forma-sonata incontra il principio concertante e conserva nella cadenza uno spazio di invenzione",
     layers:["organico","forma","cadenza"],
+    provisional:true,
+    scoreMap:[
+      {bars:"Apertura orchestrale",form:"Presentazione del mondo orchestrale",key:"La maggiore",note:"L’orchestra presenta e ordina il materiale prima che il solista entri."},
+      {bars:"Ingresso del pianoforte",form:"Nuovo attraversamento",key:"La maggiore → Mi maggiore",note:"Il solista non si limita a ripetere: rilegge il materiale e conduce la forma verso la nuova stabilità."},
+      {bars:"Sviluppo",form:"Conflitto e dialogo",key:"regioni mobili",note:"La forma-sonata e l’alternanza concertante diventano inseparabili."},
+      {bars:"Ripresa",form:"Ritorno",key:"La maggiore",note:"La geografia tonale viene ricomposta mentre orchestra e pianoforte continuano a negoziare il protagonismo."},
+      {bars:"Cadenza",form:"Sospensione dell’orchestra",key:"dominante → tonica",note:"L’orchestra si arresta e lascia al solista uno spazio derivato dalla tradizione improvvisativa."}
+    ],
     events:[]
   },
 
