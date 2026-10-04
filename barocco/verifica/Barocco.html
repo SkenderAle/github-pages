@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Missione Barocco · Verifica</title>
+<style>
+:root{--paper:#f4ede1;--ink:#241b16;--muted:#6c5e52;--red:#7b3028;--blue:#33445b;--green:#4d5b45;--gold:#b78b43;--line:#cbb99b;--card:#fff8ec;--shadow:0 14px 36px rgba(36,25,17,.13);--sans:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif)}
+header{padding:3.8rem 1rem 2.5rem;background:linear-gradient(135deg,#171411,#57352f 58%,#2e2a24);color:#fff}
+.hero{max-width:980px;margin:auto}.eyebrow{font:900 .72rem/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#efd59f}
+h1{font-size:clamp(2.8rem,8vw,6rem);line-height:.94;margin:.5rem 0 1rem;letter-spacing:-.045em}header p{font-size:1.15rem;line-height:1.55;max-width:790px;color:#eee4d5}
+main{max-width:980px;margin:auto;padding:2rem 1rem 6rem}.topbar{position:sticky;top:0;z-index:30;background:rgba(245,239,227,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:.65rem 1rem}
+.topbar-inner{max-width:980px;margin:auto;display:flex;gap:.7rem;align-items:center}.progress{height:10px;flex:1;background:#dfd4c2;border-radius:999px;overflow:hidden}.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--green));transition:.25s}.counter{font:800 .78rem var(--sans);color:var(--muted);white-space:nowrap}
+.notice{background:#eee4d3;border-left:5px solid var(--gold);padding:1rem 1.1rem;margin:0 0 1.5rem;font:.94rem/1.5 var(--sans)}
+.identity{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.2rem 0 2rem}.identity label{font:800 .72rem var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}.identity input,.identity select{width:100%;margin-top:.35rem;padding:.78rem;border:1px solid #bfae94;background:#fffdf8;font:1rem var(--sans);border-radius:7px}
+.q{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:1.25rem;margin:1.25rem 0;border-radius:14px}.qhead{display:flex;gap:1rem;align-items:flex-start}.qno{font:900 .72rem var(--sans);letter-spacing:.12em;color:#fff;background:var(--red);padding:.35rem .52rem;border-radius:6px;white-space:nowrap}.q h2{font-size:clamp(1.45rem,4vw,2.15rem);margin:0 0 .4rem}.q p{line-height:1.55;margin:.45rem 0}.points{font:800 .76rem var(--sans);color:var(--gold)}
+.board{display:grid;grid-template-columns:1fr 1.3fr;gap:1rem;margin-top:1rem}.pool,.targets{min-width:0}.pool h3,.targets h3{font:900 .72rem var(--sans);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:.2rem 0 .6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;min-height:48px;padding:.6rem;border:1px dashed #baa98f;border-radius:10px;background:#f7f0e4}.chip{border:1px solid #9f8d72;background:#fff;padding:.62rem .72rem;border-radius:999px;cursor:grab;font:800 .86rem/1.25 var(--sans);touch-action:none;box-shadow:0 3px 8px rgba(40,30,20,.08);user-select:none}.chip.selected{outline:3px solid #d5b26c;background:#fff4cf}.chip.correct{background:#e5f1e8;border-color:#6f9a7a}.chip.wrong{background:#f7e1df;border-color:#b56d68}
+.target-grid{display:grid;gap:.65rem}.target{border:2px dashed #b7a88f;border-radius:11px;padding:.7rem;min-height:82px;background:#f6eee0}.target b{display:block;font:900 .76rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}.target .bucket{display:flex;flex-wrap:wrap;gap:.45rem;min-height:36px}.target.active{border-color:var(--gold);background:#fff4d7}
+.order{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:1rem}.slot{min-height:105px;border:2px dashed #b7a88f;border-radius:11px;padding:.6rem;background:#f6eee0}.slot b{font:900 .75rem var(--sans);color:var(--red)}.slot .bucket{margin-top:.45rem}
+.choices{display:grid;gap:.55rem;margin-top:.8rem}.choice{display:flex;gap:.65rem;align-items:flex-start;padding:.75rem;border:1px solid var(--line);border-radius:10px;background:#fff;font:.95rem/1.4 var(--sans)}.choice input{margin-top:.15rem;transform:scale(1.15)}
+.listen-clue{margin:.9rem 0;padding:.85rem 1rem;border-left:4px solid var(--blue);background:#eef0f3;font:.9rem/1.45 var(--sans)}
+.actions{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin:2rem 0}.btn{border:0;border-radius:999px;padding:1rem 1.35rem;font:900 .95rem var(--sans);cursor:pointer}.primary{background:var(--green);color:#fff}.secondary{background:#e4d7c2;color:#3b3026}.btn:disabled{opacity:.5;cursor:not-allowed}
+.result{display:none;margin:2rem 0;padding:1.4rem;background:#20344f;color:#fff;border-radius:14px}.result.show{display:block}.result strong.big{display:block;font:900 clamp(2.5rem,8vw,5rem)/1 var(--sans);color:#efd59f}.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:1rem}.breakdown div{background:rgba(255,255,255,.09);padding:.65rem;border-radius:8px;font:800 .82rem var(--sans)}
+.status{margin-top:.8rem;font:.86rem/1.45 var(--sans);color:#dcd2c4}.backend-badge{display:inline-block;background:#f3e3b7;color:#4d3a16;padding:.3rem .5rem;border-radius:999px;font:900 .68rem var(--sans)}
+footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(--sans);text-align:center}
+@media(max-width:760px){.identity{grid-template-columns:1fr 1fr}.board{grid-template-columns:1fr}.order{grid-template-columns:1fr}.breakdown{grid-template-columns:1fr 1fr}.q{padding:1rem}.chip{padding:.7rem .78rem}.target{min-height:95px}}
+@media(max-width:460px){header{padding-top:2.6rem}.identity{grid-template-columns:1fr}.breakdown{grid-template-columns:1fr}.qhead{display:block}.qno{display:inline-block;margin-bottom:.55rem}}
+</style>
+</head>
+<body>
+<header><div class="hero"><div class="eyebrow">Verifica degli apprendimenti · 30 punti</div><h1>Missione Barocco</h1><p>Non serve ricordare ogni nome. Serve aver riconosciuto i fili che tengono insieme il Barocco: voce e basso, contrappunto, affetti, tonalità, concerto, colore strumentale e trasformazioni del Settecento. Trascina, ordina, abbina e scegli.</p></div></header>
+<div class="topbar"><div class="topbar-inner"><div class="progress"><span id="bar"></span></div><div class="counter" id="counter">0/9 completate</div></div></div>
+<main>
+<div class="notice" id="accountStatus"><strong>Verifica account scolastico…</strong></div>
+<div class="notice"><strong>Come si usa.</strong> Su computer puoi trascinare le tessere. Su telefono puoi anche toccare una tessera e poi il riquadro in cui vuoi metterla. Puoi cambiare idea fino alla consegna.</div>
+
+<div class="identity" id="identity">
+<label>Nome<input id="nome" autocomplete="given-name"></label>
+<label>Cognome<input id="cognome" autocomplete="family-name"></label>
+<label>Classe<select id="classe"><option value="">Scegli</option><option>1A</option><option>1B</option><option>1C</option><option>1D</option><option>2A</option><option>2B</option><option>2C</option><option>2D</option><option>3A</option><option>3B</option><option>3C</option><option>3D</option></select></label>
+<label>Email<input id="email" type="email" autocomplete="email" placeholder="solo se richiesta"></label>
+</div>
+
+<section class="q" data-q="1" data-max="4"><div class="qhead"><span class="qno">Q1</span><div><h2>Due fili dentro lo stesso Barocco</h2><div class="points">4 punti</div><p>Porta ogni tessera nel principio che descrive meglio.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="recitativo">Recitativo sostenuto dal continuo</span>
+<span class="chip" draggable="true" data-id="aria">Voce solista in primo piano</span>
+<span class="chip" draggable="true" data-id="fuga">Fuga</span>
+<span class="chip" draggable="true" data-id="imitazione">Polifonia imitativa</span>
+</div></div><div class="targets"><h3>I due principi</h3><div class="target-grid">
+<div class="target" data-accept="recitativo,aria"><b>Una voce sopra un basso</b><div class="bucket"></div></div>
+<div class="target" data-accept="fuga,imitazione"><b>Molte voci che pensano insieme</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="2" data-max="4"><div class="qhead"><span class="qno">Q2</span><div><h2>Basso continuo: che cosa significa davvero?</h2><div class="points">4 punti</div><p>Distingui ciò che appartiene al basso continuo da una semplificazione sbagliata.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="funzione">È una funzione di sostegno armonico</span>
+<span class="chip" draggable="true" data-id="strumenti">Può essere realizzato da strumenti diversi</span>
+<span class="chip" draggable="true" data-id="cifrato">Il basso può essere cifrato per suggerire gli accordi</span>
+<span class="chip" draggable="true" data-id="solo-clavicembalo">È sempre e soltanto un clavicembalo</span>
+</div></div><div class="targets"><h3>Scelta</h3><div class="target-grid">
+<div class="target" data-accept="funzione,strumenti,cifrato"><b>Descrive il basso continuo</b><div class="bucket"></div></div>
+<div class="target" data-accept="solo-clavicembalo"><b>È una caricatura da evitare</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="3" data-max="3"><div class="qhead"><span class="qno">Q3</span><div><h2>Dalla parola al racconto strumentale</h2><div class="points">3 punti</div><p>Ordina il percorso e poi scegli la frase storicamente più corretta.</p></div></div>
+<div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="parola">La parola viene “dipinta” dal suono</span>
+<span class="chip" draggable="true" data-id="gesto">Il gesto musicale può funzionare anche senza parole</span>
+<span class="chip" draggable="true" data-id="programma">La musica strumentale può raccontare immagini e azioni</span>
+</div>
+<div class="order">
+<div class="slot target" data-order="1"><b>1</b><div class="bucket"></div></div>
+<div class="slot target" data-order="2"><b>2</b><div class="bucket"></div></div>
+<div class="slot target" data-order="3"><b>3</b><div class="bucket"></div></div>
+</div>
+<div class="choices">
+<label class="choice"><input type="radio" name="q3mc" value="a">La musica a programma nasce improvvisamente con Vivaldi.</label>
+<label class="choice"><input type="radio" name="q3mc" value="b">Vivaldi è un caso celebre, ma prima di lui esistono già esempi di musica strumentale descrittiva e narrativa.</label>
+<label class="choice"><input type="radio" name="q3mc" value="c">Il madrigalismo riguarda soltanto la musica strumentale.</label>
+</div></section>
+
+<section class="q" data-q="4" data-max="4"><div class="qhead"><span class="qno">Q4</span><div><h2>Tonalità: trova la funzione</h2><div class="points">4 punti</div><p>Abbina ogni parola all'immagine musicale che le corrisponde meglio.</p></div></div>
+<div class="board"><div class="pool"><h3>Parole</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="tonica">Tonica</span>
+<span class="chip" draggable="true" data-id="dominante">Dominante</span>
+<span class="chip" draggable="true" data-id="cadenza">Cadenza</span>
+<span class="chip" draggable="true" data-id="modulazione">Modulazione</span>
+</div></div><div class="targets"><h3>Funzioni</h3><div class="target-grid">
+<div class="target" data-accept="tonica"><b>Casa</b><span>Il centro che dà stabilità.</span><div class="bucket"></div></div>
+<div class="target" data-accept="dominante"><b>Tensione</b><span>Spinge con forza verso il centro.</span><div class="bucket"></div></div>
+<div class="target" data-accept="cadenza"><b>Punteggiatura</b><span>Articola e può chiudere una frase.</span><div class="bucket"></div></div>
+<div class="target" data-accept="modulazione"><b>Viaggio</b><span>Porta temporaneamente in un'altra area tonale.</span><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="5" data-max="3"><div class="qhead"><span class="qno">Q5</span><div><h2>Corelli: chi fa che cosa?</h2><div class="points">3 punti</div><p>Ricostruisci il gioco del concerto grosso.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="concertino">Concertino</span>
+<span class="chip" draggable="true" data-id="ripieno">Ripieno</span>
+<span class="chip" draggable="true" data-id="continuo">Continuo</span>
+</div></div><div class="targets"><h3>Ruoli</h3><div class="target-grid">
+<div class="target" data-accept="concertino"><b>Il piccolo gruppo</b><div class="bucket"></div></div>
+<div class="target" data-accept="ripieno"><b>L'insieme più ampio</b><div class="bucket"></div></div>
+<div class="target" data-accept="continuo"><b>Il fondamento armonico</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="6" data-max="3"><div class="qhead"><span class="qno">Q6</span><div><h2>Vivaldi: l'armadio sonoro</h2><div class="points">3 punti</div><p>Abbina gli strumenti al carattere che il sito ti ha fatto incontrare.</p></div></div>
+<div class="board"><div class="pool"><h3>Strumenti</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="viola-amore">Viola d'amore</span>
+<span class="chip" draggable="true" data-id="fagotto">Fagotto</span>
+<span class="chip" draggable="true" data-id="mandolini">Due mandolini</span>
+</div></div><div class="targets"><h3>Caratteri</h3><div class="target-grid">
+<div class="target" data-accept="viola-amore"><b>Risonanze e corde simpatiche</b><div class="bucket"></div></div>
+<div class="target" data-accept="fagotto"><b>Un grave capace anche di agilità solistica</b><div class="bucket"></div></div>
+<div class="target" data-accept="mandolini"><b>Pizzicato leggero che cambia il colore dell'ensemble</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="7" data-max="4"><div class="qhead"><span class="qno">Q7</span><div><h2>Bach non vive in una bolla</h2><div class="points">4 punti</div><p>Porta ogni elemento nell'area culturale che Bach studia, assorbe e trasforma.</p></div></div>
+<div class="board"><div class="pool"><h3>Tessere</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="vivaldi">Concerto di Vivaldi</span>
+<span class="chip" draggable="true" data-id="danze">Suite e danze</span>
+<span class="chip" draggable="true" data-id="buxtehude">Buxtehude e la tradizione organistica</span>
+<span class="chip" draggable="true" data-id="corale">Corale luterano</span>
+</div></div><div class="targets"><h3>Provenienze</h3><div class="target-grid">
+<div class="target" data-accept="vivaldi"><b>Italia</b><div class="bucket"></div></div>
+<div class="target" data-accept="danze"><b>Francia</b><div class="bucket"></div></div>
+<div class="target" data-accept="buxtehude,corale"><b>Area tedesca</b><div class="bucket"></div></div>
+</div></div></div></section>
+
+<section class="q" data-q="8" data-max="3"><div class="qhead"><span class="qno">Q8</span><div><h2>Arcadia: che cosa prepara?</h2><div class="points">3 punti</div><p>Scegli la frase che descrive meglio il suo ruolo nel nostro percorso.</p></div></div>
+<div class="choices">
+<label class="choice"><input type="radio" name="q8" value="a">L'Arcadia mette fine al Barocco in un giorno preciso.</label>
+<label class="choice"><input type="radio" name="q8" value="b">L'Arcadia propone natura, misura, chiarezza e ragionevolezza come riforma del gusto e prepara un clima compatibile con il nuovo Settecento.</label>
+<label class="choice"><input type="radio" name="q8" value="c">L'Arcadia è un'accademia fondata da Vivaldi a Venezia per insegnare il concerto solistico.</label>
+<label class="choice"><input type="radio" name="q8" value="d">Arcadia e Illuminismo sono esattamente la stessa cosa.</label>
+</div>
+<div class="listen-clue"><strong>Indizio.</strong> Nel sito l'Arcadia non è “la fine del Barocco”: è il momento in cui il Barocco comincia a giudicare i propri eccessi.</div>
+</section>
+
+<section class="q" data-q="9" data-max="2"><div class="qhead"><span class="qno">Q9</span><div><h2>Il Barocco finisce nel 1750?</h2><div class="points">2 punti</div><p>Scegli le due affermazioni corrette.</p></div></div>
+<div class="choices">
+<label class="choice"><input type="checkbox" name="q9" value="a">Il 1750 è una data didattica utile, non un muro che cambia tutto da un giorno all'altro.</label>
+<label class="choice"><input type="checkbox" name="q9" value="b">L'orchestra di Mannheim inventa dal nulla il crescendo, che prima non esisteva.</label>
+<label class="choice"><input type="checkbox" name="q9" value="c">Nel Settecento il continuo tende ad alleggerirsi, l'orchestra diventa più autonoma e il pianoforte acquista spazio.</label>
+<label class="choice"><input type="checkbox" name="q9" value="d">Il Barocco comincia soltanto quando tutte le tecniche barocche sono scomparse.</label>
+</div></section>
+
+<div class="actions"><button class="btn secondary" id="reset">Ricomincia</button><button class="btn primary" id="submit">Consegna la prova</button></div>
+
+<div class="result" id="result"><span class="backend-badge" id="backendBadge">ANTEPRIMA</span><strong class="big" id="score">0/30</strong><div id="message"></div><div class="breakdown" id="breakdown"></div><div class="status" id="saveStatus"></div><div class="actions"><button class="btn secondary" id="practice">Correggi e riprova</button></div></div>
+</main>
+<footer>Missione Barocco · verifica interattiva · TEST_ID <strong>barocco-01</strong> · <a href="../" style="color:#efd59f">torna al percorso sul Barocco</a></footer>
+
+<script>
+(function(){
+var TEST_ID='barocco-01', VERSION='1.0', MAX=30;
+var startedAt=new Date(), submitted=false, selected=null, dragging=null;
+var bootstrapData={loaded:false,isSchoolUser:false,isTeacherPreview:false,email:'',rosterFound:false};
+var orderCorrect=['parola','gesto','programma'];
+
+function allChips(){return Array.prototype.slice.call(document.querySelectorAll('.chip'))}
+function allTargets(){return Array.prototype.slice.call(document.querySelectorAll('.target'))}
+function place(chip,target){
+  var bucket=target.querySelector('.bucket'); if(!bucket) return;
+  bucket.appendChild(chip); chip.classList.remove('selected'); selected=null; updateProgress();
+}
+function returnToPool(chip){
+  var q=chip.closest('.q'); var pool=q.querySelector('[data-pool]'); if(pool) pool.appendChild(chip); updateProgress();
+}
+allChips().forEach(function(chip){
+  chip.addEventListener('dragstart',function(){dragging=chip;chip.classList.add('selected')});
+  chip.addEventListener('dragend',function(){dragging=null;chip.classList.remove('selected')});
+  chip.addEventListener('click',function(e){
+    e.stopPropagation(); if(submitted)return;
+    if(selected===chip){chip.classList.remove('selected');selected=null;return}
+    if(selected)selected.classList.remove('selected');
+    selected=chip;chip.classList.add('selected');
+  });
+});
+allTargets().forEach(function(t){
+  t.addEventListener('dragover',function(e){e.preventDefault();t.classList.add('active')});
+  t.addEventListener('dragleave',function(){t.classList.remove('active')});
+  t.addEventListener('drop',function(e){e.preventDefault();t.classList.remove('active');if(dragging&&!submitted)place(dragging,t)});
+  t.addEventListener('click',function(){if(selected&&!submitted)place(selected,t)});
+});
+document.querySelectorAll('[data-pool]').forEach(function(p){
+  p.addEventListener('click',function(){if(selected&&!submitted)returnToPool(selected)});
+});
+
+function qComplete(q){
+  var n=q.getAttribute('data-q');
+  if(n==='3')return q.querySelectorAll('.slot .chip').length===3 && !!q.querySelector('input[name=q3mc]:checked');
+  if(n==='8')return !!q.querySelector('input[name=q8]:checked');
+  if(n==='9')return q.querySelectorAll('input[name=q9]:checked').length===2;
+  return q.querySelectorAll('[data-pool] .chip').length===0;
+}
+function updateProgress(){
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var done=qs.filter(qComplete).length;
+  document.getElementById('bar').style.width=(done/qs.length*100)+'%';
+  document.getElementById('counter').textContent=done+'/'+qs.length+' completate';
+}
+document.querySelectorAll('input').forEach(function(x){x.addEventListener('change',updateProgress)});
+
+function scoreBucketQuestion(q){
+  var max=parseFloat(q.getAttribute('data-max')), chips=Array.prototype.slice.call(q.querySelectorAll('.chip')), correct=0;
+  chips.forEach(function(ch){
+    var t=ch.closest('.target'), ok=t && (t.getAttribute('data-accept')||'').split(',').indexOf(ch.getAttribute('data-id'))>=0;
+    ch.classList.toggle('correct',!!ok);ch.classList.toggle('wrong',!ok);if(ok)correct++;
+  });
+  return max*correct/chips.length;
+}
+function scoreQ3(q){
+  var slots=Array.prototype.slice.call(q.querySelectorAll('.slot')),correctOrder=0;
+  slots.forEach(function(slot,i){
+    var ch=slot.querySelector('.chip');var ok=!!ch&&ch.getAttribute('data-id')===orderCorrect[i];
+    if(ch){ch.classList.toggle('correct',ok);ch.classList.toggle('wrong',!ok)}
+    if(ok)correctOrder++;
+  });
+  var orderPoints=(correctOrder/3)*2;
+  var mc=q.querySelector('input[name=q3mc]:checked');
+  return orderPoints+(mc&&mc.value==='b'?1:0);
+}
+function scoreQ8(q){var x=q.querySelector('input[name=q8]:checked');return x&&x.value==='b'?3:0}
+function scoreQ9(q){
+  var vals=Array.prototype.slice.call(q.querySelectorAll('input[name=q9]:checked')).map(function(x){return x.value}).sort();
+  var good=['a','c'];var correct=0;
+  good.forEach(function(v){if(vals.indexOf(v)>=0)correct++});
+  vals.forEach(function(v){if(good.indexOf(v)<0)correct--});
+  return Math.max(0,Math.min(2,correct));
+}
+function evaluate(){
+  var scores=[],total=0;
+  document.querySelectorAll('.q').forEach(function(q){
+    var n=q.getAttribute('data-q'),s=n==='3'?scoreQ3(q):n==='8'?scoreQ8(q):n==='9'?scoreQ9(q):scoreBucketQuestion(q);
+    s=Math.round(s*100)/100;scores.push(s);total+=s;
+  });
+  total=Math.round(total*100)/100;return{scores:scores,total:total};
+}
+function identityValid(){
+  if(!bootstrapData.loaded) return false;
+  if(bootstrapData.isSchoolUser) return true;
+  return document.getElementById('nome').value.trim() &&
+         document.getElementById('cognome').value.trim() &&
+         document.getElementById('email').value.trim();
+}
+function loadBootstrapBarocco(){
+  var box=document.getElementById('accountStatus');
+
+  if(typeof google==='undefined' || !google.script || !google.script.run){
+    bootstrapData.loaded=true;
+    box.innerHTML='<strong>Modalità prova libera.</strong> Compila nome, cognome ed email.';
+    return;
+  }
+
+  box.innerHTML='<strong>Verifica account scolastico…</strong>';
+
+  google.script.run
+    .withSuccessHandler(function(data){
+      data=data||{};
+      bootstrapData={
+        loaded:true,
+        isSchoolUser:!!data.isSchoolUser,
+        isTeacherPreview:!!data.isTeacherPreview,
+        email:data.email||'',
+        rosterFound:!!data.rosterFound
+      };
+
+      if(data.isSchoolUser){
+        if(data.email){
+          var em=document.getElementById('email');
+          em.value=data.email;
+          em.readOnly=true;
+        }
+        if(data.name) document.getElementById('nome').value=data.name;
+        if(data.surname) document.getElementById('cognome').value=data.surname;
+        if(data.className) document.getElementById('classe').value=data.className;
+
+        if(data.isTeacherPreview){
+          box.innerHTML='<strong>Account scolastico riconosciuto · modalità prova docente.</strong>';
+        }else if(data.rosterFound){
+          box.innerHTML='<strong>Account scolastico riconosciuto.</strong> Identità trovata in Anagrafica.';
+        }else{
+          box.innerHTML='<strong>Account scolastico riconosciuto.</strong> L’anagrafica non è ancora compilata, ma puoi svolgere la prova.';
+        }
+      }else{
+        box.innerHTML='<strong>Prova libera.</strong> Non è stato riconosciuto un account scolastico: compila nome, cognome ed email.';
+      }
+    })
+    .withFailureHandler(function(err){
+      bootstrapData.loaded=true;
+      bootstrapData.isSchoolUser=false;
+      box.innerHTML='<strong>Non riesco a verificare l’account.</strong> Puoi comunque usare la modalità prova libera compilando nome, cognome ed email.';
+    })
+    .getBootstrapDataBarocco();
+}
+function payload(ev){
+  var now=new Date();
+  return{testId:TEST_ID,version:VERSION,max:MAX,score:ev.total,percent:Math.round(ev.total/MAX*1000)/10,duration:Math.max(1,Math.round((now-startedAt)/1000)),startedAt:startedAt.toISOString(),submittedAt:now.toISOString(),scores:ev.scores,nome:document.getElementById('nome').value.trim(),cognome:document.getElementById('cognome').value.trim(),classe:document.getElementById('classe').value,email:document.getElementById('email').value.trim()};
+}
+function renderResult(ev){
+  document.getElementById('score').textContent=ev.total+'/'+MAX;
+  var pct=Math.round(ev.total/MAX*100);
+  document.getElementById('message').innerHTML=pct>=80?'<p><strong>Hai davvero raccolto i fili del Barocco.</strong> Guarda comunque dove hai lasciato qualche punto.</p>':pct>=60?'<p><strong>Il disegno generale c\'è.</strong> Alcuni collegamenti vanno ancora rimessi a fuoco.</p>':'<p><strong>Serve riaprire qualche stanza del Barocco.</strong> Correggi gli errori e prova a ricostruire il percorso.</p>';
+  document.getElementById('breakdown').innerHTML=ev.scores.map(function(s,i){return '<div>Q'+(i+1)+' · '+s+'/'+document.querySelector('.q[data-q="'+(i+1)+'"]').getAttribute('data-max')+'</div>'}).join('');
+  document.getElementById('result').classList.add('show');document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function saveOfficial(p){
+  var status=document.getElementById('saveStatus');
+  if(typeof google!=='undefined'&&google.script&&google.script.run){
+    document.getElementById('backendBadge').textContent='VERIFICA UFFICIALE';
+    status.textContent='Registrazione in corso…';
+    google.script.run.withSuccessHandler(function(r){
+      if(r&&r.already){status.textContent='Il primo tentativo ufficiale era già stato registrato. Questo resta un tentativo di allenamento.'}
+      else{status.textContent='Risultato registrato nel foglio della classe.'}
+    }).withFailureHandler(function(e){status.textContent='Errore di registrazione: '+(e&&e.message?e.message:e)}).registraRisultatoBarocco(p);
+  }else{
+    document.getElementById('backendBadge').textContent='ANTEPRIMA GITHUB';
+    status.textContent='Anteprima funzionante: il punteggio non viene inviato a Google finché questa pagina non viene collegata all’Apps Script.';
+    try{localStorage.setItem(TEST_ID+':preview',JSON.stringify(p))}catch(e){}
+  }
+}
+document.getElementById('submit').addEventListener('click',function(){
+  if(!bootstrapData.loaded){alert('Attendi un momento: sto verificando l’account scolastico.');return}
+  if(!identityValid()){alert('Per la prova libera compila nome, cognome ed email.');return}
+  var missing=Array.prototype.slice.call(document.querySelectorAll('.q')).filter(function(q){return !qComplete(q)});
+  if(missing.length){if(!confirm('Hai lasciato '+missing.length+' prova/e incomplete. Vuoi consegnare lo stesso?'))return}
+  if(!confirm('Sei davvero pronto? Quando sarà collegata alla scuola, la prima consegna sarà quella ufficiale.'))return;
+  submitted=true;var ev=evaluate();renderResult(ev);saveOfficial(payload(ev));
+});
+document.getElementById('practice').addEventListener('click',function(){
+  submitted=false;document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('correct','wrong')});document.getElementById('result').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});
+});
+document.getElementById('reset').addEventListener('click',function(){if(confirm('Vuoi davvero ricominciare da capo?'))location.reload()});
+loadBootstrapBarocco();
+updateProgress();
+})();
+</script>
+</body>
+</html>
