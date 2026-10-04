@@ -225,6 +225,24 @@ linear-gradient(180deg,#f4ede2,#eae1d4);border-top:1px solid #c3b49c;border-bott
 .counter-route i{flex:0 0 auto;display:grid;place-items:center;color:var(--night);font-style:normal;font-weight:900}
 @media(max-width:850px){.counter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fugue-voices{grid-template-columns:1fr}}
 @media(max-width:560px){.counter-grid{grid-template-columns:1fr}}
+.dual-backbone{margin:1.4rem 0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.backbone-card{padding:1.05rem 1.1rem;border:1px solid var(--line);background:#faf4ea}
+.backbone-card.mono{border-top:5px solid var(--red)}
+.backbone-card.poly{border-top:5px solid var(--night)}
+.backbone-card b{display:block;font-family:var(--sans);font-size:.76rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.3rem}
+.backbone-card.mono b{color:var(--red)}
+.backbone-card.poly b{color:var(--night)}
+.backbone-card h4{font-size:1.16rem;margin:.1rem 0 .45rem}
+.backbone-card p{font-size:.91rem;line-height:1.5;margin:.3rem 0}
+.thread-sign{margin:1rem 0 1.5rem;padding:.78rem .9rem;font-family:var(--sans);font-size:.78rem;font-weight:850;line-height:1.45;border-left:5px solid var(--red);background:#f4e6dc;color:#49342f}
+.thread-sign.poly{border-left-color:var(--night);background:#e6ebef;color:#293844}
+.thread-sign.join{border-left-color:var(--gold);background:#eee4d3;color:#46392f}
+.backbone-join{display:grid;grid-template-columns:1fr auto 1fr;gap:.6rem;align-items:center;margin:1.2rem 0 1.8rem}
+.backbone-join>div{padding:1rem;background:#f7f0e5;border:1px solid var(--line)}
+.backbone-join .join-symbol{background:transparent;border:0;font-size:2rem;color:var(--gold);padding:.2rem}
+.backbone-join b{display:block;font-family:var(--sans);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
+.backbone-join p{font-size:.9rem;line-height:1.48;margin:.2rem 0}
+@media(max-width:680px){.dual-backbone{grid-template-columns:1fr}.backbone-join{grid-template-columns:1fr}.backbone-join .join-symbol{text-align:center;transform:rotate(90deg)}}
 .before-recording{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:linear-gradient(180deg,#f4ecdf,#eee3d2);border-top:1px solid #c7b79d;border-bottom:1px solid #c7b79d}
 .before-recording-inner{max-width:1180px;margin:auto}
 .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.3rem 0 2rem}
@@ -565,6 +583,19 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
     <p>Accanto alla polifonia nella quale più linee melodiche possiedono una relativa autonomia, si afferma sempre più chiaramente una scrittura nella quale una voce principale viene sostenuta da un accompagnamento armonico; non significa che la polifonia scompaia, e neppure che la musica diventi improvvisamente semplice, perché il nuovo principio convive a lungo con quello precedente, ma cambia il modo nel quale l’ascoltatore percepisce la gerarchia delle parti, dal momento che una melodia può ora imporsi in primo piano mentre il sostegno armonico ne costruisce il terreno.</p>
     <p>Alla base di questo sistema troviamo il basso continuo, nel quale una linea grave, spesso accompagnata da cifre che suggeriscono gli accordi da realizzare, può essere sostenuta contemporaneamente da uno strumento capace di rinforzarne il profilo e da uno strumento armonico che ne sviluppa gli accordi; quella realizzazione non era necessariamente scritta per intero, poiché all’esecutore veniva richiesto di interpretare le indicazioni secondo convenzioni condivise, cosicché una parte essenziale della musica continuava a vivere non sulla pagina ma nella competenza pratica di chi suonava.</p>
     <p>Da questo nuovo equilibrio fra una linea principale e il sostegno armonico deriveranno conseguenze enormi, perché la sonata, il concerto, il virtuosismo strumentale e lo stesso modo in cui la musica occidentale penserà per secoli il rapporto fra melodia e armonia dipendono in larga misura da questa trasformazione; la polifonia, tuttavia, continuerà a percorrere una strada parallela soprattutto nella musica sacra, nella tastiera e nelle forme contrappuntistiche, finché entrambe le direzioni troveranno in Bach uno dei loro punti d’incontro più profondi.</p>
+    <div class="dual-backbone" aria-label="I due grandi filoni del Barocco">
+      <article class="backbone-card mono">
+        <b>Filone 1 · Monodia accompagnata</b>
+        <h4>Una voce sopra un basso</h4>
+        <p>Una linea principale emerge e viene sostenuta armonicamente dal basso continuo. Da questo principio diventano più comprensibili recitativo, aria, cantata, sonata solistica, concerto e la nuova centralità del solista.</p>
+      </article>
+      <article class="backbone-card poly">
+        <b>Filone 2 · Polifonia imitativa e contrappunto</b>
+        <h4>Molte voci che pensano insieme</h4>
+        <p>Più linee conservano autonomia, si imitano, si rispondono e si sovrappongono. Da qui passano ricercare, canzona, fuga, tradizione organistica e una parte fondamentale della musica sacra.</p>
+      </article>
+    </div>
+    <div class="question">Per tutto il percorso terremo insieme queste due immagini: <em>una voce sopra un basso</em> e <em>molte voci che pensano insieme</em>. Il Barocco cresce nella tensione fra queste due possibilità, e Bach finirà per farle convivere dentro lo stesso pensiero musicale.</div>
     <div class="history-thread">
       <div class="thread-label">Dentro la stessa storia</div>
       <h3>Francesca Caccini: la nuova voce non ha un solo volto</h3>
@@ -655,6 +686,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
   <section id="sonata" class="sonata-band">
     <div class="sonata-inner">
       <div class="section-title"><div class="eyebrow">Prima della forma-sonata</div><h2>“Sonata” significa prima di tutto: musica da suonare</h2></div>
+      <div class="thread-sign"><strong>Filo da seguire:</strong> qui prevale il filone della <strong>monodia accompagnata</strong>. Anche quando le linee melodiche sono più di una, il basso continuo costruisce il fondamento armonico e mantiene percepibile quella nuova gerarchia fra piano melodico e sostegno.</div>
       <p>Quando incontriamo la parola <i>sonata</i> alla fine del Cinquecento non dobbiamo immaginare immediatamente Beethoven, né una forma costruita con esposizione, sviluppo e ripresa. Il termine nasce molto prima di quella grammatica e indica innanzitutto una composizione affidata agli strumenti, una musica “sonata” invece che “cantata”; proprio per questo nel 1597 Giovanni Gabrieli può intitolare <i>Sonata pian e forte</i> un grande brano policorale per strumenti, ancora profondamente legato al mondo veneziano tardorinascimentale e lontanissimo dalla sonata classica.</p>
       <p>Nel corso del Seicento il termine si specializza, mentre canzona, sonata, danza e basso continuo si influenzano reciprocamente. Non esiste quindi un istante preciso nel quale “nasce la sonata” già completa, perché ciò che chiamiamo sonata barocca si forma attraverso una lunga selezione di pratiche differenti, fino a quando musicisti come Corelli rendono alcuni modelli abbastanza stabili da trasformarli in riferimenti europei.</p>
 
@@ -746,6 +778,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
   <section id="contrappunto" class="counterpoint-band">
     <div class="counterpoint-inner">
       <div class="section-title"><div class="eyebrow">Molte voci che pensano insieme</div><h2>Il contrappunto non scompare: cambia ambiente</h2></div>
+      <div class="thread-sign poly"><strong>Qui cambiamo ramo:</strong> seguiamo deliberatamente la <strong>polifonia imitativa e il contrappunto</strong>. Non una voce principale sopra un basso, ma più linee che conservano identità propria e costruiscono il discorso attraverso imitazione, sovrapposizione e trasformazione.</div>
       <p>La nascita della monodia e del basso continuo non cancella la polifonia, perché mentre una parte della musica europea concentra l’attenzione sopra una voce principale sostenuta armonicamente, un altro grande filone continua a sviluppare l’arte di far convivere linee autonome. Nel Barocco questa tradizione non rimane ferma dentro il Rinascimento, ma entra nelle tastiere, nella musica sacra e nelle nuove forme strumentali, dove può diventare più libera, più virtuosistica e più chiaramente tonale.</p>
       <p>Per questo Bach non rappresenta il ritorno improvviso di un linguaggio antico, ma il punto nel quale una lunga pratica imitativa, passata attraverso ricercare, canzona, fantasia, toccata, preludio e fuga, raggiunge una capacità straordinaria di organizzare la complessità senza perdere direzione armonica e senso del gesto.</p>
 
@@ -822,6 +855,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 
   <section id="corelli">
     <div class="section-title"><div class="eyebrow">Pochi e molti</div><h2>Corelli e l’arte di costruire</h2></div>
+    <div class="thread-sign"><strong>Il filo non cambia:</strong> Corelli continua soprattutto il ramo nato dalla <strong>monodia accompagnata e dal basso continuo</strong>. Nel concerto grosso il contrasto fra concertino e ripieno non coincide con la polifonia imitativa: i gruppi hanno funzioni differenti sopra una medesima architettura armonica.</div>
     <p>Se Biber sembra voler esplorare tutto ciò che il violino potrebbe diventare, Arcangelo Corelli segue una strada differente, perché la sua importanza non dipende dall’accumulo di effetti sorprendenti quanto dalla capacità di rendere straordinariamente chiari e convincenti alcuni principi che la musica strumentale aveva già cominciato a sperimentare; la sonata per violino, la sonata a tre e il concerto grosso trovano nella sua opera una forma talmente equilibrata da diventare modelli europei, non perché Corelli abbia necessariamente inventato da solo quelle strutture, ma perché riesce a renderle abbastanza persuasive da trasformarle in un linguaggio condiviso.</p>
     <p>La sonata a tre permette inoltre di incontrare uno dei piccoli paradossi più utili per capire il Barocco, poiché le tre parti scritte possono richiedere quattro esecutori quando due strumenti melodici vengono accompagnati da una linea di basso sostenuta contemporaneamente da uno strumento grave e da uno strumento armonico; quando quel piccolo nucleo viene posto in relazione con un complesso più ampio, la dialettica fra concertino e ripieno può trasformarsi nel principio del concerto grosso, nel quale il piccolo gruppo emerge, dialoga e rientra nell’insieme modificando continuamente la densità del tessuto sonoro.</p>
     <p>Il celebre Concerto grosso op. 6 n. 8, conosciuto come <i>Concerto di Natale</i>, permette di evitare una lettura troppo ornamentale di Corelli, perché dietro la superficie apparentemente composta rimangono sospensioni, tensioni armoniche e una gestione dell’attesa che dimostrano quanto la chiarezza formale non coincida affatto con la prevedibilità; è precisamente questa capacità di stabilizzare un sistema senza irrigidirlo che renderà Corelli tanto importante per i musicisti successivi.</p>
@@ -858,6 +892,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
   <section id="vivaldi" class="stucco-band">
     <div class="stucco-inner">
       <div class="section-title"><div class="eyebrow">Venezia laboratorio d’Europa</div><h2>Vivaldi prima delle Stagioni</h2></div>
+      <div class="thread-sign"><strong>La linea si fa ancora più evidente:</strong> con Vivaldi il ramo della <strong>voce in primo piano sopra un sostegno armonico</strong> viene trasferito con enorme forza allo strumento solista, mentre ritornello e continuo organizzano il rapporto fra individuo e gruppo.</div>
       <p>Quando Antonio Vivaldi entra all’Ospedale della Pietà nel 1703, il mondo nel quale si trova a lavorare possiede già una tradizione violinistica solidissima, conosce il basso continuo come pratica quotidiana e ha sviluppato forme concertanti ormai riconoscibili; proprio per questo la sua originalità non consiste nell’inventare dal nulla il Barocco, ma nel comprendere quanto lontano possano essere spinte possibilità che altri avevano già preparato, soprattutto quando il rapporto fra solista, orchestra e colore strumentale viene sottoposto a una continua ricerca.</p>
 
       <h3>La Pietà non è lo sfondo della biografia di Vivaldi</h3>
@@ -1652,7 +1687,13 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 
   <section id="bach">
     <div class="section-title"><div class="eyebrow">Il grande incrocio</div><h2>Bach è Einstein</h2></div>
-    <p>Quando arriviamo a Johann Sebastian Bach, il suo linguaggio appare meno improvviso proprio perché abbiamo già incontrato, disseminati lungo il percorso, molti degli elementi che egli saprà ricondurre a una straordinaria unità: il corale luterano trasformato dalla pratica comunitaria e dall’elaborazione organistica, la tradizione veneziana trasmessa nel mondo tedesco, l’esperienza tastieristica italiana di Frescobaldi e quella nordtedesca culminata in Buxtehude, il principio concertante maturato attraverso Corelli e Vivaldi, la suite francese, il basso continuo e la retorica musicale del Seicento. Tutto questo non rimane in Bach come una collezione di stili accostati, perché viene assorbito dentro un pensiero capace di mettere in relazione tradizioni che, considerate separatamente, potevano sembrare lontanissime.</p>
+    <p>Quando arriviamo a Johann Sebastian Bach, il suo linguaggio appare meno improvviso proprio perché abbiamo seguito per tutta la pagina due grandi filoni che nel Barocco non si escludono mai del tutto: da una parte la <strong>monodia accompagnata</strong>, con la voce o lo strumento principale sostenuti dal basso continuo e con il principio concertante maturato attraverso Corelli e Vivaldi, dall’altra la <strong>polifonia imitativa e contrappuntistica</strong>, passata attraverso ricercare, organo, corale, Frescobaldi e Buxtehude. Bach conosce entrambe le logiche e riesce a farle convivere dentro una stessa architettura, insieme alla suite francese, alla retorica musicale del Seicento e alle tradizioni tedesche.</p>
+    <div class="thread-sign join"><strong>Il grande incrocio:</strong> in Bach la distinzione non scompare, ma diventa materiale compositivo. Un concerto può contenere un contrappunto densissimo, una fuga può poggiare sopra una direzione armonica potentemente tonale, una cantata può alternare aria con basso continuo, corale e grande costruzione imitativa.</div>
+    <div class="backbone-join">
+      <div><b>Monodia accompagnata</b><p>Voce o solista in primo piano, basso continuo, gerarchia melodico-armonica, concerto e aria.</p></div>
+      <div class="join-symbol">↔</div>
+      <div><b>Polifonia imitativa</b><p>Linee autonome, soggetto e risposta, ricercare, fuga, corale elaborato e contrappunto.</p></div>
+    </div>
     <p>È soprattutto in questo senso che il paragone con Einstein acquista consistenza, non come banale equivalenza fra due uomini definiti geniali, ma come capacità di riconoscere un ordine più profondo dentro fenomeni che altri avevano già osservato separatamente; Bach non inventa tutte le cose che utilizza, ma comprende con una profondità eccezionale come possano stare insieme, e proprio per questo il concerto italiano, la danza francese, il corale tedesco e il contrappunto non diventano citazioni stilistiche ma parti di un unico universo musicale.</p>
 
     <h3>Prima del monumento, il ragazzo che cammina</h3>
