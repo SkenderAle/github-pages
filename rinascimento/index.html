@@ -158,6 +158,26 @@
   .source-caveat strong{color:#493b2c}
   .civic-mode-note{margin:0 0 2rem;padding:.9rem 1rem;border:1px dashed #87988d;background:#f4efe4;font-family:var(--sans);font-size:.84rem;line-height:1.55;color:#536158}
   .rights-note{display:block;margin-top:.35rem;font-family:var(--sans);font-size:.69rem;line-height:1.45;color:#7a6e61}
+  .instrument-journey{margin:2.6rem 0 3rem;padding:1.6rem 1.7rem;background:#e9e1d4;border-top:5px solid var(--green);box-shadow:0 10px 28px rgba(45,33,22,.06)}
+  .instrument-journey .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--green);font-weight:850}
+  .instrument-journey h3{margin:.18rem 0 .65rem;color:#314a3d}
+  .instrument-journey>p{max-width:900px}
+  .bowed-split{display:grid;grid-template-columns:1fr auto 1fr;gap:.7rem;align-items:stretch;margin:1.3rem 0 1.8rem}
+  .bowed-side{background:#f8f3e9;border:1px solid #cdbfa8;padding:1rem}
+  .bowed-side b{display:block;font-family:var(--sans);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:.35rem}
+  .bowed-side p{font-size:.91rem;line-height:1.5;margin:.25rem 0}
+  .bowed-arrow{display:grid;place-items:center;font-size:1.5rem;color:var(--green)}
+  .journey-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+  .journey-card{background:#f7f1e7;border:1px solid #c9baa1;border-top:4px solid var(--gold);padding:1rem}
+  .journey-card b{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--red);margin-bottom:.35rem}
+  .journey-card h4{font-size:1.18rem;margin:.1rem 0 .45rem}
+  .journey-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .7rem}
+  .journey-path{font-family:var(--sans);font-size:.75rem;font-weight:850;color:#405449;margin:.4rem 0 .7rem}
+  .journey-source{border:1px solid #aab3bb;background:#edf0f2;color:#263847;border-radius:999px;padding:.42rem .62rem;font-family:var(--sans);font-size:.7rem;font-weight:850;cursor:pointer}
+  .journey-source:hover{background:#fff}
+  .journey-caveat{margin-top:1rem;padding:.8rem .9rem;background:#f4efe5;border-left:4px solid var(--green);font-family:var(--sans);font-size:.78rem;line-height:1.5;color:#5e554b}
+  @media(max-width:840px){.journey-grid{grid-template-columns:1fr}.bowed-split{grid-template-columns:1fr}.bowed-arrow{transform:rotate(90deg)}}
+
   .history-pivot{margin:3rem 0;padding:2rem 2.15rem;background:#eee5d6;border-top:4px solid var(--blue);box-shadow:0 10px 28px rgba(45,33,22,.07)}
   .history-pivot h3{margin:.15rem 0 1.25rem;font-size:clamp(1.8rem,3.4vw,3rem);color:var(--blue)}
   .history-pivot p:last-of-type{margin-bottom:.6rem}
@@ -576,7 +596,49 @@
       </div>
 
       
-      
+      <div class="instrument-journey" id="strumenti-in-viaggio">
+        <div class="eyebrow">Strumenti in viaggio</div>
+        <h3>Le famiglie si separano, poi continuano a trasformarsi</h3>
+        <p>Un nome moderno può farci immaginare alberi genealogici troppo ordinati. Nel Rinascimento, invece, strumenti ad arco e a pizzico convivono, si influenzano e si differenziano lentamente. La <strong>lira da braccio</strong>, la ribeca e altre fiddle rinascimentali partecipano al mondo dal quale emerge la famiglia del violino, mentre le <strong>viole da gamba</strong> seguono una storia costruttiva ed esecutiva differente. Anche gironda e vielle ricordano che l’arco europeo possedeva già da secoli molte forme, senza che una sola di esse possa essere chiamata semplicemente “antenata” di tutte le altre.</p>
+
+        <div class="bowed-split">
+          <div class="bowed-side"><b>Da braccio</b><p>Lira da braccio e famiglia del violino si tengono sul braccio o sulla spalla. Nel Cinquecento il nuovo violino assorbe caratteristiche di strumenti ad arco precedenti e acquista progressivamente una propria identità.</p></div>
+          <div class="bowed-arrow">↔</div>
+          <div class="bowed-side"><b>Da gamba</b><p>Le viole da gamba, con tasti e accordature proprie, si suonano appoggiate alle gambe e costruiscono consort completi. Non sono semplicemente “violini antichi più grandi”.</p></div>
+        </div>
+
+        <div class="journey-grid">
+          <article class="journey-card">
+            <b>Mediterraneo orientale → Balcani</b>
+            <h4>La lunga vita dei liuti a manico lungo</h4>
+            <div class="journey-path">tanbur / tambura → famiglie balcaniche → tamburica</div>
+            <p>Nel mondo ottomano e balcanico le famiglie di liuti a manico lungo continuano a trasformarsi per secoli. La tamburica appartiene a questa storia di circolazioni e adattamenti, non a una discendenza lineare dal liuto rinascimentale occidentale.</p>
+            <button class="journey-source resource" data-title="The Tamburitza Tradition · Richard March" data-url="https://www.jstor.org/stable/jj.36032707">Apri la fonte</button>
+          </article>
+          <article class="journey-card">
+            <b>Iberia → Americhe</b>
+            <h4>Una chitarra non arriva mai identica</h4>
+            <div class="journey-path">vihuela / chitarre iberiche → mondi coloniali → charango, vihuela e guitarrón messicani</div>
+            <p>Gli strumenti europei attraversano l’Atlantico e vengono ricostruiti secondo materiali, tecniche e bisogni locali. Il charango andino e gli strumenti del mariachi mostrano bene che il viaggio produce ibridazione, non copie periferiche dell’originale europeo.</p>
+            <button class="journey-source resource" data-title="The Met · Charango, ibridazione fra chitarra e adattamenti locali" data-url="https://www.metmuseum.org/es/perspectives/curator-interview-armadilloshell-charango-or-jarana">Charango · Met</button>
+            <button class="journey-source resource" data-title="Smithsonian Folkways · Mariachi e guitarrón" data-url="https://folkways.si.edu/latino-music-usa/mariachi-music-in-mexico-and-the-united-states">Guitarrón · Smithsonian</button>
+          </article>
+          <article class="journey-card">
+            <b>Madeira → Hawai‘i · XIX secolo</b>
+            <h4>Il viaggio continua molto dopo il Rinascimento</h4>
+            <div class="journey-path">braguinha / rajão portoghesi → Hawai‘i → ‘ukulele</div>
+            <p>Nel 1879 immigrati portoghesi provenienti da Madeira portano alle Hawaii piccoli strumenti a pizzico che vengono adattati al gusto locale. L’‘ukulele è quindi un magnifico epilogo alla nostra mappa: una famiglia europea continua a viaggiare tre secoli dopo Petrucci.</p>
+            <button class="journey-source resource" data-title="The Met · Ukulele, Hawai‘i" data-url="https://www.metmuseum.org/art/collection/search/501343">‘Ukulele · Met</button>
+          </article>
+        </div>
+        <div class="journey-caveat"><strong>Attenzione alla mappa.</strong> Le frecce indicano circolazioni e trasformazioni, non alberi genealogici certi. Gli strumenti cambiano attraverso incontri, migrazioni, colonizzazioni, artigianato locale e nuove funzioni sociali. Proprio per questo la loro storia è più interessante di una semplice successione di “antenati” e “discendenti”.</div>
+        <div class="route-links">
+          <button class="source-card resource" data-title="The Met · Renaissance Violins" data-url="https://www.metmuseum.org/essays/renaissance-violins"><span class="src">Archi · Rinascimento</span><b>Dal rebec e dalla lira da braccio al violino</b><span>Il Metropolitan Museum ricostruisce il quadro organologico nel quale il violino assume la propria forma nel Cinquecento.</span></button>
+          <button class="source-card resource" data-title="The Met · Lira da braccio, 1511" data-url="https://www.metmuseum.org/art/collection/search/902437"><span class="src">1511 · strumento</span><b>Lira da braccio</b><span>Un oggetto rinascimentale conservato permette di vedere materialmente una delle famiglie ad arco del periodo.</span></button>
+          <button class="source-card resource" data-title="The Met · Bass Viola da Gamba" data-url="https://www.metmuseum.org/art/collection/search/503359"><span class="src">Viola da gamba</span><b>Un’altra famiglia</b><span>Tasti, postura e costruzione mostrano perché viola da gamba e violino non vadano sovrapposti.</span></button>
+        </div>
+      </div>
+
       <div class="history-pivot" id="sangineto-focus">
         <h3>Quando uno strumento esce da un dipinto: l'Antica Liuteria Sangineto</h3>
         <p>Qui possiamo osservare un tipo di ricerca diverso dalla filologia esecutiva in senso stretto. <strong>Dal 2010 Michele Sangineto ricostruisce strumenti raffigurati o progettati nelle fonti figurative del Medioevo e del Rinascimento</strong>, trasformando in oggetti suonabili immagini che, in alcuni casi, sono l'unica testimonianza disponibile. Il progetto prende in esame, fra gli altri, la <strong>viola organista, l'organo di carta e la piva a vento continuo di Leonardo da Vinci</strong>, la <strong>claviharpa di Giorgione</strong>, i <strong>liuti e la ribeca degli angeli di Gaudenzio Ferrari</strong> e il <strong>galoucorde di Piero di Cosimo</strong>.</p>
@@ -1036,6 +1098,12 @@
         <div class="bibliography-list">
           <div class="bib-entry"><div class="bib-cite">Treccani. "Ottaviano Petrucci." <em>Dizionario Biografico degli Italiani</em>.<span class="bib-role">Stampa musicale</span></div><button class="bib-open resource" data-title="Treccani · Ottaviano Petrucci" data-url="https://www.treccani.it/enciclopedia/ottaviano-petrucci_%28Dizionario-Biografico%29/">Apri</button></div>
           <div class="bib-entry"><div class="bib-cite">Treccani. "Emancipazione della musica strumentale." <em>Storia della civiltà europea</em>.<span class="bib-role">Strumenti e trattatistica</span></div><button class="bib-open resource" data-title="Treccani · Emancipazione della musica strumentale" data-url="https://www.treccani.it/enciclopedia/emancipazione-della-musica-strumentale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">The Metropolitan Museum of Art. Rebecca Arkenberg, "Renaissance Violins."<span class="bib-role">Ribeca, lira da braccio e formazione della famiglia del violino</span></div><button class="bib-open resource" data-title="The Met · Renaissance Violins" data-url="https://www.metmuseum.org/essays/renaissance-violins">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">The Metropolitan Museum of Art. <em>Lira da braccio</em>, Giovanni d’Andrea, 1511.<span class="bib-role">Fonte organologica · archi rinascimentali</span></div><button class="bib-open resource" data-title="The Met · Lira da braccio, 1511" data-url="https://www.metmuseum.org/art/collection/search/902437">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">March, Richard. <em>The Tamburitza Tradition: From the Balkans to the American Midwest</em>. University of Wisconsin Press, 2013.<span class="bib-role">Liuti a manico lungo, Balcani e tamburica</span></div><button class="bib-open resource" data-title="Richard March · The Tamburitza Tradition" data-url="https://www.jstor.org/stable/jj.36032707">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">The Metropolitan Museum of Art. "Curator Interview: Armadillo-Shell Charango or Jarana."<span class="bib-role">Ibridazione fra chitarra europea e adattamenti americani</span></div><button class="bib-open resource" data-title="The Met · Charango or Jarana" data-url="https://www.metmuseum.org/es/perspectives/curator-interview-armadilloshell-charango-or-jarana">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">Smithsonian Folkways. "Mariachi Music in Mexico and the United States."<span class="bib-role">Vihuela e guitarrón nel sistema strumentale del mariachi</span></div><button class="bib-open resource" data-title="Smithsonian Folkways · Mariachi" data-url="https://folkways.si.edu/latino-music-usa/mariachi-music-in-mexico-and-the-united-states">Apri</button></div>
+          <div class="bib-entry"><div class="bib-cite">The Metropolitan Museum of Art. <em>Ukulele</em>, Hawai‘i, ca. 1880.<span class="bib-role">Madeira, migrazione portoghese e trasformazione hawaiana</span></div><button class="bib-open resource" data-title="The Met · Ukulele, Hawai‘i" data-url="https://www.metmuseum.org/art/collection/search/501343">Apri</button></div>
           <div class="bib-entry"><div class="bib-cite">Treccani. "Il madrigale." <em>Storia della civiltà europea</em>.<span class="bib-role">Madrigale e prassi compositiva</span></div><button class="bib-open resource" data-title="Treccani · Il madrigale" data-url="https://www.treccani.it/enciclopedia/il-madrigale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">Apri</button></div>
           <div class="bib-entry"><div class="bib-cite">Treccani. "Jacques Arcadelt." <em>Storia della civiltà europea</em>.<span class="bib-role">Madrigale del primo Cinquecento</span></div><button class="bib-open resource" data-title="Treccani · Jacques Arcadelt" data-url="https://www.treccani.it/enciclopedia/jacques-arcadelt_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">Apri</button></div>
           <div class="bib-entry"><div class="bib-cite">Treccani. "Giovanni Pierluigi da Palestrina." <em>Dizionario Biografico degli Italiani</em>.<span class="bib-role">Roma e Riforma cattolica</span></div><button class="bib-open resource" data-title="Treccani · Palestrina" data-url="https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/">Apri</button></div>
