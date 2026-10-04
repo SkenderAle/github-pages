@@ -534,6 +534,43 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 .fade-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem 4.4rem;background:linear-gradient(180deg,#f3ecdf,#f7f3eb 65%,#fbfaf6);border-top:1px solid #d2c4ae}
 .fade-inner{max-width:1180px;margin:auto}
 @media(max-width:820px){.threshold-grid{grid-template-columns:1fr}}
+
+.source-cabinet{margin-left:-1.35rem;margin-right:-1.35rem;margin-bottom:0;padding:5rem 1.35rem 5.4rem;background:
+radial-gradient(circle at 12% 8%,rgba(208,173,99,.11),transparent 22rem),
+radial-gradient(circle at 88% 92%,rgba(123,48,40,.12),transparent 24rem),
+linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px solid #8d7655;position:relative;overflow:hidden}
+.source-cabinet::before,.source-cabinet::after{position:absolute;font-family:Georgia,serif;color:rgba(208,173,99,.12);font-size:10rem;line-height:1;pointer-events:none}
+.source-cabinet::before{content:"❦";left:-1rem;top:1.2rem;transform:rotate(-18deg)}
+.source-cabinet::after{content:"❦";right:-1rem;bottom:1rem;transform:rotate(162deg)}
+.source-cabinet-inner{max-width:1180px;margin:auto;position:relative;z-index:1}
+.source-cabinet .section-title{border-color:rgba(225,204,164,.34)}
+.source-cabinet h2,.source-cabinet h3{color:#fff}
+.source-cabinet .eyebrow{color:#e5c98f}
+.cabinet-lead{max-width:880px;font-size:1.16rem;line-height:1.7;color:#e7dac8}
+.cabinet-rule{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin:1.8rem 0 2.4rem}
+.cabinet-rule span{border-top:3px solid #b78b43;background:rgba(255,255,255,.045);padding:.78rem .85rem;font-family:var(--sans);font-size:.74rem;line-height:1.45;color:#d9c9b2}
+.cabinet-rule b{display:block;color:#f0d59d;text-transform:uppercase;letter-spacing:.08em;font-size:.68rem;margin-bottom:.2rem}
+.source-drawer{border:1px solid rgba(229,201,143,.28);background:rgba(255,255,255,.035);margin:.9rem 0;box-shadow:0 18px 50px rgba(0,0,0,.12)}
+.source-drawer[open]{background:rgba(255,255,255,.055)}
+.source-drawer summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:52px minmax(0,1fr) 32px;gap:.9rem;align-items:center;padding:1rem 1.05rem;font-family:var(--sans);user-select:none}
+.source-drawer summary::-webkit-details-marker{display:none}
+.source-drawer summary::after{content:"+";display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(229,201,143,.4);border-radius:50%;color:#efd398;font-size:1.1rem}
+.source-drawer[open] summary::after{content:"×"}
+.drawer-no{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid #b78b43;color:#efd398;font-family:Georgia,serif;font-size:1.12rem}
+.drawer-title b{display:block;color:#fff;font-size:1rem;letter-spacing:.02em}
+.drawer-title small{display:block;margin-top:.18rem;color:#cdbda7;font-size:.76rem;line-height:1.4;font-weight:500}
+.source-shelves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;padding:0 1rem 1.1rem}
+.cabinet-source{display:block;min-height:128px;text-decoration:none;border:1px solid rgba(255,255,255,.14);border-top:4px solid #a77a31;background:#f3e9d9;color:#2c231c;padding:.9rem .95rem;transition:transform .18s,background .18s,border-color .18s}
+.cabinet-source:hover{transform:translateY(-2px);background:#fff7e9;border-color:#d0ad63}
+.cabinet-source .kind{display:block;font-family:var(--sans);font-size:.65rem;letter-spacing:.09em;text-transform:uppercase;color:#7b3028;font-weight:900;margin-bottom:.32rem}
+.cabinet-source b{display:block;font-size:1rem;line-height:1.28;margin-bottom:.34rem}
+.cabinet-source .why{display:block;font-family:var(--sans);font-size:.76rem;line-height:1.45;color:#65584c}
+.cabinet-note{margin:2rem 0 0;padding:1.15rem 1.25rem;border-left:5px solid #b78b43;background:rgba(255,255,255,.055);color:#ddd0bf}
+.cabinet-note strong{color:#f0d59d}
+.cabinet-note p{font-size:.94rem;line-height:1.58;margin:.2rem 0}
+@media(max-width:900px){.source-shelves{grid-template-columns:repeat(2,minmax(0,1fr))}.cabinet-rule{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.source-shelves{grid-template-columns:1fr}.cabinet-rule{grid-template-columns:1fr}.source-drawer summary{grid-template-columns:44px minmax(0,1fr) 28px;padding:.9rem .8rem}.source-cabinet{padding-top:4rem}}
+
 .footer{background:#17130f;color:#d9cec0;padding:2.7rem 1.3rem;font-family:var(--sans);font-size:.79rem}
 .footer-inner{max-width:1180px;margin:auto}
 .footer a{color:#ead09b}
@@ -603,6 +640,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a href="#arcadia">Arcadia</a>
       <a href="#orchestra">L’orchestra</a>
       <a href="#classicismo">Verso il Classicismo</a>
+      <a href="#fonti">Fonti</a>
       <a class="cross" href="../melodramma/">Melodramma ↗</a>
     </div>
   </nav>
@@ -639,6 +677,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a class="index-card" href="#arcadia"><b>Arcadia: una filosofia del gusto</b><span>Natura, misura, ragionevolezza e repubblica delle lettere: il primo Settecento prepara un nuovo clima culturale.</span></a>
       <a class="index-card" href="#orchestra"><b>Quando l’insieme diventa orchestra</b><span>Ouverture francese, sinfonia italiana, Sammartini, Mannheim e la nascita del pensiero orchestrale moderno.</span></a>
       <a class="index-card" href="#classicismo"><b>Il Barocco cambia pelle</b><span>Ciò che si trasforma mentre il Classicismo comincia a comparire.</span></a>
+      <a class="index-card" href="#fonti"><b>Gabinetto delle fonti</b><span>Partiture, trattati, archivi e strumenti per riaprire direttamente le tracce sulle quali è costruito il percorso.</span></a>
     </div>
   </section>
 
@@ -2403,6 +2442,102 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 
       <div class="question">Il Barocco aveva insegnato alla musica a costruire <em>movimento, contrasto, memoria e meraviglia</em>; il Classicismo erediterà tutto questo e cercherà un nuovo modo di metterlo in equilibrio.</div>
       <div class="source-row"><a class="deep-link" href="../classicismo/">Continua nel sito sul Classicismo →</a></div>
+    </div>
+  </section>
+
+  <section id="fonti" class="source-cabinet">
+    <div class="source-cabinet-inner">
+      <div class="section-title">
+        <div class="eyebrow">Gabinetto delle fonti</div>
+        <h2>Aprire i cassetti del Barocco</h2>
+      </div>
+      <p class="cabinet-lead">Questa pagina non termina con una bibliografia ornamentale, perché il Barocco che abbiamo attraversato ci è arrivato sotto forme differenti: una partitura stampata, un trattato scritto da un musicista, un manoscritto conservato in archivio, uno strumento sopravvissuto in un museo, una catalogazione moderna o un’esecuzione che prova a far tornare sonora una traccia antica. Le fonti qui raccolte sono dunque una <strong>cernita ragionata di quelle effettivamente usate nel percorso</strong>, ordinate non per alfabeto ma per la domanda che permettono di porre.</p>
+
+      <div class="cabinet-rule" aria-label="Come leggere il gabinetto delle fonti">
+        <span><b>Partitura</b>Che cosa fu scritto e che cosa la pagina lascia ancora aperto all’esecutore.</span>
+        <span><b>Trattato</b>Che cosa un musicista dell’epoca sentì il bisogno di spiegare ai propri contemporanei.</span>
+        <span><b>Archivio</b>Che cosa sopravvive materialmente: documenti, cataloghi, strumenti, istituzioni e tracce biografiche.</span>
+        <span><b>Interpretazione</b>Come la ricerca moderna trasforma di nuovo la fonte in suono senza fingere di cancellare la distanza storica.</span>
+      </div>
+
+      <details class="source-drawer" open>
+        <summary>
+          <span class="drawer-no">I</span>
+          <span class="drawer-title"><b>Carte sul leggio</b><small>Partiture e raccolte da aprire direttamente, non soltanto da citare.</small></span>
+        </summary>
+        <div class="source-shelves">
+          <a class="cabinet-source" href="https://imslp.org/wiki/L%27Orfeo%2C_SV_318_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener"><span class="kind">1607 · IMSLP</span><b>Monteverdi · <i>L’Orfeo</i></b><span class="why">La soglia teatrale nella quale parola, basso continuo, timbro e forma convivono già in un organismo nuovo.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Vespro_della_Beata_Vergine%2C_SV_206_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener"><span class="kind">1610 · IMSLP</span><b>Monteverdi · <i>Vespro</i></b><span class="why">Per osservare sulla pagina la convivenza di antico e moderno, polifonia, concertato e spazio sonoro.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/La_liberazione_di_Ruggiero_dall%E2%80%99isola_d%E2%80%99Alcina_%28Caccini%2C_Francesca%29" target="_blank" rel="noopener"><span class="kind">1625 · IMSLP</span><b>Francesca Caccini · <i>La liberazione di Ruggiero</i></b><span class="why">Una fonte primaria che lega composizione femminile, corte medicea, teatro e circolazione dinastica.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Che_si_pu%C3%B3_fare%3F_%28Strozzi%2C_Barbara%29" target="_blank" rel="noopener"><span class="kind">1664 · IMSLP</span><b>Barbara Strozzi · <i>Che si può fare?</i></b><span class="why">Voce, basso ostinato e retorica degli affetti dentro una scrittura da camera di straordinaria evidenza.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Sonate_a_1._2._3._e_4_Istomenti%2C_Opera_XVI_%28Leonarda%2C_Isabella%29" target="_blank" rel="noopener"><span class="kind">1693 · IMSLP</span><b>Isabella Leonarda · Sonate op. 16</b><span class="why">La sonata strumentale osservata attraverso una compositrice che lavora dentro un contesto religioso femminile.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/12_Concerti_grossi%2C_Op.6_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener"><span class="kind">1714 · IMSLP</span><b>Corelli · Concerti grossi op. 6</b><span class="why">Concertino, ripieno e continuo in una raccolta che diventa modello europeo.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Il_cimento_dell%27armonia_e_dell%27inventione%2C_Op.8_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener"><span class="kind">1725 · IMSLP</span><b>Vivaldi · <i>Il cimento</i> op. 8</b><span class="why">Le <i>Quattro stagioni</i> ricollocate nella raccolta che le contiene e nel rapporto fra concerto e racconto strumentale.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Concerto_in_C_major%2C_RV_558_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener"><span class="kind">Vivaldi · IMSLP</span><b>Concerto RV 558</b><span class="why">Una partitura preziosa per capire quanto l’orchestra barocca possa essere anche laboratorio di timbri insoliti.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/6_Violin_Sonatas_and_Partitas%2C_BWV_1001-1006_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener"><span class="kind">Bach · IMSLP</span><b>Sonate e Partite BWV 1001–1006</b><span class="why">Il violino solo fra danza, accordo, linea e polifonia suggerita.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/6_Cello_Suites%2C_BWV_1007-1012_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener"><span class="kind">Bach · IMSLP</span><b>Suites per violoncello BWV 1007–1012</b><span class="why">La danza trasformata in architettura strumentale e il problema filologico di una tradizione senza autografo completo.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Das_wohltemperierte_Klavier_I%2C_BWV_846-869_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener"><span class="kind">1722 · IMSLP</span><b>Bach · <i>Clavicembalo ben temperato</i> I</b><span class="why">Una fonte centrale per tonalità, preludio, fuga e per evitare l’equazione semplicistica fra “ben temperato” ed equabile.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Die_Kunst_der_Fuge%2C_BWV_1080_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener"><span class="kind">Bach · IMSLP</span><b><i>L’Arte della fuga</i> BWV 1080</b><span class="why">Il contrappunto osservato quasi allo stato puro, come pensiero che genera continuamente nuove possibilità dalla stessa idea.</span></a>
+        </div>
+      </details>
+
+      <details class="source-drawer">
+        <summary>
+          <span class="drawer-no">II</span>
+          <span class="drawer-title"><b>Quando il musicista prende la penna</b><small>Trattati e testimonianze: la prassi vista da chi cercava di descriverla mentre era ancora viva.</small></span>
+        </summary>
+        <div class="source-shelves">
+          <a class="cabinet-source" href="https://imslp.org/wiki/Regole%2C_passaggi_di_musica_%28Bovicelli%2C_Giovanni_Battista%29" target="_blank" rel="noopener"><span class="kind">1594 · IMSLP</span><b>Bovicelli · <i>Regole, passaggi di musica</i></b><span class="why">La diminuzione resa visibile attraverso esempi concreti sopra repertorio preesistente.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener"><span class="kind">1602 · IMSLP</span><b>Caccini · <i>Le nuove musiche</i></b><span class="why">Parola, canto, esclamazione, trilli e passaggi raccontati dall’interno della nuova monodia.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Del_sonare_sopra%27l_basso_con_tutti_li_stromenti_%28Agazzari%2C_Agostino%29" target="_blank" rel="noopener"><span class="kind">1607 · IMSLP</span><b>Agazzari · <i>Del sonare sopra ’l basso</i></b><span class="why">La fonte chiave per capire che il basso continuo è una funzione realizzata da combinazioni strumentali diverse.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Musicalische_Temperatur_%28Werckmeister%2C_Andreas%29" target="_blank" rel="noopener"><span class="kind">1691 · IMSLP</span><b>Werckmeister · <i>Musicalische Temperatur</i></b><span class="why">Per entrare nel problema storico dei temperamenti senza proiettare all’indietro l’accordatura moderna.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Trait%C3%A9_de_l%27harmonie_r%C3%A9duite_%C3%A0_ses_principes_naturels_%28Rameau%2C_Jean-Philippe%29" target="_blank" rel="noopener"><span class="kind">1722 · IMSLP</span><b>Rameau · <i>Traité de l’harmonie</i></b><span class="why">La teoria prova a sistematizzare razionalmente un linguaggio armonico che la pratica aveva già reso quotidiano.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Opinioni_de%E2%80%99_cantori_antichi_e_moderni_%28Tosi%2C_Pier_Francesco%29" target="_blank" rel="noopener"><span class="kind">1723 · IMSLP</span><b>Tosi · <i>Opinioni de’ cantori</i></b><span class="why">Appoggiature, trilli, divisioni, recitativo, cadenze e grazie raccontano quanto la pagina non basti da sola.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/The_Art_of_Playing_on_the_Violin_%28Geminiani%2C_Francesco%29" target="_blank" rel="noopener"><span class="kind">1751 · IMSLP</span><b>Geminiani · <i>The Art of Playing on the Violin</i></b><span class="why">Una fonte di soglia nella quale tecnica, gusto e ornamentazione rimangono inseparabili.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Versuch_einer_Anweisung_die_Fl%C3%B6te_traversiere_zu_spielen_%28Quantz%2C_Johann_Joachim%29" target="_blank" rel="noopener"><span class="kind">1752 · IMSLP</span><b>Quantz · <i>Versuch</i></b><span class="why">Più di un manuale di flauto: gusto, accompagnamento e pratica musicale visti dalla metà del Settecento.</span></a>
+          <a class="cabinet-source" href="https://imslp.org/wiki/Versuch_%C3%BCber_die_wahre_Art_das_Clavier_zu_spielen_%28Bach%2C_Carl_Philipp_Emanuel%29" target="_blank" rel="noopener"><span class="kind">1753 · IMSLP</span><b>C. P. E. Bach · <i>Versuch über die wahre Art...</i></b><span class="why">Una fonte già oltre il nostro confine didattico che mostra, proprio per questo, come la prassi barocca entri nel nuovo gusto.</span></a>
+        </div>
+      </details>
+
+      <details class="source-drawer">
+        <summary>
+          <span class="drawer-no">III</span>
+          <span class="drawer-title"><b>Dietro il vetro: archivi, musei, istituzioni</b><small>Quando la storia non è soltanto un testo, ma un oggetto, un catalogo, una comunità o una traccia conservata.</small></span>
+        </summary>
+        <div class="source-shelves">
+          <a class="cabinet-source" href="https://rism.info/rism_a_z/2016/04/07/isabella-leonarda-16201704.html" target="_blank" rel="noopener"><span class="kind">RISM</span><b>Isabella Leonarda nelle fonti</b><span class="why">Catalogazione e circolazione documentaria di una compositrice che il canone ha a lungo lasciato ai margini.</span></a>
+          <a class="cabinet-source" href="https://catalogue.bnf.fr/ark:/12148/cb124827006" target="_blank" rel="noopener"><span class="kind">Bibliothèque nationale de France</span><b>Antonia Bembo</b><span class="why">La traccia catalografica di una musicista veneziana la cui vicenda si sposta nella Francia di Luigi XIV.</span></a>
+          <a class="cabinet-source" href="https://catalogue.bnf.fr/ark:/12148/cb16543527t" target="_blank" rel="noopener"><span class="kind">BnF · 1581</span><b><i>Ballet comique de la reine</i></b><span class="why">Un antecedente fondamentale per il mondo del ballet de cour e per la lunga rete franco-italiana evocata nel capitolo sulle donne.</span></a>
+          <a class="cabinet-source" href="https://archivi.cini.it/antoniovivaldi/detail/IT-AVI-ST0001-001670/?lang=it" target="_blank" rel="noopener"><span class="kind">Fondazione Giorgio Cini</span><b>Archivio Antonio Vivaldi</b><span class="why">Una fonte istituzionale per riportare il repertorio vivaldiano alla materialità dei documenti e della trasmissione.</span></a>
+          <a class="cabinet-source" href="https://www.metmuseum.org/art/collection/search/501788" target="_blank" rel="noopener"><span class="kind">Metropolitan Museum</span><b>Cristofori · pianoforte del 1720</b><span class="why">L’oggetto permette di vedere la trasformazione della tastiera mentre il Barocco sta già cambiando pelle.</span></a>
+          <a class="cabinet-source" href="https://www.metmuseum.org/art/collection/search/503045" target="_blank" rel="noopener"><span class="kind">Metropolitan Museum</span><b>Stradivari “Gould”</b><span class="why">Uno strumento storico come documento di liuteria, materiali, proporzioni e sopravvivenza fisica del suono barocco.</span></a>
+          <a class="cabinet-source" href="https://foundlingmuseum.org.uk/handel-gallery/" target="_blank" rel="noopener"><span class="kind">Foundling Museum</span><b>Händel e il Foundling Hospital</b><span class="why">Musica, istituzione e società londinese si incontrano nella storia del <i>Messiah</i> e della beneficenza pubblica.</span></a>
+          <a class="cabinet-source" href="https://www.accademiadellarcadia.it/storie/la-fondazione/" target="_blank" rel="noopener"><span class="kind">Accademia dell’Arcadia</span><b>La fondazione del 1690</b><span class="why">La fonte istituzionale per il passaggio da Cristina di Svezia alla nuova repubblica letteraria romana.</span></a>
+          <a class="cabinet-source" href="https://www.operadeparis.fr/en/about/history/the-17th-century" target="_blank" rel="noopener"><span class="kind">Opéra national de Paris</span><b>Il Seicento francese</b><span class="why">Per collocare Lully, la danza e le istituzioni monarchiche senza attribuire a Caterina de’ Medici ciò che appartiene alla Francia di Luigi XIV.</span></a>
+        </div>
+      </details>
+
+      <details class="source-drawer">
+        <summary>
+          <span class="drawer-no">IV</span>
+          <span class="drawer-title"><b>Quando la fonte torna a suonare</b><small>Edizioni digitali, progetti interpretativi e studi usati come bussola, senza confonderli con i documenti d’epoca.</small></span>
+        </summary>
+        <div class="source-shelves">
+          <a class="cabinet-source" href="https://www.bachvereniging.nl/en/bwv/bwv-1001" target="_blank" rel="noopener"><span class="kind">Netherlands Bach Society</span><b>All of Bach · BWV 1001</b><span class="why">Partitura, esecuzione e contesto messi in relazione per una Sonata per violino solo.</span></a>
+          <a class="cabinet-source" href="https://www.bachvereniging.nl/en/bwv/bwv-1007" target="_blank" rel="noopener"><span class="kind">Netherlands Bach Society</span><b>All of Bach · BWV 1007</b><span class="why">Una porta utile sul rapporto fra fonte, interpretazione moderna e Suite per violoncello.</span></a>
+          <a class="cabinet-source" href="https://www.englishconcert.co.uk/videos/biber-rosary-sonatas/" target="_blank" rel="noopener"><span class="kind">The English Concert</span><b>Biber · Sonate del Rosario</b><span class="why">La scordatura diventa visibile e udibile attraverso uno dei problemi più affascinanti della prassi violinistica barocca.</span></a>
+          <a class="cabinet-source" href="https://www.collegium1704.com/en/audio-video" target="_blank" rel="noopener"><span class="kind">Collegium 1704</span><b>Zelenka e il Barocco centroeuropeo</b><span class="why">Un archivio interpretativo contemporaneo che aiuta a sottrarre Dresda e Zelenka all’ombra esclusiva di Bach.</span></a>
+          <a class="cabinet-source" href="https://www.treccani.it/enciclopedia/arcangelo-corelli_%28Dizionario-Biografico%29/" target="_blank" rel="noopener"><span class="kind">Treccani · DBI</span><b>Arcangelo Corelli</b><span class="why">Biografia critica e contesto romano, utile anche per il rapporto con Cristina di Svezia e l’Arcadia.</span></a>
+          <a class="cabinet-source" href="https://www.treccani.it/enciclopedia/giuseppe-domenico-scarlatti_%28Dizionario-Biografico%29/" target="_blank" rel="noopener"><span class="kind">Treccani · DBI</span><b>Domenico Scarlatti</b><span class="why">Una bussola biografica per seguire il percorso italiano, portoghese e iberico della sua musica.</span></a>
+          <a class="cabinet-source" href="https://www.treccani.it/enciclopedia/arcadia_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/" target="_blank" rel="noopener"><span class="kind">Treccani</span><b>Arcadia e cultura del Settecento</b><span class="why">Uno studio di orientamento per leggere l’Arcadia come riforma del gusto e non come semplice etichetta letteraria.</span></a>
+          <a class="cabinet-source" href="https://www.treccani.it/enciclopedia/sinfonia_%28Enciclopedia-Italiana%29/" target="_blank" rel="noopener"><span class="kind">Treccani</span><b>Storia della sinfonia</b><span class="why">Per seguire con cautela la trasformazione dalla sinfonia teatrale alla forma orchestrale autonoma.</span></a>
+          <a class="cabinet-source" href="https://www.metmuseum.org/essays/the-piano-the-pianofortes-of-bartolomeo-cristofori-1655-1731" target="_blank" rel="noopener"><span class="kind">Metropolitan Museum · saggio</span><b>Cristofori e i primi pianoforti</b><span class="why">Un approfondimento organologico che collega oggetti conservati, innovazione tecnica e trasformazione della tastiera.</span></a>
+        </div>
+      </details>
+
+      <div class="cabinet-note">
+        <p><strong>Una scelta deliberata.</strong> Non ho duplicato qui tutti i video YouTube presenti nella pagina. Gli ascolti hanno senso nel punto del racconto in cui viene chiesto all’orecchio di riconoscere qualcosa, mentre questo gabinetto raccoglie soprattutto ciò che permette di verificare, confrontare e riaprire il lavoro storico. Anche per questo sono rimasti fuori i semplici crediti iconografici e i collegamenti ridondanti: una sezione di fonti funziona meglio quando distingue la documentazione dall’arredo.</p>
+      </div>
     </div>
   </section>
 </main>
