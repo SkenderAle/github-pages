@@ -181,6 +181,27 @@ linear-gradient(180deg,#f4ece2,#eee3d5);border-top:1px solid #c8b79d;border-bott
 .function-strip span{flex:0 0 auto;background:#efe2d6;border:1px solid #c9b6a7;padding:.68rem .78rem;font-family:var(--sans);font-size:.75rem;font-weight:900;color:#473833}
 .function-strip i{flex:0 0 auto;display:grid;place-items:center;color:var(--plum);font-style:normal;font-weight:900}
 @media(max-width:760px){.vocal-grid{grid-template-columns:1fr}}
+.sonata-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:
+radial-gradient(circle at 88% 12%,rgba(167,122,49,.08),transparent 18rem),
+linear-gradient(180deg,#f6efe4,#eee2d1);border-top:1px solid #c7b699;border-bottom:1px solid #c7b699}
+.sonata-inner{max-width:1180px;margin:auto}
+.sonata-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.25rem 0 2rem}
+.sonata-card{background:#fffaf1;border:1px solid var(--line);border-top:4px solid var(--gold);padding:1rem}
+.sonata-card b{display:block;font-family:var(--sans);font-size:.75rem;letter-spacing:.055em;text-transform:uppercase;color:var(--red);margin-bottom:.28rem}
+.sonata-card h4{font-size:1.14rem;margin:.1rem 0 .4rem}
+.sonata-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .7rem}
+.sonata-route{display:flex;gap:.4rem;align-items:stretch;overflow-x:auto;margin:1rem 0 1.8rem;padding:.15rem 0 .6rem}
+.sonata-route span{flex:0 0 auto;background:#efe1ca;border:1px solid #c8b493;padding:.68rem .78rem;font-family:var(--sans);font-size:.74rem;font-weight:900;color:#43352b}
+.sonata-route i{flex:0 0 auto;display:grid;place-items:center;color:var(--gold);font-style:normal;font-weight:900}
+.trio-visual{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin:1rem 0 1.7rem}
+.trio-visual div{background:#f7efe3;border:1px solid var(--line);padding:.85rem}
+.trio-visual b{display:block;font-family:var(--sans);font-size:.73rem;color:var(--red);margin-bottom:.25rem}
+.trio-visual span{font-size:.86rem;line-height:1.4}
+.sonata-warning{margin:1.2rem 0 1.8rem;padding:1rem 1.1rem;background:#1e2b39;color:#fff;border-left:5px solid var(--gold)}
+.sonata-warning b{display:block;font-family:var(--sans);font-size:.74rem;letter-spacing:.07em;text-transform:uppercase;color:#efd08c;margin-bottom:.28rem}
+.sonata-warning p{font-size:.95rem;line-height:1.55;margin:.3rem 0;color:#f3eee7}
+@media(max-width:900px){.sonata-grid,.trio-visual{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.sonata-grid,.trio-visual{grid-template-columns:1fr}}
 .before-recording{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:linear-gradient(180deg,#f4ecdf,#eee3d2);border-top:1px solid #c7b79d;border-bottom:1px solid #c7b79d}
 .before-recording-inner{max-width:1180px;margin:auto}
 .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.3rem 0 2rem}
@@ -397,6 +418,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a href="#indice">Indice</a>
       <a href="#monteverdi">Monteverdi</a>
       <a href="#seicento">Il Seicento</a>
+      <a href="#sonata">La sonata</a>
       <a href="#corelli">Corelli</a>
       <a href="#vivaldi">Vivaldi</a>
       <a href="#europa">L’Europa</a>
@@ -426,9 +448,12 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a class="index-card" href="#voce"><b>Una voce emerge dalle altre</b><span>Monodia, basso continuo e un nuovo modo di costruire il discorso musicale.</span></a>
       <a class="index-card" href="#seicento"><b>Il Seicento si mette in movimento</b><span>Venezia, Roma, Germania e la musica che attraversa spazio e confini.</span></a>
       <a class="index-card" href="#strumenti"><b>Gli strumenti trovano una voce</b><span>Frescobaldi, Biber, liuteria e la nascita di un nuovo virtuosismo.</span></a>
+      <a class="index-card" href="#sonata"><b>La sonata prima della forma-sonata</b><span>Da Gabrieli a Corelli, dalla sonata da chiesa alla camera e alla tastiera.</span></a>
       <a class="index-card" href="#corelli"><b>Pochi e molti</b><span>Corelli e il concerto come architettura sonora.</span></a>
       <a class="index-card" href="#vivaldi"><b>Venezia laboratorio d’Europa</b><span>Vivaldi, la Pietà e un’orchestra piena di possibilità.</span></a>
       <a class="index-card" href="#europa"><b>Il Barocco attraversa i confini</b><span>Francia, Inghilterra, Dresda e le molte lingue del Settecento.</span></a>
+      <a class="index-card" href="#danza"><b>La danza rimane nel corpo</b><span>Suite, allemanda, corrente, sarabanda, giga e la memoria del gesto dentro la musica strumentale.</span></a>
+      <a class="index-card" href="#voce-sacra"><b>La voce senza palcoscenico</b><span>Cantata, oratorio e Passione: quando il teatro entra nella chiesa e nella camera senza diventare opera.</span></a>
       <a class="index-card" href="#mestiere"><b>Prima del disco</b><span>Come viaggiano le musiche, che lavoro fa un musicista e perché un’esecuzione scompare appena finisce.</span></a>
       <a class="index-card" href="#donne"><b>Le donne che rendono possibile la musica</b><span>Compositrici, esecutrici, regine, committenti e mediatrici culturali dentro la stessa storia.</span></a>
       <a class="index-card" href="#hip"><b>Come ci è arrivata questa musica?</b><span>Prassi storica, fonti, lacune, ricostruzioni e tutto ciò che la partitura non dice oppure non conserva più.</span></a>
@@ -445,13 +470,16 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
     <div class="timeline-scroll">
       <div class="timeline">
         <a class="time-node" href="#donne"><b>1581</b><span>Ballet comique de la reine</span></a>
+        <a class="time-node" href="#sonata"><b>1597</b><span>Gabrieli, Sonata pian e forte</span></a>
         <a class="time-node major" href="#donne"><b>1600</b><span>Maria de’ Medici, Euridice</span></a>
         <a class="time-node major" href="#monteverdi"><b>1600 ca.</b><span>La soglia</span></a>
         <a class="time-node major" href="#orfeo"><b>1607</b><span>Monteverdi, Orfeo</span></a>
         <a class="time-node" href="#vespro"><b>1610</b><span>Vespro</span></a>
         <a class="time-node" href="#voce"><b>1618</b><span>Francesca Caccini, Primo libro</span></a>
+        <a class="time-node" href="#voce-sacra"><b>1640 ca.</b><span>Carissimi, Jephte e l’oratorio</span></a>
         <a class="time-node" href="#seicento"><b>prima metà XVII</b><span>Schütz, Frescobaldi, Carissimi</span></a>
         <a class="time-node" href="#strumenti"><b>1670 ca.</b><span>Biber e il violino</span></a>
+        <a class="time-node" href="#sonata"><b>1681</b><span>Corelli, sonate a tre op. 1</span></a>
         <a class="time-node" href="#strumenti"><b>1683</b><span>Leonarda, Sonate op. 16</span></a>
         <a class="time-node major" href="#anno-1685"><b>1685</b><span>Bach, Händel, Scarlatti</span></a>
         <a class="time-node" href="#classicismo"><b>1700 ca.</b><span>Cristofori e il nuovo pianoforte</span></a>
@@ -595,6 +623,97 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
     <div class="callout"><strong>Prima ascoltare, poi guardare l’accordatura.</strong> La scordatura funziona didatticamente meglio se il ragazzo percepisce prima che quel violino possiede qualcosa di insolito e soltanto dopo scopre che Biber ha modificato materialmente l’accordatura delle corde. Per questo il popup tecnico rimane accanto alla partitura, mentre un approfondimento dell’English Concert introduce il rapporto fra virtuosismo e scordatura senza trasformare la spiegazione in una lezione preliminare.</div>
     <div class="source-row">
       <a class="deep-link" href="https://www.englishconcert.co.uk/videos/biber-rosary-sonatas/" target="_blank" rel="noopener">The English Concert · Biber e la scordatura →</a>
+    </div>
+  </section>
+
+  <section id="sonata" class="sonata-band">
+    <div class="sonata-inner">
+      <div class="section-title"><div class="eyebrow">Prima della forma-sonata</div><h2>“Sonata” significa prima di tutto: musica da suonare</h2></div>
+      <p>Quando incontriamo la parola <i>sonata</i> alla fine del Cinquecento non dobbiamo immaginare immediatamente Beethoven, né una forma costruita con esposizione, sviluppo e ripresa. Il termine nasce molto prima di quella grammatica e indica innanzitutto una composizione affidata agli strumenti, una musica “sonata” invece che “cantata”; proprio per questo nel 1597 Giovanni Gabrieli può intitolare <i>Sonata pian e forte</i> un grande brano policorale per strumenti, ancora profondamente legato al mondo veneziano tardorinascimentale e lontanissimo dalla sonata classica.</p>
+      <p>Nel corso del Seicento il termine si specializza, mentre canzona, sonata, danza e basso continuo si influenzano reciprocamente. Non esiste quindi un istante preciso nel quale “nasce la sonata” già completa, perché ciò che chiamiamo sonata barocca si forma attraverso una lunga selezione di pratiche differenti, fino a quando musicisti come Corelli rendono alcuni modelli abbastanza stabili da trasformarli in riferimenti europei.</p>
+
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Sonata_Pian_e_Forte%2C_Ch._175_%28Gabrieli%2C_Giovanni%29" target="_blank" rel="noopener">♫ IMSLP · Gabrieli, Sonata pian e forte</a>
+      </div>
+
+      <article class="listen-panel" style="margin:1rem 0 2rem">
+        <iframe src="https://www.youtube-nocookie.com/embed/QXRITlQBitc" title="Giovanni Gabrieli, Sonata pian e forte, His Majestys Sagbutts and Cornetts" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="listen-copy">
+          <b>Ascolto · prima che la sonata diventi “la sonata”</b>
+          <h3>Gabrieli, <i>Sonata pian e forte</i> · 1597</h3>
+          <p>Due gruppi strumentali dialogano nello spazio e le indicazioni di <i>piano</i> e <i>forte</i> seguono il gioco fra cori separati e riuniti. Qui “sonata” significa ancora soprattutto musica strumentale da far risuonare, non una forma classica già organizzata.</p>
+        </div>
+      </article>
+
+      <h3>Da chiesa e da camera: due famiglie, non due gabbie</h3>
+      <p>Fra la seconda metà del Seicento e l’inizio del Settecento diventano particolarmente riconoscibili due tendenze. La <i>sonata da chiesa</i> privilegia spesso una successione di movimenti contrastanti che può essere schematizzata come lento, veloce, lento, veloce, con movimenti rapidi frequentemente imitativi o fugati; il nome indica soprattutto un contesto e un carattere compatibile con l’esecuzione ecclesiastica, non necessariamente un contenuto religioso. La <i>sonata da camera</i>, invece, si avvicina più apertamente alla suite, spesso attraverso un preludio seguito da danze stilizzate.</p>
+      <p>La distinzione è utilissima per orientarsi, purché non venga trasformata in una legge rigida: i due mondi si contaminano, i movimenti di danza possono entrare nella sonata da chiesa e le strutture astratte possono comparire nella musica da camera, mentre già nel primo Settecento la separazione comincia progressivamente a perdere nettezza.</p>
+
+      <div class="sonata-grid">
+        <article class="sonata-card">
+          <b>Sonata da chiesa</b>
+          <h4>Il contrasto costruisce l’architettura</h4>
+          <p>Un modello frequente alterna movimenti lenti e veloci. Nell’op. 1 n. 1 di Corelli troviamo Grave, Allegro, Adagio, Allegro: un esempio quasi didattico della logica senza bisogno di trasformarla in formula universale.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Trio_Sonata_in_F_major%2C_Op.1_No.1_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener">♫ IMSLP · Corelli op. 1 n. 1</a>
+        </article>
+        <article class="sonata-card">
+          <b>Sonata da camera</b>
+          <h4>La danza entra nella sonata</h4>
+          <p>Nell’op. 2 n. 1 di Corelli la successione è esplicita: Preludio, Allemanda, Corrente, Gavotta. La sonata e la suite finiscono quasi per guardarsi allo specchio.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Trio_Sonata_in_D_major%2C_Op.2_No.1_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener">♫ IMSLP · Corelli op. 2 n. 1</a>
+        </article>
+        <article class="sonata-card">
+          <b>Sonata a tre</b>
+          <h4>Tre parti non significano tre persone</h4>
+          <p>Due linee acute dialogano sopra un basso. Se il basso viene raddoppiato da violoncello o violone mentre clavicembalo, organo o tiorba realizzano l’armonia, le tre parti scritte possono diventare quattro esecutori reali.</p>
+          <button class="tech-button" type="button" data-modal="modal-sonata">Apri · il paradosso della sonata a tre</button>
+        </article>
+        <article class="sonata-card">
+          <b>Sonata solistica</b>
+          <h4>Il protagonista cresce</h4>
+          <p>Con il consolidarsi del violino solista la sonata può concentrare il discorso sopra un solo strumento accompagnato dal continuo, aprendo la strada a una scrittura sempre più idiomatica e virtuosistica.</p>
+          <a class="score-link" href="https://imslp.org/wiki/12_Violin_Sonatas%2C_Op.5_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener">♫ IMSLP · Corelli op. 5</a>
+        </article>
+      </div>
+
+      <h3>Perché una sonata a tre può avere quattro musicisti?</h3>
+      <div class="trio-visual" aria-label="Le tre parti scritte e i possibili quattro esecutori della sonata a tre">
+        <div><b>Parte 1</b><span>Primo violino o altro strumento melodico.</span></div>
+        <div><b>Parte 2</b><span>Secondo violino o secondo strumento melodico.</span></div>
+        <div><b>Parte 3</b><span>La linea di basso, letta da violoncello, violone o fagotto.</span></div>
+        <div><b>Realizzazione</b><span>Clavicembalo, organo, tiorba o altro strumento armonico realizza gli accordi sopra quello stesso basso.</span></div>
+      </div>
+      <p>Il paradosso è didatticamente prezioso perché ci ricorda che la partitura barocca non coincide sempre con l’organico reale. La pagina registra tre funzioni musicali, ma la prassi può distribuire l’ultima funzione fra più persone; ancora una volta ciò che leggiamo e ciò che materialmente ascoltiamo non sono la stessa cosa.</p>
+
+      <h3>Corelli non inventa la sonata: la rende irresistibilmente esportabile</h3>
+      <p>Le raccolte di Corelli mostrano con particolare chiarezza il grado di stabilità raggiunto dal genere. L’op. 1 del 1681 raccoglie dodici sonate a tre da chiesa ed è dedicata a Cristina di Svezia, mentre l’op. 2 del 1685 porta la sonata verso il mondo della camera e della danza. Il loro successo editoriale è enorme, e proprio questa capacità di circolare rende Corelli più importante come costruttore di un modello europeo che come presunto inventore di una forma già presente prima di lui.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Trio_Sonatas%2C_Op.1_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener">♫ IMSLP · Corelli op. 1, 1681</a>
+        <a class="score-link" href="https://imslp.org/wiki/Trio_Sonatas%2C_Op.2_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener">♫ IMSLP · Corelli op. 2, 1685</a>
+      </div>
+
+      <h3>Leonarda, Biber e Bach: il modello non appartiene a una sola città</h3>
+      <p>Isabella Leonarda pubblica nel 1683 le proprie sonate op. 16 a Novara, mentre Biber spinge la sonata violinistica verso possibilità tecniche e timbriche radicali e Bach, intorno al 1720, alterna nel manoscritto per violino solo Sonata e Partita come se volesse mettere uno accanto all’altro il mondo della struttura astratta e quello della danza. La sonata barocca è quindi meno un oggetto immobile che una famiglia di soluzioni capace di attraversare strumenti, luoghi e funzioni differenti.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Sonate_a_1._2._3._e_4_Istomenti%2C_Opera_XVI_%28Leonarda%2C_Isabella%29" target="_blank" rel="noopener">♫ IMSLP · Leonarda op. 16</a>
+        <a class="deep-link" href="#danza">Bach: Sonate e Partite →</a>
+      </div>
+
+      <h3>Scarlatti: la parola resta, l’oggetto cambia ancora</h3>
+      <p>Quando arriviamo alle sonate per tastiera di Domenico Scarlatti, il termine ha già cambiato nuovamente fisionomia. La maggior parte di questi brani è costituita da un solo movimento in forma bipartita, nel quale due grandi sezioni vengono ripetute e il percorso armonico diventa parte essenziale dell’architettura. Chiamarle “sonate” non significa però che siano già costruite secondo la forma-sonata classica di Haydn e Mozart.</p>
+      <p>Questa distinzione prepara bene il passaggio al Classicismo: il genere sonata esiste da molto tempo, mentre quella che a scuola chiamiamo <i>forma-sonata</i> è una successiva organizzazione formale che matura nel corso del Settecento. Stessa parola, storia diversa.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Essercizi_per_gravicembalo%2C_K.1-30_%28Scarlatti%2C_Domenico%29" target="_blank" rel="noopener">♫ IMSLP · Scarlatti, Essercizi</a>
+      </div>
+
+      <div class="sonata-warning">
+        <b>Attenzione alla parola</b>
+        <p><strong>Sonata barocca</strong>, <strong>sonata classica</strong> e <strong>forma-sonata</strong> non sono sinonimi. Il nome attraversa i secoli, mentre struttura, organico e funzione cambiano continuamente.</p>
+      </div>
+
+      <div class="sonata-route" aria-label="Trasformazioni della sonata fra Cinquecento e Settecento">
+        <span>1597 · Gabrieli</span><i>→</i><span>sonata strumentale</span><i>→</i><span>da chiesa / da camera</span><i>→</i><span>sonata a tre</span><i>→</i><span>sonata solistica</span><i>→</i><span>Scarlatti e la tastiera</span><i>→</i><span>Classicismo</span>
+      </div>
     </div>
   </section>
 
