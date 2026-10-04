@@ -111,6 +111,18 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 .archive-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid #9fa9a2;background:#edf2ee;color:#2f493d;border-radius:999px;padding:.48rem .7rem;font-family:var(--sans);font-size:.72rem;font-weight:850}
 .archive-link:hover{background:#f8fff9}
 @media(max-width:760px){.travel-grid{grid-template-columns:1fr}}
+.hip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.5rem 0 2rem}
+.hip-card{border:1px solid #bba989;background:#f8f3e9;padding:1rem 1.05rem}
+.hip-card b{display:block;font-family:var(--sans);font-size:.76rem;letter-spacing:.055em;text-transform:uppercase;color:var(--night);margin-bottom:.32rem}
+.hip-card p{font-size:.93rem;line-height:1.55;margin:.2rem 0}
+.bach-note{margin:1.4rem 0;padding:1.05rem 1.1rem;border:1px solid #c5b393;background:#f1e8da}
+.bach-note b{font-family:var(--sans);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--red)}
+.bach-note p{margin:.35rem 0 0;font-size:.96rem}
+.compare-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1.2rem 0 2rem}
+.compare-pair>div{border-top:4px solid var(--gold);background:#f7f0e4;padding:1rem}
+.compare-pair b{display:block;font-family:var(--sans);font-size:.8rem;color:var(--red);margin-bottom:.3rem}
+.compare-pair p{font-size:.92rem;line-height:1.5;margin:.3rem 0 .8rem}
+@media(max-width:760px){.hip-grid,.compare-pair{grid-template-columns:1fr}}
 .footer{background:#17130f;color:#d9cec0;padding:2.7rem 1.3rem;font-family:var(--sans);font-size:.79rem}
 .footer-inner{max-width:1180px;margin:auto}
 .footer a{color:#ead09b}
@@ -455,16 +467,74 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
   <section id="hip" class="stucco-band">
     <div class="stucco-inner">
       <div class="section-title"><div class="eyebrow">Una diagonale del sito</div><h2>Ma questa musica suonava davvero così?</h2></div>
-      <p>Possedere una partitura del Seicento o del Settecento non significa possederne automaticamente il suono, perché la pagina non ci consegna integralmente il tipo di arco, la qualità delle corde, il temperamento, il modo di realizzare il basso continuo, l’ornamentazione o la libertà che un esecutore poteva concedersi. L’esecuzione storicamente informata nasce proprio dalla necessità di ricostruire queste pratiche attraverso trattati, strumenti conservati, iconografia, lettere, partiture e descrizioni dell’epoca, senza pretendere per questo di poter ricreare con assoluta certezza un suono perduto.</p>
-      <p>La filologia, quindi, non dovrebbe essere presentata come un tribunale incaricato di stabilire quale interpretazione sia corretta, ma come uno strumento capace di rendere nuovamente udibili differenze che secoli di abitudini successive avevano attenuato. Quando cambiano l’articolazione degli archi, il colore dei fiati, il ruolo del continuo o il peso della danza, una musica conosciutissima può improvvisamente riacquistare qualcosa della propria capacità di sorprendere.</p>
+      <p>Possedere una partitura del Seicento o del Settecento non significa possederne automaticamente il suono, perché la pagina scritta non ci consegna integralmente il tipo di arco, la qualità delle corde, il temperamento, il modo nel quale veniva realizzato il basso continuo, la quantità e la natura dell’ornamentazione o la libertà che un esecutore poteva concedersi; proprio questa distanza fra ciò che la pagina conserva e ciò che l’esecuzione deve ricostruire rende necessario interrogare trattati, strumenti sopravvissuti, iconografia, lettere e testimonianze contemporanee, senza fingere che il passato possa essere riprodotto con la precisione di una registrazione.</p>
+      <p>L’esecuzione storicamente informata, indicata spesso con la sigla HIP, nasce da questa ricerca e non coincide semplicemente con l’uso di strumenti antichi, perché cambiare un violino moderno con uno strumento montato con corde di budello serve a poco se rimangono immutate l’articolazione, la concezione della frase, il ruolo del continuo e il rapporto con la danza; la filologia diventa davvero interessante quando modifica il modo nel quale il musicista pensa la partitura, restituendo all’esecutore responsabilità che la tradizione più tarda aveva progressivamente ridotto.</p>
+
+      <div class="hip-grid">
+        <article class="hip-card"><b>La partitura non dice tutto</b><p>Il testo musicale conserva ciò che era necessario scrivere, non necessariamente tutto ciò che un esecutore competente sapeva di dover fare, per cui ornamentazione, articolazione e realizzazione del continuo possono dipendere da conoscenze che all’epoca non avevano bisogno di essere spiegate ogni volta.</p></article>
+        <article class="hip-card"><b>Gli strumenti cambiano l’equilibrio</b><p>Traversiere, oboi storici, corni naturali, archi con corde di budello e clavicembali possiedono proiezioni e colori differenti da quelli degli strumenti moderni, e proprio queste differenze modificano il rapporto fra le parti senza bisogno di aumentare artificialmente il volume.</p></article>
+        <article class="hip-card"><b>La danza rimane nel corpo</b><p>Molte pagine che la tradizione novecentesca ha reso solenni o monumentali nascono da ritmi che conservano il ricordo del gesto corporeo, cosicché articolazione e accento possono restituire movimento a una musica che, se trattata soltanto come repertorio “classico”, rischia di diventare più pesante di quanto fosse.</p></article>
+        <article class="hip-card"><b>L’accordatura possiede una storia</b><p>Temperamenti differenti modificano il colore degli intervalli e delle tonalità, per cui perfino una modulazione può essere percepita diversamente quando non si parte dall’assunto moderno che tutti i semitoni debbano essere perfettamente equivalenti.</p></article>
+      </div>
+
+      <h3>Le vecchie registrazioni non sono “sbagliate”</h3>
+      <p>Per gran parte del Novecento la musica barocca è stata frequentemente eseguita attraverso abitudini orchestrali formatesi in epoche successive, con masse d’archi più ampie, vibrato continuo, strumenti moderni e una concezione del legato che apparteneva a un altro paesaggio sonoro; alcune di quelle interpretazioni rimangono musicalmente straordinarie, ma sono preziose proprio perché ci permettono di ascoltare quanto ogni epoca finisca inevitabilmente per leggere il passato attraverso se stessa.</p>
+      <p>Il confronto con esecuzioni storicamente informate non deve quindi trasformarsi in una gara fra “giusto” e “sbagliato”, perché didatticamente è molto più fertile chiedere che cosa cambi: quanto spazio rimanga fra gli attacchi, se le parti interne diventino più leggibili, quale peso assuma il basso, come reagisca il continuo e quanto la pulsazione della danza riesca a riemergere sotto una superficie che credevamo di conoscere.</p>
+
+      <div class="question">La filologia diventa veramente utile quando l’orecchio comincia a riconoscere una differenza <em>prima ancora di conoscere il nome della regola che la produce</em>.</div>
+      <div class="source-row">
+        <button class="tech-button" type="button" data-modal="modal-temperamento">Apri · Che cos’è un temperamento?</button>
+      </div>
     </div>
   </section>
 
   <section id="bach">
     <div class="section-title"><div class="eyebrow">Il grande incrocio</div><h2>Bach è Einstein</h2></div>
     <p>Quando arriviamo a Johann Sebastian Bach, il suo linguaggio appare meno improvviso proprio perché abbiamo già incontrato, disseminati lungo il percorso, molti degli elementi che egli saprà ricondurre a una straordinaria unità: il corale luterano trasformato dalla pratica comunitaria e dall’elaborazione organistica, la tradizione veneziana trasmessa nel mondo tedesco, l’esperienza tastieristica italiana di Frescobaldi e quella nordtedesca culminata in Buxtehude, il principio concertante maturato attraverso Corelli e Vivaldi, la suite francese, il basso continuo e la retorica musicale del Seicento. Tutto questo non rimane in Bach come una collezione di stili accostati, perché viene assorbito dentro un pensiero capace di mettere in relazione tradizioni che, considerate separatamente, potevano sembrare lontanissime.</p>
-    <p>È soprattutto in questo senso che il paragone con Einstein acquista consistenza, non come banale equivalenza fra due uomini definiti geniali, ma come capacità di riconoscere un ordine più profondo dentro fenomeni che altri avevano già osservato separatamente. Bach non inventa tutte le cose che utilizza, ma comprende con una profondità eccezionale come possano stare insieme, e proprio per questo il concerto italiano, la danza francese, il corale tedesco e il contrappunto non diventano citazioni stilistiche ma parti di un unico universo musicale.</p>
-    <div class="callout"><strong>Il Bach umano entrerà qui.</strong> Il viaggio a Lubecca, il conflitto di Weimar, l’arresto, il mestiere quotidiano, la famiglia e quella curiosità quasi ossessiva che rende più comprensibile il musicista senza trasformarlo in caricatura.</div>
+    <p>È soprattutto in questo senso che il paragone con Einstein acquista consistenza, non come banale equivalenza fra due uomini definiti geniali, ma come capacità di riconoscere un ordine più profondo dentro fenomeni che altri avevano già osservato separatamente; Bach non inventa tutte le cose che utilizza, ma comprende con una profondità eccezionale come possano stare insieme, e proprio per questo il concerto italiano, la danza francese, il corale tedesco e il contrappunto non diventano citazioni stilistiche ma parti di un unico universo musicale.</p>
+
+    <h3>Prima del monumento, il ragazzo che cammina</h3>
+    <p>Nel 1705, quando lavora ad Arnstadt, Bach ottiene alcune settimane di congedo e raggiunge Lubecca per ascoltare Dieterich Buxtehude, uno dei grandi organisti della Germania settentrionale; il viaggio, compiuto in larga parte a piedi e prolungato molto oltre il periodo inizialmente concesso, diventa interessante non tanto per l’aneddoto atletico quanto perché mostra una forma di curiosità che accompagnerà tutta la sua vita, nella quale conoscere la musica di un altro significa cercarla direttamente quando la pagina non basta.</p>
+    <p>Buxtehude non rappresentava per lui un nome da inserire in una genealogia, ma una pratica viva fatta di improvvisazione, registrazione dell’organo, contrappunto e costruzione delle grandi forme; osservato da questa prospettiva, il viaggio verso Lubecca diventa quasi il contrario della nostra possibilità contemporanea di aprire una registrazione in pochi secondi, perché Bach deve percorrere centinaia di chilometri per poter ascoltare qualcosa che considera necessario alla propria formazione.</p>
+
+    <div class="bach-note"><b>Taccuino del nerd · Lubecca</b><p>Il permesso doveva essere breve; la permanenza si prolunga per mesi e al ritorno il concistoro di Arnstadt gli contesta formalmente l’assenza. Il dettaglio è divertente, ma soprattutto rivela quanto Bach fosse disposto a complicarsi la vita pur di ascoltare ciò che riteneva importante.</p></div>
+
+    <h3>Studiare significa anche copiare e trasformare</h3>
+    <p>La stessa curiosità riappare a Weimar quando Bach entra in contatto con i concerti italiani e ne trascrive diversi per tastiera, perché trasferire una composizione dall’orchestra all’organo o al clavicembalo costringe a comprenderne la struttura dall’interno, decidendo come rendere i ritornelli, il rapporto fra solisti e gruppo e il movimento armonico con mezzi completamente differenti; la trascrizione diventa quindi una forma di analisi, tanto più significativa in un mondo nel quale non esiste ancora la possibilità di studiare una registrazione ripetendone indefinitamente un frammento.</p>
+    <p>Il Concerto per organo in la minore BWV 593 offre un caso particolarmente chiaro, perché rielabora il Concerto per due violini in la minore RV 522 di Vivaldi: mettere le due partiture una accanto all’altra permette di vedere concretamente come un musicista possa imparare da un altro senza limitarsi a imitarlo, ricostruendo con una tastiera ciò che nell’originale dipendeva dal dialogo fra due violini e orchestra.</p>
+    <div class="compare-pair">
+      <div><b>Vivaldi · RV 522</b><p>L’originale per due violini, archi e continuo, pubblicato nell’<i>Estro armonico</i> op. 3.</p><a class="score-link" href="https://imslp.org/wiki/Concerto_for_2_Violins_in_A_minor%2C_RV_522_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener">♫ IMSLP · originale</a></div>
+      <div><b>Bach · BWV 593</b><p>La trascrizione per organo, nella quale il concerto viene ripensato attraverso due mani, pedaliera e registri.</p><a class="score-link" href="https://imslp.org/wiki/Organ_Concerto_in_A_minor%2C_BWV_593_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · trascrizione</a></div>
+    </div>
+
+    <h3>Il concerto grosso smette di stare al proprio posto</h3>
+    <p>Nei sei Concerti brandeburghesi, raccolti nel 1721, la distinzione fra piccolo gruppo e insieme non viene cancellata ma sottoposta a una continua trasformazione, perché strumenti che in un concerto tradizionale avrebbero potuto svolgere funzioni più prevedibili acquistano improvvisamente un rilievo individuale, mentre le combinazioni cambiano da un concerto all’altro fino a rendere insufficiente l’idea di un unico modello di concertino; nel Secondo Concerto, per esempio, tromba, flauto, oboe e violino formano un gruppo nel quale l’identità dei timbri è talmente forte da trasformare il dialogo in una vera conversazione fra personalità differenti.</p>
+    <p>È precisamente qui che il percorso Corelli–Vivaldi–Bach diventa utile, purché non lo trasformiamo in una genealogia troppo rigida, perché Corelli aveva contribuito a rendere straordinariamente leggibile il rapporto fra piccoli e grandi gruppi, Vivaldi aveva dato al solista e al ritornello una nuova energia formale, mentre Bach utilizza quelle possibilità come materiale da ricombinare, facendo sì che quasi ogni strumento possa assumere, almeno per un momento, un ruolo che costringe l’ascoltatore a rivedere la gerarchia dell’insieme.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/6_Brandenburg_Concertos_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Concerti brandeburghesi</a>
+    </div>
+
+    <h3>Un carattere che non si lascia amministrare facilmente</h3>
+    <p>La curiosità non deve però farci costruire un Bach pacificamente assorto nei propri studi, perché la documentazione della sua vita professionale restituisce anche un uomo capace di entrare in conflitto con le istituzioni quando ritiene che esse ostacolino il proprio lavoro; nel 1717, dopo aver insistito per ottenere il congedo da Weimar e poter accettare il nuovo incarico a Köthen, viene arrestato il 6 novembre e rimane detenuto fino al 2 dicembre, quando ottiene finalmente la dimissione.</p>
+    <p>La vicenda è tanto più efficace didatticamente quanto più rinunciamo a trasformarla nel ritratto romantico dell’artista perseguitato, perché nasce dentro rapporti di servizio molto concreti e ci ricorda che il musicista barocco è anche un lavoratore legato a contratti, gerarchie e condizioni economiche, capace però di negoziare con grande ostinazione quando pensa che un altro incarico possa offrirgli possibilità migliori.</p>
+    <div class="bach-note"><b>Taccuino del nerd · stipendio</b><p>Nel 1708 il contratto di Weimar prevedeva, oltre a 150 fiorini, cereali, legna e altre provviste, anche trenta <i>Eimer</i> di birra provenienti dal birrificio del castello; il dato non serve a costruire la leggenda del “Bach bevitore”, ma a ricordare quanto uno stipendio dell’epoca potesse essere composto anche da beni materiali.</p></div>
+
+    <h3>Il corale entra dentro una macchina enorme</h3>
+    <p>Quando Bach arriva a Lipsia nel 1723, la tradizione del corale luterano gli offre melodie che una parte della comunità conosce già e che possono quindi essere inserite dentro costruzioni molto più complesse senza perdere completamente la propria riconoscibilità; nelle cantate, nelle Passioni e nelle elaborazioni per organo quella memoria collettiva diventa materiale compositivo, poiché una melodia familiare può essere rallentata, ornata, affidata a una sola parte oppure circondata da un intreccio contrappuntistico che ne trasforma radicalmente la funzione.</p>
+    <p>La cantata rappresenta forse il luogo nel quale molte delle opposizioni incontrate all’inizio del sito diventano definitivamente insufficienti, perché recitativo, aria, coro, strumenti concertanti, basso continuo e contrappunto possono convivere dentro la stessa architettura; la distinzione fra una voce accompagnata e molte voci indipendenti non scompare, ma smette di funzionare come alternativa, poiché Bach utilizza entrambe le possibilità secondo ciò che il testo e la forma richiedono.</p>
+    <div class="source-row">
+      <button class="tech-button" type="button" data-modal="modal-corale">Apri · Che cos’è un corale?</button>
+      <button class="tech-button" type="button" data-modal="modal-fuga">Apri · Come funziona una fuga?</button>
+    </div>
+
+    <h3>Ventiquattro tonalità, non dodici semitoni tutti uguali</h3>
+    <p>Il primo libro del <i>Clavicembalo ben temperato</i>, organizzato attraverso ventiquattro preludi e fughe nelle tonalità maggiori e minori, mostra fino a quale punto la tastiera possa diventare un laboratorio capace di riunire libertà del preludio e disciplina della fuga, ma il titolo non deve essere letto come una dichiarazione a favore del moderno temperamento equabile; “ben temperato” indica piuttosto la possibilità di utilizzare tutte le tonalità all’interno di un sistema abbastanza flessibile da renderle praticabili, lasciando aperta la questione del temperamento concreto al quale Bach facesse riferimento.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/Das_wohltemperierte_Klavier_I%2C_BWV_846-869_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Clavicembalo ben temperato I</a>
+      <button class="tech-button" type="button" data-modal="modal-temperamento">Apri · Temperamento e tonalità</button>
+    </div>
+
+    <p>Se Bach ci appare capace di contenere un universo, dunque, non è perché quell’universo abbia avuto origine con lui, ma perché egli riesce a conoscerne tradizioni lontane, comprenderne i differenti meccanismi e infine ricondurli a una coerenza nella quale ciò che apparteneva a funzioni e geografie diverse sembra poter parlare una stessa lingua; il paragone con Einstein acquista senso proprio qui, nel momento in cui smette di significare genericamente “genio” e comincia invece a indicare la capacità di riconoscere relazioni profonde dentro un sistema che esisteva già.</p>
   </section>
 
   <section id="classicismo">
@@ -483,6 +553,24 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 </footer>
 </div>
 
+<div class="modal" id="modal-temperamento" role="dialog" aria-modal="true" aria-labelledby="title-temperamento">
+  <div class="modal-panel">
+    <div class="modal-head"><span id="title-temperamento">Temperamento e tonalità</span><button class="modal-close" type="button" aria-label="Chiudi">×</button></div>
+    <div class="modal-body"><p>Accordare una tastiera significa distribuire piccoli compromessi fra gli intervalli, perché non è possibile mantenere contemporaneamente puri tutti i rapporti richiesti dalle diverse tonalità. Nel Seicento e nel Settecento esistono molti temperamenti differenti, nei quali alcune tonalità risultano più stabili e altre più tese; il moderno temperamento equabile, che divide l’ottava in dodici semitoni uguali, non deve quindi essere proiettato automaticamente su tutta la musica barocca.</p></div>
+  </div>
+</div>
+<div class="modal" id="modal-corale" role="dialog" aria-modal="true" aria-labelledby="title-corale">
+  <div class="modal-panel">
+    <div class="modal-head"><span id="title-corale">Che cos’è un corale?</span><button class="modal-close" type="button" aria-label="Chiudi">×</button></div>
+    <div class="modal-body"><p>Il corale luterano è un canto religioso destinato alla comunità, spesso costruito su melodie facilmente riconoscibili. Proprio questa familiarità permette ai compositori di utilizzarlo come materiale da elaborare, trasformandolo attraverso armonizzazione, ornamentazione e contrappunto senza cancellarne completamente l’identità.</p></div>
+  </div>
+</div>
+<div class="modal" id="modal-fuga" role="dialog" aria-modal="true" aria-labelledby="title-fuga">
+  <div class="modal-panel">
+    <div class="modal-head"><span id="title-fuga">Come funziona una fuga?</span><button class="modal-close" type="button" aria-label="Chiudi">×</button></div>
+    <div class="modal-body"><p>Una fuga nasce da un soggetto, cioè da un’idea melodica riconoscibile che entra successivamente nelle diverse voci. Dopo le prime entrate il materiale può essere trasformato, spostato, sovrapposto e sviluppato; la fuga non è quindi una semplice ripetizione dello stesso tema, ma un modo di costruire una grande architettura facendo sì che molte voci indipendenti rimangano legate a una stessa identità musicale.</p></div>
+  </div>
+</div>
 <div class="modal" id="modal-seconda" role="dialog" aria-modal="true" aria-labelledby="title-seconda">
   <div class="modal-panel">
     <div class="modal-head"><span id="title-seconda">Prima e seconda pratica</span><button class="modal-close" type="button" aria-label="Chiudi">×</button></div>
