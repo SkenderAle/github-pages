@@ -64,22 +64,18 @@ footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(-
 <div class="target" data-accept="solo-clavicembalo"><b>È una caricatura da evitare</b><div class="bucket"></div></div>
 </div></div></div></section>
 
-<section class="q" data-q="3" data-max="3"><div class="qhead"><span class="qno">Q3</span><div><h2>Dalla parola al racconto strumentale</h2><div class="points">3 punti</div><p>Ordina il percorso e poi scegli la frase storicamente più corretta.</p></div></div>
-<div class="chips" data-pool>
-<span class="chip" draggable="true" data-id="parola">La parola viene “dipinta” dal suono</span>
-<span class="chip" draggable="true" data-id="gesto">Il gesto musicale può funzionare anche senza parole</span>
-<span class="chip" draggable="true" data-id="programma">La musica strumentale può raccontare immagini e azioni</span>
-</div>
-<div class="order">
-<div class="slot target" data-order="1"><b>1</b><div class="bucket"></div></div>
-<div class="slot target" data-order="2"><b>2</b><div class="bucket"></div></div>
-<div class="slot target" data-order="3"><b>3</b><div class="bucket"></div></div>
-</div>
-<div class="choices">
-<label class="choice"><input type="radio" name="q3mc" value="a">La musica a programma nasce improvvisamente con Vivaldi.</label>
-<label class="choice"><input type="radio" name="q3mc" value="b">Vivaldi è un caso celebre, ma prima di lui esistono già esempi di musica strumentale descrittiva e narrativa.</label>
-<label class="choice"><input type="radio" name="q3mc" value="c">Il madrigalismo riguarda soltanto la musica strumentale.</label>
-</div></section>
+<section class="q" data-q="3" data-max="3"><div class="qhead"><span class="qno">Q3</span><div><h2>Tre modi di trasformare un’immagine in suono</h2><div class="points">3 punti</div><p>Abbina ogni esempio all’idea musicale che descrive meglio.</p></div></div>
+<div class="board"><div class="pool"><h3>Esempi</h3><div class="chips" data-pool>
+<span class="chip" draggable="true" data-id="parola">Sulla parola “salire”, anche la melodia sale</span>
+<span class="chip" draggable="true" data-id="gesto">Senza testo, un ritmo agitato fa sentire tensione o paura</span>
+<span class="chip" draggable="true" data-id="programma">Gli strumenti imitano battaglia, vento, uccelli o temporale</span>
+</div></div><div class="targets"><h3>Idee</h3><div class="target-grid">
+<div class="target" data-accept="parola"><b>Parola dipinta</b><span>Il suono segue direttamente il significato di una parola.</span><div class="bucket"></div></div>
+<div class="target" data-accept="gesto"><b>Affetto e gesto musicale</b><span>Il suono suggerisce un carattere anche senza bisogno di una parola precisa.</span><div class="bucket"></div></div>
+<div class="target" data-accept="programma"><b>Racconto strumentale</b><span>La musica senza testo descrive immagini, azioni o scene.</span><div class="bucket"></div></div>
+</div></div></div>
+<div class="listen-clue"><strong>Ricorda:</strong> Vivaldi rende celebre questo modo di raccontare con gli strumenti, ma non parte da zero: prima di lui esistono già esempi descrittivi e narrativi.</div>
+</section>
 
 <section class="q" data-q="4" data-max="4"><div class="qhead"><span class="qno">Q4</span><div><h2>Tonalità: trova la funzione</h2><div class="points">4 punti</div><p>Abbina ogni parola all'immagine musicale che le corrisponde meglio.</p></div></div>
 <div class="board"><div class="pool"><h3>Parole</h3><div class="chips" data-pool>
@@ -156,7 +152,6 @@ footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(-
 (function(){
 var TEST_ID='barocco-01', VERSION='1.0', MAX=30;
 var startedAt=new Date(), submitted=false, selected=null, dragging=null;
-var orderCorrect=['parola','gesto','programma'];
 
 function allChips(){return Array.prototype.slice.call(document.querySelectorAll('.chip'))}
 function allTargets(){return Array.prototype.slice.call(document.querySelectorAll('.target'))}
@@ -189,7 +184,6 @@ document.querySelectorAll('[data-pool]').forEach(function(p){
 
 function qComplete(q){
   var n=q.getAttribute('data-q');
-  if(n==='3')return q.querySelectorAll('.slot .chip').length===3 && !!q.querySelector('input[name=q3mc]:checked');
   if(n==='8')return !!q.querySelector('input[name=q8]:checked');
   if(n==='9')return q.querySelectorAll('input[name=q9]:checked').length===2;
   return q.querySelectorAll('[data-pool] .chip').length===0;
@@ -210,17 +204,6 @@ function scoreBucketQuestion(q){
   });
   return max*correct/chips.length;
 }
-function scoreQ3(q){
-  var slots=Array.prototype.slice.call(q.querySelectorAll('.slot')),correctOrder=0;
-  slots.forEach(function(slot,i){
-    var ch=slot.querySelector('.chip');var ok=!!ch&&ch.getAttribute('data-id')===orderCorrect[i];
-    if(ch){ch.classList.toggle('correct',ok);ch.classList.toggle('wrong',!ok)}
-    if(ok)correctOrder++;
-  });
-  var orderPoints=(correctOrder/3)*2;
-  var mc=q.querySelector('input[name=q3mc]:checked');
-  return orderPoints+(mc&&mc.value==='b'?1:0);
-}
 function scoreQ8(q){var x=q.querySelector('input[name=q8]:checked');return x&&x.value==='b'?3:0}
 function scoreQ9(q){
   var vals=Array.prototype.slice.call(q.querySelectorAll('input[name=q9]:checked')).map(function(x){return x.value}).sort();
@@ -232,7 +215,7 @@ function scoreQ9(q){
 function evaluate(){
   var scores=[],total=0;
   document.querySelectorAll('.q').forEach(function(q){
-    var n=q.getAttribute('data-q'),s=n==='3'?scoreQ3(q):n==='8'?scoreQ8(q):n==='9'?scoreQ9(q):scoreBucketQuestion(q);
+    var n=q.getAttribute('data-q'),s=n==='8'?scoreQ8(q):n==='9'?scoreQ9(q):scoreBucketQuestion(q);
     s=Math.round(s*100)/100;scores.push(s);total+=s;
   });
   total=Math.round(total*100)/100;return{scores:scores,total:total};
