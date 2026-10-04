@@ -33,6 +33,15 @@ footer{background:#12100e;color:#cdbda6;padding:2rem 1.4rem;text-align:center;fo
 .room-split>.room-copy{display:block!important;grid-column:auto!important;grid-row:auto!important}
 .room-split>.room-gallery figure{margin:0 0 1rem!important}
 @media(max-width:760px){.room-split>.room-gallery{float:none!important;width:100%;margin:1.25rem 0!important}}
+
+/* Correct narrative-card grammar: one framed text block; image floats inside it at right. */
+.room-split{display:block!important;border:1px solid #665744;padding:1.45rem 1.55rem;background:rgba(35,29,23,.72)}
+.room-split::after{content:"";display:block;clear:both}
+.room-split>.room-gallery{float:right!important;width:min(32%,320px)!important;margin:.15rem 0 1rem 1.6rem!important;display:block!important}
+.room-split>.room-copy{display:contents!important}
+.room-split>.room-gallery figure{border:0!important;background:transparent!important;margin:0!important}
+.room-split>.room-gallery img{width:100%;height:auto;max-height:360px;object-fit:contain;display:block}
+@media(max-width:760px){.room-split{padding:1.1rem}.room-split>.room-gallery{float:none!important;width:100%!important;max-width:340px;margin:0 auto 1.2rem!important}}
 </style>
 </head>
 <body>
