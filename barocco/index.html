@@ -294,6 +294,32 @@ linear-gradient(180deg,#f8f0e4,#eee3d5);border-top:1px solid #c9b89c;border-bott
 .tonality-warning b{display:block;font-family:var(--sans);font-size:.73rem;text-transform:uppercase;letter-spacing:.06em;color:#efd08c;margin-bottom:.25rem}
 .tonality-warning p{font-size:.93rem;line-height:1.52;margin:.3rem 0;color:#f4eee7}
 @media(max-width:760px){.tonality-grid,.temperament-grid{grid-template-columns:1fr}}
+.orchestra-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:
+radial-gradient(circle at 15% 12%,rgba(123,48,40,.07),transparent 18rem),
+radial-gradient(circle at 88% 20%,rgba(27,39,52,.07),transparent 18rem),
+linear-gradient(180deg,#f6eee2,#ebe1d3);border-top:1px solid #c5b59a;border-bottom:1px solid #c5b59a}
+.orchestra-inner{max-width:1180px;margin:auto}
+.orchestra-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.2rem 0 2rem}
+.orchestra-card{background:#fffaf1;border:1px solid var(--line);border-top:4px solid var(--gold);padding:1rem}
+.orchestra-card b{display:block;font-family:var(--sans);font-size:.74rem;text-transform:uppercase;letter-spacing:.055em;color:var(--red);margin-bottom:.25rem}
+.orchestra-card h4{font-size:1.15rem;margin:.1rem 0 .42rem}
+.orchestra-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .7rem}
+.overture-compare{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.2rem 0 2rem}
+.overture-card{padding:1rem 1.05rem;border:1px solid var(--line);background:#f8f1e6}
+.overture-card.fr{border-top:5px solid var(--night)}
+.overture-card.it{border-top:5px solid var(--red)}
+.overture-card b{display:block;font-family:var(--sans);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.overture-card.fr b{color:var(--night)}
+.overture-card.it b{color:var(--red)}
+.overture-card h4{font-size:1.18rem;margin:.1rem 0 .45rem}
+.overture-card p{font-size:.91rem;line-height:1.52;margin:.35rem 0 .75rem}
+.orchestra-route{display:flex;gap:.38rem;align-items:stretch;overflow-x:auto;margin:1rem 0 1.8rem;padding:.15rem 0 .6rem}
+.orchestra-route span{flex:0 0 auto;background:#eee2cf;border:1px solid #c9b69a;padding:.67rem .77rem;font-family:var(--sans);font-size:.73rem;font-weight:900;color:#42352b}
+.orchestra-route i{flex:0 0 auto;display:grid;place-items:center;color:var(--gold);font-style:normal;font-weight:900}
+.orchestra-threshold{margin:1rem 0 1.8rem;padding:1rem 1.1rem;background:#1f2b38;color:#fff}
+.orchestra-threshold b{display:block;font-family:var(--sans);font-size:.73rem;text-transform:uppercase;letter-spacing:.06em;color:#efd08d;margin-bottom:.25rem}
+.orchestra-threshold p{font-size:.94rem;line-height:1.52;margin:.3rem 0;color:#f3eee7}
+@media(max-width:760px){.orchestra-grid,.overture-compare{grid-template-columns:1fr}}
 .before-recording{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:linear-gradient(180deg,#f4ecdf,#eee3d2);border-top:1px solid #c7b79d;border-bottom:1px solid #c7b79d}
 .before-recording-inner{max-width:1180px;margin:auto}
 .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.3rem 0 2rem}
@@ -521,6 +547,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a href="#donne">Le donne</a>
       <a href="#hip">Filologia / HIP</a>
       <a href="#bach">Bach</a>
+      <a href="#orchestra">L’orchestra</a>
       <a href="#classicismo">Verso il Classicismo</a>
       <a class="cross" href="../melodramma/">Melodramma ↗</a>
     </div>
@@ -554,6 +581,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a class="index-card" href="#donne"><b>Le donne che rendono possibile la musica</b><span>Compositrici, esecutrici, regine, committenti e mediatrici culturali dentro la stessa storia.</span></a>
       <a class="index-card" href="#hip"><b>Come ci è arrivata questa musica?</b><span>Prassi storica, fonti, lacune, ricostruzioni e tutto ciò che la partitura non dice oppure non conserva più.</span></a>
       <a class="index-card" href="#bach"><b>Bach è Einstein</b><span>Quando molte tradizioni finiscono dentro un solo pensiero musicale.</span></a>
+      <a class="index-card" href="#orchestra"><b>Quando l’insieme diventa orchestra</b><span>Ouverture francese, sinfonia italiana, Sammartini, Mannheim e la nascita del pensiero orchestrale moderno.</span></a>
       <a class="index-card" href="#classicismo"><b>Il Barocco cambia pelle</b><span>Ciò che si trasforma mentre il Classicismo comincia a comparire.</span></a>
     </div>
   </section>
@@ -588,7 +616,9 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         <a class="time-node" href="#europa"><b>1722</b><span>Rameau e l’armonia</span></a>
         <a class="time-node" href="#voce-sacra"><b>1723</b><span>Bach, cantate di Lipsia</span></a>
         <a class="time-node" href="#vivaldi"><b>1725</b><span>Il cimento</span></a>
+        <a class="time-node" href="#orchestra"><b>1730 ca.</b><span>Sammartini e la sinfonia autonoma</span></a>
         <a class="time-node" href="#classicismo"><b>1740 ca.</b><span>C. P. E. Bach e il nuovo gusto</span></a>
+        <a class="time-node" href="#orchestra"><b>1745 ca.</b><span>Stamitz e Mannheim</span></a>
         <a class="time-node major" href="#classicismo"><b>1750</b><span>Un confine utile, non una parete</span></a>
       </div>
     </div>
@@ -1966,6 +1996,95 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
     </div>
 
     <p>Se Bach ci appare capace di contenere un universo, dunque, non è perché quell’universo abbia avuto origine con lui, ma perché egli riesce a conoscerne tradizioni lontane, comprenderne i differenti meccanismi e infine ricondurli a una coerenza nella quale ciò che apparteneva a funzioni e geografie diverse sembra poter parlare una stessa lingua; il paragone con Einstein acquista senso proprio qui, nel momento in cui smette di significare genericamente “genio” e comincia invece a indicare la capacità di riconoscere relazioni profonde dentro un sistema che esisteva già.</p>
+  </section>
+
+  <section id="orchestra" class="orchestra-band">
+    <div class="orchestra-inner">
+      <div class="section-title"><div class="eyebrow">Un organismo nuovo</div><h2>Quando l’insieme diventa orchestra</h2></div>
+      <p>Dire che “l’orchestra nasce nel Barocco” è corretto se precisiamo che prima esistevano già consort, cappelle, bande, gruppi di fiati e complessi strumentali anche molto grandi. Ciò che cambia fra Seicento e primo Settecento è il modo nel quale questi strumenti vengono progressivamente pensati come un organismo relativamente stabile, con un nucleo di archi, fiati chiamati a funzioni sempre più specifiche, bassi e tastiere destinati al continuo e una strumentazione che il compositore comincia a controllare con maggiore precisione.</p>
+      <p>Il Barocco non inventa quindi il fatto di mettere insieme molti strumenti. Inventa progressivamente qualcosa di più profondo: <strong>l’orchestra come organismo</strong>, cioè un insieme nel quale famiglie differenti possono avere identità propria, fondersi, opporsi, accompagnare, rispondere e trasformare il peso del discorso musicale.</p>
+
+      <div class="orchestra-grid">
+        <article class="orchestra-card">
+          <b>Archi</b>
+          <h4>Il nucleo diventa stabile</h4>
+          <p>La famiglia del violino acquista un ruolo sempre più centrale e finisce per costituire il corpo principale dell’ensemble, mentre viole, violoncelli e violoni acquistano funzioni differenziate. Corelli e Vivaldi mostrano quanto questa struttura possa diventare flessibile senza perdere identità.</p>
+        </article>
+        <article class="orchestra-card">
+          <b>Fiati</b>
+          <h4>Il colore diventa funzione</h4>
+          <p>Oboi, fagotti, flauti, corni e trombe non vengono più usati soltanto come raddoppi occasionali. Possono creare contrasti, sostenere gruppi distinti, emergere come solisti o caratterizzare un’intera scena e, nel corso del Settecento, acquistare sempre maggiore autonomia.</p>
+        </article>
+        <article class="orchestra-card">
+          <b>Continuo</b>
+          <h4>La base tiene insieme l’organismo</h4>
+          <p>Clavicembalo o organo, insieme a uno o più strumenti gravi, continuano a fornire una struttura armonica comune. L’orchestra barocca cresce quindi ancora dentro il filone della monodia accompagnata, anche quando il contrappunto interno diventa molto complesso.</p>
+        </article>
+      </div>
+
+      <div class="thread-sign join"><strong>I due filoni restano visibili:</strong> l’orchestra non crea una terza grammatica. Può sostenere una linea principale sopra il continuo, ma può anche distribuire imitazioni e dialoghi fra sezioni. Il passaggio verso lo stile sinfonico nascerà proprio quando queste due possibilità cominceranno a essere trattate con maggiore libertà fra strumento e strumento, gruppo e gruppo.</div>
+
+      <h3>La prima orchestra non ha ancora una fotografia di classe</h3>
+      <p>Nel primo Seicento gli organici possono cambiare molto da un luogo all’altro e perfino da una rappresentazione all’altra. Monteverdi nell’<i>Orfeo</i> indica una tavolozza molto ricca, ma non esiste ancora un modello unico al quale tutte le orchestre europee debbano conformarsi. È proprio durante il Barocco che alcune combinazioni diventano progressivamente più stabili, soprattutto attorno agli archi e al continuo, mentre il compositore interviene sempre più direttamente nella scelta dei colori.</p>
+      <p>Per questo il termine “orchestra barocca” indica insieme una realtà storica e un processo: non un organico standard già pronto nel 1600, ma una progressiva stabilizzazione delle famiglie strumentali, delle funzioni e delle gerarchie sonore che porterà, nel corso del Settecento, all’orchestra classica.</p>
+
+      <h3>Due porte del teatro: ouverture francese e sinfonia italiana</h3>
+      <p>Una parte importante della futura sinfonia nasce proprio davanti al sipario. Il teatro musicale ha infatti bisogno di musica strumentale capace di aprire, preparare e incorniciare l’azione, e in Francia e in Italia si consolidano due modelli differenti che diventeranno enormemente influenti.</p>
+
+      <div class="overture-compare">
+        <article class="overture-card fr">
+          <b>Francia · Lully</b>
+          <h4>Ouverture francese: solennità → fuga → ritorno</h4>
+          <p>Con Lully si stabilizza una forma nella quale una sezione iniziale lenta, solenne e fortemente puntata viene seguita da una parte più rapida e imitativa, spesso fugata. Talvolta il materiale lento ritorna alla fine. È un modello perfetto per il nostro doppio filo: gesto verticale e solenne da una parte, polifonia imitativa dall’altra.</p>
+          <div class="source-row">
+            <a class="score-link" href="https://imslp.org/wiki/Le_Bourgeois_gentilhomme%2C_LWV_43_%28Lully%2C_Jean-Baptiste%29" target="_blank" rel="noopener">♫ IMSLP · Lully, Le Bourgeois gentilhomme</a>
+            <a class="deep-link" href="../melodramma/">Lully nel sito sul melodramma →</a>
+          </div>
+        </article>
+        <article class="overture-card it">
+          <b>Italia · sinfonia d’opera</b>
+          <h4>Sinfonia italiana: veloce → lento → veloce</h4>
+          <p>Nella tradizione operistica italiana del primo Settecento si afferma una sinfonia introduttiva spesso articolata in tre movimenti contrastanti, rapido, lento, rapido. Alessandro Scarlatti viene frequentemente associato a questa configurazione, che non “inventa” da solo ma contribuisce a rendere particolarmente riconoscibile.</p>
+          <div class="source-row">
+            <a class="score-link" href="https://imslp.org/wiki/List_of_works_by_Alessandro_Scarlatti" target="_blank" rel="noopener">♫ IMSLP · Alessandro Scarlatti, opere</a>
+          </div>
+        </article>
+      </div>
+
+      <p>Le due aperture teatrali seguono logiche differenti. L’ouverture francese lavora molto sul contrasto fra solennità omoritmica e imitazione, mentre la sinfonia italiana organizza il movimento attraverso il contrasto dei tempi. Nessuna delle due coincide ancora con la sinfonia classica di Haydn e Mozart, ma entrambe insegnano all’orchestra a parlare senza voce e a costruire una forma puramente strumentale davanti a un pubblico.</p>
+
+      <h3>Quando la sinfonia esce dal teatro</h3>
+      <p>Il passaggio decisivo avviene quando la sinfonia non è più soltanto introduzione a qualcosa che viene dopo. Nel primo Settecento compositori italiani cominciano a coltivare sinfonie autonome, mentre il linguaggio orchestrale assorbe esperienze provenienti dal concerto, dalla sonata e dall’opera. A Milano Giovanni Battista Sammartini diventa uno dei protagonisti più importanti di questa trasformazione e, dagli anni Trenta, sviluppa una scrittura nella quale gli elementi tematici circolano più liberamente fra strumenti e gruppi.</p>
+      <p>Qui si vede anche una trasformazione profonda rispetto ai due filoni che abbiamo seguito fin dall’inizio: la nuova scrittura orchestrale non rinuncia né alla chiarezza melodico-armonica della monodia accompagnata né alla possibilità del dialogo fra parti, ma smette progressivamente di dipendere in modo esclusivo dall’una o dall’altra. Il discorso può passare rapidamente da una linea predominante a un confronto fra motivi, da un gruppo all’altro, trasformando l’orchestra stessa in protagonista.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Category:Sammartini%2C_Giovanni_Battista" target="_blank" rel="noopener">♫ IMSLP · Sammartini</a>
+        <a class="deep-link" href="https://www.treccani.it/enciclopedia/giovanni-battista-sammartini/" target="_blank" rel="noopener">Treccani · Sammartini</a>
+      </div>
+
+      <div class="orchestra-threshold">
+        <b>Una soglia decisiva</b>
+        <p>Con Sammartini e altri sinfonisti del primo Settecento comincia a prendere forma uno stile nel quale il discorso non è più rigidamente fondato né sulla sola polifonia imitativa né sulla sola melodia accompagnata, ma può nascere dal libero avvicendarsi di motivi fra strumenti e gruppi. È uno dei punti nei quali la musica orchestrale comincia davvero a guardare verso il Classicismo.</p>
+      </div>
+
+      <h3>Mannheim: l’orchestra impara a comportarsi come un solo corpo</h3>
+      <p>Con Johann Stamitz e l’orchestra di Mannheim, soprattutto dagli anni Quaranta del Settecento, il problema non riguarda soltanto che cosa viene composto ma anche come l’ensemble lo esegue. Precisione degli attacchi, contrasti dinamici, crescendo orchestrali, maggiore autonomia dei fiati e una disciplina collettiva molto alta trasformano l’orchestra in un organismo capace di respirare, accelerare la tensione e cambiare peso con una compattezza che impressionerà i contemporanei.</p>
+      <p>Non è corretto dire che Mannheim “inventa il crescendo”, perché il crescendo esiste da molto prima. La novità sta nel modo sistematico e spettacolare con cui l’intera orchestra può usarlo come gesto collettivo, così come nella crescente autonomia delle sezioni e nell’allargamento del colore orchestrale. Con Stamitz la sinfonia acquista inoltre una maggiore coerenza formale e tende verso il modello in quattro movimenti che il Classicismo renderà familiare.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/6_Symphonies%2C_Op.3_%28Stamitz%2C_Johann%29" target="_blank" rel="noopener">♫ IMSLP · Stamitz, Sinfonie op. 3</a>
+        <a class="deep-link" href="https://www.treccani.it/enciclopedia/jan-vaclav-antonin-stamitz/" target="_blank" rel="noopener">Treccani · Stamitz</a>
+      </div>
+
+      <div class="orchestra-route" aria-label="Dalla nascita dell'orchestra alla sinfonia">
+        <span>ensemble rinascimentali</span><i>→</i><span>orchestra barocca</span><i>→</i><span>ouverture / sinfonia d’opera</span><i>→</i><span>Sammartini</span><i>→</i><span>Mannheim</span><i>→</i><span>Haydn e Mozart</span>
+      </div>
+
+      <div class="question">Il Barocco non inventa semplicemente un gruppo più grande. Fa nascere progressivamente <em>l’orchestra come organismo capace di pensare, respirare e cambiare colore insieme</em>.</div>
+
+      <div class="source-row">
+        <a class="deep-link" href="https://resources.metmuseum.org/resources/metpublications/pdf/Musical_Instruments_in_the_Metropolitan_Museum_The_Metropolitan_Museum_of_Art_Bulletin_v_35.pdf" target="_blank" rel="noopener">Metropolitan Museum · strumenti e orchestra nel Barocco</a>
+        <a class="deep-link" href="https://www.treccani.it/enciclopedia/sinfonia_%28Enciclopedia-Italiana%29/" target="_blank" rel="noopener">Treccani · storia della sinfonia</a>
+      </div>
+    </div>
   </section>
 
   <section id="classicismo" class="fade-band">
