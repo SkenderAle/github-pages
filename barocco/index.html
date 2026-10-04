@@ -163,6 +163,15 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 .hip-approach b{display:block;font-family:var(--sans);font-size:.78rem;color:var(--red);margin-bottom:.3rem}
 .hip-approach p{font-size:.9rem;line-height:1.5;margin:.25rem 0}
 @media(max-width:760px){.hip-lab-grid,.hip-source-grid,.hip-approaches{grid-template-columns:1fr}}
+.survival-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1.1rem 0 1.8rem}
+.survival-card{background:#f6efe4;color:var(--ink);border:1px solid var(--line);padding:1rem 1.05rem;position:relative}
+.survival-card::before{content:attr(data-status);display:inline-block;font-family:var(--sans);font-size:.67rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--red);padding:.22rem .42rem;margin-bottom:.55rem}
+.survival-card h4{color:#342920;font-size:1.17rem;margin:.05rem 0 .45rem}
+.survival-card p{font-size:.91rem;line-height:1.52;margin:.3rem 0 .75rem}
+.editor-rule{margin:1rem 0 1.8rem;padding:1rem 1.1rem;background:#e9dfcf;color:var(--ink);border-left:5px solid var(--night)}
+.editor-rule b{font-family:var(--sans);font-size:.78rem;color:var(--night)}
+.editor-rule p{font-size:.93rem;line-height:1.53;margin:.35rem 0}
+@media(max-width:760px){.survival-grid{grid-template-columns:1fr}}
 .threshold-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;margin:1.4rem 0 2rem}
 .threshold-card{border:1px solid var(--line);background:#f8f2e8;padding:1rem 1.05rem;border-top:4px solid var(--gold)}
 .threshold-card b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.055em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem}
@@ -228,7 +237,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a href="#corelli">Corelli</a>
       <a href="#vivaldi">Vivaldi</a>
       <a href="#europa">L’Europa</a>
-      <a href="#hip">Come suonava?</a>
+      <a href="#hip">Filologia / HIP</a>
       <a href="#bach">Bach</a>
       <a href="#classicismo">Verso il Classicismo</a>
       <a class="cross" href="../melodramma/">Melodramma ↗</a>
@@ -254,7 +263,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a class="index-card" href="#corelli"><b>Pochi e molti</b><span>Corelli e il concerto come architettura sonora.</span></a>
       <a class="index-card" href="#vivaldi"><b>Venezia laboratorio d’Europa</b><span>Vivaldi, la Pietà e un’orchestra piena di possibilità.</span></a>
       <a class="index-card" href="#europa"><b>Il Barocco attraversa i confini</b><span>Francia, Inghilterra, Dresda e le molte lingue del Settecento.</span></a>
-      <a class="index-card" href="#hip"><b>Come suonava davvero?</b><span>Strumenti storici, prassi esecutiva e ciò che la partitura non dice.</span></a>
+      <a class="index-card" href="#hip"><b>Come ci è arrivata questa musica?</b><span>Prassi storica, fonti, lacune, ricostruzioni e tutto ciò che la partitura non dice oppure non conserva più.</span></a>
       <a class="index-card" href="#bach"><b>Bach è Einstein</b><span>Quando molte tradizioni finiscono dentro un solo pensiero musicale.</span></a>
       <a class="index-card" href="#classicismo"><b>Il Barocco cambia pelle</b><span>Ciò che si trasforma mentre il Classicismo comincia a comparire.</span></a>
     </div>
@@ -536,9 +545,9 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 
   <section id="hip" class="stucco-band">
     <div class="stucco-inner">
-      <div class="section-title"><div class="eyebrow">Una diagonale del sito</div><h2>Ma questa musica suonava davvero così?</h2></div>
+      <div class="section-title"><div class="eyebrow">Filologia e HIP</div><h2>Come ci è arrivata questa musica?</h2></div>
       <p>Possedere una partitura del Seicento o del Settecento non significa possederne automaticamente il suono, perché la pagina scritta non ci consegna integralmente il tipo di arco, la qualità delle corde, il temperamento, il modo nel quale veniva realizzato il basso continuo, la quantità e la natura dell’ornamentazione o la libertà che un esecutore poteva concedersi; proprio questa distanza fra ciò che la pagina conserva e ciò che l’esecuzione deve ricostruire rende necessario interrogare trattati, strumenti sopravvissuti, iconografia, lettere e testimonianze contemporanee, senza fingere che il passato possa essere riprodotto con la precisione di una registrazione.</p>
-      <p>L’esecuzione storicamente informata, indicata spesso con la sigla HIP, nasce da questa ricerca e non coincide semplicemente con l’uso di strumenti antichi, perché cambiare un violino moderno con uno strumento montato con corde di budello serve a poco se rimangono immutate l’articolazione, la concezione della frase, il ruolo del continuo e il rapporto con la danza; la filologia diventa davvero interessante quando modifica il modo nel quale il musicista pensa la partitura, restituendo all’esecutore responsabilità che la tradizione più tarda aveva progressivamente ridotto.</p>
+      <p>L’esecuzione storicamente informata, indicata spesso con la sigla HIP, rappresenta però soltanto una parte di un problema filologico più vasto, perché prima di decidere come suonare una pagina bisogna essere certi di possedere davvero quella pagina, sapere da quale fonte provenga, capire se esistano copie discordanti e riconoscere ciò che il tempo ha perduto; cambiare un violino moderno con uno strumento montato con corde di budello serve a poco se ignoriamo che una parte manca, che l’opera è sopravvissuta soltanto in frammenti oppure che ciò che stiamo ascoltando contiene una ricostruzione moderna. La filologia, quindi, riguarda insieme la trasmissione del testo e la sua trasformazione in suono.</p>
 
       <div class="hip-grid">
         <article class="hip-card"><b>La partitura non dice tutto</b><p>Il testo musicale conserva ciò che era necessario scrivere, non necessariamente tutto ciò che un esecutore competente sapeva di dover fare, per cui ornamentazione, articolazione e realizzazione del continuo possono dipendere da conoscenze che all’epoca non avevano bisogno di essere spiegate ogni volta.</p></article>
@@ -552,8 +561,8 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <p>Il confronto con esecuzioni storicamente informate non deve quindi trasformarsi in una gara fra “giusto” e “sbagliato”, perché didatticamente è molto più fertile chiedere che cosa cambi: quanto spazio rimanga fra gli attacchi, se le parti interne diventino più leggibili, quale peso assuma il basso, come reagisca il continuo e quanto la pulsazione della danza riesca a riemergere sotto una superficie che credevamo di conoscere.</p>
 
       <div class="hip-lab" id="hip-lab">
-        <div class="eyebrow">Laboratorio HIP</div>
-        <h3>La partitura è un testo. L’esecuzione è una decisione.</h3>
+        <div class="eyebrow">Laboratorio di filologia e HIP</div>
+        <h3>La partitura è un testo. Ma a volte il testo stesso manca.</h3>
         <p class="hip-lab-intro">Per capire davvero la filologia bisogna abbandonare l’idea che l’esecutore barocco ricevesse una pagina completa alla quale mancava soltanto il suono, perché molte competenze appartenevano alla pratica e non avevano bisogno di essere riscritte ogni volta; il problema storico, quindi, non consiste nel “togliere” libertà all’interprete moderno, ma nel capire quali libertà fossero previste, quali dipendessero dal genere, dal luogo e dallo stile e quali avrebbero invece prodotto un risultato estraneo alla grammatica di quella musica.</p>
 
         <div class="hip-lab-grid">
@@ -602,6 +611,45 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
           <article class="hip-source"><b>Geminiani · 1751</b><p><i>The Art of Playing on the Violin</i>: regole ed esempi mostrano quanto tecnica, gusto e ornamentazione facciano parte della stessa formazione strumentale.</p><a class="score-link" href="https://imslp.org/wiki/The_Art_of_Playing_on_the_Violin_%28Geminiani%2C_Francesco%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
           <article class="hip-source"><b>Quantz · 1752</b><p><i>Versuch einer Anweisung die Flöte traversiere zu spielen</i>: molto più di un manuale di flauto, perché affronta gusto, esecuzione, accompagnamento e pratica musicale attraverso esempi e osservazioni.</p><a class="score-link" href="https://imslp.org/wiki/Versuch_einer_Anweisung_die_Fl%C3%B6te_traversiere_zu_spielen_%28Quantz%2C_Johann_Joachim%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
           <article class="hip-source"><b>C. P. E. Bach · 1753/1762</b><p><i>Versuch über die wahre Art das Clavier zu spielen</i>: ornamentazione, tocco, accompagnamento ed espressione mostrano ormai un mondo in trasformazione verso la sensibilità del secondo Settecento.</p><a class="score-link" href="https://imslp.org/wiki/Versuch_%C3%BCber_die_wahre_Art_das_Clavier_zu_spielen_%28Bach%2C_Carl_Philipp_Emanuel%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
+        </div>
+
+        <h3>Prima ancora dell’esecuzione: che cosa è sopravvissuto?</h3>
+        <p>Una delle sorprese più importanti della filologia consiste nel fatto che il repertorio che oggi chiamiamo “Barocco” non ci è arrivato come una biblioteca perfettamente conservata. Alcune opere possiedono autografi e stampe complete, altre sopravvivono attraverso copie posteriori, di altre rimangono soltanto frammenti, testi o parti isolate, mentre in certi casi la musica si interrompe semplicemente prima della fine. Ogni situazione impone al filologo un problema diverso e, soprattutto, obbliga l’edizione moderna a dichiarare dove termina la fonte e dove comincia l’intervento dell’editore.</p>
+
+        <div class="survival-grid">
+          <article class="survival-card" data-status="Frammento">
+            <h4>Monteverdi, <i>L’Arianna</i>: un’opera intera ridotta a un Lamento</h4>
+            <p><i>L’Arianna</i>, rappresentata a Mantova nel 1608, ebbe enorme successo, ma la musica dell’opera è perduta quasi completamente; è sopravvissuto il celeberrimo <i>Lamento d’Arianna</i>, mentre il libretto ci permette ancora di conoscere la struttura drammatica dell’opera scomparsa. Qui la filologia non può “ritrovare” ciò che non esiste più: può distinguere con precisione il frammento autentico dal vuoto che lo circonda.</p>
+            <div class="source-row">
+              <a class="score-link" href="https://imslp.org/wiki/L%27Arianna%2C_SV_291_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener">IMSLP · libretto e opera perduta</a>
+              <a class="score-link" href="https://imslp.org/wiki/Lamento_d%27Arianna%2C_SV_22_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener">IMSLP · ciò che resta</a>
+            </div>
+          </article>
+
+          <article class="survival-card" data-status="Musica perduta">
+            <h4>Bach, <i>Passione secondo Marco</i>: il testo resta, la musica quasi no</h4>
+            <p>Della <i>Markus-Passion</i> BWV 247 conosciamo il libretto di Picander e possediamo indizi che permettono di collegare alcuni numeri ad altra musica bachiana attraverso il procedimento della parodia, ma una parte decisiva della partitura è perduta. Le diverse “ricostruzioni” moderne non restituiscono quindi un originale nascosto in qualche cassetto: formulano ipotesi differenti su come rendere nuovamente eseguibile un’opera della quale conosciamo soltanto una parte.</p>
+            <div class="case-question"><strong>Domanda filologica:</strong> quando un concerto presenta una “Passione secondo Marco di Bach”, quanto di ciò che ascoltiamo è sicuramente di Bach, quanto è adattato da altra musica bachiana e quanto è stato composto o scelto dal ricostruttore?</div>
+          </article>
+
+          <article class="survival-card" data-status="Incompiuto">
+            <h4>Bach, <i>L’Arte della fuga</i>: la musica si interrompe</h4>
+            <p>Nel manoscritto della grande fuga finale dell’<i>Arte della fuga</i> la scrittura si interrompe e l’opera ci è giunta con una storia editoriale complessa. La prima edizione aggiunse in fondo un corale bachiano estraneo al manoscritto della fuga, mentre nei secoli successivi diversi musicisti hanno proposto completamenti della sezione interrotta. In questo caso la filologia deve resistere soprattutto alla tentazione di trasformare una lacuna in certezza.</p>
+            <div class="source-row">
+              <a class="score-link" href="https://imslp.org/wiki/Die_Kunst_der_Fuge%2C_BWV_1080_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">IMSLP · autografo e diverse edizioni</a>
+            </div>
+          </article>
+
+          <article class="survival-card" data-status="Parte mancante">
+            <h4>Quando manca una voce, un basso o uno strumento</h4>
+            <p>Molte composizioni antiche sopravvivono non come partiture complete ma come insiemi di parti separate, e basta che una sola di esse vada perduta perché l’opera diventi mutila. Un editore può talvolta ricostruire la parte mancante attraverso imitazioni, armonia, concordanze con altre copie o riusi dello stesso materiale, ma una ricostruzione responsabile deve sempre rendere visibile il confine fra ciò che proviene dalla fonte e ciò che è stato inferito.</p>
+            <div class="case-question"><strong>Regola del laboratorio:</strong> “plausibile” non significa “autentico”. Una buona ricostruzione può essere musicalmente convincente e storicamente informata senza diventare per questo una pagina ritrovata del compositore.</div>
+          </article>
+        </div>
+
+        <div class="editor-rule">
+          <b>Il lavoro del filologo</b>
+          <p>Prima di scegliere un arco, un tempo o un abbellimento, può essere necessario confrontare manoscritti, stampe, copie e cataloghi, riconoscere errori dei copisti, decidere fra lezioni differenti e indicare con parentesi, note critiche o caratteri grafici ciò che è stato integrato. Per questo un’edizione critica non è semplicemente una partitura “più corretta”: è anche il racconto trasparente delle decisioni con cui siamo arrivati al testo che stiamo leggendo.</p>
         </div>
 
         <h3>Tre domande, non tre scuole</h3>
