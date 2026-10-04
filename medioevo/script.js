@@ -65,3 +65,25 @@ if(whisperBtn&&whisperResult){
     whisperBtn.textContent=wi===chain.length-1?'Ricomincia ↺':'Passa ancora →';
   });
 }
+
+const neumePlay=document.getElementById('neumePlay');
+const neumeStage=document.getElementById('neumeStage');
+const neumeMarks=[...document.querySelectorAll('.neume-mark')];
+const neumeConclusion=document.getElementById('neumeConclusion');
+if(neumePlay&&neumeStage){
+  let ntimers=[];
+  const clearNeumeTimers=()=>{ntimers.forEach(clearTimeout);ntimers=[]};
+  neumePlay.addEventListener('click',()=>{
+    clearNeumeTimers();
+    neumeStage.classList.remove('playing');
+    neumeMarks.forEach(n=>n.classList.remove('on'));
+    if(neumeConclusion)neumeConclusion.classList.remove('show');
+    void neumeStage.offsetWidth;
+    neumeStage.classList.add('playing');
+    neumePlay.textContent='↻ Ripeti';
+    neumeMarks.forEach((n,i)=>{
+      ntimers.push(setTimeout(()=>n.classList.add('on'),350+i*470));
+    });
+    ntimers.push(setTimeout(()=>{if(neumeConclusion)neumeConclusion.classList.add('show')},5200));
+  });
+}
