@@ -271,6 +271,29 @@ linear-gradient(180deg,#f4ede2,#eae1d4);border-top:1px solid #c3b49c;border-bott
 .continuo-rule p{font-size:.9rem;line-height:1.5;margin:.25rem 0;color:#f2ece5}
 .continuo-source{margin-top:.9rem}
 @media(max-width:720px){.continuo-stage{grid-template-columns:1fr}}
+.tonality-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:
+radial-gradient(circle at 85% 15%,rgba(167,122,49,.08),transparent 18rem),
+linear-gradient(180deg,#f8f0e4,#eee3d5);border-top:1px solid #c9b89c;border-bottom:1px solid #c9b89c}
+.tonality-inner{max-width:1180px;margin:auto}
+.tonality-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.2rem 0 2rem}
+.tonality-card{background:#fffaf1;border:1px solid var(--line);border-top:4px solid var(--gold);padding:1rem}
+.tonality-card b{display:block;font-family:var(--sans);font-size:.74rem;letter-spacing:.055em;text-transform:uppercase;color:var(--red);margin-bottom:.25rem}
+.tonality-card h4{font-size:1.15rem;margin:.1rem 0 .42rem}
+.tonality-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .7rem}
+.tonal-lab{margin:1.4rem 0 2rem;background:#211d1a;color:#f7eee4;border-top:5px solid var(--gold);padding:1.1rem}
+.tonal-lab h3{color:#fff;margin:.15rem 0 .45rem}
+.tonal-lab p{font-size:.92rem;line-height:1.5;color:#ddd2c6;margin:.3rem 0 .85rem}
+.tonal-controls{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0}
+.tonal-play{border:1px solid #d0b57f;background:#eed9a8;color:#30261e;border-radius:999px;padding:.5rem .72rem;font-family:var(--sans);font-size:.74rem;font-weight:900;cursor:pointer}
+.tonal-play:hover{background:#fff0c8}
+.temperament-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:1rem 0 1.8rem}
+.temperament-card{background:#f6efe4;border:1px solid var(--line);padding:1rem}
+.temperament-card b{display:block;font-family:var(--sans);font-size:.74rem;text-transform:uppercase;letter-spacing:.055em;color:var(--night);margin-bottom:.28rem}
+.temperament-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0}
+.tonality-warning{margin:1rem 0 1.8rem;padding:1rem 1.1rem;background:#1e2b39;color:#fff}
+.tonality-warning b{display:block;font-family:var(--sans);font-size:.73rem;text-transform:uppercase;letter-spacing:.06em;color:#efd08c;margin-bottom:.25rem}
+.tonality-warning p{font-size:.93rem;line-height:1.52;margin:.3rem 0;color:#f4eee7}
+@media(max-width:760px){.tonality-grid,.temperament-grid{grid-template-columns:1fr}}
 .before-recording{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:linear-gradient(180deg,#f4ecdf,#eee3d2);border-top:1px solid #c7b79d;border-bottom:1px solid #c7b79d}
 .before-recording-inner{max-width:1180px;margin:auto}
 .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.3rem 0 2rem}
@@ -487,6 +510,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a href="#indice">Indice</a>
       <a href="#monteverdi">Monteverdi</a>
       <a href="#seicento">Il Seicento</a>
+      <a href="#tonalita">Tonalità</a>
       <a href="#sonata">La sonata</a>
       <a href="#contrappunto">Contrappunto</a>
       <a href="#corelli">Corelli</a>
@@ -517,6 +541,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a class="index-card" href="#monteverdi"><b>Monteverdi sulla soglia</b><span>Quando Rinascimento e Barocco esistono nello stesso momento.</span></a>
       <a class="index-card" href="#voce"><b>Una voce emerge dalle altre</b><span>Monodia, basso continuo e un nuovo modo di costruire il discorso musicale.</span></a>
       <a class="index-card" href="#seicento"><b>Il Seicento si mette in movimento</b><span>Venezia, Roma, Germania e la musica che attraversa spazio e confini.</span></a>
+      <a class="index-card" href="#tonalita"><b>Dal modo alla tonalità</b><span>Centro, cadenza, modulazione, Rameau e il problema dei temperamenti.</span></a>
       <a class="index-card" href="#strumenti"><b>Gli strumenti trovano una voce</b><span>Frescobaldi, Biber, liuteria e la nascita di un nuovo virtuosismo.</span></a>
       <a class="index-card" href="#sonata"><b>La sonata prima della forma-sonata</b><span>Da Gabrieli a Corelli, dalla sonata da chiesa alla camera e alla tastiera.</span></a>
       <a class="index-card" href="#contrappunto"><b>Molte voci che pensano insieme</b><span>Ricercare, toccata, fuga, passacaglia e la strada contrappuntistica che conduce a Bach.</span></a>
@@ -554,6 +579,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         <a class="time-node" href="#sonata"><b>1681</b><span>Corelli, sonate a tre op. 1</span></a>
         <a class="time-node" href="#strumenti"><b>1683</b><span>Leonarda, Sonate op. 16</span></a>
         <a class="time-node major" href="#anno-1685"><b>1685</b><span>Bach, Händel, Scarlatti</span></a>
+        <a class="time-node" href="#tonalita"><b>1691</b><span>Werckmeister, temperamento</span></a>
         <a class="time-node" href="#classicismo"><b>1700 ca.</b><span>Cristofori e il nuovo pianoforte</span></a>
         <a class="time-node major" href="#vivaldi"><b>1703</b><span>Vivaldi alla Pietà</span></a>
         <a class="time-node" href="#corelli"><b>1714</b><span>Corelli, op. 6</span></a>
@@ -743,6 +769,76 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <div class="route" aria-label="Rotte musicali del Seicento">
         <span>Venezia</span><span>Roma</span><span>Dresda</span><span>Parigi</span><span>Londra</span><span>Lubecca</span><span>Lipsia</span>
       </div>
+    </div>
+  </section>
+
+  <section id="tonalita" class="tonality-band">
+    <div class="tonality-inner">
+      <div class="section-title"><div class="eyebrow">Un centro che attrae</div><h2>Dal modo alla tonalità, senza premere un interruttore</h2></div>
+      <p>Dire che il Barocco è “tonale” e il Rinascimento è “modale” può essere utile soltanto se ricordiamo che nessuna epoca cambia grammatica in una notte. Nel Seicento modi, formule cadenzali, pratiche contrappuntistiche e nuove relazioni armoniche convivono a lungo, mentre alcune tonalità maggiori e minori diventano progressivamente centri sempre più riconoscibili, capaci di organizzare la partenza, l’allontanamento e il ritorno.</p>
+      <p>Il basso continuo contribuisce fortemente a rendere l’armonia più evidente, perché costringe esecutori e compositori a pensare continuamente il rapporto fra una linea grave e gli accordi che essa sostiene, ma non “inventa” da solo la tonalità. Nello stesso tempo la pratica della cadenza, la circolazione delle quinte, la modulazione e la crescente stabilità dei rapporti fra tonica e dominante costruiscono poco a poco una nuova percezione dello spazio musicale.</p>
+
+      <div class="tonality-grid">
+        <article class="tonality-card">
+          <b>Centro</b>
+          <h4>Una tonalità comincia a sembrare “casa”</h4>
+          <p>La tonica non è soltanto la prima nota di una scala: diventa il punto verso il quale molte tensioni sembrano orientarsi. Più il linguaggio tonale si stabilizza, più l’ascoltatore può percepire chiaramente quando la musica è vicina o lontana dal proprio centro.</p>
+        </article>
+        <article class="tonality-card">
+          <b>Cadenza</b>
+          <h4>La chiusa diventa grammatica</h4>
+          <p>Le cadenze esistevano ben prima del Barocco, ma nel nuovo linguaggio il rapporto dominante-tonica acquista una forza particolare e permette di costruire attese, sospensioni e ritorni che diventano fondamentali tanto nel concerto quanto nella fuga.</p>
+        </article>
+        <article class="tonality-card">
+          <b>Modulazione</b>
+          <h4>Allontanarsi senza perdere la strada</h4>
+          <p>Passare da un centro tonale a un altro diventa una risorsa strutturale sempre più potente. Vivaldi può far viaggiare il solista lontano dal ritornello, mentre Bach può spingere un soggetto attraverso regioni differenti senza che l’orecchio perda completamente la memoria del punto di partenza.</p>
+        </article>
+      </div>
+
+      <div class="thread-sign join"><strong>I due filoni restano distinti:</strong> la tonalità non appartiene soltanto alla monodia accompagnata. Nel ramo del basso continuo rende sempre più chiaro il rapporto melodia-armonia, mentre nel ramo contrappuntistico permette a linee autonome di muoversi dentro una direzione armonica comune. Proprio questa convivenza diventerà una delle grandi forze di Bach.</div>
+
+      <div class="tonal-lab">
+        <div class="eyebrow">Laboratorio · casa, tensione, ritorno</div>
+        <h3>Sentire il centro prima di chiamarlo tonica</h3>
+        <p>Gli esempi sono volutamente schematici e usano il temperamento equabile del browser: servono soltanto a far percepire tre funzioni diverse, non a ricostruire un’accordatura barocca.</p>
+        <div class="tonal-controls">
+          <button class="tonal-play" type="button" data-tonal="home">▶ Tonica · “casa”</button>
+          <button class="tonal-play" type="button" data-tonal="tension">▶ Dominante · tensione</button>
+          <button class="tonal-play" type="button" data-tonal="cadence">▶ Dominante → tonica</button>
+          <button class="tonal-play" type="button" data-tonal="journey">▶ Partenza → allontanamento → ritorno</button>
+        </div>
+      </div>
+
+      <h3>Rameau arriva dopo la pratica e prova a darle una teoria</h3>
+      <p>Quando Jean-Philippe Rameau pubblica a Parigi nel 1722 il <i>Traité de l’harmonie réduite à ses principes naturels</i>, il linguaggio tonale è già largamente praticato. La novità del trattato consiste nel tentativo di ricondurre accordi e successioni armoniche a principi sistematici, attribuendo agli accordi un’identità fondata sopra un basso fondamentale e cercando di spiegare razionalmente relazioni che i musicisti utilizzavano da tempo nella pratica del basso continuo.</p>
+      <p>Rameau non “inventa” quindi la tonalità e non sostituisce il contrappunto con l’armonia. Fa qualcosa di diverso: prova a descrivere in modo coerente un sistema nel quale gli accordi cominciano a essere pensati anche come oggetti dotati di identità e funzione, non soltanto come il risultato verticale dell’incontro fra linee.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Trait%C3%A9_de_l%27harmonie_r%C3%A9duite_%C3%A0_ses_principes_naturels_%28Rameau%2C_Jean-Philippe%29" target="_blank" rel="noopener">♫ IMSLP · Rameau, Traité, 1722</a>
+        <a class="deep-link" href="https://www.loc.gov/item/07034192/" target="_blank" rel="noopener">Library of Congress · edizione 1722</a>
+      </div>
+
+      <h3>Il problema del temperamento: poter usare più tonalità senza renderle tutte uguali</h3>
+      <p>Una tastiera deve decidere come distribuire piccole differenze d’intonazione fra gli intervalli, e questa decisione modifica concretamente il colore delle tonalità. I temperamenti mesotonici favoriscono terze particolarmente pure in alcune regioni, ma rendono molto problematiche tonalità lontane; i cosiddetti buoni temperamenti del tardo Seicento cercano invece compromessi che permettano di attraversare un numero molto maggiore di tonalità mantenendo differenze di colore fra una regione e l’altra.</p>
+
+      <div class="temperament-grid">
+        <article class="temperament-card"><b>Mesotonico</b><p>Privilegia alcuni intervalli e alcune tonalità, ma il prezzo può essere molto alto quando ci si allontana dal territorio per il quale l’accordatura funziona meglio. Non è quindi semplicemente un “equabile imperfetto”.</p></article>
+        <article class="temperament-card"><b>Buon temperamento</b><p>Distribuisce le imperfezioni in modo da rendere praticabili molte o tutte le tonalità, senza necessariamente renderle acusticamente identiche. Werckmeister è uno dei teorici più importanti di questa ricerca alla fine del Seicento.</p></article>
+        <article class="temperament-card"><b>Equabile moderno</b><p>Divide l’ottava in dodici semitoni uguali. È estremamente pratico per modulare ovunque, ma non deve essere retroproiettato automaticamente su Bach o sull’intero Barocco.</p></article>
+      </div>
+
+      <p>Nel 1691 Andreas Werckmeister pubblica la <i>Musicalische Temperatur</i>, uno dei testi centrali nella discussione sulle accordature che permettono di ampliare il territorio tonale disponibile agli strumenti a tastiera. Quando Bach intitolerà nel 1722 la propria raccolta <i>Das Wohltemperierte Clavier</i>, dunque, la parola “ben temperato” appartiene già a un dibattito molto concreto su come rendere utilizzabili tonalità lontane senza identificare necessariamente questa soluzione con il temperamento equabile moderno.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Musicalische_Temperatur_%28Werckmeister%2C_Andreas%29" target="_blank" rel="noopener">♫ IMSLP · Werckmeister, Musicalische Temperatur</a>
+        <button class="tech-button" type="button" data-modal="modal-temperamento">Apri · Temperamento e tonalità</button>
+      </div>
+
+      <div class="tonality-warning">
+        <b>Tre errori da evitare</b>
+        <p>Il Barocco non passa improvvisamente “dai modi alle tonalità”. Il basso continuo non crea da solo il sistema tonale. E <i>ben temperato</i> non significa automaticamente <i>equabile</i>. Sono tre processi collegati, ma distinti.</p>
+      </div>
+
+      <div class="question">La tonalità barocca rende possibile una nuova forma di memoria: l’orecchio può sentire <em>dove si trova, quanto si è allontanato e che cosa significa tornare</em>.</div>
     </div>
   </section>
 
@@ -2084,6 +2180,45 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       players:['clavicembalo / organo','violoncello','violone','fagotto']
     }
   };
+  document.querySelectorAll('.tonal-play').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const AudioCtx=window.AudioContext||window.webkitAudioContext;
+      if(!AudioCtx)return;
+      if(!hipAudio.ctx)hipAudio.ctx=new AudioCtx();
+      const ctx=hipAudio.ctx;
+      const start=ctx.currentTime+.06;
+
+      function chord(midis,t,d,amp=.032){
+        midis.forEach((m,j)=>{
+          const osc=ctx.createOscillator(), gain=ctx.createGain();
+          osc.type=j===0?'sine':'triangle';
+          osc.frequency.value=440*Math.pow(2,(m-69)/12);
+          gain.gain.setValueAtTime(.0001,t);
+          gain.gain.exponentialRampToValueAtTime(amp,t+.015);
+          gain.gain.setValueAtTime(amp*.75,Math.max(t+.03,t+d-.06));
+          gain.gain.exponentialRampToValueAtTime(.0001,t+d);
+          osc.connect(gain).connect(ctx.destination);
+          osc.start(t);osc.stop(t+d+.03);
+        });
+      }
+
+      const kind=btn.dataset.tonal;
+      if(kind==='home') chord([48,60,64,67],start,1.15,.035);
+      if(kind==='tension') chord([43,55,59,62,65],start,1.15,.035);
+      if(kind==='cadence'){
+        chord([43,55,59,62,65],start,.8,.032);
+        chord([48,60,64,67],start+.82,1.2,.038);
+      }
+      if(kind==='journey'){
+        chord([48,60,64,67],start,.65,.029);
+        chord([45,57,60,64],start+.68,.65,.028);
+        chord([43,55,59,62],start+1.36,.65,.03);
+        chord([43,55,59,62,65],start+2.04,.72,.032);
+        chord([48,60,64,67],start+2.8,1.2,.038);
+      }
+    });
+  });
+
   document.querySelectorAll('.continuo-switch').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const data=continuoPresets[btn.dataset.continuo];
