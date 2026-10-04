@@ -67,3 +67,30 @@ repeating-linear-gradient(0deg,transparent 0 31px,rgba(110,82,45,.06) 32px);colo
 .bridge-to-guido span{display:block;margin-top:.45rem;font:850 .74rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
 @media(max-width:650px){.neume-player{padding:1.15rem}.neume-stage{height:150px}.gesture-line{height:125px}.neume-row{grid-template-columns:repeat(5,1fr)}}
 @media(prefers-reduced-motion:reduce){.neume-stage.playing .gesture-line polyline{animation:none;stroke-dashoffset:0}.neume-stage.playing .playhead{animation:none;left:97%}}
+
+/* Guido hexachord lab */
+.hexachord-lab,.organum-lab{margin:2.6rem 0 1.6rem;max-width:960px;padding:1.6rem 1.7rem;background:#f7efe1;border:1px solid #c9b18b;border-top:5px solid var(--gold);box-shadow:var(--shadow)}
+.hexachord-lab h3,.organum-lab h3{font-size:1.85rem;margin:.2rem 0 .5rem}
+.hexachord-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:.45rem;margin:1.4rem 0 .7rem}
+.hexachord-steps button{min-height:58px;border:1px solid #a98b61;background:#eadcc6;color:#372b22;font:900 .9rem var(--sans);letter-spacing:.12em;cursor:pointer}
+.hexachord-steps button:hover,.hexachord-steps button.active{background:#7a2c22;color:#fff;border-color:#7a2c22}
+.hexachord-track{display:grid;grid-template-columns:repeat(6,1fr);gap:.45rem;padding:0 .2rem}
+.hexachord-track i{height:8px;background:#c9b796;transform:scaleX(.35);transform-origin:left center;transition:.25s}
+.hexachord-track i.on{background:var(--gold);transform:scaleX(1)}
+.hexachord-note{margin-top:1rem;padding:1rem 1.1rem;background:#eee1cb;border-left:4px solid var(--red)}
+/* early polyphony visual */
+.organum-stage{position:relative;height:230px;margin:1.2rem 0;border-block:1px solid #cbb99d;background:
+repeating-linear-gradient(to bottom,transparent 0 48px,rgba(109,83,52,.11) 49px 50px);overflow:hidden}
+.organum-stage svg{width:100%;height:100%}
+.organum-stage .vox{fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1200;stroke-dashoffset:1200}
+.organum-stage .principalis{stroke:#5c4938}
+.organum-stage .organalis{stroke:#7a2c22}
+.organum-stage.play .principalis{animation:voxDraw 3.4s linear forwards}
+.organum-stage.play .organalis{animation:voxDraw 3.4s linear .9s forwards}
+@keyframes voxDraw{to{stroke-dashoffset:0}}
+.voice-label{position:absolute;right:1rem;font:800 .69rem var(--sans);letter-spacing:.08em;text-transform:uppercase;background:#f5ead8dd;padding:.25rem .4rem}
+.voice-label.upper{top:36px;color:#7a2c22}.voice-label.lower{top:136px;color:#5c4938}
+.organum-controls{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+.organum-controls span{font-size:.95rem;color:#675a4d}
+@media(max-width:650px){.hexachord-lab,.organum-lab{padding:1.15rem}.hexachord-steps{grid-template-columns:repeat(3,1fr)}.organum-stage{height:205px}}
+@media(prefers-reduced-motion:reduce){.organum-stage.play .vox{animation:none;stroke-dashoffset:0}}
