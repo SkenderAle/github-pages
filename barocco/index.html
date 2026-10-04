@@ -43,11 +43,9 @@ h1{font-size:clamp(3.2rem,8vw,7.8rem);line-height:.93;letter-spacing:-.055em;mar
 .hero-credit a{text-decoration:none}
 .nav-wrap{position:sticky;top:0;z-index:50;background:rgba(244,237,225,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font-family:var(--sans)}
 nav{max-width:1280px;margin:auto;padding:.5rem .8rem}
-.nav-row{display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.nav-row::-webkit-scrollbar{display:none}
+.nav-row{display:flex;gap:.35rem;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}\n.nav-row+.nav-row{margin-top:.16rem}\n.nav-row::-webkit-scrollbar{display:none}
 nav a{flex:0 0 auto;white-space:nowrap;text-decoration:none;padding:.56rem .76rem;border-radius:999px;font-size:.79rem;font-weight:780;color:#5f5347}
-nav a:hover,nav a.active{background:#29211b;color:#fff}
-nav a.cross{background:#e9ddc7;border:1px solid #cfb98e}
+nav a:hover,nav a.active{background:#29211b;color:#fff}\nnav a.nav-verifica{background:var(--red);color:#fff;border:1px solid var(--red);box-shadow:0 2px 8px rgba(123,48,40,.18)}\nnav a.nav-verifica:hover,nav a.nav-verifica.active{background:var(--gold);color:#fff;border-color:var(--gold)}\nnav a.nav-sos{background:var(--green);color:#fff;border:1px solid var(--green)}\nnav a.nav-sos:hover{background:#2f493d;border-color:#2f493d}\nnav a.cross{background:#e9ddc7;border:1px solid #cfb98e}
 .content{max-width:1180px;margin:auto;padding:4rem 1.35rem 6rem}
 .intro{max-width:900px;margin:0 auto 4rem}
 .lead{font-size:1.31rem;line-height:1.68}
@@ -673,6 +671,8 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
       <a href="#vivaldi">Vivaldi</a>
       <a href="#europa">L’Europa</a>
       <a href="#danza">Suite e danza</a>
+    </div>
+    <div class="nav-row">
       <a href="#voce-sacra">Cantata e oratorio</a>
       <a href="#donne">Le donne</a>
       <a href="#hip">Filologia / HIP</a>
@@ -681,7 +681,7 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
       <a href="#orchestra">L’orchestra</a>
       <a href="#classicismo">Verso il Classicismo</a>
       <a href="#fonti">Fonti</a>
-      <a href="#verifica">✦ Verifica</a>
+      <a href="#verifica" class="nav-verifica">✦ Verifica</a>
       <a href="./sos/" class="nav-sos" title="Gioco interattivo · L’orchestra dei Fireworks di Händel">SOS</a>
       <a class="cross" href="../melodramma/">Melodramma ↗</a>
     </div>
