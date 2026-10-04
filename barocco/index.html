@@ -2669,10 +2669,25 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
   updateScroll();
   topButton.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
+  let currentNavId='';
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(!entry.isIntersecting)return;
-      navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));
+      const id='#'+entry.target.id;
+      let activeLink=null;
+      navLinks.forEach(a=>{
+        const isActive=a.getAttribute('href')===id;
+        a.classList.toggle('active',isActive);
+        if(isActive)activeLink=a;
+      });
+      if(activeLink && currentNavId!==id){
+        currentNavId=id;
+        const row=activeLink.closest('.nav-row');
+        if(row){
+          const left=activeLink.offsetLeft-(row.clientWidth-activeLink.clientWidth)/2;
+          row.scrollTo({left:Math.max(0,left),behavior:'smooth'});
+        }
+      }
     });
   },{rootMargin:'-28% 0px -62% 0px',threshold:0});
   sections.forEach(s=>observer.observe(s));
