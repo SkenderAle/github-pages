@@ -106,6 +106,8 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 .timbre-listen{margin-top:.8rem;border-top:1px solid #d7c7ad;padding-top:.75rem}
 .timbre-listen iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000;margin-bottom:.55rem}
 .timbre-listen small{display:block;font-family:var(--sans);font-size:.72rem;line-height:1.4;color:#6e6257}
+.video-fallback{display:inline-flex;align-items:center;gap:.32rem;margin:.62rem .8rem .72rem 0;padding:.42rem .62rem;border:1px solid #aab3bb;border-radius:999px;background:#edf0f2;color:#263847;text-decoration:none;font-family:var(--sans);font-size:.7rem;font-weight:850}
+.video-fallback:hover{background:#fff}
 .molti-box{margin:2rem 0 2.4rem;background:#201b18;color:#f6ede1;border-top:5px solid var(--gold);box-shadow:var(--shadow);overflow:hidden}
 .molti-copy{padding:1.2rem 1.25rem}
 .molti-copy .eyebrow{color:#e6c580}
@@ -1487,12 +1489,12 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         </div>
       </article>
       <article class="europe-window">
-        <iframe src="https://www.youtube-nocookie.com/embed/RCL2CWQaH4A" title="Jan Dismas Zelenka, Missa votiva ZWV 18 · Collegium 1704, Václav Luks" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/CWjHpNW5mBI" title="Jan Dismas Zelenka, Missa votiva ZWV 18 · Collegium 1704, Václav Luks" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         <div class="europe-window-copy">
           <b>Dresda · contrappunto e colore</b>
           <h4>Zelenka · Collegium 1704 / Václav Luks</h4>
           <p>Il Barocco centroeuropeo non è una periferia di Bach. Zelenka permette di sentire una scrittura capace di grande densità contrappuntistica e insieme di effetti orchestrali fortemente caratterizzati, dentro uno dei centri musicali più cosmopoliti del primo Settecento.</p>
-          <a class="deep-link" href="https://www.youtube.com/watch?v=RCL2CWQaH4A" target="_blank" rel="noopener">Apri l’ascolto su YouTube</a>
+          <a class="deep-link" href="https://www.youtube.com/watch?v=CWjHpNW5mBI" target="_blank" rel="noopener">Apri l’ascolto su YouTube</a>
           <a class="deep-link" href="https://www.collegium1704.com/en/audio-video" target="_blank" rel="noopener">Collegium 1704 · archivio audio/video</a>
         </div>
       </article>
@@ -2698,6 +2700,24 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         t+=beat;
       });
     });
+  });
+
+  document.querySelectorAll('iframe[src*="youtube-nocookie.com/embed/"],iframe[src*="youtube.com/embed/"]').forEach(frame=>{
+    const m=frame.src.match(/\/embed\/([^?&/]+)/);
+    if(!m)return;
+    const videoId=m[1];
+    const host=frame.parentElement;
+    if(!host)return;
+    const existing=[...host.querySelectorAll('a[href*="youtube.com/watch"],a[href*="youtu.be/"]')]
+      .some(a=>a.href.includes(videoId));
+    if(existing)return;
+    const link=document.createElement('a');
+    link.className='video-fallback';
+    link.href='https://www.youtube.com/watch?v='+encodeURIComponent(videoId);
+    link.target='_blank';
+    link.rel='noopener';
+    link.textContent='Apri l’ascolto su YouTube ↗';
+    frame.insertAdjacentElement('afterend',link);
   });
 
   document.querySelectorAll('[data-modal]').forEach(btn=>{
