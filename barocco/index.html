@@ -294,6 +294,29 @@ linear-gradient(180deg,#f8f0e4,#eee3d5);border-top:1px solid #c9b89c;border-bott
 .tonality-warning b{display:block;font-family:var(--sans);font-size:.73rem;text-transform:uppercase;letter-spacing:.06em;color:#efd08c;margin-bottom:.25rem}
 .tonality-warning p{font-size:.93rem;line-height:1.52;margin:.3rem 0;color:#f4eee7}
 @media(max-width:760px){.tonality-grid,.temperament-grid{grid-template-columns:1fr}}
+.affetti-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:
+radial-gradient(circle at 14% 15%,rgba(123,48,40,.10),transparent 20rem),
+radial-gradient(circle at 88% 18%,rgba(167,122,49,.08),transparent 18rem),
+linear-gradient(180deg,#f5ece2,#eee1d4);border-top:1px solid #c7b49b;border-bottom:1px solid #c7b49b}
+.affetti-inner{max-width:1180px;margin:auto}
+.affetti-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.2rem 0 2rem}
+.affetti-card{background:#fff9f1;border:1px solid var(--line);border-top:4px solid var(--red);padding:1rem}
+.affetti-card b{display:block;font-family:var(--sans);font-size:.74rem;letter-spacing:.055em;text-transform:uppercase;color:var(--red);margin-bottom:.25rem}
+.affetti-card h4{font-size:1.13rem;margin:.1rem 0 .42rem}
+.affetti-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0}
+.program-route{display:flex;gap:.38rem;align-items:stretch;overflow-x:auto;margin:1rem 0 1.8rem;padding:.15rem 0 .6rem}
+.program-route span{flex:0 0 auto;background:#efe0d1;border:1px solid #cab399;padding:.67rem .77rem;font-family:var(--sans);font-size:.73rem;font-weight:900;color:#46342d}
+.program-route i{flex:0 0 auto;display:grid;place-items:center;color:var(--red);font-style:normal;font-weight:900}
+.program-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.2rem 0 2rem}
+.program-card{background:#f8f1e7;border:1px solid var(--line);border-left:5px solid var(--gold);padding:1rem}
+.program-card b{display:block;font-family:var(--sans);font-size:.74rem;text-transform:uppercase;letter-spacing:.055em;color:#76571f;margin-bottom:.25rem}
+.program-card h4{font-size:1.15rem;margin:.1rem 0 .42rem}
+.program-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .7rem}
+.program-warning{margin:1rem 0 1.8rem;padding:1rem 1.1rem;background:#1e2b39;color:#fff}
+.program-warning b{display:block;font-family:var(--sans);font-size:.73rem;text-transform:uppercase;letter-spacing:.06em;color:#efd08c;margin-bottom:.25rem}
+.program-warning p{font-size:.94rem;line-height:1.52;color:#f3eee7;margin:.3rem 0}
+@media(max-width:900px){.affetti-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.program-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.affetti-grid{grid-template-columns:1fr}}
 .orchestra-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:
 radial-gradient(circle at 15% 12%,rgba(123,48,40,.07),transparent 18rem),
 radial-gradient(circle at 88% 20%,rgba(27,39,52,.07),transparent 18rem),
@@ -563,6 +586,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a href="#indice">Indice</a>
       <a href="#monteverdi">Monteverdi</a>
       <a href="#seicento">Il Seicento</a>
+      <a href="#affetti">Affetti e programma</a>
       <a href="#tonalita">Tonalità</a>
       <a href="#sonata">La sonata</a>
       <a href="#contrappunto">Contrappunto</a>
@@ -596,6 +620,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a class="index-card" href="#monteverdi"><b>Monteverdi sulla soglia</b><span>Quando Rinascimento e Barocco esistono nello stesso momento.</span></a>
       <a class="index-card" href="#voce"><b>Una voce emerge dalle altre</b><span>Monodia, basso continuo e un nuovo modo di costruire il discorso musicale.</span></a>
       <a class="index-card" href="#seicento"><b>Il Seicento si mette in movimento</b><span>Venezia, Roma, Germania e la musica che attraversa spazio e confini.</span></a>
+      <a class="index-card" href="#affetti"><b>Dal madrigalismo alla musica a programma</b><span>Dalla parola “dipinta” al suono che racconta da solo: affetti, retorica, Biber, Kuhnau e Vivaldi.</span></a>
       <a class="index-card" href="#tonalita"><b>Dal modo alla tonalità</b><span>Centro, cadenza, modulazione, Rameau e il problema dei temperamenti.</span></a>
       <a class="index-card" href="#strumenti"><b>Gli strumenti trovano una voce</b><span>Frescobaldi, Biber, liuteria e la nascita di un nuovo virtuosismo.</span></a>
       <a class="index-card" href="#sonata"><b>La sonata prima della forma-sonata</b><span>Da Gabrieli a Corelli, dalla sonata da chiesa alla camera e alla tastiera.</span></a>
@@ -633,11 +658,13 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         <a class="time-node" href="#voce-sacra"><b>1640 ca.</b><span>Carissimi, Jephte e l’oratorio</span></a>
         <a class="time-node" href="#seicento"><b>prima metà XVII</b><span>Schütz, Frescobaldi, Carissimi</span></a>
         <a class="time-node" href="#strumenti"><b>1670 ca.</b><span>Biber e il violino</span></a>
+        <a class="time-node" href="#affetti"><b>1673</b><span>Biber, Battalia</span></a>
         <a class="time-node" href="#sonata"><b>1681</b><span>Corelli, sonate a tre op. 1</span></a>
         <a class="time-node" href="#strumenti"><b>1683</b><span>Leonarda, Sonate op. 16</span></a>
         <a class="time-node major" href="#anno-1685"><b>1685</b><span>Bach, Händel, Scarlatti</span></a>
         <a class="time-node" href="#arcadia"><b>1690</b><span>Nasce l’Arcadia</span></a>
         <a class="time-node" href="#tonalita"><b>1691</b><span>Werckmeister, temperamento</span></a>
+        <a class="time-node" href="#affetti"><b>1700</b><span>Kuhnau, Sonate bibliche</span></a>
         <a class="time-node" href="#classicismo"><b>1700 ca.</b><span>Cristofori e il nuovo pianoforte</span></a>
         <a class="time-node major" href="#vivaldi"><b>1703</b><span>Vivaldi alla Pietà</span></a>
         <a class="time-node" href="#arcadia"><b>1706</b><span>Corelli, Scarlatti e Pasquini in Arcadia</span></a>
@@ -831,6 +858,92 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <div class="route" aria-label="Rotte musicali del Seicento">
         <span>Venezia</span><span>Roma</span><span>Dresda</span><span>Parigi</span><span>Londra</span><span>Lubecca</span><span>Lipsia</span>
       </div>
+    </div>
+  </section>
+
+  <section id="affetti" class="affetti-band">
+    <div class="affetti-inner">
+      <div class="section-title"><div class="eyebrow">Dalla parola all’immagine sonora</div><h2>Dal madrigalismo alla musica a programma</h2></div>
+      <p>Il Barocco eredita dal Rinascimento una conquista decisiva: la musica può rendere visibile una parola. Nel madrigale, quando il testo parla di salire, scendere, fuggire, morire, sospirare o tremare, il compositore può tradurre quel significato in movimento melodico, ritmo, dissonanza, pausa e densità. È il madrigalismo, che avevamo già incontrato nel percorso sul Rinascimento, e proprio da questa abitudine a trasformare un’immagine verbale in gesto sonoro nasce una delle strade più fertili della musica europea.</p>
+      <p>Con Monteverdi il rapporto fra parola e suono diventa ancora più radicale, perché la seconda pratica permette al significato del testo di guidare perfino il modo nel quale una dissonanza viene utilizzata. Da quel momento il problema non consiste più soltanto nel “dipingere” una parola isolata, ma nel costruire un intero stato emotivo, un conflitto, una scena o una successione di immagini. La retorica degli affetti è quindi una prosecuzione del madrigalismo e, nello stesso tempo, il suo superamento.</p>
+
+      <div class="program-route" aria-label="Dal madrigalismo alla musica a programma">
+        <span>madrigalismo</span><i>→</i><span>parola dipinta</span><i>→</i><span>retorica degli affetti</span><i>→</i><span>gesto senza parole</span><i>→</i><span>racconto strumentale</span><i>→</i><span>musica a programma</span>
+      </div>
+
+      <div class="affetti-grid">
+        <article class="affetti-card">
+          <b>Parola</b>
+          <h4>Il testo suggerisce il gesto</h4>
+          <p>Nel madrigalismo la musica reagisce direttamente a immagini e parole. Una salita può diventare ascensione melodica, una caduta può scendere, un sospiro può spezzare la frase.</p>
+        </article>
+        <article class="affetti-card">
+          <b>Affetto</b>
+          <h4>Non una parola, ma uno stato</h4>
+          <p>Nel Seicento l’attenzione si allarga: la musica può costruire dolore, gioia, furia, sospensione o meraviglia lungo un’intera sezione, servendosi di armonia, ritmo, timbro e dissonanza.</p>
+        </article>
+        <article class="affetti-card">
+          <b>Retorica</b>
+          <h4>La musica prova a persuadere</h4>
+          <p>Come un oratore usa pause, ripetizioni e contrasti per guidare chi ascolta, il compositore organizza tensione e rilascio, luce e ombra, attesa e sorpresa.</p>
+        </article>
+        <article class="affetti-card">
+          <b>Immagine sonora</b>
+          <h4>Il testo può perfino scomparire</h4>
+          <p>Quando quei gesti diventano abbastanza riconoscibili, gli strumenti possono evocare battaglie, temporali, uccelli, marce o scene narrative anche senza che nessuna voce pronunci il testo.</p>
+        </article>
+      </div>
+
+      <div class="thread-sign join"><strong>I due filoni restano entrambi attivi:</strong> la monodia accompagnata rende potentissimo il rapporto fra parola, voce e affetto, mentre la polifonia imitativa offre alla retorica altri strumenti, come ingressi successivi, sovrapposizioni e densità crescenti. Il passaggio verso la musica descrittiva non appartiene quindi a uno solo dei due rami.</div>
+
+      <h3>Monteverdi: dalla parola dipinta alla parola che governa la musica</h3>
+      <p>Nel madrigale tardo rinascimentale la musica poteva sottolineare immagini precise, ma con Monteverdi il testo acquista una forza strutturale più ampia: non serve soltanto a suggerire una figura, perché può giustificare tensioni, dissonanze e irregolarità necessarie a rendere credibile l’affetto. È qui che la seconda pratica diventa una vera cerniera fra madrigalismo e sensibilità barocca.</p>
+      <div class="source-row">
+        <a class="deep-link" href="#monteverdi">Torna a Monteverdi →</a>
+        <button class="tech-button" type="button" data-modal="modal-seconda">Apri · Prima e seconda pratica</button>
+      </div>
+
+      <h3>Quando gli strumenti cominciano a raccontare</h3>
+      <p>Il passaggio decisivo avviene quando la musica strumentale scopre di poter utilizzare quegli stessi gesti senza aver bisogno della parola presente. Una marcia può evocare soldati, una dissonanza brutale può suggerire lo scontro, una linea lamentosa può diventare il dolore dei feriti, mentre un ritmo pastorale può costruire un paesaggio. Non significa che ogni musica strumentale barocca sia “a programma”, ma significa che la capacità rappresentativa acquisita accanto alla poesia e al teatro può essere trasferita agli strumenti.</p>
+
+      <div class="program-grid">
+        <article class="program-card">
+          <b>Biber · 1673</b>
+          <h4><i>Battalia</i>: la guerra entra negli archi</h4>
+          <p>Nella <i>Battalia à 10</i> Biber costruisce otto sezioni con titoli esplicitamente narrativi: compaiono una compagnia disordinata di soldati, la marcia, la battaglia e infine il lamento dei moschettieri feriti. Lo strumento non illustra più una parola cantata: comincia a produrre direttamente la scena.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Battalia_%C3%A0_10_%28Biber%2C_Heinrich_Ignaz_Franz_von%29" target="_blank" rel="noopener">♫ IMSLP · Battalia</a>
+        </article>
+
+        <article class="program-card">
+          <b>Kuhnau · 1700</b>
+          <h4>Sei sonate, sei storie bibliche</h4>
+          <p>Johann Kuhnau pubblica a Lipsia sei <i>Sonate bibliche</i> per tastiera, ciascuna costruita attorno a un racconto preciso: Davide e Golia, Saul curato dalla musica, il matrimonio di Giacobbe, Ezechia, Gedeone, la morte e sepoltura di Giacobbe. Qui una forma strumentale viene apertamente caricata di narrazione.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Musicalische_Vorstellung_einiger_biblischer_Historien_%28Kuhnau%2C_Johann%29" target="_blank" rel="noopener">♫ IMSLP · Sonate bibliche</a>
+        </article>
+
+        <article class="program-card">
+          <b>Vivaldi · 1725</b>
+          <h4>Le <i>Quattro stagioni</i>: il racconto entra nella partitura</h4>
+          <p>I primi quattro concerti dell’op. 8 rappresentano primavera, estate, autunno e inverno. I sonetti associati descrivono uccelli, ruscelli, temporali, caccia, gelo e vento, e nella partitura compaiono indicazioni che collegano concretamente diversi gesti musicali alle immagini del testo.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Le_quattro_stagioni_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener">♫ IMSLP · Le quattro stagioni</a>
+          <a class="deep-link" href="#lab-vivaldi">Torna all’ascolto della Primavera →</a>
+        </article>
+      </div>
+
+      <h3>Vivaldi: la forma non viene sacrificata al racconto</h3>
+      <p>Le <i>Quattro stagioni</i> sono particolarmente importanti perché la rappresentazione non sostituisce il concerto. Canto degli uccelli, temporale, sonno del pastore o gelo invernale vengono incorporati dentro ritornelli, episodi, tonalità e virtuosismo solistico. Il racconto extramusicale non viene appoggiato sopra la forma, ma diventa una delle forze che la modellano dall’interno.</p>
+      <p>È proprio questo equilibrio a rendere Vivaldi un antecedente essenziale della futura musica a programma: la musica conserva una propria logica formale e nello stesso tempo invita l’ascoltatore a riconoscere immagini, eventi e situazioni che esistono fuori dal puro gioco delle note.</p>
+
+      <div class="program-warning">
+        <b>Una cautela importante</b>
+        <p>Non dobbiamo dire che la musica a programma “nasce” con Vivaldi. Musiche descrittive, battaglie, cacce e imitazioni della natura esistono da secoli. Più corretto è vedere nel Barocco una fase decisiva nella quale <strong>retorica, affetti, teatralità e forma strumentale</strong> imparano a collaborare in modi che prepareranno la musica programmatica del Romanticismo.</p>
+      </div>
+
+      <h3>Dal Barocco al futuro: quando il programma diventerà un genere</h3>
+      <p>Nel Classicismo Beethoven potrà intitolare la Sesta Sinfonia <i>Pastorale</i> e accompagnarne i movimenti con indicazioni che evocano campagna, ruscello, temporale e festa dei contadini, precisando però che si tratta più di espressione del sentimento che di pittura. Nell’Ottocento Berlioz, Liszt e altri compositori trasformeranno poi il rapporto fra racconto e forma in uno dei grandi problemi estetici della musica romantica.</p>
+      <p>Il filo che porta fin lì non parte dunque improvvisamente da una sinfonia ottocentesca. Comincia molto prima, quando il madrigalismo insegna alla musica a <em>vedere una parola</em>, il Barocco le insegna a <em>muovere un affetto</em> e infine gli strumenti scoprono di poter <em>raccontare anche quando la parola tace</em>.</p>
+
+      <div class="question">Dal madrigalismo alla musica a programma il problema rimane sorprendentemente coerente: <em>come può il suono farci vedere qualcosa che non è davanti ai nostri occhi?</em></div>
     </div>
   </section>
 
