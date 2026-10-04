@@ -139,6 +139,29 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 .europe-window-copy h4{color:#fff;font-size:1.15rem;margin:.12rem 0 .45rem}
 .europe-window-copy p{font-size:.9rem;line-height:1.5;color:#ddd2c5;margin:.3rem 0 .75rem}
 @media(max-width:760px){.year1685-grid,.europe-windows{grid-template-columns:1fr}}
+.dance-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:
+radial-gradient(circle at 85% 8%,rgba(57,87,70,.08),transparent 18rem),
+linear-gradient(180deg,#f8f1e7,#eee3d4);border-top:1px solid #c9baa0;border-bottom:1px solid #c9baa0}
+.dance-inner{max-width:1180px;margin:auto}
+.dance-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.2rem 0 1.8rem}
+.dance-card{background:#fffaf2;border:1px solid var(--line);border-top:4px solid var(--green);padding:1rem}
+.dance-card b{display:block;font-family:var(--sans);font-size:.76rem;color:var(--green);margin-bottom:.28rem}
+.dance-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .75rem}
+.dance-play{border:1px solid #8fa08f;background:#edf3ed;color:#294033;border-radius:999px;padding:.48rem .68rem;font-family:var(--sans);font-size:.73rem;font-weight:850;cursor:pointer}
+.dance-play:hover{background:#fff}
+.suite-strip{display:flex;gap:.4rem;align-items:stretch;overflow-x:auto;margin:1rem 0 1.6rem;padding:.15rem 0 .6rem}
+.suite-strip span{flex:0 0 auto;background:#efe3ce;border:1px solid #c8b89f;padding:.68rem .78rem;font-family:var(--sans);font-size:.75rem;font-weight:900;color:#44372d}
+.suite-strip i{flex:0 0 auto;display:grid;place-items:center;color:var(--gold);font-style:normal;font-weight:900}
+.dance-note{margin:1rem 0 1.6rem;padding:1rem 1.1rem;background:#1e2b39;color:#fff}
+.dance-note b{display:block;font-family:var(--sans);font-size:.74rem;letter-spacing:.07em;text-transform:uppercase;color:#efd28f;margin-bottom:.3rem}
+.dance-note p{font-size:.95rem;line-height:1.55;margin:.35rem 0;color:#f4eee6}
+.bach-solo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.2rem 0 2rem}
+.bach-solo-card{background:#f7f0e4;border:1px solid var(--line);border-left:5px solid var(--red);padding:1rem 1.05rem}
+.bach-solo-card b{display:block;font-family:var(--sans);font-size:.75rem;color:var(--red);margin-bottom:.25rem}
+.bach-solo-card h4{font-size:1.16rem;margin:.12rem 0 .42rem}
+.bach-solo-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .7rem}
+@media(max-width:900px){.dance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.dance-grid,.bach-solo-grid{grid-template-columns:1fr}}
 .before-recording{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:linear-gradient(180deg,#f4ecdf,#eee3d2);border-top:1px solid #c7b79d;border-bottom:1px solid #c7b79d}
 .before-recording-inner{max-width:1180px;margin:auto}
 .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.3rem 0 2rem}
@@ -358,6 +381,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a href="#corelli">Corelli</a>
       <a href="#vivaldi">Vivaldi</a>
       <a href="#europa">L’Europa</a>
+      <a href="#danza">Suite e danza</a>
       <a href="#donne">Le donne</a>
       <a href="#hip">Filologia / HIP</a>
       <a href="#bach">Bach</a>
@@ -413,6 +437,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         <a class="time-node" href="#classicismo"><b>1700 ca.</b><span>Cristofori e il nuovo pianoforte</span></a>
         <a class="time-node major" href="#vivaldi"><b>1703</b><span>Vivaldi alla Pietà</span></a>
         <a class="time-node" href="#corelli"><b>1714</b><span>Corelli, op. 6</span></a>
+        <a class="time-node" href="#danza"><b>1720 ca.</b><span>Bach, Sonate/Partite e Suites</span></a>
         <a class="time-node" href="#bach"><b>1721</b><span>Concerti brandeburghesi</span></a>
         <a class="time-node" href="#europa"><b>1722</b><span>Rameau e l’armonia</span></a>
         <a class="time-node" href="#vivaldi"><b>1725</b><span>Il cimento</span></a>
@@ -836,6 +861,84 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
     </div>
 
     <div class="question">Il Barocco europeo diventa più comprensibile quando smettiamo di domandarci soltanto <em>da quale paese provenga una musica</em> e cominciamo a chiederci attraverso quali strade sia arrivata fin lì.</div>
+  </section>
+
+  <section id="danza" class="dance-band">
+    <div class="dance-inner">
+      <div class="section-title"><div class="eyebrow">Il corpo dentro la forma</div><h2>La danza rimane anche quando nessuno danza più</h2></div>
+      <p>Una parte enorme della musica barocca nasce da danze reali, da ritmi riconoscibili e da gesti corporei che, entrando nella musica strumentale, possono progressivamente emanciparsi dalla necessità di essere effettivamente ballati. Questo passaggio è decisivo, perché una sarabanda di Bach non è semplicemente una danza da sala trasferita sulla tastiera e una corrente di Couperin non coincide con un esercizio coreografico, ma entrambe conservano nella frase, nell’accento e nella distribuzione del peso una memoria del corpo senza la quale la pagina rischia di diventare astratta.</p>
+      <p>La suite nasce proprio dalla possibilità di accostare danze differenti dentro una stessa cornice tonale o strumentale. Nel corso del Seicento e del primo Settecento si stabilizza spesso, soprattutto nell’area tedesca, una successione che mette in relazione allemanda, corrente, sarabanda e giga, alla quale possono aggiungersi gavotte, minuetti, bourrée e altre danze; la formula è però una grammatica utile, non una legge universale, perché Francia, Italia, Germania e Inghilterra organizzano le raccolte con libertà differenti e perfino il termine “suite” non indica sempre la stessa architettura.</p>
+
+      <div class="suite-strip" aria-label="Successione tipica di una suite barocca">
+        <span>Allemanda</span><i>→</i><span>Corrente</span><i>→</i><span>Sarabanda</span><i>→</i><span>danze facoltative</span><i>→</i><span>Giga</span>
+      </div>
+
+      <div class="dance-grid">
+        <article class="dance-card">
+          <b>Allemanda</b>
+          <p>Di norma in metro binario e con andamento moderato, conserva un gesto continuo e scorrevole. Non è una “marcia lenta”, ma una danza nella quale la regolarità del passo può convivere con una scrittura molto elaborata.</p>
+          <button class="dance-play" type="button" data-meter="4" data-accent="1,.45,.72,.45" data-tempo="84">▶ Senti il peso metrico</button>
+        </article>
+        <article class="dance-card">
+          <b>Courante / corrente</b>
+          <p>Qui la geografia conta moltissimo: la <i>courante</i> francese tende a essere più nobile, complessa e giocata sulle ambiguità metriche, mentre la corrente italiana può risultare più rapida e fluida. Un solo nome nasconde quindi prassi differenti.</p>
+          <button class="dance-play" type="button" data-meter="6" data-accent="1,.35,.55,.82,.35,.55" data-tempo="108">▶ Senti una pulsazione schematica</button>
+        </article>
+        <article class="dance-card">
+          <b>Sarabanda</b>
+          <p>Nella sua forma barocca europea diventa spesso lenta e solenne, in metro ternario, con una particolare tendenza a dare peso al secondo movimento. È una tendenza retorica, non una formula automatica da applicare a ogni battuta.</p>
+          <button class="dance-play" type="button" data-meter="3" data-accent=".72,1,.52" data-tempo="54">▶ Senti il secondo tempo</button>
+        </article>
+        <article class="dance-card">
+          <b>Giga</b>
+          <p>Spesso veloce e in metro composto, chiude molte suite con un’energia che può diventare anche contrappuntistica. Il carattere danzante non impedisce affatto a Bach di trasformarla in una macchina imitativa estremamente sofisticata.</p>
+          <button class="dance-play" type="button" data-meter="6" data-accent="1,.28,.28,.72,.28,.28" data-tempo="132">▶ Senti il composto</button>
+        </article>
+      </div>
+
+      <div class="dance-note">
+        <b>Questi pulsanti non ricostruiscono una danza storica</b>
+        <p>I piccoli esempi sintetici fanno sentire soltanto differenze schematiche di metro e distribuzione del peso. Tempo, articolazione, inégalité, ornamentazione e carattere dipendono dal repertorio e dalla geografia: proprio per questo una courante francese non può essere ridotta alla stessa formula di una corrente italiana.</p>
+      </div>
+
+      <h3>Couperin: in Francia la suite diventa anche “ordre”</h3>
+      <p>Nel primo libro delle <i>Pièces de clavecin</i> del 1713 François Couperin organizza settantadue pezzi in cinque <i>ordres</i>, all’interno dei quali convivono allemande, courante, sarabande, gavotte, gigue, menuet e pezzi di carattere dai titoli evocativi. Il dato è importante perché dimostra che il modello della suite non deve essere immaginato come una scatola rigida di quattro danze obbligatorie: in Francia la successione può diventare una raccolta molto più libera, capace di accostare il gesto danzante al ritratto, all’allusione e alla miniatura di carattere.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Premier_livre_de_pi%C3%A8ces_de_clavecin_%28Couperin%2C_Fran%C3%A7ois%29" target="_blank" rel="noopener">♫ IMSLP · Premier livre, 1713</a>
+      </div>
+
+      <h3>Bach: la danza diventa pensiero</h3>
+      <p>Le cosiddette <i>Suite francesi</i>, composte negli anni Venti del Settecento, mostrano con particolare chiarezza come Bach possa conservare l’identità delle danze e contemporaneamente trasformarle in musica da ascoltare, studiare e suonare. La prima suite in re minore BWV 812 segue una sequenza leggibile, Allemande, Courante, Sarabande, due Menuetti e Gigue, ma ciò che conta non è imparare l’ordine a memoria: è riconoscere come la stessa tastiera cambi postura musicale da un movimento all’altro.</p>
+
+      <div class="bach-solo-grid">
+        <article class="bach-solo-card">
+          <b>Violino solo · BWV 1001–1006</b>
+          <h4>Sonata, Partita, Sonata, Partita, Sonata, Partita</h4>
+          <p>Nel manoscritto delle sei opere per violino solo Bach alterna sistematicamente tre sonate e tre partite. Le sonate guardano alla <i>sonata da chiesa</i>, con movimenti lenti e veloci e grandi fughe, mentre le partite raccolgono soprattutto danze. Il risultato è magnifico perché sullo stesso strumento solo convivono due modi di costruire il tempo: da una parte il contrappunto e l’architettura astratta, dall’altra allemande, correnti, sarabande, gighe e altri movimenti di danza.</p>
+          <p>La Partita n. 2 in re minore BWV 1004 rende questa tensione quasi monumentale: dopo Allemanda, Corrente, Sarabanda e Giga arriva la <i>Ciaccona</i>, che non è semplicemente un’ulteriore danza ma una gigantesca costruzione di variazioni sopra un principio armonico ricorrente, capace di trasformare un solo violino in un universo polifonico.</p>
+          <div class="source-row">
+            <a class="score-link" href="https://imslp.org/wiki/6_Violin_Sonatas_and_Partitas%2C_BWV_1001-1006_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Sonate e Partite</a>
+            <a class="deep-link" href="https://www.bachvereniging.nl/en/bwv/bwv-1001" target="_blank" rel="noopener">All of Bach · BWV 1001</a>
+          </div>
+        </article>
+
+        <article class="bach-solo-card">
+          <b>Violoncello solo · BWV 1007–1012</b>
+          <h4>Sei Suites, un solo strumento e nessun basso aggiunto</h4>
+          <p>Le sei Suites per violoncello seguono un telaio ancora più chiaramente danzante: un preludio apre ogni raccolta, poi arrivano Allemande, Courante e Sarabande, una coppia di danze aggiuntive e infine la Gigue. Nelle prime due suites compaiono Minuetti, nella terza e nella quarta Bourrée, nella quinta e nella sesta Gavotte.</p>
+          <p>Il fatto che il violoncello sia solo rende il problema ancora più affascinante: attraverso corde doppie, arpeggi, registri e soprattutto la capacità dell’ascoltatore di “completare” mentalmente le voci, Bach suggerisce armonie e perfino contrappunti che fisicamente non possono essere sostenuti tutti nello stesso momento. La danza diventa così insieme corpo, armonia e illusione polifonica.</p>
+          <p>Anche qui la filologia entra immediatamente: delle Suites non possediamo un autografo bachiano completo, e il manoscritto di Anna Magdalena Bach è una delle fonti fondamentali, con problemi di legature e articolazioni che continuano a generare discussione esecutiva.</p>
+          <div class="source-row">
+            <a class="score-link" href="https://imslp.org/wiki/6_Cello_Suites%2C_BWV_1007-1012_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Suites per violoncello</a>
+            <a class="deep-link" href="https://www.bachvereniging.nl/en/bwv/bwv-1007" target="_blank" rel="noopener">All of Bach · BWV 1007</a>
+          </div>
+        </article>
+      </div>
+
+      <p>Le <i>Suite francesi</i>, le Partite per violino e le Suites per violoncello ci impediscono dunque di separare troppo rigidamente forma, danza e tecnica strumentale. La stessa allemanda cambia completamente quando viene affidata al clavicembalo, al violino o al violoncello, perché ogni strumento possiede un proprio modo di articolare il tempo e di suggerire la polifonia. Per questo conoscere l’origine danzante non significa obbligare l’interprete a trasformare ogni movimento in accompagnamento per ballerini, ma ricordare che quella musica conserva una gravità, un passo e una respirazione che non sono puramente astratti.</p>
+
+      <div class="question">La suite non è una collana di titoli francesi. È un modo di organizzare il tempo attraverso <em>corpi diversi che continuano a lasciare la loro impronta anche quando il corpo reale scompare dalla sala</em>.</div>
+    </div>
   </section>
 
   <section id="mestiere" class="before-recording">
@@ -1505,6 +1608,32 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         osc.connect(gain).connect(ctx.destination);
         osc.start(t);osc.stop(t+d+.02);
         t+=d;
+      });
+    });
+  });
+
+  document.querySelectorAll('.dance-play').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const AudioCtx=window.AudioContext||window.webkitAudioContext;
+      if(!AudioCtx)return;
+      if(!hipAudio.ctx)hipAudio.ctx=new AudioCtx();
+      const ctx=hipAudio.ctx;
+      const accents=(btn.dataset.accent||'1').split(',').map(Number).filter(Number.isFinite);
+      const bpm=Number(btn.dataset.tempo)||80;
+      const beat=60/bpm;
+      let t=ctx.currentTime+.06;
+      accents.forEach((a,i)=>{
+        const osc=ctx.createOscillator();
+        const gain=ctx.createGain();
+        osc.type='sine';
+        osc.frequency.value=i===0?880:660;
+        const peak=.03+.09*Math.max(.15,a);
+        gain.gain.setValueAtTime(.0001,t);
+        gain.gain.exponentialRampToValueAtTime(peak,t+.006);
+        gain.gain.exponentialRampToValueAtTime(.0001,t+.075);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(t);osc.stop(t+.09);
+        t+=beat;
       });
     });
   });
