@@ -261,7 +261,7 @@ function saveOfficial(p){
     google.script.run.withSuccessHandler(function(r){
       if(r&&r.already){status.textContent='Il primo tentativo ufficiale era già stato registrato. Questo resta un tentativo di allenamento.'}
       else{status.textContent='Risultato registrato nel foglio della classe.'}
-    }).withFailureHandler(function(e){status.textContent='Errore di registrazione: '+(e&&e.message?e.message:e)}).registraRisultatoClassicismo(p);
+    }).withFailureHandler(function(e){status.textContent='Errore di registrazione: '+(e&&e.message?e.message:e)}).registraRisultatoBarocco(p);
   }else{
     document.getElementById('backendBadge').textContent='ANTEPRIMA GITHUB';
     status.textContent='Anteprima funzionante: il punteggio non viene inviato a Google finché questa pagina non viene collegata all’Apps Script.';
