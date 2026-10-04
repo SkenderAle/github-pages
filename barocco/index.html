@@ -122,6 +122,23 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 .archive-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid #9fa9a2;background:#edf2ee;color:#2f493d;border-radius:999px;padding:.48rem .7rem;font-family:var(--sans);font-size:.72rem;font-weight:850}
 .archive-link:hover{background:#f8fff9}
 @media(max-width:760px){.travel-grid{grid-template-columns:1fr}}
+.year1685{margin:1.8rem 0 2.3rem;padding:1.25rem;background:#efe5d4;border:1px solid #cbb58d;position:relative;overflow:hidden}
+.year1685::after{content:"1685";position:absolute;right:-.1em;top:-.32em;font-family:Georgia,serif;font-weight:900;font-size:8rem;line-height:1;color:rgba(167,122,49,.09);pointer-events:none}
+.year1685 h3{position:relative;margin:.15rem 0 .55rem;font-size:1.55rem}
+.year1685>p{position:relative;max-width:920px}
+.year1685-grid{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:1rem}
+.year1685-card{background:#faf5ec;border-top:4px solid var(--gold);padding:1rem}
+.year1685-card b{display:block;font-family:var(--sans);font-size:.73rem;letter-spacing:.07em;text-transform:uppercase;color:var(--red);margin-bottom:.25rem}
+.year1685-card h4{font-size:1.2rem;margin:.12rem 0 .4rem}
+.year1685-card p{font-size:.9rem;line-height:1.5;margin:.28rem 0 .7rem}
+.europe-windows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0 2rem}
+.europe-window{background:#201b18;color:#f6ede1;border-top:5px solid var(--gold);overflow:hidden}
+.europe-window iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+.europe-window-copy{padding:1rem 1.05rem 1.15rem}
+.europe-window-copy b{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:#e7c783;margin-bottom:.25rem}
+.europe-window-copy h4{color:#fff;font-size:1.15rem;margin:.12rem 0 .45rem}
+.europe-window-copy p{font-size:.9rem;line-height:1.5;color:#ddd2c5;margin:.3rem 0 .75rem}
+@media(max-width:760px){.year1685-grid,.europe-windows{grid-template-columns:1fr}}
 .hip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.5rem 0 2rem}
 .hip-card{border:1px solid #bba989;background:#f8f3e9;padding:1rem 1.05rem}
 .hip-card b{display:block;font-family:var(--sans);font-size:.76rem;letter-spacing:.055em;text-transform:uppercase;color:var(--night);margin-bottom:.32rem}
@@ -608,6 +625,33 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a class="archive-link" href="https://archivio.fondazionelevi.it/serie-items?f%5B0%5D=serie_items%3AFondo+storico&f%5B1%5D=serie_items%3AI-Vlevi+-+Biblioteca+della+Fondazione+Ugo+e+Olga+Levi+%22Gianni+Milner%22%2C+Venezia&f%5B2%5D=tipologia_specifica_items_2%3Acomunicato+stampa&f%5B3%5D=tipologia_specifica_items_2%3Aparti&f%5B4%5D=tipologia_specifica_items_2%3Aparticelle&f%5B5%5D=tipologia_specifica_items_2%3Apartitura&id_s=%2A" target="_blank" rel="noopener">Archivio Levi · fonte manoscritta</a>
     </div>
 
+    <div class="year1685" id="anno-1685">
+      <div class="eyebrow">Un anno, tre direzioni</div>
+      <h3>1685: Bach, Händel, Scarlatti</h3>
+      <p>Lo stesso anno vede nascere Johann Sebastian Bach a Eisenach, Georg Friedrich Händel a Halle e Domenico Scarlatti a Napoli, ma la coincidenza cronologica diventa interessante proprio perché dimostra quanto poco basti una data per definire uno stile: Bach costruirà gran parte della propria vita professionale nella Germania centrale, Händel trasformerà il viaggio fra Germania, Italia e Inghilterra in una biografia europea, mentre Scarlatti porterà la propria formazione italiana verso Lisbona, Madrid e una tastiera che assorbirà l’esperienza iberica.</p>
+      <div class="year1685-grid">
+        <article class="year1685-card">
+          <b>Eisenach → Lipsia</b>
+          <h4>Johann Sebastian Bach</h4>
+          <p>Il concerto italiano, la suite francese, il corale tedesco e il contrappunto confluiscono in una lingua capace di assorbire tradizioni lontane senza cancellarne l’origine.</p>
+          <a class="deep-link" href="#bach">Vai al capitolo Bach →</a>
+        </article>
+        <article class="year1685-card">
+          <b>Halle → Italia → Londra</b>
+          <h4>Georg Friedrich Händel</h4>
+          <p>La carriera stessa diventa una rete europea: ciò che apprende in Italia entra poi nel mercato teatrale e concertistico londinese senza perdere le esperienze tedesche e francesi.</p>
+          <a class="deep-link" href="#europa">Resta nelle rotte europee</a>
+        </article>
+        <article class="year1685-card">
+          <b>Napoli → Lisbona → Madrid</b>
+          <h4>Domenico Scarlatti</h4>
+          <p>La tastiera conserva una formazione italiana ma diventa fisica, ritmica e quasi percussiva in un ambiente iberico che spinge il clavicembalo verso gesti del tutto personali.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Essercizi_per_gravicembalo%2C_K.1-30_%28Scarlatti%2C_Domenico%29" target="_blank" rel="noopener">♫ IMSLP · Essercizi</a>
+        </article>
+      </div>
+      <div class="question">Tre musicisti nati nello stesso anno possono appartenere allo stesso tempo storico senza appartenere allo stesso <em>mondo sonoro</em>.</div>
+    </div>
+
     <h3>Händel, ovvero l’Europa come biografia</h3>
     <p>Georg Friedrich Händel rende quasi inutile spiegare in astratto quanto fosse mobile questo mondo, perché la sua stessa vita collega Halle, Amburgo, Firenze, Roma, Napoli, Venezia, Hannover e Londra, mentre gli incontri italiani con Alessandro e Domenico Scarlatti, Corelli e altri protagonisti della vita musicale romana gli permettono di assorbire direttamente un linguaggio che, una volta trasferito in Inghilterra, non verrà semplicemente imitato ma ricombinato con esperienze tedesche e francesi dentro una cultura londinese sempre più dipendente dal pubblico e dal mercato.</p>
     <p>La <i>Water Music</i>, legata alle feste sul Tamigi e destinata a un contesto pubblico e spettacolare, ci consente di osservare un’altra conseguenza di questa mobilità, perché la suite francese, il colore orchestrale e una sensibilità teatrale maturata in anni di esperienza continentale vengono ricondotti a una situazione profondamente londinese; più che cercare quale nazione “appartenga” a Händel, conviene quindi ascoltare come riesca a trasformare il viaggio in linguaggio.</p>
@@ -660,12 +704,42 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
     <div class="source-row">
       <a class="score-link" href="https://imslp.org/wiki/Essercizi_per_gravicembalo%2C_K.1-30_%28Scarlatti%2C_Domenico%29" target="_blank" rel="noopener">♫ IMSLP · Essercizi per gravicembalo</a>
     </div>
+    <article class="listen-panel" style="margin:1.2rem 0 2rem">
+      <iframe src="https://www.youtube-nocookie.com/embed/PZ_YUDH5rBI" title="Domenico Scarlatti, Sonate K 213, K 141 e K 45, Pierre Hantaï al clavicembalo" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="listen-copy">
+        <b>Ascolto · Scarlatti sulla sua tastiera</b>
+        <h3>Pierre Hantaï · K 213, K 141, K 45</h3>
+        <p>Il clavicembalo rende immediatamente percepibile quanto questa scrittura possa essere fisica senza dipendere dalla dinamica del pianoforte moderno: note ribattute, salti, incroci e articolazioni costruiscono energia attraverso il gesto e il ritmo.</p>
+      </div>
+    </article>
 
     <h3>Tartini, quando il violinista diventa anche ricercatore</h3>
     <p>La storia del violino, che avevamo seguito attraverso Biber, Corelli e Vivaldi, continua con Giuseppe Tartini in una direzione nella quale virtuosismo, insegnamento e curiosità scientifica finiscono per toccarsi, perché la scuola padovana da lui fondata acquista fama internazionale mentre l’osservazione del cosiddetto terzo suono, prodotto dalla percezione di una frequenza differenziale quando due suoni vengono eseguiti in determinate condizioni, diventa per Tartini uno strumento di riflessione sull’intonazione e sull’armonia.</p>
     <p>Il celebre <i>Trillo del diavolo</i>, pubblicato soltanto dopo la morte del compositore, non deve quindi trasformare Tartini nel personaggio leggendario di una sola sonata, poiché il suo posto nel nostro percorso è molto più interessante quando permette di vedere come il musicista settecentesco possa essere contemporaneamente esecutore, compositore, maestro e osservatore dei fenomeni acustici, mentre la scrittura violinistica comincia lentamente ad aprire una strada che porterà ben oltre il Barocco.</p>
     <div class="source-row">
       <a class="score-link" href="https://imslp.org/wiki/Violin_Sonata_in_G_minor%2C_B.g5_%27Le_trille_du_diable%27_%28Tartini%2C_Giuseppe%29" target="_blank" rel="noopener">♫ IMSLP · Trillo del diavolo</a>
+    </div>
+
+    <h3>Due finestre laterali: Parigi e Dresda</h3>
+    <p>Per evitare che la rete europea rimanga soltanto una mappa di nomi, conviene ascoltare due ambienti che non potrebbero essere scambiati fra loro: nella Francia di Couperin l’incontro fra gusto italiano e francese diventa un progetto consapevole, mentre a Dresda la scrittura sacra di Zelenka mostra quanto energia contrappuntistica, colore orchestrale e tensione armonica possano convivere in una corte che assorbe continuamente musicisti e repertori stranieri.</p>
+    <div class="europe-windows">
+      <article class="europe-window">
+        <iframe src="https://www.youtube-nocookie.com/embed/C7PcN0FLyv0" title="François Couperin, Les Nations, Jordi Savall" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="europe-window-copy">
+          <b>Parigi · gusti riuniti</b>
+          <h4>Couperin, <i>Les Nations</i> · Savall</h4>
+          <p>Qui il confronto fra Francia e Italia non è un problema da risolvere, ma il materiale stesso della composizione. Ascolta soprattutto quanto la danza, l’ornamentazione e il disegno strumentale costruiscano una lingua diversa da quella vivaldiana pur condividendone il secolo.</p>
+        </div>
+      </article>
+      <article class="europe-window">
+        <iframe src="https://www.youtube-nocookie.com/embed/n6r5uBW4ImI" title="Jan Dismas Zelenka, Collegium 1704, Vaclav Luks" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="europe-window-copy">
+          <b>Dresda · contrappunto e colore</b>
+          <h4>Zelenka · Collegium 1704 / Václav Luks</h4>
+          <p>Il Barocco centroeuropeo non è una periferia di Bach. Zelenka permette di sentire una scrittura capace di grande densità contrappuntistica e insieme di effetti orchestrali fortemente caratterizzati, dentro uno dei centri musicali più cosmopoliti del primo Settecento.</p>
+          <a class="deep-link" href="https://www.collegium1704.com/en/audio-video" target="_blank" rel="noopener">Collegium 1704 · archivio audio/video</a>
+        </div>
+      </article>
     </div>
 
     <div class="travel-grid">
