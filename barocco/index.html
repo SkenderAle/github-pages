@@ -162,6 +162,25 @@ linear-gradient(180deg,#f8f1e7,#eee3d4);border-top:1px solid #c9baa0;border-bott
 .bach-solo-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .7rem}
 @media(max-width:900px){.dance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.dance-grid,.bach-solo-grid{grid-template-columns:1fr}}
+.vocal-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:
+radial-gradient(circle at 15% 15%,rgba(92,64,82,.09),transparent 18rem),
+linear-gradient(180deg,#f4ece2,#eee3d5);border-top:1px solid #c8b79d;border-bottom:1px solid #c8b79d}
+.vocal-inner{max-width:1180px;margin:auto}
+.vocal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.2rem 0 2rem}
+.vocal-card{background:#fffaf2;border:1px solid var(--line);border-top:4px solid var(--plum);padding:1rem}
+.vocal-card b{display:block;font-family:var(--sans);font-size:.76rem;letter-spacing:.055em;text-transform:uppercase;color:var(--plum);margin-bottom:.25rem}
+.vocal-card h4{font-size:1.17rem;margin:.12rem 0 .42rem}
+.vocal-card p{font-size:.9rem;line-height:1.5;margin:.3rem 0 .72rem}
+.vocal-listen{margin:1.5rem 0 2rem;background:#201b18;color:#f6ede1;border-top:5px solid var(--plum);overflow:hidden}
+.vocal-listen iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+.vocal-listen-copy{padding:1rem 1.1rem 1.2rem}
+.vocal-listen-copy b{display:block;font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:#e4bdcf;margin-bottom:.25rem}
+.vocal-listen-copy h4{color:#fff;font-size:1.22rem;margin:.12rem 0 .45rem}
+.vocal-listen-copy p{font-size:.92rem;line-height:1.52;color:#ddd1c5;margin:.3rem 0}
+.function-strip{display:flex;gap:.4rem;align-items:stretch;overflow-x:auto;margin:1rem 0 1.8rem;padding:.15rem 0 .6rem}
+.function-strip span{flex:0 0 auto;background:#efe2d6;border:1px solid #c9b6a7;padding:.68rem .78rem;font-family:var(--sans);font-size:.75rem;font-weight:900;color:#473833}
+.function-strip i{flex:0 0 auto;display:grid;place-items:center;color:var(--plum);font-style:normal;font-weight:900}
+@media(max-width:760px){.vocal-grid{grid-template-columns:1fr}}
 .before-recording{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:linear-gradient(180deg,#f4ecdf,#eee3d2);border-top:1px solid #c7b79d;border-bottom:1px solid #c7b79d}
 .before-recording-inner{max-width:1180px;margin:auto}
 .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.3rem 0 2rem}
@@ -382,6 +401,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <a href="#vivaldi">Vivaldi</a>
       <a href="#europa">L’Europa</a>
       <a href="#danza">Suite e danza</a>
+      <a href="#voce-sacra">Cantata e oratorio</a>
       <a href="#donne">Le donne</a>
       <a href="#hip">Filologia / HIP</a>
       <a href="#bach">Bach</a>
@@ -440,6 +460,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         <a class="time-node" href="#danza"><b>1720 ca.</b><span>Bach, Sonate/Partite e Suites</span></a>
         <a class="time-node" href="#bach"><b>1721</b><span>Concerti brandeburghesi</span></a>
         <a class="time-node" href="#europa"><b>1722</b><span>Rameau e l’armonia</span></a>
+        <a class="time-node" href="#voce-sacra"><b>1723</b><span>Bach, cantate di Lipsia</span></a>
         <a class="time-node" href="#vivaldi"><b>1725</b><span>Il cimento</span></a>
         <a class="time-node" href="#classicismo"><b>1740 ca.</b><span>C. P. E. Bach e il nuovo gusto</span></a>
         <a class="time-node major" href="#classicismo"><b>1750</b><span>Un confine utile, non una parete</span></a>
@@ -938,6 +959,77 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <p>Le <i>Suite francesi</i>, le Partite per violino e le Suites per violoncello ci impediscono dunque di separare troppo rigidamente forma, danza e tecnica strumentale. La stessa allemanda cambia completamente quando viene affidata al clavicembalo, al violino o al violoncello, perché ogni strumento possiede un proprio modo di articolare il tempo e di suggerire la polifonia. Per questo conoscere l’origine danzante non significa obbligare l’interprete a trasformare ogni movimento in accompagnamento per ballerini, ma ricordare che quella musica conserva una gravità, un passo e una respirazione che non sono puramente astratti.</p>
 
       <div class="question">La suite non è una collana di titoli francesi. È un modo di organizzare il tempo attraverso <em>corpi diversi che continuano a lasciare la loro impronta anche quando il corpo reale scompare dalla sala</em>.</div>
+    </div>
+  </section>
+
+  <section id="voce-sacra" class="vocal-band">
+    <div class="vocal-inner">
+      <div class="section-title"><div class="eyebrow">Dramma senza scena</div><h2>La voce senza palcoscenico</h2></div>
+      <p>Il Barocco non consegna al teatro il monopolio del dramma, perché recitativo, aria, coro, basso continuo e retorica degli affetti possono entrare in una chiesa, in una cappella privata o in una sala aristocratica senza bisogno di scene, costumi e azione rappresentata. Proprio per questo cantata, oratorio e Passione non devono essere spiegati come versioni minori dell’opera, ma come modi differenti di organizzare la parola e il tempo musicale dentro funzioni sociali e religiose diverse.</p>
+      <p>La distinzione non è sempre assoluta e i confini cambiano nel corso del Seicento e del Settecento, ma alcune domande permettono di orientarsi meglio dei nomi: chi racconta, chi parla in prima persona, quale testo viene utilizzato, dove avviene l’esecuzione, quale rapporto esiste con la liturgia e quanto spazio viene concesso alla contemplazione rispetto all’azione.</p>
+
+      <div class="vocal-grid">
+        <article class="vocal-card">
+          <b>Cantata</b>
+          <h4>Una voce può diventare un piccolo teatro</h4>
+          <p>Nella cantata da camera una o più voci possono alternare recitativi e arie sopra il continuo, condensando in pochi minuti un conflitto amoroso, morale o poetico. In ambito luterano la cantata assume invece una funzione liturgica, intrecciando coro, corale, recitativo e aria intorno alle letture della domenica o della festa.</p>
+          <div class="source-row">
+            <a class="score-link" href="https://imslp.org/wiki/Cantate%2C_ariette_e_duetti%2C_Op.2_%28Strozzi%2C_Barbara%29" target="_blank" rel="noopener">♫ IMSLP · Strozzi, op. 2</a>
+            <a class="score-link" href="https://imslp.org/wiki/Wachet_auf%2C_ruft_uns_die_Stimme%2C_BWV_140_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Bach, BWV 140</a>
+          </div>
+        </article>
+
+        <article class="vocal-card">
+          <b>Oratorio</b>
+          <h4>Raccontare senza mostrare</h4>
+          <p>Con Carissimi il racconto sacro può acquistare una forza drammatica enorme pur rinunciando alla rappresentazione scenica. Narratore, personaggi e coro costruiscono una vicenda che l’ascoltatore deve immaginare, e proprio questa assenza di scena concentra l’attenzione sulla parola e sulla trasformazione musicale degli affetti.</p>
+          <div class="source-row">
+            <a class="score-link" href="https://imslp.org/wiki/Jephte_%28Carissimi%2C_Giacomo%29" target="_blank" rel="noopener">♫ IMSLP · Carissimi, Jephte</a>
+          </div>
+        </article>
+
+        <article class="vocal-card">
+          <b>Passione</b>
+          <h4>Il Vangelo diventa architettura sonora</h4>
+          <p>Nella tradizione luterana la Passione mette in musica il racconto evangelico della morte di Cristo. In Bach l’Evangelista narra, i personaggi intervengono, il coro può diventare folla e il corale porta dentro l’opera la voce simbolica della comunità, mentre le arie sospendono la narrazione e trasformano l’evento in meditazione personale.</p>
+          <div class="source-row">
+            <a class="score-link" href="https://imslp.org/wiki/St._Matthew_Passion%2C_BWV_244_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Passione secondo Matteo</a>
+          </div>
+        </article>
+      </div>
+
+      <h3>Carissimi: Roma scopre che il teatro può esistere senza teatro</h3>
+      <p>Nel <i>Jephte</i> il momento decisivo non nasce da una macchina scenica, ma dalla capacità delle voci di far vedere ciò che non viene mostrato. La vicenda biblica procede attraverso il racconto e il dialogo, mentre il celebre lamento finale della figlia di Jephte viene amplificato dalla risposta del coro fino a trasformare il dolore individuale in esperienza collettiva. Il meccanismo è profondamente teatrale, ma il teatro è ormai trasferito nell’immaginazione dell’ascoltatore.</p>
+      <p>Questa possibilità spiega perché il linguaggio nato attorno alla monodia e al melodramma possa diffondersi molto oltre l’opera. Recitativo e aria non appartengono più a un unico genere, ma diventano strumenti capaci di organizzare racconto, meditazione e affetto in contesti differenti.</p>
+
+      <h3>Bach a Lipsia: la cantata come lavoro settimanale</h3>
+      <p>Quando Bach assume nel 1723 l’incarico di Thomaskantor e direttore della musica a Lipsia, la cantata entra dentro una macchina produttiva quasi impressionante, perché le sue responsabilità comprendono l’esecuzione di musica per le domeniche e le principali feste dell’anno liturgico. Nei primi anni Bach costruisce cicli nei quali il lavoro compositivo, la copia delle parti, le prove con ragazzi e strumentisti e l’esecuzione pubblica devono ripetersi con una frequenza che rende molto concreto il carattere professionale del mestiere musicale.</p>
+      <p>La cantata luterana diventa così un punto d’incontro fra mondi che abbiamo già attraversato: il corale appartiene alla memoria comunitaria, il recitativo porta avanti il discorso, l’aria utilizza strumenti e retorica vicini al teatro italiano, mentre il coro può trasformarsi in una costruzione contrappuntistica di enorme complessità. La chiesa non cancella il teatro, ma ne assorbe alcuni strumenti e li orienta verso un’altra funzione.</p>
+
+      <div class="vocal-listen">
+        <iframe src="https://www.youtube-nocookie.com/embed/xXMUpqSyJJo" title="Bach, Gottes Zeit ist die allerbeste Zeit BWV 106, Netherlands Bach Society, Jos van Veldhoven" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="vocal-listen-copy">
+          <b>Ascolto guidato · cantata</b>
+          <h4>Bach, <i>Gottes Zeit ist die allerbeste Zeit</i> BWV 106</h4>
+          <p>L’<i>Actus tragicus</i> permette di sentire quanto il colore strumentale partecipi al significato, perché Bach rinuncia ai violini e costruisce un impasto morbido con due flauti dolci e due viole da gamba. Non è semplice accompagnamento: l’organico stesso diventa parte della meditazione sulla morte e sulla consolazione.</p>
+        </div>
+      </div>
+
+      <h3>La Passione: quando tutti i livelli si sovrappongono</h3>
+      <p>Nella <i>Passione secondo Matteo</i> Bach porta questa pluralità a una scala quasi architettonica. L’Evangelista conserva la continuità narrativa, i personaggi entrano nel racconto, i cori possono rappresentare gruppi e folla, i corali interrompono il tempo dell’azione trasformando la comunità in commentatrice, mentre le arie permettono al singolo ascoltatore di fermarsi davanti all’evento e interiorizzarlo. Il risultato non è opera, perché funzione, testo e spazio appartengono a un altro mondo, ma possiede una forza drammatica che rende inutile qualunque opposizione semplice fra teatro e chiesa.</p>
+      <div class="function-strip" aria-label="Livelli della Passione bachiana">
+        <span>Evangelista · narra</span><i>→</i><span>personaggi · agiscono</span><i>→</i><span>coro · partecipa</span><i>→</i><span>corale · comunità</span><i>→</i><span>aria · meditazione</span>
+      </div>
+
+      <h3>Händel: l’oratorio entra nel mercato londinese</h3>
+      <p>A Londra l’oratorio assume ancora un’altra fisionomia, perché Händel trasferisce nel repertorio inglese una parte della propria esperienza teatrale e la combina con grandi cori, testi biblici e un pubblico che non coincide più soltanto con quello della cappella o della corte. <i>Messiah</i>, eseguito per la prima volta a Dublino nel 1742, non racconta una vicenda attraverso personaggi come un’opera, ma costruisce un percorso scritturale e meditativo nel quale recitativi, arie e soprattutto cori organizzano una grande architettura spirituale.</p>
+      <p>Il suo successo successivo al Foundling Hospital mostra inoltre quanto il genere possa entrare dentro la vita civile della città. Händel utilizza infatti esecuzioni del <i>Messiah</i> per sostenere economicamente l’istituzione e arriva a lasciare all’ospedale una copia completa della partitura e delle parti, così un’opera musicale diventa contemporaneamente repertorio, evento pubblico e strumento di beneficenza.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Messiah%2C_HWV_56_%28Handel%2C_George_Frideric%29" target="_blank" rel="noopener">♫ IMSLP · Messiah</a>
+        <a class="deep-link" href="https://foundlingmuseum.org.uk/handel-gallery/" target="_blank" rel="noopener">Foundling Museum · Händel e Messiah</a>
+      </div>
+
+      <div class="question">Il Barocco usa spesso gli stessi strumenti retorici per funzioni differenti. <em>Recitativo, aria e coro non dicono da soli dove siamo</em>: bisogna chiedersi chi ascolta, quale testo viene cantato, quale spazio lo accoglie e quale funzione deve svolgere quella musica.</div>
     </div>
   </section>
 
