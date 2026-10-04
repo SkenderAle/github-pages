@@ -1462,14 +1462,29 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 
  const progress=document.getElementById('progress'),top=document.getElementById('scrolltop');
  const links=[...document.querySelectorAll('#nav a[href^="#"]')];
+ let activeNavHref='';
  function spy(){
    const doc=document.documentElement,max=doc.scrollHeight-doc.clientHeight;
    progress.style.width=(max?doc.scrollTop/max*100:0)+'%';top.classList.toggle('show',doc.scrollTop>700);
-   const probe=window.scrollY+120;let current=null;
+   const navWrap=document.querySelector('.nav-wrap');
+   const navH=navWrap?navWrap.offsetHeight:0;
+   const probe=window.scrollY+navH+Math.min(160,window.innerHeight*.22);
+   let current=null;
    for(const a of links){const el=document.querySelector(a.getAttribute('href'));if(el&&el.offsetTop<=probe)current=a}
-   links.forEach(a=>a.classList.toggle('active',a===current))
+   links.forEach(a=>a.classList.toggle('active',a===current));
+   if(current){
+     const href=current.getAttribute('href');
+     if(href!==activeNavHref){
+       activeNavHref=href;
+       const row=current.closest('.nav-row');
+       if(row){
+         const left=current.offsetLeft-(row.clientWidth-current.clientWidth)/2;
+         row.scrollTo({left:Math.max(0,left),behavior:'smooth'});
+       }
+     }
+   }
  }
- window.addEventListener('scroll',spy,{passive:true});window.addEventListener('load',spy);top.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+ window.addEventListener('scroll',spy,{passive:true});window.addEventListener('resize',spy,{passive:true});window.addEventListener('load',spy);top.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 })();
 </script>
 <script src="listenings.js"></script><script src="player-engine.js"></script><script>
