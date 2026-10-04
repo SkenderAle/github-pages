@@ -243,6 +243,16 @@ linear-gradient(180deg,#f4ede2,#eae1d4);border-top:1px solid #c3b49c;border-bott
 .backbone-join b{display:block;font-family:var(--sans);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
 .backbone-join p{font-size:.9rem;line-height:1.48;margin:.2rem 0}
 @media(max-width:680px){.dual-backbone{grid-template-columns:1fr}.backbone-join{grid-template-columns:1fr}.backbone-join .join-symbol{text-align:center;transform:rotate(90deg)}}
+.backbone-lab{margin:1.2rem 0 2rem;padding:1.05rem 1.1rem;background:#241f1b;color:#f6eee4;border-top:5px solid var(--gold)}
+.backbone-lab h3{color:#fff;margin:.15rem 0 .45rem}
+.backbone-lab>p{font-size:.92rem;line-height:1.5;color:#ddd2c6;margin:.3rem 0 .9rem}
+.backbone-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
+.backbone-audio{border:1px solid rgba(255,255,255,.17);background:#302923;color:#f7eee5;padding:.85rem;text-align:left;cursor:pointer}
+.backbone-audio b{display:block;font-family:var(--sans);font-size:.74rem;letter-spacing:.055em;text-transform:uppercase;color:#edcf8f;margin-bottom:.25rem}
+.backbone-audio span{display:block;font-size:.84rem;line-height:1.4}
+.backbone-audio:hover{background:#3b322a}
+.backbone-disclaimer{font-family:var(--sans);font-size:.7rem;color:#bfb2a5;margin-top:.75rem}
+@media(max-width:700px){.backbone-controls{grid-template-columns:1fr}}
 .before-recording{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:linear-gradient(180deg,#f4ecdf,#eee3d2);border-top:1px solid #c7b79d;border-bottom:1px solid #c7b79d}
 .before-recording-inner{max-width:1180px;margin:auto}
 .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.3rem 0 2rem}
@@ -596,6 +606,26 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       </article>
     </div>
     <div class="question">Per tutto il percorso terremo insieme queste due immagini: <em>una voce sopra un basso</em> e <em>molte voci che pensano insieme</em>. Il Barocco cresce nella tensione fra queste due possibilità, e Bach finirà per farle convivere dentro lo stesso pensiero musicale.</div>
+    <div class="backbone-lab">
+      <div class="eyebrow">Laboratorio · senti la differenza</div>
+      <h3>Prima riconosci la trama, poi impari il nome</h3>
+      <p>Tre esempi sintetici usano materiale volutamente semplice. Nel primo una linea emerge sopra un basso, nel secondo più linee entrano imitandosi, nel terzo i due principi vengono fatti convivere. Non sono ricostruzioni storiche: servono soltanto a rendere udibile la differenza strutturale.</p>
+      <div class="backbone-controls">
+        <button class="backbone-audio" type="button" data-texture="mono">
+          <b>1 · Monodia accompagnata</b>
+          <span>Ascolta una voce chiaramente in primo piano sopra un sostegno grave.</span>
+        </button>
+        <button class="backbone-audio" type="button" data-texture="poly">
+          <b>2 · Polifonia imitativa</b>
+          <span>Ascolta lo stesso piccolo profilo entrare successivamente in più voci.</span>
+        </button>
+        <button class="backbone-audio" type="button" data-texture="join">
+          <b>3 · I due principi insieme</b>
+          <span>Una linea resta riconoscibile, ma il tessuto interno comincia a risponderle e imitarla.</span>
+        </button>
+      </div>
+      <div class="backbone-disclaimer">Sintesi didattica Web Audio: timbri, intervalli e durate sono schematici e non rappresentano una prassi esecutiva storica.</div>
+    </div>
     <div class="history-thread">
       <div class="thread-label">Dentro la stessa storia</div>
       <h3>Francesca Caccini: la nuova voce non ha un solo volto</h3>
@@ -1964,6 +1994,45 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         osc.start(t);osc.stop(t+d+.02);
         t+=d;
       });
+    });
+  });
+
+  document.querySelectorAll('.backbone-audio').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const AudioCtx=window.AudioContext||window.webkitAudioContext;
+      if(!AudioCtx)return;
+      if(!hipAudio.ctx)hipAudio.ctx=new AudioCtx();
+      const ctx=hipAudio.ctx;
+      const start=ctx.currentTime+.06;
+      const melody=[60,64,67,65,64,62,60];
+      const bass=[48,48,43,43,45,43,48];
+
+      function note(midi,t,d,amp,type='triangle'){
+        const osc=ctx.createOscillator(), gain=ctx.createGain();
+        osc.type=type;
+        osc.frequency.value=440*Math.pow(2,(midi-69)/12);
+        gain.gain.setValueAtTime(.0001,t);
+        gain.gain.exponentialRampToValueAtTime(amp,t+.012);
+        gain.gain.setValueAtTime(amp*.72,Math.max(t+.02,t+d-.04));
+        gain.gain.exponentialRampToValueAtTime(.0001,t+d);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(t);osc.stop(t+d+.02);
+      }
+
+      const texture=btn.dataset.texture;
+      if(texture==='mono'){
+        melody.forEach((m,i)=>note(m,start+i*.34,.31,.065,'triangle'));
+        bass.forEach((m,i)=>note(m,start+i*.34,.33,.035,'sine'));
+      } else if(texture==='poly'){
+        [0,.68,1.36].forEach((off,v)=>{
+          const trans=[0,7,-5][v];
+          melody.slice(0,5).forEach((m,i)=>note(m+trans,start+off+i*.28,.25,.03,v===1?'sine':'triangle'));
+        });
+      } else {
+        melody.forEach((m,i)=>note(m,start+i*.34,.31,.052,'triangle'));
+        bass.forEach((m,i)=>note(m,start+i*.34,.33,.026,'sine'));
+        melody.slice(0,5).forEach((m,i)=>note(m+7,start+.68+i*.34,.28,.022,'square'));
+      }
     });
   });
 
