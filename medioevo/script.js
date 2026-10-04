@@ -75,3 +75,45 @@ ratioButtons.forEach(btn=>{
     if(ratioNote)ratioNote.textContent=ratioLabels[btn.dataset.ratio]+' · la lunghezza della corda cambia secondo un rapporto semplice.';
   });
 });
+
+const isorythmLab=document.getElementById('isorythmLab');
+const isorythmPlay=document.getElementById('isorythmPlay');
+const isorythmText=document.getElementById('isorythmText');
+if(isorythmLab&&isorythmPlay){
+  isorythmPlay.addEventListener('click',()=>{
+    isorythmLab.classList.toggle('play');
+    isorythmPlay.textContent=isorythmLab.classList.contains('play')?'■ Ferma':'▶ Fai scorrere i cicli';
+    if(isorythmText)isorythmText.textContent=isorythmLab.classList.contains('play')
+      ?'I due cicli ritornano con periodicità differenti: la relazione cambia mentre ciascuno conserva la propria identità.'
+      :'La struttura può essere perfettamente organizzata anche quando non è evidente al primo ascolto.';
+  });
+}
+
+const chaseLab=document.getElementById('chaseLab');
+const chasePlay=document.getElementById('chasePlay');
+const chaseText=document.getElementById('chaseText');
+if(chaseLab&&chasePlay){
+  chasePlay.addEventListener('click',()=>{
+    chaseLab.classList.remove('play'); void chaseLab.offsetWidth; chaseLab.classList.add('play');
+    chasePlay.textContent='↻ Ripeti';
+    if(chaseText) setTimeout(()=>chaseText.innerHTML='La seconda voce riprende la prima dopo un intervallo: <strong>questo procedimento si chiama canone</strong>.',4600);
+  });
+}
+
+const wordStage=document.getElementById('wordStage');
+document.querySelectorAll('[data-word]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const w=btn.dataset.word;
+    if(!wordStage)return;
+    wordStage.className='word-stage';
+    const map={
+      salire:['ascend','Una linea potrebbe salire. È una possibilità, non una traduzione obbligatoria.'],
+      fermarsi:['stop','Una pausa o un arresto può rendere percepibile il significato di “fermarsi”.'],
+      correre:['run','Figure più rapide possono suggerire movimento e concitazione.'],
+      piangere:['cry','Una linea discendente, un rallentamento, una dissonanza, un melisma: le possibilità sono molte.']
+    };
+    const [cls,txt]=map[w]||['',''];
+    if(cls)wordStage.classList.add(cls);
+    wordStage.textContent=txt;
+  });
+});
