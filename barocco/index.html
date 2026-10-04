@@ -103,6 +103,14 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 .instrument-card p{font-size:.93rem;line-height:1.5;margin:.25rem 0 .8rem}
 .instrument-card .score-link{font-size:.7rem;padding:.45rem .62rem}
 @media(max-width:760px){.instrument-cabinet{grid-template-columns:1fr}}
+.travel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.5rem 0 2rem}
+.travel-card{border:1px solid var(--line);background:#f8f2e7;padding:1.05rem 1.1rem}
+.travel-card b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem}
+.travel-card h3{margin:.1rem 0 .55rem;font-size:1.28rem}
+.travel-card p{font-size:.94rem;line-height:1.55;margin:.35rem 0 .85rem}
+.archive-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid #9fa9a2;background:#edf2ee;color:#2f493d;border-radius:999px;padding:.48rem .7rem;font-family:var(--sans);font-size:.72rem;font-weight:850}
+.archive-link:hover{background:#f8fff9}
+@media(max-width:760px){.travel-grid{grid-template-columns:1fr}}
 .footer{background:#17130f;color:#d9cec0;padding:2.7rem 1.3rem;font-family:var(--sans);font-size:.79rem}
 .footer-inner{max-width:1180px;margin:auto}
 .footer a{color:#ead09b}
@@ -372,8 +380,76 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 
   <section id="europa">
     <div class="section-title"><div class="eyebrow">Rotte</div><h2>Il Barocco attraversa i confini</h2></div>
-    <p>La diffusione delle partiture, i viaggi dei musicisti e la crescita dell’editoria rendono il Barocco europeo molto più connesso di quanto una suddivisione scolastica per nazioni potrebbe suggerire. Händel attraversa Germania, Italia e Inghilterra, Couperin tenta consapevolmente di riunire gusto francese e italiano, Purcell assorbe esperienze continentali senza perdere una fisionomia inglese, mentre Dresda raccoglie musicisti e repertori provenienti da regioni diverse e diventa uno dei luoghi nei quali l’influenza italiana può essere osservata mentre si trasforma.</p>
-    <p>Queste rotte aiutano anche a capire perché la pagina stampata diventi una forma di viaggio. Un concerto veneziano può essere studiato in Germania senza che il suo autore debba attraversare personalmente le Alpi, mentre copiare o trascrivere una composizione significa penetrarne lentamente la struttura, osservandone dall’interno il funzionamento in un’epoca nella quale non esiste ancora alcuna registrazione da riascoltare.</p>
+    <p>Se provassimo a raccontare il Barocco dividendo ordinatamente l’Europa in scuole nazionali, riusciremmo certamente a riconoscere alcune caratteristiche utili, ma perderemmo proprio uno dei fenomeni più interessanti del periodo, perché musicisti, partiture e pratiche esecutive attraversano continuamente quelle frontiere che i manuali utilizzano per mettere ordine. Venezia dialoga con Dresda, Roma entra nella formazione di musicisti destinati a lavorare altrove, Londra accoglie repertori italiani e francesi, mentre Parigi osserva con attenzione ciò che arriva dall’Italia senza per questo rinunciare alla propria lingua musicale.</p>
+    <p>La circolazione non avviene soltanto attraverso i viaggi individuali, poiché la stampa e la copia manoscritta permettono alle composizioni di muoversi anche quando il loro autore rimane a casa; una partitura può quindi diventare il luogo nel quale un musicista incontra un altro senza averlo mai visto, come accadrà in maniera particolarmente significativa quando Bach studierà e trascriverà concerti italiani.</p>
+
+    <h3>Venezia, dove la musica esce dai luoghi ufficiali</h3>
+    <p>La città lagunare non vive musicalmente soltanto nelle chiese, negli ospedali e nei teatri, perché una parte del repertorio circola anche attraverso canali, case e spazi sociali nei quali la distinzione moderna fra musica colta e musica popolare diventa molto meno netta; le cosiddette arie o canzonette da battello, spesso legate al dialetto veneziano, mostrano proprio questa mobilità, poiché una melodia può nascere o circolare in un contesto urbano, essere fissata in manoscritto, entrare in raccolte private e raggiungere ambienti assai lontani da quello nel quale era stata ascoltata per la prima volta.</p>
+    <p>Il fondo storico della Fondazione Ugo e Olga Levi conserva, fra l’altro, un manoscritto intitolato <i>N. XII: Canzonette da Batello Veneziane</i>, testimonianza concreta di un repertorio che permette di osservare come oralità, scrittura e memoria urbana potessero incontrarsi; proprio per questo lo inseriremo nel sito non come curiosità folkloristica, ma come documento capace di complicare la separazione troppo comoda fra ciò che sarebbe “musica d’arte” e ciò che apparterrebbe invece alla strada.</p>
+    <div class="source-row">
+      <a class="archive-link" href="https://archivio.fondazionelevi.it/serie-items?f%5B0%5D=serie_items%3AFondo+storico&f%5B1%5D=serie_items%3AI-Vlevi+-+Biblioteca+della+Fondazione+Ugo+e+Olga+Levi+%22Gianni+Milner%22%2C+Venezia&f%5B2%5D=tipologia_specifica_items_2%3Acomunicato+stampa&f%5B3%5D=tipologia_specifica_items_2%3Aparti&f%5B4%5D=tipologia_specifica_items_2%3Aparticelle&f%5B5%5D=tipologia_specifica_items_2%3Apartitura&id_s=%2A" target="_blank" rel="noopener">Archivio Levi · fonte manoscritta</a>
+    </div>
+
+    <h3>Händel, ovvero l’Europa come biografia</h3>
+    <p>Georg Friedrich Händel rende quasi inutile spiegare in astratto quanto fosse mobile questo mondo, perché la sua stessa vita collega Halle, Amburgo, Firenze, Roma, Napoli, Venezia, Hannover e Londra, mentre gli incontri italiani con Alessandro e Domenico Scarlatti, Corelli e altri protagonisti della vita musicale romana gli permettono di assorbire direttamente un linguaggio che, una volta trasferito in Inghilterra, non verrà semplicemente imitato ma ricombinato con esperienze tedesche e francesi dentro una cultura londinese sempre più dipendente dal pubblico e dal mercato.</p>
+    <p>La <i>Water Music</i>, legata alle feste sul Tamigi e destinata a un contesto pubblico e spettacolare, ci consente di osservare un’altra conseguenza di questa mobilità, perché la suite francese, il colore orchestrale e una sensibilità teatrale maturata in anni di esperienza continentale vengono ricondotti a una situazione profondamente londinese; più che cercare quale nazione “appartenga” a Händel, conviene quindi ascoltare come riesca a trasformare il viaggio in linguaggio.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/Water_Music%2C_HWV_348-350_%28Handel%2C_George_Frideric%29" target="_blank" rel="noopener">♫ IMSLP · Water Music</a>
+    </div>
+
+    <h3>Purcell, assorbire senza perdere la propria voce</h3>
+    <p>In Inghilterra Henry Purcell offre un esempio quasi complementare, perché conosce e assimila elementi francesi e italiani senza che il risultato possa essere scambiato né per Lully né per un compositore italiano; la tradizione inglese del consort, il rapporto con la lingua, la musica sacra anglicana e il teatro continuano infatti a costituire un terreno riconoscibile, mentre l’influenza continentale amplia le possibilità della scrittura senza cancellarne l’identità.</p>
+    <p>Le <i>Sonatas of Three Parts</i>, pubblicate nel 1683, mostrano in maniera particolarmente chiara quanto il modello italiano potesse essere accolto dentro un’altra cultura, e permettono inoltre di riprendere il piccolo paradosso incontrato con Corelli, poiché la denominazione “a tre” non coincide automaticamente con il numero degli esecutori quando il basso continuo richiede più strumenti per essere realizzato.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/12_Sonatas_of_Three_Parts%2C_Z.790-801_%28Purcell%2C_Henry%29" target="_blank" rel="noopener">♫ IMSLP · Sonatas of Three Parts</a>
+    </div>
+
+    <h3>Couperin prova a riconciliare due gusti</h3>
+    <p>François Couperin rende esplicito ciò che molti altri musicisti stanno facendo implicitamente, perché nella raccolta <i>Les goûts réunis</i> del 1724 tenta una conciliazione fra gusto francese e italiano, mentre le due <i>Apothéoses</i> dedicate a Corelli e Lully trasformano quasi in personaggi simbolici i due mondi che avevano dominato una parte dell’immaginario musicale europeo; l’interesse del gesto non sta nella ricerca di un compromesso neutro, ma nella consapevolezza che un’identità musicale può diventare più ricca proprio quando accetta di confrontarsi con un linguaggio differente.</p>
+
+    <h3>Rameau, quando la pratica vuole diventare sistema</h3>
+    <p>La Francia del primo Settecento offre anche un’altra trasformazione decisiva, perché Jean Philippe Rameau, pubblicando nel 1722 il <i>Traité de l’harmonie réduite à ses principes naturels</i>, cerca di ricondurre il funzionamento degli accordi e delle loro relazioni a principi generali; dopo oltre un secolo nel quale il basso continuo aveva reso quotidiana la pratica di costruire armonie sopra una linea grave, la teoria tenta ora di comprendere in modo sistematico ciò che i musicisti avevano imparato a utilizzare con enorme naturalezza.</p>
+    <p>Il trattato appartiene ancora pienamente alla cultura barocca, ma la fiducia con la quale Rameau cerca leggi razionali e naturali capaci di spiegare il sistema armonico lascia già intravedere il clima intellettuale del Settecento illuminista, creando così un ponte particolarmente utile verso ciò che incontreremo nel Classicismo.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/Trait%C3%A9_de_l%27harmonie_r%C3%A9duite_%C3%A0_ses_principes_naturels_%28Rameau%2C_Jean-Philippe%29" target="_blank" rel="noopener">♫ IMSLP · Traité de l’harmonie, 1722</a>
+    </div>
+
+    <h3>Dresda, una città nella quale gli stili si incontrano</h3>
+    <p>Se Venezia è uno dei grandi laboratori italiani del Barocco, Dresda diventa nel primo Settecento uno dei luoghi nei quali la circolazione europea può essere osservata quasi materialmente, perché la corte sassone raccoglie musicisti e repertori provenienti da regioni differenti mentre il gusto italiano acquista un peso particolarmente forte; Johann Georg Pisendel, che conosce Vivaldi a Venezia, contribuisce a trasferire verso la Germania quella cultura violinistica e concertante, ma il risultato non consiste in una semplice copia del modello veneziano, poiché ciò che arriva viene assorbito dentro un ambiente orchestrale e cortigiano differente.</p>
+    <p>Nello stesso spazio lavora Jan Dismas Zelenka, musicista boemo formatosi anche con Johann Joseph Fux, la cui scrittura permette di ascoltare un Barocco mitteleuropeo capace di unire contrappunto, energia ritmica e soluzioni armoniche talvolta sorprendenti; il suo interesse nel nostro percorso consiste proprio nel sottrarre Bach all’isolamento monumentale nel quale la storia successiva tende a collocarlo, ricordandoci che la Germania e l’Europa centrale del suo tempo erano popolate da musicisti di enorme qualità e da linguaggi molto differenti.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/List_of_works_by_Jan_Dismas_Zelenka" target="_blank" rel="noopener">♫ IMSLP · opere di Zelenka</a>
+    </div>
+
+    <h3>Telemann e l’arte di non scegliere un solo stile</h3>
+    <p>Georg Philipp Telemann rappresenta forse meglio di chiunque altro la curiosità onnivora del primo Settecento, perché la sua produzione attraversa con naturalezza modelli francesi, italiani e tedeschi, mentre l’esperienza diretta di repertori ascoltati durante i viaggi contribuisce a renderne il linguaggio particolarmente mobile; la sua enorme fama contemporanea e la quantità impressionante di musica composta ricordano inoltre quanto la gerarchia dei grandi nomi che oggi consideriamo ovvia sia in realtà il risultato di una storia successiva.</p>
+    <p>La <i>Tafelmusik</i> del 1733 offre un esempio particolarmente adatto al nostro sito, poiché all’interno di una stessa grande raccolta convivono ouverture, quartetti, concerti, trii e sonate, come se la varietà dei generi e delle combinazioni strumentali diventasse essa stessa una dichiarazione della possibilità di attraversare confini stilistici senza doverne scegliere uno soltanto.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/Tafelmusik_%28Telemann%2C_Georg_Philipp%29" target="_blank" rel="noopener">♫ IMSLP · Tafelmusik</a>
+    </div>
+
+    <h3>Scarlatti, quando la tastiera arriva nella penisola iberica</h3>
+    <p>Domenico Scarlatti, nato nello stesso 1685 di Bach e Händel, percorre una traiettoria ancora differente, perché dopo gli anni italiani e il servizio presso la corte portoghese segue Maria Barbara nella penisola iberica, dove il clavicembalo diventa il luogo di una ricerca nella quale la tradizione italiana si incontra con gesti, ritmi e sonorità che appartengono al nuovo ambiente; le sue sonate non hanno bisogno di essere ricondotte a un programma descrittivo preciso per far percepire quanto il corpo stesso dell’esecutore venga coinvolto da incroci delle mani, salti, note ribattute e figurazioni che trasformano la tastiera in uno strumento sorprendentemente fisico.</p>
+    <p>Il confronto con Bach diventerà particolarmente istruttivo proprio perché entrambi partono da una tastiera ma sembrano vedere al suo interno spazi differenti, mentre gli <i>Essercizi per gravicembalo</i>, pubblicati a Londra nel 1738, dimostrano ancora una volta come una musica legata a esperienze iberiche possa entrare nel circuito editoriale internazionale e raggiungere un pubblico molto più vasto del luogo nel quale era maturata.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/Essercizi_per_gravicembalo%2C_K.1-30_%28Scarlatti%2C_Domenico%29" target="_blank" rel="noopener">♫ IMSLP · Essercizi per gravicembalo</a>
+    </div>
+
+    <h3>Tartini, quando il violinista diventa anche ricercatore</h3>
+    <p>La storia del violino, che avevamo seguito attraverso Biber, Corelli e Vivaldi, continua con Giuseppe Tartini in una direzione nella quale virtuosismo, insegnamento e curiosità scientifica finiscono per toccarsi, perché la scuola padovana da lui fondata acquista fama internazionale mentre l’osservazione del cosiddetto terzo suono, prodotto dalla percezione di una frequenza differenziale quando due suoni vengono eseguiti in determinate condizioni, diventa per Tartini uno strumento di riflessione sull’intonazione e sull’armonia.</p>
+    <p>Il celebre <i>Trillo del diavolo</i>, pubblicato soltanto dopo la morte del compositore, non deve quindi trasformare Tartini nel personaggio leggendario di una sola sonata, poiché il suo posto nel nostro percorso è molto più interessante quando permette di vedere come il musicista settecentesco possa essere contemporaneamente esecutore, compositore, maestro e osservatore dei fenomeni acustici, mentre la scrittura violinistica comincia lentamente ad aprire una strada che porterà ben oltre il Barocco.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/Violin_Sonata_in_G_minor%2C_B.g5_%27Le_trille_du_diable%27_%28Tartini%2C_Giuseppe%29" target="_blank" rel="noopener">♫ IMSLP · Trillo del diavolo</a>
+    </div>
+
+    <div class="travel-grid">
+      <article class="travel-card"><b>Venezia → Dresda</b><h3>Il concerto viaggia</h3><p>Con Pisendel e la corte sassone il linguaggio italiano entra in un ambiente che lo assorbe e lo trasforma, rendendo la circolazione delle partiture parte della storia stessa della forma.</p></article>
+      <article class="travel-card"><b>Roma → Londra</b><h3>Händel porta con sé l’Italia</h3><p>La lezione di Corelli e dell’ambiente romano non rimane un ricordo biografico, perché continua ad agire dentro una carriera costruita per il pubblico londinese.</p></article>
+      <article class="travel-card"><b>Italia ↔ Francia</b><h3>Couperin riunisce i gusti</h3><p>La differenza fra le due tradizioni diventa materiale compositivo, mostrando che un’identità può definirsi anche attraverso ciò che sceglie di accogliere.</p></article>
+      <article class="travel-card"><b>Italia → Iberia → Londra</b><h3>Scarlatti cambia la tastiera</h3><p>L’esperienza iberica entra in una scrittura nata da una formazione italiana e raggiunge poi il mercato editoriale londinese, completando una rotta che nessuna etichetta nazionale riesce a contenere.</p></article>
+    </div>
+
+    <div class="question">Il Barocco europeo diventa più comprensibile quando smettiamo di domandarci soltanto <em>da quale paese provenga una musica</em> e cominciamo a chiederci attraverso quali strade sia arrivata fin lì.</div>
   </section>
 
   <section id="hip" class="stucco-band">
