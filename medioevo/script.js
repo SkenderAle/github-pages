@@ -43,11 +43,17 @@ if(voiceDemo&&voicePlay){
 }
 
 const silentPlay=document.getElementById('silentPlay');
-const silenceResult=document.getElementById('silenceResult');
-if(silentPlay&&silenceResult){
-  silentPlay.addEventListener('click',()=>{
-    silenceResult.textContent='Nessun audio: la melodia originaria non è conservata. Questo silenzio è il dato storico.';
-    silentPlay.textContent='↻ Riascolta il silenzio';
+const canticoDialog=document.getElementById('canticoDialog');
+const canticoClose=document.getElementById('canticoClose');
+if(silentPlay&&canticoDialog){
+  silentPlay.addEventListener('click',()=>canticoDialog.showModal());
+}
+if(canticoClose&&canticoDialog){
+  canticoClose.addEventListener('click',()=>canticoDialog.close());
+  canticoDialog.addEventListener('click',e=>{
+    const r=canticoDialog.getBoundingClientRect();
+    const outside=e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom;
+    if(outside)canticoDialog.close();
   });
 }
 
