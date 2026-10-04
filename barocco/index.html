@@ -97,6 +97,12 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 .stucco-inner{max-width:1180px;margin:auto}
 .route{display:flex;gap:.55rem;overflow:auto;margin:1.4rem 0 0;padding-bottom:.4rem}
 .route span{flex:0 0 auto;background:#efe4d3;border-top:4px solid var(--gold);padding:.75rem .9rem;font-family:var(--sans);font-weight:800}
+.instrument-cabinet{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1.4rem 0 2rem}
+.instrument-card{background:#f8f1e5;border:1px solid var(--line);border-top:4px solid var(--gold);padding:1rem}
+.instrument-card b{display:block;font-family:var(--sans);font-size:.82rem;letter-spacing:.04em;color:var(--red);margin-bottom:.35rem}
+.instrument-card p{font-size:.93rem;line-height:1.5;margin:.25rem 0 .8rem}
+.instrument-card .score-link{font-size:.7rem;padding:.45rem .62rem}
+@media(max-width:760px){.instrument-cabinet{grid-template-columns:1fr}}
 .footer{background:#17130f;color:#d9cec0;padding:2.7rem 1.3rem;font-family:var(--sans);font-size:.79rem}
 .footer-inner{max-width:1180px;margin:auto}
 .footer a{color:#ead09b}
@@ -320,12 +326,47 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
   <section id="vivaldi" class="stucco-band">
     <div class="stucco-inner">
       <div class="section-title"><div class="eyebrow">Venezia laboratorio d’Europa</div><h2>Vivaldi prima delle Stagioni</h2></div>
-      <p>Quando Antonio Vivaldi entra all’Ospedale della Pietà nel 1703, il violino possiede già una grande tradizione, il basso continuo è pratica consolidata e il concerto grosso ha raggiunto una straordinaria maturità; proprio per questo ciò che accade a Venezia diventa tanto interessante, perché Vivaldi non deve inventare da zero quel mondo, ma può spingerlo in direzioni nuove grazie a una comunità di musiciste altamente preparate e a una disponibilità di strumenti che trasforma la Pietà in un autentico laboratorio timbrico.</p>
-      <p>La varietà delle combinazioni non va trattata come un catalogo di curiosità, poiché viola d’amore, fagotto, mandolino, liuto, tiorba, flauti, oboe, chalumeau e corni diventano importanti soltanto quando permettono di capire come il timbro possa contribuire alla forma. In questo ambiente il concerto solistico acquista una nuova energia, perché il ritornello orchestrale costruisce memoria mentre il solista può allontanarsi, modulare e attraversare regioni differenti prima che il ritorno dell’orchestra ristabilisca un punto di riferimento.</p>
-      <p>Le <i>Quattro stagioni</i>, collocate all’interno dell’op. 8 <i>Il cimento dell’armonia e dell’inventione</i>, possono così essere incontrate soltanto dopo aver conosciuto il laboratorio che le rende possibili, perché gli uccelli, i temporali, la caccia e il gelo diventano meno effetti illustrativi che dimostrazioni di una scrittura capace di trasformare il colore orchestrale in gesto narrativo.</p>
+      <p>Quando Antonio Vivaldi entra all’Ospedale della Pietà nel 1703, il mondo nel quale si trova a lavorare possiede già una tradizione violinistica solidissima, conosce il basso continuo come pratica quotidiana e ha sviluppato forme concertanti ormai riconoscibili; proprio per questo la sua originalità non consiste nell’inventare dal nulla il Barocco, ma nel comprendere quanto lontano possano essere spinte possibilità che altri avevano già preparato, soprattutto quando il rapporto fra solista, orchestra e colore strumentale viene sottoposto a una continua ricerca.</p>
+
+      <h3>La Pietà non è lo sfondo della biografia di Vivaldi</h3>
+      <p>L’Ospedale della Pietà era insieme luogo di assistenza e istituzione musicale, all’interno della quale le cosiddette Figlie di Choro ricevevano una formazione che poteva condurle a diventare cantanti, strumentiste e insegnanti; per questo sarebbe riduttivo descrivere l’ensemble come se fosse semplicemente “l’orchestra di Vivaldi”, poiché il compositore lavora dentro una comunità già strutturata, della quale conosce capacità e risorse, mentre l’istituzione acquista a sua volta una parte della propria fama europea anche grazie alla musica che egli scrive per le sue esecutrici.</p>
+      <p>La relazione è quindi reciproca, e diventa particolarmente interessante se osservata attraverso gli strumenti, perché Vivaldi non scrive per un’orchestra astratta ma per persone concrete e per una disponibilità timbrica eccezionalmente ricca, tanto che il repertorio della Pietà conserva tracce di strumenti che l’orchestra moderna renderà poi marginali o abbandonerà del tutto; il dato non serve a costruire un museo delle curiosità, ma a capire quanto il colore potesse diventare parte della composizione stessa.</p>
+
+      <h3>L’armadio sonoro della Pietà</h3>
+      <p>Piuttosto che presentare una lunga lista di strumenti, conviene aprire alcune ante di questo armadio e osservare come Vivaldi reagisca ogni volta a una materia sonora diversa, perché la viola d’amore gli offre risonanze che il violino non possiede, il fagotto viene sottratto alla sola funzione di sostegno grave per acquistare un’agilità sorprendente, mentre perfino due mandolini possono diventare protagonisti di un concerto nel quale la leggerezza del pizzicato modifica l’intera percezione dell’orchestra.</p>
+      <div class="instrument-cabinet">
+        <article class="instrument-card">
+          <b>Viola d’amore</b>
+          <p>Le corde di risonanza producono un alone sonoro particolare, che Vivaldi tratta come una vera identità timbrica anziché come variante del violino.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Concerto_for_Viola_d%27amore_in_A_minor%2C_RV_397_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener">♫ IMSLP · RV 397</a>
+        </article>
+        <article class="instrument-card">
+          <b>Fagotto</b>
+          <p>La linea grave può diventare solista, acquistando agilità e carattere in una scrittura che contraddice l’idea del fagotto come semplice fondamento dell’orchestra.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Bassoon_Concerto_in_E_minor%2C_RV_484_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener">♫ IMSLP · RV 484</a>
+        </article>
+        <article class="instrument-card">
+          <b>Due mandolini</b>
+          <p>Il pizzicato diventa materia concertante e modifica l’equilibrio timbrico dell’insieme, mostrando quanto il concerto possa nascere anche dalla specificità dello strumento scelto.</p>
+          <a class="score-link" href="https://imslp.org/wiki/Concerto_for_2_Mandolins_in_G_major%2C_RV_532_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener">♫ IMSLP · RV 532</a>
+        </article>
+      </div>
+
+      <h3>Il concerto comincia a respirare diversamente</h3>
+      <p>La tradizione del concerto grosso non scompare con Vivaldi, ma il rapporto fra individuo e gruppo viene organizzato con un’energia nuova, poiché il ritornello orchestrale può costruire una memoria riconoscibile mentre il solista si allontana, modula, attraversa regioni armoniche differenti e sviluppa un discorso più libero prima che l’orchestra ritorni a ristabilire un punto di riferimento; il principio appare semplice soltanto finché non ci accorgiamo che proprio quella memoria consente all’ascoltatore di percepire con maggiore intensità tutto ciò che nel frattempo è cambiato.</p>
+      <p>Vivaldi non inventa il solista e non inventa il virtuosismo, che abbiamo già incontrato in Biber e Corelli, ma conferisce alla relazione fra protagonista e gruppo una direzione formale particolarmente efficace, mentre la scrittura per strumenti differenti moltiplica le possibilità di identificare ogni volta un nuovo centro dell’attenzione; il concerto diventa così non soltanto una forma basata sul contrasto, ma un luogo nel quale timbro, memoria e movimento armonico finiscono per collaborare alla costruzione della forma.</p>
+      <div class="source-row">
+        <button class="tech-button" type="button" data-modal="modal-concerto">Apri · Concertino, ripieno e concerto solistico</button>
+      </div>
+
+      <h3>Solo adesso possiamo tornare alle Stagioni</h3>
+      <p>Le <i>Quattro stagioni</i>, collocate all’interno dell’op. 8 <i>Il cimento dell’armonia e dell’inventione</i>, acquistano un significato diverso quando vengono incontrate dopo il laboratorio della Pietà, perché gli uccelli, i temporali, la caccia e il gelo smettono di essere una collezione di effetti descrittivi e diventano la dimostrazione di quanto profondamente Vivaldi abbia imparato a trasformare il gesto strumentale in racconto; l’imitazione della natura, in altre parole, non viene semplicemente sovrapposta alla forma concertistica, ma agisce dall’interno sulla scelta dei ritmi, dei registri, delle articolazioni e delle opposizioni fra solista e orchestra.</p>
+      <p>La popolarità delle <i>Stagioni</i> ha finito per nascondere proprio questa ricchezza, e per questo nel nostro percorso arrivano tardi: prima di ascoltare ancora una volta la <i>Primavera</i>, dobbiamo avere conosciuto almeno un poco l’officina nella quale quella musica è diventata possibile.</p>
       <div class="source-row">
         <a class="score-link" href="https://imslp.org/wiki/Il_cimento_dell%27armonia_e_dell%27inventione%2C_Op.8_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener">♫ IMSLP · Il cimento op. 8</a>
       </div>
+
+      <div class="callout"><strong>Qui entreranno gli ascolti veri.</strong> Non una playlist vivaldiana, ma tre esperienze con funzioni differenti: un concerto per uno strumento inatteso, un confronto che renda percepibile il rapporto fra ritornello e solista e, soltanto alla fine, una delle <i>Stagioni</i> riletta alla luce di ciò che abbiamo imparato.</div>
     </div>
   </section>
 
