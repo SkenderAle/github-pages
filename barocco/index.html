@@ -137,6 +137,32 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 .wonder-card h3{margin:.25rem 0 .65rem;font-size:1.55rem}
 .wonder-card p{margin:.55rem 0;font-size:1rem}
 @media(max-width:760px){.listen-pair{grid-template-columns:1fr}}
+.hip-lab{margin:2.2rem 0 2.8rem;padding:1.4rem;background:#201b18;color:#f4eadc;border-top:5px solid var(--gold);box-shadow:var(--shadow)}
+.hip-lab .eyebrow{color:#e8ca8c}
+.hip-lab h3,.hip-lab h4{color:#fff}
+.hip-lab>p{color:#dfd4c7}
+.hip-lab-intro{max-width:900px}
+.hip-lab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1.2rem 0 1.7rem}
+.hip-lab-card{background:#2a2420;border:1px solid rgba(255,255,255,.14);padding:1rem;min-width:0}
+.hip-lab-card b{display:block;font-family:var(--sans);font-size:.74rem;letter-spacing:.075em;text-transform:uppercase;color:#e4c17d;margin-bottom:.35rem}
+.hip-lab-card h4{font-size:1.15rem;margin:.12rem 0 .5rem}
+.hip-lab-card p{font-size:.91rem;line-height:1.5;color:#ddd1c3;margin:.35rem 0 .75rem}
+.note-strip{display:flex;gap:.28rem;flex-wrap:wrap;margin:.75rem 0}
+.note-strip span{display:inline-grid;place-items:center;min-width:2.4rem;min-height:2.4rem;padding:.3rem .42rem;background:#f4eadb;color:#2b221b;border-radius:.35rem;font-family:var(--sans);font-size:.78rem;font-weight:850}
+.note-strip span.short{min-width:1.65rem;min-height:2rem;font-size:.7rem;background:#ead9b9}
+.hip-play{border:1px solid #d1ad68;background:#e7c680;color:#281f18;border-radius:999px;padding:.5rem .75rem;font-family:var(--sans);font-size:.76rem;font-weight:900;cursor:pointer}
+.hip-play:hover{background:#fff0c7}
+.hip-play:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.hip-schematic{font-family:var(--sans);font-size:.72rem;color:#bfb2a4;margin-top:.7rem}
+.hip-source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0 1.8rem}
+.hip-source{background:#f6efe3;color:var(--ink);border-top:4px solid var(--gold);padding:.9rem 1rem}
+.hip-source b{display:block;font-family:var(--sans);font-size:.76rem;color:var(--red);margin-bottom:.25rem}
+.hip-source p{font-size:.88rem;line-height:1.48;margin:.25rem 0 .7rem}
+.hip-approaches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:1rem 0 1.5rem}
+.hip-approach{background:#f7f1e7;border:1px solid var(--line);padding:1rem;color:var(--ink)}
+.hip-approach b{display:block;font-family:var(--sans);font-size:.78rem;color:var(--red);margin-bottom:.3rem}
+.hip-approach p{font-size:.9rem;line-height:1.5;margin:.25rem 0}
+@media(max-width:760px){.hip-lab-grid,.hip-source-grid,.hip-approaches{grid-template-columns:1fr}}
 .threshold-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;margin:1.4rem 0 2rem}
 .threshold-card{border:1px solid var(--line);background:#f8f2e8;padding:1rem 1.05rem;border-top:4px solid var(--gold)}
 .threshold-card b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.055em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem}
@@ -525,6 +551,70 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <p>Per gran parte del Novecento la musica barocca è stata frequentemente eseguita attraverso abitudini orchestrali formatesi in epoche successive, con masse d’archi più ampie, vibrato continuo, strumenti moderni e una concezione del legato che apparteneva a un altro paesaggio sonoro; alcune di quelle interpretazioni rimangono musicalmente straordinarie, ma sono preziose proprio perché ci permettono di ascoltare quanto ogni epoca finisca inevitabilmente per leggere il passato attraverso se stessa.</p>
       <p>Il confronto con esecuzioni storicamente informate non deve quindi trasformarsi in una gara fra “giusto” e “sbagliato”, perché didatticamente è molto più fertile chiedere che cosa cambi: quanto spazio rimanga fra gli attacchi, se le parti interne diventino più leggibili, quale peso assuma il basso, come reagisca il continuo e quanto la pulsazione della danza riesca a riemergere sotto una superficie che credevamo di conoscere.</p>
 
+      <div class="hip-lab" id="hip-lab">
+        <div class="eyebrow">Laboratorio HIP</div>
+        <h3>La partitura è un testo. L’esecuzione è una decisione.</h3>
+        <p class="hip-lab-intro">Per capire davvero la filologia bisogna abbandonare l’idea che l’esecutore barocco ricevesse una pagina completa alla quale mancava soltanto il suono, perché molte competenze appartenevano alla pratica e non avevano bisogno di essere riscritte ogni volta; il problema storico, quindi, non consiste nel “togliere” libertà all’interprete moderno, ma nel capire quali libertà fossero previste, quali dipendessero dal genere, dal luogo e dallo stile e quali avrebbero invece prodotto un risultato estraneo alla grammatica di quella musica.</p>
+
+        <div class="hip-lab-grid">
+          <article class="hip-lab-card">
+            <b>1 · Il testo nudo</b>
+            <h4>Ciò che è scritto</h4>
+            <p>Una linea relativamente semplice può contenere soltanto i punti strutturali principali. Il piccolo esempio qui sotto è volutamente schematico e serve soltanto a far percepire la differenza fra struttura e realizzazione.</p>
+            <div class="note-strip" aria-label="Do, Sol, Do acuto"><span>Do</span><span>Sol</span><span>Do↑</span></div>
+            <button class="hip-play" type="button" data-seq="60:0.75,67:0.75,72:1.3">▶ Ascolta lo scheletro</button>
+          </article>
+
+          <article class="hip-lab-card">
+            <b>2 · Diminuzione</b>
+            <h4>Una nota può diventare un percorso</h4>
+            <p>“Diminuire” significa anche suddividere valori relativamente lunghi in figure più brevi, costruendo passaggi che collegano i punti strutturali senza cancellarli. La diminuzione non è quindi una cascata casuale di note, ma una trasformazione governata dallo stile.</p>
+            <div class="note-strip" aria-label="Esempio schematico di diminuzione"><span class="short">Do</span><span class="short">Re</span><span class="short">Mi</span><span class="short">Fa</span><span class="short">Sol</span><span class="short">Fa</span><span class="short">Mi</span><span class="short">Sol</span><span class="short">La</span><span class="short">Si</span><span>Do↑</span></div>
+            <button class="hip-play" type="button" data-seq="60:0.22,62:0.22,64:0.22,65:0.22,67:0.4,65:0.2,64:0.2,67:0.25,69:0.25,71:0.25,72:0.8">▶ Ascolta una diminuzione</button>
+          </article>
+
+          <article class="hip-lab-card">
+            <b>3 · Abbellimento</b>
+            <h4>Ornare significa pronunciare</h4>
+            <p>Trillo, gruppo, appoggiatura e altri ornamenti non sono brillantini aggiunti sopra una melodia già completa, perché possono preparare una dissonanza, ritardare una risoluzione, dare peso a una parola o rendere percepibile una cadenza; per questo lo stesso segno può richiedere soluzioni differenti secondo epoca e tradizione.</p>
+            <div class="note-strip" aria-label="Esempio schematico di trillo"><span>Sol</span><span class="short">La</span><span class="short">Sol</span><span class="short">La</span><span class="short">Sol</span><span class="short">Fa</span><span>Mi</span></div>
+            <button class="hip-play" type="button" data-seq="67:0.4,69:0.12,67:0.12,69:0.12,67:0.12,65:0.28,64:0.7">▶ Ascolta l’idea</button>
+          </article>
+
+          <article class="hip-lab-card">
+            <b>4 · Cadenza</b>
+            <h4>Quando il tempo dell’interprete si allarga</h4>
+            <p>La cadenza può aprire uno spazio nel quale l’esecutore elabora il materiale prima della conclusione, ma la libertà non è identica nel 1620, nel 1720 e nel concerto classico: durata, vocabolario e funzione dipendono dal repertorio, per cui parlare genericamente di “improvvisazione” senza specificarne il contesto rischia di spiegare troppo poco.</p>
+            <div class="note-strip" aria-label="Esempio schematico di cadenza"><span>Sol</span><span class="short">La</span><span class="short">Si</span><span class="short">Do↑</span><span class="short">Re↑</span><span class="short">Do↑</span><span class="short">Si</span><span class="short">La</span><span>Sol</span><span>Do</span></div>
+            <button class="hip-play" type="button" data-seq="67:0.35,69:0.16,71:0.16,72:0.16,74:0.35,72:0.16,71:0.16,69:0.2,67:0.55,60:0.9">▶ Ascolta una chiusa schematica</button>
+          </article>
+        </div>
+
+        <div class="hip-schematic">Gli esempi sonori sono sintetici e deliberatamente schematici: non sono ricostruzioni storiche né modelli da imitare, ma servono a distinguere visivamente e acusticamente i concetti prima di ascoltarli in repertorio reale.</div>
+
+        <h3>Le fonti non ci consegnano una sola risposta</h3>
+        <p>Caccini spiega trilli, gruppi, esclamazioni e modi di cantare perché vede le proprie musiche circolare in versioni che considera mal utilizzate, mentre pochi anni prima Bovicelli aveva pubblicato esempi di passaggi e diminuzioni sopra musiche preesistenti; più di un secolo dopo Tosi dedica interi capitoli ad appoggiatura, trillo, divisioni, cadenze e grazie, mentre Geminiani e Quantz trasformano la prassi strumentale in trattati ricchi di esempi. La filologia nasce dunque anche dal confronto fra fonti che non dicono necessariamente la stessa cosa, perché appartengono a luoghi, generi, strumenti e decenni differenti. </p>
+
+        <div class="hip-source-grid">
+          <article class="hip-source"><b>Bovicelli · 1594</b><p><i>Regole, passaggi di musica</i>: una fonte fondamentale per osservare come una linea possa essere “passeggiata” e diminuita sopra repertorio già esistente.</p><a class="score-link" href="https://imslp.org/wiki/Regole%2C_passaggi_di_musica_%28Bovicelli%2C_Giovanni_Battista%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
+          <article class="hip-source"><b>Caccini · 1602</b><p><i>Le nuove musiche</i>: la prefazione discute esplicitamente esclamazioni, trilli, gruppi, passaggi e il rapporto fra parola e “buona maniera” di cantare.</p><a class="score-link" href="https://imslp.org/wiki/Le_nuove_musiche_%28Caccini%2C_Giulio%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
+          <article class="hip-source"><b>Tosi · 1723</b><p><i>Opinioni de’ cantori antichi e moderni</i>: appoggiatura, trillo, divisioni, recitativo, cadenze e grazie vengono affrontati come elementi della pratica del cantante.</p><a class="score-link" href="https://imslp.org/wiki/Opinioni_de%E2%80%99_cantori_antichi_e_moderni_%28Tosi%2C_Pier_Francesco%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
+          <article class="hip-source"><b>Geminiani · 1751</b><p><i>The Art of Playing on the Violin</i>: regole ed esempi mostrano quanto tecnica, gusto e ornamentazione facciano parte della stessa formazione strumentale.</p><a class="score-link" href="https://imslp.org/wiki/The_Art_of_Playing_on_the_Violin_%28Geminiani%2C_Francesco%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
+          <article class="hip-source"><b>Quantz · 1752</b><p><i>Versuch einer Anweisung die Flöte traversiere zu spielen</i>: molto più di un manuale di flauto, perché affronta gusto, esecuzione, accompagnamento e pratica musicale attraverso esempi e osservazioni.</p><a class="score-link" href="https://imslp.org/wiki/Versuch_einer_Anweisung_die_Fl%C3%B6te_traversiere_zu_spielen_%28Quantz%2C_Johann_Joachim%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
+          <article class="hip-source"><b>C. P. E. Bach · 1753/1762</b><p><i>Versuch über die wahre Art das Clavier zu spielen</i>: ornamentazione, tocco, accompagnamento ed espressione mostrano ormai un mondo in trasformazione verso la sensibilità del secondo Settecento.</p><a class="score-link" href="https://imslp.org/wiki/Versuch_%C3%BCber_die_wahre_Art_das_Clavier_zu_spielen_%28Bach%2C_Carl_Philipp_Emanuel%29" target="_blank" rel="noopener">IMSLP · fonte storica</a></article>
+        </div>
+
+        <h3>Tre domande, non tre scuole</h3>
+        <p>Nel parlare di filologia eviterei di costruire categorie troppo rigide, perché interpreti come Harnoncourt, Gardiner o Fasolis non appartengono a caselle impermeabili e modificano il proprio approccio nel corso della carriera; è più utile mostrare tre domande che possono ricevere pesi differenti e che spesso convivono nella stessa interpretazione.</p>
+        <div class="hip-approaches">
+          <article class="hip-approach"><b>Che cosa sappiamo?</b><p>Strumenti, trattati, iconografia, organici, accordature, edizioni, spazi e documenti permettono di delimitare ciò che storicamente è plausibile, senza produrre automaticamente una sola esecuzione corretta.</p></article>
+          <article class="hip-approach"><b>Come parlava questa musica?</b><p>Retorica, accento, danza, articolazione e rapporto con la parola spostano l’attenzione dalla ricostruzione materiale al gesto, cercando di capire quale tipo di discorso l’ascoltatore dell’epoca potesse riconoscere.</p></article>
+          <article class="hip-approach"><b>Che cosa facciamo oggi con quelle conoscenze?</b><p>Ogni esecuzione rimane contemporanea, perché un musicista deve scegliere tempi, dinamiche, realizzazione, ornamenti e perfino quanto lasciare aperto all’improvvisazione; la filologia informa la decisione, non la elimina.</p></article>
+        </div>
+
+        <div class="question">La filologia non consiste nel tornare indietro nel tempo. Consiste nel ridurre la distanza fra <em>ciò che noi diamo per scontato</em> e ciò che un musicista di allora dava per scontato.</div>
+      </div>
+
       <h3>Harnoncourt, quando la filologia diventa suono</h3>
       <p>Fra i protagonisti della riscoperta novecentesca della prassi storicamente informata, Nikolaus Harnoncourt occupa un posto particolarmente importante perché, con il Concentus Musicus Wien, contribuì a trasformare l’uso degli strumenti storici da curiosità antiquaria in un vero modo di ripensare frase, articolazione, equilibrio e retorica; il suo Monteverdi e il suo Bach appartengono ormai essi stessi alla storia dell’interpretazione, tanto che confrontarli con letture più recenti permette di capire come perfino la filologia, invece di raggiungere una soluzione definitiva, continui a cambiare insieme alle domande che i musicisti pongono alle fonti.</p>
       <div class="listen-pair" aria-label="Monteverdi attraverso due generazioni della prassi storica">
@@ -779,6 +869,34 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
     });
   },{rootMargin:'-28% 0px -62% 0px',threshold:0});
   sections.forEach(s=>observer.observe(s));
+
+  const hipAudio={ctx:null};
+  document.querySelectorAll('.hip-play').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const AudioCtx=window.AudioContext||window.webkitAudioContext;
+      if(!AudioCtx)return;
+      if(!hipAudio.ctx)hipAudio.ctx=new AudioCtx();
+      const ctx=hipAudio.ctx;
+      const seq=(btn.dataset.seq||'').split(',').map(x=>{
+        const [m,d]=x.split(':').map(Number);
+        return {m,d};
+      }).filter(x=>Number.isFinite(x.m)&&Number.isFinite(x.d)&&x.d>0);
+      let t=ctx.currentTime+.05;
+      seq.forEach(({m,d})=>{
+        const osc=ctx.createOscillator();
+        const gain=ctx.createGain();
+        osc.type='triangle';
+        osc.frequency.value=440*Math.pow(2,(m-69)/12);
+        gain.gain.setValueAtTime(.0001,t);
+        gain.gain.exponentialRampToValueAtTime(.09,t+.018);
+        gain.gain.setValueAtTime(.07,Math.max(t+.02,t+d-.045));
+        gain.gain.exponentialRampToValueAtTime(.0001,t+d);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(t);osc.stop(t+d+.02);
+        t+=d;
+      });
+    });
+  });
 
   document.querySelectorAll('[data-modal]').forEach(btn=>{
     btn.addEventListener('click',()=>{
