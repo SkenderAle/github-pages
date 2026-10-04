@@ -202,6 +202,25 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 .case-side p{font-size:.86rem;line-height:1.45;margin:.2rem 0 .6rem}
 .case-question{margin-top:.8rem;padding:.78rem .88rem;background:#e9dfcf;border-left:4px solid var(--night);font-size:.91rem;line-height:1.48}
 @media(max-width:700px){.case-compare{grid-template-columns:1fr}}
+.guided-listen{margin:2rem 0 2.4rem;background:#201b18;color:#f6ede1;border-top:5px solid var(--gold);box-shadow:var(--shadow);overflow:hidden}
+.guided-listen-head{padding:1.2rem 1.25rem .9rem}
+.guided-listen-head .eyebrow{color:#e7c783}
+.guided-listen-head h3{color:#fff;margin:.25rem 0 .5rem}
+.guided-listen-head p{color:#ddd2c5;font-size:.96rem;margin:.3rem 0}
+.guided-listen iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+.listen-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;padding:1rem 1.15rem}
+.listen-map>div{background:#2a2420;border:1px solid rgba(255,255,255,.13);padding:.85rem}
+.listen-map b{display:block;font-family:var(--sans);font-size:.73rem;letter-spacing:.07em;text-transform:uppercase;color:#e7c783;margin-bottom:.2rem}
+.listen-map span{font-size:.9rem;line-height:1.42;color:#e3d7ca}
+.form-strip{display:flex;align-items:stretch;gap:.35rem;overflow-x:auto;padding:.2rem 1.15rem 1rem}
+.form-strip span{flex:0 0 auto;padding:.68rem .8rem;background:#f3e6c8;color:#2b221a;font-family:var(--sans);font-size:.74rem;font-weight:900;border-radius:.25rem}
+.form-strip i{flex:0 0 auto;display:grid;place-items:center;color:#d2b879;font-style:normal;font-weight:900}
+.ear-challenges{display:grid;gap:.55rem;padding:0 1.15rem 1.2rem}
+.ear-challenges details{background:#f5eee2;color:var(--ink);border:1px solid #c9b89c}
+.ear-challenges summary{cursor:pointer;padding:.8rem .9rem;font-family:var(--sans);font-size:.86rem;font-weight:850}
+.ear-challenges p{font-size:.9rem;line-height:1.48;margin:0;padding:0 .9rem .9rem}
+.listen-footer{padding:.9rem 1.15rem 1.2rem;border-top:1px solid rgba(255,255,255,.12);font-size:.86rem;color:#cfc2b4}
+@media(max-width:760px){.listen-map{grid-template-columns:1fr}}
 .threshold-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;margin:1.4rem 0 2rem}
 .threshold-card{border:1px solid var(--line);background:#f8f2e8;padding:1rem 1.05rem;border-top:4px solid var(--gold)}
 .threshold-card b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.055em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem}
@@ -441,7 +460,29 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       <button class="tech-button" type="button" data-modal="modal-sonata">Apri · Sonata a tre</button>
       <button class="tech-button" type="button" data-modal="modal-concerto">Apri · Concertino e ripieno</button>
     </div>
-    <div class="callout"><strong>Qui entrerà l’ascolto guidato del concerto grosso.</strong> Lo costruiremo come laboratorio vero, recuperando il principio didattico del vecchio materiale di concorso: non una definizione seguita dall’esempio, ma un ascolto nel quale il ragazzo deve riconoscere chi sta parlando in quel momento, se pochi strumenti oppure l’insieme.</div>
+    <div class="guided-listen" id="lab-corelli">
+      <div class="guided-listen-head">
+        <div class="eyebrow">Ascolto guidato · riconoscere prima di definire</div>
+        <h3>Corelli, Concerto grosso op. 6 n. 8</h3>
+        <p>Prima di leggere le risposte, ascolta cercando soltanto di capire quando il suono sembra restringersi a pochi protagonisti e quando invece torna a occupare tutto l’insieme. È la stessa logica del vecchio laboratorio sul concerto grosso, ma ora il riconoscimento viene prima della definizione.</p>
+      </div>
+      <iframe src="https://www.youtube-nocookie.com/embed/DV5hkE_D_q4" title="Corelli, Concerto grosso op. 6 n. 8, Voices of Music, strumenti storici" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="listen-map">
+        <div><b>Concertino</b><span>Due violini e violoncello costituiscono il piccolo gruppo che può emergere dal tessuto.</span></div>
+        <div><b>Ripieno</b><span>Gli altri archi ampliano il suono e trasformano il dialogo in un rapporto fra pochi e molti.</span></div>
+        <div><b>Continuo</b><span>La linea grave e gli strumenti armonici sostengono entrambi i livelli e tengono insieme l’architettura.</span></div>
+      </div>
+      <div class="form-strip" aria-label="Schema percettivo del concerto grosso">
+        <span>insieme</span><i>↔</i><span>pochi</span><i>↔</i><span>insieme</span><i>↔</i><span>dialogo</span><i>↔</i><span>riunione</span>
+      </div>
+      <div class="ear-challenges">
+        <details><summary>1. Riesci a “vedere” il concertino senza guardare lo schermo?</summary><p>Non serve riconoscere subito ogni strumento. È sufficiente percepire che la densità cambia e che alcuni musicisti acquistano improvvisamente un ruolo più esposto.</p></details>
+        <details><summary>2. Il ripieno accompagna soltanto?</summary><p>No. Può raddoppiare, rispondere, rafforzare o riassorbire il concertino. Il concerto grosso funziona proprio perché la relazione fra i due livelli è mobile.</p></details>
+        <details><summary>3. Perché questo è diverso da un concerto solistico?</summary><p>Perché il protagonista non è necessariamente un solo individuo contrapposto all’orchestra. La tensione nasce fra un piccolo gruppo e il complesso più ampio.</p></details>
+        <details><summary>4. Che cosa resta costante mentre concertino e ripieno cambiano?</summary><p>Il continuo costituisce una delle fondamenta più stabili: il basso collega i differenti livelli dell’ensemble e contribuisce alla continuità armonica.</p></details>
+      </div>
+      <div class="listen-footer">Esecuzione: Voices of Music, strumenti storici. Il video permette anche di osservare fisicamente la disposizione del piccolo gruppo e del ripieno, trasformando l’ascolto in una lettura visiva dell’organico.</div>
+    </div>
   </section>
 
   <section id="vivaldi" class="stucco-band">
@@ -487,7 +528,23 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         <a class="score-link" href="https://imslp.org/wiki/Il_cimento_dell%27armonia_e_dell%27inventione%2C_Op.8_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener">♫ IMSLP · Il cimento op. 8</a>
       </div>
 
-      <div class="callout"><strong>Qui entreranno gli ascolti veri.</strong> Non una playlist vivaldiana, ma tre esperienze con funzioni differenti: un concerto per uno strumento inatteso, un confronto che renda percepibile il rapporto fra ritornello e solista e, soltanto alla fine, una delle <i>Stagioni</i> riletta alla luce di ciò che abbiamo imparato.</div>
+      <div class="guided-listen" id="lab-vivaldi">
+        <div class="guided-listen-head">
+          <div class="eyebrow">Ascolto guidato · memoria e ritorno</div>
+          <h3>Vivaldi, <i>La primavera</i> · Fasolis e I Barocchisti</h3>
+          <p>Dopo Corelli cambiamo domanda: non cerchiamo più soltanto “pochi o molti”, ma ascoltiamo che cosa succede quando l’orchestra presenta un materiale riconoscibile, il solista se ne allontana e il ritorno dell’insieme ci fa percepire che siamo tornati a casa.</p>
+        </div>
+        <iframe src="https://www.youtube-nocookie.com/embed/6NZwfdRwjZU" title="Vivaldi, La primavera, Diego Fasolis e I Barocchisti" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="form-strip" aria-label="Schema percettivo del ritornello vivaldiano">
+          <span>RITORNELLO · tutti</span><i>→</i><span>episodio · solista</span><i>→</i><span>RITORNO</span><i>→</i><span>nuovo episodio</span><i>→</i><span>RITORNO</span>
+        </div>
+        <div class="ear-challenges">
+          <details><summary>1. Che cosa rende riconoscibile il ritorno dell’orchestra?</summary><p>Non deve tornare ogni volta tutto nello stesso modo. Bastano gesti, ritmo, profilo melodico e colore orchestrale abbastanza riconoscibili da funzionare come memoria.</p></details>
+          <details><summary>2. Il solista è libero di “fare qualunque cosa” fra due ritornelli?</summary><p>No. L’episodio può essere più mobile e virtuosistico, ma rimane inserito in un percorso armonico e formale. La libertà acquista senso perché esiste un punto di riferimento al quale tornare.</p></details>
+          <details><summary>3. Dove entra il racconto della primavera?</summary><p>Dentro la forma, non sopra di essa. Canto degli uccelli, scorrere dell’acqua e temporale utilizzano gesti violinistici e orchestrali che modificano gli episodi senza cancellare il principio del ritornello.</p></details>
+          <details><summary>4. Perché Fasolis è utile nel nostro percorso HIP?</summary><p>Perché il suono di I Barocchisti nasce da strumenti storici e da una prassi informata, ma rimane fortemente teatrale e comunicativa: la ricerca non elimina il gesto, gli restituisce una grammatica.</p></details>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -886,6 +943,26 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
     <p>È precisamente qui che il percorso Corelli–Vivaldi–Bach diventa utile, purché non lo trasformiamo in una genealogia troppo rigida, perché Corelli aveva contribuito a rendere straordinariamente leggibile il rapporto fra piccoli e grandi gruppi, Vivaldi aveva dato al solista e al ritornello una nuova energia formale, mentre Bach utilizza quelle possibilità come materiale da ricombinare, facendo sì che quasi ogni strumento possa assumere, almeno per un momento, un ruolo che costringe l’ascoltatore a rivedere la gerarchia dell’insieme.</p>
     <div class="source-row">
       <a class="score-link" href="https://imslp.org/wiki/6_Brandenburg_Concertos_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Concerti brandeburghesi</a>
+    </div>
+    <div class="guided-listen" id="lab-bach-brandeburgo">
+      <div class="guided-listen-head">
+        <div class="eyebrow">Ascolto guidato · quando il modello si complica</div>
+        <h3>Bach, Secondo Brandeburghese · Gardiner</h3>
+        <p>Qui recuperiamo direttamente la domanda del vecchio laboratorio: quali sono gli strumenti protagonisti e quali quelli di ripieno? La risposta sembra semplice finché non ci accorgiamo che Bach mette nel concertino quattro timbri diversissimi e fa circolare il materiale fra loro con una densità contrappuntistica che rende molto meno netto il confine fra protagonista e accompagnamento.</p>
+      </div>
+      <iframe src="https://www.youtube-nocookie.com/embed/PGFEBxfWLtg" title="Bach, Secondo Concerto Brandeburghese, John Eliot Gardiner ed English Baroque Soloists" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="listen-map">
+        <div><b>Concertino</b><span>Tromba naturale, flauto dolce, oboe e violino: quattro personalità timbriche che possono suonare sole, a coppie o insieme.</span></div>
+        <div><b>Ripieno</b><span>Gli archi non costituiscono un semplice fondale, perché partecipano alla circolazione del materiale e assorbono continuamente il concertino.</span></div>
+        <div><b>Continuo</b><span>La base armonica rimane, ma sopra di essa le linee si intrecciano fino a trasformare il concerto in una macchina contrappuntistica.</span></div>
+      </div>
+      <div class="ear-challenges">
+        <details><summary>1. Quale dei quattro solisti riconosci più facilmente?</summary><p>La tromba naturale emerge quasi inevitabilmente per registro e timbro. Il vero esercizio consiste nel continuare a seguire flauto, oboe e violino quando la tromba tace o quando le linee si sovrappongono.</p></details>
+        <details><summary>2. Bach sta ancora scrivendo un concerto grosso?</summary><p>La parentela con il concerto grosso è evidente, ma Bach rende il modello molto più permeabile: concertino e ripieno condividono materiale, mentre il contrappunto rende ogni parte potenzialmente significativa.</p></details>
+        <details><summary>3. Che cosa ha imparato Bach dal concerto italiano?</summary><p>Il principio del contrasto, del ritorno e dell’organizzazione concertante. Ma lo trasforma integrandolo con una scrittura polifonica nella quale più linee possono rimanere simultaneamente attive.</p></details>
+        <details><summary>4. Perché questo ascolto viene dopo Corelli e Vivaldi?</summary><p>Perché a questo punto l’orecchio possiede già due modelli. Bach diventa comprensibile come trasformazione di una grammatica europea, non come genio apparso improvvisamente dal nulla.</p></details>
+      </div>
+      <div class="listen-footer">English Baroque Soloists, John Eliot Gardiner. Questo primo movimento è particolarmente utile perché rende immediatamente udibili i quattro solisti e il continuo scambio fra concertino e orchestra.</div>
     </div>
 
     <h3>Un carattere che non si lascia amministrare facilmente</h3>
