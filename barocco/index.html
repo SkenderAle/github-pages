@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Il Barocco musicale · Dalla parola che diventa gesto alla musica che diventa spazio</title>
+<meta name="description" content="Un percorso narrativo e interattivo nel Barocco musicale, da Monteverdi a Bach, attraverso Seicento, concerto, strumenti, città, filologia e ascolto.">
+<meta name="author" content="Alessandro Zilli">
+<style>
+:root{
+  --ink:#241b16;--paper:#f4ede1;--paper2:#e9dec9;--red:#7b3028;--night:#1b2734;
+  --gold:#a77a31;--gold2:#d0ad63;--green:#395746;--plum:#5c4052;--muted:#74685d;--line:#cdbda3;
+  --shadow:0 20px 60px rgba(35,25,17,.16);--serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#d6ccbd}
+body{margin:0;color:var(--ink);font-family:var(--serif);line-height:1.76;background:
+radial-gradient(circle at 12% 0,rgba(167,122,49,.07),transparent 30rem),
+linear-gradient(180deg,#e7dfd2,#d3c8b7)}
+a{color:inherit}
+button{font:inherit}
+img,iframe,svg{max-width:100%}
+.progress{position:fixed;left:0;top:0;height:4px;width:0;z-index:100;background:linear-gradient(90deg,var(--gold2),var(--red),var(--night))}
+.shell{max-width:1420px;margin:auto;background:var(--paper);box-shadow:0 0 75px rgba(28,22,17,.16)}
+.masthead{position:relative;min-height:88vh;display:grid;place-items:end center;padding:8rem 1.4rem 4rem;overflow:hidden;background:#17130f;color:#fff}
+.masthead::before{content:"";position:absolute;inset:-3%;background:
+linear-gradient(90deg,rgba(15,12,10,.93) 0%,rgba(15,12,10,.78) 34%,rgba(15,12,10,.24) 68%,rgba(15,12,10,.48) 100%),
+linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.72)),
+url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Columna_salom%C3%B3nica.jpg") right 46%/cover no-repeat;
+filter:saturate(.72) sepia(.16) contrast(1.02);transform:scale(1.035)}
+.masthead::after{content:"";position:absolute;inset:0;background:
+radial-gradient(circle at 78% 42%,rgba(217,177,96,.13),transparent 22rem),
+linear-gradient(180deg,transparent 58%,rgba(19,15,12,.66))}
+.hero{position:relative;z-index:2;max-width:1180px;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:3rem;align-items:end}
+.kicker{font-family:var(--sans);letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;color:#ead2a0;font-weight:800}
+h1{font-size:clamp(3.2rem,8vw,7.8rem);line-height:.93;letter-spacing:-.055em;margin:.55rem 0 1rem;font-weight:600;text-wrap:balance}
+.dek{font-size:clamp(1.13rem,2vw,1.56rem);line-height:1.48;color:#f1e7d9;max-width:800px}
+.hero-card{border:1px solid rgba(255,255,255,.23);background:rgba(34,25,19,.56);backdrop-filter:blur(10px);padding:1.25rem 1.3rem;box-shadow:var(--shadow)}
+.hero-card b{font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#e5c686}
+.hero-card p{margin:.62rem 0 0;font-size:.98rem;line-height:1.58}
+.hero-credit{position:absolute;right:1rem;bottom:.6rem;z-index:3;font-family:var(--sans);font-size:.62rem;color:rgba(255,255,255,.72);background:rgba(0,0,0,.22);padding:.2rem .38rem}
+.hero-credit a{text-decoration:none}
+.nav-wrap{position:sticky;top:0;z-index:50;background:rgba(244,237,225,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font-family:var(--sans)}
+nav{max-width:1280px;margin:auto;padding:.5rem .8rem}
+.nav-row{display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nav-row::-webkit-scrollbar{display:none}
+nav a{flex:0 0 auto;white-space:nowrap;text-decoration:none;padding:.56rem .76rem;border-radius:999px;font-size:.79rem;font-weight:780;color:#5f5347}
+nav a:hover,nav a.active{background:#29211b;color:#fff}
+nav a.cross{background:#e9ddc7;border:1px solid #cfb98e}
+.content{max-width:1180px;margin:auto;padding:4rem 1.35rem 6rem}
+.intro{max-width:900px;margin:0 auto 4rem}
+.lead{font-size:1.31rem;line-height:1.68}
+.dropcap:first-letter{float:left;font-size:4.8rem;line-height:.8;padding:.12rem .16rem 0 0;color:var(--red);font-weight:700}
+.index-block{margin:0 0 4rem;padding:2rem 0 1rem;border-top:1px solid #bfae93}
+.index-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.42fr);gap:2rem;align-items:end;margin-bottom:1.4rem}
+.eyebrow{font-family:var(--sans);font-size:.71rem;text-transform:uppercase;letter-spacing:.14em;font-weight:850;color:var(--red)}
+h2{font-size:clamp(2.1rem,5vw,4.5rem);line-height:1.04;letter-spacing:-.035em;margin:.15rem 0 .45rem;font-weight:600;text-wrap:balance}
+h3{font-size:1.54rem;line-height:1.24;margin:2.2rem 0 .7rem;color:#3d3027}
+p{font-size:1.075rem}
+.index-head p{margin:0;color:var(--muted)}
+.index-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.index-card{text-decoration:none;display:block;border:1px solid var(--line);background:#f8f2e8;padding:1rem 1.05rem;transition:.18s}
+.index-card:hover{transform:translateY(-2px);border-color:var(--gold);background:#fffaf1}
+.index-card b{display:block;font-family:var(--sans);font-size:.82rem;letter-spacing:.035em;color:var(--red);margin-bottom:.22rem}
+.index-card span{display:block;font-size:.92rem;line-height:1.45;color:#665a50}
+.timeline-block{margin:0 0 6rem;padding:2rem 0 1.2rem;border-top:1px solid #bfae93;border-bottom:1px solid #bfae93}
+.timeline-head{display:flex;gap:2rem;align-items:end;justify-content:space-between;margin-bottom:1rem}
+.timeline-head h2{font-size:clamp(1.8rem,4vw,3.2rem)}
+.timeline-note{max-width:430px;color:var(--muted);font-size:.95rem;margin:0}
+.timeline-scroll{overflow-x:auto;padding:.7rem .1rem 1.2rem;scrollbar-color:#b69d75 transparent}
+.timeline{display:flex;align-items:stretch;min-width:1050px;position:relative;padding:1.25rem .2rem .3rem}
+.timeline::before{content:"";position:absolute;left:1rem;right:1rem;top:2rem;height:2px;background:linear-gradient(90deg,#8a6b3d,#c6ad7c,#7b3028)}
+.time-node{position:relative;z-index:2;flex:1;min-width:125px;text-decoration:none;padding-top:2.2rem;text-align:center}
+.time-node::before{content:"";position:absolute;top:.47rem;left:50%;width:15px;height:15px;border-radius:50%;transform:translateX(-50%);background:var(--paper);border:3px solid var(--gold);box-shadow:0 0 0 4px rgba(244,237,225,.9)}
+.time-node.major::before{width:19px;height:19px;top:.27rem;background:var(--red);border-color:#f0d49c}
+.time-node b{display:block;font-family:var(--sans);font-size:.82rem;color:var(--red)}
+.time-node span{display:block;margin:.25rem auto 0;max-width:120px;font-size:.78rem;line-height:1.3;color:#65584d}
+.time-node:hover span{text-decoration:underline}
+section{scroll-margin-top:6.2rem;margin:0 0 6.3rem}
+.section-title{border-top:1px solid #baa88d;padding-top:1rem;margin-bottom:2rem}
+.two-col{columns:2 400px;column-gap:3.5rem}
+.two-col p{break-inside:avoid;margin-top:0}
+.source-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.7rem 0 1.7rem}
+.score-link,.deep-link,.tech-button{display:inline-flex;align-items:center;gap:.35rem;text-decoration:none;border-radius:999px;padding:.52rem .74rem;font-family:var(--sans);font-size:.75rem;font-weight:850}
+.score-link{border:1px solid #cba45a;background:#f1dfaa;color:#34271b}
+.score-link:hover{background:#fff0bf}
+.deep-link{border:1px solid #aab3bb;background:#edf0f2;color:#263847}
+.tech-button{border:1px solid #baa78c;background:#f7f1e7;color:#4b4036;cursor:pointer}
+.callout{margin:2rem 0;padding:1.4rem 1.55rem;background:#ece3d5;border-left:5px solid var(--night)}
+.callout strong{color:var(--night)}
+.question{margin:2rem 0;padding:1.5rem 1.6rem;background:#1e2b39;color:#fff;font-size:clamp(1.2rem,2.3vw,1.7rem);line-height:1.42}
+.question em{color:#f0d397;font-style:normal}
+.stucco-band{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:
+radial-gradient(circle at 88% 15%,rgba(176,129,51,.11),transparent 16rem),
+linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bottom:1px solid #cbbb9f}
+.stucco-inner{max-width:1180px;margin:auto}
+.route{display:flex;gap:.55rem;overflow:auto;margin:1.4rem 0 0;padding-bottom:.4rem}
+.route span{flex:0 0 auto;background:#efe4d3;border-top:4px solid var(--gold);padding:.75rem .9rem;font-family:var(--sans);font-weight:800}
+.footer{background:#17130f;color:#d9cec0;padding:2.7rem 1.3rem;font-family:var(--sans);font-size:.79rem}
+.footer-inner{max-width:1180px;margin:auto}
+.footer a{color:#ead09b}
+.scrolltop{position:fixed;right:1rem;bottom:1rem;z-index:60;width:46px;height:46px;border:0;border-radius:50%;background:#2a211b;color:#fff;font-size:1.15rem;display:none;cursor:pointer}
+.scrolltop.show{display:block}
+.modal{position:fixed;inset:0;z-index:90;background:rgba(10,8,7,.86);display:none;place-items:center;padding:1rem}
+.modal.open{display:grid}
+.modal-panel{width:min(850px,100%);max-height:88vh;overflow:auto;background:#f5eee3;box-shadow:0 30px 90px rgba(0,0,0,.45);border-top:6px solid var(--gold)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1rem;border-bottom:1px solid var(--line);font-family:var(--sans);font-weight:850}
+.modal-body{padding:1rem 1.2rem 1.3rem}
+.modal-body p{font-size:1rem}
+.modal-close{border:0;background:none;font-size:1.6rem;cursor:pointer}
+@media(max-width:820px){
+  .masthead{min-height:78vh;padding-top:6rem}
+  .hero{grid-template-columns:1fr;gap:1.4rem}
+  .hero-card{max-width:560px}
+  .index-head{grid-template-columns:1fr}
+  .index-grid{grid-template-columns:1fr}
+  .timeline-head{display:block}
+  .timeline-note{margin-top:.5rem}
+}
+@media(max-width:620px){
+  .masthead::before{background:
+  linear-gradient(90deg,rgba(15,12,10,.91),rgba(15,12,10,.56)),
+  linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.74)),
+  url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Columna_salom%C3%B3nica.jpg") 65% center/cover no-repeat}
+  .content{padding-top:3.2rem}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="shell">
+<header class="masthead" id="top">
+  <div class="hero">
+    <div>
+      <div class="kicker">Musica · Seicento e primo Settecento</div>
+      <h1>Il Barocco musicale</h1>
+      <div class="dek">Dalla parola che diventa gesto alla musica che diventa spazio: un secolo e mezzo nel quale voci, strumenti, città e forme imparano a muoversi in modo nuovo.</div>
+    </div>
+    <aside class="hero-card">
+      <b>Come usare questa pagina</b>
+      <p>Segui il racconto dall’inizio oppure entra da un ambiente dell’indice. La linea del tempo, lasciata qui all’ingresso, permette di orientarsi senza accompagnarti durante tutta la lettura.</p>
+    </aside>
+  </div>
+  <div class="hero-credit">Sfondo: dettaglio di colonna salomonica barocca · <a href="https://commons.wikimedia.org/wiki/File:Columna_salom%C3%B3nica.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></div>
+</header>
+
+<div class="nav-wrap">
+  <nav aria-label="Navigazione principale">
+    <div class="nav-row">
+      <a href="#indice">Indice</a>
+      <a href="#monteverdi">Monteverdi</a>
+      <a href="#seicento">Il Seicento</a>
+      <a href="#corelli">Corelli</a>
+      <a href="#vivaldi">Vivaldi</a>
+      <a href="#europa">L’Europa</a>
+      <a href="#hip">Come suonava?</a>
+      <a href="#bach">Bach</a>
+      <a href="#classicismo">Verso il Classicismo</a>
+      <a class="cross" href="../melodramma/">Melodramma ↗</a>
+    </div>
+  </nav>
+</div>
+
+<main class="content">
+  <div class="intro">
+    <p class="lead dropcap">Se, dopo aver attraversato un edificio rinascimentale, entrassimo improvvisamente in una grande chiesa barocca, probabilmente ci accorgeremmo del cambiamento prima ancora di possedere le parole necessarie per descriverlo, perché le pareti sembrerebbero aver perduto la loro immobilità, la luce smetterebbe di illuminare tutto nello stesso modo e stucchi, nicchie, ombre e aperture concorrerebbero a costruire uno spazio nel quale lo sguardo non riesce più a fermarsi in un solo punto. Anche la musica partecipa della stessa trasformazione, benché lo faccia attraverso materiali che non possiamo vedere.</p>
+  </div>
+
+  <section class="index-block" id="indice">
+    <div class="index-head">
+      <div><div class="eyebrow">Indice</div><h2>Entrare nel Barocco</h2></div>
+      <p>Non una successione di biografie, ma ambienti nei quali forme, strumenti e persone diventano comprensibili perché entrano nella storia nel momento in cui servono.</p>
+    </div>
+    <div class="index-grid">
+      <a class="index-card" href="#monteverdi"><b>Monteverdi sulla soglia</b><span>Quando Rinascimento e Barocco esistono nello stesso momento.</span></a>
+      <a class="index-card" href="#voce"><b>Una voce emerge dalle altre</b><span>Monodia, basso continuo e un nuovo modo di costruire il discorso musicale.</span></a>
+      <a class="index-card" href="#seicento"><b>Il Seicento si mette in movimento</b><span>Venezia, Roma, Germania e la musica che attraversa spazio e confini.</span></a>
+      <a class="index-card" href="#strumenti"><b>Gli strumenti trovano una voce</b><span>Frescobaldi, Biber, liuteria e la nascita di un nuovo virtuosismo.</span></a>
+      <a class="index-card" href="#corelli"><b>Pochi e molti</b><span>Corelli e il concerto come architettura sonora.</span></a>
+      <a class="index-card" href="#vivaldi"><b>Venezia laboratorio d’Europa</b><span>Vivaldi, la Pietà e un’orchestra piena di possibilità.</span></a>
+      <a class="index-card" href="#europa"><b>Il Barocco attraversa i confini</b><span>Francia, Inghilterra, Dresda e le molte lingue del Settecento.</span></a>
+      <a class="index-card" href="#hip"><b>Come suonava davvero?</b><span>Strumenti storici, prassi esecutiva e ciò che la partitura non dice.</span></a>
+      <a class="index-card" href="#bach"><b>Bach è Einstein</b><span>Quando molte tradizioni finiscono dentro un solo pensiero musicale.</span></a>
+      <a class="index-card" href="#classicismo"><b>Il Barocco cambia pelle</b><span>Ciò che si trasforma mentre il Classicismo comincia a comparire.</span></a>
+    </div>
+  </section>
+
+  <section class="timeline-block" aria-labelledby="timeline-title">
+    <div class="timeline-head">
+      <div><div class="eyebrow">Linea del tempo</div><h2 id="timeline-title">Una bussola, non un calendario</h2></div>
+      <p class="timeline-note">Tocca un segnalibro per raggiungere il punto corrispondente della pagina. La cronologia rimane qui, all’inizio: non segue lo scorrimento e non sostituisce il menu.</p>
+    </div>
+    <div class="timeline-scroll">
+      <div class="timeline">
+        <a class="time-node major" href="#monteverdi"><b>1600 ca.</b><span>La soglia</span></a>
+        <a class="time-node major" href="#orfeo"><b>1607</b><span>Monteverdi, Orfeo</span></a>
+        <a class="time-node" href="#vespro"><b>1610</b><span>Vespro</span></a>
+        <a class="time-node" href="#seicento"><b>prima metà XVII</b><span>Schütz, Frescobaldi, Carissimi</span></a>
+        <a class="time-node" href="#strumenti"><b>1670 ca.</b><span>Biber e il violino</span></a>
+        <a class="time-node major" href="#bach"><b>1685</b><span>Bach, Händel, Scarlatti</span></a>
+        <a class="time-node major" href="#vivaldi"><b>1703</b><span>Vivaldi alla Pietà</span></a>
+        <a class="time-node" href="#corelli"><b>1714</b><span>Corelli, op. 6</span></a>
+        <a class="time-node" href="#bach"><b>1721</b><span>Concerti brandeburghesi</span></a>
+        <a class="time-node" href="#europa"><b>1722</b><span>Rameau e l’armonia</span></a>
+        <a class="time-node" href="#vivaldi"><b>1725</b><span>Il cimento</span></a>
+        <a class="time-node major" href="#classicismo"><b>1750</b><span>Un confine utile, non una parete</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="monteverdi">
+    <div class="section-title"><div class="eyebrow">La soglia</div><h2>Monteverdi, l’uomo fra due epoche</h2></div>
+    <div class="two-col">
+      <p>Quando Claudio Monteverdi comincia a pubblicare i suoi madrigali negli ultimi decenni del Cinquecento, la grande civiltà polifonica rinascimentale è ancora pienamente viva e il madrigale rappresenta uno dei luoghi nei quali il rapporto fra poesia e musica ha raggiunto un grado straordinario di raffinatezza, poiché più voci possono intrecciarsi senza perdere la propria autonomia mentre il significato delle parole viene sottolineato attraverso disegni melodici, contrasti ritmici e quelle figure sonore che abbiamo già incontrato parlando di madrigalismo.</p>
+      <p>Monteverdi nasce dunque dentro il Rinascimento e non sente alcuna necessità di rinnegarlo; proprio perché conosce perfettamente le regole che governano quel linguaggio può permettersi, quando lo ritiene necessario, di piegarle all’espressione. La controversia con Giovanni Maria Artusi rende visibile questo cambiamento, poiché ciò che il teorico bolognese percepisce come pericolosa libertà nelle dissonanze viene ricondotto da Monteverdi e dal fratello Giulio Cesare a una diversa gerarchia fra parola e musica, nella quale il testo può esigere che la regola venga forzata affinché il gesto espressivo non venga tradito.</p>
+    </div>
+    <div class="question">Il Barocco, in altre parole, <em>comincia senza che nessuno abbia spento il Rinascimento</em>.</div>
+
+    <div id="orfeo">
+      <h3>1607. Quando la parola entra in scena</h3>
+      <p>Gli esperimenti fiorentini di Peri, Caccini e de’ Cavalieri precedono Monteverdi, per cui sarebbe sbagliato attribuirgli l’invenzione del melodramma; con <i>L’Orfeo</i>, tuttavia, la giovane forma mostra una profondità drammatica e strumentale che rende particolarmente evidente come canto solistico, coro, danza, strumenti e polifonia possano collaborare alla costruzione di un’azione nella quale la musica non accompagna semplicemente il teatro, ma diventa essa stessa teatro.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/L%27Orfeo%2C_SV_318_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener">♫ IMSLP · partitura</a>
+        <a class="deep-link" href="../melodramma/">Approfondisci nel sito sul melodramma →</a>
+      </div>
+    </div>
+
+    <div id="vespro">
+      <h3>La polifonia non scompare</h3>
+      <p>Il <i>Vespro della Beata Vergine</i> del 1610 rende particolarmente evidente la convivenza fra mondi diversi, perché tecniche che sembrano provenire dalla grande tradizione precedente convivono con una nuova sensibilità concertante, con un uso sempre più consapevole del rapporto fra voci e strumenti e con una concezione dello spazio sonoro che appartiene ormai pienamente al Seicento; per questo Monteverdi non è soltanto l’ultimo grande madrigalista né semplicemente il primo grande barocco, ma uno di quei compositori nei quali due epoche diventano temporaneamente inseparabili.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Vespro_della_Beata_Vergine%2C_SV_206_%28Monteverdi%2C_Claudio%29" target="_blank" rel="noopener">♫ IMSLP · partitura</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="voce">
+    <div class="section-title"><div class="eyebrow">Una nuova gerarchia sonora</div><h2>Una voce emerge dalle altre</h2></div>
+    <p>Accanto alla polifonia nella quale più linee melodiche possiedono una relativa autonomia, si afferma sempre più chiaramente una scrittura nella quale una voce principale viene sostenuta da un accompagnamento armonico. Non significa che la polifonia scompaia né che la musica diventi improvvisamente semplice, perché il nuovo principio convive a lungo con quello precedente, ma cambia il modo nel quale l’ascoltatore percepisce la gerarchia delle parti, dal momento che una melodia può ora imporsi in primo piano mentre il sostegno armonico ne costruisce il terreno.</p>
+    <p>Alla base di questo sistema troviamo il basso continuo, nel quale una linea grave, spesso accompagnata da cifre che suggeriscono gli accordi da realizzare, viene sostenuta da strumenti capaci di costruire il fondamento armonico; quella realizzazione non era necessariamente scritta per intero, perché all’esecutore veniva richiesto di interpretare le indicazioni e di completare una parte della musica secondo convenzioni che appartenevano alla pratica quotidiana.</p>
+    <div class="source-row">
+      <button class="tech-button" type="button" data-modal="modal-continuo">Apri · Che cos’è il basso continuo?</button>
+      <button class="tech-button" type="button" data-modal="modal-monodia">Apri · Monodia e polifonia</button>
+    </div>
+  </section>
+
+  <section id="seicento" class="stucco-band">
+    <div class="stucco-inner">
+      <div class="section-title"><div class="eyebrow">Il secolo che non va saltato</div><h2>Il Seicento non è un corridoio</h2></div>
+      <p>Passare rapidamente da Monteverdi a Vivaldi e Bach significherebbe cancellare quasi un secolo durante il quale si costruiscono molti degli strumenti formali, tecnici e concettuali che renderanno possibile ciò che verrà dopo. Il basso continuo si stabilizza mentre la tonalità comincia lentamente a sostituire la logica modale, il violino conquista una posizione sempre più importante e la sonata assume configurazioni riconoscibili, mentre l’oratorio, la cantata, le tastiere e la scrittura concertata sviluppano identità che non possono essere ridotte a semplici premesse del Settecento.</p>
+      <p>Anche la geografia musicale cambia, perché Venezia, Roma e le città tedesche diventano nodi di una rete nella quale i musicisti viaggiano, copiano partiture e riportano con sé linguaggi che, una volta trapiantati, assumono forme nuove. Schütz, formatosi anche a Venezia, rende particolarmente evidente quanto sia fragile l’idea di scuole nazionali chiuse, mentre Frescobaldi permette alla tastiera di diventare uno spazio nel quale disciplina contrappuntistica e libertà del gesto possono convivere.</p>
+      <div class="route" aria-label="Rotte musicali del Seicento">
+        <span>Venezia</span><span>Roma</span><span>Dresda</span><span>Parigi</span><span>Londra</span><span>Lubecca</span><span>Lipsia</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="strumenti">
+    <div class="section-title"><div class="eyebrow">Materia sonora</div><h2>Quando gli strumenti acquistano una personalità</h2></div>
+    <p>Nel corso del Seicento gli strumenti smettono progressivamente di essere considerati soltanto come mezzi capaci di sostenere una voce, raddoppiare una parte o accompagnare una danza, perché i compositori cominciano a interessarsi sempre di più a ciò che ogni strumento può fare in maniera specifica. La trasformazione coinvolge contemporaneamente chi scrive, chi suona e chi costruisce gli strumenti, cosicché le grandi botteghe di liuteria dell’Italia settentrionale diventano parte della stessa storia nella quale il violino acquista una centralità crescente.</p>
+    <h3>Biber e il violino che cambia pelle</h3>
+    <p>Heinrich Ignaz Franz Biber mostra fino a quale grado di complessità la tecnica violinistica fosse già arrivata nel pieno Seicento, soprattutto quando utilizza la scordatura per modificare intenzionalmente l’accordatura delle corde, alterando risonanze, possibilità armoniche e disposizione delle dita; il violino non viene quindi accettato come un oggetto dalle possibilità già definite, ma diventa esso stesso un territorio da esplorare.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/Mystery_%28Rosary%29_Sonatas_%28Biber%2C_Heinrich_Ignaz_Franz_von%29" target="_blank" rel="noopener">♫ IMSLP · Sonate del Rosario</a>
+    </div>
+  </section>
+
+  <section id="corelli">
+    <div class="section-title"><div class="eyebrow">Pochi e molti</div><h2>Corelli e l’arte di costruire</h2></div>
+    <p>Se Biber sembra voler esplorare tutto ciò che il violino potrebbe diventare, Arcangelo Corelli segue una strada differente, perché la sua importanza non dipende dall’accumulo di effetti sorprendenti quanto dalla capacità di rendere straordinariamente chiari e convincenti alcuni principi che la musica strumentale aveva già cominciato a sperimentare. La sonata per violino, la sonata a tre e il concerto grosso trovano nella sua opera una forma talmente equilibrata da diventare modelli europei, non perché Corelli abbia necessariamente inventato da solo quelle strutture, ma perché riesce a renderle abbastanza persuasive da trasformarle in un linguaggio condiviso.</p>
+    <p>Nel concerto grosso la relazione fra concertino e ripieno non deve essere immaginata come lo scontro permanente fra due blocchi, poiché il piccolo gruppo può emergere, rientrare nel complesso, dialogare e modificare continuamente la densità del tessuto sonoro; proprio questa elasticità renderà il modello particolarmente fertile per i compositori successivi, che potranno conservarlo oppure deformarlo fino quasi a renderlo irriconoscibile.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/12_Concerti_grossi%2C_Op.6_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener">♫ IMSLP · Concerti grossi op. 6</a>
+      <button class="tech-button" type="button" data-modal="modal-concerto">Apri · Concertino e ripieno</button>
+    </div>
+  </section>
+
+  <section id="vivaldi" class="stucco-band">
+    <div class="stucco-inner">
+      <div class="section-title"><div class="eyebrow">Venezia laboratorio d’Europa</div><h2>Vivaldi prima delle Stagioni</h2></div>
+      <p>Quando Antonio Vivaldi entra all’Ospedale della Pietà nel 1703, il violino possiede già una grande tradizione, il basso continuo è pratica consolidata e il concerto grosso ha raggiunto una straordinaria maturità; proprio per questo ciò che accade a Venezia diventa tanto interessante, perché Vivaldi non deve inventare da zero quel mondo, ma può spingerlo in direzioni nuove grazie a una comunità di musiciste altamente preparate e a una disponibilità di strumenti che trasforma la Pietà in un autentico laboratorio timbrico.</p>
+      <p>La varietà delle combinazioni non va trattata come un catalogo di curiosità, poiché viola d’amore, fagotto, mandolino, liuto, tiorba, flauti, oboe, chalumeau e corni diventano importanti soltanto quando permettono di capire come il timbro possa contribuire alla forma. In questo ambiente il concerto solistico acquista una nuova energia, perché il ritornello orchestrale costruisce memoria mentre il solista può allontanarsi, modulare e attraversare regioni differenti prima che il ritorno dell’orchestra ristabilisca un punto di riferimento.</p>
+      <p>Le <i>Quattro stagioni</i>, collocate all’interno dell’op. 8 <i>Il cimento dell’armonia e dell’inventione</i>, possono così essere incontrate soltanto dopo aver conosciuto il laboratorio che le rende possibili, perché gli uccelli, i temporali, la caccia e il gelo diventano meno effetti illustrativi che dimostrazioni di una scrittura capace di trasformare il colore orchestrale in gesto narrativo.</p>
+      <div class="source-row">
+        <a class="score-link" href="https://imslp.org/wiki/Il_cimento_dell%27armonia_e_dell%27inventione%2C_Op.8_%28Vivaldi%2C_Antonio%29" target="_blank" rel="noopener">♫ IMSLP · Il cimento op. 8</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="europa">
+    <div class="section-title"><div class="eyebrow">Rotte</div><h2>Il Barocco attraversa i confini</h2></div>
+    <p>La diffusione delle partiture, i viaggi dei musicisti e la crescita dell’editoria rendono il Barocco europeo molto più connesso di quanto una suddivisione scolastica per nazioni potrebbe suggerire. Händel attraversa Germania, Italia e Inghilterra, Couperin tenta consapevolmente di riunire gusto francese e italiano, Purcell assorbe esperienze continentali senza perdere una fisionomia inglese, mentre Dresda raccoglie musicisti e repertori provenienti da regioni diverse e diventa uno dei luoghi nei quali l’influenza italiana può essere osservata mentre si trasforma.</p>
+    <p>Queste rotte aiutano anche a capire perché la pagina stampata diventi una forma di viaggio. Un concerto veneziano può essere studiato in Germania senza che il suo autore debba attraversare personalmente le Alpi, mentre copiare o trascrivere una composizione significa penetrarne lentamente la struttura, osservandone dall’interno il funzionamento in un’epoca nella quale non esiste ancora alcuna registrazione da riascoltare.</p>
+  </section>
+
+  <section id="hip" class="stucco-band">
+    <div class="stucco-inner">
+      <div class="section-title"><div class="eyebrow">Una diagonale del sito</div><h2>Ma questa musica suonava davvero così?</h2></div>
+      <p>Possedere una partitura del Seicento o del Settecento non significa possederne automaticamente il suono, perché la pagina non ci consegna integralmente il tipo di arco, la qualità delle corde, il temperamento, il modo di realizzare il basso continuo, l’ornamentazione o la libertà che un esecutore poteva concedersi. L’esecuzione storicamente informata nasce proprio dalla necessità di ricostruire queste pratiche attraverso trattati, strumenti conservati, iconografia, lettere, partiture e descrizioni dell’epoca, senza pretendere per questo di poter ricreare con assoluta certezza un suono perduto.</p>
+      <p>La filologia, quindi, non dovrebbe essere presentata come un tribunale incaricato di stabilire quale interpretazione sia corretta, ma come uno strumento capace di rendere nuovamente udibili differenze che secoli di abitudini successive avevano attenuato. Quando cambiano l’articolazione degli archi, il colore dei fiati, il ruolo del continuo o il peso della danza, una musica conosciutissima può improvvisamente riacquistare qualcosa della propria capacità di sorprendere.</p>
+    </div>
+  </section>
+
+  <section id="bach">
+    <div class="section-title"><div class="eyebrow">Il grande incrocio</div><h2>Bach è Einstein</h2></div>
+    <p>Quando arriviamo a Johann Sebastian Bach, il suo linguaggio appare meno improvviso proprio perché abbiamo già incontrato, disseminati lungo il percorso, molti degli elementi che egli saprà ricondurre a una straordinaria unità: il corale luterano trasformato dalla pratica comunitaria e dall’elaborazione organistica, la tradizione veneziana trasmessa nel mondo tedesco, l’esperienza tastieristica italiana di Frescobaldi e quella nordtedesca culminata in Buxtehude, il principio concertante maturato attraverso Corelli e Vivaldi, la suite francese, il basso continuo e la retorica musicale del Seicento. Tutto questo non rimane in Bach come una collezione di stili accostati, perché viene assorbito dentro un pensiero capace di mettere in relazione tradizioni che, considerate separatamente, potevano sembrare lontanissime.</p>
+    <p>È soprattutto in questo senso che il paragone con Einstein acquista consistenza, non come banale equivalenza fra due uomini definiti geniali, ma come capacità di riconoscere un ordine più profondo dentro fenomeni che altri avevano già osservato separatamente. Bach non inventa tutte le cose che utilizza, ma comprende con una profondità eccezionale come possano stare insieme, e proprio per questo il concerto italiano, la danza francese, il corale tedesco e il contrappunto non diventano citazioni stilistiche ma parti di un unico universo musicale.</p>
+    <div class="callout"><strong>Il Bach umano entrerà qui.</strong> Il viaggio a Lubecca, il conflitto di Weimar, l’arresto, il mestiere quotidiano, la famiglia e quella curiosità quasi ossessiva che rende più comprensibile il musicista senza trasformarlo in caricatura.</div>
+  </section>
+
+  <section id="classicismo">
+    <div class="section-title"><div class="eyebrow">La porta successiva</div><h2>Il Barocco cambia pelle</h2></div>
+    <p>La morte di Bach nel 1750 rimane un confine didatticamente comodo purché nessuno la scambi per una parete, perché mentre il contrappunto bachiano raggiunge alcuni dei suoi vertici altri musicisti stanno già cercando un discorso più immediato, nel quale la melodia acquista maggiore evidenza, l’accompagnamento tende a semplificarsi e la frase si orienta verso una simmetria diversa. Il basso continuo perde progressivamente la propria necessità, l’orchestra modifica la distribuzione delle funzioni, il fortepiano comincia lentamente a contendere spazio al clavicembalo e la generazione dei figli di Bach rende visibile, dentro la stessa famiglia, una trasformazione che nessuna data potrebbe contenere interamente.</p>
+    <p>Il Classicismo non nascerà dunque distruggendo il Barocco, ma selezionandone e trasformandone l’eredità; quando entreremo nel mondo di Haydn, Mozart e del giovane Beethoven, sotto la chiarezza del nuovo linguaggio continueremo a riconoscere molte fondamenta costruite proprio qui.</p>
+    <div class="source-row"><a class="deep-link" href="../classicismo/">Continua nel sito sul Classicismo →</a></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <strong>Pagina a cura di Alessandro Zilli</strong>
+    <span>Percorso didattico di storia della musica · progetto in sviluppo.</span>
+  </div>
+</footer>
+</div>
+
+<div class="modal" id="modal-continuo" role="dialog" aria-modal="true" aria-labelledby="title-continuo">
+  <div class="modal-panel">
+    <div class="modal-head"><span id="title-continuo">Che cos’è il basso continuo?</span><button class="modal-close" type="button" aria-label="Chiudi">×</button></div>
+    <div class="modal-body"><p>Il basso continuo è una linea grave che sostiene la struttura armonica e che può essere realizzata da più strumenti insieme. Uno strumento grave, come violoncello, viola da gamba o fagotto, può rinforzare la linea mentre clavicembalo, organo, liuto o tiorba costruiscono gli accordi, spesso interpretando cifre poste sotto il basso. La parte scritta, quindi, non coincide necessariamente con tutto ciò che viene effettivamente suonato.</p></div>
+  </div>
+</div>
+<div class="modal" id="modal-monodia" role="dialog" aria-modal="true" aria-labelledby="title-monodia">
+  <div class="modal-panel">
+    <div class="modal-head"><span id="title-monodia">Monodia e polifonia</span><button class="modal-close" type="button" aria-label="Chiudi">×</button></div>
+    <div class="modal-body"><p>Nella polifonia più linee melodiche possono possedere una relativa autonomia e costruire il discorso attraverso il loro intreccio; nella monodia accompagnata una linea emerge invece in primo piano, sostenuta da un accompagnamento armonico. Nel Barocco i due principi non si escludono: convivono, si attraversano e finiranno spesso per incontrarsi nella stessa composizione.</p></div>
+  </div>
+</div>
+<div class="modal" id="modal-concerto" role="dialog" aria-modal="true" aria-labelledby="title-concerto">
+  <div class="modal-panel">
+    <div class="modal-head"><span id="title-concerto">Concertino e ripieno</span><button class="modal-close" type="button" aria-label="Chiudi">×</button></div>
+    <div class="modal-body"><p>Nel concerto grosso il concertino è il piccolo gruppo che può emergere dal complesso più ampio, mentre il ripieno indica l’insieme orchestrale che lo circonda. Il rapporto non deve essere immaginato come una battaglia continua: i due livelli possono alternarsi, fondersi e differenziarsi, modificando continuamente peso e densità del suono.</p></div>
+  </div>
+</div>
+
+<button class="scrolltop" id="scrolltop" type="button" aria-label="Torna all’inizio">↑</button>
+<script>
+(function(){
+  const progress=document.getElementById('progress');
+  const topButton=document.getElementById('scrolltop');
+  const navLinks=[...document.querySelectorAll('nav a[href^="#"]')];
+  const sections=[...document.querySelectorAll('main section[id]')];
+  function updateScroll(){
+    const doc=document.documentElement;
+    const max=doc.scrollHeight-innerHeight;
+    progress.style.width=(max>0?(scrollY/max)*100:0)+'%';
+    topButton.classList.toggle('show',scrollY>700);
+  }
+  addEventListener('scroll',updateScroll,{passive:true});
+  updateScroll();
+  topButton.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));
+    });
+  },{rootMargin:'-28% 0px -62% 0px',threshold:0});
+  sections.forEach(s=>observer.observe(s));
+
+  document.querySelectorAll('[data-modal]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const m=document.getElementById(btn.dataset.modal);
+      if(m)m.classList.add('open');
+    });
+  });
+  document.querySelectorAll('.modal').forEach(m=>{
+    m.addEventListener('click',e=>{
+      if(e.target===m||e.target.closest('.modal-close'))m.classList.remove('open');
+    });
+  });
+  addEventListener('keydown',e=>{
+    if(e.key==='Escape')document.querySelectorAll('.modal.open').forEach(m=>m.classList.remove('open'));
+  });
+})();
+</script>
+</body>
+</html>
