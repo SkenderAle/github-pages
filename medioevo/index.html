@@ -25,6 +25,14 @@ main{background:linear-gradient(#e9decb,#f2eadc 35%,#e9decb)}.movement{max-width
 footer{background:#12100e;color:#cdbda6;padding:2rem 1.4rem;text-align:center;font:.76rem var(--sans)}
 @media(max-width:720px){.source{grid-template-columns:1fr}.hero-copy{padding-bottom:4rem}.listen{align-items:flex-start}.hero h1{font-size:clamp(3.5rem,18vw,6rem)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.room{transition:none}.gesture path{animation:none;stroke-dashoffset:0}}
+
+/* Narrative rooms: framed image/source anchored right, prose flows on the left */
+.room-split{display:block!important}
+.room-split::after{content:"";display:block;clear:both}
+.room-split>.room-gallery{float:right!important;width:min(38%,390px);margin:.25rem 0 1.35rem 2rem!important;display:block!important;grid-column:auto!important;grid-row:auto!important}
+.room-split>.room-copy{display:block!important;grid-column:auto!important;grid-row:auto!important}
+.room-split>.room-gallery figure{margin:0 0 1rem!important}
+@media(max-width:760px){.room-split>.room-gallery{float:none!important;width:100%;margin:1.25rem 0!important}}
 </style>
 </head>
 <body>
