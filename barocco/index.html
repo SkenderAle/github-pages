@@ -253,6 +253,24 @@ linear-gradient(180deg,#f4ede2,#eae1d4);border-top:1px solid #c3b49c;border-bott
 .backbone-audio:hover{background:#3b322a}
 .backbone-disclaimer{font-family:var(--sans);font-size:.7rem;color:#bfb2a5;margin-top:.75rem}
 @media(max-width:700px){.backbone-controls{grid-template-columns:1fr}}
+.continuo-lab{margin:1.4rem 0 2rem;padding:1.15rem;background:#efe5d6;border:1px solid #ccb99c;border-top:5px solid var(--red)}
+.continuo-lab h3{margin:.15rem 0 .5rem}
+.continuo-lab>p{font-size:.95rem;line-height:1.55;margin:.35rem 0 .9rem}
+.continuo-controls{display:flex;flex-wrap:wrap;gap:.45rem;margin:.9rem 0}
+.continuo-switch{border:1px solid #a99172;background:#fff8ed;color:#3f3228;border-radius:999px;padding:.5rem .72rem;font-family:var(--sans);font-size:.74rem;font-weight:900;cursor:pointer}
+.continuo-switch.active{background:var(--red);border-color:var(--red);color:#fff}
+.continuo-stage{display:grid;grid-template-columns:1.1fr 1fr;gap:.8rem;margin-top:1rem}
+.continuo-panel{background:#fffaf2;border:1px solid var(--line);padding:1rem}
+.continuo-panel b{display:block;font-family:var(--sans);font-size:.74rem;letter-spacing:.055em;text-transform:uppercase;color:var(--red);margin-bottom:.25rem}
+.continuo-panel h4{font-size:1.14rem;margin:.1rem 0 .42rem}
+.continuo-panel p{font-size:.9rem;line-height:1.5;margin:.3rem 0}
+.continuo-players{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0 0}
+.continuo-players span{padding:.44rem .58rem;border-radius:999px;background:#eadfcf;font-family:var(--sans);font-size:.72rem;font-weight:850;color:#40342c}
+.continuo-rule{margin:1rem 0 0;padding:.85rem .95rem;background:#1e2b39;color:#fff}
+.continuo-rule b{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#efd08e;margin-bottom:.2rem}
+.continuo-rule p{font-size:.9rem;line-height:1.5;margin:.25rem 0;color:#f2ece5}
+.continuo-source{margin-top:.9rem}
+@media(max-width:720px){.continuo-stage{grid-template-columns:1fr}}
 .before-recording{margin-left:-1.35rem;margin-right:-1.35rem;padding:4rem 1.35rem;background:linear-gradient(180deg,#f4ecdf,#eee3d2);border-top:1px solid #c7b79d;border-bottom:1px solid #c7b79d}
 .before-recording-inner{max-width:1180px;margin:auto}
 .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1.3rem 0 2rem}
@@ -626,6 +644,49 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
       </div>
       <div class="backbone-disclaimer">Sintesi didattica Web Audio: timbri, intervalli e durate sono schematici e non rappresentano una prassi esecutiva storica.</div>
     </div>
+    <div class="continuo-lab" id="continuo-lab">
+      <div class="eyebrow">Laboratorio · il basso continuo in funzione</div>
+      <h3>Il continuo non è “il clavicembalo”: è una funzione che cambia veste</h3>
+      <p>Nel nuovo filone della monodia accompagnata il basso continuo costituisce il terreno sopra il quale una voce, uno strumento o un piccolo gruppo possono emergere. La parte scritta può limitarsi a una linea grave, talvolta accompagnata da cifre, mentre la realizzazione effettiva dipende dal luogo, dal genere, dall’organico e dagli strumenti disponibili. Per questo chiedere “qual è lo strumento del continuo?” è quasi sempre la domanda sbagliata.</p>
+
+      <div class="continuo-controls" role="group" aria-label="Scegli un contesto di basso continuo">
+        <button class="continuo-switch active" type="button" data-continuo="camera">Camera</button>
+        <button class="continuo-switch" type="button" data-continuo="chiesa">Chiesa</button>
+        <button class="continuo-switch" type="button" data-continuo="teatro">Teatro</button>
+        <button class="continuo-switch" type="button" data-continuo="concerto">Concerto strumentale</button>
+      </div>
+
+      <div class="continuo-stage">
+        <div class="continuo-panel">
+          <b id="continuo-kicker">Camera · poche voci</b>
+          <h4 id="continuo-title">Un basso leggero, vicino alla parola</h4>
+          <p id="continuo-text">Con una o poche voci il continuo può essere affidato a strumenti relativamente discreti e flessibili. Tiorba, liuto, arpa o clavicembalo possono costruire l’armonia, mentre uno strumento grave può rinforzare la linea se il contesto lo richiede. Non esiste una combinazione obbligatoria.</p>
+          <div class="continuo-players" id="continuo-players">
+            <span>tiorba</span><span>liuto</span><span>arpa</span><span>clavicembalo</span><span>violoncello / viola da gamba</span>
+          </div>
+        </div>
+        <div class="continuo-panel">
+          <b>Che cosa resta costante?</b>
+          <h4>La funzione, non il colore</h4>
+          <p>Il continuo sostiene il basso, rende percepibile l’armonia e dialoga con ciò che accade sopra. La scelta degli strumenti può però cambiare radicalmente il peso, l’attacco e la trasparenza dell’insieme. In una chiesa l’organo può risultare naturale, in una scena teatrale possono servire colori differenti, in una sonata da camera una tiorba può bastare.</p>
+          <div class="continuo-rule">
+            <b>Regola da non dimenticare</b>
+            <p><strong>Basso continuo ≠ clavicembalo.</strong> Il clavicembalo è una delle possibili realizzazioni del continuo, non la sua definizione.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>1607: Agazzari divide gli strumenti in “fondamento” e “ornamento”</h3>
+      <p>Nel trattato <i>Del sonare sopra ’l basso con tutti li stromenti</i>, pubblicato a Siena nel 1607, Agostino Agazzari propone una distinzione estremamente utile per capire la mentalità del tempo: alcuni strumenti agiscono come <i>fondamento</i>, cioè sostengono il corpo dell’insieme e l’armonia, mentre altri possono funzionare come <i>ornamento</i>, arricchendo, contrappuntando e colorando il tessuto. Fra gli strumenti di fondamento cita organo e gravicembalo, e per poche o sole voci anche liuto, tiorba e arpa. Non sta consegnando una ricetta universale, ma descrivendo una pratica elastica nella quale il continuo viene costruito ogni volta in funzione del contesto.</p>
+      <p>Questa fonte è preziosa anche perché mostra quanto fosse normale per un musicista del Seicento ragionare non soltanto in termini di “quali note sono scritte”, ma di <em>quale ruolo deve svolgere ciascuno strumento dentro il concerto</em>. È esattamente la distanza che la filologia moderna deve provare a ricostruire.</p>
+      <div class="source-row continuo-source">
+        <a class="score-link" href="https://imslp.org/wiki/Del_sonare_sopra%27l_basso_con_tutti_li_stromenti_%28Agazzari%2C_Agostino%29" target="_blank" rel="noopener">♫ IMSLP · Agazzari, 1607</a>
+        <a class="deep-link" href="https://www.loc.gov/item/37037928/" target="_blank" rel="noopener">Library of Congress · edizione originale</a>
+      </div>
+
+      <div class="question">Nel filone della monodia accompagnata il basso continuo non è un accessorio: è <em>la nuova infrastruttura armonica</em> che permette a una voce o a uno strumento di emergere senza che tutto debba essere scritto come intreccio polifonico autonomo.</div>
+    </div>
+
     <div class="history-thread">
       <div class="thread-label">Dentro la stessa storia</div>
       <h3>Francesca Caccini: la nuova voce non ha un solo volto</h3>
@@ -1928,7 +1989,7 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
 <div class="modal" id="modal-continuo" role="dialog" aria-modal="true" aria-labelledby="title-continuo">
   <div class="modal-panel">
     <div class="modal-head"><span id="title-continuo">Che cos’è il basso continuo?</span><button class="modal-close" type="button" aria-label="Chiudi">×</button></div>
-    <div class="modal-body"><p>Il basso continuo è una linea grave che sostiene la struttura armonica e che può essere realizzata da più strumenti insieme. Uno strumento grave, come violoncello, viola da gamba o fagotto, può rinforzare la linea mentre clavicembalo, organo, liuto o tiorba costruiscono gli accordi, spesso interpretando cifre poste sotto il basso. La parte scritta, quindi, non coincide necessariamente con tutto ciò che viene effettivamente suonato.</p></div>
+    <div class="modal-body"><p>Il basso continuo è una <strong>funzione</strong>, non il nome di uno strumento. Una linea grave sostiene la struttura armonica e può essere realizzata da più strumenti insieme. Uno strumento grave, come violoncello, viola da gamba, violone o fagotto, può rinforzare la linea mentre clavicembalo, organo, liuto, tiorba o arpa costruiscono gli accordi, spesso interpretando cifre poste sotto il basso. La parte scritta, quindi, non coincide necessariamente con tutto ciò che viene effettivamente suonato e la scelta dell’organico dipende da luogo, genere, ensemble e prassi.</p><p><a class="deep-link" href="#continuo-lab">Vai al laboratorio sul continuo →</a></p></div>
   </div>
 </div>
 <div class="modal" id="modal-monodia" role="dialog" aria-modal="true" aria-labelledby="title-monodia">
@@ -1994,6 +2055,48 @@ radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
         osc.start(t);osc.stop(t+d+.02);
         t+=d;
       });
+    });
+  });
+
+  const continuoPresets={
+    camera:{
+      kicker:'Camera · poche voci',
+      title:'Un basso leggero, vicino alla parola',
+      text:'Con una o poche voci il continuo può essere affidato a strumenti relativamente discreti e flessibili. Tiorba, liuto, arpa o clavicembalo possono costruire l’armonia, mentre uno strumento grave può rinforzare la linea se il contesto lo richiede. Non esiste una combinazione obbligatoria.',
+      players:['tiorba','liuto','arpa','clavicembalo','violoncello / viola da gamba']
+    },
+    chiesa:{
+      kicker:'Chiesa · spazio e sostegno',
+      title:'L’organo può diventare il fondamento naturale',
+      text:'In un contesto ecclesiastico l’organo può sostenere voci e strumenti con particolare efficacia, ma anche qui la composizione concreta dell’insieme dipende dalla cappella, dallo spazio e dal repertorio. Violone, fagotto o altri bassi possono rinforzare la linea senza trasformare il continuo in una formula fissa.',
+      players:['organo','violone','fagotto','violoncello','altri bassi secondo il contesto']
+    },
+    teatro:{
+      kicker:'Teatro · parola, scena e colore',
+      title:'Il continuo può cambiare insieme alla scena',
+      text:'Nel teatro del primo Seicento il continuo può essere particolarmente ricco e variabile. Clavicembali, chitarroni, organi, arpa e altri strumenti possono entrare o uscire secondo personaggio, situazione e colore drammatico. La continuità armonica rimane, ma il timbro può diventare parte della regia musicale.',
+      players:['clavicembalo','chitarrone / tiorba','organo','arpa','strumento grave']
+    },
+    concerto:{
+      kicker:'Concerto strumentale · il basso tiene insieme i livelli',
+      title:'Il continuo collega solisti e insieme',
+      text:'Nella sonata e nel concerto il continuo può costituire il piano comune sopra il quale dialogano concertino, ripieno o solista. Clavicembalo o organo realizzano l’armonia, mentre violoncello, violone o fagotto possono articolare la linea grave secondo organico e repertorio.',
+      players:['clavicembalo / organo','violoncello','violone','fagotto']
+    }
+  };
+  document.querySelectorAll('.continuo-switch').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const data=continuoPresets[btn.dataset.continuo];
+      if(!data)return;
+      document.querySelectorAll('.continuo-switch').forEach(b=>b.classList.toggle('active',b===btn));
+      const k=document.getElementById('continuo-kicker');
+      const t=document.getElementById('continuo-title');
+      const x=document.getElementById('continuo-text');
+      const p=document.getElementById('continuo-players');
+      if(k)k.textContent=data.kicker;
+      if(t)t.textContent=data.title;
+      if(x)x.textContent=data.text;
+      if(p)p.innerHTML=data.players.map(v=>'<span>'+v+'</span>').join('');
     });
   });
 
