@@ -123,6 +123,20 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 .compare-pair b{display:block;font-family:var(--sans);font-size:.8rem;color:var(--red);margin-bottom:.3rem}
 .compare-pair p{font-size:.92rem;line-height:1.5;margin:.3rem 0 .8rem}
 @media(max-width:760px){.hip-grid,.compare-pair{grid-template-columns:1fr}}
+.listen-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0 2.2rem}
+.listen-panel{background:#211b17;color:#f6ede1;border-top:4px solid var(--gold);overflow:hidden;box-shadow:var(--shadow)}
+.listen-panel iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+.listen-copy{padding:1rem 1.05rem 1.15rem}
+.listen-copy b{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#e5c687;margin-bottom:.28rem}
+.listen-copy h3{color:#fff;margin:.08rem 0 .5rem;font-size:1.2rem}
+.listen-copy p{font-size:.91rem;line-height:1.5;color:#ded3c6;margin:.3rem 0}
+.wonder-card{margin:1.8rem 0 2.2rem;padding:1.3rem 1.45rem;background:
+radial-gradient(circle at 92% 15%,rgba(208,173,99,.17),transparent 12rem),
+#efe5d4;border:1px solid #c9b38b;border-left:6px solid var(--gold)}
+.wonder-card .wonder-label{font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:var(--red)}
+.wonder-card h3{margin:.25rem 0 .65rem;font-size:1.55rem}
+.wonder-card p{margin:.55rem 0;font-size:1rem}
+@media(max-width:760px){.listen-pair{grid-template-columns:1fr}}
 .threshold-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;margin:1.4rem 0 2rem}
 .threshold-card{border:1px solid var(--line);background:#f8f2e8;padding:1rem 1.05rem;border-top:4px solid var(--gold)}
 .threshold-card b{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.055em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem}
@@ -517,6 +531,27 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
       <div><b>Bach · BWV 593</b><p>La trascrizione per organo, nella quale il concerto viene ripensato attraverso due mani, pedaliera e registri.</p><a class="score-link" href="https://imslp.org/wiki/Organ_Concerto_in_A_minor%2C_BWV_593_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · trascrizione</a></div>
     </div>
 
+    <div class="listen-pair" aria-label="Confronto d'ascolto Vivaldi e Bach">
+      <article class="listen-panel">
+        <iframe src="https://www.youtube-nocookie.com/embed/n4-VvB3om0M" title="Vivaldi, Concerto per due violini in la minore RV 522, Voices of Music" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="listen-copy">
+          <b>Ascolto · originale</b>
+          <h3>Vivaldi, RV 522</h3>
+          <p>Due violini barocchi emergono e rientrano nell’insieme, mentre il continuo e gli archi rendono percepibile il rapporto fra protagonisti e orchestra. L’esecuzione di Voices of Music utilizza strumenti d’epoca.</p>
+        </div>
+      </article>
+      <article class="listen-panel">
+        <iframe src="https://www.youtube-nocookie.com/embed/BhgATpiXPHo" title="Bach, Concerto per organo in la minore BWV 593 dopo Vivaldi" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="listen-copy">
+          <b>Ascolto · trasformazione</b>
+          <h3>Bach, BWV 593</h3>
+          <p>Lo stesso progetto formale viene trasferito all’organo: ciò che nell’originale dipende dal dialogo fra solisti e orchestra deve ora essere ricostruito attraverso tastiere, pedaliera e registri.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="question">Ascoltandoli uno dopo l’altro, la domanda non è soltanto “che cosa ha copiato Bach?”, ma <em>che cosa ha dovuto capire di Vivaldi per poterlo trasformare?</em></div>
+
     <h3>Il concerto grosso smette di stare al proprio posto</h3>
     <p>Nei sei Concerti brandeburghesi, raccolti nel 1721, la distinzione fra piccolo gruppo e insieme non viene cancellata ma sottoposta a una continua trasformazione, perché strumenti che in un concerto tradizionale avrebbero potuto svolgere funzioni più prevedibili acquistano improvvisamente un rilievo individuale, mentre le combinazioni cambiano da un concerto all’altro fino a rendere insufficiente l’idea di un unico modello di concertino; nel Secondo Concerto, per esempio, tromba, flauto, oboe e violino formano un gruppo nel quale l’identità dei timbri è talmente forte da trasformare il dialogo in una vera conversazione fra personalità differenti.</p>
     <p>È precisamente qui che il percorso Corelli–Vivaldi–Bach diventa utile, purché non lo trasformiamo in una genealogia troppo rigida, perché Corelli aveva contribuito a rendere straordinariamente leggibile il rapporto fra piccoli e grandi gruppi, Vivaldi aveva dato al solista e al ritornello una nuova energia formale, mentre Bach utilizza quelle possibilità come materiale da ricombinare, facendo sì che quasi ogni strumento possa assumere, almeno per un momento, un ruolo che costringe l’ascoltatore a rivedere la gerarchia dell’insieme.</p>
@@ -578,19 +613,28 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
       </div>
 
       <h3>Il pianoforte nasce dentro il Barocco</h3>
-      <p>Anche lo strumento destinato a diventare quasi il simbolo della musica classica nasce molto prima che il Classicismo sia riconoscibile come stile, perché Bartolomeo Cristofori, attivo alla corte medicea, sviluppa intorno al 1700 un meccanismo nel quale piccoli martelli colpiscono le corde invece di pizzicarle come avviene nel clavicembalo, rendendo possibile una variazione dell’intensità direttamente collegata alla forza del tocco; il più antico pianoforte sopravvissuto costruito da Cristofori, oggi al Metropolitan Museum di New York, risale al 1720 e conserva già una meccanica sorprendentemente sofisticata. citeturn177169search0turn177169search1</p>
+      <p>Anche lo strumento destinato a diventare quasi il simbolo della musica classica nasce molto prima che il Classicismo sia riconoscibile come stile, perché Bartolomeo Cristofori, attivo alla corte medicea, sviluppa intorno al 1700 un meccanismo nel quale piccoli martelli colpiscono le corde invece di pizzicarle come avviene nel clavicembalo, rendendo possibile una variazione dell’intensità direttamente collegata alla forza del tocco; il più antico pianoforte sopravvissuto costruito da Cristofori, oggi al Metropolitan Museum di New York, risale al 1720 e conserva già una meccanica sorprendentemente sofisticata.</p>
       <p>La sua comparsa non determina naturalmente la scomparsa del clavicembalo, perché i due strumenti continueranno a convivere a lungo e la diffusione del pianoforte sarà tutt’altro che immediata; ciò che cambia è la possibilità stessa offerta all’esecutore, che può modellare l’intensità attraverso il gesto delle dita e trasformare la tastiera in uno strumento capace di costruire la frase dinamicamente in un modo che il clavicembalo non consente nello stesso senso.</p>
+      <div class="wonder-card">
+        <div class="wonder-label">Cartiglio della meraviglia</div>
+        <h3>E se Bach incontrasse un Fazioli?</h3>
+        <p>Bach conobbe i primi pianoforti costruiti da Gottfried Silbermann sul modello di Cristofori e, davanti agli esemplari iniziali, non si lasciò impressionare dalla novità: ne apprezzò il suono ma criticò la debolezza del registro acuto e la pesantezza della meccanica. Silbermann intervenne sugli strumenti e il giudizio di Bach cambiò, tanto che negli anni successivi arrivò a lodarli e fu coinvolto anche nella vendita di almeno un “Piano et Forte”.</p>
+        <p>Immaginarlo oggi davanti a un grande Bösendorfer o a un Fazioli non serve quindi a stabilire se avrebbe “preferito” il pianoforte al clavicembalo, domanda che appartiene più a noi che a lui; è molto più interessante pensare a che cosa avrebbe fatto un musicista abituato a esaminare organi, criticare strumenti difettosi e studiare ogni nuova possibilità sonora davanti a una tastiera capace di passare dal pianissimo a una massa sonora enorme mantenendo il controllo di ogni singola voce. Probabilmente, prima di decidere se gli piacesse, avrebbe cominciato a provarla.</p>
+        <div class="source-row">
+          <a class="deep-link" href="https://www.metmuseum.org/essays/the-piano-the-pianofortes-of-bartolomeo-cristofori-1655-1731" target="_blank" rel="noopener">Met · Bach, Silbermann e i primi pianoforti</a>
+        </div>
+      </div>
       <div class="source-row">
         <a class="deep-link" href="https://www.metmuseum.org/art/collection/search/501788" target="_blank" rel="noopener">Met · il Cristofori del 1720</a>
       </div>
 
       <h3>L’orchestra smette lentamente di dipendere dal continuo</h3>
       <p>Nello stesso periodo la scrittura orchestrale diventa progressivamente più autosufficiente, perché, man mano che le parti vengono definite con maggiore precisione e gli strumenti acquistano funzioni più stabili all’interno dell’insieme, il basso continuo perde quella necessità che aveva caratterizzato gran parte del Seicento; non scompare in un istante e continuerà a essere utilizzato ancora per decenni, ma la direzione è ormai evidente, poiché l’armonia può essere distribuita all’interno dell’orchestra invece di dipendere costantemente da uno strumento incaricato di completarla.</p>
-      <p>La scuola di Mannheim, sviluppatasi attorno alla metà del secolo con Johann Stamitz e altri musicisti, rende particolarmente visibile la nuova concezione dell’ensemble attraverso una precisione tecnica che impressiona i contemporanei, l’uso orchestrale di crescendo e diminuendo e una scrittura nella quale il gruppo può modificare collettivamente intensità e colore; non si tratta di attribuire a Mannheim l’invenzione assoluta di ogni procedimento dinamico, che era già presente altrove, ma di riconoscere quanto quell’orchestra contribuisca a trasformare tali possibilità in elementi caratteristici di una nuova pratica sinfonica. citeturn872258search0turn872258search4</p>
+      <p>La scuola di Mannheim, sviluppatasi attorno alla metà del secolo con Johann Stamitz e altri musicisti, rende particolarmente visibile la nuova concezione dell’ensemble attraverso una precisione tecnica che impressiona i contemporanei, l’uso orchestrale di crescendo e diminuendo e una scrittura nella quale il gruppo può modificare collettivamente intensità e colore; non si tratta di attribuire a Mannheim l’invenzione assoluta di ogni procedimento dinamico, che era già presente altrove, ma di riconoscere quanto quell’orchestra contribuisca a trasformare tali possibilità in elementi caratteristici di una nuova pratica sinfonica.</p>
 
       <h3>Una nuova semplicità che non è semplicismo</h3>
       <p>Definire il nuovo gusto come semplice reazione alla complessità barocca sarebbe insufficiente, perché ciò che cambia non è soltanto la quantità delle voci o la densità del contrappunto, ma il modo nel quale il discorso pretende di essere compreso; la melodia cerca una continuità più evidente, l’accompagnamento può organizzarsi in figure regolari e la frase tende a costruire attese e conclusioni attraverso simmetrie che permettono all’ascoltatore di orientarsi con maggiore immediatezza, mentre l’espressione non scompare ma viene affidata sempre più spesso alla flessibilità della frase, alla dinamica e al contrasto.</p>
-      <p>La stessa famiglia Bach mostra quanto sarebbe artificiale trasformare questa evoluzione in una guerra fra epoche, perché Carl Philipp Emanuel diventa uno dei principali rappresentanti dell’<i>Empfindsamkeit</i>, mentre Johann Christian porta a Londra uno stile galante fortemente segnato dall’esperienza italiana e destinato a influenzare il giovane Mozart; il vecchio e il nuovo, quindi, non si succedono ordinatamente, ma convivono persino all’interno della stessa genealogia musicale. citeturn872258search1turn872258search2</p>
+      <p>La stessa famiglia Bach mostra quanto sarebbe artificiale trasformare questa evoluzione in una guerra fra epoche, perché Carl Philipp Emanuel diventa uno dei principali rappresentanti dell’<i>Empfindsamkeit</i>, mentre Johann Christian porta a Londra uno stile galante fortemente segnato dall’esperienza italiana e destinato a influenzare il giovane Mozart; il vecchio e il nuovo, quindi, non si succedono ordinatamente, ma convivono persino all’interno della stessa genealogia musicale.</p>
 
       <h3>Uscire dal Barocco senza chiudere la porta</h3>
       <p>Quando il nostro percorso si avvicina alla metà del Settecento, ciò che abbiamo chiamato Barocco non scompare ma cambia funzione, perché il concerto continua a vivere, la sonata continua a trasformarsi, la fuga rimane una risorsa fondamentale, il sistema tonale conserva il proprio ruolo e l’orchestra utilizza molte delle possibilità sviluppate nei decenni precedenti; ciò che muta è il rapporto fra questi elementi, mentre una nuova sensibilità cerca maggiore evidenza melodica, un diverso equilibrio della frase e un organismo orchestrale capace di respirare sempre più chiaramente come un insieme.</p>
@@ -605,7 +649,7 @@ linear-gradient(180deg,#eee4d4,#f6f0e6);border-top:1px solid #cbbb9f;border-bott
 <footer class="footer">
   <div class="footer-inner">
     <strong>Pagina a cura di Alessandro Zilli</strong>
-    <span>Percorso didattico di storia della musica · progetto in sviluppo.</span>
+    <span>Percorso didattico di storia della musica · ascolti, fonti e partiture per orientarsi nel Barocco europeo.</span>
   </div>
 </footer>
 </div>
