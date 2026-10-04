@@ -1,104 +1,101 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Il percorso sul Medioevo musicale è in preparazione.">
-  <title>Medioevo musicale · Lavori in corso</title>
-  <style>
-    :root{
-      --paper:#f4efe5;
-      --ink:#241d18;
-      --muted:#6e6257;
-      --line:#cdbfa9;
-      --gold:#b38a4d;
-      --deep:#1e1a17;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%}
-    body{
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      padding:1.4rem;
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 18% 20%,rgba(179,138,77,.13),transparent 18rem),
-        radial-gradient(circle at 82% 78%,rgba(80,70,60,.08),transparent 20rem),
-        var(--paper);
-      font-family:Georgia,"Times New Roman",serif;
-    }
-    main{
-      width:min(760px,100%);
-      padding:clamp(2rem,6vw,4.5rem);
-      text-align:center;
-      background:rgba(255,252,246,.82);
-      border:1px solid var(--line);
-      box-shadow:0 20px 55px rgba(42,31,23,.10);
-    }
-    .eyebrow{
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      font-size:.72rem;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-weight:900;
-      color:#795b32;
-    }
-    h1{
-      margin:.45rem 0 .6rem;
-      font-size:clamp(2.5rem,8vw,5.6rem);
-      line-height:.95;
-      letter-spacing:-.045em;
-    }
-    .work{
-      display:inline-block;
-      margin:1.1rem 0 1rem;
-      padding:.55rem .8rem;
-      border:1px solid var(--gold);
-      color:#5d4529;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      font-weight:900;
-      font-size:.82rem;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    p{
-      max-width:560px;
-      margin:.4rem auto 1.45rem;
-      color:var(--muted);
-      font-size:1.08rem;
-      line-height:1.65;
-    }
-    a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:.75rem 1rem;
-      border-radius:999px;
-      background:var(--deep);
-      color:#fff8ed;
-      text-decoration:none;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      font-weight:800;
-      font-size:.82rem;
-    }
-    a:hover{background:#3b3028}
-    footer{
-      margin-top:2rem;
-      color:#8b7d70;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      font-size:.72rem;
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Medioevo musicale · Una voce contro il tempo</title>
+<meta name="description" content="Un viaggio nel Medioevo musicale attraverso voce, memoria, neumi, fonti e ascolto. A cura di Alessandro Zilli.">
+<meta name="author" content="Alessandro Zilli">
+<style>
+:root{--night:#14120f;--night2:#201b16;--paper:#eee5d4;--paper2:#f8f3e9;--ink:#282019;--muted:#6d6255;--gold:#bd9557;--red:#813b32;--blue:#3d5360;--green:#435d4c;--line:#cbb99d;--serif:Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--night);color:var(--ink);font-family:var(--serif);line-height:1.75}button,a{font:inherit}.progress{position:fixed;z-index:100;top:0;left:0;height:3px;width:0;background:var(--gold)}
+.hero{min-height:100vh;display:grid;place-items:end center;position:relative;overflow:hidden;color:#f7efe2;background:radial-gradient(circle at 50% 30%,#3c3022 0,#211b15 28%,#12100e 72%)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0002,#0008),url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Cantigas_de_Santa_Mar%C3%ADa%2C_Codex_of_the_musicians%2C_B-I-2_162R_lute%2C_rebab%2C_musical_notation.jpg") center/cover;opacity:.17;filter:grayscale(.25) sepia(.25)}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 0 16%,#15120fcf 68%)}
+.hero-copy{position:relative;z-index:2;width:min(1120px,100%);padding:7rem 1.4rem 6rem}.credit,.eyebrow{font:800 .7rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#d9bb83}.credit{font-size:.56rem;opacity:.8}.hero h1{font-size:clamp(4rem,10vw,9rem);line-height:.83;letter-spacing:-.055em;font-weight:500;margin:.7rem 0 1.4rem}.hero h1 span{display:block;font-size:.43em;letter-spacing:-.025em;margin-top:.4em;color:#eadcc5}.question{max-width:800px;font-size:clamp(1.35rem,2.8vw,2.2rem);line-height:1.35;margin:2rem 0 1rem}.scroll{font:800 .72rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#d8c19a;margin-top:3rem}
+.nav{position:sticky;top:0;z-index:40;background:#eee5d4ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.navin{display:flex;gap:.3rem;overflow:auto;max-width:1200px;margin:auto;padding:.55rem 1rem;scrollbar-width:none}.nav a{white-space:nowrap;text-decoration:none;border-radius:999px;padding:.48rem .7rem;font:750 .75rem var(--sans);color:#594d40}.nav a:hover{background:#2a231d;color:white}
+main{background:linear-gradient(#e9decb,#f2eadc 35%,#e9decb)}.movement{max-width:1120px;margin:auto;padding:clamp(5rem,9vw,8rem) 1.4rem}.movement.dark{max-width:none;background:#191612;color:#eee3d1;padding-left:max(1.4rem,calc((100vw - 1120px)/2));padding-right:max(1.4rem,calc((100vw - 1120px)/2))}.movement h2{font-size:clamp(2.6rem,6vw,5.5rem);line-height:.98;letter-spacing:-.04em;margin:.3rem 0 1.4rem;font-weight:500}.lead{font-size:clamp(1.2rem,2vw,1.5rem);max-width:880px;line-height:1.65}.prose{max-width:900px}.prose p{font-size:1.1rem}.door{display:inline-flex;margin:1.2rem .45rem .2rem 0;padding:.72rem .9rem;border:1px solid #927954;background:transparent;color:inherit;text-decoration:none;font:800 .75rem var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.door:hover{background:#2c251e;color:#fff}.dark .door{border-color:#b89662}
+.experiment{margin:2.5rem 0;padding:clamp(1.4rem,3vw,2.2rem);background:#f7f1e6;border-top:4px solid var(--gold);box-shadow:0 12px 32px #46351f14}.dark .experiment{background:#28221c;border-color:#b78c4b}.experiment h3{font-size:1.65rem;margin:.15rem 0 .6rem}.action{border:0;background:#29221c;color:#fff7e9;padding:.75rem 1rem;cursor:pointer;font:850 .76rem var(--sans);letter-spacing:.08em;text-transform:uppercase}.action:hover{background:#6d4e29}.result{margin-top:1rem;padding:1rem;border-left:3px solid var(--gold);display:none}.result.show{display:block}
+.gesture{height:150px;position:relative;margin:1.2rem 0;background:linear-gradient(#0000 49%,#9b886b33 50%,#0000 51%);overflow:hidden}.gesture svg{width:100%;height:100%}.gesture path{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-dasharray:700;stroke-dashoffset:700}.gesture.play path{animation:draw 4s linear forwards}@keyframes draw{to{stroke-dashoffset:0}}
+.neumes{font-size:clamp(2.3rem,7vw,5.5rem);letter-spacing:.18em;text-align:center;padding:2rem .5rem;color:#3d3024;background:#e4d6bd;margin:1.5rem 0}.dark .neumes{background:#2d261f;color:#ead9bc}
+.source{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}.source-card{background:#f7f1e6;border:1px solid var(--line);padding:1.2rem}.source-card b{font:850 .72rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--red)}.source-card p{font-size:.95rem;color:var(--muted)}
+.listen{margin:2rem 0;background:#29231d;color:#f6ead8;padding:1.4rem;display:flex;gap:1rem;align-items:center}.listen button{width:54px;height:54px;border-radius:50%;border:1px solid #d7b97f;background:transparent;color:#fff;font-size:1.2rem;cursor:pointer}.listen .meta{flex:1}.listen strong{display:block;font-size:1.15rem}.listen small{font-family:var(--sans);color:#cdbda6}.bar{height:4px;background:#695b4a;margin-top:.7rem;overflow:hidden}.bar i{display:block;height:100%;width:0;background:#d6b271;transition:width .2s}
+.maxim{margin:4rem auto;text-align:center;font-size:clamp(2rem,5vw,4rem);font-style:italic;color:#5e3e2e}
+.room{position:fixed;z-index:80;inset:0;background:#17130ff7;color:#f3e8d7;overflow:auto;transform:translateY(105%);transition:transform .35s ease}.room.open{transform:none}.roomin{max-width:980px;margin:auto;padding:6rem 1.4rem}.close{position:fixed;right:1rem;top:1rem;border:1px solid #bda57d;background:#231d17;color:#fff;padding:.65rem .85rem;cursor:pointer;font:800 .72rem var(--sans)}.room h2{font-size:clamp(2.7rem,7vw,6rem);line-height:.95;margin:.3rem 0 1.5rem}.room p{font-size:1.12rem;max-width:820px}.room .source-card{background:#262019;border-color:#655641;color:#eee}.room .source-card p{color:#d1c1ab}
+footer{background:#12100e;color:#cdbda6;padding:2rem 1.4rem;text-align:center;font:.76rem var(--sans)}
+@media(max-width:720px){.source{grid-template-columns:1fr}.hero-copy{padding-bottom:4rem}.listen{align-items:flex-start}.hero h1{font-size:clamp(3.5rem,18vw,6rem)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.room{transition:none}.gesture path{animation:none;stroke-dashoffset:0}}
+</style>
 </head>
 <body>
-  <main>
-    <div class="eyebrow">Percorsi di storia della musica</div>
-    <h1>Medioevo musicale</h1>
-    <div class="work">Lavori in corso</div>
-    <p>Il percorso sul Medioevo musicale è in preparazione. Questa pagina è già al suo indirizzo definitivo e verrà costruita progressivamente all’interno dello stesso progetto didattico.</p>
-    <a href="../">← Torna all’indice generale</a>
-    <footer>Pagina a cura di Alessandro Zilli · © tutti i diritti riservati</footer>
-  </main>
-</body>
-</html>
+<div class="progress" id="progress"></div>
+<header class="hero" id="inizio"><div class="hero-copy">
+<div class="credit">Pagina a cura di Alessandro Zilli · © tutti i diritti riservati</div>
+<div class="eyebrow">Percorsi di storia della musica</div>
+<h1>MEDIOEVO <span>Una voce contro il tempo</span></h1>
+<p class="question">Come si conserva un suono quando il suono, appena nasce, scompare?</p>
+<div class="scroll">↓ Scorri</div>
+</div></header>
+<nav class="nav"><div class="navin">
+<a href="../">← Atlante</a><a href="#memoria">Voce</a><a href="#segno">Segno</a><a href="#viderunt">Notazione</a><a href="#guido">Guido</a><a href="#polifonia">Polifonia</a>
+</div></nav>
+<main>
+<section class="movement" id="memoria"><div class="eyebrow">Prologo · Memoria</div><h2>Prima della pagina c'è una voce</h2>
+<div class="prose"><p class="lead">Per conservare una musica non è necessario, almeno all'inizio, possederne una partitura, perché una comunità può ricordare attraverso la ripetizione, l'ascolto, il gesto e l'insegnamento, affidando a persone vive ciò che deve continuare a vivere. Il problema nasce quando quella memoria deve attraversare distanze, generazioni e comunità differenti, mentre ciò che viene cantato continua inevitabilmente a essere ricevuto, trasmesso e trasformato.</p>
+<p>Il Medioevo cristiano non comincia con un unico repertorio già ordinato sotto il nome di «gregoriano», poiché le comunità liturgiche dell'Occidente conobbero tradizioni differenti, legate ai propri luoghi e alle proprie storie. Quando, soprattutto nel mondo franco-carolingio, la necessità di organizzare e uniformare una parte di questo patrimonio acquista una nuova forza, la memoria orale non scompare, ma comincia a convivere con strumenti destinati a sostenerla.</p></div>
+<button class="door" data-room="pregreg">↗ Prima del gregoriano</button><button class="door" data-room="gregorio">↗ Gregorio non ha scritto il gregoriano</button>
+</section>
+
+<section class="movement dark" id="segno"><div class="eyebrow">I · Dal gesto al segno</div><h2>Quando la mano prova a ricordare il suono</h2>
+<p class="lead">Prima che una linea stabilisca con precisione dove collocare una nota, il segno può funzionare soprattutto come richiamo per chi possiede già la melodia nella memoria, suggerendo il profilo del gesto musicale e, attraverso una grafia molto più ricca di quanto possa sembrare a uno sguardo moderno, anche modi differenti di articolare ciò che si canta.</p>
+<div class="experiment"><h3>Segui il suono</h3><p>Immagina una breve frase che sale, si trattiene e ritorna. Guarda il gesto, poi prova a conservarlo quando la mano non c'è più.</p>
+<div class="gesture" id="gesture"><svg viewBox="0 0 800 150" preserveAspectRatio="none"><path d="M20 110 C100 105 120 45 205 55 S315 125 390 80 S515 25 600 55 S690 105 780 45"/></svg></div>
+<button class="action" id="gestureBtn">▶ Segui il gesto</button>
+<div class="result" id="gestureResult">Come potremmo lasciare questo movimento su un foglio quando la mano non c'è più?</div></div>
+<div class="neumes" aria-label="evocazione grafica di segni neumatici">⌒ 〽 ⌁ ︵ ⁝ ⌒</div>
+<button class="door" data-room="gestopagina">↗ Dal gesto alla pagina</button>
+</section>
+
+<section class="movement" id="viderunt"><div class="eyebrow">II · Quando il suono sale sulla pagina</div><h2>Una melodia, informazioni differenti</h2>
+<p class="lead"><em>Viderunt omnes</em> diventa il nostro filo: la incontriamo come canto, la osserviamo mentre la scrittura rende progressivamente più determinabile il movimento delle altezze e la ritroveremo, più avanti, quando intorno a quella stessa materia nasceranno costruzioni polifoniche di straordinaria ampiezza.</p>
+<div class="listen" data-duration="12"><button aria-label="Avvia ascolto dimostrativo">▶</button><div class="meta"><strong>Viderunt omnes · canto monodico</strong><small>Ascolto guida · la registrazione definitiva sarà collegata alla fonte verificata</small><div class="bar"><i></i></div></div></div>
+<div class="source">
+<div class="source-card"><b>Neumi</b><h3>Ricordare il gesto</h3><p>Le grafie di tradizioni come San Gallo e Laon possono conservare informazioni preziose sull'articolazione del gesto melodico, senza coincidere con il sistema di altezze determinate della notazione moderna.</p></div>
+<div class="source-card"><b>Tetragramma e quadrata</b><h3>Determinare l'altezza</h3><p>La disposizione sul rigo rende assai più stabile la relazione fra il segno e l'altezza, trasformando ciò che il cantore può ricavare direttamente dalla pagina.</p></div>
+</div>
+<button class="door" data-room="trescritture">↗ Tre scritture, una melodia</button>
+<p class="maxim">«Il segno non è il suono.»</p>
+</section>
+
+<section class="movement dark" id="guido"><div class="eyebrow">III · Guido</div><h2>Imparare una musica che non conosci</h2>
+<p class="lead">Quando la posizione delle altezze diventa più leggibile e strumenti didattici come quelli legati alla tradizione di Guido d'Arezzo consentono di orientarsi con maggiore sicurezza, la scrittura non elimina la memoria e l'oralità, ma modifica radicalmente ciò che può essere appreso a partire dalla pagina.</p>
+<div class="experiment"><h3><em>Ut queant laxis</em></h3><p>Le sillabe associate agli inizi successivi della melodia diventano uno strumento per pensare e riconoscere le altezze. Nell'edizione completa l'ascolto evidenzierà soltanto i sei attacchi utili all'esperimento.</p><button class="action" data-room="guidoRoom">◎ Apri la finestra di Guido</button></div>
+<p class="lead">E quando una voce può essere scritta con crescente precisione, sulla pagina può essere posto un problema ancora più difficile: <strong>scriverne più di una.</strong></p>
+</section>
+
+<section class="movement" id="polifonia"><div class="eyebrow">IV · La porta successiva</div><h2>Quando una voce non basta più</h2>
+<p class="lead">La polifonia non nasce improvvisamente a Notre-Dame, perché pratiche a più voci sono documentate molto prima; ciò che incontreremo procedendo sarà piuttosto l'ampliarsi delle possibilità di coordinare, scrivere e trasmettere rapporti musicali sempre più complessi.</p>
+<div class="listen"><button disabled aria-label="Ascolto in preparazione">▶</button><div class="meta"><strong>O primus homo coruit</strong><small>Qui entrerà il primo ascolto polifonico verificato, prima di Notre-Dame.</small><div class="bar"><i></i></div></div></div>
+<p><strong>Il prototipo finisce qui.</strong> La struttura successiva è già progettata: Notre-Dame, Léonin e Pérotin, scrivere il tempo, viaggi, Mediterraneo, Cividale, rito, Francesco, Boezio, Ars nova, Machaut, Trecento italiano e Codice Squarcialupi.</p>
+</section>
+</main>
+
+<div class="room" id="pregreg" role="dialog" aria-modal="true"><button class="close">← Torna al percorso</button><div class="roomin"><div class="eyebrow">Stanza laterale</div><h2>Prima del gregoriano</h2><p>Se pronunciamo oggi le parole «canto medievale», il pensiero corre quasi inevitabilmente al gregoriano, come se il cristianesimo occidentale avesse posseduto fin dall'inizio un repertorio comune. La storia è assai meno uniforme, perché comunità differenti svilupparono pratiche liturgiche legate alle proprie sedi e tradizioni.</p><p>Questa stanza ospiterà quattro porte sonore, dedicate al canto romano antico, ambrosiano, beneventano e ispanico, affinché la pluralità venga ascoltata prima di essere classificata.</p></div></div>
+<div class="room" id="gregorio" role="dialog" aria-modal="true"><button class="close">← Torna al percorso</button><div class="roomin"><div class="eyebrow">Stanza laterale</div><h2>Gregorio non ha scritto il gregoriano</h2><p>La figura di Gregorio I è essenziale per comprendere la costruzione dell'autorità attribuita al repertorio, ma non deve essere trasformata nel ritratto di un compositore che avrebbe scritto le melodie gregoriane. La domanda più interessante diventa allora un'altra: perché fu tanto importante collegare quel canto al suo nome?</p></div></div>
+<div class="room" id="gestopagina" role="dialog" aria-modal="true"><button class="close">← Torna al percorso</button><div class="roomin"><div class="eyebrow">Stanza laterale</div><h2>Dal gesto alla pagina</h2><p>Una comunità che conosce già una melodia non chiede necessariamente alla pagina di dirle tutto. Può aver bisogno che il segno richiami un movimento, un raggruppamento, un'articolazione, una tensione. Le grafie neumatiche devono essere interrogate a partire da questa funzione, non giudicate come partiture moderne incomplete.</p></div></div>
+<div class="room" id="trescritture" role="dialog" aria-modal="true"><button class="close">← Torna al percorso</button><div class="roomin"><div class="eyebrow">Laboratorio della fonte</div><h2>Tre scritture, una melodia</h2><p>Il laboratorio definitivo utilizzerà un segmento filologicamente confrontabile di <em>Viderunt omnes</em>, facendo dialogare la tradizione neumatica, la disposizione diastematica e la notazione quadrata. Il <em>Graduale Triplex</em> sarà particolarmente prezioso perché consente di vedere sulla stessa pagina la quadrata insieme alle tradizioni di Laon e San Gallo.</p><div class="source"><div class="source-card"><b>Domanda 1</b><p>Quale scrittura permette di individuare più facilmente l'altezza?</p></div><div class="source-card"><b>Domanda 2</b><p>Quale conserva informazioni che possono aiutare a interrogare articolazione e fraseggio?</p></div></div><p>La conclusione non sarà una graduatoria fra sistemi, ma una domanda: <strong>migliore per fare che cosa?</strong></p></div></div>
+<div class="room" id="guidoRoom" role="dialog" aria-modal="true"><button class="close">← Torna al percorso</button><div class="roomin"><div class="eyebrow">Finestra</div><h2>Guido d'Arezzo</h2><p>Qui entreranno il tetragramma, la solmisazione e l'esperimento su <em>Ut queant laxis</em>, mantenendo distinta la sicurezza del ruolo didattico delle sillabe dalle questioni più complesse relative alla storia esatta della melodia.</p></div></div>
+
+<footer>Alessandro Zilli · Percorsi di storia della musica · © tutti i diritti riservati</footer>
+<script>
+const progress=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h?scrollY/h*100:0)+'%'});
+let returnFocus=null;
+function openRoom(id,trigger){const r=document.getElementById(id);if(!r)return;returnFocus=trigger||document.activeElement;r.classList.add('open');document.body.style.overflow='hidden';r.querySelector('.close').focus()}
+function closeRoom(r){r.classList.remove('open');document.body.style.overflow='';if(returnFocus)returnFocus.focus()}
+document.querySelectorAll('[data-room]').forEach(el=>el.addEventListener('click',()=>openRoom(el.dataset.room,el)));
+document.querySelectorAll('.close').forEach(el=>el.addEventListener('click',()=>closeRoom(el.closest('.room'))));
+addEventListener('keydown',e=>{if(e.key==='Escape'){const r=document.querySelector('.room.open');if(r)closeRoom(r)}});
+document.getElementById('gestureBtn').addEventListener('click',()=>{const g=document.getElementById('gesture');g.classList.remove('play');void g.offsetWidth;g.classList.add('play');setTimeout(()=>document.getElementById('gestureResult').classList.add('show'),3900)});
+document.querySelectorAll('.listen[data-duration]').forEach(box=>{const b=box.querySelector('button'),bar=box.querySelector('.bar i');let timer=null;b.addEventListener('click',()=>{if(timer){clearInterval(timer);timer=null;b.textContent='▶';return}let p=0;b.textContent='Ⅱ';timer=setInterval(()=>{p+=2;bar.style.width=Math.min(p,100)+'%';if(p>=100){clearInterval(timer);timer=null;b.textContent='▶';bar.style.width='0'}},240)})});
+</script>
+</body></html>
