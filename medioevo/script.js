@@ -41,3 +41,31 @@ if(voiceDemo&&voicePlay){
     if(voiceText)voiceText.textContent='La seconda voce non cancella la prima: deve imparare a coordinarsi con essa.';
   });
 }
+
+const silentPlay=document.getElementById('silentPlay');
+const silenceResult=document.getElementById('silenceResult');
+if(silentPlay&&silenceResult){
+  silentPlay.addEventListener('click',()=>{
+    silenceResult.textContent='Nessun audio: la melodia originaria non è conservata. Questo silenzio è il dato storico.';
+    silentPlay.textContent='↻ Riascolta il silenzio';
+  });
+}
+
+const ratioButtons=[...document.querySelectorAll('[data-ratio]')];
+const stringLine=document.getElementById('stringLine');
+const ratioNote=document.getElementById('ratioNote');
+const ratioLabels={
+  '1':'1:1 · unisono',
+  '0.75':'4:3 · quarta',
+  '0.667':'3:2 · quinta',
+  '0.5':'2:1 · ottava'
+};
+ratioButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    ratioButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const v=Number(btn.dataset.ratio);
+    if(stringLine)stringLine.style.transform='scaleX('+v+')';
+    if(ratioNote)ratioNote.textContent=ratioLabels[btn.dataset.ratio]+' · la lunghezza della corda cambia secondo un rapporto semplice.';
+  });
+});
