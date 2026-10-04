@@ -87,3 +87,31 @@ if(neumePlay&&neumeStage){
     ntimers.push(setTimeout(()=>{if(neumeConclusion)neumeConclusion.classList.add('show')},5200));
   });
 }
+
+const hexButtons=[...document.querySelectorAll('#hexachordLab [data-syllable]')];
+const hexBars=[...document.querySelectorAll('.hexachord-track i')];
+const hexNote=document.getElementById('hexachordNote');
+const hexMessages=[
+  '<strong>UT</strong> · punto di partenza dell\'esacordo.',
+  '<strong>RE</strong> · il rapporto con UT viene memorizzato attraverso la voce.',
+  '<strong>MI</strong> · siamo ancora dentro una sequenza di toni.',
+  '<strong>FA</strong> · qui cade il semitono dell\'esacordo: MI–FA.',
+  '<strong>SOL</strong> · il sistema continua a funzionare come mappa relativa.',
+  '<strong>LA</strong> · sei sillabe, non ancora la scala moderna di sette note.'
+];
+hexButtons.forEach((b,idx)=>b.addEventListener('click',()=>{
+  hexButtons.forEach((x,i)=>x.classList.toggle('active',i===idx));
+  hexBars.forEach((x,i)=>x.classList.toggle('on',i<=idx));
+  if(hexNote)hexNote.innerHTML=hexMessages[idx];
+}));
+
+const organumPlay=document.getElementById('organumPlay');
+const organumStage=document.querySelector('.organum-stage');
+const organumText=document.getElementById('organumText');
+if(organumPlay&&organumStage){
+  organumPlay.addEventListener('click',()=>{
+    organumStage.classList.remove('play');void organumStage.offsetWidth;organumStage.classList.add('play');
+    organumPlay.textContent='↻ Ripeti';
+    if(organumText)organumText.textContent='Il canto rimane riconoscibile mentre una seconda voce entra in relazione con esso.';
+  });
+}
