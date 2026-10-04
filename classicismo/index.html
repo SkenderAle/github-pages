@@ -175,6 +175,8 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 .modal-close{border:0;background:none;font-size:1.7rem;cursor:pointer}
 .modal-body{overflow:auto;padding:1rem}
 .modal-body iframe{width:100%;aspect-ratio:16/9;border:0;background:#000}
+.modal-video-fallback{display:inline-flex;margin-top:.75rem;text-decoration:none;border:1px solid #c7b79d;background:#f5eee3;color:#3e342b;padding:.5rem .72rem;border-radius:999px;font-family:var(--sans);font-size:.76rem;font-weight:850}
+.modal-video-fallback:hover{background:#fff}
 .placeholder{padding:2rem;background:#ece4d7;font-family:var(--sans);line-height:1.6;color:#5f5549}
 .analysis-box{margin:1.2rem 0 2.4rem;padding:1rem;background:#eee5d7;border:1px solid #cfbea4;font-family:var(--sans)}
 .analysis-player{width:100%;aspect-ratio:16/9;background:#171513;margin-bottom:.8rem}
@@ -447,7 +449,7 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
 <main class="content">
 <div class="opening">
   <p class="lead dropcap">Il Classicismo musicale costruisce un linguaggio nel quale melodia, frase, cadenza, tonalità e forma diventano particolarmente leggibili all’ascolto. Nel secondo Settecento questa lingua si sviluppa dentro un’Europa attraversata dall’Illuminismo, dalle rivoluzioni americana e francese, dalla crescita dei concerti pubblici, dall’editoria e da una nuova mobilità professionale dei musicisti. Il percorso segue soprattutto il Classicismo strumentale viennese e le sue premesse europee fino alla soglia dell’<em>Eroica</em>, osservando come una grammatica riconoscibile possa contenere sorpresa, conflitto, ironia e trasformazione.</p>
-  <aside class="aside"><b>Una regola del percorso</b><p>Le date e le categorie servono per orientarci, ma non sono muri. Barocco, Classicismo e Romanticismo si sovrappongono molto più di quanto un indice cronologico lasci immaginare.</p></aside>
+  <aside class="aside"><b>Una regola del percorso</b><p>Le date e le categorie servono per orientarci, ma non sono muri. Nei manuali il Classicismo viene spesso collocato, con margini diversi, fra circa <strong>1750 e 1820–1830</strong>. Qui usiamo il 1750 come soglia didattica e il <strong>1804 dell’<em>Eroica</em></strong> come punto narrativo nel quale osservare il linguaggio classico mentre comincia a trasformarsi, non come data ufficiale della sua “fine”.</p></aside>
 </div>
 
 <div class="ear-box" id="riconoscilo">
@@ -1446,7 +1448,7 @@ linear-gradient(135deg,#2b3f5b,#2d231f)}
    const id=el.dataset.video,t=el.dataset.title||'Ascolto';
    const start=parseInt(el.dataset.start||'0',10)||0;
    const startQuery=start ? '&start='+start : '';
-   show(t,`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=0${startQuery}" title="${t}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`)
+   show(t,`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=0${startQuery}" title="${t}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><a class="modal-video-fallback" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}${start ? '&t='+start+'s' : ''}" target="_blank" rel="noopener noreferrer">Apri l’ascolto su YouTube ↗</a>`)
  }));
  const stopAll=document.getElementById('stopAllMedia');
  function stopAllMedia(){
