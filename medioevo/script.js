@@ -736,6 +736,7 @@ function updateMedievalGalleryUI(i){
   medievalGalleryDots.forEach((d,k)=>d.classList.toggle('active',k===medievalGalleryIndex));
 }
 function goMedievalGallery(i){
+  if(typeof stopGallerySound==='function')stopGallerySound();
   if(!medievalGalleryCards.length)return;
   i=(i+medievalGalleryCards.length)%medievalGalleryCards.length;
   updateMedievalGalleryUI(i);
@@ -787,3 +788,73 @@ if(medievalGalleryDialog){
     if(e.key==='ArrowRight'){e.preventDefault();moveMedievalDialog(1);}
   });
 }
+
+
+// Ascolti strumentali nella galleria iconografica
+const gallerySoundButtons=[...document.querySelectorAll('.gallery-sound')];
+const gallerySoundStatus=document.getElementById('gallerySoundStatus');
+const galleryAudio=new Audio();
+galleryAudio.preload='none';
+let activeGallerySoundButton=null;
+
+function resetGallerySoundButton(){
+  if(activeGallerySoundButton){
+    activeGallerySoundButton.classList.remove('playing','loading');
+    activeGallerySoundButton.textContent=activeGallerySoundButton.dataset.originalLabel||activeGallerySoundButton.textContent.replace(/^■\s*/, '▶ ');
+  }
+  activeGallerySoundButton=null;
+}
+
+function stopGallerySound(){
+  try{
+    galleryAudio.pause();
+    galleryAudio.currentTime=0;
+  }catch(e){}
+  resetGallerySoundButton();
+}
+
+gallerySoundButtons.forEach(btn=>{
+  btn.dataset.originalLabel=btn.textContent;
+  btn.addEventListener('click',async()=>{
+    const src=btn.dataset.audio;
+    const label=btn.dataset.sound||'strumento';
+    const note=btn.dataset.note||'';
+    if(!src)return;
+
+    if(activeGallerySoundButton===btn&&!galleryAudio.paused){
+      stopGallerySound();
+      if(gallerySoundStatus)gallerySoundStatus.textContent='Ascolto fermato.';
+      return;
+    }
+
+    stopGallerySound();
+    activeGallerySoundButton=btn;
+    btn.classList.add('loading');
+    btn.textContent='… carico '+label;
+
+    try{
+      galleryAudio.src=src;
+      galleryAudio.currentTime=0;
+      await galleryAudio.play();
+      btn.classList.remove('loading');
+      btn.classList.add('playing');
+      btn.textContent='■ Ferma '+label;
+      if(gallerySoundStatus)gallerySoundStatus.innerHTML='<strong>'+label+'</strong> · '+note;
+    }catch(e){
+      btn.classList.remove('loading','playing');
+      btn.textContent=btn.dataset.originalLabel;
+      activeGallerySoundButton=null;
+      if(gallerySoundStatus)gallerySoundStatus.textContent='Il browser non è riuscito ad avviare questo ascolto. Puoi aprire la scheda della fonte accanto al pulsante.';
+    }
+  });
+});
+
+galleryAudio.addEventListener('ended',()=>{
+  const label=activeGallerySoundButton?.dataset.sound||'';
+  resetGallerySoundButton();
+  if(gallerySoundStatus)gallerySoundStatus.textContent=label?'Fine dell’ascolto: '+label+'.':'Fine dell’ascolto.';
+});
+galleryAudio.addEventListener('error',()=>{
+  resetGallerySoundButton();
+  if(gallerySoundStatus)gallerySoundStatus.textContent='La fonte audio esterna non è disponibile in questo momento.';
+});
