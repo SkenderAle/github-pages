@@ -361,9 +361,12 @@ border:1px solid #c8af87;box-shadow:inset 0 0 40px rgba(88,59,27,.05);position:r
 .neume-player-controls button{border:0;background:#28211c;color:#fff;padding:.7rem 1rem;border-radius:999px;font:850 .76rem/1 var(--sans);cursor:pointer}
 .neume-player-controls button.secondary{background:transparent;color:#3f342c;border:1px solid #af9876}
 .neume-player-controls button:hover{transform:translateY(-1px)}
-.neume-speed{margin-left:auto;display:flex;align-items:center;gap:.5rem;font:750 .68rem/1 var(--sans);color:#6e5e50}
-.neume-speed i{display:block;width:82px;height:3px;background:linear-gradient(90deg,var(--gold),#d7c4a8);position:relative}
-.neume-speed i::after{content:"";position:absolute;left:14px;top:50%;width:8px;height:8px;border-radius:50%;background:var(--red);transform:translate(-50%,-50%)}
+.neume-speed{margin-left:auto;display:flex;align-items:center;gap:.48rem;padding:.42rem .58rem;border:1px solid #c8b18d;border-radius:999px;background:rgba(255,249,238,.72);font:750 .66rem/1 var(--sans);color:#6e5e50}
+.neume-speed .speed-title{font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:var(--red)}
+.neume-speed .speed-end{white-space:nowrap;color:#7b6a58}
+.neume-speed input[type="range"]{width:118px;accent-color:var(--red);cursor:pointer}
+.neume-speed b{min-width:3rem;text-align:center;color:#3d3129;font:900 .68rem/1 var(--sans)}
+.neume-speed:focus-within{outline:2px solid rgba(125,52,41,.25);outline-offset:2px}
 .neume-instruction{margin-top:1rem;padding:1rem 1.1rem;background:#e9dcc5;border-left:4px solid var(--gold);font-size:.95rem;line-height:1.55}
 .neume-instruction b{color:var(--red)}
 @media(max-width:920px){.neume-player-stage{grid-template-columns:1fr}.neume-caption{padding:0 1.5rem 2rem}.neume-rail{grid-template-columns:repeat(4,1fr)}.neume-speed{width:100%;margin-left:0}}
