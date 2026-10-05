@@ -1,0 +1,162 @@
+name: Import Cantoria VBP stems fast
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-cantoria-vbp-range.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-stems:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch only the four WAV stems from the remote ZIP
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/cantoria/stems
+          python3 - <<'PY'
+          import os, re, struct, urllib.request, zlib
+
+          url = "https://zenodo.org/records/5878677/files/CantoriaDataset_v1.0.0.zip?download=1"
+          ua = {"User-Agent": "Mozilla/5.0 GitHubActions CantoriaImporter/1.0"}
+
+          def get_range(start, end):
+              headers = dict(ua)
+              headers["Range"] = f"bytes={start}-{end}"
+              req = urllib.request.Request(url, headers=headers)
+              with urllib.request.urlopen(req, timeout=180) as r:
+                  data = r.read()
+                  status = getattr(r, "status", 200)
+                  if status != 206:
+                      raise RuntimeError(f"Server did not honor Range {start}-{end}: HTTP {status}")
+                  return data, dict(r.headers)
+
+          data, headers = get_range(0, 0)
+          cr = headers.get("Content-Range") or headers.get("content-range")
+          if not cr or "/" not in cr:
+              raise RuntimeError(f"Missing Content-Range: {cr!r}")
+          total_size = int(cr.rsplit("/", 1)[1])
+          print("Remote ZIP bytes:", total_size)
+
+          tail_size = min(256 * 1024, total_size)
+          tail_start = total_size - tail_size
+          tail, _ = get_range(tail_start, total_size - 1)
+          eocd = tail.rfind(b"PK\x05\x06")
+          if eocd < 0:
+              raise RuntimeError("EOCD not found")
+
+          disk_no, cd_disk, disk_entries, total_entries, cd_size, cd_offset, comment_len = struct.unpack_from(
+              "<4H2LH", tail, eocd + 4
+          )
+          print("Central directory:", cd_offset, cd_size, "entries:", total_entries)
+          central, _ = get_range(cd_offset, cd_offset + cd_size - 1)
+
+          wanted = {f"Cantoria_VBP_{v}.wav": v for v in "TBAS"}
+          found = {}
+          p = 0
+          while p + 46 <= len(central):
+              sig = struct.unpack_from("<I", central, p)[0]
+              if sig != 0x02014B50:
+                  break
+              flags = struct.unpack_from("<H", central, p + 8)[0]
+              method = struct.unpack_from("<H", central, p + 10)[0]
+              comp_size = struct.unpack_from("<I", central, p + 20)[0]
+              uncomp_size = struct.unpack_from("<I", central, p + 24)[0]
+              name_len = struct.unpack_from("<H", central, p + 28)[0]
+              extra_len = struct.unpack_from("<H", central, p + 30)[0]
+              comment_len2 = struct.unpack_from("<H", central, p + 32)[0]
+              local_offset = struct.unpack_from("<I", central, p + 42)[0]
+              raw_name = central[p + 46:p + 46 + name_len]
+              enc = "utf-8" if (flags & 0x800) else "cp437"
+              name = raw_name.decode(enc, errors="replace")
+              base = name.rsplit("/", 1)[-1]
+              if base in wanted:
+                  found[base] = dict(
+                      name=name, method=method, comp_size=comp_size,
+                      uncomp_size=uncomp_size, local_offset=local_offset
+                  )
+                  print("Found", base, "at", local_offset, "compressed", comp_size)
+              p += 46 + name_len + extra_len + comment_len2
+
+          missing = [x for x in wanted if x not in found]
+          if missing:
+              raise RuntimeError("Missing stems: " + ", ".join(missing))
+
+          outdir = "/tmp/cantoria/stems"
+          for base, meta in found.items():
+              local, _ = get_range(meta["local_offset"], meta["local_offset"] + 29)
+              if struct.unpack_from("<I", local, 0)[0] != 0x04034B50:
+                  raise RuntimeError(f"Bad local header for {base}")
+              name_len = struct.unpack_from("<H", local, 26)[0]
+              extra_len = struct.unpack_from("<H", local, 28)[0]
+              data_start = meta["local_offset"] + 30 + name_len + extra_len
+              packed, _ = get_range(data_start, data_start + meta["comp_size"] - 1)
+              if meta["method"] == 0:
+                  raw = packed
+              elif meta["method"] == 8:
+                  raw = zlib.decompress(packed, -zlib.MAX_WBITS)
+              else:
+                  raise RuntimeError(f"Unsupported ZIP method {meta['method']} for {base}")
+              if len(raw) != meta["uncomp_size"]:
+                  raise RuntimeError(f"Size mismatch for {base}: {len(raw)} != {meta['uncomp_size']}")
+              if not raw.startswith(b"RIFF"):
+                  raise RuntimeError(f"{base} is not a RIFF/WAV file")
+              path = os.path.join(outdir, base)
+              with open(path, "wb") as f:
+                  f.write(raw)
+              print("Wrote", path, len(raw), "bytes")
+          PY
+          ls -lh /tmp/cantoria/stems
+
+      - name: Convert stems for the website
+        run: |
+          set -euo pipefail
+          command -v ffmpeg >/dev/null || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+          mkdir -p medioevo/audio/polyphony
+          for V in T B A S; do
+            ffmpeg -hide_banner -loglevel error -y \
+              -i "/tmp/cantoria/stems/Cantoria_VBP_${V}.wav" \
+              -map_metadata -1 \
+              -c:a libmp3lame -b:a 160k -ar 44100 \
+              "medioevo/audio/polyphony/Cantoria_VBP_${V}.mp3"
+          done
+          ls -lh medioevo/audio/polyphony
+
+      - name: Add attribution
+        run: |
+          cat > medioevo/audio/polyphony/README.md <<'EOF'
+          # Cantoría Dataset — Virgen bendita sin par
+
+          Four synchronized vocal stems used by the educational polyphony mixer:
+          Tenor (T), Bass (B), Alto (A), Soprano/Cantus (S).
+
+          Source: Cantoría Dataset, Helena Cuesta and Emilia Gómez,
+          Music Technology Group, Universitat Pompeu Fabra.
+          https://zenodo.org/records/5878677
+
+          Piece: Pedro de Escobar, "Virgen bendita sin par".
+          Dataset license: CC BY 4.0.
+
+          These MP3 files are transcoded from the original WAV stems
+          without trimming, so synchronization between voices is preserved.
+          EOF
+
+      - name: Commit stems
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add medioevo/audio/polyphony
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git commit -m "Medioevo: importa le quattro tracce Cantoría per il mixer"
+          git push
