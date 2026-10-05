@@ -365,7 +365,13 @@
           <div class="neume-player-controls">
             <button type="button" id="neumePlay">▶ Segui i neumi</button>
             <button type="button" class="secondary" id="neumeReplay">↻ Ripeti questo segno</button>
-            <div class="neume-speed"><span>Lento</span><i></i><span>osserva · imita · ricorda</span></div>
+            <label class="neume-speed" for="neumeSpeed">
+              <span class="speed-title">Velocità</span>
+              <span class="speed-end">più veloce</span>
+              <input id="neumeSpeed" type="range" min="1800" max="5200" step="100" value="3300" aria-label="Velocità di tracciamento dei neumi">
+              <span class="speed-end">più lento</span>
+              <b id="neumeSpeedValue">3,3 s</b>
+            </label>
           </div>
 
           <div class="neume-instruction" id="neumeInstruction">
