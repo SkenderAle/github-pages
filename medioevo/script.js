@@ -707,3 +707,83 @@ if(guidonianStage){
     if(!guidonianDemoTimer&&guidonianAudioOn)guidonianFadeOut(0);
   });
 }
+
+
+// Galleria di iconografia musicale medievale
+const medievalGalleryTrack=document.getElementById('medievalGalleryTrack');
+const medievalGalleryCards=[...document.querySelectorAll('.medieval-gallery-card')];
+const medievalGalleryPrev=document.getElementById('medievalGalleryPrev');
+const medievalGalleryNext=document.getElementById('medievalGalleryNext');
+const medievalGalleryCount=document.getElementById('medievalGalleryCount');
+const medievalGalleryDots=[...document.querySelectorAll('[data-gallery-go]')];
+const medievalGalleryDialog=document.getElementById('medievalGalleryDialog');
+const medievalGalleryClose=document.getElementById('medievalGalleryClose');
+const medievalGalleryDialogImage=document.getElementById('medievalGalleryDialogImage');
+const medievalGalleryDialogTitle=document.getElementById('medievalGalleryDialogTitle');
+const medievalGalleryDialogCaption=document.getElementById('medievalGalleryDialogCaption');
+const medievalGalleryDialogIndex=document.getElementById('medievalGalleryDialogIndex');
+const medievalDialogPrev=document.getElementById('medievalDialogPrev');
+const medievalDialogNext=document.getElementById('medievalDialogNext');
+let medievalGalleryIndex=0;
+let medievalGalleryScrollTimer=null;
+
+function medievalGalleryLabel(i){
+  return String(i+1).padStart(2,'0')+' / '+String(medievalGalleryCards.length).padStart(2,'0');
+}
+function updateMedievalGalleryUI(i){
+  medievalGalleryIndex=Math.max(0,Math.min(medievalGalleryCards.length-1,i));
+  if(medievalGalleryCount)medievalGalleryCount.textContent=medievalGalleryLabel(medievalGalleryIndex);
+  medievalGalleryDots.forEach((d,k)=>d.classList.toggle('active',k===medievalGalleryIndex));
+}
+function goMedievalGallery(i){
+  if(!medievalGalleryCards.length)return;
+  i=(i+medievalGalleryCards.length)%medievalGalleryCards.length;
+  updateMedievalGalleryUI(i);
+  medievalGalleryCards[i].scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'});
+}
+function openMedievalGalleryDialog(i){
+  const card=medievalGalleryCards[i];
+  if(!card||!medievalGalleryDialog)return;
+  medievalGalleryIndex=i;
+  if(medievalGalleryDialogImage){
+    medievalGalleryDialogImage.src=card.dataset.large||card.querySelector('img')?.src||'';
+    medievalGalleryDialogImage.alt=card.querySelector('img')?.alt||'';
+  }
+  if(medievalGalleryDialogTitle)medievalGalleryDialogTitle.textContent=card.dataset.title||'';
+  if(medievalGalleryDialogCaption)medievalGalleryDialogCaption.textContent=card.dataset.caption||'';
+  if(medievalGalleryDialogIndex)medievalGalleryDialogIndex.textContent=medievalGalleryLabel(i);
+  if(typeof medievalGalleryDialog.showModal==='function')medievalGalleryDialog.showModal();
+}
+function moveMedievalDialog(delta){
+  let i=(medievalGalleryIndex+delta+medievalGalleryCards.length)%medievalGalleryCards.length;
+  openMedievalGalleryDialog(i);
+}
+
+if(medievalGalleryPrev)medievalGalleryPrev.addEventListener('click',()=>goMedievalGallery(medievalGalleryIndex-1));
+if(medievalGalleryNext)medievalGalleryNext.addEventListener('click',()=>goMedievalGallery(medievalGalleryIndex+1));
+medievalGalleryDots.forEach((d,i)=>d.addEventListener('click',()=>goMedievalGallery(i)));
+medievalGalleryCards.forEach((card,i)=>{
+  const opener=card.querySelector('.medieval-gallery-image');
+  if(opener)opener.addEventListener('click',()=>openMedievalGalleryDialog(i));
+});
+if(medievalGalleryTrack){
+  medievalGalleryTrack.addEventListener('scroll',()=>{
+    if(medievalGalleryScrollTimer)clearTimeout(medievalGalleryScrollTimer);
+    medievalGalleryScrollTimer=setTimeout(()=>{
+      const w=medievalGalleryTrack.clientWidth||1;
+      updateMedievalGalleryUI(Math.round(medievalGalleryTrack.scrollLeft/w));
+    },80);
+  },{passive:true});
+}
+if(medievalGalleryClose)medievalGalleryClose.addEventListener('click',()=>medievalGalleryDialog?.close());
+if(medievalDialogPrev)medievalDialogPrev.addEventListener('click',()=>moveMedievalDialog(-1));
+if(medievalDialogNext)medievalDialogNext.addEventListener('click',()=>moveMedievalDialog(1));
+if(medievalGalleryDialog){
+  medievalGalleryDialog.addEventListener('click',e=>{
+    if(e.target===medievalGalleryDialog)medievalGalleryDialog.close();
+  });
+  medievalGalleryDialog.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'){e.preventDefault();moveMedievalDialog(-1);}
+    if(e.key==='ArrowRight'){e.preventDefault();moveMedievalDialog(1);}
+  });
+}
