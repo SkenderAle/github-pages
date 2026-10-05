@@ -14,22 +14,147 @@ addEventListener('scroll',onScroll,{passive:true});onScroll();
 
 const stage=document.getElementById('gestureStage');
 const play=document.getElementById('gesturePlay');
-const neumes=[...document.querySelectorAll('.neume-strip span')];
 const result=document.getElementById('gestureResult');
 let timers=[];
 if(stage&&play){
   play.addEventListener('click',()=>{
     timers.forEach(clearTimeout);timers=[];
     stage.classList.remove('play');
-    neumes.forEach(n=>n.classList.remove('on'));
     if(result)result.classList.remove('show');
     void stage.offsetWidth;
     stage.classList.add('play');
     play.textContent='↻ Ripeti il gesto';
-    neumes.forEach((n,i)=>timers.push(setTimeout(()=>n.classList.add('on'),350+i*520)));
     timers.push(setTimeout(()=>result&&result.classList.add('show'),5900));
   });
 }
+
+const neumeStage=document.querySelector('.neume-player-stage');
+const neumeTrace=document.getElementById('neumeTracePath');
+const neumeGhost=document.getElementById('neumeGhostPath');
+const neumeCursor=document.getElementById('neumeCursor');
+const neumeTitle=document.getElementById('neumeTraceTitle');
+const neumeDescA11y=document.getElementById('neumeTraceDesc');
+const neumeName=document.getElementById('neumeName');
+const neumeDescription=document.getElementById('neumeDescription');
+const neumeCounter=document.getElementById('neumeCounter');
+const neumeInstruction=document.getElementById('neumeInstruction');
+const neumePlay=document.getElementById('neumePlay');
+const neumeReplay=document.getElementById('neumeReplay');
+const neumeButtons=[...document.querySelectorAll('[data-neume-index]')];
+
+const neumeData=[
+  {name:'Pes / podatus',short:'Pes',desc:'Due suoni in salita. Il gesto tende verso l’alto.',instruction:'Disegna il movimento del <em>pes</em> con l’indice: parti più in basso e lascia che il gesto salga.',d:'M92 158 Q132 154 148 124 Q166 88 210 67'},
+  {name:'Clivis',short:'Clivis',desc:'Due suoni in discesa. La voce piega verso il basso.',instruction:'Segui la <em>clivis</em> come una piccola discesa: il secondo suono si colloca più in basso del primo.',d:'M92 67 Q136 78 153 109 Q171 143 210 158'},
+  {name:'Torculus',short:'Torculus',desc:'Tre suoni: sale e poi scende. Il gesto forma un arco.',instruction:'Con il <em>torculus</em> senti tre momenti: partenza, salita, ritorno verso il basso.',d:'M72 154 Q112 150 137 104 Q162 58 188 103 Q207 136 229 151'},
+  {name:'Porrectus',short:'Porrectus',desc:'Tre suoni: scende e poi risale. Il gesto cambia direzione al centro.',instruction:'Nel <em>porrectus</em> lascia scendere la mano e poi falla risalire senza spezzare il gesto.',d:'M73 69 Q112 83 140 145 Q161 117 184 83 Q203 59 230 70'},
+  {name:'Scandicus',short:'Scandicus',desc:'Una piccola successione ascendente. Ogni passo porta più in alto.',instruction:'Lo <em>scandicus</em> si costruisce per gradini: immagina una salita progressiva, non un salto unico.',d:'M67 164 Q96 158 111 139 Q129 119 144 105 Q163 85 181 71 Q201 55 232 48'},
+  {name:'Climacus',short:'Climacus',desc:'Una piccola successione discendente. Il gesto procede per gradi verso il basso.',instruction:'Il <em>climacus</em> è una discesa articolata: segui i gradini uno dopo l’altro.',d:'M68 48 Q98 55 117 72 Q136 88 151 106 Q171 125 188 141 Q207 158 233 165'},
+  {name:'Virga',short:'Virga',desc:'Un segno semplice e slanciato. La grafia punta con decisione verso l’alto.',instruction:'Ripassa la <em>virga</em> con un gesto netto e verticale: una traccia semplice, non ancora una “nota” moderna.',d:'M118 166 Q135 128 151 91 Q164 64 181 45'},
+  {name:'Punctum',short:'Punctum',desc:'Un segno elementare e raccolto. Il gesto si concentra in uno spazio minimo.',instruction:'Con il <em>punctum</em> il movimento quasi si raccoglie in un punto: osserva quanto poco spazio basta per lasciare memoria.',d:'M124 111 Q145 105 176 111'}
+];
+
+let neumeIndex=0;
+let neumeRaf=null;
+let neumeTimer=null;
+let neumePlaying=false;
+const neumeDuration=3300;
+
+function stopNeumeAnimation(){
+  if(neumeRaf)cancelAnimationFrame(neumeRaf);
+  neumeRaf=null;
+  if(neumeTimer)clearTimeout(neumeTimer);
+  neumeTimer=null;
+  neumeStage&&neumeStage.classList.remove('tracing');
+}
+
+function renderNeume(index){
+  neumeIndex=(index+neumeData.length)%neumeData.length;
+  const item=neumeData[neumeIndex];
+  if(neumeTrace)neumeTrace.setAttribute('d',item.d);
+  if(neumeGhost)neumeGhost.setAttribute('d',item.d);
+  if(neumeName)neumeName.textContent=item.name;
+  if(neumeDescription)neumeDescription.textContent=item.desc;
+  if(neumeCounter)neumeCounter.textContent=String(neumeIndex+1).padStart(2,'0')+' / '+String(neumeData.length).padStart(2,'0');
+  if(neumeInstruction)neumeInstruction.innerHTML='<b>Prova ora.</b> '+item.instruction;
+  if(neumeTitle)neumeTitle.textContent=item.name;
+  if(neumeDescA11y)neumeDescA11y.textContent=item.desc;
+  neumeButtons.forEach((b,i)=>b.classList.toggle('active',i===neumeIndex));
+
+  if(neumeTrace){
+    const length=neumeTrace.getTotalLength();
+    neumeTrace.style.strokeDasharray=length;
+    neumeTrace.style.strokeDashoffset=length;
+  }
+  if(neumeCursor&&neumeTrace){
+    const p=neumeTrace.getPointAtLength(0);
+    neumeCursor.setAttribute('cx',p.x);
+    neumeCursor.setAttribute('cy',p.y);
+  }
+}
+
+function traceCurrentNeume(after){
+  if(!neumeTrace||!neumeCursor)return;
+  stopNeumeAnimation();
+  const length=neumeTrace.getTotalLength();
+  const start=performance.now();
+  neumeStage&&neumeStage.classList.add('tracing');
+
+  function frame(now){
+    const t=Math.min(1,(now-start)/neumeDuration);
+    const eased=0.5-0.5*Math.cos(Math.PI*t);
+    neumeTrace.style.strokeDashoffset=length*(1-eased);
+    const p=neumeTrace.getPointAtLength(length*eased);
+    neumeCursor.setAttribute('cx',p.x);
+    neumeCursor.setAttribute('cy',p.y);
+    if(t<1){
+      neumeRaf=requestAnimationFrame(frame);
+    }else{
+      neumeRaf=null;
+      neumeStage&&neumeStage.classList.remove('tracing');
+      if(after)neumeTimer=setTimeout(after,650);
+    }
+  }
+  neumeRaf=requestAnimationFrame(frame);
+}
+
+function playNeumeSequence(){
+  neumePlaying=true;
+  if(neumePlay)neumePlay.textContent='■ Ferma';
+  traceCurrentNeume(()=>{
+    if(!neumePlaying)return;
+    renderNeume((neumeIndex+1)%neumeData.length);
+    playNeumeSequence();
+  });
+}
+
+if(neumePlay){
+  neumePlay.addEventListener('click',()=>{
+    if(neumePlaying){
+      neumePlaying=false;
+      stopNeumeAnimation();
+      neumePlay.textContent='▶ Segui i neumi';
+    }else{
+      playNeumeSequence();
+    }
+  });
+}
+if(neumeReplay){
+  neumeReplay.addEventListener('click',()=>{
+    neumePlaying=false;
+    if(neumePlay)neumePlay.textContent='▶ Segui i neumi';
+    traceCurrentNeume();
+  });
+}
+neumeButtons.forEach((btn,i)=>{
+  btn.addEventListener('click',()=>{
+    neumePlaying=false;
+    stopNeumeAnimation();
+    if(neumePlay)neumePlay.textContent='▶ Segui i neumi';
+    renderNeume(i);
+    traceCurrentNeume();
+  });
+});
+if(neumeTrace)renderNeume(0);
 
 const voiceDemo=document.getElementById('voiceDemo');
 const voicePlay=document.getElementById('voicePlay');
