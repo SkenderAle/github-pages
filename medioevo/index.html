@@ -6,7 +6,7 @@
 <title>Medioevo musicale · Una voce contro il tempo</title>
 <meta name="description" content="Un percorso narrativo e interattivo nella musica medievale: voce, memoria, liturgia, notazione, Guido d'Arezzo, polifonia, viaggio e trasformazione.">
 <meta name="author" content="Alessandro Zilli">
-<link rel="stylesheet" href="style.css?v=20261005-2115">
+<link rel="stylesheet" href="style.css?v=20261005-2245">
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -1231,6 +1231,118 @@
       </div>
       <p class="figure-note">Schema strutturale, non partitura: serve a rendere visibile l'alternanza fra canto piano, organum a valori sostenuti e discanto.</p>
 
+      <div class="poly-mixer" id="polyMixer">
+        <div class="poly-mixer-head">
+          <div>
+            <div class="lab-kicker">Laboratorio · metti le mani nella polifonia</div>
+            <h3>Quattro voci, un solo suono: smonta e ricostruisci il coro</h3>
+            <p>Per rendere davvero udibile l'indipendenza delle linee usiamo una registrazione multitraccia reale di <em>Virgen bendita sin par</em> di Pedro de Escobar. È un esempio del primo Rinascimento, quindi successivo a Pérotin: lo scegliamo perché le quattro voci furono registrate separatamente e possono essere isolate, rimiscelate e trattate una per una.</p>
+          </div>
+          <div class="poly-piece">
+            <strong>Pedro de Escobar</strong>
+            <span><em>Virgen bendita sin par</em></span>
+            <small>Cantoría · SATB multitraccia · CC BY 4.0</small>
+          </div>
+        </div>
+
+        <div class="poly-console">
+          <section class="poly-transport" aria-label="Trasporto del mixer">
+            <button type="button" class="poly-main-play" id="polyPlay" aria-label="Avvia o metti in pausa">▶</button>
+            <div class="poly-time" id="polyTime">0:00 / —</div>
+            <input type="range" id="polySeek" min="0" max="1000" value="0" disabled aria-label="Posizione nel brano">
+
+            <div class="poly-rec-controls" aria-label="Registratore del mix">
+              <button type="button" id="polyRec" class="poly-rec">● REC</button>
+              <button type="button" id="polyStop">■ STOP</button>
+              <button type="button" id="polyRecPlay" disabled>▶ REC</button>
+              <button type="button" id="polyDownload" disabled>⇩ FILE</button>
+            </div>
+
+            <button type="button" class="poly-reset" id="polyReset">Reset mix</button>
+            <p class="poly-transport-note">REC registra in tempo reale tutto ciò che fai al mixer: volumi, mute, solo, equalizzazione e riverbero.</p>
+          </section>
+
+          <section class="poly-faders" aria-label="Canali delle quattro voci">
+            <article class="poly-channel" data-poly-voice="T">
+              <div class="poly-channel-name"><b>TENOR</b><span>tenore</span></div>
+              <div class="poly-meter" aria-hidden="true"><i></i></div>
+              <div class="poly-vslider"><input type="range" min="0" max="100" value="78" data-poly-gain="T" aria-label="Volume Tenor"></div>
+              <output data-poly-output="T">78</output>
+              <div class="poly-ms"><button type="button" data-poly-mute="T" aria-label="Mute Tenor">M</button><button type="button" data-poly-solo="T" aria-label="Solo Tenor">S</button></div>
+            </article>
+
+            <article class="poly-channel" data-poly-voice="B">
+              <div class="poly-channel-name"><b>BASSUS</b><span>basso</span></div>
+              <div class="poly-meter" aria-hidden="true"><i></i></div>
+              <div class="poly-vslider"><input type="range" min="0" max="100" value="76" data-poly-gain="B" aria-label="Volume Basso"></div>
+              <output data-poly-output="B">76</output>
+              <div class="poly-ms"><button type="button" data-poly-mute="B" aria-label="Mute Basso">M</button><button type="button" data-poly-solo="B" aria-label="Solo Basso">S</button></div>
+            </article>
+
+            <article class="poly-channel" data-poly-voice="A">
+              <div class="poly-channel-name"><b>ALTUS</b><span>alto</span></div>
+              <div class="poly-meter" aria-hidden="true"><i></i></div>
+              <div class="poly-vslider"><input type="range" min="0" max="100" value="74" data-poly-gain="A" aria-label="Volume Alto"></div>
+              <output data-poly-output="A">74</output>
+              <div class="poly-ms"><button type="button" data-poly-mute="A" aria-label="Mute Alto">M</button><button type="button" data-poly-solo="A" aria-label="Solo Alto">S</button></div>
+            </article>
+
+            <article class="poly-channel" data-poly-voice="S">
+              <div class="poly-channel-name"><b>CANTUS</b><span>soprano</span></div>
+              <div class="poly-meter" aria-hidden="true"><i></i></div>
+              <div class="poly-vslider"><input type="range" min="0" max="100" value="72" data-poly-gain="S" aria-label="Volume Soprano"></div>
+              <output data-poly-output="S">72</output>
+              <div class="poly-ms"><button type="button" data-poly-mute="S" aria-label="Mute Soprano">M</button><button type="button" data-poly-solo="S" aria-label="Solo Soprano">S</button></div>
+            </article>
+          </section>
+
+          <section class="poly-master" aria-label="Master, riverbero ed equalizzazione">
+            <div class="poly-master-faders">
+              <label>
+                <span>REVERB</span>
+                <div class="poly-vslider"><input type="range" min="0" max="100" value="22" id="polyReverb" aria-label="Volume riverbero"></div>
+                <output id="polyReverbOut">22</output>
+              </label>
+              <label class="poly-master-main">
+                <span>MASTER</span>
+                <div class="poly-vslider"><input type="range" min="0" max="100" value="78" id="polyMaster" aria-label="Volume master"></div>
+                <output id="polyMasterOut">78</output>
+              </label>
+            </div>
+
+            <div class="poly-eq" aria-label="Equalizzatore a tre bande">
+              <label class="poly-knob" data-poly-knob>
+                <span>BASSI</span>
+                <span class="poly-knob-face" aria-hidden="true"><i></i></span>
+                <input type="range" min="-12" max="12" step="1" value="0" id="polyLow" aria-label="Equalizzatore bassi">
+                <output>0</output>
+              </label>
+              <label class="poly-knob" data-poly-knob>
+                <span>MEDI</span>
+                <span class="poly-knob-face" aria-hidden="true"><i></i></span>
+                <input type="range" min="-12" max="12" step="1" value="0" id="polyMid" aria-label="Equalizzatore medi">
+                <output>0</output>
+              </label>
+              <label class="poly-knob" data-poly-knob>
+                <span>ACUTI</span>
+                <span class="poly-knob-face" aria-hidden="true"><i></i></span>
+                <input type="range" min="-12" max="12" step="1" value="0" id="polyHigh" aria-label="Equalizzatore acuti">
+                <output>0</output>
+              </label>
+            </div>
+          </section>
+        </div>
+
+        <div class="poly-status" id="polyStatus" aria-live="polite">
+          <strong>Pronto.</strong> Al primo Play vengono caricate soltanto le quattro tracce necessarie dal dataset originale. Poi puoi isolare una voce, metterne due a confronto oppure costruire il coro poco alla volta.
+        </div>
+
+        <div class="poly-mixer-foot">
+          <p><strong>Attenzione al lessico.</strong> Qui <em>tenor, bassus, altus, cantus</em> indicano le parti vocali di un repertorio rinascimentale. Non sono le funzioni medievali <em>tenor, duplum, triplum, quadruplum</em> appena incontrate in Pérotin.</p>
+          <p>Fonte: Cantoría Dataset, Helena Cuesta ed Emilia Gómez, Music Technology Group, Universitat Pompeu Fabra. Registrazioni del quartetto Cantoría. <a href="https://zenodo.org/records/5878677" target="_blank" rel="noopener">Dataset e crediti ↗</a></p>
+        </div>
+      </div>
+
       <div class="listen-contrast sederunt-listens">
         <article class="verified-listen compact">
           <div class="listen-copy">
@@ -2192,6 +2304,6 @@
   </footer>
 </div>
 
-<script src="script.js?v=20261005-2028"></script>
+<script src="script.js?v=20261005-2245"></script>
 </body>
 </html>
