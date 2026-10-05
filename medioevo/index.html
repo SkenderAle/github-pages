@@ -540,6 +540,77 @@
         </div>
       </div>
 
+      <div class="guidonian-hand-lab" id="guidonianHandLab">
+        <div class="guidonian-hand-head">
+          <div>
+            <span class="lab-kicker">Laboratorio · memoria corporea</span>
+            <h4>Esplora la mano guidoniana</h4>
+            <p>Passa il mouse sui punti o toccali sullo schermo. Dopo aver attivato il suono, la voce sintetica <strong>scivola</strong> da un'altezza all'altra: la mano diventa una mappa del <em>gamut</em>, non una tastiera.</p>
+          </div>
+          <div class="guidonian-hand-actions">
+            <button type="button" id="guidonianSound">◉ Attiva il suono</button>
+            <button type="button" class="secondary" id="guidonianDemo">▶ Percorri la mano</button>
+          </div>
+        </div>
+
+        <div class="guidonian-hand-grid">
+          <figure class="guidonian-hand-figure">
+            <div class="guidonian-hand-stage" id="guidonianHandStage">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Mano_guidoniana.jpg"
+                   alt="Mano guidoniana dal Codice 318 dell'Abbazia di Montecassino"
+                   loading="lazy">
+
+              <button class="guidonian-point" style="--x:43%;--y:34%" data-freq="98.00" data-note="Γ ut" aria-label="Gamma ut"><span>Γ</span></button>
+              <button class="guidonian-point" style="--x:49%;--y:45%" data-freq="110.00" data-note="A re" aria-label="A re"><span>A</span></button>
+              <button class="guidonian-point" style="--x:57%;--y:56%" data-freq="123.47" data-note="B mi" aria-label="B mi"><span>B</span></button>
+
+              <button class="guidonian-point" style="--x:62%;--y:47%" data-freq="130.81" data-note="C fa ut" aria-label="C fa ut"><span>C</span></button>
+              <button class="guidonian-point" style="--x:60%;--y:31%" data-freq="146.83" data-note="D sol re" aria-label="D sol re"><span>D</span></button>
+              <button class="guidonian-point" style="--x:59%;--y:16%" data-freq="164.81" data-note="E la mi" aria-label="E la mi"><span>E</span></button>
+
+              <button class="guidonian-point" style="--x:70%;--y:8%" data-freq="174.61" data-note="F fa ut" aria-label="F fa ut"><span>F</span></button>
+              <button class="guidonian-point" style="--x:80%;--y:14%" data-freq="196.00" data-note="G sol re ut" aria-label="G sol re ut"><span>G</span></button>
+              <button class="guidonian-point" style="--x:88%;--y:24%" data-freq="220.00" data-note="a la mi re" aria-label="a la mi re"><span>a</span></button>
+
+              <button class="guidonian-point" style="--x:89%;--y:37%" data-freq="246.94" data-note="b mi · b fa" aria-label="b mi o b fa"><span>b</span></button>
+              <button class="guidonian-point" style="--x:87%;--y:48%" data-freq="261.63" data-note="c sol fa ut" aria-label="c sol fa ut"><span>c</span></button>
+              <button class="guidonian-point" style="--x:80%;--y:48%" data-freq="293.66" data-note="d la sol re" aria-label="d la sol re"><span>d</span></button>
+
+              <button class="guidonian-point" style="--x:79%;--y:34%" data-freq="329.63" data-note="e la mi" aria-label="e la mi"><span>e</span></button>
+              <button class="guidonian-point" style="--x:71%;--y:47%" data-freq="349.23" data-note="f fa ut" aria-label="f fa ut"><span>f</span></button>
+              <button class="guidonian-point" style="--x:70%;--y:31%" data-freq="392.00" data-note="g sol re ut" aria-label="g sol re ut"><span>g</span></button>
+
+              <button class="guidonian-point" style="--x:69%;--y:58%" data-freq="440.00" data-note="aa la mi re" aria-label="aa la mi re"><span>aa</span></button>
+              <button class="guidonian-point" style="--x:78%;--y:59%" data-freq="493.88" data-note="bb mi · bb fa" aria-label="bb mi o bb fa"><span>bb</span></button>
+              <button class="guidonian-point" style="--x:82%;--y:68%" data-freq="523.25" data-note="cc sol fa" aria-label="cc sol fa"><span>cc</span></button>
+              <button class="guidonian-point" style="--x:72%;--y:70%" data-freq="587.33" data-note="dd la sol" aria-label="dd la sol"><span>dd</span></button>
+              <button class="guidonian-point" style="--x:64%;--y:64%" data-freq="659.25" data-note="ee la" aria-label="ee la"><span>ee</span></button>
+            </div>
+            <figcaption>Fonte iconografica: <strong>Codice 318, Abbazia di Montecassino, p. 291</strong>, tradizionalmente datato all'XI secolo. Immagine in pubblico dominio via Wikimedia Commons.</figcaption>
+          </figure>
+
+          <aside class="guidonian-hand-panel">
+            <div class="guidonian-hand-readout">
+              <span id="guidonianStatus">Suono non ancora attivo</span>
+              <strong id="guidonianNote">Tocca un punto della mano</strong>
+              <small id="guidonianHz">La voce sintetica seguirà il passaggio fra le altezze.</small>
+            </div>
+
+            <div class="guidonian-hand-explain">
+              <b>Che cosa stai vedendo?</b>
+              <p>I nomi composti, come <em>C fa ut</em> o <em>G sol re ut</em>, mettono insieme una lettera del <strong>gamut</strong> e le sillabe che quella stessa altezza può assumere nei diversi esacordi.</p>
+              <p>La sovrapposizione interattiva usa una <strong>disposizione didattica normalizzata</strong>. Le mani medievali non sono tutte identiche e la collocazione dei gradi può variare da una fonte all'altra. L'immagine sottostante, invece, è una fonte storica reale.</p>
+            </div>
+
+            <div class="guidonian-hand-route" aria-hidden="true">
+              <span>Γ ut</span><i>→</i><span>A re</span><i>→</i><span>B mi</span><i>→</i><span>…</span><i>→</i><span>ee la</span>
+            </div>
+          </aside>
+        </div>
+
+        <div class="callout guidonian-hand-note"><strong>Non un pianoforte disegnato sulla pelle.</strong> La mano serve a orientare memoria, intervalli ed esacordi. Il suono sintetico è soltanto un ausilio didattico moderno: non pretende di ricostruire una voce medievale né l'intonazione assoluta del sistema.</div>
+      </div>
+
       <h3>Dalla scrittura sul rigo alla notazione quadrata</h3>
 
       <div class="theory-essay">
