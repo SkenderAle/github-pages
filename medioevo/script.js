@@ -430,12 +430,15 @@ massSampleAudio.preload='none';
 let activeMassSample=null;
 let massSampleStopTimer=null;
 let massSampleFadeTimer=null;
+let massSampleEndTimer=null;
 
 function clearMassSampleTimers(){
   if(massSampleStopTimer)clearTimeout(massSampleStopTimer);
   if(massSampleFadeTimer)clearInterval(massSampleFadeTimer);
+  if(massSampleEndTimer)clearTimeout(massSampleEndTimer);
   massSampleStopTimer=null;
   massSampleFadeTimer=null;
+  massSampleEndTimer=null;
 }
 
 function resetMassSampleUI(){
@@ -476,7 +479,7 @@ function beginMassSampleFade(total=18,fade=4){
     },(fade*1000)/steps);
   },fadeStart*1000);
 
-  setTimeout(()=>{
+  massSampleEndTimer=setTimeout(()=>{
     if(activeMassSample){
       const title=activeMassSample.dataset.title||'incipit';
       stopMassSample('<strong>Fine dell’incipit.</strong> '+title+'. Scegli un’altra casella per continuare il percorso.');
