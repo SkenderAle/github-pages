@@ -439,156 +439,6 @@ if(massFrame&&massButtons.length){
 }
 
 
-const guidonianData=[
-  {n:1,name:'Γ ut',modern:'Sol grave',x:12,y:50,f:98.00,meaning:'Il percorso comincia sulla punta del pollice. «Ut» è la sillaba di solmisazione associata a questa altezza nel gamut.'},
-  {n:2,name:'A re',modern:'La grave',x:17,y:62,f:110.00,meaning:'Seconda posizione: la lettera indica l\'altezza alfabetica, «re» la voce di solmisazione.'},
-  {n:3,name:'B mi',modern:'Si grave',x:22,y:72,f:123.47,meaning:'Alla base del pollice troviamo B mi. Nel sistema guidoniano la sillaba chiarisce la funzione dentro l\'esacordo.'},
-  {n:4,name:'C fa ut',modern:'Do',x:34,y:51,f:130.81,meaning:'Il percorso entra nella base dell\'indice. C può essere «fa» in un esacordo e «ut» in un altro.'},
-  {n:5,name:'D sol re',modern:'Re',x:51,y:50,f:146.83,meaning:'Una stessa altezza può ricevere più sillabe: qui D può essere sol oppure re secondo l\'esacordo attivo.'},
-  {n:6,name:'E la mi',modern:'Mi',x:67,y:50,f:164.81,meaning:'E la mi mostra già perché questi nomi composti sono una mappa delle possibili funzioni.'},
-  {n:7,name:'F fa ut',modern:'Fa',x:81,y:51,f:174.61,meaning:'Alla base del mignolo F può essere fa oppure ut, secondo il percorso esacordale.'},
-  {n:8,name:'G sol re ut',modern:'Sol',x:82,y:44,f:196.00,meaning:'Tre sillabe sulla stessa altezza: G è uno dei punti nei quali più esacordi si sovrappongono.'},
-  {n:9,name:'a la mi re',modern:'La',x:81,y:37,f:220.00,meaning:'La posizione a la mi re rende visibile la sovrapposizione fra più esacordi e prepara il concetto di mutazione.'},
-  {n:10,name:'b fa / ♮ mi',modern:'Si♭ / Si♮',x:80,y:29,f:246.94,meaning:'Qui il sistema distingue la proprietà molle e quella dura. Nel demo sonoro usiamo convenzionalmente il Si naturale per mantenere il percorso ascendente.'},
-  {n:11,name:'c sol fa ut',modern:'Do',x:68,y:17,f:261.63,meaning:'Il percorso passa dalla punta del mignolo verso le altre dita: c può assumere tre sillabe diverse.'},
-  {n:12,name:'d la sol re',modern:'Re',x:52,y:11,f:293.66,meaning:'Sulla punta del medio la stessa altezza può essere la, sol oppure re.'},
-  {n:13,name:'e la mi',modern:'Mi',x:34,y:19,f:329.63,meaning:'Il cammino raggiunge la punta dell\'indice: e può essere cantato come la oppure mi.'},
-  {n:14,name:'f fa ut',modern:'Fa',x:34,y:29,f:349.23,meaning:'Scendendo lungo l\'indice ricompare la coppia fa-ut, ora nell\'ottava superiore.'},
-  {n:15,name:'g sol re ut',modern:'Sol',x:34,y:39,f:392.00,meaning:'g sol re ut ripete, un\'ottava più in alto, la triplice possibilità già incontrata su G.'},
-  {n:16,name:'aa la mi re',modern:'La',x:51,y:39,f:440.00,meaning:'Il percorso torna verso il centro della mano: la-mi-re sono tre funzioni possibili della stessa clavis.'},
-  {n:17,name:'bb fa / ♮♮ mi',modern:'Si♭ / Si♮',x:66,y:39,f:493.88,meaning:'Anche nell\'ottava alta ritorna l\'alternativa fra b molle e b durum. Il demo usa convenzionalmente il Si naturale.'},
-  {n:18,name:'cc sol fa',modern:'Do',x:66,y:29,f:523.25,meaning:'Nella regione acuta diminuiscono le sillabe disponibili: cc porta sol e fa.'},
-  {n:19,name:'dd la sol',modern:'Re',x:52,y:27,f:587.33,meaning:'dd la sol è la penultima posizione del percorso principale sulla faccia della mano.'},
-  {n:20,name:'ee la',modern:'Mi acuto',x:52,y:5.5,f:659.25,meaning:'Il gamut raggiunge ee la. Nelle descrizioni tradizionali l\'ultima posizione può essere indicata sul dorso del medio.'}
-];
-
-const guidonianLab=document.getElementById('guidonianLab');
-const guidonianStage=document.getElementById('guidonianStage');
-const guidonianHotspots=document.getElementById('guidonianHotspots');
-const guidonianPointer=document.getElementById('guidonianPointer');
-const guidonianSound=document.getElementById('guidonianSound');
-const guidonianDemo=document.getElementById('guidonianDemo');
-const guidonianCounter=document.getElementById('guidonianCounter');
-const guidonianNote=document.getElementById('guidonianNote');
-const guidonianModern=document.getElementById('guidonianModern');
-const guidonianMeaning=document.getElementById('guidonianMeaning');
-const guidonianAudioState=document.getElementById('guidonianAudioState');
-let guidonianAudioOn=false;
-let guidonianDemoTimer=null;
-let guidonianDemoIndex=0;
-
-function showGuidonian(item,play=true){
-  if(!item)return;
-  if(guidonianPointer){
-    guidonianPointer.style.left=item.x+'%';
-    guidonianPointer.style.top=item.y+'%';
-  }
-  if(guidonianCounter)guidonianCounter.textContent=String(item.n).padStart(2,'0')+' / 20';
-  if(guidonianNote)guidonianNote.textContent=item.name;
-  if(guidonianModern)guidonianModern.textContent=item.modern+' · riferimento moderno approssimativo';
-  if(guidonianMeaning)guidonianMeaning.textContent=item.meaning;
-  document.querySelectorAll('.guidonian-hotspot').forEach(b=>b.classList.toggle('active',Number(b.dataset.n)===item.n));
-  if(play&&guidonianAudioOn)glideChoir(item.f);
-}
-
-function enableGuidonianAudio(){
-  const ctx=ensureChoirAudio();
-  if(!ctx)return false;
-  guidonianAudioOn=true;
-  if(ctx.state==='suspended')ctx.resume();
-  if(guidonianSound)guidonianSound.textContent='♪ Suono attivo';
-  if(guidonianAudioState){
-    guidonianAudioState.textContent='Audio attivo: passando da una falange all’altra la voce glissa verso la nuova altezza.';
-    guidonianAudioState.classList.add('on');
-  }
-  return true;
-}
-
-function stopGuidonianDemo(){
-  if(guidonianDemoTimer)clearTimeout(guidonianDemoTimer);
-  guidonianDemoTimer=null;
-  guidonianDemoIndex=0;
-  if(guidonianDemo)guidonianDemo.textContent='▶ Percorri il gamut';
-}
-
-function stepGuidonianDemo(){
-  if(guidonianDemoIndex>=guidonianData.length){
-    stopGuidonianDemo();
-    stopChoir();
-    return;
-  }
-  const item=guidonianData[guidonianDemoIndex++];
-  showGuidonian(item,true);
-  guidonianDemoTimer=setTimeout(stepGuidonianDemo,650);
-}
-
-if(guidonianHotspots){
-  guidonianData.forEach(item=>{
-    const b=document.createElement('button');
-    b.type='button';
-    b.className='guidonian-hotspot';
-    b.dataset.n=item.n;
-    b.style.left=item.x+'%';
-    b.style.top=item.y+'%';
-    b.textContent=item.n;
-    b.setAttribute('aria-label',item.n+'. '+item.name+', '+item.modern);
-    b.addEventListener('pointerenter',()=>showGuidonian(item,true));
-    b.addEventListener('focus',()=>showGuidonian(item,true));
-    b.addEventListener('click',()=>{
-      if(!guidonianAudioOn)enableGuidonianAudio();
-      showGuidonian(item,true);
-    });
-    guidonianHotspots.appendChild(b);
-  });
-  showGuidonian(guidonianData[0],false);
-}
-
-if(guidonianSound){
-  guidonianSound.addEventListener('click',()=>{
-    if(!guidonianAudioOn){
-      if(enableGuidonianAudio()){
-        const current=guidonianData.find(x=>x.n===Number(document.querySelector('.guidonian-hotspot.active')?.dataset.n))||guidonianData[0];
-        startChoir(current.f);
-      }
-    }else{
-      guidonianAudioOn=false;
-      stopChoir();
-      guidonianSound.textContent='♪ Attiva il suono';
-      if(guidonianAudioState){
-        guidonianAudioState.textContent='Audio disattivato. Il cursore continua a seguire il mouse.';
-        guidonianAudioState.classList.remove('on');
-      }
-    }
-  });
-}
-
-if(guidonianDemo){
-  guidonianDemo.addEventListener('click',()=>{
-    if(guidonianDemoTimer){
-      stopGuidonianDemo();
-      stopChoir();
-      return;
-    }
-    enableGuidonianAudio();
-    guidonianDemoIndex=0;
-    guidonianDemo.textContent='■ Ferma';
-    startChoir(guidonianData[0].f);
-    stepGuidonianDemo();
-  });
-}
-
-if(guidonianStage){
-  guidonianStage.addEventListener('pointerleave',()=>{
-    if(!guidonianDemoTimer&&guidonianAudioOn)stopChoir();
-  });
-  guidonianStage.addEventListener('pointerenter',()=>{
-    const active=document.querySelector('.guidonian-hotspot.active');
-    const item=active?guidonianData.find(x=>x.n===Number(active.dataset.n)):guidonianData[0];
-    if(item&&guidonianAudioOn)startChoir(item.f);
-  });
-}
-
-
 // Mano guidoniana interattiva
 const guidonianLab=document.getElementById('guidonianHandLab');
 const guidonianStage=document.getElementById('guidonianHandStage');
@@ -601,6 +451,7 @@ const guidonianHz=document.getElementById('guidonianHz');
 let guidonianAudioReady=false;
 let guidonianDemoTimer=null;
 let guidonianDemoIndex=0;
+let guidonianPreviewTimer=null;
 
 function setGuidonianPoint(point,withSound=true){
   if(!point)return;
@@ -616,17 +467,35 @@ function setGuidonianPoint(point,withSound=true){
   }
 }
 
-async function enableGuidonianAudio(){
+function unlockGuidonianAudio(previewPoint=null){
   const ctx=ensureChoirAudio();
   if(!ctx)return false;
-  try{if(ctx.state==='suspended')await ctx.resume();}catch(e){}
-  guidonianAudioReady=ctx.state!=='closed';
+
+  // Important on phones: resume is called directly inside the tap/click event.
+  try{
+    const resumed=ctx.resume();
+    if(resumed&&typeof resumed.catch==='function')resumed.catch(()=>{});
+  }catch(e){}
+
+  guidonianAudioReady=true;
   if(guidonianSound){
-    guidonianSound.classList.toggle('active',guidonianAudioReady);
-    guidonianSound.textContent=guidonianAudioReady?'◉ Suono attivo':'◉ Attiva il suono';
+    guidonianSound.classList.add('active');
+    guidonianSound.textContent='◉ Suono attivo';
   }
-  if(guidonianStatus)guidonianStatus.textContent=guidonianAudioReady?'voce sintetica pronta':'suono non disponibile';
-  return guidonianAudioReady;
+  if(guidonianStatus)guidonianStatus.textContent='voce sintetica pronta · tocca o trascina fra i punti';
+
+  // A short preview proves immediately that mobile audio has been unlocked.
+  if(previewPoint){
+    const freq=Number(previewPoint.dataset.freq);
+    stopChoir(true);
+    startChoir(freq);
+    if(guidonianPreviewTimer)clearTimeout(guidonianPreviewTimer);
+    guidonianPreviewTimer=setTimeout(()=>{
+      if(!guidonianDemoTimer)stopChoir();
+      guidonianPreviewTimer=null;
+    },520);
+  }
+  return true;
 }
 
 function stopGuidonianDemo(){
@@ -637,14 +506,18 @@ function stopGuidonianDemo(){
   stopChoir();
 }
 
-async function runGuidonianDemo(){
+function runGuidonianDemo(){
   if(!guidonianPoints.length)return;
-  await enableGuidonianAudio();
   if(guidonianDemoTimer){stopGuidonianDemo();return;}
+
+  // Keep the unlock in the same user gesture for iOS/Android autoplay policies.
+  unlockGuidonianAudio();
   if(guidonianDemo)guidonianDemo.textContent='■ Ferma percorso';
   guidonianDemoIndex=0;
+
   function step(){
     const p=guidonianPoints[guidonianDemoIndex];
+    if(!p){stopGuidonianDemo();return;}
     setGuidonianPoint(p,true);
     guidonianDemoIndex++;
     if(guidonianDemoIndex<guidonianPoints.length){
@@ -660,16 +533,28 @@ async function runGuidonianDemo(){
   step();
 }
 
-if(guidonianSound)guidonianSound.addEventListener('click',enableGuidonianAudio);
+if(guidonianSound){
+  guidonianSound.addEventListener('click',()=>{
+    const current=document.querySelector('.guidonian-point.active')||guidonianPoints[0];
+    unlockGuidonianAudio(current);
+  });
+}
 if(guidonianDemo)guidonianDemo.addEventListener('click',runGuidonianDemo);
 
 guidonianPoints.forEach(point=>{
-  point.addEventListener('pointerenter',()=>setGuidonianPoint(point,true));
-  point.addEventListener('focus',()=>setGuidonianPoint(point,true));
-  point.addEventListener('click',async e=>{
-    e.preventDefault();
-    if(!guidonianAudioReady)await enableGuidonianAudio();
+  point.addEventListener('pointerenter',()=>{
+    // Desktop hover glides only after the user has enabled sound.
     setGuidonianPoint(point,true);
+  });
+  point.addEventListener('focus',()=>setGuidonianPoint(point,true));
+  point.addEventListener('click',e=>{
+    e.preventDefault();
+    // On phones each tap is itself a valid audio-unlock gesture.
+    if(!guidonianAudioReady)unlockGuidonianAudio();
+    setGuidonianPoint(point,true);
+  });
+  point.addEventListener('pointerdown',()=>{
+    if(!guidonianAudioReady)unlockGuidonianAudio();
   });
 });
 
