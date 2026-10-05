@@ -440,126 +440,161 @@ if(massFrame&&massButtons.length){
 
 
 // Mano guidoniana interattiva
-const guidonianLab=document.getElementById('guidonianHandLab');
-const guidonianStage=document.getElementById('guidonianHandStage');
-const guidonianPoints=[...document.querySelectorAll('.guidonian-point')];
+const guidonianData=[
+  {n:1,name:'Γ ut',modern:'Sol grave',x:12,y:50,f:98.00},
+  {n:2,name:'A re',modern:'La grave',x:17,y:62,f:110.00},
+  {n:3,name:'B mi',modern:'Si grave',x:22,y:72,f:123.47},
+  {n:4,name:'C fa ut',modern:'Do',x:34,y:51,f:130.81},
+  {n:5,name:'D sol re',modern:'Re',x:51,y:50,f:146.83},
+  {n:6,name:'E la mi',modern:'Mi',x:67,y:50,f:164.81},
+  {n:7,name:'F fa ut',modern:'Fa',x:81,y:51,f:174.61},
+  {n:8,name:'G sol re ut',modern:'Sol',x:82,y:44,f:196.00},
+  {n:9,name:'a la mi re',modern:'La',x:81,y:37,f:220.00},
+  {n:10,name:'b fa / ♮ mi',modern:'Si♭ / Si♮',x:80,y:29,f:246.94},
+  {n:11,name:'c sol fa ut',modern:'Do',x:68,y:17,f:261.63},
+  {n:12,name:'d la sol re',modern:'Re',x:52,y:11,f:293.66},
+  {n:13,name:'e la mi',modern:'Mi',x:34,y:19,f:329.63},
+  {n:14,name:'f fa ut',modern:'Fa',x:34,y:29,f:349.23},
+  {n:15,name:'g sol re ut',modern:'Sol',x:34,y:39,f:392.00},
+  {n:16,name:'aa la mi re',modern:'La',x:51,y:39,f:440.00},
+  {n:17,name:'bb fa / ♮♮ mi',modern:'Si♭ / Si♮',x:66,y:39,f:493.88},
+  {n:18,name:'cc sol fa',modern:'Do',x:66,y:29,f:523.25},
+  {n:19,name:'dd la sol',modern:'Re',x:52,y:27,f:587.33},
+  {n:20,name:'ee la',modern:'Mi acuto',x:52,y:5.5,f:659.25}
+];
+
+const guidonianStage=document.getElementById('guidonianStage');
+const guidonianHotspots=document.getElementById('guidonianHotspots');
+const guidonianPointer=document.getElementById('guidonianPointer');
 const guidonianSound=document.getElementById('guidonianSound');
 const guidonianDemo=document.getElementById('guidonianDemo');
-const guidonianStatus=document.getElementById('guidonianStatus');
+const guidonianCounter=document.getElementById('guidonianCounter');
 const guidonianNote=document.getElementById('guidonianNote');
-const guidonianHz=document.getElementById('guidonianHz');
-let guidonianAudioReady=false;
+const guidonianModern=document.getElementById('guidonianModern');
+const guidonianMeaning=document.getElementById('guidonianMeaning');
+const guidonianAudioState=document.getElementById('guidonianAudioState');
+
+let guidonianAudioOn=false;
 let guidonianDemoTimer=null;
 let guidonianDemoIndex=0;
-let guidonianPreviewTimer=null;
 
-function setGuidonianPoint(point,withSound=true){
-  if(!point)return;
-  guidonianPoints.forEach(p=>p.classList.toggle('active',p===point));
-  const freq=Number(point.dataset.freq);
-  const label=point.dataset.note||'';
-  if(guidonianNote)guidonianNote.textContent=label;
-  if(guidonianHz)guidonianHz.textContent='altezza didattica · '+freq.toFixed(2).replace('.',',')+' Hz';
-  if(guidonianStatus)guidonianStatus.textContent=guidonianAudioReady?'voce sintetica glissante':'esplorazione visiva · attiva il suono';
-  if(withSound&&guidonianAudioReady){
-    if(activeChoir)glideChoir(freq);
-    else startChoir(freq);
+function guidonianMeaningFor(item){
+  const meanings={
+    1:'Il percorso comincia sulla punta del pollice. «Ut» è la sillaba di solmisazione associata a questa altezza nel gamut.',
+    4:'C può essere «fa» in un esacordo e «ut» in un altro: la mano visualizza anche le possibili funzioni della stessa altezza.',
+    8:'Tre sillabe sulla stessa altezza: qui più esacordi si sovrappongono.',
+    10:'Qui compare l’alternativa fra b molle e b durum. Il suono sintetico usa una scelta didattica moderna.',
+    20:'Il gamut raggiunge ee la, il limite acuto del percorso tradizionale.'
+  };
+  return meanings[item.n]||'La lettera indica l’altezza del gamut, mentre le sillabe mostrano le possibili funzioni di solmisazione nei diversi esacordi.';
+}
+
+function showGuidonian(item,play=true){
+  if(!item)return;
+  if(guidonianPointer){
+    guidonianPointer.style.left=item.x+'%';
+    guidonianPointer.style.top=item.y+'%';
+  }
+  if(guidonianCounter)guidonianCounter.textContent=String(item.n).padStart(2,'0')+' / 20';
+  if(guidonianNote)guidonianNote.textContent=item.name;
+  if(guidonianModern)guidonianModern.textContent=item.modern+' · riferimento moderno approssimativo';
+  if(guidonianMeaning)guidonianMeaning.textContent=guidonianMeaningFor(item);
+  document.querySelectorAll('.guidonian-hotspot').forEach(b=>b.classList.toggle('active',Number(b.dataset.n)===item.n));
+  if(play&&guidonianAudioOn){
+    if(activeChoir)glideChoir(item.f);
+    else startChoir(item.f);
   }
 }
 
-function unlockGuidonianAudio(previewPoint=null){
+async function unlockGuidonianAudio(){
   const ctx=ensureChoirAudio();
   if(!ctx)return false;
-
-  // Important on phones: resume is called directly inside the tap/click event.
   try{
-    const resumed=ctx.resume();
-    if(resumed&&typeof resumed.catch==='function')resumed.catch(()=>{});
+    if(ctx.state==='suspended')await ctx.resume();
   }catch(e){}
-
-  guidonianAudioReady=true;
-  if(guidonianSound){
-    guidonianSound.classList.add('active');
-    guidonianSound.textContent='◉ Suono attivo';
+  guidonianAudioOn=ctx.state==='running';
+  if(choirMaster&&guidonianAudioOn){
+    const now=ctx.currentTime;
+    choirMaster.gain.cancelScheduledValues(now);
+    choirMaster.gain.setTargetAtTime(.58,now,.03);
   }
-  if(guidonianStatus)guidonianStatus.textContent='voce sintetica pronta · tocca o trascina fra i punti';
-
-  // A short preview proves immediately that mobile audio has been unlocked.
-  if(previewPoint){
-    const freq=Number(previewPoint.dataset.freq);
-    stopChoir(true);
-    startChoir(freq);
-    if(guidonianPreviewTimer)clearTimeout(guidonianPreviewTimer);
-    guidonianPreviewTimer=setTimeout(()=>{
-      if(!guidonianDemoTimer)stopChoir();
-      guidonianPreviewTimer=null;
-    },520);
+  if(guidonianSound)guidonianSound.textContent=guidonianAudioOn?'♪ Suono attivo':'♪ Riprova audio';
+  if(guidonianAudioState){
+    guidonianAudioState.textContent=guidonianAudioOn
+      ?'Audio attivo: tocca i punti. La voce glissa da un’altezza all’altra.'
+      :'Il browser non ha sbloccato l’audio. Tocca di nuovo il pulsante.';
+    guidonianAudioState.classList.toggle('on',guidonianAudioOn);
   }
-  return true;
+  return guidonianAudioOn;
+}
+
+async function previewGuidonian(item){
+  if(!(await unlockGuidonianAudio()))return;
+  stopChoir(true);
+  startChoir(item.f);
+  setTimeout(()=>{if(!guidonianDemoTimer)stopChoir();},650);
 }
 
 function stopGuidonianDemo(){
   if(guidonianDemoTimer)clearTimeout(guidonianDemoTimer);
   guidonianDemoTimer=null;
   guidonianDemoIndex=0;
-  if(guidonianDemo)guidonianDemo.textContent='▶ Percorri la mano';
   stopChoir();
+  if(guidonianDemo)guidonianDemo.textContent='▶ Percorri il gamut';
 }
 
-function runGuidonianDemo(){
-  if(!guidonianPoints.length)return;
+async function startGuidonianDemo(){
   if(guidonianDemoTimer){stopGuidonianDemo();return;}
-
-  // Keep the unlock in the same user gesture for iOS/Android autoplay policies.
-  unlockGuidonianAudio();
-  if(guidonianDemo)guidonianDemo.textContent='■ Ferma percorso';
+  if(!(await unlockGuidonianAudio()))return;
   guidonianDemoIndex=0;
-
+  if(guidonianDemo)guidonianDemo.textContent='■ Ferma';
   function step(){
-    const p=guidonianPoints[guidonianDemoIndex];
-    if(!p){stopGuidonianDemo();return;}
-    setGuidonianPoint(p,true);
-    guidonianDemoIndex++;
-    if(guidonianDemoIndex<guidonianPoints.length){
-      guidonianDemoTimer=setTimeout(step,520);
+    const item=guidonianData[guidonianDemoIndex++];
+    if(!item){stopGuidonianDemo();return;}
+    showGuidonian(item,true);
+    if(guidonianDemoIndex<guidonianData.length){
+      guidonianDemoTimer=setTimeout(step,600);
     }else{
-      guidonianDemoTimer=setTimeout(()=>{
-        guidonianDemoTimer=null;
-        if(guidonianDemo)guidonianDemo.textContent='↻ Ripeti il percorso';
-        stopChoir();
-      },650);
+      guidonianDemoTimer=setTimeout(stopGuidonianDemo,700);
     }
   }
   step();
 }
 
+if(guidonianHotspots){
+  guidonianHotspots.innerHTML='';
+  guidonianData.forEach(item=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='guidonian-hotspot';
+    b.dataset.n=item.n;
+    b.style.left=item.x+'%';
+    b.style.top=item.y+'%';
+    b.textContent=item.n;
+    b.setAttribute('aria-label',item.n+'. '+item.name+', '+item.modern);
+    b.addEventListener('pointerenter',()=>showGuidonian(item,true));
+    b.addEventListener('focus',()=>showGuidonian(item,true));
+    b.addEventListener('click',async e=>{
+      e.preventDefault();
+      if(!guidonianAudioOn)await unlockGuidonianAudio();
+      showGuidonian(item,true);
+    });
+    guidonianHotspots.appendChild(b);
+  });
+  showGuidonian(guidonianData[0],false);
+}
+
 if(guidonianSound){
   guidonianSound.addEventListener('click',()=>{
-    const current=document.querySelector('.guidonian-point.active')||guidonianPoints[0];
-    unlockGuidonianAudio(current);
+    const active=document.querySelector('.guidonian-hotspot.active');
+    const item=active?guidonianData.find(x=>x.n===Number(active.dataset.n)):guidonianData[0];
+    previewGuidonian(item||guidonianData[0]);
   });
 }
-if(guidonianDemo)guidonianDemo.addEventListener('click',runGuidonianDemo);
-
-guidonianPoints.forEach(point=>{
-  point.addEventListener('pointerenter',()=>{
-    // Desktop hover glides only after the user has enabled sound.
-    setGuidonianPoint(point,true);
-  });
-  point.addEventListener('focus',()=>setGuidonianPoint(point,true));
-  point.addEventListener('click',e=>{
-    e.preventDefault();
-    // On phones each tap is itself a valid audio-unlock gesture.
-    if(!guidonianAudioReady)unlockGuidonianAudio();
-    setGuidonianPoint(point,true);
-  });
-  point.addEventListener('pointerdown',()=>{
-    if(!guidonianAudioReady)unlockGuidonianAudio();
-  });
-});
+if(guidonianDemo)guidonianDemo.addEventListener('click',startGuidonianDemo);
 
 if(guidonianStage){
   guidonianStage.addEventListener('pointerleave',()=>{
-    if(!guidonianDemoTimer)stopChoir();
+    if(!guidonianDemoTimer&&guidonianAudioOn)stopChoir();
   });
 }
