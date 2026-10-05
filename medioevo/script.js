@@ -41,6 +41,8 @@ const neumeInstruction=document.getElementById('neumeInstruction');
 const neumeAudioLabel=document.getElementById('neumeAudioLabel');
 const neumePlay=document.getElementById('neumePlay');
 const neumeReplay=document.getElementById('neumeReplay');
+const neumeSpeed=document.getElementById('neumeSpeed');
+const neumeSpeedValue=document.getElementById('neumeSpeedValue');
 const neumeButtons=[...document.querySelectorAll('[data-neume-index]')];
 
 const neumeData=[
@@ -185,7 +187,16 @@ let neumeIndex=0;
 let neumeRaf=null;
 let neumeTimer=null;
 let neumePlaying=false;
-const neumeDuration=3300;
+let neumeDuration=3300;
+
+function updateNeumeSpeed(value){
+  neumeDuration=Number(value)||3300;
+  if(neumeSpeedValue)neumeSpeedValue.textContent=(neumeDuration/1000).toFixed(1).replace('.',',')+' s';
+}
+if(neumeSpeed){
+  updateNeumeSpeed(neumeSpeed.value);
+  neumeSpeed.addEventListener('input',()=>updateNeumeSpeed(neumeSpeed.value));
+}
 
 function stopNeumeAnimation(){
   stopChoir();
