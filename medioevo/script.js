@@ -314,11 +314,35 @@ if(neumeTrace)renderNeume(0);
 const voiceDemo=document.getElementById('voiceDemo');
 const voicePlay=document.getElementById('voicePlay');
 const voiceText=document.getElementById('voiceText');
+const principalPath=document.getElementById('principalPath');
+const organalPath=document.getElementById('organalPath');
+const principalCursor=document.getElementById('principalCursor');
+const organalCursor=document.getElementById('organalCursor');
+let voiceRaf=null;
+
+function animateVoiceCursor(path,cursor,start,duration){
+  if(!path||!cursor)return;
+  const length=path.getTotalLength();
+  function step(now){
+    const t=Math.max(0,Math.min(1,(now-start)/duration));
+    const eased=.5-.5*Math.cos(Math.PI*t);
+    const p=path.getPointAtLength(length*eased);
+    cursor.setAttribute('cx',p.x);
+    cursor.setAttribute('cy',p.y);
+    if(t<1)voiceRaf=requestAnimationFrame(step);
+  }
+  voiceRaf=requestAnimationFrame(step);
+}
+
 if(voiceDemo&&voicePlay){
   voicePlay.addEventListener('click',()=>{
+    if(voiceRaf)cancelAnimationFrame(voiceRaf);
     voiceDemo.classList.remove('play');void voiceDemo.offsetWidth;voiceDemo.classList.add('play');
     voicePlay.textContent='↻ Ripeti';
-    if(voiceText)voiceText.textContent='La seconda voce non cancella la prima: deve imparare a coordinarsi con essa.';
+    if(voiceText)voiceText.innerHTML='La <strong>vox principalis</strong> comincia da sola. Poco dopo entra la <strong>vox organalis</strong>: da questo momento le due linee devono coordinare direzione, consonanze e arrivi.';
+    const now=performance.now();
+    animateVoiceCursor(principalPath,principalCursor,now,5200);
+    setTimeout(()=>animateVoiceCursor(organalPath,organalCursor,performance.now(),4400),800);
   });
 }
 
