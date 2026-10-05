@@ -587,3 +587,94 @@ if(guidonianStage){
     if(item&&guidonianAudioOn)startChoir(item.f);
   });
 }
+
+
+// Mano guidoniana interattiva
+const guidonianLab=document.getElementById('guidonianHandLab');
+const guidonianStage=document.getElementById('guidonianHandStage');
+const guidonianPoints=[...document.querySelectorAll('.guidonian-point')];
+const guidonianSound=document.getElementById('guidonianSound');
+const guidonianDemo=document.getElementById('guidonianDemo');
+const guidonianStatus=document.getElementById('guidonianStatus');
+const guidonianNote=document.getElementById('guidonianNote');
+const guidonianHz=document.getElementById('guidonianHz');
+let guidonianAudioReady=false;
+let guidonianDemoTimer=null;
+let guidonianDemoIndex=0;
+
+function setGuidonianPoint(point,withSound=true){
+  if(!point)return;
+  guidonianPoints.forEach(p=>p.classList.toggle('active',p===point));
+  const freq=Number(point.dataset.freq);
+  const label=point.dataset.note||'';
+  if(guidonianNote)guidonianNote.textContent=label;
+  if(guidonianHz)guidonianHz.textContent='altezza didattica · '+freq.toFixed(2).replace('.',',')+' Hz';
+  if(guidonianStatus)guidonianStatus.textContent=guidonianAudioReady?'voce sintetica glissante':'esplorazione visiva · attiva il suono';
+  if(withSound&&guidonianAudioReady){
+    if(activeChoir)glideChoir(freq);
+    else startChoir(freq);
+  }
+}
+
+async function enableGuidonianAudio(){
+  const ctx=ensureChoirAudio();
+  if(!ctx)return false;
+  try{if(ctx.state==='suspended')await ctx.resume();}catch(e){}
+  guidonianAudioReady=ctx.state!=='closed';
+  if(guidonianSound){
+    guidonianSound.classList.toggle('active',guidonianAudioReady);
+    guidonianSound.textContent=guidonianAudioReady?'◉ Suono attivo':'◉ Attiva il suono';
+  }
+  if(guidonianStatus)guidonianStatus.textContent=guidonianAudioReady?'voce sintetica pronta':'suono non disponibile';
+  return guidonianAudioReady;
+}
+
+function stopGuidonianDemo(){
+  if(guidonianDemoTimer)clearTimeout(guidonianDemoTimer);
+  guidonianDemoTimer=null;
+  guidonianDemoIndex=0;
+  if(guidonianDemo)guidonianDemo.textContent='▶ Percorri la mano';
+  stopChoir();
+}
+
+async function runGuidonianDemo(){
+  if(!guidonianPoints.length)return;
+  await enableGuidonianAudio();
+  if(guidonianDemoTimer){stopGuidonianDemo();return;}
+  if(guidonianDemo)guidonianDemo.textContent='■ Ferma percorso';
+  guidonianDemoIndex=0;
+  function step(){
+    const p=guidonianPoints[guidonianDemoIndex];
+    setGuidonianPoint(p,true);
+    guidonianDemoIndex++;
+    if(guidonianDemoIndex<guidonianPoints.length){
+      guidonianDemoTimer=setTimeout(step,520);
+    }else{
+      guidonianDemoTimer=setTimeout(()=>{
+        guidonianDemoTimer=null;
+        if(guidonianDemo)guidonianDemo.textContent='↻ Ripeti il percorso';
+        stopChoir();
+      },650);
+    }
+  }
+  step();
+}
+
+if(guidonianSound)guidonianSound.addEventListener('click',enableGuidonianAudio);
+if(guidonianDemo)guidonianDemo.addEventListener('click',runGuidonianDemo);
+
+guidonianPoints.forEach(point=>{
+  point.addEventListener('pointerenter',()=>setGuidonianPoint(point,true));
+  point.addEventListener('focus',()=>setGuidonianPoint(point,true));
+  point.addEventListener('click',async e=>{
+    e.preventDefault();
+    if(!guidonianAudioReady)await enableGuidonianAudio();
+    setGuidonianPoint(point,true);
+  });
+});
+
+if(guidonianStage){
+  guidonianStage.addEventListener('pointerleave',()=>{
+    if(!guidonianDemoTimer)stopChoir();
+  });
+}
