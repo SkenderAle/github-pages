@@ -422,6 +422,118 @@ document.querySelectorAll('[data-word]').forEach(btn=>{
   });
 });
 
+// Incipit sonori delle parti della Messa
+const massSampleButtons=[...document.querySelectorAll('.mass-sample')];
+const massSampleStatus=document.getElementById('massSampleStatus');
+const massSampleAudio=new Audio();
+massSampleAudio.preload='none';
+let activeMassSample=null;
+let massSampleStopTimer=null;
+let massSampleFadeTimer=null;
+
+function clearMassSampleTimers(){
+  if(massSampleStopTimer)clearTimeout(massSampleStopTimer);
+  if(massSampleFadeTimer)clearInterval(massSampleFadeTimer);
+  massSampleStopTimer=null;
+  massSampleFadeTimer=null;
+}
+
+function resetMassSampleUI(){
+  if(activeMassSample){
+    activeMassSample.classList.remove('playing','loading');
+    activeMassSample.closest('.mass-step')?.classList.remove('playing');
+    activeMassSample.textContent=activeMassSample.dataset.originalLabel||'▶ 18 s';
+  }
+  activeMassSample=null;
+}
+
+function stopMassSample(message=''){
+  clearMassSampleTimers();
+  try{
+    massSampleAudio.pause();
+    massSampleAudio.currentTime=0;
+    massSampleAudio.volume=1;
+  }catch(e){}
+  resetMassSampleUI();
+  if(message&&massSampleStatus){
+    massSampleStatus.classList.remove('is-playing');
+    massSampleStatus.innerHTML=message;
+  }
+}
+
+function beginMassSampleFade(total=18,fade=4){
+  const fadeStart=Math.max(1,total-fade);
+  massSampleStopTimer=setTimeout(()=>{
+    const steps=24;
+    let n=0;
+    massSampleFadeTimer=setInterval(()=>{
+      n++;
+      massSampleAudio.volume=Math.max(0,1-(n/steps));
+      if(n>=steps){
+        clearInterval(massSampleFadeTimer);
+        massSampleFadeTimer=null;
+      }
+    },(fade*1000)/steps);
+  },fadeStart*1000);
+
+  setTimeout(()=>{
+    if(activeMassSample){
+      const title=activeMassSample.dataset.title||'incipit';
+      stopMassSample('<strong>Fine dell’incipit.</strong> '+title+'. Scegli un’altra casella per continuare il percorso.');
+    }
+  },total*1000+120);
+}
+
+massSampleButtons.forEach(btn=>{
+  btn.dataset.originalLabel=btn.textContent;
+  btn.addEventListener('click',async e=>{
+    e.preventDefault();
+    e.stopPropagation();
+
+    if(activeMassSample===btn&&!massSampleAudio.paused){
+      stopMassSample('<strong>Ascolto fermato.</strong> Scegli una casella per ripartire.');
+      return;
+    }
+
+    stopMassSample();
+    activeMassSample=btn;
+    btn.classList.add('loading');
+    btn.closest('.mass-step')?.classList.add('playing');
+    btn.textContent='… carico';
+
+    try{
+      massSampleAudio.src=btn.dataset.audio;
+      massSampleAudio.volume=1;
+      massSampleAudio.currentTime=0;
+      await massSampleAudio.play();
+
+      btn.classList.remove('loading');
+      btn.classList.add('playing');
+      btn.textContent='■ Ferma';
+      if(massSampleStatus){
+        massSampleStatus.classList.add('is-playing');
+        massSampleStatus.innerHTML='<strong>'+btn.dataset.title+'</strong> · '+(btn.dataset.source||'fonte verificata')+' · incipit di circa 18 secondi.';
+      }
+      beginMassSampleFade(18,4);
+    }catch(err){
+      clearMassSampleTimers();
+      resetMassSampleUI();
+      try{massSampleAudio.src='';}catch(e){}
+      if(massSampleStatus){
+        massSampleStatus.classList.remove('is-playing');
+        massSampleStatus.innerHTML='<strong>Questo campione non è partito.</strong> La fonte esterna potrebbe bloccare temporaneamente la riproduzione sul browser.';
+      }
+    }
+  });
+});
+
+massSampleAudio.addEventListener('ended',()=>{
+  if(activeMassSample){
+    const title=activeMassSample.dataset.title||'incipit';
+    stopMassSample('<strong>Fine dell’incipit.</strong> '+title+'.');
+  }
+});
+
 const massFrame=document.getElementById('massFrame');
 const massButtons=[...document.querySelectorAll('[data-mass-start]')];
 const massNow=document.getElementById('massNow');
