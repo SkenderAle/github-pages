@@ -1889,3 +1889,118 @@ if(jewishIconDialog){
     try{ctx?.close();}catch(e){}
   },{once:true});
 })();
+
+
+// 2026-10-06 · moti polifonici con timbro pizzicato (Karplus-Strong)
+(() => {
+  const buttons=[...document.querySelectorAll('[data-motion-play]')];
+  if(!buttons.length)return;
+  let ctx=null;
+  let timers=[];
+  let active=null;
+
+  function audioContext(){
+    if(!ctx)ctx=new (window.AudioContext||window.webkitAudioContext)();
+    return ctx;
+  }
+  function clearTimers(){timers.forEach(clearTimeout);timers=[];}
+  function clearVisuals(){document.querySelectorAll('.motion-card circle.is-sounding').forEach(n=>n.classList.remove('is-sounding'));}
+  function stop(){
+    clearTimers();clearVisuals();
+    if(active){active.classList.remove('playing');active.textContent='▶ Ascolta';active=null;}
+  }
+  function pluck(freq,when,pan){
+    const ac=audioContext();
+    const sr=ac.sampleRate;
+    const period=Math.max(2,Math.floor(sr/freq));
+    const dur=.78;
+    const total=Math.floor(sr*dur);
+    const data=new Float32Array(total);
+    for(let i=0;i<period;i++)data[i]=(Math.random()*2-1)*.72;
+    for(let i=period;i<total;i++){
+      const a=data[i-period];
+      const b=data[Math.max(0,i-period+1)];
+      data[i]=.996*.5*(a+b);
+    }
+    const buf=ac.createBuffer(1,total,sr);buf.copyToChannel(data,0);
+    const src=ac.createBufferSource();src.buffer=buf;
+    const low=ac.createBiquadFilter();low.type='lowpass';low.frequency.value=3000;low.Q.value=.3;
+    const p=ac.createStereoPanner?ac.createStereoPanner():null;if(p)p.pan.value=pan;
+    const g=ac.createGain();g.gain.setValueAtTime(.0001,when);g.gain.exponentialRampToValueAtTime(.10,when+.012);g.gain.exponentialRampToValueAtTime(.0001,when+dur);
+    src.connect(low);if(p){low.connect(p);p.connect(g);}else low.connect(g);g.connect(ac.destination);
+    src.start(when);src.stop(when+dur+.04);
+  }
+
+  const patterns={
+    parallel:{a:[293.66,329.63,349.23,392,349.23],b:[391.55,439.51,465.64,522.67,465.64]},
+    oblique:{a:[392,392,392,392,392],b:[293.66,329.63,349.23,369.99,392]},
+    contrary:{a:[440,392,349.23,329.63,293.66],b:[293.66,329.63,349.23,392,440]}
+  };
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+      if(active===btn){stop();return;}
+      stop();active=btn;btn.classList.add('playing');btn.textContent='■ Ferma';
+      const ac=audioContext();if(ac.state==='suspended')await ac.resume();
+      const card=btn.closest('.motion-card');
+      const aa=[...card.querySelectorAll('.notes-a circle')],bb=[...card.querySelectorAll('.notes-b circle')];
+      const pat=patterns[btn.dataset.motionPlay];const start=ac.currentTime+.05;
+      for(let i=0;i<5;i++){
+        pluck(pat.a[i],start+i*.48,-.32);pluck(pat.b[i],start+i*.48,.32);
+        timers.push(setTimeout(()=>{clearVisuals();aa[i]?.classList.add('is-sounding');bb[i]?.classList.add('is-sounding');},i*480));
+      }
+      timers.push(setTimeout(stop,5*.48*1000+350));
+    });
+  });
+})();
+
+// 2026-10-06 · tre laboratori organum / discantus / clausula
+(() => {
+  const labs=[...document.querySelectorAll('.polytime-lab')];
+  labs.forEach(lab=>{
+    const btn=lab.querySelector('.polytime-play');
+    const clause=lab.querySelector('.polytime-clause');
+    const toggle=(force)=>{
+      const on=typeof force==='boolean'?force:!lab.classList.contains('playing');
+      lab.classList.toggle('playing',on);
+      if(btn)btn.textContent=on?'Ⅱ Pausa':(lab.dataset.polytimeLab==='clausula'?'▶ Mostra':'▶ Guarda');
+      if(on&&clause){
+        clause.classList.remove('flash');void clause.offsetWidth;clause.classList.add('flash');
+      }
+    };
+    btn?.addEventListener('click',()=>toggle());
+    clause?.addEventListener('click',()=>toggle(true));
+  });
+})();
+
+// 2026-10-06 · sei ascolti strumentali nelle schede
+(() => {
+  const buttons=[...document.querySelectorAll('.instrument-sound')];
+  const status=document.getElementById('instrumentSoundStatus');
+  if(!buttons.length)return;
+  const audio=new Audio();audio.preload='none';
+  let active=null;
+  function reset(){
+    if(active){active.classList.remove('playing','loading');active.textContent='▶ Ascolta';}
+    active=null;
+  }
+  function stop(message=''){
+    try{audio.pause();audio.currentTime=0;}catch(e){}
+    reset();if(message&&status)status.innerHTML=message;
+  }
+  buttons.forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+      if(active===btn&&!audio.paused){stop('<strong>Ascolto fermato.</strong> Scegli un altro strumento.');return;}
+      stop();active=btn;btn.classList.add('loading');btn.textContent='… carico';
+      try{
+        audio.src=btn.dataset.instrumentAudio;audio.currentTime=0;await audio.play();
+        btn.classList.remove('loading');btn.classList.add('playing');btn.textContent='■ Ferma';
+        if(status)status.innerHTML='<strong>'+btn.dataset.instrumentName+'.</strong> '+(btn.dataset.instrumentNote||'');
+      }catch(e){
+        reset();if(status)status.innerHTML='<strong>Campione non disponibile.</strong> La fonte esterna può bloccare temporaneamente la riproduzione.';
+      }
+    });
+  });
+  audio.addEventListener('ended',()=>stop('<strong>Fine dell’ascolto.</strong> Puoi scegliere un altro strumento.'));
+})();
+
