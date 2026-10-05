@@ -803,7 +803,7 @@ border:1px solid #c8af87;box-shadow:inset 0 0 40px rgba(88,59,27,.05);position:r
 .poly-status strong{color:#e3c27a}
 .poly-status.error{background:#442522;color:#f5d7d2}
 .poly-status.recording{background:#3d2420;color:#f5dfd9}
-.poly-mixer-foot{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:.8rem 1rem;background:#e9dcc7;color:#5f5145;border-top:1px solid #bca482;font-size:.72rem;line-height:1.5}
+.poly-mixer-foot{display:grid;grid-template-columns:1fr;gap:.55rem;padding:.8rem 1rem;background:#e9dcc7;color:#5f5145;border-top:1px solid #bca482;font-size:.72rem;line-height:1.5}
 .poly-mixer-foot p{margin:0}
 .poly-mixer-foot strong{color:#3d3129}
 .poly-mixer-foot a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
@@ -841,3 +841,15 @@ border:1px solid #c8af87;box-shadow:inset 0 0 40px rgba(88,59,27,.05);position:r
   .poly-rec-controls{grid-template-columns:1fr 1fr}
 }
 @media(prefers-reduced-motion:reduce){.poly-rec-controls .poly-rec.recording{animation:none}}
+
+
+/* Accesso alla pagina satellite sul monastero */
+.monastery-door{display:grid;grid-template-columns:72px 1fr auto;gap:1rem;align-items:center;margin:2rem 0 2.4rem;padding:1rem 1.1rem;background:linear-gradient(135deg,#2d2721,#44382d);border:1px solid #765f42;box-shadow:0 10px 26px rgba(40,27,18,.16);text-decoration:none;color:#f3eadb}
+.monastery-door:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(40,27,18,.2)}
+.monastery-door-icon{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#ead7b8;color:#47372b;font-size:2rem;border:2px solid #c7a46c}
+.monastery-door-copy{display:flex;flex-direction:column;gap:.24rem}
+.monastery-door-copy small{font:800 .66rem/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#dcb96f}
+.monastery-door-copy strong{font:800 1.35rem/1.15 var(--serif);color:#fff8ec}
+.monastery-door-copy span{font-size:.9rem;line-height:1.45;color:#dfd2c0}
+.monastery-door-arrow{font-size:2rem;color:#dcb96f}
+@media(max-width:620px){.monastery-door{grid-template-columns:54px 1fr}.monastery-door-icon{width:50px;height:50px;font-size:1.5rem}.monastery-door-arrow{display:none}}
