@@ -82,11 +82,11 @@
           <div class="roots-date">I millennio a.C. → 70 d.C.</div>
           <b>Tempio</b>
           <span>Gerusalemme · culto anche strumentale</span>
-          <p>Sacerdoti, Leviti, Salmi, trombe, cimbali e cordofoni. Del Tempio non possediamo naturalmente alcuna registrazione: l'ascolto qui sotto è un <strong>riferimento rituale ebraico sopravvissuto</strong>, non la ricostruzione della tromba sacerdotale.</p>
+          <p>Sacerdoti, Leviti, Salmi, trombe, cimbali e cordofoni. Del Tempio non possediamo naturalmente alcuna registrazione: qui costruiamo un <strong>paesaggio sonoro didattico</strong> nel quale puoi cambiare in tempo reale il peso dei diversi elementi ricordati dalle fonti.</p>
           <button type="button" class="roots-audio roots-audio-synth"
                   data-root-synth="temple"
-                  data-root-title="Tempio · paesaggio sonoro didattico"
-                  data-root-note="Ricostruzione sintetica: trombe rituali, cordofoni e cimbali sono suggeriti a partire dalle fonti. Non è una ricostruzione filologica del suono del Tempio.">▶ 15″ · ricostruzione</button>
+                  data-root-title="Tempio · mixer sonoro didattico"
+                  data-root-note="Trombe rituali, cordofoni, cimbali, assemblea e riverbero sono evocati sinteticamente. Non è una ricostruzione filologica del suono del Tempio.">▶ Avvia · mixer</button>
           <a class="roots-audio-source" href="https://bible.usccb.org/bible/2chronicles/5" target="_blank" rel="noopener">2 Cronache 5 · fonte ↗</a>
         </article>
         <article>
@@ -112,6 +112,64 @@
           <a class="roots-audio-source" href="https://portal.sds.ox.ac.uk/articles/online_resource/P_Oxy_XV_1786_Christian_Hymn_with_Musical_Notation/21132973" target="_blank" rel="noopener">P.Oxy. 1786 · III sec. ↗</a>
         </article>
       </div>
+
+      <div class="temple-mixer" id="templeMixer" aria-label="Mixer sonoro didattico del Tempio">
+        <div class="temple-mixer-head">
+          <div>
+            <span class="lab-kicker">Laboratorio sonoro · ricostruzione didattica</span>
+            <h3>Dentro il Tempio: costruisci tu il paesaggio sonoro</h3>
+            <p>Avvia il generatore e modifica i livelli. Non stai ascoltando una registrazione del passato: stai sperimentando il rapporto fra gli elementi che le fonti associano al culto del Tempio.</p>
+          </div>
+          <button type="button" class="temple-mixer-power" id="templeMixerPower">▶ Avvia</button>
+        </div>
+
+        <div class="temple-mixer-presets" aria-label="Scene sonore">
+          <span>Scene:</span>
+          <button type="button" data-temple-preset="balanced">Equilibrio</button>
+          <button type="button" data-temple-preset="priests">Sacerdoti</button>
+          <button type="button" data-temple-preset="levites">Leviti</button>
+          <button type="button" data-temple-preset="quiet">Quasi silenzio</button>
+        </div>
+
+        <div class="temple-mixer-channels">
+          <label>
+            <span><b>Trombe</b><small>sacerdoti · segnali rituali</small></span>
+            <input type="range" min="0" max="100" value="68" data-temple-channel="trumpets" aria-label="Volume trombe">
+            <output>68</output>
+          </label>
+          <label>
+            <span><b>Cordofoni</b><small>Leviti · trama sonora</small></span>
+            <input type="range" min="0" max="100" value="52" data-temple-channel="strings" aria-label="Volume cordofoni">
+            <output>52</output>
+          </label>
+          <label>
+            <span><b>Cimbali</b><small>accenti e scansione rituale</small></span>
+            <input type="range" min="0" max="100" value="28" data-temple-channel="cymbals" aria-label="Volume cimbali">
+            <output>28</output>
+          </label>
+          <label>
+            <span><b>Assemblea</b><small>presenza umana · risposta lontana</small></span>
+            <input type="range" min="0" max="100" value="20" data-temple-channel="assembly" aria-label="Volume assemblea">
+            <output>20</output>
+          </label>
+          <label>
+            <span><b>Spazio</b><small>riverbero · grande ambiente</small></span>
+            <input type="range" min="0" max="100" value="46" data-temple-channel="space" aria-label="Riverbero dello spazio">
+            <output>46</output>
+          </label>
+          <label class="temple-master">
+            <span><b>Master</b><small>volume complessivo</small></span>
+            <input type="range" min="0" max="100" value="72" data-temple-channel="master" aria-label="Volume generale">
+            <output>72</output>
+          </label>
+        </div>
+
+        <div class="temple-mixer-foot">
+          <strong id="templeMixerState">Generatore fermo.</strong>
+          <span>Il modello usa sintesi Web Audio e varia leggermente a ogni esecuzione. Nessun campione pretende di riprodurre il suono storico reale.</span>
+        </div>
+      </div>
+
       <div class="roots-audio-status" id="rootsAudioStatus" aria-live="polite">
         <strong>Tre porte sonore.</strong> Ogni ascolto dura circa venti secondi e sfuma lentamente. Le date indicano la storia delle pratiche, non l'età delle registrazioni.
       </div>
