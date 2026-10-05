@@ -1,0 +1,88 @@
+name: Import Cantoria VBP stems
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-cantoria-vbp.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-stems:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Cantoria dataset
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/cantoria
+          cd /tmp/cantoria
+          curl -L --fail --retry 5 --retry-delay 3 \
+            "https://zenodo.org/records/5878677/files/CantoriaDataset_v1.0.0.zip?download=1" \
+            -o CantoriaDataset_v1.0.0.zip
+
+      - name: Extract Virgen bendita stems
+        run: |
+          set -euo pipefail
+          ZIP=/tmp/cantoria/CantoriaDataset_v1.0.0.zip
+          mkdir -p /tmp/cantoria/stems
+          for V in T B A S; do
+            MATCH="$(unzip -Z1 "$ZIP" | grep -E "(^|/)Cantoria_VBP_\${V}\.wav$" | head -n 1)"
+            if [ -z "$MATCH" ]; then
+              echo "Missing stem Cantoria_VBP_\${V}.wav" >&2
+              exit 1
+            fi
+            unzip -p "$ZIP" "$MATCH" > "/tmp/cantoria/stems/Cantoria_VBP_\${V}.wav"
+          done
+          ls -lh /tmp/cantoria/stems
+
+      - name: Convert stems for the website
+        run: |
+          set -euo pipefail
+          command -v ffmpeg >/dev/null || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+          mkdir -p medioevo/audio/polyphony
+          for V in T B A S; do
+            ffmpeg -hide_banner -loglevel error -y \
+              -i "/tmp/cantoria/stems/Cantoria_VBP_\${V}.wav" \
+              -map_metadata -1 \
+              -c:a libmp3lame -b:a 160k -ar 44100 \
+              "medioevo/audio/polyphony/Cantoria_VBP_\${V}.mp3"
+          done
+          ls -lh medioevo/audio/polyphony
+
+      - name: Add attribution
+        run: |
+          cat > medioevo/audio/polyphony/README.md <<'EOF'
+          # Cantoría Dataset — Virgen bendita sin par
+
+          Four synchronized vocal stems used by the educational polyphony mixer:
+          Tenor (T), Bass (B), Alto (A), Soprano/Cantus (S).
+
+          Source: Cantoría Dataset, Helena Cuesta and Emilia Gómez,
+          Music Technology Group, Universitat Pompeu Fabra.
+          https://zenodo.org/records/5878677
+
+          Piece: Pedro de Escobar, "Virgen bendita sin par".
+          Dataset license: CC BY 4.0.
+
+          These MP3 files are transcoded from the original WAV stems
+          without trimming, so synchronization between voices is preserved.
+          EOF
+
+      - name: Commit stems
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add medioevo/audio/polyphony
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git commit -m "Medioevo: importa le quattro tracce Cantoría per il mixer"
+          git push
