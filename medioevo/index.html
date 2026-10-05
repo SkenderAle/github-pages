@@ -6,7 +6,7 @@
 <title>Medioevo musicale · Una voce contro il tempo</title>
 <meta name="description" content="Un percorso narrativo e interattivo nella musica medievale: voce, memoria, liturgia, notazione, Guido d'Arezzo, polifonia, viaggio e trasformazione.">
 <meta name="author" content="Alessandro Zilli">
-<link rel="stylesheet" href="style.css?v=20261005-2025">
+<link rel="stylesheet" href="style.css?v=20261005-2105">
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -82,7 +82,7 @@
           <div class="roots-date">I millennio a.C. → 70 d.C.</div>
           <b>Tempio</b>
           <span>Gerusalemme · culto anche strumentale</span>
-          <p>Sacerdoti, Leviti, Salmi, trombe, cimbali e cordofoni. Del Tempio non possediamo naturalmente alcuna registrazione: qui costruiamo un <strong>paesaggio sonoro didattico</strong> nel quale puoi cambiare in tempo reale il peso dei diversi elementi ricordati dalle fonti.</p>
+          <p>Sacerdoti, Leviti, Salmi, trombe, cimbali e cordofoni. Del Tempio non possediamo naturalmente alcuna registrazione: qui costruiamo un <strong>paesaggio sonoro didattico con registrazioni reali</strong>, usate come riferimenti timbrici moderni e mescolabili in tempo reale.</p>
           <button type="button" class="roots-audio roots-audio-synth"
                   data-root-synth="temple"
                   data-root-title="Tempio · mixer sonoro didattico"
@@ -133,22 +133,22 @@
 
         <div class="temple-mixer-channels">
           <label>
-            <span><b>Trombe</b><small>sacerdoti · segnali rituali</small></span>
+            <span><b>Fiati rituali</b><small>campione reale di shofar · riferimento timbrico</small></span>
             <input type="range" min="0" max="100" value="68" data-temple-channel="trumpets" aria-label="Volume trombe">
             <output>68</output>
           </label>
           <label>
-            <span><b>Cordofoni</b><small>Leviti · trama sonora</small></span>
+            <span><b>Cordofoni</b><small>campione reale di arpa · riferimento timbrico</small></span>
             <input type="range" min="0" max="100" value="52" data-temple-channel="strings" aria-label="Volume cordofoni">
             <output>52</output>
           </label>
           <label>
-            <span><b>Cimbali</b><small>accenti e scansione rituale</small></span>
+            <span><b>Cimbali</b><small>campione reale · percussione metallica</small></span>
             <input type="range" min="0" max="100" value="28" data-temple-channel="cymbals" aria-label="Volume cimbali">
             <output>28</output>
           </label>
           <label>
-            <span><b>Assemblea</b><small>presenza umana · risposta lontana</small></span>
+            <span><b>Assemblea</b><small>ambiente umano reale · filtrato e lontano</small></span>
             <input type="range" min="0" max="100" value="20" data-temple-channel="assembly" aria-label="Volume assemblea">
             <output>20</output>
           </label>
@@ -166,7 +166,14 @@
 
         <div class="temple-mixer-foot">
           <strong id="templeMixerState">Generatore fermo.</strong>
-          <span>Il modello usa sintesi Web Audio e varia leggermente a ogni esecuzione. Nessun campione pretende di riprodurre il suono storico reale.</span>
+          <span>I quattro canali usano registrazioni reali in loop con un rapido fade in e fade out. Sono riferimenti timbrici moderni, non una ricostruzione filologica del suono del Tempio.</span>
+        </div>
+        <div class="temple-mixer-sources">
+          <strong>Campioni audio</strong>
+          <a href="https://commons.wikimedia.org/wiki/File:The_National_Library_of_Israel_-_Shofar_Prayer,_Ashkenazi_version_-_1785188_SHOFAR78.ogg" target="_blank" rel="noopener">shofar · National Library of Israel ↗</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Gliss.ogg" target="_blank" rel="noopener">arpa · Daniel Musiklexikon ↗</a>
+          <a href="https://commons.wikimedia.org/wiki/File:More_cymbal_sounds.ogg" target="_blank" rel="noopener">cimbali · PDSounds ↗</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Restaurant_ambience.ogg" target="_blank" rel="noopener">presenza umana · PDSounds ↗</a>
         </div>
       </div>
 
@@ -2180,6 +2187,6 @@
   </footer>
 </div>
 
-<script src="script.js?v=20261005-2025"></script>
+<script src="script.js?v=20261005-2105"></script>
 </body>
 </html>
