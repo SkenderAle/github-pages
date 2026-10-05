@@ -1389,123 +1389,12 @@ if(jewishIconDialog){
   const soloBtns=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-solo="'+id+'"]')]));
   const meterBars=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-voice="'+id+'"] .poly-meter i')]));
 
-  const ZIP_URL='https://zenodo.org/records/5851070/files/CantoriaDataset_v1.0.0.zip?download=1';
-  const ZIP_SIZE=861278442;
-  const STEM_PATHS={
-    T:'CantoriaDataset_v1.0.0/Audio/Cantoria_VBP_T.wav',
-    B:'CantoriaDataset_v1.0.0/Audio/Cantoria_VBP_B.wav',
-    A:'CantoriaDataset_v1.0.0/Audio/Cantoria_VBP_A.wav',
-    S:'CantoriaDataset_v1.0.0/Audio/Cantoria_VBP_S.wav'
+  const LOCAL_STEMS={
+    T:'audio/polyphony/Cantoria_VBP_T.mp3',
+    B:'audio/polyphony/Cantoria_VBP_B.mp3',
+    A:'audio/polyphony/Cantoria_VBP_A.mp3',
+    S:'audio/polyphony/Cantoria_VBP_S.mp3'
   };
-
-  let ctx=null;
-  let graph=null;
-  let buffers={};
-  let directoryPromise=null;
-  let loadPromise=null;
-  let sources={};
-  let duration=0;
-  let playing=false;
-  let offset=0;
-  let startedAt=0;
-  let raf=null;
-  let stoppingSources=false;
-  let recorder=null;
-  let recChunks=[];
-  let recordedBlob=null;
-  let recordedUrl='';
-  let recordedAudio=null;
-  const state=Object.fromEntries(voiceIds.map(id=>[id,{mute:false,solo:false}]));
-  const meterData={};
-
-  function setStatus(html,klass=''){
-    status.className='poly-status'+(klass?' '+klass:'');
-    status.innerHTML=html;
-  }
-
-  function fmt(sec){
-    const s=Math.max(0,Math.floor(Number(sec)||0));
-    return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
-  }
-
-  async function fetchRange(start,end){
-    const res=await fetch(ZIP_URL,{
-      headers:{Range:'bytes='+start+'-'+end},
-      cache:'force-cache',
-      mode:'cors'
-    });
-    if(res.status!==206){
-      try{await res.body?.cancel();}catch(e){}
-      throw new Error('Il server non ha accettato il caricamento parziale del dataset.');
-    }
-    return new Uint8Array(await res.arrayBuffer());
-  }
-
-  function findEOCD(bytes){
-    for(let i=bytes.length-22;i>=0;i--){
-      if(bytes[i]===0x50&&bytes[i+1]===0x4b&&bytes[i+2]===0x05&&bytes[i+3]===0x06)return i;
-    }
-    return -1;
-  }
-
-  async function readZipDirectory(){
-    if(directoryPromise)return directoryPromise;
-    directoryPromise=(async()=>{
-      const tailSize=Math.min(160*1024,ZIP_SIZE);
-      const tailStart=ZIP_SIZE-tailSize;
-      const tail=await fetchRange(tailStart,ZIP_SIZE-1);
-      const eocd=findEOCD(tail);
-      if(eocd<0)throw new Error('Indice ZIP non trovato.');
-      const view=new DataView(tail.buffer,tail.byteOffset,tail.byteLength);
-      const centralSize=view.getUint32(eocd+12,true);
-      const centralOffset=view.getUint32(eocd+16,true);
-      const central=await fetchRange(centralOffset,centralOffset+centralSize-1);
-      const cv=new DataView(central.buffer,central.byteOffset,central.byteLength);
-      const decoder=new TextDecoder('utf-8');
-      const entries={};
-      let p=0;
-      while(p+46<=central.length){
-        if(cv.getUint32(p,true)!==0x02014b50)break;
-        const flags=cv.getUint16(p+8,true);
-        const method=cv.getUint16(p+10,true);
-        const compressedSize=cv.getUint32(p+20,true);
-        const uncompressedSize=cv.getUint32(p+24,true);
-        const nameLen=cv.getUint16(p+28,true);
-        const extraLen=cv.getUint16(p+30,true);
-        const commentLen=cv.getUint16(p+32,true);
-        const localOffset=cv.getUint32(p+42,true);
-        const name=decoder.decode(central.subarray(p+46,p+46+nameLen));
-        entries[name]={name,flags,method,compressedSize,uncompressedSize,localOffset};
-        p+=46+nameLen+extraLen+commentLen;
-      }
-      return entries;
-    })();
-    return directoryPromise;
-  }
-
-  async function inflateZipMember(entry){
-    if(!entry)throw new Error('Traccia non trovata nell’archivio.');
-    if(entry.flags&1)throw new Error('Traccia ZIP cifrata.');
-    const local=await fetchRange(entry.localOffset,entry.localOffset+29);
-    const lv=new DataView(local.buffer,local.byteOffset,local.byteLength);
-    if(lv.getUint32(0,true)!==0x04034b50)throw new Error('Header della traccia non valido.');
-    const nameLen=lv.getUint16(26,true);
-    const extraLen=lv.getUint16(28,true);
-    const dataStart=entry.localOffset+30+nameLen+extraLen;
-    const packed=await fetchRange(dataStart,dataStart+entry.compressedSize-1);
-
-    if(entry.method===0)return packed;
-    if(entry.method!==8)throw new Error('Compressione ZIP non supportata: '+entry.method+'.');
-    if(typeof DecompressionStream==='undefined')throw new Error('Questo browser non supporta la decompressione necessaria.');
-
-    let stream;
-    try{
-      stream=new Blob([packed]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
-    }catch(e){
-      throw new Error('Impossibile decomprimere la traccia nel browser.');
-    }
-    return new Uint8Array(await new Response(stream).arrayBuffer());
-  }
 
   function ensureContext(){
     if(ctx)return ctx;
@@ -1581,27 +1470,24 @@ if(jewishIconDialog){
     if(loadPromise)return loadPromise;
     loadPromise=(async()=>{
       const ac=ensureContext();
-      setStatus('<strong>Caricamento multitraccia…</strong> Leggo l’indice del dataset senza scaricare l’archivio completo.');
-      const entries=await readZipDirectory();
+      setStatus('<strong>Caricamento multitraccia…</strong> Le quattro voci arrivano direttamente dal nostro sito.');
       const decoded={};
       for(let i=0;i<voiceIds.length;i++){
         const id=voiceIds[i];
-        const entry=entries[STEM_PATHS[id]];
-        if(!entry)throw new Error('Non trovo la traccia '+voiceLabels[id]+' nel dataset.');
-        const approx=Math.max(1,Math.round(entry.compressedSize/1024/1024));
-        setStatus('<strong>Carico '+(i+1)+'/4 · '+voiceLabels[id]+'</strong> circa '+approx+' MB dal dataset Cantoría.');
-        const wav=await inflateZipMember(entry);
-        const ab=wav.buffer.slice(wav.byteOffset,wav.byteOffset+wav.byteLength);
+        setStatus('<strong>Carico '+(i+1)+'/4 · '+voiceLabels[id]+'</strong> dal repository locale.');
+        const res=await fetch(LOCAL_STEMS[id],{cache:'force-cache'});
+        if(!res.ok)throw new Error('La traccia '+voiceLabels[id]+' non è disponibile ('+res.status+').');
+        const ab=await res.arrayBuffer();
         decoded[id]=await ac.decodeAudioData(ab);
       }
       buffers=decoded;
       duration=Math.min(...voiceIds.map(id=>buffers[id].duration));
       seek.disabled=false;
       timeEl.textContent='0:00 / '+fmt(duration);
-      setStatus('<strong>Multitraccia pronta.</strong> Muovi i quattro fader, usa M e S per mute e solo, oppure premi REC e costruisci un tuo mix.');
+      setStatus('<strong>Multitraccia pronta.</strong> Le quattro voci sono state caricate dal repository. Muovi i fader, usa M e S per mute e solo, oppure premi REC e costruisci il tuo mix.');
     })().catch(err=>{
       loadPromise=null;
-      setStatus('<strong>Non riesco a caricare le quattro tracce.</strong> '+err.message+' <a href="https://zenodo.org/records/5878677" target="_blank" rel="noopener">Apri il dataset ↗</a>','error');
+      setStatus('<strong>Non riesco a caricare le quattro tracce locali.</strong> '+err.message,'error');
       throw err;
     });
     return loadPromise;
