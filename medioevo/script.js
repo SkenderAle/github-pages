@@ -973,3 +973,193 @@ galleryAudio.addEventListener('error',()=>{
   resetGallerySoundButton();
   if(gallerySoundStatus)gallerySoundStatus.textContent='La fonte audio esterna non è disponibile in questo momento.';
 });
+
+
+// Prologo 00: tre porte sonore e paesaggio didattico del Tempio
+const rootsAudioButtons=[...document.querySelectorAll('.roots-audio')];
+const rootsAudioStatus=document.getElementById('rootsAudioStatus');
+const rootsMediaAudio=new Audio();
+rootsMediaAudio.preload='none';
+let activeRootsButton=null;
+let rootsStopTimer=null;
+let rootsFadeTimer=null;
+let rootsTempleCtx=null;
+
+function clearRootsTimers(){
+  if(rootsStopTimer)clearTimeout(rootsStopTimer);
+  if(rootsFadeTimer)clearInterval(rootsFadeTimer);
+  rootsStopTimer=null;
+  rootsFadeTimer=null;
+}
+function resetRootsButton(){
+  if(activeRootsButton){
+    activeRootsButton.classList.remove('playing','loading');
+    activeRootsButton.textContent=activeRootsButton.dataset.originalLabel||activeRootsButton.textContent;
+  }
+  activeRootsButton=null;
+}
+function stopTempleSound(){
+  if(rootsTempleCtx){
+    try{rootsTempleCtx.close();}catch(e){}
+    rootsTempleCtx=null;
+  }
+}
+function stopRootsAudio(message=''){
+  clearRootsTimers();
+  try{rootsMediaAudio.pause();rootsMediaAudio.currentTime=0;rootsMediaAudio.volume=1;}catch(e){}
+  stopTempleSound();
+  resetRootsButton();
+  if(message&&rootsAudioStatus)rootsAudioStatus.innerHTML=message;
+}
+function fadeRootsAudio(seconds=4){
+  let step=0;
+  const steps=20;
+  if(rootsFadeTimer)clearInterval(rootsFadeTimer);
+  rootsFadeTimer=setInterval(()=>{
+    step++;
+    rootsMediaAudio.volume=Math.max(0,1-step/steps);
+    if(step>=steps){clearInterval(rootsFadeTimer);rootsFadeTimer=null;}
+  },seconds*1000/steps);
+}
+
+function playTempleSound(btn){
+  stopRootsAudio();
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx){
+    if(rootsAudioStatus)rootsAudioStatus.textContent='Questo browser non rende disponibile il motore audio.';
+    return;
+  }
+  const ctx=new AudioCtx();
+  rootsTempleCtx=ctx;
+  activeRootsButton=btn;
+  btn.classList.add('playing');
+  btn.textContent='■ Ferma';
+
+  const master=ctx.createGain();
+  master.gain.setValueAtTime(.42,ctx.currentTime);
+  master.gain.setValueAtTime(.42,ctx.currentTime+11.5);
+  master.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+15);
+  master.connect(ctx.destination);
+
+  function trumpet(freq,when,dur=.9){
+    const osc1=ctx.createOscillator();
+    const osc2=ctx.createOscillator();
+    const mix=ctx.createGain();
+    const lp=ctx.createBiquadFilter();
+    const env=ctx.createGain();
+    osc1.type='sawtooth'; osc2.type='triangle';
+    osc1.frequency.value=freq; osc2.frequency.value=freq*1.003;
+    mix.gain.value=.28;
+    lp.type='lowpass'; lp.frequency.value=1300; lp.Q.value=.7;
+    env.gain.setValueAtTime(.0001,when);
+    env.gain.exponentialRampToValueAtTime(.5,when+.05);
+    env.gain.setValueAtTime(.45,when+dur*.55);
+    env.gain.exponentialRampToValueAtTime(.0001,when+dur);
+    osc1.connect(mix);osc2.connect(mix);mix.connect(lp);lp.connect(env);env.connect(master);
+    osc1.start(when);osc2.start(when);osc1.stop(when+dur+.05);osc2.stop(when+dur+.05);
+  }
+  function pluck(freq,when){
+    const osc=ctx.createOscillator();
+    const env=ctx.createGain();
+    const lp=ctx.createBiquadFilter();
+    osc.type='triangle';osc.frequency.value=freq;
+    lp.type='lowpass';lp.frequency.value=1600;
+    env.gain.setValueAtTime(.26,when);
+    env.gain.exponentialRampToValueAtTime(.0001,when+.55);
+    osc.connect(lp);lp.connect(env);env.connect(master);
+    osc.start(when);osc.stop(when+.6);
+  }
+  function cymbal(when){
+    const dur=.65;
+    const buffer=ctx.createBuffer(1,Math.floor(ctx.sampleRate*dur),ctx.sampleRate);
+    const data=buffer.getChannelData(0);
+    for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/data.length,2.2);
+    const src=ctx.createBufferSource();src.buffer=buffer;
+    const hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=3800;
+    const g=ctx.createGain();g.gain.value=.13;
+    src.connect(hp);hp.connect(g);g.connect(master);src.start(when);
+  }
+
+  const t=ctx.currentTime+.03;
+  [0,3.6,7.5,11.2].forEach((x,i)=>trumpet([196,220,196,246.94][i],t+x,1.05));
+  const scale=[146.83,164.81,196,220,196,164.81,146.83];
+  for(let i=0;i<22;i++)pluck(scale[i%scale.length],t+.35+i*.58);
+  [2.9,6.6,10.3,13.1].forEach(x=>cymbal(t+x));
+
+  if(rootsAudioStatus)rootsAudioStatus.innerHTML='<strong>Tempio · paesaggio sonoro didattico.</strong> Trombe, corde e cimbali sono evocati sinteticamente a partire dalle fonti: non è una ricostruzione filologica del suono antico.';
+  rootsStopTimer=setTimeout(()=>{
+    stopTempleSound();
+    resetRootsButton();
+    if(rootsAudioStatus)rootsAudioStatus.innerHTML='<strong>Fine della ricostruzione.</strong> Passa alla sinagoga per ascoltare una tradizione vocale vivente.';
+  },15300);
+}
+
+rootsAudioButtons.forEach(btn=>{
+  btn.dataset.originalLabel=btn.textContent;
+  btn.addEventListener('click',async()=>{
+    if(activeRootsButton===btn){
+      stopRootsAudio('<strong>Ascolto fermato.</strong>');
+      return;
+    }
+    if(btn.dataset.rootSynth==='temple'){
+      playTempleSound(btn);
+      return;
+    }
+
+    stopRootsAudio();
+    activeRootsButton=btn;
+    btn.classList.add('loading');
+    btn.textContent='… carico';
+    try{
+      rootsMediaAudio.src=btn.dataset.rootAudio;
+      rootsMediaAudio.volume=1;
+      await rootsMediaAudio.play();
+      btn.classList.remove('loading');
+      btn.classList.add('playing');
+      btn.textContent='■ Ferma';
+      if(rootsAudioStatus)rootsAudioStatus.innerHTML='<strong>'+btn.dataset.rootTitle+'</strong> · '+(btn.dataset.rootNote||'');
+      rootsStopTimer=setTimeout(()=>fadeRootsAudio(4),16000);
+      setTimeout(()=>{
+        if(activeRootsButton===btn){
+          stopRootsAudio('<strong>Fine dell’ascolto.</strong> '+btn.dataset.rootTitle+'.');
+        }
+      },20250);
+    }catch(e){
+      btn.classList.remove('loading','playing');
+      btn.textContent=btn.dataset.originalLabel;
+      activeRootsButton=null;
+      if(rootsAudioStatus)rootsAudioStatus.innerHTML='<strong>Il campione non è partito.</strong> La fonte esterna potrebbe essere momentaneamente bloccata dal browser.';
+    }
+  });
+});
+rootsMediaAudio.addEventListener('ended',()=>{
+  if(activeRootsButton){
+    const title=activeRootsButton.dataset.rootTitle||'ascolto';
+    stopRootsAudio('<strong>Fine dell’ascolto.</strong> '+title+'.');
+  }
+});
+
+// Prologo 00: lightbox delle fonti figurative ebraiche
+const jewishIconButtons=[...document.querySelectorAll('.jewish-icon-image')];
+const jewishIconDialog=document.getElementById('jewishIconDialog');
+const jewishIconClose=document.getElementById('jewishIconClose');
+const jewishIconDialogImage=document.getElementById('jewishIconDialogImage');
+const jewishIconDialogTitle=document.getElementById('jewishIconDialogTitle');
+const jewishIconDialogCaption=document.getElementById('jewishIconDialogCaption');
+
+jewishIconButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(!jewishIconDialog)return;
+    if(jewishIconDialogImage){
+      jewishIconDialogImage.src=btn.dataset.jewishLarge||btn.querySelector('img')?.src||'';
+      jewishIconDialogImage.alt=btn.querySelector('img')?.alt||'';
+    }
+    if(jewishIconDialogTitle)jewishIconDialogTitle.textContent=btn.dataset.jewishTitle||'';
+    if(jewishIconDialogCaption)jewishIconDialogCaption.textContent=btn.dataset.jewishCaption||'';
+    if(typeof jewishIconDialog.showModal==='function')jewishIconDialog.showModal();
+  });
+});
+if(jewishIconClose)jewishIconClose.addEventListener('click',()=>jewishIconDialog?.close());
+if(jewishIconDialog){
+  jewishIconDialog.addEventListener('click',e=>{if(e.target===jewishIconDialog)jewishIconDialog.close();});
+}
