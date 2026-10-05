@@ -1306,7 +1306,7 @@ templeMixerSliders.forEach(slider=>{
 templeMixerPresets.forEach(btn=>{
   btn.addEventListener('click',()=>{
     const presets={
-      balanced:{trumpets:68,strings:52,cymbals:28,assembly:20,space:46,master:72},
+      balanced:{trumpets:14,strings:41,cymbals:13,assembly:100,space:100,master:72},
       priests:{trumpets:92,strings:26,cymbals:42,assembly:12,space:58,master:70},
       levites:{trumpets:24,strings:88,cymbals:48,assembly:24,space:54,master:72},
       quiet:{trumpets:12,strings:18,cymbals:5,assembly:10,space:66,master:50}
