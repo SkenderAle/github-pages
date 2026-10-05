@@ -117,3 +117,19 @@ document.querySelectorAll('[data-word]').forEach(btn=>{
     wordStage.textContent=txt;
   });
 });
+
+const massFrame=document.getElementById('massFrame');
+const massButtons=[...document.querySelectorAll('[data-mass-start]')];
+const massNow=document.getElementById('massNow');
+const massNames={1671:'Kyrie',1771:'Gloria',1989:'Credo',2270:'Sanctus',2375:'Agnus Dei'};
+if(massFrame&&massButtons.length){
+  massButtons[0].classList.add('active');
+  massButtons.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const start=btn.dataset.massStart;
+      massFrame.src='https://www.youtube-nocookie.com/embed/6iQD0Vuy-W8?start='+start+'&autoplay=1';
+      massButtons.forEach(b=>b.classList.toggle('active',b===btn));
+      if(massNow)massNow.textContent='Selezionato: '+massNames[start]+'.';
+    });
+  });
+}
