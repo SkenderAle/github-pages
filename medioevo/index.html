@@ -6,7 +6,7 @@
 <title>Medioevo musicale · Una voce contro il tempo</title>
 <meta name="description" content="Un percorso narrativo e interattivo nella musica medievale: voce, memoria, liturgia, notazione, Guido d'Arezzo, polifonia, viaggio e trasformazione.">
 <meta name="author" content="Alessandro Zilli">
-<link rel="stylesheet" href="style.css?v=20261005-1616">
+<link rel="stylesheet" href="style.css?v=20261005-1710">
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -1140,6 +1140,145 @@
         <div><b>5 · Che cosa resta ipotesi?</b><span>il suono ricostruito non è mai contenuto interamente nell'immagine</span></div>
       </div>
 
+      <h3>Un viaggio per immagini: la musica scolpita, dipinta, vetrata</h3>
+
+      <div class="theory-essay">
+        <p>Prima di entrare nel dettaglio del Pórtico de la Gloria, possiamo fare un piccolo viaggio europeo. Non è una raccolta di “belle immagini”, ma una <strong>galleria di fonti</strong>: scorrendo da una chiesa all'altra cambiano secolo, tecnica, contesto e strumenti. Su cellulare puoi trascinare la galleria con il dito; toccando un'immagine la apri a pieno schermo.</p>
+      </div>
+
+      <div class="medieval-gallery" id="medievalIconGallery">
+        <div class="medieval-gallery-head">
+          <div>
+            <span class="lab-kicker">Galleria interattiva · iconografia medievale</span>
+            <b>Sei soste nell'Europa che suona</b>
+          </div>
+          <div class="medieval-gallery-controls">
+            <button type="button" id="medievalGalleryPrev" aria-label="Immagine precedente">←</button>
+            <span id="medievalGalleryCount">01 / 06</span>
+            <button type="button" id="medievalGalleryNext" aria-label="Immagine successiva">→</button>
+          </div>
+        </div>
+
+        <div class="medieval-gallery-track" id="medievalGalleryTrack" tabindex="0" aria-label="Galleria di iconografia musicale medievale">
+          <article class="medieval-gallery-card" data-gallery-index="0"
+                   data-large="https://upload.wikimedia.org/wikipedia/commons/2/27/Organistrumsantiago20060414.png"
+                   data-title="Santiago de Compostela · Pórtico de la Gloria"
+                   data-caption="XII secolo · Due anziani dell'Apocalisse azionano l'organistrum. La ruota produce un suono continuo mentre il secondo esecutore interviene sulle tangenti.">
+            <button type="button" class="medieval-gallery-image" aria-label="Ingrandisci il Pórtico de la Gloria">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/2/27/Organistrumsantiago20060414.png" alt="Organistrum scolpito nel Pórtico de la Gloria della cattedrale di Santiago de Compostela">
+              <span>Apri la fonte</span>
+            </button>
+            <div class="medieval-gallery-caption">
+              <div class="gallery-place">Santiago de Compostela · Spagna</div>
+              <h4>Pórtico de la Gloria</h4>
+              <p><strong>1168–1188 circa · scultura.</strong> Due anziani dell'Apocalisse suonano l'<strong>organistrum</strong>: una delle testimonianze più celebri del grande cordofono a ruota medievale.</p>
+              <a href="https://commons.wikimedia.org/wiki/File:Organistrumsantiago20060414.png" target="_blank" rel="noopener">Fonte e licenza ↗</a>
+            </div>
+          </article>
+
+          <article class="medieval-gallery-card" data-gallery-index="1"
+                   data-large="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Moissac-07-Saint-Pierre-Tympanon-Musiker-2001-gje.jpg/1280px-Moissac-07-Saint-Pierre-Tympanon-Musiker-2001-gje.jpg"
+                   data-title="Moissac · Abbazia di Saint-Pierre"
+                   data-caption="1115–1130 circa · Portale sud. I ventiquattro anziani dell'Apocalisse reggono calici e strumenti: la musica appartiene alla visione celeste del timpano.">
+            <button type="button" class="medieval-gallery-image" aria-label="Ingrandisci i musicisti di Moissac">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Moissac-07-Saint-Pierre-Tympanon-Musiker-2001-gje.jpg/1280px-Moissac-07-Saint-Pierre-Tympanon-Musiker-2001-gje.jpg" alt="Anziani musicisti scolpiti nel timpano di Saint-Pierre a Moissac">
+              <span>Apri la fonte</span>
+            </button>
+            <div class="medieval-gallery-caption">
+              <div class="gallery-place">Moissac · Francia</div>
+              <h4>Abbazia di Saint-Pierre</h4>
+              <p><strong>1115–1130 circa · scultura romanica.</strong> Gli anziani dell'Apocalisse portano piccoli <strong>cordofoni</strong> insieme ai calici: non una scena di concerto, ma musica trasformata in immagine teologica.</p>
+              <a href="https://commons.wikimedia.org/wiki/File:Moissac-07-Saint-Pierre-Tympanon-Musiker-2001-gje.jpg" target="_blank" rel="noopener">Fonte e licenza ↗</a>
+            </div>
+          </article>
+
+          <article class="medieval-gallery-card" data-gallery-index="2"
+                   data-large="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/El_rey_David_y_los_M%C3%BAsicos%2C_Catedral_de_San_Pedro_de_Jaca.jpg/960px-El_rey_David_y_los_M%C3%BAsicos%2C_Catedral_de_San_Pedro_de_Jaca.jpg"
+                   data-title="Jaca · Cattedrale di San Pedro"
+                   data-caption="XII secolo · Re David e undici musicisti. Nel capitello compaiono, fra gli altri, una fidula e un salterio: un piccolo catalogo scolpito di strumenti medievali.">
+            <button type="button" class="medieval-gallery-image" aria-label="Ingrandisci il capitello di Jaca">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/El_rey_David_y_los_M%C3%BAsicos%2C_Catedral_de_San_Pedro_de_Jaca.jpg/960px-El_rey_David_y_los_M%C3%BAsicos%2C_Catedral_de_San_Pedro_de_Jaca.jpg" alt="Capitello romanico con re David e musicisti nella cattedrale di Jaca">
+              <span>Apri la fonte</span>
+            </button>
+            <div class="medieval-gallery-caption">
+              <div class="gallery-place">Jaca · Aragona, Spagna</div>
+              <h4>Re David e i musicisti</h4>
+              <p><strong>XII secolo · capitello romanico.</strong> David è circondato da undici musicisti. Fra gli strumenti riconoscibili compaiono <strong>fidula e salterio</strong>, inseriti nella genealogia biblica della musica.</p>
+              <a href="https://commons.wikimedia.org/wiki/File:El_rey_David_y_los_M%C3%BAsicos,_Catedral_de_San_Pedro_de_Jaca.jpg" target="_blank" rel="noopener">Fonte e licenza ↗</a>
+            </div>
+          </article>
+
+          <article class="medieval-gallery-card" data-gallery-index="3"
+                   data-large="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Cathedrale_Sainte-Marie_Oloron_portail_avaleur.jpg/1280px-Cathedrale_Sainte-Marie_Oloron_portail_avaleur.jpg"
+                   data-title="Oloron-Sainte-Marie · Portale romanico"
+                   data-caption="XII secolo · Due dei ventiquattro anziani dell'Apocalisse tengono strumenti a corda. Il portale mostra come lo stesso tema biblico viaggi e cambi lungo le vie di pellegrinaggio.">
+            <button type="button" class="medieval-gallery-image" aria-label="Ingrandisci il portale di Oloron">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Cathedrale_Sainte-Marie_Oloron_portail_avaleur.jpg/1280px-Cathedrale_Sainte-Marie_Oloron_portail_avaleur.jpg" alt="Dettaglio del portale romanico della cattedrale di Oloron con anziani musicisti">
+              <span>Apri la fonte</span>
+            </button>
+            <div class="medieval-gallery-caption">
+              <div class="gallery-place">Oloron-Sainte-Marie · Francia</div>
+              <h4>I Vecchi dell'Apocalisse</h4>
+              <p><strong>XII secolo · portale romanico.</strong> Due dei ventiquattro anziani reggono <strong>strumenti a corda</strong>. Lo stesso soggetto incontrato a Moissac e Santiago assume qui un'altra forma.</p>
+              <a href="https://commons.wikimedia.org/wiki/File:Cathedrale_Sainte-Marie_Oloron_portail_avaleur.jpg" target="_blank" rel="noopener">Fonte e licenza ↗</a>
+            </div>
+          </article>
+
+          <article class="medieval-gallery-card" data-gallery-index="4"
+                   data-large="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Vitrail_Grande_rose_Ouest_Reims_020208_3.jpg/960px-Vitrail_Grande_rose_Ouest_Reims_020208_3.jpg"
+                   data-title="Reims · Notre-Dame"
+                   data-caption="XIII secolo · Angeli musicanti nella grande rosa occidentale. Fra le figure si riconoscono strumenti ad arco e a fiato, tra cui ribeca e cornetto.">
+            <button type="button" class="medieval-gallery-image" aria-label="Ingrandisci la vetrata di Reims">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Vitrail_Grande_rose_Ouest_Reims_020208_3.jpg/960px-Vitrail_Grande_rose_Ouest_Reims_020208_3.jpg" alt="Angeli musicanti nella grande rosa occidentale della cattedrale di Reims">
+              <span>Apri la fonte</span>
+            </button>
+            <div class="medieval-gallery-caption">
+              <div class="gallery-place">Reims · Francia</div>
+              <h4>Angeli nella rosa occidentale</h4>
+              <p><strong>XIII secolo · vetrata.</strong> Qui l'iconografia musicale cambia materiale e luce: gli angeli suonano strumenti fra cui <strong>ribeca e cornetto</strong>.</p>
+              <a href="https://commons.wikimedia.org/wiki/File:Vitrail_Grande_rose_Ouest_Reims_020208_3.jpg" target="_blank" rel="noopener">Fonte e licenza ↗</a>
+            </div>
+          </article>
+
+          <article class="medieval-gallery-card" data-gallery-index="5"
+                   data-large="https://upload.wikimedia.org/wikipedia/commons/6/6e/Medieval_musician_playing_gittern.jpg"
+                   data-title="Pamplona · Cattedrale di Santa María"
+                   data-caption="1330–1335 circa · Pittura murale di Juan Oliver, originariamente nel complesso della cattedrale e oggi al Museo di Navarra. Il musicista suona una gittern, piccolo cordofono pizzicato.">
+            <button type="button" class="medieval-gallery-image" aria-label="Ingrandisci il musicista di Pamplona">
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Medieval_musician_playing_gittern.jpg" alt="Musicista medievale con gittern in una pittura di Juan Oliver proveniente dalla cattedrale di Pamplona">
+              <span>Apri la fonte</span>
+            </button>
+            <div class="medieval-gallery-caption">
+              <div class="gallery-place">Pamplona · Navarra, Spagna</div>
+              <h4>Juan Oliver · musicista con gittern</h4>
+              <p><strong>1330–1335 circa · pittura murale.</strong> Un <strong>cordofono pizzicato</strong> entra nella pittura monumentale. L'opera proviene dalla cattedrale di Pamplona ed è oggi conservata nel Museo di Navarra.</p>
+              <a href="https://commons.wikimedia.org/wiki/File:Medieval_musician_playing_gittern.jpg" target="_blank" rel="noopener">Fonte e licenza ↗</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="medieval-gallery-dots" id="medievalGalleryDots" aria-label="Scegli una tappa">
+          <button type="button" class="active" data-gallery-go="0" aria-label="Santiago"></button>
+          <button type="button" data-gallery-go="1" aria-label="Moissac"></button>
+          <button type="button" data-gallery-go="2" aria-label="Jaca"></button>
+          <button type="button" data-gallery-go="3" aria-label="Oloron"></button>
+          <button type="button" data-gallery-go="4" aria-label="Reims"></button>
+          <button type="button" data-gallery-go="5" aria-label="Pamplona"></button>
+        </div>
+      </div>
+
+      <dialog class="medieval-gallery-dialog" id="medievalGalleryDialog">
+        <button type="button" class="gallery-dialog-close" id="medievalGalleryClose" aria-label="Chiudi">×</button>
+        <img id="medievalGalleryDialogImage" alt="">
+        <div class="gallery-dialog-copy">
+          <span id="medievalGalleryDialogIndex">01 / 06</span>
+          <h4 id="medievalGalleryDialogTitle"></h4>
+          <p id="medievalGalleryDialogCaption"></p>
+        </div>
+        <button type="button" class="gallery-dialog-prev" id="medievalDialogPrev" aria-label="Immagine precedente">←</button>
+        <button type="button" class="gallery-dialog-next" id="medievalDialogNext" aria-label="Immagine successiva">→</button>
+      </dialog>
+
       <h3>Il Pórtico de la Gloria: l'Apocalisse vestita di strumenti del XII secolo</h3>
 
       <div class="theory-essay">
@@ -1508,6 +1647,6 @@
   </footer>
 </div>
 
-<script src="script.js?v=20261005-1616"></script>
+<script src="script.js?v=20261005-1710"></script>
 </body>
 </html>
