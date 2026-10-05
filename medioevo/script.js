@@ -1357,3 +1357,613 @@ if(jewishIconClose)jewishIconClose.addEventListener('click',()=>jewishIconDialog
 if(jewishIconDialog){
   jewishIconDialog.addEventListener('click',e=>{if(e.target===jewishIconDialog)jewishIconDialog.close();});
 }
+
+
+// Laboratorio polifonia: mixer multitraccia Cantoría
+(()=>{
+  const root=document.getElementById('polyMixer');
+  if(!root)return;
+
+  const playBtn=document.getElementById('polyPlay');
+  const stopBtn=document.getElementById('polyStop');
+  const recBtn=document.getElementById('polyRec');
+  const recPlayBtn=document.getElementById('polyRecPlay');
+  const downloadBtn=document.getElementById('polyDownload');
+  const resetBtn=document.getElementById('polyReset');
+  const seek=document.getElementById('polySeek');
+  const timeEl=document.getElementById('polyTime');
+  const status=document.getElementById('polyStatus');
+  const reverb=document.getElementById('polyReverb');
+  const reverbOut=document.getElementById('polyReverbOut');
+  const master=document.getElementById('polyMaster');
+  const masterOut=document.getElementById('polyMasterOut');
+  const low=document.getElementById('polyLow');
+  const mid=document.getElementById('polyMid');
+  const high=document.getElementById('polyHigh');
+
+  const voiceIds=['T','B','A','S'];
+  const voiceLabels={T:'Tenor',B:'Bassus',A:'Altus',S:'Cantus'};
+  const gainInputs=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-gain="'+id+'"]')]));
+  const gainOutputs=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-output="'+id+'"]')]));
+  const muteBtns=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-mute="'+id+'"]')]));
+  const soloBtns=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-solo="'+id+'"]')]));
+  const meterBars=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-voice="'+id+'"] .poly-meter i')]));
+
+  const ZIP_URL='https://zenodo.org/records/5851070/files/CantoriaDataset_v1.0.0.zip?download=1';
+  const ZIP_SIZE=861278442;
+  const STEM_PATHS={
+    T:'CantoriaDataset_v1.0.0/Audio/Cantoria_VBP_T.wav',
+    B:'CantoriaDataset_v1.0.0/Audio/Cantoria_VBP_B.wav',
+    A:'CantoriaDataset_v1.0.0/Audio/Cantoria_VBP_A.wav',
+    S:'CantoriaDataset_v1.0.0/Audio/Cantoria_VBP_S.wav'
+  };
+
+  let ctx=null;
+  let graph=null;
+  let buffers={};
+  let directoryPromise=null;
+  let loadPromise=null;
+  let sources={};
+  let duration=0;
+  let playing=false;
+  let offset=0;
+  let startedAt=0;
+  let raf=null;
+  let stoppingSources=false;
+  let recorder=null;
+  let recChunks=[];
+  let recordedBlob=null;
+  let recordedUrl='';
+  let recordedAudio=null;
+  const state=Object.fromEntries(voiceIds.map(id=>[id,{mute:false,solo:false}]));
+  const meterData={};
+
+  function setStatus(html,klass=''){
+    status.className='poly-status'+(klass?' '+klass:'');
+    status.innerHTML=html;
+  }
+
+  function fmt(sec){
+    const s=Math.max(0,Math.floor(Number(sec)||0));
+    return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+  }
+
+  async function fetchRange(start,end){
+    const res=await fetch(ZIP_URL,{
+      headers:{Range:'bytes='+start+'-'+end},
+      cache:'force-cache',
+      mode:'cors'
+    });
+    if(res.status!==206){
+      try{await res.body?.cancel();}catch(e){}
+      throw new Error('Il server non ha accettato il caricamento parziale del dataset.');
+    }
+    return new Uint8Array(await res.arrayBuffer());
+  }
+
+  function findEOCD(bytes){
+    for(let i=bytes.length-22;i>=0;i--){
+      if(bytes[i]===0x50&&bytes[i+1]===0x4b&&bytes[i+2]===0x05&&bytes[i+3]===0x06)return i;
+    }
+    return -1;
+  }
+
+  async function readZipDirectory(){
+    if(directoryPromise)return directoryPromise;
+    directoryPromise=(async()=>{
+      const tailSize=Math.min(160*1024,ZIP_SIZE);
+      const tailStart=ZIP_SIZE-tailSize;
+      const tail=await fetchRange(tailStart,ZIP_SIZE-1);
+      const eocd=findEOCD(tail);
+      if(eocd<0)throw new Error('Indice ZIP non trovato.');
+      const view=new DataView(tail.buffer,tail.byteOffset,tail.byteLength);
+      const centralSize=view.getUint32(eocd+12,true);
+      const centralOffset=view.getUint32(eocd+16,true);
+      const central=await fetchRange(centralOffset,centralOffset+centralSize-1);
+      const cv=new DataView(central.buffer,central.byteOffset,central.byteLength);
+      const decoder=new TextDecoder('utf-8');
+      const entries={};
+      let p=0;
+      while(p+46<=central.length){
+        if(cv.getUint32(p,true)!==0x02014b50)break;
+        const flags=cv.getUint16(p+8,true);
+        const method=cv.getUint16(p+10,true);
+        const compressedSize=cv.getUint32(p+20,true);
+        const uncompressedSize=cv.getUint32(p+24,true);
+        const nameLen=cv.getUint16(p+28,true);
+        const extraLen=cv.getUint16(p+30,true);
+        const commentLen=cv.getUint16(p+32,true);
+        const localOffset=cv.getUint32(p+42,true);
+        const name=decoder.decode(central.subarray(p+46,p+46+nameLen));
+        entries[name]={name,flags,method,compressedSize,uncompressedSize,localOffset};
+        p+=46+nameLen+extraLen+commentLen;
+      }
+      return entries;
+    })();
+    return directoryPromise;
+  }
+
+  async function inflateZipMember(entry){
+    if(!entry)throw new Error('Traccia non trovata nell’archivio.');
+    if(entry.flags&1)throw new Error('Traccia ZIP cifrata.');
+    const local=await fetchRange(entry.localOffset,entry.localOffset+29);
+    const lv=new DataView(local.buffer,local.byteOffset,local.byteLength);
+    if(lv.getUint32(0,true)!==0x04034b50)throw new Error('Header della traccia non valido.');
+    const nameLen=lv.getUint16(26,true);
+    const extraLen=lv.getUint16(28,true);
+    const dataStart=entry.localOffset+30+nameLen+extraLen;
+    const packed=await fetchRange(dataStart,dataStart+entry.compressedSize-1);
+
+    if(entry.method===0)return packed;
+    if(entry.method!==8)throw new Error('Compressione ZIP non supportata: '+entry.method+'.');
+    if(typeof DecompressionStream==='undefined')throw new Error('Questo browser non supporta la decompressione necessaria.');
+
+    let stream;
+    try{
+      stream=new Blob([packed]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+    }catch(e){
+      throw new Error('Impossibile decomprimere la traccia nel browser.');
+    }
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+
+  function ensureContext(){
+    if(ctx)return ctx;
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(!AudioCtx)throw new Error('Web Audio non disponibile in questo browser.');
+    ctx=new AudioCtx();
+
+    const voiceSum=ctx.createGain();
+    const lowEQ=ctx.createBiquadFilter();
+    const midEQ=ctx.createBiquadFilter();
+    const highEQ=ctx.createBiquadFilter();
+    const dry=ctx.createGain();
+    const reverbSend=ctx.createGain();
+    const convolver=ctx.createConvolver();
+    const wet=ctx.createGain();
+    const masterGain=ctx.createGain();
+    const compressor=ctx.createDynamicsCompressor();
+    const recDest=ctx.createMediaStreamDestination();
+
+    lowEQ.type='lowshelf'; lowEQ.frequency.value=140;
+    midEQ.type='peaking'; midEQ.frequency.value=1100; midEQ.Q.value=.9;
+    highEQ.type='highshelf'; highEQ.frequency.value=5200;
+
+    compressor.threshold.value=-16;
+    compressor.knee.value=16;
+    compressor.ratio.value=2.5;
+    compressor.attack.value=.006;
+    compressor.release.value=.20;
+
+    const irSeconds=2.8;
+    const ir=ctx.createBuffer(2,Math.floor(ctx.sampleRate*irSeconds),ctx.sampleRate);
+    for(let ch=0;ch<2;ch++){
+      const data=ir.getChannelData(ch);
+      for(let i=0;i<data.length;i++){
+        const x=i/data.length;
+        data[i]=(Math.random()*2-1)*Math.pow(1-x,2.8)*(1-.08*Math.sin(i*.017+ch));
+      }
+    }
+    convolver.buffer=ir;
+
+    voiceSum.connect(lowEQ);
+    lowEQ.connect(midEQ);
+    midEQ.connect(highEQ);
+    highEQ.connect(dry);
+    highEQ.connect(reverbSend);
+    reverbSend.connect(convolver);
+    convolver.connect(wet);
+    dry.connect(masterGain);
+    wet.connect(masterGain);
+    masterGain.connect(compressor);
+    compressor.connect(ctx.destination);
+    compressor.connect(recDest);
+
+    const channels={};
+    voiceIds.forEach(id=>{
+      const gain=ctx.createGain();
+      const analyser=ctx.createAnalyser();
+      analyser.fftSize=256;
+      analyser.smoothingTimeConstant=.72;
+      gain.connect(analyser);
+      analyser.connect(voiceSum);
+      channels[id]={gain,analyser};
+      meterData[id]=new Uint8Array(analyser.fftSize);
+    });
+
+    graph={voiceSum,lowEQ,midEQ,highEQ,dry,reverbSend,convolver,wet,masterGain,compressor,recDest,channels};
+    applyAllControls(true);
+    return ctx;
+  }
+
+  async function ensureLoaded(){
+    if(Object.keys(buffers).length===4)return;
+    if(loadPromise)return loadPromise;
+    loadPromise=(async()=>{
+      const ac=ensureContext();
+      setStatus('<strong>Caricamento multitraccia…</strong> Leggo l’indice del dataset senza scaricare l’archivio completo.');
+      const entries=await readZipDirectory();
+      const decoded={};
+      for(let i=0;i<voiceIds.length;i++){
+        const id=voiceIds[i];
+        const entry=entries[STEM_PATHS[id]];
+        if(!entry)throw new Error('Non trovo la traccia '+voiceLabels[id]+' nel dataset.');
+        const approx=Math.max(1,Math.round(entry.compressedSize/1024/1024));
+        setStatus('<strong>Carico '+(i+1)+'/4 · '+voiceLabels[id]+'</strong> circa '+approx+' MB dal dataset Cantoría.');
+        const wav=await inflateZipMember(entry);
+        const ab=wav.buffer.slice(wav.byteOffset,wav.byteOffset+wav.byteLength);
+        decoded[id]=await ac.decodeAudioData(ab);
+      }
+      buffers=decoded;
+      duration=Math.min(...voiceIds.map(id=>buffers[id].duration));
+      seek.disabled=false;
+      timeEl.textContent='0:00 / '+fmt(duration);
+      setStatus('<strong>Multitraccia pronta.</strong> Muovi i quattro fader, usa M e S per mute e solo, oppure premi REC e costruisci un tuo mix.');
+    })().catch(err=>{
+      loadPromise=null;
+      setStatus('<strong>Non riesco a caricare le quattro tracce.</strong> '+err.message+' <a href="https://zenodo.org/records/5878677" target="_blank" rel="noopener">Apri il dataset ↗</a>','error');
+      throw err;
+    });
+    return loadPromise;
+  }
+
+  function voiceBaseGain(id){
+    const v=Math.max(0,Math.min(100,Number(gainInputs[id]?.value)||0))/100;
+    return Math.pow(v,1.45);
+  }
+
+  function applyVoiceGains(immediate=false){
+    if(!graph||!ctx)return;
+    const anySolo=voiceIds.some(id=>state[id].solo);
+    const now=ctx.currentTime;
+    voiceIds.forEach(id=>{
+      const inaudible=state[id].mute||(anySolo&&!state[id].solo);
+      const value=inaudible?0:voiceBaseGain(id);
+      const g=graph.channels[id].gain.gain;
+      try{
+        g.cancelScheduledValues(now);
+        if(immediate)g.setValueAtTime(value,now);
+        else g.setTargetAtTime(value,now,.035);
+      }catch(e){g.value=value;}
+      muteBtns[id]?.classList.toggle('active',state[id].mute);
+      soloBtns[id]?.classList.toggle('active',state[id].solo);
+    });
+  }
+
+  function applyAllControls(immediate=false){
+    voiceIds.forEach(id=>{
+      if(gainOutputs[id])gainOutputs[id].value=gainInputs[id]?.value||0;
+    });
+    if(reverbOut)reverbOut.value=reverb?.value||0;
+    if(masterOut)masterOut.value=master?.value||0;
+    if(!graph||!ctx){
+      updateKnobs();
+      return;
+    }
+
+    applyVoiceGains(immediate);
+    const now=ctx.currentTime;
+    const setParam=(param,value)=>{
+      try{
+        param.cancelScheduledValues(now);
+        if(immediate)param.setValueAtTime(value,now);
+        else param.setTargetAtTime(value,now,.04);
+      }catch(e){param.value=value;}
+    };
+    const rv=Math.max(0,Math.min(100,Number(reverb?.value)||0))/100;
+    const mv=Math.max(0,Math.min(100,Number(master?.value)||0))/100;
+    setParam(graph.reverbSend.gain,.72*Math.pow(rv,1.35));
+    setParam(graph.wet.gain,.62*Math.pow(rv,1.15));
+    setParam(graph.masterGain.gain,.92*Math.pow(mv,1.3));
+    setParam(graph.lowEQ.gain,Number(low?.value)||0);
+    setParam(graph.midEQ.gain,Number(mid?.value)||0);
+    setParam(graph.highEQ.gain,Number(high?.value)||0);
+    updateKnobs();
+  }
+
+  function updateKnobs(){
+    [low,mid,high].forEach(input=>{
+      if(!input)return;
+      const label=input.closest('[data-poly-knob]');
+      const out=label?.querySelector('output');
+      const face=label?.querySelector('.poly-knob-face');
+      const value=Number(input.value)||0;
+      if(out)out.value=(value>0?'+':'')+value;
+      const angle=-135+((value+12)/24)*270;
+      if(face)face.style.setProperty('--knob-angle',angle+'deg');
+    });
+  }
+
+  function currentPosition(){
+    if(!ctx)return offset;
+    if(!playing)return offset;
+    return Math.max(0,Math.min(duration,ctx.currentTime-startedAt));
+  }
+
+  function stopSourcesOnly(){
+    stoppingSources=true;
+    Object.values(sources).forEach(src=>{
+      try{src.onended=null;src.stop();}catch(e){}
+      try{src.disconnect();}catch(e){}
+    });
+    sources={};
+    stoppingSources=false;
+  }
+
+  function startSources(at=offset){
+    if(!ctx||Object.keys(buffers).length!==4)return;
+    stopSourcesOnly();
+    offset=Math.max(0,Math.min(Math.max(0,duration-.01),Number(at)||0));
+    const when=ctx.currentTime+.035;
+    voiceIds.forEach(id=>{
+      const src=ctx.createBufferSource();
+      src.buffer=buffers[id];
+      src.connect(graph.channels[id].gain);
+      sources[id]=src;
+      src.start(when,offset);
+    });
+    startedAt=when-offset;
+    playing=true;
+    playBtn.classList.add('playing');
+    playBtn.textContent='Ⅱ';
+    sources.T.onended=()=>{
+      if(stoppingSources||!playing)return;
+      if(currentPosition()>=duration-.12)stopPlayback(true);
+    };
+    startUiLoop();
+  }
+
+  function pausePlayback(){
+    if(!playing)return;
+    offset=currentPosition();
+    playing=false;
+    stopSourcesOnly();
+    playBtn.classList.remove('playing');
+    playBtn.textContent='▶';
+    updateTransport();
+  }
+
+  function stopPlayback(reset=true){
+    if(playing)offset=currentPosition();
+    playing=false;
+    stopSourcesOnly();
+    if(reset)offset=0;
+    playBtn.classList.remove('playing','loading');
+    playBtn.textContent='▶';
+    updateTransport();
+  }
+
+  function updateTransport(){
+    const pos=currentPosition();
+    timeEl.textContent=fmt(pos)+' / '+(duration?fmt(duration):'—');
+    if(duration&&document.activeElement!==seek)seek.value=Math.round((pos/duration)*1000);
+  }
+
+  function updateMeters(){
+    if(!graph)return;
+    voiceIds.forEach(id=>{
+      const analyser=graph.channels[id].analyser;
+      const data=meterData[id];
+      analyser.getByteTimeDomainData(data);
+      let sum=0;
+      for(let i=0;i<data.length;i++){
+        const x=(data[i]-128)/128;
+        sum+=x*x;
+      }
+      const rms=Math.sqrt(sum/data.length);
+      const pct=Math.max(0,Math.min(100,Math.pow(rms*3.1,.72)*100));
+      if(meterBars[id])meterBars[id].style.height=pct.toFixed(1)+'%';
+    });
+  }
+
+  function startUiLoop(){
+    if(raf)return;
+    const frame=()=>{
+      raf=null;
+      updateTransport();
+      updateMeters();
+      if(playing||recorder?.state==='recording')raf=requestAnimationFrame(frame);
+      else voiceIds.forEach(id=>{if(meterBars[id])meterBars[id].style.height='0%';});
+    };
+    raf=requestAnimationFrame(frame);
+  }
+
+  async function togglePlay(){
+    try{
+      ensureContext();
+      if(ctx.state==='suspended')ctx.resume();
+      if(Object.keys(buffers).length!==4){
+        playBtn.classList.add('loading');
+        playBtn.textContent='…';
+        await ensureLoaded();
+        playBtn.classList.remove('loading');
+        if(!playing)playBtn.textContent='▶';
+      }
+      if(playing)pausePlayback();
+      else{
+        if(offset>=duration-.05)offset=0;
+        startSources(offset);
+      }
+    }catch(e){
+      playBtn.classList.remove('loading','playing');
+      playBtn.textContent='▶';
+    }
+  }
+
+  function supportedMime(){
+    if(typeof MediaRecorder==='undefined')return '';
+    const types=[
+      'audio/webm;codecs=opus',
+      'audio/ogg;codecs=opus',
+      'audio/mp4',
+      'audio/webm'
+    ];
+    return types.find(t=>MediaRecorder.isTypeSupported?.(t))||'';
+  }
+
+  function recordingExtension(type){
+    if(type.includes('ogg'))return 'ogg';
+    if(type.includes('mp4'))return 'm4a';
+    return 'webm';
+  }
+
+  async function startRecording(){
+    try{
+      const ac=ensureContext();
+      if(ac.state==='suspended')ac.resume();
+      await ensureLoaded();
+      if(typeof MediaRecorder==='undefined'){
+        setStatus('<strong>Registrazione non disponibile.</strong> Questo browser non espone MediaRecorder. Il mixer resta comunque utilizzabile.','error');
+        return;
+      }
+      if(recorder?.state==='recording')return;
+
+      if(recordedUrl){
+        URL.revokeObjectURL(recordedUrl);
+        recordedUrl='';
+      }
+      recordedBlob=null;
+      recPlayBtn.disabled=true;
+      downloadBtn.disabled=true;
+      recChunks=[];
+
+      const mime=supportedMime();
+      recorder=mime?new MediaRecorder(graph.recDest.stream,{mimeType:mime}):new MediaRecorder(graph.recDest.stream);
+      recorder.ondataavailable=e=>{if(e.data&&e.data.size)recChunks.push(e.data);};
+      recorder.onerror=()=>{
+        setStatus('<strong>Errore di registrazione.</strong> Il browser ha interrotto il recorder.','error');
+      };
+      recorder.onstop=()=>{
+        if(!recChunks.length){
+          setStatus('<strong>Nessun file registrato.</strong> Riprova avviando REC durante la riproduzione.','error');
+          recBtn.classList.remove('recording');
+          recBtn.textContent='● REC';
+          return;
+        }
+        const type=recorder.mimeType||recChunks[0]?.type||'audio/webm';
+        recordedBlob=new Blob(recChunks,{type});
+        recordedUrl=URL.createObjectURL(recordedBlob);
+        recPlayBtn.disabled=false;
+        downloadBtn.disabled=false;
+        recBtn.classList.remove('recording');
+        recBtn.textContent='● REC';
+        setStatus('<strong>Mix registrato.</strong> Puoi ascoltarlo con ▶ REC oppure scaricare il file. Le modifiche fatte durante la registrazione sono dentro il mix.');
+      };
+
+      recorder.start(250);
+      recBtn.classList.add('recording');
+      recBtn.textContent='● REC…';
+      if(!playing){
+        if(offset>=duration-.05)offset=0;
+        startSources(offset);
+      }
+      setStatus('<strong>REC attivo.</strong> Sto registrando in tempo reale l’uscita del mixer. Muovi fader, mute, solo, EQ e riverbero: tutto finirà nel file.','recording');
+      startUiLoop();
+    }catch(e){
+      recBtn.classList.remove('recording');
+      recBtn.textContent='● REC';
+      setStatus('<strong>Registrazione non avviata.</strong> '+e.message,'error');
+    }
+  }
+
+  function stopAll(){
+    stopPlayback(true);
+    if(recorder?.state==='recording'){
+      try{recorder.stop();}catch(e){}
+    }else{
+      setStatus('<strong>Stop.</strong> Riproduzione riportata all’inizio.');
+    }
+  }
+
+  function playRecorded(){
+    if(!recordedUrl)return;
+    if(recordedAudio&&!recordedAudio.paused){
+      recordedAudio.pause();
+      recPlayBtn.textContent='▶ REC';
+      return;
+    }
+    if(recordedAudio){
+      try{recordedAudio.pause();}catch(e){}
+    }
+    recordedAudio=new Audio(recordedUrl);
+    recordedAudio.onended=()=>{recPlayBtn.textContent='▶ REC';};
+    recordedAudio.play().then(()=>{recPlayBtn.textContent='Ⅱ REC';}).catch(()=>{
+      setStatus('<strong>Il file registrato non parte.</strong> Il browser non riesce a riprodurre il formato appena creato.','error');
+    });
+  }
+
+  function downloadRecorded(){
+    if(!recordedBlob||!recordedUrl)return;
+    const type=recordedBlob.type||'audio/webm';
+    const a=document.createElement('a');
+    a.href=recordedUrl;
+    a.download='Virgen_bendita_mix.'+recordingExtension(type);
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  function resetMix(){
+    const defaults={T:78,B:76,A:74,S:72};
+    voiceIds.forEach(id=>{
+      gainInputs[id].value=defaults[id];
+      state[id].mute=false;
+      state[id].solo=false;
+    });
+    reverb.value=22;
+    master.value=78;
+    low.value=0;
+    mid.value=0;
+    high.value=0;
+    applyAllControls();
+    setStatus('<strong>Mix ripristinato.</strong> Tutte le voci sono aperte con una leggera quantità di riverbero.');
+  }
+
+  playBtn.addEventListener('click',togglePlay);
+  stopBtn.addEventListener('click',stopAll);
+  recBtn.addEventListener('click',startRecording);
+  recPlayBtn.addEventListener('click',playRecorded);
+  downloadBtn.addEventListener('click',downloadRecorded);
+  resetBtn.addEventListener('click',resetMix);
+
+  seek.addEventListener('input',()=>{
+    if(!duration)return;
+    const target=(Number(seek.value)/1000)*duration;
+    if(playing)startSources(target);
+    else{
+      offset=target;
+      updateTransport();
+    }
+  });
+
+  voiceIds.forEach(id=>{
+    gainInputs[id].addEventListener('input',()=>applyAllControls());
+    muteBtns[id].addEventListener('click',()=>{
+      state[id].mute=!state[id].mute;
+      applyVoiceGains();
+    });
+    soloBtns[id].addEventListener('click',()=>{
+      state[id].solo=!state[id].solo;
+      applyVoiceGains();
+    });
+  });
+
+  [reverb,master,low,mid,high].forEach(input=>input?.addEventListener('input',()=>applyAllControls()));
+
+  if(typeof MediaRecorder==='undefined'){
+    recBtn.disabled=true;
+    recBtn.title='Registrazione non disponibile in questo browser';
+  }
+
+  updateKnobs();
+  applyAllControls();
+  updateTransport();
+
+  window.addEventListener('pagehide',()=>{
+    try{stopPlayback(false);}catch(e){}
+    try{if(recorder?.state==='recording')recorder.stop();}catch(e){}
+    try{recordedAudio?.pause();}catch(e){}
+    if(recordedUrl)URL.revokeObjectURL(recordedUrl);
+    try{ctx?.close();}catch(e){}
+  },{once:true});
+})();
