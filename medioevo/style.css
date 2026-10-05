@@ -376,3 +376,17 @@ border:1px solid #c8af87;box-shadow:inset 0 0 40px rgba(88,59,27,.05);position:r
 .neume-audio-label{display:inline-flex;align-items:center;gap:.55rem;margin-top:1rem;padding:.48rem .68rem;border:1px solid rgba(125,52,41,.18);background:rgba(255,250,241,.66);border-radius:999px}
 .neume-audio-label span{font:900 .58rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#8d6f4f}
 .neume-audio-label b{font:900 .72rem/1 var(--sans);letter-spacing:.08em;color:var(--red)}
+
+.triplex-reader{margin:2rem 0 2.8rem;background:linear-gradient(180deg,#f4ead9,#eadbc4);border:1px solid #c7ae86;border-top:5px solid var(--blue);box-shadow:var(--shadow);overflow:hidden}
+.triplex-reader-head{display:flex;justify-content:space-between;gap:1.2rem;align-items:flex-start;padding:1.25rem 1.35rem;border-bottom:1px solid #cdb995}
+.triplex-reader-head h4{font-family:Georgia,"Times New Roman",serif;font-size:1.85rem;margin:.2rem 0 .35rem;color:#2d251f}
+.triplex-reader-head p{max-width:760px;margin:0;font-size:.95rem;line-height:1.55;color:#65574b}
+.triplex-reader-head a{flex:0 0 auto;text-decoration:none;background:#28211c;color:#fff;padding:.65rem .85rem;border-radius:999px;font:850 .72rem/1 var(--sans)}
+.triplex-frame{background:#211e1a;padding:.8rem}
+.triplex-frame iframe{display:block;width:100%;height:clamp(430px,66vw,720px);border:0;background:#fff}
+.triplex-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid #cdb995}
+.triplex-guide div{padding:1rem 1.1rem;border-right:1px solid #cdb995}
+.triplex-guide div:last-child{border-right:0}
+.triplex-guide b{display:block;font:900 .68rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:.35rem}
+.triplex-guide span{display:block;font-size:.86rem;line-height:1.42;color:#66584d}
+@media(max-width:760px){.triplex-reader-head{flex-direction:column}.triplex-guide{grid-template-columns:1fr}.triplex-guide div{border-right:0;border-bottom:1px solid #cdb995}.triplex-guide div:last-child{border-bottom:0}.triplex-frame iframe{height:520px}}
