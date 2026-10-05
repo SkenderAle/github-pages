@@ -437,3 +437,31 @@ border:1px solid #c8af87;box-shadow:inset 0 0 40px rgba(88,59,27,.05);position:r
 .local-window h3{margin:.25rem 0 .55rem;font-size:1.35rem}
 .local-window p{margin:.25rem 0 .75rem;line-height:1.6}
 .local-window a{display:inline-block;text-decoration:none;font:850 .76rem/1.2 var(--sans);color:var(--blue);border-bottom:1px solid currentColor;padding-bottom:.1rem}
+
+.guidonian-lab{margin:2.1rem 0 3rem;background:linear-gradient(180deg,#f5ead8,#ead9bf);border:1px solid #c7ad84;border-top:5px solid var(--gold);box-shadow:var(--shadow);overflow:hidden}
+.guidonian-head{display:flex;justify-content:space-between;gap:1.2rem;align-items:flex-start;padding:1.2rem 1.3rem;border-bottom:1px solid #cab48f}
+.guidonian-head h4{font-family:Georgia,"Times New Roman",serif;font-size:1.75rem;margin:.25rem 0 .4rem;color:#30271f}
+.guidonian-head p{max-width:720px;margin:0;line-height:1.55;color:#66584b}
+.guidonian-controls{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+.guidonian-controls button{border:0;background:#28211c;color:#fff;padding:.68rem .9rem;border-radius:999px;font:850 .72rem/1 var(--sans);cursor:pointer}
+.guidonian-controls button.secondary{background:transparent;color:#3f342c;border:1px solid #a88f6b}
+.guidonian-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr);gap:0;align-items:stretch}
+.guidonian-figure{margin:0;padding:1rem;background:#2b241d}
+.guidonian-image-wrap{position:relative;width:min(100%,720px);margin:auto;aspect-ratio:2616/3069;background:#c9ad72;overflow:hidden}
+.guidonian-image-wrap img{display:block;width:100%;height:100%;object-fit:cover}
+.guidonian-hotspots{position:absolute;inset:0}
+.guidonian-hotspot{position:absolute;transform:translate(-50%,-50%);width:2rem;height:2rem;border-radius:50%;border:1px solid rgba(255,248,225,.92);background:rgba(65,42,27,.52);color:#fff7e4;display:grid;place-items:center;font:900 .67rem/1 var(--sans);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.22);transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+.guidonian-hotspot:hover,.guidonian-hotspot:focus-visible,.guidonian-hotspot.active{background:var(--red);transform:translate(-50%,-50%) scale(1.18);box-shadow:0 0 0 5px rgba(238,210,137,.25),0 3px 10px rgba(0,0,0,.25);outline:none;z-index:3}
+.guidonian-pointer{position:absolute;left:12%;top:50%;width:2.8rem;height:2.8rem;border:3px solid #f1d585;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(241,213,133,.18),0 0 24px rgba(241,213,133,.72);pointer-events:none;transition:left .28s ease,top .28s ease,opacity .18s ease;z-index:2}
+.guidonian-figure figcaption{font:650 .68rem/1.45 var(--sans);color:#d8c9b6;padding:.75rem .25rem .15rem}
+.guidonian-figure figcaption a{color:#efd790;text-decoration:none}
+.guidonian-info{padding:1.5rem 1.35rem;background:#efe2cf;display:flex;flex-direction:column;justify-content:center;border-left:1px solid #c9b28e}
+.guidonian-counter{font:900 .67rem/1 var(--sans);letter-spacing:.11em;color:var(--red);margin-bottom:.6rem}
+.guidonian-note{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,3.6rem);line-height:.95;color:#2d241d;margin-bottom:.55rem}
+.guidonian-modern{font:850 .72rem/1.3 var(--sans);text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-bottom:1rem}
+.guidonian-info p{font-size:.98rem;line-height:1.65;margin:.15rem 0 .9rem}
+.guidonian-audio-state{padding:.75rem .8rem;background:rgba(255,250,239,.7);border-left:4px solid var(--gold);font:700 .75rem/1.45 var(--sans);color:#66584b}
+.guidonian-audio-state.on{border-left-color:var(--red);color:#493b31}
+.guidonian-note-box{padding:1rem 1.25rem;border-top:1px solid #cab48f;font-size:.9rem;line-height:1.55;color:#65564a}
+@media(max-width:860px){.guidonian-head{flex-direction:column}.guidonian-controls{justify-content:flex-start}.guidonian-layout{grid-template-columns:1fr}.guidonian-info{border-left:0;border-top:1px solid #c9b28e}.guidonian-figure{padding:.75rem}.guidonian-hotspot{width:1.8rem;height:1.8rem;font-size:.62rem}}
+@media(max-width:520px){.guidonian-pointer{width:2.2rem;height:2.2rem}.guidonian-hotspot{width:1.55rem;height:1.55rem;font-size:.56rem}.guidonian-head h4{font-size:1.45rem}}
