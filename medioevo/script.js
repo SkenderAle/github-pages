@@ -1112,7 +1112,7 @@ async function playTempleSound(btn){
 
   const ctx=new AudioCtx();
   rootsTempleCtx=ctx;
-  try{await ctx.resume();}catch(e){}
+  try{ctx.resume();}catch(e){}
 
   activeRootsButton=btn;
   btn.classList.add('loading');
