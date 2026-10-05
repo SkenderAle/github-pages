@@ -477,6 +477,135 @@ const guidonianAudioState=document.getElementById('guidonianAudioState');
 let guidonianAudioOn=false;
 let guidonianDemoTimer=null;
 let guidonianDemoIndex=0;
+let guidonianMuteTimer=null;
+
+// Dedicated synth for the hand. It is created and started synchronously by a real
+// tap/click, which is much more reliable on Android/iOS than starting a new
+// oscillator after an awaited AudioContext.resume().
+let guidonianCtx=null;
+let guidonianGain=null;
+let guidonianOscs=[];
+
+function createGuidonianSynth(freq=98){
+  if(guidonianCtx&&guidonianOscs.length)return true;
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx)return false;
+
+  try{
+    guidonianCtx=new AudioCtx();
+
+    const master=guidonianCtx.createGain();
+    master.gain.value=.72;
+
+    const comp=guidonianCtx.createDynamicsCompressor();
+    comp.threshold.value=-24;
+    comp.knee.value=20;
+    comp.ratio.value=3;
+    comp.attack.value=.008;
+    comp.release.value=.22;
+
+    guidonianGain=guidonianCtx.createGain();
+    guidonianGain.gain.setValueAtTime(.0001,guidonianCtx.currentTime);
+
+    const body=guidonianCtx.createBiquadFilter();
+    body.type='lowpass';
+    body.frequency.value=900;
+    body.Q.value=.45;
+
+    const warm=guidonianCtx.createBiquadFilter();
+    warm.type='peaking';
+    warm.frequency.value=520;
+    warm.Q.value=1.2;
+    warm.gain.value=5;
+
+    guidonianGain.connect(body);
+    body.connect(warm);
+    warm.connect(master);
+    master.connect(comp);
+    comp.connect(guidonianCtx.destination);
+
+    const detunes=[-6,0,5];
+    guidonianOscs=detunes.map((det,i)=>{
+      const osc=guidonianCtx.createOscillator();
+      osc.type=i===1?'sawtooth':'triangle';
+      osc.frequency.setValueAtTime(freq,guidonianCtx.currentTime);
+      osc.detune.value=det;
+      const og=guidonianCtx.createGain();
+      og.gain.value=i===1?.16:.24;
+      osc.connect(og);
+      og.connect(guidonianGain);
+      osc.start();
+      return osc;
+    });
+
+    // resume is intentionally invoked here, in the same synchronous user gesture.
+    if(guidonianCtx.state==='suspended'){
+      const promise=guidonianCtx.resume();
+      if(promise&&typeof promise.catch==='function')promise.catch(()=>{});
+    }
+    return true;
+  }catch(e){
+    guidonianCtx=null;
+    guidonianGain=null;
+    guidonianOscs=[];
+    return false;
+  }
+}
+
+function guidonianFadeOut(delay=700){
+  if(guidonianMuteTimer)clearTimeout(guidonianMuteTimer);
+  guidonianMuteTimer=setTimeout(()=>{
+    if(!guidonianCtx||!guidonianGain)return;
+    const now=guidonianCtx.currentTime;
+    try{
+      guidonianGain.gain.cancelScheduledValues(now);
+      guidonianGain.gain.setValueAtTime(Math.max(.0001,guidonianGain.gain.value),now);
+      guidonianGain.gain.exponentialRampToValueAtTime(.0001,now+.16);
+    }catch(e){}
+  },delay);
+}
+
+function guidonianGlide(freq,hold=720){
+  if(!guidonianAudioOn||!guidonianCtx||!guidonianGain||!guidonianOscs.length)return;
+  const now=guidonianCtx.currentTime;
+
+  guidonianOscs.forEach(osc=>{
+    try{
+      osc.frequency.cancelScheduledValues(now);
+      osc.frequency.setValueAtTime(Math.max(20,osc.frequency.value),now);
+      osc.frequency.exponentialRampToValueAtTime(Math.max(20,freq),now+.16);
+    }catch(e){}
+  });
+
+  try{
+    guidonianGain.gain.cancelScheduledValues(now);
+    guidonianGain.gain.setValueAtTime(Math.max(.0001,guidonianGain.gain.value),now);
+    guidonianGain.gain.exponentialRampToValueAtTime(.30,now+.045);
+  }catch(e){}
+  guidonianFadeOut(hold);
+}
+
+function enableGuidonianAudio(item=guidonianData[0]){
+  const ok=createGuidonianSynth(item.f);
+  guidonianAudioOn=ok;
+  if(ok){
+    if(guidonianCtx&&guidonianCtx.state==='suspended'){
+      const promise=guidonianCtx.resume();
+      if(promise&&typeof promise.catch==='function')promise.catch(()=>{});
+    }
+    if(guidonianSound)guidonianSound.textContent='♪ Suono attivo';
+    if(guidonianAudioState){
+      guidonianAudioState.textContent='Audio attivo: tocca i punti. La voce glissa da un’altezza all’altra.';
+      guidonianAudioState.classList.add('on');
+    }
+    // Immediate audible confirmation while still inside the user's tap.
+    guidonianGlide(item.f,850);
+  }else{
+    if(guidonianSound)guidonianSound.textContent='♪ Audio non disponibile';
+    if(guidonianAudioState)guidonianAudioState.textContent='Questo browser non ha reso disponibile il motore audio.';
+  }
+  return ok;
+}
 
 function guidonianMeaningFor(item){
   const meanings={
@@ -500,54 +629,24 @@ function showGuidonian(item,play=true){
   if(guidonianModern)guidonianModern.textContent=item.modern+' · riferimento moderno approssimativo';
   if(guidonianMeaning)guidonianMeaning.textContent=guidonianMeaningFor(item);
   document.querySelectorAll('.guidonian-hotspot').forEach(b=>b.classList.toggle('active',Number(b.dataset.n)===item.n));
-  if(play&&guidonianAudioOn){
-    if(activeChoir)glideChoir(item.f);
-    else startChoir(item.f);
-  }
-}
-
-async function unlockGuidonianAudio(){
-  const ctx=ensureChoirAudio();
-  if(!ctx)return false;
-  try{
-    if(ctx.state==='suspended')await ctx.resume();
-  }catch(e){}
-  guidonianAudioOn=ctx.state==='running';
-  if(choirMaster&&guidonianAudioOn){
-    const now=ctx.currentTime;
-    choirMaster.gain.cancelScheduledValues(now);
-    choirMaster.gain.setTargetAtTime(.58,now,.03);
-  }
-  if(guidonianSound)guidonianSound.textContent=guidonianAudioOn?'♪ Suono attivo':'♪ Riprova audio';
-  if(guidonianAudioState){
-    guidonianAudioState.textContent=guidonianAudioOn
-      ?'Audio attivo: tocca i punti. La voce glissa da un’altezza all’altra.'
-      :'Il browser non ha sbloccato l’audio. Tocca di nuovo il pulsante.';
-    guidonianAudioState.classList.toggle('on',guidonianAudioOn);
-  }
-  return guidonianAudioOn;
-}
-
-async function previewGuidonian(item){
-  if(!(await unlockGuidonianAudio()))return;
-  stopChoir(true);
-  startChoir(item.f);
-  setTimeout(()=>{if(!guidonianDemoTimer)stopChoir();},650);
+  if(play&&guidonianAudioOn)guidonianGlide(item.f);
 }
 
 function stopGuidonianDemo(){
   if(guidonianDemoTimer)clearTimeout(guidonianDemoTimer);
   guidonianDemoTimer=null;
   guidonianDemoIndex=0;
-  stopChoir();
+  guidonianFadeOut(0);
   if(guidonianDemo)guidonianDemo.textContent='▶ Percorri il gamut';
 }
 
-async function startGuidonianDemo(){
+function startGuidonianDemo(){
   if(guidonianDemoTimer){stopGuidonianDemo();return;}
-  if(!(await unlockGuidonianAudio()))return;
+  const first=guidonianData[0];
+  if(!guidonianAudioOn&&!enableGuidonianAudio(first))return;
   guidonianDemoIndex=0;
   if(guidonianDemo)guidonianDemo.textContent='■ Ferma';
+
   function step(){
     const item=guidonianData[guidonianDemoIndex++];
     if(!item){stopGuidonianDemo();return;}
@@ -555,7 +654,7 @@ async function startGuidonianDemo(){
     if(guidonianDemoIndex<guidonianData.length){
       guidonianDemoTimer=setTimeout(step,600);
     }else{
-      guidonianDemoTimer=setTimeout(stopGuidonianDemo,700);
+      guidonianDemoTimer=setTimeout(stopGuidonianDemo,760);
     }
   }
   step();
@@ -574,9 +673,13 @@ if(guidonianHotspots){
     b.setAttribute('aria-label',item.n+'. '+item.name+', '+item.modern);
     b.addEventListener('pointerenter',()=>showGuidonian(item,true));
     b.addEventListener('focus',()=>showGuidonian(item,true));
-    b.addEventListener('click',async e=>{
+    b.addEventListener('pointerdown',e=>{
       e.preventDefault();
-      if(!guidonianAudioOn)await unlockGuidonianAudio();
+      if(!guidonianAudioOn)enableGuidonianAudio(item);
+      else showGuidonian(item,true);
+    });
+    b.addEventListener('click',e=>{
+      e.preventDefault();
       showGuidonian(item,true);
     });
     guidonianHotspots.appendChild(b);
@@ -585,16 +688,22 @@ if(guidonianHotspots){
 }
 
 if(guidonianSound){
-  guidonianSound.addEventListener('click',()=>{
+  guidonianSound.addEventListener('pointerdown',e=>{
+    e.preventDefault();
     const active=document.querySelector('.guidonian-hotspot.active');
     const item=active?guidonianData.find(x=>x.n===Number(active.dataset.n)):guidonianData[0];
-    previewGuidonian(item||guidonianData[0]);
+    enableGuidonianAudio(item||guidonianData[0]);
   });
 }
-if(guidonianDemo)guidonianDemo.addEventListener('click',startGuidonianDemo);
+if(guidonianDemo){
+  guidonianDemo.addEventListener('pointerdown',e=>{
+    e.preventDefault();
+    startGuidonianDemo();
+  });
+}
 
 if(guidonianStage){
   guidonianStage.addEventListener('pointerleave',()=>{
-    if(!guidonianDemoTimer&&guidonianAudioOn)stopChoir();
+    if(!guidonianDemoTimer&&guidonianAudioOn)guidonianFadeOut(0);
   });
 }
