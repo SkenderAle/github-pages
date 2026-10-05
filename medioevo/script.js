@@ -1396,6 +1396,41 @@ if(jewishIconDialog){
     S:'audio/polyphony/Cantoria_VBP_S.mp3'
   };
 
+  // Stato interno del mixer. Deve essere dichiarato prima dell'inizializzazione
+  // dell'interfaccia: senza queste variabili il primo Play genera un ReferenceError.
+  let ctx=null;
+  let graph=null;
+  let buffers={};
+  let loadPromise=null;
+  let duration=0;
+  let sources={};
+  let offset=0;
+  let startedAt=0;
+  let playing=false;
+  let stoppingSources=false;
+  let raf=null;
+  const meterData={};
+  const state=Object.fromEntries(voiceIds.map(id=>[id,{mute:false,solo:false}]));
+  let recorder=null;
+  let recChunks=[];
+  let recordedBlob=null;
+  let recordedUrl='';
+  let recordedAudio=null;
+
+  function fmt(seconds){
+    const total=Math.max(0,Math.floor(Number(seconds)||0));
+    const minutes=Math.floor(total/60);
+    const secs=String(total%60).padStart(2,'0');
+    return minutes+':'+secs;
+  }
+
+  function setStatus(html,mode=''){
+    if(!status)return;
+    status.classList.remove('error','recording');
+    if(mode==='error'||mode==='recording')status.classList.add(mode);
+    status.innerHTML=html;
+  }
+
   function ensureContext(){
     if(ctx)return ctx;
     const AudioCtx=window.AudioContext||window.webkitAudioContext;
@@ -1673,6 +1708,7 @@ if(jewishIconDialog){
     }catch(e){
       playBtn.classList.remove('loading','playing');
       playBtn.textContent='▶';
+      setStatus('<strong>Riproduzione non avviata.</strong> '+(e?.message||'Errore inatteso del mixer.'),'error');
     }
   }
 
