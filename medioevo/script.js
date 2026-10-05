@@ -1382,7 +1382,7 @@ if(jewishIconDialog){
   const high=document.getElementById('polyHigh');
 
   const voiceIds=['T','B','A','S'];
-  const voiceLabels={T:'Tenor',B:'Bassus',A:'Altus',S:'Cantus'};
+  const voiceLabels={T:'Tenor',B:'Contratenor',A:'Motetus',S:'Triplum'};
   const gainInputs=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-gain="'+id+'"]')]));
   const gainOutputs=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-output="'+id+'"]')]));
   const muteBtns=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-mute="'+id+'"]')]));
@@ -1390,10 +1390,10 @@ if(jewishIconDialog){
   const meterBars=Object.fromEntries(voiceIds.map(id=>[id,root.querySelector('[data-poly-voice="'+id+'"] .poly-meter i')]));
 
   const LOCAL_STEMS={
-    T:'audio/polyphony/Cantoria_VBP_T.mp3',
-    B:'audio/polyphony/Cantoria_VBP_B.mp3',
-    A:'audio/polyphony/Cantoria_VBP_A.mp3',
-    S:'audio/polyphony/Cantoria_VBP_S.mp3'
+    T:'polyphony/tenor.mp3',
+    B:'polyphony/contratenor.mp3',
+    A:'polyphony/motetus.mp3',
+    S:'polyphony/triplum.mp3'
   };
 
   // Stato interno del mixer. Deve essere dichiarato prima dell'inizializzazione

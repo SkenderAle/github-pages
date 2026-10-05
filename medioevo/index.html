@@ -1235,13 +1235,13 @@
         <div class="poly-mixer-head">
           <div>
             <div class="lab-kicker">Laboratorio · metti le mani nella polifonia</div>
-            <h3>Quattro voci, un solo suono: smonta e ricostruisci il coro</h3>
-            <p>Per rendere davvero udibile l'indipendenza delle linee usiamo una registrazione multitraccia reale di <em>Virgen bendita sin par</em> di Pedro de Escobar. È un esempio del primo Rinascimento, quindi successivo a Pérotin: lo scegliamo perché le quattro voci furono registrate separatamente e possono essere isolate, rimiscelate e trattate una per una.</p>
+            <h3>Quattro voci, un solo edificio: smonta e ricostruisci la polifonia</h3>
+            <p>Qui ascoltiamo quattro registrazioni vocali separate e sincronizzate del <em>Kyrie</em> della <em>Messe de Nostre Dame</em> di Guillaume de Machaut. Non è più un esempio rinascimentale preso in prestito per necessità: siamo nel cuore dell'Ars Nova. Puoi partire dal tenor, aggiungere il contratenor, poi il motetus e infine il triplum, fino a ricostruire l'intero tessuto polifonico.</p>
           </div>
           <div class="poly-piece">
-            <strong>Pedro de Escobar</strong>
-            <span><em>Virgen bendita sin par</em></span>
-            <small>Cantoría · SATB multitraccia · CC BY 4.0</small>
+            <strong>Guillaume de Machaut</strong>
+            <span><em>Kyrie · Messe de Nostre Dame</em></span>
+            <small>Ars Nova · quattro parti vocali separate</small>
           </div>
         </div>
 
@@ -1264,7 +1264,7 @@
 
           <section class="poly-faders" aria-label="Canali delle quattro voci">
             <article class="poly-channel" data-poly-voice="T">
-              <div class="poly-channel-name"><b>TENOR</b><span>tenore</span></div>
+              <div class="poly-channel-name"><b>TENOR</b><span>cantus firmus</span></div>
               <div class="poly-meter" aria-hidden="true"><i></i></div>
               <div class="poly-vslider"><input type="range" min="0" max="100" value="78" data-poly-gain="T" aria-label="Volume Tenor"></div>
               <output data-poly-output="T">78</output>
@@ -1272,27 +1272,27 @@
             </article>
 
             <article class="poly-channel" data-poly-voice="B">
-              <div class="poly-channel-name"><b>BASSUS</b><span>basso</span></div>
+              <div class="poly-channel-name"><b>CONTRATENOR</b><span>contratenor</span></div>
               <div class="poly-meter" aria-hidden="true"><i></i></div>
-              <div class="poly-vslider"><input type="range" min="0" max="100" value="76" data-poly-gain="B" aria-label="Volume Basso"></div>
+              <div class="poly-vslider"><input type="range" min="0" max="100" value="76" data-poly-gain="B" aria-label="Volume Contratenor"></div>
               <output data-poly-output="B">76</output>
-              <div class="poly-ms"><button type="button" data-poly-mute="B" aria-label="Mute Basso">M</button><button type="button" data-poly-solo="B" aria-label="Solo Basso">S</button></div>
+              <div class="poly-ms"><button type="button" data-poly-mute="B" aria-label="Mute Contratenor">M</button><button type="button" data-poly-solo="B" aria-label="Solo Contratenor">S</button></div>
             </article>
 
             <article class="poly-channel" data-poly-voice="A">
-              <div class="poly-channel-name"><b>ALTUS</b><span>alto</span></div>
+              <div class="poly-channel-name"><b>MOTETUS</b><span>motetus</span></div>
               <div class="poly-meter" aria-hidden="true"><i></i></div>
-              <div class="poly-vslider"><input type="range" min="0" max="100" value="74" data-poly-gain="A" aria-label="Volume Alto"></div>
+              <div class="poly-vslider"><input type="range" min="0" max="100" value="74" data-poly-gain="A" aria-label="Volume Motetus"></div>
               <output data-poly-output="A">74</output>
-              <div class="poly-ms"><button type="button" data-poly-mute="A" aria-label="Mute Alto">M</button><button type="button" data-poly-solo="A" aria-label="Solo Alto">S</button></div>
+              <div class="poly-ms"><button type="button" data-poly-mute="A" aria-label="Mute Motetus">M</button><button type="button" data-poly-solo="A" aria-label="Solo Motetus">S</button></div>
             </article>
 
             <article class="poly-channel" data-poly-voice="S">
-              <div class="poly-channel-name"><b>CANTUS</b><span>soprano</span></div>
+              <div class="poly-channel-name"><b>TRIPLUM</b><span>triplum</span></div>
               <div class="poly-meter" aria-hidden="true"><i></i></div>
-              <div class="poly-vslider"><input type="range" min="0" max="100" value="72" data-poly-gain="S" aria-label="Volume Soprano"></div>
+              <div class="poly-vslider"><input type="range" min="0" max="100" value="72" data-poly-gain="S" aria-label="Volume Triplum"></div>
               <output data-poly-output="S">72</output>
-              <div class="poly-ms"><button type="button" data-poly-mute="S" aria-label="Mute Soprano">M</button><button type="button" data-poly-solo="S" aria-label="Solo Soprano">S</button></div>
+              <div class="poly-ms"><button type="button" data-poly-mute="S" aria-label="Mute Triplum">M</button><button type="button" data-poly-solo="S" aria-label="Solo Triplum">S</button></div>
             </article>
           </section>
 
@@ -1338,8 +1338,9 @@
         </div>
 
         <div class="poly-mixer-foot">
-          <p><strong>Attenzione al lessico.</strong> Qui <em>tenor, bassus, altus, cantus</em> indicano le parti vocali di un repertorio rinascimentale. Non sono le funzioni medievali <em>tenor, duplum, triplum, quadruplum</em> appena incontrate in Pérotin.</p>
-          <p>Fonte: Cantoría Dataset, Helena Cuesta ed Emilia Gómez, Music Technology Group, Universitat Pompeu Fabra. Registrazioni del quartetto Cantoría. <a href="https://zenodo.org/records/5878677" target="_blank" rel="noopener">Dataset e crediti ↗</a></p>
+          <p><strong>Che cosa significano questi nomi?</strong> Nel linguaggio medievale non indicano ancora i registri vocali moderni. Il <em>tenor</em>, dal latino <em>tenere</em>, è la voce che “tiene” il materiale di base: qui porta il <strong>canto gregoriano preesistente</strong>, cioè il <strong>cantus firmus</strong>, il tema originario sul quale viene costruita la polifonia. Per questo conviene ascoltarlo per primo, da solo, prima di aggiungere le altre parti.</p>
+          <p>Il <em>contratenor</em> nasce come voce posta “contro” il tenor, nello stesso spazio sonoro o in rapporto stretto con esso, e ne completa l'impalcatura contrappuntistica. Il <em>motetus</em> è una voce superiore al tenor: il nome conserva la storia del mottetto medievale e del rapporto fra una linea preesistente e una nuova voce dotata di maggiore mobilità. Il <em>triplum</em> è la voce più alta delle quattro, chiamata così perché appartiene storicamente allo strato superiore aggiunto oltre tenor e motetus. Accendendole una dopo l'altra si sente quindi non soltanto un accordo che si riempie, ma un edificio polifonico che cresce attorno al suo <em>cantus firmus</em>.</p>
+          <p><strong>Ascolto guidato.</strong> Parti dal <em>tenor</em>: è il gregoriano trasformato in fondamento strutturale. Aggiungi poi <em>contratenor</em>, <em>motetus</em> e <em>triplum</em>. Il passaggio dalla monodia liturgica alla polifonia non consiste nel cancellare il canto antico, ma nel conservarlo dentro una costruzione nuova.</p>
         </div>
       </div>
 
