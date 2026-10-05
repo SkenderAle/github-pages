@@ -984,6 +984,50 @@ let activeRootsButton=null;
 let rootsStopTimer=null;
 let rootsFadeTimer=null;
 let rootsTempleCtx=null;
+let rootsTempleNodes=null;
+let rootsTempleScheduler=null;
+let rootsTempleSources=[];
+
+const templeMixer=document.getElementById('templeMixer');
+const templeMixerPower=document.getElementById('templeMixerPower');
+const templeMixerState=document.getElementById('templeMixerState');
+const templeMixerSliders=[...document.querySelectorAll('[data-temple-channel]')];
+const templeMixerPresets=[...document.querySelectorAll('[data-temple-preset]')];
+
+function templeValue(name){
+  const slider=templeMixerSliders.find(el=>el.dataset.templeChannel===name);
+  return slider?Math.max(0,Math.min(100,Number(slider.value)||0)):0;
+}
+function templeGainCurve(name){
+  const v=templeValue(name)/100;
+  if(name==='master')return .72*Math.pow(v,1.35);
+  if(name==='space')return .82*Math.pow(v,1.2);
+  return Math.pow(v,1.55);
+}
+function refreshTempleMixerUI(){
+  templeMixerSliders.forEach(slider=>{
+    const out=slider.closest('label')?.querySelector('output');
+    if(out)out.value=slider.value;
+  });
+  if(!rootsTempleCtx&&templeMixerState)templeMixerState.textContent='Generatore fermo.';
+}
+function updateTempleMixerGains(){
+  if(!rootsTempleNodes)return;
+  const now=rootsTempleCtx?.currentTime||0;
+  const smooth=(node,value)=>{
+    if(!node)return;
+    try{
+      node.gain.cancelScheduledValues(now);
+      node.gain.setTargetAtTime(value,now,.045);
+    }catch(e){node.gain.value=value;}
+  };
+  smooth(rootsTempleNodes.trumpets,.72*templeGainCurve('trumpets'));
+  smooth(rootsTempleNodes.strings,.62*templeGainCurve('strings'));
+  smooth(rootsTempleNodes.cymbals,.52*templeGainCurve('cymbals'));
+  smooth(rootsTempleNodes.assembly,.19*templeGainCurve('assembly'));
+  smooth(rootsTempleNodes.wet,.48*templeGainCurve('space'));
+  smooth(rootsTempleNodes.master,templeGainCurve('master'));
+}
 
 function clearRootsTimers(){
   if(rootsStopTimer)clearTimeout(rootsStopTimer);
@@ -999,10 +1043,25 @@ function resetRootsButton(){
   activeRootsButton=null;
 }
 function stopTempleSound(){
+  if(rootsTempleScheduler){
+    clearInterval(rootsTempleScheduler);
+    rootsTempleScheduler=null;
+  }
+  rootsTempleSources.forEach(src=>{
+    try{src.stop?.();}catch(e){}
+    try{src.disconnect?.();}catch(e){}
+  });
+  rootsTempleSources=[];
+  rootsTempleNodes=null;
   if(rootsTempleCtx){
     try{rootsTempleCtx.close();}catch(e){}
     rootsTempleCtx=null;
   }
+  if(templeMixerPower){
+    templeMixerPower.classList.remove('playing');
+    templeMixerPower.textContent='▶ Avvia';
+  }
+  if(templeMixerState)templeMixerState.textContent='Generatore fermo.';
 }
 function stopRootsAudio(message=''){
   clearRootsTimers();
@@ -1027,72 +1086,244 @@ function playTempleSound(btn){
   const AudioCtx=window.AudioContext||window.webkitAudioContext;
   if(!AudioCtx){
     if(rootsAudioStatus)rootsAudioStatus.textContent='Questo browser non rende disponibile il motore audio.';
+    if(templeMixerState)templeMixerState.textContent='Motore audio non disponibile in questo browser.';
     return;
   }
+
   const ctx=new AudioCtx();
   rootsTempleCtx=ctx;
+  try{ctx.resume();}catch(e){}
+
   activeRootsButton=btn;
   btn.classList.add('playing');
-  btn.textContent='■ Ferma';
+  btn.textContent='■ Ferma · mixer';
+  if(templeMixerPower){
+    templeMixerPower.classList.add('playing');
+    templeMixerPower.textContent='■ Ferma';
+  }
 
   const master=ctx.createGain();
-  master.gain.setValueAtTime(.42,ctx.currentTime);
-  master.gain.setValueAtTime(.42,ctx.currentTime+11.5);
-  master.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+15);
+  const sceneBus=ctx.createGain();
+  const dry=ctx.createGain();
+  const wet=ctx.createGain();
+  const convolver=ctx.createConvolver();
+
+  const trumpetGain=ctx.createGain();
+  const stringsGain=ctx.createGain();
+  const cymbalGain=ctx.createGain();
+  const assemblyGain=ctx.createGain();
+
+  trumpetGain.connect(sceneBus);
+  stringsGain.connect(sceneBus);
+  cymbalGain.connect(sceneBus);
+  assemblyGain.connect(sceneBus);
+  sceneBus.connect(dry);
+  sceneBus.connect(convolver);
+  convolver.connect(wet);
+  dry.connect(master);
+  wet.connect(master);
   master.connect(ctx.destination);
 
-  function trumpet(freq,when,dur=.9){
-    const osc1=ctx.createOscillator();
-    const osc2=ctx.createOscillator();
+  const irSeconds=3.25;
+  const ir=ctx.createBuffer(2,Math.floor(ctx.sampleRate*irSeconds),ctx.sampleRate);
+  for(let ch=0;ch<2;ch++){
+    const data=ir.getChannelData(ch);
+    for(let i=0;i<data.length;i++){
+      const x=i/data.length;
+      data[i]=(Math.random()*2-1)*Math.pow(1-x,2.55)*(1-.18*Math.sin(i*.013+ch));
+    }
+  }
+  convolver.buffer=ir;
+
+  rootsTempleNodes={
+    master,
+    wet,
+    trumpets:trumpetGain,
+    strings:stringsGain,
+    cymbals:cymbalGain,
+    assembly:assemblyGain
+  };
+  updateTempleMixerGains();
+
+  function remember(node){
+    rootsTempleSources.push(node);
+    return node;
+  }
+
+  function trumpet(freq,when,dur=1.15){
+    if(!rootsTempleCtx)return;
+    const osc1=remember(ctx.createOscillator());
+    const osc2=remember(ctx.createOscillator());
     const mix=ctx.createGain();
     const lp=ctx.createBiquadFilter();
     const env=ctx.createGain();
-    osc1.type='sawtooth'; osc2.type='triangle';
-    osc1.frequency.value=freq; osc2.frequency.value=freq*1.003;
-    mix.gain.value=.28;
-    lp.type='lowpass'; lp.frequency.value=1300; lp.Q.value=.7;
+    const wobble=ctx.createOscillator();
+    const wobbleGain=ctx.createGain();
+
+    osc1.type='sawtooth';
+    osc2.type='triangle';
+    osc1.frequency.setValueAtTime(freq,when);
+    osc2.frequency.setValueAtTime(freq*1.004,when);
+    wobble.type='sine';
+    wobble.frequency.value=5.1+Math.random()*1.4;
+    wobbleGain.gain.value=2.1;
+    wobble.connect(wobbleGain);
+    wobbleGain.connect(osc1.detune);
+    wobbleGain.connect(osc2.detune);
+
+    lp.type='lowpass';
+    lp.frequency.setValueAtTime(900,when);
+    lp.frequency.exponentialRampToValueAtTime(1750,when+.16);
+    lp.frequency.exponentialRampToValueAtTime(1080,when+dur);
+    lp.Q.value=1.05;
+
+    mix.gain.value=.2;
     env.gain.setValueAtTime(.0001,when);
-    env.gain.exponentialRampToValueAtTime(.5,when+.05);
-    env.gain.setValueAtTime(.45,when+dur*.55);
+    env.gain.exponentialRampToValueAtTime(.42,when+.07);
+    env.gain.setValueAtTime(.34,when+dur*.62);
     env.gain.exponentialRampToValueAtTime(.0001,when+dur);
-    osc1.connect(mix);osc2.connect(mix);mix.connect(lp);lp.connect(env);env.connect(master);
-    osc1.start(when);osc2.start(when);osc1.stop(when+dur+.05);osc2.stop(when+dur+.05);
+
+    osc1.connect(mix);
+    osc2.connect(mix);
+    mix.connect(lp);
+    lp.connect(env);
+    env.connect(trumpetGain);
+
+    wobble.start(when);
+    osc1.start(when);
+    osc2.start(when);
+    wobble.stop(when+dur+.05);
+    osc1.stop(when+dur+.05);
+    osc2.stop(when+dur+.05);
   }
-  function pluck(freq,when){
-    const osc=ctx.createOscillator();
+
+  function pluck(freq,when,dur=.72){
+    if(!rootsTempleCtx)return;
+    const tone=remember(ctx.createOscillator());
     const env=ctx.createGain();
     const lp=ctx.createBiquadFilter();
-    osc.type='triangle';osc.frequency.value=freq;
-    lp.type='lowpass';lp.frequency.value=1600;
-    env.gain.setValueAtTime(.26,when);
-    env.gain.exponentialRampToValueAtTime(.0001,when+.55);
-    osc.connect(lp);lp.connect(env);env.connect(master);
-    osc.start(when);osc.stop(when+.6);
+    const body=ctx.createBiquadFilter();
+
+    tone.type='triangle';
+    tone.frequency.value=freq;
+    lp.type='lowpass';
+    lp.frequency.value=1450+Math.random()*300;
+    body.type='peaking';
+    body.frequency.value=freq*2;
+    body.Q.value=1.3;
+    body.gain.value=4;
+
+    env.gain.setValueAtTime(.22,when);
+    env.gain.exponentialRampToValueAtTime(.0001,when+dur);
+
+    tone.connect(lp);
+    lp.connect(body);
+    body.connect(env);
+    env.connect(stringsGain);
+    tone.start(when);
+    tone.stop(when+dur+.03);
   }
-  function cymbal(when){
-    const dur=.65;
+
+  function cymbal(when,accent=1){
+    if(!rootsTempleCtx)return;
+    const dur=.72;
     const buffer=ctx.createBuffer(1,Math.floor(ctx.sampleRate*dur),ctx.sampleRate);
     const data=buffer.getChannelData(0);
-    for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/data.length,2.2);
-    const src=ctx.createBufferSource();src.buffer=buffer;
-    const hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=3800;
-    const g=ctx.createGain();g.gain.value=.13;
-    src.connect(hp);hp.connect(g);g.connect(master);src.start(when);
+    for(let i=0;i<data.length;i++){
+      const x=i/data.length;
+      data[i]=(Math.random()*2-1)*Math.pow(1-x,2.1);
+    }
+    const src=remember(ctx.createBufferSource());
+    const hp=ctx.createBiquadFilter();
+    const bp=ctx.createBiquadFilter();
+    const g=ctx.createGain();
+    src.buffer=buffer;
+    hp.type='highpass';
+    hp.frequency.value=3100;
+    bp.type='bandpass';
+    bp.frequency.value=6200;
+    bp.Q.value=.6;
+    g.gain.value=.13*accent;
+    src.connect(hp);
+    hp.connect(bp);
+    bp.connect(g);
+    g.connect(cymbalGain);
+    src.start(when);
   }
 
-  const t=ctx.currentTime+.03;
-  [0,3.6,7.5,11.2].forEach((x,i)=>trumpet([196,220,196,246.94][i],t+x,1.05));
-  const scale=[146.83,164.81,196,220,196,164.81,146.83];
-  for(let i=0;i<22;i++)pluck(scale[i%scale.length],t+.35+i*.58);
-  [2.9,6.6,10.3,13.1].forEach(x=>cymbal(t+x));
+  function startAssembly(){
+    const seconds=7;
+    const buffer=ctx.createBuffer(1,ctx.sampleRate*seconds,ctx.sampleRate);
+    const data=buffer.getChannelData(0);
+    let last=0;
+    for(let i=0;i<data.length;i++){
+      const white=Math.random()*2-1;
+      last=.985*last+.015*white;
+      data[i]=last*.9+white*.1;
+    }
+    const src=remember(ctx.createBufferSource());
+    const hp=ctx.createBiquadFilter();
+    const lp=ctx.createBiquadFilter();
+    const pulse=ctx.createGain();
+    const lfo=remember(ctx.createOscillator());
+    const lfoGain=ctx.createGain();
 
-  if(rootsAudioStatus)rootsAudioStatus.innerHTML='<strong>Tempio · paesaggio sonoro didattico.</strong> Trombe, corde e cimbali sono evocati sinteticamente a partire dalle fonti: non è una ricostruzione filologica del suono antico.';
-  rootsStopTimer=setTimeout(()=>{
-    stopTempleSound();
-    resetRootsButton();
-    if(rootsAudioStatus)rootsAudioStatus.innerHTML='<strong>Fine della ricostruzione.</strong> Passa alla sinagoga per ascoltare una tradizione vocale vivente.';
-  },15300);
+    src.buffer=buffer;
+    src.loop=true;
+    hp.type='highpass'; hp.frequency.value=110;
+    lp.type='lowpass'; lp.frequency.value=780;
+    pulse.gain.value=.72;
+    lfo.type='sine'; lfo.frequency.value=.095;
+    lfoGain.gain.value=.17;
+    lfo.connect(lfoGain);
+    lfoGain.connect(pulse.gain);
+
+    src.connect(hp);
+    hp.connect(lp);
+    lp.connect(pulse);
+    pulse.connect(assemblyGain);
+    src.start();
+    lfo.start();
+  }
+
+  const stringScales=[
+    [146.83,164.81,196,220,196,164.81,146.83,130.81],
+    [146.83,174.61,196,233.08,196,174.61,146.83,130.81],
+    [164.81,196,220,246.94,220,196,164.81,146.83]
+  ];
+  let phraseIndex=0;
+
+  function schedulePhrase(){
+    if(!rootsTempleCtx)return;
+    const t=ctx.currentTime+.12;
+    const scale=stringScales[phraseIndex%stringScales.length];
+    phraseIndex++;
+    scale.forEach((freq,i)=>{
+      pluck(freq,t+i*.72+(Math.random()-.5)*.035,.58+Math.random()*.18);
+      if(i===2||i===6)pluck(freq/2,t+i*.72+.05,.68);
+    });
+
+    const hornChoices=[
+      [196,246.94],
+      [220,293.66],
+      [196,261.63]
+    ];
+    const horns=hornChoices[(phraseIndex-1)%hornChoices.length];
+    trumpet(horns[0],t+.2,1.22);
+    trumpet(horns[1],t+4.15,1.08+Math.random()*.18);
+
+    cymbal(t+2.7,.8);
+    cymbal(t+5.55,1.05);
+  }
+
+  startAssembly();
+  schedulePhrase();
+  rootsTempleScheduler=setInterval(schedulePhrase,6100);
+
+  if(templeMixerState)templeMixerState.textContent='Generatore attivo · muovi gli slider.';
+  if(rootsAudioStatus)rootsAudioStatus.innerHTML='<strong>Tempio · mixer sonoro didattico.</strong> Il paesaggio varia continuamente. Prova a isolare sacerdoti, Leviti, cimbali e presenza dell’assemblea usando gli slider: è un modello esplorativo, non una registrazione storica.';
 }
+
 
 rootsAudioButtons.forEach(btn=>{
   btn.dataset.originalLabel=btn.textContent;
@@ -1138,6 +1369,42 @@ rootsMediaAudio.addEventListener('ended',()=>{
     stopRootsAudio('<strong>Fine dell’ascolto.</strong> '+title+'.');
   }
 });
+
+templeMixerSliders.forEach(slider=>{
+  slider.addEventListener('input',()=>{
+    refreshTempleMixerUI();
+    updateTempleMixerGains();
+  });
+});
+templeMixerPresets.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const presets={
+      balanced:{trumpets:68,strings:52,cymbals:28,assembly:20,space:46,master:72},
+      priests:{trumpets:92,strings:26,cymbals:42,assembly:12,space:58,master:70},
+      levites:{trumpets:24,strings:88,cymbals:48,assembly:24,space:54,master:72},
+      quiet:{trumpets:12,strings:18,cymbals:5,assembly:10,space:66,master:50}
+    };
+    const p=presets[btn.dataset.templePreset]||presets.balanced;
+    templeMixerSliders.forEach(slider=>{
+      const key=slider.dataset.templeChannel;
+      if(Object.prototype.hasOwnProperty.call(p,key))slider.value=p[key];
+    });
+    refreshTempleMixerUI();
+    updateTempleMixerGains();
+    templeMixerPresets.forEach(x=>x.classList.toggle('active',x===btn));
+  });
+});
+if(templeMixerPower){
+  templeMixerPower.addEventListener('click',()=>{
+    const trigger=document.querySelector('[data-root-synth="temple"]');
+    if(rootsTempleCtx){
+      stopRootsAudio('<strong>Tempio fermato.</strong> Puoi riavviare il mixer quando vuoi.');
+    }else if(trigger){
+      playTempleSound(trigger);
+    }
+  });
+}
+refreshTempleMixerUI();
 
 // Prologo 00: lightbox delle fonti figurative ebraiche
 const jewishIconButtons=[...document.querySelectorAll('.jewish-icon-image')];
