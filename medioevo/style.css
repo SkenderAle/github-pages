@@ -261,3 +261,44 @@ footer a{text-decoration:none}
 .guido-grid p{font-size:.92rem;line-height:1.45;margin:0}
 @media(max-width:850px){.word-study-grid{grid-template-columns:1fr}.neume-table{grid-template-columns:repeat(2,1fr)}.evolution-steps{grid-template-columns:1fr}.evolution-steps i{transform:rotate(90deg);justify-self:center}.guido-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.neume-table{grid-template-columns:1fr}}
+
+.motion-score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:2rem 0 .8rem}
+.motion-card{background:#f3eadb;border:1px solid var(--line);border-top:4px solid var(--blue);padding:.9rem}
+.motion-card svg{display:block;width:100%;height:auto;margin:.4rem 0 .55rem}
+.motion-card .staff line{stroke:#cdbda5;stroke-width:1.4}
+.motion-card .voice-a{fill:none;stroke:#7b2e28;stroke-width:3}
+.motion-card .voice-b{fill:none;stroke:#2f5964;stroke-width:3}
+.motion-card .notes-a circle{fill:#7b2e28}
+.motion-card .notes-b circle{fill:#2f5964}
+.score-label{font:900 .72rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.motion-card p{font-size:.88rem;line-height:1.45;margin:.4rem 0 0;color:#65584c}
+.figure-note{font:650 .75rem/1.45 var(--sans);color:#75685a;margin:.6rem 0 2rem}
+.texture-score{margin:1.8rem 0 2.6rem;padding:1rem 1.1rem;background:#211e1a;color:#f5ecdf;border-top:4px solid var(--gold)}
+.texture-label{font:900 .68rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#e6c57b;margin-bottom:.8rem}
+.texture-row{display:grid;grid-template-columns:90px 1fr;align-items:center;gap:.8rem;padding:.55rem 0;border-top:1px solid rgba(255,255,255,.12)}
+.texture-row span{font:850 .72rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#ddc79d}
+.fast-notes,.pulse-notes,.held-note{font-family:Georgia,serif;letter-spacing:.18em;white-space:nowrap;overflow:hidden}
+.fast-notes{font-size:1.15rem}
+.held-note{font-size:1.15rem;color:#e7c987}
+.discant-score .pulse-notes{font-size:1.05rem}
+.discant-score .pulse-notes.slow{letter-spacing:.35em;color:#e7c987}
+.texture-score p{font-size:.88rem;line-height:1.45;color:#d8cbbd;margin:.75rem 0 0}
+.sederunt-map{display:grid;grid-template-columns:1.25fr .9fr 1.25fr;gap:.65rem;margin:2rem 0 .7rem}
+.sederunt-map>div{padding:1rem;min-height:190px;border:1px solid var(--line);position:relative;overflow:hidden}
+.sederunt-map b{display:block;font:900 .9rem/1 var(--sans);letter-spacing:.04em;margin-bottom:.4rem}
+.sederunt-map span{display:block;font:850 .68rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem}
+.sederunt-map small{display:block;font:650 .75rem/1.35 var(--sans)}
+.sederunt-poly{background:#ead9cf;border-top:5px solid var(--red)!important}
+.sederunt-poly span{color:var(--red)}
+.sederunt-return{background:#dfe7e9;border-top:5px solid var(--blue)!important}
+.sederunt-return span{color:var(--blue)}
+.poly-lines{position:absolute;left:1rem;right:1rem;bottom:1rem;height:60px}
+.poly-lines i,.poly-lines strong{position:absolute;left:0;right:0;height:2px;border-radius:999px}
+.poly-lines i:nth-child(1){top:5px;background:linear-gradient(90deg,transparent 0 3%,#7b2e28 3% 18%,transparent 18% 22%,#7b2e28 22% 48%,transparent 48% 56%,#7b2e28 56% 91%,transparent 91%)}
+.poly-lines i:nth-child(2){top:22px;background:linear-gradient(90deg,#996b38 0 12%,transparent 12% 18%,#996b38 18% 63%,transparent 63% 70%,#996b38 70% 100%)}
+.poly-lines i:nth-child(3){top:39px;background:linear-gradient(90deg,#2f5964 0 25%,transparent 25% 33%,#2f5964 33% 82%,transparent 82%)}
+.poly-lines strong{top:56px;background:#3b342e}
+.chant-line{position:absolute;left:1rem;right:1rem;bottom:2rem;height:3px;background:#2f5964}
+.poly-lexicon .word-study-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:950px){.motion-score-grid{grid-template-columns:1fr}.sederunt-map{grid-template-columns:1fr}.poly-lexicon .word-study-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.texture-row{grid-template-columns:1fr}.poly-lexicon .word-study-grid{grid-template-columns:1fr}}
