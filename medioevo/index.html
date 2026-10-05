@@ -624,10 +624,61 @@
       </div>
 
       <div class="voice-demo" id="voiceDemo">
-        <div class="voice-line principal">vox principalis · canto dato</div>
-        <div class="voice-line organal">vox organalis · voce aggiunta</div>
-        <button type="button" id="voicePlay">▶ Fai entrare la seconda voce</button>
-        <p id="voiceText">Una linea può essere ricordata da sola. Due linee devono imparare dove incontrarsi.</p>
+        <div class="voice-demo-head">
+          <div>
+            <div class="lab-kicker">Laboratorio · due voci</div>
+            <h3>Guarda quando entra la seconda voce</h3>
+            <p>Questo non è un brano storico trascritto, ma uno <strong>schema didattico</strong>: la <em>vox principalis</em> parte da sola, poi entra la <em>vox organalis</em>. I punti mostrano suoni successivi e le linee rendono visibile il profilo melodico.</p>
+          </div>
+          <button type="button" id="voicePlay">▶ Fai entrare la seconda voce</button>
+        </div>
+
+        <div class="voice-score" aria-label="Schema animato di vox principalis e vox organalis">
+          <div class="voice-score-label principal-label">
+            <b>vox principalis</b>
+            <span>canto dato</span>
+          </div>
+          <div class="voice-score-canvas">
+            <svg viewBox="0 0 900 300" role="img" aria-labelledby="voiceScoreTitle voiceScoreDesc">
+              <title id="voiceScoreTitle">Due voci che entrano in successione</title>
+              <desc id="voiceScoreDesc">La voce principale inizia da sola. La voce organale entra poco dopo con un profilo melodico differente.</desc>
+
+              <g class="voice-guides">
+                <line x1="70" y1="80" x2="850" y2="80"/>
+                <line x1="70" y1="150" x2="850" y2="150"/>
+                <line x1="70" y1="220" x2="850" y2="220"/>
+              </g>
+
+              <path class="voice-path principal-path" id="principalPath"
+                d="M80 205 C140 175 185 178 235 145 S340 95 405 120 S505 185 575 145 S685 86 755 112 S815 145 840 132"/>
+              <path class="voice-path organal-path" id="organalPath"
+                d="M185 235 C245 215 295 188 340 165 S430 105 485 132 S585 205 645 172 S735 122 790 145 S825 168 840 160"/>
+
+              <g class="principal-notes">
+                <circle cx="80" cy="205" r="7"/><circle cx="180" cy="168" r="7"/><circle cx="285" cy="120" r="7"/><circle cx="405" cy="120" r="7"/><circle cx="530" cy="168" r="7"/><circle cx="655" cy="110" r="7"/><circle cx="755" cy="112" r="7"/><circle cx="840" cy="132" r="7"/>
+              </g>
+              <g class="organal-notes">
+                <circle cx="185" cy="235" r="7"/><circle cx="290" cy="190" r="7"/><circle cx="385" cy="138" r="7"/><circle cx="485" cy="132" r="7"/><circle cx="595" cy="190" r="7"/><circle cx="690" cy="145" r="7"/><circle cx="790" cy="145" r="7"/><circle cx="840" cy="160" r="7"/>
+              </g>
+
+              <circle class="voice-cursor principal-cursor" id="principalCursor" cx="80" cy="205" r="9"/>
+              <circle class="voice-cursor organal-cursor" id="organalCursor" cx="185" cy="235" r="9"/>
+            </svg>
+          </div>
+          <div class="voice-score-label organal-label">
+            <b>vox organalis</b>
+            <span>voce aggiunta</span>
+          </div>
+        </div>
+
+        <div class="voice-demo-legend">
+          <div><i class="legend-principal"></i><span>la voce principale parte da sola</span></div>
+          <div><i class="legend-organal"></i><span>la seconda voce entra dopo e deve coordinarsi con la prima</span></div>
+        </div>
+
+        <div class="gesture-result voice-demo-result" id="voiceText">
+          Una linea può essere ricordata da sola. Due linee devono imparare <strong>dove e quando incontrarsi</strong>.
+        </div>
       </div>
 
       <h3>Quando una nota del canto diventa uno spazio enorme: l'organum purum</h3>
