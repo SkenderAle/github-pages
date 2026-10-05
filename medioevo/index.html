@@ -304,9 +304,9 @@
       </div>
 
       <div class="gesture-lab" id="gestureLab">
-        <div class="lab-kicker">Laboratorio · gesto → suono → segno</div>
+        <div class="lab-kicker">Laboratorio · gesto → suono</div>
         <h3>Segui la linea con la mano</h3>
-        <p>Premi il pulsante e segui il movimento. La mano sale, scende, indugia e riparte. Sotto, i segni si accendono come se il gesto lasciasse una traccia.</p>
+        <p>Premi il pulsante e segui il movimento. La mano sale, scende, indugia e riparte. Qui osserviamo soltanto il <strong>profilo generale del gesto</strong>: i singoli neumi arriveranno subito dopo, con un secondo laboratorio più lento.</p>
 
         <div class="gesture-stage" id="gestureStage">
           <svg viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
@@ -315,16 +315,64 @@
           <div class="hand" id="gestureHand" aria-hidden="true">☝</div>
         </div>
 
-        <div class="neume-strip" aria-label="Segni neumatici didattici">
-          <span>⌒</span><span>⁄</span><span>∪</span><span>⌁</span><span>⁝</span><span>∩</span><span>⁄⁄</span><span>⌣</span><span>⌁</span><span>⌒</span>
-        </div>
-
         <div class="gesture-controls">
           <button type="button" id="gesturePlay">▶ Segui il gesto</button>
-          <span>Il tracciato e i segni sono volutamente didattici. Non imitano un manoscritto reale.</span>
+          <span>Il tracciato è volutamente didattico: serve a rendere visibile il movimento della voce.</span>
         </div>
 
-        <div class="gesture-result" id="gestureResult">Il segno non è ancora una nota moderna: è una <strong>memoria del movimento</strong>. La pagina comincia a ricordare ciò che la mano e la voce facevano insieme.</div>
+        <div class="gesture-result" id="gestureResult">Prima ancora del singolo segno c'è un'idea di direzione: la voce sale, scende, indugia, riparte. La pagina proverà a trasformare questo movimento in <strong>memoria grafica</strong>.</div>
+      </div>
+
+      <div class="neume-focus-lab" id="neumeFocusLab">
+        <div class="neume-focus-copy">
+          <div class="lab-kicker">Laboratorio · un neuma alla volta</div>
+          <h3>Adesso lascia che sia il segno a guidare la mano</h3>
+          <p>Premi il pulsante. Il tracciato compare lentamente e un piccolo punto luminoso ne percorre la forma. <strong>Seguilo con il dito nell'aria</strong>, senza pensare ancora alle note moderne: prova a percepire soltanto la direzione del gesto.</p>
+        </div>
+
+        <div class="neume-player">
+          <div class="neume-player-stage">
+            <div class="folio-corner" aria-hidden="true">✦</div>
+            <div class="neume-counter" id="neumeCounter">01 / 08</div>
+            <svg id="neumeTraceSvg" viewBox="0 0 300 220" role="img" aria-labelledby="neumeTraceTitle neumeTraceDesc">
+              <title id="neumeTraceTitle">Pes</title>
+              <desc id="neumeTraceDesc">Tracciato didattico del pes, movimento ascendente di due suoni.</desc>
+              <path class="neume-ghost" id="neumeGhostPath" d="M92 158 Q132 154 148 124 Q166 88 210 67"/>
+              <path class="neume-trace" id="neumeTracePath" d="M92 158 Q132 154 148 124 Q166 88 210 67"/>
+              <circle class="neume-cursor" id="neumeCursor" cx="92" cy="158" r="7"/>
+            </svg>
+            <div class="neume-caption">
+              <div>
+                <span class="neume-kind">NEUMA</span>
+                <strong id="neumeName">Pes / podatus</strong>
+              </div>
+              <p id="neumeDescription">Due suoni in salita. Il gesto tende verso l'alto.</p>
+            </div>
+          </div>
+
+          <div class="neume-rail" id="neumeRail" aria-label="Scegli un neuma">
+            <button type="button" class="active" data-neume-index="0"><span>01</span><b>Pes</b></button>
+            <button type="button" data-neume-index="1"><span>02</span><b>Clivis</b></button>
+            <button type="button" data-neume-index="2"><span>03</span><b>Torculus</b></button>
+            <button type="button" data-neume-index="3"><span>04</span><b>Porrectus</b></button>
+            <button type="button" data-neume-index="4"><span>05</span><b>Scandicus</b></button>
+            <button type="button" data-neume-index="5"><span>06</span><b>Climacus</b></button>
+            <button type="button" data-neume-index="6"><span>07</span><b>Virga</b></button>
+            <button type="button" data-neume-index="7"><span>08</span><b>Punctum</b></button>
+          </div>
+
+          <div class="neume-player-controls">
+            <button type="button" id="neumePlay">▶ Segui i neumi</button>
+            <button type="button" class="secondary" id="neumeReplay">↻ Ripeti questo segno</button>
+            <div class="neume-speed"><span>Lento</span><i></i><span>osserva · imita · ricorda</span></div>
+          </div>
+
+          <div class="neume-instruction" id="neumeInstruction">
+            <b>Prova ora.</b> Disegna il movimento del <em>pes</em> con l'indice. Non stai copiando una nota: stai memorizzando una direzione.
+          </div>
+        </div>
+
+        <p class="figure-note">Le forme di questo laboratorio sono <strong>schemi didattici semplificati</strong>, non facsimili paleografici. Servono a riconoscere l'idea gestuale dei neumi prima di incontrare le grafie reali di San Gallo, Laon e delle altre famiglie notazionali.</p>
       </div>
 
       <h3>Un neuma può contenere più di un suono</h3>
