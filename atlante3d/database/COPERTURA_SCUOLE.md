@@ -4,12 +4,13 @@
 
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
-- Compositori censiti: **263**.
-- Senza legami di scuola o tradizione: **65**.
+- Compositori censiti: **267**.
+- Senza legami di scuola o tradizione: **69**.
 - Senza relazioni specialistiche di alcun tipo: **20**.
 - Relazioni nella lente Scuole e tradizioni: **252**.
-- Prime ricognizioni musicologiche per nome: **40** su 263 (non equivalgono alla revisione bibliografica definitiva).
-- Identità Wikidata riconciliate: **19** su 263.
+- Prime ricognizioni registrate per nome: **80** su 267 (non equivalgono alla revisione bibliografica definitiva).
+- Nel quinto lotto: **40** schede di copertura, di cui **14** con nuove verifiche mirate e **26** ancora in attesa di ricerca documentaria nominativa.
+- Identità Wikidata riconciliate: **19** su 267.
 
 ## Copertura per epoca
 
@@ -22,7 +23,7 @@
 | romanticismo | 47 | 10 |
 | post-romanticismo | 5 | 2 |
 | novecento | 61 | 27 |
-| non-classificato | 35 | 16 |
+| non-classificato | 39 | 20 |
 
 ## Audit di tutti i compositori
 
@@ -39,10 +40,12 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Claudio Merulo | 1 | 0 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
 | non-classificato | Costanzo Festa | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
 | non-classificato | Felice Anerio | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
+| non-classificato | Francesco Durante | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Francesco Soriano | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
 | non-classificato | Frederick Converse | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Fritz Reiner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | George Whitefield Chadwick | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Giacomo Antonio Perti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Gilles Binchois | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
 | non-classificato | Gioseffo Zarlino | 1 | 1 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
 | non-classificato | Giovanni Animuccia | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
@@ -58,78 +61,80 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Johannes Ockeghem | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
 | non-classificato | Józef Elsner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Maksimilian Steinberg | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Marcantonio Ingegneri | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Michael Haydn | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Michael Praetorius | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | da avviare |
 | non-classificato | Nadia Boulanger | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Pietro Nardini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Rubin Goldmark | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Samuel Scheidt | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | da avviare |
 | non-classificato | Sergej Taneev | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Wojciech Żywny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | medioevo | Adam de la Halle | 1 | 0 | 0 | 1 | 0 | Tradizione dei trovieri francesi | catalogato | **Lotto 1** |
-| medioevo | Francesco Landini | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | da avviare |
-| medioevo | Gherardello da Firenze | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | da avviare |
-| medioevo | Giovanni da Cascia | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | da avviare |
-| medioevo | Guillaume de Machaut | 1 | 0 | 0 | 0 | 0 | Ars nova francese | catalogato | da avviare |
-| medioevo | Guillaume Dufay | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
+| medioevo | Francesco Landini | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | **Lotto 5 (da approfondire)** |
+| medioevo | Gherardello da Firenze | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | **Lotto 5 (da approfondire)** |
+| medioevo | Giovanni da Cascia | 1 | 0 | 0 | 1 | 0 | Ars nova italiana | catalogato | **Lotto 5** |
+| medioevo | Guillaume de Machaut | 1 | 0 | 0 | 0 | 0 | Ars nova francese | catalogato | **Lotto 5 (da approfondire)** |
+| medioevo | Guillaume Dufay | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 5 (da approfondire)** |
 | medioevo | Hildegard von Bingen | 1 | 0 | 0 | 0 | 0 | Monodia sacra e misticismo medievale | catalogato | **Lotto 1** |
-| medioevo | Jacopo da Bologna | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | da avviare |
+| medioevo | Jacopo da Bologna | 1 | 0 | 0 | 1 | 0 | Ars nova italiana | catalogato | **Lotto 5** |
 | medioevo | Jean Bretel | 1 | 0 | 0 | 1 | 0 | Tradizione dei trovieri francesi | catalogato | da avviare |
-| medioevo | Léonin | 1 | 0 | 0 | 0 | 0 | Scuola di Notre-Dame | catalogato | da avviare |
-| medioevo | Pérotin | 1 | 0 | 0 | 0 | 0 | Scuola di Notre-Dame | catalogato | da avviare |
-| rinascimento | Adriano Willaert | 2 | 1 | 0 | 0 | 0 | Scuola franco-fiamminga · Scuola veneziana | catalogato | da avviare |
-| rinascimento | Andrea Gabrieli | 1 | 1 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
-| rinascimento | Barbara Strozzi | 1 | 1 | 0 | 0 | 0 | Accademia degli Unisoni · Venezia 1637 | catalogato | da avviare |
-| rinascimento | Bartolomeo Tromboncino | 1 | 0 | 0 | 0 | 0 | Frottola delle corti italiane | catalogato | da avviare |
-| rinascimento | Carlo Gesualdo | 1 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco | catalogato | da avviare |
-| rinascimento | Cipriano de Rore | 2 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga · Scuola veneziana | catalogato | da avviare |
-| rinascimento | Claudio Monteverdi | 3 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco · Scuola operistica veneziana del Seicento · Scuola veneziana | catalogato | da avviare |
-| rinascimento | Cristóbal de Morales | 1 | 0 | 0 | 0 | 0 | Polifonia sacra spagnola del Cinquecento | catalogato | da avviare |
-| rinascimento | Francisco Guerrero | 1 | 0 | 0 | 0 | 0 | Polifonia sacra spagnola del Cinquecento | catalogato | da avviare |
-| rinascimento | Giovanni Gabrieli | 1 | 2 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
-| rinascimento | Giovanni Pierluigi da Palestrina | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
-| rinascimento | John Dowland | 1 | 0 | 0 | 0 | 0 | Tradizioni inglesi elisabettiane | catalogato | da avviare |
-| rinascimento | Josquin des Prez | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
+| medioevo | Léonin | 1 | 0 | 1 | 0 | 0 | Scuola di Notre-Dame | catalogato | **Lotto 5** |
+| medioevo | Pérotin | 1 | 0 | 1 | 0 | 0 | Scuola di Notre-Dame | catalogato | **Lotto 5** |
+| rinascimento | Adriano Willaert | 2 | 1 | 0 | 0 | 0 | Scuola franco-fiamminga · Scuola veneziana | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Andrea Gabrieli | 1 | 1 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Barbara Strozzi | 1 | 1 | 0 | 0 | 0 | Accademia degli Unisoni · Venezia 1637 | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Bartolomeo Tromboncino | 1 | 0 | 0 | 0 | 0 | Frottola delle corti italiane | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Carlo Gesualdo | 1 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Cipriano de Rore | 2 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga · Scuola veneziana | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Claudio Monteverdi | 3 | 1 | 0 | 0 | 0 | Madrigalismo cinquecentesco · Scuola operistica veneziana del Seicento · Scuola veneziana | catalogato | **Lotto 5** |
+| rinascimento | Cristóbal de Morales | 1 | 0 | 0 | 0 | 0 | Polifonia sacra spagnola del Cinquecento | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Francisco Guerrero | 1 | 0 | 0 | 0 | 0 | Polifonia sacra spagnola del Cinquecento | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Giovanni Gabrieli | 1 | 2 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Giovanni Pierluigi da Palestrina | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | John Dowland | 1 | 0 | 0 | 0 | 0 | Tradizioni inglesi elisabettiane | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Josquin des Prez | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 5 (da approfondire)** |
 | rinascimento | Juan del Encina | 1 | 0 | 0 | 0 | 0 | Villancico profano e teatro iberico | catalogato | **Lotto 1** |
-| rinascimento | Luca Marenzio | 1 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco | catalogato | da avviare |
+| rinascimento | Luca Marenzio | 1 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco | catalogato | **Lotto 5 (da approfondire)** |
 | rinascimento | Luzzasco Luzzaschi | 2 | 1 | 0 | 0 | 0 | Madrigalismo cinquecentesco · Musica della corte estense a Ferrara | catalogato | da avviare |
 | rinascimento | Maddalena Casulana | 1 | 0 | 0 | 1 | 0 | Madrigalismo cinquecentesco | catalogato | **Lotto 1** |
-| rinascimento | Marchetto Cara | 1 | 0 | 0 | 0 | 0 | Frottola delle corti italiane | catalogato | da avviare |
-| rinascimento | Orlando di Lasso | 2 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco · Scuola franco-fiamminga | catalogato | da avviare |
-| rinascimento | Orlando Gibbons | 1 | 0 | 0 | 0 | 0 | Tradizioni inglesi elisabettiane | catalogato | da avviare |
-| rinascimento | Thomas Morley | 1 | 0 | 0 | 0 | 0 | Tradizioni inglesi elisabettiane | catalogato | da avviare |
-| rinascimento | Thomas Tallis | 1 | 0 | 0 | 0 | 0 | Tradizioni inglesi elisabettiane | catalogato | da avviare |
-| rinascimento | Tomás Luis de Victoria | 1 | 0 | 0 | 0 | 0 | Polifonia sacra spagnola del Cinquecento | catalogato | da avviare |
-| rinascimento | Vittoria Aleotti | 1 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco | catalogato | da avviare |
-| rinascimento | William Byrd | 1 | 0 | 0 | 0 | 0 | Tradizioni inglesi elisabettiane | catalogato | da avviare |
+| rinascimento | Marchetto Cara | 1 | 0 | 0 | 0 | 0 | Frottola delle corti italiane | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Orlando di Lasso | 2 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco · Scuola franco-fiamminga | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Orlando Gibbons | 1 | 0 | 0 | 0 | 0 | Tradizioni inglesi elisabettiane | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Thomas Morley | 1 | 1 | 0 | 0 | 0 | Tradizioni inglesi elisabettiane | catalogato | **Lotto 5** |
+| rinascimento | Thomas Tallis | 1 | 1 | 0 | 1 | 0 | Tradizioni inglesi elisabettiane | catalogato | **Lotto 5** |
+| rinascimento | Tomás Luis de Victoria | 1 | 0 | 0 | 0 | 0 | Polifonia sacra spagnola del Cinquecento | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | Vittoria Aleotti | 1 | 0 | 0 | 0 | 0 | Madrigalismo cinquecentesco | catalogato | **Lotto 5 (da approfondire)** |
+| rinascimento | William Byrd | 1 | 2 | 0 | 1 | 0 | Tradizioni inglesi elisabettiane | catalogato | **Lotto 5** |
 | barocco | Alessandro Marcello | 1 | 0 | 1 | 1 | 0 | Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
-| barocco | Alessandro Scarlatti | 1 | 0 | 0 | 0 | 1 | Scuola operistica napoletana | catalogato | da avviare |
+| barocco | Alessandro Scarlatti | 1 | 1 | 0 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 5** |
 | barocco | Antonio Caldara | 3 | 0 | 1 | 1 | 0 | Cappella imperiale viennese del primo Settecento · Oratorio e cantata nei salotti romani del primo Settecento · Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
 | barocco | Antonio Lotti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| barocco | Antonio Vivaldi | 2 | 0 | 2 | 1 | 0 | Ospedali musicali veneziani del Settecento · Scuola del concerto violinistico italiano | catalogato | da avviare |
-| barocco | Arcangelo Corelli | 1 | 0 | 3 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
+| barocco | Antonio Vivaldi | 2 | 0 | 2 | 1 | 0 | Ospedali musicali veneziani del Settecento · Scuola del concerto violinistico italiano | catalogato | **Lotto 5 (da approfondire)** |
+| barocco | Arcangelo Corelli | 1 | 0 | 3 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5 (da approfondire)** |
 | barocco | Baldassare Galuppi | 3 | 1 | 0 | 1 | 1 | Ospedali musicali veneziani del Settecento · Pratiche musicali veneziane del Settecento · Scuola operistica napoletana | catalogato | **Lotto 2** |
-| barocco | Benedetto Marcello | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
+| barocco | Benedetto Marcello | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5 (da approfondire)** |
 | barocco | Dietrich Buxtehude | 1 | 0 | 1 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
-| barocco | Domenico Scarlatti | 1 | 1 | 0 | 0 | 0 | Clavicembalo iberico e corte di Madrid | catalogato | da avviare |
+| barocco | Domenico Scarlatti | 1 | 3 | 0 | 0 | 0 | Clavicembalo iberico e corte di Madrid | catalogato | **Lotto 5** |
 | barocco | Élisabeth Jacquet de La Guerre | 1 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese | catalogato | da avviare |
 | barocco | Francesca Caccini | 1 | 1 | 0 | 1 | 0 | Musica e spettacolo della corte medicea | catalogato | **Lotto 1** |
 | barocco | Francesco Cavalli | 2 | 1 | 0 | 0 | 0 | Scuola operistica veneziana del Seicento · Scuola veneziana | catalogato | da avviare |
-| barocco | Francesco Gasparini | 1 | 0 | 0 | 0 | 0 | Ospedali musicali veneziani del Settecento | catalogato | da avviare |
+| barocco | Francesco Gasparini | 1 | 1 | 0 | 0 | 0 | Ospedali musicali veneziani del Settecento | catalogato | da avviare |
 | barocco | François Couperin | 1 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese | catalogato | da avviare |
 | barocco | Friedrich Wilhelm Zachow | 1 | 1 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
 | barocco | Georg Friedrich Händel | 4 | 1 | 1 | 2 | 0 | Opera seria · Oratorio e cantata nei salotti romani del primo Settecento · Oratorio inglese del Settecento · Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 2** |
 | barocco | Georg Philipp Telemann | 3 | 0 | 1 | 2 | 0 | Collegium musicum di Lipsia · Scuola luterana · Stile galante ed empfindsamer Stil | catalogato | **Lotto 2** |
-| barocco | Giovanni Battista Pergolesi | 1 | 0 | 0 | 0 | 2 | Scuola operistica napoletana | catalogato | da avviare |
+| barocco | Giovanni Battista Pergolesi | 1 | 2 | 0 | 0 | 2 | Scuola operistica napoletana | catalogato | **Lotto 5** |
 | barocco | Giovanni Battista Somis | 2 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato | da avviare |
 | barocco | Giovanni Bonaventura Viviani | 1 | 0 | 0 | 0 | 0 | Cappella di corte di Innsbruck nel Seicento | catalogato | **Lotto 1** |
 | barocco | Giovanni Legrenzi | 1 | 0 | 0 | 0 | 0 | Scuola operistica veneziana del Seicento | catalogato | da avviare |
 | barocco | Girolamo Frescobaldi | 2 | 2 | 1 | 0 | 0 | Musica della corte estense a Ferrara · Tastiere italiane del primo Seicento | catalogato | **Lotto 1** |
-| barocco | Giulio Caccini | 1 | 1 | 0 | 1 | 0 | Camerata fiorentina e ambiente di Corsi | catalogato | da avviare |
-| barocco | Giuseppe Tartini | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
-| barocco | Giuseppe Torelli | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
+| barocco | Giulio Caccini | 1 | 1 | 0 | 2 | 0 | Camerata fiorentina e ambiente di Corsi | catalogato | **Lotto 5** |
+| barocco | Giuseppe Tartini | 1 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
+| barocco | Giuseppe Torelli | 1 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
 | barocco | Heinrich Schütz | 2 | 1 | 0 | 0 | 0 | Scuola luterana · Scuola veneziana | catalogato | da avviare |
 | barocco | Henry Purcell | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | da avviare |
-| barocco | Jacopo Peri | 1 | 0 | 0 | 0 | 0 | Camerata fiorentina e ambiente di Corsi | catalogato | da avviare |
+| barocco | Jacopo Peri | 1 | 0 | 0 | 1 | 0 | Camerata fiorentina e ambiente di Corsi | catalogato | da avviare |
 | barocco | Jean-Baptiste Lully | 1 | 1 | 0 | 1 | 0 | Teatro musicale francese del Barocco | catalogato | da avviare |
 | barocco | Jean-Marie Leclair | 2 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato | **Lotto 2** |
 | barocco | Jean-Philippe Rameau | 2 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese · Teatro musicale francese del Barocco | catalogato | da avviare |
@@ -139,13 +144,13 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Johann Sebastian Bach | 3 | 0 | 9 | 1 | 0 | Collegium musicum di Lipsia · Scuola luterana · Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
 | barocco | John Blow | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | da avviare |
 | barocco | Leonardo Leo | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
-| barocco | Leonardo Vinci | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
+| barocco | Leonardo Vinci | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Maria Teresa Agnesi | 1 | 0 | 0 | 1 | 0 | Accademie domestiche musicali della Milano settecentesca | catalogato | **Lotto 1** |
 | barocco | Marin Marais | 2 | 2 | 0 | 1 | 0 | Scuola francese della viola da gamba · Teatro musicale francese del Barocco | catalogato | **Lotto 2** |
 | barocco | Monsieur de Sainte-Colombe | 1 | 1 | 0 | 0 | 0 | Scuola francese della viola da gamba | catalogato | da avviare |
 | barocco | Nicola Logroscino | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Nicola Porpora | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
-| barocco | Tomaso Albinoni | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
+| barocco | Tomaso Albinoni | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5 (da approfondire)** |
 | classicismo | Antonio Salieri | 1 | 3 | 1 | 0 | 0 | Riforma operistica del Settecento | catalogato | **Lotto 3** |
 | classicismo | Antonio Soler | 1 | 1 | 0 | 0 | 0 | Clavicembalo iberico e corte di Madrid | catalogato | da avviare |
 | classicismo | Carl Ditters von Dittersdorf | 3 | 0 | 0 | 1 | 0 | Classicismo viennese (categoria storiografica) · Stile galante ed empfindsamer Stil · Vita musicale viennese dell'Illuminismo | catalogato | **Lotto 2** |
