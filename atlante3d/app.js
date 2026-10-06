@@ -7,7 +7,7 @@ const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel");
 const COLORS={compositore:"#f3bd74",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
-let selected=null,drag=null,screen=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti";
+let selected=null,drag=null,screen=[],hitOrder=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti";
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
@@ -221,11 +221,13 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   if(b.node===selected)return -1;
   return Number(neighbors.has(a.node.id))-Number(neighbors.has(b.node.id));
  });
+ hitOrder=drawable;
  for(const p of drawable){
   const n=p.node,related=selected&&neighbors.has(n.id);
   const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
   ctx.globalAlpha=selected&&!related&&!highlight?.085:1;
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
+  p.hitRadius=rad;
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
   const isLabel=selected?Boolean(related):(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4);
   if(isLabel){
@@ -239,7 +241,9 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
 
  ctx.globalAlpha=1;requestAnimationFrame(draw);}
 function linked(n){return edges.filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
-function focusOn(n,openPanel=true){selected=n;focus=n;moveGeo(n);status.textContent=n.label+" · "+linked(n).length+" connessioni";populate(n);if(openPanel)setPanel(true);}
+function focusOn(n,openPanel=true){
+ if(selected!==n){search.value="";searchText="";}
+ selected=n;focus=n;moveGeo(n);status.textContent=n.label+" · "+linked(n).length+" connessioni";populate(n);if(openPanel)setPanel(true);}
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Scheda e video";tab.setAttribute("aria-expanded",String(open));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function populate(n){
@@ -285,13 +289,14 @@ function populate(n){
 }
 function pointer(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
 function hit(pt){
- // La sfera selezionata rimane sempre in primo piano anche per il puntatore:
- // nessuna sfera sottostante può intercettare il trascinamento nella sua area.
- const chosen=selected&&screen.find(p=>p.node===selected&&visibleNode(p.node)&&p.depth>-14);
- if(chosen&&Math.hypot(chosen.x-pt.x,chosen.y-pt.y)<Math.max(chosen.r*1.6*1.2+5,18))return chosen;
- const candidates=screen.filter(p=>visibleNode(p.node)&&p.depth>-14&&Math.hypot(p.x-pt.x,p.y-pt.y)<Math.max(p.r+9,13));
- // Le sfere prossime e visibili hanno precedenza su quelle sullo sfondo.
- return candidates.sort((a,b)=>a.depth-b.depth||Math.hypot(a.x-pt.x,a.y-pt.y)-Math.hypot(b.x-pt.x,b.y-pt.y))[0];
+ // Hit-testing nell'ordine INVERSO al disegno: intercetta la prima
+ // superficie visibile, non una sfera nascosta dietro di essa.
+ for(let i=hitOrder.length-1;i>=0;i--){
+  const p=hitOrder[i];
+  if(!visibleNode(p.node)||p.depth<=-14)continue;
+  if(Math.hypot(p.x-pt.x,p.y-pt.y)<=p.hitRadius)return p;
+ }
+ return null;
 }
 canvas.addEventListener("pointerdown",e=>{if(e.button!==0)return;let pt=pointer(e),p=hit(pt);drag={node:p?.node||null,x:pt.x,y:pt.y,depth:p?.depth||0,lastX:pt.x,lastY:pt.y,offsetX:p?p.x-pt.x:0,offsetY:p?p.y-pt.y:0,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");});
 canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hit(pt)?.node||null;canvas.style.cursor=hover?"pointer":"grab";return;}
