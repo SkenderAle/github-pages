@@ -45,6 +45,7 @@ body.panel-open #panelTab{right:min(315px,85vw)}
 #zoomSlider{width:105px;accent-color:#f0c88a;cursor:pointer;touch-action:pan-x}
 #zoomValue{min-width:40px;color:#f0dbb4;font:600 11px system-ui;text-align:center}
 @media(max-width:650px){#tools{max-width:calc(100vw - 20px)}.zoom-control{order:-1}#zoomSlider{width:100px}}
+#zoomIn:disabled,#zoomOut:disabled{opacity:.4;cursor:not-allowed}.zoom-control button{touch-action:manipulation;user-select:none}
 </style></head><body>
 <div id="scene"><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
 <header><div><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>La musica non sta in fila.</h1><p>Un atlante notturno di epoche, persone e idee</p></div><a class="back" href="../">← Home</a></header>
@@ -55,5 +56,5 @@ body.panel-open #panelTab{right:min(315px,85vw)}
 <button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Ascolti</button>
 <aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app.js?v=20261006-zoom-fix2" defer></script>
+<script src="app.js?v=20261006-zoom-fix3" defer></script>
 </body></html>
