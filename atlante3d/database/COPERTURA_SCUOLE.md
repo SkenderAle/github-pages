@@ -5,9 +5,9 @@
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
 - Compositori censiti: **288**.
-- Senza legami di scuola o tradizione: **73**.
+- Senza legami di scuola o tradizione: **66**.
 - Senza relazioni specialistiche di alcun tipo: **0**.
-- Relazioni nella lente Scuole e tradizioni: **269**.
+- Relazioni nella lente Scuole e tradizioni: **276**.
 - Prime ricognizioni registrate per nome: **288** su 288 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
 - Sesto lotto: **40** biografie censite con almeno una fonte, di cui **31** con nuove relazioni e **9** con prima verifica biografica ma relazioni da approfondire.
@@ -21,6 +21,7 @@
 - Seconda fase, secondo gruppo: **9** ulteriori relazioni specialistiche; i sette compositori precedentemente isolati sono ora connessi mediante relazioni storicamente spiegate.
 - Seconda fase, terzo gruppo: **4** nuove relazioni per Martini, Ponchielli e Halévy (tre scuole, una genealogia), con fonti Treccani e BnF.
 - Seconda fase, quarto gruppo: **7** nuove relazioni di scuola (Mattei, Weber, Wagner, Britten, Schaeffer, Henry, Durante), con nodo autonomo per la didattica napoletana del partimento.
+- Seconda fase, quinto gruppo: **7** relazioni di scuola, con due nuovi nodi per Scapigliatura milanese e La Jeune France del 1936.
 - Identità Wikidata riconciliate: **19** su 288.
 
 ## Copertura per epoca
@@ -67,7 +68,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Gennaro Manna | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | George Whitefield Chadwick | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Giacinto Sallustio | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
-| non-classificato | Giacomo Antonio Perti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Giacomo Antonio Perti | 1 | 2 | 0 | 0 | 0 | Scuola bolognese di contrappunto | catalogato | **Lotto 10** |
 | non-classificato | Gilles Binchois | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
 | non-classificato | Gioseffo Zarlino | 1 | 2 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 8** |
 | non-classificato | Giovanni Animuccia | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
@@ -141,7 +142,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Alessandro Marcello | 1 | 0 | 1 | 1 | 0 | Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
 | barocco | Alessandro Scarlatti | 1 | 1 | 0 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 5** |
 | barocco | Antonio Caldara | 3 | 0 | 1 | 1 | 0 | Cappella imperiale viennese del primo Settecento · Oratorio e cantata nei salotti romani del primo Settecento · Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
-| barocco | Antonio Lotti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| barocco | Antonio Lotti | 1 | 2 | 0 | 0 | 0 | Pratiche musicali veneziane del Settecento | catalogato | **Lotto 10** |
 | barocco | Antonio Vivaldi | 2 | 0 | 2 | 1 | 0 | Ospedali musicali veneziani del Settecento · Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
 | barocco | Arcangelo Corelli | 1 | 1 | 4 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
 | barocco | Baldassare Galuppi | 3 | 1 | 0 | 1 | 1 | Ospedali musicali veneziani del Settecento · Pratiche musicali veneziane del Settecento · Scuola operistica napoletana | catalogato | **Lotto 2** |
@@ -200,7 +201,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | classicismo | Giovanni Battista Viotti | 1 | 0 | 2 | 1 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 9** |
 | classicismo | Giovanni Giuseppe Cambini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | classicismo | Giovanni Paisiello | 1 | 1 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 6** |
-| classicismo | Giovanni Simone Mayr | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
+| classicismo | Giovanni Simone Mayr | 1 | 1 | 0 | 0 | 0 | Scuola caritatevole di Mayr a Bergamo | catalogato | **Lotto 9** |
 | classicismo | Giuseppe Malerbi | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
 | classicismo | Giuseppe Sarti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | classicismo | Johann Christian Bach | 1 | 3 | 1 | 0 | 0 | Stile galante ed empfindsamer Stil | catalogato | **Lotto 6** |
@@ -220,7 +221,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | romanticismo | Aleksandr Borodin | 1 | 0 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
 | romanticismo | Ambroise Thomas | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
 | romanticismo | Antonín Dvořák | 1 | 1 | 2 | 1 | 0 | Scuola nazionale boema | catalogato | **Lotto 7** |
-| romanticismo | Arrigo Boito | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 6** |
+| romanticismo | Arrigo Boito | 1 | 0 | 0 | 1 | 0 | Scapigliatura milanese | catalogato | **Lotto 6** |
 | romanticismo | Bedřich Smetana | 1 | 0 | 0 | 0 | 0 | Scuola nazionale boema | catalogato | **Lotto 7** |
 | romanticismo | Camille Saint-Saëns | 1 | 2 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 7** |
 | romanticismo | Carl Maria von Weber | 1 | 1 | 1 | 0 | 0 | Opera romantica tedesca | catalogato | **Lotto 3** |
@@ -233,7 +234,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | romanticismo | Fanny Hensel | 1 | 1 | 0 | 1 | 0 | Lied romantico tedesco | catalogato | **Lotto 6** |
 | romanticismo | Felix Mendelssohn | 1 | 1 | 1 | 1 | 0 | Lied romantico tedesco | catalogato | **Lotto 6** |
 | romanticismo | Franz Liszt | 1 | 2 | 1 | 1 | 0 | Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
-| romanticismo | Frédéric Chopin | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
+| romanticismo | Frédéric Chopin | 1 | 2 | 0 | 0 | 0 | Pianismo e composizione romantica | catalogato | **Lotto 3** |
 | romanticismo | Gabriel Fauré | 1 | 4 | 0 | 0 | 0 | Mélodie e musica da camera francese | catalogato | **Lotto 7** |
 | romanticismo | Gaetano Donizetti | 1 | 2 | 2 | 2 | 5 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Gaspare Spontini | 0 | 0 | 1 | 0 | 1 | — | **RICERCA** | **Lotto 9** |
@@ -256,7 +257,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | romanticismo | Niccolò Paganini | 1 | 1 | 4 | 0 | 0 | Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
 | romanticismo | Nikolaj Rimskij-Korsakov | 1 | 4 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
 | romanticismo | Pauline Viardot | 1 | 0 | 0 | 1 | 0 | Mélodie e musica da camera francese | catalogato | **Lotto 7** |
-| romanticismo | Pëtr Il'ič Čajkovskij | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
+| romanticismo | Pëtr Il'ič Čajkovskij | 1 | 2 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato | **Lotto 3** |
 | romanticismo | Pietro Mascagni | 1 | 1 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Richard Strauss | 1 | 0 | 1 | 1 | 0 | Lied romantico tedesco | catalogato | **Lotto 7** |
 | romanticismo | Richard Wagner | 1 | 1 | 9 | 1 | 0 | Opera romantica tedesca | catalogato | **Lotto 3** |
@@ -316,7 +317,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Luigi Russolo | 1 | 0 | 0 | 0 | 0 | Futurismo | catalogato | **Lotto 7** |
 | novecento | Maurice Ravel | 1 | 1 | 1 | 0 | 0 | Modernità francese del primo Novecento | catalogato | **Lotto 7** |
 | novecento | Michael Nyman | 1 | 0 | 0 | 0 | 0 | Minimalismo | catalogato | **Lotto 9** |
-| novecento | Olivier Messiaen | 0 | 4 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 7** |
+| novecento | Olivier Messiaen | 1 | 4 | 0 | 1 | 0 | La Jeune France · gruppo musicale del 1936 | catalogato | **Lotto 7** |
 | novecento | Ottorino Respighi | 1 | 1 | 0 | 0 | 0 | Generazione italiana del 1880 | catalogato | **Lotto 7** |
 | novecento | Paul Dessau | 1 | 0 | 1 | 0 | 0 | Teatro musicale brechtiano | catalogato | **Lotto 9** |
 | novecento | Paul Hindemith | 1 | 0 | 0 | 0 | 0 | Ripresa del contrappunto e neobarocco | catalogato | **Lotto 8** |
