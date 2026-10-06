@@ -9,8 +9,8 @@ let selected=null,drag=null,screen=[],showAllLabels=false,frame=0,hover=null,sea
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);drawNightAtlas();}
-function sxworld(node){let x=node.x-camera.x,y=node.y-camera.y,z=node.z-camera.z;const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),si=Math.sin(rotX);const rx=x*cy-z*sy,rz=x*sy+z*cy,ry=y*cx-rz*si,depth=y*si+rz*cx;const k=9/(16+depth),scale=Math.min(w,h)*.53*zoom*k;return {x:w/2+rx*scale,y:h/2+ry*scale,scale,depth};}
-function unproject(px,py,depth){let scale=Math.min(w,h)*.53*zoom*9/(16+depth);const rx=(px-w/2)/scale,ry=(py-h/2)/scale;const cx=Math.cos(rotX),si=Math.sin(rotX),cy=Math.cos(rotY),sy=Math.sin(rotY);const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};}
+function sxworld(node){let x=node.x-camera.x,y=node.y-camera.y,z=node.z-camera.z;const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),si=Math.sin(rotX);const rx=x*cy-z*sy,rz=x*sy+z*cy,ry=y*cx-rz*si,depth=y*si+rz*cx;const k=9/(16+depth),scale=Math.min(w,h)*.095*zoom*k;return {x:w/2+rx*scale,y:h/2+ry*scale,scale,depth};}
+function unproject(px,py,depth){let scale=Math.min(w,h)*.095*zoom*9/(16+depth);const rx=(px-w/2)/scale,ry=(py-h/2)/scale;const cx=Math.cos(rotX),si=Math.sin(rotX),cy=Math.cos(rotY),sy=Math.sin(rotY);const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};}
 function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw Error("Schema non valido");
  const all=db.nodes.filter(n=>n.visible!==0&&n.visible!=="0");
  const anchors=new Map();let i=0;
@@ -99,15 +99,26 @@ function drawSphere(x,y,r,color,active,related){
 
 function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;camera.y+=(focus.y-camera.y)*.085;camera.z+=(focus.z-camera.z)*.085;}
  if(cartography)ctx.drawImage(cartography,0,0,w,h);
- screen=nodes.map(n=>{let p=sxworld(n);p.node=n;p.r=clamp(n.radius*p.scale*.38,2,23)*(n===selected?1.5:1);if(drag?.node===n){p.x=drag.x;p.y=drag.y;}return p;});
+ screen=nodes.map(n=>{let p=sxworld(n);p.node=n;p.r=clamp(n.radius*1.75*zoom*9/(16+p.depth),3.2,24)*(n===selected?1.8:1);if(drag?.node===n){p.x=drag.x;p.y=drag.y;}return p;});
  const map=new Map(screen.map(p=>[p.node.id,p]));ctx.lineWidth=.8;
  for(const e of edges){let a=map.get(e.source),b=map.get(e.target);if(!a||!b||a.depth< -14||b.depth< -14)continue;if(!visibleNode(a.node)||!visibleNode(b.node))continue;
-  const highlight=selected&&(e.source===selected.id||e.target===selected.id),dim=selected&&!highlight;ctx.globalAlpha=dim?.08:highlight?.68:.18;ctx.strokeStyle=highlight?"#edd4a0":"#8bb0cd";ctx.lineWidth=highlight?1.25:.7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+  const highlight=selected&&(e.source===selected.id||e.target===selected.id),dim=selected&&!highlight;
+  ctx.globalAlpha=dim?.07:highlight?.72:.15;ctx.lineWidth=highlight?1.45:.7;
+  if(highlight){const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);path.addColorStop(0,"#ffe5a5");path.addColorStop(.52,"#a1dbec");path.addColorStop(1,"#dcacd9");ctx.strokeStyle=path;}
+  else ctx.strokeStyle="#90bbd0";
+  const bend=Math.min(38,Math.hypot(b.x-a.x,b.y-a.y)*.09);
+  ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.quadraticCurveTo((a.x+b.x)*.5+bend*.35,(a.y+b.y)*.5-bend,b.x,b.y);ctx.stroke();
+}
+ ctx.globalAlpha=1;
+ // Bussola luminosa discreta e profondità atmosferica della carta notturna.
+ ctx.globalAlpha=.28;ctx.strokeStyle="#b9d2d7";ctx.lineWidth=.8;
+ const cx=w*.93,cy=h*.14;
+ if(w>650){ctx.beginPath();ctx.arc(cx,cy,29,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,cy-36);ctx.lineTo(cx,cy+36);ctx.moveTo(cx-36,cy);ctx.lineTo(cx+36,cy);ctx.stroke();ctx.font="12px Georgia,serif";ctx.fillStyle="#e8d6ac";ctx.fillText("N",cx-4,cy-40);}
  ctx.globalAlpha=1;
  let drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>b.depth-a.depth);
  for(const p of drawable){let n=p.node,highlight=n===selected||n===hover||n.label.toLowerCase().includes(searchText)&&searchText.length>1;
   const connected=selected&&edges.some(e=>(e.source===selected.id&&e.target===n.id)||(e.target===selected.id&&e.source===n.id));
-  ctx.globalAlpha=selected&&!highlight&&!connected?.43:1;const rad=highlight?p.r*1.18:p.r;
+  ctx.globalAlpha=selected&&!highlight&&!connected?.43:1;const rad=highlight?Math.max(p.r*1.18,selected===n?12:p.r):p.r;
   if(highlight){ctx.beginPath();ctx.arc(p.x,p.y,rad+8,0,Math.PI*2);ctx.fillStyle="#f3cb8e24";ctx.fill();}
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(connected));
   let isLabel=showAllLabels||highlight||connected&&Math.abs(p.x-w/2)<w*.36&&Math.abs(p.y-h/2)<h*.38&&p.scale>.28||n.type==="periodo"&&p.scale>.4;
@@ -118,18 +129,35 @@ function linked(n){return edges.filter(e=>e.source===n.id||e.target===n.id).map(
 function focusOn(n,openPanel=true){selected=n;focus=n;status.textContent=n.label+" · "+linked(n).length+" connessioni";populate(n);if(openPanel)setPanel(true);}
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Scheda e video";tab.setAttribute("aria-expanded",String(open));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function populate(n){document.getElementById("panelTitle").textContent=n.label;document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica"}[n.type]||"");
- const dst=document.getElementById("panelContent");dst.textContent="";
+function populate(n){
+ document.getElementById("panelTitle").textContent=n.label;
+ document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica"}[n.type]||"");
+ const dst=document.getElementById("panelContent");dst.replaceChildren();
+ const conn=linked(n),relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
  if(n.url){const a=document.createElement("a");a.className="card";a.href=n.url;a.textContent="↗ Apri il percorso nell'Atlante";dst.append(a);}
- const title=document.createElement("h3");title.textContent="Connessioni";dst.append(title);
- const conn=linked(n),ul=document.createElement("ul");for(const row of conn.slice(0,26)){const li=document.createElement("li"),button=document.createElement("button");button.textContent=row.n.label;button.onclick=()=>focusOn(row.n,false);li.append(button);ul.append(li);}dst.append(ul);
- if(conn.length>26){const p=document.createElement("p");p.className="small";p.textContent="Altre "+(conn.length-26)+" connessioni nel grafo.";dst.append(p);}
- const h=document.createElement("h3");h.textContent="Video e ascolti";dst.append(h);
- const attached=videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean);
- if(!attached.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun video ancora catalogato per questa voce. Le risorse compariranno qui quando il webmaster le collegherà nel database.";dst.append(p);}
- for(const video of attached){const box=document.createElement("div");box.className="video";const title=document.createElement("strong");title.textContent=video.title||"Video";box.append(title);
- if(video.youtube_id&&/^[a-zA-Z0-9_-]{11}$/.test(video.youtube_id)){const img=document.createElement("img");img.src="https://i.ytimg.com/vi/"+video.youtube_id+"/hqdefault.jpg";img.alt="Anteprima video";img.loading="lazy";box.append(img);}
- const a=document.createElement("a");a.href=video.url||("https://www.youtube.com/watch?v="+video.youtube_id);a.target="_blank";a.rel="noopener noreferrer";a.textContent="Apri video ↗";box.append(a);dst.append(box);}
+ const mediaHead=document.createElement("div");mediaHead.className="panel-section-header";
+ const h=document.createElement("h3");h.textContent="Ascolti e video";mediaHead.append(h);
+ const total=document.createElement("span");total.className="media-count";total.textContent=relatedMedia.length+" risorse";mediaHead.append(total);dst.append(mediaHead);
+ if(!relatedMedia.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun ascolto catalogato per questa voce. La raccolta cresce con i capitoli dell’Atlante.";dst.append(p);}
+ for(const media of relatedMedia){
+   const box=document.createElement("article");box.className="video";
+   if(media.youtube_id&&/^[a-zA-Z0-9_-]{11}$/.test(media.youtube_id)){
+      const link=document.createElement("a");link.href=media.url;link.target="_blank";link.rel="noopener noreferrer";link.className="media-image";
+      const img=document.createElement("img");img.src="https://i.ytimg.com/vi/"+media.youtube_id+"/hqdefault.jpg";img.alt="Anteprima dell'ascolto";img.loading="lazy";
+      const play=document.createElement("span");play.className="play-glyph";play.textContent="▶";link.append(img,play);box.append(link);
+   }
+   const t=document.createElement("strong");t.className="media-title";t.textContent=media.title||"Ascolto";box.append(t);
+   if(media.kind==="audio"&&/^https:/.test(media.url||"")){
+     const audio=document.createElement("audio");audio.controls=true;audio.preload="none";audio.src=media.url;audio.setAttribute("aria-label",media.title||"Ascolto audio");box.append(audio);
+   }
+   const link=document.createElement("a");link.className="media-link";link.href=media.url||("#");link.target="_blank";link.rel="noopener noreferrer";link.textContent=media.kind==="audio"?"Fonte audio ↗":"Ascolta su YouTube ↗";box.append(link);
+   dst.append(box);
+ }
+ const group=document.createElement("details");group.className="related-list";group.open=!relatedMedia.length;
+ const summary=document.createElement("summary");summary.textContent="Connessioni · "+conn.length;group.append(summary);
+ const ul=document.createElement("ul");for(const row of conn.slice(0,45)){const li=document.createElement("li"),button=document.createElement("button");button.textContent=row.n.label;button.onclick=()=>focusOn(row.n,false);li.append(button);ul.append(li);}group.append(ul);
+ if(conn.length>45){const p=document.createElement("p");p.className="small";p.textContent="Altre "+(conn.length-45)+" connessioni esplorabili nella rete.";group.append(p);}
+ dst.append(group);
 }
 function pointer(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
 function hit(pt){return screen.filter(p=>visibleNode(p.node)&&p.depth>-14&&Math.hypot(p.x-pt.x,p.y-pt.y)<Math.max(p.r+9,13)).sort((a,b)=>Math.hypot(a.x-pt.x,a.y-pt.y)-Math.hypot(b.x-pt.x,b.y-pt.y))[0];}
