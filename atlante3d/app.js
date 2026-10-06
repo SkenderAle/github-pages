@@ -223,11 +223,11 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  });
  for(const p of drawable){
   const n=p.node,related=selected&&neighbors.has(n.id);
-  const highlight=n===selected||n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText));
+  const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
   ctx.globalAlpha=selected&&!related&&!highlight?.085:1;
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
-  const isLabel=selected?(related||highlight):(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4);
+  const isLabel=selected?Boolean(related):(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4);
   if(isLabel){
    ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
