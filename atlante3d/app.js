@@ -3,6 +3,7 @@
 const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:false});
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
 const search=document.getElementById("search"),filter=document.getElementById("filter"),reset=document.getElementById("reset"),labels=document.getElementById("labels");
+const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const COLORS={compositore:"#f3bd74",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
 let selected=null,drag=null,screen=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti";
@@ -227,13 +228,18 @@ canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hi
 });
 function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remove("dragging");if(d.node)focusOn(d.node,!d.moved);}
 canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
-canvas.addEventListener("wheel",e=>{e.preventDefault();zoom=clamp(zoom*Math.exp(-e.deltaY*.001),.45,3.5);},{passive:false});
+function setZoom(next){zoom=clamp(next,.45,3.5);zoomSlider.value=String(Math.round(zoom*100));zoomValue.textContent=Math.round(zoom*100)+"%";}
+zoomIn.addEventListener("click",()=>setZoom(zoom*1.2));
+zoomOut.addEventListener("click",()=>setZoom(zoom/1.2));
+zoomSlider.addEventListener("input",()=>setZoom(Number(zoomSlider.value)/100));
+canvas.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.001));},{passive:false});
+
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
 search.addEventListener("input",()=>{searchText=search.value.trim().toLowerCase();if(searchText){const results=nodes.filter(n=>n.label.toLowerCase().includes(searchText));status.textContent=results.length+" corrispondenze · Invio per centrare la prima";}});
 search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=nodes.find(n=>n.label.toLowerCase().includes(searchText));if(n){focusOn(n);search.blur();}});
 filter.addEventListener("change",()=>{typeFilter=filter.value;});
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
-reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;zoom=1;search.value="";searchText="";filter.value="tutti";typeFilter="tutti";setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
+reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);search.value="";searchText="";filter.value="tutti";typeFilter="tutti";setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
 window.addEventListener("resize",resize);
 Promise.all([fetch("database/grafo.json",{cache:"no-cache"}),fetch("database/video.json",{cache:"no-cache"})]).then(async responses=>{if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);const db=await responses[0].json();const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];return db;}).then(db=>{prepare(db);requestAnimationFrame(draw);}).catch(e=>{document.body.classList.add("error");status.textContent="Errore caricamento: "+e.message;console.error(e);});
 })();
