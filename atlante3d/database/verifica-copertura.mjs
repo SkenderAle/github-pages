@@ -58,6 +58,7 @@ else if(args.has('--markdown')){
  '- Nono lotto: **'+rows.filter(r=>r.reviewBatch==='nono-lotto-40').length+'** ricognizioni nominative, di cui **'+rows.filter(r=>r.reviewBatch==='nono-lotto-40'&&r.reviewStatus?.includes('con-relazioni')).length+'** con nuovi archi documentati e **'+rows.filter(r=>r.reviewBatch==='nono-lotto-40'&&!r.reviewStatus?.includes('con-relazioni')).length+'** con ricerca biografica preliminare.',
  '- Decimo lotto: **'+rows.filter(r=>r.reviewBatch==='decimo-lotto-40').length+'** ricognizioni nominative, di cui **'+rows.filter(r=>r.reviewBatch==='decimo-lotto-40'&&r.reviewStatus?.includes('con-relazioni')).length+'** con nuovi archi documentati e **'+rows.filter(r=>r.reviewBatch==='decimo-lotto-40'&&!r.reviewStatus?.includes('con-relazioni')).length+'** senza nuovi archi in questa passata.',
  '- Undicesimo lotto conclusivo: **'+rows.filter(r=>r.reviewBatch==='undicesimo-lotto-08').length+'** ulteriori ricognizioni nominative; fonti rafforzate per relazioni già presenti, nessun nuovo arco arbitrario.',
+ '- Seconda fase, primo gruppo: **'+rows.filter(r=>identitiesById.get(r.id)?.musicological_audit?.deep_review?.phase==='seconda-fase-primo-gruppo').length+'** autori coinvolti in nuovi riscontri puntuali; **'+allRelations.filter(r=>r.id.startsWith('audit2-')).length+'** nuovi archi, senza dichiarare l’audit completo delle quattro lenti.',
  '- Identità Wikidata riconciliate: **'+report.externalVerified+'** su '+rows.length+'.',
  '',
  '## Copertura per epoca','',
