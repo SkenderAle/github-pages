@@ -1,5 +1,5 @@
 # Musurgia Mundi · Lenti di esplorazione
-**Stato:** catalogo specialistico in ampliamento e revisione critica, 6 ottobre 2026.
+**Stato:** rilascio "Scuole e tradizioni" del 6 ottobre 2026. Il catalogo è in ampliamento e necessita di controllo bibliografico continuativo.
 
 ## Riferimento metodologico: Musicmap
 Riferimento pubblico: https://musicmap.info/ (consultato per metodo, non per il codice o la grafica).
@@ -10,13 +10,23 @@ La scelta per Musurgia Mundi: **una sola rete di persone e oggetti musicali, mol
 
 ## Lenti
 - **Storia musicale**: tutte le relazioni della rete storica in `grafo.json`; è la modalità iniziale e continua a mostrare i luoghi sempre disponibili come marcatori.
-- **Parentele**: soltanto rapporti documentati fra persone (filiazione, fratelli, affinità acquisita, matrimonio). Non dedurre parentele da cognomi o epoche.
+- **Scuole e tradizioni**: scuole storiche, cerchie documentate, linee didattiche, circolazione di tecniche e trasmissioni stilistiche. La **parentela biologica e matrimoniale è esclusa** dai dati specialistici. Una tradizione retrospettiva non è una scuola formale.
 - **Maestri e allievi**: formazione didattica formalmente riconoscibile. La freccia va dal maestro all'allievo.
 - **Influenze**: rapporto stilistico documentato, con direzione; distingue influenza e eredità. Non equivale alla presenza nello stesso periodo.
-- **Incontri e collaborazioni**: sostegno artistico, lavoro congiunto e scambio musicale. La relazione non va confusa con una parentela.
+- **Incontri e collaborazioni**: sostegno artistico, lavoro congiunto e scambio musicale. Un incontro documentato non implica da solo una trasmissione compositiva.
 - **Genealogie dei generi**: ascendenze, contaminazioni, reazioni e rielaborazioni di forme, generi e pratiche compositive. Attraversa tanto i rapporti fra generi quanto i rapporti fra compositori e generi; non va ridotta a una successione cronologica.
 
 Le lenti sono **filtri espliciti**, non una somma indiscriminata. Quando si passa da una all'altra il contenuto dell'Atlante non cambia: cambia la domanda che si pone alla rete.
+
+## Scuole compositive: significato del collegamento
+
+**Una scuola non è una famiglia.** Nel database sono distinte, nella chiave `kind`, l'appartenenza documentata a un sodalizio, l'attività in una cappella o in un centro didattico, il riconoscimento di una tradizione retrospettiva e la trasmissione di un modello attraverso un'opera.
+
+La domanda «Perché sono collegati?» è obbligatoria sia per **scuola → compositore** sia per **scuola → scuola** e **scuola → pratica o genere**. Il database contiene esempi di questi ultimi, come il passaggio della tradizione franco-fiamminga a Venezia, la ricezione policorale in ambito luterano tramite Schütz e il passaggio dal serialismo viennese alla discussione postbellica di Darmstadt.
+
+**Esempi di distinzioni storiche indispensabili:** Peri fu legato soprattutto al successivo ambiente di Jacopo Corsi, mentre Caccini conobbe anche la prima Camerata di Bardi. La dicitura «classicismo viennese» è una categoria storiografica, non un corso frequentato congiuntamente da Haydn, Mozart e Beethoven. Il minimalismo raccoglie ricerche condivise ma anche poetiche differenti. «Scuola di Darmstadt» è una rete di incontri, non un'accademia di compositori che lavoravano all'unisono.
+
+**Copertura del rilascio:** nove nuovi nodi per le scuole e i sodalizi non già rappresentati, quattro nuovi compositori necessari a completare Gruppo dei Cinque e Les Six, più relazioni fra scuole, protagonisti, tecniche e generi. Il fatto che un elemento sia presente in `grafo.json` non lo rende automaticamente membro di una scuola: i rapporti delle lenti devono essere espliciti.
 
 ## Dati della lente
 Separati in `relazioni.json`, così non alterano l'originaria organizzazione in `grafo.json`.
@@ -35,8 +45,8 @@ Ogni `relation` richiede:
 
 Una relazione può essere visibile da entrambi i nodi, ma **la direzione non è invertita**: il figlio non diventa padre, l'allievo non diventa maestro, l'influenzato non diventa influenzatore. Un rapporto interpretativo richiede un commento storico, non soltanto la linea.
 
-## Persone che non sono compositori
-Il tipo `persona` consente a Cosima Wagner e Maria Anna Mozart di esistere come figure storiche senza essere forzate nella categoria “compositore”. Questi nodi non affollano la costellazione musicale ordinaria e vengono resi disponibili dalle lenti pertinenti. Siegfried Wagner e Leopold Mozart, che sono compositori, mantengono il tipo `compositore`.
+## Rilevanza dei nodi
+Due nodi catalogati esclusivamente per relazioni familiari, Cosima Wagner e Maria Anna Mozart, sono stati ritirati dall'Atlante musicale; nessuna relazione parentale biologica o matrimoniale entra nelle lenti. Musicisti come Carl Philipp Emanuel Bach, Johann Christian Bach, Leopold Mozart o Siegfried Wagner restano perché hanno una produzione musicale propria, **mai perché sono figli o padri di qualcuno**. Il tipo `persona` resta ammesso per figure artisticamente pertinenti, come Angelo Tesei quale docente di Rossini.
 
 ## Percorso di esplorazione
 1. Scegli una sfera e, se lo desideri, una lente.
@@ -46,29 +56,30 @@ Il tipo `persona` consente a Cosima Wagner e Maria Anna Mozart di esistere come 
 5. Tornando a «Storia musicale» si recupera la rete originaria.
 6. Il pulsante «Etichette: tutte» continua a interessare soprattutto la vista musicale.
 
-## Fonti e riscontri per il primo campione
-- Treccani, Cosima Wagner: https://www.treccani.it/enciclopedia/cosima-wagner/
-- Treccani, Siegfried Wagner: https://www.treccani.it/enciclopedia/siegfried-wagner/
-- Richard Wagner International, biografia: https://www.richard-wagner.org/rwvi/en/about-wagner/the-man/
-- Bayreuth Tourism, Franz Liszt: https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-richard-wagner/franz-liszt/
-- Treccani, vita della famiglia Mozart: https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/
-- Encyclopaedia Britannica 1911 (archivio), famiglia Bach: https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bach%2C_Johann_Sebastian
-- Treccani, Richard Wagner: https://www.treccani.it/enciclopedia/wilhelm-richard-wagner/
-- Altre fonti associate alle singole relazioni nella chiave `sources`.
+## Fonti e riscontri per le scuole
+- Treccani, Ars antiqua e Notre-Dame: https://www.treccani.it/enciclopedia/l-ars-antiqua_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- Treccani, le scuole franco-fiamminghe: https://www.treccani.it/enciclopedia/fiammingo/
+- Treccani, le cappelle e le scuole veneziane: https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/
+- Treccani, Animuccia e scuola romana: https://www.treccani.it/enciclopedia/giovanni-animuccia_%28Enciclopedia-Italiana%29/
+- Treccani, la Camerata e il successivo cenacolo di Corsi: https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- Treccani, scuola di Mannheim: https://www.treccani.it/enciclopedia/mannheim/
+- Treccani, Gruppo dei Cinque e Les Six: https://www.treccani.it/enciclopedia/gruppo-dei-cinque/ e https://www.treccani.it/enciclopedia/gruppo-dei-sei/
+- Treccani, Seconda scuola di Vienna e Darmstadt: https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/ e https://www.treccani.it/enciclopedia/stockhausen-e-la-scuola-di-darmstadt-boulez_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- Fonti puntuali associate alle singole relazioni in `sources`.
 
 
 ## Genealogie, categorie e direzioni: criteri redazionali
 
 La nozione di «parentela influenzale» è **trasversale alle persone e ai generi**, ma non annulla la differenza storica fra oggetti di natura diversa. Sono ammissibili, quando motivati e documentati:
 
-- Compositore → compositore: insegnamento, influenza diretta, ricezione, reazione estetica, sostegno professionale. Lo stesso rapporto può comparire in più lenti **soltanto quando rappresenta fatti distinti e ciascuno è spiegato**.
+- Compositore → compositore: insegnamento, influenza diretta, ricezione, reazione estetica, sostegno professionale. Lo stesso rapporto può comparire in più lenti **soltanto quando rappresenta fatti distinti e ciascuno è spiegato**. Nessun arco biografico è inserito per semplice parentela anagrafica.
 - Genere → genere: nascita, derivazione, contaminazione, confronto, convergenza tecnologica. Non trasformare analogie o successioni in genealogie certe.
 - Genere/pratica → compositore: repertorio, coltivazione, trasformazione, introduzione o codificazione. Il verso indica **la lettura editoriale specificata da `forward`/`reverse`**, non una semplice causalità biologica.
 - In futuro, opera ↔ genere ↔ tecnica ↔ compositore: l'opera sarà un nodo autonomo se è il tramite documentabile della relazione.
 
 **Ontologia da affinare:** `corrente` è per ora un contenitore grafico che ospita oggetti distinti. Opera buffa e grand opéra sono generi teatrali; belcanto è anzitutto pratica vocale e tradizione stilistica; dodecafonia è una tecnica di composizione; minimalismo designa un insieme di orientamenti; musica concreta è pratica compositiva basata su suoni registrati. **Non sono categorie intercambiabili.** In via incrementale i nuovi nodi possono precisare `semantic_type`, senza cambiare il campo `type` su cui si basa la visualizzazione.
 
-**Direzionalità visiva:** nelle lenti Maestri, Influenze e Genealogie le frecce seguono `source → target`. Le linee tratteggiate segnalano, nei casi tipizzati, rapporti non lineari come affinità o tradizioni mediate e contaminazioni o convergenze fra pratiche. La linea continua non certifica, da sola, un nesso causale: bisogna leggere la scheda «Perché sono collegati?».
+**Direzionalità visiva:** nelle lenti Scuole, Maestri, Influenze e Genealogie le frecce seguono `source → target`. Le linee tratteggiate segnalano, nei casi tipizzati, rapporti non lineari come affinità o tradizioni mediate e contaminazioni o convergenze fra pratiche. La linea continua non certifica, da sola, un nesso causale: bisogna leggere la scheda «Perché sono collegati?».
 
 **Esempi già catalogati:** Haydn → Mozart è modello quartettistico, **non** rapporto di insegnamento; Beethoven → Brahms è confronto sinfonico, mentre Schumann → Brahms rappresenta sostegno critico; Brahms → Dvořák è documentato separatamente come sostegno editoriale e come modello per una scelta compositiva; Schönberg, Berg e Webern incrociano la dodecafonia, e Schaeffer e Henry la musica concreta. Quest'ultima va distinta dalla produzione di suoni mediante oscillatori, benché le tradizioni siano confluite nella ricerca elettroacustica.
 
@@ -88,7 +99,7 @@ La nozione di «parentela influenzale» è **trasversale alle persone e ai gener
 La presenza di un link nella scheda prova soltanto che è **stata indicata una fonte**: ogni rapporto controverso richiede confronto con il passo pertinente e verifica periodica dell'indirizzo. Il validatore locale garantisce l'integrità strutturale, non la verità delle relazioni storiche né la disponibilità in tempo reale di siti terzi.
 
 ## Limiti dichiarati e sviluppi
-Questo primo rilascio **non è una genealogia esaustiva**. L'assenza di una parentela significa soltanto che la relazione non è ancora catalogata. Alcune fonti relative alle influenze sono generaliste e andranno sostituite da studi musicologici di maggiore dettaglio. Prima di ampliare la rete: controllare i nodi esistenti, le grafie onomastiche, la direzione della relazione, l'epoca, la fonte e gli eventuali casi contestati.
+Questo rilascio **non è una genealogia esaustiva**. L'assenza di una relazione musicologica significa soltanto che il rapporto non è ancora catalogato. Alcune fonti relative alle influenze sono generaliste e andranno sostituite da studi musicologici di maggiore dettaglio. Prima di ampliare la rete: controllare i nodi esistenti, le grafie onomastiche, la direzione della relazione, l'epoca, la fonte e gli eventuali casi contestati.
 
 Sviluppi previsti: cronologia a livelli, filtro delle opere e delle pratiche compositive, dinamica fra società e tecnologia, luoghi biografici distinti dalla cittadinanza moderna, intensità/certezza dei rapporti, percorsi guidati di cinque tappe con confronto fra ascolti.
 
