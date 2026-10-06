@@ -64,16 +64,33 @@ function geoScreenPoint(n){
  const coords=GEO_CENTERS[n.id];
  if(!coords)return null;
  const g=geoState,world=Math.max(500,w*360/Math.max(24,g.span)),height=world/2;
- const lat=coords[0],lon=coords[1],pan=mapOffset();
- let dx=((lon-g.lon+540)%360)-180;
- const x=w/2+pan.x+dx/360*world;
- const y=h/2+pan.y+(g.lat-lat)/180*height;
- return {x,y,depth:-.01,scale:Math.min(w,h)*.055,r:17};
+ const [lat,lon]=coords,pan=mapOffset();
+ const dx=((lon-g.lon+540)%360)-180;
+ const worldX=w/2+pan.x+dx/360*world;
+ const worldY=h/2+pan.y+(g.lat-lat)/180*height;
+ // I Paesi lontani dalla zona visibile non scompaiono: restano
+ // come marcatori di navigazione al bordo della carta.
+ const margin=39,top=Math.min(h*.29,215),bottom=Math.max(top+100,h-134);
+ const x=clamp(worldX,margin,w-margin);
+ const y=clamp(worldY,top,bottom);
+ return {x,y,depth:-.01,scale:Math.min(w,h)*.055,r:17,
+  offMap:Math.abs(x-worldX)>2||Math.abs(y-worldY)>2,
+  edgeX:worldX<x?"left":worldX>x?"right":null,
+  edgeY:worldY<y?"up":worldY>y?"down":null};
 }
-function isDirectGeography(n){
- if(n.type!=="geografia")return true;
- if(!selected)return false;
- return n===selected||edges.some(e=>e.source===selected.id&&e.target===n.id||e.target===selected.id&&e.source===n.id);
+function positionGeoMarkers(points){
+ // Piccoli spostamenti di etichettatura evitano che Paesi vicini
+ // si coprano l'un l'altro, senza modificare le coordinate della mappa.
+ const pins=points.filter(p=>p.node.type==="geografia").sort((a,b)=>a.y-b.y||a.x-b.x);
+ for(let pass=0;pass<9;pass++)for(let i=0;i<pins.length;i++)for(let j=i+1;j<pins.length;j++){
+  const a=pins[i],b=pins[j];
+  let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
+  if(d>=47)continue;
+  if(d<.01){dx=1;dy=0;d=1;}
+  const shift=(47-d)*.28,nx=dx/d,ny=dy/d;
+  a.x=clamp(a.x-nx*shift,30,w-30);a.y=clamp(a.y-ny*shift,Math.min(h*.29,215),h-134);
+  b.x=clamp(b.x+nx*shift,30,w-30);b.y=clamp(b.y+ny*shift,Math.min(h*.29,215),h-134);
+ }
 }
 function sxworld(node){let x=node.x-camera.x,y=node.y-camera.y,z=node.z-camera.z;const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),si=Math.sin(rotX);const rx=x*cy-z*sy,rz=x*sy+z*cy,ry=y*cx-rz*si,depth=y*si+rz*cx;const k=9/(16+depth),scale=Math.min(w,h)*.095*zoom*k;return {x:w/2+rx*scale,y:h/2+ry*scale,scale,depth};}
 function unproject(px,py,depth){let scale=Math.min(w,h)*.095*zoom*9/(16+depth);const rx=(px-w/2)/scale,ry=(py-h/2)/scale;const cx=Math.cos(rotX),si=Math.sin(rotX),cy=Math.cos(rotY),sy=Math.sin(rotY);const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};}
@@ -92,7 +109,7 @@ function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.000
  // Repulsione locale: l'algoritmo evita che centinaia di bolle si sovrappongano.
  for(let i=0;i<nodes.length;i++){let a=nodes[i];for(let j=i+1;j<nodes.length;j++){let b=nodes[j],dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d2=dx*dx+dy*dy+dz*dz;if(d2>5.5||d2<.00001)continue;let f=.008/(d2+.2);a.vx-=dx*f;a.vy-=dy*f;a.vz-=dz*f;b.vx+=dx*f;b.vy+=dy*f;b.vz+=dz*f;}}
  for(const n of nodes){if(drag&&drag.node===n){n.vx=n.vy=n.vz=0;continue;}n.vx=clamp(n.vx*.89,-.12,.12);n.vy=clamp(n.vy*.89,-.12,.12);n.vz=clamp(n.vz*.89,-.12,.12);n.x+=n.vx;n.y+=n.vy;n.z+=n.vz;}}
-function visibleNode(n){return (typeFilter==="tutti"||n.type===typeFilter||n===selected)&&isDirectGeography(n)}
+function visibleNode(n){return n.type==="geografia"||(typeFilter==="tutti"||n.type===typeFilter||n===selected)}
 
 /* Paesaggio immaginario: viene dipinto solo al ridimensionamento, non a ogni frame. */
 
@@ -222,7 +239,8 @@ function drawNightAtlas(){
 
 function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;camera.y+=(focus.y-camera.y)*.085;camera.z+=(focus.z-camera.z)*.085;}
  ctx.clearRect(0,0,w,h);paintGeo();
- screen=nodes.map(n=>{let p=n.type==="geografia"?(geoScreenPoint(n)||sxworld(n)):sxworld(n);p.node=n;p.r=n.type==="geografia"?clamp(15*zoom,11,23):clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n&&n.type!=="geografia"){p.x=drag.x;p.y=drag.y;}return p;});
+ screen=nodes.map(n=>{let p=n.type==="geografia"?(geoScreenPoint(n)||sxworld(n)):sxworld(n);p.node=n;p.r=n.type==="geografia"?15:clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n&&n.type!=="geografia"){p.x=drag.x;p.y=drag.y;}return p;});
+ positionGeoMarkers(screen);
 
  const map=new Map(screen.map(p=>[p.node.id,p]));
  const neighbors=new Set();
@@ -234,6 +252,9 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   const a=map.get(e.source),b=map.get(e.target);
   if(!a||!b||a.depth< -14||b.depth< -14||!visibleNode(a.node)||!visibleNode(b.node))continue;
   const direct=!!selected&&(e.source===selected.id||e.target===selected.id);
+  const touchesGeo=a.node.type==="geografia"||b.node.type==="geografia";
+  // I Paesi rimangono navigabili, non diventano una rete geografica autonoma.
+  if(touchesGeo&&!direct)continue;
   ctx.globalAlpha=selected?(direct?.92:.025):.16;
   ctx.lineWidth=direct?1.75:.7;
   if(direct){
@@ -246,28 +267,35 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   ctx.quadraticCurveTo((a.x+b.x)*.5+bend*.35,(a.y+b.y)*.5-bend,b.x,b.y);ctx.stroke();
  }
  ctx.globalAlpha=1;
- const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>b.depth-a.depth);
- // Disegnare prima le sfere slegate impedisce che nascondano quelle connesse.
- if(selected)drawable.sort((a,b)=>{
+ const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>{
+  // Prima le sfere musicali, poi i Paesi cliccabili, infine la selezione.
   if(a.node===selected)return 1;
   if(b.node===selected)return -1;
-  return Number(neighbors.has(a.node.id))-Number(neighbors.has(b.node.id));
+  if(a.node.type==="geografia"&&b.node.type!=="geografia")return 1;
+  if(b.node.type==="geografia"&&a.node.type!=="geografia")return -1;
+  const ac=selected&&neighbors.has(a.node.id)?1:0,bc=selected&&neighbors.has(b.node.id)?1:0;
+  return ac-bc||b.depth-a.depth;
  });
  hitOrder=drawable;
  for(const p of drawable){
   const n=p.node,related=selected&&neighbors.has(n.id);
   const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&matchesSearch(n,searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
-  ctx.globalAlpha=selected&&!related&&!highlight?.085:1;
+  ctx.globalAlpha=n.type==="geografia"?1:(selected&&!related&&!highlight?.085:1);
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=rad;
+  if(n.type==="geografia"&&p.offMap){
+   ctx.beginPath();ctx.arc(p.x,p.y,rad+5,0,Math.PI*2);
+   ctx.strokeStyle="#f1d59e";ctx.globalAlpha=.7;ctx.lineWidth=1.4;
+   ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+  }
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
-  const isLabel=selected?Boolean(related):(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4);
+  const isLabel=n.type==="geografia"||selected?Boolean(related||n.type==="geografia"):(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4);
   if(isLabel){
    ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
    ctx.strokeStyle="#071321";ctx.strokeText(n.label,p.x,p.y-rad-9);
    ctx.fillStyle=highlight?"#fff4d9":"rgba(240,242,247,.95)";
-   ctx.fillText(n.label,p.x,p.y-rad-9);
+   ctx.fillText(n.label+(n.type==="geografia"&&p.offMap?" ↗":""),p.x,p.y-rad-9);
   }
  }
 
@@ -275,7 +303,8 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
 function linked(n){return edges.filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
 function focusOn(n,openPanel=true){
  if(selected!==n){search.value="";searchText="";}
- selected=n;focus=n;moveGeo(n);status.textContent=n.label+" · "+linked(n).length+" connessioni";populate(n);if(openPanel)setPanel(true);}
+ if(n.type==="geografia"){geoState.enabled=true;if(followGeo)followGeo.checked=true;}
+ selected=n;focus=n.type==="geografia"?null:n;moveGeo(n);status.textContent=n.label+" · "+linked(n).length+" connessioni";populate(n);if(openPanel)setPanel(true);}
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Scheda e video";tab.setAttribute("aria-expanded",String(open));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function populate(n){
