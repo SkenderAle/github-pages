@@ -4,12 +4,12 @@
 
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
-- Compositori censiti: **240**.
-- Senza legami di scuola o tradizione: **55**.
-- Senza relazioni specialistiche di alcun tipo: **38**.
-- Relazioni nella lente Scuole e tradizioni: **221**.
-- Prime ricognizioni musicologiche per nome: **10** su 240 (non equivalgono alla revisione bibliografica definitiva).
-- Identità Wikidata riconciliate: **9** su 240.
+- Compositori censiti: **247**.
+- Senza legami di scuola o tradizione: **49**.
+- Senza relazioni specialistiche di alcun tipo: **33**.
+- Relazioni nella lente Scuole e tradizioni: **252**.
+- Prime ricognizioni musicologiche per nome: **20** su 247 (non equivalgono alla revisione bibliografica definitiva).
+- Identità Wikidata riconciliate: **19** su 247.
 
 ## Copertura per epoca
 
@@ -17,8 +17,8 @@
 |---|---:|---:|
 | medioevo | 11 | 0 |
 | rinascimento | 25 | 0 |
-| barocco | 41 | 5 |
-| classicismo | 31 | 11 |
+| barocco | 45 | 1 |
+| classicismo | 34 | 9 |
 | romanticismo | 47 | 10 |
 | post-romanticismo | 5 | 2 |
 | novecento | 61 | 27 |
@@ -88,9 +88,10 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Alessandro Marcello | 1 | 0 | 1 | 1 | 0 | Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
 | barocco | Alessandro Scarlatti | 1 | 0 | 0 | 0 | 1 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Antonio Caldara | 3 | 0 | 1 | 1 | 0 | Cappella imperiale viennese del primo Settecento · Oratorio e cantata nei salotti romani del primo Settecento · Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
+| barocco | Antonio Lotti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | barocco | Antonio Vivaldi | 2 | 0 | 2 | 1 | 0 | Ospedali musicali veneziani del Settecento · Scuola del concerto violinistico italiano | catalogato | da avviare |
 | barocco | Arcangelo Corelli | 1 | 0 | 3 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
-| barocco | Baldassare Galuppi | 0 | 0 | 0 | 0 | 1 | — | **RICERCA** | da avviare |
+| barocco | Baldassare Galuppi | 3 | 1 | 0 | 1 | 1 | Ospedali musicali veneziani del Settecento · Pratiche musicali veneziane del Settecento · Scuola operistica napoletana | catalogato | **Lotto 1** |
 | barocco | Benedetto Marcello | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
 | barocco | Dietrich Buxtehude | 1 | 0 | 1 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
 | barocco | Domenico Scarlatti | 1 | 1 | 0 | 0 | 0 | Clavicembalo iberico e corte di Madrid | catalogato | da avviare |
@@ -99,9 +100,11 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Francesco Cavalli | 2 | 1 | 0 | 0 | 0 | Scuola operistica veneziana del Seicento · Scuola veneziana | catalogato | da avviare |
 | barocco | Francesco Gasparini | 1 | 0 | 0 | 0 | 0 | Ospedali musicali veneziani del Settecento | catalogato | da avviare |
 | barocco | François Couperin | 1 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese | catalogato | da avviare |
-| barocco | Georg Friedrich Händel | 0 | 0 | 1 | 1 | 0 | — | **RICERCA** | da avviare |
-| barocco | Georg Philipp Telemann | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| barocco | Friedrich Wilhelm Zachow | 1 | 1 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
+| barocco | Georg Friedrich Händel | 4 | 1 | 1 | 2 | 0 | Opera seria · Oratorio e cantata nei salotti romani del primo Settecento · Oratorio inglese del Settecento · Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 1** |
+| barocco | Georg Philipp Telemann | 3 | 0 | 1 | 2 | 0 | Collegium musicum di Lipsia · Scuola luterana · Stile galante ed empfindsamer Stil | catalogato | **Lotto 1** |
 | barocco | Giovanni Battista Pergolesi | 1 | 0 | 0 | 0 | 2 | Scuola operistica napoletana | catalogato | da avviare |
+| barocco | Giovanni Battista Somis | 2 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato | da avviare |
 | barocco | Giovanni Bonaventura Viviani | 1 | 0 | 0 | 0 | 0 | Cappella di corte di Innsbruck nel Seicento | catalogato | **Lotto 1** |
 | barocco | Giovanni Legrenzi | 1 | 0 | 0 | 0 | 0 | Scuola operistica veneziana del Seicento | catalogato | da avviare |
 | barocco | Girolamo Frescobaldi | 2 | 2 | 1 | 0 | 0 | Musica della corte estense a Ferrara · Tastiere italiane del primo Seicento | catalogato | **Lotto 1** |
@@ -111,47 +114,51 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Heinrich Schütz | 2 | 1 | 0 | 0 | 0 | Scuola luterana · Scuola veneziana | catalogato | da avviare |
 | barocco | Henry Purcell | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | da avviare |
 | barocco | Jacopo Peri | 1 | 0 | 0 | 0 | 0 | Camerata fiorentina e ambiente di Corsi | catalogato | da avviare |
-| barocco | Jean-Baptiste Lully | 1 | 0 | 0 | 0 | 0 | Teatro musicale francese del Barocco | catalogato | da avviare |
-| barocco | Jean-Marie Leclair | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| barocco | Jean-Baptiste Lully | 1 | 1 | 0 | 1 | 0 | Teatro musicale francese del Barocco | catalogato | da avviare |
+| barocco | Jean-Marie Leclair | 2 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato | **Lotto 1** |
 | barocco | Jean-Philippe Rameau | 2 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese · Teatro musicale francese del Barocco | catalogato | da avviare |
 | barocco | Johann Jakob Froberger | 1 | 1 | 0 | 0 | 0 | Tastiere italiane del primo Seicento | catalogato | da avviare |
 | barocco | Johann Kuhnau | 1 | 0 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
 | barocco | Johann Pachelbel | 1 | 0 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
-| barocco | Johann Sebastian Bach | 2 | 0 | 8 | 0 | 0 | Scuola luterana · Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
+| barocco | Johann Sebastian Bach | 3 | 0 | 9 | 1 | 0 | Collegium musicum di Lipsia · Scuola luterana · Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
 | barocco | John Blow | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | da avviare |
 | barocco | Leonardo Leo | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Leonardo Vinci | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Maria Teresa Agnesi | 1 | 0 | 0 | 1 | 0 | Accademie domestiche musicali della Milano settecentesca | catalogato | **Lotto 1** |
-| barocco | Marin Marais | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| barocco | Marin Marais | 2 | 2 | 0 | 1 | 0 | Scuola francese della viola da gamba · Teatro musicale francese del Barocco | catalogato | **Lotto 1** |
+| barocco | Monsieur de Sainte-Colombe | 1 | 1 | 0 | 0 | 0 | Scuola francese della viola da gamba | catalogato | da avviare |
 | barocco | Nicola Logroscino | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
-| barocco | Nicola Porpora | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
+| barocco | Nicola Porpora | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Tomaso Albinoni | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
 | classicismo | Antonio Salieri | 1 | 2 | 1 | 0 | 0 | Riforma operistica del Settecento | catalogato | da avviare |
 | classicismo | Antonio Soler | 1 | 1 | 0 | 0 | 0 | Clavicembalo iberico e corte di Madrid | catalogato | da avviare |
-| classicismo | Carl Ditters von Dittersdorf | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| classicismo | Carl Ditters von Dittersdorf | 3 | 0 | 0 | 1 | 0 | Classicismo viennese (categoria storiografica) · Stile galante ed empfindsamer Stil · Vita musicale viennese dell'Illuminismo | catalogato | **Lotto 1** |
 | classicismo | Carl Philipp Emanuel Bach | 1 | 0 | 0 | 0 | 0 | Stile galante ed empfindsamer Stil | catalogato | da avviare |
 | classicismo | Carl Stamitz | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | da avviare |
 | classicismo | Christian Cannabich | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | da avviare |
 | classicismo | Christian Gottlob Neefe | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| classicismo | Christoph Willibald Gluck | 1 | 0 | 2 | 0 | 0 | Riforma operistica del Settecento | catalogato | da avviare |
+| classicismo | Christoph Willibald Gluck | 1 | 0 | 3 | 1 | 0 | Riforma operistica del Settecento | catalogato | da avviare |
 | classicismo | Domenico Cimarosa | 1 | 0 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | da avviare |
 | classicismo | Egidio Duni | 0 | 0 | 0 | 0 | 1 | — | **RICERCA** | da avviare |
+| classicismo | Filippo Manfredi | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
 | classicismo | Franz Schubert | 1 | 1 | 0 | 0 | 0 | Lied romantico tedesco | catalogato | da avviare |
 | classicismo | Franz Xaver Richter | 1 | 0 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | da avviare |
 | classicismo | Giovanni Battista Sammartini | 1 | 0 | 1 | 0 | 0 | Sinfonismo italiano del primo Settecento | catalogato | da avviare |
-| classicismo | Giovanni Battista Viotti | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
+| classicismo | Giovanni Battista Viotti | 1 | 0 | 1 | 1 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
+| classicismo | Giovanni Giuseppe Cambini | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | classicismo | Giovanni Paisiello | 1 | 0 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | da avviare |
 | classicismo | Giovanni Simone Mayr | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | classicismo | Giuseppe Malerbi | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| classicismo | Giuseppe Sarti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | classicismo | Johann Christian Bach | 1 | 0 | 1 | 0 | 0 | Stile galante ed empfindsamer Stil | catalogato | da avviare |
-| classicismo | Johann Georg Albrechtsberger | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| classicismo | Johann Georg Albrechtsberger | 2 | 1 | 0 | 0 | 0 | Tradizione contrappuntistica viennese settecentesca · Vita musicale viennese dell'Illuminismo | catalogato | **Lotto 1** |
 | classicismo | Johann Stamitz | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | da avviare |
-| classicismo | Joseph Haydn | 1 | 1 | 2 | 0 | 0 | Classicismo viennese (categoria storiografica) | catalogato | da avviare |
+| classicismo | Joseph Haydn | 1 | 2 | 2 | 0 | 0 | Classicismo viennese (categoria storiografica) | catalogato | da avviare |
 | classicismo | Leopold Mozart | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | classicismo | Ludwig van Beethoven | 1 | 4 | 2 | 0 | 0 | Classicismo viennese (categoria storiografica) | catalogato | da avviare |
-| classicismo | Luigi Boccherini | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| classicismo | Luigi Cherubini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| classicismo | Marianna Martines | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| classicismo | Luigi Boccherini | 3 | 0 | 1 | 1 | 0 | Musica cameristica del Classicismo · Musica da camera delle corti spagnole del Settecento · Sinfonismo italiano del primo Settecento | catalogato | **Lotto 1** |
+| classicismo | Luigi Cherubini | 2 | 2 | 1 | 1 | 0 | Conservatorio di Parigi e scuola di composizione · Teatro musicale francese dell'Ottocento | catalogato | **Lotto 1** |
+| classicismo | Marianna Martines | 2 | 2 | 0 | 1 | 0 | Classicismo viennese (categoria storiografica) · Vita musicale viennese dell'Illuminismo | catalogato | **Lotto 1** |
 | classicismo | Niccolò Antonio Zingarelli | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | classicismo | Niccolò Piccinni | 2 | 0 | 0 | 0 | 1 | Riforma operistica del Settecento · Scuola operistica napoletana | catalogato | da avviare |
 | classicismo | Pietro Alessandro Guglielmi | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
@@ -277,6 +284,8 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 - **Goffredo Mameli**: poeta patriota.
 - **Isabella de' Medici**: mecenate musicale.
 - **Giordano Riccati**: fisico acustico teorico musicale.
+- **Carlo Goldoni**: commediografo librettista.
+- **Pietro Metastasio**: poeta librettista di corte.
 
 ## Procedura per completare i nodi RICERCA
 
