@@ -5,9 +5,9 @@
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
 - Compositori censiti: **288**.
-- Senza legami di scuola o tradizione: **80**.
+- Senza legami di scuola o tradizione: **73**.
 - Senza relazioni specialistiche di alcun tipo: **0**.
-- Relazioni nella lente Scuole e tradizioni: **262**.
+- Relazioni nella lente Scuole e tradizioni: **269**.
 - Prime ricognizioni registrate per nome: **288** su 288 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
 - Sesto lotto: **40** biografie censite con almeno una fonte, di cui **31** con nuove relazioni e **9** con prima verifica biografica ma relazioni da approfondire.
@@ -20,6 +20,7 @@
 - Seconda fase, primo gruppo: **7** compositori toccati da nuovi riscontri puntuali, **6** nuove relazioni fondate su fonti istituzionali. L'audit integrale delle quattro lenti rimane aperto.
 - Seconda fase, secondo gruppo: **9** ulteriori relazioni specialistiche; i sette compositori precedentemente isolati sono ora connessi mediante relazioni storicamente spiegate.
 - Seconda fase, terzo gruppo: **4** nuove relazioni per Martini, Ponchielli e Halévy (tre scuole, una genealogia), con fonti Treccani e BnF.
+- Seconda fase, quarto gruppo: **7** nuove relazioni di scuola (Mattei, Weber, Wagner, Britten, Schaeffer, Henry, Durante), con nodo autonomo per la didattica napoletana del partimento.
 - Identità Wikidata riconciliate: **19** su 288.
 
 ## Copertura per epoca
@@ -58,7 +59,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Eduard Marxsen | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Ennio Morricone | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Felice Anerio | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
-| non-classificato | Francesco Durante | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Francesco Durante | 1 | 2 | 0 | 0 | 0 | Scuola napoletana del partimento | catalogato | **Lotto 10** |
 | non-classificato | Francesco Soriano | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
 | non-classificato | Frederick Converse | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Fritz Reiner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
@@ -214,7 +215,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | classicismo | Niccolò Antonio Zingarelli | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | **Lotto 9** |
 | classicismo | Niccolò Piccinni | 2 | 0 | 0 | 1 | 1 | Riforma operistica del Settecento · Scuola operistica napoletana | catalogato | **Lotto 6** |
 | classicismo | Pietro Alessandro Guglielmi | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | **Lotto 8** |
-| classicismo | Stanislao Mattei | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
+| classicismo | Stanislao Mattei | 1 | 3 | 0 | 0 | 0 | Scuola bolognese di contrappunto | catalogato | **Lotto 9** |
 | classicismo | Wolfgang Amadeus Mozart | 1 | 2 | 4 | 1 | 2 | Classicismo viennese (categoria storiografica) | catalogato | **Lotto 3** |
 | romanticismo | Aleksandr Borodin | 1 | 0 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
 | romanticismo | Ambroise Thomas | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
@@ -222,7 +223,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | romanticismo | Arrigo Boito | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 6** |
 | romanticismo | Bedřich Smetana | 1 | 0 | 0 | 0 | 0 | Scuola nazionale boema | catalogato | **Lotto 7** |
 | romanticismo | Camille Saint-Saëns | 1 | 2 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 7** |
-| romanticismo | Carl Maria von Weber | 0 | 1 | 1 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
+| romanticismo | Carl Maria von Weber | 1 | 1 | 1 | 0 | 0 | Opera romantica tedesca | catalogato | **Lotto 3** |
 | romanticismo | César Franck | 1 | 2 | 0 | 0 | 0 | Scuola franckiana di Parigi | catalogato | **Lotto 7** |
 | romanticismo | Cezar Antonovič Cui | 1 | 1 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 9** |
 | romanticismo | Charles Gounod | 1 | 3 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 9** |
@@ -258,7 +259,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | romanticismo | Pëtr Il'ič Čajkovskij | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
 | romanticismo | Pietro Mascagni | 1 | 1 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Richard Strauss | 1 | 0 | 1 | 1 | 0 | Lied romantico tedesco | catalogato | **Lotto 7** |
-| romanticismo | Richard Wagner | 0 | 1 | 9 | 1 | 0 | — | **RICERCA** | **Lotto 3** |
+| romanticismo | Richard Wagner | 1 | 1 | 9 | 1 | 0 | Opera romantica tedesca | catalogato | **Lotto 3** |
 | romanticismo | Robert Schumann | 2 | 1 | 2 | 2 | 0 | Lied romantico tedesco · Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
 | romanticismo | Ruggero Leoncavallo | 1 | 1 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Vincent d’Indy | 1 | 4 | 0 | 0 | 0 | Scuola franckiana di Parigi | catalogato | **Lotto 9** |
@@ -276,7 +277,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Arnold Schönberg | 1 | 4 | 1 | 0 | 1 | Seconda scuola di Vienna | catalogato | **Lotto 7** |
 | novecento | Arthur Honegger | 1 | 1 | 0 | 0 | 0 | Les Six | catalogato | **Lotto 7** |
 | novecento | Béla Bartók | 1 | 0 | 0 | 1 | 0 | Scuola nazionale ungherese del Novecento | catalogato | **Lotto 8** |
-| novecento | Benjamin Britten | 0 | 0 | 1 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
+| novecento | Benjamin Britten | 1 | 0 | 1 | 0 | 0 | Rinascita operistica inglese del Novecento | catalogato | **Lotto 9** |
 | novecento | Bruno Maderna | 2 | 1 | 1 | 3 | 0 | Avanguardie italiane del dopoguerra · Darmstadt: corsi e avanguardie | catalogato | **Lotto 7** |
 | novecento | Carl Orff | 0 | 0 | 1 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
 | novecento | Charles Ives | 0 | 1 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 7** |
@@ -321,8 +322,8 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Paul Hindemith | 1 | 0 | 0 | 0 | 0 | Ripresa del contrappunto e neobarocco | catalogato | **Lotto 8** |
 | novecento | Philip Glass | 1 | 2 | 1 | 1 | 1 | Minimalismo | catalogato | **Lotto 8** |
 | novecento | Pierre Boulez | 1 | 3 | 1 | 2 | 0 | Darmstadt: corsi e avanguardie | catalogato | **Lotto 7** |
-| novecento | Pierre Henry | 0 | 2 | 0 | 1 | 1 | — | **RICERCA** | **Lotto 9** |
-| novecento | Pierre Schaeffer | 0 | 0 | 0 | 2 | 1 | — | **RICERCA** | **Lotto 9** |
+| novecento | Pierre Henry | 1 | 2 | 0 | 1 | 1 | Musica concreta | catalogato | **Lotto 9** |
+| novecento | Pierre Schaeffer | 1 | 0 | 0 | 2 | 1 | Musica concreta | catalogato | **Lotto 9** |
 | novecento | Sergej Prokof'ev | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Sergej Rachmaninov | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Steve Reich | 1 | 2 | 2 | 1 | 1 | Minimalismo | catalogato | **Lotto 8** |
