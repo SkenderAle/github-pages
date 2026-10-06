@@ -39,12 +39,18 @@ body.panel-open #panelTab{right:min(315px,85vw)}
 #status{background:rgba(10,23,38,.52);border-radius:7px;padding:5px 9px;backdrop-filter:blur(9px)}
 @media(max-width:600px){#panel{width:min(295px,88vw)}body.panel-open #panelTab{right:min(295px,88vw)}#legend{bottom:113px;max-width:calc(100vw - 24px)}#panel .related-list ul{grid-template-columns:1fr 1fr}}
 
+
+.zoom-control{display:flex;align-items:center;gap:6px;border:1px solid rgba(170,187,206,.32);border-radius:12px;background:rgba(13,26,43,.88);padding:3px 7px;backdrop-filter:blur(14px)}
+.zoom-control .zoom-button{font-size:19px;line-height:1;padding:7px 11px;min-width:37px;border-radius:9px}
+#zoomSlider{width:105px;accent-color:#f0c88a;cursor:pointer;touch-action:pan-x}
+#zoomValue{min-width:40px;color:#f0dbb4;font:600 11px system-ui;text-align:center}
+@media(max-width:650px){#tools{max-width:calc(100vw - 20px)}.zoom-control{order:-1}#zoomSlider{width:100px}}
 </style></head><body>
 <div id="scene"><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
 <header><div><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>La musica non sta in fila.</h1><p>Un atlante notturno di epoche, persone e idee</p></div><a class="back" href="../">← Home</a></header>
 <div id="status" role="status">Caricamento della rete…</div>
 <div id="legend"><span style="--dot:#f3bd74">Compositori</span><span style="--dot:#7ec3d4">Epoche</span><span style="--dot:#c8a2e5">Ambiti</span><span style="--dot:#e49ca4">Correnti</span><span style="--dot:#8bc5a1">Geografia</span></div>
-<div id="tools"><input id="search" class="control" placeholder="Cerca un nome, un'epoca…" aria-label="Cerca una bolla"><select id="filter" class="control" aria-label="Filtra le bolle"><option value="tutti">Tutte le categorie</option><option value="compositore">Compositori</option><option value="periodo">Epoche</option><option value="ambito">Ambiti trasversali</option><option value="corrente">Correnti</option><option value="geografia">Geografia</option></select><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button></div>
+<div id="tools"><input id="search" class="control" placeholder="Cerca un nome, un'epoca…" aria-label="Cerca una bolla"><select id="filter" class="control" aria-label="Filtra le bolle"><option value="tutti">Tutte le categorie</option><option value="compositore">Compositori</option><option value="periodo">Epoche</option><option value="ambito">Ambiti trasversali</option><option value="corrente">Correnti</option><option value="geografia">Geografia</option></select><div class="zoom-control" role="group" aria-label="Controlli ingrandimento"><button class="control zoom-button" id="zoomOut" type="button" aria-label="Riduci zoom">−</button><input id="zoomSlider" type="range" min="45" max="350" value="100" step="5" aria-label="Livello di zoom"><button class="control zoom-button" id="zoomIn" type="button" aria-label="Aumenta zoom">+</button><output id="zoomValue" for="zoomSlider">100%</output></div><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button></div>
 <div id="tips">Trascina una bolla: segue il puntatore. Rilascia: va al centro.<br>Trascina il vuoto: ruota la rete. Rotella: ingrandisci.</div>
 <button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Ascolti</button>
 <aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
