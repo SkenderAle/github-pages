@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Musurgia Mundi · La costellazione Musica</title>
 <meta name="description" content="Musurgia Mundi · La costellazione Musica. Esplora la storia della musica attraverso persone, geografie, ascolti e connessioni.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--bg:#0d111b;--ink:#f2eadc;--muted:#aab6c5;--accent:#f6d08c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}a{color:#f5d391}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f9d48f;outline-offset:3px}header{position:absolute;inset:0 0 auto;z-index:5;pointer-events:none;padding:20px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}header>div,header>a{pointer-events:auto}header h1{font:400 clamp(26px,4.5vw,48px)/1.05 Georgia,serif;margin:4px 0 7px}header p{margin:0;color:var(--muted);font-size:12px}.brand{letter-spacing:.16em;font-size:10px;text-transform:uppercase;color:#d3b88b;text-decoration:none}.back{display:inline-block;text-decoration:none;border:1px solid #867459;border-radius:99px;padding:7px 12px;background:#161e2aaf;font-size:12px}#scene{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 48% 48%,#24344c 0%,#141e30 35%,#080c15 78%);touch-action:none}#sky{display:block;width:100%;height:100%;cursor:grab}#sky.dragging{cursor:grabbing}#tools{position:absolute;z-index:7;left:20px;bottom:25px;display:flex;flex-wrap:wrap;gap:8px;max-width:calc(100vw - 45px)}.control{border:1px solid #687183a3;border-radius:12px;background:#101a2bdc;color:var(--ink);padding:9px 12px;box-shadow:0 10px 30px #0003}input.control{width:min(250px,50vw)}select.control{max-width:180px}#legend{position:absolute;bottom:90px;left:20px;z-index:4;display:flex;flex-wrap:wrap;gap:10px;max-width:500px;font-size:11px;color:#bdc8d8;pointer-events:none}#legend span:before{content:"";display:inline-block;background:var(--dot);width:9px;height:9px;border-radius:50%;margin-right:5px}#panelTab{position:absolute;z-index:12;right:12px;top:49%;transform:translateY(-50%);writing-mode:vertical-rl;border:1px solid #8e7755;border-radius:10px;padding:14px 8px;background:#25344c;color:#fff}#panel{position:absolute;z-index:11;right:0;top:0;height:100%;width:min(310px,89vw);background:#101925f2;backdrop-filter:blur(15px);border-left:1px solid #536277;transform:translateX(102%);transition:transform .3s ease;overflow:auto;box-shadow:-12px 0 42px #0005}body.panel-open #panel{transform:translateX(0)}body.panel-open #panelTab{right:min(310px,89vw)}#panel h2{font:400 29px Georgia,serif;line-height:1.15;margin:10px 0}#panel .inner{padding:22px 18px 30px}#panel .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#e9c58a}#panel p{color:#b7c4d0}#panel ul{padding-left:18px}#panel li{margin:6px 0}#panel a.card{display:block;text-decoration:none;border:1px solid #526173;padding:11px;border-radius:10px;margin:10px 0;background:#1b2736}#panel .small{font-size:12px;color:#a8b7c4}#status{position:absolute;top:116px;left:24px;color:#b7c7d8;font-size:12px;pointer-events:none}#tips{position:absolute;right:17px;bottom:22px;font-size:11px;color:#a6b5c4;text-align:right;pointer-events:none}#panel .video{border:1px solid #455268;border-radius:9px;margin:10px 0;padding:10px}#panel .video img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:7px}#panel button{background:#24354b;color:#f7e6c4;border:1px solid #67788e;border-radius:8px;padding:8px 10px}#error{display:none;position:absolute;z-index:20;top:48%;left:50%;transform:translate(-50%,-50%);background:#31222a;padding:20px;border-radius:12px;max-width:360px}body.error #error{display:block}@media(max-width:600px){header{padding:14px}header h1{font-size:29px}#status{top:103px;left:14px}#tools{left:10px;bottom:12px;gap:5px}.control{padding:8px}#legend{bottom:120px;left:12px;gap:7px}#tips{display:none}#panel{width:min(290px,89vw)}body.panel-open #panelTab{right:min(290px,89vw)}}
 @media(prefers-reduced-motion:reduce){#panel{transition:none}}
@@ -62,6 +65,19 @@ header p{font:italic clamp(15px,1.6vw,21px) Georgia,serif;color:#e7d6bd}
 @media(max-width:700px){#geoLabel{bottom:4px;right:8px;font-size:10px}header h1{font-size:24px}}
 
 #mapCredit{position:absolute;right:24px;bottom:53px;z-index:4;color:rgba(231,236,240,.72);font:10px system-ui;background:rgba(5,13,25,.48);padding:3px 6px;border-radius:4px;text-decoration:none}#mapCredit:hover{color:#fff;text-decoration:underline}@media(max-width:700px){#mapCredit{right:8px;bottom:24px;font-size:9px}}
+
+/* Frontespizio gotico-rinascimentale: solo il nome dell'opera, non i comandi. */
+header h1{
+ font-family:"UnifrakturMaguntia","Old English Text MT",Georgia,serif;
+ font-weight:400;
+ text-transform:none;
+ font-size:clamp(34px,4.2vw,60px);
+ letter-spacing:.015em;
+ line-height:1.13;
+ color:#f8dfae;
+ text-shadow:0 2px 2px #0c1019,0 0 18px rgba(232,180,96,.22);
+}
+@media(max-width:700px){header h1{font-size:clamp(30px,7.2vw,43px);letter-spacing:0}}
 </style></head><body>
 <div id="scene"><div id="earthMap" aria-hidden="true"></div><div id="earthShade" aria-hidden="true"></div><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
 <header><div><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p></div><a class="back" href="../">← Home</a></header>
@@ -72,5 +88,5 @@ header p{font:italic clamp(15px,1.6vw,21px) Georgia,serif;color:#e7d6bd}
 <button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Ascolti</button>
 <aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app.js?v=nomi-multilingue-russi-lully-20261006" defer></script>
+<script src="app.js?v=geo-first-level-gothic-20261006" defer></script>
 </body></html>
