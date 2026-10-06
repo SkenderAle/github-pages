@@ -4,12 +4,12 @@
 
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
-- Compositori censiti: **253**.
-- Senza legami di scuola o tradizione: **55**.
-- Senza relazioni specialistiche di alcun tipo: **30**.
+- Compositori censiti: **263**.
+- Senza legami di scuola o tradizione: **65**.
+- Senza relazioni specialistiche di alcun tipo: **20**.
 - Relazioni nella lente Scuole e tradizioni: **252**.
-- Prime ricognizioni musicologiche per nome: **30** su 253 (non equivalgono alla revisione bibliografica definitiva).
-- Identità Wikidata riconciliate: **19** su 253.
+- Prime ricognizioni musicologiche per nome: **40** su 263 (non equivalgono alla revisione bibliografica definitiva).
+- Identità Wikidata riconciliate: **19** su 263.
 
 ## Copertura per epoca
 
@@ -22,7 +22,7 @@
 | romanticismo | 47 | 10 |
 | post-romanticismo | 5 | 2 |
 | novecento | 61 | 27 |
-| non-classificato | 25 | 6 |
+| non-classificato | 35 | 16 |
 
 ## Audit di tutti i compositori
 
@@ -30,13 +30,19 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 
 | Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato | Prima ricognizione |
 |---|---|---:|---:|---:|---:|---:|---|---|---|
+| non-classificato | Anatolij Ljadov | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Anton Reicha | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Anton Rubinstein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Billy Strayhorn | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Charles Hambitzer | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Christian Theodor Weinlig | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Claudio Merulo | 1 | 0 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
 | non-classificato | Costanzo Festa | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
 | non-classificato | Felice Anerio | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
 | non-classificato | Francesco Soriano | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
+| non-classificato | Frederick Converse | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Fritz Reiner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | George Whitefield Chadwick | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Gilles Binchois | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
 | non-classificato | Gioseffo Zarlino | 1 | 1 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
 | non-classificato | Giovanni Animuccia | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
@@ -51,9 +57,13 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Johann Walter | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | da avviare |
 | non-classificato | Johannes Ockeghem | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
 | non-classificato | Józef Elsner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Maksimilian Steinberg | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Michael Haydn | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Michael Praetorius | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | da avviare |
+| non-classificato | Nadia Boulanger | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Rubin Goldmark | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Samuel Scheidt | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | da avviare |
+| non-classificato | Sergej Taneev | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Wojciech Żywny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | medioevo | Adam de la Halle | 1 | 0 | 0 | 1 | 0 | Tradizione dei trovieri francesi | catalogato | **Lotto 1** |
 | medioevo | Francesco Landini | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | da avviare |
@@ -222,12 +232,12 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | post-romanticismo | Gustav Mahler | 2 | 0 | 1 | 0 | 0 | Lied romantico tedesco · Sinfonismo tardo-romantico | catalogato | da avviare |
 | post-romanticismo | Hans Pfitzner | 1 | 0 | 0 | 0 | 0 | Lied romantico tedesco | catalogato | da avviare |
 | post-romanticismo | Siegfried Wagner | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| novecento | Aaron Copland | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| novecento | Aaron Copland | 0 | 2 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Alban Berg | 1 | 1 | 0 | 0 | 1 | Seconda scuola di Vienna | catalogato | da avviare |
-| novecento | Aleksandr Skrjabin | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| novecento | Aleksandr Skrjabin | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Alfredo Casella | 1 | 1 | 0 | 0 | 0 | Generazione italiana del 1880 | catalogato | da avviare |
 | novecento | Anton Webern | 1 | 1 | 2 | 0 | 1 | Seconda scuola di Vienna | catalogato | da avviare |
-| novecento | Arnold Schönberg | 1 | 3 | 1 | 0 | 1 | Seconda scuola di Vienna | catalogato | da avviare |
+| novecento | Arnold Schönberg | 1 | 4 | 1 | 0 | 1 | Seconda scuola di Vienna | catalogato | da avviare |
 | novecento | Arthur Honegger | 1 | 0 | 0 | 0 | 0 | Les Six | catalogato | da avviare |
 | novecento | Béla Bartók | 1 | 0 | 0 | 0 | 0 | Scuola nazionale ungherese del Novecento | catalogato | da avviare |
 | novecento | Benjamin Britten | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
@@ -236,14 +246,14 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Charles Ives | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | novecento | Claude Debussy | 1 | 0 | 1 | 0 | 0 | Modernità francese del primo Novecento | catalogato | da avviare |
 | novecento | Darius Milhaud | 1 | 1 | 0 | 0 | 0 | Les Six | catalogato | da avviare |
-| novecento | Dmitrij Šostakovič | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| novecento | Duke Ellington | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| novecento | Dmitrij Šostakovič | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
+| novecento | Duke Ellington | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Edgard Varèse | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | novecento | Erik Satie | 1 | 0 | 1 | 0 | 0 | Modernità francese del primo Novecento | catalogato | da avviare |
 | novecento | Ferruccio Busoni | 1 | 1 | 1 | 0 | 0 | Ripresa del contrappunto e neobarocco | catalogato | da avviare |
-| novecento | Florence Price | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| novecento | Florence Price | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Francis Poulenc | 1 | 0 | 0 | 0 | 0 | Les Six | catalogato | da avviare |
-| novecento | George Gershwin | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| novecento | George Gershwin | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Georges Auric | 1 | 0 | 0 | 0 | 0 | Les Six | catalogato | da avviare |
 | novecento | Germaine Tailleferre | 1 | 0 | 0 | 0 | 0 | Les Six | catalogato | da avviare |
 | novecento | Giacinto Scelsi | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
@@ -255,13 +265,13 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Henryk Górecki | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | novecento | Igor Stravinskij | 2 | 1 | 3 | 0 | 1 | Gruppo dei Cinque russo · Ripresa del contrappunto e neobarocco | catalogato | da avviare |
 | novecento | John Adams | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| novecento | John Cage | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| novecento | John Cage | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Josef Suk (1874–1935) | 1 | 1 | 1 | 0 | 0 | Scuola nazionale boema | catalogato | da avviare |
 | novecento | Karlheinz Stockhausen | 1 | 0 | 0 | 0 | 0 | Darmstadt: corsi e avanguardie | catalogato | da avviare |
 | novecento | Krzysztof Penderecki | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | novecento | Kurt Weill | 1 | 1 | 1 | 0 | 0 | Teatro musicale brechtiano | catalogato | da avviare |
 | novecento | La Monte Young | 1 | 0 | 0 | 0 | 0 | Minimalismo | catalogato | da avviare |
-| novecento | Leonard Bernstein | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| novecento | Leonard Bernstein | 0 | 1 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Louis Durey | 1 | 0 | 0 | 0 | 0 | Les Six | catalogato | da avviare |
 | novecento | Luciano Berio | 2 | 1 | 0 | 0 | 0 | Avanguardie italiane del dopoguerra · Darmstadt: corsi e avanguardie | catalogato | da avviare |
 | novecento | Luigi Dallapiccola | 1 | 0 | 0 | 0 | 0 | Ricezione italiana della dodecafonia | catalogato | da avviare |
@@ -277,8 +287,8 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Pierre Boulez | 1 | 1 | 1 | 1 | 0 | Darmstadt: corsi e avanguardie | catalogato | da avviare |
 | novecento | Pierre Henry | 0 | 0 | 0 | 0 | 1 | — | **RICERCA** | da avviare |
 | novecento | Pierre Schaeffer | 0 | 0 | 0 | 1 | 1 | — | **RICERCA** | da avviare |
-| novecento | Sergej Prokof'ev | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| novecento | Sergej Rachmaninov | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| novecento | Sergej Prokof'ev | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
+| novecento | Sergej Rachmaninov | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Steve Reich | 1 | 2 | 1 | 0 | 1 | Minimalismo | catalogato | da avviare |
 | novecento | Terry Riley | 1 | 0 | 0 | 0 | 1 | Minimalismo | catalogato | da avviare |
 | novecento | Witold Lutosławski | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
