@@ -15,7 +15,7 @@ const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,""
 function searchNames(n){return [n.label,...(n.aliases||[])];}
 function matchesSearch(n,q){return !!q&&searchNames(n).some(name=>normSearch(name).includes(q));}
 function searchRank(n,q){const variants=searchNames(n).map(normSearch);if(variants.some(v=>v===q))return 0;if(variants.some(v=>v.split(" ").includes(q)))return 1;if(variants.some(v=>v.startsWith(q)))return 2;return 3;}
-function findSearchResults(q){return nodes.filter(n=>matchesSearch(n,q)&&(n.type!=="persona"||activeLens!=="musica")).sort((a,b)=>searchRank(a,q)-searchRank(b,q)||a.label.localeCompare(b.label,"it"));}
+function findSearchResults(q){return nodes.filter(n=>matchesSearch(n,q)&&(n.type!=="persona"||n.music_relevance||activeLens!=="musica")).sort((a,b)=>searchRank(a,q)-searchRank(b,q)||a.label.localeCompare(b.label,"it"));}
 function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
 
 const geoState={lat:48,lon:11,span:100,targetLat:48,targetLon:11,targetSpan:100,enabled:true};
@@ -127,7 +127,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  for(const n of all){let a=i++*2.399963,rad=8*Math.sqrt((i+.5)/all.length),offset=n.type==="periodo"?6:n.type==="ambito"?5:rad;
   const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,radius:n.type==="compositore"||n.type==="persona"?5:n.type==="geografia"?8:11};
   nodes.push(item);byId.set(item.id,item);if(item.type==="periodo")anchors.set(item.id,item);}
- for(const n of nodes){if(n.type!=="compositore")continue;const period=db.edges.find(e=>e.source===n.id&&byId.get(e.target)?.type==="periodo");if(period){const a=anchors.get(period.target);if(a){n.x=a.x+(rnd()-.5)*5;n.y=a.y+(rnd()-.5)*5;n.z=a.z+(rnd()-.5)*5;}}}
+ for(const n of nodes){if(n.type!=="compositore"&&!(n.type==="persona"&&n.music_relevance))continue;const period=db.edges.find(e=>e.source===n.id&&byId.get(e.target)?.type==="periodo");if(period){const a=anchors.get(period.target);if(a){n.x=a.x+(rnd()-.5)*5;n.y=a.y+(rnd()-.5)*5;n.z=a.z+(rnd()-.5)*5;}}}
  edges=db.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>({...e,a:byId.get(e.source),b:byId.get(e.target)}));
  videos=db.videos||[];videoLinks=db.video_nodes||[];
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
@@ -142,11 +142,11 @@ function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.000
 function currentEdges(){return activeLens==="musica"?edges:lensEdges.filter(e=>e.group===activeLens);}
 function visibleNode(n){
  if(n.type==="geografia")return true;
- if(n.type==="persona"&&activeLens==="musica")return false;
+ if(n.type==="persona"&&activeLens==="musica"&&!n.music_relevance)return false;
  // Le sfere collegate rimangono sempre visibili durante l'esplorazione di una lente,
  // anche se il precedente filtro generale riguardava soltanto i compositori.
  if(activeLens!=="musica"&&selected&&(n===selected||currentEdges().some(e=>(e.source===selected.id&&e.target===n.id)||(e.target===selected.id&&e.source===n.id))))return true;
- if(n.type==="persona")return activeLens!=="musica"&&currentEdges().some(e=>e.source===n.id||e.target===n.id);
+ if(n.type==="persona"&&!n.music_relevance)return activeLens!=="musica"&&currentEdges().some(e=>e.source===n.id||e.target===n.id);
  return typeFilter==="tutti"||n.type===typeFilter||n===selected;
 }
 function lineHit(pt){
@@ -528,7 +528,7 @@ lensSelect?.addEventListener("change",()=>{
  const group=lensGroups.find(g=>g.id===activeLens);
  if(lensHelp)lensHelp.textContent=group?.description||"Epoche, correnti e rapporti storico-musicali";
  if(relationTooltip)relationTooltip.hidden=true;
- if(selected?.type==="persona"&&activeLens==="musica"){
+ if(selected?.type==="persona"&&activeLens==="musica"&&!selected.music_relevance){
   selected=null;focus=null;setPanel(false);
   status.textContent="Storia musicale · scegli una bolla per tornare alla rete principale";
  }else if(selected){status.textContent=selected.label+" · "+linked(selected).length+" relazioni · "+lensSelect.selectedOptions[0].textContent;populate(selected);}
