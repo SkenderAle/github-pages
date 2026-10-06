@@ -274,8 +274,8 @@ function populate(n){
     const references=document.createElement("div");references.className="source-bookmarks";
     for(const [slug,url] of entries){
       const toPage=document.createElement("a");toPage.href=url;toPage.className="source-bookmark";
-      toPage.textContent="↳ Vai all’ascolto nel "+slug.charAt(0).toUpperCase()+slug.slice(1);
-      toPage.title="Apri il segnalibro esatto nel percorso "+slug;
+      toPage.textContent="↳ Vai alla pagina "+slug.charAt(0).toUpperCase()+slug.slice(1);
+      toPage.title="Vai alla pagina "+slug+" nel punto dedicato a questo ascolto";
       references.append(toPage);
     }box.append(references);
    }
