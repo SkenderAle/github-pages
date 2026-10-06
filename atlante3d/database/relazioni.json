@@ -1,0 +1,374 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-10-06",
+  "about": "Lenti di esplorazione: relazioni documentate e indipendenti dal grafo storico. Ogni link indica fonte, direzione e natura. I legami non vengono inferiti automaticamente da cognomi o epoche.",
+  "groups": [
+    {
+      "id": "famiglia",
+      "label": "Famiglia",
+      "description": "Parentela diretta, per matrimonio o acquisita, verificata su fonti",
+      "color": "#efb4d4"
+    },
+    {
+      "id": "formazione",
+      "label": "Maestri e allievi",
+      "description": "Insegnamento e apprendistato documentati",
+      "color": "#b5d5f8"
+    },
+    {
+      "id": "influenze",
+      "label": "Influenze",
+      "description": "Influenza o eredità artistica, con direzione e spiegazione",
+      "color": "#eec785"
+    },
+    {
+      "id": "collaborazioni",
+      "label": "Incontri e collaborazioni",
+      "description": "Sostegno, collaborazione o confronto artisticamente documentato",
+      "color": "#b8e4c6"
+    }
+  ],
+  "relations": [
+    {
+      "id": "fam-wagner-cosima",
+      "group": "famiglia",
+      "source": "compositore-richard-wagner",
+      "target": "persona-cosima-wagner",
+      "kind": "coniuge",
+      "forward": "marito di",
+      "reverse": "moglie di",
+      "note": "Richard Wagner sposò Cosima Liszt nel 1870, dopo il suo divorzio da Hans von Bülow.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/cosima-wagner/",
+        "https://www.richard-wagner.org/rwvi/en/about-wagner/the-man/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-liszt-cosima",
+      "group": "famiglia",
+      "source": "compositore-franz-liszt",
+      "target": "persona-cosima-wagner",
+      "kind": "genitore",
+      "forward": "padre di",
+      "reverse": "figlia di",
+      "note": "Cosima era figlia del compositore Franz Liszt e di Marie d'Agoult.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/cosima-wagner/",
+        "https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-richard-wagner/franz-liszt/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-wagner-siegfried",
+      "group": "famiglia",
+      "source": "compositore-richard-wagner",
+      "target": "compositore-siegfried-wagner",
+      "kind": "genitore",
+      "forward": "padre di",
+      "reverse": "figlio di",
+      "note": "Siegfried Wagner, compositore e direttore d'orchestra, era figlio di Richard e Cosima Wagner.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/siegfried-wagner/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-cosima-siegfried",
+      "group": "famiglia",
+      "source": "persona-cosima-wagner",
+      "target": "compositore-siegfried-wagner",
+      "kind": "genitore",
+      "forward": "madre di",
+      "reverse": "figlio di",
+      "note": "Siegfried era figlio di Cosima Liszt e Richard Wagner.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/siegfried-wagner/",
+        "https://www.treccani.it/enciclopedia/cosima-wagner/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-wagner-liszt",
+      "group": "famiglia",
+      "source": "compositore-richard-wagner",
+      "target": "compositore-franz-liszt",
+      "kind": "affinita",
+      "forward": "genero di",
+      "reverse": "suocero di",
+      "note": "Liszt divenne suocero di Wagner attraverso il matrimonio di quest'ultimo con Cosima, figlia di Liszt.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/cosima-wagner/",
+        "https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-richard-wagner/franz-liszt/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-bach-cpe",
+      "group": "famiglia",
+      "source": "compositore-johann-sebastian-bach",
+      "target": "compositore-carl-philipp-emanuel-bach",
+      "kind": "genitore",
+      "forward": "padre di",
+      "reverse": "figlio di",
+      "note": "Carl Philipp Emanuel era figlio di Johann Sebastian Bach e Maria Barbara Bach.",
+      "sources": [
+        "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bach%2C_Johann_Sebastian"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-bach-jc",
+      "group": "famiglia",
+      "source": "compositore-johann-sebastian-bach",
+      "target": "compositore-johann-christian-bach",
+      "kind": "genitore",
+      "forward": "padre di",
+      "reverse": "figlio di",
+      "note": "Johann Christian, il Bach di Londra, era figlio di Johann Sebastian e Anna Magdalena Bach.",
+      "sources": [
+        "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bach%2C_Johann_Sebastian"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-cpe-jc",
+      "group": "famiglia",
+      "source": "compositore-carl-philipp-emanuel-bach",
+      "target": "compositore-johann-christian-bach",
+      "kind": "fratellastri",
+      "forward": "fratellastro di",
+      "reverse": "fratellastro di",
+      "note": "I due compositori erano figli di Johann Sebastian da matrimoni differenti.",
+      "sources": [
+        "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bach%2C_Johann_Sebastian"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-mozart-leopold",
+      "group": "famiglia",
+      "source": "compositore-leopold-mozart",
+      "target": "compositore-wolfgang-amadeus-mozart",
+      "kind": "genitore",
+      "forward": "padre di",
+      "reverse": "figlio di",
+      "note": "Leopold Mozart fu padre e primo maestro di Wolfgang Amadeus.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-mozart-nannerl",
+      "group": "famiglia",
+      "source": "persona-maria-anna-mozart",
+      "target": "compositore-wolfgang-amadeus-mozart",
+      "kind": "fratelli",
+      "forward": "sorella di",
+      "reverse": "fratello di",
+      "note": "Maria Anna (Nannerl) e Wolfgang erano figli di Leopold Mozart ed entrambi si esibirono in pubblico.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-leopold-nannerl",
+      "group": "famiglia",
+      "source": "compositore-leopold-mozart",
+      "target": "persona-maria-anna-mozart",
+      "kind": "genitore",
+      "forward": "padre di",
+      "reverse": "figlia di",
+      "note": "Leopold guidò l'educazione musicale della figlia Maria Anna, detta Nannerl.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-fanny-felix",
+      "group": "famiglia",
+      "source": "compositore-fanny-hensel",
+      "target": "compositore-felix-mendelssohn",
+      "kind": "fratelli",
+      "forward": "sorella di",
+      "reverse": "fratello di",
+      "note": "Fanny Hensel, nata Mendelssohn, era sorella del compositore Felix Mendelssohn.",
+      "sources": [
+        "https://www.britannica.com/biography/Fanny-Mendelssohn"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "fam-robert-clara",
+      "group": "famiglia",
+      "source": "compositore-robert-schumann",
+      "target": "compositore-clara-schumann",
+      "kind": "coniuge",
+      "forward": "marito di",
+      "reverse": "moglie di",
+      "note": "Robert e Clara Schumann, entrambi compositori, si sposarono nel 1840.",
+      "sources": [
+        "https://www.britannica.com/biography/Clara-Schumann"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "form-leopold-wolfgang",
+      "group": "formazione",
+      "source": "compositore-leopold-mozart",
+      "target": "compositore-wolfgang-amadeus-mozart",
+      "kind": "maestro-allievo",
+      "forward": "insegnò a",
+      "reverse": "studiò con",
+      "note": "Leopold fu il primo insegnante di composizione e pratica musicale di Wolfgang.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "form-jc-mozart",
+      "group": "influenze",
+      "source": "compositore-johann-christian-bach",
+      "target": "compositore-wolfgang-amadeus-mozart",
+      "kind": "influenza",
+      "forward": "influenzò",
+      "reverse": "fu influenzato da",
+      "note": "Il giovane Mozart conobbe J. C. Bach a Londra e assimilò aspetti del suo stile.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/wolfgang-amadeus-mozart_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "form-haydn-beethoven",
+      "group": "formazione",
+      "source": "compositore-joseph-haydn",
+      "target": "compositore-ludwig-van-beethoven",
+      "kind": "maestro-allievo",
+      "forward": "fu maestro di",
+      "reverse": "studiò con",
+      "note": "Beethoven prese lezioni da Haydn a Vienna: il rapporto non fu privo di tensioni.",
+      "sources": [
+        "https://www.britannica.com/biography/Ludwig-van-Beethoven"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "form-salieri-schubert",
+      "group": "formazione",
+      "source": "compositore-antonio-salieri",
+      "target": "compositore-franz-schubert",
+      "kind": "maestro-allievo",
+      "forward": "insegnò a",
+      "reverse": "studiò con",
+      "note": "Franz Schubert studiò con Antonio Salieri a Vienna.",
+      "sources": [
+        "https://www.britannica.com/biography/Franz-Schubert"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "infl-weber-wagner",
+      "group": "influenze",
+      "source": "compositore-carl-maria-von-weber",
+      "target": "compositore-richard-wagner",
+      "kind": "influenza",
+      "forward": "influenzò",
+      "reverse": "fu influenzato da",
+      "note": "Le prime esperienze teatrali di Wagner furono segnate, fra gli altri, dal modello del teatro romantico di Weber.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/wilhelm-richard-wagner/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "infl-beethoven-wagner",
+      "group": "influenze",
+      "source": "compositore-ludwig-van-beethoven",
+      "target": "compositore-richard-wagner",
+      "kind": "influenza",
+      "forward": "influenzò",
+      "reverse": "fu influenzato da",
+      "note": "Beethoven fu uno dei modelli giovanili decisivi per Wagner, anche nella concezione del dramma e della sinfonia.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/wilhelm-richard-wagner/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "infl-wagner-strauss",
+      "group": "influenze",
+      "source": "compositore-richard-wagner",
+      "target": "compositore-richard-strauss",
+      "kind": "eredita",
+      "forward": "lasciò un'eredità a",
+      "reverse": "raccolse l'eredità di",
+      "note": "Strauss si confrontò con l'eredità wagneriana nel linguaggio orchestrale e teatrale.",
+      "sources": [
+        "https://www.britannica.com/biography/Richard-Strauss"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "infl-bach-mozart",
+      "group": "influenze",
+      "source": "compositore-johann-sebastian-bach",
+      "target": "compositore-wolfgang-amadeus-mozart",
+      "kind": "eredita",
+      "forward": "influenzò",
+      "reverse": "si confrontò con",
+      "note": "L'incontro con le opere contrappuntistiche di Bach contribuì alla scrittura matura di Mozart.",
+      "sources": [
+        "https://www.britannica.com/biography/Wolfgang-Amadeus-Mozart"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "coll-wagner-liszt",
+      "group": "collaborazioni",
+      "source": "compositore-richard-wagner",
+      "target": "compositore-franz-liszt",
+      "kind": "sostegno-artistico",
+      "forward": "ricevette sostegno da",
+      "reverse": "sostenne",
+      "note": "Liszt sostenne Wagner anche durante gli anni di esilio e promosse la diffusione della sua opera.",
+      "sources": [
+        "https://www.richard-wagner.org/rwvi/en/about-wagner/the-man/",
+        "https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-richard-wagner/franz-liszt/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "coll-clara-robert",
+      "group": "collaborazioni",
+      "source": "compositore-clara-schumann",
+      "target": "compositore-robert-schumann",
+      "kind": "collaborazione-artistica",
+      "forward": "interpretò e promosse",
+      "reverse": "fu interpretato e promosso da",
+      "note": "Clara fu interprete autorevole e divulgatrice della produzione pianistica di Robert.",
+      "sources": [
+        "https://www.britannica.com/biography/Clara-Schumann"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "coll-fanny-felix",
+      "group": "collaborazioni",
+      "source": "compositore-fanny-hensel",
+      "target": "compositore-felix-mendelssohn",
+      "kind": "dialogo-artistico",
+      "forward": "dialogò artisticamente con",
+      "reverse": "dialogò artisticamente con",
+      "note": "I due fratelli intrattennero un importante confronto musicale ed epistolare.",
+      "sources": [
+        "https://www.britannica.com/biography/Fanny-Mendelssohn"
+      ],
+      "status": "documentato"
+    }
+  ]
+}
