@@ -135,9 +135,20 @@ header .masthead #status{
  header .masthead p{font-size:clamp(15px,3.7vw,20px)}
  header .masthead #status{margin-top:10px;font-size:11px}
 }
+
+/* Accesso permanente alla pagina madre, distinto dai comandi della costellazione. */
+header a.back{display:inline-flex;align-items:center;justify-content:center;
+ padding:8px 13px;min-height:36px;white-space:nowrap;
+ color:#f7e6c8;background:rgba(28,36,49,.88);
+ border:1px solid #c7a776;border-radius:9px;
+ font:750 12px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;
+ text-decoration:none;box-shadow:0 2px 14px #0006;
+ pointer-events:auto}
+header a.back:hover,header a.back:focus-visible{background:#3a3028;color:#fff5df;border-color:#f3cd8a}
+@media(max-width:700px){header a.back{padding:6px 9px;font-size:10px;min-height:31px}}
 </style></head><body>
 <div id="scene"><div id="earthMap" aria-hidden="true"></div><div id="earthShade" aria-hidden="true"></div><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
-<header><div class="masthead"><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p><div id="status" role="status">Caricamento della rete…</div></div><a class="back" href="../">← Home</a></header>
+<header><div class="masthead"><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p><div id="status" role="status">Caricamento della rete…</div></div><a class="back" href="../" aria-label="Torna alla homepage dell’Atlante">⌂ Home · Atlante</a></header>
 <div id="legend"><span style="--dot:#f3bd74">Compositori</span><span style="--dot:#7ec3d4">Epoche</span><span style="--dot:#c8a2e5">Ambiti</span><span style="--dot:#e49ca4">Correnti</span><span style="--dot:#8bc5a1">Geografia</span></div>
 <div id="tools"><input id="search" class="control" placeholder="Cerca un nome, un'epoca…" aria-label="Cerca una bolla"><select id="filter" class="control" aria-label="Filtra le bolle"><option value="tutti">Tutte le categorie</option><option value="compositore">Compositori</option><option value="periodo">Epoche</option><option value="ambito">Ambiti trasversali</option><option value="corrente">Correnti</option><option value="geografia">Geografia</option></select><div class="zoom-control" role="group" aria-label="Controlli ingrandimento"><button class="control zoom-button" id="zoomOut" type="button" aria-label="Riduci zoom">−</button><input id="zoomSlider" type="range" min="45" max="350" value="100" step="5" aria-label="Livello di zoom"><button class="control zoom-button" id="zoomIn" type="button" aria-label="Aumenta zoom">+</button><output id="zoomValue" for="zoomSlider">100%</output></div><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button><label class="geo-follow"><input type="checkbox" id="followGeo" checked> Segui la geografia</label></div>
 <div id="geoLabel" aria-live="polite">Europa · panoramica</div><a id="mapCredit" href="https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/" target="_blank" rel="noopener noreferrer">Immagine della Terra: NASA Earth Observatory · Black Marble 2016 ↗</a><div id="tips">Trascina una bolla: segue il puntatore. Rilascia: va al centro.<br>Trascina il vuoto: ruota la rete. Clicca i Paesi verdi per spostarti sulla mappa, anche se sono ai bordi. Usa + / − per lo zoom.</div>
