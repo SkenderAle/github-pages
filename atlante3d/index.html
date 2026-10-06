@@ -248,6 +248,13 @@ header a.back:hover,header a.back:focus-visible{background:#3a3028;color:#fff5df
  #moreControls{min-width:55px;font-size:10px;padding:7px 4px}
  #tools .zoom-control .zoom-button{min-width:22px}
 }
+
+#panel .lens-shortcuts{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 15px}
+#panel .lens-shortcuts button{font-size:10px;line-height:1.3;padding:6px 8px;
+ border:1px solid #6a7d91;background:#17293b;color:#f1dbc0;border-radius:999px;cursor:pointer}
+#panel .lens-shortcuts button.is-active{border-color:#edcf9b;background:#485067;color:#fff4de;font-weight:800}
+#panel .lens-shortcuts button .num{font-weight:800;color:#fff0ca}
+@media(max-width:700px){#panel .lens-shortcuts{gap:6px}}
 </style></head><body>
 <div id="scene"><div id="earthMap" aria-hidden="true"></div><div id="earthShade" aria-hidden="true"></div><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
 <header><div class="masthead"><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p><div id="status" role="status">Caricamento della rete…</div></div><a class="back" href="../" aria-label="Torna alla homepage dell’Atlante">⌂ Home · Atlante</a></header>
@@ -259,6 +266,7 @@ header a.back:hover,header a.back:focus-visible{background:#3a3028;color:#fff5df
   <option value="famiglia">♧ Parentele</option>
   <option value="formazione">◇ Maestri e allievi</option>
   <option value="influenze">↗ Influenze</option>
+  <option value="genealogie">⌁ Genealogie dei generi</option>
   <option value="collaborazioni">✦ Incontri e collaborazioni</option>
  </select>
  <span id="lensHelp">Scegli una lente e una sfera per esplorare le relazioni.</span>
