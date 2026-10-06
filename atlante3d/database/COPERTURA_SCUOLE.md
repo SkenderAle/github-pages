@@ -5,9 +5,9 @@
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
 - Compositori censiti: **288**.
-- Senza legami di scuola o tradizione: **83**.
+- Senza legami di scuola o tradizione: **80**.
 - Senza relazioni specialistiche di alcun tipo: **0**.
-- Relazioni nella lente Scuole e tradizioni: **259**.
+- Relazioni nella lente Scuole e tradizioni: **262**.
 - Prime ricognizioni registrate per nome: **288** su 288 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
 - Sesto lotto: **40** biografie censite con almeno una fonte, di cui **31** con nuove relazioni e **9** con prima verifica biografica ma relazioni da approfondire.
@@ -19,6 +19,7 @@
 - **Prima ricognizione di tutti i 288 compositori completata.** La verifica approfondita e indipendente delle quattro lenti rimane aperta.
 - Seconda fase, primo gruppo: **7** compositori toccati da nuovi riscontri puntuali, **6** nuove relazioni fondate su fonti istituzionali. L'audit integrale delle quattro lenti rimane aperto.
 - Seconda fase, secondo gruppo: **9** ulteriori relazioni specialistiche; i sette compositori precedentemente isolati sono ora connessi mediante relazioni storicamente spiegate.
+- Seconda fase, terzo gruppo: **4** nuove relazioni per Martini, Ponchielli e Halévy (tre scuole, una genealogia), con fonti Treccani e BnF.
 - Identità Wikidata riconciliate: **19** su 288.
 
 ## Copertura per epoca
@@ -40,7 +41,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 
 | Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato | Prima ricognizione |
 |---|---|---:|---:|---:|---:|---:|---|---|---|
-| non-classificato | Amilcare Ponchielli | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Amilcare Ponchielli | 1 | 3 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 10** |
 | non-classificato | Anatolij Ljadov | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | André Gedalge | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Anton Reicha | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
@@ -61,7 +62,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Francesco Soriano | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
 | non-classificato | Frederick Converse | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Fritz Reiner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | Fromental Halévy | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Fromental Halévy | 1 | 4 | 0 | 0 | 1 | Conservatorio di Parigi e scuola di composizione | catalogato | **Lotto 10** |
 | non-classificato | Gennaro Manna | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | George Whitefield Chadwick | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Giacinto Sallustio | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
@@ -69,7 +70,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Gilles Binchois | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
 | non-classificato | Gioseffo Zarlino | 1 | 2 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 8** |
 | non-classificato | Giovanni Animuccia | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
-| non-classificato | Giovanni Battista Martini | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Giovanni Battista Martini | 1 | 4 | 0 | 0 | 0 | Scuola bolognese di contrappunto | catalogato | **Lotto 10** |
 | non-classificato | Giovanni Croce | 1 | 1 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 8** |
 | non-classificato | Giovanni Francesco Anerio | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
 | non-classificato | Giovanni Maria Nanino | 1 | 3 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
