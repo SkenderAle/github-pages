@@ -5518,6 +5518,43 @@
         ],
         "method": "Voce biografica con attività come cantante e autrice musicale."
       }
+    },
+    {
+      "id": "compositore-josef-suk",
+      "label": "Josef Suk (1874–1935)",
+      "type": "compositore",
+      "status": "catalogato",
+      "country": "Cechia",
+      "description": "Compositore, violinista e docente ceco, allievo di Antonín Dvořák al Conservatorio di Praga. Il suo linguaggio maturò oltre il modello del maestro, anche dopo i lutti del 1904–1905.",
+      "url": null,
+      "sources": [
+        "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/"
+      ],
+      "geo_focus": {
+        "lat": 50.08,
+        "lon": 14.42,
+        "span": 52,
+        "precision": "thematic-or-biographical"
+      }
+    },
+    {
+      "id": "musica-concreta",
+      "label": "Musica concreta",
+      "type": "corrente",
+      "status": "catalogato",
+      "url": null,
+      "semantic_type": "pratica-elettroacustica",
+      "description": "Pratica avviata nel 1948 da Pierre Schaeffer: comporre a partire da suoni registrati e trasformati mediante tecniche di montaggio. Va distinta dalla musica elettronica ottenuta originariamente generando suoni con oscillatori, pur nella successiva convergenza elettroacustica.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-concreta/",
+        "https://www.larousse.fr/encyclopedie/musdico/musique_concr%C3%A8te/166944"
+      ],
+      "geo_focus": {
+        "lat": 48.85,
+        "lon": 2.35,
+        "span": 48,
+        "precision": "thematic-or-biographical"
+      }
     }
   ],
   "edges": [
@@ -9758,6 +9795,54 @@
       "target": "geografia-spagna",
       "kind": "ambito-geografico",
       "weight": 0.8
+    },
+    {
+      "source": "compositore-josef-suk",
+      "target": "novecento",
+      "kind": "appartenenza",
+      "weight": 1.6
+    },
+    {
+      "source": "compositore-josef-suk",
+      "target": "geografia-cechia",
+      "kind": "ambito-geografico",
+      "weight": 0.9
+    },
+    {
+      "source": "compositore-josef-suk",
+      "target": "compositore-antonin-dvorak",
+      "kind": "trasmissione-artistica",
+      "weight": 1.25
+    },
+    {
+      "source": "musica-concreta",
+      "target": "novecento",
+      "kind": "corrente-nel-periodo",
+      "weight": 1.3
+    },
+    {
+      "source": "musica-concreta",
+      "target": "musica-elettronica",
+      "kind": "convergenza-elettroacustica",
+      "weight": 1.4
+    },
+    {
+      "source": "compositore-pierre-schaeffer",
+      "target": "musica-concreta",
+      "kind": "ideazione-della-pratica",
+      "weight": 2
+    },
+    {
+      "source": "compositore-pierre-henry",
+      "target": "musica-concreta",
+      "kind": "sviluppo-della-pratica",
+      "weight": 1.8
+    },
+    {
+      "source": "musica-concreta",
+      "target": "avanguardie",
+      "kind": "ambito-storico",
+      "weight": 1.1
     }
   ],
   "videos": [],
@@ -9806,5 +9891,12 @@
     "relationship_file": "database/relazioni.json",
     "newNodes": 13,
     "method": "I rapporti di genere e formazione vengono aggiunti come lenti documentate, senza confondere affinità storica con contatto personale."
+  },
+  "extension_20261006": {
+    "description": "Josef Suk e musica concreta: maestro-allievo e storia delle pratiche elettroacustiche, con fonti specialistiche.",
+    "sources": [
+      "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/",
+      "https://www.treccani.it/enciclopedia/musica-concreta/"
+    ]
   }
 }
