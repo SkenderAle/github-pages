@@ -14,7 +14,7 @@ const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,""
 function searchNames(n){return [n.label,...(n.aliases||[])];}
 function matchesSearch(n,q){return !!q&&searchNames(n).some(name=>normSearch(name).includes(q));}
 function searchRank(n,q){const variants=searchNames(n).map(normSearch);if(variants.some(v=>v===q))return 0;if(variants.some(v=>v.split(" ").includes(q)))return 1;if(variants.some(v=>v.startsWith(q)))return 2;return 3;}
-function findSearchResults(q){return nodes.filter(n=>matchesSearch(n,q)).sort((a,b)=>searchRank(a,q)-searchRank(b,q)||a.label.localeCompare(b.label,"it"));}
+function findSearchResults(q){return nodes.filter(n=>matchesSearch(n,q)&&(n.type!=="persona"||activeLens!=="musica")).sort((a,b)=>searchRank(a,q)-searchRank(b,q)||a.label.localeCompare(b.label,"it"));}
 function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
 
 const geoState={lat:48,lon:11,span:100,targetLat:48,targetLon:11,targetSpan:100,enabled:true};
@@ -98,7 +98,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  const all=db.nodes.filter(n=>n.visible!==0&&n.visible!=="0");
  const anchors=new Map();let i=0;
  for(const n of all){let a=i++*2.399963,rad=8*Math.sqrt((i+.5)/all.length),offset=n.type==="periodo"?6:n.type==="ambito"?5:rad;
-  const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,radius:n.type==="compositore"?5:n.type==="geografia"?8:11};
+  const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,radius:n.type==="compositore"||n.type==="persona"?5:n.type==="geografia"?8:11};
   nodes.push(item);byId.set(item.id,item);if(item.type==="periodo")anchors.set(item.id,item);}
  for(const n of nodes){if(n.type!=="compositore")continue;const period=db.edges.find(e=>e.source===n.id&&byId.get(e.target)?.type==="periodo");if(period){const a=anchors.get(period.target);if(a){n.x=a.x+(rnd()-.5)*5;n.y=a.y+(rnd()-.5)*5;n.z=a.z+(rnd()-.5)*5;}}}
  edges=db.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>({...e,a:byId.get(e.source),b:byId.get(e.target)}));
@@ -273,7 +273,23 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  ctx.clearRect(0,0,w,h);paintGeo();
  screen=nodes.map(n=>{let p=n.type==="geografia"?(geoScreenPoint(n)||sxworld(n)):sxworld(n);p.node=n;p.r=n.type==="geografia"?15:clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n&&n.type!=="geografia"){p.x=drag.x;p.y=drag.y;}return p;});
  positionGeoMarkers(screen);
-
+ if(activeLens!=="musica"&&selected){
+  // Costellazione locale della lente: portiamo i parenti e gli interlocutori
+  // attorno al protagonista senza alterare le coordinate musicali del database.
+  const center=screen.find(p=>p.node===selected);
+  const related=linked(selected).filter(row=>row.n.type!=="geografia");
+  if(center&&related.length){
+   const availableW=document.body.classList.contains("panel-open")?w-Math.min(315,w*.85):w;
+   const radius=Math.min(155,Math.max(84,Math.min(availableW,h)*.23));
+   for(const [index,row] of related.entries()){
+    const point=screen.find(p=>p.node===row.n);if(!point)continue;
+    const angle=-Math.PI*.62+Math.PI*2*index/Math.max(related.length,3);
+    point.x=clamp(center.x+Math.cos(angle)*radius,45,Math.max(46,availableW-43));
+    point.y=clamp(center.y+Math.sin(angle)*radius,Math.min(h*.32,225),Math.max(h*.32+10,h-142));
+    point.depth=center.depth;point.r=clamp(15*zoom,10,21);
+   }
+  }
+ }
  const map=new Map(screen.map(p=>[p.node.id,p]));
  const neighbors=new Set(),activeEdges=currentEdges();lineHits=[];
  if(selected){neighbors.add(selected.id);for(const e of activeEdges){if(e.source===selected.id)neighbors.add(e.target);if(e.target===selected.id)neighbors.add(e.source);}}
@@ -294,9 +310,21 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   }else ctx.strokeStyle="#9fbdd4";
   const bend=Math.min(38,Math.hypot(b.x-a.x,b.y-a.y)*.09);
   ctx.beginPath();ctx.moveTo(a.x,a.y);
+  if(activeLens==="influenze"&&e.kind==="eredita")ctx.setLineDash([6,5]);
   const cx=(a.x+b.x)*.5+bend*.35,cy=(a.y+b.y)*.5-bend;
-  ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();
-  if(direct&&activeLens!=="musica")lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
+  ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
+  if(direct&&activeLens!=="musica"){
+   lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
+   if(e.group==="influenze"||e.group==="formazione"){
+    // Freccia: da chi insegna/influenza verso chi apprende/raccoglie l'eredità.
+    const t=.77,q=1-t,px=q*q*a.x+2*q*t*cx+t*t*b.x,py=q*q*a.y+2*q*t*cy+t*t*b.y;
+    const dx=2*q*(cx-a.x)+2*t*(b.x-cx),dy=2*q*(cy-a.y)+2*t*(b.y-cy);
+    const ang=Math.atan2(dy,dx);ctx.save();ctx.globalAlpha=.95;ctx.fillStyle=ctx.strokeStyle;
+    ctx.beginPath();ctx.moveTo(px+8*Math.cos(ang),py+8*Math.sin(ang));
+    ctx.lineTo(px-6*Math.cos(ang-.5),py-6*Math.sin(ang-.5));
+    ctx.lineTo(px-6*Math.cos(ang+.5),py-6*Math.sin(ang+.5));ctx.closePath();ctx.fill();ctx.restore();
+   }
+  }
  }
  ctx.globalAlpha=1;
  const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>{
