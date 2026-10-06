@@ -228,10 +228,11 @@ canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hi
 });
 function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remove("dragging");if(d.node)focusOn(d.node,!d.moved);}
 canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
-function setZoom(next){zoom=clamp(next,.45,3.5);zoomSlider.value=String(Math.round(zoom*100));zoomValue.textContent=Math.round(zoom*100)+"%";}
-zoomIn.addEventListener("click",()=>setZoom(zoom*1.2));
-zoomOut.addEventListener("click",()=>setZoom(zoom/1.2));
+function setZoom(next){zoom=clamp(Number(next)||1,.45,3.5);const pct=Math.round(zoom*100);zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";zoomSlider.setAttribute("aria-valuetext",pct+" per cento");zoomIn.disabled=zoom>=3.5;zoomOut.disabled=zoom<=.45;}
+zoomIn.addEventListener("click",e=>{e.preventDefault();setZoom(zoom*1.3);});
+zoomOut.addEventListener("click",e=>{e.preventDefault();setZoom(zoom/1.3);});
 zoomSlider.addEventListener("input",()=>setZoom(Number(zoomSlider.value)/100));
+setZoom(zoom);
 canvas.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.001));},{passive:false});
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
