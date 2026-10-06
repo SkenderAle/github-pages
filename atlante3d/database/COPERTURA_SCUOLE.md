@@ -121,7 +121,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | John Blow | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | da avviare |
 | barocco | Leonardo Leo | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Leonardo Vinci | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
-| barocco | Maria Teresa Agnesi | 1 | 0 | 0 | 0 | 0 | Accademie domestiche musicali della Milano settecentesca | catalogato | **Lotto 1** |
+| barocco | Maria Teresa Agnesi | 1 | 0 | 0 | 1 | 0 | Accademie domestiche musicali della Milano settecentesca | catalogato | **Lotto 1** |
 | barocco | Marin Marais | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | barocco | Nicola Logroscino | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Nicola Porpora | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
@@ -276,6 +276,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 - **Ottaviano Petrucci**: stampatore editore musicale.
 - **Goffredo Mameli**: poeta patriota.
 - **Isabella de' Medici**: mecenate musicale.
+- **Giordano Riccati**: fisico acustico teorico musicale.
 
 ## Procedura per completare i nodi RICERCA
 
