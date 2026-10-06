@@ -8,13 +8,15 @@
 - Senza legami di scuola o tradizione: **89**.
 - Senza relazioni specialistiche di alcun tipo: **12**.
 - Relazioni nella lente Scuole e tradizioni: **253**.
-- Prime ricognizioni registrate per nome: **280** su 288 (non equivalgono alla revisione bibliografica definitiva).
+- Prime ricognizioni registrate per nome: **288** su 288 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
 - Sesto lotto: **40** biografie censite con almeno una fonte, di cui **31** con nuove relazioni e **9** con prima verifica biografica ma relazioni da approfondire.
 - Settimo lotto: **40** ricognizioni nominative, di cui **26** con nuovi collegamenti documentati e **14** senza nuovi archi accertati (ricerca ancora aperta).
 - Ottavo lotto: **40** ricognizioni nominative, di cui **8** con nuovi archi direttamente incidenti e **32** con sola prima fonte biografica (ulteriori approfondimenti necessari).
 - Nono lotto: **40** ricognizioni nominative con fonte, di cui **8** con almeno un nuovo arco e **32** con sola prima ricognizione biografica (quattro lenti da approfondire).
 - Decimo lotto: **40** ricognizioni nominative, di cui **13** con almeno una nuova relazione e **27** senza nuovi archi nella prima passata. **10** relazioni aggiunte dopo esclusione di una falsa identificazione Fasch.
+- Undicesimo lotto conclusivo: **8** schede ricognite e **8** relazioni preesistenti corredate di ulteriori fonti (nessun nuovo arco).
+- **Prima ricognizione di tutti i 288 compositori completata.** La verifica approfondita e indipendente delle quattro lenti rimane aperta.
 - Identità Wikidata riconciliate: **19** su 288.
 
 ## Copertura per epoca
@@ -38,7 +40,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 |---|---|---:|---:|---:|---:|---:|---|---|---|
 | non-classificato | Amilcare Ponchielli | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Anatolij Ljadov | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | André Gedalge | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | André Gedalge | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Anton Reicha | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Anton Rubinstein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Billy Strayhorn | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 10** |
@@ -46,12 +48,12 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Carl Czerny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Carl Friedrich Zelter | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Charles Hambitzer | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | Charles Koechlin | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Charles Koechlin | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Christian Theodor Weinlig | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Claudio Merulo | 1 | 0 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 8** |
 | non-classificato | Costanzo Festa | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
 | non-classificato | Eduard Marxsen | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | Ennio Morricone | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Ennio Morricone | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Felice Anerio | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
 | non-classificato | Francesco Durante | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Francesco Soriano | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
@@ -60,7 +62,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Fromental Halévy | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Gennaro Manna | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | George Whitefield Chadwick | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | Giacinto Sallustio | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Giacinto Sallustio | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Giacomo Antonio Perti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Gilles Binchois | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
 | non-classificato | Gioseffo Zarlino | 1 | 2 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 8** |
@@ -71,7 +73,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Giovanni Maria Nanino | 1 | 3 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
 | non-classificato | Gregorio Allegri | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
 | non-classificato | Heinrich Isaac | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
-| non-classificato | Henry Cowell | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Henry Cowell | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Jacob Clemens non Papa | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
 | non-classificato | Jacob Obrecht | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
 | non-classificato | Jean-François Lesueur | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
@@ -87,14 +89,14 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Michael Haydn | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Michael Praetorius | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | **Lotto 8** |
 | non-classificato | Nadia Boulanger | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | Otto Kitzler | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Otto Kitzler | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Pietro Nardini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | René Leibowitz | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | René Leibowitz | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Rubin Goldmark | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Samuel Scheidt | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | **Lotto 8** |
 | non-classificato | Sergej Taneev | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Simon Sechter | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | Walter Klein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Walter Klein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Wojciech Żywny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | medioevo | Adam de la Halle | 1 | 0 | 0 | 1 | 0 | Tradizione dei trovieri francesi | catalogato | **Lotto 1** |
 | medioevo | Francesco Landini | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | **Lotto 5** |
