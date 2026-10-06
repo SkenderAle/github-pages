@@ -10,7 +10,7 @@
 - Relazioni nella lente Scuole e tradizioni: **252**.
 - Prime ricognizioni registrate per nome: **120** su 277 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
-- Sesto lotto: **40** biografie censite con almeno una fonte, di cui **30** con nuove relazioni e **10** con prima verifica biografica ma relazioni da approfondire.
+- Sesto lotto: **40** biografie censite con almeno una fonte, di cui **31** con nuove relazioni e **9** con prima verifica biografica ma relazioni da approfondire.
 - Identità Wikidata riconciliate: **19** su 277.
 
 ## Copertura per epoca
