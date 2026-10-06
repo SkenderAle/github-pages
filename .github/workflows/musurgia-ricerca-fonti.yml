@@ -1,0 +1,77 @@
+name: Musurgia Mundi - ricerca fonti enciclopediche
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "identita = riconciliazione; relazioni = candidati documentali"
+        type: choice
+        required: true
+        default: relazioni
+        options:
+          - identita
+          - relazioni
+      offset:
+        description: "Inizio del lotto nel registro ordinato"
+        type: number
+        required: false
+        default: 0
+      limit:
+        description: "Dimensione del lotto (massimo 50)"
+        type: number
+        required: false
+        default: 12
+  push:
+    paths:
+      - ".github/workflows/musurgia-ricerca-fonti.yml"
+      - "atlante3d/database/grafo.json"
+      - "atlante3d/database/identita-esterne.json"
+      - "atlante3d/database/ricerca-fonti.mjs"
+      - "atlante3d/database/sincronizza-identita.mjs"
+jobs:
+  ricerca:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 25
+    steps:
+      - name: Recupera repository
+        uses: actions/checkout@v4
+      - name: Prepara Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Esegui test di orientamento e integrita
+        run: |
+          node atlante3d/database/ricerca-fonti.mjs --self-test
+          mkdir -p outputs
+          node atlante3d/database/sincronizza-identita.mjs --write --new-ids=outputs/nuovi-compositori.json
+          node atlante3d/database/sincronizza-identita.mjs --check
+      - name: Ricerca iniziale di nuovo materiale
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          MODE: ${{ inputs.mode }}
+          OFFSET: ${{ inputs.offset }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT" == "workflow_dispatch" ]]; then
+            node atlante3d/database/ricerca-fonti.mjs --mode="${MODE:-relazioni}" --offset="${OFFSET:-0}" --limit="${LIMIT:-12}" --output=outputs/candidati.json
+          else
+            NEW_COUNT=$(node -e "console.log(require('./outputs/nuovi-compositori.json').composers.length)")
+            if [[ "$NEW_COUNT" -gt 0 ]]; then
+              node atlante3d/database/ricerca-fonti.mjs --mode=identita --ids-file=outputs/nuovi-compositori.json --limit=50 --output=outputs/candidati.json
+            else
+              node atlante3d/database/ricerca-fonti.mjs --mode=relazioni --limit=6 --output=outputs/candidati.json
+            fi
+          fi
+      - name: Conserva candidati e registro aggiornato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: musurgia-candidati-${{ github.run_number }}
+          path: |
+            outputs/
+            atlante3d/database/identita-esterne.json
+          if-no-files-found: warn
+          retention-days: 30
