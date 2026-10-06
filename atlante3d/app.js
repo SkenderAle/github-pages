@@ -40,14 +40,41 @@ function paintGeo(){
  const world=Math.max(500,w*360/Math.max(24,g.span));
  const height=world/2;
  const centerX=(g.lon+180)/360*world,centerY=(90-g.lat)/180*height;
+ const pan=mapOffset();
  earthMap.style.backgroundSize=world.toFixed(1)+"px "+height.toFixed(1)+"px";
- earthMap.style.backgroundPosition=(w/2-centerX).toFixed(1)+"px "+(h/2-centerY).toFixed(1)+"px";
+ earthMap.style.backgroundPosition=(w/2+pan.x-centerX).toFixed(1)+"px "+(h/2+pan.y-centerY).toFixed(1)+"px";
 }
 followGeo?.addEventListener("change",()=>{
  geoState.enabled=followGeo.checked;
  if(geoState.enabled&&selected)moveGeo(selected);
 });
 
+// La geografia è un primo livello, non una seconda costellazione in cascata.
+// I marcatori geografici sono ancorati alla stessa proiezione della mappa NASA.
+const GEO_CENTERS={
+ "geografia-francia":[46.6,2.3],"geografia-italia":[42.8,12.5],
+ "geografia-inghilterra":[53,-1.5],"geografia-spagna":[40,-4],
+ "geografia-germania":[51,10],"geografia-austria":[47.6,14.1],
+ "geografia-russia":[56,37.6],"geografia-cechia":[49.8,15.5],
+ "geografia-stati-uniti":[39,-98],"geografia-ungheria":[47.2,19.4],
+ "geografia-polonia":[52,19.1]
+};
+const mapOffset=()=>({x:selected?.type==="geografia"?0:Math.min(170,w*.19),y:selected?.type==="geografia"?0:-Math.min(95,h*.12)});
+function geoScreenPoint(n){
+ const coords=GEO_CENTERS[n.id];
+ if(!coords)return null;
+ const g=geoState,world=Math.max(500,w*360/Math.max(24,g.span)),height=world/2;
+ const lat=coords[0],lon=coords[1],pan=mapOffset();
+ let dx=((lon-g.lon+540)%360)-180;
+ const x=w/2+pan.x+dx/360*world;
+ const y=h/2+pan.y+(g.lat-lat)/180*height;
+ return {x,y,depth:-.01,scale:Math.min(w,h)*.055,r:17};
+}
+function isDirectGeography(n){
+ if(n.type!=="geografia")return true;
+ if(!selected)return false;
+ return n===selected||edges.some(e=>e.source===selected.id&&e.target===n.id||e.target===selected.id&&e.source===n.id);
+}
 function sxworld(node){let x=node.x-camera.x,y=node.y-camera.y,z=node.z-camera.z;const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),si=Math.sin(rotX);const rx=x*cy-z*sy,rz=x*sy+z*cy,ry=y*cx-rz*si,depth=y*si+rz*cx;const k=9/(16+depth),scale=Math.min(w,h)*.095*zoom*k;return {x:w/2+rx*scale,y:h/2+ry*scale,scale,depth};}
 function unproject(px,py,depth){let scale=Math.min(w,h)*.095*zoom*9/(16+depth);const rx=(px-w/2)/scale,ry=(py-h/2)/scale;const cx=Math.cos(rotX),si=Math.sin(rotX),cy=Math.cos(rotY),sy=Math.sin(rotY);const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};}
 function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw Error("Schema non valido");
@@ -65,7 +92,7 @@ function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.000
  // Repulsione locale: l'algoritmo evita che centinaia di bolle si sovrappongano.
  for(let i=0;i<nodes.length;i++){let a=nodes[i];for(let j=i+1;j<nodes.length;j++){let b=nodes[j],dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d2=dx*dx+dy*dy+dz*dz;if(d2>5.5||d2<.00001)continue;let f=.008/(d2+.2);a.vx-=dx*f;a.vy-=dy*f;a.vz-=dz*f;b.vx+=dx*f;b.vy+=dy*f;b.vz+=dz*f;}}
  for(const n of nodes){if(drag&&drag.node===n){n.vx=n.vy=n.vz=0;continue;}n.vx=clamp(n.vx*.89,-.12,.12);n.vy=clamp(n.vy*.89,-.12,.12);n.vz=clamp(n.vz*.89,-.12,.12);n.x+=n.vx;n.y+=n.vy;n.z+=n.vz;}}
-function visibleNode(n){return typeFilter==="tutti"||n.type===typeFilter||n===selected}
+function visibleNode(n){return (typeFilter==="tutti"||n.type===typeFilter||n===selected)&&isDirectGeography(n)}
 
 /* Paesaggio immaginario: viene dipinto solo al ridimensionamento, non a ogni frame. */
 
@@ -195,7 +222,7 @@ function drawNightAtlas(){
 
 function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;camera.y+=(focus.y-camera.y)*.085;camera.z+=(focus.z-camera.z)*.085;}
  ctx.clearRect(0,0,w,h);paintGeo();
- screen=nodes.map(n=>{let p=sxworld(n);p.node=n;p.r=clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n){p.x=drag.x;p.y=drag.y;}return p;});
+ screen=nodes.map(n=>{let p=n.type==="geografia"?(geoScreenPoint(n)||sxworld(n)):sxworld(n);p.node=n;p.r=n.type==="geografia"?clamp(15*zoom,11,23):clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n&&n.type!=="geografia"){p.x=drag.x;p.y=drag.y;}return p;});
 
  const map=new Map(screen.map(p=>[p.node.id,p]));
  const neighbors=new Set();
@@ -312,14 +339,14 @@ function hit(pt){
  }
  return null;
 }
-canvas.addEventListener("pointerdown",e=>{if(e.button!==0)return;let pt=pointer(e),p=hit(pt);drag={node:p?.node||null,x:pt.x,y:pt.y,depth:p?.depth||0,lastX:pt.x,lastY:pt.y,offsetX:p?p.x-pt.x:0,offsetY:p?p.y-pt.y:0,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");});
+canvas.addEventListener("pointerdown",e=>{if(e.button!==0)return;let pt=pointer(e),p=hit(pt);drag={node:p?.node?.type==="geografia"?null:p?.node||null,geoNode:p?.node?.type==="geografia"?p.node:null,x:pt.x,y:pt.y,depth:p?.depth||0,lastX:pt.x,lastY:pt.y,offsetX:p?p.x-pt.x:0,offsetY:p?p.y-pt.y:0,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");});
 canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hit(pt)?.node||null;canvas.style.cursor=hover?"pointer":"grab";return;}
  const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.abs(dx)+Math.abs(dy)>0){if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;}
  drag.lastX=pt.x;drag.lastY=pt.y;
  if(drag.node){const x=pt.x+drag.offsetX,y=pt.y+drag.offsetY;const pos=unproject(x,y,drag.depth);Object.assign(drag.node,pos);drag.node.vx=drag.node.vy=drag.node.vz=0;drag.x=x;drag.y=y;}
- else{rotY+=dx*.005;rotX=clamp(rotX+dy*.005,-1.4,1.4);}
+ else if(!drag.geoNode){rotY+=dx*.005;rotX=clamp(rotX+dy*.005,-1.4,1.4);}
 });
-function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remove("dragging");if(d.node)focusOn(d.node,!d.moved);}
+function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remove("dragging");if(d.node)focusOn(d.node,!d.moved);else if(d.geoNode&&!d.moved)focusOn(d.geoNode,true);}
 canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
 function setZoom(next){zoom=clamp(Number(next)||1,.45,3.5);const pct=Math.round(zoom*100);zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";zoomSlider.setAttribute("aria-valuetext",pct+" per cento");zoomIn.disabled=zoom>=3.5;zoomOut.disabled=zoom<=.45;}
 zoomIn.addEventListener("click",e=>{e.preventDefault();setZoom(zoom*1.3);});
