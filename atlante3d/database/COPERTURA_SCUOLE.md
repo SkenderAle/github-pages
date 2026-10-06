@@ -5,9 +5,9 @@
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
 - Compositori censiti: **288**.
-- Senza legami di scuola o tradizione: **59**.
+- Senza legami di scuola o tradizione: **52**.
 - Senza relazioni specialistiche di alcun tipo: **0**.
-- Relazioni nella lente Scuole e tradizioni: **283**.
+- Relazioni nella lente Scuole e tradizioni: **290**.
 - Prime ricognizioni registrate per nome: **288** su 288 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
 - Sesto lotto: **40** biografie censite con almeno una fonte, di cui **31** con nuove relazioni e **9** con prima verifica biografica ma relazioni da approfondire.
@@ -23,6 +23,7 @@
 - Seconda fase, quarto gruppo: **7** nuove relazioni di scuola (Mattei, Weber, Wagner, Britten, Schaeffer, Henry, Durante), con nodo autonomo per la didattica napoletana del partimento.
 - Seconda fase, quinto gruppo: **7** relazioni di scuola, con due nuovi nodi per Scapigliatura milanese e La Jeune France del 1936.
 - Seconda fase, sesto gruppo: **7** relazioni verificate di scuole e tradizioni, senza nuovi nodi, distinguendo formazione istituzionale, linguaggio sperimentale e teatro francese.
+- Seconda fase, settimo gruppo: **7** relazioni documentate per Rubinstein, Taneev, Ljadov, Steinberg, Farrenc, Duni e Manna. Scuole e istituzioni non confuse con equivalenza di poetiche.
 - Identità Wikidata riconciliate: **19** su 288.
 
 ## Copertura per epoca
@@ -45,10 +46,10 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato | Prima ricognizione |
 |---|---|---:|---:|---:|---:|---:|---|---|---|
 | non-classificato | Amilcare Ponchielli | 1 | 3 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 10** |
-| non-classificato | Anatolij Ljadov | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Anatolij Ljadov | 1 | 3 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato | **Lotto 10** |
 | non-classificato | André Gedalge | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Anton Reicha | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | Anton Rubinstein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Anton Rubinstein | 1 | 1 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato | **Lotto 10** |
 | non-classificato | Billy Strayhorn | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Camillo Sivori | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Carl Czerny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
@@ -66,7 +67,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Frederick Converse | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Fritz Reiner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Fromental Halévy | 1 | 4 | 0 | 0 | 1 | Conservatorio di Parigi e scuola di composizione | catalogato | **Lotto 10** |
-| non-classificato | Gennaro Manna | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Gennaro Manna | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | **Lotto 10** |
 | non-classificato | George Whitefield Chadwick | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Giacinto Sallustio | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Giacomo Antonio Perti | 1 | 2 | 0 | 0 | 0 | Scuola bolognese di contrappunto | catalogato | **Lotto 10** |
@@ -90,7 +91,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Johannes Ockeghem | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
 | non-classificato | Józef Elsner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Lauro Rossi | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
-| non-classificato | Maksimilian Steinberg | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Maksimilian Steinberg | 1 | 2 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato | **Lotto 10** |
 | non-classificato | Marcantonio Ingegneri | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Michael Haydn | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Michael Praetorius | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | **Lotto 8** |
@@ -100,7 +101,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | René Leibowitz | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Rubin Goldmark | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Samuel Scheidt | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | **Lotto 8** |
-| non-classificato | Sergej Taneev | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Sergej Taneev | 1 | 3 | 0 | 0 | 0 | Tradizione compositiva del Conservatorio di Mosca | catalogato | **Lotto 10** |
 | non-classificato | Simon Sechter | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Walter Klein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 11** |
 | non-classificato | Wojciech Żywny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
@@ -194,7 +195,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | classicismo | Christian Gottlob Neefe | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
 | classicismo | Christoph Willibald Gluck | 1 | 0 | 4 | 3 | 0 | Riforma operistica del Settecento | catalogato | **Lotto 6** |
 | classicismo | Domenico Cimarosa | 1 | 1 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 6** |
-| classicismo | Egidio Duni | 0 | 0 | 0 | 0 | 1 | — | **RICERCA** | **Lotto 8** |
+| classicismo | Egidio Duni | 1 | 0 | 0 | 0 | 1 | Opéra-comique | catalogato | **Lotto 8** |
 | classicismo | Filippo Manfredi | 0 | 1 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 10** |
 | classicismo | Franz Schubert | 1 | 1 | 1 | 0 | 0 | Lied romantico tedesco | catalogato | **Lotto 6** |
 | classicismo | Franz Xaver Richter | 1 | 0 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | **Lotto 8** |
@@ -250,7 +251,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | romanticismo | Jacques Offenbach | 1 | 1 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 9** |
 | romanticismo | Johannes Brahms | 3 | 1 | 4 | 3 | 0 | Lied romantico tedesco · Sinfonismo tardo-romantico · Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
 | romanticismo | Jules Massenet | 1 | 2 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 9** |
-| romanticismo | Louise Farrenc | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
+| romanticismo | Louise Farrenc | 1 | 1 | 0 | 0 | 0 | Conservatorio di Parigi e scuola di composizione | catalogato | **Lotto 3** |
 | romanticismo | Luigi Felice Rossi | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 6** |
 | romanticismo | Michele Novaro | 1 | 0 | 0 | 1 | 0 | Risorgimento | catalogato | **Lotto 6** |
 | romanticismo | Milij Balakirev | 1 | 3 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
