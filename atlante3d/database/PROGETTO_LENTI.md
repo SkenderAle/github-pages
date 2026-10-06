@@ -1,5 +1,5 @@
 # Musurgia Mundi · Lenti di esplorazione
-**Stato:** rilascio "Scuole e tradizioni" del 6 ottobre 2026. Il catalogo è in ampliamento e necessita di controllo bibliografico continuativo.
+**Stato:** quattro lenti esplorative con protocollo di ricerca AI e banche dati esterne, 6 ottobre 2026. Il catalogo è in ampliamento e necessita di controllo bibliografico continuativo.
 
 ## Riferimento metodologico: Musicmap
 Riferimento pubblico: https://musicmap.info/ (consultato per metodo, non per il codice o la grafica).
@@ -8,15 +8,16 @@ Musicmap distingue macrofamiglie e generi, opera una riduzione editoriale per ma
 
 La scelta per Musurgia Mundi: **una sola rete di persone e oggetti musicali, molte lenti di lettura**, con fonti consultabili per ogni rapporto di natura biografica o interpretativa.
 
-## Lenti
-- **Storia musicale**: tutte le relazioni della rete storica in `grafo.json`; è la modalità iniziale e continua a mostrare i luoghi sempre disponibili come marcatori.
-- **Scuole e tradizioni**: scuole storiche, cerchie documentate, linee didattiche, circolazione di tecniche e trasmissioni stilistiche. La **parentela biologica e matrimoniale è esclusa** dai dati specialistici. Una tradizione retrospettiva non è una scuola formale.
-- **Maestri e allievi**: formazione didattica formalmente riconoscibile. La freccia va dal maestro all'allievo.
-- **Influenze**: rapporto stilistico documentato, con direzione; distingue influenza e eredità. Non equivale alla presenza nello stesso periodo.
-- **Incontri e collaborazioni**: sostegno artistico, lavoro congiunto e scambio musicale. Un incontro documentato non implica da solo una trasmissione compositiva.
-- **Genealogie dei generi**: ascendenze, contaminazioni, reazioni e rielaborazioni di forme, generi e pratiche compositive. Attraversa tanto i rapporti fra generi quanto i rapporti fra compositori e generi; non va ridotta a una successione cronologica.
+## Quattro lenti per il visitatore, cinque gruppi semantici in archivio
 
-Le lenti sono **filtri espliciti**, non una somma indiscriminata. Quando si passa da una all'altra il contenuto dell'Atlante non cambia: cambia la domanda che si pone alla rete.
+- **Storia musicale e scuole** (`musica`): mostra congiuntamente le connessioni storiche del grafo generale e le relazioni documentate del gruppo `scuole`. Comprende scuole storiche, cerchie, istituzioni, trasmissioni e tradizioni senza pretendere che una scuola sia sempre un'organizzazione formalizzata.
+- **Maestri, allievi e influenze** (`trasmissioni`): unisce nella visualizzazione i rapporti didattici `formazione` e le influenze `influenze`, senza fonderli nel database. Un insegnante documentato non è lo stesso tipo di relazione di un modello stilistico.
+- **Genealogie dei generi** (`genealogie`): ascendenze, contaminazioni, reazioni e rielaborazioni fra forme, generi, compositori e pratiche musicali.
+- **Incontri e collaborazioni** (`collaborazioni`): sostegno artistico, lavoro congiunto e scambio musicale. Un incontro non è, da solo, prova di influenza.
+
+**Il database conserva cinque gruppi specialistici**, `scuole`, `formazione`, `influenze`, `genealogie` e `collaborazioni`, e le connessioni del grafo generale. È soltanto l'interfaccia a comporli in quattro lenti: la qualità delle descrizioni e delle fonti non viene sacrificata. La parentela biologica e matrimoniale non è oggetto di nessuna lente.
+
+Le lenti sono filtri espliciti, non una somma indiscriminata. Cambiando lente cambia la domanda posta alla medesima rete.
 
 ## Scuole compositive: significato del collegamento
 
@@ -53,7 +54,7 @@ Due nodi catalogati esclusivamente per relazioni familiari, Cosima Wagner e Mari
 2. Vedi soltanto i legami diretti del tipo scelto. Gli altri restano attenuati.
 3. Puoi fare clic su una linea o su «Perché sono collegati?» per consultare nota e fonti.
 4. Selezionando una persona collegata il centro della rete cambia, ma la lente rimane attiva.
-5. Tornando a «Storia musicale» si recupera la rete originaria.
+5. Tornando a «Storia musicale e scuole» si recupera la rete originaria insieme alle scuole documentate.
 6. Il pulsante «Etichette: tutte» continua a interessare soprattutto la vista musicale.
 
 ## Fonti e riscontri per le scuole
@@ -105,3 +106,12 @@ Sviluppi previsti: cronologia a livelli, filtro delle opere e delle pratiche com
 
 ## Controlli per la pubblicazione
 Lo script `verifica-relazioni.mjs` controlla: identificativi esistenti, unicità delle relazioni, categorie di lente riconosciute, etichette nei due versi e almeno una URL HTTPS per relazione documentata.
+
+
+## Banche dati come motore della ricerca
+
+Ogni nuovo compositore presente in `grafo.json` deve essere riconciliato mediante `identita-esterne.json` con Wikidata (QID) e, quando disponibile, MusicBrainz (MBID). L'estrattore `ricerca-fonti.mjs` usa P1066, P802 e P737 di Wikidata e i rapporti docente-allievo di MusicBrainz per produrre **candidati**, non relazioni pubblicate. Ogni candidato mantiene il verso, il predicato originale e il collegamento alla sorgente, in modo che il webmaster o l'AI possano effettuare il confronto con Treccani, fonti archivistiche o studi specialistici.
+
+Regole operative, struttura di un candidato e criteri di verifica sono in `PROTOCOLLO_RICERCA_AI.json`. Il registro di tutti i nomi si trova in `identita-esterne.json`; il funzionamento tecnico e il percorso di lavoro sono illustrati in `LEGGIMI_RICERCA_AI.md`.
+
+L'esperimento iniziale Christian Gottlob Neefe → Ludwig van Beethoven mostra il metodo: identificazione Wikidata, riscontro del rapporto di insegnamento presso il Beethoven-Haus Bonn, aggiunta del compositore e inserimento della relazione di formazione con le fonti. L'estrazione dei candidati e l'esecuzione remota GitHub Actions vanno ulteriormente collaudate su rete.
