@@ -216,7 +216,11 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  ctx.globalAlpha=1;
  const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>b.depth-a.depth);
  // Disegnare prima le sfere slegate impedisce che nascondano quelle connesse.
- if(selected)drawable.sort((a,b)=>Number(neighbors.has(a.node.id))-Number(neighbors.has(b.node.id)));
+ if(selected)drawable.sort((a,b)=>{
+  if(a.node===selected)return 1;
+  if(b.node===selected)return -1;
+  return Number(neighbors.has(a.node.id))-Number(neighbors.has(b.node.id));
+ });
  for(const p of drawable){
   const n=p.node,related=selected&&neighbors.has(n.id);
   const highlight=n===selected||n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText));
@@ -280,7 +284,15 @@ function populate(n){
  dst.append(group);
 }
 function pointer(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
-function hit(pt){return screen.filter(p=>visibleNode(p.node)&&p.depth>-14&&Math.hypot(p.x-pt.x,p.y-pt.y)<Math.max(p.r+9,13)).sort((a,b)=>Math.hypot(a.x-pt.x,a.y-pt.y)-Math.hypot(b.x-pt.x,b.y-pt.y))[0];}
+function hit(pt){
+ // La sfera selezionata rimane sempre in primo piano anche per il puntatore:
+ // nessuna sfera sottostante può intercettare il trascinamento nella sua area.
+ const chosen=selected&&screen.find(p=>p.node===selected&&visibleNode(p.node)&&p.depth>-14);
+ if(chosen&&Math.hypot(chosen.x-pt.x,chosen.y-pt.y)<Math.max(chosen.r*1.6*1.2+5,18))return chosen;
+ const candidates=screen.filter(p=>visibleNode(p.node)&&p.depth>-14&&Math.hypot(p.x-pt.x,p.y-pt.y)<Math.max(p.r+9,13));
+ // Le sfere prossime e visibili hanno precedenza su quelle sullo sfondo.
+ return candidates.sort((a,b)=>a.depth-b.depth||Math.hypot(a.x-pt.x,a.y-pt.y)-Math.hypot(b.x-pt.x,b.y-pt.y))[0];
+}
 canvas.addEventListener("pointerdown",e=>{if(e.button!==0)return;let pt=pointer(e),p=hit(pt);drag={node:p?.node||null,x:pt.x,y:pt.y,depth:p?.depth||0,lastX:pt.x,lastY:pt.y,offsetX:p?p.x-pt.x:0,offsetY:p?p.y-pt.y:0,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");});
 canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hit(pt)?.node||null;canvas.style.cursor=hover?"pointer":"grab";return;}
  const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.abs(dx)+Math.abs(dy)>0){if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;}
