@@ -29,77 +29,134 @@ function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.000
 function visibleNode(n){return typeFilter==="tutti"||n.type===typeFilter||n===selected}
 
 /* Paesaggio immaginario: viene dipinto solo al ridimensionamento, non a ogni frame. */
+
+/* Costellazione v3: cartografia notturna prerenderizzata e cinque sfere vetrose.
+   Le sprite sono generate una sola volta per colore, non a ogni fotogramma. */
 let cartography=null;
-function drawNightAtlas(){
- const bg=document.createElement("canvas");bg.width=Math.max(1,Math.round(w));bg.height=Math.max(1,Math.round(h));const g=bg.getContext("2d");const W=bg.width,H=bg.height;
- g.fillStyle="#07101d";g.fillRect(0,0,W,H);
- let sea=g.createRadialGradient(W*.49,H*.48,20,W*.49,H*.48,Math.max(W,H)*.86);
- sea.addColorStop(0,"#263b51");sea.addColorStop(.46,"#122739");sea.addColorStop(1,"#060c17");g.fillStyle=sea;g.fillRect(0,0,W,H);
- // Reticolo curvo ispirato alle carte nautiche, appena visibile sotto la rete musicale.
- g.strokeStyle="rgba(177,206,219,.095)";g.lineWidth=.7;
- for(let i=1;i<12;i++){const X=W*i/12;g.beginPath();g.moveTo(X,0);g.bezierCurveTo(X-W*.045,H*.29,X+W*.045,H*.71,X,H);g.stroke();}
- for(let i=1;i<9;i++){const Y=H*i/9;g.beginPath();g.moveTo(0,Y);g.bezierCurveTo(W*.32,Y-H*.024,W*.68,Y+H*.024,W,Y);g.stroke();}
- const coasts=[
-  [[-.08,.10],[.12,.07],[.19,.15],[.29,.17],[.33,.28],[.26,.37],[.22,.47],[.13,.48],[.07,.40],[-.06,.43]],
-  [[.54,-.12],[.72,.02],[.82,.10],[.94,.10],[1.06,.21],[.96,.34],[.86,.32],[.80,.39],[.69,.40],[.62,.34],[.58,.19],[.49,.13]],
-  [[.22,.61],[.36,.55],[.47,.57],[.53,.66],[.48,.73],[.45,.84],[.35,.92],[.28,.86],[.26,.77],[.17,.72]],
-  [[.72,.62],[.81,.57],[.94,.62],[1.06,.72],[1.03,.91],[.89,.93],[.81,.84],[.74,.79]],
-  [[.47,.36],[.50,.35],[.53,.40],[.52,.46],[.48,.47],[.45,.42]],
-  [[.09,.76],[.13,.73],[.16,.79],[.14,.86],[.10,.85]]
- ];
- const rand=(()=>{let v=73405;return ()=>((v=(Math.imul(1664525,v)+1013904223)>>>0)/4294967296)})();
- coasts.forEach((poly,j)=>{
-   const verts=[];for(let k=0;k<poly.length;k++){const a=poly[k],b=poly[(k+1)%poly.length];const count=9;for(let t=0;t<count;t++){const f=t/count;const wiggle=Math.sin(Math.PI*f)*(rand()-.5)*.016;verts.push([(a[0]+(b[0]-a[0])*f+wiggle)*W,(a[1]+(b[1]-a[1])*f+wiggle)*H]);}}
-   g.beginPath();verts.forEach((p,k)=>k?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();
-   g.fillStyle=j%2?"rgba(65,88,90,.35)":"rgba(54,83,79,.40)";g.fill();
-   g.strokeStyle="rgba(165,206,194,.30)";g.lineWidth=1.1;g.shadowColor="rgba(116,178,174,.23)";g.shadowBlur=10;g.stroke();g.shadowBlur=0;
-   // Rilievi e luci distribuite all'interno dei continenti, non nel mare.
-   const bbox={minX:Math.min(...verts.map(p=>p[0])),maxX:Math.max(...verts.map(p=>p[0])),minY:Math.min(...verts.map(p=>p[1])),maxY:Math.max(...verts.map(p=>p[1]))};
-   g.save();g.clip();
-   for(let q=0;q<95;q++){
-      const X=bbox.minX+rand()*(bbox.maxX-bbox.minX),Y=bbox.minY+rand()*(bbox.maxY-bbox.minY);
-      const R=2+rand()*12;const halo=g.createRadialGradient(X,Y,0,X,Y,R);
-      halo.addColorStop(0,q%4===0?"rgba(248,196,116,.30)":"rgba(93,133,125,.19)");halo.addColorStop(1,"rgba(0,0,0,0)");
-      g.fillStyle=halo;g.beginPath();g.arc(X,Y,R,0,Math.PI*2);g.fill();
-   }g.restore();
- });
- // Arcipelaghi e costellazioni di luci diffuse, deterministiche.
- for(let i=0;i<85;i++){const X=rand()*W,Y=rand()*H,R=rand()*1.3+.3;g.fillStyle="rgba(201,217,219,"+(.055+rand()*.16)+")";g.beginPath();g.arc(X,Y,R,0,Math.PI*2);g.fill();}
- g.strokeStyle="rgba(221,195,143,.19)";g.setLineDash([3,8]);g.lineWidth=1;
- g.beginPath();g.moveTo(W*.08,H*.55);g.bezierCurveTo(W*.36,H*.43,W*.66,H*.62,W*.91,H*.45);g.stroke();g.setLineDash([]);
- g.fillStyle="rgba(215,219,210,.22)";g.font="italic "+Math.max(12,Math.min(19,W/74))+"px Georgia,serif";
- g.fillText("Mare delle voci",W*.10,H*.56);g.fillText("Terre d'Occidente",W*.13,H*.24);g.fillText("Arcipelago del Levante",W*.67,H*.18);
- // Vignettatura scura per lasciare il contrasto alle sfere in primo piano.
- const vignette=g.createRadialGradient(W*.5,H*.48,Math.min(W,H)*.17,W*.5,H*.48,Math.max(W,H)*.75);
- vignette.addColorStop(0,"rgba(3,9,15,0)");vignette.addColorStop(1,"rgba(3,7,15,.69)");
- g.fillStyle=vignette;g.fillRect(0,0,W,H);cartography=bg;
+const sphereCache=new Map();
+const sphereHEX=hex=>{
+ const n=parseInt(hex.replace("#",""),16);
+ return [n>>16&255,n>>8&255,n&255];
+};
+function sphereColor(hex,factor){
+ const c=sphereHEX(hex);
+ return "rgb("+c.map(v=>Math.max(0,Math.min(255,Math.round(v*factor)))).join(",")+")";
+}
+function makeSphereSprite(color){
+ if(sphereCache.has(color))return sphereCache.get(color);
+ const out=document.createElement("canvas"),size=256;
+ out.width=out.height=size;
+ const g=out.getContext("2d"),x=128,y=119,r=100;
+ // L'ombra è interna allo sprite, mai disegnata con asset di terze parti.
+ let shadow=g.createRadialGradient(x+8,y+94,5,x+8,y+94,85);
+ shadow.addColorStop(0,"rgba(0,0,0,.44)");shadow.addColorStop(1,"rgba(0,0,0,0)");
+ g.fillStyle=shadow;g.beginPath();g.ellipse(x+8,y+99,93,42,-.10,0,Math.PI*2);g.fill();
+ g.save();g.beginPath();g.arc(x,y,r,0,Math.PI*2);g.clip();
+ // Smalto colorato con volume: illuminazione obliqua alto-destra.
+ let body=g.createRadialGradient(x+36,y-54,2,x-24,y+24,r*1.66);
+ body.addColorStop(0,sphereColor(color,1.34));
+ body.addColorStop(.35,sphereColor(color,1.08));
+ body.addColorStop(.68,color);
+ body.addColorStop(.87,sphereColor(color,.76));
+ body.addColorStop(1,sphereColor(color,.37));
+ g.fillStyle=body;g.fillRect(x-r,y-r,2*r,2*r);
+ const shade=g.createLinearGradient(x-r,y-r,x+r,y+r);
+ shade.addColorStop(0,"rgba(255,255,255,.04)");
+ shade.addColorStop(.42,"rgba(255,255,255,.02)");
+ shade.addColorStop(.73,"rgba(0,24,54,.11)");
+ shade.addColorStop(1,"rgba(0,11,30,.42)");
+ g.fillStyle=shade;g.fillRect(x-r,y-r,2*r,2*r);
+ // Riflesso ampio e curvo, ispirato alle sfere vetrose degli atlanti illustrati.
+ g.beginPath();g.moveTo(x+5,y-87);
+ g.bezierCurveTo(x+60,y-97,x+89,y-62,x+91,y-3);
+ g.bezierCurveTo(x+91,y+13,x+86,y+32,x+80,y+39);
+ g.lineTo(x+32,y+31);
+ g.bezierCurveTo(x+30,y-14,x+21,y-54,x+5,y-87);
+ g.closePath();
+ let glint=g.createLinearGradient(x+28,y-92,x+83,y+40);
+ glint.addColorStop(0,"rgba(255,255,255,.35)");
+ glint.addColorStop(.7,"rgba(255,255,255,.19)");
+ glint.addColorStop(1,"rgba(255,255,255,.04)");
+ g.fillStyle=glint;g.fill();
+ // Una seconda incisione di luce corre lungo l'arco superiore.
+ g.beginPath();g.moveTo(x+26,y-96);
+ g.bezierCurveTo(x+64,y-99,x+93,y-69,x+97,y-28);
+ g.lineTo(x+89,y-28);
+ g.bezierCurveTo(x+84,y-65,x+62,y-83,x+39,y-88);
+ g.closePath();g.fillStyle="rgba(246,255,255,.67)";g.fill();
+ // Lunetta azzurrata sul bordo sinistro e riverbero nella parte bassa.
+ g.beginPath();g.arc(x,y,94,Math.PI*.57,Math.PI*1.30);
+ g.lineWidth=8;g.strokeStyle="rgba(255,255,255,.14)";g.stroke();
+ g.beginPath();g.arc(x,y,93,Math.PI*.16,Math.PI*.78);
+ g.lineWidth=5;g.strokeStyle="rgba(10,31,69,.20)";g.stroke();
+ g.restore();
+ g.beginPath();g.arc(x,y,r-.5,0,Math.PI*2);g.strokeStyle=sphereColor(color,.77);g.lineWidth=2.3;g.stroke();
+ g.beginPath();g.arc(x,y,r-6,Math.PI*.97,Math.PI*1.76);g.lineWidth=1.8;g.strokeStyle="rgba(243,253,255,.22)";g.stroke();
+ const image={canvas:out,cx:x/size,cy:y/size,baseRadius:r/size};sphereCache.set(color,image);return image;
 }
 function drawSphere(x,y,r,color,active,related){
- if(r<1)return;
- if(active||related){const aura=ctx.createRadialGradient(x,y,r*.3,x,y,r*(active?2.9:2.1));
- aura.addColorStop(0,active?"rgba(255,210,149,.25)":"rgba(196,215,249,.12)");
- aura.addColorStop(1,"rgba(255,230,160,0)");ctx.fillStyle=aura;ctx.beginPath();ctx.arc(x,y,r*(active?2.9:2.1),0,Math.PI*2);ctx.fill();}
- ctx.save();ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.clip();
- // Un'unica superficie sferica: volume dato da luce radente, tonalita' e ombra.
- const light=ctx.createRadialGradient(x-r*.39,y-r*.47,Math.max(.1,r*.035),x+r*.23,y+r*.25,r*1.43);
- light.addColorStop(0,"#ffffff");light.addColorStop(.14,color);light.addColorStop(.53,color);
- light.addColorStop(.79,"#243747");light.addColorStop(1,"#080e19");
- ctx.fillStyle=light;ctx.fillRect(x-r,y-r,r*2,r*2);
- const glaze=ctx.createLinearGradient(x-r,y-r,x+r,y+r);
- glaze.addColorStop(0,"rgba(255,255,255,.35)");glaze.addColorStop(.32,"rgba(255,255,255,.07)");
- glaze.addColorStop(.72,"rgba(0,0,0,.16)");glaze.addColorStop(1,"rgba(0,0,0,.46)");
- ctx.fillStyle=glaze;ctx.fillRect(x-r,y-r,r*2,r*2);
- ctx.beginPath();ctx.ellipse(x-r*.29,y-r*.38,r*.25,r*.13,-.65,0,Math.PI*2);
- ctx.fillStyle="rgba(255,255,255,.50)";ctx.fill();
- ctx.restore();
- ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
- ctx.strokeStyle=active?"rgba(255,240,213,.94)":"rgba(228,240,244,.40)";
- ctx.lineWidth=active?1.65:.8;ctx.stroke();
+ if(r<1.5)return;
+ if(active||related){
+  const glow=ctx.createRadialGradient(x,y,r*.65,x,y,r*(active?2.7:2));
+  glow.addColorStop(0,active?"rgba(255,227,170,.32)":"rgba(180,226,255,.15)");
+  glow.addColorStop(1,"rgba(0,0,0,0)");
+  ctx.fillStyle=glow;ctx.beginPath();ctx.arc(x,y,r*(active?2.7:2),0,Math.PI*2);ctx.fill();
+ }
+ const sp=makeSphereSprite(color),scale=r/(sp.canvas.width*sp.baseRadius);
+ ctx.drawImage(sp.canvas,x-sp.cx*sp.canvas.width*scale,y-sp.cy*sp.canvas.height*scale,sp.canvas.width*scale,sp.canvas.height*scale);
+ if(active){ctx.strokeStyle="rgba(255,242,213,.90)";ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(x,y,r+1,0,Math.PI*2);ctx.stroke();}
+}
+function drawNightAtlas(){
+ const bg=document.createElement("canvas");bg.width=Math.max(1,Math.round(w));bg.height=Math.max(1,Math.round(h));
+ const g=bg.getContext("2d"),W=bg.width,H=bg.height;
+ const sea=g.createRadialGradient(W*.46,H*.40,0,W*.50,H*.55,Math.max(W,H)*.90);
+ sea.addColorStop(0,"#243b52");sea.addColorStop(.4,"#11283e");sea.addColorStop(1,"#07101d");
+ g.fillStyle=sea;g.fillRect(0,0,W,H);
+ // Curve di livello nautiche, non una griglia rettangolare.
+ g.lineWidth=.8;g.strokeStyle="rgba(154,195,212,.17)";
+ for(let t=1;t<12;t++){const X=t*W/12;g.beginPath();g.moveTo(X,0);g.bezierCurveTo(X-W*.043,H*.25,X+W*.053,H*.77,X,H);g.stroke();}
+ for(let t=1;t<10;t++){const Y=t*H/10;g.beginPath();g.moveTo(0,Y);g.bezierCurveTo(W*.24,Y-H*.037,W*.73,Y+H*.035,W,Y);g.stroke();}
+ const polys=[
+ [[-.06,.08],[.09,.04],[.21,.12],[.27,.21],[.33,.20],[.33,.34],[.27,.41],[.21,.53],[.11,.46],[.03,.49],[-.06,.35]],
+ [[.55,-.08],[.74,-.04],[.85,.08],[1.07,.12],[1.05,.29],[.96,.35],[.83,.29],[.73,.43],[.65,.38],[.58,.28],[.49,.17]],
+ [[.20,.60],[.33,.53],[.47,.56],[.53,.66],[.48,.78],[.42,.91],[.31,.96],[.24,.84],[.16,.73]],
+ [[.70,.61],[.82,.55],[.94,.59],[1.06,.70],[1.02,.91],[.91,.98],[.80,.87],[.75,.79]],
+ [[.47,.37],[.54,.38],[.57,.48],[.51,.52],[.44,.48]],
+ [[.11,.83],[.15,.79],[.19,.84],[.17,.91],[.12,.92]]
+ ];
+ const rand=(()=>{let k=72617;return ()=>((k=(Math.imul(k,1664525)+1013904223)>>>0)/4294967296)})();
+ polys.forEach((poly,n)=>{
+  const pts=[];
+  for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length];
+    for(let j=0;j<10;j++){const t=j/10,wig=Math.sin(Math.PI*t)*(rand()-.5)*.021;pts.push([(a[0]+(b[0]-a[0])*t+wig)*W,(a[1]+(b[1]-a[1])*t+wig)*H]);}}
+  g.beginPath();pts.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();
+  g.fillStyle=n%2?"rgba(88,120,111,.55)":"rgba(74,110,104,.64)";g.fill();
+  g.shadowColor="rgba(145,211,188,.40)";g.shadowBlur=15;g.strokeStyle="rgba(169,221,196,.53)";g.lineWidth=1.7;g.stroke();g.shadowBlur=0;
+  // Rilievi, linee sinuose interne e luci urbane ritagliate sulle terre.
+  g.save();g.clip();
+  const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+  for(let j=0;j<85;j++){const X=x0+rand()*(x1-x0),Y=y0+rand()*(y1-y0);if(j%4===0){
+    g.beginPath();g.arc(X,Y,1.4+rand()*1.7,0,Math.PI*2);g.fillStyle="rgba(255,210,137,.59)";g.shadowColor="#f9bd76";g.shadowBlur=9;g.fill();g.shadowBlur=0;
+  }else{g.beginPath();g.ellipse(X,Y,9+rand()*15,2+rand()*4,-.35,0,Math.PI*2);g.strokeStyle="rgba(171,208,180,.11)";g.lineWidth=.8;g.stroke();}}
+  g.restore();
+ });
+ // Rotte tracciate sul mare, piccoli fari e toponomastica immaginaria.
+ const paths=[[.06,.62,.43,.47,.91,.58],[.28,.20,.45,.66,.76,.37],[.15,.80,.54,.91,.88,.73]];
+ g.setLineDash([3,10]);g.strokeStyle="rgba(241,198,129,.32)";g.lineWidth=1;
+ paths.forEach(p=>{g.beginPath();g.moveTo(W*p[0],H*p[1]);g.quadraticCurveTo(W*p[2],H*p[3],W*p[4],H*p[5]);g.stroke()});g.setLineDash([]);
+ const labels=[["MARE DELLE VOCI",.37,.19],["OCCIDENTE",.09,.24],["TERRE DELL'ECO",.32,.73],["LEVANTE",.76,.19],["ARCIPELAGO DEL TEMPO",.73,.53]];
+ g.font=Math.max(10,Math.min(17,W/90))+"px Georgia,serif";g.textAlign="center";
+ labels.forEach(([str,x,y])=>{g.fillStyle="rgba(225,228,218,.34)";g.fillText(str,W*x,H*y)});
+ // Atmosfera e bordi scuri conservano il contrasto con le sfere.
+ const vignette=g.createRadialGradient(W*.5,H*.49,Math.min(W,H)*.24,W*.5,H*.5,Math.max(W,H)*.84);
+ vignette.addColorStop(0,"rgba(2,9,15,0)");vignette.addColorStop(1,"rgba(1,5,12,.52)");
+ g.fillStyle=vignette;g.fillRect(0,0,W,H);
+ cartography=bg;
 }
 
 function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;camera.y+=(focus.y-camera.y)*.085;camera.z+=(focus.z-camera.z)*.085;}
  if(cartography)ctx.drawImage(cartography,0,0,w,h);
- screen=nodes.map(n=>{let p=sxworld(n);p.node=n;p.r=clamp(n.radius*1.75*zoom*9/(16+p.depth),3.2,24)*(n===selected?1.8:1);if(drag?.node===n){p.x=drag.x;p.y=drag.y;}return p;});
+ screen=nodes.map(n=>{let p=sxworld(n);p.node=n;p.r=clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n){p.x=drag.x;p.y=drag.y;}return p;});
  const map=new Map(screen.map(p=>[p.node.id,p]));ctx.lineWidth=.8;
  for(const e of edges){let a=map.get(e.source),b=map.get(e.target);if(!a||!b||a.depth< -14||b.depth< -14)continue;if(!visibleNode(a.node)||!visibleNode(b.node))continue;
   const highlight=selected&&(e.source===selected.id||e.target===selected.id),dim=selected&&!highlight;
