@@ -2,12 +2,12 @@
 (() => {
 const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:true});
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
-const search=document.getElementById("search"),filter=document.getElementById("filter"),reset=document.getElementById("reset"),labels=document.getElementById("labels");
+const search=document.getElementById("search"),filter=document.getElementById("filter"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensSelect=document.getElementById("lens"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel");
-const COLORS={compositore:"#f3bd74",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
+const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
-let selected=null,drag=null,screen=[],hitOrder=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti";
+let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti",activeLens="musica",lensEdges=[],lensGroups=[];
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/ł/g,"l").replace(/ß/g,"ss").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[ʹʺ'’ʼ`´]/g,"").replace(/[‐‑‒–—]/g,"-").replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
@@ -102,14 +102,46 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
   nodes.push(item);byId.set(item.id,item);if(item.type==="periodo")anchors.set(item.id,item);}
  for(const n of nodes){if(n.type!=="compositore")continue;const period=db.edges.find(e=>e.source===n.id&&byId.get(e.target)?.type==="periodo");if(period){const a=anchors.get(period.target);if(a){n.x=a.x+(rnd()-.5)*5;n.y=a.y+(rnd()-.5)*5;n.z=a.z+(rnd()-.5)*5;}}}
  edges=db.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>({...e,a:byId.get(e.source),b:byId.get(e.target)}));
- videos=db.videos||[];videoLinks=db.video_nodes||[];status.textContent=nodes.length+" nodi · "+edges.length+" relazioni · scegli una bolla";resize();
+ videos=db.videos||[];videoLinks=db.video_nodes||[];
+ const lenses=db.lenses||{};lensGroups=lenses.groups||[];
+ lensEdges=(lenses.relations||[]).filter(e=>byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
+ status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · scegli una bolla";resize();
 }
 function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.00021;n.vy+=-n.y*.00021;n.vz+=-n.z*.00021;}
  for(const e of edges){const a=e.a,b=e.b;let dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d=Math.hypot(dx,dy,dz)||.001,preferred=(a.type==="compositore"&&b.type==="compositore")?2.8:3.6;let f=clamp((d-preferred)*.0025*(e.weight||1),-.035,.035)/d;dx*=f;dy*=f;dz*=f;a.vx+=dx;a.vy+=dy;a.vz+=dz;b.vx-=dx;b.vy-=dy;b.vz-=dz;}
  // Repulsione locale: l'algoritmo evita che centinaia di bolle si sovrappongano.
  for(let i=0;i<nodes.length;i++){let a=nodes[i];for(let j=i+1;j<nodes.length;j++){let b=nodes[j],dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d2=dx*dx+dy*dy+dz*dz;if(d2>5.5||d2<.00001)continue;let f=.008/(d2+.2);a.vx-=dx*f;a.vy-=dy*f;a.vz-=dz*f;b.vx+=dx*f;b.vy+=dy*f;b.vz+=dz*f;}}
  for(const n of nodes){if(drag&&drag.node===n){n.vx=n.vy=n.vz=0;continue;}n.vx=clamp(n.vx*.89,-.12,.12);n.vy=clamp(n.vy*.89,-.12,.12);n.vz=clamp(n.vz*.89,-.12,.12);n.x+=n.vx;n.y+=n.vy;n.z+=n.vz;}}
-function visibleNode(n){return n.type==="geografia"||(typeFilter==="tutti"||n.type===typeFilter||n===selected)}
+function currentEdges(){return activeLens==="musica"?edges:lensEdges.filter(e=>e.group===activeLens);}
+function visibleNode(n){
+ if(n.type==="geografia")return true;
+ if(n.type==="persona")return activeLens!=="musica"&&(n===selected||currentEdges().some(e=>e.source===n.id||e.target===n.id));
+ return typeFilter==="tutti"||n.type===typeFilter||n===selected;
+}
+function lineHit(pt){
+ let hit=null,best=12;
+ for(const e of lineHits){for(let i=0;i<=16;i++){
+  const t=i/16,q=1-t,x=q*q*e.x1+2*q*t*e.cx+t*t*e.x2,y=q*q*e.y1+2*q*t*e.cy+t*t*e.y2;
+  const dist=Math.hypot(pt.x-x,pt.y-y);if(dist<best){best=dist;hit=e.edge;}
+ }}return hit;
+}
+function showRelation(e){
+ if(!selected){selected=e.a;focus=e.a;moveGeo(e.a);}
+ populate(selected);
+ const dst=document.getElementById("panelContent"),box=document.createElement("section");
+ box.className="lens-explanation";
+ const h=document.createElement("h3");h.textContent="Perché sono collegati?";
+ const names=document.createElement("strong");names.textContent=e.a.label+" ↔ "+e.b.label;
+ const p=document.createElement("p");p.textContent=e.note||"Relazione da approfondire.";
+ box.append(h,names,p);
+ const foot=document.createElement("div");foot.className="lens-sources";
+ for(const [i,url] of (e.sources||[]).entries()){if(!/^https:\/\//.test(url))continue;
+  const link=document.createElement("a");link.href=url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Fonte "+(i+1)+" ↗";foot.append(link);
+ }
+ if(foot.childElementCount)box.append(foot);
+ else{const note=document.createElement("p");note.textContent="Fonti in revisione.";box.append(note);}
+ dst.prepend(box);setPanel(true);
+}
 
 /* Paesaggio immaginario: viene dipinto solo al ridimensionamento, non a ogni frame. */
 
@@ -243,28 +275,28 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  positionGeoMarkers(screen);
 
  const map=new Map(screen.map(p=>[p.node.id,p]));
- const neighbors=new Set();
- if(selected){
-  neighbors.add(selected.id);
-  for(const e of edges){if(e.source===selected.id)neighbors.add(e.target);if(e.target===selected.id)neighbors.add(e.source);}
- }
- for(const e of edges){
+ const neighbors=new Set(),activeEdges=currentEdges();lineHits=[];
+ if(selected){neighbors.add(selected.id);for(const e of activeEdges){if(e.source===selected.id)neighbors.add(e.target);if(e.target===selected.id)neighbors.add(e.source);}}
+ for(const e of activeEdges){
   const a=map.get(e.source),b=map.get(e.target);
   if(!a||!b||a.depth< -14||b.depth< -14||!visibleNode(a.node)||!visibleNode(b.node))continue;
   const direct=!!selected&&(e.source===selected.id||e.target===selected.id);
   const touchesGeo=a.node.type==="geografia"||b.node.type==="geografia";
   // I Paesi rimangono navigabili, non diventano una rete geografica autonoma.
   if(touchesGeo&&!direct)continue;
-  ctx.globalAlpha=selected?(direct?.94:(showAllLabels?.19:.025)):(showAllLabels?.27:.16);
-  ctx.lineWidth=direct?1.75:(showAllLabels?1.05:.7);
+  if(activeLens!=="musica"&&!direct)continue;
+  ctx.globalAlpha=selected?(direct?.94:(showAllLabels?.19:.025)):(activeLens==="musica"?(showAllLabels?.27:.16):0);
+  ctx.lineWidth=direct?(activeLens==="musica"?1.75:2.8):(showAllLabels?1.05:.7);
   if(direct){
     const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
-    path.addColorStop(0,"#ffe7b0");path.addColorStop(.5,"#c2e9fc");path.addColorStop(1,"#e4bedf");
+    if(activeLens==="musica"){path.addColorStop(0,"#ffe7b0");path.addColorStop(.5,"#c2e9fc");path.addColorStop(1,"#e4bedf");}else{const color=lensGroups.find(g=>g.id===activeLens)?.color||"#eec785";path.addColorStop(0,color);path.addColorStop(.5,"#fff1d7");path.addColorStop(1,color);}
     ctx.strokeStyle=path;
   }else ctx.strokeStyle="#9fbdd4";
   const bend=Math.min(38,Math.hypot(b.x-a.x,b.y-a.y)*.09);
   ctx.beginPath();ctx.moveTo(a.x,a.y);
-  ctx.quadraticCurveTo((a.x+b.x)*.5+bend*.35,(a.y+b.y)*.5-bend,b.x,b.y);ctx.stroke();
+  const cx=(a.x+b.x)*.5+bend*.35,cy=(a.y+b.y)*.5-bend;
+  ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();
+  if(direct&&activeLens!=="musica")lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
  }
  ctx.globalAlpha=1;
  const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>{
@@ -280,7 +312,7 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  for(const p of drawable){
   const n=p.node,related=selected&&neighbors.has(n.id);
   const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&matchesSearch(n,searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
-  ctx.globalAlpha=n.type==="geografia"?1:(selected&&!related&&!highlight?(showAllLabels?.33:.085):1);
+  ctx.globalAlpha=n.type==="geografia"?1:(selected&&!related&&!highlight?(activeLens==="musica"?(showAllLabels?.33:.085):.14):1);
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=rad;
   if(n.type==="geografia"&&p.offMap){
@@ -289,7 +321,7 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
    ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
   }
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
-  const isLabel=n.type==="geografia"||showAllLabels||Boolean(selected?related:(highlight||n.type==="periodo"&&p.scale>.4));
+  const isLabel=n.type==="geografia"||Boolean(selected?(related||(showAllLabels&&activeLens==="musica")):(activeLens==="musica"&&(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4)));
   if(isLabel){
    ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
@@ -300,7 +332,7 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  }
 
  ctx.globalAlpha=1;requestAnimationFrame(draw);}
-function linked(n){return edges.filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
+function linked(n){return currentEdges().filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
 function focusOn(n,openPanel=true){
  if(selected!==n){search.value="";searchText="";}
  if(n.type==="geografia"){geoState.enabled=true;if(followGeo)followGeo.checked=true;}
@@ -309,7 +341,7 @@ function setPanel(open){document.body.classList.toggle("panel-open",open);tab.te
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
- document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica"}[n.type]||"");
+ document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica",persona:"Figura storica"}[n.type]||"");
  const dst=document.getElementById("panelContent");dst.replaceChildren();
  if(n.aliases?.length){
   const names=document.createElement("details");names.className="name-variants";
@@ -391,5 +423,5 @@ filter.addEventListener("change",()=>{typeFilter=filter.value;});
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);geoState.targetLat=48;geoState.targetLon=11;geoState.targetSpan=100;geoLabel.textContent="Europa · panoramica";search.value="";searchText="";filter.value="tutti";typeFilter="tutti";setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
 window.addEventListener("resize",resize);
-Promise.all([fetch("database/grafo.json",{cache:"no-cache"}),fetch("database/video.json",{cache:"no-cache"})]).then(async responses=>{if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);const db=await responses[0].json();const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];return db;}).then(db=>{prepare(db);requestAnimationFrame(draw);}).catch(e=>{document.body.classList.add("error");status.textContent="Errore caricamento: "+e.message;console.error(e);});
+Promise.all([fetch("database/grafo.json",{cache:"no-cache"}),fetch("database/video.json",{cache:"no-cache"}),fetch("database/relazioni.json",{cache:"no-cache"})]).then(async responses=>{if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);const db=await responses[0].json();const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];db.lenses=responses[2].ok?await responses[2].json():{groups:[],relations:[]};return db;}).then(db=>{prepare(db);requestAnimationFrame(draw);}).catch(e=>{document.body.classList.add("error");status.textContent="Errore caricamento: "+e.message;console.error(e);});
 })();
