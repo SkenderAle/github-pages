@@ -60,7 +60,9 @@ jobs:
           else
             NEW_COUNT=$(node -e "console.log(require('./outputs/nuovi-compositori.json').composers.length)")
             if [[ "$NEW_COUNT" -gt 0 ]]; then
-              node atlante3d/database/ricerca-fonti.mjs --mode=identita --ids-file=outputs/nuovi-compositori.json --limit=50 --output=outputs/candidati.json
+              for ((BATCH=0; BATCH<NEW_COUNT; BATCH+=50)); do
+                node atlante3d/database/ricerca-fonti.mjs --mode=identita --ids-file=outputs/nuovi-compositori.json --offset="$BATCH" --limit=50 --output="outputs/candidati-nuovi-$BATCH.json"
+              done
             else
               node atlante3d/database/ricerca-fonti.mjs --mode=relazioni --limit=6 --output=outputs/candidati.json
             fi
