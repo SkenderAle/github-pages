@@ -4,13 +4,14 @@
 
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
-- Compositori censiti: **267**.
-- Senza legami di scuola o tradizione: **69**.
-- Senza relazioni specialistiche di alcun tipo: **20**.
+- Compositori censiti: **277**.
+- Senza legami di scuola o tradizione: **79**.
+- Senza relazioni specialistiche di alcun tipo: **18**.
 - Relazioni nella lente Scuole e tradizioni: **252**.
-- Prime ricognizioni registrate per nome: **80** su 267 (non equivalgono alla revisione bibliografica definitiva).
+- Prime ricognizioni registrate per nome: **120** su 277 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
-- Identità Wikidata riconciliate: **19** su 267.
+- Sesto lotto: **40** biografie censite con almeno una fonte, di cui **30** con nuove relazioni e **10** con prima verifica biografica ma relazioni da approfondire.
+- Identità Wikidata riconciliate: **19** su 277.
 
 ## Copertura per epoca
 
@@ -23,7 +24,7 @@
 | romanticismo | 47 | 10 |
 | post-romanticismo | 5 | 2 |
 | novecento | 61 | 27 |
-| non-classificato | 39 | 20 |
+| non-classificato | 49 | 30 |
 
 ## Audit di tutti i compositori
 
@@ -31,24 +32,31 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 
 | Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato | Prima ricognizione |
 |---|---|---:|---:|---:|---:|---:|---|---|---|
+| non-classificato | Amilcare Ponchielli | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Anatolij Ljadov | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Anton Reicha | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Anton Rubinstein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Billy Strayhorn | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Camillo Sivori | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Carl Czerny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Carl Friedrich Zelter | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Charles Hambitzer | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Christian Theodor Weinlig | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Claudio Merulo | 1 | 0 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
 | non-classificato | Costanzo Festa | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
+| non-classificato | Eduard Marxsen | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Felice Anerio | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
-| non-classificato | Francesco Durante | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Francesco Durante | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Francesco Soriano | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
 | non-classificato | Frederick Converse | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Fritz Reiner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Gennaro Manna | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | George Whitefield Chadwick | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Giacomo Antonio Perti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Gilles Binchois | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
 | non-classificato | Gioseffo Zarlino | 1 | 1 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
 | non-classificato | Giovanni Animuccia | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
+| non-classificato | Giovanni Battista Martini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Giovanni Croce | 1 | 0 | 0 | 0 | 0 | Scuola veneziana | catalogato | da avviare |
 | non-classificato | Giovanni Francesco Anerio | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
 | non-classificato | Giovanni Maria Nanino | 1 | 3 | 0 | 0 | 0 | Scuola romana | catalogato | da avviare |
@@ -56,10 +64,13 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Heinrich Isaac | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
 | non-classificato | Jacob Clemens non Papa | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
 | non-classificato | Jacob Obrecht | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
+| non-classificato | Johann Christoph Bach (1671–1721) | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Johann Friedrich Fasch | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Johann Hermann Schein | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | da avviare |
 | non-classificato | Johann Walter | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | da avviare |
 | non-classificato | Johannes Ockeghem | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | da avviare |
 | non-classificato | Józef Elsner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Lauro Rossi | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Maksimilian Steinberg | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Marcantonio Ingegneri | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Michael Haydn | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
@@ -109,40 +120,40 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Alessandro Marcello | 1 | 0 | 1 | 1 | 0 | Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
 | barocco | Alessandro Scarlatti | 1 | 1 | 0 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 5** |
 | barocco | Antonio Caldara | 3 | 0 | 1 | 1 | 0 | Cappella imperiale viennese del primo Settecento · Oratorio e cantata nei salotti romani del primo Settecento · Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
-| barocco | Antonio Lotti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| barocco | Antonio Lotti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | barocco | Antonio Vivaldi | 2 | 0 | 2 | 1 | 0 | Ospedali musicali veneziani del Settecento · Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
-| barocco | Arcangelo Corelli | 1 | 0 | 3 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
+| barocco | Arcangelo Corelli | 1 | 0 | 4 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
 | barocco | Baldassare Galuppi | 3 | 1 | 0 | 1 | 1 | Ospedali musicali veneziani del Settecento · Pratiche musicali veneziane del Settecento · Scuola operistica napoletana | catalogato | **Lotto 2** |
 | barocco | Benedetto Marcello | 1 | 2 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
-| barocco | Dietrich Buxtehude | 1 | 0 | 1 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
+| barocco | Dietrich Buxtehude | 1 | 0 | 1 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 6** |
 | barocco | Domenico Scarlatti | 1 | 3 | 0 | 0 | 0 | Clavicembalo iberico e corte di Madrid | catalogato | **Lotto 5** |
-| barocco | Élisabeth Jacquet de La Guerre | 1 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese | catalogato | da avviare |
+| barocco | Élisabeth Jacquet de La Guerre | 1 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese | catalogato | **Lotto 6** |
 | barocco | Francesca Caccini | 1 | 1 | 0 | 1 | 0 | Musica e spettacolo della corte medicea | catalogato | **Lotto 1** |
-| barocco | Francesco Cavalli | 2 | 1 | 0 | 0 | 0 | Scuola operistica veneziana del Seicento · Scuola veneziana | catalogato | da avviare |
-| barocco | Francesco Gasparini | 1 | 1 | 0 | 0 | 0 | Ospedali musicali veneziani del Settecento | catalogato | da avviare |
-| barocco | François Couperin | 1 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese | catalogato | da avviare |
+| barocco | Francesco Cavalli | 2 | 1 | 0 | 1 | 0 | Scuola operistica veneziana del Seicento · Scuola veneziana | catalogato | **Lotto 6** |
+| barocco | Francesco Gasparini | 1 | 2 | 0 | 0 | 0 | Ospedali musicali veneziani del Settecento | catalogato | da avviare |
+| barocco | François Couperin | 1 | 0 | 2 | 0 | 0 | Scuola clavicembalistica francese | catalogato | **Lotto 6** |
 | barocco | Friedrich Wilhelm Zachow | 1 | 1 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
 | barocco | Georg Friedrich Händel | 4 | 1 | 1 | 2 | 0 | Opera seria · Oratorio e cantata nei salotti romani del primo Settecento · Oratorio inglese del Settecento · Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 2** |
 | barocco | Georg Philipp Telemann | 3 | 0 | 1 | 2 | 0 | Collegium musicum di Lipsia · Scuola luterana · Stile galante ed empfindsamer Stil | catalogato | **Lotto 2** |
 | barocco | Giovanni Battista Pergolesi | 1 | 2 | 0 | 0 | 2 | Scuola operistica napoletana | catalogato | **Lotto 5** |
 | barocco | Giovanni Battista Somis | 2 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato | da avviare |
 | barocco | Giovanni Bonaventura Viviani | 1 | 0 | 0 | 0 | 0 | Cappella di corte di Innsbruck nel Seicento | catalogato | **Lotto 1** |
-| barocco | Giovanni Legrenzi | 1 | 0 | 0 | 0 | 0 | Scuola operistica veneziana del Seicento | catalogato | da avviare |
+| barocco | Giovanni Legrenzi | 1 | 0 | 0 | 0 | 0 | Scuola operistica veneziana del Seicento | catalogato | **Lotto 6** |
 | barocco | Girolamo Frescobaldi | 2 | 2 | 1 | 0 | 0 | Musica della corte estense a Ferrara · Tastiere italiane del primo Seicento | catalogato | **Lotto 1** |
 | barocco | Giulio Caccini | 1 | 1 | 0 | 2 | 0 | Camerata fiorentina e ambiente di Corsi | catalogato | **Lotto 5** |
 | barocco | Giuseppe Tartini | 1 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
 | barocco | Giuseppe Torelli | 1 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
-| barocco | Heinrich Schütz | 2 | 1 | 0 | 0 | 0 | Scuola luterana · Scuola veneziana | catalogato | da avviare |
-| barocco | Henry Purcell | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | da avviare |
-| barocco | Jacopo Peri | 1 | 0 | 0 | 1 | 0 | Camerata fiorentina e ambiente di Corsi | catalogato | da avviare |
-| barocco | Jean-Baptiste Lully | 1 | 1 | 0 | 1 | 0 | Teatro musicale francese del Barocco | catalogato | da avviare |
+| barocco | Heinrich Schütz | 2 | 1 | 0 | 0 | 0 | Scuola luterana · Scuola veneziana | catalogato | **Lotto 6** |
+| barocco | Henry Purcell | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | **Lotto 6** |
+| barocco | Jacopo Peri | 1 | 0 | 0 | 1 | 0 | Camerata fiorentina e ambiente di Corsi | catalogato | **Lotto 6** |
+| barocco | Jean-Baptiste Lully | 1 | 1 | 1 | 2 | 0 | Teatro musicale francese del Barocco | catalogato | **Lotto 6** |
 | barocco | Jean-Marie Leclair | 2 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato | **Lotto 2** |
-| barocco | Jean-Philippe Rameau | 2 | 0 | 0 | 0 | 0 | Scuola clavicembalistica francese · Teatro musicale francese del Barocco | catalogato | da avviare |
+| barocco | Jean-Philippe Rameau | 2 | 0 | 0 | 1 | 0 | Scuola clavicembalistica francese · Teatro musicale francese del Barocco | catalogato | **Lotto 6** |
 | barocco | Johann Jakob Froberger | 1 | 1 | 0 | 0 | 0 | Tastiere italiane del primo Seicento | catalogato | da avviare |
-| barocco | Johann Kuhnau | 1 | 0 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
-| barocco | Johann Pachelbel | 1 | 0 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
-| barocco | Johann Sebastian Bach | 3 | 0 | 9 | 1 | 0 | Collegium musicum di Lipsia · Scuola luterana · Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
-| barocco | John Blow | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | da avviare |
+| barocco | Johann Kuhnau | 1 | 1 | 0 | 1 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 6** |
+| barocco | Johann Pachelbel | 1 | 1 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 6** |
+| barocco | Johann Sebastian Bach | 3 | 3 | 9 | 2 | 0 | Collegium musicum di Lipsia · Scuola luterana · Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 6** |
+| barocco | John Blow | 1 | 1 | 0 | 0 | 0 | Teatro musicale inglese della Restaurazione | catalogato | **Lotto 6** |
 | barocco | Leonardo Leo | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Leonardo Vinci | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | barocco | Maria Teresa Agnesi | 1 | 0 | 0 | 1 | 0 | Accademie domestiche musicali della Milano settecentesca | catalogato | **Lotto 1** |
@@ -154,84 +165,84 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | classicismo | Antonio Salieri | 1 | 3 | 1 | 0 | 0 | Riforma operistica del Settecento | catalogato | **Lotto 3** |
 | classicismo | Antonio Soler | 1 | 1 | 0 | 0 | 0 | Clavicembalo iberico e corte di Madrid | catalogato | da avviare |
 | classicismo | Carl Ditters von Dittersdorf | 3 | 0 | 0 | 1 | 0 | Classicismo viennese (categoria storiografica) · Stile galante ed empfindsamer Stil · Vita musicale viennese dell'Illuminismo | catalogato | **Lotto 2** |
-| classicismo | Carl Philipp Emanuel Bach | 1 | 0 | 0 | 0 | 0 | Stile galante ed empfindsamer Stil | catalogato | da avviare |
-| classicismo | Carl Stamitz | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | da avviare |
+| classicismo | Carl Philipp Emanuel Bach | 1 | 2 | 0 | 0 | 0 | Stile galante ed empfindsamer Stil | catalogato | **Lotto 6** |
+| classicismo | Carl Stamitz | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | **Lotto 6** |
 | classicismo | Christian Cannabich | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | da avviare |
 | classicismo | Christian Gottlob Neefe | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
-| classicismo | Christoph Willibald Gluck | 1 | 0 | 3 | 1 | 0 | Riforma operistica del Settecento | catalogato | da avviare |
-| classicismo | Domenico Cimarosa | 1 | 0 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | da avviare |
+| classicismo | Christoph Willibald Gluck | 1 | 0 | 3 | 3 | 0 | Riforma operistica del Settecento | catalogato | **Lotto 6** |
+| classicismo | Domenico Cimarosa | 1 | 1 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 6** |
 | classicismo | Egidio Duni | 0 | 0 | 0 | 0 | 1 | — | **RICERCA** | da avviare |
 | classicismo | Filippo Manfredi | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
-| classicismo | Franz Schubert | 1 | 1 | 0 | 0 | 0 | Lied romantico tedesco | catalogato | da avviare |
+| classicismo | Franz Schubert | 1 | 1 | 1 | 0 | 0 | Lied romantico tedesco | catalogato | **Lotto 6** |
 | classicismo | Franz Xaver Richter | 1 | 0 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | da avviare |
 | classicismo | Giovanni Battista Sammartini | 1 | 0 | 1 | 0 | 0 | Sinfonismo italiano del primo Settecento | catalogato | da avviare |
-| classicismo | Giovanni Battista Viotti | 1 | 0 | 1 | 1 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
+| classicismo | Giovanni Battista Viotti | 1 | 0 | 2 | 1 | 0 | Scuola del concerto violinistico italiano | catalogato | da avviare |
 | classicismo | Giovanni Giuseppe Cambini | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| classicismo | Giovanni Paisiello | 1 | 0 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | da avviare |
+| classicismo | Giovanni Paisiello | 1 | 1 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 6** |
 | classicismo | Giovanni Simone Mayr | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | classicismo | Giuseppe Malerbi | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | classicismo | Giuseppe Sarti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| classicismo | Johann Christian Bach | 1 | 0 | 1 | 0 | 0 | Stile galante ed empfindsamer Stil | catalogato | da avviare |
+| classicismo | Johann Christian Bach | 1 | 3 | 1 | 0 | 0 | Stile galante ed empfindsamer Stil | catalogato | **Lotto 6** |
 | classicismo | Johann Georg Albrechtsberger | 2 | 1 | 0 | 0 | 0 | Tradizione contrappuntistica viennese settecentesca · Vita musicale viennese dell'Illuminismo | catalogato | **Lotto 2** |
-| classicismo | Johann Stamitz | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | da avviare |
+| classicismo | Johann Stamitz | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | **Lotto 6** |
 | classicismo | Joseph Haydn | 1 | 2 | 2 | 1 | 0 | Classicismo viennese (categoria storiografica) | catalogato | **Lotto 3** |
 | classicismo | Leopold Mozart | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| classicismo | Ludwig van Beethoven | 1 | 4 | 2 | 0 | 0 | Classicismo viennese (categoria storiografica) | catalogato | **Lotto 3** |
+| classicismo | Ludwig van Beethoven | 1 | 4 | 3 | 0 | 0 | Classicismo viennese (categoria storiografica) | catalogato | **Lotto 3** |
 | classicismo | Luigi Boccherini | 3 | 0 | 1 | 1 | 0 | Musica cameristica del Classicismo · Musica da camera delle corti spagnole del Settecento · Sinfonismo italiano del primo Settecento | catalogato | **Lotto 2** |
 | classicismo | Luigi Cherubini | 2 | 2 | 1 | 1 | 0 | Conservatorio di Parigi e scuola di composizione · Teatro musicale francese dell'Ottocento | catalogato | **Lotto 2** |
 | classicismo | Marianna Martines | 2 | 2 | 0 | 1 | 0 | Classicismo viennese (categoria storiografica) · Vita musicale viennese dell'Illuminismo | catalogato | **Lotto 2** |
 | classicismo | Niccolò Antonio Zingarelli | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
-| classicismo | Niccolò Piccinni | 2 | 0 | 0 | 0 | 1 | Riforma operistica del Settecento · Scuola operistica napoletana | catalogato | da avviare |
+| classicismo | Niccolò Piccinni | 2 | 0 | 0 | 1 | 1 | Riforma operistica del Settecento · Scuola operistica napoletana | catalogato | **Lotto 6** |
 | classicismo | Pietro Alessandro Guglielmi | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | da avviare |
 | classicismo | Stanislao Mattei | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | classicismo | Wolfgang Amadeus Mozart | 1 | 1 | 4 | 1 | 2 | Classicismo viennese (categoria storiografica) | catalogato | **Lotto 3** |
 | romanticismo | Aleksandr Borodin | 1 | 0 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | da avviare |
 | romanticismo | Ambroise Thomas | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | romanticismo | Antonín Dvořák | 1 | 1 | 2 | 1 | 0 | Scuola nazionale boema | catalogato | da avviare |
-| romanticismo | Arrigo Boito | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| romanticismo | Arrigo Boito | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 6** |
 | romanticismo | Bedřich Smetana | 1 | 0 | 0 | 0 | 0 | Scuola nazionale boema | catalogato | da avviare |
 | romanticismo | Camille Saint-Saëns | 1 | 1 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | da avviare |
 | romanticismo | Carl Maria von Weber | 0 | 1 | 1 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
 | romanticismo | César Franck | 1 | 2 | 0 | 0 | 0 | Scuola franckiana di Parigi | catalogato | da avviare |
 | romanticismo | Cezar Antonovič Cui | 1 | 1 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | da avviare |
 | romanticismo | Charles Gounod | 1 | 0 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | da avviare |
-| romanticismo | Clara Schumann | 1 | 0 | 0 | 2 | 0 | Lied romantico tedesco | catalogato | da avviare |
+| romanticismo | Clara Schumann | 1 | 1 | 0 | 2 | 0 | Lied romantico tedesco | catalogato | **Lotto 6** |
 | romanticismo | Daniel-François-Esprit Auber | 1 | 1 | 1 | 0 | 2 | Teatro musicale francese dell'Ottocento | catalogato | da avviare |
 | romanticismo | Ernest Chausson | 1 | 2 | 0 | 0 | 0 | Scuola franckiana di Parigi | catalogato | da avviare |
-| romanticismo | Fanny Hensel | 1 | 0 | 0 | 1 | 0 | Lied romantico tedesco | catalogato | da avviare |
-| romanticismo | Felix Mendelssohn | 1 | 0 | 1 | 1 | 0 | Lied romantico tedesco | catalogato | da avviare |
-| romanticismo | Franz Liszt | 1 | 1 | 1 | 1 | 0 | Virtuosismo e concerto romantico | catalogato | da avviare |
+| romanticismo | Fanny Hensel | 1 | 1 | 0 | 1 | 0 | Lied romantico tedesco | catalogato | **Lotto 6** |
+| romanticismo | Felix Mendelssohn | 1 | 1 | 1 | 1 | 0 | Lied romantico tedesco | catalogato | **Lotto 6** |
+| romanticismo | Franz Liszt | 1 | 2 | 1 | 1 | 0 | Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
 | romanticismo | Frédéric Chopin | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
 | romanticismo | Gabriel Fauré | 1 | 3 | 0 | 0 | 0 | Mélodie e musica da camera francese | catalogato | da avviare |
-| romanticismo | Gaetano Donizetti | 1 | 2 | 2 | 0 | 5 | Tradizione operistica italiana dell'Ottocento | catalogato | da avviare |
+| romanticismo | Gaetano Donizetti | 1 | 2 | 2 | 2 | 5 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Gaspare Spontini | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | romanticismo | Georges Bizet | 1 | 0 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | da avviare |
 | romanticismo | Giacomo Meyerbeer | 1 | 0 | 1 | 0 | 1 | Teatro musicale francese dell'Ottocento | catalogato | da avviare |
-| romanticismo | Giacomo Puccini | 1 | 0 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | da avviare |
-| romanticismo | Gioachino Rossini | 1 | 3 | 9 | 2 | 6 | Tradizione operistica italiana dell'Ottocento | catalogato | da avviare |
-| romanticismo | Giuseppe Verdi | 2 | 0 | 3 | 0 | 1 | Risorgimento · Tradizione operistica italiana dell'Ottocento | catalogato | da avviare |
+| romanticismo | Giacomo Puccini | 1 | 1 | 0 | 1 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
+| romanticismo | Gioachino Rossini | 1 | 3 | 9 | 3 | 6 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
+| romanticismo | Giuseppe Verdi | 2 | 0 | 3 | 2 | 1 | Risorgimento · Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Hector Berlioz | 1 | 0 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | da avviare |
 | romanticismo | Hugo Wolf | 1 | 0 | 0 | 0 | 0 | Lied romantico tedesco | catalogato | da avviare |
 | romanticismo | Isabella Colbran | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
 | romanticismo | Jacques Offenbach | 1 | 0 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | da avviare |
-| romanticismo | Johannes Brahms | 3 | 0 | 4 | 3 | 0 | Lied romantico tedesco · Sinfonismo tardo-romantico · Virtuosismo e concerto romantico | catalogato | da avviare |
+| romanticismo | Johannes Brahms | 3 | 1 | 4 | 3 | 0 | Lied romantico tedesco · Sinfonismo tardo-romantico · Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
 | romanticismo | Jules Massenet | 1 | 1 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | da avviare |
 | romanticismo | Louise Farrenc | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
-| romanticismo | Luigi Felice Rossi | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| romanticismo | Michele Novaro | 1 | 0 | 0 | 0 | 0 | Risorgimento | catalogato | da avviare |
+| romanticismo | Luigi Felice Rossi | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 6** |
+| romanticismo | Michele Novaro | 1 | 0 | 0 | 1 | 0 | Risorgimento | catalogato | **Lotto 6** |
 | romanticismo | Milij Balakirev | 1 | 2 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | da avviare |
 | romanticismo | Modest Musorgskij | 1 | 0 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | da avviare |
-| romanticismo | Niccolò Paganini | 1 | 0 | 3 | 0 | 0 | Virtuosismo e concerto romantico | catalogato | da avviare |
+| romanticismo | Niccolò Paganini | 1 | 1 | 4 | 0 | 0 | Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
 | romanticismo | Nikolaj Rimskij-Korsakov | 1 | 3 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | da avviare |
 | romanticismo | Pauline Viardot | 1 | 0 | 0 | 0 | 0 | Mélodie e musica da camera francese | catalogato | da avviare |
 | romanticismo | Pëtr Il'ič Čajkovskij | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
-| romanticismo | Pietro Mascagni | 1 | 0 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | da avviare |
+| romanticismo | Pietro Mascagni | 1 | 1 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Richard Strauss | 1 | 0 | 1 | 0 | 0 | Lied romantico tedesco | catalogato | da avviare |
 | romanticismo | Richard Wagner | 0 | 1 | 8 | 1 | 0 | — | **RICERCA** | **Lotto 3** |
-| romanticismo | Robert Schumann | 2 | 0 | 2 | 2 | 0 | Lied romantico tedesco · Virtuosismo e concerto romantico | catalogato | da avviare |
-| romanticismo | Ruggero Leoncavallo | 1 | 0 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | da avviare |
+| romanticismo | Robert Schumann | 2 | 1 | 2 | 2 | 0 | Lied romantico tedesco · Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
+| romanticismo | Ruggero Leoncavallo | 1 | 1 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Vincent d’Indy | 1 | 1 | 0 | 0 | 0 | Scuola franckiana di Parigi | catalogato | da avviare |
-| romanticismo | Vincenzo Bellini | 1 | 1 | 2 | 1 | 3 | Tradizione operistica italiana dell'Ottocento | catalogato | da avviare |
+| romanticismo | Vincenzo Bellini | 1 | 1 | 2 | 2 | 3 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | post-romanticismo | Alexander von Zemlinsky | 0 | 1 | 2 | 0 | 0 | — | **RICERCA** | da avviare |
 | post-romanticismo | Anton Bruckner | 1 | 0 | 1 | 0 | 0 | Sinfonismo tardo-romantico | catalogato | da avviare |
 | post-romanticismo | Gustav Mahler | 2 | 0 | 1 | 0 | 0 | Lied romantico tedesco · Sinfonismo tardo-romantico | catalogato | da avviare |
@@ -307,6 +318,15 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 - **Giordano Riccati**: fisico acustico teorico musicale.
 - **Carlo Goldoni**: commediografo librettista.
 - **Pietro Metastasio**: poeta librettista di corte.
+- **Friedrich Wieck**: didatta pianistico.
+- **Molière**: drammaturgo comedie ballet.
+- **Voltaire**: filosofo librettista.
+- **Giovanni Faustini**: poeta librettista.
+- **Ranieri de' Calzabigi**: poeta librettista.
+- **Felice Romani**: poeta librettista.
+- **Giulio Ricordi**: editore mecenate teatrale.
+- **Salvatore Cammarano**: poeta librettista.
+- **Giuseppe Bertoldi**: poeta patriottico.
 
 ## Procedura per completare i nodi RICERCA
 
