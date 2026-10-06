@@ -10,6 +10,8 @@ let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0
 let selected=null,drag=null,screen=[],hitOrder=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti";
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+function matchesSearch(n,q){if(!q)return false;return [n.label,...(n.aliases||[])].some(name=>normSearch(name).includes(q));}
 function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
 
 const geoState={lat:48,lon:11,span:100,targetLat:48,targetLon:11,targetSpan:100,enabled:true};
@@ -224,7 +226,7 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  hitOrder=drawable;
  for(const p of drawable){
   const n=p.node,related=selected&&neighbors.has(n.id);
-  const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
+  const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&matchesSearch(n,searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
   ctx.globalAlpha=selected&&!related&&!highlight?.085:1;
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=rad;
@@ -315,8 +317,8 @@ setZoom(zoom);
 canvas.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.001));},{passive:false});
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
-search.addEventListener("input",()=>{searchText=search.value.trim().toLowerCase();if(searchText){const results=nodes.filter(n=>n.label.toLowerCase().includes(searchText));status.textContent=results.length+" corrispondenze · Invio per centrare la prima";}});
-search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=nodes.find(n=>n.label.toLowerCase().includes(searchText));if(n){focusOn(n);search.blur();}});
+search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=nodes.filter(n=>matchesSearch(n,searchText));status.textContent=results.length+" corrispondenze · Invio per centrare la prima";}});
+search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=nodes.find(n=>matchesSearch(n,searchText));if(n){focusOn(n);search.blur();}});
 filter.addEventListener("change",()=>{typeFilter=filter.value;});
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);geoState.targetLat=48;geoState.targetLon=11;geoState.targetSpan=100;geoLabel.textContent="Europa · panoramica";search.value="";searchText="";filter.value="tutti";typeFilter="tutti";setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
