@@ -4,14 +4,49 @@
 <style>
 :root{color-scheme:dark;--bg:#0d111b;--ink:#f2eadc;--muted:#aab6c5;--accent:#f6d08c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}a{color:#f5d391}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f9d48f;outline-offset:3px}header{position:absolute;inset:0 0 auto;z-index:5;pointer-events:none;padding:20px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}header>div,header>a{pointer-events:auto}header h1{font:400 clamp(26px,4.5vw,48px)/1.05 Georgia,serif;margin:4px 0 7px}header p{margin:0;color:var(--muted);font-size:12px}.brand{letter-spacing:.16em;font-size:10px;text-transform:uppercase;color:#d3b88b;text-decoration:none}.back{display:inline-block;text-decoration:none;border:1px solid #867459;border-radius:99px;padding:7px 12px;background:#161e2aaf;font-size:12px}#scene{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 48% 48%,#24344c 0%,#141e30 35%,#080c15 78%);touch-action:none}#sky{display:block;width:100%;height:100%;cursor:grab}#sky.dragging{cursor:grabbing}#tools{position:absolute;z-index:7;left:20px;bottom:25px;display:flex;flex-wrap:wrap;gap:8px;max-width:calc(100vw - 45px)}.control{border:1px solid #687183a3;border-radius:12px;background:#101a2bdc;color:var(--ink);padding:9px 12px;box-shadow:0 10px 30px #0003}input.control{width:min(250px,50vw)}select.control{max-width:180px}#legend{position:absolute;bottom:90px;left:20px;z-index:4;display:flex;flex-wrap:wrap;gap:10px;max-width:500px;font-size:11px;color:#bdc8d8;pointer-events:none}#legend span:before{content:"";display:inline-block;background:var(--dot);width:9px;height:9px;border-radius:50%;margin-right:5px}#panelTab{position:absolute;z-index:12;right:12px;top:49%;transform:translateY(-50%);writing-mode:vertical-rl;border:1px solid #8e7755;border-radius:10px;padding:14px 8px;background:#25344c;color:#fff}#panel{position:absolute;z-index:11;right:0;top:0;height:100%;width:min(310px,89vw);background:#101925f2;backdrop-filter:blur(15px);border-left:1px solid #536277;transform:translateX(102%);transition:transform .3s ease;overflow:auto;box-shadow:-12px 0 42px #0005}body.panel-open #panel{transform:translateX(0)}body.panel-open #panelTab{right:min(310px,89vw)}#panel h2{font:400 29px Georgia,serif;line-height:1.15;margin:10px 0}#panel .inner{padding:22px 18px 30px}#panel .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#e9c58a}#panel p{color:#b7c4d0}#panel ul{padding-left:18px}#panel li{margin:6px 0}#panel a.card{display:block;text-decoration:none;border:1px solid #526173;padding:11px;border-radius:10px;margin:10px 0;background:#1b2736}#panel .small{font-size:12px;color:#a8b7c4}#status{position:absolute;top:116px;left:24px;color:#b7c7d8;font-size:12px;pointer-events:none}#tips{position:absolute;right:17px;bottom:22px;font-size:11px;color:#a6b5c4;text-align:right;pointer-events:none}#panel .video{border:1px solid #455268;border-radius:9px;margin:10px 0;padding:10px}#panel .video img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:7px}#panel button{background:#24354b;color:#f7e6c4;border:1px solid #67788e;border-radius:8px;padding:8px 10px}#error{display:none;position:absolute;z-index:20;top:48%;left:50%;transform:translate(-50%,-50%);background:#31222a;padding:20px;border-radius:12px;max-width:360px}body.error #error{display:block}@media(max-width:600px){header{padding:14px}header h1{font-size:29px}#status{top:103px;left:14px}#tools{left:10px;bottom:12px;gap:5px}.control{padding:8px}#legend{bottom:120px;left:12px;gap:7px}#tips{display:none}#panel{width:min(290px,89vw)}body.panel-open #panelTab{right:min(290px,89vw)}}
 @media(prefers-reduced-motion:reduce){#panel{transition:none}}
+
+/* Atlante notturno: leggibilità e biblioteca multimediale */
+#scene{background:#07101b}
+header h1{letter-spacing:-.03em;text-shadow:0 2px 20px rgba(0,0,0,.55)}
+header .brand{color:#e4ca9b}
+.control{background:rgba(13,26,43,.83);border-color:rgba(170,187,206,.32);backdrop-filter:blur(14px)}
+.control:hover{border-color:#e7c996}
+#tools button{transition:background .16s,border-color .16s}
+#tools button:hover{background:#283d53}
+#panel{width:min(315px,85vw);background:rgba(11,21,34,.96);border-left:1px solid rgba(224,196,148,.3)}
+body.panel-open #panelTab{right:min(315px,85vw)}
+#panelTab{background:#152a3d;border-color:#a68e65;box-shadow:0 4px 24px #0007}
+#panel .inner{padding:28px 17px 50px}
+#panel .eyebrow{color:#f0cf99}
+#panel h2{color:#f7e9d6}
+#panel h3{font:normal 20px Georgia,serif;color:#eee1ce;margin:15px 0 10px}
+#panel .panel-section-header{display:flex;gap:5px;align-items:baseline;justify-content:space-between;border-bottom:1px solid #596172;padding:4px 0 5px}
+#panel .media-count{white-space:nowrap;font-size:11px;color:#dfc18e}
+#panel .video{display:flex;flex-direction:column;gap:8px;background:linear-gradient(155deg,#1c3145,#122233);padding:9px;margin:11px 0;border:1px solid #516274;border-radius:12px}
+#panel .video .media-image{display:block;position:relative}
+#panel .video img{display:block;aspect-ratio:16/9;object-fit:cover;width:100%;border-radius:7px}
+#panel .video .play-glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:27px;color:#fff;text-shadow:0 1px 10px #000}
+#panel .video .media-title{font:600 13px/1.45 system-ui;color:#f2eadf}
+#panel .video .media-link{font:700 12px system-ui;color:#f5cf8b;text-decoration:none}
+#panel .video audio{display:block;width:100%;height:35px;filter:sepia(.2)}
+#panel .related-list{margin-top:23px;border-top:1px solid #526273;padding-top:12px}
+#panel .related-list summary{cursor:pointer;color:#f3d29e;font:600 14px system-ui;padding:8px 0}
+#panel .related-list ul{list-style:none;padding:0;margin:4px 0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#panel .related-list li{margin:0}
+#panel .related-list button{width:100%;height:100%;text-align:left;background:#1b3045;border:1px solid #536478;padding:8px;font:12px/1.35 system-ui}
+#panel .related-list button:hover{background:#304a63}
+#legend{background:rgba(7,19,30,.56);padding:7px 10px;border-radius:9px;backdrop-filter:blur(8px)}
+#status{background:rgba(10,23,38,.52);border-radius:7px;padding:5px 9px;backdrop-filter:blur(9px)}
+@media(max-width:600px){#panel{width:min(295px,88vw)}body.panel-open #panelTab{right:min(295px,88vw)}#legend{bottom:113px;max-width:calc(100vw - 24px)}#panel .related-list ul{grid-template-columns:1fr 1fr}}
+
 </style></head><body>
 <div id="scene"><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
-<header><div><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>La musica non sta in fila.</h1><p>Una costellazione di epoche, persone e idee</p></div><a class="back" href="../">← Home</a></header>
+<header><div><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>La musica non sta in fila.</h1><p>Un atlante notturno di epoche, persone e idee</p></div><a class="back" href="../">← Home</a></header>
 <div id="status" role="status">Caricamento della rete…</div>
 <div id="legend"><span style="--dot:#f3bd74">Compositori</span><span style="--dot:#7ec3d4">Epoche</span><span style="--dot:#c8a2e5">Ambiti</span><span style="--dot:#e49ca4">Correnti</span><span style="--dot:#8bc5a1">Geografia</span></div>
 <div id="tools"><input id="search" class="control" placeholder="Cerca un nome, un'epoca…" aria-label="Cerca una bolla"><select id="filter" class="control" aria-label="Filtra le bolle"><option value="tutti">Tutte le categorie</option><option value="compositore">Compositori</option><option value="periodo">Epoche</option><option value="ambito">Ambiti trasversali</option><option value="corrente">Correnti</option><option value="geografia">Geografia</option></select><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button></div>
 <div id="tips">Trascina una bolla: segue il puntatore. Rilascia: va al centro.<br>Trascina il vuoto: ruota la rete. Rotella: ingrandisci.</div>
-<button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Scheda e video</button>
+<button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Ascolti</button>
 <aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
 <script src="app.js" defer></script>
