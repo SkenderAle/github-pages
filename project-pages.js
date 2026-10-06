@@ -1,5 +1,5 @@
 window.MUSIC_PROJECT_PAGES=[
-{slug:"medioevo",title:"Medioevo",period:"Dalle origini all’Ars nova",tags:["gregoriano","polifonia","Ars nova"],tone:"ochre"},
+{slug:"medioevo",title:"Medioevo",period:"Dalle origini all’Ars nova",tags:["gregoriano","polifonia","Ars nova"],tone:"turquoise"},
 {slug:"rinascimento",title:"Rinascimento",period:"Trecento · Cinquecento",tags:["madrigale","stampa","strumenti"],tone:"sage"},
 {slug:"barocco",title:"Barocco",period:"Seicento · primo Settecento",tags:["Bach","Vivaldi","contrappunto"],tone:"gold"},
 {slug:"melodramma",title:"Melodramma",period:"Firenze · Gluck",tags:["Monteverdi","teatro","voce"],tone:"plum"},
