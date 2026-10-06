@@ -8,7 +8,16 @@ const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel");
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
-let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti",activeLens="musica",lensEdges=[],lensGroups=[];
+let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti",activeLens="musica",lensEdges=[],lensGroups=[],historySchoolEdges=[];
+const EXPLORATION_LENSES=[
+ {id:"musica",label:"Storia e scuole",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#c8dfbd"},
+ {id:"trasmissioni",label:"Maestri e influenze",description:"Insegnamento documentato, ricezione di opere, modelli e influenze stilistiche.",color:"#eec785"},
+ {id:"genealogie",label:"Genealogie dei generi",description:"Ascendenze, trasformazioni e contaminazioni di forme, pratiche e generi.",color:"#e2b0fa"},
+ {id:"collaborazioni",label:"Incontri e collaborazioni",description:"Rapporti artistici e professionali documentati; non semplici contemporaneità.",color:"#b8e4c6"}
+];
+const EXPLORATION_GROUPS={musica:["scuole"],trasmissioni:["formazione","influenze"],genealogie:["genealogie"],collaborazioni:["collaborazioni"]};
+const lensMeta=id=>EXPLORATION_LENSES.find(l=>l.id===id);
+function displayRelations(id){return lensEdges.filter(e=>(EXPLORATION_GROUPS[id]||[]).includes(e.group));}
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/ł/g,"l").replace(/ß/g,"ss").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[ʹʺ'’ʼ`´]/g,"").replace(/[‐‑‒–—]/g,"-").replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
@@ -132,6 +141,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  videos=db.videos||[];videoLinks=db.video_nodes||[];
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
  lensEdges=(lenses.relations||[]).filter(e=>byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
+  historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole")];
  status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · scegli una bolla";resize();
 }
 function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.00021;n.vy+=-n.y*.00021;n.vz+=-n.z*.00021;}
@@ -139,7 +149,7 @@ function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.000
  // Repulsione locale: l'algoritmo evita che centinaia di bolle si sovrappongano.
  for(let i=0;i<nodes.length;i++){let a=nodes[i];for(let j=i+1;j<nodes.length;j++){let b=nodes[j],dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d2=dx*dx+dy*dy+dz*dz;if(d2>5.5||d2<.00001)continue;let f=.008/(d2+.2);a.vx-=dx*f;a.vy-=dy*f;a.vz-=dz*f;b.vx+=dx*f;b.vy+=dy*f;b.vz+=dz*f;}}
  for(const n of nodes){if(drag&&drag.node===n){n.vx=n.vy=n.vz=0;continue;}n.vx=clamp(n.vx*.89,-.12,.12);n.vy=clamp(n.vy*.89,-.12,.12);n.vz=clamp(n.vz*.89,-.12,.12);n.x+=n.vx;n.y+=n.vy;n.z+=n.vz;}}
-function currentEdges(){return activeLens==="musica"?edges:lensEdges.filter(e=>e.group===activeLens);}
+function currentEdges(){return activeLens==="musica"?historySchoolEdges:displayRelations(activeLens);}
 function visibleNode(n){
  if(n.type==="geografia")return true;
  if(n.type==="persona"&&activeLens==="musica"&&!n.music_relevance)return false;
@@ -336,15 +346,15 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   ctx.lineWidth=direct?(activeLens==="musica"?1.75:2.8):(showAllLabels?1.05:.7);
   if(direct){
     const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
-    if(activeLens==="musica"){path.addColorStop(0,"#ffe7b0");path.addColorStop(.5,"#c2e9fc");path.addColorStop(1,"#e4bedf");}else{const color=lensGroups.find(g=>g.id===activeLens)?.color||"#eec785";path.addColorStop(0,color);path.addColorStop(.5,"#fff1d7");path.addColorStop(1,color);}
+    if(activeLens==="musica"){path.addColorStop(0,"#ffe7b0");path.addColorStop(.5,"#c2e9fc");path.addColorStop(1,"#e4bedf");}else{const color=lensMeta(activeLens)?.color||"#eec785";path.addColorStop(0,color);path.addColorStop(.5,"#fff1d7");path.addColorStop(1,color);}
     ctx.strokeStyle=path;
   }else ctx.strokeStyle="#9fbdd4";
   const bend=Math.min(38,Math.hypot(b.x-a.x,b.y-a.y)*.09);
   ctx.beginPath();ctx.moveTo(a.x,a.y);
-  if((activeLens==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind))||(activeLens==="genealogie"&&/^(convergenza|contaminazione|influenza-transnazionale)/.test(e.kind)))ctx.setLineDash([6,5]);
+  if(((activeLens==="trasmissioni"&&e.group==="influenze")&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind))||(activeLens==="genealogie"&&/^(convergenza|contaminazione|influenza-transnazionale)/.test(e.kind)))ctx.setLineDash([6,5]);
   const cx=(a.x+b.x)*.5+bend*.35,cy=(a.y+b.y)*.5-bend;
   ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
-  if(direct&&activeLens!=="musica"){
+  if(direct&&(activeLens!=="musica"||e.group==="scuole")){
    lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
    if(e.group==="influenze"||e.group==="formazione"||e.group==="genealogie"||e.group==="scuole"){
     // Freccia: da chi insegna/influenza verso chi apprende/raccoglie l'eredità.
@@ -414,16 +424,17 @@ function populate(n){
  const conn=linked(n);
  const lensIntro=document.createElement("section");lensIntro.className="lens-panel-intro";
  const lensTitle=document.createElement("strong");lensTitle.textContent="Lente: "+(lensSelect?.selectedOptions[0]?.textContent||"Storia musicale");
- const lensP=document.createElement("p");lensP.textContent=activeLens==="musica"?"La costellazione storico-musicale è attiva. Le lenti permettono di seguire scuole compositive, maestri, influenze, incontri e genealogie dei generi.":(lensGroups.find(g=>g.id===activeLens)?.description||"Relazioni documentate.");
+ const lensP=document.createElement("p");lensP.textContent=lensMeta(activeLens)?.description||"Relazioni documentate.";
  lensIntro.append(lensTitle,lensP);dst.append(lensIntro);
  // Un'anteprima quantitativa segnala subito dove esistono legami documentati.
  // Evita che chi seleziona una lente ancora vuota interpreti lo zero come un fatto storico.
  if(lensSelect&&lensGroups.length){
   const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";
   shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
-  const options=[{id:"musica",label:"Storia",count:edges.filter(e=>e.source===n.id||e.target===n.id).length},
-   ...lensGroups.map(g=>({id:g.id,label:g.id==="scuole"?"Scuole":g.id==="formazione"?"Maestri":g.id==="influenze"?"Influenze":g.id==="collaborazioni"?"Incontri":g.id==="genealogie"?"Generi":g.label,
-    count:lensEdges.filter(e=>e.group===g.id&&(e.source===n.id||e.target===n.id)).length}))];
+  const options=EXPLORATION_LENSES.map(g=>({
+   id:g.id,label:g.id==="musica"?"Storia + scuole":g.id==="trasmissioni"?"Maestri + influenze":g.id==="genealogie"?"Generi":"Incontri",
+   count:(g.id==="musica"?historySchoolEdges:displayRelations(g.id)).filter(e=>e.source===n.id||e.target===n.id).length
+  }));
   for(const option of options){
    const button=document.createElement("button");button.type="button";
    button.classList.toggle("is-active",activeLens===option.id);
@@ -437,11 +448,12 @@ function populate(n){
   }
   dst.append(shortcuts);
  }
- if(activeLens!=="musica"){
+ if(activeLens!=="musica"||conn.some(({e})=>e.group==="scuole")){
+  const selectedRelations=activeLens==="musica"?conn.filter(({e})=>e.group==="scuole"):conn;
   const box=document.createElement("section");box.className="lens-relations";
-  const head=document.createElement("h3");head.textContent="Relazioni nella lente · "+conn.length;box.append(head);
-  if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun legame di questo tipo ancora documentato nel database: non significa che non esistesse.";box.append(p);}
-  for(const {e,n:other} of conn){
+  const head=document.createElement("h3");head.textContent=(activeLens==="musica"?"Scuole e tradizioni documentate":"Relazioni nella lente")+" · "+selectedRelations.length;box.append(head);
+  if(!selectedRelations.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun legame di questo tipo ancora documentato nel database: non significa che non esistesse.";box.append(p);}
+  for(const {e,n:other} of selectedRelations){
    const item=document.createElement("article");item.className="lens-relation-item";
    const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
    const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=n.id===e.source?e.forward:e.reverse;
@@ -525,8 +537,8 @@ moreControls?.addEventListener("click",()=>{
 
 lensSelect?.addEventListener("change",()=>{
  activeLens=lensSelect.value;
- const group=lensGroups.find(g=>g.id===activeLens);
- if(lensHelp)lensHelp.textContent=group?.description||"Epoche, correnti e rapporti storico-musicali";
+ const group=lensMeta(activeLens);
+ if(lensHelp)lensHelp.textContent=group?.description||"Epoche, scuole e rapporti storico-musicali";
  if(relationTooltip)relationTooltip.hidden=true;
  if(selected?.type==="persona"&&activeLens==="musica"&&!selected.music_relevance){
   selected=null;focus=null;setPanel(false);
