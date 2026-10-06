@@ -4,9 +4,9 @@
   "about": "Lenti di esplorazione: relazioni documentate e indipendenti dal grafo storico. Ogni link indica fonte, direzione e natura. I legami non vengono inferiti automaticamente da cognomi o epoche.",
   "groups": [
     {
-      "id": "famiglia",
-      "label": "Famiglia",
-      "description": "Parentela diretta, per matrimonio o acquisita, verificata su fonti",
+      "id": "scuole",
+      "label": "Scuole e tradizioni",
+      "description": "Sodalizi documentati, scuole di composizione, apprendistati collettivi e tradizioni; non parentela biologica.",
       "color": "#efb4d4"
     },
     {
@@ -35,192 +35,6 @@
     }
   ],
   "relations": [
-    {
-      "id": "fam-wagner-cosima",
-      "group": "famiglia",
-      "source": "compositore-richard-wagner",
-      "target": "persona-cosima-wagner",
-      "kind": "coniuge",
-      "forward": "marito di",
-      "reverse": "moglie di",
-      "note": "Richard Wagner sposò Cosima Liszt nel 1870, dopo il suo divorzio da Hans von Bülow.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/cosima-wagner/",
-        "https://www.richard-wagner.org/rwvi/en/about-wagner/the-man/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-liszt-cosima",
-      "group": "famiglia",
-      "source": "compositore-franz-liszt",
-      "target": "persona-cosima-wagner",
-      "kind": "genitore",
-      "forward": "padre di",
-      "reverse": "figlia di",
-      "note": "Cosima era figlia del compositore Franz Liszt e di Marie d'Agoult.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/cosima-wagner/",
-        "https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-richard-wagner/franz-liszt/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-wagner-siegfried",
-      "group": "famiglia",
-      "source": "compositore-richard-wagner",
-      "target": "compositore-siegfried-wagner",
-      "kind": "genitore",
-      "forward": "padre di",
-      "reverse": "figlio di",
-      "note": "Siegfried Wagner, compositore e direttore d'orchestra, era figlio di Richard e Cosima Wagner.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/siegfried-wagner/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-cosima-siegfried",
-      "group": "famiglia",
-      "source": "persona-cosima-wagner",
-      "target": "compositore-siegfried-wagner",
-      "kind": "genitore",
-      "forward": "madre di",
-      "reverse": "figlio di",
-      "note": "Siegfried era figlio di Cosima Liszt e Richard Wagner.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/siegfried-wagner/",
-        "https://www.treccani.it/enciclopedia/cosima-wagner/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-wagner-liszt",
-      "group": "famiglia",
-      "source": "compositore-richard-wagner",
-      "target": "compositore-franz-liszt",
-      "kind": "affinita",
-      "forward": "genero di",
-      "reverse": "suocero di",
-      "note": "Liszt divenne suocero di Wagner attraverso il matrimonio di quest'ultimo con Cosima, figlia di Liszt.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/cosima-wagner/",
-        "https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-richard-wagner/franz-liszt/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-bach-cpe",
-      "group": "famiglia",
-      "source": "compositore-johann-sebastian-bach",
-      "target": "compositore-carl-philipp-emanuel-bach",
-      "kind": "genitore",
-      "forward": "padre di",
-      "reverse": "figlio di",
-      "note": "Carl Philipp Emanuel era figlio di Johann Sebastian Bach e Maria Barbara Bach.",
-      "sources": [
-        "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bach%2C_Johann_Sebastian"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-bach-jc",
-      "group": "famiglia",
-      "source": "compositore-johann-sebastian-bach",
-      "target": "compositore-johann-christian-bach",
-      "kind": "genitore",
-      "forward": "padre di",
-      "reverse": "figlio di",
-      "note": "Johann Christian, il Bach di Londra, era figlio di Johann Sebastian e Anna Magdalena Bach.",
-      "sources": [
-        "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bach%2C_Johann_Sebastian"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-cpe-jc",
-      "group": "famiglia",
-      "source": "compositore-carl-philipp-emanuel-bach",
-      "target": "compositore-johann-christian-bach",
-      "kind": "fratellastri",
-      "forward": "fratellastro di",
-      "reverse": "fratellastro di",
-      "note": "I due compositori erano figli di Johann Sebastian da matrimoni differenti.",
-      "sources": [
-        "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bach%2C_Johann_Sebastian"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-mozart-leopold",
-      "group": "famiglia",
-      "source": "compositore-leopold-mozart",
-      "target": "compositore-wolfgang-amadeus-mozart",
-      "kind": "genitore",
-      "forward": "padre di",
-      "reverse": "figlio di",
-      "note": "Leopold Mozart fu padre e primo maestro di Wolfgang Amadeus.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-mozart-nannerl",
-      "group": "famiglia",
-      "source": "persona-maria-anna-mozart",
-      "target": "compositore-wolfgang-amadeus-mozart",
-      "kind": "fratelli",
-      "forward": "sorella di",
-      "reverse": "fratello di",
-      "note": "Maria Anna (Nannerl) e Wolfgang erano figli di Leopold Mozart ed entrambi si esibirono in pubblico.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-leopold-nannerl",
-      "group": "famiglia",
-      "source": "compositore-leopold-mozart",
-      "target": "persona-maria-anna-mozart",
-      "kind": "genitore",
-      "forward": "padre di",
-      "reverse": "figlia di",
-      "note": "Leopold guidò l'educazione musicale della figlia Maria Anna, detta Nannerl.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-fanny-felix",
-      "group": "famiglia",
-      "source": "compositore-fanny-hensel",
-      "target": "compositore-felix-mendelssohn",
-      "kind": "fratelli",
-      "forward": "sorella di",
-      "reverse": "fratello di",
-      "note": "Fanny Hensel, nata Mendelssohn, era sorella del compositore Felix Mendelssohn.",
-      "sources": [
-        "https://www.britannica.com/biography/Fanny-Mendelssohn"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-robert-clara",
-      "group": "famiglia",
-      "source": "compositore-robert-schumann",
-      "target": "compositore-clara-schumann",
-      "kind": "coniuge",
-      "forward": "marito di",
-      "reverse": "moglie di",
-      "note": "Robert e Clara Schumann, entrambi compositori, si sposarono nel 1840.",
-      "sources": [
-        "https://www.britannica.com/biography/Clara-Schumann"
-      ],
-      "status": "documentato"
-    },
     {
       "id": "form-leopold-wolfgang",
       "group": "formazione",
@@ -651,20 +465,6 @@
       "sources": [
         "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/",
         "https://www.treccani.it/enciclopedia/opera/"
-      ],
-      "status": "documentato"
-    },
-    {
-      "id": "fam-rossini-colbran",
-      "group": "famiglia",
-      "source": "compositore-gioachino-rossini",
-      "target": "compositore-isabella-colbran",
-      "kind": "coniuge",
-      "forward": "fu marito di",
-      "reverse": "fu moglie di",
-      "note": "Rossini sposò Isabella Colbran nel marzo 1822 dopo anni di lavoro teatrale comune a Napoli. La loro separazione avvenne successivamente.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/isabella-angela-colbran_%28Dizionario-Biografico%29/"
       ],
       "status": "documentato"
     },
@@ -1822,6 +1622,529 @@
       "note": "Secondo l'analisi dell'IRCAM sulla prima produzione di Glass, dal 1966 l'esempio di Reich favorì le sue sperimentazioni ripetitive. I due linguaggi si svilupparono poi in modi differenti.",
       "sources": [
         "https://ressources.ircam.fr/en/composer/philip-glass/workcourse"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-notre-dame-leonin",
+      "group": "scuole",
+      "source": "scuola-notre-dame",
+      "target": "compositore-leonin",
+      "kind": "testimone-di-scuola",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Léonin è il primo dei due maestri ricordati dall'Anonimo IV per la polifonia di Notre-Dame; a lui è attribuita una fase importante dello sviluppo dell'organum.",
+      "sources": [
+        "https://www.britannica.com/art/Notre-Dame-school"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-notre-dame-perotin",
+      "group": "scuole",
+      "source": "scuola-notre-dame",
+      "target": "compositore-perotin",
+      "kind": "testimone-di-scuola",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Pérotin è l'altro grande nome trasmesso dall'Anonimo IV: a Notre-Dame contribuì all'ampliamento dell'organum, anche fino a quattro voci.",
+      "sources": [
+        "https://www.britannica.com/art/Notre-Dame-school"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-guillaume-dufay",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-guillaume-dufay",
+      "kind": "tradizione-fondativa",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Dufay rappresenta una generazione decisiva nella circolazione internazionale della polifonia borgognona e franco-fiamminga del primo Quattrocento.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/fiammingo/",
+        "https://www.treccani.it/enciclopedia/la-pratica-fiamminga_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-gilles-binchois",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-gilles-binchois",
+      "kind": "tradizione-borgognona",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Binchois è una figura fondamentale del versante borgognone, specialmente nella chanson, entro le generazioni che precedono la maturità della polifonia franco-fiamminga.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/la-pratica-fiamminga_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-johannes-ockeghem",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-johannes-ockeghem",
+      "kind": "maestro-di-tradizione",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Ockeghem sviluppò procedimenti contrappuntistici complessi e contribuì alla diffusione internazionale del linguaggio franco-fiammingo.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/fiammingo/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-jacob-obrecht",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-jacob-obrecht",
+      "kind": "contrappunto-e-messa",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Obrecht è fra i maestri della scuola franco-fiamminga del tardo Quattrocento, riconoscibile nel trattamento della messa e della scrittura imitativa.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/fiammingo/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-josquin-des-prez",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-josquin-des-prez",
+      "kind": "trasformazione-stilistica",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Josquin ereditò e rielaborò la tecnica contrappuntistica dei predecessori franco-fiamminghi, dando particolare rilievo al testo e all'imitazione.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/fiammingo/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-heinrich-isaac",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-heinrich-isaac",
+      "kind": "diffusione-internazionale",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Isaac esemplifica la circolazione dei maestri franco-fiamminghi nelle corti e istituzioni dell'Europa centrale, senza appartenere a un'unica scuola cittadina.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/la-pratica-fiamminga_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-orlando-di-lasso",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-orlando-di-lasso",
+      "kind": "diffusione-internazionale",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Orlando di Lasso rappresenta una fase tarda di diffusione europea della polifonia franco-fiamminga, attraversando repertori sacri e profani.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/la-pratica-fiamminga_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-adriano-willaert",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-adriano-willaert",
+      "kind": "trasferimento-di-tecniche",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Willaert apparteneva alla formazione franco-fiamminga e trasferì il proprio sapere contrappuntistico a Venezia, contribuendo alla storia musicale di San Marco.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/la-pratica-fiamminga_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/",
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-cipriano-de-rore",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-cipriano-de-rore",
+      "kind": "madrigalismo-internazionale",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Cipriano de Rore, di origine fiamminga e maestro a San Marco, rappresenta una trasmissione della cultura contrappuntistica settentrionale verso il madrigale italiano.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiamminga-jacob-clemens-non-papa",
+      "group": "scuole",
+      "source": "scuola-fiamminga",
+      "target": "compositore-jacob-clemens-non-papa",
+      "kind": "polifonia-neerlandese",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Clemens non Papa fu un compositore della tradizione polifonica dei Paesi Bassi del Cinquecento; l'appartenenza è storico-stilistica, non a una scuola unica formalizzata.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/la-pratica-fiamminga_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-romana-giovanni-pierluigi-da-palestrina",
+      "group": "scuole",
+      "source": "scuola-romana",
+      "target": "compositore-giovanni-pierluigi-da-palestrina",
+      "kind": "centro-della-tradizione",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Palestrina costituisce il riferimento storico della scuola romana cinquecentesca per la scrittura contrappuntistica vocale e la liturgia delle cappelle.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-animuccia_%28Enciclopedia-Italiana%29/",
+        "https://www.treccani.it/enciclopedia/giovanni-maria-nanino_%28Dizionario-Biografico%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-romana-costanzo-festa",
+      "group": "scuole",
+      "source": "scuola-romana",
+      "target": "compositore-costanzo-festa",
+      "kind": "precedente-stilistico",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Costanzo Festa è un precedente importante della polifonia romana del Cinquecento, prima della formulazione piena dello stile associato a Palestrina.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-animuccia_%28Enciclopedia-Italiana%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-romana-giovanni-animuccia",
+      "group": "scuole",
+      "source": "scuola-romana",
+      "target": "compositore-giovanni-animuccia",
+      "kind": "tradizione-liturgica",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Animuccia lavorò nella cappella Giulia e coltivò una polifonia vocale più trasparente, rappresentando una fase della tradizione romana prima e accanto a Palestrina.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-animuccia_%28Enciclopedia-Italiana%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-romana-giovanni-maria-nanino",
+      "group": "scuole",
+      "source": "scuola-romana",
+      "target": "compositore-giovanni-maria-nanino",
+      "kind": "erede-e-didatta",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Giovanni Maria Nanino fu una figura centrale della trasmissione didattica della scuola palestriniana a Roma, e insegnò a numerosi compositori.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-maria-nanino_%28Dizionario-Biografico%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-romana-felice-anerio",
+      "group": "scuole",
+      "source": "scuola-romana",
+      "target": "compositore-felice-anerio",
+      "kind": "erede-palestriniano",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Felice Anerio fu maestro della cappella pontificia dopo Palestrina e uno dei prosecutori della polifonia ecclesiastica romana.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/felice-anerio/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-romana-giovanni-francesco-anerio",
+      "group": "scuole",
+      "source": "scuola-romana",
+      "target": "compositore-giovanni-francesco-anerio",
+      "kind": "tradizione-e-rinnovamento",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Giovanni Francesco Anerio rappresenta la prosecuzione romana della polifonia ma anche l'apertura a nuovi mezzi monodici, rispetto al più conservatore fratello Felice.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-francesco-anerio_%28Dizionario-Biografico%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-romana-francesco-soriano",
+      "group": "scuole",
+      "source": "scuola-romana",
+      "target": "compositore-francesco-soriano",
+      "kind": "trasmissione-didattica",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Soriano fu allievo di Giovanni Maria Nanino e con lui difese pubblicamente la scuola romana nel confronto contrappuntistico con Raval.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-maria-nanino_%28Dizionario-Biografico%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-romana-gregorio-allegri",
+      "group": "scuole",
+      "source": "scuola-romana",
+      "target": "compositore-gregorio-allegri",
+      "kind": "erede-cappella-romana",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Allegri fu allievo nell'ambiente didattico di Nanino, un esempio della sopravvivenza della tradizione policorale e contrappuntistica nelle cappelle romane.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-maria-nanino_%28Dizionario-Biografico%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-adriano-willaert",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-adriano-willaert",
+      "kind": "guida-di-san-marco",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Adriano Willaert assunse la guida della cappella di San Marco nel 1527 e avviò una lunga stagione di rinnovamento dell'organizzazione musicale veneziana.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-cipriano-de-rore",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-cipriano-de-rore",
+      "kind": "maestro-di-cappella",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Cipriano de Rore guidò brevemente la cappella di San Marco nel 1563–1564, portando nell'ambiente veneziano l'esperienza fiamminga e madrigalistica.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-gioseffo-zarlino",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-gioseffo-zarlino",
+      "kind": "teorico-e-maestro-di-cappella",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Zarlino diresse la cappella di San Marco dal 1565 al 1590 e contribuì alla codificazione teorica di aspetti della scrittura musicale veneziana.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/",
+        "https://www.treccani.it/enciclopedia/gioseffo-zarlino_%28Enciclopedia-Italiana%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-claudio-merulo",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-claudio-merulo",
+      "kind": "organista-e-innovatore",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Merulo operò come organista della cappella di San Marco fra 1557 e 1584, nel terreno veneziano di crescita della scrittura strumentale per tastiera.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-andrea-gabrieli",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-andrea-gabrieli",
+      "kind": "organista-e-policoralita",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Andrea Gabrieli fu organista di San Marco dal 1566 e contribuì alla cultura veneziana dei cori contrapposti e dei grandi organici.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-giovanni-gabrieli",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-giovanni-gabrieli",
+      "kind": "dialogo-di-cori-e-strumenti",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Giovanni Gabrieli, organista a San Marco dal 1584, portò la scrittura veneziana verso un dialogo sempre più articolato di gruppi vocali e strumentali.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-giovanni-croce",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-giovanni-croce",
+      "kind": "maestro-di-cappella",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Croce succedette nella guida della cappella di San Marco e rappresenta la continuità della scuola veneziana nei primi anni del Seicento.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-claudio-monteverdi",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-claudio-monteverdi",
+      "kind": "rinnovamento-seicentesco",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Monteverdi fu maestro di cappella a San Marco dal 1613 e trasformò la tradizione veneziana attraverso nuove relazioni fra scrittura polifonica e stile concertato.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-veneziana-francesco-cavalli",
+      "group": "scuole",
+      "source": "scuola-veneziana",
+      "target": "compositore-francesco-cavalli",
+      "kind": "continuazione-teatrale",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Cavalli fu attivo a San Marco e divenne maestro di cappella nel Seicento; la sua attività teatrale portò su un altro piano il linguaggio veneziano.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/musica-e-musicisti_%28Storia-di-Venezia%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-luterana-johann-walter",
+      "group": "scuole",
+      "source": "scuola-luterana",
+      "target": "compositore-johann-walter",
+      "kind": "corale-della-riforma",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Johann Walter è una figura della prima generazione musicale della Riforma luterana e contribuì alla pratica dei canti e delle raccolte corali in tedesco.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/michael-praetorius_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/",
+        "https://www.britannica.com/biography/Johann-Walther"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-luterana-michael-praetorius",
+      "group": "scuole",
+      "source": "scuola-luterana",
+      "target": "compositore-michael-praetorius",
+      "kind": "polifonia-del-corale",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Michael Praetorius sistematizzò una vasta tradizione di musica luterana, specialmente nell'elaborazione polifonica dei corali e nell'impiego di tecniche importate dall'Italia.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/michael-praetorius_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-luterana-johann-hermann-schein",
+      "group": "scuole",
+      "source": "scuola-luterana",
+      "target": "compositore-johann-hermann-schein",
+      "kind": "sintesi-tedesco-italiana",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Schein rappresenta la prima stagione barocca della musica luterana tedesca, unendo repertorio sacro e attenzione alle novità concertate italiane.",
+      "sources": [
+        "https://www.britannica.com/biography/Johann-Hermann-Schein"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-luterana-samuel-scheidt",
+      "group": "scuole",
+      "source": "scuola-luterana",
+      "target": "compositore-samuel-scheidt",
+      "kind": "tastiere-e-corale",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Scheidt elaborò il repertorio organistico della tradizione protestante, intrecciando polifonia e trattamento strumentale delle melodie del corale.",
+      "sources": [
+        "https://www.britannica.com/biography/Samuel-Scheidt"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-luterana-heinrich-schutz",
+      "group": "scuole",
+      "source": "scuola-luterana",
+      "target": "compositore-heinrich-schutz",
+      "kind": "ricezione-veneziana",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Heinrich Schütz contribuì a innestare le novità veneziane nella musica protestante tedesca, trasformandole in una scrittura sacra altamente espressiva.",
+      "sources": [
+        "https://www.britannica.com/biography/Heinrich-Schutz"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-luterana-johann-sebastian-bach",
+      "group": "scuole",
+      "source": "scuola-luterana",
+      "target": "compositore-johann-sebastian-bach",
+      "kind": "erede-plurale",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Bach ereditò e trasformò la tradizione luterana del corale, della cantata e della passione, insieme a modelli strumentali italiani e francesi.",
+      "sources": [
+        "https://www.britannica.com/biography/Johann-Sebastian-Bach"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiorentina-giulio-caccini",
+      "group": "scuole",
+      "source": "camerata-fiorentina",
+      "target": "compositore-giulio-caccini",
+      "kind": "partecipante-prima-e-seconda-cerchia",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Giulio Caccini partecipò al cenacolo di Bardi e fu attivo anche nel successivo ambiente di Corsi, promuovendo la monodia accompagnata e lo stile rappresentativo.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "scuola-fiorentina-jacopo-peri",
+      "group": "scuole",
+      "source": "camerata-fiorentina",
+      "target": "compositore-jacopo-peri",
+      "kind": "ambiente-di-corsi-non-prima-camerata",
+      "forward": "è un ambiente storico cui contribuì",
+      "reverse": "appartiene alla tradizione o al contesto di",
+      "note": "Jacopo Peri appartiene al successivo ambiente di Jacopo Corsi, non va attribuito indistintamente alla prima Camerata di Bardi; vi maturarono gli esperimenti di opera in musica.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
       ],
       "status": "documentato"
     }
