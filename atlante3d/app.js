@@ -10,8 +10,11 @@ let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0
 let selected=null,drag=null,screen=[],hitOrder=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti";
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
-function matchesSearch(n,q){if(!q)return false;return [n.label,...(n.aliases||[])].some(name=>normSearch(name).includes(q));}
+const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/ł/g,"l").replace(/ß/g,"ss").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[ʹʺ'’ʼ`´]/g,"").replace(/[‐‑‒–—]/g,"-").replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
+function searchNames(n){return [n.label,...(n.aliases||[])];}
+function matchesSearch(n,q){return !!q&&searchNames(n).some(name=>normSearch(name).includes(q));}
+function searchRank(n,q){const variants=searchNames(n).map(normSearch);if(variants.some(v=>v===q))return 0;if(variants.some(v=>v.split(" ").includes(q)))return 1;if(variants.some(v=>v.startsWith(q)))return 2;return 3;}
+function findSearchResults(q){return nodes.filter(n=>matchesSearch(n,q)).sort((a,b)=>searchRank(a,q)-searchRank(b,q)||a.label.localeCompare(b.label,"it"));}
 function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
 
 const geoState={lat:48,lon:11,span:100,targetLat:48,targetLon:11,targetSpan:100,enabled:true};
@@ -252,6 +255,15 @@ function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
  document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica"}[n.type]||"");
  const dst=document.getElementById("panelContent");dst.replaceChildren();
+ if(n.aliases?.length){
+  const names=document.createElement("details");names.className="name-variants";
+  const title=document.createElement("summary");title.textContent="Altri nomi e grafie · "+n.aliases.length;names.append(title);
+  const variants=document.createElement("p");variants.className="small";variants.textContent=n.aliases.join(" · ");names.append(variants);
+  if(n.name_review?.status==="verificato"&&n.name_review.sources?.length){
+   const source=document.createElement("a");source.href=n.name_review.sources[0];source.target="_blank";source.rel="noopener noreferrer";source.textContent="Fonte sulle grafie ↗";names.append(source);
+  }else{const note=document.createElement("p");note.className="small";note.textContent="Varianti in revisione bibliografica.";names.append(note);}
+  dst.append(names);
+ }
  const conn=linked(n),relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
  if(n.url){const a=document.createElement("a");a.className="card";a.href=n.url;a.textContent="↗ Apri il percorso nell'Atlante";dst.append(a);}
  const mediaHead=document.createElement("div");mediaHead.className="panel-section-header";
@@ -317,8 +329,8 @@ setZoom(zoom);
 canvas.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.001));},{passive:false});
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
-search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=nodes.filter(n=>matchesSearch(n,searchText));status.textContent=results.length+" corrispondenze · Invio per centrare la prima";}});
-search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=nodes.find(n=>matchesSearch(n,searchText));if(n){focusOn(n);search.blur();}});
+search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
+search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n);search.blur();}});
 filter.addEventListener("change",()=>{typeFilter=filter.value;});
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);geoState.targetLat=48;geoState.targetLon=11;geoState.targetSpan=100;geoLabel.textContent="Europa · panoramica";search.value="";searchText="";filter.value="tutti";typeFilter="tutti";setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
