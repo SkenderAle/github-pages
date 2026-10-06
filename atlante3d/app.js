@@ -142,7 +142,11 @@ function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.000
 function currentEdges(){return activeLens==="musica"?edges:lensEdges.filter(e=>e.group===activeLens);}
 function visibleNode(n){
  if(n.type==="geografia")return true;
- if(n.type==="persona")return activeLens!=="musica"&&(n===selected||currentEdges().some(e=>e.source===n.id||e.target===n.id));
+ if(n.type==="persona"&&activeLens==="musica")return false;
+ // Le sfere collegate rimangono sempre visibili durante l'esplorazione di una lente,
+ // anche se il precedente filtro generale riguardava soltanto i compositori.
+ if(activeLens!=="musica"&&selected&&(n===selected||currentEdges().some(e=>(e.source===selected.id&&e.target===n.id)||(e.target===selected.id&&e.source===n.id))))return true;
+ if(n.type==="persona")return activeLens!=="musica"&&currentEdges().some(e=>e.source===n.id||e.target===n.id);
  return typeFilter==="tutti"||n.type===typeFilter||n===selected;
 }
 function lineHit(pt){
@@ -410,8 +414,29 @@ function populate(n){
  const conn=linked(n);
  const lensIntro=document.createElement("section");lensIntro.className="lens-panel-intro";
  const lensTitle=document.createElement("strong");lensTitle.textContent="Lente: "+(lensSelect?.selectedOptions[0]?.textContent||"Storia musicale");
- const lensP=document.createElement("p");lensP.textContent=activeLens==="musica"?"La costellazione storico-musicale è attiva. Cambia lente per esplorare parentele, maestri, influenze e collaborazioni.":(lensGroups.find(g=>g.id===activeLens)?.description||"Relazioni documentate.");
+ const lensP=document.createElement("p");lensP.textContent=activeLens==="musica"?"La costellazione storico-musicale è attiva. Le lenti permettono di seguire parentele, formazione, influenze, incontri e genealogie dei generi.":(lensGroups.find(g=>g.id===activeLens)?.description||"Relazioni documentate.");
  lensIntro.append(lensTitle,lensP);dst.append(lensIntro);
+ // Un'anteprima quantitativa segnala subito dove esistono legami documentati.
+ // Evita che chi seleziona una lente ancora vuota interpreti lo zero come un fatto storico.
+ if(lensSelect&&lensGroups.length){
+  const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";
+  shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
+  const options=[{id:"musica",label:"Storia",count:edges.filter(e=>e.source===n.id||e.target===n.id).length},
+   ...lensGroups.map(g=>({id:g.id,label:g.id==="famiglia"?"Famiglia":g.id==="formazione"?"Maestri":g.id==="influenze"?"Influenze":g.id==="collaborazioni"?"Incontri":g.id==="genealogie"?"Generi":g.label,
+    count:lensEdges.filter(e=>e.group===g.id&&(e.source===n.id||e.target===n.id)).length}))];
+  for(const option of options){
+   const button=document.createElement("button");button.type="button";
+   button.classList.toggle("is-active",activeLens===option.id);
+   const number=document.createElement("span");number.className="num";number.textContent=" "+option.count;
+   button.textContent=option.label+" ·";button.append(number);
+   button.setAttribute("aria-pressed",String(activeLens===option.id));
+   button.addEventListener("click",()=>{
+    if(lensSelect.value===option.id)return;
+    lensSelect.value=option.id;lensSelect.dispatchEvent(new Event("change"));
+   });shortcuts.append(button);
+  }
+  dst.append(shortcuts);
+ }
  if(activeLens!=="musica"){
   const box=document.createElement("section");box.className="lens-relations";
   const head=document.createElement("h3");head.textContent="Relazioni nella lente · "+conn.length;box.append(head);
