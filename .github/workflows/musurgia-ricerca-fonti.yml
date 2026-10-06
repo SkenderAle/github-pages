@@ -36,6 +36,8 @@ jobs:
     steps:
       - name: Recupera repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - name: Prepara Node.js
         uses: actions/setup-node@v4
         with:
@@ -46,6 +48,19 @@ jobs:
           mkdir -p outputs
           node atlante3d/database/sincronizza-identita.mjs --write --new-ids=outputs/nuovi-compositori.json
           node atlante3d/database/sincronizza-identita.mjs --check
+          # Il webmaster può aver già inserito il nuovo nome nel registro:
+          # confrontiamo anche grafo.json con il commit precedente.
+          if git cat-file -e HEAD^:atlante3d/database/grafo.json 2>/dev/null; then
+            git show HEAD^:atlante3d/database/grafo.json > outputs/grafo-precedente.json
+            node -e '
+              const fs=require("node:fs");
+              const now=require("./atlante3d/database/grafo.json").nodes.filter(n=>n.type==="compositore").map(n=>n.id);
+              const prev=JSON.parse(fs.readFileSync("outputs/grafo-precedente.json","utf8")).nodes.filter(n=>n.type==="compositore").map(n=>n.id);
+              const latest=JSON.parse(fs.readFileSync("outputs/nuovi-compositori.json","utf8"));
+              latest.composers=[...new Set([...latest.composers,...now.filter(id=>!prev.includes(id))])];
+              fs.writeFileSync("outputs/nuovi-compositori.json",JSON.stringify(latest,null,2)+"\\n");
+            '
+          fi
       - name: Ricerca iniziale di nuovo materiale
         shell: bash
         env:
