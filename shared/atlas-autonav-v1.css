@@ -1,0 +1,69 @@
+/* Musurgia Mundi / Atlante: indice a scomparsa condiviso.
+   Una linguetta sottile rimane raggiungibile; il menu si apre al passaggio,
+   con tastiera oppure al tocco. L'altezza del documento non cambia. */
+.atlas-autonav{
+ position:sticky!important;
+ top:0!important;
+ z-index:1000!important;
+ display:block!important;
+ height:37px!important;
+ min-height:37px!important;
+ padding:0!important;
+ overflow:visible!important;
+ background:rgba(245,238,225,.96)!important;
+ border-bottom:1px solid rgba(132,107,74,.45)!important;
+ backdrop-filter:blur(12px);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;
+}
+.atlas-autonav>.atlas-menu-toggle{
+ display:inline-flex;align-items:center;gap:.48rem;
+ height:32px;min-height:32px;margin:2px 0 2px clamp(12px,3vw,30px);
+ padding:0 .78rem;border-radius:7px;border:1px solid #a58c65;
+ background:#f4e7d0;color:#30231a;
+ font:750 .77rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
+ cursor:pointer;position:relative;z-index:2;
+}
+.atlas-autonav>.atlas-menu-toggle:hover,
+.atlas-autonav>.atlas-menu-toggle:focus-visible{background:#ead3aa;outline-offset:2px}
+.atlas-autonav>.atlas-menu-toggle .atlas-menu-arrow{font-size:.78rem;transition:transform .18s}
+.atlas-autonav:is(:hover,:focus-within,.atlas-menu-open)>.atlas-menu-toggle .atlas-menu-arrow{transform:rotate(180deg)}
+.atlas-autonav>nav{
+ position:absolute!important;top:100%!important;left:0!important;right:0!important;
+ width:100%!important;max-width:none!important;
+ max-height:0!important;margin:0!important;
+ padding:0 clamp(8px,2.5vw,24px)!important;
+ overflow:hidden!important;visibility:hidden;opacity:0;
+ pointer-events:none;
+ border:0!important;box-shadow:none!important;
+ background:rgba(246,239,226,.98)!important;
+ backdrop-filter:blur(18px);
+ transition:max-height .23s ease,opacity .17s ease,visibility .17s;
+}
+.atlas-autonav:is(:hover,:focus-within,.atlas-menu-open)>nav{
+ max-height:min(70vh,600px)!important;overflow-x:hidden!important;
+ overflow-y:auto!important;visibility:visible;opacity:1;
+ pointer-events:auto;
+ padding:12px clamp(8px,2.5vw,24px) 16px!important;
+ border-bottom:1px solid #b7a287!important;
+ box-shadow:0 17px 34px rgba(14,11,8,.24)!important;
+}
+.atlas-autonav>nav .nav-row{max-width:100%;min-width:0}
+.atlas-autonav>nav .nav-home{
+ padding:.3rem .56rem!important;
+ font-size:.73rem!important;
+ line-height:1.15!important;
+ font-weight:750!important;
+ border-width:1px!important;
+}
+.atlas-autonav>nav>a,.atlas-autonav>nav .nav-row>a,
+.atlas-autonav>nav .nav-row>button{font-size:clamp(.71rem,1vw,.8rem)}
+.atlas-autonav>nav a:focus-visible,.atlas-autonav>nav button:focus-visible{outline:2px solid #a16835;outline-offset:2px}
+@media(max-width:700px){
+ .atlas-autonav{height:36px!important;min-height:36px!important}
+ .atlas-autonav>.atlas-menu-toggle{height:30px;min-height:30px;margin:2px 10px;padding:0 .65rem;font-size:.74rem}
+ .atlas-autonav:is(:hover,:focus-within,.atlas-menu-open)>nav{max-height:min(77vh,660px)!important}
+ .atlas-autonav>nav .nav-row{scrollbar-width:thin}
+}
+@media(prefers-reduced-motion:reduce){
+ .atlas-autonav>nav,.atlas-menu-arrow{transition:none!important}
+}
