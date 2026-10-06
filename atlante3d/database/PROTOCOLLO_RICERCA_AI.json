@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "project": "Musurgia Mundi · Atlante della musica",
+  "catalogue": "grafo.json",
+  "relations": "relazioni.json",
+  "identities": "identita-esterne.json",
+  "output": "CANDIDATI_FONTI.json",
+  "editorial_principle": "Evidenza storica prima della densità visiva. Il modello non deve inventare né pubblicare relazioni.",
+  "lens_mapping": [
+    {
+      "id": "musica",
+      "display": "Storia musicale e scuole",
+      "origin": [
+        "grafo.json edges",
+        "relazioni.group:scuole"
+      ]
+    },
+    {
+      "id": "trasmissioni",
+      "display": "Maestri allievi e influenze",
+      "origin": [
+        "relazioni.group:formazione",
+        "relazioni.group:influenze"
+      ]
+    },
+    {
+      "id": "genealogie",
+      "display": "Genealogie dei generi",
+      "origin": [
+        "relazioni.group:genealogie"
+      ]
+    },
+    {
+      "id": "collaborazioni",
+      "display": "Incontri e collaborazioni",
+      "origin": [
+        "relazioni.group:collaborazioni"
+      ]
+    }
+  ],
+  "linked_sources": [
+    {
+      "name": "Wikidata",
+      "api": "https://www.wikidata.org/w/api.php",
+      "license": "CC0 dati strutturati",
+      "properties": {
+        "P1066": "student of → teacher→student formazione",
+        "P802": "student → teacher→student formazione",
+        "P737": "influenced by → influence→subject influenze",
+        "P69": "educated at → contesto da verificare, mai prova di insegnamento",
+        "P463": "member of → appartenenza a istituzione da verificare, non prova di scuola compositiva",
+        "P434": "MusicBrainz artist ID → riconciliazione identità"
+      }
+    },
+    {
+      "name": "MusicBrainz",
+      "api": "https://musicbrainz.org/ws/2/",
+      "license": "core data CC0; evitare i dati supplementari CC BY-NC-SA senza revisione",
+      "relation_types": {
+        "249fc24f-d573-4290-9d74-0547712d1f1e": "teacher ↔ student, con direzione e soggetto da controllare"
+      },
+      "rate_limit": "MASSIMO 1 richiesta/secondo",
+      "user_agent": "MusurgiaMundi/1.0 (https://github.com/SkenderAle/github-pages)"
+    },
+    {
+      "name": "Musicmap",
+      "role": "metodo e confronto per genealogie dei generi; non riutilizzare automaticamente dataset, grafica o descrizioni",
+      "url": "https://musicmap.info/"
+    }
+  ],
+  "identity_rules": [
+    "Non associare persone in base al solo cognome o alla nazionalità.",
+    "Controllare alias, professione, date di nascita e morte, ID esterni e fonti indipendenti.",
+    "Evitare false omonimie tra musicisti, esecutori, editori, membri di famiglia o istituzioni.",
+    "Prima di trasferire un rapporto è necessario confermare entrambi gli estremi: ID locali o proposta documentata di nuovo nodo.",
+    "Nessuna parentele biologica o matrimoniale nelle lenti."
+  ],
+  "candidate_rules": [
+    "Non scrivere relazioni.json prima della verifica umana o AI con fonti primarie/secondarie attendibili.",
+    "Salvare proprietà originale, direzione, identificativi e URI di provenienza: una relazione in una banca dati NON basta per dichiarare documentata un'influenza.",
+    "P1066 e P802 sono candidati formazione; P737 è candidato influenze, non certezza causale.",
+    "Le relazioni musicali MusicBrainz devono riguardare studio della composizione o un'istruzione musicale pertinente; indicare materia e date quando disponibili.",
+    "P69 e P463 identificano contesti, non automaticamente una relazione di scuola.",
+    "Le genealogie di genere richiedono un passaggio stilistico documentato; non estrarre automaticamente tag genre come genealogie.",
+    "Incontri e collaborazioni richiedono prova di lavoro artistico comune; non usare semplice contemporaneità."
+  ],
+  "source_priority": [
+    "documenti primari / archivi e studi musicologici",
+    "Grove Oxford Music MGG",
+    "Treccani e istituzioni musicali",
+    "Wikidata e MusicBrainz come indici di indizi verificabili"
+  ],
+  "candidate_schema": {
+    "id": "string",
+    "group": "formazione|influenze|scuole|genealogie|collaborazioni",
+    "source": "ID nodo interno o null",
+    "target": "ID nodo interno o null",
+    "external_source_qid": "Q... o null",
+    "external_target_qid": "Q... o null",
+    "kind": "string",
+    "external_evidence_url": "https://...",
+    "origin_database": "Wikidata|MusicBrainz",
+    "original_predicate": "P1066|P802|P737|MusicBrainz teacher",
+    "reference_count": "integer",
+    "status": "candidato-da-verificare",
+    "note": "Nessuna dichiarazione storica senza seconda fonte."
+  },
+  "completeness": "Un compositore è analizzato solo quando sono state considerate tutte le 4 lenti e l'assenza di risultati è dichiarata; lo zero in un filtro non prova l'inesistenza di legami.",
+  "publication_rules": [
+    "Conservare source e target come nodi esistenti in grafo.json.",
+    "Richiedere group, kind, forward, reverse, note argomentata, sources HTTPS effettivamente a sostegno e status documentato.",
+    "Per i collegamenti mancanti proporre nuovi nodi motivati e onomastica.",
+    "Usare verifica-relazioni.mjs, verifica-nomi.mjs e verifica-copertura.mjs prima di commit.",
+    "Non usare fonti dietro paywall senza accesso e non riprodurre testi protetti."
+  ]
+}
