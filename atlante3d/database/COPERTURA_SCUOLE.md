@@ -6,14 +6,15 @@
 
 - Compositori censiti: **288**.
 - Senza legami di scuola o tradizione: **89**.
-- Senza relazioni specialistiche di alcun tipo: **13**.
+- Senza relazioni specialistiche di alcun tipo: **12**.
 - Relazioni nella lente Scuole e tradizioni: **253**.
-- Prime ricognizioni registrate per nome: **240** su 288 (non equivalgono alla revisione bibliografica definitiva).
+- Prime ricognizioni registrate per nome: **280** su 288 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
 - Sesto lotto: **40** biografie censite con almeno una fonte, di cui **31** con nuove relazioni e **9** con prima verifica biografica ma relazioni da approfondire.
 - Settimo lotto: **40** ricognizioni nominative, di cui **26** con nuovi collegamenti documentati e **14** senza nuovi archi accertati (ricerca ancora aperta).
 - Ottavo lotto: **40** ricognizioni nominative, di cui **8** con nuovi archi direttamente incidenti e **32** con sola prima fonte biografica (ulteriori approfondimenti necessari).
 - Nono lotto: **40** ricognizioni nominative con fonte, di cui **8** con almeno un nuovo arco e **32** con sola prima ricognizione biografica (quattro lenti da approfondire).
+- Decimo lotto: **40** ricognizioni nominative, di cui **13** con almeno una nuova relazione e **27** senza nuovi archi nella prima passata. **10** relazioni aggiunte dopo esclusione di una falsa identificazione Fasch.
 - Identità Wikidata riconciliate: **19** su 288.
 
 ## Copertura per epoca
@@ -35,36 +36,36 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 
 | Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato | Prima ricognizione |
 |---|---|---:|---:|---:|---:|---:|---|---|---|
-| non-classificato | Amilcare Ponchielli | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Anatolij Ljadov | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Amilcare Ponchielli | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Anatolij Ljadov | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | André Gedalge | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Anton Reicha | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Anton Rubinstein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Billy Strayhorn | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Camillo Sivori | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Carl Czerny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Carl Friedrich Zelter | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Charles Hambitzer | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Anton Reicha | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Anton Rubinstein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Billy Strayhorn | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Camillo Sivori | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Carl Czerny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Carl Friedrich Zelter | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Charles Hambitzer | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Charles Koechlin | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Christian Theodor Weinlig | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Christian Theodor Weinlig | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Claudio Merulo | 1 | 0 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 8** |
 | non-classificato | Costanzo Festa | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
-| non-classificato | Eduard Marxsen | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Eduard Marxsen | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Ennio Morricone | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Felice Anerio | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
-| non-classificato | Francesco Durante | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Francesco Durante | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Francesco Soriano | 1 | 1 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
-| non-classificato | Frederick Converse | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Fritz Reiner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Fromental Halévy | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Gennaro Manna | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | George Whitefield Chadwick | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Frederick Converse | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Fritz Reiner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Fromental Halévy | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Gennaro Manna | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | George Whitefield Chadwick | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Giacinto Sallustio | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Giacomo Antonio Perti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Giacomo Antonio Perti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Gilles Binchois | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
 | non-classificato | Gioseffo Zarlino | 1 | 2 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 8** |
 | non-classificato | Giovanni Animuccia | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
-| non-classificato | Giovanni Battista Martini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Giovanni Battista Martini | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Giovanni Croce | 1 | 1 | 0 | 0 | 0 | Scuola veneziana | catalogato | **Lotto 8** |
 | non-classificato | Giovanni Francesco Anerio | 1 | 0 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
 | non-classificato | Giovanni Maria Nanino | 1 | 3 | 0 | 0 | 0 | Scuola romana | catalogato | **Lotto 8** |
@@ -73,28 +74,28 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | non-classificato | Henry Cowell | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
 | non-classificato | Jacob Clemens non Papa | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
 | non-classificato | Jacob Obrecht | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
-| non-classificato | Jean-François Lesueur | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Johann Christoph Bach (1671–1721) | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Johann Friedrich Fasch | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Jean-François Lesueur | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Johann Christoph Bach (1671–1721) | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Johann Friedrich Fasch | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Johann Hermann Schein | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | **Lotto 8** |
 | non-classificato | Johann Walter | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | **Lotto 8** |
 | non-classificato | Johannes Ockeghem | 1 | 0 | 0 | 0 | 0 | Scuola franco-fiamminga | catalogato | **Lotto 8** |
-| non-classificato | Józef Elsner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Lauro Rossi | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Maksimilian Steinberg | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Marcantonio Ingegneri | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Michael Haydn | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Józef Elsner | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Lauro Rossi | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Maksimilian Steinberg | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Marcantonio Ingegneri | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Michael Haydn | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Michael Praetorius | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | **Lotto 8** |
-| non-classificato | Nadia Boulanger | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Nadia Boulanger | 0 | 4 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Otto Kitzler | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Pietro Nardini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Pietro Nardini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | René Leibowitz | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Rubin Goldmark | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Rubin Goldmark | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Samuel Scheidt | 1 | 0 | 0 | 0 | 0 | Scuola luterana | catalogato | **Lotto 8** |
-| non-classificato | Sergej Taneev | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Simon Sechter | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Sergej Taneev | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
+| non-classificato | Simon Sechter | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | non-classificato | Walter Klein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
-| non-classificato | Wojciech Żywny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| non-classificato | Wojciech Żywny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | medioevo | Adam de la Halle | 1 | 0 | 0 | 1 | 0 | Tradizione dei trovieri francesi | catalogato | **Lotto 1** |
 | medioevo | Francesco Landini | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | **Lotto 5** |
 | medioevo | Gherardello da Firenze | 1 | 0 | 0 | 0 | 0 | Ars nova italiana | catalogato | **Lotto 5** |
@@ -134,9 +135,9 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Alessandro Marcello | 1 | 0 | 1 | 1 | 0 | Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
 | barocco | Alessandro Scarlatti | 1 | 1 | 0 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 5** |
 | barocco | Antonio Caldara | 3 | 0 | 1 | 1 | 0 | Cappella imperiale viennese del primo Settecento · Oratorio e cantata nei salotti romani del primo Settecento · Pratiche musicali veneziane del Settecento | catalogato | **Lotto 1** |
-| barocco | Antonio Lotti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| barocco | Antonio Lotti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | barocco | Antonio Vivaldi | 2 | 0 | 2 | 1 | 0 | Ospedali musicali veneziani del Settecento · Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
-| barocco | Arcangelo Corelli | 1 | 0 | 4 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
+| barocco | Arcangelo Corelli | 1 | 1 | 4 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
 | barocco | Baldassare Galuppi | 3 | 1 | 0 | 1 | 1 | Ospedali musicali veneziani del Settecento · Pratiche musicali veneziane del Settecento · Scuola operistica napoletana | catalogato | **Lotto 2** |
 | barocco | Benedetto Marcello | 1 | 2 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
 | barocco | Dietrich Buxtehude | 1 | 0 | 1 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 6** |
@@ -146,11 +147,11 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Francesco Cavalli | 2 | 1 | 0 | 1 | 0 | Scuola operistica veneziana del Seicento · Scuola veneziana | catalogato | **Lotto 6** |
 | barocco | Francesco Gasparini | 1 | 2 | 0 | 0 | 0 | Ospedali musicali veneziani del Settecento | catalogato | **Lotto 9** |
 | barocco | François Couperin | 1 | 0 | 2 | 0 | 0 | Scuola clavicembalistica francese | catalogato | **Lotto 6** |
-| barocco | Friedrich Wilhelm Zachow | 1 | 1 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | da avviare |
+| barocco | Friedrich Wilhelm Zachow | 1 | 1 | 0 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 10** |
 | barocco | Georg Friedrich Händel | 4 | 1 | 1 | 2 | 0 | Opera seria · Oratorio e cantata nei salotti romani del primo Settecento · Oratorio inglese del Settecento · Tradizioni organistiche tedesche del Barocco | catalogato | **Lotto 2** |
 | barocco | Georg Philipp Telemann | 3 | 0 | 1 | 2 | 0 | Collegium musicum di Lipsia · Scuola luterana · Stile galante ed empfindsamer Stil | catalogato | **Lotto 2** |
 | barocco | Giovanni Battista Pergolesi | 1 | 2 | 0 | 0 | 2 | Scuola operistica napoletana | catalogato | **Lotto 5** |
-| barocco | Giovanni Battista Somis | 2 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato | da avviare |
+| barocco | Giovanni Battista Somis | 2 | 2 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato | **Lotto 10** |
 | barocco | Giovanni Bonaventura Viviani | 1 | 0 | 0 | 0 | 0 | Cappella di corte di Innsbruck nel Seicento | catalogato | **Lotto 1** |
 | barocco | Giovanni Legrenzi | 1 | 0 | 0 | 0 | 0 | Scuola operistica veneziana del Seicento | catalogato | **Lotto 6** |
 | barocco | Girolamo Frescobaldi | 2 | 2 | 1 | 0 | 0 | Musica della corte estense a Ferrara · Tastiere italiane del primo Seicento | catalogato | **Lotto 1** |
@@ -172,7 +173,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | barocco | Leonardo Vinci | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | **Lotto 8** |
 | barocco | Maria Teresa Agnesi | 1 | 0 | 0 | 1 | 0 | Accademie domestiche musicali della Milano settecentesca | catalogato | **Lotto 1** |
 | barocco | Marin Marais | 2 | 2 | 0 | 1 | 0 | Scuola francese della viola da gamba · Teatro musicale francese del Barocco | catalogato | **Lotto 2** |
-| barocco | Monsieur de Sainte-Colombe | 1 | 1 | 0 | 0 | 0 | Scuola francese della viola da gamba | catalogato | da avviare |
+| barocco | Monsieur de Sainte-Colombe | 1 | 1 | 0 | 0 | 0 | Scuola francese della viola da gamba | catalogato | **Lotto 10** |
 | barocco | Nicola Logroscino | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | **Lotto 8** |
 | barocco | Nicola Porpora | 1 | 1 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | **Lotto 8** |
 | barocco | Tomaso Albinoni | 1 | 0 | 0 | 0 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 5** |
@@ -186,16 +187,16 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | classicismo | Christoph Willibald Gluck | 1 | 0 | 3 | 3 | 0 | Riforma operistica del Settecento | catalogato | **Lotto 6** |
 | classicismo | Domenico Cimarosa | 1 | 1 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 6** |
 | classicismo | Egidio Duni | 0 | 0 | 0 | 0 | 1 | — | **RICERCA** | **Lotto 8** |
-| classicismo | Filippo Manfredi | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | da avviare |
+| classicismo | Filippo Manfredi | 0 | 1 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 10** |
 | classicismo | Franz Schubert | 1 | 1 | 1 | 0 | 0 | Lied romantico tedesco | catalogato | **Lotto 6** |
 | classicismo | Franz Xaver Richter | 1 | 0 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | **Lotto 8** |
 | classicismo | Giovanni Battista Sammartini | 1 | 0 | 1 | 0 | 0 | Sinfonismo italiano del primo Settecento | catalogato | **Lotto 8** |
 | classicismo | Giovanni Battista Viotti | 1 | 0 | 2 | 1 | 0 | Scuola del concerto violinistico italiano | catalogato | **Lotto 9** |
-| classicismo | Giovanni Giuseppe Cambini | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| classicismo | Giovanni Giuseppe Cambini | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | classicismo | Giovanni Paisiello | 1 | 1 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato | **Lotto 6** |
 | classicismo | Giovanni Simone Mayr | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
 | classicismo | Giuseppe Malerbi | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
-| classicismo | Giuseppe Sarti | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | da avviare |
+| classicismo | Giuseppe Sarti | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 10** |
 | classicismo | Johann Christian Bach | 1 | 3 | 1 | 0 | 0 | Stile galante ed empfindsamer Stil | catalogato | **Lotto 6** |
 | classicismo | Johann Georg Albrechtsberger | 2 | 1 | 0 | 0 | 0 | Tradizione contrappuntistica viennese settecentesca · Vita musicale viennese dell'Illuminismo | catalogato | **Lotto 2** |
 | classicismo | Johann Stamitz | 1 | 2 | 0 | 0 | 0 | Scuola di Mannheim | catalogato | **Lotto 6** |
@@ -209,7 +210,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | classicismo | Niccolò Piccinni | 2 | 0 | 0 | 1 | 1 | Riforma operistica del Settecento · Scuola operistica napoletana | catalogato | **Lotto 6** |
 | classicismo | Pietro Alessandro Guglielmi | 1 | 0 | 0 | 0 | 0 | Scuola operistica napoletana | catalogato | **Lotto 8** |
 | classicismo | Stanislao Mattei | 0 | 3 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
-| classicismo | Wolfgang Amadeus Mozart | 1 | 1 | 4 | 1 | 2 | Classicismo viennese (categoria storiografica) | catalogato | **Lotto 3** |
+| classicismo | Wolfgang Amadeus Mozart | 1 | 2 | 4 | 1 | 2 | Classicismo viennese (categoria storiografica) | catalogato | **Lotto 3** |
 | romanticismo | Aleksandr Borodin | 1 | 0 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
 | romanticismo | Ambroise Thomas | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
 | romanticismo | Antonín Dvořák | 1 | 1 | 2 | 1 | 0 | Scuola nazionale boema | catalogato | **Lotto 7** |
@@ -247,9 +248,9 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | romanticismo | Milij Balakirev | 1 | 3 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
 | romanticismo | Modest Musorgskij | 1 | 1 | 1 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
 | romanticismo | Niccolò Paganini | 1 | 1 | 4 | 0 | 0 | Virtuosismo e concerto romantico | catalogato | **Lotto 6** |
-| romanticismo | Nikolaj Rimskij-Korsakov | 1 | 3 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
+| romanticismo | Nikolaj Rimskij-Korsakov | 1 | 4 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
 | romanticismo | Pauline Viardot | 1 | 0 | 0 | 1 | 0 | Mélodie e musica da camera francese | catalogato | **Lotto 7** |
-| romanticismo | Pëtr Il'ič Čajkovskij | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
+| romanticismo | Pëtr Il'ič Čajkovskij | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 3** |
 | romanticismo | Pietro Mascagni | 1 | 1 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
 | romanticismo | Richard Strauss | 1 | 0 | 1 | 1 | 0 | Lied romantico tedesco | catalogato | **Lotto 7** |
 | romanticismo | Richard Wagner | 0 | 1 | 8 | 1 | 0 | — | **RICERCA** | **Lotto 3** |
