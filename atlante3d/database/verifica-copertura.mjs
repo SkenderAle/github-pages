@@ -29,7 +29,7 @@ const rows=graph.nodes.filter(n=>n.type==='compositore').map(n=>{
  const period=periods.find(p=>graph.edges.some(e=>e.source===n.id&&e.target===p))||'non-classificato';
  const schoolIds=matches.filter(r=>r.group==='scuole').map(r=>r.source===n.id?r.target:r.source);
  const schools=[...new Set(schoolIds)].map(id=>byID.get(id)?.label||id).sort((a,b)=>a.localeCompare(b,'it'));
- return {id:n.id,label:n.label,period,stats,schools,total:matches.length,scuole:stats.scuole,sourceUrls:matches.flatMap(x=>x.sources||[]).length,firstPassReviewed:Boolean(identitiesById.get(n.id)?.musicological_audit?.reviewed_on),externalIdentityVerified:Boolean(identitiesById.get(n.id)?.wikidata_id)};
+ return {id:n.id,label:n.label,period,stats,schools,total:matches.length,scuole:stats.scuole,sourceUrls:matches.flatMap(x=>x.sources||[]).length,firstPassReviewed:Boolean(identitiesById.get(n.id)?.musicological_audit?.reviewed_on),reviewBatch:identitiesById.get(n.id)?.musicological_audit?.batch||null,externalIdentityVerified:Boolean(identitiesById.get(n.id)?.wikidata_id)};
 }).sort((a,b)=>periods.indexOf(a.period)-periods.indexOf(b.period)||a.label.localeCompare(b.label,'it'));
 const nonMusicRoles=graph.nodes.filter(n=>n.type==='persona'&&n.music_relevance).map(n=>({id:n.id,label:n.label,role:n.semantic_type||'persona'}));
 const missing=rows.filter(row=>row.scuole===0);
@@ -61,7 +61,7 @@ else if(args.has('--markdown')){
  'Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sigla **RICERCA** segnala un compositore senza relazioni Scuole, anche se possiede relazioni in altre lenti.', '',
  '| Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato | Prima ricognizione |',
  '|---|---|---:|---:|---:|---:|---:|---|---|---|',
- ...rows.map(row=>'| '+esc(row.period)+' | '+esc(row.label)+' | '+row.stats.scuole+' | '+row.stats.formazione+' | '+row.stats.influenze+' | '+row.stats.collaborazioni+' | '+row.stats.genealogie+' | '+esc(row.schools.join(' · ')||'—')+' | '+(row.scuole?'catalogato':'**RICERCA**')+' | '+(row.firstPassReviewed?'**Lotto 1**':'da avviare')+' |'),
+ ...rows.map(row=>'| '+esc(row.period)+' | '+esc(row.label)+' | '+row.stats.scuole+' | '+row.stats.formazione+' | '+row.stats.influenze+' | '+row.stats.collaborazioni+' | '+row.stats.genealogie+' | '+esc(row.schools.join(' · ')||'—')+' | '+(row.scuole?'catalogato':'**RICERCA**')+' | '+(row.firstPassReviewed?'**'+({ 'primo-lotto-10':'Lotto 1','secondo-lotto-10':'Lotto 2','terzo-lotto-10':'Lotto 3' }[row.reviewBatch]||'Ricognizione')+'**':'da avviare')+' |'),
  '',
  '## Figure culturali non classificate come compositori', '',
  ...nonMusicRoles.map(n=>'- **'+n.label+'**: '+n.role.replace(/-/g,' ')+'.'),
