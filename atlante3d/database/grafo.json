@@ -5155,6 +5155,108 @@
         "sources": [],
         "method": "Identità da completare con verifica bibliografica delle grafie."
       }
+    },
+    {
+      "id": "persona-cosima-wagner",
+      "label": "Cosima Wagner",
+      "type": "persona",
+      "status": "catalogato",
+      "country": "Germania",
+      "description": "Figlia di Franz Liszt, moglie di Richard Wagner e direttrice del Festival di Bayreuth.",
+      "url": null,
+      "geo_focus": {
+        "lat": 49.95,
+        "lon": 11.58,
+        "span": 40,
+        "precision": "historical-center"
+      },
+      "aliases": [
+        "Cosima Liszt",
+        "Cosima von Bülow"
+      ],
+      "name_review": {
+        "status": "verificato",
+        "sources": [
+          "https://www.treccani.it/enciclopedia/cosima-wagner/"
+        ],
+        "method": "Scheda biografica di riferimento, grafie e rapporti documentati."
+      }
+    },
+    {
+      "id": "compositore-siegfried-wagner",
+      "label": "Siegfried Wagner",
+      "type": "compositore",
+      "status": "catalogato",
+      "country": "Germania",
+      "description": "Compositore e direttore d'orchestra (1869–1930), figlio di Richard e Cosima Wagner, alla guida del Festival di Bayreuth.",
+      "url": null,
+      "geo_focus": {
+        "lat": 49.95,
+        "lon": 11.58,
+        "span": 42,
+        "precision": "historical-center"
+      },
+      "aliases": [
+        "Siegfried Helferich Richard Wagner"
+      ],
+      "name_review": {
+        "status": "verificato",
+        "sources": [
+          "https://www.treccani.it/enciclopedia/siegfried-wagner/"
+        ],
+        "method": "Scheda biografica di riferimento, grafie e rapporti documentati."
+      }
+    },
+    {
+      "id": "compositore-leopold-mozart",
+      "label": "Leopold Mozart",
+      "type": "compositore",
+      "status": "catalogato",
+      "country": "Austria",
+      "description": "Violinista, compositore e didatta (1719–1787), padre e primo maestro di Wolfgang Amadeus Mozart.",
+      "url": null,
+      "geo_focus": {
+        "lat": 47.8,
+        "lon": 13.04,
+        "span": 40,
+        "precision": "historical-center"
+      },
+      "aliases": [
+        "Johann Georg Leopold Mozart"
+      ],
+      "name_review": {
+        "status": "verificato",
+        "sources": [
+          "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+        ],
+        "method": "Scheda biografica di riferimento, grafie e rapporti documentati."
+      }
+    },
+    {
+      "id": "persona-maria-anna-mozart",
+      "label": "Maria Anna Mozart",
+      "type": "persona",
+      "status": "catalogato",
+      "country": "Austria",
+      "description": "Maria Anna Walburga Ignatia Mozart (1751–1829), detta Nannerl, sorella maggiore di Wolfgang, clavicembalista e musicista.",
+      "url": null,
+      "geo_focus": {
+        "lat": 47.8,
+        "lon": 13.04,
+        "span": 40,
+        "precision": "historical-center"
+      },
+      "aliases": [
+        "Nannerl Mozart",
+        "Maria Anna Walburga Ignatia Mozart"
+      ],
+      "name_review": {
+        "status": "verificato",
+        "sources": [
+          "https://www.treccani.it/enciclopedia/wolfgang-amadeus-mozart_%28Enciclopedia-dei-ragazzi%29/"
+        ],
+        "method": "Scheda biografica di riferimento, grafie e rapporti documentati."
+      }
     }
   ],
   "edges": [
@@ -9215,6 +9317,30 @@
       "target": "geografia-italia",
       "kind": "ambito-geografico",
       "weight": 0.9
+    },
+    {
+      "source": "compositore-siegfried-wagner",
+      "target": "post-romanticismo",
+      "kind": "appartenenza",
+      "weight": 1.6
+    },
+    {
+      "source": "compositore-siegfried-wagner",
+      "target": "geografia-germania",
+      "kind": "ambito-geografico",
+      "weight": 0.9
+    },
+    {
+      "source": "compositore-leopold-mozart",
+      "target": "classicismo",
+      "kind": "appartenenza",
+      "weight": 1.6
+    },
+    {
+      "source": "compositore-leopold-mozart",
+      "target": "geografia-austria",
+      "kind": "ambito-geografico",
+      "weight": 0.9
     }
   ],
   "videos": [],
@@ -9252,5 +9378,10 @@
     "removedAutomaticAssociations": 145,
     "removedDuplicatePairs": 3,
     "convention": "Una sfera rimane collegata soltanto al primo livello; le relazioni tra epoche e correnti non rendono automaticamente equivalenti le loro appartenenze."
+  },
+  "lens_revision": {
+    "date": "2026-10-06",
+    "relationship_file": "database/relazioni.json",
+    "notes": "Cosima e Nannerl sono persone collegate da lenti di storia familiare, non classificate come compositrici nel grafo ordinario; Siegfried e Leopold sono compositori catalogati con fonti."
   }
 }
