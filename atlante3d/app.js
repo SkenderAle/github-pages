@@ -255,8 +255,8 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   const touchesGeo=a.node.type==="geografia"||b.node.type==="geografia";
   // I Paesi rimangono navigabili, non diventano una rete geografica autonoma.
   if(touchesGeo&&!direct)continue;
-  ctx.globalAlpha=selected?(direct?.92:.025):.16;
-  ctx.lineWidth=direct?1.75:.7;
+  ctx.globalAlpha=selected?(direct?.94:(showAllLabels?.19:.025)):(showAllLabels?.27:.16);
+  ctx.lineWidth=direct?1.75:(showAllLabels?1.05:.7);
   if(direct){
     const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
     path.addColorStop(0,"#ffe7b0");path.addColorStop(.5,"#c2e9fc");path.addColorStop(1,"#e4bedf");
@@ -280,7 +280,7 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  for(const p of drawable){
   const n=p.node,related=selected&&neighbors.has(n.id);
   const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&matchesSearch(n,searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
-  ctx.globalAlpha=n.type==="geografia"?1:(selected&&!related&&!highlight?.085:1);
+  ctx.globalAlpha=n.type==="geografia"?1:(selected&&!related&&!highlight?(showAllLabels?.33:.085):1);
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=rad;
   if(n.type==="geografia"&&p.offMap){
@@ -289,12 +289,12 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
    ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
   }
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
-  const isLabel=n.type==="geografia"||selected?Boolean(related||n.type==="geografia"):(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4);
+  const isLabel=n.type==="geografia"||showAllLabels||Boolean(selected?related:(highlight||n.type==="periodo"&&p.scale>.4));
   if(isLabel){
    ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
    ctx.strokeStyle="#071321";ctx.strokeText(n.label,p.x,p.y-rad-9);
-   ctx.fillStyle=highlight?"#fff4d9":"rgba(240,242,247,.95)";
+   ctx.fillStyle=highlight?"#fff4d9":(selected&&!related?"rgba(240,242,247,.68)":"rgba(240,242,247,.95)");
    ctx.fillText(n.label+(n.type==="geografia"&&p.offMap?" ↗":""),p.x,p.y-rad-9);
   }
  }
