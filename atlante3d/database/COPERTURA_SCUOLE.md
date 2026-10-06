@@ -5,9 +5,9 @@
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
 - Compositori censiti: **288**.
-- Senza legami di scuola o tradizione: **66**.
+- Senza legami di scuola o tradizione: **59**.
 - Senza relazioni specialistiche di alcun tipo: **0**.
-- Relazioni nella lente Scuole e tradizioni: **276**.
+- Relazioni nella lente Scuole e tradizioni: **283**.
 - Prime ricognizioni registrate per nome: **288** su 288 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
 - Sesto lotto: **40** biografie censite con almeno una fonte, di cui **31** con nuove relazioni e **9** con prima verifica biografica ma relazioni da approfondire.
@@ -22,6 +22,7 @@
 - Seconda fase, terzo gruppo: **4** nuove relazioni per Martini, Ponchielli e Halévy (tre scuole, una genealogia), con fonti Treccani e BnF.
 - Seconda fase, quarto gruppo: **7** nuove relazioni di scuola (Mattei, Weber, Wagner, Britten, Schaeffer, Henry, Durante), con nodo autonomo per la didattica napoletana del partimento.
 - Seconda fase, quinto gruppo: **7** relazioni di scuola, con due nuovi nodi per Scapigliatura milanese e La Jeune France del 1936.
+- Seconda fase, sesto gruppo: **7** relazioni verificate di scuole e tradizioni, senza nuovi nodi, distinguendo formazione istituzionale, linguaggio sperimentale e teatro francese.
 - Identità Wikidata riconciliate: **19** su 288.
 
 ## Copertura per epoca
@@ -219,7 +220,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | classicismo | Stanislao Mattei | 1 | 3 | 0 | 0 | 0 | Scuola bolognese di contrappunto | catalogato | **Lotto 9** |
 | classicismo | Wolfgang Amadeus Mozart | 1 | 2 | 4 | 1 | 2 | Classicismo viennese (categoria storiografica) | catalogato | **Lotto 3** |
 | romanticismo | Aleksandr Borodin | 1 | 0 | 0 | 0 | 0 | Gruppo dei Cinque russo | catalogato | **Lotto 7** |
-| romanticismo | Ambroise Thomas | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
+| romanticismo | Ambroise Thomas | 1 | 1 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 9** |
 | romanticismo | Antonín Dvořák | 1 | 1 | 2 | 1 | 0 | Scuola nazionale boema | catalogato | **Lotto 7** |
 | romanticismo | Arrigo Boito | 1 | 0 | 0 | 1 | 0 | Scapigliatura milanese | catalogato | **Lotto 6** |
 | romanticismo | Bedřich Smetana | 1 | 0 | 0 | 0 | 0 | Scuola nazionale boema | catalogato | **Lotto 7** |
@@ -237,7 +238,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | romanticismo | Frédéric Chopin | 1 | 2 | 0 | 0 | 0 | Pianismo e composizione romantica | catalogato | **Lotto 3** |
 | romanticismo | Gabriel Fauré | 1 | 4 | 0 | 0 | 0 | Mélodie e musica da camera francese | catalogato | **Lotto 7** |
 | romanticismo | Gaetano Donizetti | 1 | 2 | 2 | 2 | 5 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
-| romanticismo | Gaspare Spontini | 0 | 0 | 1 | 0 | 1 | — | **RICERCA** | **Lotto 9** |
+| romanticismo | Gaspare Spontini | 1 | 0 | 1 | 0 | 1 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 9** |
 | romanticismo | Georges Bizet | 1 | 1 | 0 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 7** |
 | romanticismo | Giacomo Meyerbeer | 1 | 0 | 1 | 0 | 1 | Teatro musicale francese dell'Ottocento | catalogato | **Lotto 9** |
 | romanticismo | Giacomo Puccini | 1 | 1 | 0 | 1 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato | **Lotto 6** |
@@ -272,7 +273,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | post-romanticismo | Siegfried Wagner | 0 | 0 | 1 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
 | novecento | Aaron Copland | 0 | 2 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Alban Berg | 1 | 1 | 0 | 0 | 1 | Seconda scuola di Vienna | catalogato | **Lotto 7** |
-| novecento | Aleksandr Skrjabin | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
+| novecento | Aleksandr Skrjabin | 1 | 1 | 0 | 0 | 0 | Tradizione compositiva del Conservatorio di Mosca | catalogato | **Lotto 4** |
 | novecento | Alfredo Casella | 1 | 1 | 0 | 0 | 0 | Generazione italiana del 1880 | catalogato | **Lotto 7** |
 | novecento | Anton Webern | 1 | 1 | 2 | 0 | 1 | Seconda scuola di Vienna | catalogato | **Lotto 7** |
 | novecento | Arnold Schönberg | 1 | 4 | 1 | 0 | 1 | Seconda scuola di Vienna | catalogato | **Lotto 7** |
@@ -284,7 +285,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Charles Ives | 0 | 1 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 7** |
 | novecento | Claude Debussy | 1 | 0 | 1 | 1 | 0 | Modernità francese del primo Novecento | catalogato | **Lotto 7** |
 | novecento | Darius Milhaud | 1 | 4 | 0 | 0 | 0 | Les Six | catalogato | **Lotto 7** |
-| novecento | Dmitrij Šostakovič | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
+| novecento | Dmitrij Šostakovič | 1 | 1 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato | **Lotto 4** |
 | novecento | Duke Ellington | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Edgard Varèse | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
 | novecento | Erik Satie | 1 | 0 | 2 | 1 | 0 | Modernità francese del primo Novecento | catalogato | **Lotto 7** |
@@ -303,7 +304,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Henryk Górecki | 1 | 0 | 0 | 0 | 0 | Nuova musica polacca dopo il 1956 | catalogato | **Lotto 8** |
 | novecento | Igor Stravinskij | 2 | 1 | 3 | 1 | 1 | Gruppo dei Cinque russo · Ripresa del contrappunto e neobarocco | catalogato | **Lotto 7** |
 | novecento | John Adams | 1 | 0 | 1 | 0 | 0 | Minimalismo | catalogato | **Lotto 9** |
-| novecento | John Cage | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
+| novecento | John Cage | 1 | 1 | 0 | 0 | 0 | Sperimentazione americana e indeterminazione | catalogato | **Lotto 4** |
 | novecento | Josef Suk (1874–1935) | 1 | 1 | 1 | 0 | 0 | Scuola nazionale boema | catalogato | **Lotto 9** |
 | novecento | Karlheinz Stockhausen | 1 | 1 | 0 | 0 | 0 | Darmstadt: corsi e avanguardie | catalogato | **Lotto 8** |
 | novecento | Krzysztof Penderecki | 1 | 0 | 0 | 0 | 0 | Nuova musica polacca dopo il 1956 | catalogato | **Lotto 8** |
@@ -325,8 +326,8 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Pierre Boulez | 1 | 3 | 1 | 2 | 0 | Darmstadt: corsi e avanguardie | catalogato | **Lotto 7** |
 | novecento | Pierre Henry | 1 | 2 | 0 | 1 | 1 | Musica concreta | catalogato | **Lotto 9** |
 | novecento | Pierre Schaeffer | 1 | 0 | 0 | 2 | 1 | Musica concreta | catalogato | **Lotto 9** |
-| novecento | Sergej Prokof'ev | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
-| novecento | Sergej Rachmaninov | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
+| novecento | Sergej Prokof'ev | 1 | 1 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato | **Lotto 4** |
+| novecento | Sergej Rachmaninov | 1 | 1 | 0 | 0 | 0 | Tradizione compositiva del Conservatorio di Mosca | catalogato | **Lotto 4** |
 | novecento | Steve Reich | 1 | 2 | 2 | 1 | 1 | Minimalismo | catalogato | **Lotto 8** |
 | novecento | Terry Riley | 1 | 0 | 0 | 0 | 1 | Minimalismo | catalogato | **Lotto 9** |
 | novecento | Witold Lutosławski | 1 | 0 | 0 | 0 | 0 | Nuova musica polacca dopo il 1956 | catalogato | **Lotto 8** |
