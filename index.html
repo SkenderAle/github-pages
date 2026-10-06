@@ -28,10 +28,63 @@
 .construction-links a:hover,.construction-links a:focus{background:#2b241d;color:#fff}
 @media(max-width:800px){.compact-construction{grid-template-columns:1fr;gap:1rem}}
 @media(max-width:540px){.compact-construction{padding:1.45rem 1.35rem}.construction-links a{font-size:.7rem}}
+
+/* Musurgia Mundi: accesso principale fra l'indice vivo e le pagine in preparazione */
+.musurgia-feature{
+ max-width:none;margin:0;padding:clamp(2.8rem,5vw,4.5rem) max(1.35rem,calc((100vw - 1180px)/2));
+ color:#f6e8d0;background:radial-gradient(ellipse at 85% 44%,#2b3e4d 0%,#172433 35%,#141b24 66%,#181611 100%);
+ border-top:1px solid #a78b604f;border-bottom:3px solid #bd9455;
+}
+.musurgia-content{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr);align-items:center;gap:clamp(2rem,5vw,5rem);max-width:1180px;margin:auto}
+.musurgia-copy .eyebrow{color:#d9b982}
+.musurgia-copy h2{font-size:clamp(3.2rem,6vw,5.3rem);font-weight:400;letter-spacing:.015em;line-height:1.04;margin:.45rem 0 0;color:#fae6bc}
+.musurgia-subtitle{font-size:clamp(1.35rem,2.5vw,2rem);font-style:italic;color:#e5c99c;margin:0 0 1.4rem}
+.musurgia-copy p:not(.musurgia-subtitle){font-size:1.04rem;line-height:1.75;max-width:720px;color:#e4d9c7;margin:.7rem 0 1rem}
+.musurgia-copy strong{color:#ffdea0}
+.musurgia-enter{display:inline-flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:1.2rem;padding:1rem 1.35rem;border:1px solid #e8c68b;border-radius:7px;background:#e3bc79;color:#211b16;text-decoration:none;font:800 .9rem/1.2 var(--sans);box-shadow:0 10px 28px #0005;transition:background .2s,transform .2s,box-shadow .2s}
+.musurgia-enter:hover,.musurgia-enter:focus-visible{background:#ffe0a5;transform:translateY(-2px);box-shadow:0 12px 30px #0007}
+.musurgia-enter span{font-size:1.25rem}
+.musurgia-visual{position:relative;display:block;width:100%;aspect-ratio:1;max-width:385px;margin:auto;border-radius:50%;background:radial-gradient(circle at 52% 51%,#36516c50 0%,#18283b62 37%,#101c2a05 65%);overflow:hidden;text-decoration:none;color:#e8d5ad}
+.musurgia-orbit{position:absolute;inset:13%;border:1px solid #c7ab7760;border-radius:50%;transform:rotate(-21deg) scaleY(.6)}
+.musurgia-orbit.orbit-two{inset:8%;transform:rotate(42deg) scaleY(.42);border-color:#8bbacb94}
+.musurgia-orbit.orbit-three{inset:20%;transform:rotate(86deg) scaleY(.76);border-color:#c7a8ce7a}
+.musurgia-sphere{position:absolute;display:block;width:13%;aspect-ratio:1;border-radius:50%;box-shadow:inset -8px -10px 14px #030b1d66,inset 5px 5px 12px #fff8,0 2px 16px #0008;background:radial-gradient(circle at 35% 25%,#fff0c9,#dba260 45%,#855c4a 85%);transition:transform .3s}
+.musurgia-sphere.ms-center{width:22%;left:41%;top:38%;background:radial-gradient(circle at 35% 23%,#fff1c2,#d2a360 49%,#825b53 85%)}
+.ms-a{left:15%;top:27%;background:radial-gradient(circle at 35% 25%,#e9f9fa,#8ac7d6 48%,#356678 85%)}
+.ms-b{right:12%;top:15%;background:radial-gradient(circle at 35% 25%,#f5e9fa,#bd94cd 48%,#624671 85%)}
+.ms-c{left:25%;bottom:20%;background:radial-gradient(circle at 35% 25%,#fce7eb,#db91a4 48%,#823e50 85%)}
+.ms-d{right:16%;bottom:23%;background:radial-gradient(circle at 35% 25%,#e7f5e4,#8ac19e 48%,#456b57 85%)}
+.musurgia-visual:hover .musurgia-sphere{transform:scale(1.08)}
+.musurgia-visual-caption{position:absolute;left:0;right:0;bottom:1%;text-align:center;color:#dfc99e;font:650 .68rem var(--sans);letter-spacing:.11em;text-transform:uppercase}
+@media(max-width:850px){.musurgia-content{grid-template-columns:1fr}.musurgia-visual{max-width:300px;aspect-ratio:1;margin-top:0}}
+@media(max-width:520px){.musurgia-feature{padding:2.3rem 1.35rem}.musurgia-copy h2{font-size:clamp(2.9rem,10vw,4.1rem)}.musurgia-copy p:not(.musurgia-subtitle){font-size:1rem}.musurgia-visual{max-width:230px}.musurgia-enter{width:100%}}
+@media(prefers-reduced-motion:reduce){.musurgia-enter,.musurgia-sphere{transition:none}}
 </style></head><body>
 <header class="hero" id="inizio"><div class="panels" aria-hidden="true"><div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div><div class="panel"></div></div><div class="hero-copy"><div class="kicker">Alessandro Zilli · laboratorio di storia della musica</div><h1>La musica non sta in fila.</h1><p>Un atlante da attraversare, nel quale epoche, strumenti, parole, immagini, partiture e ascolti si incontrano su più livelli. Dal Medioevo alle avanguardie del Novecento, la cronologia esiste, ma non è l’unico modo di entrare nella storia.</p><p style="font-size:1rem;font-style:italic;color:#e1c183;margin-top:1.4rem">«Alcune stanze sono già aperte, altre stanno ancora prendendo forma.»<br><span style="font-family:var(--sans);font-style:normal;font-size:.76rem;letter-spacing:.08em">— Alessandro Zilli</span></p></div></header>
-<div class="nav"><nav class="navin"><a href="#progetto">Il progetto</a><a href="#livelli">Come si legge</a><a href="#atlante">Atlante</a><a href="#esperienza">Come funziona</a><a href="#autore">L’autore</a><a href="#crediti">Crediti</a><span class="nav-break" aria-hidden="true"></span><a href="./medioevo/">Medioevo</a><a href="./rinascimento/">Rinascimento</a><a href="./barocco/">Barocco</a><a href="./melodramma/">Melodramma</a><a href="./classicismo/">Classicismo</a><a class="under" href="./teatro-classico/">Teatro classico · IN COSTRUZIONE</a><a class="under" href="./romanticismo/">Romanticismo · IN COSTRUZIONE</a><a href="./risorgimento/">Risorgimento</a><a class="under" href="./opera-lirica/">Opera lirica · IN COSTRUZIONE</a><a class="under" href="./post-romanticismo/">Post-romanticismo · IN COSTRUZIONE</a><a class="under" href="./novecento/">Novecento · IN COSTRUZIONE</a><a class="under" href="./avanguardie/">Avanguardie · IN COSTRUZIONE</a></nav></div>
-<main><div class="constellation-wrap" id="atlante"><div class="eyebrow">Indice vivo</div><h2>Entra da dove vuoi.</h2><p>Le grandi bolle aprono i percorsi. Quelle piccole mostrano parole e idee che li attraversano. L’ordine cambia perché anche i collegamenti cambiano a seconda di dove si comincia.</p><p class="atlas-note"><b>Qui convivono epoche, generi e contesti storici.</b> Rinascimento, Barocco e Classicismo non sono categorie dello stesso tipo di Melodramma o Risorgimento, e non vogliono esserlo: la storia della musica cambia aspetto secondo la domanda con cui la attraversiamo. Le bolle colorate indicano i percorsi già aperti. Le voci tratteggiate conducono invece a pagine già predisposte ma ancora <b>in costruzione</b>.</p><div class="static-index" aria-label="Indice testuale stabile"><a href="./medioevo/">Medioevo</a><a href="./rinascimento/">Rinascimento</a><a href="./barocco/">Barocco</a><a href="./melodramma/">Melodramma</a><a href="./classicismo/">Classicismo</a><a class="future-chip" href="./teatro-classico/">Teatro classico · IN COSTRUZIONE</a><a class="future-chip" href="./romanticismo/">Romanticismo · IN COSTRUZIONE</a><a href="./risorgimento/">Risorgimento</a><a class="future-chip" href="./opera-lirica/">Opera lirica · IN COSTRUZIONE</a><a class="future-chip" href="./post-romanticismo/">Post-romanticismo · IN COSTRUZIONE</a><a class="future-chip" href="./novecento/">Novecento · IN COSTRUZIONE</a><a class="future-chip" href="./avanguardie/">Avanguardie · IN COSTRUZIONE</a></div><div class="constellation" id="constellation" aria-label="Indice dinamico dei percorsi"></div></div><section id="cantieri" class="construction compact-construction">
+<div class="nav"><nav class="navin"><a href="#progetto">Il progetto</a><a href="#livelli">Come si legge</a><a href="#atlante">Atlante</a><a href="#musurgia">Musurgia Mundi</a><a href="#esperienza">Come funziona</a><a href="#autore">L’autore</a><a href="#crediti">Crediti</a><span class="nav-break" aria-hidden="true"></span><a href="./medioevo/">Medioevo</a><a href="./rinascimento/">Rinascimento</a><a href="./barocco/">Barocco</a><a href="./melodramma/">Melodramma</a><a href="./classicismo/">Classicismo</a><a class="under" href="./teatro-classico/">Teatro classico · IN COSTRUZIONE</a><a class="under" href="./romanticismo/">Romanticismo · IN COSTRUZIONE</a><a href="./risorgimento/">Risorgimento</a><a class="under" href="./opera-lirica/">Opera lirica · IN COSTRUZIONE</a><a class="under" href="./post-romanticismo/">Post-romanticismo · IN COSTRUZIONE</a><a class="under" href="./novecento/">Novecento · IN COSTRUZIONE</a><a class="under" href="./avanguardie/">Avanguardie · IN COSTRUZIONE</a></nav></div>
+<main><div class="constellation-wrap" id="atlante"><div class="eyebrow">Indice vivo</div><h2>Entra da dove vuoi.</h2><p>Le grandi bolle aprono i percorsi. Quelle piccole mostrano parole e idee che li attraversano. L’ordine cambia perché anche i collegamenti cambiano a seconda di dove si comincia.</p><p class="atlas-note"><b>Qui convivono epoche, generi e contesti storici.</b> Rinascimento, Barocco e Classicismo non sono categorie dello stesso tipo di Melodramma o Risorgimento, e non vogliono esserlo: la storia della musica cambia aspetto secondo la domanda con cui la attraversiamo. Le bolle colorate indicano i percorsi già aperti. Le voci tratteggiate conducono invece a pagine già predisposte ma ancora <b>in costruzione</b>.</p><div class="static-index" aria-label="Indice testuale stabile"><a href="./medioevo/">Medioevo</a><a href="./rinascimento/">Rinascimento</a><a href="./barocco/">Barocco</a><a href="./melodramma/">Melodramma</a><a href="./classicismo/">Classicismo</a><a class="future-chip" href="./teatro-classico/">Teatro classico · IN COSTRUZIONE</a><a class="future-chip" href="./romanticismo/">Romanticismo · IN COSTRUZIONE</a><a href="./risorgimento/">Risorgimento</a><a class="future-chip" href="./opera-lirica/">Opera lirica · IN COSTRUZIONE</a><a class="future-chip" href="./post-romanticismo/">Post-romanticismo · IN COSTRUZIONE</a><a class="future-chip" href="./novecento/">Novecento · IN COSTRUZIONE</a><a class="future-chip" href="./avanguardie/">Avanguardie · IN COSTRUZIONE</a></div><div class="constellation" id="constellation" aria-label="Indice dinamico dei percorsi"></div></div><section id="musurgia" class="musurgia-feature" aria-labelledby="musurgia-title">
+  <div class="musurgia-content">
+    <div class="musurgia-copy">
+      <div class="eyebrow">Un altro modo di attraversare l’Atlante</div>
+      <h2 id="musurgia-title">Musurgia Mundi</h2>
+      <p class="musurgia-subtitle">La costellazione Musica</p>
+      <p>La storia della musica non è soltanto una successione di epoche e di nomi. È una trama di incontri, viaggi, scuole, idee e linguaggi che si trasformano attraversando i secoli e i confini. <strong>Musurgia Mundi</strong> rende visibile questa rete: ogni sfera può diventare il centro provvisorio di una costellazione di compositori, correnti, periodi e ascolti.</p>
+      <p>Una cartografia del mondo accompagna l’esplorazione, mentre i collegamenti conducono alle pagine dell’Atlante, alle fonti e ai brani musicali. Non occorre seguire un ordine prestabilito: basta scegliere un nome, un luogo o un’idea e lasciarsi guidare dalle relazioni.</p>
+      <a class="musurgia-enter" href="./atlante3d/" aria-label="Entra in Musurgia Mundi, la costellazione Musica">Esplora Musurgia Mundi <span aria-hidden="true">↗</span></a>
+    </div>
+    <a class="musurgia-visual" href="./atlante3d/" aria-label="Apri la costellazione interattiva Musurgia Mundi">
+      <span class="musurgia-orbit orbit-one" aria-hidden="true"></span>
+      <span class="musurgia-orbit orbit-two" aria-hidden="true"></span>
+      <span class="musurgia-orbit orbit-three" aria-hidden="true"></span>
+      <span class="musurgia-sphere ms-center" aria-hidden="true"></span>
+      <span class="musurgia-sphere ms-a" aria-hidden="true"></span>
+      <span class="musurgia-sphere ms-b" aria-hidden="true"></span>
+      <span class="musurgia-sphere ms-c" aria-hidden="true"></span>
+      <span class="musurgia-sphere ms-d" aria-hidden="true"></span>
+      <span class="musurgia-visual-caption">Persone · epoche · luoghi · ascolti</span>
+    </a>
+  </div>
+</section><section id="cantieri" class="construction compact-construction">
 <div class="construction-compact-copy">
   <div class="eyebrow">Prossimamente nell’Atlante</div>
   <h2>Le prossime stanze arriveranno.</h2>
