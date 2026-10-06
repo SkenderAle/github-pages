@@ -671,10 +671,10 @@
     {
       "id": "compositore-ottaviano-petrucci",
       "label": "Ottaviano Petrucci",
-      "type": "compositore",
+      "type": "persona",
       "status": "catalogato",
       "country": "Italia",
-      "description": "Inquadramento orientativo da verificare e integrare con fonti",
+      "description": "Ottaviano Petrucci fu stampatore ed editore musicale, non compositore. Dal 1501 la sua tipografia rese disponibili raccolte polifoniche e libri di frottole e intavolature, contribuendo alla circolazione europea dei repertori.",
       "url": null,
       "geo_focus": {
         "lat": 42.8,
@@ -687,7 +687,12 @@
         "status": "da-verificare",
         "sources": [],
         "method": "Verificare grafie storiche, nomi originali, eventuali forme anglicizzate e italianizzate prima di ampliare la scheda."
-      }
+      },
+      "music_relevance": true,
+      "semantic_type": "stampatore-editore-musicale",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/ottaviano-petrucci/"
+      ]
     },
     {
       "id": "compositore-girolamo-frescobaldi",
@@ -2329,10 +2334,10 @@
     {
       "id": "compositore-goffredo-mameli",
       "label": "Goffredo Mameli",
-      "type": "compositore",
+      "type": "persona",
       "status": "catalogato",
       "country": "Italia",
-      "description": "Inquadramento orientativo da verificare e integrare con fonti",
+      "description": "Goffredo Mameli fu poeta e patriota, autore dei testi del Canto degli Italiani (musicato da Michele Novaro nel 1847) e dell'Inno militare (musicato da Giuseppe Verdi). Non era un compositore.",
       "url": null,
       "geo_focus": {
         "lat": 42.8,
@@ -2345,7 +2350,12 @@
         "status": "da-verificare",
         "sources": [],
         "method": "Verificare grafie storiche, nomi originali, eventuali forme anglicizzate e italianizzate prima di ampliare la scheda."
-      }
+      },
+      "music_relevance": true,
+      "semantic_type": "poeta-patriota",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/goffredo-mameli_%28L%27Unificazione%29/"
+      ]
     },
     {
       "id": "compositore-michele-novaro",
@@ -6440,6 +6450,24 @@
           "https://www.treccani.it/enciclopedia/paul-vincent-d-indy_%28Enciclopedia-Italiana%29/"
         ],
         "method": "Identità e grafie dal repertorio enciclopedico Treccani."
+      }
+    },
+    {
+      "id": "stampa-musicale-rinascimentale",
+      "label": "Stampa musicale rinascimentale",
+      "type": "corrente",
+      "status": "catalogato",
+      "semantic_type": "tecnologia-di-diffusione",
+      "description": "Tecnologia della stampa musicale nei primi decenni del Cinquecento: Ottaviano Petrucci pubblicò a Venezia l'Odhecaton (1501) e numerose raccolte di frottole, messe e intavolature, contribuendo alla circolazione internazionale di opere e pratiche musicali.",
+      "url": null,
+      "sources": [
+        "https://www.treccani.it/enciclopedia/ottaviano-petrucci/"
+      ],
+      "geo_focus": {
+        "lat": 45.44,
+        "lon": 12.33,
+        "span": 43,
+        "precision": "thematic-or-biographical"
       }
     }
   ],
@@ -11317,6 +11345,24 @@
       "target": "geografia-francia",
       "kind": "ambito-geografico",
       "weight": 0.9
+    },
+    {
+      "source": "stampa-musicale-rinascimentale",
+      "target": "rinascimento",
+      "kind": "innovazione-tecnologica-nel-periodo",
+      "weight": 1.4
+    },
+    {
+      "source": "stampa-musicale-rinascimentale",
+      "target": "geografia-italia",
+      "kind": "ambito-geografico",
+      "weight": 0.9
+    },
+    {
+      "source": "compositore-ottaviano-petrucci",
+      "target": "stampa-musicale-rinascimentale",
+      "kind": "innovatore-della-stampa-musicale",
+      "weight": 2
     }
   ],
   "videos": [],
