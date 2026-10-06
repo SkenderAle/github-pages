@@ -291,17 +291,17 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   }
  }
  const map=new Map(screen.map(p=>[p.node.id,p]));
- const neighbors=new Set(),activeEdges=currentEdges();lineHits=[];
- if(selected){neighbors.add(selected.id);for(const e of activeEdges){if(e.source===selected.id)neighbors.add(e.target);if(e.target===selected.id)neighbors.add(e.source);}}
+ const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||(activeLens!=="musica"?hover:null);lineHits=[];
+ if(lensFocus){neighbors.add(lensFocus.id);for(const e of activeEdges){if(e.source===lensFocus.id)neighbors.add(e.target);if(e.target===lensFocus.id)neighbors.add(e.source);}}
  for(const e of activeEdges){
   const a=map.get(e.source),b=map.get(e.target);
   if(!a||!b||a.depth< -14||b.depth< -14||!visibleNode(a.node)||!visibleNode(b.node))continue;
-  const direct=!!selected&&(e.source===selected.id||e.target===selected.id);
+  const direct=!!lensFocus&&(e.source===lensFocus.id||e.target===lensFocus.id);
   const touchesGeo=a.node.type==="geografia"||b.node.type==="geografia";
   // I Paesi rimangono navigabili, non diventano una rete geografica autonoma.
   if(touchesGeo&&!direct)continue;
   if(activeLens!=="musica"&&!direct)continue;
-  ctx.globalAlpha=selected?(direct?.94:(showAllLabels?.19:.025)):(activeLens==="musica"?(showAllLabels?.27:.16):0);
+  ctx.globalAlpha=lensFocus?(direct?.94:(showAllLabels?.19:.025)):(activeLens==="musica"?(showAllLabels?.27:.16):0);
   ctx.lineWidth=direct?(activeLens==="musica"?1.75:2.8):(showAllLabels?1.05:.7);
   if(direct){
     const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
@@ -349,7 +349,7 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
    ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
   }
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
-  const isLabel=n.type==="geografia"||Boolean(selected?(related||(showAllLabels&&activeLens==="musica")):(activeLens==="musica"&&(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4)));
+  const isLabel=n.type==="geografia"||Boolean(lensFocus?(neighbors.has(n.id)||(showAllLabels&&activeLens==="musica")):(activeLens==="musica"&&(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4)));
   if(isLabel){
    ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
