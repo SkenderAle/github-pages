@@ -305,7 +305,7 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  screen=nodes.map(n=>{let p=n.type==="geografia"?(geoScreenPoint(n)||sxworld(n)):sxworld(n);p.node=n;p.r=n.type==="geografia"?15:clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n&&n.type!=="geografia"){p.x=drag.x;p.y=drag.y;}return p;});
  positionGeoMarkers(screen);
  if(activeLens!=="musica"&&selected){
-  // Costellazione locale della lente: portiamo i parenti e gli interlocutori
+  // Costellazione locale della lente: portiamo scuole e interlocutori
   // attorno al protagonista senza alterare le coordinate musicali del database.
   const center=screen.find(p=>p.node===selected);
   const related=linked(selected).filter(row=>row.n.type!=="geografia");
@@ -346,7 +346,7 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
   if(direct&&activeLens!=="musica"){
    lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
-   if(e.group==="influenze"||e.group==="formazione"||e.group==="genealogie"){
+   if(e.group==="influenze"||e.group==="formazione"||e.group==="genealogie"||e.group==="scuole"){
     // Freccia: da chi insegna/influenza verso chi apprende/raccoglie l'eredità.
     const t=.77,q=1-t,px=q*q*a.x+2*q*t*cx+t*t*b.x,py=q*q*a.y+2*q*t*cy+t*t*b.y;
     const dx=2*q*(cx-a.x)+2*t*(b.x-cx),dy=2*q*(cy-a.y)+2*t*(b.y-cy);
@@ -414,7 +414,7 @@ function populate(n){
  const conn=linked(n);
  const lensIntro=document.createElement("section");lensIntro.className="lens-panel-intro";
  const lensTitle=document.createElement("strong");lensTitle.textContent="Lente: "+(lensSelect?.selectedOptions[0]?.textContent||"Storia musicale");
- const lensP=document.createElement("p");lensP.textContent=activeLens==="musica"?"La costellazione storico-musicale è attiva. Le lenti permettono di seguire parentele, formazione, influenze, incontri e genealogie dei generi.":(lensGroups.find(g=>g.id===activeLens)?.description||"Relazioni documentate.");
+ const lensP=document.createElement("p");lensP.textContent=activeLens==="musica"?"La costellazione storico-musicale è attiva. Le lenti permettono di seguire scuole compositive, maestri, influenze, incontri e genealogie dei generi.":(lensGroups.find(g=>g.id===activeLens)?.description||"Relazioni documentate.");
  lensIntro.append(lensTitle,lensP);dst.append(lensIntro);
  // Un'anteprima quantitativa segnala subito dove esistono legami documentati.
  // Evita che chi seleziona una lente ancora vuota interpreti lo zero come un fatto storico.
@@ -422,7 +422,7 @@ function populate(n){
   const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";
   shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
   const options=[{id:"musica",label:"Storia",count:edges.filter(e=>e.source===n.id||e.target===n.id).length},
-   ...lensGroups.map(g=>({id:g.id,label:g.id==="famiglia"?"Famiglia":g.id==="formazione"?"Maestri":g.id==="influenze"?"Influenze":g.id==="collaborazioni"?"Incontri":g.id==="genealogie"?"Generi":g.label,
+   ...lensGroups.map(g=>({id:g.id,label:g.id==="scuole"?"Scuole":g.id==="formazione"?"Maestri":g.id==="influenze"?"Influenze":g.id==="collaborazioni"?"Incontri":g.id==="genealogie"?"Generi":g.label,
     count:lensEdges.filter(e=>e.group===g.id&&(e.source===n.id||e.target===n.id)).length}))];
   for(const option of options){
    const button=document.createElement("button");button.type="button";
@@ -498,7 +498,7 @@ function hit(pt){
  return null;
 }
 canvas.addEventListener("pointerdown",e=>{if(e.button!==0)return;let pt=pointer(e),p=hit(pt);drag={node:p?.node?.type==="geografia"?null:p?.node||null,geoNode:p?.node?.type==="geografia"?p.node:null,relation:p?null:lineHit(pt),x:pt.x,y:pt.y,depth:p?.depth||0,lastX:pt.x,lastY:pt.y,offsetX:p?p.x-pt.x:0,offsetY:p?p.y-pt.y:0,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");});
-canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hit(pt)?.node||null;const e=!hover?lineHit(pt):null;canvas.style.cursor=hover||e?"pointer":"grab";if(relationTooltip){relationTooltip.hidden=!e;if(e){relationTooltip.textContent=e.a.label+(["influenze","formazione","genealogie"].includes(e.edge.group)?" → ":" ↔ ")+e.b.label+" · Clicca per conoscere il rapporto";relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-265))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-65))+"px";}}return;}
+canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hit(pt)?.node||null;const e=!hover?lineHit(pt):null;canvas.style.cursor=hover||e?"pointer":"grab";if(relationTooltip){relationTooltip.hidden=!e;if(e){relationTooltip.textContent=e.a.label+(["influenze","formazione","genealogie","scuole"].includes(e.edge.group)?" → ":" ↔ ")+e.b.label+" · Clicca per conoscere il rapporto";relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-265))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-65))+"px";}}return;}
  const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.abs(dx)+Math.abs(dy)>0){if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;}
  drag.lastX=pt.x;drag.lastY=pt.y;
  if(drag.node){const x=pt.x+drag.offsetX,y=pt.y+drag.offsetY;const pos=unproject(x,y,drag.depth);Object.assign(drag.node,pos);drag.node.vx=drag.node.vy=drag.node.vz=0;drag.x=x;drag.y=y;}
