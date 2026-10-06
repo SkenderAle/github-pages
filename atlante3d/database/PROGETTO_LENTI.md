@@ -1,5 +1,5 @@
 # Musurgia Mundi · Lenti di esplorazione
-**Stato:** primo rilascio sperimentale, 6 ottobre 2026.
+**Stato:** catalogo specialistico in ampliamento e revisione critica, 6 ottobre 2026.
 
 ## Riferimento metodologico: Musicmap
 Riferimento pubblico: https://musicmap.info/ (consultato per metodo, non per il codice o la grafica).
@@ -14,6 +14,7 @@ La scelta per Musurgia Mundi: **una sola rete di persone e oggetti musicali, mol
 - **Maestri e allievi**: formazione didattica formalmente riconoscibile. La freccia va dal maestro all'allievo.
 - **Influenze**: rapporto stilistico documentato, con direzione; distingue influenza e eredità. Non equivale alla presenza nello stesso periodo.
 - **Incontri e collaborazioni**: sostegno artistico, lavoro congiunto e scambio musicale. La relazione non va confusa con una parentela.
+- **Genealogie dei generi**: ascendenze, contaminazioni, reazioni e rielaborazioni di forme, generi e pratiche compositive. Attraversa tanto i rapporti fra generi quanto i rapporti fra compositori e generi; non va ridotta a una successione cronologica.
 
 Le lenti sono **filtri espliciti**, non una somma indiscriminata. Quando si passa da una all'altra il contenuto dell'Atlante non cambia: cambia la domanda che si pone alla rete.
 
@@ -54,6 +55,37 @@ Il tipo `persona` consente a Cosima Wagner e Maria Anna Mozart di esistere come 
 - Encyclopaedia Britannica 1911 (archivio), famiglia Bach: https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Bach%2C_Johann_Sebastian
 - Treccani, Richard Wagner: https://www.treccani.it/enciclopedia/wilhelm-richard-wagner/
 - Altre fonti associate alle singole relazioni nella chiave `sources`.
+
+
+## Genealogie, categorie e direzioni: criteri redazionali
+
+La nozione di «parentela influenzale» è **trasversale alle persone e ai generi**, ma non annulla la differenza storica fra oggetti di natura diversa. Sono ammissibili, quando motivati e documentati:
+
+- Compositore → compositore: insegnamento, influenza diretta, ricezione, reazione estetica, sostegno professionale. Lo stesso rapporto può comparire in più lenti **soltanto quando rappresenta fatti distinti e ciascuno è spiegato**.
+- Genere → genere: nascita, derivazione, contaminazione, confronto, convergenza tecnologica. Non trasformare analogie o successioni in genealogie certe.
+- Genere/pratica → compositore: repertorio, coltivazione, trasformazione, introduzione o codificazione. Il verso indica **la lettura editoriale specificata da `forward`/`reverse`**, non una semplice causalità biologica.
+- In futuro, opera ↔ genere ↔ tecnica ↔ compositore: l'opera sarà un nodo autonomo se è il tramite documentabile della relazione.
+
+**Ontologia da affinare:** `corrente` è per ora un contenitore grafico che ospita oggetti distinti. Opera buffa e grand opéra sono generi teatrali; belcanto è anzitutto pratica vocale e tradizione stilistica; dodecafonia è una tecnica di composizione; minimalismo designa un insieme di orientamenti; musica concreta è pratica compositiva basata su suoni registrati. **Non sono categorie intercambiabili.** In via incrementale i nuovi nodi possono precisare `semantic_type`, senza cambiare il campo `type` su cui si basa la visualizzazione.
+
+**Direzionalità visiva:** nelle lenti Maestri, Influenze e Genealogie le frecce seguono `source → target`. Le linee tratteggiate segnalano, nei casi tipizzati, rapporti non lineari come affinità o tradizioni mediate e contaminazioni o convergenze fra pratiche. La linea continua non certifica, da sola, un nesso causale: bisogna leggere la scheda «Perché sono collegati?».
+
+**Esempi già catalogati:** Haydn → Mozart è modello quartettistico, **non** rapporto di insegnamento; Beethoven → Brahms è confronto sinfonico, mentre Schumann → Brahms rappresenta sostegno critico; Brahms → Dvořák è documentato separatamente come sostegno editoriale e come modello per una scelta compositiva; Schönberg, Berg e Webern incrociano la dodecafonia, e Schaeffer e Henry la musica concreta. Quest'ultima va distinta dalla produzione di suoni mediante oscillatori, benché le tradizioni siano confluite nella ricerca elettroacustica.
+
+## Fonti aggiunte nella revisione del 6 ottobre 2026
+
+- Beethoven-Haus Bonn, insegnanti di Beethoven: https://internet.beethoven.de/en/exhibition/beethoven-on-postage-stamps/
+- Fondazione Mozarteum, quartetti dedicati a Haydn: https://kv.mozarteum.at/en/work/sechs-quartette-8671
+- Biblioteca musicale di Yale, Schumann e «Neue Bahnen»: https://musiclib-exhibits.library.yale.edu/exhibits/schumann/neue_zeitschrift.html
+- Berliner Philharmoniker, Brahms, Beethoven e Dvořák: https://www.berliner-philharmoniker.de/en/stories/dvoraks-path-to-fame/
+- Antonín Dvořák, archivio biografico su Josef Suk: https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/
+- Arnold Schönberg Center, metodo dei dodici suoni: https://schoenberg.at/en/exhibitions/past-exhibitions/composition-with-twelve-tones
+- IRCAM, schede monografiche su Berg, Webern, Stravinskij, Glass: https://ressources.ircam.fr/
+- Treccani, musica concreta: https://www.treccani.it/enciclopedia/musica-concreta/
+- Biografia ufficiale di Steve Reich: https://stevereich.com/biography/
+- Biografia ufficiale di Philip Glass: https://philipglass.com/biography/
+
+La presenza di un link nella scheda prova soltanto che è **stata indicata una fonte**: ogni rapporto controverso richiede confronto con il passo pertinente e verifica periodica dell'indirizzo. Il validatore locale garantisce l'integrità strutturale, non la verità delle relazioni storiche né la disponibilità in tempo reale di siti terzi.
 
 ## Limiti dichiarati e sviluppi
 Questo primo rilascio **non è una genealogia esaustiva**. L'assenza di una parentela significa soltanto che la relazione non è ancora catalogata. Alcune fonti relative alle influenze sono generaliste e andranno sostituite da studi musicologici di maggiore dettaglio. Prima di ampliare la rete: controllare i nodi esistenti, le grafie onomastiche, la direzione della relazione, l'epoca, la fonte e gli eventuali casi contestati.
