@@ -29,7 +29,7 @@ const rows=graph.nodes.filter(n=>n.type==='compositore').map(n=>{
  const period=periods.find(p=>graph.edges.some(e=>e.source===n.id&&e.target===p))||'non-classificato';
  const schoolIds=matches.filter(r=>r.group==='scuole').map(r=>r.source===n.id?r.target:r.source);
  const schools=[...new Set(schoolIds)].map(id=>byID.get(id)?.label||id).sort((a,b)=>a.localeCompare(b,'it'));
- return {id:n.id,label:n.label,period,stats,schools,total:matches.length,scuole:stats.scuole,sourceUrls:matches.flatMap(x=>x.sources||[]).length,firstPassReviewed:Boolean(identitiesById.get(n.id)?.musicological_audit?.reviewed_on),reviewBatch:identitiesById.get(n.id)?.musicological_audit?.batch||null,externalIdentityVerified:Boolean(identitiesById.get(n.id)?.wikidata_id)};
+ return {id:n.id,label:n.label,period,stats,schools,total:matches.length,scuole:stats.scuole,sourceUrls:matches.flatMap(x=>x.sources||[]).length,firstPassReviewed:Boolean(identitiesById.get(n.id)?.musicological_audit?.reviewed_on),reviewBatch:identitiesById.get(n.id)?.musicological_audit?.batch||null,reviewStatus:identitiesById.get(n.id)?.musicological_audit?.status||null,externalIdentityVerified:Boolean(identitiesById.get(n.id)?.wikidata_id)};
 }).sort((a,b)=>periods.indexOf(a.period)-periods.indexOf(b.period)||a.label.localeCompare(b.label,'it'));
 const nonMusicRoles=graph.nodes.filter(n=>n.type==='persona'&&n.music_relevance).map(n=>({id:n.id,label:n.label,role:n.semantic_type||'persona'}));
 const missing=rows.filter(row=>row.scuole===0);
@@ -51,6 +51,7 @@ else if(args.has('--markdown')){
  '- Senza relazioni specialistiche di alcun tipo: **'+withoutAnything.length+'**.',
  '- Relazioni nella lente Scuole e tradizioni: **'+report.schoolRelations+'**.',
  '- Prime ricognizioni musicologiche per nome: **'+report.firstPassReviewed+'** su '+rows.length+' (non equivalgono alla revisione bibliografica definitiva).',
+ '- Nel quinto lotto: **'+rows.filter(r=>r.reviewBatch==='quinto-lotto-40').length+'** schede con almeno una fonte nominativa, di cui **'+rows.filter(r=>r.reviewBatch==='quinto-lotto-40'&&r.reviewStatus?.startsWith('ricognizione-mirata')).length+'** con nuova verifica di relazioni e **'+rows.filter(r=>r.reviewBatch==='quinto-lotto-40'&&r.reviewStatus?.startsWith('prima-ricognizione-biografica')).length+'** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).',
  '- Identità Wikidata riconciliate: **'+report.externalVerified+'** su '+rows.length+'.',
  '',
  '## Copertura per epoca','',
