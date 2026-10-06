@@ -16,6 +16,8 @@ import {dirname,join} from 'node:path';
 const root=dirname(fileURLToPath(import.meta.url));
 const graph=JSON.parse(readFileSync(join(root,'grafo.json'),'utf8'));
 const lens=JSON.parse(readFileSync(join(root,'relazioni.json'),'utf8'));
+const identities=JSON.parse(readFileSync(join(root,'identita-esterne.json'),'utf8'));
+const identitiesById=new Map(identities.items.map(r=>[r.id,r]));
 const args=new Set(process.argv.slice(2));
 const types=['scuole','formazione','influenze','collaborazioni','genealogie'];
 const periods=['medioevo','rinascimento','barocco','classicismo','romanticismo','post-romanticismo','novecento'];
@@ -27,13 +29,13 @@ const rows=graph.nodes.filter(n=>n.type==='compositore').map(n=>{
  const period=periods.find(p=>graph.edges.some(e=>e.source===n.id&&e.target===p))||'non-classificato';
  const schoolIds=matches.filter(r=>r.group==='scuole').map(r=>r.source===n.id?r.target:r.source);
  const schools=[...new Set(schoolIds)].map(id=>byID.get(id)?.label||id).sort((a,b)=>a.localeCompare(b,'it'));
- return {id:n.id,label:n.label,period,stats,schools,total:matches.length,scuole:stats.scuole,sourceUrls:matches.flatMap(x=>x.sources||[]).length};
+ return {id:n.id,label:n.label,period,stats,schools,total:matches.length,scuole:stats.scuole,sourceUrls:matches.flatMap(x=>x.sources||[]).length,firstPassReviewed:Boolean(identitiesById.get(n.id)?.musicological_audit?.reviewed_on),externalIdentityVerified:Boolean(identitiesById.get(n.id)?.wikidata_id)};
 }).sort((a,b)=>periods.indexOf(a.period)-periods.indexOf(b.period)||a.label.localeCompare(b.label,'it'));
 const nonMusicRoles=graph.nodes.filter(n=>n.type==='persona'&&n.music_relevance).map(n=>({id:n.id,label:n.label,role:n.semantic_type||'persona'}));
 const missing=rows.filter(row=>row.scuole===0);
 const withoutAnything=rows.filter(row=>row.total===0);
 const byPeriod=Object.fromEntries([...periods,'non-classificato'].map(period=>[period,{total:rows.filter(r=>r.period===period).length,missing:missing.filter(r=>r.period===period).length}]));
-const report={generated:new Date().toISOString(),composerCount:rows.length,withoutSchool:missing.length,withoutAnySpecialist:withoutAnything.length,schoolRelations:allRelations.filter(r=>r.group==='scuole').length,totalRelations:allRelations.length,schoolCoveragePercentage:rows.length?Math.round((rows.length-missing.length)/rows.length*1000)/10:0,byPeriod,nonMusicRoles,rows};
+const report={generated:new Date().toISOString(),composerCount:rows.length,withoutSchool:missing.length,withoutAnySpecialist:withoutAnything.length,schoolRelations:allRelations.filter(r=>r.group==='scuole').length,totalRelations:allRelations.length,firstPassReviewed:rows.filter(r=>r.firstPassReviewed).length,externalVerified:rows.filter(r=>r.externalIdentityVerified).length,schoolCoveragePercentage:rows.length?Math.round((rows.length-missing.length)/rows.length*1000)/10:0,byPeriod,nonMusicRoles,rows};
 if(args.has('--json'))console.log(JSON.stringify(report,null,2));
 else if(args.has('--markdown')){
  const esc=s=>String(s??'').replace(/\|/g,'\\|').replace(/\r?\n/g,' ');
@@ -48,6 +50,8 @@ else if(args.has('--markdown')){
  '- Senza legami di scuola o tradizione: **'+missing.length+'**.',
  '- Senza relazioni specialistiche di alcun tipo: **'+withoutAnything.length+'**.',
  '- Relazioni nella lente Scuole e tradizioni: **'+report.schoolRelations+'**.',
+ '- Prime ricognizioni musicologiche per nome: **'+report.firstPassReviewed+'** su '+rows.length+' (non equivalgono alla revisione bibliografica definitiva).',
+ '- Identità Wikidata riconciliate: **'+report.externalVerified+'** su '+rows.length+'.',
  '',
  '## Copertura per epoca','',
  '| Epoca | Compositori | Da verificare nella lente Scuole |','|---|---:|---:|',
@@ -55,9 +59,9 @@ else if(args.has('--markdown')){
  '',
  '## Audit di tutti i compositori', '',
  'Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sigla **RICERCA** segnala un compositore senza relazioni Scuole, anche se possiede relazioni in altre lenti.', '',
- '| Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato |',
- '|---|---|---:|---:|---:|---:|---:|---|---|',
- ...rows.map(row=>'| '+esc(row.period)+' | '+esc(row.label)+' | '+row.stats.scuole+' | '+row.stats.formazione+' | '+row.stats.influenze+' | '+row.stats.collaborazioni+' | '+row.stats.genealogie+' | '+esc(row.schools.join(' · ')||'—')+' | '+(row.scuole?'catalogato':'**RICERCA**')+' |'),
+ '| Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato | Prima ricognizione |',
+ '|---|---|---:|---:|---:|---:|---:|---|---|---|',
+ ...rows.map(row=>'| '+esc(row.period)+' | '+esc(row.label)+' | '+row.stats.scuole+' | '+row.stats.formazione+' | '+row.stats.influenze+' | '+row.stats.collaborazioni+' | '+row.stats.genealogie+' | '+esc(row.schools.join(' · ')||'—')+' | '+(row.scuole?'catalogato':'**RICERCA**')+' | '+(row.firstPassReviewed?'**Lotto 1**':'da avviare')+' |'),
  '',
  '## Figure culturali non classificate come compositori', '',
  ...nonMusicRoles.map(n=>'- **'+n.label+'**: '+n.role.replace(/-/g,' ')+'.'),
@@ -74,7 +78,7 @@ else if(args.has('--markdown')){
  ];
  console.log(lines.join('\n'));
 }else{
- console.log('Musurgia Mundi: '+rows.length+' compositori, '+report.schoolRelations+' relazioni Scuole, '+missing.length+' senza Scuole ('+report.schoolCoveragePercentage+'% copertura), '+withoutAnything.length+' totalmente isolati nelle lenti.');
+ console.log('Musurgia Mundi: '+rows.length+' compositori, '+report.schoolRelations+' relazioni Scuole, '+missing.length+' senza Scuole ('+report.schoolCoveragePercentage+'% copertura), '+withoutAnything.length+' totalmente isolati nelle lenti; prima ricerca su '+report.firstPassReviewed+' nomi, '+report.externalVerified+' QID verificati.');
  console.log('Senza Scuole per epoca: '+Object.entries(byPeriod).filter(p=>p[1].missing).map(p=>p[0]+'='+p[1].missing).join(' | '));
  for(const r of missing)console.log('RICERCA '+r.period+' / '+r.label+' ('+r.id+')');
 }
