@@ -338,7 +338,7 @@
     .hero-card p{font-size:.94rem;line-height:1.5;margin-top:.5rem}
   }
 </style>
-</head>
+<link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
 <div class="progress" id="progress"></div>
 
@@ -358,10 +358,11 @@
 </header>
 
 <div class="shell">
-  <div class="nav-wrap">
+  <div class="nav-wrap atlas-autonav"><button class="atlas-menu-toggle" type="button" aria-expanded="false" aria-label="Apri o chiudi il menu di navigazione">☰ Menu <span class="atlas-menu-arrow" aria-hidden="true">▾</span></button>
     <nav id="nav">
-      <a href="../" class="nav-home" title="Torna alla pagina madre">⌂ Home</a>
+      
       <div class="nav-row" aria-label="Indice, prima riga">
+      <a href="../" class="nav-home" title="Torna alla pagina madre">⌂ Home</a>
         <a href="#prologo">Prologo</a>
         <a href="#umanesimo">Umanesimo</a>
         <a href="#stampa">Stampa</a>
@@ -1395,5 +1396,5 @@
   setActiveSection();
 })();
 </script>
-</body>
+<script src="../shared/atlas-autonav-v1.js?v=20261006b" defer></script></body>
 </html>
