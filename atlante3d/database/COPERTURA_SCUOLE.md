@@ -5,8 +5,8 @@
 > Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
 - Compositori censiti: **288**.
-- Senza legami di scuola o tradizione: **89**.
-- Senza relazioni specialistiche di alcun tipo: **12**.
+- Senza legami di scuola o tradizione: **85**.
+- Senza relazioni specialistiche di alcun tipo: **7**.
 - Relazioni nella lente Scuole e tradizioni: **253**.
 - Prime ricognizioni registrate per nome: **288** su 288 (non equivalgono alla revisione bibliografica definitiva).
 - Nel quinto lotto: **40** schede con almeno una fonte nominativa, di cui **14** con nuova verifica di relazioni e **26** con ricerca biografica iniziale (ulteriori indagini relazionali necessarie).
@@ -17,6 +17,7 @@
 - Decimo lotto: **40** ricognizioni nominative, di cui **13** con almeno una nuova relazione e **27** senza nuovi archi nella prima passata. **10** relazioni aggiunte dopo esclusione di una falsa identificazione Fasch.
 - Undicesimo lotto conclusivo: **8** schede ricognite e **8** relazioni preesistenti corredate di ulteriori fonti (nessun nuovo arco).
 - **Prima ricognizione di tutti i 288 compositori completata.** La verifica approfondita e indipendente delle quattro lenti rimane aperta.
+- Seconda fase, primo gruppo: **7** compositori toccati da nuovi riscontri puntuali, **6** nuove relazioni fondate su fonti istituzionali. L'audit integrale delle quattro lenti rimane aperto.
 - Identità Wikidata riconciliate: **19** su 288.
 
 ## Copertura per epoca
@@ -278,7 +279,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Carl Orff | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
 | novecento | Charles Ives | 0 | 1 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 7** |
 | novecento | Claude Debussy | 1 | 0 | 1 | 1 | 0 | Modernità francese del primo Novecento | catalogato | **Lotto 7** |
-| novecento | Darius Milhaud | 1 | 3 | 0 | 0 | 0 | Les Six | catalogato | **Lotto 7** |
+| novecento | Darius Milhaud | 1 | 4 | 0 | 0 | 0 | Les Six | catalogato | **Lotto 7** |
 | novecento | Dmitrij Šostakovič | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Duke Ellington | 0 | 0 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Edgard Varèse | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
@@ -292,16 +293,16 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Giacinto Scelsi | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 7** |
 | novecento | Gian Francesco Malipiero | 1 | 2 | 0 | 0 | 0 | Generazione italiana del 1880 | catalogato | **Lotto 7** |
 | novecento | Goffredo Petrassi | 1 | 1 | 0 | 0 | 0 | Ricezione italiana della dodecafonia | catalogato | **Lotto 7** |
-| novecento | György Kurtág | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
-| novecento | György Ligeti | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
+| novecento | György Kurtág | 0 | 2 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
+| novecento | György Ligeti | 1 | 0 | 0 | 0 | 0 | Darmstadt: corsi e avanguardie | catalogato | **Lotto 8** |
 | novecento | Hans Werner Henze | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
-| novecento | Henryk Górecki | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
+| novecento | Henryk Górecki | 1 | 0 | 0 | 0 | 0 | Nuova musica polacca dopo il 1956 | catalogato | **Lotto 8** |
 | novecento | Igor Stravinskij | 2 | 1 | 3 | 1 | 1 | Gruppo dei Cinque russo · Ripresa del contrappunto e neobarocco | catalogato | **Lotto 7** |
 | novecento | John Adams | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
 | novecento | John Cage | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Josef Suk (1874–1935) | 1 | 1 | 1 | 0 | 0 | Scuola nazionale boema | catalogato | **Lotto 9** |
 | novecento | Karlheinz Stockhausen | 1 | 1 | 0 | 0 | 0 | Darmstadt: corsi e avanguardie | catalogato | **Lotto 8** |
-| novecento | Krzysztof Penderecki | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
+| novecento | Krzysztof Penderecki | 1 | 0 | 0 | 0 | 0 | Nuova musica polacca dopo il 1956 | catalogato | **Lotto 8** |
 | novecento | Kurt Weill | 1 | 1 | 1 | 0 | 0 | Teatro musicale brechtiano | catalogato | **Lotto 9** |
 | novecento | La Monte Young | 1 | 0 | 0 | 0 | 0 | Minimalismo | catalogato | **Lotto 9** |
 | novecento | Leonard Bernstein | 0 | 1 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 4** |
@@ -312,7 +313,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Luigi Russolo | 1 | 0 | 0 | 0 | 0 | Futurismo | catalogato | **Lotto 7** |
 | novecento | Maurice Ravel | 1 | 1 | 1 | 0 | 0 | Modernità francese del primo Novecento | catalogato | **Lotto 7** |
 | novecento | Michael Nyman | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 9** |
-| novecento | Olivier Messiaen | 0 | 3 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 7** |
+| novecento | Olivier Messiaen | 0 | 4 | 0 | 1 | 0 | — | **RICERCA** | **Lotto 7** |
 | novecento | Ottorino Respighi | 1 | 1 | 0 | 0 | 0 | Generazione italiana del 1880 | catalogato | **Lotto 7** |
 | novecento | Paul Dessau | 1 | 0 | 1 | 0 | 0 | Teatro musicale brechtiano | catalogato | **Lotto 9** |
 | novecento | Paul Hindemith | 1 | 0 | 0 | 0 | 0 | Ripresa del contrappunto e neobarocco | catalogato | **Lotto 8** |
@@ -324,7 +325,7 @@ Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sig
 | novecento | Sergej Rachmaninov | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 4** |
 | novecento | Steve Reich | 1 | 2 | 1 | 1 | 1 | Minimalismo | catalogato | **Lotto 8** |
 | novecento | Terry Riley | 1 | 0 | 0 | 0 | 1 | Minimalismo | catalogato | **Lotto 9** |
-| novecento | Witold Lutosławski | 0 | 0 | 0 | 0 | 0 | — | **RICERCA** | **Lotto 8** |
+| novecento | Witold Lutosławski | 1 | 0 | 0 | 0 | 0 | Nuova musica polacca dopo il 1956 | catalogato | **Lotto 8** |
 | novecento | Zoltán Kodály | 1 | 0 | 0 | 1 | 0 | Scuola nazionale ungherese del Novecento | catalogato | **Lotto 8** |
 
 ## Figure culturali non classificate come compositori
