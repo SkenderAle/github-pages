@@ -3,6 +3,7 @@
 const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:true});
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
 const search=document.getElementById("search"),filter=document.getElementById("filter"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensSelect=document.getElementById("lens"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
+const moreControls=document.getElementById("moreControls");
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel");
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
@@ -92,8 +93,34 @@ function positionGeoMarkers(points){
   b.x=clamp(b.x+nx*shift,30,w-30);b.y=clamp(b.y+ny*shift,Math.min(h*.29,215),h-134);
  }
 }
-function sxworld(node){let x=node.x-camera.x,y=node.y-camera.y,z=node.z-camera.z;const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),si=Math.sin(rotX);const rx=x*cy-z*sy,rz=x*sy+z*cy,ry=y*cx-rz*si,depth=y*si+rz*cx;const k=9/(16+depth),scale=Math.min(w,h)*.095*zoom*k;return {x:w/2+rx*scale,y:h/2+ry*scale,scale,depth};}
-function unproject(px,py,depth){let scale=Math.min(w,h)*.095*zoom*9/(16+depth);const rx=(px-w/2)/scale,ry=(py-h/2)/scale;const cx=Math.cos(rotX),si=Math.sin(rotX),cy=Math.cos(rotY),sy=Math.sin(rotY);const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};}
+// Lo spazio effettivo del grafo non coincide con tutto lo schermo:
+// testata, lenti, strumenti e scheda devono restare fuori dal suo centro.
+function graphStage(){
+ const mobile=w<=700;
+ const rightPanel=!mobile&&document.body.classList.contains("panel-open")?Math.min(315,w*.85):0;
+ const top=mobile?Math.min(211,h*.32):Math.min(232,h*.32);
+ const bottomRoom=mobile?(document.body.classList.contains("controls-open")?Math.min(218,h*.29):Math.min(118,h*.20)):Math.min(92,h*.14);
+ const left=mobile?17:32,right=Math.max(left+130,w-rightPanel-(mobile?17:32));
+ const bottom=Math.max(top+135,h-bottomRoom);
+ const cx=(left+right)/2,cy=(top+bottom)/2;
+ const base=Math.max(9,Math.min((right-left)*.106,(bottom-top)*.109));
+ return {left,right,top,bottom,cx,cy,base};
+}
+function sxworld(node){
+ const g=graphStage();
+ let x=node.x-camera.x,y=node.y-camera.y,z=node.z-camera.z;
+ const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),si=Math.sin(rotX);
+ const rx=x*cy-z*sy,rz=x*sy+z*cy,ry=y*cx-rz*si,depth=y*si+rz*cx;
+ const k=9/(16+depth),scale=g.base*zoom*k;
+ return {x:g.cx+rx*scale,y:g.cy+ry*scale,scale,depth};
+}
+function unproject(px,py,depth){
+ const g=graphStage(),scale=g.base*zoom*9/(16+depth);
+ const rx=(px-g.cx)/scale,ry=(py-g.cy)/scale;
+ const cx=Math.cos(rotX),si=Math.sin(rotX),cy=Math.cos(rotY),sy=Math.sin(rotY);
+ const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;
+ return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};
+}
 function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw Error("Schema non valido");
  const all=db.nodes.filter(n=>n.visible!==0&&n.visible!=="0");
  const anchors=new Map();let i=0;
@@ -279,13 +306,13 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   const center=screen.find(p=>p.node===selected);
   const related=linked(selected).filter(row=>row.n.type!=="geografia");
   if(center&&related.length){
-   const availableW=document.body.classList.contains("panel-open")?w-Math.min(315,w*.85):w;
-   const radius=Math.min(155,Math.max(84,Math.min(availableW,h)*.23));
+   const space=graphStage();
+   const radius=Math.min(155,Math.max(46,Math.min(space.right-space.left,space.bottom-space.top)*.23));
    for(const [index,row] of related.entries()){
     const point=screen.find(p=>p.node===row.n);if(!point)continue;
     const angle=-Math.PI*.62+Math.PI*2*index/Math.max(related.length,3);
-    point.x=clamp(center.x+Math.cos(angle)*radius,45,Math.max(46,availableW-43));
-    point.y=clamp(center.y+Math.sin(angle)*radius,Math.min(h*.32,225),Math.max(h*.32+10,h-142));
+    point.x=clamp(center.x+Math.cos(angle)*radius,space.left+13,space.right-13);
+    point.y=clamp(center.y+Math.sin(angle)*radius,space.top+12,space.bottom-12);
     point.depth=center.depth;point.r=clamp(15*zoom,10,21);
    }
   }
@@ -465,6 +492,12 @@ tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("pan
 search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
 search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n);search.blur();}});
 filter.addEventListener("change",()=>{typeFilter=filter.value;});
+moreControls?.addEventListener("click",()=>{
+ const open=document.body.classList.toggle("controls-open");
+ moreControls.setAttribute("aria-expanded",String(open));
+ moreControls.textContent=open?"− Meno":"☷ Opzioni";
+});
+
 lensSelect?.addEventListener("change",()=>{
  activeLens=lensSelect.value;
  const group=lensGroups.find(g=>g.id===activeLens);
@@ -477,7 +510,7 @@ lensSelect?.addEventListener("change",()=>{
  else status.textContent="Lente "+lensSelect.selectedOptions[0].textContent+" · scegli una sfera per esplorare";
 });
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
-reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);geoState.targetLat=48;geoState.targetLon=11;geoState.targetSpan=100;geoLabel.textContent="Europa · panoramica";search.value="";searchText="";filter.value="tutti";typeFilter="tutti";activeLens="musica";if(lensSelect)lensSelect.value="musica";if(lensHelp)lensHelp.textContent="Scegli una lente e una sfera per esplorare le relazioni.";if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
+reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);geoState.targetLat=48;geoState.targetLon=11;geoState.targetSpan=100;geoLabel.textContent="Europa · panoramica";search.value="";searchText="";filter.value="tutti";typeFilter="tutti";document.body.classList.remove("controls-open");if(moreControls){moreControls.setAttribute("aria-expanded","false");moreControls.textContent="☷ Opzioni";}activeLens="musica";if(lensSelect)lensSelect.value="musica";if(lensHelp)lensHelp.textContent="Scegli una lente e una sfera per esplorare le relazioni.";if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
 window.addEventListener("resize",resize);
 Promise.all([fetch("database/grafo.json",{cache:"no-cache"}),fetch("database/video.json",{cache:"no-cache"}),fetch("database/relazioni.json",{cache:"no-cache"})]).then(async responses=>{if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);const db=await responses[0].json();const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];if(!responses[2].ok)throw Error("HTTP lenti "+responses[2].status);db.lenses=await responses[2].json();return db;}).then(db=>{prepare(db);requestAnimationFrame(draw);}).catch(e=>{document.body.classList.add("error");status.textContent="Errore caricamento: "+e.message;console.error(e);});
 })();
