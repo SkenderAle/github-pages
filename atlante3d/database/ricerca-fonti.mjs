@@ -134,9 +134,11 @@ async function searchName(name){
  return (j.search||[]).map(x=>({qid:x.id,label:x.label,description:x.description||'',url:x.concepturi||'https://www.wikidata.org/wiki/'+x.id}));
 }
 const candidates=[];
+const explicitIDs=options['ids-file']?new Set(JSON.parse(fs.readFileSync(options['ids-file'],'utf8')).composers||[]):null;
 const entries=options.id?ledger.items.filter(x=>x.id===options.id):
-  (mode==='relazioni'?ledger.items.filter(x=>x.identity_status==='verificata-manualmente'&&qre.test(x.wikidata_id||'')):
-    ledger.items.filter(x=>x.identity_status!=='verificata-manualmente')).slice(offset,offset+limit);
+  (explicitIDs?ledger.items.filter(x=>explicitIDs.has(x.id)):
+   (mode==='relazioni'?ledger.items.filter(x=>x.identity_status==='verificata-manualmente'&&qre.test(x.wikidata_id||'')):
+    ledger.items.filter(x=>x.identity_status!=='verificata-manualmente'))).slice(offset,offset+limit);
 if(!entries.length)throw Error('Nessun compositore nell’intervallo richiesto.');
 
 for(const entry of entries){
