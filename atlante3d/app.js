@@ -341,12 +341,12 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
   }else ctx.strokeStyle="#9fbdd4";
   const bend=Math.min(38,Math.hypot(b.x-a.x,b.y-a.y)*.09);
   ctx.beginPath();ctx.moveTo(a.x,a.y);
-  if(activeLens==="influenze"&&e.kind==="eredita")ctx.setLineDash([6,5]);
+  if((activeLens==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind))||(activeLens==="genealogie"&&/^(convergenza|contaminazione|influenza-transnazionale)/.test(e.kind)))ctx.setLineDash([6,5]);
   const cx=(a.x+b.x)*.5+bend*.35,cy=(a.y+b.y)*.5-bend;
   ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
   if(direct&&activeLens!=="musica"){
    lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
-   if(e.group==="influenze"||e.group==="formazione"){
+   if(e.group==="influenze"||e.group==="formazione"||e.group==="genealogie"){
     // Freccia: da chi insegna/influenza verso chi apprende/raccoglie l'eredità.
     const t=.77,q=1-t,px=q*q*a.x+2*q*t*cx+t*t*b.x,py=q*q*a.y+2*q*t*cy+t*t*b.y;
     const dx=2*q*(cx-a.x)+2*t*(b.x-cx),dy=2*q*(cy-a.y)+2*t*(b.y-cy);
@@ -498,7 +498,7 @@ function hit(pt){
  return null;
 }
 canvas.addEventListener("pointerdown",e=>{if(e.button!==0)return;let pt=pointer(e),p=hit(pt);drag={node:p?.node?.type==="geografia"?null:p?.node||null,geoNode:p?.node?.type==="geografia"?p.node:null,relation:p?null:lineHit(pt),x:pt.x,y:pt.y,depth:p?.depth||0,lastX:pt.x,lastY:pt.y,offsetX:p?p.x-pt.x:0,offsetY:p?p.y-pt.y:0,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");});
-canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hit(pt)?.node||null;const e=!hover?lineHit(pt):null;canvas.style.cursor=hover||e?"pointer":"grab";if(relationTooltip){relationTooltip.hidden=!e;if(e){relationTooltip.textContent=e.a.label+" ↔ "+e.b.label+" · Clicca per conoscere il rapporto";relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-265))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-65))+"px";}}return;}
+canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hit(pt)?.node||null;const e=!hover?lineHit(pt):null;canvas.style.cursor=hover||e?"pointer":"grab";if(relationTooltip){relationTooltip.hidden=!e;if(e){relationTooltip.textContent=e.a.label+(["influenze","formazione","genealogie"].includes(e.edge.group)?" → ":" ↔ ")+e.b.label+" · Clicca per conoscere il rapporto";relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-265))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-65))+"px";}}return;}
  const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.abs(dx)+Math.abs(dy)>0){if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;}
  drag.lastX=pt.x;drag.lastY=pt.y;
  if(drag.node){const x=pt.x+drag.offsetX,y=pt.y+drag.offsetY;const pos=unproject(x,y,drag.depth);Object.assign(drag.node,pos);drag.node.vx=drag.node.vy=drag.node.vz=0;drag.x=x;drag.y=y;}
