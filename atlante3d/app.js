@@ -1,15 +1,48 @@
 "use strict";
 (() => {
-const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:false});
+const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:true});
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
 const search=document.getElementById("search"),filter=document.getElementById("filter"),reset=document.getElementById("reset"),labels=document.getElementById("labels");
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
+const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel");
 const COLORS={compositore:"#f3bd74",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
 let selected=null,drag=null,screen=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti";
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);drawNightAtlas();}
+function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
+
+const geoState={lat:48,lon:11,span:100,targetLat:48,targetLon:11,targetSpan:100,enabled:true};
+function geoFromNode(n){
+ if(n?.geo_focus)return n.geo_focus;
+ const linkedGeo=edges.filter(e=>e.source===n.id||e.target===n.id)
+  .map(e=>e.source===n.id?byId.get(e.target):byId.get(e.source))
+  .find(other=>other?.geo_focus);
+ return linkedGeo?.geo_focus||null;
+}
+function moveGeo(n){
+ if(!geoState.enabled||!n)return;
+ const point=geoFromNode(n);
+ if(!point){geoLabel.textContent="Mondo · geografia non ancora catalogata";return;}
+ geoState.targetLat=point.lat;geoState.targetLon=point.lon;geoState.targetSpan=point.span||90;
+ geoLabel.textContent=n.label+" · "+(point.precision==="country-approximation"?"area geografica indicativa":"area di riferimento");
+}
+function paintGeo(){
+ if(!earthMap)return;
+ const g=geoState;
+ let dl=((g.targetLon-g.lon+540)%360)-180;
+ g.lon+=dl*.055;g.lat+=(g.targetLat-g.lat)*.055;g.span+=(g.targetSpan-g.span)*.045;
+ const world=Math.max(500,w*360/Math.max(24,g.span));
+ const height=world/2;
+ const centerX=(g.lon+180)/360*world,centerY=(90-g.lat)/180*height;
+ earthMap.style.backgroundSize=world.toFixed(1)+"px "+height.toFixed(1)+"px";
+ earthMap.style.backgroundPosition=(w/2-centerX).toFixed(1)+"px "+(h/2-centerY).toFixed(1)+"px";
+}
+followGeo?.addEventListener("change",()=>{
+ geoState.enabled=followGeo.checked;
+ if(geoState.enabled&&selected)moveGeo(selected);
+});
+
 function sxworld(node){let x=node.x-camera.x,y=node.y-camera.y,z=node.z-camera.z;const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),si=Math.sin(rotX);const rx=x*cy-z*sy,rz=x*sy+z*cy,ry=y*cx-rz*si,depth=y*si+rz*cx;const k=9/(16+depth),scale=Math.min(w,h)*.095*zoom*k;return {x:w/2+rx*scale,y:h/2+ry*scale,scale,depth};}
 function unproject(px,py,depth){let scale=Math.min(w,h)*.095*zoom*9/(16+depth);const rx=(px-w/2)/scale,ry=(py-h/2)/scale;const cx=Math.cos(rotX),si=Math.sin(rotX),cy=Math.cos(rotY),sy=Math.sin(rotY);const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};}
 function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw Error("Schema non valido");
@@ -156,35 +189,53 @@ function drawNightAtlas(){
 }
 
 function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;camera.y+=(focus.y-camera.y)*.085;camera.z+=(focus.z-camera.z)*.085;}
- if(cartography)ctx.drawImage(cartography,0,0,w,h);
+ ctx.clearRect(0,0,w,h);paintGeo();
  screen=nodes.map(n=>{let p=sxworld(n);p.node=n;p.r=clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n){p.x=drag.x;p.y=drag.y;}return p;});
- const map=new Map(screen.map(p=>[p.node.id,p]));ctx.lineWidth=.8;
- for(const e of edges){let a=map.get(e.source),b=map.get(e.target);if(!a||!b||a.depth< -14||b.depth< -14)continue;if(!visibleNode(a.node)||!visibleNode(b.node))continue;
-  const highlight=selected&&(e.source===selected.id||e.target===selected.id),dim=selected&&!highlight;
-  ctx.globalAlpha=dim?.07:highlight?.72:.15;ctx.lineWidth=highlight?1.45:.7;
-  if(highlight){const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);path.addColorStop(0,"#ffe5a5");path.addColorStop(.52,"#a1dbec");path.addColorStop(1,"#dcacd9");ctx.strokeStyle=path;}
-  else ctx.strokeStyle="#90bbd0";
-  const bend=Math.min(38,Math.hypot(b.x-a.x,b.y-a.y)*.09);
-  ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.quadraticCurveTo((a.x+b.x)*.5+bend*.35,(a.y+b.y)*.5-bend,b.x,b.y);ctx.stroke();
-}
- ctx.globalAlpha=1;
- // Bussola luminosa discreta e profondità atmosferica della carta notturna.
- ctx.globalAlpha=.28;ctx.strokeStyle="#b9d2d7";ctx.lineWidth=.8;
- const cx=w*.93,cy=h*.14;
- if(w>650){ctx.beginPath();ctx.arc(cx,cy,29,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,cy-36);ctx.lineTo(cx,cy+36);ctx.moveTo(cx-36,cy);ctx.lineTo(cx+36,cy);ctx.stroke();ctx.font="12px Georgia,serif";ctx.fillStyle="#e8d6ac";ctx.fillText("N",cx-4,cy-40);}
- ctx.globalAlpha=1;
- let drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>b.depth-a.depth);
- for(const p of drawable){let n=p.node,highlight=n===selected||n===hover||n.label.toLowerCase().includes(searchText)&&searchText.length>1;
-  const connected=selected&&edges.some(e=>(e.source===selected.id&&e.target===n.id)||(e.target===selected.id&&e.source===n.id));
-  ctx.globalAlpha=selected&&!highlight&&!connected?.43:1;const rad=highlight?Math.max(p.r*1.18,selected===n?12:p.r):p.r;
-  if(highlight){ctx.beginPath();ctx.arc(p.x,p.y,rad+8,0,Math.PI*2);ctx.fillStyle="#f3cb8e24";ctx.fill();}
-  drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(connected));
-  let isLabel=showAllLabels||highlight||connected&&Math.abs(p.x-w/2)<w*.36&&Math.abs(p.y-h/2)<h*.38&&p.scale>.28||n.type==="periodo"&&p.scale>.4;
-  if(isLabel){ctx.font=(highlight?"bold 13px":"11px")+" system-ui";ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;ctx.strokeStyle="#0b1420";ctx.strokeText(n.label,p.x,p.y-rad-9);ctx.fillStyle=highlight?"#fff5e5":"rgba(240,241,236,.93)";ctx.fillText(n.label,p.x,p.y-rad-9);}
+
+ const map=new Map(screen.map(p=>[p.node.id,p]));
+ const neighbors=new Set();
+ if(selected){
+  neighbors.add(selected.id);
+  for(const e of edges){if(e.source===selected.id)neighbors.add(e.target);if(e.target===selected.id)neighbors.add(e.source);}
  }
+ for(const e of edges){
+  const a=map.get(e.source),b=map.get(e.target);
+  if(!a||!b||a.depth< -14||b.depth< -14||!visibleNode(a.node)||!visibleNode(b.node))continue;
+  const direct=!!selected&&(e.source===selected.id||e.target===selected.id);
+  ctx.globalAlpha=selected?(direct?.92:.025):.16;
+  ctx.lineWidth=direct?1.75:.7;
+  if(direct){
+    const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+    path.addColorStop(0,"#ffe7b0");path.addColorStop(.5,"#c2e9fc");path.addColorStop(1,"#e4bedf");
+    ctx.strokeStyle=path;
+  }else ctx.strokeStyle="#9fbdd4";
+  const bend=Math.min(38,Math.hypot(b.x-a.x,b.y-a.y)*.09);
+  ctx.beginPath();ctx.moveTo(a.x,a.y);
+  ctx.quadraticCurveTo((a.x+b.x)*.5+bend*.35,(a.y+b.y)*.5-bend,b.x,b.y);ctx.stroke();
+ }
+ ctx.globalAlpha=1;
+ const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>b.depth-a.depth);
+ // Disegnare prima le sfere slegate impedisce che nascondano quelle connesse.
+ if(selected)drawable.sort((a,b)=>Number(neighbors.has(a.node.id))-Number(neighbors.has(b.node.id)));
+ for(const p of drawable){
+  const n=p.node,related=selected&&neighbors.has(n.id);
+  const highlight=n===selected||n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText));
+  ctx.globalAlpha=selected&&!related&&!highlight?.085:1;
+  const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
+  drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
+  const isLabel=selected?(related||highlight):(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4);
+  if(isLabel){
+   ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
+   ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
+   ctx.strokeStyle="#071321";ctx.strokeText(n.label,p.x,p.y-rad-9);
+   ctx.fillStyle=highlight?"#fff4d9":"rgba(240,242,247,.95)";
+   ctx.fillText(n.label,p.x,p.y-rad-9);
+  }
+ }
+
  ctx.globalAlpha=1;requestAnimationFrame(draw);}
 function linked(n){return edges.filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
-function focusOn(n,openPanel=true){selected=n;focus=n;status.textContent=n.label+" · "+linked(n).length+" connessioni";populate(n);if(openPanel)setPanel(true);}
+function focusOn(n,openPanel=true){selected=n;focus=n;moveGeo(n);status.textContent=n.label+" · "+linked(n).length+" connessioni";populate(n);if(openPanel)setPanel(true);}
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Scheda e video";tab.setAttribute("aria-expanded",String(open));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function populate(n){
@@ -209,6 +260,17 @@ function populate(n){
      const audio=document.createElement("audio");audio.controls=true;audio.preload="none";audio.src=media.url;audio.setAttribute("aria-label",media.title||"Ascolto audio");box.append(audio);
    }
    const link=document.createElement("a");link.className="media-link";link.href=media.url||("#");link.target="_blank";link.rel="noopener noreferrer";link.textContent=media.kind==="audio"?"Fonte audio ↗":"Ascolta su YouTube ↗";box.append(link);
+   const original=media.source_bookmarks||{};
+   const entries=Object.entries(original);
+   if(entries.length){
+    const references=document.createElement("div");references.className="source-bookmarks";
+    for(const [slug,url] of entries){
+      const toPage=document.createElement("a");toPage.href=url;toPage.className="source-bookmark";
+      toPage.textContent="↳ Vai all’ascolto nel "+slug.charAt(0).toUpperCase()+slug.slice(1);
+      toPage.title="Apri il segnalibro esatto nel percorso "+slug;
+      references.append(toPage);
+    }box.append(references);
+   }
    dst.append(box);
  }
  const group=document.createElement("details");group.className="related-list";group.open=!relatedMedia.length;
@@ -240,7 +302,7 @@ search.addEventListener("input",()=>{searchText=search.value.trim().toLowerCase(
 search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=nodes.find(n=>n.label.toLowerCase().includes(searchText));if(n){focusOn(n);search.blur();}});
 filter.addEventListener("change",()=>{typeFilter=filter.value;});
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
-reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);search.value="";searchText="";filter.value="tutti";typeFilter="tutti";setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
+reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);geoState.targetLat=48;geoState.targetLon=11;geoState.targetSpan=100;geoLabel.textContent="Europa · panoramica";search.value="";searchText="";filter.value="tutti";typeFilter="tutti";setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
 window.addEventListener("resize",resize);
 Promise.all([fetch("database/grafo.json",{cache:"no-cache"}),fetch("database/video.json",{cache:"no-cache"})]).then(async responses=>{if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);const db=await responses[0].json();const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];return db;}).then(db=>{prepare(db);requestAnimationFrame(draw);}).catch(e=>{document.body.classList.add("error");status.textContent="Errore caricamento: "+e.message;console.error(e);});
 })();
