@@ -61,7 +61,7 @@ else if(args.has('--markdown')){
  'Legenda: Sc=Scuole, Ma=Maestri, In=Influenze, Co=Incontri, Ge=Genealogie. La sigla **RICERCA** segnala un compositore senza relazioni Scuole, anche se possiede relazioni in altre lenti.', '',
  '| Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato | Prima ricognizione |',
  '|---|---|---:|---:|---:|---:|---:|---|---|---|',
- ...rows.map(row=>'| '+esc(row.period)+' | '+esc(row.label)+' | '+row.stats.scuole+' | '+row.stats.formazione+' | '+row.stats.influenze+' | '+row.stats.collaborazioni+' | '+row.stats.genealogie+' | '+esc(row.schools.join(' · ')||'—')+' | '+(row.scuole?'catalogato':'**RICERCA**')+' | '+(row.firstPassReviewed?'**'+({ 'primo-lotto-10':'Lotto 1','secondo-lotto-10':'Lotto 2','terzo-lotto-10':'Lotto 3','quarto-lotto-10':'Lotto 4' }[row.reviewBatch]||'Ricognizione')+'**':'da avviare')+' |'),
+ ...rows.map(row=>'| '+esc(row.period)+' | '+esc(row.label)+' | '+row.stats.scuole+' | '+row.stats.formazione+' | '+row.stats.influenze+' | '+row.stats.collaborazioni+' | '+row.stats.genealogie+' | '+esc(row.schools.join(' · ')||'—')+' | '+(row.scuole?'catalogato':'**RICERCA**')+' | '+(row.firstPassReviewed?'**'+({ 'primo-lotto-10':'Lotto 1','secondo-lotto-10':'Lotto 2','terzo-lotto-10':'Lotto 3','quarto-lotto-10':'Lotto 4','quinto-lotto-40':'Lotto 5' }[row.reviewBatch]||'Ricognizione')+'**':'da avviare')+' |'),
  '',
  '## Figure culturali non classificate come compositori', '',
  ...nonMusicRoles.map(n=>'- **'+n.label+'**: '+n.role.replace(/-/g,' ')+'.'),
