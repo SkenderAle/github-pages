@@ -73,6 +73,7 @@ const MUSICIAN_GEO_OVERRIDES={
  "compositore-arcangelo-corelli":[41.9028,12.4964,"Roma"],
  "compositore-gioachino-rossini":[43.9102,12.9133,"Pesaro"],
  "compositore-niccolo-paganini":[44.4056,8.9463,"Genova"],
+ "compositore-antonio-salieri":[48.2082,16.3738,"Vienna"],
  "compositore-giuseppe-verdi":[45.0527,9.6966,"Busseto"],
  "compositore-giacomo-puccini":[43.8430,10.5079,"Lucca"],
  "compositore-hector-berlioz":[48.8566,2.3522,"Parigi"],
@@ -153,6 +154,9 @@ function geoScreenPoint(n,withManual=true){
  const auto=withManual&&!n.manualPinned?(n.autoDx||0):0,autoY=withManual&&!n.manualPinned?(n.autoDy||0):0;
  return {x:raw.x+manual+auto,y:raw.y+manualY+autoY,depth:0,scale:1,r:15,geo:true,point:raw.point};
 }
+function resetAutoLayout(){
+ for(const n of nodes){if(!n.manualPinned){n.autoDx=0;n.autoDy=0;}}
+}
 function categoryVisible(n){return n===selected||activeCategories.has(n.type);}
 function networkNodesForFocus(n){
  if(!n)return [];
@@ -194,11 +198,14 @@ function resolveScreenCollisions(points){
  const visible=points.filter(p=>p.node.type!=="geografia"&&visibleNode(p.node));
  if(visible.length<2)return;
  const cellSize=48;
+ const world=mapBase()*360/Math.max(18,geoState.span),height=world/2;
+ const maxAutoX=clamp(world*(1.5/360),5,34);
+ const maxAutoY=clamp(height*(1.1/180),5,28);
  const push=(p,dx,dy)=>{
   p.x+=dx;p.y+=dy;
   if(p.node.manualPinned||p.node===selected)return;
-  p.node.autoDx=clamp((p.node.autoDx||0)+dx,-72,72);
-  p.node.autoDy=clamp((p.node.autoDy||0)+dy,-56,56);
+  p.node.autoDx=clamp((p.node.autoDx||0)+dx,-maxAutoX,maxAutoX);
+  p.node.autoDy=clamp((p.node.autoDy||0)+dy,-maxAutoY,maxAutoY);
  };
  for(let pass=0;pass<2;pass++){
   const grid=new Map();
@@ -526,7 +533,7 @@ function updatePeriodContext(n){
  periodContext.title=periods.length>1?"Altri contesti: "+periods.slice(1).map(x=>x.node.label).join(" · "):periods[0].node.label;
 }
 function focusOn(n,openPanel=true,tight=false){
- if(selected!==n){search.value="";searchText="";}
+ if(selected!==n){search.value="";searchText="";resetAutoLayout();}
  selected=n;selectedNeighborCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
  updatePeriodContext(n);
  const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
@@ -655,12 +662,12 @@ function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-ca
 function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
 function toggleLens(id){
  if(activeLenses.has(id)){if(activeLenses.size===1)return;activeLenses.delete(id);}else activeLenses.add(id);
- activeEdgesCacheKey="";selectedNeighborCacheKey="";
+ activeEdgesCacheKey="";selectedNeighborCacheKey="";resetAutoLayout();
  syncLensControls();if(relationTooltip)relationTooltip.hidden=true;if(selected){fitGeoNetwork(selected);populate(selected);}
  status.textContent=(selected?selected.label+" · "+linked(selected).length+" relazioni · ":"")+"Lenti: "+activeLensLabel();
 }
 lensChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-lens]");if(!input)return;toggleLens(input.value);});
-categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";if(selected)fitGeoNetwork(selected);});
+categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";resetAutoLayout();if(selected)fitGeoNetwork(selected);});
 moreControls?.addEventListener("click",()=>{
  const open=document.body.classList.toggle("controls-open");
  moreControls.setAttribute("aria-expanded",String(open));
