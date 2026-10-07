@@ -47,3 +47,12 @@ Tre nuove relazioni di produzione del macroblocco 04 sono state inserite come do
 Esito del controllo strutturale al momento del commit: 1089 archi generali, nessun estremo mancante fra gli archi del grafo. Nessuna modifica al ramo pubblico `main`.
 
 Rimangono da verificare gli altri rapporti opera/genere e le fonti solo contestuali, senza considerarli approvati per analogia.
+
+## Secondo aggiornamento correttivo — 8 ottobre 2026
+Commit grafo: `2b4bfc61770e099c09c9796713f2adc23a295f2a`. Commit staging: `8e924f828db51140e23457b177979874b72c6cb6`.
+
+Sono stati aggiunti sette collegamenti `produzione` corredati di note e URL verificabili: Sammartini–sinfonia (Treccani), Animuccia–musica sacra (Treccani), Merulo–musica per organo (Treccani), Galuppi–opera (Treccani), Felice Anerio–messa (Treccani), Gregorio Allegri–musica sacra (Treccani), Steve Reich–musica vocale (catalogo ufficiale dell'autore: `Music for 18 Musicians`, organico misto, non un brano puramente vocale).
+
+Totale archi generali dopo questa integrazione: 1.096. Verifica integrità dei riferimenti `source`/`target`: nessun estremo inesistente. Il numero di nuove relazioni del ciclo in queste due riprese sale a 10 (3 nel primo aggiornamento e 7 nel secondo).
+
+Correzioni nello staging: il rigetto dei mottetti di Giovanni Croce era improprio e viene sostituito da un candidato in attesa di identificazione bibliografica. Per Gioseffo Zarlino viene esclusa *Le istitutioni harmoniche* dalle opere vocali poiché è un trattato, e si conserva un candidato mottettistico non ancora validato. La voce di Heinrich Isaac (*Innsbruck, ich muss dich lassen*) resta esclusa dal genere mottetto perché è un Lied. Le proposte ancora non documentate rimangono in staging.
