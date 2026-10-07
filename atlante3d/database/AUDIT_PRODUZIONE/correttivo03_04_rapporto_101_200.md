@@ -29,3 +29,21 @@ Data: 2026-10-08. Ramo: `audit-produzione-correttivo-01`. Nessuna modifica a `ma
 - Passaggio successivo: verificare cataloghi d'opera per entrambi i blocchi, correggere gli archi del 03, poi integrare quelli del 04 documentati con note e fonti direttamente pertinenti.
 
 L'architettura delle lenti resta invariata. Il repertorio storico esterno resta rinviato alla conclusione del ciclo correttivo.
+
+## Aggiornamento correttivo — 8 ottobre 2026
+Commit operativo: `3407a607bc88f8b70401ceb8b71aadab700c5606`.
+
+Quattro collegamenti produttivi del macroblocco 03 hanno ricevuto una sostituzione della fonte incongrua o generica con un documento direttamente pertinente, aggiornando la nota e lo stato a `documentato`:
+- Bizet → opera, *Carmen*: Metropolitan Opera.
+- Carl Maria von Weber → opera, *Der Freischütz*: Metropolitan Opera.
+- Claude Debussy → opera, *Pelléas et Mélisande*: Teatro alla Scala.
+- Camille Saint-Saëns → sinfonia, Sinfonia n. 3 op. 78: Berliner Philharmoniker.
+
+Tre nuove relazioni di produzione del macroblocco 04 sono state inserite come documentate:
+- George Gershwin → opera, *Porgy and Bess*: Metropolitan Opera.
+- Philip Glass → opera, *Einstein on the Beach*: catalogo ufficiale del compositore.
+- Béla Bartók → concerto, *Concerto per orchestra* Sz 116: Berliner Philharmoniker.
+
+Esito del controllo strutturale al momento del commit: 1089 archi generali, nessun estremo mancante fra gli archi del grafo. Nessuna modifica al ramo pubblico `main`.
+
+Rimangono da verificare gli altri rapporti opera/genere e le fonti solo contestuali, senza considerarli approvati per analogia.
