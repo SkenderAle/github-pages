@@ -497,7 +497,11 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=rad;
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
-  const isLabel=Boolean(lensFocus?(neighbors.has(n.id)||showAllLabels):(showAllLabels||highlight||n.type==="periodo"));
+  const isLabel=Boolean(
+   selected
+    ? (showAllLabels||n===selected||n===hover||(searchText.length>1&&matchesSearch(n,searchText)))
+    : (showAllLabels||highlight||n.type==="periodo")
+  );
   if(isLabel){
    ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
