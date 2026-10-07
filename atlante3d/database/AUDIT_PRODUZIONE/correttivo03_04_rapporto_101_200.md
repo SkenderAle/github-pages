@@ -99,3 +99,7 @@ Commit grafo: dc333b92309654580698df876adc6e5cdbe5e152; staging: 3eae307cb967c8d
 
 ## Decimo aggiornamento correttivo — 8 ottobre 2026
 Sette relazioni preesistenti ricondotte a fonti d'opera direttamente pertinenti e promosse da `da_verificare` a `documentato`: compositore-hector-berlioz, compositore-richard-wagner, compositore-richard-strauss, compositore-anton-bruckner, compositore-igor-stravinskij, compositore-luciano-berio, compositore-luigi-nono. Fonti e note sono contenute in `grafo.json`. Nessun nuovo arco, nessun nuovo nodo. Archi totali: 1137. Altri 37 compositori del lotto 101–150 non dispongono ancora di un arco di produzione con stato documentato; la copertura minima non vale come audit storico esaustivo. Controllo integrità estremo source/target superato. Commit: 4b83977fef68dc367428bed70dce283d97a6a3b2. `main` invariato.
+
+## Undicesimo aggiornamento — 8 ottobre 2026
+Due attribuzioni precedentemente in verifica sono state validate mediante schede bibliografiche specifiche: Maurice Ravel → balletto (*Daphnis et Chloé*), Bibliothèque nationale de France, https://catalogue.bnf.fr/ark:/12148/cb139177228 ; Goffredo Petrassi → concerto (otto *Concerti per orchestra*), Dizionario Biografico degli Italiani, https://www.treccani.it/enciclopedia/goffredo-petrassi_%28Dizionario-Biografico%29/ .
+Nessun nuovo arco (totale 1137). Ancora 35 autori del lotto 101–150 senza arco produttivo documentato. Commit grafo: 4ccd57284ac3c723fc7e87581015f2b015109129. `main` invariato.
