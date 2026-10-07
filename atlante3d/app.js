@@ -7,7 +7,7 @@ const moreControls=document.getElementById("moreControls"),explodeBtn=document.g
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel"),periodContext=document.getElementById("periodContext");
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
-let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
+let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoZoomPct=0,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
 let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
 const geoCache=new Map();
 let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),selectedDepthCacheKey="",selectedDepthCache=new Map(),lastDrawTime=0;
@@ -163,8 +163,8 @@ function geoScreenPoint(n,withManual=true){
 function contextRawPoint(n){
  if(!selected||n===selected||geoFromNode(n))return null;
  if(!(n.type==="corrente"||n.type==="ambito"||n.type==="persona"))return null;
- const depths=selectedDepths(4),depth=depths?.get(n.id);
- if(depth==null||depth<1||depth>4)return null;
+ const depths=selectedDepths(3),depth=depths?.get(n.id);
+ if(depth==null||depth<1||depth>3)return null;
  const center=rawGeoPoint(selected);if(!center)return null;
  const h=stableHash(n.id),angle=((h%100000)/100000)*Math.PI*2;
  const ring=76+depth*54+((h>>>8)%27);
@@ -239,7 +239,7 @@ function fitGeoNetwork(n,tight=false){
  const verticalFactor=Math.max(.65,w/Math.max(320,h)),padding=tight?1.78:2.12,minSpan=tight?10:14;
  const span=Math.min(360,Math.max(minSpan,maxLon*padding,maxLat*padding*verticalFactor,center.span&&pts.length<=1?Math.min(center.span,tight?18:28):0));
  geoState.targetLat=center.lat;geoState.targetLon=center.lon;geoState.targetSpan=span;
- geoAutoSpan=span;zoom=1;syncZoomControls();
+ geoAutoSpan=span;geoZoomPct=50;syncZoomControls();
  geoLabel.textContent=n.label+" · "+(center.place||"centro geografico")+" · rete "+pts.length+" nodi";
 }
 function moveGeo(n,tight=false){fitGeoNetwork(n,tight);}
@@ -342,7 +342,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
  const composerCount=nodes.filter(n=>n.type==="compositore").length;
  status.textContent=composerCount+" compositori · "+edges.length+" relazioni musicali · doppio clic per esplorare";
- zoom=1;geoAutoSpan=360;geoState.lat=20;geoState.lon=0;geoState.span=360;geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
+ zoom=1;geoZoomPct=0;geoAutoSpan=360;geoState.lat=20;geoState.lon=0;geoState.span=360;geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
  resize();syncLensControls();syncCategoryControls();syncZoomControls();
 }
 function physics(){
@@ -390,19 +390,19 @@ function selectedDepths(maxDepth=4){
 function selectedNeighborIds(){
  if(!selected)return null;
  const key=selected.id+"|"+activeLensKey();if(key===selectedNeighborCacheKey)return selectedNeighborCache;
- const depth=selectedDepths(4),out=new Set();
+ const depth=selectedDepths(3),out=new Set();
  for(const [id,d] of depth)if(d<=1)out.add(id);
  selectedNeighborCacheKey=key;selectedNeighborCache=out;return out;
 }
 function visibleNode(n){
  if(!nodeEligibleForDepth(n))return false;
- if(selected)return selectedDepths(4).has(n.id);
+ if(selected)return selectedDepths(3).has(n.id);
  if((n.type==="corrente"||n.type==="ambito"||n.type==="persona")&&!geoFromNode(n))return false;
  return true;
 }
 function nodeDepth(n){
  if(!selected)return 0;
- return selectedDepths(4).get(n.id)??99;
+ return selectedDepths(3).get(n.id)??99;
 }
 function lineHit(pt){
  let hit=null,best=12;
@@ -569,7 +569,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  resolveScreenCollisions(screen);
  const map=new Map(screen.map(p=>[p.node.id,p]));
  const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover,lineHits=[];
- const depths=selected?selectedDepths(4):null;
+ const depths=selected?selectedDepths(3):null;
  if(lensFocus){neighbors.add(lensFocus.id);for(const e of activeEdges){if(e.source===lensFocus.id)neighbors.add(e.target);if(e.target===lensFocus.id)neighbors.add(e.source);}}
  for(const e of activeEdges){
   const a=map.get(e.source),b=map.get(e.target);
@@ -579,7 +579,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
    const da=depths.get(e.source),db=depths.get(e.target);
    if(da==null||db==null)continue;
    edgeDepth=Math.max(da,db);
-   if(Math.abs(da-db)>1||edgeDepth>4)continue;
+   if(Math.abs(da-db)>1||edgeDepth>3)continue;
    direct=da===0||db===0;
   }else{
    if(!lensFocus)continue;
@@ -587,8 +587,8 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
    if(!direct)continue;
   }
   const style=relationStyle(e);
-  const edgeAlpha=selected?({1:.94,2:.34,3:.16,4:.075}[edgeDepth]||.05):.94;
-  ctx.globalAlpha=edgeAlpha;ctx.lineWidth=selected?({1:2.7,2:1.7,3:1.15,4:.8}[edgeDepth]||.8):2.7;
+  const edgeAlpha=selected?({1:.94,2:.55,3:.20}[edgeDepth]||0):.94;
+  ctx.globalAlpha=edgeAlpha;ctx.lineWidth=selected?({1:2.7,2:1.8,3:1.05}[edgeDepth]||.8):2.7;
   const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
   path.addColorStop(0,style.from);path.addColorStop(1,style.to);ctx.strokeStyle=path;
   const bend=Math.min(34,Math.hypot(b.x-a.x,b.y-a.y)*.075);
@@ -616,7 +616,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  for(const p of drawable){
   const n=p.node,depth=nodeDepth(n),related=selected&&depth<=1;
   const highlight=n===selected||(n===hover)||(searchText.length>1&&matchesSearch(n,searchText));
-  const depthAlpha=!selected?1:({0:1,1:1,2:.48,3:.22,4:.10}[depth]||.06);
+  const depthAlpha=!selected?1:({0:1,1:1,2:.55,3:.20}[depth]||0);
   ctx.globalAlpha=highlight?1:depthAlpha;
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=Math.max(8,rad);
@@ -784,35 +784,42 @@ function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remov
 canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
 canvas.addEventListener("dblclick",e=>{const p=hit(pointer(e));if(p){e.preventDefault();focusOn(p.node,true);}});
 function syncZoomControls(){
- const pct=Math.round(zoom*100);
+ const pct=Math.round(geoZoomPct);
  zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";
  zoomSlider.setAttribute("aria-valuetext",pct+" per cento");
  zoomSlider.disabled=false;
- zoomIn.disabled=zoom>=2.5;zoomOut.disabled=zoom<=.5;
+ zoomIn.disabled=pct>=100;zoomOut.disabled=pct<=0;
 }
-function setZoom(next){
- zoom=clamp(Number(next)||1,.5,2.5);
+function setZoomPct(next){
+ geoZoomPct=clamp(Number(next)||0,0,100);
  clearExplodeLayout();resetAutoLayout();
  if(selected){
   const anchor=geoFromNode(selected);
   if(anchor){
-   geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
-   geoState.targetSpan=clamp(geoAutoSpan/zoom,6,360);
+   if(geoZoomPct<=50){
+    const t=geoZoomPct/50;
+    geoState.targetLat=20+(anchor.lat-20)*t;
+    geoState.targetLon=lonDelta(anchor.lon,0)*t;
+    geoState.targetSpan=360+(geoAutoSpan-360)*t;
+   }else{
+    const t=(geoZoomPct-50)/50;
+    geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
+    geoState.targetSpan=geoAutoSpan+(6-geoAutoSpan)*t;
+   }
   }
  }else{
-  // Zoom libero sulla posizione corrente della carta.
-  geoState.targetLat=geoState.lat;
-  geoState.targetLon=geoState.lon;
-  geoState.targetSpan=clamp(360/zoom,30,360);
+  const t=geoZoomPct/100;
+  geoState.targetLat=geoState.lat;geoState.targetLon=geoState.lon;
+  geoState.targetSpan=360+(30-360)*t;
  }
  syncZoomControls();
 }
-zoomIn.addEventListener("click",e=>{e.preventDefault();setZoom(zoom*1.25);});
-zoomOut.addEventListener("click",e=>{e.preventDefault();setZoom(zoom/1.25);});
-zoomSlider.addEventListener("input",()=>setZoom(Number(zoomSlider.value)/100));
+zoomIn.addEventListener("click",e=>{e.preventDefault();setZoomPct(geoZoomPct+10);});
+zoomOut.addEventListener("click",e=>{e.preventDefault();setZoomPct(geoZoomPct-10);});
+zoomSlider.addEventListener("input",()=>setZoomPct(Number(zoomSlider.value)));
 syncZoomControls();
 canvas.addEventListener("wheel",e=>{
- e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.0012));
+ e.preventDefault();setZoomPct(geoZoomPct-e.deltaY*.035);
 },{passive:false});
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
@@ -837,7 +844,7 @@ moreControls?.addEventListener("click",()=>{
 explodeBtn?.addEventListener("click",()=>explodeNetwork());
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{
- selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;zoom=1;syncZoomControls();
+ selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;geoZoomPct=0;zoom=1;syncZoomControls();
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
  search.value="";searchText="";activeLenses.clear();activeLenses.add("musica");
  activeCategories.clear();activeCategories.add("compositore");
@@ -851,7 +858,7 @@ reset.addEventListener("click",()=>{
 window.addEventListener("resize",resize);
 window.addEventListener("pageshow",()=>{
  if(!selected){
-  zoom=1;geoAutoSpan=360;
+  zoom=1;geoZoomPct=0;geoAutoSpan=360;
   geoState.lat=20;geoState.lon=0;geoState.span=360;
   geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
   syncZoomControls();
