@@ -3,12 +3,12 @@
 const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:true});
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
 const search=document.getElementById("search"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensChoices=document.getElementById("lensChoices"),categoryChoices=document.getElementById("categoryChoices"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
-const moreControls=document.getElementById("moreControls");
+const moreControls=document.getElementById("moreControls"),explodeBtn=document.getElementById("explode");
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel"),periodContext=document.getElementById("periodContext");
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
-let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[];
+let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
 const geoCache=new Map();
 let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),lastDrawTime=0;
 const activeLenses=new Set(["musica"]);
@@ -152,10 +152,49 @@ function geoScreenPoint(n,withManual=true){
  const raw=rawGeoPoint(n);if(!raw)return null;
  const manual=withManual?(n.manualDx||0):0,manualY=withManual?(n.manualDy||0):0;
  const auto=withManual&&!n.manualPinned?(n.autoDx||0):0,autoY=withManual&&!n.manualPinned?(n.autoDy||0):0;
- return {x:raw.x+manual+auto,y:raw.y+manualY+autoY,depth:0,scale:1,r:15,geo:true,point:raw.point};
+ const ex=withManual?(n.explodeDx||0):0,ey=withManual?(n.explodeDy||0):0;
+ return {x:raw.x+manual+auto+ex,y:raw.y+manualY+autoY+ey,depth:0,scale:1,r:15,geo:true,point:raw.point};
 }
 function resetAutoLayout(){
  for(const n of nodes){if(!n.manualPinned){n.autoDx=0;n.autoDy=0;}}
+}
+function clearExplodeLayout(){
+ explodeActive=false;
+ for(const n of nodes){n.explodeDx=0;n.explodeDy=0;}
+ if(explodeBtn){explodeBtn.disabled=!selected;explodeBtn.textContent="✦ Esplodi";}
+}
+function shuffleNodes(list){
+ const out=[...list];
+ for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}
+ return out;
+}
+function explodeNetwork(){
+ if(!selected)return;
+ clearExplodeLayout();resetAutoLayout();
+ const center=rawGeoPoint(selected);if(!center)return;
+ const ids=selectedNeighborIds()||new Set();
+ const neighbors=shuffleNodes(nodes.filter(n=>n!==selected&&ids.has(n.id)&&visibleNode(n)&&geoFromNode(n)));
+ if(!neighbors.length)return;
+ const rings=[];
+ if(neighbors.length<=10)rings.push(neighbors.length);
+ else if(neighbors.length<=22)rings.push(8,neighbors.length-8);
+ else{rings.push(8,14);let left=neighbors.length-22;while(left>0){const take=Math.min(18,left);rings.push(take);left-=take;}}
+ let cursor=0;
+ const rotation=Math.random()*Math.PI*2;
+ for(let r=0;r<rings.length;r++){
+  const count=rings[r],rx=115+r*82,ry=90+r*64;
+  for(let i=0;i<count;i++){
+   const n=neighbors[cursor++],raw=rawGeoPoint(n);if(!raw)continue;
+   const angle=rotation+(Math.PI*2*i/count)+(r%2?Math.PI/count:0);
+   const targetX=center.x+Math.cos(angle)*rx,targetY=center.y+Math.sin(angle)*ry;
+   const manualX=n.manualDx||0,manualY=n.manualDy||0;
+   n.explodeDx=targetX-(raw.x+manualX);
+   n.explodeDy=targetY-(raw.y+manualY);
+  }
+ }
+ explodeActive=true;
+ if(explodeBtn){explodeBtn.disabled=false;explodeBtn.textContent="✦ Rimescola";}
+ status.textContent=selected.label+" · raggiera esplosa · "+neighbors.length+" collegamenti";
 }
 function categoryVisible(n){return n===selected||activeCategories.has(n.type);}
 function networkNodesForFocus(n){
@@ -270,7 +309,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  const all=db.nodes.filter(n=>n.visible!==0&&n.visible!=="0");
  const anchors=new Map();let i=0;
  for(const n of all){let a=i++*2.399963,rad=8*Math.sqrt((i+.5)/all.length),offset=n.type==="periodo"?6:n.type==="ambito"?5:rad;
-  const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,autoDx:0,autoDy:0,radius:n.type==="compositore"||n.type==="persona"?5:n.type==="geografia"?8:11};
+  const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,autoDx:0,autoDy:0,explodeDx:0,explodeDy:0,radius:n.type==="compositore"||n.type==="persona"?5:n.type==="geografia"?8:11};
   nodes.push(item);byId.set(item.id,item);if(item.type==="periodo")anchors.set(item.id,item);}
  for(const n of nodes){if(n.type!=="compositore"&&!(n.type==="persona"&&n.music_relevance))continue;const period=db.edges.find(e=>e.source===n.id&&byId.get(e.target)?.type==="periodo");if(period){const a=anchors.get(period.target);if(a){n.x=a.x+(rnd()-.5)*5;n.y=a.y+(rnd()-.5)*5;n.z=a.z+(rnd()-.5)*5;}}}
  edges=db.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>({...e,a:byId.get(e.source),b:byId.get(e.target)}));
@@ -546,8 +585,10 @@ function updatePeriodContext(n){
  periodContext.title=periods.length>1?"Altri contesti: "+periods.slice(1).map(x=>x.node.label).join(" · "):periods[0].node.label;
 }
 function focusOn(n,openPanel=true,tight=false){
+ clearExplodeLayout();
  if(selected!==n){search.value="";searchText="";resetAutoLayout();}
  selected=n;selectedNeighborCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
+ if(explodeBtn)explodeBtn.disabled=false;
  updatePeriodContext(n);
  const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
  status.textContent=n.label+" · "+linked(n).length+" connessioni · "+activeLensLabel();
@@ -669,7 +710,7 @@ function syncZoomControls(){
 }
 function setZoom(next){
  zoom=clamp(Number(next)||1,.5,2.5);
- resetAutoLayout();
+ clearExplodeLayout();resetAutoLayout();
  const anchor=selected&&geoFromNode(selected);
  if(anchor){
   geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
@@ -692,18 +733,19 @@ function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-ca
 function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
 function toggleLens(id){
  if(activeLenses.has(id)){if(activeLenses.size===1)return;activeLenses.delete(id);}else activeLenses.add(id);
- activeEdgesCacheKey="";selectedNeighborCacheKey="";resetAutoLayout();
+ activeEdgesCacheKey="";selectedNeighborCacheKey="";clearExplodeLayout();resetAutoLayout();
  syncLensControls();if(relationTooltip)relationTooltip.hidden=true;if(selected){fitGeoNetwork(selected);populate(selected);}
  status.textContent=(selected?selected.label+" · "+linked(selected).length+" relazioni · ":"")+"Lenti: "+activeLensLabel();
 }
 lensChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-lens]");if(!input)return;toggleLens(input.value);});
-categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";resetAutoLayout();if(selected)fitGeoNetwork(selected);});
+categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected)fitGeoNetwork(selected);});
 moreControls?.addEventListener("click",()=>{
  const open=document.body.classList.toggle("controls-open");
  moreControls.setAttribute("aria-expanded",String(open));
  moreControls.textContent=open?"− Meno":"☷ Opzioni";
 });
 
+explodeBtn?.addEventListener("click",()=>explodeNetwork());
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{
  selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;zoom=1;syncZoomControls();
@@ -711,7 +753,8 @@ reset.addEventListener("click",()=>{
  search.value="";searchText="";activeLenses.clear();activeLenses.add("musica");
  activeCategories.clear();activeCategories.add("compositore");
  syncLensControls();syncCategoryControls();
- for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;}
+ for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;n.explodeDx=0;n.explodeDy=0;}
+ explodeActive=false;if(explodeBtn){explodeBtn.disabled=true;explodeBtn.textContent="✦ Esplodi";}
  document.body.classList.remove("controls-open");if(moreControls){moreControls.setAttribute("aria-expanded","false");moreControls.textContent="☷ Opzioni";}
  if(lensHelp)lensHelp.textContent="Puoi attivare più lenti contemporaneamente. Doppio clic su un nodo per centrarlo.";
  if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.length+" nodi · doppio clic per esplorare";
