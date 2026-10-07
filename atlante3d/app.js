@@ -19,42 +19,28 @@ const EXPLORATION_LENSES=[
  {id:"genealogie",label:"Genealogie dei generi",description:"Evoluzione fra generi, forme, correnti e pratiche musicali. Non indica rapporti fra compositori.",color:"#c892ff"},
  {id:"collaborazioni",label:"Incontri e collaborazioni",description:"Rapporti artistici e professionali documentati. Linea bidirezionale, senza freccia.",color:"#77d7a6"}
 ];
-const EXPLORATION_GROUPS={musica:["scuole"],trasmissioni:["formazione","influenze"],genealogie:["genealogie"],collaborazioni:["collaborazioni"]};
+const EXPLORATION_GROUPS={
+ musica:["scuole","appartenenze"],
+ trasmissioni:["formazione","influenze","ricezioni"],
+ genealogie:["genealogie"],
+ collaborazioni:["collaborazioni"]
+};
 const lensMeta=id=>EXPLORATION_LENSES.find(l=>l.id===id);
 const lensActive=id=>activeLenses.has(id);
 const hasNonMusicLens=()=>[...activeLenses].some(id=>id!=="musica");
 const activeLensLabel=()=>EXPLORATION_LENSES.filter(l=>activeLenses.has(l.id)).map(l=>l.label).join(" + ")||"nessuna lente";
-const isConceptNode=n=>!!n&&(n.type==="corrente"||n.type==="ambito");
-const isMusicianNode=n=>!!n&&(n.type==="compositore"||n.type==="persona");
-function genealogySemantic(e){
- if(e.group!=="genealogie")return e.group;
- const a=byId.get(e.source),b=byId.get(e.target);
- if(isConceptNode(a)&&isConceptNode(b))return "genealogie";
- if(isMusicianNode(a)&&isMusicianNode(b))return "trasmissioni";
- if((isConceptNode(a)&&isMusicianNode(b))||(isMusicianNode(a)&&isConceptNode(b)))return "appartenenze";
- return "genealogie";
-}
-function displayRelations(id){
- if(id==="trasmissioni")return lensEdges.filter(e=>e.group==="formazione"||e.group==="influenze"||genealogySemantic(e)==="trasmissioni");
- if(id==="genealogie")return lensEdges.filter(e=>genealogySemantic(e)==="genealogie");
- if(id==="collaborazioni")return lensEdges.filter(e=>e.group==="collaborazioni");
- if(id==="musica")return lensEdges.filter(e=>e.group==="scuole"||genealogySemantic(e)==="appartenenze");
- return [];
-}
+function displayRelations(id){return lensEdges.filter(e=>(EXPLORATION_GROUPS[id]||[]).includes(e.group));}
 const RELATION_STYLE={
  formazione:{from:"#53bfff",to:"#b8edff",arrow:true,label:"maestro → allievo"},
  influenze:{from:"#ffd166",to:"#ff8b5c",arrow:true,label:"influenza → ricezione"},
  genealogie:{from:"#b98cff",to:"#f39bff",arrow:true,label:"genealogia → sviluppo"},
  scuole:{from:"#73d7c4",to:"#d1f3d8",arrow:true,label:"tradizione → autore"},
  collaborazioni:{from:"#72dea2",to:"#72dea2",arrow:false,label:"collaborazione ↔"},
+ ricezioni:{from:"#ffd166",to:"#ff8b5c",arrow:true,label:"ricezione → rielaborazione"},
+ appartenenze:{from:"#73d7c4",to:"#d1f3d8",arrow:true,label:"genere/corrente → autore"},
  storia:{from:"#9db7ca",to:"#d7e1e8",arrow:false,label:"relazione storica"}
 };
-function relationStyle(e){
- const semantic=genealogySemantic(e);
- if(semantic==="trasmissioni"&&e.group==="genealogie")return RELATION_STYLE.influenze;
- if(semantic==="appartenenze")return RELATION_STYLE.scuole;
- return RELATION_STYLE[e.group]||RELATION_STYLE.storia;
-}
+function relationStyle(e){return RELATION_STYLE[e.group]||RELATION_STYLE.storia;}
 function relationVerb(e){return e.forward||e.kind||"relazione documentata";}
 function dedupeEdges(list){const seen=new Set();return list.filter(e=>{const k=e.id||[e.source,e.target,e.group||"",e.kind||""].join("|");if(seen.has(k))return false;seen.add(k);return true;});}
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
@@ -281,7 +267,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  videos=db.videos||[];videoLinks=db.video_nodes||[];
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
  lensEdges=(lenses.relations||[]).filter(e=>byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
-  historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole"||genealogySemantic(e)==="appartenenze")];
+  historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole"||e.group==="appartenenze")];
  geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();
  freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
  status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · doppio clic per esplorare";resize();syncLensControls();syncCategoryControls();
