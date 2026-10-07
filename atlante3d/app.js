@@ -15,16 +15,11 @@ const activeLenses=new Set(["musica"]);
 const activeCategories=new Set(["compositore"]);
 const EXPLORATION_LENSES=[
  {id:"musica",label:"Storia e appartenenze",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#9fc7d9"},
- {id:"trasmissioni",label:"Trasmissioni e influenze",description:"Maestri e allievi, influenze, citazioni, variazioni, trascrizioni e altre forme documentate di ricezione fra musicisti.",color:"#63c7ff"},
- {id:"genealogie",label:"Genealogie dei generi",description:"Evoluzione fra generi, forme, correnti e pratiche musicali. Non indica rapporti fra compositori.",color:"#c892ff"},
+ {id:"trasmissioni",label:"Maestri, allievi e influenze",description:"Rapporti didattici e influenze documentate. La freccia indica sempre la direzione storica.",color:"#63c7ff"},
+ {id:"genealogie",label:"Altri autori correlati",description:"Autori collegati da ricezioni, rielaborazioni, citazioni, trascrizioni o altri rapporti musicali documentati.",color:"#c892ff"},
  {id:"collaborazioni",label:"Incontri e collaborazioni",description:"Rapporti artistici e professionali documentati. Linea bidirezionale, senza freccia.",color:"#77d7a6"}
 ];
-const EXPLORATION_GROUPS={
- musica:["scuole","appartenenze"],
- trasmissioni:["formazione","influenze","ricezioni"],
- genealogie:["genealogie"],
- collaborazioni:["collaborazioni"]
-};
+const EXPLORATION_GROUPS={musica:["scuole"],trasmissioni:["formazione","influenze"],genealogie:["genealogie"],collaborazioni:["collaborazioni"]};
 const lensMeta=id=>EXPLORATION_LENSES.find(l=>l.id===id);
 const lensActive=id=>activeLenses.has(id);
 const hasNonMusicLens=()=>[...activeLenses].some(id=>id!=="musica");
@@ -36,8 +31,6 @@ const RELATION_STYLE={
  genealogie:{from:"#b98cff",to:"#f39bff",arrow:true,label:"genealogia → sviluppo"},
  scuole:{from:"#73d7c4",to:"#d1f3d8",arrow:true,label:"tradizione → autore"},
  collaborazioni:{from:"#72dea2",to:"#72dea2",arrow:false,label:"collaborazione ↔"},
- ricezioni:{from:"#ffd166",to:"#ff8b5c",arrow:true,label:"ricezione → rielaborazione"},
- appartenenze:{from:"#73d7c4",to:"#d1f3d8",arrow:true,label:"genere/corrente → autore"},
  storia:{from:"#9db7ca",to:"#d7e1e8",arrow:false,label:"relazione storica"}
 };
 function relationStyle(e){return RELATION_STYLE[e.group]||RELATION_STYLE.storia;}
@@ -267,7 +260,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  videos=db.videos||[];videoLinks=db.video_nodes||[];
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
  lensEdges=(lenses.relations||[]).filter(e=>byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
-  historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole"||e.group==="appartenenze")];
+  historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole")];
  geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();
  freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
  status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · doppio clic per esplorare";resize();syncLensControls();syncCategoryControls();
