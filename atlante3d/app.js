@@ -12,7 +12,7 @@ let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=fals
 const geoCache=new Map();
 let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),lastDrawTime=0;
 const activeLenses=new Set(["musica"]);
-const activeCategories=new Set(["compositore","periodo","ambito","corrente","persona"]);
+const activeCategories=new Set(["compositore"]);
 const EXPLORATION_LENSES=[
  {id:"musica",label:"Storia e scuole",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#9fc7d9"},
  {id:"trasmissioni",label:"Maestri, allievi e influenze",description:"Rapporti didattici e influenze documentate. La freccia indica sempre la direzione storica.",color:"#63c7ff"},
@@ -148,7 +148,9 @@ function rawGeoPoint(n){
 }
 function geoScreenPoint(n,withManual=true){
  const raw=rawGeoPoint(n);if(!raw)return null;
- return {x:raw.x+(withManual?(n.manualDx||0):0),y:raw.y+(withManual?(n.manualDy||0):0),depth:0,scale:1,r:15,geo:true,point:raw.point};
+ const manual=withManual?(n.manualDx||0):0,manualY=withManual?(n.manualDy||0):0;
+ const auto=withManual&&!n.manualPinned?(n.autoDx||0):0,autoY=withManual&&!n.manualPinned?(n.autoDy||0):0;
+ return {x:raw.x+manual+auto,y:raw.y+manualY+autoY,depth:0,scale:1,r:15,geo:true,point:raw.point};
 }
 function categoryVisible(n){return n===selected||activeCategories.has(n.type);}
 function networkNodesForFocus(n){
@@ -191,22 +193,28 @@ function resolveScreenCollisions(points){
  const visible=points.filter(p=>p.node.type!=="geografia"&&visibleNode(p.node));
  if(visible.length<2)return;
  const cellSize=48;
- for(let pass=0;pass<3;pass++){
+ const push=(p,dx,dy)=>{
+  p.x+=dx;p.y+=dy;
+  if(p.node.manualPinned||p.node===selected)return;
+  p.node.autoDx=clamp((p.node.autoDx||0)+dx,-320,320);
+  p.node.autoDy=clamp((p.node.autoDy||0)+dy,-260,260);
+ };
+ for(let pass=0;pass<2;pass++){
   const grid=new Map();
   for(const a of visible){
    const gx=Math.floor(a.x/cellSize),gy=Math.floor(a.y/cellSize);
    for(let ox=-1;ox<=1;ox++)for(let oy=-1;oy<=1;oy++){
     const bucket=grid.get((gx+ox)+","+(gy+oy));if(!bucket)continue;
     for(const b of bucket){
-     let dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy),min=(a.r||12)+(b.r||12)+9;
+     let dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy),min=(a.r||12)+(b.r||12)+7;
      if(d>=min)continue;
      if(d<.01){dx=(stableHash(a.node.id+b.node.id)%2?1:-1);dy=.3;d=Math.hypot(dx,dy);}
-     const k=(min-d)*.5/d,nx=dx*k,ny=dy*k;
+     const k=Math.min(7,(min-d)*.42)/d,nx=dx*k,ny=dy*k;
      const aFixed=a.node===selected||a.node.manualPinned,bFixed=b.node===selected||b.node.manualPinned;
      if(aFixed&&bFixed)continue;
-     if(aFixed){b.x-=2*nx;b.y-=2*ny;}
-     else if(bFixed){a.x+=2*nx;a.y+=2*ny;}
-     else{a.x+=nx;a.y+=ny;b.x-=nx;b.y-=ny;}
+     if(aFixed)push(b,-2*nx,-2*ny);
+     else if(bFixed)push(a,2*nx,2*ny);
+     else{push(a,nx,ny);push(b,-nx,-ny);}
     }
    }
    const key=gx+","+gy;if(!grid.has(key))grid.set(key,[]);grid.get(key).push(a);
@@ -245,7 +253,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  const all=db.nodes.filter(n=>n.visible!==0&&n.visible!=="0");
  const anchors=new Map();let i=0;
  for(const n of all){let a=i++*2.399963,rad=8*Math.sqrt((i+.5)/all.length),offset=n.type==="periodo"?6:n.type==="ambito"?5:rad;
-  const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,radius:n.type==="compositore"||n.type==="persona"?5:n.type==="geografia"?8:11};
+  const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,autoDx:0,autoDy:0,radius:n.type==="compositore"||n.type==="persona"?5:n.type==="geografia"?8:11};
   nodes.push(item);byId.set(item.id,item);if(item.type==="periodo")anchors.set(item.id,item);}
  for(const n of nodes){if(n.type!=="compositore"&&!(n.type==="persona"&&n.music_relevance))continue;const period=db.edges.find(e=>e.source===n.id&&byId.get(e.target)?.type==="periodo");if(period){const a=anchors.get(period.target);if(a){n.x=a.x+(rnd()-.5)*5;n.y=a.y+(rnd()-.5)*5;n.z=a.z+(rnd()-.5)*5;}}}
  edges=db.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>({...e,a:byId.get(e.source),b:byId.get(e.target)}));
@@ -494,7 +502,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
 function linked(n){return currentEdges().filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
 function focusOn(n,openPanel=true,tight=false){
  if(selected!==n){search.value="";searchText="";}
- selected=n;selectedNeighborCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;
+ selected=n;selectedNeighborCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
  const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
  status.textContent=n.label+" · "+linked(n).length+" connessioni · "+activeLensLabel();
  populate(n);if(openPanel)setPanel(true);
@@ -638,9 +646,9 @@ reset.addEventListener("click",()=>{
  selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";
  search.value="";searchText="";activeLenses.clear();activeLenses.add("musica");
- activeCategories.clear();["compositore","periodo","ambito","corrente","persona"].forEach(x=>activeCategories.add(x));
+ activeCategories.clear();activeCategories.add("compositore");
  syncLensControls();syncCategoryControls();
- for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;}
+ for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;}
  document.body.classList.remove("controls-open");if(moreControls){moreControls.setAttribute("aria-expanded","false");moreControls.textContent="☷ Opzioni";}
  if(lensHelp)lensHelp.textContent="Puoi attivare più lenti contemporaneamente. Doppio clic su un nodo per centrarlo.";
  if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.length+" nodi · doppio clic per esplorare";
