@@ -56,3 +56,9 @@ Sono stati aggiunti sette collegamenti `produzione` corredati di note e URL veri
 Totale archi generali dopo questa integrazione: 1.096. Verifica integrità dei riferimenti `source`/`target`: nessun estremo inesistente. Il numero di nuove relazioni del ciclo in queste due riprese sale a 10 (3 nel primo aggiornamento e 7 nel secondo).
 
 Correzioni nello staging: il rigetto dei mottetti di Giovanni Croce era improprio e viene sostituito da un candidato in attesa di identificazione bibliografica. Per Gioseffo Zarlino viene esclusa *Le istitutioni harmoniche* dalle opere vocali poiché è un trattato, e si conserva un candidato mottettistico non ancora validato. La voce di Heinrich Isaac (*Innsbruck, ich muss dich lassen*) resta esclusa dal genere mottetto perché è un Lied. Le proposte ancora non documentate rimangono in staging.
+
+## Terzo aggiornamento — Copland e Isaac
+- Aaron Copland → `genere-balletto`: *Appalachian Spring* (1944), commissione, prima e materiale musicale documentati dalla Library of Congress. Fonti: https://wwws.loc.gov/exhibits/treasures/tr33a.html e https://www.loc.gov/collections/aaron-copland/about-this-collection/
+- Heinrich Isaac → `genere-lied`: *Innsbruck, ich muss dich lassen*, Lied polifonico tedesco, non mottetto. Fonti: https://imslp.org/wiki/Innsbruck_ich_muss_dich_lassen_(Isaac,_Heinrich) e https://germanhistorydocs.org/de/von-den-reformationen-bis-zum-dreissigjaehrigen-krieg-1500-1648/heinrich-isaac-innsbruck-ich-muss-dich-lassen-16th-century
+- Commit del grafo: `f00c40ac1b60c30c69c87c7f75cf4ebd4f087d3a`; commit staging: `ff7108bf4b21b2ebc1420039fc918e44b66dc116`.
+- Totale nuovi archi produttivi delle riprese successive al rapporto iniziale: 12 (3 + 7 + 2). Totale archi generali: 1.098. Nessun riferimento a nodi inesistenti. Nessuna modifica a `main`.
