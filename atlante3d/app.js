@@ -14,7 +14,7 @@ let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selec
 const activeLenses=new Set(["musica"]);
 const activeCategories=new Set(["compositore"]);
 const EXPLORATION_LENSES=[
- {id:"musica",label:"Storia e scuole",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#9fc7d9"},
+ {id:"musica",label:"Storia e appartenenze",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#9fc7d9"},
  {id:"trasmissioni",label:"Maestri, allievi e influenze",description:"Rapporti didattici e influenze documentate. La freccia indica sempre la direzione storica.",color:"#63c7ff"},
  {id:"genealogie",label:"Genealogie dei generi",description:"Ascendenze e trasformazioni di forme, pratiche e generi. Frecce viola.",color:"#c892ff"},
  {id:"collaborazioni",label:"Incontri e collaborazioni",description:"Rapporti artistici e professionali documentati. Linea bidirezionale, senza freccia.",color:"#77d7a6"}
@@ -532,7 +532,7 @@ function focusOn(n,openPanel=true,tight=false){
  status.textContent=n.label+" · "+linked(n).length+" connessioni · "+activeLensLabel();
  populate(n);if(openPanel)setPanel(true);
 }
-function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Scheda e video";tab.setAttribute("aria-expanded",String(open));}
+function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Esplora";tab.setAttribute("aria-expanded",String(open));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
