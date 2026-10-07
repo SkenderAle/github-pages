@@ -1,33 +1,36 @@
 # Musurgia Mundi · Copertura delle scuole e delle genealogie
 
-**Snapshot generata dal database fuso in data 2026-10-07.**
+**Snapshot generata automaticamente dal database:** 2026-10-07.
 
-> Le quantità misurano la copertura informativa e non costituiscono una certificazione musicologica. L'assenza di un arco indica una ricerca aperta, non l'inesistenza storica della relazione.
+> Il numero di relazioni è un indicatore di copertura del catalogo, non una certificazione bibliografica. Lo zero significa «rapporto non ancora catalogato», non «relazione storica inesistente». Ogni voce va verificata con fonti riferite a quel preciso rapporto.
 
-- Compositori censiti: **297**.
-- Relazioni specialistiche: **1192**.
-- Scuole e tradizioni: **375**.
-- Compositori senza una relazione di scuola: **9**.
-- Compositori senza alcuna relazione specialistica: **0**.
-- Prime ricognizioni musicologiche registrate: **288** su 297.
-- Audit approfonditi **09–20** fusi nel database; la ricerca resta espandibile.
+- Compositori censiti: **303**.
+- Senza legami di scuola o tradizione: **8**.
+- Senza relazioni specialistiche di alcun tipo: **0**.
+- Relazioni nella lente Scuole e tradizioni: **382**.
+- Relazioni specialistiche complessive: **1224**.
+- Prime ricognizioni musicologiche registrate: **294** su 303.
+- Identità Wikidata riconciliate: **19** su 303.
+- Audit approfonditi **21–22** fusi nel database; audit 23 ancora preparatorio e non incluso.
 
 ## Copertura per epoca
 
-| Epoca | Compositori | Senza Scuole |
+| Epoca | Compositori | Da verificare nella lente Scuole |
 |---|---:|---:|
 | medioevo | 11 | 0 |
 | rinascimento | 25 | 0 |
-| barocco | 45 | 0 |
-| classicismo | 34 | 0 |
-| romanticismo | 47 | 0 |
-| post-romanticismo | 5 | 0 |
+| barocco | 46 | 0 |
+| classicismo | 36 | 1 |
+| romanticismo | 49 | 1 |
+| post-romanticismo | 6 | 0 |
 | novecento | 61 | 0 |
-| non-classificato | 69 | 9 |
+| non-classificato | 69 | 6 |
 
-## Revisione per compositore
+## Audit di tutti i compositori
 
-| Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni | Stato |
+Legenda: Sc=Scuole, Ma=Formazione, In=Influenze, Co=Collaborazioni, Ge=Genealogie. **RICERCA** indica soltanto l’assenza di una relazione di scuola.
+
+| Epoca | Compositore | Sc | Ma | In | Co | Ge | Scuole e tradizioni collegate | Stato |
 |---|---|---:|---:|---:|---:|---:|---|---|
 | medioevo | Adam de la Halle | 1 | 0 | 0 | 1 | 1 | Tradizione dei trovieri francesi | catalogato |
 | medioevo | Francesco Landini | 1 | 0 | 0 | 0 | 2 | Ars nova italiana | catalogato |
@@ -94,13 +97,14 @@
 | barocco | Heinrich Schütz | 2 | 1 | 1 | 3 | 0 | Scuola luterana · Scuola veneziana | catalogato |
 | barocco | Henry Purcell | 1 | 1 | 2 | 0 | 1 | Teatro musicale inglese della Restaurazione | catalogato |
 | barocco | Jacopo Peri | 1 | 0 | 0 | 1 | 1 | Camerata fiorentina e ambiente di Corsi | catalogato |
+| barocco | Jan Pieterszoon Sweelinck | 1 | 1 | 1 | 0 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato |
 | barocco | Jean-Baptiste Lully | 1 | 1 | 1 | 2 | 2 | Teatro musicale francese del Barocco | catalogato |
 | barocco | Jean-Marie Leclair | 2 | 1 | 0 | 0 | 0 | Scuola del concerto violinistico italiano · Scuola violinistica francese del Settecento | catalogato |
 | barocco | Jean-Philippe Rameau | 2 | 0 | 1 | 1 | 3 | Scuola clavicembalistica francese · Teatro musicale francese del Barocco | catalogato |
 | barocco | Johann Jakob Froberger | 1 | 1 | 0 | 0 | 1 | Tastiere italiane del primo Seicento | catalogato |
-| barocco | Johann Kuhnau | 1 | 1 | 0 | 1 | 0 | Tradizioni organistiche tedesche del Barocco | catalogato |
-| barocco | Johann Pachelbel | 1 | 1 | 0 | 0 | 1 | Tradizioni organistiche tedesche del Barocco | catalogato |
-| barocco | Johann Sebastian Bach | 3 | 3 | 12 | 2 | 11 | Collegium musicum di Lipsia · Scuola luterana · Tradizioni organistiche tedesche del Barocco | catalogato |
+| barocco | Johann Kuhnau | 1 | 1 | 0 | 1 | 1 | Tradizioni organistiche tedesche del Barocco | catalogato |
+| barocco | Johann Pachelbel | 1 | 1 | 1 | 0 | 1 | Tradizioni organistiche tedesche del Barocco | catalogato |
+| barocco | Johann Sebastian Bach | 3 | 3 | 14 | 2 | 13 | Collegium musicum di Lipsia · Scuola luterana · Tradizioni organistiche tedesche del Barocco | catalogato |
 | barocco | John Blow | 1 | 1 | 0 | 0 | 1 | Teatro musicale inglese della Restaurazione | catalogato |
 | barocco | Leonardo Leo | 1 | 0 | 0 | 1 | 1 | Scuola operistica napoletana | catalogato |
 | barocco | Leonardo Vinci | 1 | 1 | 0 | 1 | 0 | Scuola operistica napoletana | catalogato |
@@ -110,7 +114,7 @@
 | barocco | Nicola Logroscino | 1 | 0 | 0 | 1 | 1 | Scuola operistica napoletana | catalogato |
 | barocco | Nicola Porpora | 2 | 2 | 0 | 0 | 0 | Opera of the Nobility · Londra, dal 1733 · Scuola operistica napoletana | catalogato |
 | barocco | Tomaso Albinoni | 1 | 0 | 0 | 0 | 3 | Scuola del concerto violinistico italiano | catalogato |
-| classicismo | Antonio Salieri | 1 | 3 | 1 | 1 | 0 | Riforma operistica del Settecento | catalogato |
+| classicismo | Antonio Salieri | 1 | 4 | 1 | 1 | 0 | Riforma operistica del Settecento | catalogato |
 | classicismo | Antonio Soler | 1 | 1 | 0 | 0 | 1 | Clavicembalo iberico e corte di Madrid | catalogato |
 | classicismo | Carl Ditters von Dittersdorf | 3 | 0 | 0 | 3 | 0 | Classicismo viennese (categoria storiografica) · Stile galante ed empfindsamer Stil · Vita musicale viennese dell'Illuminismo | catalogato |
 | classicismo | Carl Philipp Emanuel Bach | 1 | 2 | 3 | 0 | 1 | Stile galante ed empfindsamer Stil | catalogato |
@@ -121,7 +125,7 @@
 | classicismo | Domenico Cimarosa | 1 | 1 | 1 | 0 | 1 | Scuola operistica napoletana | catalogato |
 | classicismo | Egidio Duni | 1 | 0 | 0 | 1 | 2 | Opéra-comique | catalogato |
 | classicismo | Filippo Manfredi | 1 | 1 | 0 | 1 | 0 | Scuola violinistica di Tartini · Padova | catalogato |
-| classicismo | Franz Schubert | 1 | 1 | 2 | 0 | 4 | Lied romantico tedesco | catalogato |
+| classicismo | Franz Schubert | 1 | 2 | 2 | 0 | 4 | Lied romantico tedesco | catalogato |
 | classicismo | Franz Xaver Richter | 2 | 1 | 0 | 0 | 0 | Cappella della cattedrale di Strasburgo nel Settecento · Scuola di Mannheim | catalogato |
 | classicismo | Giovanni Battista Sammartini | 1 | 0 | 3 | 2 | 1 | Sinfonismo italiano del primo Settecento | catalogato |
 | classicismo | Giovanni Battista Viotti | 1 | 0 | 2 | 1 | 0 | Scuola del concerto violinistico italiano | catalogato |
@@ -131,19 +135,21 @@
 | classicismo | Giuseppe Malerbi | 1 | 1 | 0 | 0 | 1 | Cappella della collegiata di Lugo · età di Malerbi | catalogato |
 | classicismo | Giuseppe Sarti | 1 | 2 | 1 | 0 | 0 | Cappella e teatro musicale della corte di Caterina II | catalogato |
 | classicismo | Johann Christian Bach | 1 | 3 | 1 | 1 | 0 | Stile galante ed empfindsamer Stil | catalogato |
-| classicismo | Johann Georg Albrechtsberger | 2 | 1 | 0 | 0 | 0 | Tradizione contrappuntistica viennese settecentesca · Vita musicale viennese dell'Illuminismo | catalogato |
+| classicismo | Johann Georg Albrechtsberger | 2 | 2 | 0 | 0 | 0 | Tradizione contrappuntistica viennese settecentesca · Vita musicale viennese dell'Illuminismo | catalogato |
+| classicismo | Johann Nepomuk Hummel | 1 | 4 | 0 | 1 | 0 | Classicismo viennese (categoria storiografica) | catalogato |
 | classicismo | Johann Stamitz | 1 | 3 | 0 | 0 | 0 | Scuola di Mannheim | catalogato |
-| classicismo | Joseph Haydn | 1 | 3 | 5 | 2 | 0 | Classicismo viennese (categoria storiografica) | catalogato |
+| classicismo | Joseph Haydn | 1 | 4 | 5 | 2 | 0 | Classicismo viennese (categoria storiografica) | catalogato |
 | classicismo | Leopold Mozart | 1 | 1 | 0 | 0 | 1 | Cappella di corte e musica sacra di Salisburgo nel Settecento | catalogato |
-| classicismo | Ludwig van Beethoven | 1 | 5 | 7 | 1 | 7 | Classicismo viennese (categoria storiografica) | catalogato |
-| classicismo | Luigi Boccherini | 3 | 0 | 1 | 2 | 0 | Musica cameristica del Classicismo · Musica da camera delle corti spagnole del Settecento · Sinfonismo italiano del primo Settecento | catalogato |
+| classicismo | Ludwig van Beethoven | 1 | 6 | 7 | 4 | 8 | Classicismo viennese (categoria storiografica) | catalogato |
+| classicismo | Luigi Boccherini | 3 | 0 | 1 | 3 | 0 | Musica cameristica del Classicismo · Musica da camera delle corti spagnole del Settecento · Sinfonismo italiano del primo Settecento | catalogato |
 | classicismo | Luigi Cherubini | 2 | 2 | 2 | 1 | 0 | Conservatorio di Parigi e scuola di composizione · Teatro musicale francese dell'Ottocento | catalogato |
 | classicismo | Marianna Martines | 2 | 2 | 0 | 1 | 0 | Classicismo viennese (categoria storiografica) · Vita musicale viennese dell'Illuminismo | catalogato |
+| classicismo | Muzio Clementi | 0 | 0 | 0 | 2 | 0 | — | **RICERCA** |
 | classicismo | Niccolò Antonio Zingarelli | 1 | 2 | 0 | 1 | 1 | Scuola operistica napoletana | catalogato |
 | classicismo | Niccolò Piccinni | 2 | 0 | 0 | 1 | 2 | Riforma operistica del Settecento · Scuola operistica napoletana | catalogato |
 | classicismo | Pietro Alessandro Guglielmi | 1 | 0 | 0 | 1 | 3 | Scuola operistica napoletana | catalogato |
 | classicismo | Stanislao Mattei | 1 | 4 | 0 | 0 | 0 | Scuola bolognese di contrappunto | catalogato |
-| classicismo | Wolfgang Amadeus Mozart | 1 | 2 | 8 | 5 | 8 | Classicismo viennese (categoria storiografica) | catalogato |
+| classicismo | Wolfgang Amadeus Mozart | 1 | 3 | 8 | 6 | 8 | Classicismo viennese (categoria storiografica) | catalogato |
 | romanticismo | Aleksandr Borodin | 1 | 0 | 0 | 2 | 2 | Gruppo dei Cinque russo | catalogato |
 | romanticismo | Ambroise Thomas | 1 | 1 | 0 | 0 | 1 | Teatro musicale francese dell'Ottocento | catalogato |
 | romanticismo | Antonín Dvořák | 1 | 1 | 2 | 3 | 0 | Scuola nazionale boema | catalogato |
@@ -151,14 +157,15 @@
 | romanticismo | Bedřich Smetana | 1 | 0 | 1 | 1 | 2 | Scuola nazionale boema | catalogato |
 | romanticismo | Camille Saint-Saëns | 1 | 2 | 0 | 2 | 4 | Teatro musicale francese dell'Ottocento | catalogato |
 | romanticismo | Carl Maria von Weber | 1 | 1 | 1 | 1 | 3 | Opera romantica tedesca | catalogato |
-| romanticismo | César Franck | 1 | 2 | 0 | 0 | 0 | Scuola franckiana di Parigi | catalogato |
+| romanticismo | César Franck | 1 | 2 | 1 | 0 | 0 | Scuola franckiana di Parigi | catalogato |
 | romanticismo | Cezar Antonovič Cui | 1 | 1 | 0 | 0 | 1 | Gruppo dei Cinque russo | catalogato |
 | romanticismo | Charles Gounod | 1 | 3 | 1 | 0 | 0 | Teatro musicale francese dell'Ottocento | catalogato |
 | romanticismo | Clara Schumann | 1 | 1 | 0 | 2 | 0 | Lied romantico tedesco | catalogato |
 | romanticismo | Daniel-François-Esprit Auber | 1 | 1 | 1 | 0 | 3 | Teatro musicale francese dell'Ottocento | catalogato |
 | romanticismo | Ernest Chausson | 1 | 2 | 0 | 0 | 0 | Scuola franckiana di Parigi | catalogato |
-| romanticismo | Fanny Hensel | 1 | 1 | 0 | 1 | 0 | Lied romantico tedesco | catalogato |
-| romanticismo | Felix Mendelssohn | 1 | 1 | 2 | 2 | 2 | Lied romantico tedesco | catalogato |
+| romanticismo | Fanny Hensel | 1 | 1 | 0 | 1 | 1 | Lied romantico tedesco | catalogato |
+| romanticismo | Felix Mendelssohn | 1 | 1 | 2 | 3 | 2 | Lied romantico tedesco | catalogato |
+| romanticismo | Ferdinand Ries | 0 | 1 | 0 | 1 | 0 | — | **RICERCA** |
 | romanticismo | Franz Liszt | 1 | 3 | 2 | 4 | 10 | Virtuosismo e concerto romantico | catalogato |
 | romanticismo | Frédéric Chopin | 1 | 2 | 2 | 0 | 6 | Pianismo e composizione romantica | catalogato |
 | romanticismo | Gabriel Fauré | 1 | 5 | 0 | 0 | 0 | Mélodie e musica da camera francese | catalogato |
@@ -168,12 +175,13 @@
 | romanticismo | Giacomo Meyerbeer | 1 | 0 | 1 | 2 | 2 | Teatro musicale francese dell'Ottocento | catalogato |
 | romanticismo | Giacomo Puccini | 1 | 1 | 1 | 3 | 1 | Tradizione operistica italiana dell'Ottocento | catalogato |
 | romanticismo | Gioachino Rossini | 1 | 3 | 9 | 4 | 7 | Tradizione operistica italiana dell'Ottocento | catalogato |
-| romanticismo | Giuseppe Verdi | 2 | 0 | 4 | 2 | 3 | Risorgimento · Tradizione operistica italiana dell'Ottocento | catalogato |
+| romanticismo | Giuseppe Verdi | 2 | 0 | 4 | 3 | 3 | Risorgimento · Tradizione operistica italiana dell'Ottocento | catalogato |
 | romanticismo | Hector Berlioz | 1 | 2 | 2 | 4 | 4 | Teatro musicale francese dell'Ottocento | catalogato |
 | romanticismo | Hugo Wolf | 1 | 0 | 1 | 1 | 2 | Lied romantico tedesco | catalogato |
 | romanticismo | Isabella Colbran | 1 | 0 | 0 | 2 | 1 | Teatro San Carlo di Napoli · primo Ottocento | catalogato |
 | romanticismo | Jacques Offenbach | 1 | 1 | 0 | 0 | 1 | Teatro musicale francese dell'Ottocento | catalogato |
-| romanticismo | Johannes Brahms | 3 | 1 | 5 | 4 | 5 | Lied romantico tedesco · Sinfonismo tardo-romantico · Virtuosismo e concerto romantico | catalogato |
+| romanticismo | Johannes Brahms | 3 | 1 | 5 | 5 | 5 | Lied romantico tedesco · Sinfonismo tardo-romantico · Virtuosismo e concerto romantico | catalogato |
+| romanticismo | Joseph Joachim | 1 | 0 | 0 | 2 | 1 | Virtuosismo e concerto romantico | catalogato |
 | romanticismo | Jules Massenet | 1 | 2 | 0 | 0 | 1 | Teatro musicale francese dell'Ottocento | catalogato |
 | romanticismo | Louise Farrenc | 1 | 1 | 0 | 0 | 2 | Conservatorio di Parigi e scuola di composizione | catalogato |
 | romanticismo | Luigi Felice Rossi | 1 | 2 | 0 | 1 | 0 | Canti patriottici del Piemonte del 1847 | catalogato |
@@ -195,6 +203,7 @@
 | post-romanticismo | Anton Bruckner | 1 | 2 | 1 | 1 | 1 | Sinfonismo tardo-romantico | catalogato |
 | post-romanticismo | Gustav Mahler | 2 | 0 | 3 | 5 | 8 | Lied romantico tedesco · Sinfonismo tardo-romantico | catalogato |
 | post-romanticismo | Hans Pfitzner | 1 | 1 | 2 | 0 | 2 | Lied romantico tedesco | catalogato |
+| post-romanticismo | Paul Dukas | 1 | 1 | 1 | 0 | 0 | Modernità francese del primo Novecento | catalogato |
 | post-romanticismo | Siegfried Wagner | 1 | 1 | 1 | 0 | 0 | Festival di Bayreuth · direzione e pratiche teatrali | catalogato |
 | novecento | Aaron Copland | 1 | 2 | 0 | 3 | 0 | Conservatorio americano di Fontainebleau | catalogato |
 | novecento | Alban Berg | 1 | 1 | 1 | 2 | 1 | Seconda scuola di Vienna | catalogato |
@@ -202,7 +211,7 @@
 | novecento | Alfredo Casella | 2 | 1 | 0 | 5 | 1 | Festival internazionale di musica contemporanea di Venezia · 1930 · Generazione italiana del 1880 | catalogato |
 | novecento | Anton Webern | 1 | 1 | 5 | 0 | 1 | Seconda scuola di Vienna | catalogato |
 | novecento | Arnold Schönberg | 1 | 4 | 4 | 4 | 2 | Seconda scuola di Vienna | catalogato |
-| novecento | Arthur Honegger | 1 | 1 | 0 | 2 | 1 | Les Six | catalogato |
+| novecento | Arthur Honegger | 1 | 2 | 0 | 2 | 1 | Les Six | catalogato |
 | novecento | Béla Bartók | 2 | 1 | 6 | 2 | 2 | Raccolta sul campo e studio dei canti popolari · Ungheria · Scuola nazionale ungherese del Novecento | catalogato |
 | novecento | Benjamin Britten | 1 | 1 | 2 | 7 | 4 | Rinascita operistica inglese del Novecento | catalogato |
 | novecento | Bruno Maderna | 2 | 1 | 1 | 3 | 0 | Avanguardie italiane del dopoguerra · Darmstadt: corsi e avanguardie | catalogato |
@@ -243,7 +252,7 @@
 | novecento | Luigi Russolo | 1 | 0 | 0 | 2 | 1 | Futurismo | catalogato |
 | novecento | Maurice Ravel | 1 | 3 | 1 | 5 | 3 | Modernità francese del primo Novecento | catalogato |
 | novecento | Michael Nyman | 1 | 0 | 1 | 3 | 3 | Minimalismo | catalogato |
-| novecento | Olivier Messiaen | 1 | 5 | 4 | 1 | 0 | La Jeune France · gruppo musicale del 1936 | catalogato |
+| novecento | Olivier Messiaen | 1 | 6 | 4 | 1 | 0 | La Jeune France · gruppo musicale del 1936 | catalogato |
 | novecento | Ottorino Respighi | 1 | 1 | 1 | 1 | 3 | Generazione italiana del 1880 | catalogato |
 | novecento | Paul Dessau | 1 | 0 | 1 | 1 | 0 | Teatro musicale brechtiano | catalogato |
 | novecento | Paul Hindemith | 1 | 0 | 0 | 3 | 3 | Ripresa del contrappunto e neobarocco | catalogato |
@@ -259,11 +268,11 @@
 | novecento | Zoltán Kodály | 2 | 0 | 0 | 1 | 0 | Raccolta sul campo e studio dei canti popolari · Ungheria · Scuola nazionale ungherese del Novecento | catalogato |
 | non-classificato | Amilcare Ponchielli | 1 | 3 | 0 | 0 | 0 | Tradizione operistica italiana dell'Ottocento | catalogato |
 | non-classificato | Anatolij Ljadov | 1 | 3 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato |
-| non-classificato | André Gedalge | 1 | 2 | 0 | 0 | 0 | Conservatorio di Parigi · contrappunto e fuga nel primo Novecento | catalogato |
+| non-classificato | André Gedalge | 1 | 3 | 0 | 0 | 0 | Conservatorio di Parigi · contrappunto e fuga nel primo Novecento | catalogato |
 | non-classificato | Anton Reicha | 1 | 4 | 0 | 1 | 0 | Conservatorio di Parigi e scuola di composizione | catalogato |
 | non-classificato | Anton Rubinstein | 1 | 2 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato |
-| non-classificato | Billy Strayhorn | 1 | 0 | 0 | 1 | 0 | Jazz orchestrale e big band | catalogato |
-| non-classificato | Camillo Sivori | 1 | 1 | 0 | 0 | 0 | Virtuosismo e concerto romantico | catalogato |
+| non-classificato | Billy Strayhorn | 1 | 0 | 0 | 1 | 1 | Jazz orchestrale e big band | catalogato |
+| non-classificato | Camillo Sivori | 1 | 1 | 0 | 1 | 0 | Virtuosismo e concerto romantico | catalogato |
 | non-classificato | Carl Czerny | 1 | 2 | 0 | 0 | 0 | Pianismo e composizione romantica | catalogato |
 | non-classificato | Carl Friedrich Zelter | 1 | 2 | 0 | 0 | 0 | Sing-Akademie zu Berlin · tradizione corale | catalogato |
 | non-classificato | Charles Hambitzer | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** |
@@ -271,7 +280,7 @@
 | non-classificato | Christian Theodor Weinlig | 1 | 1 | 0 | 0 | 0 | Thomaskantorat di Lipsia nell’Ottocento | catalogato |
 | non-classificato | Claudio Merulo | 2 | 0 | 0 | 1 | 1 | Cappella musicale della basilica di San Marco a Venezia · Scuola veneziana | catalogato |
 | non-classificato | Costanzo Festa | 2 | 0 | 1 | 0 | 1 | Cappella pontificia romana nel Cinquecento · Scuola romana | catalogato |
-| non-classificato | Eduard Marxsen | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** |
+| non-classificato | Eduard Marxsen | 1 | 1 | 0 | 0 | 0 | Conservatorio viennese e insegnamento della composizione nell’Ottocento | catalogato |
 | non-classificato | Engelbert Humperdinck | 0 | 1 | 1 | 1 | 0 | — | **RICERCA** |
 | non-classificato | Ennio Morricone | 1 | 1 | 0 | 2 | 0 | Gruppo di Improvvisazione Nuova Consonanza | catalogato |
 | non-classificato | Felice Anerio | 2 | 1 | 0 | 2 | 1 | Cappella pontificia romana nel Cinquecento · Scuola romana | catalogato |
@@ -297,18 +306,18 @@
 | non-classificato | Heinrich Isaac | 2 | 0 | 1 | 2 | 0 | Ambiente musicale dei Medici nella Firenze quattrocentesca · Scuola franco-fiamminga | catalogato |
 | non-classificato | Heinrich Kaminski | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** |
 | non-classificato | Henry Cowell | 1 | 0 | 0 | 2 | 0 | New Music Society · California 1925 | catalogato |
-| non-classificato | Horatio W. Parker | 0 | 1 | 0 | 0 | 1 | — | **RICERCA** |
+| non-classificato | Horatio W. Parker | 1 | 1 | 0 | 0 | 1 | Second New England School · compositori statunitensi | catalogato |
 | non-classificato | Iannis Xenakis | 1 | 1 | 1 | 1 | 0 | Musica elettronica | catalogato |
 | non-classificato | Jacob Clemens non Papa | 2 | 0 | 0 | 0 | 1 | Cappella di Saint-Donatien a Bruges nel Rinascimento · Scuola franco-fiamminga | catalogato |
 | non-classificato | Jacob Obrecht | 2 | 0 | 0 | 0 | 2 | Cappella di Saint-Donatien a Bruges nel Rinascimento · Scuola franco-fiamminga | catalogato |
 | non-classificato | Jean-François Lesueur | 1 | 2 | 0 | 0 | 1 | Conservatorio di Parigi e scuola di composizione | catalogato |
 | non-classificato | Johann Christoph Bach (1671–1721) | 1 | 2 | 0 | 0 | 0 | Michaeliskirche di Ohrdruf · Johann Christoph Bach | catalogato |
-| non-classificato | Johann Friedrich Fasch | 1 | 1 | 0 | 0 | 0 | Cappella di corte di Anhalt-Zerbst · Johann Friedrich Fasch | catalogato |
+| non-classificato | Johann Friedrich Fasch | 1 | 1 | 0 | 0 | 1 | Cappella di corte di Anhalt-Zerbst · Johann Friedrich Fasch | catalogato |
 | non-classificato | Johann Hermann Schein | 2 | 0 | 0 | 1 | 1 | Scuola luterana · Thomaskantorat di Lipsia nel primo Seicento | catalogato |
 | non-classificato | Johann Walter | 1 | 0 | 0 | 1 | 4 | Scuola luterana | catalogato |
 | non-classificato | Johannes Ockeghem | 2 | 0 | 3 | 0 | 0 | Cappella regia francese nel Quattrocento · Scuola franco-fiamminga | catalogato |
 | non-classificato | Józef Elsner | 1 | 1 | 0 | 0 | 0 | Scuola principale di musica di Varsavia · 1826–1831 | catalogato |
-| non-classificato | Juan Tizol | 0 | 0 | 0 | 1 | 1 | — | **RICERCA** |
+| non-classificato | Juan Tizol | 1 | 0 | 0 | 1 | 1 | Jazz orchestrale e big band | catalogato |
 | non-classificato | Lauro Rossi | 1 | 2 | 0 | 0 | 0 | Conservatorio di Milano nell’Ottocento | catalogato |
 | non-classificato | Maksimilian Steinberg | 1 | 2 | 0 | 0 | 0 | Conservatorio di San Pietroburgo e sue trasformazioni | catalogato |
 | non-classificato | Marcantonio Ingegneri | 1 | 1 | 0 | 0 | 0 | Cappella musicale del Duomo di Cremona nel Cinquecento | catalogato |
@@ -317,15 +326,15 @@
 | non-classificato | Michael Praetorius | 1 | 0 | 0 | 2 | 3 | Scuola luterana | catalogato |
 | non-classificato | Nadia Boulanger | 1 | 4 | 0 | 0 | 0 | Conservatorio americano di Fontainebleau | catalogato |
 | non-classificato | Otto Kitzler | 1 | 1 | 0 | 0 | 0 | Teatro di Linz · direzione musicale nella metà dell’Ottocento | catalogato |
-| non-classificato | Pietro Nardini | 1 | 1 | 0 | 0 | 0 | Scuola violinistica di Tartini · Padova | catalogato |
+| non-classificato | Pietro Nardini | 1 | 1 | 0 | 1 | 0 | Scuola violinistica di Tartini · Padova | catalogato |
 | non-classificato | René Leibowitz | 1 | 2 | 0 | 0 | 0 | Ricezione e insegnamento della dodecafonia in Francia dopo il 1945 | catalogato |
 | non-classificato | Rubin Goldmark | 1 | 2 | 0 | 0 | 0 | Juilliard · dipartimento di composizione (1924–1936) | catalogato |
-| non-classificato | Samuel Scheidt | 1 | 0 | 0 | 2 | 2 | Scuola luterana | catalogato |
+| non-classificato | Samuel Scheidt | 1 | 1 | 0 | 2 | 2 | Scuola luterana | catalogato |
 | non-classificato | Sergej Taneev | 1 | 3 | 0 | 0 | 0 | Tradizione compositiva del Conservatorio di Mosca | catalogato |
-| non-classificato | Simon Sechter | 1 | 1 | 0 | 0 | 0 | Conservatorio viennese e insegnamento della composizione nell’Ottocento | catalogato |
+| non-classificato | Simon Sechter | 1 | 2 | 0 | 0 | 0 | Conservatorio viennese e insegnamento della composizione nell’Ottocento | catalogato |
 | non-classificato | Stephen Sondheim | 1 | 0 | 0 | 2 | 0 | Teatro musicale di Broadway | catalogato |
 | non-classificato | Walter Klein | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** |
 | non-classificato | Wojciech Żywny | 0 | 1 | 0 | 0 | 0 | — | **RICERCA** |
 
-Il rapporto cumulativo degli audit 09–20 è conservato in `LOTTI_RICERCA/2026-10-07-audit-profondo-09-20.md`.
+Rigenerazione: `node atlante3d/database/verifica-copertura.mjs --markdown > atlante3d/database/COPERTURA_SCUOLE.md`
 
