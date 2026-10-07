@@ -10,7 +10,7 @@ const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
 let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
 const geoCache=new Map();
-let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),lastDrawTime=0;
+let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),selectedDepthCacheKey="",selectedDepthCache=new Map(),lastDrawTime=0;
 const activeLenses=new Set(["musica"]);
 const activeCategories=new Set(["compositore"]);
 const EXPLORATION_LENSES=[
@@ -317,7 +317,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
  lensEdges=(lenses.relations||[]).filter(e=>byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
   historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole")];
- geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();
+ geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();selectedDepthCacheKey="";selectedDepthCache=new Map();
  freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
  const composerCount=nodes.filter(n=>n.type==="compositore").length;
  status.textContent=composerCount+" compositori · "+edges.length+" relazioni musicali · doppio clic per esplorare";
@@ -336,20 +336,51 @@ function currentEdges(){
  const key=activeLensKey();if(key===activeEdgesCacheKey)return activeEdgesCache;
  const all=[];if(activeLenses.has("musica"))all.push(...historySchoolEdges);
  for(const id of activeLenses)if(id!=="musica")all.push(...displayRelations(id));
- activeEdgesCacheKey=key;activeEdgesCache=dedupeEdges(all);selectedNeighborCacheKey="";return activeEdgesCache;
+ activeEdgesCacheKey=key;activeEdgesCache=dedupeEdges(all);selectedNeighborCacheKey="";selectedDepthCacheKey="";return activeEdgesCache;
+}
+function nodeEligibleForDepth(n){
+ if(!n||n.type==="geografia"||n.type==="periodo")return false;
+ if(!categoryVisible(n))return false;
+ if(n.type==="persona"&&!n.music_relevance&&!hasNonMusicLens()&&n!==selected)return false;
+ return true;
+}
+function selectedDepths(maxDepth=4){
+ if(!selected)return null;
+ const key=selected.id+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",")+"|"+maxDepth;
+ if(key===selectedDepthCacheKey)return selectedDepthCache;
+ const adj=new Map();
+ for(const e of currentEdges()){
+  if(!adj.has(e.source))adj.set(e.source,[]);
+  if(!adj.has(e.target))adj.set(e.target,[]);
+  adj.get(e.source).push(e.target);adj.get(e.target).push(e.source);
+ }
+ const depth=new Map([[selected.id,0]]),queue=[selected.id];
+ for(let qi=0;qi<queue.length;qi++){
+  const id=queue[qi],d=depth.get(id);
+  if(d>=maxDepth)continue;
+  for(const next of adj.get(id)||[]){
+   if(depth.has(next))continue;
+   const n=byId.get(next);if(!nodeEligibleForDepth(n))continue;
+   depth.set(next,d+1);queue.push(next);
+  }
+ }
+ selectedDepthCacheKey=key;selectedDepthCache=depth;return depth;
 }
 function selectedNeighborIds(){
  if(!selected)return null;
  const key=selected.id+"|"+activeLensKey();if(key===selectedNeighborCacheKey)return selectedNeighborCache;
- const out=new Set([selected.id]);for(const e of currentEdges()){if(e.source===selected.id)out.add(e.target);else if(e.target===selected.id)out.add(e.source);}
+ const depth=selectedDepths(4),out=new Set();
+ for(const [id,d] of depth)if(d<=1)out.add(id);
  selectedNeighborCacheKey=key;selectedNeighborCache=out;return out;
 }
 function visibleNode(n){
- if(n.type==="geografia"||n.type==="periodo")return false;
- if(!categoryVisible(n))return false;
- if(n.type==="persona"&&!n.music_relevance&&!hasNonMusicLens()&&n!==selected)return false;
- if(selected)return selectedNeighborIds().has(n.id);
+ if(!nodeEligibleForDepth(n))return false;
+ if(selected)return selectedDepths(4).has(n.id);
  return true;
+}
+function nodeDepth(n){
+ if(!selected)return 0;
+ return selectedDepths(4).get(n.id)??99;
 }
 function lineHit(pt){
  let hit=null,best=12;
@@ -515,15 +546,26 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  });
  resolveScreenCollisions(screen);
  const map=new Map(screen.map(p=>[p.node.id,p]));
- const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover;lineHits=[];
+ const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover,lineHits=[];
+ const depths=selected?selectedDepths(4):null;
  if(lensFocus){neighbors.add(lensFocus.id);for(const e of activeEdges){if(e.source===lensFocus.id)neighbors.add(e.target);if(e.target===lensFocus.id)neighbors.add(e.source);}}
  for(const e of activeEdges){
   const a=map.get(e.source),b=map.get(e.target);
   if(!a||!b||!visibleNode(a.node)||!visibleNode(b.node))continue;
-  const direct=!!lensFocus&&(e.source===lensFocus.id||e.target===lensFocus.id);
-  if(!direct)continue;
+  let edgeDepth=1,direct=false;
+  if(selected){
+   const da=depths.get(e.source),db=depths.get(e.target);
+   if(da==null||db==null)continue;
+   edgeDepth=Math.max(da,db);
+   if(Math.abs(da-db)>1||edgeDepth>4)continue;
+   direct=da===0||db===0;
+  }else{
+   direct=!!lensFocus&&(e.source===lensFocus.id||e.target===lensFocus.id);
+   if(lensFocus&&!direct)continue;
+  }
   const style=relationStyle(e);
-  ctx.globalAlpha=.94;ctx.lineWidth=2.7;
+  const edgeAlpha=selected?({1:.94,2:.34,3:.16,4:.075}[edgeDepth]||.05):.94;
+  ctx.globalAlpha=edgeAlpha;ctx.lineWidth=selected?({1:2.7,2:1.7,3:1.15,4:.8}[edgeDepth]||.8):2.7;
   const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
   path.addColorStop(0,style.from);path.addColorStop(1,style.to);ctx.strokeStyle=path;
   const bend=Math.min(34,Math.hypot(b.x-a.x,b.y-a.y)*.075);
@@ -531,11 +573,11 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
   ctx.beginPath();ctx.moveTo(a.x,a.y);
   if(e.group==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind||""))ctx.setLineDash([6,5]);
   ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
-  lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
-  if(style.arrow){
+  if(!selected||edgeDepth<=1)lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
+  if(style.arrow&&(!selected||edgeDepth<=3)){
    const t=.77,q=1-t,px=q*q*a.x+2*q*t*cx+t*t*b.x,py=q*q*a.y+2*q*t*cy+t*t*b.y;
    const dx=2*q*(cx-a.x)+2*t*(b.x-cx),dy=2*q*(cy-a.y)+2*t*(b.y-cy),ang=Math.atan2(dy,dx);
-   ctx.save();ctx.globalAlpha=.98;ctx.fillStyle=style.to;ctx.beginPath();
+   ctx.save();ctx.globalAlpha=selected?Math.min(.92,edgeAlpha*1.15):.98;ctx.fillStyle=style.to;ctx.beginPath();
    ctx.moveTo(px+8*Math.cos(ang),py+8*Math.sin(ang));
    ctx.lineTo(px-6*Math.cos(ang-.5),py-6*Math.sin(ang-.5));
    ctx.lineTo(px-6*Math.cos(ang+.5),py-6*Math.sin(ang+.5));ctx.closePath();ctx.fill();ctx.restore();
@@ -549,9 +591,10 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  });
  hitOrder=drawable;
  for(const p of drawable){
-  const n=p.node,related=selected&&neighbors.has(n.id);
-  const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&matchesSearch(n,searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
-  ctx.globalAlpha=selected&&!related&&!highlight?.12:1;
+  const n=p.node,depth=nodeDepth(n),related=selected&&depth<=1;
+  const highlight=n===selected||(n===hover)||(searchText.length>1&&matchesSearch(n,searchText));
+  const depthAlpha=!selected?1:({0:1,1:1,2:.48,3:.22,4:.10}[depth]||.06);
+  ctx.globalAlpha=highlight?1:depthAlpha;
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=Math.max(8,rad);
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
@@ -564,7 +607,8 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
    ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
    ctx.strokeStyle="#071321";ctx.strokeText(n.label,p.x,p.y-rad-9);
-   ctx.fillStyle=highlight?"#fff4d9":(selected&&!related?"rgba(240,242,247,.68)":"rgba(240,242,247,.95)");
+   const labelAlpha=selected?Math.max(.32,depthAlpha):1;
+   ctx.fillStyle=highlight?"#fff4d9":"rgba(240,242,247,"+labelAlpha.toFixed(2)+")";
    ctx.fillText(n.label,p.x,p.y-rad-9);
   }
  }
@@ -598,7 +642,7 @@ function updatePeriodContext(n){
 function focusOn(n,openPanel=true,tight=false){
  clearExplodeLayout();
  if(selected!==n){search.value="";searchText="";resetAutoLayout();}
- selected=n;selectedNeighborCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
+ selected=n;selectedNeighborCacheKey="";selectedDepthCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
  if(explodeBtn)explodeBtn.disabled=false;
  updatePeriodContext(n);
  const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
@@ -752,12 +796,12 @@ function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-ca
 function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
 function toggleLens(id){
  if(activeLenses.has(id)){if(activeLenses.size===1)return;activeLenses.delete(id);}else activeLenses.add(id);
- activeEdgesCacheKey="";selectedNeighborCacheKey="";clearExplodeLayout();resetAutoLayout();
+ activeEdgesCacheKey="";selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();
  syncLensControls();if(relationTooltip)relationTooltip.hidden=true;if(selected){fitGeoNetwork(selected);populate(selected);}
  status.textContent=(selected?selected.label+" · "+linked(selected).length+" relazioni · ":"")+"Lenti: "+activeLensLabel();
 }
 lensChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-lens]");if(!input)return;toggleLens(input.value);});
-categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected)fitGeoNetwork(selected);});
+categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected)fitGeoNetwork(selected);});
 moreControls?.addEventListener("click",()=>{
  const open=document.body.classList.toggle("controls-open");
  moreControls.setAttribute("aria-expanded",String(open));
