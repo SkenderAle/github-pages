@@ -198,15 +198,23 @@ followGeo?.addEventListener("change",()=>{geoState.enabled=followGeo.checked;if(
 function resolveScreenCollisions(points){
  const visible=points.filter(p=>p.node.type!=="geografia"&&visibleNode(p.node));
  if(visible.length<2)return;
+ // In una vista continentale o mondiale la geografia prevale:
+ // nessuna "esplosione" grafica dei nodi lontano dalla loro città.
+ if(geoState.span>70){resetAutoLayout();return;}
  const cellSize=48;
  const world=mapBase()*360/Math.max(6,geoState.span),height=world/2;
- const maxAutoX=clamp(world*(1.5/360),5,34);
- const maxAutoY=clamp(height*(1.1/180),5,28);
+ // Scostamento massimo espresso in gradi, poi convertito in pixel.
+ // Serve solo a distinguere nodi quasi coincidenti senza falsarne la posizione.
+ const maxAutoX=clamp(world*(.45/360),2,18);
+ const maxAutoY=clamp(height*(.35/180),2,16);
  const push=(p,dx,dy)=>{
-  p.x+=dx;p.y+=dy;
   if(p.node.manualPinned||p.node===selected)return;
-  p.node.autoDx=clamp((p.node.autoDx||0)+dx,-maxAutoX,maxAutoX);
-  p.node.autoDy=clamp((p.node.autoDy||0)+dy,-maxAutoY,maxAutoY);
+  const oldX=p.node.autoDx||0,oldY=p.node.autoDy||0;
+  const nextX=clamp(oldX+dx,-maxAutoX,maxAutoX);
+  const nextY=clamp(oldY+dy,-maxAutoY,maxAutoY);
+  p.node.autoDx=nextX;p.node.autoDy=nextY;
+  // Applica solo la parte consentita: il limite vale anche sul fotogramma corrente.
+  p.x+=nextX-oldX;p.y+=nextY-oldY;
  };
  for(let pass=0;pass<2;pass++){
   const grid=new Map();
@@ -661,6 +669,7 @@ function syncZoomControls(){
 }
 function setZoom(next){
  zoom=clamp(Number(next)||1,.5,2.5);
+ resetAutoLayout();
  const anchor=selected&&geoFromNode(selected);
  if(anchor){
   geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
