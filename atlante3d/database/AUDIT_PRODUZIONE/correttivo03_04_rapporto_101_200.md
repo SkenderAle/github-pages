@@ -103,3 +103,6 @@ Sette relazioni preesistenti ricondotte a fonti d'opera direttamente pertinenti 
 ## Undicesimo aggiornamento — 8 ottobre 2026
 Due attribuzioni precedentemente in verifica sono state validate mediante schede bibliografiche specifiche: Maurice Ravel → balletto (*Daphnis et Chloé*), Bibliothèque nationale de France, https://catalogue.bnf.fr/ark:/12148/cb139177228 ; Goffredo Petrassi → concerto (otto *Concerti per orchestra*), Dizionario Biografico degli Italiani, https://www.treccani.it/enciclopedia/goffredo-petrassi_%28Dizionario-Biografico%29/ .
 Nessun nuovo arco (totale 1137). Ancora 35 autori del lotto 101–150 senza arco produttivo documentato. Commit grafo: 4ccd57284ac3c723fc7e87581015f2b015109129. `main` invariato.
+
+## Dodicesimo aggiornamento correttivo — 8 ottobre 2026
+Verificati e promossi due archi preesistenti, senza aggiungerne: Olivier Messiaen → musica per organo (*Livre du Saint Sacrement*, fonti IRCAM e BnF); Arnold Schönberg → musica da camera vocale e strumentale (*Pierrot lunaire* op. 21, fonti Arnold Schönberg Center e Belmont Music Publishers). Specificata l'importanza della voce recitante e dei raddoppi strumentali di Pierrot. Restano 33 compositori senza un arco produttivo documentato nel lotto 101–150. Il grafo mantiene 1137 archi. Commit 5cbc27bc560c208d129c5f8d8ba4256e6a399bed. Main invariato.
