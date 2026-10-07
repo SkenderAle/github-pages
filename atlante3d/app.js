@@ -135,6 +135,11 @@ function geoFromNode(n){
  if(!n)return null;
  if(geoCache.has(n.id))return geoCache.get(n.id);
  const own=baseGeo(n);if(own){geoCache.set(n.id,own);return own;}
+ // Una corrente, un ambito o un personaggio senza coordinate proprie non è un luogo:
+ // niente baricentri artificiali nell'Atlantico.
+ if(n.type==="corrente"||n.type==="ambito"||n.type==="persona"){
+  geoCache.set(n.id,null);return null;
+ }
  const pool=dedupeEdges([...edges,...lensEdges]);
  const linked=pool.filter(e=>e.source===n.id||e.target===n.id)
   .map(e=>baseGeo(byId.get(e.source===n.id?e.target:e.source))).filter(Boolean);
@@ -154,6 +159,22 @@ function geoScreenPoint(n,withManual=true){
  const auto=withManual&&!n.manualPinned?(n.autoDx||0):0,autoY=withManual&&!n.manualPinned?(n.autoDy||0):0;
  const ex=withManual?(n.explodeDx||0):0,ey=withManual?(n.explodeDy||0):0;
  return {x:raw.x+manual+auto+ex,y:raw.y+manualY+autoY+ey,depth:0,scale:1,r:15,geo:true,point:raw.point};
+}
+function contextRawPoint(n){
+ if(!selected||n===selected||geoFromNode(n))return null;
+ if(!(n.type==="corrente"||n.type==="ambito"||n.type==="persona"))return null;
+ const depths=selectedDepths(4),depth=depths?.get(n.id);
+ if(depth==null||depth<1||depth>4)return null;
+ const center=rawGeoPoint(selected);if(!center)return null;
+ const h=stableHash(n.id),angle=((h%100000)/100000)*Math.PI*2;
+ const ring=76+depth*54+((h>>>8)%27);
+ return {x:center.x+Math.cos(angle)*ring,y:center.y+Math.sin(angle)*ring,depth:0,scale:1,r:15,geo:false,context:true};
+}
+function contextScreenPoint(n,withManual=true){
+ const raw=contextRawPoint(n);if(!raw)return null;
+ const manual=withManual?(n.manualDx||0):0,manualY=withManual?(n.manualDy||0):0;
+ const ex=withManual?(n.explodeDx||0):0,ey=withManual?(n.explodeDy||0):0;
+ return {...raw,x:raw.x+manual+ex,y:raw.y+manualY+ey};
 }
 function resetAutoLayout(){
  for(const n of nodes){if(!n.manualPinned){n.autoDx=0;n.autoDy=0;}}
@@ -376,6 +397,7 @@ function selectedNeighborIds(){
 function visibleNode(n){
  if(!nodeEligibleForDepth(n))return false;
  if(selected)return selectedDepths(4).has(n.id);
+ if((n.type==="corrente"||n.type==="ambito"||n.type==="persona")&&!geoFromNode(n))return false;
  return true;
 }
 function nodeDepth(n){
@@ -539,7 +561,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  const composerBase=spanForSize>=260?4.2:spanForSize>=150?5.2:spanForSize>=80?6.8:spanForSize>=35?8.8:11;
  const contextBase=spanForSize>=260?5.2:spanForSize>=150?6.2:spanForSize>=80?8:spanForSize>=35?10.5:14;
  screen=nodes.map(n=>{
-  let p=geoScreenPoint(n,true)||sxworld(n);p.node=n;
+  let p=geoScreenPoint(n,true)||contextScreenPoint(n,true)||sxworld(n);p.node=n;
   const base=(n.type==="compositore"||n.type==="persona")?composerBase:contextBase;
   p.r=clamp(base*(n===selected?1.55:1),3.8,25);
   return p;
@@ -560,8 +582,9 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
    if(Math.abs(da-db)>1||edgeDepth>4)continue;
    direct=da===0||db===0;
   }else{
-   direct=!!lensFocus&&(e.source===lensFocus.id||e.target===lensFocus.id);
-   if(lensFocus&&!direct)continue;
+   if(!lensFocus)continue;
+   direct=e.source===lensFocus.id||e.target===lensFocus.id;
+   if(!direct)continue;
   }
   const style=relationStyle(e);
   const edgeAlpha=selected?({1:.94,2:.34,3:.16,4:.075}[edgeDepth]||.05):.94;
@@ -729,6 +752,9 @@ function pointer(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r
 function hit(pt){
  for(let i=hitOrder.length-1;i>=0;i--){const p=hitOrder[i];if(!visibleNode(p.node))continue;if(Math.hypot(p.x-pt.x,p.y-pt.y)<=p.hitRadius)return p;}return null;
 }
+canvas.addEventListener("pointerleave",()=>{
+ if(!drag){hover=null;canvas.style.cursor="grab";if(relationTooltip)relationTooltip.hidden=true;}
+});
 canvas.addEventListener("pointerdown",e=>{
  if(e.button!==0)return;const pt=pointer(e),p=hit(pt);
  drag={node:p?.node||null,relation:p?null:lineHit(pt),x:pt.x,y:pt.y,lastX:pt.x,lastY:pt.y,moved:false};
@@ -744,7 +770,7 @@ canvas.addEventListener("pointermove",e=>{
  const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;
  drag.lastX=pt.x;drag.lastY=pt.y;
  if(drag.node){
-  const base=geoScreenPoint(drag.node,false);
+  const base=geoScreenPoint(drag.node,false)||contextScreenPoint(drag.node,false);
   if(base){drag.node.manualDx=pt.x-base.x;drag.node.manualDy=pt.y-base.y;drag.node.manualPinned=true;}
   else{const current=screen.find(p=>p.node===drag.node),pos=unproject(pt.x,pt.y,current?.depth||0);Object.assign(drag.node,pos);drag.node.manualPinned=true;}
   drag.node.vx=drag.node.vy=drag.node.vz=0;
