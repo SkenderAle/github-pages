@@ -62,3 +62,14 @@ Correzioni nello staging: il rigetto dei mottetti di Giovanni Croce era impropri
 - Heinrich Isaac → `genere-lied`: *Innsbruck, ich muss dich lassen*, Lied polifonico tedesco, non mottetto. Fonti: https://imslp.org/wiki/Innsbruck_ich_muss_dich_lassen_(Isaac,_Heinrich) e https://germanhistorydocs.org/de/von-den-reformationen-bis-zum-dreissigjaehrigen-krieg-1500-1648/heinrich-isaac-innsbruck-ich-muss-dich-lassen-16th-century
 - Commit del grafo: `f00c40ac1b60c30c69c87c7f75cf4ebd4f087d3a`; commit staging: `ff7108bf4b21b2ebc1420039fc918e44b66dc116`.
 - Totale nuovi archi produttivi delle riprese successive al rapporto iniziale: 12 (3 + 7 + 2). Totale archi generali: 1.098. Nessun riferimento a nodi inesistenti. Nessuna modifica a `main`.
+
+## Quarto aggiornamento correttivo — 8 ottobre 2026
+Commit del grafo: `1d8b9d7609e55088a77b5fc84e85cc6d575680ec`.
+
+Quattro nuove relazioni `produzione` direttamente sostenute da editori di partiture:
+1. Paul Hindemith → opera, *Mathis der Maler* (1934–35): Schott, https://www.schott-music.com/en/mathis-der-maler-no34862.html
+2. Paul Hindemith → sinfonia, *Symphonie Mathis der Maler* (1934): Schott, https://www.schott-music.com/en/symphonie-mathis-der-maler-no152686.html
+3. Carl Orff → cantata, *Carmina Burana* (1936), specificamente cantata scenica: Schott, https://www.schott-music.com/en/carmina-burana-noc742736.html
+4. Witold Lutosławski → concerto, *Concerto per orchestra* (1954), genere da distinguere dal concerto con solista: Wise Music Classical, https://www.wisemusicclassical.com/work/7702/
+
+Archi generali: 1.102. Nuove relazioni di produzione nell'attuale serie di riprese: 16 (3+7+2+4). Controllo strutturale: nessun estremo di arco privo di nodo. I collegamenti non ancora verificati restano sospesi; nessuna modifica al ramo `main`.
