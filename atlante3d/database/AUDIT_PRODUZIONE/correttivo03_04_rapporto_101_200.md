@@ -92,3 +92,7 @@ Nuovi archi produttivi: 13. Autori: giacinto-scelsi, charles-ives, gyorgy-ligeti
 
 ## Ottavo aggiornamento — 8 ottobre 2026
 Nuove relazioni: duke-ellington, pietro-alessandro-guglielmi, giovanni-croce. Stato del grafo: 1128 archi. Restano senza relazione produttiva questi 9 autori del gruppo 151–200: Florence Price, Zoltán Kodály, Karlheinz Stockhausen, Jacob Clemens non Papa, Giovanni Francesco Anerio, Francesco Soriano, Johann Walter, Johann Hermann Schein, Leonardo Leo. Non sono stati inseriti archi privi di riscontro. Il blocco presenta ancora lacune qualitative: una relazione non equivale a un profilo produttivo esaustivo. Commit: 18c0554615712f2b93756a23a9aacbcef3c9f38a. Staging: 7d12c6d039bd6324ce52b6fc8687597caae8b4fe. Main invariato.
+
+## Nono aggiornamento: chiusura copertura iniziale 151–200
+Nuovi collegamenti: 9 (florence-price, zoltan-kodaly, karlheinz-stockhausen, jacob-clemens-non-papa, giovanni-francesco-anerio, francesco-soriano, johann-walter, johann-hermann-schein, leonardo-leo). Totale archi grafo: 1137. Compositori 151–200 privi di qualunque relazione produttiva: 0 (). Tutti i 50 hanno ora almeno una relazione, ma non sono profili esaustivi. Restano verifiche aggiuntive dei generi e degli archi del lotto 101–150.
+Commit grafo: dc333b92309654580698df876adc6e5cdbe5e152; staging: 3eae307cb967c8d468d83f28c43f75375be8af6b. Main non modificato.
