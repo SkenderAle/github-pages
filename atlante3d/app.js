@@ -72,6 +72,7 @@ const MUSICIAN_GEO_OVERRIDES={
  "compositore-giovanni-pierluigi-da-palestrina":[41.9028,12.4964,"Roma"],
  "compositore-arcangelo-corelli":[41.9028,12.4964,"Roma"],
  "compositore-gioachino-rossini":[43.9102,12.9133,"Pesaro"],
+ "compositore-niccolo-paganini":[44.4056,8.9463,"Genova"],
  "compositore-giuseppe-verdi":[45.0527,9.6966,"Busseto"],
  "compositore-giacomo-puccini":[43.8430,10.5079,"Lucca"],
  "compositore-hector-berlioz":[48.8566,2.3522,"Parigi"],
@@ -196,8 +197,8 @@ function resolveScreenCollisions(points){
  const push=(p,dx,dy)=>{
   p.x+=dx;p.y+=dy;
   if(p.node.manualPinned||p.node===selected)return;
-  p.node.autoDx=clamp((p.node.autoDx||0)+dx,-320,320);
-  p.node.autoDy=clamp((p.node.autoDy||0)+dy,-260,260);
+  p.node.autoDx=clamp((p.node.autoDx||0)+dx,-72,72);
+  p.node.autoDy=clamp((p.node.autoDy||0)+dy,-56,56);
  };
  for(let pass=0;pass<2;pass++){
   const grid=new Map();
