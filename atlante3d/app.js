@@ -319,7 +319,8 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
   historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole")];
  geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();
  freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
- status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · doppio clic per esplorare";
+ const composerCount=nodes.filter(n=>n.type==="compositore").length;
+ status.textContent=composerCount+" compositori · "+edges.length+" relazioni musicali · doppio clic per esplorare";
  zoom=1;geoAutoSpan=360;geoState.lat=20;geoState.lon=0;geoState.span=360;geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
  resize();syncLensControls();syncCategoryControls();syncZoomControls();
 }
@@ -503,7 +504,15 @@ function drawNightAtlas(){
 
 function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4,ts-lastDrawTime)):16.7;lastDrawTime=ts;frame++;physics();
  ctx.clearRect(0,0,w,h);paintGeo(dt);
- screen=nodes.map(n=>{let p=geoScreenPoint(n,true)||sxworld(n);p.node=n;p.r=clamp((n.type==="compositore"||n.type==="persona"?11:14)*(n===selected?1.45:1),7,25);return p;});
+ const spanForSize=Math.max(6,geoState.span);
+ const composerBase=spanForSize>=260?4.2:spanForSize>=150?5.2:spanForSize>=80?6.8:spanForSize>=35?8.8:11;
+ const contextBase=spanForSize>=260?5.2:spanForSize>=150?6.2:spanForSize>=80?8:spanForSize>=35?10.5:14;
+ screen=nodes.map(n=>{
+  let p=geoScreenPoint(n,true)||sxworld(n);p.node=n;
+  const base=(n.type==="compositore"||n.type==="persona")?composerBase:contextBase;
+  p.r=clamp(base*(n===selected?1.55:1),3.8,25);
+  return p;
+ });
  resolveScreenCollisions(screen);
  const map=new Map(screen.map(p=>[p.node.id,p]));
  const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover;lineHits=[];
@@ -544,7 +553,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
   const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&matchesSearch(n,searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
   ctx.globalAlpha=selected&&!related&&!highlight?.12:1;
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
-  p.hitRadius=rad;
+  p.hitRadius=Math.max(8,rad);
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
   const isLabel=Boolean(
    selected
@@ -766,7 +775,7 @@ reset.addEventListener("click",()=>{
  explodeActive=false;if(explodeBtn){explodeBtn.disabled=true;explodeBtn.textContent="✦ Esplodi";}
  document.body.classList.remove("controls-open");if(moreControls){moreControls.setAttribute("aria-expanded","false");moreControls.textContent="☷ Opzioni";}
  if(lensHelp)lensHelp.textContent="Puoi attivare più lenti contemporaneamente. Doppio clic su un nodo per centrarlo.";
- if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.length+" nodi · doppio clic per esplorare";
+ if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.filter(n=>n.type==="compositore").length+" compositori · doppio clic per esplorare";
 });
 window.addEventListener("resize",resize);
 window.addEventListener("pageshow",()=>{
