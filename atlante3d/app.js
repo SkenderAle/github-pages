@@ -192,30 +192,32 @@ function shuffleNodes(list){
 function explodeNetwork(){
  if(!selected)return;
  clearExplodeLayout();resetAutoLayout();
- const center=rawGeoPoint(selected);if(!center)return;
- const ids=selectedNeighborIds()||new Set();
- const neighbors=shuffleNodes(nodes.filter(n=>n!==selected&&ids.has(n.id)&&visibleNode(n)&&geoFromNode(n)));
- if(!neighbors.length)return;
- const rings=[];
- if(neighbors.length<=10)rings.push(neighbors.length);
- else if(neighbors.length<=22)rings.push(8,neighbors.length-8);
- else{rings.push(8,14);let left=neighbors.length-22;while(left>0){const take=Math.min(18,left);rings.push(take);left-=take;}}
- let cursor=0;
+ const center=rawGeoPoint(selected)||contextRawPoint(selected);if(!center)return;
+ const depths=selectedDepths(3);if(!depths)return;
  const rotation=Math.random()*Math.PI*2;
- for(let r=0;r<rings.length;r++){
-  const count=rings[r],rx=115+r*82,ry=90+r*64;
+ let moved=0;
+ for(let depth=1;depth<=3;depth++){
+  const ringNodes=shuffleNodes(nodes.filter(n=>n!==selected&&depths.get(n.id)===depth&&visibleNode(n)));
+  const count=ringNodes.length;if(!count)continue;
+  // Una corona per livello: il fuoco resta sempre il nodo selezionato.
+  const rx=depth===1?125:depth===2?235:345;
+  const ry=depth===1?95:depth===2?178:260;
+  const phase=rotation+(depth-1)*.43;
   for(let i=0;i<count;i++){
-   const n=neighbors[cursor++],raw=rawGeoPoint(n);if(!raw)continue;
-   const angle=rotation+(Math.PI*2*i/count)+(r%2?Math.PI/count:0);
+   const n=ringNodes[i];
+   const raw=rawGeoPoint(n)||contextRawPoint(n);if(!raw)continue;
+   const angle=phase+(Math.PI*2*i/count);
    const targetX=center.x+Math.cos(angle)*rx,targetY=center.y+Math.sin(angle)*ry;
    const manualX=n.manualDx||0,manualY=n.manualDy||0;
    n.explodeDx=targetX-(raw.x+manualX);
    n.explodeDy=targetY-(raw.y+manualY);
+   moved++;
   }
  }
+ if(!moved)return;
  explodeActive=true;
  if(explodeBtn){explodeBtn.disabled=false;explodeBtn.textContent="✦ Rimescola";}
- status.textContent=selected.label+" · raggiera esplosa · "+neighbors.length+" collegamenti";
+ status.textContent=selected.label+" · raggiera esplosa · "+moved+" nodi su 3 livelli";
 }
 function categoryVisible(n){return n===selected||activeCategories.has(n.type);}
 function networkNodesForFocus(n){
