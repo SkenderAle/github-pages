@@ -7,7 +7,7 @@ const moreControls=document.getElementById("moreControls");
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel"),periodContext=document.getElementById("periodContext");
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
-let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
+let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
 let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[];
 const geoCache=new Map();
 let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),lastDrawTime=0;
@@ -145,7 +145,7 @@ const lonDelta=(a,b)=>((a-b+540)%360)-180;
 const mapBase=()=>Math.max(320,Math.min(w,2*h));
 function rawGeoPoint(n){
  const point=geoFromNode(n);if(!point)return null;
- const g=geoState,world=mapBase()*360/Math.max(18,g.span),height=world/2;
+ const g=geoState,world=mapBase()*360/Math.max(6,g.span),height=world/2;
  return {x:w/2+lonDelta(point.lon,g.lon)/360*world,y:h/2+(g.lat-point.lat)/180*height,point,world,height};
 }
 function geoScreenPoint(n,withManual=true){
@@ -179,6 +179,7 @@ function fitGeoNetwork(n,tight=false){
  const verticalFactor=Math.max(.65,w/Math.max(320,h)),padding=tight?1.78:2.12,minSpan=tight?10:14;
  const span=Math.min(360,Math.max(minSpan,maxLon*padding,maxLat*padding*verticalFactor,center.span&&pts.length<=1?Math.min(center.span,tight?18:28):0));
  geoState.targetLat=center.lat;geoState.targetLon=center.lon;geoState.targetSpan=span;
+ geoAutoSpan=span;zoom=1;syncZoomControls();
  geoLabel.textContent=n.label+" · "+(center.place||"centro geografico")+" · rete "+pts.length+" nodi";
 }
 function moveGeo(n,tight=false){fitGeoNetwork(n,tight);}
@@ -188,7 +189,7 @@ function paintGeo(dt=16.7){
  const dl=lonDelta(g.targetLon,g.lon);
  g.lon+=dl*moveK;g.lat+=(g.targetLat-g.lat)*moveK;g.span+=(g.targetSpan-g.span)*zoomK;
  if(Math.abs(dl)<.0005)g.lon=g.targetLon;if(Math.abs(g.targetLat-g.lat)<.0005)g.lat=g.targetLat;if(Math.abs(g.targetSpan-g.span)<.001)g.span=g.targetSpan;
- const world=mapBase()*360/Math.max(18,g.span),height=world/2;
+ const world=mapBase()*360/Math.max(6,g.span),height=world/2;
  const centerX=(g.lon+180)/360*world,centerY=(90-g.lat)/180*height;
  earthMap.style.backgroundSize=world.toFixed(1)+"px "+height.toFixed(1)+"px";
  earthMap.style.backgroundPosition=(w/2-centerX).toFixed(1)+"px "+(h/2-centerY).toFixed(1)+"px";
@@ -198,7 +199,7 @@ function resolveScreenCollisions(points){
  const visible=points.filter(p=>p.node.type!=="geografia"&&visibleNode(p.node));
  if(visible.length<2)return;
  const cellSize=48;
- const world=mapBase()*360/Math.max(18,geoState.span),height=world/2;
+ const world=mapBase()*360/Math.max(6,geoState.span),height=world/2;
  const maxAutoX=clamp(world*(1.5/360),5,34);
  const maxAutoY=clamp(height*(1.1/180),5,28);
  const push=(p,dx,dy)=>{
@@ -640,7 +641,7 @@ canvas.addEventListener("pointermove",e=>{
   else{const current=screen.find(p=>p.node===drag.node),pos=unproject(pt.x,pt.y,current?.depth||0);Object.assign(drag.node,pos);drag.node.manualPinned=true;}
   drag.node.vx=drag.node.vy=drag.node.vz=0;
  }else if(!drag.relation){
-  const world=mapBase()*360/Math.max(18,geoState.span);
+  const world=mapBase()*360/Math.max(6,geoState.span);
   geoState.lon-=dx/world*360;geoState.lat+=dy/world*360;geoState.lat=clamp(geoState.lat,-80,80);
   geoState.targetLon=geoState.lon;geoState.targetLat=geoState.lat;
  }
@@ -648,12 +649,28 @@ canvas.addEventListener("pointermove",e=>{
 function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remove("dragging");if(d.relation&&!d.moved)showRelation(d.relation);}
 canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
 canvas.addEventListener("dblclick",e=>{const p=hit(pointer(e));if(p){e.preventDefault();focusOn(p.node,true);}});
-function setZoom(next){zoom=clamp(Number(next)||1,.45,3.5);const pct=Math.round(zoom*100);zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";zoomSlider.setAttribute("aria-valuetext",pct+" per cento");zoomIn.disabled=zoom>=3.5;zoomOut.disabled=zoom<=.45;}
-zoomIn.addEventListener("click",e=>{e.preventDefault();setZoom(zoom*1.3);});
-zoomOut.addEventListener("click",e=>{e.preventDefault();setZoom(zoom/1.3);});
+function syncZoomControls(){
+ const pct=Math.round(zoom*100);
+ zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";
+ zoomSlider.setAttribute("aria-valuetext",pct+" per cento");
+ zoomIn.disabled=zoom>=2.5;zoomOut.disabled=zoom<=.5;
+}
+function setZoom(next){
+ zoom=clamp(Number(next)||1,.5,2.5);
+ const anchor=selected&&geoFromNode(selected);
+ if(anchor){
+  geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
+  geoState.targetSpan=clamp(geoAutoSpan/zoom,6,360);
+ }else{
+  geoState.targetSpan=clamp(360/zoom,30,360);
+ }
+ syncZoomControls();
+}
+zoomIn.addEventListener("click",e=>{e.preventDefault();setZoom(zoom*1.25);});
+zoomOut.addEventListener("click",e=>{e.preventDefault();setZoom(zoom/1.25);});
 zoomSlider.addEventListener("input",()=>setZoom(Number(zoomSlider.value)/100));
-setZoom(zoom);
-canvas.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.001));},{passive:false});
+syncZoomControls();
+canvas.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.0012));},{passive:false});
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
 search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
@@ -676,7 +693,7 @@ moreControls?.addEventListener("click",()=>{
 
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{
- selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);
+ selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;zoom=1;syncZoomControls();
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
  search.value="";searchText="";activeLenses.clear();activeLenses.add("musica");
  activeCategories.clear();activeCategories.add("compositore");
