@@ -73,3 +73,9 @@ Quattro nuove relazioni `produzione` direttamente sostenute da editori di partit
 4. Witold Lutosławski → concerto, *Concerto per orchestra* (1954), genere da distinguere dal concerto con solista: Wise Music Classical, https://www.wisemusicclassical.com/work/7702/
 
 Archi generali: 1.102. Nuove relazioni di produzione nell'attuale serie di riprese: 16 (3+7+2+4). Controllo strutturale: nessun estremo di arco privo di nodo. I collegamenti non ancora verificati restano sospesi; nessuna modifica al ramo `main`.
+
+## Quinto aggiornamento correttivo — 8 ottobre 2026
+- Samuel Scheidt → musica per organo: *Tabulatura nova* (1624), edizione Schott, https://www.schott-music.com/en/tabulatura-nova-noc324558.html.
+- Henryk Mikołaj Górecki → sinfonia: Sinfonia n. 3 op. 36 per soprano e orchestra, catalogo Boosey & Hawkes, https://www.boosey.com/cr/music/Henryk-Mikolaj-Gorecki-Symphony-No-3-Symphony-of-Sorrowful-Songs/5629.
+- Nuovi archi operativi di questa sessione: 2. Nuovi archi nelle riprese successive alla prima ricognizione: 18. Totale archi generali: 1.104. Nessun estremo di arco inesistente. Ramo `main` invariato.
+- Commit grafo: `2b9f65116b00a376259d3f047847757c784aeb4c`; commit staging: `96ad5606550031141ed63b181a51bf94c757e3ec`.
