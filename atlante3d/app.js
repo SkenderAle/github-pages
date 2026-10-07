@@ -2,104 +2,194 @@
 (() => {
 const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:true});
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
-const search=document.getElementById("search"),filter=document.getElementById("filter"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensSelect=document.getElementById("lens"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
+const search=document.getElementById("search"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensChoices=document.getElementById("lensChoices"),categoryChoices=document.getElementById("categoryChoices"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
 const moreControls=document.getElementById("moreControls");
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel");
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
-let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",typeFilter="tutti",activeLens="musica",lensEdges=[],lensGroups=[],historySchoolEdges=[];
+let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[];
+const activeLenses=new Set(["musica"]);
+const activeCategories=new Set(["compositore","periodo","ambito","corrente","persona"]);
 const EXPLORATION_LENSES=[
- {id:"musica",label:"Storia e scuole",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#c8dfbd"},
- {id:"trasmissioni",label:"Maestri e influenze",description:"Insegnamento documentato, ricezione di opere, modelli e influenze stilistiche.",color:"#eec785"},
- {id:"genealogie",label:"Genealogie dei generi",description:"Ascendenze, trasformazioni e contaminazioni di forme, pratiche e generi.",color:"#e2b0fa"},
- {id:"collaborazioni",label:"Incontri e collaborazioni",description:"Rapporti artistici e professionali documentati; non semplici contemporaneità.",color:"#b8e4c6"}
+ {id:"musica",label:"Storia e scuole",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#9fc7d9"},
+ {id:"trasmissioni",label:"Maestri, allievi e influenze",description:"Rapporti didattici e influenze documentate. La freccia indica sempre la direzione storica.",color:"#63c7ff"},
+ {id:"genealogie",label:"Genealogie dei generi",description:"Ascendenze e trasformazioni di forme, pratiche e generi. Frecce viola.",color:"#c892ff"},
+ {id:"collaborazioni",label:"Incontri e collaborazioni",description:"Rapporti artistici e professionali documentati. Linea bidirezionale, senza freccia.",color:"#77d7a6"}
 ];
 const EXPLORATION_GROUPS={musica:["scuole"],trasmissioni:["formazione","influenze"],genealogie:["genealogie"],collaborazioni:["collaborazioni"]};
 const lensMeta=id=>EXPLORATION_LENSES.find(l=>l.id===id);
+const lensActive=id=>activeLenses.has(id);
+const hasNonMusicLens=()=>[...activeLenses].some(id=>id!=="musica");
+const activeLensLabel=()=>EXPLORATION_LENSES.filter(l=>activeLenses.has(l.id)).map(l=>l.label).join(" + ")||"nessuna lente";
 function displayRelations(id){return lensEdges.filter(e=>(EXPLORATION_GROUPS[id]||[]).includes(e.group));}
+const RELATION_STYLE={
+ formazione:{from:"#53bfff",to:"#b8edff",arrow:true,label:"maestro → allievo"},
+ influenze:{from:"#ffd166",to:"#ff8b5c",arrow:true,label:"influenza → ricezione"},
+ genealogie:{from:"#b98cff",to:"#f39bff",arrow:true,label:"genealogia → sviluppo"},
+ scuole:{from:"#73d7c4",to:"#d1f3d8",arrow:true,label:"tradizione → autore"},
+ collaborazioni:{from:"#72dea2",to:"#72dea2",arrow:false,label:"collaborazione ↔"},
+ storia:{from:"#9db7ca",to:"#d7e1e8",arrow:false,label:"relazione storica"}
+};
+function relationStyle(e){return RELATION_STYLE[e.group]||RELATION_STYLE.storia;}
+function relationVerb(e){return e.forward||e.kind||"relazione documentata";}
+function dedupeEdges(list){const seen=new Set();return list.filter(e=>{const k=e.id||[e.source,e.target,e.group||"",e.kind||""].join("|");if(seen.has(k))return false;seen.add(k);return true;});}
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/ł/g,"l").replace(/ß/g,"ss").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[ʹʺ'’ʼ`´]/g,"").replace(/[‐‑‒–—]/g,"-").replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
 function searchNames(n){return [n.label,...(n.aliases||[])];}
 function matchesSearch(n,q){return !!q&&searchNames(n).some(name=>normSearch(name).includes(q));}
 function searchRank(n,q){const variants=searchNames(n).map(normSearch);if(variants.some(v=>v===q))return 0;if(variants.some(v=>v.split(" ").includes(q)))return 1;if(variants.some(v=>v.startsWith(q)))return 2;return 3;}
-function findSearchResults(q){return nodes.filter(n=>matchesSearch(n,q)&&(n.type!=="persona"||n.music_relevance||activeLens!=="musica")).sort((a,b)=>searchRank(a,q)-searchRank(b,q)||a.label.localeCompare(b.label,"it"));}
+function findSearchResults(q){return nodes.filter(n=>n.type!=="geografia"&&matchesSearch(n,q)&&(n.type!=="persona"||n.music_relevance||hasNonMusicLens())).sort((a,b)=>searchRank(a,q)-searchRank(b,q)||a.label.localeCompare(b.label,"it"));}
 function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
 
-const geoState={lat:48,lon:11,span:100,targetLat:48,targetLon:11,targetSpan:100,enabled:true};
+const geoState={lat:20,lon:0,span:360,targetLat:20,targetLon:0,targetSpan:360,enabled:true};
+
+const COUNTRY_AREAS={
+ "Italia":[42.6,12.5,4.8,5.2],"Francia":[46.4,2.2,3.8,4.2],"Germania":[51.0,10.1,3.2,4.4],
+ "Austria":[47.7,14.1,2.2,3.2],"Russia":[56.0,38.0,10.0,20.0],"Cechia":[49.8,15.5,2.0,2.6],
+ "Stati Uniti":[39.0,-98.0,12.0,24.0],"Ungheria":[47.1,19.2,2.0,2.8],"Polonia":[52.0,19.1,3.2,4.0],
+ "Inghilterra":[52.7,-1.6,2.8,3.0],"Regno Unito":[54.0,-2.0,4.0,4.0],"Spagna":[40.2,-3.7,4.0,4.8],
+ "Paesi Bassi":[52.2,5.3,1.5,1.8],"Belgio":[50.7,4.6,1.2,1.4],"Croazia":[45.2,15.5,2.3,3.0],
+ "Slovenia":[46.1,14.9,1.2,1.5],"Romania":[45.9,24.9,3.0,4.0],"Grecia":[39.0,22.0,3.0,4.0],
+ "Albania":[41.1,20.0,1.4,1.2],"Svezia":[62.0,15.0,5.0,5.5],"Norvegia":[62.0,10.0,6.0,4.0],
+ "Finlandia":[64.0,26.0,5.0,5.0],"Danimarca":[56.0,10.0,2.0,2.2],"Portogallo":[39.6,-8.0,2.3,1.8],
+ "Brasile":[-14.2,-51.9,12.0,15.0],"Argentina":[-34.0,-64.0,11.0,8.0],"Messico":[23.6,-102.5,8.0,10.0],
+ "Canada":[56.1,-106.3,14.0,25.0],"Giappone":[36.2,138.3,4.0,4.5],"Cina":[35.9,104.2,10.0,14.0],
+ "Australia":[-25.3,133.8,9.0,12.0]
+};
+const MUSICIAN_GEO_OVERRIDES={
+ "compositore-antonio-vivaldi":[45.4408,12.3155,"Venezia"],
+ "compositore-ludwig-van-beethoven":[50.7374,7.0982,"Bonn"],
+ "compositore-leonard-bernstein":[40.7128,-74.0060,"New York"],
+ "compositore-johann-sebastian-bach":[51.3397,12.3731,"Lipsia"],
+ "compositore-georg-friedrich-handel":[51.4828,11.9698,"Halle"],
+ "compositore-wolfgang-amadeus-mozart":[47.8095,13.0550,"Salisburgo"],
+ "compositore-joseph-haydn":[47.8457,16.5233,"Eisenstadt"],
+ "compositore-claudio-monteverdi":[45.4408,12.3155,"Venezia"],
+ "compositore-giovanni-pierluigi-da-palestrina":[41.9028,12.4964,"Roma"],
+ "compositore-arcangelo-corelli":[41.9028,12.4964,"Roma"],
+ "compositore-gioachino-rossini":[43.9102,12.9133,"Pesaro"],
+ "compositore-giuseppe-verdi":[45.0527,9.6966,"Busseto"],
+ "compositore-giacomo-puccini":[43.8430,10.5079,"Lucca"],
+ "compositore-hector-berlioz":[48.8566,2.3522,"Parigi"],
+ "compositore-claude-debussy":[48.8566,2.3522,"Parigi"],
+ "compositore-maurice-ravel":[48.8566,2.3522,"Parigi"],
+ "compositore-gabriel-faure":[48.8566,2.3522,"Parigi"],
+ "compositore-camille-saint-saens":[48.8566,2.3522,"Parigi"],
+ "compositore-erik-satie":[48.8566,2.3522,"Parigi"],
+ "compositore-olivier-messiaen":[48.8566,2.3522,"Parigi"],
+ "compositore-pierre-boulez":[48.8566,2.3522,"Parigi"],
+ "compositore-frederic-chopin":[52.2297,21.0122,"Varsavia"],
+ "compositore-franz-liszt":[50.9795,11.3235,"Weimar"],
+ "compositore-richard-wagner":[49.9456,11.5713,"Bayreuth"],
+ "compositore-johannes-brahms":[48.2082,16.3738,"Vienna"],
+ "compositore-gustav-mahler":[48.2082,16.3738,"Vienna"],
+ "compositore-arnold-schonberg":[48.2082,16.3738,"Vienna"],
+ "compositore-anton-webern":[48.2082,16.3738,"Vienna"],
+ "compositore-alban-berg":[48.2082,16.3738,"Vienna"],
+ "compositore-petr-il-ic-cajkovskij":[55.7558,37.6173,"Mosca"],
+ "compositore-nikolaj-rimskij-korsakov":[59.9311,30.3609,"San Pietroburgo"],
+ "compositore-modest-musorgskij":[59.9311,30.3609,"San Pietroburgo"],
+ "compositore-dmitrij-sostakovic":[59.9311,30.3609,"San Pietroburgo"],
+ "compositore-sergej-prokofev":[55.7558,37.6173,"Mosca"],
+ "compositore-sergej-rachmaninov":[55.7558,37.6173,"Mosca"],
+ "compositore-bela-bartok":[47.4979,19.0402,"Budapest"],
+ "compositore-zoltan-kodaly":[47.4979,19.0402,"Budapest"],
+ "compositore-bedrich-smetana":[50.0755,14.4378,"Praga"],
+ "compositore-antonin-dvorak":[50.0755,14.4378,"Praga"],
+ "compositore-leos-janacek":[49.1951,16.6068,"Brno"],
+ "compositore-john-cage":[40.7128,-74.0060,"New York"],
+ "compositore-charles-ives":[41.0534,-73.5387,"Connecticut"],
+ "compositore-george-gershwin":[40.7128,-74.0060,"New York"],
+ "compositore-duke-ellington":[38.9072,-77.0369,"Washington"],
+ "compositore-billy-strayhorn":[40.7128,-74.0060,"New York"],
+ "compositore-margaret-bonds":[41.8781,-87.6298,"Chicago"]
+};
+function stableHash(s){let h=2166136261;for(const ch of String(s)){h^=ch.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
+function fallbackCountryGeo(n){
+ const area=COUNTRY_AREAS[n?.country];if(!area)return null;
+ const h=stableHash(n.id),u=((h&65535)/65535)-.5,v=(((h>>>16)&65535)/65535)-.5;
+ return {lat:area[0]+u*area[2],lon:area[1]+v*area[3],span:50,precision:"country-distributed",place:n.country};
+}
+function baseGeo(n){
+ if(!n)return null;
+ const ov=MUSICIAN_GEO_OVERRIDES[n.id];if(ov)return {lat:ov[0],lon:ov[1],span:32,precision:"city-override",place:ov[2]};
+ if(n.type==="geografia"){
+  const cc=({"geografia-francia":[46.6,2.3],"geografia-italia":[42.8,12.5],"geografia-inghilterra":[53,-1.5],"geografia-spagna":[40,-4],"geografia-germania":[51,10],"geografia-austria":[47.6,14.1],"geografia-russia":[56,37.6],"geografia-cechia":[49.8,15.5],"geografia-stati-uniti":[39,-98],"geografia-ungheria":[47.2,19.4],"geografia-polonia":[52,19.1],"geografia-paesi-bassi":[52.2,5.3]})[n.id];
+  return cc?{lat:cc[0],lon:cc[1],span:70,precision:"country"}:null;
+ }
+ if(n.geo_focus&&Number.isFinite(n.geo_focus.lat)&&Number.isFinite(n.geo_focus.lon)&&n.geo_focus.precision!=="country-approximation")return {...n.geo_focus};
+ return fallbackCountryGeo(n)||(n.geo_focus&&Number.isFinite(n.geo_focus.lat)&&Number.isFinite(n.geo_focus.lon)?{...n.geo_focus}:null);
+}
+function circularMeanLon(values){
+ if(!values.length)return 0;let x=0,y=0;
+ for(const lon of values){const r=lon*Math.PI/180;x+=Math.cos(r);y+=Math.sin(r);}
+ return Math.atan2(y,x)*180/Math.PI;
+}
 function geoFromNode(n){
- if(n?.geo_focus)return n.geo_focus;
- const linkedGeo=edges.filter(e=>e.source===n.id||e.target===n.id)
-  .map(e=>e.source===n.id?byId.get(e.target):byId.get(e.source))
-  .find(other=>other?.geo_focus);
- return linkedGeo?.geo_focus||null;
+ const own=baseGeo(n);if(own)return own;
+ const pool=dedupeEdges([...edges,...lensEdges]);
+ const linked=pool.filter(e=>e.source===n.id||e.target===n.id)
+  .map(e=>baseGeo(byId.get(e.source===n.id?e.target:e.source))).filter(Boolean);
+ if(!linked.length)return null;
+ return {lat:linked.reduce((s,p)=>s+p.lat,0)/linked.length,lon:circularMeanLon(linked.map(p=>p.lon)),span:80,precision:"network-centroid",place:"baricentro della rete"};
 }
-function moveGeo(n){
- if(!geoState.enabled||!n)return;
- const point=geoFromNode(n);
- if(!point){geoLabel.textContent="Mondo · geografia non ancora catalogata";return;}
- geoState.targetLat=point.lat;geoState.targetLon=point.lon;geoState.targetSpan=point.span||90;
- geoLabel.textContent=n.label+" · "+(point.precision==="country-approximation"?"area geografica indicativa":"area di riferimento");
+const lonDelta=(a,b)=>((a-b+540)%360)-180;
+const mapBase=()=>Math.max(320,Math.min(w,2*h));
+function rawGeoPoint(n){
+ const point=geoFromNode(n);if(!point)return null;
+ const g=geoState,world=mapBase()*360/Math.max(18,g.span),height=world/2;
+ return {x:w/2+lonDelta(point.lon,g.lon)/360*world,y:h/2+(g.lat-point.lat)/180*height,point,world,height};
 }
+function geoScreenPoint(n,withManual=true){
+ const raw=rawGeoPoint(n);if(!raw)return null;
+ return {x:raw.x+(withManual?(n.manualDx||0):0),y:raw.y+(withManual?(n.manualDy||0):0),depth:0,scale:1,r:15,geo:true,point:raw.point};
+}
+function categoryVisible(n){return n===selected||activeCategories.has(n.type);}
+function networkNodesForFocus(n){
+ if(!n)return [];
+ const out=[n],seen=new Set([n.id]);
+ for(const e of currentEdges()){
+  let other=null;if(e.source===n.id)other=byId.get(e.target);else if(e.target===n.id)other=byId.get(e.source);
+  if(!other||other.type==="geografia"||!categoryVisible(other)||seen.has(other.id))continue;
+  seen.add(other.id);out.push(other);
+ }
+ return out;
+}
+function fitGeoNetwork(n){
+ if(!geoState.enabled)return;
+ if(!n){geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";return;}
+ const center=geoFromNode(n);
+ if(!center){geoLabel.textContent=n.label+" · geografia non ancora catalogata";return;}
+ const pts=networkNodesForFocus(n).map(geoFromNode).filter(Boolean);
+ let maxLon=0,maxLat=0;
+ for(const p of pts){maxLon=Math.max(maxLon,Math.abs(lonDelta(p.lon,center.lon)));maxLat=Math.max(maxLat,Math.abs(p.lat-center.lat));}
+ const verticalFactor=Math.max(.65,w/Math.max(320,h));
+ const span=Math.min(360,Math.max(22,maxLon*2.35,maxLat*2.35*verticalFactor,center.span&&pts.length<=1?Math.min(center.span,85):0));
+ geoState.targetLat=center.lat;geoState.targetLon=center.lon;geoState.targetSpan=span;
+ geoLabel.textContent=n.label+" · "+(center.place||"centro geografico")+" · rete "+pts.length+" nodi";
+}
+function moveGeo(n){fitGeoNetwork(n);}
 function paintGeo(){
  if(!earthMap)return;
- const g=geoState;
- let dl=((g.targetLon-g.lon+540)%360)-180;
- g.lon+=dl*.055;g.lat+=(g.targetLat-g.lat)*.055;g.span+=(g.targetSpan-g.span)*.045;
- const world=Math.max(500,w*360/Math.max(24,g.span));
- const height=world/2;
+ const g=geoState;let dl=lonDelta(g.targetLon,g.lon);
+ g.lon+=dl*.075;g.lat+=(g.targetLat-g.lat)*.075;g.span+=(g.targetSpan-g.span)*.065;
+ const world=mapBase()*360/Math.max(18,g.span),height=world/2;
  const centerX=(g.lon+180)/360*world,centerY=(90-g.lat)/180*height;
- const pan=mapOffset();
  earthMap.style.backgroundSize=world.toFixed(1)+"px "+height.toFixed(1)+"px";
- earthMap.style.backgroundPosition=(w/2+pan.x-centerX).toFixed(1)+"px "+(h/2+pan.y-centerY).toFixed(1)+"px";
+ earthMap.style.backgroundPosition=(w/2-centerX).toFixed(1)+"px "+(h/2-centerY).toFixed(1)+"px";
 }
-followGeo?.addEventListener("change",()=>{
- geoState.enabled=followGeo.checked;
- if(geoState.enabled&&selected)moveGeo(selected);
-});
-
-// La geografia è un primo livello, non una seconda costellazione in cascata.
-// I marcatori geografici sono ancorati alla stessa proiezione della mappa NASA.
-const GEO_CENTERS={
- "geografia-francia":[46.6,2.3],"geografia-italia":[42.8,12.5],
- "geografia-inghilterra":[53,-1.5],"geografia-spagna":[40,-4],
- "geografia-germania":[51,10],"geografia-austria":[47.6,14.1],
- "geografia-russia":[56,37.6],"geografia-cechia":[49.8,15.5],
- "geografia-stati-uniti":[39,-98],"geografia-ungheria":[47.2,19.4],
- "geografia-polonia":[52,19.1]
-};
-const mapOffset=()=>({x:selected?.type==="geografia"?0:Math.min(170,w*.19),y:selected?.type==="geografia"?0:-Math.min(95,h*.12)});
-function geoScreenPoint(n){
- const coords=GEO_CENTERS[n.id];
- if(!coords)return null;
- const g=geoState,world=Math.max(500,w*360/Math.max(24,g.span)),height=world/2;
- const [lat,lon]=coords,pan=mapOffset();
- const dx=((lon-g.lon+540)%360)-180;
- const worldX=w/2+pan.x+dx/360*world;
- const worldY=h/2+pan.y+(g.lat-lat)/180*height;
- // I Paesi lontani dalla zona visibile non scompaiono: restano
- // come marcatori di navigazione al bordo della carta.
- const margin=39,top=Math.min(h*.29,215),bottom=Math.max(top+100,h-134);
- const x=clamp(worldX,margin,w-margin);
- const y=clamp(worldY,top,bottom);
- return {x,y,depth:-.01,scale:Math.min(w,h)*.055,r:17,
-  offMap:Math.abs(x-worldX)>2||Math.abs(y-worldY)>2,
-  edgeX:worldX<x?"left":worldX>x?"right":null,
-  edgeY:worldY<y?"up":worldY>y?"down":null};
-}
-function positionGeoMarkers(points){
- // Piccoli spostamenti di etichettatura evitano che Paesi vicini
- // si coprano l'un l'altro, senza modificare le coordinate della mappa.
- const pins=points.filter(p=>p.node.type==="geografia").sort((a,b)=>a.y-b.y||a.x-b.x);
- for(let pass=0;pass<9;pass++)for(let i=0;i<pins.length;i++)for(let j=i+1;j<pins.length;j++){
-  const a=pins[i],b=pins[j];
-  let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
-  if(d>=47)continue;
-  if(d<.01){dx=1;dy=0;d=1;}
-  const shift=(47-d)*.28,nx=dx/d,ny=dy/d;
-  a.x=clamp(a.x-nx*shift,30,w-30);a.y=clamp(a.y-ny*shift,Math.min(h*.29,215),h-134);
-  b.x=clamp(b.x+nx*shift,30,w-30);b.y=clamp(b.y+ny*shift,Math.min(h*.29,215),h-134);
+followGeo?.addEventListener("change",()=>{geoState.enabled=followGeo.checked;if(geoState.enabled)fitGeoNetwork(selected);});
+function resolveScreenCollisions(points){
+ const visible=points.filter(p=>p.node.type!=="geografia"&&visibleNode(p.node));
+ for(let pass=0;pass<8;pass++)for(let i=0;i<visible.length;i++)for(let j=i+1;j<visible.length;j++){
+  const a=visible[i],b=visible[j];let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
+  const min=(a.r||12)+(b.r||12)+9;if(d>=min)continue;if(d<.01){dx=(stableHash(a.node.id+b.node.id)%2?1:-1);dy=.3;d=Math.hypot(dx,dy);}
+  const k=(min-d)*.5/d,nx=dx*k,ny=dy*k;
+  const aFixed=a.node===selected||a.node.manualPinned,bFixed=b.node===selected||b.node.manualPinned;
+  if(!aFixed){a.x-=nx;a.y-=ny;}if(!bFixed){b.x+=nx;b.y+=ny;}
+  if(aFixed&&!bFixed){b.x+=nx;b.y+=ny;}else if(bFixed&&!aFixed){a.x-=nx;a.y-=ny;}
  }
 }
 // Lo spazio effettivo del grafo non coincide con tutto lo schermo:
@@ -142,22 +232,27 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
  lensEdges=(lenses.relations||[]).filter(e=>byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
   historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole")];
- status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · scegli una bolla";resize();
+ status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · doppio clic per esplorare";resize();syncLensControls();syncCategoryControls();
 }
 function physics(){if(!nodes.length)return;for(const n of nodes){n.vx+=-n.x*.00021;n.vy+=-n.y*.00021;n.vz+=-n.z*.00021;}
  for(const e of edges){const a=e.a,b=e.b;let dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d=Math.hypot(dx,dy,dz)||.001,preferred=(a.type==="compositore"&&b.type==="compositore")?2.8:3.6;let f=clamp((d-preferred)*.0025*(e.weight||1),-.035,.035)/d;dx*=f;dy*=f;dz*=f;a.vx+=dx;a.vy+=dy;a.vz+=dz;b.vx-=dx;b.vy-=dy;b.vz-=dz;}
  // Repulsione locale: l'algoritmo evita che centinaia di bolle si sovrappongano.
  for(let i=0;i<nodes.length;i++){let a=nodes[i];for(let j=i+1;j<nodes.length;j++){let b=nodes[j],dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d2=dx*dx+dy*dy+dz*dz;if(d2>5.5||d2<.00001)continue;let f=.008/(d2+.2);a.vx-=dx*f;a.vy-=dy*f;a.vz-=dz*f;b.vx+=dx*f;b.vy+=dy*f;b.vz+=dz*f;}}
- for(const n of nodes){if(drag&&drag.node===n){n.vx=n.vy=n.vz=0;continue;}n.vx=clamp(n.vx*.89,-.12,.12);n.vy=clamp(n.vy*.89,-.12,.12);n.vz=clamp(n.vz*.89,-.12,.12);n.x+=n.vx;n.y+=n.vy;n.z+=n.vz;}}
-function currentEdges(){return activeLens==="musica"?historySchoolEdges:displayRelations(activeLens);}
+ for(const n of nodes){if((drag&&drag.node===n)||n.manualPinned){n.vx=n.vy=n.vz=0;continue;}n.vx=clamp(n.vx*.89,-.12,.12);n.vy=clamp(n.vy*.89,-.12,.12);n.vz=clamp(n.vz*.89,-.12,.12);n.x+=n.vx;n.y+=n.vy;n.z+=n.vz;}}
+function currentEdges(){
+ const all=[];if(activeLenses.has("musica"))all.push(...historySchoolEdges);
+ for(const id of activeLenses)if(id!=="musica")all.push(...displayRelations(id));
+ return dedupeEdges(all);
+}
 function visibleNode(n){
- if(n.type==="geografia")return true;
- if(n.type==="persona"&&activeLens==="musica"&&!n.music_relevance)return false;
- // Le sfere collegate rimangono sempre visibili durante l'esplorazione di una lente,
- // anche se il precedente filtro generale riguardava soltanto i compositori.
- if(activeLens!=="musica"&&selected&&(n===selected||currentEdges().some(e=>(e.source===selected.id&&e.target===n.id)||(e.target===selected.id&&e.source===n.id))))return true;
- if(n.type==="persona"&&!n.music_relevance)return activeLens!=="musica"&&currentEdges().some(e=>e.source===n.id||e.target===n.id);
- return typeFilter==="tutti"||n.type===typeFilter||n===selected;
+ if(n.type==="geografia")return false;
+ if(!categoryVisible(n))return false;
+ if(n.type==="persona"&&!n.music_relevance&&!hasNonMusicLens()&&n!==selected)return false;
+ if(selected){
+  if(n===selected)return true;
+  return currentEdges().some(e=>(e.source===selected.id&&e.target===n.id)||(e.target===selected.id&&e.source===n.id));
+ }
+ return true;
 }
 function lineHit(pt){
  let hit=null,best=12;
@@ -172,7 +267,7 @@ function showRelation(e){
  const dst=document.getElementById("panelContent"),box=document.createElement("section");
  box.className="lens-explanation";
  const h=document.createElement("h3");h.textContent="Perché sono collegati?";
- const names=document.createElement("strong");names.textContent=e.a.label+" ↔ "+e.b.label;
+ const names=document.createElement("strong");{const s=relationStyle(e);names.textContent=e.a.label+(s.arrow?" → ":" ↔ ")+e.b.label+" · "+relationVerb(e);}
  const p=document.createElement("p");p.textContent=e.note||"Relazione da approfondire.";
  box.append(h,names,p);
  const foot=document.createElement("div");foot.className="lens-sources";
@@ -310,70 +405,40 @@ function drawNightAtlas(){
  cartography=bg;
 }
 
-function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;camera.y+=(focus.y-camera.y)*.085;camera.z+=(focus.z-camera.z)*.085;}
+function draw(){frame++;physics();
  ctx.clearRect(0,0,w,h);paintGeo();
- screen=nodes.map(n=>{let p=n.type==="geografia"?(geoScreenPoint(n)||sxworld(n)):sxworld(n);p.node=n;p.r=n.type==="geografia"?15:clamp(n.radius*2.25*zoom*9/Math.max(5,16+p.depth),4.5,32)*(n===selected?1.6:1);if(drag?.node===n&&n.type!=="geografia"){p.x=drag.x;p.y=drag.y;}return p;});
- positionGeoMarkers(screen);
- if(activeLens!=="musica"&&selected){
-  // Costellazione locale della lente: portiamo scuole e interlocutori
-  // attorno al protagonista senza alterare le coordinate musicali del database.
-  const center=screen.find(p=>p.node===selected);
-  const related=linked(selected).filter(row=>row.n.type!=="geografia");
-  if(center&&related.length){
-   const space=graphStage();
-   const radius=Math.min(155,Math.max(46,Math.min(space.right-space.left,space.bottom-space.top)*.23));
-   for(const [index,row] of related.entries()){
-    const point=screen.find(p=>p.node===row.n);if(!point)continue;
-    const angle=-Math.PI*.62+Math.PI*2*index/Math.max(related.length,3);
-    point.x=clamp(center.x+Math.cos(angle)*radius,space.left+13,space.right-13);
-    point.y=clamp(center.y+Math.sin(angle)*radius,space.top+12,space.bottom-12);
-    point.depth=center.depth;point.r=clamp(15*zoom,10,21);
-   }
-  }
- }
+ screen=nodes.map(n=>{let p=geoScreenPoint(n,true)||sxworld(n);p.node=n;p.r=clamp((n.type==="compositore"||n.type==="persona"?11:14)*(n===selected?1.45:1),7,25);return p;});
+ resolveScreenCollisions(screen);
  const map=new Map(screen.map(p=>[p.node.id,p]));
- const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||(activeLens!=="musica"?hover:null);lineHits=[];
+ const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover;lineHits=[];
  if(lensFocus){neighbors.add(lensFocus.id);for(const e of activeEdges){if(e.source===lensFocus.id)neighbors.add(e.target);if(e.target===lensFocus.id)neighbors.add(e.source);}}
  for(const e of activeEdges){
   const a=map.get(e.source),b=map.get(e.target);
-  if(!a||!b||a.depth< -14||b.depth< -14||!visibleNode(a.node)||!visibleNode(b.node))continue;
+  if(!a||!b||!visibleNode(a.node)||!visibleNode(b.node))continue;
   const direct=!!lensFocus&&(e.source===lensFocus.id||e.target===lensFocus.id);
-  const touchesGeo=a.node.type==="geografia"||b.node.type==="geografia";
-  // I Paesi rimangono navigabili, non diventano una rete geografica autonoma.
-  if(touchesGeo&&!direct)continue;
-  if(activeLens!=="musica"&&!direct)continue;
-  ctx.globalAlpha=lensFocus?(direct?.94:(showAllLabels?.19:.025)):(activeLens==="musica"?(showAllLabels?.27:.16):0);
-  ctx.lineWidth=direct?(activeLens==="musica"?1.75:2.8):(showAllLabels?1.05:.7);
-  if(direct){
-    const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
-    if(activeLens==="musica"){path.addColorStop(0,"#ffe7b0");path.addColorStop(.5,"#c2e9fc");path.addColorStop(1,"#e4bedf");}else{const color=lensMeta(activeLens)?.color||"#eec785";path.addColorStop(0,color);path.addColorStop(.5,"#fff1d7");path.addColorStop(1,color);}
-    ctx.strokeStyle=path;
-  }else ctx.strokeStyle="#9fbdd4";
-  const bend=Math.min(38,Math.hypot(b.x-a.x,b.y-a.y)*.09);
+  if(!direct)continue;
+  const style=relationStyle(e);
+  ctx.globalAlpha=.94;ctx.lineWidth=2.7;
+  const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+  path.addColorStop(0,style.from);path.addColorStop(1,style.to);ctx.strokeStyle=path;
+  const bend=Math.min(34,Math.hypot(b.x-a.x,b.y-a.y)*.075);
+  const cx=(a.x+b.x)*.5+bend*.32,cy=(a.y+b.y)*.5-bend;
   ctx.beginPath();ctx.moveTo(a.x,a.y);
-  if(((activeLens==="trasmissioni"&&e.group==="influenze")&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind))||(activeLens==="genealogie"&&/^(convergenza|contaminazione|influenza-transnazionale)/.test(e.kind)))ctx.setLineDash([6,5]);
-  const cx=(a.x+b.x)*.5+bend*.35,cy=(a.y+b.y)*.5-bend;
+  if(e.group==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind||""))ctx.setLineDash([6,5]);
   ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
-  if(direct&&(activeLens!=="musica"||e.group==="scuole")){
-   lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
-   if(e.group==="influenze"||e.group==="formazione"||e.group==="genealogie"||e.group==="scuole"){
-    // Freccia: da chi insegna/influenza verso chi apprende/raccoglie l'eredità.
-    const t=.77,q=1-t,px=q*q*a.x+2*q*t*cx+t*t*b.x,py=q*q*a.y+2*q*t*cy+t*t*b.y;
-    const dx=2*q*(cx-a.x)+2*t*(b.x-cx),dy=2*q*(cy-a.y)+2*t*(b.y-cy);
-    const ang=Math.atan2(dy,dx);ctx.save();ctx.globalAlpha=.95;ctx.fillStyle=ctx.strokeStyle;
-    ctx.beginPath();ctx.moveTo(px+8*Math.cos(ang),py+8*Math.sin(ang));
-    ctx.lineTo(px-6*Math.cos(ang-.5),py-6*Math.sin(ang-.5));
-    ctx.lineTo(px-6*Math.cos(ang+.5),py-6*Math.sin(ang+.5));ctx.closePath();ctx.fill();ctx.restore();
-   }
+  lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
+  if(style.arrow){
+   const t=.77,q=1-t,px=q*q*a.x+2*q*t*cx+t*t*b.x,py=q*q*a.y+2*q*t*cy+t*t*b.y;
+   const dx=2*q*(cx-a.x)+2*t*(b.x-cx),dy=2*q*(cy-a.y)+2*t*(b.y-cy),ang=Math.atan2(dy,dx);
+   ctx.save();ctx.globalAlpha=.98;ctx.fillStyle=style.to;ctx.beginPath();
+   ctx.moveTo(px+8*Math.cos(ang),py+8*Math.sin(ang));
+   ctx.lineTo(px-6*Math.cos(ang-.5),py-6*Math.sin(ang-.5));
+   ctx.lineTo(px-6*Math.cos(ang+.5),py-6*Math.sin(ang+.5));ctx.closePath();ctx.fill();ctx.restore();
   }
  }
  ctx.globalAlpha=1;
  const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>{
-  // Prima le sfere musicali, poi i Paesi cliccabili, infine la selezione.
-  if(a.node===selected)return 1;
-  if(b.node===selected)return -1;
-  if(a.node.type==="geografia"&&b.node.type!=="geografia")return 1;
-  if(b.node.type==="geografia"&&a.node.type!=="geografia")return -1;
+  if(a.node===selected)return 1;if(b.node===selected)return -1;
   const ac=selected&&neighbors.has(a.node.id)?1:0,bc=selected&&neighbors.has(b.node.id)?1:0;
   return ac-bc||b.depth-a.depth;
  });
@@ -381,22 +446,17 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
  for(const p of drawable){
   const n=p.node,related=selected&&neighbors.has(n.id);
   const highlight=n===selected||(related&&(n===hover||(searchText.length>1&&matchesSearch(n,searchText))))||(!selected&&(n===hover||(searchText.length>1&&n.label.toLowerCase().includes(searchText))));
-  ctx.globalAlpha=n.type==="geografia"?1:(selected&&!related&&!highlight?(activeLens==="musica"?(showAllLabels?.33:.085):.14):1);
+  ctx.globalAlpha=selected&&!related&&!highlight?.12:1;
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=rad;
-  if(n.type==="geografia"&&p.offMap){
-   ctx.beginPath();ctx.arc(p.x,p.y,rad+5,0,Math.PI*2);
-   ctx.strokeStyle="#f1d59e";ctx.globalAlpha=.7;ctx.lineWidth=1.4;
-   ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
-  }
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
-  const isLabel=n.type==="geografia"||Boolean(lensFocus?(neighbors.has(n.id)||(showAllLabels&&activeLens==="musica")):(activeLens==="musica"&&(showAllLabels||highlight||n.type==="periodo"&&p.scale>.4)));
+  const isLabel=Boolean(lensFocus?(neighbors.has(n.id)||showAllLabels):(showAllLabels||highlight||n.type==="periodo"));
   if(isLabel){
    ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
    ctx.strokeStyle="#071321";ctx.strokeText(n.label,p.x,p.y-rad-9);
    ctx.fillStyle=highlight?"#fff4d9":(selected&&!related?"rgba(240,242,247,.68)":"rgba(240,242,247,.95)");
-   ctx.fillText(n.label+(n.type==="geografia"&&p.offMap?" ↗":""),p.x,p.y-rad-9);
+   ctx.fillText(n.label,p.x,p.y-rad-9);
   }
  }
 
@@ -404,8 +464,11 @@ function draw(){frame++;physics();if(focus){camera.x+=(focus.x-camera.x)*.085;ca
 function linked(n){return currentEdges().filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
 function focusOn(n,openPanel=true){
  if(selected!==n){search.value="";searchText="";}
- if(n.type==="geografia"){geoState.enabled=true;if(followGeo)followGeo.checked=true;}
- selected=n;focus=n.type==="geografia"?null:n;moveGeo(n);status.textContent=n.label+" · "+linked(n).length+" connessioni · "+(lensSelect?.selectedOptions[0]?.textContent||"Musica");populate(n);if(openPanel)setPanel(true);}
+ selected=n;n.manualDx=0;n.manualDy=0;n.manualPinned=false;
+ const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n);
+ status.textContent=n.label+" · "+linked(n).length+" connessioni · "+activeLensLabel();
+ populate(n);if(openPanel)setPanel(true);
+}
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Scheda e video";tab.setAttribute("aria-expanded",String(open));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function populate(n){
@@ -423,44 +486,28 @@ function populate(n){
  }
  const conn=linked(n);
  const lensIntro=document.createElement("section");lensIntro.className="lens-panel-intro";
- const lensTitle=document.createElement("strong");lensTitle.textContent="Lente: "+(lensSelect?.selectedOptions[0]?.textContent||"Storia musicale");
- const lensP=document.createElement("p");lensP.textContent=lensMeta(activeLens)?.description||"Relazioni documentate.";
+ const lensTitle=document.createElement("strong");lensTitle.textContent="Lenti attive: "+activeLensLabel();
+ const lensP=document.createElement("p");lensP.textContent="Puoi combinare più lenti: colori e frecce mantengono distinto il significato dei rapporti.";
  lensIntro.append(lensTitle,lensP);dst.append(lensIntro);
- // Un'anteprima quantitativa segnala subito dove esistono legami documentati.
- // Evita che chi seleziona una lente ancora vuota interpreti lo zero come un fatto storico.
- if(lensSelect&&lensGroups.length){
-  const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";
-  shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
-  const options=EXPLORATION_LENSES.map(g=>({
-   id:g.id,label:g.id==="musica"?"Storia + scuole":g.id==="trasmissioni"?"Maestri + influenze":g.id==="genealogie"?"Generi":"Incontri",
-   count:(g.id==="musica"?historySchoolEdges:displayRelations(g.id)).filter(e=>e.source===n.id||e.target===n.id).length
-  }));
-  for(const option of options){
-   const button=document.createElement("button");button.type="button";
-   button.classList.toggle("is-active",activeLens===option.id);
-   const number=document.createElement("span");number.className="num";number.textContent=" "+option.count;
-   button.textContent=option.label+" ·";button.append(number);
-   button.setAttribute("aria-pressed",String(activeLens===option.id));
-   button.addEventListener("click",()=>{
-    if(lensSelect.value===option.id)return;
-    lensSelect.value=option.id;lensSelect.dispatchEvent(new Event("change"));
-   });shortcuts.append(button);
-  }
-  dst.append(shortcuts);
+ const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
+ for(const g of EXPLORATION_LENSES){
+  const count=(g.id==="musica"?historySchoolEdges:displayRelations(g.id)).filter(e=>e.source===n.id||e.target===n.id).length;
+  const button=document.createElement("button");button.type="button";button.classList.toggle("is-active",activeLenses.has(g.id));
+  button.setAttribute("aria-pressed",String(activeLenses.has(g.id)));button.textContent=g.label+" · ";
+  const number=document.createElement("span");number.className="num";number.textContent=count;button.append(number);
+  button.addEventListener("click",()=>toggleLens(g.id));shortcuts.append(button);
  }
- if(activeLens!=="musica"||conn.some(({e})=>e.group==="scuole")){
-  const selectedRelations=activeLens==="musica"?conn.filter(({e})=>e.group==="scuole"):conn;
-  const box=document.createElement("section");box.className="lens-relations";
-  const head=document.createElement("h3");head.textContent=(activeLens==="musica"?"Scuole e tradizioni documentate":"Relazioni nella lente")+" · "+selectedRelations.length;box.append(head);
-  if(!selectedRelations.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun legame di questo tipo ancora documentato nel database: non significa che non esistesse.";box.append(p);}
-  for(const {e,n:other} of selectedRelations){
-   const item=document.createElement("article");item.className="lens-relation-item";
-   const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
-   const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=n.id===e.source?e.forward:e.reverse;
-   const p=document.createElement("p");p.textContent=e.note;item.append(b,kind,p);
-   const why=document.createElement("button");why.type="button";why.className="lens-why";why.textContent="Perché sono collegati? · fonti ↗";why.addEventListener("click",()=>showRelation(e));item.append(why);box.append(item);
-  }dst.append(box);
- }
+ dst.append(shortcuts);
+ const box=document.createElement("section");box.className="lens-relations";
+ const head=document.createElement("h3");head.textContent="Relazioni nelle lenti attive · "+conn.length;box.append(head);
+ if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun legame documentato con i filtri attuali: non significa che non esistesse.";box.append(p);}
+ for(const {e,n:other} of conn){
+  const item=document.createElement("article");item.className="lens-relation-item";
+  const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
+  const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=(n.id===e.source?e.forward:e.reverse)||e.kind||"relazione";
+  const p=document.createElement("p");p.textContent=e.note||"Relazione documentata.";item.append(b,kind,p);
+  const why=document.createElement("button");why.type="button";why.className="lens-why";why.textContent="Perché sono collegati? · fonti ↗";why.addEventListener("click",()=>showRelation(e));item.append(why);box.append(item);
+ }dst.append(box);
  const relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
  if(n.url){const a=document.createElement("a");a.className="card";a.href=n.url;a.textContent="↗ Apri il percorso nell'Atlante";dst.append(a);}
  const mediaHead=document.createElement("div");mediaHead.className="panel-section-header";
@@ -492,32 +539,44 @@ function populate(n){
    }
    dst.append(box);
  }
- const group=document.createElement("details");group.className="related-list";group.open=activeLens==="musica"&&!relatedMedia.length;
- const summary=document.createElement("summary");summary.textContent=(activeLens==="musica"?"Connessioni musicali":"Elenco sintetico")+" · "+conn.length;group.append(summary);
+ const group=document.createElement("details");group.className="related-list";group.open=!relatedMedia.length;
+ const summary=document.createElement("summary");summary.textContent="Connessioni visibili · "+conn.length;group.append(summary);
  const ul=document.createElement("ul");for(const row of conn.slice(0,45)){const li=document.createElement("li"),button=document.createElement("button");button.textContent=row.n.label;button.onclick=()=>focusOn(row.n,false);li.append(button);ul.append(li);}group.append(ul);
  if(conn.length>45){const p=document.createElement("p");p.className="small";p.textContent="Altre "+(conn.length-45)+" connessioni esplorabili nella rete.";group.append(p);}
  dst.append(group);
 }
 function pointer(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
 function hit(pt){
- // Hit-testing nell'ordine INVERSO al disegno: intercetta la prima
- // superficie visibile, non una sfera nascosta dietro di essa.
- for(let i=hitOrder.length-1;i>=0;i--){
-  const p=hitOrder[i];
-  if(!visibleNode(p.node)||p.depth<=-14)continue;
-  if(Math.hypot(p.x-pt.x,p.y-pt.y)<=p.hitRadius)return p;
- }
- return null;
+ for(let i=hitOrder.length-1;i>=0;i--){const p=hitOrder[i];if(!visibleNode(p.node))continue;if(Math.hypot(p.x-pt.x,p.y-pt.y)<=p.hitRadius)return p;}return null;
 }
-canvas.addEventListener("pointerdown",e=>{if(e.button!==0)return;let pt=pointer(e),p=hit(pt);drag={node:p?.node?.type==="geografia"?null:p?.node||null,geoNode:p?.node?.type==="geografia"?p.node:null,relation:p?null:lineHit(pt),x:pt.x,y:pt.y,depth:p?.depth||0,lastX:pt.x,lastY:pt.y,offsetX:p?p.x-pt.x:0,offsetY:p?p.y-pt.y:0,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");});
-canvas.addEventListener("pointermove",e=>{const pt=pointer(e);if(!drag){hover=hit(pt)?.node||null;const e=!hover?lineHit(pt):null;canvas.style.cursor=hover||e?"pointer":"grab";if(relationTooltip){relationTooltip.hidden=!e;if(e){relationTooltip.textContent=e.a.label+(["influenze","formazione","genealogie","scuole"].includes(e.edge.group)?" → ":" ↔ ")+e.b.label+" · Clicca per conoscere il rapporto";relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-265))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-65))+"px";}}return;}
- const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.abs(dx)+Math.abs(dy)>0){if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;}
- drag.lastX=pt.x;drag.lastY=pt.y;
- if(drag.node){const x=pt.x+drag.offsetX,y=pt.y+drag.offsetY;const pos=unproject(x,y,drag.depth);Object.assign(drag.node,pos);drag.node.vx=drag.node.vy=drag.node.vz=0;drag.x=x;drag.y=y;}
- else if(!drag.geoNode&&!drag.relation){rotY+=dx*.005;rotX=clamp(rotX+dy*.005,-1.4,1.4);}
+canvas.addEventListener("pointerdown",e=>{
+ if(e.button!==0)return;const pt=pointer(e),p=hit(pt);
+ drag={node:p?.node||null,relation:p?null:lineHit(pt),x:pt.x,y:pt.y,lastX:pt.x,lastY:pt.y,moved:false};
+ canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");
 });
-function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remove("dragging");if(d.node)focusOn(d.node,!d.moved);else if(d.geoNode&&!d.moved)focusOn(d.geoNode,true);else if(d.relation&&!d.moved)showRelation(d.relation);}
+canvas.addEventListener("pointermove",e=>{
+ const pt=pointer(e);
+ if(!drag){
+  hover=hit(pt)?.node||null;const edge=!hover?lineHit(pt):null;canvas.style.cursor=hover||edge?"pointer":"grab";
+  if(relationTooltip){relationTooltip.hidden=!edge;if(edge){const s=relationStyle(edge);relationTooltip.textContent=edge.a.label+(s.arrow?" → ":" ↔ ")+edge.b.label+" · "+relationVerb(edge);relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-285))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-65))+"px";}}
+  return;
+ }
+ const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;
+ drag.lastX=pt.x;drag.lastY=pt.y;
+ if(drag.node){
+  const base=geoScreenPoint(drag.node,false);
+  if(base){drag.node.manualDx=pt.x-base.x;drag.node.manualDy=pt.y-base.y;drag.node.manualPinned=true;}
+  else{const current=screen.find(p=>p.node===drag.node),pos=unproject(pt.x,pt.y,current?.depth||0);Object.assign(drag.node,pos);drag.node.manualPinned=true;}
+  drag.node.vx=drag.node.vy=drag.node.vz=0;
+ }else if(!drag.relation){
+  const world=mapBase()*360/Math.max(18,geoState.span);
+  geoState.lon-=dx/world*360;geoState.lat+=dy/world*360;geoState.lat=clamp(geoState.lat,-80,80);
+  geoState.targetLon=geoState.lon;geoState.targetLat=geoState.lat;
+ }
+});
+function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remove("dragging");if(d.relation&&!d.moved)showRelation(d.relation);}
 canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
+canvas.addEventListener("dblclick",e=>{const p=hit(pointer(e));if(p){e.preventDefault();focusOn(p.node,true);}});
 function setZoom(next){zoom=clamp(Number(next)||1,.45,3.5);const pct=Math.round(zoom*100);zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";zoomSlider.setAttribute("aria-valuetext",pct+" per cento");zoomIn.disabled=zoom>=3.5;zoomOut.disabled=zoom<=.45;}
 zoomIn.addEventListener("click",e=>{e.preventDefault();setZoom(zoom*1.3);});
 zoomOut.addEventListener("click",e=>{e.preventDefault();setZoom(zoom/1.3);});
@@ -528,26 +587,33 @@ canvas.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom*Math.exp(-e.
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
 search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
 search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n);search.blur();}});
-filter.addEventListener("change",()=>{typeFilter=filter.value;});
+function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-category]").forEach(i=>{i.checked=activeCategories.has(i.value);});}
+function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
+function toggleLens(id){
+ if(activeLenses.has(id)){if(activeLenses.size===1)return;activeLenses.delete(id);}else activeLenses.add(id);
+ syncLensControls();if(relationTooltip)relationTooltip.hidden=true;if(selected){fitGeoNetwork(selected);populate(selected);}
+ status.textContent=(selected?selected.label+" · "+linked(selected).length+" relazioni · ":"")+"Lenti: "+activeLensLabel();
+}
+lensChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-lens]");if(!input)return;toggleLens(input.value);});
+categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}if(selected)fitGeoNetwork(selected);});
 moreControls?.addEventListener("click",()=>{
  const open=document.body.classList.toggle("controls-open");
  moreControls.setAttribute("aria-expanded",String(open));
  moreControls.textContent=open?"− Meno":"☷ Opzioni";
 });
 
-lensSelect?.addEventListener("change",()=>{
- activeLens=lensSelect.value;
- const group=lensMeta(activeLens);
- if(lensHelp)lensHelp.textContent=group?.description||"Epoche, scuole e rapporti storico-musicali";
- if(relationTooltip)relationTooltip.hidden=true;
- if(selected?.type==="persona"&&activeLens==="musica"&&!selected.music_relevance){
-  selected=null;focus=null;setPanel(false);
-  status.textContent="Storia musicale · scegli una bolla per tornare alla rete principale";
- }else if(selected){status.textContent=selected.label+" · "+linked(selected).length+" relazioni · "+lensSelect.selectedOptions[0].textContent;populate(selected);}
- else status.textContent="Lente "+lensSelect.selectedOptions[0].textContent+" · scegli una sfera per esplorare";
-});
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
-reset.addEventListener("click",()=>{selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);geoState.targetLat=48;geoState.targetLon=11;geoState.targetSpan=100;geoLabel.textContent="Europa · panoramica";search.value="";searchText="";filter.value="tutti";typeFilter="tutti";document.body.classList.remove("controls-open");if(moreControls){moreControls.setAttribute("aria-expanded","false");moreControls.textContent="☷ Opzioni";}activeLens="musica";if(lensSelect)lensSelect.value="musica";if(lensHelp)lensHelp.textContent="Scegli una lente e una sfera per esplorare le relazioni.";if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.length+" nodi · "+edges.length+" relazioni";});
+reset.addEventListener("click",()=>{
+ selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;setZoom(1);
+ geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";
+ search.value="";searchText="";activeLenses.clear();activeLenses.add("musica");
+ activeCategories.clear();["compositore","periodo","ambito","corrente","persona"].forEach(x=>activeCategories.add(x));
+ syncLensControls();syncCategoryControls();
+ for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;}
+ document.body.classList.remove("controls-open");if(moreControls){moreControls.setAttribute("aria-expanded","false");moreControls.textContent="☷ Opzioni";}
+ if(lensHelp)lensHelp.textContent="Puoi attivare più lenti contemporaneamente. Doppio clic su un nodo per centrarlo.";
+ if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.length+" nodi · doppio clic per esplorare";
+});
 window.addEventListener("resize",resize);
 Promise.all([fetch("database/grafo.json",{cache:"no-cache"}),fetch("database/video.json",{cache:"no-cache"}),fetch("database/relazioni.json",{cache:"no-cache"})]).then(async responses=>{if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);const db=await responses[0].json();const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];if(!responses[2].ok)throw Error("HTTP lenti "+responses[2].status);db.lenses=await responses[2].json();return db;}).then(db=>{prepare(db);requestAnimationFrame(draw);}).catch(e=>{document.body.classList.add("error");status.textContent="Errore caricamento: "+e.message;console.error(e);});
 })();

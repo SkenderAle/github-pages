@@ -255,25 +255,43 @@ header a.back:hover,header a.back:focus-visible{background:#3a3028;color:#fff5df
 #panel .lens-shortcuts button.is-active{border-color:#edcf9b;background:#485067;color:#fff4de;font-weight:800}
 #panel .lens-shortcuts button .num{font-weight:800;color:#fff0ca}
 @media(max-width:700px){#panel .lens-shortcuts{gap:6px}}
+
+/* Mappa elastica r1 · lenti e categorie combinabili */
+#earthMap{background-repeat:no-repeat!important;background-color:#06101d}
+.control-title{font:800 10px system-ui;letter-spacing:.13em;color:#edd1a3}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;width:min(500px,calc(100vw - 56px))}
+.choice-grid label{display:flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid #50677c;border-radius:8px;background:#172a3d;color:#dce7ef;font:700 11px/1.2 system-ui;cursor:pointer}
+.choice-grid label:has(input:checked){border-color:#e6c88f;background:#354a60;color:#fff3d9}
+.choice-grid input,.category-choices input{accent-color:#efc881}
+#relationLegend{display:flex;flex-wrap:wrap;gap:5px 10px;margin-top:4px;font:700 10px/1.2 system-ui;color:#d8e3ec}
+#relationLegend .rel:before{content:"";display:inline-block;width:22px;height:3px;margin:0 5px 2px 0;border-radius:3px;vertical-align:middle;background:var(--rel)}
+#relationLegend .formation{--rel:#53bfff}#relationLegend .influence{--rel:#ffd166}#relationLegend .genealogy{--rel:#b98cff}#relationLegend .collaboration{--rel:#72dea2}
+.category-choices{display:flex;flex-wrap:wrap;gap:4px;margin:0;padding:5px 7px;border:1px solid rgba(170,187,206,.32);border-radius:10px;background:rgba(13,26,43,.83);color:#dce8f0;backdrop-filter:blur(14px)}
+.category-choices legend{padding:0 4px;color:#e7c996;font:700 9px system-ui}.category-choices label{display:flex;align-items:center;gap:3px;font:700 10px system-ui;white-space:nowrap}
+@media(max-width:700px){#lensBar{max-width:min(330px,calc(100vw - 20px))}.choice-grid{grid-template-columns:1fr 1fr;width:min(305px,calc(100vw - 42px));gap:3px}.choice-grid label{padding:5px 6px;font-size:9px}#relationLegend{font-size:8px;gap:3px 7px}.category-choices{display:none}body.controls-open #tools .category-choices{display:flex;grid-column:1/4;grid-row:2}.category-choices label{font-size:9px}body.controls-open #tools .geo-follow{grid-column:1/4;grid-row:3}body.controls-open #tools #reset{grid-column:1/2;grid-row:4}body.controls-open #tools #labels{grid-column:2/4;grid-row:4}}
 </style></head><body>
 <div id="scene"><div id="earthMap" aria-hidden="true"></div><div id="earthShade" aria-hidden="true"></div><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
 <header><div class="masthead"><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p><div id="status" role="status">Caricamento della rete…</div></div><a class="back" href="../" aria-label="Torna alla homepage dell’Atlante">⌂ Home · Atlante</a></header>
-<div id="legend"><span style="--dot:#f3bd74">Compositori</span><span style="--dot:#7ec3d4">Epoche</span><span style="--dot:#c8a2e5">Ambiti</span><span style="--dot:#e49ca4">Scuole e correnti</span><span style="--dot:#8bc5a1">Geografia</span><span style="--dot:#f1c1d5">Personaggi</span></div>
+<div id="legend"><span style="--dot:#f3bd74">Compositori</span><span style="--dot:#7ec3d4">Epoche</span><span style="--dot:#c8a2e5">Ambiti</span><span style="--dot:#e49ca4">Scuole e correnti</span><span style="--dot:#f1c1d5">Personaggi</span></div>
 <div id="lensBar">
- <label for="lens">LENTI DI ESPLORAZIONE</label>
- <select id="lens" aria-label="Scegli la lente di esplorazione">
-  <option value="musica">♫ Storia musicale e scuole</option>
-  <option value="trasmissioni">◇ Maestri, allievi e influenze</option>
-  <option value="genealogie">⌁ Genealogie dei generi</option>
-  <option value="collaborazioni">✦ Incontri e collaborazioni</option>
- </select>
- <span id="lensHelp">Scegli una lente e una sfera per esplorare le relazioni.</span>
+ <div class="control-title">LENTI DI ESPLORAZIONE · combinabili</div>
+ <div id="lensChoices" class="choice-grid lenses" aria-label="Lenti di esplorazione">
+  <label><input data-lens type="checkbox" value="musica" checked><span>♫ Storia e scuole</span></label>
+  <label><input data-lens type="checkbox" value="trasmissioni"><span>→ Maestri, allievi e influenze</span></label>
+  <label><input data-lens type="checkbox" value="genealogie"><span>⌁ Genealogie dei generi</span></label>
+  <label><input data-lens type="checkbox" value="collaborazioni"><span>↔ Incontri e collaborazioni</span></label>
+ </div>
+ <span id="lensHelp">Puoi attivare più lenti contemporaneamente. Doppio clic su un nodo per centrarlo.</span>
+ <div id="relationLegend" aria-label="Legenda direzione delle relazioni">
+  <span class="rel formation">Maestro → allievo</span><span class="rel influence">Influenza → ricezione</span>
+  <span class="rel genealogy">Genealogia → sviluppo</span><span class="rel collaboration">Collaborazione ↔</span>
+ </div>
 </div>
 <div id="relationTooltip" role="tooltip" hidden></div>
-<div id="tools"><input id="search" class="control" placeholder="Cerca un autore, una scuola…" aria-label="Cerca una bolla"><select id="filter" class="control" aria-label="Filtra le bolle"><option value="tutti">Tutte le categorie</option><option value="compositore">Compositori</option><option value="periodo">Epoche</option><option value="ambito">Ambiti trasversali</option><option value="corrente">Scuole e correnti</option><option value="persona">Figure musicali e culturali</option><option value="geografia">Geografia</option></select><button class="control" id="moreControls" type="button" aria-expanded="false" aria-controls="tools" aria-label="Mostra o nascondi le opzioni di navigazione">☷ Opzioni</button><div class="zoom-control" role="group" aria-label="Controlli ingrandimento"><button class="control zoom-button" id="zoomOut" type="button" aria-label="Riduci zoom">−</button><input id="zoomSlider" type="range" min="45" max="350" value="100" step="5" aria-label="Livello di zoom"><button class="control zoom-button" id="zoomIn" type="button" aria-label="Aumenta zoom">+</button><output id="zoomValue" for="zoomSlider">100%</output></div><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button><label class="geo-follow"><input type="checkbox" id="followGeo" checked> Segui la geografia</label></div>
-<div id="geoLabel" aria-live="polite">Europa · panoramica</div><a id="mapCredit" href="https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/" target="_blank" rel="noopener noreferrer">Immagine della Terra: NASA Earth Observatory · Black Marble 2016 ↗</a><div id="tips">Trascina una bolla: segue il puntatore. Rilascia: va al centro.<br>Trascina il vuoto: ruota la rete. Clicca i Paesi verdi per spostarti sulla mappa, anche se sono ai bordi. Usa + / − per lo zoom.</div>
+<div id="tools"><input id="search" class="control" placeholder="Cerca un autore, una scuola…" aria-label="Cerca una bolla"><fieldset id="categoryChoices" class="category-choices" aria-label="Categorie visibili"><legend>Categorie · combinabili</legend><label><input data-category type="checkbox" value="compositore" checked>Compositori</label><label><input data-category type="checkbox" value="periodo" checked>Epoche</label><label><input data-category type="checkbox" value="ambito" checked>Ambiti</label><label><input data-category type="checkbox" value="corrente" checked>Scuole/correnti</label><label><input data-category type="checkbox" value="persona" checked>Personaggi</label></fieldset><button class="control" id="moreControls" type="button" aria-expanded="false" aria-controls="tools" aria-label="Mostra o nascondi le opzioni di navigazione">☷ Opzioni</button><div class="zoom-control" role="group" aria-label="Controlli ingrandimento"><button class="control zoom-button" id="zoomOut" type="button" aria-label="Riduci zoom">−</button><input id="zoomSlider" type="range" min="45" max="350" value="100" step="5" aria-label="Livello di zoom"><button class="control zoom-button" id="zoomIn" type="button" aria-label="Aumenta zoom">+</button><output id="zoomValue" for="zoomSlider">100%</output></div><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button><label class="geo-follow"><input type="checkbox" id="followGeo" checked> Segui la geografia</label></div>
+<div id="geoLabel" aria-live="polite">Mondo · panoramica</div><a id="mapCredit" href="https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/" target="_blank" rel="noopener noreferrer">Immagine della Terra: NASA Earth Observatory · Black Marble 2016 ↗</a><div id="tips">Doppio clic: seleziona e centra il nodo sulla sua geografia.<br>Trascina una bolla: riordina il groviglio senza cambiare selezione. Trascina il vuoto: sposta la carta.</div>
 <button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Ascolti</button>
 <aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app.js?v=quattro-lenti-fonti-r6-20261006" defer></script>
+<script src="app.js?v=mappa-elastica-r1-20261007" defer></script>
 </body></html>
