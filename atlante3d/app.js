@@ -319,7 +319,9 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
   historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole")];
  geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();
  freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
- status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · doppio clic per esplorare";resize();syncLensControls();syncCategoryControls();
+ status.textContent=nodes.length+" nodi · "+edges.length+" relazioni musicali · doppio clic per esplorare";
+ zoom=1;geoAutoSpan=360;geoState.lat=20;geoState.lon=0;geoState.span=360;geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
+ resize();syncLensControls();syncCategoryControls();syncZoomControls();
 }
 function physics(){
  if(!freeNodes.length)return;
@@ -703,20 +705,24 @@ function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remov
 canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
 canvas.addEventListener("dblclick",e=>{const p=hit(pointer(e));if(p){e.preventDefault();focusOn(p.node,true);}});
 function syncZoomControls(){
- const pct=Math.round(zoom*100);
+ const pct=Math.round(zoom*100),locked=!selected;
  zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";
  zoomSlider.setAttribute("aria-valuetext",pct+" per cento");
- zoomIn.disabled=zoom>=2.5;zoomOut.disabled=zoom<=.5;
+ zoomSlider.disabled=locked;
+ zoomIn.disabled=locked||zoom>=2.5;zoomOut.disabled=locked||zoom<=.5;
 }
 function setZoom(next){
+ if(!selected){
+  zoom=1;geoAutoSpan=360;
+  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
+  syncZoomControls();return;
+ }
  zoom=clamp(Number(next)||1,.5,2.5);
  clearExplodeLayout();resetAutoLayout();
- const anchor=selected&&geoFromNode(selected);
+ const anchor=geoFromNode(selected);
  if(anchor){
   geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
   geoState.targetSpan=clamp(geoAutoSpan/zoom,6,360);
- }else{
-  geoState.targetSpan=clamp(360/zoom,30,360);
  }
  syncZoomControls();
 }
@@ -724,7 +730,10 @@ zoomIn.addEventListener("click",e=>{e.preventDefault();setZoom(zoom*1.25);});
 zoomOut.addEventListener("click",e=>{e.preventDefault();setZoom(zoom/1.25);});
 zoomSlider.addEventListener("input",()=>setZoom(Number(zoomSlider.value)/100));
 syncZoomControls();
-canvas.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.0012));},{passive:false});
+canvas.addEventListener("wheel",e=>{
+ if(!selected)return;
+ e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.0012));
+},{passive:false});
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
 search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
@@ -760,5 +769,13 @@ reset.addEventListener("click",()=>{
  if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.length+" nodi · doppio clic per esplorare";
 });
 window.addEventListener("resize",resize);
+window.addEventListener("pageshow",()=>{
+ if(!selected){
+  zoom=1;geoAutoSpan=360;
+  geoState.lat=20;geoState.lon=0;geoState.span=360;
+  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
+  syncZoomControls();
+ }
+});
 Promise.all([fetch("database/grafo.json",{cache:"no-cache"}),fetch("database/video.json",{cache:"no-cache"}),fetch("database/relazioni.json",{cache:"no-cache"})]).then(async responses=>{if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);const db=await responses[0].json();const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];if(!responses[2].ok)throw Error("HTTP lenti "+responses[2].status);db.lenses=await responses[2].json();return db;}).then(db=>{prepare(db);requestAnimationFrame(draw);}).catch(e=>{document.body.classList.add("error");status.textContent="Errore caricamento: "+e.message;console.error(e);});
 })();
