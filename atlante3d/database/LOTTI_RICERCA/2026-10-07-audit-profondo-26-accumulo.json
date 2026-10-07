@@ -1,0 +1,303 @@
+{
+  "project": "Musurgia Mundi",
+  "batch": "audit-26",
+  "date": "2026-10-07",
+  "status": "fuso-e-pubblicato-su-main",
+  "base_branch": "main",
+  "base_head": "4dc3baa0d93c677552131349599a71db5ceb2883",
+  "selection_rule": "Esclusione cumulativa dei compositori riesaminati o introdotti negli Audit 23, 24 e 25; selezione dei 40 rimanenti a minore densità specialistica.",
+  "reviewed_composers": [
+    "compositore-andre-gedalge",
+    "compositore-arrigo-boito",
+    "compositore-barbara-strozzi",
+    "compositore-bartolomeo-tromboncino",
+    "compositore-cesar-franck",
+    "compositore-christian-cannabich",
+    "compositore-clara-schumann",
+    "compositore-claudio-merulo",
+    "compositore-costanzo-festa",
+    "compositore-cristobal-de-morales",
+    "compositore-domenico-cimarosa",
+    "compositore-egidio-duni",
+    "compositore-elisabeth-jacquet-de-la-guerre",
+    "compositore-ennio-morricone",
+    "compositore-fanny-hensel",
+    "compositore-ferde-grofe",
+    "compositore-francesco-gasparini",
+    "compositore-francesco-soriano",
+    "compositore-george-whitefield-chadwick",
+    "compositore-giacinto-scelsi",
+    "compositore-gilles-binchois",
+    "compositore-giovanni-animuccia",
+    "compositore-giovanni-battista-somis",
+    "compositore-giovanni-croce",
+    "compositore-giovanni-da-cascia",
+    "compositore-giovanni-francesco-anerio",
+    "compositore-giovanni-maria-nanino",
+    "compositore-giovanni-simone-mayr",
+    "compositore-giuseppe-sarti",
+    "compositore-giuseppe-torelli",
+    "compositore-goffredo-petrassi",
+    "compositore-guillaume-de-machaut",
+    "compositore-iannis-xenakis",
+    "compositore-isabella-colbran",
+    "compositore-jacob-obrecht",
+    "compositore-jacopo-da-bologna",
+    "compositore-jean-francois-lesueur",
+    "compositore-johann-georg-albrechtsberger",
+    "compositore-johann-hermann-schein",
+    "compositore-johann-kuhnau"
+  ],
+  "reviewed_without_new_relation_ids": [
+    "compositore-andre-gedalge",
+    "compositore-arrigo-boito",
+    "compositore-barbara-strozzi",
+    "compositore-bartolomeo-tromboncino",
+    "compositore-cesar-franck",
+    "compositore-claudio-merulo",
+    "compositore-costanzo-festa",
+    "compositore-cristobal-de-morales",
+    "compositore-domenico-cimarosa",
+    "compositore-egidio-duni",
+    "compositore-elisabeth-jacquet-de-la-guerre",
+    "compositore-ennio-morricone",
+    "compositore-ferde-grofe",
+    "compositore-francesco-gasparini",
+    "compositore-francesco-soriano",
+    "compositore-george-whitefield-chadwick",
+    "compositore-giacinto-scelsi",
+    "compositore-gilles-binchois",
+    "compositore-giovanni-animuccia",
+    "compositore-giovanni-croce",
+    "compositore-giovanni-da-cascia",
+    "compositore-giovanni-francesco-anerio",
+    "compositore-giovanni-maria-nanino",
+    "compositore-giovanni-simone-mayr",
+    "compositore-giuseppe-sarti",
+    "compositore-goffredo-petrassi",
+    "compositore-guillaume-de-machaut",
+    "compositore-isabella-colbran",
+    "compositore-jacob-obrecht",
+    "compositore-jacopo-da-bologna",
+    "compositore-jean-francois-lesueur",
+    "compositore-johann-georg-albrechtsberger",
+    "compositore-johann-hermann-schein"
+  ],
+  "nodes_to_add": [
+    {
+      "id": "compositore-gaetano-pugnani",
+      "label": "Gaetano Pugnani",
+      "type": "compositore",
+      "status": "catalogato",
+      "country": "Italia",
+      "description": "Violinista e compositore torinese, allievo di Giovanni Battista Somis e maestro di Giovanni Battista Viotti; snodo della scuola violinistica piemontese fra eredità corelliana e moderno virtuosismo tardo-settecentesco.",
+      "url": null,
+      "geo_focus": {
+        "lat": 45.0703,
+        "lon": 7.6869,
+        "span": 55,
+        "precision": "birth-city"
+      },
+      "aliases": [
+        "Gaetano Pugnani"
+      ],
+      "name_review": {
+        "status": "verificato",
+        "sources": [
+          "https://www.treccani.it/enciclopedia/gaetano-pugnani_%28Dizionario-Biografico%29/",
+          "https://www.treccani.it/enciclopedia/gaetano-pugnani_%28Enciclopedia-Italiana%29/"
+        ],
+        "method": "Forma onomastica, nascita a Torino, formazione con Somis e magistero su Viotti verificati su Treccani."
+      }
+    }
+  ],
+  "general_edges_to_add": [
+    {
+      "source": "compositore-gaetano-pugnani",
+      "target": "classicismo",
+      "kind": "appartenenza",
+      "weight": 1.6
+    },
+    {
+      "source": "compositore-gaetano-pugnani",
+      "target": "geografia-italia",
+      "kind": "ambito-geografico",
+      "weight": 0.9
+    }
+  ],
+  "relations_to_add": [
+    {
+      "id": "audit26-jommelli-cannabich-formazione",
+      "group": "formazione",
+      "source": "compositore-niccolo-jommelli",
+      "target": "compositore-christian-cannabich",
+      "kind": "studio-composizione-italia-1750s",
+      "forward": "fu maestro di composizione di",
+      "reverse": "proseguì gli studi di composizione con",
+      "note": "Treccani documenta che Christian Cannabich, dopo la formazione con Johann Stamitz, proseguì in Italia gli studi con Niccolò Jommelli; la Deutsche Biographie conferma il soggiorno di studio e la prosecuzione degli studi compositivi.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/christian-cannabich_%28Enciclopedia-Italiana%29/",
+        "https://www.deutsche-biographie.de/gnd118668218.html"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-cannabich-mozart-influenza",
+      "group": "influenze",
+      "source": "compositore-christian-cannabich",
+      "target": "compositore-wolfgang-amadeus-mozart",
+      "kind": "stimoli-orchestrazione-mannheim-1777-1778",
+      "forward": "offrì stimoli decisivi nella tecnica orchestrale a",
+      "reverse": "ricevette stimoli nella tecnica orchestrale da",
+      "note": "La Neue Deutsche Biographie afferma che Mozart ricevette da Cannabich preziosi stimoli nell'orchestrazione e in una scrittura sensibile ed efficace durante la frequentazione di Mannheim; l'arco è distinto dall'amicizia già catalogata.",
+      "sources": [
+        "https://www.deutsche-biographie.de/gnd118668218.html"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-fanny-felix-influenza-critica",
+      "group": "influenze",
+      "source": "compositore-fanny-hensel",
+      "target": "compositore-felix-mendelssohn",
+      "kind": "consiglio-critico-compositivo",
+      "forward": "esercitò un continuo vaglio critico sulle composizioni di",
+      "reverse": "sottopose regolarmente le proprie composizioni al giudizio di",
+      "note": "La Library of Congress documenta che Felix sottoponeva regolarmente le proprie composizioni al giudizio musicale di Fanny, accogliendone le critiche fino a modificare o eliminare materiale che lei riteneva debole.",
+      "sources": [
+        "https://www.loc.gov/item/n82155113/fanny-mendelssohn-hensel-1805-1847/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-clara-brahms-influenza-critica",
+      "group": "influenze",
+      "source": "compositore-clara-schumann",
+      "target": "compositore-johannes-brahms",
+      "kind": "consiglio-critico-compositivo",
+      "forward": "fu interlocutrice critica delle composizioni di",
+      "reverse": "sottopose composizioni al giudizio di",
+      "note": "La Library of Congress ricorda che Brahms rispettava profondamente il giudizio di Clara Schumann e le sottoponeva composizioni pianistiche per riceverne la critica; l'arco distingue questa funzione dal rapporto personale già catalogato.",
+      "sources": [
+        "https://blogs.loc.gov/nls-music-notes/2015/04/remembering-the-ladies/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-torelli-vivaldi-influenza",
+      "group": "influenze",
+      "source": "compositore-giuseppe-torelli",
+      "target": "compositore-antonio-vivaldi",
+      "kind": "probabile-lezione-e-influenza-violinistica",
+      "forward": "esercitò una probabile influenza tecnica e compositiva su",
+      "reverse": "poté ricevere lezioni e influenza tecnica e compositiva da",
+      "note": "Il Dizionario Biografico Treccani riferisce, sulla base della storiografia recente, che Torelli potrebbe aver dato lezioni a Vivaldi e averne influenzato la tecnica strumentale e lo stile compositivo; la formulazione conserva esplicitamente la cautela della fonte.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giuseppe-torelli_%28Dizionario-Biografico%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-xenakis-lecorbusier-collaborazione",
+      "group": "collaborazioni",
+      "source": "compositore-iannis-xenakis",
+      "target": "persona-le-corbusier",
+      "kind": "collaborazione-architettura-musica-1947-1960",
+      "forward": "collaborò nello studio e nei progetti architettonico-musicali di",
+      "reverse": "ebbe come collaboratore ingegnere e progettista",
+      "note": "La biografia ufficiale di Xenakis documenta il lavoro nello studio di Le Corbusier dal 1947 e la collaborazione a progetti come La Tourette e il Padiglione Philips, dove architettura, spazializzazione e ricerca musicale si intrecciarono direttamente.",
+      "sources": [
+        "https://www.iannis-xenakis.org/en/biographie/",
+        "https://www.treccani.it/enciclopedia/iannis-xenakis_%28Enciclopedia-Italiana%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-kuhnau-bach-precedente-lipsia",
+      "group": "genealogie",
+      "source": "compositore-johann-kuhnau",
+      "target": "compositore-johann-sebastian-bach",
+      "kind": "precedente-thomaskantorat-e-cantata-lipsia",
+      "forward": "costituì un precedente istituzionale e compositivo per",
+      "reverse": "succedette a Lipsia sviluppando ulteriormente pratiche avviate da",
+      "note": "Il Bach-Archiv presenta Kuhnau come predecessore e Wegbereiter di Bach al Thomaskantorat: introdusse cicli tematici di cantate e una tradizione di musica figurale della Passione che contribuirono alla trasformazione del genere poi associata al modello bachiano.",
+      "sources": [
+        "https://www.bach-leipzig.de/en/bach-archiv/conference-replacement-thomaskantorat-1723-and-history-protestant-church-cantata-around"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-somis-pugnani-formazione",
+      "group": "formazione",
+      "source": "compositore-giovanni-battista-somis",
+      "target": "compositore-gaetano-pugnani",
+      "kind": "maestro-allievo-violino-torino",
+      "forward": "fu maestro di violino di",
+      "reverse": "studiò violino con",
+      "note": "Treccani identifica Gaetano Pugnani come il più importante fra gli allievi di Giovanni Battista Somis nella scuola violinistica piemontese.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/il-concerto-e-la-scuola-violinistica-italiana_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/",
+        "https://www.treccani.it/enciclopedia/gaetano-pugnani_%28Dizionario-Biografico%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-pugnani-viotti-formazione",
+      "group": "formazione",
+      "source": "compositore-gaetano-pugnani",
+      "target": "compositore-giovanni-battista-viotti",
+      "kind": "maestro-allievo-violino-torino",
+      "forward": "fu maestro di violino di",
+      "reverse": "studiò violino con",
+      "note": "Il Dizionario Biografico Treccani documenta che Viotti entrò alla scuola di Gaetano Pugnani fra la fine del 1769 e l'inizio del 1770; Pugnani trasmise così a Viotti la linea violinistica piemontese derivata da Somis.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/giovan-battista-viotti_%28Dizionario-Biografico%29/",
+        "https://www.treccani.it/enciclopedia/gaetano-pugnani_%28Dizionario-Biografico%29/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit26-pugnani-scuola-violinistica",
+      "group": "scuole",
+      "source": "concerto-violinistico-italiano",
+      "target": "compositore-gaetano-pugnani",
+      "kind": "trasmissione-scuola-piemontese-somis-viotti",
+      "forward": "include come snodo della scuola piemontese",
+      "reverse": "trasmise la tradizione violinistica piemontese entro",
+      "note": "Treccani colloca Pugnani nella linea della scuola violinistica piemontese fondata da Somis e da lui trasmessa a Viotti, ponendolo come anello centrale della diffusione della tradizione italiana del violino.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/il-concerto-e-la-scuola-violinistica-italiana_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/",
+        "https://www.treccani.it/enciclopedia/gaetano-pugnani_%28Enciclopedia-Italiana%29/"
+      ],
+      "status": "documentato"
+    }
+  ],
+  "audit26": {
+    "existing_composers_reviewed": 40,
+    "existing_composers_with_accepted_new_relations": 7,
+    "reviewed_without_new_relation": 33,
+    "new_composers": 1,
+    "new_general_edges": 2,
+    "new_specialist_relations": 10,
+    "groups": {
+      "formazione": 3,
+      "influenze": 4,
+      "collaborazioni": 1,
+      "genealogie": 1,
+      "scuole": 1
+    }
+  },
+  "yield_history": {
+    "24": "13/40",
+    "25": "11/40",
+    "26": "7/40"
+  },
+  "recommendation": "chiudere-rastrellamento-generale-e-passare-ad-audit-mirati",
+  "publication": {
+    "nodes": 699,
+    "composers": 309,
+    "general_edges": 930,
+    "relations": 1280,
+    "schools": 384
+  }
+}
