@@ -714,24 +714,26 @@ function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remov
 canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
 canvas.addEventListener("dblclick",e=>{const p=hit(pointer(e));if(p){e.preventDefault();focusOn(p.node,true);}});
 function syncZoomControls(){
- const pct=Math.round(zoom*100),locked=!selected;
+ const pct=Math.round(zoom*100);
  zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";
  zoomSlider.setAttribute("aria-valuetext",pct+" per cento");
- zoomSlider.disabled=locked;
- zoomIn.disabled=locked||zoom>=2.5;zoomOut.disabled=locked||zoom<=.5;
+ zoomSlider.disabled=false;
+ zoomIn.disabled=zoom>=2.5;zoomOut.disabled=zoom<=.5;
 }
 function setZoom(next){
- if(!selected){
-  zoom=1;geoAutoSpan=360;
-  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
-  syncZoomControls();return;
- }
  zoom=clamp(Number(next)||1,.5,2.5);
  clearExplodeLayout();resetAutoLayout();
- const anchor=geoFromNode(selected);
- if(anchor){
-  geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
-  geoState.targetSpan=clamp(geoAutoSpan/zoom,6,360);
+ if(selected){
+  const anchor=geoFromNode(selected);
+  if(anchor){
+   geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
+   geoState.targetSpan=clamp(geoAutoSpan/zoom,6,360);
+  }
+ }else{
+  // Zoom libero sulla posizione corrente della carta.
+  geoState.targetLat=geoState.lat;
+  geoState.targetLon=geoState.lon;
+  geoState.targetSpan=clamp(360/zoom,30,360);
  }
  syncZoomControls();
 }
@@ -740,7 +742,6 @@ zoomOut.addEventListener("click",e=>{e.preventDefault();setZoom(zoom/1.25);});
 zoomSlider.addEventListener("input",()=>setZoom(Number(zoomSlider.value)/100));
 syncZoomControls();
 canvas.addEventListener("wheel",e=>{
- if(!selected)return;
  e.preventDefault();setZoom(zoom*Math.exp(-e.deltaY*.0012));
 },{passive:false});
 
