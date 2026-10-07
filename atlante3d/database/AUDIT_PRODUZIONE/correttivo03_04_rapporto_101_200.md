@@ -79,3 +79,10 @@ Archi generali: 1.102. Nuove relazioni di produzione nell'attuale serie di ripre
 - Henryk Mikołaj Górecki → sinfonia: Sinfonia n. 3 op. 36 per soprano e orchestra, catalogo Boosey & Hawkes, https://www.boosey.com/cr/music/Henryk-Mikolaj-Gorecki-Symphony-No-3-Symphony-of-Sorrowful-Songs/5629.
 - Nuovi archi operativi di questa sessione: 2. Nuovi archi nelle riprese successive alla prima ricognizione: 18. Totale archi generali: 1.104. Nessun estremo di arco inesistente. Ramo `main` invariato.
 - Commit grafo: `2b9f65116b00a376259d3f047847757c784aeb4c`; commit staging: `96ad5606550031141ed63b181a51bf94c757e3ec`.
+
+## Sesto aggiornamento correttivo — 8 ottobre 2026
+Sono state aggiunte 8 relazioni produttive documentate: Duni–opera (*Le peintre amoureux de son modèle*), Vinci–opera (*Artaserse*), Porpora–opera (*Polifemo*), Cannabich–sinfonia, Praetorius–musica strumentale (*Terpsichore*, antologia collettiva), Logroscino–opera (*Il governatore*), Cage–musica per pianoforte (*Sonatas and Interludes*, pianoforte preparato), Bernstein–opera (*Trouble in Tahiti*). Fonti specifiche conservate negli archi e nello staging.
+
+Distinzioni: *West Side Story* è un musical, non prova sufficiente per catalogare Bernstein nell'opera; la raccolta *Terpsichore* comprende musiche di diversi autori; il pianoforte preparato di Cage non è uno strumento elettronico; a Logroscino non va assegnata l'invenzione del finale d'opera.
+
+Archi generali: 1112. Nuovi archi produttivi delle riprese: 26. Commit grafo: `d689912bfdff02ddfd1677fe66223a46000b2be8`. Commit staging: `b01fd418159c3ca74acb51d62a02754782817262`. Nessuna modifica al ramo main.
