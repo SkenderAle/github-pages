@@ -221,35 +221,47 @@ function shuffleNodes(list){
  for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}
  return out;
 }
+let explodeCycle=0;
 function explodeNetwork(){
  if(!selected)return;
+ const repeat=explodeActive;
+ explodeCycle=repeat?explodeCycle+1:0;
  clearExplodeLayout();resetAutoLayout();
  const center=rawGeoPoint(selected)||contextRawPoint(selected);if(!center)return;
  const depths=selectedDepths(readingDepth());if(!depths)return;
+ const spotlight=readingSpotlight(),spotlightNodes=new Set();
+ for(const e of currentEdges()){
+  if(!spotlight.has(readingKey(e)))continue;
+  if(e.source===selected.id)spotlightNodes.add(e.target);
+  if(e.target===selected.id)spotlightNodes.add(e.source);
+ }
+ // Explode only a readable subset. All other nodes remain in the geographic graph.
+ const limits=[[6,0,0],[12,6,0],[14,9,6]][readingLevel];
  const rotation=Math.random()*Math.PI*2;
- let moved=0;
+ let moved=0,available=0;
  for(let depth=1;depth<=readingDepth();depth++){
-  const ringNodes=shuffleNodes(nodes.filter(n=>n!==selected&&depths.get(n.id)===depth&&visibleNode(n)));
-  const count=ringNodes.length;if(!count)continue;
-  // Una corona per livello: il fuoco resta sempre il nodo selezionato.
-  const rx=depth===1?125:depth===2?235:345;
-  const ry=depth===1?95:depth===2?178:260;
+  const pool=nodes.filter(n=>n!==selected&&depths.get(n.id)===depth&&visibleNode(n)&&(rawGeoPoint(n)||contextRawPoint(n)));
+  available+=pool.length;
+  pool.sort((a,b)=>(Number(spotlightNodes.has(b.id))-Number(spotlightNodes.has(a.id)))||a.label.localeCompare(b.label,"it")||a.id.localeCompare(b.id));
+  const limit=limits[depth-1],count=Math.min(pool.length,limit);
+  if(!count)continue;
+  const offset=(explodeCycle*count)%pool.length;
+  const ringNodes=Array.from({length:count},(_,i)=>pool[(offset+i)%pool.length]);
+  const rx=[150,265,350][depth-1],ry=[117,195,270][depth-1];
   const phase=rotation+(depth-1)*.43;
   for(let i=0;i<count;i++){
-   const n=ringNodes[i];
-   const raw=rawGeoPoint(n)||contextRawPoint(n);if(!raw)continue;
+   const n=ringNodes[i],raw=rawGeoPoint(n)||contextRawPoint(n);
    const angle=phase+(Math.PI*2*i/count);
    const targetX=center.x+Math.cos(angle)*rx,targetY=center.y+Math.sin(angle)*ry;
-   const manualX=n.manualDx||0,manualY=n.manualDy||0;
-   n.explodeDx=targetX-(raw.x+manualX);
-   n.explodeDy=targetY-(raw.y+manualY);
+   n.explodeDx=targetX-(raw.x+(n.manualDx||0));
+   n.explodeDy=targetY-(raw.y+(n.manualDy||0));
    moved++;
   }
  }
  if(!moved)return;
  explodeActive=true;
  if(explodeBtn){explodeBtn.disabled=false;explodeBtn.textContent="✦ Rimescola";}
- status.textContent=selected.label+" · raggiera esplosa · "+moved+" nodi su 3 livelli";
+ status.textContent=selected.label+" · raggiera esplosa · "+moved+" di "+available+" nodi · "+readingNames[readingLevel];
 }
 function categoryVisible(n){return n===selected||activeCategories.has(n.type);}
 function networkNodesForFocus(n){
@@ -885,8 +897,20 @@ tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("pan
 search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
 search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n,true,true);search.blur();}});
 const readingControl=document.getElementById("readingLevel");
- syncCategoryControls();syncLensControls();
-readingControl?.addEventListener("change",e=>{readingLevel=Math.max(0,Math.min(2,Number(e.target.value)||0));selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected){fitGeoNetwork(selected);populate(selected);status.textContent=selected.label+" · "+readingNames[readingLevel]+" · "+readingAllowed().size+" collegamenti diretti, "+readingSpotlight().size+" evidenziati";}});
+const readingControlPanel=document.getElementById("readingLevelPanel");
+syncCategoryControls();syncLensControls();
+function applyReadingLevel(value){
+ readingLevel=Math.max(0,Math.min(2,Number(value)||0));
+ if(readingControl)readingControl.value=String(readingLevel);
+ if(readingControlPanel)readingControlPanel.value=String(readingLevel);
+ selectedNeighborCacheKey="";selectedDepthCacheKey="";
+ clearExplodeLayout();resetAutoLayout();
+ if(selected){fitGeoNetwork(selected);populate(selected);
+  status.textContent=selected.label+" · "+readingNames[readingLevel]+" · "+readingAllowed().size+" collegamenti diretti, "+readingSpotlight().size+" evidenziati";
+ }
+}
+readingControl?.addEventListener("change",e=>applyReadingLevel(e.target.value));
+readingControlPanel?.addEventListener("change",e=>applyReadingLevel(e.target.value));
 function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-category]").forEach(i=>{i.checked=activeCategories.has(i.value);});}
 function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
 function setLensState(id,enabled){
@@ -912,7 +936,7 @@ labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textCon
 reset.addEventListener("click",()=>{
  selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;geoZoomPct=0;zoom=1;syncZoomControls();
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
- search.value="";searchText="";readingLevel=0;if(readingControl)readingControl.value="0";activeLenses.clear();for(const l of EXPLORATION_LENSES)activeLenses.add(l.id);
+ search.value="";searchText="";readingLevel=0;if(readingControl)readingControl.value="0";if(readingControlPanel)readingControlPanel.value="0";explodeCycle=0;activeLenses.clear();for(const l of EXPLORATION_LENSES)activeLenses.add(l.id);
  activeCategories.clear();for(const c of ["compositore","ambito","corrente","persona"])activeCategories.add(c);
  syncLensControls();syncCategoryControls();
  for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;n.explodeDx=0;n.explodeDy=0;}
