@@ -1,0 +1,40 @@
+name: Musurgia Mundi - collaudo leggibilita
+on:
+  push:
+    branches: [audit-fruibilita-canonico-20261008]
+    paths:
+      - 'atlante3d/app-livelli.js'
+      - 'atlante3d/atlante-livelli.html'
+      - 'atlante3d/tests/**'
+      - '.github/workflows/qa-musurgia.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare Playwright
+        run: |
+          npm install --no-save --prefix atlante3d/tests playwright@1.55.0
+          npx --prefix atlante3d/tests playwright install --with-deps chromium
+      - name: Serve Atlas on localhost
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/musurgia-http.log 2>&1 &
+          sleep 2
+      - name: Browser checks and screenshots
+        run: node atlante3d/tests/qa-leggibilita.mjs
+      - name: Collect screenshots and log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: musurgia-qa-screenshots
+          path: |
+            atlante3d/tests/qa-output/
+            /tmp/musurgia-http.log
+          if-no-files-found: warn
