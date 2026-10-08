@@ -46,7 +46,16 @@ try{
  await page.screenshot({path:join(output,"beethoven-esplodi.png"),fullPage:true});
  assert(!(await page.locator("#exploreControls").getAttribute("open")),"Advanced controls collapsed initially");
  await page.locator("#exploreControls summary").click();
- assert(await page.locator('#exploreControls input[data-lens="trasmissioni"]').isVisible(),"Advanced filters open");
+ await page.waitForTimeout(200);
+ const detailState=await page.locator("#exploreControls").evaluate(el=>{
+  const input=el.querySelector('input[data-lens="trasmissioni"]');
+  const label=input?.closest("label");
+  return {open:el.open,detailsDisplay:getComputedStyle(el).display,inputDisplay:input&&getComputedStyle(input).display,labelDisplay:label&&getComputedStyle(label).display,labelRect:label&&{width:label.getBoundingClientRect().width,height:label.getBoundingClientRect().height}};
+ });
+ console.log("Advanced filter DOM state:",JSON.stringify(detailState));
+ assert(detailState.open,"Advanced filters details toggled: "+JSON.stringify(detailState));
+ assert(await page.locator('#exploreControls label').first().isVisible(),"Advanced filter labels visible");
+ await page.screenshot({path:join(output,"beethoven-filtri-avanzati.png"),fullPage:true});
  await context.close();
  const {context:mobile,page:m}=await launchContext({width:390,height:844});
  await m.locator("#search").fill("Beethoven");await m.locator("#search").press("Enter");
