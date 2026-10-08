@@ -228,7 +228,7 @@ function explodeNetwork(){
  const depths=selectedDepths(readingDepth());if(!depths)return;
  const rotation=Math.random()*Math.PI*2;
  let moved=0;
- for(let depth=1;depth<=3;depth++){
+ for(let depth=1;depth<=readingDepth();depth++){
   const ringNodes=shuffleNodes(nodes.filter(n=>n!==selected&&depths.get(n.id)===depth&&visibleNode(n)));
   const count=ringNodes.length;if(!count)continue;
   // Una corona per livello: il fuoco resta sempre il nodo selezionato.
@@ -403,23 +403,36 @@ function selectedDepths(maxDepth=4){
  if(!selected)return null;
  const key=selected.id+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",")+"|"+maxDepth+"|"+readingLevel;
  if(key===selectedDepthCacheKey)return selectedDepthCache;
- const adj=new Map();
- const allowed=readingAllowed();
+ // All documented direct relations remain reachable in every reading level.
+ // Only indirect context is budgeted to prevent uncontrolled 2/3-hop explosions.
+ const allowed=readingAllowed(),adj=new Map();
  for(const e of currentEdges()){
-  if((e.source===selected.id||e.target===selected.id)&&!allowed.has(readingKey(e)))continue;
   if(!adj.has(e.source))adj.set(e.source,[]);
   if(!adj.has(e.target))adj.set(e.target,[]);
-  adj.get(e.source).push(e.target);adj.get(e.target).push(e.source);
+  adj.get(e.source).push(e);adj.get(e.target).push(e);
  }
- const depth=new Map([[selected.id,0]]),queue=[selected.id];
- for(let qi=0;qi<queue.length;qi++){
-  const id=queue[qi],d=depth.get(id);
-  if(d>=Math.min(maxDepth,readingDepth()))continue;
-  for(const next of adj.get(id)||[]){
-   if(depth.has(next))continue;
-   const n=byId.get(next);if(!nodeEligibleForDepth(n))continue;
-   depth.set(next,d+1);queue.push(next);
+ const depth=new Map([[selected.id,0]]);
+ let frontier=[selected.id];
+ const dmax=Math.min(maxDepth,readingDepth());
+ for(let step=1;step<=dmax;step++){
+  const candidates=new Map();
+  for(const from of frontier){
+   for(const e of adj.get(from)||[]){
+    if(from===selected.id&&!allowed.has(readingKey(e)))continue;
+    const next=e.source===from?e.target:e.source,n=byId.get(next);
+    if(depth.has(next)||!nodeEligibleForDepth(n))continue;
+    const candidate={id:next,label:n.label||next,priority:readingScore(e)};
+    const prev=candidates.get(next);
+    if(!prev||candidate.priority>prev.priority)candidates.set(next,candidate);
+   }
   }
+  const ranked=[...candidates.values()].sort((a,b)=>b.priority-a.priority||a.label.localeCompare(b.label,"it")||a.id.localeCompare(b.id));
+  // Layer 1 is unbounded: we never conceal a direct historical relation.
+  // Layer 2/3 are context, available for further exploration via double-click.
+  const budget=step===1?Infinity:step===2?(readingLevel===1?12:22):14;
+  frontier=ranked.slice(0,budget).map(x=>x.id);
+  for(const id of frontier)depth.set(id,step);
+  if(!frontier.length)break;
  }
  selectedDepthCacheKey=key;selectedDepthCache=depth;return depth;
 }
@@ -432,7 +445,7 @@ function selectedNeighborIds(){
 }
 function visibleNode(n){
  if(!nodeEligibleForDepth(n))return false;
- if(selected)return selectedDepths(readingDepth()).has(n.id)||Boolean(geoFromNode(n));
+ if(selected)return selectedDepths(readingDepth()).has(n.id);
  if((n.type==="corrente"||n.type==="ambito"||n.type==="persona")&&!geoFromNode(n))return false;
  return true;
 }
