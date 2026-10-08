@@ -16,38 +16,32 @@ let readingLevel=0;const readingLimits=[6,15,Infinity];
 const readingNames=["Scoprire","Approfondire","Ricercare"];
 function readingKey(e){return e.id||[e.source,e.target,e.group||"",e.kind||""].join("|")}
 function readingScore(e){return ({formazione:100,scuole:85,collaborazioni:75,influenze:65,genealogie:45}[e.group]||30)+(e.sources?.length||0)*2}
-let readingAllowedCacheKey="",readingAllowedCache=new Set();
-function readingAllowed(){
- if(!selected)return new Set();
- const key=selected.id+"|"+readingLevel+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",");
- if(key===readingAllowedCacheKey)return readingAllowedCache;
- const choices=currentEdges().filter(e=>e.source===selected.id||e.target===selected.id).filter(e=>{
+// Accessibility invariant: a reading level NEVER deletes a documented direct edge.
+let readingDirectKey="",readingDirectCache=new Set(),readingSpotlightKey="",readingSpotlightCache=new Set();
+function readingChoices(){
+ if(!selected)return [];
+ return currentEdges().filter(e=>e.source===selected.id||e.target===selected.id).filter(e=>{
   const n=byId.get(e.source===selected.id?e.target:e.source);
   return n&&n.type!=="geografia"&&n.type!=="periodo"&&categoryVisible(n);
  }).sort((a,b)=>readingScore(b)-readingScore(a)||readingKey(a).localeCompare(readingKey(b)));
- // A progressive selection first represents different historically documented relations,
- // then fills the remaining places. Every level is a superset of the preceding level.
- const pick=(count)=>{
-  const result=[],used=new Set(),seenGroups=new Set(),seenOther=new Set();
-  for(const e of choices){
-   const other=e.source===selected.id?e.target:e.source;
-   if(seenGroups.has(e.group)||seenOther.has(other))continue;
-   result.push(e);used.add(readingKey(e));seenGroups.add(e.group);seenOther.add(other);
-   if(result.length>=count)return result;
-  }
-  for(const e of choices){
-   const other=e.source===selected.id?e.target:e.source;
-   if(used.has(readingKey(e))||seenOther.has(other))continue;
-   result.push(e);used.add(readingKey(e));seenOther.add(other);
-   if(result.length>=count)return result;
-  }
-  for(const e of choices){if(!used.has(readingKey(e))){result.push(e);used.add(readingKey(e));if(result.length>=count)break;}}
-  return result;
- };
- const shortlist=readingLevel===0?pick(6):readingLevel===1?pick(15):choices;
- readingAllowedCacheKey=key;
- readingAllowedCache=new Set(shortlist.map(readingKey));
- return readingAllowedCache;
+}
+function readingAllowed(){
+ if(!selected)return new Set();
+ const key=selected.id+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",");
+ if(readingDirectKey!==key){readingDirectKey=key;readingDirectCache=new Set(readingChoices().map(readingKey));}
+ return readingDirectCache;
+}
+function readingSpotlight(){
+ if(!selected)return new Set();
+ const key=selected.id+"|"+readingLevel+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",");
+ if(key===readingSpotlightKey)return readingSpotlightCache;
+ const choices=readingChoices(),limit=readingLimits[readingLevel],result=[],seen=new Set(),groups=new Set(),otherIds=new Set();
+ const push=e=>{const id=readingKey(e);if(seen.has(id))return false;seen.add(id);result.push(e);otherIds.add(e.source===selected.id?e.target:e.source);return true};
+ for(const e of choices){if(result.length>=limit)break;const other=e.source===selected.id?e.target:e.source,group=e.group||"generale";if(groups.has(group)||otherIds.has(other))continue;push(e);groups.add(group);}
+ for(const e of choices){if(result.length>=limit)break;const other=e.source===selected.id?e.target:e.source;if(!otherIds.has(other))push(e);}
+ for(const e of choices){if(result.length>=limit)break;push(e);}
+ readingSpotlightKey=key;readingSpotlightCache=new Set(result.map(readingKey));
+ return readingSpotlightCache;
 }
 function readingDepth(){return [1,2,3][readingLevel]}
 const activeCategories=new Set(["compositore","ambito","corrente","persona"]);
@@ -438,7 +432,7 @@ function selectedNeighborIds(){
 }
 function visibleNode(n){
  if(!nodeEligibleForDepth(n))return false;
- if(selected)return selectedDepths(readingDepth()).has(n.id);
+ if(selected)return selectedDepths(readingDepth()).has(n.id)||Boolean(geoFromNode(n));
  if((n.type==="corrente"||n.type==="ambito"||n.type==="persona")&&!geoFromNode(n))return false;
  return true;
 }
@@ -611,40 +605,47 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  resolveScreenCollisions(screen);
  const map=new Map(screen.map(p=>[p.node.id,p]));
  const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover,lineHits=[];
-  const allowedForFrame=selected?readingAllowed():null;
  const depths=selected?selectedDepths(readingDepth()):null;
- if(lensFocus){neighbors.add(lensFocus.id);for(const e of activeEdges){if(e.source===lensFocus.id)neighbors.add(e.target);if(e.target===lensFocus.id)neighbors.add(e.source);}}
+ const spotlight=selected?readingSpotlight():new Set();
+ const spotlightNodes=new Set();
+ if(lensFocus){
+  neighbors.add(lensFocus.id);
+  for(const e of activeEdges){
+   if(e.source===lensFocus.id){neighbors.add(e.target);if(spotlight.has(readingKey(e)))spotlightNodes.add(e.target);}
+   if(e.target===lensFocus.id){neighbors.add(e.source);if(spotlight.has(readingKey(e)))spotlightNodes.add(e.source);}
+  }
+ }
  for(const e of activeEdges){
   const a=map.get(e.source),b=map.get(e.target);
-  if(selected&&(e.source===selected.id||e.target===selected.id)&&!allowedForFrame.has(readingKey(e)))continue;
   if(!a||!b||!visibleNode(a.node)||!visibleNode(b.node))continue;
-  let edgeDepth=1,direct=false;
+  let edgeDepth=1,direct=false,contextEdge=false;
   if(selected){
    const da=depths.get(e.source),db=depths.get(e.target);
-   if(da==null||db==null)continue;
-   edgeDepth=Math.max(da,db);
-   if(Math.abs(da-db)>1||edgeDepth>3)continue;
-   direct=da===0||db===0;
+   direct=e.source===selected.id||e.target===selected.id;
+   if(da==null||db==null||Math.abs(da-db)>1){contextEdge=true;}
+   else edgeDepth=Math.max(da,db);
   }else{
    if(!lensFocus)continue;
    direct=e.source===lensFocus.id||e.target===lensFocus.id;
    if(!direct)continue;
   }
+  const isSpotlight=selected&&direct&&spotlight.has(readingKey(e));
+  const edgeAlpha=!selected?.94:contextEdge?.055:direct?(isSpotlight?.96:.63):(edgeDepth===2?.20:.11);
+  const strokeSize=!selected?2.7:contextEdge?.65:direct?(isSpotlight?2.8:1.6):edgeDepth===2?1.2:.8;
   const style=relationStyle(e);
-  const edgeAlpha=selected?({1:.94,2:.55,3:.20}[edgeDepth]||0):.94;
-  ctx.globalAlpha=edgeAlpha;ctx.lineWidth=selected?({1:2.7,2:1.8,3:1.05}[edgeDepth]||.8):2.7;
+  ctx.globalAlpha=edgeAlpha;ctx.lineWidth=strokeSize;
   const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
   path.addColorStop(0,style.from);path.addColorStop(1,style.to);ctx.strokeStyle=path;
   const bend=Math.min(34,Math.hypot(b.x-a.x,b.y-a.y)*.075);
   const cx=(a.x+b.x)*.5+bend*.32,cy=(a.y+b.y)*.5-bend;
   ctx.beginPath();ctx.moveTo(a.x,a.y);
-  if(e.group==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind||""))ctx.setLineDash([6,5]);
+  if(!contextEdge&&e.group==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind||""))ctx.setLineDash([6,5]);
   ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
-  if(!selected||edgeDepth<=1)lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
-  if(style.arrow&&(!selected||edgeDepth<=3)){
+  if(!contextEdge&&(!selected||direct||edgeDepth<=2))lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
+  if(style.arrow&&!contextEdge){
    const t=.77,q=1-t,px=q*q*a.x+2*q*t*cx+t*t*b.x,py=q*q*a.y+2*q*t*cy+t*t*b.y;
    const dx=2*q*(cx-a.x)+2*t*(b.x-cx),dy=2*q*(cy-a.y)+2*t*(b.y-cy),ang=Math.atan2(dy,dx);
-   ctx.save();ctx.globalAlpha=selected?Math.min(.92,edgeAlpha*1.15):.98;ctx.fillStyle=style.to;ctx.beginPath();
+   ctx.save();ctx.globalAlpha=Math.min(.93,edgeAlpha*1.1);ctx.fillStyle=style.to;ctx.beginPath();
    ctx.moveTo(px+8*Math.cos(ang),py+8*Math.sin(ang));
    ctx.lineTo(px-6*Math.cos(ang-.5),py-6*Math.sin(ang-.5));
    ctx.lineTo(px-6*Math.cos(ang+.5),py-6*Math.sin(ang+.5));ctx.closePath();ctx.fill();ctx.restore();
@@ -660,14 +661,14 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  for(const p of drawable){
   const n=p.node,depth=nodeDepth(n),related=selected&&depth<=1;
   const highlight=n===selected||(n===hover)||(searchText.length>1&&matchesSearch(n,searchText));
-  const depthAlpha=!selected?1:({0:1,1:1,2:.55,3:.20}[depth]||0);
+  const depthAlpha=!selected?1:n===selected?1:neighbors.has(n.id)?(spotlightNodes.has(n.id)?1:.72):({2:.33,3:.23}[depth]||.22);
   ctx.globalAlpha=highlight?1:depthAlpha;
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=Math.max(8,rad);
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
   const isLabel=Boolean(
    selected
-    ? (showAllLabels||n===selected||n===hover||(searchText.length>1&&matchesSearch(n,searchText)))
+    ? (showAllLabels||n===selected||n===hover||(neighbors.has(n.id)&&(neighbors.size<=25||spotlightNodes.has(n.id)))||(searchText.length>1&&matchesSearch(n,searchText)))
     : (showAllLabels||highlight||n.type==="periodo")
   );
   if(isLabel){
@@ -734,8 +735,8 @@ function populate(n){
  const allowedInPanel=readingAllowed();
   const conn=linked(n).filter(({e})=>allowedInPanel.has(readingKey(e)));
  const lensIntro=document.createElement("section");lensIntro.className="lens-panel-intro";
- const lensTitle=document.createElement("strong");lensTitle.textContent="Livello: "+readingNames[readingLevel]+" · "+conn.length+" collegamenti in primo piano";
- const lensP=document.createElement("p");lensP.textContent="L’Atlante contiene "+linked(n).length+" relazioni in queste lenti. Aumenta la profondità per scoprirne altre; la scelta iniziale è una proposta di orientamento, non una graduatoria storica.";
+ const lensTitle=document.createElement("strong");lensTitle.textContent="Livello: "+readingNames[readingLevel]+" · "+conn.length+" collegamenti diretti disponibili";
+ const lensP=document.createElement("p");lensP.textContent="Tutte le relazioni dirette previste dai filtri sono sempre visibili. Quelle illuminate più intensamente cambiano secondo il livello; nulla viene eliminato.";
  lensIntro.append(lensTitle,lensP);dst.append(lensIntro);
  const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
  for(const g of EXPLORATION_LENSES){
@@ -747,7 +748,7 @@ function populate(n){
  }
  dst.append(shortcuts);
  const box=document.createElement("section");box.className="lens-relations";
- const head=document.createElement("h3");head.textContent="Relazioni in primo piano · "+conn.length+" su "+linked(n).length;box.append(head);
+ const head=document.createElement("h3");head.textContent="Collegamenti diretti · "+conn.length+" (di cui "+readingSpotlight().size+" evidenziati)";box.append(head);
  if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessuna relazione visibile con queste impostazioni. Prova il livello Ricercare o modifica i filtri: questo non significa che manchino relazioni nel database.";box.append(p);}
  for(const {e,n:other} of conn){
   const item=document.createElement("article");item.className="lens-relation-item";
@@ -872,7 +873,7 @@ search.addEventListener("input",()=>{searchText=normSearch(search.value);if(sear
 search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n,true,true);search.blur();}});
 const readingControl=document.getElementById("readingLevel");
  syncCategoryControls();syncLensControls();
-readingControl?.addEventListener("change",e=>{readingLevel=Math.max(0,Math.min(2,Number(e.target.value)||0));selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected){fitGeoNetwork(selected);populate(selected);status.textContent=selected.label+" · "+readingNames[readingLevel]+" · "+Math.min(linked(selected).length,readingLimits[readingLevel])+" di "+linked(selected).length+" relazioni";}});
+readingControl?.addEventListener("change",e=>{readingLevel=Math.max(0,Math.min(2,Number(e.target.value)||0));selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected){fitGeoNetwork(selected);populate(selected);status.textContent=selected.label+" · "+readingNames[readingLevel]+" · "+readingAllowed().size+" collegamenti diretti, "+readingSpotlight().size+" evidenziati";}});
 function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-category]").forEach(i=>{i.checked=activeCategories.has(i.value);});}
 function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
 function setLensState(id,enabled){
@@ -898,8 +899,8 @@ labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textCon
 reset.addEventListener("click",()=>{
  selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;geoZoomPct=0;zoom=1;syncZoomControls();
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
- search.value="";searchText="";activeLenses.clear();activeLenses.add("musica");
- activeCategories.clear();activeCategories.add("compositore");
+ search.value="";searchText="";readingLevel=0;if(readingControl)readingControl.value="0";activeLenses.clear();for(const l of EXPLORATION_LENSES)activeLenses.add(l.id);
+ activeCategories.clear();for(const c of ["compositore","ambito","corrente","persona"])activeCategories.add(c);
  syncLensControls();syncCategoryControls();
  for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;n.explodeDx=0;n.explodeDy=0;}
  explodeActive=false;if(explodeBtn){explodeBtn.disabled=true;explodeBtn.textContent="✦ Esplodi";}
