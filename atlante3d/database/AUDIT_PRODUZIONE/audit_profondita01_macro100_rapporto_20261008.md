@@ -218,3 +218,9 @@ Distribuzione di archi produttivi sui 100 musicisti dopo questo intervento: {"1"
 ## Audit specialistico relazionale del medesimo primo macroblocco — 8 ottobre 2026
 
 Controllate strutturalmente **377 relazioni** incidenti sui 100 autori. Nessun estremo mancante, nessun ID duplicato, nessuna relazione senza fonte o nota. Migliorati i primi riferimenti bibliografici di **9 record** che rinviavano a voci enciclopediche troppo generiche, conservando le fonti anteriori come secondo riferimento. Segnalata una coppia di formazione potenzialmente ridondante (Anton Rubinstein → Pëtr Il'ič Čajkovskij), non fusa in assenza di un controllo completo delle due testimonianze. Per i dettagli e i passi successivi si veda `audit_relazionale01_macro100_qualita_20261008.md`. **Non** si considera convalidato filologicamente il complesso delle 377 relazioni.
+
+
+---
+
+## Terzo passaggio plurigenere · 8 ottobre 2026
+Aggiunte 27 produzioni puntualmente riferite a partiture/cataloghi; profili con un solo arco da 47 a 23. Un'assegnazione di messa a Clément Janequin è esplicitamente sospesa per controversia attributiva. Dettagli e fonti nel documento `audit_profondita01_macro100_terzopassaggio_20261008.md`. Nessun autore considerato esaustivo.
