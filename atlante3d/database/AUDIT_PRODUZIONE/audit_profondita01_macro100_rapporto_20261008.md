@@ -224,3 +224,10 @@ Controllate strutturalmente **377 relazioni** incidenti sui 100 autori. Nessun e
 
 ## Terzo passaggio plurigenere · 8 ottobre 2026
 Aggiunte 27 produzioni puntualmente riferite a partiture/cataloghi; profili con un solo arco da 47 a 23. Un'assegnazione di messa a Clément Janequin è esplicitamente sospesa per controversia attributiva. Dettagli e fonti nel documento `audit_profondita01_macro100_terzopassaggio_20261008.md`. Nessun autore considerato esaustivo.
+
+
+---
+
+## Quarto passaggio plurigenere e cautele storico-filologiche · 8 ottobre 2026
+
+Esaminati tutti i 23 profili che al checkpoint precedente conservavano un solo genere: 16 archi aggiunti a 15 compositori, 8 profili lasciati invariati per evitare classificazioni artificiali. Restano 8 monoambito. Dettagli e fonti in `audit_profondita01_macro100_quartopassaggio_20261008.md`; staging in `audit_profondita01_macro100_quartopassaggio_staging_20261008.json`. Copertura strutturale non equivale a esaustività filologica.
