@@ -43,7 +43,7 @@ try{
  await page.locator("#explode").click();await page.waitForTimeout(500);
  const exploded=await page.locator("#status").textContent();
  assert(exploded.includes("raggiera esplosa"),"Explode executes: "+exploded);
- const moved=Number((exploded.match(/raggiera esplosa · (\\d+)/)||[])[1]);
+ const moved=Number((exploded.match(/raggiera esplosa · (\d+)/)||[])[1]);
  assert(moved>0&&moved<=6,"Scoprire explodes at most six spheres: "+moved);
  await page.screenshot({path:join(output,"beethoven-esplodi.png"),fullPage:true});
  assert(!(await page.locator("#exploreControls").getAttribute("open")),"Advanced controls collapsed initially");
