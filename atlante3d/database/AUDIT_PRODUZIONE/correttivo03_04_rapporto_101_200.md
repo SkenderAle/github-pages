@@ -140,3 +140,6 @@ Convalidate 3 ulteriori relazioni: Clara Schumann–Lied op.12 (anche distinzion
 
 ## Densificazione: riscontri editoriali diretti — 8 ottobre 2026
 Promosse 4 relazioni: Šostakovič–quartetto op.110 (Boosey & Hawkes), Stravinskij–opera The Rake's Progress (Boosey & Hawkes), Copland–musica strumentale/Fanfare for the Common Man (catalogo ufficiale), Messiaen–musica pianistica/Vingt Regards (IRCAM). Distinti organici originali, versioni e trascrizioni. Residui non convalidati: 12; nessuna promozione automatica dei rimanenti. Archi totali 1178. Commit grafo 9d75b27c5d533a9f6cc88f139cca8a9585a8b80e. Main invariato.
+
+## Verifica altre tre relazioni e attribuzione da chiarire — 8 ottobre 2026
+Convalidate Strauss-Lied (*Vier letzte Lieder*, editore), Praetorius-musica sacra (*Musae Sioniae*, repertorio specialistico) e Porpora-musica sacra (*Salve Regina*, catalogo delle opere). Rimangono 9 relazioni di densificazione non convalidate. **ATTENZIONE:** la proposta Leonardo Leo–opera basata sul generico titolo *Demofonte* non può essere promossa senza identificazione univoca della versione: una registrazione Corago per *Demofoonte* (Lucca, 1741) accredita Leonardo Vinci e necessita di disambiguazione. La proposta Leo resta `da_verificare`, non è stata rinominata né promossa. Commit fee5e7d33627b18cd04f49d8c055e99e646d6d6a. Main invariato.
