@@ -109,3 +109,6 @@ Verificati e promossi due archi preesistenti, senza aggiungerne: Olivier Messiae
 
 ## Tredicesimo aggiornamento correttivo — 8 ottobre 2026
 Sono state validate 4 relazioni preesistenti senza creare nuovi archi: Clara Schumann → concerto (Piano Concerto op. 7, IMSLP); Hugo Wolf → Lied (Mörike-Lieder, IMSLP); Frédéric Chopin → sonata (Sonata op. 35, IMSLP); Gabriel Fauré → musica sacra (Requiem op. 48, catalogo BnF). Sono stati aggiornati notes, sources e status a `documentato` per i quattro casi. Residui con nessun arco produttivo documentato nel gruppo 101–150: 29. Archi totali 1137. Commit: 98d0503d718d2fa481ed01567b4499e23e38db18. Ramo main invariato.
+
+## Quattordicesimo aggiornamento — 8 ottobre 2026
+Cinque relazioni preesistenti validate con cataloghi di opera: compositore-cesar-franck, compositore-antonin-dvorak, compositore-petr-il-ic-cajkovskij, compositore-milij-balakirev, compositore-ottorino-respighi. Le fonti specifiche e le note aggiornate sono presenti negli archi. Totale archi invariato (1137); residui da verificare senza alcuna relazione documentata nel blocco 101–150: 24. La copertura produttiva non equivale ancora a profilo completo. Commit grafo `619cce1dda5549d2e28ceb4f91d14d77d8bb233f`. Main invariato.
