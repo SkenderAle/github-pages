@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Musurgia Mundi · La costellazione Musica</title>
+<meta name="description" content="Musurgia Mundi · La costellazione Musica. Esplora la storia della musica attraverso persone, geografie, ascolti e connessioni.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0d111b;--ink:#f2eadc;--muted:#aab6c5;--accent:#f6d08c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}a{color:#f5d391}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f9d48f;outline-offset:3px}header{position:absolute;inset:0 0 auto;z-index:5;pointer-events:none;padding:20px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}header>div,header>a{pointer-events:auto}header h1{font:400 clamp(26px,4.5vw,48px)/1.05 Georgia,serif;margin:4px 0 7px}header p{margin:0;color:var(--muted);font-size:12px}.brand{letter-spacing:.16em;font-size:10px;text-transform:uppercase;color:#d3b88b;text-decoration:none}.back{display:inline-block;text-decoration:none;border:1px solid #867459;border-radius:99px;padding:7px 12px;background:#161e2aaf;font-size:12px}#scene{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 48% 48%,#24344c 0%,#141e30 35%,#080c15 78%);touch-action:none}#sky{display:block;width:100%;height:100%;cursor:grab}#sky.dragging{cursor:grabbing}#tools{position:absolute;z-index:7;left:20px;bottom:25px;display:flex;flex-wrap:wrap;gap:8px;max-width:calc(100vw - 45px)}.control{border:1px solid #687183a3;border-radius:12px;background:#101a2bdc;color:var(--ink);padding:9px 12px;box-shadow:0 10px 30px #0003}input.control{width:min(250px,50vw)}select.control{max-width:180px}#legend{position:absolute;bottom:90px;left:20px;z-index:4;display:flex;flex-wrap:wrap;gap:10px;max-width:500px;font-size:11px;color:#bdc8d8;pointer-events:none}#legend span:before{content:"";display:inline-block;background:var(--dot);width:9px;height:9px;border-radius:50%;margin-right:5px}#panelTab{position:absolute;z-index:12;right:12px;top:49%;transform:translateY(-50%);writing-mode:vertical-rl;border:1px solid #8e7755;border-radius:10px;padding:14px 8px;background:#25344c;color:#fff}#panel{position:absolute;z-index:11;right:0;top:0;height:100%;width:min(310px,89vw);background:#101925f2;backdrop-filter:blur(15px);border-left:1px solid #536277;transform:translateX(102%);transition:transform .3s ease;overflow:auto;box-shadow:-12px 0 42px #0005}body.panel-open #panel{transform:translateX(0)}body.panel-open #panelTab{right:min(310px,89vw)}#panel h2{font:400 29px Georgia,serif;line-height:1.15;margin:10px 0}#panel .inner{padding:22px 18px 30px}#panel .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#e9c58a}#panel p{color:#b7c4d0}#panel ul{padding-left:18px}#panel li{margin:6px 0}#panel a.card{display:block;text-decoration:none;border:1px solid #526173;padding:11px;border-radius:10px;margin:10px 0;background:#1b2736}#panel .small{font-size:12px;color:#a8b7c4}#status{position:absolute;top:116px;left:24px;color:#b7c7d8;font-size:12px;pointer-events:none}#tips{position:absolute;right:17px;bottom:22px;font-size:11px;color:#a6b5c4;text-align:right;pointer-events:none}#panel .video{border:1px solid #455268;border-radius:9px;margin:10px 0;padding:10px}#panel .video img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:7px}#panel button{background:#24354b;color:#f7e6c4;border:1px solid #67788e;border-radius:8px;padding:8px 10px}#error{display:none;position:absolute;z-index:20;top:48%;left:50%;transform:translate(-50%,-50%);background:#31222a;padding:20px;border-radius:12px;max-width:360px}body.error #error{display:block}@media(max-width:600px){header{padding:14px}header h1{font-size:29px}#status{top:103px;left:14px}#tools{left:10px;bottom:12px;gap:5px}.control{padding:8px}#legend{bottom:120px;left:12px;gap:7px}#tips{display:none}#panel{width:min(290px,89vw)}body.panel-open #panelTab{right:min(290px,89vw)}}
+@media(prefers-reduced-motion:reduce){#panel{transition:none}}
+
+/* Atlante notturno: leggibilità e biblioteca multimediale */
+#scene{background:#07101b}
+header h1{letter-spacing:-.03em;text-shadow:0 2px 20px rgba(0,0,0,.55)}
+header .brand{color:#e4ca9b}
+.control{background:rgba(13,26,43,.83);border-color:rgba(170,187,206,.32);backdrop-filter:blur(14px)}
+.control:hover{border-color:#e7c996}
+#tools button{transition:background .16s,border-color .16s}
+#tools button:hover{background:#283d53}
+#panel{width:min(315px,85vw);background:rgba(11,21,34,.96);border-left:1px solid rgba(224,196,148,.3)}
+body.panel-open #panelTab{right:min(315px,85vw)}
+#panelTab{background:#152a3d;border-color:#a68e65;box-shadow:0 4px 24px #0007}
+#panel .inner{padding:28px 17px 50px}
+#panel .eyebrow{color:#f0cf99}
+#panel h2{color:#f7e9d6}
+#panel h3{font:normal 20px Georgia,serif;color:#eee1ce;margin:15px 0 10px}
+#panel .panel-section-header{display:flex;gap:5px;align-items:baseline;justify-content:space-between;border-bottom:1px solid #596172;padding:4px 0 5px}
+#panel .media-count{white-space:nowrap;font-size:11px;color:#dfc18e}
+#panel .video{display:flex;flex-direction:column;gap:8px;background:linear-gradient(155deg,#1c3145,#122233);padding:9px;margin:11px 0;border:1px solid #516274;border-radius:12px}
+#panel .video .media-image{display:block;position:relative}
+#panel .video img{display:block;aspect-ratio:16/9;object-fit:cover;width:100%;border-radius:7px}
+#panel .video .play-glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:27px;color:#fff;text-shadow:0 1px 10px #000}
+#panel .video .media-title{font:600 13px/1.45 system-ui;color:#f2eadf}
+#panel .video .media-link{font:700 12px system-ui;color:#f5cf8b;text-decoration:none}
+#panel .video audio{display:block;width:100%;height:35px;filter:sepia(.2)}
+#panel .related-list{margin-top:23px;border-top:1px solid #526273;padding-top:12px}
+#panel .related-list summary{cursor:pointer;color:#f3d29e;font:600 14px system-ui;padding:8px 0}
+#panel .related-list ul{list-style:none;padding:0;margin:4px 0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#panel .related-list li{margin:0}
+#panel .related-list button{width:100%;height:100%;text-align:left;background:#1b3045;border:1px solid #536478;padding:8px;font:12px/1.35 system-ui}
+#panel .related-list button:hover{background:#304a63}
+#legend{background:rgba(7,19,30,.56);padding:7px 10px;border-radius:9px;backdrop-filter:blur(8px)}
+#status{background:rgba(10,23,38,.52);border-radius:7px;padding:5px 9px;backdrop-filter:blur(9px)}
+@media(max-width:600px){#panel{width:min(295px,88vw)}body.panel-open #panelTab{right:min(295px,88vw)}#legend{bottom:113px;max-width:calc(100vw - 24px)}#panel .related-list ul{grid-template-columns:1fr 1fr}}
+
+
+.zoom-control{display:flex;align-items:center;gap:6px;border:1px solid rgba(170,187,206,.32);border-radius:12px;background:rgba(13,26,43,.88);padding:3px 7px;backdrop-filter:blur(14px)}
+.zoom-control .zoom-button{font-size:19px;line-height:1;padding:7px 11px;min-width:37px;border-radius:9px}
+#zoomSlider{width:105px;accent-color:#f0c88a;cursor:pointer;touch-action:pan-x}
+#zoomValue{min-width:40px;color:#f0dbb4;font:600 11px system-ui;text-align:center}
+@media(max-width:650px){#tools{max-width:calc(100vw - 20px)}.zoom-control{order:-1}#zoomSlider{width:100px}}
+#zoomIn:disabled,#zoomOut:disabled{opacity:.4;cursor:not-allowed}.zoom-control button{touch-action:manipulation;user-select:none}
+
+#earthMap{position:absolute;inset:0;pointer-events:none;background-color:#060e1c;background-image:url('https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/144000/144898/BlackMarble_2016_01deg.jpg');background-repeat:repeat-x;background-position:center;background-size:1600px 800px;filter:brightness(.86) saturate(1.12)}
+#earthShade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,11,21,.48) 0%,rgba(4,12,24,.26) 34%,rgba(3,9,20,.40) 80%,rgba(2,6,15,.66) 100%);box-shadow:inset 0 0 130px 30px rgba(2,6,14,.44)}
+#scene{background:#07101d}
+#sky{position:relative;z-index:1}
+header h1{text-transform:uppercase;letter-spacing:.075em;font-size:clamp(25px,3.5vw,43px);font-weight:400}
+header p{font:italic clamp(15px,1.6vw,21px) Georgia,serif;color:#e7d6bd}
+.geo-follow{display:flex;align-items:center;gap:6px;padding:9px 10px;border:1px solid #65768b;border-radius:10px;background:rgba(12,27,45,.88);color:#f2dfbf;font-size:12px;cursor:pointer;backdrop-filter:blur(12px)}
+.geo-follow input{accent-color:#efcd94}
+#geoLabel{position:absolute;right:24px;bottom:23px;z-index:4;padding:6px 10px;border-radius:8px;color:#e6d1ad;font:italic 12px Georgia,serif;background:rgba(10,22,38,.7);pointer-events:none}
+#panel .source-bookmarks{display:flex;flex-direction:column;gap:5px;margin-top:3px;border-top:1px solid rgba(204,215,226,.22);padding-top:7px}
+#panel a.source-bookmark{color:#f9d895;text-decoration:none;font:600 12px system-ui}
+#panel a.source-bookmark:hover{text-decoration:underline}
+@media(max-width:700px){#geoLabel{bottom:4px;right:8px;font-size:10px}header h1{font-size:24px}}
+
+#mapCredit{position:absolute;right:24px;bottom:53px;z-index:4;color:rgba(231,236,240,.72);font:10px system-ui;background:rgba(5,13,25,.48);padding:3px 6px;border-radius:4px;text-decoration:none}#mapCredit:hover{color:#fff;text-decoration:underline}@media(max-width:700px){#mapCredit{right:8px;bottom:24px;font-size:9px}}
+
+/* Testata: impaginazione in colonna, non tramite coordinate assolute.
+   Il messaggio di stato si dispone sotto il sottotitolo anche su telefono. */
+header{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:12px;
+ padding:22px 28px 18px;
+ max-width:100%;
+}
+header .masthead{
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ gap:0;
+ min-width:0;
+ max-width:min(760px,calc(100vw - 125px));
+ pointer-events:auto;
+}
+header .masthead .brand{
+ display:block;
+ margin-bottom:9px;
+ font:500 11px/1.45 system-ui,sans-serif;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+ color:#e4ca9b;
+ text-decoration:none;
+}
+header .masthead h1{
+ font-family:"Cormorant SC",Georgia,serif;
+ font-size:clamp(39px,4.55vw,67px);
+ line-height:1.03;
+ font-weight:600;
+ letter-spacing:.018em;
+ text-transform:none;
+ color:#f6e0b6;
+ margin:0 0 9px;
+ text-shadow:0 2px 8px rgba(0,0,0,.55);
+}
+header .masthead p{
+ position:static;
+ margin:0;
+ font:italic clamp(17px,1.8vw,25px)/1.25 Georgia,serif;
+ color:#e7d8c3;
+ text-shadow:0 1px 5px #06101d;
+}
+header .masthead #status{
+ position:static;
+ display:inline-block;
+ width:auto;
+ max-width:100%;
+ margin-top:14px;
+ padding:5px 9px;
+ color:#bdd0e2;
+ font-size:12px;
+ line-height:1.45;
+ white-space:normal;
+ background:rgba(10,23,38,.56);
+ border-radius:7px;
+ pointer-events:none;
+}
+@media(max-width:700px){
+ header{padding:16px 15px;gap:7px}
+ header .masthead{max-width:calc(100vw - 96px)}
+ header .masthead .brand{font-size:9px;letter-spacing:.08em;margin-bottom:7px}
+ header .masthead h1{font-size:clamp(32px,7.2vw,47px);line-height:1.04;margin-bottom:6px}
+ header .masthead p{font-size:clamp(15px,3.7vw,20px)}
+ header .masthead #status{margin-top:10px;font-size:11px}
+}
+
+/* Accesso permanente alla pagina madre, distinto dai comandi della costellazione. */
+header a.back{display:inline-flex;align-items:center;justify-content:center;
+ padding:8px 13px;min-height:36px;white-space:nowrap;
+ color:#f7e6c8;background:rgba(28,36,49,.88);
+ border:1px solid #c7a776;border-radius:9px;
+ font:750 12px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;
+ text-decoration:none;box-shadow:0 2px 14px #0006;
+ pointer-events:auto}
+header a.back:hover,header a.back:focus-visible{background:#3a3028;color:#fff5df;border-color:#f3cd8a}
+@media(max-width:700px){header a.back{padding:6px 9px;font-size:10px;min-height:31px}}
+
+/* Lenti originali di Musurgia Mundi: un controllo, più letture della medesima rete. */
+#lensBar{position:absolute;left:20px;top:clamp(195px,24vh,245px);z-index:8;
+ display:flex;flex-direction:column;gap:5px;align-items:flex-start;max-width:min(350px,calc(100vw - 35px));
+ padding:11px 13px;background:rgba(8,23,39,.87);border:1px solid rgba(215,179,120,.48);
+ border-radius:12px;box-shadow:0 7px 24px #0006;backdrop-filter:blur(14px)}
+#lensBar label{font:800 10px system-ui;letter-spacing:.13em;color:#edd1a3}
+#lensBar select{display:block;width:100%;min-width:220px;max-width:320px;
+ padding:9px 33px 9px 11px;font:750 13px system-ui;background:#21344a;color:#fff2d7;
+ border:1px solid #a68d6b;border-radius:8px;cursor:pointer}
+#lensHelp{display:block;font:11px/1.35 system-ui;color:#c2d0dd;max-width:310px}
+#relationTooltip{position:absolute;z-index:12;pointer-events:none;max-width:260px;
+ padding:9px 11px;background:rgba(20,31,45,.97);border:1px solid #e1bd85;border-radius:8px;
+ color:#fff2d9;box-shadow:0 4px 18px #0009;font:12px/1.35 system-ui}
+#relationTooltip[hidden]{display:none}
+#panel .lens-panel-intro{margin:13px 0;padding:10px 12px;border-left:3px solid #e5c58c;background:#1d2e40;border-radius:5px}
+#panel .lens-panel-intro strong{font-size:12px;color:#f5d4a0}
+#panel .lens-panel-intro p{margin:6px 0 0;font-size:12px;line-height:1.5}
+#panel .lens-relations h3{font-size:17px;margin:20px 0 10px}
+#panel .lens-relation-item{padding:10px 11px;margin:9px 0;border:1px solid #5f6b79;border-radius:9px;background:#1a2a3b}
+#panel .lens-relation-item>button:first-child{border:none;background:none;color:#ffdda5;font-size:13px;font-weight:800;text-align:left;padding:1px 0;cursor:pointer}
+#panel .lens-relation-kind{display:block;font-size:11px;font-weight:700;color:#a9d9f2;margin:3px 0}
+#panel .lens-relation-item p{font-size:12px;line-height:1.5;margin:6px 0 8px}
+#panel .lens-why{border:1px solid #b59c75;background:#25364b;color:#f7e1bb;border-radius:6px;
+ padding:6px 8px;font-size:11px;cursor:pointer;text-align:left}
+#panel .lens-why:hover{background:#344e66}
+#panel .lens-explanation{margin:12px 0 17px;padding:12px;border:1px solid #f1d090;border-radius:9px;background:#2d3240}
+#panel .lens-explanation h3{margin:0 0 8px;font-size:18px}
+#panel .lens-explanation strong{display:block;color:#f5d5a1}
+#panel .lens-explanation p{font-size:12px;line-height:1.55}
+#panel .lens-sources{display:flex;flex-wrap:wrap;gap:8px}
+#panel .lens-sources a{color:#ffd48e;font:750 11px system-ui;border:1px solid #82745d;
+ padding:5px 7px;border-radius:6px;text-decoration:none}
+@media(max-width:700px){
+ #lensBar{top:clamp(159px,24vh,230px);left:12px;padding:8px 10px;max-width:min(285px,calc(100vw - 24px))}
+ #lensBar label{font-size:9px}
+ #lensBar select{min-width:185px;font-size:12px;padding:7px 9px}
+ #lensHelp{font-size:10px;max-width:230px}
+ #tools{bottom:13px;left:11px;gap:5px}
+}
+
+/* v2: lo spazio di lettura è prioritario; strumenti estesi soltanto su richiesta. */
+#moreControls{display:none}
+@media (max-width:700px){
+ header{padding:10px 12px}
+ header .masthead{max-width:calc(100vw - 106px)}
+ header .masthead .brand{font-size:8px;letter-spacing:.065em;margin-bottom:4px}
+ header .masthead h1{font-size:clamp(27px,6.5vw,36px);margin:0 0 3px}
+ header .masthead p{font-size:clamp(13px,3.2vw,17px)}
+ header .masthead #status{max-width:100%;margin-top:5px;padding:3px 6px;font-size:10px;line-height:1.3}
+ header a.back{padding:6px 7px;font-size:10px;min-height:29px}
+ #lensBar{left:10px;top:clamp(150px,22vh,182px);padding:6px 9px;
+  max-width:calc(100vw - 20px);border-radius:9px;gap:3px}
+ #lensBar label{font-size:8px;letter-spacing:.09em}
+ #lensBar select{width:min(240px,calc(100vw - 42px));min-width:0;
+  max-width:none;padding:6px 7px;font-size:12px}
+ #lensHelp{display:none}
+ #tools{position:absolute;left:9px;right:9px;bottom:9px;width:auto;max-width:none;
+  display:grid;grid-template-columns:minmax(87px,1fr) auto auto;
+  align-items:center;gap:5px;z-index:9}
+ #tools #search{grid-row:1;grid-column:1;min-width:0;width:100%;
+  padding:8px 7px;font-size:12px}
+ #tools .zoom-control{grid-row:1;grid-column:2;order:initial;min-width:0;
+  padding:2px 4px;gap:3px;border-radius:9px}
+ #tools .zoom-control .zoom-button{min-width:26px;padding:7px 4px;font-size:16px}
+ #tools #zoomSlider{width:clamp(36px,12vw,60px)}
+ #tools #zoomValue{min-width:27px;font-size:10px}
+ #moreControls{display:inline-flex;justify-content:center;align-items:center;
+  grid-row:1;grid-column:3;padding:8px 5px;font-size:11px;
+  min-width:61px;white-space:nowrap}
+ #tools #filter,#tools #reset,#tools #labels,#tools .geo-follow{display:none}
+ body.controls-open #tools #filter,
+ body.controls-open #tools #reset,
+ body.controls-open #tools #labels,
+ body.controls-open #tools .geo-follow{display:flex;justify-content:center;align-items:center}
+ body.controls-open #tools #filter{grid-column:1/3;grid-row:2;width:100%;max-width:none;min-width:0}
+ body.controls-open #tools .geo-follow{grid-column:3;grid-row:2;font-size:10px;
+  padding:6px 5px;white-space:normal;max-width:85px;line-height:1.2}
+ body.controls-open #tools #reset{grid-column:1/2;grid-row:3}
+ body.controls-open #tools #labels{grid-column:2/4;grid-row:3}
+ #tools .control{border-radius:9px}
+ #legend{left:9px;right:9px;bottom:67px;max-width:none;
+  padding:4px 6px;gap:5px 8px;font-size:9px;line-height:1.25}
+ #legend span:before{width:7px;height:7px;margin-right:3px}
+ body.controls-open #legend{bottom:165px}
+ #geoLabel{bottom:56px;right:8px;max-width:50vw;text-align:right;font-size:9px}
+ #mapCredit{right:8px;bottom:41px;font-size:8px}
+ #panel{top:auto;bottom:0;right:0;width:100vw;height:min(62dvh,610px);
+  transform:translateY(103%);border-left:none;
+  border-top:1px solid rgba(224,196,148,.55);border-radius:13px 13px 0 0;
+  box-shadow:0 -15px 36px rgba(0,0,0,.5)}
+ body.panel-open #panel{transform:translateY(0)}
+ body.panel-open #panelTab{right:12px;top:auto;bottom:min(62dvh,610px);
+  writing-mode:horizontal-tb;transform:none;padding:6px 11px;border-radius:9px 9px 0 0}
+ #panel .inner{padding:15px 16px 38px}
+}
+@media(max-width:360px){
+ #tools{grid-template-columns:minmax(72px,1fr) auto auto;gap:3px}
+ #tools #zoomSlider{width:34px}
+ #moreControls{min-width:55px;font-size:10px;padding:7px 4px}
+ #tools .zoom-control .zoom-button{min-width:22px}
+}
+
+#panel .lens-shortcuts{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 15px}
+#panel .lens-shortcuts button{font-size:10px;line-height:1.3;padding:6px 8px;
+ border:1px solid #6a7d91;background:#17293b;color:#f1dbc0;border-radius:999px;cursor:pointer}
+#panel .lens-shortcuts button.is-active{border-color:#edcf9b;background:#485067;color:#fff4de;font-weight:800}
+#panel .lens-shortcuts button .num{font-weight:800;color:#fff0ca}
+@media(max-width:700px){#panel .lens-shortcuts{gap:6px}}
+
+/* Mappa elastica r1 · lenti e categorie combinabili */
+#earthMap{background-repeat:no-repeat!important;background-color:#06101d}
+.control-title{font:800 10px system-ui;letter-spacing:.13em;color:#edd1a3}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;width:min(500px,calc(100vw - 56px))}
+.choice-grid label{display:flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid #50677c;border-radius:8px;background:#172a3d;color:#dce7ef;font:700 11px/1.2 system-ui;cursor:pointer}
+.choice-grid label:has(input:checked){border-color:#e6c88f;background:#354a60;color:#fff3d9}
+.choice-grid input,.category-choices input{accent-color:#efc881}
+#relationLegend{display:flex;flex-wrap:wrap;gap:5px 10px;margin-top:4px;font:700 10px/1.2 system-ui;color:#d8e3ec}
+#relationLegend .rel:before{content:"";display:inline-block;width:22px;height:3px;margin:0 5px 2px 0;border-radius:3px;vertical-align:middle;background:var(--rel)}
+#relationLegend .formation{--rel:#53bfff}#relationLegend .influence{--rel:#ffd166}#relationLegend .genealogy{--rel:#b98cff}#relationLegend .collaboration{--rel:#72dea2}
+.category-choices{display:flex;flex-wrap:wrap;gap:4px;margin:0;padding:5px 7px;border:1px solid rgba(170,187,206,.32);border-radius:10px;background:rgba(13,26,43,.83);color:#dce8f0;backdrop-filter:blur(14px)}
+.category-choices legend{padding:0 4px;color:#e7c996;font:700 9px system-ui}.category-choices label{display:flex;align-items:center;gap:3px;font:700 10px system-ui;white-space:nowrap}
+@media(max-width:700px){#lensBar{max-width:min(330px,calc(100vw - 20px))}.choice-grid{grid-template-columns:1fr 1fr;width:min(305px,calc(100vw - 42px));gap:3px}.choice-grid label{padding:5px 6px;font-size:9px}#relationLegend{font-size:8px;gap:3px 7px}.category-choices{display:none}body.controls-open #tools .category-choices{display:flex;grid-column:1/4;grid-row:2}.category-choices label{font-size:9px}body.controls-open #tools .geo-follow{grid-column:1/4;grid-row:3}body.controls-open #tools #reset{grid-column:1/2;grid-row:4}body.controls-open #tools #labels{grid-column:2/4;grid-row:4}}
+
+/* Lenti compatte r3: stesso linguaggio delle categorie, ma in fascia laterale */
+#lensBar{
+  position:absolute;left:18px;top:152px;z-index:8;
+  width:196px;max-width:calc(100vw - 36px);
+  padding:6px 7px;
+  border:1px solid rgba(170,187,206,.28);
+  border-radius:11px;
+  background:rgba(13,26,43,.74);
+  backdrop-filter:blur(12px);
+  box-shadow:0 9px 28px rgba(0,0,0,.18)
+}
+#lensBar .control-title{
+  margin:0 0 4px;padding:0 2px;
+  font:800 9px/1.1 system-ui;letter-spacing:.12em;color:#e7c996
+}
+#lensChoices.choice-grid{
+  display:flex;flex-direction:column;gap:3px;width:100%
+}
+#lensChoices.choice-grid label{
+  min-height:25px;padding:4px 6px;gap:5px;
+  border:1px solid rgba(108,130,151,.42);
+  border-radius:7px;background:rgba(23,42,61,.66);
+  color:#dce7ef;font:700 9.5px/1.12 system-ui
+}
+#lensChoices.choice-grid label:has(input:checked){
+  border-color:rgba(230,200,143,.72);
+  background:rgba(53,74,96,.88);color:#fff3d9
+}
+#lensChoices input{width:12px;height:12px;margin:0;flex:0 0 auto}
+#lensHelp,#relationLegend{display:none}
+body.panel-open #lensBar{opacity:.28;pointer-events:none}
+@media(max-width:700px){
+  #lensBar{
+    display:none;position:static;width:auto;max-width:none;
+    padding:5px 6px;margin:0;box-shadow:none
+  }
+  body.controls-open #lensBar{
+    display:block;position:absolute;left:9px;right:9px;top:auto;bottom:112px;
+    width:auto;max-width:none;background:rgba(13,26,43,.95)
+  }
+  #lensChoices.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+  #lensChoices.choice-grid label{min-height:24px;font-size:9px;padding:4px 5px}
+}
+
+
+/* Epoca come intestazione contestuale, non come nodo */
+#periodContext{
+ position:absolute;z-index:6;top:112px;right:72px;
+ max-width:min(46vw,720px);
+ color:rgba(246,219,171,.92);
+ font:400 clamp(28px,4vw,64px)/.95 Georgia,serif;
+ letter-spacing:.035em;text-align:right;text-transform:uppercase;
+ text-shadow:0 2px 16px rgba(0,0,0,.55);
+ pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+body.panel-open #periodContext{right:340px}
+@media(max-width:900px){
+ #periodContext{top:105px;right:20px;max-width:50vw;font-size:clamp(24px,6vw,44px)}
+ body.panel-open #periodContext{right:20px;opacity:.22}
+}
+@media(max-width:700px){
+ #periodContext{top:92px;right:12px;max-width:62vw;font-size:clamp(20px,7vw,34px)}
+}
+
+
+/* Esplora unificato: categorie = nodi, lenti = relazioni */
+#lensBar{display:none!important}
+#panel .explore-controls{
+ margin:10px 0 16px;padding:10px;
+ border:1px solid rgba(132,151,173,.34);
+ border-radius:12px;background:rgba(21,34,51,.74)
+}
+#panel .explore-explain{
+ margin:0 0 10px;color:#c9d3dd;font-size:11px;line-height:1.35
+}
+#panel .explore-explain strong{color:#efd39d}
+#panel .explore-group{
+ margin:8px 0 0;padding:7px;
+ border:1px solid rgba(109,128,151,.34);
+ border-radius:9px
+}
+#panel .explore-group legend{
+ padding:0 5px;color:#e8c98f;
+ font:800 9px/1 system-ui;letter-spacing:.08em;text-transform:uppercase
+}
+#panel .category-choices,
+#panel .explore-lenses{
+ display:grid;grid-template-columns:1fr 1fr;gap:4px;
+ width:auto;background:none;border:0;padding:0;margin:0;backdrop-filter:none
+}
+#panel .category-choices label,
+#panel .explore-lenses label{
+ display:flex;align-items:center;gap:5px;min-height:30px;
+ padding:5px 6px;border:1px solid rgba(97,118,141,.48);
+ border-radius:7px;background:#17283a;color:#dce7ef;
+ font:700 10px/1.15 system-ui;cursor:pointer
+}
+#panel .category-choices label:has(input:checked),
+#panel .explore-lenses label:has(input:checked){
+ border-color:#d8b97f;background:#354a60;color:#fff2d5
+}
+#panel .category-choices input,
+#panel .explore-lenses input{accent-color:#efc881;margin:0;flex:0 0 auto}
+#panel .explore-note{display:block;margin-top:7px;color:#8fa1b2;font-size:10px}
+#relationLegend{display:none!important}
+@media(max-width:700px){
+ #panel .category-choices,#panel .explore-lenses{grid-template-columns:1fr}
+}
+
+</style></head><body>
+<div id="scene"><div id="earthMap" aria-hidden="true"></div><div id="earthShade" aria-hidden="true"></div><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
+<header><div class="masthead"><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p><div id="status" role="status">Caricamento della rete…</div></div><a class="back" href="../" aria-label="Torna alla homepage dell’Atlante">⌂ Home · Atlante</a></header><div id="periodContext" hidden aria-live="polite"></div>
+<div id="legend"><span style="--dot:#f3bd74">Compositori</span><span style="--dot:#c8a2e5">Ambiti</span><span style="--dot:#e49ca4">Scuole e correnti</span><span style="--dot:#f1c1d5">Personaggi</span></div>
+<div id="relationTooltip" role="tooltip" hidden></div>
+<div id="tools"><input id="search" class="control" placeholder="Cerca un autore, una scuola…" aria-label="Cerca una bolla"><button class="control" id="moreControls" type="button" aria-expanded="false" aria-controls="tools" aria-label="Mostra o nascondi le opzioni di navigazione">☷ Opzioni</button><div class="zoom-control" role="group" aria-label="Controlli ingrandimento"><button class="control zoom-button" id="zoomOut" type="button" aria-label="Riduci zoom">−</button><input id="zoomSlider" type="range" min="0" max="100" value="0" step="5" autocomplete="off" aria-label="Livello di zoom"><button class="control zoom-button" id="zoomIn" type="button" aria-label="Aumenta zoom">+</button><output id="zoomValue" for="zoomSlider">0%</output></div><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button><button class="control" id="explode" type="button" disabled title="Distribuisci i collegamenti attorno all'autore selezionato">✦ Esplodi</button><label class="geo-follow"><input type="checkbox" id="followGeo" checked> Segui la geografia</label></div>
+<div id="readingToolbar" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 16px;border-radius:8px;background:rgba(10,24,36,.83);color:#fff"><label for="readingLevel"><strong>Quanto vuoi approfondire?</strong></label><select id="readingLevel" aria-label="Profondità di esplorazione" style="padding:7px;border-radius:6px;background:#203448;color:#fff"><option value="0">Scoprire</option><option value="1">Approfondire</option><option value="2">Ricercare</option></select><small>Selezione provvisoria per tipo di relazione, non per rilevanza storico-musicale.</small></div><div id="geoLabel" aria-live="polite">Mondo · panoramica</div><a id="mapCredit" href="https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/" target="_blank" rel="noopener noreferrer">Immagine della Terra: NASA Earth Observatory · Black Marble 2016 ↗</a><div id="tips">Doppio clic: seleziona e centra il nodo sulla sua geografia.<br>Trascina una bolla: riordina il groviglio senza cambiare selezione. Trascina il vuoto: sposta la carta.</div>
+<button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Esplora</button>
+<aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div>
+<div id="exploreControls" class="explore-controls">
+ <p class="explore-explain"><strong>Categorie</strong> = quali elementi vuoi vedere. <strong>Lenti</strong> = quali tipi di relazione vuoi seguire.</p>
+ <fieldset id="categoryChoices" class="explore-group category-choices" aria-label="Categorie visibili">
+  <legend>Cosa mostrare</legend>
+  <label><input data-category type="checkbox" value="compositore" checked>Compositori</label>
+  <label><input data-category type="checkbox" value="ambito">Ambiti</label>
+  <label><input data-category type="checkbox" value="corrente">Scuole e correnti</label>
+  <label><input data-category type="checkbox" value="persona">Personaggi</label>
+ </fieldset>
+ <fieldset class="explore-group">
+  <legend>Quali relazioni</legend>
+  <div id="lensChoices" class="explore-lenses" aria-label="Lenti di esplorazione">
+   <label><input data-lens type="checkbox" value="musica" checked><span>Storia e appartenenze</span></label>
+   <label><input data-lens type="checkbox" value="trasmissioni"><span>Maestri, allievi e influenze</span></label>
+   <label><input data-lens type="checkbox" value="genealogie"><span>Altri autori correlati</span></label>
+   <label><input data-lens type="checkbox" value="collaborazioni"><span>Incontri e collaborazioni</span></label>
+  </div>
+ </fieldset>
+ <span id="lensHelp" class="explore-note">Puoi combinare più scelte contemporaneamente.</span>
+</div><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
+<div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
+<script src="app-livelli.js?v=01" defer></script>
+</body></html>
