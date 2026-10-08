@@ -137,3 +137,6 @@ Confrontati i candidati con pagine bibliografiche individuali delle opere in IMS
 
 ## Secondo riscontro puntuale della densificazione — 8 ottobre 2026
 Convalidate 3 ulteriori relazioni: Clara Schumann–Lied op.12 (anche distinzione dai Lieder di Robert Schumann), Mahler–Kindertotenlieder per voce e orchestra, Gershwin–Concerto in fa per pianoforte e orchestra. Fonti individuali IMSLP negli archi. Restano 16 relazioni di densificazione da verificare. Totale archi 1178. Commit 64d1894f6696bd041536f0f5c2330ca5e48a554c. Main invariato.
+
+## Densificazione: riscontri editoriali diretti — 8 ottobre 2026
+Promosse 4 relazioni: Šostakovič–quartetto op.110 (Boosey & Hawkes), Stravinskij–opera The Rake's Progress (Boosey & Hawkes), Copland–musica strumentale/Fanfare for the Common Man (catalogo ufficiale), Messiaen–musica pianistica/Vingt Regards (IRCAM). Distinti organici originali, versioni e trascrizioni. Residui non convalidati: 12; nessuna promozione automatica dei rimanenti. Archi totali 1178. Commit grafo 9d75b27c5d533a9f6cc88f139cca8a9585a8b80e. Main invariato.
