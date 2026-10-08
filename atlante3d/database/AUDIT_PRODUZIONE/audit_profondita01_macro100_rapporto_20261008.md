@@ -245,3 +245,10 @@ Il primo macroblocco ha 218 archi produttivi e 377 relazioni specialistiche inci
 ## Matrice generale di triage per il primo macroblocco · 8 ottobre 2026
 
 Congelati i dati correnti dei 100 compositori: **218** relazioni produttive, **377** relazioni specialistiche incidenti. Creata matrice per tutti gli archi con fonti, note, indicatori di possibile criticità e stato effettivo di riesame individuale. Non è una promozione in blocco degli stati `documentato`; i record puntualmente controllati in questo passaggio sono 8 produttivi e 2 formativi, già descritti nell'audit qualitativo. I restanti casi richiedono riscontri bibliografici. Dettagli in `audit_qualita01_macro100_matrice_20261008.json` e `audit_qualita01_macro100_matrice_rapporto_20261008.md`.
+
+
+---
+
+## Audit qualità 02 · Verifica puntuale di 15 produzioni e 7 relazioni · 8 ottobre 2026
+
+Aggiornate note e fonti di **15 archi di produzione** e **7 relazioni specialistiche**, senza creare archi né cambiare lenti. Precisate le questioni Rore/notazione nera, Monteverdi/Poppea e Zarlino/successione a de Rore; gli indicatori automatici di incertezza per Willaert–Zarlino, Lotti–Galuppi e Legrenzi–Lotti erano falsi positivi riguardo all'esistenza del rapporto didattico. Il collegamento di Camillo Sivori resta su catalogo (non è attestato in questo giro da singola partitura). Rapporti e staging: `audit_qualita02_macro100_riscontri_20261008.md` e `audit_qualita02_macro100_staging_20261008.json`. La matrice di qualità è aggiornata.
