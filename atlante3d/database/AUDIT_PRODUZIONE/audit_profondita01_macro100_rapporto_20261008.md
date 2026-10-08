@@ -211,3 +211,10 @@ Distribuzione di archi produttivi sui 100 musicisti dopo questo intervento: {"1"
 | 31 | Antonín Dvořák | Messa | Messa in re maggiore op. 86 B.153 (1887) originale per soli, coro e organo, successivamente orchestrata dal compositore come B.175 (1892): distinguere le due versioni autoriali. | [Catalogo o partitura](https://imslp.org/wiki/Mass_in_D_major%2C_Op.86_%28Dvo%C5%99%C3%A1k%2C_Anton%C3%ADn%29) |
 
 **Avvertenze filologiche:** le opere identificate non provano automaticamente relazioni maestro-allievo o influssi. Le versioni e trascrizioni sono distinte negli esempi in cui necessario (Webern, Dvořák, Shaw, Debussy, Casella). La clemenza di Tito di Caldara non è l'omonima opera mozartiana; i balletti del manoscritto comprendono musica di Nicola Matteis junior. Il corpus sacro di Bruckner comprende opere distinte dalle messe. Il tag `documentato` delle relazioni preesistenti non è stato rivalidato globalmente. Le categorie verranno ridiscusse solo al termine degli audit.
+
+
+---
+
+## Audit specialistico relazionale del medesimo primo macroblocco — 8 ottobre 2026
+
+Controllate strutturalmente **377 relazioni** incidenti sui 100 autori. Nessun estremo mancante, nessun ID duplicato, nessuna relazione senza fonte o nota. Migliorati i primi riferimenti bibliografici di **9 record** che rinviavano a voci enciclopediche troppo generiche, conservando le fonti anteriori come secondo riferimento. Segnalata una coppia di formazione potenzialmente ridondante (Anton Rubinstein → Pëtr Il'ič Čajkovskij), non fusa in assenza di un controllo completo delle due testimonianze. Per i dettagli e i passi successivi si veda `audit_relazionale01_macro100_qualita_20261008.md`. **Non** si considera convalidato filologicamente il complesso delle 377 relazioni.
