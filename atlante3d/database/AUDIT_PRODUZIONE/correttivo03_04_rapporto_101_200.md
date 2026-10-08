@@ -106,3 +106,6 @@ Nessun nuovo arco (totale 1137). Ancora 35 autori del lotto 101–150 senza arco
 
 ## Dodicesimo aggiornamento correttivo — 8 ottobre 2026
 Verificati e promossi due archi preesistenti, senza aggiungerne: Olivier Messiaen → musica per organo (*Livre du Saint Sacrement*, fonti IRCAM e BnF); Arnold Schönberg → musica da camera vocale e strumentale (*Pierrot lunaire* op. 21, fonti Arnold Schönberg Center e Belmont Music Publishers). Specificata l'importanza della voce recitante e dei raddoppi strumentali di Pierrot. Restano 33 compositori senza un arco produttivo documentato nel lotto 101–150. Il grafo mantiene 1137 archi. Commit 5cbc27bc560c208d129c5f8d8ba4256e6a399bed. Main invariato.
+
+## Tredicesimo aggiornamento correttivo — 8 ottobre 2026
+Sono state validate 4 relazioni preesistenti senza creare nuovi archi: Clara Schumann → concerto (Piano Concerto op. 7, IMSLP); Hugo Wolf → Lied (Mörike-Lieder, IMSLP); Frédéric Chopin → sonata (Sonata op. 35, IMSLP); Gabriel Fauré → musica sacra (Requiem op. 48, catalogo BnF). Sono stati aggiornati notes, sources e status a `documentato` per i quattro casi. Residui con nessun arco produttivo documentato nel gruppo 101–150: 29. Archi totali 1137. Commit: 98d0503d718d2fa481ed01567b4499e23e38db18. Ramo main invariato.
