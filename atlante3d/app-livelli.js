@@ -25,8 +25,28 @@ function readingAllowed(){
   const n=byId.get(e.source===selected.id?e.target:e.source);
   return n&&n.type!=="geografia"&&n.type!=="periodo"&&categoryVisible(n);
  }).sort((a,b)=>readingScore(b)-readingScore(a)||readingKey(a).localeCompare(readingKey(b)));
+ // A progressive selection first represents different historically documented relations,
+ // then fills the remaining places. Every level is a superset of the preceding level.
+ const pick=(count)=>{
+  const result=[],used=new Set(),seenGroups=new Set(),seenOther=new Set();
+  for(const e of choices){
+   const other=e.source===selected.id?e.target:e.source;
+   if(seenGroups.has(e.group)||seenOther.has(other))continue;
+   result.push(e);used.add(readingKey(e));seenGroups.add(e.group);seenOther.add(other);
+   if(result.length>=count)return result;
+  }
+  for(const e of choices){
+   const other=e.source===selected.id?e.target:e.source;
+   if(used.has(readingKey(e))||seenOther.has(other))continue;
+   result.push(e);used.add(readingKey(e));seenOther.add(other);
+   if(result.length>=count)return result;
+  }
+  for(const e of choices){if(!used.has(readingKey(e))){result.push(e);used.add(readingKey(e));if(result.length>=count)break;}}
+  return result;
+ };
+ const shortlist=readingLevel===0?pick(6):readingLevel===1?pick(15):choices;
  readingAllowedCacheKey=key;
- readingAllowedCache=new Set(choices.slice(0,readingLimits[readingLevel]).map(readingKey));
+ readingAllowedCache=new Set(shortlist.map(readingKey));
  return readingAllowedCache;
 }
 function readingDepth(){return [1,2,3][readingLevel]}
@@ -714,8 +734,8 @@ function populate(n){
  const allowedInPanel=readingAllowed();
   const conn=linked(n).filter(({e})=>allowedInPanel.has(readingKey(e)));
  const lensIntro=document.createElement("section");lensIntro.className="lens-panel-intro";
- const lensTitle=document.createElement("strong");lensTitle.textContent="Lenti attive: "+activeLensLabel();
- const lensP=document.createElement("p");lensP.textContent="Puoi combinare più lenti: colori e frecce mantengono distinto il significato dei rapporti.";
+ const lensTitle=document.createElement("strong");lensTitle.textContent="Livello: "+readingNames[readingLevel]+" · "+conn.length+" collegamenti in primo piano";
+ const lensP=document.createElement("p");lensP.textContent="L’Atlante contiene "+linked(n).length+" relazioni in queste lenti. Aumenta la profondità per scoprirne altre; la scelta iniziale è una proposta di orientamento, non una graduatoria storica.";
  lensIntro.append(lensTitle,lensP);dst.append(lensIntro);
  const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
  for(const g of EXPLORATION_LENSES){
