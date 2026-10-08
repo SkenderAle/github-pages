@@ -43,6 +43,8 @@ try{
  await page.locator("#explode").click();await page.waitForTimeout(500);
  const exploded=await page.locator("#status").textContent();
  assert(exploded.includes("raggiera esplosa"),"Explode executes: "+exploded);
+ const moved=Number((exploded.match(/raggiera esplosa · (\\d+)/)||[])[1]);
+ assert(moved>0&&moved<=6,"Scoprire explodes at most six spheres: "+moved);
  await page.screenshot({path:join(output,"beethoven-esplodi.png"),fullPage:true});
  assert(!(await page.locator("#exploreControls").getAttribute("open")),"Advanced controls collapsed initially");
  await page.locator("#exploreControls summary").click();
@@ -61,6 +63,11 @@ try{
  await m.locator("#search").fill("Beethoven");await m.locator("#search").press("Enter");
  await m.waitForTimeout(900);
  await m.screenshot({path:join(output,"mobile-beethoven.png"),fullPage:true});
+ assert(await m.locator("#readingLevelPanel").isVisible(),"Mobile depth selector visible while panel is open");
+ await m.locator("#readingLevelPanel").selectOption("2");await m.waitForTimeout(500);
+ assert((await m.locator("#readingLevel").inputValue())==="2","Mobile and desktop depth controls stay synchronized");
+ assert((await m.locator("#status").textContent()).includes("Ricercare"),"Mobile depth change updates selected graph");
+ await m.screenshot({path:join(output,"mobile-ricercare.png"),fullPage:true});
  const geom=await m.locator("#readingToolbar").evaluate(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:innerWidth}});
  assert(geom.left>=-2&&geom.right<=geom.width+2,"Mobile reading selector within viewport "+JSON.stringify(geom));
  await context.close();
