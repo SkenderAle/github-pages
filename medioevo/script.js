@@ -2032,3 +2032,63 @@ if(jewishIconDialog){
   audio.addEventListener('ended',()=>stop('<strong>Fine dell’ascolto.</strong> Puoi scegliere un altro strumento.'));
 })();
 
+
+// 2026-10-08 · Otto ascolti dell'Ufficio. Un solo player, massimo 30 s.
+// Le registrazioni MP3 rimangono sulle pagine di provenienza (Liber Hymnarius).
+(() => {
+  const buttons=[...document.querySelectorAll('.office-sample')];
+  if(!buttons.length)return;
+  const status=document.getElementById('officeAudioStatus');
+  const audio=new Audio();
+  audio.preload='none';
+  let active=null;
+  let clipStart=0;
+  let stopTimer=null;
+
+  function stopOffice(message){
+    if(stopTimer!==null){clearTimeout(stopTimer);stopTimer=null;}
+    try{audio.pause();audio.currentTime=0;audio.volume=1;}catch(e){}
+    if(active){active.classList.remove('loading','playing');active.textContent='▶ 30 s';active=null;}
+    if(message&&status)status.textContent=message;
+  }
+  audio.addEventListener('timeupdate',()=>{
+    if(!active)return;
+    const elapsed=audio.currentTime-clipStart;
+    if(elapsed>=30){
+      stopOffice('Fine dell’incipit di 30 secondi. Seleziona un’altra ora.');
+    }else if(elapsed>28.2){
+      audio.volume=Math.max(.05,(30-elapsed)/1.8);
+    }
+  });
+  audio.addEventListener('ended',()=>stopOffice('Il canto è terminato. Scegli un’altra ora.'));
+
+  buttons.forEach(button=>{
+    button.addEventListener('click',async()=>{
+      if(active===button){stopOffice('Ascolto fermato.');return;}
+      stopOffice();
+      active=button;
+      button.classList.add('loading');
+      button.textContent='… carico';
+      if(status)status.textContent='Caricamento di '+(button.dataset.officeTitle||'un inno')+'…';
+      try{
+        audio.src=button.dataset.officeAudio;
+        audio.volume=1;
+        audio.currentTime=0;
+        clipStart=0;
+        await audio.play();
+        if(active!==button)return;
+        clipStart=audio.currentTime;
+        button.classList.remove('loading');
+        button.classList.add('playing');
+        button.textContent='■ Ferma';
+        if(status)status.textContent=(button.dataset.officeTitle||'Inno')+' · ascolto dimostrativo (massimo 30 secondi).';
+        stopTimer=setTimeout(()=>{
+          if(active===button)stopOffice('Fine dei 30 secondi. Seleziona un’altra ora.');
+        },30000);
+      }catch(e){
+        if(active===button)stopOffice('Il campione esterno non è disponibile. Usa «Fonte del canto» per aprire la scheda originale.');
+      }
+    });
+  });
+  window.addEventListener('pagehide',()=>stopOffice(),{once:true});
+})();
