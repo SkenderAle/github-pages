@@ -713,7 +713,7 @@ function focusOn(n,openPanel=true,tight=false){
  if(explodeBtn)explodeBtn.disabled=false;
  updatePeriodContext(n);
  const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
- status.textContent=n.label+" · "+linked(n).length+" connessioni · "+activeLensLabel();
+ status.textContent=n.label+" · "+readingAllowed().size+" di "+linked(n).length+" relazioni · "+readingNames[readingLevel];
  populate(n);if(openPanel)setPanel(true);
 }
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Esplora";tab.setAttribute("aria-expanded",String(open));}
@@ -748,7 +748,7 @@ function populate(n){
  dst.append(shortcuts);
  const box=document.createElement("section");box.className="lens-relations";
  const head=document.createElement("h3");head.textContent="Relazioni in primo piano · "+conn.length+" su "+linked(n).length;box.append(head);
- if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun legame documentato con i filtri attuali: non significa che non esistesse.";box.append(p);}
+ if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessuna relazione visibile con queste impostazioni. Prova il livello Ricercare o modifica i filtri: questo non significa che manchino relazioni nel database.";box.append(p);}
  for(const {e,n:other} of conn){
   const item=document.createElement("article");item.className="lens-relation-item";
   const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
