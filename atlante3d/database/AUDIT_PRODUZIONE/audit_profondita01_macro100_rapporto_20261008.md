@@ -238,3 +238,10 @@ Esaminati tutti i 23 profili che al checkpoint precedente conservavano un solo g
 ## Audit di qualità delle fonti e formazione · 8 ottobre 2026
 
 Il primo macroblocco ha 218 archi produttivi e 377 relazioni specialistiche incidenti. Verificate e migliorate 8 relazioni produttive preesistenti con cataloghi/partiture pertinenti e note specifiche; corretta la forza probatoria di due legami formativi: Legrenzi → Caldara ora `da_verificare`, Willaert → de Rore ora `documentato-con-cautela`. Nessun arco aggiunto o eliminato; 590 produttivi sul grafo di 1670 archi totali. Rapporto: `audit_qualita01_macro100_fonti_e_formazione_20261008.md` e registro di mutazioni: `audit_qualita01_macro100_staging_20261008.json`.
+
+
+---
+
+## Matrice generale di triage per il primo macroblocco · 8 ottobre 2026
+
+Congelati i dati correnti dei 100 compositori: **218** relazioni produttive, **377** relazioni specialistiche incidenti. Creata matrice per tutti gli archi con fonti, note, indicatori di possibile criticità e stato effettivo di riesame individuale. Non è una promozione in blocco degli stati `documentato`; i record puntualmente controllati in questo passaggio sono 8 produttivi e 2 formativi, già descritti nell'audit qualitativo. I restanti casi richiedono riscontri bibliografici. Dettagli in `audit_qualita01_macro100_matrice_20261008.json` e `audit_qualita01_macro100_matrice_rapporto_20261008.md`.
