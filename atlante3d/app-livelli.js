@@ -16,7 +16,19 @@ let readingLevel=0;const readingLimits=[6,15,Infinity];
 const readingNames=["Scoprire","Approfondire","Ricercare"];
 function readingKey(e){return e.id||[e.source,e.target,e.group||"",e.kind||""].join("|")}
 function readingScore(e){return ({formazione:100,scuole:85,collaborazioni:75,influenze:65,genealogie:45}[e.group]||30)+(e.sources?.length||0)*2}
-function readingAllowed(){if(!selected)return new Set();return new Set(currentEdges().filter(e=>e.source===selected.id||e.target===selected.id).filter(e=>{const n=byId.get(e.source===selected.id?e.target:e.source);return n&&n.type!=="geografia"&&n.type!=="periodo"}).sort((a,b)=>readingScore(b)-readingScore(a)).slice(0,readingLimits[readingLevel]).map(readingKey))}
+let readingAllowedCacheKey="",readingAllowedCache=new Set();
+function readingAllowed(){
+ if(!selected)return new Set();
+ const key=selected.id+"|"+readingLevel+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",");
+ if(key===readingAllowedCacheKey)return readingAllowedCache;
+ const choices=currentEdges().filter(e=>e.source===selected.id||e.target===selected.id).filter(e=>{
+  const n=byId.get(e.source===selected.id?e.target:e.source);
+  return n&&n.type!=="geografia"&&n.type!=="periodo"&&categoryVisible(n);
+ }).sort((a,b)=>readingScore(b)-readingScore(a)||readingKey(a).localeCompare(readingKey(b)));
+ readingAllowedCacheKey=key;
+ readingAllowedCache=new Set(choices.slice(0,readingLimits[readingLevel]).map(readingKey));
+ return readingAllowedCache;
+}
 function readingDepth(){return [1,2,3][readingLevel]}
 const activeCategories=new Set(["compositore","ambito","corrente","persona"]);
 const EXPLORATION_LENSES=[
@@ -579,11 +591,12 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  resolveScreenCollisions(screen);
  const map=new Map(screen.map(p=>[p.node.id,p]));
  const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover,lineHits=[];
+  const allowedForFrame=selected?readingAllowed():null;
  const depths=selected?selectedDepths(readingDepth()):null;
  if(lensFocus){neighbors.add(lensFocus.id);for(const e of activeEdges){if(e.source===lensFocus.id)neighbors.add(e.target);if(e.target===lensFocus.id)neighbors.add(e.source);}}
  for(const e of activeEdges){
   const a=map.get(e.source),b=map.get(e.target);
-  if(selected&&(e.source===selected.id||e.target===selected.id)&&!readingAllowed().has(readingKey(e)))continue;
+  if(selected&&(e.source===selected.id||e.target===selected.id)&&!allowedForFrame.has(readingKey(e)))continue;
   if(!a||!b||!visibleNode(a.node)||!visibleNode(b.node))continue;
   let edgeDepth=1,direct=false;
   if(selected){
@@ -698,7 +711,8 @@ function populate(n){
   }else{const note=document.createElement("p");note.className="small";note.textContent="Varianti in revisione bibliografica.";names.append(note);}
   dst.append(names);
  }
- const conn=linked(n).filter(({e})=>readingLevel===2||readingAllowed().has(readingKey(e)));
+ const allowedInPanel=readingAllowed();
+  const conn=linked(n).filter(({e})=>allowedInPanel.has(readingKey(e)));
  const lensIntro=document.createElement("section");lensIntro.className="lens-panel-intro";
  const lensTitle=document.createElement("strong");lensTitle.textContent="Lenti attive: "+activeLensLabel();
  const lensP=document.createElement("p");lensP.textContent="Puoi combinare più lenti: colori e frecce mantengono distinto il significato dei rapporti.";
@@ -713,7 +727,7 @@ function populate(n){
  }
  dst.append(shortcuts);
  const box=document.createElement("section");box.className="lens-relations";
- const head=document.createElement("h3");head.textContent="Relazioni nelle lenti attive · "+conn.length;box.append(head);
+ const head=document.createElement("h3");head.textContent="Relazioni in primo piano · "+conn.length+" su "+linked(n).length;box.append(head);
  if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun legame documentato con i filtri attuali: non significa che non esistesse.";box.append(p);}
  for(const {e,n:other} of conn){
   const item=document.createElement("article");item.className="lens-relation-item";
@@ -837,6 +851,7 @@ tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("pan
 search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
 search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n,true,true);search.blur();}});
 const readingControl=document.getElementById("readingLevel");
+ syncCategoryControls();syncLensControls();
 readingControl?.addEventListener("change",e=>{readingLevel=Math.max(0,Math.min(2,Number(e.target.value)||0));selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected){fitGeoNetwork(selected);populate(selected);status.textContent=selected.label+" · "+readingNames[readingLevel]+" · "+Math.min(linked(selected).length,readingLimits[readingLevel])+" di "+linked(selected).length+" relazioni";}});
 function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-category]").forEach(i=>{i.checked=activeCategories.has(i.value);});}
 function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
