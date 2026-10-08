@@ -1,6 +1,7 @@
 const progress=document.getElementById('progress');
-const navLinks=[...document.querySelectorAll('nav a')];
-const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+// Solo le ancore interne sono selettori validi: il link ../ Home non lo è.
+const navLinks=[...document.querySelectorAll('nav a[href^="#"]')];
+const sections=navLinks.map(a=>document.querySelector(a.hash)).filter(Boolean);
 
 function onScroll(){
   const doc=document.documentElement;
@@ -15,15 +16,42 @@ addEventListener('scroll',onScroll,{passive:true});onScroll();
 const stage=document.getElementById('gestureStage');
 const play=document.getElementById('gesturePlay');
 const result=document.getElementById('gestureResult');
+const gesturePath=document.getElementById('gesturePath');
+const gestureHand=document.getElementById('gestureHand');
+let gestureFrame=null;
 let timers=[];
-if(stage&&play){
+
+// Il tracciato SVG si ridimensiona su mobile: coordinate sempre calcolate
+// sulla sua posizione effettiva, mai sui 1000 pixel fissi del CSS.
+function placeGestureHand(fraction){
+  if(!stage||!gesturePath||!gestureHand)return;
+  const svg=gesturePath.ownerSVGElement;
+  if(!svg)return;
+  const box=svg.viewBox.baseVal;
+  const point=gesturePath.getPointAtLength(gesturePath.getTotalLength()*fraction);
+  const svgRect=svg.getBoundingClientRect();
+  const stageRect=stage.getBoundingClientRect();
+  gestureHand.style.left=(svgRect.left-stageRect.left+(point.x-box.x)*svgRect.width/box.width)+'px';
+  gestureHand.style.top=(svgRect.top-stageRect.top+(point.y-box.y)*svgRect.height/box.height)+'px';
+}
+if(stage&&play&&gesturePath&&gestureHand){
   play.addEventListener('click',()=>{
     timers.forEach(clearTimeout);timers=[];
+    if(gestureFrame!==null){cancelAnimationFrame(gestureFrame);gestureFrame=null;}
     stage.classList.remove('play');
     if(result)result.classList.remove('show');
     void stage.offsetWidth;
     stage.classList.add('play');
     play.textContent='↻ Ripeti il gesto';
+    const start=performance.now();
+    const duration=6000;
+    function advance(now){
+      const fraction=Math.min(1,Math.max(0,(now-start)/duration));
+      placeGestureHand(fraction);
+      gestureFrame=fraction<1?requestAnimationFrame(advance):null;
+    }
+    placeGestureHand(0);
+    gestureFrame=requestAnimationFrame(advance);
     timers.push(setTimeout(()=>result&&result.classList.add('show'),5900));
   });
 }

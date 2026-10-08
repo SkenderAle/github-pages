@@ -70,8 +70,8 @@ p{font-size:1.08rem}
 linear-gradient(to bottom,transparent 49.5%,rgba(91,70,48,.12) 50%,transparent 50.5%);overflow:hidden;border-block:1px solid #c8b391}
 .gesture-stage svg{position:absolute;inset:14px 12px;width:calc(100% - 24px);height:200px}
 .gesture-stage path{fill:none;stroke:#7d3429;stroke-width:4;stroke-linecap:round;stroke-dasharray:15 12;vector-effect:non-scaling-stroke;opacity:.82}
-.hand{position:absolute;left:0;top:0;font-size:2rem;line-height:1;filter:drop-shadow(0 4px 4px rgba(0,0,0,.12));opacity:0;offset-path:path("M35 148 C95 145 110 70 178 82 S260 166 332 128 S412 45 486 74 S565 170 638 125 S726 48 800 76 S890 156 965 92");offset-rotate:0deg;transform:translate(-50%,-50%)}
-.gesture-stage.play .hand{opacity:1;animation:followGesture 6s linear forwards}
+.hand{position:absolute;left:0;top:0;font-size:2rem;line-height:1;filter:drop-shadow(0 4px 4px rgba(0,0,0,.12));opacity:0;transform:translate(-50%,-50%)}
+.gesture-stage.play .hand{opacity:1}
 @keyframes followGesture{from{offset-distance:0%}to{offset-distance:100%}}
 .neume-strip{display:grid;grid-template-columns:repeat(10,1fr);gap:.25rem;padding:1rem .7rem;background:#e5d5ba;border:1px solid #c7af87}
 .neume-strip span{font-size:clamp(1.8rem,4vw,3.5rem);text-align:center;opacity:.3;transition:.18s}
