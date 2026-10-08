@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Musurgia Mundi · laboratorio leggibilità</title>
+<style>
+:root{color-scheme:dark;font-family:Georgia,serif;background:#0b1420;color:#eff2ed}*{box-sizing:border-box}body{margin:0}header{padding:18px 24px;border-bottom:1px solid #334356;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}h1{font-size:24px;margin:0}p{line-height:1.5}small,.muted{color:#afbdcc}button,select,input{font:inherit}button,select{background:#1c2b3b;color:#fff;border:1px solid #5d7084;border-radius:8px;padding:9px;cursor:pointer}button:focus-visible{outline:2px solid gold}.active{background:#785c30;border-color:#e3bc78}main{display:grid;grid-template-columns:1fr min(360px,100%);min-height:calc(100vh - 85px)}.stage{padding:14px;min-width:0}.sidebar{padding:20px;border-left:1px solid #344558;background:#111e2b}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-bottom:12px}.group{display:flex;gap:4px;flex-wrap:wrap}.stage svg{width:100%;height:min(69vh,750px);background:radial-gradient(ellipse at center,#213446,#0c1725 75%);border:1px solid #324458;border-radius:12px;touch-action:none}.link{cursor:pointer;stroke-width:2.4;opacity:.78}.link:focus-visible{stroke-width:6;outline:none}.node{cursor:pointer}.node circle{stroke:#f4e2ba;stroke-width:1.5}.node:focus circle{stroke:#fff;stroke-width:4}.nodetext{font:11px sans-serif;fill:#eff4f7;paint-order:stroke;stroke:#0c1927;stroke-width:3;pointer-events:none}.legend{display:flex;gap:12px;flex-wrap:wrap;font:12px sans-serif;margin-top:10px}.legend span:before{content:'● ';color:var(--c)}.hint{font:12px sans-serif;color:#adbdcc}.detail{border-top:1px solid #33475c;padding-top:15px;margin-top:14px;overflow-wrap:anywhere}a{color:#a8d8ff}.notice{padding:9px 12px;border-left:3px solid #b38f50;background:#1a2938;font:13px sans-serif}#results button{display:block;margin:6px 0;width:100%;text-align:left}.flag{font-size:11px;color:#c7d3df;text-transform:uppercase;letter-spacing:.05em}@media(max-width:850px){main{grid-template-columns:1fr}.sidebar{border-left:0;border-top:1px solid #344558}.stage svg{height:460px}}
+</style></head><body>
+<header><div><h1>Musurgia Mundi <small>· laboratorio di leggibilità</small></h1><small>Prototipo sperimentale, separato dall'Atlante pubblico</small></div><a href="index.html">Torna all'Atlante pubblico</a></header>
+<main><section class="stage"><div class="controls"><label for="find">Compositore</label><select id="find"></select><div class="group" id="levels" aria-label="Profondità"><button data-level="0" class="active">Scoprire</button><button data-level="1">Approfondire</button><button data-level="2">Ricercare</button></div><button id="reset">Ricomincia</button></div>
+<div class="notice" id="status">Caricamento del database…</div>
+<svg id="map" role="img" aria-label="Grafo interattivo delle relazioni" viewBox="0 0 900 640"><defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6" fill="none" stroke="#d6e4ed" stroke-width="1.4"/></marker></defs><g id="links"></g><g id="nodes"></g></svg>
+<div class="legend" id="legend"></div><p class="hint">Seleziona una sfera per esplorarne le relazioni; seleziona una linea per leggere il rapporto e le fonti. Questa visualizzazione di prova è radiale, non geografica.</p></section>
+<aside class="sidebar"><div class="flag">Scheda contestuale</div><h2 id="title">Benvenuto</h2><p id="intro">Scegli un autore per iniziare.</p><div class="detail" id="details"></div></aside></main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id), colors={formazione:"#60baff",influenze:"#f5ac61",collaborazioni:"#79d5a6",genealogie:"#b69af3",scuole:"#e2c482",generale:"#bdcbd8"};
+let db=null,relations=[],byId=new Map(),center="",level=0,shown=[];
+const escapeHTML=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const edgeGroup=e=>colors[e.group]?e.group:"generale";
+function label(id){return byId.get(id)?.label||id}
+function other(e,id){return e.source===id?e.target:e.source}
+function described(e){return e.note||e.forward||e.kind||"Rapporto storico-musicale documentato"}
+function renderDetails(e){const from=label(e.source),to=label(e.target);$("title").textContent=from+" → "+to;$("intro").textContent=(e.forward||e.kind||"Relazione")+" · "+edgeGroup(e);const sources=(e.sources||[]).filter(s=>/^https:\/\//.test(s));$("details").innerHTML="<p>"+escapeHTML(described(e))+"</p>"+(sources.length?"<h3>Fonti</h3>"+sources.map(s=>'<p><a target="_blank" rel="noopener noreferrer" href="'+escapeHTML(s)+'">'+escapeHTML(new URL(s).hostname)+" ↗</a></p>").join(""):"<p class=muted>Fonte non presente in questa scheda: da verificare.</p>")}
+function pick(id){if(!byId.has(id))return;center=id;$("find").value=id;render()}
+function selectEdge(e){renderDetails(e)}
+function score(e){const group=edgeGroup(e),b={formazione:95,scuole:80,collaborazioni:65,influenze:55,genealogie:35,generale:20}[group];return b+(e.sources?.length||0)*2+(e.status==="documentato"?5:0)}
+function edgesFor(id){return relations.filter(e=>e.source===id||e.target===id).filter(e=>byId.has(other(e,id))&&other(e,id)!==id).sort((a,b)=>score(b)-score(a)||label(other(a,id)).localeCompare(label(other(b,id)),"it"))}
+function render(){
+ if(!db)return;const n=byId.get(center);let all=edgesFor(center);
+ // A beginner sees an editorial sample, not a claim that other relations do not exist.
+ const limit=[6,15,9999][level];shown=all.slice(0,limit);
+ $("status").textContent=n.label+" · "+shown.length+" relazioni mostrate su "+all.length+" disponibili · "+["Scoprire","Approfondire","Ricercare"][level];
+ $("levels").querySelectorAll("button").forEach(b=>{b.classList.toggle("active",+b.dataset.level===level);b.setAttribute("aria-pressed",String(+b.dataset.level===level))});
+ $("title").textContent=n.label;$("intro").textContent=n.description||"Esplora le relazioni documentate.";$("details").innerHTML='<p><strong>'+all.length+'</strong> collegamenti disponibili. La selezione è ordinata con una regola tecnica provvisoria, non con una valutazione musicologica definitiva.</p>';
+ const nodes=$("nodes"),links=$("links");nodes.replaceChildren();links.replaceChildren();
+ const NS="http://www.w3.org/2000/svg",make=(tag,attrs)=>{const a=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>a.setAttribute(k,v));return a};
+ const count=shown.length,ring=(i)=>{const rings=count>18?3:count>9?2:1;const ringIndex=count>18?Math.floor(i/Math.ceil(count/3)):count>9?Math.floor(i/Math.ceil(count/2)):0;const begin=count>18?ringIndex*Math.ceil(count/3):count>9?ringIndex*Math.ceil(count/2):0;const len=Math.min(count-begin,count>18?Math.ceil(count/3):count>9?Math.ceil(count/2):count);const p=i-begin;const radius=125+ringIndex*95;const angle=(2*Math.PI*p/len)-Math.PI/2+ringIndex*.16;return [450+radius*Math.cos(angle),320+radius*Math.sin(angle)]};
+ shown.forEach((e,i)=>{const [x,y]=ring(i),group=edgeGroup(e),col=colors[group];const line=make("line",{x1:450,y1:320,x2:x,y2:y,stroke:col,class:"link",tabindex:0,"aria-label":label(e.source)+" / "+label(e.target)+": "+group});if(["formazione","influenze","genealogie","scuole"].includes(group)){line.setAttribute("marker-end","url(#arrow)")};line.addEventListener("click",()=>selectEdge(e));line.addEventListener("keydown",ev=>{if(ev.key==="Enter")selectEdge(e)});links.append(line);
+ const g=make("g",{class:"node",tabindex:0,role:"button","aria-label":"Esplora "+label(other(e,center))});g.append(make("circle",{cx:x,cy:y,r:level===2?7:10,fill:col}));const name=label(other(e,center));const t=make("text",{x,y:y+22,class:"nodetext","text-anchor":"middle"});t.textContent=name.length>23?name.slice(0,21)+"…":name;g.append(t);const choose=()=>pick(other(e,center));g.addEventListener("click",choose);g.addEventListener("keydown",ev=>{if(ev.key==="Enter")choose()});nodes.append(g)});
+ const middle=make("g",{class:"node"});middle.append(make("circle",{cx:450,cy:320,r:23,fill:"#b58e52"}));const t=make("text",{x:450,y:360,class:"nodetext","text-anchor":"middle"});t.textContent=n.label;middle.append(t);nodes.append(middle);
+}
+async function init(){
+ try{
+ const prefix="database/";const [gr,re]=await Promise.all([fetch(prefix+"grafo.json"),fetch(prefix+"relazioni.json")]);if(!gr.ok||!re.ok)throw Error("I database non sono disponibili");const graph=await gr.json(),special=await re.json();
+ db=graph;byId=new Map(graph.nodes.filter(n=>n.visible!==0&&n.visible!=="0").map(n=>[n.id,n]));
+ relations=[...graph.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)&&byId.get(e.source)?.type!=="geografia"&&byId.get(e.target)?.type!=="geografia"&&byId.get(e.source)?.type!=="periodo"&&byId.get(e.target)?.type!=="periodo").map(e=>({...e,group:e.group||"generale"})),...special.relations.filter(e=>byId.has(e.source)&&byId.has(e.target)&&e.sources?.length)];
+ const composers=[...byId.values()].filter(n=>n.type==="compositore").sort((a,b)=>a.label.localeCompare(b.label,"it"));$("find").replaceChildren(...composers.map(n=>{let x=document.createElement("option");x.value=n.id;x.textContent=n.label;return x}));$("find").addEventListener("change",e=>pick(e.target.value));
+ $("levels").addEventListener("click",e=>{const b=e.target.closest("button[data-level]");if(b){level=+b.dataset.level;render()}});$("reset").addEventListener("click",()=>{level=0;render()});
+ $("legend").replaceChildren(...Object.entries(colors).map(([k,c])=>{let s=document.createElement("span");s.style.setProperty("--c",c);s.textContent=k;return s}));
+ pick(byId.has("compositore-ludwig-van-beethoven")?"compositore-ludwig-van-beethoven":composers[0].id);
+ }catch(err){$("status").textContent="Errore: "+err.message;console.error(err)}
+}
+init();
+</script></body></html>
