@@ -10,6 +10,15 @@ async function launchContext(size){
  const context=await browser.newContext({viewport:size,deviceScaleFactor:1});
  const page=await context.newPage();
  page.on("pageerror",e=>failures.push("Uncaught JS error: "+e.message));
+ // Add a temporary read-only projection hook in the browser QA response only.
+ await page.route("**/app-livelli.js*",async route=>{
+  const response=await route.fetch();let body=await response.text();
+  const marker="})();",at=body.lastIndexOf(marker);
+  if(at<0)throw Error("QA cannot instrument Atlas script");
+  const hook='window.__atlasQa=()=>screen.filter(p=>selected&&p.node!==selected&&visibleNode(p.node)&&selectedDepths(readingDepth()).get(p.node.id)===1).map(p=>({label:p.node.label,x:p.x,y:p.y,r:p.r}));';
+  body=body.slice(0,at)+hook+body.slice(at);
+  await route.fulfill({response,body,contentType:"application/javascript"});
+ });
  await page.goto("http://127.0.0.1:8765/atlante3d/atlante-livelli.html",{waitUntil:"domcontentloaded",timeout:30000});
  await page.waitForFunction(()=>document.querySelector("#status")?.textContent?.includes("compositori"),{timeout:20000}).catch(()=>{});
  const loaded=await page.locator("#status").textContent();
@@ -46,6 +55,19 @@ try{
  const moved=Number((exploded.match(/raggiera esplosa · (\d+)/)||[])[1]);
  assert(moved>0&&moved<=6,"Scoprire explodes at most six spheres: "+moved);
  await page.screenshot({path:join(output,"beethoven-esplodi.png"),fullPage:true});
+ const box=await page.locator("#sky").boundingBox();
+ const projected=await page.evaluate(()=>window.__atlasQa?.()||[]);
+ const target=projected.find(p=>p.x>70&&p.x<box.width-370&&p.y>220&&p.y<box.height-180);
+ assert(Boolean(target),"Projected direct neighbor available for double-click");
+ if(target){
+  await page.mouse.dblclick(box.x+target.x,box.y+target.y,{delay:55});
+  await page.waitForTimeout(500);
+  const after=await page.locator("#panelTitle").textContent();
+  assert(after===target.label,"Double-click centers selected sphere: "+target.label+" => "+after);
+  await page.screenshot({path:join(output,"beethoven-doppioclic.png"),fullPage:true});
+  await page.locator("#search").fill("Beethoven");await page.locator("#search").press("Enter");
+  await page.waitForTimeout(400);
+ }
  assert(!(await page.locator("#exploreControls").getAttribute("open")),"Advanced controls collapsed initially");
  await page.locator("#exploreControls summary").click();
  await page.waitForTimeout(200);
