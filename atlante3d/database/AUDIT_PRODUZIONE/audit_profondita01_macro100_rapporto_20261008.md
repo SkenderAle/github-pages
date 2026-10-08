@@ -231,3 +231,10 @@ Aggiunte 27 produzioni puntualmente riferite a partiture/cataloghi; profili con 
 ## Quarto passaggio plurigenere e cautele storico-filologiche · 8 ottobre 2026
 
 Esaminati tutti i 23 profili che al checkpoint precedente conservavano un solo genere: 16 archi aggiunti a 15 compositori, 8 profili lasciati invariati per evitare classificazioni artificiali. Restano 8 monoambito. Dettagli e fonti in `audit_profondita01_macro100_quartopassaggio_20261008.md`; staging in `audit_profondita01_macro100_quartopassaggio_staging_20261008.json`. Copertura strutturale non equivale a esaustività filologica.
+
+
+---
+
+## Audit di qualità delle fonti e formazione · 8 ottobre 2026
+
+Il primo macroblocco ha 218 archi produttivi e 377 relazioni specialistiche incidenti. Verificate e migliorate 8 relazioni produttive preesistenti con cataloghi/partiture pertinenti e note specifiche; corretta la forza probatoria di due legami formativi: Legrenzi → Caldara ora `da_verificare`, Willaert → de Rore ora `documentato-con-cautela`. Nessun arco aggiunto o eliminato; 590 produttivi sul grafo di 1670 archi totali. Rapporto: `audit_qualita01_macro100_fonti_e_formazione_20261008.md` e registro di mutazioni: `audit_qualita01_macro100_staging_20261008.json`.
