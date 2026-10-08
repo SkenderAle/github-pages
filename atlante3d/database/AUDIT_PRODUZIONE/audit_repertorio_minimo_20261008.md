@@ -1,35 +1,43 @@
 # Musurgia Mundi — Audit del repertorio minimo
 
-**Checkpoint aggiornato 8 ottobre 2026**, ramo `audit-produzione-correttivo-01` (nessun merge in `main`).
+**Checkpoint 8 ottobre 2026**, ramo `audit-produzione-correttivo-01`. Il ramo `main` non è stato modificato.
 
-## Situazione reale
-- Repertorio obbligatorio: **332 identità distinte**. Includono alcuni teorici/figure storiche come `persona` anziché `compositore`.
-- **248 identità** individuate nel grafo e **84 non individuate** in base al confronto con le varianti controllate.
-- Database: **354 nodi compositore, 776 nodi complessivi, 1395 archi**.
-- **Attenzione**: presenza nominale non significa repertorio di generi esaustivo né che tutte le genealogie e fonti siano concluse.
+## Copertura del repertorio obbligatorio
+- **332** figure minime distinte, comprese persone storiche e teorici non compositori.
+- **258** individuate mediante nomi e alias riconciliati; **74** ancora da rintracciare o inserire.
+- Grafo: **364 compositori**, **786 nodi**, **1418 relazioni**.
+- La copertura anagrafica minima NON equivale all'esaustività dei repertori produttivi, delle genealogie o delle relazioni.
 
-| Periodo | Presenti | Da verificare/inserire | Totale richiesto |
+| Periodo | Individuati | Mancanti | Totale |
 |---|---:|---:|---:|
 | Medioevo | 22 | 0 | 22 |
 | Rinascimento | 48 | 0 | 48 |
 | Barocco | 61 | 0 | 61 |
-| Classicismo | 22 | 10 | 32 |
+| Classicismo | 32 | 0 | 32 |
 | Romanticismo e tardo Romanticismo | 50 | 20 | 70 |
 | Primo Novecento e avanguardie storiche | 31 | 20 | 51 |
 | Secondo Novecento e contemporaneità | 22 | 36 | 58 |
 
-## Copertura anagrafica per epoca
-**Medioevo — 22/22**: integrate 14 figure, incluse le 3 figure non compositrici Gregorio Magno, Guido d'Arezzo, Franco di Colonia. Seguente audit del repertorio medievale ha inserito nove produzioni e mantenuto sospese due attribuzioni, Philippe de Vitry e Guglielmo IX d'Aquitania.
+## Lotti di inserimento già eseguiti
+### Medioevo e Rinascimento
+- Medioevo: 22/22 nomi identificati. Fra le 14 figure aggiunte, Gregorio Magno, Guido d'Arezzo e Franco di Colonia figurano come `persona`, senza false attribuzioni compositive. Guglielmo IX d'Aquitania e Philippe de Vitry mantengono attribuzioni produttive sospese.
+- Rinascimento: 48/48; 11 compositori aggiunti con almeno una produzione inizialmente documentata.
 
-**Rinascimento — 48/48**: integrate 11 figure, tutte dotate di almeno una produzione documentata, tenendo distinti liuto e vihuela, e la transizione al primo Seicento.
+### Barocco
+- Barocco: 61/61. Le 24 lacune nominali sono state risolte tramite **23 nuovi compositori** e riconciliazione di Dieterich/Dietrich Buxtehude. I nuovi profili coprono primo melodramma, scuola napoletana, concerto, musica sacra e presenza delle compositrici. Non convertire ogni genere storico in una lente dell'interfaccia.
 
-**Barocco — 61/61**: riconciliate 24 voci nominalmente mancanti: 23 **nuovi compositori** e 1 variante di nome (*Dieterich Buxtehude* è il già presente *Dietrich Buxtehude*, senza duplicazione). Nuovi 23 nodi e 56 archi, dei quali **33 archi produttivi** e 23 appartenenze. Il primo gruppo comprende Cavalieri, Gagliano, Landi, Luigi Rossi, Cesti, Sarro, Feo, Locatelli, Geminiani, Isabella Leonarda, Antonia Bembo e Maria Margherita Grimani; il secondo comprende Sartorio, Carlo Pallavicino, Giuseppe Maria Jacchini, Giuseppe Valentini, Bernardo Pasquini, Louis Couperin, Heinichen, Charpentier, Delalande, Boyce e Arne. La produzione specifica cita i lavori e le fonti direttamente negli archi.
+### Classicismo — ultimo lotto
+- Classicismo: **32/32** dopo **10 nuove schede**: Wilhelm Friedemann Bach, Johann Joachim Quantz, Johann Adolf Hasse, Jan Ladislav Dussek, Antonio Sacchini, Vicente Martín y Soler, Maria Theresia von Paradis, Anna Bon di Venezia, Maddalena Laura Sirmen, Hélène de Montgeroult.
+- Creati **10 archi produttivi documentati** e **13 archi di appartenenza**. Doppi inquadramenti barocco/classicismo nei tre casi pertinenti Bach, Quantz e Hasse, con una sola identità per autore.
+- Distinzioni catalografiche importanti: Artaserse di Hasse ≠ Artaserse di Vinci (pur entrambi del 1730); la *Sicilienne* attribuita a Paradis è spuria e non viene usata come fonte del suo repertorio; i concerti di Maddalena Laura Sirmen ≠ quartetti di collaborazione con Lodovico Sirmen; la trattatistica per flauto di Quantz ≠ suo corpus concertistico; sonate di Anna Bon originali per flauto e basso continuo.
+- Fonti per opere specifiche negli archi: IMSLP, cataloghi d'opera e riscontri storico-bibliografici; nessuna pretesa che la copertura di un genere renda esaustiva la produzione.
+- Commit grafo: `7b4e70a4e115b1907f4b73e5bc565ff12f45eebf`.
 
-## Chiusura del ciclo strutturale 1–331 precedente all'allargamento barocco
-Audit 201–300: **100 identità verificate, 97 produzioni minime documentate, 3 eccezioni** (Fritz Reiner, Johann Christoph Bach 1671–1721, Walter Klein). Audit 301–331: **31 verificati, 29 con produzione minima documentata e 2 eccezioni** (Philippe de Vitry, Guglielmo IX).
-I due rapporti finali sono `correttivo05_lotto201_300_rapporto.md` e `correttivo06_lotto301_331_rapporto.md`. Non sostituiscono la densificazione plurigenere e genealogica.
+## Ricognizione produttiva precedente
+Audit 1–200: copertura iniziale documentata. Audit 201–300: 100 identità verificate, 97 con almeno una produzione documentata, tre sospese (Fritz Reiner, Johann Christoph Bach 1671–1721 e Walter Klein). Audit 301–331: 31 identità, 29 con produzione iniziale e due sospese (Guglielmo IX, Philippe de Vitry). Questo ciclo NON conclude l'audit di tutti i generi, maestri, allievi e influenze.
 
-## Coda successiva
-`audit_minimi_prossimi100_staging_20261008.json` contiene i 100 nomi originari, con **43 riconciliati** e **57 ancora non individuati**; gli altri 27 sono fuori dal primo campione.
-Passare al **Classicismo** (10 nominativi mancanti), al Romanticismo, al primo e secondo Novecento. In seguito rivedere tutte le relazioni di produzione plurima, scuola, formazione, influenze e istituzioni.
-Le categorie, gli ambiti aggregati e le tre lenti NON sono stati modificati.
+## Prossimi passaggi
+- Romanticismo/tardo Romanticismo: **20** nomi minimi mancanti, alcuni condivisi col Novecento; in seguito completare le 20 lacune nominali del primo Novecento e le 36 del secondo Novecento, senza sommarle impropriamente come figure diverse.
+- Prima di ogni nuovo inserimento: controllare omonimi, alias, epoche multiple, generi praticati, attribuzioni storiche e fonti specifiche.
+- Rivedere le categorie solo **alla fine** del giro di audit. Non toccare le tre lenti, il visualizzatore e `main`.
+- La prima coda `audit_minimi_prossimi100_staging_20261008.json` ha **53 nomi integrati** e **47 ancora sospesi**. Restano 27 elementi fuori dalla coda originale.
