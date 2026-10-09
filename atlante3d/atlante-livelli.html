@@ -386,6 +386,14 @@ body.panel-open #periodContext{right:340px}
  #panel .reading-inline select{border-radius:7px;color:#fff5df;background:#112234;border:1px solid #bca16f;padding:8px 10px;min-width:160px}
  #periodContext{font-size:clamp(16px,4.5vw,24px);opacity:.3}
 }
+
+/* Risultati di ricerca disambiguati: tocco diretto, anche con tastiera Android. */
+#searchResults[hidden]{display:none!important}
+#searchResults{position:absolute;left:0;bottom:calc(100% + 9px);width:min(330px,calc(100vw - 24px));max-height:min(44vh,350px);overflow-y:auto;overscroll-behavior:contain;z-index:20;padding:5px;background:rgba(9,22,38,.98);border:1px solid #d7b581;border-radius:11px;box-shadow:0 12px 35px #000b;backdrop-filter:blur(12px)}
+#searchResults .search-results-note{padding:7px 9px 5px;margin:0;color:#e8d1ad;font:700 11px/1.4 system-ui}
+#searchResults button{display:block;width:100%;margin:0;padding:10px 11px;border:0;border-bottom:1px solid #354a60;border-radius:5px;background:transparent;color:#f5eadb;text-align:left;font:600 12px/1.35 system-ui;touch-action:manipulation}
+#searchResults button:hover,#searchResults button:focus-visible{background:#314b66;color:#fff}
+@media(max-width:700px){#searchResults{left:0;bottom:calc(100% + 7px);width:min(325px,calc(100vw - 20px));max-height:33dvh}#searchResults button{min-height:40px}}
 </style></head><body>
 <div id="scene"><div id="earthMap" aria-hidden="true"></div><div id="earthShade" aria-hidden="true"></div><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
 <header><div class="masthead"><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p><div id="status" role="status">Caricamento della rete…</div></div><a class="back" href="../" aria-label="Torna alla homepage dell’Atlante">⌂ Home · Atlante</a></header><div id="periodContext" hidden aria-live="polite"></div>
@@ -416,5 +424,5 @@ body.panel-open #periodContext{right:340px}
  <span id="lensHelp" class="explore-note">Puoi combinare più scelte contemporaneamente.</span>
 </details><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app-livelli.js?v=canonico-05-ricerca-rete-automatica" defer></script>
+<script src="app-livelli.js?v=canonico-06-disambiguazione-mobile" defer></script>
 </body></html>

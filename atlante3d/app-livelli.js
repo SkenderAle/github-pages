@@ -752,6 +752,7 @@ function goBackFocus(){
 }
 function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=false){
  if(!n)return;
+ hideSearchChoices();
  if(saveHistory&&selected&&selected!==n){
   navigationHistory.push(selected.id);
   if(navigationHistory.length>40)navigationHistory.shift();
@@ -921,46 +922,104 @@ tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("pan
 backFocus?.addEventListener("click",goBackFocus);
 backFocusPanel?.addEventListener("click",goBackFocus);
 syncBackControls();
-// Ricerca progressiva: un risultato univoco seleziona il compositore e la sua rete.
+// Ricerca progressiva: un solo risultato apre automaticamente la rete;
+ // nei casi ambigui si offre una scelta esplicita, utilizzabile anche da Android.
+const searchResults=document.createElement("div");
+searchResults.id="searchResults";
+searchResults.setAttribute("role","group");
+searchResults.setAttribute("aria-label","Scegli il risultato della ricerca");
+searchResults.hidden=true;
+search.after(searchResults);
 let searchFocusTimer=null;
+function hideSearchChoices(){searchResults.hidden=true;searchResults.replaceChildren();}
 function matchingSearchFocus(q){
  const results=findSearchResults(q);
  const exact=results.filter(n=>searchNames(n).some(name=>normSearch(name)===q));
  return {results,target:exact.length===1?exact[0]:(results.length===1?results[0]:null)};
 }
-function activateSearchSelection(allowFirst=false){
- const query=normSearch(search.value);
- if(!query)return;
- const {results,target}=matchingSearchFocus(query);
- const chosen=target||(allowFirst?results[0]:null);
- if(!chosen){status.textContent=results.length?results.length+" corrispondenze · precisa il nome":"Nessuna corrispondenza";return;}
+function selectSearchTarget(chosen,closeKeyboard=false){
+ if(!chosen)return false;
+ hideSearchChoices();
+ const mobile=window.matchMedia("(max-width:700px)").matches;
  if(selected!==chosen){
-  // Mostra il grafo, non solo un punto evidenziato; sui telefoni lascia spazio alla carta.
-  focusOn(chosen,!window.matchMedia("(max-width:700px)").matches,true,true,true);
-  if(window.matchMedia("(max-width:700px)").matches)setPanel(false);
+  focusOn(chosen,!mobile,true,true,true);
+  if(mobile)setPanel(false);
  }else{
   moveGeo(chosen,true);
+  populate(chosen);
  }
- if(allowFirst)search.blur();
+ if(closeKeyboard)search.blur();
+ return true;
+}
+function showSearchChoices(results){
+ searchResults.replaceChildren();
+ if(results.length<2){searchResults.hidden=true;return;}
+ const label=document.createElement("p");
+ label.className="search-results-note";
+ label.textContent=results.length+" corrispondenze · scegli il nome";
+ searchResults.append(label);
+ for(const n of results.slice(0,12)){
+  const button=document.createElement("button");
+  button.type="button";
+  button.textContent=n.label+(n.type==="compositore"?" · compositore":"");
+  button.setAttribute("aria-label","Esplora "+n.label);
+  button.addEventListener("click",()=>{
+   clearTimeout(searchFocusTimer);
+   search.value=n.label;searchText=normSearch(search.value);
+   selectSearchTarget(n,true);
+  });
+  searchResults.append(button);
+ }
+ if(results.length>12){
+  const more=document.createElement("p");
+  more.className="search-results-note";
+  more.textContent="Altri risultati disponibili: continua a scrivere per restringere la scelta.";
+  searchResults.append(more);
+ }
+ searchResults.hidden=false;
+}
+function activateSearchSelection(){
+ const query=normSearch(search.value);
+ if(!query){hideSearchChoices();return;}
+ const {results,target}=matchingSearchFocus(query);
+ if(!target){
+  status.textContent=results.length?results.length+" corrispondenze · scegli il nome":"Nessuna corrispondenza";
+  showSearchChoices(results);
+  return;
+ }
+ selectSearchTarget(target,false);
 }
 search.addEventListener("input",()=>{
  clearTimeout(searchFocusTimer);
  searchText=normSearch(search.value);
- if(!searchText)return;
+ if(!searchText){hideSearchChoices();return;}
  const {results,target}=matchingSearchFocus(searchText);
- status.textContent=results.length+" corrispondenze · "+(target?target.label+" · rete in apertura":results.length?"continua a digitare":"nessuna corrispondenza");
+ status.textContent=results.length+" corrispondenze · "+(target?target.label+" · apertura rete":results.length?"scegli o precisa il nome":"nessuna corrispondenza");
+ if(!target){showSearchChoices(results);return;}
+ hideSearchChoices();
  if(searchText.length<3)return;
  const query=searchText;
  searchFocusTimer=setTimeout(()=>{
   if(normSearch(search.value)!==query)return;
-  activateSearchSelection(false);
+  activateSearchSelection();
  },400);
 });
+search.addEventListener("focus",()=>{
+ const q=normSearch(search.value);if(!q)return;
+ const {results,target}=matchingSearchFocus(q);
+ if(!target)showSearchChoices(results);
+});
 search.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){hideSearchChoices();search.blur();return;}
  if(e.key!=="Enter")return;
  e.preventDefault();
  clearTimeout(searchFocusTimer);
- activateSearchSelection(true);
+ const q=normSearch(search.value),match=q?matchingSearchFocus(q):null;
+ if(match?.target){selectSearchTarget(match.target,true);}
+ else if(match){showSearchChoices(match.results);status.textContent=match.results.length+" corrispondenze · scegli il nome"; }
+});
+document.addEventListener("pointerdown",e=>{
+ if(e.target!==search&&!searchResults.contains(e.target))hideSearchChoices();
 });
 const readingControl=document.getElementById("readingLevel");
 const readingControlPanel=document.getElementById("readingLevelPanel");
@@ -990,7 +1049,7 @@ lensChoices?.addEventListener("change",e=>{
  const input=e.target.closest("input[data-lens]");if(!input)return;
  setLensState(input.value,input.checked);
 });
-categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected)fitGeoNetwork(selected);});
+categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected){fitGeoNetwork(selected);populate(selected);}});
 moreControls?.addEventListener("click",()=>{
  const open=document.body.classList.toggle("controls-open");
  moreControls.setAttribute("aria-expanded",String(open));
@@ -1000,6 +1059,7 @@ moreControls?.addEventListener("click",()=>{
 explodeBtn?.addEventListener("click",()=>explodeNetwork());
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{
+ clearTimeout(searchFocusTimer);hideSearchChoices();
  navigationHistory.length=0;syncBackControls();
  selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;geoZoomPct=0;zoom=1;syncZoomControls();
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
