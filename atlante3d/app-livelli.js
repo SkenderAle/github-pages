@@ -630,7 +630,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  });
  resolveScreenCollisions(screen);
  const map=new Map(screen.map(p=>[p.node.id,p]));
- const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover,lineHits=[];
+ const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover;lineHits=[];
  const depths=selected?selectedDepths(readingDepth()):null;
  const spotlight=selected?readingSpotlight():new Set();
  const spotlightNodes=new Set();
@@ -656,8 +656,8 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
    if(!direct)continue;
   }
   const isSpotlight=selected&&direct&&spotlight.has(readingKey(e));
-  const edgeAlpha=!selected?.94:contextEdge?.04:direct?(isSpotlight?.96:(readingLevel===0?.18:readingLevel===1?.32:.68)):(edgeDepth===2?.20:.11);
-  const strokeSize=!selected?2.7:contextEdge?.65:direct?(isSpotlight?2.8:(readingLevel===2?1.6:1.0)):edgeDepth===2?1.2:.8;
+  const edgeAlpha=!selected?.94:contextEdge?.04:direct?(isSpotlight?.96:(readingLevel===0?.35:readingLevel===1?.48:.70)):(edgeDepth===2?.20:.11);
+  const strokeSize=!selected?2.7:contextEdge?.65:direct?(isSpotlight?2.8:(readingLevel===2?1.6:1.25)):edgeDepth===2?1.2:.8;
   const style=relationStyle(e);
   ctx.globalAlpha=edgeAlpha;ctx.lineWidth=strokeSize;
   const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
