@@ -2,6 +2,7 @@
 (() => {
 const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:true});
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
+const exploreControls=document.getElementById("exploreControls");
 const search=document.getElementById("search"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensChoices=document.getElementById("lensChoices"),categoryChoices=document.getElementById("categoryChoices"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
 const moreControls=document.getElementById("moreControls"),explodeBtn=document.getElementById("explode");
 const backFocus=document.getElementById("backFocus"),backFocusPanel=document.getElementById("backFocusPanel");
@@ -798,7 +799,15 @@ function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=fa
  status.textContent=n.label+" · "+readingAllowed().size+" di "+linked(n).length+" relazioni · "+readingNames[readingLevel];
  populate(n);if(openPanel)setPanel(true);
 }
-function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Esplora";tab.setAttribute("aria-expanded",String(open));}
+function setPanel(open){
+ if(open&&exploreControls?.open)exploreControls.open=false;
+ document.body.classList.toggle("panel-open",open);
+ tab.textContent=open?"▶ Chiudi":"◀ Scheda";
+ tab.setAttribute("aria-expanded",String(open));
+}
+exploreControls?.addEventListener("toggle",()=>{
+ if(exploreControls.open&&document.body.classList.contains("panel-open"))setPanel(false);
+});
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
@@ -819,15 +828,7 @@ function populate(n){
  const lensTitle=document.createElement("strong");lensTitle.textContent="Livello: "+readingNames[readingLevel]+" · "+conn.length+" collegamenti diretti disponibili";
  const lensP=document.createElement("p");lensP.textContent="Tutte le relazioni dirette previste dai filtri sono sempre visibili. Quelle illuminate più intensamente cambiano secondo il livello; nulla viene eliminato.";
  lensIntro.append(lensTitle,lensP);dst.append(lensIntro);
- const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
- for(const g of EXPLORATION_LENSES){
-  const count=(g.id==="musica"?historySchoolEdges:displayRelations(g.id)).filter(e=>e.source===n.id||e.target===n.id).length;
-  const button=document.createElement("button");button.type="button";button.classList.toggle("is-active",activeLenses.has(g.id));
-  button.setAttribute("aria-pressed",String(activeLenses.has(g.id)));button.textContent=g.label+" · ";
-  const number=document.createElement("span");number.className="num";number.textContent=count;button.append(number);
-  button.addEventListener("click",()=>toggleLens(g.id));shortcuts.append(button);
- }
- dst.append(shortcuts);
+
  const box=document.createElement("section");box.className="lens-relations";
  const head=document.createElement("h3");head.textContent="Collegamenti diretti · "+conn.length+" (di cui "+readingSpotlight().size+" evidenziati)";box.append(head);
  if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessuna relazione visibile con queste impostazioni. Prova il livello Ricercare o modifica i filtri: questo non significa che manchino relazioni nel database.";box.append(p);}
