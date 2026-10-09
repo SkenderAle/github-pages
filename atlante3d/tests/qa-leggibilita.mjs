@@ -15,7 +15,7 @@ async function launchContext(size){
   const response=await route.fetch();let body=await response.text();
   const marker="})();",at=body.lastIndexOf(marker);
   if(at<0)throw Error("QA cannot instrument Atlas script");
-  const hook='window.__atlasQa=()=>screen.filter(p=>selected&&p.node!==selected&&visibleNode(p.node)&&selectedDepths(readingDepth()).get(p.node.id)===1).map(p=>({label:p.node.label,x:p.x,y:p.y,r:p.r}));';
+  const hook='window.__atlasQa=()=>screen.filter(p=>selected&&p.node!==selected&&visibleNode(p.node)&&selectedDepths(readingDepth()).get(p.node.id)===1).map(p=>({label:p.node.label,x:p.x,y:p.y,r:p.r}));window.__atlasQaSources=(sources)=>buildRelationSources({id:"qa-source",sources});;
   body=body.slice(0,at)+hook+body.slice(at);
   await route.fulfill({response,body,contentType:"application/javascript"});
  });
@@ -105,6 +105,46 @@ try{
  await m.screenshot({path:join(output,"mobile-torna-indietro.png"),fullPage:true});
  const geom=await m.locator("#readingToolbar").evaluate(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:innerWidth}});
  assert(geom.left>=-2&&geom.right<=geom.width+2,"Mobile reading selector within viewport "+JSON.stringify(geom));
+
+ // Regression: relation sources remain inline and operable on an Android-sized viewport.
+ await m.locator("#search").fill("Johannes Brahms");
+ await m.locator("#search").press("Enter");
+ await m.locator("#readingLevelPanel").selectOption("2");
+ await m.waitForTimeout(250);
+ assert((await m.locator("#panelTitle").textContent())==="Johannes Brahms","Brahms panel selected on mobile");
+ const sourceExamples=[
+  {verb:"sostenne e raccomandò all'editore",part:"Dvořák",expect:["berliner-philharmoniker.de","antonin-dvorak.cz"]},
+  {verb:"apprezzò e sostenne professionalmente",part:"Mahler",expect:["treccani.it","mahlerfoundation.org"]},
+  {verb:"collaborò alla definizione violinistica",part:"Joachim",expect:["loc.gov","guides.loc.gov"]}
+ ];
+ for(const example of sourceExamples){
+  const item=m.locator("#panelContent .lens-relation-item").filter({hasText:example.verb}).first();
+  assert(await item.count()===1,"Brahms–"+example.part+" relation present");
+  if(await item.count()!==1)continue;
+  const summary=item.locator("details.lens-relation-sources > summary");
+  await summary.click();
+  assert(await summary.evaluate(el=>el.parentElement.open),"Mobile sources expand for "+example.part);
+  const links=item.locator("details.lens-relation-sources a");
+  const urls=await links.evaluateAll(els=>els.map(el=>el.href));
+  assert(urls.length===2,"Two sources exposed for Brahms–"+example.part);
+  assert(example.expect.every(host=>urls.some(url=>url.includes(host))),"Expected source URLs found for "+example.part+": "+urls.join(", "));
+  assert(await links.first().getAttribute("target")==="_blank","External source opens new tab for "+example.part);
+  assert((await m.locator("#panelTitle").textContent())==="Johannes Brahms","Opening sources does not navigate away from Brahms");
+  await summary.click();
+  assert(!(await summary.evaluate(el=>el.parentElement.open)),"Mobile sources collapse for "+example.part);
+ }
+ await m.screenshot({path:join(output,"mobile-brahms-fonti.png"),fullPage:true});
+ const synthetic=await m.evaluate(()=>{
+  const zero=window.__atlasQaSources([]);
+  const one=window.__atlasQaSources(["https://example.org/source"]);
+  const many=window.__atlasQaSources(["https://example.org/a","https://example.org/b","https://example.org/a"]);
+  return {zeroSummary:zero.querySelector("summary").textContent,zeroLinks:zero.querySelectorAll("a").length,
+    zeroNote:zero.querySelector(".source-unverified")?.textContent||"",oneLinks:one.querySelectorAll("a").length,
+    manyLinks:many.querySelectorAll("a").length};
+ });
+ assert(synthetic.zeroLinks===0&&synthetic.zeroSummary.includes("da verificare")&&Boolean(synthetic.zeroNote),"No fake link for missing sources");
+ assert(synthetic.oneLinks===1,"Single source renders one link");
+ assert(synthetic.manyLinks===2,"Multiple sources rendered and duplicates suppressed");
  await context.close();
 }finally{await browser.close();}
 writeFileSync(join(output,"results.json"),JSON.stringify({failed:failures.length,failures,events,states},null,2));
