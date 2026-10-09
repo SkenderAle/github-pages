@@ -473,6 +473,37 @@ function lineHit(pt){
   const dist=Math.hypot(pt.x-x,pt.y-y);if(dist<best){best=dist;hit=e.edge;}
  }}return hit;
 }
+// Only the sources already recorded for the historical relation may appear here.
+function verifiedRelationUrls(e){
+ const raw=Array.isArray(e.sources)?e.sources:[];
+ return [...new Set(raw.filter(value=>typeof value==="string").map(value=>value.trim()).filter(value=>{
+  try{const parsed=new URL(value);return parsed.protocol==="https:"&&Boolean(parsed.hostname);}
+  catch{return false;}
+ }))];
+}
+function buildRelationSources(e){
+ const urls=verifiedRelationUrls(e);
+ const disclosure=document.createElement("details");disclosure.className="lens-relation-sources";
+ disclosure.dataset.relationId=readingKey(e);
+ const summary=document.createElement("summary");summary.className="lens-why";
+ summary.textContent=urls.length?"Perché sono collegati? · fonti ↗ ("+urls.length+")":"Fonti da verificare · dettagli";
+ disclosure.append(summary);
+ if(!urls.length){
+  const note=document.createElement("p");note.className="source-unverified";
+  note.textContent="Nessun riferimento bibliografico online verificato per questa relazione.";
+  disclosure.append(note);
+  return disclosure;
+ }
+ const links=document.createElement("div");links.className="lens-sources";
+ urls.forEach((url,i)=>{
+  const anchor=document.createElement("a");anchor.href=url;anchor.target="_blank";anchor.rel="noopener noreferrer";
+  anchor.textContent="Fonte "+(i+1)+" · "+new URL(url).hostname.replace(/^www\\./,"")+" ↗";
+  anchor.setAttribute("aria-label","Apri fonte "+(i+1)+" su "+new URL(url).hostname+" in una nuova scheda");
+  links.append(anchor);
+ });
+ disclosure.append(links);
+ return disclosure;
+}
 function showRelation(e){
  if(!selected){selected=e.a;focus=e.a;moveGeo(e.a);}
  populate(selected);
@@ -805,7 +836,9 @@ function populate(n){
   const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
   const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=(n.id===e.source?e.forward:e.reverse)||e.kind||"relazione";
   const p=document.createElement("p");p.textContent=e.note||"Relazione documentata.";item.append(b,kind,p);
-  const why=document.createElement("button");why.type="button";why.className="lens-why";why.textContent="Perché sono collegati? · fonti ↗";why.addEventListener("click",()=>showRelation(e));item.append(why);box.append(item);
+  // A native disclosure stays beside the explanation; unlike showRelation(), it does not
+  // rebuild the panel and lose the reader's scroll position on a touch device.
+  item.append(buildRelationSources(e));box.append(item);
  }dst.append(box);
  const relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
  if(n.url){const a=document.createElement("a");a.className="card";a.href=n.url;a.textContent="↗ Apri il percorso nell'Atlante";dst.append(a);}
