@@ -15,7 +15,7 @@ async function launchContext(size){
   const response=await route.fetch();let body=await response.text();
   const marker="})();",at=body.lastIndexOf(marker);
   if(at<0)throw Error("QA cannot instrument Atlas script");
-  const hook='window.__atlasQa=()=>screen.filter(p=>selected&&p.node!==selected&&visibleNode(p.node)&&selectedDepths(readingDepth()).get(p.node.id)===1).map(p=>({label:p.node.label,x:p.x,y:p.y,r:p.r}));window.__atlasQaSources=(sources)=>buildRelationSources({id:"qa-source",sources});;
+  const hook='window.__atlasQa=()=>screen.filter(p=>selected&&p.node!==selected&&visibleNode(p.node)&&selectedDepths(readingDepth()).get(p.node.id)===1).map(p=>({label:p.node.label,x:p.x,y:p.y,r:p.r}));window.__atlasQaSources=(sources)=>buildRelationSources({id:"qa-source",sources});';
   body=body.slice(0,at)+hook+body.slice(at);
   await route.fulfill({response,body,contentType:"application/javascript"});
  });
