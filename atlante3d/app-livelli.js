@@ -4,7 +4,7 @@ const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:tr
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
 const search=document.getElementById("search"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensChoices=document.getElementById("lensChoices"),categoryChoices=document.getElementById("categoryChoices"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
 const moreControls=document.getElementById("moreControls"),explodeBtn=document.getElementById("explode");
-const backFocus=document.getElementById("backFocus"),backFocusPanel=document.getElementById("backFocusPanel");
+const backFocus=document.getElementById("backFocus");
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel"),periodContext=document.getElementById("periodContext");
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
@@ -734,21 +734,19 @@ function updatePeriodContext(n){
  periodContext.title=periods.length>1?"Altri contesti: "+periods.slice(1).map(x=>x.node.label).join(" · "):periods[0].node.label;
 }
 const navigationHistory=[];
-function syncBackControls(){
+function syncBackControl(){
+ if(!backFocus)return;
  const previous=byId.get(navigationHistory[navigationHistory.length-1]);
- for(const button of [backFocus,backFocusPanel]){
-  if(!button)continue;
-  button.disabled=!previous;
-  button.title=previous?"Torna a "+previous.label:"Nessun nodo precedente";
-  button.setAttribute("aria-label",previous?"Torna a "+previous.label:"Torna al nodo precedente");
- }
+ backFocus.disabled=!previous;
+ backFocus.title=previous?"Torna a "+previous.label:"Nessun nodo precedente";
+ backFocus.setAttribute("aria-label",previous?"Torna a "+previous.label:"Torna al nodo precedente");
 }
 function goBackFocus(){
  while(navigationHistory.length){
   const id=navigationHistory.pop(),previous=byId.get(id);
   if(previous&&previous!==selected){focusOn(previous,true,false,false);return;}
  }
- syncBackControls();
+ syncBackControl();
 }
 function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=false){
  if(!n)return;
@@ -757,7 +755,7 @@ function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=fa
   navigationHistory.push(selected.id);
   if(navigationHistory.length>40)navigationHistory.shift();
  }
- syncBackControls();
+ syncBackControl();
  clearExplodeLayout();
  if(selected!==n){if(!preserveSearch){search.value="";searchText="";}resetAutoLayout();}
  selected=n;selectedNeighborCacheKey="";selectedDepthCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
@@ -920,8 +918,7 @@ canvas.addEventListener("wheel",e=>{
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
 backFocus?.addEventListener("click",goBackFocus);
-backFocusPanel?.addEventListener("click",goBackFocus);
-syncBackControls();
+syncBackControl();
 // Ricerca progressiva: un solo risultato apre automaticamente la rete;
  // nei casi ambigui si offre una scelta esplicita, utilizzabile anche da Android.
 const searchResults=document.createElement("div");
@@ -1017,12 +1014,10 @@ document.addEventListener("pointerdown",e=>{
  if(e.target!==search&&!searchResults.contains(e.target))hideSearchChoices();
 });
 const readingControl=document.getElementById("readingLevel");
-const readingControlPanel=document.getElementById("readingLevelPanel");
 syncCategoryControls();syncLensControls();
 function applyReadingLevel(value){
  readingLevel=Math.max(0,Math.min(2,Number(value)||0));
  if(readingControl)readingControl.value=String(readingLevel);
- if(readingControlPanel)readingControlPanel.value=String(readingLevel);
  selectedNeighborCacheKey="";selectedDepthCacheKey="";
  clearExplodeLayout();resetAutoLayout();
  if(selected){fitGeoNetwork(selected);populate(selected);
@@ -1030,7 +1025,6 @@ function applyReadingLevel(value){
  }
 }
 readingControl?.addEventListener("change",e=>applyReadingLevel(e.target.value));
-readingControlPanel?.addEventListener("change",e=>applyReadingLevel(e.target.value));
 function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-category]").forEach(i=>{i.checked=activeCategories.has(i.value);});}
 function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
 function setLensState(id,enabled){
@@ -1055,10 +1049,10 @@ explodeBtn?.addEventListener("click",()=>explodeNetwork());
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{
  clearTimeout(searchFocusTimer);hideSearchChoices();
- navigationHistory.length=0;syncBackControls();
+ navigationHistory.length=0;syncBackControl();
  selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;geoZoomPct=0;zoom=1;syncZoomControls();
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
- search.value="";searchText="";readingLevel=0;if(readingControl)readingControl.value="0";if(readingControlPanel)readingControlPanel.value="0";explodeCycle=0;activeLenses.clear();for(const l of EXPLORATION_LENSES)activeLenses.add(l.id);
+ search.value="";searchText="";readingLevel=0;if(readingControl)readingControl.value="0";explodeCycle=0;activeLenses.clear();for(const l of EXPLORATION_LENSES)activeLenses.add(l.id);
  activeCategories.clear();for(const c of ["compositore","ambito","corrente","persona"])activeCategories.add(c);
  syncLensControls();syncCategoryControls();
  for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;n.explodeDx=0;n.explodeDy=0;}

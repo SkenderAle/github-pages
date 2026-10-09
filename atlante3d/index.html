@@ -379,11 +379,7 @@ body.panel-open #periodContext{right:340px}
  #panel .category-choices,#panel .explore-lenses{grid-template-columns:1fr}
 }
 
-.reading-inline{display:none}
 @media(max-width:700px){
- #panel .reading-inline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px;margin:10px 0;background:#22354a;border:1px solid #c2a16f;border-radius:9px}
- #panel .reading-inline label{font:700 12px system-ui;color:#ffe3b1}
- #panel .reading-inline select{border-radius:7px;color:#fff5df;background:#112234;border:1px solid #bca16f;padding:8px 10px;min-width:160px}
  #periodContext{font-size:clamp(16px,4.5vw,24px);opacity:.3}
 }
 
@@ -402,7 +398,7 @@ body.panel-open #periodContext{right:340px}
 <div id="tools"><input id="search" class="control" placeholder="Cerca un autore, una scuola…" aria-label="Cerca una bolla"><button class="control" id="moreControls" type="button" aria-expanded="false" aria-controls="tools" aria-label="Mostra o nascondi le opzioni di navigazione">☷ Opzioni</button><div class="zoom-control" role="group" aria-label="Controlli ingrandimento"><button class="control zoom-button" id="zoomOut" type="button" aria-label="Riduci zoom">−</button><input id="zoomSlider" type="range" min="0" max="100" value="0" step="5" autocomplete="off" aria-label="Livello di zoom"><button class="control zoom-button" id="zoomIn" type="button" aria-label="Aumenta zoom">+</button><output id="zoomValue" for="zoomSlider">0%</output></div><button class="control" id="backFocus" type="button" disabled title="Torna al compositore precedente">← Indietro</button><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button><button class="control" id="explode" type="button" disabled title="Distribuisci i collegamenti attorno all'autore selezionato">✦ Esplodi</button><label class="geo-follow"><input type="checkbox" id="followGeo" checked> Segui la geografia</label><div id="readingToolbar" class="control" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:7px 10px;border-color:#e3bc78"><label for="readingLevel"><strong>Profondità</strong></label><select id="readingLevel" aria-label="Profondità di esplorazione" style="padding:6px;border-radius:6px;background:#203448;color:#fff"><option value="0">Scoprire</option><option value="1">Approfondire</option><option value="2">Ricercare</option></select><small style="color:#ffdc99;font-weight:650">MUSURGIA MUNDI · RICERCA AUTOMATICA · RETE DIRETTA COMPLETA</small></div></div>
 <div id="geoLabel" aria-live="polite">Mondo · panoramica</div><a id="mapCredit" href="https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/" target="_blank" rel="noopener noreferrer">Immagine della Terra: NASA Earth Observatory · Black Marble 2016 ↗</a><div id="tips">Doppio clic: seleziona e centra il nodo sulla sua geografia.<br>Trascina una bolla: riordina il groviglio senza cambiare selezione. Trascina il vuoto: sposta la carta.</div>
 <button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Esplora</button>
-<aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div><div class="reading-inline"><button type="button" id="backFocusPanel" disabled title="Torna al nodo precedente">← Indietro</button><label for="readingLevelPanel">Profondità di esplorazione</label><select id="readingLevelPanel" aria-label="Profondità di esplorazione nel pannello"><option value="0">Scoprire</option><option value="1">Approfondire</option><option value="2">Ricercare</option></select></div>
+<aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div>
 <details id="exploreControls" class="explore-controls"><summary style="cursor:pointer;color:#f6d08c;padding:8px 3px;font-weight:600">Filtri avanzati · categorie e relazioni</summary>
  <p class="explore-explain"><strong>Categorie</strong> = quali elementi vuoi vedere. <strong>Lenti</strong> = quali tipi di relazione vuoi seguire.</p>
  <fieldset id="categoryChoices" class="explore-group category-choices" aria-label="Categorie visibili">
@@ -424,5 +420,5 @@ body.panel-open #periodContext{right:340px}
  <span id="lensHelp" class="explore-note">Puoi combinare più scelte contemporaneamente.</span>
 </details><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app-livelli.js?v=pubblico-20261009-165c9c17-ripubblicazione-1" defer></script>
+<script src="app-livelli.js?v=pubblico-20261009-controlli-unici-1" defer></script>
 </body></html>
