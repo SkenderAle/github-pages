@@ -73,6 +73,17 @@ try{
   await page.locator("#search").fill("Beethoven");await page.locator("#search").press("Enter");
   await page.waitForTimeout(400);
  }
+ // Floating controls must stay outside the open desktop detail panel.
+ assert(await page.locator("#backFocus").isVisible(),"Desktop Back button visible");
+ assert(await page.locator("#readingToolbar").isVisible(),"Desktop depth selector visible with detail panel open");
+ assert(await page.locator("#exploreControls").evaluate(el=>!el.closest("#panel")),"Lenses and categories are outside the detail panel");
+ assert((await page.locator("#panel").locator("#lensChoices").count())===0,"No duplicate lens controls inside detail panel");
+ const dGeom=await page.evaluate(()=>{
+  const a=document.querySelector("#readingToolbar").getBoundingClientRect(),p=document.querySelector("#panel").getBoundingClientRect();
+  return {depthRight:a.right,panelLeft:p.left,depthWidth:a.width};
+ });
+ assert(dGeom.depthWidth<=225,"Depth selector is compact: "+JSON.stringify(dGeom));
+ assert(dGeom.depthRight<dGeom.panelLeft,"Desktop detail panel does not cover depth: "+JSON.stringify(dGeom));
  assert(!(await page.locator("#exploreControls").getAttribute("open")),"Advanced controls collapsed initially");
  await page.locator("#exploreControls summary").click();
  await page.waitForTimeout(200);
@@ -90,11 +101,21 @@ try{
  await m.locator("#search").fill("Beethoven");await m.locator("#search").press("Enter");
  await m.waitForTimeout(900);
  await m.screenshot({path:join(output,"mobile-beethoven.png"),fullPage:true});
- assert(await m.locator("#readingLevelPanel").isVisible(),"Mobile depth selector visible while panel is open");
- await m.locator("#readingLevelPanel").selectOption("2");await m.waitForTimeout(500);
- assert((await m.locator("#readingLevel").inputValue())==="2","Mobile and desktop depth controls stay synchronized");
+ assert(await m.locator("#readingLevel").isVisible(),"Mobile floating depth selector visible while panel is open");
+ await m.locator("#readingLevel").selectOption("2");await m.waitForTimeout(500);
+ assert((await m.locator("#readingLevel").inputValue())==="2","Mobile depth control updates selected level");
  assert((await m.locator("#status").textContent()).includes("Ricercare"),"Mobile depth change updates selected graph");
  await m.screenshot({path:join(output,"mobile-ricercare.png"),fullPage:true});
+ // Mobile categories/lenses live on the map, not inside the node's information sheet.
+ await m.locator("#exploreControls > summary").click();
+ assert(await m.locator("#exploreControls").evaluate(el=>el.open),"Mobile category/lens drawer opens");
+ assert(!(await m.locator("body").evaluate(el=>el.classList.contains("panel-open"))),"Mobile filters close the details panel to prevent overlapping touch targets");
+ assert(await m.locator("#categoryChoices input").count()===4,"Four categories exposed");
+ assert(await m.locator("#lensChoices input").count()===4,"Four relationship lenses exposed");
+ await m.locator("#exploreControls > summary").click();
+ await m.locator("#panelTab").click();
+ assert(await m.locator("body").evaluate(el=>el.classList.contains("panel-open")),"Details sheet reopens after closing filters");
+
  const firstRelation=m.locator("#panelContent .lens-relation-item button").first();
  await firstRelation.click();await m.waitForTimeout(350);
  const otherName=await m.locator("#panelTitle").textContent();
@@ -103,13 +124,22 @@ try{
  await m.locator("#backFocusPanel").click();await m.waitForTimeout(350);
  assert((await m.locator("#panelTitle").textContent())==="Ludwig van Beethoven","Mobile back returns to Beethoven");
  await m.screenshot({path:join(output,"mobile-torna-indietro.png"),fullPage:true});
+ assert(await m.locator("#backFocusPanel").isVisible(),"Mobile Back button retained inside detail card");
+ assert(await m.locator("#exploreControls").evaluate(el=>!el.closest("#panel")),"Mobile filter drawer detached from detail card");
+ const mOverlap=await m.evaluate(()=>{
+  const depth=document.querySelector("#readingToolbar").getBoundingClientRect();
+  const panel=document.querySelector("#panel").getBoundingClientRect();
+  return {depthBottom:depth.bottom,panelTop:panel.top,depthWidth:depth.width};
+ });
+ assert(mOverlap.depthBottom<mOverlap.panelTop,"Mobile panel does not cover depth control: "+JSON.stringify(mOverlap));
+ assert(mOverlap.depthWidth<230,"Mobile depth control is compact: "+JSON.stringify(mOverlap));
  const geom=await m.locator("#readingToolbar").evaluate(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:innerWidth}});
  assert(geom.left>=-2&&geom.right<=geom.width+2,"Mobile reading selector within viewport "+JSON.stringify(geom));
 
  // Regression: relation sources remain inline and operable on an Android-sized viewport.
  await m.locator("#search").fill("Johannes Brahms");
  await m.locator("#search").press("Enter");
- await m.locator("#readingLevelPanel").selectOption("2");
+ await m.locator("#readingLevel").selectOption("2");
  await m.waitForTimeout(250);
  assert((await m.locator("#panelTitle").textContent())==="Johannes Brahms","Brahms panel selected on mobile");
  const sourceExamples=[
