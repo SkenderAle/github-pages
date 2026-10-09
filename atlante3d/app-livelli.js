@@ -497,7 +497,7 @@ function buildRelationSources(e){
  const links=document.createElement("div");links.className="lens-sources";
  urls.forEach((url,i)=>{
   const anchor=document.createElement("a");anchor.href=url;anchor.target="_blank";anchor.rel="noopener noreferrer";
-  anchor.textContent="Fonte "+(i+1)+" · "+new URL(url).hostname.replace(/^www\\./,"")+" ↗";
+  anchor.textContent="Fonte "+(i+1)+" · "+new URL(url).hostname.replace(/^www[.]/,"")+" ↗";
   anchor.setAttribute("aria-label","Apri fonte "+(i+1)+" su "+new URL(url).hostname+" in una nuova scheda");
   links.append(anchor);
  });
