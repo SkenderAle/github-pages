@@ -4,6 +4,7 @@ const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:tr
 const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
 const search=document.getElementById("search"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensChoices=document.getElementById("lensChoices"),categoryChoices=document.getElementById("categoryChoices"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
 const moreControls=document.getElementById("moreControls"),explodeBtn=document.getElementById("explode");
+const backFocus=document.getElementById("backFocus"),backFocusPanel=document.getElementById("backFocusPanel");
 const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel"),periodContext=document.getElementById("periodContext");
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
@@ -732,7 +733,30 @@ function updatePeriodContext(n){
  periodContext.hidden=false;
  periodContext.title=periods.length>1?"Altri contesti: "+periods.slice(1).map(x=>x.node.label).join(" · "):periods[0].node.label;
 }
-function focusOn(n,openPanel=true,tight=false){
+const navigationHistory=[];
+function syncBackControls(){
+ const previous=byId.get(navigationHistory[navigationHistory.length-1]);
+ for(const button of [backFocus,backFocusPanel]){
+  if(!button)continue;
+  button.disabled=!previous;
+  button.title=previous?"Torna a "+previous.label:"Nessun nodo precedente";
+  button.setAttribute("aria-label",previous?"Torna a "+previous.label:"Torna al nodo precedente");
+ }
+}
+function goBackFocus(){
+ while(navigationHistory.length){
+  const id=navigationHistory.pop(),previous=byId.get(id);
+  if(previous&&previous!==selected){focusOn(previous,true,false,false);return;}
+ }
+ syncBackControls();
+}
+function focusOn(n,openPanel=true,tight=false,saveHistory=true){
+ if(!n)return;
+ if(saveHistory&&selected&&selected!==n){
+  navigationHistory.push(selected.id);
+  if(navigationHistory.length>40)navigationHistory.shift();
+ }
+ syncBackControls();
  clearExplodeLayout();
  if(selected!==n){search.value="";searchText="";resetAutoLayout();}
  selected=n;selectedNeighborCacheKey="";selectedDepthCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
@@ -894,6 +918,9 @@ canvas.addEventListener("wheel",e=>{
 },{passive:false});
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
+backFocus?.addEventListener("click",goBackFocus);
+backFocusPanel?.addEventListener("click",goBackFocus);
+syncBackControls();
 search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
 search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n,true,true);search.blur();}});
 const readingControl=document.getElementById("readingLevel");
@@ -934,6 +961,7 @@ moreControls?.addEventListener("click",()=>{
 explodeBtn?.addEventListener("click",()=>explodeNetwork());
 labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
 reset.addEventListener("click",()=>{
+ navigationHistory.length=0;syncBackControls();
  selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;geoZoomPct=0;zoom=1;syncZoomControls();
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
  search.value="";searchText="";readingLevel=0;if(readingControl)readingControl.value="0";if(readingControlPanel)readingControlPanel.value="0";explodeCycle=0;activeLenses.clear();for(const l of EXPLORATION_LENSES)activeLenses.add(l.id);
