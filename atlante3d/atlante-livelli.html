@@ -419,16 +419,115 @@ body.panel-open #periodContext{right:340px}
 #searchResults button{display:block;width:100%;margin:0;padding:10px 11px;border:0;border-bottom:1px solid #354a60;border-radius:5px;background:transparent;color:#f5eadb;text-align:left;font:600 12px/1.35 system-ui;touch-action:manipulation}
 #searchResults button:hover,#searchResults button:focus-visible{background:#314b66;color:#fff}
 @media(max-width:700px){#searchResults{left:0;bottom:calc(100% + 7px);width:min(325px,calc(100vw - 20px));max-height:33dvh}#searchResults button{min-height:40px}}
+
+/* Pannello di navigazione indipendente: la scheda di destra rimane soltanto per gli approfondimenti. */
+#atlasNavigation{
+ position:absolute;z-index:10;left:18px;top:clamp(200px,27vh,255px);
+ width:208px;max-width:calc(100vw - 355px);
+ display:flex;flex-direction:column;align-items:stretch;gap:7px;
+ pointer-events:auto
+}
+#atlasNavigation .nav-reading{
+ display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:9px;
+ min-height:41px;padding:6px 9px;border:1px solid #d9b984;
+ border-radius:10px;background:rgba(13,27,43,.94);
+ box-shadow:0 7px 23px #0005;backdrop-filter:blur(12px)
+}
+#atlasNavigation .nav-reading label{color:#ffe3ae;font:750 11px/1.2 system-ui;white-space:nowrap}
+#atlasNavigation .nav-reading select{
+ min-width:0;max-width:100%;width:100%;padding:7px 4px;
+ border-radius:7px;border:1px solid #8c9bb0;
+ background:#21374d;color:#fff4de;font:650 11px system-ui;cursor:pointer
+}
+#atlasNavigation .nav-back{
+ width:100%;min-height:38px;padding:7px 11px;text-align:left;
+ border-color:#8c9cb0;background:rgba(17,34,51,.91);
+ font:700 12px/1.25 system-ui;touch-action:manipulation
+}
+#atlasNavigation .nav-back:disabled{opacity:.55;cursor:not-allowed}
+#atlasNavigation .explore-controls{
+ width:100%;min-width:0;margin:0;padding:0;
+ border:1px solid rgba(186,161,117,.72);border-radius:10px;
+ background:rgba(12,27,43,.97);box-shadow:0 8px 25px #0008;
+ backdrop-filter:blur(13px)
+}
+#atlasNavigation .explore-controls>summary{
+ display:list-item;list-style:disclosure-closed inside;
+ margin:0;min-height:39px;padding:11px 10px;cursor:pointer;
+ font:750 12px/1.25 system-ui;color:#f5dcab;touch-action:manipulation
+}
+#atlasNavigation .explore-controls[open]{
+ width:min(328px,calc(100vw - 375px));
+ min-width:208px;max-height:min(65vh,480px);overflow-y:auto;
+ overscroll-behavior:contain;scrollbar-width:thin
+}
+#atlasNavigation .explore-controls[open]>summary{list-style:disclosure-open inside}
+#atlasNavigation .explore-explain{margin:6px 10px 10px;color:#c9d3dd;font:11px/1.4 system-ui}
+#atlasNavigation .explore-explain strong{color:#efd39d}
+#atlasNavigation .explore-group{
+ margin:9px 10px;padding:9px 7px 7px;min-width:0;
+ border:1px solid rgba(122,148,171,.48);border-radius:9px
+}
+#atlasNavigation .explore-group legend{
+ padding:0 5px;color:#f2ce96;
+ font:800 10px/1.1 system-ui;letter-spacing:.05em
+}
+#atlasNavigation .category-choices,#atlasNavigation .explore-lenses{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;
+ border:0;background:none;margin:0;padding:0;width:auto;backdrop-filter:none
+}
+#atlasNavigation .category-choices label,#atlasNavigation .explore-lenses label{
+ display:flex;align-items:center;gap:6px;min-height:38px;min-width:0;
+ padding:7px 6px;border:1px solid #516b83;border-radius:7px;
+ background:#1a2e43;color:#e3edf7;font:700 10px/1.3 system-ui;
+ cursor:pointer;overflow-wrap:anywhere
+}
+#atlasNavigation .category-choices label:has(input:checked),
+#atlasNavigation .explore-lenses label:has(input:checked){
+ border-color:#d8b97f;background:#354c60;color:#fff2d5
+}
+#atlasNavigation input[type="checkbox"]{accent-color:#efc881;flex:0 0 auto;margin:0}
+#atlasNavigation .explore-note{
+ display:block;margin:7px 10px 12px;
+ color:#a7b8c8;font:10px/1.4 system-ui
+}
+#panel .reading-inline{display:none}
+@media(max-width:900px) and (min-width:701px){
+ #atlasNavigation{top:clamp(195px,26vh,240px)}
+}
+@media(max-width:700px){
+ #atlasNavigation{
+  top:clamp(122px,17vh,150px);left:10px;width:194px;
+  max-width:calc(100vw - 20px);gap:5px
+ }
+ #atlasNavigation .nav-reading{min-height:38px;padding:5px 8px}
+ #atlasNavigation .nav-back{min-height:36px}
+ #atlasNavigation .explore-controls>summary{min-height:37px;padding:10px 9px}
+ #atlasNavigation .explore-controls[open]{
+  width:min(300px,calc(100vw - 20px));min-width:0;
+  max-height:min(54dvh,450px)
+ }
+ #atlasNavigation .category-choices,#atlasNavigation .explore-lenses{grid-template-columns:1fr}
+ #atlasNavigation .category-choices label,#atlasNavigation .explore-lenses label{min-height:36px}
+ #panel .reading-inline{display:flex;align-items:center;gap:8px;margin:5px 0 11px;padding:0;background:none;border:0}
+ #panel .reading-inline #backFocusPanel{min-height:39px;padding:9px 12px}
+}
+@media(max-width:380px){
+ #atlasNavigation{top:clamp(115px,17vh,142px);width:185px}
+}
+/* The historical side panel stays on the right and never covers the depth widget. */
+@media(min-width:701px){body.panel-open #atlasNavigation{max-width:calc(100vw - 355px)}}
+
 </style></head><body>
 <div id="scene"><div id="earthMap" aria-hidden="true"></div><div id="earthShade" aria-hidden="true"></div><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
 <header><div class="masthead"><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p><div id="status" role="status">Caricamento della rete…</div></div><a class="back" href="../" aria-label="Torna alla homepage dell’Atlante">⌂ Home · Atlante</a></header><div id="periodContext" hidden aria-live="polite"></div>
 <div id="legend"><span style="--dot:#f3bd74">Compositori</span><span style="--dot:#c8a2e5">Ambiti</span><span style="--dot:#e49ca4">Scuole e correnti</span><span style="--dot:#f1c1d5">Personaggi</span></div>
 <div id="relationTooltip" role="tooltip" hidden></div>
-<div id="tools"><input id="search" class="control" placeholder="Cerca un autore, una scuola…" aria-label="Cerca una bolla"><button class="control" id="moreControls" type="button" aria-expanded="false" aria-controls="tools" aria-label="Mostra o nascondi le opzioni di navigazione">☷ Opzioni</button><div class="zoom-control" role="group" aria-label="Controlli ingrandimento"><button class="control zoom-button" id="zoomOut" type="button" aria-label="Riduci zoom">−</button><input id="zoomSlider" type="range" min="0" max="100" value="0" step="5" autocomplete="off" aria-label="Livello di zoom"><button class="control zoom-button" id="zoomIn" type="button" aria-label="Aumenta zoom">+</button><output id="zoomValue" for="zoomSlider">0%</output></div><button class="control" id="backFocus" type="button" disabled title="Torna al compositore precedente">← Indietro</button><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button><button class="control" id="explode" type="button" disabled title="Distribuisci i collegamenti attorno all'autore selezionato">✦ Esplodi</button><label class="geo-follow"><input type="checkbox" id="followGeo" checked> Segui la geografia</label><div id="readingToolbar" class="control" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:7px 10px;border-color:#e3bc78"><label for="readingLevel"><strong>Profondità</strong></label><select id="readingLevel" aria-label="Profondità di esplorazione" style="padding:6px;border-radius:6px;background:#203448;color:#fff"><option value="0">Scoprire</option><option value="1">Approfondire</option><option value="2">Ricercare</option></select><small style="color:#ffdc99;font-weight:650">SPERIMENTALE · V08 · RICERCA AUTOMATICA · RETE DIRETTA COMPLETA</small></div></div>
-<div id="geoLabel" aria-live="polite">Mondo · panoramica</div><a id="mapCredit" href="https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/" target="_blank" rel="noopener noreferrer">Immagine della Terra: NASA Earth Observatory · Black Marble 2016 ↗</a><div id="tips">Doppio clic: seleziona e centra il nodo sulla sua geografia.<br>Trascina una bolla: riordina il groviglio senza cambiare selezione. Trascina il vuoto: sposta la carta.</div>
-<button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Esplora</button>
-<aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div><div class="reading-inline"><button type="button" id="backFocusPanel" disabled title="Torna al nodo precedente">← Indietro</button><label for="readingLevelPanel">Profondità di esplorazione</label><select id="readingLevelPanel" aria-label="Profondità di esplorazione nel pannello"><option value="0">Scoprire</option><option value="1">Approfondire</option><option value="2">Ricercare</option></select></div>
-<details id="exploreControls" class="explore-controls"><summary style="cursor:pointer;color:#f6d08c;padding:8px 3px;font-weight:600">Filtri avanzati · categorie e relazioni</summary>
+<div id="tools"><input id="search" class="control" placeholder="Cerca un autore, una scuola…" aria-label="Cerca una bolla"><button class="control" id="moreControls" type="button" aria-expanded="false" aria-controls="tools" aria-label="Mostra o nascondi le opzioni di navigazione">☷ Opzioni</button><div class="zoom-control" role="group" aria-label="Controlli ingrandimento"><button class="control zoom-button" id="zoomOut" type="button" aria-label="Riduci zoom">−</button><input id="zoomSlider" type="range" min="0" max="100" value="0" step="5" autocomplete="off" aria-label="Livello di zoom"><button class="control zoom-button" id="zoomIn" type="button" aria-label="Aumenta zoom">+</button><output id="zoomValue" for="zoomSlider">0%</output></div><button class="control" id="reset">↻ Ripristina</button><button class="control" id="labels">Etichette: vicine</button><button class="control" id="explode" type="button" disabled title="Distribuisci i collegamenti attorno all'autore selezionato">✦ Esplodi</button><label class="geo-follow"><input type="checkbox" id="followGeo" checked> Segui la geografia</label></div>
+<div id="atlasNavigation" aria-label="Controlli di esplorazione">
+<div id="readingToolbar" class="nav-reading"><label for="readingLevel">Profondità</label><select id="readingLevel" aria-label="Profondità di esplorazione"><option value="0">Scoprire</option><option value="1">Approfondire</option><option value="2">Ricercare</option></select></div>
+<button class="control nav-back" id="backFocus" type="button" disabled title="Torna al nodo precedente">← Indietro</button>
+<details id="exploreControls" class="explore-controls"><summary style="cursor:pointer;color:#f6d08c;padding:8px 3px;font-weight:600">☷ Categorie e lenti</summary>
  <p class="explore-explain"><strong>Categorie</strong> = quali elementi vuoi vedere. <strong>Lenti</strong> = quali tipi di relazione vuoi seguire.</p>
  <fieldset id="categoryChoices" class="explore-group category-choices" aria-label="Categorie visibili">
   <legend>Cosa mostrare</legend>
@@ -447,7 +546,12 @@ body.panel-open #periodContext{right:340px}
   </div>
  </fieldset>
  <span id="lensHelp" class="explore-note">Puoi combinare più scelte contemporaneamente.</span>
-</details><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
+</details>
+</div>
+<div id="geoLabel" aria-live="polite">Mondo · panoramica</div><a id="mapCredit" href="https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/" target="_blank" rel="noopener noreferrer">Immagine della Terra: NASA Earth Observatory · Black Marble 2016 ↗</a><div id="tips">Doppio clic: seleziona e centra il nodo sulla sua geografia.<br>Trascina una bolla: riordina il groviglio senza cambiare selezione. Trascina il vuoto: sposta la carta.</div>
+<button id="panelTab" aria-label="Apri scheda di approfondimento" aria-expanded="false">◀ Scheda</button>
+<aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Approfondimenti</div><div class="reading-inline"><button type="button" id="backFocusPanel" disabled title="Torna al nodo precedente">← Indietro</button></div>
+<h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app-livelli.js?v=canonico-09-fonti-inline" defer></script>
+<script src="app-livelli.js?v=canonico-09-nav-compatto" defer></script>
 </body></html>
