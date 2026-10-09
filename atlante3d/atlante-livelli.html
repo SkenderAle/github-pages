@@ -172,6 +172,31 @@ header a.back:hover,header a.back:focus-visible{background:#3a3028;color:#fff5df
 #panel .lens-why{border:1px solid #b59c75;background:#25364b;color:#f7e1bb;border-radius:6px;
  padding:6px 8px;font-size:11px;cursor:pointer;text-align:left}
 #panel .lens-why:hover{background:#344e66}
+
+/* Sources open below their own relationship, without rebuilding the mobile sheet. */
+#panel .lens-relation-sources{margin:8px 0 2px}
+#panel .lens-relation-sources>summary.lens-why{
+ display:list-item;list-style:disclosure-closed inside;min-height:44px;
+ padding:11px 9px;touch-action:manipulation;user-select:none;
+ font:600 12px/1.45 system-ui;cursor:pointer
+}
+#panel .lens-relation-sources[open]>summary.lens-why{
+ list-style:disclosure-open inside;background:#344e66
+}
+#panel .lens-relation-sources>summary:focus-visible{
+ outline:2px solid #ffdd9e;outline-offset:2px
+}
+#panel .lens-relation-sources .lens-sources{
+ display:flex;flex-direction:column;align-items:stretch;gap:7px;
+ padding:9px 0 3px
+}
+#panel .lens-relation-sources .lens-sources a{
+ display:flex;align-items:center;min-height:44px;padding:10px 11px;
+ overflow-wrap:anywhere;font-size:12px;line-height:1.4
+}
+#panel .lens-relation-sources .source-unverified{
+ padding:7px 2px;font-size:12px;line-height:1.45;color:#c9c1b3
+}
 #panel .lens-explanation{margin:12px 0 17px;padding:12px;border:1px solid #f1d090;border-radius:9px;background:#2d3240}
 #panel .lens-explanation h3{margin:0 0 8px;font-size:18px}
 #panel .lens-explanation strong{display:block;color:#f5d5a1}
@@ -424,5 +449,5 @@ body.panel-open #periodContext{right:340px}
  <span id="lensHelp" class="explore-note">Puoi combinare più scelte contemporaneamente.</span>
 </details><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app-livelli.js?v=canonico-08-ricerca-apertura-automatica" defer></script>
+<script src="app-livelli.js?v=canonico-09-fonti-inline" defer></script>
 </body></html>
