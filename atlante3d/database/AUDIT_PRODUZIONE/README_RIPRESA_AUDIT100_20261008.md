@@ -1,10 +1,24 @@
 # MUSURGIA MUNDI — checkpoint di passaggio dalla chat «Audit di 100 compositori»
+
+## Aggiornamento di ripresa — 2026-10-09
+
+Il riferimento corrente per le proposte degli audit 18–19 è [Audit 20](audit20_ripresa78_scuole_20261009.md), con [registro delle verifiche per ID](audit20_ripresa78_scuole_20261009_verifiche.json).
+
+- Riconciliati 78 record Scuole e valutate 28 proposte: 23 record aggiornati, quattro già adeguati, una sovrapposizione semantica conservata aperta.
+- Delle 23 modifiche, quattro esplicitano divergenze cronologiche ancora da risolvere. In totale restano cinque quesiti aperti.
+- Database corrente: 860 nodi, 1670 archi nel grafo, 438 compositori, 1280 relazioni specialistiche. Nessun nuovo arco o nodo in questo consolidamento.
+- Verificatori relazioni, nomi e copertura completati con codice 0; avvisi e lacune pregresse riportati nel rapporto.
+- Gli staging e il manifest del 8 ottobre documentano lo stato storico precedente all'applicazione. Non usare il loro conteggio di 28 proposte non applicate come stato corrente.
+- Rimangono il bilancio delle proposte 13–17 e delle 49 relazioni formative anteriori al 13, i cinque quesiti Audit 20 e la verifica qualitativa delle 218 relazioni produttive della matrice congelata.
+
+## Checkpoint storico — 2026-10-08
+
 Data: 2026-10-08.
 Repository: SkenderAle/github-pages.
 Ramo di lavoro: audit-produzione-correttivo-01.
 IMPORTANTE: NON integrare automaticamente in main. Il sito pubblico resta invariato.
 
-## Stato verificato nel repository
+## Stato verificato al checkpoint storico
 - `atlante3d/database/grafo.json`: 728 nodi, 1178 archi.
 - Audit di produzione dei compositori 101–200: copertura 100/100 con almeno una relazione produttiva marcata `documentato`.
 - Densificazione di questo gruppo: 41 archi aggiuntivi; il rapporto cumulativo dichiara la chiusura documentale di tutti e 41, anche con precisazioni d'autorialità.
