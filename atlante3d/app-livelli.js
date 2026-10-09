@@ -750,7 +750,7 @@ function goBackFocus(){
  }
  syncBackControls();
 }
-function focusOn(n,openPanel=true,tight=false,saveHistory=true){
+function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=false){
  if(!n)return;
  if(saveHistory&&selected&&selected!==n){
   navigationHistory.push(selected.id);
@@ -758,7 +758,7 @@ function focusOn(n,openPanel=true,tight=false,saveHistory=true){
  }
  syncBackControls();
  clearExplodeLayout();
- if(selected!==n){search.value="";searchText="";resetAutoLayout();}
+ if(selected!==n){if(!preserveSearch){search.value="";searchText="";}resetAutoLayout();}
  selected=n;selectedNeighborCacheKey="";selectedDepthCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
  if(explodeBtn)explodeBtn.disabled=false;
  updatePeriodContext(n);
@@ -921,8 +921,47 @@ tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("pan
 backFocus?.addEventListener("click",goBackFocus);
 backFocusPanel?.addEventListener("click",goBackFocus);
 syncBackControls();
-search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
-search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n,true,true);search.blur();}});
+// Ricerca progressiva: un risultato univoco seleziona il compositore e la sua rete.
+let searchFocusTimer=null;
+function matchingSearchFocus(q){
+ const results=findSearchResults(q);
+ const exact=results.filter(n=>searchNames(n).some(name=>normSearch(name)===q));
+ return {results,target:exact.length===1?exact[0]:(results.length===1?results[0]:null)};
+}
+function activateSearchSelection(allowFirst=false){
+ const query=normSearch(search.value);
+ if(!query)return;
+ const {results,target}=matchingSearchFocus(query);
+ const chosen=target||(allowFirst?results[0]:null);
+ if(!chosen){status.textContent=results.length?results.length+" corrispondenze · precisa il nome":"Nessuna corrispondenza";return;}
+ if(selected!==chosen){
+  // Mostra il grafo, non solo un punto evidenziato; sui telefoni lascia spazio alla carta.
+  focusOn(chosen,!window.matchMedia("(max-width:700px)").matches,true,true,true);
+  if(window.matchMedia("(max-width:700px)").matches)setPanel(false);
+ }else{
+  moveGeo(chosen,true);
+ }
+ if(allowFirst)search.blur();
+}
+search.addEventListener("input",()=>{
+ clearTimeout(searchFocusTimer);
+ searchText=normSearch(search.value);
+ if(!searchText)return;
+ const {results,target}=matchingSearchFocus(searchText);
+ status.textContent=results.length+" corrispondenze · "+(target?target.label+" · rete in apertura":results.length?"continua a digitare":"nessuna corrispondenza");
+ if(searchText.length<3)return;
+ const query=searchText;
+ searchFocusTimer=setTimeout(()=>{
+  if(normSearch(search.value)!==query)return;
+  activateSearchSelection(false);
+ },400);
+});
+search.addEventListener("keydown",e=>{
+ if(e.key!=="Enter")return;
+ e.preventDefault();
+ clearTimeout(searchFocusTimer);
+ activateSearchSelection(true);
+});
 const readingControl=document.getElementById("readingLevel");
 const readingControlPanel=document.getElementById("readingLevelPanel");
 syncCategoryControls();syncLensControls();
