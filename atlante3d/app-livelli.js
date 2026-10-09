@@ -767,6 +767,20 @@ function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=fa
 }
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Esplora";tab.setAttribute("aria-expanded",String(open));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function updateLensCounts(n){
+ lensChoices?.querySelectorAll("input[data-lens]").forEach(input=>{
+  const countEl=input.closest("label")?.querySelector(".lens-count");
+  if(!countEl)return;
+  const list=input.value==="musica"?historySchoolEdges:displayRelations(input.value);
+  const count=list.filter(e=>e.source===n.id||e.target===n.id).length;
+  countEl.textContent=String(count);
+  countEl.hidden=false;
+  countEl.title=count===1?"1 collegamento diretto":count+" collegamenti diretti";
+ });
+}
+function clearLensCounts(){
+ lensChoices?.querySelectorAll(".lens-count").forEach(el=>{el.hidden=true;el.textContent="";});
+}
 function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
  document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica",persona:"Figura storica"}[n.type]||"");
@@ -782,21 +796,10 @@ function populate(n){
  }
  const allowedInPanel=readingAllowed();
   const conn=linked(n).filter(({e})=>allowedInPanel.has(readingKey(e)));
- const lensIntro=document.createElement("section");lensIntro.className="lens-panel-intro";
- const lensTitle=document.createElement("strong");lensTitle.textContent="Livello: "+readingNames[readingLevel]+" · "+conn.length+" collegamenti diretti disponibili";
- const lensP=document.createElement("p");lensP.textContent="Tutte le relazioni dirette previste dai filtri sono sempre visibili. Quelle illuminate più intensamente cambiano secondo il livello; nulla viene eliminato.";
- lensIntro.append(lensTitle,lensP);dst.append(lensIntro);
- const shortcuts=document.createElement("nav");shortcuts.className="lens-shortcuts";shortcuts.setAttribute("aria-label","Lenti disponibili per "+n.label);
- for(const g of EXPLORATION_LENSES){
-  const count=(g.id==="musica"?historySchoolEdges:displayRelations(g.id)).filter(e=>e.source===n.id||e.target===n.id).length;
-  const button=document.createElement("button");button.type="button";button.classList.toggle("is-active",activeLenses.has(g.id));
-  button.setAttribute("aria-pressed",String(activeLenses.has(g.id)));button.textContent=g.label+" · ";
-  const number=document.createElement("span");number.className="num";number.textContent=count;button.append(number);
-  button.addEventListener("click",()=>toggleLens(g.id));shortcuts.append(button);
- }
- dst.append(shortcuts);
+ updateLensCounts(n);
  const box=document.createElement("section");box.className="lens-relations";
- const head=document.createElement("h3");head.textContent="Collegamenti diretti · "+conn.length+" (di cui "+readingSpotlight().size+" evidenziati)";box.append(head);
+ const head=document.createElement("h3");head.textContent="Collegamenti diretti · "+conn.length+" ("+readingSpotlight().size+" evidenziati)";box.append(head);
+ const readingNote=document.createElement("p");readingNote.className="small reading-note";readingNote.textContent="La profondità scelta sulla mappa cambia soltanto quali collegamenti risaltano: tutte le relazioni dirette filtrate restano visibili.";box.append(readingNote);
  if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessuna relazione visibile con queste impostazioni. Prova il livello Ricercare o modifica i filtri: questo non significa che manchino relazioni nel database.";box.append(p);}
  for(const {e,n:other} of conn){
   const item=document.createElement("article");item.className="lens-relation-item";
@@ -836,8 +839,8 @@ function populate(n){
    }
    dst.append(box);
  }
- const group=document.createElement("details");group.className="related-list";group.open=!relatedMedia.length;
- const summary=document.createElement("summary");summary.textContent="Connessioni visibili · "+conn.length;group.append(summary);
+ const group=document.createElement("details");group.className="related-list";group.open=false;
+ const summary=document.createElement("summary");summary.textContent="Vai a un collegamento";group.append(summary);
  const ul=document.createElement("ul");for(const row of conn.slice(0,45)){const li=document.createElement("li"),button=document.createElement("button");button.textContent=row.n.label;button.onclick=()=>focusOn(row.n,false);li.append(button);ul.append(li);}group.append(ul);
  if(conn.length>45){const p=document.createElement("p");p.className="small";p.textContent="Altre "+(conn.length-45)+" connessioni esplorabili nella rete.";group.append(p);}
  dst.append(group);
@@ -1054,7 +1057,7 @@ reset.addEventListener("click",()=>{
  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
  search.value="";searchText="";readingLevel=0;if(readingControl)readingControl.value="0";explodeCycle=0;activeLenses.clear();for(const l of EXPLORATION_LENSES)activeLenses.add(l.id);
  activeCategories.clear();for(const c of ["compositore","ambito","corrente","persona"])activeCategories.add(c);
- syncLensControls();syncCategoryControls();
+ syncLensControls();syncCategoryControls();clearLensCounts();
  for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;n.explodeDx=0;n.explodeDy=0;}
  explodeActive=false;if(explodeBtn){explodeBtn.disabled=true;explodeBtn.textContent="✦ Esplodi";}
  document.body.classList.remove("controls-open");if(moreControls){moreControls.setAttribute("aria-expanded","false");moreControls.textContent="☷ Opzioni";}

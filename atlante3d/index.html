@@ -161,9 +161,6 @@ header a.back:hover,header a.back:focus-visible{background:#3a3028;color:#fff5df
  padding:9px 11px;background:rgba(20,31,45,.97);border:1px solid #e1bd85;border-radius:8px;
  color:#fff2d9;box-shadow:0 4px 18px #0009;font:12px/1.35 system-ui}
 #relationTooltip[hidden]{display:none}
-#panel .lens-panel-intro{margin:13px 0;padding:10px 12px;border-left:3px solid #e5c58c;background:#1d2e40;border-radius:5px}
-#panel .lens-panel-intro strong{font-size:12px;color:#f5d4a0}
-#panel .lens-panel-intro p{margin:6px 0 0;font-size:12px;line-height:1.5}
 #panel .lens-relations h3{font-size:17px;margin:20px 0 10px}
 #panel .lens-relation-item{padding:10px 11px;margin:9px 0;border:1px solid #5f6b79;border-radius:9px;background:#1a2a3b}
 #panel .lens-relation-item>button:first-child{border:none;background:none;color:#ffdda5;font-size:13px;font-weight:800;text-align:left;padding:1px 0;cursor:pointer}
@@ -249,12 +246,6 @@ header a.back:hover,header a.back:focus-visible{background:#3a3028;color:#fff5df
  #tools .zoom-control .zoom-button{min-width:22px}
 }
 
-#panel .lens-shortcuts{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 15px}
-#panel .lens-shortcuts button{font-size:10px;line-height:1.3;padding:6px 8px;
- border:1px solid #6a7d91;background:#17293b;color:#f1dbc0;border-radius:999px;cursor:pointer}
-#panel .lens-shortcuts button.is-active{border-color:#edcf9b;background:#485067;color:#fff4de;font-weight:800}
-#panel .lens-shortcuts button .num{font-weight:800;color:#fff0ca}
-@media(max-width:700px){#panel .lens-shortcuts{gap:6px}}
 
 /* Mappa elastica r1 · lenti e categorie combinabili */
 #earthMap{background-repeat:no-repeat!important;background-color:#06101d}
@@ -374,6 +365,10 @@ body.panel-open #periodContext{right:340px}
 #panel .category-choices input,
 #panel .explore-lenses input{accent-color:#efc881;margin:0;flex:0 0 auto}
 #panel .explore-note{display:block;margin-top:7px;color:#8fa1b2;font-size:10px}
+#panel .explore-lenses label span:first-of-type{flex:1;min-width:0}
+#panel .explore-lenses .lens-count{margin-left:auto;padding:2px 6px;border-radius:999px;background:rgba(236,201,142,.17);color:#ffdfa3;font:800 11px/1.25 system-ui;white-space:nowrap}
+#panel .explore-lenses .lens-count[hidden]{display:none!important}
+#panel .lens-relations .reading-note{margin:0 0 12px;font-size:12px;line-height:1.45}
 #relationLegend{display:none!important}
 @media(max-width:700px){
  #panel .category-choices,#panel .explore-lenses{grid-template-columns:1fr}
@@ -399,7 +394,7 @@ body.panel-open #periodContext{right:340px}
 <div id="geoLabel" aria-live="polite">Mondo · panoramica</div><a id="mapCredit" href="https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/" target="_blank" rel="noopener noreferrer">Immagine della Terra: NASA Earth Observatory · Black Marble 2016 ↗</a><div id="tips">Doppio clic: seleziona e centra il nodo sulla sua geografia.<br>Trascina una bolla: riordina il groviglio senza cambiare selezione. Trascina il vuoto: sposta la carta.</div>
 <button id="panelTab" aria-label="Apri pannello laterale" aria-expanded="false">◀ Esplora</button>
 <aside id="panel" aria-label="Scheda di approfondimento"><div class="inner"><div class="eyebrow">Esplora la rete</div>
-<details id="exploreControls" class="explore-controls"><summary style="cursor:pointer;color:#f6d08c;padding:8px 3px;font-weight:600">Filtri avanzati · categorie e relazioni</summary>
+<h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><details id="exploreControls" class="explore-controls"><summary style="cursor:pointer;color:#f6d08c;padding:8px 3px;font-weight:600">Filtri avanzati · categorie e relazioni</summary>
  <p class="explore-explain"><strong>Categorie</strong> = quali elementi vuoi vedere. <strong>Lenti</strong> = quali tipi di relazione vuoi seguire.</p>
  <fieldset id="categoryChoices" class="explore-group category-choices" aria-label="Categorie visibili">
   <legend>Cosa mostrare</legend>
@@ -411,14 +406,14 @@ body.panel-open #periodContext{right:340px}
  <fieldset class="explore-group">
   <legend>Quali relazioni</legend>
   <div id="lensChoices" class="explore-lenses" aria-label="Lenti di esplorazione">
-   <label><input data-lens type="checkbox" value="musica" checked><span>Storia e appartenenze</span></label>
-   <label><input data-lens type="checkbox" value="trasmissioni"><span>Maestri, allievi e influenze</span></label>
-   <label><input data-lens type="checkbox" value="genealogie"><span>Altri autori correlati</span></label>
-   <label><input data-lens type="checkbox" value="collaborazioni"><span>Incontri e collaborazioni</span></label>
+   <label><input data-lens type="checkbox" value="musica" checked><span>Storia e appartenenze</span><span class="lens-count" hidden></span></label>
+   <label><input data-lens type="checkbox" value="trasmissioni"><span>Maestri, allievi e influenze</span><span class="lens-count" hidden></span></label>
+   <label><input data-lens type="checkbox" value="genealogie"><span>Altri autori correlati</span><span class="lens-count" hidden></span></label>
+   <label><input data-lens type="checkbox" value="collaborazioni"><span>Incontri e collaborazioni</span><span class="lens-count" hidden></span></label>
   </div>
  </fieldset>
  <span id="lensHelp" class="explore-note">Puoi combinare più scelte contemporaneamente.</span>
-</details><h2 id="panelTitle">Seleziona una bolla</h2><p id="panelSub">Le connessioni, le pagine collegate e i video compariranno qui.</p><div id="panelContent"></div></div></aside>
+</details><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app-livelli.js?v=pubblico-20261009-controlli-unici-1" defer></script>
+<script src="app-livelli.js?v=pubblico-20261009-filtri-unici-2" defer></script>
 </body></html>
