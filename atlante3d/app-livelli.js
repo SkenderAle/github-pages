@@ -940,14 +940,9 @@ function matchingSearchFocus(q){
 function selectSearchTarget(chosen,closeKeyboard=false){
  if(!chosen)return false;
  hideSearchChoices();
- const mobile=window.matchMedia("(max-width:700px)").matches;
- if(selected!==chosen){
-  focusOn(chosen,!mobile,true,true,true);
-  if(mobile)setPanel(false);
- }else{
-  moveGeo(chosen,true);
-  populate(chosen);
- }
+ // Lo stesso percorso di navigazione del doppio clic: aggiorna focus,
+ // mappa, archi, pannello e cronologia anche quando l'autore era già selezionato.
+ focusOn(chosen,true,true,true,true);
  if(closeKeyboard)search.blur();
  return true;
 }
@@ -987,7 +982,7 @@ function activateSearchSelection(){
   showSearchChoices(results);
   return;
  }
- selectSearchTarget(target,false);
+ selectSearchTarget(target,window.matchMedia("(max-width:700px)").matches);
 }
 search.addEventListener("input",()=>{
  clearTimeout(searchFocusTimer);
@@ -997,12 +992,12 @@ search.addEventListener("input",()=>{
  status.textContent=results.length+" corrispondenze · "+(target?target.label+" · apertura rete":results.length?"scegli o precisa il nome":"nessuna corrispondenza");
  if(!target){showSearchChoices(results);return;}
  hideSearchChoices();
- if(searchText.length<3)return;
+ if(searchText.length<2)return;
  const query=searchText;
  searchFocusTimer=setTimeout(()=>{
   if(normSearch(search.value)!==query)return;
   activateSearchSelection();
- },400);
+ },550);
 });
 search.addEventListener("focus",()=>{
  const q=normSearch(search.value);if(!q)return;
