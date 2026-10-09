@@ -664,9 +664,9 @@ function updatePeriodContext(n){
  periodContext.hidden=false;
  periodContext.title=periods.length>1?"Altri contesti: "+periods.slice(1).map(x=>x.node.label).join(" · "):periods[0].node.label;
 }
-function focusOn(n,openPanel=true,tight=false,preserveSearch=false){
+function focusOn(n,openPanel=true,tight=false){
  clearExplodeLayout();
- if(selected!==n){if(!preserveSearch){search.value="";searchText="";}resetAutoLayout();}
+ if(selected!==n){search.value="";searchText="";resetAutoLayout();}
  selected=n;selectedNeighborCacheKey="";selectedDepthCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
  if(explodeBtn)explodeBtn.disabled=false;
  updatePeriodContext(n);
@@ -825,42 +825,8 @@ canvas.addEventListener("wheel",e=>{
 },{passive:false});
 
 tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
-// La ricerca identifica automaticamente il nodo e attiva la sua rete, senza un secondo comando.
-let searchFocusTimer=null;
-function pickSearchFocus(query){
- const results=findSearchResults(query);
- const exact=results.find(n=>searchNames(n).some(name=>normSearch(name)===query));
- return {target:exact||(results.length===1?results[0]:null),exact:!!exact,results};
-}
-function activateSearchFocus(blurSearch=false){
- const query=normSearch(search.value);
- if(!query)return;
- const {target,exact,results}=pickSearchFocus(query);
- if(!target){status.textContent=results.length?results.length+" corrispondenze · specifica meglio il nome":"Nessuna corrispondenza";return;}
- // Lascia i filtri scelti dall'utente, ma seleziona il nodo: questo rende visibili gli archi della rete.
- if(selected!==target)focusOn(target,false,false,true);
- if(blurSearch||exact)search.blur();
- if(window.matchMedia("(max-width:700px)").matches&&document.body.classList.contains("panel-open"))setPanel(false);
-}
-search.addEventListener("input",()=>{
- clearTimeout(searchFocusTimer);
- searchText=normSearch(search.value);
- if(!searchText)return;
- const {target,exact,results}=pickSearchFocus(searchText);
- status.textContent=results.length+" corrispondenze · "+(target?target.label+" · visualizzo la rete":results.length?"continua a digitare per scegliere":"nessuna corrispondenza");
- if(searchText.length<3&&!exact)return;
- const query=searchText;
- searchFocusTimer=setTimeout(()=>{
-  if(normSearch(search.value)!==query)return;
-  activateSearchFocus(false);
- },380);
-});
-search.addEventListener("keydown",e=>{
- if(e.key!=="Enter")return;
- e.preventDefault();
- clearTimeout(searchFocusTimer);
- activateSearchFocus(true);
-});
+search.addEventListener("input",()=>{searchText=normSearch(search.value);if(searchText){const results=findSearchResults(searchText);status.textContent=results.length+" corrispondenze · "+(results[0]?results[0].label+" · Invio per centrare":"nessuna corrispondenza");}});
+search.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const n=findSearchResults(searchText)[0];if(n){focusOn(n,true,true);search.blur();}});
 function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-category]").forEach(i=>{i.checked=activeCategories.has(i.value);});}
 function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
 function setLensState(id,enabled){
