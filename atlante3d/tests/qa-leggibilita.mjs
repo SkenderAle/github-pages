@@ -64,6 +64,11 @@ try{
   await page.waitForTimeout(500);
   const after=await page.locator("#panelTitle").textContent();
   assert(after===target.label,"Double-click centers selected sphere: "+target.label+" => "+after);
+  assert(await page.locator("#backFocus").isEnabled(),"Back button enabled after sphere navigation");
+  await page.locator("#backFocus").click();
+  const returned=await page.locator("#panelTitle").textContent();
+  assert(returned==="Ludwig van Beethoven","Back returns to Beethoven after sphere navigation");
+  assert(!(await page.locator("#backFocus").isEnabled()),"Back button disabled when no more history");
   await page.screenshot({path:join(output,"beethoven-doppioclic.png"),fullPage:true});
   await page.locator("#search").fill("Beethoven");await page.locator("#search").press("Enter");
   await page.waitForTimeout(400);
@@ -90,6 +95,14 @@ try{
  assert((await m.locator("#readingLevel").inputValue())==="2","Mobile and desktop depth controls stay synchronized");
  assert((await m.locator("#status").textContent()).includes("Ricercare"),"Mobile depth change updates selected graph");
  await m.screenshot({path:join(output,"mobile-ricercare.png"),fullPage:true});
+ const firstRelation=m.locator("#panelContent .lens-relation-item button").first();
+ await firstRelation.click();await m.waitForTimeout(350);
+ const otherName=await m.locator("#panelTitle").textContent();
+ assert(otherName!=="Ludwig van Beethoven","Mobile relation button navigates to linked node: "+otherName);
+ assert(await m.locator("#backFocusPanel").isEnabled(),"Mobile back button enabled after navigation");
+ await m.locator("#backFocusPanel").click();await m.waitForTimeout(350);
+ assert((await m.locator("#panelTitle").textContent())==="Ludwig van Beethoven","Mobile back returns to Beethoven");
+ await m.screenshot({path:join(output,"mobile-torna-indietro.png"),fullPage:true});
  const geom=await m.locator("#readingToolbar").evaluate(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:innerWidth}});
  assert(geom.left>=-2&&geom.right<=geom.width+2,"Mobile reading selector within viewport "+JSON.stringify(geom));
  await context.close();
