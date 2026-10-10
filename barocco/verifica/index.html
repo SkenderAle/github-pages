@@ -33,7 +33,7 @@ footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(-
 <header><div class="hero"><div class="eyebrow">Verifica degli apprendimenti · 30 punti</div><h1>Missione Barocco</h1><p>Non serve ricordare ogni nome. Serve aver riconosciuto i fili che tengono insieme il Barocco: voce e basso, contrappunto, affetti, tonalità, concerto, colore strumentale e trasformazioni del Settecento. Trascina, ordina, abbina e scegli.</p></div></header>
 <div class="topbar"><div class="topbar-inner"><div class="progress"><span id="bar"></span></div><div class="counter" id="counter">0/9 completate</div></div></div>
 <main>
-<div class="notice"><strong>Come si usa.</strong> Su computer puoi trascinare le tessere. Su telefono puoi toccare una tessera e poi il riquadro in cui vuoi metterla. Da tastiera usa Invio o Spazio per selezionare e collocare; premi Canc su una tessera per riportarla al punto di partenza. Puoi cambiare idea fino alla consegna. Nell’anteprima GitHub i dati personali sono facoltativi e non vengono salvati: solo la versione scolastica collegata ad Apps Script registra ufficialmente i risultati.</div>
+<div class="notice"><strong>Come si usa.</strong> Su computer puoi trascinare le tessere. Su telefono puoi toccare una tessera e poi il riquadro in cui vuoi metterla. Da tastiera usa Invio o Spazio per selezionare e collocare; premi Canc su una tessera per riportarla al punto di partenza. Puoi cambiare idea fino alla consegna. Nell’anteprima GitHub puoi esercitarti senza inserire dati personali: il modulo nominativo appare soltanto nella versione scolastica collegata ad Apps Script, che registra ufficialmente i risultati.</div>
 
 <div class="identity" id="identity">
 <label>Nome<input id="nome" autocomplete="given-name"></label>
@@ -153,6 +153,7 @@ footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(-
 var TEST_ID='barocco-01', VERSION='1.0', MAX=30;
 var startedAt=new Date(), submitted=false, officialAttempted=false, selected=null, dragging=null;
 function officialMode(){return typeof google!=='undefined' && !!(google.script && google.script.run)}
+if(!officialMode())document.getElementById('identity').style.display='none'; // Nessun modulo nominativo nell'anteprima GitHub.
 
 function allChips(){return Array.prototype.slice.call(document.querySelectorAll('.chip'))}
 function allTargets(){return Array.prototype.slice.call(document.querySelectorAll('.target'))}
