@@ -877,6 +877,15 @@ body.liuteria-dialog-open{overflow:hidden}
 @media(max-width:780px){#strumenti .liuteria-entry{grid-template-columns:minmax(0,1fr)}#strumenti .liuteria-entry-photo .liuteria-image img{height:240px}#strumenti .liuteria-entry-copy{padding:1.05rem}#modal-liuteria .liuteria-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}#modal-liuteria .liuteria-inside-gallery{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:540px){#modal-liuteria{padding:.3rem}#modal-liuteria .liuteria-modal-panel{max-height:calc(100dvh - .6rem)}#modal-liuteria .liuteria-modal-head{padding:.8rem .85rem}#modal-liuteria .liuteria-close span{display:none}#modal-liuteria .liuteria-modal-body{padding:.9rem .85rem 1.2rem}#modal-liuteria .liuteria-gallery,#modal-liuteria .liuteria-inside-gallery,#modal-liuteria .liuteria-historic{grid-template-columns:minmax(0,1fr)}#modal-liuteria .liuteria-gallery-item .liuteria-image img{height:auto;max-height:320px}#modal-liuteria .liuteria-explore{padding:.75rem .9rem 1rem}}
 
+
+/* FIX FALLBACK E RICOLLOCAZIONE LEONARDA BIBER 20261010: il messaggio di errore appare soltanto quando il file fallisce davvero */
+.liuteria-img-fallback{display:none!important}
+figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
+#strumenti .liuteria-entry-photo.liuteria-photo-error .liuteria-image{display:none}
+#sonata #sonata-isabella,#sonata #sonata-biber{scroll-margin-top:100px}
+#sonata .history-thread{margin:1.5rem 0 1.8rem}
+#sonata #ragazzi-scordatura{margin:1.35rem 0 1.45rem}
+
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
@@ -1389,16 +1398,7 @@ body.liuteria-dialog-open{overflow:hidden}
     <p>Nel corso del Seicento gli strumenti smettono progressivamente di essere considerati soltanto come mezzi capaci di sostenere una voce, raddoppiare una parte o accompagnare una danza, perché i compositori cominciano a interessarsi sempre di più a ciò che ciascuno di essi può fare in maniera specifica, il violino può raccogliere qualcosa dell’espressività del canto, ma possiede al tempo stesso un’agilità, un’estensione e una capacità di produrre corde doppie, arpeggi e articolazioni che lo conducono verso territori completamente differenti, mentre la viola da gamba, l’organo e i fiati conservano colori e possibilità che rendono sempre meno sensato considerarli intercambiabili.</p>
     <p>La trasformazione coinvolge contemporaneamente chi scrive, chi suona e chi costruisce, poiché nello stesso periodo le botteghe di liuteria dell’Italia settentrionale raggiungono risultati eccezionali e famiglie come Amati, Guarneri e Stradivari perfezionano modelli destinati a influenzare la storia successiva degli archi, fra liutaio, esecutore e compositore si crea quindi una relazione circolare nella quale una possibilità tecnica suggerisce una nuova idea musicale, mentre una nuova esigenza musicale può spingere lo strumento e chi lo suona oltre ciò che fino a quel momento sembrava necessario.</p>
 
-    <div class="history-thread">
-      <div class="thread-label">La sonata entra in convento</div>
-      <h3>Isabella Leonarda: Novara non è fuori dalla storia</h3>
-      <p>Nel Collegio di Sant’Orsola di Novara Isabella Leonarda compone e pubblica per circa sessant’anni, lasciando un catalogo dominato dalla musica sacra ma capace, nel 1683, di aprirsi con l’op. 16 a dodici sonate per uno, due, tre e quattro strumenti con continuo. La raccolta è generalmente ricordata come la prima pubblicazione di sonate strumentali realizzata da una donna, ma il dato diventa davvero interessante soltanto quando smettiamo di leggerlo come primato statistico e lo rimettiamo dentro la storia della forma.</p>
-      <p>Le sonate mostrano infatti che il linguaggio strumentale, il basso continuo e il dialogo fra archi non appartengono soltanto alle corti e alle grandi città musicali più celebri. Un convento femminile di Novara può diventare anch’esso luogo di produzione, insegnamento e circolazione della nuova musica strumentale, mentre copie di composizioni di Leonarda raggiungono nel corso del Seicento anche centri lontani come Uppsala, Dresda e Praga.</p>
-      <div class="source-row">
-        <a class="score-link" href="https://imslp.org/wiki/Sonate_a_1._2._3._e_4_Istomenti%2C_Opera_XVI_%28Leonarda%2C_Isabella%29" target="_blank" rel="noopener">♫ IMSLP · Sonate op. 16</a>
-        <a class="deep-link" href="https://rism.info/rism_a_z/2016/04/07/isabella-leonarda-16201704.html" target="_blank" rel="noopener">RISM · fonti e circolazione</a>
-      </div>
-    </div>
+    
 
     
     <div class="liuteria-entry" id="bottega-liutaio">
@@ -1415,17 +1415,7 @@ body.liuteria-dialog-open{overflow:hidden}
       </div>
     </div>
 
-    <h3>Biber e il violino che cambia pelle</h3>
-    <p>Heinrich Ignaz Franz Biber mostra fino a quale grado di complessità la tecnica violinistica fosse già arrivata nel pieno Seicento, soprattutto quando utilizza la scordatura per modificare intenzionalmente l’accordatura delle corde, alterando risonanze, possibilità armoniche e disposizione delle dita, nelle <i>Sonate del Rosario</i> questa pratica non costituisce un semplice effetto curioso, ma modifica concretamente il comportamento dello strumento e dimostra quanto il virtuosismo barocco possa nascere anche dal desiderio di trasformare la materia sonora prima ancora di scrivere una nota.</p>
-    <div class="source-row">
-      <a class="score-link" href="https://imslp.org/wiki/Mystery_%28Rosary%29_Sonatas_%28Biber%2C_Heinrich_Ignaz_Franz_von%29" target="_blank" rel="noopener">♫ IMSLP · Sonate del Rosario</a>
-      <button class="tech-button" type="button" data-modal="modal-scordatura">Apri · Che cos’è la scordatura?</button>
-    </div>
-    <div class="callout"><strong>Prima ascoltare, poi guardare l’accordatura.</strong> La scordatura funziona didatticamente meglio se il ragazzo percepisce prima che quel violino possiede qualcosa di insolito e soltanto dopo scopre che Biber ha modificato materialmente l’accordatura delle corde. Per questo il popup tecnico rimane accanto alla partitura, mentre un approfondimento dell’English Concert introduce il rapporto fra virtuosismo e scordatura senza trasformare la spiegazione in una lezione preliminare.</div>
-    <div class="source-row">
-      <a class="deep-link" href="https://www.englishconcert.co.uk/videos/biber-rosary-sonatas/" target="_blank" rel="noopener">The English Concert · Biber e la scordatura →</a>
-    </div>
-  </section>
+    </section>
 
   <section id="sonata" class="sonata-band">
     <div class="sonata-inner">
@@ -1494,12 +1484,35 @@ body.liuteria-dialog-open{overflow:hidden}
         <a class="score-link" href="https://imslp.org/wiki/Trio_Sonatas%2C_Op.2_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener">♫ IMSLP · Corelli op. 2, 1685</a>
       </div>
 
-      <h3>Leonarda, Biber e Bach: il modello non appartiene a una sola città</h3>
-      <p>Isabella Leonarda pubblica nel 1683 le proprie sonate op. 16 a Novara, mentre Biber spinge la sonata violinistica verso possibilità tecniche e timbriche radicali e Bach, intorno al 1720, alterna nel manoscritto per violino solo Sonata e Partita come se volesse mettere uno accanto all’altro il mondo della struttura astratta e quello della danza. La sonata barocca è quindi meno un oggetto immobile che una famiglia di soluzioni capace di attraversare strumenti, luoghi e funzioni differenti.</p>
+      <h3>La sonata viaggia, cambia voce e reinventa gli strumenti</h3>
+      <p>La storia della sonata non appartiene a un solo compositore o a una sola corte. Nel Seicento si sviluppa in ambienti differenti, dagli istituti religiosi dell’Italia settentrionale ai centri del virtuosismo violinistico dell’Europa centrale, prima di incontrare le Sonate e Partite per violino solo di Bach. Anche il modo di accordare il violino può diventare una risorsa espressiva della composizione, non una modifica alla sua costruzione.</p>
+      <div class="history-thread">
+      <div class="thread-label">La sonata entra in convento</div>
+      <h3 id="sonata-isabella">Isabella Leonarda: Novara non è fuori dalla storia</h3>
+      <p>Nel Collegio di Sant’Orsola di Novara Isabella Leonarda compone e pubblica per circa sessant’anni, lasciando un catalogo dominato dalla musica sacra ma capace, nel 1683, di aprirsi con l’op. 16 a dodici sonate per uno, due, tre e quattro strumenti con continuo. La raccolta è generalmente ricordata come la prima pubblicazione di sonate strumentali realizzata da una donna, ma il dato diventa davvero interessante soltanto quando smettiamo di leggerlo come primato statistico e lo rimettiamo dentro la storia della forma.</p>
+      <p>Le sonate mostrano infatti che il linguaggio strumentale, il basso continuo e il dialogo fra archi non appartengono soltanto alle corti e alle grandi città musicali più celebri. Un convento femminile di Novara può diventare anch’esso luogo di produzione, insegnamento e circolazione della nuova musica strumentale, mentre copie di composizioni di Leonarda raggiungono nel corso del Seicento anche centri lontani come Uppsala, Dresda e Praga.</p>
       <div class="source-row">
-        <a class="score-link" href="https://imslp.org/wiki/Sonate_a_1._2._3._e_4_Istomenti%2C_Opera_XVI_%28Leonarda%2C_Isabella%29" target="_blank" rel="noopener">♫ IMSLP · Leonarda op. 16</a>
-        <a class="deep-link" href="#danza">Bach: Sonate e Partite →</a>
+        <a class="score-link" href="https://imslp.org/wiki/Sonate_a_1._2._3._e_4_Istomenti%2C_Opera_XVI_%28Leonarda%2C_Isabella%29" target="_blank" rel="noopener">♫ IMSLP · Sonate op. 16</a>
+        <a class="deep-link" href="https://rism.info/rism_a_z/2016/04/07/isabella-leonarda-16201704.html" target="_blank" rel="noopener">RISM · fonti e circolazione</a>
       </div>
+    </div>
+      <h3 id="sonata-biber">Biber e il violino che cambia pelle</h3>
+    <p>Heinrich Ignaz Franz Biber mostra fino a quale grado di complessità la tecnica violinistica fosse già arrivata nel pieno Seicento, soprattutto quando utilizza la scordatura per modificare intenzionalmente l’accordatura delle corde — alzandone o abbassandone l'altezza, secondo la sonata — e dunque alterando risonanze, possibilità armoniche e disposizione delle dita, nelle <i>Sonate del Rosario</i> questa pratica non costituisce un semplice effetto curioso, ma modifica concretamente il comportamento dello strumento e dimostra quanto il virtuosismo barocco possa nascere anche dal desiderio di trasformare la materia sonora prima ancora di scrivere una nota.</p>
+    <div class="source-row">
+      <a class="score-link" href="https://imslp.org/wiki/Mystery_%28Rosary%29_Sonatas_%28Biber%2C_Heinrich_Ignaz_Franz_von%29" target="_blank" rel="noopener">♫ IMSLP · Sonate del Rosario</a>
+      <button class="tech-button" type="button" data-modal="modal-scordatura">Apri · Che cos’è la scordatura?</button>
+    </div>
+    <aside class="student-box" id="ragazzi-scordatura">
+        <div class="student-label">✦ Per ascoltare e scoprire</div>
+        <h3>Il violino suona ancora come prima?</h3>
+        <p>Le quattro corde del violino non devono essere sempre accordate nella maniera abituale. Cambiando l'altezza di una o più corde, alcune note diventano disponibili in altri registri, cambiano le risonanze e certi accordi risultano più facili o più difficili da ottenere.</p>
+        <div class="try"><strong>Prova tu.</strong> Ascolta il violino di Biber attraverso il collegamento dell’English Concert. Prova a descrivere ciò che cambia nel colore del suono; poi apri «Che cos’è la scordatura?» e confronta la tua ipotesi con la spiegazione.</div>
+      </aside>
+    <div class="source-row">
+      <a class="deep-link" href="https://www.englishconcert.co.uk/videos/biber-rosary-sonatas/" target="_blank" rel="noopener">The English Concert · Biber e la scordatura →</a>
+    </div>
+  
+      <div class="source-row"><a class="deep-link" href="#danza">Bach: Sonate e Partite →</a></div>
 
       <h3>Scarlatti: la parola resta, l’oggetto cambia ancora</h3>
       <p>Quando arriviamo alle sonate per tastiera di Domenico Scarlatti, il termine ha già cambiato nuovamente fisionomia. La maggior parte di questi brani è costituita da un solo movimento in forma bipartita, nel quale due grandi sezioni vengono ripetute e il percorso armonico diventa parte essenziale dell’architettura. Chiamarle “sonate” non significa però che siano già costruite secondo la forma-sonata classica di Haydn e Mozart.</p>
