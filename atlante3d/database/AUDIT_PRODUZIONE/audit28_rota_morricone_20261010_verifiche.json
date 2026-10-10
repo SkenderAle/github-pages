@@ -1,0 +1,221 @@
+{
+  "project": "Musurgia Mundi",
+  "audit": 28,
+  "date": "2026-10-10",
+  "branch": "audit-produzione-correttivo-01",
+  "base_commit": "5cbc1b0efb702003f7a0b475c35e77f141f046bc",
+  "scope": "Rota e Morricone, completamento di profili documentati",
+  "counts": {
+    "before": {
+      "nodes": 860,
+      "edges": 1670,
+      "relazioni": 1280
+    },
+    "after": {
+      "nodes": 863,
+      "edges": 1681,
+      "relazioni": 1284
+    },
+    "new_edges": 11,
+    "relation_ids": [
+      "audit28-rota-pizzetti",
+      "audit28-rota-casella",
+      "audit28-rota-fellini",
+      "audit28-rota-coppola"
+    ],
+    "head": "5cbc1b0efb702003f7a0b475c35e77f141f046bc"
+  },
+  "new_nodes": [
+    "compositore-nino-rota",
+    "persona-federico-fellini",
+    "persona-francis-ford-coppola"
+  ],
+  "new_graph_edges": [
+    {
+      "source": "compositore-nino-rota",
+      "target": "novecento",
+      "kind": "appartenenza",
+      "weight": 1.6
+    },
+    {
+      "source": "compositore-nino-rota",
+      "target": "geografia-italia",
+      "kind": "ambito-geografico",
+      "weight": 0.9
+    },
+    {
+      "source": "compositore-ennio-morricone",
+      "target": "novecento",
+      "kind": "appartenenza",
+      "weight": 1.6
+    },
+    {
+      "source": "compositore-ennio-morricone",
+      "target": "geografia-italia",
+      "kind": "ambito-geografico",
+      "weight": 0.9
+    },
+    {
+      "source": "compositore-nino-rota",
+      "target": "genere-opera",
+      "kind": "produzione",
+      "weight": 1.3,
+      "note": "Il cappello di paglia di Firenze, commedia musicale di Nino Rota rappresentata nel 1955, attesta un teatro d'opera autonomo dalla produzione per film.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/nino-rota/",
+        "https://www.ricordi.com/it-IT/Composers/R/Rota-Nino.aspx"
+      ],
+      "status": "documentato",
+      "audit_batch": "audit28_rota_morricone_20261010",
+      "source_verification": "catalogo editore e voce biografica specializzata; partitura non collazionata"
+    },
+    {
+      "source": "compositore-nino-rota",
+      "target": "genere-balletto",
+      "kind": "produzione",
+      "weight": 1.3,
+      "note": "La strada (1966) è un balletto di Rota ispirato al soggetto del film omonimo di Fellini: balletto e colonna sonora non equivalgono a due esemplari della stessa partitura.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/nino-rota/",
+        "https://www.treccani.it/enciclopedia/nino-rota_%28Enciclopedia-del-Cinema%29/"
+      ],
+      "status": "documentato",
+      "audit_batch": "audit28_rota_morricone_20261010",
+      "source_verification": "repertorio biografico; versione della partitura non collazionata"
+    },
+    {
+      "source": "compositore-nino-rota",
+      "target": "genere-oratorio",
+      "kind": "produzione",
+      "weight": 1.3,
+      "note": "Mysterium (1962) e La vita di Maria (1970) attestano la produzione di oratori di Nino Rota, distinta dalle colonne sonore e dal balletto.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/nino-rota/"
+      ],
+      "status": "documentato",
+      "audit_batch": "audit28_rota_morricone_20261010",
+      "source_verification": "voce biografica repertoriale; partiture integrali non collazionate"
+    },
+    {
+      "source": "compositore-nino-rota",
+      "target": "genere-concerto",
+      "kind": "produzione",
+      "weight": 1.3,
+      "note": "Il Concerto per violoncello e orchestra è testimoniato fra i lavori per sala da concerto di Nino Rota; il rapporto documenta il genere concertistico senza confonderlo con le musiche per film.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/nino-rota_%28Enciclopedia-Italiana%29/",
+        "https://www.ricordi.com/it-IT/Composers/R/Rota-Nino.aspx"
+      ],
+      "status": "documentato",
+      "audit_batch": "audit28_rota_morricone_20261010",
+      "source_verification": "opera specifica attestata in catalogo biografico, data e partitura non collazionate"
+    },
+    {
+      "source": "compositore-ennio-morricone",
+      "target": "genere-concerto",
+      "kind": "produzione",
+      "weight": 1.3,
+      "note": "Il Concerto per orchestra n. 1 (1957) appartiene alla produzione per concerto di Morricone. La denominazione non implica un singolo strumento solista.",
+      "sources": [
+        "https://www.fondazionemorricone.it/la-musica/"
+      ],
+      "status": "documentato",
+      "audit_batch": "audit28_rota_morricone_20261010",
+      "source_verification": "cronologia compositiva della Fondazione Morricone"
+    },
+    {
+      "source": "compositore-ennio-morricone",
+      "target": "genere-musica-da-camera",
+      "kind": "produzione",
+      "weight": 1.3,
+      "note": "Distanze (1958), per violino, violoncello e pianoforte, documenta il repertorio cameristico di Morricone distinto dalla musica per cinema.",
+      "sources": [
+        "https://www.fondazionemorricone.it/la-musica/"
+      ],
+      "status": "documentato",
+      "audit_batch": "audit28_rota_morricone_20261010",
+      "source_verification": "cronologia delle composizioni della Fondazione Morricone"
+    },
+    {
+      "source": "compositore-ennio-morricone",
+      "target": "genere-musica-elettronica",
+      "kind": "produzione",
+      "weight": 1.3,
+      "note": "Suoni per Dino (1969), per viola e nastri magnetici, è un lavoro elettroacustico misto: non va assimilato a una partitura esclusivamente elettronica.",
+      "sources": [
+        "https://www.fondazionemorricone.it/la-musica/"
+      ],
+      "status": "documentato",
+      "audit_batch": "audit28_rota_morricone_20261010",
+      "source_verification": "cronologia compositiva della Fondazione Morricone"
+    }
+  ],
+  "added_specialist_relations": [
+    {
+      "id": "audit28-rota-pizzetti",
+      "group": "formazione",
+      "source": "compositore-ildebrando-pizzetti",
+      "target": "compositore-nino-rota",
+      "kind": "lezioni-di-composizione",
+      "forward": "insegnò composizione a",
+      "reverse": "studiò composizione con",
+      "note": "Nino Rota seguì lezioni di composizione con Ildebrando Pizzetti a Milano negli anni Venti; rapporto didattico distinto dalla successiva formazione con Casella.",
+      "sources": [
+        "https://www.ricordi.com/it-IT/Composers/R/Rota-Nino.aspx",
+        "https://ressources.ircam.fr/en/composer/nino-rota/biography"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit28-rota-casella",
+      "group": "formazione",
+      "source": "compositore-alfredo-casella",
+      "target": "compositore-nino-rota",
+      "kind": "maestro-allievo-composizione",
+      "forward": "fu maestro di composizione di",
+      "reverse": "si diplomò in composizione sotto la guida di",
+      "note": "Rota studiò composizione con Alfredo Casella a Roma, diplomandosi all'Accademia di Santa Cecilia nel 1930.",
+      "sources": [
+        "https://www.ricordi.com/it-IT/Composers/R/Rota-Nino.aspx",
+        "https://ressources.ircam.fr/en/composer/nino-rota/biography"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit28-rota-fellini",
+      "group": "collaborazioni",
+      "source": "compositore-nino-rota",
+      "target": "persona-federico-fellini",
+      "kind": "collaborazione-musica-cinema",
+      "forward": "compose le musiche dei film di",
+      "reverse": "collaborò a lungo con il compositore",
+      "note": "Nino Rota compose le colonne sonore di tutti i film diretti da Federico Fellini da Lo sceicco bianco (1952) fino a Prova d'orchestra (1979).",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/nino-rota_%28Enciclopedia-del-Cinema%29/",
+        "https://www.ninorota.com/"
+      ],
+      "status": "documentato"
+    },
+    {
+      "id": "audit28-rota-coppola",
+      "group": "collaborazioni",
+      "source": "compositore-nino-rota",
+      "target": "persona-francis-ford-coppola",
+      "kind": "collaborazione-musica-cinema",
+      "forward": "compose colonne sonore per film di",
+      "reverse": "commissionò musiche cinematografiche a",
+      "note": "Rota compose le musiche per Il padrino (1972) e Il padrino - Parte II (1974) di Francis Ford Coppola; l'Oscar del 1975 riguarda il secondo film.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/nino-rota_%28Enciclopedia-del-Cinema%29/",
+        "https://www.ricordi.com/it-IT/Composers/R/Rota-Nino.aspx"
+      ],
+      "status": "documentato"
+    }
+  ],
+  "notes": [
+    "nessuna collazione integrale delle partiture",
+    "non dichiarare nuove lenti",
+    "Audit27 precedente non applicato",
+    "non modificare main"
+  ]
+}
