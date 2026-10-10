@@ -828,6 +828,55 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
 @media(max-width:790px){.audit07-single{grid-template-columns:minmax(0,1fr)}.audit07-story{padding:1.05rem 1.1rem}}
 @media(max-width:600px){.audit07-pair{grid-template-columns:minmax(0,1fr)}.audit07-gallery{padding:.85rem}.audit07-image img{max-height:340px}}
 
+
+/* LIUTERIA RIFACIMENTO 20261010 — la bottega non è un bestiario, e il popup deve essere realmente opaco */
+#bottega-liutaio{scroll-margin-top:105px}
+#strumenti .liuteria-entry{margin:2.1rem 0 2.5rem;display:grid;grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);background:#f7efe1;border:1px solid #bda887;box-shadow:0 12px 30px rgba(36,25,16,.12);color:#2d241d;overflow:hidden}
+#strumenti .liuteria-entry-photo{margin:0;min-width:0;background:#e3d7c6}
+#strumenti .liuteria-entry-photo .liuteria-image img{height:330px;width:100%;object-fit:cover}
+#strumenti .liuteria-entry-photo figcaption{font:500 .78rem/1.5 var(--sans);padding:.8rem .9rem;color:#493c30}
+#strumenti .liuteria-entry-photo figcaption a,#strumenti .liuteria-entry-copy a{color:#75472c;text-decoration:underline}
+#strumenti .liuteria-entry-copy{padding:1.5rem;align-self:center;color:#2d241d}
+.liuteria-eyebrow{display:block;color:#84552e;font:800 .7rem/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase}
+#strumenti .liuteria-entry-copy h3{font-size:clamp(1.4rem,2.25vw,2rem);margin:.35rem 0 .7rem;color:#382a20;line-height:1.23}
+#strumenti .liuteria-entry-copy p{color:#382a20;font-size:.98rem;line-height:1.64;margin:.55rem 0 1rem}
+#strumenti .liuteria-entry .luthier-open{margin-top:.4rem;display:inline-flex;align-items:center;max-width:100%;white-space:normal;text-align:left;line-height:1.4;border-radius:8px;background:#7e4a2b;color:white;padding:.85rem 1.05rem;font:750 .9rem/1.4 var(--sans);border:2px solid #7e4a2b;cursor:pointer}
+#strumenti .liuteria-entry .luthier-open:hover{background:#60341d}
+body.liuteria-dialog-open{overflow:hidden}
+#modal-liuteria{position:fixed;inset:0;background:rgba(13,10,9,.91);z-index:9999;padding:clamp(.35rem,2vw,1.4rem);overscroll-behavior:contain}
+#modal-liuteria.open{display:grid;place-items:center}
+#modal-liuteria .liuteria-modal-panel{display:flex;flex-direction:column;position:relative;isolation:isolate;box-sizing:border-box;width:min(1010px,100%);max-height:calc(100vh - 1rem);max-height:calc(100dvh - 1rem);overflow-y:auto;overscroll-behavior:contain;border:2px solid #bd9c63;border-top:7px solid #ad7c34;background:#fff9ef!important;opacity:1!important;color:#32271e!important;box-shadow:0 28px 85px rgba(0,0,0,.7);border-radius:8px}
+#modal-liuteria .liuteria-modal-panel *{box-sizing:border-box}
+#modal-liuteria .liuteria-modal-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:.7rem;padding:1rem 1.3rem;background:#fff9ef!important;border-bottom:2px solid #d7c4a6;color:#32271e}
+#modal-liuteria .liuteria-modal-head h2{font-size:clamp(1.3rem,2.8vw,2rem);line-height:1.15;color:#31241c;margin:.2rem 0}
+#modal-liuteria .liuteria-close{position:static;display:inline-flex;gap:.3rem;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #b09c7f;border-radius:8px;background:#efe2cd;color:#30241a;font:750 .85rem/1.3 var(--sans);padding:.55rem .78rem;cursor:pointer}
+#modal-liuteria .liuteria-modal-body{padding:1.15rem 1.35rem 1.65rem;background:#fff9ef!important;color:#352a21}
+#modal-liuteria .liuteria-modal-body p{color:#352a21!important;font-size:.98rem;line-height:1.65}
+#modal-liuteria .liuteria-modal-body .liuteria-lead{font-size:1.08rem;line-height:1.68;margin:.2rem 0 1.3rem}
+#modal-liuteria .liuteria-modal-body h3{color:#3d2a1e;line-height:1.3;margin:1.6rem 0 .5rem;font-size:1.37rem}
+#modal-liuteria .liuteria-modal-body a{color:#714328}
+#modal-liuteria .liuteria-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;margin:1.1rem 0 1.6rem}
+#modal-liuteria .liuteria-inside-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+#modal-liuteria .liuteria-gallery-item{min-width:0;margin:0;border:1px solid #d1bda0;background:#f5ede0}
+#modal-liuteria .liuteria-gallery-item .liuteria-image{display:flex;align-items:center;justify-content:center;min-height:0;background:#e8ddcb}
+#modal-liuteria .liuteria-gallery-item .liuteria-image img{width:100%;height:215px;object-fit:contain;display:block}
+#modal-liuteria .liuteria-inside-gallery .liuteria-image img{height:270px}
+#modal-liuteria .liuteria-gallery-item figcaption{font:500 .85rem/1.5 var(--sans);color:#403329;padding:.85rem .85rem 1rem}
+#modal-liuteria .liuteria-gallery-item figcaption b{display:block;font-size:1.02rem;margin-bottom:.35rem;color:#38281b}
+#modal-liuteria .liuteria-gallery-item figcaption small{display:block;font-size:.73rem;color:#5a4a3c;margin-top:.5rem}
+#modal-liuteria .liuteria-img-fallback{display:none;padding:1rem;font:500 .86rem/1.5 var(--sans)!important;color:#4a392d!important}
+#modal-liuteria .liuteria-photo-error .liuteria-image{display:none!important}
+#modal-liuteria .liuteria-photo-error .liuteria-img-fallback{display:block}
+#modal-liuteria .liuteria-explore{padding:.8rem 1.15rem 1.2rem;background:#2b241f;color:#f6eddc;margin:1.2rem 0}
+#modal-liuteria .liuteria-explore h3,#modal-liuteria .liuteria-explore p{color:#f6eddc!important}
+#modal-liuteria .liuteria-explore a{display:inline-block;background:#e9cd95;color:#322419;font:750 .88rem/1.5 var(--sans);text-decoration:none;padding:.75rem .9rem;margin:.5rem 0 .15rem;border-radius:6px}
+#modal-liuteria .liuteria-historic{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.4rem 0}
+#modal-liuteria .liuteria-historic>div{padding:.1rem 1rem 1rem;border-left:4px solid #ae7e38;background:#f1e7d7}
+#modal-liuteria .liuteria-takeaway{background:#f1e6d1;border-left:5px solid #aa7b35;padding:1rem}
+#modal-liuteria .liuteria-bottom-close{font:750 .91rem/1.45 var(--sans);border:0;border-radius:7px;background:#7e4a2b;color:#fff;padding:.85rem 1rem;cursor:pointer;margin:.5rem 0 0}
+@media(max-width:780px){#strumenti .liuteria-entry{grid-template-columns:minmax(0,1fr)}#strumenti .liuteria-entry-photo .liuteria-image img{height:240px}#strumenti .liuteria-entry-copy{padding:1.05rem}#modal-liuteria .liuteria-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}#modal-liuteria .liuteria-inside-gallery{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:540px){#modal-liuteria{padding:.3rem}#modal-liuteria .liuteria-modal-panel{max-height:calc(100dvh - .6rem)}#modal-liuteria .liuteria-modal-head{padding:.8rem .85rem}#modal-liuteria .liuteria-close span{display:none}#modal-liuteria .liuteria-modal-body{padding:.9rem .85rem 1.2rem}#modal-liuteria .liuteria-gallery,#modal-liuteria .liuteria-inside-gallery,#modal-liuteria .liuteria-historic{grid-template-columns:minmax(0,1fr)}#modal-liuteria .liuteria-gallery-item .liuteria-image img{height:auto;max-height:320px}#modal-liuteria .liuteria-explore{padding:.75rem .9rem 1rem}}
+
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
@@ -1351,16 +1400,19 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
       </div>
     </div>
 
-    <div class="instrument-cabinet">
-      <div class="eyebrow" style="color:#e5c686">Camera delle meraviglie</div>
-      <h3>Il bestiario degli strumenti barocchi</h3>
-      <p>Il Barocco non suona soltanto con strumenti che riconosceremmo a prima vista. Sopravvivono, si trasformano e convivono oggetti sonori che sembrano usciti da una Wunderkammer: lunghissimi manici, corpi ricurvi, corde di risonanza nascoste e tubi ripiegati dentro pochi centimetri di legno.</p>
-      <div class="odd-gallery">
-        <figure class="odd-card"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Theorbo.png" alt="Tiorba"><figcaption><b>Tiorba.</b> Un liuto gigantesco allungato verso il grave, costruito per dare al basso continuo profondità e armonia.</figcaption></figure>
-        <figure class="odd-card"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Viola%20d%27amore.jpg" alt="Viola d'amore"><figcaption><b>Viola d’amore.</b> Alle corde suonate se ne aggiungono altre che vibrano per simpatia: lo strumento sembra possedere un’eco interna.</figcaption></figure>
-        <figure class="odd-card"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/BaroqueRackett.jpg" alt="Rackett barocco"><figcaption><b>Rackett.</b> Un piccolo cilindro nel quale il canale dell’aria si ripiega più volte: un grave sorprendente dentro un corpo quasi tascabile.</figcaption></figure>
+    
+    <div class="liuteria-entry" id="bottega-liutaio">
+      <figure class="liuteria-entry-photo">
+        <a class="liuteria-image" href="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/In_the_workshop_of_a_luthier_02.jpg/960px-In_the_workshop_of_a_luthier_02.jpg" target="_blank" rel="noopener noreferrer" title="Bottega del liutaio: ingrandisci fotografia"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/In_the_workshop_of_a_luthier_02.jpg/960px-In_the_workshop_of_a_luthier_02.jpg" alt="Laboratorio del liutaio Franz Übelhör: violini, forme, legname e strumenti di lavoro sugli scaffali e sui banchi" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('liuteria-photo-error')"></a><p class="liuteria-img-fallback">La fotografia non si è caricata. Apri la scheda della fonte qui sotto.</p>
+        <figcaption>Una vera bottega contemporanea, quella di Franz Übelhör a Linz: strumenti in lavorazione, legno e utensili. Foto: Kritzolina, CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:In_the_workshop_of_a_luthier_02.jpg" target="_blank" rel="noopener noreferrer">Fonte ↗</a></figcaption>
+      </figure>
+      <div class="liuteria-entry-copy">
+        <span class="liuteria-eyebrow">Dentro il legno · la costruzione degli archi</span>
+        <h3>Dentro il violino: entra nella bottega del liutaio</h3>
+        <p>Un violino non è una scatola di legno con quattro corde. La sua voce dipende da una piccola architettura: <strong>tavola armonica, fondo, fasce, catena, anima ed effe</strong> collaborano con il ponticello e le corde. Per comprenderla bisogna prima guardare come lavora un liutaio, e poi entrare idealmente nello strumento.</p>
+        <p>Non una collezione di strumenti bizzarri già incontrati altrove, ma un percorso visivo dalla <strong>bottega</strong> all'<strong>interno della cassa armonica</strong>.</p>
+        <button class="luthier-open" type="button" data-modal="modal-liuteria" aria-haspopup="dialog" aria-controls="modal-liuteria" aria-expanded="false">Entra nella bottega e guarda dentro il violino →</button>
       </div>
-      <button class="luthier-open" type="button" data-modal="modal-liuteria">Entra nella bottega del liutaio →</button>
     </div>
 
     <h3>Biber e il violino che cambia pelle</h3>
@@ -3485,27 +3537,85 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
   });
 })();
 </script>
-<div class="modal" id="modal-liuteria" aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="liuteria-title">
-    <button class="modal-close" type="button" aria-label="Chiudi">×</button>
-    <div class="eyebrow">Dentro il legno</div>
-    <h2 id="liuteria-title">La bottega del liutaio</h2>
-    <p>Prima di essere uno strumento, un violino è una bottega: legni stagionati, forme interne, sgorbie, pialle minuscole, raschietti, colle, vernici e soprattutto una quantità di decisioni che nessuna macchina può prendere al posto dell’orecchio. A Cremona questa trasmissione fra maestro e allievo, bottega e musicista, è diventata una tradizione riconosciuta dall’UNESCO: più di settanta pezzi di legno vengono lavorati e assemblati a mano attorno a una forma interna, adattando il lavoro alla risposta di ciascun materiale.</p>
-    <div class="luthier-grid">
-      <div><h3>Cremona: Amati, Stradivari, Guarneri</h3><p>Fra Cinquecento e Settecento Cremona diventa uno dei luoghi decisivi della storia degli archi. Non nasce soltanto un modello di violino: nasce un sapere di bottega nel quale geometria, esperienza, scelta del legno e ascolto si trasmettono e si correggono generazione dopo generazione.</p></div>
-      <div><h3>Genova: il violino continua a vivere</h3><p>Genova racconta un’altra parte della storia. Il <i>Cannone</i> di Paganini è un Guarneri del Gesù costruito a Cremona nel 1743, ma Paganini lo lascia alla propria città. Da allora conservazione, restauro e studio fanno dello strumento un organismo storico ancora vivo. La Sala Paganiniana conserva anche la copia realizzata da Jean-Baptiste Vuillaume.</p></div>
+
+<div class="modal liuteria-modal" id="modal-liuteria" aria-hidden="true">
+  <div class="modal-panel liuteria-modal-panel" role="dialog" aria-modal="true" aria-labelledby="liuteria-title" aria-describedby="liuteria-intro" tabindex="-1">
+    <div class="liuteria-modal-head">
+      <div><span class="liuteria-eyebrow">Il viaggio nel laboratorio</span><h2 id="liuteria-title">La bottega del liutaio</h2></div>
+      <button class="modal-close liuteria-close" type="button" aria-label="Chiudi la bottega">× <span>Chiudi</span></button>
     </div>
-    <div class="inside-instrument">
-      <h3 style="color:#f2d59a;margin-top:0">Una cattedrale lillipuziana</h3>
-      <p>Guardato dall’esterno, un violino sembra compatto. Una microcamera cambia completamente scala: le effe diventano finestre, la catena una trave, l’anima una colonna, le fasce pareti curve. Nelle fotografie endoscopiche di Charles Brooks l’interno di violini, violoncelli e chitarre smette quasi di sembrare uno strumento e diventa un’architettura nella quale si potrebbe entrare.</p>
-      <div class="source-row">
-        <a class="deep-link" href="https://www.thecreativefactor.co/articles/how-photographer-charles-brooks-finds-entire-worlds-inside-instruments" target="_blank" rel="noopener">Guarda le fotografie dentro gli strumenti →</a>
-        <a class="deep-link" href="https://ich.unesco.org/en/RL/traditional-violin-craftsmanship-in-cremona-00719" target="_blank" rel="noopener">UNESCO · Liuteria cremonese →</a>
-        <a class="deep-link" href="https://www.museidigenova.it/it/sala-paganiniana" target="_blank" rel="noopener">Genova · Sala Paganiniana →</a>
+    <div class="liuteria-modal-body">
+      <p id="liuteria-intro" class="liuteria-lead">Dall'albero allo strumento, dalla mano del liutaio alla sua architettura invisibile. Le prime immagini raccontano una bottega contemporanea, utile a osservare un mestiere che ha radici antiche; le successive mostrano <strong>parti reali del violino</strong> e una sezione della sua cassa armonica.</p>
+      <h3>Prima stanza · I gesti della bottega</h3>
+      <p>Nella bottega il violino cresce attraverso scelte pazienti: la forma regge le fasce durante la lavorazione; sgorbie, raschietti e pialletti tolgono piccolissime quantità di legno; l'orecchio del liutaio accompagna le misure e gli strumenti.</p>
+      <div class="liuteria-gallery">
+        <figure class="liuteria-gallery-item"><a class="liuteria-image" href="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/In_the_workshop_of_a_luthier_02.jpg/960px-In_the_workshop_of_a_luthier_02.jpg" target="_blank" rel="noopener noreferrer" title="1 · La bottega: ingrandisci fotografia"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/In_the_workshop_of_a_luthier_02.jpg/960px-In_the_workshop_of_a_luthier_02.jpg" alt="Banchi, strumenti in restauro e attrezzi nella bottega di Franz Übelhör in Austria" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('liuteria-photo-error')"></a><p class="liuteria-img-fallback">La fotografia non si è caricata. Apri la scheda della fonte qui sotto.</p><figcaption><b>1 · La bottega</b> Lo spazio di lavoro, gli strumenti e il legname in stagionatura. È una bottega moderna, non una fotografia del Seicento. <small>Foto: Kritzolina, CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:In_the_workshop_of_a_luthier_02.jpg" target="_blank" rel="noopener noreferrer">Fotografia e diritti ↗</a></small></figcaption></figure>
+        <figure class="liuteria-gallery-item"><a class="liuteria-image" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/A_luthier_at_work_on_a_violin_08.jpg/960px-A_luthier_at_work_on_a_violin_08.jpg" target="_blank" rel="noopener noreferrer" title="2 · Gli utensili: ingrandisci fotografia"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/A_luthier_at_work_on_a_violin_08.jpg/960px-A_luthier_at_work_on_a_violin_08.jpg" alt="Pialletti e coltello da intaglio del liutaio Franz Übelhör" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('liuteria-photo-error')"></a><p class="liuteria-img-fallback">La fotografia non si è caricata. Apri la scheda della fonte qui sotto.</p><figcaption><b>2 · Gli utensili</b> Pialletti e coltello da intaglio permettono di controllare spessori e curvature con una precisione che si misura in frazioni di millimetro. <small>Foto: Kritzolina, CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:A_luthier_at_work_on_a_violin_08.jpg" target="_blank" rel="noopener noreferrer">Fotografia e diritti ↗</a></small></figcaption></figure>
+        <figure class="liuteria-gallery-item"><a class="liuteria-image" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/In_the_workshop_of_a_luthier_06.jpg/960px-In_the_workshop_of_a_luthier_06.jpg" target="_blank" rel="noopener noreferrer" title="3 · Le fasce intorno alla forma: ingrandisci fotografia"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/In_the_workshop_of_a_luthier_06.jpg/960px-In_the_workshop_of_a_luthier_06.jpg" alt="Fasce del violino montate sulla forma interna lignea nella bottega di Franz Übelhör" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('liuteria-photo-error')"></a><p class="liuteria-img-fallback">La fotografia non si è caricata. Apri la scheda della fonte qui sotto.</p><figcaption><b>3 · Le fasce intorno alla forma</b> Prima di chiudere la cassa armonica, la forma interna sostiene le fasce piegate. La sagoma dello strumento prende corpo. <small>Foto: Kritzolina, CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:In_the_workshop_of_a_luthier_06.jpg" target="_blank" rel="noopener noreferrer">Fotografia e diritti ↗</a></small></figcaption></figure>
       </div>
+      <h3>Seconda stanza · Dentro il violino</h3>
+      <p>Il suono non dipende soltanto dalle corde. Osserva come la cassa risponde: la <strong>catena</strong> è incollata sotto la tavola armonica, dal lato delle corde gravi; l'<strong>anima</strong> è il piccolo cilindro di legno collocato a pressione fra tavola e fondo, vicino al piede acuto del ponticello; le <strong>fasce</strong> collegano tavola e fondo; le <strong>effe</strong> interrompono la tavola con aperture dalla forma caratteristica.</p>
+      <div class="liuteria-gallery liuteria-inside-gallery">
+        <figure class="liuteria-gallery-item"><a class="liuteria-image" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Violin_bout_cross_section.png/960px-Violin_bout_cross_section.png" target="_blank" rel="noopener noreferrer" title="4 · La sezione del violino: ingrandisci fotografia"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Violin_bout_cross_section.png/960px-Violin_bout_cross_section.png" alt="Sezione della cassa del violino con tavola, fondo, fasce, anima e catena numerati" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('liuteria-photo-error')"></a><p class="liuteria-img-fallback">La fotografia non si è caricata. Apri la scheda della fonte qui sotto.</p><figcaption><b>4 · La sezione del violino</b> Una vera cassa di violino vista in sezione. Nella tavola numerata, 5 è l'anima; 10 è la catena; 2 la tavola; 1 il fondo; 7 la fascia. <small>Fotografia storica ripresa e annotata da Dake / SuperManu, CC BY-SA 3.0. <a href="https://commons.wikimedia.org/wiki/File:Violin_bout_cross_section.png" target="_blank" rel="noopener noreferrer">Fotografia e diritti ↗</a></small></figcaption></figure>
+        <figure class="liuteria-gallery-item"><a class="liuteria-image" href="https://upload.wikimedia.org/wikipedia/commons/c/c9/F-hole.jpg" target="_blank" rel="noopener noreferrer" title="5 · Guardare attraverso l'effe: ingrandisci fotografia"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/F-hole.jpg" alt="Foto ravvicinata di un'effe del violino, illuminata dall'interno; attraverso l'apertura si intravede l'anima" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('liuteria-photo-error')"></a><p class="liuteria-img-fallback">La fotografia non si è caricata. Apri la scheda della fonte qui sotto.</p><figcaption><b>5 · Guardare attraverso l'effe</b> La luce all'interno rende riconoscibile il piccolo cilindro dell'anima attraverso l'apertura armonica. <small>Foto: Just plain Bill / versione Commons di Mutatis mutandis, pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:F-hole.jpg" target="_blank" rel="noopener noreferrer">Fotografia e diritti ↗</a></small></figcaption></figure>
+      </div>
+      <div class="liuteria-explore">
+        <h3>Terza stanza · Una cattedrale lillipuziana</h3>
+        <p>Le fotografie di <strong>Charles Brooks</strong> trasformano gli interni reali di violini, violoncelli e contrabbassi in paesaggi architettonici. Sono opere fotografiche contemporanee: non le riproduciamo senza autorizzazione, ma puoi guardarle nella galleria dell'autore e confrontarle con la sezione tecnica qui sopra.</p>
+        <a class="liuteria-explore-link" href="https://www.charlesbrooks.info/architecture-in-music" target="_blank" rel="noopener noreferrer">Guarda le vere fotografie all'interno degli strumenti · Charles Brooks ↗</a>
+      </div>
+      <div class="liuteria-historic">
+        <div><h3>Cremona · la tradizione liutaria</h3><p>Amati, Stradivari e Guarneri appartengono a una lunga tradizione di trasmissione artigianale. L'UNESCO riconosce il sapere della liuteria cremonese, fondato sul rapporto fra bottega, materiali e apprendistato.</p><a href="https://ich.unesco.org/en/RL/traditional-violin-craftsmanship-in-cremona-00719" target="_blank" rel="noopener noreferrer">UNESCO · liuteria cremonese ↗</a></div>
+        <div><h3>Genova · il Cannone di Paganini</h3><p>Il violino Guarneri del Gesù del 1743, divenuto lo strumento di Paganini, è conservato a Genova: un originale antico che continua a essere oggetto di tutela e studio.</p><a href="https://www.museidigenova.it/it/sala-paganiniana" target="_blank" rel="noopener noreferrer">Musei di Genova · Sala Paganiniana ↗</a></div>
+      </div>
+      <p class="liuteria-takeaway"><b>La domanda da portare fuori dalla bottega.</b> Se cambia la costruzione o il montaggio dello strumento, può cambiare anche il modo in cui un compositore pensa il suono? Torna al violino di Biber, appena sotto questo laboratorio.</p>
+      <button type="button" class="liuteria-bottom-close">Esci dalla bottega e torna al capitolo ↑</button>
     </div>
-    <p class="micro">Immagini della galleria: Wikimedia Commons, secondo le licenze indicate nelle rispettive schede.</p>
   </div>
 </div>
+<script>
+/* LIUTERIA RIFACIMENTO 20261010: JS del dialogo aggiunto dopo il nodo DOM; nessuna dipendenza da altre modali */
+(function(){
+  'use strict';
+  const dialog=document.getElementById('modal-liuteria');
+  const opener=document.querySelector('[data-modal="modal-liuteria"]');
+  if(!dialog || !opener) return;
+  const panel=dialog.querySelector('.liuteria-modal-panel');
+  const closer=dialog.querySelector('.liuteria-close');
+  const bottomCloser=dialog.querySelector('.liuteria-bottom-close');
+  let previousFocus=null;
+  const open=()=>{
+    previousFocus=document.activeElement;
+    dialog.classList.add('open');
+    dialog.setAttribute('aria-hidden','false');
+    opener.setAttribute('aria-expanded','true');
+    document.body.classList.add('liuteria-dialog-open');
+    panel.scrollTop=0;
+    closer.focus({preventScroll:true});
+  };
+  const close=()=>{
+    dialog.classList.remove('open');
+    dialog.setAttribute('aria-hidden','true');
+    opener.setAttribute('aria-expanded','false');
+    document.body.classList.remove('liuteria-dialog-open');
+    if(previousFocus && document.contains(previousFocus)) previousFocus.focus({preventScroll:true});
+  };
+  opener.addEventListener('click',open);
+  closer.addEventListener('click',close);
+  bottomCloser.addEventListener('click',close);
+  dialog.addEventListener('click',e=>{if(e.target===dialog)close();});
+  document.addEventListener('keydown',e=>{
+    if(!dialog.classList.contains('open'))return;
+    if(e.key==='Escape'){e.preventDefault();close();return;}
+    if(e.key==='Tab'){
+      const focusable=[...panel.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(x=>x.getClientRects().length);
+      if(!focusable.length){e.preventDefault();panel.focus();return;}
+      const first=focusable[0],last=focusable[focusable.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  });
+})();
+</script>
 <script src="../shared/atlas-autonav-v1.js?v=20261006b" defer></script></body>
 </html>
