@@ -89,6 +89,44 @@
 @keyframes pianoBeat{0%{background:#745141}100%{background:#302a36}}
 .pianoHint{line-height:1.55;font-size:clamp(1rem,1.25vw,1.22rem);color:#e9dcc9;margin:0}
 @media(max-width:400px){.pianoDuo{gap:8px}.pianoLane{padding:12px 5px}.pianoLane span{font-size:.88rem}}
+
+/* Orchestra: ascolto integrale e scoperta attiva, nessuna evidenziazione preventiva. */
+.orchHeading{font-size:var(--display);margin:5px 0 13px}
+.orchToolbar{border:1px solid #a991765e;background:#352b34;border-radius:18px;padding:clamp(13px,2.2vw,22px);display:grid;gap:13px;margin:18px 0}
+.orchToolbar label{font-weight:730;color:#f5d494;font-size:1.12rem}
+.orchToolbar select{width:100%;max-width:100%;min-width:0;min-height:57px;padding:9px 13px;border-radius:12px;border:1px solid #b89c78;color:#fff3da;background:#26232c;font-size:clamp(1rem,1.5vw,1.23rem)}
+.orchTransport{display:flex;gap:10px;flex-wrap:wrap}
+.orchTransport .btn{min-width:0;flex:1 1 175px}
+.orchTimeline{display:flex;align-items:center;gap:12px;font-variant-numeric:tabular-nums;color:#eee1cf}
+.orchRail{height:12px;border-radius:10px;background:#776d70;flex:1 1 140px;min-width:0;overflow:hidden;border:1px solid #b4a398}
+.orchProgress{height:100%;width:0;background:linear-gradient(90deg,#daae61,#ffe8ae);transition:width .12s linear}
+.orchTime{font-size:.96rem;white-space:nowrap}
+.orchStatus{font-size:clamp(.99rem,1.15vw,1.13rem);line-height:1.5;margin:0;min-height:26px;color:#f5e4cc}
+.orchestraFeedback{display:flex;align-items:center;gap:12px;margin:17px 0;padding:13px 16px;border-radius:16px;background:#392f38;border:1px solid #806b65;font-size:clamp(1.02rem,1.3vw,1.21rem);line-height:1.4}
+#orchFeedbackIcon{font-size:1.7rem;flex:none}
+#orchFeedback{min-width:0;flex:1}
+#orchCount{padding:8px 12px;border:1px solid #c49a6b;border-radius:9px;white-space:nowrap;font-weight:800;color:#ffe3a9;font-variant-numeric:tabular-nums}
+.orchestraChoices .instr{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;min-width:0;white-space:normal;overflow-wrap:anywhere;transition:background-color .18s,border-color .18s}
+.orchestraChoices .instr small{font-size:.92rem;color:#e5d8cb;font-weight:700}
+.orchestraChoices .instr.spot.correct{border:3px solid #bce4a2;background:#345440}
+.orchestraChoices .instr.spot.correct small{color:#e5f8d3}
+.orchestraChoices .instr.wrong{border:3px solid #ff8c8c;background:#72313a}
+.orchestraChoices .instr.wrong:after{content:"⚡";position:absolute;right:5px;top:0;font-size:clamp(2.2rem,5vw,4rem);filter:drop-shadow(0 0 9px #ffe4aa);pointer-events:none;z-index:2}
+.orchestraChoices .instr.shock{animation:orchShock .4s ease-in-out}
+@keyframes orchShock{0%,100%{transform:translateX(0)}18%,54%{transform:translateX(-7px)}36%,72%{transform:translateX(7px)}}
+.orchFooterNote{margin-top:20px}
+@media(max-width:650px){
+ .orchHeading{font-size:clamp(1.55rem,6vw,2.25rem)}
+ .orchestraQuiz{min-width:0;overflow:hidden}
+ .orchestraFeedback{flex-wrap:wrap;padding:12px;gap:8px}
+ #orchFeedback{flex:1 1 175px}
+ .orchestraChoices{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .orchestraChoices .instr{min-height:125px;padding:14px 12px;font-size:clamp(.96rem,4.4vw,1.2rem)}
+ .orchestraChoices .instr .iemoji{font-size:2rem}
+ .orchTransport .btn{flex:1 1 135px}
+ .orchTimeline{flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){.orchestraChoices .instr.shock{animation:none}.orchProgress{transition:none}}
 </style>
 </head>
 <body>
@@ -166,15 +204,30 @@
  </div>
 </section>
 <section id="orchestra" class="page">
- <div class="panel">
-  <p class="eyebrow">Il teatro degli strumenti</p>
-  <h2 style="font-size:var(--display);margin:5px 0 13px">Undici musicisti, un intero giardino zoologico</h2>
-  <p class="labdesc">Seleziona un quadro: si illuminano gli strumenti particolarmente importanti per riconoscerlo. Tocca un musicista per capire il suo ruolo. La disposizione degli esecutori è una <em>mappa didattica</em>, non una ricostruzione storica del palcoscenico.</p>
-  <div class="row" style="margin-bottom:15px"><label for="orchSelect">Quadro:</label><select id="orchSelect" style="min-height:56px;font-size:1.13rem;padding:8px;border-radius:12px;background:#302532;color:var(--ink);max-width:100%;flex:1"></select><button class="btn mini" id="orchListen">♫ Apri l'ascolto</button></div>
-  <div class="instruments" id="instrGrid"></div>
-  <div class="sketch"><h3 id="instName" style="font-size:1.5rem;margin:0 0 6px">Tocca uno strumento</h3><p id="instText" class="instructions">In un'orchestra, una parte può raccontare il personaggio mentre un'altra costruisce l'ambiente in cui si muove.</p></div>
-  <p class="hint">Organico di riferimento: due pianoforti, flauto (anche ottavino), clarinetto, armonica a bicchieri (spesso sostituita), xilofono, due violini, viola, violoncello, contrabbasso. Le scelte esecutive possono variare.</p>
+ <div class="panel orchestraQuiz">
+  <p class="eyebrow">Ascolta, cerca, riconosci</p>
+  <h2 class="orchHeading">La grande caccia agli strumenti</h2>
+  <p class="labdesc">Ogni quadro ha una sua orchestra, grande o piccolissima. <strong>Ascolta il brano per intero</strong> e tocca le sezioni o gli strumenti che riconosci. Nessuna risposta è già evidenziata: l'orchestra la costruite voi, ascoltando.</p>
+  <div class="orchToolbar">
+   <label for="orchSelect">Quadro da esplorare</label>
+   <select id="orchSelect" aria-label="Scegli il movimento del Carnevale"></select>
+   <div class="orchTransport">
+    <button class="btn primary" id="orchPlay" type="button">▶ Ascolta tutto</button>
+    <button class="btn" id="orchStop" type="button">■ Stop</button>
+    <button class="btn" id="orchReset" type="button">↺ Riprova il riconoscimento</button>
+   </div>
+   <div class="orchTimeline" aria-label="Avanzamento del brano">
+    <div class="orchRail"><div id="orchProgress" class="orchProgress"></div></div>
+    <span id="orchTime">00:00 / --:--</span>
+   </div>
+   <p class="orchStatus" id="orchStatus" role="status" aria-live="polite">Premi «Ascolta tutto». Durante il brano, tocca gli strumenti che senti.</p>
+  </div>
+  <div class="orchestraFeedback" aria-live="polite"><span id="orchFeedbackIcon" aria-hidden="true">🎧</span><span id="orchFeedback">Le risposte corrette si accenderanno soltanto quando le scoprirete voi.</span><span id="orchCount" aria-label="Strumenti corretti individuati">0 / 0</span></div>
+  <div class="instruments orchestraChoices" id="instrGrid" aria-label="Riconosci gli strumenti e le sezioni dell'orchestra"></div>
+  <p class="hint orchFooterNote">Negli archi scegli le <strong>sezioni</strong>: violini, viole, violoncelli e contrabbassi. I due pianoforti restano separati. Le risposte fanno riferimento all’organico della partitura originale dell’intero quadro, non necessariamente agli strumenti udibili in ogni istante. In alcune esecuzioni l’armonica a bicchieri è sostituita da celesta o glockenspiel.</p>
+  <p class="hint">Gli ascolti originali richiedono Internet. Non si interrompono quando scegli una tessera: il gioco di riconoscimento continua insieme alla musica.</p>
  </div>
+ <audio id="orchAudio" preload="metadata"></audio>
 </section>
 <section id="theatre" class="page">
  <div class="two">
@@ -263,7 +316,7 @@ audio.addEventListener('timeupdate',()=>{$('elapsed').textContent=secText(audio.
 audio.addEventListener('ended',()=>{$('play').textContent='▶ Riascolta';setStatus('Fine del quadro.')});
 audio.addEventListener('error',()=>setStatus('La registrazione non è raggiungibile. Apri «Fonte della registrazione» per ascoltarla su Wikimedia Commons.'));
 
-function switchTab(tab){currentTab=tab;stopDemo();document.querySelectorAll('[data-tab]').forEach(b=>{let selected=b.dataset.tab===tab;b.classList.toggle('selected',selected);b.setAttribute('aria-current',selected?'page':'false')});document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===tab));if(tab!=='walk'){audio.pause();$('play').textContent='▶ Riprendi'}if(tab==='orchestra')renderOrch();window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+function switchTab(tab){currentTab=tab;stopDemo();document.querySelectorAll('[data-tab]').forEach(b=>{let selected=b.dataset.tab===tab;b.classList.toggle('selected',selected);b.setAttribute('aria-current',selected?'page':'false')});document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===tab));if(tab!=='walk'){audio.pause();$('play').textContent='▶ Riprendi'}if(tab!=='orchestra'&&typeof orchAudio!=='undefined'){orchAudio.pause();$('orchPlay').textContent='▶ Continua'}window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
 $('btnAccess').addEventListener('click',()=>{let on=$('app').classList.toggle('access');$('btnAccess').setAttribute('aria-pressed',String(on))});$('btnFull').addEventListener('click',()=>{if(!document.fullscreenElement){document.documentElement.requestFullscreen?.().catch(()=>setStatus('Schermo intero non disponibile: usa il browser della lavagna.'))}else document.exitFullscreen?.()});
 const labDefs=[
  {title:'La macchina del tempo · Tartarughe',desc:'Come nasce una caricatura quando una danza, di solito travolgente, viene rallentata? Varia il tempo di una <strong>cellula inventata per l’esperimento</strong>, poi confronta con il can-can di Offenbach trasformato da Saint-Saëns.',piece:3,question:'La velocità cambia soltanto il movimento, o cambia anche il carattere di chi immaginiamo?'},
@@ -385,8 +438,170 @@ $('demoPlay').addEventListener('click',runDemo);$('demoStop').addEventListener('
 const instrumentData=[
  ['p1','🎹','Pianoforte I','Dà impulso, colore, figurazioni e accompagnamento.'],['p2','🎹','Pianoforte II','Si intreccia con il primo: alcune figure hanno bisogno proprio di due pianisti.'],['flute','🪈','Flauto / ottavino','Registro acuto, movimenti rapidi, leggerezza e colore.'],['clarinet','🎼','Clarinetto','Timbro versatile, da un richiamo lontano a gesti comici.'],['glass','✨','Armonica a bicchieri','Colore cristallino; in molte esecuzioni viene sostituita con strumenti affini.'],['xylo','🥁','Xilofono','Suono percussivo, asciutto e netto: protagonista dei Fossili.'],['v1','🎻','Violino I','Può cantare, rispondere e inventare gesti acutissimi.'],['v2','🎻','Violino II','Dialoga con il primo e rinforza il tessuto degli archi.'],['va','🎻','Viola','Voce centrale, importante nel colore d’insieme.'],['vc','🎻','Violoncello','Nel Cigno è la voce solista dalla melodia ampia e legata.'],['cb','🎻','Contrabbasso','Il registro più grave degli archi: nell’Elefante sorprende come danzatore.']
 ];
-const spotlight=[['p1','p2','v1','v2','va','vc','cb'],['v1','v2','va','clarinet','p1'],['p1','p2'],['v1','v2','va','vc','cb','p1'],['cb','p1'],['p1','p2'],['p1','p2','flute','glass','v1','v2'],['v1','v2'],['p1','p2','clarinet'],['flute','p1','p2','v1','v2'],['p1','p2','v1','v2'],['xylo','p1','p2','clarinet'],['vc','p1','p2'],instrumentData.map(x=>x[0])];
-function renderOrch(){const grid=$('instrGrid');grid.innerHTML='';let sel=spotlight[Number($('orchSelect').value)||0];instrumentData.forEach(item=>{const b=document.createElement('button');b.className='instr'+(sel.includes(item[0])?' spot':'');b.innerHTML=`<span class="iemoji">${item[1]}</span>${item[2]}<small>${sel.includes(item[0])?'✦ In evidenza nel quadro':'Parte dell’organico'}</small>`;b.addEventListener('click',()=>{$('instName').textContent=item[2];$('instText').textContent=item[3]});grid.appendChild(b)})}movements.forEach((m,i)=>{let opt=new Option(`${i+1}. ${m.short}`,String(i));$('orchSelect').add(opt);$('dancePiece').add(new Option(`${i+1}. ${m.short}`,String(i)))});$('orchSelect').addEventListener('change',renderOrch);$('orchListen').addEventListener('click',()=>{selectPiece(Number($('orchSelect').value));switchTab('walk')});
+/* Ascolto attivo dell'orchestra: strumenti nascosti fino alla scelta dei ragazzi.
+   Chiave per ogni quadro: presenza di una parte nella partitura originale,
+   raggruppata per sezione per gli archi; non una misura istantanea del volume. */
+const orchestraParts=[
+ ['p1','p2','vn','va','vc','cb'],                     // Leone
+ ['p1','p2','vn','va','clarinet'],                  // Galline e galli
+ ['p1','p2'],                                      // Emioni
+ ['p1','vn','va','vc','cb'],                        // Tartarughe
+ ['p1','cb'],                                      // Elefante
+ ['p1','p2'],                                      // Canguri
+ ['p1','p2','flute','glass','vn','va','vc'],          // Acquario
+ ['vn'],                                           // Orecchie lunghe
+ ['p1','p2','clarinet'],                           // Cucù
+ ['p1','p2','flute','vn','va','vc','cb'],             // Voliera
+ ['p1','p2','vn','va','vc','cb'],                    // Pianisti
+ ['p1','p2','clarinet','xylo','vn','va','vc','cb'],   // Fossili
+ ['p1','p2','vc'],                                 // Cigno
+ ['p1','p2','flute','clarinet','glass','xylo','vn','va','vc','cb'] // Finale
+];
+const stringSectionIds=['v1','v2','va','vc','cb'];
+const orchestraTiles=[
+ ['p1','🎹','Pianoforte I'],
+ ['p2','🎹','Pianoforte II'],
+ ['flute','🪈','Flauto / ottavino'],
+ ['clarinet','🎼','Clarinetto'],
+ ['glass','✨','Armonica a bicchieri'],
+ ['xylo','🥁','Xilofono'],
+ ['vn','🎻','Violini'],
+ ['va','🎻','Viole'],
+ ['vc','🎻','Violoncelli'],
+ ['cb','🎻','Contrabbassi']
+];
+const orchAudio=$('orchAudio');
+let orchPiece=-1;
+let orchFound=new Set();
+let orchMistakes=0;
+let orchVisualTimers=[];
+function orchMessage(t){$('orchStatus').textContent=t;}
+function orchNoises(){
+ try{
+  const ctx=getCtx(),start=ctx.currentTime+.012;
+  const amp=ctx.createGain(),one=ctx.createOscillator(),two=ctx.createOscillator();
+  one.type='sawtooth';two.type='square';
+  one.frequency.setValueAtTime(116,start);
+  one.frequency.exponentialRampToValueAtTime(73,start+.17);
+  two.frequency.setValueAtTime(158,start);
+  two.frequency.exponentialRampToValueAtTime(105,start+.17);
+  amp.gain.setValueAtTime(.0001,start);
+  amp.gain.exponentialRampToValueAtTime(.035,start+.012);
+  amp.gain.exponentialRampToValueAtTime(.0001,start+.18);
+  one.connect(amp);two.connect(amp);amp.connect(ctx.destination);
+  one.start(start);two.start(start);one.stop(start+.195);two.stop(start+.195);
+ }catch(_){/* Il gioco rimane utilizzabile anche senza Web Audio. */}
+}
+function orchProgress(){
+ const max=Number.isFinite(orchAudio.duration)?orchAudio.duration:0;
+ $('orchTime').textContent=secText(orchAudio.currentTime)+' / '+secText(max);
+ $('orchProgress').style.width=max?Math.min(100,100*orchAudio.currentTime/max)+'%':'0%';
+}
+function orchClearFeedback(){
+ orchVisualTimers.forEach(clearTimeout);orchVisualTimers=[];
+ document.querySelectorAll('#instrGrid .instr').forEach(b=>b.classList.remove('wrong','shock'));
+ $('orchFeedbackIcon').textContent='🎧';
+ $('orchFeedback').textContent='Ascolta e scopri gli strumenti: nessuna tessera è suggerita in anticipo.';
+}
+function orchRefreshCount(){
+ const total=orchestraParts[orchPiece]?.length||0;
+ $('orchCount').textContent=orchFound.size+' / '+total;
+ if(orchFound.size===total&&total){
+  $('orchFeedbackIcon').textContent='🏆';
+  $('orchFeedback').textContent='Orchestra completa! Avete riconosciuto tutti gli strumenti del quadro.';
+ }
+}
+function orchStop(resetTime=true){
+ orchAudio.pause();
+ if(resetTime){try{orchAudio.currentTime=0}catch(_){}}
+ $('orchPlay').textContent='▶ Ascolta tutto';
+ orchProgress();
+}
+function orchSetup(piece){
+ if(!Number.isInteger(piece)||piece<0||piece>=movements.length)return;
+ orchStop();
+ orchPiece=piece;orchFound.clear();orchMistakes=0;
+ orchAudio.src=fileUrl(movements[piece].file);
+ orchAudio.load();
+ orchClearFeedback();
+ orchMessage('Premi «Ascolta tutto», poi riconosci gli strumenti del quadro.');
+ orchRenderTiles();
+ orchProgress();
+}
+function orchSelectInstrument(key,button){
+ if(orchPiece<0)return;
+ if(orchFound.has(key))return;
+ const correct=orchestraParts[orchPiece].includes(key);
+ if(correct){
+  orchFound.add(key);button.classList.add('spot','correct');
+  button.setAttribute('aria-pressed','true');
+  button.querySelector('small').textContent='✓ Riconosciuto!';
+  $('orchFeedbackIcon').textContent='✨';
+  $('orchFeedback').textContent='Ben ascoltato! '+button.dataset.instrument+' fa parte di questo quadro.';
+  orchRefreshCount();
+ }else{
+  orchMistakes++;
+  orchNoises();
+  button.classList.remove('shock','wrong');
+  void button.offsetWidth;
+  button.classList.add('shock','wrong');
+  $('orchFeedbackIcon').textContent='⚡';
+  $('orchFeedback').textContent='Scossa! '+button.dataset.instrument+' non è previsto in questo quadro. Ascolta meglio e riprova.';
+  orchVisualTimers.push(setTimeout(()=>button.classList.remove('wrong','shock'),650));
+ }
+}
+function orchRenderTiles(){
+ const grid=$('instrGrid');grid.replaceChildren();
+ for(const [id,emoji,name] of orchestraTiles){
+  const b=document.createElement('button');
+  b.type='button';b.className='instr orchCard';b.dataset.instrument=name;
+  b.setAttribute('aria-pressed',String(orchFound.has(id)));
+  b.setAttribute('aria-label','Verifica se si sente: '+name);
+  b.innerHTML='<span class="iemoji" aria-hidden="true">'+emoji+'</span><span class="orchCardName">'+name+'</span><small>?</small>';
+  if(orchFound.has(id)){b.classList.add('spot','correct');b.querySelector('small').textContent='✓ Riconosciuto!'}
+  b.addEventListener('click',()=>orchSelectInstrument(id,b));
+  grid.appendChild(b);
+ }
+ orchRefreshCount();
+}
+async function orchTogglePlay(){
+ if(orchPiece<0)orchSetup(Number($('orchSelect').value)||0);
+ audio.pause();$('play').textContent='▶ Riprendi';stopDemo();
+ try{
+  if(orchAudio.paused){
+   if(orchAudio.ended)orchAudio.currentTime=0;
+   await orchAudio.play();
+   $('orchPlay').textContent='❚❚ Pausa';
+   orchMessage('Ascolto completo in corso. Tocca gli strumenti che riconosci, senza interrompere la musica.');
+  }else{
+   orchAudio.pause();
+   $('orchPlay').textContent='▶ Continua';
+   orchMessage('In pausa. Le tue risposte restano accese.');
+  }
+ }catch(_){
+  orchMessage('Registrazione non disponibile: controlla la connessione Internet e riprova.');
+  $('orchPlay').textContent='▶ Riprova';
+ }
+}
+function orchResetGuesses(){
+ orchFound.clear();orchMistakes=0;
+ orchClearFeedback();
+ orchRenderTiles();
+ orchMessage('Ricomincia a cercare gli strumenti: il brano continua dal punto in cui si trova.');
+}
+movements.forEach((m,i)=>{
+ $('orchSelect').add(new Option((i+1)+'. '+m.short,String(i)));
+ $('dancePiece').add(new Option((i+1)+'. '+m.short,String(i)));
+});
+$('orchSelect').addEventListener('change',()=>orchSetup(Number($('orchSelect').value)));
+$('orchPlay').addEventListener('click',orchTogglePlay);
+$('orchStop').addEventListener('click',()=>{orchStop();orchMessage('Ascolto fermato. Tocca «Ascolta tutto» per ricominciare dall’inizio.')});
+$('orchReset').addEventListener('click',orchResetGuesses);
+orchAudio.addEventListener('timeupdate',orchProgress);
+orchAudio.addEventListener('loadedmetadata',orchProgress);
+orchAudio.addEventListener('ended',()=>{$('orchPlay').textContent='▶ Riascolta tutto';orchProgress();orchMessage('Il brano è finito. Puoi completare le scelte oppure riascoltarlo per intero.')});
+orchAudio.addEventListener('error',()=>{if(orchPiece>=0)orchMessage('Il file audio non è raggiungibile. Controlla Internet o riprova.')});
+orchSetup(0);
 function safeText(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 let danceIdeas=[];try{danceIdeas=JSON.parse(localStorage.getItem('carnival-dances-v1')||'[]')}catch(e){}
 function saveIdeas(){try{localStorage.setItem('carnival-dances-v1',JSON.stringify(danceIdeas))}catch(e){}}
