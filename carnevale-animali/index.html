@@ -41,6 +41,12 @@
 .mcBars span{height:7px;flex:1;border-radius:8px;background:#755a5f}
 .mcBars span.on{background:#f3c978}
 @media(max-width:760px){.mcLayout{grid-template-columns:1fr}.mcPhoto{height:165px;width:145px;margin:auto;border-radius:75px 75px 9px 9px}.mcQuote{min-height:0}.mcDialog{padding:14px;border-radius:14px}.mcButtons .btn{min-height:47px;flex:1 1 130px}.mcDialog h2{margin:7px 0}}
+
+.mcVoiceOptions{background:#241f2b;border:1px solid #b68c65;border-radius:13px;padding:11px 14px;margin-top:12px}
+.mcVoiceOptions label{font-size:clamp(.92rem,1.2vw,1.06rem);font-weight:700;color:#ffe3af;display:block;margin-bottom:8px}
+.mcVoiceChoice{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.mcVoiceChoice select{flex:1 1 210px;min-width:0;min-height:49px;background:#15131b;border:1px solid #c9b49a;border-radius:9px;color:#fff4dd;padding:0 12px;font-size:clamp(.9rem,1.12vw,1.06rem)}
+.mcVoiceChoice .btn{min-height:49px}
 @media print{.mcOverlay{display:none!important}}
 </style>
 </head>
@@ -160,7 +166,14 @@
     <h2 id="mcTitle">Bonjour, ragazzi!</h2>
     <p class="mcQuote" id="mcText" aria-live="polite"></p>
     <div class="mcBars" id="mcBars" aria-hidden="true"><span></span><span></span><span></span></div>
-    <p class="mcHint" id="mcStatus" role="status">Premi «Ascolta» per la voce sintetica, oppure procedi leggendo.</p>
+    <p class="mcHint" id="mcStatus" role="status">Scegli una voce italiana maschile per ascoltare il maestro; i sottotitoli rimangono sempre disponibili.</p>
+    <div class="mcVoiceOptions">
+     <label for="mcVoice">🎙 Voce del maestro · maschile, grave</label>
+     <div class="mcVoiceChoice">
+      <select id="mcVoice" aria-label="Scegli la voce maschile italiana"><option value="">Caricamento delle voci…</option></select>
+      <button class="btn" type="button" id="mcTryVoice">▶ Prova voce e nome</button>
+     </div>
+    </div>
     <div class="mcButtons">
      <button class="btn primary" id="mcListen" type="button">🔊 Ascolta il compositore</button>
      <button class="btn" id="mcNext" type="button">Avanti →</button>
@@ -258,34 +271,87 @@ $('danceSave').addEventListener('click',()=>{danceIdeas.push({piece:Number($('da
 window.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||e.altKey||e.ctrlKey||e.metaKey)return;let tabs=['walk','labs','orchestra','theatre','teacher'];if(['1','2','3','4','5'].includes(e.key)){switchTab(tabs[Number(e.key)-1]);return}if(e.key.toLowerCase()==='f'){document.getElementById('btnFull').click();return}if(currentTab==='walk'){if(e.code==='Space'){e.preventDefault();playAudio()}else if(e.key==='ArrowRight')selectPiece(index+1);else if(e.key==='ArrowLeft')selectPiece(index-1)}});
 renderGrid();renderLabs();renderIdeas();selectPiece(0);
 
-/* Maestro di cerimonie: presentazione scritta con narrazione sintetica opzionale. */
+/* Maestro di cerimonie: presentazione scritta con narrazione sintetica opzionale.
+   La voce maschile italiana dipende dalle voci installate sul dispositivo.
+   Non selezionare automaticamente una voce femminile in caso di assenza. */
 const mcScenes=[
  {title:'Bonjour, ragazzi!',text:'Sono Camille Saint-Saëns. Nel 1886 ho immaginato un Carnevale zoologico: leoni, tartarughe, elefanti, cigni… e perfino pianisti!'},
  {title:'Gli strumenti si travestono',text:'Questi animali non sono disegnati con i colori, ma con il suono. Ascoltate i ritmi, i registri, gli accompagnamenti e gli strumenti: ognuno racconta un carattere.'},
  {title:'Ora tocca a voi!',text:'Scegliete un animale per ascoltarlo. Spostate i due cursori sulla barra per ripetere un frammento. Provate i Laboratori e scoprite chi suona nell’Orchestra. Dopo, vi aspetta la Sfida dei serragli a squadre!'}
 ];
-let mcStep=0,mcSpeechToken=0,mcSpeaking=false;
+let mcStep=0,mcSpeechToken=0;
 const mcEl=id=>document.getElementById(id);
-function mcCancel(){mcSpeechToken++;mcSpeaking=false;if('speechSynthesis' in window){try{window.speechSynthesis.cancel()}catch(_){}}}
+const mcMaleName=/\\b(male|maschile|uomo|man|homme|cosimo|diego|luca|mauro|paolo|giorgio|fabio|alessandro|giuseppe|stefano|andrea|riccardo|antonio|edoardo|matteo|damiano|nicola|enzo|pietro|claudio|alberto|roberto|giovanni|marco|bruno|carmelo|davide|lorenzo|daniele|francesco|massimo|federico|sergio|salvatore|valerio|gabriele|vittorio)\\b/i;
+const mcFemaleName=/\\b(female|femminile|woman|donna|femme|elsa|alice|lucia|giulia|paola|francesca|maria|sara|sofia|anna|silvia|chiara|bianca|monica|elena|valentina|federica|caterina|giovanna|filomena)\\b/i;
+let mcItalianVoices=[];
+function mcCancel(){mcSpeechToken++;if('speechSynthesis' in window){try{window.speechSynthesis.cancel()}catch(_){}}}
+function mcVoiceMale(v){return mcMaleName.test(v.name+' '+v.voiceURI) && !mcFemaleName.test(v.name+' '+v.voiceURI);}
+function mcRefreshVoices(){
+ if(!('speechSynthesis' in window))return;
+ const sel=mcEl('mcVoice'),current=sel.value;
+ mcItalianVoices=speechSynthesis.getVoices().filter(v=>/^it(?:-|_|$)/i.test(v.lang));
+ mcItalianVoices.sort((a,b)=>Number(mcVoiceMale(b))-Number(mcVoiceMale(a))||a.name.localeCompare(b.name));
+ sel.replaceChildren();
+ if(!mcItalianVoices.length){
+  sel.add(new Option('Nessuna voce italiana disponibile',''));
+  mcEl('mcStatus').textContent='Il dispositivo non offre voci italiane: resta disponibile la lettura dei sottotitoli.';
+  return;
+ }
+ sel.add(new Option('Scegli una voce italiana…',''));
+ for(const v of mcItalianVoices){
+   const label=(mcVoiceMale(v)?'🎙 ':'◌ ')+v.name+' · '+v.lang+(mcVoiceMale(v)?' (maschile)':' (verifica il timbro)');
+   sel.add(new Option(label,v.voiceURI));
+ }
+ let saved='';try{saved=localStorage.getItem('carnevale-voce-grave')||''}catch(_){}
+ const choice=mcItalianVoices.find(v=>v.voiceURI===(current||saved))||mcItalianVoices.find(mcVoiceMale);
+ if(choice)sel.value=choice.voiceURI;
+ if(!sel.value){
+  mcEl('mcStatus').textContent='Nessuna voce maschile identificabile automaticamente. Scegli e prova una voce, oppure leggi i sottotitoli.';
+ }else if(mcVoiceMale(choice)){
+  mcEl('mcStatus').textContent='Voce maschile italiana selezionata: '+choice.name+'. Timbro impostato su grave.';
+ }else{
+  mcEl('mcStatus').textContent='Voce selezionata: '+choice.name+'. Premi «Prova voce e nome» per verificare che sia maschile.';
+ }
+}
+function mcGetVoice(){return mcItalianVoices.find(v=>v.voiceURI===mcEl('mcVoice').value)||null;}
+function mcSayNameCorrectly(text){
+ // Pronuncia di riferimento richiesta: «Camil Sen San», non lettura letterale del cognome.
+ // La grafia resta Camille Saint-Saëns nei sottotitoli.
+ return text.replace('Camille Saint-Saëns','Camìl Sen San');
+}
 function mcDraw(){
  const x=mcScenes[mcStep];mcEl('mcTitle').textContent=x.title;mcEl('mcText').textContent=x.text;mcEl('mcCount').textContent=(mcStep+1)+' / '+mcScenes.length;
  [...mcEl('mcBars').children].forEach((c,i)=>c.classList.toggle('on',i<=mcStep));
  mcEl('mcPrev').disabled=mcStep===0;mcEl('mcNext').textContent=mcStep===mcScenes.length-1?'Inizia la passeggiata →':'Avanti →';
 }
-function mcOpen(){mcCancel();try{audio.pause()}catch(_){};mcStep=0;mcEl('mcOverlay').hidden=false;document.body.classList.add('mcOpen');mcDraw();mcEl('mcListen').focus();}
+function mcOpen(){mcCancel();try{audio.pause()}catch(_){};mcStep=0;mcEl('mcOverlay').hidden=false;document.body.classList.add('mcOpen');mcRefreshVoices();mcDraw();mcEl('mcListen').focus();}
 function mcClose(){mcCancel();mcEl('mcOverlay').hidden=true;document.body.classList.remove('mcOpen');try{sessionStorage.setItem('carnevale-intro-v1','1')}catch(_){};mcEl('mcReopen').focus();}
-function mcSpeak(){mcCancel();if(!('speechSynthesis' in window)){mcEl('mcStatus').textContent='Voce non disponibile: seguite i sottotitoli.';return}
- let token=mcSpeechToken;try{
-  const u=new SpeechSynthesisUtterance(mcScenes[mcStep].text);u.lang='it-IT';u.rate=.94;u.pitch=.88;
-  const v=speechSynthesis.getVoices().find(x=>x.lang?.toLowerCase().startsWith('it'));if(v)u.voice=v;
-  mcEl('mcStatus').textContent='Voce sintetica · battuta '+(mcStep+1)+' di '+mcScenes.length;
-  u.onend=()=>{if(token!==mcSpeechToken)return;if(mcStep<mcScenes.length-1){mcStep++;mcDraw();mcSpeak()}else{mcEl('mcStatus').textContent='Presentazione conclusa: entra nella lezione.';}};
-  u.onerror=()=>{if(token!==mcSpeechToken)return;mcEl('mcStatus').textContent='Voce non disponibile sul dispositivo: continua leggendo.';};
+function mcSpeech(text,done){
+ mcCancel();
+ if(!('speechSynthesis' in window)){mcEl('mcStatus').textContent='Voce sintetica non disponibile: seguite i sottotitoli.';return}
+ const chosen=mcGetVoice();
+ if(!chosen){mcEl('mcStatus').textContent='Per mantenere una voce maschile, scegli prima una voce italiana dall’elenco e premi «Prova voce e nome».';mcEl('mcVoice').focus();return}
+ const token=mcSpeechToken;
+ try{
+  const u=new SpeechSynthesisUtterance(mcSayNameCorrectly(text));
+  u.lang='it-IT';u.voice=chosen;u.rate=.85;u.pitch=.59;u.volume=1;
+  mcEl('mcStatus').textContent='Voce: '+chosen.name+' · grave · pronuncia del nome adattata («Camil Sen San»).';
+  u.onend=()=>{if(token!==mcSpeechToken)return;if(typeof done==='function')done()};
+  u.onerror=()=>{if(token!==mcSpeechToken)return;mcEl('mcStatus').textContent='Voce non riproducibile su questo dispositivo: usa sottotitoli o prova un’altra voce.';};
   speechSynthesis.speak(u);
- }catch(e){mcEl('mcStatus').textContent='Voce non disponibile: puoi leggere il testo.';}
+ }catch(_){mcEl('mcStatus').textContent='Voce non disponibile: puoi leggere il testo.';}
 }
+function mcSpeak(){mcSpeech(mcScenes[mcStep].text,()=>{if(mcStep<mcScenes.length-1){mcStep++;mcDraw();mcSpeak();}else mcEl('mcStatus').textContent='Presentazione conclusa: entra nella lezione.';})}
 mcEl('mcReopen').addEventListener('click',mcOpen);
 mcEl('mcListen').addEventListener('click',mcSpeak);
+mcEl('mcTryVoice').addEventListener('click',()=>mcSpeech('Buongiorno, ragazzi! Io sono Camille Saint-Saëns.'));
+mcEl('mcVoice').addEventListener('change',()=>{
+ mcCancel();const v=mcGetVoice();
+ if(v){try{localStorage.setItem('carnevale-voce-grave',v.voiceURI)}catch(_){}
+ mcEl('mcStatus').textContent='Voce scelta: '+v.name+'. Provala prima della lezione.';}
+});
+if('speechSynthesis' in window && typeof speechSynthesis.addEventListener==='function')speechSynthesis.addEventListener('voiceschanged',mcRefreshVoices);
+mcRefreshVoices();
 mcEl('mcSkip').addEventListener('click',mcClose);
 mcEl('mcNext').addEventListener('click',()=>{if(mcStep===mcScenes.length-1){mcClose();return;}mcCancel();mcStep++;mcDraw();});
 mcEl('mcPrev').addEventListener('click',()=>{mcCancel();mcStep=Math.max(0,mcStep-1);mcDraw();});
