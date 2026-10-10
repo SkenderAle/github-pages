@@ -16,7 +16,7 @@ main{max-width:980px;margin:auto;padding:2rem 1rem 6rem}.topbar{position:sticky;
 .identity{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.2rem 0 2rem}.identity label{font:800 .72rem var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}.identity input,.identity select{width:100%;margin-top:.35rem;padding:.78rem;border:1px solid #bfae94;background:#fffdf8;font:1rem var(--sans);border-radius:7px}
 .q{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:1.25rem;margin:1.25rem 0;border-radius:14px}.qhead{display:flex;gap:1rem;align-items:flex-start}.qno{font:900 .72rem var(--sans);letter-spacing:.12em;color:#fff;background:var(--red);padding:.35rem .52rem;border-radius:6px;white-space:nowrap}.q h2{font-size:clamp(1.45rem,4vw,2.15rem);margin:0 0 .4rem}.q p{line-height:1.55;margin:.45rem 0}.points{font:800 .76rem var(--sans);color:var(--gold)}
 .board{display:grid;grid-template-columns:1fr 1.3fr;gap:1rem;margin-top:1rem}.pool,.targets{min-width:0}.pool h3,.targets h3{font:900 .72rem var(--sans);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:.2rem 0 .6rem}
-.chips{display:flex;flex-wrap:wrap;gap:.55rem;min-height:48px;padding:.6rem;border:1px dashed #baa98f;border-radius:10px;background:#f7f0e4}.chip{border:1px solid #9f8d72;background:#fff;padding:.62rem .72rem;border-radius:999px;cursor:grab;font:800 .86rem/1.25 var(--sans);touch-action:none;box-shadow:0 3px 8px rgba(40,30,20,.08);user-select:none}.chip.selected{outline:3px solid #d5b26c;background:#fff4cf}.chip.correct{background:#e5f1e8;border-color:#6f9a7a}.chip.wrong{background:#f7e1df;border-color:#b56d68}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;min-height:48px;padding:.6rem;border:1px dashed #baa98f;border-radius:10px;background:#f7f0e4}.chip{border:1px solid #9f8d72;background:#fff;padding:.62rem .72rem;border-radius:999px;cursor:grab;font:800 .86rem/1.25 var(--sans);touch-action:manipulation;box-shadow:0 3px 8px rgba(40,30,20,.08);user-select:none}.chip.selected{outline:3px solid #d5b26c;background:#fff4cf}.chip:focus-visible,.target:focus-visible{outline:3px solid #876337;outline-offset:3px}.chip.correct{background:#e5f1e8;border-color:#6f9a7a}.chip.wrong{background:#f7e1df;border-color:#b56d68}
 .target-grid{display:grid;gap:.65rem}.target{border:2px dashed #b7a88f;border-radius:11px;padding:.7rem;min-height:82px;background:#f6eee0}.target b{display:block;font:900 .76rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}.target .bucket{display:flex;flex-wrap:wrap;gap:.45rem;min-height:36px}.target.active{border-color:var(--gold);background:#fff4d7}
 .order{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:1rem}.slot{min-height:105px;border:2px dashed #b7a88f;border-radius:11px;padding:.6rem;background:#f6eee0}.slot b{font:900 .75rem var(--sans);color:var(--red)}.slot .bucket{margin-top:.45rem}
 .choices{display:grid;gap:.55rem;margin-top:.8rem}.choice{display:flex;gap:.65rem;align-items:flex-start;padding:.75rem;border:1px solid var(--line);border-radius:10px;background:#fff;font:.95rem/1.4 var(--sans)}.choice input{margin-top:.15rem;transform:scale(1.15)}
@@ -33,7 +33,7 @@ footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(-
 <header><div class="hero"><div class="eyebrow">Verifica degli apprendimenti · 30 punti</div><h1>Missione Barocco</h1><p>Non serve ricordare ogni nome. Serve aver riconosciuto i fili che tengono insieme il Barocco: voce e basso, contrappunto, affetti, tonalità, concerto, colore strumentale e trasformazioni del Settecento. Trascina, ordina, abbina e scegli.</p></div></header>
 <div class="topbar"><div class="topbar-inner"><div class="progress"><span id="bar"></span></div><div class="counter" id="counter">0/9 completate</div></div></div>
 <main>
-<div class="notice"><strong>Come si usa.</strong> Su computer puoi trascinare le tessere. Su telefono puoi anche toccare una tessera e poi il riquadro in cui vuoi metterla. Puoi cambiare idea fino alla consegna.</div>
+<div class="notice"><strong>Come si usa.</strong> Su computer puoi trascinare le tessere. Su telefono puoi toccare una tessera e poi il riquadro in cui vuoi metterla. Da tastiera usa Invio o Spazio per selezionare e collocare; premi Canc su una tessera per riportarla al punto di partenza. Puoi cambiare idea fino alla consegna. Nell’anteprima GitHub i dati personali sono facoltativi e non vengono salvati: solo la versione scolastica collegata ad Apps Script registra ufficialmente i risultati.</div>
 
 <div class="identity" id="identity">
 <label>Nome<input id="nome" autocomplete="given-name"></label>
@@ -144,14 +144,15 @@ footer{padding:2.3rem 1rem;background:#181411;color:#cfc1ae;font:.8rem/1.5 var(-
 
 <div class="actions"><button type="button" class="btn secondary" id="reset">Ricomincia</button><button type="button" class="btn primary" id="submit">Consegna la prova</button></div>
 
-<div class="result" id="result"><span class="backend-badge" id="backendBadge">ANTEPRIMA</span><strong class="big" id="score">0/30</strong><div id="message"></div><div class="breakdown" id="breakdown"></div><div class="status" id="saveStatus"></div><div class="actions"><button type="button" class="btn secondary" id="practice">Correggi e riprova</button></div></div>
+<div class="result" id="result" role="status" aria-live="polite"><span class="backend-badge" id="backendBadge">ANTEPRIMA</span><strong class="big" id="score">0/30</strong><div id="message"></div><div class="breakdown" id="breakdown"></div><div class="status" id="saveStatus"></div><div class="actions"><button type="button" class="btn secondary" id="practice">Correggi e riprova</button></div></div>
 </main>
 <footer>Missione Barocco · verifica interattiva · TEST_ID <strong>barocco-01</strong> · <a href="../" style="color:#efd59f">torna al percorso sul Barocco</a></footer>
 
 <script>
 (function(){
 var TEST_ID='barocco-01', VERSION='1.0', MAX=30;
-var startedAt=new Date(), submitted=false, selected=null, dragging=null;
+var startedAt=new Date(), submitted=false, officialAttempted=false, selected=null, dragging=null;
+function officialMode(){return typeof google!=='undefined' && !!(google.script && google.script.run)}
 
 function allChips(){return Array.prototype.slice.call(document.querySelectorAll('.chip'))}
 function allTargets(){return Array.prototype.slice.call(document.querySelectorAll('.target'))}
@@ -160,9 +161,15 @@ function place(chip,target){
   bucket.appendChild(chip); chip.classList.remove('selected'); selected=null; updateProgress();
 }
 function returnToPool(chip){
-  var q=chip.closest('.q'); var pool=q.querySelector('[data-pool]'); if(pool) pool.appendChild(chip); updateProgress();
+  var q=chip.closest('.q'); var pool=q.querySelector('[data-pool]'); if(pool) pool.appendChild(chip); chip.classList.remove('selected'); selected=null; updateProgress();
 }
 allChips().forEach(function(chip){
+  chip.setAttribute('role','button'); chip.setAttribute('tabindex','0');
+  chip.addEventListener('keydown',function(e){
+    if(submitted)return;
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();chip.click()}
+    else if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();returnToPool(chip)}
+  });
   chip.addEventListener('dragstart',function(){dragging=chip;chip.classList.add('selected')});
   chip.addEventListener('dragend',function(){dragging=null;chip.classList.remove('selected')});
   chip.addEventListener('click',function(e){
@@ -173,6 +180,9 @@ allChips().forEach(function(chip){
   });
 });
 allTargets().forEach(function(t){
+  t.setAttribute('role','button');t.setAttribute('tabindex','0');
+  t.setAttribute('aria-label','Colloca qui: '+t.querySelector('b').textContent.trim());
+  t.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t.click()}});
   t.addEventListener('dragover',function(e){e.preventDefault();t.classList.add('active')});
   t.addEventListener('dragleave',function(){t.classList.remove('active')});
   t.addEventListener('drop',function(e){e.preventDefault();t.classList.remove('active');if(dragging&&!submitted)place(dragging,t)});
@@ -221,9 +231,8 @@ function evaluate(){
   total=Math.round(total*100)/100;return{scores:scores,total:total};
 }
 function identityValid(){
-  var schoolMode=typeof google!=='undefined'&&google.script&&google.script.run;
-  if(schoolMode)return true;
-  return document.getElementById('nome').value.trim()&&document.getElementById('cognome').value.trim()&&document.getElementById('classe').value;
+  if(!officialMode())return true; // L'anteprima è anonima e non registra nulla.
+  return !!(document.getElementById('nome').value.trim()&&document.getElementById('cognome').value.trim()&&document.getElementById('classe').value);
 }
 function payload(ev){
   var now=new Date();
@@ -238,7 +247,9 @@ function renderResult(ev){
 }
 function saveOfficial(p){
   var status=document.getElementById('saveStatus');
-  if(typeof google!=='undefined'&&google.script&&google.script.run){
+  if(officialMode()){
+    if(officialAttempted){status.textContent='Questo nuovo tentativo è solo di allenamento: la consegna ufficiale precedente non viene inviata una seconda volta.';return}
+    officialAttempted=true;
     document.getElementById('backendBadge').textContent='VERIFICA UFFICIALE';
     status.textContent='Registrazione in corso…';
     google.script.run.withSuccessHandler(function(r){
@@ -247,19 +258,20 @@ function saveOfficial(p){
     }).withFailureHandler(function(e){status.textContent='Errore di registrazione: '+(e&&e.message?e.message:e)}).registraRisultatoBarocco(p);
   }else{
     document.getElementById('backendBadge').textContent='ANTEPRIMA GITHUB';
-    status.textContent='Anteprima funzionante: il punteggio non viene inviato a Google finché questa pagina non viene collegata all’Apps Script.';
-    try{localStorage.setItem(TEST_ID+':preview',JSON.stringify(p))}catch(e){}
+    status.textContent='Allenamento su GitHub: il punteggio rimane soltanto visibile in questa pagina, senza trasmissione né salvataggio dei dati personali.';
   }
 }
-document.getElementById('submit').addEventListener('click',function(){
+var submitButton=document.getElementById('submit');
+submitButton.addEventListener('click',function(){
+  if(submitted)return;
   if(!identityValid()){alert('Compila almeno nome, cognome e classe.');return}
   var missing=Array.prototype.slice.call(document.querySelectorAll('.q')).filter(function(q){return !qComplete(q)});
   if(missing.length){if(!confirm('Hai lasciato '+missing.length+' prova/e incomplete. Vuoi consegnare lo stesso?'))return}
-  if(!confirm('Sei davvero pronto? Quando sarà collegata alla scuola, la prima consegna sarà quella ufficiale.'))return;
-  submitted=true;var ev=evaluate();renderResult(ev);saveOfficial(payload(ev));
+  if(!confirm(officialMode()&&!officialAttempted?'Confermi la consegna ufficiale? Il primo tentativo sarà registrato.':'Vuoi controllare il risultato di questo allenamento?'))return;
+  submitted=true;submitButton.disabled=true;var ev=evaluate();renderResult(ev);saveOfficial(payload(ev));
 });
 document.getElementById('practice').addEventListener('click',function(){
-  submitted=false;document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('correct','wrong')});document.getElementById('result').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});
+  submitted=false;selected=null;dragging=null;submitButton.disabled=false;document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('correct','wrong','selected')});document.getElementById('result').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});
 });
 document.getElementById('reset').addEventListener('click',function(){if(confirm('Vuoi davvero ricominciare da capo?'))location.reload()});
 updateProgress();
