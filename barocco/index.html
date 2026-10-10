@@ -1108,6 +1108,31 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 #tonalita .audit13-monochord .audit13-art{padding:.3rem}
 }
 
+
+/* Barocco audit 14 — le pagine della polifonia, Frescobaldi e Bach */
+#contrappunto .audit14-source{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);margin:1.35rem 0 1.95rem;background:#faf4e9;color:#30261d;border:1px solid #c9b293;overflow:hidden}
+#contrappunto .audit14-source.reverse{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)}
+#contrappunto .audit14-source.reverse .audit14-figure{order:2}
+#contrappunto .audit14-figure{margin:0;min-width:0;background:#eee1d0}
+#contrappunto .audit14-image{display:flex;justify-content:center;align-items:center;min-height:190px;background:#e6dac9;text-decoration:none}
+#contrappunto .audit14-image img{display:block;width:100%;height:auto;max-height:400px;object-fit:contain}
+#contrappunto .audit14-figure figcaption{padding:.82rem .9rem;color:#493a2c;background:#f1e5d3;font:500 .82rem/1.58 var(--sans)}
+#contrappunto .audit14-figure a,#contrappunto .audit14-content a{color:#704423;text-decoration:underline}
+#contrappunto .audit14-content{align-self:center;padding:1.15rem 1.2rem 1.3rem}
+#contrappunto .audit14-content h4{font-size:clamp(1.19rem,2vw,1.47rem);line-height:1.28;color:#31261b;margin:.3rem 0 .65rem}
+#contrappunto .audit14-content p{color:#35291f;font-size:.97rem;line-height:1.66;margin:.55rem 0 .8rem}
+#contrappunto .audit14-eyebrow{font:800 .72rem/1.45 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#835326}
+#contrappunto .audit14-question{background:#eedfc9;color:#34261d!important;border-left:4px solid #a0763d;padding:.72rem .85rem;font-size:.92rem!important}
+#contrappunto .audit14-error{display:none;background:#eee1d0;color:#453324;padding:.85rem;font:.87rem/1.6 var(--sans)}
+#contrappunto .audit14-failed .audit14-image{display:none}
+#contrappunto .audit14-failed .audit14-error{display:block}
+@media(max-width:790px){
+  #contrappunto .audit14-source,#contrappunto .audit14-source.reverse{grid-template-columns:minmax(0,1fr)}
+  #contrappunto .audit14-source.reverse .audit14-figure{order:0}
+  #contrappunto .audit14-content{padding:1rem}
+  #contrappunto .audit14-image img{max-height:325px}
+}
+
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
@@ -1964,6 +1989,22 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       <p>Frescobaldi è centrale proprio perché rende difficile separare nettamente questi mondi. Nei <i>Fiori musicali</i> del 1635 ricercari, canzoni e toccate convivono dentro una raccolta destinata all’organo e alla liturgia, mentre nelle raccolte per cembalo la toccata permette all’esecutore di rallentare, accelerare, separare le sezioni e trattare il tempo con una libertà che sarebbe impossibile descrivere come semplice metronomia.</p>
       <p>Quando più tardi Bach studierà la tradizione italiana e tedesca, Frescobaldi sarà già diventato uno dei punti attraverso i quali la scrittura tastieristica italiana aveva raggiunto il Nord Europa. La genealogia che conduce alla fuga bachiana passa quindi anche da Roma.</p>
 
+
+      <div class="audit14-source" id="contrappunto-frescobaldi-partitura">
+        <figure class="audit14-figure">
+          <a class="audit14-image" href="https://upload.wikimedia.org/wikipedia/commons/e/e2/Frescobaldi-Fiori-musicali-toccata-domenica.png" target="_blank" rel="noopener noreferrer" title="Ingrandisci la pagina dei Fiori musicali"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Frescobaldi-Fiori-musicali-toccata-domenica.png" alt="Prima pagina della Toccata avanti la Messa della Domenica, stampata nei Fiori musicali di Frescobaldi nel 1635: quattro righi musicali sovrapposti per ciascun sistema." loading="lazy" decoding="async" onerror="this.closest('.audit14-source').classList.add('audit14-failed')"></a>
+          <p class="audit14-error">L'immagine non si è caricata: consulta la fonte originale attraverso il collegamento nella didascalia.</p>
+          <figcaption>Girolamo Frescobaldi, <i>Toccata avanti la Messa della Domenica</i>, prima pagina dai <i>Fiori musicali</i>, Venezia, <b>1635</b>. Riproduzione di una stampa storica, pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:Frescobaldi-Fiori-musicali-toccata-domenica.png" target="_blank" rel="noopener noreferrer">Originale digitale, fonte e diritti ↗</a></figcaption>
+        </figure>
+        <div class="audit14-content">
+          <div class="audit14-eyebrow">1635 · La musica nel libro a stampa</div>
+          <h4>Quattro righi, una sola tastiera</h4>
+          <p>La pagina non dispone le note nei due pentagrammi ai quali un pianista moderno è abituato. Le parti si leggono in <em>partitura aperta</em>, su righi distinti: la stampa rende visibili i movimenti delle singole linee, benché sia destinata a un solo esecutore all'organo.</p>
+          <p>È l'inizio di una <i>toccata</i>, non di un ricercare. Nello stesso libro convivono scritture più libere e pagine imitative rigorose: il contrappunto non si identifica con una sola forma.</p>
+          <p class="audit14-question"><b>Guarda e confronta.</b> Segui i quattro righi: quali note si muovono nello stesso momento e quali rimangono ferme? Perché a un organista può essere utile vedere le parti separate?</p>
+        </div>
+      </div>
+
       <div class="fugue-lab">
         <div class="eyebrow">Laboratorio · la fuga in tre ingressi</div>
         <h3>Non una rincorsa, ma una conversazione regolata</h3>
@@ -1993,6 +2034,22 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       <h3>Bach: la fuga non è una gabbia</h3>
       <p>Nel <i>Clavicembalo ben temperato</i> preludio e fuga vengono accostati in tutte le tonalità maggiori e minori dei due libri, ma la fuga non appare mai come esercizio scolastico ripetuto ventiquattro volte nello stesso modo. Il numero delle voci cambia, i soggetti possono essere cantabili, cromatici, ritmicamente taglienti o quasi danzanti, e la relazione fra esposizione, episodi e ritorni viene adattata ogni volta al carattere del materiale.</p>
       <p>Ancora più radicale è <i>L’Arte della fuga</i>, dove Bach prende un solo soggetto fondamentale e lo sottopone a inversione, aumentazione, diminuzione, combinazione con nuovi soggetti e procedimenti sempre più complessi. L’opera diventa quasi un laboratorio sui modi nei quali una stessa identità può sopravvivere mentre viene trasformata.</p>
+
+      <div class="audit14-source reverse" id="contrappunto-bach-fuga-autografo">
+        <figure class="audit14-figure">
+          <a class="audit14-image" href="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Bach-wtc1-fugue4-ms.jpg/960px-Bach-wtc1-fugue4-ms.jpg" target="_blank" rel="noopener noreferrer" title="Ingrandisci il manoscritto della Fuga BWV 849"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Bach-wtc1-fugue4-ms.jpg/960px-Bach-wtc1-fugue4-ms.jpg" alt="Pagina autografa di Johann Sebastian Bach, 1722: apertura della Fuga in do diesis minore BWV 849, con notazione a inchiostro marrone, più voci intrecciate e titolo manoscritto Fuga 4." loading="lazy" decoding="async" onerror="this.closest('.audit14-source').classList.add('audit14-failed')"></a>
+          <p class="audit14-error">L'immagine non si è caricata: consulta la digitalizzazione originale indicata nella didascalia.</p>
+          <figcaption>Johann Sebastian Bach, <i>Fuga in do diesis minore</i>, BWV 849/2, dal libro I del <i>Clavicembalo ben temperato</i>, <b>1722</b>, prima pagina del manoscritto autografo conservato alla Staatsbibliothek zu Berlin; pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:Bach-wtc1-fugue4-ms.jpg" target="_blank" rel="noopener noreferrer">Immagine, provenienza e diritti ↗</a></figcaption>
+        </figure>
+        <div class="audit14-content">
+          <div class="audit14-eyebrow">1722 · La mano del compositore</div>
+          <h4>Una fuga, cinque voci, un autore riconoscibile</h4>
+          <p>Questa non è una trascrizione moderna né una stampa postuma: è la scrittura autografa della quarta fuga del primo libro, in do diesis minore, composta a <b>cinque voci</b>. Il soggetto viene affidato successivamente a linee diverse; l'invenzione consiste nel farle convivere e continuare a trasformarsi, non nel ripetere meccanicamente un tema.</p>
+          <p>Rispetto alla partitura aperta di Frescobaldi, vediamo anche un diverso modo di disporre sulla pagina le linee contrappuntistiche: la grafia cambia, ma il problema musicale — rendere intellegibili più voci autonome — rimane.</p>
+          <p class="audit14-question"><b>Guarda e verifica.</b> In alto leggi «Fuga 4». Cerca ora il primo ingresso e prova a individuare dove si aggiungono le altre linee: quanti piani sonori riesci a seguire con gli occhi?</p>
+        </div>
+      </div>
+
       <div class="source-row">
         <a class="score-link" href="https://imslp.org/wiki/Das_wohltemperierte_Klavier_I%2C_BWV_846-869_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Clavicembalo ben temperato I</a>
         <a class="score-link" href="https://imslp.org/wiki/Die_Kunst_der_Fuge%2C_BWV_1080_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · L’Arte della fuga</a>
