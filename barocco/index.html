@@ -646,6 +646,42 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
 
 .instrument-cabinet{margin:2.2rem 0;padding:1.4rem;background:#211a16;color:#f4ead8;border:1px solid #9b7945}.instrument-cabinet h3{color:#f2d59a;margin:.1rem 0 .45rem}.odd-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1.1rem 0}.odd-card{margin:0;background:#f2e7d4;color:#2b211a;border:1px solid #b89a69;overflow:hidden}.odd-card img{width:100%;height:230px;object-fit:contain;background:#e7dac3;padding:.5rem}.odd-card figcaption{padding:.75rem;font-family:var(--sans);font-size:.83rem;line-height:1.4}.luthier-open{background:var(--gold);color:#fff;border:0;border-radius:999px;padding:.72rem 1rem;font-family:var(--sans);font-weight:800;cursor:pointer}.luthier-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.inside-instrument{padding:1rem;background:#211a16;color:#f6e8cf;border-left:4px solid var(--gold2)}@media(max-width:720px){.odd-gallery,.luthier-grid{grid-template-columns:1fr}.odd-card img{height:200px}}
 .nav-home{font-weight:800!important;border:1px solid currentColor!important;border-radius:999px!important;padding:.38rem .7rem!important;text-decoration:none!important;white-space:nowrap}
+
+/* AUDIT VISIVO ORCHESTRA BAROCCA 2026-10 — figure legate al testo, non decorative */
+#orchestra .audit-orch-story{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:stretch;gap:0;margin:1.7rem 0 2rem;background:#fffaf1;border:1px solid #c7b597;overflow:hidden}
+#orchestra .audit-orch-story figure{margin:0;background:#e6ddcf;min-width:0}
+#orchestra .audit-orch-story .audit-orch-copy{padding:1.35rem 1.35rem 1.1rem;align-self:center}
+#orchestra .audit-orch-kicker{font:800 .7rem/1.35 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#864b35;margin:0 0 .45rem}
+#orchestra .audit-orch-story h3{font-size:clamp(1.3rem,2.2vw,1.75rem);margin:.2rem 0 .65rem;line-height:1.2}
+#orchestra .audit-orch-story .audit-orch-copy p{font-size:.97rem;line-height:1.65;margin:.5rem 0}
+#orchestra .audit-orch-figure{margin:1.55rem 0 1.95rem;background:#fffaf1;border:1px solid #c7b597;overflow:hidden}
+#orchestra .audit-orch-wide{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:stretch}
+#orchestra .audit-orch-wide .audit-orch-explain{padding:1.35rem;align-self:center}
+#orchestra .audit-orch-wide .audit-orch-explain p{font-size:.96rem;line-height:1.65}
+#orchestra .audit-orch-wide .audit-orch-explain h4{font-size:1.24rem;margin:.25rem 0 .7rem}
+#orchestra .audit-photo{display:block;text-decoration:none;background:#e6ddcf}
+#orchestra .audit-photo img{display:block;width:100%;height:auto;max-height:440px;object-fit:contain;margin:auto}
+#orchestra .audit-orch-wide .audit-photo img{max-height:355px}
+#orchestra .audit-orch-story .audit-photo img{max-height:490px}
+#orchestra .audit-orch-figure figcaption{padding:.75rem .9rem .85rem;font:500 .79rem/1.5 var(--sans);color:#554b42}
+#orchestra .audit-orch-figure figcaption a,#orchestra .audit-orch-story figcaption a{color:#71472c;text-decoration:underline;text-underline-offset:2px}
+#orchestra .audit-orch-story figcaption{padding:.7rem .85rem .85rem;font:500 .78rem/1.5 var(--sans);color:#554b42}
+#orchestra .audit-orch-gallery{margin:2rem 0 2.2rem}
+#orchestra .audit-orch-gallery>h3{margin:.1rem 0 .45rem}
+#orchestra .audit-orch-gallery>p{max-width:75ch;line-height:1.55}
+#orchestra .audit-orch-instruments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0}
+#orchestra .audit-orch-instruments figure{margin:0;border:1px solid #c7b597;background:#fffaf1;overflow:hidden}
+#orchestra .audit-orch-instruments .audit-photo{height:265px;display:flex;align-items:center;justify-content:center}
+#orchestra .audit-orch-instruments .audit-photo img{width:100%;height:100%;object-fit:contain;max-height:none}
+#orchestra .audit-orch-instruments figcaption{font:500 .83rem/1.5 var(--sans);padding:.8rem .9rem}
+#orchestra .audit-orch-instruments figcaption b{display:block;font-size:.97rem;color:#33291f;margin-bottom:.25rem}
+#orchestra .audit-orch-question{padding:.85rem 1rem;border-left:4px solid #a07634;background:#efe2ce;line-height:1.55;margin:1rem 0 1.2rem}
+#orchestra .audit-photo-fallback{display:none;font:.84rem/1.45 var(--sans);padding:1rem;background:#f4e9d9;color:#4c3023}
+#orchestra .audit-failed .audit-photo-fallback{display:block}
+#orchestra .audit-failed .audit-photo{display:none}
+@media(max-width:790px){#orchestra .audit-orch-story,#orchestra .audit-orch-wide{grid-template-columns:1fr}#orchestra .audit-orch-story .audit-orch-copy{padding:1.1rem}#orchestra .audit-orch-wide .audit-orch-explain{padding:1.1rem}}
+@media(max-width:700px){#orchestra .audit-orch-instruments{grid-template-columns:1fr}#orchestra .audit-orch-instruments .audit-photo{height:280px}#orchestra .audit-orch-story .audit-photo img{max-height:340px}}
+
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
@@ -1015,6 +1051,28 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
           <h3>Il testo può perfino scomparire</h3>
           <p>Quando quei gesti diventano abbastanza riconoscibili, gli strumenti possono evocare battaglie, temporali, uccelli, marce o scene narrative anche senza che nessuna voce pronunci il testo.</p>
         </article>
+      </div>
+
+      
+      <div class="audit-orch-gallery" aria-labelledby="audit-orch-gallery-title">
+        <div class="audit-orch-kicker">Galleria documentaria · Osserva gli strumenti</div>
+        <h3 id="audit-orch-gallery-title">Tre strumenti, tre funzioni nell'insieme</h3>
+        <p>Qui non vediamo illustrazioni moderne, ma strumenti storici autentici conservati al Metropolitan Museum of Art. Osservare la loro costruzione permette di capire meglio come archi, fiati e continuo contribuissero all'identità sonora dell'orchestra.</p>
+        <div class="audit-orch-instruments">
+          <figure>
+            <a class="audit-photo" href="https://collectionapi.metmuseum.org/api/collection/v1/iiif/503057/1025323/main-image" target="_blank" rel="noopener noreferrer" title="Apri l'immagine per ingrandirla"><img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/503057/1025323/main-image" alt="Violino costruito da Nicolò Amati nel 1669, ripreso frontalmente" width="750" height="1000" loading="lazy" decoding="async" onerror="this.parentElement.parentElement.classList.add('audit-failed')"></a><p class="audit-photo-fallback">L'immagine non è disponibile in questo momento. Utilizza il collegamento alla scheda del museo nella didascalia.</p>
+            <figcaption><b>Il nucleo degli archi</b>Violino di Nicolò Amati, 1669. Lo strumento documenta la grande liuteria cremonese; nel tempo ha subito modifiche, perciò non va assunto come perfetta fotografia dell'assetto originario. <a href="https://www.metmuseum.org/art/collection/search/503057" target="_blank" rel="noopener noreferrer">Fonte ↗</a></figcaption>
+          </figure>
+          <figure>
+            <a class="audit-photo" href="https://collectionapi.metmuseum.org/api/collection/v1/iiif/503466/1025085/main-image" target="_blank" rel="noopener noreferrer" title="Apri l'immagine per ingrandirla"><img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/503466/1025085/main-image" alt="Grand oboe in bosso e ottone, circa 1650, un oboe in fase di evoluzione" width="597" height="1000" loading="lazy" decoding="async" onerror="this.parentElement.parentElement.classList.add('audit-failed')"></a><p class="audit-photo-fallback">L'immagine non è disponibile in questo momento. Utilizza il collegamento alla scheda del museo nella didascalia.</p>
+            <figcaption><b>Il colore dei fiati</b><i>Grand oboe</i>, circa 1650. Uno strumento di transizione: i fiati acquisiscono forme, tecniche e funzioni sempre più specifiche. <a href="https://www.metmuseum.org/art/collection/search/503466" target="_blank" rel="noopener noreferrer">Fonte ↗</a></figcaption>
+          </figure>
+          <figure>
+            <a class="audit-photo" href="https://collectionapi.metmuseum.org/api/collection/v1/iiif/502377/1024424/main-image" target="_blank" rel="noopener noreferrer" title="Apri l'immagine per ingrandirla"><img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/502377/1024424/main-image" alt="Clavicembalo monumentale di Michele Todini, circa 1670, con sculture dorate" width="1000" height="618" loading="lazy" decoding="async" onerror="this.parentElement.parentElement.classList.add('audit-failed')"></a><p class="audit-photo-fallback">L'immagine non è disponibile in questo momento. Utilizza il collegamento alla scheda del museo nella didascalia.</p>
+            <figcaption><b>Il sostegno armonico</b>Clavicembalo progettato da Michele Todini, circa 1670. È uno strumento eccezionalmente decorato, <em>non</em> un tipico cembalo d'orchestra: rende visibile la presenza delle tastiere nel mondo musicale barocco. <a href="https://www.metmuseum.org/art/collection/search/502377" target="_blank" rel="noopener noreferrer">Fonte ↗</a></figcaption>
+          </figure>
+        </div>
+        <p class="audit-orch-question"><strong>Guarda meglio.</strong> Quale di questi strumenti può sostenere una linea melodica, quale può aggiungere un colore particolare e quale può realizzare gli accordi del basso continuo? Non c'è sempre un solo ruolo possibile: tutto dipende dalla partitura.</p>
       </div>
 
       <div class="thread-sign join"><strong>I due filoni restano entrambi attivi:</strong> la monodia accompagnata rende potentissimo il rapporto fra parola, voce e affetto, mentre la polifonia imitativa offre alla retorica altri strumenti, come ingressi successivi, sovrapposizioni e densità crescenti. Il passaggio verso la musica descrittiva non appartiene quindi a uno solo dei due rami.</div>
@@ -2451,6 +2509,20 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
       <p>Dire che “l’orchestra nasce nel Barocco” è corretto se precisiamo che prima esistevano già consort, cappelle, bande, gruppi di fiati e complessi strumentali anche molto grandi. Ciò che cambia fra Seicento e primo Settecento è il modo nel quale questi strumenti vengono progressivamente pensati come un organismo relativamente stabile, con un nucleo di archi, fiati chiamati a funzioni sempre più specifiche, bassi e tastiere destinati al continuo e una strumentazione che il compositore comincia a controllare con maggiore precisione.</p>
       <p>Il Barocco non inventa quindi il fatto di mettere insieme molti strumenti. Inventa progressivamente qualcosa di più profondo: <strong>l’orchestra come organismo</strong>, cioè un insieme nel quale famiglie differenti possono avere identità propria, fondersi, opporsi, accompagnare, rispondere e trasformare il peso del discorso musicale.</p>
 
+      
+      <div class="audit-orch-story" aria-label="Documenti: la pratica musicale d'insieme nel Seicento">
+        <figure>
+          <a class="audit-photo" href="https://collectionapi.metmuseum.org/api/collection/v1/iiif/437070/795817/main-image" target="_blank" rel="noopener noreferrer" title="Apri l'immagine per ingrandirla"><img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/437070/795817/main-image" alt="Gabriël Metsu, Una compagnia musicale, 1659: donna con liuto, un suonatore con viola e un libro di musica" width="875" height="1000" loading="lazy" decoding="async" onerror="this.parentElement.parentElement.classList.add('audit-failed')"></a><p class="audit-photo-fallback">L'immagine non è disponibile in questo momento. Utilizza il collegamento alla scheda del museo nella didascalia.</p>
+          <figcaption>Gabriël Metsu, <i>A Musical Party</i>, 1659. Metropolitan Museum of Art, opera in pubblico dominio. <a href="https://www.metmuseum.org/art/collection/search/437070" target="_blank" rel="noopener noreferrer">Scheda e fonte dell'immagine ↗</a></figcaption>
+        </figure>
+        <div class="audit-orch-copy">
+          <div class="audit-orch-kicker">Guarda prima di leggere</div>
+          <h3>Suonare insieme non significava ancora «fare orchestra»</h3>
+          <p>Nel dipinto riconosciamo il liuto, una viola, lo spartito e un piccolo ambiente di musica domestica. Gli strumenti convivono, ma non formano ancora l'organismo orchestrale relativamente stabile che si affermerà progressivamente nel Barocco.</p>
+          <p>Il quadro ci aiuta a distinguere due idee: <strong>fare musica insieme</strong> e <strong>organizzare un'orchestra</strong>. Non è una fotografia di una specifica orchestra storica, bensì una testimonianza figurativa della pratica musicale d'insieme.</p>
+        </div>
+      </div>
+
       <div class="orchestra-grid">
         <article class="orchestra-card">
           <b>Archi</b>
@@ -2474,6 +2546,20 @@ linear-gradient(180deg,#171411,#211b17 55%,#171411);color:#f1e7d8;border-top:1px
       <h3>La prima orchestra non ha ancora una fotografia di classe</h3>
       <p>Nel primo Seicento gli organici possono cambiare molto da un luogo all’altro e perfino da una rappresentazione all’altra. Monteverdi nell’<i>Orfeo</i> indica una tavolozza molto ricca, ma non esiste ancora un modello unico al quale tutte le orchestre europee debbano conformarsi. È proprio durante il Barocco che alcune combinazioni diventano progressivamente più stabili, soprattutto attorno agli archi e al continuo, mentre il compositore interviene sempre più direttamente nella scelta dei colori.</p>
       <p>Per questo il termine “orchestra barocca” indica insieme una realtà storica e un processo: non un organico standard già pronto nel 1600, ma una progressiva stabilizzazione delle famiglie strumentali, delle funzioni e delle gerarchie sonore che porterà, nel corso del Settecento, all’orchestra classica.</p>
+
+      
+      <div class="audit-orch-figure audit-orch-wide">
+        <figure style="margin:0;min-width:0">
+          <a class="audit-photo" href="https://collectionapi.metmuseum.org/api/collection/v1/iiif/382730/2253115/main-image" target="_blank" rel="noopener noreferrer" title="Apri l'immagine per ingrandirla"><img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/382730/2253115/main-image" alt="Wallerant Vaillant, Il concerto: tre persone con spartito e strumento ad arco, incisione seicentesca" width="791" height="1000" loading="lazy" decoding="async" onerror="this.parentElement.parentElement.classList.add('audit-failed')"></a><p class="audit-photo-fallback">L'immagine non è disponibile in questo momento. Utilizza il collegamento alla scheda del museo nella didascalia.</p>
+          <figcaption>Wallerant Vaillant, <i>The Concert</i>, XVII secolo, mezzatinta. Metropolitan Museum of Art, pubblico dominio. <a href="https://www.metmuseum.org/art/collection/search/382730" target="_blank" rel="noopener noreferrer">Scheda dell'opera ↗</a></figcaption>
+        </figure>
+        <div class="audit-orch-explain">
+          <div class="audit-orch-kicker">Una testimonianza, non un organico modello</div>
+          <h4>La prima orchestra non ha ancora una «fotografia di classe»</h4>
+          <p>In quest'incisione il suonare insieme prende forma attraverso persone, strumenti e musica scritta. Ma sarebbe sbagliato dedurre da una singola immagine come fosse composta un'orchestra del Seicento.</p>
+          <p>Gli organici cambiano secondo la città, la corte, il teatro e il repertorio. L'immagine ci racconta una pratica sociale; le partiture e le fonti d'archivio ci aiutano a ricostruire la composizione degli ensemble.</p>
+        </div>
+      </div>
 
       <h3>Due porte del teatro: ouverture francese e sinfonia italiana</h3>
       <p>Una parte importante della futura sinfonia nasce proprio davanti al sipario. Il teatro musicale ha infatti bisogno di musica strumentale capace di aprire, preparare e incorniciare l’azione, e in Francia e in Italia si consolidano due modelli differenti che diventeranno enormemente influenti.</p>
