@@ -1031,6 +1031,48 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 @media(max-width:670px){#strumenti .audit12-grid{grid-template-columns:minmax(0,1fr)}
  #strumenti .audit12-archive{padding:.85rem}#strumenti .audit12-image img{max-height:320px}}
 
+
+/* AUDIT ICONOGRAFICO 13 — Werckmeister, monocordo del 1691 */
+#tonalita .audit13-witness{
+  margin:1.65rem 0 2.1rem;padding:1.05rem;background:#fbf6eb;
+  border:1px solid #c8b391;color:#33271e;overflow:hidden
+}
+#tonalita .audit13-witness .audit13-kicker{
+  font:800 .74rem/1.35 var(--sans);letter-spacing:.055em;text-transform:uppercase;
+  color:#80532c
+}
+#tonalita .audit13-witness h3{font-size:clamp(1.25rem,2vw,1.6rem);color:#31241a;
+  line-height:1.27;margin:.32rem 0 .65rem}
+#tonalita .audit13-witness>p{font-size:.96rem;line-height:1.67;color:#382a20;
+  margin:.55rem 0 .85rem}
+#tonalita .audit13-figure{margin:1.1rem 0;background:#f2e9d9;border:1px solid #c8b391}
+#tonalita .audit13-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;
+  background:#e4d9c7}
+#tonalita .audit13-scroll:focus-visible{outline:3px solid #80552b;outline-offset:-3px}
+#tonalita .audit13-image{display:block;width:100%;text-decoration:none}
+#tonalita .audit13-image img{display:block;width:100%;height:auto;object-fit:contain}
+#tonalita .audit13-figure figcaption{padding:.82rem 1rem;color:#4c3b2c;
+  font:500 .83rem/1.56 var(--sans)}
+#tonalita .audit13-figure figcaption a,#tonalita .audit13-crosslinks a{
+  color:#714625;text-decoration:underline;text-underline-offset:2px
+}
+#tonalita .audit13-questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;margin:.95rem 0}
+#tonalita .audit13-questions>div{background:#efe1cb;padding:.8rem .95rem;
+  border-left:4px solid #a37842;color:#34271f;font-size:.93rem;line-height:1.62}
+#tonalita .audit13-questions b{color:#3c2a1c}
+#tonalita .audit13-crosslinks{padding:.72rem .9rem;background:#f1e6d4;
+  font-size:.92rem;line-height:1.6;color:#3d2e22}
+#tonalita .audit13-fallback{display:none;padding:1rem;color:#3d2e22;font-size:.9rem}
+#tonalita .audit13-witness.audit13-error .audit13-scroll{display:none}
+#tonalita .audit13-witness.audit13-error .audit13-fallback{display:block}
+@media(max-width:650px){
+  #tonalita .audit13-witness{padding:.8rem}
+  #tonalita .audit13-questions{grid-template-columns:minmax(0,1fr);gap:.75rem}
+  #tonalita .audit13-image{width:800px}
+  #tonalita .audit13-image img{width:800px;max-width:none}
+}
+
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
@@ -1593,6 +1635,25 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       <div class="source-row">
         <a class="score-link" href="https://imslp.org/wiki/Musicalische_Temperatur_%28Werckmeister%2C_Andreas%29" target="_blank" rel="noopener">♫ IMSLP · Werckmeister, Musicalische Temperatur</a>
         <button class="tech-button" type="button" data-modal="modal-temperamento">Apri · Temperamento e tonalità</button>
+      </div>
+
+
+      <div class="audit13-witness" id="tonalita-monocordo">
+        <div class="audit13-kicker">Fonte storica · Il temperamento si può vedere</div>
+        <h3>Werckmeister disegna le distanze fra i suoni</h3>
+        <p>Il problema dell'accordatura non è soltanto una teoria astratta. Nel trattato <i>Musicalische Temperatur</i> del 1691 Werckmeister fa incidere una tavola di <strong>monocordo</strong>, lo strumento a una corda che permette di studiare gli intervalli attraverso rapporti fra lunghezze. Le linee e i numeri della sua figura mostrano come le distanze musicali vengano misurate e messe a confronto; non sono una partitura da eseguire e non raffigurano un moderno pianoforte.</p>
+        <figure class="audit13-figure">
+          <div class="audit13-scroll" tabindex="0" role="region" aria-label="Tavola orizzontale del monocordo di Werckmeister: scorri lateralmente per esaminare l'incisione su schermi piccoli">
+            <a class="audit13-image" href="https://upload.wikimedia.org/wikipedia/commons/0/04/Fotothek_df_tg_0008309_Musik_%5E_Musikinstrument_%5E_Physik_%5E_Kanon.jpg" target="_blank" rel="noopener noreferrer" title="Apri la tavola originale del monocordo a dimensione intera"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Fotothek_df_tg_0008309_Musik_%5E_Musikinstrument_%5E_Physik_%5E_Kanon.jpg" width="800" height="194" alt="Incisione orizzontale del 1691: monocordo con graduazioni, linee verticali e archi curvi che confrontano intervalli e suddivisioni della corda" loading="lazy" decoding="async" onerror="this.closest('.audit13-witness').classList.add('audit13-error')"></a>
+          </div>
+          <p class="audit13-fallback">Immagine non disponibile; consulta il documento originale attraverso il collegamento nella didascalia.</p>
+          <figcaption>Andreas Werckmeister, <i>Musicalische Temperatur</i> (Francoforte e Lipsia, <b>1691</b>), tavola incisa del monocordo. Esemplare della Sächsische Landesbibliothek – Staats- und Universitätsbibliothek Dresden, segnatura <b>MB.8.414</b>, riproduzione Deutsche Fotothek, pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:Fotothek_df_tg_0008309_Musik_%5E_Musikinstrument_%5E_Physik_%5E_Kanon.jpg" target="_blank" rel="noopener noreferrer">Immagine, catalogazione e diritti ↗</a> · <a href="https://digital.slub-dresden.de/werkansicht/dlf/11688" target="_blank" rel="noopener noreferrer">Consulta il volume digitalizzato alla SLUB ↗</a></figcaption>
+        </figure>
+        <div class="audit13-questions">
+          <div><b>Guarda.</b> Riesci a individuare le divisioni verticali e le curve sovrapposte? Se tutte le distanze musicali fossero già equivalenti, perché avrebbe senso confrontare ripartizioni differenti?</div>
+          <div><b>Collega.</b> Il monocordo studia gli intervalli; la tastiera deve poi renderli praticabili. Quali compromessi permettono di suonare in più tonalità senza conservare tutte le consonanze perfettamente pure?</div>
+        </div>
+        <p class="audit13-crosslinks"><b>Da Werckmeister a Bach, senza scorciatoie.</b> Il frontespizio autografo del <i>Clavicembalo ben temperato</i> del 1722 è già riprodotto nel <a href="#bach">capitolo su Bach</a>: non lo duplico qui. «Ben temperato» indica una possibilità pratica di attraversare le tonalità, ma il titolo di Bach <strong>non specifica quale esatto temperamento</strong> usare e non dimostra che Bach adottasse proprio una delle accordature proposte da Werckmeister.</p>
       </div>
 
       <div class="tonality-warning">
