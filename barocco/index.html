@@ -911,6 +911,31 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 #danza #ragazzi-bach-archi-soli{margin:1.35rem 0}
 @media(max-width:760px){#danza .bach-soli-video-grid{grid-template-columns:minmax(0,1fr)}#danza .bach-soli-video:last-child{grid-column:auto}#danza #bach-archi-soli{padding:1.05rem}#danza .bach-soli-video-copy{padding:1rem}}
 
+
+/* AUDIT ICONOGRAFICO FORME BAROCCO LOTTO10 20261010: 12 figure documentarie, sei sezioni e forme musicali correttamente distinte */
+.audit10-gallery{margin:1.9rem 0 2.35rem;padding:1.1rem;border:1px solid #bea783;background:#f9f2e6;color:#30271f;overflow:hidden}
+.audit10-feature{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);margin:1.6rem 0 2.15rem;border:1px solid #bea783;background:#f9f2e6;color:#30271f;overflow:hidden}
+.audit10-feature .audit10-figure{border:0}
+.audit10-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.05rem 0}
+.audit10-grid:has(> :nth-child(3)){grid-template-columns:repeat(3,minmax(0,1fr))}
+.audit10-figure{margin:0;min-width:0;background:#eee3d1;border:1px solid #c5af8d;overflow:hidden}
+.audit10-image{display:flex;justify-content:center;align-items:center;text-decoration:none;background:#e6ddcc}
+.audit10-image img{display:block;width:100%;height:auto;max-height:355px;object-fit:contain;margin:auto}
+.audit10-feature .audit10-image img{max-height:380px}
+.audit10-figure figcaption{color:#4b3d31;font:500 .81rem/1.56 var(--sans);padding:.85rem .9rem 1rem}
+.audit10-figure figcaption b{color:#35261d}
+.audit10-figure figcaption a{color:#704225;text-decoration:underline;text-underline-offset:2px}
+.audit10-label{font:850 .72rem/1.5 var(--sans);color:#7c492a;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .36rem}
+.audit10-gallery h3,.audit10-feature-copy h3{color:#32251d;font-size:clamp(1.25rem,2.2vw,1.62rem);line-height:1.28;margin:.25rem 0 .7rem}
+.audit10-gallery .audit10-intro,.audit10-feature-copy>p{color:#352921;font-size:.97rem;line-height:1.65;margin:.45rem 0 .85rem}
+.audit10-feature-copy{align-self:center;padding:1.2rem 1.35rem}
+.audit10-question{background:#efe3d0;border-left:4px solid #a47c3c;padding:.82rem 1rem;margin:.9rem 0 .2rem;color:#352921;font-size:.92rem!important;line-height:1.6!important}
+.audit10-fallback{display:none!important;padding:.85rem;color:#463528;font:500 .86rem/1.5 var(--sans)}
+.audit10-figure.audit10-failed .audit10-image{display:none}
+.audit10-figure.audit10-failed .audit10-fallback{display:block!important}
+@media(max-width:810px){.audit10-feature{grid-template-columns:1fr}.audit10-feature-copy{padding:1.05rem 1.1rem}.audit10-grid:has(> :nth-child(3)){grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:610px){.audit10-grid,.audit10-grid:has(> :nth-child(3)){grid-template-columns:minmax(0,1fr)}.audit10-gallery{padding:.85rem}.audit10-image img,.audit10-feature .audit10-image img{max-height:345px}}
+
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
@@ -1067,7 +1092,28 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
     <div class="question">Il Barocco, in altre parole, <em>comincia senza che nessuno abbia spento il Rinascimento</em>.</div>
 
     <div id="orfeo">
-      <h3>1607. Quando la parola entra in scena</h3>
+      <div class="audit10-gallery">
+<div class="audit10-label">Monteverdi · persona, opera, organico</div>
+<h3>Dal ritratto alla stampa: che cosa raccontano tre documenti?</h3>
+<p class="audit10-intro">Nel 1607 <i>L’Orfeo</i> va in scena a Mantova. Due anni più tardi il compositore ne pubblica la musica a Venezia: il ritratto, il frontespizio e la lista degli strumenti appartengono a tre funzioni documentarie differenti, che dobbiamo imparare a non confondere.</p>
+<div class="audit10-grid"><figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/4/44/Claudio_Monteverdi.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Claudio_Monteverdi.jpg" alt="Ritratto di Claudio Monteverdi, copia seicentesca anonima da Bernardo Strozzi." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Monteverdi, il compositore.</b> Copia anonima da un ritratto di Bernardo Strozzi, circa 1640, Gallerie dell’Accademia, Venezia. Non è un ritratto del giovane autore dell’<i>Orfeo</i>. <a href="https://commons.wikimedia.org/wiki/File:Claudio_Monteverdi.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/f/f2/Frontispiece_of_L%27Orfeo.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Frontispiece_of_L%27Orfeo.jpg" alt="Frontespizio della stampa veneziana dell'Orfeo di Claudio Monteverdi pubblicata da Ricciardo Amadino nel 1609." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>La favola in musica.</b> Frontespizio dell’<i>Orfeo</i>, stampato a Venezia da Ricciardo Amadino nel 1609. L’opera era stata rappresentata a Mantova nel 1607: <strong>data di esecuzione e data di stampa non coincidono</strong>. <a href="https://commons.wikimedia.org/wiki/File:Frontispiece_of_L%27Orfeo.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/d/d3/Orfeo_libretto_instruments_characters.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Orfeo_libretto_instruments_characters.jpg" alt="Pagina della stampa dell'Orfeo del 1609 con due colonne, personaggi e strumenti, in caratteri tipografici seicenteschi." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Personaggi e strumenti.</b> Elenco pubblicato nell’edizione del 1609: non indica un’orchestra moderna e stabile, ma permette di conoscere le risorse timbriche richieste o previste da Monteverdi. <a href="https://commons.wikimedia.org/wiki/File:Orfeo_libretto_instruments_characters.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure></div>
+<p class="audit10-question"><strong>Guarda e verifica.</strong> Quale immagine ci informa sul compositore, quale sulle date della pubblicazione, quale sui personaggi e sugli strumenti? Nell’elenco dell’<i>Orfeo</i> riesci a riconoscere strumenti che non appartengono all’orchestra moderna?</p>
+</div>
+<h3>1607. Quando la parola entra in scena</h3>
       <p>Gli esperimenti fiorentini di Jacopo Peri, Giulio Caccini ed Emilio de’ Cavalieri precedono Monteverdi, per cui sarebbe sbagliato attribuirgli l’invenzione del melodramma, con <i>L’Orfeo</i>, tuttavia, la giovane forma mostra una profondità drammatica e strumentale tale da rendere particolarmente evidente come canto solistico, coro, danza, strumenti e polifonia possano collaborare alla costruzione di un’azione nella quale la musica non accompagna semplicemente il teatro, ma contribuisce a creare il tempo, il gesto e persino lo spazio emotivo della scena.</p>
       <p>Il melodramma, al quale abbiamo dedicato un percorso autonomo, non deve essere ricostruito qui da capo, ci interessa invece osservare come l’esperienza teatrale finisca per modificare anche il modo di pensare la musica fuori dal teatro, poiché il contrasto, il colore strumentale e la rappresentazione degli affetti cominciano progressivamente a penetrare in generi che non prevedono alcuna scena.</p>
       <div class="source-row">
@@ -1502,7 +1548,15 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       </div>
       <p>Il paradosso è didatticamente prezioso perché ci ricorda che la partitura barocca non coincide sempre con l’organico reale. La pagina registra tre funzioni musicali, ma la prassi può distribuire l’ultima funzione fra più persone, ancora una volta ciò che leggiamo e ciò che materialmente ascoltiamo non sono la stessa cosa.</p>
 
-      <h3>Corelli non inventa la sonata: la rende irresistibilmente esportabile</h3>
+      <div class="audit10-feature">
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/a/a9/Corelli_Op_1_Parts_%281681%29.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Corelli_Op_1_Parts_%281681%29.png" alt="Frontespizio Sonate a tre di Arcangelo Corelli 1681, parte del primo violino; recita due violini e violone o arciliuto con basso per l'organo." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Sonata a tre, op. 1, 1681.</b> Frontespizio della parte del primo violino, dedicata a Cristina di Svezia. Il testo distingue <i>due violini</i>, <i>violone o arciliuto</i> e <i>basso per l’organo</i>: una fonte concreta per capire perché tre parti scritte non implichino necessariamente tre esecutori. <a href="https://commons.wikimedia.org/wiki/File:Corelli_Op_1_Parts_(1681).png" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<div class="audit10-feature-copy"><div class="audit10-label">La fonte racconta l’organico</div><h3>Che cosa significa davvero «sonata a tre»?</h3><p>Il frontespizio del 1681 non illustra i musicisti che suonano, ma specifica le <em>parti</em> e la realizzazione del basso. Le parole <i>violino primo</i>, <i>violone o arciliuto</i> e <i>organo</i> diventano un laboratorio di lettura delle fonti: il numero delle voci scritte non deve essere confuso con il numero delle persone presenti nell’esecuzione.</p><p class="audit10-question"><strong>Guarda e verifica.</strong> Individua la dedica a Cristina di Svezia e i nomi degli strumenti. Perché sarebbe sbagliato dedurre dalla parola «tre» che gli esecutori fossero sempre soltanto tre?</p></div>
+</div>
+<h3>Corelli non inventa la sonata: la rende irresistibilmente esportabile</h3>
       <p>Le raccolte di Corelli mostrano con particolare chiarezza il grado di stabilità raggiunto dal genere. L’op. 1 del 1681 raccoglie dodici sonate a tre da chiesa ed è dedicata a Cristina di Svezia, mentre l’op. 2 del 1685 porta la sonata verso il mondo della camera e della danza. Il loro successo editoriale è enorme, e proprio questa capacità di circolare rende Corelli più importante come costruttore di un modello europeo che come presunto inventore di una forma già presente prima di lui.</p>
       <div class="source-row">
         <a class="score-link" href="https://imslp.org/wiki/Trio_Sonatas%2C_Op.1_%28Corelli%2C_Arcangelo%29" target="_blank" rel="noopener">♫ IMSLP · Corelli op. 1, 1681</a>
@@ -1604,7 +1658,15 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
         <button class="fugue-play" type="button" data-fugue="60,62,64,67,65,64">▶ Ascolta i tre ingressi schematici</button>
       </div>
 
-      <h3>Buxtehude e il preludio nordtedesco: la forma può essere un viaggio</h3>
+      <div class="audit10-feature">
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/e/e9/BuxWV83_organ_tablature.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/BuxWV83_organ_tablature.jpg" alt="Manoscritto di Gustaf Düben, 1681, in notazione di intavolatura per tastiera per la musica O dulcis Jesu di Buxtehude." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>La musica attraversa il Baltico.</b> Gustaf Düben, copia in intavolatura organistica con realizzazione del basso di <i>O dulcis Jesu</i> BuxWV 83, 1681, Uppsala. <strong>Non è la partitura di un preludio o di una fuga</strong>: documenta la circolazione delle opere e un altro modo di annotare la pratica strumentale. <a href="https://commons.wikimedia.org/wiki/File:BuxWV83_organ_tablature.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<div class="audit10-feature-copy"><div class="audit10-label">Le fonti del Nord europeo</div><h3>Un manoscritto non è sempre una partitura moderna</h3><p>La copia del 1681 conservata a Uppsala mostra come una composizione di Buxtehude possa circolare attraverso l’attività del musicista Gustaf Düben. Si tratta della realizzazione organistica del basso di <i>O dulcis Jesu</i>, non di un preludio: per spiegare la forma del preludio useremo gli esempi specifici del repertorio organistico.</p><p class="audit10-question"><strong>Guarda e verifica.</strong> Confronta questi segni con un pentagramma moderno: perché lo studio della musica antica deve saper riconoscere modi diversi di scrivere e trasmettere il suono?</p></div>
+</div>
+<h3>Buxtehude e il preludio nordtedesco: la forma può essere un viaggio</h3>
       <p>Nella tradizione organistica della Germania settentrionale, che Bach andrà personalmente a conoscere a Lubecca, il grande preludio può alternare sezioni libere, quasi improvvisatorie, e sezioni fugate, come se la composizione passasse continuamente dal gesto alla regola e poi di nuovo al gesto. Buxtehude rende particolarmente evidente questa forma aperta, nella quale virtuosismo, contrappunto e registrazione dell’organo appartengono allo stesso discorso.</p>
       <div class="source-row">
         <a class="score-link" href="https://imslp.org/wiki/Complete_Organ_Works_%28Buxtehude%2C_Dietrich%29" target="_blank" rel="noopener">♫ IMSLP · Buxtehude, opere per organo</a>
@@ -1618,7 +1680,15 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
         <a class="score-link" href="https://imslp.org/wiki/Die_Kunst_der_Fuge%2C_BWV_1080_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · L’Arte della fuga</a>
       </div>
 
-      <h3>Passacaglia e ciaccona: l’altra intelligenza della ripetizione</h3>
+      <div class="audit10-feature">
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/0/06/Title_page_of_The_Art_of_Fugue.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Title_page_of_The_Art_of_Fugue.jpg" alt="Frontespizio della prima edizione a stampa dell'Arte della fuga di Johann Sebastian Bach pubblicata nel 1751." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Il contrappunto sopravvive alla vita dell’autore.</b> Frontespizio della prima edizione a stampa dell’<i>Arte della fuga</i>, 1751. Documento <strong>postumo, non autografo</strong>: testimonia il destino editoriale dell’opera. <a href="https://commons.wikimedia.org/wiki/File:Title_page_of_The_Art_of_Fugue.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<div class="audit10-feature-copy"><div class="audit10-label">Fuga · forma, tecnica e trasmissione</div><h3>L’Arte della fuga arriva alla stampa dopo Bach</h3><p>La copertina della prima edizione del 1751 è successiva alla morte del compositore. La fuga non è una generica etichetta per «musica difficile»: è una tecnica di elaborazione e imitazione di un soggetto, capace di organizzare un brano. L’<i>Arte della fuga</i> ne esplora sistematicamente le possibilità.</p><p class="audit10-question"><strong>Guarda e verifica.</strong> Che cosa si legge sul titolo? Perché è importante distinguere un manoscritto autografo da una stampa pubblicata dopo la morte dell’autore?</p></div>
+</div>
+<h3>Passacaglia e ciaccona: l’altra intelligenza della ripetizione</h3>
       <p>Se la fuga costruisce la continuità facendo viaggiare e trasformare un soggetto, passacaglia e ciaccona possono produrre un effetto quasi opposto, perché una base ricorrente rende percepibili con maggiore forza tutte le trasformazioni che avvengono sopra di essa. La grande Passacaglia in do minore BWV 582 di Bach mostra quanto una cellula di basso relativamente breve possa sostenere una costruzione monumentale, fino a sfociare in una sezione fugata che finisce quasi per riunire i due mondi.</p>
       <div class="source-row">
         <a class="score-link" href="https://imslp.org/wiki/Passacaglia_in_C_minor%2C_BWV_582_%28Bach%2C_Johann_Sebastian%29" target="_blank" rel="noopener">♫ IMSLP · Passacaglia BWV 582</a>
@@ -1646,7 +1716,23 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 
     <aside class="student-box" id="ragazzi-corelli">
       <div class="student-label">✦ Per iniziare</div>
-      <h3>Pochi contro molti, ma nessuno gioca da solo</h3>
+      <div class="audit10-gallery">
+<div class="audit10-label">La forma e la circolazione</div>
+<h3>Corelli: ritratto del compositore e frontespizio dei Concerti grossi</h3>
+<p class="audit10-intro">Un ritratto del 1697 e un’incisione editoriale pubblicata ad Amsterdam nel 1714 mostrano la statura europea di Corelli; <strong>nessuno dei due raffigura l’organico completo del concerto grosso</strong>. La distinzione fra <i>concertino</i> e <i>ripieno</i> si comprende attraverso la partitura e l’ascolto.</p>
+<div class="audit10-grid"><figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/e/e8/Arcangelo_Corelli%2C_portrait_by_Hugh_Howard_%281697%29.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Arcangelo_Corelli%2C_portrait_by_Hugh_Howard_%281697%29.jpg" alt="Arcangelo Corelli ritratto da Hugh Howard nel 1697, seduto con foglio musicale in mano." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Corelli a Roma.</b> Ritratto di Hugh Howard, 1697, Stirling Smith Art Gallery and Museum. È un documento sulla sua immagine pubblica, non un ritratto dell’organico del concerto grosso. <a href="https://commons.wikimedia.org/wiki/File:Arcangelo_Corelli,_portrait_by_Hugh_Howard_(1697).jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/9/95/Gilliam_van_der_Gouwen_-_Title_page_of_Corelli%27s_Concerti_Grossi.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Gilliam_van_der_Gouwen_-_Title_page_of_Corelli%27s_Concerti_Grossi.jpg" alt="Incisione con santa Cecilia al liuto su una pagina di presentazione dell'edizione dei Concerti grossi di Corelli, Amsterdam 1714." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Il concerto diventa libro europeo.</b> Incisione di Gilliam van der Gouwen da Francesco Trevisani, frontespizio figurato dei <i>Concerti grossi</i> op. 6, Amsterdam, 1714. Pubblicazione <strong>postuma</strong>: Corelli morì nel 1713. <a href="https://commons.wikimedia.org/wiki/File:Gilliam_van_der_Gouwen_-_Title_page_of_Corelli%27s_Concerti_Grossi.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure></div>
+<p class="audit10-question"><strong>Guarda e verifica.</strong> La seconda immagine raffigura santa Cecilia, non un’orchestra in prova. Perché un editore può scegliere un’allegoria musicale come frontespizio di concerti strumentali?</p>
+</div>
+<h3>Pochi contro molti, ma nessuno gioca da solo</h3>
       <p>Nel concerto grosso un piccolo gruppo, il <strong>concertino</strong>, può emergere dal gruppo più grande, il <strong>ripieno</strong>, e poi rientrare nell’insieme. È un gioco di densità prima ancora che una definizione da imparare.</p>
       <div class="try"><strong>Prova tu.</strong> Ascolta Corelli senza guardare lo schermo. Alza una mano quando ti sembra di sentire “pochi” e abbassala quando torna “l’insieme”. Poi controlla se i tuoi cambi coincidono con ciò che vedi.</div>
     </aside>
@@ -2182,13 +2268,29 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
         </div>
       </div>
 
-      <h3>La Passione: quando tutti i livelli si sovrappongono</h3>
+      <div class="audit10-feature">
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/c/c0/Matth%C3%A4uspassion.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Matth%C3%A4uspassion.jpg" alt="Estratto della partitura autografa della Passione secondo Matteo BWV 244 con note e testo scritti anche con inchiostro rosso." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>La Passione, parola e musica.</b> Estratto dell’autografo della <i>Passione secondo Matteo</i> BWV 244, redazione del 1736 circa. Bach distingue graficamente con inchiostro rosso le parole evangeliche: la scrittura musicale conserva anche una lettura del testo. <a href="https://commons.wikimedia.org/wiki/File:Matth%C3%A4uspassion.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<div class="audit10-feature-copy"><div class="audit10-label">La forma della Passione</div><h3>Quando la parola del Vangelo attraversa la partitura</h3><p>Nella <i>Passione secondo Matteo</i> Bach alterna narrazione evangelica, interventi dei personaggi, corali e arie di meditazione. In questa pagina della sua scrittura il rosso rende riconoscibile il livello testuale: la partitura documenta una precisa organizzazione del racconto sacro.</p><p class="audit10-question"><strong>Guarda e verifica.</strong> Osserva i pentagrammi e le parole in rosso. Quali indizi fanno capire che la Passione non è soltanto una successione di arie?</p></div>
+</div>
+<h3>La Passione: quando tutti i livelli si sovrappongono</h3>
       <p>Nella <i>Passione secondo Matteo</i> Bach porta questa pluralità a una scala quasi architettonica. L’Evangelista conserva la continuità narrativa, i personaggi entrano nel racconto, i cori possono rappresentare gruppi e folla, i corali interrompono il tempo dell’azione trasformando la comunità in commentatrice, mentre le arie permettono al singolo ascoltatore di fermarsi davanti all’evento e interiorizzarlo. Il risultato non è opera, perché funzione, testo e spazio appartengono a un altro mondo, ma possiede una forza drammatica che rende inutile qualunque opposizione semplice fra teatro e chiesa.</p>
       <div class="function-strip" aria-label="Livelli della Passione bachiana">
         <span>Evangelista · narra</span><i>→</i><span>personaggi · agiscono</span><i>→</i><span>coro · partecipa</span><i>→</i><span>corale · comunità</span><i>→</i><span>aria · meditazione</span>
       </div>
 
-      <h3>Händel: l’oratorio entra nel mercato londinese</h3>
+      <div class="audit10-feature">
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/b/bb/Messiah-autograph_composition_draft-Amen_Chorus.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Messiah-autograph_composition_draft-Amen_Chorus.jpg" alt="Pagina autografa di Handel con la scrittura a più voci dell'Amen conclusivo del Messiah, 1741." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Händel, <i>Messiah</i>.</b> Autografo del coro conclusivo <i>Amen</i>, 1741. Qui il testo sacro incontra la costruzione contrappuntistica: l’oratorio londinese non coincide con una rappresentazione teatrale in costume. <a href="https://commons.wikimedia.org/wiki/File:Messiah-autograph_composition_draft-Amen_Chorus.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<div class="audit10-feature-copy"><div class="audit10-label">Oratorio · Londra e contrappunto</div><h3>Il Messiah non è un’opera in costume</h3><p>La pagina autografa del coro finale <i>Amen</i> mostra l’articolazione di più parti vocali. L’oratorio inglese di Händel mette in relazione parole bibliche, solisti e coro, ma non richiede una messa in scena teatrale. La presenza della scrittura contrappuntistica non trasforma automaticamente il brano in una «fuga» come genere autonomo.</p><p class="audit10-question"><strong>Guarda e verifica.</strong> Quante linee vocali sono presenti? Cerca di distinguerle graficamente prima di ascoltare l’<i>Amen</i>: quali risposte si creano fra le voci?</p></div>
+</div>
+<h3>Händel: l’oratorio entra nel mercato londinese</h3>
       <p>A Londra l’oratorio assume ancora un’altra fisionomia, perché Händel trasferisce nel repertorio inglese una parte della propria esperienza teatrale e la combina con grandi cori, testi biblici e un pubblico che non coincide più soltanto con quello della cappella o della corte. <i>Messiah</i>, eseguito per la prima volta a Dublino nel 1742, non racconta una vicenda attraverso personaggi come un’opera, ma costruisce un percorso scritturale e meditativo nel quale recitativi, arie e soprattutto cori organizzano una grande architettura spirituale.</p>
       <p>Il suo successo successivo al Foundling Hospital mostra inoltre quanto il genere possa entrare dentro la vita civile della città. Händel utilizza infatti esecuzioni del <i>Messiah</i> per sostenere economicamente l’istituzione e arriva a lasciare all’ospedale una copia completa della partitura e delle parti, così un’opera musicale diventa contemporaneamente repertorio, evento pubblico e strumento di beneficenza.</p>
       <div class="source-row">
@@ -2861,7 +2963,15 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
         </article>
       </div>
 
-      <h3>Da Cristina di Svezia all’Arcadia</h3>
+      <div class="audit10-feature">
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/3/3a/Bosco-parrasio.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Bosco-parrasio.jpg" alt="Disegno d'insieme della sede dell'Accademia dell'Arcadia al Bosco Parrasio di Roma riprodotto nel 1804." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Un luogo costruito per l’Arcadia.</b> Veduta/planimetria del Bosco Parrasio riprodotta nella <i>Storia dell’Accademia degli Arcadi</i> del 1804. È una testimonianza <strong>successiva alla fondazione del 1690</strong>, non un’immagine della prima seduta. <a href="https://commons.wikimedia.org/wiki/File:Bosco-parrasio.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<div class="audit10-feature-copy"><div class="audit10-label">Roma · un'accademia e uno spazio reale</div><h3>Il Bosco Parrasio: l’Arcadia costruisce il proprio paesaggio</h3><p>L’Accademia dell’Arcadia nasce nel 1690, ma l’immagine qui riprodotta è tratta da una pubblicazione del <strong>1804</strong>. Mostra il luogo simbolico delle riunioni arcadiche e consente di distinguere una ricostruzione documentaria successiva dall’immagine della fondazione stessa.</p><p class="audit10-question"><strong>Guarda e verifica.</strong> In che modo gradinate, vegetazione e spazio per l’incontro trasformano l’ideale pastorale in un luogo costruito per una comunità intellettuale?</p></div>
+</div>
+<h3>Da Cristina di Svezia all’Arcadia</h3>
       <p>La continuità con Cristina di Svezia è uno dei fili più belli del nostro percorso. Negli ultimi anni della sua vita la regina aveva fatto della propria corte romana un luogo di incontro fra letterati, filosofi, artisti e musicisti. Dopo la sua morte nel 1689, alcuni intellettuali legati a quell’ambiente fondano l’anno successivo l’Arcadia. Non dobbiamo quindi immaginare che Cristina abbia “fondato” l’Accademia, ma il terreno umano e culturale preparato intorno a lei appartiene direttamente alla sua preistoria.</p>
       <div class="source-row">
         <a class="deep-link" href="#donne">Cristina di Svezia nel capitolo sulle donne →</a>
@@ -2904,7 +3014,15 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
         <a class="deep-link" href="https://www.accademiadellarcadia.it/wp-content/uploads/2019/12/Arcadia_Trecento-anni.pdf" target="_blank" rel="noopener">Arcadia · trecento anni di storia</a>
       </div>
 
-      <h3>Verso l’Illuminismo, ma senza confondere le epoche</h3>
+      <div class="audit10-feature">
+<figure class="audit10-figure">
+  <a class="audit10-image" href="https://upload.wikimedia.org/wikipedia/commons/2/2d/Metastasio_by_Batoni.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la fonte storica"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Metastasio_by_Batoni.jpg" alt="Ritratto settecentesco di Pietro Metastasio con libro appoggiato sul tavolo, attribuito a Martin van Meytens o Pompeo Batoni." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit10-failed')"></a>
+  <p class="audit10-fallback">L'immagine non è disponibile in questo momento. Consulta la fonte indicata in didascalia.</p>
+  <figcaption><b>Pietro Metastasio, intorno al 1770.</b> Ritratto attribuito alternativamente a Martin van Meytens e Pompeo Batoni: l’attribuzione pittorica non è certa. Il poeta arcadico contribuisce alla fortuna europea del libretto per musica. <a href="https://commons.wikimedia.org/wiki/File:Metastasio_by_Batoni.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
+  </figure>
+<div class="audit10-feature-copy"><div class="audit10-label">Metastasio · dal gusto poetico alla scena</div><h3>Un poeta, una rete di teatri, un modello europeo</h3><p>Il ritratto settecentesco mostra Pietro Metastasio come uomo di lettere. Nella riformulazione del dramma per musica, il testo acquista una struttura che attraversa corti, compositori e lingue; le opere metastasiane non si spiegano riducendole a unicamente «semplici» o «razionali». L’attribuzione del dipinto resta discussa.</p><p class="audit10-question"><strong>Guarda e verifica.</strong> Quali elementi del ritratto richiamano la scrittura e la vita intellettuale? E perché non basta un ritratto per ricostruire una rappresentazione operistica?</p></div>
+</div>
+<h3>Verso l’Illuminismo, ma senza confondere le epoche</h3>
       <p>È quindi legittimo vedere nell’Arcadia una preparazione culturale al Settecento illuminista, purché non trasformiamo questa continuità in identità. Gli arcadi recuperano classicità, semplicità e ragionevolezza, discutono il rapporto fra arte, vero e natura e costruiscono una rete di comunicazione intellettuale, mentre nello stesso periodo il razionalismo, la filosofia naturale e la nuova scienza modificano il modo europeo di pensare il sapere.</p>
       <p>L’Illuminismo spingerà molto più lontano queste premesse, estendendole alla critica delle istituzioni, alla politica, all’economia, all’educazione e alla società. L’Arcadia rimane invece soprattutto una riforma del gusto e della cultura letteraria, ma proprio per questo costituisce una delle soglie attraverso le quali l’arte italiana entra nel XVIII secolo.</p>
 
