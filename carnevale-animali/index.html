@@ -78,6 +78,17 @@
  .next-lesson .btn{min-width:0;white-space:normal}
 }
 .liveStatus{font-size:.92rem;color:#eddbb7;margin:0 0 16px;line-height:1.35}
+
+/* Gioco dell'unisono: due pianisti e uno scarto di attacco in diretta. */
+.musicsheet[hidden]{display:none!important}
+.pianoDuo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pianoLane{border-radius:17px;border:1px solid #b59a74;background:#302a36;padding:16px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;min-width:0;transition:background .13s}
+.pianoLane span{font-size:1rem;color:#f0d5ab;font-weight:750}
+.pianoLane strong{font-family:Georgia,serif;font-size:clamp(1.65rem,3vw,2.8rem);color:#fff4de}
+.pianoLane.pulse{animation:pianoBeat .32s ease-out}
+@keyframes pianoBeat{0%{background:#745141}100%{background:#302a36}}
+.pianoHint{line-height:1.55;font-size:clamp(1rem,1.25vw,1.22rem);color:#e9dcc9;margin:0}
+@media(max-width:400px){.pianoDuo{gap:8px}.pianoLane{padding:12px 5px}.pianoLane span{font-size:.88rem}}
 </style>
 </head>
 <body>
@@ -227,7 +238,7 @@ const movements=[
  {title:'Il cigno',short:'Il cigno',icon:'🦢',file:'Saint-Saens - The Carnival of the Animals - 13 Le cygne.ogg',tags:['Violoncello','Legato','Arpeggi'],q:'Come può un animale scivolare mentre l’acqua continua a muoversi?',desc:'Il violoncello canta una lunga linea melodica, mentre i due pianoforti disegnano un continuo movimento di arpeggi. Due gesti differenti si uniscono in un’unica immagine.',task:'Assegna le braccia al violoncello e i piccoli passi ai pianoforti: quale parte si muove di più?'},
  {title:'Finale',short:'Finale',icon:'🎉',file:'Saint-Saens - The Carnival of the Animals - 14 Final.ogg',tags:['Ensemble','Ritorni','Festa'],q:'Come fanno tanti personaggi diversi a stare tutti nello stesso palcoscenico?',desc:'Il Carnevale termina con un grande gioco collettivo, richiami a scene precedenti ed energia festosa. Dopo i solisti e i piccoli gruppi, ritroviamo la logica dell’insieme.',task:'Segna ogni volta che ti sembra di riconoscere un personaggio già incontrato.'}
 ];
-const $=id=>document.getElementById(id);const audio=$('audio');let index=0;let blind=false;let markA=0,markB=null,repeat=false,selectionActive=false;let currentTab='walk';let audioCtx=null,activeOsc=[],noteTimers=[];let playingDemo=false;let demoTicker=null,demoFinishTimer=null,demoStep=0,demoNextAt=0;let activeLab=0;let labValues={tempo:95,octave:0,voice:'triangle',mode:'maggiore',flow:5,melody:true,arp:true,attack:85,exercise:110};
+const $=id=>document.getElementById(id);const audio=$('audio');let index=0;let blind=false;let markA=0,markB=null,repeat=false,selectionActive=false;let currentTab='walk';let audioCtx=null,activeOsc=[],noteTimers=[];let playingDemo=false;let demoTicker=null,demoFinishTimer=null,demoStep=0,demoNextAt=0;let activeLab=0;let labValues={tempo:95,octave:0,voice:'triangle',mode:'maggiore',flow:5,melody:true,arp:true,attack:85,desync:150};
 function secText(s){if(!Number.isFinite(s))return'--:--';return String(Math.floor(s/60)).padStart(2,'0')+':'+String(Math.floor(s%60)).padStart(2,'0')}
 function fileUrl(name){return 'https://commons.wikimedia.org/wiki/Special:Redirect/file/'+encodeURIComponent(name.replaceAll(' ','_'))}
 function commonsUrl(name){return 'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(name.replaceAll(' ','_'))}
@@ -260,17 +271,46 @@ const labDefs=[
  {title:'Il pavimento armonico · Acquario',desc:'Arpeggi, movimento regolare e contesto armonico: prova due disposizioni armoniche e modifica la densità delle note. L’esempio è volutamente semplice, non una trascrizione dell’Acquario.',piece:6,question:'Quando cambia il colore armonico, cambia anche il paesaggio che immagini?'},
  {title:'Sopra e sotto l’acqua · Cigno',desc:'Due livelli indipendenti: sopra la <strong>linea melodica legata</strong>, sotto l’<strong>accompagnamento in arpeggi</strong>. Ascoltali separati e insieme; è una ricostruzione dimostrativa.',piece:12,question:'Chi sembra scivolare? Chi dà la sensazione dell’acqua in movimento?'},
  {title:'Il museo delle percussioni · Fossili',desc:'Lo xilofono suggerisce un suono asciutto, breve e “scheletrico”. Prova a rendere più o meno staccate le note di un esempio inventato. Poi ascolta il vero Fossili e cerca le citazioni musicali.',piece:11,question:'Perché la stessa successione di note può diventare ironica quando cambiano attacco e durata?'},
- {title:'La gabbia dei pianisti · Pianisti',desc:'Le scale possono sembrare esercizi, corse, giochi o virtuosismi. Qui una semplice scala sintetica accelera o rallenta. Nell’originale Saint-Saëns inserisce i pianisti fra gli animali.',piece:10,question:'Quale differenza senti tra esercizio serio e caricatura musicale?'}
+ {title:'La gabbia dei pianisti · Pianisti',desc:'<strong>Due pianisti, una sola scala.</strong> Immagina due compagni seduti a quattro mani allo stesso pianoforte: ciascuno suona esattamente le stesse note, ma il secondo arriva in ritardo. Ascolta come l’unisono si sfalda, poi riavvicina le loro entrate fino a <strong>0 millisecondi</strong>. Puoi cambiare lo scarto durante la lunga esecuzione. <em>È un esperimento creato per la lezione: nel Carnevale originale suonano due pianoforti.</em>',piece:10,question:'Per suonare bene insieme non basta conoscere le proprie note: bisogna ascoltare le note dell’altro. E in classe? In un lavoro di gruppo ciascuno deve fare la propria parte, ma anche accorgersi degli altri, aspettarli, sostenerli, trovare un tempo comune.'}
 ];
 function renderLabChoices(){const list=$('labList');list.innerHTML='';labDefs.forEach((d,i)=>{const b=document.createElement('button');b.className='btn'+(activeLab===i?' selected':'');b.innerHTML=`<span class="number">${i+1}</span><span>${d.title}</span>`;b.addEventListener('click',()=>{activeLab=i;stopDemo();renderLabs()});list.appendChild(b)})}
 function rangeControl(id,text,min,max,step,val,unit){return `<div class="ctrl"><label for="${id}">${text}: <output id="${id}Out">${val}${unit}</output></label><input id="${id}" type="range" min="${min}" max="${max}" step="${step}" value="${val}"></div>`}
 function selectControl(id,text,opts,value){return `<div class="ctrl"><label for="${id}">${text}</label><select id="${id}">${opts.map(x=>`<option value="${x[0]}" ${x[0]===value?'selected':''}>${x[1]}</option>`).join('')}</select></div>`}
 function checkboxControl(id,text,val){return `<div class="ctrl"><label><input id="${id}" type="checkbox" ${val?'checked':''}> ${text}</label></div>`}
-function renderLabs(){renderLabChoices();const d=labDefs[activeLab];$('labTitle').textContent=d.title;$('labDesc').innerHTML=d.desc;$('labQuestion').textContent=d.question;let h='';if(activeLab===0)h=rangeControl('tempo','Tempo',35,170,5,labValues.tempo,' BPM');if(activeLab===1)h=rangeControl('octave','Trasposizione di registro',-2,2,1,labValues.octave,' ottave')+selectControl('voice','Colore sintetico',[['sine','Morbido / quasi puro'],['triangle','Caldo / triangolare'],['sawtooth','Ricco / aspro']],labValues.voice);if(activeLab===2)h=selectControl('mode','Disposizione armonica',[['maggiore','Triade maggiore'],['minore','Triade minore']],labValues.mode)+rangeControl('flow','Note per figura',3,8,1,labValues.flow,'');if(activeLab===3)h=checkboxControl('melody','Ascolta la linea superiore (melodia)',labValues.melody)+checkboxControl('arp','Ascolta il livello inferiore (arpeggi)',labValues.arp);if(activeLab===4)h=rangeControl('attack','Durata dei suoni',10,100,5,labValues.attack,'%');if(activeLab===5)h=rangeControl('exercise','Velocità della scala',40,200,10,labValues.exercise,' BPM');$('labControls').innerHTML=h;$('liveStatus').textContent='Regola i comandi anche durante l’ascolto: il suono cambia senza ripartire.';['tempo','octave','flow','attack','exercise'].forEach(id=>{if(!$(id))return;$(id).addEventListener('input',e=>{labValues[id]=Number(e.target.value);$(id+'Out').textContent=e.target.value+(id==='tempo'||id==='exercise'?' BPM':id==='octave'?' ottave':id==='attack'?'%':'');if(playingDemo)$('liveStatus').textContent='Modifica in diretta: '+e.target.value+(id==='tempo'||id==='exercise'?' BPM':id==='octave'?' ottave':id==='attack'?'%':'')})});['voice','mode'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.value;if(playingDemo)$('liveStatus').textContent='Colore o armonia modificati durante l’esecuzione.';})});['melody','arp'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.checked;if(playingDemo)$('liveStatus').textContent='Parte '+(e.target.checked?'attivata':'disattivata')+' durante l’esecuzione.';})});$('tones').innerHTML=Array.from({length:12},(_,i)=>`<span class="tone" id="tone${i}"></span>`).join('')}
+function renderLabs(){renderLabChoices();const d=labDefs[activeLab];$('labTitle').textContent=d.title;$('labDesc').innerHTML=d.desc;$('labQuestion').textContent=d.question;let h='';if(activeLab===0)h=rangeControl('tempo','Tempo',35,170,5,labValues.tempo,' BPM');if(activeLab===1)h=rangeControl('octave','Trasposizione di registro',-2,2,1,labValues.octave,' ottave')+selectControl('voice','Colore sintetico',[['sine','Morbido / quasi puro'],['triangle','Caldo / triangolare'],['sawtooth','Ricco / aspro']],labValues.voice);if(activeLab===2)h=selectControl('mode','Disposizione armonica',[['maggiore','Triade maggiore'],['minore','Triade minore']],labValues.mode)+rangeControl('flow','Note per figura',3,8,1,labValues.flow,'');if(activeLab===3)h=checkboxControl('melody','Ascolta la linea superiore (melodia)',labValues.melody)+checkboxControl('arp','Ascolta il livello inferiore (arpeggi)',labValues.arp);if(activeLab===4)h=rangeControl('attack','Durata dei suoni',10,100,5,labValues.attack,'%');if(activeLab===5)h=rangeControl('desync','Ritardo del pianista B rispetto ad A',0,350,10,labValues.desync,' ms')+`<div class="pianoDuo" role="group" aria-label="Entrate dei due pianisti"><div class="pianoLane" id="pianoLaneA"><span>🎹 Pianista A</span><strong id="pianoNoteA">Pronto</strong></div><div class="pianoLane" id="pianoLaneB"><span>🎹 Pianista B</span><strong id="pianoNoteB">Pronto</strong></div></div><p class="pianoHint"><strong>0 ms:</strong> perfettamente insieme. Aumenta lo scarto, ascolta il disaccordo; poi prova a ritrovare l’unisono. Ogni pianista esegue la stessa scala, per otto salite e discese. Chi sta suonando deve anche saper ascoltare.</p>`;$('labControls').innerHTML=h;$('liveStatus').textContent='Regola i comandi anche durante l’ascolto: il suono cambia senza ripartire.';['tempo','octave','flow','attack','desync'].forEach(id=>{if(!$(id))return;$(id).addEventListener('input',e=>{labValues[id]=Number(e.target.value);$(id+'Out').textContent=e.target.value+(id==='tempo'?' BPM':id==='octave'?' ottave':id==='attack'?'%':id==='desync'?' ms':'');if(playingDemo)$('liveStatus').textContent='Modifica in diretta: '+e.target.value+(id==='tempo'?' BPM':id==='octave'?' ottave':id==='attack'?'%':id==='desync'?' ms':'')})});['voice','mode'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.value;if(playingDemo)$('liveStatus').textContent='Colore o armonia modificati durante l’esecuzione.';})});['melody','arp'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.checked;if(playingDemo)$('liveStatus').textContent='Parte '+(e.target.checked?'attivata':'disattivata')+' durante l’esecuzione.';})});$('tones').innerHTML=Array.from({length:12},(_,i)=>`<span class="tone" id="tone${i}"></span>`).join('');$('tones').hidden=activeLab===5;}
 function midiFreq(n){return 440*Math.pow(2,(n-69)/12)}
 function getCtx(){if(!audioCtx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw new Error('Il browser non supporta Web Audio');audioCtx=new AC()}if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});return audioCtx}
 function stopDemo(){if(demoTicker!==null){clearInterval(demoTicker);demoTicker=null;}if(demoFinishTimer!==null){clearTimeout(demoFinishTimer);demoFinishTimer=null;}activeOsc.forEach(o=>{try{o.stop()}catch(_){}});activeOsc=[];noteTimers.forEach(t=>clearTimeout(t));noteTimers=[];playingDemo=false;if($('demoPlay'))$('demoPlay').textContent='▶ Prova il suono';document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'))}
 function tone(midi,start,duration,type='triangle',gain=.13,shorten=1){const ctx=getCtx();const osc=ctx.createOscillator();const amp=ctx.createGain();osc.type=type;osc.frequency.setValueAtTime(midiFreq(midi),start);amp.gain.setValueAtTime(.0001,start);amp.gain.exponentialRampToValueAtTime(gain,start+.025);amp.gain.setValueAtTime(gain,start+Math.min(duration*.55,.22));amp.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,duration*shorten));osc.connect(amp);amp.connect(ctx.destination);osc.start(start);osc.stop(start+duration+.04);activeOsc.push(osc)}
+
+/* Unisono virtuale a quattro mani: due attacchi dello stesso tasto,
+   leggermente separati nello spazio, sincronizzabili durante il play. */
+function pianoNote(midi,at,duration,pan,level){
+ const ctx=getCtx(),out=ctx.createGain(),o=ctx.createOscillator(),harm=ctx.createOscillator();
+ const base=midiFreq(midi);
+ const panner=typeof ctx.createStereoPanner==='function'?ctx.createStereoPanner():null;
+ o.type='triangle';o.frequency.setValueAtTime(base,at);
+ harm.type='sine';harm.frequency.setValueAtTime(base*2,at);
+ const partial=ctx.createGain();partial.gain.value=.12;
+ o.connect(out);harm.connect(partial);partial.connect(out);
+ out.gain.setValueAtTime(.0001,at);
+ out.gain.exponentialRampToValueAtTime(level,at+.009);
+ out.gain.exponentialRampToValueAtTime(.0001,at+duration);
+ if(panner){panner.pan.value=pan;out.connect(panner);panner.connect(ctx.destination)}
+ else out.connect(ctx.destination);
+ o.start(at);harm.start(at);
+ o.stop(at+duration+.025);harm.stop(at+duration+.025);
+ activeOsc.push(o,harm);
+}
+function showPianist(which,note,when){
+ const wait=Math.max(0,(when-getCtx().currentTime)*1000);
+ noteTimers.push(setTimeout(()=>{
+  if(!playingDemo||activeLab!==5)return;
+  const el=$('pianoNote'+which),lane=$('pianoLane'+which);
+  if(el)el.textContent=note;
+  if(lane){lane.classList.remove('pulse');void lane.offsetWidth;lane.classList.add('pulse')}
+ },wait));
+}
 function scheduleVisual(pos,when){
  const ctx=getCtx();
  const wait=Math.max(0,(when-ctx.currentTime)*1000);
@@ -279,7 +319,7 @@ function scheduleVisual(pos,when){
 }
 /* Programmazione continua a finestra breve: tutti i parametri vengono riletti
    per ogni nota, anziché fissati all'inizio della sequenza. */
-function demoLength(){return [16,8,24,32,12,15][activeLab]||0;}
+function demoLength(){return [16,8,24,32,12,128][activeLab]||0;}
 function scheduleDemoStep(ctx,when,step){
  let interval=.3;
  const emit=(pitch,duration,voice='triangle',gain=.12,gate=1)=>tone(pitch,when,duration,voice,gain,gate);
@@ -305,9 +345,17 @@ function scheduleDemoStep(ctx,when,step){
    const notes=[72,69,67,64,72,69,65,62,60,64,67,72];interval=.32;
    emit(notes[step],interval*.94,'sine',.13,Math.max(.12,labValues.attack/100));
  }else if(activeLab===5){
-   const notes=[60,62,64,65,67,69,71,72,71,69,67,65,64,62,60];
-   const beat=60/labValues.exercise;interval=beat*.5;
-   emit(notes[step],beat*.45,'triangle',.14);
+   // Otto scale ascendenti e discendenti ripetute, entrambe all'unisono.
+   // Il secondo pianista ha un ritardo controllabile, NON un'altra altezza o velocità.
+   const scale=[60,62,64,65,67,69,71,72,74,72,71,69,67,65,64,62];
+   const syllables=['Do','Re','Mi','Fa','Sol','La','Si','Do','Re','Do','Si','La','Sol','Fa','Mi','Re'];
+   const pos=step%scale.length;
+   interval=.35;
+   const delay=labValues.desync/1000;
+   pianoNote(scale[pos],when,interval*.78,-.42,.085);
+   pianoNote(scale[pos],when+delay,interval*.78,.42,.080);
+   showPianist('A',syllables[pos],when);
+   showPianist('B',syllables[pos],when+delay);
  }
  scheduleVisual(step,when);
  return interval;
@@ -321,7 +369,7 @@ function demoTick(){
  }
  if(demoStep>=demoLength()&&demoTicker!==null){
    clearInterval(demoTicker);demoTicker=null;
-   const tail=activeLab===3?1.6:.45;
+   const tail=activeLab===3?1.6:activeLab===5?Math.max(.45,labValues.desync/1000+.2):.45;
    demoFinishTimer=setTimeout(()=>{if(!playingDemo)return;playingDemo=false;$('demoPlay').textContent='▶ Riprova il suono';document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'));demoFinishTimer=null},Math.max(0,(demoNextAt-ctx.currentTime+tail)*1000));
  }
 }
@@ -330,7 +378,7 @@ function runDemo(){
  let ctx;try{ctx=getCtx()}catch(e){$('labQuestion').textContent='Audio sintetico non supportato da questo browser: prova Chrome sul PC collegato alla SMART.';return}
  playingDemo=true;demoStep=0;demoNextAt=ctx.currentTime+.07;
  $('demoPlay').textContent='↻ Riprova';
- $('liveStatus').textContent='Esecuzione in corso: sposta i cursori o cambia le opzioni senza interromperla.';
+ $('liveStatus').textContent=activeLab===5?'Due pianisti, stessa scala: sposta il ritardo del secondo mentre ascolti.':'Esecuzione in corso: sposta i cursori o cambia le opzioni senza interromperla.';
  demoTicker=setInterval(demoTick,25);demoTick();
 }
 $('demoPlay').addEventListener('click',runDemo);$('demoStop').addEventListener('click',stopDemo);$('labToOriginal').addEventListener('click',()=>{selectPiece(labDefs[activeLab].piece);switchTab('walk')});
