@@ -886,6 +886,31 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 #sonata .history-thread{margin:1.5rem 0 1.8rem}
 #sonata #ragazzi-scordatura{margin:1.35rem 0 1.45rem}
 
+
+/* AUDIT SONATA BIBER BACH SOLI 20261010: laboratorio prima della spiegazione e Bach senza basso continuo */
+#sonata .scordatura-spiegazione{margin:1.4rem 0 2rem;padding:1.2rem 1.3rem;background:#f7eedf;color:#30261e;border:1px solid #c6b093;border-left:5px solid #ae803c}
+#sonata .scordatura-spiegazione h3{color:#34281f;font-size:1.4rem;margin:.2rem 0 .7rem}
+#sonata .scordatura-spiegazione p{color:#30261e;line-height:1.7}
+#danza #bach-archi-soli{scroll-margin-top:106px;margin:1.8rem 0;padding:1.35rem 1.4rem;background:#f9f1e4;color:#30241d;border:1px solid #bfa583;border-top:6px solid #a77a35}
+#danza .bach-soli-label{font:850 .72rem/1.4 var(--sans);color:#7c492b;letter-spacing:.07em;text-transform:uppercase}
+#danza .bach-archi-soli h3{font-size:clamp(1.45rem,2.8vw,2.1rem);line-height:1.3;color:#30241d;margin:.35rem 0 .85rem}
+#danza .bach-archi-soli p{line-height:1.7;color:#33281f}
+#danza .bach-soli-listening{margin:1.7rem 0 2.3rem}
+#danza .bach-soli-listening>h3{font-size:clamp(1.35rem,2.5vw,1.8rem);line-height:1.35}
+#danza .bach-soli-listening>p{line-height:1.65}
+#danza .bach-soli-video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+#danza .bach-soli-video{margin:0;border-top:5px solid #b58b48;background:#211a17;color:#f8eddd;overflow:hidden;box-shadow:0 12px 32px rgba(20,12,8,.15)}
+#danza .bach-soli-video:last-child{grid-column:1/-1}
+#danza .bach-soli-video iframe{width:100%;aspect-ratio:16/9;display:block;border:0;background:#000}
+#danza .bach-soli-video-copy{padding:1.1rem 1.2rem 1.25rem}
+#danza .bach-soli-video-copy b{color:#eed095;font:800 .74rem/1.45 var(--sans);letter-spacing:.06em;text-transform:uppercase}
+#danza .bach-soli-video-copy h4{color:#fff;font-size:1.3rem;line-height:1.28;margin:.4rem 0 .65rem}
+#danza .bach-soli-video-copy p{color:#eee3d3;line-height:1.65;font-size:.95rem;margin:.4rem 0}
+#danza .bach-soli-video-copy .bach-soli-times{color:#dfc69c;font:500 .8rem/1.55 var(--sans);margin:.8rem 0 .6rem}
+#danza .bach-soli-video-copy a{display:inline-block;text-decoration:none;background:#f3dbad;color:#322216;font:750 .86rem/1.45 var(--sans);padding:.57rem .8rem;border-radius:6px;margin-top:.25rem}
+#danza #ragazzi-bach-archi-soli{margin:1.35rem 0}
+@media(max-width:760px){#danza .bach-soli-video-grid{grid-template-columns:minmax(0,1fr)}#danza .bach-soli-video:last-child{grid-column:auto}#danza #bach-archi-soli{padding:1.05rem}#danza .bach-soli-video-copy{padding:1rem}}
+
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
@@ -1485,7 +1510,7 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       </div>
 
       <h3>La sonata viaggia, cambia voce e reinventa gli strumenti</h3>
-      <p>La storia della sonata non appartiene a un solo compositore o a una sola corte. Nel Seicento si sviluppa in ambienti differenti, dagli istituti religiosi dell’Italia settentrionale ai centri del virtuosismo violinistico dell’Europa centrale, prima di incontrare le Sonate e Partite per violino solo di Bach. Anche il modo di accordare il violino può diventare una risorsa espressiva della composizione, non una modifica alla sua costruzione.</p>
+      <p>La storia della sonata non appartiene a un solo compositore o a una sola corte. Nel Seicento si sviluppa in ambienti differenti, dagli istituti religiosi dell’Italia settentrionale ai centri del virtuosismo violinistico dell’Europa centrale. La scordatura mostra come l'accordatura possa diventare una risorsa espressiva senza modificare la costruzione del violino. Le <a href="#bach-archi-soli">Sonate e Partite per violino solo di Bach</a> meritano invece un percorso autonomo: non si tratta della sonata a tre con basso continuo, ma di un intero universo musicale affidato a un solo arco.</p>
       <div class="history-thread">
       <div class="thread-label">La sonata entra in convento</div>
       <h3 id="sonata-isabella">Isabella Leonarda: Novara non è fuori dalla storia</h3>
@@ -1497,24 +1522,21 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       </div>
     </div>
       <h3 id="sonata-biber">Biber e il violino che cambia pelle</h3>
-    <p>Heinrich Ignaz Franz Biber mostra fino a quale grado di complessità la tecnica violinistica fosse già arrivata nel pieno Seicento, soprattutto quando utilizza la scordatura per modificare intenzionalmente l’accordatura delle corde — alzandone o abbassandone l'altezza, secondo la sonata — e dunque alterando risonanze, possibilità armoniche e disposizione delle dita, nelle <i>Sonate del Rosario</i> questa pratica non costituisce un semplice effetto curioso, ma modifica concretamente il comportamento dello strumento e dimostra quanto il virtuosismo barocco possa nascere anche dal desiderio di trasformare la materia sonora prima ancora di scrivere una nota.</p>
-    <div class="source-row">
-      <a class="score-link" href="https://imslp.org/wiki/Mystery_%28Rosary%29_Sonatas_%28Biber%2C_Heinrich_Ignaz_Franz_von%29" target="_blank" rel="noopener">♫ IMSLP · Sonate del Rosario</a>
-      <button class="tech-button" type="button" data-modal="modal-scordatura">Apri · Che cos’è la scordatura?</button>
-    </div>
-    <aside class="student-box" id="ragazzi-scordatura">
-        <div class="student-label">✦ Per ascoltare e scoprire</div>
-        <h3>Il violino suona ancora come prima?</h3>
-        <p>Le quattro corde del violino non devono essere sempre accordate nella maniera abituale. Cambiando l'altezza di una o più corde, alcune note diventano disponibili in altri registri, cambiano le risonanze e certi accordi risultano più facili o più difficili da ottenere.</p>
-        <div class="try"><strong>Prova tu.</strong> Ascolta il violino di Biber attraverso il collegamento dell’English Concert. Prova a descrivere ciò che cambia nel colore del suono; poi apri «Che cos’è la scordatura?» e confronta la tua ipotesi con la spiegazione.</div>
-      </aside>
-    <div class="source-row">
-      <a class="deep-link" href="https://www.englishconcert.co.uk/videos/biber-rosary-sonatas/" target="_blank" rel="noopener">The English Concert · Biber e la scordatura →</a>
-    </div>
-  
-      <div class="source-row"><a class="deep-link" href="#danza">Bach: Sonate e Partite →</a></div>
+<p>Nelle <i>Sonate del Rosario</i> Heinrich Ignaz Franz Biber porta il violino verso sonorità inattese, usando spesso la <i>scordatura</i>: un'accordatura delle corde differente da quella consueta. Prima di entrare nei dettagli tecnici, proviamo ad ascoltare la musica.</p>
+<aside class="student-box" id="ragazzi-scordatura">
+<div class="student-label">✦ Ascolta · interroga · verifica</div><h3>Un violino, ma con una voce inattesa</h3>
+<p>Ascolta un brano dalle <i>Sonate del Rosario</i>. Quali passaggi ti sembrano particolarmente risonanti? Come cambiano accordi, intervalli e colore dello strumento?</p>
+<div class="source-row"><a class="deep-link" href="https://www.englishconcert.co.uk/videos/biber-rosary-sonatas/" target="_blank" rel="noopener noreferrer">▶ The English Concert · ascolta Biber ↗</a></div>
+<div class="try"><strong>Prova tu.</strong> Descrivi un passaggio e formula un'ipotesi sul suono. Non si può dedurre con certezza l'accordatura dal solo timbro: confronta ciò che hai sentito con la spiegazione e con la partitura qui sotto.</div>
+</aside>
+<div class="scordatura-spiegazione" id="scordatura-spiegazione">
+<h3>Che cosa cambia davvero con la scordatura?</h3>
+<p>Si alza o si abbassa intenzionalmente l'intonazione di una o più corde rispetto all'accordatura abituale: diventano disponibili altre corde vuote e talvolta note più gravi, cambiano risonanze, diteggiature e possibilità di realizzare bicordi o accordi. La scordatura è dunque una <strong>tecnica esecutiva e una risorsa compositiva</strong>, non una modifica nella costruzione del violino.</p>
+<p>Biber utilizza accordature differenti per caratterizzare musicalmente le singole <i>Sonate del Rosario</i>. Una partitura con scordatura richiede attenzione anche al rapporto fra note scritte e suoni effettivi.</p>
+<div class="source-row"><button class="tech-button" type="button" data-modal="modal-scordatura">Approfondisci · Che cos'è la scordatura?</button><a class="score-link" href="https://imslp.org/wiki/Mystery_%28Rosary%29_Sonatas_%28Biber%2C_Heinrich_Ignaz_Franz_von%29" target="_blank" rel="noopener noreferrer">♫ IMSLP · Sonate del Rosario</a></div>
+</div>
 
-      <h3>Scarlatti: la parola resta, l’oggetto cambia ancora</h3>
+<h3>Scarlatti: la parola resta, l’oggetto cambia ancora</h3>
       <p>Quando arriviamo alle sonate per tastiera di Domenico Scarlatti, il termine ha già cambiato nuovamente fisionomia. La maggior parte di questi brani è costituita da un solo movimento in forma bipartita, nel quale due grandi sezioni vengono ripetute e il percorso armonico diventa parte essenziale dell’architettura. Chiamarle “sonate” non significa però che siano già costruite secondo la forma-sonata classica di Haydn e Mozart.</p>
       <p>Questa distinzione prepara bene il passaggio al Classicismo: il genere sonata esiste da molto tempo, mentre quella che a scuola chiamiamo <i>forma-sonata</i> è una successiva organizzazione formale che matura nel corso del Settecento. Stessa parola, storia diversa.</p>
       <div class="source-row">
@@ -2047,7 +2069,13 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 <h3>Bach: la danza diventa pensiero</h3>
       <p>Le cosiddette <i>Suite francesi</i>, composte negli anni Venti del Settecento, mostrano con particolare chiarezza come Bach possa conservare l’identità delle danze e contemporaneamente trasformarle in musica da ascoltare, studiare e suonare. La prima suite in re minore BWV 812 segue una sequenza leggibile, Allemande, Courante, Sarabande, due Menuetti e Gigue, ma ciò che conta non è imparare l’ordine a memoria: è riconoscere come la stessa tastiera cambi postura musicale da un movimento all’altro.</p>
 
-      <div class="audit07-single"><figure class="audit07-figure"><a class="audit07-image" href="https://upload.wikimedia.org/wikipedia/commons/8/87/Frontespizio_Cello_Suite.png" target="_blank" rel="noopener noreferrer" title="Ingrandisci la fonte"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Frontespizio_Cello_Suite.png" alt="Frontespizio scritto a mano da Anna Magdalena Bach delle Suites per violoncello solo" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit07-failed')"></a><div class="audit07-fallback">Immagine non caricata. Consulta la scheda originale riportata nella didascalia.</div><figcaption>Anna Magdalena Bach, frontespizio della copia manoscritta delle <i>Sei Suites a Violoncello Solo senza Basso</i>, XVIII secolo; pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:Frontespizio_Cello_Suite.png" target="_blank" rel="noopener noreferrer">Fonte e licenza ↗</a></figcaption></figure><div class="audit07-story"><div class="audit07-kicker">Documento storico · lettura guidata</div><h3>La memoria delle Suite passa attraverso una copista</h3><p>La copia delle <i>Suite per violoncello</i> tramandata da Anna Magdalena Bach è una testimonianza decisiva. <strong>La sua mano non è quella di Johann Sebastian</strong>: ricordare chi copia è fondamentale per capire come le opere sopravvivono.</p><div class="audit07-question"><b>Guarda meglio.</b> Perché è scorretto chiamare il frontespizio «autografo di Johann Sebastian Bach»?</div></div></div>
+      <div class="bach-archi-soli" id="bach-archi-soli">
+<div class="bach-soli-label">Bach · scrittura per archi senza accompagnamento</div>
+<h3>Un solo strumento, un intero universo: Sonate, Partite e Suites</h3>
+<p>Nelle <strong>sei Sonate e Partite per violino solo</strong> e nelle <strong>sei Suites per violoncello solo</strong>, Bach non affida il basso armonico a un secondo musicista né la realizzazione degli accordi al clavicembalo. Siamo lontani dalla sonata a tre con basso continuo: un violino o un violoncello deve suggerire da solo melodie, accordi e talvolta più voci in contrappunto.</p>
+<p>Nelle tre <strong>Sonate per violino</strong> Bach sviluppa movimenti lenti, veloci e grandi fughe secondo la tradizione della sonata da chiesa. Le tre <strong>Partite per violino</strong> raccolgono e trasformano danze e movimenti affini; la seconda culmina in una monumentale Ciaccona. Le <strong>Suites per violoncello</strong> hanno invece un Preludio seguito da danze, dove una sola linea sa suggerire l'intera armonia. Sono tre esperienze distinte, da mettere a confronto.</p>
+</div>
+<div class="audit07-single"><figure class="audit07-figure"><a class="audit07-image" href="https://upload.wikimedia.org/wikipedia/commons/8/87/Frontespizio_Cello_Suite.png" target="_blank" rel="noopener noreferrer" title="Ingrandisci la fonte"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Frontespizio_Cello_Suite.png" alt="Frontespizio scritto a mano da Anna Magdalena Bach delle Suites per violoncello solo" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('audit07-failed')"></a><div class="audit07-fallback">Immagine non caricata. Consulta la scheda originale riportata nella didascalia.</div><figcaption>Anna Magdalena Bach, frontespizio della copia manoscritta delle <i>Sei Suites a Violoncello Solo senza Basso</i>, XVIII secolo; pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:Frontespizio_Cello_Suite.png" target="_blank" rel="noopener noreferrer">Fonte e licenza ↗</a></figcaption></figure><div class="audit07-story"><div class="audit07-kicker">Documento storico · lettura guidata</div><h3>La memoria delle Suite passa attraverso una copista</h3><p>La copia delle <i>Suite per violoncello</i> tramandata da Anna Magdalena Bach è una testimonianza decisiva. <strong>La sua mano non è quella di Johann Sebastian</strong>: ricordare chi copia è fondamentale per capire come le opere sopravvivono.</p><div class="audit07-question"><b>Guarda meglio.</b> Perché è scorretto chiamare il frontespizio «autografo di Johann Sebastian Bach»?</div></div></div>
 <div class="bach-solo-grid">
         <article class="bach-solo-card">
           <b>Violino solo · BWV 1001–1006</b>
@@ -2072,6 +2100,20 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
           </div>
         </article>
       </div>
+
+<div class="bach-soli-listening" aria-labelledby="bach-soli-listening-title">
+<h3 id="bach-soli-listening-title">Tre ascolti completi per capire la scrittura di Bach per archi soli</h3>
+<p>Esecuzioni della Netherlands Bach Society, progetto <i>All of Bach</i>. In ciascun video vediamo il musicista suonare senza accompagnamento, ma il discorso musicale cambia profondamente.</p>
+<div class="bach-soli-video-grid">
+<article class="bach-soli-video"><iframe src="https://www.youtube-nocookie.com/embed/MRKy3kX8XUM" title="Bach, Sonata n. 1 in sol minore, BWV 1001, Netherlands Bach Society" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="bach-soli-video-copy"><b>1 · Sonata · violino solo</b><h4>Sonata n. 1 in sol minore, BWV 1001</h4><p>Shunske Sato, violino. Segui in particolare la Fuga: accordi e passaggi successivi fanno percepire più voci che si rincorrono.</p><p class="bach-soli-times">0:00 Adagio · 4:28 Fuga · 10:18 Siciliana · 13:32 Presto</p><a href="https://www.youtube.com/watch?v=MRKy3kX8XUM" target="_blank" rel="noopener noreferrer">Apri su YouTube ↗</a></div></article>
+<article class="bach-soli-video"><iframe src="https://www.youtube-nocookie.com/embed/44Wz92zQe04" title="Bach, Partita n. 2 in re minore, BWV 1004, Netherlands Bach Society" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="bach-soli-video-copy"><b>2 · Partita · violino solo</b><h4>Partita n. 2 in re minore, BWV 1004</h4><p>Shunske Sato, violino. Dalle danze iniziali alla Ciaccona finale: una successione di movimenti che diventa una grande architettura di variazioni.</p><p class="bach-soli-times">0:00 Allemanda · 5:10 Corrente · 7:47 Sarabanda · 11:36 Giga · 15:51 Ciaccona</p><a href="https://www.youtube.com/watch?v=44Wz92zQe04" target="_blank" rel="noopener noreferrer">Apri su YouTube ↗</a></div></article>
+<article class="bach-soli-video"><iframe src="https://www.youtube-nocookie.com/embed/cGnZHIY_hoQ" title="Bach, Suite n. 1 in sol maggiore, BWV 1007, Netherlands Bach Society" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="bach-soli-video-copy"><b>3 · Suite · violoncello solo</b><h4>Suite n. 1 in sol maggiore, BWV 1007</h4><p>Lucia Swarts, violoncello. Dopo il Preludio, ascolta come le danze e gli arpeggi suggeriscono un'armonia senza nessun altro strumento.</p><p class="bach-soli-times">0:00 Preludio · 2:40 Allemanda · 6:26 Corrente · 9:18 Sarabanda · 12:06 Minuetti · 15:40 Giga</p><a href="https://www.youtube.com/watch?v=cGnZHIY_hoQ" target="_blank" rel="noopener noreferrer">Apri su YouTube ↗</a></div></article>
+</div>
+<aside class="student-box" id="ragazzi-bach-archi-soli"><div class="student-label">✦ Ascolta · confronta · verifica</div>
+<h3>Un musicista solo: perché sembra di sentirne più di uno?</h3>
+<p>Nessuno accompagna il violino o il violoncello. Prova a riconoscere quando la musica suggerisce un'altra voce o un accordo pur restando su un unico strumento.</p>
+<div class="try"><strong>Prova tu.</strong> Nella Fuga riconosci il ritorno dell'idea iniziale; nella Partita confronta due danze e la Ciaccona; nella Suite per violoncello segui gli arpeggi che fanno immaginare un'armonia. Qual è la differenza fra Sonata, Partita e Suite?</div></aside>
+</div>
 
       <p>Le <i>Suite francesi</i>, le Partite per violino e le Suites per violoncello ci impediscono dunque di separare troppo rigidamente forma, danza e tecnica strumentale. La stessa allemanda cambia completamente quando viene affidata al clavicembalo, al violino o al violoncello, perché ogni strumento possiede un proprio modo di articolare il tempo e di suggerire la polifonia. Per questo conoscere l’origine danzante non significa obbligare l’interprete a trasformare ogni movimento in accompagnamento per ballerini, ma ricordare che quella musica conserva una gravità, un passo e una respirazione che non sono puramente astratti.</p>
 
