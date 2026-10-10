@@ -51,6 +51,33 @@
 .mcButtons #mcListen{flex:1.25 1 130px}
 @media(max-width:760px){.mcQuote{font-size:clamp(1.16rem,4.7vw,1.55rem)}.mcBrand{justify-content:center}.mcButtons{display:grid;grid-template-columns:1fr 1fr}.mcButtons .btn{min-width:0;min-height:49px}}
 @media print{.mcOverlay{display:none!important}}
+
+/* Layout responsive: le tessere dei laboratori non possono allargare la viewport. */
+@media (max-width:950px){
+ html,body,#app,.wrap,main,.page,.two,.panel,.labchoices,.labarea,.controls{min-width:0;max-width:100%}
+ .two{grid-template-columns:minmax(0,1fr)}
+ .two>*{min-width:0;max-width:100%}
+ .labchoices{grid-template-columns:minmax(0,1fr)}
+ .labchoices button{min-width:0;width:100%;max-width:100%;white-space:normal;overflow-wrap:anywhere;justify-content:flex-start;text-align:left}
+ .labchoices button .number{flex:0 0 42px}
+ .labchoices button span:last-child{min-width:0;flex:1 1 auto;white-space:normal;overflow-wrap:anywhere;line-height:1.3}
+ .labarea h2,.labdesc,.ctrl label,.tip{overflow-wrap:anywhere}
+ .ctrl{min-width:0;max-width:100%}
+ .ctrl input[type=range],.ctrl select{max-width:100%;min-width:0}
+ .musicsheet{max-width:100%;overflow:hidden;padding:10px;gap:clamp(3px,1vw,11px)}
+ .musicsheet .tone{min-width:0;width:auto;flex:1 1 0}
+ .tabs .btn,.actions .btn,.transport .btn,.row .btn{max-width:100%;min-width:0;overflow-wrap:anywhere}
+ .actions,.topbar,.logo{max-width:100%;min-width:0}
+}
+@media(max-width:600px){
+ .wrap{padding-inline:12px}
+ .two>.panel{padding:14px}
+ .labchoices button{font-size:clamp(.96rem,4vw,1.12rem);padding:12px 10px}
+ .tip,.labdesc{font-size:clamp(.97rem,4vw,1.1rem)}
+ .next-lesson>*{min-width:0;max-width:100%}
+ .next-lesson .btn{min-width:0;white-space:normal}
+}
+.liveStatus{font-size:.92rem;color:#eddbb7;margin:0 0 16px;line-height:1.35}
 </style>
 </head>
 <body>
@@ -120,7 +147,7 @@
   <div class="panel labarea">
    <p class="eyebrow">Laboratorio del compositore</p>
    <h2 id="labTitle"></h2><p class="labdesc" id="labDesc"></p>
-   <div class="controls" id="labControls"></div>
+   <div class="controls" id="labControls"></div><p class="liveStatus" id="liveStatus">Regola i comandi anche durante l’ascolto: il suono cambia senza ripartire.</p>
    <div class="musicsheet" aria-hidden="true" id="tones"></div>
    <div class="row" style="margin:19px 0"><button class="btn primary" id="demoPlay">▶ Prova il suono</button><button class="btn" id="demoStop">■ Ferma</button><button class="btn" id="labToOriginal">♫ Ascolta l'originale</button></div>
    <p class="tip" id="labQuestion"></p>
@@ -200,7 +227,7 @@ const movements=[
  {title:'Il cigno',short:'Il cigno',icon:'🦢',file:'Saint-Saens - The Carnival of the Animals - 13 Le cygne.ogg',tags:['Violoncello','Legato','Arpeggi'],q:'Come può un animale scivolare mentre l’acqua continua a muoversi?',desc:'Il violoncello canta una lunga linea melodica, mentre i due pianoforti disegnano un continuo movimento di arpeggi. Due gesti differenti si uniscono in un’unica immagine.',task:'Assegna le braccia al violoncello e i piccoli passi ai pianoforti: quale parte si muove di più?'},
  {title:'Finale',short:'Finale',icon:'🎉',file:'Saint-Saens - The Carnival of the Animals - 14 Final.ogg',tags:['Ensemble','Ritorni','Festa'],q:'Come fanno tanti personaggi diversi a stare tutti nello stesso palcoscenico?',desc:'Il Carnevale termina con un grande gioco collettivo, richiami a scene precedenti ed energia festosa. Dopo i solisti e i piccoli gruppi, ritroviamo la logica dell’insieme.',task:'Segna ogni volta che ti sembra di riconoscere un personaggio già incontrato.'}
 ];
-const $=id=>document.getElementById(id);const audio=$('audio');let index=0;let blind=false;let markA=0,markB=null,repeat=false,selectionActive=false;let currentTab='walk';let audioCtx=null,activeOsc=[],noteTimers=[];let playingDemo=false;let activeLab=0;let labValues={tempo:95,octave:0,voice:'triangle',mode:'maggiore',flow:5,melody:true,arp:true,attack:85,exercise:110};
+const $=id=>document.getElementById(id);const audio=$('audio');let index=0;let blind=false;let markA=0,markB=null,repeat=false,selectionActive=false;let currentTab='walk';let audioCtx=null,activeOsc=[],noteTimers=[];let playingDemo=false;let demoTicker=null,demoFinishTimer=null,demoStep=0,demoNextAt=0;let activeLab=0;let labValues={tempo:95,octave:0,voice:'triangle',mode:'maggiore',flow:5,melody:true,arp:true,attack:85,exercise:110};
 function secText(s){if(!Number.isFinite(s))return'--:--';return String(Math.floor(s/60)).padStart(2,'0')+':'+String(Math.floor(s%60)).padStart(2,'0')}
 function fileUrl(name){return 'https://commons.wikimedia.org/wiki/Special:Redirect/file/'+encodeURIComponent(name.replaceAll(' ','_'))}
 function commonsUrl(name){return 'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(name.replaceAll(' ','_'))}
@@ -239,20 +266,73 @@ function renderLabChoices(){const list=$('labList');list.innerHTML='';labDefs.fo
 function rangeControl(id,text,min,max,step,val,unit){return `<div class="ctrl"><label for="${id}">${text}: <output id="${id}Out">${val}${unit}</output></label><input id="${id}" type="range" min="${min}" max="${max}" step="${step}" value="${val}"></div>`}
 function selectControl(id,text,opts,value){return `<div class="ctrl"><label for="${id}">${text}</label><select id="${id}">${opts.map(x=>`<option value="${x[0]}" ${x[0]===value?'selected':''}>${x[1]}</option>`).join('')}</select></div>`}
 function checkboxControl(id,text,val){return `<div class="ctrl"><label><input id="${id}" type="checkbox" ${val?'checked':''}> ${text}</label></div>`}
-function renderLabs(){renderLabChoices();const d=labDefs[activeLab];$('labTitle').textContent=d.title;$('labDesc').innerHTML=d.desc;$('labQuestion').textContent=d.question;let h='';if(activeLab===0)h=rangeControl('tempo','Tempo',35,170,5,labValues.tempo,' BPM');if(activeLab===1)h=rangeControl('octave','Trasposizione di registro',-2,2,1,labValues.octave,' ottave')+selectControl('voice','Colore sintetico',[['sine','Morbido / quasi puro'],['triangle','Caldo / triangolare'],['sawtooth','Ricco / aspro']],labValues.voice);if(activeLab===2)h=selectControl('mode','Disposizione armonica',[['maggiore','Triade maggiore'],['minore','Triade minore']],labValues.mode)+rangeControl('flow','Note per figura',3,8,1,labValues.flow,'');if(activeLab===3)h=checkboxControl('melody','Ascolta la linea superiore (melodia)',labValues.melody)+checkboxControl('arp','Ascolta il livello inferiore (arpeggi)',labValues.arp);if(activeLab===4)h=rangeControl('attack','Durata dei suoni',10,100,5,labValues.attack,'%');if(activeLab===5)h=rangeControl('exercise','Velocità della scala',40,200,10,labValues.exercise,' BPM');$('labControls').innerHTML=h;['tempo','octave','flow','attack','exercise'].forEach(id=>{if(!$(id))return;$(id).addEventListener('input',e=>{labValues[id]=Number(e.target.value);$(id+'Out').textContent=e.target.value+(id==='tempo'||id==='exercise'?' BPM':id==='octave'?' ottave':id==='attack'?'%':'')})});['voice','mode'].forEach(id=>{$(id)?.addEventListener('change',e=>labValues[id]=e.target.value)});['melody','arp'].forEach(id=>{$(id)?.addEventListener('change',e=>labValues[id]=e.target.checked)});$('tones').innerHTML=Array.from({length:12},(_,i)=>`<span class="tone" id="tone${i}"></span>`).join('')}
+function renderLabs(){renderLabChoices();const d=labDefs[activeLab];$('labTitle').textContent=d.title;$('labDesc').innerHTML=d.desc;$('labQuestion').textContent=d.question;let h='';if(activeLab===0)h=rangeControl('tempo','Tempo',35,170,5,labValues.tempo,' BPM');if(activeLab===1)h=rangeControl('octave','Trasposizione di registro',-2,2,1,labValues.octave,' ottave')+selectControl('voice','Colore sintetico',[['sine','Morbido / quasi puro'],['triangle','Caldo / triangolare'],['sawtooth','Ricco / aspro']],labValues.voice);if(activeLab===2)h=selectControl('mode','Disposizione armonica',[['maggiore','Triade maggiore'],['minore','Triade minore']],labValues.mode)+rangeControl('flow','Note per figura',3,8,1,labValues.flow,'');if(activeLab===3)h=checkboxControl('melody','Ascolta la linea superiore (melodia)',labValues.melody)+checkboxControl('arp','Ascolta il livello inferiore (arpeggi)',labValues.arp);if(activeLab===4)h=rangeControl('attack','Durata dei suoni',10,100,5,labValues.attack,'%');if(activeLab===5)h=rangeControl('exercise','Velocità della scala',40,200,10,labValues.exercise,' BPM');$('labControls').innerHTML=h;$('liveStatus').textContent='Regola i comandi anche durante l’ascolto: il suono cambia senza ripartire.';['tempo','octave','flow','attack','exercise'].forEach(id=>{if(!$(id))return;$(id).addEventListener('input',e=>{labValues[id]=Number(e.target.value);$(id+'Out').textContent=e.target.value+(id==='tempo'||id==='exercise'?' BPM':id==='octave'?' ottave':id==='attack'?'%':'');if(playingDemo)$('liveStatus').textContent='Modifica in diretta: '+e.target.value+(id==='tempo'||id==='exercise'?' BPM':id==='octave'?' ottave':id==='attack'?'%':'')})});['voice','mode'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.value;if(playingDemo)$('liveStatus').textContent='Colore o armonia modificati durante l’esecuzione.';})});['melody','arp'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.checked;if(playingDemo)$('liveStatus').textContent='Parte '+(e.target.checked?'attivata':'disattivata')+' durante l’esecuzione.';})});$('tones').innerHTML=Array.from({length:12},(_,i)=>`<span class="tone" id="tone${i}"></span>`).join('')}
 function midiFreq(n){return 440*Math.pow(2,(n-69)/12)}
 function getCtx(){if(!audioCtx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw new Error('Il browser non supporta Web Audio');audioCtx=new AC()}if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});return audioCtx}
-function stopDemo(){activeOsc.forEach(o=>{try{o.stop()}catch(_){}});activeOsc=[];noteTimers.forEach(t=>clearTimeout(t));noteTimers=[];playingDemo=false;if($('demoPlay'))$('demoPlay').textContent='▶ Prova il suono';document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'))}
+function stopDemo(){if(demoTicker!==null){clearInterval(demoTicker);demoTicker=null;}if(demoFinishTimer!==null){clearTimeout(demoFinishTimer);demoFinishTimer=null;}activeOsc.forEach(o=>{try{o.stop()}catch(_){}});activeOsc=[];noteTimers.forEach(t=>clearTimeout(t));noteTimers=[];playingDemo=false;if($('demoPlay'))$('demoPlay').textContent='▶ Prova il suono';document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'))}
 function tone(midi,start,duration,type='triangle',gain=.13,shorten=1){const ctx=getCtx();const osc=ctx.createOscillator();const amp=ctx.createGain();osc.type=type;osc.frequency.setValueAtTime(midiFreq(midi),start);amp.gain.setValueAtTime(.0001,start);amp.gain.exponentialRampToValueAtTime(gain,start+.025);amp.gain.setValueAtTime(gain,start+Math.min(duration*.55,.22));amp.gain.exponentialRampToValueAtTime(.0001,start+Math.max(.07,duration*shorten));osc.connect(amp);amp.connect(ctx.destination);osc.start(start);osc.stop(start+duration+.04);activeOsc.push(osc)}
-function scheduleVisual(pos,t,ms){let timer=setTimeout(()=>{if(!playingDemo)return;document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'));const e=$('tone'+(pos%12));e?.classList.add('on')},Math.round(t*1000));noteTimers.push(timer)}
-function runDemo(){audio.pause();$('play').textContent='▶ Riprendi';stopDemo();let ctx;try{ctx=getCtx()}catch(e){$('labQuestion').textContent='Audio sintetico non supportato da questo browser: prova Chrome sul PC collegato alla SMART.';return}playingDemo=true;$('demoPlay').textContent='↻ Riprova';const now=ctx.currentTime+.1;let total=0;const add=(note,t,d,typ='triangle',g=.12,len=1,visual=true)=>{tone(note,now+t,d,typ,g,len);if(visual)scheduleVisual(Math.round(t*4),t*1e0)};
- if(activeLab===0){const beat=60/labValues.tempo;let notes=[60,62,64,60,67,65,64,62,60,55,60,64,62,60,57,60];notes.forEach((n,i)=>{add(n,i*beat*.85,beat*.73,'triangle',.16);if(i%4===0)add(48,i*beat*.85,beat*.2,'sine',.07,false);});total=notes.length*beat*.85+.4;}
- if(activeLab===1){let notes=[43,47,50,48,45,43,40,43];const b=.44;notes.forEach((n,i)=>add(n+labValues.octave*12,i*b,b*.9,labValues.voice,.14));total=notes.length*b+.2;}
- if(activeLab===2){let tonic=48;let triad=labValues.mode==='maggiore'?[0,4,7]:[0,3,7];let rate=.26;let count=24;for(let i=0;i<count;i++){let pos=i%labValues.flow;let n=tonic+triad[pos%3]+12*(pos>=3?1:0);add(n,i*rate,rate*.82,'sine',.12)}total=count*rate+.2;}
- if(activeLab===3){let b=.36;let line=[64,67,69,67,64,62,60,62];if(labValues.melody)line.forEach((n,i)=>add(n,i*b*2,b*1.97,'triangle',.115));if(labValues.arp){for(let i=0;i<32;i++){let arp=[48,55,60,55][i%4];add(arp,i*b/2,b*.43,'sine',.072,false)}}total=line.length*b*2+.3;}
- if(activeLab===4){const seq=[72,69,67,64,72,69,65,62,60,64,67,72];let b=.32;seq.forEach((n,i)=>add(n,i*b,b*.94,'sine',.13,Math.max(.12,labValues.attack/100)));total=seq.length*b+.2;}
- if(activeLab===5){let b=60/labValues.exercise;let scale=[60,62,64,65,67,69,71,72,71,69,67,65,64,62,60];scale.forEach((n,i)=>add(n,i*b*.5,b*.45,'triangle',.14));total=scale.length*b*.5+.2;}
- noteTimers.push(setTimeout(()=>{playingDemo=false;$('demoPlay').textContent='▶ Riprova il suono';document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'))},(total+1)*1000))}
+function scheduleVisual(pos,when){
+ const ctx=getCtx();
+ const wait=Math.max(0,(when-ctx.currentTime)*1000);
+ let timer=setTimeout(()=>{if(!playingDemo)return;document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'));$('tone'+(pos%12))?.classList.add('on')},wait);
+ noteTimers.push(timer);
+}
+/* Programmazione continua a finestra breve: tutti i parametri vengono riletti
+   per ogni nota, anziché fissati all'inizio della sequenza. */
+function demoLength(){return [16,8,24,32,12,15][activeLab]||0;}
+function scheduleDemoStep(ctx,when,step){
+ let interval=.3;
+ const emit=(pitch,duration,voice='triangle',gain=.12,gate=1)=>tone(pitch,when,duration,voice,gain,gate);
+ if(activeLab===0){
+   const notes=[60,62,64,60,67,65,64,62,60,55,60,64,62,60,57,60];
+   const beat=60/labValues.tempo;interval=beat*.85;
+   emit(notes[step],beat*.73,'triangle',.16);
+   if(step%4===0)emit(48,beat*.2,'sine',.07);
+ }else if(activeLab===1){
+   const notes=[43,47,50,48,45,43,40,43];interval=.44;
+   emit(notes[step]+labValues.octave*12,interval*.9,labValues.voice,.14);
+ }else if(activeLab===2){
+   const triad=labValues.mode==='maggiore'?[0,4,7]:[0,3,7];
+   const k=step%labValues.flow;
+   const octave=(k>=3)?12:0;
+   interval=.26;emit(48+triad[k%3]+octave,interval*.82,'sine',.12);
+ }else if(activeLab===3){
+   const melody=[64,67,69,67,64,62,60,62];const arp=[48,55,60,55];
+   interval=.18;
+   if(labValues.arp)emit(arp[step%4],.1548,'sine',.072);
+   if(step%4===0&&labValues.melody)emit(melody[step/4],1.4184,'triangle',.115);
+ }else if(activeLab===4){
+   const notes=[72,69,67,64,72,69,65,62,60,64,67,72];interval=.32;
+   emit(notes[step],interval*.94,'sine',.13,Math.max(.12,labValues.attack/100));
+ }else if(activeLab===5){
+   const notes=[60,62,64,65,67,69,71,72,71,69,67,65,64,62,60];
+   const beat=60/labValues.exercise;interval=beat*.5;
+   emit(notes[step],beat*.45,'triangle',.14);
+ }
+ scheduleVisual(step,when);
+ return interval;
+}
+function demoTick(){
+ if(!playingDemo)return;
+ const ctx=getCtx(),horizon=ctx.currentTime+.075;
+ let scheduled=0;
+ while(demoNextAt<=horizon&&demoStep<demoLength()&&scheduled++<8){
+   demoNextAt+=scheduleDemoStep(ctx,demoNextAt,demoStep++);
+ }
+ if(demoStep>=demoLength()&&demoTicker!==null){
+   clearInterval(demoTicker);demoTicker=null;
+   const tail=activeLab===3?1.6:.45;
+   demoFinishTimer=setTimeout(()=>{if(!playingDemo)return;playingDemo=false;$('demoPlay').textContent='▶ Riprova il suono';document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'));demoFinishTimer=null},Math.max(0,(demoNextAt-ctx.currentTime+tail)*1000));
+ }
+}
+function runDemo(){
+ audio.pause();$('play').textContent='▶ Riprendi';stopDemo();
+ let ctx;try{ctx=getCtx()}catch(e){$('labQuestion').textContent='Audio sintetico non supportato da questo browser: prova Chrome sul PC collegato alla SMART.';return}
+ playingDemo=true;demoStep=0;demoNextAt=ctx.currentTime+.07;
+ $('demoPlay').textContent='↻ Riprova';
+ $('liveStatus').textContent='Esecuzione in corso: sposta i cursori o cambia le opzioni senza interromperla.';
+ demoTicker=setInterval(demoTick,25);demoTick();
+}
 $('demoPlay').addEventListener('click',runDemo);$('demoStop').addEventListener('click',stopDemo);$('labToOriginal').addEventListener('click',()=>{selectPiece(labDefs[activeLab].piece);switchTab('walk')});
 const instrumentData=[
  ['p1','🎹','Pianoforte I','Dà impulso, colore, figurazioni e accompagnamento.'],['p2','🎹','Pianoforte II','Si intreccia con il primo: alcune figure hanno bisogno proprio di due pianisti.'],['flute','🪈','Flauto / ottavino','Registro acuto, movimenti rapidi, leggerezza e colore.'],['clarinet','🎼','Clarinetto','Timbro versatile, da un richiamo lontano a gesti comici.'],['glass','✨','Armonica a bicchieri','Colore cristallino; in molte esecuzioni viene sostituita con strumenti affini.'],['xylo','🥁','Xilofono','Suono percussivo, asciutto e netto: protagonista dei Fossili.'],['v1','🎻','Violino I','Può cantare, rispondere e inventare gesti acutissimi.'],['v2','🎻','Violino II','Dialoga con il primo e rinforza il tessuto degli archi.'],['va','🎻','Viola','Voce centrale, importante nel colore d’insieme.'],['vc','🎻','Violoncello','Nel Cigno è la voce solista dalla melodia ampia e legata.'],['cb','🎻','Contrabbasso','Il registro più grave degli archi: nell’Elefante sorprende come danzatore.']
