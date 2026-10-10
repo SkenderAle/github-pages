@@ -1214,6 +1214,11 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 #voce .audit18-error .audit18-fallback{display:block}
 @media(max-width:780px){#voce .audit18-doc,#voce .audit18-reverse{grid-template-columns:minmax(0,1fr)}#voce .audit18-reverse .audit18-fig{order:0}#voce .audit18-content{padding:1rem}#voce .audit18-img img{max-height:310px}}
 
+/* Audit trasversale 20: immagini di archivio leggibili anche quando non caricano */
+.women-portrait .women-portrait-fallback{display:none;margin:0;padding:1.15rem .9rem;min-height:160px;align-items:center;justify-content:center;background:#34291f;color:#f8ecdb;font:500 .91rem/1.6 var(--sans)}
+.women-portrait.women-portrait-failed>img{display:none}
+.women-portrait.women-portrait-failed>.women-portrait-fallback{display:flex}
+
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261006b"></head>
 <body>
@@ -2840,7 +2845,7 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       <div class="women-recap">
         <article><b>Francesca Caccini</b><p>Voce, composizione, insegnamento e teatro alla corte medicea: il nuovo linguaggio monodico non nasce in un mondo esclusivamente maschile.</p><a class="deep-link" href="#voce">Torna alla monodia →</a></article>
         <article><b>Barbara Strozzi</b><p>La Venezia della cantata e della voce solistica trova in lei una delle autrici più prolifiche e riconoscibili del Seicento.</p><a class="deep-link" href="#seicento">Torna al Seicento →</a></article>
-        <article><b>Isabella Leonarda</b><p>Il convento di Novara entra nella storia della sonata strumentale e nella circolazione europea delle nuove forme.</p><a class="deep-link" href="#strumenti">Torna agli strumenti →</a></article>
+        <article><b>Isabella Leonarda</b><p>Il convento di Novara entra nella storia della sonata strumentale e nella circolazione europea delle nuove forme.</p><a class="deep-link" href="#sonata">Torna alla sonata →</a></article>
         <article><b>Antonia Bembo</b><p>Una veneziana a Parigi rende visibile la mobilità fra cultura italiana e francese attraverso una biografia che attraversa due mondi.</p><a class="deep-link" href="#europa">Torna alle rotte europee →</a></article>
         <article><b>Élisabeth Jacquet de La Guerre</b><p>Clavicembalo, sonata, cantata e teatro mostrano che la Francia di Luigi XIV possiede anche una voce compositiva femminile pienamente professionale.</p><a class="deep-link" href="#europa">Torna alla Francia →</a></article>
         <article><b>Le Figlie di Choro</b><p>Alla Pietà le donne non sono il pubblico di Vivaldi ma parte della macchina musicale: cantano, suonano, insegnano e rendono possibile un laboratorio timbrico straordinario.</p><a class="deep-link" href="#vivaldi">Torna alla Pietà →</a></article>
@@ -2856,15 +2861,18 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 
       <div class="women-portraits">
         <article class="women-portrait">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Catherine_de_M%C3%A9dicis_-_atelier_de_Fran%C3%A7ois_Clouet.jpg" alt="Ritratto di Caterina de’ Medici, atelier di François Clouet" loading="lazy">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Catherine_de_M%C3%A9dicis_-_atelier_de_Fran%C3%A7ois_Clouet.jpg" alt="Ritratto di Caterina de’ Medici, atelier di François Clouet" loading="lazy" decoding="async" onerror="this.closest('.women-portrait').classList.add('women-portrait-failed')">
+          <p class="women-portrait-fallback">Ritratto temporaneamente non disponibile. Consulta la fonte originale indicata qui sotto.</p>
           <div><b>Caterina de’ Medici</b><p>Il ballet de cour cresce dentro una cultura della festa dinastica nella quale Italia e Francia dialogano già prima del Barocco.</p><a class="archive-link" href="https://commons.wikimedia.org/wiki/File:Catherine_de_M%C3%A9dicis_-_atelier_de_Fran%C3%A7ois_Clouet.jpg" target="_blank" rel="noopener">Ritratto · pubblico dominio</a></div>
         </article>
         <article class="women-portrait">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Pourbus%2C_Frans_-_Portrait_of_Maria_de%27_Medici%2C_Queen_of_France_%28Galleria_Palatina%29.jpg/500px-Pourbus%2C_Frans_-_Portrait_of_Maria_de%27_Medici%2C_Queen_of_France_%28Galleria_Palatina%29.jpg" alt="Ritratto di Maria de’ Medici di Frans Pourbus il Giovane" loading="lazy">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Pourbus%2C_Frans_-_Portrait_of_Maria_de%27_Medici%2C_Queen_of_France_%28Galleria_Palatina%29.jpg/500px-Pourbus%2C_Frans_-_Portrait_of_Maria_de%27_Medici%2C_Queen_of_France_%28Galleria_Palatina%29.jpg" alt="Ritratto di Maria de’ Medici di Frans Pourbus il Giovane" loading="lazy" decoding="async" onerror="this.closest('.women-portrait').classList.add('women-portrait-failed')">
+          <p class="women-portrait-fallback">Ritratto temporaneamente non disponibile. Consulta la fonte originale indicata qui sotto.</p>
           <div><b>Maria de’ Medici</b><p><small>Frans Pourbus il Giovane, 1611 · Palazzo Pitti, Firenze.</small> Firenze 1600 diventa il punto nel quale festa dinastica e una nuova forma di teatro musicale entrano nella stessa storia.</p><a class="archive-link" href="https://commons.wikimedia.org/wiki/File:Pourbus,_Frans_-_Portrait_of_Maria_de%27_Medici,_Queen_of_France_(Galleria_Palatina).jpg" target="_blank" rel="noopener">Ritratto · Wikimedia Commons</a></div>
         </article>
         <article class="women-portrait">
-          <img src="https://cdn2.picryl.com/photo/1850/12/31/portrait-de-la-grande-mademoiselle-chateau-de-saint-fargeau-60c73b-640.jpg" alt="Ritratto della Grande Mademoiselle, Anne-Marie-Louise d’Orléans" loading="lazy">
+          <img src="https://cdn2.picryl.com/photo/1850/12/31/portrait-de-la-grande-mademoiselle-chateau-de-saint-fargeau-60c73b-640.jpg" alt="Ritratto della Grande Mademoiselle, Anne-Marie-Louise d’Orléans" loading="lazy" decoding="async" onerror="this.closest('.women-portrait').classList.add('women-portrait-failed')">
+          <p class="women-portrait-fallback">Ritratto temporaneamente non disponibile. Consulta la fonte originale indicata qui sotto.</p>
           <div><b>La Grande Mademoiselle</b><p>Nipote di Maria de’ Medici, offre al giovane Lully uno dei suoi primi ambienti francesi prima dell’ingresso nella sfera di Luigi XIV.</p><a class="archive-link" href="https://picryl.com/media/portrait-de-la-grande-mademoiselle-chateau-de-saint-fargeau-60c73b" target="_blank" rel="noopener">Ritratto · pubblico dominio</a></div>
         </article>
       </div>
