@@ -275,8 +275,8 @@ const mcScenes=[
 ];
 let mcStep=0,mcSpeechToken=0;
 const mcEl=id=>document.getElementById(id);
-const mcMaleName=/\\b(male|maschile|uomo|man|homme|cosimo|diego|luca|mauro|paolo|giorgio|fabio|alessandro|giuseppe|stefano|andrea|riccardo|antonio|edoardo|matteo|damiano|nicola|enzo|pietro|claudio|alberto|roberto|giovanni|marco|bruno|carmelo|davide|lorenzo|daniele|francesco|massimo|federico|sergio|salvatore|valerio|gabriele|vittorio)\\b/i;
-const mcFemaleName=/\\b(female|femminile|woman|donna|femme|elsa|alice|lucia|giulia|paola|francesca|maria|sara|sofia|anna|silvia|chiara|bianca|monica|elena|valentina|federica|caterina|giovanna|filomena)\\b/i;
+const mcMaleName=/\b(male|maschile|uomo|man|homme|cosimo|diego|luca|mauro|paolo|giorgio|fabio|alessandro|giuseppe|stefano|andrea|riccardo|antonio|edoardo|matteo|damiano|nicola|enzo|pietro|claudio|alberto|roberto|giovanni|marco|bruno|carmelo|davide|lorenzo|daniele|francesco|massimo|federico|sergio|salvatore|valerio|gabriele|vittorio)\b/i;
+const mcFemaleName=/\b(female|femminile|woman|donna|femme|elsa|alice|lucia|giulia|paola|francesca|maria|sara|sofia|anna|silvia|chiara|bianca|monica|elena|valentina|federica|caterina|giovanna|filomena)\b/i;
 let mcAvailableVoices=[];
 function mcCancel(){mcSpeechToken++;if('speechSynthesis' in window){try{speechSynthesis.cancel()}catch(_){}}}
 function mcUpdateVoices(){if('speechSynthesis' in window){mcAvailableVoices=speechSynthesis.getVoices();}}
