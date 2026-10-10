@@ -132,6 +132,25 @@
 .pianoFineAdjust .btn{flex:1 1 110px;min-height:48px;min-width:0}
 .pianoReading,.pianoMotion{font-size:clamp(.98rem,1.22vw,1.2rem);line-height:1.45;margin:2px 0 10px;color:#ffe4a7}
 .pianoMotion{background:#3b2c39;border-left:4px solid #f5ca79;padding:9px 12px;border-radius:8px;margin:12px 0}
+
+/* Confronto diretto in ognuno dei sei laboratori: audio originale e navigazione touch */
+.labOriginalPlayer{
+ width:100%;min-width:0;max-width:100%;display:grid;gap:11px;
+ padding:clamp(15px,2.2vw,23px);border:1px solid #b39466;
+ border-radius:18px;background:linear-gradient(145deg,#42313e,#302531);
+}
+.labOriginalTop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:5px 14px}
+.labOriginalTop .eyebrow{margin:0;font-size:clamp(.86rem,1vw,1rem)}
+.labOriginalTop strong{font-size:clamp(1rem,1.2vw,1.17rem);color:#f9e1bb;overflow-wrap:anywhere}
+.labOriginalButton{justify-self:start;min-width:min(100%,235px)}
+.labOriginalButton.playing{background:#6a4c43;border:1px solid #efc78a;color:#fff2d4}
+.labOriginalSeekLabel{font-size:.94rem;color:#e9d9c5;font-weight:600;margin-top:3px}
+.labOriginalSeek{width:100%;max-width:100%;min-width:0;height:37px;accent-color:#f5ca79;touch-action:pan-y;cursor:pointer;margin:0}
+.labOriginalSeek:disabled{opacity:.5;cursor:wait}
+.labOriginalTimes{display:flex;justify-content:space-between;color:#ffe2a6;font-variant-numeric:tabular-nums}
+.labOriginalStatus{font-size:clamp(.91rem,1.1vw,1rem);line-height:1.4;color:#f1dfc7;margin:0;min-height:18px}
+.labOriginalPlayer a{font-size:.89rem;color:#f8d9a5;overflow-wrap:anywhere}
+@media(max-width:600px){.labOriginalButton{width:100%;justify-self:stretch}.labOriginalPlayer{padding:13px}}
 </style>
 </head>
 <body>
@@ -197,13 +216,23 @@
 </section>
 <section id="labs" class="page">
  <div class="two">
-  <div class="panel"><p class="eyebrow">Tocca un esperimento</p><div class="labchoices" id="labList"></div><p class="hint">Gli esempi sono suoni sintetizzati dal browser per spiegare un principio musicale: <strong>non sono la partitura di Saint-Saëns</strong>. Per il brano originale torna alla Passeggiata.</p></div>
+  <div class="panel"><p class="eyebrow">Tocca un esperimento</p><div class="labchoices" id="labList"></div><p class="hint">Gli esempi sono suoni sintetizzati dal browser per spiegare un principio musicale: <strong>non sono la partitura di Saint-Saëns</strong>. L’ascolto originale è disponibile direttamente nel laboratorio, sotto i comandi dell’esperimento.</p></div>
   <div class="panel labarea">
    <p class="eyebrow">Laboratorio del compositore</p>
    <h2 id="labTitle"></h2><p class="labdesc" id="labDesc"></p>
    <div class="controls" id="labControls"></div><p class="liveStatus" id="liveStatus">Regola i comandi anche durante l’ascolto: il suono cambia senza ripartire.</p>
    <div class="musicsheet" aria-hidden="true" id="tones"></div>
-   <div class="row" style="margin:19px 0"><button class="btn primary" id="demoPlay">▶ Prova il suono</button><button class="btn" id="demoStop">■ Ferma</button><button class="btn" id="labToOriginal">♫ Ascolta l'originale</button></div>
+   <div class="row" style="margin:19px 0"><button class="btn primary" id="demoPlay">▶ Prova il suono</button><button class="btn" id="demoStop">■ Ferma</button></div>
+   <div class="labOriginalPlayer" role="group" aria-labelledby="labOriginalHeading">
+    <div class="labOriginalTop"><span class="eyebrow" id="labOriginalHeading">🎧 Confronta con l'originale</span><strong id="labOriginalTitle">Il brano di Saint-Saëns</strong></div>
+    <button class="btn labOriginalButton" id="labToOriginal" type="button" aria-label="Avvia o ferma l'ascolto originale in questo laboratorio">▶ Ascolta l'originale</button>
+    <label for="labOriginalSeek" class="labOriginalSeekLabel">Spostati liberamente nel brano</label>
+    <input id="labOriginalSeek" class="labOriginalSeek" type="range" min="0" max="100" value="0" step=".1" disabled aria-label="Posizione nell'ascolto originale">
+    <div class="labOriginalTimes" aria-hidden="true"><span id="labOriginalElapsed">00:00</span><span id="labOriginalDuration">--:--</span></div>
+    <p class="labOriginalStatus" id="labOriginalStatus" role="status" aria-live="polite">Premi Ascolta e confronta i suoni senza uscire dal laboratorio.</p>
+    <a id="labOriginalSource" href="#" target="_blank" rel="noopener noreferrer">Fonte della registrazione ↗</a>
+   </div>
+   <audio id="labOriginalAudio" preload="metadata"></audio>
    <p class="tip" id="labQuestion"></p>
   </div>
  </div>
@@ -321,7 +350,7 @@ audio.addEventListener('timeupdate',()=>{$('elapsed').textContent=secText(audio.
 audio.addEventListener('ended',()=>{$('play').textContent='▶ Riascolta';setStatus('Fine del quadro.')});
 audio.addEventListener('error',()=>setStatus('La registrazione non è raggiungibile. Apri «Fonte della registrazione» per ascoltarla su Wikimedia Commons.'));
 
-function switchTab(tab){currentTab=tab;stopDemo();document.querySelectorAll('[data-tab]').forEach(b=>{let selected=b.dataset.tab===tab;b.classList.toggle('selected',selected);b.setAttribute('aria-current',selected?'page':'false')});document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===tab));if(tab!=='walk'){audio.pause();$('play').textContent='▶ Riprendi'}if(tab!=='orchestra'&&typeof orchAudio!=='undefined'){orchAudio.pause();$('orchPlay').textContent='▶ Continua'}window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+function switchTab(tab){currentTab=tab;stopDemo();if(tab!=='labs'&&typeof pauseLabOriginal==='function')pauseLabOriginal(false);document.querySelectorAll('[data-tab]').forEach(b=>{let selected=b.dataset.tab===tab;b.classList.toggle('selected',selected);b.setAttribute('aria-current',selected?'page':'false')});document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===tab));if(tab!=='walk'){audio.pause();$('play').textContent='▶ Riprendi'}if(tab!=='orchestra'&&typeof orchAudio!=='undefined'){orchAudio.pause();$('orchPlay').textContent='▶ Continua'}window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
 $('btnAccess').addEventListener('click',()=>{let on=$('app').classList.toggle('access');$('btnAccess').setAttribute('aria-pressed',String(on))});$('btnFull').addEventListener('click',()=>{if(!document.fullscreenElement){document.documentElement.requestFullscreen?.().catch(()=>setStatus('Schermo intero non disponibile: usa il browser della lavagna.'))}else document.exitFullscreen?.()});
 const labDefs=[
  {title:'La macchina del tempo · Tartarughe',desc:'Come nasce una caricatura quando una danza, di solito travolgente, viene rallentata? Varia il tempo di una <strong>cellula inventata per l’esperimento</strong>, poi confronta con il can-can di Offenbach trasformato da Saint-Saëns.',piece:3,question:'La velocità cambia soltanto il movimento, o cambia anche il carattere di chi immaginiamo?'},
@@ -344,7 +373,7 @@ function updatePianoGuidance(){
   p>=70?p+'% · Il secondo pianista rincorre e supera il primo.':
   p+'% · I due pianisti faticano a ritrovare un tempo comune.';
 }
-function renderLabs(){renderLabChoices();const d=labDefs[activeLab];$('labTitle').textContent=d.title;$('labDesc').innerHTML=d.desc;$('labQuestion').textContent=d.question;let h='';if(activeLab===0)h=rangeControl('tempo','Tempo',35,170,5,labValues.tempo,' BPM');if(activeLab===1)h=rangeControl('octave','Trasposizione di registro',-2,2,1,labValues.octave,' ottave')+selectControl('voice','Colore sintetico',[['sine','Morbido / quasi puro'],['triangle','Caldo / triangolare'],['sawtooth','Ricco / aspro']],labValues.voice);if(activeLab===2)h=selectControl('mode','Disposizione armonica',[['maggiore','Triade maggiore'],['minore','Triade minore']],labValues.mode)+rangeControl('flow','Note per figura',3,8,1,labValues.flow,'');if(activeLab===3)h=checkboxControl('melody','Ascolta la linea superiore (melodia)',labValues.melody)+checkboxControl('arp','Ascolta il livello inferiore (arpeggi)',labValues.arp);if(activeLab===4)h=rangeControl('attack','Durata dei suoni',10,100,5,labValues.attack,'%');if(activeLab===5)h=rangeControl('intesa','Intesa fra i due pianisti',0,100,1,labValues.intesa,'%')+`<div class="pianoFineAdjust"><button class="btn mini" id="pianoMinus" type="button">− 1% intesa</button><button class="btn mini" id="pianoPlus" type="button">+ 1% intesa</button></div><p id="pianoReading" class="pianoReading">100% · Unisono perfetto.</p><div class="pianoDuo" role="group" aria-label="Entrate dei due pianisti"><div class="pianoLane" id="pianoLaneA"><span>🎹 Pianista A · tempo regolare</span><strong id="pianoNoteA">Pronto</strong></div><div class="pianoLane" id="pianoLaneB"><span>🎹 Pianista B · cerca di seguirlo</span><strong id="pianoNoteB">Pronto</strong></div></div><p id="pianoMotion" class="pianoMotion" aria-live="off">In perfetto unisono</p><p class="pianoHint"><strong>100%:</strong> perfettamente insieme. Con una variazione minima, il secondo inizia a ritardare, rincorrere, anticipare e riallinearsi, senza un ritardo fisso. Ascolta come cambia il dialogo fra i pianisti nelle otto scale ripetute.</p>`;$('labControls').innerHTML=h;if(activeLab===5){updatePianoGuidance();for(const [id,change] of [['pianoMinus',-1],['pianoPlus',1]])$(id).addEventListener('click',()=>{const slide=$('intesa');slide.value=String(Math.max(0,Math.min(100,Number(slide.value)+change)));slide.dispatchEvent(new Event('input',{bubbles:true}));});}$('liveStatus').textContent='Regola i comandi anche durante l’ascolto: il suono cambia senza ripartire.';['tempo','octave','flow','attack','intesa'].forEach(id=>{if(!$(id))return;$(id).addEventListener('input',e=>{labValues[id]=Number(e.target.value);$(id+'Out').textContent=e.target.value+(id==='tempo'?' BPM':id==='octave'?' ottave':id==='attack'?'%':id==='intesa'?'%':'');if(id==='intesa')updatePianoGuidance();if(playingDemo)$('liveStatus').textContent=id==='intesa'?'I due pianisti si stanno riadattando: ascolta i prossimi attacchi.':'Modifica in diretta: '+e.target.value+(id==='tempo'?' BPM':id==='octave'?' ottave':id==='attack'?'%':'')})});['voice','mode'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.value;if(playingDemo)$('liveStatus').textContent='Colore o armonia modificati durante l’esecuzione.';})});['melody','arp'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.checked;if(playingDemo)$('liveStatus').textContent='Parte '+(e.target.checked?'attivata':'disattivata')+' durante l’esecuzione.';})});$('tones').innerHTML=Array.from({length:12},(_,i)=>`<span class="tone" id="tone${i}"></span>`).join('');$('tones').hidden=activeLab===5;}
+function renderLabs(){renderLabChoices();const d=labDefs[activeLab];$('labTitle').textContent=d.title;$('labDesc').innerHTML=d.desc;$('labQuestion').textContent=d.question;let h='';if(activeLab===0)h=rangeControl('tempo','Tempo',35,170,5,labValues.tempo,' BPM');if(activeLab===1)h=rangeControl('octave','Trasposizione di registro',-2,2,1,labValues.octave,' ottave')+selectControl('voice','Colore sintetico',[['sine','Morbido / quasi puro'],['triangle','Caldo / triangolare'],['sawtooth','Ricco / aspro']],labValues.voice);if(activeLab===2)h=selectControl('mode','Disposizione armonica',[['maggiore','Triade maggiore'],['minore','Triade minore']],labValues.mode)+rangeControl('flow','Note per figura',3,8,1,labValues.flow,'');if(activeLab===3)h=checkboxControl('melody','Ascolta la linea superiore (melodia)',labValues.melody)+checkboxControl('arp','Ascolta il livello inferiore (arpeggi)',labValues.arp);if(activeLab===4)h=rangeControl('attack','Durata dei suoni',10,100,5,labValues.attack,'%');if(activeLab===5)h=rangeControl('intesa','Intesa fra i due pianisti',0,100,1,labValues.intesa,'%')+`<div class="pianoFineAdjust"><button class="btn mini" id="pianoMinus" type="button">− 1% intesa</button><button class="btn mini" id="pianoPlus" type="button">+ 1% intesa</button></div><p id="pianoReading" class="pianoReading">100% · Unisono perfetto.</p><div class="pianoDuo" role="group" aria-label="Entrate dei due pianisti"><div class="pianoLane" id="pianoLaneA"><span>🎹 Pianista A · tempo regolare</span><strong id="pianoNoteA">Pronto</strong></div><div class="pianoLane" id="pianoLaneB"><span>🎹 Pianista B · cerca di seguirlo</span><strong id="pianoNoteB">Pronto</strong></div></div><p id="pianoMotion" class="pianoMotion" aria-live="off">In perfetto unisono</p><p class="pianoHint"><strong>100%:</strong> perfettamente insieme. Con una variazione minima, il secondo inizia a ritardare, rincorrere, anticipare e riallinearsi, senza un ritardo fisso. Ascolta come cambia il dialogo fra i pianisti nelle otto scale ripetute.</p>`;$('labControls').innerHTML=h;if(activeLab===5){updatePianoGuidance();for(const [id,change] of [['pianoMinus',-1],['pianoPlus',1]])$(id).addEventListener('click',()=>{const slide=$('intesa');slide.value=String(Math.max(0,Math.min(100,Number(slide.value)+change)));slide.dispatchEvent(new Event('input',{bubbles:true}));});}$('liveStatus').textContent='Regola i comandi anche durante l’ascolto: il suono cambia senza ripartire.';['tempo','octave','flow','attack','intesa'].forEach(id=>{if(!$(id))return;$(id).addEventListener('input',e=>{labValues[id]=Number(e.target.value);$(id+'Out').textContent=e.target.value+(id==='tempo'?' BPM':id==='octave'?' ottave':id==='attack'?'%':id==='intesa'?'%':'');if(id==='intesa')updatePianoGuidance();if(playingDemo)$('liveStatus').textContent=id==='intesa'?'I due pianisti si stanno riadattando: ascolta i prossimi attacchi.':'Modifica in diretta: '+e.target.value+(id==='tempo'?' BPM':id==='octave'?' ottave':id==='attack'?'%':'')})});['voice','mode'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.value;if(playingDemo)$('liveStatus').textContent='Colore o armonia modificati durante l’esecuzione.';})});['melody','arp'].forEach(id=>{$(id)?.addEventListener('change',e=>{labValues[id]=e.target.checked;if(playingDemo)$('liveStatus').textContent='Parte '+(e.target.checked?'attivata':'disattivata')+' durante l’esecuzione.';})});$('tones').innerHTML=Array.from({length:12},(_,i)=>`<span class="tone" id="tone${i}"></span>`).join('');$('tones').hidden=activeLab===5;prepareLabOriginal();}
 function midiFreq(n){return 440*Math.pow(2,(n-69)/12)}
 function getCtx(){if(!audioCtx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw new Error('Il browser non supporta Web Audio');audioCtx=new AC()}if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});return audioCtx}
 function stopDemo(){if(demoTicker!==null){clearInterval(demoTicker);demoTicker=null;}if(demoFinishTimer!==null){clearTimeout(demoFinishTimer);demoFinishTimer=null;}activeOsc.forEach(o=>{try{o.stop()}catch(_){}});activeOsc=[];noteTimers.forEach(t=>clearTimeout(t));noteTimers=[];playingDemo=false;if($('demoPlay'))$('demoPlay').textContent='▶ Prova il suono';document.querySelectorAll('.tone').forEach(x=>x.classList.remove('on'))}
@@ -463,14 +492,105 @@ function demoTick(){
  }
 }
 function runDemo(){
- audio.pause();$('play').textContent='▶ Riprendi';stopDemo();
+ pauseLabOriginal(false);audio.pause();$('play').textContent='▶ Riprendi';stopDemo();
  let ctx;try{ctx=getCtx()}catch(e){$('labQuestion').textContent='Audio sintetico non supportato da questo browser: prova Chrome sul PC collegato alla SMART.';return}
  playingDemo=true;demoStep=0;demoNextAt=ctx.currentTime+.07;if(activeLab===5){preparePianoWobble();const motion=$('pianoMotion');if(motion)motion.textContent='Ascolta gli attacchi dei due pianisti.';}
  $('demoPlay').textContent='↻ Riprova';
  $('liveStatus').textContent=activeLab===5?'Due pianisti, stessa scala: regola l’intesa mentre ascolti i piccoli ritardi e recuperi.':'Esecuzione in corso: sposta i cursori o cambia le opzioni senza interromperla.';
  demoTicker=setInterval(demoTick,25);demoTick();
 }
-$('demoPlay').addEventListener('click',runDemo);$('demoStop').addEventListener('click',stopDemo);$('labToOriginal').addEventListener('click',()=>{selectPiece(labDefs[activeLab].piece);switchTab('walk')});
+
+/* Lettore locale ai laboratori: il brano originale resta nello stesso ambiente.
+   Sorgente identica ai quadri di ascolto, senza introdurre tagli o reinterpretazioni. */
+const labOriginalAudio=$('labOriginalAudio');
+const labSeek=$('labOriginalSeek');
+let labOriginalPiece=-1;
+let labOriginalPending=0;
+function labOriginalTime(){
+ const d=Number.isFinite(labOriginalAudio.duration)?labOriginalAudio.duration:0;
+ const t=Number.isFinite(labOriginalAudio.currentTime)?labOriginalAudio.currentTime:0;
+ labSeek.disabled=d<=0;
+ labSeek.max=d>0?String(d):'100';
+ labSeek.value=String(Math.min(d||100,t));
+ $('labOriginalElapsed').textContent=secText(t);
+ $('labOriginalDuration').textContent=secText(d||NaN);
+}
+function labOriginalButton(playing=false){
+ const b=$('labToOriginal');b.textContent=playing?'■ Ferma l’originale':'▶ Ascolta l’originale';
+ b.classList.toggle('playing',playing);b.setAttribute('aria-pressed',String(playing));
+}
+function pauseLabOriginal(reset=false){
+ labOriginalPending++;
+ labOriginalAudio.pause();
+ if(reset&&Number.isFinite(labOriginalAudio.duration)){
+  try{labOriginalAudio.currentTime=0}catch(_){}
+ }
+ labOriginalButton(false);
+ labOriginalTime();
+}
+function prepareLabOriginal(){
+ const movement=labDefs[activeLab]?.piece;
+ if(!Number.isInteger(movement))return;
+ const m=movements[movement];
+ if(!m)return;
+ pauseLabOriginal(true);
+ labOriginalPiece=movement;
+ labOriginalAudio.src=fileUrl(m.file);
+ labOriginalAudio.load();
+ $('labOriginalTitle').textContent=m.short;
+ $('labOriginalSource').href=commonsUrl(m.file);
+ $('labOriginalElapsed').textContent='00:00';
+ $('labOriginalDuration').textContent='--:--';
+ labSeek.value='0';labSeek.disabled=true;
+ $('labOriginalStatus').textContent='Pronto: ascolta il brano originale qui, senza lasciare il laboratorio.';
+}
+async function toggleLabOriginal(){
+ if(labOriginalPiece!==labDefs[activeLab]?.piece)prepareLabOriginal();
+ if(!labOriginalAudio.paused){
+  pauseLabOriginal(true);
+  $('labOriginalStatus').textContent='Ascolto fermato. Premi Ascolta per ripartire dall’inizio.';
+  return;
+ }
+ // Arresta l'esperimento sintetico per sentire chiaramente la partitura.
+ stopDemo();
+ audio.pause();$('play').textContent='▶ Riprendi';
+ if(typeof orchAudio!=='undefined'){orchAudio.pause();$('orchPlay').textContent='▶ Continua';}
+ if(labOriginalAudio.ended){
+  try{labOriginalAudio.currentTime=0}catch(_){}
+ }
+ const request=++labOriginalPending;
+ $('labOriginalStatus').textContent='Caricamento dell’ascolto originale…';
+ try{
+  await labOriginalAudio.play();
+  if(request!==labOriginalPending)return;
+  labOriginalButton(true);
+  $('labOriginalStatus').textContent='Ascolto originale in corso. Sposta il cursore per raggiungere qualunque punto.';
+ }catch(_){
+  if(request!==labOriginalPending)return;
+  labOriginalButton(false);
+  $('labOriginalStatus').textContent='Audio non disponibile: controlla la connessione oppure apri la fonte della registrazione.';
+ }
+}
+$('labToOriginal').addEventListener('click',toggleLabOriginal);
+labSeek.addEventListener('input',()=>{
+ if(!Number.isFinite(labOriginalAudio.duration)||labOriginalAudio.duration<=0)return;
+ try{labOriginalAudio.currentTime=Math.min(labOriginalAudio.duration,Math.max(0,Number(labSeek.value)))}catch(_){}
+ labOriginalTime();
+});
+labOriginalAudio.addEventListener('timeupdate',labOriginalTime);
+labOriginalAudio.addEventListener('loadedmetadata',labOriginalTime);
+labOriginalAudio.addEventListener('durationchange',labOriginalTime);
+labOriginalAudio.addEventListener('ended',()=>{
+ labOriginalButton(false);labOriginalTime();
+ $('labOriginalStatus').textContent='Brano concluso. Puoi riascoltarlo dall’inizio senza cambiare sezione.';
+});
+labOriginalAudio.addEventListener('error',()=>{
+ labOriginalButton(false);
+ $('labOriginalStatus').textContent='La registrazione non è raggiungibile. Verifica Internet o apri la fonte.';
+});
+$('demoPlay').addEventListener('click',runDemo);
+$('demoStop').addEventListener('click',stopDemo);
+
 const instrumentData=[
  ['p1','🎹','Pianoforte I','Dà impulso, colore, figurazioni e accompagnamento.'],['p2','🎹','Pianoforte II','Si intreccia con il primo: alcune figure hanno bisogno proprio di due pianisti.'],['flute','🪈','Flauto / ottavino','Registro acuto, movimenti rapidi, leggerezza e colore.'],['clarinet','🎼','Clarinetto','Timbro versatile, da un richiamo lontano a gesti comici.'],['glass','✨','Armonica a bicchieri','Colore cristallino; in molte esecuzioni viene sostituita con strumenti affini.'],['xylo','🥁','Xilofono','Suono percussivo, asciutto e netto: protagonista dei Fossili.'],['v1','🎻','Violino I','Può cantare, rispondere e inventare gesti acutissimi.'],['v2','🎻','Violino II','Dialoga con il primo e rinforza il tessuto degli archi.'],['va','🎻','Viola','Voce centrale, importante nel colore d’insieme.'],['vc','🎻','Violoncello','Nel Cigno è la voce solista dalla melodia ampia e legata.'],['cb','🎻','Contrabbasso','Il registro più grave degli archi: nell’Elefante sorprende come danzatore.']
 ];
