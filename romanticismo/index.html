@@ -81,6 +81,18 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 .chapter h3{font:500 clamp(1.95rem,4vw,3rem)/1.11 var(--serif);letter-spacing:-.03em;margin:.35rem 0 1.15rem}
 .chapter .question{font:500 clamp(1.16rem,2vw,1.35rem)/1.55 var(--serif);color:#653e5a;max-width:760px;margin:0 0 1.5rem}
 .chapter-prose p{max-width:77ch;margin:0 0 1.15rem;font-size:1.07rem}
+.form-bridge{scroll-margin-top:5.7rem;background:linear-gradient(150deg,#f3ebea,#eef2ed);border:1px solid #d8c8c5;padding:clamp(1.15rem,3vw,2.1rem);margin:2rem 0 1.8rem}
+.form-bridge h4{font:500 clamp(1.6rem,3vw,2.2rem)/1.17 var(--serif);color:#4c3447;margin:.3rem 0 1.1rem}
+.form-bridge p{font-size:1.015rem;line-height:1.75}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.6rem 0}
+.form-grid>div{background:#fffaf4;padding:1.1rem 1.2rem;border-top:3px solid #916d88}
+.form-grid h5{font:650 1.14rem/1.3 var(--serif);margin:.1rem 0 .6rem;color:#503950}
+.form-grid p{font-size:.965rem;line-height:1.66;margin:.45rem 0}
+.form-grid small{font:.83rem/1.55 var(--sans);color:#66555f}
+.fingal-note{background:#e5eef0;border-left:5px solid #537982;padding:1.2rem 1.4rem;margin:1.7rem 0}
+.fingal-note strong{color:#2e5860}
+.form-sources{border-top:1px solid #cdbcb9;padding-top:1rem;font:.81rem/1.75 var(--sans)}
+.form-sources a{display:inline-block;margin-right:.8rem}
 .crossing{padding:1rem 1.3rem;background:#efe9ee;border-left:4px solid #896887;margin:1.75rem 0 .85rem}
 .crossing strong,.hearing strong{font:800 .76rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#5c3a59}
 .crossing p,.hearing p{font-size:1rem;line-height:1.66;margin:.45rem 0 .2rem}
@@ -105,7 +117,7 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 .hero{min-height:75vh}.hero-content{padding:4rem 1.1rem}
 .nav-inner{padding:.38rem .6rem;gap:.3rem}.nav-direct{display:none}
 .menu-panel{position:fixed;left:.5rem;right:.5rem;top:3.6rem;width:auto;grid-template-columns:1fr;max-height:calc(100dvh - 4rem);gap:1.2rem}
-.index-cards,.threads{grid-template-columns:1fr}
+.index-cards,.threads,.form-grid{grid-template-columns:1fr}
 .chapter-head{display:block}.chapter h3{margin:.4rem 0 1rem}
 .chapter-prose p{font-size:1.045rem}
 }
@@ -133,7 +145,7 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
    <summary aria-label="Apri o chiudi l'indice dei capitoli">Esplora i 14 capitoli</summary>
    <div class="menu-panel">
     <div class="menu-group"><strong>I · L’individuo e la scena</strong><a href="#rivoluzione">01 Una rivoluzione che viene da lontano</a><a href="#artista-citta">02 L’artista, la città, il pubblico</a><a href="#lied">03 La voce e l’intimità: il Lied</a><a href="#pianoforte">04 Il pianoforte che canta: Chopin e i nuovi generi</a><a href="#virtuosismo">05 Virtuosi, icone e pubblico: Paganini e Liszt</a></div><div class="menu-group"><strong>II · La musica diventa mondo</strong><a href="#orchestra">06 L’orchestra come tavolozza di colori</a><a href="#racconta">07 La musica che racconta: Berlioz e Liszt</a><a href="#teatro">08 Il teatro del XIX secolo: Verdi, Wagner e le trame della memoria</a></div><div class="menu-group"><strong>III · Lingue, popoli, immagini</strong><a href="#nazioni">09 Le scuole nazionali, le danze e gli imperi plurali</a><a href="#nuovo-mondo">10 Dvořák: Sinfonia n. 9 «Dal Nuovo Mondo»</a><a href="#quadri">11 Musorgskij: Quadri di un’esposizione</a></div><div class="menu-group"><strong>IV · La modernità dell’ascolto</strong><a href="#vienna">12 Vienna, il valzer e l’universo degli archi</a><a href="#offenbach">13 Dall’operetta al can-can: Offenbach e la città-spettacolo</a><a href="#belle-epoque">14 La Belle Époque e la nascita dell’ascolto riproducibile</a></div>
-    <div class="menu-extras"><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
+    <div class="menu-extras"><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="#forme-orchestrali">✦ Forme orchestrali</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
    </div>
   </details>
   <a class="nav-direct" href="#per-iniziare">Per iniziare</a>
@@ -222,13 +234,41 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 <p>Il <i>Carnevale</i> ci mette già a disposizione due esperienze autonome, una esplorativa e una ludica, che ritroveremo anche quando arriveremo a Offenbach. Le <i>Tartarughe</i> rallentano infatti una melodia del <i>Galop infernal</i>, trasformandone completamente il carattere.</p></div>
 <aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Fisica del suono e percezione del timbro, evoluzione degli strumenti, direzione d'orchestra, caricatura musicale e teatro: un incontro fra tecnica e immaginazione.</p></aside>
 <div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Mescolatore timbrico da progettare e collaudare separatamente. Già disponibili: il laboratorio e il gioco del Carnevale degli animali.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
-<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Il grande Carnevale (laboratorio) <span aria-hidden="true">↗</span></a><a href="../carnevale-animali/gioco.html">SOS · La sfida dei serragli (gioco) <span aria-hidden="true">↗</span></a></div>
+<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="#forme-orchestrali">✦ Overture, poema sinfonico, suite e rapsodia <span aria-hidden="true">↗</span></a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Il grande Carnevale (laboratorio) <span aria-hidden="true">↗</span></a><a href="../carnevale-animali/gioco.html">SOS · La sfida dei serragli (gioco) <span aria-hidden="true">↗</span></a></div>
 <a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
 </article><article class="chapter" id="racconta" aria-labelledby="title-racconta">
 <div class="chapter-head"><span class="chapter-no">07 / 14</span><h3 id="title-racconta">La musica che racconta: Berlioz e Liszt</h3></div>
 <p class="question">Come può un tema cambiare significato pur restando riconoscibile?</p>
 <div class="chapter-prose"><p>Nella <i>Symphonie fantastique</i> del 1830, Berlioz costruisce cinque movimenti attraversati da un'idea musicale ricorrente, l'<i>idée fixe</i>, che muta carattere a seconda della situazione drammatica. Dal ballo alla scena nei campi, dalla marcia al supplizio al sabba, il riconoscimento del tema costringe l'ascoltatore a riconsiderare ciò che ha ascoltato in precedenza.</p>
 <p>L'orchestrazione rende udibili luoghi e azioni: l'oboe fuori scena, il corno inglese, il tuono suggerito dai timpani, la presenza delle campane, il clarinetto piccolo e l'effetto <i>col legno</i> degli archi. Il racconto appartiene al programma dell'opera, ma la percezione musicale non si lascia ridurre a una sequenza di didascalie. Con Liszt e il poema sinfonico la musica stabilisce altre relazioni con testi, miti, storia e pittura: <i>Mazeppa</i> ci permette di seguire il passaggio fra pagina letteraria e forma strumentale.</p></div>
+
+<section class="form-bridge" id="forme-orchestrali" aria-labelledby="title-forme">
+ <div class="eyebrow">✦ Approfondimento · Dalla forma al paesaggio</div>
+ <h4 id="title-forme">Quando l'orchestra trova nuovi modi di raccontare</h4>
+ <p>La sinfonia non «diventa» necessariamente poema sinfonico, suite o rapsodia: nell'Ottocento queste possibilità convivono, mentre la stessa sinfonia continua a svilupparsi. Cambiano i modi di progettare un discorso orchestrale: la forma può articolare un racconto in più movimenti, evocare un paesaggio in una sola composizione, raccogliere episodi teatrali o attraversare liberamente gesti di danza e caratteri popolari. Non sono etichette da imparare a memoria, ma diversi modi di <em>organizzare l'esperienza dell'ascolto</em>.</p>
+ <p>Il cammino comincia con una sinfonia che conosciamo, quella <i>Fantastica</i> di Berlioz, e con un'ouverture che non apre alcuna opera teatrale, <i>Le Ebridi</i> di Mendelssohn. Questi due esempi ci preparano a comprendere la libertà del poema sinfonico di Liszt, senza confondere forme autonome e musiche composte in origine per la scena.</p>
+ <div class="form-grid" aria-label="Cinque famiglie di composizioni orchestrali">
+  <div><h5>Sinfonia a programma</h5><p>Articolata anche in più movimenti, associa la costruzione sinfonica a un percorso narrativo dichiarato. I motivi possono tornare trasformati e produrre continuità fra episodi distinti.</p><small>Berlioz, <i>Symphonie fantastique</i> (1830), cinque movimenti e <i>idée fixe</i>.</small></div>
+  <div><h5>Ouverture da concerto</h5><p>Composizione autonoma che non introduce necessariamente uno spettacolo: può evocare un luogo o un'atmosfera pur usando procedimenti formali ereditati dalla tradizione, compresa la forma-sonata.</p><small>Mendelssohn, <i>Le Ebridi (La grotta di Fingal)</i>, op. 26, abbozzata nel 1829, composta nel 1830 e rielaborata fino al 1832.</small></div>
+  <div><h5>Poema sinfonico</h5><p>In Liszt diventa un'opera orchestrale generalmente autonoma e in un movimento, collegata a soggetti letterari, storici, mitici o filosofici, la cui unità può nascere anche dalla trasformazione tematica. Non è necessariamente una cronaca musicale della vicenda.</p><small>Liszt, <i>Les Préludes</i> (prima esecuzione nel 1854); Smetana, <i>Má vlast</i> (1874–1879), sei poemi sinfonici riuniti in un ciclo. L'associazione dei <i>Préludes</i> a Lamartine nasce da una storia compositiva complessa.</small></div>
+  <div><h5>Suite sinfonica</h5><p>Riunisce pezzi diversi in un ciclo orchestrale: possono provenire da uno spettacolo oppure essere composti fin dall'inizio per il concerto. L'unità non implica necessariamente una storia continua.</p><small>Grieg, suite da <i>Peer Gynt</i> (1888 e 1891), ricavate dalle musiche per il dramma di Ibsen; Rimskij-Korsakov, <i>Shéhérazade</i> (1888), suite sinfonica originale.</small></div>
+  <div><h5>Rapsodia orchestrale</h5><p>Una forma generalmente libera, favorevole a episodi contrastanti, slanci improvvisativi e richiami a tradizioni e danze. Non è sinonimo di «raccolta di melodie popolari»: citazione autentica ed evocazione stilistica vanno distinte.</p><small>Dvořák, tre <i>Rapsodie slave</i>, op. 45 (1878), senza programma extramusicale specifico; Chabrier, <i>España</i>, rapsodia per orchestra (1883).</small></div>
+ </div>
+ <aside class="fingal-note">
+  <strong>✦ Per iniziare · Le Ebridi: prima il suono, poi il paesaggio</strong>
+  <p>Ascoltiamo l'inizio dell'ouverture di Mendelssohn senza dire che cosa rappresenti. Il movimento delle figure, la distribuzione fra registri e i colori dell'orchestra ci fanno percepire una corrente, un'oscillazione, uno spazio? Quanto cambierà la nostra immaginazione quando conosceremo il titolo?</p>
+  <p>C'è un dettaglio documentario sorprendente: Mendelssohn abbozzò la musica il <strong>7 agosto 1829</strong> sull'isola di Mull, <em>prima</em> della visita alla grotta di Fingal, avvenuta l'<strong>8 agosto</strong> sull'isola di Staffa. L'impressione delle Ebridi precedette quindi l'incontro con quel luogo preciso: è più rigoroso parlare di paesaggio ed esperienza del viaggio che di una «trascrizione delle onde dentro la grotta».</p>
+  <p>Nel 1831–1832 <strong>J. M. W. Turner</strong> dipinse <i>Staffa, Fingal's Cave</i>, oggi conservato allo Yale Center for British Art. Il suo quadro accosta il mare, le rocce, il sublime e perfino un battello a vapore; Walter Scott aveva a sua volta alimentato l'immaginario letterario delle isole. Sono esperienze artistiche connesse dallo stesso paesaggio, non prove che un artista abbia copiato l'altro. <a href="https://interactive.britishart.yale.edu/critique-of-reason/360/staffa-fingals-cave" target="_blank" rel="noopener noreferrer">Guarda il quadro sul sito del museo ↗</a></p>
+  <p><strong>Da interrogare.</strong> Che cosa possono esprimere la pittura e la musica dello stesso luogo, ciascuna con i propri mezzi, senza diventare l'illustrazione dell'altra?</p>
+ </aside>
+ <p>Il discorso si riaprirà fra le <a href="#nazioni">scuole nazionali</a>, nelle quali le rapsodie aiutano a distinguere materiali popolari documentati e invenzioni originali; e nel teatro, perché la suite da <i>Peer Gynt</i> porta nel concerto una musica nata accanto alle parole di Ibsen. Il <a href="#quadri">ciclo pianistico dei <i>Quadri di un'esposizione</i> di Musorgskij</a> offre un confronto sulla successione di scene e sul tema che ritorna, ma non è una suite sinfonica originaria: l'orchestrazione di Ravel appartiene al 1922 e rimarrà oggetto del Novecento.</p>
+ <p class="form-sources"><strong>Fonti e documenti:</strong>
+ <a href="https://pad.philharmoniedeparis.fr/0747399-ouverture-les-hebrides-de-mendelssohn.aspx?_lg=fr-FR" target="_blank" rel="noopener noreferrer">Philharmonie de Paris · Le Ebridi</a>
+ <a href="https://artandmusic.yale.edu/romantic-landscapes/mendelssohn-scotland/mendelssohn-gallery3-drei-concert-overturen-no-2-die" target="_blank" rel="noopener noreferrer">Yale · Mendelssohn in Scozia</a>
+ <a href="https://pad.philharmoniedeparis.fr/0763433-peer-gynt-de-edvard-grieg.aspx?_lg=fr-FR" target="_blank" rel="noopener noreferrer">Philharmonie de Paris · Peer Gynt</a>
+ <a href="https://www.antonin-dvorak.cz/en/work/slavonic-rhapsodies/" target="_blank" rel="noopener noreferrer">Dvořák · Rapsodie slave</a>
+ <a href="https://imslp.org/wiki/Espa%C3%B1a_(Chabrier%2C_Emmanuel)" target="_blank" rel="noopener noreferrer">IMSLP · España</a></p>
+</section>
 <aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Shakespeare, immaginario fantastico e drammaturgia del sogno; Byron e Hugo nella tradizione di Mazeppa; pittura di storia come confronto, non necessariamente fonte diretta.</p></aside>
 <div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Berlioz: cinque movimenti della Symphonie fantastique; Liszt: Mazeppa. Futuro laboratorio di riconoscimento dell'idée fixe.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
 
@@ -252,7 +292,7 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 <p>Il pensiero di Herder, gli ideali civili di Mazzini e la fraternità espressa da Schiller permettono di distinguere il desiderio di dignità di una comunità dalle pretese di superiorità. Il patriottismo romantico non va né confuso automaticamente con i nazionalismi imperialisti e razziali del Novecento, né assolto dalle esclusioni già presenti nell'Ottocento.</p></div>
 <aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Mappe politiche, linguistica, poesia patriottica, storia del diritto, imperialismo e differenti idee di cittadinanza. La cultura nazionale può cercare dialogo oppure imporre gerarchie: dobbiamo studiare entrambe le possibilità.</p></aside>
 <div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Accenti di furiant, mazurca, hemiola; pagine di Smetana, Dvořák, Moniuszko e Sibelius da selezionare con fonti.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
-<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="../risorgimento/#musica">Risorgimento · Fare gli italiani: lingua, musica, cittadinanza <span aria-hidden="true">↗</span></a></div>
+<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="#forme-orchestrali">✦ Le rapsodie nell’orchestra romantica <span aria-hidden="true">↗</span></a><a href="../risorgimento/#musica">Risorgimento · Fare gli italiani: lingua, musica, cittadinanza <span aria-hidden="true">↗</span></a></div>
 <a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
 </article><article class="chapter" id="nuovo-mondo" aria-labelledby="title-nuovo-mondo">
 <div class="chapter-head"><span class="chapter-no">10 / 14</span><h3 id="title-nuovo-mondo">Dvořák: Sinfonia n. 9 «Dal Nuovo Mondo»</h3></div>
