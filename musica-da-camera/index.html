@@ -69,7 +69,7 @@ function render(){
   if(q&&!w.join(' ').toLocaleLowerCase('it').includes(q))continue;
   count++;
   const card=document.createElement('article');card.className='work';
-  const meta=document.createElement('div');meta.className='meta';meta.textContent=w[0]+' · '+w[2]+' · '+w[1]+' voce'+(w[1]!==1?'i':'');
+  const meta=document.createElement('div');meta.className='meta';meta.textContent=w[0]+' · '+w[2]+' · '+w[1]+' '+(w[1]===1?'voce':'voci');
   const h=document.createElement('h3');h.textContent=w[3];card.append(meta,h,paragraph(w[4],'parts'),paragraph(w[5]));
   if(w[6]&&guides[w[6]]){const l=document.createElement('a');l.href='#guida-'+w[6];l.textContent='Vai all’ascolto guidato ↑';card.append(l)}
   list.append(card);
