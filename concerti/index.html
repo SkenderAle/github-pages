@@ -994,13 +994,23 @@ for(const button of document.querySelectorAll('[data-video]')){
 }
 // L'ascolto e' raggiungibile immediatamente dall'elenco, anche senza aprire la scheda guidata.
 for(const work of document.querySelectorAll('#audioteca .work')){
- const buttons=[...work.querySelectorAll('details.guided .record button[data-video]')];
- if(!buttons.length)continue;
+ const originalButtons=[...work.querySelectorAll('details.guided .record button[data-video]')];
+ if(!originalButtons.length)continue;
+ // Nascondi sempre i comandi interni: l'opera offre un unico accesso visibile per registrazione.
+ originalButtons.forEach(button=>button.classList.add('listen-original-hidden'));
+ const distinct=new Map();
+ for(const button of originalButtons){
+  const key=[button.dataset.video,button.dataset.start||'',button.dataset.end||''].join('|');
+  if(!distinct.has(key))distinct.set(key,button);
+ }
+ const buttons=[...distinct.values()];
  const row=document.createElement('div');row.className='listen-quick';
- for(const original of buttons){
+ for(const [index,original] of buttons.entries()){
   const quick=document.createElement('button');quick.type='button';quick.className='listen-quick-button';
   const label=original.textContent.trim();
-  quick.textContent=buttons.length>1?(label.startsWith('▶')?label:'▶ '+label):'▶ Apri il player qui';
+  const meaningfulLabel=label.replace(/^▶\\s*/,'').trim();
+  const generic=/^(?:Apri il player qui|Ascolta nella pagina|Apri il player|Ascolta)$/i.test(meaningfulLabel);
+  quick.textContent=buttons.length===1?'▶ Ascolta':generic?'▶ Ascolto '+(index+1):'▶ '+meaningfulLabel;
   quick.setAttribute('aria-label',quick.textContent+' · '+(work.querySelector('h4')?.textContent||''));
   quick.addEventListener('click',()=>{
    const details=original.closest('details.guided');if(details)details.open=true;
