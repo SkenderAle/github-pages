@@ -172,18 +172,16 @@ body.player-dock-open{padding-bottom:6.2rem}
 
 @media(max-width:520px){.chronology-picker{display:block}.chronology-picker label{display:block;margin-bottom:.3rem}.chronology-picker select{min-width:0;width:100%}#percorso-cronologico .record{padding:1rem}}
 </style></head><body>
-<header class="hero" id="top"><div class="kicker">Musurgia Mundi · L'Atlante oltre i confini delle epoche</div><h1>Il concerto</h1><p>Uno, molti, tutti. La storia del dialogo fra il singolo strumento e l'orchestra, dal Barocco al Novecento, attraverso le opere e le esecuzioni che vale la pena conoscere.</p><small>Concerto grosso · Concerto per solista e orchestra · Sinfonia concertante · Una piccola audioteca ragionata</small></header>
+<header class="hero" id="top"><div class="kicker">Musurgia Mundi · Audioteca per strumenti</div><h1>Il concerto</h1><p>Dal Barocco al Novecento: scegli uno strumento, esplora i concerti in ordine di composizione e apri le schede d'ascolto.</p><small>Strumento · Epoca · Compositore · Opera</small></header>
 <nav class="main" aria-label="Navigazione principale"><div><a href="../">⌂ Home</a><a class="audio" href="#percorso-cronologico">♪ Strumenti e ascolti</a><a href="#trova-ascolto">⌕ Cerca un’opera</a><a href="#catalogo">Catalogo</a><a href="#criteri">Fonti</a></div></nav>
 <main>
-<section id="storia"><div class="eyebrow">✦ Per iniziare</div><h2>Il concerto: solista e orchestra</h2>
-<p class="lead">Nel concerto uno o più strumenti dialogano con l'orchestra: a volte si alternano, a volte si sfidano, altre volte costruiscono un unico discorso. Dal Barocco al Novecento cambiano il ruolo del solista, gli strumenti e le forme.</p>
-<p>Qui puoi seguire le opere <strong>per strumento, epoca e data di composizione</strong>. Scegli lo strumento qui sotto o cerca un titolo: in ogni scheda trovi indicazioni per l'ascolto, fonti, revisioni e confronti fra interpretazioni.</p></section>
-<section id="audioteca"><div class="eyebrow">Ascolti selezionati e documentati</div><h2>L'audioteca: non il primo video che capita</h2>
-<p>Fra gli ascolti introduttivi figurano tre pubblicazioni ufficiali della <strong>Netherlands Bach Society</strong> per <i>All of Bach</i>, con interpreti e fonti identificati. Il lettore integrato viene preparato soltanto dopo un clic e <strong>non avvia automaticamente la musica</strong>: la sua effettiva compatibilità con ogni browser rimane da collaudare. Le altre registrazioni presenti nell'audioteca sono proposte, caso per caso, con video ufficiali oppure collegamenti esterni alle fonti e agli editori, senza fingere un accesso gratuito ai dischi commerciali.</p>
+<section id="storia"><div class="eyebrow">✦ Per iniziare</div><p class="lead">Il concerto mette in dialogo uno o più solisti e l'orchestra. Qui puoi seguirne l'evoluzione per strumento e ascoltare ogni opera con le indicazioni musicali, gli interpreti e le fonti documentate.</p></section>
+<section id="audioteca"><div class="eyebrow">Ascolti selezionati e documentati</div><h2>L'audioteca</h2>
+<p>Le schede distinguono i video riproducibili nella pagina dai collegamenti a emittenti e discografie. Il lettore non parte automaticamente e un link discografico non garantisce l'ascolto gratuito.</p>
 <section id="percorso-cronologico" aria-labelledby="cronologia-titolo">
 <div class="eyebrow">Audioteca · Strumento, epoca, composizione</div>
-<h2 id="cronologia-titolo">Esplora i concerti per strumento</h2>
-<p class="chronology-intro">Scegli lo strumento: le schede complete sono raccolte per epoca e ordinate secondo la data di composizione. Si attraversa l'evoluzione del concerto, senza dover passare per capitoli tematici. Quando un'opera ha avuto revisioni, la scheda distingue le diverse fasi; le epoche sono orientative, non compartimenti assoluti.</p>
+<h2 id="cronologia-titolo">Scegli lo strumento</h2>
+<p class="chronology-intro">Le schede sono ordinate per composizione e raggruppate in epoche orientative; le revisioni sono precisate dove necessario.</p>
 <div id="cronologia-strumenti" class="chronology-picker" role="group" aria-label="Scegli il percorso per strumento"></div>
 <p id="cronologia-stato" class="chronology-current" role="status" aria-live="polite">Seleziona uno strumento.</p>
 <div id="cronologia-schede"></div>
@@ -717,7 +715,8 @@ const instrumentGroups=[
  ['Altri strumenti',['arpa','chitarra']],
  ['Panoramica',['introduzione']]
 ];
-let chronologySelection='violino';
+const requestedInstrument=new URLSearchParams(window.location.search).get('strumento');
+let chronologySelection=instrumentGroups.some(group=>group[1].includes(requestedInstrument))?requestedInstrument:'violino';
 const chooserLabel=document.createElement('label');chooserLabel.htmlFor='cronologia-scelta';chooserLabel.textContent='Scegli lo strumento';
 const chooser=document.createElement('select');chooser.id='cronologia-scelta';chooser.setAttribute('aria-controls','cronologia-schede');
 chronologyPicker.append(chooserLabel,chooser);
@@ -783,6 +782,7 @@ function chronHash(){
  }
 }
 chooseChronology(chronologySelection);
+if(requestedInstrument===chronologySelection)fi.value=chronologySelection;
 
 /* Una sola voce per filmato: i pulsanti che saltano al secondo o terzo movimento
    non devono moltiplicare i conteggi e le verifiche. */
