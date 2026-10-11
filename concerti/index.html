@@ -376,6 +376,7 @@ videoButtons.forEach(b=>{b.setAttribute('aria-controls','player');b.setAttribute
   player.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
 })});
 
+const normalize=x=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 /* Indice leggero ricavato dal DOM: non duplica né sposta le schede. */
 const fq=document.getElementById('finder-query'),fi=document.getElementById('finder-instrument'),fk=document.getElementById('finder-kind'),fr=document.getElementById('finder-results'),fs=document.getElementById('finder-status'),fm=document.getElementById('finder-more'),freset=document.getElementById('finder-reset');
 const instrumentNames={introduzione:'Introduzione',violino:'Violino',pianoforte:'Pianoforte',violoncello:'Violoncello',viola:'Viola'};
@@ -437,7 +438,7 @@ fm.addEventListener('click',()=>{fullFinder=true;finderRender()});
 freset.addEventListener('click',()=>{fq.value='';fi.value='tutti';fk.value='tutti';fullFinder=false;finderRender();fq.focus()});
 finderRender();
 
-const input=document.getElementById('search'),era=document.getElementById('era'),status=document.getElementById('status'),families=[...document.querySelectorAll('.family')];const normalize=x=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const input=document.getElementById('search'),era=document.getElementById('era'),status=document.getElementById('status'),families=[...document.querySelectorAll('.family')];
 function update(){const q=normalize(input.value.trim()),epoch=era.value;let total=0,count=0;families.forEach(f=>{let match=0;f.querySelectorAll('.work').forEach(w=>{const ok=(!q||normalize(f.dataset.label+' '+w.dataset.search).includes(q))&&(epoch==='tutte'||epoch===w.dataset.era);w.hidden=!ok;if(ok){total++;match++}});f.hidden=match===0;if(match)count++});status.textContent=total+' opere in '+count+' famiglie strumentali.'}input.addEventListener('input',update);era.addEventListener('change',update);update();
 })();
 </script></body></html>
