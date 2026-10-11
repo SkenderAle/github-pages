@@ -123,6 +123,21 @@ body.player-dock-open{padding-bottom:6.2rem}
 /* Diagnostica in tempo reale tramite API YouTube caricata solo dopo un clic */
 #player .player-error{background:#f1d9cd;color:#582826;border:2px solid #ad5b4b;padding:.8rem .9rem;font:750 .88rem/1.5 var(--sans);margin:.8rem 0}
 #player .player-error[hidden]{display:none}
+
+/* Collaudo locale su richiesta: occupa poco spazio quando è chiuso */
+.video-checklist{border:1px solid #c8beb2;background:#fffaf3;margin:.8rem 0 1rem;border-radius:5px;font-family:var(--sans)}
+.video-checklist summary{min-height:44px;cursor:pointer;padding:.8rem;display:flex;flex-wrap:wrap;gap:.2rem .6rem;align-items:center;line-height:1.45}
+.video-checklist summary strong{font-size:.9rem;color:#3e5a47}
+.video-checklist summary span{font-size:.76rem;color:#544b51}
+.video-checklist .checklist-body{border-top:1px solid #ded3c6;padding:.6rem .8rem .9rem}
+.video-checklist p{font:.82rem/1.55 var(--sans);max-width:74ch;margin:.45rem 0}
+.video-checklist .checklist-toolbar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:end}
+.video-checklist label{font:750 .77rem/1.5 var(--sans);color:#55495a}
+.video-checklist select{display:block;margin-top:.3rem;min-width:210px;max-width:100%;height:44px;border:1px solid #aaa1a4;background:#fff;padding:.35rem}
+.video-checklist button{min-height:44px;padding:.5rem .75rem;font:750 .8rem/1.4 var(--sans);border:1px solid #637a68;background:#e7eee7;color:#345742;cursor:pointer;border-radius:4px}
+#video-check-fallback[hidden]{display:none}
+#video-check-report{display:block;width:100%;max-width:100%;border:1px solid #958d90;background:#fff;margin-top:.4rem;padding:.6rem;font: .8rem/1.5 monospace}
+@media(max-width:480px){.video-checklist .checklist-toolbar>*{flex:1 1 100%}.video-checklist select,.video-checklist button{width:100%}.video-checklist summary{flex-direction:column;align-items:flex-start}}
 </style></head><body>
 <header class="hero" id="top"><div class="kicker">Musurgia Mundi · L'Atlante oltre i confini delle epoche</div><h1>Il concerto</h1><p>Uno, molti, tutti. La storia del dialogo fra il singolo strumento e l'orchestra, dal Barocco al Novecento, attraverso le opere e le esecuzioni che vale la pena conoscere.</p><small>Concerto grosso · Concerto per solista e orchestra · Sinfonia concertante · Una piccola audioteca ragionata</small></header>
 <nav class="main" aria-label="Navigazione principale"><div><a href="../">⌂ Home</a><a href="#storia">La storia</a><a class="audio" href="#trova-ascolto">⌕ Trova un ascolto</a><a href="#audioteca">♪ Audioteca</a><a href="#percorso-pianoforte">Pianoforte · ascolti</a><a href="#piano-geografie">Pianoforte · identità</a><a href="#piano-novecento">Pianoforte · Novecento</a><a href="#pianoforte-romantico">Pianoforte · Romanticismo</a><a href="#percorso-violino">Violino · ascolti</a><a href="#archi-gravi">Viola e violoncello · ascolti</a><a href="#beethoven-concerto">✦ Beethoven op. 61</a><a href="#catalogo">Strumenti</a><a href="#criteri">Qualità e filologia</a><a href="../barocco/#vivaldi">Barocco</a><a href="../classicismo/#generi">Classicismo</a><a href="../romanticismo/#virtuosismo">Romanticismo</a></div></nav>
@@ -147,9 +162,20 @@ body.player-dock-open{padding-bottom:6.2rem}
 <label for="finder-kind">Modalità d'ascolto<select id="finder-kind" aria-controls="finder-results"><option value="tutti">Tutte le fonti</option><option value="video">Video predisposti nella pagina</option><option value="video-esterno">Video su siti ufficiali ↗</option><option value="documento">Discografia e documenti ↗</option></select></label>
 </div>
 <div class="finder-toolbar"><p id="finder-status" class="finder-status" role="status" aria-live="polite">Caricamento dell'indice degli ascolti…</p><button type="button" id="finder-reset">Azzera la ricerca</button></div>
+<details class="video-checklist" id="video-checklist">
+<summary><strong>Collaudo dei video</strong> <span id="video-check-summary">17 video predisposti · nessun controllo locale effettuato</span></summary>
+<div class="checklist-body">
+<p>I dati sono soltanto sul tuo dispositivo: «Funziona» significa che hai verificato <em>immagine e suono</em>, non che il filmato funzionerà su ogni telefono. Le segnalazioni della diagnostica YouTube sono temporanee e distinte dalle tue verifiche.</p>
+<div class="checklist-toolbar">
+<label for="finder-check">Mostra nel catalogo<select id="finder-check"><option value="tutti">Tutti gli stati</option><option value="da-verificare">Video da provare</option><option value="verificati">Confermati funzionanti</option><option value="problemi">Problemi segnalati</option></select></label>
+<button type="button" id="export-video-check">Copia il rapporto dei video</button>
+</div>
+<p id="video-check-message" role="status" aria-live="polite"></p>
+<div id="video-check-fallback" hidden><label for="video-check-report">Se il browser impedisce la copia, seleziona il rapporto qui sotto:</label><textarea id="video-check-report" rows="7" readonly></textarea></div>
+</div></details>
 <div id="finder-results" class="finder-results" aria-label="Risultati degli ascolti"></div>
 <button type="button" id="finder-more" class="finder-more" hidden>Mostra altri risultati</button>
-<p class="finder-hint"><strong>Legenda:</strong> «Prepara video» carica il lettore senza avvio automatico; «Apri video» conduce all'emittente esterna; «Apri fonte» può condurre a una discografia o documento, <em>non necessariamente a un audio</em>. Le etichette ✓ e ⚠ segnalano soltanto le prove eseguite in questo browser negli ultimi 30 giorni, non la disponibilità universale. Le opere prive di scheda sono nel <a href="#catalogo">catalogo completo</a>.</p>
+<p class="finder-hint"><strong>Legenda:</strong> «Prepara video» carica il lettore senza avvio automatico; «Apri video» conduce all'emittente esterna; «Apri fonte» può condurre a una discografia o documento, <em>non necessariamente a un audio</em>. Le etichette ✓ e ⚠ segnalano soltanto le prove eseguite in questo browser negli ultimi 30 giorni, non la disponibilità universale. Apri «Collaudo dei video» per filtrare gli ascolti da verificare ed esportare un rapporto da condividere. Le opere prive di scheda sono nel <a href="#catalogo">catalogo completo</a>.</p>
 <noscript><p>La ricerca rapida richiede JavaScript. Tutte le schede restano comunque disponibili scorrendo la pagina e nel catalogo.</p></noscript>
 </div>
 <div id="player" hidden role="region" aria-label="Riproduttore condiviso dell'audioteca"><div id="playerTop"><h3 id="ptitle">Ascolto</h3><button id="stop" type="button" aria-label="Ferma il video e torna alla scheda">■ Ferma e chiudi</button></div><div class="video" id="vspace"></div><p id="playerstatus" role="status" aria-live="polite">Video pronto: premi Play nel riproduttore. La riproduzione non parte automaticamente.</p><p id="playerError" class="player-error" role="alert" hidden></p><p class="player-alternatives"><strong>Il video non si apre?</strong> <a id="pwatch" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">▶ Apri questo video su YouTube ↗</a><a id="psource" target="_blank" rel="noopener noreferrer">Fonte ufficiale e crediti ↗</a></p><p class="player-help">Il proprietario può vietare l'incorporamento: il collegamento a YouTube rimane disponibile, ma la riproduzione può dipendere dal dispositivo o dal paese. «Ferma e chiudi» interrompe il video e lo rimuove dalla pagina.</p><div class="player-audit" aria-labelledby="player-audit-heading"><strong id="player-audit-heading">Prova l'ascolto su questo dispositivo</strong><p>Premi Play nel video, verifica che si senta e poi seleziona il risultato. La verifica viene salvata solo in questo browser, non inviata a Musurgia Mundi.</p><div class="player-audit-actions"><button type="button" id="auditOk">✓ Video e audio funzionano</button><button type="button" id="auditNo">⚠ Non riesco ad ascoltare</button></div><p id="auditResult" role="status" aria-live="polite">Nessuna verifica ancora eseguita su questo dispositivo.</p></div></div>
@@ -510,7 +536,7 @@ videoButtons.forEach(b=>{b.setAttribute('aria-controls','player');b.setAttribute
 
 const normalize=x=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 /* Indice leggero ricavato dal DOM: non duplica né sposta le schede. */
-const fq=document.getElementById('finder-query'),fi=document.getElementById('finder-instrument'),fk=document.getElementById('finder-kind'),fr=document.getElementById('finder-results'),fs=document.getElementById('finder-status'),fm=document.getElementById('finder-more'),freset=document.getElementById('finder-reset');
+const fq=document.getElementById('finder-query'),fi=document.getElementById('finder-instrument'),fk=document.getElementById('finder-kind'),fr=document.getElementById('finder-results'),fs=document.getElementById('finder-status'),fm=document.getElementById('finder-more'),freset=document.getElementById('finder-reset'),fv=document.getElementById('finder-check'),checkSummary=document.getElementById('video-check-summary'),checkMessage=document.getElementById('video-check-message'),checkExport=document.getElementById('export-video-check'),checkFallback=document.getElementById('video-check-fallback'),checkReport=document.getElementById('video-check-report');
 const instrumentNames={introduzione:'Introduzione',violino:'Violino',pianoforte:'Pianoforte',violoncello:'Violoncello',viola:'Viola'};
 function getInstrument(card){
  const section=card.closest('section[id]');const id=section&&section.id;
@@ -533,11 +559,78 @@ const listeningEntries=[...document.querySelectorAll('article.record[id]')].map(
  return{card,id:card.id,instrument,title:heading?heading.textContent.trim():'Ascolto',button,kind,firstSource,videoSource,
  search:normalize((heading?heading.textContent:'')+' '+card.textContent+' '+(instrumentNames[instrument]||''))};
 }).filter(item=>item.instrument);
+/* Una sola voce per filmato: i pulsanti che saltano al secondo o terzo movimento
+   non devono moltiplicare i conteggi e le verifiche. */
+const checkVideos=new Map();
+for(const item of listeningEntries){
+ if(!item.button)continue;
+ const id=item.button.dataset.video;
+ if(!checkVideos.has(id))checkVideos.set(id,{id,title:item.title,instrument:item.instrument});
+}
+function checkCounts(){
+ const result={total:checkVideos.size,ok:0,no:0,pending:0,errors:0};
+ for(const entry of checkVideos.values()){
+  const mark=readAudit(entry.id);
+  if(mark&&mark.status==='ok')result.ok++;
+  else if(mark&&mark.status==='no')result.no++;
+  else result.pending++;
+  if(embedErrors[entry.id])result.errors++;
+ }
+ return result;
+}
+function updateCheckSummary(){
+ const c=checkCounts();
+ checkSummary.textContent=c.total+' video distinti · '+c.ok+' verificati · '+c.no+' con problemi · '+c.pending+' da provare';
+}
+function makeCheckReport(){
+ const c=checkCounts();
+ const rows=[
+  'MUSURGIA MUNDI — CONTROLLO VIDEO NEL BROWSER',
+  'Data del rapporto: '+new Date().toLocaleDateString('it-IT'),
+  'Verificati: '+c.ok+' | Problemi: '+c.no+' | Da provare: '+c.pending+' | Totale: '+c.total,
+  '',
+  'Le verifiche rispecchiano solo questo browser negli ultimi 30 giorni. Non sono test indipendenti su altri dispositivi.',
+  'Eventuali codici YouTube sono osservazioni della sessione corrente.',
+  ''
+ ];
+ for(const x of checkVideos.values()){
+  const mark=readAudit(x.id),error=embedErrors[x.id];
+  const status=mark?(mark.status==='ok'?'FUNZIONA':'NON FUNZIONA'):'DA PROVARE';
+  const when=mark?' ('+new Date(mark.time).toLocaleDateString('it-IT')+')':'';
+  rows.push('['+status+'] '+x.title+' · '+x.id+when+(error?' · Errore YouTube '+error:''));
+ }
+ return rows.join('\n');
+}
+checkExport.addEventListener('click',()=>{
+ const report=makeCheckReport();
+ checkFallback.hidden=true;checkMessage.textContent='';
+ const nav=window.navigator;
+ if(nav&&nav.clipboard&&typeof nav.clipboard.writeText==='function'){
+  nav.clipboard.writeText(report).then(()=>{
+   checkMessage.textContent='Rapporto copiato. Puoi incollarlo in un messaggio o in un documento.';
+  }).catch(()=>{
+   checkReport.value=report;checkFallback.hidden=false;checkReport.focus();checkReport.select();
+   checkMessage.textContent='La copia automatica non è disponibile: il rapporto è selezionato per la copia manuale.';
+  });
+ }else{
+  checkReport.value=report;checkFallback.hidden=false;checkReport.focus();checkReport.select();
+  checkMessage.textContent='La copia automatica non è disponibile: il rapporto è selezionato per la copia manuale.';
+ }
+});
+fv.addEventListener('change',()=>{fullFinder=false;finderRender()});
 let fullFinder=false;
 function finderRender(){
+ updateCheckSummary();
  const query=normalize(fq.value.trim()),group=fi.value,kind=fk.value;
- const matches=listeningEntries.filter(item=>(group==='tutti'||item.instrument===group)&&(kind==='tutti'||item.kind===kind)&&(!query||item.search.includes(query)));
- const noFilter=!query&&group==='tutti'&&kind==='tutti';
+ const check=fv.value;
+ const matches=listeningEntries.filter(item=>{
+  if((group!=='tutti'&&item.instrument!==group)||(kind!=='tutti'&&item.kind!==kind)||(query&&!item.search.includes(query)))return false;
+  if(check==='tutti')return true;
+  if(!item.button)return false;
+  const mark=readAudit(item.button.dataset.video),state=mark?mark.status:'pending';
+  return (check==='da-verificare'&&state==='pending')||(check==='verificati'&&state==='ok')||(check==='problemi'&&state==='no');
+ });
+ const noFilter=!query&&group==='tutti'&&kind==='tutti'&&fv.value==='tutti';
  let results=matches;
  if(noFilter){
   const selected=new Set(),preview=[];
@@ -585,7 +678,7 @@ function finderRender(){
 }
 [fq,fi,fk].forEach(el=>el.addEventListener(el===fq?'input':'change',()=>{fullFinder=false;finderRender()}));
 fm.addEventListener('click',()=>{fullFinder=true;finderRender()});
-freset.addEventListener('click',()=>{fq.value='';fi.value='tutti';fk.value='tutti';fullFinder=false;finderRender();fq.focus()});
+freset.addEventListener('click',()=>{fq.value='';fi.value='tutti';fk.value='tutti';fv.value='tutti';fullFinder=false;finderRender();fq.focus()});
 finderRender();
 
 const input=document.getElementById('search'),era=document.getElementById('era'),status=document.getElementById('status'),families=[...document.querySelectorAll('.family')];
