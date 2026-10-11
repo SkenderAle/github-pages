@@ -876,8 +876,9 @@ for(const e of allItems){
  const name=e.work.dataset.composerName;
  if(name&&!composerNames.has(e.work.dataset.composer))composerNames.set(e.work.dataset.composer,name);
 }
-for(const [value,label] of [...composerNames].sort((a,b)=>a[1].localeCompare(b[1],'it'))){
- const opt=document.createElement('option');opt.value=value;opt.textContent=label;composer.appendChild(opt);
+const composerDisplayName=name=>name==='Giuseppe Torelli'?'Torelli, Giuseppe':name;
+for(const [value,label] of [...composerNames].sort((a,b)=>composerDisplayName(a[1]).localeCompare(composerDisplayName(b[1]),'it'))){
+ const opt=document.createElement('option');opt.value=value;opt.textContent=composerDisplayName(label);composer.appendChild(opt);
 }
 const params=new URLSearchParams(location.search);
 const requestedInstrument=params.get('strumento');
