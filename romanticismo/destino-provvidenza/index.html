@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Un inserto interdisciplinare del Romanticismo musicale: Beethoven, Manzoni e Verdi fra destino, Provvidenza, libero arbitrio e responsabilità umana.">
+<meta name="author" content="Alessandro Zilli">
+<title>Il destino bussa. Ma chi gli apre? · L'irrazionale</title>
+<style>
+:root{--ink:#272434;--paper:#f7f2e9;--sheet:#fffcf5;--night:#191a31;--violet:#66415f;--green:#325944;--gold:#c3a16d;--muted:#645e64;--line:#d8ccbc;--sans:system-ui,-apple-system,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5.6rem}
+body{margin:0;background:linear-gradient(135deg,#dfd9d0,#eee6db 58%,#ded8cd);color:var(--ink);font-family:var(--serif);font-size:1.09rem;line-height:1.82}
+a{color:#553f69;text-underline-offset:3px}
+a:focus-visible{outline:3px solid #d1aa60;outline-offset:4px}
+.site-nav{position:sticky;top:0;z-index:10;background:#191a31f2;border-bottom:1px solid #ffffff25;color:#fff;backdrop-filter:blur(12px)}
+.nav-inner{margin:auto;max-width:1120px;display:flex;align-items:center;gap:.7rem;padding:.6rem max(1rem,env(safe-area-inset-left))}
+.nav-home{flex:none;color:#fff5dd;text-decoration:none;font-family:var(--sans);font-size:.82rem;font-weight:750;padding:.45rem .64rem;border:1px solid #ffffff53;border-radius:3px}
+.nav-items{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:thin;white-space:nowrap}
+.nav-items a{color:#fffaf1;text-decoration:none;font-family:var(--sans);font-size:.8rem;padding:.5rem .68rem}
+.nav-items a:hover,.nav-home:hover{background:#ffffff1d}
+.hero{background:radial-gradient(ellipse at 77% 35%,#604061 0%,transparent 45%),linear-gradient(145deg,#15172b 0%,#27213c 55%,#211726 100%);color:#fff9ed;padding:clamp(4.4rem,10vw,7.4rem) 1.2rem 4rem}
+.hero-inner{max-width:900px;margin:auto}
+.overline{font-family:var(--sans);text-transform:uppercase;letter-spacing:.18em;color:#d6c096;font-weight:750;font-size:.74rem}
+.hero h1{font-size:clamp(2.9rem,8vw,6.5rem);font-weight:500;line-height:1.01;max-width:820px;letter-spacing:-.035em;margin:.9rem 0 1.3rem}
+.hero .subtitle{font-size:clamp(1.17rem,2.7vw,1.48rem);color:#e6d9e4;line-height:1.55;max-width:770px}
+.hero .mark{font-size:clamp(2.4rem,7vw,5.5rem);letter-spacing:.35em;opacity:.31;margin:1.8rem 0 0;font-family:var(--serif)}
+main{max-width:1060px;margin:0 auto;background:var(--sheet);box-shadow:0 20px 60px #31293721}
+main>section{padding:clamp(1.7rem,5vw,4.7rem) clamp(1.2rem,6vw,5.5rem)}
+main>section+section{border-top:1px solid var(--line)}
+section[id]{scroll-margin-top:5.6rem}
+p{max-width:74ch;margin:.45rem 0 1.3rem}
+h2{font-size:clamp(1.75rem,4vw,2.65rem);font-weight:normal;line-height:1.18;letter-spacing:-.02em;margin:.3rem 0 1.5rem}
+h3{font-size:1.22rem;font-weight:650;margin:1.5rem 0 .5rem}
+.eyebrow{font:750 .76rem var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--violet)}
+.lead{font-size:clamp(1.14rem,2vw,1.36rem);line-height:1.65}
+.per-iniziare{border-left:6px solid #598366;padding:1.5rem clamp(1.2rem,4vw,2rem);background:#e7f0e5;border-radius:0 4px 4px 0}
+.per-iniziare h2{font-size:1.45rem;font-weight:650;color:#264a37;margin:0 0 .65rem}
+.per-iniziare p{margin:0}
+.note{border-left:3px solid #b49065;background:#f2ebe0;padding:.9rem 1.15rem;font-size:.98rem;margin:1.65rem 0}
+.note strong{color:#5e3e30}
+.step{margin:1rem 0 2.1rem}
+.step .number{font-family:var(--sans);color:var(--violet);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.quote{max-width:67ch;margin:1.6rem 0;padding:.8rem 1.35rem;border-left:3px solid #76566f;font-size:1.22rem;font-style:italic;color:#4d394e}
+.question{font-weight:650;color:#3b3a55}
+.threads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:1.7rem 0}
+.threads>div{background:#f7f3ea;padding:1.15rem}
+.threads strong{font-size:1.15rem;display:block;color:#40304a}
+.threads p{margin:.3rem 0 0;font-size:.95rem}
+.listen{background:#efedf3;padding:1.2rem 1.45rem;margin-top:1.5rem}
+.listen h3{margin:0 0 .4rem}
+.listen ol{margin:.3rem 0 0;padding-left:1.2rem}
+.listen li{padding:.2rem 0}
+.listen small,.sources li{font-size:.92rem}
+.nav-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.8rem 0}
+.nav-choice{display:block;text-decoration:none;background:#29243a;color:#fff9ef;border:1px solid #39304b;padding:1.25rem 1.5rem;transition:transform .15s}
+.nav-choice:hover{transform:translateY(-2px);background:#453653}
+.nav-choice .super{display:block;color:#d9c1a3;font:750 .7rem var(--sans);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.nav-choice strong{display:block;font-size:1.16rem;line-height:1.35;font-weight:500}
+.nav-choice span:last-child{font-family:var(--sans);font-size:.78rem;color:#e9e3eb;display:block;margin-top:.5rem}
+.sources{padding-left:1.2rem}
+.sources li{margin:.45rem 0}
+.small{font: .88rem/1.65 var(--sans);color:var(--muted)}
+footer{max-width:1060px;margin:auto;padding:1.45rem 1.2rem 3rem;text-align:center;font:.79rem/1.65 var(--sans);color:#524c55}
+@media(max-width:680px){.hero{padding-top:3.6rem}.hero .mark{letter-spacing:.13em}.threads{grid-template-columns:1fr}.nav-choices{grid-template-columns:1fr}.nav-items a{font-size:.78rem;padding:.5rem}.site-nav{backdrop-filter:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav-choice{transition:none}}
+@media print{.site-nav{display:none}body{background:#fff}main{box-shadow:none}.hero{color:#272434;background:#fff;padding:2rem 0}.hero .subtitle,.hero .overline{color:#272434}.nav-choices{display:none}a{color:#272434}}
+</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Navigazione dell'approfondimento">
+ <div class="nav-inner">
+  <a class="nav-home" href="../" title="Torna alla pagina del Romanticismo">⌂ Romanticismo</a>
+  <div class="nav-items">
+   <a href="#per-iniziare">Per iniziare</a><a href="#manzoni">Manzoni</a><a href="#beethoven">Beethoven</a><a href="#verdi">Verdi</a><a href="#ascolta">Ascolta e interroga</a><a href="#percorsi">Continua</a><a href="#fonti">Fonti</a>
+  </div>
+ </div>
+</nav>
+<header class="hero">
+ <div class="hero-inner">
+  <div class="overline">L’irrazionale · Inserto interdisciplinare · Musica, letteratura, filosofia</div>
+  <h1>Il destino bussa.<br>Ma chi gli apre?</h1>
+  <p class="subtitle">Tre modi di interrogare la libertà umana: la Provvidenza nel romanzo di Manzoni, il motivo incalzante nella Quinta di Beethoven e le due conclusioni della <i>Forza del destino</i> di Verdi.</p>
+  <div class="mark" aria-hidden="true">♪ ♩ ♩ ♫</div>
+ </div>
+</header>
+<main id="contenuto">
+ <section id="per-iniziare">
+  <div class="per-iniziare">
+   <h2>✦ Per iniziare</h2>
+   <p>La vita è già scritta, oppure le nostre scelte possono cambiarne il corso? In un romanzo, in una sinfonia e in un'opera teatrale incontreremo tre risposte differenti. Non ascolteremo una musica che «dimostra» una tesi filosofica: cercheremo piuttosto di capire in quali modi gli artisti hanno dato forma a un problema condiviso.</p>
+  </div>
+  <p class="lead" style="margin-top:2.2rem">L'Ottocento pone l'individuo al centro dell'esperienza artistica, ma la libertà che gli riconosce si scontra continuamente con la storia, la malattia, la violenza, le convenzioni sociali e la morte. Il <i>pathos</i> nasce anche qui: nel desiderio di decidere della propria vita e nel timore che qualcos'altro la decida al nostro posto.</p>
+  <div class="threads" aria-label="Tre prospettive dell'inserto">
+   <div><strong>Provvidenza</strong><p>La sofferenza non viene negata; la responsabilità delle persone rimane decisiva.</p></div>
+   <div><strong>Destino</strong><p>Una necessità che sembra incalzare, fra musica e interpretazione degli ascoltatori.</p></div>
+   <div><strong>Scelta</strong><p>Il potere del perdono, e il peso delle decisioni individuali e collettive.</p></div>
+  </div>
+ </section>
+ <section id="manzoni">
+  <div class="eyebrow">01 · Letteratura, religione e diritto</div>
+  <h2>Manzoni: la Provvidenza non assolve gli uomini dalle proprie responsabilità</h2>
+  <p>Nei <i>Promessi sposi</i> la violenza esercitata dai potenti, le disfunzioni della giustizia, la guerra e la peste non scompaiono per effetto di un intervento prodigioso. Renzo e Lucia attraversano realmente il dolore e l'ingiustizia. La fede nella Provvidenza non rende innocente chi opprime, né toglie valore alle scelte di chi cerca di agire secondo coscienza.</p>
+  <p>Don Rodrigo esercita un potere arbitrario nella Lombardia del Seicento sottoposta alla monarchia spagnola. Per i lettori dell'Ottocento, che conoscono anche la presenza austriaca in Lombardia, questo passato può funzionare da specchio critico del presente. Non occorre trasformare Don Rodrigo in una caricatura di un preciso governante austriaco: il romanzo interroga più profondamente il rapporto fra potere, legge e dignità delle persone.</p>
+  <p>È essenziale, inoltre, non confondere la concezione religiosa di Manzoni con una semplice dottrina della predestinazione calvinista. Enrichetta Blondel proveniva da un ambiente calvinista; la maturazione religiosa dello scrittore fu cattolica, con componenti giansenistiche discusse dalla critica. L'idea di Provvidenza, nel romanzo, va studiata insieme alla libertà e alla responsabilità morale.</p>
+  <aside class="note"><strong>Una distinzione.</strong> La Provvidenza non significa che ogni fatto doloroso sia desiderabile o che chi soffre debba accettare l'ingiustizia in silenzio. Il nesso fra legalità, responsabilità personale e fede è uno dei problemi più fecondi della lettura manzoniana.</aside>
+  <p class="question">Da interrogare: se la storia è attraversata da mali tanto grandi, perché è così importante, nel romanzo, ciò che ciascun personaggio decide di fare?</p>
+ </section>
+ <section id="beethoven">
+  <div class="eyebrow">02 · La musica e la sua interpretazione</div>
+  <h2>Beethoven: un motivo che sembra bussare alla porta</h2>
+  <p>La Quinta Sinfonia in do minore, op. 67, presentata a Vienna nel 1808, si apre con una cellula ritmica breve e inconfondibile. Il suo ritorno e le sue trasformazioni alimentano una tensione formale percepibile anche senza attribuirle un significato narrativo preciso. Il materiale musicale, una volta riconosciuto, trasforma anche il nostro modo di attendere ciò che verrà.</p>
+  <p>La celeberrima spiegazione «così il destino bussa alla porta» fu riferita da Anton Schindler, biografo la cui affidabilità è gravemente discussa. Il Beethoven-Haus di Bonn invita esplicitamente a dubitare che il compositore abbia davvero pronunciato quelle parole. L'immagine, però, appartiene alla storia della ricezione dell'opera: ci dice molto su ciò che gli ascoltatori vi hanno cercato.</p>
+  <p>Ascoltare il primo movimento significa distinguere la precisione del lavoro compositivo dal racconto che possiamo costruirgli attorno. Seguendo poi l'intero percorso sinfonico fino al finale in do maggiore, diventa possibile discutere tensione, contrasto e liberazione, senza trasformarli in una vicenda autobiografica documentata.</p>
+  <aside class="note"><strong>Storia e interpretazione.</strong> «Il destino bussa» è una metafora didattica e un episodio della fortuna critica della Quinta, non il titolo originale o un programma autentico certificato.</aside>
+  <p class="question">Da ascoltare: quali elementi rendono quel ritmo incalzante? Che cosa cambia quando la stessa energia motivica riappare in contesti differenti?</p>
+ </section>
+ <section id="verdi">
+  <div class="eyebrow">03 · Il teatro, il fato e il perdono</div>
+  <h2>Verdi: due finali per una sola <i>Forza del destino</i></h2>
+  <p>Con <i>La forza del destino</i>, su libretto di Francesco Maria Piave tratto dal dramma spagnolo del duca di Rivas, Verdi porta sulla scena vite incastrate fra caso, vendetta, amore e differenze sociali. La vicenda di Don Alvaro, segnato anche dal pregiudizio sulle proprie origini, è particolarmente adatta a porre una domanda scomoda: quanto del destino dei personaggi deriva da una forza misteriosa, e quanto dalle scelte e dalle discriminazioni degli esseri umani?</p>
+  <p>L'opera debutta a San Pietroburgo nel <strong>1862</strong>. Al termine di quella versione Don Alvaro, dopo la morte di Leonora, maledice il cielo e si getta da una rupe. Quando Verdi rivede la partitura per Milano, nel <strong>1869</strong>, con nuovi versi di Antonio Ghislanzoni, cambia anche la conclusione: Alvaro resta in vita e il Padre Guardiano lo richiama al pentimento. La dimensione della grazia e del perdono prende il posto di un finale senza uscita.</p>
+  <p>Questa scelta non è soltanto letteraria. Cambiano il testo, la situazione drammatica e soprattutto la musica che deve accompagnarla. Il nuovo terzetto finale e la sua dissolvenza sonora aprono una prospettiva differente dalla catastrofe originaria. Per comprenderlo davvero bisognerà ascoltare due realizzazioni delle rispettive versioni, senza confondere la <i>Sinfonia</i> introduttiva del 1869 con il <i>Preludio</i> del 1862.</p>
+  <p>La critica ha accostato il nuovo finale alla sensibilità provvidenziale di Manzoni, autore molto ammirato da Verdi. È un confronto interpretativo ricco di significato; non è la prova che il compositore abbia cambiato il finale per imitare direttamente il romanziere.</p>
+  <aside class="note"><strong>Prima di scegliere un'incisione.</strong> La revisione del 1869 è quella generalmente eseguita. Per confrontare i due finali occorre identificare con precisione la versione utilizzata, non affidarsi al titolo dell'opera.</aside>
+  <p class="question">Da ascoltare: che differenza espressiva c'è fra una conclusione segnata dalla disperazione e una che lascia spazio al pentimento? Come la rende udibile Verdi?</p>
+ </section>
+ <section id="ascolta">
+  <div class="eyebrow">04 · Guardare, ascoltare, interrogare</div>
+  <h2>Tre domande, tre opere, nessuna risposta obbligata</h2>
+  <p>Per trasformare questo inserto in un'esperienza musicale non basta scegliere tre esempi «drammatici». Occorre confrontare ciò che ciascuna opera fa davvero: quali eventi dispone, quali materiali richiama e quale spazio lascia all'iniziativa umana.</p>
+  <div class="listen">
+   <h3>Proposta di ascolto e lettura guidati</h3>
+   <ol>
+    <li><strong>Beethoven, Quinta Sinfonia:</strong> ascolta l'attacco e segui il ritmo, la ripetizione e la trasformazione del motivo; poi confronta la tensione iniziale con l'arrivo al finale. <a href="https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA7NW5jwsM/Symphony%2Bno.%2B5%2B%26%2340%3BC%2Bminor%26%2341%3B%2Bop.%2B67">Scheda e ascolti al Beethoven-Haus</a>.</li>
+    <li><strong>Manzoni, <i>Promessi sposi</i>:</strong> confronta un episodio di sopraffazione con una scelta di responsabilità morale; chiediti se la Provvidenza cancelli o renda più evidente l'importanza dell'azione umana.</li>
+    <li><strong>Verdi, <i>La forza del destino</i>:</strong> confronta i finali del 1862 e del 1869 servendoti di incisioni identificate nelle rispettive versioni. Quali trasformazioni si possono riconoscere nel testo, nella scena e nella conclusione musicale?</li>
+   </ol>
+  </div>
+  <p class="small">Qui non sono inseriti riproduttori automatici né tracce sonore non verificate. Gli ascolti da integrare saranno selezionati e collaudati separatamente, con esecutori, versione e diritti controllati.</p>
+  <h3>La domanda che rimane aperta</h3>
+  <p>Il Romanticismo ha fatto del singolo una figura centrale, ma nessuna persona vive fuori dalla società. L'arbitrio dei potenti, il pregiudizio, la vendetta e le leggi possono rendere una vita apparentemente già scritta. La libertà, allora, non è soltanto un sentimento: chiama in causa responsabilità personale, giustizia e convivenza civile.</p>
+  <p>È anche per questo che il passaggio al Risorgimento non sarà un cambio improvviso di argomento: nella storia degli inni, di Verdi, di Mazzini e della cittadinanza incontreremo altre forme di una domanda simile, questa volta rivolta al destino dei popoli.</p>
+ </section>
+ <section id="percorsi">
+  <div class="eyebrow">Continua il percorso</div>
+  <h2>Due porte aperte</h2>
+  <p>Questo approfondimento è un inserto di <i>L'irrazionale</i>: puoi tornare al percorso generale oppure entrare nell'officina musicale del Risorgimento, dove il tema della libertà si intreccia con il teatro verdiano, gli inni, Mazzini e la costruzione di una comunità politica.</p>
+  <div class="nav-choices">
+   <a class="nav-choice" href="../"><span class="super">← Torna alla pagina principale</span><strong>L’irrazionale · Romanticismo musicale</strong><span>Rientra nel percorso storico-musicale generale</span></a>
+   <a class="nav-choice" href="../../risorgimento/#verdi"><span class="super">Prosegui nell'altro percorso ↗</span><strong>Risorgimento · Verdi, Mazzini e l’Italia che canta</strong><span>Vai alla sezione «Verdi: dal melodramma alla nazione»</span></a>
+  </div>
+  <p class="small">Un ulteriore passaggio nel Risorgimento: <a href="../../risorgimento/#musica">Fare gli italiani: lingua, musica, cittadinanza</a>.</p>
+ </section>
+ <section id="fonti">
+  <div class="eyebrow">Fonti e criteri di lettura</div>
+  <h2>Documentare, non trasformare le metafore in fatti</h2>
+  <ul class="sources">
+   <li><a href="https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA7NW5jwsM/Symphony%2Bno.%2B5%2B%26%2340%3BC%2Bminor%26%2341%3B%2Bop.%2B67">Beethoven-Haus Bonn, Sinfonia n. 5 op. 67</a>: genesi dell'opera, ascolti e cautela sulla testimonianza di Schindler.</li>
+   <li><a href="https://www.treccani.it/magazine/lingua_italiana/speciali/Manzoni/6_Tarzia.html">Treccani, «La giustizia in Manzoni, tra legalità e Provvidenza»</a>: diritto, responsabilità individuale e interpretazione della Provvidenza.</li>
+   <li><a href="https://www.treccani.it/enciclopedia/alessandro-manzoni_%28Enciclopedia-Italiana%29/">Treccani, «Alessandro Manzoni»</a>: formazione religiosa e questione delle influenze giansenistiche.</li>
+   <li><a href="https://academic.oup.com/book/49368/chapter-abstract/422380239">Roger Parker, <i>The New Grove Guide to Verdi and His Operas</i></a>: dati delle prime rappresentazioni e revisione della <i>Forza del destino</i>.</li>
+   <li><a href="https://www.musicweb-international.com/classrev/2013/May13/Verdi_Forza_108046.htm">MusicWeb International, «Verdi: La forza del destino»</a>: confronto fra le revisioni e il finale del 1869.</li>
+  </ul>
+  <p class="small">Le associazioni fra Manzoni, Beethoven e Verdi sono un percorso critico interdisciplinare, non la ricostruzione di un progetto unitario condiviso dai tre autori. Le opere rimangono storicamente autonome.</p>
+ </section>
+</main>
+<footer>Musurgia Mundi · L’irrazionale · Inserto interdisciplinare ideato per il percorso didattico di Alessandro Zilli<br><a href="../">Romanticismo</a> · <a href="../../risorgimento/#verdi">Risorgimento</a> · <a href="../../">Atlante didattico della musica</a></footer>
+</body>
+</html>
