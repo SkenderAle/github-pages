@@ -1008,7 +1008,7 @@ for(const work of document.querySelectorAll('#audioteca .work')){
  for(const [index,original] of buttons.entries()){
   const quick=document.createElement('button');quick.type='button';quick.className='listen-quick-button';
   const label=original.textContent.trim();
-  const meaningfulLabel=label.replace(/^▶\\s*/,'').trim();
+  const meaningfulLabel=label.replace(/^▶\s*/,'').trim();
   const generic=/^(?:Apri il player qui|Ascolta nella pagina|Apri il player|Ascolta)$/i.test(meaningfulLabel);
   quick.textContent=buttons.length===1?'▶ Ascolta':generic?'▶ Ascolto '+(index+1):'▶ '+meaningfulLabel;
   quick.setAttribute('aria-label',quick.textContent+' · '+(work.querySelector('h4')?.textContent||''));
