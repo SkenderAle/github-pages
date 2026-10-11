@@ -155,16 +155,10 @@ body.player-dock-open{padding-bottom:6.2rem}
 /* Percorsi reali, dal più antico al più recente, sempre per strumento. */
 #percorso-cronologico{scroll-margin-top:5.6rem;border-top:3px solid #537760;margin:1.5rem 0 2.5rem;padding:1.25rem 0}
 #percorso-cronologico .chronology-intro{font:.97rem/1.65 var(--sans);color:#584f59}
-.chronology-picker{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:1.2rem 0}
-.chronology-picker button{min-width:0;min-height:48px;padding:.6rem .7rem;text-align:left;background:#fffaf3;border:1px solid #c3b7b6;border-radius:4px;color:#433947;cursor:pointer;font:750 .88rem/1.4 var(--sans)}
-.chronology-picker button small{display:block;font:.72rem/1.4 var(--sans);color:#655d65;margin-top:.2rem}
-.chronology-picker button[aria-pressed="true"]{background:#426a56;color:#fff;border-color:#426a56}
-.chronology-picker button[aria-pressed="true"] small{color:#f0f4ef}
-.chronology-picker button:focus-visible{outline:3px solid #ab8650;outline-offset:2px}
-.chronology-current{background:#e9f0e7;border-left:4px solid #64846b;padding:.8rem 1rem;font:.89rem/1.55 var(--sans);color:#3b5345}
-.chronology-instrument[hidden]{display:none!important}
-.chronology-instrument>h3{font-size:1.75rem;margin:1.4rem 0 .3rem}
-.chronology-era{font:800 .95rem/1.4 var(--sans);margin:1.7rem 0 .65rem;padding:.6rem .8rem;background:#e2eae1;border-left:5px solid #64846b}
+.chronology-picker{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;margin:1rem 0}
+.chronology-picker label{font:750 .88rem/1.5 var(--sans);color:#463d4b}
+.chronology-picker select{width:min(100%,410px);min-width:220px;min-height:48px;border:1px solid #938991;border-radius:4px;background:#fffdf8;color:#292638;padding:.55rem .65rem;font:650 1rem/1.4 var(--sans)}
+.chronology-picker select:focus-visible{outline:3px solid #ab8650;outline-offset:2px}
 #percorso-cronologico .pair{margin:.65rem 0 1rem}
 #percorso-cronologico .record{background:#fffaf4;gap:.25rem}
 #percorso-cronologico .record p{max-width:none}
@@ -175,20 +169,15 @@ body.player-dock-open{padding-bottom:6.2rem}
 #archivio-contesti>summary{cursor:pointer;padding:.65rem .2rem;min-height:44px;font:750 .9rem/1.5 var(--sans);color:#4c5e4e}
 #archivio-contesti>p{font:.86rem/1.55 var(--sans);color:#605861}
 #archivio-contesti>section{margin:1rem 0;padding:1rem;border:1px solid #e0d5d3}
-@media(max-width:850px){.chronology-picker{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:520px){.chronology-picker{grid-template-columns:repeat(2,minmax(0,1fr))}#percorso-cronologico .record{padding:1rem}}
+
+@media(max-width:520px){.chronology-picker{display:block}.chronology-picker label{display:block;margin-bottom:.3rem}.chronology-picker select{min-width:0;width:100%}#percorso-cronologico .record{padding:1rem}}
 </style></head><body>
 <header class="hero" id="top"><div class="kicker">Musurgia Mundi · L'Atlante oltre i confini delle epoche</div><h1>Il concerto</h1><p>Uno, molti, tutti. La storia del dialogo fra il singolo strumento e l'orchestra, dal Barocco al Novecento, attraverso le opere e le esecuzioni che vale la pena conoscere.</p><small>Concerto grosso · Concerto per solista e orchestra · Sinfonia concertante · Una piccola audioteca ragionata</small></header>
-<nav class="main" aria-label="Navigazione principale"><div><a href="../">⌂ Home</a><a href="#storia">La storia</a><a class="audio" href="#audioteca">♪ Audioteca</a><a href="#trova-ascolto">⌕ Trova un ascolto</a><a href="#catalogo">Catalogo delle opere</a><a href="#criteri">Fonti e filologia</a></div></nav>
+<nav class="main" aria-label="Navigazione principale"><div><a href="../">⌂ Home</a><a class="audio" href="#percorso-cronologico">♪ Strumenti e ascolti</a><a href="#trova-ascolto">⌕ Cerca un’opera</a><a href="#catalogo">Catalogo</a><a href="#criteri">Fonti</a></div></nav>
 <main>
-<section id="storia"><div class="eyebrow">✦ Per iniziare</div><h2>Il solista parla all'orchestra. Ma chi risponde?</h2>
-<p class="lead">Il concerto non è soltanto una musica nella quale uno strumento suona accompagnato dagli altri. È uno spazio in cui possono incontrarsi dialogo, competizione, collaborazione e tensione. Il solista può dominare la scena, ma può anche diventare una voce dentro un discorso più grande: non sempre chi suona più forte è chi determina il senso della musica.</p>
-<div class="begin"><strong>✦ Per iniziare</strong><p>Ascolta quando l'orchestra propone una figura musicale e quando il solista la riprende. La ripete, la contraddice, la completa o la trasforma? E se invece del solo violino ci fossero quattro strumenti di timbro diverso, come cambierebbe la nostra percezione del dialogo?</p></div>
-<p>Non costruiremo una linea troppo semplice dal concerto grosso al solista romantico: questi generi non si sostituiscono meccanicamente, perché nascono, convivono e si contaminano. Nel Barocco, <strong>concertino</strong> e <strong>ripieno</strong> si alternano, mentre il <strong>ritornello</strong> offre una struttura alla libertà del solista. Corelli, Vivaldi e Bach ne propongono soluzioni differenti; il quinto Brandeburghese porta addirittura il clavicembalo, normalmente impegnato nel continuo, alla ribalta.</p>
-<div class="steps"><div><strong>Barocco</strong><p>Concerto grosso, solisti, ritornelli e basso continuo.</p></div><div><strong>Classicismo</strong><p>Dialogo solista-orchestra, forma-sonata concertistica e cadenze.</p></div><div><strong>Romanticismo</strong><p>Virtuosismo e grandi architetture sinfoniche, non necessariamente in opposizione.</p></div><div><strong>Novecento</strong><p>Organici inattesi, altre tecniche, altri strumenti, altre idee di concerto.</p></div></div>
-<p>Con Mozart e Beethoven l'orchestra acquista un ruolo sempre più decisivo nella costruzione del discorso; la cadenza, improvvisata oppure trasmessa nella partitura o in versioni d'autore, apre uno spazio in cui composizione e interpretazione si incontrano. La <strong>sinfonia concertante</strong>, come la K 364 di Mozart per violino e viola, esprime un'altra relazione fra più solisti e l'insieme, senza essere una tappa obbligata del passaggio dal concerto grosso al concerto moderno.</p>
-<p>Nel Romanticismo il virtuosismo non è soltanto uno spettacolo tecnico. Paganini, Mendelssohn, Chopin, Schumann, Liszt e Brahms affrontano domande molto diverse: quanto deve emergere il solista, quanto deve poter rispondere l'orchestra, quali gesti appartengono all'interpretazione e quali sono già nel testo? La stessa storia riguarda violoncello, corno, fagotto, arpa, contrabbasso e gli altri strumenti, ciascuno con una diversa trasformazione del proprio ruolo.</p>
-<div class="note"><strong>Due significati da non confondere:</strong> un concerto è anche un evento pubblico. Qui parliamo soprattutto del genere compositivo per uno o più solisti e orchestra, e scegliamo un repertorio guida, non una graduatoria definitiva.</div></section>
+<section id="storia"><div class="eyebrow">✦ Per iniziare</div><h2>Il concerto: solista e orchestra</h2>
+<p class="lead">Nel concerto uno o più strumenti dialogano con l'orchestra: a volte si alternano, a volte si sfidano, altre volte costruiscono un unico discorso. Dal Barocco al Novecento cambiano il ruolo del solista, gli strumenti e le forme.</p>
+<p>Qui puoi seguire le opere <strong>per strumento, epoca e data di composizione</strong>. Scegli lo strumento qui sotto o cerca un titolo: in ogni scheda trovi indicazioni per l'ascolto, fonti, revisioni e confronti fra interpretazioni.</p></section>
 <section id="audioteca"><div class="eyebrow">Ascolti selezionati e documentati</div><h2>L'audioteca: non il primo video che capita</h2>
 <p>Fra gli ascolti introduttivi figurano tre pubblicazioni ufficiali della <strong>Netherlands Bach Society</strong> per <i>All of Bach</i>, con interpreti e fonti identificati. Il lettore integrato viene preparato soltanto dopo un clic e <strong>non avvia automaticamente la musica</strong>: la sua effettiva compatibilità con ogni browser rimane da collaudare. Le altre registrazioni presenti nell'audioteca sono proposte, caso per caso, con video ufficiali oppure collegamenti esterni alle fonti e agli editori, senza fingere un accesso gratuito ai dischi commerciali.</p>
 <section id="percorso-cronologico" aria-labelledby="cronologia-titolo">
@@ -718,20 +707,33 @@ listeningEntries.sort((a,b)=>instrumentOrder.indexOf(a.instrument)-instrumentOrd
 const chronologyPicker=document.getElementById('cronologia-strumenti');
 const chronologyRoot=document.getElementById('cronologia-schede');
 const chronologyStatus=document.getElementById('cronologia-stato');
-const chronologyPanels=new Map(),chronologyButtons=new Map();
+const chronologyPanels=new Map();
 const chronologyById=new Map(listeningEntries.map(x=>[x.id,x]));
-const groupNames=instrumentOrder.filter(x=>x!=='introduzione').concat('introduzione');
+const instrumentGroups=[
+ ['Archi',['violino','viola','violoncello','contrabbasso']],
+ ['Tastiera',['pianoforte']],
+ ['Legni e ance',['flauto','oboe','clarinetto','fagotto','sassofono']],
+ ['Ottoni',['corno','tromba','trombone']],
+ ['Altri strumenti',['arpa','chitarra']],
+ ['Panoramica',['introduzione']]
+];
 let chronologySelection='violino';
-for(const instrument of groupNames){
+const chooserLabel=document.createElement('label');chooserLabel.htmlFor='cronologia-scelta';chooserLabel.textContent='Scegli lo strumento';
+const chooser=document.createElement('select');chooser.id='cronologia-scelta';chooser.setAttribute('aria-controls','cronologia-schede');
+chronologyPicker.append(chooserLabel,chooser);
+for(const [family,names] of instrumentGroups){
+ const optgroup=document.createElement('optgroup');optgroup.label=family;
+ for(const instrument of names){
+  const items=listeningEntries.filter(item=>item.instrument===instrument);
+  if(!items.length)continue;
+  const option=document.createElement('option');option.value=instrument;option.textContent=instrumentNames[instrument]+' · '+items.length+' '+(items.length===1?'scheda':'schede');
+  optgroup.appendChild(option);
+ }
+ if(optgroup.children.length)chooser.appendChild(optgroup);
+}
+for(const instrument of instrumentGroups.flatMap(x=>x[1])){
  const items=listeningEntries.filter(item=>item.instrument===instrument);
  if(!items.length)continue;
- const button=document.createElement('button');button.type='button';button.dataset.instrument=instrument;
- button.setAttribute('aria-pressed','false');button.setAttribute('aria-controls','cronologia-'+instrument);
- button.append(document.createTextNode(instrumentNames[instrument]));
- const small=document.createElement('small');small.textContent=items.length+' '+(items.length===1?'scheda':'schede')+' · '+items[0].year+'–'+items[items.length-1].year;
- button.appendChild(small);
- button.addEventListener('click',()=>{fi.value=instrument;fullFinder=false;finderRender();document.getElementById('percorso-cronologico').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
- chronologyPicker.appendChild(button);chronologyButtons.set(instrument,button);
  const section=document.createElement('section');section.id='cronologia-'+instrument;section.className='chronology-instrument';section.hidden=true;
  const heading=document.createElement('h3');heading.textContent=instrumentNames[instrument];section.appendChild(heading);
  let lastEra='',pair=null;
@@ -742,6 +744,10 @@ for(const instrument of groupNames){
  }
  chronologyRoot.appendChild(section);chronologyPanels.set(instrument,section);
 }
+chooser.addEventListener('change',()=>{
+ const instrument=chooser.value;chooseChronology(instrument);
+ fi.value=instrument;fullFinder=false;finderRender();
+});
 /* Salvaguardia editoriale: gli antichi contenitori diventano una sola sezione
    secondaria facoltativa, senza mantenere un itinerario concorrente. */
 const contextArchive=document.createElement('details');contextArchive.id='archivio-contesti';
@@ -759,7 +765,7 @@ function chooseChronology(instrument){
  if(!chronologyPanels.has(instrument))return;
  chronologySelection=instrument;
  for(const [key,section] of chronologyPanels)section.hidden=key!==instrument;
- for(const [key,button] of chronologyButtons)button.setAttribute('aria-pressed',String(key===instrument));
+ chooser.value=instrument;
  const items=listeningEntries.filter(item=>item.instrument===instrument);
  chronologyStatus.textContent=instrumentNames[instrument]+' · '+items.length+' schede ordinate dal '+items[0].year+' al '+items[items.length-1].year+'. Seleziona un titolo oppure scorri gli ascolti per epoca.';
 }
