@@ -778,9 +778,12 @@ function finderRender(){
    matches.filter(item=>item.instrument===type).slice(0,1).forEach(item=>{if(!selected.has(item.id)){preview.push(item);selected.add(item.id)}});
   }
   if(!fullFinder)results=preview;
+ }else if(group!=='tutti'){
+  /* L'intero percorso storico di uno strumento deve comparire senza paginazione. */
+  results=matches;
  }else if(!fullFinder){results=matches.slice(0,18)}
  const total=matches.length;
- fs.textContent=noFilter&&!fullFinder?total+' schede indicizzate: una selezione iniziale per strumento. Usa la ricerca o mostra tutte.':total+' '+(total===1?'scheda trovata.':'schede trovate.')+(results.length<total?' Visualizzate '+results.length+'.':'');
+ fs.textContent=group!=='tutti'&&total?instrumentNames[group]+': '+total+' '+(total===1?'ascolto':'ascolti')+' dal più antico al più recente, raggruppati per epoca.':noFilter&&!fullFinder?total+' schede indicizzate: una selezione iniziale per strumento. Usa la ricerca o mostra tutte.':total+' '+(total===1?'scheda trovata.':'schede trovate.')+(results.length<total?' Visualizzate '+results.length+'.':'');
  fr.replaceChildren();
  if(!matches.length){
   const p=document.createElement('p');p.className='finder-empty';p.textContent='Nessuna scheda corrisponde ai filtri. Prova un altro titolo o cerca nel catalogo delle opere.';fr.appendChild(p);
