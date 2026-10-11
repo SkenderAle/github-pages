@@ -175,7 +175,7 @@ body.player-dock-open{padding-bottom:6.2rem}
 /* Un solo catalogo pubblico: opere e guide nello stesso percorso. */
 .audioteca-ready #sorgenti-audioteca,.audioteca-ready #archivio-schede-sorgente{display:none!important}
 #audioteca{scroll-margin-top:5rem}
-.single-finder{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:.7rem;margin:1.1rem 0 1rem}
+.single-finder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1.1rem 0 1rem}
 .single-finder label{font:750 .79rem/1.5 var(--sans);color:#504353}
 .single-finder select,.single-finder input{display:block;width:100%;min-height:46px;padding:.55rem .7rem;margin-top:.25rem;border:1px solid #a89ba6;border-radius:4px;background:#fff;font:.9rem var(--sans);color:var(--ink)}
 #audioteca .family[hidden],#audioteca .work[hidden]{display:none!important}
@@ -193,10 +193,21 @@ body.player-dock-open{padding-bottom:6.2rem}
 #audioteca .guided .record .listen-q{border-left:4px solid #568267;background:#e6eee4;padding:.5rem .7rem}
 #audioteca .guided .record .listen-during{border-left:3px solid #997a9b;background:#f2ecf3;padding:.5rem .7rem}
 #catalogo.legacy-anchor{display:block;scroll-margin-top:5rem}
-@media(max-width:800px){.single-finder{grid-template-columns:1fr 1fr}.single-finder label:nth-child(2){grid-column:1/-1;grid-row:1}}
-@media(max-width:480px){.single-finder{grid-template-columns:1fr}.single-finder label:nth-child(2){grid-column:auto;grid-row:auto}}
+@media(max-width:800px){.single-finder{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.single-finder{grid-template-columns:1fr}}
+
+/* Hero illustrato; La fonte iconografica e' in pubblico dominio. */
+header.hero{min-height:clamp(370px,60vh,620px);display:flex;flex-direction:column;justify-content:center;position:relative;isolation:isolate;
+ background-image:linear-gradient(90deg,rgba(17,19,34,.96) 0%,rgba(19,21,37,.86) 45%,rgba(25,25,41,.33) 100%),url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Accademia_-_Il_concertino_-_Pietro_Longhi.jpg/960px-Accademia_-_Il_concertino_-_Pietro_Longhi.jpg");
+ background-position:center 40%;background-size:cover;background-color:#242638;
+ padding:clamp(3rem,7vw,6rem) max(1.2rem,calc((100vw - 1060px)/2))}
+header.hero h1{text-shadow:0 4px 22px rgba(0,0,0,.28)}
+header.hero p{max-width:680px}
+.hero-credit{font:500 .7rem/1.4 var(--sans);color:#ebd5b8;margin-top:1.25rem}
+.hero-credit a{color:#ebd5b8}
+@media(max-width:640px){header.hero{background-position:57% 50%;background-image:linear-gradient(90deg,rgba(17,19,34,.90),rgba(17,19,34,.55)),url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Accademia_-_Il_concertino_-_Pietro_Longhi.jpg/960px-Accademia_-_Il_concertino_-_Pietro_Longhi.jpg")}}
 </style></head><body>
-<header class="hero" id="top"><div class="kicker">Musurgia Mundi · Audioteca per strumenti</div><h1>Il concerto</h1><p>Dal Barocco al Novecento: scegli uno strumento, esplora i concerti in ordine di composizione e apri le schede d'ascolto.</p><small>Strumento · Epoca · Compositore · Opera</small></header>
+<header class="hero" id="top"><div class="kicker">Musurgia Mundi · Audioteca per strumenti</div><h1>Il concerto</h1><p>Dal Barocco al Novecento: scegli uno strumento, esplora i concerti in ordine di composizione e apri le schede d'ascolto.</p><small>Strumento · Compositore · Epoca · Opera</small><p class="hero-credit">Pietro Longhi, <em>Il concertino</em> (1741) · <a href="https://commons.wikimedia.org/wiki/File:Accademia_-_Il_concertino_-_Pietro_Longhi.jpg" target="_blank" rel="noopener noreferrer">Gallerie dell’Accademia / Wikimedia Commons ↗</a></p></header>
 <nav class="main" aria-label="Navigazione principale"><div><a href="../">⌂ Home</a><a href="#storia">Introduzione</a><a class="audio" href="#audioteca">♪ Audioteca</a><a href="#criteri">Fonti</a></div></nav>
 <main>
 <section id="storia"><div class="eyebrow">✦ Per iniziare</div><p class="lead">Il concerto mette in dialogo uno o più solisti e l'orchestra. Qui puoi seguirne l'evoluzione per strumento e ascoltare ogni opera con le indicazioni musicali, gli interpreti e le fonti documentate.</p></section>
@@ -514,10 +525,11 @@ body.player-dock-open{padding-bottom:6.2rem}
 </section></div>
 <span id="catalogo" class="legacy-anchor"></span><section id="audioteca" class="library-head">
 <div class="eyebrow">Musurgia Mundi · Audioteca</div><h2>Il concerto, strumento per strumento</h2>
-<p>Scegli lo strumento o cerca un'opera. I concerti seguono un ordine storico orientativo; quando la data di composizione è incerta, è indicata la pubblicazione oppure la collocazione approssimativa. Dove abbiamo una registrazione selezionata trovi la scheda d'ascolto direttamente sotto il titolo.</p>
+<p>Puoi partire da uno strumento, da un compositore o da un'epoca senza dover impostare gli altri criteri. L'audioteca comprende concerti solistici, concerti grossi e sinfonie concertanti; l'ascolto, quando disponibile, si apre direttamente nella scheda dell'opera.</p>
 <div class="single-finder" id="trova-ascolto" role="search" aria-label="Cerca nell'audioteca">
-<label>Strumento<select id="strumento-scelto"></select></label>
-<label>Cerca compositore o opera<input type="search" id="cerca-concerto" autocomplete="off" placeholder="Mozart, Paganini, K 466, concerto..."></label>
+<label>Strumento<select id="strumento-scelto"><option value="tutti">Qualsiasi strumento</option></select></label>
+<label>Compositore<select id="compositore-scelto"><option value="tutti">Qualsiasi compositore</option></select></label>
+<label>Cerca un'opera<input type="search" id="cerca-concerto" autocomplete="off" placeholder="Titolo, catalogo, interprete..."></label>
 <label>Epoca<select id="epoca-scelta"><option value="tutte">Tutte le epoche</option><option value="barocco">Barocco</option><option value="classicismo">Classicismo e transizioni</option><option value="romanticismo">Ottocento</option><option value="novecento">Novecento e transizioni</option></select></label>
 </div>
 <p id="audioteca-stato" class="status" role="status" aria-live="polite"></p>
@@ -733,11 +745,19 @@ for(const family of families){
  for(const work of items){
   const year=Number(work.dataset.anno)||0;
   work.dataset.period=headingEra(year,work.dataset.era);
-  work.dataset.search=normalize((work.querySelector('h4')?.textContent||'')+' '+work.textContent+' '+family.dataset.label+' '+year);
+  const heading=work.querySelector('h4');
+  const composerName=(heading?.firstChild?.textContent||'').split(' · ')[0].trim()||'Compositore non indicato';
+  work.dataset.composer=normalize(composerName);
+  work.dataset.composerName=composerName;
+  work.dataset.search=normalize((heading?.textContent||'')+' '+work.textContent+' '+family.dataset.label+' '+year);
   allItems.push({work,family,year,sortYear:year||epochSortYear[work.dataset.era]||9999,period:work.dataset.period});
  }
 }
-const select=document.getElementById('strumento-scelto'),input=document.getElementById('cerca-concerto'),epoch=document.getElementById('epoca-scelta'),status=document.getElementById('audioteca-stato');
+const select=document.getElementById('strumento-scelto'),
+ composer=document.getElementById('compositore-scelto'),
+ input=document.getElementById('cerca-concerto'),
+ epoch=document.getElementById('epoca-scelta'),
+ status=document.getElementById('audioteca-stato');
 for(const [title,names] of familyGroups){
  const group=document.createElement('optgroup');group.label=title;
  for(const id of names){
@@ -748,8 +768,19 @@ for(const [title,names] of familyGroups){
  }
  select.appendChild(group);
 }
-const queryInstrument=new URLSearchParams(location.search).get('strumento');
-select.value=familyMap.has(queryInstrument)?queryInstrument:'violino';
+const composerNames=new Map();
+for(const e of allItems){
+ const name=e.work.dataset.composerName;
+ if(name&&!composerNames.has(e.work.dataset.composer))composerNames.set(e.work.dataset.composer,name);
+}
+for(const [value,label] of [...composerNames].sort((a,b)=>a[1].localeCompare(b[1],'it'))){
+ const opt=document.createElement('option');opt.value=value;opt.textContent=label;composer.appendChild(opt);
+}
+const params=new URLSearchParams(location.search);
+const requestedInstrument=params.get('strumento');
+select.value=familyMap.has(requestedInstrument)?requestedInstrument:'tutti';
+const requestedComposer=normalize(params.get('compositore')||'');
+if(composerNames.has(requestedComposer))composer.value=requestedComposer;
 function category(period){
  if(period==='Barocco')return'barocco';
  if(period==='Settecento e Classicismo'||period==='Tra Classicismo e primo Romanticismo')return'classicismo';
@@ -757,45 +788,50 @@ function category(period){
  return'novecento';
 }
 function render(){
- const selected=select.value,q=normalize(input.value.trim()),era=epoch.value;
- let shown=0;
+ const selected=select.value,author=composer.value,q=normalize(input.value.trim()),era=epoch.value;
+ let shown=0,guided=0;
  for(const family of families){
-  const active=selected===family.id;
-  family.hidden=!active;
-  if(!active)continue;
+  const active=selected==='tutti'||selected===family.id;
   const holder=family.querySelector('.works');
-  const oldLabels=[...holder.querySelectorAll(':scope > .era-divider')];
-  oldLabels.forEach(el=>el.remove());
+  holder.querySelectorAll(':scope > .era-divider').forEach(el=>el.remove());
+  if(!active){family.hidden=true;continue}
   const entries=allItems.filter(e=>e.family===family).sort((a,b)=>
    a.sortYear-b.sortYear||
    (Number(a.work.dataset.initialOrder)||0)-(Number(b.work.dataset.initialOrder)||0));
-  let previous='';
+  let previous='',local=0;
   for(const e of entries){
-   const show=(!q||e.work.dataset.search.includes(q))&&(era==='tutte'||category(e.period)===era);
+   const show=(author==='tutti'||e.work.dataset.composer===author)&&
+     (!q||e.work.dataset.search.includes(q))&&
+     (era==='tutte'||category(e.period)===era);
    e.work.hidden=!show;if(!show)continue;
-   shown++;
+   shown++;local++;
+   if(e.work.classList.contains('has-guide'))guided++;
    if(e.period!==previous){
-    const h=document.createElement('h4');h.className='era-divider';h.textContent=e.period;
-    holder.appendChild(h);previous=e.period;
+    const divider=document.createElement('h4');divider.className='era-divider';divider.textContent=e.period;
+    holder.appendChild(divider);previous=e.period;
    }
    holder.appendChild(e.work);
    const yearTag=e.work.querySelector(':scope > .composed-year');
    if(!yearTag&&e.year){
-    const span=document.createElement('small');span.className='composed-year';span.textContent=e.work.dataset.annoNota||('Composizione: '+e.year);
+    const span=document.createElement('small');span.className='composed-year';
+    span.textContent=e.work.dataset.annoNota||('Composizione: '+e.year);
     e.work.insertBefore(span,e.work.querySelector('h4'));
    }
   }
+  family.hidden=local===0;
+  const count=family.querySelector('header span');
+  if(count)count.textContent=local+' '+(local===1?'opera':'opere');
  }
- const guided=entries.filter(e=>!e.work.hidden&&e.work.classList.contains('has-guide')).length;
- status.textContent=shown+' '+(shown===1?'opera':'opere')+' · '+guided+' '+(guided===1?'scheda d’ascolto guidato':'schede d’ascolto guidato')+' · '+(familyMap.get(selected)?.dataset.label||'');
+ status.textContent=shown+' '+(shown===1?'opera':'opere')+' · '+guided+' '+(guided===1?'scheda guidata':'schede guidate')+
+   (selected==='tutti'?' · tutti gli strumenti':' · '+(familyMap.get(selected)?.dataset.label||''));
 }
 function openRecord(id,scroll=true){
  const work=recordOwners.get(id);
  if(!work)return false;
  const family=work.closest('.family');
  if(!family)return false;
- if(select.value!==family.id||input.value||epoch.value!=='tutte'){
-  select.value=family.id;input.value='';epoch.value='tutte';render();
+ if((select.value!=='tutti'&&select.value!==family.id)||(composer.value!=='tutti'&&composer.value!==work.dataset.composer)||input.value||epoch.value!=='tutte'){
+  select.value=family.id;composer.value='tutti';input.value='';epoch.value='tutte';render();
  }
  const details=work.querySelector(':scope > details.guided');if(details)details.open=true;
  if(scroll)requestAnimationFrame(()=>document.getElementById(id)?.scrollIntoView({block:'start'}));
@@ -830,6 +866,7 @@ for(const button of document.querySelectorAll('[data-video]')){
  });
 }
 select.addEventListener('change',()=>{stopPlayer();render()});
+composer.addEventListener('change',()=>{stopPlayer();render()});
 input.addEventListener('input',render);
 epoch.addEventListener('change',render);
 document.documentElement.classList.add('audioteca-ready');
@@ -841,7 +878,7 @@ if(firstGuide)firstGuide.open=true;
 function handleHash(){
  const id=decodeURIComponent(location.hash.slice(1));
  if(recMap.has(id))openRecord(id);
- else if(familyMap.has(id)){select.value=id;input.value='';epoch.value='tutte';render();document.getElementById('audioteca').scrollIntoView()}
+ else if(familyMap.has(id)){select.value=id;composer.value='tutti';input.value='';epoch.value='tutte';render();document.getElementById('audioteca').scrollIntoView()}
  else if(id==='percorso-pianoforte'||id==='piano-geografie'||id==='piano-novecento'){select.value='pianoforte';render();document.getElementById('audioteca').scrollIntoView()}
  else if(id==='percorso-violino'){select.value='violino';render();document.getElementById('audioteca').scrollIntoView()}
  else if(id==='trova-ascolto'){document.getElementById('cerca-concerto').focus({preventScroll:true})}
