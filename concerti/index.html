@@ -151,6 +151,32 @@ body.player-dock-open{padding-bottom:6.2rem}
 .finder-results .finder-era{grid-column:1/-1;font:800 .94rem/1.35 var(--sans);margin:1rem 0 .12rem;padding:.55rem .65rem;border-left:4px solid #65846e;background:#e5ebe2;color:#3d5847}
 .finder-result small{font-variant-numeric:tabular-nums}
 @media(max-width:480px){.finder-results .finder-era{margin-top:.8rem}.listening-finder .chronology-intro{font-size:.88rem}}
+
+/* Percorsi reali, dal più antico al più recente, sempre per strumento. */
+#percorso-cronologico{scroll-margin-top:5.6rem;border-top:3px solid #537760;margin:1.5rem 0 2.5rem;padding:1.25rem 0}
+#percorso-cronologico .chronology-intro{font:.97rem/1.65 var(--sans);color:#584f59}
+.chronology-picker{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:1.2rem 0}
+.chronology-picker button{min-width:0;min-height:48px;padding:.6rem .7rem;text-align:left;background:#fffaf3;border:1px solid #c3b7b6;border-radius:4px;color:#433947;cursor:pointer;font:750 .88rem/1.4 var(--sans)}
+.chronology-picker button small{display:block;font:.72rem/1.4 var(--sans);color:#655d65;margin-top:.2rem}
+.chronology-picker button[aria-pressed="true"]{background:#426a56;color:#fff;border-color:#426a56}
+.chronology-picker button[aria-pressed="true"] small{color:#f0f4ef}
+.chronology-picker button:focus-visible{outline:3px solid #ab8650;outline-offset:2px}
+.chronology-current{background:#e9f0e7;border-left:4px solid #64846b;padding:.8rem 1rem;font:.89rem/1.55 var(--sans);color:#3b5345}
+.chronology-instrument[hidden]{display:none!important}
+.chronology-instrument>h3{font-size:1.75rem;margin:1.4rem 0 .3rem}
+.chronology-era{font:800 .95rem/1.4 var(--sans);margin:1.7rem 0 .65rem;padding:.6rem .8rem;background:#e2eae1;border-left:5px solid #64846b}
+#percorso-cronologico .pair{margin:.65rem 0 1rem}
+#percorso-cronologico .record{background:#fffaf4;gap:.25rem}
+#percorso-cronologico .record p{max-width:none}
+#percorso-cronologico .record .listen-q{border-left:4px solid #568267;background:#edf2e9;padding:.6rem .8rem}
+#percorso-cronologico .record .listen-during{border-left:3px solid #987c9a;padding:.5rem .8rem;background:#f3edf2}
+#percorso-cronologico .record .listen-source{font:.82rem/1.6 var(--sans);color:#625b61}
+#archivio-contesti{margin:1rem 0;border-top:1px solid #cdbfbf;padding:.5rem 0}
+#archivio-contesti>summary{cursor:pointer;padding:.65rem .2rem;min-height:44px;font:750 .9rem/1.5 var(--sans);color:#4c5e4e}
+#archivio-contesti>p{font:.86rem/1.55 var(--sans);color:#605861}
+#archivio-contesti>section{margin:1rem 0;padding:1rem;border:1px solid #e0d5d3}
+@media(max-width:850px){.chronology-picker{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.chronology-picker{grid-template-columns:repeat(2,minmax(0,1fr))}#percorso-cronologico .record{padding:1rem}}
 </style></head><body>
 <header class="hero" id="top"><div class="kicker">Musurgia Mundi · L'Atlante oltre i confini delle epoche</div><h1>Il concerto</h1><p>Uno, molti, tutti. La storia del dialogo fra il singolo strumento e l'orchestra, dal Barocco al Novecento, attraverso le opere e le esecuzioni che vale la pena conoscere.</p><small>Concerto grosso · Concerto per solista e orchestra · Sinfonia concertante · Una piccola audioteca ragionata</small></header>
 <nav class="main" aria-label="Navigazione principale"><div><a href="../">⌂ Home</a><a href="#storia">La storia</a><a class="audio" href="#audioteca">♪ Audioteca</a><a href="#trova-ascolto">⌕ Trova un ascolto</a><a href="#catalogo">Catalogo delle opere</a><a href="#criteri">Fonti e filologia</a></div></nav>
@@ -164,7 +190,16 @@ body.player-dock-open{padding-bottom:6.2rem}
 <p>Nel Romanticismo il virtuosismo non è soltanto uno spettacolo tecnico. Paganini, Mendelssohn, Chopin, Schumann, Liszt e Brahms affrontano domande molto diverse: quanto deve emergere il solista, quanto deve poter rispondere l'orchestra, quali gesti appartengono all'interpretazione e quali sono già nel testo? La stessa storia riguarda violoncello, corno, fagotto, arpa, contrabbasso e gli altri strumenti, ciascuno con una diversa trasformazione del proprio ruolo.</p>
 <div class="note"><strong>Due significati da non confondere:</strong> un concerto è anche un evento pubblico. Qui parliamo soprattutto del genere compositivo per uno o più solisti e orchestra, e scegliamo un repertorio guida, non una graduatoria definitiva.</div></section>
 <section id="audioteca"><div class="eyebrow">Ascolti selezionati e documentati</div><h2>L'audioteca: non il primo video che capita</h2>
-<p>Le prime tre registrazioni sono pubblicazioni ufficiali della <strong>Netherlands Bach Society</strong> per <i>All of Bach</i>, con interpreti e fonti identificati. Il lettore integrato viene preparato soltanto dopo un clic e <strong>non avvia automaticamente la musica</strong>: la sua effettiva compatibilità con ogni browser rimane da collaudare. Le altre registrazioni presenti nell'audioteca sono proposte, caso per caso, con video ufficiali oppure collegamenti esterni alle fonti e agli editori, senza fingere un accesso gratuito ai dischi commerciali.</p>
+<p>Fra gli ascolti introduttivi figurano tre pubblicazioni ufficiali della <strong>Netherlands Bach Society</strong> per <i>All of Bach</i>, con interpreti e fonti identificati. Il lettore integrato viene preparato soltanto dopo un clic e <strong>non avvia automaticamente la musica</strong>: la sua effettiva compatibilità con ogni browser rimane da collaudare. Le altre registrazioni presenti nell'audioteca sono proposte, caso per caso, con video ufficiali oppure collegamenti esterni alle fonti e agli editori, senza fingere un accesso gratuito ai dischi commerciali.</p>
+<section id="percorso-cronologico" aria-labelledby="cronologia-titolo">
+<div class="eyebrow">Audioteca · Strumento, epoca, composizione</div>
+<h2 id="cronologia-titolo">Esplora i concerti per strumento</h2>
+<p class="chronology-intro">Scegli lo strumento: le schede complete sono raccolte per epoca e ordinate secondo la data di composizione. Si attraversa l'evoluzione del concerto, senza dover passare per capitoli tematici. Quando un'opera ha avuto revisioni, la scheda distingue le diverse fasi; le epoche sono orientative, non compartimenti assoluti.</p>
+<div id="cronologia-strumenti" class="chronology-picker" role="group" aria-label="Scegli il percorso per strumento"></div>
+<p id="cronologia-stato" class="chronology-current" role="status" aria-live="polite">Seleziona uno strumento.</p>
+<div id="cronologia-schede"></div>
+<noscript><p>Per il raggruppamento automatico occorre JavaScript. Le schede originali sono comunque disponibili più avanti nella pagina.</p></noscript>
+</section>
 <div id="trova-ascolto" class="listening-finder" role="search" aria-labelledby="finder-heading">
 <div class="eyebrow">✦ Audioteca · Indice degli ascolti</div>
 <h3 id="finder-heading">Trova un ascolto</h3>
@@ -639,7 +674,10 @@ const fq=document.getElementById('finder-query'),fi=document.getElementById('fin
 const instrumentNames={introduzione:'Introduzione',violino:'Violino',pianoforte:'Pianoforte',violoncello:'Violoncello',viola:'Viola',flauto:'Flauto',clarinetto:'Clarinetto',oboe:'Oboe',fagotto:'Fagotto',corno:'Corno',tromba:'Tromba',trombone:'Trombone',contrabbasso:'Contrabbasso',arpa:'Arpa',chitarra:'Chitarra',sassofono:'Sassofono'};
 function getInstrument(card){
  const section=card.closest('section[id]');const id=section&&section.id;
- if(id==='audioteca')return'introduzione';
+ if(id==='audioteca'){
+   const introInstrument={'bach-bwv1041-intro':'violino','intro-mozart-clarinet':'clarinetto','intro-mozart-piano453':'pianoforte','intro-brahms-violin':'violino','intro-mendelssohn-violin':'violino','intro-weill-violin':'violino'};
+   return introInstrument[card.id]||'introduzione';
+  }
  if(id==='percorso-violino')return'violino';
  if(id==='percorso-pianoforte'||id==='piano-geografie'||id==='piano-novecento')return'pianoforte';
  if(id==='archi-gravi'||id==='archi-gravi-approfondimenti'){
@@ -668,12 +706,78 @@ const listeningEntries=[...document.querySelectorAll('article.record[id]')].map(
  const videoSource=externalLinks.find(link=>videoPagePattern.test(link.getAttribute('href')||''))||null;
  const kind=button?'video':videoSource?'video-esterno':'documento';
  const year=Number(card.dataset.anno)||9999;
- return{card,id:card.id,instrument,year,period:year<1750?'Barocco':year<1820?'Classicismo':year<1891?'Romanticismo':year<1915?'Tra Ottocento e Novecento':'Novecento',
+ return{card,id:card.id,instrument,year,period:year<1750?'Barocco':year<1800?'Settecento e Classicismo':year<1830?'Tra Classicismo e primo Romanticismo':year<1890?'Ottocento romantico':year<1919?'Tra Ottocento e Novecento':'Novecento',
  title:heading?heading.textContent.trim():'Ascolto',button,kind,firstSource,videoSource,
  search:normalize((heading?heading.textContent:'')+' '+card.textContent+' '+year+' '+(instrumentNames[instrument]||''))};
 }).filter(item=>item.instrument);
 const instrumentOrder=Object.keys(instrumentNames);
 listeningEntries.sort((a,b)=>instrumentOrder.indexOf(a.instrument)-instrumentOrder.indexOf(b.instrument)||a.year-b.year||a.title.localeCompare(b.title,'it'));
+
+/* Consultazione: le schede originali si spostano nel percorso scelto, senza copie.
+   I precedenti capitoli editoriali rimangono consultabili come approfondimenti. */
+const chronologyPicker=document.getElementById('cronologia-strumenti');
+const chronologyRoot=document.getElementById('cronologia-schede');
+const chronologyStatus=document.getElementById('cronologia-stato');
+const chronologyPanels=new Map(),chronologyButtons=new Map();
+const chronologyById=new Map(listeningEntries.map(x=>[x.id,x]));
+const groupNames=instrumentOrder.filter(x=>x!=='introduzione').concat('introduzione');
+let chronologySelection='violino';
+for(const instrument of groupNames){
+ const items=listeningEntries.filter(item=>item.instrument===instrument);
+ if(!items.length)continue;
+ const button=document.createElement('button');button.type='button';button.dataset.instrument=instrument;
+ button.setAttribute('aria-pressed','false');button.setAttribute('aria-controls','cronologia-'+instrument);
+ button.append(document.createTextNode(instrumentNames[instrument]));
+ const small=document.createElement('small');small.textContent=items.length+' '+(items.length===1?'scheda':'schede')+' · '+items[0].year+'–'+items[items.length-1].year;
+ button.appendChild(small);
+ button.addEventListener('click',()=>{fi.value=instrument;fullFinder=false;finderRender();document.getElementById('percorso-cronologico').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
+ chronologyPicker.appendChild(button);chronologyButtons.set(instrument,button);
+ const section=document.createElement('section');section.id='cronologia-'+instrument;section.className='chronology-instrument';section.hidden=true;
+ const heading=document.createElement('h3');heading.textContent=instrumentNames[instrument];section.appendChild(heading);
+ let lastEra='',pair=null;
+ for(const item of items){
+  if(lastEra!==item.period){const label=document.createElement('h4');label.className='chronology-era';label.textContent=item.period;section.appendChild(label);pair=null;lastEra=item.period}
+  if(!pair||pair.children.length===2){pair=document.createElement('div');pair.className='pair';section.appendChild(pair)}
+  pair.appendChild(item.card);
+ }
+ chronologyRoot.appendChild(section);chronologyPanels.set(instrument,section);
+}
+/* Salvaguardia editoriale: gli antichi contenitori diventano una sola sezione
+   secondaria facoltativa, senza mantenere un itinerario concorrente. */
+const contextArchive=document.createElement('details');contextArchive.id='archivio-contesti';
+const contextSummary=document.createElement('summary');
+contextSummary.textContent='Approfondimenti storici e interpretativi · Materiali di contesto';
+contextArchive.appendChild(contextSummary);
+const contextHint=document.createElement('p');
+contextHint.textContent='Appunti e confronti costruiti durante la redazione dell’audioteca. Le schede di ascolto si consultano invece nei percorsi cronologici qui sopra.';
+contextArchive.appendChild(contextHint);
+for(const id of ['beethoven-concerto','percorso-violino','percorso-pianoforte','piano-geografie','piano-novecento','archi-gravi','archi-gravi-approfondimenti','percorso-fiati','percorso-ottoni','percorso-altri-strumenti']){
+ const source=document.getElementById(id);if(source)contextArchive.appendChild(source);
+}
+chronologyRoot.after(contextArchive);
+function chooseChronology(instrument){
+ if(!chronologyPanels.has(instrument))return;
+ chronologySelection=instrument;
+ for(const [key,section] of chronologyPanels)section.hidden=key!==instrument;
+ for(const [key,button] of chronologyButtons)button.setAttribute('aria-pressed',String(key===instrument));
+ const items=listeningEntries.filter(item=>item.instrument===instrument);
+ chronologyStatus.textContent=instrumentNames[instrument]+' · '+items.length+' schede ordinate dal '+items[0].year+' al '+items[items.length-1].year+'. Seleziona un titolo oppure scorri gli ascolti per epoca.';
+}
+const chronologyAliases={'percorso-violino':'violino','percorso-pianoforte':'pianoforte','piano-geografie':'pianoforte','piano-novecento':'pianoforte','archi-gravi':'violoncello','archi-gravi-approfondimenti':'violoncello','percorso-fiati':'flauto','percorso-ottoni':'corno','percorso-altri-strumenti':'contrabbasso'};
+function chronHash(){
+ let id='';try{id=decodeURIComponent(window.location.hash.slice(1))}catch{return}
+ const entry=chronologyById.get(id);
+ if(entry){
+  chooseChronology(entry.instrument);
+  window.requestAnimationFrame(()=>entry.card.scrollIntoView({block:'start'}));
+ }else if(chronologyAliases[id]){
+  chooseChronology(chronologyAliases[id]);
+  contextArchive.open=true;
+  window.requestAnimationFrame(()=>{const node=document.getElementById(id);if(node)node.scrollIntoView({block:'start'})});
+ }
+}
+chooseChronology(chronologySelection);
+
 /* Una sola voce per filmato: i pulsanti che saltano al secondo o terzo movimento
    non devono moltiplicare i conteggi e le verifiche. */
 const checkVideos=new Map();
@@ -690,7 +794,7 @@ function prepareNextUntested(){
   const id=ids[(current+step+ids.length)%ids.length];
   if(id===activeVideoId||readAudit(id))continue;
   const trigger=videoButtons.find(b=>b.dataset.video===id);
-  if(trigger){checkMessage.textContent='';trigger.click();return}
+  if(trigger){const e=listeningEntries.find(item=>item.button&&item.button.dataset.video===id);if(e)chooseChronology(e.instrument);checkMessage.textContent='';trigger.click();return}
  }
  if(ids.some(id=>!readAudit(id))&&activeVideoId){
   playerStatus.textContent='È rimasto soltanto il video aperto da provare: premi Play e registra l’esito.';
@@ -763,6 +867,7 @@ function finderRender(){
  updateCheckSummary();
  const query=normalize(fq.value.trim()),group=fi.value,kind=fk.value;
  const check=fv.value;
+ if(group!=='tutti')chooseChronology(group);
  const matches=listeningEntries.filter(item=>{
   if((group!=='tutti'&&item.instrument!==group)||(kind!=='tutti'&&item.kind!==kind)||(query&&!item.search.includes(query)))return false;
   if(check==='tutti')return true;
@@ -803,11 +908,12 @@ function finderRender(){
  const availability=item.kind==='video'?(apiError?'⚠ Errore YouTube nel lettore (cod. '+apiError+')':test?(test.status==='ok'?'✓ Ascoltato su questo dispositivo':'⚠ Problema in questo browser'):'Video predisposto · da collaudare'):item.kind==='video-esterno'?'Video su fonte esterna':'Discografia / documento · audio non garantito';
  label.textContent=item.year+' · '+availability;
   const link=document.createElement('a');link.href='#'+item.id;link.textContent=item.title;
+  link.addEventListener('click',()=>chooseChronology(item.instrument));
   element.append(label,link);
   if(item.button){
    const prepare=document.createElement('button');prepare.type='button';prepare.textContent='▶ Prepara video qui';
    prepare.setAttribute('aria-label','Prepara il video di '+item.title+', senza autoplay');
-   prepare.addEventListener('click',()=>{item.button.click()});
+   prepare.addEventListener('click',()=>{chooseChronology(item.instrument);item.button.click()});
    element.appendChild(prepare);
   }else{
    const destination=item.videoSource||item.firstSource;
@@ -830,6 +936,8 @@ function finderRender(){
 fm.addEventListener('click',()=>{fullFinder=true;finderRender()});
 freset.addEventListener('click',()=>{fq.value='';fi.value='tutti';fk.value='tutti';fv.value='tutti';fullFinder=false;finderRender();fq.focus()});
 finderRender();
+window.addEventListener('hashchange',chronHash);
+chronHash();
 
 const input=document.getElementById('search'),era=document.getElementById('era'),status=document.getElementById('status'),families=[...document.querySelectorAll('.family')];
 function update(){const q=normalize(input.value.trim()),epoch=era.value;let total=0,count=0;families.forEach(f=>{let match=0;f.querySelectorAll('.work').forEach(w=>{const ok=(!q||normalize(f.dataset.label+' '+w.dataset.search).includes(q))&&(epoch==='tutte'||epoch===w.dataset.era);w.hidden=!ok;if(ok){total++;match++}});f.hidden=match===0;if(match)count++});status.textContent=total+' opere in '+count+' famiglie strumentali.'}input.addEventListener('input',update);era.addEventListener('change',update);update();
