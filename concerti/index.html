@@ -572,7 +572,7 @@ function addGuide(work,card){
  let details=work.querySelector(':scope > details.guided');
  if(!details){
   details=document.createElement('details');details.className='guided';
-  const summary=document.createElement('summary');summary.textContent='✦ Apri la scheda d’ascolto';
+  const summary=document.createElement('summary');summary.textContent='✦ Scheda d’ascolto · Interpreti, guida e registrazione';
   details.appendChild(summary);work.appendChild(details);
   work.classList.add('has-guide');
  }
@@ -615,6 +615,13 @@ for(const [id,[familyId,fragment]] of Object.entries(recordIntro)){
  if(!card||!works)continue;
  const match=works.find(x=>normalize(x.querySelector('h4')?.textContent).includes(normalize(fragment)));
  if(match)addGuide(match,card);
+}
+// Completa le date delle opere alle quali è stato associato un ascolto introduttivo.
+for(const family of families){
+ for(const work of groupedItems.get(family.id)||[]){
+  const guidedYear=work.querySelector('article.record[data-anno]')?.dataset.anno;
+  if(guidedYear&&!work.dataset.anno)work.dataset.anno=guidedYear;
+ }
 }
 for(const card of records){
  if(recordOwners.has(card.id))continue;
@@ -697,7 +704,8 @@ function render(){
    }
   }
  }
- status.textContent=shown+' '+(shown===1?'opera':'opere')+' · '+(familyMap.get(selected)?.dataset.label||'');
+ const guided=entries.filter(e=>!e.work.hidden&&e.work.classList.contains('has-guide')).length;
+ status.textContent=shown+' '+(shown===1?'opera':'opere')+' · '+guided+' '+(guided===1?'scheda d’ascolto guidato':'schede d’ascolto guidato')+' · '+(familyMap.get(selected)?.dataset.label||'');
 }
 function openRecord(id,scroll=true){
  const work=recordOwners.get(id);
@@ -744,6 +752,10 @@ input.addEventListener('input',render);
 epoch.addEventListener('change',render);
 document.documentElement.classList.add('audioteca-ready');
 render();
+// La prima scheda è visibile all'ingresso: l'audioteca non deve sembrare
+// un repertorio privo degli ascolti già selezionati.
+const firstGuide=familyMap.get(select.value)?.querySelector('.work:not([hidden]) > details.guided');
+if(firstGuide)firstGuide.open=true;
 function handleHash(){
  const id=decodeURIComponent(location.hash.slice(1));
  if(recMap.has(id))openRecord(id);
