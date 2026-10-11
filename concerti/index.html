@@ -119,6 +119,10 @@ body.player-dock-open{padding-bottom:6.2rem}
 #player .player-audit-actions #auditNo{background:#3c3040;color:#f5ecdf}
 #player #auditResult{color:#f8e6c0;min-height:1.2rem}
 @media(max-width:480px){#player .player-audit-actions button{flex:1 1 100%}}
+
+/* Diagnostica in tempo reale tramite API YouTube caricata solo dopo un clic */
+#player .player-error{background:#f1d9cd;color:#582826;border:2px solid #ad5b4b;padding:.8rem .9rem;font:750 .88rem/1.5 var(--sans);margin:.8rem 0}
+#player .player-error[hidden]{display:none}
 </style></head><body>
 <header class="hero" id="top"><div class="kicker">Musurgia Mundi · L'Atlante oltre i confini delle epoche</div><h1>Il concerto</h1><p>Uno, molti, tutti. La storia del dialogo fra il singolo strumento e l'orchestra, dal Barocco al Novecento, attraverso le opere e le esecuzioni che vale la pena conoscere.</p><small>Concerto grosso · Concerto per solista e orchestra · Sinfonia concertante · Una piccola audioteca ragionata</small></header>
 <nav class="main" aria-label="Navigazione principale"><div><a href="../">⌂ Home</a><a href="#storia">La storia</a><a class="audio" href="#trova-ascolto">⌕ Trova un ascolto</a><a href="#audioteca">♪ Audioteca</a><a href="#percorso-pianoforte">Pianoforte · ascolti</a><a href="#piano-geografie">Pianoforte · identità</a><a href="#piano-novecento">Pianoforte · Novecento</a><a href="#pianoforte-romantico">Pianoforte · Romanticismo</a><a href="#percorso-violino">Violino · ascolti</a><a href="#archi-gravi">Viola e violoncello · ascolti</a><a href="#beethoven-concerto">✦ Beethoven op. 61</a><a href="#catalogo">Strumenti</a><a href="#criteri">Qualità e filologia</a><a href="../barocco/#vivaldi">Barocco</a><a href="../classicismo/#generi">Classicismo</a><a href="../romanticismo/#virtuosismo">Romanticismo</a></div></nav>
@@ -148,7 +152,7 @@ body.player-dock-open{padding-bottom:6.2rem}
 <p class="finder-hint"><strong>Legenda:</strong> «Prepara video» carica il lettore senza avvio automatico; «Apri video» conduce all'emittente esterna; «Apri fonte» può condurre a una discografia o documento, <em>non necessariamente a un audio</em>. Le etichette ✓ e ⚠ segnalano soltanto le prove eseguite in questo browser negli ultimi 30 giorni, non la disponibilità universale. Le opere prive di scheda sono nel <a href="#catalogo">catalogo completo</a>.</p>
 <noscript><p>La ricerca rapida richiede JavaScript. Tutte le schede restano comunque disponibili scorrendo la pagina e nel catalogo.</p></noscript>
 </div>
-<div id="player" hidden role="region" aria-label="Riproduttore condiviso dell'audioteca"><div id="playerTop"><h3 id="ptitle">Ascolto</h3><button id="stop" type="button" aria-label="Ferma il video e torna alla scheda">■ Ferma e chiudi</button></div><div class="video" id="vspace"></div><p id="playerstatus" role="status" aria-live="polite">Video pronto: premi Play nel riproduttore. La riproduzione non parte automaticamente.</p><p class="player-alternatives"><strong>Il video non si apre?</strong> <a id="pwatch" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">▶ Apri questo video su YouTube ↗</a><a id="psource" target="_blank" rel="noopener noreferrer">Fonte ufficiale e crediti ↗</a></p><p class="player-help">Il proprietario può vietare l'incorporamento: il collegamento a YouTube rimane disponibile, ma la riproduzione può dipendere dal dispositivo o dal paese. «Ferma e chiudi» interrompe il video e lo rimuove dalla pagina.</p><div class="player-audit" aria-labelledby="player-audit-heading"><strong id="player-audit-heading">Prova l'ascolto su questo dispositivo</strong><p>Premi Play nel video, verifica che si senta e poi seleziona il risultato. La verifica viene salvata solo in questo browser, non inviata a Musurgia Mundi.</p><div class="player-audit-actions"><button type="button" id="auditOk">✓ Video e audio funzionano</button><button type="button" id="auditNo">⚠ Non riesco ad ascoltare</button></div><p id="auditResult" role="status" aria-live="polite">Nessuna verifica ancora eseguita su questo dispositivo.</p></div></div>
+<div id="player" hidden role="region" aria-label="Riproduttore condiviso dell'audioteca"><div id="playerTop"><h3 id="ptitle">Ascolto</h3><button id="stop" type="button" aria-label="Ferma il video e torna alla scheda">■ Ferma e chiudi</button></div><div class="video" id="vspace"></div><p id="playerstatus" role="status" aria-live="polite">Video pronto: premi Play nel riproduttore. La riproduzione non parte automaticamente.</p><p id="playerError" class="player-error" role="alert" hidden></p><p class="player-alternatives"><strong>Il video non si apre?</strong> <a id="pwatch" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">▶ Apri questo video su YouTube ↗</a><a id="psource" target="_blank" rel="noopener noreferrer">Fonte ufficiale e crediti ↗</a></p><p class="player-help">Il proprietario può vietare l'incorporamento: il collegamento a YouTube rimane disponibile, ma la riproduzione può dipendere dal dispositivo o dal paese. «Ferma e chiudi» interrompe il video e lo rimuove dalla pagina.</p><div class="player-audit" aria-labelledby="player-audit-heading"><strong id="player-audit-heading">Prova l'ascolto su questo dispositivo</strong><p>Premi Play nel video, verifica che si senta e poi seleziona il risultato. La verifica viene salvata solo in questo browser, non inviata a Musurgia Mundi.</p><div class="player-audit-actions"><button type="button" id="auditOk">✓ Video e audio funzionano</button><button type="button" id="auditNo">⚠ Non riesco ad ascoltare</button></div><p id="auditResult" role="status" aria-live="polite">Nessuna verifica ancora eseguita su questo dispositivo.</p></div></div>
 <div id="playerDock" hidden role="region" aria-label="Controlli rapidi del video aperto"><div class="dock-info"><span class="dock-label">Video preparato</span><strong id="docktitle">Ascolto</strong></div><div class="dock-actions"><button id="dockReturn" type="button" aria-label="Torna al video nella pagina">↥ Video</button><button id="dockStop" type="button" aria-label="Ferma e chiudi il video">■ Ferma</button></div></div>
 <div class="pair"><article class="record" id="bach-bwv1041-intro"><span class="lab">VIDEO UFFICIALE · PLAYER DA COLLAUDARE</span><h3>Bach · Concerto per violino in la minore BWV 1041</h3><p class="credits">Shunske Sato, Netherlands Bach Society · 2019</p><p>Seguire l'alternanza fra solo e ritornelli. Violino e continuo storicamente informati.</p><div class="actions"><button type="button" data-video="VSwLeKWKtis" data-title="Bach · Concerto per violino in la minore BWV 1041" data-source="https://www.bachvereniging.nl/en/bwv/bwv-1041">▶ Ascolta nella pagina</button><a href="https://www.bachvereniging.nl/en/bwv/bwv-1041" target="_blank" rel="noopener noreferrer">Crediti e fonte ↗</a></div></article><article class="record" id="bach-bwv1047-intro"><span class="lab">VIDEO UFFICIALE · PLAYER DA COLLAUDARE</span><h3>Bach · Brandeburghese n. 2 BWV 1047</h3><p class="credits">Neil Brough, Emma Black, Pedro Castro, Shunske Sato · Netherlands Bach Society</p><p>Quattro solisti e ripieno: la tromba naturale nel concertino.</p><div class="actions"><button type="button" data-video="t8rYzpC-d44" data-title="Bach · Brandeburghese n. 2 BWV 1047" data-source="https://www.bachvereniging.nl/en/bwv/bwv-1047">▶ Ascolta nella pagina</button><a href="https://www.bachvereniging.nl/en/bwv/bwv-1047" target="_blank" rel="noopener noreferrer">Crediti e fonte ↗</a></div></article><article class="record" id="bach-bwv1050a-intro"><span class="lab">VIDEO UFFICIALE · PLAYER DA COLLAUDARE</span><h3>Bach · Brandeburghese n. 5 BWV 1050a</h3><p class="credits">Diego Ares, Marten Root, Shunske Sato · Netherlands Bach Society</p><p>L'entrata in primo piano del clavicembalo: è la versione precedente BWV 1050a.</p><div class="actions"><button type="button" data-video="fcht5_N-ycE" data-title="Bach · Brandeburghese n. 5 BWV 1050a" data-source="https://www.bachvereniging.nl/en/bwv/bwv-1050a">▶ Ascolta nella pagina</button><a href="https://www.bachvereniging.nl/en/bwv/bwv-1050a" target="_blank" rel="noopener noreferrer">Crediti e fonte ↗</a></div></article></div><h3 style="margin-top:2rem">Altre esecuzioni da ascoltare alle fonti originali</h3><p>Un archivio ufficiale o un'edizione discografica di riferimento non dà automaticamente il diritto di copiare e incorporare il file: prima viene la qualità e la certezza della fonte, poi la disponibilità tecnica.</p><div class="pair"><article class="record" id="intro-mozart-clarinet"><span class="lab neutral">VIDEO ESTERNO · WDR · RIPRODUZIONE PRESSO LA FONTE</span><h3>Mozart · Concerto per clarinetto K 622</h3><p class="credits">Jörg Widmann, WDR Sinfonieorchester · 2021</p><p>Video di emittente pubblica. Non classificarlo come esecuzione su clarinetto di bassetto senza verifica.</p><div class="actions"><a href="https://www1.wdr.de/orchester-und-chor/sinfonieorchester/videos/video-wolfgang-amadeus-mozart---klarinettenkonzert-a-dur-kv---100.amp" target="_blank" rel="noopener noreferrer">Vai alla fonte ufficiale ↗</a></div></article><article class="record" id="intro-mozart-piano453"><span class="lab neutral">VIDEO ESTERNO · HR · RIPRODUZIONE PRESSO LA FONTE</span><h3>Mozart · Concerto per pianoforte K 453</h3><p class="credits">Martin Helmchen, hr-Sinfonieorchester, Andrew Manze · 2021</p><p>Ascolto moderno documentato. In futuro confronto con il fortepiano.</p><div class="actions"><a href="https://www.hr-sinfonieorchester.de/media/videos/konzert-videos-20-21/mozart-klavierkonzert-g-dur-kv-453%2Cvideo-mozart-klavierkonzert-453-100.html" target="_blank" rel="noopener noreferrer">Vai alla fonte ufficiale ↗</a></div></article><article class="record" id="intro-brahms-violin"><span class="lab neutral">VIDEO ESTERNO · WDR · RIPRODUZIONE PRESSO LA FONTE</span><h3>Brahms · Concerto per violino op. 77</h3><p class="credits">Julia Fischer, WDR Sinfonieorchester, Cristian Măcelaru · 2025</p><p>Esecuzione moderna da fonte ufficiale, non presentata come HIP.</p><div class="actions"><a href="https://www1.wdr.de/orchester-und-chor/sinfonieorchester/videos/julia-fischer-brahms-violinkonzert-clip-brahms--violinkonzert--julia-fischer--wdr-sinfonieorchester--cristian-mcelaru--wdr-100.amp" target="_blank" rel="noopener noreferrer">Vai alla fonte ufficiale ↗</a></div></article><article class="record" id="intro-mendelssohn-violin"><span class="lab neutral">DISCOGRAFIA · REGISTRAZIONE DOCUMENTATA</span><h3>Mendelssohn · Concerto per violino op. 64</h3><p class="credits">Isabelle Faust, Freiburger Barockorchester, Pablo Heras-Casado · Harmonia Mundi 2017</p><p>Riferimento discografico di orientamento storicamente informato, non audio incorporabile verificato.</p><div class="actions"><a href="https://www.harmoniamundi.com/en/albums/violin-concerto-2/" target="_blank" rel="noopener noreferrer">Vai alla fonte ufficiale ↗</a></div></article><article class="record" id="intro-weill-violin"><span class="lab neutral">FONTE MUSICOLOGICA · NON UN AUDIO</span><h3>Kurt Weill · Concerto per violino op. 12</h3><p class="credits">Kurt Weill Foundation · edizione critica, organico e discografia</p><p>Fonte documentaria, non traccia audio.</p><div class="actions"><a href="https://www.kwf.org/works/ww-concerto-for-violin-and-wind-orchestra-op-12-1924/" target="_blank" rel="noopener noreferrer">Vai alla fonte ufficiale ↗</a></div></article><article class="record" id="intro-anderson-typewriter"><span class="lab neutral">FONTE STORICA · NON UN AUDIO</span><h3>Leroy Anderson · The Typewriter</h3><p class="credits">Archivio ufficiale · opera del 1950, prima registrazione 1953</p><p>Fonte originale e rimandi all'ascolto; non un concerto formale.</p><div class="actions"><a href="https://www.leroyanderson.com/news-about-leroy-anderson.php" target="_blank" rel="noopener noreferrer">Vai alla fonte ufficiale ↗</a></div></article></div></section>
 <section class="focus-b" id="beethoven-concerto" aria-labelledby="beethoven-title">
@@ -393,7 +397,58 @@ body.player-dock-open{padding-bottom:6.2rem}
 <p>Fonti di riferimento: <a href="https://www.treccani.it/enciclopedia/concerto/">Treccani · concerto</a>; <a href="https://www.bachvereniging.nl/en/about-allofbach">Netherlands Bach Society</a>; <a href="https://imslp.org/wiki/List_of_works_by_Felix_Mendelssohn">IMSLP · Catalogo Mendelssohn</a>; <a href="https://www.kwf.org/works/ww-concerto-for-violin-and-wind-orchestra-op-12-1924/">Kurt Weill Foundation</a>; <a href="https://www.leroyanderson.com/news-about-leroy-anderson.php">Archivio Leroy Anderson</a>.</p></section>
 </main><footer>Musurgia Mundi · Pagina trasversale ideata per i percorsi di Alessandro Zilli<br><a href="../barocco/#vivaldi">Barocco</a> · <a href="../classicismo/#generi">Classicismo</a> · <a href="../romanticismo/#virtuosismo">Romanticismo</a> · <a href="../">Home</a></footer>
 <script>
-(()=>{const player=document.getElementById('player'),space=document.getElementById('vspace'),title=document.getElementById('ptitle'),source=document.getElementById('psource'),watch=document.getElementById('pwatch'),playerStatus=document.getElementById('playerstatus'),dock=document.getElementById('playerDock'),dockTitle=document.getElementById('docktitle'),videoButtons=[...document.querySelectorAll('[data-video]')],auditResult=document.getElementById('auditResult');let lastTrigger=null,activeVideoId=null;
+(()=>{const player=document.getElementById('player'),space=document.getElementById('vspace'),title=document.getElementById('ptitle'),source=document.getElementById('psource'),watch=document.getElementById('pwatch'),playerStatus=document.getElementById('playerstatus'),playerError=document.getElementById('playerError'),dock=document.getElementById('playerDock'),dockTitle=document.getElementById('docktitle'),videoButtons=[...document.querySelectorAll('[data-video]')],auditResult=document.getElementById('auditResult');let lastTrigger=null,activeVideoId=null,apiPlayer=null,apiRequested=false,videoGeneration=0;
+const embedErrors=Object.create(null);
+function errorDescription(code){
+ switch(code){
+  case 100:return 'Il video risulta rimosso oppure privato.';
+  case 101:case 150:return 'Il proprietario impedisce la riproduzione del video incorporato.';
+  case 153:return 'YouTube non riceve l’identificazione HTTP Referer richiesta per l’incorporamento.';
+  case 2:return 'YouTube segnala parametri video non validi.';
+  case 5:return 'Questo filmato non è riproducibile dal player HTML5 nel browser corrente.';
+  default:return 'YouTube ha segnalato un problema di riproduzione (codice '+code+').';
+ }
+}
+function reportYoutubeError(code,id){
+ const message=errorDescription(code);
+ embedErrors[id]=code;
+ playerError.textContent=message+' Prova «Apri questo video su YouTube» e, se necessario, consulta la fonte ufficiale.';
+ playerError.hidden=false;
+ playerStatus.textContent='Il video incorporato ha segnalato un problema. L’alternativa diretta è disponibile.';
+ finderRender();
+}
+function attachYoutubeMonitor(frame,id,generation){
+ if(!window.YT||typeof window.YT.Player!=='function')return;
+ try{
+  apiPlayer=new window.YT.Player(frame,{events:{
+   onError:e=>{
+    if(player.hidden||activeVideoId!==id||videoGeneration!==generation)return;
+    const code=Number(e.data);
+    if(Number.isFinite(code))reportYoutubeError(code,id);
+   },
+   onStateChange:e=>{
+    if(player.hidden||activeVideoId!==id||videoGeneration!==generation)return;
+    if(e.data===1){playerError.hidden=true;playerStatus.textContent='YouTube segnala che la riproduzione è iniziata. Verifica che si senta e, se vuoi, registra l’esito qui sotto.';delete embedErrors[id];finderRender();}
+   }
+  }});
+ }catch{ /* Il lettore semplice e i collegamenti diretti continuano a funzionare. */ }
+}
+function ensureYoutubeMonitor(frame,id,generation){
+ if(window.YT&&typeof window.YT.Player==='function'){attachYoutubeMonitor(frame,id,generation);return}
+ if(apiRequested)return;
+ apiRequested=true;
+ const priorReady=window.onYouTubeIframeAPIReady;
+ window.onYouTubeIframeAPIReady=function(){
+  if(typeof priorReady==='function')priorReady();
+  if(player.hidden)return;
+  const iframe=space.querySelector('iframe');
+  if(iframe&&activeVideoId)attachYoutubeMonitor(iframe,activeVideoId,videoGeneration);
+ };
+ const script=document.createElement('script');script.async=true;script.src='https://www.youtube.com/iframe_api';
+ script.addEventListener('error',()=>{apiRequested=false; /* Non confondere un API non caricata con un video non riproducibile. */ });
+ document.head.appendChild(script);
+}
+
 const auditKey='musurgia-concerti-video-test-v1',auditWindow=30*24*60*60*1000;
 const auditMarks=(()=>{try{const parsed=JSON.parse(window.localStorage.getItem(auditKey)||'{}');return parsed&&typeof parsed==='object'&&!Array.isArray(parsed)?parsed:{}}catch{return {}}})();
 function readAudit(id){
@@ -420,7 +475,9 @@ function syncDock(){
  dock.hidden=inView;document.body.classList.toggle('player-dock-open',!inView);
 }
 function stop(restoreFocus=false){
- space.replaceChildren();player.hidden=true;dock.hidden=true;document.body.classList.remove('player-dock-open');
+ videoGeneration++;
+ if(apiPlayer&&typeof apiPlayer.destroy==='function'){try{apiPlayer.destroy()}catch{}}apiPlayer=null;
+ space.replaceChildren();player.hidden=true;dock.hidden=true;playerError.hidden=true;document.body.classList.remove('player-dock-open');
  videoButtons.forEach(b=>b.setAttribute('aria-expanded','false'));
  if(restoreFocus&&lastTrigger&&lastTrigger.isConnected)lastTrigger.focus({preventScroll:true});
  lastTrigger=null;activeVideoId=null;
@@ -434,20 +491,21 @@ videoButtons.forEach(b=>{b.setAttribute('aria-controls','player');b.setAttribute
  const id=b.dataset.video;if(!/^[A-Za-z0-9_-]{11}$/.test(id))return;
  const start=/^\d{1,5}$/.test(b.dataset.start||'')?Number(b.dataset.start):0;
  stop();lastTrigger=b;activeVideoId=id;b.setAttribute('aria-expanded','true');
+ delete embedErrors[id];playerError.hidden=true;
  title.textContent=b.dataset.title||'Ascolto';dockTitle.textContent=title.textContent;
  auditResult.textContent=auditText(id);
  source.href=b.dataset.source||('https://www.youtube.com/watch?v='+id);
  watch.href='https://www.youtube.com/watch?v='+encodeURIComponent(id)+(start?'&t='+start+'s':'');
  const card=b.closest('.record');if(card)card.appendChild(player);
  const frame=document.createElement('iframe');
- frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0&playsinline=1&controls=1'+(start?'&start='+start:'');
+ frame.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0&playsinline=1&controls=1&enablejsapi=1'+(window.location&&/^https?:$/.test(window.location.protocol)?'&origin='+encodeURIComponent(window.location.origin):'')+(start?'&start='+start:'');
  frame.title=b.dataset.title||'Registrazione ufficiale';frame.allow='encrypted-media; picture-in-picture; fullscreen';
  frame.allowFullscreen=true;frame.loading='eager';frame.referrerPolicy='strict-origin-when-cross-origin';
  space.appendChild(frame);player.hidden=false;
  const mins=Math.floor(start/60),secs=String(start%60).padStart(2,'0');
  playerStatus.textContent=start?'Video preparato dal minuto '+mins+':'+secs+'. Premi Play nel riproduttore.':'Video preparato. Premi Play nel riproduttore. Nessun avvio automatico.';
  player.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
- syncDock();
+ syncDock();ensureYoutubeMonitor(frame,id,videoGeneration);finderRender();
 })});
 
 const normalize=x=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -498,7 +556,8 @@ function finderRender(){
  for(const item of results){
   const element=document.createElement('article');element.className='finder-result';
   const label=document.createElement('small');const test=item.button?readAudit(item.button.dataset.video):null;
- const availability=item.kind==='video'?(test?(test.status==='ok'?'✓ Ascoltato su questo dispositivo':'⚠ Problema in questo browser'):'Video predisposto · da collaudare'):item.kind==='video-esterno'?'Video su fonte esterna':'Discografia / documento · audio non garantito';
+ const apiError=item.button?embedErrors[item.button.dataset.video]:null;
+ const availability=item.kind==='video'?(apiError?'⚠ Errore YouTube nel lettore (cod. '+apiError+')':test?(test.status==='ok'?'✓ Ascoltato su questo dispositivo':'⚠ Problema in questo browser'):'Video predisposto · da collaudare'):item.kind==='video-esterno'?'Video su fonte esterna':'Discografia / documento · audio non garantito';
  label.textContent=(instrumentNames[item.instrument]||item.instrument)+' · '+availability;
   const link=document.createElement('a');link.href='#'+item.id;link.textContent=item.title;
   element.append(label,link);
