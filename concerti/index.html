@@ -876,7 +876,27 @@ for(const e of allItems){
  const name=e.work.dataset.composerName;
  if(name&&!composerNames.has(e.work.dataset.composer))composerNames.set(e.work.dataset.composer,name);
 }
-const composerDisplayName=name=>({'Giuseppe Torelli':'Torelli, Giuseppe','Giuseppe Tartini':'Tartini, Giuseppe'}[name]||name);
+// Normalizza i nomi composti per il menu senza modificare titoli o opere.
+const composerSurnameLabels={
+ 'Alessandro Marcello':'Marcello, Alessandro',
+ 'Bohuslav Martinů':'Martinů, Bohuslav',
+ 'C. P. E. Bach':'Bach, C. P. E.',
+ 'Carl Stamitz':'Stamitz, Carl',
+ 'Clara Schumann':'Schumann, Clara',
+ 'Ferdinand David':'David, Ferdinand',
+ 'Francesco Maria Veracini':'Veracini, Francesco Maria',
+ 'Giuseppe Tartini':'Tartini, Giuseppe',
+ 'Giuseppe Torelli':'Torelli, Giuseppe',
+ 'Kurt Weill':'Weill, Kurt',
+ 'Lars-Erik Larsson':'Larsson, Lars-Erik',
+ 'Leroy Anderson':'Anderson, Leroy',
+ 'Nino Rota':'Rota, Nino',
+ 'Pietro Antonio Locatelli':'Locatelli, Pietro Antonio',
+ 'Richard Strauss':'Strauss, Richard',
+ 'Tomaso Albinoni':'Albinoni, Tomaso',
+ 'de Falla':'Falla, Manuel de'
+};
+const composerDisplayName=name=>composerSurnameLabels[name]||name;
 for(const [value,label] of [...composerNames].sort((a,b)=>composerDisplayName(a[1]).localeCompare(composerDisplayName(b[1]),'it'))){
  const opt=document.createElement('option');opt.value=value;opt.textContent=composerDisplayName(label);composer.appendChild(opt);
 }
