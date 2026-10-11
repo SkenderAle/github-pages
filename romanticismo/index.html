@@ -1,106 +1,340 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Il percorso sul Romanticismo musicale è in preparazione.">
-  <title>Romanticismo musicale · Lavori in corso</title>
-  <style>
-    :root{
-      --paper:#f4efe5;
-      --ink:#241d18;
-      --muted:#6e6257;
-      --line:#cdbfa9;
-      --gold:#b38a4d;
-      --deep:#1e1a17;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%}
-    body{
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      padding:1.4rem;
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 18% 20%,rgba(179,138,77,.13),transparent 18rem),
-        radial-gradient(circle at 82% 78%,rgba(80,70,60,.08),transparent 20rem),
-        var(--paper);
-      font-family:Georgia,"Times New Roman",serif;
-    }
-    main{
-      width:min(760px,100%);
-      padding:clamp(2rem,6vw,4.5rem);
-      text-align:center;
-      background:rgba(255,252,246,.82);
-      border:1px solid var(--line);
-      box-shadow:0 20px 55px rgba(42,31,23,.10);
-    }
-    .eyebrow{
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      font-size:.72rem;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-weight:900;
-      color:#795b32;
-    }
-    h1{
-      margin:.45rem 0 .6rem;
-      font-size:clamp(2.5rem,8vw,5.6rem);
-      line-height:.95;
-      letter-spacing:-.045em;
-    }
-    .work{
-      display:inline-block;
-      margin:1.1rem 0 1rem;
-      padding:.55rem .8rem;
-      border:1px solid var(--gold);
-      color:#5d4529;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      font-weight:900;
-      font-size:.82rem;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    p{
-      max-width:560px;
-      margin:.4rem auto 1.45rem;
-      color:var(--muted);
-      font-size:1.08rem;
-      line-height:1.65;
-    }
-    a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:.75rem 1rem;
-      border-radius:999px;
-      background:var(--deep);
-      color:#fff8ed;
-      text-decoration:none;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      font-weight:800;
-      font-size:.82rem;
-    }
-    a:hover{background:#3b3028}
-    footer{
-      margin-top:2rem;
-      color:#8b7d70;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      font-size:.72rem;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Alessandro Zilli">
+<meta name="description" content="L'irrazionale: pathos, sentimento e immaginazione nella storia della musica ottocentesca. Un percorso fra compositori, poesia, filosofia, pittura, società e invenzioni tecniche fino alla Belle Époque.">
+<meta name="theme-color" content="#202036">
+<title>L’irrazionale · Pathos, sentimento e immaginazione nell’Ottocento</title>
+<style>
+:root{--ink:#222333;--night:#202036;--night2:#343048;--plum:#6a4769;--plum-dark:#513551;--teal:#426b65;--green:#355e46;--gold:#ae8750;--cream:#faf8f2;--page:#eee9e1;--line:#d5c8bd;--muted:#665f64;--sans:system-ui,-apple-system,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif;--shadow:0 12px 42px rgba(36,30,49,.1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5.4rem}
+body{margin:0;background:var(--page);color:var(--ink);font:1.08rem/1.76 var(--serif)}
+a{color:#5b3d66;text-underline-offset:3px}a:hover{color:#2c5c4b}
+a:focus-visible,summary:focus-visible{outline:3px solid #c1a15f;outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:#171529;padding:.5rem;z-index:100}
+.skip:focus{left:1rem}
+.hero{position:relative;overflow:hidden;color:#fff8e9;min-height:min(80vh,770px);display:flex;align-items:center;background:radial-gradient(circle at 88% 19%,rgba(171,105,137,.23),transparent 26rem),radial-gradient(circle at 23% 78%,rgba(74,136,139,.23),transparent 29rem),linear-gradient(137deg,#17192c 7%,#37304a 66%,#292237)}
+.hero::before{content:"";position:absolute;inset:2rem -10% -11rem auto;width:60%;transform:rotate(-21deg);background:repeating-linear-gradient(0deg,transparent 0 19px,rgba(241,217,180,.10) 20px 21px,transparent 22px 24px);mask-image:radial-gradient(ellipse,#000 18%,transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:8rem;background:linear-gradient(transparent,#1b1d31);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:1200px;width:100%;margin:auto;padding:6rem clamp(1.2rem,5vw,4rem) 6rem}
+.kicker{font:800 .72rem/1.55 var(--sans);color:#e2c898;letter-spacing:.18em;text-transform:uppercase}
+h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spacing:-.055em;margin:1.2rem 0 1.65rem}
+.hero-sub{font-size:clamp(1.15rem,2.9vw,1.65rem);max-width:780px;line-height:1.5;color:#e8e0ea}
+.hero-note{display:inline-block;margin-top:1.4rem;padding:.55rem 0;border-top:1px solid #ffffff5e;color:#e9ddd1;font: .86rem/1.6 var(--sans)}
+.hero-keywords{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.65rem}
+.hero-keywords span{font:700 .75rem var(--sans);letter-spacing:.06em;text-transform:uppercase;border:1px solid #f1d8b75b;padding:.35rem .75rem;border-radius:999px}
+.nav-wrap{position:sticky;top:0;z-index:80;background:rgba(31,31,52,.98);box-shadow:0 5px 20px #1a172622;color:#fff;font-family:var(--sans)}
+.nav-inner{max-width:1320px;margin:auto;display:flex;align-items:center;gap:.6rem;min-height:3.45rem;padding:.3rem 1rem}
+.nav-home,.nav-direct{display:inline-block;text-decoration:none;color:#f8f0e4;font:750 .79rem var(--sans);border:1px solid #ffffff52;border-radius:4px;padding:.47rem .7rem;white-space:nowrap}
+.nav-home:hover,.nav-direct:hover{color:#fff;background:#ffffff22}
+.nav-direct{margin-left:auto;border-color:transparent}
+.details-menu{position:relative}
+.details-menu summary{cursor:pointer;list-style:none;color:#fff4e9;font:750 .8rem var(--sans);padding:.5rem .8rem;border-radius:4px;background:#53405d}
+.details-menu summary::-webkit-details-marker{display:none}
+.details-menu summary::before{content:"☰";margin-right:.5rem;font-size:1rem}
+.details-menu[open] summary{background:#705570}
+.menu-panel{position:absolute;left:0;top:calc(100% + .6rem);background:#faf7f1;color:var(--ink);padding:1.15rem;box-shadow:0 14px 42px #17132357;border:1px solid var(--line);width:min(89vw,920px);max-height:calc(100dvh - 5rem);overflow-y:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.menu-group strong{display:block;font-size:.72rem;color:#63445e;letter-spacing:.07em;padding-bottom:.5rem;text-transform:uppercase}
+.menu-group a{display:block;text-decoration:none;color:#282636;font-size:.87rem;line-height:1.35;padding:.38rem .4rem;border-bottom:1px solid #e2d9cf}
+.menu-group a:hover{background:#eee7dd;color:#513551}
+.menu-extras{grid-column:1/-1;border-top:1px solid var(--line);padding-top:.75rem;display:flex;flex-wrap:wrap;gap:.7rem}
+.menu-extras a{font:.83rem var(--sans);color:#503654}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;pointer-events:none;background:linear-gradient(90deg,#b5a075,#80ada2,#bd82a8)}
+.sheet{max-width:1370px;background:var(--cream);margin:auto;box-shadow:0 3px 65px #29233218}
+.content{max-width:1130px;margin:auto;padding:clamp(2rem,5.2vw,5rem) clamp(1.15rem,4vw,2rem) 6rem}
+.opening{max-width:900px;margin:auto auto 5rem}
+.eyebrow{font:800 .74rem/1.6 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:#795274}
+.opening h2,.index-head h2,.interlude h2{font:500 clamp(2rem,5vw,3.5rem)/1.13 var(--serif);margin:.4rem 0 1.65rem;letter-spacing:-.035em}
+.opening p{font-size:1.13rem;max-width:72ch}
+.opening .lead{font-size:clamp(1.23rem,2vw,1.48rem);line-height:1.62}
+.per-iniziare{background:#e6f0e6;border-left:6px solid #557c61;padding:1.35rem 1.5rem;margin:2.1rem 0 2.5rem}
+.per-iniziare strong{font:800 .9rem var(--sans);color:#284b35}
+.per-iniziare p{margin:.5rem 0 0}
+.threads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:2.4rem 0;background:var(--line);border:1px solid var(--line)}
+.thread{padding:1.15rem 1.2rem;background:#f3eee9}
+.thread strong{display:block;font-size:1.24rem;color:#5a3c59}
+.thread p{font-size:.98rem;margin:.4rem 0 0}
+.editorial-note{border-top:2px solid #927157;padding:1.2rem 1.4rem;background:#f1ebe3;font-size:.96rem;margin:2.3rem 0}
+.editorial-note strong{color:#6c3f47}
+.index-head{margin-bottom:2rem}
+.index-head p{max-width:70ch}
+.index-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin:0 0 5rem}
+.movement-card{background:#f4eee7;border:1px solid #d5c9c3;padding:1.6rem 1.55rem}
+.movement-num{font:800 .74rem var(--sans);color:#7d617c}
+.movement-card h3{font:500 1.65rem/1.15 var(--serif);margin:.4rem 0}
+.movement-card p{font:.91rem/1.6 var(--sans);color:var(--muted);margin:0 0 1rem}
+.chapter-links{display:grid;gap:0}
+.chapter-links a{display:flex;gap:.7rem;align-items:baseline;text-decoration:none;padding:.48rem 0;border-top:1px solid #d8ccc4;font:.94rem/1.4 var(--sans);color:#393247}
+.chapter-links a span:first-child{font:.72rem var(--sans);color:#805f77;min-width:1.5rem}
+.chapter-links a span:last-child{margin-left:auto;color:#846b65}
+.movement{margin:0 0 5.5rem}
+.movement-banner{background:#29283d;color:#fff8ee;padding:1.45rem clamp(1.2rem,3vw,2.3rem);margin-bottom:3rem;border-left:6px solid var(--gold)}
+.movement-banner>span{font:800 .68rem var(--sans);text-transform:uppercase;color:#dbc59e;letter-spacing:.12em}
+.movement-banner h2{font:500 clamp(1.85rem,4vw,2.7rem)/1.14 var(--serif);margin:.3rem 0 .35rem}
+.movement-banner p{font:.89rem/1.4 var(--sans);color:#d6d1da;margin:0}
+.chapter{scroll-margin-top:5.7rem;max-width:940px;margin:0 auto 5rem;padding:2.1rem 0 0;border-top:1px solid #c6b8b7}
+.chapter-head{display:flex;gap:1.5rem;align-items:baseline}
+.chapter-no{font:700 .74rem var(--sans);letter-spacing:.1em;white-space:nowrap;color:var(--plum)}
+.chapter h3{font:500 clamp(1.95rem,4vw,3rem)/1.11 var(--serif);letter-spacing:-.03em;margin:.35rem 0 1.15rem}
+.chapter .question{font:500 clamp(1.16rem,2vw,1.35rem)/1.55 var(--serif);color:#653e5a;max-width:760px;margin:0 0 1.5rem}
+.chapter-prose p{max-width:77ch;margin:0 0 1.15rem;font-size:1.07rem}
+.crossing{padding:1rem 1.3rem;background:#efe9ee;border-left:4px solid #896887;margin:1.75rem 0 .85rem}
+.crossing strong,.hearing strong{font:800 .76rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#5c3a59}
+.crossing p,.hearing p{font-size:1rem;line-height:1.66;margin:.45rem 0 .2rem}
+.hearing{border-left:4px solid var(--teal);background:#ecf2ee;padding:1rem 1.3rem;margin:.85rem 0 1.45rem}
+.hearing strong{color:#365950}
+.hearing small{font: .77rem/1.5 var(--sans);color:#606d66;display:block;margin-top:.6rem}
+.related{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.2rem 0}
+.related a{display:inline-block;text-decoration:none;border:1px solid #b8a5b6;background:#f5edf3;color:#503850;padding:.55rem .9rem;font:750 .82rem/1.35 var(--sans)}
+.related a:hover{background:#e5d6e3}
+.chapter-up{display:inline-block;font:750 .75rem var(--sans);color:#65586a;margin-top:.7rem}
+.interlude{background:#eae4e7;border-top:5px solid #755770;padding:clamp(1.4rem,4vw,2.6rem);margin:3.5rem 0}
+.interlude p{max-width:75ch}
+.interlude a{font-family:var(--sans);font-weight:750}
+.method{border-top:1px solid var(--line);padding-top:2.3rem}
+.method h2{font:500 clamp(1.85rem,4vw,2.5rem)/1.15 var(--serif)}
+.method p{max-width:79ch}
+.method nav{display:flex;flex-wrap:wrap;gap:.6rem}
+.method nav a{background:#302d43;color:#fff;display:inline-block;text-decoration:none;font:750 .8rem var(--sans);padding:.64rem .85rem}
+.footer{background:#252638;color:#e8e3e7;text-align:center;padding:2rem 1rem 2.4rem;font:.8rem/1.7 var(--sans)}
+.footer a{color:#f4e1bc}
+@media(max-width:760px){
+.hero{min-height:75vh}.hero-content{padding:4rem 1.1rem}
+.nav-inner{padding:.38rem .6rem;gap:.3rem}.nav-direct{display:none}
+.menu-panel{width:min(94vw,490px);grid-template-columns:1fr;max-height:calc(100dvh - 4.4rem);gap:1.2rem}
+.index-cards,.threads{grid-template-columns:1fr}
+.chapter-head{display:block}.chapter h3{margin:.4rem 0 1rem}
+.chapter-prose p{font-size:1.045rem}
+}
+@media(max-width:420px){h1{font-size:clamp(3.1rem,16vw,4.5rem)}.details-menu summary{padding:.52rem .55rem;font-size:.75rem}.nav-home{font-size:.72rem;padding:.5rem .5rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.nav-wrap,.progress,.chapter-up,.menu-panel{display:none!important}.hero{min-height:auto;background:#fff;color:#222;padding:1rem}.hero-sub,.hero-note{color:#222}.content{padding:0 1rem}.chapter{break-inside:avoid}.sheet{box-shadow:none}body{background:white}}
+</style>
 </head>
 <body>
-  <main>
-    <div class="eyebrow">Percorsi di storia della musica</div>
-    <h1>Romanticismo musicale</h1>
-    <div class="work">Lavori in corso</div>
-    <p>Il percorso sul Romanticismo musicale è in preparazione. Questa pagina è già al suo indirizzo definitivo e verrà costruita progressivamente all’interno dello stesso progetto didattico.</p>
-    <p>È già visitabile un primo inserto interdisciplinare: un viaggio fra Manzoni, Beethoven e Verdi, alla scoperta di come letteratura e musica abbiano interrogato il destino, la Provvidenza e la libertà individuale.</p>
-    <p><a href="destino-provvidenza/#per-iniziare">✦ Il destino bussa. Ma chi gli apre? →</a></p>
-    <a href="../">← Torna all’indice generale</a>
-    <footer>Pagina a cura di Alessandro Zilli · © tutti i diritti riservati</footer>
-  </main>
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="hero" id="top">
+ <div class="hero-content">
+  <div class="kicker">Musurgia Mundi · La musica non sta in fila · Percorsi di storia della musica</div>
+  <h1>L’irrazionale</h1>
+  <p class="hero-sub">Il pathos, il sentimento e l’immaginazione nella civiltà musicale dell’Ottocento. Una storia della musica che attraversa poesia, letteratura, pittura, filosofia, politica e invenzioni.</p>
+  <div class="hero-keywords" aria-label="Fili conduttori"><span>Pathos</span><span>Sentimento</span><span>Irrazionale</span></div>
+  <div class="hero-note">Dal tormento dell'individuo alla dignità dei popoli; dall'orchestra che racconta al suono che si può conservare.</div>
+ </div>
+</header>
+<div class="nav-wrap">
+ <nav class="nav-inner" aria-label="Navigazione principale">
+  <a class="nav-home" href="../" title="Torna alla pagina madre">⌂ Home</a>
+  <details class="details-menu" id="indice-menu">
+   <summary aria-label="Apri o chiudi l'indice dei capitoli">Esplora i 14 capitoli</summary>
+   <div class="menu-panel">
+    <div class="menu-group"><strong>I · L’individuo e la scena</strong><a href="#rivoluzione">01 Una rivoluzione che viene da lontano</a><a href="#artista-citta">02 L’artista, la città, il pubblico</a><a href="#lied">03 La voce e l’intimità: il Lied</a><a href="#pianoforte">04 Il pianoforte che canta: Chopin e i nuovi generi</a><a href="#virtuosismo">05 Virtuosi, icone e pubblico: Paganini e Liszt</a></div><div class="menu-group"><strong>II · La musica diventa mondo</strong><a href="#orchestra">06 L’orchestra come tavolozza di colori</a><a href="#racconta">07 La musica che racconta: Berlioz e Liszt</a><a href="#teatro">08 Il teatro del XIX secolo: Verdi, Wagner e le trame della memoria</a></div><div class="menu-group"><strong>III · Lingue, popoli, immagini</strong><a href="#nazioni">09 Le scuole nazionali, le danze e gli imperi plurali</a><a href="#nuovo-mondo">10 Dvořák: Sinfonia n. 9 «Dal Nuovo Mondo»</a><a href="#quadri">11 Musorgskij: Quadri di un’esposizione</a></div><div class="menu-group"><strong>IV · La modernità dell’ascolto</strong><a href="#vienna">12 Vienna, il valzer e l’universo degli archi</a><a href="#offenbach">13 Dall’operetta al can-can: Offenbach e la città-spettacolo</a><a href="#belle-epoque">14 La Belle Époque e la nascita dell’ascolto riproducibile</a></div>
+    <div class="menu-extras"><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
+   </div>
+  </details>
+  <a class="nav-direct" href="#per-iniziare">Per iniziare</a>
+  <a class="nav-direct" href="destino-provvidenza/#per-iniziare">✦ Inserto</a>
+ </nav>
+</div>
+<div class="sheet">
+<main class="content" id="contenuto">
+<section class="opening" id="per-iniziare" aria-labelledby="opening-title">
+ <div class="eyebrow">01 · Entriamo nell'Ottocento</div>
+ <h2 id="opening-title">Il sentimento non cancella la ragione</h2>
+ <p class="lead">Non fu il secolo in cui la ragione scomparve, né quello nel quale la musica decise improvvisamente di abbandonare le forme del passato. Fu un tempo in cui quelle forme cominciarono a essere abitate da nuove domande, mentre l'individuo, la natura, la storia e l'immaginazione acquistavano una presenza sempre più intensa nell'esperienza artistica.</p>
+ <p>Il <strong>pathos</strong> attraversa la passione, lo stupore, la gioia, la sofferenza e il desiderio; il <strong>sentimento</strong> riconosce una dimensione irripetibile dell'esistenza, ma anche la memoria di una lingua e di una patria; l'<strong>irrazionale</strong> affaccia il sogno, il sublime e ciò che nessun calcolo riesce a esaurire. Sono tre tensioni che convivono con il rigore della costruzione musicale, con la filosofia e perfino con i progressi della tecnica.</p>
+ <p>Goethe, Schiller, Byron, Foscolo, Manzoni, Leopardi e Victor Hugo ci aiuteranno a incontrare sentimenti e contraddizioni che risuonano anche nelle opere musicali. Non perché ogni poesia abbia una traduzione in note, ma perché letteratura, pittura e musica partecipano alle trasformazioni dello stesso mondo. Una modulazione inattesa, un ritmo ossessivo, una frase che fatica a concludersi possono diventare domande sul desiderio, sulla memoria, sulla libertà o sul destino.</p>
+ <div class="per-iniziare"><strong>✦ Per iniziare</strong><p>Qual è la differenza fra <i>sentire</i> qualcosa e saperlo <i>raccontare</i>? Una musica può evocare amore, paura, speranza o ribellione senza contenere una sola parola? Segui queste tre possibilità durante il percorso: ciò che la musica esprime, ciò che raccontano i suoi contemporanei e ciò che noi stessi vi riconosciamo.</p></div>
+ <p>Ma l'uomo romantico non è soltanto una figura isolata davanti a un paesaggio. La sua ricerca di dignità attraversa società, istituzioni e ordinamenti giuridici. La libertà di coscienza, i diritti e la partecipazione civile derivano da un lungo cammino, alimentato anche da Illuminismo e rivoluzioni settecentesche, che l'Ottocento rielabora con particolare attenzione all'esistenza individuale e alle comunità culturali.</p>
+ <p>È qui che la memoria di un popolo, l'amore per la patria e la speranza di fraternità universale possono dialogare: riconoscere la dignità di una lingua e di una cultura non impone necessariamente di negare quella delle altre. Il pensiero di Herder, la poesia di Schiller e gli ideali di Mazzini aprono questo orizzonte, che resta tuttavia attraversato da discriminazioni, colonialismo ed esclusioni. Distinguere un patriottismo di emancipazione dalle successive forme di nazionalismo imperialista e razziale non significa dimenticare le contraddizioni già presenti nell'Ottocento.</p>
+ <div class="threads" aria-label="Tre fili che attraversano il sito">
+  <div class="thread"><strong>Pathos</strong><p>Intensità, conflitto, sofferenza e slancio. Non l'assenza di regole, ma l'energia che può trasformarle dall'interno.</p></div>
+  <div class="thread"><strong>Sentimento</strong><p>Amore, memoria, solitudine, appartenenza. Il singolo che scopre di essere irripetibile e insieme parte di una storia.</p></div>
+  <div class="thread"><strong>Irrazionale</strong><p>Sogno, fantastico, perturbante, sublime. Ciò che eccede la spiegazione senza rendere inutile la ragione.</p></div>
+ </div>
+ <p>Intanto cresce la potenza del pianoforte, l'orchestra esplora nuovi colori, la stampa diffonde composizioni e trascrizioni, le città cambiano, gli interpreti diventano celebri. Infine la registrazione del suono incrina una certezza che sembrava ovvia: un'esecuzione musicale non deve più necessariamente scomparire quando gli strumenti tacciono. Per questo seguiremo il Romanticismo fino alla Belle Époque, senza inventare confini rigidi fra le sensibilità di fine secolo e il Novecento.</p>
+ <aside class="editorial-note"><strong>Come leggere questo sito.</strong> La narrazione storica è già accessibile; le indicazioni «Da ascoltare e interrogare» sono nuclei di repertorio da allestire con registrazioni controllate. Non sono riproduttori audio. Dove un laboratorio è già disponibile, troverai un collegamento reale. Dove immagini, clip e attività sono ancora in progettazione, non fingeremo che siano già pronte.</aside>
+</section>
+<section class="index-head" id="capitoli" aria-labelledby="index-title">
+ <div class="eyebrow">Il percorso · Quattro movimenti</div>
+ <h2 id="index-title">Quattordici capitoli, un'unica trama</h2>
+ <p>Si può percorrere il secolo in sequenza oppure seguire la circolazione delle idee: dalle forme musicali ai testi poetici, dalle tecnologie agli spettacoli, dalla memoria individuale al riconoscimento dei popoli. Le quattro parti organizzano la navigazione, non dividono artificialmente la storia.</p>
+ <div class="index-cards"><div class="movement-card"><span class="movement-num">01</span><h3>I · L’individuo e la scena</h3><p>Il pathos, la parola, il pianoforte, i nuovi pubblici</p><div class="chapter-links"><a href="#rivoluzione"><span>01</span>Una rivoluzione che viene da lontano <span aria-hidden="true">↗</span></a><a href="#artista-citta"><span>02</span>L’artista, la città, il pubblico <span aria-hidden="true">↗</span></a><a href="#lied"><span>03</span>La voce e l’intimità: il Lied <span aria-hidden="true">↗</span></a><a href="#pianoforte"><span>04</span>Il pianoforte che canta: Chopin e i nuovi generi <span aria-hidden="true">↗</span></a><a href="#virtuosismo"><span>05</span>Virtuosi, icone e pubblico: Paganini e Liszt <span aria-hidden="true">↗</span></a></div></div><div class="movement-card"><span class="movement-num">02</span><h3>II · La musica diventa mondo</h3><p>Orchestra, racconto, teatro</p><div class="chapter-links"><a href="#orchestra"><span>06</span>L’orchestra come tavolozza di colori <span aria-hidden="true">↗</span></a><a href="#racconta"><span>07</span>La musica che racconta: Berlioz e Liszt <span aria-hidden="true">↗</span></a><a href="#teatro"><span>08</span>Il teatro del XIX secolo: Verdi, Wagner e le trame della memoria <span aria-hidden="true">↗</span></a></div></div><div class="movement-card"><span class="movement-num">03</span><h3>III · Lingue, popoli, immagini</h3><p>Nazioni plurali e memorie in musica</p><div class="chapter-links"><a href="#nazioni"><span>09</span>Le scuole nazionali, le danze e gli imperi plurali <span aria-hidden="true">↗</span></a><a href="#nuovo-mondo"><span>10</span>Dvořák: Sinfonia n. 9 «Dal Nuovo Mondo» <span aria-hidden="true">↗</span></a><a href="#quadri"><span>11</span>Musorgskij: Quadri di un’esposizione <span aria-hidden="true">↗</span></a></div></div><div class="movement-card"><span class="movement-num">04</span><h3>IV · La modernità dell’ascolto</h3><p>Danza, spettacolo, memoria sonora</p><div class="chapter-links"><a href="#vienna"><span>12</span>Vienna, il valzer e l’universo degli archi <span aria-hidden="true">↗</span></a><a href="#offenbach"><span>13</span>Dall’operetta al can-can: Offenbach e la città-spettacolo <span aria-hidden="true">↗</span></a><a href="#belle-epoque"><span>14</span>La Belle Époque e la nascita dell’ascolto riproducibile <span aria-hidden="true">↗</span></a></div></div></div>
+</section>
+<section class="movement" aria-label="I · L’individuo e la scena"><div class="movement-banner"><span>Movimento 1 / 4</span><h2>I · L’individuo e la scena</h2><p>Il pathos, la parola, il pianoforte, i nuovi pubblici</p></div><article class="chapter" id="rivoluzione" aria-labelledby="title-rivoluzione">
+<div class="chapter-head"><span class="chapter-no">01 / 14</span><h3 id="title-rivoluzione">Una rivoluzione che viene da lontano</h3></div>
+<p class="question">Che cosa accade quando un linguaggio musicale ereditato dal Settecento comincia a ospitare tensioni nuove?</p>
+<div class="chapter-prose"><p>La storia del Romanticismo non comincia con un atto di distruzione. La grammatica tonale, la costruzione motivica e la disciplina delle forme, maturate nel secolo precedente, non si dissolvono davanti al sentimento; diventano, piuttosto, strumenti capaci di accogliere contrasti, esitazioni e slanci sempre più intensi. Fra <i>Sturm und Drang</i>, Illuminismo, rivoluzioni e Restaurazione, l'immagine dell'artista si trasforma mentre la musica continua a interrogare il rapporto fra necessità della forma e libertà dell'immaginazione.</p>
+<p>Il <i>pathos</i> non è un'invenzione ottocentesca: attraversa la tragedia, la retorica musicale barocca e Mozart. Ma, dalla Sonata «Patetica» all'<i>Eroica</i>, dalla Quinta alla Nona di Beethoven, possiamo seguire modi differenti di costruire una tensione emotiva attraverso il tempo musicale. Nel finale della Nona, la poesia di Schiller entra realmente nella partitura: un inno alla gioia e alla fraternità coinvolge voci, solisti, coro e orchestra. L'attuale valore europeo di quella melodia appartiene alla sua storia successiva, non al programma politico di Beethoven nel 1824.</p>
+<p>Amore, meraviglia, sofferenza, gioia, nostalgia e ribellione non esauriscono la nuova sensibilità. Il riconoscimento dell'individuo, della sua irripetibilità e della sua dignità apre domande che riguardano anche le leggi, la giustizia, la comunità e il destino dei popoli. In questa tensione il pensiero di Herder sulla pluralità delle culture, l'orizzonte umano di Schiller e, più avanti, l'idea mazziniana di una patria responsabile verso l'umanità possono incontrarsi, senza che ciò autorizzi a descrivere l'intero Ottocento come immune da esclusioni e pregiudizi.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Goethe, Schiller, Blake, Foscolo e Leopardi interrogano la sensibilità da prospettive non equivalenti; Goya e Friedrich aiutano a porre domande sul sublime e sul rapporto fra ragione e immaginazione, senza diventare illustrazioni automatiche di Beethoven.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Beethoven: Sonata op. 13; Sinfonie n. 3, 5, 6 e 9. Confrontare una tensione strumentale con la svolta corale del finale della Nona.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="destino-provvidenza/#per-iniziare">Il destino bussa. Ma chi gli apre? · Inserto interdisciplinare <span aria-hidden="true">↗</span></a><a href="../classicismo/#epilogo">Dal Classicismo all'Eroica <span aria-hidden="true">↗</span></a></div>
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="artista-citta" aria-labelledby="title-artista-citta">
+<div class="chapter-head"><span class="chapter-no">02 / 14</span><h3 id="title-artista-citta">L’artista, la città, il pubblico</h3></div>
+<p class="question">Come si incontra una sinfonia quando non si dispone di un'orchestra?</p>
+<div class="chapter-prose"><p>La musica ottocentesca si muove fra corti che non scompaiono, teatri che si moltiplicano, sale da concerto, salotti, circoli filarmonici e case private. Un compositore può essere insegnante, interprete indipendente, impresario, direttore, editore di sé stesso oppure celebrità itinerante: nessuna condizione sostituisce semplicemente la precedente. Cambiano, insieme ai pubblici, i modi di finanziare, ascoltare e discutere un'opera.</p>
+<p>Le riduzioni per pianoforte, anche a quattro mani, le trascrizioni, le bande e gli arrangiamenti cameristici permettono alle sinfonie e alle opere di attraversare l'Europa senza attendere che viaggino orchestre e compagnie teatrali. In molte case conoscere una musica significa anche suonarla: un passaggio decisivo per capire quanto diversa sarà la rivoluzione del fonografo, capace di conservare non una partitura, ma una particolare esecuzione.</p>
+<p>Clara Schumann, Fanny Hensel, Louise Farrenc e Pauline Viardot ci aiutano a vedere come formazione, possibilità professionali, editoria e convenzioni sociali determinino chi possa comporre, eseguire e circolare con il proprio nome. Le donne non entrano in questa storia come una galleria separata, ma dove il loro lavoro spiega concretamente la vita musicale.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Giornali, cartelloni teatrali, litografie, sale da concerto, storia della stampa e architettura urbana: la musica vive dentro infrastrutture materiali e sociali.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>La stessa pagina in versione orchestrale e in trascrizione pianistica a quattro mani: quali caratteristiche musicali rimangono e quali colori scompaiono? (Confronto da documentare.)</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="lied" aria-labelledby="title-lied">
+<div class="chapter-head"><span class="chapter-no">03 / 14</span><h3 id="title-lied">La voce e l’intimità: il Lied</h3></div>
+<p class="question">Che cosa può raccontare un pianoforte di una poesia, senza pronunciarne una sola parola?</p>
+<div class="chapter-prose"><p>Nel <i>Lied</i> tedesco parola poetica, voce e pianoforte non sono tre elementi gerarchicamente separati. In <i>Erlkönig</i>, su poesia di Goethe, Schubert affida alla tastiera una corsa ostinata che rende percepibile l'urgenza della vicenda. In <i>Gretchen am Spinnrade</i> il moto ripetuto delle figurazioni pianistiche si lega al lavoro del filatoio e all'inquietudine interiore di Margherita; quando il pensiero si fa insostenibile, anche il movimento musicale muta.</p>
+<p>Con Schumann e le poesie di Heine, l'ordine di una raccolta di Lieder può farsi racconto: la memoria del brano appena ascoltato agisce su quello successivo, e persino le conclusioni affidate al pianoforte hanno un peso drammatico. Da qui si può allargare lo sguardo al viaggio invernale di Schubert, al paesaggio come esperienza dell'io, alla solitudine e al modo in cui una parola tradotta cambia il rapporto fra significato e suono.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Goethe e Heine sono fonti letterarie effettive dei Lieder esaminati; un dipinto di Caspar David Friedrich può essere un confronto interpretativo sul paesaggio interiore, ma non va presentato come fonte della composizione.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Schubert: Erlkönig, Gretchen am Spinnrade, Winterreise; Schumann: Dichterliebe. In un momento guidato, ascoltare prima la parte pianistica e poi la voce.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="pianoforte" aria-labelledby="title-pianoforte">
+<div class="chapter-head"><span class="chapter-no">04 / 14</span><h3 id="title-pianoforte">Il pianoforte che canta: Chopin e i nuovi generi</h3></div>
+<p class="question">Come può la tastiera imitare il respiro di una voce e il passo di una danza?</p>
+<div class="chapter-prose"><p>Il pianoforte ottocentesco è un laboratorio nel quale meccanica, metallurgia, tecnica esecutiva ed espressione si condizionano reciprocamente. L'ampliamento delle possibilità dinamiche non produce da solo il sentimento, ma offre nuovi mezzi per articolare un canto: timbro, pedale, attacco, fraseggio, agogica e <i>rubato</i> diventano problemi tanto costruttivi quanto poetici.</p>
+<p>Chopin incontra nella cultura del <i>bel canto</i> un modello di linea melodica che la tastiera può trasformare. Notturno, studio, preludio, scherzo, ballata, valzer, polacca e mazurca non sono semplici etichette: ciascun titolo solleva un problema musicale e culturale. Il Notturno op. 9 n. 2 pone domande sul canto; lo Studio op. 10 n. 12 sul rapporto fra virtuosismo e gesto espressivo; la Mazurca op. 17 n. 4 sul ritmo di danza trasformato in memoria personale e culturale.</p>
+<p>L'identità polacca non si riduce a una scala o a una formula folcloristica riconoscibile. La distanza dalla patria, la circolazione europea degli interpreti e i diversi modi di accentare una danza aiutano a comprendere perché un gesto apparentemente privato possa custodire significati collettivi.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Poesia della notte e del paesaggio, storia degli strumenti, danza e condizione dell'esilio: analogie da motivare, non programmi descrittivi arbitrariamente attribuiti a Chopin.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Chopin: Notturno op. 9 n. 2; Mazurca op. 17 n. 4; Studio op. 10 n. 12; Valzer op. 64 n. 2.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="virtuosismo" aria-labelledby="title-virtuosismo">
+<div class="chapter-head"><span class="chapter-no">05 / 14</span><h3 id="title-virtuosismo">Virtuosi, icone e pubblico: Paganini e Liszt</h3></div>
+<p class="question">Che cosa cambia quando un altro strumento reinventa il gesto del virtuoso?</p>
+<div class="chapter-prose"><p>Nel XIX secolo il virtuosismo non è soltanto velocità: diventa presenza scenica, reputazione, invenzione tecnica e possibilità di stupire un pubblico crescente. Il violinista Paganini e il pianista Liszt si trovano al centro di una nuova relazione fra interprete, strumento, stampa e immaginario della celebrità.</p>
+<p>Il <i>Rondò à la clochette</i> del Concerto per violino n. 2 di Paganini e <i>La campanella</i> delle <i>Grandes études de Paganini</i> di Liszt (versione definitiva del 1851) offrono un confronto estremamente concreto: il pianoforte non copia il violino, ma reinventa registri, distanze, salti, ripetizioni e l'illusione di una campana. Con <i>Mazeppa</i> la questione si amplia: Byron e Victor Hugo alimentano un immaginario letterario che Liszt attraversa in forme pianistiche e poi orchestrali, aprendo un dialogo con il poema sinfonico.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>La nascita della celebrità moderna lega concerti, stampa periodica, caricatura, letteratura del genio e mercato. Le relazioni fra Byron, Hugo e Liszt vanno documentate distinguendo fonti poetiche e successivi adattamenti.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Paganini: Concerto n. 2, finale; Liszt: La campanella S. 141 n. 3 e Mazeppa.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article></section>
+<section class="movement" aria-label="II · La musica diventa mondo"><div class="movement-banner"><span>Movimento 2 / 4</span><h2>II · La musica diventa mondo</h2><p>Orchestra, racconto, teatro</p></div><article class="chapter" id="orchestra" aria-labelledby="title-orchestra">
+<div class="chapter-head"><span class="chapter-no">06 / 14</span><h3 id="title-orchestra">L’orchestra come tavolozza di colori</h3></div>
+<p class="question">Se due strumenti suonano insieme le stesse note, nasce soltanto un suono più forte?</p>
+<div class="chapter-prose"><p>L'orchestra classica aveva già sviluppato un'incomparabile ricchezza di combinazioni. L'Ottocento non inventa il timbro, ma intensifica la ricerca di impasti, raddoppi, contrasti e spazi sonori. La fusione fra flauto e clarinetto, fra oboe e clarinetto o fra archi e corni mostra che la sovrapposizione di due voci può produrre un colore che non assomiglia più pienamente a nessuna delle due.</p>
+<p>In questo mondo cambia anche il mestiere del direttore: non soltanto indicare il tempo, ma governare articolazione, rubato, equilibrio, piani dinamici e relazioni espressive fra le sezioni. Accanto ai grandi organici, il <i>Carnevale degli animali</i> di Camille Saint-Saëns (1886) dimostra che l'invenzione timbrica può nascere anche da un insieme cameristico: quattordici piccoli mondi, costruiti con registri, citazioni, ironia e caratteri strumentali.</p>
+<p>Il <i>Carnevale</i> ci mette già a disposizione due esperienze autonome, una esplorativa e una ludica, che ritroveremo anche quando arriveremo a Offenbach. Le <i>Tartarughe</i> rallentano infatti una melodia del <i>Galop infernal</i>, trasformandone completamente il carattere.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Fisica del suono e percezione del timbro, evoluzione degli strumenti, direzione d'orchestra, caricatura musicale e teatro: un incontro fra tecnica e immaginazione.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Mescolatore timbrico da progettare e collaudare separatamente. Già disponibili: il laboratorio e il gioco del Carnevale degli animali.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Il grande Carnevale (laboratorio) <span aria-hidden="true">↗</span></a><a href="../carnevale-animali/gioco.html">SOS · La sfida dei serragli (gioco) <span aria-hidden="true">↗</span></a></div>
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="racconta" aria-labelledby="title-racconta">
+<div class="chapter-head"><span class="chapter-no">07 / 14</span><h3 id="title-racconta">La musica che racconta: Berlioz e Liszt</h3></div>
+<p class="question">Come può un tema cambiare significato pur restando riconoscibile?</p>
+<div class="chapter-prose"><p>Nella <i>Symphonie fantastique</i> del 1830, Berlioz costruisce cinque movimenti attraversati da un'idea musicale ricorrente, l'<i>idée fixe</i>, che muta carattere a seconda della situazione drammatica. Dal ballo alla scena nei campi, dalla marcia al supplizio al sabba, il riconoscimento del tema costringe l'ascoltatore a riconsiderare ciò che ha ascoltato in precedenza.</p>
+<p>L'orchestrazione rende udibili luoghi e azioni: l'oboe fuori scena, il corno inglese, il tuono suggerito dai timpani, la presenza delle campane, il clarinetto piccolo e l'effetto <i>col legno</i> degli archi. Il racconto appartiene al programma dell'opera, ma la percezione musicale non si lascia ridurre a una sequenza di didascalie. Con Liszt e il poema sinfonico la musica stabilisce altre relazioni con testi, miti, storia e pittura: <i>Mazeppa</i> ci permette di seguire il passaggio fra pagina letteraria e forma strumentale.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Shakespeare, immaginario fantastico e drammaturgia del sogno; Byron e Hugo nella tradizione di Mazeppa; pittura di storia come confronto, non necessariamente fonte diretta.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Berlioz: cinque movimenti della Symphonie fantastique; Liszt: Mazeppa. Futuro laboratorio di riconoscimento dell'idée fixe.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="teatro" aria-labelledby="title-teatro">
+<div class="chapter-head"><span class="chapter-no">08 / 14</span><h3 id="title-teatro">Il teatro del XIX secolo: Verdi, Wagner e le trame della memoria</h3></div>
+<p class="question">Quando un motivo ritorna in scena, ricorda qualcosa o cambia ciò che sappiamo dei personaggi?</p>
+<div class="chapter-prose"><p>Il teatro musicale dell'Ottocento coinvolge voci, orchestra, letteratura, scenografia, impresa e politica. In Verdi le passioni individuali prendono spesso forma entro rapporti di potere, leggi, gerarchie e convenzioni sociali. In Wagner la rete dei motivi ricorrenti diventa uno strumento drammatico di straordinaria articolazione; <i>leitmotiv</i>, reminiscenza, trasformazione ciclica e <i>idée fixe</i> non sono tuttavia sinonimi.</p>
+<p>Il passato può diventare specchio del presente: la Lombardia seicentesca sottoposta agli spagnoli nei <i>Promessi sposi</i> di Manzoni e la vicenda degli ebrei esiliati nel <i>Nabucco</i> rendono percepibili rapporti fra oppressione, libertà e memoria collettiva. La ricezione patriottica del <i>Va, pensiero</i> merita attenzione proprio perché la forza di un'opera non coincide sempre con le intenzioni documentabili al momento della composizione. <i>La battaglia di Legnano</i> (1849), benché ambientata nel 1176, appartiene invece a una stagione in cui il riferimento nazionale si fa assai più scoperto.</p>
+<p>Un altro nodo è il rapporto fra la Provvidenza di Manzoni e <i>La forza del destino</i> di Verdi: il diverso finale del 1862 e quello del 1869 aprono interrogativi sulla libertà, sulla fatalità e sul perdono. Un inserto interdisciplinare autonomo consente di esplorarli senza interrompere il racconto teatrale.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Manzoni, pittura di storia di Hayez, romanzo storico, censura, lettura politica e filosofie della volontà. Il dialogo fra le arti deve distinguere testimonianza e interpretazione.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Verdi: Nabucco, La battaglia di Legnano, La forza del destino; Wagner: episodi di memoria motivica da scegliere e verificare.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="destino-provvidenza/#per-iniziare">Inserto · Il destino bussa. Ma chi gli apre? <span aria-hidden="true">↗</span></a><a href="../risorgimento/#verdi">Risorgimento · Verdi dal melodramma alla nazione <span aria-hidden="true">↗</span></a></div>
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article></section>
+<section class="movement" aria-label="III · Lingue, popoli, immagini"><div class="movement-banner"><span>Movimento 3 / 4</span><h2>III · Lingue, popoli, immagini</h2><p>Nazioni plurali e memorie in musica</p></div><article class="chapter" id="nazioni" aria-labelledby="title-nazioni">
+<div class="chapter-head"><span class="chapter-no">09 / 14</span><h3 id="title-nazioni">Le scuole nazionali, le danze e gli imperi plurali</h3></div>
+<p class="question">Una musica diventa «nazionale» per le sue note, per chi la scrive o per chi vi si riconosce?</p>
+<div class="chapter-prose"><p>La costruzione delle identità musicali ottocentesche si intreccia alle rivoluzioni, ai movimenti di autonomia e alle tensioni degli imperi, ma nessuna nazionalità corrisponde a una ricetta sonora. La monarchia degli Asburgo comprende comunità di lingua e storia differenti; la duplice monarchia austro-ungarica nasce soltanto nel 1867. Le esperienze boeme, morave, slovacche, ungheresi e slave meridionali non possono essere fuse in un'unica «scuola slava», così come il mondo russo, le tradizioni scandinave, la penisola iberica e i Balcani richiedono contesti distinti.</p>
+<p>Una mazurca polacca, un <i>furiant</i> boemo o una figura di <i>hemiola</i> ci fanno ascoltare quanto possano cambiare accenti e profili ritmici anche senza cambiare necessariamente il metro scritto. Quando incontreremo scale, modi e materiali popolari, dovremo dimostrarli su esempi precisi, non attribuirli indistintamente a intere popolazioni. Smetana, Dvořák, Moniuszko, i compositori russi e Sibelius potranno così entrare nel racconto insieme ai repertori, alle istituzioni e alle lingue che li circondano.</p>
+<p>Il pensiero di Herder, gli ideali civili di Mazzini e la fraternità espressa da Schiller permettono di distinguere il desiderio di dignità di una comunità dalle pretese di superiorità. Il patriottismo romantico non va né confuso automaticamente con i nazionalismi imperialisti e razziali del Novecento, né assolto dalle esclusioni già presenti nell'Ottocento.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Mappe politiche, linguistica, poesia patriottica, storia del diritto, imperialismo e differenti idee di cittadinanza. La cultura nazionale può cercare dialogo oppure imporre gerarchie: dobbiamo studiare entrambe le possibilità.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Accenti di furiant, mazurca, hemiola; pagine di Smetana, Dvořák, Moniuszko e Sibelius da selezionare con fonti.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="../risorgimento/#musica">Risorgimento · Fare gli italiani: lingua, musica, cittadinanza <span aria-hidden="true">↗</span></a></div>
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="nuovo-mondo" aria-labelledby="title-nuovo-mondo">
+<div class="chapter-head"><span class="chapter-no">10 / 14</span><h3 id="title-nuovo-mondo">Dvořák: Sinfonia n. 9 «Dal Nuovo Mondo»</h3></div>
+<p class="question">Una sinfonia può cambiare il nostro modo di ascoltare la memoria di due continenti?</p>
+<div class="chapter-prose"><p>Nel 1893, durante il soggiorno americano, Dvořák porta con sé una formazione europea e incontra nuovi ambienti, interlocutori e discussioni sul futuro di una musica degli Stati Uniti. Harry T. Burleigh è una figura essenziale per comprendere il suo contatto con la tradizione degli spiritual afroamericani; i riferimenti dichiarati da Dvořák alla cultura dei nativi americani richiedono invece cautela critica e attenzione alle mediazioni letterarie, fra cui l'<i>Hiawatha</i> di Longfellow.</p>
+<p>L'ascolto dei quattro movimenti può diventare un viaggio immaginativo, dalla traversata oceanica all'incontro con paesaggi nuovi e al ritorno della memoria. Ma dobbiamo dichiararlo senza ambiguità: l'oceano e la tempesta sono una nostra narrazione didattica, non un programma originale certificato del compositore. Il <i>Largo</i> con il corno inglese, lo <i>Scherzo</i>, il <i>Finale</i> e i ritorni tematici bastano a sostenere una vera indagine musicale.</p>
+<p>La Nona non è un collage di canzoni popolari citate alla lettera e non deriva direttamente dal blues o dal jazz. È una composizione originale che interpreta suggestioni, dibattiti e incontri di culture in un modo storicamente complesso.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Emigrazione, formazione della società americana, letteratura di Longfellow, storia degli spiritual e rappresentazioni del paesaggio: documenti diversi da tenere distinti dall'invenzione narrativa degli studenti.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Tutti e quattro i movimenti; riconoscere i ritorni dei motivi fra sezioni e movimenti. Il laboratorio «Una sinfonia che ricorda» sarà sviluppato a parte.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="quadri" aria-labelledby="title-quadri">
+<div class="chapter-head"><span class="chapter-no">11 / 14</span><h3 id="title-quadri">Musorgskij: Quadri di un’esposizione</h3></div>
+<p class="question">Che cosa succede quando una musica ci fa camminare davanti a immagini che non vediamo?</p>
+<div class="chapter-prose"><p>Nel 1874 Musorgskij compone per pianoforte i <i>Quadri di un'esposizione</i> in memoria dell'amico Viktor Hartmann. La <i>Promenade</i> non è una cornice neutra: il suo ritorno e le sue metamorfosi suggeriscono il movimento di uno spettatore che attraversa una mostra, guarda, ricorda e cambia umore. Le alternanze fra 5/4 e 6/4 offrono anche un'occasione immediata per interrogare metro e accento.</p>
+<p>Una parte dei lavori di Hartmann sopravvive, un'altra è scomparsa o non è identificabile con certezza. Il laboratorio visivo dovrà distinguere le immagini storicamente riconosciute da fotografie moderne, disegni non autentici e ricostruzioni posteriori. Confrontare <i>Il balletto dei pulcini nei loro gusci</i>, le <i>Catacombe</i> e la <i>Grande Porta di Kiev</i> significa domandarsi come un'immagine diventi movimento, ritmo, memoria e spazio pianistico.</p>
+<p>Anche la storia della fotografia, dal dagherrotipo reso pubblico nel 1839, appartiene al nostro racconto: modifica la cultura delle immagini senza cancellare disegno, incisione o pittura. L'orchestrazione di Ravel e l'incontro col mondo di Kandinsky resteranno intenzionalmente affidati al percorso sul Novecento.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Hartmann, esposizioni, fotografia e memoria visiva; per ogni immagine occorrono attribuzione, provenienza e valutazione documentaria.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Musorgskij: versione originale per pianoforte del 1874, con speciale attenzione alle Promenades. Galleria interattiva da costruire su materiali verificati.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article></section>
+<section class="movement" aria-label="IV · La modernità dell’ascolto"><div class="movement-banner"><span>Movimento 4 / 4</span><h2>IV · La modernità dell’ascolto</h2><p>Danza, spettacolo, memoria sonora</p></div><article class="chapter" id="vienna" aria-labelledby="title-vienna">
+<div class="chapter-head"><span class="chapter-no">12 / 14</span><h3 id="title-vienna">Vienna, il valzer e l’universo degli archi</h3></div>
+<p class="question">Una danza racconta soltanto il piacere della festa?</p>
+<div class="chapter-prose"><p>Nella Vienna ottocentesca si incontrano una corte imperiale, borghesie cittadine, caffè, teatri, editoria, sale da ballo e tensioni linguistiche e politiche. Joseph Lanner e la famiglia Strauss rendono il valzer parte della vita pubblica; ma lo stesso nome può indicare anche una pagina pianistica intima, come il Valzer op. 64 n. 2 di Chopin. <i>An der schönen blauen Donau</i> di Johann Strauss figlio ci invita a discutere ritmo, orchestrazione e funzione sociale.</p>
+<p>L'operetta amplia il rapporto fra danza e scena, da <i>Die Fledermaus</i> (1874) alla <i>Lustige Witwe</i> di Lehár (1905), ormai sulla soglia di un altro secolo. E intanto questa Vienna non si esaurisce nella mondanità: Brahms, Bruckner e Mahler offrono visioni ben diverse della sinfonia e della vita musicale.</p>
+<p>Spostando l'attenzione sugli archi, le Serenate di Dvořák, Čajkovskij ed Elgar mostrano come un organico privo di fiati possa costruire paesaggi timbrici attraverso articolazioni, registri, divisi, voci interne e dinamiche.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Società urbana, moda, danza, editoria, architettura del divertimento e carattere plurilingue dell'impero: la festa non cancella la storia.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Strauss II: An der schönen blauen Donau; Chopin: Valzer op. 64 n. 2; Dvořák: Serenata op. 22; Čajkovskij: op. 48; Elgar: op. 20.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="offenbach" aria-labelledby="title-offenbach">
+<div class="chapter-head"><span class="chapter-no">13 / 14</span><h3 id="title-offenbach">Dall’operetta al can-can: Offenbach e la città-spettacolo</h3></div>
+<p class="question">Perché una melodia del teatro diventa il simbolo di una danza e poi di un'epoca intera?</p>
+<div class="chapter-prose"><p>Nella Parigi del Secondo Impero, <i>Orphée aux enfers</i> (1858) mostra come Offenbach possa usare il mito classico per produrre satira sociale e teatro musicale. Il <i>Galop infernal</i> diventerà una delle melodie più associate al can-can, ma il ballo esisteva già: occorre distinguere la nascita del brano dalla sua successiva fortuna iconografica e cinematografica.</p>
+<p>Saint-Saëns riprende quella melodia nelle <i>Tartarughe</i> del <i>Carnevale degli animali</i> (1886), rallentandola fino a trasformarne l'effetto comico. È un esempio ideale di come la citazione musicale possa agire sulla memoria dell'ascoltatore. I manifesti di Toulouse-Lautrec per il Moulin Rouge, fra cui quello con La Goulue del 1891, appartengono a un momento posteriore: accostarli al 1858 è utile soltanto se rispettiamo le date e spieghiamo le trasformazioni della città-spettacolo.</p>
+<p>Il cinema e i cartoni animati possono mostrare una tappa successiva della circolazione del motivo; per qualsiasi filmato occorrerà identificare brano, autore, scena e disponibilità legittima, senza attribuire a Offenbach ogni musica associata a ballerine e sottogonne.</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Satira, mito antico, iconografia commerciale, Toulouse-Lautrec, café-concert e storia della ricezione di una melodia.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Offenbach: Galop infernal; Saint-Saëns: Tortues. Confronto immediato attraverso i due SOS già disponibili.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+<div class="related" aria-label="Collegamenti a percorsi esistenti"><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Il grande Carnevale <span aria-hidden="true">↗</span></a></div>
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article><article class="chapter" id="belle-epoque" aria-labelledby="title-belle-epoque">
+<div class="chapter-head"><span class="chapter-no">14 / 14</span><h3 id="title-belle-epoque">La Belle Époque e la nascita dell’ascolto riproducibile</h3></div>
+<p class="question">Che cosa cambia quando possiamo ascoltare di nuovo proprio quella esecuzione, e non un'altra?</p>
+<div class="chapter-prose"><p>La fine dell'Ottocento è attraversata da nuovi modi di divertirsi, incontrarsi e consumare musica: café-concert e cabaret parigini, Le Chat Noir, il Moulin Rouge, i caffè e i teatri viennesi, la Napoli delle canzoni, di Piedigrotta e del Salone Margherita. Aristide Bruant, Yvette Guilbert, gli editori di canzoni e le artiste dello spettacolo portano nella vita urbana nuove forme di presenza pubblica. Non dobbiamo tuttavia scambiare la Belle Époque per una parentesi soltanto frivola: diseguaglianze, colonialismo, conflitti sociali e limiti imposti alle donne appartengono alla stessa civiltà.</p>
+<p>Fino ad allora un brano poteva diffondersi tramite spartiti, memorie, trascrizioni, esecuzioni domestiche e automi programmati. Il fonografo presentato da Edison nel 1877 inaugura un'altra possibilità: fissare le vibrazioni di un suono e riascoltare una specifica esecuzione anche quando chi l'ha prodotta non è più presente. Dai cilindri ai dischi e al grammofono di Berliner, la memoria sonora diventa progressivamente oggetto tecnico, commerciale e domestico.</p>
+<p>Una registrazione acustica di Caruso, come <i>Vesti la giubba</i> (1904), non restituisce il suono di una voce senza mediazioni: tromba di registrazione, supporto e limiti di frequenza modellano ciò che ascoltiamo. Eppure conserva qualcosa di storicamente nuovo: la traccia di una precisa interpretazione. La radio, che diventerà soprattutto una grande forma di trasmissione novecentesca, non coincide con questa invenzione. Sul confine con il simbolismo e Debussy intravediamo un'altra epoca, che incontreremo senza costruire artificialmente un capitolo separato «Postromanticismo».</p></div>
+<aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Tecnica del fonografo e del grammofono, stampa delle canzoni, fotografia, pubblicità, studio di registrazione, nascita del mercato discografico e nuove abitudini d'ascolto.</p></aside>
+<div class="hearing"><strong>Da ascoltare e interrogare</strong><p>Incisioni acustiche storiche da reperire e contestualizzare, con particolare attenzione a Caruso, al confronto fra esecuzioni e al supporto originario.</p><small>Selezione e verifica delle registrazioni in corso: nessun ascolto automatico.</small></div>
+
+<a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
+</article></section>
+<section class="interlude" id="intrecci" aria-labelledby="intrecci-title">
+ <div class="eyebrow">Nodi trasversali</div>
+ <h2 id="intrecci-title">La musica non è un’isola</h2>
+ <p>Per comprendere il Romanticismo non basterà conoscere le biografie dei compositori. Avremo bisogno di poesie e spartiti, di dipinti con provenienza accertata, di mappe degli imperi, di cataloghi editoriali, di strumenti storici e, alla fine, di cilindri fonografici e dischi. La stessa relazione fra due opere dovrà essere qualificata: una <strong>fonte documentata</strong> non è un semplice <strong>confronto interpretativo</strong>.</p>
+ <p>Seguiremo inoltre le donne nella vita musicale — Clara Schumann, Fanny Hensel, Louise Farrenc, Pauline Viardot, Ethel Smyth e molte altre — nei luoghi in cui operarono, senza relegarle a un'aggiunta decorativa. E torneremo più volte sul paesaggio, sulle idee filosofiche del soggetto, sul diritto, sulla libertà e sul lavoro materiale che rende possibile far circolare una musica.</p>
+ <p><a href="destino-provvidenza/#per-iniziare">✦ Apri il nostro primo inserto interdisciplinare: «Il destino bussa. Ma chi gli apre?»</a></p>
+</section>
+<section class="method" id="metodo" aria-labelledby="method-title">
+ <div class="eyebrow">Metodo · Stato delle attività</div>
+ <h2 id="method-title">Guardare, ascoltare, interrogare, collegare, verificare</h2>
+ <p>Le sezioni di testo costituiscono la prima stesura editoriale del percorso. La scelta degli ascolti, delle interpretazioni e delle immagini deve ancora essere documentata e collaudata; un laboratorio nuovo sarà progettato e verificato alla volta, su telefono e computer, senza autoplay e senza costringere a uscire dalla pagina per avviarne l'audio.</p>
+ <p>La fotografia non sostituirà la fonte storica: ogni documento visivo avrà attribuzione, didascalia e diritti. Le gallerie non saranno raccolte decorative; le immagini perdute di Hartmann non verranno sostituite surrettiziamente con ricostruzioni moderne. Il lavoro sistematico su Ravel, Kandinsky, sul cinema sonoro e sulla radio appartiene invece al percorso dedicato al Novecento.</p>
+ <nav aria-label="Collegamenti fra i percorsi"><a href="../">⌂ Indice generale</a><a href="../classicismo/#epilogo">Dal Classicismo</a><a href="../risorgimento/#musica">Risorgimento e cittadinanza</a><a href="destino-provvidenza/#per-iniziare">Destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a></nav>
+</section>
+</main>
+<footer class="footer">Musurgia Mundi · Atlante didattico della musica · Ideazione e testi: Alessandro Zilli<br>Un percorso in costruzione: struttura e prima stesura pubblicate, fonti multimediali e laboratori in allestimento.<br><a href="#top">↑ Torna all'inizio</a></footer>
+</div>
+<script>
+(()=>{
+const menu=document.getElementById('indice-menu');
+document.querySelectorAll('.menu-panel a').forEach(a=>a.addEventListener('click',()=>{menu.open=false}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus()}});
+document.addEventListener('pointerdown',e=>{if(menu.open&&!menu.contains(e.target))menu.open=false});
+const progress=document.getElementById('progress');
+let ticking=false;
+const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?Math.min(100,Math.max(0,scrollY/max*100)):0)+'%';ticking=false};
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}},{passive:true});
+window.addEventListener('resize',update);update();
+})();
+</script>
 </body>
 </html>
