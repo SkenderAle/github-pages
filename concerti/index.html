@@ -545,7 +545,7 @@ const recMap=new Map(records.map(x=>[x.id,x]));
 const linkOwners=new Map(),recordOwners=new Map();
 const groupedItems=new Map();
 const specificYears={
- violino:{0:1711,1:1723,4:1773,5:1775,7:1775,10:1803,13:1816,14:1822,16:1850,18:1877,19:1891,20:1880,21:1853,22:1862,23:1874,24:1857,25:1877,26:1880,31:1904,34:1917,35:1935},
+ violino:{0:1711,1:1723,2:1720,4:1773,5:1775,7:1775,8:1775,10:1803,13:1816,14:1822,15:1844,16:1850,18:1877,19:1891,20:1880,21:1853,22:1862,23:1874,24:1857,25:1877,26:1880,31:1904,34:1917,35:1935},
  pianoforte:{1:1782,4:1785,7:1786,9:1784,10:1784,12:1788,13:1782,19:1816,48:1925},
  violoncello:{2:1750,11:1880,14:1952},
  viola:{4:1834,5:1911,11:1952,12:1983,13:1985},
@@ -577,6 +577,7 @@ function addGuide(work,card){
   work.classList.add('has-guide');
  }
  details.appendChild(card);
+ if(details.querySelector('[data-video]'))details.querySelector('summary').textContent='▶ Ascolta · scheda guidata';
  recordOwners.set(card.id,work);
 }
 for(const family of families){
@@ -601,7 +602,7 @@ for(const family of families){
     }
    }else if(id==='audioteca'){link.remove()}
   }
-  let year=work.querySelector('article.record[data-anno]')?.dataset.anno;
+  let year=work.querySelector('article.record[data-anno]')?.dataset.anno || (href&&recMap.get(href.slice(1))?.dataset.anno);
   if(!year&&specificYears[family.id]?.[index])year=specificYears[family.id][index];
   if(!year){
    const match=work.querySelector('h4')?.textContent.match(/\b(1[6-9]\d{2}|20\d{2})\b/);
@@ -646,13 +647,14 @@ function headingEra(y,original){
  return'Novecento e contemporaneità';
 }
 const allItems=[];
+const epochSortYear={Barocco:1740,Classicismo:1790,Romanticismo:1850,Novecento:1950};
 for(const family of families){
  const items=groupedItems.get(family.id)||[];
  for(const work of items){
   const year=Number(work.dataset.anno)||0;
   work.dataset.period=headingEra(year,work.dataset.era);
   work.dataset.search=normalize((work.querySelector('h4')?.textContent||'')+' '+work.textContent+' '+family.dataset.label+' '+year);
-  allItems.push({work,family,year,period:work.dataset.period});
+  allItems.push({work,family,year,sortYear:year||epochSortYear[work.dataset.era]||9999,period:work.dataset.period});
  }
 }
 const select=document.getElementById('strumento-scelto'),input=document.getElementById('cerca-concerto'),epoch=document.getElementById('epoca-scelta'),status=document.getElementById('audioteca-stato');
@@ -685,7 +687,7 @@ function render(){
   const oldLabels=[...holder.querySelectorAll(':scope > .era-divider')];
   oldLabels.forEach(el=>el.remove());
   const entries=allItems.filter(e=>e.family===family).sort((a,b)=>
-   (a.year||9999)-(b.year||9999)||
+   a.sortYear-b.sortYear||
    (Number(a.work.dataset.initialOrder)||0)-(Number(b.work.dataset.initialOrder)||0));
   let previous='';
   for(const e of entries){
