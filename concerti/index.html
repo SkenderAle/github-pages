@@ -851,8 +851,6 @@ for(const family of families){
   work.dataset.search=normalize((heading?.textContent||'')+' '+work.textContent+' '+family.dataset.label+' '+year);
   if(!hasPlayableAudio(work)){
    missingAudio.push({title:heading?.textContent||'Opera senza ascolto',family:family.id,year});
-   work.hidden=true;
-   continue;
   }
   allItems.push({work,family,year,sortYear:year||epochSortYear[work.dataset.era]||9999,period:work.dataset.period});
  }
@@ -927,7 +925,7 @@ function render(){
   const count=family.querySelector('header span');
   if(count)count.textContent=local+' '+(local===1?'opera':'opere');
  }
- status.textContent=shown+' '+(shown===1?'ascolto':'ascolti')+' · '+guided+' '+(guided===1?'scheda guidata':'schede guidate')+
+ status.textContent=shown+' '+(shown===1?'opera':'opere')+' · '+guided+' '+(guided===1?'scheda guidata':'schede guidate')+
    (selected==='tutti'?' · tutti gli strumenti':' · '+(familyMap.get(selected)?.dataset.label||''));
 }
 function openRecord(id,scroll=true){
