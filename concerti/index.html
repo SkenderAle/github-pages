@@ -223,6 +223,7 @@ header.hero p{max-width:680px}
 #player .player-provenance p{margin:.35rem 0 .65rem;max-width:76ch;color:#eee2e5}
 #player .player-provenance a[hidden]{display:none}
 @media(max-width:580px){#player .player-provenance{max-width:100%}#player .player-information>a{margin-left:0}}
+.listen-original-hidden{display:none!important}
 </style></head><body>
 <header class="hero" id="top"><div class="kicker">Musurgia Mundi · Audioteca per strumenti</div><h1>Il concerto</h1><p>Dal Barocco al Novecento: scegli uno strumento, esplora i concerti in ordine di composizione e apri le schede d'ascolto.</p><small>Strumento · Compositore · Epoca · Opera</small><p class="hero-credit">Pietro Longhi, <em>Il concertino</em> (1741) · <a href="https://commons.wikimedia.org/wiki/File:Accademia_-_Il_concertino_-_Pietro_Longhi.jpg" target="_blank" rel="noopener noreferrer">Gallerie dell’Accademia / Wikimedia Commons ↗</a></p></header>
 <nav class="main" aria-label="Navigazione principale"><div><a href="../">⌂ Home</a><a href="#storia">Introduzione</a><a class="audio" href="#audioteca">♪ Audioteca</a><a href="#criteri">Fonti</a></div></nav>
@@ -957,8 +958,17 @@ for(const work of document.querySelectorAll('#audioteca .work')){
    original.click();
   });
   row.appendChild(quick);
+  // Un solo comando per l'ascolto: il bottone nella scheda resta un
+  // attivatore tecnico, ma non viene visualizzato una seconda volta.
+  original.classList.add('listen-original-hidden');
  }
- work.insertBefore(row,work.querySelector(':scope > details.guided'));
+ const guide=work.querySelector(':scope > details.guided');
+ const summary=guide?.querySelector(':scope > summary');
+ if(summary){
+  summary.textContent=summary.textContent.replace(/^▶\\s*(?:Apri il player qui|Ascolta|Apri l’ascolto e la scheda)(?:\\s*[·:—-]\\s*)?/i,'');
+  summary.textContent='Scheda, interpreti e guida d’ascolto · '+summary.textContent.replace(/^\\s*[·:—-]\\s*/, '');
+ }
+ work.insertBefore(row,guide);
 }
 select.addEventListener('change',()=>{stopPlayer();render()});
 composer.addEventListener('change',()=>{stopPlayer();render()});
