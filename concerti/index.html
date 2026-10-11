@@ -846,8 +846,9 @@ for(const family of families){
   work.dataset.period=headingEra(year,work.dataset.era);
   const heading=work.querySelector('h4');
   const composerName=(heading?.firstChild?.textContent||'').split(' · ')[0].trim()||'Compositore non indicato';
-  work.dataset.composer=normalize(composerName);
-  work.dataset.composerName=composerName;
+  const composerCanonicalName=composerName==='Bohuslav Martinů'?'Martinů':composerName;
+  work.dataset.composer=normalize(composerCanonicalName);
+  work.dataset.composerName=composerCanonicalName;
   work.dataset.search=normalize((heading?.textContent||'')+' '+work.textContent+' '+family.dataset.label+' '+year);
   if(!hasPlayableAudio(work)){
    missingAudio.push({title:heading?.textContent||'Opera senza ascolto',family:family.id,year});
