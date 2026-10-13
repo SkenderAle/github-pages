@@ -154,8 +154,10 @@ for(const [id,g] of Object.entries(guides).sort((a,b)=>(a[1].year||9999)-(b[1].y
  if(Array.isArray(g.chapters)&&g.chapters.length){
   const chapters=document.createElement('div');chapters.className='chapter-row';
   const note=document.createElement('span');note.className='chapter-label';note.textContent='Raggiungi un movimento';chapters.append(note);
-  for(const [second,label] of g.chapters){
-   const jump=document.createElement('button');jump.type='button';jump.className='chapter-button';jump.textContent=label;
+  const repeatedLabels=new Set(g.chapters.map(pair=>pair[1]).filter((name,i,names)=>names.indexOf(name)!==i));
+  for(const [chapterIndex,[second,label]] of g.chapters.entries()){
+   const jump=document.createElement('button');jump.type='button';jump.className='chapter-button';jump.textContent=repeatedLabels.has(label)?(chapterIndex+1)+'. '+label:label;
+   jump.setAttribute('aria-label','Raggiungi il movimento '+(chapterIndex+1)+': '+label);
    jump.addEventListener('click',()=>{
     // Il minutaggio dei capitoli appartiene al video principale, non a riprese alternative.
     if(selectedPart?.video&&selectedPart.video!==g.video){selectedPart=(g.parts||[]).find(p=>p.video===g.video)||null;syncPartButtons()}
