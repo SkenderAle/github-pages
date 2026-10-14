@@ -64,7 +64,29 @@
    button.setAttribute("aria-expanded",String(open));
   }
   button.addEventListener("click",()=>toggle(!bar.classList.contains("atlas-menu-open")));
-  nav.addEventListener("click",event=>{if(event.target.closest("a[href],button.nav-stop"))toggle(false)});
+  nav.addEventListener("click",event=>{
+   const link=event.target.closest("a[href]");
+   if(!link){if(event.target.closest("button.nav-stop"))toggle(false);return;}
+   const href=link.getAttribute("href")||"";
+   if(!href.startsWith("#")||href.length<2){toggle(false);return;}
+   const target=document.getElementById(decodeURIComponent(href.slice(1)));
+   if(!target){toggle(false);return;}
+   event.preventDefault();
+   // Il salto nativo con scroll fluido puo' fermarsi prima della sezione,
+   // specialmente quando il pannello del menu si chiude durante lo scorrimento.
+   toggle(false);
+   const go=()=>{
+    const offset=bar.getBoundingClientRect().height+18;
+    const top=Math.max(0,window.scrollY+target.getBoundingClientRect().top-offset);
+    window.scrollTo({top,behavior:"instant"});
+   };
+   history.pushState(null,"",href);
+   requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    go();
+    // Compensa eventuali riassestamenti del layout nel frame successivo.
+    requestAnimationFrame(go);
+   }));
+  });
   document.addEventListener("pointerdown",event=>{if(!bar.contains(event.target))toggle(false)});
   document.addEventListener("keydown",event=>{
    if(event.key==="Escape"&&bar.classList.contains("atlas-menu-open")){toggle(false);button.focus()}
