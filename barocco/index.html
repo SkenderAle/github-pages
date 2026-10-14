@@ -4381,5 +4381,29 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
   });
 })();
 </script>
-<script src="../shared/atlas-autonav-v1.js?v=20261014-count03" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261014-audit01" defer></script></body>
+<script src="../shared/atlas-autonav-v1.js?v=20261014-count03" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261014-audit01" defer></script><script>
+/* Indice a schede: atterraggio diretto e preciso, indipendente dallo scroll fluido globale. */
+(() => {
+  const grid=document.querySelector('#indice .index-grid');
+  if(!grid)return;
+  grid.addEventListener('click',event=>{
+    const link=event.target.closest('a.index-card[href^="#"]');
+    if(!link||!grid.contains(link))return;
+    const id=decodeURIComponent(link.getAttribute('href').slice(1));
+    const target=document.getElementById(id);
+    if(!target)return;
+    event.preventDefault();
+    history.pushState(null,'','#'+encodeURIComponent(id));
+    const position=()=>{
+      const bar=document.querySelector('.nav-wrap.atlas-autonav');
+      const height=bar?bar.getBoundingClientRect().height:0;
+      const top=Math.max(0,window.scrollY+target.getBoundingClientRect().top-height-18);
+      window.scrollTo({top,behavior:'instant'});
+    };
+    position();
+    requestAnimationFrame(()=>requestAnimationFrame(position));
+  });
+})();
+</script>
+</body>
 </html>
