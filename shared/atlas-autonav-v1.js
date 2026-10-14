@@ -47,6 +47,17 @@
     nav.append(group);
    });
   }
+  // Numerazione continua delle sezioni storiche; esclude servizi e rimandi esterni.
+  let sectionNumber=0;
+  const utilityIds=new Set(["indice","prologo","fonti","bibliografia","verifica","metodo","glossario","archivio","videoteca","per-iniziare"]);
+  nav.querySelectorAll('a[href^="#"]').forEach(link=>{
+   const id=link.getAttribute("href").slice(1);
+   if(utilityIds.has(id))return;
+   if(link.classList.contains("nav-sos")||link.classList.contains("nav-verifica"))return;
+   sectionNumber++;
+   const clean=link.textContent.trim().replace(/^\\d{1,2}\\s*[·.\-–]?\\s*/,"");
+   link.textContent=String(sectionNumber).padStart(2,"0")+" · "+clean;
+  });
   const count=nav.querySelectorAll('a[href^="#"]').length;
   button.replaceChildren(document.createTextNode(page==="home"?"Esplora l’Atlante":"Esplora "+count+" sezioni"),(()=>{
    const arrow=document.createElement("span");arrow.className="atlas-menu-arrow";arrow.setAttribute("aria-hidden","true");arrow.textContent="▾";return arrow;
