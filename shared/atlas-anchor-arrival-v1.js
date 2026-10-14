@@ -1,28 +1,52 @@
-/* Musurgia Mundi · allineamento delle ancore raggiunte da un'altra pagina.
-   Non modifica href, menu o scorrimento dei clic interni. */
+/* Musurgia Mundi — ancore esatte: clic locali e arrivo da altre pagine.
+   Non modifica gli href. Evita i menu che gestiscono già il salto diretto. */
 (()=>{"use strict";
- if(!window.location.hash || window.location.hash.length<2)return;
- let id;try{id=decodeURIComponent(window.location.hash.slice(1))}catch{return}
- let interrupted=false,attempt=0;
+ const barSelector=".atlas-autonav, .nav-wrap, nav.main, nav.site-nav, nav[aria-label='Navigazione']";
+ function offset(){
+   const candidates=[...document.querySelectorAll(barSelector)];
+   let height=0;
+   candidates.forEach(nav=>{
+     const cs=getComputedStyle(nav),rect=nav.getBoundingClientRect();
+     if((cs.position==="sticky"||cs.position==="fixed")&&rect.top>=-8&&rect.top<15)
+       height=Math.max(height,rect.bottom);
+   });
+   return Math.max(0,height)+18;
+ }
+ function position(id){
+   const el=document.getElementById(id);if(!el)return false;
+   const top=Math.max(0,scrollY+el.getBoundingClientRect().top-offset());
+   window.scrollTo({top,behavior:"instant"});
+   return true;
+ }
+ function settle(id){
+   position(id);
+   requestAnimationFrame(()=>requestAnimationFrame(()=>position(id)));
+ }
+ document.addEventListener("click",event=>{
+   if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+   const a=event.target.closest('a[href^="#"]');
+   if(!a||a.getAttribute("href").length<2||a.hasAttribute("download")||a.getAttribute("role")==="tab")return;
+   // Il menu condiviso e quello del Romanticismo calcolano già autonomamente la posizione.
+   if(a.closest(".atlas-autonav, .details-menu, #indice .index-grid"))return;
+   let id;try{id=decodeURIComponent(a.getAttribute("href").slice(1))}catch{return}
+   if(!document.getElementById(id))return;
+   event.preventDefault();
+   event.stopPropagation();
+   history.pushState(null,"","#"+encodeURIComponent(id));
+   settle(id);
+ },true);
+ if(!location.hash||location.hash.length<2)return;
+ let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}
+ let interrupted=false;
  const stop=()=>{interrupted=true};
  ["wheel","touchstart","pointerdown","keydown"].forEach(name=>window.addEventListener(name,stop,{once:true,passive:true}));
  function align(){
-  if(interrupted||location.hash.slice(1)!==encodeURIComponent(id)&&decodeURIComponent(location.hash.slice(1))!==id)return;
-  const el=document.getElementById(id);if(!el)return;
-  const nav=document.querySelector(".atlas-autonav, .nav-wrap, nav.main, nav.site-nav, nav[aria-label='Navigazione']");
-  let offset=16;
-  if(nav){
-   const style=getComputedStyle(nav);
-   if(style.position==="sticky"||style.position==="fixed"){
-    const rect=nav.getBoundingClientRect();
-    if(rect.top<12)offset+=Math.max(0,rect.height);
-   }
-  }
-  const pos=Math.max(0,window.scrollY+el.getBoundingClientRect().top-offset);
-  if(Math.abs(window.scrollY-pos)>3)window.scrollTo({top:pos,behavior:"instant"});
+   if(interrupted)return;
+   let current;try{current=decodeURIComponent(location.hash.slice(1))}catch{return}
+   if(current!==id)return;
+   position(id);
  }
- // Layout, immagini e font possono spostare le sezioni dopo il primo salto nativo.
- function schedule(){if(interrupted)return;requestAnimationFrame(()=>requestAnimationFrame(align))}
+ function schedule(){if(!interrupted)requestAnimationFrame(()=>requestAnimationFrame(align))}
  schedule();
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",schedule,{once:true});
  if(document.readyState!=="complete")window.addEventListener("load",schedule,{once:true});
