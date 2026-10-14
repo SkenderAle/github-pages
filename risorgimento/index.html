@@ -1160,14 +1160,8 @@
     activeId=current.id;
     links.forEach(a=>a.classList.toggle('active',a===current.a));
 
-    // Se il menu orizzontale è stretto, porta dolcemente in vista la voce attiva.
-    const left=current.a.offsetLeft;
-    const right=left+current.a.offsetWidth;
-    const viewLeft=navEl.scrollLeft;
-    const viewRight=viewLeft+navEl.clientWidth;
-    if(left<viewLeft+8 || right>viewRight-8){
-      current.a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-    }
+    // La voce attiva viene evidenziata, senza spostare il documento.
+    // Il vecchio scrollIntoView del menu orizzontale non serve al menu a pannello.
   }
 
   function scheduleSpy(){
