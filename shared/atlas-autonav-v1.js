@@ -55,7 +55,7 @@
    if(utilityIds.has(id))return;
    if(link.classList.contains("nav-sos")||link.classList.contains("nav-verifica"))return;
    sectionNumber++;
-   const clean=link.textContent.trim().replace(/^\\d{1,2}\\s*[·.\-–]?\\s*/,"");
+   const clean=link.textContent.trim().replace(/^\d{1,2}\s*[·.\-–]?\s*/,"");
    link.textContent=String(sectionNumber).padStart(2,"0")+" · "+clean;
   });
   const count=nav.querySelectorAll('a[href^="#"]').length;
