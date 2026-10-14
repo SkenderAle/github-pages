@@ -58,8 +58,8 @@
    const clean=link.textContent.trim().replace(/^\d{1,2}\s*[·.\-–]?\s*/,"");
    link.textContent=String(sectionNumber).padStart(2,"0")+" · "+clean;
   });
-  const count=nav.querySelectorAll('a[href^="#"]').length;
-  button.replaceChildren(document.createTextNode(page==="home"?"Esplora l’Atlante":"Esplora "+count+" sezioni"),(()=>{
+  // Il comando indica i capitoli effettivi, non le voci di servizio.
+  button.replaceChildren(document.createTextNode(page==="home"?"Esplora l’Atlante":"Esplora "+sectionNumber+" capitoli"),(()=>{
    const arrow=document.createElement("span");arrow.className="atlas-menu-arrow";arrow.setAttribute("aria-hidden","true");arrow.textContent="▾";return arrow;
   })());
   const context=document.createElement("span");
