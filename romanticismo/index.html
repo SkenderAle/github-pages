@@ -93,6 +93,13 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 .quadri-performance p{font:1rem/1.7 var(--sans);margin:.8rem 0}
 .quadri-video{position:relative;aspect-ratio:16/9;width:100%;background:#141c24;border:1px solid #b7c5bb;overflow:hidden}
 .quadri-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.quadri-video-launch{position:absolute;inset:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.7rem;border:0;cursor:pointer;padding:1.3rem;background:radial-gradient(ellipse at 50% 35%,#334e53 0,#192930 65%,#111b24 100%);color:#fff;font:750 clamp(1rem,2.2vw,1.28rem)/1.35 var(--sans)}
+.quadri-video-launch .quadri-play-symbol{display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;border:2px solid #f3ead6;background:#405f61;font-size:1.5rem}
+.quadri-video-launch small{font:400 .85rem/1.5 var(--sans);max-width:45ch;color:#d9e4de}
+.quadri-video-launch:hover .quadri-play-symbol,.quadri-video-launch:focus-visible .quadri-play-symbol{background:#5c8180}
+.quadri-video-launch:focus-visible,.quadri-player-close:focus-visible{outline:3px solid #edd293;outline-offset:-4px}
+.quadri-player-close{display:inline-flex;align-items:center;gap:.4rem;margin:.6rem 0 0;border:1px solid #5b796d;background:#f4f8f2;color:#25493c;padding:.65rem .8rem;font:750 .84rem/1.4 var(--sans);cursor:pointer}
+.quadri-player-close[hidden]{display:none}
 .quadri-performance-meta{font:.81rem/1.6 var(--sans);color:#425c54}
 .quadri-stop-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem .85rem;margin:1rem 0;padding:0;list-style:none}
 .quadri-stop-list li{border-top:1px solid #b9ccc2;padding:.55rem .3rem}
@@ -613,10 +620,13 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <div class="eyebrow">♪ Audioguida · Una sola interpretazione dall'inizio alla fine</div>
 <h4 id="quadri-ascolto-title">Ascolta i <i>Quadri</i> originali al pianoforte</h4>
 <p><strong>Modest Musorgskij, <i>Quadri di un'esposizione</i> (1874)</strong> · <strong>Thormod Rønning Kvam</strong>, pianoforte. Esecuzione integrale dal vivo alla Duke's Hall della Royal Academy of Music, Londra, 11 settembre 2017. Pubblicazione: Kulturinkubator AS su Vimeo.</p>
-<div class="quadri-video"><iframe src="https://player.vimeo.com/video/454352656?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1&amp;autoplay=0" title="Musorgskij · Quadri di un'esposizione, versione integrale per pianoforte solo — Thormod Rønning Kvam" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></div>
-<p class="quadri-performance-meta">Il video è incorporato nella pagina ma <strong>non parte automaticamente</strong>: premi Play nel lettore quando vuoi ascoltare, senza aprire un'altra scheda. Se il servizio esterno non lo permette sul tuo dispositivo, resta disponibile il <a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">collegamento diretto alla registrazione originale ↗</a>. La presenza del video e dei metadati è stata verificata alla fonte; <strong>la riproduzione incorporata va ancora collaudata sul sito da dispositivi reali</strong>.</p>
+<div class="quadri-video" id="quadri-video-stage">
+<button class="quadri-video-launch" type="button" id="quadri-video-load" aria-controls="quadri-video-stage"><span class="quadri-play-symbol" aria-hidden="true">▶</span><span>Carica il lettore dei <i>Quadri</i></span><small>Il video esterno si carica soltanto con questo clic. Dopo, premi Play per iniziare l'ascolto.</small></button>
+</div>
+<button class="quadri-player-close" id="quadri-video-close" type="button" hidden>■ Ferma e chiudi il lettore</button>
+<p class="quadri-performance-meta">Il lettore <strong>non si carica e non suona entrando o scorrendo la pagina</strong>. Premi «Carica il lettore», poi Play nel video quando vuoi ascoltare, senza aprire un'altra scheda. Se il servizio esterno non lo permette sul tuo dispositivo, resta disponibile il <a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">collegamento diretto alla registrazione originale ↗</a>. La presenza del video e dei metadati è stata verificata alla fonte; <strong>la riproduzione incorporata va ancora collaudata sul sito da dispositivi reali</strong>.</p>
 <h5 style="font:650 1.13rem/1.3 var(--serif);color:#3d5e54;margin:1.6rem 0 .7rem">I dieci incontri della passeggiata</h5>
-<p>Segui questa sequenza durante l'ascolto integrale. <strong>Non sono marcatori temporali del video:</strong> per non attribuire minuti sbagliati a una registrazione, la selezione delle singole tracce verrà abilitata solo dopo il controllo della timeline. L'indicazione «immagine conservata» rimanda direttamente alla scheda iconografica.</p>
+<p>Segui questa sequenza durante l'ascolto integrale. <strong>Non sono marcatori temporali del video:</strong> il canale che pubblica questa esecuzione non fornisce una cronologia verificabile dei singoli pezzi. Le durate di altri pianisti e le sequenze dell'orchestrazione di Ravel non sono trasferibili qui. La selezione temporale delle singole tracce verrà abilitata solo dopo il controllo della timeline. L'indicazione «immagine conservata» rimanda direttamente alla scheda iconografica.</p>
 <ol class="quadri-stop-list">
 <li><b>1 · Gnomus</b><small>Gesto grottesco, strappi ritmici, pause.</small><a href="#quadri-immagini">Immagine perduta · Leggi il metodo</a></li>
 <li><b>2 · Il vecchio castello</b><small>Il canto nostalgico evocato da un paesaggio medievale.</small><a href="#quadri-viaggi">Viaggio immaginario</a></li>
@@ -630,7 +640,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <li><b>10 · Grande Porta di Kyiv</b><small>Monumentalità costruita con il solo pianoforte.</small><a href="#quadri-hartmann-porta">Osserva il progetto ↗</a></li>
 </ol>
 <p>Le <strong><i>Promenades</i></strong> ritornano e mutano lungo la successione: non le abbiamo contate come quadri autonomi. Un esercizio efficace consiste nell'ascoltarne il primo enunciato e poi riconoscere la trasformazione presso <i>Cum mortuis in lingua mortua</i>.</p>
-<p class="form-sources"><a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">Fonte della registrazione · Kulturinkubator AS ↗</a><a href="https://www.gresham.ac.uk/watch-now/musorgsky-piano" target="_blank" rel="noopener noreferrer">Per approfondire · Gresham College, Frolova-Walker e Donohoe ↗</a></p>
+<p class="form-sources"><a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">Fonte della registrazione · Kulturinkubator AS ↗</a><a href="https://imslp.org/wiki/Pictures_at_an_Exhibition_(Mussorgsky%2C_Modest)" target="_blank" rel="noopener noreferrer">Partitura e autografo del 1874 · IMSLP ↗</a><a href="https://www.gresham.ac.uk/watch-now/musorgsky-piano" target="_blank" rel="noopener noreferrer">Per approfondire · Gresham College, Frolova-Walker e Donohoe ↗</a></p>
 </section>
 <section class="form-bridge" id="quadri-immagini" aria-labelledby="quadri-immagini-title">
 <div class="eyebrow">✦ Metodo delle fonti · Non inventiamo i quadri</div>
@@ -741,6 +751,28 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 </div>
 <script>
 (()=>{
+// L'integrale pianistica non effettua richieste al player fino a un gesto esplicito.
+const quadriStage=document.getElementById('quadri-video-stage');
+const quadriLoad=document.getElementById('quadri-video-load');
+const quadriClose=document.getElementById('quadri-video-close');
+if(quadriStage && quadriLoad && quadriClose){
+  quadriLoad.addEventListener('click',()=>{
+    const iframe=document.createElement('iframe');
+    iframe.src='https://player.vimeo.com/video/454352656?title=0&byline=0&portrait=0&dnt=1&autoplay=0';
+    iframe.title="Musorgskij · Quadri di un'esposizione, pianoforte solo — Thormod Rønning Kvam";
+    iframe.referrerPolicy='strict-origin-when-cross-origin';
+    iframe.allow='fullscreen; picture-in-picture; encrypted-media';
+    iframe.allowFullscreen=true;
+    iframe.setAttribute('loading','eager');
+    quadriStage.replaceChildren(iframe);
+    quadriClose.hidden=false;
+  });
+  quadriClose.addEventListener('click',()=>{
+    quadriStage.replaceChildren(quadriLoad);
+    quadriClose.hidden=true;
+    quadriLoad.focus();
+  });
+}
 const menu=document.getElementById('indice-menu');
 document.querySelectorAll('.menu-panel a').forEach(a=>a.addEventListener('click',()=>{menu.open=false}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus()}});
