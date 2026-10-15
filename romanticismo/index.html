@@ -634,7 +634,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <button class="quadri-alternative" id="quadri-video-kvam" type="button">♫ Ascolta invece Thormod Rønning Kvam (integrale Vimeo)</button>
 </div>
 <p class="quadri-play-status" id="quadri-play-status" role="status">Lettore non caricato: nessuna riproduzione automatica.</p>
-<p class="quadri-performance-meta">Il lettore <strong>non viene caricato entrando o scorrendo la pagina</strong>. «Carica» e i pulsanti «Vai a» preparano il punto selezionato <strong>senza suonare</strong>: poi premi Play all'interno del video. «Ferma e chiudi» arresta la riproduzione rimuovendo il lettore. Puoi cambiare interpretazione, ma i marcatori temporali appartengono <strong>solo all'esecuzione di Avdeeva</strong>. Se un servizio esterno blocca l'incorporamento, puoi usare <a href="https://www.youtube.com/watch?v=F1pk1MzX61Q" target="_blank" rel="noopener noreferrer">il video di Avdeeva ↗</a> o <a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">quello di Kvam ↗</a>.</p>
+<p class="quadri-performance-meta">Il video originale di Avdeeva comprende anche un bis di Čajkovskij a partire da <strong>35:49</strong>: il lettore della lezione si ferma lì, al termine dei <i>Quadri</i>. Il lettore <strong>non viene caricato entrando o scorrendo la pagina</strong>. «Carica» e i pulsanti «Vai a» preparano il punto selezionato <strong>senza suonare</strong>: poi premi Play all'interno del video. «Ferma e chiudi» arresta la riproduzione rimuovendo il lettore. Puoi cambiare interpretazione, ma i marcatori temporali appartengono <strong>solo all'esecuzione di Avdeeva</strong>. Se un servizio esterno blocca l'incorporamento, puoi usare <a href="https://www.youtube.com/watch?v=F1pk1MzX61Q" target="_blank" rel="noopener noreferrer">il video di Avdeeva ↗</a> o <a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">quello di Kvam ↗</a>.</p>
 <h5 style="font:650 1.13rem/1.3 var(--serif);color:#3d5e54;margin:1.6rem 0 .7rem">I dieci incontri della passeggiata</h5>
 <p><strong>Vai direttamente al quadro desiderato:</strong> i dieci pulsanti collocano il lettore di <strong>Avdeeva</strong> al minuto riportato nella descrizione del suo video originale. Non fanno partire la musica: occorre premere Play. I collegamenti «Osserva» restano invece dedicati ai disegni di Hartmann. Le <i>Promenades</i>, che non sono quadri autonomi, sono indicate separatamente qui sotto.</p>
 <ol class="quadri-stop-list">
@@ -773,7 +773,7 @@ if(quadriStage && quadriLoad && quadriClose && quadriKvam && quadriStatus){
     // Nessun iframe esiste prima di un clic; nessuna selezione avvia l'audio.
     const iframe=document.createElement('iframe');
     if(source==='avdeeva'){
-      iframe.src='https://www.youtube-nocookie.com/embed/F1pk1MzX61Q?rel=0&playsinline=1&controls=1&autoplay=0&start='+Math.max(0,Math.floor(start));
+      iframe.src='https://www.youtube-nocookie.com/embed/F1pk1MzX61Q?rel=0&playsinline=1&controls=1&autoplay=0&end=2149&start='+Math.max(0,Math.floor(start));
       iframe.title='Musorgskij · Quadri per pianoforte — Yulianna Avdeeva · '+label;
     }else{
       iframe.src='https://player.vimeo.com/video/454352656?title=0&byline=0&portrait=0&dnt=1&autoplay=0';
