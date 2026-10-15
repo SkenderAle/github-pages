@@ -574,9 +574,9 @@ if(massFrame&&massButtons.length){
   massButtons.forEach(btn=>{
     btn.addEventListener('click',()=>{
       const start=btn.dataset.massStart;
-      massFrame.src='https://www.youtube-nocookie.com/embed/6iQD0Vuy-W8?start='+start+'&autoplay=1';
+      massFrame.src='https://www.youtube-nocookie.com/embed/6iQD0Vuy-W8?start='+start+'&autoplay=0';
       massButtons.forEach(b=>b.classList.toggle('active',b===btn));
-      if(massNow)massNow.textContent='Selezionato: '+massNames[start]+'.';
+      if(massNow)massNow.textContent='Selezionato: '+massNames[start]+'. Premi Play nel video per avviare l’ascolto.';
     });
   });
 }

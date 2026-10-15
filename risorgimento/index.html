@@ -1103,7 +1103,7 @@
     const start=parseInt(el.dataset.start||'0',10) || 0;
     const u=`https://www.youtube.com/watch?v=${id}${start ? '&t='+start+'s' : ''}`;
     const embed=`https://www.youtube-nocookie.com/embed/${id}?rel=0${start ? '&start='+start : ''}`;
-    showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
+    showModal(t,`<iframe src="${embed}" title="${t}" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,u);
   }));
 
   document.querySelectorAll('.audio').forEach(el=>el.addEventListener('click',()=>{

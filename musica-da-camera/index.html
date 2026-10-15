@@ -65,7 +65,7 @@ selectEnsemble(3);
 function paragraph(text,cls){const p=document.createElement('p');if(cls)p.className=cls;p.textContent=text;return p}
 function embedUrl(g,start=0,videoId=g.video,segmentEnd=g.end){
  const begin=Math.max(0,Number(start)||0),end=Number(segmentEnd)||0;
- return 'https://www.youtube-nocookie.com/embed/'+videoId+'?rel=0&playsinline=1&controls=1&autoplay=1'+(begin?'&start='+begin:'')+(end>begin?'&end='+end:'');
+ return 'https://www.youtube-nocookie.com/embed/'+videoId+'?rel=0&playsinline=1&controls=1&autoplay=0'+(begin?'&start='+begin:'')+(end>begin?'&end='+end:'');
 }
 const mainVideoCounts={};for(const g of Object.values(guides))mainVideoCounts[g.video]=(mainVideoCounts[g.video]||0)+1;
 const mainVideoCount=Object.keys(mainVideoCounts).length;
@@ -75,9 +75,9 @@ let currentPlayer=null,currentPlayButton=null;
 for(const [id,g] of Object.entries(guides).sort((a,b)=>(a[1].year||9999)-(b[1].year||9999))){
  const article=document.createElement('article');article.className='listen-card';article.id='guida-'+id;
  const head=document.createElement('h3');head.textContent=g.title;article.append(head);
- if(mainVideoCounts[g.video]>1)article.append(paragraph('Registrazione condivisa con '+(mainVideoCounts[g.video]-1)+' altre guide: l’ascolto inizia dal punto assegnato a quest’opera.','album-note'));
+ if(mainVideoCounts[g.video]>1)article.append(paragraph('Registrazione condivisa con '+(mainVideoCounts[g.video]-1)+' altre guide: il player si apre dal punto assegnato a quest’opera, senza avviare la riproduzione.','album-note'));
  article.append(paragraph(g.credits,'credits'),paragraph('✦ Per iniziare. '+g.q.replace(/^(?:✦\s*)?Per iniziare\s*[.:]\s*/i,''),'question'),paragraph('Durante l’ascolto. '+g.during.replace(/^Durante l[’']ascolto\s*[.:]\s*/i,''),'during'));
- const button=document.createElement('button');button.type='button';button.textContent='▶ Ascolta qui';
+ const button=document.createElement('button');button.type='button';button.textContent='▶ Apri il lettore';
  const area=document.createElement('div');area.className='player-area';
  let selectedPart=Array.isArray(g.parts)?g.parts[0]:null;
  let partButtons=[];
@@ -85,12 +85,12 @@ for(const [id,g] of Object.entries(guides).sort((a,b)=>(a[1].year||9999)-(b[1].y
  function closeThisPlayer(){
   area.replaceChildren();
   if(currentPlayer===area){currentPlayer=null;currentPlayButton=null}
-  button.textContent='▶ Ascolta qui';
+  button.textContent='▶ Apri il lettore';
  }
  function mountPlayer(seek){
   if(currentPlayer){
    currentPlayer.replaceChildren();
-   if(currentPlayButton)currentPlayButton.textContent='▶ Ascolta qui';
+   if(currentPlayButton)currentPlayButton.textContent='▶ Apri il lettore';
   }
   const selectedVideo=selectedPart?.video||g.video;
   const selectedStart=Math.max(0,Number(seek??selectedPart?.start??g.start??0)||0);
@@ -107,12 +107,12 @@ for(const [id,g] of Object.entries(guides).sort((a,b)=>(a[1].year||9999)-(b[1].y
   const iframe=document.createElement('iframe');
   iframe.title=g.title;
   iframe.src=embedUrl(g,selectedStart,selectedVideo,selectedEnd);
-  iframe.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+  iframe.allow='encrypted-media; picture-in-picture; fullscreen';
   iframe.referrerPolicy='strict-origin-when-cross-origin';
   iframe.allowFullscreen=true;iframe.loading='eager';
   area.append(bar,iframe);
   currentPlayer=area;currentPlayButton=button;
-  button.textContent='■ Ferma';
+  button.textContent='■ Chiudi il lettore';
   area.scrollIntoView({behavior:'smooth',block:'nearest'});
  }
  button.addEventListener('click',()=>{
