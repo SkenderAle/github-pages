@@ -100,6 +100,12 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 .quadri-video-launch:focus-visible,.quadri-player-close:focus-visible{outline:3px solid #edd293;outline-offset:-4px}
 .quadri-player-close{display:inline-flex;align-items:center;gap:.4rem;margin:.6rem 0 0;border:1px solid #5b796d;background:#f4f8f2;color:#25493c;padding:.65rem .8rem;font:750 .84rem/1.4 var(--sans);cursor:pointer}
 .quadri-player-close[hidden]{display:none}
+.quadri-performance .quadri-choices{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin:.6rem 0}
+.quadri-alternative{border:1px solid #88a39b;background:#f7f9f4;color:#2c5347;padding:.65rem .8rem;cursor:pointer;font:700 .83rem/1.4 var(--sans)}
+.quadri-alternative:focus-visible,.quadri-seek:focus-visible{outline:3px solid #365950;outline-offset:3px}
+.quadri-seek{display:inline-flex;align-items:center;border:1px solid #5c796f;background:#f1f5ef;color:#27483f;border-radius:3px;padding:.45rem .65rem;margin:.3rem .5rem .2rem 0;cursor:pointer;font:750 .78rem/1.4 var(--sans)}
+.quadri-seek:hover,.quadri-alternative:hover{background:#deebe3}
+.quadri-play-status{font:.86rem/1.55 var(--sans);color:#305548;margin:.45rem 0}
 .quadri-performance-meta{font:.81rem/1.6 var(--sans);color:#425c54}
 .quadri-stop-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem .85rem;margin:1rem 0;padding:0;list-style:none}
 .quadri-stop-list li{border-top:1px solid #b9ccc2;padding:.55rem .3rem}
@@ -617,30 +623,34 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 </section>
 
 <section class="quadri-performance" id="quadri-ascolto-integrale" aria-labelledby="quadri-ascolto-title">
-<div class="eyebrow">♪ Audioguida · Una sola interpretazione dall'inizio alla fine</div>
+<div class="eyebrow">♪ Audioguida · Pianoforte originale, indice navigabile</div>
 <h4 id="quadri-ascolto-title">Ascolta i <i>Quadri</i> originali al pianoforte</h4>
-<p><strong>Modest Musorgskij, <i>Quadri di un'esposizione</i> (1874)</strong> · <strong>Thormod Rønning Kvam</strong>, pianoforte. Esecuzione integrale dal vivo alla Duke's Hall della Royal Academy of Music, Londra, 11 settembre 2017. Pubblicazione: Kulturinkubator AS su Vimeo.</p>
+<p><strong>Registrazione principale: Yulianna Avdeeva</strong>, pianoforte, dal vivo alla Filarmonica di San Pietroburgo, 13 giugno 2019. Il <a href="https://www.youtube.com/watch?v=F1pk1MzX61Q" target="_blank" rel="noopener noreferrer">video pubblicato dalla pianista</a> contiene nella descrizione i punti di partenza di tutti e dieci i <i>Quadri</i> e delle <i>Promenades</i>. I salti qui sotto sono ricavati da <strong>quella registrazione</strong>, non da quella di Ravel né da esecuzioni di altri pianisti.</p>
 <div class="quadri-video" id="quadri-video-stage">
-<button class="quadri-video-launch" type="button" id="quadri-video-load" aria-controls="quadri-video-stage"><span class="quadri-play-symbol" aria-hidden="true">▶</span><span>Carica il lettore dei <i>Quadri</i></span><small>Il video esterno si carica soltanto con questo clic. Dopo, premi Play per iniziare l'ascolto.</small></button>
+<button class="quadri-video-launch" type="button" id="quadri-video-load" aria-controls="quadri-video-stage"><span class="quadri-play-symbol" aria-hidden="true">▶</span><span>Carica la registrazione indicizzata</span><small>Yulianna Avdeeva · pianoforte. Il video si prepara ma <strong>non</strong> parte: per ascoltare, premi Play.</small></button>
 </div>
+<div class="quadri-choices">
 <button class="quadri-player-close" id="quadri-video-close" type="button" hidden>■ Ferma e chiudi il lettore</button>
-<p class="quadri-performance-meta">Il lettore <strong>non si carica e non suona entrando o scorrendo la pagina</strong>. Premi «Carica il lettore», poi Play nel video quando vuoi ascoltare, senza aprire un'altra scheda. Se il servizio esterno non lo permette sul tuo dispositivo, resta disponibile il <a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">collegamento diretto alla registrazione originale ↗</a>. La presenza del video e dei metadati è stata verificata alla fonte; <strong>la riproduzione incorporata va ancora collaudata sul sito da dispositivi reali</strong>.</p>
+<button class="quadri-alternative" id="quadri-video-kvam" type="button">♫ Ascolta invece Thormod Rønning Kvam (integrale Vimeo)</button>
+</div>
+<p class="quadri-play-status" id="quadri-play-status" role="status">Lettore non caricato: nessuna riproduzione automatica.</p>
+<p class="quadri-performance-meta">Il lettore <strong>non viene caricato entrando o scorrendo la pagina</strong>. «Carica» e i pulsanti «Vai a» preparano il punto selezionato <strong>senza suonare</strong>: poi premi Play all'interno del video. «Ferma e chiudi» arresta la riproduzione rimuovendo il lettore. Puoi cambiare interpretazione, ma i marcatori temporali appartengono <strong>solo all'esecuzione di Avdeeva</strong>. Se un servizio esterno blocca l'incorporamento, puoi usare <a href="https://www.youtube.com/watch?v=F1pk1MzX61Q" target="_blank" rel="noopener noreferrer">il video di Avdeeva ↗</a> o <a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">quello di Kvam ↗</a>.</p>
 <h5 style="font:650 1.13rem/1.3 var(--serif);color:#3d5e54;margin:1.6rem 0 .7rem">I dieci incontri della passeggiata</h5>
-<p>Segui questa sequenza durante l'ascolto integrale. <strong>Non sono marcatori temporali del video:</strong> il canale che pubblica questa esecuzione non fornisce una cronologia verificabile dei singoli pezzi. Le durate di altri pianisti e le sequenze dell'orchestrazione di Ravel non sono trasferibili qui. La selezione temporale delle singole tracce verrà abilitata solo dopo il controllo della timeline. L'indicazione «immagine conservata» rimanda direttamente alla scheda iconografica.</p>
+<p><strong>Vai direttamente al quadro desiderato:</strong> i dieci pulsanti collocano il lettore di <strong>Avdeeva</strong> al minuto riportato nella descrizione del suo video originale. Non fanno partire la musica: occorre premere Play. I collegamenti «Osserva» restano invece dedicati ai disegni di Hartmann. Le <i>Promenades</i>, che non sono quadri autonomi, sono indicate separatamente qui sotto.</p>
 <ol class="quadri-stop-list">
-<li><b>1 · Gnomus</b><small>Gesto grottesco, strappi ritmici, pause.</small><a href="#quadri-immagini">Immagine perduta · Leggi il metodo</a></li>
-<li><b>2 · Il vecchio castello</b><small>Il canto nostalgico evocato da un paesaggio medievale.</small><a href="#quadri-viaggi">Viaggio immaginario</a></li>
-<li><b>3 · Tuileries</b><small>La vivacità dei bambini, le frasi brevi e dialoganti.</small><a href="#quadri-viaggi">Parigi immaginata</a></li>
-<li><b>4 · Bydło</b><small>La pesantezza e il passo del carro, dinamica e registro.</small><a href="#quadri-viaggi">La Polonia nel percorso</a></li>
-<li><b>5 · Pulcini nei gusci</b><small>Staccati, trilli e piccoli balzi.</small><a href="#quadri-hartmann-pulcini">Osserva il bozzetto ↗</a></li>
-<li><b>6 · Due personaggi di Sandomierz</b><small>Registro grave e voce acuta, dialogo e sovrapposizione.</small><a href="#quadri-hartmann-ritratti">Osserva i due disegni ↗</a></li>
-<li><b>7 · Limoges, il mercato</b><small>Ritmi serrati, scambi e brusco mutamento di scena.</small><a href="#quadri-viaggi">Leggi il contesto musicale</a></li>
-<li><b>8 · Catacombae</b><small>Accordi e silenzi; poi la <i>Promenade</i> trasfigurata.</small><a href="#quadri-hartmann-catacombe">Osserva l'acquerello ↗</a></li>
-<li><b>9 · Baba Jaga</b><small>Corse, contrasti e fantasticheria.</small><a href="#quadri-hartmann-baba-jaga">Osserva l'orologio ↗</a></li>
-<li><b>10 · Grande Porta di Kyiv</b><small>Monumentalità costruita con il solo pianoforte.</small><a href="#quadri-hartmann-porta">Osserva il progetto ↗</a></li>
+<li><b>1 · Gnomus</b><button type="button" class="quadri-seek" data-quadri-start="128" data-quadri-label="1 · Gnomus">▶ Vai a 2:08 (senza avvio)</button><small>Gesto grottesco, strappi ritmici, pause.</small><a href="#quadri-immagini">Immagine perduta · Leggi il metodo</a></li>
+<li><b>2 · Il vecchio castello</b><button type="button" class="quadri-seek" data-quadri-start="331" data-quadri-label="2 · Il vecchio castello">▶ Vai a 5:31 (senza avvio)</button><small>Il canto nostalgico evocato da un paesaggio medievale.</small><a href="#quadri-viaggi">Viaggio immaginario</a></li>
+<li><b>3 · Tuileries</b><button type="button" class="quadri-seek" data-quadri-start="604" data-quadri-label="3 · Tuileries">▶ Vai a 10:04 (senza avvio)</button><small>La vivacità dei bambini, le frasi brevi e dialoganti.</small><a href="#quadri-viaggi">Parigi immaginata</a></li>
+<li><b>4 · Bydło</b><button type="button" class="quadri-seek" data-quadri-start="665" data-quadri-label="4 · Bydło">▶ Vai a 11:05 (senza avvio)</button><small>La pesantezza e il passo del carro, dinamica e registro.</small><a href="#quadri-viaggi">La Polonia nel percorso</a></li>
+<li><b>5 · Pulcini nei gusci</b><button type="button" class="quadri-seek" data-quadri-start="908" data-quadri-label="5 · Pulcini nei gusci">▶ Vai a 15:08 (senza avvio)</button><small>Staccati, trilli e piccoli balzi.</small><a href="#quadri-hartmann-pulcini">Osserva il bozzetto ↗</a></li>
+<li><b>6 · Due personaggi di Sandomierz</b><button type="button" class="quadri-seek" data-quadri-start="981" data-quadri-label="6 · Due personaggi di Sandomierz">▶ Vai a 16:21 (senza avvio)</button><small>Registro grave e voce acuta, dialogo e sovrapposizione.</small><a href="#quadri-hartmann-ritratti">Osserva i due disegni ↗</a></li>
+<li><b>7 · Limoges, il mercato</b><button type="button" class="quadri-seek" data-quadri-start="1195" data-quadri-label="7 · Limoges, il mercato">▶ Vai a 19:55 (senza avvio)</button><small>Ritmi serrati, scambi e brusco mutamento di scena.</small><a href="#quadri-viaggi">Leggi il contesto musicale</a></li>
+<li><b>8 · Catacombae</b><button type="button" class="quadri-seek" data-quadri-start="1279" data-quadri-label="8 · Catacombae">▶ Vai a 21:19 (senza avvio)</button><small>Accordi e silenzi; poi la <i>Promenade</i> trasfigurata.</small><a href="#quadri-hartmann-catacombe">Osserva l'acquerello ↗</a></li>
+<li><b>9 · Baba Jaga</b><button type="button" class="quadri-seek" data-quadri-start="1506" data-quadri-label="9 · Baba Jaga">▶ Vai a 25:06 (senza avvio)</button><small>Corse, contrasti e fantasticheria.</small><a href="#quadri-hartmann-baba-jaga">Osserva l'orologio ↗</a></li>
+<li><b>10 · Grande Porta di Kyiv</b><button type="button" class="quadri-seek" data-quadri-start="1706" data-quadri-label="10 · Grande Porta di Kyiv">▶ Vai a 28:26 (senza avvio)</button><small>Monumentalità costruita con il solo pianoforte.</small><a href="#quadri-hartmann-porta">Osserva il progetto ↗</a></li>
 </ol>
-<p>Le <strong><i>Promenades</i></strong> ritornano e mutano lungo la successione: non le abbiamo contate come quadri autonomi. Un esercizio efficace consiste nell'ascoltarne il primo enunciato e poi riconoscere la trasformazione presso <i>Cum mortuis in lingua mortua</i>.</p>
-<p class="form-sources"><a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">Fonte della registrazione · Kulturinkubator AS ↗</a><a href="https://imslp.org/wiki/Pictures_at_an_Exhibition_(Mussorgsky%2C_Modest)" target="_blank" rel="noopener noreferrer">Partitura e autografo del 1874 · IMSLP ↗</a><a href="https://www.gresham.ac.uk/watch-now/musorgsky-piano" target="_blank" rel="noopener noreferrer">Per approfondire · Gresham College, Frolova-Walker e Donohoe ↗</a></p>
+<p>Le <strong><i>Promenades</i></strong> ritornano e mutano lungo la successione: non le abbiamo contate come quadri autonomi. Puoi raggiungerle nell'esecuzione di Avdeeva: <button type="button" class="quadri-seek" data-quadri-start="49" data-quadri-label="Promenade iniziale">Inizio · 0:49</button><button type="button" class="quadri-seek" data-quadri-start="282" data-quadri-label="Seconda Promenade">4:42</button><button type="button" class="quadri-seek" data-quadri-start="580" data-quadri-label="Terza Promenade">9:40</button><button type="button" class="quadri-seek" data-quadri-start="870" data-quadri-label="Quarta Promenade">14:30</button><button type="button" class="quadri-seek" data-quadri-start="1121" data-quadri-label="Quinta Promenade">18:41</button>. Ancora più significativa è la trasformazione della <i>Promenade</i> in <i>Cum mortuis in lingua mortua</i>: <button type="button" class="quadri-seek" data-quadri-start="1394" data-quadri-label="Cum mortuis in lingua mortua">23:14</button>. Ogni selezione resta in pausa finché non premi Play.</p>
+<p class="form-sources"><a href="https://www.youtube.com/watch?v=F1pk1MzX61Q" target="_blank" rel="noopener noreferrer">Avdeeva · Video e minutaggi ufficiali ↗</a><a href="https://vimeo.com/454352656" target="_blank" rel="noopener noreferrer">Kvam · Interpretazione integrale alternativa ↗</a><a href="https://imslp.org/wiki/Pictures_at_an_Exhibition_(Mussorgsky%2C_Modest)" target="_blank" rel="noopener noreferrer">Partitura e autografo del 1874 · IMSLP ↗</a><a href="https://www.gresham.ac.uk/watch-now/musorgsky-piano" target="_blank" rel="noopener noreferrer">Per approfondire · Gresham College ↗</a></p>
 </section>
 <section class="form-bridge" id="quadri-immagini" aria-labelledby="quadri-immagini-title">
 <div class="eyebrow">✦ Metodo delle fonti · Non inventiamo i quadri</div>
@@ -755,21 +765,38 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 const quadriStage=document.getElementById('quadri-video-stage');
 const quadriLoad=document.getElementById('quadri-video-load');
 const quadriClose=document.getElementById('quadri-video-close');
-if(quadriStage && quadriLoad && quadriClose){
-  quadriLoad.addEventListener('click',()=>{
+const quadriKvam=document.getElementById('quadri-video-kvam');
+const quadriStatus=document.getElementById('quadri-play-status');
+const quadriSeekButtons=[...document.querySelectorAll('[data-quadri-start]')];
+if(quadriStage && quadriLoad && quadriClose && quadriKvam && quadriStatus){
+  function mountQuadri(source='avdeeva',start=49,label='Promenade iniziale'){
+    // Nessun iframe esiste prima di un clic; nessuna selezione avvia l'audio.
     const iframe=document.createElement('iframe');
-    iframe.src='https://player.vimeo.com/video/454352656?title=0&byline=0&portrait=0&dnt=1&autoplay=0';
-    iframe.title="Musorgskij · Quadri di un'esposizione, pianoforte solo — Thormod Rønning Kvam";
+    if(source==='avdeeva'){
+      iframe.src='https://www.youtube-nocookie.com/embed/F1pk1MzX61Q?rel=0&playsinline=1&controls=1&autoplay=0&start='+Math.max(0,Math.floor(start));
+      iframe.title='Musorgskij · Quadri per pianoforte — Yulianna Avdeeva · '+label;
+    }else{
+      iframe.src='https://player.vimeo.com/video/454352656?title=0&byline=0&portrait=0&dnt=1&autoplay=0';
+      iframe.title='Musorgskij · Quadri per pianoforte — Thormod Rønning Kvam';
+    }
     iframe.referrerPolicy='strict-origin-when-cross-origin';
     iframe.allow='fullscreen; picture-in-picture; encrypted-media';
     iframe.allowFullscreen=true;
     iframe.setAttribute('loading','eager');
-    quadriStage.replaceChildren(iframe);
+    quadriStage.replaceChildren(iframe); // Rimuove il precedente player: niente doppio audio.
     quadriClose.hidden=false;
-  });
+    quadriStatus.textContent=source==='avdeeva'?'Pronto: '+label+'. Premi Play nel video; la selezione non avvia l’ascolto.':'Interpretazione di Kvam caricata. Premi Play nel video.';
+  }
+  quadriLoad.addEventListener('click',()=>mountQuadri());
+  quadriKvam.addEventListener('click',()=>mountQuadri('kvam'));
+  quadriSeekButtons.forEach(button=>button.addEventListener('click',()=>{
+    mountQuadri('avdeeva',Number(button.dataset.quadriStart)||0,button.dataset.quadriLabel||'brano selezionato');
+    quadriStage.scrollIntoView({block:'center',behavior:'instant'});
+  }));
   quadriClose.addEventListener('click',()=>{
     quadriStage.replaceChildren(quadriLoad);
     quadriClose.hidden=true;
+    quadriStatus.textContent='Lettore chiuso. Riproduzione arrestata.';
     quadriLoad.focus();
   });
 }
