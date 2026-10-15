@@ -153,6 +153,18 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 .nona-video{margin-top:.85rem;aspect-ratio:16 / 9;max-width:940px;background:#1c1923}
 .nona-video iframe{display:block;width:100%;height:100%;border:0}
 .nona-ascolto .nona-partitura{font:.84rem/1.4 var(--sans);margin:1rem 0 0}
+
+/* Verifica ragionata: nessuna dipendenza esterna o caricamento automatico. */
+.learning-check{padding:clamp(2rem,5vw,4rem);background:#f2eadd;border-top:4px solid var(--plum)}
+.learning-check>p{max-width:820px}.learning-check h2{font-size:clamp(1.7rem,3.4vw,2.8rem);line-height:1.16}
+.learning-check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.7rem}
+.learning-check-card{padding:1.25rem;background:#fffaf3;border:1px solid #d7c9b5;border-radius:8px;box-shadow:0 6px 15px #3022360b}
+.learning-check-card>span{font:800 .7rem/1.4 var(--sans);text-transform:uppercase;letter-spacing:.09em;color:var(--plum)}
+.learning-check-card h3{font-size:1.3rem;line-height:1.25;margin:.5rem 0}.learning-check-card p{margin:.4rem 0 .7rem;line-height:1.6}
+.learning-check-card details{border-top:1px solid #d7c9b5;padding-top:.6rem}
+.learning-check-card summary{cursor:pointer;color:#4d3459;font:750 .85rem/1.5 var(--sans)}
+.learning-check-card details p{margin-top:.7rem}.learning-check-return{font:750 .85rem/1.65 var(--sans);margin-top:1.5rem}
+@media(max-width:760px){.learning-check-grid{grid-template-columns:1fr}.learning-check{padding:1.4rem}}
 </style>
 <style>/* Identità grafica comune ai menu di Musurgia Mundi */.nav-inner>.nav-inserto{margin-left:auto!important}.nav-inner>.atlas-menu-context-local{margin-left:1rem!important}.atlas-menu-context-local{margin-left:auto;color:#e9ddd1;font:600 .7rem/1.4 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.045em;white-space:nowrap;flex:none}@media(max-width:950px){.atlas-menu-context-local{display:none!important}}</style></head>
 <body>
@@ -176,7 +188,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
    <summary aria-label="Apri o chiudi l'indice dei capitoli">Esplora i 14 capitoli</summary>
    <div class="menu-panel">
     <div class="menu-group"><strong>I · L’individuo e la scena</strong><a href="#rivoluzione">1 Una rivoluzione che viene da lontano</a><a href="#artista-citta">2 L’artista, la città, il pubblico</a><a href="#lied">3 La voce e l’intimità: il Lied</a><a href="#pianoforte">4 Il pianoforte che canta: Chopin e i nuovi generi</a><a href="#virtuosismo">5 Virtuosi, icone e pubblico: Paganini e Liszt</a></div><div class="menu-group"><strong>II · La musica diventa mondo</strong><a href="#orchestra">6 L’orchestra come tavolozza di colori</a><a href="#racconta">7 La musica che racconta: Berlioz e Liszt</a><a href="#teatro">8 Il teatro del XIX secolo: Verdi, Wagner e le trame della memoria</a></div><div class="menu-group"><strong>III · Lingue, popoli, immagini</strong><a href="#nazioni">9 Le scuole nazionali, le danze e gli imperi plurali</a><a href="#nuovo-mondo">10 Dvořák: Sinfonia n. 9 «Dal Nuovo Mondo»</a><a href="#quadri">11 Musorgskij: Quadri di un’esposizione</a></div><div class="menu-group"><strong>IV · La modernità dell’ascolto</strong><a href="#vienna">12 Vienna, il valzer e l’universo degli archi</a><a href="#offenbach">13 Dall’operetta al can-can: Offenbach e la città-spettacolo</a><a href="#belle-epoque">14 La Belle Époque e la nascita dell’ascolto riproducibile</a></div>
-    <div class="menu-extras"><a href="#cerniera-beethoven">✦ Beethoven e la Nona</a><a href="#pathos">✦ Pathos e titoli</a><a href="#europa-inno">✦ Educazione civica · Inno europeo</a><a href="#sentimento-nazionale">✦ Eroe e sentimento nazionale</a><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="#forme-orchestrali">✦ Forme orchestrali</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
+    <div class="menu-extras"><a href="#verifica">✦ Verifica</a><a href="#cerniera-beethoven">✦ Beethoven e la Nona</a><a href="#pathos">✦ Pathos e titoli</a><a href="#europa-inno">✦ Educazione civica · Inno europeo</a><a href="#sentimento-nazionale">✦ Eroe e sentimento nazionale</a><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="#forme-orchestrali">✦ Forme orchestrali</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
    </div>
   </details>
   <span class="atlas-menu-context-local">Percorsi di storia della musica</span>
@@ -496,6 +508,22 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
  <p>Seguiremo inoltre le donne nella vita musicale — Clara Schumann, Fanny Hensel, Louise Farrenc, Pauline Viardot, Ethel Smyth e molte altre — nei luoghi in cui operarono, senza relegarle a un'aggiunta decorativa. E torneremo più volte sul paesaggio, sulle idee filosofiche del soggetto, sul diritto, sulla libertà e sul lavoro materiale che rende possibile far circolare una musica.</p>
  <p><a href="destino-provvidenza/#per-iniziare">✦ Apri il nostro primo inserto interdisciplinare: «Il destino bussa. Ma chi gli apre?»</a></p>
 </section>
+<section class="learning-check" id="verifica" aria-labelledby="verifica-title">
+  <div class="eyebrow">✦ Verifica · Per i ragazzi e per chi vuole andare oltre</div>
+  <h2 id="verifica-title">Non ricordare soltanto i nomi: collega le idee</h2>
+  <p>Otto domande per ripercorrere <em>L'irrazionale</em>. Non serve indovinare il compositore da una fotografia: prova a spiegare <strong>come</strong> storia, linguaggio musicale e società si trasformano insieme. Apri ogni risposta soltanto dopo aver formulato la tua.</p>
+  <div class="learning-check-grid">
+    <article class="learning-check-card"><span>01 · Le epoche</span><h3>Il Romanticismo comincia nel 1800?</h3><p>Confronta lo <i>Sturm und Drang</i> e il Classicismo musicale.</p><details><summary>Confronta la tua risposta</summary><p>No: le premesse maturano già nel secondo Settecento e convivono con correnti classiche. Le etichette indicano prospettive storiche, non confini simultanei per tutti i compositori.</p></details></article>
+    <article class="learning-check-card"><span>02 · Forma e sentimento</span><h3>Una musica intitolata «Notturno» racconta per forza una notte?</h3><p>Spiega la differenza fra titolo evocativo e programma narrativo.</p><details><summary>Confronta la tua risposta</summary><p>No. Un titolo può suggerire atmosfera o carattere senza fissare una sequenza di avvenimenti. La <i>Pastorale</i>, invece, possiede riferimenti programmatici riconoscibili, pur dichiarando il primato dell'espressione del sentimento sulla semplice pittura sonora.</p></details></article>
+    <article class="learning-check-card"><span>03 · Pathos</span><h3>Perché «Patetica» non significa soltanto «triste»?</h3><p>Rifletti su <i>páthos</i>, passione, desiderio e sofferenza.</p><details><summary>Confronta la tua risposta</summary><p><i>Páthos</i> riguarda ciò che si prova o subisce, non solo il dolore. Il titolo della sonata op. 13 lascia aperta l'esperienza emotiva: non impone all'ascoltatore una vicenda precisa.</p></details></article>
+    <article class="learning-check-card"><span>04 · Voce</span><h3>Nel Lied il pianoforte accompagna soltanto?</h3><p>Pensa a <i>Gretchen am Spinnrade</i> o a <i>Erlkönig</i> di Schubert.</p><details><summary>Confronta la tua risposta</summary><p>No. Le figurazioni pianistiche possono evocare un movimento, un paesaggio o uno stato interiore e partecipano alla drammaturgia della poesia. La relazione fra canto e strumenti è una delle grandi trasformazioni espressive dell'Ottocento.</p></details></article>
+    <article class="learning-check-card"><span>05 · Virtuosismo</span><h3>Che cosa cambia da Paganini a Liszt?</h3><p>Confronta il finale del Secondo concerto di Paganini con <i>La campanella</i> di Liszt.</p><details><summary>Confronta la tua risposta</summary><p>Liszt non trascrive semplicemente la parte violinistica: reinventa sul pianoforte campane, salti, registri e difficoltà tecniche. Il virtuosismo diventa anche spettacolo pubblico e immaginario del genio.</p></details></article>
+    <article class="learning-check-card"><span>06 · Ritmo</span><h3>Hemiola e 7/8 asimmetrico sono la stessa cosa?</h3><p>Prova prima a battere gli accenti.</p><details><summary>Confronta la tua risposta</summary><p>No. L'hemiola riorganizza la percezione degli accenti, spesso fra gruppi ternari e binari; un 7/8 come 2+2+3 distribuisce sette ottavi in gruppi di durata differente. Nessuno dei due fenomeni appartiene in esclusiva a un popolo.</p></details></article>
+    <article class="learning-check-card"><span>07 · Scuole nazionali</span><h3>Una «scuola nazionale» ha bisogno di uno Stato indipendente?</h3><p>Confronta Boemia, Polonia, Francia e Finlandia.</p><details><summary>Confronta la tua risposta</summary><p>No. Può nascere come valorizzazione di lingua e memoria dentro un impero, come espressione di una comunità senza indipendenza politica o come iniziativa di istituzioni e società di concerti in uno Stato già esistente.</p></details></article>
+    <article class="learning-check-card"><span>08 · Educazione civica</span><h3>Beethoven compose l'inno dell'Unione europea?</h3><p>Metti in ordine Schiller, Nona Sinfonia, Consiglio d'Europa e Comunità europee.</p><details><summary>Confronta la tua risposta</summary><p>No. Schiller scrive l'<i>Ode alla gioia</i> nel 1785; Beethoven la utilizza nella Nona del 1824. Nel 1972 il Consiglio d'Europa sceglie il tema come inno; nel 1985 lo adottano le Comunità europee. L'inno istituzionale è strumentale e non sostituisce quelli nazionali. <a href="https://european-union.europa.eu/principles-countries-history/symbols/european-anthem_it" target="_blank" rel="noopener noreferrer">Verifica sulla fonte ufficiale dell'UE ↗</a></p></details></article>
+  </div>
+  <p class="learning-check-return"><a href="#capitoli">↑ Ritorna ai quattordici capitoli</a> · <a href="#europa-inno">↗ Riprendi l'inserto di educazione civica</a> · <a href="../risorgimento/#musica">↗ Confronta il sentimento nazionale nel Risorgimento</a></p>
+</section>
 <section class="method" id="metodo" aria-labelledby="method-title">
  <div class="eyebrow">Metodo · Stato delle attività</div>
  <h2 id="method-title">Guardare, ascoltare, interrogare, collegare, verificare</h2>
@@ -504,7 +532,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
  <nav aria-label="Collegamenti fra i percorsi"><a href="../">⌂ Indice generale</a><a href="../classicismo/#epilogo">Dal Classicismo</a><a href="../risorgimento/#musica">Risorgimento e cittadinanza</a><a href="destino-provvidenza/#per-iniziare">Destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a></nav>
 </section>
 </main>
-<footer class="footer">La musica non sta in fila · Percorsi di storia della musica · Ideazione e testi: Alessandro Zilli<br>Un percorso in costruzione: struttura e prima stesura pubblicate, fonti multimediali e laboratori in allestimento.<br><a href="#top">↑ Torna all'inizio</a></footer>
+<footer class="footer">La musica non sta in fila · Percorsi di storia della musica · Ideazione e testi: Alessandro Zilli<br>Percorso storico aperto alla lettura e alla verifica; audioteche, fonti multimediali e nuovi laboratori in progressivo allestimento.<br><a href="#top">↑ Torna all'inizio</a></footer>
 </div>
 <script>
 (()=>{
