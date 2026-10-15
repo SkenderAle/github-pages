@@ -1,0 +1,27 @@
+name: Musurgia Mundi · Nessun autoplay
+on:
+  push:
+    paths:
+      - '**/*.html'
+      - '**/*.js'
+      - '**/*.mjs'
+      - '.github/workflows/no-autoplay.yml'
+  pull_request:
+    paths:
+      - '**/*.html'
+      - '**/*.js'
+      - '**/*.mjs'
+      - '.github/workflows/no-autoplay.yml'
+  workflow_dispatch:
+jobs:
+  verifica:
+    name: Verifica ascolti solo su richiesta
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node tools/check-no-autoplay.mjs
