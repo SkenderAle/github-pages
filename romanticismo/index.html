@@ -127,6 +127,38 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 .quadri-stop-list small{display:block;color:#58675e;font:.81rem/1.5 var(--sans);margin:.25rem 0}
 .quadri-stop-list a{display:inline-block;font:.78rem/1.5 var(--sans)}
 @media(max-width:760px){.quadri-stop-list{grid-template-columns:1fr}.quadri-performance{padding:1rem}.quadri-performance p{font-size:.94rem}}
+
+/* Laboratorio dei Quadri: fonte visiva / scrittura musicale / lettura personale */
+.quadri-notebook{scroll-margin-top:5.7rem;background:#f8f5ee;border:1px solid #cbbeb1;padding:clamp(1rem,2.5vw,1.7rem);margin:2rem 0}
+.quadri-notebook h4{font:500 clamp(1.45rem,3vw,2rem)/1.2 var(--serif);color:#503950;margin:.3rem 0 1rem}
+.quadri-notebook p{font-size:.98rem;line-height:1.68}
+.quadri-nb-picker{display:grid;gap:.4rem;margin:1.2rem 0;font:750 .83rem/1.45 var(--sans);color:#503950}
+.quadri-nb-picker select{padding:.65rem;border:1px solid #a28e9c;background:#fffdf9;color:#24212a;min-height:44px;font:.95rem/1.4 var(--sans);width:100%;max-width:570px}
+.quadri-nb-source{display:grid;grid-template-columns:minmax(170px,.85fr) minmax(0,1.15fr);gap:1rem;align-items:start;margin:1.2rem 0}
+.quadri-nb-photo{margin:0;padding:1rem;background:#fffaf4;border:1px solid #dbd1c9;min-height:90px}
+.quadri-nb-photo img{display:block;max-width:100%;max-height:215px;width:auto;height:auto;margin:.25rem auto .6rem;object-fit:contain}
+.quadri-nb-photo figcaption{font:.8rem/1.6 var(--sans);color:#60585b}
+.quadri-nb-guide p{margin:.15rem 0 .8rem;font:.96rem/1.65 var(--sans)}
+.quadri-nb-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+.quadri-nb-field{background:#fffcf8;border-top:4px solid #977d90;padding:.9rem}
+.quadri-nb-field:nth-child(2){border-color:#587d70}
+.quadri-nb-field:nth-child(3){border-color:#aa9063}
+.quadri-nb-field label{display:block;font:750 1.03rem/1.4 var(--serif);color:#47344a}
+.quadri-nb-field p{margin:.45rem 0 .6rem;font:.86rem/1.6 var(--sans);min-height:6rem}
+.quadri-nb-field textarea{width:100%;min-height:136px;resize:vertical;padding:.65rem;border:1px solid #bfaeb6;background:white;font:.95rem/1.55 var(--sans);color:#27232c}
+.quadri-nb-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.1rem 0 .7rem}
+.quadri-nb-actions button{min-height:44px;cursor:pointer;padding:.65rem .9rem;border:1px solid #6d576e;background:#f2e9ee;color:#49384c;font:750 .84rem/1.4 var(--sans)}
+.quadri-nb-actions button:first-child{background:#375c50;color:#fff;border-color:#375c50}
+.quadri-notebook :is(select,textarea,button,a):focus-visible{outline:3px solid #3b6759;outline-offset:2px}
+.quadri-nb-feedback{font:.85rem/1.55 var(--sans);color:#345b4b}
+.quadri-nb-hints{border-top:1px solid #d8cfc5;margin-top:1rem;padding-top:.8rem}
+.quadri-nb-hints summary{cursor:pointer;font:750 .9rem/1.5 var(--sans);color:#503950}
+.quadri-nb-hints p{font:.88rem/1.6 var(--sans)}
+#quadri-nb-output{display:block;width:100%;min-height:105px;padding:.65rem;border:1px solid #b8acb6;background:#fff}
+#quadri-nb-output[hidden]{display:none}
+@media(max-width:800px){.quadri-nb-columns{grid-template-columns:1fr}.quadri-nb-field p{min-height:0}.quadri-nb-field textarea{min-height:90px}}
+@media(max-width:580px){.quadri-nb-source{grid-template-columns:1fr}.quadri-nb-photo img{max-height:230px}}
+
 .quadri-art-grid>div{display:flex;flex-direction:column;gap:.35rem}
 .quadri-art-grid img{object-fit:contain;background:#f3eee5}
 .quadri-art-grid p{margin:.4rem 0}
@@ -235,7 +267,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
    <summary aria-label="Apri o chiudi l'indice dei capitoli">Esplora i 14 capitoli</summary>
    <div class="menu-panel">
     <div class="menu-group"><strong>I · L’individuo e la scena</strong><a href="#rivoluzione">1 Una rivoluzione che viene da lontano</a><a href="#artista-citta">2 L’artista, la città, il pubblico</a><a href="#lied">3 La voce e l’intimità: il Lied</a><a href="#pianoforte">4 Il pianoforte che canta: Chopin e i nuovi generi</a><a href="#virtuosismo">5 Virtuosi, icone e pubblico: Paganini e Liszt</a></div><div class="menu-group"><strong>II · La musica diventa mondo</strong><a href="#orchestra">6 L’orchestra come tavolozza di colori</a><a href="#racconta">7 La musica che racconta: Berlioz e Liszt</a><a href="#teatro">8 Il teatro del XIX secolo: Verdi, Wagner e le trame della memoria</a></div><div class="menu-group"><strong>III · Lingue, popoli, immagini</strong><a href="#nazioni">9 Le scuole nazionali, le danze e gli imperi plurali</a><a href="#nuovo-mondo">10 Dvořák: Sinfonia n. 9 «Dal Nuovo Mondo»</a><a href="#quadri">11 Musorgskij: Quadri di un’esposizione</a></div><div class="menu-group"><strong>IV · La modernità dell’ascolto</strong><a href="#vienna">12 Vienna, il valzer e l’universo degli archi</a><a href="#offenbach">13 Dall’operetta al can-can: Offenbach e la città-spettacolo</a><a href="#belle-epoque">14 La Belle Époque e la nascita dell’ascolto riproducibile</a></div>
-    <div class="menu-extras"><a href="#verifica">✦ Verifica</a><a href="#cerniera-beethoven">✦ Beethoven e la Nona</a><a href="#pathos">✦ Pathos e titoli</a><a href="#europa-inno">✦ Educazione civica · Inno europeo</a><a href="#sentimento-nazionale">✦ Eroe e sentimento nazionale</a><a href="#scuole-fonti">✦ Scuole nazionali · Documenti</a><a href="#nuovo-mondo-quattro-movimenti">✦ Dvořák · Quattro movimenti</a><a href="#quadri-fotografia">✦ Musorgskij · Fotografia</a><a href="#quadri-ascolto-integrale">♪ Musorgskij · Integrale pianistica</a><a href="#quadri-immagini">✦ Hartmann · Le sei opere</a><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="#forme-orchestrali">✦ Forme orchestrali</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
+    <div class="menu-extras"><a href="#verifica">✦ Verifica</a><a href="#cerniera-beethoven">✦ Beethoven e la Nona</a><a href="#pathos">✦ Pathos e titoli</a><a href="#europa-inno">✦ Educazione civica · Inno europeo</a><a href="#sentimento-nazionale">✦ Eroe e sentimento nazionale</a><a href="#scuole-fonti">✦ Scuole nazionali · Documenti</a><a href="#nuovo-mondo-quattro-movimenti">✦ Dvořák · Quattro movimenti</a><a href="#quadri-fotografia">✦ Musorgskij · Fotografia</a><a href="#quadri-ascolto-integrale">♪ Musorgskij · Integrale pianistica</a><a href="#quadri-immagini">✦ Hartmann · Le sei opere</a><a href="#quadri-quaderno">✦ Quadri · Quaderno di ascolto</a><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="#forme-orchestrali">✦ Forme orchestrali</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
    </div>
   </details>
   <span class="atlas-menu-context-local">Percorsi di storia della musica</span>
@@ -706,7 +738,31 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 </div>
 <div class="hearing" id="quadri-paragone" aria-labelledby="quadri-paragone-title"><h5 id="quadri-paragone-title" style="font:650 1.14rem/1.35 var(--serif);margin:0 0 .6rem">Dal foglio al pianoforte · Tre prove di traduzione</h5>
 <p><strong>Il bozzetto diventa gesto:</strong> confronta i <a href="#quadri-immagini">pulcini</a> con gli attacchi brevi del relativo pezzo. <strong>Il ritratto diventa dialogo:</strong> nei due personaggi di Sandomierz ascolta la differenza di registro e la sovrapposizione delle due figure, senza scambiarle per ritratti psicologici oggettivi. <strong>Il progetto diventa architettura sonora:</strong> ascolta la <i>Grande Porta</i> senza guardare prima il disegno; soltanto dopo cerca ciò che il pianoforte aggiunge all'immagine.</p>
-<p>Per ogni prova rispondi in due frasi: <em>che cosa riconosco nella fonte visiva?</em> e <em>quale elemento musicale non era già contenuto nell'immagine?</em> L'obiettivo non è indovinare il soggetto, ma capire <strong>come cambia il mezzo espressivo</strong>.</p></div>
+<p>Per ogni prova rispondi in due frasi: <em>che cosa riconosco nella fonte visiva?</em> e <em>quale elemento musicale non era già contenuto nell'immagine?</em> L'obiettivo non è indovinare il soggetto, ma capire <strong>come cambia il mezzo espressivo</strong>. Raccogli poi le tue osservazioni nel <a href="#quadri-quaderno">quaderno interattivo</a>, aggiungendo la colonna dell'interpretazione personale.</p></div>
+
+<section class="quadri-notebook" id="quadri-quaderno" aria-labelledby="quadri-quaderno-title">
+<div class="eyebrow">✦ Laboratorio · Tre livelli da non confondere</div>
+<h4 id="quadri-quaderno-title">Quello che vedo · Quello che ascolto · Quello che immagino</h4>
+<p>Segui quest'ordine: <strong>1. osserva il documento</strong> senza inventarne dettagli; <strong>2. descrivi le scelte musicali</strong> con esempi riconoscibili; <strong>3. formula una tua interpretazione</strong> e spiega da quali suoni nasce. Il titolo non sostituisce la fonte visiva e un'emozione personale non equivale a una prova storica.</p>
+<p>Puoi scegliere i cinque soggetti con immagini superstiti oppure <strong>Gnomus</strong>, il caso in cui non possediamo un originale identificato: anche scrivere «non possiamo saperlo» è un risultato dell'indagine.</p>
+<label class="quadri-nb-picker" for="quadri-nb-case">Scegli il soggetto
+<select id="quadri-nb-case"><option value="pulcini">5 · Pulcini nei gusci</option><option value="ritratti">6 · I due personaggi di Sandomierz</option><option value="catacombe">8 · Catacombae</option><option value="baba">9 · Baba Jaga</option><option value="porta">10 · La Grande Porta di Kyiv</option><option value="gnomus">1 · Gnomus (originale non identificato)</option></select></label>
+<div class="quadri-nb-source">
+<figure class="quadri-nb-photo"><div id="quadri-nb-images"></div><figcaption id="quadri-nb-caption">Fonte visiva documentata.</figcaption></figure>
+<div class="quadri-nb-guide"><p id="quadri-nb-guide">Che cosa mostra il bozzetto?</p><a id="quadri-nb-link" href="#quadri-hartmann-pulcini">↗ Apri la scheda originale nella galleria</a><p>Le immagini qui mostrate provengono dalle schede già documentate, non da ricostruzioni create per il laboratorio. La musica è sempre quella del <strong>pianoforte originale del 1874</strong>.</p></div>
+</div>
+<div class="quadri-nb-columns">
+<div class="quadri-nb-field"><label for="quadri-nb-visual">1 · La fonte: cosa posso constatare?</label><p id="quadri-nb-q1">Scrivi soltanto ciò che è effettivamente visibile.</p><textarea id="quadri-nb-visual" rows="4" placeholder="Nella fonte vedo… / Non posso stabilire…"></textarea></div>
+<div class="quadri-nb-field"><label for="quadri-nb-music">2 · La musica: che cosa cambia?</label><p id="quadri-nb-q2">Indica fenomeni concreti del pianoforte.</p><textarea id="quadri-nb-music" rows="4" placeholder="Nel pianoforte ascolto… / Il ritmo o il registro…"></textarea></div>
+<div class="quadri-nb-field"><label for="quadri-nb-imagine">3 · La mia immaginazione: come interpreto?</label><p id="quadri-nb-q3">Argomenta l'impressione personale.</p><textarea id="quadri-nb-imagine" rows="4" placeholder="Io immagino… perché ascolto…"></textarea></div>
+</div>
+<div class="quadri-nb-actions"><button type="button" id="quadri-nb-listen">♪ Prepara il brano, senza avvio</button><button type="button" id="quadri-nb-copy">Copia il quaderno</button><button type="button" id="quadri-nb-clear">Svuota questa scheda</button></div>
+<p class="quadri-nb-feedback" id="quadri-nb-feedback" role="status" aria-live="polite">I tuoi appunti restano disponibili mentre tieni aperta questa pagina. Prima di uscire, usa «Copia il quaderno» per conservarli.</p>
+<textarea id="quadri-nb-output" hidden readonly aria-label="Testo del quaderno da copiare manualmente"></textarea>
+<details class="quadri-nb-hints" id="quadri-nb-hints"><summary>Se hai bisogno di aiuto, apri tre indizi</summary><p><strong>Fonte:</strong> <span id="quadri-nb-h1"></span></p><p><strong>Musica:</strong> <span id="quadri-nb-h2"></span></p><p><strong>Interpretazione:</strong> <span id="quadri-nb-h3"></span></p></details>
+<p class="form-sources">Questa scheda non invia né memorizza risposte su un server. Cambiando soggetto i testi rimangono in memoria soltanto finché la pagina è aperta. I collegamenti ai video preparano il lettore, <strong>senza autoplay</strong>.</p>
+</section>
+
 <aside class="per-iniziare"><strong>✦ Per iniziare · Quando il quadro non c'è più</strong><p>Ascolta <i>Gnomus</i>, poi guarda il disegno superstite dei <i>Pulcini</i>. Per quale pezzo puoi confrontare un documento originale con la partitura? Per quale devi lavorare anche con testimonianze e descrizioni? Puoi comunque individuare movimento, carattere e timbro nel primo brano senza conoscere il disegno perduto?</p></aside>
 
 <p class="form-sources"><a href="https://www.lamonnaiedemunt.be/en/magazine/1069-ut-pictura-musica" target="_blank" rel="noopener noreferrer">La Monnaie · Hartmann e la mostra ↗</a> <a href="https://pad.philharmoniedeparis.fr/0800170-tableaux-d-une-exposition-moussorgski.aspx" target="_blank" rel="noopener noreferrer">Philharmonie · Opera e documenti visivi ↗</a></p>
@@ -856,6 +912,91 @@ if(quadriStage && quadriLoad && quadriClose && quadriKvam && quadriStatus){
     quadriLoad.focus();
   });
 }
+// Il quaderno separa dati figurativi, ascolto e ipotesi interpretative.
+const nbSelect=document.getElementById('quadri-nb-case');
+const nbImg=document.getElementById('quadri-nb-images');
+const nbCaption=document.getElementById('quadri-nb-caption');
+const nbGuide=document.getElementById('quadri-nb-guide');
+const nbLink=document.getElementById('quadri-nb-link');
+const nbQs=[1,2,3].map(n=>document.getElementById('quadri-nb-q'+n));
+const nbHints=[1,2,3].map(n=>document.getElementById('quadri-nb-h'+n));
+const nbFields=['visual','music','imagine'].map(n=>document.getElementById('quadri-nb-'+n));
+const nbHintBox=document.getElementById('quadri-nb-hints');
+const nbListen=document.getElementById('quadri-nb-listen');
+const nbCopy=document.getElementById('quadri-nb-copy');
+const nbClear=document.getElementById('quadri-nb-clear');
+const nbStatus=document.getElementById('quadri-nb-feedback');
+const nbOutput=document.getElementById('quadri-nb-output');
+const nbCases={
+ pulcini:{name:'5 · Pulcini nei gusci',card:'quadri-hartmann-pulcini',start:908,guide:'Un bozzetto di costumi teatrali diventa un brano pianistico in movimento.',q:['Che cosa vedi esattamente nei costumi e nei gusci?','Che cosa producono gli staccati, il registro acuto e le figurazioni rapide?','Quali movimenti immagini e a quali suoni li colleghi?'],h:['L’immagine è un bozzetto di scena: non mostra realmente i pulcini in movimento.','Cerca attacchi rapidi, note brevi, trilli.','L’impressione che i pulcini saltino nasce dalla musica e dalla tua interpretazione.']},
+ ritratti:{name:'6 · Due personaggi di Sandomierz',card:'quadri-hartmann-ritratti',start:981,guide:'Due ritratti distinti diventano un solo brano: osserva senza attribuire ai personaggi caratteri morali.',q:['Che cosa puoi descrivere nei due ritratti senza dedurre la loro personalità?','Come si distinguono e poi si incontrano il registro grave e quello acuto?','Come descrivi il dialogo senza trasformare la caricatura in stereotipo?'],h:['Costumi e posture sono visibili; la personalità non lo è.','Cerca la diversa articolazione delle due voci pianistiche.','Il punto di vista del compositore non è una descrizione neutrale delle persone ritratte.']},
+ catacombe:{name:'8 · Catacombae',card:'quadri-hartmann-catacombe',start:1279,guide:'Hartmann documenta una visita; Musorgskij costruisce profondità sonora e memoria.',q:['Quali figure, luci e spazi riconosci nell’acquerello?','Quali effetti producono gli accordi separati e il ritorno della Promenade?','Perché immagini un luogo, un lutto o un ricordo?'],h:['Riconosci le figure e la lanterna, senza attribuire sentimenti certi alle persone.','Confronta Catacombae a 21:19 e Cum mortuis a 23:14.','Una meditazione sul ricordo è una lettura musicale sostenuta dal contesto, non un particolare dipinto.']},
+ baba:{name:'9 · Baba Jaga',card:'quadri-hartmann-baba-jaga',start:1506,guide:'È il progetto di un orologio, non una scena di strega in volo.',q:['Che oggetto rappresenta il progetto e quali forme sono documentate?','Quali contrasti, attacchi e gesti rendono la musica inquieta?','Quale storia fantastica immagini e dove la fonte non ti autorizza?'],h:['Il disegno è un progetto d’orologio.','Ascolta cambi di intensità e corse della tastiera.','Il volo è un’immagine mentale: non è raffigurato in quel progetto.']},
+ porta:{name:'10 · Grande Porta di Kyiv',card:'quadri-hartmann-porta',start:1706,guide:'Un progetto architettonico mai costruito diventa una grande architettura sonora.',q:['Quali archi e torri puoi individuare nel progetto?','Come accordi, registri e suoni simili a campane creano monumentalità?','Che cosa immagini di grandioso pur senza un edificio reale?'],h:['Distingui disegno architettonico e fotografia di monumento esistente.','Cerca gli accordi ampi e le campane evocate dal pianoforte.','La grandezza musicale non richiede che il progetto sia stato realizzato.']},
+ gnomus:{name:'1 · Gnomus',card:null,start:128,guide:'L’immagine originale ispiratrice non è identificata: questo è un limite storico, non uno spazio da riempire inventando.',q:['Che cosa possiamo dire dal titolo? Che cosa NON possiamo verificare in un disegno?','Quali gesti spezzati, pause e contrasti ascolti?','Quale creatura immagini, dichiarando che è una tua ipotesi?'],h:['Non descrivere un originale che non possiamo vedere.','Osserva i bruschi cambi di carattere del pianoforte.','L’immaginazione di un essere grottesco non prova come fosse il disegno perduto.']}
+};
+const nbNotes=Object.create(null);
+if(nbSelect&&nbImg&&nbCaption&&nbGuide&&nbLink&&nbQs.every(Boolean)&&nbHints.every(Boolean)&&nbFields.every(Boolean)&&nbHintBox&&nbListen&&nbCopy&&nbClear&&nbStatus&&nbOutput){
+ const headings=['Fonte osservata','Musica ascoltata','Interpretazione personale'];
+ function remember(){nbNotes[nbSelect.value]=nbFields.map(el=>el.value);}
+ function renderNotebook(){
+  const entry=nbCases[nbSelect.value];if(!entry)return;
+  const card=entry.card?document.getElementById(entry.card):null;
+  nbImg.replaceChildren();
+  if(card){
+   card.querySelectorAll('img').forEach(img=>{const copy=img.cloneNode(false);copy.removeAttribute('style');copy.loading='lazy';nbImg.append(copy);});
+   nbLink.href='#'+entry.card;nbLink.textContent='↗ Vedi l’opera e la sua provenienza';
+   nbCaption.textContent=entry.card==='quadri-hartmann-ritratti'?'Due disegni conservati, un solo brano.':'Opera attribuita a Hartmann nella galleria documentaria.';
+  }else{
+   const warning=document.createElement('p');warning.textContent='Nessuna immagine ispiratrice identificata con sicurezza.';nbImg.append(warning);
+   nbLink.href='#quadri-immagini';nbLink.textContent='↗ Leggi come si verificano le attribuzioni';
+   nbCaption.textContent='Non inseriamo ricostruzioni non documentate.';
+  }
+  nbGuide.textContent=entry.guide;
+  entry.q.forEach((v,i)=>nbQs[i].textContent=v);
+  entry.h.forEach((v,i)=>nbHints[i].textContent=v);
+  const values=nbNotes[nbSelect.value]||['','',''];
+  nbFields.forEach((el,i)=>el.value=values[i]||'');
+  nbHintBox.open=false;nbOutput.hidden=true;
+  nbStatus.textContent='Scheda selezionata: '+entry.name+'. La riproduzione resta ferma finché non premi Play.';
+ }
+ nbFields.forEach(el=>el.addEventListener('input',remember));
+ nbSelect.addEventListener('change',renderNotebook);
+ nbListen.addEventListener('click',()=>{
+  const entry=nbCases[nbSelect.value];if(!entry)return;
+  const btn=[...document.querySelectorAll('.quadri-seek[data-quadri-start]')].find(b=>Number(b.dataset.quadriStart)===entry.start);
+  if(!btn){nbStatus.textContent='Non è disponibile il punto di ascolto di questo brano.';return;}
+  btn.click();
+  nbStatus.textContent='Punto di ascolto preparato: '+entry.name+'. Premi Play nel lettore; nessun autoplay.';
+ });
+ nbClear.addEventListener('click',()=>{
+  const entry=nbCases[nbSelect.value];if(!entry)return;
+  if(!nbFields.some(el=>el.value.trim())){nbStatus.textContent='Questa scheda è già vuota.';return;}
+  if(!confirm('Svuotare soltanto la scheda «'+entry.name+'»?'))return;
+  nbFields.forEach(el=>el.value='');remember();
+  nbStatus.textContent='Scheda svuotata; le altre osservazioni restano disponibili.';
+ });
+ nbCopy.addEventListener('click',async()=>{
+  remember();
+  const all=Object.entries(nbCases).flatMap(([id,item])=>{
+   const values=nbNotes[id]||[];
+   return values.some(x=>(x||'').trim())?[item.name+'\n'+headings.map((h,i)=>h+': '+((values[i]||'').trim()||'—')).join('\n')]:[];
+  });
+  if(!all.length){nbStatus.textContent='Scrivi almeno un’osservazione prima di copiare.';return;}
+  const report='MUSURGIA MUNDI · QUADRI DI UN’ESPOSIZIONE\nQuaderno di confronto\n\n'+all.join('\n\n---\n\n');
+  try{
+   if(!navigator.clipboard?.writeText)throw Error('not supported');
+   await navigator.clipboard.writeText(report);
+   nbOutput.hidden=true;
+   nbStatus.textContent='Quaderno copiato: puoi incollarlo in un documento.';
+  }catch(error){
+   nbOutput.hidden=false;nbOutput.value=report;nbOutput.focus();nbOutput.select();
+   nbStatus.textContent='Copia automatica non disponibile: seleziona e copia manualmente il testo qui sotto.';
+  }
+ });
+ renderNotebook();
+}
+
 const menu=document.getElementById('indice-menu');
 document.querySelectorAll('.menu-panel a').forEach(a=>a.addEventListener('click',()=>{menu.open=false}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus()}});
