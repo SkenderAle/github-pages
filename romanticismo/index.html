@@ -144,6 +144,26 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 @media(max-width:850px){.nm-orchestra-layout{grid-template-columns:1fr}.nm-orchestra-inspector{min-height:0}.nm-seat-row{width:100%!important}}
 @media(max-width:490px){.nm-orchestra-seats{padding:.6rem .2rem}.nm-seat{font-size:.65rem;min-height:68px;padding:.35rem .12rem;gap:.12rem}.nm-seat-marks{font-size:.73rem;letter-spacing:-.08em}.nm-seat-row{gap:.2rem}}
 
+
+/* Il testo generale resta in primo piano: esercizi accessibili da "Per iniziare". */
+.nm-analysis-note{font:.92rem/1.7 var(--sans)!important;color:#486353;border-left:3px solid #aac0ae;padding-left:.85rem}
+.nm-exercise{scroll-margin-top:5.7rem;margin:1.4rem 0!important;background:#eaf0e7;border:1px solid #b5c9b6;border-left:5px solid #557c61;padding:1rem 1.25rem}
+.nm-exercise>summary{cursor:pointer;font:750 clamp(.95rem,2.3vw,1.08rem)/1.55 var(--sans);color:#284b35}
+.nm-exercise[open]>summary{border-bottom:1px solid #b0c8b7;margin-bottom:.9rem;padding-bottom:.65rem}
+.nm-exercise-body>p{font:.92rem/1.68 var(--sans);margin:.6rem 0 .95rem}
+.nm-exercise .nm-orchestra{margin:1rem 0;background:#f8faf6}
+.nm-exercise .nm-orchestra-inspector strong{font:700 clamp(1.1rem,2vw,1.4rem)/1.25 var(--serif);color:#2f5544}
+.nm-exercise .nm-family-grid strong{font:700 .82rem/1.4 var(--sans);color:#30594a}
+.nm-exercise :is(summary,button,a):focus-visible{outline:3px solid #526f5b;outline-offset:3px}
+.quadri-worksheet{scroll-margin-top:5.7rem;margin:1.5rem 0;background:#edf2e8;border:1px solid #b4c9b4;border-left:5px solid #557c61;padding:1rem 1.3rem}
+.quadri-worksheet>summary{cursor:pointer;font:750 clamp(.95rem,2.3vw,1.1rem)/1.55 var(--sans);color:#284b35}
+.quadri-worksheet[open]>summary{margin-bottom:1rem;border-bottom:1px solid #b1c4b3;padding-bottom:.65rem}
+.quadri-worksheet-body{padding:.1rem .1rem .5rem}
+.quadri-short-exercise{scroll-margin-top:5.7rem}
+.quadri-short-exercise>summary{cursor:pointer;font:750 .95rem/1.5 var(--sans);color:#284b35}
+.quadri-short-exercise[open]>summary{margin-bottom:.75rem}
+@media(max-width:580px){.nm-exercise,.quadri-worksheet{padding:.9rem 1rem}}
+
 .nm-memory{margin:1.35rem 0 .4rem}
 .nm-memory-scroll{overflow-x:auto;max-width:100%}
 .nm-memory table{border-collapse:collapse;width:100%;min-width:470px;background:#fafcf8;font:.85rem/1.5 var(--sans)}
@@ -692,20 +712,20 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <p>Un compositore che porta in America la propria esperienza boema non torna necessariamente a casa con un catalogo di citazioni. Le idee nuove possono cambiare il modo di scegliere un intervallo, far respirare un tema, distribuirlo nell'orchestra o riprenderlo più avanti. È per questo che il confronto con <a href="#quadri-viaggi">i <i>Quadri</i> di Musorgskij</a> è così fertile: là si attraversano luoghi e personaggi attraverso immagini viste in una mostra; qui un incontro storico e un immaginario geografico attraversano la forma sinfonica. In entrambi i casi <strong>l'altrove viene trasformato, non semplicemente copiato</strong>.</p>
 </div>
 <section class="form-bridge" id="nuovo-mondo-quattro-movimenti" aria-labelledby="nuovo-mondo-quattro-title">
-<div class="eyebrow">✦ Laboratorio di ascolto · Dvořák e il Nuovo Mondo</div>
+<div class="eyebrow">✦ Ascolto e analisi · Dvořák e il Nuovo Mondo</div>
 <h4 id="nuovo-mondo-quattro-title">Quattro movimenti: l'orchestra che ricorda</h4>
-<p>La traversata oceanica e l'approdo possono essere una <strong>metafora narrativa del nostro laboratorio</strong>, non un programma certificato dall'autore. I quattro movimenti seguono una struttura sinfonica di matrice classica, ma alcune idee musicali <strong>ricompaiono in movimenti diversi</strong>. Per imparare ad ascoltarle, useremo il loro carattere, i timbri e i rapporti fra strumenti. Il laboratorio originale qui sotto recupera il <em>metodo esplorativo</em> delle vecchie <i>Listening Adventures</i> della Carnegie Hall, non software, grafica o contenuti copiati da quel progetto.</p>
+<p>La <i>Sinfonia dal Nuovo Mondo</i> si articola in quattro movimenti, ma la costruzione tematica suggerisce un'unità che oltrepassa i confini delle singole sezioni. Idee riconoscibili riaffiorano mutate dall'armonia, dal registro e dall'orchestrazione: è questa <strong>memoria interna alla forma</strong>, più di una trama extramusicale, a rendere coeso il ciclo. La traversata verso l'America può accompagnare la lettura come metafora, non come programma narrativo attribuito all'autore.</p>
 <div class="form-grid">
-<div><h5>1 · Adagio — Allegro molto</h5><p>Cerca il tema esposto dai corni e i suoi ritorni. Quando un'altra melodia più cantabile viene affidata ai legni, quali elementi ascolti come nuovi e quali come familiari?</p><small>Motivi, contrasti, prime tracce della memoria ciclica.</small></div>
-<div><h5>2 · Largo</h5><p>Alle solenni armonie iniziali segue il canto del <strong>corno inglese</strong>. Ascolta senza immaginare subito una prateria o un funerale: quali scelte melodiche, armoniche e timbriche producono un senso di distanza e nostalgia?</p><small>Profilo pentatonico, interpretazioni e ruolo del timbro.</small></div>
-<div><h5>3 · Molto vivace</h5><p>Il moto dello <i>Scherzo</i> è stato accostato a una scena di danza del poema <i>Hiawatha</i>. Non basta questa analogia per identificare un autentico ritmo cerimoniale indigeno: prova invece a riconoscere accenti e contrasti nella partitura.</p><small>Ritmo compositivo e immaginario letterario.</small></div>
-<div><h5>4 · Allegro con fuoco</h5><p>Ritornano idee ascoltate nei movimenti precedenti. Riconoscile e segnane la diversa orchestrazione: la sinfonia costruisce una memoria attraverso i suoi quattro movimenti, senza bisogno di raccontare letteralmente una storia.</p><small>Rimandi, trasformazioni, unità del ciclo.</small></div>
+<div><h5>1 · Adagio — Allegro molto</h5><p>L'introduzione lenta apre lo spazio a un Allegro animato da un profilo tematico incisivo. Il richiamo dei corni e il diverso respiro delle melodie affidate ai legni instaurano un contrasto fra gesto affermativo e canto.</p><small>Esposizione tematica, dialogo strumentale, sviluppo.</small></div>
+<div><h5>2 · Largo</h5><p>Dagli accordi iniziali dei fiati emerge la melodia del <strong>corno inglese</strong>, sostenuta dal colore soffuso degli archi con sordina. Il senso di distanza è un effetto di scrittura, non la descrizione obbligata di un paesaggio americano.</p><small>Cantabilità, colore orchestrale, pentatonismo e memoria.</small></div>
+<div><h5>3 · Molto vivace</h5><p>Lo <i>Scherzo</i> accosta impulso ritmico, contrasti e un episodio centrale di carattere differente. Il possibile richiamo letterario a <i>Hiawatha</i> appartiene all'immaginario ottocentesco, ma non certifica la trascrizione di un rito indigeno.</p><small>Ritmo, contrasto, ricezione letteraria.</small></div>
+<div><h5>4 · Allegro con fuoco</h5><p>Il finale riunisce e trasforma idee già udite, collegandole al proprio materiale tematico. Il loro ritorno attraverso l'orchestra rende percepibile la memoria del ciclo e la sua unità formale.</p><small>Reminiscenze, ricontestualizzazione, unità.</small></div>
 </div>
 
 <section class="nm-lab" id="nuovo-mondo-laboratorio" aria-labelledby="nm-lab-title">
-<div class="eyebrow">✦ Esplorazione interattiva · In viaggio nell'orchestra</div>
-<h4 id="nm-lab-title">Il Nuovo Mondo, quattro movimenti e una memoria</h4>
-<p>Seleziona un movimento e prova a riconoscere <strong>il gesto musicale</strong>, <strong>la famiglia strumentale protagonista</strong> e <strong>le idee che ritornano</strong>. La registrazione è un concerto integrale dell'<strong>Orchestra Sinfonica della WDR</strong> diretta da <strong>Cristian Măcelaru</strong> (Colonia, 25 giugno 2021), pubblicato da <strong>ARD Klassik</strong>. I quattro punti di partenza provengono dall'indice ufficiale del video: non sono stime.</p>
+<div class="eyebrow">✦ Lettura musicale · Struttura e ritorni tematici</div>
+<h4 id="nm-lab-title">L’architettura della memoria nella Nona</h4>
+<p>La selezione dei movimenti permette di seguire <strong>invenzione tematica, timbro e reminiscenze</strong> lungo l'intero ciclo. La registrazione integrale dell'<strong>Orchestra Sinfonica della WDR</strong> diretta da <strong>Cristian Măcelaru</strong> (Colonia, 25 giugno 2021) è pubblicata da <strong>ARD Klassik</strong>; i punti di partenza provengono dal suo indice ufficiale. Le attività introduttive di riconoscimento strumentale sono raccolte a parte, nella cornice facoltativa <strong>«Per iniziare»</strong>.</p>
 <nav class="nm-tabs" aria-label="Scegli un movimento della Nona" id="nm-tabs">
 <button type="button" data-nm-select="0" aria-pressed="true"><b>I</b> Adagio — Allegro molto</button>
 <button type="button" data-nm-select="1" aria-pressed="false"><b>II</b> Largo</button>
@@ -716,15 +736,8 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <div aria-live="polite">
 <div class="nm-label" id="nm-movement-where">Movimento I · 0:00</div>
 <h5 id="nm-movement-title">Dal silenzio al richiamo dei corni</h5>
-<p id="nm-movement-listen">Ascolta l'introduzione lenta; quando l'Allegro prende forma, riconosci il tema affidato ai corni.</p>
-<div class="nm-family-grid" aria-label="Colori orchestrali in primo piano (schema di ascolto, non partitura)">
-<div id="nm-role-archi"><strong>Archi</strong><span>Introduzione e tessuto</span></div>
-<div id="nm-role-legni"><strong>Legni</strong><span>Risposte e nuove melodie</span></div>
-<div id="nm-role-ottoni"><strong>Ottoni</strong><span>Richiamo dei corni</span></div>
-<div id="nm-role-percussioni"><strong>Percussioni</strong><span>Accenti dei timpani</span></div>
-</div>
-<p id="nm-movement-question"><strong>Domanda:</strong> quale elemento riconosci come tema anche quando cambia il registro?</p>
-</div>
+<p id="nm-movement-listen">Nell'Allegro, al seguito dell'introduzione lenta, il tema dei corni definisce un profilo riconoscibile nei successivi ritorni.</p>
+<p class="nm-analysis-note">La distribuzione fra le sezioni orchestrali modifica il carattere di un tema senza necessariamente mutarne il profilo. Per la mappa degli strumenti si può aprire «Per iniziare», in fondo alla sezione.</p>
 <div>
 <div class="nm-label">♪ Ascolto integrale · Un solo player</div>
 <div class="nm-video-frame" id="nm-video-stage" aria-label="Lettore della Sinfonia dal Nuovo Mondo">
@@ -738,10 +751,38 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <p class="nm-source">Se il video non si apre: <a id="nm-external-link" href="https://www.youtube.com/watch?v=HvUH5Oq3Z5o" target="_blank" rel="noopener noreferrer">registrazione ARD Klassik su YouTube ↗</a>. Apri esternamente soltanto se necessario.</p>
 </div>
 </div>
-<section class="nm-orchestra" id="nm-orchestra-map" aria-labelledby="nm-orchestra-title">
-<div class="eyebrow">✦ Orchestra da esplorare · Una mappa, non una fotografia dei posti</div>
-<h5 id="nm-orchestra-title">Dove nasce questo suono?</h5>
-<p>Immagina di trovarti davanti al direttore e guarda le famiglie strumentali. <strong>Scegli uno strumento nella mappa</strong>: scoprirai a quale famiglia appartiene, quando ascoltarlo e che funzione può assumere nella Nona. Passando da un movimento all'altro cambiano le sezioni evidenziate.</p>
+
+
+<div class="nm-memory" id="nm-memory">
+<h5>Le reminiscenze tematiche nei quattro movimenti</h5>
+<p>Ogni idea ha un'origine e può ritornare, cambiata, nei movimenti successivi. I segni qui sotto indicano <strong>alcuni ritorni importanti</strong>, non una trascrizione completa della partitura. Seleziona un movimento in alto per metterne in evidenza la colonna.</p>
+<div class="nm-memory-scroll"><table aria-label="Principali reminiscenze tematiche nella Sinfonia dal Nuovo Mondo">
+<thead><tr><th scope="col">Idea riconoscibile</th><th scope="col" data-nm-movement="1">I</th><th scope="col" data-nm-movement="2">II</th><th scope="col" data-nm-movement="3">III</th><th scope="col" data-nm-movement="4">IV</th></tr></thead>
+<tbody>
+<tr><th scope="row">Il richiamo del primo movimento</th><td data-nm-movement="1"><span class="nm-dot" aria-label="presente">●</span></td><td data-nm-movement="2"><span class="nm-dot" aria-label="ritorna">●</span></td><td data-nm-movement="3"><span class="nm-dot" aria-label="ritorna">●</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
+<tr><th scope="row">Il canto del Largo</th><td data-nm-movement="1"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="2"><span class="nm-dot" aria-label="presentato">●</span></td><td data-nm-movement="3"><span class="nm-empty" aria-label="non evidenziato qui">—</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
+<tr><th scope="row">Il moto dello Scherzo</th><td data-nm-movement="1"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="2"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="3"><span class="nm-dot" aria-label="presentato">●</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
+</tbody></table></div>
+<details><summary>Perché riconoscere un tema non significa raccontare una storia?</summary>
+<p>Quando Dvořák riprende un tema, costruisce un legame di memoria <em>dentro la forma musicale</em>. Possiamo usare il viaggio come metafora per imparare, ma la sinfonia non prescrive personaggi, approdi o scene. Nel finale le reminiscenze sono particolarmente importanti: Dvořák non si limita a ripetere il tema del primo movimento, ma intreccia materiali di tutti i movimenti precedenti.</p>
+</details>
+</div>
+<details class="per-iniziare nm-exercise" id="nm-orchestra-map">
+<summary>✦ Per iniziare · Strumenti, timbri e piccole prove d’ascolto</summary>
+<div class="nm-exercise-body">
+<p>Uno spazio facoltativo per i primi ascolti, utile anche nelle attività didattiche. Non è necessario aprirlo per seguire l'analisi della sinfonia.</p>
+<div class="nm-family-grid" aria-label="Colori orchestrali in primo piano (schema di ascolto, non partitura)">
+<div id="nm-role-archi"><strong>Archi</strong><span>Introduzione e tessuto</span></div>
+<div id="nm-role-legni"><strong>Legni</strong><span>Risposte e nuove melodie</span></div>
+<div id="nm-role-ottoni"><strong>Ottoni</strong><span>Richiamo dei corni</span></div>
+<div id="nm-role-percussioni"><strong>Percussioni</strong><span>Accenti dei timpani</span></div>
+</div>
+<p id="nm-movement-question"><strong>Domanda:</strong> quale elemento riconosci come tema anche quando cambia il registro?</p>
+</div>
+<section class="nm-orchestra" id="nm-orchestra-explorer" aria-labelledby="nm-orchestra-title">
+<div class="eyebrow">✦ Esplorazione facoltativa · Organico e timbri</div>
+<h5 id="nm-orchestra-title">Esplorare le sezioni dell’orchestra</h5>
+<p>Una rappresentazione indicativa dell'organico, dedicata a chi desidera familiarizzare con gli strumenti. La selezione mostra la famiglia e alcune funzioni orchestrali; i rilievi cambiano con il movimento selezionato.</p>
 <div class="nm-orchestra-layout">
 <div class="nm-orchestra-seats" role="group" aria-label="Disposizione orientativa delle sezioni: percussioni e ottoni sul fondo, legni al centro, archi davanti">
 <div class="nm-seat-row" data-nm-line="back">
@@ -771,7 +812,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <div class="nm-orchestra-inspector" id="nm-instrument-panel" aria-live="polite" aria-atomic="true">
 <div class="nm-orchestra-family" id="nm-instrument-family">Legni</div>
 <strong id="nm-instrument-title">Corno inglese</strong>
-<p id="nm-instrument-fact">Pur chiamandosi corno, è un legno a doppia ancia, imparentato con l'oboe. Ha il celebre assolo del Largo.</p>
+<p id="nm-instrument-fact">Strumento della famiglia dell'oboe, è protagonista della cantabilità del Largo.</p>
 <p id="nm-instrument-current">Scegli un movimento, poi confronta l'orchestra con la registrazione.</p>
 </div>
 </div>
@@ -779,25 +820,13 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <p class="nm-orchestra-disclaimer">Schema indicativo visto dal pubblico: la disposizione cambia fra orchestre e sale; i puntini sono <strong>simbolici</strong>, non rappresentano il numero effettivo dei musicisti. Uno strumento nell'organico non suona necessariamente per tutta la sinfonia. Il <strong>saxofono non è previsto</strong> nella partitura originale del <i>Nuovo Mondo</i> (il suo futuro impiego nei <i>Quadri</i> orchestrati da Ravel appartiene al Novecento).</p>
 <p class="nm-source"><a href="https://www.antonin-dvorak.cz/en/work/symphony-no-9/" target="_blank" rel="noopener noreferrer">Catalogo Dvořák · Organico originale e descrizione dei movimenti ↗</a> · <a href="https://imslp.org/wiki/Symphony_No.9,_Op.95_(Dvo%C5%99%C3%A1k,_Anton%C3%ADn)" target="_blank" rel="noopener noreferrer">Partitura orchestrale · IMSLP ↗</a></p>
 </section>
-
-<div class="nm-memory" id="nm-memory">
-<h5>La mappa dei temi-personaggi</h5>
-<p>Ogni idea ha un'origine e può ritornare, cambiata, nei movimenti successivi. I segni qui sotto indicano <strong>alcuni ritorni importanti</strong>, non una trascrizione completa della partitura. Seleziona un movimento in alto per metterne in evidenza la colonna.</p>
-<div class="nm-memory-scroll"><table aria-label="Principali reminiscenze tematiche nella Sinfonia dal Nuovo Mondo">
-<thead><tr><th scope="col">Idea riconoscibile</th><th scope="col" data-nm-movement="1">I</th><th scope="col" data-nm-movement="2">II</th><th scope="col" data-nm-movement="3">III</th><th scope="col" data-nm-movement="4">IV</th></tr></thead>
-<tbody>
-<tr><th scope="row">Il richiamo del primo movimento</th><td data-nm-movement="1"><span class="nm-dot" aria-label="presente">●</span></td><td data-nm-movement="2"><span class="nm-dot" aria-label="ritorna">●</span></td><td data-nm-movement="3"><span class="nm-dot" aria-label="ritorna">●</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
-<tr><th scope="row">Il canto del Largo</th><td data-nm-movement="1"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="2"><span class="nm-dot" aria-label="presentato">●</span></td><td data-nm-movement="3"><span class="nm-empty" aria-label="non evidenziato qui">—</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
-<tr><th scope="row">Il moto dello Scherzo</th><td data-nm-movement="1"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="2"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="3"><span class="nm-dot" aria-label="presentato">●</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
-</tbody></table></div>
-<details><summary>Perché riconoscere un tema non significa raccontare una storia?</summary>
-<p>Quando Dvořák riprende un tema, costruisce un legame di memoria <em>dentro la forma musicale</em>. Possiamo usare il viaggio come metafora per imparare, ma la sinfonia non prescrive personaggi, approdi o scene. Nel finale le reminiscenze sono particolarmente importanti: Dvořák non si limita a ripetere il tema del primo movimento, ma intreccia materiali di tutti i movimenti precedenti.</p>
-</details>
+<p><strong>Un confronto sulle fonti.</strong> Una frase della Nona può essere accostata a uno spiritual in un'esecuzione documentata: una somiglianza di intervalli o di profilo melodico, tuttavia, non basta a dimostrare una citazione. La <a href="#quadri-promenade"><i>Promenade</i> di Musorgskij</a> permette un altro confronto sulla trasformazione e sulla memoria dei temi.</p>
 </div>
+</details>
 <p class="nm-source">Fonti: <a href="https://www.youtube.com/watch?v=HvUH5Oq3Z5o" target="_blank" rel="noopener noreferrer">ARD Klassik · Integrale e minutaggi 0:00 / 12:12 / 24:27 / 31:51</a> · <a href="https://www.antonin-dvorak.cz/en/work/symphony-no-9/" target="_blank" rel="noopener noreferrer">Catalogo Dvořák · Strumentazione, forma e reminiscenze</a>. Il video viene creato soltanto dopo un clic, con <code>autoplay=0</code>.</p>
 </section>
 
-<aside class="per-iniziare"><strong>✦ Per iniziare · Che cosa sappiamo davvero?</strong><p>Confronta un frammento della Nona con uno spiritual interpretato da cantanti identificati. Annota <strong>somiglianze musicali</strong> precise, poi chiediti se bastino a dimostrare una citazione. Fai lo stesso con la <a href="#quadri-promenade">Promenade</a> di Musorgskij: come riconosciamo una melodia trasformata?</p></aside>
+
 <p class="form-sources"><a href="https://www.antonin-dvorak.cz/en/work/symphony-no-9/" target="_blank" rel="noopener noreferrer">Dvořák · Fonti, prima esecuzione e analisi dei movimenti ↗</a></p>
 </section>
 <aside class="crossing"><strong>Il tema che lega i due viaggi</strong><p>Da un lato <strong>musica nazionale e incontro culturale</strong>; dall'altro <strong>immagini nazionali e viaggio dello sguardo</strong>. L'esotismo non è una proprietà di una scala, ma una relazione storica fra chi guarda, chi viene rappresentato e chi ascolta. <a href="#quadri-viaggi">↗ Vai alla geografia immaginata dei <i>Quadri</i></a>.</p></aside>
@@ -920,11 +949,13 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <div class="quadri-art-card" id="quadri-hartmann-baba-jaga"><h5>9 · La capanna di Baba Jaga</h5><a href="https://commons.wikimedia.org/wiki/File:Hartmann%20-%20Hut%20of%20Baba%20Yaga.jpg" target="_blank" rel="noopener noreferrer" title="Fonte e diritti su Wikimedia Commons"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Hartmann_-_Hut_of_Baba_Yaga.jpg" loading="lazy" decoding="async" alt="Disegno dell'orologio di Hartmann a forma di capanna di Baba Jaga su zampe di gallina" style="display:block;max-width:100%;width:auto;height:auto;max-height:290px;margin:.4rem auto .65rem;border:1px solid #d8cec3"></a><p>Progetto di un orologio in stile russo, non l'immagine di una strega in volo: il movimento drammatico appartiene all'invenzione del compositore.</p><p class="quadri-art-ascolto"><strong>Ascolta, poi osserva:</strong> il disegno mostra un oggetto statico, un orologio; la musica introduce attacchi violenti, corse e contrasti improvvisi. Non «riproduce» un volo presente nell'immagine: anima liberamente il racconto fantastico che l'oggetto suggerisce.</p><button type="button" class="quadri-art-play" data-quadri-start="1506" data-quadri-label="9 · Baba Jaga">♪ Ascolta il quadro · 25:06 (premi Play)</button><a class="quadri-nb-link" href="#quadri-quaderno" data-quadri-notebook-case="baba">✎ Analizza nel quaderno ↗</a><small>Viktor Hartmann · opere del XIX secolo, riproduzioni di opere in pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:Hartmann%20-%20Hut%20of%20Baba%20Yaga.jpg" target="_blank" rel="noopener noreferrer">Fonte, licenza e metadati ↗</a></small></div>
 <div class="quadri-art-card" id="quadri-hartmann-porta"><h5>10 · La Grande Porta di Kyiv</h5><a href="https://commons.wikimedia.org/wiki/File:Hartmann%20--%20Plan%20for%20a%20City%20Gate.jpg" target="_blank" rel="noopener noreferrer" title="Fonte e diritti su Wikimedia Commons"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Hartmann_--_Plan_for_a_City_Gate.jpg" loading="lazy" decoding="async" alt="Acquerello originale di Hartmann per una porta monumentale a Kyiv con grande arco e torre campanaria" style="display:block;max-width:100%;width:auto;height:auto;max-height:290px;margin:.4rem auto .65rem;border:1px solid #d8cec3"></a><p>Progetto architettonico ad acquerello del 1869, mai costruito. Il grandioso finale pianistico rende monumentale un edificio rimasto sulla carta.</p><p class="quadri-art-ascolto"><strong>Ascolta, poi osserva:</strong> accordi solenni, richiami a un canto corale e figure pianistiche che evocano campane fanno risuonare un'architettura mai costruita. Senza orchestra, Musorgskij costruisce già la propria monumentalità attraverso le risorse del pianoforte.</p><button type="button" class="quadri-art-play" data-quadri-start="1706" data-quadri-label="10 · Grande Porta di Kyiv">♪ Ascolta il quadro · 28:26 (premi Play)</button><a class="quadri-nb-link" href="#quadri-quaderno" data-quadri-notebook-case="porta">✎ Analizza nel quaderno ↗</a><small>Viktor Hartmann · opere del XIX secolo, riproduzioni di opere in pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:Hartmann%20--%20Plan%20for%20a%20City%20Gate.jpg" target="_blank" rel="noopener noreferrer">Fonte, licenza e metadati ↗</a></small></div>
 </div>
-<div class="hearing" id="quadri-paragone" aria-labelledby="quadri-paragone-title"><h5 id="quadri-paragone-title" style="font:650 1.14rem/1.35 var(--serif);margin:0 0 .6rem">Dal foglio al pianoforte · Tre prove di traduzione</h5>
+<details class="per-iniziare quadri-short-exercise" id="quadri-paragone"><summary id="quadri-paragone-title">✦ Per iniziare · Dal foglio al pianoforte</summary>
 <p><strong>Il bozzetto diventa gesto:</strong> confronta i <a href="#quadri-immagini">pulcini</a> con gli attacchi brevi del relativo pezzo. <strong>Il ritratto diventa dialogo:</strong> nei due personaggi di Sandomierz ascolta la differenza di registro e la sovrapposizione delle due figure, senza scambiarle per ritratti psicologici oggettivi. <strong>Il progetto diventa architettura sonora:</strong> ascolta la <i>Grande Porta</i> senza guardare prima il disegno; soltanto dopo cerca ciò che il pianoforte aggiunge all'immagine.</p>
-<p>Per ogni prova rispondi in due frasi: <em>che cosa riconosco nella fonte visiva?</em> e <em>quale elemento musicale non era già contenuto nell'immagine?</em> L'obiettivo non è indovinare il soggetto, ma capire <strong>come cambia il mezzo espressivo</strong>. Raccogli poi le tue osservazioni nel <a href="#quadri-quaderno">quaderno interattivo</a>, aggiungendo la colonna dell'interpretazione personale.</p></div>
+<p>Per ogni prova rispondi in due frasi: <em>che cosa riconosco nella fonte visiva?</em> e <em>quale elemento musicale non era già contenuto nell'immagine?</em> L'obiettivo non è indovinare il soggetto, ma capire <strong>come cambia il mezzo espressivo</strong>. Raccogli poi le tue osservazioni nel <a href="#quadri-quaderno">quaderno interattivo</a>, aggiungendo la colonna dell'interpretazione personale.</p></details>
 
-<section class="quadri-notebook" id="quadri-quaderno" aria-labelledby="quadri-quaderno-title">
+<details class="quadri-notebook per-iniziare quadri-worksheet" id="quadri-quaderno">
+<summary>✦ Per iniziare · Quaderno facoltativo: vedere, ascoltare, immaginare</summary>
+<div class="quadri-worksheet-body">
 <div class="eyebrow">✦ Laboratorio · Tre livelli da non confondere</div>
 <h4 id="quadri-quaderno-title">Quello che vedo · Quello che ascolto · Quello che immagino</h4>
 <p>Segui quest'ordine: <strong>1. osserva il documento</strong> senza inventarne dettagli; <strong>2. descrivi le scelte musicali</strong> con esempi riconoscibili; <strong>3. formula una tua interpretazione</strong> e spiega da quali suoni nasce. Il titolo non sostituisce la fonte visiva e un'emozione personale non equivale a una prova storica.</p>
@@ -960,7 +991,8 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <textarea id="quadri-nb-output" hidden readonly aria-label="Testo del quaderno da copiare manualmente"></textarea>
 <details class="quadri-nb-hints" id="quadri-nb-hints"><summary>Se hai bisogno di aiuto, apri tre indizi</summary><p><strong>Fonte:</strong> <span id="quadri-nb-h1"></span></p><p><strong>Musica:</strong> <span id="quadri-nb-h2"></span></p><p><strong>Interpretazione:</strong> <span id="quadri-nb-h3"></span></p></details>
 <p class="form-sources">Questa scheda non invia né memorizza risposte su un server. Cambiando soggetto i testi rimangono in memoria soltanto finché la pagina è aperta. I collegamenti ai video preparano il lettore, <strong>senza autoplay</strong>.</p>
-</section>
+</div>
+</details>
 
 <aside class="per-iniziare"><strong>✦ Per iniziare · Quando il quadro non c'è più</strong><p>Ascolta <i>Gnomus</i>, poi guarda il disegno superstite dei <i>Pulcini</i>. Per quale pezzo puoi confrontare un documento originale con la partitura? Per quale devi lavorare anche con testimonianze e descrizioni? Puoi comunque individuare movimento, carattere e timbro nel primo brano senza conoscere il disegno perduto?</p></aside>
 
@@ -1211,10 +1243,10 @@ if(nbSelect&&nbImg&&nbCaption&&nbGuide&&nbLink&&nbQs.every(Boolean)&&nbHints.eve
 
 // Dvořák: la selezione dei movimenti cambia schede e colori senza creare video.
 const nmMovements=[
- {index:'Movimento I · 0:00',title:'Dal silenzio al richiamo dei corni',description:'L’introduzione lenta lascia emergere l’Allegro. Distingui il profilo energico del tema dei corni dalle idee melodiche più cantabili affidate ai legni. La prima idea ritornerà, trasformata, anche nei movimenti successivi.',question:'Dopo l’introduzione, quali caratteristiche permettono di riconoscere il tema dei corni quando torna?',role:['Introduzione e tessuto','Risposte e nuovi temi','Richiamo principale dei corni','Accenti dei timpani'],salient:[0,2],time:0},
- {index:'Movimento II · 12:12',title:'Il Largo: il corno inglese e la distanza',description:'Dopo gli accordi dei fiati entra la lunga melodia del corno inglese, accompagnata dagli archi con sordina. La pentatonia è una caratteristica possibile del profilo, non una prova di appartenenza a una particolare cultura.',question:'Perché il colore del corno inglese cambia la percezione di una melodia semplice? Quando tornano idee già ascoltate nel primo movimento?',role:['Archi con sordina','Accordi introduttivi dei fiati','Richiami nel culmine','Accenti e sostegno del ritmo'],salient:[0,1],time:732},
- {index:'Movimento III · 24:27',title:'Lo Scherzo: il ritmo incontra la danza',description:'Osserva gli accenti, l’energia del movimento e il diverso carattere del Trio. Il riferimento letterario a Hiawatha non dimostra l’impiego diretto di uno specifico ritmo rituale dei popoli nativi americani.',question:'Che cosa cambia nel Trio? E quale tema del primo movimento riconosci nella coda?',role:['Movimenti rapidi e Trio','Dialoghi e contrasti','Richiami del materiale precedente','Timpani e forte impulso ritmico'],salient:[0,3],time:1467},
- {index:'Movimento IV · 31:51',title:'Il finale: tutte le memorie si incontrano',description:'L’attacco degli ottoni presenta il tema conclusivo. In seguito ritornano idee dei movimenti precedenti; nella coda acquistano nuova forza accanto al materiale proprio del finale. La forma crea continuità senza bisogno di una trama dichiarata.',question:'Riconosci almeno due idee provenienti dagli altri movimenti. Sono identiche o sono cambiate per timbro, armonia o contesto?',role:['Impulso e sonorità d’insieme','Colori delle riprese','Tema del finale negli ottoni','Accenti e pieni orchestrali'],salient:[0,2],time:1911}
+ {index:'Movimento I · 0:00',title:'Dal silenzio al richiamo dei corni',description:'L’introduzione lenta apre la strada al profilo incisivo dei corni, in contrasto con altre idee più cantabili affidate ai legni. La ripresa trasformata del materiale iniziale crea rapporti fra movimenti diversi.',question:'Dopo l’introduzione, quali caratteristiche permettono di riconoscere il tema dei corni quando torna?',role:['Introduzione e tessuto','Risposte e nuovi temi','Richiamo principale dei corni','Accenti dei timpani'],salient:[0,2],time:0},
+ {index:'Movimento II · 12:12',title:'Il Largo: il corno inglese e la distanza',description:'La lunga melodia del corno inglese emerge dagli accordi dei fiati su un accompagnamento di archi con sordina. Il suo profilo pentatonico è una risorsa compositiva, non un indicatore etnico univoco.',question:'Perché il colore del corno inglese cambia la percezione di una melodia semplice? Quando tornano idee già ascoltate nel primo movimento?',role:['Archi con sordina','Accordi introduttivi dei fiati','Richiami nel culmine','Accenti e sostegno del ritmo'],salient:[0,1],time:732},
+ {index:'Movimento III · 24:27',title:'Lo Scherzo: il ritmo incontra la danza',description:'L’energia ritmica dello Scherzo contrasta con il carattere del Trio. Le associazioni letterarie con Hiawatha non corrispondono a una trascrizione documentata di specifici ritmi rituali indigeni.',question:'Che cosa cambia nel Trio? E quale tema del primo movimento riconosci nella coda?',role:['Movimenti rapidi e Trio','Dialoghi e contrasti','Richiami del materiale precedente','Timpani e forte impulso ritmico'],salient:[0,3],time:1467},
+ {index:'Movimento IV · 31:51',title:'Il finale: tutte le memorie si incontrano',description:'All’attacco degli ottoni segue una trama che incorpora idee dei movimenti precedenti. Le reminiscenze acquistano nuova funzione nella coda: un principio di coesione formale indipendente da una trama dichiarata.',question:'Riconosci almeno due idee provenienti dagli altri movimenti. Sono identiche o sono cambiate per timbro, armonia o contesto?',role:['Impulso e sonorità d’insieme','Colori delle riprese','Tema del finale negli ottoni','Accenti e pieni orchestrali'],salient:[0,2],time:1911}
 ];
 // La mappa non produce suoni sintetici né riproduce automaticamente il video.
 // I suoi rilievi timbrici sono punti d'attenzione didattici, non un'analisi battuta per battuta.
