@@ -23,13 +23,13 @@ Dalle radici settecentesche (Sturm und Drang, Classicismo, Beethoven) al rapport
 | 1 | Alle soglie del Romanticismo (`rivoluzione`) | **Ampliato: Beethoven come cerniera** | Revisionare fonti e proporzioni del prologo, della produzione tarda e dei confronti |
 | 2 | L’artista, la città, il pubblico (`artista-citta`) | **Da approfondire** | Città, circuiti concertistici, impresari, editoria, pianoforte domestico, donne musiciste; nessi sociali più documentati |
 | 3 | La voce e l’intimità: il Lied (`lied`) | Impostato, da approfondire | Poesia, Lied, Schubert, Schumann, rapporto con il ciclo e con l'audioteca «La parola e il canto» |
-| 4 | Il pianoforte: canto, danza e forme nuove (`pianoforte`) | Impostato, da riequilibrare | Generi, forma breve, mazurca, studio, notturno, memoria della danza; evitarne l'identificazione con un solo compositore |
+| 4 | Il pianoforte: canto, danza e forme nuove (`pianoforte`) | **Ulteriormente ampliato: Chaminade, editoria, pianismo plurale** | Verificare le fonti e la rappresentatività effettiva di generi, varianti e tradizioni esecutive, senza restringere il capitolo a pochi autori |
 | 5 | Virtuosismo e trascrizione (`virtuosismo`) | Impostato, da approfondire | Celebrità, tecnica, trascrizione, istituzioni, differenze fra concerto e studio; la vecchia nota su `Mazeppa` è stata corretta |
-| 6 | Sinfonia, camera, orchestra (`orchestra`) | **Ampliato: Brahms e Farrenc** | Ampliare ascolti sulla strumentazione/direzione e verificare equilibrio fra sinfonia, camera, repertorio e rimandi autonomi |
+| 6 | Sinfonia, camera, orchestra (`orchestra`) | **Ampliato: architetture plurali e sinfonismo strumentale italiano** | Inseriti Sgambati e Martucci nel loro contesto istituzionale; verificare ascolti della strumentazione e proporzione fra generi |
 | 7 | Musica a programma (`racconta`) | **Avanzato** | Controllo musicologico e ascolti reali di `idée fixe`, trasformazione tematica, poema e distinzione programma/evocazione |
 | 8 | Il teatro musicale (`teatro`) | Da approfondire | Weber, Rossini, Bellini, Donizetti, Verdi, Wagner, scuole teatrali, rapporto col Risorgimento; riferimento a `opera-lirica/` ancora segnaposto |
 | 9 | Scuole nazionali, danze e imperi (`nazioni`) | **Molto avanzato: ampliato Smetana e motivazione dei casi** | Audit di fonti, aree, egemonie e popoli, ritmi/modalità, crediti delle registrazioni e distinzioni fra composizione e documenti etnomusicali |
-| 10 | L'Atlantico immaginato — studio di caso (`nuovo-mondo`) | Sviluppato: scelta curatoriale esplicita | Validazione musicale, fonti e comportamento del lettore; interpretazione culturale del tema del «Nuovo Mondo» |
+| 10 | L'Atlantico immaginato — studio di caso (`nuovo-mondo`) | **Ampliato: Dvořák e controcampo di Amy Beach** | Verificare edizioni e ascolti; approfondire il dissenso sui repertori considerati fondativi per una scuola americana, senza semplificazioni |
 | 11 | La musica incontra le immagini — studio di caso (`quadri`) | Molto sviluppato: scelta curatoriale esplicita | Fonti iconografiche, opere perdute, partitura pianistica vs orchestrazione Ravel, prove d'interazione |
 | 12 | Vienna, valzer e archi (`vienna`) | **Prima espansione editoriale eseguita** | Verificare le fonti, cinque nuovi ascolti predisposti e il loro reale funzionamento; consolidare gli aspetti sociali e la bibliografia |
 | 13 | Parigi, operetta e città-spettacolo (`offenbach`) | **Prima espansione editoriale eseguita** | Verificare le fonti, due ascolti e il loro effettivo funzionamento, ricezione del can-can, varianti dell'opera e iconografia |
@@ -112,6 +112,18 @@ Le **14 voci principali** devono identificare **problemi musicali e culturali**,
 **QA statico successivo al commit:** 14 capitoli; 49 pulsanti di scelta-video; 2 pulsanti SoundCloud; nessun ID duplicato o frammento locale mancante; script JS sintatticamente valido; zero iframe statici; nessun parametro autoplay positivo. Non rappresenta un collaudo su dispositivo reale né una validazione sistematica delle fonti storiche e audiovisive.
 
 **Lavoro ancora aperto:** revisione della proporzione dei 14 capitoli e dei repertori più periferici (non soltanto integrazione di nomi), confronto fra correnti e aree non riducibili ai repertori canonici, controllo puntuale delle fonti, collaudo dei lettori, semantica dei collegamenti e accessibilità.
+
+### Integrazione documentata — 16 ottobre 2026 · Panorama e opere
+
+Commit del lotto: [`732da623`](https://github.com/SkenderAle/github-pages/commit/732da623181979a5d0c3fd7429002a4ec141ec83).
+
+- **Capitolo 4 — `#pianoforte-chaminade`:** Cécile Chaminade come compositrice di generi strumentali diversi, rapporto fra pubblicazione, organici e successo; confronto con le carriere di Fanny Hensel, Clara Schumann, Louise Farrenc e i pianisti europei e transatlantici. Fonte: [Catalogo delle opere Chaminade](https://cecilechaminade.org/works/).
+- **Capitolo 6 — `#sinfonismo-italiano-ottocento`:** nuova trattazione di Giovanni Sgambati e Giuseppe Martucci, nelle sinfonie, nella musica da camera e soprattutto nella costruzione delle istituzioni concertistiche italiane. Le attività e le opere sono motivate storicamente; non due nuove «icone» di un elenco. Fonti: Dizionario Biografico Treccani, voci [Sgambati](https://www.treccani.it/enciclopedia/giovanni-sgambati_%28Dizionario-Biografico%29/) e [Martucci](https://www.treccani.it/enciclopedia/giuseppe-martucci_%28Dizionario-Biografico%29/).
+- **Capitolo 10 — `#nuovo-mondo-beach`:** allargata la discussione del «Nuovo Mondo» a Amy Beach, <i>Gaelic Symphony</i> (1894–1896), e ai criteri contrapposti di identificazione del repertorio nazionale statunitense. Fonti: [Yale School of Music](https://music.yale.edu/news/prof-paul-berry-dvoraks-new-world-symphony) e [Library of Congress](https://guides.loc.gov/amy-beach/manuscripts).
+- **Non modificati:** titoli tematici dell'indice, ID dei 14 capitoli, 49 selettori video e 2 SoundCloud, controller di riproduzione e destinazioni interne. Il lotto non aggiunge filmati non collaudati.
+- **Verificato staticamente:** assenza di duplicati HTML e segnalibri mancanti; sintassi del JavaScript valida; zero iframe iniziali e zero autoplay positivo. Non ancora collaudati: comportamento mobile e riproducibilità nel browser pubblico.
+
+**Criterio confermato:** mantenere l'ampiezza della trattazione attraverso problemi e opere musicali, non per semplice inclusione nominale. Il rapporto fra titoli tematici e studi di caso rimane una scelta editoriale aperta alla verifica.
 
 ### Ultima verifica
 
