@@ -175,6 +175,25 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 .mozart-confronto .mozart-compare-note{font:.82rem/1.6 var(--sans);color:#506759}
 @media(max-width:760px){.mozart-compare-grid{grid-template-columns:1fr}.mozart-compare-card{padding:.8rem}}
 
+/* Audioteche facoltative: card responsive, iframe inseriti solo dopo un clic. */
+.mm-clip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0}
+.mm-clip-card{min-width:0;background:#fcfdf9;border:1px solid #bfd0bf;padding:1rem}
+.mm-clip-tag{font:750 .76rem/1.5 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:#547660}
+.mm-clip-card h5{font:600 clamp(1.05rem,1.8vw,1.3rem)/1.3 var(--serif);color:#2d5140;margin:.32rem 0 .55rem}
+.mm-clip-card p{font:.85rem/1.6 var(--sans);margin:.4rem 0 .8rem}
+.mm-clip-stage{aspect-ratio:16/9;background:#192923;border:1px solid #7d9f89;position:relative;margin:.7rem 0;overflow:hidden}
+.mm-clip-stage iframe{border:0;width:100%;height:100%;position:absolute;inset:0}
+.mm-clip-empty{display:flex;align-items:center;justify-content:center;height:100%;color:#e7f3e8;padding:.8rem;text-align:center;font:650 .82rem/1.5 var(--sans)}
+.mm-clip-controls{display:flex;gap:.45rem;flex-wrap:wrap;margin:.55rem 0}
+.mm-clip-controls button,.nona-commands button{min-height:44px;padding:.65rem .75rem;border:1px solid #567b64;background:#315b46;color:#fff;cursor:pointer;font:750 .82rem/1.4 var(--sans)}
+.mm-clip-controls button[data-mm-stop],.nona-commands button[data-nona-stop]{background:#f3f9f3;color:#2a5538}
+.mm-clip-controls button[hidden],.nona-commands button[hidden]{display:none}
+.mm-clip-controls button:focus-visible,.mm-listening a:focus-visible,.nona-commands button:focus-visible{outline:3px solid #9f7431;outline-offset:3px}
+.mm-clip-state,.mm-clip-card .mm-clip-time{font:750 .8rem/1.5 var(--sans);color:#435c4c}
+.mm-clip-guidance{border-left:3px solid #577f63;background:#f9fcf5;padding:.8rem .95rem;margin:.9rem 0}
+.mm-clip-sources{font:.82rem/1.6 var(--sans);color:#506759}
+@media(max-width:760px){.mm-clip-grid{grid-template-columns:1fr}.mm-clip-card{padding:.8rem}}
+
 /* I laboratori pratici restano a disposizione senza interrompere la lettura. */
 .attivita-facoltativa{scroll-margin-top:5.7rem;margin:1.1rem 0 1.65rem!important;padding:.9rem 1.1rem}
 .attivita-facoltativa>summary{cursor:pointer;font:750 .96rem/1.55 var(--sans);color:#284b35}
@@ -485,9 +504,11 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <div class="nona-ascolto" aria-label="Ascolto della Nona Sinfonia">
  <strong>Beethoven · Sinfonia n. 9, op. 125 — Finale</strong>
  <p>Un ascolto già presente nel percorso sul Classicismo e trasferito qui con la trattazione dell'opera. Segui i recitativi di violoncelli e contrabbassi, poi riconosci l'ingresso della voce e del coro.</p>
- <details>
+ <details id="nona-lettore">
   <summary>▶ Apri l'ascolto nella pagina</summary>
-  <div class="nona-video"><iframe src="https://www.youtube-nocookie.com/embed/fx827bYPBNw?rel=0" title="Beethoven, Sinfonia n. 9, Finale — Gardiner" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+  <div class="nona-video" id="nona-video-stage"><div class="mm-clip-empty">Lettore non caricato; premi «Prepara» per ascoltare.</div></div>
+  <p class="nona-commands"><button type="button" data-nona-load>▶ Prepara l'ascolto</button> <button type="button" data-nona-stop hidden>■ Ferma e chiudi</button></p>
+  <p class="mm-clip-state" id="nona-player-status" role="status" aria-live="polite">Aprire il riquadro non avvia la musica; dopo aver preparato il video premi Play.</p>
  </details>
  <p class="nona-partitura"><a href="https://imslp.org/wiki/Symphony_No.9%2C_Op.125_(Beethoven%2C_Ludwig_van)" target="_blank" rel="noopener noreferrer">📜 Segui la partitura · IMSLP ↗</a></p>
 </div>
@@ -526,8 +547,13 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <p>Le riduzioni per pianoforte, anche a quattro mani, le trascrizioni, le bande e gli arrangiamenti cameristici permettono alle sinfonie e alle opere di attraversare l'Europa senza attendere che viaggino orchestre e compagnie teatrali. In molte case conoscere una musica significa anche suonarla: un passaggio decisivo per capire quanto diversa sarà la rivoluzione del fonografo, capace di conservare non una partitura, ma una particolare esecuzione.</p>
 <p>Clara Schumann, Fanny Hensel, Louise Farrenc e Pauline Viardot ci aiutano a vedere come formazione, possibilità professionali, editoria e convenzioni sociali determinino chi possa comporre, eseguire e circolare con il proprio nome. Le donne non entrano in questa storia come una galleria separata, ma dove il loro lavoro spiega concretamente la vita musicale.</p></div>
 <aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Giornali, cartelloni teatrali, litografie, sale da concerto, storia della stampa e architettura urbana: la musica vive dentro infrastrutture materiali e sociali.</p></aside>
-<p class="ascolto-context">Trascrizione per pianoforte e originale orchestrale: confronto da documentare con esecuzioni verificate.</p>
-<details class="per-iniziare attivita-facoltativa"><summary>✦ Per iniziare · Una pagina, due organici</summary><p>La stessa pagina in versione orchestrale e in trascrizione pianistica a quattro mani: quali caratteristiche musicali rimangono e quali colori scompaiono? (Confronto da documentare.)</p><small>Registrazioni da identificare e verificare; nessun lettore aggiunto.</small></details>
+<p class="ascolto-context">La circolazione della musica fra casa e sala da concerto va anche dal pianoforte verso l'orchestra: Dvořák compose le <i>Danze slave</i> op. 46 per pianoforte a quattro mani (1878, B. 78) e solo in seguito le orchestrò (B. 83). Confrontare la stessa prima danza nei due organici rivela il ruolo dell'editoria, degli interpreti e del colore strumentale.</p>
+<details class="per-iniziare attivita-facoltativa mm-listening" id="due-organici-dvorak">
+<summary>✦ Per iniziare · Una pagina, due organici: Dvořák</summary>
+<p>Confronta l'inizio del <i>furiant</i> op. 46 n. 1, prima nella <strong>scrittura originale per quattro mani</strong>, poi nella versione orchestrale dell'autore. Sono spezzoni predisposti dall'inizio dei rispettivi video, non sincronizzazioni automatiche della stessa battuta. Il confronto non è fra una partitura «ricca» e una «povera»: cambiano mezzi, destinatari e possibilità espressive.</p>
+<div class="mm-clip-grid" aria-label="La prima Danza slava, quattro mani e orchestra"><article class="mm-clip-card"><div class="mm-clip-tag">A · Originale per quattro mani</div><h5>Dvořák, Danza slava op. 46 n. 1 · quattro mani</h5><p>Ai Hamamoto e Yu Yamazaki, duo Yu &amp; Ai · PTNA, Piano Teachers’ National Association.</p><div class="mm-clip-stage" data-mm-stage="dvo-4mani" aria-label="Lettore di Dvořák, Danza slava op. 46 n. 1 · quattro mani"><div class="mm-clip-empty">Lettore non caricato. Premi «Prepara», poi Play.</div></div><div class="mm-clip-controls"><button type="button" data-mm-load="dvo-4mani" data-mm-video="UMaCZgWqF3w" data-mm-end="120" data-mm-title="Dvořák, Danza slava op. 46 n. 1 · quattro mani">▶ Prepara l'estratto</button> <button type="button" data-mm-stop="dvo-4mani" hidden>■ Ferma e chiudi</button></div><p class="mm-clip-time">Primi 2 minuti e 0 secondi del video</p><p><a href="https://www.youtube.com/watch?v=UMaCZgWqF3w" target="_blank" rel="noopener noreferrer">Registrazione originale ↗</a></p></article><article class="mm-clip-card"><div class="mm-clip-tag">B · Orchestrazione dell'autore</div><h5>Dvořák, Danza slava op. 46 n. 1 · orchestra</h5><p>Cleveland Orchestra, George Szell · incisione storica diffusa da Sony Classical.</p><div class="mm-clip-stage" data-mm-stage="dvo-orch" aria-label="Lettore di Dvořák, Danza slava op. 46 n. 1 · orchestra"><div class="mm-clip-empty">Lettore non caricato. Premi «Prepara», poi Play.</div></div><div class="mm-clip-controls"><button type="button" data-mm-load="dvo-orch" data-mm-video="hOwXa2PTm1A" data-mm-end="120" data-mm-title="Dvořák, Danza slava op. 46 n. 1 · orchestra">▶ Prepara l'estratto</button> <button type="button" data-mm-stop="dvo-orch" hidden>■ Ferma e chiudi</button></div><p class="mm-clip-time">Primi 2 minuti e 0 secondi del video</p><p><a href="https://www.youtube.com/watch?v=hOwXa2PTm1A" target="_blank" rel="noopener noreferrer">Registrazione originale ↗</a></p></article></div><p class="mm-clip-state" role="status" aria-live="polite">Nessun video caricato. Prepara un estratto e premi Play; scegliendo il successivo il precedente si chiude.</p><p class="mm-clip-guidance"><strong>Da ascoltare:</strong> gli accenti del <i>furiant</i> e il disegno motivico che rimangono riconoscibili; la distribuzione delle voci fra i registri della tastiera; gli ingressi e i colori di legni, archi, ottoni e percussioni nell'orchestrazione.</p>
+<p class="mm-clip-sources">Fonti: <a href="https://www.laphil.com/works/slavonic-dances-op-46" target="_blank" rel="noopener noreferrer">LA Phil · storia delle due versioni ↗</a> · <a href="https://imslp.org/wiki/Slavonic_Dances,_Op.46_(Dvo%C5%99%C3%A1k,_Anton%C3%ADn)" target="_blank" rel="noopener noreferrer">IMSLP · partiture e cronologia ↗</a>.</p>
+</details>
 
 <a class="chapter-up" href="#capitoli">↑ Torna all'indice</a>
 </article><article class="chapter" id="lied" aria-labelledby="title-lied">
@@ -718,7 +744,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <h4 class="chapter-subhead" id="scuole-boeme">Boemia e Moravia: un paesaggio può parlare una lingua?</h4>
 <p>Nella Boemia degli Asburgo, <strong>Bedřich Smetana</strong> affida a <i>Má vlast</i> (La mia patria) un discorso fatto di luoghi, leggende e memoria. Nella <i>Vltava</i>, il corso del fiume è anche un modo per immaginare una comunità: è musica descrittiva, ma non è soltanto una cartolina sonora. <strong>Antonín Dvořák</strong> percorre un'altra strada: nelle <i>Danze slave</i> op. 46 (1878) inventa temi propri a partire da caratteri di danza riconoscibili, senza limitarsi a trascrivere melodie popolari. La <strong>n. 1, un furiant</strong>, è la nostra porta d'ascolto per l'<strong>emiolia</strong>: due battute scritte in 3/4 possono far percepire tre gruppi di due semiminime, cioè un effetto di 3/2.</p>
 <p>Non fonderemo cechi, slovacchi, moravi e tutti gli altri popoli slavi in un solo repertorio. Persino la parola «slavo» comprende lingue, istituzioni e storie molto differenti. Un brano può costruire un'identità locale ed essere, nello stesso tempo, pienamente inserito nella circolazione musicale europea: editori tedeschi, sale da concerto internazionali, maestri e allievi che attraversano le frontiere.</p>
-<details class="per-iniziare ascolto-facoltativo" id="scuole-boeme-ascolto"><summary>✦ Per iniziare · Il corso di un fiume e il passo di una danza</summary><div class="ascolto-facoltativo-body"><p><b>Smetana, <i>Vltava</i>:</b> all'inizio ascolta le figure dei flauti e dei clarinetti, poi il sorgere di un tema più disteso negli archi. Quali cambiamenti di timbro e tessitura danno l'impressione di uno spazio che si allarga? <b>Dvořák, <i>Danza slava</i> op. 46 n. 1:</b> prova a seguire gli accenti della sezione iniziale contando prima due battute di tre semiminime, poi tre gruppi di due. <a href="#scuole-ritmi">Il laboratorio sull'emiolia</a> mostra come non confondere il 3/2 percepito con un 7/8.</p><small>Fonti per l'opera: <a href="https://www.antonin-dvorak.cz/en/work/slavonic-dances-series-1/" target="_blank" rel="noopener noreferrer">catalogo Dvořák</a> · <a href="https://mtosmt.org/issues/mto.12.18.3/mto.12.18.3.karpinski.html" target="_blank" rel="noopener noreferrer">analisi metrica e frammento sonoro, Karpinski</a>. Non è ancora una nuova scheda video.</small></div></details>
+<details class="per-iniziare ascolto-facoltativo" id="scuole-boeme-ascolto"><summary>✦ Per iniziare · Il corso di un fiume e il passo di una danza</summary><div class="ascolto-facoltativo-body"><p><b>Smetana, <i>Vltava</i>:</b> all'inizio ascolta le figure dei flauti e dei clarinetti, poi il sorgere di un tema più disteso negli archi. Quali cambiamenti di timbro e tessitura danno l'impressione di uno spazio che si allarga? <b>Dvořák, <i>Danza slava</i> op. 46 n. 1:</b> prova a seguire gli accenti della sezione iniziale contando prima due battute di tre semiminime, poi tre gruppi di due. <a href="#scuole-ritmi">Il laboratorio sull'emiolia</a> mostra come non confondere il 3/2 percepito con un 7/8.</p><small>Fonti per l'opera: <a href="https://www.antonin-dvorak.cz/en/work/slavonic-dances-series-1/" target="_blank" rel="noopener noreferrer">catalogo Dvořák</a> · <a href="https://mtosmt.org/issues/mto.12.18.3/mto.12.18.3.karpinski.html" target="_blank" rel="noopener noreferrer">analisi metrica e frammento sonoro, Karpinski</a>. I due ascolti sono disponibili nei lettori qui sotto.</small><div class="mm-clip-grid" aria-label="Ascoltare Smetana e Dvořák"><article class="mm-clip-card"><div class="mm-clip-tag">A · Il paesaggio narrato</div><h5>Smetana · Vltava</h5><p>Berliner Philharmoniker, Krzysztof Urbański · Berlino, 24 maggio 2014.</p><div class="mm-clip-stage" data-mm-stage="boeme-smetana" aria-label="Lettore di Smetana · Vltava"><div class="mm-clip-empty">Lettore non caricato. Premi «Prepara», poi Play.</div></div><div class="mm-clip-controls"><button type="button" data-mm-load="boeme-smetana" data-mm-video="JcDzRjMIDvo" data-mm-end="150" data-mm-title="Smetana · Vltava">▶ Prepara l'estratto</button> <button type="button" data-mm-stop="boeme-smetana" hidden>■ Ferma e chiudi</button></div><p class="mm-clip-time">Primi 2 minuti e 30 secondi del video</p><p><a href="https://www.youtube.com/watch?v=JcDzRjMIDvo" target="_blank" rel="noopener noreferrer">Registrazione originale ↗</a></p></article><article class="mm-clip-card"><div class="mm-clip-tag">B · Il gesto del furiant</div><h5>Dvořák · Danza slava op. 46 n. 1</h5><p>Cleveland Orchestra, George Szell · incisione storica diffusa da Sony Classical.</p><div class="mm-clip-stage" data-mm-stage="boeme-dvorak" aria-label="Lettore di Dvořák · Danza slava op. 46 n. 1"><div class="mm-clip-empty">Lettore non caricato. Premi «Prepara», poi Play.</div></div><div class="mm-clip-controls"><button type="button" data-mm-load="boeme-dvorak" data-mm-video="hOwXa2PTm1A" data-mm-end="120" data-mm-title="Dvořák · Danza slava op. 46 n. 1">▶ Prepara l'estratto</button> <button type="button" data-mm-stop="boeme-dvorak" hidden>■ Ferma e chiudi</button></div><p class="mm-clip-time">Primi 2 minuti e 0 secondi del video</p><p><a href="https://www.youtube.com/watch?v=hOwXa2PTm1A" target="_blank" rel="noopener noreferrer">Registrazione originale ↗</a></p></article></div><p class="mm-clip-state" role="status" aria-live="polite">Nessun video caricato. Prepara un estratto e premi Play; scegliendo il successivo il precedente si chiude.</p><p class="mm-clip-guidance"><strong>Per orientare l'orecchio:</strong> nella <i>Vltava</i> riconosci le figurazioni dei legni all'inizio e l'allargarsi della tessitura; nel <i>furiant</i> ascolta gli accenti che attraversano il metro scritto. Non dedurre una identità nazionale da una sonorità isolata.</p><p class="mm-clip-sources">La <a href="#due-organici-dvorak">prima Danza slava è disponibile anche nell'originale per quattro mani ↗</a>, nel capitolo dedicato all'editoria.</p></div></details>
 <h4 class="chapter-subhead" id="scuole-ungheresi">Ungheria: il suono di un popolo o l'incontro fra molti musicisti?</h4>
 <p>Il <i>verbunkos</i>, legato storicamente al reclutamento militare e al virtuosismo strumentale, attraversa ambienti ungheresi e pratiche di musicisti <strong>rom</strong>. Le <i>Rapsodie ungheresi</i> di <strong>Liszt</strong> e le <i>Danze ungheresi</i> di <strong>Brahms</strong> testimoniano quanto questo patrimonio abbia circolato, trasformandosi anche nella musica da salotto e da concerto. Ma chiamare «ungherese» quel linguaggio non significa aver descritto tutta la musica degli abitanti del Regno d'Ungheria: accanto ai magiari vivevano slovacchi, rumeni, croati, serbi e altre comunità.</p>
 <p>Qui il problema non è stabilire chi possieda un intervallo o un ritmo. È chiedersi <strong>chi suona, chi ascolta, chi pubblica e chi attribuisce un'identità</strong> a quella musica. Una rapsodia non è una registrazione etnografica: è un'opera d'autore, con mediazioni estetiche e sociali ben precise.</p>
@@ -726,7 +752,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <h4 class="chapter-subhead" id="scuole-polacche">Polonia: una patria divisa, una musica che viaggia</h4>
 <p>Quando <strong>Chopin</strong> scrive le sue mazurche e polacche, la Polonia non è uno Stato indipendente: è stata divisa fra le potenze confinanti. Il richiamo alla danza può intrecciarsi con l'esilio, la nostalgia e la memoria, senza che ogni accento musicale debba ricevere un significato politico prestabilito. Nella mazurca convivono pulsazione ternaria e accenti mobili: non basta leggere «3/4» per riconoscere il suo passo. La <strong>polacca</strong>, con un'altra storia coreutica e un'altra gestualità, diventa nel pianoforte di Chopin anche una forma di affermazione pubblica. Non sono due modi equivalenti di dire «Polonia».</p>
 <p>Il teatro di <strong>Stanisław Moniuszko</strong>, con <i>Halka</i>, partecipa alla costruzione di una cultura musicale in lingua polacca. Un pianoforte a Parigi e un palcoscenico a Varsavia possono rispondere al medesimo problema storico con mezzi differenti: <strong>chi mantiene viva una cultura quando non dispone di uno Stato?</strong> Non lo capiremo soltanto identificando un ritmo: dovremo ascoltare anche la lingua, conoscere i pubblici e osservare le reti della circolazione musicale.</p>
-<details class="per-iniziare ascolto-facoltativo" id="scuole-polacche-ascolto"><summary>✦ Per iniziare · Due danze, due accenti, una tastiera</summary><div class="ascolto-facoltativo-body"><p>Confronta Chopin, <i>Mazurca</i> op. 17 n. 4 e <i>Polacca</i> op. 53. Sono entrambe in metro ternario, ma cerca nell'una lo spostamento degli accenti e l'elasticità del fraseggio, nell'altra la scansione riconoscibile del passo e la dimensione pubblica del gesto. Una differenza di carattere non prova che ogni battuta sia la trascrizione esatta di una danza di villaggio; mostra invece quanto una tradizione possa essere reinterpretata nella scrittura pianistica.</p><small>Per iniziare: ascoltare, battere il metro, poi discutere il titolo e la storia politica.</small></div></details>
+<details class="per-iniziare ascolto-facoltativo" id="scuole-polacche-ascolto"><summary>✦ Per iniziare · Due danze, due accenti, una tastiera</summary><div class="ascolto-facoltativo-body"><p>Confronta Chopin, <i>Mazurca</i> op. 17 n. 4 e <i>Polacca</i> op. 53. Sono entrambe in metro ternario, ma cerca nell'una lo spostamento degli accenti e l'elasticità del fraseggio, nell'altra la scansione riconoscibile del passo e la dimensione pubblica del gesto. Una differenza di carattere non prova che ogni battuta sia la trascrizione esatta di una danza di villaggio; mostra invece quanto una tradizione possa essere reinterpretata nella scrittura pianistica.</p><small>Prima ascoltare, poi discutere il titolo e la storia politica.</small><div class="mm-clip-grid" aria-label="Mazurca e polacca di Chopin"><article class="mm-clip-card"><div class="mm-clip-tag">A · Mazurca, la minore</div><h5>Chopin · Mazurca op. 17 n. 4</h5><p>Eric Lu · secondo turno del Concorso Chopin 2015, video del Fryderyk Chopin Institute.</p><div class="mm-clip-stage" data-mm-stage="pol-maz" aria-label="Lettore di Chopin · Mazurca op. 17 n. 4"><div class="mm-clip-empty">Lettore non caricato. Premi «Prepara», poi Play.</div></div><div class="mm-clip-controls"><button type="button" data-mm-load="pol-maz" data-mm-video="xW-Vb615l7Q" data-mm-end="150" data-mm-title="Chopin · Mazurca op. 17 n. 4">▶ Prepara l'estratto</button> <button type="button" data-mm-stop="pol-maz" hidden>■ Ferma e chiudi</button></div><p class="mm-clip-time">Primi 2 minuti e 30 secondi del video</p><p><a href="https://www.youtube.com/watch?v=xW-Vb615l7Q" target="_blank" rel="noopener noreferrer">Registrazione originale ↗</a></p></article><article class="mm-clip-card"><div class="mm-clip-tag">B · Polacca, la bemolle maggiore</div><h5>Chopin · Polacca op. 53</h5><p>Seong-Jin Cho · concerto dei premiati del 21 ottobre 2015, video del Fryderyk Chopin Institute.</p><div class="mm-clip-stage" data-mm-stage="pol-pol" aria-label="Lettore di Chopin · Polacca op. 53"><div class="mm-clip-empty">Lettore non caricato. Premi «Prepara», poi Play.</div></div><div class="mm-clip-controls"><button type="button" data-mm-load="pol-pol" data-mm-video="aZYYoDDmg8M" data-mm-end="150" data-mm-title="Chopin · Polacca op. 53">▶ Prepara l'estratto</button> <button type="button" data-mm-stop="pol-pol" hidden>■ Ferma e chiudi</button></div><p class="mm-clip-time">Primi 2 minuti e 30 secondi del video</p><p><a href="https://www.youtube.com/watch?v=aZYYoDDmg8M" target="_blank" rel="noopener noreferrer">Registrazione originale ↗</a></p></article></div><p class="mm-clip-state" role="status" aria-live="polite">Nessun video caricato. Prepara un estratto e premi Play; scegliendo il successivo il precedente si chiude.</p><p class="mm-clip-guidance"><strong>Metro ternario, due gesti differenti:</strong> ascolta accento mobile, esitazioni e fraseggio della mazurca; poi il passo ritmico e la proiezione pubblica della polacca. Questi esempi non certificano da soli la trascrizione di una danza popolare.</p><p class="mm-clip-sources">Entrambe le esecuzioni provengono dal <a href="https://www.youtube.com/@chopininstitute" target="_blank" rel="noopener noreferrer">Fryderyk Chopin Institute ↗</a>. Partiture: <a href="https://imslp.org/wiki/Mazurkas,_Op.17_(Chopin,_Fr%C3%A9d%C3%A9ric)" target="_blank" rel="noopener noreferrer">Mazurche op. 17 ↗</a> · <a href="https://imslp.org/wiki/Polonaise_in_A-flat_major,_Op.53_(Chopin,_Fr%C3%A9d%C3%A9ric)" target="_blank" rel="noopener noreferrer">Polacca op. 53 ↗</a>.</p></div></details>
 <h4 class="chapter-subhead" id="scuole-russe">Russia: i Cinque, l'accademia e le molte Russie musicali</h4>
 <p><strong>Michail Glinka</strong> apre una stagione decisiva nella ricerca di un teatro musicale riconoscibile in rapporto alla lingua e alla storia russa. Il cosiddetto <strong>Gruppo dei Cinque</strong> — <strong>Balakirev, Cui, Borodin, Musorgskij e Rimskij-Korsakov</strong> — sviluppa, con personalità differenti, l'interesse per il canto, la storia, le tradizioni popolari e la costruzione di un linguaggio nazionale. «Scuola russa» non significa tuttavia cinque autori che scrivono tutti allo stesso modo, né una semplice raccolta di melodie contadine armonizzate.</p>
 <p>Nei <i>Quadri di un'esposizione</i> di Musorgskij la scrittura pianistica diventa percorso fra immagini e stati interiori; in <i>Boris Godunov</i> il rapporto fra parola, folla e potere tocca il teatro; in <i>Il principe Igor</i> di Borodin la raffigurazione di popoli altri solleva anche il problema dell'esotismo. La <i>Shéhérazade</i> di Rimskij-Korsakov (1888) mostra quanto il colore orchestrale possa evocare un Oriente letterario: non la considereremo una trascrizione neutrale delle culture rappresentate.</p>
@@ -1208,6 +1234,7 @@ if(quadriStage && quadriLoad && quadriClose && quadriKvam && quadriStatus){
     // Se l'altro laboratorio è aperto, interrompilo prima di passare ai Quadri.
     if(typeof stopDvorakPlayer==='function' && nmStage && nmStage.querySelector('iframe'))stopDvorakPlayer();
     if(mozartFrameNodes.length)stopMozartComparison(false);
+    mmStopClips();stopNonaPlayer();
     const iframe=document.createElement('iframe');
     if(source==='avdeeva'){
       iframe.src='https://www.youtube-nocookie.com/embed/F1pk1MzX61Q?rel=0&playsinline=1&controls=1&autoplay=0&end=2149&start='+Math.max(0,Math.floor(start));
@@ -1439,6 +1466,7 @@ if(nmSelector.length===4&&nmWhere&&nmTitle&&nmListen&&nmQuestion&&nmRoles.every(
  nmLoad.addEventListener('click',()=>{
    // Manteniamo un solo lettore attivo per tutti gli ascolti incorporati.
    if(mozartFrameNodes.length)stopMozartComparison(false);
+   mmStopClips();stopNonaPlayer();
    // Due laboratori nella stessa pagina: prima chiudiamo il lettore dei Quadri.
    if(quadriStage && quadriLoad && quadriClose && quadriStage.querySelector('iframe')){
      quadriStage.replaceChildren(quadriLoad);
@@ -1476,6 +1504,83 @@ if(nmSelector.length===4&&nmWhere&&nmTitle&&nmListen&&nmQuestion&&nmRoles.every(
  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>revealLinkedActivity(a.hash)));
  window.addEventListener('hashchange',()=>revealLinkedActivity(window.location.hash));
  revealLinkedActivity(window.location.hash);
+
+// Confronti facoltativi: il lettore viene sempre creato a richiesta, senza autoplay.
+const mmClipStages=[...document.querySelectorAll('[data-mm-stage]')];
+const nonaPanel=document.getElementById('nona-lettore');
+const nonaStage=document.getElementById('nona-video-stage');
+const nonaLoad=document.querySelector('[data-nona-load]');
+const nonaStop=document.querySelector('[data-nona-stop]');
+const nonaStatus=document.getElementById('nona-player-status');
+function mmStopClips(container=null){
+ mmClipStages.filter(stage=>!container||container.contains(stage)).forEach(stage=>{
+   const p=document.createElement('div');p.className='mm-clip-empty';p.textContent='Video non caricato. Premi «Prepara», poi Play.';
+   stage.replaceChildren(p);
+   const stop=document.querySelector('[data-mm-stop="'+stage.dataset.mmStage+'"]');
+   if(stop)stop.hidden=true;
+ });
+ document.querySelectorAll('.mm-clip-grid').forEach(grid=>{
+   if(container&&!container.contains(grid))return;
+   const status=grid.nextElementSibling;
+   if(status?.classList.contains('mm-clip-state'))status.textContent='Nessun video attivo. Prepara un estratto e premi Play.';
+ });
+}
+function stopNonaPlayer(){
+ if(!nonaStage)return;
+ const p=document.createElement('div');p.className='mm-clip-empty';p.textContent='Lettore non caricato. Premi «Prepara» per ascoltare.';
+ nonaStage.replaceChildren(p);
+ if(nonaStop)nonaStop.hidden=true;
+ if(nonaStatus)nonaStatus.textContent='Lettore chiuso; audio arrestato.';
+}
+function closeForNewClip(){
+ if(quadriStage&&quadriLoad&&quadriClose&&quadriStage.querySelector('iframe')){
+   quadriStage.replaceChildren(quadriLoad);quadriClose.hidden=true;pairQuadriWithHartmann(0,null);
+   if(quadriStatus)quadriStatus.textContent='Lettore chiuso per un altro ascolto.';
+ }
+ if(typeof stopDvorakPlayer==='function'&&nmStage?.querySelector('iframe'))stopDvorakPlayer();
+ if(mozartFrameNodes.length)stopMozartComparison(false);
+ stopNonaPlayer();
+}
+if(nonaPanel&&nonaStage&&nonaLoad&&nonaStop){
+ nonaPanel.addEventListener('toggle',()=>{if(!nonaPanel.open)stopNonaPlayer();});
+ nonaLoad.addEventListener('click',()=>{
+   mmStopClips();closeForNewClip();
+   const iframe=document.createElement('iframe');
+   iframe.src='https://www.youtube-nocookie.com/embed/fx827bYPBNw?rel=0&playsinline=1&controls=1&autoplay=0';
+   iframe.title='Beethoven, Sinfonia n. 9 · Finale — Gardiner';
+   iframe.referrerPolicy='strict-origin-when-cross-origin';
+   iframe.allow='encrypted-media; picture-in-picture; fullscreen';iframe.allowFullscreen=true;
+   nonaStage.replaceChildren(iframe);nonaStop.hidden=false;
+   if(nonaStatus)nonaStatus.textContent='Lettore preparato. Premi Play per ascoltare.';
+ });
+ nonaStop.addEventListener('click',()=>{stopNonaPlayer();nonaLoad.focus();});
+}
+mmClipStages.forEach(stage=>{
+ const panel=stage.closest('details');
+ if(panel&&!panel.dataset.mmStopBound){
+   panel.dataset.mmStopBound='true';
+   panel.addEventListener('toggle',()=>{if(!panel.open)mmStopClips(panel);});
+ }
+});
+document.querySelectorAll('[data-mm-load]').forEach(button=>button.addEventListener('click',()=>{
+ const id=button.dataset.mmVideo,key=button.dataset.mmLoad,end=Number(button.dataset.mmEnd);
+ if(!/^[A-Za-z0-9_-]{11}$/.test(id)||!Number.isInteger(end)||end<=0)return;
+ const stage=mmClipStages.find(node=>node.dataset.mmStage===key);if(!stage)return;
+ mmStopClips();closeForNewClip();
+ const iframe=document.createElement('iframe');
+ iframe.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0&playsinline=1&controls=1&autoplay=0&start=0&end='+end;
+ iframe.title=button.dataset.mmTitle+' · estratto iniziale';
+ iframe.referrerPolicy='strict-origin-when-cross-origin';
+ iframe.allow='encrypted-media; picture-in-picture; fullscreen';iframe.allowFullscreen=true;
+ stage.replaceChildren(iframe);
+ const stop=document.querySelector('[data-mm-stop="'+key+'"]');if(stop)stop.hidden=false;
+ const status=stage.closest('.ascolto-facoltativo-body,details')?.querySelector('.mm-clip-state');
+ if(status)status.textContent='Pronto: '+button.dataset.mmTitle+'. Premi Play nel video.';
+}));
+document.querySelectorAll('[data-mm-stop]').forEach(button=>button.addEventListener('click',()=>{
+ const panel=button.closest('details');mmStopClips(panel);
+ const load=panel?.querySelector('[data-mm-load="'+button.dataset.mmStop+'"]');if(load)load.focus();
+}));
 
 // Confronto Mozart: due estratti della stessa Romanze, mai due video simultanei.
 const mozartCompareSources={
@@ -1515,6 +1620,7 @@ if(mozartFrameNodes.length===2 && mozartCompareStatus){
      if(quadriStatus)quadriStatus.textContent='Lettore dei Quadri chiuso per il confronto Mozart.';
    }
    if(typeof stopDvorakPlayer==='function' && nmStage?.querySelector('iframe'))stopDvorakPlayer();
+   mmStopClips();stopNonaPlayer();
    stopMozartComparison(false);
    const iframe=document.createElement('iframe');
    iframe.src='https://www.youtube-nocookie.com/embed/'+source.id+'?rel=0&controls=1&playsinline=1&autoplay=0&start='+source.start+'&end='+source.end;
