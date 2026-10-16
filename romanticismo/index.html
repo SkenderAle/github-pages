@@ -1498,6 +1498,10 @@ function stopMozartComparison(announce=true){
  if(announce&&mozartCompareStatus)mozartCompareStatus.textContent='Ascolto fermato. Nessun video attivo.';
 }
 if(mozartFrameNodes.length===2 && mozartCompareStatus){
+ const mozartPanel=document.getElementById('mozart-due-pianoforti');
+ if(mozartPanel)mozartPanel.addEventListener('toggle',()=>{
+   if(!mozartPanel.open)stopMozartComparison(false);
+ });
  document.querySelectorAll('[data-mozart-load]').forEach(button=>button.addEventListener('click',()=>{
    const key=button.dataset.mozartLoad;
    const source=mozartCompareSources[key];
