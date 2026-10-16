@@ -29,3 +29,10 @@ Lo stato dell'audit è **in corso**, non «sito completamente collaudato».
 ## Rifinitura dei controlli
 
 La copertina diventa l'unico controllo visibile di preparazione quando è disponibile una miniatura YouTube valida; il pulsante originario rimane nel DOM e continua a gestire la creazione del lettore, senza duplicare visivamente «Prepara». Sistemato il posizionamento dell'anteprima per il lettore della Nona. Resta da verificare in browser reale l'effettiva resa e la chiusura dei lettori.
+
+## Intervento di coordinamento dei lettori — 16 ottobre 2026
+
+- I 35 lettori YouTube convertiti in Barocco e Medioevo hanno ora il controllo **«Ferma e chiudi»** accessibile da tastiera, oltre all'anteprima. Alla chiusura l'iframe perde il `src` e torna visibile la copertina.
+- Un gestore in fase di cattura intercetta l'apertura di un nuovo video e invoca i controlli di chiusura già presenti per gli estratti del Romanticismo, l'audioteca sinfonica e alcuni confronti specializzati. L'azione non forza Play; il parametro `autoplay` rimane disabilitato.
+- Gli iframe statici vengono inoltre chiusi quando la pagina passa in background.
+- **Limite:** i player che non espongono uno dei controlli riconosciuti (o non sono YouTube) richiedono audit e prova specifici. Questo lotto non dichiara una gestione universale di ogni media né collaudo su Android.

@@ -44,10 +44,15 @@ function initStatic(){
    var url=new URL(original,document.baseURI);
    url.searchParams.set('autoplay','0');url.searchParams.set('playsinline','1');
    frame.src=url.toString();
-   frame.classList.add('mm-site-static-active');poster.hidden=true;
+   frame.classList.add('mm-site-static-active');poster.hidden=true;closer.hidden=false;
   },true);
-  frame.before(poster);
-  staticPlayers.push({iframe:frame,poster:poster});
+  var closer=document.createElement('button');
+  closer.type='button';closer.className='mm-site-preview-stop';closer.textContent='■ Ferma e chiudi';
+  closer.setAttribute('aria-label','Ferma e chiudi il lettore: '+(frame.title||'registrazione'));
+  closer.hidden=true;closer.addEventListener('click',function(){stopStatic();});
+  if(getComputedStyle(frame.parentElement).position==='static')frame.parentElement.style.position='relative';
+  frame.before(poster);frame.after(closer);
+  staticPlayers.push({iframe:frame,poster:poster,closer:closer});
  });
 }
 function stopStatic(root){
@@ -55,7 +60,7 @@ function stopStatic(root){
  staticPlayers.forEach(function(p){
   if(root&&!root.contains(p.iframe))return;
   if(p.iframe.hasAttribute('src'))p.iframe.removeAttribute('src');
-  p.iframe.classList.remove('mm-site-static-active');p.poster.hidden=false;
+  p.iframe.classList.remove('mm-site-static-active');p.poster.hidden=false;p.closer.hidden=true;
  });
  staticStopping=false;
 }
@@ -91,6 +96,29 @@ function refresh(){
  var nona=document.getElementById('nona-video-stage');
  if(nona)ensureStage(nona,'fx827bYPBNw',document.querySelector('[data-nona-load]'),'Beethoven · Nona sinfonia, finale');
 }
+function stopRelatedPlayers(){
+ // Mantieni un solo lettore audiovisivo preparato per pagina.
+ // Invoca i controlli di arresto propri di ogni pagina, senza cambiare i cataloghi.
+ var selectors=[
+  'button[data-mm-stop]:not([hidden])',
+  'button[data-nona-stop]:not([hidden])',
+  'button[data-mozart-stop]:not([hidden])',
+  '.work button[data-stop]:not([hidden])',
+  '#quadri-video-close:not([hidden])',
+  '#nm-video-stop:not([hidden])'
+ ];
+ selectors.forEach(function(selector){
+  document.querySelectorAll(selector).forEach(function(control){
+   if(control.isConnected&&!control.hidden)control.click();
+  });
+ });
+}
+var playbackTrigger='.mm-site-preview,[data-mm-load],[data-load],[data-mozart-load],[data-nona-load],#nm-video-load,#quadri-video-load,#quadri-video-kvam,[data-video],[data-compare-video],.playlist-video';
+document.addEventListener('click',function(event){
+ var hit=event.target instanceof Element&&event.target.closest(playbackTrigger);
+ if(!hit||hit.closest('[hidden]')&&!hit.matches('[data-mm-load],[data-load],[data-mozart-load],[data-nona-load]'))return;
+ stopStatic();stopRelatedPlayers();
+},true);
 initStatic();refresh();
 var pending=false;
 var observer=new MutationObserver(function(mutations){
@@ -108,4 +136,5 @@ document.addEventListener('toggle',function(event){
  if(event.target instanceof HTMLDetailsElement&&!event.target.open)stopStatic(event.target);
 },true);
 window.addEventListener('pagehide',function(){stopStatic();});
+document.addEventListener('visibilitychange',function(){if(document.hidden)stopStatic();});
 })();
