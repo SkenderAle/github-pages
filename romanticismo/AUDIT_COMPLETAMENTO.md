@@ -73,7 +73,7 @@ Le **14 voci principali** devono identificare **problemi musicali e culturali**,
 - Per Offenbach, costruire il confronto reale `Galop infernal` / `Tortues`, documentare nascita, riusi e iconografia con cronologia corretta.
 - Gli ascolti e gli esercizi rimangono **facoltativi**, dentro `Per iniziare`.
 
-**Lotto B — Revisione di completezza dei capitoli 2–6 e 8 (priorità successiva, con criteri editoriali tematici).**
+**Lotto B — Primo ampliamento dei capitoli 2–9 effettuato il 16 ottobre; rimane la revisione critica di completezza.**
 - Ampliare gli aspetti culturali e musicali insufficientemente articolati, integrare le compositrici nella storia e correggere stati superati (es. `Mazeppa`).
 - Controllare rapporti e collegamenti con Lied, cameristica, concerto, opera e Risorgimento.
 
@@ -93,6 +93,26 @@ Le **14 voci principali** devono identificare **problemi musicali e culturali**,
 
 **Non spostare in automatico il lavoro alla nuova audioteca dopo ogni commit.** Fino alla conclusione del Lotto A e della parte prioritaria del Lotto B, il **Romanticismo è la linea principale** e i nuovi cataloghi sono soltanto supporti. Ad ogni lotto annotare qui: capitoli toccati, fonti controllate, registrazioni veramente collaudate, link verificati, problemi aperti e commit.
 
+### Avanzamento editoriale — 16 ottobre 2026 · Panoramica plurale
+
+**Commit:** [`102022406aca86fcb56b8aa3c7418b130b463ffc`](https://github.com/SkenderAle/github-pages/commit/102022406aca86fcb56b8aa3c7418b130b463ffc)  
+**Pagine modificate:** soltanto `romanticismo/index.html`. Nessuna modifica alle audioteche.
+
+- [x] **Cap. 2 · Istituzioni e pubblico:** Fanny Hensel, Clara Schumann, Farrenc e Viardot collocate nella rete sociale effettiva di musica, concerti, editoria e formazione.
+- [x] **Cap. 3 · Lied:** allargamento a Loewe, Brahms, Wolf, Fanny Hensel, Clara Schumann e Mahler, con differenze fra poesia, ballata, canto e orchestrazione.
+- [x] **Cap. 4 · Pianoforte:** Field, Alkan, Liszt, Grieg, Gottschalk e `Das Jahr`, distinguendo forme, circuiti culturali e pratiche dell'esecuzione.
+- [x] **Cap. 5 · Virtuosismo:** Thalberg, Vieuxtemps, Wieniawski, Sarasate e Clara Schumann, senza ridurre la tecnica a una gara fra Paganini e Liszt.
+- [x] **Cap. 6 · Sinfonismo:** Brahms, Čajkovskij, Dvořák, Spohr, Raff, Farrenc, Bruckner, Mahler e Sibelius, con esempi sul modo di organizzare una forma sinfonica.
+- [x] **Cap. 7 · Programma:** Smetana, Saint-Saëns, Čajkovskij, Rimskij-Korsakov, Musorgskij e Richard Strauss, distinguendo forma e racconto.
+- [x] **Cap. 8 · Teatro:** grand opéra francese (Auber, Halévy, Meyerbeer), Gounod, Bizet e Massenet; Smetana, Musorgskij e Čajkovskij; relazione con il teatro italiano e tedesco.
+- [x] **Cap. 9 · Boemia:** sei poemi di `Má vlast` nel loro insieme, `La sposa venduta`, Fibich e Janáček: la `Vltava` è un accesso e non l'intera tradizione.
+
+**Regola confermata:** l'indice rimane tematico; una citazione nel testo deve corrispondere a una ragione musicale o storica, non alla necessità di «spuntare» un nome. Le schede analitiche di `Nuovo Mondo` e `Quadri` restano scelte editoriali, senza rappresentare un canone esclusivo.
+
+**QA statico successivo al commit:** 14 capitoli; 49 pulsanti di scelta-video; 2 pulsanti SoundCloud; nessun ID duplicato o frammento locale mancante; script JS sintatticamente valido; zero iframe statici; nessun parametro autoplay positivo. Non rappresenta un collaudo su dispositivo reale né una validazione sistematica delle fonti storiche e audiovisive.
+
+**Lavoro ancora aperto:** revisione della proporzione dei 14 capitoli e dei repertori più periferici (non soltanto integrazione di nomi), confronto fra correnti e aree non riducibili ai repertori canonici, controllo puntuale delle fonti, collaudo dei lettori, semantica dei collegamenti e accessibilità.
+
 ### Ultima verifica
 
 - [x] Struttura dei 14 capitoli presente
@@ -102,7 +122,8 @@ Le **14 voci principali** devono identificare **problemi musicali e culturali**,
 - [x] Approfondita la funzione di Beethoven, Brahms e Smetana; chiarita la selezione dei due studi di caso
 - [x] Prima espansione argomentativa dei capitoli 12 e 13, con sette lettori predisposti (non ancora collaudati)
 - [ ] Capitoli 12 e 13 approvati dopo revisione delle fonti e prova degli ascolti
-- [ ] Revisione di completezza dei capitoli 2–6 e 8
+- [x] Prima espansione argomentata e tematica dei capitoli 2–9 (senza nuovi lettori)
+- [ ] Revisione di completezza e delle fonti dei capitoli 2–9
 - [ ] Audit documentale di tutti gli ascolti
 - [ ] Collaudo browser e Android senza autoplay e scroll indesiderati
 - [ ] Menu, fonti e collegamenti cross-page collaudati
