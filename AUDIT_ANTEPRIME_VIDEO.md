@@ -36,3 +36,9 @@ La copertina diventa l'unico controllo visibile di preparazione quando è dispon
 - Un gestore in fase di cattura intercetta l'apertura di un nuovo video e invoca i controlli di chiusura già presenti per gli estratti del Romanticismo, l'audioteca sinfonica e alcuni confronti specializzati. L'azione non forza Play; il parametro `autoplay` rimane disabilitato.
 - Gli iframe statici vengono inoltre chiusi quando la pagina passa in background.
 - **Limite:** i player che non espongono uno dei controlli riconosciuti (o non sono YouTube) richiedono audit e prova specifici. Questo lotto non dichiara una gestione universale di ogni media né collaudo su Android.
+
+## Audit successivo — 16 ottobre 2026 · Cache e accessibilità tastiera
+
+- **Cache:** versioni dei due file condivisi CSS/JS portate a `20261016-qa02` in tutti gli 11 percorsi principali. L'aggiornamento evita di continuare a utilizzare una vecchia copia salvata in Chrome Android.
+- **Focus:** dopo la chiusura esplicita di un video dei sistemi dinamici compatibili, il focus torna alla copertina appena ripristinata anziché a un pulsante «Prepara» nascosto. In Barocco e Medioevo il comando «Ferma e chiudi» riporta direttamente il focus alla copertina.
+- **Verifica statica:** 11 pagine, ID HTML e collegamenti editoriali confrontati e invariati; sintassi del componente JavaScript verificata in V8. Non equivale ancora a un collaudo audiovisivo nel browser reale.
