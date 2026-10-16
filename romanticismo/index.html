@@ -116,6 +116,34 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 .nm-actions button:first-child{color:#fff;background:#315b4c}
 .nm-actions button[hidden]{display:none}
 .nm-video-state{font:.84rem/1.5 var(--sans);color:#335c4b}
+
+/* Dvořák · mappa schematica interattiva dell'orchestra. I puntini sono simbolici, non posti numerati. */
+.nm-orchestra{scroll-margin-top:5.7rem;background:#f8f9f3;border:1px solid #b5c8b8;margin:1.2rem 0;padding:clamp(.9rem,2.3vw,1.4rem)}
+.nm-orchestra h5{font:550 clamp(1.3rem,2.6vw,1.8rem)/1.25 var(--serif);color:#355c4c;margin:.4rem 0 .8rem}
+.nm-orchestra-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(235px,.7fr);gap:1rem;align-items:start}
+.nm-orchestra-seats{border:1px solid #bacfbe;background:radial-gradient(ellipse at 50% 110%,#dce9dc 3%,#f9fcf7 80%);padding:1rem .5rem .8rem;min-width:0}
+.nm-seat-row{display:flex;align-items:stretch;justify-content:center;gap:.36rem;margin:.35rem auto .55rem}
+.nm-seat-row[data-nm-line="back"]{width:72%}
+.nm-seat-row[data-nm-line="brass"]{width:85%}
+.nm-seat-row[data-nm-line="woods"]{width:95%}
+.nm-seat-row[data-nm-line="strings"]{width:100%}
+.nm-seat{flex:1 1 0;min-width:0;border:1px solid #a6bcab;border-radius:8px 8px 23px 23px;background:#f1f6ee;color:#385445;padding:.5rem .2rem;cursor:pointer;font:700 clamp(.64rem,.92vw,.75rem)/1.25 var(--sans);min-height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.22rem;text-align:center;overflow-wrap:anywhere}
+.nm-seat-marks{display:block;letter-spacing:.06em;font-size:.96rem;line-height:1;color:#668975}
+.nm-seat[data-nm-featured="true"]{background:#d6e7d9;border-color:#477d60;box-shadow:inset 0 0 0 1px #477d60}
+.nm-seat[aria-pressed="true"]{background:#315d4c;color:white;border-color:#315d4c;box-shadow:0 0 0 2px #bcd1be}
+.nm-seat[aria-pressed="true"] .nm-seat-marks{color:#e0f0dc}
+.nm-seat:focus-visible{outline:3px solid #b27624;outline-offset:2px}
+.nm-orchestra-podium{text-align:center;margin:.3rem auto 0;font:750 .78rem/1.4 var(--sans);letter-spacing:.05em;color:#456b59}
+.nm-orchestra-inspector{border-left:4px solid #578066;padding:.75rem .85rem;background:#edf5ec;min-height:215px}
+.nm-orchestra-inspector strong{display:block;font:700 clamp(1.15rem,2vw,1.4rem)/1.25 var(--serif);color:#2f5544}
+.nm-orchestra-inspector p{font:.88rem/1.62 var(--sans);margin:.45rem 0}
+.nm-orchestra-inspector .nm-orchestra-family{font:750 .77rem/1.5 var(--sans);letter-spacing:.06em;color:#547363;text-transform:uppercase;margin-bottom:.35rem}
+.nm-orchestra-legend{font:.78rem/1.55 var(--sans);color:#526b5d;margin:.7rem 0 .2rem}
+.nm-orchestra-legend span{display:inline-block;width:.75rem;height:.75rem;background:#d6e7d9;border:1px solid #477d60;vertical-align:-.06rem;margin-right:.35rem}
+.nm-orchestra-disclaimer{font:.82rem/1.55 var(--sans);color:#5d665e;margin:.7rem 0 0}
+@media(max-width:850px){.nm-orchestra-layout{grid-template-columns:1fr}.nm-orchestra-inspector{min-height:0}.nm-seat-row{width:100%!important}}
+@media(max-width:490px){.nm-orchestra-seats{padding:.6rem .2rem}.nm-seat{font-size:.65rem;min-height:68px;padding:.35rem .12rem;gap:.12rem}.nm-seat-marks{font-size:.73rem;letter-spacing:-.08em}.nm-seat-row{gap:.2rem}}
+
 .nm-memory{margin:1.35rem 0 .4rem}
 .nm-memory-scroll{overflow-x:auto;max-width:100%}
 .nm-memory table{border-collapse:collapse;width:100%;min-width:470px;background:#fafcf8;font:.85rem/1.5 var(--sans)}
@@ -710,6 +738,48 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <p class="nm-source">Se il video non si apre: <a id="nm-external-link" href="https://www.youtube.com/watch?v=HvUH5Oq3Z5o" target="_blank" rel="noopener noreferrer">registrazione ARD Klassik su YouTube ↗</a>. Apri esternamente soltanto se necessario.</p>
 </div>
 </div>
+<section class="nm-orchestra" id="nm-orchestra-map" aria-labelledby="nm-orchestra-title">
+<div class="eyebrow">✦ Orchestra da esplorare · Una mappa, non una fotografia dei posti</div>
+<h5 id="nm-orchestra-title">Dove nasce questo suono?</h5>
+<p>Immagina di trovarti davanti al direttore e guarda le famiglie strumentali. <strong>Scegli uno strumento nella mappa</strong>: scoprirai a quale famiglia appartiene, quando ascoltarlo e che funzione può assumere nella Nona. Passando da un movimento all'altro cambiano le sezioni evidenziate.</p>
+<div class="nm-orchestra-layout">
+<div class="nm-orchestra-seats" role="group" aria-label="Disposizione orientativa delle sezioni: percussioni e ottoni sul fondo, legni al centro, archi davanti">
+<div class="nm-seat-row" data-nm-line="back">
+<button type="button" class="nm-seat" data-nm-instrument="timpani" aria-pressed="false" data-nm-featured="false" aria-label="Timpani: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ● ●</span><span>Timpani</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="triangle-cymbals" aria-pressed="false" data-nm-featured="false" aria-label="Triangolo / piatti: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ●</span><span>Triangolo / piatti</span></button>
+</div>
+<div class="nm-seat-row" data-nm-line="brass">
+<button type="button" class="nm-seat" data-nm-instrument="horns" aria-pressed="false" data-nm-featured="false" aria-label="4 corni: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ● ● ●</span><span>4 corni</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="trumpets" aria-pressed="false" data-nm-featured="false" aria-label="2 trombe: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ●</span><span>2 trombe</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="low-brass" aria-pressed="false" data-nm-featured="false" aria-label="Tromboni / tuba: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ● ● ●</span><span>Tromboni / tuba</span></button>
+</div>
+<div class="nm-seat-row" data-nm-line="woods">
+<button type="button" class="nm-seat" data-nm-instrument="flutes" aria-pressed="false" data-nm-featured="false" aria-label="Flauti / ottavino: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ●</span><span>Flauti / ottavino</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="oboes" aria-pressed="false" data-nm-featured="false" aria-label="Oboi / corno inglese: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ● ●</span><span>Oboi / corno inglese</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="clarinets" aria-pressed="false" data-nm-featured="false" aria-label="Clarinetti: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ●</span><span>Clarinetti</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="bassoons" aria-pressed="false" data-nm-featured="false" aria-label="Fagotti: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ●</span><span>Fagotti</span></button>
+</div>
+<div class="nm-seat-row" data-nm-line="strings">
+<button type="button" class="nm-seat" data-nm-instrument="first-violins" aria-pressed="false" data-nm-featured="false" aria-label="Violini I: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ● ●</span><span>Violini I</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="second-violins" aria-pressed="false" data-nm-featured="false" aria-label="Violini II: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ● ●</span><span>Violini II</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="violas" aria-pressed="false" data-nm-featured="false" aria-label="Viole: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ●</span><span>Viole</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="cellos" aria-pressed="false" data-nm-featured="false" aria-label="Violoncelli: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ●</span><span>Violoncelli</span></button>
+<button type="button" class="nm-seat" data-nm-instrument="basses" aria-pressed="false" data-nm-featured="false" aria-label="Contrabbassi: esplora il timbro"><span class="nm-seat-marks" aria-hidden="true">● ●</span><span>Contrabbassi</span></button>
+</div>
+<div class="nm-orchestra-podium" aria-hidden="true">⌄ DIRETTORE D'ORCHESTRA ⌄</div>
+</div>
+<div class="nm-orchestra-inspector" id="nm-instrument-panel" aria-live="polite" aria-atomic="true">
+<div class="nm-orchestra-family" id="nm-instrument-family">Legni</div>
+<strong id="nm-instrument-title">Corno inglese</strong>
+<p id="nm-instrument-fact">Pur chiamandosi corno, è un legno a doppia ancia, imparentato con l'oboe. Ha il celebre assolo del Largo.</p>
+<p id="nm-instrument-current">Scegli un movimento, poi confronta l'orchestra con la registrazione.</p>
+</div>
+</div>
+<p class="nm-orchestra-legend"><span aria-hidden="true"></span> Sezioni da tenere particolarmente d'occhio nel movimento selezionato. Puoi esplorare anche tutte le altre.</p>
+<p class="nm-orchestra-disclaimer">Schema indicativo visto dal pubblico: la disposizione cambia fra orchestre e sale; i puntini sono <strong>simbolici</strong>, non rappresentano il numero effettivo dei musicisti. Uno strumento nell'organico non suona necessariamente per tutta la sinfonia. Il <strong>saxofono non è previsto</strong> nella partitura originale del <i>Nuovo Mondo</i> (il suo futuro impiego nei <i>Quadri</i> orchestrati da Ravel appartiene al Novecento).</p>
+<p class="nm-source"><a href="https://www.antonin-dvorak.cz/en/work/symphony-no-9/" target="_blank" rel="noopener noreferrer">Catalogo Dvořák · Organico originale e descrizione dei movimenti ↗</a> · <a href="https://imslp.org/wiki/Symphony_No.9,_Op.95_(Dvo%C5%99%C3%A1k,_Anton%C3%ADn)" target="_blank" rel="noopener noreferrer">Partitura orchestrale · IMSLP ↗</a></p>
+</section>
+
 <div class="nm-memory" id="nm-memory">
 <h5>La mappa dei temi-personaggi</h5>
 <p>Ogni idea ha un'origine e può ritornare, cambiata, nei movimenti successivi. I segni qui sotto indicano <strong>alcuni ritorni importanti</strong>, non una trascrizione completa della partitura. Seleziona un movimento in alto per metterne in evidenza la colonna.</p>
@@ -1146,6 +1216,56 @@ const nmMovements=[
  {index:'Movimento III · 24:27',title:'Lo Scherzo: il ritmo incontra la danza',description:'Osserva gli accenti, l’energia del movimento e il diverso carattere del Trio. Il riferimento letterario a Hiawatha non dimostra l’impiego diretto di uno specifico ritmo rituale dei popoli nativi americani.',question:'Che cosa cambia nel Trio? E quale tema del primo movimento riconosci nella coda?',role:['Movimenti rapidi e Trio','Dialoghi e contrasti','Richiami del materiale precedente','Timpani e forte impulso ritmico'],salient:[0,3],time:1467},
  {index:'Movimento IV · 31:51',title:'Il finale: tutte le memorie si incontrano',description:'L’attacco degli ottoni presenta il tema conclusivo. In seguito ritornano idee dei movimenti precedenti; nella coda acquistano nuova forza accanto al materiale proprio del finale. La forma crea continuità senza bisogno di una trama dichiarata.',question:'Riconosci almeno due idee provenienti dagli altri movimenti. Sono identiche o sono cambiate per timbro, armonia o contesto?',role:['Impulso e sonorità d’insieme','Colori delle riprese','Tema del finale negli ottoni','Accenti e pieni orchestrali'],salient:[0,2],time:1911}
 ];
+// La mappa non produce suoni sintetici né riproduce automaticamente il video.
+// I suoi rilievi timbrici sono punti d'attenzione didattici, non un'analisi battuta per battuta.
+const nmInstrumentButtons=[...document.querySelectorAll('[data-nm-instrument]')];
+const nmInstrumentFamily=document.getElementById('nm-instrument-family');
+const nmInstrumentTitle=document.getElementById('nm-instrument-title');
+const nmInstrumentFact=document.getElementById('nm-instrument-fact');
+const nmInstrumentCurrent=document.getElementById('nm-instrument-current');
+const nmInstruments={
+ 'timpani':{name:'Timpani',family:'Percussioni',fact:'Tamburi accordabili: rinforzano accenti, tensioni e grandi cadenze. Non hanno il ruolo di un tamburo da marcia costante.',movement:['Sottolineano passaggi energici e culminazioni, anche nella conclusione.','Non confonderli con la delicata trama del corno inglese.','Contribuiscono all’energia degli accenti dello Scherzo.','Sostengono l’impulso e l’ampiezza del finale.']},
+ 'triangle-cymbals':{name:'Triangolo e piatti',family:'Percussioni',fact:'Hanno attacchi brillanti e funzione puntuale, non una melodia. In questa partitura il triangolo compare nel III movimento, i piatti nel IV.',movement:['Non sono fra i protagonisti principali del primo movimento.','Non cercare un suono continuo di triangolo o piatti nel Largo.','Ascolta il triangolo come colore di accentuazione nello Scherzo.','I piatti contribuiscono a momenti di particolare energia sonora nel finale.']},
+ 'horns':{name:'Quattro corni',family:'Ottoni',fact:'Il corno dell’orchestra è un ottone. Nel primo Allegro la fanfara affidata ai corni annuncia l’idea più riconoscibile e ricorrente della sinfonia.',movement:['Cerca il tema annunciato dai corni dopo l’introduzione lenta.','Nel Largo alcuni richiami del primo movimento rendono possibile riconoscere l’idea già ascoltata.','Nel finale dello Scherzo si percepiscono rimandi al primo movimento.','Il materiale del primo movimento ritorna accanto alle nuove idee.']},
+ 'trumpets':{name:'Due trombe',family:'Ottoni',fact:'Le trombe offrono sonorità brillanti e segnali incisivi, soprattutto nei passaggi di orchestra piena.',movement:['Ascolta i passaggi energici senza confondere il timbro delle trombe con quello dei corni.','Nel Largo il loro impiego non coincide con l’assolo del corno inglese.','Nelle sezioni vigorose lo squillo degli ottoni modifica il colore dell’orchestra.','Partecipa alla forza del tema conclusivo e dei culmini sinfonici.']},
+ 'low-brass':{name:'Tre tromboni e tuba',family:'Ottoni',fact:'I tromboni formano un gruppo grave di ottoni. La tuba compare soltanto nel Largo, per un intervento breve: è un esempio utile di strumento presente in organico ma non sempre attivo.',movement:['Ascolta il peso complessivo degli ottoni gravi nei passaggi più solenni.','La tuba appare qui per poche battute: non va cercata in tutto il Largo.','La tuba non suona nello Scherzo; il colore grave può venire da altre sezioni.','I tromboni sostengono passaggi di forza; la tuba non vi compare.']},
+ 'flutes':{name:'Flauti e ottavino',family:'Legni',fact:'I flauti sono legni, anche quando costruiti in metallo. L’ottavino ha registro più acuto. Un flauto presenta un importante tema cantabile nel primo movimento.',movement:['Segui la melodia del flauto nell’esposizione, distinta dalla fanfara dei corni.','I colori acuti dei legni dialogano con la grande melodia del corno inglese.','Contribuiscono all’agilità delle figure di danza e ai contrasti con gli archi.','Aggiungono luminosità a passaggi in cui ritornano motivi precedenti.']},
+ 'oboes':{name:'Oboi e corno inglese',family:'Legni ad ancia doppia',fact:'Il corno inglese appartiene alla famiglia dell’oboe: non è un ottone. Dvořák gli affida la celebre melodia del Largo, accompagnata dagli archi con sordina.',movement:['Nel primo movimento ascolta anche i dialoghi tra oboi, flauti e altri legni.','È il momento fondamentale: il corno inglese canta il tema del Largo su archi con sordina.','Il tema dei legni si contrappone agli accenti rapidi dello Scherzo.','Il tema del Largo ritorna, ma il colore timbrico può cambiare.']},
+ 'clarinets':{name:'Due clarinetti',family:'Legni ad ancia semplice',fact:'Il clarinetto ha una sola ancia; la sua gamma timbrica si presta a passaggi morbidi e cantabili e a scambi fra famiglie.',movement:['Segui le risposte dei legni ai motivi più energici.','Il corno inglese, non il clarinetto, espone nella versione finale il celebre tema principale.','I clarinetti contribuiscono alla varietà dei colori del Trio.','Ascolta la cantabilità dei clarinetti che contrasta con il tema iniziale energico degli ottoni.']},
+ 'bassoons':{name:'Due fagotti',family:'Legni ad ancia doppia',fact:'Il fagotto è uno strumento a doppia ancia dal registro grave: può dare sostegno al basso oppure partecipare a frasi melodiche.',movement:['Contribuisce alla profondità e ai dialoghi della sezione dei legni.','Cerca il colore scuro dei legni nel Largo, distinto dagli archi con sordina.','Aggiunge carattere e articolazione nelle sezioni di danza.','Sostiene il lavoro dei legni nei passaggi di maggiore densità.']},
+ 'first-violins':{name:'Violini primi',family:'Archi',fact:'Portano frequentemente linee acute e melodiche. La loro posizione è indicativa: non tutti gli orchestrali si siedono sempre nello stesso punto.',movement:['Gli archi aprono l’introduzione e partecipano al tessuto dello sviluppo.','La sordina rende l’accompagnamento del Largo più morbido.','Gli archi animano le figurazioni impetuose dello Scherzo.','Collaborano alle riprese dei temi in nuove combinazioni.']},
+ 'second-violins':{name:'Violini secondi',family:'Archi',fact:'Non sono violini “inferiori”: completano armonia, contrappunto e dialogo con i primi violini.',movement:['Segui la tessitura di sostegno e i contrasti con i fiati.','L’accompagnamento degli archi con sordina è essenziale per il colore del Largo.','Gli archi distribuiscono il moto fra linee e registri differenti.','Aiutano a tenere insieme i ritorni tematici e l’energia ritmica.']},
+ 'violas':{name:'Viole',family:'Archi',fact:'La viola occupa un registro intermedio tra i violini e il violoncello, utile per armonie, controcanti e sfumature.',movement:['Completa la trama armonica dell’orchestra.','Nella massa degli archi con sordina contribuisce al colore soffuso.','Può rinforzare pulsazione e contrasti del Trio.','Intreccia linee interne quando la scrittura si infittisce.']},
+ 'cellos':{name:'Violoncelli',family:'Archi',fact:'Il violoncello può cantare nel registro medio-grave e contribuire alla base armonica. Non è solo uno strumento di accompagnamento.',movement:['La scrittura grave degli archi apre il lavoro tematico dell’introduzione.','Contribuisce all’accompagnamento e alle linee espressive del Largo.','Sostiene le alternanze fra moto rapido e parti più cantabili.','Contribuisce al tessuto del finale e ai suoi contrasti.']},
+ 'basses':{name:'Contrabbassi',family:'Archi',fact:'Il registro più grave degli archi consolida fondamentali armoniche e impulsi ritmici. Non suona ininterrottamente.',movement:['Segui gli impulsi bassi e l’avvio dell’introduzione.','Nella sezione centrale del Largo alcuni pizzicati scandiscono un passo grave.','Sostengono la forza ritmica dello Scherzo.','Ancorano i grandi blocchi sonori e le cadenze del finale.']}
+};
+const nmSpotlight=[
+ ['first-violins','cellos','horns','timpani','flutes'],
+ ['first-violins','second-violins','oboes','low-brass','cellos'],
+ ['first-violins','second-violins','timpani','triangle-cymbals','horns'],
+ ['horns','trumpets','low-brass','first-violins','triangle-cymbals','clarinets']
+];
+let nmSelectedInstrument='oboes';
+function highlightNewWorldSeats(movement){
+ if(!nmInstrumentButtons.length)return;
+ nmInstrumentButtons.forEach(b=>{
+  b.dataset.nmFeatured=String(nmSpotlight[movement].includes(b.dataset.nmInstrument));
+  b.setAttribute('aria-pressed',String(b.dataset.nmInstrument===nmSelectedInstrument));
+ });
+ showNewWorldInstrument(nmSelectedInstrument,movement);
+}
+function showNewWorldInstrument(key,movement=nmCurrent){
+ const o=nmInstruments[key];
+ if(!o||!nmInstrumentFamily||!nmInstrumentTitle||!nmInstrumentFact||!nmInstrumentCurrent)return;
+ nmSelectedInstrument=key;
+ nmInstrumentFamily.textContent=o.family;
+ nmInstrumentTitle.textContent=o.name;
+ nmInstrumentFact.textContent=o.fact;
+ nmInstrumentCurrent.textContent='Nel movimento '+['I','II','III','IV'][movement]+': '+o.movement[movement];
+ nmInstrumentButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.nmInstrument===key)));
+}
+nmInstrumentButtons.forEach(button=>button.addEventListener('click',()=>showNewWorldInstrument(button.dataset.nmInstrument)));
+
 const nmSelector=[...document.querySelectorAll('[data-nm-select]')];
 const nmWhere=document.getElementById('nm-movement-where');
 const nmTitle=document.getElementById('nm-movement-title');
@@ -1184,6 +1304,7 @@ if(nmSelector.length===4&&nmWhere&&nmTitle&&nmListen&&nmQuestion&&nmRoles.every(
    const label=node.querySelector('span');if(label)label.textContent=m.role[i];
   });
   nmSelector.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+  highlightNewWorldSeats(index);
   nmColumns.forEach(cell=>cell.dataset.nmSelected=String(Number(cell.dataset.nmMovement)===index+1));
   nmExternal.href='https://www.youtube.com/watch?v=HvUH5Oq3Z5o&t='+m.time+'s';
   nmStatus.textContent='Selezionato '+m.index+'. Nessun video avviato.';
