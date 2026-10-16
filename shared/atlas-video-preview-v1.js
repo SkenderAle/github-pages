@@ -69,6 +69,7 @@ function ensureStage(stage,id,button,title){
  if(stage.querySelector(':scope > .mm-site-preview'))return;
  var poster=makePreview(id,title,function(){stopStatic();button.click();},false);
  stage.classList.add('mm-site-preview-ready');stage.append(poster);
+ button.hidden=true; // L'anteprima sostituisce il vecchio pulsante «Prepara»; il controller rimane attivo.
 }
 function refresh(){
  document.querySelectorAll('[data-mm-stage]').forEach(function(stage){

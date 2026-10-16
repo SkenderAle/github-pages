@@ -17,3 +17,8 @@ iframe[data-mm-preview-src]:not(.mm-site-static-active){display:none!important}
 
 /* La Nona di Beethoven usa un contenitore 16:9 che deve ancorare l'anteprima. */
 #nona-video-stage{position:relative;overflow:hidden;min-height:0}
+
+/* Il contenitore della Nona va posizionato rispetto alla propria copertina. */
+.nona-video:has(>.mm-site-preview){position:relative}
+/* Pulsanti «Prepara» ridondanti, sostituiti dall'anteprima accessibile. */
+button[data-mm-load][hidden],button[data-load][hidden],button[data-mozart-load][hidden],button[data-nona-load][hidden]{display:none!important}

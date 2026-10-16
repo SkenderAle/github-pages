@@ -25,3 +25,7 @@ Conversioni dirette: 21 iframe statici in Barocco e 14 in Medioevo. Copertine ag
 Browser Android, iOS e desktop reali; disponibilità delle miniature e delle registrazioni; pulsanti e layout dei moduli specializzati (mappa musicale, schede avanzate, confronti); arresto di media non YouTube; interazioni fra player specializzati e componenti condivisi. Audit di completezza delle altre pagine con sistemi audiovisivi differenti.
 
 Lo stato dell'audit è **in corso**, non «sito completamente collaudato».
+
+## Rifinitura dei controlli
+
+La copertina diventa l'unico controllo visibile di preparazione quando è disponibile una miniatura YouTube valida; il pulsante originario rimane nel DOM e continua a gestire la creazione del lettore, senza duplicare visivamente «Prepara». Sistemato il posizionamento dell'anteprima per il lettore della Nona. Resta da verificare in browser reale l'effettiva resa e la chiusura dei lettori.
