@@ -154,3 +154,21 @@ Commit del lotto: [`732da623`](https://github.com/SkenderAle/github-pages/commit
 - **Da verificare con prove reali:** atterraggio cross-page, mobile Android, riproducibilità e arresto dei lettori, verifica sistematica dei crediti e delle fonti. **Lo stato resta INCOMPLETO.**
 
 **Successiva priorità:** verificare la rappresentatività reale, i rapporti fra capitoli e le lacune storiche e musicologiche; poi proseguire con audit documentale e collaudo.
+
+### Secondo intervento — 16 ottobre 2026 · Rappresentatività reale e proporzioni
+
+**Stato:** revisione argomentativa intermedia, senza modifiche alle audioteche e senza dichiarare completato il Romanticismo. **Branch:** `main`; commit identificabile nella cronologia di questo registro.
+
+**Diagnosi preliminare del corpo editoriale:** il capitolo 9 sulle scuole nazionali presenta una trattazione e un apparato molto più articolati rispetto a quelli su istituzioni, Lied, virtuosismo e Belle Époque; i due studi di caso 10 e 11 sono intenzionalmente dettagliati e non vanno abbreviati soltanto per uniformare le lunghezze. La misura della rappresentatività non è la conta dei nomi o dei filmati, ma la capacità di spiegare processi, forme, luoghi, versioni e differenze.
+
+**Ampliamenti pubblicati nel presente lotto:**
+- **Cap. 2, `#artista-citta`:** programma concertistico, professione e istituzioni; Mendelssohn direttore al Gewandhaus dal 1835 e Clara Schumann come interprete che costruisce un repertorio. Fonti: Mendelssohn-Haus Leipzig; Schumann-Portal con riscontro sui programmi.
+- **Cap. 3, `#lied`:** forma strofica e forme variate, ciclo e memoria, `Winterreise` in rapporto a `Dichterliebe`; la `mélodie` francese e le versioni pianistica/orchestrale delle `Nuits d'été`. Fonti: Schubert online; BnF.
+- **Cap. 5, `#virtuosismo`:** studio strumentale e tecnica come forma, Chopin e Paganini; trascrizione, riduzione, parafrasi e programmazione degli interpreti. Fonte di contesto: Metropolitan Museum of Art.
+- **Cap. 8, `#teatro`:** numero operistico e azione, grand opéra come macchina teatrale, distinzione opéra-comique/operetta e versioni di `Carmen` con dialoghi/recitativi, motivi ricorrenti nel dramma. Fonti: Opéra national de Paris; Philharmonie de Paris.
+- **Cap. 14, `#belle-epoque`:** passaggio da invenzione a industria, cilindri/dischi, Berliner, meccanica della registrazione acustica e statuto del documento sonoro. Fonti: Library of Congress.
+- **Portata editoriale:** aggiunte circa **1566 parole** di prosa in cinque capitoli, con paragrafi nel racconto adulto; nessun quiz o ascolto sottratto alle cornici facoltative.
+
+**Controlli statici prima del commit:** 14 capitoli, 199 ID invariati e senza duplicati, 154 frammenti locali risolti, 9 collegamenti esterni alle fonti verificati durante la ricerca, tutti i precedenti `href` conservati, 49 selettori YouTube, nessuna modifica a JavaScript o CSS, zero iframe statici e zero parametri positivi di autoplay. Le fonti sono state consultate per i passaggi aggiunti; non si è ancora svolto un audit bibliografico completo dei capitoli preesistenti.
+
+**Lacune ancora aperte:** bilanciamento della storia della musica da camera e orchestrale, confronto interdisciplinare fra i mondi musicali del secolo, integrazione di aree periferiche senza stereotipi, prova reale dei collegamenti esterni e dei lettori, accessibilità e audit Android. Un riferimento a una fonte non equivale al collaudo del sito.
