@@ -29,9 +29,9 @@ Dalle radici settecentesche (Sturm und Drang, Classicismo, Beethoven) al rapport
 | 7 | Musica a programma (`racconta`) | **Avanzato** | Controllo musicologico e ascolti reali di `idée fixe`, trasformazione tematica, poema e distinzione programma/evocazione |
 | 8 | Il teatro musicale (`teatro`) | Da approfondire | Weber, Rossini, Bellini, Donizetti, Verdi, Wagner, scuole teatrali, rapporto col Risorgimento; riferimento a `opera-lirica/` ancora segnaposto |
 | 9 | Scuole nazionali, danze e imperi (`nazioni`) | **Molto avanzato: ampliato Smetana e motivazione dei casi** | Audit di fonti, aree, egemonie e popoli, ritmi/modalità, crediti delle registrazioni e distinzioni fra composizione e documenti etnomusicali |
-| 10 | L'Atlantico immaginato — studio di caso (`nuovo-mondo`) | **Ampliato: Dvořák e controcampo di Amy Beach** | Verificare edizioni e ascolti; approfondire il dissenso sui repertori considerati fondativi per una scuola americana, senza semplificazioni |
-| 11 | La musica incontra le immagini — studio di caso (`quadri`) | Molto sviluppato: scelta curatoriale esplicita | Fonti iconografiche, opere perdute, partitura pianistica vs orchestrazione Ravel, prove d'interazione |
-| 12 | Vienna, valzer e archi (`vienna`) | **Prima espansione editoriale eseguita** | Verificare le fonti, cinque nuovi ascolti predisposti e il loro reale funzionamento; consolidare gli aspetti sociali e la bibliografia |
+| 10 | Sinfonia, migrazioni e identità: il Nuovo Mondo come studio di caso (`nuovo-mondo`) | **Ampliato: Dvořák e controcampo di Amy Beach** | Verificare edizioni e ascolti; approfondire il dissenso sui repertori considerati fondativi per una scuola americana, senza semplificazioni |
+| 11 | Musica, immagini e memoria: i Quadri come studio di caso (`quadri`) | Molto sviluppato: scelta curatoriale esplicita | Fonti iconografiche, opere perdute, partitura pianistica vs orchestrazione Ravel, prove d'interazione |
+| 12 | Vienna e oltre: valzer, operetta e scrittura per archi (`vienna`) | **Prima espansione editoriale eseguita** | Verificare le fonti, cinque nuovi ascolti predisposti e il loro reale funzionamento; consolidare gli aspetti sociali e la bibliografia |
 | 13 | Parigi, operetta e città-spettacolo (`offenbach`) | **Prima espansione editoriale eseguita** | Verificare le fonti, due ascolti e il loro effettivo funzionamento, ricezione del can-can, varianti dell'opera e iconografia |
 | 14 | Belle Époque e registrazione (`belle-epoque`) | Impostato | Approfondire cultura urbana e tecnica; verificare incisioni Caruso per anno, matrice, accompagnamento e riproducibilità |
 
@@ -142,3 +142,15 @@ Commit del lotto: [`732da623`](https://github.com/SkenderAle/github-pages/commit
 - [ ] Revisione finale di tutti i capitoli
 
 **Conclusione al 16 ottobre 2026: Romanticismo non terminato.**
+
+### Consolidamento editoriale — 16 ottobre 2026 · Titoli tematici e studi di caso
+
+**File interessati:** `romanticismo/index.html` e il registro. **Branch:** `main`. Il commit è reperibile nella cronologia di entrambi i file.
+
+- **Titoli coordinati nelle tre viste:** menu «Esplora i 14 capitoli», mappa e intestazioni per i capitoli 10, 11 e 12. Le intestazioni dei primi due qualificano esplicitamente `Nuovo Mondo` e `Quadri` come studi di caso; il capitolo 12 chiarisce l'estensione comparativa oltre Vienna.
+- **Introduzione e mappa rafforzate:** narrazione dei luoghi, delle forme e delle istituzioni con compositrici, compositori e interpreti, senza costruire un canone ridotto ai titoli di capitolo.
+- **Approfondimenti preservati:** materiali del `Nuovo Mondo`, dei `Quadri`, e collegamenti al ciclo `Má vlast` non alterati. Nessun nuovo player, registrazione o link.
+- **QA statica:** 14 capitoli, 14 voci nel menu, 14 nella mappa, corrispondenza completa dei testi e dell'ordine; 199 ID univoci, 154 link a frammenti locali con destinazione esistente. ID, href, script e stili invariati rispetto alla revisione precedente. 49 pulsanti video; 0 iframe statici; 0 parametri positivi di autoplay.
+- **Da verificare con prove reali:** atterraggio cross-page, mobile Android, riproducibilità e arresto dei lettori, verifica sistematica dei crediti e delle fonti. **Lo stato resta INCOMPLETO.**
+
+**Successiva priorità:** verificare la rappresentatività reale, i rapporti fra capitoli e le lacune storiche e musicologiche; poi proseguire con audit documentale e collaudo.
