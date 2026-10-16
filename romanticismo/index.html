@@ -88,6 +88,48 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1.6rem 0}
 .form-grid>div{background:#fffaf4;padding:1.1rem 1.2rem;border-top:3px solid #916d88}
 .form-grid h5{font:650 1.14rem/1.3 var(--serif);margin:.1rem 0 .6rem;color:#503950}
+
+/* Dvořák: quattro movimenti, timbri in primo piano, ritorni tematici */
+.nm-lab{scroll-margin-top:5.8rem;margin:1.8rem 0;border:1px solid #b8c4bc;background:#edf3ed;padding:clamp(1rem,2.6vw,1.6rem);color:#2b4338}
+.nm-lab h4{font:500 clamp(1.5rem,2.9vw,2.05rem)/1.2 var(--serif);margin:.4rem 0 .85rem;color:#365849}
+.nm-lab h5{font:600 1.25rem/1.35 var(--serif);margin:.1rem 0 .65rem;color:#365849}
+.nm-lab p{font:.94rem/1.7 var(--sans);margin:.5rem 0 1rem}
+.nm-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.45rem;margin:1.2rem 0}
+.nm-tabs button{padding:.85rem .65rem;border:1px solid #8ba89a;background:#fafcf7;color:#365949;cursor:pointer;text-align:left;font:650 .88rem/1.5 var(--sans);min-height:78px}
+.nm-tabs button b{display:block;font:750 1.2rem/1.3 var(--serif);color:#294c3f}
+.nm-tabs button[aria-pressed="true"]{background:#315b4c;color:white;border-color:#315b4c}
+.nm-tabs button[aria-pressed="true"] b{color:white}
+.nm-lab :is(button,a):focus-visible{outline:3px solid #bd8c39;outline-offset:3px}
+.nm-focus{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:.9rem}
+.nm-focus>div{background:#fdfbf5;border:1px solid #c3d2c4;padding:1rem}
+.nm-label{font:750 .77rem/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#4d745c;margin:.1rem 0 .5rem}
+.nm-family-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;margin:1rem 0}
+.nm-family-grid>div{border-left:3px solid #a7bda8;background:#f0f5ef;padding:.5rem .65rem}
+.nm-family-grid strong{display:block;font:.82rem/1.4 var(--sans);color:#30594a}
+.nm-family-grid span{font:.83rem/1.5 var(--sans);color:#445e52}
+.nm-family-grid [data-nm-prominent="true"]{border-color:#47795b;background:#dcebe0}
+.nm-video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#172a27;border:1px solid #778f85;margin:.7rem 0}
+.nm-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.nm-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#e1f0e5;padding:1rem;text-align:center;font:650 1rem/1.5 var(--sans)}
+.nm-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0}
+.nm-actions button{border:1px solid #5e8977;padding:.65rem .8rem;min-height:44px;background:#fff;color:#315947;font:750 .86rem/1.5 var(--sans);cursor:pointer}
+.nm-actions button:first-child{color:#fff;background:#315b4c}
+.nm-actions button[hidden]{display:none}
+.nm-video-state{font:.84rem/1.5 var(--sans);color:#335c4b}
+.nm-memory{margin:1.35rem 0 .4rem}
+.nm-memory-scroll{overflow-x:auto;max-width:100%}
+.nm-memory table{border-collapse:collapse;width:100%;min-width:470px;background:#fafcf8;font:.85rem/1.5 var(--sans)}
+.nm-memory th,.nm-memory td{border-bottom:1px solid #bfcec3;padding:.65rem .6rem;text-align:center}
+.nm-memory th:first-child,.nm-memory td:first-child{text-align:left;max-width:230px}
+.nm-memory td[data-nm-movement][data-nm-selected="true"],.nm-memory th[data-nm-movement][data-nm-selected="true"]{background:#dcebe0}
+.nm-memory .nm-dot{font-size:1.25rem;line-height:1;color:#3d6f54}
+.nm-memory .nm-empty{color:#8f9d90}
+.nm-memory details{border-top:1px solid #b1c7b8;margin:.9rem 0 0;padding:.7rem 0}
+.nm-memory summary{font:750 .92rem/1.4 var(--sans);cursor:pointer}
+.nm-lab .nm-source{font:.82rem/1.55 var(--sans);color:#53685b;margin:.8rem 0}
+@media(max-width:800px){.nm-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.nm-focus{grid-template-columns:1fr}.nm-tabs button{min-height:66px}}
+@media(max-width:460px){.nm-family-grid{grid-template-columns:1fr}.nm-lab{padding:.85rem}.nm-focus>div{padding:.75rem}}
+
 .quadri-performance{scroll-margin-top:5.7rem;border:1px solid #c1cec7;background:#ecf2ee;padding:clamp(1rem,2.5vw,1.7rem);margin:1.8rem 0 2.2rem}
 .quadri-performance h4{font:500 clamp(1.5rem,2.8vw,2rem)/1.18 var(--serif);color:#365950;margin:.45rem 0 1rem}
 .quadri-performance p{font:1rem/1.7 var(--sans);margin:.8rem 0}
@@ -284,7 +326,7 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
    <summary aria-label="Apri o chiudi l'indice dei capitoli">Esplora i 14 capitoli</summary>
    <div class="menu-panel">
     <div class="menu-group"><strong>I · L’individuo e la scena</strong><a href="#rivoluzione">1 Una rivoluzione che viene da lontano</a><a href="#artista-citta">2 L’artista, la città, il pubblico</a><a href="#lied">3 La voce e l’intimità: il Lied</a><a href="#pianoforte">4 Il pianoforte che canta: Chopin e i nuovi generi</a><a href="#virtuosismo">5 Virtuosi, icone e pubblico: Paganini e Liszt</a></div><div class="menu-group"><strong>II · La musica diventa mondo</strong><a href="#orchestra">6 L’orchestra come tavolozza di colori</a><a href="#racconta">7 La musica che racconta: Berlioz e Liszt</a><a href="#teatro">8 Il teatro del XIX secolo: Verdi, Wagner e le trame della memoria</a></div><div class="menu-group"><strong>III · Lingue, popoli, immagini</strong><a href="#nazioni">9 Le scuole nazionali, le danze e gli imperi plurali</a><a href="#nuovo-mondo">10 Dvořák: Sinfonia n. 9 «Dal Nuovo Mondo»</a><a href="#quadri">11 Musorgskij: Quadri di un’esposizione</a></div><div class="menu-group"><strong>IV · La modernità dell’ascolto</strong><a href="#vienna">12 Vienna, il valzer e l’universo degli archi</a><a href="#offenbach">13 Dall’operetta al can-can: Offenbach e la città-spettacolo</a><a href="#belle-epoque">14 La Belle Époque e la nascita dell’ascolto riproducibile</a></div>
-    <div class="menu-extras"><a href="#verifica">✦ Verifica</a><a href="#cerniera-beethoven">✦ Beethoven e la Nona</a><a href="#pathos">✦ Pathos e titoli</a><a href="#europa-inno">✦ Educazione civica · Inno europeo</a><a href="#sentimento-nazionale">✦ Eroe e sentimento nazionale</a><a href="#scuole-fonti">✦ Scuole nazionali · Documenti</a><a href="#nuovo-mondo-quattro-movimenti">✦ Dvořák · Quattro movimenti</a><a href="#quadri-fotografia">✦ Musorgskij · Fotografia</a><a href="#quadri-ascolto-integrale">♪ Musorgskij · Integrale pianistica</a><a href="#quadri-immagini">✦ Hartmann · Le sei opere</a><a href="#quadri-quaderno">✦ Quadri · Quaderno di ascolto</a><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="#forme-orchestrali">✦ Forme orchestrali</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
+    <div class="menu-extras"><a href="#verifica">✦ Verifica</a><a href="#cerniera-beethoven">✦ Beethoven e la Nona</a><a href="#pathos">✦ Pathos e titoli</a><a href="#europa-inno">✦ Educazione civica · Inno europeo</a><a href="#sentimento-nazionale">✦ Eroe e sentimento nazionale</a><a href="#scuole-fonti">✦ Scuole nazionali · Documenti</a><a href="#nuovo-mondo-quattro-movimenti">✦ Dvořák · Quattro movimenti</a><a href="#nuovo-mondo-laboratorio">♪ Dvořák · Esplora l'orchestra</a><a href="#quadri-fotografia">✦ Musorgskij · Fotografia</a><a href="#quadri-ascolto-integrale">♪ Musorgskij · Integrale pianistica</a><a href="#quadri-immagini">✦ Hartmann · Le sei opere</a><a href="#quadri-quaderno">✦ Quadri · Quaderno di ascolto</a><a href="#per-iniziare">✦ Per iniziare</a><a href="#capitoli">Mappa del percorso</a><a href="#forme-orchestrali">✦ Forme orchestrali</a><a href="destino-provvidenza/#per-iniziare">Inserto: destino e Provvidenza</a><a href="../carnevale-animali/?v=orchestra-20261010">SOS · Carnevale</a><a href="#metodo">Metodo e fonti</a></div>
    </div>
   </details>
   <span class="atlas-menu-context-local">Percorsi di storia della musica</span>
@@ -624,13 +666,67 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <section class="form-bridge" id="nuovo-mondo-quattro-movimenti" aria-labelledby="nuovo-mondo-quattro-title">
 <div class="eyebrow">✦ Laboratorio di ascolto · Dvořák e il Nuovo Mondo</div>
 <h4 id="nuovo-mondo-quattro-title">Quattro movimenti: l'orchestra che ricorda</h4>
-<p>La traversata oceanica e l'approdo possono essere una <strong>metafora narrativa del nostro laboratorio</strong>, non un programma certificato dall'autore. Per ora ascoltiamo quattro trasformazioni reali del discorso musicale. Il progetto didattico già discusso, ispirato alle vecchie <i>Listening Adventures</i> della Carnegie Hall, potrà in seguito collegare temi-personaggi, partitura, orchestra e timeline interattiva: non è ancora implementato né recuperato dal software originale.</p>
+<p>La traversata oceanica e l'approdo possono essere una <strong>metafora narrativa del nostro laboratorio</strong>, non un programma certificato dall'autore. I quattro movimenti seguono una struttura sinfonica di matrice classica, ma alcune idee musicali <strong>ricompaiono in movimenti diversi</strong>. Per imparare ad ascoltarle, useremo il loro carattere, i timbri e i rapporti fra strumenti. Il laboratorio originale qui sotto recupera il <em>metodo esplorativo</em> delle vecchie <i>Listening Adventures</i> della Carnegie Hall, non software, grafica o contenuti copiati da quel progetto.</p>
 <div class="form-grid">
 <div><h5>1 · Adagio — Allegro molto</h5><p>Cerca il tema esposto dai corni e i suoi ritorni. Quando un'altra melodia più cantabile viene affidata ai legni, quali elementi ascolti come nuovi e quali come familiari?</p><small>Motivi, contrasti, prime tracce della memoria ciclica.</small></div>
 <div><h5>2 · Largo</h5><p>Alle solenni armonie iniziali segue il canto del <strong>corno inglese</strong>. Ascolta senza immaginare subito una prateria o un funerale: quali scelte melodiche, armoniche e timbriche producono un senso di distanza e nostalgia?</p><small>Profilo pentatonico, interpretazioni e ruolo del timbro.</small></div>
 <div><h5>3 · Molto vivace</h5><p>Il moto dello <i>Scherzo</i> è stato accostato a una scena di danza del poema <i>Hiawatha</i>. Non basta questa analogia per identificare un autentico ritmo cerimoniale indigeno: prova invece a riconoscere accenti e contrasti nella partitura.</p><small>Ritmo compositivo e immaginario letterario.</small></div>
 <div><h5>4 · Allegro con fuoco</h5><p>Ritornano idee ascoltate nei movimenti precedenti. Riconoscile e segnane la diversa orchestrazione: la sinfonia costruisce una memoria attraverso i suoi quattro movimenti, senza bisogno di raccontare letteralmente una storia.</p><small>Rimandi, trasformazioni, unità del ciclo.</small></div>
 </div>
+
+<section class="nm-lab" id="nuovo-mondo-laboratorio" aria-labelledby="nm-lab-title">
+<div class="eyebrow">✦ Esplorazione interattiva · In viaggio nell'orchestra</div>
+<h4 id="nm-lab-title">Il Nuovo Mondo, quattro movimenti e una memoria</h4>
+<p>Seleziona un movimento e prova a riconoscere <strong>il gesto musicale</strong>, <strong>la famiglia strumentale protagonista</strong> e <strong>le idee che ritornano</strong>. La registrazione è un concerto integrale dell'<strong>Orchestra Sinfonica della WDR</strong> diretta da <strong>Cristian Măcelaru</strong> (Colonia, 25 giugno 2021), pubblicato da <strong>ARD Klassik</strong>. I quattro minuti d'inizio provengono dall'indice ufficiale del video: non sono stime.</p>
+<nav class="nm-tabs" aria-label="Scegli un movimento della Nona" id="nm-tabs">
+<button type="button" data-nm-select="0" aria-pressed="true"><b>I</b> Adagio — Allegro molto</button>
+<button type="button" data-nm-select="1" aria-pressed="false"><b>II</b> Largo</button>
+<button type="button" data-nm-select="2" aria-pressed="false"><b>III</b> Molto vivace</button>
+<button type="button" data-nm-select="3" aria-pressed="false"><b>IV</b> Allegro con fuoco</button>
+</nav>
+<div class="nm-focus">
+<div aria-live="polite">
+<div class="nm-label" id="nm-movement-where">Movimento I · 0:00</div>
+<h5 id="nm-movement-title">Dal silenzio al richiamo dei corni</h5>
+<p id="nm-movement-listen">Ascolta l'introduzione lenta; quando l'Allegro prende forma, riconosci il tema affidato ai corni.</p>
+<div class="nm-family-grid" aria-label="Colori orchestrali in primo piano (schema di ascolto, non partitura)">
+<div id="nm-role-archi"><strong>Archi</strong><span>Introduzione e tessuto</span></div>
+<div id="nm-role-legni"><strong>Legni</strong><span>Risposte e nuove melodie</span></div>
+<div id="nm-role-ottoni"><strong>Ottoni</strong><span>Richiamo dei corni</span></div>
+<div id="nm-role-percussioni"><strong>Percussioni</strong><span>Accenti dei timpani</span></div>
+</div>
+<p id="nm-movement-question"><strong>Domanda:</strong> quale elemento riconosci come tema anche quando cambia il registro?</p>
+</div>
+<div>
+<div class="nm-label">♪ Ascolto integrale · Un solo player</div>
+<div class="nm-video-frame" id="nm-video-stage" aria-label="Lettore della Sinfonia dal Nuovo Mondo">
+<div class="nm-video-placeholder">Nessun video caricato. Seleziona un movimento, poi scegli «Prepara l'ascolto».</div>
+</div>
+<div class="nm-actions">
+<button type="button" id="nm-video-load">▶ Prepara l'ascolto (senza avvio)</button>
+<button type="button" id="nm-video-stop" hidden>■ Ferma e chiudi</button>
+</div>
+<p class="nm-video-state" id="nm-video-state" role="status">La navigazione fra i movimenti non riproduce alcun audio.</p>
+<p class="nm-source">Se il video non si apre: <a id="nm-external-link" href="https://www.youtube.com/watch?v=HvUH5Oq3Z5o" target="_blank" rel="noopener noreferrer">registrazione ARD Klassik su YouTube ↗</a>. Apri esternamente soltanto se necessario.</p>
+</div>
+</div>
+<div class="nm-memory" id="nm-memory">
+<h5>La mappa dei temi-personaggi</h5>
+<p>Ogni idea ha un'origine e può ritornare, cambiata, nei movimenti successivi. I segni qui sotto indicano <strong>alcuni ritorni importanti</strong>, non una trascrizione completa della partitura. Seleziona un movimento in alto per metterne in evidenza la colonna.</p>
+<div class="nm-memory-scroll"><table aria-label="Principali reminiscenze tematiche nella Sinfonia dal Nuovo Mondo">
+<thead><tr><th scope="col">Idea riconoscibile</th><th scope="col" data-nm-movement="1">I</th><th scope="col" data-nm-movement="2">II</th><th scope="col" data-nm-movement="3">III</th><th scope="col" data-nm-movement="4">IV</th></tr></thead>
+<tbody>
+<tr><th scope="row">Il richiamo del primo movimento</th><td data-nm-movement="1"><span class="nm-dot" aria-label="presente">●</span></td><td data-nm-movement="2"><span class="nm-dot" aria-label="ritorna">●</span></td><td data-nm-movement="3"><span class="nm-dot" aria-label="ritorna">●</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
+<tr><th scope="row">Il canto del Largo</th><td data-nm-movement="1"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="2"><span class="nm-dot" aria-label="presentato">●</span></td><td data-nm-movement="3"><span class="nm-empty" aria-label="non evidenziato qui">—</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
+<tr><th scope="row">Il moto dello Scherzo</th><td data-nm-movement="1"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="2"><span class="nm-empty" aria-label="non ancora presentato">—</span></td><td data-nm-movement="3"><span class="nm-dot" aria-label="presentato">●</span></td><td data-nm-movement="4"><span class="nm-dot" aria-label="ritorna">●</span></td></tr>
+</tbody></table></div>
+<details><summary>Perché riconoscere un tema non significa raccontare una storia?</summary>
+<p>Quando Dvořák riprende un tema, costruisce un legame di memoria <em>dentro la forma musicale</em>. Possiamo usare il viaggio come metafora per imparare, ma la sinfonia non prescrive personaggi, approdi o scene. Nel finale le reminiscenze sono particolarmente importanti: Dvořák non si limita a ripetere il tema del primo movimento, ma intreccia materiali di tutti i movimenti precedenti.</p>
+</details>
+</div>
+<p class="nm-source">Fonti: <a href="https://www.youtube.com/watch?v=HvUH5Oq3Z5o" target="_blank" rel="noopener noreferrer">ARD Klassik · Integrale e minutaggi 0:00 / 12:12 / 24:27 / 31:51</a> · <a href="https://www.antonin-dvorak.cz/en/work/symphony-no-9/" target="_blank" rel="noopener noreferrer">Catalogo Dvořák · Strumentazione, forma e reminiscenze</a>. Il video viene creato soltanto dopo un clic, con <code>autoplay=0</code>.</p>
+</section>
+
 <aside class="per-iniziare"><strong>✦ Per iniziare · Che cosa sappiamo davvero?</strong><p>Confronta un frammento della Nona con uno spiritual interpretato da cantanti identificati. Annota <strong>somiglianze musicali</strong> precise, poi chiediti se bastino a dimostrare una citazione. Fai lo stesso con la <a href="#quadri-promenade">Promenade</a> di Musorgskij: come riconosciamo una melodia trasformata?</p></aside>
 <p class="form-sources"><a href="https://www.antonin-dvorak.cz/en/work/symphony-no-9/" target="_blank" rel="noopener noreferrer">Dvořák · Fonti, prima esecuzione e analisi dei movimenti ↗</a></p>
 </section>
@@ -914,6 +1010,8 @@ function pairQuadriWithHartmann(start,source){
 if(quadriStage && quadriLoad && quadriClose && quadriKvam && quadriStatus){
   function mountQuadri(source='avdeeva',start=49,label='Promenade iniziale'){
     // Nessun iframe esiste prima di un clic; nessuna selezione avvia l'audio.
+    // Se l'altro laboratorio è aperto, interrompilo prima di passare ai Quadri.
+    if(typeof stopDvorakPlayer==='function' && nmStage && nmStage.querySelector('iframe'))stopDvorakPlayer();
     const iframe=document.createElement('iframe');
     if(source==='avdeeva'){
       iframe.src='https://www.youtube-nocookie.com/embed/F1pk1MzX61Q?rel=0&playsinline=1&controls=1&autoplay=0&end=2149&start='+Math.max(0,Math.floor(start));
@@ -1039,6 +1137,79 @@ if(nbSelect&&nbImg&&nbCaption&&nbGuide&&nbLink&&nbQs.every(Boolean)&&nbHints.eve
   }
  });
  renderNotebook();
+}
+
+// Dvořák: la selezione dei movimenti cambia schede e colori senza creare video.
+const nmMovements=[
+ {index:'Movimento I · 0:00',title:'Dal silenzio al richiamo dei corni',description:'L’introduzione lenta lascia emergere l’Allegro. Distingui il profilo energico del tema dei corni dalle idee melodiche più cantabili affidate ai legni. La prima idea ritornerà, trasformata, anche nei movimenti successivi.',question:'Dopo l’introduzione, quali caratteristiche permettono di riconoscere il tema dei corni quando torna?',role:['Introduzione e tessuto','Risposte e nuovi temi','Richiamo principale dei corni','Accenti dei timpani'],salient:[0,2],time:0},
+ {index:'Movimento II · 12:12',title:'Il Largo: il corno inglese e la distanza',description:'Dopo gli accordi dei fiati entra la lunga melodia del corno inglese, accompagnata dagli archi con sordina. La pentatonia è una caratteristica possibile del profilo, non una prova di appartenenza a una particolare cultura.',question:'Perché il colore del corno inglese cambia la percezione di una melodia semplice? Quando tornano idee già ascoltate nel primo movimento?',role:['Archi con sordina','Accordi introduttivi dei fiati','Richiami nel culmine','Accenti e sostegno del ritmo'],salient:[0,1],time:732},
+ {index:'Movimento III · 24:27',title:'Lo Scherzo: il ritmo incontra la danza',description:'Osserva gli accenti, l’energia del movimento e il diverso carattere del Trio. Il riferimento letterario a Hiawatha non dimostra l’impiego diretto di uno specifico ritmo rituale dei popoli nativi americani.',question:'Che cosa cambia nel Trio? E quale tema del primo movimento riconosci nella coda?',role:['Movimenti rapidi e Trio','Dialoghi e contrasti','Richiami del materiale precedente','Timpani e forte impulso ritmico'],salient:[0,3],time:1467},
+ {index:'Movimento IV · 31:51',title:'Il finale: tutte le memorie si incontrano',description:'L’attacco degli ottoni presenta il tema conclusivo. In seguito ritornano idee dei movimenti precedenti; nella coda acquistano nuova forza accanto al materiale proprio del finale. La forma crea continuità senza bisogno di una trama dichiarata.',question:'Riconosci almeno due idee provenienti dagli altri movimenti. Sono identiche o sono cambiate per timbro, armonia o contesto?',role:['Impulso e sonorità d’insieme','Colori delle riprese','Tema del finale negli ottoni','Accenti e pieni orchestrali'],salient:[0,2],time:1911}
+];
+const nmSelector=[...document.querySelectorAll('[data-nm-select]')];
+const nmWhere=document.getElementById('nm-movement-where');
+const nmTitle=document.getElementById('nm-movement-title');
+const nmListen=document.getElementById('nm-movement-listen');
+const nmQuestion=document.getElementById('nm-movement-question');
+const nmRoles=['archi','legni','ottoni','percussioni'].map(name=>document.getElementById('nm-role-'+name));
+const nmColumns=[...document.querySelectorAll('#nm-memory [data-nm-movement]')];
+const nmStage=document.getElementById('nm-video-stage');
+const nmLoad=document.getElementById('nm-video-load');
+const nmStop=document.getElementById('nm-video-stop');
+const nmStatus=document.getElementById('nm-video-state');
+const nmExternal=document.getElementById('nm-external-link');
+let nmCurrent=0;
+function stopDvorakPlayer(){
+ if(!nmStage||!nmStop||!nmStatus)return;
+ nmStage.replaceChildren();
+ const placeholder=document.createElement('div');
+ placeholder.className='nm-video-placeholder';
+ placeholder.textContent='Nessun video caricato. Premi «Prepara l’ascolto» sul movimento scelto.';
+ nmStage.append(placeholder);
+ nmStop.hidden=true;
+ nmStatus.textContent='Lettore chiuso: audio arrestato.';
+}
+if(nmSelector.length===4&&nmWhere&&nmTitle&&nmListen&&nmQuestion&&nmRoles.every(Boolean)&&nmStage&&nmLoad&&nmStop&&nmStatus&&nmExternal){
+ function selectDvorakMovement(index){
+  if(!Number.isInteger(index)||index<0||index>=nmMovements.length)return;
+  if(nmStage.querySelector('iframe'))stopDvorakPlayer();
+  nmCurrent=index;
+  const m=nmMovements[index];
+  nmWhere.textContent=m.index;
+  nmTitle.textContent=m.title;
+  nmListen.textContent=m.description;
+  nmQuestion.textContent='Domanda: '+m.question;
+  nmRoles.forEach((node,i)=>{
+   node.dataset.nmProminent=String(m.salient.includes(i));
+   const label=node.querySelector('span');if(label)label.textContent=m.role[i];
+  });
+  nmSelector.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+  nmColumns.forEach(cell=>cell.dataset.nmSelected=String(Number(cell.dataset.nmMovement)===index+1));
+  nmExternal.href='https://www.youtube.com/watch?v=HvUH5Oq3Z5o&t='+m.time+'s';
+  nmStatus.textContent='Selezionato '+m.index+'. Nessun video avviato.';
+ }
+ nmSelector.forEach(btn=>btn.addEventListener('click',()=>selectDvorakMovement(Number(btn.dataset.nmSelect))));
+ nmLoad.addEventListener('click',()=>{
+   // Due laboratori nella stessa pagina: prima chiudiamo il lettore dei Quadri.
+   if(quadriStage && quadriLoad && quadriClose && quadriStage.querySelector('iframe')){
+     quadriStage.replaceChildren(quadriLoad);
+     quadriClose.hidden=true;
+     pairQuadriWithHartmann(0,null);
+     quadriStatus.textContent='Lettore dei Quadri chiuso: stai esplorando il Nuovo Mondo.';
+   }
+   const item=nmMovements[nmCurrent];
+   const frame=document.createElement('iframe');
+   frame.title='Dvořák, Sinfonia dal Nuovo Mondo · '+item.index+' · WDR e Cristian Măcelaru';
+   frame.referrerPolicy='strict-origin-when-cross-origin';
+   frame.allow='fullscreen; picture-in-picture; encrypted-media';
+   frame.allowFullscreen=true;
+   frame.src='https://www.youtube-nocookie.com/embed/HvUH5Oq3Z5o?rel=0&playsinline=1&controls=1&autoplay=0&start='+item.time;
+   nmStage.replaceChildren(frame); // La selezione precedente si arresta, nessuna duplicazione.
+   nmStop.hidden=false;
+   nmStatus.textContent='Pronto: '+item.index+'. Premi Play nel video per ascoltare.';
+ });
+ nmStop.addEventListener('click',()=>{stopDvorakPlayer();nmLoad.focus();});
+ selectDvorakMovement(0);
 }
 
 const menu=document.getElementById('indice-menu');
