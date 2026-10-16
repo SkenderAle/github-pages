@@ -149,6 +149,32 @@ h1{font-size:clamp(4rem,11vw,9.4rem);line-height:.88;font-weight:500;letter-spac
 
 /* Attività facoltative: la narrazione musicologica è sempre disponibile senza aprirle. */
 
+
+/* Confronto fortepiano/pianoforte moderno — clip YouTube caricate soltanto a richiesta. */
+.mozart-confronto{scroll-margin-top:5.7rem}
+.mozart-compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0 1.15rem}
+.mozart-compare-card{min-width:0;background:#fcfdf9;border:1px solid #bfd0bf;padding:1rem}
+.mozart-compare-overline{font:750 .76rem/1.5 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:#547660}
+.mozart-compare-card h5{font:600 clamp(1.05rem,1.8vw,1.3rem)/1.3 var(--serif);color:#2d5140;margin:.32rem 0 .55rem}
+.mozart-compare-card p{font:.85rem/1.6 var(--sans);margin:.4rem 0 .8rem}
+.mozart-compare-frame{aspect-ratio:16/9;position:relative;background:#192923;border:1px solid #7d9f89;width:100%;margin:.7rem 0;overflow:hidden}
+.mozart-compare-frame iframe{width:100%;height:100%;position:absolute;inset:0;border:0}
+.mozart-compare-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:.45rem;position:absolute;inset:0;color:#e7f3e8;padding:.6rem;font:650 .82rem/1.5 var(--sans)}
+.mozart-compare-placeholder span{font:1.6rem/1 var(--serif)}
+.mozart-compare-controls{display:flex;flex-wrap:wrap;gap:.45rem;margin:.55rem 0}
+.mozart-compare-controls button{min-height:44px;padding:.65rem .75rem;border:1px solid #567b64;background:#f3f9f3;color:#2a5538;cursor:pointer;font:750 .82rem/1.4 var(--sans)}
+.mozart-compare-controls button:first-child{background:#315b46;color:#fff}
+.mozart-compare-controls button[hidden]{display:none}
+.mozart-confronto button:focus-visible,.mozart-confronto a:focus-visible{outline:3px solid #9f7431;outline-offset:3px}
+.mozart-compare-state{font:.84rem/1.55 var(--sans);color:#3a604b;margin:.6rem 0}
+.mozart-compare-card .mozart-compare-time{font:750 .8rem/1.5 var(--sans);color:#435c4c;margin:.35rem 0}
+.mozart-compare-card .mozart-compare-source{font:.8rem/1.5 var(--sans)}
+.mozart-compare-reading{border-left:3px solid #577f63;background:#f9fcf5;padding:.8rem .95rem;margin:.95rem 0}
+.mozart-compare-reading strong{font:750 .9rem/1.5 var(--sans);color:#345e42}
+.mozart-compare-reading p{margin:.4rem 0 0}
+.mozart-confronto .mozart-compare-note{font:.82rem/1.6 var(--sans);color:#506759}
+@media(max-width:760px){.mozart-compare-grid{grid-template-columns:1fr}.mozart-compare-card{padding:.8rem}}
+
 /* I laboratori pratici restano a disposizione senza interrompere la lettura. */
 .attivita-facoltativa{scroll-margin-top:5.7rem;margin:1.1rem 0 1.65rem!important;padding:.9rem 1.1rem}
 .attivita-facoltativa>summary{cursor:pointer;font:750 .96rem/1.55 var(--sans);color:#284b35}
@@ -537,8 +563,40 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 <p>La tastiera non è uno strumento immobile nel tempo: cambiano martelletti, registri, robustezza della struttura, equilibrio dei timbri, dinamica e perfino la relazione fisica con l'orchestra. Non leggeremo questa storia come una progressiva «superiorità» del pianoforte moderno sul fortepiano, né ridurremo Mozart a un precursore di Beethoven. La domanda è piuttosto quale libertà possieda il solista dentro un'opera scritta, e come si ridefinisca il dialogo quando mutano insieme lo strumento, la sala, l'orchestra e il pubblico.</p>
 <p>Si può partire dal concerto classico di Mozart, che porta il pianoforte dentro una conversazione raffinata con i fiati, attraversare Beethoven, per il quale il rapporto fra solista e orchestra diventa un problema drammatico e formale, e giungere a Chopin, Schumann, Liszt e Brahms: non come tappe di un progresso obbligato, ma come risposte differenti alla stessa possibilità di far parlare una tastiera di fronte a molti altri strumenti. L'esplorazione delle singole opere appartiene invece all'audioteca, ordinata per strumento ed epoca.</p>
 </div>
-<p class="ascolto-context">Differenze timbriche e tecniche fra fortepiano e pianoforte moderno possono modificare l'equilibrio di una stessa composizione, senza stabilire gerarchie fra le epoche.</p>
-<details class="per-iniziare attivita-facoltativa"><summary>✦ Per iniziare · Fortepiano e pianoforte moderno</summary><p>Accosta pochi minuti di un concerto di Mozart eseguito su fortepiano (per esempio Brautigam o Levin) a una lettura dello stesso repertorio su pianoforte moderno (per esempio Uchida o Ax). Non scegliere subito il suono «più bello»: confronta attacco e decadimento, bassi e archi, presenza dei fiati, possibilità di ornamento. Dove nasce l'espressività: dallo strumento, dall'interprete o dalla loro interazione?</p><small>Il confronto riguarda le caratteristiche sonore delle esecuzioni, non una graduatoria di qualità fra epoche.</small></details>
+<p class="ascolto-context">La diversa meccanica del fortepiano e del pianoforte moderno modifica attacco, durata e articolazione del suono, con conseguenze sul dialogo con l'orchestra. Il confronto fra due interpretazioni della <i>Romanze</i> del Concerto K. 466 di Mozart è disponibile nel riquadro «Per iniziare», con i due estratti pronti all'ascolto.</p>
+<details class="per-iniziare attivita-facoltativa mozart-confronto" id="mozart-due-pianoforti">
+<summary>✦ Per iniziare · Due pianoforti, la stessa musica: ascolti a confronto</summary>
+<p>Non devi cercare nessuna registrazione: i due estratti sono qui sotto. È <strong>l'inizio del secondo movimento, Romanze, del Concerto per pianoforte n. 20 in re minore K. 466 di Mozart</strong>: in entrambe le esecuzioni la melodia comincia dal solista. Ogni lettore è predisposto per <strong>circa 90 secondi</strong> dello stesso passaggio, con il proprio punto d'inizio documentato.</p>
+<div class="mozart-compare-grid" aria-label="Due registrazioni dello stesso movimento del concerto di Mozart">
+<article class="mozart-compare-card" data-mozart-card="levin">
+<div class="mozart-compare-overline">A · Strumento storico</div>
+<h5>Robert Levin · fortepiano</h5>
+<p><strong>Academy of Ancient Music</strong>, direzione Christopher Hogwood. Registrazione del 1996, pubblicata da L'Oiseau-Lyre / Decca. Strumento a tastiera e organico ispirati alla prassi storica.</p>
+<div class="mozart-compare-frame" data-mozart-stage="levin"><div class="mozart-compare-placeholder"><span aria-hidden="true">♫</span> Estratto non ancora caricato.</div></div>
+<div class="mozart-compare-controls">
+<button type="button" data-mozart-load="levin">▶ Carica estratto A</button>
+<button type="button" data-mozart-stop="levin" hidden>■ Ferma e chiudi A</button>
+</div>
+<p class="mozart-compare-time">Romanze · da 13:42 a 15:12 del video integrale</p>
+<p class="mozart-compare-source"><a href="https://www.youtube.com/watch?v=_y6ZpoQrZzc&amp;t=822s" target="_blank" rel="noopener noreferrer">Apri l'originale A ↗</a> · <a href="https://www.universalmusic.it/musica-classica/album/mozart-piano-concertos-nos-17-e-20_31767528934/" target="_blank" rel="noopener noreferrer">Crediti discografici ↗</a></p>
+</article>
+<article class="mozart-compare-card" data-mozart-card="uchida">
+<div class="mozart-compare-overline">B · Pianoforte moderno</div>
+<h5>Mitsuko Uchida · pianoforte</h5>
+<p><strong>Cleveland Orchestra</strong>, diretta dalla solista dalla tastiera. Registrazione dal vivo a Cleveland nel 2010, pubblicata da Decca. Stessa musica, con una diversa concezione sonora e interpretativa.</p>
+<div class="mozart-compare-frame" data-mozart-stage="uchida"><div class="mozart-compare-placeholder"><span aria-hidden="true">♫</span> Estratto non ancora caricato.</div></div>
+<div class="mozart-compare-controls">
+<button type="button" data-mozart-load="uchida">▶ Carica estratto B</button>
+<button type="button" data-mozart-stop="uchida" hidden>■ Ferma e chiudi B</button>
+</div>
+<p class="mozart-compare-time">Romanze · da 0:00 a 1:30 della traccia</p>
+<p class="mozart-compare-source"><a href="https://www.youtube.com/watch?v=uDmbJGRr08w" target="_blank" rel="noopener noreferrer">Apri l'originale B ↗</a> · <a href="https://www.universalmusic.it/musica-classica/album/mozart-piano-concertos-no-20-in-d-minor-k-466-e-no-27-in-b-flat-major-k-595_36142952382/" target="_blank" rel="noopener noreferrer">Crediti discografici ↗</a></p>
+</article>
+</div>
+<p class="mozart-compare-state" id="mozart-compare-status" role="status" aria-live="polite">Nessun video caricato. Premi «Carica estratto», poi Play nel lettore. Passando all'altro estratto, il primo viene chiuso.</p>
+<div class="mozart-compare-reading"><strong>Che cosa cambia, e che cosa resta?</strong><p>Levin e Uchida articolano la stessa melodia. Le differenze emergono nella nitidezza dell'attacco, nel prolungamento dei suoni, nell'equilibrio fra linea solistica e archi e nelle scelte di fraseggio. Non è una gara per il suono «più bello»: anche orchestra, acustica della sala, tempi esecutivi e tecniche di registrazione sono differenti, quindi non tutto ciò che sentiamo dipende dallo strumento.</p></div>
+<p class="mozart-compare-note"><strong>Nessun autoplay:</strong> i video sono caricati soltanto con un clic e rimangono in pausa finché non premi Play. Il servizio YouTube può applicare restrizioni all'incorporamento: in quel caso sono disponibili i collegamenti alle registrazioni originali. Gli estratti sono riprodotti dai video sorgente, non copiati o ricaricati sul sito.</p>
+</details>
 <div class="related" aria-label="Concerti per pianoforte in audioteca"><a href="../concerti/?strumento=pianoforte#trova-ascolto">♪ Audioteca dei concerti · Pianoforte, opere in successione cronologica <span aria-hidden="true">↗</span></a></div>
 <aside class="crossing"><strong>Incontro fra linguaggi</strong><p>Poesia della notte e del paesaggio, storia degli strumenti, danza e condizione dell'esilio: analogie da motivare, non programmi descrittivi arbitrariamente attribuiti a Chopin.</p></aside>
 <div class="hearing"><strong>Repertorio di riferimento</strong><p>Chopin: Notturno op. 9 n. 2; Mazurca op. 17 n. 4; Studio op. 10 n. 12; Valzer op. 64 n. 2.</p><small>Registrazioni da identificare e verificare; nessun lettore aggiunto.</small></div>
@@ -1149,6 +1207,7 @@ if(quadriStage && quadriLoad && quadriClose && quadriKvam && quadriStatus){
     // Nessun iframe esiste prima di un clic; nessuna selezione avvia l'audio.
     // Se l'altro laboratorio è aperto, interrompilo prima di passare ai Quadri.
     if(typeof stopDvorakPlayer==='function' && nmStage && nmStage.querySelector('iframe'))stopDvorakPlayer();
+    if(mozartFrameNodes.length)stopMozartComparison(false);
     const iframe=document.createElement('iframe');
     if(source==='avdeeva'){
       iframe.src='https://www.youtube-nocookie.com/embed/F1pk1MzX61Q?rel=0&playsinline=1&controls=1&autoplay=0&end=2149&start='+Math.max(0,Math.floor(start));
@@ -1378,6 +1437,8 @@ if(nmSelector.length===4&&nmWhere&&nmTitle&&nmListen&&nmQuestion&&nmRoles.every(
  }
  nmSelector.forEach(btn=>btn.addEventListener('click',()=>selectDvorakMovement(Number(btn.dataset.nmSelect))));
  nmLoad.addEventListener('click',()=>{
+   // Manteniamo un solo lettore attivo per tutti gli ascolti incorporati.
+   if(mozartFrameNodes.length)stopMozartComparison(false);
    // Due laboratori nella stessa pagina: prima chiudiamo il lettore dei Quadri.
    if(quadriStage && quadriLoad && quadriClose && quadriStage.querySelector('iframe')){
      quadriStage.replaceChildren(quadriLoad);
@@ -1415,6 +1476,61 @@ if(nmSelector.length===4&&nmWhere&&nmTitle&&nmListen&&nmQuestion&&nmRoles.every(
  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>revealLinkedActivity(a.hash)));
  window.addEventListener('hashchange',()=>revealLinkedActivity(window.location.hash));
  revealLinkedActivity(window.location.hash);
+
+// Confronto Mozart: due estratti della stessa Romanze, mai due video simultanei.
+const mozartCompareSources={
+  levin:{id:'_y6ZpoQrZzc',start:822,end:912,label:'Robert Levin · fortepiano',source:'https://www.youtube.com/watch?v=_y6ZpoQrZzc&t=822s'},
+  uchida:{id:'uDmbJGRr08w',start:0,end:90,label:'Mitsuko Uchida · pianoforte moderno',source:'https://www.youtube.com/watch?v=uDmbJGRr08w'}
+};
+const mozartCompareStatus=document.getElementById('mozart-compare-status');
+const mozartFrameNodes=[...document.querySelectorAll('[data-mozart-stage]')];
+function stopMozartComparison(announce=true){
+ mozartFrameNodes.forEach(stage=>{
+   stage.replaceChildren();
+   const notice=document.createElement('div');
+   notice.className='mozart-compare-placeholder';
+   notice.textContent='Estratto non caricato. Usa il pulsante qui sotto.';
+   stage.append(notice);
+   const key=stage.dataset.mozartStage;
+   const close=document.querySelector('[data-mozart-stop="'+key+'"]');
+   if(close)close.hidden=true;
+ });
+ if(announce&&mozartCompareStatus)mozartCompareStatus.textContent='Ascolto fermato. Nessun video attivo.';
+}
+if(mozartFrameNodes.length===2 && mozartCompareStatus){
+ document.querySelectorAll('[data-mozart-load]').forEach(button=>button.addEventListener('click',()=>{
+   const key=button.dataset.mozartLoad;
+   const source=mozartCompareSources[key];
+   const stage=mozartFrameNodes.find(n=>n.dataset.mozartStage===key);
+   if(!source||!stage)return;
+   // Chiudere i lettori già attivi evita musica sovrapposta in altre sezioni.
+   if(quadriStage && quadriLoad && quadriClose && quadriStage.querySelector('iframe')){
+     quadriStage.replaceChildren(quadriLoad);
+     quadriClose.hidden=true;
+     pairQuadriWithHartmann(0,null);
+     if(quadriStatus)quadriStatus.textContent='Lettore dei Quadri chiuso per il confronto Mozart.';
+   }
+   if(typeof stopDvorakPlayer==='function' && nmStage?.querySelector('iframe'))stopDvorakPlayer();
+   stopMozartComparison(false);
+   const iframe=document.createElement('iframe');
+   iframe.src='https://www.youtube-nocookie.com/embed/'+source.id+'?rel=0&controls=1&playsinline=1&autoplay=0&start='+source.start+'&end='+source.end;
+   iframe.title='Mozart K. 466 · Romanze, '+source.label+' · 90 secondi';
+   iframe.referrerPolicy='strict-origin-when-cross-origin';
+   iframe.allow='encrypted-media; picture-in-picture; fullscreen';
+   iframe.allowFullscreen=true;
+   stage.replaceChildren(iframe);
+   const stop=document.querySelector('[data-mozart-stop="'+key+'"]');
+   if(stop)stop.hidden=false;
+   mozartCompareStatus.textContent='Estratto '+(key==='levin'?'A':'B')+' preparato: '+source.label+'. Premi Play nel video per ascoltare.';
+ }));
+ document.querySelectorAll('[data-mozart-stop]').forEach(button=>button.addEventListener('click',()=>{
+   const key=button.dataset.mozartStop;
+   if(!mozartCompareSources[key])return;
+   stopMozartComparison();
+   const load=document.querySelector('[data-mozart-load="'+key+'"]');
+   if(load)load.focus();
+ }));
+}
 
 const menu=document.getElementById('indice-menu');
 document.querySelectorAll('.menu-panel a').forEach(a=>a.addEventListener('click',()=>{menu.open=false}));
