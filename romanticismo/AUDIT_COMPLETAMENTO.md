@@ -185,3 +185,14 @@ Commit del lotto: [`732da623`](https://github.com/SkenderAle/github-pages/commit
 - **Dimensione editoriale del lotto:** circa 1614 parole aggiunte nelle sezioni di racconto, non nei laboratori per studenti; 14 nuove citazioni/link a fonti e rimandi. Zero nuove registrazioni e nessuna modifica alle audioteche.
 - **QA statica pre-commit:** 14 titoli coerenti fra menu, mappa e intestazioni; 199 ID HTML invariati e univoci; 157 frammenti locali risolti; tutti i vecchi link mantenuti; 49 pulsanti video invariati; CSS e script invariati; zero iframe statici e zero autoplay positivo.
 - **Da verificare in seguito:** veridicità e raggiungibilità live di tutti i link esterni, QA dei lettori e compatibilità Android, accessibilità, prova di arrivo agli ancoraggi fra pagine; ulteriori asimmetrie editoriali e l'audit scientifico completo di tutte le opere.
+
+### Adeguamento globale dei lettori — 16 ottobre 2026 · Anteprime e apertura manuale
+
+**Ambito effettivamente incluso nel lotto:** componente condiviso `shared/atlas-video-preview-v1.css` e `shared/atlas-video-preview-v1.js`, richiamato nelle undici pagine principali dotate di sistemi audiovisivi: Barocco, Classicismo, Concerti, Dalla sinfonia alla rapsodia, Medioevo, Melodramma, Musica da camera, La parola e il canto, Rinascimento, Risorgimento e Romanticismo.
+
+- Nei riquadri del Romanticismo che disponevano di un segnaposto scuro viene introdotta una copertina con miniatura, pulsante «Apri il lettore» e dicitura «Avvio manuale · nessun autoplay»; conservati i pulsanti di caricamento esistenti come alternativa. Trattati anche il confronto Mozart e l'ascolto della Nona.
+- Nel catalogo `Dalla sinfonia alla rapsodia`, anteprime generate dinamicamente solo per le schede con un video documentato; le schede senza registrazione continuano a mostrare l'assenza del lettore.
+- Nel Barocco e nel Medioevo, 35 iframe YouTube originariamente precaricati diventano elementi senza `src` iniziale, da aprire cliccando una miniatura. Gli URL originali, i crediti, i minutaggi e gli ID sono preservati. Un solo video statico alla volta può restare aperto; cliccando un'altra anteprima il precedente viene chiuso.
+- Negli altri percorsi viene incluso il componente comune senza riscrivere i controlli specializzati già dotati di apertura differita; non si afferma che ogni player preesistente sia stato trasformato.
+- Nessun video parte automaticamente per effetto del componente; anche dopo il clic sull'anteprima il parametro `autoplay=0` richiede Play nel video.
+- **Verifiche statiche:** in tutte le pagine integrate ID e `href` già presenti invariati; CSS/JS condivisi inclusi; sintassi JS controllata; nessun URL video modificato salvo la disattivazione del `src` iniziale degli iframe migrati. Restano da provare in browser e Android la resa visiva, le connessioni esterne, gli eventuali altri sistemi audiovisivi e l'arresto simultaneo dei player specializzati.
