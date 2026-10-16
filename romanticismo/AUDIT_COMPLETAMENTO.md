@@ -20,34 +20,40 @@ Dalle radici settecentesche (Sturm und Drang, Classicismo, Beethoven) al rapport
 
 | N. | Capitolo (ID) | Valutazione editoriale provvisoria | Verifiche necessarie |
 |---|---|---|---|
-| 1 | Una rivoluzione che viene da lontano (`rivoluzione`) | Sviluppato | Controllo della proporzione fra prologo storico, Beethoven, testimonianze e confronti |
+| 1 | Alle soglie del Romanticismo (`rivoluzione`) | **Ampliato: Beethoven come cerniera** | Revisionare fonti e proporzioni del prologo, della produzione tarda e dei confronti |
 | 2 | L’artista, la città, il pubblico (`artista-citta`) | **Da approfondire** | Città, circuiti concertistici, impresari, editoria, pianoforte domestico, donne musiciste; nessi sociali più documentati |
 | 3 | La voce e l’intimità: il Lied (`lied`) | Impostato, da approfondire | Poesia, Lied, Schubert, Schumann, rapporto con il ciclo e con l'audioteca «La parola e il canto» |
-| 4 | Chopin e il pianoforte (`pianoforte`) | Impostato, da riequilibrare | Generi, forma breve, mazurca, studio, notturno, memoria della danza; evitarne l'identificazione con un solo compositore |
-| 5 | Paganini, Liszt, virtuosismo (`virtuosismo`) | Impostato, da approfondire | Celebrità, tecnica, trascrizione, istituzioni, differenze fra concerto e studio; correggere nota su `Mazeppa` ormai documentato al capitolo 7 |
-| 6 | Tavolozza orchestrale e camera (`orchestra`) | Sviluppato in parte | Ampliare ascolti sulla strumentazione/direzione e verificare equilibrio fra sinfonia, camera, repertorio e rimandi autonomi |
-| 7 | Berlioz e Liszt, forme a programma (`racconta`) | **Avanzato** | Controllo musicologico e ascolti reali di `idée fixe`, trasformazione tematica, poema e distinzione programma/evocazione |
-| 8 | Teatro romantico (`teatro`) | Da approfondire | Weber, Rossini, Bellini, Donizetti, Verdi, Wagner, scuole teatrali, rapporto col Risorgimento; riferimento a `opera-lirica/` ancora segnaposto |
-| 9 | Scuole nazionali (`nazioni`) | **Molto avanzato**, non concluso | Audit di fonti, aree, egemonie e popoli, ritmi/modalità, crediti delle registrazioni e distinzioni fra composizione e documenti etnomusicali |
-| 10 | Nuovo Mondo di Dvořák (`nuovo-mondo`) | Sviluppato | Validazione musicale, fonti e comportamento del lettore; interpretazione culturale del tema del «Nuovo Mondo» |
-| 11 | Quadri di Musorgskij (`quadri`) | Molto sviluppato | Fonti iconografiche, opere perdute, partitura pianistica vs orchestrazione Ravel, prove d'interazione |
-| 12 | Vienna, valzer e archi (`vienna`) | **LACUNA PRIORITARIA** | Ampliare storia urbana e multilinguismo imperiale, Lanner/Strauss, valzer da sala e da concerto, operetta viennese, serenate d'archi; registrazioni verificate |
-| 13 | Offenbach e città-spettacolo (`offenbach`) | **LACUNA PRIORITARIA** | Ampliare operetta/Secondo Impero, ricezione del can-can, `Galop infernal` vs `Tortues`, documenti Toulouse-Lautrec e cronologia; ascolti verificati |
+| 4 | Il pianoforte: canto, danza e forme nuove (`pianoforte`) | Impostato, da riequilibrare | Generi, forma breve, mazurca, studio, notturno, memoria della danza; evitarne l'identificazione con un solo compositore |
+| 5 | Virtuosismo e trascrizione (`virtuosismo`) | Impostato, da approfondire | Celebrità, tecnica, trascrizione, istituzioni, differenze fra concerto e studio; la vecchia nota su `Mazeppa` è stata corretta |
+| 6 | Sinfonia, camera, orchestra (`orchestra`) | **Ampliato: Brahms e Farrenc** | Ampliare ascolti sulla strumentazione/direzione e verificare equilibrio fra sinfonia, camera, repertorio e rimandi autonomi |
+| 7 | Musica a programma (`racconta`) | **Avanzato** | Controllo musicologico e ascolti reali di `idée fixe`, trasformazione tematica, poema e distinzione programma/evocazione |
+| 8 | Il teatro musicale (`teatro`) | Da approfondire | Weber, Rossini, Bellini, Donizetti, Verdi, Wagner, scuole teatrali, rapporto col Risorgimento; riferimento a `opera-lirica/` ancora segnaposto |
+| 9 | Scuole nazionali, danze e imperi (`nazioni`) | **Molto avanzato: ampliato Smetana e motivazione dei casi** | Audit di fonti, aree, egemonie e popoli, ritmi/modalità, crediti delle registrazioni e distinzioni fra composizione e documenti etnomusicali |
+| 10 | L'Atlantico immaginato — studio di caso (`nuovo-mondo`) | Sviluppato: scelta curatoriale esplicita | Validazione musicale, fonti e comportamento del lettore; interpretazione culturale del tema del «Nuovo Mondo» |
+| 11 | La musica incontra le immagini — studio di caso (`quadri`) | Molto sviluppato: scelta curatoriale esplicita | Fonti iconografiche, opere perdute, partitura pianistica vs orchestrazione Ravel, prove d'interazione |
+| 12 | Vienna, valzer e archi (`vienna`) | **Prima espansione editoriale eseguita** | Verificare le fonti, cinque nuovi ascolti predisposti e il loro reale funzionamento; consolidare gli aspetti sociali e la bibliografia |
+| 13 | Parigi, operetta e città-spettacolo (`offenbach`) | **Prima espansione editoriale eseguita** | Verificare le fonti, due ascolti e il loro effettivo funzionamento, ricezione del can-can, varianti dell'opera e iconografia |
 | 14 | Belle Époque e registrazione (`belle-epoque`) | Impostato | Approfondire cultura urbana e tecnica; verificare incisioni Caruso per anno, matrice, accompagnamento e riproducibilità |
 
 La qualifica «sviluppato» **non** significa «approvato o concluso».
 
-### Verifica tecnica effettuata il 16 ottobre 2026
+### Verifica tecnica aggiornata il 16 ottobre 2026
 
 - Presenti **14 capitoli**.
-- **181 ID HTML** rilevati, **nessun duplicato**.
-- **138 collegamenti locali `#...`**, tutti con ID presenti nel documento.
+- **186 ID HTML** rilevati, **nessun duplicato**.
+- **149 collegamenti locali `#...`**, tutti con ID presenti nel documento.
 - **Tutte le destinazioni relative interne a Musurgia Mundi censite nella pagina** risultano file esistenti su `main`; per quelle con frammento, l'ID di destinazione è presente.
-- **42 occorrenze di pulsanti per video YouTube** nel sistema `data-mm-video` (non equivalgono a 42 video o 42 lettori distinti); **2 pulsanti SoundCloud**. Esistono anche lettori specializzati esterni a questo conteggio.
+- **49 occorrenze di pulsanti per video YouTube** nel sistema `data-mm-video` (non equivalgono a 49 video o lettori distinti); **2 pulsanti SoundCloud**. Esistono anche lettori specializzati esterni a questo conteggio.
 - Nessun `<iframe>` statico nel sorgente e nessun parametro positivo `autoplay=1` / `auto_play=true` nel codice esaminato.
 - Script JavaScript già validato sintatticamente durante l'ultimo lotto.
 - **Non verificati nel browser reale**: l'atterraggio senza scorrimento involontario, l'incorporabilità e riproduzione dei filmati, l'arresto fra player differenti, il comportamento su Android, l'accessibilità operativa dei controlli.
 - Collegamenti a `../opera-lirica/` e futuro `../post-romanticismo/`: gli indirizzi esistono ma le pagine sono attualmente **segnaposto «Lavori in corso»**, non percorsi completati.
+
+### Criterio editoriale dell'indice
+
+Le **14 voci principali** devono identificare **problemi musicali e culturali**, non nominare arbitrariamente alcuni compositori e tacerne altri. Beethoven inaugura la riflessione sulla soglia del Romanticismo; Brahms è essenziale alla storia della sinfonia e della musica da camera; Smetana non si esaurisce nella `Vltava`, ma viene spiegato attraverso l'intero `Má vlast`. Gli approfondimenti del `Nuovo Mondo` e dei `Quadri` restano per il loro valore analitico (sinfonia/interculturalità e ciclo pianistico/immagini/memoria), non come pretesa classifica fra compositori o scuole. I titoli tematici vanno mantenuti uguali in menu, mappa e intestazioni.
+
+**Commit di questo ciclo:** `aef73ec2b83491ff9600aaa5fc0e3f40f58929e4` (Vienna e Parigi), `74d086c6fb8551d6ce5dc7c67a6484bde6082bc6` (indice e ruolo dei compositori). Entrambi sul branch `main`.
 
 ### Questioni musicologiche da tenere in vista
 
@@ -61,13 +67,13 @@ La qualifica «sviluppato» **non** significa «approvato o concluso».
 
 ### Ordine dei prossimi lotti
 
-**Lotto A — Priorità immediata: completamento storico dei capitoli 12 e 13.**
+**Lotto A — Prima espansione eseguita il 16 ottobre; resta audit delle fonti e delle registrazioni dei capitoli 12 e 13.**
 - Ampliare entrambi con prosa argomentata, fonti e relazioni interdisciplinari; senza trasformarli in schede biografiche.
 - Per Vienna, accostare valzer da ballo, versione concertistica e scrittura per archi con esempi identificati.
 - Per Offenbach, costruire il confronto reale `Galop infernal` / `Tortues`, documentare nascita, riusi e iconografia con cronologia corretta.
 - Gli ascolti e gli esercizi rimangono **facoltativi**, dentro `Per iniziare`.
 
-**Lotto B — Revisione di completezza dei capitoli 2–6 e 8.**
+**Lotto B — Revisione di completezza dei capitoli 2–6 e 8 (priorità successiva, con criteri editoriali tematici).**
 - Ampliare gli aspetti culturali e musicali insufficientemente articolati, integrare le compositrici nella storia e correggere stati superati (es. `Mazeppa`).
 - Controllare rapporti e collegamenti con Lied, cameristica, concerto, opera e Risorgimento.
 
@@ -92,7 +98,10 @@ La qualifica «sviluppato» **non** significa «approvato o concluso».
 - [x] Struttura dei 14 capitoli presente
 - [x] Ancore HTML e collegamenti locali controllati staticamente
 - [x] Raccordo pubblicato con l'audioteca autonoma
-- [ ] Capitoli 12 e 13 maturi editorialmente
+- [x] Indice dei 14 capitoli reso tematico, senza selezione privilegiata di nomi
+- [x] Approfondita la funzione di Beethoven, Brahms e Smetana; chiarita la selezione dei due studi di caso
+- [x] Prima espansione argomentativa dei capitoli 12 e 13, con sette lettori predisposti (non ancora collaudati)
+- [ ] Capitoli 12 e 13 approvati dopo revisione delle fonti e prova degli ascolti
 - [ ] Revisione di completezza dei capitoli 2–6 e 8
 - [ ] Audit documentale di tutti gli ascolti
 - [ ] Collaudo browser e Android senza autoplay e scroll indesiderati
