@@ -247,3 +247,7 @@ La coralità del Romanticismo ora comprende i mottetti a cappella op. 74 di Brah
 ## Gigaudit sacro · Quinto lotto, 17 ottobre 2026
 
 Rafforzato il criterio HIP per la musica sacra romantica: Fauré (redazioni e organici), Rossini (originale con tastiere e versione orchestrale), Brahms op. 74 (coro a cappella e storia esecutiva). Due integrali HIP del progetto ufficiale All of Bach pubblicati nella pagina Barocco: Magnificat BWV 243 (redazione 1733) e Jesu, meine Freude BWV 227, con crediti e avvertenze filologiche. Fonte per BWV 225 aggiunta senza video non verificato. Registro centralizzato `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`.
+
+## Sesto lotto del gigaudit sacro · Filologia · 17 ottobre 2026
+
+Dopo il quinto lotto pubblicato sul branch main con ascolti All of Bach BWV 243 e BWV 227, sono stati aggiunti ascolti originali Netherlands Bach Society BWV 229, 140 e 232, collegamenti alla pratica mensurale Cappella Pratensis, confronto Mozart/Beethoven-Haus e discografia filologica Brahms/Fauré. Nessun player fittizio, nessun autoplay, quattordici capitoli conservati. Registro `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`.
