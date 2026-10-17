@@ -232,3 +232,7 @@ QA statico preliminare: 14 capitoli invariati; 202 ID precedenti conservati, 3 I
 ## Lotto editoriale trasversale · musica sacra, coralità e musica da camera · 17 ottobre 2026
 
 Il progetto ha avviato un audit fra Rinascimento e Romanticismo, senza nuove pagine dedicate. Nel Romanticismo sono stati integrati, all'interno dei capitoli esistenti, il ruolo delle società corali, Mendelssohn e la ricezione di Bach, Brahms, Berlioz, Verdi, Rossini, Fauré, Bruckner e Dvořák; approfondite anche musica da camera, vita del salotto e dei concerti, Clara Schumann, Fanny Hensel, Smetana, Dvořák, Čajkovskij, Franck e Fauré. Corretti il vecchio player chiuso di Liszt *Mazeppa* e i crediti della sostituzione. Il registro specifico è ora `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`. Test browser ancora da svolgere.
+
+## Secondo lotto del gigaudit corale · 17 ottobre 2026
+
+Aggiunti senza alterare i quattordici capitoli del Romanticismo: la produzione sacra e l'oratorio di Fanny Hensel, i contesti dei cori e festival di Mendelssohn, il percorso religioso di Liszt, il Cecilianesimo, la Liturgia op. 41 di Čajkovskij, la ricostruzione editoriale del Requiem di Fauré. Il registro dettagliato è `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`. Le nuove fonti riguardano storia e partiture, **non certificano video o riproducibilità**.
