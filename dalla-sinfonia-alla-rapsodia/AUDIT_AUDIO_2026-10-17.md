@@ -123,3 +123,34 @@ Le registrazioni YouTube seguenti risultano pubblicate dal **canale verificato h
 - Audit **statico** su JSON e generazione schede: preservati gli 82 ID preesistenti e il loro ordine relativo, otto ID nuovi e distinti, validità degli ID video (11 caratteri), forme e relazioni coerenti, nessun `autoplay=1`, nessun caricamento video senza clic su «Prepara».
 - **Non effettuato** un test reale di riproduzione Android/desktop: anche i nuovi ID pubblicati dai canali ufficiali potrebbero avere vincoli di embedding non rilevati dal codice.
 - Il video **non disponibile** di *Mazeppa* (`kICGiPcgikk`) è già stato sostituito nel quinto lotto; mantenere aperto l'audit delle altre ripubblicazioni, in particolare Spohr, Raff, Berlioz/Toscanini, Sibelius/Berglund.
+
+## Settimo lotto — 17 ottobre 2026 · due sostituzioni istituzionali, prassi storica e tre nuove sinfonie
+
+### Sostituzioni di ripubblicazioni indipendenti
+
+- `berlioz-026`, *Harold en Italie*: video indipendente `-Yg_vJUXA8c` sostituito con il video ufficiale **hr-Sinfonieorchester — Frankfurt Radio Symphony**, viola **Antoine Tamestit**, **Eliahu Inbal**, Rheingau Musik Festival, Kloster Eberbach, **24 giugno 2018**. Video `Q4NC4E5RXik`, con quattro movimenti indicizzati a 00:35, 16:00, 24:12, 30:53. Fonte dell'orchestra: https://www.hr-sinfonieorchester.de/media/videos/konzert-videos-17-18/berlioz-harold-en-italie%2Cvideo-berlioz-harold-100.html ; canale ufficiale https://www.youtube.com/watch?v=Q4NC4E5RXik . Toscanini/Carlton Cooley (1953) resta come **alternativa storica di terzi**, non certificata.
+- `sibelius-058`, *Kullervo*: video indipendente `wPtfhMpiFfQ` sostituito dalla ripresa **AVROTROS Klassiek** del **29 aprile 2022**: **Radio Filharmonisch Orkest**, **James Gaffigan**, **Groot Omroepmannenkoor**, **Johanna Rusanen-Kartano** e **Arttu Kataja**, TivoliVredenburg Utrecht. Video `z5tWFyIX_HQ` https://www.youtube.com/watch?v=z5tWFyIX_HQ . La descrizione editoriale presenta l'integrale in cinque movimenti; il programma originale AVROTROS elenca tutti e cinque: https://cms-assets.nporadio.nl/npoRadio4/ATVC-29-april-22-LOW.pdf?v=1650894515 . Berglund (1971), ripubblicazione indipendente, conservata come alternativa non collaudata.
+
+### Ampliamento mirato, tre nuove sinfonie
+
+| ID | Opera | Registrazione documentata | Prassi / limiti |
+|---|---|---|---|
+| `farrenc-091` | **Louise Farrenc**, Sinfonia n. 3 in sol minore, op. 36 (1847) | **Orchestre philharmonique de Radio France / Mikko Franck**, Auditorium Maison de la Radio, **3 febbraio 2018**. Canale **France Musique concerts**, https://www.youtube.com/watch?v=yv3LXXlmwNs . | Integrale pubblicata dall'emittente, da non classificare arbitrariamente «storicamente informata». Ingresso del primo movimento a **1:23**. Primo ascolto alternativo HIP documentato su disco: Insula orchestra / Laurence Equilbey, Erato 2021 e integrale su strumenti d'epoca pubblicata 2023: https://www.warnerclassics.com/fr/release/louise-farrenc-overtures . Non è stato inventato un video integrale gratuito dell'album Erato. |
+| `emiliemayer-092` | **Emilie Mayer**, Sinfonia n. 1 in do minore (ante 1847) | **Insula orchestra / Laurence Equilbey**, La Seine Musicale, **27–28 febbraio 2024**, video integrale **34:42** dal canale Insula orchestra, https://www.youtube.com/watch?v=vo6d28bpDB8 . | Orchestra su strumenti d'epoca; documento ufficiale: https://www.insulaorchestra.fr/insula-media/emilie-mayer-symphonie-n-1/ . |
+| `schubert-093` | **Schubert**, Sinfonia n. 4 «Tragica», D. 417 (1816) | **Insula orchestra / Laurence Equilbey**, La Seine Musicale, **27–28 febbraio 2024**, https://www.youtube.com/watch?v=WM259gv7VEg . | Orchestra su strumenti d'epoca; fonte https://www.insulaorchestra.fr/insula-media/franz-schubert-symphonie-n4-en-ut-mineur/ . |
+
+Le due schede Insula marcano esplicitamente la prassi storicamente informata; la ripresa di France Musique di Farrenc resta moderna. Con le tre schede Haydn2032, le etichette «storicamente informata» presenti in pagina sono ora **cinque**.
+
+### Fonti discografiche confermate, disponibilità YouTube aperta
+
+- `louisspohr-028`: Budapest Symphony Orchestra/Alfred Walter, registrazione **novembre 1987**, Naxos **8.555398**, opera integrale circa **38:58**; fonti https://www.prestomusic.com/classical/products/8018385--spohr-complete-symphonies e https://www.musicweb-international.com/classrev/2016/dec/Spohr_sy4_8555398.htm . Il link YouTube presente è di terzi, **non è stato collaudato**.
+- `joachimraff-033`: *Im Walde*, Philharmonia Orchestra/Francesco d'Avalos, ASV DCA 793, identificazione discografica rafforzata da https://www.raff.org/recordings/discography_symphonies.html . Il filmato esistente è di terzi; non sostituito in assenza di una registrazione integrale pubblica migliore. **MDR ha registrato un concerto con Michael Francis e il MDR-Sinfonieorchester il 30 agosto 2026**, la cui messa in onda radiofonica è prevista per **18 ottobre 2026**; da verificare *dopo* la trasmissione https://www.mdr.de/konzerte/konzertkalender/konzert-3318.html . Non usare la sola scheda di programma come link audio.
+- `joachimraff-034`: *Lenore*, Slovak State Philharmonic Orchestra/Urs Schneider, Naxos **8.555541**, verificabile discograficamente. Upload attuale di terzi, disponibilità e embedding da collaudare.
+
+### Interfaccia e verifiche
+
+- In tutte le schede YouTube il link «Registrazione originale» è rinominato con maggiore precisione «**Apri su YouTube**» (non tutti i filmati sono originali e alcuni sono copie d'archivio).
+- Dopo «Prepara l'ascolto» un avviso chiarisce che, se YouTube segnala indisponibilità, si può tentare il link esterno. **Non è un rilevamento automatico del fallimento dell'iframe**, tecnicamente non attestato.
+- Le tre schede di Spohr e Raff mostrano una nota visibile «Fonte da ricontrollare», separando certezza discografica e accessibilità del video.
+- Inventario cumulativo: **93 opere, 39 compositori, 90 video YouTube, 2 video RaiPlay esterni, 1 archivio Český rozhlas, 0 registrazioni non documentate**. I **90 ID precedenti** e il loro ordine relativo devono restare invariati.
+- Controlli possibili: integrità JSON, enumerazioni, ID YouTube, assenza di autoplay, JS statico, link aggiunti. **Ancora non eseguito:** collaudo reale Chrome Android/desktop dei player o l'autorizzazione effettiva all'embedding.
