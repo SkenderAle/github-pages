@@ -131,7 +131,9 @@ document.addEventListener('click',function(event){
  else if(stop.hasAttribute('data-stop'))stage=stop.closest('.work')?.querySelector('.stage[data-stage]')||null;
  if(stage)focusBackStage=stage;
 },true);
-var playbackTrigger='.mm-site-preview,[data-mm-load],[data-load],[data-mozart-load],[data-nona-load],#nm-video-load,#quadri-video-load,#quadri-video-kvam,[data-video],[data-compare-video],.playlist-video';
+// I laboratori sintetici di Barocco e Medioevo restano autonomi; quando comincia un loro ascolto,
+// però, nessun video YouTube della stessa pagina deve continuare in background.
+var playbackTrigger='.mm-site-preview,[data-mm-load],[data-load],[data-mozart-load],[data-nona-load],#nm-video-load,#quadri-video-load,#quadri-video-kvam,[data-video],[data-compare-video],.playlist-video,.backbone-audio,.tonal-play,.fugue-play,.dance-play,.hip-play,.roots-audio,.office-sample,.mass-sample,.motion-play,.polytime-play,.poly-main-play,.gallery-sound,.instrument-sound';
 document.addEventListener('click',function(event){
  var hit=event.target instanceof Element&&event.target.closest(playbackTrigger);
  if(!hit||hit.closest('[hidden]')&&!hit.matches('[data-mm-load],[data-load],[data-mozart-load],[data-nona-load]'))return;
@@ -139,18 +141,23 @@ document.addEventListener('click',function(event){
  stopStatic();stopRelatedPlayers();
 },true);
 initStatic();refresh();
-var pending=false;
-var observer=new MutationObserver(function(mutations){
- if(pending)return;
- for(var i=0;i<mutations.length;i++){
-  if(mutations[i].addedNodes.length||mutations[i].removedNodes.length){
-   pending=true;
-   queueMicrotask(function(){pending=false;refresh();});
-   break;
+// Solo i capitoli con stage dinamici devono osservare le mutazioni: evita scansioni
+// continue di cataloghi, indici e widget che non usano questo sistema di anteprime.
+var hasDynamicStages=!!document.querySelector('[data-mm-stage],[data-mozart-stage],#nona-video-stage,.stage[data-stage]');
+if(hasDynamicStages){
+ var pending=false;
+ var observer=new MutationObserver(function(mutations){
+  if(pending)return;
+  for(var i=0;i<mutations.length;i++){
+   if(mutations[i].addedNodes.length||mutations[i].removedNodes.length){
+    pending=true;
+    queueMicrotask(function(){pending=false;refresh();});
+    break;
+   }
   }
- }
-});
-observer.observe(document.body,{childList:true,subtree:true});
+ });
+ observer.observe(document.body,{childList:true,subtree:true});
+}
 document.addEventListener('toggle',function(event){
  if(event.target instanceof HTMLDetailsElement&&!event.target.open)stopStatic(event.target);
 },true);
