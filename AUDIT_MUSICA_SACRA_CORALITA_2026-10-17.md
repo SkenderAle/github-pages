@@ -334,3 +334,11 @@ Interventi in prose e collegamenti editoriali, senza catalogo autonomo: l'obiett
 Nessun capitolo autonomo, voce di menu o esercizio adulto trasformato in gioco. Le aggiunte narrano i rapporti fra testo, contesto civile, organico, fonti editoriali e funzione dei cori. Il nome di un interprete non dà automaticamente una certificazione HIP. **Nessun nuovo video né ID YouTube aggiunto**.
 
 Prima del commit: ancoraggi di paragrafo univoci, confronto degli ID HTML, script, iframe, `data-video`, autoplay e sezioni; mantenuto l'inserto `#castrati`. Dopo il commit: lettura GitHub su `main`. I controlli sono statici e non comprendono un test di playback su browser/Android.
+
+## Precisazione di perimetro editoriale — 17 ottobre 2026 · cori d'opera e percorso autonomo
+
+**Richiamo dell'autore:** nel trattare il coro nelle pagine storico-musicali di Musurgia Mundi, non anticipare né replicare la trattazione sistematica dell'opera lirica; la pagina `opera-lirica/index.html` esiste ed è esplicitamente **in preparazione**. Esiste già anche il percorso storico `melodramma/index.html`.
+
+**Applicazione:** in `romanticismo/index.html` il riferimento al `Va, pensiero` è circoscritto alla storia della ricezione politica, con rimando alla futura pagina `../opera-lirica/` per scena, scrittura e interpretazioni. In `classicismo/index.html` il coro delle Furie e quello dei Campi Elisi servono al confronto sulla riforma drammatica di Gluck, con rinvio a `../melodramma/` per la trattazione specifica del teatro.
+
+**Regola per i prossimi lotti:** nelle epoche mantenere solo esempi operistici strettamente necessari a una tesi storica trasversale (funzione pubblica, rapporto fra parola e coro, contesto civile, trasformazione estetica). Lasciare alla sede dedicata l'analisi di opere complete, libretti, ruoli, versioni, forme teatrali e catalogo degli ascolti. Nessun duplicato e nessuna scheda autonoma dei cori d'opera in pagine non operistiche. La sacra, il Lied e l'oratorio restano repertori con funzioni proprie, da non assimilare al melodramma.
