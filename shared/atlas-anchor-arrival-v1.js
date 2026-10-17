@@ -34,6 +34,16 @@
   button.appendChild(arrow);top.appendChild(button);
   const panel=document.createElement("nav");panel.id="atlasTopNavigation";panel.setAttribute("aria-label","Indice del percorso");
   button.setAttribute("aria-controls",panel.id);button.setAttribute("aria-haspopup","true");button.setAttribute("aria-expanded","false");
+  // Numerazione coerente con il conteggio del pulsante; le voci di servizio
+  // (repertorio, fonti, ecc.) restano senza numero.
+  let chapterNumber=0;
+  links.forEach(a=>{
+   const href=a.getAttribute("href")||"";
+   if(!href.startsWith("#")||exclude.has(href.slice(1)))return;
+   chapterNumber++;
+   const title=a.textContent.trim().replace(/^\\d{1,2}\\s*[·.\\-–]?\\s*/,"");
+   a.textContent=String(chapterNumber).padStart(2,"0")+" · "+title;
+  });
   const other=links.filter(a=>a!==home),half=Math.ceil(other.length/2);
   [other.slice(0,half),other.slice(half)].filter(items=>items.length).forEach((items,i)=>{
    const group=document.createElement("div");group.className="atlas-group";
