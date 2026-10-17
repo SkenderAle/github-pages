@@ -197,3 +197,29 @@ I controlli del lotto sono di **sorgente statica e lettura remota GitHub**, non 
 ### Rettifica di collocazione del lotto VIII — 17 ottobre 2026
 
 La rilettura dell'HTML appena pubblicato ha permesso di correggere tre raccordi senza modificare la sostanza delle fonti: (1) la nota BWV 106 è stata spostata fuori dall'approfondimento veneziano sulla Pietà e collocata **subito dopo la scheda di ascolto BWV 106**, con testo d'apertura reso aderente alla scheda; (2) il collegamento di BWV 4 è stato posto **dopo la discussione continua sul doppio coro BWV 225**, per non interrompere l'analisi del mottetto; (3) il confronto fra singing schools e cappelle viene ora **accanto alla trattazione delle istituzioni corali** nel Classicismo, non fra organico della Nelsonmesse e registrazione Harnoncourt. Rettifica su main in commit separato perché il commit di lotto VIII era già stato pubblicato. Nessuno script, menu, ID, lettore o URL video alterato; è stato aggiornato soltanto il registro.
+
+## Nono lotto — 17 ottobre 2026 · voce comunitaria, fonti manoscritte e istituzioni di culto
+
+**HEAD verificato prima dell'intervento:** `d34499d26b5e08724b459e689233b142107faffb` su `main`. Le integrazioni seguono l'ottavo lotto e la sua rettifica, senza duplicare registrazioni o creare nuovi capitoli.
+
+### Undici integrazioni verificate per pertinenza storica
+
+| Periodo | Aggiunte al racconto esistente | Evidenza utilizzata |
+|---|---|---|
+| Rinascimento | Victoria, `Officium defunctorum` (1605): messa a sei voci + mottetto, responsorio e lezione, contro il falso equivalente «solo Requiem» | Catalogo delle prime stampe Victoria, https://victoria.uma.es/ediciones_antiguas.html |
+| Rinascimento | Tallis, `Spem in alium` a quaranta parti: Egerton MS 3512 ordinato in cinque gruppi di otto voci, Add MS 29968 riordinato in otto cori di cinque; distinguere disposizione nelle copie da assetto esecutivo comprovato | British Library https://searcharchives.bl.uk/catalog/032-001985761 e https://searcharchives.bl.uk/catalog/032-002021550 |
+| Barocco | Purcell, `Hear my prayer, O Lord` Z. 15: autografo incompiuto per otto parti non accompagnate, Fitzwilliam MU.MS.88 f.83v; non attribuire completamenti posteriori | Fitzwilliam Museum https://data.fitzmuseum.cam.ac.uk/id/object/253455 |
+| Barocco | Milano monastica: Cozzolani e distinzione fra voci notate, prassi vocali femminili e organizzazione nella clausura | Robert L. Kendrick, Oxford University Press, https://academic.oup.com/book/49169 |
+| Classicismo | Bortnjans'kyj: concerti sacri per un coro / due cori, antiphonia e `tutti`, organici a cappella e contesto di corte; registrazione Polyansky indicata come **discografia moderna**, non HIP attribuita senza prove | Chandos CHAN9922, https://www.chandos.net/chanimages/Booklets/CH9922.pdf (note di Philip Taylor, pp. 6–9) |
+| Classicismo | Beethoven, `Missa solemnis`: intenzione liturgica 1820, testo completato 1823, prima integrale concertistica 1824 e partecipazione a Vienna nello stesso anno di soli tre numeri; guerra e pace nell'`Agnus Dei` | Beethoven-Haus https://www.beethoven.de/de/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA7Of61wgM/Mass%2Bin%2BD%2Bmajor%2Bfor%2Bfour%2Bsolo%2Bvoices%2C%2Bchorus%2C%2Borchestra%2Band%2Borgan%2Bop.%2B123%2B%26%23040%3BMissa%2Bsolemnis%26%23041%3B ; BSO https://www.bso.org/works/beethoven-missa-solemnis |
+| Romanticismo | Mendelssohn, `Elias`: Birmingham 1846, circa 271 cantori / 125 strumentisti, revisione delle parti nel 1847 e ruolo dei cori | BFCS https://bfcs.org.uk/2022/08/19/bfcs-and-the-premiere-of-mendelssohns-elijah/ ; British Library https://searcharchives.bl.uk/catalog/040-002104261 |
+| Romanticismo | Fauré, `Requiem`: datazione comparata delle prime esecuzioni parziale 1888, integrale cameristica 1893, sinfonica 1900; distinzione testuale di `In paradisum` | BnF https://catalogue.bnf.fr/ark:/12148/cb139120522 |
+| Romanticismo | Schubert/Sulzer, Salmo 92 D.953: nuova fonte del 1832, varianti melodiche, ornamentali e sottoposizione del testo ebraico rispetto alle fonti 1834–35 e 1839–40 | Rees e Schab, Università di Haifa https://cris.haifa.ac.il/en/publications/a-new-source-for-schuberts-hebrew-psalm-92-d-953/ |
+| Romanticismo | Čajkovskij, Liturgia op.41: controversia editoriale 1879–80; Kiev 1879 distinto da concerto 1880; riduzione per prova non accompagnamento liturgico | Tchaikovsky Research https://en.tchaikovsky-research.net/pages/Liturgy_of_Saint_John_Chrysostom |
+| Romanticismo | Stanford, `Evening Service in B flat`: cantici nella sequenza effettiva dell'Evensong; distinto da `Magnificat` latino op.164 e motetti op.38 | Westminster Abbey https://www.westminster-abbey.org/order-of-service?id=14769 e https://www.westminster-abbey.org/worship-and-music/music/recordings/parry-songs-of-farewell |
+
+### Metodologia filologica e limiti
+
+Interventi in prose e collegamenti editoriali, senza catalogo autonomo: l'obiettivo è confrontare **forme, testi, organici, luogo d'uso, testimonianze e revisioni**, distinguendo liturgia, devozione e concerto. Una registrazione moderna non viene presentata come identica alla prassi originaria solo perché impiega un direttore autorevole. Nessun ID YouTube inventato, nessun video incorporato, nessun ascolto in autoplay.
+
+**Controlli statici pre-commit:** presenza univoca dei punti di inserimento, struttura degli ID e conteggio delle schede / iframe, assenza di nuove istruzioni JS, continuità dell'inserto `#castrati` e registro aggiornato. **Nessun collaudo browser reale, smartphone o playback audio**. Le singole fonti sono state individuate attraverso cataloghi e documentazione istituzionale; l'accessibilità effettiva dei link può variare nel tempo.
