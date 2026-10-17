@@ -342,3 +342,28 @@ Prima del commit: ancoraggi di paragrafo univoci, confronto degli ID HTML, scrip
 **Applicazione:** in `romanticismo/index.html` il riferimento al `Va, pensiero` è circoscritto alla storia della ricezione politica, con rimando alla futura pagina `../opera-lirica/` per scena, scrittura e interpretazioni. In `classicismo/index.html` il coro delle Furie e quello dei Campi Elisi servono al confronto sulla riforma drammatica di Gluck, con rinvio a `../melodramma/` per la trattazione specifica del teatro.
 
 **Regola per i prossimi lotti:** nelle epoche mantenere solo esempi operistici strettamente necessari a una tesi storica trasversale (funzione pubblica, rapporto fra parola e coro, contesto civile, trasformazione estetica). Lasciare alla sede dedicata l'analisi di opere complete, libretti, ruoli, versioni, forme teatrali e catalogo degli ascolti. Nessun duplicato e nessuna scheda autonoma dei cori d'opera in pagine non operistiche. La sacra, il Lied e l'oratorio restano repertori con funzioni proprie, da non assimilare al melodramma.
+
+## Quattordicesimo lotto — 17 ottobre 2026 · coralità non operistica e confini dei percorsi
+
+**HEAD prima degli interventi:** `67133d11dad963bfce90e825b46b69fd72a81ac1` su `main`. La precedente precisazione editoriale sui cori d'opera (già committata su `main`) resta in vigore. La pagina `opera-lirica/index.html` è un **segnaposto in preparazione**: nessun testo del futuro sito è stato scritto o dichiarato completato.
+
+### Interventi effettivi (9)
+
+**Classicismo, 2 integrazioni.**
+1. Haydn: `Gott erhalte Franz den Kaiser` (1797), il testo per l'imperatore Francesco II e il riuso in forma di variazioni nel Quartetto op. 76 n. 3; la melodia può passare da una funzione pubblica monarchica a una forma cameristica senza che i contesti diventino identici. Autografo ÖNB Mus. Hs. 16.501: https://germanhistory-intersections.org/en/germanness/ghis%3Aimage-272.
+2. Beethoven, `Fantasia corale` op. 80: accademia del 22 dicembre 1808, dal pianoforte solista al coro, introduzione all'epoca improvvisata e forma fissata nel 1809; non trattarla come versione immutabile o come semplice bozza della Nona. Beethoven-Haus https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2nhgkM/Fantasy%2Bfor%2Bpiano%2C%2Bchorus%2Band%2Borchestra%2B%26%23040%3BC%2Bminor%26%23041%3B%2Bop.%2B80.
+
+**Romanticismo, 5 integrazioni.**
+3. Fanny Hensel, `Oratorium nach Bildern der Bibel` (1831), organico misto, 5–8 voci e tre tromboni, edizione di Elke Mascha Blankenburg: https://fannyhensel.de/?lang=en&p=1536. Contro la riduzione della produzione femminile a musica per salotto.
+4. Robert Schumann, `Romanzen für Frauenchor`, autografo 1849 con op. 69/op. 91 e modifiche del numero dei brani sul frontespizio, Morgan Library https://www.themorgan.org/music-manuscripts-and-printed-music/115693.
+5. Johannes Brahms, `Vier Gesänge` op. 17 (1860–61), coro femminile SSA, due corni e arpa, copia di Clara Schumann fonte principale dell'edizione, Breitkopf https://www.breitkopf.com/en/work/1325/4-songs-op.-17.
+6. Mendelssohn, festeggiamenti Gutenberg 1840: `Festgesang` WoO 9/MWV D 4 (piazza, coro maschile e due gruppi di ottoni, 24 giugno) e `Lobgesang` op. 52 (sinfonia-cantata in chiesa, 25 giugno): due opere **distinte**. Fonti https://imslp.org/wiki/Festgesang_zum_Gutenbergfest%2C_WoO_9_%28Mendelssohn%2C_Felix%29 e https://www.mendelssohn-stiftung.de/en/felix.
+7. Confronto delle tre forme corali di Brahms: `Deutsches Requiem` / mottetti op. 74 / canti profani femminili op. 17, distinguendo funzione, testo e organico e rimandando i cori operistici al percorso dedicato.
+
+**Risorgimento, 2 integrazioni di perimetro.**
+8. `#verdi` e repertorio ottocentesco rimandati correttamente a `../melodramma/` e alla futura `../opera-lirica/`, conservando nell'Atlante storico soltanto la **ricezione politica** dei cori di `Nabucco` e `I Lombardi`.
+9. Ricostruzione civile del `Va' pensiero` distinta dall'analisi completa del `Nabucco`, che comprenderà libretto, struttura, organici, interpretazioni e allestimenti sul futuro sito, senza duplicazione.
+
+### Controlli e limiti
+
+Paragrafi collocati immediatamente dopo ancore univoche. Nessun nuovo player o ID YouTube, nessun autoplay, nessuna nuova sezione o alterazione dei menu. Invariati gli ID, gli script e gli iframe confrontati automaticamente prima del commit; conservata la pagina `opera-lirica/index.html` e tutti i suoi contenuti originali. Non è stato effettuato un test visivo mobile né playback in browser reale.
