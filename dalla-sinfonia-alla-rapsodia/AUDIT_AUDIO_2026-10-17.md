@@ -92,3 +92,34 @@ Le registrazioni YouTube seguenti risultano pubblicate dal **canale verificato h
 **Criterio editoriale stabilizzato sulla pagina:** preferire, laddove pertinenti e documentati, le interpretazioni storicamente informate, privilegiando la ricerca dei materiali di Nikolaus Harnoncourt e Diego Fasolis; l'assenza di una simile versione accessibile non autorizza ad attribuire «filologia» a una registrazione di tradizione moderna. Per *Mazeppa* non è stata identificata una versione HIP integrale ufficialmente accessibile: Haitink è scelto per provenienza e qualità documentarie, non qualificato impropriamente come filologico.
 
 **Verifica eseguita:** controllo del catalogo e degli ID in codice, permanenza di 82 schede e della loro sequenza, conteggi per categoria invariati; nessun `autoplay=1` e caricamento degli iframe solo su comando. **Non verificato:** riproduzione effettiva o permesso di embedding del nuovo video su Chrome Android (anche un Art Track ufficiale può avere limitazioni imposte dal distributore). Se l'iframe fallisce, la scheda offre sia l'URL principale sia l'alternativa ufficiale. Gli altri video restano da collaudare.
+
+## Sesto lotto — 17 ottobre 2026 · prassi esecutiva storicamente informata e nuovi orizzonti
+
+**Impostazione:** aggiunte 8 opere con video identificati e attribuiti, di cui 3 eseguite dal progetto Haydn2032 (Giovanni Antonini, Il Giardino Armonico) con prassi storicamente informata. Nessuna sostituzione arbitraria degli ascolti Beethoven con ripubblicazioni non autorizzate di Harnoncourt.
+
+### Nuove schede e fonti
+
+| ID | Opera | Fonte video / canale | Stato documentario |
+|---|---|---|---|
+| `haydn-083` | Haydn, Sinfonia n. 6 *Le Matin* (1761) | https://www.youtube.com/watch?v=XtWEvUnC1Vs — Haydn2032, Il Giardino Armonico, Antonini | Ufficiale, prassi storicamente informata; non collaudato l'embed |
+| `haydn-084` | Haydn, Sinfonia n. 15 (1761) | https://www.youtube.com/watch?v=qSGQ5_WfaHI — Haydn2032, Il Giardino Armonico, Antonini | Ufficiale, prassi storicamente informata; non collaudato l'embed |
+| `haydn-085` | Haydn, Sinfonia n. 45 *Gli addii* (1772) | https://www.youtube.com/watch?v=GMaM6ivx8X8 — Haydn2032, Il Giardino Armonico, Antonini | Ufficiale, prassi storicamente informata; non collaudato l'embed |
+| `vaughanwilliams-086` | Vaughan Williams, *Fantasia on a Theme by Thomas Tallis* (1910) | https://www.youtube.com/watch?v=e6pEIHtffqQ — Philharmonia Orchestra, John Wilson | Canale ufficiale, esecuzione integrale |
+| `holst-087` | Holst, *The Planets*, op. 32 (1914–16) | https://www.youtube.com/watch?v=-WHe7ZqHcXc — Collins Classics, Philharmonia Orchestra, Svetlanov | Integrale d'etichetta, 7 movimenti indicizzati; non confondere titolo astrologico e astronomia |
+| `nielsen-088` | Nielsen, Sinfonia n. 4 *L'inestinguibile* (1914–16) | https://www.youtube.com/watch?v=yXDe1hj4HBo — hr-Sinfonieorchester, Paavo Järvi | Canale orchestra verificato, quattro tempi continui con minutaggi |
+| `ravel-089` | Ravel, *Daphnis et Chloé*, **suite n. 2** (1912) | https://www.youtube.com/watch?v=D5vyw3UWT98 — France Musique concerts, Orchestre national de France, Cristian Măcelaru | Integrale della **suite**, non del balletto completo (esplicitato in scheda) |
+| `ravel-090` | Ravel, *La valse* (1919–20) | https://www.youtube.com/watch?v=y98qMtlEc2k — hr-Sinfonieorchester, Andrés Orozco-Estrada | Canale orchestra verificato, poema coreografico in versione orchestrale |
+
+### Protocollo di interpretazione e riferimenti mancanti
+
+- Il campo facoltativo `practice: "storicamente informata"` etichetta soltanto i tre video di Haydn2032, con annotazione visibile nella scheda. Un nome prestigioso non basta a dichiarare una lettura filologica.
+- Il progetto della Joseph Haydn Foundation Basel è attestato dalle descrizioni del canale Haydn2032. Per l'integrale beethoveniana con Chamber Orchestra of Europe, Harnoncourt dispone di una scheda documentaria nell'archivio scientifico https://nikipedia.harnoncourt.org/data/297103 e nella discografia https://www.harnoncourt.info/en/beethoven-symphonies-nos-1-9-2/ . **La registrazione esiste ma non è stata individuata in formato video integrale ufficiale per ogni sinfonia; non sostituire i nove player esistenti senza fonte fruibile.**
+- **Diego Fasolis:** è documentata l'esecuzione della Sinfonia n. 104 di Haydn in programma con l'Orchestra Filarmonica Nazionale Ungherese (11 novembre 2024): https://www.filharmonikusok.hu/en/koncertek/haydn-asioli-viotti-diego-fasolis/ . **Non è una fonte di streaming.** Mantenere la ricerca, senza attribuirgli registrazioni non presenti.
+- Per distinguere versione e opera, la suite n. 2 di *Daphnis et Chloé* non viene catalogata come integrale del balletto. Per *The Planets* il video Collins Classics include tutti e sette i movimenti.
+- Le nuove opere allargano il repertorio a Danimarca, Gran Bretagna e Francia, e ampliano il Classicismo dalle prime esperienze haydniane alla sinfonia londinese.
+
+### Stato complessivo e limiti di verifica
+- Catalogo dopo l'intervento: **90 opere, 37 autori indicizzati, 87 video YouTube, 2 video esterni RaiPlay, 1 audio esterno Český rozhlas, nessuna scheda senza registrazione documentata**.
+- Audit **statico** su JSON e generazione schede: preservati gli 82 ID preesistenti e il loro ordine relativo, otto ID nuovi e distinti, validità degli ID video (11 caratteri), forme e relazioni coerenti, nessun `autoplay=1`, nessun caricamento video senza clic su «Prepara».
+- **Non effettuato** un test reale di riproduzione Android/desktop: anche i nuovi ID pubblicati dai canali ufficiali potrebbero avere vincoli di embedding non rilevati dal codice.
+- Il video **non disponibile** di *Mazeppa* (`kICGiPcgikk`) è già stato sostituito nel quinto lotto; mantenere aperto l'audit delle altre ripubblicazioni, in particolare Spohr, Raff, Berlioz/Toscanini, Sibelius/Berglund.
