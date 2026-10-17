@@ -40,3 +40,43 @@ Eseguire collaudo reale su Chrome Android e desktop di filtri, miniature, `end` 
 - Nuovo campo `externalVideo` e filtro «Video su piattaforma esterna» distinto da YouTube incorporato, archivio audio esterno e opere senza ascolto. Collegamento direttamente alla fonte istituzionale senza iframe inventati. L'accessibilità reale dipende da RaiPlay e dal territorio: non è stata simulata o dichiarata riproducibilità garantita.
 - Conservato il `Fidelio` come *ponte teatrale*, non come sinfonia. Restano 69 opere, di cui 66 con ID video, 1 con ripresa esterna ufficiale, 1 con audio esterno pubblico e 1 priva di integrale documentata (*Roméo et Juliette*, Berlioz). Aggiornati contatore, filtri, etichette, risultati e documentazione.
 - Test statici: chiavi ID e ordine di 69 record invariati, 66 video ID preservati, tutti gli ID HTML e collegamenti editoriali preservati, sintassi JS verificata, nessun autoplay introdotto. Restano aperti browser/mobile e verifica globale degli embed.
+
+## Quarto lotto — 17 ottobre 2026 · integrale di Berlioz e ampliamento di 13 opere
+
+### Identificazione dell'integrale mancante
+
+- `berlioz-027`, *Roméo et Juliette*, op. 17: **registrazione integrale documentata** del 18 settembre 2014 al Théâtre des Champs-Élysées, Orchestre National de France, **Daniele Gatti**, Marianne Crebassa, Paolo Fanale, Alex Esposito. Pubblicazione del canale verificato **France Musique concerts**, 15 dicembre 2017: https://www.youtube.com/watch?v=zf7kGcB4VSQ . Descrizione ufficiale con sezioni e minutaggi dal prologo al *Serment de réconciliation* (dall'introduzione sino a circa 1:40:20). La scheda passa da «In verifica» a «Video identificato». Forma distinta come **sinfonia drammatica**. Verificata l'identità editoriale del video, **non la riproducibilità dell'iframe su Android/desktop**.
+
+### Nuove 13 schede: fonti istituzionali, integrali delle singole composizioni
+
+Le registrazioni YouTube seguenti risultano pubblicate dal **canale verificato hr-Sinfonieorchester — Frankfurt Radio Symphony**; si tratta di integrali delle opere indicate, salvo il possibile breve ingresso sul palco prima della musica. Le descrizioni del canale riportano interpreti e, per le sinfonie, successione e inizi dei movimenti. Presenza in un canale ufficiale = attribuzione verificata, **non test definitivo dell'embed**.
+
+| ID | Autore e opera | Fonte (ID YouTube o esterno) | Interpreti principali |
+|---|---|---|---|
+| `mendelssohn-070` | Mendelssohn, Quinta «Riforma» | `Yznb4uKr-0E` | hr-Sinfonieorchester, Masaaki Suzuki (2023) |
+| `schumann-071` | Schumann, Seconda | `YD-dluM2gJQ` | hr-Sinfonieorchester, Marek Janowski (2017) |
+| `brahms-072` | Brahms, Seconda | `NjIduF3equQ` | hr-Sinfonieorchester, Marin Alsop (2021) |
+| `dvorak-073` | Dvořák, Settima | `bkJxMs5104Q` | hr-Sinfonieorchester, Andrés Orozco-Estrada (2021) |
+| `dvorak-074` | Dvořák, Ottava | `uOWQQCWTVQ8` | hr-Sinfonieorchester, Ben Gernon (2019) |
+| `saintsaens-075` | Saint-Saëns, Terza con organo | `5GrO47WJKTI` | hr-Sinfonieorchester, Iveta Apkalna, Riccardo Minasi (2020) |
+| `franck-076` | Franck, Sinfonia in re minore | **Video RaiPlay** | Orchestra Sinfonica Nazionale della Rai, Yuri Ahronovitch (41 min) |
+| `richardstrauss-077` | Strauss, *Don Juan* | `BBPZR33LJBk` | hr-Sinfonieorchester, Jader Bignamini (2023) |
+| `richardstrauss-078` | Strauss, *Till Eulenspiegel* | `SS7dy3c8gZM` | hr-Sinfonieorchester, Sebastian Weigle (2024) |
+| `richardstrauss-079` | Strauss, *Eine Alpensinfonie* | `zsTo7QxxgYg` | hr-Sinfonieorchester, Andrés Orozco-Estrada (2016) |
+| `debussy-080` | Debussy, *Prélude à l'après-midi d'un faune* | `8UAYCubihlc` | hr-Sinfonieorchester, Alain Altinoglu (2023) |
+| `debussy-081` | Debussy, *La mer* | `y1hWp4pQpAs` | hr-Sinfonieorchester, Alain Altinoglu (2023) |
+| `dorapejacevic-082` | Dora Pejačević, Sinfonia op. 41 | `dOJSEQZYJWY` | hr-Sinfonieorchester, Jader Bignamini (2023) |
+
+- Per ogni scheda sono riportati crediti, data del concerto e collegamento a un documento ufficiale o al filmato ufficiale.
+- Il video RaiPlay di Franck è documentato alla fonte https://www.raiplay.it/video/2022/12/Franck-Sinfonia-in-re-minore-4cc808d8-b0fa-4582-85e2-3dda4930dc52.html; non è dichiarata la visione territorialmente garantita.
+- Nuove etichette formalmente pertinenti: *sinfonia drammatica*, *preludio orchestrale*, *schizzi sinfonici*. Per *Eine Alpensinfonie* è mantenuto *poema sinfonico*, non una sinfonia classica in quattro movimenti.
+- Le nuove schede ampliano il panorama franco-tedesco e mitteleuropeo anche con **Dora Pejačević**; nessuna registrazione è stata aggiunta sulla sola base della fama del titolo.
+- Riformulata l'etichetta del collegamento video RaiPlay per valere tanto per *Fidelio* quanto per Franck.
+- **Inventario dopo il quarto lotto:** **82 opere, 33 autori/compositori indicizzati, 79 video YouTube identificati, 2 video esterni RaiPlay, 1 archivio audio Český rozhlas, 0 schede senza collegamento documentato**.
+
+### Verifiche tecniche e limiti del quarto lotto
+
+- Controlli del catalogo in memoria prima del commit: 82 ID distinti, ordine relativo di tutti i 69 ID originari invariato, nessun video con ID non conforme a 11 caratteri, tutte le etichette di forme/relazioni risolte, registrazioni con crediti e fonti, controllo dell'assenza di `autoplay=1`.
+- La pagina continua a preparare il player con `autoplay=0` e richiede un secondo gesto per premere Play. Nessun autoplay introdotto.
+- Pagine di riferimento **RaiPlay Fidelio**, **RaiPlay Franck** e **Český rozhlas Rapsodie slave** risultano rintracciabili come pagine editoriali. **Non è stato possibile certificare streaming effettivo, requisiti di login, restrizioni territoriali o percentuale di esito per tutti gli URL.**
+- **Ancora aperto:** test effettivo in Chrome desktop/Android della navigazione ai segnalibri, filtri, tastiera mobile, miniature, riproduzione YouTube, blocco embed, start/end di Smetana e riproduzione in archivi esterni. Non dichiarare come completati gli audit tecnici non eseguiti.
