@@ -13,8 +13,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .hero h1{font:500 clamp(2.75rem,7.8vw,6.8rem)/1.01 var(--serif);letter-spacing:-.045em;max-width:900px;margin:.95rem 0 1.2rem}
 .hero .lead{font:1.22rem/1.65 var(--serif);max-width:790px;color:#e9e7e3}
 .hero .small{font:.87rem/1.6 var(--sans);color:#ddd9d1}
-.hero-metrics{display:flex;gap:1.2rem 2rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.25rem;border-top:1px solid #ffffff4d}
-.hero-metrics strong{font:600 1.9rem var(--serif);color:#fff}.hero-metrics span{display:block;font:.75rem/1.4 var(--sans);color:#d6d5d0}
+
 .nav{position:sticky;top:0;z-index:10;background:#243731f7;color:#fff;border-bottom:2px solid var(--gold);display:flex;gap:.2rem;align-items:center;overflow-x:auto;white-space:nowrap;padding:.52rem max(.8rem,calc((100% - 1220px)/2));font:750 .82rem var(--sans)}
 .nav a{color:#f6f1e8;text-decoration:none;padding:.57rem .8rem;border-radius:3px}.nav a:hover,.nav a:focus-visible{background:#48665a}
 main{max-width:1220px;margin:auto;padding:2rem clamp(1rem,3vw,2rem) 5rem}section{scroll-margin-top:5.5rem}
@@ -58,7 +57,7 @@ main{max-width:1220px;margin:auto;padding:2rem clamp(1rem,3vw,2rem) 5rem}section
 <h1>Dalla sinfonia<br>alla rapsodia</h1>
 <p class="lead">La musica per orchestra attraversa forme, paesaggi, sentimenti, racconti e memorie. Non una marcia inevitabile dalla sinfonia al poema sinfonico: una costellazione di possibilità che convivono e si trasformano.</p>
 <p class="small">Catalogo progressivo · Registrazioni integrali selezionate · Nessun avvio automatico</p>
-<div class="hero-metrics"><div><strong id="count-works">—</strong><span>opere censite nel catalogo</span></div><div><strong id="count-video">—</strong><span>video integrali identificati</span></div><div><strong id="count-external">—</strong><span>opere con video o audio in archivio esterno</span></div><div><strong>9 + 1</strong><span>le sinfonie di Beethoven e l'opera Fidelio</span></div></div></header>
+</header>
 <nav class="nav" aria-label="Navigazione audioteca"><a href="../">⌂ Musurgia Mundi</a><a href="#mappa">Le forme</a><a href="#catalogo">Audioteca</a><a href="#metodo">Metodo e fonti</a><a href="../romanticismo/#programma-evocazione">↗ Romanticismo</a><a href="../concerti/#catalogo">↗ Concerto</a></nav>
 <main>
 <section class="intro" id="mappa"><div class="eyebrow">Il sinfonismo · Una geografia delle forme</div>
@@ -102,8 +101,7 @@ const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 const escape=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const countVideo=works.filter(w=>!!w.video).length;
 const countExternal=works.filter(w=>(!!w.externalAudio||!!w.externalVideo)&&!w.video).length;
-document.getElementById('count-works').textContent=works.length;document.getElementById('count-video').textContent=countVideo;
-document.getElementById('count-external').textContent=countExternal;
+
 const authors=[...new Set(works.map(w=>w.author))].sort((a,b)=>a.localeCompare(b,'it'));
 for(const author of authors){const opt=document.createElement('option');opt.value=author;opt.textContent=author;filters.author.add(opt)}
 for(const [v,label] of Object.entries(model.forms)){const opt=document.createElement('option');opt.value=v;opt.textContent=label;filters.form.add(opt)}
