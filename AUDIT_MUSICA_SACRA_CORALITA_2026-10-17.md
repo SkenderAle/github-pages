@@ -223,3 +223,16 @@ La rilettura dell'HTML appena pubblicato ha permesso di correggere tre raccordi 
 Interventi in prose e collegamenti editoriali, senza catalogo autonomo: l'obiettivo è confrontare **forme, testi, organici, luogo d'uso, testimonianze e revisioni**, distinguendo liturgia, devozione e concerto. Una registrazione moderna non viene presentata come identica alla prassi originaria solo perché impiega un direttore autorevole. Nessun ID YouTube inventato, nessun video incorporato, nessun ascolto in autoplay.
 
 **Controlli statici pre-commit:** presenza univoca dei punti di inserimento, struttura degli ID e conteggio delle schede / iframe, assenza di nuove istruzioni JS, continuità dell'inserto `#castrati` e registro aggiornato. **Nessun collaudo browser reale, smartphone o playback audio**. Le singole fonti sono state individuate attraverso cataloghi e documentazione istituzionale; l'accessibilità effettiva dei link può variare nel tempo.
+
+## Raccordo editoriale dopo il nono lotto — 17 ottobre 2026 · dal gesto al discorso
+
+**Ambito distinto dal gigaudit sacro:** contributo trasversale al racconto storico richiesto dall'autore durante la prosecuzione del lavoro. Il principio di continuità fra Barocco e Classicismo non si lascia esaurire dal contrasto tra stucchi ed equilibrio neoclassico.
+
+- **`barocco/#classicismo`:** ampliata la cerniera esistente con tre paragrafi argomentati su unità del dramma, giudizio sull'episodio rispetto all'intero, riforme teatrali non monopolizzate da Gluck, nuova attenzione alla memoria e al tempo dell'ascoltatore; rapporto non teleologico fra `Empfindsamer Stil`, `Sturm und Drang` e interrogazione romantica dell'interiorità. Ritoccata la domanda conclusiva, non creato un capitolo né spostate le sezioni.
+- **`classicismo/#fuoco`:** reso esplicito il rapporto fra attesa, conseguenza del gesto musicale, memoria, equilibrio e inquietudine; corretta la formulazione su Haydn per evitare che `Sturm und Drang` appaia un movimento musicale unitario.
+- **`classicismo/#teatro`:** titolo reso meno oppositivo verso il Barocco; callout sulla riforma Gluck-Calzabigi corretto come critica a determinate convenzioni operistiche, nel contesto di tradizioni francesi e precedenti italiani.
+- **Fonti:** `Gluck-Gesamtausgabe`, https://www.gluck-gesamtausgabe.de/gwv/werkregister/eintrag/work-62.html ; James Webster, `Haydn Studies` (Cambridge University Press), https://www.cambridge.org/core/books/abs/haydn-studies/haydns-symphonies-between-sturm-und-drang-and-classical-style-art-and-entertainment/C0C07C7B659697C3A750A6B0821E25E2 .
+
+**Principio filologico:** il Barocco già conosceva forme e costruzioni unitarie; non si racconta il Classicismo come invenzione del discorso né il Romanticismo come esito necessario dello stile sensibile. La riforma gluckiana resta sviluppata nella sezione teatrale del Classicismo; nessuna attribuzione o versione discografica aggiunta.
+
+**Salvaguardie:** nessun video, iframe, elemento autoplay o script modificato; gli ID esistenti e `#castrati` rimangono immutati. Controlli sulla struttura e sui testi pubblicati effettuati sul codice; non prove di riproduzione o di resa browser.
