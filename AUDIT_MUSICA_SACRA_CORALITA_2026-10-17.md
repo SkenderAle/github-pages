@@ -301,3 +301,36 @@ Interventi in prose e collegamenti editoriali, senza catalogo autonomo: l'obiett
 **Metodo di inserimento:** paragrafi all'interno delle prose adulte già scritte, senza introdurre nuove attività scolastiche o spostare `#castrati`. Collegamenti a fonti editoriali e documentarie, non a player non verificati. **HIP** significa qui distinguere edizioni, fonti, organici e ambienti, non proclamare «autenticità» sulla base del nome del direttore.
 
 **Audit statico:** verificati gli ancoraggi d'inserimento univoci, conteggi immutati di ID, sezioni, script, iframe, video e autoplay; contenuti riletti dal commit pubblicato. Playback e resa mobile non verificati in un browser reale.
+
+## Tredicesimo lotto — 17 ottobre 2026 · voci di festa, cerimonia e nazione
+
+**Repository:** `SkenderAle/github-pages`, `main`. **HEAD pre-intervento:** `0b04127bb1551be8cedb4b81f919192dced5ce05`. Undici interventi sostanziali, quattro pagine storiche più il registro. Il filo è il soggetto sociale del canto: una comunità che canta in prima persona, una voce collettiva che la rappresenta e i professionisti che cantano in una cerimonia per un'autorità sono realtà differenti.
+
+### Rinascimento · dal canto in piazza alla riappropriazione religiosa
+
+1. **Firenze, canto carnascialesco:** gruppi di interpreti, mascherate, cortei e carri all'aperto; la Canzone de' confortini e l'immagine di tre adulti più due ragazzi non equivalgono a una fotografia di ogni organico. Treccani: https://www.treccani.it/enciclopedia/i-canti-carnascialeschi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/.
+2. **Savonarola e cantasi come:** riuso di canti e melodie profane per laudi, distinzione fra melodia socialmente riconosciuta e destino frammentario delle fonti musicali dopo i falò; fonte Treccani https://www.treccani.it/enciclopedia/philippe-verdelot_%28Enciclopedia-machiavelliana%29/.
+
+### Barocco · sacro e potere politico
+
+3. **Händel, Utrecht Te Deum HWV 278:** St Paul's Londra, 7 luglio 1713, celebrazione politica di pace con parole liturgiche inglesi; organico e cautele strumentali dalla Halle Handel Edition/Bärenreiter BA 4246 https://www.barenreiter.co.uk/utrecht-te-deum-hwv-278-full-score.html; registrazione identificata e senza player Hyperion/St Paul's https://www.hyperion-records.co.uk/dw.asp?dc=W9412_67009.
+4. **Händel, Zadok the Priest HWV 258:** incoronazione di Giorgio II 1727, funzione del coro e del preludio orchestrale nel rito dell'unzione, continuità esecutiva fino al 2023 ma non identità di organici; Westminster Abbey https://www.westminster-abbey.org/history/coronations-at-the-abbey/spotlight-on-coronations/music; ordine ufficiale https://www.royal.uk/news-and-activity/2023-05-06/the-coronation-service-order-of-service.
+
+### Classicismo · il canto pubblico della Rivoluzione francese
+
+5. **Méhul / Chénier, Chant du départ:** inno del 1794, voci sociali del testo, ritornello, coro e orchestra di fiati nella scheda ufficiale BnF, con prima all'Académie nationale de musique il 29 settembre; https://catalogue.bnf.fr/ark:/12148/cb13916090k.
+6. **Gossec, Offrande à la liberté:** stampa Imbault 1792, recitativi, cori, ampia orchestra, Marche des Marseillois e Veillons; fonte BnF https://catalogue.bnf.fr/ark:/12148/cb397851270. **Non identificare** l'Offrande con l'ascolto preesistente del `Triomphe de la République` di Gossec: sono opere diverse, e nessun lettore è stato modificato.
+
+### Romanticismo · società corali, genere e ideologia
+
+7. **Liedervereine / società maschili:** Nägeli nel 1819–20, istituzioni, formazione e raduni transregionali; esplicitati limiti di partecipazione femminile e sociale, Cambridge University Press https://www.cambridge.org/core/books/charismatic-nations/in-tune/A920C8C0DAD622B023779D4ABAC1BEF0.
+8. **Schubert, Gesang der Geister D714:** autografo dicembre 1820, rifacimento febbraio 1821 per doppio coro maschile a otto voci e archi gravi; storia sociale del coro non equivale a propaganda patriottica. Fonti Schubert online https://schubert-online.at/activpage/werke_einzelansicht.php?herkunft=gattung_einzelansicht&lang=E&top=1&werke_id=10129 e https://schubert-online.at/activpage/werke_einzelansicht.php?top=1&werke_id=481.
+9. **Mameli/Novaro e Verdi:** canto del 1847, uso risorgimentale, confronto con `Inno popolare` (1848, tre voci maschili a cappella) e `Inno delle nazioni` (1862, tenore, coro, orchestra; citazioni simboliche di tre inni nazionali); Quirinale https://new.quirinale.it/page/inno ; edizione Ricordi curata da Roberta Montemorra Marvin https://www.ricordi.com/it-IT/Critical-Editions/Verdi-Giuseppe-Critical-Editions/Verdi-Giuseppe-WGV/Verdi-Hymns.aspx.
+10. **Brahms, Triumphlied op. 55:** Apocalisse usata in celebrazione nazionale dopo la guerra franco-prussiana; doppio coro/orchestra, autografi, stampa 1872 e recupero dei materiali della prima versione nel 2012. Brahms-Institut https://brahmsinstitut.de/Archiv/web/bihl_digital/jb_werkekatalog/op_055.html e Università di Brema https://www.uni-bremen.de/institut-fuer-musikwissenschaft-und-musikpaedagogik/forschung/historische-musikwissenschaft/brahms-bremer-triumphlied-in-c-dur.
+11. **Verdi, Va pensiero:** distinto il mito del bis alla prima scaligera da `Immenso Jehova` e dalla ricezione nazionale successiva; Roger Parker e ricostruzione documentaria in UC Press https://content.ucpress.edu/title/9780520276253/9780520276253_chapter_one.pdf, Treccani https://www.treccani.it/enciclopedia/giuseppe-verdi_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/.
+
+### Filologia e controlli
+
+Nessun capitolo autonomo, voce di menu o esercizio adulto trasformato in gioco. Le aggiunte narrano i rapporti fra testo, contesto civile, organico, fonti editoriali e funzione dei cori. Il nome di un interprete non dà automaticamente una certificazione HIP. **Nessun nuovo video né ID YouTube aggiunto**.
+
+Prima del commit: ancoraggi di paragrafo univoci, confronto degli ID HTML, script, iframe, `data-video`, autoplay e sezioni; mantenuto l'inserto `#castrati`. Dopo il commit: lettura GitHub su `main`. I controlli sono statici e non comprendono un test di playback su browser/Android.
