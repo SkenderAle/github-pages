@@ -41,7 +41,7 @@
    const href=a.getAttribute("href")||"";
    if(!href.startsWith("#")||exclude.has(href.slice(1)))return;
    chapterNumber++;
-   const title=a.textContent.trim().replace(/^\\d{1,2}\\s*[·.\\-–]?\\s*/,"");
+   const title=a.textContent.trim().replace(/^[0-9]{1,2}[ .·–-]*/,"");
    a.textContent=String(chapterNumber).padStart(2,"0")+" · "+title;
   });
   const other=links.filter(a=>a!==home),half=Math.ceil(other.length/2);
