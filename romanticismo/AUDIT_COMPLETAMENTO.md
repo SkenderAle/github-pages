@@ -196,3 +196,9 @@ Commit del lotto: [`732da623`](https://github.com/SkenderAle/github-pages/commit
 - Negli altri percorsi viene incluso il componente comune senza riscrivere i controlli specializzati già dotati di apertura differita; non si afferma che ogni player preesistente sia stato trasformato.
 - Nessun video parte automaticamente per effetto del componente; anche dopo il clic sull'anteprima il parametro `autoplay=0` richiede Play nel video.
 - **Verifiche statiche:** in tutte le pagine integrate ID e `href` già presenti invariati; CSS/JS condivisi inclusi; sintassi JS controllata; nessun URL video modificato salvo la disattivazione del `src` iniziale degli iframe migrati. Restano da provare in browser e Android la resa visiva, le connessioni esterne, gli eventuali altri sistemi audiovisivi e l'arresto simultaneo dei player specializzati.
+
+### Nota analitica mirata — 17 ottobre 2026 · Beethoven, Quinta sinfonia (primo movimento)
+
+Nel capitolo 1 (`#rivoluzione`) precisata l'osservazione sul motto ritmico del primo movimento della Quinta: inciso di tre suoni brevi e uno lungo, richiamo nella chiamata dei corni e permanenza nell'accompagnamento dei violoncelli e contrabbassi durante il secondo gruppo tematico in mi bemolle maggiore. Descritto come **memoria ritmica tenace** anziché ostinato rigoroso o eliminazione della contrapposizione tematica. Distinta la coesione motivica dalla forma-sonata intesa come presunta alternativa fra temi impermeabili: Haydn e Mozart già adottavano esposizioni con materiale tematico condiviso. Inserite fonti dirette di approfondimento (guida analitica alla Quinta e San Francisco Conservatory). 
+
+**Audit statico:** 14 capitoli; 199 ID HTML invariati e univoci; link preesistenti e ancoraggi preservati; script/CSS e lettori invariati; solo testo musicologico e due fonti esterne aggiunti. Restano aperti i collaudi audiovisivi e mobile precedentemente registrati.
