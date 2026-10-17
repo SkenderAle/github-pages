@@ -256,3 +256,30 @@ Interventi in prose e collegamenti editoriali, senza catalogo autonomo: l'obiett
 **Criterio editoriale.** I confronti compaiono accanto a opere già introdotte nelle rispettive pagine. La lezione scolastica rimane negli spazi «Per iniziare» già predisposti: nessun esercizio elementare introdotto nel testo adulto. Conservate le registrazioni esistenti, aggiunti soltanto rimandi istituzionali e alla partitura, senza inventare nuovi identificativi audiovisivi.
 
 **Limiti e controlli statici.** Controllati ancoraggi univoci di inserimento, invarianza di ID HTML, script, iframe, `data-video`, `autoplay`, nuove sezioni e presenza di `#castrati`; lettura della versione GitHub dopo la pubblicazione. Nessun collaudo di riproduzione reale o rendering mobile/Android dichiarato.
+
+## Undicesimo lotto — 17 ottobre 2026 · dal numero vocale all'arco narrativo e meditativo
+
+**Branch di lavoro:** `main` (HEAD precedente `57556d1be172df5a08f1dd0a5cc231265f580e37`). Il lotto riprende il gigaudit sacro e corale, con un confronto fra cinque generazioni e senza disporle in una genealogia teleologica. **Dieci integrazioni nei capitoli già esistenti, nessuna sezione o audioteca autonoma.**
+
+### Barocco — il coro può narrare, commentare o collegare testi separati
+
+1. **Bach BWV 244**, il doppio coro e la doppia orchestra come dispositivo di narrazione/meditazione, corale dei soprani in ripieno, contesto del Venerdì santo e questione del numero effettivo di cantori; catalogo https://bach.de/werk/bwv/244.html.
+2. **Bach BWV 245**, la revisione 1725 dell'apertura `Herr, unser Herrscher` con `O Mensch, bewein dein Sünde groß`, poi riutilizzato in BWV 244; distinzione fra le riprese e la scelta editoriale esplicita della Netherlands Bach Society: https://www.bachvereniging.nl/en/bwv/bwv-245 e https://www.bach.de/werk/bwv/245.html.
+3. **Händel `Messiah` HWV 56**, la costruzione di un arco in tre parti da testi selezionati da Jennens, senza trama operistica; `Hallelujah` alla fine della parte II, `Amen` al termine del lavoro; fonte primaria il libretto della prima di Dublino https://foundlingmuseum.org.uk/object/messiah-libretto-2/ e catalogo https://gfhandel.org/handel/worklist/43to100.html.
+4. **Messiah e Foundling Hospital**, la prima al Foundling dell'1 maggio 1750 e la copia di partitura e parti lasciata dal compositore nel codicillo testamentario del 1757. I due documenti non autorizzano a identificare ogni ripresa successiva con lo stesso organico e testo: https://foundlingmuseum.org.uk/fact/fact-5/ e https://foundlingmuseum.org.uk/object/belongings-handels-will/.
+
+### Classicismo — il coro rende percepibile una successione
+
+5. **Haydn `Die Schöpfung`**, rapporto fra `Die Vorstellung des Chaos`, parola narrata e improvvisa irruzione di `Es werde Licht`; edizione Carus con testo originale, https://www.carus-verlag.com/en/music-scores-and-recordings/joseph-haydn-die-schoepfung-5199004.html.
+6. **Haydn `Die Jahreszeiten`**, van Swieten e Thomson; tempo ciclico della natura e mondo sociale delle voci contadine; edizione Carus basata sulle parti delle prime esecuzioni e sulla stampa del 1802: https://www.carus-verlag.com/en/music-scores-and-recordings/joseph-haydn-die-jahreszeiten-5198003010000.html.
+7. **Beethoven Nona op. 125**, recitativi di violoncelli e contrabbassi, ricordi dai precedenti movimenti, tema prima strumentale e poi ingresso del coro; il Beethoven-Haus conserva le parti supplementari autografe dei tromboni e distingue gli stati testuali: https://www.beethoven.de/en/work/view/5556714292117504/ e https://www.beethoven.de/en/media/view/5626809903218688/scan/1.
+
+### Romanticismo — la memoria del coro è anche storia della sua ricezione
+
+8. **Mendelssohn / Bach 1829**, l'esecuzione della `Passione secondo Matteo` alla Singakademie di Berlino fu ridotta e adattata: otto libri di parti corali superstiti alla British Library (Add MS 47839 A–H), https://searcharchives.bl.uk/catalog/032-002104229 e documentazione Library of Congress https://www.loc.gov/collections/felix-mendelssohn/articles-and-essays/felix-mendelssohn-reviving-the-works-of-bach/. La riscoperta romantica è parte della storia dell'esecuzione, non un evento sonoro identico al 1736.
+9. **Brahms `Ein deutsches Requiem` op. 45**, disegno delle beatitudini dal primo al settimo movimento, differenza fra la versione a sei movimenti eseguita nel 1868 e il ciclo a sette del 1869; BSO https://www.bso.org/works/a-german-requiem e GHDI https://germanhistorydocs.org/de/reichsgruendung-bismarcks-deutschland-1866-1890/johannes-brahms-ein-deutsches-requiem-opus-45-1868.
+10. **Mahler Seconda**, il passaggio da tre movimenti strumentali a `Urlicht` e al Finale con coro, testo da Klopstock rielaborato, ricostruzione cronologica e problema degli autografi; Mahler Foundation https://www.mahlerfoundation.org/mahler/compositions/symphony-no-2/symphony-no-2-introduction/ e Mahler Catalogue https://www.mahlercat.org.uk/Pages/Symph2/Texts.htm.
+
+**Principio editoriale:** unità dell'opera non significa un'unica forma, un'unica disposizione del testo né un'origine esecutiva univoca. Nessuna registrazione classificata HIP solo dal nome del direttore. I link nuovi conducono a istituzioni, cataloghi e fonti primarie: non è aggiunto un video non verificato.
+
+**Verifiche effettuate:** testo per ancoraggi univoci, immutabilità di script, ID, iframe, dati dei video e quantità di sezioni, mantenimento di `#castrati` e commit atomico. Nessuna prova riproduzione effettiva / Android e nessuna promessa di collaudo browser.
