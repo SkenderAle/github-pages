@@ -243,3 +243,7 @@ Aggiunti senza alterare i quattordici capitoli del Romanticismo: la produzione s
 
 ## Gigaudit sulla coralità · Quarto lotto, 17 ottobre 2026
 La coralità del Romanticismo ora comprende i mottetti a cappella op. 74 di Brahms e la tradizione sinagogale viennese con Sulzer e il Salmo 92 D. 953 di Schubert. Il Barocco ha ricollocato l'inserto sui castrati dopo il laboratorio sulle trame vocali, come richiesto. Registro integrale in `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`.
+
+## Gigaudit sacro · Quinto lotto, 17 ottobre 2026
+
+Rafforzato il criterio HIP per la musica sacra romantica: Fauré (redazioni e organici), Rossini (originale con tastiere e versione orchestrale), Brahms op. 74 (coro a cappella e storia esecutiva). Due integrali HIP del progetto ufficiale All of Bach pubblicati nella pagina Barocco: Magnificat BWV 243 (redazione 1733) e Jesu, meine Freude BWV 227, con crediti e avvertenze filologiche. Fonte per BWV 225 aggiunta senza video non verificato. Registro centralizzato `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`.

@@ -117,3 +117,25 @@
 | Romanticismo | Salomon Sulzer, Schubert: Salmo 92 D. 953 in ebraico (1828); storia della coralità sinagogale e varianti delle fonti | https://www.cambridge.org/core/journals/nineteenth-century-music-review/article/abs/new-source-for-schuberts-hebrew-psalm-92-d-953/A4C2015363B0EF201BBE901F4CCFEE47 · https://www.jewishchoralmusic.com/composers-bios/salomon-sulzer |
 
 **Controlli statici:** tutti gli ID delle sezioni presenti e univoci; unico spostamento d'ordine per `castrati` e `castrati-title`; indici originali e quattordici capitoli Romanticismo non modificati; nessun player audio aggiunto; JS identico; nessun autoplay. I nuovi link sono documentari; riproducibilità di eventuali ascolti futuri ancora da verificare. Prova reale mobile/desktop dell'inserto ancora aperta.
+
+## Quinto lotto — 17 ottobre 2026 · primi ascolti della coralità con prassi storicamente informata
+
+### Criterio di qualità richiesto dall'autore: HIP e filologia
+Priorità alle fonti istituzionali, agli ensemble documentati e alle versioni correttamente attribuite, non all'inserimento del maggior numero possibile di video. Distinti esplicitamente: testimonianze storiche, edizioni e versioni, scelta moderna dell'organico, tracciabilità del video, incorporabilità nel browser. **Una registrazione storicamente informata resta un'interpretazione, non un fonografo del 1723.**
+
+### Due nuovi ascolti completi nella pagina Barocco, nella sezione vocale sacra
+1. **J. S. Bach, *Magnificat* in re maggiore BWV 243 (1733)**. Netherlands Bach Society, **Jos van Veldhoven**, soprani Julia Doyle/Hana Blažíková, alto Maarten Engeltjes, tenore Thomas Hobbs, basso Christian Immler, registrata **2 maggio 2014** alla Grote Kerk, Naarden. Canale YouTube ufficiale https://www.youtube.com/watch?v=EsUWG2axB3w ; fonte dell'ensemble https://www.bachvereniging.nl/en/bwv/bwv-243 ; **integrale in 12 sezioni** con indici ufficiali dei cori 0:00, 8:13, 15:29, 26:16. **Importante:** la redazione originale in mi bemolle, BWV 243a, risale al Natale 1723 e include interpolazioni; la registrazione è della revisione in re maggiore.
+2. **J. S. Bach, *Jesu, meine Freude* BWV 227**. Netherlands Bach Society, **Christoph Prégardien**, registrata **28 febbraio 2019**, Grote Kerk, Alkmaar. Canale YouTube ufficiale https://www.youtube.com/watch?v=uN5Tt7SAhzg ; fonte del progetto https://www.bachvereniging.nl/en/bwv/bwv-227 ; integrale **11 sezioni**, centro «Ihr aber seid nicht fleischlich» 8:12. Destinazione storica non documentata con certezza, prassi della cappella e numero di cantori non deducibili automaticamente dalla registrazione.
+3. **J. S. Bach, *Singet dem Herrn* BWV 225**, doppio coro. È stata aggiunta la **fonte istituzionale di All of Bach** https://www.bachvereniging.nl/en/bwv/bwv-225 , interpreti Netherlands Bach Society, Stephan MacLeod. **Nessun identificativo YouTube inventato**.
+
+La Netherlands Bach Society dichiara di usare strumenti storici e documenta tutte le registrazioni: https://www.bachvereniging.nl/en/biography . Le due nuove schede usano il medesimo sistema di iframe `data-mm-preview-src` già esistente nel Barocco, che rimane senza autoplay; è disponibile il link diretto come alternativa.
+
+### Altri raccordi editoriali (senza aggiungere video)
+- `rinascimento/`: autenticità del video <i>Exultate Deo</i> di Palestrina pubblicato dal canale ufficiale <strong>Stile Antico</strong> https://www.youtube.com/watch?v=K38ZfTu0DxE . Documentazione dell'interprete **non significa** ricostruzione certa dell'organico della cappella papale.
+- `classicismo/`: la Grande Messa K. 427 è incompleta e richiede documentazione di completamenti ed edizioni; discografia Gardiner/Monteverdi Choir/English Baroque Soloists 1986: https://natlib.govt.nz/records/21054517 . **L'identità fra album e video già presente non è stata certificata**.
+- `romanticismo/`: la filologia si applica anche alle diverse redazioni del Requiem di Fauré, alle versioni della Petite messe solennelle di Rossini e alla prassi corale dei mottetti op. 74 di Brahms. Non attribuire automaticamente l'etichetta HIP a qualsiasi coro moderno o a una registrazione di grande qualità.
+
+### Verifiche e limiti del quinto lotto
+- Nessuna nuova pagina o capitolo; nessun indice alterato; nessun JS modificato; due nuovi iframe disattivati fino all'interazione del lettore, secondo il sistema già presente.
+- Test statici su JSON/JS/ID, collegamenti interni, divieto autoplay, identità degli URL e traccia discografica.
+- **Non è stato ancora effettuato** un test di play/embedding in Chrome Android o nel browser desktop. Non sostenere che tutti i video funzionino finché non sono stati effettivamente aperti.
