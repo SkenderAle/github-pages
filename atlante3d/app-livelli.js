@@ -67,7 +67,40 @@ const RELATION_STYLE={
  storia:{from:"#9db7ca",to:"#d7e1e8",arrow:false,label:"relazione storica"}
 };
 function relationStyle(e){return RELATION_STYLE[e.group]||RELATION_STYLE.storia;}
-function relationVerb(e){return e.forward||e.kind||"relazione documentata";}
+// Le relazioni documentate hanno DUE verbi: ciascuno e' riferito a un soggetto preciso.
+// Per le relazioni storiche generiche non si inferiscono maestro, allievo o causalita'.
+function relationSentence(e,perspectiveId=null){
+ const a=e.a?.label||byId.get(e.source)?.label||e.source;
+ const b=e.b?.label||byId.get(e.target)?.label||e.target;
+ const reversed=perspectiveId!=null&&perspectiveId===e.target;
+ const subject=reversed?b:a,object=reversed?a:b;
+ const verb=reversed?e.reverse:e.forward;
+ if(typeof verb==="string"&&verb.trim()){
+  const fragment=verb.trim().replace(/^([A-ZÀ-ÖØ-Þ])/,c=>c.toLocaleLowerCase("it"));
+  const separator=/['’]$/.test(fragment)?"":" ";
+  return subject+" "+fragment+separator+object+".";
+ }
+ // Legami del grafo di base: etichette descrittive, non deduzioni biografiche.
+ switch(e.kind){
+  case "appartenenza":
+  case "appartenenza-storica":
+  case "appartenenza-tematica":
+   return reversed?subject+" è un contesto storico o tematico a cui è collegato "+object+".":subject+" è collegato al contesto di "+object+".";
+  case "ambito-geografico":
+  case "origine-biografica":
+   return reversed?subject+" è un riferimento geografico per "+object+".":subject+" è collegato geograficamente a "+object+".";
+  case "inquadramento-storico":
+  case "corrente-nel-periodo":
+   return reversed?subject+" è il contesto storico nel quale si colloca "+object+".":subject+" si colloca nel contesto storico di "+object+".";
+  case "relazione-storico-musicale":
+  case "connessione-storico-artistica":
+   return subject+" è collegato storicamente a "+object+".";
+  case "maestro-allievo":
+   return reversed?subject+" fu allievo di "+object+".":subject+" fu maestro di "+object+".";
+  default:
+   return subject+" e "+object+" sono collegati da una relazione di "+String(e.kind||"natura storica da approfondire").replace(/-/g," ")+".";
+ }
+}
 function dedupeEdges(list){const seen=new Set();return list.filter(e=>{const k=e.id||[e.source,e.target,e.group||"",e.kind||""].join("|");if(seen.has(k))return false;seen.add(k);return true;});}
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
@@ -479,7 +512,7 @@ function showRelation(e){
  const dst=document.getElementById("panelContent"),box=document.createElement("section");
  box.className="lens-explanation";
  const h=document.createElement("h3");h.textContent="Perché sono collegati?";
- const names=document.createElement("strong");{const s=relationStyle(e);names.textContent=e.a.label+(s.arrow?" → ":" ↔ ")+e.b.label+" · "+relationVerb(e);}
+ const names=document.createElement("strong");names.textContent=relationSentence(e,selected?.id);
  const p=document.createElement("p");p.textContent=e.note||"Relazione da approfondire.";
  box.append(h,names,p);
  const foot=document.createElement("div");foot.className="lens-sources";
@@ -804,7 +837,7 @@ function populate(n){
  for(const {e,n:other} of conn){
   const item=document.createElement("article");item.className="lens-relation-item";
   const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
-  const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=(n.id===e.source?e.forward:e.reverse)||e.kind||"relazione";
+  const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=relationSentence(e,n.id);
   const p=document.createElement("p");p.textContent=e.note||"Relazione documentata.";item.append(b,kind,p);
   const why=document.createElement("button");why.type="button";why.className="lens-why";why.textContent="Perché sono collegati? · fonti ↗";why.addEventListener("click",()=>showRelation(e));item.append(why);box.append(item);
  }dst.append(box);
@@ -861,7 +894,7 @@ canvas.addEventListener("pointermove",e=>{
  const pt=pointer(e);
  if(!drag){
   hover=hit(pt)?.node||null;const edge=!hover?lineHit(pt):null;canvas.style.cursor=hover||edge?"pointer":"grab";
-  if(relationTooltip){relationTooltip.hidden=!edge;if(edge){const s=relationStyle(edge);relationTooltip.textContent=edge.a.label+(s.arrow?" → ":" ↔ ")+edge.b.label+" · "+relationVerb(edge);relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-285))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-65))+"px";}}
+  if(relationTooltip){relationTooltip.hidden=!edge;if(edge){relationTooltip.textContent=relationSentence(edge,selected?.id);relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-285))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-95))+"px";}}
   return;
  }
  const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;
