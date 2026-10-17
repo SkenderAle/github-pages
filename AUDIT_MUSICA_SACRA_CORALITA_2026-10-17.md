@@ -95,3 +95,25 @@
 **Decisioni formali:** l'inserto dei castrati non è un'attività scolastica «Per iniziare», non ha multimedia automatico, possiede documentazione immediatamente accessibile e collegamenti al Barocco e al Classicismo. Nessuna nuova pagina, nessun capitolo, nessuna registrazione inventata o contrassegnata come collaudata. Il contenuto del catalogo sinfonico non è stato modificato.
 
 **Verifiche da completare:** eventuale ascolto storico di Moreschi va inserito solo con fonte archivistica riproducibile e contesto filologico: le sue incisioni non possono sostituire una registrazione delle arie di Farinelli. Test browser effettivi dell'inserto e layout responsive non ancora eseguiti.
+
+## Quarto lotto — 17 ottobre 2026 · canto quotidiano, istituzioni e collocazione dell'inserto
+
+**Correzione d'impaginazione richiesta dall'autore:** spostato l'intero inserto `barocco/#castrati` da prima di «Chi sta davanti e chi parla insieme?» a **immediatamente dopo** il laboratorio «Senti la differenza · Prima riconosci la trama, poi impari il nome». Nuova successione: spiegazione dei due filoni → «Per iniziare» → laboratorio in tre ascolti → inserto storico castrati → basso continuo. L'identificativo `#castrati` e le fonti sono rimasti identici. Non sono stati modificati gli script.
+
+### Integrazioni nel racconto già esistente
+
+| Periodo | Interventi | Fonti |
+|---|---|---|
+| Rinascimento | Stampa musicale diversa da testimonianza di prassi; canto piano, organo e cappelle | Distinzione metodologica |
+| Rinascimento | Fondazione corale di Magdalen College, Oxford, e statuti 1480 | https://www.magd.ox.ac.uk/chapel-and-choir/the-choir/ |
+| Rinascimento | Giovanni Animuccia, laudi 1563 e 1570, Filippo Neri; differenza fra culto e devozione | https://www.treccani.it/enciclopedia/giovanni-animuccia_%28Dizionario-Biografico%29/ |
+| Rinascimento | Documenti sul calendario d'uso dei cori spezzati a San Marco | https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5 |
+| Barocco | Dalle laudi romane all'oratorio secentesco, non evoluzione automatica in «opera senza scene» | https://www.treccani.it/enciclopedia/oratorio_%28Enciclopedia-Italiana%29/ |
+| Barocco | Bach, Thomanerchor: scuole, prove, cantori, parti e obblighi cittadini | https://www.bachmuseumleipzig.de/en/node/41458 |
+| Barocco | Motetti BWV 225–230 e differenza fra voci notate e cantori presenti | Analisi organici: ancora da approfondire per ciascuna opera |
+| Classicismo | William Billings, New England e `The New-England Psalm-Singer` (1770) | https://guides.loc.gov/early-american-sacred-music · https://www.colonialsociety.org/publications/3321/introduction |
+| Classicismo | Comunità di canto americana e cappelle di corte, due istituzioni diverse | Confronto critico |
+| Romanticismo | Brahms: mottetti op. 74 a cappella, fonti e loro funzione | https://brahmsinstitut.de/Archiv/web/bihl_digital/jb_werkekatalog/op_074.html |
+| Romanticismo | Salomon Sulzer, Schubert: Salmo 92 D. 953 in ebraico (1828); storia della coralità sinagogale e varianti delle fonti | https://www.cambridge.org/core/journals/nineteenth-century-music-review/article/abs/new-source-for-schuberts-hebrew-psalm-92-d-953/A4C2015363B0EF201BBE901F4CCFEE47 · https://www.jewishchoralmusic.com/composers-bios/salomon-sulzer |
+
+**Controlli statici:** tutti gli ID delle sezioni presenti e univoci; unico spostamento d'ordine per `castrati` e `castrati-title`; indici originali e quattordici capitoli Romanticismo non modificati; nessun player audio aggiunto; JS identico; nessun autoplay. I nuovi link sono documentari; riproducibilità di eventuali ascolti futuri ancora da verificare. Prova reale mobile/desktop dell'inserto ancora aperta.

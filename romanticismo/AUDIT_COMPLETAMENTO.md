@@ -240,3 +240,6 @@ Aggiunti senza alterare i quattordici capitoli del Romanticismo: la produzione s
 ## Gigaudit · Terzo lotto, 17 ottobre 2026
 
 È stata approfondita la coralità inglese dell'Evensong con Stanford nella trattazione storica delle scuole nazionali, distinguendola dall'oratorio da concerto. Nuovo inserto Barocco sui castrati, con raccordi al ruolo di Orfeo in Gluck e di Idamante in Mozart nel Classicismo. Scheda metodologica nel registro `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`.
+
+## Gigaudit sulla coralità · Quarto lotto, 17 ottobre 2026
+La coralità del Romanticismo ora comprende i mottetti a cappella op. 74 di Brahms e la tradizione sinagogale viennese con Sulzer e il Salmo 92 D. 953 di Schubert. Il Barocco ha ricollocato l'inserto sui castrati dopo il laboratorio sulle trame vocali, come richiesto. Registro integrale in `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`.
