@@ -33,3 +33,10 @@ Eseguire collaudo reale su Chrome Android e desktop di filtri, miniature, `end` 
 **Stato cumulativo:** 69 opere · 66 video con identificativo valido e crediti dichiarati · 1 ascolto esterno (Radio Ceca) · 2 opere prive di video documentato (Fidelio integrale e Berlioz, Roméo et Juliette).
 
 **Audit aperto:** il test riproducibilità/embedding dei video e la verifica dettagliata delle registrazioni caricate da terzi sono ancora da svolgere in browser. In particolare, i due video aggiunti in questo lotto non sono presentati come pubblicazioni dell'emittente o dell'orchestra.
+
+## Terzo lotto — 17 ottobre 2026 · *Fidelio* integrale da RaiPlay
+
+- `beethoven-014`: opera integrale in una ripresa ufficiale (132 minuti, 2016), Orchestra e Coro dell'Accademia Nazionale di Santa Cecilia, Antonio Pappano, Simon O'Neill e Rachel Willis-Sørensen, come descritta dalla scheda RaiPlay: https://www.raiplay.it/video/2016/10/CONCERTO-APERTURA-SANTA-CECILIA-FIDELIO-eb384266-73d5-4f26-959d-667458e05631.html . Non è stata usata la ripresa OperaVision, che dichiarava una finestra di streaming terminata il 3 ottobre 2026.
+- Nuovo campo `externalVideo` e filtro «Video su piattaforma esterna» distinto da YouTube incorporato, archivio audio esterno e opere senza ascolto. Collegamento direttamente alla fonte istituzionale senza iframe inventati. L'accessibilità reale dipende da RaiPlay e dal territorio: non è stata simulata o dichiarata riproducibilità garantita.
+- Conservato il `Fidelio` come *ponte teatrale*, non come sinfonia. Restano 69 opere, di cui 66 con ID video, 1 con ripresa esterna ufficiale, 1 con audio esterno pubblico e 1 priva di integrale documentata (*Roméo et Juliette*, Berlioz). Aggiornati contatore, filtri, etichette, risultati e documentazione.
+- Test statici: chiavi ID e ordine di 69 record invariati, 66 video ID preservati, tutti gli ID HTML e collegamenti editoriali preservati, sintassi JS verificata, nessun autoplay introdotto. Restano aperti browser/mobile e verifica globale degli embed.
