@@ -8,7 +8,6 @@ window.MUSIC_PROJECT_PAGES=[
 {slug:"romanticismo",title:"Romanticismo · L’irrazionale",period:"Ottocento · radici nel Settecento",tags:["pathos","Lied","scuole nazionali"],tone:"plum"},
 {slug:"risorgimento",title:"Risorgimento",period:"1847 · 1861",tags:["Mameli","Novaro","Verdi"],tone:"red"},
 {slug:"opera-lirica",title:"Opera lirica",period:"Ottocento",tags:["teatro","voce","opera"],tone:"future",construction:true},
-{slug:"post-romanticismo",title:"Post-romanticismo",period:"Fine Ottocento",tags:["orchestra","espansione","crisi"],tone:"future",construction:true},
-{slug:"novecento",title:"Novecento",period:"XX secolo",tags:["linguaggi","tecnologie","ascolto"],tone:"future",construction:true},
-{slug:"avanguardie",title:"Avanguardie",period:"XX secolo",tags:["rottura","esperimento","suono"],tone:"future",construction:true}
+{slug:"post-romanticismo",title:"Dal postromanticismo alle avanguardie",period:"Fine Ottocento · Novecento",tags:["sinfonismo","blues","jazz"],tone:"blue"},
+{slug:"dal-musical-al-film",title:"Dal musical al film",period:"Dal teatro allo schermo",tags:["musical","cinema","colonna sonora"],tone:"plum"},
 ];
