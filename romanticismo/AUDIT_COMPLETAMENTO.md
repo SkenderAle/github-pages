@@ -236,3 +236,7 @@ Il progetto ha avviato un audit fra Rinascimento e Romanticismo, senza nuove pag
 ## Secondo lotto del gigaudit corale · 17 ottobre 2026
 
 Aggiunti senza alterare i quattordici capitoli del Romanticismo: la produzione sacra e l'oratorio di Fanny Hensel, i contesti dei cori e festival di Mendelssohn, il percorso religioso di Liszt, il Cecilianesimo, la Liturgia op. 41 di Čajkovskij, la ricostruzione editoriale del Requiem di Fauré. Il registro dettagliato è `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`. Le nuove fonti riguardano storia e partiture, **non certificano video o riproducibilità**.
+
+## Gigaudit · Terzo lotto, 17 ottobre 2026
+
+È stata approfondita la coralità inglese dell'Evensong con Stanford nella trattazione storica delle scuole nazionali, distinguendola dall'oratorio da concerto. Nuovo inserto Barocco sui castrati, con raccordi al ruolo di Orfeo in Gluck e di Idamante in Mozart nel Classicismo. Scheda metodologica nel registro `../AUDIT_MUSICA_SACRA_CORALITA_2026-10-17.md`.

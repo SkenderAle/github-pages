@@ -74,3 +74,24 @@
 - Diverse tradizioni iberiche e americane dell'età moderna, il coro anglicano ottocentesco e le scuole slave non sono ancora trattati in modo esaustivo. Il Novecento rimane embrionale.
 - **Nessun player aggiunto o riproduzione testata** in questo lotto: i nuovi link sono bibliografici e documentari, non sorgenti audio.
 - Test desktop e Android e monitoraggio video YouTube esistenti ancora da effettuare.
+
+## Terzo lotto — 17 ottobre 2026 · la storia del canto fra cappella e teatro
+
+**Intervento proposto dall'autore:** realizzato nel Barocco un inserto storico autonomamente riconoscibile ma **non un nuovo capitolo**, `#castrati`, all'interno della sezione `#voce`: «I castrati: una voce cercata, un prezzo imposto». Evidenziati origine istituzionale, funzione teatrale, differenze fra cantori, corpo e lavoro, disuguaglianza e violenza sui bambini, interpretazioni moderne e i limiti della registrazione storica di Alessandro Moreschi.
+
+**Fonti dell'inserto:**
+- Metropolitan Opera, `Agrippina`, guida ai castrati: https://www.metopera.org/discover/education/educator-guides/agrippina/castrati/
+- Marco Beghelli (Università di Bologna), «La voce virile dei castrati: un'ipotesi» (2018), avvertenza sulla non ricostruibilità timbrica: https://cris.unibo.it/handle/11585/636093
+- National Library of New Zealand, catalogo delle registrazioni di Moreschi del 1902 e 1904: https://natlib.govt.nz/records/22283603
+
+**Raccordi di storia musicale:**
+- `barocco/#vivaldi`: la pratica delle Figlie di Choro e la Pietà (mostra del Comune di Venezia: https://live.comune.venezia.it/it/2025/04/inaugurata-nella-chiesa-della-pieta-la-mostra-i-violini-di-vivaldi-e-le-figlie-di-choro ).
+- `barocco/#europa`: allargata la circolazione delle tradizioni corali alla Nuova Spagna: Gaspar Fernandes, villancicos in náhuatl nella Puebla 1610–1614 e il contesto degli afrodiscendenti. Studi https://www.scielo.org.mx/scielo.php?pid=S2448-65312021000201829&script=sci_arttext e https://novohispana.historicas.unam.mx/index.php/ehn/article/view/77335 . **Evitata** l'equazione fra lingua indigena e documentazione neutrale del folklore.
+- `classicismo/#teatro`: Gluck, `Orfeo` con Guadagni (1762), Millico (1769) e Legros (1774): https://www.gluck-gesamtausgabe.de/gwv/werkregister/eintrag/work-60.html .
+- `classicismo/`: `Idomeneo`, Idamante con Dal Prato (Monaco 1781), tenore nella ripresa viennese del 1786: https://dme.mozarteum.at/DME/objs/pdf/nma_304_-39_-3_eng.pdf .
+- `rinascimento/#roma`: cautela sulla ricostruzione degli organici e distinzione fra sezioni scritte e numero dei cantori.
+- `romanticismo/#nazioni`: Stanford, `Evening Service in B flat`, coro liturgico anglicano e continuità dell'uso: https://www.westminster-abbey.org/worship-and-music/music/recordings/the-feast-of-saint-peter .
+
+**Decisioni formali:** l'inserto dei castrati non è un'attività scolastica «Per iniziare», non ha multimedia automatico, possiede documentazione immediatamente accessibile e collegamenti al Barocco e al Classicismo. Nessuna nuova pagina, nessun capitolo, nessuna registrazione inventata o contrassegnata come collaudata. Il contenuto del catalogo sinfonico non è stato modificato.
+
+**Verifiche da completare:** eventuale ascolto storico di Moreschi va inserito solo con fonte archivistica riproducibile e contesto filologico: le sue incisioni non possono sostituire una registrazione delle arie di Farinelli. Test browser effettivi dell'inserto e layout responsive non ancora eseguiti.
