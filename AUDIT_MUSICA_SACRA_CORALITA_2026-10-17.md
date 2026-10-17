@@ -168,3 +168,27 @@ La Netherlands Bach Society dichiara di usare strumenti storici e documenta tutt
 **Metodo:** queste integrazioni approfondiscono esempi già nel racconto o storicamente pertinenti, senza cataloghi di nomi e senza nuovi iframe. Sono link a fonti bibliografiche, editoriali e discografiche. Né streaming, né embedding YouTube, né resa su Android sono stati verificati con un browser reale.
 
 **Verifiche automatiche pre-pubblicazione:** nessun nuovo ID, nessuna modifica agli script o ai lettori, invariato il numero di iframe e comandi video, nessuna aggiunta di attributi autoplay. Controllo dei tag aggiunti e della corrispondenza degli ancoraggi di intervento eseguito sulla sorgente GitHub; i controlli sul rendering effettivo restano aperti.
+
+## Ottavo lotto — 17 ottobre 2026 · fonti di culto, comunità e prassi di esecuzione
+
+**Branch letto prima dell'intervento:** `main` su `6505c93ca5c3a344ef794b919e1a5f6779223f0a`. Nessun branch nuovo; un unico commit atomico su `main` con quattro pagine e registro.
+
+### Integrazioni nel racconto preesistente
+
+| Pagina | Nuovi confronti inseriti | Fonti principali |
+|---|---|---|
+| Rinascimento | Byrd: `Gradualia` cattolici / `Great Service` anglicano; distinzione tecnica fra semplice antifonia e policoralità | Westminster Abbey (https://www.westminster-abbey.org/order-of-service?id=10988), Philip Brett/Cambridge (https://www.cambridge.org/core/journals/proceedings-of-the-royal-musical-association/article/abs/wordsetting-in-the-songs-of-byrd/842951298457B780526FB768A52B56B7), Bryant/Cambridge (https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5) |
+| Barocco | Monteverdi `Vespro` 1610: messa, due Magnificat, canto piano, problemi di antifone e ricostruzione; `grand motet` francese, maîtrise, petit/grand chœur; Bach BWV 4, corale e disposizione simmetrica; BWV 106, due flauti dolci e due viole da gamba | Wainwright/Cambridge (https://www.cambridge.org/core/books/abs/cambridge-history-of-musical-performance/case-study-monteverdi-vespers-1610/EF189743F79D541051B7ADD716D8FB03), Whenham/Cambridge (https://www.cambridge.org/core/books/abs/monteverdi-vespers-1610/and-all-on-a-cantus-firmus/88C0F82CB0CECF24AD2473D844DEF9BC), CMBV (https://cmbv.fr/fr/decouvrir-le-baroque/le-motet; https://boutique.cmbv.fr/fr/grands-motets-vol7), Netherlands Bach Society (https://www.bachvereniging.nl/en/bwv/bwv-4; https://www.bachvereniging.nl/en/bwv/bwv-106) |
+| Classicismo | Billings: `fuguing tune` e differenza dalla fuga colta, libro a stampa 1770 e scuole di canto; confronto istituzionale con le cappelle austro-viennesi | Library of Congress (https://www.loc.gov/item/2008581408/; https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/ethnic/english-american-song/; https://guides.loc.gov/early-american-sacred-music) |
+| Romanticismo | Bruckner `Locus iste` WAB23, funzione di graduale, data di composizione / uso e organico; Dvořák `Stabat Mater`, redazioni 1876 e 1877, tenuta ciclica e dimensione reale dell'esecuzione al Royal Albert Hall nel 1884 | ÖAW / Bruckner-Lexikon (https://api-brucknerlex.acdh.oeaw.ac.at/article/d1e9284); catalogo Antonín Dvořák (https://www.antonin-dvorak.cz/en/work/stabat-mater/) |
+
+### Una registrazione istituzionale aggiunta come link, non come iframe
+
+- **Bach BWV 4 `Christ lag in Todesbanden`**, Netherlands Bach Society / René Jacobs, ripresa 5 novembre 2023, pubblicazione 24 aprile 2025. Crediti e organico verificati sulla scheda dell'editore (https://www.bachvereniging.nl/en/bwv/bwv-4). Si propone la pagina ufficiale con ascolto integrale; non è stato inserito un nuovo YouTube ID e **non è dichiarato alcun collaudo browser o Android**.
+- BWV 106 era già in pagina; le note aggiungono la verifica organologica dalla scheda ufficiale, senza duplicare il player.
+
+### Salvaguardie editoriali e tecniche
+
+Nessuna pagina dedicata al sacro, nessuna voce aggiunta ai menu, nessuna sostituzione di media esistenti, nessuno spostamento di `#castrati`. Gli interventi riguardano soltanto il testo e collegamenti a fonti identificabili, non Javascript o controlli multimediali. **HIP indica la documentazione di organici, versioni, testimonianze e scelte di prassi, non una qualità dedotta dal nome di un interprete.**
+
+I controlli del lotto sono di **sorgente statica e lettura remota GitHub**, non di esecuzione reale di audio nel browser né di render su dispositivi.
