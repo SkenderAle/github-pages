@@ -192,3 +192,8 @@ La Netherlands Bach Society dichiara di usare strumenti storici e documenta tutt
 Nessuna pagina dedicata al sacro, nessuna voce aggiunta ai menu, nessuna sostituzione di media esistenti, nessuno spostamento di `#castrati`. Gli interventi riguardano soltanto il testo e collegamenti a fonti identificabili, non Javascript o controlli multimediali. **HIP indica la documentazione di organici, versioni, testimonianze e scelte di prassi, non una qualità dedotta dal nome di un interprete.**
 
 I controlli del lotto sono di **sorgente statica e lettura remota GitHub**, non di esecuzione reale di audio nel browser né di render su dispositivi.
+
+
+### Rettifica di collocazione del lotto VIII — 17 ottobre 2026
+
+La rilettura dell'HTML appena pubblicato ha permesso di correggere tre raccordi senza modificare la sostanza delle fonti: (1) la nota BWV 106 è stata spostata fuori dall'approfondimento veneziano sulla Pietà e collocata **subito dopo la scheda di ascolto BWV 106**, con testo d'apertura reso aderente alla scheda; (2) il collegamento di BWV 4 è stato posto **dopo la discussione continua sul doppio coro BWV 225**, per non interrompere l'analisi del mottetto; (3) il confronto fra singing schools e cappelle viene ora **accanto alla trattazione delle istituzioni corali** nel Classicismo, non fra organico della Nelsonmesse e registrazione Harnoncourt. Rettifica su main in commit separato perché il commit di lotto VIII era già stato pubblicato. Nessuno script, menu, ID, lettore o URL video alterato; è stato aggiornato soltanto il registro.
