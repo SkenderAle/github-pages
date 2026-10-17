@@ -13,7 +13,7 @@ Repository: `SkenderAle/github-pages`, branch `main`, pagina `dalla-sinfonia-all
 - Le opere e le loro chiavi `id` sono rimaste in ordine; non è stato introdotto alcun `autoplay=1`.
 
 ## Nuovi numeri dopo l'intervento
-69 opere · 64 con video identificato · 1 con audio esterno · 4 senza fonte fruibile confermata.
+69 opere · 64 con video identificato · 1 con audio esterno · 4 senza fonte fruibile confermata (stato del primo commit di giornata).
 
 ## Lavori ancora non coperti da video verificato
 - Beethoven · Fidelio, op. 72 (opera integrale) (`beethoven-014`)
@@ -23,3 +23,13 @@ Repository: `SkenderAle/github-pages`, branch `main`, pagina `dalla-sinfonia-all
 
 ## Verifiche aperte
 Eseguire collaudo reale su Chrome Android e desktop di filtri, miniature, `end` della raccolta di Smetana, funzionamento degli embed, e ascolto radiofonico esterno. La presenza di un ID YouTube valido e dei crediti editoriali non equivale alla verifica di riproducibilità o autorizzazione embedding. Approfondire reperibilità di altre incisioni integrali presso case discografiche, archivi e orchestre. Verificare progressivamente i 60+ URL di fonte preesistenti e i minutaggi. Non inserire brani privi di riscontro.
+
+## Secondo lotto — 17 ottobre 2026
+
+- Berlioz, `berlioz-026`, *Harold en Italie*: video `-Yg_vJUXA8c`, NBC Symphony Orchestra, Arturo Toscanini, Carlton Cooley; concerto/trasmissione del 29 novembre 1953 documentato anche in un catalogo di archivi radiofonici. Youtube incorporato da canale terzo: non equiparato a edizione ufficiale. Riscontro contestuale storico: https://www.tumgik.com/tag/november%2026%201953 .
+- Čajkovskij, `cajkovskij-054`, *Francesca da Rimini* op. 32: video `CIW4myGhEd8`, orchestra sinfonica di Berlino, Vladimir Ashkenazy, edizione caricata da terzi. Riscontro: https://www.askwoody.com/forums/topic/part-i-arent-these-the-greatest-performances-of-classical-music/page/5/ .
+- Aggiunto dal testo introduttivo il collegamento diretto al saggio esistente sulla **musica assoluta** `romanticismo/#musica-assoluta`. Il saggio risultava già presente sul branch; non è stato duplicato o sovrascritto.
+
+**Stato cumulativo:** 69 opere · 66 video con identificativo valido e crediti dichiarati · 1 ascolto esterno (Radio Ceca) · 2 opere prive di video documentato (Fidelio integrale e Berlioz, Roméo et Juliette).
+
+**Audit aperto:** il test riproducibilità/embedding dei video e la verifica dettagliata delle registrazioni caricate da terzi sono ancora da svolgere in browser. In particolare, i due video aggiunti in questo lotto non sono presentati come pubblicazioni dell'emittente o dell'orchestra.
