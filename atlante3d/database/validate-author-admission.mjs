@@ -23,14 +23,18 @@ for(const n of people){
    const path=x.url.replace(/^\.\.\//,"").split("#")[0]+"index.html";
    const file=resolve(root,path);if(!existsSync(file))return false;
    const html=readFileSync(file,"utf8"),anchor=x.url.split("#")[1];
-   return html.includes('id="'+anchor+'"')&&html.includes("?n="+n.id);
+   const pos=html.indexOf('id="'+anchor+'"');if(pos<0)return false;
+   const prev=html.lastIndexOf("<article",pos),prevEnd=html.lastIndexOf("</article>",pos);
+   if(prev>prevEnd){const nextEnd=html.indexOf("</article>",pos);return nextEnd>pos&&html.slice(prev,nextEnd).includes("?n="+n.id);}
+   const end=html.indexOf("</p>",pos);
+   return end>pos&&end-pos<1800&&html.slice(pos,end).includes("?n="+n.id);
  });
  const issues=[];
  if(!geography)issues.push("geografia (paese + coordinate + nodo geografico)");
  if(!period)issues.push("periodo");
  if(!form)issues.push("forma/genere specifico o giustificazione di non pertinenza");
  if(!refs.length)issues.push("riferimento editoriale puntuale");
- if(refs.length&&!returns.length)issues.push("ritorno bidirezionale");
+ if(refs.length&&returns.length!==refs.length)issues.push("ritorni bidirezionali incompleti ("+returns.length+"/"+refs.length+")");
  if(!personal.length)issues.push("relazioni personali da investigare (non bloccante)");
  const blocking=issues.filter(x=>!x.startsWith("relazioni personali")).length;
  if(blocking)incomplete++;
