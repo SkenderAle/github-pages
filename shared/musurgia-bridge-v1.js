@@ -12,7 +12,7 @@ var strip=document.createElement("div");strip.className="musurgia-bridge-strip";
 var link=document.createElement("a");link.href=root.href;link.textContent="✧ Musurgia Mundi · Esplora la costellazione";
 strip.appendChild(link);hero.insertAdjacentElement("afterend",strip);
 var style=document.createElement("style");
-style.textContent=".musurgia-bridge-strip{display:flex;justify-content:flex-end;align-items:center;padding:.55rem clamp(14px,3vw,36px);background:#242c37;color:#f4e5c9;font:700 .76rem/1.45 system-ui,sans-serif}.musurgia-bridge-strip a{color:#f4d79c!important;text-decoration:underline!important;text-underline-offset:3px}.musurgia-author-link{display:inline-flex;vertical-align:middle;margin-left:.42em;padding:.12em .4em;border:1px solid #8b8f95;border-radius:5px;color:#fff!important;background:#38516a;text-decoration:none!important;font:700 .62rem/1.4 system-ui,sans-serif;letter-spacing:0;white-space:nowrap}.musurgia-work-link{margin:.26rem 0 .45rem .32rem;max-width:max-content}.musurgia-work-link:focus-visible,.musurgia-author-link:focus-visible,.musurgia-bridge-strip a:focus-visible{outline:3px solid #ceac6c;outline-offset:2px}";
+style.textContent=".musurgia-bridge-strip{display:flex;justify-content:flex-end;align-items:center;padding:.55rem clamp(14px,3vw,36px);background:#242c37;color:#f4e5c9;font:700 .76rem/1.45 system-ui,sans-serif}.musurgia-bridge-strip a{color:#f4d79c!important;text-decoration:underline!important;text-underline-offset:3px}.musurgia-author-link{display:inline-flex;vertical-align:middle;margin-left:.42em;padding:.12em .4em;border:1px solid #8b8f95;border-radius:5px;color:#fff!important;background:#38516a;text-decoration:none!important;font:700 .62rem/1.4 system-ui,sans-serif;letter-spacing:0;white-space:nowrap}.musurgia-work-link{margin:.26rem 0 .45rem .32rem;max-width:max-content}article.work[id^='mm-opera-']{scroll-margin-top:6rem}.musurgia-work-link:focus-visible,.musurgia-author-link:focus-visible,.musurgia-bridge-strip a:focus-visible{outline:3px solid #ceac6c;outline-offset:2px}";
 document.head.appendChild(style);
 var periodGroups={medioevo:["medioevo"],rinascimento:["rinascimento","medioevo"],barocco:["barocco","rinascimento"],classicismo:["classicismo","barocco","romanticismo"],romanticismo:["romanticismo","post-romanticismo","classicismo"],risorgimento:["romanticismo","classicismo"],"post-romanticismo":["post-romanticismo","novecento","romanticismo"],"dal-musical-al-film":["novecento","post-romanticismo"]};
 function normalize(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/['’]/g,"").replace(/[^\p{L}\p{N}]+/gu," ").trim();}
@@ -58,6 +58,32 @@ if(catalogue){
   });
  });
  var byPerson=new Map(authors.map(function(p){return [p.id,p]}));
+ // ID permanenti derivati dall'opera, indipendenti da ordine, filtri e lettori.
+ // Le attuali 255 opere cameristiche e 97 vocali hanno chiavi tutte distinte.
+ function workSlug(value){return String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,125)}
+ function stableWorkId(work){
+  if(slug==="musica-da-camera"){
+   var title=work.querySelector("h3")?.textContent||"";
+   return title?"mm-opera-camera-"+workSlug(title):"";
+  }
+  if(slug==="parola-e-canto"){
+   var author=work.querySelector(".eyebrow")?.textContent||"";
+   var title=work.querySelector("h3")?.textContent||"";
+   return author&&title?"mm-opera-canto-"+workSlug(author)+"-"+workSlug(title):"";
+  }
+  return "";
+ }
+ var workHash="";try{workHash=decodeURIComponent(location.hash.slice(1))}catch(e){}
+ var workScrolled=false;
+ function attachWorkAnchor(work){
+  var id=stableWorkId(work);if(!id)return;
+  if(!work.id)work.id=id;
+  if(!workScrolled&&id===workHash){
+   workScrolled=true;
+   requestAnimationFrame(function(){requestAnimationFrame(function(){work.scrollIntoView({block:"start",behavior:"instant"})})});
+  }
+ }
+
  function authorOf(work){
   if(slug==="concerti")return work.dataset.composerName||"";
   if(slug==="musica-da-camera")return (work.querySelector("h3")?.textContent||"").split(" · ")[0].trim();
@@ -67,6 +93,7 @@ if(catalogue){
  }
  function wireWorks(){
   catalogue.querySelectorAll("article.work:not([data-musurgia-link-checked])").forEach(function(work){
+   attachWorkAnchor(work);
    work.dataset.musurgiaLinkChecked="1";
    var ids=identityMap.get(normalize(authorOf(work)));
    if(!ids||ids.size!==1)return;

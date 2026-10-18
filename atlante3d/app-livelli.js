@@ -850,8 +850,8 @@ function populate(n){
  if(editorials.length){
   const place=document.createElement("section");place.className="mm-site-links";
   const title=document.createElement("h3");title.textContent="Percorsi e ascolti nell'Atlante";place.append(title);
-  for(const ref of editorials.slice(0,5)){
-   const a=document.createElement("a");a.href=ref.url;a.textContent="↗ "+(ref.page==="Atlante"?"Apri il percorso":ref.page.replace(/-/g," "));
+  for(const ref of editorials.slice(0,8)){
+   const a=document.createElement("a");a.href=ref.url;a.textContent="↗ "+(ref.title|| (ref.page==="Atlante"?"Apri il percorso":ref.page.replace(/-/g," ")));a.title="Apri nell’Atlante la risorsa dedicata a "+n.label;
    place.append(a);
   }
   dst.append(place);
