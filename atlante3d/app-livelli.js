@@ -886,12 +886,11 @@ function populate(n){
  const relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
  // Le pagine editoriali non sono sinonimi di un lemma biografico:
  // i rimandi derivano da titoli e/o URL editoriali verificati.
- const editorials=[...(editorialBacklinks[n.id]||[])].filter(ref=>ref.match!=="surname-unique");
- // I rimandi non verificati sono custoditi in pendingReview, non appaiono qui.
- // Un collegamento alla radice del catalogo non è una scheda del compositore.
- // Le risorse specifiche delle opere e dei percorsi sono censite in collegamenti-sito.json.
- if(n.url&&!/(?:#(?:catalogo|audioteca)|\/)$/.test(n.url)&&!editorials.some(x=>x.url===n.url))
-  editorials.unshift({page:"Atlante",url:n.url,title:"Passaggio nell’Atlante · "+n.label});
+ const editorials=[...(editorialBacklinks[n.id]||[])].filter(ref=>
+  ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||ref.match==="author-heading-anchor");
+ // Il campo node.url NON dimostra che un autore abbia una scheda in quella sezione.
+ if(["periodo","corrente","ambito"].includes(n.type)&&n.url&&!editorials.some(ref=>ref.url===n.url))
+  editorials.unshift({page:"Contesto storico",url:n.url,title:"Percorso generale · "+n.label});
  const isSingleWork=ref=>ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||
   /#mm-opera-(camera|canto)-/.test(ref.url||"");
  const workRefs=editorials.filter(isSingleWork);
@@ -905,7 +904,18 @@ function populate(n){
    a.textContent="↗ "+(ref.title||"Percorso · "+ref.page.replace(/-/g," ")+" · "+decodeURIComponent((ref.url||"").split("#")[1]||"approfondimento").replace(/-/g," "));
    a.title="Apri nell’Atlante il passaggio dedicato a "+n.label;place.append(a);
   }
+  if(navigationRefs.length>8){
+   const more=document.createElement("details");more.className="mm-extra-links";
+   const head=document.createElement("summary");head.textContent="Altri "+(navigationRefs.length-8)+" percorsi";more.append(head);
+   for(const ref of navigationRefs.slice(8)){
+    const a=document.createElement("a");a.href=ref.url;a.textContent="↗ "+(ref.title||"Passaggio nell’Atlante");more.append(a);
+   }
+   place.append(more);
+  }
   dst.append(place);
+ }else if(n.type==="compositore"||n.type==="persona"){
+  const msg=document.createElement("p");msg.className="small";
+  msg.textContent="Nessun passaggio narrativo specifico ancora verificato per questa voce.";dst.append(msg);
  }
  const mediaHead=document.createElement("div");mediaHead.className="panel-section-header";
  const h=document.createElement("h3");h.textContent="Ascolti e video";mediaHead.append(h);
@@ -919,7 +929,15 @@ function populate(n){
  }
  if(workRefs.length>12){
   const p=document.createElement("p");p.className="small";
-  p.textContent="Altre "+(workRefs.length-12)+" opere raggiungibili dalle audioteche dell’Atlante.";dst.append(p);
+  const extra=document.createElement("details");extra.className="mm-extra-links";
+  const head=document.createElement("summary");head.textContent="Mostra altre "+(workRefs.length-12)+" opere";extra.append(head);
+  for(const ref of workRefs.slice(12)){
+   const article=document.createElement("article");article.className="mm-work-listening";
+   const title=document.createElement("strong");title.textContent=ref.title||ref.page||"Opera";
+   const a=document.createElement("a");a.href=ref.url;a.textContent="▶ Apri la scheda dell’opera ↗";
+   article.append(title,a);extra.append(article);
+  }
+  dst.append(extra);
  }
  if(!relatedMedia.length&&!workRefs.length){
   const p=document.createElement("p");p.className="small";

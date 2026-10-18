@@ -1,7 +1,7 @@
 {
-  "schema": "site-links-v2",
+  "schema": "site-links-v3-audit-globale",
   "updated": "2026-10-18",
-  "method": "Le schede di opere concertistiche sono collegate tramite ID di article.record e intestazione H3 riconducibile univocamente al compositore; i precedenti collegamenti a macrosezioni e le attribuzioni da cognome sono in pendingReview e NON sono mostrati nel grafo. Le opere vocali, cameristiche e sinfoniche mantengono ancore stabili esistenti.",
+  "method": "Solo ancore di opere con identità verificata o intestazioni specifiche dell'autore nel percorso. I rimandi di macrosezione non sono pubblicati; sono documentati in pendingReview.",
   "byNode": {
     "compositore-guillaume-de-machaut": [
       {
@@ -12,8 +12,10 @@
       },
       {
         "page": "medioevo",
-        "url": "../medioevo/#arsnova",
-        "match": "full"
+        "url": "../medioevo/#mm-autore-compositore-guillaume-de-machaut",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Guillaume de Machaut: quando l'autore diventa visibile",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-francesco-landini": [
@@ -25,13 +27,38 @@
       },
       {
         "page": "medioevo",
-        "url": "../medioevo/#trecento",
-        "match": "full"
+        "url": "../medioevo/#mm-autore-compositore-francesco-landini",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Francesco Landini: poeta, organista, compositore",
+        "evidence": "nome-completo"
+      },
+      {
+        "page": "rinascimento",
+        "url": "../rinascimento/#mm-autore-compositore-francesco-landini",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Landini, Ecco la primavera",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-ottaviano-petrucci": [],
-    "compositore-giovanni-pierluigi-da-palestrina": [],
-    "compositore-adriano-willaert": [],
+    "compositore-giovanni-pierluigi-da-palestrina": [
+      {
+        "page": "rinascimento",
+        "url": "../rinascimento/#mm-autore-compositore-giovanni-pierluigi-da-palestrina",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Palestrina · Missa Brevis",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
+    "compositore-adriano-willaert": [
+      {
+        "page": "rinascimento",
+        "url": "../rinascimento/#mm-autore-compositore-adriano-willaert",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Willaert e i cori spezzati",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
     "compositore-gherardello-da-firenze": [],
     "compositore-claudio-monteverdi": [
       {
@@ -39,6 +66,27 @@
         "url": "../parola-e-canto/#mm-opera-canto-claudio-monteverdi-si-dolce-e-l-tormento",
         "match": "opera-strutturata",
         "title": "Ascolto · Si dolce è 'l tormento"
+      },
+      {
+        "page": "rinascimento",
+        "url": "../rinascimento/#mm-autore-compositore-claudio-monteverdi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Monteverdi, Tu se' morta",
+        "evidence": "cognome-unico-e-periodo"
+      },
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-claudio-monteverdi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Monteverdi, l’uomo fra due epoche",
+        "evidence": "cognome-unico-e-periodo"
+      },
+      {
+        "page": "melodramma",
+        "url": "../melodramma/#mm-autore-compositore-claudio-monteverdi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Monteverdi: l’esperimento diventa teatro",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-francesca-caccini": [
@@ -56,16 +104,28 @@
       },
       {
         "page": "barocco",
-        "url": "../barocco/#voce",
-        "match": "full"
+        "url": "../barocco/#mm-autore-compositore-francesca-caccini",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Firenze: la monodia, il madrigale e Francesca Caccini",
+        "evidence": "nome-completo"
       },
       {
         "page": "melodramma",
-        "url": "../melodramma/#rinascimento",
-        "match": "full"
+        "url": "../melodramma/#mm-autore-compositore-francesca-caccini",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Francesca Caccini cresce dentro questo mondo",
+        "evidence": "nome-completo"
       }
     ],
-    "compositore-girolamo-frescobaldi": [],
+    "compositore-girolamo-frescobaldi": [
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-girolamo-frescobaldi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Frescobaldi entra nel labirinto",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
     "compositore-barbara-strozzi": [
       {
         "page": "parola-e-canto",
@@ -81,8 +141,10 @@
       },
       {
         "page": "barocco",
-        "url": "../barocco/#seicento",
-        "match": "full"
+        "url": "../barocco/#mm-autore-compositore-barbara-strozzi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Il volto di Barbara Strozzi? Un'attribuzione da discutere",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-antonio-vivaldi": [
@@ -99,12 +161,29 @@
         "title": "Opera · Vivaldi · Sonata per violino e continuo op. 2, RV 14 in re minore"
       },
       {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-antonio-vivaldi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Vivaldi: la forma non viene sacrificata al racconto",
+        "evidence": "cognome-unico-e-periodo"
+      },
+      {
         "page": "melodramma",
-        "url": "../melodramma/#marcello",
-        "match": "full"
+        "url": "../melodramma/#mm-autore-compositore-antonio-vivaldi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Vivaldi · Vedrò con mio diletto",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
-    "compositore-jean-philippe-rameau": [],
+    "compositore-jean-philippe-rameau": [
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-jean-philippe-rameau",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Rameau arriva dopo la pratica e prova a darle una teoria",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
     "compositore-arcangelo-corelli": [
       {
         "page": "musica-da-camera",
@@ -131,9 +210,24 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Corelli Concerti grossi op. 6",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-arcangelo-corelli",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Corelli non inventa la sonata: la rende irresistibilmente esportabile",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
-    "compositore-dietrich-buxtehude": [],
+    "compositore-dietrich-buxtehude": [
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-dietrich-buxtehude",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Buxtehude e il preludio nordtedesco: la forma può essere un viaggio",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
     "compositore-georg-friedrich-handel": [
       {
         "page": "parola-e-canto",
@@ -154,6 +248,13 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Händel · Concerto grosso op. 6 n. 5 HWV 323",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-georg-friedrich-handel",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Händel, ovvero l’Europa come biografia",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-henry-purcell": [
@@ -168,13 +269,22 @@
         "url": "../parola-e-canto/#mm-opera-canto-henry-purcell-if-music-be-the-food-of-love-z-379",
         "match": "opera-strutturata",
         "title": "Ascolto · If music be the food of love, Z. 379"
+      },
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-henry-purcell",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Purcell, assorbire senza perdere la propria voce",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-elisabeth-jacquet-de-la-guerre": [
       {
         "page": "barocco",
-        "url": "../barocco/#europa",
-        "match": "full"
+        "url": "../barocco/#mm-autore-compositore-elisabeth-jacquet-de-la-guerre",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Antonia Bembo ed Élisabeth Jacquet de La Guerre: la Francia non parla con una sola voce",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-francois-couperin": [
@@ -183,6 +293,13 @@
         "url": "../musica-da-camera/#mm-opera-camera-francois-couperin-concerts-royaux",
         "match": "opera-strutturata",
         "title": "Opera · François Couperin · Concerts royaux"
+      },
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-francois-couperin",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Couperin prova a riconciliare due gusti",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-georg-philipp-telemann": [
@@ -204,6 +321,13 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Telemann · Concerto in sol maggiore TWV 51:G9",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-georg-philipp-telemann",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Telemann e l’arte di non scegliere un solo stile",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-giuseppe-tartini": [
@@ -232,15 +356,47 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Giuseppe Tartini · Concerto per violino in la maggiore D. 96 (GT 1.A09)",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-giuseppe-tartini",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Tartini, quando il violinista diventa anche ricercatore",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
-    "compositore-christoph-willibald-gluck": [],
-    "compositore-muzio-clementi": [],
+    "compositore-christoph-willibald-gluck": [
+      {
+        "page": "classicismo",
+        "url": "../classicismo/#mm-autore-compositore-christoph-willibald-gluck",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Gluck a Parigi: la riforma diventa europea",
+        "evidence": "cognome-unico-e-periodo"
+      },
+      {
+        "page": "melodramma",
+        "url": "../melodramma/#mm-autore-compositore-christoph-willibald-gluck",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Gluck: quando il melodramma prova a riformare sé stesso",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
+    "compositore-muzio-clementi": [
+      {
+        "page": "classicismo",
+        "url": "../classicismo/#mm-autore-compositore-muzio-clementi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Clementi: il musicista diventa anche imprenditore",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
     "compositore-johann-stamitz": [
       {
         "page": "classicismo",
-        "url": "../classicismo/#mannheim",
-        "match": "full"
+        "url": "../classicismo/#mm-autore-compositore-johann-stamitz",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Johann Stamitz · Mannheim",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-jean-baptiste-lully": [],
@@ -266,6 +422,20 @@
         "page": "Sinfonica · Sinfonia n. 2, op. 36",
         "url": "../dalla-sinfonia-alla-rapsodia/#beethoven-006",
         "match": "catalogue-work-anchor"
+      },
+      {
+        "page": "classicismo",
+        "url": "../classicismo/#mm-autore-compositore-ludwig-van-beethoven",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Beethoven: ereditare il quartetto senza chiuderlo",
+        "evidence": "cognome-unico-e-periodo"
+      },
+      {
+        "page": "romanticismo",
+        "url": "../romanticismo/#mm-autore-compositore-ludwig-van-beethoven",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Beethoven compose l'inno dell'Unione europea?",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-luigi-boccherini": [
@@ -287,6 +457,13 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Boccherini · Concerto in si bemolle maggiore G 482",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "classicismo",
+        "url": "../classicismo/#mm-autore-compositore-luigi-boccherini",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Boccherini: una camera europea fuori da Vienna",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-niccolo-paganini": [
@@ -345,18 +522,65 @@
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
       }
     ],
-    "compositore-francesco-cavalli": [],
-    "persona-pietro-metastasio": [],
-    "persona-carlo-goldoni": [],
+    "compositore-francesco-cavalli": [
+      {
+        "page": "melodramma",
+        "url": "../melodramma/#mm-autore-compositore-francesco-cavalli",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Cavalli e l’opera che diventa mestiere",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
+    "persona-pietro-metastasio": [
+      {
+        "page": "melodramma",
+        "url": "../melodramma/#mm-autore-persona-pietro-metastasio",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Metastasio in musica",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
+    "persona-carlo-goldoni": [
+      {
+        "page": "melodramma",
+        "url": "../melodramma/#mm-autore-persona-carlo-goldoni",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Goldoni: dalla maschera alla persona",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
     "persona-ranieri-de-calzabigi": [],
-    "compositore-michele-novaro": [],
-    "compositore-goffredo-mameli": [],
+    "compositore-michele-novaro": [
+      {
+        "page": "risorgimento",
+        "url": "../risorgimento/#mm-autore-compositore-michele-novaro",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Novaro e il paradosso dell’Inno italiano",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
+    "compositore-goffredo-mameli": [
+      {
+        "page": "risorgimento",
+        "url": "../risorgimento/#mm-autore-compositore-goffredo-mameli",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Mameli: le parole prima della musica",
+        "evidence": "cognome-unico-e-periodo"
+      }
+    ],
     "compositore-giuseppe-verdi": [
       {
         "page": "musica-da-camera",
         "url": "../musica-da-camera/#mm-opera-camera-verdi-quartetto-per-archi-in-mi-minore",
         "match": "opera-strutturata",
         "title": "Opera · Verdi · Quartetto per archi in mi minore"
+      },
+      {
+        "page": "risorgimento",
+        "url": "../risorgimento/#mm-autore-compositore-giuseppe-verdi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Verdi: dal melodramma alla nazione",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-gustav-mahler": [
@@ -374,8 +598,10 @@
       },
       {
         "page": "post-romanticismo",
-        "url": "../post-romanticismo/#belle-epoque",
-        "match": "full"
+        "url": "../post-romanticismo/#mm-autore-compositore-gustav-mahler",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Gustav Mahler · La sinfonia come mondo",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-richard-strauss": [
@@ -400,11 +626,6 @@
         "page": "Sinfonica · Till Eulenspiegels lustige Streiche, op. 28",
         "url": "../dalla-sinfonia-alla-rapsodia/#richardstrauss-078",
         "match": "catalogue-work-anchor"
-      },
-      {
-        "page": "post-romanticismo",
-        "url": "../post-romanticismo/#belle-epoque",
-        "match": "full"
       },
       {
         "page": "Concerti · Richard Strauss · Concerto per oboe in re maggiore (1945)",
@@ -454,13 +675,22 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Richard Strauss · Duett-Concertino in fa maggiore per clarinetto, fagotto, archi e arpa",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "post-romanticismo",
+        "url": "../post-romanticismo/#mm-autore-compositore-richard-strauss",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Richard Strauss · Il racconto nell’orchestra e il dramma dei sensi",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-giacomo-puccini": [
       {
         "page": "post-romanticismo",
-        "url": "../post-romanticismo/#belle-epoque",
-        "match": "full"
+        "url": "../post-romanticismo/#mm-autore-compositore-giacomo-puccini",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Giacomo Puccini · Un teatro che respira con l’orchestra",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-jean-sibelius": [
@@ -475,16 +705,18 @@
         "match": "catalogue-work-anchor"
       },
       {
-        "page": "post-romanticismo",
-        "url": "../post-romanticismo/#belle-epoque",
-        "match": "full"
-      },
-      {
         "page": "Concerti · Sibelius · Concerto in re minore op. 47",
         "url": "../concerti/#ascolto-sibelius",
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Sibelius · Concerto in re minore op. 47",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "post-romanticismo",
+        "url": "../post-romanticismo/#mm-autore-compositore-jean-sibelius",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Jean Sibelius · Nazione, paesaggio e concentrazione della forma",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-sergej-rachmaninov": [
@@ -498,11 +730,6 @@
         "page": "Sinfonica · Danze sinfoniche, op. 45",
         "url": "../dalla-sinfonia-alla-rapsodia/#rachmaninov-102",
         "match": "catalogue-work-anchor"
-      },
-      {
-        "page": "post-romanticismo",
-        "url": "../post-romanticismo/#belle-epoque",
-        "match": "full"
       },
       {
         "page": "Concerti · Rachmaninov · Concerto n. 4 in sol minore op. 40",
@@ -538,14 +765,23 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Rachmaninov Rapsodia su un tema di Paganini op. 43 (pianoforte e orchestra)",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "post-romanticismo",
+        "url": "../post-romanticismo/#mm-autore-compositore-sergej-rachmaninov",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Sergej Rachmaninov · La persistenza creativa della tradizione",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-john-field": [],
     "compositore-luigi-russolo": [
       {
         "page": "post-romanticismo",
-        "url": "../post-romanticismo/#futurismo",
-        "match": "full"
+        "url": "../post-romanticismo/#mm-autore-compositore-luigi-russolo",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Luigi Russolo: dall’orchestra all’arte dei rumori",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-claude-debussy": [
@@ -596,6 +832,13 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Debussy Danses sacrée et profane (1904) per arpa e archi",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "post-romanticismo",
+        "url": "../post-romanticismo/#mm-autore-compositore-claude-debussy",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Debussy e Ravel · Il colore non è una scuola obbligatoria",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-maurice-ravel": [
@@ -665,6 +908,20 @@
         "page": "Sinfonica · Pelléas et Mélisande, op. 5",
         "url": "../dalla-sinfonia-alla-rapsodia/#arnoldschonberg-068",
         "match": "catalogue-work-anchor"
+      },
+      {
+        "page": "post-romanticismo",
+        "url": "../post-romanticismo/#mm-autore-compositore-arnold-schonberg",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Schönberg, Berg, Webern · L’urgenza dell’espressione",
+        "evidence": "cognome-unico-e-periodo"
+      },
+      {
+        "page": "parola-e-canto",
+        "url": "../parola-e-canto/#mm-autore-compositore-arnold-schonberg",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Schönberg e Webern · op. 8",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-anton-webern": [
@@ -695,6 +952,13 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Stravinskij Concerto in re maggiore (1931)",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "post-romanticismo",
+        "url": "../post-romanticismo/#mm-autore-compositore-igor-stravinskij",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Stravinskij · La forza del ritmo e il mutamento delle forme",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-bela-bartok": [
@@ -772,27 +1036,40 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Bartók Concerto per viola (1945, incompiuto)",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "post-romanticismo",
+        "url": "../post-romanticismo/#mm-autore-compositore-bela-bartok",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Bartók · L’indagine sul campo come trasformazione compositiva",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-pierre-schaeffer": [
       {
         "page": "post-romanticismo",
-        "url": "../post-romanticismo/#cage",
-        "match": "full"
+        "url": "../post-romanticismo/#mm-autore-compositore-pierre-schaeffer",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Pierre Schaeffer · Étude aux chemins de fer (1948)",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-karlheinz-stockhausen": [
       {
         "page": "post-romanticismo",
-        "url": "../post-romanticismo/#cage",
-        "match": "full"
+        "url": "../post-romanticismo/#mm-autore-compositore-karlheinz-stockhausen",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Karlheinz Stockhausen · Gesang der Jünglinge (1955–1956)",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-john-cage": [
       {
         "page": "post-romanticismo",
-        "url": "../post-romanticismo/#cage",
-        "match": "full"
+        "url": "../post-romanticismo/#mm-autore-compositore-john-cage",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · John Cage · 4′33″ (1952)",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-leonard-bernstein": [],
@@ -816,36 +1093,44 @@
     "compositore-bernard-herrmann": [
       {
         "page": "dal-musical-al-film",
-        "url": "../dal-musical-al-film/#partitura",
-        "match": "full"
+        "url": "../dal-musical-al-film/#mm-autore-compositore-bernard-herrmann",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Bernard Herrmann: quando il timbro diventa inquietudine",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-nino-rota": [
-      {
-        "page": "dal-musical-al-film",
-        "url": "../dal-musical-al-film/#partitura",
-        "match": "full"
-      },
       {
         "page": "Concerti · Nino Rota · Concerto per trombone e orchestra (1966)",
         "url": "../concerti/#ottoni-trombone-rota",
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Nino Rota · Concerto per trombone e orchestra (1966)",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "dal-musical-al-film",
+        "url": "../dal-musical-al-film/#mm-autore-compositore-nino-rota",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Nino Rota: il ricordo, il circo, la nostalgia",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-ennio-morricone": [
       {
         "page": "dal-musical-al-film",
-        "url": "../dal-musical-al-film/#partitura",
-        "match": "full"
+        "url": "../dal-musical-al-film/#mm-autore-compositore-ennio-morricone",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Ennio Morricone: l’identità nasce anche dal rumore",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-john-williams": [
       {
         "page": "dal-musical-al-film",
-        "url": "../dal-musical-al-film/#partitura",
-        "match": "full"
+        "url": "../dal-musical-al-film/#mm-autore-compositore-john-williams",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · John Williams: il ritorno del grande racconto orchestrale",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-johannes-brahms": [
@@ -1024,6 +1309,13 @@
         "match": "catalogue-work-anchor",
         "title": "Concerto/audioteca · Mendelssohn · Concerto per pianoforte n. 2 in re minore op. 40",
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
+      },
+      {
+        "page": "parola-e-canto",
+        "url": "../parola-e-canto/#mm-autore-compositore-felix-mendelssohn",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Mendelssohn · Auf Flügeln des Gesanges",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-kurt-weill": [
@@ -2098,6 +2390,13 @@
         "page": "Sinfonica · Sinfonia in si minore «Incompiuta», D. 759",
         "url": "../dalla-sinfonia-alla-rapsodia/#schubert-015",
         "match": "catalogue-work-anchor"
+      },
+      {
+        "page": "parola-e-canto",
+        "url": "../parola-e-canto/#mm-autore-compositore-franz-schubert",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Schubert · Der Leiermann",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-reynaldo-hahn": [
@@ -2109,8 +2408,10 @@
       },
       {
         "page": "parola-e-canto",
-        "url": "../parola-e-canto/#confronti",
-        "match": "full"
+        "url": "../parola-e-canto/#mm-autore-compositore-reynaldo-hahn",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Reynaldo Hahn · À Chloris",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-gabriel-faure": [
@@ -2142,6 +2443,13 @@
         "page": "Sinfonica · Pelléas et Mélisande, suite op. 80",
         "url": "../dalla-sinfonia-alla-rapsodia/#faure-099",
         "match": "catalogue-work-anchor"
+      },
+      {
+        "page": "parola-e-canto",
+        "url": "../parola-e-canto/#mm-autore-compositore-gabriel-faure",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Fauré · Mandoline",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-hugo-wolf": [
@@ -2159,8 +2467,10 @@
       },
       {
         "page": "parola-e-canto",
-        "url": "../parola-e-canto/#confronti",
-        "match": "full"
+        "url": "../parola-e-canto/#mm-autore-compositore-hugo-wolf",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Hugo Wolf · Verschwiegene Liebe / Verborgenheit",
+        "evidence": "nome-completo"
       }
     ],
     "compositore-modest-musorgskij": [
@@ -2169,6 +2479,13 @@
         "url": "../parola-e-canto/#mm-opera-canto-modest-musorgskij-canti-e-danze-della-morte",
         "match": "opera-strutturata",
         "title": "Ascolto · Canti e danze della morte"
+      },
+      {
+        "page": "parola-e-canto",
+        "url": "../parola-e-canto/#mm-autore-compositore-modest-musorgskij",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Musorgskij · Canti e danze della morte / Schubert · Die Stadt",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-henri-vieuxtemps": [
@@ -2371,9 +2688,11 @@
         "title": "Opera · Biber · Passacaglia in sol minore C 105, «Angelo custode»"
       },
       {
-        "page": "musica-da-camera",
-        "url": "../musica-da-camera/#catalogo",
-        "match": "catalogue-audit-confirmed"
+        "page": "barocco",
+        "url": "../barocco/#mm-autore-compositore-heinrich-ignaz-franz-von-biber",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Biber e il violino che cambia pelle",
+        "evidence": "cognome-unico-e-periodo"
       }
     ],
     "compositore-francesco-geminiani": [
@@ -2388,11 +2707,6 @@
         "url": "../musica-da-camera/#mm-opera-camera-geminiani-sonata-per-violino-e-basso-continuo-op-1-n-2-in-re-minore-h-14",
         "match": "opera-strutturata",
         "title": "Opera · Geminiani · Sonata per violino e basso continuo op. 1 n. 2 in re minore H. 14"
-      },
-      {
-        "page": "musica-da-camera",
-        "url": "../musica-da-camera/#catalogo",
-        "match": "catalogue-audit-confirmed"
       }
     ],
     "compositore-bohuslav-martinu": [
@@ -2406,11 +2720,6 @@
         "page": "Sinfonica · Sinfonia n. 4, H. 305",
         "url": "../dalla-sinfonia-alla-rapsodia/#martinu-069",
         "match": "catalogue-work-anchor"
-      },
-      {
-        "page": "dalla-sinfonia-alla-rapsodia",
-        "url": "../dalla-sinfonia-alla-rapsodia/#catalogo",
-        "match": "catalogue-audit-confirmed"
       }
     ],
     "compositore-alfred-schnittke": [
@@ -2428,11 +2737,6 @@
         "url": "../musica-da-camera/#mm-opera-camera-max-reger-sonata-per-clarinetto-e-pianoforte-n-3-op-107",
         "match": "opera-strutturata",
         "title": "Opera · Max Reger · Sonata per clarinetto e pianoforte n. 3 op. 107"
-      },
-      {
-        "page": "musica-da-camera",
-        "url": "../musica-da-camera/#catalogo",
-        "match": "catalogue-audit-confirmed"
       }
     ],
     "compositore-sergej-kusevickij": [
@@ -2600,20 +2904,9 @@
         "page": "Sinfonica · España, rapsodia per orchestra",
         "url": "../dalla-sinfonia-alla-rapsodia/#chabrier-048",
         "match": "catalogue-work-anchor"
-      },
-      {
-        "page": "dalla-sinfonia-alla-rapsodia",
-        "url": "../dalla-sinfonia-alla-rapsodia/#catalogo",
-        "match": "catalogue-audit-confirmed"
       }
     ],
-    "compositore-scott-joplin": [
-      {
-        "page": "post-romanticismo",
-        "url": "../post-romanticismo/#blues-jazz",
-        "match": "catalogue-audit-confirmed"
-      }
-    ],
+    "compositore-scott-joplin": [],
     "compositore-mel-bonis": [
       {
         "page": "musica-da-camera",
@@ -2626,99 +2919,27 @@
         "url": "../musica-da-camera/#mm-opera-camera-mel-bonis-trois-melodies-op-91-trascrizione-per-flauto-e-pianoforte",
         "match": "opera-strutturata",
         "title": "Opera · Mel Bonis · Trois Mélodies op. 91, trascrizione per flauto e pianoforte"
-      },
-      {
-        "page": "musica-da-camera",
-        "url": "../musica-da-camera/#catalogo",
-        "match": "catalogue-audit-confirmed"
       }
     ],
-    "compositore-pablo-de-sarasate": [
-      {
-        "page": "romanticismo",
-        "url": "../romanticismo/#virtuosismo",
-        "match": "catalogue-audit-confirmed"
-      }
-    ],
-    "compositore-eugene-ysaye": [
-      {
-        "page": "musica-da-camera",
-        "url": "../musica-da-camera/#catalogo",
-        "match": "catalogue-audit-confirmed"
-      }
-    ],
-    "persona-federico-fellini": [
-      {
-        "page": "dal-musical-al-film",
-        "url": "../dal-musical-al-film/#partitura",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
-      }
-    ],
-    "persona-alfred-hitchcock": [
-      {
-        "page": "dal-musical-al-film",
-        "url": "../dal-musical-al-film/#partitura",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
-      }
-    ],
-    "persona-georges-melies": [
-      {
-        "page": "dal-musical-al-film",
-        "url": "../dal-musical-al-film/#muto",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
-      }
-    ],
+    "compositore-pablo-de-sarasate": [],
+    "compositore-eugene-ysaye": [],
+    "persona-federico-fellini": [],
+    "persona-alfred-hitchcock": [],
+    "persona-georges-melies": [],
     "persona-jacopo-corsi": [
       {
         "page": "melodramma",
-        "url": "../melodramma/#camerata",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
+        "url": "../melodramma/#mm-autore-persona-jacopo-corsi",
+        "match": "author-heading-anchor",
+        "title": "Nel percorso · Dalla Camerata de’ Bardi al circolo di Jacopo Corsi",
+        "evidence": "nome-completo"
       }
     ],
-    "persona-ottavio-rinuccini": [
-      {
-        "page": "melodramma",
-        "url": "../melodramma/#camerata",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
-      }
-    ],
-    "persona-wilhelm-muller": [
-      {
-        "page": "parola-e-canto",
-        "url": "../parola-e-canto/#romanticismo",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
-      }
-    ],
-    "persona-heinrich-heine": [
-      {
-        "page": "parola-e-canto",
-        "url": "../parola-e-canto/#romanticismo",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
-      }
-    ],
-    "persona-paul-verlaine": [
-      {
-        "page": "parola-e-canto",
-        "url": "../parola-e-canto/#novecento",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
-      }
-    ],
-    "persona-eduard-morike": [
-      {
-        "page": "parola-e-canto",
-        "url": "../parola-e-canto/#romanticismo",
-        "match": "full",
-        "reason": "Ruolo storico-musicale verificato nel percorso narrativo"
-      }
-    ],
+    "persona-ottavio-rinuccini": [],
+    "persona-wilhelm-muller": [],
+    "persona-heinrich-heine": [],
+    "persona-paul-verlaine": [],
+    "persona-eduard-morike": [],
     "compositore-francois-adrien-boieldieu": [
       {
         "page": "Concerti · Boieldieu · Concerto per arpa in do maggiore",
@@ -2744,41 +2965,11 @@
         "evidence": "Intestazione H3 della scheda di ascolto con ID permanente; controllo compositore univoco."
       }
     ],
-    "persona-ma-rainey": [
-      {
-        "page": "post-romanticismo",
-        "url": "../post-romanticismo/#blues-jazz",
-        "match": "full-source"
-      }
-    ],
-    "persona-bessie-smith": [
-      {
-        "page": "post-romanticismo",
-        "url": "../post-romanticismo/#blues-jazz",
-        "match": "full-source"
-      }
-    ],
-    "compositore-louis-armstrong": [
-      {
-        "page": "post-romanticismo",
-        "url": "../post-romanticismo/#blues-jazz",
-        "match": "full-source"
-      }
-    ],
-    "compositore-mary-lou-williams": [
-      {
-        "page": "post-romanticismo",
-        "url": "../post-romanticismo/#blues-jazz",
-        "match": "full-source"
-      }
-    ],
-    "compositore-jeanine-tesori": [
-      {
-        "page": "dal-musical-al-film",
-        "url": "../dal-musical-al-film/#musical",
-        "match": "full-source"
-      }
-    ],
+    "persona-ma-rainey": [],
+    "persona-bessie-smith": [],
+    "compositore-louis-armstrong": [],
+    "compositore-mary-lou-williams": [],
+    "compositore-jeanine-tesori": [],
     "compositore-louise-farrenc": [
       {
         "page": "musica-da-camera",
@@ -3262,7 +3453,593 @@
         "match": "opera-strutturata",
         "title": "Ascolto · Reflets (1911)"
       }
-    ]
+    ],
+    "medioevo": [],
+    "rinascimento": [],
+    "barocco": [],
+    "classicismo": [],
+    "romanticismo": [],
+    "post-romanticismo": [],
+    "novecento": [],
+    "avanguardie": [],
+    "melodramma": [],
+    "teatro-classico": [],
+    "opera-lirica": [],
+    "risorgimento": [],
+    "madrigale": [],
+    "polifonia": [],
+    "ars-nova": [],
+    "scuola-veneziana": [],
+    "opera-buffa": [],
+    "sturm-und-drang": [],
+    "verismo": [],
+    "impressionismo": [],
+    "neoclassicismo": [],
+    "futurismo": [],
+    "espressionismo": [],
+    "dodecafonia": [],
+    "minimalismo": [],
+    "musica-elettronica": [],
+    "compositore-hildegard-von-bingen": [],
+    "geografia-francia": [],
+    "compositore-leonin": [],
+    "compositore-perotin": [],
+    "compositore-guillaume-dufay": [],
+    "geografia-italia": [],
+    "compositore-jacopo-da-bologna": [],
+    "compositore-giovanni-da-cascia": [],
+    "compositore-carlo-gesualdo": [],
+    "compositore-andrea-gabrieli": [],
+    "compositore-giovanni-gabrieli": [],
+    "compositore-orlando-di-lasso": [],
+    "compositore-marchetto-cara": [],
+    "compositore-vittoria-aleotti": [],
+    "compositore-thomas-tallis": [],
+    "geografia-inghilterra": [],
+    "compositore-william-byrd": [],
+    "compositore-orlando-gibbons": [],
+    "compositore-tomas-luis-de-victoria": [],
+    "geografia-spagna": [],
+    "compositore-cristobal-de-morales": [],
+    "compositore-francisco-guerrero": [],
+    "compositore-juan-del-encina": [],
+    "compositore-giovanni-battista-pergolesi": [],
+    "compositore-giovanni-bonaventura-viviani": [],
+    "compositore-benedetto-marcello": [],
+    "compositore-jacopo-peri": [],
+    "compositore-giovanni-legrenzi": [],
+    "compositore-antonio-caldara": [],
+    "compositore-maria-teresa-agnesi": [],
+    "geografia-germania": [],
+    "compositore-heinrich-schutz": [],
+    "compositore-johann-pachelbel": [],
+    "compositore-johann-kuhnau": [],
+    "compositore-marin-marais": [],
+    "compositore-john-blow": [],
+    "compositore-joseph-haydn": [],
+    "geografia-austria": [],
+    "compositore-wolfgang-amadeus-mozart": [],
+    "compositore-marianna-martines": [],
+    "compositore-johann-georg-albrechtsberger": [],
+    "compositore-carl-philipp-emanuel-bach": [],
+    "compositore-johann-christian-bach": [],
+    "compositore-giovanni-paisiello": [],
+    "compositore-domenico-cimarosa": [],
+    "compositore-antonio-salieri": [],
+    "compositore-luigi-cherubini": [],
+    "compositore-niccolo-piccinni": [],
+    "compositore-gioachino-rossini": [],
+    "compositore-vincenzo-bellini": [],
+    "compositore-gaetano-donizetti": [],
+    "compositore-luigi-felice-rossi": [],
+    "compositore-pietro-mascagni": [],
+    "compositore-ruggero-leoncavallo": [],
+    "compositore-arrigo-boito": [],
+    "compositore-georges-bizet": [],
+    "compositore-pauline-viardot": [],
+    "geografia-russia": [],
+    "compositore-milij-balakirev": [],
+    "geografia-cechia": [],
+    "compositore-alexander-von-zemlinsky": [],
+    "compositore-erik-satie": [],
+    "compositore-pierre-boulez": [],
+    "compositore-arthur-honegger": [],
+    "compositore-ottorino-respighi": [],
+    "compositore-alfredo-casella": [],
+    "compositore-gian-francesco-malipiero": [],
+    "compositore-luigi-nono": [],
+    "compositore-luciano-berio": [],
+    "compositore-bruno-maderna": [],
+    "compositore-goffredo-petrassi": [],
+    "compositore-giacinto-scelsi": [],
+    "compositore-charles-ives": [],
+    "geografia-stati-uniti": [],
+    "compositore-george-gershwin": [],
+    "compositore-steve-reich": [],
+    "compositore-philip-glass": [],
+    "compositore-duke-ellington": [],
+    "geografia-ungheria": [],
+    "compositore-zoltan-kodaly": [],
+    "compositore-gyorgy-kurtag": [],
+    "compositore-witold-lutos-awski": [],
+    "geografia-polonia": [],
+    "compositore-henryk-gorecki": [],
+    "compositore-carl-orff": [],
+    "compositore-hans-werner-henze": [],
+    "scuola-romana": [],
+    "scuola-fiamminga": [],
+    "scuola-luterana": [],
+    "compositore-johannes-ockeghem": [],
+    "compositore-jacob-obrecht": [],
+    "compositore-gilles-binchois": [],
+    "compositore-jacob-clemens-non-papa": [],
+    "compositore-giovanni-animuccia": [],
+    "compositore-giovanni-maria-nanino": [],
+    "compositore-felice-anerio": [],
+    "compositore-giovanni-francesco-anerio": [],
+    "compositore-francesco-soriano": [],
+    "compositore-costanzo-festa": [],
+    "compositore-gregorio-allegri": [],
+    "compositore-claudio-merulo": [],
+    "compositore-giovanni-croce": [],
+    "compositore-gioseffo-zarlino": [],
+    "compositore-johann-walter": [],
+    "compositore-michael-praetorius": [],
+    "compositore-johann-hermann-schein": [],
+    "compositore-samuel-scheidt": [],
+    "compositore-baldassare-galuppi": [],
+    "compositore-nicola-logroscino": [],
+    "compositore-leonardo-vinci": [],
+    "compositore-leonardo-leo": [],
+    "compositore-egidio-duni": [],
+    "compositore-pietro-alessandro-guglielmi": [],
+    "compositore-nicola-porpora": [],
+    "compositore-giovanni-battista-sammartini": [],
+    "compositore-franz-xaver-richter": [],
+    "compositore-christian-cannabich": [],
+    "compositore-giacomo-meyerbeer": [],
+    "compositore-jacques-offenbach": [],
+    "compositore-jules-massenet": [],
+    "compositore-charles-gounod": [],
+    "compositore-gaspare-spontini": [],
+    "compositore-la-monte-young": [],
+    "compositore-terry-riley": [],
+    "compositore-john-adams": [],
+    "compositore-michael-nyman": [],
+    "compositore-pierre-henry": [],
+    "compositore-edgard-varese": [],
+    "compositore-luigi-dallapiccola": [],
+    "compositore-paul-dessau": [],
+    "compositore-ambroise-thomas": [],
+    "compositore-francesco-gasparini": [],
+    "compositore-hans-pfitzner": [],
+    "compositore-siegfried-wagner": [],
+    "compositore-leopold-mozart": [],
+    "compositore-giuseppe-malerbi": [],
+    "persona-angelo-tesei": [],
+    "compositore-stanislao-mattei": [],
+    "compositore-giovanni-simone-mayr": [],
+    "compositore-daniel-francois-esprit-auber": [],
+    "compositore-niccolo-antonio-zingarelli": [],
+    "opera-seria": [],
+    "opera-semiseria": [],
+    "dramma-giocoso": [],
+    "belcanto": [],
+    "grand-opera": [],
+    "opera-comique": [],
+    "intermezzo-comico": [],
+    "compositore-isabella-colbran": [],
+    "musica-concreta": [],
+    "scuola-notre-dame": [],
+    "camerata-fiorentina": [],
+    "scuola-napoletana": [],
+    "scuola-mannheim": [],
+    "tradizione-viennese-classica": [],
+    "gruppo-dei-cinque": [],
+    "seconda-scuola-vienna": [],
+    "gruppo-dei-sei": [],
+    "scuola-darmstadt": [],
+    "compositore-cezar-cui": [],
+    "compositore-georges-auric": [],
+    "compositore-louis-durey": [],
+    "compositore-germaine-tailleferre": [],
+    "ars-nova-francese": [],
+    "ars-nova-italiana": [],
+    "madrigalismo-cinquecentesco": [],
+    "frottola-corti-italiane": [],
+    "tradizione-inglese-elisabettiana": [],
+    "polifonia-sacra-spagnola": [],
+    "opera-veneziana-seicento": [],
+    "ospedali-veneziani-settecento": [],
+    "concerto-violinistico-italiano": [],
+    "clavicembalisti-francesi-barocchi": [],
+    "tradizione-operistica-francese-barocca": [],
+    "tradizioni-organistiche-tedesche": [],
+    "stile-galante-e-sensibile": [],
+    "sinfonismo-italiano-settecento": [],
+    "scuola-nazionale-boema": [],
+    "tradizione-operistica-italiana-ottocento": [],
+    "tradizione-operistica-francese-ottocento": [],
+    "tradizione-lied-romantico": [],
+    "sinfonismo-tardoromantico": [],
+    "modernita-francese-primo-novecento": [],
+    "generazione-1880-musica-italiana": [],
+    "scuola-nazionale-ungherese-novecento": [],
+    "avanguardia-italiana-secondo-novecento": [],
+    "accademia-degli-unisoni": [],
+    "tradizione-cembalistica-iberica": [],
+    "teatro-inglese-restaurazione": [],
+    "riforma-operistica-gluck": [],
+    "virtuosismo-strumentale-romantico": [],
+    "scuola-franckiana-parigi": [],
+    "tradizione-melodie-francese": [],
+    "teatro-epico-brechtiano": [],
+    "neobarocco-novecento": [],
+    "scrittura-dodecafonica-italiana": [],
+    "compositore-antonio-soler": [],
+    "compositore-ernest-chausson": [],
+    "compositore-vincent-d-indy": [],
+    "stampa-musicale-rinascimentale": [],
+    "monodia-sacra-medievale": [],
+    "tradizione-trovieri-francia": [],
+    "villancico-rinascimentale-iberico": [],
+    "tastiere-italiane-primo-seicento": [],
+    "musica-corte-medicea-seicento": [],
+    "musica-veneziana-settecento": [],
+    "oratorio-inglese-handeliano": [],
+    "scuola-violinistica-francese": [],
+    "musica-viennese-illuminismo": [],
+    "scuola-contrappunto-bolognese": [],
+    "musica-cameristica-classica": [],
+    "scuola-caritatevole-bergamo": [],
+    "opera-romantica-tedesca": [],
+    "pianismo-romantico-europeo": [],
+    "conservatori-russi-mosca": [],
+    "conservatorio-pietroburgo": [],
+    "avanguardia-polacca-post-1956": [],
+    "avanguardia-americana-indeterminazione": [],
+    "teatro-inglese-novecento": [],
+    "compositore-christian-gottlob-neefe": [],
+    "compositore-luzzasco-luzzaschi": [],
+    "compositore-johann-jakob-froberger": [],
+    "compositore-jean-bretel": [],
+    "persona-isabella-de-medici": [],
+    "cappella-corte-innsbruck-seicento": [],
+    "cappella-imperiale-vienna-primo-settecento": [],
+    "accademie-domestiche-milano-settecento": [],
+    "musica-di-corte-estense-ferrara": [],
+    "musica-oratorio-romano-settecento": [],
+    "persona-giordano-riccati": [],
+    "compositore-friedrich-wilhelm-zachow": [],
+    "compositore-giovanni-battista-somis": [],
+    "compositore-monsieur-de-sainte-colombe": [],
+    "compositore-antonio-lotti": [],
+    "compositore-giuseppe-sarti": [],
+    "compositore-filippo-manfredi": [],
+    "compositore-giovanni-giuseppe-cambini": [],
+    "collegium-musicum-lipsia": [],
+    "tradizione-viola-da-gamba-francese": [],
+    "musica-di-corte-spagnola-settecento": [],
+    "scuola-contrappunto-viennese": [],
+    "conservatorio-parigi-primo-ottocento": [],
+    "compositore-wojciech-zywny": [],
+    "compositore-jozef-elsner": [],
+    "compositore-anton-reicha": [],
+    "compositore-christian-theodor-weinlig": [],
+    "compositore-michael-haydn": [],
+    "compositore-anton-rubinstein": [],
+    "compositore-nadia-boulanger": [],
+    "compositore-fritz-reiner": [],
+    "compositore-billy-strayhorn": [],
+    "compositore-charles-hambitzer": [],
+    "compositore-george-whitefield-chadwick": [],
+    "compositore-frederick-converse": [],
+    "compositore-anatolij-ljadov": [],
+    "compositore-maksimilian-steinberg": [],
+    "compositore-sergej-taneev": [],
+    "compositore-marcantonio-ingegneri": [],
+    "compositore-giacomo-antonio-perti": [],
+    "compositore-francesco-durante": [],
+    "compositore-pietro-nardini": [],
+    "compositore-johann-christoph-bach-1671": [],
+    "compositore-carl-friedrich-zelter": [],
+    "compositore-carl-czerny": [],
+    "compositore-eduard-marxsen": [],
+    "compositore-amilcare-ponchielli": [],
+    "compositore-camillo-sivori": [],
+    "compositore-lauro-rossi": [],
+    "compositore-johann-friedrich-fasch": [],
+    "compositore-giovanni-battista-martini": [],
+    "compositore-gennaro-manna": [],
+    "persona-moliere": [],
+    "persona-voltaire": [],
+    "persona-giovanni-faustini": [],
+    "persona-felice-romani": [],
+    "persona-giulio-ricordi": [],
+    "persona-salvatore-cammarano": [],
+    "persona-giuseppe-bertoldi": [],
+    "compositore-jean-francois-lesueur": [],
+    "compositore-fromental-halevy": [],
+    "compositore-simon-sechter": [],
+    "compositore-otto-kitzler": [],
+    "compositore-charles-koechlin": [],
+    "compositore-rene-leibowitz": [],
+    "compositore-andre-gedalge": [],
+    "compositore-henry-cowell": [],
+    "compositore-giacinto-sallustio": [],
+    "compositore-walter-klein": [],
+    "persona-hugo-von-hofmannsthal": [],
+    "persona-andree-vaurabourg": [],
+    "persona-ricardo-vines": [],
+    "persona-cathy-berberian": [],
+    "persona-george-edward-ives": [],
+    "persona-sergej-diaghilev": [],
+    "scuola-partimento-napoletano": [],
+    "scapigliatura-milanese": [],
+    "jeune-france-1936": [],
+    "gunther-schule-monaco": [],
+    "gruppo-improvvisazione-nuova-consonanza": [],
+    "vienna-fin-de-siecle-musicale": [],
+    "conservatorio-americano-fontainebleau": [],
+    "rinascimento-afroamericano-chicago": [],
+    "jazz-orchestrale-big-band": [],
+    "teatro-musicale-broadway": [],
+    "vereinigung-schaffender-tonkuenstler-1904": [],
+    "scuola-violinistica-tartini-padova": [],
+    "scuola-principale-musica-varsavia": [],
+    "cappella-principesca-salisburgo-settecento": [],
+    "festival-bayreuth-direzione-artistica": [],
+    "societe-musicale-independante": [],
+    "new-music-society-california": [],
+    "ricezione-dodecafonia-francia-dopoguerra": [],
+    "associazione-nuova-consonanza": [],
+    "international-composers-guild": [],
+    "cappella-duomo-cremona": [],
+    "teatro-san-carlo-napoli-primo-ottocento": [],
+    "singakademie-berlino": [],
+    "cappella-imperiale-russa-caterina-ii": [],
+    "conservatorio-milano-ottocento": [],
+    "new-england-conservatory-boston": [],
+    "second-new-england-school": [],
+    "conservatorio-vienna-ottocento": [],
+    "corte-anhalt-zerbst-fasch": [],
+    "yale-university-composizione-ives": [],
+    "cappella-corte-bonn-neefe": [],
+    "conservatorio-parigi-contrappunto-1905": [],
+    "contesto-accademia-liszt-budapest": [],
+    "contesto-curtis-direzione-reiner": [],
+    "contesto-cappella-collegiata-lugo": [],
+    "contesto-thomaskantorat-lipsia-ottocento": [],
+    "contesto-michaeliskirche-ohrdruf": [],
+    "contesto-juilliard-composizione-primi-decennio": [],
+    "contesto-teatro-linz-ottocento": [],
+    "compositore-frank-bridge": [],
+    "compositore-engelbert-humperdinck": [],
+    "persona-gunild-keetman": [],
+    "persona-peter-sellars": [],
+    "persona-alice-goodman": [],
+    "persona-peter-greenaway": [],
+    "persona-peter-pears": [],
+    "persona-wh-auden": [],
+    "persona-myfanwy-piper": [],
+    "persona-eric-crozier": [],
+    "persona-em-forster": [],
+    "persona-montagu-slater": [],
+    "persona-merce-cunningham": [],
+    "persona-david-tudor": [],
+    "persona-martha-graham": [],
+    "persona-agnes-de-mille": [],
+    "persona-ira-gershwin": [],
+    "persona-dubose-heyward": [],
+    "persona-paul-whiteman": [],
+    "persona-dorothee-guenther": [],
+    "persona-sergio-leone": [],
+    "persona-giuseppe-tornatore": [],
+    "persona-le-corbusier": [],
+    "compositore-iannis-xenakis": [],
+    "persona-jane-campion": [],
+    "persona-frederick-stock": [],
+    "persona-arthur-laurents": [],
+    "persona-jerome-robbins": [],
+    "persona-jean-cocteau": [],
+    "persona-pablo-picasso": [],
+    "persona-leonide-massine": [],
+    "compositore-margaret-bonds": [],
+    "persona-katherine-dunham": [],
+    "compositore-ferde-grofe": [],
+    "compositore-stephen-sondheim": [],
+    "compositore-heinrich-kaminski": [],
+    "canti-patriottici-piemontesi-1847": [],
+    "compositore-horatio-parker": [],
+    "opera-da-camera-novecentesca": [],
+    "opera-originale-per-televisione": [],
+    "persona-ingeborg-bachmann": [],
+    "pianoforte-preparato-novecentesco": [],
+    "rapsodia-jazz-e-sala-da-concerto": [],
+    "compositore-juan-tizol": [],
+    "persona-marta-kurtag": [],
+    "persona-giulio-strozzi": [],
+    "dramma-musicale-allegorico-medievale": [],
+    "messa-polifonica-ciclo-unitario-medievale": [],
+    "formes-fixes-francesi-trecento": [],
+    "mottetto-civico-cerimoniale-quattrocento": [],
+    "chanson-borgognona-quattrocento": [],
+    "ballata-italiana-trecento": [],
+    "caccia-italiana-trecento": [],
+    "cappella-regia-francia-quattrocento": [],
+    "cappella-saint-donatien-bruges": [],
+    "corte-musicale-medicea-firenze-quattrocento": [],
+    "souterliedekens-olandesi-cinquecento": [],
+    "cappella-giulia-san-pietro-roma": [],
+    "song-ayre-liuto-inglese": [],
+    "chapel-royal-inghilterra-stuart": [],
+    "collegio-germanico-roma-cinquecento": [],
+    "cappella-pontificia-roma-cinquecento": [],
+    "cappella-cattedrale-siviglia-cinquecento": [],
+    "lauda-musicale-oratorio-filippino": [],
+    "oratorio-drammatico-volgare-seicento": [],
+    "toccata-organistica-rinascimentale": [],
+    "cappella-san-marco-venezia": [],
+    "polifonia-corale-luterana-cinquecento": [],
+    "organologia-syntagma-musicum": [],
+    "danze-strumentali-terpsichore": [],
+    "suite-danze-banchetto-musicale": [],
+    "thomaskantorat-lipsia-seicento": [],
+    "tabulatura-nova-organo-seicento": [],
+    "concerto-solistico-oboe-primo-settecento": [],
+    "ospedale-mendicanti-venezia": [],
+    "tragedie-en-musique-francese": [],
+    "sonata-francese-violino-basso-continuo": [],
+    "cappella-cattedrale-strasburgo-settecento": [],
+    "lied-su-poesia-morike": [],
+    "poema-sinfonico-ottocentesco": [],
+    "musica-del-rumore-futurista": [],
+    "persona-isabella-d-este": [],
+    "persona-lorenzo-de-medici": [],
+    "persona-martin-lutero": [],
+    "persona-ugo-piatti": [],
+    "magnus-liber-organi-notre-dame": [],
+    "organum-quadruplum-notre-dame": [],
+    "jeu-de-robin-et-marion": [],
+    "madrigale-ars-nova-primo-trecento": [],
+    "corte-scaligera-musica-verona-trecento": [],
+    "ricercare-contrappuntistico-cinquecento": [],
+    "trattato-morley-plaine-easie-1597": [],
+    "madrigali-triumphs-of-oriana-1601": [],
+    "terzo-suono-teoria-tartini": [],
+    "cappella-san-petronio-bologna": [],
+    "dialettica-solo-tutti-concerto-bolognese": [],
+    "recitar-cantando-peri-euridice": [],
+    "dramma-per-musica-agnesi-ciro-1753": [],
+    "abendmusiken-lubecca-marienkirche": [],
+    "corale-organistico-turingia-seicento": [],
+    "masque-venus-adonis-john-blow": [],
+    "inno-patriottico-canto-italiani-1847": [],
+    "opera-verista-italiana-fine-ottocento": [],
+    "persona-guido-menasci": [],
+    "persona-giovanni-targioni-tozzetti": [],
+    "scapigliatura-musicale-italiana": [],
+    "libretti-boito-shakespeare-verdi": [],
+    "persona-henri-meilhac": [],
+    "persona-ludovic-halevy": [],
+    "persona-ivan-turgenev": [],
+    "opera-da-salotto-viardot-1867": [],
+    "sinfonismo-francese-farrenc-1849": [],
+    "nonetto-farrenc-musica-da-camera": [],
+    "persona-paul-claudel": [],
+    "jeanne-au-bucher-oratorio-drammatico": [],
+    "favola-musicale-didattica-orchestra-1936": [],
+    "persona-sergej-ejzenstejn": [],
+    "sinfonia-leningrado-1942-esecuzione": [],
+    "sinestesia-luce-prometeo-skriabin": [],
+    "poema-sinfonico-romano-respighi": [],
+    "trascrizione-musica-antica-primo-novecento": [],
+    "festival-musica-contemporanea-venezia-1930": [],
+    "madrigale-drammatico-petrassi-1941": [],
+    "etnomusicologia-campo-ungheria-bartok-kodaly": [],
+    "mikrokosmos-bartok-pianoforte-didattico": [],
+    "aleatorismo-controllato-lutoslawski": [],
+    "sonorismo-cluster-penderecki": [],
+    "passione-luca-penderecki-1966": [],
+    "sinfonia-canti-dolenti-gorecki-1976": [],
+    "gebrauchsmusik-hindemith": [],
+    "studio-elettronico-wdr-colonia": [],
+    "elettroacustica-voce-sintesi-stockhausen": [],
+    "trio-for-strings-la-monte-1958": [],
+    "in-c-patterns-terry-riley-1964": [],
+    "kronos-quartet-ensemble": [],
+    "opera-evento-storico-nixon-1987": [],
+    "persona-mark-morris": [],
+    "colonna-sonora-ny-man-contratto-1982": [],
+    "musica-afroamericana-novecento": [],
+    "repertorio-viviani-capricci-1678": [],
+    "teatro-musicale-storiografico-palestrina-1917": [],
+    "melodie-francese-durey-petrone-1918": [],
+    "concertino-arpa-tailleferre-1927": [],
+    "persona-adelheid-wette": [],
+    "persona-langston-hughes": [],
+    "suite-paesaggistica-grand-canyon-grofe": [],
+    "persona-james-lapine": [],
+    "oratorio-parker-hora-novissima-1893": [],
+    "standard-jazz-perdido-tizol": [],
+    "editio-medicea-graduale-1614": [],
+    "miserere-allegri-doppio-coro": [],
+    "madrigale-teatrale-comico-croce": [],
+    "persona-louis-anseaume": [],
+    "opera-of-nobility-londra-1733": [],
+    "sinfonismo-lombardo-autonomo-1730": [],
+    "persona-bertolt-brecht": [],
+    "trattato-violino-leopold-1756": [],
+    "tecnica-tastiera-lugo-rossini-1802": [],
+    "persona-giuseppe-maria-foppa": [],
+    "giulietta-romeo-operistica-zingarelli-1796": [],
+    "belcanto-rossini-colbran-napoli": [],
+    "teatro-russo-william-ratcliff-cui": [],
+    "cinema-francese-poetico-cocteau-1946": [],
+    "concerti-due-organi-soler-escorial": [],
+    "suite-tastiera-froberger-francese": [],
+    "jeu-parti-arras-duecento": [],
+    "marktkirche-halle-zachow": [],
+    "concerts-deux-violes-sainte-colombe": [],
+    "opera-ossian-les-bardes-1804": [],
+    "dramma-sacro-ordo-virtutum": [],
+    "codice-squarcialupi-repertorio-trecento": [],
+    "messa-parafrasi-pange-lingua": [],
+    "missa-papae-marcelli-palestrina": [],
+    "villanella-a-tre-voci-cinquecento": [],
+    "stampa-frottole-petrucci-1504": [],
+    "madrigali-quattro-voci-vittoria-aleotti-1593": [],
+    "lachrimae-consort-liuto-viole": [],
+    "fantasie-consort-viole-gibbons": [],
+    "officium-defunctorum-victoria-1605": [],
+    "cancionero-palacio-spagnolo": [],
+    "sonate-a-tre-albinoni-op1-1694": [],
+    "italienisches-liederbuch-wolf": [],
+    "opera-principe-igor-russa": [],
+    "ma-vlast-sei-poemi-sinfonici": [],
+    "poeme-symphonique-cento-metronomi": [],
+    "jeux-venitiens-lutoslawski-1961": [],
+    "miserere-gorecki-1981-solidarnosc": [],
+    "mathis-der-maler-sinfonia-1934": [],
+    "missa-maria-zart-obrecht": [],
+    "ludi-musici-scheidt-1621": [],
+    "bella-pescatrice-guglielmi-1789": [],
+    "well-tuned-piano-la-monte-young": [],
+    "colonna-sonora-the-piano-1993": [],
+    "deserts-nastri-edgard-varese-1954": [],
+    "il-prigioniero-dallapiccola-1948": [],
+    "elegy-for-young-lovers-opera-1961": [],
+    "persona-chester-kallman": [],
+    "three-places-new-england-ives": [],
+    "persona-nicolas-slonimsky": [],
+    "quattro-pezzi-una-nota-scelsi-1959": [],
+    "quattro-minuti-trentatre-cage": [],
+    "gruppen-stockhausen-tre-orchestre": [],
+    "war-requiem-coventry-1962": [],
+    "antiche-arie-danze-respighi-1917": [],
+    "also-sprach-zarathustra-strauss-1896": [],
+    "das-lied-von-der-erde-mahler": [],
+    "price-prima-sinfonia-chicago-1933": [],
+    "la-valse-ravel-balletto-1929": [],
+    "persona-bronislava-nijinska": [],
+    "persona-francesco-saverio-zini": [],
+    "persona-marian-zazeela": [],
+    "compositore-jan-pieterszoon-sweelinck": [],
+    "geografia-paesi-bassi": [],
+    "take-a-train-strayhorn-1941": [],
+    "sonate-bibliche-kuhnau-1700": [],
+    "compositore-vincenzo-galilei": [],
+    "persona-johann-wolfgang-von-goethe": [],
+    "geografia-irlanda": [],
+    "compositore-niccolo-jommelli": [],
+    "persona-oscar-hammerstein-ii": [],
+    "compositore-gaetano-pugnani": [],
+    "compositore-jerome-kern": [],
+    "compositore-richard-rodgers": [],
+    "musica-per-film-novecento": [],
+    "tradizione-trovatori-occitani": [],
+    "compositore-niels-wilhelm-gade": [],
+    "compositore-orla-rosenhoff": []
   },
   "pendingReview": [
     {
@@ -4916,6 +5693,328 @@
       "page": "concerti",
       "url": "../concerti/#intro-anderson-typewriter",
       "match": "full-source"
+    },
+    {
+      "node_id": "compositore-guillaume-de-machaut",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "medioevo",
+      "url": "../medioevo/#arsnova",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-francesco-landini",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "medioevo",
+      "url": "../medioevo/#trecento",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-francesca-caccini",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "barocco",
+      "url": "../barocco/#voce",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-francesca-caccini",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "melodramma",
+      "url": "../melodramma/#rinascimento",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-barbara-strozzi",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "barocco",
+      "url": "../barocco/#seicento",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-antonio-vivaldi",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "melodramma",
+      "url": "../melodramma/#marcello",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-elisabeth-jacquet-de-la-guerre",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "barocco",
+      "url": "../barocco/#europa",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-johann-stamitz",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "classicismo",
+      "url": "../classicismo/#mannheim",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-gustav-mahler",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#belle-epoque",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-richard-strauss",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#belle-epoque",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-giacomo-puccini",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#belle-epoque",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-jean-sibelius",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#belle-epoque",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-sergej-rachmaninov",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#belle-epoque",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-luigi-russolo",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#futurismo",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-pierre-schaeffer",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#cage",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-karlheinz-stockhausen",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#cage",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-john-cage",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#cage",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-bernard-herrmann",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "dal-musical-al-film",
+      "url": "../dal-musical-al-film/#partitura",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-nino-rota",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "dal-musical-al-film",
+      "url": "../dal-musical-al-film/#partitura",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-ennio-morricone",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "dal-musical-al-film",
+      "url": "../dal-musical-al-film/#partitura",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-john-williams",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "dal-musical-al-film",
+      "url": "../dal-musical-al-film/#partitura",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-reynaldo-hahn",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "parola-e-canto",
+      "url": "../parola-e-canto/#confronti",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-hugo-wolf",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "parola-e-canto",
+      "url": "../parola-e-canto/#confronti",
+      "match": "full"
+    },
+    {
+      "node_id": "compositore-heinrich-ignaz-franz-von-biber",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "musica-da-camera",
+      "url": "../musica-da-camera/#catalogo",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "compositore-francesco-geminiani",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "musica-da-camera",
+      "url": "../musica-da-camera/#catalogo",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "compositore-bohuslav-martinu",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "dalla-sinfonia-alla-rapsodia",
+      "url": "../dalla-sinfonia-alla-rapsodia/#catalogo",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "compositore-max-reger",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "musica-da-camera",
+      "url": "../musica-da-camera/#catalogo",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "compositore-emmanuel-chabrier",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "dalla-sinfonia-alla-rapsodia",
+      "url": "../dalla-sinfonia-alla-rapsodia/#catalogo",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "compositore-scott-joplin",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#blues-jazz",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "compositore-mel-bonis",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "musica-da-camera",
+      "url": "../musica-da-camera/#catalogo",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "compositore-pablo-de-sarasate",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "romanticismo",
+      "url": "../romanticismo/#virtuosismo",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "compositore-eugene-ysaye",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "musica-da-camera",
+      "url": "../musica-da-camera/#catalogo",
+      "match": "catalogue-audit-confirmed"
+    },
+    {
+      "node_id": "persona-federico-fellini",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "dal-musical-al-film",
+      "url": "../dal-musical-al-film/#partitura",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-alfred-hitchcock",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "dal-musical-al-film",
+      "url": "../dal-musical-al-film/#partitura",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-georges-melies",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "dal-musical-al-film",
+      "url": "../dal-musical-al-film/#muto",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-jacopo-corsi",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "melodramma",
+      "url": "../melodramma/#camerata",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-ottavio-rinuccini",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "melodramma",
+      "url": "../melodramma/#camerata",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-wilhelm-muller",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "parola-e-canto",
+      "url": "../parola-e-canto/#romanticismo",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-heinrich-heine",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "parola-e-canto",
+      "url": "../parola-e-canto/#romanticismo",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-paul-verlaine",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "parola-e-canto",
+      "url": "../parola-e-canto/#novecento",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-eduard-morike",
+      "reason": "Ruolo storico-musicale verificato nel percorso narrativo",
+      "page": "parola-e-canto",
+      "url": "../parola-e-canto/#romanticismo",
+      "match": "full"
+    },
+    {
+      "node_id": "persona-ma-rainey",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#blues-jazz",
+      "match": "full-source"
+    },
+    {
+      "node_id": "persona-bessie-smith",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#blues-jazz",
+      "match": "full-source"
+    },
+    {
+      "node_id": "compositore-louis-armstrong",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#blues-jazz",
+      "match": "full-source"
+    },
+    {
+      "node_id": "compositore-mary-lou-williams",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "post-romanticismo",
+      "url": "../post-romanticismo/#blues-jazz",
+      "match": "full-source"
+    },
+    {
+      "node_id": "compositore-jeanine-tesori",
+      "reason": "Destinazione a macro-capitolo o non specifica. Sospesa finché un audit non identifica il passaggio esatto.",
+      "page": "dal-musical-al-film",
+      "url": "../dal-musical-al-film/#musical",
+      "match": "full-source"
     }
   ],
   "validation": {
@@ -4926,5 +6025,12 @@
       "new_work_links": 218
     },
     "pending_review": 236
+  },
+  "global_audit_20261018": {
+    "examined_nodes": 787,
+    "people_indexed": 475,
+    "precise_narrative_links": 62,
+    "generic_links_quarantined": 46,
+    "pending_total": 282
   }
 }

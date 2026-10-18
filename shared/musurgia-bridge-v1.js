@@ -18,27 +18,27 @@ var periodGroups={medioevo:["medioevo"],rinascimento:["rinascimento","medioevo"]
 function normalize(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/['’]/g,"").replace(/[^\p{L}\p{N}]+/gu," ").trim();}
 fetch(index.href,{cache:"force-cache"}).then(function(r){if(!r.ok)throw new Error("Indice autori");return r.json()}).then(function(data){
 var authors=(data.people||[]).filter(function(p){return p.id&&p.label&&Array.isArray(p.keys)});
-document.querySelectorAll("main h2,main h3,.content h2,.content h3").forEach(function(heading){
- if(heading.closest("nav,.catalogue,.works,.menu-panel"))return;
- var title=normalize(heading.textContent),padded=" "+title+" ";if(!title||title.length>190)return;
- var matches=[];
- for(var i=0;i<authors.length;i++){
-  var person=authors[i],full=normalize(person.label),exact=padded.indexOf(" "+full+" ")!==-1;
-  var partial=!exact&&person.keys.some(function(k){return k.length>=5&&padded.indexOf(" "+k+" ")!==-1});
-  if(!exact&&!partial)continue;
-  var permitted=periodGroups[slug];
-  if(!exact&&permitted&&!(person.periods||[]).some(function(p){return permitted.indexOf(p)!==-1}))continue;
-  matches.push(person);if(matches.length>=2)break;
+var permittedByPage={"medioevo":["medioevo"],"rinascimento":["rinascimento","medioevo"],"barocco":["barocco","rinascimento"],"classicismo":["classicismo","barocco","romanticismo"],"risorgimento":["romanticismo","classicismo"],"romanticismo":["romanticismo","post-romanticismo","classicismo"],"melodramma":["rinascimento","barocco","classicismo","romanticismo"],"post-romanticismo":["post-romanticismo","novecento","romanticismo"],"dal-musical-al-film":["novecento","post-romanticismo"],"parola-e-canto":["medioevo","rinascimento","barocco","classicismo","romanticismo","post-romanticismo","novecento"]};
+var bannedLeadingNames=new Set(["firenze","roma","parigi","venezia","milano","napoli","bologna","vienna","londra","berlino","praga","monaco","torino","canto","musica","francia","italia","europa"]);
+var ownersByLastName=new Map();
+authors.forEach(function(p){var key=normalize(p.label).split(' ').pop(),list=ownersByLastName.get(key)||[];list.push(p);ownersByLastName.set(key,list);});
+document.querySelectorAll('main h2,main h3,.content h2,.content h3').forEach(function(heading){
+ if(heading.closest('nav,.catalogue,.works,.menu-panel'))return;
+ var title=normalize(heading.textContent),first=title.split(' ')[0]||'';if(!title||title.length>190)return;
+ var matches=authors.filter(function(p){var name=normalize(p.label);return name.length>=7&&(' '+title+' ').includes(' '+name+' ')});
+ var person=null;
+ if(matches.length===1)person=matches[0];
+ else if(matches.length===0&&first.length>=5&&!bannedLeadingNames.has(first)){
+  var candidates=ownersByLastName.get(first)||[],allowed=permittedByPage[slug]||[];
+  if(candidates.length===1&&(candidates[0].periods||[]).some(function(x){return allowed.includes(x)}))person=candidates[0];
  }
- matches.forEach(function(person){
-  var a=document.createElement("a"),url=new URL(graph.href);url.searchParams.set("n",person.id);
-  a.href=url.href;a.className="musurgia-author-link";a.textContent="✧ Musurgia";
-  a.title="Apri "+person.label+" nella costellazione";
-  a.setAttribute("aria-label","Esplora "+person.label+" in Musurgia Mundi");
-  heading.appendChild(document.createTextNode(" "));heading.appendChild(a);
- });
+ if(!person||heading.querySelector('.musurgia-author-link'))return;
+ var a=document.createElement('a'),url=new URL(graph.href);url.searchParams.set('n',person.id);
+ a.href=url.href;a.className='musurgia-author-link';a.textContent='✧ Musurgia';
+ a.title='Apri '+person.label+' nella costellazione';
+ a.setAttribute('aria-label','Esplora '+person.label+' in Musurgia Mundi');
+ heading.appendChild(document.createTextNode(' '));heading.appendChild(a);
 });
-
 /* Lotto V: rimandi dalle singole opere, non soltanto dai titoli h2/h3.
    Attribuzione esatta attraverso chiavi univoche: nessuna risoluzione automatica
    di Bach, Mozart, Schumann o altri cognomi condivisi. */
