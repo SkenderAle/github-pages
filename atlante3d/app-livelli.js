@@ -227,11 +227,17 @@ function geoScreenPoint(n,withManual=true){
  return {x:raw.x+manual+auto+ex,y:raw.y+manualY+autoY+ey,depth:0,scale:1,r:15,geo:true,point:raw.point};
 }
 function contextRawPoint(n){
- if(!selected||n===selected||geoFromNode(n))return null;
+ if(!selected||geoFromNode(n))return null;
+ // Il nodo SELEZIONATO rimane sempre visibile, anche quando non ha coordinate:
+ // il centro del canvas è qui una posizione schematica, NON un punto geografico.
+ if(n===selected)return {x:w/2,y:h/2,depth:0,scale:1,r:15,geo:false,context:true,unlocated:true};
  if(!(n.type==="corrente"||n.type==="ambito"||n.type==="persona"))return null;
  const depths=selectedDepths(readingDepth()),depth=depths?.get(n.id);
  if(depth==null||depth<1||depth>3)return null;
- const center=rawGeoPoint(selected);if(!center)return null;
+ // Con un soggetto senza geografia, i nodi di contesto si distribuiscono
+ // attorno al suo centro schematico, senza fingere una città di appartenenza.
+ const center=rawGeoPoint(selected)||contextRawPoint(selected);
+ if(!center)return null;
  const h=stableHash(n.id),angle=((h%100000)/100000)*Math.PI*2;
  const ring=76+depth*54+((h>>>8)%27);
  return {x:center.x+Math.cos(angle)*ring,y:center.y+Math.sin(angle)*ring,depth:0,scale:1,r:15,geo:false,context:true};
@@ -312,7 +318,14 @@ function fitGeoNetwork(n,tight=false){
  if(!geoState.enabled)return;
  if(!n){geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";return;}
  const center=geoFromNode(n);
- if(!center){geoLabel.textContent=n.label+" · geografia non ancora catalogata";return;}
+ if(!center){
+  // Evita che la mappa resti su Copland (o sull'ultimo autore navigato).
+  // La selezione è schematica finché non esiste una città documentata.
+  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
+  geoAutoSpan=360;geoZoomPct=0;syncZoomControls();
+  geoLabel.textContent=n.label+" · localizzazione assente · nodo schematico (non geografico)";
+  return;
+ }
  const pts=networkNodesForFocus(n).map(geoFromNode).filter(Boolean);
  let maxLon=0,maxLat=0;
  for(const p of pts){maxLon=Math.max(maxLon,Math.abs(lonDelta(p.lon,center.lon)));maxLat=Math.max(maxLat,Math.abs(p.lat-center.lat));}
@@ -727,6 +740,12 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
   const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
   p.hitRadius=Math.max(8,rad);
   drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
+  if(n===selected&&p.unlocated){
+   ctx.save();ctx.globalAlpha=1;ctx.setLineDash([4,4]);ctx.strokeStyle="#f4d79c";ctx.lineWidth=1.6;
+   ctx.beginPath();ctx.arc(p.x,p.y,rad+7,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+   ctx.font="bold 10px system-ui";ctx.textAlign="center";ctx.textBaseline="top";ctx.fillStyle="#f4d79c";
+   ctx.fillText("NODO NON GEOLOCALIZZATO",p.x,p.y+rad+12);ctx.restore();
+  }
   const isLabel=Boolean(
    selected
     ? (showAllLabels||n===selected||n===hover||(neighbors.has(n.id)&&(readingLevel===2||spotlightNodes.has(n.id)))||(searchText.length>1&&matchesSearch(n,searchText)))
