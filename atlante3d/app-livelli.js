@@ -230,19 +230,22 @@ function geoScreenPoint(n,withManual=true){
  return {x:raw.x+manual+auto+ex,y:raw.y+manualY+autoY+ey,depth:0,scale:1,r:15,geo:true,point:raw.point};
 }
 function contextRawPoint(n){
- if(!selected||geoFromNode(n))return null;
- // Il nodo SELEZIONATO rimane sempre visibile, anche quando non ha coordinate:
- // il centro del canvas è qui una posizione schematica, NON un punto geografico.
- if(n===selected)return {x:w/2,y:h/2,depth:0,scale:1,r:15,geo:false,context:true,unlocated:true};
- if(!(n.type==="corrente"||n.type==="ambito"||n.type==="persona"))return null;
+ if(!selected)return null;
+ const schematic=!geoFromNode(selected);
+ // Per scuole, correnti e generi senza coordinate, anche i compositori
+ // collegati sono disposti in una rete schematica, non fuori campo.
+ if(n===selected&&schematic){
+  const stage=graphStage();
+  return {x:stage.cx,y:stage.cy,depth:0,scale:1,r:15,geo:false,context:true,unlocated:true};
+ }
+ if(!schematic&&geoFromNode(n))return null;
  const depths=selectedDepths(readingDepth()),depth=depths?.get(n.id);
  if(depth==null||depth<1||depth>3)return null;
- // Con un soggetto senza geografia, i nodi di contesto si distribuiscono
- // attorno al suo centro schematico, senza fingere una città di appartenenza.
- const center=rawGeoPoint(selected)||contextRawPoint(selected);
+ if(!schematic&&!(n.type==="corrente"||n.type==="ambito"||n.type==="persona"))return null;
+ const stage=graphStage(),center=schematic?{x:stage.cx,y:stage.cy}:rawGeoPoint(selected);
  if(!center)return null;
  const h=stableHash(n.id),angle=((h%100000)/100000)*Math.PI*2;
- const ring=76+depth*54+((h>>>8)%27);
+ const ring=schematic?Math.min(110,Math.max(55,Math.min(stage.right-stage.left,stage.bottom-stage.top)*.22))+(depth-1)*65+((h>>>8)%31):76+depth*54+((h>>>8)%27);
  return {x:center.x+Math.cos(angle)*ring,y:center.y+Math.sin(angle)*ring,depth:0,scale:1,r:15,geo:false,context:true};
 }
 function contextScreenPoint(n,withManual=true){
@@ -511,7 +514,7 @@ function visibleNode(n){
  // Le figure concettuali emergono soltanto attorno a un nodo geografico selezionato.
  if(!selected)return !!geoFromNode(n);
  if(!selectedDepths(readingDepth()).has(n.id))return false;
- return !!geoFromNode(n)||!!contextRawPoint(n);
+ return !geoFromNode(selected)?!!contextRawPoint(n):!!geoFromNode(n)||!!contextRawPoint(n);
 }
 function nodeDepth(n){
  if(!selected)return 0;
@@ -674,7 +677,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  const composerBase=spanForSize>=260?4.2:spanForSize>=150?5.2:spanForSize>=80?6.8:spanForSize>=35?8.8:11;
  const contextBase=spanForSize>=260?5.2:spanForSize>=150?6.2:spanForSize>=80?8:spanForSize>=35?10.5:14;
  screen=nodes.map(n=>{
-  let p=geoScreenPoint(n,true)||contextScreenPoint(n,true)||sxworld(n);p.node=n;
+  let p=selected&&!geoFromNode(selected)?(contextScreenPoint(n,true)||geoScreenPoint(n,true)||sxworld(n)):(geoScreenPoint(n,true)||contextScreenPoint(n,true)||sxworld(n));p.node=n;
   const base=(n.type==="compositore"||n.type==="persona")?composerBase:contextBase;
   p.r=clamp(base*(n===selected?1.55:1),3.8,25);
   return p;
