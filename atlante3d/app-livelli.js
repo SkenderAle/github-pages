@@ -469,6 +469,8 @@ function currentEdges(){
 function nodeEligibleForDepth(n){
  if(!n||n.type==="geografia"||n.type==="periodo")return false;
  if(!categoryVisible(n))return false;
+ // Le specificazioni di organico e i casi particolari restano consultabili dal loro genere padre e tramite ricerca diretta.
+ if(n.taxonomy?.presentation==="approfondimento"&&n!==selected&&selected?.id!==n.taxonomy.parent)return false;
  if(n.type==="persona"&&!n.music_relevance&&!hasNonMusicLens()&&n!==selected)return false;
  return true;
 }
