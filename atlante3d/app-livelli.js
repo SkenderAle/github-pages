@@ -1275,7 +1275,7 @@ Promise.all([
  fetch("database/grafo.json",{cache:"no-cache"}),
  fetch("database/video.json",{cache:"no-cache"}),
  fetch("database/relazioni.json",{cache:"no-cache"}),
- fetch("database/consultazione.json",{cache:"no-cache"}),
+ fetch("database/consultazione.json?v=20261018-profili491",{cache:"no-store"}),
  fetch("database/collegamenti-sito.json",{cache:"no-cache"})
 ]).then(async responses=>{
  if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);
