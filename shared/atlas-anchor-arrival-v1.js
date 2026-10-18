@@ -78,6 +78,35 @@
   document.addEventListener("keydown",event=>{if(event.key==="Escape"&&top.classList.contains("atlas-menu-open")){toggle(false);button.focus()}});
  }
  setupTopNavigation();
+
+ // Ritorno editoriale dalle intestazioni individuali all'Atlante.
+ // Le ancore <span> non sono collegamenti: crearne uno reale, senza
+ // modificare i percorsi, e senza duplicare link gia' presenti.
+ const atlasRoot=new URL("../atlante3d/",document.currentScript?.src||location.href);
+ function setupAuthorReturnLinks(){
+  const spans=document.querySelectorAll('span[id^="mm-autore-compositore-"], span[id^="mm-autore-persona-"]');
+  if(!spans.length)return;
+  if(!document.getElementById("musurgia-inline-backlink-style")){
+   const style=document.createElement("style");style.id="musurgia-inline-backlink-style";
+   style.textContent=".musurgia-inline-backlink{display:inline-flex;vertical-align:middle;margin-left:.52em;padding:.10em .48em;border:1px solid currentColor;border-radius:5px;color:inherit!important;background:transparent;text-decoration:none!important;font:600 .68rem/1.5 system-ui,sans-serif;letter-spacing:.01em;white-space:nowrap;opacity:.82}.musurgia-inline-backlink:hover,.musurgia-inline-backlink:focus-visible{opacity:1;text-decoration:underline!important;outline-offset:2px}";
+   document.head.appendChild(style);
+  }
+  for(const span of spans){
+   const id=span.id.slice("mm-autore-".length);
+   if(!/^(compositore|persona)-[a-z0-9-]+$/.test(id)||span.closest("a[href]"))continue;
+   const context=span.closest("h1,h2,h3,h4,h5,h6")||span.parentElement;
+   if(!context||context.querySelector('.musurgia-inline-backlink'))continue;
+   if([...context.querySelectorAll("a[href]")].some(a=>a.href.includes("/atlante3d/")&&new URL(a.href).searchParams.get("n")===id))continue;
+   const link=document.createElement("a"),url=new URL(atlasRoot.href);
+   url.searchParams.set("n",id);link.href=url.href;
+   link.className="musurgia-author-link musurgia-inline-backlink";
+   link.textContent="Nell’Atlante ↗";
+   link.setAttribute("aria-label","Apri nell’Atlante il nodo di "+context.textContent.trim().slice(0,110));
+   context.appendChild(document.createTextNode(" "));context.appendChild(link);
+  }
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setupAuthorReturnLinks,{once:true});
+ else setupAuthorReturnLinks();
  function offset(){
    const candidates=[...document.querySelectorAll(barSelector)];
    let height=0;
