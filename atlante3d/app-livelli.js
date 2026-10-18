@@ -471,6 +471,8 @@ function nodeEligibleForDepth(n){
  if(!categoryVisible(n))return false;
  // Le opere archiviate restano ricercabili e apribili come schede, non come bolle della tassonomia.
  if(n.work_archive?.kind==="opera-specifica"&&n!==selected)return false;
+ // Le fonti, le raccolte editoriali e i cicli sono schede ricercabili, non nuove bolle.
+ if(n.document_archive?.presentation==="scheda"&&n!==selected)return false;
  // Le specificazioni di organico e i casi particolari restano consultabili dal loro genere padre e tramite ricerca diretta.
  if(n.taxonomy?.presentation==="approfondimento"&&n!==selected&&selected?.id!==n.taxonomy.parent)return false;
  if(n.type==="persona"&&!n.music_relevance&&!hasNonMusicLens()&&n!==selected)return false;
@@ -907,6 +909,14 @@ function populate(n){
    btn.addEventListener("click",()=>focusOn(composer,true));area.append(btn);
    dst.append(area);
   }
+ }
+ if(n.document_archive?.presentation==="scheda"){
+  const labels={"fonte-manoscritta":"Fonte manoscritta","trattato":"Trattato e testimonianza teorica","raccolta-editoriale":"Raccolta e trasmissione editoriale","ciclo-compositivo":"Ciclo compositivo"};
+  const area=document.createElement("section");area.className="mm-work-archive";
+  const heading=document.createElement("h3");heading.textContent=labels[n.document_archive.kind]||"Documento musicale";area.append(heading);
+  const note=document.createElement("p");note.className="small";
+  note.textContent="Scheda di consultazione conservata fuori dalle bolle generali. Le attribuzioni e le fonti sono riportate nei dati originari; una fonte non implica collaborazione fra gli autori.";
+  area.append(note);dst.append(area);
  }
  // Carta di identità PRIMA delle spiegazioni delle relazioni.
  // Una fonte esterna non viene mai simulata con il collegamento alla ricerca generale.
