@@ -886,8 +886,12 @@ function populate(n){
  const relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
  // Le pagine editoriali non sono sinonimi di un lemma biografico:
  // i rimandi derivano da titoli e/o URL editoriali verificati.
- const editorials=[...(editorialBacklinks[n.id]||[])];
- if(n.url&&!editorials.some(x=>x.url===n.url))editorials.unshift({page:"Atlante",url:n.url});
+ const editorials=[...(editorialBacklinks[n.id]||[])].filter(ref=>ref.match!=="surname-unique");
+ // I rimandi non verificati sono custoditi in pendingReview, non appaiono qui.
+ // Un collegamento alla radice del catalogo non è una scheda del compositore.
+ // Le risorse specifiche delle opere e dei percorsi sono censite in collegamenti-sito.json.
+ if(n.url&&!/(?:#(?:catalogo|audioteca)|\/)$/.test(n.url)&&!editorials.some(x=>x.url===n.url))
+  editorials.unshift({page:"Atlante",url:n.url,title:"Passaggio nell’Atlante · "+n.label});
  const isSingleWork=ref=>ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||
   /#mm-opera-(camera|canto)-/.test(ref.url||"");
  const workRefs=editorials.filter(isSingleWork);
@@ -896,8 +900,10 @@ function populate(n){
   const place=document.createElement("section");place.className="mm-site-links";
   const title=document.createElement("h3");title.textContent="Percorsi nell’Atlante";place.append(title);
   for(const ref of navigationRefs.slice(0,8)){
-   const a=document.createElement("a");a.href=ref.url;a.textContent="↗ "+(ref.title||(ref.page==="Atlante"?"Apri il percorso":ref.page.replace(/-/g," ")));
-   a.title="Apri nell’Atlante il percorso dedicato a "+n.label;place.append(a);
+   const a=document.createElement("a");a.href=ref.url;
+   // Mai mostrare un elenco di pulsanti identici «concerti».
+   a.textContent="↗ "+(ref.title||"Percorso · "+ref.page.replace(/-/g," ")+" · "+decodeURIComponent((ref.url||"").split("#")[1]||"approfondimento").replace(/-/g," "));
+   a.title="Apri nell’Atlante il passaggio dedicato a "+n.label;place.append(a);
   }
   dst.append(place);
  }
