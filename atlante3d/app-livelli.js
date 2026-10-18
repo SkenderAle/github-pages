@@ -11,6 +11,9 @@ const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoZoomPct=0,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
 let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
 let encyclopediaIndex={},editorialBacklinks={},historicalChapterRoutes={};
+// Questi rimandi sono contesti generali, non affermazioni di menzione individuale.
+const curatedGeneralAuthorPages=Object.freeze({"compositore-marcantonio-ingegneri":"rinascimento","persona-isabella-d-este":"rinascimento","persona-lorenzo-de-medici":"rinascimento","persona-martin-lutero":"rinascimento","compositore-giacomo-antonio-perti":"barocco","compositore-francesco-durante":"barocco","compositore-johann-christoph-bach-1671":"barocco","compositore-johann-friedrich-fasch":"barocco","persona-moliere":"barocco","persona-voltaire":"barocco","persona-giulio-strozzi":"barocco","compositore-giovanni-battista-martini":"classicismo","compositore-michael-haydn":"classicismo","compositore-pietro-nardini":"classicismo","compositore-wojciech-zywny":"romanticismo","compositore-jozef-elsner":"romanticismo","compositore-anton-reicha":"romanticismo","compositore-christian-theodor-weinlig":"romanticismo","compositore-anton-rubinstein":"romanticismo","compositore-carl-friedrich-zelter":"romanticismo","compositore-carl-czerny":"romanticismo","compositore-eduard-marxsen":"romanticismo","compositore-camillo-sivori":"romanticismo","persona-friedrich-wieck":"romanticismo","compositore-simon-sechter":"romanticismo","compositore-otto-kitzler":"romanticismo","compositore-george-whitefield-chadwick":"romanticismo","compositore-horatio-parker":"romanticismo","persona-johann-wolfgang-von-goethe":"romanticismo","compositore-fromental-halevy":"romanticismo","compositore-engelbert-humperdinck":"romanticismo","compositore-gennaro-manna":"melodramma","persona-ranieri-de-calzabigi":"melodramma","persona-angelo-tesei":"melodramma","compositore-amilcare-ponchielli":"melodramma","compositore-lauro-rossi":"melodramma","persona-giovanni-faustini":"melodramma","persona-felice-romani":"melodramma","persona-giulio-ricordi":"melodramma","persona-salvatore-cammarano":"melodramma","persona-hugo-von-hofmannsthal":"melodramma","persona-peter-pears":"melodramma","persona-wh-auden":"melodramma","persona-myfanwy-piper":"melodramma","persona-eric-crozier":"melodramma","persona-em-forster":"melodramma","persona-montagu-slater":"melodramma","persona-alice-goodman":"melodramma","persona-guido-menasci":"melodramma","persona-giovanni-targioni-tozzetti":"melodramma","persona-henri-meilhac":"melodramma","persona-ludovic-halevy":"melodramma","persona-ivan-turgenev":"melodramma","persona-adelheid-wette":"melodramma","persona-louis-anseaume":"melodramma","persona-giuseppe-maria-foppa":"melodramma","persona-francesco-saverio-zini":"melodramma","persona-chester-kallman":"melodramma","compositore-nadia-boulanger":"post-romanticismo","compositore-rubin-goldmark":"post-romanticismo","compositore-fritz-reiner":"post-romanticismo","compositore-billy-strayhorn":"post-romanticismo","compositore-charles-hambitzer":"post-romanticismo","compositore-anatolij-ljadov":"post-romanticismo","compositore-maksimilian-steinberg":"post-romanticismo","compositore-charles-koechlin":"post-romanticismo","compositore-rene-leibowitz":"post-romanticismo","compositore-andre-gedalge":"post-romanticismo","compositore-henry-cowell":"post-romanticismo","compositore-walter-klein":"post-romanticismo","persona-andree-vaurabourg":"post-romanticismo","persona-ricardo-vines":"post-romanticismo","persona-cathy-berberian":"post-romanticismo","persona-sergej-diaghilev":"post-romanticismo","compositore-frank-bridge":"post-romanticismo","persona-merce-cunningham":"post-romanticismo","persona-david-tudor":"post-romanticismo","persona-martha-graham":"post-romanticismo","persona-dorothee-guenther":"post-romanticismo","persona-le-corbusier":"post-romanticismo","compositore-iannis-xenakis":"post-romanticismo","persona-marian-anderson":"post-romanticismo","persona-jean-cocteau":"post-romanticismo","persona-pablo-picasso":"post-romanticismo","persona-leonide-massine":"post-romanticismo","compositore-margaret-bonds":"post-romanticismo","persona-katherine-dunham":"post-romanticismo","compositore-juan-tizol":"post-romanticismo","persona-ugo-piatti":"post-romanticismo","persona-sergej-ejzenstejn":"post-romanticismo","persona-langston-hughes":"post-romanticismo","persona-bertolt-brecht":"post-romanticismo","persona-bronislava-nijinska":"post-romanticismo","persona-marian-zazeela":"post-romanticismo","persona-paul-whiteman":"post-romanticismo","persona-peter-greenaway":"dal-musical-al-film","persona-ira-gershwin":"dal-musical-al-film","persona-dubose-heyward":"dal-musical-al-film","persona-sergio-leone":"dal-musical-al-film","persona-giuseppe-tornatore":"dal-musical-al-film","persona-jane-campion":"dal-musical-al-film","persona-arthur-laurents":"dal-musical-al-film","persona-jerome-robbins":"dal-musical-al-film","compositore-ferde-grofe":"dal-musical-al-film","compositore-stephen-sondheim":"dal-musical-al-film","persona-james-lapine":"dal-musical-al-film","persona-oscar-hammerstein-ii":"dal-musical-al-film","persona-giuseppe-bertoldi":"risorgimento","compositore-sergej-taneev":"concerti"});
+const curatedGeneralPageTitles=Object.freeze({"rinascimento":"Rinascimento","barocco":"Barocco","classicismo":"Classicismo","romanticismo":"Romanticismo","melodramma":"Origini e riforma del teatro musicale","post-romanticismo":"Dal postromanticismo alle avanguardie","dal-musical-al-film":"Dal musical al film","risorgimento":"Risorgimento","concerti":"Concerti"});
 const geoCache=new Map();
 let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),selectedDepthCacheKey="",selectedDepthCache=new Map(),lastDrawTime=0;
 const activeLenses=new Set(["musica","trasmissioni","genealogie","collaborazioni"]);
@@ -932,17 +935,33 @@ function populate(n){
  const isAuthor=n.type==="compositore"||n.type==="persona";
  // In mancanza di una menzione narrativa individuale, il capitolo storico
  // resta accessibile, ma e' marcato come GENERALE, mai come scheda dell'autore.
- const chapterNavigationRefs=isAuthor&&!specificNavigationRefs.length?
-  [...new Map(periodsFor(n).map(row=>historicalChapterRoutes[row.node.id])
-   .filter(ref=>ref?.url&&ref?.title).map(ref=>[ref.url,ref])).values()]
-   .slice(0,2).map(ref=>({...ref,match:"general-chapter-fallback"})):[];
+ // Gerarchia: rimando specifico > periodo diretto > corrente diretta > curatela.
+ // Non dedurre l'appartenenza biografica da relazioni con altre persone.
+ const periodRouteRefs=isAuthor&&!specificNavigationRefs.length?
+  periodsFor(n).map(row=>historicalChapterRoutes[row.node.id])
+   .filter(ref=>ref?.url&&ref?.title):[];
+ const currentRouteRefs=isAuthor&&!specificNavigationRefs.length&&!periodRouteRefs.length?
+  edges.filter(e=>e.source===n.id||e.target===n.id)
+   .map(e=>byId.get(e.source===n.id?e.target:e.source))
+   .filter(other=>other?.type==="corrente"&&typeof other.url==="string"&&
+    /^\.\.\/[a-z0-9-]+\/(?:#[a-z0-9-]+)?$/.test(other.url))
+   .map(other=>({page:other.label,url:other.url,title:"Percorso generale · "+other.label,
+    match:"general-current-fallback"})):[];
+ const curatedPage=isAuthor&&!specificNavigationRefs.length&&!periodRouteRefs.length&&
+  !currentRouteRefs.length?curatedGeneralAuthorPages[n.id]:null;
+ const curatedRouteRefs=curatedPage?[{page:curatedPage,url:"../"+curatedPage+"/",
+  title:"Contesto musicale generale · "+curatedGeneralPageTitles[curatedPage],
+  match:"general-curated-context-fallback"}]:[];
+ const chapterNavigationRefs=[...new Map([...periodRouteRefs,...currentRouteRefs,...curatedRouteRefs]
+  .filter(ref=>ref?.url&&ref?.title).map(ref=>[ref.url,{...ref,
+   match:ref.match||"general-chapter-fallback"}])).values()].slice(0,2);
  const navigationRefs=specificNavigationRefs.length?specificNavigationRefs:chapterNavigationRefs;
  if(navigationRefs.length||isAuthor){
   const place=document.createElement("section");place.className="mm-site-links";
   const title=document.createElement("h3");title.textContent="Percorsi nell’Atlante";place.append(title);
   if(chapterNavigationRefs.length){
    const note=document.createElement("p");note.className="small";
-   note.textContent="Non è ancora disponibile un passaggio storico specifico verificato per questo autore. Puoi esplorare il capitolo generale del periodo; le eventuali opere sono elencate separatamente sotto.";
+   note.textContent="Non è ancora disponibile un passaggio specifico verificato. I collegamenti conducono a contesti generali, non a schede individuali; gli ascolti sono presentati separatamente.";
    place.append(note);
   }else if(isAuthor&&!navigationRefs.length){
    const note=document.createElement("p");note.className="small";
@@ -952,7 +971,7 @@ function populate(n){
   for(const ref of navigationRefs.slice(0,8)){
    const a=document.createElement("a");a.href=ref.url;
    a.textContent="↗ "+(ref.title||"Percorso · "+ref.page.replace(/-/g," ")+" · "+decodeURIComponent((ref.url||"").split("#")[1]||"approfondimento").replace(/-/g," "));
-   a.title=ref.match==="general-chapter-fallback"?
+   a.title=["general-chapter-fallback","general-current-fallback","general-curated-context-fallback"].includes(ref.match)?
     "Capitolo generale del periodo; non è una scheda dedicata a "+n.label:
     "Apri nell’Atlante il passaggio dedicato a "+n.label;
    place.append(a);
