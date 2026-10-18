@@ -15043,6 +15043,110 @@
         "visibility": "principale",
         "audit": "2026-10-18"
       }
+    },
+    {
+      "id": "genere-opera",
+      "label": "Opera",
+      "description": "Genere di teatro musicale con molte forme storiche, dal dramma per musica alle tradizioni operistiche posteriori.",
+      "url": "../barocco/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-mottetto",
+      "label": "Mottetto",
+      "description": "Genere vocale polifonico dalla storia mutevole, medievale e rinascimentale, sacro e talora celebrativo.",
+      "url": "../rinascimento/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "forma-fuga",
+      "label": "Fuga",
+      "description": "Procedimento e forma contrappuntistica imperniata su soggetto, imitazione e sviluppo; non un genere esclusivo di un periodo.",
+      "url": "../barocco/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "forma-tecnica",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "forma-variazioni",
+      "label": "Variazioni",
+      "description": "Principio e forma di elaborazione di un tema o materiale musicale, presente in generi e periodi differenti.",
+      "url": "../classicismo/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "forma",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "forma-ricercare",
+      "label": "Ricercare",
+      "description": "Famiglia storica di forme strumentali, in particolare del Rinascimento e primo Barocco, con pratiche imitative e non imitative.",
+      "url": "../rinascimento/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "forma",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "forma-fantasia",
+      "label": "Fantasia",
+      "description": "Denominazione di composizioni strumentali spesso caratterizzate da libertà progettuale, con significati storici differenti.",
+      "url": "../rinascimento/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "forma",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-balletto",
+      "label": "Balletto",
+      "description": "Spettacolo coreografico e musica destinata alla danza scenica; forme e funzioni mutano dalla corte all'età contemporanea.",
+      "url": "../barocco/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "teatro-danza",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "forma-ouverture",
+      "label": "Ouverture",
+      "description": "Brano strumentale d'apertura teatrale o composizione autonoma da concerto, con tipologie storiche differenti.",
+      "url": "../classicismo/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "forma-genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
     }
   ],
   "edges": [
@@ -22451,6 +22555,144 @@
       "target": "italienisches-liederbuch-wolf",
       "kind": "esempio-storico-del-genere",
       "weight": 0.95
+    },
+    {
+      "source": "barocco",
+      "target": "genere-opera",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "classicismo",
+      "target": "genere-opera",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "romanticismo",
+      "target": "genere-opera",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-opera",
+      "target": "opera-seria",
+      "kind": "articolazione-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-opera",
+      "target": "opera-buffa",
+      "kind": "articolazione-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-opera",
+      "target": "opera-semiseria",
+      "kind": "articolazione-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-opera",
+      "target": "dramma-giocoso",
+      "kind": "articolazione-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-opera",
+      "target": "grand-opera",
+      "kind": "articolazione-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-opera",
+      "target": "opera-comique",
+      "kind": "articolazione-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-opera",
+      "target": "opera-da-camera-novecentesca",
+      "kind": "articolazione-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "medioevo",
+      "target": "genere-mottetto",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "rinascimento",
+      "target": "genere-mottetto",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-mottetto",
+      "target": "mottetto-civico-cerimoniale-quattrocento",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "barocco",
+      "target": "forma-fuga",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "classicismo",
+      "target": "forma-variazioni",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "rinascimento",
+      "target": "forma-ricercare",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "forma-ricercare",
+      "target": "ricercare-contrappuntistico-cinquecento",
+      "kind": "articolazione-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "rinascimento",
+      "target": "forma-fantasia",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "forma-fantasia",
+      "target": "fantasie-consort-viole-gibbons",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "barocco",
+      "target": "genere-balletto",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "romanticismo",
+      "target": "genere-balletto",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
+    },
+    {
+      "source": "genere-balletto",
+      "target": "la-valse-ravel-balletto-1929",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.9
+    },
+    {
+      "source": "classicismo",
+      "target": "forma-ouverture",
+      "kind": "sviluppo-storico",
+      "weight": 0.9
     }
   ],
   "videos": [],
@@ -22658,6 +22900,11 @@
       "added_nodes": 6,
       "added_edges": 27,
       "rule": "Non-distruttivo; esempi subordinati e nessun collegamento automatico a compositori."
+    },
+    "third_group": {
+      "added_nodes": 8,
+      "added_edges": 23,
+      "rule": "No bulk composer linking, no deletion; categories and examples differentiated."
     }
   }
 }
