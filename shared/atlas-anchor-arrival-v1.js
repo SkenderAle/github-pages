@@ -6,7 +6,7 @@
  const parentScript=document.currentScript;
  if(parentScript?.src){
   const bridge=document.createElement("script");
-  bridge.src=new URL("musurgia-bridge-v1.js?v=20261018-link01",parentScript.src).href;
+  bridge.src=new URL("musurgia-bridge-v1.js?v=20261018-audioteche-v05",parentScript.src).href;
   bridge.defer=true;
   document.head.appendChild(bridge);
  }
