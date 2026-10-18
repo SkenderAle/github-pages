@@ -63,3 +63,15 @@ Branch: `main`. Base prima di questo lotto: `8f2c0f942c1f90b294bd368a8e3ca41b85d
 - Il ponte esistente resta idempotente e continua a occuparsi dei badge autore; non sono stati modificati lettori, fonti, testi, autoplay o cataloghi.
 - Totale ID protetti da questa correzione: **97** opere vocali e **255** opere da camera (non soltanto i **139** link oggi presenti in Musurgia); i **103** ID sinfonici sono già assegnati direttamente dai dati del catalogo.
 - **Verifica ancora necessaria**: esecuzione DOM nel browser e test di caricamento con `indice-autori.json` bloccato, navigazione diretta con hash, filtri e dispositivi mobili. L'audit statico dimostra la rimozione della dipendenza nel codice, non un test browser già svolto.
+
+## Aggiornamento filologico · secondo blocco del 18 ottobre 2026
+Questa sezione **aggiorna** i conteggi delle relazioni in revisione descritti nei paragrafi precedenti, che restano memoria dello stato a inizio giornata.
+
+- Dopo i commit `6786fdeb`, `eb66747f`, `8e1f48f0`, tutte e quattro le relazioni precedentemente `pendingReview` sono state riesaminate con fonti pertinenti: **pendingReview = 0** (al HEAD di questa verifica). Le relazioni complessive sono **1.362**, senza nuove relazioni inventate.
+- Šostakovič → Schnittke: relazione stilistico-espressiva, fonti Oxford Bibliographies e Ivan Moody, *Tempo*; nessuna relazione di formazione personale.
+- Debussy → Crumb: influenza estetico-timbrica attestata dalla biografia e dal percorso IRCAM; nessun incontro presunto.
+- Vaughan Williams ↔ Rebecca Clarke: la lettera di Vaughan Williams a Beryl Reeves, 12 maggio 1910, e la nota archivistica della Vaughan Williams Foundation documentano la Palestrina Society fondata da Reeves con Clarke e in seguito diretta da Vaughan Williams; non ne discende una lezione di composizione.
+- Chabrier → Debussy: l'esempio puntuale è *La Sulamite* come modello per *La Damoiselle élue*, con prefazione editoriale di Bradford Robinson, nota di Gerald Larner e studio di Alexandra Kieffer per Oxford; non relazione personale di allievo.
+- Schede Treccani individuali di consultazione: **66** all'inizio di questo blocco, come rilevato dal database; non interpretare questo numero come copertura biografica completa.
+- Restano da verificare nel browser reale gli hash generati dalle audioteche, il caricamento diretto delle destinazioni e la navigazione mobile. Una verifica di sintassi o un URL trovato online non sono uno smoke test del DOM.
+- Il caso del frammento Francesca Caccini `...-amor` rispetto a `...-amore` era un errore di copiatura dell'URL, non una prova di malfunzionamento dell'audioteca. Nessuna modifica effettuata per quel caso.
