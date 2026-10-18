@@ -860,7 +860,7 @@ function populate(n){
   card.append(description);
   if(treccaniRefs.length){
    const attribution=document.createElement("p");attribution.className="small";
-   attribution.textContent=curated?"Sintesi biografica redatta dall’Atlante sulla voce indicata.":"Presentazione editoriale dell’Atlante; consulta la voce Treccani per il profilo completo.";
+   attribution.textContent="Sintesi editoriale dell’Atlante; consulta la voce Treccani per verifiche e approfondimenti biografici.";
    card.append(attribution);
    for(const ref of treccaniRefs.slice(0,2)){
     const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";
