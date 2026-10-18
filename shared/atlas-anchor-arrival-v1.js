@@ -117,7 +117,7 @@
   if(!kind)return;
   const container=document.querySelector(kind==="canto"?"#works":"#catalogo");
   if(!container)return;
-  const slug=value=>String(value||"").normalize("NFD").replace(/[\\u0300-\\u036f]/g,"")
+  const slug=value=>String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"")
    .toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,125);
   function attach(){
    for(const work of container.querySelectorAll("article.work:not([id])")){
