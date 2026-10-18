@@ -51,3 +51,10 @@ Esclusioni motivate:
 - Nuovi `id` univoci, estremi esistenti in `grafo.json`, almeno un URL HTTPS specifico in ogni relazione.
 - Non modificati `grafo.json`, `app-livelli.js`, pagine dell'Atlante, audio, video, ancore o autoplay.
 - **Da collaudare ancora nel browser reale**: hash dinamici e ritorni delle audioteche, navigazione mobile e tastiera; il controllo statico non equivale a prova DOM.
+
+## Verifica riproducibile delle ancore editoriali e delle audioteche
+- Ricostruite da sorgente dati **97** opere vocali, **255** cameristiche e **103** sinfoniche, pari a **455** ID generati. Nessun duplicato nei tre cataloghi.
+- Verificata la corrispondenza di **195/195** collegamenti dinamici registrati in `collegamenti-sito.json` (64 vocali, 75 cameristici, 56 sinfonici) con gli ID calcolati dagli stessi dati del sito.
+- Gli altri **303/303** collegamenti sono indirizzati ad ancore dichiarate staticamente nell'HTML. Totale: **498/498** destinazioni strutturalmente ricostruibili.
+- Aggiunto lo script riproducibile, di sola lettura, `atlante3d/database/AUDIT_PRODUZIONE/verifica-ancore-cataloghi.mjs`. Da radice repository: `node atlante3d/database/AUDIT_PRODUZIONE/verifica-ancore-cataloghi.mjs`. Fallisce in presenza di ID duplicati, ancore mancanti, link ripetuti per un nodo o pagine prive dello script condiviso.
+- **Limite dichiarato**: questa verifica riguarda dati, HTML iniziale e regole di assegnazione degli ID. Non è un test del DOM eseguito in browser, né verifica la visibilità dopo filtro, lo scroll sotto gli header fissi o l'accessibilità mobile.
