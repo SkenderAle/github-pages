@@ -874,6 +874,29 @@ function populate(n){
    dst.append(area);
   }
  }
+ // Repertorio del genere: esclusivamente opere con un arco esplicito, senza deduzioni automatiche.
+ if(n.id.startsWith("genere-")){
+  const workIds=new Set();
+  for(const edge of edges){
+   if(edge.source===n.id&&byId.get(edge.target)?.work_archive?.kind==="opera-specifica")workIds.add(edge.target);
+   if(edge.target===n.id&&byId.get(edge.source)?.work_archive?.kind==="opera-specifica")workIds.add(edge.source);
+  }
+  const works=[...workIds].map(id=>byId.get(id)).filter(Boolean).sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(works.length){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Repertorio documentato · "+works.length;area.append(heading);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Solo opere collegate esplicitamente a questo genere. Apri la scheda per fonti, contesto e autore; un ascolto non è necessariamente disponibile.";
+   area.append(note);
+   for(const work of works){
+    const composer=byId.get(work.work_archive.composer_id);
+    const btn=document.createElement("button");btn.type="button";
+    btn.textContent=work.label+(composer?" · "+composer.label:"")+" ↗";
+    btn.addEventListener("click",()=>focusOn(work,true));area.append(btn);
+   }
+   dst.append(area);
+  }
+ }
  if(n.work_archive?.kind==="opera-specifica"){
   const composer=byId.get(n.work_archive.composer_id);
   if(composer){
