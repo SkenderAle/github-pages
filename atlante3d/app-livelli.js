@@ -252,7 +252,13 @@ function contextScreenPoint(n,withManual=true){
  const raw=contextRawPoint(n);if(!raw)return null;
  const manual=withManual?(n.manualDx||0):0,manualY=withManual?(n.manualDy||0):0;
  const ex=withManual?(n.explodeDx||0):0,ey=withManual?(n.explodeDy||0):0;
- return {...raw,x:raw.x+manual+ex,y:raw.y+manualY+ey};
+ // I nodi di una rete non geolocalizzata devono restare nello spazio utile
+ // del grafo anche dopo spostamenti manuali e rimescolamenti.
+ const stage=graphStage(),margin=22;
+ return {...raw,
+  x:clamp(raw.x+manual+ex,stage.left+margin,stage.right-margin),
+  y:clamp(raw.y+manualY+ey,stage.top+margin,stage.bottom-margin)
+ };
 }
 function resetAutoLayout(){
  for(const n of nodes){if(!n.manualPinned){n.autoDx=0;n.autoDy=0;}}
@@ -298,7 +304,9 @@ function explodeNetwork(){
   for(let i=0;i<count;i++){
    const n=ringNodes[i],raw=rawGeoPoint(n)||contextRawPoint(n);
    const angle=phase+(Math.PI*2*i/count);
-   const targetX=center.x+Math.cos(angle)*rx,targetY=center.y+Math.sin(angle)*ry;
+   const stage=graphStage(),margin=22;
+   const targetX=clamp(center.x+Math.cos(angle)*rx,stage.left+margin,stage.right-margin);
+   const targetY=clamp(center.y+Math.sin(angle)*ry,stage.top+margin,stage.bottom-margin);
    n.explodeDx=targetX-(raw.x+(n.manualDx||0));
    n.explodeDy=targetY-(raw.y+(n.manualDy||0));
    moved++;
