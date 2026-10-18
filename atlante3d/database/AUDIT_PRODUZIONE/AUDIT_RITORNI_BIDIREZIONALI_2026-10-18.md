@@ -47,3 +47,12 @@ Branch: `main`. Base prima di questo lotto: `8f2c0f942c1f90b294bd368a8e3ca41b85d
 4. Cercare relazioni reali documentate per i 26 autori privi di legami specialistici confermati; conservare `pendingReview` finché non emerge una prova.
 
 *Audit riproducibile da dati e sorgenti; la prova HTTP universale e il collaudo browser restano aperti, non spacciati per completati.*
+
+## Lotto successivo — integrità delle 195 ancore dinamiche e nuove relazioni
+- Cross-check automatico sulla stessa funzione di generazione degli slug del sito: **75/75** rimandi a schede da camera presenti fra **255** opere, **64/64** rimandi vocali presenti fra **97** opere, **56/56** rimandi sinfonici presenti fra **103** opere; **nessun duplicato di ID** nei rispettivi tre cataloghi. Totale **195/195** corrispondenze fra database e sorgenti. Questo non certifica ancora lo scroll in un browser dopo il rendering.
+- Controllo puntuale del link `#mm-opera-canto-francesca-caccini-chi-desia-di-saper-che-cosa-e-amore`: corretto; l'URL incollato con finale `-amor` era inesatto. Nessuna modifica alla pagina necessaria per questo caso.
+- Ricontrollate tramite fonti online tutte le **21** pagine individuali Treccani del lotto precedente: titoli e contenuti corrispondono ai compositori. Le **1.685** citazioni relazionali del censimento precedente restano da verificare filologicamente una per una; non sono state promosse automaticamente.
+- Aggiunte **5** nuove voci biografiche individuali: Bottesini (Pironti, DBI), Veracini, Biber, Locatelli e Reichardt. Scott Joplin e Georges Méliès risultavano **già presenti** nel registro di consultazione, quindi nessun doppione. Nuovo indicatore `consultazione.entries`: **66/478**.
+- Aggiunte **2 relazioni specialistiche documentate**, distinte per natura: **Verdi ↔ Bottesini** (amicizia, corrispondenza, prima di *Aida* al Cairo e sostegno alla nomina di Parma, DBI di A. Pironti); **Šostakovič ↔ Gubaidulina** (incoraggiamento professionale attestato nel 1959, senza affermare che fossero maestro e allieva). Totale relazioni: **1362**; i quattro `pendingReview` restano inalterati.
+- **Locatelli e Corelli**: fonti enciclopediche tradizionali scrivono che Locatelli studiò con Corelli, ma altre ricostruzioni considerano non sicura la frequenza diretta: nessun nuovo arco maestro–allievo finché non sia sciolto il problema documentale.
+- Limiti: nessun test browser eseguito; HTML generato e navigazione mobile restano da verificare sul runtime reale. Non confondere validità sintattica, presenza dell'ancora e verifica di navigazione.
