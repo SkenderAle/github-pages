@@ -10,7 +10,7 @@ const earthMap=document.getElementById("earthMap"),followGeo=document.getElement
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoZoomPct=0,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
 let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
-let encyclopediaIndex={},editorialBacklinks={};
+let encyclopediaIndex={},editorialBacklinks={},historicalChapterRoutes={};
 const geoCache=new Map();
 let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),selectedDepthCacheKey="",selectedDepthCache=new Map(),lastDrawTime=0;
 const activeLenses=new Set(["musica","trasmissioni","genealogie","collaborazioni"]);
@@ -906,22 +906,44 @@ function populate(n){
  // Le pagine editoriali non sono sinonimi di un lemma biografico:
  // i rimandi derivano da titoli e/o URL editoriali verificati.
  const editorials=[...(editorialBacklinks[n.id]||[])].filter(ref=>
-  ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||ref.match==="author-heading-anchor"||ref.match==="author-text-anchor");
- // Il campo node.url NON dimostra che un autore abbia una scheda in quella sezione.
+  ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||
+  ref.match==="author-heading-anchor"||ref.match==="author-text-anchor"||
+  ref.match==="narrative-author-anchor");
+ // Un'opera non equivale a un capitolo storico: le due destinazioni restano separate.
+ // Il campo node.url non prova una menzione dell'autore e NON viene usato come scorciatoia.
  if(["periodo","corrente","ambito"].includes(n.type)&&n.url&&!editorials.some(ref=>ref.url===n.url))
   editorials.unshift({page:"Contesto storico",url:n.url,title:"Percorso generale · "+n.label});
  const isSingleWork=ref=>ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||
   /#mm-opera-(camera|canto)-/.test(ref.url||"");
  const workRefs=editorials.filter(isSingleWork);
- const navigationRefs=editorials.filter(ref=>!isSingleWork(ref));
- if(navigationRefs.length){
+ const specificNavigationRefs=editorials.filter(ref=>!isSingleWork(ref));
+ const isAuthor=n.type==="compositore"||n.type==="persona";
+ // In mancanza di una menzione narrativa individuale, il capitolo storico
+ // resta accessibile, ma e' marcato come GENERALE, mai come scheda dell'autore.
+ const chapterNavigationRefs=isAuthor&&!specificNavigationRefs.length?
+  [...new Map(periodsFor(n).map(row=>historicalChapterRoutes[row.node.id])
+   .filter(ref=>ref?.url&&ref?.title).map(ref=>[ref.url,ref])).values()]
+   .slice(0,2).map(ref=>({...ref,match:"general-chapter-fallback"})):[];
+ const navigationRefs=specificNavigationRefs.length?specificNavigationRefs:chapterNavigationRefs;
+ if(navigationRefs.length||isAuthor){
   const place=document.createElement("section");place.className="mm-site-links";
   const title=document.createElement("h3");title.textContent="Percorsi nell’Atlante";place.append(title);
+  if(chapterNavigationRefs.length){
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Non è ancora disponibile un passaggio storico specifico verificato per questo autore. Puoi esplorare il capitolo generale del periodo; le eventuali opere sono elencate separatamente sotto.";
+   place.append(note);
+  }else if(isAuthor&&!navigationRefs.length){
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Il capitolo storico generale è ancora da attribuire e verificare. Le opere già censite restano accessibili nella sezione successiva.";
+   place.append(note);
+  }
   for(const ref of navigationRefs.slice(0,8)){
    const a=document.createElement("a");a.href=ref.url;
-   // Mai mostrare un elenco di pulsanti identici «concerti».
    a.textContent="↗ "+(ref.title||"Percorso · "+ref.page.replace(/-/g," ")+" · "+decodeURIComponent((ref.url||"").split("#")[1]||"approfondimento").replace(/-/g," "));
-   a.title="Apri nell’Atlante il passaggio dedicato a "+n.label;place.append(a);
+   a.title=ref.match==="general-chapter-fallback"?
+    "Capitolo generale del periodo; non è una scheda dedicata a "+n.label:
+    "Apri nell’Atlante il passaggio dedicato a "+n.label;
+   place.append(a);
   }
   if(navigationRefs.length>8){
    const more=document.createElement("details");more.className="mm-extra-links";
@@ -932,9 +954,6 @@ function populate(n){
    place.append(more);
   }
   dst.append(place);
- }else if(n.type==="compositore"||n.type==="persona"){
-  const msg=document.createElement("p");msg.className="small";
-  msg.textContent="Nessun passaggio narrativo specifico ancora verificato per questa voce.";dst.append(msg);
  }
  const mediaHead=document.createElement("div");mediaHead.className="panel-section-header";
  const h=document.createElement("h3");h.textContent="Ascolti e video";mediaHead.append(h);
@@ -1237,6 +1256,7 @@ Promise.all([
  encyclopediaIndex=responses[3].ok?await responses[3].json():{};
  const crosslinks=responses[4].ok?await responses[4].json():{};
  editorialBacklinks=crosslinks.byNode||{};
+ historicalChapterRoutes=crosslinks.generalChapterRoutes||{};
  return db;
 }).then(db=>{
  prepare(db);
