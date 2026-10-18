@@ -14965,6 +14965,84 @@
         "visibility": "principale",
         "audit": "2026-10-18"
       }
+    },
+    {
+      "id": "genere-musica-da-camera",
+      "label": "Musica da camera",
+      "description": "Ambito di esecuzione e repertorio per organici ridotti; comprende generi diversi e non coincide con una forma musicale unica.",
+      "url": "../classicismo/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "ambito-musicale",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-quartetto-archi",
+      "label": "Quartetto d’archi",
+      "description": "Genere cameristico per due violini, viola e violoncello, con una storia propria dal Settecento alla contemporaneità.",
+      "url": "../classicismo/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-cantata",
+      "label": "Cantata",
+      "description": "Genere vocale di storia plurale, sacra e profana, con articolazioni mutevoli dal Seicento ai secoli successivi.",
+      "url": "../barocco/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-oratorio",
+      "label": "Oratorio",
+      "description": "Genere vocale prevalentemente sacro e narrativo-drammatico, sviluppato in tradizioni storiche e linguistiche differenti.",
+      "url": "../barocco/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-messa",
+      "label": "Messa",
+      "description": "Genere di composizione liturgica sui testi dell'Ordinario della messa; distinguere la messa polifonica dalle singole realizzazioni.",
+      "url": "../rinascimento/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-lied",
+      "label": "Lied",
+      "description": "Genere di canto poetico in lingua tedesca, con storia anteriore e successiva al Lied romantico per voce e pianoforte.",
+      "url": "../romanticismo/",
+      "type": "corrente",
+      "status": "attivo",
+      "taxonomy": {
+        "class": "genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
     }
   ],
   "edges": [
@@ -22211,6 +22289,168 @@
       "target": "antiche-arie-danze-respighi-1917",
       "kind": "esempio-storico-del-genere",
       "weight": 0.85
+    },
+    {
+      "source": "classicismo",
+      "target": "genere-musica-da-camera",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "romanticismo",
+      "target": "genere-musica-da-camera",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "novecento",
+      "target": "genere-musica-da-camera",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "classicismo",
+      "target": "genere-quartetto-archi",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "romanticismo",
+      "target": "genere-quartetto-archi",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-musica-da-camera",
+      "target": "genere-quartetto-archi",
+      "kind": "genere-nell-ambito",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-musica-da-camera",
+      "target": "musica-cameristica-classica",
+      "kind": "contesto-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-musica-da-camera",
+      "target": "forma-musica-cameristica-novecento",
+      "kind": "contesto-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-musica-da-camera",
+      "target": "nonetto-farrenc-musica-da-camera",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "barocco",
+      "target": "genere-cantata",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-cantata",
+      "target": "musica-oratorio-romano-settecento",
+      "kind": "contesto-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "barocco",
+      "target": "genere-oratorio",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "classicismo",
+      "target": "genere-oratorio",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-oratorio",
+      "target": "oratorio-inglese-handeliano",
+      "kind": "articolazione-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-oratorio",
+      "target": "oratorio-drammatico-volgare-seicento",
+      "kind": "articolazione-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-oratorio",
+      "target": "oratorio-parker-hora-novissima-1893",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-oratorio",
+      "target": "jeanne-au-bucher-oratorio-drammatico",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "rinascimento",
+      "target": "genere-messa",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "barocco",
+      "target": "genere-messa",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-messa",
+      "target": "messa-polifonica-ciclo-unitario-medievale",
+      "kind": "articolazione-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-messa",
+      "target": "messa-parafrasi-pange-lingua",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-messa",
+      "target": "missa-papae-marcelli-palestrina",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-messa",
+      "target": "missa-maria-zart-obrecht",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "romanticismo",
+      "target": "genere-lied",
+      "kind": "sviluppo-storico",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-lied",
+      "target": "tradizione-lied-romantico",
+      "kind": "contesto-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-lied",
+      "target": "lied-su-poesia-morike",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.95
+    },
+    {
+      "source": "genere-lied",
+      "target": "italienisches-liederbuch-wolf",
+      "kind": "esempio-storico-del-genere",
+      "weight": 0.95
     }
   ],
   "videos": [],
@@ -22413,6 +22653,11 @@
     ],
     "note": "Introduzione non distruttiva; nessun arco compositore-genere aggiunto automaticamente. I nodi specialistici e i riferimenti restano integri.",
     "edges_added": 18,
-    "secondary_examples_added": 18
+    "secondary_examples_added": 18,
+    "second_group": {
+      "added_nodes": 6,
+      "added_edges": 27,
+      "rule": "Non-distruttivo; esempi subordinati e nessun collegamento automatico a compositori."
+    }
   }
 }
