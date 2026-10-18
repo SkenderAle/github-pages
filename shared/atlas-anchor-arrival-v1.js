@@ -107,6 +107,37 @@
  }
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setupAuthorReturnLinks,{once:true});
  else setupAuthorReturnLinks();
+
+ // Le ancore delle opere vocali e cameristiche non devono dipendere
+ // dal download di database/indice-autori.json effettuato dal ponte.
+ // L'indice rimane necessario solo ai badge Musurgia, NON ai segnalibri.
+ function setupStableWorkAnchors(){
+  const page=location.pathname.split("/").filter(Boolean).pop();
+  const kind=page==="parola-e-canto"?"canto":page==="musica-da-camera"?"camera":null;
+  if(!kind)return;
+  const container=document.querySelector(kind==="canto"?"#works":"#catalogo");
+  if(!container)return;
+  const slug=value=>String(value||"").normalize("NFD").replace(/[\\u0300-\\u036f]/g,"")
+   .toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,125);
+  function attach(){
+   for(const work of container.querySelectorAll("article.work:not([id])")){
+    const title=work.querySelector("h3")?.textContent||"";
+    const author=kind==="canto"?work.querySelector(".eyebrow")?.textContent||"":"";
+    if(!title||(kind==="canto"&&!author))continue;
+    work.id=kind==="canto"?"mm-opera-canto-"+slug(author)+"-"+slug(title):"mm-opera-camera-"+slug(title);
+   }
+  }
+  attach();
+  let queued=false;
+  const observer=new MutationObserver(()=>{
+   if(queued)return;
+   queued=true;
+   requestAnimationFrame(()=>{queued=false;attach()});
+  });
+  observer.observe(container,{childList:true,subtree:true});
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setupStableWorkAnchors,{once:true});
+ else setupStableWorkAnchors();
  function offset(){
    const candidates=[...document.querySelectorAll(barSelector)];
    let height=0;
