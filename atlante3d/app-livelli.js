@@ -887,7 +887,7 @@ function populate(n){
  // Le pagine editoriali non sono sinonimi di un lemma biografico:
  // i rimandi derivano da titoli e/o URL editoriali verificati.
  const editorials=[...(editorialBacklinks[n.id]||[])].filter(ref=>
-  ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||ref.match==="author-heading-anchor");
+  ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||ref.match==="author-heading-anchor"||ref.match==="author-text-anchor");
  // Il campo node.url NON dimostra che un autore abbia una scheda in quella sezione.
  if(["periodo","corrente","ambito"].includes(n.type)&&n.url&&!editorials.some(ref=>ref.url===n.url))
   editorials.unshift({page:"Contesto storico",url:n.url,title:"Percorso generale · "+n.label});
