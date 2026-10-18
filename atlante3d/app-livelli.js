@@ -911,7 +911,7 @@ function populate(n){
   }
  }
  if(n.document_archive?.presentation==="scheda"){
-  const labels={"fonte-manoscritta":"Fonte manoscritta","trattato":"Trattato e testimonianza teorica","raccolta-editoriale":"Raccolta e trasmissione editoriale","ciclo-compositivo":"Ciclo compositivo"};
+  const labels={"fonte-manoscritta":"Fonte manoscritta","trattato":"Trattato e testimonianza teorica","raccolta-editoriale":"Raccolta e trasmissione editoriale","fonte-editoriale":"Edizione e fonte a stampa","ciclo-compositivo":"Ciclo compositivo"};
   const area=document.createElement("section");area.className="mm-work-archive";
   const heading=document.createElement("h3");heading.textContent=labels[n.document_archive.kind]||"Documento musicale";area.append(heading);
   const note=document.createElement("p");note.className="small";
