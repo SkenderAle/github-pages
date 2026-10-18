@@ -2,6 +2,15 @@
    Non modifica gli href. Evita i menu che gestiscono già il salto diretto. */
 (()=>{"use strict";
  const barSelector=".atlas-autonav, .nav-wrap, nav.main, nav.site-nav, nav[aria-label='Navigazione']";
+ // Ponte editoriale: caricato separatamente e innocuo in caso di errore di rete.
+ const parentScript=document.currentScript;
+ if(parentScript?.src){
+  const bridge=document.createElement("script");
+  bridge.src=new URL("musurgia-bridge-v1.js?v=20261018-link01",parentScript.src).href;
+  bridge.defer=true;
+  document.head.appendChild(bridge);
+ }
+
 
  // Menu narrativo: sempre prima della testata figurativa.
  function setupTopNavigation(){

@@ -385,6 +385,13 @@ body.panel-open #periodContext{right:340px}
 #searchResults button{display:block;width:100%;margin:0;padding:10px 11px;border:0;border-bottom:1px solid #354a60;border-radius:5px;background:transparent;color:#f5eadb;text-align:left;font:600 12px/1.35 system-ui;touch-action:manipulation}
 #searchResults button:hover,#searchResults button:focus-visible{background:#314b66;color:#fff}
 @media(max-width:700px){#searchResults{left:0;bottom:calc(100% + 7px);width:min(325px,calc(100vw - 20px));max-height:33dvh}#searchResults button{min-height:40px}}
+
+/* Ponte con i percorsi e consultazione enciclopedica */
+#panel .mm-site-links,#panel .mm-encyclopedia{border-top:1px solid rgba(224,196,148,.28);padding-top:12px;margin:17px 0 8px}
+#panel .mm-site-links h3,#panel .mm-encyclopedia h3{font:600 16px/1.35 Georgia,serif;margin:0 0 9px;color:#f1d19e}
+#panel .mm-site-links a,#panel .mm-encyclopedia a{display:block;width:100%;margin:5px 0;padding:7px 9px;background:#1a3045;border:1px solid #51667d;border-radius:6px;color:#f5deaf;font:650 12px/1.4 system-ui;overflow-wrap:anywhere;text-decoration:none}
+#panel .mm-site-links a:hover,#panel .mm-encyclopedia a:hover,#panel .mm-site-links a:focus-visible,#panel .mm-encyclopedia a:focus-visible{background:#314c66;text-decoration:underline}
+#panel .mm-encyclopedia .small{font-size:11px;line-height:1.5;color:#b7bec7;margin:8px 0}
 </style></head><body>
 <div id="scene"><div id="earthMap" aria-hidden="true"></div><div id="earthShade" aria-hidden="true"></div><canvas id="sky" aria-label="Costellazione tridimensionale interattiva"></canvas></div>
 <header><div class="masthead"><a class="brand" href="../">Alessandro Zilli · Atlante della musica</a><h1>Musurgia Mundi</h1><p>La costellazione Musica</p><div id="status" role="status">Caricamento della rete…</div></div><a class="back" href="../" aria-label="Torna alla homepage dell’Atlante">⌂ Home · Atlante</a></header><div id="periodContext" hidden aria-live="polite"></div>
@@ -415,5 +422,5 @@ body.panel-open #periodContext{right:340px}
  <span id="lensHelp" class="explore-note">Puoi combinare più scelte contemporaneamente.</span>
 </details><div id="panelContent"></div></div></aside>
 <div id="error">Impossibile caricare il database. Controlla il file <code>database/grafo.json</code> e riprova.</div>
-<script src="app-livelli.js?v=20261018-relazioni-leggibili01" defer></script>
+<script src="app-livelli.js?v=20261018-rete-enciclopedica01" defer></script>
 </body></html>

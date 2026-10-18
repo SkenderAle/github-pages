@@ -10,6 +10,7 @@ const earthMap=document.getElementById("earthMap"),followGeo=document.getElement
 const COLORS={compositore:"#f3bd74",persona:"#f1c1d5",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoZoomPct=0,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
 let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
+let encyclopediaIndex={},editorialBacklinks={};
 const geoCache=new Map();
 let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),selectedDepthCacheKey="",selectedDepthCache=new Map(),lastDrawTime=0;
 const activeLenses=new Set(["musica","trasmissioni","genealogie","collaborazioni"]);
@@ -842,7 +843,35 @@ function populate(n){
   const why=document.createElement("button");why.type="button";why.className="lens-why";why.textContent="Perché sono collegati? · fonti ↗";why.addEventListener("click",()=>showRelation(e));item.append(why);box.append(item);
  }dst.append(box);
  const relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
- if(n.url){const a=document.createElement("a");a.className="card";a.href=n.url;a.textContent="↗ Apri il percorso nell'Atlante";dst.append(a);}
+ // Le pagine editoriali non sono sinonimi di un lemma biografico:
+ // i rimandi derivano da titoli e/o URL editoriali verificati.
+ const editorials=[...(editorialBacklinks[n.id]||[])];
+ if(n.url&&!editorials.some(x=>x.url===n.url))editorials.unshift({page:"Atlante",url:n.url});
+ if(editorials.length){
+  const place=document.createElement("section");place.className="mm-site-links";
+  const title=document.createElement("h3");title.textContent="Percorsi e ascolti nell'Atlante";place.append(title);
+  for(const ref of editorials.slice(0,5)){
+   const a=document.createElement("a");a.href=ref.url;a.textContent="↗ "+(ref.page==="Atlante"?"Apri il percorso":ref.page.replace(/-/g," "));
+   place.append(a);
+  }
+  dst.append(place);
+ }
+ // Enciclopedie: solo URL verificati verso voci specifiche; Grove e
+ // Treccani restano anche consultabili come portali, senza simulare articoli.
+ if(n.type==="compositore"||n.type==="persona"||n.type==="corrente"){
+  const lex=document.createElement("section");lex.className="mm-encyclopedia";
+  const title=document.createElement("h3");title.textContent="Consultazione enciclopedica";lex.append(title);
+  const entries=encyclopediaIndex.entries?.[n.id]||[];
+  for(const ref of entries){
+   const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=ref.label+" ↗";lex.append(a);
+  }
+  for(const ref of [encyclopediaIndex.default?.grove,encyclopediaIndex.default?.treccani].filter(Boolean)){
+   const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=ref.label+" ↗";lex.append(a);
+  }
+  if(lex.querySelector("a")){
+   const note=document.createElement("p");note.className="small";note.textContent="Grove può richiedere l'accesso da biblioteca. La Garzantina della musica è indicata come opera bibliografica, non come voce digitale verificata.";lex.append(note);dst.append(lex);
+  }
+ }
  const mediaHead=document.createElement("div");mediaHead.className="panel-section-header";
  const h=document.createElement("h3");h.textContent="Ascolti e video";mediaHead.append(h);
  const total=document.createElement("span");total.className="media-count";total.textContent=relatedMedia.length+" risorse";mediaHead.append(total);dst.append(mediaHead);
@@ -1106,5 +1135,30 @@ window.addEventListener("pageshow",()=>{
   syncZoomControls();
  }
 });
-Promise.all([fetch("database/grafo.json",{cache:"no-cache"}),fetch("database/video.json",{cache:"no-cache"}),fetch("database/relazioni.json",{cache:"no-cache"})]).then(async responses=>{if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);const db=await responses[0].json();const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];if(!responses[2].ok)throw Error("HTTP lenti "+responses[2].status);db.lenses=await responses[2].json();return db;}).then(db=>{prepare(db);requestAnimationFrame(draw);}).catch(e=>{document.body.classList.add("error");status.textContent="Errore caricamento: "+e.message;console.error(e);});
+Promise.all([
+ fetch("database/grafo.json",{cache:"no-cache"}),
+ fetch("database/video.json",{cache:"no-cache"}),
+ fetch("database/relazioni.json",{cache:"no-cache"}),
+ fetch("database/consultazione.json",{cache:"no-cache"}),
+ fetch("database/collegamenti-sito.json",{cache:"no-cache"})
+]).then(async responses=>{
+ if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);
+ if(!responses[2].ok)throw Error("HTTP lenti "+responses[2].status);
+ const db=await responses[0].json();
+ const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};
+ db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];
+ db.lenses=await responses[2].json();
+ encyclopediaIndex=responses[3].ok?await responses[3].json():{};
+ const crosslinks=responses[4].ok?await responses[4].json():{};
+ editorialBacklinks=crosslinks.byNode||{};
+ return db;
+}).then(db=>{
+ prepare(db);
+ const requested=new URLSearchParams(location.search).get("n");
+ if(requested&&byId.has(requested))focusOn(byId.get(requested),true,true,false);
+ requestAnimationFrame(draw);
+}).catch(e=>{
+ document.body.classList.add("error");
+ status.textContent="Errore caricamento: "+e.message;console.error(e);
+});
 })();
