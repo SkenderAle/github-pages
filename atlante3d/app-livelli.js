@@ -329,7 +329,7 @@ function fitGeoNetwork(n,tight=false){
   // La selezione è schematica finché non esiste una città documentata.
   geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
   geoAutoSpan=360;geoZoomPct=0;syncZoomControls();
-  geoLabel.textContent=n.label+" · localizzazione assente · nodo schematico (non geografico)";
+  geoLabel.textContent=n.label;
   return;
  }
  const pts=networkNodesForFocus(n).map(geoFromNode).filter(Boolean);
@@ -750,7 +750,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
    ctx.save();ctx.globalAlpha=1;ctx.setLineDash([4,4]);ctx.strokeStyle="#f4d79c";ctx.lineWidth=1.6;
    ctx.beginPath();ctx.arc(p.x,p.y,rad+7,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
    ctx.font="bold 10px system-ui";ctx.textAlign="center";ctx.textBaseline="top";ctx.fillStyle="#f4d79c";
-   ctx.fillText("NODO NON GEOLOCALIZZATO",p.x,p.y+rad+12);ctx.restore();
+   ctx.restore();
   }
   const isLabel=Boolean(
    selected
