@@ -125,7 +125,8 @@ const COUNTRY_AREAS={
  "Finlandia":[64.0,26.0,5.0,5.0],"Danimarca":[56.0,10.0,2.0,2.2],"Portogallo":[39.6,-8.0,2.3,1.8],
  "Brasile":[-14.2,-51.9,12.0,15.0],"Argentina":[-34.0,-64.0,11.0,8.0],"Messico":[23.6,-102.5,8.0,10.0],
  "Canada":[56.1,-106.3,14.0,25.0],"Giappone":[36.2,138.3,4.0,4.5],"Cina":[35.9,104.2,10.0,14.0],
- "Australia":[-25.3,133.8,9.0,12.0]
+ "Australia":[-25.3,133.8,9.0,12.0],
+ "Svizzera":[46.8,8.2,1.2,2.0],"Armenia":[40.2,44.5,1.2,1.4]
 };
 const MUSICIAN_GEO_OVERRIDES={
  "compositore-antonio-vivaldi":[45.4408,12.3155,"Venezia"],
@@ -207,11 +208,9 @@ function geoFromNode(n){
  if(n.type==="corrente"||n.type==="ambito"||n.type==="persona"){
   geoCache.set(n.id,null);return null;
  }
- const pool=dedupeEdges([...edges,...lensEdges]);
- const linked=pool.filter(e=>e.source===n.id||e.target===n.id)
-  .map(e=>baseGeo(byId.get(e.source===n.id?e.target:e.source))).filter(Boolean);
- const out=linked.length?{lat:linked.reduce((s,p)=>s+p.lat,0)/linked.length,lon:circularMeanLon(linked.map(p=>p.lon)),span:80,precision:"network-centroid",place:"baricentro della rete"}:null;
- geoCache.set(n.id,out);return out;
+ // Non collocare un autore nel baricentro delle sue relazioni: non è una località biografica.
+ // In assenza di coordinate attendibili resta ricercabile, senza un pallino falso sulla carta.
+ geoCache.set(n.id,null);return null;
 }
 const lonDelta=(a,b)=>((a-b+540)%360)-180;
 const mapBase=()=>Math.max(320,Math.min(w,2*h));
@@ -492,9 +491,11 @@ function selectedNeighborIds(){
 }
 function visibleNode(n){
  if(!nodeEligibleForDepth(n))return false;
- if(selected)return selectedDepths(readingDepth()).has(n.id);
- if((n.type==="corrente"||n.type==="ambito"||n.type==="persona")&&!geoFromNode(n))return false;
- return true;
+ // Senza geografia documentata nessuna proiezione libera sopra o sotto la cartografia.
+ // Le figure concettuali emergono soltanto attorno a un nodo geografico selezionato.
+ if(!selected)return !!geoFromNode(n);
+ if(!selectedDepths(readingDepth()).has(n.id))return false;
+ return !!geoFromNode(n)||!!contextRawPoint(n);
 }
 function nodeDepth(n){
  if(!selected)return 0;
@@ -796,7 +797,7 @@ function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=fa
  if(explodeBtn)explodeBtn.disabled=false;
  updatePeriodContext(n);
  const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
- status.textContent=n.label+" · "+readingAllowed().size+" di "+linked(n).length+" relazioni · "+readingNames[readingLevel];
+ status.textContent=n.label+" · "+readingAllowed().size+" relazioni musicali · "+periodsFor(n).length+" contesti storici · "+readingNames[readingLevel];
  populate(n);if(openPanel)setPanel(true);
 }
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Esplora";tab.setAttribute("aria-expanded",String(open));}
@@ -819,6 +820,46 @@ function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
  document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica",persona:"Figura storica"}[n.type]||"");
  const dst=document.getElementById("panelContent");dst.replaceChildren();
+ // Carta di identità PRIMA delle spiegazioni delle relazioni.
+ // Una fonte esterna non viene mai simulata con il collegamento alla ricerca generale.
+ if(n.type==="compositore"||n.type==="persona"){
+  const curated=encyclopediaIndex.profiles?.[n.id]||null;
+  const treccaniRefs=(encyclopediaIndex.entries?.[n.id]||[]).filter(ref=>
+   /^https:\/\/www\.treccani\.it\/enciclopedia\/[a-z0-9]/i.test(ref.url||""));
+  const card=document.createElement("section");card.className="mm-identity-card";
+  const title=document.createElement("h3");title.textContent="Carta d’identità · "+(treccaniRefs.length?"Treccani":"Atlante");card.append(title);
+  const name=document.createElement("strong");name.className="mm-identity-name";name.textContent=n.label;card.append(name);
+  if(curated?.dates||curated?.place||n.country){
+   const meta=document.createElement("p");meta.className="mm-identity-meta";
+   meta.textContent=[curated?.dates,curated?.place||n.country].filter(Boolean).join(" · ");card.append(meta);
+  }
+  const description=document.createElement("p");description.className="mm-identity-description";
+  description.textContent=curated?.summary||n.description||"Profilo biografico ancora da documentare.";
+  card.append(description);
+  if(treccaniRefs.length){
+   const attribution=document.createElement("p");attribution.className="small";
+   attribution.textContent=curated?"Sintesi biografica redatta dall’Atlante sulla voce indicata.":"Presentazione editoriale dell’Atlante; consulta la voce Treccani per il profilo completo.";
+   card.append(attribution);
+   for(const ref of treccaniRefs.slice(0,2)){
+    const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";
+    a.textContent="Leggi la voce specifica su Treccani ↗";card.append(a);
+   }
+  }else{
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Voce biografica Treccani specifica non ancora verificata: nessun rimando a ricerche generiche.";card.append(note);
+  }
+  dst.append(card);
+ }
+ const periods=periodsFor(n);
+ if(periods.length){
+  const area=document.createElement("section");area.className="mm-period-links";
+  const title=document.createElement("h3");title.textContent="Appartenenze e contesti storici · "+periods.length;area.append(title);
+  for(const row of periods.slice(0,6)){
+   const b=document.createElement("button");b.type="button";b.textContent=row.node.label+" ↗";
+   b.addEventListener("click",()=>focusOn(row.node,true));area.append(b);
+  }
+  dst.append(area);
+ }
  if(n.aliases?.length){
   const names=document.createElement("details");names.className="name-variants";
   const title=document.createElement("summary");title.textContent="Altri nomi e grafie · "+n.aliases.length;names.append(title);
@@ -832,9 +873,9 @@ function populate(n){
   const conn=linked(n).filter(({e})=>allowedInPanel.has(readingKey(e)));
  updateLensCounts(n);
  const box=document.createElement("section");box.className="lens-relations";
- const head=document.createElement("h3");head.textContent="Collegamenti diretti · "+conn.length+" ("+readingSpotlight().size+" evidenziati)";box.append(head);
+ const head=document.createElement("h3");head.textContent="Relazioni musicali e personali · "+conn.length+" ("+readingSpotlight().size+" evidenziate)";box.append(head);
  const readingNote=document.createElement("p");readingNote.className="small reading-note";readingNote.textContent="La profondità scelta sulla mappa cambia soltanto quali collegamenti risaltano: tutte le relazioni dirette filtrate restano visibili.";box.append(readingNote);
- if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessuna relazione visibile con queste impostazioni. Prova il livello Ricercare o modifica i filtri: questo non significa che manchino relazioni nel database.";box.append(p);}
+ if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessuna relazione personale documentata e visibile con le lenti attive. Le appartenenze storiche e i rimandi alle opere sono mostrati separatamente.";box.append(p);}
  for(const {e,n:other} of conn){
   const item=document.createElement("article");item.className="lens-relation-item";
   const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
@@ -847,35 +888,37 @@ function populate(n){
  // i rimandi derivano da titoli e/o URL editoriali verificati.
  const editorials=[...(editorialBacklinks[n.id]||[])];
  if(n.url&&!editorials.some(x=>x.url===n.url))editorials.unshift({page:"Atlante",url:n.url});
- if(editorials.length){
+ const isSingleWork=ref=>ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||
+  /#mm-opera-(camera|canto)-/.test(ref.url||"");
+ const workRefs=editorials.filter(isSingleWork);
+ const navigationRefs=editorials.filter(ref=>!isSingleWork(ref));
+ if(navigationRefs.length){
   const place=document.createElement("section");place.className="mm-site-links";
-  const title=document.createElement("h3");title.textContent="Percorsi e ascolti nell'Atlante";place.append(title);
-  for(const ref of editorials.slice(0,8)){
-   const a=document.createElement("a");a.href=ref.url;a.textContent="↗ "+(ref.title|| (ref.page==="Atlante"?"Apri il percorso":ref.page.replace(/-/g," ")));a.title="Apri nell’Atlante la risorsa dedicata a "+n.label;
-   place.append(a);
+  const title=document.createElement("h3");title.textContent="Percorsi nell’Atlante";place.append(title);
+  for(const ref of navigationRefs.slice(0,8)){
+   const a=document.createElement("a");a.href=ref.url;a.textContent="↗ "+(ref.title||(ref.page==="Atlante"?"Apri il percorso":ref.page.replace(/-/g," ")));
+   a.title="Apri nell’Atlante il percorso dedicato a "+n.label;place.append(a);
   }
   dst.append(place);
  }
- // Enciclopedie: solo URL verificati verso voci specifiche; Grove e
- // Treccani restano anche consultabili come portali, senza simulare articoli.
- if(n.type==="compositore"||n.type==="persona"||n.type==="corrente"){
-  const lex=document.createElement("section");lex.className="mm-encyclopedia";
-  const title=document.createElement("h3");title.textContent="Consultazione enciclopedica";lex.append(title);
-  const entries=encyclopediaIndex.entries?.[n.id]||[];
-  for(const ref of entries){
-   const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=ref.label+" ↗";lex.append(a);
-  }
-  for(const ref of [encyclopediaIndex.default?.grove,encyclopediaIndex.default?.treccani].filter(Boolean)){
-   const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=ref.label+" ↗";lex.append(a);
-  }
-  if(lex.querySelector("a")){
-   const note=document.createElement("p");note.className="small";note.textContent="Grove può richiedere l'accesso da biblioteca. La Garzantina della musica è indicata come opera bibliografica, non come voce digitale verificata.";lex.append(note);dst.append(lex);
-  }
- }
  const mediaHead=document.createElement("div");mediaHead.className="panel-section-header";
  const h=document.createElement("h3");h.textContent="Ascolti e video";mediaHead.append(h);
- const total=document.createElement("span");total.className="media-count";total.textContent=relatedMedia.length+" risorse";mediaHead.append(total);dst.append(mediaHead);
- if(!relatedMedia.length){const p=document.createElement("p");p.className="small";p.textContent="Nessun ascolto catalogato per questa voce. La raccolta cresce con i capitoli dell’Atlante.";dst.append(p);}
+ const total=document.createElement("span");total.className="media-count";total.textContent=(relatedMedia.length+workRefs.length)+" risorse";mediaHead.append(total);dst.append(mediaHead);
+ for(const ref of workRefs.slice(0,12)){
+  const item=document.createElement("article");item.className="mm-work-listening";
+  const title=document.createElement("strong");title.textContent=ref.title||ref.page||"Opera nell’Atlante";item.append(title);
+  const link=document.createElement("a");link.href=ref.url;
+  link.textContent="▶ Apri la scheda d’ascolto nell’Atlante ↗";
+  link.title="Il lettore è nella scheda dell’opera. Nessun avvio automatico.";item.append(link);dst.append(item);
+ }
+ if(workRefs.length>12){
+  const p=document.createElement("p");p.className="small";
+  p.textContent="Altre "+(workRefs.length-12)+" opere raggiungibili dalle audioteche dell’Atlante.";dst.append(p);
+ }
+ if(!relatedMedia.length&&!workRefs.length){
+  const p=document.createElement("p");p.className="small";
+  p.textContent="Nessun ascolto specifico ancora collegato a questa voce: consulta i percorsi dell’Atlante indicati sopra.";dst.append(p);
+ }
  for(const media of relatedMedia){
    const box=document.createElement("article");box.className="video";
    if(media.youtube_id&&/^[a-zA-Z0-9_-]{11}$/.test(media.youtube_id)){
