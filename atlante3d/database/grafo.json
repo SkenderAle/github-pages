@@ -14913,6 +14913,58 @@
       "sources": [
         "https://www.deutsche-biographie.de/sfz4361.html?language=en"
       ]
+    },
+    {
+      "id": "genere-concerto",
+      "label": "Concerto",
+      "type": "corrente",
+      "status": "attivo",
+      "url": "../barocco/",
+      "description": "Genere strumentale fondato sul dialogo fra solista o gruppi strumentali e insieme; comprende forme storicamente distinte, tra cui concerto grosso e concerto solistico.",
+      "taxonomy": {
+        "class": "genere-trasversale",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-sonata",
+      "label": "Sonata",
+      "type": "corrente",
+      "status": "attivo",
+      "url": "../classicismo/",
+      "description": "Genere strumentale dalle molte trasformazioni storiche, dalla sonata barocca alla sonata classica e romantica. Da distinguere dalla forma-sonata come principio costruttivo.",
+      "taxonomy": {
+        "class": "genere-trasversale",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-sinfonia",
+      "label": "Sinfonia",
+      "type": "corrente",
+      "status": "attivo",
+      "url": "../classicismo/",
+      "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico.",
+      "taxonomy": {
+        "class": "genere-trasversale",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
+    },
+    {
+      "id": "genere-suite",
+      "label": "Suite",
+      "type": "corrente",
+      "status": "attivo",
+      "url": "../barocco/",
+      "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive.",
+      "taxonomy": {
+        "class": "genere-trasversale",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      }
     }
   ],
   "edges": [
@@ -21943,6 +21995,114 @@
       "target": "geografia-cechia",
       "kind": "ambito-geografico",
       "weight": 0.9
+    },
+    {
+      "source": "barocco",
+      "target": "genere-concerto",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "classicismo",
+      "target": "genere-concerto",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "romanticismo",
+      "target": "genere-concerto",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "barocco",
+      "target": "genere-sonata",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "classicismo",
+      "target": "genere-sonata",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "romanticismo",
+      "target": "genere-sonata",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "classicismo",
+      "target": "genere-sinfonia",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "romanticismo",
+      "target": "genere-sinfonia",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "post-romanticismo",
+      "target": "genere-sinfonia",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "barocco",
+      "target": "genere-suite",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "novecento",
+      "target": "genere-suite",
+      "kind": "sviluppo-storico",
+      "weight": 1.15
+    },
+    {
+      "source": "genere-concerto",
+      "target": "forma-concerto-grosso",
+      "kind": "articolazione-del-genere",
+      "weight": 1.15
+    },
+    {
+      "source": "genere-concerto",
+      "target": "forma-concerto-strumentale-romantico",
+      "kind": "articolazione-del-genere",
+      "weight": 1.15
+    },
+    {
+      "source": "genere-sonata",
+      "target": "sonata-francese-violino-basso-continuo",
+      "kind": "esempio-storico-del-genere",
+      "weight": 1.15
+    },
+    {
+      "source": "genere-suite",
+      "target": "forma-suite-orchestrale-novecento",
+      "kind": "articolazione-del-genere",
+      "weight": 1.15
+    },
+    {
+      "source": "genere-suite",
+      "target": "suite-danze-banchetto-musicale",
+      "kind": "esempio-storico-del-genere",
+      "weight": 1.15
+    },
+    {
+      "source": "genere-sinfonia",
+      "target": "sinfonismo-italiano-settecento",
+      "kind": "contesto-storico-del-genere",
+      "weight": 1.15
+    },
+    {
+      "source": "genere-sinfonia",
+      "target": "sinfonismo-tardoromantico",
+      "kind": "contesto-storico-del-genere",
+      "weight": 1.15
     }
   ],
   "videos": [],
@@ -22134,5 +22294,16 @@
     "added_relations": 20,
     "provisional_relations": 4,
     "policy": "Rapporti documentati distinti da relazioni critiche ancora da validare. Nessun finto ascolto."
+  },
+  "taxonomy_pilot_20261018": {
+    "phase": "four-transversal-genres",
+    "nodes": [
+      "genere-concerto",
+      "genere-sonata",
+      "genere-sinfonia",
+      "genere-suite"
+    ],
+    "note": "Introduzione non distruttiva; nessun arco compositore-genere aggiunto automaticamente. I nodi specialistici e i riferimenti restano integri.",
+    "edges_added": 18
   }
 }
