@@ -125,6 +125,11 @@
     const author=kind==="canto"?work.querySelector(".eyebrow")?.textContent||"":"";
     if(!title||(kind==="canto"&&!author))continue;
     work.id=kind==="canto"?"mm-opera-canto-"+slug(author)+"-"+slug(title):"mm-opera-camera-"+slug(title);
+   // Le schede vengono create dopo il caricamento della pagina: il browser
+   // non può applicare da solo un hash a un elemento che ancora non esiste.
+   if(location.hash&&location.hash.slice(1)===work.id){
+    requestAnimationFrame(()=>requestAnimationFrame(()=>position(work.id)));
+   }
    }
   }
   attach();
