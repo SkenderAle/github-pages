@@ -884,7 +884,7 @@ function populate(n){
    const heading=document.createElement("h3");heading.textContent="Fonti, raccolte e cicli · "+docs.length;area.append(heading);
    for(const doc of docs){
     const contact=doc.document_archive.contacts.find(c=>c.node_id===n.id);
-    const roles={"compositore":"compositore","autore-del-trattato":"autore","autore-della-raccolta":"autore","curatore-della-raccolta":"curatore","editore":"editore","attribuzione-discussa":"attribuzione discussa","trascrittore-arrangiatore":"trascrittore e arrangiatore"};
+    const roles={"compositore":"compositore","autore-del-trattato":"autore","autore-della-raccolta":"autore","curatore-della-raccolta":"curatore","editore":"editore","attribuzione-discussa":"attribuzione discussa","trascrittore-arrangiatore":"trascrittore e arrangiatore","associazione-storica-da-fonte-tarda":"associazione documentata da fonte tarda","rielaborazione-storicamente-testimoniata":"rielaborazione testimoniata","intervento-editoriale":"intervento editoriale","attribuzione-catalografica":"attribuzione catalografica","repertorio-tramandato":"repertorio tramandato","repertorio-attribuito-e-tramandato":"repertorio attribuito e tramandato"};
     const btn=document.createElement("button");btn.type="button";
     btn.textContent=doc.label+" · "+(roles[contact.role]||contact.role)+" ↗";
     btn.addEventListener("click",()=>focusOn(doc,true));area.append(btn);
@@ -936,7 +936,7 @@ function populate(n){
   for(const contact of n.document_archive.contacts||[]){
    const person=byId.get(contact.node_id);if(!person)continue;
    const btn=document.createElement("button");btn.type="button";
-   const roles={"compositore":"Compositore","autore-del-trattato":"Autore","autore-della-raccolta":"Autore","curatore-della-raccolta":"Curatore","editore":"Editore","attribuzione-discussa":"Attribuzione discussa","trascrittore-arrangiatore":"Trascrittore e arrangiatore"};
+   const roles={"compositore":"Compositore","autore-del-trattato":"Autore","autore-della-raccolta":"Autore","curatore-della-raccolta":"Curatore","editore":"Editore","attribuzione-discussa":"Attribuzione discussa","trascrittore-arrangiatore":"Trascrittore e arrangiatore","associazione-storica-da-fonte-tarda":"associazione documentata da fonte tarda","rielaborazione-storicamente-testimoniata":"rielaborazione testimoniata","intervento-editoriale":"intervento editoriale","attribuzione-catalografica":"attribuzione catalografica","repertorio-tramandato":"repertorio tramandato","repertorio-attribuito-e-tramandato":"repertorio attribuito e tramandato"};
    btn.textContent=(roles[contact.role]||"Riferimento")+" · "+person.label+" ↗";
    btn.addEventListener("click",()=>focusOn(person,true));area.append(btn);
   }
