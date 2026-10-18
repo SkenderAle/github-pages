@@ -868,7 +868,7 @@ function populate(n){
    }
   }else{
    const note=document.createElement("p");note.className="small";
-   note.textContent="Voce biografica Treccani specifica non ancora verificata: nessun rimando a ricerche generiche.";card.append(note);
+   note.textContent="Fonti biografiche individuali in corso di ricognizione.";card.append(note);
   }
   dst.append(card);
  }
