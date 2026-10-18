@@ -900,7 +900,19 @@ function populate(n){
   const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
   const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=relationSentence(e,n.id);
   const p=document.createElement("p");p.textContent=e.note||"Relazione documentata.";item.append(b,kind,p);
-  const why=document.createElement("button");why.type="button";why.className="lens-why";why.textContent="Perché sono collegati? · fonti ↗";why.addEventListener("click",()=>showRelation(e));item.append(why);box.append(item);
+  // Una fonte e' un vero collegamento esterno, non un pulsante che apre
+  // una seconda spiegazione duplicata. Nessuna CTA se manca una fonte valida.
+  const sources=[...new Set((Array.isArray(e.sources)?e.sources:[])
+   .filter(url=>typeof url==="string"&&/^https:\/\/[^\s/]+(?:\/|$)/i.test(url)))];
+  if(sources.length){
+   const foot=document.createElement("div");foot.className="lens-sources";
+   for(const [i,url] of sources.entries()){
+    const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";
+    a.textContent=sources.length===1?"Consulta la fonte ↗":"Fonte "+(i+1)+" ↗";foot.append(a);
+   }
+   item.append(foot);
+  }
+  box.append(item);
  }dst.append(box);
  const relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
  // Le pagine editoriali non sono sinonimi di un lemma biografico:
