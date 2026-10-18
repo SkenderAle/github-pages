@@ -469,6 +469,8 @@ function currentEdges(){
 function nodeEligibleForDepth(n){
  if(!n||n.type==="geografia"||n.type==="periodo")return false;
  if(!categoryVisible(n))return false;
+ // Le opere archiviate restano ricercabili e apribili come schede, non come bolle della tassonomia.
+ if(n.work_archive?.kind==="opera-specifica"&&n!==selected)return false;
  // Le specificazioni di organico e i casi particolari restano consultabili dal loro genere padre e tramite ricerca diretta.
  if(n.taxonomy?.presentation==="approfondimento"&&n!==selected&&selected?.id!==n.taxonomy.parent)return false;
  if(n.type==="persona"&&!n.music_relevance&&!hasNonMusicLens()&&n!==selected)return false;
@@ -855,6 +857,34 @@ function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
  document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica",persona:"Figura storica"}[n.type]||"");
  const dst=document.getElementById("panelContent");dst.replaceChildren();
+ // Archivio delle opere: consultabile dalla carta del compositore senza moltiplicare le bolle.
+ if(n.type==="compositore"){
+  const works=nodes.filter(w=>w.work_archive?.composer_id===n.id)
+   .sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(works.length){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Opere documentate · "+works.length;area.append(heading);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Opere conservate nell'archivio di Musurgia Mundi; seleziona un titolo per leggere la scheda. La presenza non implica un ascolto disponibile.";
+   area.append(note);
+   for(const work of works){
+    const btn=document.createElement("button");btn.type="button";btn.textContent=work.label+" ↗";
+    btn.addEventListener("click",()=>focusOn(work,true));area.append(btn);
+   }
+   dst.append(area);
+  }
+ }
+ if(n.work_archive?.kind==="opera-specifica"){
+  const composer=byId.get(n.work_archive.composer_id);
+  if(composer){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Scheda d'opera";area.append(heading);
+   const btn=document.createElement("button");btn.type="button";
+   btn.textContent="Compositore · "+composer.label+" ↗";
+   btn.addEventListener("click",()=>focusOn(composer,true));area.append(btn);
+   dst.append(area);
+  }
+ }
  // Carta di identità PRIMA delle spiegazioni delle relazioni.
  // Una fonte esterna non viene mai simulata con il collegamento alla ricerca generale.
  if(n.type==="compositore"||n.type==="persona"){
