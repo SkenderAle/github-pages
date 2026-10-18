@@ -876,6 +876,22 @@ function populate(n){
    dst.append(area);
   }
  }
+ // Documenti, raccolte e cicli con legame redazionale esplicito all'autore, editore o curatore.
+ if(n.type==="compositore"){
+  const docs=nodes.filter(w=>w.document_archive?.contacts?.some(c=>c.node_id===n.id)).sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(docs.length){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Fonti, raccolte e cicli · "+docs.length;area.append(heading);
+   for(const doc of docs){
+    const contact=doc.document_archive.contacts.find(c=>c.node_id===n.id);
+    const roles={"compositore":"compositore","autore-del-trattato":"autore","autore-della-raccolta":"autore","curatore-della-raccolta":"curatore","editore":"editore","attribuzione-discussa":"attribuzione discussa","trascrittore-arrangiatore":"trascrittore e arrangiatore"};
+    const btn=document.createElement("button");btn.type="button";
+    btn.textContent=doc.label+" · "+(roles[contact.role]||contact.role)+" ↗";
+    btn.addEventListener("click",()=>focusOn(doc,true));area.append(btn);
+   }
+   dst.append(area);
+  }
+ }
  // Repertorio del genere: esclusivamente opere con un arco esplicito, senza deduzioni automatiche.
  if(n.id.startsWith("genere-")){
   const workIds=new Set();
@@ -916,7 +932,15 @@ function populate(n){
   const heading=document.createElement("h3");heading.textContent=labels[n.document_archive.kind]||"Documento musicale";area.append(heading);
   const note=document.createElement("p");note.className="small";
   note.textContent="Scheda di consultazione conservata fuori dalle bolle generali. Le attribuzioni e le fonti sono riportate nei dati originari; una fonte non implica collaborazione fra gli autori.";
-  area.append(note);dst.append(area);
+  area.append(note);
+  for(const contact of n.document_archive.contacts||[]){
+   const person=byId.get(contact.node_id);if(!person)continue;
+   const btn=document.createElement("button");btn.type="button";
+   const roles={"compositore":"Compositore","autore-del-trattato":"Autore","autore-della-raccolta":"Autore","curatore-della-raccolta":"Curatore","editore":"Editore","attribuzione-discussa":"Attribuzione discussa","trascrittore-arrangiatore":"Trascrittore e arrangiatore"};
+   btn.textContent=(roles[contact.role]||"Riferimento")+" · "+person.label+" ↗";
+   btn.addEventListener("click",()=>focusOn(person,true));area.append(btn);
+  }
+  dst.append(area);
  }
  // Carta di identità PRIMA delle spiegazioni delle relazioni.
  // Una fonte esterna non viene mai simulata con il collegamento alla ricerca generale.
