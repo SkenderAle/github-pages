@@ -851,8 +851,9 @@ function populate(n){
   const curated=encyclopediaIndex.profiles?.[n.id]||null;
   const treccaniRefs=(encyclopediaIndex.entries?.[n.id]||[]).filter(ref=>
    /^https:\/\/www\.treccani\.it\/enciclopedia\/[a-z0-9]/i.test(ref.url||""));
+  const alternativeRefs=(encyclopediaIndex.otherSources?.[n.id]||[]).filter(ref=>/^https:\/\//i.test(ref.url||"")&&ref.institution&&ref.title);
   const card=document.createElement("section");card.className="mm-identity-card";
-  const title=document.createElement("h3");title.textContent="Carta d’identità · "+(treccaniRefs.length?"Treccani":"Atlante");card.append(title);
+  const title=document.createElement("h3");title.textContent="Carta d’identità · "+(treccaniRefs.length?"Treccani":alternativeRefs.length?"Fonti autorevoli":"Atlante");card.append(title);
   const name=document.createElement("strong");name.className="mm-identity-name";name.textContent=n.label;card.append(name);
   if(curated?.dates||curated?.place||n.country){
    const meta=document.createElement("p");meta.className="mm-identity-meta";
@@ -869,7 +870,14 @@ function populate(n){
     const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";
     a.textContent="Leggi la voce specifica su Treccani ↗";card.append(a);
    }
-  }else{
+  }
+  if(alternativeRefs.length){
+   const intro=document.createElement("p");intro.className="small";intro.textContent="Altre fonti biografiche autorevoli:";card.append(intro);
+   for(const ref of alternativeRefs.slice(0,3)){
+    const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=ref.institution+" · "+ref.title+" ↗";card.append(a);
+   }
+  }
+  if(!treccaniRefs.length&&!alternativeRefs.length){
    const note=document.createElement("p");note.className="small";
    note.textContent="Fonti biografiche individuali in corso di ricognizione.";card.append(note);
   }
