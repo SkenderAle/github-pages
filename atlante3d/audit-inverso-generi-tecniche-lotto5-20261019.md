@@ -31,6 +31,9 @@ Integrità: nessun estremo inesistente, nessun arco diretto duplicato nelle diec
 - `Polifonia corale luterana`: relazione a **Johann Walter** e alla raccolta del 1524, distinguendo repertorio ed editoria.
 - `Musica concreta` e `Musica elettronica`: distinzione storica editoriale riscritta nella descrizione. **Xenakis** praticò composizione su nastro al GRM, senza fargli attribuire l'invenzione della tecnica.
 
+## Rettifica delle fonti
+La voce di Johann Walter è stata verificata e corretta verso la pagina Treccani individuale: https://www.treccani.it/enciclopedia/johann-walther_%28Enciclopedia-Italiana%29/ . La prima variante URL era irraggiungibile.
+
 ## Limiti e passaggi aperti
 - Non sono stati generati archi di scuola da affinità stilistiche, né copiati quelli presenti nelle lenti specialistiche.
 - L'audit resta selettivo; le categorie possono ancora avere autori pertinenti non censiti.
