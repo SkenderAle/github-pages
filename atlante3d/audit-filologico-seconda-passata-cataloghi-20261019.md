@@ -31,6 +31,9 @@ Sono stati ripercorsi **16 archi già esistenti**, senza aggiunta di nodi o arch
 4. **Domenico Scarlatti:** *La Dirindina* è opera concepita nel 1715 quale intermezzo per *Ambleto*, ma **cancellata** dalla rappresentazione originaria. [CORAGO, scheda dell'opera](https://corago.unibo.it/opera/0000374519) e [scheda del libretto di Ambleto](https://corago.unibo.it/libretto/DRT0002109) devono essere lette insieme.
 5. **Distinzioni ulteriori:** Mozart KV 475 diverso da KV 457; J.S. Bach BWV 903 diverso da BWV 903a; C.P.E. Bach Wq 67 / H 300 diverso dalla versione H 536; Brahms op. 116 titolo collettivo; il concetto di fantasia non è sovrapponibile alla forma-sonata o a ogni movimento libero.
  
+## Rettifica puntuale URL Bach BWV 1079
+Durante la verifica finale due URL di prova (Bachvereniging senza suffisso del movimento, e titolo IMSLP non canonico) non sono risultati raggiungibili. Sono stati sostituiti con la scheda [IMSLP Musikalisches Opfer](https://imslp.org/wiki/Musikalisches_Opfer%2C_BWV_1079_%28Bach%2C_Johann_Sebastian%29) e con le registrazioni ufficiali della Netherlands Bach Society dei ricercari [a tre](https://www.youtube.com/watch?v=Lv5A1gy2oys) e [a sei](https://www.youtube.com/watch?v=fjxKy3pP41w).
+
 ## Controlli di integrità
 - Nodi **843**; compositori **393**; archi storici **1969**, **nessuna aggiunta o cancellazione**.
 - Archi controllati **16**; restano **34** archi del lotto 3 con avvertenza di catalogo ancora aperta.
