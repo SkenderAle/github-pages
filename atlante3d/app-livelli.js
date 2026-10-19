@@ -444,7 +444,11 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  videos=db.videos||[];videoLinks=db.video_nodes||[];
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
  lensEdges=(lenses.relations||[]).filter(e=>e.status==="documentato"&&byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
-  historySchoolEdges=[...edges,...lensEdges.filter(e=>e.group==="scuole")];
+  const schoolLensEdges=lensEdges.filter(e=>e.group==="scuole");
+  const schoolPairs=new Set(schoolLensEdges.map(e=>[e.source,e.target].sort().join("|")));
+  // Un legame di scuola presente sia nel grafo storico sia nella lente documentata
+  // viene disegnato una sola volta. Prevale la relazione specialistica con fonti e verbi direzionali.
+  historySchoolEdges=[...edges.filter(e=>!schoolPairs.has([e.source,e.target].sort().join("|"))),...schoolLensEdges];
  geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();selectedDepthCacheKey="";selectedDepthCache=new Map();
  freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
  const composerCount=nodes.filter(n=>n.type==="compositore").length;
