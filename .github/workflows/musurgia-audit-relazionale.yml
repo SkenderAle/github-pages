@@ -1,0 +1,32 @@
+name: Musurgia — integrità audit relazionale
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "atlante3d/database/grafo.json"
+      - "atlante3d/database/verifica-audit-relazionale.mjs"
+      - ".github/workflows/musurgia-audit-relazionale.yml"
+  pull_request:
+    paths:
+      - "atlante3d/database/grafo.json"
+      - "atlante3d/database/verifica-audit-relazionale.mjs"
+      - ".github/workflows/musurgia-audit-relazionale.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verifica:
+    name: Controllo strutturale e anti-regressione
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Controllo audit inverso e archivi
+        run: node atlante3d/database/verifica-audit-relazionale.mjs
