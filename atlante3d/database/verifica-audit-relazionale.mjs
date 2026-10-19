@@ -78,6 +78,20 @@ if (!hasPair('compositore-giacomo-antonio-perti', 'genere-oratorio'))
   errors.push('Perti / repertorio oratoriale scollegati');
 if (composers.length < 393 || works.length < 52 || documents.length < 21)
   errors.push('Regressione del catalogo di autori o schede archiviate');
+// Qualità dell'evidenza editoriale: non scambiare la fonte genericamente biografica
+// per la prova del singolo titolo catalografico già sottoposto alla seconda passata.
+const workReviewed = edges.filter(e => e.catalogue_review?.reviewed === '2026-10-19');
+for (const e of workReviewed) {
+  const review=e.catalogue_review;
+  if (!Array.isArray(review.work_level_sources) || !review.work_level_sources.length ||
+      review.work_level_sources.some(url=>!/^https:\/\/[^\s/]+(?:\/|$)/.test(url)) ||
+      !Array.isArray(review.prior_sources) || typeof review.prior_note !== 'string' ||
+      !review.review_status || e.evidence_status!==review.review_status)
+    errors.push('Verifica filologica con dati mancanti: ' + e.source + ' -> ' + e.target);
+  if (!review.work_level_sources.every(url => (e.sources||[]).includes(url)))
+    errors.push('Fonte puntuale persa: ' + e.source + ' -> ' + e.target);
+}
+if (workReviewed.length < 16) errors.push('Regressione seconda passata filologica: ' + workReviewed.length + ' archi verificati invece di almeno 16');
 const noCategory = composers.filter(n => !edges.some(e =>
   (e.source === n.id && isCategory(e.target)) ||
   (e.target === n.id && isCategory(e.source))));
