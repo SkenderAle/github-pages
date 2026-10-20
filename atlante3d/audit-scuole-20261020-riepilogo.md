@@ -5,8 +5,8 @@ Data: 20 ottobre 2026. Branch: main.
 ## Copertura e risultati
 - 843 nodi e 1.388 relazioni: struttura invariata.
 - 392 relazioni Scuole, tutte documentate.
-- 784 frasi bidirezionali ricostruite con il generatore corrente.
-- Registro degli esiti: 99 approvate, 280 corrette, 13 con riserva filologica/tassonomica.
+- 784 frasi bidirezionali ricostruite con il generatore corrente. 87 relazioni hanno cambiato almeno una frase in questa passata.
+- Registro degli esiti: 260 approvate, 119 corrette, 13 con riserva filologica/tassonomica.
 
 ## Metodo
 Per ciascuna relazione sono stati letti source, target, kind, note e sources e ricostruite le due frasi con relationSentence() effettivamente presente in app-livelli.js.
