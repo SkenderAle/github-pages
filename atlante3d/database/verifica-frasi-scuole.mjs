@@ -30,6 +30,7 @@ for(const e of scuole)for(const reverse of [false,true]){
  if(!e.forward?.trim()||!e.reverse?.trim())flags.push('frammento assente');
  if(!phrase?.trim())flags.push('frase assente');
  if(/\bdi\s+Scuola\b/.test(phrase))flags.push('preposizione non articolata');
+ if(e.group==='scuole' && /^(?:Scuola|Seconda scuola)\b/.test(phrase))flags.push('articolo del soggetto mancante');
  if(/\.\./.test(phrase))flags.push('punto doppio');
  if(flags.length){incomplete++;problems.push(e.id+' '+(reverse?'reverse':'forward')+': '+flags.join(', '));}
  rows.push([e.id,reverse?'reverse':'forward',subject||'',object||'',phrase||'',flags.join('; ')]);

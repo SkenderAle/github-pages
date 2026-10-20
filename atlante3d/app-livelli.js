@@ -82,11 +82,14 @@ function relationSentence(e,perspectiveId=null){
  if(typeof verb==="string"&&verb.trim()){
   let fragment=verb.trim().replace(/^([A-ZÀ-ÖØ-Þ])/,c=>c.toLocaleLowerCase("it"));
   // Solo le scuole: la forma di intestazione non coincide sempre con la frase.
-  const spokenSubject=e.group==="scuole"&&!reversed&&/^(?:Scuola\b|Seconda scuola\b)/i.test(subject)?"La "+subject:subject;
+  const spokenSubject=e.group==="scuole"&&/^(?:Scuola\b|Seconda scuola\b)/i.test(subject)?"La "+subject:subject;
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
   if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
    fragment=fragment.replace(/\bdi$/,"della");
   // Prima il nome, poi la qualifica: conserva la caratterizzazione storica.
+  // I testimoni medievali vanno nominati prima della lunga specificazione.
+  if(e.group==="scuole"&&!reversed&&fragment==="riconosce nelle testimonianze medievali fra i maestri dell\'organum")
+   return spokenSubject+" riconosce "+object+" fra i maestri dell\'organum attestati dalle testimonianze medievali.";
   const pattern="annovera nella propria storia musicale come ";
   if(e.group==="scuole"&&!reversed&&fragment.startsWith(pattern))
    return spokenSubject+" annovera "+object+" nella propria storia musicale come "+fragment.slice(pattern.length)+".";
@@ -850,7 +853,13 @@ function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=fa
  updatePeriodContext(n);
  const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
  status.textContent=n.label+" · "+readingAllowed().size+" relazioni musicali · "+periodsFor(n).length+" contesti storici · "+readingNames[readingLevel];
- populate(n);if(openPanel)setPanel(true);
+ // Su schermi stretti una scheda laterale aperta copre la rete schematica.
+ // Il doppio clic su genere/scuola conserva il grafo; il lettore può aprire Esplora.
+ const schematicCategory=!gp&&(n.type==="corrente"||n.type==="ambito");
+ const keepGraphVisible=openPanel&&w<=700&&schematicCategory;
+ populate(n);
+ if(openPanel)setPanel(!keepGraphVisible);
+ if(keepGraphVisible)status.textContent+=" · scheda disponibile in Esplora";
 }
 function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Esplora";tab.setAttribute("aria-expanded",String(open));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
