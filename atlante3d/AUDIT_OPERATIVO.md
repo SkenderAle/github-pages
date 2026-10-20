@@ -128,3 +128,7 @@ Le verifiche automatiche attestano la consistenza dei dati; i riscontri musicolo
 ## 10. Lotto III scuole (20 ottobre 2026)
 
 **111 rapporti di scuole e repertori** con semantica bidirezionale precisata. Cumulato: **207** relazioni della lente già revisionate, **185** ancora da riesaminare. Dati precedenti conservati nei singoli `semantic_review`, metadata in `semantic_school_audit_lotto3_20261020`; relazione [lotto III](audit-semantico-scuole-lotto3-20261020.md). Nessuna modifica a nodi, archi principali, altri gruppi specialistici o fonti. Il controllo automatico è stato esteso al nuovo lotto: verificare comunque la CI dopo il commit.
+
+## 11. Lotto IV delle scuole (20 ottobre 2026)
+
+Corrette le formulazioni `forward`/`reverse` di **111** relazioni, soprattutto ponti fra scuole, conservatori, cappelle e modernità musicale; i testi precedenti restano in `semantic_review`. Relazioni revisionate della lente Scuole: **318 su 392**, con **74 da riesaminare**. `relazioni.json` documenta il lotto in `semantic_school_audit_lotto4_20261020`. Rapporto: [lotto IV](audit-semantico-scuole-lotto4-20261020.md). Nessun nodo o arco modificato. Questa è una revisione semantica su fonti già archiviate, non un'attestazione indipendente di 111 nuove ricerche filologiche.
