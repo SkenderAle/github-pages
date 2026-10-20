@@ -115,6 +115,29 @@ function relationSentence(e,perspectiveId=null){
   // L'orchestra di Mannheim è l'ambiente formativo, non una scuola-persona.
   if(e.group==="scuole"&&e.id==="scuola-mannheim-carl-stamitz")
    return reversed?"Carl Stamitz si formò nell'orchestra di corte di Mannheim e contribuì a diffonderne la tradizione in Europa.":"La tradizione orchestrale di Mannheim si diffuse anche attraverso Carl Stamitz, formatosi nella locale orchestra di corte.";
+  // Forme discorsive: etichette storiografiche e titoli editoriali.
+  if(e.group==="scuole"&&subject==="Classicismo viennese (categoria storiografica)")spokenSubject="Il classicismo viennese";
+  if(e.group==="scuole"&&object==="Classicismo viennese (categoria storiografica)"){
+   if(e.id==="ponte-mannheim-classici")return "Il classicismo viennese accolse, fra altre influenze, stimoli orchestrali provenienti dalla scuola di Mannheim.";
+   if(e.id==="lotto02-sc-ditters-classic")return "Carl Ditters von Dittersdorf si colloca nel più ampio ambiente del classicismo viennese, senza appartenere alla triade canonica.";
+   if(e.id==="scuola-viennese-classica-joseph-haydn"||e.id==="scuola-viennese-classica-wolfgang-amadeus-mozart"||e.id==="scuola-viennese-classica-ludwig-van-beethoven")
+    return subject+" è annoverato dalla storiografia fra i protagonisti del classicismo viennese.";
+   if(e.id==="lotto02-sc-martines-class")return "Marianna Martines partecipò alla cultura musicale viennese dell'età classica, soprattutto con la produzione vocale e tastieristica.";
+   if(e.id==="audit21-vienna-hummel-tradizione")return "Johann Nepomuk Hummel si formò con diversi maestri, fra cui Mozart, nella cultura del classicismo viennese.";
+  }
+  if(e.group==="scuole"&&e.id==="ponte-mannheim-classici")return "La scuola di Mannheim offrì, anche a Mozart, modelli di prassi orchestrale che contribuirono al classicismo viennese.";
+  if(e.group==="scuole"&&e.id==="audit6-scriabin-mosca")
+   return reversed?"Aleksandr Skrjabin studiò e insegnò al Conservatorio di Mosca.":"Il Conservatorio di Mosca accolse Aleksandr Skrjabin prima come studente e poi come docente.";
+  if(e.group==="scuole"&&e.id==="audit6-rachmaninov-mosca")
+   return reversed?"Sergej Rachmaninov studiò e conseguì i diplomi al Conservatorio di Mosca.":"Il Conservatorio di Mosca annoverò Sergej Rachmaninov fra i propri diplomati.";
+  if(e.group==="scuole"&&e.id==="audit7-taneev-mosca")
+   return reversed?"Sergej Taneev studiò, insegnò e diresse il Conservatorio di Mosca.":"Il Conservatorio di Mosca ebbe Sergej Taneev fra gli allievi, i docenti e i direttori.";
+  if(e.group==="scuole"&&subject==="Polifonia sacra spagnola del Cinquecento")
+   spokenSubject="La tradizione della polifonia sacra spagnola del Cinquecento";
+  if(e.group==="scuole"&&object==="Polifonia sacra spagnola del Cinquecento")
+   return subject+" "+fragment+" tradizione della polifonia sacra spagnola del Cinquecento.";
+  if(e.group==="scuole"&&subject==="Riforma operistica del Settecento")
+   spokenSubject="La riforma operistica del Settecento";
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
   if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
    fragment=fragment.replace(/\bdi$/,"della");
