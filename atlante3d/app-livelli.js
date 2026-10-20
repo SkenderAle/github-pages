@@ -255,7 +255,7 @@ relationSentence=function(e,perspectiveId=null){
  if(subject==="Ars nova francese")s=s.replace(/^Ars nova francese /,"L'ars nova francese ");
  if(subject==="Ars nova italiana")s=s.replace(/^Ars nova italiana /,"L'ars nova italiana ");
  if(subject==="Frottola delle corti italiane")s=s.replace(/^Frottola delle corti italiane /,"La tradizione della frottola nelle corti italiane ");
- if(subject==="Tradizioni inglesi elisabettiane")s=s.replace(/^Tradizioni inglesi elisabettiane /,"Le tradizioni musicali inglesi dell'età elisabettiana ");
+ if(subject==="Tradizioni inglesi elisabettiane")s=s.replace(/^Tradizioni inglesi elisabettiane /,"Le tradizioni musicali inglesi dell'età elisabettiana ").replace(/^Le tradizioni musicali inglesi dell'età elisabettiana annovera\b/,"Le tradizioni musicali inglesi dell'età elisabettiana annoverano");
  if(subject==="Tradizioni organistiche tedesche del Barocco")s=s.replace(/^Tradizioni organistiche tedesche del Barocco comprende /,"Le tradizioni organistiche tedesche del Barocco comprendono ");
  if(subject==="Stile galante ed empfindsamer Stil")s=s.replace(/^Stile galante ed empfindsamer Stil trova /,"Lo stile galante e l'empfindsamer Stil trovano ");
  if(object==="Tradizioni organistiche tedesche del Barocco")s=s.replace("nelle Tradizioni organistiche tedesche del Barocco","nell'ambito delle tradizioni organistiche tedesche del Barocco");
