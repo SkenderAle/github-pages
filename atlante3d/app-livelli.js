@@ -89,6 +89,19 @@ function relationSentence(e,perspectiveId=null){
    else if(/^(?:Scuola\b|Seconda scuola\b|Tradizione\b|Musica\b)/i.test(subject))spokenSubject="La "+subject;
    else if(/^(?:Classicismo\b|Teatro musicale\b|Gruppo dei Cinque\b|Risorgimento\b|Lied romantico\b|Madrigalismo\b|Sinfonismo\b|Minimalismo\b)/i.test(subject))spokenSubject="Il "+subject;
   }
+  // Correzioni mirate ai titoli editoriali: nessuna modifica alle bolle.
+  if(e.group==="scuole"&&subject==="Darmstadt: corsi e avanguardie"&&e.id.startsWith("scuola-darmstadt-")){
+   if(e.id==="scuola-darmstadt-luciano-berio")return "I corsi estivi di Darmstadt furono un luogo di confronto frequentato da Luciano Berio.";
+   return "I corsi estivi di Darmstadt "+fragment.replace(/^accolse/,"accolsero")+" "+object+".";
+  }
+  if(e.group==="scuole"&&object==="Darmstadt: corsi e avanguardie"&&e.id.startsWith("scuola-darmstadt-"))
+   return subject+" "+fragment+" Darmstadt.";
+  if(e.group==="scuole"&&e.id==="ponte-seconda-vienna-darmstadt")
+   return reversed?"I corsi estivi di Darmstadt rielaborarono criticamente l'eredità seriale della seconda scuola di Vienna.":"La seconda scuola di Vienna fornì, soprattutto attraverso Webern, un repertorio critico di studio ai corsi estivi di Darmstadt.";
+  if(e.group==="scuole"&&subject==="Ospedali musicali veneziani del Settecento")
+   spokenSubject="Gli ospedali musicali veneziani del Settecento";
+  if(e.group==="scuole"&&subject==="Opera seria")spokenSubject="L'opera seria";
+  if(e.group==="scuole"&&subject==="Opera buffa")spokenSubject="L'opera buffa";
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
   if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
    fragment=fragment.replace(/\bdi$/,"della");
