@@ -107,6 +107,14 @@ function relationSentence(e,perspectiveId=null){
    return reversed?"L'opera seria si sviluppò in diversi centri italiani; la tradizione operistica napoletana contribuì alla definizione e alla diffusione dei suoi modelli.":"La tradizione operistica napoletana contribuì allo sviluppo dell'opera seria, insieme ad altri centri teatrali italiani.";
   if(e.group==="scuole"&&e.id==="ponte-napoletana-opera-buffa")
    return reversed?"L'opera buffa trovò nella Napoli settecentesca uno dei suoi importanti centri di sviluppo, accanto ad altre realtà teatrali italiane.":"La tradizione operistica napoletana contribuì allo sviluppo dell'opera buffa, anche attraverso i teatri della Napoli settecentesca.";
+  // Partecipazione ai Ferienkurse: non equivale ad adesione a una scuola estetica.
+  if(e.group==="scuole"&&e.id==="audit2-darmstadt-ligeti")
+   return reversed?"György Ligeti partecipò ai corsi estivi di Darmstadt e vi svolse anche attività didattica.":"I corsi estivi di Darmstadt accolsero György Ligeti fra i partecipanti e i docenti.";
+  if(e.group==="scuole"&&e.id==="audit8-henze-darmstadt")
+   return reversed?"Hans Werner Henze frequentò i corsi estivi di Darmstadt e nel 1948 vi studiò con René Leibowitz.":"I corsi estivi di Darmstadt furono frequentati da Hans Werner Henze, che nel 1948 vi studiò con René Leibowitz.";
+  // L'orchestra di Mannheim è l'ambiente formativo, non una scuola-persona.
+  if(e.group==="scuole"&&e.id==="scuola-mannheim-carl-stamitz")
+   return reversed?"Carl Stamitz si formò nell'orchestra di corte di Mannheim e contribuì a diffonderne la tradizione in Europa.":"La tradizione orchestrale di Mannheim si diffuse anche attraverso Carl Stamitz, formatosi nella locale orchestra di corte.";
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
   if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
    fragment=fragment.replace(/\bdi$/,"della");
