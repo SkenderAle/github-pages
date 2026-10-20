@@ -2,25 +2,26 @@
   "title": "Musurgia Mundi · Audit tassonomico generi e forme",
   "date": "2026-10-20",
   "scope": "Inventario dei nodi di tipo corrente; non equivale ad attestazione filologica individuale.",
-  "nodes_total": 845,
-  "current_nodes": 323,
+  "nodes_total": 850,
+  "current_nodes": 328,
   "before": {
     "nodes": 843,
     "edges": 1969
   },
   "after": {
-    "nodes": 845,
-    "edges": 2025
+    "nodes": 850,
+    "edges": 2055
   },
   "counts": {
-    "categoria-principale": 23,
+    "categoria-principale": 27,
     "ulteriore-voce-specialistica": 0,
     "scuola-tradizione-o-movimento": 66,
-    "categoria-collegata": 51,
-    "categoria-tipizzata": 49,
+    "categoria-collegata": 60,
+    "categoria-tipizzata": 22,
     "istituzione-o-ambiente": 57,
     "documento-in-archivio": 22,
-    "opera-in-archivio": 55
+    "opera-in-archivio": 55,
+    "scheda-specialistica": 19
   },
   "changes": [
     {
@@ -353,6 +354,147 @@
       "action": "gerarchia",
       "parent": "forma-toccata",
       "cls": "forma-storica"
+    },
+    {
+      "id": "genere-rapsodia",
+      "action": "nuova-voce",
+      "cls": "forma-genere"
+    },
+    {
+      "id": "genere-chanson",
+      "action": "nuova-voce",
+      "cls": "genere-trasversale"
+    },
+    {
+      "id": "genere-ballata",
+      "action": "nuova-voce",
+      "cls": "genere-trasversale"
+    },
+    {
+      "id": "genere-lauda",
+      "action": "nuova-voce",
+      "cls": "genere"
+    },
+    {
+      "id": "famiglia-ciaccona-passacaglia",
+      "action": "nuova-voce",
+      "cls": "famiglia-di-forme"
+    },
+    {
+      "id": "intermezzo-comico",
+      "action": "approfondimento-contestuale",
+      "parent": "genere-opera"
+    },
+    {
+      "id": "musica-concreta",
+      "action": "approfondimento-contestuale",
+      "parent": "musica-elettronica"
+    },
+    {
+      "id": "riforma-operistica-gluck",
+      "action": "approfondimento-contestuale",
+      "parent": "genere-opera"
+    },
+    {
+      "id": "rapsodia-jazz-e-sala-da-concerto",
+      "action": "approfondimento-contestuale",
+      "parent": "genere-rapsodia"
+    },
+    {
+      "id": "formes-fixes-francesi-trecento",
+      "action": "approfondimento-contestuale",
+      "parent": "genere-chanson"
+    },
+    {
+      "id": "ballata-italiana-trecento",
+      "action": "approfondimento-contestuale",
+      "parent": "genere-ballata"
+    },
+    {
+      "id": "lauda-musicale-oratorio-filippino",
+      "action": "approfondimento-contestuale",
+      "parent": "genere-lauda"
+    },
+    {
+      "id": "forma-rapsodia-orchestrale",
+      "action": "approfondimento-contestuale",
+      "parent": "genere-rapsodia"
+    },
+    {
+      "id": "stampa-musicale-rinascimentale",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "musica-corte-medicea-seicento",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "musica-viennese-illuminismo",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "vienna-fin-de-siecle-musicale",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "pianoforte-preparato-novecentesco",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "corte-musicale-medicea-firenze-quattrocento",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "terzo-suono-teoria-tartini",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "corale-organistico-turingia-seicento",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "scapigliatura-musicale-italiana",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "favola-musicale-didattica-orchestra-1936",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "trascrizione-musica-antica-primo-novecento",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "etnomusicologia-campo-ungheria-bartok-kodaly",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "aleatorismo-controllato-lutoslawski",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "sonorismo-cluster-penderecki",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "gebrauchsmusik-hindemith",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "tecnica-tastiera-lugo-rossini-1802",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "forma-musica-vocale-sacra-novecento",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "forma-teatro-musicale-novecento",
+      "action": "scheda-ricercabile"
+    },
+    {
+      "id": "linguaggio-polistilistico-novecento",
+      "action": "scheda-ricercabile"
     }
   ],
   "links_added": [
@@ -418,7 +560,8 @@
       "label": "Ars nova",
       "role": "categoria-tipizzata",
       "type": "corrente-storica",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "scuola-veneziana",
@@ -439,63 +582,72 @@
       "label": "Sturm und Drang",
       "role": "categoria-tipizzata",
       "type": "corrente-stilistica",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "verismo",
       "label": "Verismo",
       "role": "categoria-tipizzata",
       "type": "corrente-stilistica",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "impressionismo",
       "label": "Impressionismo musicale",
       "role": "categoria-tipizzata",
       "type": "corrente-stilistica",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "neoclassicismo",
       "label": "Neoclassicismo musicale",
       "role": "categoria-tipizzata",
       "type": "corrente-stilistica",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "futurismo",
       "label": "Futurismo",
       "role": "categoria-tipizzata",
       "type": "movimento-storico",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "espressionismo",
       "label": "Espressionismo",
       "role": "categoria-tipizzata",
       "type": "corrente-stilistica",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "dodecafonia",
       "label": "Dodecafonia",
       "role": "categoria-tipizzata",
       "type": "tecnica-compositiva",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "minimalismo",
       "label": "Minimalismo",
       "role": "categoria-tipizzata",
       "type": "corrente-stilistica",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "musica-elettronica",
       "label": "Musica elettronica",
       "role": "categoria-tipizzata",
       "type": "ambito-di-pratiche-sonore",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "scuola-romana",
@@ -544,7 +696,8 @@
       "label": "Belcanto",
       "role": "categoria-tipizzata",
       "type": "prassi-e-ideale-vocale",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "grand-opera",
@@ -563,16 +716,18 @@
     {
       "id": "intermezzo-comico",
       "label": "Intermezzo comico",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "forma-teatrale-storica",
-      "parent": null
+      "parent": "genere-opera",
+      "decision": "articolazione-contestuale"
     },
     {
       "id": "musica-concreta",
       "label": "Musica concreta",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "pratica-elettroacustica",
-      "parent": null
+      "parent": "musica-elettronica",
+      "decision": "articolazione-contestuale"
     },
     {
       "id": "scuola-notre-dame",
@@ -663,7 +818,8 @@
       "label": "Frottola delle corti italiane",
       "role": "categoria-tipizzata",
       "type": "genere-storico",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "tradizione-inglese-elisabettiana",
@@ -822,9 +978,10 @@
     {
       "id": "riforma-operistica-gluck",
       "label": "Riforma operistica del Settecento",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "riforma-storico-teatrale",
-      "parent": null
+      "parent": "genere-opera",
+      "decision": "articolazione-contestuale"
     },
     {
       "id": "virtuosismo-strumentale-romantico",
@@ -871,16 +1028,18 @@
     {
       "id": "stampa-musicale-rinascimentale",
       "label": "Stampa musicale rinascimentale",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "tecnologia-di-diffusione",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "monodia-sacra-medievale",
       "label": "Monodia sacra e misticismo medievale",
       "role": "categoria-tipizzata",
       "type": "ambito-repertoriale",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "tradizione-trovieri-francia",
@@ -894,7 +1053,8 @@
       "label": "Villancico profano e teatro iberico",
       "role": "categoria-tipizzata",
       "type": "genere-storico",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "tastiere-italiane-primo-seicento",
@@ -906,9 +1066,10 @@
     {
       "id": "musica-corte-medicea-seicento",
       "label": "Musica e spettacolo della corte medicea",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "ambiente-storico-musicale",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "musica-veneziana-settecento",
@@ -934,9 +1095,10 @@
     {
       "id": "musica-viennese-illuminismo",
       "label": "Vita musicale viennese dell'Illuminismo",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "ambiente-storico-musicale",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "scuola-contrappunto-bolognese",
@@ -1116,9 +1278,10 @@
     {
       "id": "vienna-fin-de-siecle-musicale",
       "label": "Ambiente musicale viennese del fin de siècle",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "ambiente-storico-musicale",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "conservatorio-americano-fontainebleau",
@@ -1139,7 +1302,8 @@
       "label": "Jazz orchestrale e big band",
       "role": "categoria-tipizzata",
       "type": "pratica-e-tradizione",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "teatro-musicale-broadway",
@@ -1375,23 +1539,26 @@
     {
       "id": "pianoforte-preparato-novecentesco",
       "label": "Pianoforte preparato e sperimentazione timbrica",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "tecnica-strumentale",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "rapsodia-jazz-e-sala-da-concerto",
       "label": "Rapsodia tra jazz e sala da concerto · anni Venti",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "ibridazione-di-genere-storica",
-      "parent": null
+      "parent": "genere-rapsodia",
+      "decision": "articolazione-contestuale"
     },
     {
       "id": "dramma-musicale-allegorico-medievale",
       "label": "Dramma musicale allegorico nel Medioevo",
       "role": "categoria-tipizzata",
       "type": "genere-teatrale-storico",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "messa-polifonica-ciclo-unitario-medievale",
@@ -1403,9 +1570,10 @@
     {
       "id": "formes-fixes-francesi-trecento",
       "label": "Ballade, rondeau e virelai del Trecento francese",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "generi-storici",
-      "parent": null
+      "parent": "genere-chanson",
+      "decision": "articolazione-contestuale"
     },
     {
       "id": "mottetto-civico-cerimoniale-quattrocento",
@@ -1424,16 +1592,18 @@
     {
       "id": "ballata-italiana-trecento",
       "label": "Ballata polifonica italiana del Trecento",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "genere-storico",
-      "parent": null
+      "parent": "genere-ballata",
+      "decision": "articolazione-contestuale"
     },
     {
       "id": "caccia-italiana-trecento",
       "label": "Caccia polifonica del Trecento",
       "role": "categoria-tipizzata",
       "type": "genere-storico",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "cappella-regia-francia-quattrocento",
@@ -1452,9 +1622,10 @@
     {
       "id": "corte-musicale-medicea-firenze-quattrocento",
       "label": "Ambiente musicale dei Medici nella Firenze quattrocentesca",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "ambiente-di-corte",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "souterliedekens-olandesi-cinquecento",
@@ -1475,7 +1646,8 @@
       "label": "Song e ayre per liuto nell’Inghilterra elisabettiana",
       "role": "categoria-tipizzata",
       "type": "genere-storico",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "chapel-royal-inghilterra-stuart",
@@ -1508,9 +1680,10 @@
     {
       "id": "lauda-musicale-oratorio-filippino",
       "label": "Lauda musicale dell’Oratorio filippino (XVI–XVII secolo)",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "pratica-devozionale",
-      "parent": null
+      "parent": "genere-lauda",
+      "decision": "articolazione-contestuale"
     },
     {
       "id": "oratorio-drammatico-volgare-seicento",
@@ -1690,9 +1863,10 @@
     {
       "id": "terzo-suono-teoria-tartini",
       "label": "Terzo suono · acustica e teoria di Giuseppe Tartini",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "teoria-acustica",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "cappella-san-petronio-bologna",
@@ -1732,9 +1906,10 @@
     {
       "id": "corale-organistico-turingia-seicento",
       "label": "Elaborazione del corale per organo in Turingia · Seicento",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "pratica-organistica-storica",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "masque-venus-adonis-john-blow",
@@ -1760,9 +1935,10 @@
     {
       "id": "scapigliatura-musicale-italiana",
       "label": "Scapigliatura e teatro musicale italiano dell’Ottocento",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "ambiente-storico-musicale",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "libretti-boito-shakespeare-verdi",
@@ -1802,9 +1978,10 @@
     {
       "id": "favola-musicale-didattica-orchestra-1936",
       "label": "Favola musicale didattica per orchestra e narratore",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "tipologia-repertorio",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "sinfonia-leningrado-1942-esecuzione",
@@ -1830,9 +2007,10 @@
     {
       "id": "trascrizione-musica-antica-primo-novecento",
       "label": "Trascrizione e riscoperta di musiche antiche nel Novecento",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "pratica-editoriale-compositiva",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "festival-musica-contemporanea-venezia-1930",
@@ -1851,9 +2029,10 @@
     {
       "id": "etnomusicologia-campo-ungheria-bartok-kodaly",
       "label": "Raccolta sul campo e studio dei canti popolari · Ungheria",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "ricerca-etnomusicologica",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "mikrokosmos-bartok-pianoforte-didattico",
@@ -1865,16 +2044,18 @@
     {
       "id": "aleatorismo-controllato-lutoslawski",
       "label": "Contrappunto aleatorio controllato di Lutosławski",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "tecnica-compositiva",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "sonorismo-cluster-penderecki",
       "label": "Sonorismo polacco · cluster e tecniche estese per archi",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "pratica-compositiva-timbrica",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "passione-luca-penderecki-1966",
@@ -1893,9 +2074,10 @@
     {
       "id": "gebrauchsmusik-hindemith",
       "label": "Gebrauchsmusik · musica per l’uso e la pratica",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "orientamento-estetico",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "studio-elettronico-wdr-colonia",
@@ -2047,9 +2229,10 @@
     {
       "id": "tecnica-tastiera-lugo-rossini-1802",
       "label": "Rossini a Lugo · studi di tastiera e basso continuo",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "caso-tecnico-biografico",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "giulietta-romeo-operistica-zingarelli-1796",
@@ -2098,7 +2281,8 @@
       "label": "Jeu-parti · poesia dialogica di Arras (Duecento)",
       "role": "categoria-tipizzata",
       "type": "genere-poetico-musicale-storico",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "marktkirche-halle-zachow",
@@ -2154,7 +2338,8 @@
       "label": "Villanelle a tre voci · Cinquecento",
       "role": "categoria-tipizzata",
       "type": "genere-storico",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "stampa-frottole-petrucci-1504",
@@ -2399,7 +2584,8 @@
       "label": "Musica per il cinema del Novecento",
       "role": "categoria-tipizzata",
       "type": "ambito-repertoriale",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "tradizione-trovatori-occitani",
@@ -2434,7 +2620,8 @@
       "label": "Tango argentino · tradizione musicale e danza",
       "role": "categoria-tipizzata",
       "type": "genere-e-danza",
-      "parent": null
+      "parent": null,
+      "decision": "categoria-storica-tecnica-autonoma"
     },
     {
       "id": "forma-nuevo-tango",
@@ -2446,9 +2633,10 @@
     {
       "id": "forma-musica-vocale-sacra-novecento",
       "label": "Musica vocale e sacra novecentesca",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "ambito-repertoriale",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "forma-sonata-viola-novecento",
@@ -2460,9 +2648,10 @@
     {
       "id": "forma-teatro-musicale-novecento",
       "label": "Teatro musicale del Novecento",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "ambito-teatrale",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "forma-suite-orchestrale-novecento",
@@ -2502,16 +2691,18 @@
     {
       "id": "linguaggio-polistilistico-novecento",
       "label": "Polistilismo novecentesco",
-      "role": "categoria-tipizzata",
+      "role": "scheda-specialistica",
       "type": "linguaggio-stilistico",
-      "parent": null
+      "parent": null,
+      "decision": "scheda-senza-bolla"
     },
     {
       "id": "forma-rapsodia-orchestrale",
       "label": "Rapsodia orchestrale ottocentesca",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "genere-strumentale-storico",
-      "parent": null
+      "parent": "genere-rapsodia",
+      "decision": "articolazione-contestuale"
     },
     {
       "id": "forma-concerto-strumentale-romantico",
@@ -2659,6 +2850,46 @@
       "role": "categoria-principale",
       "type": "forma-genere",
       "parent": null
+    },
+    {
+      "id": "genere-rapsodia",
+      "label": "Rapsodia",
+      "role": "categoria-principale",
+      "type": "forma-genere",
+      "parent": null,
+      "decision": "nuova-voce-lessicografica"
+    },
+    {
+      "id": "genere-chanson",
+      "label": "Chanson",
+      "role": "categoria-principale",
+      "type": "genere-trasversale",
+      "parent": null,
+      "decision": "nuova-voce-lessicografica"
+    },
+    {
+      "id": "genere-ballata",
+      "label": "Ballata",
+      "role": "categoria-principale",
+      "type": "genere-trasversale",
+      "parent": null,
+      "decision": "nuova-voce-lessicografica"
+    },
+    {
+      "id": "genere-lauda",
+      "label": "Lauda",
+      "role": "categoria-principale",
+      "type": "genere",
+      "parent": null,
+      "decision": "nuova-voce-lessicografica"
+    },
+    {
+      "id": "famiglia-ciaccona-passacaglia",
+      "label": "Ciaccona e passacaglia",
+      "role": "categoria-collegata",
+      "type": "famiglia-di-forme",
+      "parent": "forma-variazioni",
+      "decision": "nuova-voce-lessicografica"
     }
   ],
   "correction": {
@@ -2702,5 +2933,21 @@
     "genre_links_added": 2,
     "existing_nodes_preserved": true,
     "no_forma_sonata": true
+  },
+  "audit_followup_phase4": {
+    "date": "2026-10-21",
+    "base_commit": "23f84476ff5eefc30f78b52122a01dc51884c6c3",
+    "reviewed_specialists": 49,
+    "new_categories": [
+      "genere-rapsodia",
+      "genere-chanson",
+      "genere-ballata",
+      "genere-lauda",
+      "famiglia-ciaccona-passacaglia"
+    ],
+    "subordinate_specialists": 8,
+    "searchable_cards": 19,
+    "added_edges": 30,
+    "policy": "Conservazione fonti, opere e archi: i casi documentari non sono nuovi generi."
   }
 }

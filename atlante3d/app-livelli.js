@@ -718,6 +718,8 @@ function nodeEligibleForDepth(n){
  if(n.work_archive?.kind==="opera-specifica"&&n!==selected)return false;
  // Le fonti, le raccolte editoriali e i cicli sono schede ricercabili, non nuove bolle.
  if(n.document_archive?.presentation==="scheda"&&n!==selected)return false;
+ // Schede di pratiche e contesti: ricercabili, ma non bolle autonome.
+ if(n.taxonomy?.presentation==="scheda"&&n!==selected)return false;
  // Le specificazioni di organico e i casi particolari restano consultabili dal loro genere padre e tramite ricerca diretta.
  if(n.taxonomy?.presentation==="approfondimento"&&n!==selected&&selected?.id!==n.taxonomy.parent)return false;
  if(n.type==="persona"&&!n.music_relevance&&!hasNonMusicLens()&&n!==selected)return false;
@@ -1031,7 +1033,7 @@ function linked(n){return currentEdges().filter(e=>e.source===n.id||e.target===n
 // Un genere o una forma generali attraversano le epoche: i loro archi storici
 // documentano sviluppi, non un'appartenenza cronologica esclusiva.
 // Le correnti storicamente specifiche (es. concerto grosso barocco) restano distinte.
-const TRANSVERSAL_MUSICAL_CLASSES=new Set(["genere-trasversale","genere","ambito-musicale","forma","forma-tecnica","forma-genere","teatro-danza","tecnica-trasversale"]);
+const TRANSVERSAL_MUSICAL_CLASSES=new Set(["genere-trasversale","genere","ambito-musicale","forma","forma-tecnica","forma-genere","teatro-danza","tecnica-trasversale","famiglia-di-forme"]);
 function isTranshistoricalMusicalCategory(n){
  return Boolean(n?.type==="corrente"&&TRANSVERSAL_MUSICAL_CLASSES.has(n.taxonomy?.class));
 }
@@ -1134,7 +1136,7 @@ function populate(n){
    "genere":"Genere musicale","genere-trasversale":"Genere musicale",
    "forma":"Forma musicale","forma-tecnica":"Forma e tecnica","forma-genere":"Forma e genere",
    "tecnica-trasversale":"Tecnica compositiva","ambito-musicale":"Ambito musicale",
-   "teatro-danza":"Teatro e danza","sottogenere-teatrale":"Tipologia teatrale",
+   "teatro-danza":"Teatro e danza","famiglia-di-forme":"Famiglia di forme musicali","genere-storico":"Genere musicale storico","corrente-stilistica":"Orientamento stilistico","tecnica-compositiva":"Tecnica compositiva","sottogenere-teatrale":"Tipologia teatrale",
    "tipologia-operistica":"Tipologia operistica","tradizione-omonima-distinta":"Tradizione storica distinta",
    "tipologia-concertistica":"Tipologia concertistica","pratica-polifonica":"Pratica polifonica",
    "ambito-storico":"Ambito storico","tradizione-storica":"Tradizione storica"
@@ -1200,6 +1202,24 @@ function populate(n){
     btn.textContent=doc.label+" · "+(roles[contact.role]||contact.role)+" ↗";
     btn.addEventListener("click",()=>focusOn(doc,true));area.append(btn);
    }
+   dst.append(area);
+  }
+ }
+ // Pratiche e contesti non rappresentati come bolle, raggiungibili dalla carta autore.
+ if(n.type==="compositore"){
+  const ids=new Set();
+  for(const e of edges){
+   if(e.source===n.id&&byId.get(e.target)?.taxonomy?.presentation==="scheda")ids.add(e.target);
+   if(e.target===n.id&&byId.get(e.source)?.taxonomy?.presentation==="scheda")ids.add(e.source);
+  }
+  const sheets=[...ids].map(id=>byId.get(id)).filter(v=>v&&!v.work_archive&&!v.document_archive)
+   .sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(sheets.length){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Pratiche e contesti documentati · "+sheets.length;area.append(heading);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Raccordi a repertori, tecniche e contesti documentati, non automaticamente rapporti personali.";area.append(note);
+   for(const sheet of sheets){const b=document.createElement("button");b.type="button";b.textContent=sheet.label+" ↗";b.addEventListener("click",()=>focusOn(sheet,true));area.append(b);}
    dst.append(area);
   }
  }
