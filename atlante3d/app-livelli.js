@@ -242,6 +242,29 @@ function relationSentence(e,perspectiveId=null){
  sentence=sentence.replace(/nell'cappella/gi,"nella cappella");
  return sentence;
 }
+// Audit frasi Scuole: trasformazioni linguistiche circoscritte alle tradizioni.
+const relationSentenceUnpolished=relationSentence;
+relationSentence=function(e,perspectiveId=null){
+ let s=relationSentenceUnpolished(e,perspectiveId);
+ if(e.group!=="scuole")return s;
+ const sourceLabel=e.a?.label||byId.get(e.source)?.label||e.source;
+ const targetLabel=e.b?.label||byId.get(e.target)?.label||e.target;
+ const reversed=perspectiveId!=null&&perspectiveId===e.target;
+ const subject=reversed?targetLabel:sourceLabel;
+ const object=reversed?sourceLabel:targetLabel;
+ if(subject==="Ars nova francese")s=s.replace(/^Ars nova francese /,"L'ars nova francese ");
+ if(subject==="Ars nova italiana")s=s.replace(/^Ars nova italiana /,"L'ars nova italiana ");
+ if(subject==="Frottola delle corti italiane")s=s.replace(/^Frottola delle corti italiane /,"La tradizione della frottola nelle corti italiane ");
+ if(subject==="Tradizioni inglesi elisabettiane")s=s.replace(/^Tradizioni inglesi elisabettiane /,"Le tradizioni musicali inglesi dell'età elisabettiana ");
+ if(subject==="Tradizioni organistiche tedesche del Barocco")s=s.replace(/^Tradizioni organistiche tedesche del Barocco comprende /,"Le tradizioni organistiche tedesche del Barocco comprendono ");
+ if(subject==="Stile galante ed empfindsamer Stil")s=s.replace(/^Stile galante ed empfindsamer Stil trova /,"Lo stile galante e l'empfindsamer Stil trovano ");
+ if(object==="Tradizioni organistiche tedesche del Barocco")s=s.replace("nelle Tradizioni organistiche tedesche del Barocco","nell'ambito delle tradizioni organistiche tedesche del Barocco");
+ if(object==="Tradizioni inglesi elisabettiane")s=s.replace("nelle Tradizioni inglesi elisabettiane","nelle tradizioni musicali inglesi dell'età elisabettiana");
+ if(object==="Frottola delle corti italiane")s=s.replace("chiamata Frottola delle corti italiane","della frottola nelle corti italiane");
+ if(object==="Stile galante ed empfindsamer Stil")s=s.replace("dello Stile galante ed empfindsamer Stil","dello stile galante o dello stile sensibile");
+ if(object==="Madrigalismo cinquecentesco")s=s.replace("del Madrigalismo cinquecentesco","del madrigalismo cinquecentesco");
+ return s;
+};
 function dedupeEdges(list){const seen=new Set();return list.filter(e=>{const k=e.id||[e.source,e.target,e.group||"",e.kind||""].join("|");if(seen.has(k))return false;seen.add(k);return true;});}
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
