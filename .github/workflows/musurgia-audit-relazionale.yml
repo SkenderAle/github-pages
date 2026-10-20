@@ -8,6 +8,8 @@ on:
       - "atlante3d/database/relazioni.json"
       - "atlante3d/database/verifica-audit-semantico-scuole.mjs"
       - "atlante3d/database/verifica-audit-relazionale.mjs"
+      - "atlante3d/database/verifica-frasi-scuole.mjs"
+      - "atlante3d/app-livelli.js"
       - ".github/workflows/musurgia-audit-relazionale.yml"
   pull_request:
     paths:
@@ -15,6 +17,8 @@ on:
       - "atlante3d/database/relazioni.json"
       - "atlante3d/database/verifica-audit-semantico-scuole.mjs"
       - "atlante3d/database/verifica-audit-relazionale.mjs"
+      - "atlante3d/database/verifica-frasi-scuole.mjs"
+      - "atlante3d/app-livelli.js"
       - ".github/workflows/musurgia-audit-relazionale.yml"
   workflow_dispatch:
 
@@ -36,3 +40,12 @@ jobs:
         run: node atlante3d/database/verifica-audit-relazionale.mjs
       - name: Controllo semantico scuole e tradizioni
         run: node atlante3d/database/verifica-audit-semantico-scuole.mjs
+      - name: Sintassi e controllo delle frasi della lente Scuole
+        run: |
+          node --check atlante3d/app-livelli.js
+          node atlante3d/database/verifica-frasi-scuole.mjs --tsv
+      - name: Conserva le 784 frasi dell’audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: musurgia-frasi-scuole
+          path: audit-frasi-scuole.tsv

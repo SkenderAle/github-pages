@@ -80,9 +80,18 @@ function relationSentence(e,perspectiveId=null){
  const subject=reversed?b:a,object=reversed?a:b;
  const verb=reversed?e.reverse:e.forward;
  if(typeof verb==="string"&&verb.trim()){
-  const fragment=verb.trim().replace(/^([A-ZÀ-ÖØ-Þ])/,c=>c.toLocaleLowerCase("it"));
+  let fragment=verb.trim().replace(/^([A-ZÀ-ÖØ-Þ])/,c=>c.toLocaleLowerCase("it"));
+  // Solo le scuole: la forma di intestazione non coincide sempre con la frase.
+  const spokenSubject=e.group==="scuole"&&!reversed&&/^(?:Scuola\b|Seconda scuola\b)/i.test(subject)?"La "+subject:subject;
+  // "di Scuola di Notre-Dame" manca della preposizione articolata.
+  if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
+   fragment=fragment.replace(/\bdi$/,"della");
+  // Prima il nome, poi la qualifica: conserva la caratterizzazione storica.
+  const pattern="annovera nella propria storia musicale come ";
+  if(e.group==="scuole"&&!reversed&&fragment.startsWith(pattern))
+   return spokenSubject+" annovera "+object+" nella propria storia musicale come "+fragment.slice(pattern.length)+".";
   const separator=/['’]$/.test(fragment)?"":" ";
-  return subject+" "+fragment+separator+object+".";
+  return spokenSubject+" "+fragment+separator+object+".";
  }
  // Legami del grafo di base: etichette descrittive, non deduzioni biografiche.
  switch(e.kind){
