@@ -5,11 +5,15 @@ on:
     branches: [main]
     paths:
       - "atlante3d/database/grafo.json"
+      - "atlante3d/database/relazioni.json"
+      - "atlante3d/database/verifica-audit-semantico-scuole.mjs"
       - "atlante3d/database/verifica-audit-relazionale.mjs"
       - ".github/workflows/musurgia-audit-relazionale.yml"
   pull_request:
     paths:
       - "atlante3d/database/grafo.json"
+      - "atlante3d/database/relazioni.json"
+      - "atlante3d/database/verifica-audit-semantico-scuole.mjs"
       - "atlante3d/database/verifica-audit-relazionale.mjs"
       - ".github/workflows/musurgia-audit-relazionale.yml"
   workflow_dispatch:
@@ -30,3 +34,5 @@ jobs:
           node-version: "22"
       - name: Controllo audit inverso e archivi
         run: node atlante3d/database/verifica-audit-relazionale.mjs
+      - name: Controllo semantico scuole e tradizioni
+        run: node atlante3d/database/verifica-audit-semantico-scuole.mjs

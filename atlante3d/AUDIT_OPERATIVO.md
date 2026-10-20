@@ -110,3 +110,9 @@ Il controllo verifica:
 3. Applicare soltanto modifiche sostenute da fonti.
 4. Eseguire il validatore e, quando disponibile, controllare la CI.
 5. Rileggere il file dopo il commit; riferire numeri effettivi, commit e limiti.
+
+## 8. Lotto semantico delle scuole, 20 ottobre 2026
+
+Dopo le passate filologiche del 20 ottobre (`d3dedfc`), la prima verifica semantica delle scuole ha precisato 32 formule bidirezionali e ritirato tre collegamenti fuorvianti (Boccherini/sinfonismo del primo Settecento, Frank Bridge/rinascita operistica, Piccinni/riforma gluckiana) senza perdere le evidenze originarie e senza alterare il grafo principale. Da questo intervento la lente `scuole` conta **392** relazioni, il totale delle lenti **1.388**. I dati storici originali sono conservati nel campo `semantic_school_audit_20261020` del database; descrizione in [audit semantico scuole](audit-semantico-scuole-lotto1-20261020.md). I numeri si riferiscono al momento del lotto: in caso di nuovi commit, ricalcolarli da `main`.
+
+Controlli automatici: `node atlante3d/database/verifica-audit-relazionale.mjs` e `node atlante3d/database/verifica-audit-semantico-scuole.mjs`. Questi attestano la coerenza strutturale, non la correttezza filologica delle restanti relazioni.
