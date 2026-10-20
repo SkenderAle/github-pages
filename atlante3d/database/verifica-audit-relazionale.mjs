@@ -80,7 +80,7 @@ if (composers.length < 393 || works.length < 52 || documents.length < 21)
   errors.push('Regressione del catalogo di autori o schede archiviate');
 // Qualità dell'evidenza editoriale: non scambiare la fonte genericamente biografica
 // per la prova del singolo titolo catalografico già sottoposto alla seconda passata.
-const workReviewed = edges.filter(e => e.catalogue_review?.reviewed === '2026-10-19');
+const workReviewed = edges.filter(e => e.catalogue_review?.reviewed);
 for (const e of workReviewed) {
   const review=e.catalogue_review;
   if (!Array.isArray(review.work_level_sources) || !review.work_level_sources.length ||
