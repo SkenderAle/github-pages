@@ -132,3 +132,9 @@ Le verifiche automatiche attestano la consistenza dei dati; i riscontri musicolo
 ## 11. Lotto IV delle scuole (20 ottobre 2026)
 
 Corrette le formulazioni `forward`/`reverse` di **111** relazioni, soprattutto ponti fra scuole, conservatori, cappelle e modernità musicale; i testi precedenti restano in `semantic_review`. Relazioni revisionate della lente Scuole: **318 su 392**, con **74 da riesaminare**. `relazioni.json` documenta il lotto in `semantic_school_audit_lotto4_20261020`. Rapporto: [lotto IV](audit-semantico-scuole-lotto4-20261020.md). Nessun nodo o arco modificato. Questa è una revisione semantica su fonti già archiviate, non un'attestazione indipendente di 111 nuove ricerche filologiche.
+
+## 12. Chiusura seconda lettura scuole — lotto V (20 ottobre 2026)
+
+Dopo il lotto IV sono state precisate le ultime **74** relazioni scolastiche attive: **392 su 392** hanno `semantic_review` e `natura_semantica`. Il numero di relazioni scolastiche attive resta **392**; 3 casi impropri furono ritirati e archiviati nel primo lotto. Totale delle lenti 1388, nodi 843, compositori 393, archi principali 1969. Rapporto: [lotto V e chiusura della seconda lettura](audit-semantico-scuole-lotto5-20261020.md).
+
+**Chiusura circoscritta:** questo audit garantisce soltanto che le relazioni hanno ricevuto un riesame semantico-editoriale tracciabile secondo le note esistenti. Non certifica la veridicità di ogni fonte, le altre quattro lenti o la stabilità del browser. Il validatore verifica la regressione dei conteggi e dei campi ma la resa grammaticale deve essere collaudata nell'applicazione grafica.

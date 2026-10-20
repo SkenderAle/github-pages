@@ -74,6 +74,20 @@ for(const e of fourthBatch) {
     !e.sources?.length || !e.note || !e.forward || !e.reverse)
    errors.push('Dati o tracciabilità lotto IV mancanti: ' + e.id);
 }
+const lastBatch=relations.filter(e=>e.semantic_review?.review_batch==='scuole-lotto5-20261020');
+if(lastBatch.length !== 74 || data.semantic_school_audit_lotto5_20261020?.reviewed_this_batch !== 74)
+  errors.push('Lotto V di 74 relazioni non completamente conservato: ' + lastBatch.length);
+const schoolAll=relations.filter(e=>e.group==='scuole');
+const schoolReviewed=schoolAll.filter(e=>e.semantic_review);
+if(schoolAll.length !== 392 || schoolReviewed.length !== schoolAll.length ||
+    data.semantic_school_audit_lotto5_20261020?.unreviewed !== 0)
+  errors.push('Seconda lettura semantica non conclusa: ' + schoolReviewed.length + '/' + schoolAll.length);
+for(const e of lastBatch) {
+ const x=e.semantic_review;
+ if(!x.prior_forward || !x.prior_reverse || x.prior_status !== e.status ||
+    !e.natura_semantica || !e.note || !e.sources?.length)
+   errors.push('Tracciabilità o fonte lotto V incompleta: ' + e.id);
+}
 const bachGrosso = graph.edges.find(e => e.source === 'compositore-johann-sebastian-bach' && e.target === 'forma-concerto-grosso');
 if (!bachGrosso?.catalogue_review?.reviewed || 
     bachGrosso.evidence_status !== 'opera-verificata-con-qualificazione-tipologica' ||
