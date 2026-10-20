@@ -15980,12 +15980,17 @@
       "type": "corrente",
       "status": "attivo",
       "url": "../classicismo/",
-      "description": "Genere strumentale dalle molte trasformazioni storiche, dalla sonata barocca alla sonata classica e romantica. Da distinguere dalla forma-sonata come principio costruttivo.",
+      "description": "Genere strumentale dalle molte trasformazioni storiche, dalla sonata barocca alla sonata classica e romantica. La forma-sonata è invece l'architettura di un movimento, spesso con esposizione, sviluppo e ripresa: si usa anche nelle sinfonie, nei concerti e nei quartetti, e non costituisce qui un genere o un nodo autonomo.",
       "taxonomy": {
         "class": "genere-trasversale",
         "visibility": "principale",
-        "audit": "2026-10-18"
-      }
+        "audit": "2026-10-20",
+        "editorial_note": "Forma-sonata esclusa dalle categorie del grafo; spiegazione mantenuta nella descrizione del genere, con fonti."
+      },
+      "sources": [
+        "https://www.treccani.it/enciclopedia/la-forma-sonata_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/",
+        "https://www.treccani.it/enciclopedia/sonata/"
+      ]
     },
     {
       "id": "genere-sinfonia",
@@ -16228,22 +16233,6 @@
         "https://ressources.ircam.fr/en/composer/hanns-eisler/workcourse",
         "https://hanns-eisler.de/en/hanns-eisler/"
       ]
-    },
-    {
-      "id": "forma-sonata",
-      "label": "Forma-sonata",
-      "type": "corrente",
-      "status": "attivo",
-      "description": "Principio formale di organizzazione di un movimento strumentale, convenzionalmente descritto mediante esposizione, sviluppo e ripresa. Si sviluppa nel secondo Settecento ed è codificato teoricamente nell'Ottocento. Non coincide con il genere Sonata: compare anche in sinfonie, concerti e quartetti.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/la-forma-sonata_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/",
-        "https://www.treccani.it/enciclopedia/sonata/"
-      ],
-      "taxonomy": {
-        "class": "forma",
-        "visibility": "principale",
-        "audit": "2026-10-20"
-      }
     }
   ],
   "edges": [
@@ -32267,46 +32256,6 @@
       "kind": "esempio-storico-del-genere",
       "weight": 0.85,
       "note": "Raccordo tassonomico fra categoria generale e tipologia, tradizione o repertorio storicamente specifici: non è una relazione personale."
-    },
-    {
-      "source": "forma-sonata",
-      "target": "genere-sonata",
-      "kind": "principio-formale-impiegato-nel-genere",
-      "weight": 0.85,
-      "note": "Principio formale applicabile a movimenti di questo genere, non sinonimo del genere.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/la-forma-sonata_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/"
-      ]
-    },
-    {
-      "source": "forma-sonata",
-      "target": "genere-sinfonia",
-      "kind": "principio-formale-impiegato-nel-genere",
-      "weight": 0.85,
-      "note": "Principio formale applicabile a movimenti di questo genere, non sinonimo del genere.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/la-forma-sonata_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/"
-      ]
-    },
-    {
-      "source": "forma-sonata",
-      "target": "genere-concerto",
-      "kind": "principio-formale-impiegato-nel-genere",
-      "weight": 0.85,
-      "note": "Principio formale applicabile a movimenti di questo genere, non sinonimo del genere.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/la-forma-sonata_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/"
-      ]
-    },
-    {
-      "source": "forma-sonata",
-      "target": "genere-quartetto-archi",
-      "kind": "principio-formale-impiegato-nel-genere",
-      "weight": 0.85,
-      "note": "Principio formale applicabile a movimenti di questo genere, non sinonimo del genere.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/la-forma-sonata_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/"
-      ]
     }
   ],
   "videos": [],
@@ -33235,15 +33184,22 @@
   "genre_form_audit_20261020": {
     "title": "Audit generi e forme",
     "scope": "Gerarchie, classificazione semantica e separazione da opere e istituzioni senza cancellare nodi o archi storici.",
-    "new_general_nodes": 1,
+    "new_general_nodes": 0,
     "promoted_nodes": 1,
-    "added_edges": 12,
-    "modified_nodes": 44,
+    "added_edges": 8,
+    "modified_nodes": 43,
     "method": "Filologia categoriale, esempi non generi, forma-sonata non genere Sonata",
     "sources": [
       "https://www.treccani.it/enciclopedia/la-forma-sonata_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/",
       "https://www.treccani.it/enciclopedia/poema-sinfonico/",
       "https://www.treccani.it/enciclopedia/musica/"
-    ]
+    ],
+    "correction": {
+      "date": "2026-10-20",
+      "removed_node": "forma-sonata",
+      "removed_edges": 4,
+      "reason": "Il modello strutturale dei movimenti non deve figurare come categoria autonoma dell'Atlante; distinzioni teoriche conservate nelle schede dei generi.",
+      "preserved_in": "genere-sonata.description"
+    }
   }
 }
