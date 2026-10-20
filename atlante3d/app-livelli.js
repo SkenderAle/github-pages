@@ -102,6 +102,11 @@ function relationSentence(e,perspectiveId=null){
    spokenSubject="Gli ospedali musicali veneziani del Settecento";
   if(e.group==="scuole"&&subject==="Opera seria")spokenSubject="L'opera seria";
   if(e.group==="scuole"&&subject==="Opera buffa")spokenSubject="L'opera buffa";
+  // Distinzione storiografica: una scuola non è un teatro o una città.
+  if(e.group==="scuole"&&e.id==="ponte-napoletana-opera-seria")
+   return reversed?"L'opera seria si sviluppò in diversi centri italiani; la tradizione operistica napoletana contribuì alla definizione e alla diffusione dei suoi modelli.":"La tradizione operistica napoletana contribuì allo sviluppo dell'opera seria, insieme ad altri centri teatrali italiani.";
+  if(e.group==="scuole"&&e.id==="ponte-napoletana-opera-buffa")
+   return reversed?"L'opera buffa trovò nella Napoli settecentesca uno dei suoi importanti centri di sviluppo, accanto ad altre realtà teatrali italiane.":"La tradizione operistica napoletana contribuì allo sviluppo dell'opera buffa, anche attraverso i teatri della Napoli settecentesca.";
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
   if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
    fragment=fragment.replace(/\bdi$/,"della");
