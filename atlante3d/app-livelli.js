@@ -73,7 +73,7 @@ const RELATION_STYLE={
 function relationStyle(e){return RELATION_STYLE[e.group]||RELATION_STYLE.storia;}
 // Le relazioni documentate hanno DUE verbi: ciascuno e' riferito a un soggetto preciso.
 // Per le relazioni storiche generiche non si inferiscono maestro, allievo o causalita'.
-function relationSentence(e,perspectiveId=null){
+function relationSentenceBase(e,perspectiveId=null){
  const a=e.a?.label||byId.get(e.source)?.label||e.source;
  const b=e.b?.label||byId.get(e.target)?.label||e.target;
  const reversed=perspectiveId!=null&&perspectiveId===e.target;
@@ -224,6 +224,19 @@ function relationSentence(e,perspectiveId=null){
   default:
    return subject+" e "+object+" sono collegati da una relazione di "+String(e.kind||"natura storica da approfondire").replace(/-/g," ")+".";
  }
+}
+// Il testo discorsivo omette qualificatori editoriali, non presenti nei nomi storici.
+function relationSentence(e,perspectiveId=null){
+ let sentence=relationSentenceBase(e,perspectiveId);
+ if(e.group!=="scuole")return sentence;
+ const names={"Conservatorio di Parigi e scuola di composizione":"Conservatorio di Parigi","Conservatorio di San Pietroburgo e sue trasformazioni":"Conservatorio di San Pietroburgo","Conservatorio viennese e insegnamento della composizione nell’Ottocento":"Conservatorio viennese","Cappella di corte e musica sacra di Salisburgo nel Settecento":"cappella di corte di Salisburgo","Cappella di Saint-Donatien a Bruges nel Rinascimento":"cappella di Saint-Donatien a Bruges","Cappella musicale del Duomo di Cremona nel Cinquecento":"cappella musicale del Duomo di Cremona","Cappella pontificia romana nel Cinquecento":"cappella pontificia romana","Cappella regia francese nel Quattrocento":"cappella regia francese","Cappella della cattedrale di Strasburgo nel Settecento":"cappella della cattedrale di Strasburgo","Cappella musicale della cattedrale di Siviglia nel Cinquecento":"cappella musicale della cattedrale di Siviglia","Cappella di corte di Innsbruck nel Seicento":"cappella di corte di Innsbruck","Cappella imperiale viennese del primo Settecento":"cappella imperiale viennese","Conservatorio di Milano nell’Ottocento":"Conservatorio di Milano","Cappella e teatro della corte elettorale di Bonn nel tardo Settecento":"cappella e teatro della corte elettorale di Bonn"};
+ for(const [label,short] of Object.entries(names)){
+  sentence=sentence.split(label).join(short);
+  const lower=label.charAt(0).toLocaleLowerCase("it")+label.slice(1);
+  if(lower!==label)sentence=sentence.split(lower).join(short);
+ }
+ sentence=sentence.replace(/nell'cappella/gi,"nella cappella");
+ return sentence;
 }
 function dedupeEdges(list){const seen=new Set();return list.filter(e=>{const k=e.id||[e.source,e.target,e.group||"",e.kind||""].join("|");if(seen.has(k))return false;seen.add(k);return true;});}
 const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
