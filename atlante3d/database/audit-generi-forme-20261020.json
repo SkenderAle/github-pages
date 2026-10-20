@@ -2,22 +2,22 @@
   "title": "Musurgia Mundi · Audit tassonomico generi e forme",
   "date": "2026-10-20",
   "scope": "Inventario dei nodi di tipo corrente; non equivale ad attestazione filologica individuale.",
-  "nodes_total": 843,
-  "current_nodes": 321,
+  "nodes_total": 845,
+  "current_nodes": 323,
   "before": {
     "nodes": 843,
     "edges": 1969
   },
   "after": {
-    "nodes": 843,
-    "edges": 2014
+    "nodes": 845,
+    "edges": 2025
   },
   "counts": {
-    "categoria-principale": 21,
+    "categoria-principale": 23,
     "ulteriore-voce-specialistica": 0,
     "scuola-tradizione-o-movimento": 66,
-    "categoria-collegata": 50,
-    "categoria-tipizzata": 50,
+    "categoria-collegata": 51,
+    "categoria-tipizzata": 49,
     "istituzione-o-ambiente": 57,
     "documento-in-archivio": 22,
     "opera-in-archivio": 55
@@ -337,6 +337,22 @@
       "id": "forma-contrappunto-organistico-tardoottocento",
       "action": "approfondimento",
       "parent": "polifonia"
+    },
+    {
+      "id": "forma-toccata",
+      "action": "nuova-categoria-generale",
+      "cls": "forma-genere"
+    },
+    {
+      "id": "forma-preludio",
+      "action": "nuova-categoria-generale",
+      "cls": "forma-genere"
+    },
+    {
+      "id": "toccata-organistica-rinascimentale",
+      "action": "gerarchia",
+      "parent": "forma-toccata",
+      "cls": "forma-storica"
     }
   ],
   "links_added": [
@@ -1506,9 +1522,9 @@
     {
       "id": "toccata-organistica-rinascimentale",
       "label": "Toccata organistica del secondo Cinquecento",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "forma-storica",
-      "parent": null
+      "parent": "forma-toccata"
     },
     {
       "id": "cappella-san-marco-venezia",
@@ -2002,9 +2018,9 @@
     },
     {
       "id": "madrigale-teatrale-comico-croce",
-      "label": "Madrigale teatrale comico croce",
+      "label": "Madrigale scenico e comico · Giovanni Croce",
       "role": "categoria-collegata",
-      "type": "caso-repertoriale-da-verificare",
+      "type": "pratica-madrigalistica-storica",
       "parent": "madrigale"
     },
     {
@@ -2016,7 +2032,7 @@
     },
     {
       "id": "sinfonismo-lombardo-autonomo-1730",
-      "label": "Sinfonismo lombardo autonomo 1730",
+      "label": "Sinfonismo lombardo e autonomia della sinfonia · Settecento",
       "role": "categoria-collegata",
       "type": "tradizione-strumentale",
       "parent": "genere-sinfonia"
@@ -2030,7 +2046,7 @@
     },
     {
       "id": "tecnica-tastiera-lugo-rossini-1802",
-      "label": "Tecnica tastiera lugo rossini 1802",
+      "label": "Rossini a Lugo · studi di tastiera e basso continuo",
       "role": "categoria-tipizzata",
       "type": "caso-tecnico-biografico",
       "parent": null
@@ -2044,7 +2060,7 @@
     },
     {
       "id": "belcanto-rossini-colbran-napoli",
-      "label": "Belcanto rossini colbran napoli",
+      "label": "Rossini e Colbran · prassi del belcanto",
       "role": "categoria-collegata",
       "type": "contesto-teatrale-vocale",
       "parent": "belcanto"
@@ -2079,7 +2095,7 @@
     },
     {
       "id": "jeu-parti-arras-duecento",
-      "label": "Jeu parti arras duecento",
+      "label": "Jeu-parti · poesia dialogica di Arras (Duecento)",
       "role": "categoria-tipizzata",
       "type": "genere-poetico-musicale-storico",
       "parent": null
@@ -2629,6 +2645,20 @@
       "role": "categoria-principale",
       "type": "forma-genere",
       "parent": null
+    },
+    {
+      "id": "forma-toccata",
+      "label": "Toccata",
+      "role": "categoria-principale",
+      "type": "forma-genere",
+      "parent": null
+    },
+    {
+      "id": "forma-preludio",
+      "label": "Preludio",
+      "role": "categoria-principale",
+      "type": "forma-genere",
+      "parent": null
     }
   ],
   "correction": {
@@ -2659,5 +2689,18 @@
     "links_evidence": "Fonti già registrate nelle voci; audit non equivale a nuova certificazione filologica di ogni fonte.",
     "major_categories_unchanged": true,
     "forma_sonata_not_reintroduced": true
+  },
+  "audit_followup_phase3": {
+    "date": "2026-10-20",
+    "base_commit": "89ca9ecda420c3de98ffb733092d8ecb4c5be46f",
+    "work": "Introduzione di due forme e generi storici autonomi e trasversali, con fonti Treccani e testimonianze d'autore; la toccata storica diviene approfondimento.",
+    "major_categories_added": [
+      "forma-toccata",
+      "forma-preludio"
+    ],
+    "composer_links_added": 9,
+    "genre_links_added": 2,
+    "existing_nodes_preserved": true,
+    "no_forma_sonata": true
   }
 }
