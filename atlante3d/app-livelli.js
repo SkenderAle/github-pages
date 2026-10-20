@@ -82,7 +82,13 @@ function relationSentence(e,perspectiveId=null){
  if(typeof verb==="string"&&verb.trim()){
   let fragment=verb.trim().replace(/^([A-ZÀ-ÖØ-Þ])/,c=>c.toLocaleLowerCase("it"));
   // Solo le scuole: la forma di intestazione non coincide sempre con la frase.
-  const spokenSubject=e.group==="scuole"&&/^(?:Scuola\b|Seconda scuola\b)/i.test(subject)?"La "+subject:subject;
+  // Le intestazioni delle categorie sono lemmi, non sempre sintagmi pronti per una frase.
+  let spokenSubject=subject;
+  if(e.group==="scuole"){
+   if(subject==="Camerata fiorentina e ambiente di Corsi")spokenSubject="La Camerata fiorentina e l'ambiente di Corsi";
+   else if(/^(?:Scuola\b|Seconda scuola\b|Tradizione\b|Musica\b)/i.test(subject))spokenSubject="La "+subject;
+   else if(/^(?:Classicismo\b|Teatro musicale\b|Gruppo dei Cinque\b|Risorgimento\b|Lied romantico\b|Madrigalismo\b|Sinfonismo\b|Minimalismo\b)/i.test(subject))spokenSubject="Il "+subject;
+  }
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
   if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
    fragment=fragment.replace(/\bdi$/,"della");
@@ -90,6 +96,28 @@ function relationSentence(e,perspectiveId=null){
   // I testimoni medievali vanno nominati prima della lunga specificazione.
   if(e.group==="scuole"&&!reversed&&fragment==="riconosce nelle testimonianze medievali fra i maestri dell\'organum")
    return spokenSubject+" riconosce "+object+" fra i maestri dell\'organum attestati dalle testimonianze medievali.";
+  // La voce di Bardi/Corsi riunisce DUE ambienti: nel verso inverso è un titolo citato.
+  if(e.group==="scuole"&&object==="Camerata fiorentina e ambiente di Corsi"&&/\bnella voce$/.test(fragment))
+   return spokenSubject+" "+fragment+" «"+object+"».";
+  // La qualificazione di Berg e Webern segue il nome anziché precederlo.
+  if(e.group==="scuole"&&!reversed&&fragment==="annoverò fra i suoi protagonisti, allievi di Schönberg")
+   return spokenSubject+" annoverò "+object+" fra i suoi protagonisti, allievi di Schönberg.";
+  if(e.group==="scuole"&&!reversed&&fragment==="annovera retrospettivamente fra i propri grandi protagonisti")
+   return spokenSubject+" annovera retrospettivamente "+object+" fra i propri grandi protagonisti.";
+  // Anticipa il nome anche quando il complemento contiene altri nomi propri.
+  if(e.group==="scuole"&&!reversed){
+   const reorder=[
+    ["annoverarono fra i protagonisti della prima e della successiva cerchia","annoverarono", "fra i protagonisti della prima e della successiva cerchia"],
+    ["annoverarono nel solo ambiente successivo di Corsi","annoverarono", "nel solo ambiente successivo di Corsi"],
+    ["annoverarono fra i teorici della prima cerchia legata a Bardi","annoverarono","fra i teorici della prima cerchia legata a Bardi"],
+    ["annovera fra i compositori formatisi con César Franck","annovera","fra i compositori formatisi con César Franck"],
+    ["annovera fra gli allievi e continuatori del magistero di César Franck","annovera","fra gli allievi e continuatori del magistero di César Franck"],
+    ["riconosce come principale riferimento didattico e compositivo","riconosce","come principale riferimento didattico e compositivo"],
+    ["annoverò fra i compositori attivi a Londra dal 1733","annoverò","fra i compositori attivi a Londra dal 1733"]
+   ];
+   const matched=reorder.find(([pattern])=>fragment===pattern);
+   if(matched)return spokenSubject+" "+matched[1]+" "+object+" "+matched[2]+".";
+  }
   const pattern="annovera nella propria storia musicale come ";
   if(e.group==="scuole"&&!reversed&&fragment.startsWith(pattern))
    return spokenSubject+" annovera "+object+" nella propria storia musicale come "+fragment.slice(pattern.length)+".";
