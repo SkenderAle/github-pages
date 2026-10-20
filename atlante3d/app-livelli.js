@@ -88,6 +88,14 @@ function relationSentenceBase(e,perspectiveId=null){
    if(subject==="Camerata fiorentina e ambiente di Corsi")spokenSubject="La Camerata fiorentina e l'ambiente di Corsi";
    else if(/^(?:Scuola\b|Seconda scuola\b|Tradizione\b|Musica\b)/i.test(subject))spokenSubject="La "+subject;
    else if(/^(?:Classicismo\b|Teatro musicale\b|Gruppo dei Cinque\b|Risorgimento\b|Lied romantico\b|Madrigalismo\b|Sinfonismo\b|Minimalismo\b)/i.test(subject))spokenSubject="Il "+subject;
+   if(subject==="Les Six")spokenSubject="Il gruppo Les Six";
+   if(subject==="Minimalismo")spokenSubject="Il minimalismo";
+   if(subject==="Melodramma barocco")spokenSubject="Il melodramma barocco";
+   if(subject==="Dodecafonia")spokenSubject="La dodecafonia";
+   if(subject==="Seconda scuola di Vienna")spokenSubject="La seconda scuola di Vienna";
+   if(subject==="Madrigalismo cinquecentesco")spokenSubject="Il madrigalismo cinquecentesco";
+   if(/^Teatro musicale\b/.test(subject))spokenSubject="Il teatro musicale"+subject.slice("Teatro musicale".length);
+   if(/^Sinfonismo\b/.test(subject))spokenSubject="Il sinfonismo"+subject.slice("Sinfonismo".length);
   }
   // Correzioni mirate ai titoli editoriali: nessuna modifica alle bolle.
   if(e.group==="scuole"&&subject==="Darmstadt: corsi e avanguardie"&&e.id.startsWith("scuola-darmstadt-")){
@@ -159,6 +167,12 @@ function relationSentenceBase(e,perspectiveId=null){
   }
   if(e.group==="scuole"&&e.id==="lotto01-scuola-caccini")
    return reversed?"Francesca Caccini fu cantante e compositrice alla corte medicea, partecipando alle sue attività musicali e teatrali.":"Le attività musicali e teatrali della corte medicea videro Francesca Caccini fra le cantanti e compositrici.";
+  if(e.group==="scuole"&&e.id==="ponte-veneziana-schutz")
+   return reversed?"Heinrich Schütz studiò a Venezia con Giovanni Gabrieli e rielaborò poi quell'esperienza nella musica sacra luterana.":"La tradizione veneziana contribuì alla formazione di Heinrich Schütz attraverso l'insegnamento di Giovanni Gabrieli.";
+  if(e.group==="scuole"&&e.id==="cat-scuole-stile-galante-e-sensibile-carl-philipp-emanuel-bach")
+   return reversed?"Carl Philipp Emanuel Bach fu tra i principali esponenti dello stile sensibile (empfindsamer Stil), vicino ma non identico allo stile galante.":"La categoria dello stile galante e dello stile sensibile comprende Carl Philipp Emanuel Bach come protagonista dell'empfindsamer Stil.";
+  if(e.group==="scuole"&&e.id==="cat-scuole-stile-galante-e-sensibile-johann-christian-bach")
+   return reversed?"Johann Christian Bach fu fra i principali esponenti tedeschi dello stile galante.":"La categoria dello stile galante e dello stile sensibile comprende Johann Christian Bach soprattutto come esponente dello stile galante.";
   if(e.group==="scuole"&&e.id==="audit6-cage-indeterminazione")
    return reversed?"John Cage sperimentò processi aleatori nell'ambito della ricerca musicale americana sull'indeterminazione.":"La sperimentazione musicale americana sull'indeterminazione comprende anche le pratiche compositive aleatorie di John Cage.";
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
@@ -195,6 +209,8 @@ function relationSentenceBase(e,perspectiveId=null){
    return spokenSubject+" annovera "+object+" nella propria storia musicale come "+fragment.slice(pattern.length)+".";
   // Le etichette dei nodi restano invariate: qui si usa solo la forma discorsiva.
   let spokenObject=object;
+  if(e.group==="scuole"&&["Minimalismo","Melodramma barocco","Dodecafonia"].includes(object))spokenObject=object.charAt(0).toLocaleLowerCase("it")+object.slice(1);
+  if(e.group==="scuole"&&/^(?:Teatro musicale|Sinfonismo)\b/.test(object))spokenObject=object.charAt(0).toLocaleLowerCase("it")+object.slice(1);
   if(e.group==="scuole" && /^(?:Scuola|Seconda scuola|Tradizione|Musica|Riforma|Avanguardie|Ospedali)\b/i.test(object))
    spokenObject=object.charAt(0).toLocaleLowerCase("it")+object.slice(1);
   if(e.group==="scuole" && !reversed && e.id==="ponte-darmstadt-avanguardie")
