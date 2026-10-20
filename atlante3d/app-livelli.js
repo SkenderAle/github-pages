@@ -1028,6 +1028,13 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
 
  ctx.globalAlpha=1;requestAnimationFrame(draw);}
 function linked(n){return currentEdges().filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
+// Un genere o una forma generali attraversano le epoche: i loro archi storici
+// documentano sviluppi, non un'appartenenza cronologica esclusiva.
+// Le correnti storicamente specifiche (es. concerto grosso barocco) restano distinte.
+const TRANSVERSAL_MUSICAL_CLASSES=new Set(["genere-trasversale","genere","ambito-musicale","forma","forma-tecnica","forma-genere","teatro-danza","tecnica-trasversale"]);
+function isTranshistoricalMusicalCategory(n){
+ return Boolean(n?.type==="corrente"&&TRANSVERSAL_MUSICAL_CLASSES.has(n.taxonomy?.class));
+}
 function periodsFor(n){
  if(!n)return [];
  if(n.type==="periodo")return [{node:n,weight:99,kind:"periodo"}];
@@ -1046,8 +1053,16 @@ function periodsFor(n){
 }
 function updatePeriodContext(n){
  if(!periodContext)return;
+ // Nessuna etichetta «CLASSICISMO» per Variazioni, «BAROCCO» per Fuga,
+ // né altre attribuzioni monoperiodali ai generi e alle forme trasversali.
+ if(isTranshistoricalMusicalCategory(n)){
+  periodContext.textContent="";
+  periodContext.title="";
+  periodContext.hidden=true;
+  return;
+ }
  const periods=periodsFor(n);
- if(!periods.length){periodContext.textContent="";periodContext.hidden=true;return;}
+ if(!periods.length){periodContext.textContent="";periodContext.title="";periodContext.hidden=true;return;}
  periodContext.textContent=periods[0].node.label.toUpperCase();
  periodContext.hidden=false;
  periodContext.title=periods.length>1?"Altri contesti: "+periods.slice(1).map(x=>x.node.label).join(" · "):periods[0].node.label;
@@ -1081,7 +1096,9 @@ function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=fa
  if(explodeBtn)explodeBtn.disabled=false;
  updatePeriodContext(n);
  const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
- status.textContent=n.label+" · "+readingAllowed().size+" relazioni musicali · "+periodsFor(n).length+" contesti storici · "+readingNames[readingLevel];
+ status.textContent=n.label+" · "+readingAllowed().size+" relazioni musicali"+
+  (isTranshistoricalMusicalCategory(n)?"":" · "+periodsFor(n).length+" contesti storici")+
+  " · "+readingNames[readingLevel];
  // Su schermi stretti una scheda laterale aperta copre la rete schematica.
  // Il doppio clic su genere/scuola conserva il grafo; il lettore può aprire Esplora.
  const schematicCategory=!gp&&(n.type==="corrente"||n.type==="ambito");
@@ -1234,7 +1251,15 @@ function populate(n){
  const periods=periodsFor(n);
  if(periods.length){
   const area=document.createElement("section");area.className="mm-period-links";
-  const title=document.createElement("h3");title.textContent="Appartenenze e contesti storici · "+periods.length;area.append(title);
+  const transversal=isTranshistoricalMusicalCategory(n);
+  const title=document.createElement("h3");
+  title.textContent=(transversal?"Presenza e sviluppi nelle epoche":"Appartenenze e contesti storici")+" · "+periods.length;
+  area.append(title);
+  if(transversal){
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Questi collegamenti descrivono momenti della storia della forma o del genere, non un'appartenenza esclusiva a un'epoca.";
+   area.append(note);
+  }
   for(const row of periods.slice(0,6)){
    const b=document.createElement("button");b.type="button";b.textContent=row.node.label+" ↗";
    b.addEventListener("click",()=>focusOn(row.node,true));area.append(b);
