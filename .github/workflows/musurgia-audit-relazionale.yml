@@ -9,6 +9,7 @@ on:
       - "atlante3d/database/verifica-audit-semantico-scuole.mjs"
       - "atlante3d/database/verifica-audit-relazionale.mjs"
       - "atlante3d/database/verifica-frasi-scuole.mjs"
+      - "atlante3d/database/verifica-audit-formazione.mjs"
       - "atlante3d/app-livelli.js"
       - ".github/workflows/musurgia-audit-relazionale.yml"
   pull_request:
@@ -18,6 +19,7 @@ on:
       - "atlante3d/database/verifica-audit-semantico-scuole.mjs"
       - "atlante3d/database/verifica-audit-relazionale.mjs"
       - "atlante3d/database/verifica-frasi-scuole.mjs"
+      - "atlante3d/database/verifica-audit-formazione.mjs"
       - "atlante3d/app-livelli.js"
       - ".github/workflows/musurgia-audit-relazionale.yml"
   workflow_dispatch:
@@ -44,6 +46,13 @@ jobs:
         run: |
           node --check atlante3d/app-livelli.js
           node atlante3d/database/verifica-frasi-scuole.mjs --tsv
+      - name: Controlla le 466 frasi della lente Formazione
+        run: node atlante3d/database/verifica-audit-formazione.mjs --tsv
+      - name: Conserva il report Formazione
+        uses: actions/upload-artifact@v4
+        with:
+          name: musurgia-frasi-formazione
+          path: audit-frasi-formazione.tsv
       - name: Conserva le 784 frasi dell’audit
         uses: actions/upload-artifact@v4
         with:
