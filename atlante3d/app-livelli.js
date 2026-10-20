@@ -121,8 +121,16 @@ function relationSentence(e,perspectiveId=null){
   const pattern="annovera nella propria storia musicale come ";
   if(e.group==="scuole"&&!reversed&&fragment.startsWith(pattern))
    return spokenSubject+" annovera "+object+" nella propria storia musicale come "+fragment.slice(pattern.length)+".";
+  // Le etichette dei nodi restano invariate: qui si usa solo la forma discorsiva.
+  let spokenObject=object;
+  if(e.group==="scuole" && /^(?:Scuola|Seconda scuola|Tradizione|Musica|Riforma|Avanguardie|Ospedali)\b/i.test(object))
+   spokenObject=object.charAt(0).toLocaleLowerCase("it")+object.slice(1);
+  if(e.group==="scuole" && reversed && e.id==="ponte-darmstadt-avanguardie")
+   return "Le avanguardie trovarono nei corsi estivi di Darmstadt un centro di studio e confronto.";
+  if(e.group==="scuole" && reversed && e.id==="audit8-siegfried-festival-bayreuth")
+   return "Siegfried Wagner assunse la guida del Festival di Bayreuth nel 1908 e contribuì alle pratiche di regia.";
   const separator=/['’]$/.test(fragment)?"":" ";
-  return spokenSubject+" "+fragment+separator+object+".";
+  return spokenSubject+" "+fragment+separator+spokenObject+".";
  }
  // Legami del grafo di base: etichette descrittive, non deduzioni biografiche.
  switch(e.kind){
