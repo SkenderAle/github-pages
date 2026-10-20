@@ -125,6 +125,10 @@ function relationSentence(e,perspectiveId=null){
   let spokenObject=object;
   if(e.group==="scuole" && /^(?:Scuola|Seconda scuola|Tradizione|Musica|Riforma|Avanguardie|Ospedali)\b/i.test(object))
    spokenObject=object.charAt(0).toLocaleLowerCase("it")+object.slice(1);
+  if(e.group==="scuole" && !reversed && e.id==="ponte-darmstadt-avanguardie")
+   return "I corsi estivi di Darmstadt furono un luogo di confronto fondamentale per le avanguardie.";
+  if(e.group==="scuole" && !reversed && e.id==="audit8-siegfried-festival-bayreuth")
+   return "Il Festival di Bayreuth fu diretto da Siegfried Wagner, che contribuì anche al rinnovamento delle pratiche di regia.";
   if(e.group==="scuole" && reversed && e.id==="ponte-darmstadt-avanguardie")
    return "Le avanguardie trovarono nei corsi estivi di Darmstadt un centro di studio e confronto.";
   if(e.group==="scuole" && reversed && e.id==="audit8-siegfried-festival-bayreuth")
