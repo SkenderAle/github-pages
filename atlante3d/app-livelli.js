@@ -157,6 +157,10 @@ function relationSentenceBase(e,perspectiveId=null){
    if(/^La (Scuola|Tradizione|Musica|Riforma)\b/.test(spokenSubject))
     spokenSubject=spokenSubject.replace(/^La ([A-ZÀ-ÖØ-Þ])/,(m,l)=>"La "+l.toLocaleLowerCase("it"));
   }
+  if(e.group==="scuole"&&e.id==="lotto01-scuola-caccini")
+   return reversed?"Francesca Caccini fu cantante e compositrice alla corte medicea, partecipando alle sue attività musicali e teatrali.":"Le attività musicali e teatrali della corte medicea videro Francesca Caccini fra le cantanti e compositrici.";
+  if(e.group==="scuole"&&e.id==="audit6-cage-indeterminazione")
+   return reversed?"John Cage sperimentò processi aleatori nell'ambito della ricerca musicale americana sull'indeterminazione.":"La sperimentazione musicale americana sull'indeterminazione comprende anche le pratiche compositive aleatorie di John Cage.";
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
   if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
    fragment=fragment.replace(/\bdi$/,"della");
