@@ -116,3 +116,11 @@ Il controllo verifica:
 Dopo le passate filologiche del 20 ottobre (`d3dedfc`), la prima verifica semantica delle scuole ha precisato 32 formule bidirezionali e ritirato tre collegamenti fuorvianti (Boccherini/sinfonismo del primo Settecento, Frank Bridge/rinascita operistica, Piccinni/riforma gluckiana) senza perdere le evidenze originarie e senza alterare il grafo principale. Da questo intervento la lente `scuole` conta **392** relazioni, il totale delle lenti **1.388**. I dati storici originali sono conservati nel campo `semantic_school_audit_20261020` del database; descrizione in [audit semantico scuole](audit-semantico-scuole-lotto1-20261020.md). I numeri si riferiscono al momento del lotto: in caso di nuovi commit, ricalcolarli da `main`.
 
 Controlli automatici: `node atlante3d/database/verifica-audit-relazionale.mjs` e `node atlante3d/database/verifica-audit-semantico-scuole.mjs`. Questi attestano la coerenza strutturale, non la correttezza filologica delle restanti relazioni.
+
+## 9. Secondo lotto semantico e Bach–concerto grosso (20 ottobre 2026)
+
+Il collegamento Bach → Concerto grosso è **confermato e verificato con qualificazione tipologica** sui sei *Concerti brandeburghesi*, senza aggiungere un arco duplicato. Nuova scheda d'evidenza direttamente nell'arco, con classificazioni per BWV 1046–1051, fonti specifiche e precedente formulazione conservata. Si chiude così la coda di 1 arco ancora aperto dalla seconda passata filologica mirata: non implica che ogni altra relazione del database sia filologicamente completa.
+
+Le **64 relazioni** del secondo lotto semantico, nelle scuole rinascimentali e nelle cappelle/conservatori, hanno precisato l'effettivo ruolo dei protagonisti nel testo di andata e ritorno. Stato di revisione in `semantic_school_audit_lotto2_20261020`, con formulazioni precedenti in `semantic_review`. Restano invariati: 843 nodi, 393 compositori, 1.969 archi principali, 1.388 relazioni specialistiche, 392 della lente scuole. Rapporto: [lotto scuole e Bach](audit-semantico-scuole-lotto2-bach-20261020.md).
+
+Le verifiche automatiche attestano la consistenza dei dati; i riscontri musicologici rimanenti e la navigazione in browser richiedono controllo separato.

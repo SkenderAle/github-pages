@@ -44,7 +44,20 @@ for (const [group, minimum] of Object.entries(groups))
   if ((counts[group] || 0) < minimum)
     errors.push('Regressione della lente ' + group + ': ' + counts[group] + ' < ' + minimum);
 const reviewed = relations.filter(e => e.semantic_review?.date === '2026-10-20');
-if (reviewed.length !== 32) errors.push('Attese 32 formulazioni controllate, trovate ' + reviewed.length);
+if (reviewed.length < 96) errors.push('Attese almeno 96 formulazioni controllate, trovate ' + reviewed.length);
+const secondBatch = relations.filter(e => e.semantic_review?.review_batch === 'scuole-lotto2-20261020');
+if (secondBatch.length < 64 || data.semantic_school_audit_lotto2_20261020?.semantics_precised !== 64)
+  errors.push('Secondo lotto semantico scuole non integro: ' + secondBatch.length);
+for (const e of secondBatch)
+  if (!e.natura_semantica || !e.semantic_review.prior_forward ||
+      !e.semantic_review.prior_reverse || !e.sources?.length)
+    errors.push('Tracciabilità del secondo lotto mancante: ' + e.id);
+const bachGrosso = graph.edges.find(e => e.source === 'compositore-johann-sebastian-bach' && e.target === 'forma-concerto-grosso');
+if (!bachGrosso?.catalogue_review?.reviewed || 
+    bachGrosso.evidence_status !== 'opera-verificata-con-qualificazione-tipologica' ||
+    !bachGrosso.catalogue_review.work_level_sources?.length ||
+    !/BWV 1046/.test(bachGrosso.note) || !/BWV 1051/.test(bachGrosso.note))
+  errors.push('Rischio regressione: Bach e i Brandeburghesi nel concerto grosso');
 const obsolete = [
   'lotto02-sc-boccherini-italy',
   'daily01-bridge-british',
