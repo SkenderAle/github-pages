@@ -148,6 +148,15 @@ function relationSentence(e,perspectiveId=null){
    const pair=additionalPairs[e.id];
    if(pair)return pair[reversed?1:0];
   }
+  // Articoli e minuscole per nomi comuni di categorie: solo nella frase, non nelle bolle.
+  if(e.group==="scuole"){
+   if(/^(?:Cappella|Tradizione|Riforma|Polifonia|Sperimentazione|Musica|Scuola|Accademia)\b/.test(subject)&&spokenSubject===subject)
+    spokenSubject="La "+subject.charAt(0).toLocaleLowerCase("it")+subject.slice(1);
+   else if(/^Conservatorio\b/.test(subject)&&spokenSubject===subject)
+    spokenSubject="Il "+subject.charAt(0).toLocaleLowerCase("it")+subject.slice(1);
+   if(/^La (Scuola|Tradizione|Musica|Riforma)\b/.test(spokenSubject))
+    spokenSubject=spokenSubject.replace(/^La ([A-ZÀ-ÖØ-Þ])/,(m,l)=>"La "+l.toLocaleLowerCase("it"));
+  }
   // "di Scuola di Notre-Dame" manca della preposizione articolata.
   if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
    fragment=fragment.replace(/\bdi$/,"della");
