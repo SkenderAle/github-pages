@@ -1127,6 +1127,49 @@ function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
  document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica",persona:"Figura storica"}[n.type]||"");
  const dst=document.getElementById("panelContent");dst.replaceChildren();
+ // Navigazione fra categorie generali, tipologie storiche e pratiche.
+ // Le relazioni e le schede di ascolto non vengono sostituite né ridotte.
+ if(n.type==="corrente"&&!n.work_archive&&!n.document_archive){
+  const typeNames={
+   "genere":"Genere musicale","genere-trasversale":"Genere musicale",
+   "forma":"Forma musicale","forma-tecnica":"Forma e tecnica","forma-genere":"Forma e genere",
+   "tecnica-trasversale":"Tecnica compositiva","ambito-musicale":"Ambito musicale",
+   "teatro-danza":"Teatro e danza","sottogenere-teatrale":"Tipologia teatrale",
+   "tipologia-operistica":"Tipologia operistica","tradizione-omonima-distinta":"Tradizione storica distinta",
+   "tipologia-concertistica":"Tipologia concertistica","pratica-polifonica":"Pratica polifonica",
+   "ambito-storico":"Ambito storico","tradizione-storica":"Tradizione storica"
+  };
+  const cls=n.taxonomy?.class;
+  const label=typeNames[cls]||(cls?cls.replace(/-/g," "):"");
+  if(label){const type=document.createElement("p");type.className="small";
+   type.textContent="Natura della voce: "+label+".";dst.append(type);}
+  const parent=byId.get(n.taxonomy?.parent);
+  if(parent){
+   const area=document.createElement("section");area.className="mm-taxonomy-parent";
+   const h=document.createElement("h3");h.textContent="Categoria di riferimento";area.append(h);
+   const b=document.createElement("button");b.type="button";b.textContent=parent.label+" ↗";
+   b.addEventListener("click",()=>focusOn(parent,true));area.append(b);
+   if(n.taxonomy?.semantic_note){
+    const p=document.createElement("p");p.className="small";
+    p.textContent=n.taxonomy.semantic_note;area.append(p);
+   }
+   dst.append(area);
+  }
+  const children=nodes.filter(child=>child.taxonomy?.parent===n.id&&!child.work_archive&&!child.document_archive)
+   .sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(children.length){
+   const area=document.createElement("section");area.className="mm-taxonomy-children";
+   const h=document.createElement("h3");h.textContent="Tipologie e contesti · "+children.length;area.append(h);
+   const p=document.createElement("p");p.className="small";
+   p.textContent="Approfondimenti collegati: tipologie, tradizioni e pratiche storiche, non tutti nuovi generi.";
+   area.append(p);
+   for(const child of children){
+    const b=document.createElement("button");b.type="button";b.textContent=child.label+" ↗";
+    b.addEventListener("click",()=>focusOn(child,true));area.append(b);
+   }
+   dst.append(area);
+  }
+ }
  // Archivio delle opere: consultabile dalla carta del compositore senza moltiplicare le bolle.
  if(n.type==="compositore"){
   const works=nodes.filter(w=>w.work_archive?.composer_id===n.id)
@@ -1161,7 +1204,7 @@ function populate(n){
   }
  }
  // Repertorio del genere: esclusivamente opere con un arco esplicito, senza deduzioni automatiche.
- if(n.id.startsWith("genere-")){
+ if(n.type==="corrente"&&n.taxonomy?.visibility==="principale"){
   const workIds=new Set();
   for(const edge of edges){
    if(edge.source===n.id&&byId.get(edge.target)?.work_archive?.kind==="opera-specifica")workIds.add(edge.target);
