@@ -52,6 +52,17 @@ for (const e of secondBatch)
   if (!e.natura_semantica || !e.semantic_review.prior_forward ||
       !e.semantic_review.prior_reverse || !e.sources?.length)
     errors.push('Tracciabilità del secondo lotto mancante: ' + e.id);
+const thirdBatch=relations.filter(e=>e.semantic_review?.review_batch === 'scuole-lotto3-20261020');
+if (thirdBatch.length < 111 || data.semantic_school_audit_lotto3_20261020?.semantics_precised !== 111)
+  errors.push('Lotto semantico III incompleto: ' + thirdBatch.length);
+const reviewedTotal=relations.filter(e=>e.group === 'scuole' && e.semantic_review).length;
+if (reviewedTotal < 207) errors.push('Regressione numero di relazioni semantiche revisionate: ' + reviewedTotal);
+for (const e of thirdBatch) {
+ if (!e.natura_semantica || !e.semantic_review.prior_forward ||
+     !e.semantic_review.prior_reverse || e.semantic_review.prior_status !== e.status ||
+     !e.sources?.length || !e.note)
+   errors.push('Tracciabilità del lotto III: ' + e.id);
+}
 const bachGrosso = graph.edges.find(e => e.source === 'compositore-johann-sebastian-bach' && e.target === 'forma-concerto-grosso');
 if (!bachGrosso?.catalogue_review?.reviewed || 
     bachGrosso.evidence_status !== 'opera-verificata-con-qualificazione-tipologica' ||

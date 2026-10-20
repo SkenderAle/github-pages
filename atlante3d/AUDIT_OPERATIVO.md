@@ -124,3 +124,7 @@ Il collegamento Bach → Concerto grosso è **confermato e verificato con qualif
 Le **64 relazioni** del secondo lotto semantico, nelle scuole rinascimentali e nelle cappelle/conservatori, hanno precisato l'effettivo ruolo dei protagonisti nel testo di andata e ritorno. Stato di revisione in `semantic_school_audit_lotto2_20261020`, con formulazioni precedenti in `semantic_review`. Restano invariati: 843 nodi, 393 compositori, 1.969 archi principali, 1.388 relazioni specialistiche, 392 della lente scuole. Rapporto: [lotto scuole e Bach](audit-semantico-scuole-lotto2-bach-20261020.md).
 
 Le verifiche automatiche attestano la consistenza dei dati; i riscontri musicologici rimanenti e la navigazione in browser richiedono controllo separato.
+
+## 10. Lotto III scuole (20 ottobre 2026)
+
+**111 rapporti di scuole e repertori** con semantica bidirezionale precisata. Cumulato: **207** relazioni della lente già revisionate, **185** ancora da riesaminare. Dati precedenti conservati nei singoli `semantic_review`, metadata in `semantic_school_audit_lotto3_20261020`; relazione [lotto III](audit-semantico-scuole-lotto3-20261020.md). Nessuna modifica a nodi, archi principali, altri gruppi specialistici o fonti. Il controllo automatico è stato esteso al nuovo lotto: verificare comunque la CI dopo il commit.
