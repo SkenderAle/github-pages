@@ -28118,16 +28118,6 @@
       ]
     },
     {
-      "source": "compositore-luzzasco-luzzaschi",
-      "target": "genere-concerto",
-      "kind": "forma-o-pratica-documentata",
-      "weight": 1.2,
-      "note": "Attestazione dalla scheda biografica: «concerto». Legame di repertorio o pratica, non di relazione personale.",
-      "sources": [
-        "https://www.treccani.it/enciclopedia/luzzasco-luzzaschi_%28Dizionario-Biografico%29/"
-      ]
-    },
-    {
       "source": "compositore-antonio-lotti",
       "target": "genere-opera",
       "kind": "forma-o-pratica-documentata",
@@ -38274,6 +38264,20 @@
       "audit": "2026-10-21",
       "audit_category": "revisione-filologica-raff",
       "evidence_status": "catalogo-autore-critico"
+    },
+    {
+      "source": "compositore-luzzasco-luzzaschi",
+      "target": "madrigale",
+      "kind": "forma-o-pratica-documentata",
+      "weight": 1.2,
+      "note": "Libri di madrigali a cinque voci e Madrigali per cantare et sonare a uno, doi e tre soprani (Roma, 1601), attestati nel repertorio e nella copia catalogata dalla Library of Congress. Il «concerto delle dame» ferrarese indica un ensemble vocale di corte e non attesta il genere strumentale Concerto.",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/luzzasco-luzzaschi_%28Dizionario-Biografico%29/",
+        "https://www.loc.gov/item/2008561305/"
+      ],
+      "audit": "2026-10-21",
+      "audit_category": "qualitativo-famiglie-strumentali-fase1",
+      "evidence_status": "repertorio-madrigalistico-fonte-bibliografica-e-catalografica"
     }
   ],
   "videos": [],
@@ -39459,5 +39463,49 @@
       }
     ],
     "policy": "Archi documentari duplicati fra due medesimi nodi sono unificati preservandone i ruoli storici secondari; nessuna famiglia o opera cancellata."
+  },
+  "qualitative_genre_audit_20261021_phase1": {
+    "date": "2026-10-21",
+    "previous_head": "b2e7898fabbdb6f8327cafa26e8bfc392aad9d92",
+    "scope": "Prima ricognizione qualitativa delle famiglie strumentali (Concerto, Sonata, Sinfonia, Suite, Musica da camera, Quartetto d'archi), non certificazione filologica di tutti gli archi.",
+    "families_examined": [
+      "genere-concerto",
+      "genere-sonata",
+      "genere-sinfonia",
+      "genere-suite",
+      "genere-musica-da-camera",
+      "genere-quartetto-archi"
+    ],
+    "relationships_screened_before": 332,
+    "relationships_remaining_after": 331,
+    "finding": "Luzzasco Luzzaschi → Concerto era un falso positivo lessicale: il «concerto delle dame» è un ensemble vocale ferrarese, non il concerto strumentale.",
+    "removed": {
+      "source": "compositore-luzzasco-luzzaschi",
+      "target": "genere-concerto"
+    },
+    "added": {
+      "source": "compositore-luzzasco-luzzaschi",
+      "target": "madrigale"
+    },
+    "evidence": [
+      "https://www.treccani.it/enciclopedia/luzzasco-luzzaschi_%28Dizionario-Biografico%29/",
+      "https://www.loc.gov/item/2008561305/"
+    ],
+    "count_reconciliation": {
+      "direct_category_rows_corrected": 27,
+      "indirect_category_rows_changed": 0,
+      "all_categories_now_recomputed": true
+    },
+    "status": "ricognizione preliminare; verifica individuale delle fonti delle restanti relazioni ancora da completare",
+    "integrity": {
+      "nodes": 856,
+      "edges": 2364,
+      "composers": 393,
+      "main_categories": 37,
+      "direct_composer_family_edges": 888,
+      "direct_composers": 371,
+      "orphan_edges": 0,
+      "duplicate_pairs": 0
+    }
   }
 }
