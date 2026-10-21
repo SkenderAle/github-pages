@@ -2,7 +2,7 @@
   "project": "Musurgia Mundi — La costellazione Musica",
   "title": "Audit di copertura compositori / famiglie musicali — 21 ottobre 2026",
   "branch": "main",
-  "based_on_commit": "23b1e3ed1fb8e8e9b27c45232b837263e2d9bfd8",
+  "based_on_commit": "aa798c7c65a3b061d7a2c8c6aa6e392ba548dbd5",
   "scope": "Tutti i compositori del grafo; nessuna famiglia automaticamente dedotta da scuole o istituzioni.",
   "method": {
     "direct": "arco fra compositore e categoria principale",
@@ -5544,11 +5544,20 @@
       "composer": "Joachim Raff",
       "status": "diretto",
       "direct_main": [
-        "poema-sinfonico-ottocentesco"
+        "forma-ouverture",
+        "genere-cantata",
+        "genere-concerto",
+        "genere-lied",
+        "genere-musica-da-camera",
+        "genere-opera",
+        "genere-oratorio",
+        "genere-quartetto-archi",
+        "genere-sinfonia",
+        "genere-suite"
       ],
       "main_via_specialization": [],
       "other_existing_nodes": [],
-      "main_graph_edges": 4,
+      "main_graph_edges": 13,
       "documented_lens_relations": 0,
       "review": "Copertura del repertorio censito, non certificazione della completezza del catalogo d'autore."
     },
@@ -6535,7 +6544,7 @@
       "Rosario Scalero"
     ]
   },
-  "refreshed_at_head": "23b1e3ed1fb8e8e9b27c45232b837263e2d9bfd8",
+  "refreshed_at_head": "aa798c7c65a3b061d7a2c8c6aa6e392ba548dbd5",
   "baseline_before_oct21_completion_counts": {
     "composers": 393,
     "main_categories": 37,
@@ -6548,7 +6557,7 @@
   },
   "followup_reconciliation_20261021": {
     "date": "2026-10-21",
-    "graph_head": "23b1e3ed1fb8e8e9b27c45232b837263e2d9bfd8",
+    "graph_head": "aa798c7c65a3b061d7a2c8c6aa6e392ba548dbd5",
     "composer_total": 393,
     "categories": 37,
     "direct_composers": 371,
@@ -7098,5 +7107,40 @@
       "Comtessa de Dia"
     ],
     "identity_resolution": "GND di Johann Christoph Bach (1671–1721) 123526566, distinto dal 1642–1703 120327112; nessun repertorio ambiguo attribuito per automatismo."
+  },
+  "audit_global_direct_genre_evidence_20261021": {
+    "date": "2026-10-21",
+    "graph_commit": "aa798c7c65a3b061d7a2c8c6aa6e392ba548dbd5",
+    "total_composers": 393,
+    "main_families": 37,
+    "graph_nodes": 856,
+    "graph_edges": 2364,
+    "direct_composer_family_edges": 888,
+    "direct_edges_without_source": 0,
+    "direct_edges_without_note": 0,
+    "systematic_source_review": {
+      "music_electroacoustic": 9,
+      "madrigal": 13,
+      "polyphony": 17,
+      "additional_corrections": 5
+    },
+    "refined_composer": {
+      "name": "Joachim Raff",
+      "removed_genre": "poema-sinfonico-ottocentesco",
+      "added_principal_categories": [
+        "forma-ouverture",
+        "genere-cantata",
+        "genere-concerto",
+        "genere-lied",
+        "genere-musica-da-camera",
+        "genere-opera",
+        "genere-oratorio",
+        "genere-quartetto-archi",
+        "genere-sinfonia",
+        "genere-suite"
+      ]
+    },
+    "integrity": "0 orphan endpoint; 0 duplicate undirected node pairs.",
+    "limitation": "Presenza di URL e note verificata globalmente. Validità esterna e precisione catalografica di ogni fonte non certificate integralmente."
   }
 }
