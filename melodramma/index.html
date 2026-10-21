@@ -367,7 +367,16 @@
     .hero-card p{font-size:.94rem;line-height:1.5;margin-top:.5rem}
   }
 </style>
-<link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261021-gerarchia02"><link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
+<link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261021-melodramma03"><link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
+<style id="melodramma-menu-layout-fix">
+/* Un'unica barra di navigazione: Home, Indice, titolo a destra. */
+.nav-wrap.atlas-autonav{display:flex!important;align-items:center!important;flex-wrap:nowrap!important;position:sticky!important;top:0!important;z-index:1000!important}
+.nav-wrap.atlas-autonav>.atlas-home-link{order:0!important;flex-shrink:0!important}
+.nav-wrap.atlas-autonav>.atlas-menu-toggle{order:1!important}
+.nav-wrap.atlas-autonav>.atlas-menu-context{order:2!important;margin-left:auto!important}
+.nav-wrap.atlas-autonav>nav{order:3!important;position:absolute!important}
+@media(max-width:650px){.nav-wrap.atlas-autonav>.atlas-menu-context{font-size:.6rem!important}}
+</style>
 </head>
 
 <body>
@@ -2144,7 +2153,6 @@
   setActiveSection();
 })();
 </script>
-<script src="../shared/atlas-autonav-v1.js?v=20261021-gerarchia02" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261018-global-v07" defer></script><script src="../shared/atlas-video-preview-v1.js?v=20261016-qa02" defer></script>
-<script src="../assets/atlante-indice-condiviso.js" defer></script>
+<script src="../shared/atlas-autonav-v1.js?v=20261021-melodramma03" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261018-global-v07" defer></script><script src="../shared/atlas-video-preview-v1.js?v=20261016-qa02" defer></script>
 </body>
 </html>
