@@ -47,6 +47,28 @@
     nav.append(group);
    });
   }
+  // Sottoindice gerarchico: sotto ogni collegamento di capitolo, i titoli dei paragrafi interni.
+  const indexLinks=[...nav.querySelectorAll('a[href^="#"]')];
+  for(const link of indexLinks){
+   const id=decodeURIComponent(link.getAttribute('href').slice(1));
+   const target=document.getElementById(id);
+   if(!target||link.classList.contains('nav-home'))continue;
+   const root=target.closest('section,article')||target;
+   let candidates=[...root.querySelectorAll('h3,h4')].filter(h=>h!==target&&!h.closest('nav,[hidden],details,aside'));
+   if(!candidates.length){
+    const start=target.closest('section,article')||target;
+    let node=start.nextElementSibling;
+    while(node&&!node.matches('section,article')){candidates.push(...(node.matches('h3,h4')?[node]:[...node.querySelectorAll('h3,h4')]));node=node.nextElementSibling;}
+   }
+   if(!candidates.length)continue;
+   const details=document.createElement('details');details.className='atlas-subindex';
+   const summary=document.createElement('summary');summary.textContent=candidates.length+' paragrafi · apri elenco';details.appendChild(summary);
+   let n=0;for(const h of candidates){if(n++>=45)break;let hid=h.id||h.querySelector('[id]')?.id;
+    if(!hid){hid='atlas-sub-'+page+'-'+indexLinks.indexOf(link)+'-'+n;h.id=hid;}
+    const a=document.createElement('a');a.href='#'+hid;a.textContent=n+' · '+h.textContent.trim().replace(/\\s+/g,' ').slice(0,125);details.appendChild(a);
+   }
+   link.insertAdjacentElement('afterend',details);
+  }
   // Numerazione continua delle sezioni storiche; esclude servizi e rimandi esterni.
   let sectionNumber=0;
   const utilityIds=new Set(["indice","prologo","fonti","bibliografia","verifica","metodo","glossario","archivio","videoteca","per-iniziare"]);
