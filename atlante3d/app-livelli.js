@@ -680,7 +680,15 @@ function unproject(px,py,depth){
  return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};
 }
 function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw Error("Schema non valido");
- const all=db.nodes.filter(n=>n.visible!==0&&n.visible!=="0");
+ // Un regista non e' un compositore: la categoria resta ontologica, anche nei rapporti con le colonne sonore.
+ // Conversione in sola visualizzazione per gli eventuali record storici mal classificati.
+ const cinemaDirectors=new Set(["alfred hitchcock","stanley kubrick","federico fellini","sergej ejzenstejn","sergei eisenstein","s. m. eisenstein","orson welles","luchino visconti","francois truffaut","françois truffaut","akira kurosawa","charlie chaplin","charles chaplin","bernardo bertolucci","sergio leone","david lynch","martin scorsese","steven spielberg","alfonso cuaron","alfonso cuarón","tim burton"]);
+ const all=db.nodes.filter(n=>n.visible!==0&&n.visible!=="0").map(n=>{
+  const name=String(n.label||n.name||"").toLocaleLowerCase("it").trim();
+  if(n.type==="compositore"&&cinemaDirectors.has(name))
+   return {...n,type:"persona",music_relevance:true,category_audit:"regista cinematografico; categoria corretta nella visualizzazione"};
+  return n;
+ });
  const anchors=new Map();let i=0;
  for(const n of all){let a=i++*2.399963,rad=8*Math.sqrt((i+.5)/all.length),offset=n.type==="periodo"?6:n.type==="ambito"?5:rad;
   const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,autoDx:0,autoDy:0,explodeDx:0,explodeDy:0,radius:n.type==="compositore"||n.type==="persona"?5:n.type==="geografia"?8:11};
