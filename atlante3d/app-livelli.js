@@ -487,7 +487,9 @@ function contextRawPoint(n){
  if(!schematic&&geoFromNode(n))return null;
  const depths=selectedDepths(readingDepth()),depth=depths?.get(n.id);
  if(depth==null||depth<1||depth>3)return null;
- if(!schematic&&!(n.type==="corrente"||n.type==="ambito"||n.type==="persona"))return null;
+ // Anche un compositore privo di coordinate puo comparire come nodo schematico
+ // quando e collegato direttamente al nodo geografico selezionato.
+ if(!schematic&&!(n.type==="corrente"||n.type==="ambito"||n.type==="persona"||(n.type==="compositore"&&depth===1&&!geoFromNode(n))))return null;
  const stage=graphStage(),center=schematic?{x:stage.cx,y:stage.cy}:rawGeoPoint(selected);
  if(!center)return null;
  const h=stableHash(n.id),angle=((h%100000)/100000)*Math.PI*2;
