@@ -69,19 +69,10 @@
    }
    link.insertAdjacentElement('afterend',details);
   }
-  // Numerazione continua delle sezioni storiche; esclude servizi e rimandi esterni.
-  let sectionNumber=0;
-  const utilityIds=new Set(["indice","prologo","fonti","bibliografia","verifica","metodo","glossario","archivio","videoteca","per-iniziare"]);
-  nav.querySelectorAll('a[href^="#"]').forEach(link=>{
-   const id=link.getAttribute("href").slice(1);
-   if(utilityIds.has(id))return;
-   if(link.classList.contains("nav-sos")||link.classList.contains("nav-verifica"))return;
-   sectionNumber++;
-   const clean=link.textContent.trim().replace(/^\d{1,2}\s*[·.\-–]?\s*/,"");
-   link.textContent=String(sectionNumber).padStart(2,"0")+" · "+clean;
-  });
-  // Il comando indica i capitoli effettivi, non le voci di servizio.
-  button.replaceChildren(document.createTextNode(page==="home"?"Esplora l’Atlante":"Esplora "+sectionNumber+" capitoli"),(()=>{
+  // Le voci principali sono sezioni editoriali, NON capitoli numerati automaticamente.
+  // Si conserva la numerazione originale e si evita di trasformare ogni paragrafo in un capitolo.
+  const primaryEntries=[...nav.querySelectorAll(':scope > .atlas-group > a[href^="#"]')].filter(a=>!a.classList.contains('nav-sos')&&!a.classList.contains('nav-verifica'));
+  button.replaceChildren(document.createTextNode(page==="home"?"Esplora l’Atlante":"Indice · "+primaryEntries.length+" sezioni"),(()=>{
    const arrow=document.createElement("span");arrow.className="atlas-menu-arrow";arrow.setAttribute("aria-hidden","true");arrow.textContent="▾";return arrow;
   })());
   const context=document.createElement("span");
