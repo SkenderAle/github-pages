@@ -516,6 +516,25 @@ header.hero{min-height:clamp(520px,77vh,760px);background-position:55% 45%;backg
 @media(max-width:600px){.rom-editorial-figure--wrap{width:41%;margin-left:.75rem}.rom-editorial-figure--wrap.rom-editorial-figure--left{margin-right:.75rem}.rom-editorial-figure--wrap .rom-figure-caption{font-size:.65rem}}
 @media(max-width:390px){.rom-editorial-figure--wrap{width:46%}}
 
+
+/* Correzione indice: summary annidati NON ereditano il bottone viola del menu principale. */
+.details-menu .menu-panel .index-subsections > summary,
+.details-menu .menu-panel .index-subsections[open] > summary{
+  display:list-item;list-style:disclosure-closed inside;
+  background:#f0e9e2!important;color:#342637!important;
+  border:1px solid #dacdd4;border-radius:4px;
+  padding:.48rem .65rem;font:700 .87rem/1.45 var(--sans);
+  cursor:pointer;box-shadow:none;opacity:1
+}
+.details-menu .menu-panel .index-subsections[open] > summary{list-style:disclosure-open inside;background:#e9e0e9!important}
+.details-menu .menu-panel .index-subsections > summary::before{content:none!important}
+.details-menu .menu-panel .index-subsections > summary::-webkit-details-marker{display:inline-block}
+.details-menu .menu-panel .index-subsections > summary:hover{background:#e1d4df!important;color:#221b2b!important}
+.details-menu .menu-panel .index-subsections{border-left:2px solid #b8a1b5;margin:.35rem 0 .7rem;padding-left:.55rem}
+.details-menu .menu-panel .menu-sub-links a{background:#fffdf9;color:#302834!important;font-size:.89rem;line-height:1.48;padding:.48rem .55rem;border-bottom:1px solid #ded5d1}
+.details-menu .menu-panel .menu-sub-links a:hover,.details-menu .menu-panel .menu-sub-links a:focus-visible{background:#eee6ef!important;color:#25192a!important}
+.details-menu .menu-panel .menu-sub-links .sub-num{color:#633b5c!important;font-size:.8rem;min-width:2.8em}
+
 </style>
 <style>/* Identità grafica comune ai menu di Musurgia Mundi */.nav-inner>.nav-inserto{margin-left:0!important}.nav-inner>.atlas-menu-context-local{margin-left:auto!important}.atlas-menu-context-local{margin-left:auto;color:#e9ddd1;font:600 .7rem/1.4 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.045em;white-space:nowrap;flex:none}@media(max-width:950px){.atlas-menu-context-local{display:none!important}}</style><link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
 <style id="romanticismo-indice-completo-20261021">
