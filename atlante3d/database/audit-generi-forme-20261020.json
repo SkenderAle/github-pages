@@ -2,22 +2,22 @@
   "title": "Musurgia Mundi · Audit tassonomico generi e forme",
   "date": "2026-10-20",
   "scope": "Inventario dei nodi di tipo corrente; non equivale ad attestazione filologica individuale.",
-  "nodes_total": 850,
-  "current_nodes": 328,
+  "nodes_total": 855,
+  "current_nodes": 333,
   "before": {
     "nodes": 843,
     "edges": 1969
   },
   "after": {
-    "nodes": 850,
-    "edges": 2055
+    "nodes": 855,
+    "edges": 2109
   },
   "counts": {
-    "categoria-principale": 27,
+    "categoria-principale": 36,
     "ulteriore-voce-specialistica": 0,
-    "scuola-tradizione-o-movimento": 66,
-    "categoria-collegata": 60,
-    "categoria-tipizzata": 22,
+    "scuola-tradizione-o-movimento": 64,
+    "categoria-collegata": 63,
+    "categoria-tipizzata": 17,
     "istituzione-o-ambiente": 57,
     "documento-in-archivio": 22,
     "opera-in-archivio": 55,
@@ -495,6 +495,57 @@
     {
       "id": "linguaggio-polistilistico-novecento",
       "action": "scheda-ricercabile"
+    },
+    {
+      "id": "frottola-corti-italiane",
+      "action": "promossa-categoria-generale"
+    },
+    {
+      "id": "villancico-rinascimentale-iberico",
+      "action": "promossa-categoria-generale"
+    },
+    {
+      "id": "musica-per-film-novecento",
+      "action": "promossa-categoria-generale"
+    },
+    {
+      "id": "musica-elettronica",
+      "action": "promossa-categoria-generale"
+    },
+    {
+      "id": "genere-jazz",
+      "action": "creata-categoria-generale"
+    },
+    {
+      "id": "genere-musical",
+      "action": "creata-categoria-generale"
+    },
+    {
+      "id": "genere-ragtime",
+      "action": "creata-categoria-generale"
+    },
+    {
+      "id": "forma-notturno",
+      "action": "creata-categoria-generale"
+    },
+    {
+      "id": "genere-melodie-francese",
+      "action": "creata-categoria-generale"
+    },
+    {
+      "id": "jazz-orchestrale-big-band",
+      "action": "raccordo-storico",
+      "parent": "genere-jazz"
+    },
+    {
+      "id": "teatro-musicale-broadway",
+      "action": "raccordo-storico",
+      "parent": "genere-musical"
+    },
+    {
+      "id": "tradizione-melodie-francese",
+      "action": "raccordo-storico",
+      "parent": "genere-melodie-francese"
     }
   ],
   "links_added": [
@@ -643,11 +694,11 @@
     },
     {
       "id": "musica-elettronica",
-      "label": "Musica elettronica",
-      "role": "categoria-tipizzata",
-      "type": "ambito-di-pratiche-sonore",
+      "label": "Musica elettronica ed elettroacustica",
+      "role": "categoria-principale",
+      "type": "ambito-musicale",
       "parent": null,
-      "decision": "categoria-storica-tecnica-autonoma"
+      "decision": "promozione-a-categoria-principale"
     },
     {
       "id": "scuola-romana",
@@ -815,11 +866,11 @@
     },
     {
       "id": "frottola-corti-italiane",
-      "label": "Frottola delle corti italiane",
-      "role": "categoria-tipizzata",
+      "label": "Frottola",
+      "role": "categoria-principale",
       "type": "genere-storico",
       "parent": null,
-      "decision": "categoria-storica-tecnica-autonoma"
+      "decision": "promozione-a-categoria-principale"
     },
     {
       "id": "tradizione-inglese-elisabettiana",
@@ -999,10 +1050,11 @@
     },
     {
       "id": "tradizione-melodie-francese",
-      "label": "Mélodie e musica da camera francese",
-      "role": "scuola-tradizione-o-movimento",
-      "type": null,
-      "parent": null
+      "label": "Tradizione della mélodie francese",
+      "role": "categoria-collegata",
+      "type": "tradizione-storica",
+      "parent": "genere-melodie-francese",
+      "decision": "contesto-storico-collegato"
     },
     {
       "id": "teatro-epico-brechtiano",
@@ -1050,11 +1102,11 @@
     },
     {
       "id": "villancico-rinascimentale-iberico",
-      "label": "Villancico profano e teatro iberico",
-      "role": "categoria-tipizzata",
+      "label": "Villancico",
+      "role": "categoria-principale",
       "type": "genere-storico",
       "parent": null,
-      "decision": "categoria-storica-tecnica-autonoma"
+      "decision": "promozione-a-categoria-principale"
     },
     {
       "id": "tastiere-italiane-primo-seicento",
@@ -1300,17 +1352,18 @@
     {
       "id": "jazz-orchestrale-big-band",
       "label": "Jazz orchestrale e big band",
-      "role": "categoria-tipizzata",
+      "role": "categoria-collegata",
       "type": "pratica-e-tradizione",
-      "parent": null,
-      "decision": "categoria-storica-tecnica-autonoma"
+      "parent": "genere-jazz",
+      "decision": "contesto-storico-collegato"
     },
     {
       "id": "teatro-musicale-broadway",
       "label": "Teatro musicale di Broadway",
-      "role": "scuola-tradizione-o-movimento",
-      "type": null,
-      "parent": null
+      "role": "categoria-collegata",
+      "type": "ambiente-teatrale-storico",
+      "parent": "genere-musical",
+      "decision": "contesto-storico-collegato"
     },
     {
       "id": "vereinigung-schaffender-tonkuenstler-1904",
@@ -2581,11 +2634,11 @@
     },
     {
       "id": "musica-per-film-novecento",
-      "label": "Musica per il cinema del Novecento",
-      "role": "categoria-tipizzata",
-      "type": "ambito-repertoriale",
+      "label": "Musica per il cinema",
+      "role": "categoria-principale",
+      "type": "ambito-musicale",
       "parent": null,
-      "decision": "categoria-storica-tecnica-autonoma"
+      "decision": "promozione-a-categoria-principale"
     },
     {
       "id": "tradizione-trovatori-occitani",
@@ -2890,6 +2943,46 @@
       "type": "famiglia-di-forme",
       "parent": "forma-variazioni",
       "decision": "nuova-voce-lessicografica"
+    },
+    {
+      "id": "genere-jazz",
+      "label": "Jazz",
+      "role": "categoria-principale",
+      "type": "genere-trasversale",
+      "parent": null,
+      "decision": "nuova-categoria-documentata"
+    },
+    {
+      "id": "genere-musical",
+      "label": "Musical",
+      "role": "categoria-principale",
+      "type": "teatro-danza",
+      "parent": null,
+      "decision": "nuova-categoria-documentata"
+    },
+    {
+      "id": "genere-ragtime",
+      "label": "Ragtime",
+      "role": "categoria-principale",
+      "type": "genere",
+      "parent": null,
+      "decision": "nuova-categoria-documentata"
+    },
+    {
+      "id": "forma-notturno",
+      "label": "Notturno",
+      "role": "categoria-principale",
+      "type": "forma-genere",
+      "parent": null,
+      "decision": "nuova-categoria-documentata"
+    },
+    {
+      "id": "genere-melodie-francese",
+      "label": "Mélodie francese",
+      "role": "categoria-principale",
+      "type": "genere-storico",
+      "parent": null,
+      "decision": "nuova-categoria-documentata"
     }
   ],
   "correction": {
@@ -2966,5 +3059,29 @@
     "links_repaired": 5,
     "kind": "permalink Treccani storie e forme",
     "node_count_unchanged": true
+  },
+  "audit_followup_phase5": {
+    "date": "2026-10-21",
+    "promoted": [
+      "frottola-corti-italiane",
+      "villancico-rinascimentale-iberico",
+      "musica-per-film-novecento",
+      "musica-elettronica"
+    ],
+    "added": [
+      "genere-jazz",
+      "genere-musical",
+      "genere-ragtime",
+      "forma-notturno",
+      "genere-melodie-francese"
+    ],
+    "contextualized": [
+      "jazz-orchestrale-big-band",
+      "teatro-musicale-broadway",
+      "tradizione-melodie-francese"
+    ],
+    "new_edges": 54,
+    "composer_labels_not_in_graph": [],
+    "policy": "Nessuna attribuzione per sola appartenenza a scuola, conservati collegamenti specialistici."
   }
 }
