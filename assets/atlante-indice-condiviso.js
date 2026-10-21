@@ -28,14 +28,14 @@ document.head.appendChild(style);
 const root=document.createElement('div');root.id='atlante-global-index';
 const btn=document.createElement('button');btn.type='button';btn.textContent='☰ Indice completo';btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-controls','agi-panel');
 const panel=document.createElement('div');panel.className='agi-panel';panel.id='agi-panel';panel.hidden=true;panel.setAttribute('role','navigation');panel.setAttribute('aria-label','Indice completo della pagina');
-const title=document.createElement('div');title.className='agi-heading';title.textContent='Indice · Capitoli e paragrafi';panel.appendChild(title);
+const title=document.createElement('div');title.className='agi-heading';title.textContent='Indice · Sezioni e paragrafi';panel.appendChild(title);
 let used=new Set([...document.querySelectorAll('[id]')].map(e=>e.id));
 const getId=(el,n)=>{if(el.id)return el.id;let inner=el.querySelector('[id]');if(inner&&inner.id)return inner.id;let id='atlante-voce-'+n;while(used.has(id))id+='-x';used.add(id);el.id=id;return id};
 const link=(el,n,label)=>{const a=document.createElement('a');a.href='#'+getId(el,n);a.textContent=label||el.textContent.trim().replace(/\s+/g,' ');a.addEventListener('click',()=>{panel.hidden=true;btn.setAttribute('aria-expanded','false');document.documentElement.style.scrollBehavior='auto'});return a};
 let current=null,subs=null,group=0;
 headings.forEach((h,i)=>{
 const level=Number(h.tagName[1]);const label=h.textContent.trim().replace(/\s+/g,' ').slice(0,145);
-if(level===2||!current){group++;current=document.createElement('details');const sum=document.createElement('summary');sum.textContent=group+' · '+label;current.appendChild(sum);current.appendChild(link(h,i+1,'Vai al capitolo ↗'));subs=document.createElement('div');subs.className='agi-sublinks';current.appendChild(subs);panel.appendChild(current)}
+if(level===2||!current){group++;current=document.createElement('details');const sum=document.createElement('summary');sum.textContent=group+' · '+label;current.appendChild(sum);current.appendChild(link(h,i+1,'Vai alla sezione ↗'));subs=document.createElement('div');subs.className='agi-sublinks';current.appendChild(subs);panel.appendChild(current)}
 else if(level===3){subs.appendChild(link(h,i+1,label))}
 else if(level===4){const a=link(h,i+1,label);a.classList.add('agi-small');subs.appendChild(a)}
 });
