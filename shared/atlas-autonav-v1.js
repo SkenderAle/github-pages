@@ -32,7 +32,14 @@
     const before=nodes.slice(0,breakAt).filter(node=>node.matches&&node.matches("a,button"));
     const after=nodes.slice(breakAt+1).filter(node=>node.matches&&node.matches("a,button"));
     chunks.push(before);
-    while(after.length)chunks.push(after.splice(0,7));
+    // Gruppi editoriali stabili: non dividere i percorsi ogni sette voci.
+    const audio=after.filter(a=>/audiotec/i.test(a.textContent||"")||/audiotec/i.test(a.getAttribute("href")||""));
+    const narrative=after.filter(a=>!audio.includes(a));
+    // Percorsi I: dal Medioevo alla musica da camera; II: percorsi trasversali, compreso il cinema.
+    const boundary=narrative.findIndex(a=>(a.getAttribute("href")||"").includes("parola-e-canto/"));
+    const first=boundary>=0?narrative.slice(0,boundary):narrative.slice(0,7);
+    const second=boundary>=0?narrative.slice(boundary):narrative.slice(7);
+    chunks.push(first,second,audio);
    }else{
     items=items.filter(node=>node.matches&&node.matches("a,button"));
     while(items.length)chunks.push(items.splice(0,8));
@@ -42,7 +49,7 @@
     group.className="atlas-group";
     const label=document.createElement("strong");
     label.className="atlas-group-title";
-    label.textContent=page==="home"?(index===0?"Il progetto":"Percorsi · "+["I","II","III"][index-1]):"Indice · "+["I","II","III","IV"][index%4];
+    label.textContent=page==="home"?(index===0?"Il progetto":index===3?"Percorsi · III · Audioteche":"Percorsi · "+["I","II"][index-1]):"Indice · "+["I","II","III","IV"][index%4];
     group.append(label,...entries);
     nav.append(group);
    });
