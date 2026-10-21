@@ -689,7 +689,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  edges=db.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>({...e,a:byId.get(e.source),b:byId.get(e.target)}));
  videos=db.videos||[];videoLinks=db.video_nodes||[];
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
- lensEdges=(lenses.relations||[]).filter(e=>e.status==="documentato"&&byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
+ lensEdges=(lenses.relations||[]).filter(e=>(typeof e.status==="string"&&e.status.startsWith("documentato"))&&byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
   const schoolLensEdges=lensEdges.filter(e=>e.group==="scuole");
   const schoolPairs=new Set(schoolLensEdges.map(e=>[e.source,e.target].sort().join("|")));
   // Un legame di scuola presente sia nel grafo storico sia nella lente documentata
@@ -1489,6 +1489,19 @@ function populate(n){
   const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
   const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=relationSentence(e,n.id);
   const p=document.createElement("p");p.textContent=e.note||"Relazione documentata.";item.append(b,kind,p);
+  // Rendere visibile anche la documentazione qualificata, senza perdere la cautela della fonte.
+  if(e.status&&e.status!=="documentato"){
+   const cautionLabels={
+    "documentato-con-cautela":"Attestazione da leggere con cautela",
+    "documentato-con-provenienza-biografica":"Testimonianza di provenienza biografica",
+    "documentato-con-cautela-attributiva":"Attribuzione storica discussa",
+    "documentato-con-cautela-testimoniale":"Episodio riportato da una testimonianza",
+    "documentato-catalograficamente":"Attestazione catalografica"
+   };
+   const qualification=document.createElement("p");qualification.className="small";
+   qualification.textContent="Qualificazione della fonte: "+(cautionLabels[e.status]||e.status.replace(/-/g," "))+".";
+   item.append(qualification);
+  }
   // Una fonte e' un vero collegamento esterno, non un pulsante che apre
   // una seconda spiegazione duplicata. Nessuna CTA se manca una fonte valida.
   const sources=[...new Set((Array.isArray(e.sources)?e.sources:[])
