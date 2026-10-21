@@ -49,7 +49,7 @@ function readingSpotlight(){
  return readingSpotlightCache;
 }
 function readingDepth(){return [1,2,3][readingLevel]}
-const activeCategories=new Set(["compositore","ambito","corrente","persona"]);
+const activeCategories=new Set(["compositore","corrente","persona"]);
 const EXPLORATION_LENSES=[
  {id:"musica",label:"Storia e appartenenze",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#9fc7d9"},
  {id:"trasmissioni",label:"Maestri, allievi e influenze",description:"Rapporti didattici e influenze documentate. La freccia indica sempre la direzione storica.",color:"#63c7ff"},
@@ -685,7 +685,7 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  // Un regista non e' un compositore: la categoria resta ontologica, anche nei rapporti con le colonne sonore.
  // Conversione in sola visualizzazione per gli eventuali record storici mal classificati.
  const cinemaDirectors=new Set(["alfred hitchcock","stanley kubrick","federico fellini","sergej ejzenstejn","sergei eisenstein","s. m. eisenstein","orson welles","luchino visconti","francois truffaut","françois truffaut","akira kurosawa","charlie chaplin","charles chaplin","bernardo bertolucci","sergio leone","david lynch","martin scorsese","steven spielberg","alfonso cuaron","alfonso cuarón","tim burton"]);
- const all=db.nodes.filter(n=>n.visible!==0&&n.visible!=="0").map(n=>{
+ const all=db.nodes.filter(n=>n.type!=="ambito"&&n.visible!==0&&n.visible!=="0").map(n=>{
   const name=String(n.label||n.name||"").toLocaleLowerCase("it").trim();
   if(n.type==="compositore"&&cinemaDirectors.has(name))
    return {...n,type:"persona",music_relevance:true,category_audit:"regista cinematografico; categoria corretta nella visualizzazione"};
@@ -795,7 +795,7 @@ function selectedNeighborIds(){
  for(const [id,d] of depth)if(d<=1)out.add(id);
  selectedNeighborCacheKey=key;selectedNeighborCache=out;return out;
 }
-function ambitoOverview(){return activeCategories.size===1&&activeCategories.has("ambito")&&(!selected||selected.type==="ambito");}
+function ambitoOverview(){return false;}
 function ambitoOverviewPoint(n){
  if(!ambitoOverview()||n.type!=="ambito")return null;
  const all=nodes.filter(x=>x.type==="ambito").sort((a,b)=>(a.label||a.id).localeCompare(b.label||b.id,"it"));
