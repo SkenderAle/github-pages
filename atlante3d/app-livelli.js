@@ -9,7 +9,7 @@ const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("
 const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel"),periodContext=document.getElementById("periodContext");
 const COLORS={compositore:"#f3bd74",persona:"#a8dcb8",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
 let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoZoomPct=0,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
-let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
+let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],derivedGenreEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
 let encyclopediaIndex={},editorialBacklinks={},historicalChapterRoutes={};
 // Questi rimandi sono contesti generali, non affermazioni di menzione individuale.
 const curatedGeneralAuthorPages=Object.freeze({"compositore-marcantonio-ingegneri":"rinascimento","persona-isabella-d-este":"rinascimento","persona-lorenzo-de-medici":"rinascimento","persona-martin-lutero":"rinascimento","compositore-giacomo-antonio-perti":"barocco","compositore-francesco-durante":"barocco","compositore-johann-christoph-bach-1671":"barocco","compositore-johann-friedrich-fasch":"barocco","persona-moliere":"barocco","persona-voltaire":"barocco","persona-giulio-strozzi":"barocco","compositore-giovanni-battista-martini":"classicismo","compositore-michael-haydn":"classicismo","compositore-pietro-nardini":"classicismo","compositore-wojciech-zywny":"romanticismo","compositore-jozef-elsner":"romanticismo","compositore-anton-reicha":"romanticismo","compositore-christian-theodor-weinlig":"romanticismo","compositore-anton-rubinstein":"romanticismo","compositore-carl-friedrich-zelter":"romanticismo","compositore-carl-czerny":"romanticismo","compositore-eduard-marxsen":"romanticismo","compositore-camillo-sivori":"romanticismo","persona-friedrich-wieck":"romanticismo","compositore-simon-sechter":"romanticismo","compositore-otto-kitzler":"romanticismo","compositore-george-whitefield-chadwick":"romanticismo","compositore-horatio-parker":"romanticismo","persona-johann-wolfgang-von-goethe":"romanticismo","compositore-fromental-halevy":"romanticismo","compositore-engelbert-humperdinck":"romanticismo","compositore-gennaro-manna":"melodramma","persona-ranieri-de-calzabigi":"melodramma","persona-angelo-tesei":"melodramma","compositore-amilcare-ponchielli":"melodramma","compositore-lauro-rossi":"melodramma","persona-giovanni-faustini":"melodramma","persona-felice-romani":"melodramma","persona-giulio-ricordi":"melodramma","persona-salvatore-cammarano":"melodramma","persona-hugo-von-hofmannsthal":"melodramma","persona-peter-pears":"melodramma","persona-wh-auden":"melodramma","persona-myfanwy-piper":"melodramma","persona-eric-crozier":"melodramma","persona-em-forster":"melodramma","persona-montagu-slater":"melodramma","persona-alice-goodman":"melodramma","persona-guido-menasci":"melodramma","persona-giovanni-targioni-tozzetti":"melodramma","persona-henri-meilhac":"melodramma","persona-ludovic-halevy":"melodramma","persona-ivan-turgenev":"melodramma","persona-adelheid-wette":"melodramma","persona-louis-anseaume":"melodramma","persona-giuseppe-maria-foppa":"melodramma","persona-francesco-saverio-zini":"melodramma","persona-chester-kallman":"melodramma","compositore-nadia-boulanger":"post-romanticismo","compositore-rubin-goldmark":"post-romanticismo","compositore-fritz-reiner":"post-romanticismo","compositore-billy-strayhorn":"post-romanticismo","compositore-charles-hambitzer":"post-romanticismo","compositore-anatolij-ljadov":"post-romanticismo","compositore-maksimilian-steinberg":"post-romanticismo","compositore-charles-koechlin":"post-romanticismo","compositore-rene-leibowitz":"post-romanticismo","compositore-andre-gedalge":"post-romanticismo","compositore-henry-cowell":"post-romanticismo","compositore-walter-klein":"post-romanticismo","persona-andree-vaurabourg":"post-romanticismo","persona-ricardo-vines":"post-romanticismo","persona-cathy-berberian":"post-romanticismo","persona-sergej-diaghilev":"post-romanticismo","compositore-frank-bridge":"post-romanticismo","persona-merce-cunningham":"post-romanticismo","persona-david-tudor":"post-romanticismo","persona-martha-graham":"post-romanticismo","persona-dorothee-guenther":"post-romanticismo","persona-le-corbusier":"post-romanticismo","compositore-iannis-xenakis":"post-romanticismo","persona-marian-anderson":"post-romanticismo","persona-jean-cocteau":"post-romanticismo","persona-pablo-picasso":"post-romanticismo","persona-leonide-massine":"post-romanticismo","compositore-margaret-bonds":"post-romanticismo","persona-katherine-dunham":"post-romanticismo","compositore-juan-tizol":"post-romanticismo","persona-ugo-piatti":"post-romanticismo","persona-sergej-ejzenstejn":"post-romanticismo","persona-langston-hughes":"post-romanticismo","persona-bertolt-brecht":"post-romanticismo","persona-bronislava-nijinska":"post-romanticismo","persona-marian-zazeela":"post-romanticismo","persona-paul-whiteman":"post-romanticismo","persona-peter-greenaway":"dal-musical-al-film","persona-ira-gershwin":"dal-musical-al-film","persona-dubose-heyward":"dal-musical-al-film","persona-sergio-leone":"dal-musical-al-film","persona-giuseppe-tornatore":"dal-musical-al-film","persona-jane-campion":"dal-musical-al-film","persona-arthur-laurents":"dal-musical-al-film","persona-jerome-robbins":"dal-musical-al-film","compositore-ferde-grofe":"dal-musical-al-film","compositore-stephen-sondheim":"dal-musical-al-film","persona-james-lapine":"dal-musical-al-film","persona-oscar-hammerstein-ii":"dal-musical-al-film","persona-giuseppe-bertoldi":"risorgimento","compositore-sergej-taneev":"concerti"});
@@ -68,12 +68,17 @@ const RELATION_STYLE={
  genealogie:{from:"#b98cff",to:"#f39bff",arrow:true,label:"genealogia → sviluppo"},
  scuole:{from:"#73d7c4",to:"#d1f3d8",arrow:true,label:"tradizione → autore"},
  collaborazioni:{from:"#72dea2",to:"#72dea2",arrow:false,label:"collaborazione ↔"},
- storia:{from:"#9db7ca",to:"#d7e1e8",arrow:false,label:"relazione storica"}
+ storia:{from:"#9db7ca",to:"#d7e1e8",arrow:false,label:"relazione storica"},
+ tassonomia:{from:"#dba66c",to:"#dca0aa",arrow:false,label:"famiglia attraverso articolazione"}
 };
 function relationStyle(e){return RELATION_STYLE[e.group]||RELATION_STYLE.storia;}
 // Le relazioni documentate hanno DUE verbi: ciascuno e' riferito a un soggetto preciso.
 // Per le relazioni storiche generiche non si inferiscono maestro, allievo o causalita'.
 function relationSentenceBase(e,perspectiveId=null){
+ if(e.taxonomyDerived){
+  const author=byId.get(e.source),family=byId.get(e.target);
+  return (author?.label||e.source)+" si collega a «"+(family?.label||e.target)+"» attraverso "+e.via_labels.join(", ")+". È una risalita tassonomica, non un nuovo arco diretto del database.";
+ }
  const a=e.a?.label||byId.get(e.source)?.label||e.source;
  const b=e.b?.label||byId.get(e.target)?.label||e.target;
  const reversed=perspectiveId!=null&&perspectiveId===e.target;
@@ -690,6 +695,8 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
   // Un legame di scuola presente sia nel grafo storico sia nella lente documentata
   // viene disegnato una sola volta. Prevale la relazione specialistica con fonti e verbi direzionali.
   historySchoolEdges=[...edges.filter(e=>!schoolPairs.has([e.source,e.target].sort().join("|"))),...schoolLensEdges];
+ // Solo visibilità: raccordi ricostruiti da specializzazioni già documentate; nessun nuovo arco persistente.
+ derivedGenreEdges=compileDerivedGenreEdges();
  geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();selectedDepthCacheKey="";selectedDepthCache=new Map();
  freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
  const composerCount=nodes.filter(n=>n.type==="compositore").length;
@@ -707,7 +714,7 @@ function physics(){
 function activeLensKey(){return [...activeLenses].sort().join("|");}
 function currentEdges(){
  const key=activeLensKey();if(key===activeEdgesCacheKey)return activeEdgesCache;
- const all=[];if(activeLenses.has("musica"))all.push(...historySchoolEdges);
+ const all=[];if(activeLenses.has("musica"))all.push(...historySchoolEdges,...derivedGenreEdges);
  for(const id of activeLenses)if(id!=="musica")all.push(...displayRelations(id));
  activeEdgesCacheKey=key;activeEdgesCache=dedupeEdges(all);selectedNeighborCacheKey="";selectedDepthCacheKey="";return activeEdgesCache;
 }
@@ -980,7 +987,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
   const bend=Math.min(34,Math.hypot(b.x-a.x,b.y-a.y)*.075);
   const cx=(a.x+b.x)*.5+bend*.32,cy=(a.y+b.y)*.5-bend;
   ctx.beginPath();ctx.moveTo(a.x,a.y);
-  if(!contextEdge&&e.group==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind||""))ctx.setLineDash([6,5]);
+  if(!contextEdge&&(e.taxonomyDerived||e.group==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind||"")))ctx.setLineDash(e.taxonomyDerived?[3,5]:[6,5]);
   ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
   if(!contextEdge&&(!selected||direct||edgeDepth<=2))lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
   if(style.arrow&&!contextEdge){
@@ -1051,6 +1058,29 @@ function mainGenreAncestor(n){
   seen.add(parent.id);here=parent;
  }
  return null;
+}
+// Un raccordo alla famiglia emerge da una specializzazione esistente; resta distinto dagli archi documentari.
+function compileDerivedGenreEdges(){
+ const direct=new Set(),links=new Map();
+ for(const e of edges){
+  const author=byId.get(e.source)?.type==="compositore"?byId.get(e.source):byId.get(e.target)?.type==="compositore"?byId.get(e.target):null;
+  if(!author)continue;
+  const other=byId.get(e.source===author.id?e.target:e.source);
+  if(other?.type==="corrente"&&other.taxonomy?.visibility==="principale")direct.add(author.id+"|"+other.id);
+ }
+ for(const e of edges){
+  const author=byId.get(e.source)?.type==="compositore"?byId.get(e.source):byId.get(e.target)?.type==="compositore"?byId.get(e.target):null;
+  if(!author)continue;
+  const child=byId.get(e.source===author.id?e.target:e.source),parent=mainGenreAncestor(child);
+  if(!parent||direct.has(author.id+"|"+parent.id))continue;
+  const key=author.id+"|"+parent.id;
+  if(!links.has(key))links.set(key,{id:"taxonomia:"+key,source:author.id,target:parent.id,group:"tassonomia",
+   kind:"accesso-indiretto-alla-famiglia",taxonomyDerived:true,weight:.55,via_labels:[],sources:[]});
+  const row=links.get(key);
+  if(!row.via_labels.includes(child.label))row.via_labels.push(child.label);
+  for(const url of e.sources||[])if(typeof url==="string"&&url.startsWith("https://")&&!row.sources.includes(url))row.sources.push(url);
+ }
+ return [...links.values()].map(e=>({...e,note:"Raccordo di consultazione attraverso "+e.via_labels.join(", ")+". Non corrisponde a un secondo arco documentario.",a:byId.get(e.source),b:byId.get(e.target)}));
 }
 function isTranshistoricalMusicalCategory(n){
  return Boolean(n?.type==="corrente"&&TRANSVERSAL_MUSICAL_CLASSES.has(n.taxonomy?.class));
@@ -1133,11 +1163,11 @@ function updateLensCounts(n){
  lensChoices?.querySelectorAll("input[data-lens]").forEach(input=>{
   const countEl=input.closest("label")?.querySelector(".lens-count");
   if(!countEl)return;
-  const list=input.value==="musica"?historySchoolEdges:displayRelations(input.value);
+  const list=input.value==="musica"?[...historySchoolEdges,...derivedGenreEdges]:displayRelations(input.value);
   const count=list.filter(e=>e.source===n.id||e.target===n.id).length;
   countEl.textContent=String(count);
   countEl.hidden=false;
-  countEl.title=count===1?"1 collegamento diretto":count+" collegamenti diretti";
+  countEl.title=(count===1?"1 collegamento consultabile":count+" collegamenti consultabili")+(input.value==="musica"?" (compresi raccordi tassonomici tratteggiati)":"");
  });
 }
 function clearLensCounts(){
@@ -1452,7 +1482,7 @@ function populate(n){
  updateLensCounts(n);
  const box=document.createElement("section");box.className="lens-relations";
  const head=document.createElement("h3");head.textContent="Relazioni musicali e personali · "+conn.length+" ("+readingSpotlight().size+" evidenziate)";box.append(head);
- const readingNote=document.createElement("p");readingNote.className="small reading-note";readingNote.textContent="La profondità scelta sulla mappa cambia soltanto quali collegamenti risaltano: tutte le relazioni dirette filtrate restano visibili.";box.append(readingNote);
+ const readingNote=document.createElement("p");readingNote.className="small reading-note";readingNote.textContent="La profondità cambia i collegamenti in risalto: gli archi tratteggiati verso le famiglie sono raccordi tassonomici, non nuove relazioni dirette del database.";box.append(readingNote);
  if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessuna relazione personale documentata e visibile con le lenti attive. Le appartenenze storiche e i rimandi alle opere sono mostrati separatamente.";box.append(p);}
  for(const {e,n:other} of conn){
   const item=document.createElement("article");item.className="lens-relation-item";
@@ -1779,7 +1809,7 @@ function applyReadingLevel(value){
  selectedNeighborCacheKey="";selectedDepthCacheKey="";
  clearExplodeLayout();resetAutoLayout();
  if(selected){fitGeoNetwork(selected);populate(selected);
-  status.textContent=selected.label+" · "+readingNames[readingLevel]+" · "+readingAllowed().size+" collegamenti diretti, "+readingSpotlight().size+" evidenziati";
+  status.textContent=selected.label+" · "+readingNames[readingLevel]+" · "+readingAllowed().size+" collegamenti consultabili, "+readingSpotlight().size+" evidenziati";
  }
 }
 readingControl?.addEventListener("change",e=>applyReadingLevel(e.target.value));
