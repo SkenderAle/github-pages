@@ -699,7 +699,16 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  edges=db.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>({...e,a:byId.get(e.source),b:byId.get(e.target)}));
  videos=db.videos||[];videoLinks=db.video_nodes||[];
  const lenses=db.lenses||{};lensGroups=lenses.groups||[];
- lensEdges=(lenses.relations||[]).filter(e=>(typeof e.status==="string"&&e.status.startsWith("documentato"))&&byId.has(e.source)&&byId.has(e.target)&&e.sources?.length).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
+ const auditLensExclusions={missingNode:0,missingSources:0,notDocumented:0};
+ lensEdges=(lenses.relations||[]).filter(e=>{
+  if(!(typeof e.status==="string"&&e.status.startsWith("documentato"))){auditLensExclusions.notDocumented++;return false;}
+  if(!byId.has(e.source)||!byId.has(e.target)){auditLensExclusions.missingNode++;return false;}
+  if(!e.sources?.length){auditLensExclusions.missingSources++;return false;}
+  return true;
+ }).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
+ if(auditLensExclusions.missingNode||auditLensExclusions.missingSources){
+  console.warn("[Musurgia Mundi] Relazioni specialistiche escluse dalla visualizzazione",auditLensExclusions);
+ }
   const schoolLensEdges=lensEdges.filter(e=>e.group==="scuole");
   const schoolPairs=new Set(schoolLensEdges.map(e=>[e.source,e.target].sort().join("|")));
   // Un legame di scuola presente sia nel grafo storico sia nella lente documentata
