@@ -795,8 +795,19 @@ function selectedNeighborIds(){
  for(const [id,d] of depth)if(d<=1)out.add(id);
  selectedNeighborCacheKey=key;selectedNeighborCache=out;return out;
 }
+function ambitoOverview(){return activeCategories.size===1&&activeCategories.has("ambito")&&(!selected||selected.type==="ambito");}
+function ambitoOverviewPoint(n){
+ if(!ambitoOverview()||n.type!=="ambito")return null;
+ const all=nodes.filter(x=>x.type==="ambito").sort((a,b)=>(a.label||a.id).localeCompare(b.label||b.id,"it"));
+ const i=all.findIndex(x=>x.id===n.id);if(i<0)return null;
+ const stage=graphStage(),angle=-Math.PI/2+2*Math.PI*i/all.length;
+ const radius=Math.min((stage.right-stage.left)*.31,(stage.bottom-stage.top)*.32);
+ return {x:stage.cx+Math.cos(angle)*radius,y:stage.cy+Math.sin(angle)*radius,depth:0,scale:1,r:15,geo:false,context:true};
+}
 function visibleNode(n){
  if(!nodeEligibleForDepth(n))return false;
+ // Il filtro esclusivo Ambiti mostra il catalogo completo, anche con un nodo selezionato.
+ if(ambitoOverview()&&n.type==="ambito")return true;
  // Senza geografia documentata nessuna proiezione libera sopra o sotto la cartografia.
  // Le figure concettuali emergono soltanto attorno a un nodo geografico selezionato.
  if(!selected)return !!geoFromNode(n);
@@ -964,7 +975,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
  const composerBase=spanForSize>=260?4.2:spanForSize>=150?5.2:spanForSize>=80?6.8:spanForSize>=35?8.8:11;
  const contextBase=spanForSize>=260?5.2:spanForSize>=150?6.2:spanForSize>=80?8:spanForSize>=35?10.5:14;
  screen=nodes.map(n=>{
-  let p=selected&&!geoFromNode(selected)?(contextScreenPoint(n,true)||geoScreenPoint(n,true)||sxworld(n)):(geoScreenPoint(n,true)||contextScreenPoint(n,true)||sxworld(n));p.node=n;
+  let p=ambitoOverviewPoint(n)||(selected&&!geoFromNode(selected)?(contextScreenPoint(n,true)||geoScreenPoint(n,true)||sxworld(n)):(geoScreenPoint(n,true)||contextScreenPoint(n,true)||sxworld(n)));p.node=n;
   const base=(n.type==="compositore"||n.type==="persona")?composerBase:contextBase;
   p.r=clamp(base*(n===selected?1.55:1),3.8,25);
   return p;
