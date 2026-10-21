@@ -2,7 +2,7 @@
   "project": "Musurgia Mundi — La costellazione Musica",
   "title": "Audit di copertura compositori / famiglie musicali — 21 ottobre 2026",
   "branch": "main",
-  "based_on_commit": "976c6adbbae2370f94fdc5db6e544c9807013d74",
+  "based_on_commit": "23b1e3ed1fb8e8e9b27c45232b837263e2d9bfd8",
   "scope": "Tutti i compositori del grafo; nessuna famiglia automaticamente dedotta da scuole o istituzioni.",
   "method": {
     "direct": "arco fra compositore e categoria principale",
@@ -24,10 +24,10 @@
   "counts": {
     "composers": 393,
     "main_categories": 37,
-    "direct": 369,
+    "direct": 371,
     "indirect_only": 15,
-    "other_specialties_only": 6,
-    "no_genre_category": 3,
+    "other_specialties_only": 5,
+    "no_genre_category": 2,
     "no_main_graph_edges": 0,
     "no_any_documented_edges": 0
   },
@@ -4720,11 +4720,15 @@
     {
       "id": "compositore-otto-kitzler",
       "composer": "Otto Kitzler",
-      "status": "senza-genere-o-forma",
-      "direct_main": [],
+      "status": "diretto",
+      "direct_main": [
+        "genere-lied",
+        "genere-musica-da-camera",
+        "poema-sinfonico-ottocentesco"
+      ],
       "main_via_specialization": [],
       "other_existing_nodes": [],
-      "main_graph_edges": 1,
+      "main_graph_edges": 4,
       "documented_lens_relations": 3,
       "review": "Copertura del repertorio censito, non certificazione della completezza del catalogo d'autore."
     },
@@ -4819,13 +4823,18 @@
     {
       "id": "compositore-walter-klein",
       "composer": "Walter Klein",
-      "status": "solo-altre-pratiche-o-scuole",
-      "direct_main": [],
+      "status": "diretto",
+      "direct_main": [
+        "genere-lied",
+        "genere-musica-da-camera",
+        "genere-quartetto-archi",
+        "genere-sonata"
+      ],
       "main_via_specialization": [],
       "other_existing_nodes": [
         "dodecafonia"
       ],
-      "main_graph_edges": 1,
+      "main_graph_edges": 5,
       "documented_lens_relations": 1,
       "review": "Copertura del repertorio censito, non certificazione della completezza del catalogo d'autore."
     },
@@ -6526,7 +6535,7 @@
       "Rosario Scalero"
     ]
   },
-  "refreshed_at_head": "976c6adbbae2370f94fdc5db6e544c9807013d74",
+  "refreshed_at_head": "23b1e3ed1fb8e8e9b27c45232b837263e2d9bfd8",
   "baseline_before_oct21_completion_counts": {
     "composers": 393,
     "main_categories": 37,
@@ -6539,17 +6548,16 @@
   },
   "followup_reconciliation_20261021": {
     "date": "2026-10-21",
-    "graph_head": "976c6adbbae2370f94fdc5db6e544c9807013d74",
+    "graph_head": "23b1e3ed1fb8e8e9b27c45232b837263e2d9bfd8",
     "composer_total": 393,
     "categories": 37,
-    "direct_composers": 369,
+    "direct_composers": 371,
     "indirect_only": 15,
-    "other_only": 6,
-    "without_any_current": 3,
+    "other_only": 5,
+    "without_any_current": 2,
     "remaining_composers": [
       "Fritz Reiner",
-      "Johann Christoph Bach (1671–1721)",
-      "Otto Kitzler"
+      "Johann Christoph Bach (1671–1721)"
     ],
     "new_edges_in_final_phase": 21,
     "sources_method": "Gli archi diretti e il numero degli archi nel grafo sono stati ricalcolati sulle connessioni reali; le articolazioni e pratiche residuali conservano la classificazione filologica precedente. Un collegamento di repertorio non è dedotto da un rapporto maestro-allievo.",
@@ -6715,7 +6723,7 @@
         ]
       }
     ],
-    "analysis": "Classificazione aggiornata sul grafo reale: 368 direttamente collegati a famiglie, 15 attraverso specializzazioni, 7 attraverso pratiche/scuole, 3 senza genere ma con raccordi contestuali. Nessun autore privo di archi nel grafo principale."
+    "analysis": "Completamento di Otto Kitzler e Walter Klein con repertori specifici attestati dai dizionari di musicologia; Johann Christoph Bach (1671) rimane separato dall'omonimo (1642)."
   },
   "audit_other_practices_20261021": {
     "date": "2026-10-21",
@@ -7068,5 +7076,27 @@
       "basis": "Paris BnF fr.25566 via DIAMM; Treccani Trovieri e minnesänger",
       "proviso": "Non equiparare il teatro musicale medievale all'opera lirica."
     }
+  },
+  "audit_reserves_second_pass_20261021": {
+    "date": "2026-10-21",
+    "graph_head": "23b1e3ed1fb8e8e9b27c45232b837263e2d9bfd8",
+    "reviewed": 9,
+    "linked": [
+      "Otto Kitzler",
+      "Walter Klein"
+    ],
+    "new_genre_edges": 7,
+    "remaining_without_genre": [
+      "Fritz Reiner",
+      "Johann Christoph Bach (1671–1721)"
+    ],
+    "remaining_only_specialties": [
+      "Hildegard von Bingen",
+      "Luigi Russolo",
+      "Jean Bretel",
+      "Bernart de Ventadorn",
+      "Comtessa de Dia"
+    ],
+    "identity_resolution": "GND di Johann Christoph Bach (1671–1721) 123526566, distinto dal 1642–1703 120327112; nessun repertorio ambiguo attribuito per automatismo."
   }
 }
