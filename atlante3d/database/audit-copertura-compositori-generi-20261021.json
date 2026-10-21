@@ -2,7 +2,7 @@
   "project": "Musurgia Mundi — La costellazione Musica",
   "title": "Audit di copertura compositori / famiglie musicali — 21 ottobre 2026",
   "branch": "main",
-  "based_on_commit": "4267f990f5733c4b0d5279d8262149498e70d666",
+  "based_on_commit": "976c6adbbae2370f94fdc5db6e544c9807013d74",
   "scope": "Tutti i compositori del grafo; nessuna famiglia automaticamente dedotta da scuole o istituzioni.",
   "method": {
     "direct": "arco fra compositore e categoria principale",
@@ -24,9 +24,9 @@
   "counts": {
     "composers": 393,
     "main_categories": 37,
-    "direct": 368,
+    "direct": 369,
     "indirect_only": 15,
-    "other_specialties_only": 7,
+    "other_specialties_only": 6,
     "no_genre_category": 3,
     "no_main_graph_edges": 0,
     "no_any_documented_edges": 0
@@ -328,14 +328,17 @@
     {
       "id": "compositore-adam-de-la-halle",
       "composer": "Adam de la Halle",
-      "status": "solo-altre-pratiche-o-scuole",
-      "direct_main": [],
+      "status": "diretto",
+      "direct_main": [
+        "genere-mottetto",
+        "polifonia"
+      ],
       "main_via_specialization": [],
       "other_existing_nodes": [
         "jeu-parti-arras-duecento",
         "tradizione-trovieri-francia"
       ],
-      "main_graph_edges": 4,
+      "main_graph_edges": 6,
       "documented_lens_relations": 3,
       "review": "Copertura del repertorio censito, non certificazione della completezza del catalogo d'autore."
     },
@@ -6523,7 +6526,7 @@
       "Rosario Scalero"
     ]
   },
-  "refreshed_at_head": "4267f990f5733c4b0d5279d8262149498e70d666",
+  "refreshed_at_head": "976c6adbbae2370f94fdc5db6e544c9807013d74",
   "baseline_before_oct21_completion_counts": {
     "composers": 393,
     "main_categories": 37,
@@ -6536,12 +6539,12 @@
   },
   "followup_reconciliation_20261021": {
     "date": "2026-10-21",
-    "graph_head": "4267f990f5733c4b0d5279d8262149498e70d666",
+    "graph_head": "976c6adbbae2370f94fdc5db6e544c9807013d74",
     "composer_total": 393,
     "categories": 37,
-    "direct_composers": 368,
+    "direct_composers": 369,
     "indirect_only": 15,
-    "other_only": 7,
+    "other_only": 6,
     "without_any_current": 3,
     "remaining_composers": [
       "Fritz Reiner",
@@ -6727,14 +6730,6 @@
         "specialties": [
           "dramma-musicale-allegorico-medievale",
           "monodia-sacra-medievale"
-        ]
-      },
-      {
-        "id": "compositore-adam-de-la-halle",
-        "name": "Adam de la Halle",
-        "specialties": [
-          "jeu-parti-arras-duecento",
-          "tradizione-trovieri-francia"
         ]
       },
       {
@@ -7062,6 +7057,16 @@
       "Luigi Russolo: gli intonarumori appartengono alla ricerca acustica del rumore futurista, non automaticamente alla musica elettronica.",
       "Walter Klein: repertorio di composizioni individuali non documentato a sufficienza per introdurre un genere."
     ],
-    "methodology": "La categoria principale è associata solo ad attestazioni di opere o repertori, con note e fonti individuali sugli archi. L'appartenenza a scuola, un procedimento tecnico o la funzione didattica non fanno inferire la pratica di un genere."
+    "methodology": "La categoria principale è associata solo ad attestazioni di opere o repertori, con note e fonti individuali sugli archi. L'appartenenza a scuola, un procedimento tecnico o la funzione didattica non fanno inferire la pratica di un genere.",
+    "medieval_revision": {
+      "graph_commit": "976c6adbbae2370f94fdc5db6e544c9807013d74",
+      "composer": "Adam de la Halle",
+      "categories": [
+        "genere-mottetto",
+        "polifonia"
+      ],
+      "basis": "Paris BnF fr.25566 via DIAMM; Treccani Trovieri e minnesänger",
+      "proviso": "Non equiparare il teatro musicale medievale all'opera lirica."
+    }
   }
 }
