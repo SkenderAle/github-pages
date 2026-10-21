@@ -1015,7 +1015,7 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
   }
   const isLabel=Boolean(
    selected
-    ? (showAllLabels||n===selected||n===hover||(neighbors.has(n.id)&&(readingLevel===2||spotlightNodes.has(n.id)))||(searchText.length>1&&matchesSearch(n,searchText)))
+    ? (showAllLabels||n===selected||n===hover||(neighbors.has(n.id)&&(readingLevel===2||spotlightNodes.has(n.id)||(selected?.type==="compositore"&&(n.type==="corrente"||n.type==="ambito"))))||(searchText.length>1&&matchesSearch(n,searchText)))
     : (showAllLabels||highlight||n.type==="periodo")
   );
   if(isLabel){
@@ -1170,6 +1170,30 @@ function populate(n){
     b.addEventListener("click",()=>focusOn(child,true));area.append(b);
    }
    dst.append(area);
+  }
+ }
+ // Accesso esplicito a tutti gli autori del genere, anche quando la mappa mostra
+ // soltanto le etichette principali per non sovrapporre decine di nomi.
+ if(n.type==="corrente"&&n.taxonomy?.visibility==="principale"){
+  const authorIds=new Set();
+  for(const edge of edges){
+   if(edge.source===n.id&&byId.get(edge.target)?.type==="compositore")authorIds.add(edge.target);
+   if(edge.target===n.id&&byId.get(edge.source)?.type==="compositore")authorIds.add(edge.source);
+  }
+  const authors=[...authorIds].map(id=>byId.get(id)).filter(Boolean)
+   .sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(authors.length){
+   const details=document.createElement("details");details.className="related-list";details.open=authors.length<=10;
+   const sum=document.createElement("summary");sum.textContent="Compositori direttamente collegati · "+authors.length;details.append(sum);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Autori con un collegamento diretto a questa categoria. Le attribuzioni presenti soltanto nelle articolazioni rimangono distinte.";
+   details.append(note);
+   const ul=document.createElement("ul");
+   for(const author of authors){
+    const li=document.createElement("li"),button=document.createElement("button");button.type="button";
+    button.textContent=author.label+" ↗";button.addEventListener("click",()=>focusOn(author,true));li.append(button);ul.append(li);
+   }
+   details.append(ul);dst.append(details);
   }
  }
  // Archivio delle opere: consultabile dalla carta del compositore senza moltiplicare le bolle.
