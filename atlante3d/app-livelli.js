@@ -1034,6 +1034,24 @@ function linked(n){return currentEdges().filter(e=>e.source===n.id||e.target===n
 // documentano sviluppi, non un'appartenenza cronologica esclusiva.
 // Le correnti storicamente specifiche (es. concerto grosso barocco) restano distinte.
 const TRANSVERSAL_MUSICAL_CLASSES=new Set(["genere-trasversale","genere","ambito-musicale","forma","forma-tecnica","forma-genere","teatro-danza","tecnica-trasversale","famiglia-di-forme"]);
+
+// Ricostruisce il raccordo alle famiglie senza falsificare gli archi diretti.
+// Le imprese teatrali, le scuole e i contesti biografici non trasmettono da soli
+// un'appartenenza di genere al compositore.
+const GENRE_CONTEXT_NOT_INHERITED=new Set(["impresa-teatrale-storica","riforma-storico-teatrale","ambiente-storico-musicale","ambiente-di-corte","contesto-teatrale-vocale","teoria-acustica","tecnologia-di-diffusione","caso-tecnico-biografico","ricerca-etnomusicologica"]);
+function mainGenreAncestor(n){
+ if(!n||n.type!=="corrente"||n.taxonomy?.presentation==="scheda"||n.work_archive||n.document_archive)return null;
+ const seen=new Set([n.id]);
+ let here=n;
+ while(here?.taxonomy?.parent){
+  if(GENRE_CONTEXT_NOT_INHERITED.has(here.taxonomy.class))return null;
+  const parent=byId.get(here.taxonomy.parent);
+  if(!parent||seen.has(parent.id))return null;
+  if(parent.type==="corrente"&&parent.taxonomy?.visibility==="principale")return parent;
+  seen.add(parent.id);here=parent;
+ }
+ return null;
+}
 function isTranshistoricalMusicalCategory(n){
  return Boolean(n?.type==="corrente"&&TRANSVERSAL_MUSICAL_CLASSES.has(n.taxonomy?.class));
 }
@@ -1196,6 +1214,37 @@ function populate(n){
    details.append(ul);dst.append(details);
   }
  }
+  // Autori testimoniati attraverso sottogeneri, non attribuzioni dirette aggiunte.
+  if(n.type==="corrente"&&n.taxonomy?.visibility==="principale"){
+   const direct=new Set();
+   for(const edge of edges){
+    if(edge.source===n.id&&byId.get(edge.target)?.type==="compositore")direct.add(edge.target);
+    if(edge.target===n.id&&byId.get(edge.source)?.type==="compositore")direct.add(edge.source);
+   }
+   const indirect=new Map();
+   for(const edge of edges){
+    const author=byId.get(edge.source)?.type==="compositore"?byId.get(edge.source):byId.get(edge.target)?.type==="compositore"?byId.get(edge.target):null;
+    if(!author||direct.has(author.id))continue;
+    const child=byId.get(edge.source===author.id?edge.target:edge.source);
+    if(mainGenreAncestor(child)?.id!==n.id)continue;
+    if(!indirect.has(author.id))indirect.set(author.id,{author,via:new Set()});
+    indirect.get(author.id).via.add(child.label);
+   }
+   const list=[...indirect.values()].sort((a,b)=>a.author.label.localeCompare(b.author.label,"it"));
+   if(list.length){
+    const details=document.createElement("details");details.className="related-list";details.open=list.length<=8;
+    const title=document.createElement("summary");title.textContent="Altri compositori nelle articolazioni · "+list.length;details.append(title);
+    const note=document.createElement("p");note.className="small";note.textContent="Autori attestati solo attraverso un sottogenere o una tradizione; il collegamento alla categoria generale è indirettamente ricostruibile, non un nuovo arco diretto.";details.append(note);
+    const ul=document.createElement("ul");
+    for(const item of list){
+     const li=document.createElement("li"),btn=document.createElement("button");btn.type="button";
+     btn.textContent=item.author.label+" ↗";btn.addEventListener("click",()=>focusOn(item.author,true));
+     const p=document.createElement("span");p.textContent=" · attraverso "+[...item.via].join(", ");
+     li.append(btn,p);ul.append(li);
+    }
+    details.append(ul);dst.append(details);
+   }
+  }
  // Archivio delle opere: consultabile dalla carta del compositore senza moltiplicare le bolle.
  if(n.type==="compositore"){
   const works=nodes.filter(w=>w.work_archive?.composer_id===n.id)
@@ -1225,6 +1274,42 @@ function populate(n){
     const btn=document.createElement("button");btn.type="button";
     btn.textContent=doc.label+" · "+(roles[contact.role]||contact.role)+" ↗";
     btn.addEventListener("click",()=>focusOn(doc,true));area.append(btn);
+   }
+   dst.append(area);
+  }
+ }
+ // Generi e forme dell'autore: distinte le attestazioni esplicite dalle risalite.
+ if(n.type==="compositore"){
+  const direct=new Map(),indirect=new Map();
+  for(const edge of edges){
+   if(edge.source!==n.id&&edge.target!==n.id)continue;
+   const cat=byId.get(edge.source===n.id?edge.target:edge.source);
+   if(cat?.type!=="corrente"||cat.work_archive||cat.document_archive)continue;
+   if(cat.taxonomy?.visibility==="principale")direct.set(cat.id,cat);
+   else{
+    const main=mainGenreAncestor(cat);
+    if(main){
+     if(!indirect.has(main.id))indirect.set(main.id,{node:main,via:new Set()});
+     indirect.get(main.id).via.add(cat.label);
+    }
+   }
+  }
+  for(const id of direct.keys())indirect.delete(id);
+  if(direct.size||indirect.size){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const h=document.createElement("h3");h.textContent="Generi, forme e ambiti attestati";area.append(h);
+   const p=document.createElement("p");p.className="small";p.textContent="Voci con collegamento diretto e, separatamente, categorie generali raggiungibili attraverso una specificazione storica. Non si deducono generi da rapporti personali o istituzionali.";area.append(p);
+   if(direct.size){
+    const h2=document.createElement("h4");h2.textContent="Collegamenti diretti · "+direct.size;area.append(h2);
+    for(const node of [...direct.values()].sort((a,b)=>a.label.localeCompare(b.label,"it"))){
+     const b=document.createElement("button");b.type="button";b.textContent=node.label+" ↗";b.addEventListener("click",()=>focusOn(node,true));area.append(b);
+    }
+   }
+   if(indirect.size){
+    const h2=document.createElement("h4");h2.textContent="Tramite articolazioni · "+indirect.size;area.append(h2);
+    for(const item of [...indirect.values()].sort((a,b)=>a.node.label.localeCompare(b.node.label,"it"))){
+     const b=document.createElement("button");b.type="button";b.textContent=item.node.label+" (tramite "+[...item.via].join(", ")+") ↗";b.addEventListener("click",()=>focusOn(item.node,true));area.append(b);
+    }
    }
    dst.append(area);
   }
