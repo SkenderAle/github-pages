@@ -1,6 +1,6 @@
 /* Atlante — indice gerarchico condiviso, accessibile e senza scrolling animato. */
 (()=>{
-if(document.getElementById('atlante-global-index'))return;
+if(document.getElementById('atlante-global-index')||document.querySelector('.atlas-autonav'))return;
 const all=[...document.querySelectorAll('main h2, main h3, main h4, article h2, article h3, article h4')];
 const headings=[...new Set(all)].filter(el=>!el.closest('nav,aside,footer,[hidden],[aria-hidden="true"],.menu-panel,.index-cards,.index-grid,.quiz,.exercise,.attivita-facoltativa,.learning-check-card')&&el.textContent.trim().length>3&&el.getClientRects().length>0);
 if(headings.length<3)return;
