@@ -1,0 +1,71 @@
+/* Musurgia Mundi — inserti editoriali a due o tre colonne, ispirati al Barocco.
+   Solo fonti collegate a paragrafi precisi; nessun iframe o autoplay. */
+.mm-doc-section{
+  clear:both;
+  margin:1.8rem 0 2.5rem;
+  padding:1.1rem 1.15rem 1.25rem;
+  border:1px solid var(--line,#cec0ad);
+  background:#f6f0e7;
+  color:#29231e;
+  box-shadow:0 8px 24px rgba(36,26,20,.06);
+}
+.mm-doc-section > .mm-doc-heading{
+  margin:0 0 .35rem;
+  font:800 .77rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.095em;
+  color:#765035;
+}
+.mm-doc-section > .mm-doc-intro{
+  margin:.3rem 0 1rem;
+  font:400 .93rem/1.62 Georgia,"Times New Roman",serif;
+  color:#4f453b;
+}
+.mm-doc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
+  gap:.8rem;
+}
+.mm-doc-grid.mm-doc-grid--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mm-doc-card{
+  display:flex;
+  flex-direction:column;
+  gap:.4rem;
+  min-width:0;
+  padding:1.05rem 1.05rem 1rem;
+  border:1px solid #d3c2ac;
+  border-top:3px solid #957349;
+  background:#fffcf6;
+  color:#33291f!important;
+  text-decoration:none!important;
+  box-shadow:0 3px 8px rgba(39,27,17,.045);
+  overflow-wrap:anywhere;
+  transition:transform .16s ease,box-shadow .16s ease;
+}
+.mm-doc-card:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(39,27,17,.12)}
+.mm-doc-card:focus-visible{outline:3px solid #a97a36;outline-offset:2px}
+.mm-doc-card .mm-doc-kind{
+  font:800 .66rem/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.095em;
+  color:#7a523c;
+}
+.mm-doc-card strong{font:700 1.2rem/1.25 Georgia,"Times New Roman",serif;color:#33251e}
+.mm-doc-card .mm-doc-description{font:400 .88rem/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#65584b}
+.mm-doc-card .mm-doc-action{margin-top:auto;padding-top:.55rem;font:750 .76rem/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;color:#684b31}
+.mm-doc-note{margin:.9rem 0 0;font:.82rem/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:#675b4f}
+.mm-doc-note a{color:#63422d;text-underline-offset:2px}
+@media(max-width:800px){
+  .mm-doc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:580px){
+  .mm-doc-section{padding:.85rem}
+  .mm-doc-grid,.mm-doc-grid.mm-doc-grid--two{grid-template-columns:minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  .mm-doc-card{transition:none}.mm-doc-card:hover{transform:none}
+}
+@media print{
+  .mm-doc-section,.mm-doc-card{break-inside:avoid;box-shadow:none}
+}
