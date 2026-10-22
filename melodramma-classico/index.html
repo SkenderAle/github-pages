@@ -7,25 +7,78 @@
 <style>
 :root{--paper:#f4ecde;--ink:#251f1b;--burgundy:#702d2c;--gold:#b58b52;--line:#d5c4ac;--shade:#eae0d1;--sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#d8cec0;font:1.08rem/1.75 Georgia,serif}a{color:#713528}a:focus-visible,button:focus-visible{outline:3px solid #b47720;outline-offset:3px}
-body>header{min-height:66vh;display:flex;align-items:end;padding:8rem max(1.2rem,calc((100vw - 1100px)/2)) 5rem;color:#fff;background:linear-gradient(90deg,#160e0de8,#231514ab),url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Teatro_alla_Scala_Interior.jpg') center/cover,#261a19}
+body>header{color:#fff;background:#160e0d}
 body>header .inner{max-width:900px}body>header p{max-width:730px;font-size:1.32rem}h1{font-size:clamp(3rem,8vw,6.7rem);line-height:1.02;letter-spacing:-.04em;margin:.4rem 0}.kicker,.eyebrow{font:700 .76rem/1.4 var(--sans);text-transform:uppercase;letter-spacing:.17em;color:#ddbc86}
 nav{position:sticky;top:0;z-index:3;background:#f6eddfef;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}nav .links{max-width:1100px;margin:auto;display:flex;overflow:auto;gap:.2rem;padding:.65rem}nav a{flex:none;border-radius:1rem;padding:.35rem .75rem;text-decoration:none;font:700 .78rem var(--sans);color:#51453b}nav a:hover{background:#e3d3bc}
 main{background:var(--paper);max-width:1250px;margin:auto;box-shadow:0 0 60px #3020161f;padding:4rem max(1.2rem,calc((100% - 1000px)/2)) 6rem}
 section{margin:4.7rem 0;scroll-margin-top:5rem}.lead{font-size:1.35rem;line-height:1.6}.no{color:var(--burgundy);font:800 .8rem var(--sans);letter-spacing:.15em}h2{font-size:clamp(2rem,5vw,3.4rem);line-height:1.13;letter-spacing:-.025em;margin:.45rem 0 1.6rem}h3{font-size:1.48rem;line-height:1.3;margin:2.3rem 0 .65rem}h4{font-size:1.15rem;margin:1.5rem 0 .5rem}p{margin:.9rem 0 1.3rem}.divider{width:85px;height:3px;background:var(--gold);margin:2.7rem 0}.note,.listening{border-left:4px solid var(--gold);background:var(--shade);padding:1.25rem 1.5rem;margin:2rem 0}.note strong,.listening strong{color:var(--burgundy)}.listening{border-left-color:#3c536c}.study{border:1px solid #a9bfad;border-left:5px solid #476b53;background:#eef1e9;padding:1rem 1.4rem;margin:2.8rem 0}.study .eyebrow{color:#365640}table{border-collapse:collapse;width:100%;font: .89rem/1.6 var(--sans)}th,td{border-bottom:1px solid var(--line);padding:.85rem .7rem;text-align:left;vertical-align:top}th{color:var(--burgundy);background:var(--shade)}.tablewrap{overflow-x:auto}.toc{background:#e9decc;padding:1.5rem 2rem}.toc ol{columns:2;column-gap:2rem;font: .98rem/1.75 var(--sans);padding-left:1.4rem}.toc li{break-inside:avoid;margin-bottom:.3rem}.toc a{text-decoration:none}.cardlinks{display:flex;flex-wrap:wrap;gap:.7rem}.cardlinks a{font:700 .87rem var(--sans);border:1px solid #bca68c;padding:.6rem .85rem;border-radius:5px;text-decoration:none}.cardlinks a:hover{background:#e6d4b9}footer{margin-top:5rem;border-top:1px solid var(--line);padding-top:1.5rem;color:#6d5c50;font:.82rem var(--sans)}@media(max-width:650px){body>header{min-height:57vh;padding:7rem 1.3rem 3rem}.toc ol{columns:1}main{padding:2.5rem 1.15rem 4rem}table{min-width:650px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-/* Hero documentato: scena del catalogo da un frontespizio praghese del 1831. */
-body>header.classico-hero{min-height:72vh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);align-items:center;gap:clamp(1.7rem,4vw,4.6rem);padding:clamp(6rem,9vw,8.5rem) max(1.2rem,calc((100vw - 1100px)/2)) clamp(3rem,5vw,5rem);background:radial-gradient(circle at 78% 25%,#614434,#1c1312 70%);color:#fff}
-.classico-hero .inner{min-width:0;max-width:680px}
-.classico-hero .inner h1{text-wrap:balance}
-.classico-hero .inner p{color:#f3e7d9}
-.classico-hero-art{min-width:0;margin:0}
-.classico-hero-crop{position:relative;overflow:hidden;isolation:isolate;height:clamp(360px,52vh,540px);border:7px solid #cfb78e;box-shadow:0 18px 40px #0008;background:#af9b82}
-.classico-hero-crop img{display:block;position:absolute;left:50%;top:50%;width:185%;max-width:none;height:auto;transform:translate(-50%,-50%);filter:sepia(.14) saturate(.75) contrast(1.1)}
-.classico-hero-art figcaption{margin:.65rem 0 0;color:#ecdeca;font:400 .72rem/1.45 var(--sans);max-width:640px}
-.classico-hero-art figcaption a{color:#f1d49e;text-underline-offset:2px}
-@media(max-width:850px){body>header.classico-hero{min-height:auto;grid-template-columns:minmax(0,1fr);gap:1.6rem;padding:5.3rem 1.3rem 2.6rem}.classico-hero-crop{height:clamp(260px,45vh,440px)}.classico-hero-crop img{width:155%}}
-@media(max-width:480px){body>header.classico-hero{padding:4.1rem 1.1rem 2.1rem}.classico-hero-crop{height:295px;border-width:5px}.classico-hero-crop img{width:168%}}
+/* Musurgia Mundi — hero panoramico: scena del catalogo, foto fornita e rielaborata. */
+body>header.classico-hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:min(84vh,780px);display:flex;align-items:center;
+  padding:6.5rem clamp(1.2rem,4vw,3rem) 5.5rem;
+  color:#fff;background:#160e0d;
+}
+.classico-hero-image{
+  position:absolute;inset:0;display:block;width:100%;height:100%;
+  object-fit:cover;object-position:center center;z-index:0;
+}
+body>header.classico-hero::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(12,8,8,.96) 0%,rgba(12,8,8,.86) 24%,rgba(12,8,8,.65) 40%,rgba(12,8,8,.19) 64%,rgba(12,8,8,.05) 100%),
+    linear-gradient(180deg,rgba(13,8,8,.08) 0%,rgba(13,8,8,.06) 60%,rgba(13,8,8,.55) 100%);
+}
+.classico-hero .inner{
+  position:relative;z-index:2;width:100%;max-width:1100px;
+  margin:0 auto;text-align:left;
+}
+.classico-hero .inner h1{
+  max-width:800px;font-size:clamp(3.2rem,7.6vw,7rem);
+  line-height:.96;letter-spacing:-.05em;font-weight:600;
+  text-wrap:balance;text-shadow:0 2px 12px #0e0909a6;
+}
+.classico-hero .inner p{
+  max-width:650px;font-size:clamp(1.16rem,2vw,1.52rem);
+  line-height:1.46;color:#f1e4d7;text-shadow:0 2px 12px #0e0909b3;
+}
+.classico-hero .inner .eyebrow{margin-top:1.15rem;color:#e7c88e}
+.classico-hero-credit{
+  position:absolute;right:1.15rem;bottom:.6rem;z-index:2;
+  max-width:min(70vw,600px);padding:.2rem .36rem;
+  background:#100c0a82;color:#e8dbca;font:400 .64rem/1.45 var(--sans);
+  text-align:right;
+}
+@media(max-width:870px){
+  body>header.classico-hero{
+    min-height:710px;align-items:flex-end;
+    padding:330px 1.35rem 4.3rem;
+  }
+  .classico-hero-image{
+    inset:0 0 auto;height:55%;object-position:right center;
+  }
+  body>header.classico-hero::before{
+    background:linear-gradient(180deg,rgba(15,9,8,.04) 0%,rgba(15,9,8,.08) 28%,rgba(18,11,10,.82) 48%,#160e0d 57%,#160e0d 100%);
+  }
+  .classico-hero .inner h1{max-width:650px;font-size:clamp(3rem,8vw,5rem)}
+  .classico-hero .inner p{max-width:650px;font-size:1.19rem}
+  .classico-hero-credit{right:.8rem;bottom:.3rem;max-width:95vw;font-size:.58rem}
+}
+@media(max-width:500px){
+  body>header.classico-hero{min-height:685px;padding:275px 1.15rem 4rem}
+  .classico-hero-image{height:47%;object-position:right center}
+  .classico-hero .inner h1{font-size:clamp(2.85rem,11.5vw,4.3rem);line-height:.98}
+  .classico-hero .inner p{font-size:1.12rem}
+  .classico-hero .kicker{font-size:.67rem}
+  .classico-hero .inner .eyebrow{font-size:.66rem}
+}
+@media print{
+  body>header.classico-hero{min-height:auto;padding:3rem 2rem}
+  .classico-hero-image{opacity:.28}
+}
+
 </style><style id="classico-nav-style">
 html{scroll-behavior:auto!important;scroll-padding-top:80px}
 .classico-nav{position:sticky;top:0;z-index:1000;background:#262438;color:#fff4e9;box-shadow:0 5px 20px #17132330;border:0;backdrop-filter:none;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -47,7 +100,11 @@ html{scroll-behavior:auto!important;scroll-padding-top:80px}
 @media print{.classico-nav{display:none}}
 </style><link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-responsive02"><link rel="stylesheet" href="../shared/mm-documenti-griglia-v1.css?v=20261022-container01"></head><body>
 <nav class="classico-nav" aria-label="Navigazione del melodramma classico"><div class="classico-navbar"><a class="classico-home" href="../">⌂ Home</a><details class="classico-menu"><summary>☰ Indice completo</summary><div class="classico-menu-panel"><strong class="classico-menu-label">Il melodramma nell’età classica</strong><a class="classico-cross" href="../melodramma/">Le origini e il Barocco ↗</a><div id="classico-menu-sections"></div></div></details><span class="classico-context">Percorsi di storia della musica</span></div></nav>
-<header class="classico-hero"><div class="inner"><div class="kicker">Musurgia Mundi · Percorsi di storia della musica</div><h1>Il melodramma nell'età classica</h1><p>Dal teatro delle convenzioni alla verità dei personaggi: Gluck, il Settecento europeo e Mozart.</p><div class="eyebrow">Seconda metà del Settecento · Verso l'Ottocento</div></div><figure class="classico-hero-art"><div class="classico-hero-crop"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Mozart%27s_Don_Giovanni_piano_four_hands_score%2C_published_in_Prague%2C_Zwettler_u._Nikl.pdf/page1-1280px-Mozart%27s_Don_Giovanni_piano_four_hands_score%2C_published_in_Prague%2C_Zwettler_u._Nikl.pdf.jpg" width="1280" height="1035" alt="Leporello presenta il lungo catalogo delle conquiste di Don Giovanni, mentre Donna Elvira siede accanto a lui: vignetta su un frontespizio praghese del 1831." decoding="async" fetchpriority="high"></div><figcaption><em>Don Giovanni</em>: Leporello e Donna Elvira nella scena del catalogo. Frontespizio di una riduzione per pianoforte a quattro mani, Praga, 1831 · <a href="https://commons.wikimedia.org/wiki/File:Mozart%27s_Don_Giovanni_piano_four_hands_score,_published_in_Prague,_Zwettler_u._Nikl.pdf" target="_blank" rel="noopener noreferrer">Fonte: Wikimedia Commons · Pubblico dominio ↗</a></figcaption></figure></header>
+<header class="classico-hero" id="inizio">
+<img class="classico-hero-image" src="assets/leporello-elvira-hero.webp" width="1536" height="512" fetchpriority="high" decoding="async" alt="Leporello, con il catalogo delle conquiste di Don Giovanni aperto tra le mani, declama davanti a Donna Elvira in una scenografia settecentesca.">
+<div class="inner"><div class="kicker">Musurgia Mundi · Percorsi di storia della musica</div><h1>Il melodramma nell'età classica</h1><p>Dal teatro delle convenzioni alla verità dei personaggi: Gluck, il Settecento europeo e Mozart.</p><div class="eyebrow">Seconda metà del Settecento · Verso l'Ottocento</div></div>
+<div class="classico-hero-credit">Leporello e Donna Elvira, <em>Don Giovanni</em> · immagine fornita per il progetto, rielaborata</div>
+</header>
 
 <main><p class="lead">Nel Settecento il melodramma non procede lungo un'unica via. Mentre si discute come restituire verità all'azione tragica, il teatro comico acquista profondità; mentre Vienna cerca una nuova unità fra parola, gesto e musica, altre città inventano forme adatte a lingue, pubblici e istituzioni differenti. Mozart non cancellerà queste tradizioni: le farà convivere sulla scena.</p>
 <div class="toc" id="indice-analitico"><strong>Indice analitico del percorso</strong><ol>
