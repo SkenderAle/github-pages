@@ -15,3 +15,7 @@
 .mm-compare-buttons button:focus-visible,.mm-compare-track a:focus-visible{outline:3px solid #b48a40;outline-offset:3px}
 .mm-compare-state{color:#355944}.mm-compare-note{color:#496050}
 @media(max-width:740px){.mm-compare-grid{grid-template-columns:1fr}.mm-compare-track{padding:.85rem}}
+
+/* Una sola traccia nel laboratorio: larghezza moderata anche su desktop. */
+.mm-compare-grid.mm-compare-single{grid-template-columns:minmax(0,1fr);max-width:620px}
+@media(max-width:740px){.mm-compare-grid.mm-compare-single{max-width:none}}
