@@ -23,7 +23,7 @@ body.embedded .gallery{padding-bottom:8px}
 <section class="tools" aria-label="Registrazioni e ascolto">
 <div class="eyebrow">Ascolto pubblico · Liber Liber</div>
 <h2>Tocca un quadro: la musica comincia dall'inizio</h2>
-<p class="hint">Registrazione della <strong>Chicago Symphony Orchestra diretta da Fritz Reiner</strong>, orchestrazione di Ravel. Un MP3 per ogni episodio, direttamente dai server Liber Liber. Al cambio scena la musica precedente sfuma per circa <strong>2,8 secondi</strong>, mentre il nuovo brano comincia <strong>subito a volume normale, senza fade-in</strong>. Non occorre installare o caricare nulla.</p>
+<p class="hint">Registrazione della <strong>Chicago Symphony Orchestra diretta da Fritz Reiner</strong>, orchestrazione di Ravel. Un MP3 per ogni episodio, direttamente dai server Liber Liber. Al cambio scena il brano precedente <strong>sfuma fino al silenzio per circa 2,8 secondi e si ferma</strong>. <strong>Solo allora</strong> parte il nuovo MP3 dall’inizio, a volume normale: nessuna sovrapposizione e nessun fade-in. Non occorre installare o caricare nulla.</p>
 <div class="buttons"><button type="button" id="play">▶ Ascolta questo quadro</button><button type="button" id="pause" class="secondary">‖ Pausa</button><button type="button" id="stop" class="secondary">■ Ferma audio</button></div>
 <div id="status" class="status" aria-live="polite" role="status">Pronto. Tocca un quadro per avviare la registrazione su Liber Liber. Se il server non risponde entro 12 secondi, il pannello lo segnalerà.</div>
 <div class="file-links"><a id="file-link" href="https://www.liberliber.eu/mediateca/musica/m/musorgskij/quadri_di_un_esposizione/mp3/musorgskij_quadri_rf_01_prome.mp3" target="_blank" rel="noopener noreferrer">Apri l'MP3 direttamente ↗</a><a href="https://liberliber.it/autori/autori-m/modest-petrovic-musorgskij/quadri-di-unesposizione-kartinki-s-vystavki-orchestrazione-di-maurice-ravel/" target="_blank" rel="noopener noreferrer">Ascolta dalla pagina di Liber Liber ↗</a></div>
@@ -45,55 +45,100 @@ let sequence = 0;
 let fadeTimer = 0;
 let fadeHardStop = 0;
 let fadingAudio = null;
-const FADE_OUT_MS = 2800;
+let pendingScene = null;
 let watchdog = 0;
 let suppressStageClickUntil = 0;
-const audios = [new Audio(),new Audio()];
-audios.forEach(a => {a.preload = 'none'; a.volume = .96});
-function status(text){$('status').textContent=text}
-function cancelFadeOut(){
- if(fadeTimer){clearInterval(fadeTimer);fadeTimer=0}
- if(fadeHardStop){clearTimeout(fadeHardStop);fadeHardStop=0}
- // In una transizione rapida, il brano uscente non deve restare orfano.
- if(fadingAudio){
-  const previous=fadingAudio;
-  fadingAudio=null;
-  if(previous!==active)clearAudio(previous);
+const FADE_OUT_MS = 2800;
+const audios=[new Audio(),new Audio()];
+audios.forEach(x=>{x.preload='none';x.volume=.96;x.datasetSrc=''});
+function status(s){$('status').textContent=s}
+function clearAudio(a){
+ a.onerror=null;a.onplaying=null;a.onwaiting=null;
+ a.pause();a.removeAttribute('src');a.datasetSrc='';a.load();a.volume=.96;
+}
+function cancelTimers(){
+ clearInterval(fadeTimer);fadeTimer=0;
+ clearTimeout(fadeHardStop);fadeHardStop=0;
+ clearTimeout(watchdog);watchdog=0;
+}
+function cancelPending(){
+ sequence++;cancelTimers();pendingScene=null;fadingAudio=null;
+}
+function stop(){
+ cancelPending();audios.forEach(clearAudio);active=null;
+ status('Audio fermato. Tocca un quadro per ricominciare.');
+}
+function pause(){
+ cancelPending();audios.forEach(x=>{x.pause();x.volume=.96});
+ status('In pausa. Tocca il quadro per riascoltarlo dall’inizio.');
+}
+function prepareTrack(i){
+ const a=audios.find(x=>x!==active);
+ if(!a)return;
+ const url=tracks[i].url;
+ if(a.datasetSrc===url)return;
+ clearAudio(a);
+ a.datasetSrc=url;a.src=url;a.preload='auto';a.volume=.96;a.load();
+}
+function startTrack(i){
+ const selected=tracks[i];
+ const incoming=audios.find(x=>x!==active)||audios[0];
+ if(incoming.datasetSrc!==selected.url){
+  clearAudio(incoming);
+  incoming.datasetSrc=selected.url;incoming.src=selected.url;incoming.preload='auto';
  }
+ incoming.volume=.96;
+ active=incoming;
+ $('file-link').href=selected.url;
+ const turn=++sequence;
+ let begun=false,failed=false;
+ function fail(message){
+  if(turn!==sequence||failed)return;
+  failed=true;clearTimeout(watchdog);watchdog=0;
+  audios.forEach(clearAudio);active=null;
+  status('Audio non disponibile per «'+selected.title+'»: '+message+'. Apri l’MP3 diretto dal collegamento sottostante.');
+ }
+ incoming.onerror=()=>fail('il server ha rifiutato o interrotto il file');
+ incoming.onplaying=()=>{
+  if(turn!==sequence||failed)return;
+  begun=true;clearTimeout(watchdog);watchdog=0;
+  status('In ascolto: '+selected.title+' — Chicago Symphony Orchestra · Fritz Reiner · Liber Liber');
+ };
+ status('Avvio di '+selected.title+'…');
+ watchdog=setTimeout(()=>{if(turn===sequence&&!begun)fail('nessuna risposta entro 12 secondi')},12000);
+ let p;try{p=incoming.play()}catch(e){fail(e.message||'riproduzione bloccata');return}
+ Promise.resolve(p).catch(e=>fail(e?.name==='NotAllowedError'?'il browser richiede un nuovo tocco dopo l’attesa':e?.message||'riproduzione bloccata'));
 }
-function cancelPending(){sequence++;cancelFadeOut();clearTimeout(watchdog);watchdog=0}
-function finishFade(previous){
- if(fadingAudio!==previous)return;
- if(fadeTimer){clearInterval(fadeTimer);fadeTimer=0}
- if(fadeHardStop){clearTimeout(fadeHardStop);fadeHardStop=0}
- fadingAudio=null;
- // Arresto obbligatorio: non basta attenuare il volume.
- previous.pause();
- previous.volume=0;
- clearAudio(previous);
+function completeFade(turn){
+ if(turn!==sequence||!fadingAudio)return;
+ cancelTimers();
+ const old=fadingAudio;fadingAudio=null;
+ old.volume=0;clearAudio(old);
+ const next=pendingScene;pendingScene=null;
+ // Manteniamo il vecchio lettore come riferimento per preferire quello nuovo precaricato.
+ active=old;
+ if(next!==null)startTrack(next);
+ else active=null;
 }
-function fadeOut(previous,turn){
- if(!previous)return;
- // Un MP3 ancora in caricamento può risultare in pausa e partire in ritardo:
- // annullarlo subito evita il doppio ascolto anche con server lenti.
- if(previous.paused){clearAudio(previous);return}
- const level=Math.max(0,Math.min(1,previous.volume));
- const started=performance.now();
- fadingAudio=previous;
- // Due meccanismi indipendenti: curva di volume e arresto forzato.
- // Il secondo non dipende dall'esecuzione regolare del primo.
- fadeHardStop=setTimeout(()=>finishFade(previous),FADE_OUT_MS+120);
+function beginFade(){
+ if(!active||active.paused){
+  const next=pendingScene;pendingScene=null;
+  if(active){clearAudio(active);active=null}
+  if(next!==null)startTrack(next);
+  return;
+ }
+ const old=active,turn=++sequence,begin=performance.now(),initial=old.volume;
+ clearTimeout(watchdog);watchdog=0;
+ fadingAudio=old;
+ status('Dissolvenza in uscita: il nuovo brano partirà solo dopo il silenzio.');
+ fadeHardStop=setTimeout(()=>completeFade(turn),FADE_OUT_MS+120);
  fadeTimer=setInterval(()=>{
-  if(fadingAudio!==previous)return;
-  if(turn!==sequence){finishFade(previous);return}
-  const t=Math.min(1,(performance.now()-started)/FADE_OUT_MS);
-  previous.volume=Math.max(0,level*Math.cos(t*Math.PI/2));
-  if(t>=1||previous.paused)finishFade(previous);
+  if(turn!==sequence||fadingAudio!==old)return;
+  const t=Math.min(1,(performance.now()-begin)/FADE_OUT_MS);
+  old.volume=Math.max(0,initial*Math.cos(t*Math.PI/2));
+  if(t>=1||old.paused)completeFade(turn);
  },35);
 }
-function clearAudio(a){a.onerror=null;a.onplaying=null;a.onwaiting=null;a.pause();a.removeAttribute('src');a.load();a.volume=.96}
-function stop(){cancelPending();audios.forEach(clearAudio);active=null;status('Audio fermato. Tocca un quadro per ricominciare.')}
-function pause(){cancelPending();audios.forEach(a=>a.pause());status('Riproduzione in pausa. Tocca il quadro per riascoltarlo dall’inizio.')}
 function render(index){
  current=(index+scenes.length)%scenes.length;
  const s=scenes[current];
@@ -107,35 +152,24 @@ function render(index){
  $('stitle').textContent=s.title;$('smeta').textContent=s.sidenote;$('snote').textContent=s.note;
  $('source-art').href=s.museum;$('file-link').href=tracks[current].url;
 }
-function play(index=current){
- const selected=tracks[index], previous=active;
- cancelPending();
- const turn=sequence;
- // Evita audio in parallelo residuo dopo passaggi rapidi.
- const incoming=audios.find(a=>a!==previous)||audios[0];
- audios.forEach(a=>{if(a!==previous&&a!==incoming)clearAudio(a)});
- clearAudio(incoming);
- incoming.src=selected.url;
- incoming.preload='auto';
- incoming.volume=.96;
- active=incoming;
- $('file-link').href=selected.url;
- let begun=false,failed=false;
- function fail(message){
-  if(turn!==sequence||failed)return;
-  failed=true;clearTimeout(watchdog);watchdog=0;
-  audios.forEach(clearAudio);active=null;
-  status('Audio non disponibile per «'+selected.title+'»: '+message+'. Prova il collegamento MP3 diretto qui sotto. Se anche quello non parte, il server non consente questa riproduzione.');
+function play(i=current){
+ if(i<0||i>=tracks.length)return;
+ pendingScene=i;
+ $('file-link').href=tracks[i].url;
+ if(fadingAudio){
+  // I tocchi ravvicinati aggiornano la destinazione, senza riavviare il fade.
+  prepareTrack(i);
+  status('Attendo che il brano precedente sfumi. Poi partirà: '+tracks[i].title+'.');
+  return;
  }
- incoming.onerror=()=>fail('il server ha rifiutato o interrotto il file');
- incoming.onplaying=()=>{if(turn!==sequence||failed)return;begun=true;clearTimeout(watchdog);watchdog=0;status('In ascolto: '+selected.title+' — Chicago Symphony Orchestra · Fritz Reiner · Liber Liber')};
- status('Caricamento di '+selected.title+'… massimo 12 secondi.');
- watchdog=setTimeout(()=>{if(turn===sequence&&!begun)fail('nessuna risposta entro 12 secondi')},12000);
- // Il comando di riproduzione viene impartito direttamente dal gesto del visitatore.
- let promise;try{promise=incoming.play()}catch(e){fail(e.message||'riproduzione bloccata');return}
- Promise.resolve(promise).catch(e=>fail(e.message||'riproduzione bloccata dal browser'));
- // Solo il brano uscente viene attenuato: il nuovo entra subito a volume pieno.
- if(previous&&previous!==incoming)fadeOut(previous,turn);
+ if(active&&!active.paused){
+  prepareTrack(i);
+  beginFade();
+ }else{
+  if(active){clearAudio(active);active=null}
+  pendingScene=null;
+  startTrack(i);
+ }
 }
 function move(i){render(i);play(current)}
 const gallery=$('gallery'),panelRoot=$('panels');
