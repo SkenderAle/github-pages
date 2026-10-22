@@ -43,6 +43,7 @@ let current = 0;
 let active = null;
 let sequence = 0;
 let fadeTimer = 0;
+let fadeHardStop = 0;
 let fadingAudio = null;
 const FADE_OUT_MS = 2800;
 let watchdog = 0;
@@ -52,20 +53,42 @@ audios.forEach(a => {a.preload = 'none'; a.volume = .96});
 function status(text){$('status').textContent=text}
 function cancelFadeOut(){
  if(fadeTimer){clearInterval(fadeTimer);fadeTimer=0}
- if(fadingAudio){const old=fadingAudio;fadingAudio=null;if(old!==active)clearAudio(old)}
+ if(fadeHardStop){clearTimeout(fadeHardStop);fadeHardStop=0}
+ // In una transizione rapida, il brano uscente non deve restare orfano.
+ if(fadingAudio){
+  const previous=fadingAudio;
+  fadingAudio=null;
+  if(previous!==active)clearAudio(previous);
+ }
 }
 function cancelPending(){sequence++;cancelFadeOut();clearTimeout(watchdog);watchdog=0}
+function finishFade(previous){
+ if(fadingAudio!==previous)return;
+ if(fadeTimer){clearInterval(fadeTimer);fadeTimer=0}
+ if(fadeHardStop){clearTimeout(fadeHardStop);fadeHardStop=0}
+ fadingAudio=null;
+ // Arresto obbligatorio: non basta attenuare il volume.
+ previous.pause();
+ previous.volume=0;
+ clearAudio(previous);
+}
 function fadeOut(previous,turn){
- if(!previous||previous.paused)return;
+ if(!previous)return;
+ // Un MP3 ancora in caricamento può risultare in pausa e partire in ritardo:
+ // annullarlo subito evita il doppio ascolto anche con server lenti.
+ if(previous.paused){clearAudio(previous);return}
  const level=Math.max(0,Math.min(1,previous.volume));
  const started=performance.now();
  fadingAudio=previous;
- // Un timer audio indipendente dalla rotazione CSS: la coda del vecchio brano rimane udibile.
+ // Due meccanismi indipendenti: curva di volume e arresto forzato.
+ // Il secondo non dipende dall'esecuzione regolare del primo.
+ fadeHardStop=setTimeout(()=>finishFade(previous),FADE_OUT_MS+120);
  fadeTimer=setInterval(()=>{
-  if(turn!==sequence){clearInterval(fadeTimer);fadeTimer=0;if(fadingAudio===previous)fadingAudio=null;clearAudio(previous);return}
+  if(fadingAudio!==previous)return;
+  if(turn!==sequence){finishFade(previous);return}
   const t=Math.min(1,(performance.now()-started)/FADE_OUT_MS);
   previous.volume=Math.max(0,level*Math.cos(t*Math.PI/2));
-  if(t>=1){clearInterval(fadeTimer);fadeTimer=0;if(fadingAudio===previous)fadingAudio=null;clearAudio(previous)}
+  if(t>=1||previous.paused)finishFade(previous);
  },35);
 }
 function clearAudio(a){a.onerror=null;a.onplaying=null;a.onwaiting=null;a.pause();a.removeAttribute('src');a.load();a.volume=.96}
