@@ -9,7 +9,7 @@ function stop(panel,message){
 function stopAll(){panels.forEach(p=>stop(p,''));}
 panels.forEach(panel=>{
  panel.querySelectorAll('[data-mm-clip-load]').forEach(button=>button.addEventListener('click',()=>{
-  const id=button.dataset.video||'',start=Number(button.dataset.start),end=Number(button.dataset.end);
+  const id=button.dataset.mmClipVideo||button.dataset.video||'',start=Number(button.dataset.start),end=Number(button.dataset.end);
   if(!/^[A-Za-z0-9_-]{11}$/.test(id)||!Number.isInteger(start)||!Number.isInteger(end)||start<0||end<=start)return;
   const card=button.closest('.mm-compare-track'),stage=card?.querySelector('[data-mm-clip-stage]');if(!stage)return;
   stopAll();
