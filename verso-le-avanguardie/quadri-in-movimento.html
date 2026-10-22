@@ -23,7 +23,7 @@ body.embedded .gallery{padding-bottom:8px}
 <section class="tools" aria-label="Registrazioni e ascolto">
 <div class="eyebrow">Ascolto pubblico · Liber Liber</div>
 <h2>Tocca un quadro: la musica comincia dall'inizio</h2>
-<p class="hint">Registrazione della <strong>Chicago Symphony Orchestra diretta da Fritz Reiner</strong>, orchestrazione di Ravel. Un MP3 per ogni episodio, direttamente dai server Liber Liber. Al cambio scena la musica precedente sfuma in uscita, mentre il nuovo brano comincia <strong>subito a volume normale, senza fade-in</strong>. Non occorre installare o caricare nulla.</p>
+<p class="hint">Registrazione della <strong>Chicago Symphony Orchestra diretta da Fritz Reiner</strong>, orchestrazione di Ravel. Un MP3 per ogni episodio, direttamente dai server Liber Liber. Al cambio scena la musica precedente sfuma per circa <strong>2,8 secondi</strong>, mentre il nuovo brano comincia <strong>subito a volume normale, senza fade-in</strong>. Non occorre installare o caricare nulla.</p>
 <div class="buttons"><button type="button" id="play">▶ Ascolta questo quadro</button><button type="button" id="pause" class="secondary">‖ Pausa</button><button type="button" id="stop" class="secondary">■ Ferma audio</button></div>
 <div id="status" class="status" aria-live="polite" role="status">Pronto. Tocca un quadro per avviare la registrazione su Liber Liber. Se il server non risponde entro 12 secondi, il pannello lo segnalerà.</div>
 <div class="file-links"><a id="file-link" href="https://www.liberliber.eu/mediateca/musica/m/musorgskij/quadri_di_un_esposizione/mp3/musorgskij_quadri_rf_01_prome.mp3" target="_blank" rel="noopener noreferrer">Apri l'MP3 direttamente ↗</a><a href="https://liberliber.it/autori/autori-m/modest-petrovic-musorgskij/quadri-di-unesposizione-kartinki-s-vystavki-orchestrazione-di-maurice-ravel/" target="_blank" rel="noopener noreferrer">Ascolta dalla pagina di Liber Liber ↗</a></div>
@@ -42,13 +42,32 @@ const tracks = fileNames.map((name,index) => ({title: scenes[index].title, url: 
 let current = 0;
 let active = null;
 let sequence = 0;
-let fadeId = 0;
+let fadeTimer = 0;
+let fadingAudio = null;
+const FADE_OUT_MS = 2800;
 let watchdog = 0;
 let suppressStageClickUntil = 0;
 const audios = [new Audio(),new Audio()];
 audios.forEach(a => {a.preload = 'none'; a.volume = .96});
 function status(text){$('status').textContent=text}
-function cancelPending(){sequence++;cancelAnimationFrame(fadeId);fadeId=0;clearTimeout(watchdog);watchdog=0}
+function cancelFadeOut(){
+ if(fadeTimer){clearInterval(fadeTimer);fadeTimer=0}
+ if(fadingAudio){const old=fadingAudio;fadingAudio=null;if(old!==active)clearAudio(old)}
+}
+function cancelPending(){sequence++;cancelFadeOut();clearTimeout(watchdog);watchdog=0}
+function fadeOut(previous,turn){
+ if(!previous||previous.paused)return;
+ const level=Math.max(0,Math.min(1,previous.volume));
+ const started=performance.now();
+ fadingAudio=previous;
+ // Un timer audio indipendente dalla rotazione CSS: la coda del vecchio brano rimane udibile.
+ fadeTimer=setInterval(()=>{
+  if(turn!==sequence){clearInterval(fadeTimer);fadeTimer=0;if(fadingAudio===previous)fadingAudio=null;clearAudio(previous);return}
+  const t=Math.min(1,(performance.now()-started)/FADE_OUT_MS);
+  previous.volume=Math.max(0,level*Math.cos(t*Math.PI/2));
+  if(t>=1){clearInterval(fadeTimer);fadeTimer=0;if(fadingAudio===previous)fadingAudio=null;clearAudio(previous)}
+ },35);
+}
 function clearAudio(a){a.onerror=null;a.onplaying=null;a.onwaiting=null;a.pause();a.removeAttribute('src');a.load();a.volume=.96}
 function stop(){cancelPending();audios.forEach(clearAudio);active=null;status('Audio fermato. Tocca un quadro per ricominciare.')}
 function pause(){cancelPending();audios.forEach(a=>a.pause());status('Riproduzione in pausa. Tocca il quadro per riascoltarlo dall’inizio.')}
@@ -92,17 +111,8 @@ function play(index=current){
  // Il comando di riproduzione viene impartito direttamente dal gesto del visitatore.
  let promise;try{promise=incoming.play()}catch(e){fail(e.message||'riproduzione bloccata');return}
  Promise.resolve(promise).catch(e=>fail(e.message||'riproduzione bloccata dal browser'));
- if(previous&&previous!==incoming&&!previous.paused){
-  const started=performance.now(),level=previous.volume,duration=1250;
-  function fade(now){
-   if(turn!==sequence)return;
-   const t=Math.min(1,(now-started)/duration);
-   previous.volume=Math.max(0,level*(1-t));
-   if(t<1)fadeId=requestAnimationFrame(fade);
-   else clearAudio(previous);
-  }
-  fadeId=requestAnimationFrame(fade);
- }
+ // Solo il brano uscente viene attenuato: il nuovo entra subito a volume pieno.
+ if(previous&&previous!==incoming)fadeOut(previous,turn);
 }
 function move(i){render(i);play(current)}
 const gallery=$('gallery'),panelRoot=$('panels');
