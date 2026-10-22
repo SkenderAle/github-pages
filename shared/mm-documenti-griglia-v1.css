@@ -2,6 +2,9 @@
    Solo fonti collegate a paragrafi precisi; nessun iframe o autoplay. */
 .mm-doc-section{
   clear:both;
+  /* Adatta il numero di colonne alla larghezza effettiva, non solo al viewport. */
+  container-type:inline-size;
+  container-name:mm-documenti;
   margin:1.8rem 0 2.5rem;
   padding:1.1rem 1.15rem 1.25rem;
   border:1px solid var(--line,#cec0ad);
@@ -77,6 +80,14 @@
 }
 @media(max-width:580px){
   .mm-doc-section{padding:.85rem}
+  .mm-doc-grid,.mm-doc-grid.mm-doc-grid--two{grid-template-columns:minmax(0,1fr)}
+}
+/* Quando la pagina ha un indice o una colonna laterale, anche un grande
+   schermo può lasciare poco spazio alle schede. */
+@container mm-documenti (max-width:740px){
+  .mm-doc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@container mm-documenti (max-width:470px){
   .mm-doc-grid,.mm-doc-grid.mm-doc-grid--two{grid-template-columns:minmax(0,1fr)}
 }
 @media(prefers-reduced-motion:reduce){
