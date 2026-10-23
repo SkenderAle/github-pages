@@ -457,7 +457,8 @@ const sections=[...document.querySelectorAll('main > section[id]')];let ix=0;
 for(const sec of sections){const h=sec.querySelector('h2');if(!h)continue;ix++;const entry=document.createElement('details');const sum=document.createElement('summary');sum.textContent=ix+' · '+h.textContent.trim();entry.append(sum);const go=document.createElement('a');go.href='#'+sec.id;go.textContent='Vai alla sezione ↗';entry.append(go);
 const subs=document.createElement('div');subs.className='classico-sub';let n=0;for(const sh of sec.querySelectorAll('h3,h4')){if(sh.closest('details,aside,nav'))continue;n++;let id=sh.id||sh.querySelector('[id]')?.id;if(!id){id='classico-paragrafo-'+ix+'-'+n;sh.id=id}const a=document.createElement('a');a.href='#'+id;a.textContent=ix+'.'+n+' · '+sh.textContent.trim();subs.append(a)}if(n)entry.append(subs);box.append(entry)}
 box.addEventListener('click',e=>{if(e.target.closest('a[href^="#"]'))menu.open=false});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')menu.open=false});
+document.addEventListener('pointerdown',e=>{if(menu.open&&!menu.contains(e.target))menu.open=false});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.open){menu.open=false;menu.querySelector(':scope > summary')?.focus()}});
 })();
 </script><script src="../shared/mm-confronto-estratti-v1.js?v=20261023-thumb01" defer></script>
 </body></html>
