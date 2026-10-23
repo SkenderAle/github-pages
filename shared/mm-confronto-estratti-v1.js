@@ -6,8 +6,9 @@ const validId=id=>/^[A-Za-z0-9_-]{11}$/.test(id);
 function details(trigger){
  if(!trigger)return null;
  const id=trigger.dataset.mmClipVideo||trigger.dataset.video||'';
- const start=Number(trigger.dataset.start),end=Number(trigger.dataset.end);
- if(!validId(id)||!Number.isInteger(start)||!Number.isInteger(end)||start<0||end<=start)return null;
+ const start=Number(trigger.dataset.start??'0');
+ const end=(trigger.dataset.end===undefined||trigger.dataset.end==='')?null:Number(trigger.dataset.end);
+ if(!validId(id)||!Number.isInteger(start)||start<0||(end!==null&&(!Number.isInteger(end)||end<=start)))return null;
  return {id,start,end,title:trigger.dataset.title||'Estratto musicale'};
 }
 function preview(card){
@@ -53,7 +54,7 @@ function playClip(trigger){
  const nativeStop=document.querySelector('#player:not([hidden]) #stop');
  if(nativeStop)nativeStop.click();
  const frame=document.createElement('iframe');
- frame.src='https://www.youtube-nocookie.com/embed/'+info.id+'?rel=0&playsinline=1&controls=1&autoplay=0&start='+info.start+'&end='+info.end;
+ frame.src='https://www.youtube-nocookie.com/embed/'+info.id+'?rel=0&playsinline=1&controls=1&autoplay=0&start='+info.start+(info.end===null?'':'&end='+info.end);
  frame.title=info.title+' · video caricato, avvio manuale';
  frame.referrerPolicy='strict-origin-when-cross-origin';
  frame.allow='encrypted-media; picture-in-picture; fullscreen';
