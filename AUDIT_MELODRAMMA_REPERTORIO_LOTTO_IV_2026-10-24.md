@@ -18,7 +18,7 @@
 | Jean-Baptiste Lully | Atys parte I | HV6kr2BOBtA | Les Arts Florissants, upload canale marco sereno, sottotitoli italiani | Caricamento non istituzionale |
 | Jean-Baptiste Lully | Atys parte II | 1ReDDZAY3gI | Seconda parte della stessa produzione | Contare come parte, non nuova opera |
 | Jean-Philippe Rameau | Les Indes galantes, Danse du Grand Calumet | TfQJZ76WR0U | Cappella Mediterranea, L. García-Alarcón, Opéra de Paris 2019 | Scena danzata reinterpretata |
-| Jean-Philippe Rameau | Platée | 9W0sRaFHF5A | Garsington Opera / OperaVision, Paul Agnew, Samuel Boden | Disponibilità YouTube da confermare: diritto temporaneo OperaVision scaduto |
+| Jean-Philippe Rameau | Platée | FDOElERcUU4 | Pinchgut Opera, Orchestra of the Antipodes, Erin Helyard, Kanen Breen (2021, pubblicazione 2025) | Video integrale pubblicato sul canale ufficiale Pinchgut Opera |
 | Johann Adolf Hasse | Cleofide, Digli che io son fedele | ccSpn3uX6EA | Emma Kirkby, Cappella Coloniensis, William Christie, canale Topic | Audio ufficiale distribuito |
 | Johann Adolf Hasse | Artaserse, Pallido il sole | RM_7FV4WNbw | Sonia Prina, Armonia Atenea, George Petrou, canale Topic | Audio ufficiale distribuito |
 | Johann Adolf Hasse | Didone abbandonata, L’augeletto in lacci stretto | 52xTr0vtb98 | Dorothee Mields, Hamburger Ratsmusik, Simone Eckert | Upload non istituzionale |
@@ -32,7 +32,7 @@
 - I video vengono identificati da titoli/descrizioni Web, ma questa verifica non prova incorporabilità o accesso dall'Italia.
 - Alcuni video sono offerti da canali non istituzionali; mantenere source link come fallback, sostituire quando possibile con fonti ufficiali.
 - La sezione Rameau-Opéra national de Paris contiene un video di danza moderna su musica barocca: dichiarare contesto della messa in scena, non scambiarlo per ricostruzione storica.
-- Il video Platée ha potenziali limitazioni temporanee; ricontrollare la disponibilità. La pagina OperaVision segnala scadenza diritti per la trasmissione integrale.
+- Una prima fonte per Platée (Garsington/OperaVision) segnalava diritti scaduti. È stata sostituita con una produzione integrale distribuita direttamente dal canale ufficiale Pinchgut Opera; verificarne comunque l'incorporabilità locale.
 - Il video Alessandro Scarlatti è selezione di numeri, non registrazione integrale.
 - Nel catalogo erano già presenti duplicazioni funzionali (Don Giovanni ouverture e Finale II Figaro) come confronti interni: non contare le schede ripetute come nuove registrazioni.
 - Il motore di ricerca è client-side, senza trasmissione dei termini ad alcun servizio.
@@ -41,7 +41,7 @@
 - Canale Pinchgut Opera: https://www.youtube.com/watch?v=lgx8sQhOWGg
 - Total Baroque / Vinci: https://www.youtube.com/watch?v=sRAHZGorKNM
 - Cappella Mediterranea / Rameau: https://www.youtube.com/watch?v=TfQJZ76WR0U
-- Garsington Opera / Platée: https://garsingtonopera.org/whats-on/platee/
+- Pinchgut Opera / Platée: https://www.youtube.com/watch?v=FDOElERcUU4
 - Warner / Hasse: https://www.youtube.com/watch?v=RM_7FV4WNbw
 - Canale ufficiale Cecilia Bartoli: https://www.youtube.com/watch?v=EFvcZvqk338
 - Canale ufficiale Andreas Scholl: https://www.youtube.com/watch?v=6WbDGsnq2Tc
