@@ -7,11 +7,66 @@
 <meta name="description" content="Scjaraçule Maraçule: da Giorgio Mainerio (1578) al rito della pioggia (1624), da pre Meni Zannier a Branduardi, fra Pressacco, fonti, memoria e autorialità.">
 <meta name="author" content="Alessandro Zilli">
 <link rel="stylesheet" href="../approfondimenti.css?v=20261017-memorie">
-<link rel="stylesheet" href="../../shared/mm-menu-dossier-v1.css?v=20261023-dossier01"></head>
+<link rel="stylesheet" href="../../shared/mm-menu-dossier-v1.css?v=20261023-dossier01">
+<style id="scjara-hero-styles">
+/* Hero documentario: l'immagine e' una analogia iconografica, non un documento del rito friulano. */
+.top.scjara-hero{
+ position:relative;isolation:isolate;overflow:hidden;
+ min-height:clamp(540px,60vw,690px);
+ display:flex;flex-direction:column;justify-content:flex-end;
+ background:#171b1a;color:#fff5e8;
+}
+.scjara-hero-image{
+ position:absolute;inset:0;z-index:-2;display:block;
+ width:100%;height:100%;object-fit:cover;object-position:60% 45%;
+}
+.top.scjara-hero::before{
+ content:"";position:absolute;inset:0;z-index:-1;
+ background:linear-gradient(90deg,rgba(12,17,18,.96) 0%,rgba(12,17,18,.89) 32%,rgba(12,17,18,.63) 56%,rgba(12,17,18,.15) 100%),
+ linear-gradient(0deg,rgba(10,15,16,.76) 0%,transparent 45%);
+}
+.scjara-hero .topbar{position:relative;z-index:1}
+.scjara-hero .top-copy{
+ position:relative;z-index:1;max-width:min(860px,88%);
+ padding-top:clamp(2rem,6vw,6rem);padding-bottom:2.25rem;
+}
+.scjara-hero .top-copy h1{text-shadow:0 2px 18px #0006}
+.scjara-hero .dek{max-width:660px;color:#f3e5d3;text-shadow:0 1px 3px #1119}
+.scjara-hero-credit{
+ position:relative;z-index:1;align-self:flex-end;
+ max-width:min(650px,100%);
+ margin:0;padding:.35rem .6rem;border-radius:3px;
+ background:rgba(16,22,21,.72);color:#f4ede3;
+ text-align:right;font:500 .69rem/1.4 var(--sans);
+}
+.scjara-hero-credit a{color:#f6d6a4;text-decoration:underline}
+.scjara-verse{margin:1.6rem 0 1.7rem;padding:1.1rem clamp(1rem,3vw,1.6rem);
+ background:#eee1ca;border-left:4px solid #a27735}
+.article .scjara-verse blockquote{
+ margin:0;padding:0;border:0;color:#4a3428;
+ font:italic 500 clamp(1.2rem,2.7vw,1.65rem)/1.5 var(--serif);
+}
+.scjara-verse figcaption{margin-top:.75rem;font:500 .79rem/1.5 var(--sans);color:#63584d}
+@media(max-width:760px){
+ .top.scjara-hero{min-height:560px;padding-bottom:1rem}
+ .scjara-hero-image{object-position:65% 50%}
+ .top.scjara-hero::before{
+  background:linear-gradient(90deg,rgba(12,17,18,.91),rgba(12,17,18,.51)),
+   linear-gradient(0deg,rgba(12,17,18,.86),transparent 76%);
+ }
+ .scjara-hero .top-copy{max-width:100%;padding-top:2.8rem;padding-bottom:1.8rem}
+ .scjara-hero-credit{font-size:.62rem}
+}
+@media(max-width:420px){.top.scjara-hero{min-height:610px}}
+@media(prefers-reduced-motion:reduce){.scjara-hero-image{animation:none;transition:none}}
+</style>
+</head>
 <body>
 <a class="skip" href="#contenuto">Vai al contenuto</a>
 <div class="shell">
-<header class="top" id="inizio">
+<header class="top scjara-hero" id="inizio">
+<img class="scjara-hero-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Peasant_dance%2C_by_Pieter_Bruegel_%28I%29.jpg/1280px-Peasant_dance%2C_by_Pieter_Bruegel_%28I%29.jpg"
+ alt="Danza contadina in un villaggio fiammingo del Cinquecento: coppie di danzatori e musicisti in un paesaggio rurale, dipinti da Pieter Bruegel il Vecchio." width="1280" height="889" fetchpriority="high" decoding="async">
 <div class="topbar"><a href="../../">⌂ Musurgia Mundi</a><a href="../">← Il Rinascimento musicale</a></div>
 <div class="top-copy">
 <div class="eyebrow">Rinascimento · Storie di una melodia · Saggio</div>
@@ -19,6 +74,7 @@
 <p class="dek">Dalla paleografia popolare al plagio d'autore? Una melodia friulana documentata nel Rinascimento attraversa il rito della pioggia, la poesia del Novecento e la canzone di Angelo Branduardi. Il problema non è soltanto chi l'abbia scritta, ma chi possa davvero dirla propria.</p>
 <div class="byline">Un saggio di Alessandro Zilli · 16 ottobre 2026</div>
 </div>
+<p class="scjara-hero-credit">Pieter Bruegel il Vecchio, <em>Danza contadina</em>, circa 1568, Kunsthistorisches Museum, Vienna. Parallelo iconografico europeo, <strong>non raffigurazione del rito friulano</strong>. Opera in pubblico dominio · <a href="https://commons.wikimedia.org/wiki/File:Peasant_dance,_by_Pieter_Bruegel_(I).jpg" target="_blank" rel="noopener noreferrer">fonte e diritti su Wikimedia Commons ↗</a></p>
 </header>
 <div class="dates" aria-label="Quattro momenti documentari">
 <div><b>1578</b><span>Mainerio, <em>Primo libro de balli</em>, n. 12</span></div>
@@ -84,6 +140,20 @@
 <p>Nel Novecento Domenico Zannier, pre Meni, poeta, sacerdote e uomo di cultura friulana, le restituisce parole. Non tenta una ricostruzione filologica di ciò che non possediamo più, ma un'operazione additiva e poetica che rimane deliberatamente dentro l'ambiente linguistico e immaginativo rurale friulano.</p>
 <p>Lucciole, raganelle, polvere, piante, assonanze e nonsensi compongono una filastrocca moderna così aderente alla propria materia culturale da essere stata talvolta scambiata per antica.</p>
 <p>Pre Meni non recupera il testo perduto: <strong>recupera invece un mondo</strong>. La sua invenzione poetica non finge di essere documento, ma restituisce alla melodia la terra dalla quale forse proviene: l'infanzia, il gioco, la raganella, la rugiada, la rucola e la noce, come ingredienti di una pozione che sa di un meraviglioso sabba.</p>
+
+<h3 id="testo-zannier">La filastrocca di pre Meni: un nuovo testo sulla melodia antica</h3>
+<p>Vale la pena incontrare anche <strong>le parole</strong>, non solo il loro racconto: Zannier costruisce un testo friulano moderno che si lascia cantare sulla musica tramandata da Mainerio, alternando giochi di suono, immagini contadine e un piccolo rovesciamento scherzoso sui rapporti fra ragazzi e ragazze. Chiamarlo «ricostruzione» può essere suggestivo, ma in senso filologico non è esatto: <strong>i versi cinquecenteschi sono perduti e pre Meni ne scrive altri, originali</strong>.</p>
+<figure class="scjara-verse" aria-labelledby="testo-zannier-didascalia">
+<blockquote lang="fur">«Scjaraçule Maraçule la lusigne e la craçule»</blockquote>
+<figcaption id="testo-zannier-didascalia">Breve incipit del testo moderno di Domenico Zannier (pre Meni), non della testimonianza musicale del 1578.</figcaption>
+</figure>
+<p>La <strong>prima parte</strong> mette insieme il titolo enigmatico della danza, suoni e creature del paesaggio rurale: la lucciola, la raganella, il dondolio, la polvere. La <strong>seconda parte</strong> mescola nuovamente assonanze vegetali a un botta e risposta ironico fra ragazza e ragazzo. Più che narrare una storia lineare, il testo fa risuonare il friulano come una filastrocca di gioco: ripetizioni, consonanze e invenzioni foniche sono importanti quanto il significato delle parole.</p>
+<div class="resource-grid" aria-label="Il testo di pre Meni e la fonte antica">
+<a class="resource" href="https://www.lapatriedalfriul.org/pre-meni-zannier-il-cjantor-dal-friul-nus-lasse-un-altri-grant-esempli-di-vere-furlanetat/" target="_blank" rel="noopener noreferrer"><small>Testo integrale · Fonte friulana, 2017</small><strong>Leggi la filastrocca completa di pre Meni ↗</strong><span>La Patrie dal Friûl pubblica i versi attribuiti a Domenico Zannier e ne spiega la creazione moderna dopo la perdita delle parole antiche.</span></a>
+<a class="resource" href="https://imslp.org/wiki/Il_Primo_Libro_de_Balli_%28Mainerio%2C_Giorgio%29" target="_blank" rel="noopener noreferrer"><small>Fonte musicale · 1578</small><strong>Confronta con la stampa di Mainerio ↗</strong><span>Nel <em>Primo libro de balli</em> troviamo la musica della danza, non le parole novecentesche di Zannier.</span></a>
+</div>
+<p class="sidenote"><strong>Distinguere le fonti:</strong> nel 1578 è documentata la musica a quattro parti; nella denuncia del 1624 compaiono frammenti di un canto rituale; nel Novecento Zannier compone la filastrocca che oggi molti associano alla melodia. L'intero testo moderno è consultabile nella pubblicazione collegata, senza confonderlo con un originale rinascimentale.</p>
+
 <aside class="author-memory" aria-labelledby="memoria-zannier"><div class="author-memory-label">Memoria personale</div><h3 id="memoria-zannier">Un bicchiere di bianco con pre Meni</h3><p>Pre Meni Zannier non è per me un personaggio sulla carta. L'ho conosciuto molto bene, e di queste cose abbiamo parlato tante volte. Lui beveva il suo bicchiere di bianco e io il mio, al circolo Kyrie Eleison in via Treppo. Bei tempi! Quegli incontri non dimostrano l'origine medievale della melodia; mi ricordano però quanto questa musica fosse ancora viva nelle persone che la amavano e la facevano conoscere.</p><div class="author-memory-signature">Alessandro Zilli</div></aside>
 <p>Quando nel 1977 Angelo Branduardi utilizza quel nucleo musicale in <em>Ballo in fa diesis minore</em>, non usa invece il testo di Zannier. Prende la musica e la porta altrove.</p>
 </section>
