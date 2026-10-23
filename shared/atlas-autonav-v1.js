@@ -7,7 +7,8 @@
   const nav=bar.querySelector(":scope > nav");
   if(!button||!nav)continue;
   const parts=location.pathname.split("/").filter(Boolean);
-  const page=parts.length<=1?"home":(parts[parts.length-1]==="index.html"?parts[parts.length-2]||"home":parts[parts.length-1]||"home");
+  const isHome=parts.length<=1||(nav.id==="atlasNavigation"&&Boolean(nav.querySelector(".nav-break"))&&Boolean(nav.querySelector('a[href="./atlante3d/"]')));
+  const page=isHome?"home":(parts[parts.length-1]==="index.html"?parts[parts.length-2]||"home":parts[parts.length-1]||"home");
   bar.dataset.atlasPage=page;
   const home=nav.querySelector(".nav-home")||document.createElement("a");
   if(!home.isConnected){home.href="#inizio";home.textContent="⌂ Home";}
