@@ -1,0 +1,77 @@
+/* Musurgia Mundi — saggi interni, menu coerente con l'indice compatto. */
+nav.mm-dossier-menu{
+ position:sticky!important;top:0!important;z-index:1000!important;
+ display:flex!important;align-items:center!important;gap:.6rem!important;
+ background:#282637!important;color:#fff!important;
+ border-bottom:1px solid #ffffff30!important;
+ min-height:55px!important;padding:.45rem clamp(.7rem,3vw,1.5rem)!important;
+ overflow:visible!important;backdrop-filter:none!important;
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;
+}
+nav.mm-dossier-menu .nav-inner{display:flex!important;align-items:center!important;gap:.65rem!important;width:100%!important;max-width:1200px!important}
+nav.mm-dossier-menu .nav-items{overflow:visible!important}
+nav.mm-dossier-menu a.mm-dossier-home,nav.mm-dossier-menu .nav-home{
+ flex:none!important;color:#fff!important;text-decoration:none!important;
+ border:1px solid #ffffff55!important;border-radius:4px!important;
+ padding:.5rem .7rem!important;font:750 .8rem/1.25 system-ui!important;
+}
+nav.mm-dossier-menu .mm-dossier-index{
+ position:relative!important;flex:none!important;margin:0!important;color:#fff!important;
+}
+nav.mm-dossier-menu .mm-dossier-index>summary{
+ display:list-item!important;list-style:none!important;cursor:pointer!important;
+ background:#6a4c69!important;color:#fff!important;border:0!important;border-radius:4px!important;
+ padding:.58rem .8rem!important;font:750 .82rem/1.3 system-ui!important;
+}
+nav.mm-dossier-menu .mm-dossier-index>summary::-webkit-details-marker{display:none!important}
+nav.mm-dossier-menu .mm-dossier-index[open]>summary{background:#826185!important}
+nav.mm-dossier-menu .mm-dossier-panel{
+ position:absolute!important;top:calc(100% + 9px)!important;left:0!important;
+ width:min(700px,calc(100vw - 24px))!important;max-height:calc(100dvh - 84px)!important;
+ padding:.95rem!important;overflow-x:hidden!important;overflow-y:auto!important;
+ background:#faf7f1!important;border:1px solid #d5c8bd!important;border-radius:4px!important;
+ box-shadow:0 14px 42px #17132355!important;
+ display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:.15rem .9rem!important;
+ color:#25212b!important;white-space:normal!important;box-sizing:border-box!important;
+}
+nav.mm-dossier-menu .mm-dossier-title{
+ display:block!important;font:800 .88rem/1.4 system-ui!important;color:#342437!important;
+ margin:0 0 .55rem!important;grid-column:1/-1!important;
+}
+nav.mm-dossier-menu .mm-dossier-chapter{
+ display:block!important;min-width:0!important;margin:.28rem 0 .5rem!important;
+ border:0!important;border-left:2px solid #bdaabd!important;padding:0 0 0 .58rem!important;
+ break-inside:avoid!important;
+}
+nav.mm-dossier-menu .mm-dossier-chapter>summary{
+ display:list-item!important;list-style:disclosure-closed inside!important;
+ cursor:pointer!important;background:#eee6ec!important;color:#342437!important;
+ border:1px solid #dacdd4!important;border-radius:4px!important;
+ padding:.54rem .62rem!important;font:750 .83rem/1.45 system-ui!important;
+}
+nav.mm-dossier-menu .mm-dossier-chapter[open]>summary{list-style:disclosure-open inside!important;background:#e4d9e4!important}
+nav.mm-dossier-menu .mm-dossier-chapter>a{
+ display:block!important;width:100%!important;color:#302834!important;background:#fffdf9!important;
+ border:0!important;border-bottom:1px solid #e9e1da!important;border-radius:0!important;
+ font:500 .83rem/1.5 system-ui!important;padding:.46rem .65rem!important;
+ white-space:normal!important;text-decoration:none!important;box-sizing:border-box!important;
+}
+nav.mm-dossier-menu .mm-dossier-chapter>a.mm-dossier-go{font-weight:650!important;background:#faf7f1!important}
+nav.mm-dossier-menu .mm-dossier-chapter>a:hover{background:#eee6ef!important}
+nav.mm-dossier-menu :is(summary,a):focus-visible{outline:2px solid #aa78bc!important;outline-offset:2px!important}
+@media(min-width:821px){
+ nav.mm-dossier-menu .mm-dossier-panel{
+  width:min(920px,calc(100vw - 24px))!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+}
+@media(max-width:700px){
+ nav.mm-dossier-menu{gap:.4rem!important;padding:.4rem .5rem!important}
+ nav.mm-dossier-menu .mm-dossier-panel{
+  position:fixed!important;top:58px!important;left:8px!important;right:8px!important;
+  width:auto!important;max-height:calc(100dvh - 72px)!important;padding:.8rem!important;
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+ nav.mm-dossier-menu .atlas-menu-context-local{display:none!important}
+}
+@media print{nav.mm-dossier-menu{display:none!important}}
