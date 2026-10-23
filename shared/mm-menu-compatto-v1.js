@@ -21,8 +21,8 @@
      const details=make('details','mm-compact-chapter');
      const title=node.textContent.trim();
      const summary=make('summary',null,title);details.append(summary);
+     const after=node.nextElementSibling; // Prima di trasferire il link nel capitolo.
      node.classList.add('mm-compact-go');node.textContent='Vai alla sezione ↗';details.append(node);
-     const after=node.nextElementSibling;
      // Il sottoindice viene preparato dal componente originale: qui è visibile
      // con un solo clic sul capitolo anziché aprire un secondo sottomenu.
      if(after&&after.classList.contains('atlas-subindex')){
