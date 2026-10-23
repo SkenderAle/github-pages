@@ -135,6 +135,13 @@ html{scroll-behavior:auto!important;scroll-padding-top:80px}
 .classico-menu-panel details>summary{cursor:pointer;color:#342437;background:#eee6ec;padding:.5rem .6rem;font:750 .84rem/1.4 system-ui;border:1px solid #dacdd4;border-radius:4px}
 .classico-menu-panel .classico-sub a{padding-left:1rem;font-size:.83rem}
 @media(max-width:600px){.classico-context{font-size:.57rem}.classico-menu>summary{padding:.58rem .65rem}}
+/* classico-menu-desktop-two-colonne */
+@media(min-width:821px){
+ .classico-menu-panel{width:min(920px,calc(100vw - 24px));grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem 1rem}
+ .classico-menu-panel>.classico-menu-label,.classico-menu-panel>.classico-cross{grid-column:1/-1}
+ #classico-menu-sections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.15rem 1rem;grid-column:1/-1;align-content:start}
+ #classico-menu-sections>details{min-width:0;break-inside:avoid}
+}
 @media print{.classico-nav{display:none}}
 </style><link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-responsive02"><link rel="stylesheet" href="../shared/mm-documenti-griglia-v1.css?v=20261022-container01"></head><body>
 <nav class="classico-nav" aria-label="Navigazione del melodramma classico"><div class="classico-navbar"><a class="classico-home" href="../">⌂ Home</a><details class="classico-menu"><summary>☰ Indice completo</summary><div class="classico-menu-panel"><strong class="classico-menu-label">Il melodramma nell’età classica</strong><a class="classico-cross" href="../melodramma/">Le origini e il Barocco ↗</a><div id="classico-menu-sections"></div></div></details><span class="classico-context">Percorsi di storia della musica</span></div></nav>
