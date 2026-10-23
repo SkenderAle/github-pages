@@ -1,0 +1,88 @@
+/* Musurgia Mundi — modello compatto dell'indice del Melodramma classico.
+   Un'unica colonna; titoli di capitolo espandibili, paragrafi al primo clic. */
+.atlas-autonav>nav.mm-compact-ready{
+ width:min(700px,calc(100vw - 24px))!important;
+ grid-template-columns:minmax(0,1fr)!important;gap:0!important;
+}
+.atlas-autonav>nav.mm-compact-ready.mm-compact-home{display:grid!important;gap:.45rem!important}
+.atlas-autonav>nav.mm-compact-ready.mm-compact-home .atlas-group-title{margin-top:.35rem!important}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-heading{
+ display:block!important;color:#403041!important;margin:.05rem 0 .8rem!important;
+ font:750 .88rem/1.4 system-ui!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter,
+.menu-panel.mm-compact-romantic .mm-compact-chapter{
+ display:block!important;min-width:0!important;margin:.32rem 0 .52rem!important;
+ border-left:2px solid #bdaabd!important;padding:0 0 0 .65rem!important;
+ background:transparent!important;overflow:visible!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>summary,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>summary{
+ display:list-item!important;list-style:disclosure-closed inside!important;
+ cursor:pointer!important;padding:.52rem .65rem!important;
+ font:750 .83rem/1.45 system-ui,-apple-system,sans-serif!important;
+ color:#342437!important;background:#eee6ec!important;
+ border:1px solid #dacdd4!important;border-radius:4px!important;
+ overflow-wrap:anywhere!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter[open]>summary,
+.menu-panel.mm-compact-romantic .mm-compact-chapter[open]>summary{
+ list-style:disclosure-open inside!important;background:#e4d9e4!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>a,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>a{
+ display:block!important;width:100%!important;min-height:0!important;
+ padding:.5rem .7rem!important;margin:0!important;text-decoration:none!important;
+ border:0!important;border-bottom:1px solid #e9e1da!important;border-radius:0!important;
+ font:500 .83rem/1.5 system-ui,-apple-system,sans-serif!important;
+ color:#302834!important;background:#fffdf9!important;white-space:normal!important;
+ overflow-wrap:anywhere!important;box-sizing:border-box!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>a.mm-compact-go,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>a.mm-compact-go{font-weight:650!important;background:#faf7f1!important}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>a:hover,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>a:hover{background:#eee6ef!important}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>a:focus-visible,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>a:focus-visible,
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>summary:focus-visible,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>summary:focus-visible{
+ outline:2px solid #7b567c!important;outline-offset:2px!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-extra{
+ display:block!important;width:100%!important;padding:.45rem .7rem!important;
+ font:650 .83rem/1.5 system-ui!important;color:#342437!important;background:#f6f0e9!important;
+ border:0!important;border-bottom:1px solid #e5dbd4!important;text-decoration:none!important;
+}
+.menu-panel.mm-compact-romantic{
+ position:absolute!important;top:calc(100% + 9px)!important;left:0!important;right:auto!important;
+ width:min(700px,calc(100vw - 24px))!important;
+ max-height:calc(100dvh - 85px)!important;overflow-y:auto!important;
+ display:block!important;grid-template-columns:1fr!important;gap:0!important;
+ padding:1rem!important;box-sizing:border-box!important;
+}
+.menu-panel.mm-compact-romantic .menu-group{display:block!important;grid-column:auto!important;margin:.55rem 0!important}
+.menu-panel.mm-compact-romantic .menu-group>strong{
+ display:block!important;font:800 .73rem/1.45 system-ui!important;
+ padding:.5rem .3rem!important;color:#60425f!important;
+}
+.menu-panel.mm-compact-romantic .menu-preface .index-subsections{margin-bottom:.45rem!important}
+.menu-panel.mm-compact-romantic .mm-compact-outro{margin-top:.9rem!important}
+.mm-index-panel.mm-compact-ready{
+ width:min(700px,calc(100vw - 24px))!important;max-height:calc(100dvh - 86px)!important;
+ grid-template-columns:1fr!important;padding:.9rem!important;
+}
+#menu>.panel.mm-compact-ready{
+ width:min(700px,calc(100vw - 24px))!important;
+ max-height:calc(100dvh - 86px)!important;grid-template-columns:1fr!important;
+}
+@media(max-width:700px){
+ .atlas-autonav>nav.mm-compact-ready{left:8px!important;width:calc(100vw - 16px)!important}
+ .menu-panel.mm-compact-romantic{left:-48px!important;width:calc(100vw - 16px)!important;
+  max-height:calc(100dvh - 73px)!important;padding:.85rem!important}
+ .mm-index-panel.mm-compact-ready,#menu>.panel.mm-compact-ready{
+  max-height:calc(100dvh - 73px)!important;
+ }
+}
+@media print{
+ .atlas-autonav>nav.mm-compact-ready,.menu-panel.mm-compact-romantic{display:none!important}
+}
