@@ -62,6 +62,40 @@
    outro.replaceWith(details);
   }
  }
+ // Le avanguardie sono ancora un cantiere editoriale: cambia solo il menu,
+ // non il testo della bozza né gli ancoraggi dei suoi compositori.
+ const av=document.querySelector('#av-indice > .av-panel');
+ if(av&&!av.classList.contains('mm-compact-ready')){
+  const links=[...av.querySelectorAll(':scope > a[href^="#"]')];
+  if(links.length){
+   av.classList.add('mm-compact-ready');
+   const title=av.querySelector(':scope > strong')||make('strong',null,'Verso le avanguardie · Indice');
+   const fragment=document.createDocumentFragment();fragment.append(title);
+   let idx=0;
+   for(const link of links){
+    const target=document.getElementById(link.getAttribute('href').slice(1));
+    const next=links.slice(idx+1).map(a=>document.getElementById(a.getAttribute('href').slice(1))).find(Boolean);
+    const details=make('details','mm-compact-chapter');
+    details.append(make('summary',null,link.textContent.trim()));
+    link.classList.add('mm-compact-go');link.textContent='Vai alla sezione ↗';details.append(link);
+    const root=target?.closest('section')||target;
+    if(root&&target){
+     let n=0;
+     for(const h of root.querySelectorAll('h3,h4')){
+      if(h===target||h.closest('nav,aside,details,[hidden]'))continue;
+      if(!(target.compareDocumentPosition(h)&Node.DOCUMENT_POSITION_FOLLOWING))continue;
+      if(next&&!(h.compareDocumentPosition(next)&Node.DOCUMENT_POSITION_FOLLOWING))continue;
+      if(h.textContent.trim().length<5||++n>25)continue;
+      if(!h.id)h.id='mm-av-par-'+idx+'-'+n;
+      const a=make('a','mm-compact-sub',n+' · '+h.textContent.trim().slice(0,110));
+      a.href='#'+h.id;details.append(a);
+     }
+    }
+    fragment.append(details);idx++;
+   }
+   av.replaceChildren(fragment);
+  }
+ }
  // La pagina dei concerti conserva un collegamento immediato all'Audioteca,
  // accanto a un indice richiudibile per il racconto, il repertorio e le fonti.
  const concerti=document.querySelector('nav.main[aria-label="Navigazione principale"] > div');
@@ -88,7 +122,7 @@
       if(heading===target||heading===root.querySelector('h2')||heading.textContent.trim().length<5)continue;
       if(++n>35)break;
       if(!heading.id)heading.id='mm-concerti-'+id+'-'+n;
-      const a=make('a','mm-compact-sub',n+' · '+heading.textContent.trim().replace(/\\s+/g,' ').slice(0,105));
+      const a=make('a','mm-compact-sub',n+' · '+heading.textContent.trim().replace(/\s+/g,' ').slice(0,105));
       a.href='#'+heading.id;chapter.append(a);
      }
     }
