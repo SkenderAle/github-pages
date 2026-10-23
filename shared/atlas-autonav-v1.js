@@ -34,15 +34,12 @@
     const after=nodes.slice(breakAt+1).filter(node=>node.matches&&node.matches("a,button"));
     chunks.push(before);
     // Gruppi editoriali stabili: non dividere i percorsi ogni sette voci.
-    // I cinque percorsi dell'Audioteca nella sequenza editoriale concordata.
-    // Il primo raccoglie tutte le epoche del melodramma: non si creano due
-    // voci per la stessa pagina. Gli href e l'eventuale stato di bozza restano.
+    // Percorsi III: esclusivamente audioteche effettive.
+    // I percorsi storici sul melodramma e sull'opera lirica restano in Percorsi II.
     const order=[
       "melodramma/audioteca/",
-      "melodramma-classico/",
       "musica-da-camera/",
-      "dalla-sinfonia-alla-rapsodia/",
-      "opera-lirica/"
+      "dalla-sinfonia-alla-rapsodia/"
     ];
     const inAudio=a=>order.some(slug=>(a.getAttribute("href")||"").includes(slug));
     const unique=new Set();
