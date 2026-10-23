@@ -1,0 +1,29 @@
+name: Musurgia Mundi · Indici senza frenata
+on:
+  push:
+    paths:
+      - '**/*.html'
+      - '**/*.css'
+      - '**/*.js'
+      - 'tools/check-menu-anchor-scroll.mjs'
+      - '.github/workflows/no-smooth-menu.yml'
+  pull_request:
+    paths:
+      - '**/*.html'
+      - '**/*.css'
+      - '**/*.js'
+      - 'tools/check-menu-anchor-scroll.mjs'
+      - '.github/workflows/no-smooth-menu.yml'
+  workflow_dispatch:
+jobs:
+  verifica:
+    name: Controlla salti immediati dai menu
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node tools/check-menu-anchor-scroll.mjs
