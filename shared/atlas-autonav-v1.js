@@ -33,8 +33,30 @@
     const after=nodes.slice(breakAt+1).filter(node=>node.matches&&node.matches("a,button"));
     chunks.push(before);
     // Gruppi editoriali stabili: non dividere i percorsi ogni sette voci.
-    const audio=after.filter(a=>/audiotec/i.test(a.textContent||"")||/audiotec/i.test(a.getAttribute("href")||""));
-    const narrative=after.filter(a=>!audio.includes(a));
+    // Percorsi III: tutte le audioteche; include la storia della sonata e il
+    // percorso sinfonico richiesti dall'editore. Non ripartire questa famiglia
+    // in blocchi arbitrari, non duplicare voci.
+    const inAudio=(a)=>{
+      const href=(a.getAttribute("href")||"");
+      return /audiotec/i.test(a.textContent||"")||/audiotec/i.test(href)
+        ||/\/(musica-da-camera|dalla-sinfonia-alla-rapsodia|concerti)\//.test(href);
+    };
+    const order=["musica-da-camera/","dalla-sinfonia-alla-rapsodia/","concerti/","melodramma/audioteca/"];
+    const unique=new Set();
+    const audio=after.filter(a=>{
+      if(!inAudio(a))return false;
+      const href=a.getAttribute("href")||"";
+      if(unique.has(href))return false;
+      unique.add(href);return true;
+    }).sort((a,b)=>{
+      const rank=el=>{
+        const href=el.getAttribute("href")||"";
+        const i=order.findIndex(x=>href.includes(x));
+        return i<0?order.length:i;
+      };
+      return rank(a)-rank(b);
+    });
+    const narrative=after.filter(a=>!inAudio(a));
     // Percorsi I: dal Medioevo alla musica da camera; II: percorsi trasversali, compreso il cinema.
     const boundary=narrative.findIndex(a=>(a.getAttribute("href")||"").includes("parola-e-canto/"));
     const first=boundary>=0?narrative.slice(0,boundary):narrative.slice(0,7);
