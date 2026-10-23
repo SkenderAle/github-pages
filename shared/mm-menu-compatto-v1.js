@@ -144,9 +144,16 @@
    if(owner)owner.open=false;
   });
  });
+ // Chiude i pannelli lasciati aperti quando il lettore torna alla pagina.
+ // Non interferisce con il clic sui summary o sui link interni al pannello.
+ document.addEventListener('pointerdown',event=>{
+  for(const menu of document.querySelectorAll('#indice-menu[open],#menu[open],.mm-index-details[open],#av-indice[open],.mm-concerti-index[open]')){
+   if(!menu.contains(event.target))menu.open=false;
+  }
+ });
  document.addEventListener('keydown',e=>{
   if(e.key!=='Escape')return;
-  const opened=[...document.querySelectorAll('#indice-menu[open],#menu[open],.mm-index-details[open]')];
+  const opened=[...document.querySelectorAll('#indice-menu[open],#menu[open],.mm-index-details[open],#av-indice[open],.mm-concerti-index[open]')];
   for(const item of opened){item.open=false;item.querySelector(':scope > summary')?.focus();}
  });
 })();
