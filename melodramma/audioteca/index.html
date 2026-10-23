@@ -339,34 +339,31 @@ document.addEventListener('pointerdown',e=>{if(menu.open&&!menu.contains(e.targe
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.open){menu.open=false;menu.querySelector(':scope > summary')?.focus()}});
 })();
 </script><script src="../../shared/mm-confronto-estratti-v1.js?v=20261024-opera-viii" defer></script><script id="mm-audio-search">(()=>{'use strict';
-const q=document.getElementById('audio-search-input'),composer=document.getElementById('audio-filter-composer'),period=document.getElementById('audio-filter-period'),reset=document.getElementById('audio-search-reset'),n=document.getElementById('audio-search-count'),empty=document.getElementById('audio-search-empty');
-if(!q||!composer||!period)return;
-const cards=[...document.querySelectorAll('main .mm-compare-track')],sections=[...document.querySelectorAll('main section.period')];
+const q=document.getElementById('audio-search-input'),composer=document.getElementById('audio-filter-composer'),period=document.getElementById('audio-filter-period'),reset=document.getElementById('audio-search-reset'),n=document.getElementById('audio-search-count'),empty=document.getElementById('audio-search-empty');if(!q||!composer||!period)return;
+const sections=[...document.querySelectorAll('main section.period')];
+const tracks=[...document.querySelectorAll('main .mm-compare-track')],sources=[...document.querySelectorAll('main .mm-external-card')];
 const norm=s=>(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
-const meta=cards.map(card=>{
- const col=card.closest('.collection'),sec=card.closest('.period');
- const title=card.querySelector('h4')?.textContent?.trim()||'';
- const artist=title.split(/\s*[·–]\s*/)[0].trim();
- if(!card.querySelector('.audio-note')){
-  const lead=col?.querySelector('.panel-lead')?.textContent?.trim();
+const meta=[...tracks,...sources].map(card=>{
+ const col=card.closest('.collection'),sec=card.closest('.period'),title=card.querySelector('h4,h3')?.textContent.trim()||'';
+ const artist=title.split(/\s*[·—]\s*/)[0].trim();
+ if(card.classList.contains('mm-compare-track')&&!card.querySelector('.audio-note')){
+  const lead=col?.querySelector('.panel-lead')?.textContent.trim();
   if(lead&&card.querySelector('h4')){const p=document.createElement('p');p.className='audio-note';p.textContent='Guida all’ascolto: '+lead;card.querySelector('h4').after(p)}
  }
- return {card,col,sec,artist,title};
+ return {card,col,sec,title,artist,external:card.classList.contains('mm-external-card')};
 });
-[...new Set(meta.map(m=>m.artist))].filter(Boolean).sort((a,b)=>a.localeCompare(b,'it')).forEach(name=>{const o=document.createElement('option');o.value=name;o.textContent=name;composer.append(o)});
-sections.forEach((sec,i)=>{const o=document.createElement('option');o.value=sec.id;o.textContent=(sec.querySelector('h2')?.textContent||'Sezione '+(i+1)).trim();period.append(o)});
+[...new Set(meta.map(m=>m.artist))].filter(Boolean).sort((a,b)=>a.localeCompare(b,'it')).forEach(name=>{const opt=document.createElement('option');opt.value=name;opt.textContent=name;composer.append(opt)});
+sections.forEach((sec,i)=>{const opt=document.createElement('option');opt.value=sec.id;opt.textContent=(sec.querySelector(':scope > h2')?.textContent||'Sezione '+(i+1)).trim();period.append(opt)});
 function render(){
- const query=norm(q.value),who=composer.value,where=period.value;let found=0;
- for(const m of meta){
-  const text=[m.card.textContent,m.col?.querySelector('h3')?.textContent,m.sec?.querySelector('h2')?.textContent].join(' ');
-  const visible=(!query||norm(text).includes(query))&&(!who||m.artist===who)&&(!where||m.sec?.id===where);
-  m.card.hidden=!visible;if(visible)found++;
+ const query=norm(q.value),who=composer.value,where=period.value;let visibleTracks=0,visibleSources=0;
+ for(const m of meta){const text=[m.card.textContent,m.col?.querySelector('h3')?.textContent,m.sec?.querySelector(':scope > h2')?.textContent].join(' ');
+  const show=(!query||norm(text).includes(query))&&(!who||m.artist===who)&&(!where||m.sec?.id===where);
+  m.card.hidden=!show;if(show){if(m.external)visibleSources++;else visibleTracks++}
  }
  document.querySelectorAll('main .collection').forEach(col=>{col.hidden=![...col.querySelectorAll('.mm-compare-track')].some(c=>!c.hidden)});
- sections.forEach(sec=>{sec.hidden=![...sec.querySelectorAll('.mm-compare-track')].some(c=>!c.hidden)});
- n.textContent=found+' ascolti visualizzati su '+cards.length;empty.hidden=found!==0;
+ sections.forEach(sec=>{sec.hidden=![...sec.querySelectorAll('.mm-compare-track,.mm-external-card')].some(card=>!card.hidden)});
+ n.textContent=visibleTracks+' video su '+tracks.length+' · '+visibleSources+' fonti esterne su '+sources.length;empty.hidden=(visibleTracks+visibleSources)!==0;
 }
 q.addEventListener('input',render);composer.addEventListener('change',render);period.addEventListener('change',render);
 reset.addEventListener('click',()=>{q.value='';composer.value='';period.value='';render();q.focus()});
-render();
-})();</script></body></html>
+render();})();</script></body></html>
