@@ -1996,7 +1996,8 @@ if(jewishIconDialog){
     const dots=audible?[...lab.querySelectorAll('.polytime-note')]:[];
     const freqs=clausula?[523.251,659.255,523.251,659.255,587.330,659.255,523.251]:discant?[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255]:[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255,493.883];
     const seconds=4.4;
-    const clausulaTenorVolume=.43*.61; // -39% rispetto al volume precedente; solo clausula
+    const clausulaTenorVolume=.43*.61; // note brevi della clausula
+    const clausulaLongTenorVolume=clausulaTenorVolume*.5; // due note lunghe, ulteriormente -50%
     const tenorDots=(discant||clausula)?[...lab.querySelectorAll('.polytime-pulse')]:[];
     let lastTenor=-1,tenorSection=-1;
     let ctx=null, master=null, bass=null, raf=null, started=0, last=-1;
@@ -2097,7 +2098,7 @@ if(jewishIconDialog){
           releaseBass();
           tenorSection=section;
           if(section!==1){
-            try{if(ctx&&ctx.state==='running')bass=sound(164.814,seconds,clausulaTenorVolume,true);}catch(error){console.warn('Clausula: tenor tenuto',error);}
+            try{if(ctx&&ctx.state==='running')bass=sound(164.814,seconds,clausulaLongTenorVolume,true);}catch(error){console.warn('Clausula: tenor tenuto',error);}
           }
         }
       }
