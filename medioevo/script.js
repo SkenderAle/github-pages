@@ -2081,7 +2081,7 @@ if(jewishIconDialog){
       }
       if(ctx.state==='suspended')await ctx.resume();
       if(!lab.classList.contains('playing'))return;
-      bass=sound(164.814,seconds,.86,true); // Mi3 sostenuto, con armonici udibili anche su piccoli altoparlanti
+      bass=sound(164.814,seconds,.43,true); // Mi3 sostenuto, con armonici udibili anche su piccoli altoparlanti
       cursor.style.animation='none';cursor.style.opacity='1';
       started=performance.now();last=-1;
       raf=requestAnimationFrame(tick);
