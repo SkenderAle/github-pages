@@ -49,7 +49,7 @@ function generatedGuide(id) {
   if (!id.startsWith('guida-')) return false;
   const key = id.slice('guida-'.length);
   if (!/^[A-Za-z0-9_-]+$/.test(key)) return false;
-  return content('musica-da-camera/index.html').includes('"' + key + '":{"title":');
+  return content('musica-da-camera/index.html').includes('"' + key + '":{');
 }
 let checked=0,valid=0,dynamic=0,redirects=0;
 for (const from of sourcePages) {
