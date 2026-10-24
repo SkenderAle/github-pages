@@ -51,7 +51,7 @@ sources.forEach(([all,body],i)=>{
 });
 const script=html.match(/<script src="([^"]*mm-confronto-estratti-v1\.js[^"]*)"/)?.[1]||'';
 if(!script)issue(errors,0,'player_script','Componente video condiviso non caricato');
-const summary={date:'2026-10-24',cards:rows.length,uniqueVideos:seen.size,externalSources:sources.length,timedClips:rows.filter(x=>x.end!==null).length,errors,warnings,playerScript:script};
+const summary={checkedAt:new Date().toISOString(),cards:rows.length,uniqueVideos:seen.size,externalSources:sources.length,timedClips:rows.filter(x=>x.end!==null).length,errors,warnings,playerScript:script};
 if(process.argv.includes('--json'))console.log(JSON.stringify({...summary,rows},null,2));
 else{
  console.log('Musurgia Mundi / Audioteca del melodramma — AUDIT STATICO');
