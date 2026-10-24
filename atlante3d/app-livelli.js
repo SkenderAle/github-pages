@@ -685,10 +685,17 @@ function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw
  // Un regista non e' un compositore: la categoria resta ontologica, anche nei rapporti con le colonne sonore.
  // Conversione in sola visualizzazione per gli eventuali record storici mal classificati.
  const cinemaDirectors=new Set(["alfred hitchcock","stanley kubrick","federico fellini","sergej ejzenstejn","sergei eisenstein","s. m. eisenstein","orson welles","luchino visconti","francois truffaut","françois truffaut","akira kurosawa","charlie chaplin","charles chaplin","bernardo bertolucci","sergio leone","david lynch","martin scorsese","steven spielberg","alfonso cuaron","alfonso cuarón","tim burton"]);
+ // Per una figura gia' registrata come persona, il filtro della lente musicale
+ // non deve nascondere i registi per i quali la pagina sul cinema documenta
+ // un rapporto specifico con la partitura (Hitchcock/Herrmann, Fellini/Rota)
+ // o con la pratica musicale delle proiezioni (Melies). Non li trasforma in compositori.
+ const cinemaNarrativePeople=new Set(["alfred hitchcock","federico fellini","georges melies","georges méliès"]);
  const all=db.nodes.filter(n=>n.type!=="ambito"&&n.visible!==0&&n.visible!=="0").map(n=>{
   const name=String(n.label||n.name||"").toLocaleLowerCase("it").trim();
   if(n.type==="compositore"&&cinemaDirectors.has(name))
    return {...n,type:"persona",music_relevance:true,category_audit:"regista cinematografico; categoria corretta nella visualizzazione"};
+  if(n.type==="persona"&&cinemaNarrativePeople.has(name))
+   return {...n,music_relevance:true,category_audit:"figura del cinema: relazione con la musica documentata nel percorso Dal musical al film"};
   return n;
  });
  const anchors=new Map();let i=0;
