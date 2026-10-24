@@ -1996,6 +1996,7 @@ if(jewishIconDialog){
     const dots=audible?[...lab.querySelectorAll('.polytime-note')]:[];
     const freqs=clausula?[523.251,659.255,523.251,659.255,587.330,659.255,523.251]:discant?[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255]:[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255,493.883];
     const seconds=4.4;
+    const clausulaTenorVolume=.43*.61; // -39% rispetto al volume precedente; solo clausula
     const tenorDots=(discant||clausula)?[...lab.querySelectorAll('.polytime-pulse')]:[];
     let lastTenor=-1,tenorSection=-1;
     let ctx=null, master=null, bass=null, raf=null, started=0, last=-1;
@@ -2096,7 +2097,7 @@ if(jewishIconDialog){
           releaseBass();
           tenorSection=section;
           if(section!==1){
-            try{if(ctx&&ctx.state==='running')bass=sound(164.814,seconds,.43,true);}catch(error){console.warn('Clausula: tenor tenuto',error);}
+            try{if(ctx&&ctx.state==='running')bass=sound(164.814,seconds,clausulaTenorVolume,true);}catch(error){console.warn('Clausula: tenor tenuto',error);}
           }
         }
       }
@@ -2110,7 +2111,7 @@ if(jewishIconDialog){
           tenorDots.forEach((dot,i)=>dot.classList.toggle('is-sounding',i===currentTenor));
           if(currentTenor>=0){
             try{
-              if(ctx&&ctx.state==='running')if(!clausula||tenorSection===1)voices.push(sound(164.814,.37,clausula?.43:.70));
+              if(ctx&&ctx.state==='running')if(!clausula||tenorSection===1)voices.push(sound(164.814,.37,clausula?clausulaTenorVolume:.70));
             }catch(error){console.warn('Discantus: tenor non riprodotto',error);}
           }
         }
