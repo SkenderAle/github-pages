@@ -1993,7 +1993,7 @@ if(jewishIconDialog){
     const audible=purum||discant;
     const cursor=audible?lab.querySelector('.polytime-cursor'):null;
     const dots=audible?[...lab.querySelectorAll('.polytime-note')]:[];
-    const freqs=[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255,493.883];
+    const freqs=discant?[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255]:[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255,493.883];
     const seconds=4.4;
     const tenorDots=discant?[...lab.querySelectorAll('.polytime-pulse')]:[];
     let lastTenor=-1;
@@ -2085,7 +2085,7 @@ if(jewishIconDialog){
           tenorDots.forEach((dot,i)=>dot.classList.toggle('is-sounding',i===currentTenor));
           if(currentTenor>=0){
             try{
-              if(ctx&&ctx.state==='running')voices.push(sound(164.814,.37,.43));
+              if(ctx&&ctx.state==='running')voices.push(sound(164.814,.37,.70));
             }catch(error){console.warn('Discantus: tenor non riprodotto',error);}
           }
         }
