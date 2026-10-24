@@ -64,3 +64,40 @@ Controllo contro gli ID HTML:
 **Verifica documentaria immagini del lotto I:** i 10 nomi di file Wikimedia Commons impiegati nelle quattro pagine modificate risultano presenti nelle rispettive schede, con attribuzioni compatibili con le didascalie. È ancora necessario verificare la risposta delle URL `Special:FilePath` e le dimensioni/impaginazione sui dispositivi reali.
 
 **Riserve importanti:** test browser e collaudo dei player non completati; i file più grandi dell'Atlante (`grafo.json`, `relazioni.json`) non sono stati acquisiti integralmente tramite connettore. Non presentare questo audit come validazione dei collegamenti esterni o di tutte le relazioni filologiche.
+
+
+## Maxi-lotto III — persone, cinema, libretto e poesia (25 ottobre)
+
+**Base ripresa:** `92da72b`. Tutti gli interventi sono sul branch `main`; non sono stati creati altri branch e non è stato riscritto il testo della bozza `verso-le-avanguardie`.
+
+### Nuovi collegamenti documentati e reciprocità
+
+**Tredici** rimandi puntuali attivati dopo avere collocato un'ancora sulla menzione effettiva e verificato un collegamento di ritorno dalla pagina all'Atlante.
+
+- `dal-musical-al-film/index.html`: **Alfred Hitchcock** nel paragrafo su Herrmann e la regia; **Federico Fellini** nel paragrafo su Nino Rota; **Max Steiner** nell'orchestrazione cinematografica; **Leonard Bernstein** nel musical; **Jeanine Tesori** nella discussione sul musical contemporaneo (qui esisteva già il ritorno).
+- `melodramma/index.html`: **Ottavio Rinuccini**, poeta teatrale nel contesto di Peri e Jacopo Corsi.
+- `parola-e-canto/index.html`: quattro voci poetiche distinte e contestualizzate: **Wilhelm Müller** (`Die schöne Müllerin`, `Winterreise`), **Heinrich Heine** (`Dichterliebe`), **Eduard Mörike** (Wolf, `Verborgenheit`), **Paul Verlaine** (Debussy, `Ariettes oubliées`). Per Verlaine l'ancora è nella sezione della *mélodie* europea, senza confondere la cronologia.
+- `barocco/index.html`: **Jean-Baptiste Lully** nella rete dinastica e cortigiana francese.
+- `romanticismo/index.html`: **John Field** nella storia del notturno e **Pablo de Sarasate** nella discussione sul virtuosismo violinistico.
+
+Il nuovo rimando per **John Field** sostituisce una riserva evidentemente incongrua verso le radici afroamericane. La collocazione nell'attuale pagina romantica è coerente con la storia del notturno; nessun passaggio della bozza Avanguardie è stato toccato.
+
+### Filologia delle riserve
+
+Nel registro `atlante3d/database/collegamenti-sito.json` sono stati aggiunti **13 collegamenti specifici** e riconciliati **17 elementi `pendingReview`**: tredici collegati a questi nomi più quattro vecchie voci generiche/ridondanti o già coperte da un'ancora esatta. Le altre riserve restano in quarantena e non vengono promosse per una semplice somiglianza di cognome o vicinanza tematica.
+
+**Stato dopo gli interventi:** **516 collegamenti attivi** e **268 sospesi** per 791 nodi censiti nel file. Le 268 riserve sono ripartite in: 69 attribuzioni per cognome non verificate; 161 rimandi a categorie/generalità anziché a un'opera; 35 macro-capitoli o destinazioni non specifiche; 3 casi che attendono un rimando puntuale con ritorno. Il contatore `validation.pending_review` corrisponde a 268.
+
+**Controllo conclusivo sul codice:** **318** URL trovano l'ID direttamente nel sorgente HTML, compresi i 23 vecchi rimandi attraverso il redirect post-romanticismo; **198** rimandano a schede dinamiche e hanno corrispondenza ricostruita dal catalogo; nessun duplicato per coppia nodo/URL e nessuna sovrapposizione fra `byNode` e `pendingReview` nelle verifiche statiche.
+
+### Interfaccia e anti-regressione
+
+`atlante3d/app-livelli.js`: per **Hitchcock, Fellini e Méliès**, quando classificati correttamente `persona`, la preparazione della vista dichiara anche `music_relevance` perché il sito documenta un rapporto concreto con il cinema e la sua musica. Restano **personaggi, non compositori**. Questo corregge la condizione di esclusione preventiva della categoria nelle lenti musicali; la visualizzazione effettiva, gli eventuali archi del grafo e le interazioni su smartphone richiedono prova nel browser.
+
+Nuovo controllo `tools/check-site-link-registry.mjs`: verifica che il contatore dei sospesi coincida con l'array, che i collegamenti attivi e sospesi siano univoci, che non si sovrappongano e che i nodi sospesi esistano nel registro. Aggiunto al workflow `.github/workflows/musurgia-site-links.yml`, insieme alle precedenti verifiche delle ancore. **Il test è predisposto su GitHub, ma non è stata osservata in questa sessione un'esecuzione di GitHub Actions conclusa con esito positivo.**
+
+### Riserve ancora aperte
+
+- I file `grafo.json` e `relazioni.json` dell'Atlante superano il contenuto recuperabile in un'unica lettura del connettore e non sono stati sottoposti a audit filologico integrale in questo lotto.
+- Il controllo HTML/JSON degli identificativi non equivale a riproduzione di una pagina caricata realmente, né attesta YouTube, scroll, comportamento delle categorie e compatibilità mobile.
+- Le restanti **268 riserve** non vanno promosse per analogia, cognome o sola presenza in un indice: occorre una citazione specifica o un'opera, un'ancora e una ragione editoriale.
