@@ -1,0 +1,39 @@
+name: Musurgia Mundi · Atlante e ancore delle pagine
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'atlante3d/database/collegamenti-sito.json'
+      - 'parola-e-canto/index.html'
+      - 'musica-da-camera/index.html'
+      - 'dalla-sinfonia-alla-rapsodia/index.html'
+      - 'post-romanticismo/index.html'
+      - 'verso-le-avanguardie/index.html'
+      - '**/index.html'
+      - 'shared/atlas-anchor-arrival-v1.js'
+      - 'tools/check-atlante-site-links.mjs'
+      - '.github/workflows/musurgia-site-links.yml'
+  pull_request:
+    paths:
+      - 'atlante3d/database/collegamenti-sito.json'
+      - '**/index.html'
+      - 'shared/atlas-anchor-arrival-v1.js'
+      - 'tools/check-atlante-site-links.mjs'
+      - '.github/workflows/musurgia-site-links.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verifica:
+    name: Verifica ancore e rimandi Atlante
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check tools/check-atlante-site-links.mjs
+      - run: node tools/check-atlante-site-links.mjs
