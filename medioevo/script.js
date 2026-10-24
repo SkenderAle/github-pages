@@ -2008,9 +2008,9 @@ if(jewishIconDialog){
       if(!sustain){
         amp.gain.setValueAtTime(level,now+Math.max(.06,length-.10));
         amp.gain.exponentialRampToValueAtTime(.0001,now+length);
-        osc.stop(now+length+.02);
       }
       osc.connect(filter);filter.connect(amp);amp.connect(master);osc.start(now);
+      if(!sustain)osc.stop(now+length+.02);
       const harmonics=[];
       if(sustain){
         // A reinforced vocal-like Mi: the upper partials make the low tenor
@@ -2063,7 +2063,10 @@ if(jewishIconDialog){
         last=current;
         dots.forEach((dot,i)=>dot.classList.toggle('is-sounding',i===current));
         if(current>=0){
-          voices.push(sound(freqs[current],.27,.19));
+          // A playback error must never interrupt the cursor animation.
+          try{
+            if(ctx&&ctx.state==='running')voices.push(sound(freqs[current],.27,.19));
+          }catch(error){console.warn('Organum: nota non riprodotta',error);}
           if(voices.length>40)voices.splice(0,20);
         }
       }
