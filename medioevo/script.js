@@ -1982,98 +1982,101 @@ if(jewishIconDialog){
   });
 })();
 
-// 2026-10-24 · Laboratori di polifonia: il purum ora è anche udibile.
-// Schema didattico, non trascrizione storica: Mi3 tenuto e La4/Do5 alternati.
+// 2026-10-24 · Organum purum sonoro: ogni nota suona al passaggio effettivo del cursore.
+// Schema didattico: Mi3 sostenuto; La4 Do5 Si4 Re5 Do5 Mi5 Si4 Re5 Do5 Mi5 Si4.
 (() => {
-  const labs=[...document.querySelectorAll('.polytime-lab')];
-  labs.forEach(lab=>{
+  document.querySelectorAll('.polytime-lab').forEach(lab=>{
     const btn=lab.querySelector('.polytime-play');
     const clause=lab.querySelector('.polytime-clause');
-    const isPurum=lab.dataset.polytimeLab==='purum';
-    const duration=4.4;
-    let ctx=null, master=null, tenor=null, loop=null;
-    const transient=[];
-    let nextCycle=0;
-    const noteXs=[8,16,24,32,40,48,56,64,72,80,88];
-    const noteFreqs=noteXs.map((_,i)=>i%2===0?440:523.251); // La4 / Do5
-    if(isPurum&&btn)btn.textContent='▶ Ascolta e guarda';
-
-    function voice(freq,start,len,volume,sustained=false){
-      const out=ctx.createGain();
-      out.gain.setValueAtTime(.0001,start);
-      out.gain.exponentialRampToValueAtTime(volume,start+.055);
-      if(!sustained){
-        out.gain.setValueAtTime(volume,start+Math.max(.065,len-.12));
-        out.gain.exponentialRampToValueAtTime(.0001,start+len);
+    const purum=lab.dataset.polytimeLab==='purum';
+    const cursor=purum?lab.querySelector('.polytime-cursor'):null;
+    const dots=purum?[...lab.querySelectorAll('.polytime-note')]:[];
+    const freqs=[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255,493.883];
+    const seconds=4.4;
+    let ctx=null, master=null, bass=null, raf=null, started=0, last=-1;
+    const voices=[];
+    if(purum&&btn)btn.textContent='▶ Ascolta e guarda';
+    function sound(freq,length,level,sustain=false){
+      const now=ctx.currentTime;
+      const amp=ctx.createGain(),filter=ctx.createBiquadFilter(),osc=ctx.createOscillator();
+      filter.type='lowpass';
+      filter.frequency.value=sustain?1800:2100;
+      osc.type=sustain?'sawtooth':'triangle';
+      osc.frequency.value=freq;
+      amp.gain.setValueAtTime(.0001,now);
+      amp.gain.exponentialRampToValueAtTime(level,now+.025);
+      if(!sustain){
+        amp.gain.setValueAtTime(level,now+Math.max(.06,length-.10));
+        amp.gain.exponentialRampToValueAtTime(.0001,now+length);
+        osc.stop(now+length+.02);
       }
-      const lowpass=ctx.createBiquadFilter();
-      lowpass.type='lowpass';lowpass.frequency.value=sustained?1100:1600;
-      const osc=ctx.createOscillator();
-      osc.type='triangle';osc.frequency.setValueAtTime(freq,start);
-      osc.connect(lowpass);lowpass.connect(out);out.connect(master);
-      osc.start(start);
-      if(!sustained)osc.stop(start+len+.025);
-      return {osc,out};
-    }
-    function scheduleCycle(start){
-      noteXs.forEach((x,i)=>{
-        const onset=start+duration*(x-5)/90;
-        transient.push(voice(noteFreqs[i],onset,.30,.24));
-      });
+      osc.connect(filter);filter.connect(amp);amp.connect(master);osc.start(now);
+      return {osc,amp};
     }
     function stopAudio(){
-      if(loop!==null){clearInterval(loop);loop=null;}
-      if(!ctx)return;
-      const now=ctx.currentTime;
-      const all=tenor?[tenor,...transient]:transient;
-      all.forEach(({osc,out})=>{
-        try{
-          out.gain.cancelScheduledValues(now);
-          out.gain.setValueAtTime(Math.max(.0001,out.gain.value),now);
-          out.gain.exponentialRampToValueAtTime(.0001,now+.08);
-          osc.stop(now+.12);
-        }catch(e){}
+      if(raf!==null){cancelAnimationFrame(raf);raf=null;}
+      if(ctx){
+        const now=ctx.currentTime;
+        [bass,...voices].filter(Boolean).forEach(({osc,amp})=>{
+          try{
+            amp.gain.cancelScheduledValues(now);
+            amp.gain.setValueAtTime(Math.max(.0001,amp.gain.value),now);
+            amp.gain.exponentialRampToValueAtTime(.0001,now+.06);
+            osc.stop(now+.09);
+          }catch(e){}
+        });
+      }
+      bass=null;voices.length=0;last=-1;
+      dots.forEach(dot=>dot.classList.remove('is-sounding'));
+      if(cursor){cursor.style.animation='none';cursor.style.left='5%';cursor.style.opacity='0';}
+    }
+    function tick(now){
+      if(!lab.classList.contains('playing'))return;
+      const elapsed=(now-started)/1000;
+      const fraction=(elapsed%seconds)/seconds;
+      const x=5+90*fraction;
+      cursor.style.left=x+'%';
+      let current=-1;
+      dots.forEach((dot,i)=>{
+        const dotX=parseFloat(dot.style.getPropertyValue('--x'));
+        if(x>=dotX)current=i;
       });
-      tenor=null;transient.length=0;
+      // The note changes only as the cursor crosses the corresponding dot.
+      if(current!==last){
+        last=current;
+        dots.forEach((dot,i)=>dot.classList.toggle('is-sounding',i===current));
+        if(current>=0){
+          voices.push(sound(freqs[current],.27,.19));
+          if(voices.length>40)voices.splice(0,20);
+        }
+      }
+      raf=requestAnimationFrame(tick);
     }
     async function startAudio(){
-      const AudioCtx=window.AudioContext||window.webkitAudioContext;
-      if(!AudioCtx)return;
+      const AC=window.AudioContext||window.webkitAudioContext;
+      if(!AC)return;
       if(!ctx){
-        ctx=new AudioCtx();
-        master=ctx.createGain();
-        master.gain.value=.25;
-        master.connect(ctx.destination);
+        ctx=new AC();
+        master=ctx.createGain();master.gain.value=.42;master.connect(ctx.destination);
       }
       if(ctx.state==='suspended')await ctx.resume();
       if(!lab.classList.contains('playing'))return;
-      const start=ctx.currentTime+.035;
-      tenor=voice(164.814,start,duration,.34,true); // Mi3
-      nextCycle=start;
-      scheduleCycle(nextCycle);
-      nextCycle+=duration;
-      // Schedule in advance while the existing 4.4 s graphic loop runs.
-      loop=setInterval(()=>{
-        if(!lab.classList.contains('playing'))return;
-        scheduleCycle(nextCycle);
-        nextCycle+=duration;
-        // Keep this list bounded: completed oscillator nodes have already stopped.
-        if(transient.length>44)transient.splice(0,22);
-      },duration*1000);
+      bass=sound(164.814,seconds,.70,true); // Mi3 decisamente in primo piano
+      cursor.style.animation='none';cursor.style.opacity='1';
+      started=performance.now();last=-1;
+      raf=requestAnimationFrame(tick);
     }
     const toggle=(force)=>{
       const on=typeof force==='boolean'?force:!lab.classList.contains('playing');
-      if(!on&&isPurum)stopAudio();
+      if(!on&&purum)stopAudio();
       lab.classList.toggle('playing',on);
-      if(btn)btn.textContent=on?'Ⅱ Pausa':(isPurum?'▶ Ascolta e guarda':lab.dataset.polytimeLab==='clausula'?'▶ Mostra':'▶ Guarda');
-      if(on&&isPurum)startAudio().catch(()=>{});
-      if(on&&clause){
-        clause.classList.remove('flash');void clause.offsetWidth;clause.classList.add('flash');
-      }
+      if(btn)btn.textContent=on?'Ⅱ Pausa':purum?'▶ Ascolta e guarda':lab.dataset.polytimeLab==='clausula'?'▶ Mostra':'▶ Guarda';
+      if(on&&purum)startAudio().catch(()=>{stopAudio();lab.classList.remove('playing');if(btn)btn.textContent='▶ Ascolta e guarda';});
+      if(on&&clause){clause.classList.remove('flash');void clause.offsetWidth;clause.classList.add('flash');}
     };
     btn?.addEventListener('click',()=>toggle());
     clause?.addEventListener('click',()=>toggle(true));
-    if(isPurum)window.addEventListener('pagehide',stopAudio);
+    if(purum)window.addEventListener('pagehide',stopAudio);
   });
 })();
 
