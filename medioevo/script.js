@@ -2011,18 +2011,35 @@ if(jewishIconDialog){
         osc.stop(now+length+.02);
       }
       osc.connect(filter);filter.connect(amp);amp.connect(master);osc.start(now);
-      return {osc,amp};
+      const harmonics=[];
+      if(sustain){
+        // A reinforced vocal-like Mi: the upper partials make the low tenor
+        // audible also on small laptop / telephone speakers.
+        [[2,.46],[3,.19]].forEach(([multiple,weight])=>{
+          const partial=ctx.createOscillator();
+          const partialGain=ctx.createGain();
+          partial.type='sine';
+          partial.frequency.setValueAtTime(freq*multiple,now);
+          partialGain.gain.value=weight;
+          partial.connect(partialGain);
+          partialGain.connect(amp);
+          partial.start(now);
+          harmonics.push(partial);
+        });
+      }
+      return {osc,amp,harmonics};
     }
     function stopAudio(){
       if(raf!==null){cancelAnimationFrame(raf);raf=null;}
       if(ctx){
         const now=ctx.currentTime;
-        [bass,...voices].filter(Boolean).forEach(({osc,amp})=>{
+        [bass,...voices].filter(Boolean).forEach(({osc,amp,harmonics=[]})=>{
           try{
             amp.gain.cancelScheduledValues(now);
             amp.gain.setValueAtTime(Math.max(.0001,amp.gain.value),now);
             amp.gain.exponentialRampToValueAtTime(.0001,now+.06);
             osc.stop(now+.09);
+            harmonics.forEach(partial=>partial.stop(now+.09));
           }catch(e){}
         });
       }
@@ -2061,7 +2078,7 @@ if(jewishIconDialog){
       }
       if(ctx.state==='suspended')await ctx.resume();
       if(!lab.classList.contains('playing'))return;
-      bass=sound(164.814,seconds,.70,true); // Mi3 decisamente in primo piano
+      bass=sound(164.814,seconds,.86,true); // Mi3 sostenuto, con armonici udibili anche su piccoli altoparlanti
       cursor.style.animation='none';cursor.style.opacity='1';
       started=performance.now();last=-1;
       raf=requestAnimationFrame(tick);
