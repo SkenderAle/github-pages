@@ -2,6 +2,7 @@
 (()=>{'use strict';
 const panels=[...document.querySelectorAll('[data-mm-clips]')];
 if(!panels.length)return;
+let activeCard=null;
 const validId=id=>/^[A-Za-z0-9_-]{11}$/.test(id);
 function details(trigger){
  if(!trigger)return null;
@@ -34,16 +35,15 @@ function preview(card){
  trigger.hidden=true; // Il pulsante originale resta come riserva nel markup, senza mostrare un secondo comando.
 }
 function stop(panel,message){
- panel.querySelectorAll('.mm-compare-track').forEach(card=>{
+ if(activeCard){
+  const card=activeCard;activeCard=null;
   preview(card);
-  const stopButton=card.querySelector('[data-mm-clip-stop]');
-  if(stopButton)stopButton.hidden=true;
- });
- const status=panel.querySelector('.mm-compare-state');
+ }
+ const status=panel?.querySelector('.mm-compare-state');
  if(status&&message)status.textContent=message;
 }
 function stopAll(){
- panels.forEach(panel=>stop(panel,'Nessun video caricato. Clicca una miniatura per aprire il player.'));
+ if(activeCard)stop(activeCard.closest('[data-mm-clips]'),'Player chiuso. Clicca una miniatura per ricaricarlo.');
 }
 function playClip(trigger){
  const info=details(trigger),card=trigger?.closest('.mm-compare-track');
@@ -60,6 +60,7 @@ function playClip(trigger){
  frame.allow='encrypted-media; picture-in-picture; fullscreen';
  frame.allowFullscreen=true;
  stage.replaceChildren(frame);
+ activeCard=card;
  const stopButton=card.querySelector('[data-mm-clip-stop]');
  if(stopButton)stopButton.hidden=false;
  const status=panel?.querySelector('.mm-compare-state');
