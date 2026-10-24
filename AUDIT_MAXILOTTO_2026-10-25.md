@@ -42,3 +42,25 @@ Controllo contro gli ID HTML:
 6. Non lavorare editorialmente su `verso-le-avanguardie` finché resta bozza, fatta salva una richiesta esplicita.
 
 **Regola permanente:** distinguere sempre `letto`, `corretto in GitHub`, `pubblicato su main`, `collaudato nel browser`. Per i prossimi cicli partire dalle ultime modifiche su `main` e non replicare interventi già fatti.
+
+
+## Maxi-lotto II — incroci dinamici, deep link e regressioni automatiche (25 ottobre)
+
+**Ancore dinamiche effettivamente ricostruite dai dati dei cataloghi:**
+- `parola-e-canto`: 97 opere nel catalogo; **64/64** rimandi con hash generato da autore + titolo.
+- `musica-da-camera`: 255 voci di catalogo; **75/75** hash editoriali generabili dai titoli.
+- `dalla-sinfonia-alla-rapsodia`: 105 schede musicali; **59/59** ID di scheda presenti nel JSON incorporato.
+- Totale: **198/198** rimandi con ancoraggio dinamico ricostruibile; nessun ID duplicato nel rispettivo catalogo. I dodici rimandi aggiuntivi a intestazioni d'autore delle stesse pagine erano già presenti come ID statici (7 + 1 + 4).
+
+**Audit dei deep link interni fra sezioni:** letti gli `href` con frammento di 16 pagine principali (**838 riferimenti**), con riscontro nell'HTML della destinazione per **831** casi e nel catalogo delle guide create da JavaScript per gli altri **7** casi; controllate inoltre le destinazioni fuori dalle sedici pagine principali. **Nessuna ancora mancante accertata nel codice.** Fra questi controlli sono compresi il redirect da `post-romanticismo/` a `verso-le-avanguardie/` che conserva `location.hash` e `location.search`; la bozza `verso-le-avanguardie` non è stata modificata.
+
+**Controlli ripetibili aggiunti a `main`:**
+- `tools/check-atlante-site-links.mjs` — controllo dei 503 rimandi attivi, incluse le 198 ancore generate dai cataloghi.
+- `tools/check-page-deeplinks.mjs` — controllo dei deep link nei 16 principali percorsi e delle guide generate.
+- `.github/workflows/musurgia-site-links.yml` — GitHub Actions configurata per eseguire entrambi i controlli a ogni modifica pertinente e su richiesta. La configurazione è pubblicata nel repository; **non è documentato in questa sessione un esito verde del runner GitHub Actions**, distinto dalla verifica manuale dei dati.
+
+**Correzione dei metadati:** il registro `atlante3d/database/collegamenti-sito.json` conteneva **285** elementi nell'array `pendingReview` ma riportava ancora **236** in `validation.pending_review`; metadato riallineato a 285 nel commit `9a16d7a`. Non è stato promosso o cancellato nessuno dei collegamenti sospesi. Classificazione degli attuali 285: 162 destinazioni generaliste in Concerti, 74 assegnazioni per cognome non confermate, 37 macro-capitoli non specifici, 9 ruoli narrativi documentati ma ancora sospesi e 3 casi senza scheda o passaggio puntuale. Nessun duplicato per coppia nodo/URL.
+
+**Verifica documentaria immagini del lotto I:** i 10 nomi di file Wikimedia Commons impiegati nelle quattro pagine modificate risultano presenti nelle rispettive schede, con attribuzioni compatibili con le didascalie. È ancora necessario verificare la risposta delle URL `Special:FilePath` e le dimensioni/impaginazione sui dispositivi reali.
+
+**Riserve importanti:** test browser e collaudo dei player non completati; i file più grandi dell'Atlante (`grafo.json`, `relazioni.json`) non sono stati acquisiti integralmente tramite connettore. Non presentare questo audit come validazione dei collegamenti esterni o di tutte le relazioni filologiche.
