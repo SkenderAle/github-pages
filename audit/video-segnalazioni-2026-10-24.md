@@ -6,7 +6,7 @@
 | # | Collegamento | Identificazione documentabile | Esito |
 |---|---|---|---|
 | 1 | https://youtu.be/x40VvfZXxb4 | Gioachino Rossini, *Stabat Mater*, X. «In sempiterna saecula. Amen» (Allegro); RIAS Kammerchor, Akademie für Alte Musik Berlin, Marcus Creed; harmonia mundi, uscita 31 luglio 2007 | **Inserito** in `romanticismo/index.html#rossini-stabat-mater-finale`, confronto con Dvořák; crediti forniti direttamente dall'autore |
-| 2 | https://youtu.be/W8BW-cRDDw4 | Identificazione non sufficientemente verificata | Da esaminare prima della collocazione |
+| 2 | https://youtu.be/W8BW-cRDDw4 | Orlando Gibbons, *What Is Our Life?*, XIV dell'album *Gibbons: Madrigals & Motets, 1612*; Consort of Musicke / Anthony Rooley; ℗ Decca 1975; Peter Wadland (prod.), Iain Churches (audio) | **Inserito** in `rinascimento/index.html#gibbons-what-is-our-life`, insieme a *The Silver Swan*, con crediti dell'album e collegamento alla fonte del 1612 |
 | 3 | https://youtu.be/XOK0uH0HruI | Orlando Gibbons, *The Silver Swan*; segnalato con Spirit of Gambo / Freek Borstlap | Inserito come confronto nel capitolo sul madrigale in `rinascimento/index.html` |
 | 4 | https://youtu.be/PCtEMv2LXHc | J. S. Bach, *Matthäus-Passion* BWV 244; Karl Richter | Inserito come ascolto storico di confronto in `barocco/index.html`. Non etichettare HIP |
 | 5 | https://youtu.be/UdvNNJa8gLY | Identificazione incompleta; non attribuire il brano dal solo contesto di un post | Da esaminare prima della collocazione |
@@ -17,7 +17,7 @@
 
 ## Prossimi controlli
 
-1. **Link 1 classificato e inserito** sulla base dei dati discografici forniti dall'autore. Restano da aprire e documentare i link 2, 5, 6 e 9, raccogliendo titolo, compositore, opera, interpreti, anno/versione e durata.
+1. **Link 1 e 2 classificati e inseriti** sulla base dei dati discografici forniti dall'autore. Restano da aprire e documentare i link 5, 6 e 9 (due video e una playlist), raccogliendo titolo, compositore, opera, interpreti, anno/versione e durata.
 2. **Completato:** identificato `tAd2Ro3sr54` come suite orchestrale dalla descrizione del canale hr-Sinfonieorchester; aggiornati titoli, interpreti, cronologia e movimenti. Il *Grand Calumet* ricompare soltanto come bis (21:50) e si presta a un confronto con la versione scenica già presente.
 3. **Controllo tecnico statico completato:** il loader `shared/mm-confronto-estratti-v1.js` crea iframe solo dopo clic e contiene `autoplay=0`. Resta da verificare l'incorporabilità e l'effettiva riproduzione su browser/dispositivi reali; per il Rinascimento il player modale si apre al clic, senza parametro autoplay.
 4. Rispettare la preferenza HIP nelle audioteche, mantenendo la versione di Richter come documento storico comparativo. Per *The Silver Swan*, distinguere il madrigale vocale scritto da Gibbons dalla sua resa strumentale con ensemble di viole da gamba.
@@ -28,7 +28,7 @@
 - *Tendre amour*: descrizione e interpreti reperiti nel post indicizzato https://www.tumgik.com/tag/sandrine%20philippe e nel riepilogo https://hourraheros.fr/blogs/stories/les-30-plus-beaux-airs-dopera-pour-la-saint-valentin.
 - Gibbons, *The Silver Swan*, ensemble Spirit of Gambo / Freek Borstlap: https://www.facebook.com/TudorSongbook/posts/throwback-to-this-recording-of-one-of-my-favourite-madrigals-the-silver-swan-/187439617113779/.
 - *Matthäus-Passion* di Richter: repertorio e fonte dell'esecuzione 1971 confermati da indicizzazioni della registrazione YouTube e materiale documentario sulla ricezione di Bach.
-- I tre video rimasti e la playlist non restituiscono metadati affidabili tramite le fonti accessibili in questa sessione: lasciarli in sospeso, senza nominare le opere per congettura.
+- I due video rimasti e la playlist non restituiscono metadati affidabili tramite le fonti accessibili in questa sessione: lasciarli in sospeso, senza nominare le opere per congettura.
 
 ## Aggiornamento: Rossini, *Stabat Mater*, finale X
 
@@ -37,3 +37,12 @@
 - Crediti comunicati dall'autore: RIAS Kammerchor, Akademie für Alte Musik Berlin, Marcus Creed (direttore), harmonia mundi s.a.; pubblicazione 31 luglio 2007. Non confondere data dell'album con prima esecuzione o data di composizione.
 - Collocazione: `romanticismo/index.html#rossini-stabat-mater-finale`, entro il capitolo sul coro romantico, con confronto rispetto al finale dello *Stabat Mater* op. 58 di Dvořák.
 - Tecnica: il player richiama il lettore lazy esistente (`data-mm-load`), con iframe creato solo al clic e `autoplay=0`; mantenuto anche il link YouTube diretto nel caso il contenuto musicale non consenta l'incorporamento.
+
+## Aggiornamento: Gibbons, *What Is Our Life?*
+
+- Video: https://youtu.be/W8BW-cRDDw4
+- Opera: Orlando Gibbons, *What Is Our Life?*, dalla raccolta *The First Set of Madrigals and Mottets of Five Parts: Apt for Viols and Voyces* (Londra, 1612).
+- Album: *Gibbons: Madrigals & Motets, 1612*, Consort of Musicke, direzione Anthony Rooley; traccia XIV, ℗ 1975 Decca Music Group Limited; produttore Peter Wadland, tecnico Iain Churches, release nominale 1 gennaio 1975.
+- **Distinzione documentaria:** il numero XIV indica la traccia nell'album, non va applicato automaticamente all'ordine di tutte le stampe: l'indice IMSLP della raccolta del 1612 mette *What Is Our Life?* al n. XV. Fonti: https://classical.music.apple.com/us/album/1783831474 ; https://www.loc.gov/item/2012563594/ ; https://imslp.org/wiki/Madrigals_and_Motets_for_5_Voices_(Gibbons,_Orlando).
+- Collocazione: `rinascimento/index.html#gibbons-what-is-our-life`, nella sezione sul madrigale, accanto a *The Silver Swan* e al confronto con Arcadelt.
+- Tecnica: usa il `button.media-card.video` già previsto dalla pagina; il player modale si carica all'interazione dell'utente. Link YouTube diretto disponibile per eventuali limiti di incorporamento.
