@@ -1990,13 +1990,14 @@ if(jewishIconDialog){
     const clause=lab.querySelector('.polytime-clause');
     const purum=lab.dataset.polytimeLab==='purum';
     const discant=lab.dataset.polytimeLab==='discant';
-    const audible=purum||discant;
+    const clausula=lab.dataset.polytimeLab==='clausula';
+    const audible=purum||discant||clausula;
     const cursor=audible?lab.querySelector('.polytime-cursor'):null;
     const dots=audible?[...lab.querySelectorAll('.polytime-note')]:[];
-    const freqs=discant?[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255]:[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255,493.883];
+    const freqs=clausula?[523.251,659.255,523.251,659.255,587.330,659.255,523.251]:discant?[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255]:[440,523.251,493.883,587.330,523.251,659.255,493.883,587.330,523.251,659.255,493.883];
     const seconds=4.4;
-    const tenorDots=discant?[...lab.querySelectorAll('.polytime-pulse')]:[];
-    let lastTenor=-1;
+    const tenorDots=(discant||clausula)?[...lab.querySelectorAll('.polytime-pulse')]:[];
+    let lastTenor=-1,tenorSection=-1;
     let ctx=null, master=null, bass=null, raf=null, started=0, last=-1;
     const voices=[];
     if(audible&&btn)btn.textContent='▶ Ascolta e guarda';
@@ -2033,6 +2034,18 @@ if(jewishIconDialog){
       }
       return {osc,amp,harmonics};
     }
+    function releaseBass(){
+      if(!bass||!ctx)return;
+      const now=ctx.currentTime;
+      try{
+        bass.amp.gain.cancelScheduledValues(now);
+        bass.amp.gain.setValueAtTime(Math.max(.0001,bass.amp.gain.value),now);
+        bass.amp.gain.exponentialRampToValueAtTime(.0001,now+.08);
+        bass.osc.stop(now+.12);
+        bass.harmonics.forEach(osc=>osc.stop(now+.12));
+      }catch(e){}
+      bass=null;
+    }
     function stopAudio(){
       if(raf!==null){cancelAnimationFrame(raf);raf=null;}
       if(ctx){
@@ -2047,7 +2060,7 @@ if(jewishIconDialog){
           }catch(e){}
         });
       }
-      bass=null;voices.length=0;last=-1;lastTenor=-1;
+      bass=null;voices.length=0;last=-1;lastTenor=-1;tenorSection=-1;
       tenorDots.forEach(dot=>dot.classList.remove('is-sounding'));
       dots.forEach(dot=>dot.classList.remove('is-sounding'));
       if(cursor){cursor.style.animation='none';cursor.style.left='5%';cursor.style.opacity='0';}
@@ -2075,7 +2088,19 @@ if(jewishIconDialog){
           if(voices.length>40)voices.splice(0,20);
         }
       }
-      if(discant){
+      if(clausula){
+        // The long tenor stops before the central clausula and resumes at its end.
+        // Sections derive from the visible bars (8–39%, 44/56%, 64–92%).
+        const section=x<40?0:x<64?1:2;
+        if(section!==tenorSection){
+          releaseBass();
+          tenorSection=section;
+          if(section!==1){
+            try{if(ctx&&ctx.state==='running')bass=sound(164.814,seconds,.43,true);}catch(error){console.warn('Clausula: tenor tenuto',error);}
+          }
+        }
+      }
+      if(discant||clausula){
         let currentTenor=-1;
         tenorDots.forEach((dot,i)=>{
           if(x>=parseFloat(dot.style.getPropertyValue('--x')))currentTenor=i;
@@ -2085,7 +2110,7 @@ if(jewishIconDialog){
           tenorDots.forEach((dot,i)=>dot.classList.toggle('is-sounding',i===currentTenor));
           if(currentTenor>=0){
             try{
-              if(ctx&&ctx.state==='running')voices.push(sound(164.814,.37,.70));
+              if(ctx&&ctx.state==='running')if(!clausula||tenorSection===1)voices.push(sound(164.814,.37,clausula?.43:.70));
             }catch(error){console.warn('Discantus: tenor non riprodotto',error);}
           }
         }
@@ -2103,7 +2128,7 @@ if(jewishIconDialog){
       if(!lab.classList.contains('playing'))return;
       if(purum)bass=sound(164.814,seconds,.43,true); // Mi3 sostenuto, con armonici udibili anche su piccoli altoparlanti
       cursor.style.animation='none';cursor.style.opacity='1';
-      started=performance.now();last=-1;
+      started=performance.now();last=-1;lastTenor=-1;tenorSection=-1;
       raf=requestAnimationFrame(tick);
     }
     const toggle=(force)=>{
