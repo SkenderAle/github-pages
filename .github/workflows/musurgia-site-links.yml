@@ -14,6 +14,7 @@ on:
       - 'shared/atlas-anchor-arrival-v1.js'
       - 'tools/check-atlante-site-links.mjs'
       - 'tools/check-site-link-registry.mjs'
+      - 'tools/check-concert-visible-targets.mjs'
       - 'tools/check-page-deeplinks.mjs'
       - '.github/workflows/musurgia-site-links.yml'
   pull_request:
@@ -23,6 +24,7 @@ on:
       - 'shared/atlas-anchor-arrival-v1.js'
       - 'tools/check-atlante-site-links.mjs'
       - 'tools/check-site-link-registry.mjs'
+      - 'tools/check-concert-visible-targets.mjs'
       - 'tools/check-page-deeplinks.mjs'
       - '.github/workflows/musurgia-site-links.yml'
   workflow_dispatch:
@@ -43,5 +45,7 @@ jobs:
       - run: node tools/check-atlante-site-links.mjs
       - run: node --check tools/check-site-link-registry.mjs
       - run: node tools/check-site-link-registry.mjs
+      - run: node --check tools/check-concert-visible-targets.mjs
+      - run: node tools/check-concert-visible-targets.mjs
       - run: node --check tools/check-page-deeplinks.mjs
       - run: node tools/check-page-deeplinks.mjs
