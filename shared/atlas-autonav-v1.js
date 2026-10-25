@@ -90,7 +90,7 @@
    const summary=document.createElement('summary');summary.textContent=candidates.length+' paragrafi · apri elenco';details.appendChild(summary);
    let n=0;for(const h of candidates){if(n++>=45)break;let hid=h.id||h.querySelector('[id]')?.id;
     if(!hid){hid='atlas-sub-'+page+'-'+indexLinks.indexOf(link)+'-'+n;h.id=hid;}
-    const a=document.createElement('a');a.href='#'+hid;a.textContent=n+' · '+h.textContent.trim().replace(/\\s+/g,' ').slice(0,125);details.appendChild(a);
+    const a=document.createElement('a');a.href='#'+hid;a.textContent=n+' · '+h.textContent.trim().replace(/\s+/g,' ').slice(0,125);details.appendChild(a);
    }
    link.insertAdjacentElement('afterend',details);
   }
