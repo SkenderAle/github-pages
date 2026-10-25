@@ -348,6 +348,14 @@
 .mm-mini-resources{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0 .8rem;font:600 .73rem/1.3 system-ui,sans-serif}
 .mm-mini-resources a{display:inline-flex;align-items:center;padding:.24rem .5rem;border:1px solid #ad9877;border-radius:6px;background:#f0e8db;color:#29465a;text-decoration:none}
 .mm-mini-resources a:hover,.mm-mini-resources a:focus-visible{background:#dce7df;outline:2px solid #4b715d;outline-offset:1px}
+
+.mm-compact-listening{width:min(100%,265px);min-width:0;box-sizing:border-box;padding:.55rem;border:1px solid #c7b79d;border-radius:9px;background:#f5efe4;align-self:start}
+.mm-compact-player{position:relative;width:100%;aspect-ratio:16/9;background:#171717;border-radius:6px;overflow:hidden}
+.mm-compact-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mm-compact-caption{font:700 .82rem/1.4 system-ui,sans-serif;color:#312d27;margin:.45rem 0 .25rem}
+.mm-compact-listening .mm-mini-resources{margin:.35rem 0 0;gap:.3rem}
+.mm-compact-listening .mm-mini-resources a{font-size:.68rem}
+@media(max-width:600px){.mm-compact-listening{width:min(100%,300px)}}
 </style>
 
 <style>
@@ -562,11 +570,11 @@
         <p>Con Petrarca la poesia acquista una autonomia letteraria ancora maggiore, mentre la lingua dei contrasti interiori, della donna irraggiungibile, della natura e della memoria produce un materiale che i compositori cinquecenteschi troveranno irresistibile. Nel Trecento, intanto, Francesco Landini rappresenta bene un'altra Italia musicale, quella dell'Ars nova, nella quale il volgare può vivere dentro una raffinata polifonia senza coincidere ancora con ciò che nel Cinquecento chiameremo madrigale.</p>
       </div>
       <div class="media-row">
-        <button id="ascolto-youtube-47ZR-XzSHsI" type="button" class="media-card video" data-video="47ZR-XzSHsI" data-title="Francesco Landini · Ecco la primavera">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Landini.jpg" alt="Francesco Landini, Ecco la primavera">
-          <span class="shade"></span><span class="play">▶</span>
-          <span class="meta"><span class="tag">Ascolto</span><h3><span id="mm-autore-compositore-francesco-landini" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Landini, Ecco la primavera</h3></span>
-        </button><span class="mm-mini-resources" aria-label="Risorse di Francesco Landini"><a href="https://imslp.org/wiki/Category:Francesco_Landini" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Francesco Landini">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Francesco Landini" data-mm-author="Francesco Landini">✧ Musurgia · Francesco Landini</a></span>
+        <div class="mm-compact-listening" aria-label="Francesco Landini · Ecco la primavera">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/47ZR-XzSHsI?rel=0" title="Francesco Landini · Ecco la primavera" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Francesco Landini · Ecco la primavera</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Francesco Landini"><a href="https://imslp.org/wiki/Category:Francesco_Landini" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Francesco Landini">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Francesco Landini" data-mm-author="Francesco Landini">✧ Musurgia · Francesco Landini</a></span>
+</div>
         <button type="button" class="media-card resource" data-title="Dante e Casella nel Purgatorio" data-url="https://www.treccani.it/enciclopedia/casella_%28Enciclopedia-Dantesca%29/">
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Dante_e_Casella.jpg" alt="Dante e Casella">
           <span class="shade"></span><span class="meta"><span class="tag">Parola e canto</span><h3>Casella canta Dante</h3></span>
@@ -755,10 +763,11 @@ di doman non c’è certezza.</blockquote>
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacopo_Peri.jpg" alt="Jacopo Peri">
           <span class="shade"></span><span class="meta"><span class="tag">1600</span><h3>Euridice e il recitar cantando</h3></span>
         </button>
-        <button id="ascolto-youtube-SyPUJwGEUgA" type="button" class="media-card video" data-video="SyPUJwGEUgA" data-title="Monteverdi · L'Orfeo, Tu se' morta">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Monteverdi.jpg" alt="Monteverdi, Orfeo">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">1607</span><h3><span id="mm-autore-compositore-claudio-monteverdi" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Monteverdi, Tu se' morta</h3></span>
-        </button><span class="mm-mini-resources" aria-label="Risorse di Claudio Monteverdi"><a href="https://imslp.org/wiki/Category:Claudio_Monteverdi" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Claudio Monteverdi">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Claudio Monteverdi" data-mm-author="Claudio Monteverdi">✧ Musurgia · Claudio Monteverdi</a></span>
+        <div class="mm-compact-listening" aria-label="Monteverdi · L'Orfeo, Tu se' morta">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/SyPUJwGEUgA?rel=0" title="Monteverdi · L'Orfeo, Tu se' morta" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Monteverdi · L'Orfeo, Tu se' morta</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Claudio Monteverdi"><a href="https://imslp.org/wiki/Category:Claudio_Monteverdi" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Claudio Monteverdi">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Claudio Monteverdi" data-mm-author="Claudio Monteverdi">✧ Musurgia · Claudio Monteverdi</a></span>
+</div>
       </div>
 
       <div class="compare-band">
@@ -1019,10 +1028,11 @@ di doman non c’è certezza.</blockquote>
       </div>
 
       <div class="media-row">
-        <button id="ascolto-youtube-EJj0as_Mic4" type="button" class="media-card video" data-video="EJj0as_Mic4" data-title="Palestrina · Missa Papae Marcelli, Kyrie">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mensuralnotation-Missa_papae_marcelli.jpg" alt="Inizio della Missa Papae Marcelli in notazione mensurale">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto</span><h3>Missa Papae Marcelli, Kyrie</h3></span>
-        </button><span class="mm-mini-resources" aria-label="Risorse di Giovanni Pierluigi da Palestrina"><a href="https://imslp.org/wiki/Category:Giovanni_Pierluigi_da_Palestrina" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Pierluigi da Palestrina">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Pierluigi da Palestrina" data-mm-author="Giovanni Pierluigi da Palestrina">✧ Musurgia · Giovanni Pierluigi da Palestrina</a></span>
+        <div class="mm-compact-listening" aria-label="Palestrina · Missa Papae Marcelli, Kyrie">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/EJj0as_Mic4?rel=0" title="Palestrina · Missa Papae Marcelli, Kyrie" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Palestrina · Missa Papae Marcelli, Kyrie</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Giovanni Pierluigi da Palestrina"><a href="https://imslp.org/wiki/Category:Giovanni_Pierluigi_da_Palestrina" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Pierluigi da Palestrina">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Pierluigi da Palestrina" data-mm-author="Giovanni Pierluigi da Palestrina">✧ Musurgia · Giovanni Pierluigi da Palestrina</a></span>
+</div>
         <button type="button" class="media-card resource" data-title="Giovanni Pierluigi da Palestrina" data-url="https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/">
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Palestrina">
           <span class="shade"></span><span class="meta"><span class="tag">Roma</span><h3>Palestrina</h3></span>
@@ -1091,10 +1101,11 @@ di doman non c’è certezza.</blockquote>
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Adrian_Willaert.jpg" alt="Adrian Willaert">
           <span class="shade"></span><span class="meta"><span class="tag">San Marco</span><h3><span id="mm-autore-compositore-adriano-willaert" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Willaert e i cori spezzati</h3></span>
         </button>
-        <button id="ascolto-youtube-HJbbuTV5Q_I" type="button" class="media-card video" data-video="HJbbuTV5Q_I" data-title="Giovanni Gabrieli · Sonata pian e forte">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Gabrieli_-_Sonata_pian%27_e_forte_%28Beginn%29.png" alt="Inizio della Sonata pian e forte di Giovanni Gabrieli">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto spaziale</span><h3>Sonata pian e forte</h3></span>
-        </button><span class="mm-mini-resources" aria-label="Risorse di Giovanni Gabrieli"><a href="https://imslp.org/wiki/Category:Giovanni_Gabrieli" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Gabrieli">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Gabrieli" data-mm-author="Giovanni Gabrieli">✧ Musurgia · Giovanni Gabrieli</a></span>
+        <div class="mm-compact-listening" aria-label="Giovanni Gabrieli · Sonata pian e forte">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/HJbbuTV5Q_I?rel=0" title="Giovanni Gabrieli · Sonata pian e forte" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Giovanni Gabrieli · Sonata pian e forte</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Giovanni Gabrieli"><a href="https://imslp.org/wiki/Category:Giovanni_Gabrieli" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Gabrieli">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Gabrieli" data-mm-author="Giovanni Gabrieli">✧ Musurgia · Giovanni Gabrieli</a></span>
+</div>
         <button type="button" class="media-card resource" data-title="Basilica di San Marco · tradizione musicale" data-url="https://www.basilicasanmarco.it/basilica/tradizione-musicale/">
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Interni_basilica_san_Marco_04.jpg" alt="Interno della Basilica di San Marco">
           <span class="shade"></span><span class="meta"><span class="tag">Architettura sonora</span><h3>San Marco come strumento</h3></span>
@@ -1226,10 +1237,11 @@ di doman non c’è certezza.</blockquote>
       </aside>
 
       <div class="media-row">
-        <button id="ascolto-youtube-FOXMfgHNb90" type="button" class="media-card video" data-video="FOXMfgHNb90" data-title="Arcadelt · Il bianco e dolce cigno">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Madrigaux_%C3%A0_4%2C_5_et_6_voix_-_btv1b52519345s_%28021_of_216%29.jpg" alt="Pagina di una raccolta cinquecentesca di madrigali">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto guidato</span><h3>Il bianco e dolce cigno</h3></span>
-        </button><span class="mm-mini-resources" aria-label="Risorse di Jacques Arcadelt"><a href="https://imslp.org/wiki/Category:Jacques_Arcadelt" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Jacques Arcadelt">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Jacques Arcadelt" data-mm-author="Jacques Arcadelt">✧ Musurgia · Jacques Arcadelt</a></span>
+        <div class="mm-compact-listening" aria-label="Arcadelt · Il bianco e dolce cigno">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FOXMfgHNb90?rel=0" title="Arcadelt · Il bianco e dolce cigno" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Arcadelt · Il bianco e dolce cigno</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Jacques Arcadelt"><a href="https://imslp.org/wiki/Category:Jacques_Arcadelt" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Jacques Arcadelt">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Jacques Arcadelt" data-mm-author="Jacques Arcadelt">✧ Musurgia · Jacques Arcadelt</a></span>
+</div>
         <button type="button" class="media-card resource" data-title="Jacques Arcadelt" data-url="https://www.treccani.it/enciclopedia/jacques-arcadelt_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Arcadelt.jpg" alt="Jacques Arcadelt">
           <span class="shade"></span><span class="meta"><span class="tag">Madrigale</span><h3>Verdelot e Arcadelt</h3></span>
@@ -1240,14 +1252,16 @@ di doman non c’è certezza.</blockquote>
         </button>
       </div>
       <div class="media-row" id="rinascimento-gibbons" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));align-items:stretch" aria-label="Confronto tra madrigale italiano e inglese">
-        <button type="button" id="gibbons-silver-swan" class="media-card video" data-video="XOK0uH0HruI" data-title="Orlando Gibbons · The Silver Swan">
-          <img loading="lazy" src="https://i.ytimg.com/vi/XOK0uH0HruI/hqdefault.jpg" alt="Anteprima del video del madrigale The Silver Swan di Orlando Gibbons">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · madrigale inglese</span><h3>Orlando Gibbons · The Silver Swan</h3></span>
-        </button><span class="mm-mini-resources" aria-label="Risorse di Orlando Gibbons"><a href="https://imslp.org/wiki/Category:Orlando_Gibbons" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Orlando Gibbons">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Orlando Gibbons" data-mm-author="Orlando Gibbons">✧ Musurgia · Orlando Gibbons</a></span>
-        <button type="button" id="gibbons-what-is-our-life" class="media-card video" data-video="W8BW-cRDDw4" data-title="Orlando Gibbons · What Is Our Life? · Consort of Musicke, Anthony Rooley (Decca, 1975)">
-          <img loading="lazy" src="https://i.ytimg.com/vi/W8BW-cRDDw4/hqdefault.jpg" alt="Copertina o anteprima della registrazione di What Is Our Life? di Orlando Gibbons, Consort of Musicke">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · cinque voci · 1612</span><h3>Gibbons · What Is Our Life?</h3></span>
-        </button><span class="mm-mini-resources" aria-label="Risorse di Orlando Gibbons"><a href="https://imslp.org/wiki/Category:Orlando_Gibbons" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Orlando Gibbons">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Orlando Gibbons" data-mm-author="Orlando Gibbons">✧ Musurgia · Orlando Gibbons</a></span>
+        <div class="mm-compact-listening" aria-label="Orlando Gibbons · The Silver Swan">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/XOK0uH0HruI?rel=0" title="Orlando Gibbons · The Silver Swan" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Orlando Gibbons · The Silver Swan</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Orlando Gibbons"><a href="https://imslp.org/wiki/Category:Orlando_Gibbons" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Orlando Gibbons">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Orlando Gibbons" data-mm-author="Orlando Gibbons">✧ Musurgia · Orlando Gibbons</a></span>
+</div>
+        <div class="mm-compact-listening" aria-label="Orlando Gibbons · What Is Our Life? · Consort of Musicke, Anthony Rooley (Decca, 1975)">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/W8BW-cRDDw4?rel=0" title="Orlando Gibbons · What Is Our Life? · Consort of Musicke, Anthony Rooley (Decca, 1975)" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Orlando Gibbons · What Is Our Life? · Consort of Musicke, Anthony Rooley (Decca, 1975)</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Orlando Gibbons"><a href="https://imslp.org/wiki/Category:Orlando_Gibbons" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Orlando Gibbons">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Orlando Gibbons" data-mm-author="Orlando Gibbons">✧ Musurgia · Orlando Gibbons</a></span>
+</div>
         <div class="student-box" style="margin:0">
           <div class="student-label">✦ Tre ascolti a confronto</div>
           <h3>Da Arcadelt a Gibbons: il madrigale e la parola</h3>
@@ -1349,53 +1363,16 @@ di doman non c’è certezza.</blockquote>
         <div class="eyebrow">Tre ascolti · un laboratorio contemporaneo</div>
         <p><strong>Antica Liuteria Sangineto.</strong> Il nome rimanda al lavoro di <strong>Michele Sangineto</strong>, costruttore di strumenti ispirati anche a dipinti e disegni rinascimentali. Il gruppo ne fa uso in riletture sonore suggestive: <strong>non proponiamo queste esecuzioni come modelli di ricostruzione filologica</strong>. Lo stesso progetto dichiara di combinare strumenti storicamente documentati con altri immaginati dagli artisti o progettati senza essere costruiti nel loro tempo.</p>
         <div class="media-row">
-          <button id="ascolto-youtube-pqBsilGJmYk" type="button" class="media-card video" data-video="pqBsilGJmYk" data-title="Antica Liuteria Sangineto · Mon père m'a donné mari">
-            <img loading="lazy" src="https://i.ytimg.com/vi/pqBsilGJmYk/hqdefault.jpg" alt="Anteprima della registrazione di Mon père m'a donné mari">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · Antica Liuteria Sangineto</span><h3>Mon père m'a donné mari</h3></span>
-          </button>
-          <button id="ascolto-youtube-w4cO8pICTUo" type="button" class="media-card video" data-video="w4cO8pICTUo" data-title="Antica Liuteria Sangineto · Donne, venete al ballo">
-            <img loading="lazy" src="https://i.ytimg.com/vi/w4cO8pICTUo/hqdefault.jpg" alt="Anteprima della registrazione di Donne, venete al ballo">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · Antica Liuteria Sangineto</span><h3>Donne, venete al ballo</h3></span>
-          </button>
-          <button id="ascolto-youtube-G68rrzjhQQ0" type="button" class="media-card video" data-video="G68rrzjhQQ0" data-title="Antica Liuteria Sangineto · Trionfo di Bacco e Arianna">
-            <img loading="lazy" src="https://i.ytimg.com/vi/G68rrzjhQQ0/hqdefault.jpg" alt="Anteprima della registrazione del Trionfo di Bacco e Arianna">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · Antica Liuteria Sangineto</span><h3>Trionfo di Bacco e Arianna</h3></span>
-          </button>
-        </div>
-        <p class="mm-inset-followup"><strong>La domanda critica:</strong> ricostruire lo strumento di un dipinto significa sapere come si suonava nel Cinquecento? No: materiali, accordature e gesti esecutivi possono essere ipotetici. Il confronto introduce il capitolo <a href="#hip"><strong>Filologia musicale e HIP: come interpretare le fonti ↗</strong></a>, distinguendo sperimentazione moderna e prassi storicamente informata. <a href="https://www.ensemblesangineto.com/ensemble/?page_id=877" target="_blank" rel="noopener noreferrer">Il progetto dell'Antica Liuteria Sangineto ↗</a>.</p>
-      </div>
-    </section>
-
-
-    
-
-
-
-
-
-
-    <section id="hip">
-      <div class="section-title"><div class="section-no">09</div><div><h2>Filologia musicale e HIP</h2></div></div>
-      <div class="literary-aside" id="hip-focus">
-        <div class="eyebrow">Come possiamo ascoltare oggi una musica di cinquecento anni fa?</div>
-        <p class="mm-inset-followup"><strong>Dagli ascolti al metodo.</strong> Le sperimentazioni dell'Antica Liuteria Sangineto ci hanno mostrato una via possibile per far suonare strumenti immaginati o ricostruiti. Qui ci chiediamo qualcosa di diverso: <strong>quali prove permettono di motivare una scelta esecutiva?</strong> Il progetto musicale contemporaneo è prezioso, ma non è automaticamente sinonimo di prassi storicamente informata (HIP).</p>
-        <h3>Filologia musicale e HIP, Historically Informed Performance</h3>
-        <p>Una partitura rinascimentale non contiene tutto ciò che un esecutore deve sapere. Non ci dice sempre con precisione quale organico utilizzare, quale altezza di riferimento adottare, quanto ornamentare, come pronunciare il latino o l'italiano, quale temperamento scegliere, come articolare una diminuzione e quale rapporto debba esistere fra voci e strumenti. Per questo l'interprete di musica antica lavora anche come ricercatore, confrontando manoscritti e prime edizioni, trattati, iconografia, strumenti sopravvissuti, descrizioni storiche e caratteristiche degli spazi nei quali quella musica veniva eseguita.</p>
-        <p>La cosiddetta <strong>HIP</strong>, abbreviazione di <em>Historically Informed Performance</em>, non promette di farci ascoltare esattamente ciò che avrebbe sentito un ascoltatore del Cinquecento, perché prima dell'epoca delle registrazioni quel suono è irrimediabilmente perduto. Cerca invece di costruire interpretazioni informate dalle testimonianze storiche disponibili. La parola “filologia”, usata in questo contesto, indica quindi un metodo critico più che una macchina del tempo, perché una fonte viene studiata, confrontata e interpretata, mentre le lacune devono essere dichiarate e colmate attraverso scelte consapevoli.</p>
-        <p>È proprio per questo che i trattati di Virdung, Ganassi, Ortiz, Dalla Casa, Bassano e Galilei sono tanto importanti. Non rappresentano soltanto curiosità bibliografiche, ma sono strumenti attraverso i quali un musicista contemporaneo può ricostruire ciò che la notazione non dice. Anche fra gli specialisti esistono naturalmente scuole differenti, e due ensemble filologicamente consapevoli possono produrre risultati molto diversi senza che uno dei due debba necessariamente essere considerato “sbagliato”.</p>
-        <div class="media-row">
-          <button id="ascolto-youtube-Tku8ceGJ4dk" type="button" class="media-card video" data-video="Tku8ceGJ4dk" data-title="The Tallis Scholars · Palestrina, Missa Brevis">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tallis_Scholars_2015.jpg" alt="The Tallis Scholars alla Winchester Cathedral nel 2015">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">The Tallis Scholars</span><h3><span id="mm-autore-compositore-giovanni-pierluigi-da-palestrina" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Palestrina · Missa Brevis</h3></span>
-          </button><span class="mm-mini-resources" aria-label="Risorse di Giovanni Pierluigi da Palestrina"><a href="https://imslp.org/wiki/Category:Giovanni_Pierluigi_da_Palestrina" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Pierluigi da Palestrina">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Pierluigi da Palestrina" data-mm-author="Giovanni Pierluigi da Palestrina">✧ Musurgia · Giovanni Pierluigi da Palestrina</a></span>
-          <button id="ascolto-youtube-DIZDxaF511I" type="button" class="media-card video" data-video="DIZDxaF511I" data-title="The Hilliard Ensemble · Renaissance Madrigals">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Codex_specialnik_p64.jpg" alt="Codex Speciálník, inizio dell’Ave Maria di Josquin Desprez">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Hilliard Ensemble</span><h3>Renaissance Madrigals</h3></span>
-          </button>
-          <button id="ascolto-youtube-K38ZfTu0DxE" type="button" class="media-card video" data-video="K38ZfTu0DxE" data-title="Stile Antico · Palestrina, Exultate Deo">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Giovanni Pierluigi da Palestrina">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Stile Antico</span><h3>Palestrina · Exultate Deo</h3></span>
-          </button><span class="mm-mini-resources" aria-label="Risorse di Giovanni Pierluigi da Palestrina"><a href="https://imslp.org/wiki/Category:Giovanni_Pierluigi_da_Palestrina" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Pierluigi da Palestrina">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Pierluigi da Palestrina" data-mm-author="Giovanni Pierluigi da Palestrina">✧ Musurgia · Giovanni Pierluigi da Palestrina</a></span>
+          <div class="mm-compact-listening" aria-label="Antica Liuteria Sangineto · Mon père m'a donné mari">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/pqBsilGJmYk?rel=0" title="Antica Liuteria Sangineto · Mon père m'a donné mari" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Antica Liuteria Sangineto · Mon père m'a donné mari</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Giovanni Pierluigi da Palestrina"><a href="https://imslp.org/wiki/Category:Giovanni_Pierluigi_da_Palestrina" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Pierluigi da Palestrina">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Pierluigi da Palestrina" data-mm-author="Giovanni Pierluigi da Palestrina">✧ Musurgia · Giovanni Pierluigi da Palestrina</a></span>
+</div>
+          <div class="mm-compact-listening" aria-label="The Hilliard Ensemble · Renaissance Madrigals">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/DIZDxaF511I?rel=0" title="The Hilliard Ensemble · Renaissance Madrigals" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">The Hilliard Ensemble · Renaissance Madrigals</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Giovanni Pierluigi da Palestrina"><a href="https://imslp.org/wiki/Category:Giovanni_Pierluigi_da_Palestrina" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Pierluigi da Palestrina">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Pierluigi da Palestrina" data-mm-author="Giovanni Pierluigi da Palestrina">✧ Musurgia · Giovanni Pierluigi da Palestrina</a></span>
+</div>
         </div>
         <div class="route-links">
           <button type="button" class="source-card resource" data-title="Clemencic Consort" data-url="https://www.allmusic.com/artist/clemencic-consort-mn0001639777"><span class="src">Pionieri</span><b>Clemencic Consort</b><span>René Clemencic è fra i protagonisti storici della riscoperta di Medioevo e Rinascimento con strumenti e prassi d'epoca.</span></button>
