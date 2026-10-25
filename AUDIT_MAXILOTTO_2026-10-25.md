@@ -163,3 +163,31 @@ Sono stati corretti **tutti i 95 arrivi** in due blocchi documentati:
 Le **quattro riserve** ancora in quarantena riguardano **tre persone distinte**: Marian Anderson (due richieste; non va confusa con Leroy Anderson), Friedrich Wieck (non confondere con Clara Wieck Schumann) e Rubin Goldmark (non confondere con Karl Goldmark). Non è stata individuata per questi soggetti un'opera propria pertinente da collegare alle schede visibili dei Concerti. Non promuovere un collegamento per semplice omonimia, relazione parentale o riferimento indiretto.
 
 **Verifica della modifica:** confronto programmatico della struttura JSON prima della pubblicazione: nessun duplicato attivo, nessuna sovrapposizione attivo/sospeso, contatore `pending_review` aggiornato; il numero dei rimandi ai Concerti e delle riserve coincide con il registro. **Non è ancora un collaudo end-to-end in browser**: restano da verificare l'apertura delle schede, i player, l'interfaccia mobile e l'esito della CI sul commit corrente. I precedenti risultati del maxi-lotto rimangono documentazione storica, non lo stato corrente di queste quantità.
+
+
+## Maxi-lotto IV — Chiusura delle ultime quattro riserve Concerti
+
+**25 ottobre 2026 · Pubblicato su `main`**. Il precedente paragrafo «Consolidamento delle 19 riserve residue» descrive lo stato intermedio (4 ancora aperte); questo addendum registra la chiusura effettiva a **zero**.
+
+Le quattro voci residue erano tutte rimandi generici e non comprovati verso `concerti/index.html`. Decisione filologica, senza generare collegamenti sostitutivi:
+
+| Nodo Atlante | Vecchia destinazione sospesa | Decisione e motivo |
+| --- | --- | --- |
+| `persona-marian-anderson` | `../concerti/#sorgenti-audioteca` | Rimando eliminato: nessuna opera di Marian Anderson in questa sezione documentata dalla scheda; non confondere con **Leroy Anderson**, autore di *The Typewriter*. |
+| `persona-marian-anderson` | `../concerti/#percussioni` | Rimando eliminato per identica falsa associazione. Marian Anderson è una cantante contralto, non il compositore Leroy Anderson. |
+| `persona-friedrich-wieck` | `../concerti/#percorso-pianoforte` | Rimando eliminato: rapporto biografico/pedagogico con Clara Wieck Schumann, non attribuzione del **Concerto op. 7** di Clara. Un collegamento biografico futuro richiederà un passaggio specifico distinto. |
+| `compositore-rubin-goldmark` | `../concerti/#violino` | Rimando eliminato: il **Concerto op. 28** in catalogo è di **Karl Goldmark**. La precedente attribuzione attiva errata a Rubin era già stata rimossa nel consolidamento. |
+
+**Controllo quantitativo finale:**
+
+| Campo | Stato intermedio | Stato finale |
+| --- | ---: | ---: |
+| Nodi del registro | 791 | **791** |
+| Link attivi complessivi | 459 | **459** |
+| Link attivi verso Concerti | 162 | **162** |
+| Riserve complessive | 111 | **107** |
+| Riserve relative ai Concerti | 4 | **0** |
+
+Il totale dichiarato in `validation.pending_review` è aggiornato a 107; anche `validation.concerti.reconciliation_20261025.remaining_generic` vale 0. Aggiornato `tools/check-site-link-registry.mjs` con quattro guardie per impedire il ripristino di questi specifici falsi rimandi, tanto come collegamenti attivi quanto come nuove riserve, e con confronto tra contatore dichiarato delle riserve Concerti e stato attuale.
+
+**Ambito della certificazione:** chiusura della *quarantena editoriale dei collegamenti Concerti*. Non è la certificazione completa della qualità dei 162 link nel browser, dell'apertura di ogni `details`, della disponibilità dei video/audio esterni o della resa responsive. Tali collaudi restano nell'audit tecnico permanente. Nessun cambiamento all'HTML dei Concerti è stato richiesto per questa chiusura.
