@@ -191,3 +191,48 @@ Le quattro voci residue erano tutte rimandi generici e non comprovati verso `con
 Il totale dichiarato in `validation.pending_review` è aggiornato a 107; anche `validation.concerti.reconciliation_20261025.remaining_generic` vale 0. Aggiornato `tools/check-site-link-registry.mjs` con quattro guardie per impedire il ripristino di questi specifici falsi rimandi, tanto come collegamenti attivi quanto come nuove riserve, e con confronto tra contatore dichiarato delle riserve Concerti e stato attuale.
 
 **Ambito della certificazione:** chiusura della *quarantena editoriale dei collegamenti Concerti*. Non è la certificazione completa della qualità dei 162 link nel browser, dell'apertura di ogni `details`, della disponibilità dei video/audio esterni o della resa responsive. Tali collaudi restano nell'audit tecnico permanente. Nessun cambiamento all'HTML dei Concerti è stato richiesto per questa chiusura.
+
+## Maxi-lotto V — Riconciliazione delle 107 riserve residue
+
+**Data:** 25 ottobre 2026. **Branch:** `main`; nessun branch nuovo. **Audit archivistico:** `atlante3d/database/audit-risoluzioni-maxilotto-v-20261025.json`. La sezione precedente, «Maxi-lotto IV», descrive uno stato storico; i nuovi numeri in questa sezione sono lo stato **attuale** del registro.
+
+### Ricognizione completa e metodo
+
+Sono state esaminate le 107 riserve in 13 raggruppamenti (Rinascimento, Barocco, Melodramma, Classicismo, Romanticismo, Risorgimento, vecchio Postromanticismo, Parola e canto, Cinema, Medioevo, Musica da camera, Sinfonica, Percorsi storici). Per distinguere la semplice esistenza della destinazione dalla pertinenza filologica, per ogni riserva si è verificato se **lo stesso nodo** disponeva già di un link specifico nella stessa pagina e se l'ancora risultava effettivamente nel sorgente HTML o ricostruibile dal catalogo strutturato.
+
+**88 riserve generaliste archiviate come superate**: almeno un collegamento specifico e verificato era già attivo per lo stesso nodo nella stessa pagina. Nessuna di queste è stata trasformata in una seconda copia del collegamento. Le vecchie richieste sono preservate individualmente, con la destinazione che le ha sostituite, nel JSON dell'audit. Il controllo comprende **15** collegamenti storici via `post-romanticismo/`, il cui redirect conserva i frammenti e conduce agli ID presenti in `verso-le-avanguardie/`, senza modificare quest'ultima pagina. Comprende altresì opere vocali, cameristiche e sinfoniche i cui ID sono costruiti da JavaScript a partire da cataloghi: una verifica del sorgente semplice non sarebbe stata sufficiente.
+
+### Quattro nuovi rimandi bidirezionali, pubblicati
+
+| Nodo dell'Atlante | Nuovo rimando specifico | Passaggio verificato |
+| --- | --- | --- |
+| Jean-Philippe Rameau | `../classicismo/#mm-autore-compositore-jean-philippe-rameau` | Il modello francese del teatro settecentesco, eredità di Lully e ruolo dell'orchestra/danza |
+| Niccolò Paganini | `../romanticismo/#mm-autore-compositore-niccolo-paganini` | La figura pubblica del virtuoso e il confronto con Liszt |
+| Franz Liszt | `../romanticismo/#mm-autore-compositore-franz-liszt` | La trasfigurazione pianistica del virtuosismo violinistico |
+| Erich Wolfgang Korngold | `../dal-musical-al-film/#mm-autore-compositore-erich-wolfgang-korngold` | La scrittura sinfonica fra Vienna e Hollywood (*The Adventures of Robin Hood*) |
+
+Le tre pagine sono state modificate introducendo **ancore HTML esatte** e link di ritorno contestuali ai rispettivi nodi dell'Atlante. La nuova entrata in `byNode` per ciascun autore è unica. Nessun contenuto di `verso-le-avanguardie` è stato cambiato.
+
+### Sei falsi riferimenti eliminati con motivazione
+
+- **Gherardello da Firenze**, cinque riserve verso Rinascimento (1) e Melodramma (4). Le pagine non trattano Gherardello e l'associazione deriva da un riferimento non qualificante alla città di Firenze. Non sono stati inventati collegamenti generici al centro fiorentino.
+- **Eugène Ysaÿe**, una riserva in Musica da camera: la menzione riguarda il *Quartetto Ysaÿe* come interprete del quartetto di Debussy, non una composizione di Eugène Ysaÿe presente in questa audioteca. L'omonimia dell'intitolazione di un ensemble non prova l'esistenza di un'opera pertinente.
+
+### Bilancio e lavoro ancora aperto
+
+| Grandezza | Inizio Maxi-lotto V | Stato dopo il lotto |
+| --- | ---: | ---: |
+| Nodi censiti | 791 | **791** |
+| Collegamenti attivi | 459 | **463** |
+| Riserve in `pendingReview` | 107 | **9** |
+| Collegamenti duplicati inseriti | 0 | **0** |
+| Modifiche alla bozza Verso le avanguardie | 0 | **0** |
+
+Le **9 riserve residue** sono intenzionali, non un errore di contabilità:
+
+- **6** verso il redirect del Postromanticismo/bozza Avanguardie: Maurice Ravel e Anton Webern richiedono un'ancora individuale, e Ma Rainey, Bessie Smith, Louis Armstrong, Mary Lou Williams richiedono un rimando narrativo puntuale nella trattazione del blues/jazz. La loro presenza nel testo non autorizza un collegamento indiscriminato al capitolo intero; non modificare la bozza senza richiesta.
+- **3** etichettate `percorsi-storici`: Joachim Raff, Gustav Holst, Emmanuel Chabrier. Tutti e tre hanno già opere individuate nell'Audioteca sinfonica, ma ciò non sostituisce una **trattazione narrativa storica con collegamento reciproco**. Mantenerle sospese finché non sia identificato un passaggio appropriato.
+
+I file `atlante3d/database/collegamenti-sito.json` e `tools/check-site-link-registry.mjs` sono stati aggiornati: `validation.pending_review` e `validation.maxilotto_v_20261025.remaining_pending` valgono entrambi 9; il test controlla il saldo delle decisioni (88+4+6+9=107) e segnala se compaiono nuove riserve fuori dai due ambiti rimasti.
+
+**Ambito dei controlli:** verifica statica degli ID e dei dati JSON, integrità dei link e della tassonomia editoriale. Non certifica il caricamento dinamico in browser, gli embed YouTube, la resa desktop/mobile, l'accessibilità reale né l'esito delle GitHub Actions del nuovo commit. Queste prove rimangono nell'audit permanente.
