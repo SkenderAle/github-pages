@@ -287,6 +287,8 @@ Ricognizione sui percorsi principali, inclusi home, Medioevo, Rinascimento, Baro
 
 Il test `tools/check-page-deeplinks.mjs` ora include quelle due sottopagine anche come **sorgenti**, non soltanto come possibili destinazioni: 18 pagine di ingresso della suite statica anziché 16. I conteggi di apertura si riferiscono alle scansioni del sorgente; l'esito della nuova esecuzione in CI non va presunto.
 
+**Ricontrollo conclusivo della nuova selezione di 18 pagine sorgenti** contro 20 documenti considerati anche come destinazione (comprese la bozza e la pagina redirect, senza modificarle): **862** riferimenti con hash verificati, di cui **855** verso identificativi HTML e **7** verso ancore dinamiche delle guide; **3** passano dal redirect storico. **0 destinazioni mancanti, 0 destinazioni fuori dal perimetro e 0 documenti con ID HTML duplicati**. Questo totale (862) è distinto dagli 881 della ricognizione iniziale perché cambia l'insieme delle pagine sorgenti. Sono dati ottenuti dall'analisi programmatica dei sorgenti remoti correnti, non dai risultati della CI Chromium.
+
 ### 2. Due difetti reali nella produzione delle etichette
 
 La stringa JavaScript `/\\s+/g` interpretava una sequenza *backslash + s*, non gli spazi fra parole. È stata sostituita con la regex corretta `/\s+/g` in:
