@@ -382,6 +382,14 @@
 #rinascimento-gibbons .mm-compact-listening{min-width:0}
 @media(max-width:900px){#rinascimento-gibbons.mm-three-listenings-unused{grid-template-columns:repeat(2,minmax(0,1fr))}#rinascimento-gibbons .student-box{grid-column:1 / -1;grid-row:auto}}
 @media(max-width:520px){#rinascimento-gibbons.mm-three-listenings-unused{grid-template-columns:1fr}}
+
+/* Correzione definitiva: due ascolti Gibbons e scheda didattica sulla STESSA riga. */
+#rinascimento-gibbons{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1rem;align-items:start!important}
+#rinascimento-gibbons > .mm-compact-listening:nth-child(1){grid-column:1;grid-row:1}
+#rinascimento-gibbons > .mm-compact-listening:nth-child(2){grid-column:2;grid-row:1}
+#rinascimento-gibbons > .student-box{grid-column:3!important;grid-row:1!important;align-self:start!important;margin:0!important}
+@media(max-width:900px){#rinascimento-gibbons{grid-template-columns:repeat(2,minmax(0,1fr))!important}#rinascimento-gibbons > .student-box{grid-column:1 / -1!important;grid-row:2!important}}
+@media(max-width:520px){#rinascimento-gibbons{grid-template-columns:1fr!important}#rinascimento-gibbons > .mm-compact-listening:nth-child(2){grid-column:1;grid-row:2}#rinascimento-gibbons > .student-box{grid-column:1!important;grid-row:3!important}}
 </style>
 
 <style>
