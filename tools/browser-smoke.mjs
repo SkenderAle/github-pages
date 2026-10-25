@@ -22,7 +22,8 @@ const paths = [
   'romanticismo/', 'melodramma/', 'musica-da-camera/',
   'dalla-sinfonia-alla-rapsodia/', 'parola-e-canto/', 'concerti/',
   'risorgimento/', 'dal-musical-al-film/', 'melodramma-classico/',
-  'anatomia-del-melodramma/'
+  'anatomia-del-melodramma/', 'melodramma/audioteca/',
+  'romanticismo/destino-provvidenza/'
 ];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
 
@@ -113,6 +114,34 @@ try {
     finally { await context.close(); }
   }
 
+  // Un indice aperto su telefono deve restare nell'area visibile, senza
+  // generare un secondo scorrimento orizzontale incontrollato.
+  {
+    const { page, context } = await makePage(tablet);
+    try {
+      await visit(page, 'barocco/');
+      const toggle = page.locator('.atlas-autonav .atlas-menu-toggle').first();
+      await toggle.waitFor();
+      await toggle.click();
+      const panel = page.locator('.atlas-autonav nav.mm-compact-ready').first();
+      const dimensions = await panel.boundingBox();
+      assert(!!dimensions && dimensions.x >= -12 &&
+        dimensions.x + dimensions.width <= tablet.width + 12,
+        'Barocco mobile: pannello indice fuori dal viewport');
+      const chapter = panel.locator('details.mm-compact-chapter').first();
+      await chapter.locator('summary').click();
+      await page.screenshot({
+        path: screenshots + '/barocco-menu-aperto-390.png',
+        fullPage: false
+      });
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(150);
+      assert(!(await chapter.evaluate(el => el.open)),
+        'Barocco mobile: Escape lascia aperto il capitolo');
+    } catch (e) { errors.push('Menu smartphone: ' + e.message); }
+    finally { await context.close(); }
+  }
+
   // I segnalibri creati da JavaScript devono comparire dopo la costruzione delle schede.
   const dynamicAnchors = [
     ['musica-da-camera/', 'mm-opera-camera-biber-quindici-sonate-del-rosario'],
@@ -158,7 +187,7 @@ try {
   await browser.close();
 }
 const report = {
-  type: 'musurgia-browser-smoke-v1',
+  type: 'musurgia-browser-smoke-v2',
   date: new Date().toISOString(),
   base, testedPages: paths.length, viewportWidths: [390, 1280],
   results: observations, errors,
@@ -166,7 +195,7 @@ const report = {
 };
 await writeFile(screenshots + '/report.json', JSON.stringify(report, null, 2) + '\n');
 console.log('Browser smoke: ' + paths.length + ' pagine × 2 viewport, '
-  + dynamicAnchors.length + ' segnalibri dinamici, menu e player manuale. Problemi: '
+  + dynamicAnchors.length + ' segnalibri dinamici, menu desktop/mobile e player manuale. Problemi: '
   + errors.length);
 for (const e of errors) console.error('ERRORE: ' + e);
 if (errors.length) process.exitCode = 1;
