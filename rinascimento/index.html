@@ -363,6 +363,47 @@
     .hero-card small{font-size:.68rem;letter-spacing:.1em}
     .hero-card p{font-size:.94rem;line-height:1.5;margin-top:.5rem}
   }
+
+  /* Lettura in popup del Trionfo: nel capitolo di Lorenzo, senza nuova pagina. */
+  .mm-bacco-teaser{display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:1.3rem 0;padding:1.15rem 1.25rem;background:#f4e9d6;border:1px solid #cbb08c;border-left:4px solid #8f612b}
+  .mm-bacco-teaser>div{flex:1 1 280px}
+  .mm-bacco-teaser strong{display:block;font-size:1.05rem}
+  .mm-bacco-teaser p{font-size:.9rem;margin:.3rem 0 0}
+  .mm-bacco-kicker{display:block;font:700 .68rem/1.4 var(--sans);text-transform:uppercase;letter-spacing:.1em;color:#704822}
+  .mm-bacco-open{border:0;background:#372b20;color:#fff;padding:.85rem 1.1rem;font:750 .88rem/1.35 var(--sans);cursor:pointer;border-radius:5px}
+  .mm-bacco-open:hover,.mm-bacco-open:focus-visible{background:#704822}
+  .modal-body.mm-bacco-reading{display:block;background:#f9f4ea;color:#28231d;padding:0;place-items:normal}
+  .mm-bacco-pane{font-family:var(--serif);max-width:790px;margin:0 auto;padding:clamp(1.1rem,3vw,2.3rem);font-size:1rem;line-height:1.66}
+  .mm-bacco-pane h3{margin:.45rem 0 1.2rem;font-size:clamp(1.7rem,4vw,2.5rem)}
+  .mm-bacco-pane p{font-size:1.02rem;line-height:1.65;margin:.8rem 0}
+  .mm-bacco-eyebrow{font:700 .72rem/1.4 var(--sans)!important;letter-spacing:.1em;text-transform:uppercase;color:#83572b}
+  .mm-bacco-verse{white-space:pre-line;border-left:4px solid #8f612b;background:#ece0cc;padding:1rem 1.4rem;font-size:1.2rem;line-height:1.55;margin:1.35rem 0}
+  .mm-bacco-video{width:100%;aspect-ratio:16 / 9;background:#181512;margin:1.4rem 0 .4rem}
+  .modal-body .mm-bacco-video iframe{display:block;width:100%;height:100%;border:0;background:#151311}
+  .mm-bacco-credit{font:400 .78rem/1.5 var(--sans)!important;color:#66594c}
+  .mm-bacco-source-detail{border-top:1px solid #cfbfa8;padding:.65rem 0;margin:1rem 0;font-family:var(--sans)}
+  .mm-bacco-source-detail summary{cursor:pointer;font-weight:750}
+  .mm-bacco-links{display:flex;gap:1.2rem;flex-wrap:wrap;border-top:1px solid #cfbfa8;padding-top:1rem}
+  .mm-bacco-links a,.mm-bacco-pane a{color:#6e381d;text-underline-offset:3px}
+  .mm-listening-inset{scroll-margin-top:7.5rem;border-top:1px solid #cdbfa8;margin:2.5rem 0 1rem;padding:1.15rem;background:#f0e7d8}
+  .mm-listening-inset>.eyebrow{font-weight:700;letter-spacing:.08em}
+  .mm-listening-inset>p{font-size:.95rem;line-height:1.65}
+  .mm-listening-inset .media-row{margin:1.1rem 0 .7rem}
+  .mm-listening-inset .media-card{min-height:190px}
+  .mm-listening-inset .media-card h3{font-size:1.1rem}
+  .mm-inset-followup{font-size:.93rem;line-height:1.6;margin:1rem 0}
+  .mm-marciana-network svg text.mm-marciana-on-dark{fill:#fff!important;font-size:21px}
+  .mm-marciana-network svg text.mm-marciana-small{font-size:18px}
+  .mm-marciana-network svg .mm-marciana-altar{fill:#ded6c8;stroke:#785e42;stroke-width:4}
+  .mm-marciana-network svg .mm-marciana-altar-label{fill:#30251d;font-size:27px;font-weight:800}
+  .mm-marciana-network svg .mm-marciana-altar-note{fill:#594737;font-size:16px}
+  .mm-marciana-network svg .mm-marciana-instruments{fill:#30624f;stroke:#f6efe4;stroke-width:5}
+  .mm-marciana-network svg .mm-marciana-choir1{fill:#253d63;stroke:#f6efe4;stroke-width:5}
+  .mm-marciana-network svg .mm-marciana-choir2{fill:#7f1d1d;stroke:#f6efe4;stroke-width:5}
+  .mm-marciana-network svg .mm-marciana-listener{fill:#a5792a;stroke:#f6efe4;stroke-width:5}
+  .mm-marciana-network svg .mm-line-accent{stroke:#715f46;stroke-width:3;opacity:.7}
+  .mm-marciana-network .mini-caption{margin-top:1.2rem}
+  @media (max-width:580px){.mm-bacco-teaser{padding:.85rem}.mm-bacco-open{width:100%}.mm-marciana-network{padding:.4rem}.mm-marciana-network svg text.mm-marciana-on-dark{font-size:24px}}
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261021-gerarchia02"><link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
 <link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-responsive02">
@@ -403,15 +444,15 @@
         <a href="#parole">Dalla poesia alla voce</a>
         <a href="#madrigale">Frottola, madrigale e altre forme</a>
       </div>
-      <div class="nav-row" aria-label="Strumenti e danza" data-mm-group-title="IV · Strumenti, teoria e danza">
+      <div class="nav-row" aria-label="Strumenti, prassi e teoria" data-mm-group-title="IV · Strumenti, ascolto e metodo">
         <a href="#strumenti">Gli strumenti</a>
+        <a href="#hip">Filologia e HIP</a>
         <a href="#trattati">Trattati e pratica musicale</a>
         <a href="#temperamenti">Accordature e temperamenti</a>
-        <a href="#danza">La danza</a>
       </div>
-      <div class="nav-row" aria-label="Teatro e interpretazione" data-mm-group-title="V · Dalla Camerata all'ascolto storico">
+      <div class="nav-row" aria-label="Danza, teatro e postludio" data-mm-group-title="V · Danza, teatro e conclusione">
+        <a href="#danza">Pavana, gagliarda e danza</a>
         <a href="#firenze">Firenze e il teatro musicale</a>
-        <a href="#hip">Filologia e HIP</a>
         <a href="#galileo">Postludio · Galileo</a>
       </div>
       <div class="nav-row" aria-label="Materiali di studio" data-mm-group-title="Materiali e verifica">
@@ -482,6 +523,7 @@
 
 
 
+
     <section id="umanesimo">
       <div class="section-title"><div class="section-no">02</div><div><h2>Quando l'uomo entra al centro del suono</h2></div></div>
       <div class="two-col">
@@ -502,6 +544,7 @@
         </div>
       </div>
     </section>
+
 
 
 
@@ -555,6 +598,37 @@
         <h3>Lorenzo il Magnifico, quando chi governa vuole anche partecipare alla cultura</h3>
         <p>Lorenzo de' Medici è particolarmente utile per capire che cosa significhi mecenatismo nel Rinascimento, perché non si limita a pagare poeti e musicisti affinché rendano prestigiosa la propria corte. Scrive personalmente sonetti, canzoni, laudi, testi popolareschi e canti carnascialeschi, ama la musica, suona diversi strumenti con una particolare predilezione per il liuto, canta e viene ricordato anche come abile improvvisatore. La cultura che protegge è quindi anche una cultura alla quale sente di appartenere, dentro una Firenze nella quale poesia, filosofia, festa pubblica, diplomazia e spettacolo possono continuamente toccarsi.</p>
         <p>I canti carnascialeschi sono forse il luogo nel quale questa mescolanza diventa più evidente. Il <em>Trionfo di Bacco e Arianna</em>, composto intorno al 1490, porta il mito antico dentro la strada e trasforma l'idea umanistica della classicità in una festa contemporanea, costruendo intorno alla giovinezza che fugge un invito alla gioia che è nello stesso tempo colto e immediatamente cantabile. Non dobbiamo però attribuire con sicurezza a Lorenzo anche la musica che oggi viene associata al testo, perché la tradizione musicale dei canti carnascialeschi è complessa e le attribuzioni non sono sempre certe.</p>
+        <div class="mm-bacco-teaser" id="bacco-approfondimento">
+          <div>
+            <span class="mm-bacco-kicker">Approfondimento interattivo · Lorenzo de' Medici</span>
+            <strong>Il <em>Trionfo di Bacco e Arianna</em>: quando la festa diventa poesia</strong>
+            <p>Testo, mito, Carnevale fiorentino e ascolto. Un approfondimento che si apre qui, senza lasciare la pagina.</p>
+          </div>
+          <button type="button" class="mm-bacco-open" aria-controls="modal" aria-haspopup="dialog">Leggi e ascolta il Trionfo <span aria-hidden="true">↗</span></button>
+        </div>
+        <template id="mm-bacco-template">
+          <article class="mm-bacco-pane">
+            <p class="mm-bacco-eyebrow">Firenze, fine Quattrocento · Canzone a ballo e canto carnascialesco</p>
+            <h3>Il <em>Trionfo di Bacco e Arianna</em></h3>
+            <p>La <em>Canzona di Bacco</em>, attribuita con sicurezza a <strong>Lorenzo de' Medici</strong> per il testo poetico, appartiene ai canti carnascialeschi della Firenze medicea ed è generalmente datata intorno al 1490. Il soggetto è antico, ma la scena immaginata è urbana e contemporanea: Bacco e Arianna guidano un corteo di satiri, ninfe, Sileno e Mida, mentre il pubblico riconosce la festa come immagine di una città che sa mettere in scena se stessa.</p>
+            <blockquote class="mm-bacco-verse">Quant’è bella giovinezza,
+che si fugge tuttavia!
+Chi vuol esser lieto, sia:
+di doman non c’è certezza.</blockquote>
+            <p><strong>La felicità ha un'ombra.</strong> Il ritornello invita a godere del presente, ma lo fa perché il tempo fugge. Il piacere non cancella la precarietà: la rende più evidente. Nei versi «E che giova aver tesoro, / s'altri poi non si contenta?» persino Mida, che tramuta tutto in oro, diventa la caricatura di una ricchezza incapace di produrre felicità.</p>
+            <p><strong>Dalla poesia alla piazza.</strong> La ripetizione del ritornello, la riconoscibilità dei personaggi mitologici e il linguaggio del canto a ballo rendono il testo adatto a essere eseguito in un contesto festivo, con maschere e carri. Non dobbiamo però immaginare tutti i fiorentini impegnati a cantare le parti di una medesima polifonia: spettatori e interpreti svolgevano ruoli differenti.</p>
+            <p><strong>La prudenza musicale.</strong> Lorenzo è autore dei versi, mentre la storia della musica associata al canto presenta problemi di trasmissione e attribuzione. La registrazione che segue è una <em>rilettura contemporanea</em>, non la ricostruzione dimostrata dell'esecuzione fiorentina del 1490. Gli strumenti impiegati dall'Antica Liuteria Sangineto comprendono anche ricostruzioni sperimentali ispirate a progetti figurativi.</p>
+            <div class="mm-bacco-video">
+              <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/G68rrzjhQQ0?rel=0" title="Antica Liuteria Sangineto · Trionfo di Bacco e Arianna" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="mm-bacco-credit">Ascolto: Antica Liuteria Sangineto, <em>Trionfo di Bacco e Arianna</em>, video ufficiale (2023), testo di Lorenzo de' Medici; attribuzione musicale indicata come anonima dagli interpreti.</p>
+            <details class="mm-bacco-source-detail"><summary>Leggi il testo originale (edizione storica)</summary>
+              <p>Il testo completo è consultabile nell'edizione di riferimento riprodotta su <a href="https://it.wikisource.org/wiki/Opere_(Lorenzo_de%27_Medici)/XVI._Canti_carnascialeschi/Canzona_VII." target="_blank" rel="noopener noreferrer">Wikisource · <em>Canzona di Bacco</em> ↗</a>. Il ritornello riportato sopra consente già di leggere insieme metrica, significato e invito alla festa.</p>
+            </details>
+            <p class="mm-bacco-links"><a href="#madrigale">Collega alle forme vocali del Rinascimento ↓</a> <a href="https://www.treccani.it/magazine/strumenti/una_poesia_al_giorno/07_22_Medici_Lorenzo_de.html" target="_blank" rel="noopener noreferrer">Leggi il commento storico e letterario di Treccani ↗</a></p>
+          </article>
+        </template>
+
 <p>Ma <strong>chi canta davvero durante una festa cittadina?</strong> Il <i>canto carnascialesco</i> fiorentino è concepito anzitutto per <strong>mascherate, carri, trionfi e percorsi all'aperto</strong>, non per un «coro del popolo» paragonabile a quello delle moderne manifestazioni pubbliche. Le voci sono spesso quelle di gruppi di interpreti che impersonano mestieri e personaggi, mentre la città osserva, partecipa alla festa e comprende i doppi sensi dei testi. Nella <i>Canzone de' confortini</i>, attribuita alla tradizione di <strong>Heinrich Isaac</strong>, una testimonianza iconografica mostra <strong>tre cantori adulti e due ragazzi</strong>: un'immagine dell'esecuzione non è la partitura originale e non garantisce che ogni mascherata usasse cinque voci. La polifonia può essere a tre o quattro parti, generalmente con forte impulso ritmico e chiarezza del testo. L'appartenenza civica si costruisce qui attraverso <strong>messa in scena, riconoscibilità delle figure e pubblico in strada</strong>, non per la presenza fisica di migliaia di cantori. <a href="https://www.treccani.it/enciclopedia/i-canti-carnascialeschi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/" target="_blank" rel="noopener noreferrer">Treccani · canti carnascialeschi, organici e carri ↗</a>.</p>
         <p>Accanto a lui troviamo Heinrich Isaac, attivo a Firenze dal 1485 e vicino all'ambiente mediceo, che insegna musica ai figli di Lorenzo, fra i quali Giovanni, futuro Leone X, e mette in musica testi fiorentini e repertori legati alle feste cittadine. Il rapporto è importante perché mostra ancora una volta come il Rinascimento italiano si costruisca attraverso l'incontro fra la poesia e la vita urbana della penisola e la straordinaria tecnica dei musicisti franco fiamminghi.</p>
         <p>La cronologia offre infine una piccola ironia utile per non dimenticare quanto siano artificiali le date scolastiche. Lorenzo muore nel 1492, proprio l'anno che spesso viene indicato come confine convenzionale fra Medioevo ed età moderna, quando una parte essenziale di ciò che chiamiamo Rinascimento fiorentino è già accaduta. Se volessimo davvero accendere il Rinascimento con un interruttore nel 1492, dovremmo paradossalmente iniziare a studiarlo nel momento in cui uno dei suoi protagonisti più rappresentativi sta morendo.</p>
@@ -587,6 +661,7 @@
         </button>
       </div>
     </section>
+
 
 
 
@@ -641,6 +716,7 @@
       </aside>
 
     </section>
+
 
 
 
@@ -849,25 +925,34 @@
         </button>
       </div>
 
-      <div class="network">
-        <svg viewBox="0 0 950 300" role="img" aria-label="Schema di disposizione policorale a San Marco">
-          <line class="edge blue" x1="210" y1="150" x2="475" y2="150"></line>
-          <line class="edge red" x1="740" y1="150" x2="475" y2="150"></line>
-          <circle cx="210" cy="150" r="72" fill="#253d63"></circle>
-          <circle cx="740" cy="150" r="72" fill="#7f1d1d"></circle>
-          <circle cx="475" cy="150" r="58" fill="#a5792a"></circle>
-          <text x="210" y="145" text-anchor="middle" fill="#fff">CORO I</text>
-          <text x="210" y="168" text-anchor="middle" fill="#fff">voci + strumenti</text>
-          <text x="740" y="145" text-anchor="middle" fill="#fff">CORO II</text>
-          <text x="740" y="168" text-anchor="middle" fill="#fff">voci + strumenti</text>
-          <text x="475" y="145" text-anchor="middle" fill="#fff">NAVATA</text>
-          <text x="475" y="168" text-anchor="middle" fill="#fff">ascoltatore</text>
+      <div class="network mm-marciana-network">
+        <svg viewBox="0 0 950 445" role="img" aria-label="Schema didattico, non pianta storica: altare in alto, gruppo strumentale davanti all'altare, due cori laterali e ascoltatore nella navata">
+          <line x1="475" y1="92" x2="475" y2="116" class="mm-line-accent"></line>
+          <line x1="475" y1="237" x2="290" y2="269" class="edge blue"></line>
+          <line x1="475" y1="237" x2="660" y2="269" class="edge red"></line>
+          <line x1="475" y1="245" x2="475" y2="346" class="mm-line-accent"></line>
+          <rect x="355" y="16" width="240" height="78" rx="12" class="mm-marciana-altar"></rect>
+          <text x="475" y="53" text-anchor="middle" class="mm-marciana-altar-label">ALTARE</text>
+          <text x="475" y="75" text-anchor="middle" class="mm-marciana-altar-note">polo liturgico</text>
+          <circle cx="475" cy="174" r="79" class="mm-marciana-instruments"></circle>
+          <text x="475" y="169" text-anchor="middle" class="mm-marciana-on-dark">ORGANO E</text>
+          <text x="475" y="192" text-anchor="middle" class="mm-marciana-on-dark">STRUMENTI</text>
+          <circle cx="205" cy="270" r="88" class="mm-marciana-choir1"></circle>
+          <text x="205" y="265" text-anchor="middle" class="mm-marciana-on-dark">CORO I</text>
+          <text x="205" y="290" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">voci + strumenti</text>
+          <circle cx="745" cy="270" r="88" class="mm-marciana-choir2"></circle>
+          <text x="745" y="265" text-anchor="middle" class="mm-marciana-on-dark">CORO II</text>
+          <text x="745" y="290" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">voci + strumenti</text>
+          <circle cx="475" cy="371" r="63" class="mm-marciana-listener"></circle>
+          <text x="475" y="367" text-anchor="middle" class="mm-marciana-on-dark">NAVATA</text>
+          <text x="475" y="391" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">ascoltatore</text>
         </svg>
+        <p class="mini-caption"><strong>Schema concettuale, non ricostruzione della planimetria di San Marco.</strong> Il terzo gruppo rappresenta la possibilità di un ulteriore polo strumentale vicino all'altare: numero, posizione e combinazione degli esecutori variavano e devono essere verificati nelle fonti della singola celebrazione.</p>
       </div>
       <aside class="student-box" id="ragazzi-spazio">
         <div class="student-label">✦ Per iniziare</div>
         <h3>Il suono ha un posto</h3>
-        <p>A San Marco due cori, anche con strumenti, stanno in punti diversi della basilica e si rispondono. Chi ascolta sente il suono arrivare da una parte, poi dall'altra, poi da entrambe.</p>
+        <p>In questo schema didattico due cori dialogano da posizioni diverse, mentre un gruppo strumentale può contribuire vicino all'altare. Non è la pianta certa di una singola esecuzione a San Marco: disposizione e organico potevano cambiare secondo l'occasione.</p>
         <div class="try"><strong>Prova tu.</strong> In classe, due gruppi si dispongono ai lati opposti della stanza e si rispondono su una frase semplice, mentre un compagno ascolta al centro. Poi cambiate la distanza: il suono sembra più vicino o più lontano? Dove mettereste i due gruppi per far sentire “tanto spazio”?</div>
       </aside>
 
@@ -876,6 +961,7 @@
 
 
     </section>
+
 
 
 
@@ -890,10 +976,9 @@
         <p>L'inglese <em>song</em> proviene invece dalla famiglia germanica di <em>sing</em>, non dal latino <em>canere</em>. La parentela è di significato, non di etimologia: lingue differenti danno comunque un nome a quella relazione tenace fra <strong>parola, memoria e canto</strong>.</p>
       </div>
       <div class="history-pivot" id="parola-verso-il-teatro">
-        <h3>Quando la poesia diventa voce, e la voce diventa personaggio</h3>
-        <p>Il Rinascimento è una fioritura continua del legame fra <strong>testo poetico e invenzione musicale</strong>. La frottola valorizza spesso l'immediatezza della declamazione, mentre il madrigale cinquecentesco può fare della poesia una trama di linee autonome. In questo terreno crescono i <strong>madrigalismi</strong>: gesti con cui la musica interpreta una parola o un'immagine, attraverso il disegno melodico, l'imitazione, la pausa, la dissonanza. Non sono obbligatori in ogni madrigale e non coincidono con tutta la sua espressività.</p>
-        <p>Verso la fine del Cinquecento, a Firenze, il rapporto fra parola e musica viene ripensato ancora. Nella <strong>casa del conte Giovanni de' Bardi</strong> letterati e musicisti discutono l'ideale, in larga parte ricostruito e immaginato, del teatro antico, con la volontà di rendere più intelligibile e coinvolgente la parola. Gli esperimenti proseguono anche nell'ambiente di <strong>Jacopo Corsi</strong>: con il poeta <strong>Ottavio Rinuccini</strong> e compositori come <strong>Jacopo Peri</strong> si apre la strada al <em>recitar cantando</em> e alle prime opere. Non è l'invenzione istantanea di un solo cenacolo: è una trasformazione che raccoglie poesia, pratica vocale, monodia, teatro e spettacolo di corte.</p>
-        <p>Il mito di <strong>Orfeo</strong>, poeta e musicista che con il canto commuove persino gli inferi, diventa il simbolo di questa aspirazione. Per seguire la vicenda dalla Camerata alla <em>Dafne</em>, all'<em>Euridice</em> e poi al melodramma, <a href="../melodramma/#camerata"><strong>continua nel capitolo «Dalla Camerata al melodramma» ↗</strong></a>. Qui proseguiamo invece osservando come le molte forme del canto rinascimentale facciano vivere il testo prima e accanto a quella svolta.</p>
+        <h3>Dal testo cantato alla parola in scena</h3>
+        <p>La frottola dà spesso rilievo alla chiarezza della parola, il madrigale intreccia poesia e gesti musicali sempre più espressivi. Sul finire del Cinquecento questa ricerca converge, senza una linea evolutiva obbligata, con la riflessione fiorentina sul canto solistico: <strong>la parola non è soltanto cantata, può diventare il discorso di un personaggio</strong>.</p>
+        <p>La <strong>Camerata riunita attorno a Giovanni de' Bardi</strong> e i successivi esperimenti dell'ambiente di <strong>Jacopo Corsi</strong> saranno approfonditi nel capitolo <a href="#firenze">Firenze e la voce che torna sola ↓</a>. La storia più ampia del <em>recitar cantando</em>, di Peri, Caccini, Rinuccini e delle prime opere prosegue nel <a href="../melodramma/#camerata"><strong>percorso sul melodramma: dalla Camerata al teatro in musica ↗</strong></a>.</p>
         <p class="rin-activity"><strong>✦ Per iniziare · Leggere con le orecchie.</strong> Scegli un verso di Petrarca, leggilo ad alta voce e prova a immaginare che cosa una melodia potrebbe mettere in risalto. Poi confronta la tua scelta con una frottola e un madrigale: le voci fanno capire le parole allo stesso modo?</p>
         <div class="source-row">
           <a href="https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/" target="_blank" rel="noopener noreferrer">Fonte · Camerata de' Bardi e Jacopo Corsi ↗</a>
@@ -901,6 +986,7 @@
         </div>
       </div>
     </section>
+
 
     <section id="madrigale">
 <div class="parola-canto-related" style="margin:1rem 0 1.8rem;padding:.85rem 1rem;border-left:3px solid #ad8959;background:rgba(177,141,85,.09);font:600 .88rem/1.55 system-ui,-apple-system,Segoe UI,sans-serif"><a href="../parola-e-canto/#rinascimento" style="text-decoration:underline;text-underline-offset:3px">♪ La parola e il canto · La parola nella polifonia ↗</a></div>
@@ -1016,6 +1102,7 @@
 
 
 
+
     <section id="strumenti">
       <div class="section-title"><div class="section-no">08</div><div><h2>Quando gli strumenti imparano a parlare</h2></div></div>
       <div class="two-col">
@@ -1089,29 +1176,24 @@
         </div>
       </div>
 
-      <div class="history-pivot" id="sangineto-focus">
-        <h3>Quando uno strumento esce da un dipinto: l'Antica Liuteria Sangineto</h3>
-        <p>Qui possiamo osservare un tipo di ricerca diverso dalla filologia esecutiva in senso stretto. <strong>Dal 2010 Michele Sangineto ricostruisce strumenti raffigurati o progettati nelle fonti figurative del Medioevo e del Rinascimento</strong>, trasformando in oggetti suonabili immagini che, in alcuni casi, sono l'unica testimonianza disponibile. Il progetto prende in esame, fra gli altri, la <strong>viola organista, l'organo di carta e la piva a vento continuo di Leonardo da Vinci</strong>, la <strong>claviharpa di Giorgione</strong>, i <strong>liuti e la ribeca degli angeli di Gaudenzio Ferrari</strong> e il <strong>galoucorde di Piero di Cosimo</strong>.</p>
-        <div class="source-caveat"><strong>Nomi e attribuzioni verificati:</strong> sono quelli usati dalla pagina ufficiale dell'Antica Liuteria Sangineto, che indica inoltre Jan van Eyck e Simone Martini fra le fonti iconografiche del progetto.</div>
-        <p>Alcuni di questi strumenti appartengono a famiglie ben documentate, altri ebbero una vita breve, altri ancora potrebbero essere rimasti soltanto invenzioni disegnate e mai concretamente costruite. Per renderli suonabili il liutaio deve quindi colmare lacune relative a misure, materiali, accordature e tecniche esecutive. Proprio per questo l'Antica Liuteria Sangineto è didatticamente preziosa: <strong>non ci offre la registrazione del “vero suono” rinascimentale</strong>, ma una forma di ricostruzione organologica sperimentale nella quale il dato storico e l'ipotesi moderna devono rimanere distinguibili.</p>
+      <div class="mm-listening-inset" id="sangineto-focus">
+        <div class="eyebrow">Tre ascolti · un laboratorio contemporaneo</div>
+        <p><strong>Antica Liuteria Sangineto.</strong> Il nome rimanda al lavoro di <strong>Michele Sangineto</strong>, costruttore di strumenti ispirati anche a dipinti e disegni rinascimentali. Il gruppo ne fa uso in riletture sonore suggestive: <strong>non proponiamo queste esecuzioni come modelli di ricostruzione filologica</strong>. Lo stesso progetto dichiara di combinare strumenti storicamente documentati con altri immaginati dagli artisti o progettati senza essere costruiti nel loro tempo.</p>
         <div class="media-row">
           <button id="ascolto-youtube-pqBsilGJmYk" type="button" class="media-card video" data-video="pqBsilGJmYk" data-title="Antica Liuteria Sangineto · Mon père m'a donné mari">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Uomo_Vitruviano.jpg" alt="Leonardo da Vinci, Uomo vitruviano">
-            <span class="shade"></span><span class="play">▶</span>
-            <span class="meta"><span class="tag">Antica Liuteria Sangineto</span><h3>Mon père m'a donné mari</h3></span>
+            <img loading="lazy" src="https://i.ytimg.com/vi/pqBsilGJmYk/hqdefault.jpg" alt="Anteprima della registrazione di Mon père m'a donné mari">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · Antica Liuteria Sangineto</span><h3>Mon père m'a donné mari</h3></span>
           </button>
           <button id="ascolto-youtube-w4cO8pICTUo" type="button" class="media-card video" data-video="w4cO8pICTUo" data-title="Antica Liuteria Sangineto · Donne, venete al ballo">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bartolomeo_Veneto_Woman_playing_a_lute.jpg" alt="Bartolomeo Veneto, donna che suona il liuto">
-            <span class="shade"></span><span class="play">▶</span>
-            <span class="meta"><span class="tag">Antica Liuteria Sangineto</span><h3>Donne, venete al ballo</h3></span>
+            <img loading="lazy" src="https://i.ytimg.com/vi/w4cO8pICTUo/hqdefault.jpg" alt="Anteprima della registrazione di Donne, venete al ballo">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · Antica Liuteria Sangineto</span><h3>Donne, venete al ballo</h3></span>
           </button>
-          <button type="button" class="media-card resource" data-title="Antica Liuteria Sangineto · il progetto" data-url="https://www.ensemblesangineto.com/ensemble/?page_id=877">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Leonardo_da_Vinci_-_Codex_Atlanticus_f._837_recto.jpg" alt="Leonardo da Vinci, disegno tecnico">
-            <span class="shade"></span>
-            <span class="meta"><span class="tag">Ricostruzione organologica</span><h3>Leonardo e gli strumenti mai costruiti</h3></span>
+          <button id="ascolto-youtube-G68rrzjhQQ0" type="button" class="media-card video" data-video="G68rrzjhQQ0" data-title="Antica Liuteria Sangineto · Trionfo di Bacco e Arianna">
+            <img loading="lazy" src="https://i.ytimg.com/vi/G68rrzjhQQ0/hqdefault.jpg" alt="Anteprima della registrazione del Trionfo di Bacco e Arianna">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · Antica Liuteria Sangineto</span><h3>Trionfo di Bacco e Arianna</h3></span>
           </button>
         </div>
-        <div class="mini-caption">Le immagini delle due schede video sono <strong>immagini di contesto</strong> tratte da fonti aperte e non fotogrammi dei video. Il pulsante ▶ apre le esecuzioni reali dell'Antica Liuteria Sangineto.</div>
+        <p class="mm-inset-followup"><strong>La domanda critica:</strong> ricostruire lo strumento di un dipinto significa sapere come si suonava nel Cinquecento? No: materiali, accordature e gesti esecutivi possono essere ipotetici. Il confronto introduce il capitolo <a href="#hip"><strong>Filologia musicale e HIP: come interpretare le fonti ↗</strong></a>, distinguendo sperimentazione moderna e prassi storicamente informata. <a href="https://www.ensemblesangineto.com/ensemble/?page_id=877" target="_blank" rel="noopener noreferrer">Il progetto dell'Antica Liuteria Sangineto ↗</a>.</p>
       </div>
     </section>
 
@@ -1121,8 +1203,46 @@
 
 
 
+
+    <section id="hip">
+      <div class="section-title"><div class="section-no">09</div><div><h2>Filologia musicale e HIP</h2></div></div>
+      <div class="literary-aside" id="hip-focus">
+        <div class="eyebrow">Come possiamo ascoltare oggi una musica di cinquecento anni fa?</div>
+        <p class="mm-inset-followup"><strong>Dagli ascolti al metodo.</strong> Le sperimentazioni dell'Antica Liuteria Sangineto ci hanno mostrato una via possibile per far suonare strumenti immaginati o ricostruiti. Qui ci chiediamo qualcosa di diverso: <strong>quali prove permettono di motivare una scelta esecutiva?</strong> Il progetto musicale contemporaneo è prezioso, ma non è automaticamente sinonimo di prassi storicamente informata (HIP).</p>
+        <h3>Filologia musicale e HIP, Historically Informed Performance</h3>
+        <p>Una partitura rinascimentale non contiene tutto ciò che un esecutore deve sapere. Non ci dice sempre con precisione quale organico utilizzare, quale altezza di riferimento adottare, quanto ornamentare, come pronunciare il latino o l'italiano, quale temperamento scegliere, come articolare una diminuzione e quale rapporto debba esistere fra voci e strumenti. Per questo l'interprete di musica antica lavora anche come ricercatore, confrontando manoscritti e prime edizioni, trattati, iconografia, strumenti sopravvissuti, descrizioni storiche e caratteristiche degli spazi nei quali quella musica veniva eseguita.</p>
+        <p>La cosiddetta <strong>HIP</strong>, abbreviazione di <em>Historically Informed Performance</em>, non promette di farci ascoltare esattamente ciò che avrebbe sentito un ascoltatore del Cinquecento, perché prima dell'epoca delle registrazioni quel suono è irrimediabilmente perduto. Cerca invece di costruire interpretazioni informate dalle testimonianze storiche disponibili. La parola “filologia”, usata in questo contesto, indica quindi un metodo critico più che una macchina del tempo, perché una fonte viene studiata, confrontata e interpretata, mentre le lacune devono essere dichiarate e colmate attraverso scelte consapevoli.</p>
+        <p>È proprio per questo che i trattati di Virdung, Ganassi, Ortiz, Dalla Casa, Bassano e Galilei sono tanto importanti. Non rappresentano soltanto curiosità bibliografiche, ma sono strumenti attraverso i quali un musicista contemporaneo può ricostruire ciò che la notazione non dice. Anche fra gli specialisti esistono naturalmente scuole differenti, e due ensemble filologicamente consapevoli possono produrre risultati molto diversi senza che uno dei due debba necessariamente essere considerato “sbagliato”.</p>
+        <div class="media-row">
+          <button id="ascolto-youtube-Tku8ceGJ4dk" type="button" class="media-card video" data-video="Tku8ceGJ4dk" data-title="The Tallis Scholars · Palestrina, Missa Brevis">
+            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tallis_Scholars_2015.jpg" alt="The Tallis Scholars alla Winchester Cathedral nel 2015">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">The Tallis Scholars</span><h3><span id="mm-autore-compositore-giovanni-pierluigi-da-palestrina" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Palestrina · Missa Brevis</h3></span>
+          </button>
+          <button id="ascolto-youtube-DIZDxaF511I" type="button" class="media-card video" data-video="DIZDxaF511I" data-title="The Hilliard Ensemble · Renaissance Madrigals">
+            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Codex_specialnik_p64.jpg" alt="Codex Speciálník, inizio dell’Ave Maria di Josquin Desprez">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Hilliard Ensemble</span><h3>Renaissance Madrigals</h3></span>
+          </button>
+          <button id="ascolto-youtube-K38ZfTu0DxE" type="button" class="media-card video" data-video="K38ZfTu0DxE" data-title="Stile Antico · Palestrina, Exultate Deo">
+            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Giovanni Pierluigi da Palestrina">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Stile Antico</span><h3>Palestrina · Exultate Deo</h3></span>
+          </button>
+        </div>
+        <div class="route-links">
+          <button type="button" class="source-card resource" data-title="Clemencic Consort" data-url="https://www.allmusic.com/artist/clemencic-consort-mn0001639777"><span class="src">Pionieri</span><b>Clemencic Consort</b><span>René Clemencic è fra i protagonisti storici della riscoperta di Medioevo e Rinascimento con strumenti e prassi d'epoca.</span></button>
+          <button type="button" class="source-card resource" data-title="The Tallis Scholars" data-url="https://www.thetallisscholars.co.uk/about-us"><span class="src">Polifonia vocale</span><b>The Tallis Scholars</b><span>Dal 1973 hanno contribuito in modo decisivo alla moderna fortuna della polifonia sacra rinascimentale.</span></button>
+          <button type="button" class="source-card resource" data-title="Stile Antico" data-url="https://www.stileantico.co.uk/about"><span class="src">Nuova generazione</span><b>Stile Antico</b><span>Dodici cantori senza direttore, con un approccio cameristico alla polifonia del Cinquecento.</span></button>
+        </div>
+        <p class="source-caveat"><strong>Musica Antiqua Köln</strong> occupa un posto fondamentale nella rivoluzione filologica novecentesca, soprattutto per il repertorio strumentale del Seicento e del Settecento. Per il Rinascimento risultano invece particolarmente pertinenti ensemble come The Tallis Scholars, Hilliard Ensemble, Clemencic Consort, Stile Antico, Doulce Mémoire, Hespèrion XXI e Cinquecento. La differenza non è una graduatoria di qualità, ma una questione di repertorio e specializzazione.</p>
+      </div>
+
+    </section>
+
+
+
+
+
     <section id="trattati">
-      <div class="section-title"><div class="section-no">09</div><div><h2>La musica comincia a spiegare se stessa</h2></div></div>
+      <div class="section-title"><div class="section-no">10</div><div><h2>La musica comincia a spiegare se stessa</h2></div></div>
       <div class="two-col">
         <p>La stampa non moltiplica soltanto repertori da eseguire, ma rende possibile la circolazione di libri che spiegano come costruire, suonare, ornamentare e intavolare la musica. È una trasformazione decisiva, perché molti aspetti della prassi esecutiva non vengono registrati nelle partiture e possono essere ricostruiti soltanto attraverso le parole e le immagini dei trattatisti.</p>
         <p>Il <em>Musica getutscht</em> di Sebastian Virdung, pubblicato nel 1511, è uno dei primi grandi libri a stampa dedicati agli strumenti, mentre Silvestro Ganassi, nella <em>Fontegara</em> del 1535, insegna non soltanto a suonare il flauto diritto ma a diminuire, cioè a trasformare note lunghe in figurazioni rapide e ornamentali. Diego Ortiz, Girolamo Dalla Casa e Giovanni Bassano continueranno questa tradizione mostrando quanto l'esecutore rinascimentale fosse tutt'altro che un lettore passivo del testo scritto.</p>
@@ -1146,8 +1266,9 @@
 
 
 
+
     <section id="temperamenti">
-      <div class="section-title"><div class="section-no">10</div><div><h2>Accordare il mondo</h2></div></div>
+      <div class="section-title"><div class="section-no">11</div><div><h2>Accordare il mondo</h2></div></div>
       <div class="two-col">
         <p>La costruzione di strumenti sempre più raffinati porta inevitabilmente a una domanda che la voce e gli strumenti senza tasti possono risolvere con una certa elasticità: che cosa accade quando le altezze devono essere fissate una volta per tutte su una tastiera o su uno strumento con posizioni determinate? Accordatura e temperamento non sono sinonimi. Accordare significa stabilire le altezze, mentre temperare significa accettare consapevolmente che alcuni intervalli debbano essere leggermente modificati per rendere utilizzabile l'intero sistema.</p>
         <p>Gli intervalli più stabili possono essere descritti attraverso rapporti semplici, come l'ottava 2 a 1, la quinta 3 a 2 e la terza maggiore pura 5 a 4. Il problema nasce quando questi rapporti vengono concatenati, perché dodici quinte perfette non coincidono esattamente con sette ottave. La differenza, nota come comma pitagorico, mostra che la matematica stessa impedisce di costruire una tastiera nella quale tutti gli intervalli siano contemporaneamente puri.</p>
@@ -1168,8 +1289,9 @@
 
 
 
+
     <section id="danza">
-      <div class="section-title"><div class="section-no">11</div><div><h2>La danza: quando la musica mette in moto il corpo</h2></div></div>
+      <div class="section-title"><div class="section-no">12</div><div><h2>La danza di corte: dalla pavana alla scena</h2></div></div>
       <div class="literary-aside mm-prose-illustrated">
         <div class="eyebrow">La musica che mette in moto il corpo</div>
         <h3>Pavana, gagliarda e il laboratorio della danza</h3>
@@ -1198,14 +1320,16 @@
         <h3>Camminare o saltare?</h3>
         <p>La <strong>pavana</strong> è lenta e solenne, la <strong>gagliarda</strong> più vivace e in tre tempi. Venivano spesso suonate in coppia: prima una, poi l'altra.</p>
         <div class="try"><strong>Prova tu.</strong> Ascolta una pavana e una gagliarda, le trovi nella teca. Batti il ritmo con le mani: quale ti fa pensare a un passo calmo, quale a un salto? Perché secondo te si alternavano?</div>
+        <p class="mm-inset-followup"><strong>Dal salone al teatro.</strong> Pavana, gagliarda e danza di corte hanno anche un ruolo scenico: gesto, musica e disposizione dei corpi si incontrano nelle feste e negli intermedi. Da qui il passaggio naturale al capitolo successivo, <a href="#firenze">Firenze e la nascita del teatro musicale ↓</a>.</p>
       </aside>
 </section>
 
 
 
 
+
     <section id="firenze">
-      <div class="section-title"><div class="section-no">12</div><div><h2>Firenze e la voce che torna sola</h2></div></div>
+      <div class="section-title"><div class="section-no">13</div><div><h2>Firenze e la voce che torna sola</h2></div></div>
       <div class="two-col">
         <p>Il madrigale aveva portato la polifonia a una capacità straordinaria di leggere la poesia, ma proprio questa raffinatezza rendeva sempre più evidente un limite. Quando cinque o sei voci pronunciano insieme un testo, la parola può essere interpretata in profondità e nello stesso tempo perdere la presenza concreta di una persona che parla. Alla fine del Cinquecento la Camerata riunita intorno a Giovanni de' Bardi trasforma questo problema in una ricerca teorica.</p>
         <p>Gli uomini della Camerata immaginano che la tragedia greca avesse raggiunto una unione fra parola, canto e gesto che la polifonia moderna avrebbe smarrito. La loro ricostruzione dell'antichità è inevitabilmente ipotetica e in parte sbagliata, ma proprio questo fraintendimento diventa artisticamente fecondo, perché suggerisce una musica nella quale una voce sola possa seguire con chiarezza l'andamento del discorso mentre gli strumenti la sostengono.</p>
@@ -1257,40 +1381,6 @@
       </div>
     </section>
 
-
-
-
-    <section id="hip">
-      <div class="section-title"><div class="section-no">13</div><div><h2>Filologia musicale e HIP</h2></div></div>
-      <div class="literary-aside" id="hip-focus">
-        <div class="eyebrow">Come possiamo ascoltare oggi una musica di cinquecento anni fa?</div>
-        <h3>Filologia musicale e HIP, Historically Informed Performance</h3>
-        <p>Una partitura rinascimentale non contiene tutto ciò che un esecutore deve sapere. Non ci dice sempre con precisione quale organico utilizzare, quale altezza di riferimento adottare, quanto ornamentare, come pronunciare il latino o l'italiano, quale temperamento scegliere, come articolare una diminuzione e quale rapporto debba esistere fra voci e strumenti. Per questo l'interprete di musica antica lavora anche come ricercatore, confrontando manoscritti e prime edizioni, trattati, iconografia, strumenti sopravvissuti, descrizioni storiche e caratteristiche degli spazi nei quali quella musica veniva eseguita.</p>
-        <p>La cosiddetta <strong>HIP</strong>, abbreviazione di <em>Historically Informed Performance</em>, non promette di farci ascoltare esattamente ciò che avrebbe sentito un ascoltatore del Cinquecento, perché prima dell'epoca delle registrazioni quel suono è irrimediabilmente perduto. Cerca invece di costruire interpretazioni informate dalle testimonianze storiche disponibili. La parola “filologia”, usata in questo contesto, indica quindi un metodo critico più che una macchina del tempo, perché una fonte viene studiata, confrontata e interpretata, mentre le lacune devono essere dichiarate e colmate attraverso scelte consapevoli.</p>
-        <p>È proprio per questo che i trattati di Virdung, Ganassi, Ortiz, Dalla Casa, Bassano e Galilei sono tanto importanti. Non rappresentano soltanto curiosità bibliografiche, ma sono strumenti attraverso i quali un musicista contemporaneo può ricostruire ciò che la notazione non dice. Anche fra gli specialisti esistono naturalmente scuole differenti, e due ensemble filologicamente consapevoli possono produrre risultati molto diversi senza che uno dei due debba necessariamente essere considerato “sbagliato”.</p>
-        <div class="media-row">
-          <button id="ascolto-youtube-Tku8ceGJ4dk" type="button" class="media-card video" data-video="Tku8ceGJ4dk" data-title="The Tallis Scholars · Palestrina, Missa Brevis">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tallis_Scholars_2015.jpg" alt="The Tallis Scholars alla Winchester Cathedral nel 2015">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">The Tallis Scholars</span><h3><span id="mm-autore-compositore-giovanni-pierluigi-da-palestrina" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Palestrina · Missa Brevis</h3></span>
-          </button>
-          <button id="ascolto-youtube-DIZDxaF511I" type="button" class="media-card video" data-video="DIZDxaF511I" data-title="The Hilliard Ensemble · Renaissance Madrigals">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Codex_specialnik_p64.jpg" alt="Codex Speciálník, inizio dell’Ave Maria di Josquin Desprez">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Hilliard Ensemble</span><h3>Renaissance Madrigals</h3></span>
-          </button>
-          <button id="ascolto-youtube-K38ZfTu0DxE" type="button" class="media-card video" data-video="K38ZfTu0DxE" data-title="Stile Antico · Palestrina, Exultate Deo">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Giovanni Pierluigi da Palestrina">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Stile Antico</span><h3>Palestrina · Exultate Deo</h3></span>
-          </button>
-        </div>
-        <div class="route-links">
-          <button type="button" class="source-card resource" data-title="Clemencic Consort" data-url="https://www.allmusic.com/artist/clemencic-consort-mn0001639777"><span class="src">Pionieri</span><b>Clemencic Consort</b><span>René Clemencic è fra i protagonisti storici della riscoperta di Medioevo e Rinascimento con strumenti e prassi d'epoca.</span></button>
-          <button type="button" class="source-card resource" data-title="The Tallis Scholars" data-url="https://www.thetallisscholars.co.uk/about-us"><span class="src">Polifonia vocale</span><b>The Tallis Scholars</b><span>Dal 1973 hanno contribuito in modo decisivo alla moderna fortuna della polifonia sacra rinascimentale.</span></button>
-          <button type="button" class="source-card resource" data-title="Stile Antico" data-url="https://www.stileantico.co.uk/about"><span class="src">Nuova generazione</span><b>Stile Antico</b><span>Dodici cantori senza direttore, con un approccio cameristico alla polifonia del Cinquecento.</span></button>
-        </div>
-        <p class="source-caveat"><strong>Musica Antiqua Köln</strong> occupa un posto fondamentale nella rivoluzione filologica novecentesca, soprattutto per il repertorio strumentale del Seicento e del Settecento. Per il Rinascimento risultano invece particolarmente pertinenti ensemble come The Tallis Scholars, Hilliard Ensemble, Clemencic Consort, Stile Antico, Doulce Mémoire, Hespèrion XXI e Cinquecento. La differenza non è una graduatoria di qualità, ma una questione di repertorio e specializzazione.</p>
-      </div>
-
-    </section>
 
 
 
@@ -1558,6 +1648,7 @@
     lastFocus = document.activeElement;
     title.textContent = t;
     body.innerHTML = content;
+    body.classList.toggle('mm-bacco-reading',content.includes('mm-bacco-pane'));
     currentUrl = url;
     urlBox.textContent = url || 'Contenuto incorporato nella pagina';
     openBtn.disabled = !url;
@@ -1571,6 +1662,7 @@
     modal.classList.remove('open','compact');
     modal.setAttribute('aria-hidden','true');
     body.innerHTML='';
+    body.classList.remove('mm-bacco-reading');
     document.body.style.overflow='';
     if(lastFocus) lastFocus.focus();
   }
@@ -1599,6 +1691,19 @@
     catch{ return false; }
   };
 
+
+  // Approfondimento autonomo in popup, costruito da un template statico della pagina.
+  const baccoTrigger=document.querySelector('.mm-bacco-open');
+  const baccoTemplate=document.getElementById('mm-bacco-template');
+  if(baccoTrigger&&baccoTemplate){
+    baccoTrigger.addEventListener('click',()=>showModal('Lorenzo il Magnifico · Trionfo di Bacco e Arianna',baccoTemplate.innerHTML));
+  }
+  body.addEventListener('click',event=>{
+    const link=event.target.closest('.mm-bacco-pane a[href]');
+    if(!link)return;
+    if(link.getAttribute('href').startsWith('#')){ closeModal(); return; }
+    if(link.href.startsWith('https://')){ event.stopPropagation(); }
+  });
   document.querySelectorAll('.resource').forEach(el=>el.addEventListener('click',()=>{
     const u=el.dataset.url,t=el.dataset.title || 'Documento', kind=el.dataset.kind || '';
     if(!canEmbedResource(u,kind)){
