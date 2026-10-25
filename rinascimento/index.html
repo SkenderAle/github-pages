@@ -341,6 +341,9 @@
   .mm-leonardo-sources a{color:#164f72;text-decoration:underline}
   @media(max-width:560px){.mm-leonardo-figure{float:none;width:min(100%,280px);margin:1rem auto}.mm-leonardo-pane{font-size:1rem}}
   @media(max-width:560px){.mm-leonardo-dali{float:none!important;width:min(85%,250px)!important;margin:1rem auto!important}}
+  .mm-preview-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.25rem;background:linear-gradient(145deg,#67563c,#253a48);color:#f4e6c9;font:700 clamp(.95rem,1.6vw,1.35rem)/1.4 var(--serif);letter-spacing:.02em}
+  .media-card .mm-preview-fallback,.person .mm-preview-fallback{z-index:0}
+  .media-card .meta,.person .label{z-index:2}
 </style>
 
 <style>
@@ -701,15 +704,15 @@ di doman non c’è certezza.</blockquote>
           <span class="label"><b>Lorenzo de' Medici</b><span>Il principe umanista che partecipa alla cultura che protegge</span></span>
         </button>
         <button type="button" class="person resource" data-title="Isabella d'Este" data-url="https://www.treccani.it/enciclopedia/isabella-d-este-marchesa-di-mantova/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Isabella_d%27Este_by_Titian.jpg" alt="Isabella d'Este">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Isabella%20d%27Este%20Titien.jpg?width=800" alt="Isabella d'Este">
           <span class="label"><b>Isabella d'Este</b><span>Musica, collezionismo e politica della corte</span></span>
         </button>
         <button type="button" class="person resource" data-title="Bartolomeo Tromboncino" data-url="https://www.treccani.it/enciclopedia/bartolomeo-tromboncino/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Lute_player_16th_century.jpg" alt="Liutista rinascimentale">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bartolomeo%20Veneto%20Woman%20playing%20a%20lute.jpg?width=800" alt="Liutista rinascimentale">
           <span class="label"><b>Tromboncino e Cara</b><span>La frottola dentro la vita musicale delle corti</span></span>
         </button>
         <button type="button" class="person resource" data-title="Heinrich Isaac" data-url="https://www.treccani.it/enciclopedia/heinrich-isaac/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Heinrich_Isaac.jpg" alt="Heinrich Isaac">
+          <span class="mm-preview-fallback" aria-hidden="true">HEINRICH ISAAC<br>COMPOSITORE FRANCO-FIAMMINGO</span>
           <span class="label"><b>Heinrich Isaac</b><span>La tecnica nordica dentro la Firenze dei Medici</span></span>
         </button>
       </div>
@@ -1841,6 +1844,24 @@ di doman non c’è certezza.</blockquote>
     catch{ return false; }
   };
 
+
+  // In caso di immagine remota non raggiungibile, mantieni la scheda leggibile.
+  document.querySelectorAll('.media-card img, .person img').forEach(img=>{
+    const card=img.closest('.media-card,.person');
+    if(!card)return;
+    const fallback=()=>{
+      if(card.querySelector('.mm-preview-fallback'))return;
+      const panel=document.createElement('span');
+      panel.className='mm-preview-fallback';
+      panel.setAttribute('aria-hidden','true');
+      panel.textContent=card.dataset.title||img.alt||'Approfondimento';
+      card.style.position='relative';
+      card.insertBefore(panel,img);
+      img.style.visibility='hidden';
+    };
+    img.addEventListener('error',fallback,{once:true});
+    if(img.complete && img.naturalWidth===0)fallback();
+  });
 
   // Approfondimento autonomo in popup, costruito da un template statico della pagina.
   const leonardoTrigger=document.querySelector('.mm-leonardo-open');
