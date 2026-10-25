@@ -327,6 +327,19 @@
   .mm-polifonia-lab a{color:#225540;text-decoration:underline;text-underline-offset:3px}
   @media(max-width:900px){.mm-polifonia-instructions{grid-template-columns:1fr}.mm-polifonia-frame-shell{height:1250px}}
   @media(max-width:580px){.mm-polifonia-lab{padding:.75rem;margin:1.8rem -.25rem}.mm-polifonia-frame-shell{height:1460px}}
+  .mm-leonardo-pane{font-family:var(--serif);font-size:1.08rem;line-height:1.7;color:#2c261f;display:flow-root}
+  .mm-leonardo-pane .mm-leonardo-kicker{font:700 .72rem/1.5 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:#725c3c}
+  .mm-leonardo-pane h2{font-size:clamp(1.6rem,3.4vw,2.35rem);line-height:1.17;margin:.35rem 0 1rem;color:#223d58}
+  .mm-leonardo-pane h3{font-size:1.32rem;color:#24475a;line-height:1.3;margin:1.4rem 0 .35rem}
+  .mm-leonardo-pane p{margin:.5rem 0 1rem}
+  .mm-leonardo-pane .mm-leonardo-lead{font-size:1.15rem}
+  .mm-leonardo-figure{float:right;width:min(38%,250px);margin:.4rem 0 1.15rem 1.4rem}
+  .mm-leonardo-figure img{display:block;width:100%;height:auto}
+  .mm-leonardo-figure figcaption{font: .78rem/1.45 var(--sans);color:#665d50;margin-top:.4rem}
+  .mm-leonardo-question{clear:both;background:#e9efe9;border-left:4px solid #37644d;padding:1rem 1.2rem;margin:1.5rem 0}
+  .mm-leonardo-sources{font: .83rem/1.7 var(--sans);border-top:1px solid #c6bca8;padding-top:1rem}
+  .mm-leonardo-sources a{color:#164f72;text-decoration:underline}
+  @media(max-width:560px){.mm-leonardo-figure{float:none;width:min(100%,280px);margin:1rem auto}.mm-leonardo-pane{font-size:1rem}}
 </style>
 
 <style>
@@ -576,8 +589,8 @@
         <div class="txt">
           <h3>Leonardo e Michelangelo, due anime dello stesso Rinascimento</h3>
           <p>L'opposizione non va ridotta alla formula facile secondo cui Leonardo sarebbe lo scienziato e Michelangelo il classicista, perché entrambi studiano il corpo e l'antico. La differenza utile, per il nostro racconto, è piuttosto nel modo di guardare: Michelangelo tende a trasformare il corpo osservato verso una potenza ideale ed eroica, mentre Leonardo lo smonta, lo misura e lo disseziona per comprenderne il funzionamento. Il corpo vitruviano e il cadavere anatomico convivono così nella stessa epoca, esattamente come nella musica convivranno il rispetto delle regole polifoniche e il desiderio di piegarle all'esperienza concreta della parola.</p>
-          <button type="button" class="source-card resource" data-title="Stefano Bollani · Leonardo da Vinci, musica e alieni" data-url="https://www.listennotes.com/podcasts/pdr-il-podcast-di/pdr-95-stefano-bollani-eS2QfzXAW8p/">
-            <span class="src">Approfondimento contemporaneo</span><b>Stefano Bollani parla del Leonardo musicista</b><span>Podcast PDR, 2025</span>
+          <button type="button" class="source-card mm-leonardo-open" aria-haspopup="dialog" aria-controls="modal">
+            <span class="src">Cammeo · la musica nel Rinascimento</span><b>Leonardo da Vinci musicista</b><span>La lira d'argento, la voce, le macchine sonore · Apri l'approfondimento ↗</span>
           </button>
         </div>
       </div>
@@ -1730,6 +1743,27 @@ di doman non c’è certezza.</blockquote>
 
 <button type="button" class="scrolltop" id="scrolltop" aria-label="Torna in alto">↑</button>
 
+
+<template id="mm-leonardo-template">
+  <article class="mm-leonardo-pane">
+    <div class="mm-leonardo-kicker">Musurgia Mundi · Cammeo rinascimentale</div>
+    <h2>Leonardo da Vinci, musicista prima che mito</h2>
+    <p class="mm-leonardo-lead">Siamo abituati a ricordarlo come pittore, inventore e anatomista. Eppure Leonardo era anche un <strong>apprezzato suonatore di lira da braccio</strong>, capace di improvvisare versi e di accompagnarli con la musica. La sua curiosità per i suoni attraversa la vita di corte, la meccanica degli strumenti e la riflessione sulle arti.</p>
+    <figure class="mm-leonardo-figure"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Leonardo_da_Vinci_-_Portrait_of_a_Musician.jpg" alt="Leonardo da Vinci, Ritratto di musico, Pinacoteca Ambrosiana"><figcaption>Leonardo, <i>Ritratto di musico</i>, circa 1485–1490, Pinacoteca Ambrosiana. L'identità del personaggio è discussa: non è un autoritratto certo, né una prova che raffiguri Leonardo stesso.</figcaption></figure>
+    <h3>La lira, la voce, il duca</h3>
+    <p><strong>Giorgio Vasari</strong>, nelle <i>Vite</i>, racconta che Leonardo si presentò alla corte di Ludovico Sforza con una <strong>lira in gran parte d'argento</strong>, che avrebbe costruito personalmente, dalla singolare forma di testa di cavallo. Aggiunge che superò gli altri musicisti e che eccelleva nell'improvvisazione poetica. È una testimonianza preziosa, ma redatta decenni dopo gli avvenimenti: il famoso strumento non è conservato, e non possediamo un suo disegno identificabile con certezza. Il trasferimento milanese viene solitamente collocato intorno al <strong>1482</strong>, mentre il racconto vasariano sovrappone dettagli e cronologie della corte sforzesca.</p>
+    <p>La <strong>lira da braccio</strong>, strumento ad arco particolarmente adatto ad accompagnare il canto e la recitazione improvvisata, ci ricorda che nelle corti la musica poteva essere contemporaneamente arte, conversazione, spettacolo e diplomazia. Leonardo era inserito in questo ambiente; con lui si collega anche il nome del musicista <strong>Atalante Migliorotti</strong>.</p>
+    <h3>Inventare il suono: strumenti e automi</h3>
+    <p>I manoscritti mostrano un inventore affascinato dai problemi della produzione sonora. La cosiddetta <strong>viola organista</strong> combina idealmente una tastiera con corde eccitate da un meccanismo ad attrito continuo, come un arco senza fine: un concetto diverso dal pianoforte, in cui le corde vengono percosse. Leonardo disegna anche <strong>tamburi meccanici</strong> e apparati destinati a scandire ritmi e a produrre effetti sonori nelle feste e negli spettacoli. Si tratta di progetti e studi; non dobbiamo trasformarli automaticamente in strumenti costruiti e suonati da lui. Le ricostruzioni moderne aiutano a immaginare il loro funzionamento, ma non documentano un'esecuzione cinquecentesca.</p>
+    <h3>«La musica era il suo vero mestiere»?</h3>
+    <p>È una formula suggestiva, non una conclusione documentaria. Le fonti permettono di dire che <strong>Leonardo fu un musicista di riconosciuta abilità</strong>, ma non che la musica fosse il suo mestiere esclusivo o principale. Alla corte milanese operò anche come pittore, progettista, ingegnere e organizzatore di spettacoli. E, a differenza di altri compositori del suo tempo, <strong>non ci è giunta alcuna composizione musicale sicuramente attribuibile a Leonardo</strong>. La sua vita musicale emerge soprattutto attraverso testimonianze, appunti e disegni.</p>
+    <h3>La pittura resta, la musica svanisce</h3>
+    <p>Nel suo <strong>paragone fra le arti</strong> Leonardo considera la musica sorella della pittura, ma la giudica meno durevole: il suono esiste nel tempo, poi scompare; il dipinto rimane disponibile allo sguardo. È un giudizio estetico, non la negazione del valore della musica. E forse spiega bene il paradosso della sua fama: conosciamo oggi le immagini di Leonardo molto meglio dei suoni che un tempo seppe produrre.</p>
+    <div class="mm-leonardo-question"><strong>✦ Per interrogare.</strong> Che cosa distingue un'invenzione disegnata da uno strumento realmente costruito? E perché di un grande musicista del Rinascimento potrebbe non sopravvivere neppure una nota?</div>
+    <p class="mm-leonardo-sources"><strong>Fonti per approfondire:</strong> <a href="https://www.clevelandart.org/articles/leonardos-lira" target="_blank" rel="noopener noreferrer">Cleveland Museum of Art · Leonardo’s Lira</a> · <a href="https://digital.beic.it/it/content/leonardo-e-gli-studi-sulle-acque-lomellina/vita-di-leonardo-1452-1499.html" target="_blank" rel="noopener noreferrer">BEIC · Leonardo alla corte sforzesca e il racconto di Vasari</a> · <a href="https://teche.museogalileo.it/leonardo/foglio/index.html?lang=en&num=ATL.1775.1" target="_blank" rel="noopener noreferrer">Museo Galileo · manoscritti e ambiente musicale di Leonardo</a>.</p>
+  </article>
+</template>
+
 <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-panel">
     <div class="modal-head"><div class="modal-title" id="modalTitle">Teca</div><button type="button" class="modal-close" id="modalClose" aria-label="Chiudi">×</button></div>
@@ -1799,6 +1833,11 @@ di doman non c’è certezza.</blockquote>
 
 
   // Approfondimento autonomo in popup, costruito da un template statico della pagina.
+  const leonardoTrigger=document.querySelector('.mm-leonardo-open');
+  const leonardoTemplate=document.getElementById('mm-leonardo-template');
+  if(leonardoTrigger && leonardoTemplate){
+    leonardoTrigger.addEventListener('click',()=>showModal('Leonardo da Vinci · musicista e inventore di suoni',leonardoTemplate.innerHTML));
+  }
   const baccoTrigger=document.querySelector('.mm-bacco-open');
   const baccoTemplate=document.getElementById('mm-bacco-template');
   if(baccoTrigger&&baccoTemplate){
