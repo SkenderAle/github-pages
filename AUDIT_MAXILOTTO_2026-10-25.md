@@ -236,3 +236,43 @@ Le **9 riserve residue** sono intenzionali, non un errore di contabilità:
 I file `atlante3d/database/collegamenti-sito.json` e `tools/check-site-link-registry.mjs` sono stati aggiornati: `validation.pending_review` e `validation.maxilotto_v_20261025.remaining_pending` valgono entrambi 9; il test controlla il saldo delle decisioni (88+4+6+9=107) e segnala se compaiono nuove riserve fuori dai due ambiti rimasti.
 
 **Ambito dei controlli:** verifica statica degli ID e dei dati JSON, integrità dei link e della tassonomia editoriale. Non certifica il caricamento dinamico in browser, gli embed YouTube, la resa desktop/mobile, l'accessibilità reale né l'esito delle GitHub Actions del nuovo commit. Queste prove rimangono nell'audit permanente.
+
+## Maxi-lotto VI — Tre itinerari storici e sei riserve protette
+
+**Data:** 25 ottobre 2026 · **Branch:** `main` · **Ambito:** chiusura documentata delle tre riserve `percorsi-storici` lasciate aperte dal Lotto V. Registro decisionale: `atlante3d/database/audit-risoluzioni-maxilotto-vi-20261025.json`.
+
+### Modifica pubblicata alla pagina sinfonica
+
+In `dalla-sinfonia-alla-rapsodia/index.html`, subito dopo l'introduzione alle diverse forme, è stato inserito un capitolo storico di confronto intitolato **«La sinfonia può narrare; la suite e la rapsodia seguono altre strade»**. Non si tratta di tre bottoni per saltare al catalogo, bensì di tre brevi letture, ciascuna con un problema musicale, una domanda d'ascolto, due/una opera specifica, fonti editoriali e link bidirezionale al nodo.
+
+1. **Joachim Raff** — le sinfonie n. 3 `Im Walde` op. 153 (1869) e n. 5 `Lenore` op. 177 (1872), con distinzione fra immaginario naturale e origine nella ballata di Gottfried August Bürger. Fonti: `raff.org/catalogue/catalogue_orchestral.html` e Naxos `8.555541`. Lo storico dei video resta qualificato: registrazioni documentate, caricamenti indipendenti da verificare.
+2. **Gustav Holst** — `The Planets` op. 32 (1914–1916), sette movimenti legati a caratteri **astrologici**, non una sinfonia né un programma di astronomia. Fonti: Gustav Holst Website e Wise Music Classical. Messa in evidenza la differenza fra ostinato di `Mars` e dissoluzione di `Neptune`.
+3. **Emmanuel Chabrier** — `España` (1883), rapsodia per orchestra dopo il viaggio spagnolo; riferimenti alle danze e alla loro rielaborazione orchestrale. Fonti: programma LA Phil/Hollywood Bowl e partitura IMSLP. Nessuna pretesa di ricostruzione etnografica letterale.
+
+Le nuove destinazioni, tutte con link di ritorno all'Atlante, sono:
+
+- `../dalla-sinfonia-alla-rapsodia/#mm-autore-compositore-joachim-raff`
+- `../dalla-sinfonia-alla-rapsodia/#mm-autore-compositore-gustav-holst`
+- `../dalla-sinfonia-alla-rapsodia/#mm-autore-compositore-emmanuel-chabrier`
+
+I filtri del catalogo si aprono anche attraverso parametri `?autore=...&opera=...#catalogo`; il testo non aggiunge, simula o avvia video.
+
+### Registro delle relazioni
+
+In `atlante3d/database/collegamenti-sito.json` sono stati aggiunti i tre nuovi collegamenti `author-narrative-anchor` e sono state archiviate tre riserve `percorsi-storici`, conservandone l'evidenza nel file audit VI.
+
+| Indicatore | Dopo Lotto V | Dopo Lotto VI |
+| --- | ---: | ---: |
+| Nodi censiti | 791 | **791** |
+| Rimandi attivi | 463 | **466** |
+| Riserve totali | 9 | **6** |
+| Riserve narrativo-storiche | 3 | **0** |
+| Riserve nel redirect della bozza Avanguardie | 6 | **6** |
+
+Le sei riserve ancora sospese sono **Maurice Ravel, Anton Webern, Ma Rainey, Bessie Smith, Louis Armstrong e Mary Lou Williams**. Appartengono a `post-romanticismo`, redirect storico verso la bozza `verso-le-avanguardie`: non sono state promosse con rimandi a sezioni generiche. Il file della bozza non è stato modificato.
+
+### Anti-regressione e limiti
+
+Il file `tools/check-site-link-registry.mjs` è stato aggiornato in modo che il saldo del Lotto V rimanga *storico* e il Lotto VI diventi il riferimento per il totale corrente: 9 iniziali − 3 nuovi rimandi narrativi = 6 in quarantena. Sono controllate le tre nuove URL storiche e la provenienza delle sei riserve. Restano in vigore i controlli di duplicazione, page/URL, Goldmark e chiusura dei falsi collegamenti ai Concerti.
+
+**Verifiche richieste:** corrispondenza HTML/JSON, ancore generate dai cataloghi, integrità dei collegamenti e controllo che il redirect conservi i frammenti. **Non equivalgono** al collaudo reale su smartphone/desktop, del filtro aperto via URL, dei player, dell'accessibilità o dei media di terzi. Gli esiti del workflow GitHub Actions vanno verificati separatamente.
