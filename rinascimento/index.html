@@ -375,6 +375,13 @@
 @media(max-width:600px){.mm-prose-listening{float:none;width:min(100%,300px);max-width:300px;margin:1rem auto}}
   .mm-prose-listening::after{content:"";display:block;clear:both}
   @media(max-width:600px){.mm-prose-listening[style]{float:none!important;margin:1rem auto!important}}
+
+/* Confronto storico: tre ascolti compatti e scheda di lettura nella colonna destra. */
+#rinascimento-gibbons.mm-three-listenings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:start}
+#rinascimento-gibbons .student-box{grid-column:3;grid-row:1 / span 2}
+#rinascimento-gibbons .mm-compact-listening{min-width:0}
+@media(max-width:900px){#rinascimento-gibbons.mm-three-listenings{grid-template-columns:repeat(2,minmax(0,1fr))}#rinascimento-gibbons .student-box{grid-column:1 / -1;grid-row:auto}}
+@media(max-width:520px){#rinascimento-gibbons.mm-three-listenings{grid-template-columns:1fr}}
 </style>
 
 <style>
@@ -1263,11 +1270,6 @@ di doman non c’è certezza.</blockquote>
       </aside>
 
       <div class="media-row">
-        <div class="mm-compact-listening" aria-label="Arcadelt · Il bianco e dolce cigno">
-  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FOXMfgHNb90?rel=0" title="Arcadelt · Il bianco e dolce cigno" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-  <div class="mm-compact-caption">Arcadelt · Il bianco e dolce cigno</div>
-  <span class="mm-mini-resources" aria-label="Risorse di Jacques Arcadelt"><a href="https://imslp.org/wiki/Category:Jacques_Arcadelt" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Jacques Arcadelt">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Jacques Arcadelt" data-mm-author="Jacques Arcadelt">✧ Musurgia · Jacques Arcadelt</a></span>
-</div>
         <button type="button" class="media-card resource" data-title="Jacques Arcadelt" data-url="https://www.treccani.it/enciclopedia/jacques-arcadelt_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Arcadelt.jpg" alt="Jacques Arcadelt">
           <span class="shade"></span><span class="meta"><span class="tag">Madrigale</span><h3>Verdelot e Arcadelt</h3></span>
@@ -1277,7 +1279,12 @@ di doman non c’è certezza.</blockquote>
           <span class="shade"></span><span class="meta"><span class="tag">Parola e suono</span><h3>Il testo diventa forma</h3></span>
         </button>
       </div>
-      <div class="media-row" id="rinascimento-gibbons" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));align-items:stretch" aria-label="Confronto tra madrigale italiano e inglese">
+      <div class="media-row mm-three-listenings" id="rinascimento-gibbons" aria-label="Confronto tra madrigale italiano e inglese">
+        <div class="mm-compact-listening" aria-label="Arcadelt · Il bianco e dolce cigno">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FOXMfgHNb90?rel=0" title="Arcadelt · Il bianco e dolce cigno" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Arcadelt · Il bianco e dolce cigno</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Jacques Arcadelt"><a href="https://imslp.org/wiki/Category:Jacques_Arcadelt" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Jacques Arcadelt">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Jacques Arcadelt" data-mm-author="Jacques Arcadelt">✧ Musurgia · Jacques Arcadelt</a></span>
+</div>
         <div class="mm-compact-listening" aria-label="Orlando Gibbons · The Silver Swan">
   <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/XOK0uH0HruI?rel=0" title="Orlando Gibbons · The Silver Swan" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
   <div class="mm-compact-caption">Orlando Gibbons · The Silver Swan</div>
