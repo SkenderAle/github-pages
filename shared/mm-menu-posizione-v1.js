@@ -14,7 +14,7 @@ function init(){
  if(!links.length)return;
  const unique=[...new Map(links.map(x=>[x.a,x])).values()];
  const order=unique.slice().sort((a,b)=>{const p=a.target.compareDocumentPosition(b.target);return p&Node.DOCUMENT_POSITION_FOLLOWING?-1:p&Node.DOCUMENT_POSITION_PRECEDING?1:0});
- const roots=[...new Set(unique.map(x=>x.panel.closest('details')||x.panel))];
+ 
  let active=null,scheduled=false;
  const style=document.createElement('style');style.textContent=`
  .atlas-menu-context-local,.classico-context,.anatomia-context{margin-left:auto!important;text-align:right!important}\n @media(max-width:950px){.atlas-menu-context-local{display:block!important;font-size:.62rem!important;white-space:normal!important;line-height:1.2!important;max-width:125px!important}}\n @media(max-width:440px){.atlas-menu-context-local{font-size:.56rem!important;max-width:95px!important}.classico-context,.anatomia-context{font-size:.56rem!important;max-width:105px!important}}\n .mm-reading-chapter{border-left:4px solid #7b4b77!important}
@@ -23,7 +23,7 @@ function init(){
  .mm-reading-chapter>summary::after{content:" · in lettura";font-size:.72em;font-weight:650;opacity:.76}
  `;document.head.append(style);
  function position(){
-  scheduled=false;const y=window.scrollY+Math.min(180,Math.max(85,innerHeight*.20));
+  scheduled=false;const y=window.scrollY+Math.min(105,Math.max(65,innerHeight*.11));
   let candidate=null;
   for(const entry of order){const top=entry.target.getBoundingClientRect().top+scrollY;if(top<=y)candidate=entry;else break}
   if(candidate===active)return;
@@ -33,11 +33,18 @@ function init(){
   candidate.a.classList.add('mm-reading-paragraph');candidate.a.setAttribute('aria-current','location');
  }
  function queue(){if(!scheduled){scheduled=true;requestAnimationFrame(position)}}
- for(const root of roots){const menu=root.matches('details')?root:root.closest('details');
-  if(!menu)continue;
-  menu.addEventListener('toggle',()=>{if(!menu.open)return;position();
-   const match=active&&unique.find(x=>x.panel===root||x.panel===menu||menu.contains(x.panel)&&x.parent===active.parent);
-   if(match){match.parent.open=true;const panel=match.panel;const anchor=match.a;requestAnimationFrame(()=>{const top=anchor.offsetTop;const scrollBox=[panel,menu].find(el=>el.scrollHeight>el.clientHeight+10);if(scrollBox)scrollBox.scrollTop=Math.max(0,top-scrollBox.clientHeight*.35)})}
+ // I sottoindici si aprono esclusivamente per volontà dell'utente.
+ // Alla chiusura del menu principale ogni capitolo torna richiuso.
+ const outerMenus=[...new Set([...panels].map(p=>p.closest('details')).filter(Boolean))];
+ for(const menu of outerMenus){
+  menu.addEventListener('toggle',()=>{
+   if(!menu.open){menu.querySelectorAll('details').forEach(d=>d.open=false);return;}
+   position();
+  });
+  menu.addEventListener('click',event=>{
+   if(event.target.closest('a[href^="#"]')){
+    menu.querySelectorAll('details').forEach(d=>d.open=false);
+   }
   });
  }
  document.addEventListener('scroll',queue,{passive:true});window.addEventListener('resize',queue,{passive:true});
