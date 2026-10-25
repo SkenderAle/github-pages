@@ -12,6 +12,10 @@ on:
       - 'verso-le-avanguardie/index.html'
       - '**/index.html'
       - 'shared/atlas-anchor-arrival-v1.js'
+      - 'shared/mm-menu-posizione-v1.js'
+      - 'shared/mm-menu-compatto-v1.js'
+      - 'assets/atlante-menu-gerarchico-pagine.js'
+      - 'tools/browser-smoke.mjs'
       - 'tools/check-atlante-site-links.mjs'
       - 'tools/check-site-link-registry.mjs'
       - 'tools/check-concert-visible-targets.mjs'
@@ -22,6 +26,10 @@ on:
       - 'atlante3d/database/collegamenti-sito.json'
       - '**/index.html'
       - 'shared/atlas-anchor-arrival-v1.js'
+      - 'shared/mm-menu-posizione-v1.js'
+      - 'shared/mm-menu-compatto-v1.js'
+      - 'assets/atlante-menu-gerarchico-pagine.js'
+      - 'tools/browser-smoke.mjs'
       - 'tools/check-atlante-site-links.mjs'
       - 'tools/check-site-link-registry.mjs'
       - 'tools/check-concert-visible-targets.mjs'
@@ -49,3 +57,35 @@ jobs:
       - run: node tools/check-concert-visible-targets.mjs
       - run: node --check tools/check-page-deeplinks.mjs
       - run: node tools/check-page-deeplinks.mjs
+
+  browser-smoke:
+    name: Browser Chromium · PC e smartphone
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installa Playwright e Chromium
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Avvia sito statico locale
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/musurgia-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8765/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/musurgia-http.log
+          exit 1
+      - name: Pagine, menu, ancore dinamiche e player manuale
+        run: node tools/browser-smoke.mjs
+      - name: Conserva schermate e relazione diagnostica
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: musurgia-browser-smoke
+          path: audit-browser-artifacts/
+          if-no-files-found: ignore
