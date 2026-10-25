@@ -62,7 +62,9 @@ if(declaredConcertRemaining!==undefined && declaredConcertRemaining!==concertPen
  issues.push('Riserve Concerti incoerenti: '+concertPending+' contro '+declaredConcertRemaining+' dichiarate');
 const loteV=db.validation?.maxilotto_v_20261025;
 if(loteV){
- if(loteV.remaining_pending!==counts.pending)
+ // Il saldo del Lotto V è uno snapshot storico: il totale corrente
+ // può essere minore dopo l'avvio del Lotto VI.
+ if(!db.validation?.maxilotto_vi_20261025 && loteV.remaining_pending!==counts.pending)
   issues.push('Maxi-lotto V: attese '+loteV.remaining_pending+' riserve, trovate '+counts.pending);
  if(loteV.initial_pending!==
     loteV.superseded_by_precise_links+loteV.admitted_reciprocal_author_links+
@@ -71,6 +73,24 @@ if(loteV){
  for(const item of db.pendingReview||[]){
   if(!['post-romanticismo','percorsi-storici'].includes(item.page))
    issues.push('Maxi-lotto V: riserva di pagina già esaminata da ricontrollare: '+item.node_id+' / '+item.page);
+ }
+}
+const loteVI=db.validation?.maxilotto_vi_20261025;
+if(loteVI){
+ if(loteV && loteVI.initial_pending!==loteV.remaining_pending)
+  issues.push('Maxi-lotto VI: saldo iniziale non coincide con il Lotto V');
+ if(loteVI.remaining_pending!==counts.pending)
+  issues.push('Maxi-lotto VI: attese '+loteVI.remaining_pending+' riserve, trovate '+counts.pending);
+ if(loteVI.initial_pending!==loteVI.narrative_links_admitted+loteVI.remaining_pending)
+  issues.push('Maxi-lotto VI: riconciliazione numerica non coerente');
+ const remaining=(db.pendingReview||[]).filter(x=>x.page==='post-romanticismo').length;
+ if(remaining!==loteVI.quarantined_draft_reserves || remaining!==counts.pending)
+  issues.push('Maxi-lotto VI: residui diversi dalle riserve protette della bozza');
+ const historical=['compositore-joachim-raff','compositore-gustav-holst','compositore-emmanuel-chabrier'];
+ for(const node of historical){
+  const expected='../dalla-sinfonia-alla-rapsodia/#mm-autore-'+node;
+  if(!(db.byNode?.[node]||[]).some(x=>x.url===expected))
+   issues.push('Maxi-lotto VI: collegamento narrativo mancante '+node);
  }
 }
 if(counts.pending!==db.validation?.pending_review)
