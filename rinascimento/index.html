@@ -311,6 +311,22 @@
   .mm-school-subsection>.section-title{margin-bottom:1.4rem}
   .mm-school-subsection>.section-title h3{font-size:clamp(1.8rem,3.5vw,3.05rem);line-height:1.13;margin:0}
   .mm-school-comparison #venezia-strumenti{scroll-margin-top:8.5rem;margin:2rem 0}
+
+  /* Laboratorio polifonia: collocato tra contrappunto e maestro di cappella. */
+  .mm-polifonia-lab{scroll-margin-top:7.5rem;margin:2.2rem 0 2.6rem;padding:clamp(1rem,2.2vw,1.7rem);background:#f1eadd;border:1px solid #c3b29a;border-left:5px solid #4c775d;box-shadow:0 6px 20px rgba(45,35,22,.06);min-width:0}
+  .mm-polifonia-eyebrow{font:800 .78rem/1.5 var(--sans);text-transform:uppercase;letter-spacing:.07em;color:#315e48}
+  .mm-polifonia-lab h4{font:700 clamp(1.5rem,2.6vw,2.35rem)/1.13 var(--serif);margin:.4rem 0 1rem;color:#2c4e3d}
+  .mm-polifonia-lab>p{line-height:1.65;font-size:clamp(.94rem,1.45vw,1.07rem);margin:.85rem 0}
+  .mm-polifonia-instructions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:1.2rem 0}
+  .mm-polifonia-instructions p{margin:0;padding:.85rem;background:rgba(255,255,255,.56);border:1px solid #d9ccb9;font:.9rem/1.5 var(--sans)}
+  .mm-polifonia-frame-shell{width:100%;height:1070px;overflow:hidden;background:#fffdf8;border:1px solid #c4b7a3;margin:1rem 0;min-width:0}
+  .mm-polifonia-frame{display:block;border:0;width:100%;height:100%;background:#fffdf8}
+  .mm-polifonia-lab .mm-polifonia-question{padding:1rem;border-left:4px solid #315e48;background:#e5ede6;font:.96rem/1.55 var(--sans)}
+  .mm-polifonia-lab .mm-polifonia-credit{font:.8rem/1.55 var(--sans);color:#5f6055}
+  .mm-polifonia-lab .mm-polifonia-fullscreen{font:700 .9rem/1.5 var(--sans);margin:.7rem 0}
+  .mm-polifonia-lab a{color:#225540;text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:900px){.mm-polifonia-instructions{grid-template-columns:1fr}.mm-polifonia-frame-shell{height:1250px}}
+  @media(max-width:580px){.mm-polifonia-lab{padding:.75rem;margin:1.8rem -.25rem}.mm-polifonia-frame-shell{height:1460px}}
 </style>
 
 <style>
@@ -821,6 +837,22 @@ di doman non c’è certezza.</blockquote>
         <h4>Dipingere con le voci: l'estremo contrappunto</h4>
         <p>La metafora della pittura è eloquente: ogni voce traccia una propria linea, come un disegno autonomo destinato a incontrarne altri. Nel <strong>contrappunto imitativo</strong> un tema passa da una parte all'altra; nel <strong>canone</strong> l'ingresso di ciascuna voce dipende da una regola; nei <strong>canoni mensurali</strong> la stessa linea scritta può generare durate differenti. La <i>Missa prolationum</i> di Ockeghem è un vertice di questa ingegnosità; Obrecht costruisce cicli di grande ampiezza; Josquin affianca alla tecnica una straordinaria attenzione all'espressione del testo. Non si tratta di un progresso obbligato verso la massima complicazione: anche il momento in cui le voci si riuniscono è un'arte.</p>
         <p><strong>Pittura fiamminga e polifonia fiamminga</strong> condividono un ambiente di committenza e di attenzione al dettaglio, ma pittori, musicisti e costruttori di strumenti svolgono mestieri distinti. Alla fine del Cinquecento i coperchi di <strong>virginali e clavicembali</strong> si trasformano in superfici figurative: paesaggi, feste, allegorie e iscrizioni rendono lo strumento anche un oggetto di rappresentanza. Il virginale di <strong>Hans Ruckers</strong> qui raffigurato custodisce due tastiere, una «madre» e un «figlio»: un oggetto musicale e una piccola galleria d'arte nello stesso mobile.</p>
+        <div class="mm-polifonia-lab" id="ascolto-polifonia-multitraccia" role="region" aria-labelledby="mm-polifonia-title">
+          <div class="mm-polifonia-eyebrow">✦ Per iniziare · Esperimento d'ascolto</div>
+          <h4 id="mm-polifonia-title">Dentro l'intreccio delle voci: il mixer della polifonia</h4>
+          <p>Che cosa significa che ogni voce segue una linea autonoma ma contribuisce all'insieme? Mettiamolo alla prova con <strong><em>Corten espadas afiladas</em></strong>, un villancico anonimo del Rinascimento iberico eseguito dal quartetto specializzato <strong>Cantoría</strong>. Non è una composizione franco-fiamminga: è una finestra sulla <strong>pratica polifonica diffusa nell'Europa del Cinquecento</strong>, utile per riconoscere gli intrecci prima di affrontare i casi più complessi di Ockeghem e Josquin.</p>
+          <div class="mm-polifonia-instructions">
+            <p><strong>1 · Ascolta l'insieme.</strong> Premi «Avvia tutto»: le tracce partono sincronizzate. Per ascoltare soltanto il quartetto vocale, escludi l'organo.</p>
+            <p><strong>2 · Isola le parti.</strong> Usa <strong>Solo</strong> nell'ordine <strong>Soprano, Alto, Tenore, Basso</strong>. Ogni voce ha una melodia compiuta? Le frasi cominciano e finiscono nello stesso momento?</p>
+            <p><strong>3 · Ricostruisci il contrappunto.</strong> Riattiva le voci una per volta, cercando le <strong>entrate, le risposte e i punti d'incontro</strong>. Il quinto cursore controlla soltanto l'organo, ricavato dal mix originale.</p>
+          </div>
+          <div class="mm-polifonia-frame-shell">
+            <iframe class="mm-polifonia-frame" src="laboratorio-polifonia/" title="Laboratorio Musurgia Mundi: mixer sincronizzato di cinque tracce reali, soprano, alto, tenore, basso e organo" loading="lazy" allow="autoplay"></iframe>
+          </div>
+          <p class="mm-polifonia-fullscreen"><a href="laboratorio-polifonia/" target="_blank" rel="noopener noreferrer">Apri il mixer a schermo intero ↗</a> · Comandi <strong>Play / Pausa, Solo, Mute e volume</strong> per ciascuna parte.</p>
+          <p class="mm-polifonia-question"><strong>Domanda-guida:</strong> quando lasciamo una sola voce, che cosa perdiamo? Quando ricostruiamo la polifonia, quali linee diventano più difficili da seguire? L'indipendenza melodica non significa isolamento: è l'intreccio a creare la composizione.</p>
+          <p class="mm-polifonia-credit">Tracce vocali reali, non sintetizzate. <a href="https://zenodo.org/records/5878677" target="_blank" rel="noopener noreferrer">Cantoría Dataset di Helena Cuesta ed Emilia Gómez ↗</a> (CC BY 4.0). Il canale «Organo» è una componente strumentale elettronica ricavata per sottrazione dal file <em>MixOrgan</em>; non è una ricostruzione della pratica strumentale del Cinquecento.</p>
+        </div>
         <h4>La figura del maestro di cappella</h4>
         <p>Una <strong>cappella musicale</strong> non è semplicemente l'edificio dove si canta: è un'istituzione che riunisce cantori e, secondo epoche e luoghi, anche strumentisti. Il <strong>maestro di cappella</strong> può scegliere o comporre repertori, formare e preparare gli interpreti, organizzare il servizio delle celebrazioni e della corte, coordinare cerimonie e prove. L'istruzione dei fanciulli cantori può dipendere da un <i>magister puerorum</i>. Non immaginiamo un direttore d'orchestra moderno con la bacchetta, bensì una figura che unisce <strong>responsabilità musicale, pedagogica e organizzativa</strong>.</p>
         <p>Ecco l'origine culturale dell'espressione <strong>«a cappella»</strong>: <em>secondo l'uso della cappella musicale</em>. Oggi il termine significa normalmente <strong>canto senza accompagnamento strumentale</strong>, ma l'uso storico è più articolato. Nelle cappelle del Rinascimento potevano alternarsi voci, organo e strumenti, oppure questi potevano sostenere parti vocali: la semplice dicitura «a cappella» non permette di ricostruire automaticamente l'organico di una singola esecuzione.</p>

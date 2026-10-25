@@ -314,24 +314,7 @@
   .mm-libretto-figure figcaption strong{color:var(--ink)}
   @media(max-width:620px){.mm-libretto-figure{float:none;width:min(100%,300px);margin:1rem auto 1.5rem}}
 
-  /* Laboratorio vocale con multitraccia umano del progetto TROMPA/Cantoría. */
-  .mm-cantoria-box{margin:2rem 0 2.5rem}
-  .mm-cantoria-box p{max-width:100%}
-  .mm-cantoria-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin:1.2rem 0}
-  .mm-cantoria-steps p{margin:0;padding:.9rem;background:rgba(255,255,255,.52);border:1px solid #bdcfc4;font-size:.87rem;line-height:1.55}
-  .mm-cantoria-frame-wrap{margin:1rem 0;background:#faf8f3;border:1px solid #aac4b5;min-height:560px}
-  .mm-cantoria-frame{display:block;width:100%;min-height:560px;border:0;background:#faf8f3}
-  .mm-cantoria-fallback{margin:.8rem 0 1.25rem!important;font:.87rem/1.55 var(--sans)}
-  .mm-cantoria-source{font:.77rem/1.55 var(--sans);color:#4e5f56;margin:1rem 0 0}
-  .mm-cantoria-box a{color:#174c40;text-decoration-thickness:1px;text-underline-offset:3px}
-  @media(max-width:850px){.mm-cantoria-steps{grid-template-columns:1fr}.mm-cantoria-frame,.mm-cantoria-frame-wrap{min-height:570px}}
-  @media(max-width:580px){.mm-cantoria-frame,.mm-cantoria-frame-wrap{min-height:620px}}
-
-  /* Player originale Musurgia Mundi: cinque stem locali sincronizzati, nessun embed esterno */
-  .mm-mixer-local-wrap{height:1080px;min-height:1080px;overflow:hidden;background:#f7f3ea}
-  .mm-mixer-local{width:100%;height:100%;min-height:1080px;display:block;border:0;background:#f7f3ea}
-  @media(max-width:900px){.mm-mixer-local-wrap{height:1300px;min-height:1300px}.mm-mixer-local{min-height:1300px}}
-  @media(max-width:580px){.mm-mixer-local-wrap{height:1560px;min-height:1560px}.mm-mixer-local{min-height:1560px}}
+  .mm-stage-bridge{font-size:.86rem;line-height:1.5;margin:.75rem 0 0}
 </style>
 
 <style>
@@ -730,21 +713,12 @@
         </button>
       </div>
 
-      <div class="student-box mm-cantoria-box" id="ascolto-polifonia-multitraccia">
-        <div class="student-label">✦ Per iniziare · laboratorio di ascolto multitraccia</div>
-        <h3>La parola deve farsi capire: smonta la polifonia</h3>
-        <p>Ascoltiamo <strong><em>Corten espadas afiladas</em></strong>, villancico anonimo del Rinascimento iberico, eseguito da <strong>Cantoría</strong>, quartetto professionale specializzato nel repertorio antico. Le quattro voci sono <strong>registrazioni autentiche e separate</strong>: soprano, alto, tenore e basso. È disponibile anche un canale di <strong>organo elettronico di riferimento</strong>, ricavato dal mix originale per sottrazione delle voci. Nessun cantante è sintetizzato.</p>
-        <div class="mm-cantoria-steps">
-          <p><strong>1 · Ascolta tutti.</strong> Premi «Avvia tutto»: le cinque tracce partiranno nello stesso istante. Per sentire il quartetto a cappella, metti Mute su Organo.</p>
-          <p><strong>2 · Segui una voce.</strong> Premi Solo su <strong>S, A, T, B</strong>, senza fermare l'ascolto. Ascolta le entrate, le risposte e le variazioni di ciascuna parte.</p>
-          <p><strong>3 · Ricostruisci l'intreccio.</strong> Riattiva due, tre e poi quattro voci. Quando il testo si comprende meglio? Quando il suono acquista maggiore complessità?</p>
-        </div>
-        <div class="mm-cantoria-frame-wrap mm-mixer-local-wrap">
-          <iframe class="mm-cantoria-frame mm-mixer-local" title="Mixer polifonico di Musurgia Mundi: Corten espadas afiladas, voci reali soprano, alto, tenore, basso e organo, controlli Solo, Mute e volume" src="laboratorio-polifonia/" loading="lazy" allow="autoplay"></iframe>
-        </div>
-        <p class="mm-cantoria-fallback"><strong>Il mixer è integrato nel nostro sito.</strong> <a href="laboratorio-polifonia/" target="_blank" rel="noopener noreferrer">Aprilo in una scheda intera ↗</a> se preferisci avere più spazio per i controlli. I file audio sono ospitati insieme alla pagina, non dipendono da un servizio esterno.</p>
-        <div class="try"><strong>Domanda-guida:</strong> se vogliamo affidare a una sola voce il discorso di un personaggio, come possiamo renderlo più intelligibile senza impoverirne l'espressione? Il confronto conduce alla <strong>monodia accompagnata</strong> e al <em>recitar cantando</em>. Attenzione: una polifonia può essere chiarissima anche con più voci; il laboratorio ci permette di distinguere le diverse possibilità espressive, non di assegnare un vincitore.</div>
-        <p class="mm-cantoria-source">Fonte audio e attribuzione: <strong>Helena Cuesta ed Emilia Gómez</strong>, <a href="https://zenodo.org/records/5878677" target="_blank" rel="noopener noreferrer">Cantoría Dataset · DOI 10.5281/zenodo.5878677 ↗</a> (CC BY 4.0). Tracce vocali umane ricodificate in Opus per lo streaming didattico; organo elettronico ricostruito per differenza dal mix <em>MixOrgan</em>. Registrazione moderna, senza pretesa di riprodurre l'esatto suono del Cinquecento.</p>
+      <div class="student-box" id="ascolto-parola-teatrale">
+        <div class="student-label">✦ Per iniziare · La parola diventa azione</div>
+        <h3>Non soltanto cantare: far parlare un personaggio</h3>
+        <p>Gli intellettuali della Camerata fiorentina cercano una nuova relazione fra <strong>accento della parola, gesto, affetto e identità drammatica</strong>. Non chiedono semplicemente una musica «più facile»: come può una sola voce trasmettere le esitazioni, l'urgenza e le intenzioni di chi parla in scena?</p>
+        <div class="try"><strong>Domanda-guida:</strong> ascoltando i successivi esempi di <em>recitar cantando</em>, individua come cambiano durata, ritmo e intonazione al servizio della parola. Che cosa offre il sostegno strumentale alla libertà del cantante?</div>
+        <p class="mm-stage-bridge">Per sperimentare invece l'intreccio di più parti indipendenti, il <a href="../rinascimento/#ascolto-polifonia-multitraccia">laboratorio multitraccia si trova nel capitolo sulle scuole rinascimentali ↗</a>.</p>
       </div>
     </section>
 
