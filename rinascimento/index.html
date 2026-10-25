@@ -703,7 +703,7 @@ di doman non c’è certezza.</blockquote>
           <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bottega_di_Agnolo_di_Cosimo%2C_detto_il_Bronzino_%28Firenze_1503-1572%29_-_Ritratto_di_Lorenzo_il_Magnifico_-_865_-_Uffizi_Gallery.jpg" alt="Lorenzo de' Medici">
           <span class="label"><b>Lorenzo de' Medici</b><span>Il principe umanista che partecipa alla cultura che protegge</span></span>
         </button>
-        <button type="button" class="person resource" data-title="Isabella d'Este" data-url="https://www.treccani.it/enciclopedia/isabella-d-este-marchesa-di-mantova/">
+        <button type="button" class="person person-direct" data-title="Isabella d'Este" data-url="https://www.treccani.it/enciclopedia/isabella-d-este-marchesa-di-mantova_%28Dizionario-Biografico%29/">
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Isabella%20d%27Este%20Titien.jpg?width=800" alt="Isabella d'Este">
           <span class="label"><b>Isabella d'Este</b><span>Musica, collezionismo e politica della corte</span></span>
         </button>
@@ -711,7 +711,7 @@ di doman non c’è certezza.</blockquote>
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bartolomeo%20Veneto%20Woman%20playing%20a%20lute.jpg?width=800" alt="Liutista rinascimentale">
           <span class="label"><b>Tromboncino e Cara</b><span>La frottola dentro la vita musicale delle corti</span></span>
         </button>
-        <button type="button" class="person resource" data-title="Heinrich Isaac" data-url="https://www.treccani.it/enciclopedia/heinrich-isaac/">
+        <button type="button" class="person person-direct" data-title="Heinrich Isaac" data-url="https://www.treccani.it/enciclopedia/heinrich-isaak/">
           <span class="mm-preview-fallback" aria-hidden="true">HEINRICH ISAAC<br>COMPOSITORE FRANCO-FIAMMINGO</span>
           <span class="label"><b>Heinrich Isaac</b><span>La tecnica nordica dentro la Firenze dei Medici</span></span>
         </button>
@@ -1844,6 +1844,11 @@ di doman non c’è certezza.</blockquote>
     catch{ return false; }
   };
 
+
+  // Collegamento diretto per le due schede biografiche corrette.
+  document.querySelectorAll('.person-direct[data-url]').forEach(card=>{
+    card.addEventListener('click',()=>window.open(card.dataset.url,'_blank','noopener,noreferrer'));
+  });
 
   // In caso di immagine remota non raggiungibile, mantieni la scheda leggibile.
   document.querySelectorAll('.media-card img, .person img').forEach(img=>{
