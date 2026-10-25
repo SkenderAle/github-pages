@@ -12,12 +12,23 @@ const db=JSON.parse(readFileSync(path,'utf8'));
 const issues=[];
 const activeKeys=new Set(),pendingKeys=new Set();
 const counts={active:0,pending:0,activeNodes:0,emptyNodes:0,duplicateActive:0,duplicatePending:0,overlap:0};
+const closedConcertFalseFriendKeys=new Set([
+ 'persona-marian-anderson|../concerti/#sorgenti-audioteca',
+ 'persona-marian-anderson|../concerti/#percussioni',
+ 'persona-friedrich-wieck|../concerti/#percorso-pianoforte',
+ 'compositore-rubin-goldmark|../concerti/#violino'
+]);
+// Questi quattro rimandi erano errori editoriali: non ripubblicarli
+// nemmeno come nuove riserve. Eventuali legami diversi vanno provati puntualmente.
+
 for(const [node,links] of Object.entries(db.byNode||{})){
  if(!Array.isArray(links)){issues.push('Lista attiva non valida: '+node);continue;}
  if(links.length)counts.activeNodes++;else counts.emptyNodes++;
  for(const item of links){
   counts.active++;
   const k=node+'|'+item.url;
+  if(closedConcertFalseFriendKeys.has(k))
+   issues.push('Rimando Concerti non pertinente reintrodotto: '+k);
   // Protezione filologica: il Concerto per violino op. 28 appartiene a
   // Karl Goldmark, non a Rubin Goldmark (omonimia di famiglia).
   if(node==='compositore-rubin-goldmark'&&item.url==='../concerti/#lotto4-documentato-1')
@@ -37,12 +48,18 @@ for(const [node,links] of Object.entries(db.byNode||{})){
 for(const item of db.pendingReview||[]){
  counts.pending++;
  const k=item.node_id+'|'+item.url;
+ if(closedConcertFalseFriendKeys.has(k))
+  issues.push('Riserva Concerti già chiusa reintrodotta: '+k);
  if(pendingKeys.has(k)){counts.duplicatePending++;issues.push('Riserva duplicata: '+k)}
  pendingKeys.add(k);
  if(!Object.hasOwn(db.byNode||{},item.node_id))issues.push('Nodo sospeso sconosciuto: '+k);
  if(!item.reason||typeof item.reason!=='string')issues.push('Motivo di riserva assente: '+k);
  if(activeKeys.has(k)){counts.overlap++;issues.push('Riserva già attiva: '+k)}
 }
+const concertPending=(db.pendingReview||[]).filter(x=>x.page==='concerti').length;
+const declaredConcertRemaining=db.validation?.concerti?.reconciliation_20261025?.remaining_generic;
+if(declaredConcertRemaining!==undefined && declaredConcertRemaining!==concertPending)
+ issues.push('Riserve Concerti incoerenti: '+concertPending+' contro '+declaredConcertRemaining+' dichiarate');
 if(counts.pending!==db.validation?.pending_review)
  issues.push('Conteggio pendingReview incoerente: '+counts.pending+' elementi contro '+db.validation?.pending_review+' dichiarati');
 if(!db.updated)issues.push('Data del registro non indicata');
