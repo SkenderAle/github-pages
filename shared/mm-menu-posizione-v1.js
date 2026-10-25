@@ -17,7 +17,7 @@ function init(){
  const roots=[...new Set(unique.map(x=>x.panel.closest('details')||x.panel))];
  let active=null,scheduled=false;
  const style=document.createElement('style');style.textContent=`
- .mm-reading-chapter{border-left:4px solid #7b4b77!important}
+ .atlas-menu-context-local,.classico-context,.anatomia-context{margin-left:auto!important;text-align:right!important}\n @media(max-width:950px){.atlas-menu-context-local{display:block!important;font-size:.62rem!important;white-space:normal!important;line-height:1.2!important;max-width:125px!important}}\n @media(max-width:440px){.atlas-menu-context-local{font-size:.56rem!important;max-width:95px!important}.classico-context,.anatomia-context{font-size:.56rem!important;max-width:105px!important}}\n .mm-reading-chapter{border-left:4px solid #7b4b77!important}
  .mm-reading-chapter>summary{background:#dfcfe3!important;color:#331e39!important;box-shadow:inset 0 0 0 1px #976c9b!important}
  a.mm-reading-paragraph{background:#e5d5ec!important;color:#2c1539!important;font-weight:800!important;border-left:4px solid #795385!important;padding-left:.45rem!important}
  .mm-reading-chapter>summary::after{content:" · in lettura";font-size:.72em;font-weight:650;opacity:.76}
