@@ -404,6 +404,23 @@
   .mm-marciana-network svg .mm-line-accent{stroke:#715f46;stroke-width:3;opacity:.7}
   .mm-marciana-network .mini-caption{margin-top:1.2rem}
   @media (max-width:580px){.mm-bacco-teaser{padding:.85rem}.mm-bacco-open{width:100%}.mm-marciana-network{padding:.4rem}.mm-marciana-network svg text.mm-marciana-on-dark{font-size:24px}}
+
+  /* L'ambiente fiorentino è una sottosezione delle corti: nessun secondo capitolo nell'indice. */
+  .mm-corte-firenze{scroll-margin-top:7.5rem;margin:4rem 0 0;padding:clamp(1.3rem,2.3vw,2.2rem);background:#efe4d3;border-top:4px solid #986c33;box-shadow:0 8px 24px rgba(44,32,20,.06)}
+  .mm-corte-firenze-header{margin-bottom:1.5rem}
+  .mm-corte-firenze-header .eyebrow{color:#7e5324;font:750 .78rem/1.45 var(--sans);letter-spacing:.06em;text-transform:uppercase}
+  .mm-corte-firenze-header h3{font-size:clamp(1.9rem,3.3vw,3.3rem);line-height:1.13;margin:.65rem 0 1rem;color:#342d25}
+  .mm-corte-firenze-header p{max-width:990px;font-size:1.12rem;line-height:1.68}
+  .mm-corte-firenze .bridge-final{margin-top:2rem}
+  .mm-parola-passaggio{padding:clamp(1.15rem,2.2vw,2rem);margin-top:1.7rem}
+  .mm-parola-passaggio h3{font-size:clamp(1.65rem,2.75vw,2.55rem);line-height:1.15;margin:.4rem 0 1rem}
+  .mm-parola-passaggio>p{font-size:1.02rem;line-height:1.65}
+  .mm-parola-links{display:flex;gap:.85rem;flex-wrap:wrap;margin:1.15rem 0}
+  .mm-parola-links a{display:inline-flex;align-items:center;padding:.68rem .85rem;background:rgba(255,255,255,.55);border:1px solid #bdab8c;font:700 .82rem/1.4 var(--sans);text-decoration:none;color:#50341d}
+  .mm-parola-links a:hover,.mm-parola-links a:focus-visible{background:#fff}
+  .mm-parola-shortactivity{padding:.85rem 1rem;border-left:4px solid #2f5e48;background:#edf1e8;font-size:.91rem!important}
+  #parole{margin-bottom:3rem}
+  @media(max-width:580px){.mm-corte-firenze{padding:1rem}.mm-parola-links a{width:100%}}
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261021-gerarchia02"><link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
 <link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-responsive02">
@@ -434,7 +451,7 @@
         <a href="../" class="nav-home" title="Torna alla pagina madre">⌂ Home</a>
         <a href="#prologo">Prima del Rinascimento</a>
         <a href="#umanesimo">L'Umanesimo</a>
-        <a href="#corti">Corti e mecenatismo</a>
+        <a href="#corti">Corti, mecenatismo e spettacolo</a>
         <a href="#stampa">La stampa musicale</a>
       </div>
       <div class="nav-row" aria-label="Le scuole nell'Europa della Riforma" data-mm-group-title="II · Le scuole nell'Europa della Riforma">
@@ -450,9 +467,8 @@
         <a href="#trattati">Trattati e pratica musicale</a>
         <a href="#temperamenti">Accordature e temperamenti</a>
       </div>
-      <div class="nav-row" aria-label="Danza, teatro e postludio" data-mm-group-title="V · Danza, teatro e conclusione">
+      <div class="nav-row" aria-label="Danza e postludio" data-mm-group-title="V · Danza e conclusione">
         <a href="#danza">Pavana, gagliarda e danza</a>
-        <a href="#firenze">Firenze e il teatro musicale</a>
         <a href="#galileo">Postludio · Galileo</a>
       </div>
       <div class="nav-row" aria-label="Materiali di studio" data-mm-group-title="Materiali e verifica">
@@ -524,6 +540,7 @@
 
 
 
+
     <section id="umanesimo">
       <div class="section-title"><div class="section-no">02</div><div><h2>Quando l'uomo entra al centro del suono</h2></div></div>
       <div class="two-col">
@@ -549,8 +566,9 @@
 
 
 
+
     <section id="corti">
-      <div class="section-title"><div class="section-no">03</div><div><h2>Le corti: mecenati e musicisti in viaggio</h2></div></div>
+      <div class="section-title"><div class="section-no">03</div><div><h2>Le corti: mecenati, musicisti e spettacolo</h2></div></div>
       <div class="two-col">
         <p>Il mecenatismo rinascimentale tiene insieme politica culturale, rappresentazione del potere e partecipazione personale. Le corti finanziano pittori, poeti e musicisti perché la cultura produce prestigio, rafforza relazioni diplomatiche e contribuisce all'immagine della dinastia, mentre molti signori coltivano direttamente le arti che proteggono. In questo contesto il “dilettante” può essere un aristocratico musicalmente istruito che pratica un'arte per formazione, piacere e distinzione sociale.</p>
         <p>Isabella d'Este canta, suona, commissiona strumenti, discute con gli artisti e sostiene musicisti come Marchetto Cara e Bartolomeo Tromboncino. A Firenze Lorenzo de' Medici partecipa in prima persona alla vita letteraria e musicale della città. I due casi mostrano una corte nella quale il prestigio politico cresce anche attraverso la competenza culturale di chi governa.</p>
@@ -660,7 +678,65 @@ di doman non c’è certezza.</blockquote>
           <span class="label"><b>Heinrich Isaac</b><span>La tecnica nordica dentro la Firenze dei Medici</span></span>
         </button>
       </div>
+    
+      <div class="mm-corte-firenze" id="firenze" role="region" aria-labelledby="firenze-titolo">
+      <div class="mm-corte-firenze-header">
+        <div class="eyebrow">Dalle corti rinascimentali alla nascita del teatro in musica</div>
+        <h3 id="firenze-titolo">Firenze: dal mecenatismo alla parola in scena</h3>
+        <p>Dalle feste del tempo di Lorenzo de' Medici agli <em>Intermedi della Pellegrina</em> e agli esperimenti della Camerata passa quasi un secolo: <strong>non è Lorenzo a fondare il melodramma</strong>. Ma le corti fiorentine, i loro intellettuali e gli spettacoli finanziati da principi e famiglie influenti mostrano come la protezione delle arti possa trasformarsi in ricerca sul teatro musicale.</p>
+      </div>
+      <div class="two-col">
+        <p>Nel tardo Cinquecento il madrigale aveva portato la polifonia a una capacità straordinaria di leggere la poesia, ma proprio questa raffinatezza rendeva sempre più evidente un limite. Quando cinque o sei voci pronunciano insieme un testo, la parola può essere interpretata in profondità e nello stesso tempo perdere la presenza concreta di una persona che parla. Alla fine del Cinquecento la Camerata riunita intorno a Giovanni de' Bardi trasforma questo problema in una ricerca teorica.</p>
+        <p>Gli uomini della Camerata immaginano che la tragedia greca avesse raggiunto una unione fra parola, canto e gesto che la polifonia moderna avrebbe smarrito. La loro ricostruzione dell'antichità è inevitabilmente ipotetica e in parte sbagliata, ma proprio questo fraintendimento diventa artisticamente fecondo, perché suggerisce una musica nella quale una voce sola possa seguire con chiarezza l'andamento del discorso mentre gli strumenti la sostengono.</p>
+        <p>Vincenzo Galilei torna così al centro del nostro percorso. Il teorico che aveva discusso con Zarlino, scritto per il liuto e riflettuto sulla pratica strumentale diventa uno degli intellettuali che criticano gli eccessi della polifonia e cercano nell'antico una giustificazione per una nuova monodia. Jacopo Peri, Giulio Caccini e Ottavio Rinuccini trasformano questa idea in teatro attraverso il <em>recitar cantando</em>.</p>
+        <p>La <em>Dafne</em> di Peri, rappresentata intorno al 1598 e conservata solo frammentariamente, viene generalmente ricordata come la prima opera di questo nuovo teatro musicale, mentre l'<em>Euridice</em> del 1600 è il primo esempio giunto quasi interamente fino a noi. Il basso continuo diventa fondamentale perché una linea grave e la realizzazione armonica permettono alla voce di emergere senza essere circondata da un tessuto di parti vocali equivalenti.</p>
+        <p>Monteverdi comprende però che la nuova monodia non deve distruggere tutto ciò che il madrigale aveva conquistato. Nell'<em>Orfeo</em> del 1607 il recitar cantando, i cori, gli strumenti, la danza, il madrigale e il nuovo senso drammatico vengono assorbiti dentro un organismo molto più ricco, mentre la distinzione fra <em>prima pratica</em> e <em>seconda pratica</em> rende esplicita l'idea che, quando l'espressione della parola lo richiede, la regola contrappuntistica possa essere piegata all'affetto.</p>
+      </div>
+
+      
+      <div class="history-pivot" id="intermedi-1589">
+        <h3>1589: gli Intermedi della <em>Pellegrina</em>, il teatro prima dell'opera</h3>
+        <p>Fra il madrigale e le prime opere manca un passaggio decisivo. Nel 1589, per le nozze fiorentine di <strong>Ferdinando I de' Medici e Cristina di Lorena</strong>, la commedia <em>La Pellegrina</em> di Girolamo Bargagli viene intervallata da sei spettacoli musicali di una magnificenza eccezionale. Giovanni de' Bardi coordina il progetto e vi partecipano Cristofano Malvezzi, Luca Marenzio, Giulio Caccini, Jacopo Peri, Emilio de' Cavalieri, Antonio Archilei e altri protagonisti dell'ambiente fiorentino.</p>
+        <p>Gli intermedi non sono ancora un'opera, perché rimangono spettacoli inseriti fra gli atti di una commedia, ma fanno già convergere musica, canto solistico e corale, strumenti, macchine sceniche, costumi e scenografie in un unico evento. Proprio per questo sono uno dei ponti più concreti fra la cultura spettacolare della corte rinascimentale e il teatro musicale che Peri e Caccini svilupperanno pochi anni dopo.</p>
+        <figure class="scene-inline">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/La_pellegrina_1589_-_Intermedio_1_-_L%27armonia_delle_sfere.jpg" alt="Bernardo Buontalenti, scena del primo intermedio della Pellegrina, 1589">
+          <figcaption>Bernardo Buontalenti, progetto scenico per il primo intermedio della <em>Pellegrina</em>, “L'armonia delle sfere”, Firenze 1589. Immagine in pubblico dominio.</figcaption>
+        </figure>
+        <button type="button" class="source-card resource" style="width:100%" data-title="Maggio Musicale Fiorentino · Intermedi della Pellegrina" data-url="https://www.maggiofiorentino.com/events/intermedi-della-pellegrina-3"><span class="src">1589 · Firenze</span><b>La Pellegrina e gli intermedi</b><span>Il Maggio Musicale Fiorentino ricostruisce il contesto, i compositori e il ruolo di questi spettacoli come precursori del teatro musicale.</span></button>
+      </div>
+      <div class="media-row">
+        <button type="button" class="media-card resource" data-title="Camerata de' Bardi" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_de%27_Bardi.jpg" alt="Camerata de' Bardi">
+          <span class="shade"></span><span class="meta"><span class="tag">Firenze</span><h3>La Camerata de' Bardi</h3></span>
+        </button>
+        <button type="button" class="media-card resource" data-title="Jacopo Peri" data-url="https://www.treccani.it/enciclopedia/iacopo-peri_%28Enciclopedia-Italiana%29/">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacopo_Peri.jpg" alt="Jacopo Peri">
+          <span class="shade"></span><span class="meta"><span class="tag">1600</span><h3>Euridice e il recitar cantando</h3></span>
+        </button>
+        <button id="ascolto-youtube-SyPUJwGEUgA" type="button" class="media-card video" data-video="SyPUJwGEUgA" data-title="Monteverdi · L'Orfeo, Tu se' morta">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Monteverdi.jpg" alt="Monteverdi, Orfeo">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">1607</span><h3><span id="mm-autore-compositore-claudio-monteverdi" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Monteverdi, Tu se' morta</h3></span>
+        </button>
+      </div>
+
+      <div class="compare-band">
+        <div class="compare-box">
+          <h3>Il mecenate rinascimentale</h3>
+          <p>Il principe umanista tende a presentarsi come partecipe della cultura che sostiene, attraverso studio, conversazione, pratica artistica e frequentazione degli intellettuali. Poco sopra ne abbiamo incontrato l'esempio mediceo, con Lorenzo il Magnifico.</p>
+        </div>
+        <div class="compare-box">
+          <h3>La corte barocca</h3>
+          <p>Nel Seicento il mecenatismo continua, ma la corte tende sempre più a trasformarsi in spettacolo di se stessa. Palazzo, giardino, festa, balletto, opera, scenografia e macchina teatrale concorrono a mostrare la magnificenza del potere, che invita artisti e musicisti non soltanto per partecipare alla cultura ma per costruire un ambiente capace di stupire.</p>
+        </div>
+      </div>
+
+      <div class="bridge-final">
+        <h3>Dalla festa di corte al teatro: una trasformazione, non una rottura</h3>
+        <p>Il Rinascimento aveva ricercato proporzione, parola e partecipazione alla cultura; fra gli ultimi decenni del Cinquecento e il Seicento la festa di corte diventa anche laboratorio di teatro, scenografia, meraviglia e canto drammatico. Le conquiste del madrigale non scompaiono: si trasformano in un linguaggio nel quale la musica può dare voce a un personaggio. <a href="../melodramma/#camerata">Prosegui nel percorso sulle origini del melodramma ↗</a>.</p>
+      </div>
+    </div>
     </section>
+
 
 
 
@@ -716,6 +792,7 @@ di doman non c’è certezza.</blockquote>
       </aside>
 
     </section>
+
 
 
 
@@ -965,6 +1042,7 @@ di doman non c’è certezza.</blockquote>
 
 
 
+
     <section id="parole">
       <div class="section-title"><div class="section-no">06</div><div><h2>Dalla poesia alla voce: le parole in musica</h2></div></div>
       <div class="two-col">
@@ -975,17 +1053,18 @@ di doman non c’è certezza.</blockquote>
         <p>Poche parole mostrano questo viaggio meglio di «canzone»: dalla <em>canso</em> trobadorica alla poesia italiana, dalla <em>chanson</em> franco-fiamminga alla <em>canzona</em> strumentale, incontriamo significati diversi, non un genere unico e immutabile. Anche la canzone moderna eredita una parola che ha attraversato molte epoche, senza discendere in modo rettilineo da ciascuna delle forme medievali.</p>
         <p>L'inglese <em>song</em> proviene invece dalla famiglia germanica di <em>sing</em>, non dal latino <em>canere</em>. La parentela è di significato, non di etimologia: lingue differenti danno comunque un nome a quella relazione tenace fra <strong>parola, memoria e canto</strong>.</p>
       </div>
-      <div class="history-pivot" id="parola-verso-il-teatro">
+      <div class="history-pivot mm-parola-passaggio" id="parola-verso-il-teatro">
+        <div class="eyebrow">Il passaggio alla scena</div>
         <h3>Dal testo cantato alla parola in scena</h3>
-        <p>La frottola dà spesso rilievo alla chiarezza della parola, il madrigale intreccia poesia e gesti musicali sempre più espressivi. Sul finire del Cinquecento questa ricerca converge, senza una linea evolutiva obbligata, con la riflessione fiorentina sul canto solistico: <strong>la parola non è soltanto cantata, può diventare il discorso di un personaggio</strong>.</p>
-        <p>La <strong>Camerata riunita attorno a Giovanni de' Bardi</strong> e i successivi esperimenti dell'ambiente di <strong>Jacopo Corsi</strong> saranno approfonditi nel capitolo <a href="#firenze">Firenze e la voce che torna sola ↓</a>. La storia più ampia del <em>recitar cantando</em>, di Peri, Caccini, Rinuccini e delle prime opere prosegue nel <a href="../melodramma/#camerata"><strong>percorso sul melodramma: dalla Camerata al teatro in musica ↗</strong></a>.</p>
-        <p class="rin-activity"><strong>✦ Per iniziare · Leggere con le orecchie.</strong> Scegli un verso di Petrarca, leggilo ad alta voce e prova a immaginare che cosa una melodia potrebbe mettere in risalto. Poi confronta la tua scelta con una frottola e un madrigale: le voci fanno capire le parole allo stesso modo?</p>
-        <div class="source-row">
-          <a href="https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/" target="_blank" rel="noopener noreferrer">Fonte · Camerata de' Bardi e Jacopo Corsi ↗</a>
-          <a href="../melodramma/#camerata">Percorso successivo · Le origini del melodramma ↗</a>
+        <p>Dalla frottola al madrigale, la parola acquista possibilità espressive sempre più ricche. A Firenze, nel tardo Cinquecento, gli ambienti di Bardi e Corsi metteranno in discussione il rapporto fra polifonia e declamazione: la voce non deve soltanto interpretare un testo, ma può diventare quella di un personaggio.</p>
+        <div class="mm-parola-links">
+          <a href="#firenze">Approfondisci nelle Corti · Dalla festa al teatro musicale ↗</a>
+          <a href="../melodramma/#camerata">Dal Rinascimento al melodramma · Camerata, Peri e Caccini ↗</a>
         </div>
+        <p class="mm-parola-shortactivity"><strong>✦ Per iniziare · Leggere con le orecchie.</strong> Leggi un verso di Petrarca e prova a intonarlo: che cosa cambia quando le parole diventano il discorso di un personaggio?</p>
       </div>
     </section>
+
 
 
     <section id="madrigale">
@@ -1103,6 +1182,7 @@ di doman non c’è certezza.</blockquote>
 
 
 
+
     <section id="strumenti">
       <div class="section-title"><div class="section-no">08</div><div><h2>Quando gli strumenti imparano a parlare</h2></div></div>
       <div class="two-col">
@@ -1204,6 +1284,7 @@ di doman non c’è certezza.</blockquote>
 
 
 
+
     <section id="hip">
       <div class="section-title"><div class="section-no">09</div><div><h2>Filologia musicale e HIP</h2></div></div>
       <div class="literary-aside" id="hip-focus">
@@ -1241,6 +1322,7 @@ di doman non c’è certezza.</blockquote>
 
 
 
+
     <section id="trattati">
       <div class="section-title"><div class="section-no">10</div><div><h2>La musica comincia a spiegare se stessa</h2></div></div>
       <div class="two-col">
@@ -1267,6 +1349,7 @@ di doman non c’è certezza.</blockquote>
 
 
 
+
     <section id="temperamenti">
       <div class="section-title"><div class="section-no">11</div><div><h2>Accordare il mondo</h2></div></div>
       <div class="two-col">
@@ -1285,6 +1368,7 @@ di doman non c’è certezza.</blockquote>
 
       <div class="callout"><strong>Temperare non significa accordare male.</strong> Significa distribuire una imperfezione inevitabile in modo che lo strumento possa funzionare nel repertorio per il quale viene pensato.</div>
     </section>
+
 
 
 
@@ -1320,7 +1404,7 @@ di doman non c’è certezza.</blockquote>
         <h3>Camminare o saltare?</h3>
         <p>La <strong>pavana</strong> è lenta e solenne, la <strong>gagliarda</strong> più vivace e in tre tempi. Venivano spesso suonate in coppia: prima una, poi l'altra.</p>
         <div class="try"><strong>Prova tu.</strong> Ascolta una pavana e una gagliarda, le trovi nella teca. Batti il ritmo con le mani: quale ti fa pensare a un passo calmo, quale a un salto? Perché secondo te si alternavano?</div>
-        <p class="mm-inset-followup"><strong>Dal salone al teatro.</strong> Pavana, gagliarda e danza di corte hanno anche un ruolo scenico: gesto, musica e disposizione dei corpi si incontrano nelle feste e negli intermedi. Da qui il passaggio naturale al capitolo successivo, <a href="#firenze">Firenze e la nascita del teatro musicale ↓</a>.</p>
+        <p class="mm-inset-followup"><strong>Dal salone al teatro.</strong> Pavana, gagliarda e danza di corte hanno anche un ruolo scenico: gesto, musica e disposizione dei corpi si incontrano nelle feste e negli intermedi. La continuità fra festa, gesto e spettacolo è approfondita nel capitolo sulle corti: <a href="#firenze">Firenze, dalla festa al teatro musicale ↑</a>.</p>
       </aside>
 </section>
 
@@ -1328,65 +1412,9 @@ di doman non c’è certezza.</blockquote>
 
 
 
-    <section id="firenze">
-      <div class="section-title"><div class="section-no">13</div><div><h2>Firenze e la voce che torna sola</h2></div></div>
-      <div class="two-col">
-        <p>Il madrigale aveva portato la polifonia a una capacità straordinaria di leggere la poesia, ma proprio questa raffinatezza rendeva sempre più evidente un limite. Quando cinque o sei voci pronunciano insieme un testo, la parola può essere interpretata in profondità e nello stesso tempo perdere la presenza concreta di una persona che parla. Alla fine del Cinquecento la Camerata riunita intorno a Giovanni de' Bardi trasforma questo problema in una ricerca teorica.</p>
-        <p>Gli uomini della Camerata immaginano che la tragedia greca avesse raggiunto una unione fra parola, canto e gesto che la polifonia moderna avrebbe smarrito. La loro ricostruzione dell'antichità è inevitabilmente ipotetica e in parte sbagliata, ma proprio questo fraintendimento diventa artisticamente fecondo, perché suggerisce una musica nella quale una voce sola possa seguire con chiarezza l'andamento del discorso mentre gli strumenti la sostengono.</p>
-        <p>Vincenzo Galilei torna così al centro del nostro percorso. Il teorico che aveva discusso con Zarlino, scritto per il liuto e riflettuto sulla pratica strumentale diventa uno degli intellettuali che criticano gli eccessi della polifonia e cercano nell'antico una giustificazione per una nuova monodia. Jacopo Peri, Giulio Caccini e Ottavio Rinuccini trasformano questa idea in teatro attraverso il <em>recitar cantando</em>.</p>
-        <p>La <em>Dafne</em> di Peri, rappresentata intorno al 1598 e conservata solo frammentariamente, viene generalmente ricordata come la prima opera di questo nuovo teatro musicale, mentre l'<em>Euridice</em> del 1600 è il primo esempio giunto quasi interamente fino a noi. Il basso continuo diventa fondamentale perché una linea grave e la realizzazione armonica permettono alla voce di emergere senza essere circondata da un tessuto di parti vocali equivalenti.</p>
-        <p>Monteverdi comprende però che la nuova monodia non deve distruggere tutto ciò che il madrigale aveva conquistato. Nell'<em>Orfeo</em> del 1607 il recitar cantando, i cori, gli strumenti, la danza, il madrigale e il nuovo senso drammatico vengono assorbiti dentro un organismo molto più ricco, mentre la distinzione fra <em>prima pratica</em> e <em>seconda pratica</em> rende esplicita l'idea che, quando l'espressione della parola lo richiede, la regola contrappuntistica possa essere piegata all'affetto.</p>
-      </div>
-
-      
-      <div class="history-pivot" id="intermedi-1589">
-        <h3>1589: gli Intermedi della <em>Pellegrina</em>, il teatro prima dell'opera</h3>
-        <p>Fra il madrigale e le prime opere manca un passaggio decisivo. Nel 1589, per le nozze fiorentine di <strong>Ferdinando I de' Medici e Cristina di Lorena</strong>, la commedia <em>La Pellegrina</em> di Girolamo Bargagli viene intervallata da sei spettacoli musicali di una magnificenza eccezionale. Giovanni de' Bardi coordina il progetto e vi partecipano Cristofano Malvezzi, Luca Marenzio, Giulio Caccini, Jacopo Peri, Emilio de' Cavalieri, Antonio Archilei e altri protagonisti dell'ambiente fiorentino.</p>
-        <p>Gli intermedi non sono ancora un'opera, perché rimangono spettacoli inseriti fra gli atti di una commedia, ma fanno già convergere musica, canto solistico e corale, strumenti, macchine sceniche, costumi e scenografie in un unico evento. Proprio per questo sono uno dei ponti più concreti fra la cultura spettacolare della corte rinascimentale e il teatro musicale che Peri e Caccini svilupperanno pochi anni dopo.</p>
-        <figure class="scene-inline">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/La_pellegrina_1589_-_Intermedio_1_-_L%27armonia_delle_sfere.jpg" alt="Bernardo Buontalenti, scena del primo intermedio della Pellegrina, 1589">
-          <figcaption>Bernardo Buontalenti, progetto scenico per il primo intermedio della <em>Pellegrina</em>, “L'armonia delle sfere”, Firenze 1589. Immagine in pubblico dominio.</figcaption>
-        </figure>
-        <button type="button" class="source-card resource" style="width:100%" data-title="Maggio Musicale Fiorentino · Intermedi della Pellegrina" data-url="https://www.maggiofiorentino.com/events/intermedi-della-pellegrina-3"><span class="src">1589 · Firenze</span><b>La Pellegrina e gli intermedi</b><span>Il Maggio Musicale Fiorentino ricostruisce il contesto, i compositori e il ruolo di questi spettacoli come precursori del teatro musicale.</span></button>
-      </div>
-      <div class="media-row">
-        <button type="button" class="media-card resource" data-title="Camerata de' Bardi" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_de%27_Bardi.jpg" alt="Camerata de' Bardi">
-          <span class="shade"></span><span class="meta"><span class="tag">Firenze</span><h3>La Camerata de' Bardi</h3></span>
-        </button>
-        <button type="button" class="media-card resource" data-title="Jacopo Peri" data-url="https://www.treccani.it/enciclopedia/iacopo-peri_%28Enciclopedia-Italiana%29/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacopo_Peri.jpg" alt="Jacopo Peri">
-          <span class="shade"></span><span class="meta"><span class="tag">1600</span><h3>Euridice e il recitar cantando</h3></span>
-        </button>
-        <button id="ascolto-youtube-SyPUJwGEUgA" type="button" class="media-card video" data-video="SyPUJwGEUgA" data-title="Monteverdi · L'Orfeo, Tu se' morta">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Monteverdi.jpg" alt="Monteverdi, Orfeo">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">1607</span><h3><span id="mm-autore-compositore-claudio-monteverdi" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Monteverdi, Tu se' morta</h3></span>
-        </button>
-      </div>
-
-      <div class="compare-band">
-        <div class="compare-box">
-          <h3>Il mecenate rinascimentale</h3>
-          <p>Il principe umanista tende a presentarsi come partecipe della cultura che sostiene, attraverso studio, conversazione, pratica artistica e frequentazione degli intellettuali. Nel capitolo sulle corti ne abbiamo visto l'esempio mediceo.</p>
-        </div>
-        <div class="compare-box">
-          <h3>La corte barocca</h3>
-          <p>Nel Seicento il mecenatismo continua, ma la corte tende sempre più a trasformarsi in spettacolo di se stessa. Palazzo, giardino, festa, balletto, opera, scenografia e macchina teatrale concorrono a mostrare la magnificenza del potere, che invita artisti e musicisti non soltanto per partecipare alla cultura ma per costruire un ambiente capace di stupire.</p>
-        </div>
-      </div>
-
-      <div class="bridge-final">
-        <h3>Il Rinascimento aveva rimesso l'uomo al centro del mondo e aveva cercato di comprenderlo. Il Barocco comincerà a metterlo in scena.</h3>
-        <p>Non è una condanna del Seicento, che sarà uno dei periodi più fertili e sorprendenti della storia della musica, ma una differenza di accento. La misura, la parola, la proporzione e l'indagine umanistica non scompaiono, però vengono investite sempre più spesso dal piacere del contrasto, della teatralità, della sorpresa e della magnificenza.</p>
-      </div>
-    </section>
-
-
-
-
 
     <section id="galileo">
-      <div class="section-title"><div class="section-no">14</div><div><h2>Postludio · Galileo ascolta il mondo</h2></div></div>
+      <div class="section-title"><div class="section-no">13</div><div><h2>Postludio · Galileo ascolta il mondo</h2></div></div>
       <div class="essay-section">
         <p class="essay-lead">Nel 1623 siamo ormai cronologicamente oltre il Rinascimento, ma la “favola dei suoni” inserita da Galileo nel <em>Saggiatore</em> costituisce un postludio perfetto per il nostro percorso, perché il figlio di Vincenzo Galilei racconta un uomo curioso che crede di conoscere il modo in cui nasce un suono e viene continuamente smentito dall'esperienza.</p>
         <p>L'uomo ascolta dapprima gli uccelli, poi incontra uno zufolo, uno strumento ad arco, una porta che risuona sui cardini, un bicchiere sfregato, insetti e altri fenomeni che lo costringono ad ampliare continuamente la propria idea di ciò che possa produrre un suono. Quando cerca infine di capire la cicala, la sua indagine diventa distruttiva e non gli consegna neppure la certezza che cercava, così la conoscenza si conclude non con il trionfo di chi sa tutto, ma con una consapevolezza più profonda dei limiti del proprio sapere.</p>
