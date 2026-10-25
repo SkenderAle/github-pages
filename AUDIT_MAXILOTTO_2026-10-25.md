@@ -140,3 +140,26 @@ Sono stati corretti **tutti i 95 arrivi** in due blocchi documentati:
 - **Limiti del collaudo:** il controllo strutturale dei sorgenti HTML/JSON è verificato; un'esecuzione GitHub Actions conclusa con successo non è ancora stata osservata tramite connettore. Rimangono da provare in browser le rotte, le finestre `details`, le registrazioni e la resa responsive. Non è stato eseguito audit filologico integrale dei file grandi `grafo.json` e `relazioni.json`.
 
 **Nessuna attribuzione ambigua ai cosiddetti falsi amici è stata pubblicata.**
+
+## Maxi-lotto IV — Consolidamento delle 19 riserve residue (25 ottobre 2026)
+
+**Interventi realmente pubblicati sul branch `main`:**
+
+1. In `atlante3d/database/collegamenti-sito.json` sono state archiviate **15 riserve generaliste** dei Concerti per le quali il medesimo nodo aveva già almeno un rimando attivo a una **scheda puntuale**. I relativi autori sono Nino Rota, Benjamin Britten, Sergej Prokof'ev, Carl Stamitz, Carl Ditters von Dittersdorf, Louis Spohr, Édouard Lalo, André Jolivet, Lars-Erik Larsson, Francesco Maria Veracini e Paul Creston. Non sono stati creati collegamenti duplicati né nuovi player. Le riserve originali restano documentate nel precedente `audit-risoluzioni-concerti-20261025.json`.
+2. Corretta un'attribuzione attiva **erronea**: `compositore-rubin-goldmark → ../concerti/#lotto4-documentato-1` attribuiva a Rubin Goldmark il *Concerto per violino in la minore op. 28*, che è di **Karl (Carl) Goldmark**. La relazione è stata rimossa, mantenendo in quarantena la richiesta di un rimando autentico a Rubin. Prova: partitura catalogata su [IMSLP](https://imslp.org/wiki/Violin_Concerto%2C_Op.28_%28Goldmark%2C_Karl%29) e [catalogo Naxos](https://www.naxos.com/CatalogueDetail/?id=Gramola98986). L'Atlante attuale non censisce un nodo autonomo Karl Goldmark nel registro dei collegamenti: non ne è stato inventato uno.
+3. In `concerti/index.html` la scheda dell'op. 28 reca ora la dicitura **Karl Goldmark** nell'intestazione, nella ricerca interna e nell'attributo del player; è stato aggiunto un collegamento alla partitura, senza alterare la registrazione esistente.
+4. In `tools/check-site-link-registry.mjs` è stato aggiunto un controllo esplicito anti-regressione per questa falsa attribuzione.
+
+**Risultato del consolidamento del registro:**
+
+| Stato | Prima | Dopo |
+| --- | ---: | ---: |
+| Rimandi attivi complessivi | 460 | **459** |
+| Rimandi attivi ai Concerti | 163 | **162** |
+| Riserve complessive | 126 | **111** |
+| Riserve Concerti | 19 | **4** |
+| Nodi censiti nel registro | 791 | **791** |
+
+Le **quattro riserve** ancora in quarantena riguardano **tre persone distinte**: Marian Anderson (due richieste; non va confusa con Leroy Anderson), Friedrich Wieck (non confondere con Clara Wieck Schumann) e Rubin Goldmark (non confondere con Karl Goldmark). Non è stata individuata per questi soggetti un'opera propria pertinente da collegare alle schede visibili dei Concerti. Non promuovere un collegamento per semplice omonimia, relazione parentale o riferimento indiretto.
+
+**Verifica della modifica:** confronto programmatico della struttura JSON prima della pubblicazione: nessun duplicato attivo, nessuna sovrapposizione attivo/sospeso, contatore `pending_review` aggiornato; il numero dei rimandi ai Concerti e delle riserve coincide con il registro. **Non è ancora un collaudo end-to-end in browser**: restano da verificare l'apertura delle schede, i player, l'interfaccia mobile e l'esito della CI sul commit corrente. I precedenti risultati del maxi-lotto rimangono documentazione storica, non lo stato corrente di queste quantità.
