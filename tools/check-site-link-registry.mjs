@@ -60,6 +60,19 @@ const concertPending=(db.pendingReview||[]).filter(x=>x.page==='concerti').lengt
 const declaredConcertRemaining=db.validation?.concerti?.reconciliation_20261025?.remaining_generic;
 if(declaredConcertRemaining!==undefined && declaredConcertRemaining!==concertPending)
  issues.push('Riserve Concerti incoerenti: '+concertPending+' contro '+declaredConcertRemaining+' dichiarate');
+const loteV=db.validation?.maxilotto_v_20261025;
+if(loteV){
+ if(loteV.remaining_pending!==counts.pending)
+  issues.push('Maxi-lotto V: attese '+loteV.remaining_pending+' riserve, trovate '+counts.pending);
+ if(loteV.initial_pending!==
+    loteV.superseded_by_precise_links+loteV.admitted_reciprocal_author_links+
+    loteV.rejected_false_context+loteV.remaining_pending)
+  issues.push('Maxi-lotto V: saldo delle decisioni non coerente');
+ for(const item of db.pendingReview||[]){
+  if(!['post-romanticismo','percorsi-storici'].includes(item.page))
+   issues.push('Maxi-lotto V: riserva di pagina già esaminata da ricontrollare: '+item.node_id+' / '+item.page);
+ }
+}
 if(counts.pending!==db.validation?.pending_review)
  issues.push('Conteggio pendingReview incoerente: '+counts.pending+' elementi contro '+db.validation?.pending_review+' dichiarati');
 if(!db.updated)issues.push('Data del registro non indicata');
