@@ -1038,7 +1038,37 @@ tabs.forEach((b,i)=>b.addEventListener('click',()=>choose(i)));
 <p>Accanto alle composizioni vocali, merita almeno una menzione il <em>Valzer</em> pianistico attribuito a Verdi nella tradizione editoriale, diverso sia dalle trascrizioni d'opera sia dal catalogo delle romanze. Altri pezzi occasionali richiedono prudenza nella classificazione e nella datazione: non sono automaticamente «romanze» soltanto perché destinati al salotto.</p>
 <h4 id="verdi-camera-quartetto">Il Quartetto in mi minore (1873): la parola scompare, il teatro rimane</h4>
 <p>Composto a Napoli nel 1873, il <strong>Quartetto per archi in mi minore</strong> è l'unico quartetto di Verdi. I quattro movimenti — <em>Allegro</em>, <em>Andantino</em>, <em>Prestissimo</em>, <em>Scherzo fuga: Allegro assai mosso</em> — mostrano un'attenzione singolare al contrappunto e alle possibilità dialogiche dei quattro strumenti. Non va letto come un'opera senza canto, né come una parentesi tedesca: è una prova autonoma di scrittura strumentale, da ascoltare nei suoi rapporti fra motivi, timbri e voci.</p>
-<p class="related"><strong>Ascolto del Quartetto:</strong> inserimento predisposto; la registrazione sarà aggiunta quando disponibile, senza proporne una arbitraria.</p>
+<div class="verdi-cam" id="verdi-quartetto-player" aria-label="Ascolti del Quartetto in mi minore di Verdi">
+<h4>Il Quartetto di Cremona · ascolto movimento per movimento</h4>
+<p>Un unico selettore segue i quattro movimenti del quartetto. Per il primo e il finale sono disponibili i video dell'ensemble; per il secondo e il terzo si rimanda alle tracce dell'album <em>Italian Journey</em>, evitando di attribuire video non verificati.</p>
+<div class="verdi-tabs" role="tablist" aria-label="Movimenti del Quartetto di Verdi">
+<button type="button" role="tab" aria-selected="true" data-qverdi="0">I. Allegro<small>YouTube</small></button>
+<button type="button" role="tab" aria-selected="false" data-qverdi="1">II. Andantino<small>Album</small></button>
+<button type="button" role="tab" aria-selected="false" data-qverdi="2">III. Prestissimo<small>Album</small></button>
+<button type="button" role="tab" aria-selected="false" data-qverdi="3">IV. Scherzo fuga<small>YouTube</small></button>
+</div>
+<div class="verdi-screen" aria-live="polite">
+<h4 id="qverdi-title">I. Allegro</h4>
+<p id="qverdi-note">Ascolta il dialogo serrato fra le quattro parti e il modo in cui i motivi circolano da uno strumento all'altro.</p>
+<div id="qverdi-stage"><p>Seleziona «Carica il video» per avviare il lettore senza riproduzione automatica.</p></div>
+<p><button type="button" id="qverdi-load">Carica il video del movimento</button> <a id="qverdi-link" href="https://www.youtube.com/watch?v=0-IxuHuaQ_I" target="_blank" rel="noopener noreferrer">Apri la registrazione ↗</a></p>
+</div>
+<p class="verdi-caption">Quartetto di Cremona · incisione integrale: <a href="https://www.quartettodicremona.com/recording/italian-journey/" target="_blank" rel="noopener noreferrer"><em>Italian Journey</em> ↗</a>. Il cambio di movimento rimuove il player precedente; non è previsto autoplay.</p>
+</div>
+<script>
+(()=>{const root=document.getElementById('verdi-quartetto-player');if(!root)return;
+const entries=[
+['I. Allegro','0-IxuHuaQ_I','Ascolta il dialogo serrato fra le quattro parti e il modo in cui i motivi circolano da uno strumento all’altro.'],
+['II. Andantino',null,'Concentrati sul profilo cantabile e sulle risposte fra le voci: una liricità cameristica che non necessita di parole.'],
+['III. Prestissimo',null,'Il movimento rapido mette in primo piano precisione d’insieme, scambi e contrasti di articolazione.'],
+['IV. Scherzo fuga — Allegro assai mosso','RzFmqfzYChc','Il finale mette in gioco la scrittura fugata: prova a seguire il soggetto mentre passa fra i quattro strumenti.']];
+const tabs=[...root.querySelectorAll('[data-qverdi]')],title=root.querySelector('#qverdi-title'),note=root.querySelector('#qverdi-note'),stage=root.querySelector('#qverdi-stage'),load=root.querySelector('#qverdi-load'),link=root.querySelector('#qverdi-link');let current=0;
+function choose(i){current=i;const [name,id,desc]=entries[i];tabs.forEach((b,j)=>{b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1});title.textContent=name;note.textContent=desc;stage.replaceChildren();const p=document.createElement('p');p.textContent=id?'Premi «Carica il video» per aprire l’ascolto.':'Video individuale non verificato. Ascolto disponibile nell’album Italian Journey.';stage.append(p);load.hidden=!id;link.href=id?'https://www.youtube.com/watch?v='+id:'https://www.quartettodicremona.com/recording/italian-journey/';link.textContent=id?'Apri la registrazione ↗':'Apri l’album ↗'}
+tabs.forEach((b,i)=>b.addEventListener('click',()=>choose(i)));
+load.addEventListener('click',()=>{const [name,id]=entries[current];if(!id)return;const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=0';frame.title='Verdi, Quartetto in mi minore: '+name+' — Quartetto di Cremona';frame.loading='lazy';frame.allow='encrypted-media; picture-in-picture; fullscreen';frame.allowFullscreen=true;stage.replaceChildren(frame);});
+choose(0);
+})();
+</script>
 <p class="related"><strong>Fonti:</strong> <a href="https://www.ricordi.com/it-IT/Composers/V/Verdi-Giuseppe.aspx" target="_blank" rel="noopener noreferrer">Ricordi · Catalogo delle composizioni ↗</a> · <a href="https://www.conoscereverdi.it/il-maestro/le-composizioni" target="_blank" rel="noopener noreferrer">Conoscere Verdi · Cronologia ↗</a>.</p>
 </div><a class="chapter-up" href="#capitoli">↑ Torna all'indice</a></article><article class="chapter" id="pianoforte" aria-labelledby="title-pianoforte">
 <div class="chapter-head"><span class="chapter-no">4 / 14</span><h3 id="title-pianoforte">Il pianoforte: canto, danza e forme nuove</h3>
