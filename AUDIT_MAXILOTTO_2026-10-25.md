@@ -276,3 +276,43 @@ Le sei riserve ancora sospese sono **Maurice Ravel, Anton Webern, Ma Rainey, Bes
 Il file `tools/check-site-link-registry.mjs` è stato aggiornato in modo che il saldo del Lotto V rimanga *storico* e il Lotto VI diventi il riferimento per il totale corrente: 9 iniziali − 3 nuovi rimandi narrativi = 6 in quarantena. Sono controllate le tre nuove URL storiche e la provenienza delle sei riserve. Restano in vigore i controlli di duplicazione, page/URL, Goldmark e chiusura dei falsi collegamenti ai Concerti.
 
 **Verifiche richieste:** corrispondenza HTML/JSON, ancore generate dai cataloghi, integrità dei collegamenti e controllo che il redirect conservi i frammenti. **Non equivalgono** al collaudo reale su smartphone/desktop, del filtro aperto via URL, dei player, dell'accessibilità o dei media di terzi. Gli esiti del workflow GitHub Actions vanno verificati separatamente.
+
+## Maxi-lotto VII — Audit navigazione, deep link, player e responsive
+
+**Data:** 25 ottobre 2026 · **Branch:** `main` (nessun branch aggiuntivo) · **Nessuna modifica intenzionale alla bozza** `verso-le-avanguardie/index.html`. All'avvio del controllo il branch corrente conteneva già altri commit successivi al Lotto VI, soprattutto su menu e Romanticismo: i file sono stati riletti dal `main` aggiornato prima delle correzioni.
+
+### 1. Audit statico dei collegamenti
+
+Ricognizione sui percorsi principali, inclusi home, Medioevo, Rinascimento, Barocco, Classicismo, Romanticismo, Melodramma, Melodramma classico, Anatomia, le tre audioteche Concerti/Camera/Sinfonica, Parola e canto, Risorgimento, Cinema, Opera lirica e i raccordi editoriali. **881 deep link interni** riscontrati su 18 pagine della prima scansione; non sono state trovate ancore mancanti per le destinazioni incluse. Sette rimandi puntavano a due sottopagine esterne all'elenco iniziale, entrambe poi ispezionate: `melodramma/audioteca/` e `romanticismo/destino-provvidenza/`, con hash esistenti. In un controllo ulteriore sugli identificativi HTML dei 18 documenti della lista allargata, **zero ID statici duplicati**.
+
+Il test `tools/check-page-deeplinks.mjs` ora include quelle due sottopagine anche come **sorgenti**, non soltanto come possibili destinazioni: 18 pagine di ingresso della suite statica anziché 16. I conteggi di apertura si riferiscono alle scansioni del sorgente; l'esito della nuova esecuzione in CI non va presunto.
+
+### 2. Due difetti reali nella produzione delle etichette
+
+La stringa JavaScript `/\\s+/g` interpretava una sequenza *backslash + s*, non gli spazi fra parole. È stata sostituita con la regex corretta `/\s+/g` in:
+- `assets/atlante-menu-gerarchico-pagine.js`, per i titoli dei paragrafi dei menu delle pagine narrative;
+- `shared/atlas-autonav-v1.js`, per le etichette dei sottoindici generati nel menu condiviso.
+
+**Effetto:** le intestazioni vengono abbreviate dopo la normale riduzione di spazi, a capo e tabulazioni; non sono stati alterati href, numerazione o contenuto editoriale.
+
+### 3. Chiusura dei capitoli al ritorno nel menu
+
+In `shared/mm-menu-posizione-v1.js` è stata aggiunta una protezione per i menu `.atlas-autonav` governati da un **pulsante** invece che da un elemento `details`. Alla chiusura del menu principale, un osservatore dello stato `atlas-menu-open` richiude anche gli `<details>` dei capitoli: non devono restare aperti alla visita successiva, inclusi i casi di clic esterno, chiusura tramite pulsante e `Escape`. Un hash malformato non deve più interrompere l'inizializzazione del tracker di lettura. Non è stato reintrodotto alcun meccanismo che apra automaticamente i capitoli durante lo scroll: l'evidenziazione resta visiva.
+
+### 4. Nuova suite Chromium PC + smartphone
+
+Creato `tools/browser-smoke.mjs` e integrato nel workflow esistente `.github/workflows/musurgia-site-links.yml`, nel job separato **Browser Chromium · PC e smartphone**. La suite è predisposta per:
+- **16 percorsi** alle larghezze **390** e **1280 px** (32 aperture della pagina);
+- verifica di meta viewport, titolo, assenza di autoplay nei player già presenti all'apertura e segnalazione di overflow orizzontale mobile;
+- menu del Barocco: apertura e chiusura del capitolo, ritorno all'indice con il capitolo richiuso, `Escape` anche in versione smartphone; screenshot dell'indice aperto a 390 px;
+- verifiche browser di **tre hash dinamici**: una scheda da camera (Biber), una vocale (Schönberg) e una sinfonica (Chabrier);
+- verifica del lettore sinfonico di Chabrier: nessun iframe prima del clic, caricamento soltanto su richiesta con `autoplay=0`, corretta rimozione del video al comando **Ferma**;
+- pubblicazione di screenshot e `report.json` come artefatti diagnostici GitHub Actions, anche in caso di test non superati.
+
+L'esecuzione si svolge su un server locale di repository con **risorse esterne disabilitate volontariamente** per rendere il test riproducibile: controlla interfaccia, struttura DOM e gestione del player, **non** disponibilità reale degli embed o qualità delle registrazioni. GitHub Actions esegue installazione Playwright/Chromium; le modifiche a `shared/atlas-autonav-v1.js`, `shared/mm-menu-posizione-v1.js`, `shared/mm-menu-compatto-v1.js`, `assets/atlante-menu-gerarchico-pagine.js` e allo script di test stesso attivano il workflow.
+
+### 5. Stato editoriale e limiti di verifica
+
+Il Lotto VII **non modifica** `atlante3d/database/collegamenti-sito.json`: rimangono i **466** collegamenti attivi e le **6** riserve editoriali della bozza censite al termine del Lotto VI. Il report del Lotto VI resta la fonte per la riconciliazione degli ID statici e dinamici dell'Atlante.
+
+**Non certificato in questa sessione:** test Playwright concluso con successo, screenshot visuali effettivi, riproduzione dei player YouTube presso terzi, tempi di caricamento su rete reale, accessibilità assistiva e disponibilità HTTP di GitHub Pages. L'accesso web ordinario alle pagine pubbliche non ha reso possibile una verifica visiva attendibile, e gli strumenti GitHub disponibili non hanno restituito uno stato del workflow push concluso. Il nuovo job è **pubblicato e configurato**, non dichiarato passato. Gli eventuali difetti evidenziati dagli artefatti richiederanno un successivo lotto correttivo, sempre su `main`.
