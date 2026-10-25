@@ -18,6 +18,10 @@ for(const [node,links] of Object.entries(db.byNode||{})){
  for(const item of links){
   counts.active++;
   const k=node+'|'+item.url;
+  // Protezione filologica: il Concerto per violino op. 28 appartiene a
+  // Karl Goldmark, non a Rubin Goldmark (omonimia di famiglia).
+  if(node==='compositore-rubin-goldmark'&&item.url==='../concerti/#lotto4-documentato-1')
+   issues.push('Attribuzione errata: op. 28 di Karl Goldmark sul nodo Rubin Goldmark');
   if(activeKeys.has(k)){counts.duplicateActive++;issues.push('Link attivo duplicato: '+k)}
   activeKeys.add(k);
   if(!item.url||!item.url.startsWith('../')||!item.url.includes('/#'))
