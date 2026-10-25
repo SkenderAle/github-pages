@@ -5,7 +5,8 @@ function init(){
  const panels=[...document.querySelectorAll(selectors)];
  const links=[];
  for(const panel of panels)for(const a of panel.querySelectorAll('a[href^="#"]')){
-  const id=decodeURIComponent(a.getAttribute('href').slice(1));const target=document.getElementById(id);
+  let id;try{id=decodeURIComponent(a.getAttribute('href').slice(1))}catch{continue}
+  const target=document.getElementById(id);
   if(!target||panel.contains(target))continue;
   const parent=a.closest('details.mm-compact-chapter,details.mm-chapter,details.pc-chapter,details.classico-chapter,details.anatomia-chapter,.menu-chapter,details');
   if(!parent||parent===panel.closest('details'))continue;
@@ -45,6 +46,19 @@ function init(){
    if(event.target.closest('a[href^="#"]')){
     menu.querySelectorAll('details').forEach(d=>d.open=false);
    }
+  });
+ }
+ // I menu atlas-autonav sono controllati da un pulsante, non da un <details>.
+ // Alla chiusura (clic, Escape, clic fuori) non devono conservare capitoli aperti.
+ for(const bar of document.querySelectorAll('.atlas-autonav')){
+  const nav=bar.querySelector('nav.mm-compact-ready:not(.mm-compact-home)');
+  if(!nav)continue;
+  const reset=()=>nav.querySelectorAll('details[open]').forEach(d=>d.open=false);
+  new MutationObserver(()=>{
+   if(!bar.classList.contains('atlas-menu-open'))reset();
+  }).observe(bar,{attributes:true,attributeFilter:['class']});
+  nav.addEventListener('click',event=>{
+   if(event.target.closest('a[href]'))reset();
   });
  }
  document.addEventListener('scroll',queue,{passive:true});window.addEventListener('resize',queue,{passive:true});
