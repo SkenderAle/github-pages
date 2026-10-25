@@ -1050,9 +1050,7 @@ tabs.forEach((b,i)=>b.addEventListener('click',()=>choose(i)));
 <div class="verdi-screen" aria-live="polite">
 <h4 id="qverdi-title">I. Allegro</h4>
 <p id="qverdi-note">Ascolta il dialogo serrato fra le quattro parti e il modo in cui i motivi circolano da uno strumento all'altro.</p>
-<div id="qverdi-stage"><p>Seleziona «Carica il video» per avviare il lettore senza riproduzione automatica.</p></div>
-<p><button type="button" id="qverdi-load">Carica il video del movimento</button> <a id="qverdi-link" href="https://www.youtube.com/watch?v=0-IxuHuaQ_I" target="_blank" rel="noopener noreferrer">Apri la registrazione ↗</a></p>
-</div>
+<div id="qverdi-stage"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/0-IxuHuaQ_I?autoplay=0" title="Verdi, Quartetto in mi minore: I. Allegro — Quartetto di Cremona" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
 <p class="verdi-caption">Quartetto di Cremona · incisione integrale: <a href="https://www.quartettodicremona.com/recording/italian-journey/" target="_blank" rel="noopener noreferrer"><em>Italian Journey</em> ↗</a>. Il cambio di movimento rimuove il player precedente; non è previsto autoplay.</p>
 </div>
 <script>
@@ -1062,11 +1060,10 @@ const entries=[
 ['II. Andantino','81n37jzgwv0','Concentrati sul profilo cantabile e sulle risposte fra le voci: una liricità cameristica che non necessita di parole.'],
 ['III. Prestissimo','7C_QEp7gXv4','Il movimento rapido mette in primo piano precisione d’insieme, scambi e contrasti di articolazione.'],
 ['IV. Scherzo fuga — Allegro assai mosso','RzFmqfzYChc','Il finale mette in gioco la scrittura fugata: prova a seguire il soggetto mentre passa fra i quattro strumenti.']];
-const tabs=[...root.querySelectorAll('[data-qverdi]')],title=root.querySelector('#qverdi-title'),note=root.querySelector('#qverdi-note'),stage=root.querySelector('#qverdi-stage'),load=root.querySelector('#qverdi-load'),link=root.querySelector('#qverdi-link');let current=0;
-function choose(i){current=i;const [name,id,desc]=entries[i];tabs.forEach((b,j)=>{b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1});title.textContent=name;note.textContent=desc;stage.replaceChildren();const p=document.createElement('p');p.textContent=(i===1||i===2)?'Collegamento segnalato dal lettore: identità del movimento e interpreti non ancora verificata. Controlla il titolo nel video prima di attribuirlo al Quartetto di Cremona.':'Premi «Carica il video» per aprire l’ascolto.';stage.append(p);load.hidden=!id;link.href=id?'https://www.youtube.com/watch?v='+id:'https://www.quartettodicremona.com/recording/italian-journey/';link.textContent=id?'Apri la registrazione ↗':'Apri l’album ↗'}
+const tabs=[...root.querySelectorAll('[data-qverdi]')],title=root.querySelector('#qverdi-title'),note=root.querySelector('#qverdi-note'),stage=root.querySelector('#qverdi-stage');
+function choose(i){const [name,id,desc]=entries[i];tabs.forEach((b,j)=>{b.setAttribute('aria-selected',String(i===j));b.tabIndex=i===j?0:-1});title.textContent=name;note.textContent=desc;stage.replaceChildren();
+const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=0';frame.title='Verdi, Quartetto in mi minore: '+name+(i===0||i===3?' — Quartetto di Cremona':' — interpreti da verificare');frame.loading='lazy';frame.allow='encrypted-media; picture-in-picture; fullscreen';frame.allowFullscreen=true;stage.append(frame);}
 tabs.forEach((b,i)=>b.addEventListener('click',()=>choose(i)));
-load.addEventListener('click',()=>{const [name,id]=entries[current];if(!id)return;const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=0';frame.title='Verdi, Quartetto in mi minore: '+name+' — Quartetto di Cremona';frame.loading='lazy';frame.allow='encrypted-media; picture-in-picture; fullscreen';frame.allowFullscreen=true;stage.replaceChildren(frame);});
-choose(0);
 })();
 </script>
 <p class="related"><strong>Fonti:</strong> <a href="https://www.ricordi.com/it-IT/Composers/V/Verdi-Giuseppe.aspx" target="_blank" rel="noopener noreferrer">Ricordi · Catalogo delle composizioni ↗</a> · <a href="https://www.conoscereverdi.it/il-maestro/le-composizioni" target="_blank" rel="noopener noreferrer">Conoscere Verdi · Cronologia ↗</a>.</p>
