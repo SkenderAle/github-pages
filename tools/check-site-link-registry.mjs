@@ -22,6 +22,12 @@ for(const [node,links] of Object.entries(db.byNode||{})){
   activeKeys.add(k);
   if(!item.url||!item.url.startsWith('../')||!item.url.includes('/#'))
    issues.push('Link attivo malformato: '+k);
+  // Il campo `page` identifica il percorso (slug), non il titolo dell'opera.
+  // In passato 220 voci usavano qui il titolo descrittivo, confondendo
+  // i metadati del percorso con `title` pur avendo URL corretti.
+  const target=/^\.\.\/([^/]+)\/#/.exec(item.url||'');
+  if(target&&item.page!==target[1])
+   issues.push('Campo page non corrisponde all’URL: '+k+' (page='+item.page+', atteso '+target[1]+')');
  }
 }
 for(const item of db.pendingReview||[]){
