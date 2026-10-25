@@ -313,6 +313,19 @@
   .mm-libretto-figure figcaption{margin:.55rem .15rem .15rem;font:normal .78rem/1.52 var(--sans);color:var(--muted)}
   .mm-libretto-figure figcaption strong{color:var(--ink)}
   @media(max-width:620px){.mm-libretto-figure{float:none;width:min(100%,300px);margin:1rem auto 1.5rem}}
+
+  /* Laboratorio vocale con multitraccia umano del progetto TROMPA/Cantoría. */
+  .mm-cantoria-box{margin:2rem 0 2.5rem}
+  .mm-cantoria-box p{max-width:100%}
+  .mm-cantoria-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin:1.2rem 0}
+  .mm-cantoria-steps p{margin:0;padding:.9rem;background:rgba(255,255,255,.52);border:1px solid #bdcfc4;font-size:.87rem;line-height:1.55}
+  .mm-cantoria-frame-wrap{margin:1rem 0;background:#faf8f3;border:1px solid #aac4b5;min-height:560px}
+  .mm-cantoria-frame{display:block;width:100%;min-height:560px;border:0;background:#faf8f3}
+  .mm-cantoria-fallback{margin:.8rem 0 1.25rem!important;font:.87rem/1.55 var(--sans)}
+  .mm-cantoria-source{font:.77rem/1.55 var(--sans);color:#4e5f56;margin:1rem 0 0}
+  .mm-cantoria-box a{color:#174c40;text-decoration-thickness:1px;text-underline-offset:3px}
+  @media(max-width:850px){.mm-cantoria-steps{grid-template-columns:1fr}.mm-cantoria-frame,.mm-cantoria-frame-wrap{min-height:570px}}
+  @media(max-width:580px){.mm-cantoria-frame,.mm-cantoria-frame-wrap{min-height:620px}}
 </style>
 
 <style>
@@ -696,11 +709,21 @@
         <p>Nella Firenze della seconda metà del Cinquecento, Giovanni de’ Bardi riunisce intorno a sé musicisti e intellettuali interessati al rapporto fra musica, parola e tragedia antica. <strong>Vincenzo Galilei e Giulio Caccini</strong> appartengono a questo primo nucleo, nel quale la complessità polifonica viene criticata quando impedisce di comprendere chiaramente il testo e l’affetto individuale.</p>
         <p>Dopo la partenza di Bardi per Roma nel 1592, il centro di gravità si sposta verso la casa di <strong>Jacopo Corsi</strong>, dove operano anche <strong>Jacopo Peri e </strong><span id="mm-autore-persona-ottavio-rinuccini" style="scroll-margin-top:7rem"><strong>Ottavio Rinuccini</strong></span> <a class="musurgia-author-link" href="../atlante3d/?n=persona-ottavio-rinuccini" title="Apri Ottavio Rinuccini nell’Atlante">✧ Nell’Atlante</a>. È in questo ambiente più largo, spesso riunito nei manuali sotto l’etichetta di “Camerata fiorentina”, che monodia accompagnata e <em>recitar cantando</em> diventano teatro. Parlare di una sola Camerata compatta è dunque comodo, ma storicamente impreciso: il melodramma nasce da una rete di circoli, corti, poeti e musicisti che si sovrappongono.</p>
       </div>
-      <div class="student-box">
-        <div class="student-label">✦ Per iniziare</div>
-        <h3>La parola deve farsi capire</h3>
-        <p>Ascolta mentalmente la differenza fra cinque voci indipendenti che pronunciano insieme lo stesso testo e una voce sola che può rallentare, fermarsi, insistere su una parola. Quale delle due soluzioni sembra più adatta a interpretare un personaggio?</p>
-        <div class="try"><strong>Domanda-guida:</strong> se togliamo le altre voci, che cosa dobbiamo inventare per non lasciare il cantante completamente solo?</div>
+      <div class="student-box mm-cantoria-box" id="ascolto-polifonia-multitraccia">
+        <div class="student-label">✦ Per iniziare · ascolto multitraccia</div>
+        <h3>La parola deve farsi capire: entra nel laboratorio delle voci</h3>
+        <p>Non dobbiamo più immaginare cinque cantanti: ora possiamo <strong>ascoltare veri esseri umani</strong>, registrati in parti vocali separate. Il laboratorio di <strong>Cantoría, Voctro Labs, ESMUC e TROMPA</strong> propone due brani della polifonia iberica rinascimentale: <em>Sus, sus, sus</em> di Bartomeu Cárceres e <em>Hoy comamos y bebamos</em> di Juan del Encina. <strong>Quattro sezioni reali (S, A, T, B), nessuna voce sintetizzata.</strong></p>
+        <div class="mm-cantoria-steps">
+          <p><strong>1.</strong> Fai partire <em>Sus, sus, sus</em> con tutte le sezioni attive.</p>
+          <p><strong>2.</strong> Lascia suonare il brano, ma disattiva contralto, tenore e basso: rimane soltanto il soprano. Ripeti isolando ogni altra sezione. Gli strumenti e il gruppo aggiuntivo Cantoría possono essere disattivati separatamente.</p>
+          <p><strong>3.</strong> Riattiva le altre voci: riesci a seguire entrate, risposte e incontri? In quali punti sembrano muoversi insieme, in quali ciascuna sviluppa la propria linea?</p>
+        </div>
+        <div class="mm-cantoria-frame-wrap">
+          <iframe class="mm-cantoria-frame" title="Cantoría: mixer multitraccia con voci umane registrate separatamente, Sus sus sus e Hoy comamos y bebamos" src="https://voctrolabs.bitbucket.io/virtualchoir/" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <p class="mm-cantoria-fallback"><strong>Se il player non compare nel riquadro,</strong> <a href="https://voctrolabs.bitbucket.io/virtualchoir/" target="_blank" rel="noopener noreferrer">apri il mixer multitraccia originale in una nuova scheda ↗</a>. È un progetto esterno: i comandi di ascolto e di esclusione delle parti appartengono al lettore ufficiale.</p>
+        <div class="try"><strong>Domanda-guida:</strong> se un cantante deve incarnare un personaggio riconoscibile e dire chiaramente un testo, quali problemi pone una polifonia a più parti? E che cosa occorre inventare per sostenere una voce sola senza farle perdere ricchezza musicale? <strong>È la questione che porta alla monodia accompagnata e al <em>recitar cantando</em>.</strong></div>
+        <p class="mm-cantoria-source">Fonti: <a href="https://voctrolabs.bitbucket.io/virtualchoir/" target="_blank" rel="noopener noreferrer">Virtual Choir Recordings · workshop aprile 2021 ↗</a> · <a href="https://zenodo.org/records/5878677" target="_blank" rel="noopener noreferrer">Cuesta e Gómez, <em>Cantoría Dataset</em> · registrazioni di cantanti reali ↗</a>. I due esempi sono rispettivamente un frammento dell'<em>ensalada</em> <em>La Trulla</em> e un villancico, non madrigali a cinque o sei voci.</p>
       </div>
     
       <div class="media-row">
