@@ -16,6 +16,8 @@
   fragment.append(make('strong','mm-compact-heading','Indice completo · Capitoli e paragrafi'));
   let count=0;
   for(const group of groups){
+   // Le pagine che dichiarano parti tematiche possono mostrarle nell'indice compatto.
+   if(group.dataset.mmGroupTitle)fragment.append(make('strong','mm-compact-heading mm-compact-part',group.dataset.mmGroupTitle));
    for(const node of [...group.children]){
     if(node.matches('a[href^="#"]')&&!node.classList.contains('atlas-home-link')){
      const details=make('details','mm-compact-chapter');

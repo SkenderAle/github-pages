@@ -79,7 +79,7 @@
    const target=document.getElementById(id);
    if(!target||link.classList.contains('nav-home'))continue;
    const root=target.closest('section,article')||target;
-   let candidates=[...root.querySelectorAll('h3,h4')].filter(h=>h!==target&&!h.closest('nav,[hidden],details,aside'));
+   let candidates=[...root.querySelectorAll('h3,h4')].filter(h=>h!==target&&!h.closest('nav,[hidden],details,aside')&&!(page==='rinascimento'&&h.closest('button,a,.rin-compare,.bridge-final')));
    if(!candidates.length){
     const start=target.closest('section,article')||target;
     let node=start.nextElementSibling;

@@ -48,6 +48,7 @@
   nav{max-width:1240px;margin:auto;padding:.48rem .8rem .55rem}
   .nav-row{display:flex;gap:.4rem;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-behavior:smooth}
   .nav-row+.nav-row{margin-top:.18rem}
+  #nav .mm-compact-part{display:block;margin:1.05rem .35rem .45rem;padding:.5rem .35rem .32rem;border-bottom:1px solid #cdbfa8;letter-spacing:.045em;color:#623830}
   .nav-row::-webkit-scrollbar{display:none}
   nav a{flex:0 0 auto;white-space:nowrap;text-decoration:none;padding:.58rem .8rem;border-radius:999px;font-size:.83rem;font-weight:700;color:#5b5147}
   nav a.active,nav a:hover{background:#2b261f;color:#fff}
@@ -381,31 +382,35 @@
 <div class="shell">
   <div class="nav-wrap atlas-autonav"><button class="atlas-menu-toggle" type="button" aria-expanded="false" aria-label="Apri o chiudi il menu di navigazione">☰ Menu <span class="atlas-menu-arrow" aria-hidden="true">▾</span></button>
     <nav id="nav">
-      
-      <div class="nav-row" aria-label="Indice, prima riga">
-      <a href="../" class="nav-home" title="Torna alla pagina madre">⌂ Home</a>
-        <a href="#prologo">Prologo</a>
-        <a href="#umanesimo">Umanesimo</a>
-        <a href="#stampa">Stampa</a>
-        <a href="#corti">Corti</a>
-        <a href="#fiamminghi">Fiamminghi</a>
-        <a href="#mecenatismo">Mecenatismo</a>
-        <a href="#strumenti">Strumenti</a>
-        <a href="#temperamenti">Temperamenti</a>
-        <a href="#trattati">Trattati</a>
-        <a href="#danza">Danza</a>
-        <a href="#hip">Filologia / HIP</a>
-        <a href="#parole">Parole in viaggio</a>
+      <div class="nav-row" aria-label="Contesti, corti e stampa" data-mm-group-title="I · Contesti, corti e circolazione">
+        <a href="../" class="nav-home" title="Torna alla pagina madre">⌂ Home</a>
+        <a href="#prologo">Prima del Rinascimento</a>
+        <a href="#umanesimo">L'Umanesimo</a>
+        <a href="#corti">Corti e reti musicali</a>
+        <a href="#stampa">La stampa musicale</a>
       </div>
-      <div class="nav-row" aria-label="Indice, seconda riga">
-        <a href="#madrigale">Madrigale</a>
-        <a href="#riforma">Riforma</a>
-        <a href="#censura">Censura</a>
-        <a href="#roma">Roma</a>
-        <a href="#messa-ciclo">Messa</a>
-        <a href="#venezia">Venezia</a>
-        <a href="#firenze">Firenze</a>
-        <a href="#galileo">Galileo</a>
+      <div class="nav-row" aria-label="Poesia e polifonia" data-mm-group-title="II · Poesia e polifonia profana">
+        <a href="#parole">Parole in viaggio</a>
+        <a href="#madrigale">Frottola e madrigale</a>
+      </div>
+      <div class="nav-row" aria-label="Musica sacra e scuole" data-mm-group-title="III · Fede, Riforma e scuole sacre">
+        <a href="#riforma">La Riforma</a>
+        <a href="#censura">Stampa e censura</a>
+        <a href="#roma">Roma e Palestrina</a>
+        <a href="#venezia">Venezia e i cori spezzati</a>
+      </div>
+      <div class="nav-row" aria-label="Strumenti e danza" data-mm-group-title="IV · Strumenti, teoria e danza">
+        <a href="#strumenti">Gli strumenti</a>
+        <a href="#trattati">Trattati e pratica musicale</a>
+        <a href="#temperamenti">Accordature e temperamenti</a>
+        <a href="#danza">La danza</a>
+      </div>
+      <div class="nav-row" aria-label="Teatro e interpretazione" data-mm-group-title="V · Dalla Camerata all'ascolto storico">
+        <a href="#firenze">Firenze e il teatro musicale</a>
+        <a href="#hip">Filologia e HIP</a>
+        <a href="#galileo">Postludio · Galileo</a>
+      </div>
+      <div class="nav-row" aria-label="Materiali di studio" data-mm-group-title="Materiali e verifica">
         <a href="#fonti">Fonti</a>
         <a href="#verifica" class="nav-verifica">✦ Verifica</a>
         <a href="assets/SOS_Il_Rinascimento_in_musica.pdf" class="nav-sos" target="_blank" rel="noopener noreferrer" title="Libretto facilitato a colori">SOS</a>
@@ -470,6 +475,7 @@
       </div>
     </section>
 
+
     <section id="umanesimo">
       <div class="section-title"><div class="section-no">02</div><div><h2>Quando l'uomo entra al centro del suono</h2></div></div>
       <div class="two-col">
@@ -491,59 +497,9 @@
       </div>
     </section>
 
-    <section id="stampa">
-      <div class="section-title"><div class="section-no">03</div><div><h2>La scoperta del millennio</h2></div></div>
-      <div class="two-col">
-        <p>Il Rinascimento non potrebbe esistere nella forma che conosciamo senza il lavoro degli amanuensi e delle botteghe manoscritte, perché il libro stampato eredita dal manoscritto la pagina, i margini, le iniziali, l'organizzazione del testo e molte convenzioni che i primi tipografi imitano quasi con deferenza. La svolta di Gutenberg, intorno alla metà del Quattrocento, non consiste quindi nell'invenzione del libro, ma nella possibilità di produrre molte copie sufficientemente uniformi da far circolare lo stesso testo in luoghi differenti con una velocità prima inconcepibile.</p>
-        <p>La stampa, però, non cancella in un giorno la cultura della <strong>miniatura</strong>. I primi libri a stampa possono conservare spazi per iniziali dipinte, rubriche e interventi eseguiti a mano, mentre codici musicali riccamente decorati continuano a essere prodotti come oggetti di prestigio. La differenza decisiva non è quindi fra un Medioevo “a mano” e un Rinascimento improvvisamente meccanico, ma fra due modi di far vivere la pagina che per lungo tempo convivono: il manoscritto può rimanere unico e prezioso, mentre la stampa rende possibile che molte persone lontane lavorino sopra un testo sufficientemente simile.</p>
-        <p>Quando una pagina può essere riprodotta, il sapere non dipende più soltanto dal viaggio dell'uomo che porta con sé un codice. I testi possono essere confrontati, corretti, ristampati e discussi da lettori che non si trovano nella stessa città. La stampa moltiplica la Bibbia, ma qualche decennio più tardi moltiplicherà anche gli scritti che contestano l'autorità religiosa. Non è cattolica, protestante, monarchica o repubblicana, perché la sua potenza consiste precisamente nel moltiplicare ciò che le viene affidato.</p>
-        <div class="mm-prose-illustrated">
-<figure class="mm-prose-figure" data-mm-iconografia="odhecaton-petrucci">
-<img width="2540" height="1910" loading="lazy" decoding="async" src="https://commons.wikimedia.org/wiki/Special:FilePath/Adieu%20mes%20amours%20tenor.jpg?width=640" alt="Parti vocali a stampa dell'Adieu mes amours di Josquin des Prez dall'Odhecaton di Petrucci.">
-<figcaption>Josquin des Prez, <em>Adieu mes amours</em>, parti vocali nell'<em>Odhecaton</em> di Petrucci: esemplare della <strong>terza edizione (1504)</strong>, non della prima stampa del 1501. Bibliothèque nationale de France, via Gallica. <a href="https://commons.wikimedia.org/wiki/File:Adieu%20mes%20amours%20tenor.jpg" target="_blank" rel="noopener noreferrer">Fonte: Wikimedia Commons · pubblico dominio ↗</a></figcaption>
-</figure>
-<p id="mm-autore-compositore-ottaviano-petrucci" style="scroll-margin-top:6rem">La musica presenta però un problema tecnico molto più difficile della semplice pagina alfabetica, perché pentagrammi, note e parole devono sovrapporsi con precisione. Ottaviano Petrucci <a class="musurgia-author-link" href="../atlante3d/?n=compositore-ottaviano-petrucci" title="Apri il nodo nella costellazione">✧ Musurgia</a>, nato a Fossombrone e attivo a Venezia, ottiene nel 1498 un privilegio per la stampa musicale e nel 1501 pubblica l'<em>Harmonice musices Odhecaton</em>, realizzato attraverso impressioni successive per righi, note e testo. Il risultato possiede una nitidezza tale da trasformare il libro di musica in un oggetto finalmente riproducibile su larga scala.</p>
-        <p>La stampa non fotografa automaticamente la pratica musicale. Una raccolta di parti vocali può circolare come libro di studio, dono o merce; l'esecuzione dipende invece dai cantori formati, dal calendario, dai libri realmente presenti e dalle tradizioni di una cappella. Nella medesima celebrazione potevano alternarsi <strong>canto piano, polifonia e interventi d'organo</strong>. Il repertorio scritto non ci consegna da solo le dimensioni dell'organico né la frequenza di una composizione nel culto.</p>
-<p>Le conseguenze sono enormi. Josquin, Obrecht, Isaac e molti altri compositori possono circolare senza essere fisicamente presenti, le frottole escono dalla corte nella quale erano state praticate, le intavolature raggiungono liutisti lontani e la musica comincia a possedere un mercato editoriale. Nel 1520 Petrucci pubblicherà inoltre la <em>Musica sopra le canzone del Petrarcha</em> di Bernardo Pisano, una delle soglie editoriali attraverso le quali la poesia petrarchesca entra nella nuova stagione musicale del Cinquecento.</p>
-</div>
-      </div>
-
-      <div class="history-pivot">
-        <h3>IMSLP si chiama anche Petrucci Music Library</h3>
-        <p>Il nome non è decorativo. La grande biblioteca digitale di spartiti rende accessibili oggi, in forma digitale, opere e trattati che nel Rinascimento erano diventati riproducibili grazie alla rivoluzione della stampa musicale. Per questo, nella versione web del percorso, le fonti primarie non vengono soltanto raccontate ma possono essere aperte direttamente.</p>
-        <p>Un esempio del 1578 mostra quanto la stampa possa rendere visibile una tradizione di cui non conosciamo l'origine: la <em>Schiarazula Marazula</em> di Giorgio Mainerio. <a href="scjaracule/">Leggi l'indagine fra stampa, oralità e autorialità →</a></p>
-      </div>
-
-      <div class="sheet-grid">
-        <button type="button" class="sheet resource" data-title="Petrucci · Harmonice musices odhecaton" data-url="https://imslp.org/wiki/Harmonice_Musices_Odhecaton">
-          <span class="year">Venezia · 1501</span><div><h3>Odhecaton</h3><p>La grande svolta della stampa musicale a caratteri mobili.</p></div><span class="open">Apri su IMSLP</span>
-        </button>
-        <button type="button" class="sheet resource" data-title="Sebastian Virdung · Musica getutscht" data-url="https://imslp.org/wiki/Musica_getutscht_(Virdung,_Sebastian)">
-          <span class="year">Basilea · 1511</span><div><h4>Musica getutscht</h4><p>Strumenti, immagini e pratica musicale nel primo Cinquecento.</p></div><span class="open">Apri su IMSLP</span>
-        </button>
-        <button type="button" class="sheet resource" data-title="Silvestro Ganassi · Fontegara" data-url="https://imslp.org/wiki/Opera_Intitulata_Fontegara_(Ganassi,_Sylvestro)">
-          <span class="year">Venezia · 1535</span><div><h4>Fontegara</h4><p>Flauto, articolazione e diminuzione come arte dell'esecutore.</p></div><span class="open">Apri su IMSLP</span>
-        </button>
-        <button type="button" class="sheet resource" data-title="Giovanni Bassano · Ricercate, passaggi et cadentie" data-url="https://imslp.org/wiki/Ricercate%2C_passaggi_et_cadentie_(Bassano%2C_Giovanni)">
-          <span class="year">Venezia · 1585</span><div><h4>Ricercate e passaggi</h4><p>La prassi della diminuzione resa visibile sulla pagina.</p></div><span class="open">Apri su IMSLP</span>
-        </button>
-      </div>
-      <aside class="student-box" id="ragazzi-petrucci">
-        <div class="student-label">✦ Per iniziare</div>
-        <h3>Una pagina, mille copie</h3>
-        <p>Prima della stampa, per avere uno spartito bisognava copiarlo a mano. Nel 1501 Petrucci pubblica a Venezia l'<em>Odhecaton</em>: ogni pagina passa sotto il torchio più volte, una per i righi, una per le note, una per il testo. Per la prima volta la stessa musica può raggiungere persone lontane.</p>
-        <p><strong>Domande guida:</strong></p>
-        <ul>
-          <li>Che cosa cambia quando una canzone può essere copiata e spedita ovunque?</li>
-          <li>Che cosa pensi che abbia fatto Petrucci per i musicisti dell'epoca, e che cosa fa oggi lo streaming per te?</li>
-        </ul>
-        <div class="try"><strong>Prova tu.</strong> Scegli un brano che ami. Quante persone possono ascoltarlo nello stesso istante oggi? E nel 1500?</div>
-      </aside>
-
-    </section>
 
     <section id="corti">
-      <div class="section-title"><div class="section-no">04</div><div><h2>Le corti, il prestigio, il piacere</h2></div></div>
+      <div class="section-title"><div class="section-no">03</div><div><h2>Le corti: mecenati, professionisti e reti europee</h2></div></div>
       <div class="two-col">
         <p>Il mecenatismo rinascimentale tiene insieme politica culturale, rappresentazione del potere e partecipazione personale. Le corti finanziano pittori, poeti e musicisti perché la cultura produce prestigio, rafforza relazioni diplomatiche e contribuisce all'immagine della dinastia, mentre molti signori coltivano direttamente le arti che proteggono. In questo contesto il “dilettante” può essere un aristocratico musicalmente istruito che pratica un'arte per formazione, piacere e distinzione sociale.</p>
         <p>Isabella d'Este canta, suona, commissiona strumenti, discute con gli artisti e sostiene musicisti come Marchetto Cara e Bartolomeo Tromboncino. A Firenze Lorenzo de' Medici partecipa in prima persona alla vita letteraria e musicale della città. I due casi mostrano una corte nella quale il prestigio politico cresce anche attraverso la competenza culturale di chi governa.</p>
@@ -555,7 +511,7 @@
       
       <div class="rin-focus" id="fiamminghi">
         <div class="eyebrow">La rete musicale europea del Quattro e Cinquecento</div>
-        <h3>I franco-fiamminghi: polifonia, corti e professione musicale</h3>
+        <h3>Musicisti senza frontiere: i franco-fiamminghi e le cappelle</h3>
         <figure class="rin-figure">
           <img loading="lazy" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/503676/1377265/main-image" alt="Doppio virginale fiammingo del 1581; sotto il coperchio dipinto, un giardino con personaggi in festa e musicisti">
           <figcaption><strong>Hans Ruckers il Vecchio, doppio virginale, Anversa, 1581.</strong> Il coperchio dipinto mostra una festa in giardino. The Metropolitan Museum of Art, inv. 29.90, immagine Open Access (pubblico dominio). <a href="https://www.metmuseum.org/art/collection/search/503676" target="_blank" rel="noopener noreferrer">Fonte e diritti ↗</a></figcaption>
@@ -579,7 +535,7 @@
       
       <div class="rin-focus" id="mecenatismo">
         <div class="eyebrow">Corti · rapporti di potere · educazione musicale</div>
-        <h3>Il mecenatismo: principi che pagano, principi che suonano</h3>
+        <h3>Chi sostiene la musica? Mecenati, professionisti e dilettanti</h3>
         <figure class="rin-figure">
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Isabella_d%27Este_Titien.jpg" alt="Ritratto idealizzato tradizionalmente identificato con Isabella d'Este, dipinto da Tiziano negli anni Trenta del Cinquecento">
           <figcaption><strong>Tiziano, <i>Ritratto tradizionalmente identificato con Isabella d'Este</i>, circa 1534–1536.</strong> La marchesa volle un'immagine ringiovanita: l'ideale di corte è anche costruzione dell'immagine pubblica. Kunsthistorisches Museum, Vienna, GG 83; immagine in pubblico dominio. <a href="https://commons.wikimedia.org/wiki/File:Isabella_d%27Este_Titien.jpg" target="_blank" rel="noopener noreferrer">Scheda e diritti su Wikimedia Commons ↗</a></figcaption>
@@ -645,8 +601,333 @@
       </div>
     </section>
 
+
+    <section id="stampa">
+      <div class="section-title"><div class="section-no">04</div><div><h2>La scoperta del millennio</h2></div></div>
+      <div class="two-col">
+        <p>Il Rinascimento non potrebbe esistere nella forma che conosciamo senza il lavoro degli amanuensi e delle botteghe manoscritte, perché il libro stampato eredita dal manoscritto la pagina, i margini, le iniziali, l'organizzazione del testo e molte convenzioni che i primi tipografi imitano quasi con deferenza. La svolta di Gutenberg, intorno alla metà del Quattrocento, non consiste quindi nell'invenzione del libro, ma nella possibilità di produrre molte copie sufficientemente uniformi da far circolare lo stesso testo in luoghi differenti con una velocità prima inconcepibile.</p>
+        <p>La stampa, però, non cancella in un giorno la cultura della <strong>miniatura</strong>. I primi libri a stampa possono conservare spazi per iniziali dipinte, rubriche e interventi eseguiti a mano, mentre codici musicali riccamente decorati continuano a essere prodotti come oggetti di prestigio. La differenza decisiva non è quindi fra un Medioevo “a mano” e un Rinascimento improvvisamente meccanico, ma fra due modi di far vivere la pagina che per lungo tempo convivono: il manoscritto può rimanere unico e prezioso, mentre la stampa rende possibile che molte persone lontane lavorino sopra un testo sufficientemente simile.</p>
+        <p>Quando una pagina può essere riprodotta, il sapere non dipende più soltanto dal viaggio dell'uomo che porta con sé un codice. I testi possono essere confrontati, corretti, ristampati e discussi da lettori che non si trovano nella stessa città. La stampa moltiplica la Bibbia, ma qualche decennio più tardi moltiplicherà anche gli scritti che contestano l'autorità religiosa. Non è cattolica, protestante, monarchica o repubblicana, perché la sua potenza consiste precisamente nel moltiplicare ciò che le viene affidato.</p>
+        <div class="mm-prose-illustrated">
+<figure class="mm-prose-figure" data-mm-iconografia="odhecaton-petrucci">
+<img width="2540" height="1910" loading="lazy" decoding="async" src="https://commons.wikimedia.org/wiki/Special:FilePath/Adieu%20mes%20amours%20tenor.jpg?width=640" alt="Parti vocali a stampa dell'Adieu mes amours di Josquin des Prez dall'Odhecaton di Petrucci.">
+<figcaption>Josquin des Prez, <em>Adieu mes amours</em>, parti vocali nell'<em>Odhecaton</em> di Petrucci: esemplare della <strong>terza edizione (1504)</strong>, non della prima stampa del 1501. Bibliothèque nationale de France, via Gallica. <a href="https://commons.wikimedia.org/wiki/File:Adieu%20mes%20amours%20tenor.jpg" target="_blank" rel="noopener noreferrer">Fonte: Wikimedia Commons · pubblico dominio ↗</a></figcaption>
+</figure>
+<p id="mm-autore-compositore-ottaviano-petrucci" style="scroll-margin-top:6rem">La musica presenta però un problema tecnico molto più difficile della semplice pagina alfabetica, perché pentagrammi, note e parole devono sovrapporsi con precisione. Ottaviano Petrucci <a class="musurgia-author-link" href="../atlante3d/?n=compositore-ottaviano-petrucci" title="Apri il nodo nella costellazione">✧ Musurgia</a>, nato a Fossombrone e attivo a Venezia, ottiene nel 1498 un privilegio per la stampa musicale e nel 1501 pubblica l'<em>Harmonice musices Odhecaton</em>, realizzato attraverso impressioni successive per righi, note e testo. Il risultato possiede una nitidezza tale da trasformare il libro di musica in un oggetto finalmente riproducibile su larga scala.</p>
+        <p>La stampa non fotografa automaticamente la pratica musicale. Una raccolta di parti vocali può circolare come libro di studio, dono o merce; l'esecuzione dipende invece dai cantori formati, dal calendario, dai libri realmente presenti e dalle tradizioni di una cappella. Nella medesima celebrazione potevano alternarsi <strong>canto piano, polifonia e interventi d'organo</strong>. Il repertorio scritto non ci consegna da solo le dimensioni dell'organico né la frequenza di una composizione nel culto.</p>
+<p>Le conseguenze sono enormi. Josquin, Obrecht, Isaac e molti altri compositori possono circolare senza essere fisicamente presenti, le frottole escono dalla corte nella quale erano state praticate, le intavolature raggiungono liutisti lontani e la musica comincia a possedere un mercato editoriale. Nel 1520 Petrucci pubblicherà inoltre la <em>Musica sopra le canzone del Petrarcha</em> di Bernardo Pisano, una delle soglie editoriali attraverso le quali la poesia petrarchesca entra nella nuova stagione musicale del Cinquecento.</p>
+</div>
+      </div>
+
+      <div class="history-pivot">
+        <h3>IMSLP si chiama anche Petrucci Music Library</h3>
+        <p>Il nome non è decorativo. La grande biblioteca digitale di spartiti rende accessibili oggi, in forma digitale, opere e trattati che nel Rinascimento erano diventati riproducibili grazie alla rivoluzione della stampa musicale. Per questo, nella versione web del percorso, le fonti primarie non vengono soltanto raccontate ma possono essere aperte direttamente.</p>
+        <p>Un esempio del 1578 mostra quanto la stampa possa rendere visibile una tradizione di cui non conosciamo l'origine: la <em>Schiarazula Marazula</em> di Giorgio Mainerio. <a href="scjaracule/">Leggi l'indagine fra stampa, oralità e autorialità →</a></p>
+      </div>
+
+      <div class="sheet-grid">
+        <button type="button" class="sheet resource" data-title="Petrucci · Harmonice musices odhecaton" data-url="https://imslp.org/wiki/Harmonice_Musices_Odhecaton">
+          <span class="year">Venezia · 1501</span><div><h3>Odhecaton</h3><p>La grande svolta della stampa musicale a caratteri mobili.</p></div><span class="open">Apri su IMSLP</span>
+        </button>
+        <button type="button" class="sheet resource" data-title="Sebastian Virdung · Musica getutscht" data-url="https://imslp.org/wiki/Musica_getutscht_(Virdung,_Sebastian)">
+          <span class="year">Basilea · 1511</span><div><h4>Musica getutscht</h4><p>Strumenti, immagini e pratica musicale nel primo Cinquecento.</p></div><span class="open">Apri su IMSLP</span>
+        </button>
+        <button type="button" class="sheet resource" data-title="Silvestro Ganassi · Fontegara" data-url="https://imslp.org/wiki/Opera_Intitulata_Fontegara_(Ganassi,_Sylvestro)">
+          <span class="year">Venezia · 1535</span><div><h4>Fontegara</h4><p>Flauto, articolazione e diminuzione come arte dell'esecutore.</p></div><span class="open">Apri su IMSLP</span>
+        </button>
+        <button type="button" class="sheet resource" data-title="Giovanni Bassano · Ricercate, passaggi et cadentie" data-url="https://imslp.org/wiki/Ricercate%2C_passaggi_et_cadentie_(Bassano%2C_Giovanni)">
+          <span class="year">Venezia · 1585</span><div><h4>Ricercate e passaggi</h4><p>La prassi della diminuzione resa visibile sulla pagina.</p></div><span class="open">Apri su IMSLP</span>
+        </button>
+      </div>
+      <aside class="student-box" id="ragazzi-petrucci">
+        <div class="student-label">✦ Per iniziare</div>
+        <h3>Una pagina, mille copie</h3>
+        <p>Prima della stampa, per avere uno spartito bisognava copiarlo a mano. Nel 1501 Petrucci pubblica a Venezia l'<em>Odhecaton</em>: ogni pagina passa sotto il torchio più volte, una per i righi, una per le note, una per il testo. Per la prima volta la stessa musica può raggiungere persone lontane.</p>
+        <p><strong>Domande guida:</strong></p>
+        <ul>
+          <li>Che cosa cambia quando una canzone può essere copiata e spedita ovunque?</li>
+          <li>Che cosa pensi che abbia fatto Petrucci per i musicisti dell'epoca, e che cosa fa oggi lo streaming per te?</li>
+        </ul>
+        <div class="try"><strong>Prova tu.</strong> Scegli un brano che ami. Quante persone possono ascoltarlo nello stesso istante oggi? E nel 1500?</div>
+      </aside>
+
+    </section>
+
+
+    <section id="parole">
+      <div class="section-title"><div class="section-no">05</div><div><h2>Parole in viaggio</h2></div></div>
+      <div class="two-col">
+        <p>Poche parole raccontano le traslazioni musicali meglio di “canzone”. La sua origine appartiene al cantare e la <em>canso</em> trobadorica nasce dentro un rapporto strettissimo fra testo poetico e melodia, ma nella letteratura italiana la parola diventa progressivamente il nome di una forma poetica autonoma. Dante conserva ancora la memoria della sua origine sonora, mentre Petrarca porta la canzone a una altissima elaborazione letteraria.</p>
+        <p>Il titolo tradizionale <em>Canzoniere</em>, con cui indichiamo i <em>Rerum vulgarium fragmenta</em>, crea poi un cortocircuito affascinante, perché molti testi petrarcheschi, non tutti metricamente “canzoni”, tornano nelle mani dei compositori e diventano materia per i libri di madrigali. La poesia che aveva conquistato la propria autonomia rispetto a una melodia specifica viene quindi nuovamente letta attraverso il suono, questa volta non per ricostruire un canto perduto ma per produrre una interpretazione musicale nuova.</p>
+        <p>La stessa parola attraversa la chanson franco fiamminga e arriva alla canzona strumentale, mentre in epoche successive tornerà a indicare repertori urbani e popolari. Le canzoni da battello veneziane appartengono soprattutto al Settecento, non al Seicento, e più tardi la parola comprenderà tradizioni di lavoro, repertori regionali, canzone napoletana e infine la moderna canzone italiana. Non esiste una genealogia rettilinea dalla <em>canso</em> trobadorica a Sanremo, ma la persistenza della parola ci ricorda quanto tenace sia l'idea di un testo che trova una parte decisiva della propria identità nel canto.</p>
+        <p>L'inglese <em>song</em> arriva allo stesso significato da un'altra strada, perché appartiene alla famiglia germanica di <em>sing</em> e non discende dal latino <em>canere</em>. La parentela è dunque semantica, non etimologica, e proprio questa convergenza mostra quanto il bisogno di nominare insieme parola e suono sia più antico delle singole lingue.</p>
+      </div>
+
+      <div class="history-pivot">
+        <h3>Da Orfeo alla Camerata fiorentina</h3>
+        <p>L'antichità aveva consegnato al Rinascimento una figura potentissima, quella del poeta musicista capace di accompagnare il canto con uno strumento. Omero viene immaginato dentro la tradizione dell'aedo, Orfeo incanta uomini e natura con la lira, mentre perfino la leggenda di Nerone che canta davanti all'incendio di Roma, storicamente molto problematica, conserva la stessa idea culturale. Quando la Camerata de' Bardi cercherà di ricostruire il teatro greco, sarà proprio questo antico legame fra parola, voce e strumento a diventare una delle sue ossessioni.</p>
+      </div>
+    </section>
+
+
+    <section id="madrigale">
+<div class="parola-canto-related" style="margin:1rem 0 1.8rem;padding:.85rem 1rem;border-left:3px solid #ad8959;background:rgba(177,141,85,.09);font:600 .88rem/1.55 system-ui,-apple-system,Segoe UI,sans-serif"><a href="../parola-e-canto/#rinascimento" style="text-decoration:underline;text-underline-offset:3px">♪ La parola e il canto · La parola nella polifonia ↗</a></div>
+      <div class="section-title"><div class="section-no">06</div><div><h2>Frottola e madrigale</h2></div></div>
+      <div class="two-col">
+        <p>Frottola e madrigale non devono essere disposti come due gradini inevitabili della stessa scala. La frottola tende spesso alla regolarità strofica, alla chiarezza, alla prevalenza della voce superiore e a un andamento omoritmico che rende immediatamente percepibile il testo. Il madrigale cinquecentesco, invece, costruisce sempre più spesso una forma musicale determinata dalla poesia specifica che il compositore ha davanti e utilizza con grande libertà la polifonia imitativa.</p>
+<p>La stessa melodia può inoltre <strong>cambiare appartenenza e significato senza cambiare necessariamente identità sonora</strong>. Nella Firenze di Savonarola, parte della tradizione dei canti urbani poteva essere riutilizzata per <strong>laudi spirituali</strong> attraverso la pratica del <i>cantasi come</i>: il testo nuovo indicava una melodia già conosciuta, anche quando non veniva riprodotta una partitura completa. I falò delle vanità e la condanna di molte forme del divertimento profano hanno però reso lacunosa la trasmissione delle fonti; oggi numerose melodie vengono ricostruite con cautela, non «ritrovate» in una registrazione del Rinascimento. Questa trasformazione da canto di festa a canto devoto mostra che <strong>il significato collettivo dipende anche dalle parole, dalla situazione e da chi autorizza o proibisce il canto</strong>. <a href="https://www.treccani.it/enciclopedia/philippe-verdelot_%28Enciclopedia-machiavelliana%29/" target="_blank" rel="noopener noreferrer">Treccani · Firenze, Savonarola, Isaac e il <i>cantasi come</i> ↗</a>.</p>
+        <p>La parentela più interessante non consiste quindi nel trasformare la frottola nella madre necessaria del madrigale, ma nel fatto che entrambi i generi attraggono musicisti formati nella tradizione franco fiamminga. Questi possono apprezzare nella frottola la chiarezza della declamazione italiana e, nello stesso tempo, trovare nel madrigale il luogo ideale nel quale riversare una tecnica polifonica capace di seguire con precisione le articolazioni del testo.</p>
+        <p>Negli anni in cui il nuovo madrigale si afferma, Pietro Bembo propone Petrarca come grande modello della lingua poetica. La poesia italiana offre così ai compositori un repertorio di suoni, immagini e opposizioni nel quale ardere e gelare, vivere e morire, salire e cadere, luce e ombra possono diventare materiale compositivo. Verdelot, Arcadelt e poi Cipriano de Rore mostrano progressivamente quanto la musica possa aderire non soltanto al metro ma al significato particolare di una parola.</p>
+<div class="mm-prose-illustrated">
+<figure class="mm-prose-figure mm-prose-figure--left"><img width="770" height="1020" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bartolomeo_Veneto_Woman_playing_a_lute.jpg" alt="Donna con liuto dipinta da Bartolomeo Veneto, circa 1520" loading="lazy" decoding="async"><figcaption>Bartolomeo Veneto, <i>Donna che suona il liuto</i> (1520), Pinacoteca di Brera, Milano. Un’immagine della cultura musicale dell’epoca, <strong>non</strong> un ritratto di Casulana. <a href="https://commons.wikimedia.org/wiki/File:Bartolomeo_Veneto_Woman_playing_a_lute.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti: Wikimedia Commons (pubblico dominio) ↗</a></figcaption></figure>
+<p>Nel madrigale a quattro voci <strong>Maddalena Casulana</strong> lavora con lo stesso materiale di Verdelot, Rore e Marenzio: entrate imitanti, parole distribuite fra le parti e dissonanze che acquistano senso attraverso la declamazione. La sua musica circola nelle antologie prima del <i>Primo libro de’ madrigali a quattro voci</i> (Venezia, Girolamo Scotto, <strong>1568</strong>). <strong><i>Morir non può il mio cuore</i></strong>, poi ottavo brano del libro, era già stato stampato a quattro parti nell’antologia <i>Il Desiderio</i> del <strong>1566</strong>. Nel testo poetico l'impossibilità di morire è legata alla dipendenza dal cuore della persona amata: nell'ascolto conviene seguire le risposte tra le parti e le diverse pronunce della stessa parola, senza inventare un unico «madrigalismo» a ogni verso. <a href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/item/18138" target="_blank" rel="noopener noreferrer">Digital Casulana · <i>Morir non può</i>, trascrizione e varianti ↗</a>.</p>
+<p>La storia materiale della raccolta obbliga a distinguere <strong>testo conservato e ricostruzione moderna</strong>. Delle edizioni del <i>Primo libro</i> del 1568 e del 1583 sono noti soltanto i libri-parte di <strong>canto e tenore</strong>; quelli di alto e basso sono perduti. Alcuni madrigali, fra cui <i>Morir non può</i>, possono essere studiati attraverso antologie anteriori giunte complete; altri richiedono la ricostruzione critica delle parti mancanti. La dedica a <strong>Isabella de’ Medici Orsini</strong>, che contesta l'esclusione delle donne dai «doni dell'intelletto», appartiene alla medesima vicenda di stampe, patronato e attribuzioni: non sostituisce l'esame delle note. <a href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_sources" target="_blank" rel="noopener noreferrer">Digital Casulana · censimento delle fonti a stampa ↗</a> · <a href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_dedicace" target="_blank" rel="noopener noreferrer">Dedica del 1568, trascrizione ↗</a>.</p></div>
+<div class="mm-doc-section" role="group" aria-label="Maddalena Casulana: fonti, partitura e video"><div class="mm-doc-heading">Casulana: dalla stampa all'ascolto</div><p class="mm-doc-intro">Tre porte nello stesso progetto di edizione critica. Distingui sempre le parti superstiti dalle voci ricostruite oggi.</p><div class="mm-doc-grid"><a class="mm-doc-card" href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_sources" target="_blank" rel="noopener noreferrer"><span class="mm-doc-kind">Fonti storiche · Digital Casulana</span><strong>Il libro del 1568 e le parti perdute</strong><span class="mm-doc-description">Le edizioni conosciute, i libri-parte conservati e i madrigali attestati nelle antologie complete del 1566–67.</span><span class="mm-doc-action">Consulta la fonte ↗</span></a><a class="mm-doc-card" href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/item/17965" target="_blank" rel="noopener noreferrer"><span class="mm-doc-kind">Partitura critica + video</span><strong>Tant’alto s’erge la tua chiara luce</strong><span class="mm-doc-description">Edizione moderna consultabile in PDF e MEI, con video dell'esecuzione. Le parti ricostruite sono segnalate dal progetto.</span><span class="mm-doc-action">Consulta la fonte ↗</span></a><a class="mm-doc-card" href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_dedicace" target="_blank" rel="noopener noreferrer"><span class="mm-doc-kind">Documento · 1568</span><strong>La dedica a Isabella de’ Medici</strong><span class="mm-doc-description">Leggi il testo con cui Casulana rivendica il valore dell'ingegno femminile nella musica.</span><span class="mm-doc-action">Consulta la fonte ↗</span></a></div></div>
+<div class="route-links"><button type="button" class="source-card resource" data-title="Treccani · Maddalena Casulana" data-url="https://www.treccani.it/enciclopedia/maddalena-mezari_%28Dizionario-Biografico%29/"><span class="src">Madrigale · fonti e stampa</span><b>Maddalena Casulana</b><span>Il Primo libro (1568), le parti perdute e le versioni precedenti dei madrigali: storia materiale della polifonia.</span></button></div>
+
+        <p>È qui che il madrigalismo diventa uno dei grandi laboratori del Rinascimento. Una linea che sale può rendere una ascesa, un movimento discendente può suggerire una caduta, una pausa può trasformarsi in sospiro e una voce lasciata sola può rendere concretamente la parola “solo”. Ma la ricerca diventa molto più profonda quando smette di disegnare oggetti visibili e prova a rendere udibili dolore, esitazione, desiderio, instabilità e contrasto attraverso dissonanze, cromatismi, cambiamenti di densità e improvvise trasformazioni della tessitura.</p>
+        <p>Il madrigalismo può essere letto come una vera sinestesia compositiva, perché la parola scritta viene trasformata in altezza, movimento, ritmo, tensione e colore sonoro. Il compositore non accompagna più semplicemente una poesia, ma la legge e ne propone una interpretazione. Con Marenzio, Gesualdo e infine Monteverdi questa capacità arriverà a mettere in discussione perfino la gerarchia tradizionale delle regole contrappuntistiche, preparando l'idea secondo cui, quando la parola lo richiede, la norma può essere piegata all'affetto.</p>
+<p>Alla corte di Ferrara il <strong>Concerto delle Dame</strong>, con <strong>Laura Peverara, Anna Guarini e Livia d’Arco</strong>, porta le possibilità vocali del madrigale verso una scrittura virtuosistica. Luzzasco Luzzaschi pubblica nel <strong>1601</strong> i <i>Madrigali per cantare et sonare a uno, due e tre soprani</i>: la stampa mostra un organico e un accompagnamento notati, oltre a elaborazioni vocali che richiedono di osservare la parte scritta e le possibili aggiunte degli interpreti. Non è un semplice passo obbligato «dal madrigale all'opera»: è una specifica pratica di corte, in cui le interpreti specializzate e le condizioni dell'esecuzione incidono sulla composizione. <a href="https://www.loc.gov/item/2008561305/" target="_blank" rel="noopener noreferrer">Library of Congress · stampa del 1601, partitura completa ↗</a> · <a href="https://www.treccani.it/enciclopedia/laura-peperara_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Treccani · Peverara e Ferrara ↗</a>.</p><div class="route-links"><button type="button" class="source-card resource" data-title="Treccani · Laura Peverara e il Concerto delle Dame" data-url="https://www.treccani.it/enciclopedia/laura-peperara_%28Dizionario-Biografico%29/"><span class="src">Ferrara · 1601</span><b>Concerto delle Dame</b><span>Luzzaschi, tre voci acute, scrittura virtuosistica e accompagnamento nelle fonti della corte estense.</span></button></div>
+
+      </div>
+
+      
+      <div class="student-box" id="imitazione">
+        <div class="student-label">Una parola da capire</div>
+        <h3>Che cos'è l'imitazione?</h3>
+        <p>Una voce presenta un breve motivo e, poco dopo, un'altra voce riprende lo stesso disegno, spesso da un'altezza diversa, mentre la prima continua il proprio percorso. Il motivo può poi passare alle altre parti, producendo l'impressione che le voci si chiamino e si rincorrano. Se la ripetizione è rigidissima possiamo avvicinarci al canone, ma nell'<strong>imitazione rinascimentale</strong> le voci sono spesso libere di modificare il materiale e di separarsene dopo l'ingresso.</p>
+        <p><strong>Josquin Desprez</strong> è uno dei grandi protagonisti della diffusione di questo modo di costruire la polifonia: nei suoi mottetti l'ingresso imitativo può organizzare una frase del testo e poi lasciare spazio a un nuovo motivo per la frase successiva. Quando più punti di imitazione si susseguono lungo quasi tutta la composizione si parla spesso di <em>imitazione pervasiva</em>.</p>
+        <div class="try"><strong>Prova ad ascoltare così:</strong> non cercare subito “la melodia”. Individua invece la prima piccola frase riconoscibile e prova a sentire quando entra nella seconda, nella terza e nella quarta voce.</div>
+        <button type="button" class="source-card resource" style="margin-top:1rem;width:100%" data-title="Treccani · La canzone polifonica francese" data-url="https://www.treccani.it/enciclopedia/la-canzone-polifonica-francese_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"><span class="src">Approfondimento</span><b>Josquin e la circolazione del motivo fra le voci</b><span>Treccani descrive l'imitazione come uno dei principi centrali del nuovo linguaggio franco fiammingo.</span></button>
+      </div>
+      <aside class="student-box" id="ragazzi-canone">
+        <div class="student-label">✦ Per iniziare</div>
+        <h3>Il canone in classe</h3>
+        <p>Nell'imitazione una voce presenta un breve motivo e le altre lo riprendono, una dopo l'altra. La forma più rigida è il canone.</p>
+        <div class="try"><strong>Prova tu.</strong> Cantate in classe un canone semplice, per esempio <em>Fra' Martino</em>, divisi in due o tre gruppi che entrano a distanza. Poi ascoltate un mottetto di Josquin e cercate dove la stessa frase passa da una voce all'altra.</div>
+        <p><strong>Domande guida:</strong></p>
+        <ul>
+          <li>Quando le voci entrano una dopo l'altra, riesci ancora a capire le parole?</li>
+          <li>Che problema avrà avuto la Chiesa con questo tipo di musica? Ne parla la sezione su Palestrina.</li>
+        </ul>
+      </aside>
+
+      <div class="media-row">
+        <button id="ascolto-youtube-FOXMfgHNb90" type="button" class="media-card video" data-video="FOXMfgHNb90" data-title="Arcadelt · Il bianco e dolce cigno">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Madrigaux_%C3%A0_4%2C_5_et_6_voix_-_btv1b52519345s_%28021_of_216%29.jpg" alt="Pagina di una raccolta cinquecentesca di madrigali">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto guidato</span><h3>Il bianco e dolce cigno</h3></span>
+        </button>
+        <button type="button" class="media-card resource" data-title="Jacques Arcadelt" data-url="https://www.treccani.it/enciclopedia/jacques-arcadelt_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Arcadelt.jpg" alt="Jacques Arcadelt">
+          <span class="shade"></span><span class="meta"><span class="tag">Madrigale</span><h3>Verdelot e Arcadelt</h3></span>
+        </button>
+        <button type="button" class="media-card resource" data-title="Madrigale rinascimentale" data-url="https://www.treccani.it/enciclopedia/il-madrigale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">
+          <img loading="lazy" src="https://tile.loc.gov/image-services/iiif/public%3Amusic%3Amusihas-200154760%3Amusihas-200154760.0005/full/pct%3A100.0/0/default.jpg" alt="Libro di madrigali">
+          <span class="shade"></span><span class="meta"><span class="tag">Parola e suono</span><h3>Il testo diventa forma</h3></span>
+        </button>
+      </div>
+      <div class="media-row" id="rinascimento-gibbons" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));align-items:stretch" aria-label="Confronto tra madrigale italiano e inglese">
+        <button type="button" id="gibbons-silver-swan" class="media-card video" data-video="XOK0uH0HruI" data-title="Orlando Gibbons · The Silver Swan">
+          <img loading="lazy" src="https://i.ytimg.com/vi/XOK0uH0HruI/hqdefault.jpg" alt="Anteprima del video del madrigale The Silver Swan di Orlando Gibbons">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · madrigale inglese</span><h3>Orlando Gibbons · The Silver Swan</h3></span>
+        </button>
+        <button type="button" id="gibbons-what-is-our-life" class="media-card video" data-video="W8BW-cRDDw4" data-title="Orlando Gibbons · What Is Our Life? · Consort of Musicke, Anthony Rooley (Decca, 1975)">
+          <img loading="lazy" src="https://i.ytimg.com/vi/W8BW-cRDDw4/hqdefault.jpg" alt="Copertina o anteprima della registrazione di What Is Our Life? di Orlando Gibbons, Consort of Musicke">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · cinque voci · 1612</span><h3>Gibbons · What Is Our Life?</h3></span>
+        </button>
+        <div class="student-box" style="margin:0">
+          <div class="student-label">✦ Tre ascolti a confronto</div>
+          <h3>Da Arcadelt a Gibbons: il madrigale e la parola</h3>
+          <p>Il madrigale viaggia dall'Italia all'Inghilterra e si trasforma. Dopo <i>Il bianco e dolce cigno</i> di Arcadelt, ascolta due pagine della raccolta di <strong>Orlando Gibbons</strong> del <strong>1612</strong>: <i>The Silver Swan</i> e <i>What Is Our Life?</i>. Nel secondo testo, tradizionalmente attribuito a <strong>Walter Raleigh</strong> (attribuzione discussa), la vita viene rappresentata come una breve recita teatrale. Come si distribuiscono fra cinque parti le domande e le immagini poetiche?</p>
+          <p><strong>Voce e strumenti.</strong> Il frontespizio originale presenta i brani come adatti a <i>viols and voyces</i>: la stampa documenta dunque una flessibilità d'organico. Il video di <i>The Silver Swan</i> con Spirit of Gambo e Freek Borstlap valorizza l'intreccio delle linee strumentali; <i>What Is Our Life?</i>, nell'incisione del <strong>Consort of Musicke</strong> diretto da <strong>Anthony Rooley</strong>, invita a seguire la parola cantata. <a href="https://www.loc.gov/item/2012563594/" target="_blank" rel="noopener noreferrer">Consulta i libri-parte della stampa del 1612 · Library of Congress ↗</a>.</p>
+          <p><a href="../atlante3d/?n=compositore-orlando-gibbons" title="Esplora Orlando Gibbons nell’Atlante grafico">◈ Orlando Gibbons nella costellazione Musurgia Mundi: biografia, connessioni e ascolti ↗</a></p>
+          <p><strong>La registrazione.</strong> <i>Gibbons: Madrigals &amp; Motets, 1612</i>, traccia XIV <i>What Is Our Life?</i>, ℗ 1975 <strong>Decca Music Group Limited</strong>, produzione <strong>Peter Wadland</strong>, tecnico del suono <strong>Iain Churches</strong>. La numerazione XIV si riferisce all'album; alcuni indici della raccolta del 1612 elencano il brano come XV. <a href="https://classical.music.apple.com/us/album/1783831474" target="_blank" rel="noopener noreferrer">Crediti dell'album ↗</a> · <a href="https://imslp.org/wiki/Madrigals_and_Motets_for_5_Voices_(Gibbons,_Orlando)" target="_blank" rel="noopener noreferrer">Indice dell'edizione originale ↗</a> · <a href="https://youtu.be/W8BW-cRDDw4" target="_blank" rel="noopener noreferrer">Video originale ↗</a>.</p>
+        </div>
+      </div>
+      <aside class="student-box" id="ragazzi-madrigalismo">
+        <div class="student-label">✦ Per iniziare</div>
+        <h3>Disegnare con la voce</h3>
+        <p>Nel madrigale una linea può salire per dire “ascendere”, scendere per dire “cadere”, fermarsi per un sospiro. Poi i compositori provano a rendere anche ciò che non si vede: dolore, esitazione, desiderio.</p>
+        <div class="try"><strong>Prova tu.</strong> Scegli un verso di una poesia o di una canzone e inventa un gesto vocale per due o tre parole, una salita, una pausa, un suono lungo. Poi chiediti: quali parole si lasciano “disegnare” facilmente? Quali no?</div>
+      </aside>
+
+    </section>
+
+
+    <section id="riforma">
+      <div class="section-title"><div class="section-no">07</div><div><h2>La parola della fede</h2></div></div>
+      <div class="two-col">
+        <p>Quando Lutero pubblica le novantacinque tesi nel 1517, la stampa trasforma una controversia teologica in un fenomeno capace di attraversare rapidamente l'Europa. Nel 1522 il Nuovo Testamento tedesco e nel 1534 la Bibbia completa inseriscono la traduzione dentro un progetto religioso nel quale la lettura personale della Scrittura acquista un valore nuovo, pur senza abolire chiese, catechismi, scuole e nuove forme di autorità.</p>
+        <p>L'uomo rinascimentale diventa così non soltanto <em>homo faber</em>, ma anche <em>homo legens</em> e inevitabilmente <em>homo interpretans</em>. La musica partecipa a questa trasformazione perché Lutero comprende quanto un testo cantato possa essere memorizzato, pronunciato e interiorizzato dalla comunità. Il corale luterano mette quindi la lingua tedesca nella bocca dei fedeli e costruisce una forma di partecipazione che non coincide con la grande polifonia professionale.</p>
+        <p>Sarebbe però sbagliato opporre schematicamente un protestantesimo semplice a un cattolicesimo complesso. Johann Walter mostra già nel 1524 come i nuovi canti possano diventare il materiale di elaborazioni polifoniche destinate a esecutori preparati, mentre nei secoli successivi la stessa melodia corale potrà sostenere costruzioni di enorme complessità. Ciò che cambia è la possibilità che la comunità riconosca come propria una linea musicale che può essere cantata semplicemente oppure trasformata dal compositore.</p>
+<p>Un confronto di <strong>fonti a stampa del 1524</strong> rende tangibile questa distinzione. L'<strong><i>Achtliederbuch</i></strong>, conosciuto come il «libretto degli otto canti», raccoglie melodie e testi in tedesco per la nuova pratica religiosa; il <strong><i>Geystliche gesangk Buchleyn</i></strong> curato da <strong>Johann Walter</strong> presenta invece elaborazioni a <strong>quattro e cinque parti</strong> per un ambiente di cantori preparati. Non si tratta di un volume elementare seguito da una versione più «evoluta» della stessa cosa: cambiano <strong>chi legge la notazione, chi canta, quale rapporto si cerca fra assemblea e coro</strong>. Anche la filologia della stampa conta: l'<i>Achtliederbuch</i> reca sul frontespizio l'indicazione di Wittenberg, ma la ricerca segnala che fu stampato <strong>fuori dalla città</strong>; quello di Walter è un libro di parti effettivamente stampato a Wittenberg. La provenienza dichiarata non coincide sempre con il luogo materiale di stampa. <a href="https://www.lutheranchoralebook.com/sources/achtliederbuch/" target="_blank" rel="noopener noreferrer">Free Lutheran Chorale-Book · fonti dell'<i>Achtliederbuch</i> ↗</a> · <a href="https://wordandworld.luthersem.edu/wp-content/uploads/pdfs/44-2_Hymns_and_Hymnals_Singing_The_Faith/04_From_Broadside_to_Hymnal_How_Things_Began_in_Wittenberg_in_1524.pdf" target="_blank" rel="noopener noreferrer">Luther Seminary · studio sulle stampe del 1524 ↗</a>.</p>
+        <p>Il contrasto non riguarda soltanto il latino e il volgare, né può essere ridotto a «coro contro assemblea». <strong>La comunità che intona una melodia corale</strong>, la cappella di cantori addestrati che la sviluppa a più voci e la scuola che insegna il repertorio appartengono a pratiche differenti, spesso comunicanti. Una medesima melodia può avere una funzione collettiva immediata e diventare il materiale di un mottetto complesso: la Riforma modifica anche <em>chi ha diritto e occasione di cantare</em>, non soltanto che cosa viene composto.</p>
+<p>Anche il <strong>Salterio di Ginevra</strong>, portato a compimento nel <strong>1562</strong>, impedisce di parlare di un unico modello «protestante». Le melodie dei salmi francesi tradotti in versi, legate fra gli altri a <strong>Clément Marot e Théodore de Bèze</strong>, erano concepite per la partecipazione della comunità e per il canto <strong>all'unisono senza accompagnamento</strong> nel culto ginevrino. Nelle armonizzazioni a quattro voci di <strong>Claude Goudimel</strong>, pubblicate nel <strong>1565</strong>, quelle stesse linee entrano invece in una scrittura polifonica destinata anche a pratiche differenti dal canto assembleare ordinario. Non significa che i fedeli ginevrini intonassero abitualmente i quattro pentagrammi di Goudimel come un coro accademico. Si tratta piuttosto di riconoscere una <strong>melodia collettivamente condivisa</strong> e le sue diverse vite editoriali ed esecutive. <a href="https://www.cambridge.org/core/journals/proceedings-of-the-musical-association/article/abs/genevan-psalter-of-1562-set-in-fourpart-harmony-by-claude-goudimel-in-1565/9A9AE1E0E11AEABF458429CABA32460D" target="_blank" rel="noopener noreferrer">G. R. Woodward · storia del Salterio e di Goudimel, RMA/Cambridge ↗</a> · <a href="https://genevanpsalter.com/files/complete-collections/Genevan_Psalter_pages.pdf" target="_blank" rel="noopener noreferrer">Genevan Psalter · tradizione e prassi del canto ↗</a>.</p>
+<p>La stampa, la scuola, la lingua e la musica finiscono così per sostenersi reciprocamente. La questione della comprensibilità non rimane però confinata al mondo riformato, perché proprio la centralità attribuita alla parola sacra costringerà anche Roma a interrogarsi su quanto della liturgia riesca realmente ad arrivare all'ascoltatore quando il latino viene avvolto da una polifonia sempre più complessa.</p>
+      </div>
+      
+      <div class="rin-focus" id="corale-e-parola">
+        <div class="eyebrow">Lutero · la centralità della parola cantata</div>
+        <h3>Il corale protestante: una parola che tutti possono cantare</h3>
+        <p>La Riforma non nasce da una condanna generale della musica complessa. <strong>Martin Lutero</strong> conosce e apprezza la polifonia, ma attribuisce un'importanza centrale alla <strong>Scrittura tradotta, annunciata, imparata e cantata</strong>. La lingua tedesca permette al testo di essere ripetuto nelle scuole e nella comunità: la musica diventa uno strumento di educazione religiosa e di memoria. Cantare non è soltanto ascoltare specialisti: il fedele può appropriarsi direttamente di una parte del repertorio.</p>
+        <p>Il <strong>corale luterano</strong> è prima di tutto un <strong>canto strofico in tedesco</strong> con una melodia riconoscibile, riutilizzata sulle diverse strofe. Vi confluiscono melodie nuove e materiali adattati da repertori precedenti. Il canto dell'assemblea può avvenire <strong>all'unisono</strong>: non dobbiamo immaginare il primo corale del Cinquecento già nella veste armonizzata a quattro voci che conosciamo soprattutto attraverso secoli successivi. Nemmeno il canto comunitario nasce ex novo nel 1517: cambia la sua importanza entro un programma liturgico e pedagogico.</p>
+        <h4>Omoritmia: più voci, sillabe insieme</h4>
+        <p>Quando più parti vocali pronunciano <strong>le stesse sillabe sostanzialmente con il medesimo ritmo</strong>, parliamo di <strong>omoritmia</strong>. In un impianto prevalentemente omofonico, una melodia può emergere sopra un sostegno armonico che fa avanzare simultaneamente le parole. Nella <strong>polifonia imitativa</strong>, invece, i cantori possono presentare le sillabe in momenti diversi. La comprensibilità è spesso più immediata nel primo caso, ma questo non rende automaticamente incomprensibile ogni contrappunto, né trasforma uno stile nell'unico lecito per il culto.</p>
+        <div class="rin-compare">
+          <div><b>Unisono</b><p>Tutti intonano un'unica linea, pronunciando insieme il testo: la partecipazione della comunità è centrale.</p></div>
+          <div><b>Omoritmia</b><p>Note differenti, ma sillabe simultanee: le parole possono arrivare con maggiore evidenza.</p></div>
+          <div><b>Imitazione</b><p>Una stessa idea passa da una voce all'altra; le entrate sfalsate creano un intreccio polifonico.</p></div>
+        </div>
+        <p><strong>Johann Walter</strong>, collaboratore di Lutero, pubblica nel <strong>1524</strong> il <i>Geystliche gesangk Buchleyn</i> con elaborazioni polifoniche per cantori formati. Nello stesso anno l'<i>Achtliederbuch</i> testimonia un'altra modalità di diffusione dei canti. Non sono due gradi di una medesima scala dalla «semplicità» alla «perfezione»: servono <strong>destinatari, occasioni e pratiche differenti</strong>. Anche la celebre melodia di <i>Ein feste Burg ist unser Gott</i> ha conosciuto ritmi e armonizzazioni diverse. L'immagine scolastica di quattro parti sempre omoritmiche non basta, da sola, a raccontare il primo repertorio luterano.</p>
+        <p>Occorre infine distinguere le confessioni della Riforma. A <strong>Ginevra</strong> il canto dei salmi tradotti in versi trova largo spazio nell'assemblea, generalmente all'unisono nel culto; <strong>Claude Goudimel</strong> ne pubblica successivamente armonizzazioni destinate anche ad altre pratiche. Nelle chiese luterane sopravvivono inoltre cori addestrati e ampie elaborazioni contrappuntistiche. <strong>Chi canta, in quale lingua e in quale situazione?</strong> È una domanda storica più efficace della formula «protestanti semplici, cattolici complicati».</p>
+        <p class="rin-activity"><strong>✦ Per iniziare · Tre modi di pronunciare un testo.</strong> Fate dire a tutti «La parola deve arrivare» insieme; poi suddividete la classe e fate iniziare la frase a distanza di due battiti; infine pronunciatela contemporaneamente su tre altezze diverse. Come cambia la possibilità di capire? È un modello didattico, non una ricostruzione di culto cinquecentesco. <a href="https://www.lutheranchoralebook.com/tunes/ein-feste-burg/" target="_blank" rel="noopener noreferrer">Fonti e versioni di <i>Ein feste Burg</i> ↗</a>.</p>
+      </div>
+
+      <div class="callout"><strong>Francesco non è Lutero prima di Lutero.</strong> Il confronto è utile soltanto per vedere come il volgare e il canto comunitario possano avere significati completamente diversi quando operano nello spazio devozionale medievale oppure nel cuore di una nuova organizzazione liturgica protestante.</div>
+    </section>
+
+
+    <section id="censura">
+      <div class="section-title"><div class="section-no">08</div><div><h2>Quando stampare significa anche controllare</h2></div></div>
+      <div class="two-col">
+        <p>La stessa tecnologia che rende possibile una diffusione rapidissima dei testi produce inevitabilmente il problema opposto, perché chi detiene una autorità religiosa o politica deve ora confrontarsi con libri che possono circolare in centinaia di copie prima che sia possibile fermarli. La censura non nasce con la stampa, ma la stampa ne modifica radicalmente la scala.</p>
+        <p>La storia dell'Inquisizione deve essere distinta con attenzione. L'Inquisizione medievale, quella spagnola e quella romana appartengono a contesti istituzionali differenti. Nel 1542 Paolo III istituisce la Congregazione della romana e universale Inquisizione, mentre nel 1559 viene promulgato sotto Paolo IV il primo grande <em>Index librorum prohibitorum</em> romano. L'Indice tridentino del 1564 modifica alcune delle rigidità precedenti, ma conferma il principio che la circolazione dei libri possa essere disciplinata dall'autorità ecclesiastica.</p>
+        <p>Il problema attraversa direttamente la cultura umanistica, perché filologia, traduzioni bibliche, letteratura e critica storica possono diventare terreno di sospetto. Machiavelli entra nell'Indice, Erasmo viene colpito pesantemente e la possibilità di leggere la Scrittura in volgare rimane a lungo una questione estremamente sensibile. La stessa ansia di controllo che riguarda il libro ha un parallelo musicale nella preoccupazione per ciò che viene detto dentro la liturgia, per la presenza di materiali profani e per una bellezza sonora capace di attirare l'attenzione su se stessa.</p>
+      </div>
+      <div class="history-pivot">
+        <h3>La stampa moltiplica. L'autorità tenta di selezionare.</h3>
+        <p>È uno dei grandi paradossi della prima età moderna: la stessa invenzione che permette una circolazione senza precedenti del sapere produce apparati sempre più sofisticati per sorvegliarne la circolazione.</p>
+      </div>
+    </section>
+
+
+    <section id="roma">
+      <div class="section-title"><div class="section-no">09</div><div><h2>Roma, Palestrina e il problema della parola</h2></div></div>
+      <div class="two-col">
+        <p>Quando ascoltiamo una messa di Palestrina dobbiamo ricordare che la polifonia liturgica non nasce nel Cinquecento. L'organum medievale aveva già aggiunto nuove voci al canto e la scuola di Notre Dame aveva portato la polifonia direttamente dentro la liturgia, mentre l'organo era entrato progressivamente nella pratica ecclesiastica. La Chiesa non abbandona dunque una monodia assoluta per scoprire improvvisamente il contrappunto, ma attraversa secoli nei quali il canto gregoriano rimane fondamento mentre intorno ad esso crescono possibilità sempre nuove.</p>
+        <p>Prima di Palestrina, la rete delle cappelle ecclesiastiche e principesche ha fatto della polifonia franco-fiamminga una lingua sovraregionale. Le messe di <strong>Josquin des Prez</strong>, Jacob Obrecht e Heinrich Isaac mostrano strategie diverse: un canto preesistente può fornire l'ossatura di un ciclo, mentre nella <i>Missa Pange lingua</i> di Josquin la melodia dell'inno viene continuamente trasformata attraverso l'imitazione. Non va confuso il <strong>ciclo dell'Ordinario della messa</strong> — Kyrie, Gloria, Credo, Sanctus, Agnus Dei — con il <strong>mottetto</strong>, la cui scelta testuale e destinazione sono assai più variabili. In entrambi i casi il coro professionale è un laboratorio di scrittura, memoria e disciplina delle voci, non una semplice massa che canta tutta insieme.</p>
+<p>Nel Cinquecento la domanda sulla comprensione del testo diventa più urgente: le voci, sfalsando le entrate delle sillabe, possono costruire architetture meravigliose, ma anche rendere difficile seguire la parola. Nel clima della Riforma cattolica il problema acquista un peso particolare. <strong>Il Concilio di Trento non prescrive però uno stile omoritmico obbligatorio:</strong> i suoi provvedimenti generali insistono soprattutto sull'esclusione di elementi profani o sconvenienti, mentre l'intelligibilità viene discussa e perseguita più concretamente in iniziative locali successive. Palestrina va compreso in questa storia complessa, non come obbediente a un inesistente regolamento compositivo.</p>
+        <p>La <em>Missa Papae Marcelli</em>, pubblicata nel 1567 e costruita prevalentemente a sei voci, diventa il simbolo di una soluzione nella quale la polifonia non viene impoverita ma dosata. Nel <em>Kyrie</em>, dove le parole sono poche, l'imitazione può espandersi con maggiore libertà, mentre nel <em>Gloria</em> e nel <em>Credo</em> l'esigenza di percorrere testi più lunghi favorisce passaggi nei quali le voci procedono con maggiore accordo ritmico. La complessità rimane, ma viene governata in funzione della parola.</p>
+<p><strong>Due messe, due modi di organizzare il canto.</strong> Nella <i>Missa Pange lingua</i> Josquin non si limita a collocare una melodia preesistente nel tenore: distribuisce e trasforma i frammenti dell'inno nelle diverse parti, facendo riconoscere la parentela fra i movimenti grazie alla <strong>parafrasi imitativa</strong>. Nella <i>Missa Papae Marcelli</i> di Palestrina è invece istruttivo confrontare <i>Kyrie</i>, con parole brevi ed entrate più distese, e <i>Gloria</i> e <i>Credo</i>, dove testi assai più lunghi richiedono anche momenti di pronunciata simultaneità ritmica. La differenza non si spiega come un progresso dalla «confusione» alla «semplicità», ma come una risposta musicale alla diversa estensione e funzione delle parole. <a href="https://academic.oup.com/book/4751/chapter-abstract/146990513" target="_blank" rel="noopener noreferrer">Oxford Academic · Josquin, <i>Missa Pange lingua</i>, parafrasi e prassi ↗</a>.</p>
+<p><strong>L'ascolto va confrontato con la fonte, non soltanto con il nome del coro.</strong> Contano la notazione mensurale, la sottoposizione del testo, il <i>tactus</i>, le alterazioni editoriali e le scelte di organico e pronuncia. Il <i>Kyrie</i> di Palestrina già disponibile in questa sezione permette di riconoscere gli ingressi; un eventuale video di Josquin verrà inserito solo dopo l'identificazione documentata degli interpreti e dell'opera. La chiarezza dell'incisione moderna non dimostra da sola quale fosse il numero dei cantori in una cappella del Cinquecento.</p>
+        <p>La storia, però, non finisce a Roma. Nella Spagna cattolica <strong>Tomás Luis de Victoria</strong> imprime al linguaggio polifonico un'intensità retorica particolare: l'<i>Officium defunctorum</i>, pubblicato nel 1605, riunisce musica per le esequie e testi affini, e non coincide semplicemente con una «messa da Requiem» isolata. Nell'Inghilterra delle trasformazioni religiose, <strong>Thomas Tallis</strong> e <strong>William Byrd</strong> compongono in condizioni confessionali e istituzionali differenti: il latino cattolico, la liturgia anglicana in inglese e la pratica corale delle cappelle non possono essere fusi in una sola scuola. Le scelte di lingua, organico e circolazione hanno conseguenze musicali, oltre che politiche. <a href="https://www.victoria.uma.es/osuna.html" target="_blank" rel="noopener noreferrer">Catalogo Victoria · <i>Officium defunctorum</i> e testi ↗</a>.</p>
+<p>Il frontespizio madrileno del <strong>1605</strong> precisa perché l'<strong><i>Officium defunctorum</i> di Victoria</strong> sia più di una messa polifonica: l'edizione comprende la <i>Missa pro defunctis</i> a <strong>sei voci</strong>, ma anche il mottetto <i>Versa est in luctum</i>, il responsorio <i>Libera me</i> e la lezione <i>Taedet animam meam</i>. Appartengono a <strong>momenti e generi testuali differenti</strong> dei riti per i defunti: selezionare soltanto il <i>Kyrie</i> o il mottetto senza spiegarne l'uso significa perderne l'architettura cerimoniale. La fonte identifica espressamente le esequie dell'imperatrice Maria come occasione commemorata, ma una stampa del 1605 non è la registrazione integrale di un'unica celebrazione: occorre ricostruire anche canto piano e successione liturgica. <a href="https://victoria.uma.es/ediciones_antiguas.html" target="_blank" rel="noopener noreferrer">Catalogo critico Victoria · contenuto della stampa del 1605 ↗</a>.</p>
+<p>Accanto a Victoria va riconosciuta una più vasta <strong>cultura corale iberica</strong>. <strong>Cristóbal de Morales</strong>, cantore della cappella pontificia e autore di messe, mottetti e Magnificat, e <strong>Francisco Guerrero</strong>, legato per decenni alla cattedrale di Siviglia, mostrano come le reti delle cattedrali spagnole dialoghino con Roma senza esserne semplici succursali. Un <i>Magnificat</i>, un responsorio e un mottetto non richiedono la medesima distribuzione del testo né la stessa occasione: il confronto dei loro organici e delle loro sezioni è più significativo della ricerca di un generico «sentimento religioso spagnolo». <a href="https://www.treccani.it/enciclopedia/tomas-luis-de-victoria/" target="_blank" rel="noopener noreferrer">Treccani · Victoria e la tradizione polifonica spagnola ↗</a>.</p>
+<p>In Inghilterra la tensione fra pratica ufficiale e devozione cattolica assume anche una dimensione editoriale. I <strong><i>Gradualia</i> di William Byrd</strong>, pubblicati nel 1605 e nel 1607, raccolgono musiche latine per il Proprio della messa e altre occasioni del calendario romano, ben lontane dalla destinazione anglicana di molte altre sue composizioni. Siamo già nel Seicento, ma proprio questo sconfinamento mostra perché il racconto del Rinascimento non debba fermarsi a una data: la stessa tecnica corale può servire comunità e circostanze religiose molto diverse, talvolta segnate da rischi politici concreti. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/notes-as-a-garland-the-chronology-and-narrative-of-byrds-gradualia/FB023A53FE441E50FF4BAEA99AAF66FA" target="_blank" rel="noopener noreferrer">Cambridge · Kerry McCarthy, <i>Gradualia</i> e contesto delle edizioni ↗</a>.</p>
+<p>Il caso di <strong>Byrd</strong> è particolarmente istruttivo se si leggono fianco a fianco <strong>due tipi di testo destinati a due pratiche diverse</strong>. I <i>Gradualia</i> offrono piccoli brani latini per il calendario liturgico cattolico; il suo <i>Great Service</i>, invece, distribuisce in un ampio organico polifonico i cantici e le parti del servizio anglicano in lingua inglese. La differenza non è soltanto confessionale: nel <i>service</i> occorre seguire una sequenza di testi prescritti all'interno dell'ufficio, mentre nel <i>Graduale</i> il brano prende posto in un punto specifico del Proprio della messa. A distanza di quattro secoli, un ordine di culto di <strong>Westminster Abbey</strong> documenta ancora l'esecuzione del <i>Great Service</i>: <strong>questa è continuità di repertorio</strong>, non prova che la sonorità odierna riproduca quella elisabettiana. <a href="https://www.westminster-abbey.org/order-of-service?id=10988" target="_blank" rel="noopener noreferrer">Westminster Abbey · <i>Great Service</i> nel contesto dell'ufficio ↗</a> · <a href="https://www.cambridge.org/core/journals/proceedings-of-the-royal-musical-association/article/abs/wordsetting-in-the-songs-of-byrd/842951298457B780526FB768A52B56B7" target="_blank" rel="noopener noreferrer">Philip Brett · articolazione del repertorio vocale di Byrd ↗</a>.</p>
+<p>Con <strong>Thomas Tallis</strong> l'idea di coro come entità ben delimitata diventa perfino un problema <strong>di trasmissione manoscritta</strong>. Il mottetto <i>Spem in alium</i> dispone <strong>quaranta parti vocali</strong>; la copia <strong>Egerton MS 3512</strong>, conservata alla British Library e risalente circa al 1610, le presenta in <strong>cinque gruppi di otto voci affini</strong>, insieme a un adattamento testuale inglese. Una successiva partitura ottocentesca, <strong>Add MS 29968</strong>, le riordina invece in <strong>otto cori da cinque parti</strong>. Questa differenza nella disposizione <em>scritta</em> non significa che Tallis abbia composto due mottetti diversi, né permette di dedurre meccanicamente quante persone cantassero, dove fossero collocate o quale acustica udissero. La notissima immagine degli «otto cori» va pertanto confrontata con <strong>l'età e la natura della fonte</strong>, prima di diventare una prescrizione filologica. <a href="https://searcharchives.bl.uk/catalog/032-001985761" target="_blank" rel="noopener noreferrer">British Library · Egerton MS 3512 ↗</a> · <a href="https://searcharchives.bl.uk/catalog/032-002021550" target="_blank" rel="noopener noreferrer">British Library · Add MS 29968 ↗</a>.</p>
+<p>Quando parliamo di «coro rinascimentale», dobbiamo evitare di immaginare automaticamente la compagine sinfonica odierna. Nelle <strong>cappelle</strong> il canto era affidato a cantori formati, con funzioni diverse secondo celebrazione e città; il numero degli esecutori per parte, l'eventuale sostegno strumentale e la distribuzione nello spazio non si ricavano da un pentagramma a quattro o sei voci. Nello stesso rito potevano alternarsi <strong>canto piano, polifonia e organo</strong>. La distinzione fra notazione e prassi effettiva è tanto importante quanto la differenza fra un mottetto e un ciclo di messa.</p>
+<p>Una <strong>cappella musicale</strong> è anche una struttura educativa e professionale. Un esempio documentato è il <strong>Magdalen College di Oxford</strong>: gli statuti del 1480 prevedevano sedici ragazzi cantori, otto <i>Academical Clerks</i> e quattro cappellani. Non stiamo guardando una massa corale moderna che si raduna per un concerto, ma un organismo incaricato del canto regolare, della preparazione musicale e della continuità del servizio. Formazione, composizione dei gruppi e repertorio mutano insieme alle vicende confessionali e istituzionali. <a href="https://www.magd.ox.ac.uk/chapel-and-choir/the-choir/" target="_blank" rel="noopener noreferrer">Magdalen College · storia della fondazione corale ↗</a>.</p>
+<p>La Roma di <strong>Filippo Neri</strong> offre un'altra dimensione della vocalità sacra: le <strong>laudi spirituali in volgare</strong>, cantate nelle riunioni dell'Oratorio, non coincidono con i testi dell'Ordinario della messa e neppure con il futuro melodramma. <strong>Giovanni Animuccia</strong>, maestro della Cappella Giulia, ne pubblica raccolte nel <strong>1563</strong> e nel <strong>1570</strong>, fra semplicità declamatoria e polifonia più elaborata. Il canto può così diventare strumento di partecipazione, comprensione del testo e devozione fuori da una celebrazione liturgica in senso stretto. <a href="https://www.treccani.it/enciclopedia/giovanni-animuccia_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Dizionario Biografico Treccani · Animuccia e la lauda filippina ↗</a>.</p>
+<p>Un confronto di esecuzioni va fatto con la stessa prudenza delle partiture. Il motetto <strong><i>Exultate Deo</i></strong> di Palestrina, già proposto fra gli ascolti, è pubblicato sul <strong>canale ufficiale di Stile Antico</strong> (2025), complesso specializzato nella polifonia rinascimentale. La provenienza del documento è dunque verificabile; <strong>non lo chiameremo una ricostruzione certa del suono della cappella papale cinquecentesca</strong>. Impasto vocale, pronuncia del latino, altezza d'esecuzione, ornamentazione e numero dei cantori sono scelte da discutere alla luce delle fonti. <a href="https://www.youtube.com/watch?v=K38ZfTu0DxE" target="_blank" rel="noopener noreferrer">Stile Antico · registrazione ufficiale di <i>Exultate Deo</i> ↗</a>.</p>
+<p>La leggenda secondo cui Palestrina avrebbe salvato da solo la polifonia davanti ai padri conciliari è una costruzione successiva. Nel 1565 alcune messe furono effettivamente ascoltate in ambiente romano per verificare se le parole risultassero comprensibili, ma non esiste la scena teatrale nella quale un unico capolavoro impedisce all'ultimo momento una proibizione generale. La realtà è più interessante, perché mostra un'intera cultura che cerca lentamente un equilibrio fra tecnica, bellezza e funzione liturgica.</p>
+      </div>
+
+      
+      <div class="rin-focus" id="messa-ciclo">
+        <div class="eyebrow">Scuola romana · una grande forma sacra</div>
+        <h3>La messa come composizione, non soltanto come rito</h3>
+        <p>Occorre distinguere <strong>la celebrazione della messa</strong> dalla <strong>messa come composizione musicale</strong>. I grandi cicli rinascimentali intonano abitualmente le parti cantate e relativamente stabili dell'<strong>Ordinario</strong>: <strong>Kyrie, Gloria, Credo, Sanctus (con Benedictus) e Agnus Dei</strong>. Non mettono quindi in musica ogni momento del rito: il <strong>Proprio</strong>, con testi variabili secondo la festa, e le altre azioni liturgiche seguono logiche proprie.</p>
+        <p>Già fra Quattro e Cinquecento i maestri franco-fiamminghi cercano <strong>l'unità musicale di queste cinque sezioni</strong>. Una melodia può essere mantenuta come <i>cantus firmus</i>, trasformata e distribuita in una <strong>messa di parafrasi</strong>, oppure l'autore può riprendere più linee da una composizione anteriore, nella <strong>messa d'imitazione</strong> (storicamente detta anche <i>parodia</i>, senza il significato moderno di scherzo). Le grandi messe di Du Fay, Ockeghem, Obrecht e Josquin precedono la maturità della scuola romana: <strong>Roma non inventa la messa polifonica</strong>.</p>
+        <p>Nel Cinquecento la <strong>scuola romana</strong>, con Palestrina fra i suoi maggiori esponenti, fa della scrittura contrappuntistica un equilibrio di linee vocali, dissonanze, cadenze e articolazioni del testo. Nel <i>Kyrie</i> le poche invocazioni possono essere distese e imitate; nel <i>Gloria</i> e nel <i>Credo</i>, molto più lunghi, le voci possono spesso riunirsi in episodi <strong>omoritmici</strong>. La parola non espelle la polifonia: ne influenza l'organizzazione. Anche nel mondo cattolico il rapporto tra intelligibilità, lingua latina e complessità sonora è dunque un tema fondamentale.</p>
+        <p>Va evitata la leggenda secondo cui il <strong>Concilio di Trento</strong> avrebbe vietato la polifonia, oppure imposto un unico stile. I decreti generali si soffermano sull'esclusione di elementi profani o sconvenienti; la discussione sull'intelligibilità del testo assume maggiore concretezza in orientamenti e controlli locali successivi. La <i>Missa Papae Marcelli</i> non salvò da sola la musica sacra: mostra invece quanto raffinato possa essere il rapporto fra <strong>contrappunto e comprensione delle parole</strong>.</p>
+        <div class="rin-compare">
+          <div><b>Ordinario</b><p>I cinque gruppi di testi ricorrenti che formano abitualmente l'architettura della messa ciclica.</p></div>
+          <div><b>Proprio</b><p>I testi variabili in base alla ricorrenza liturgica: non coincidono con il ciclo di cinque sezioni.</p></div>
+          <div><b>Unità compositiva</b><p><i>Cantus firmus</i>, parafrasi e imitazione di un modello musicale sono tre strategie differenti.</p></div>
+        </div>
+        <p class="rin-activity"><strong>✦ Ascolto comparato.</strong> Ascolta il <i>Kyrie</i> della <i>Missa Papae Marcelli</i> qui sotto e poi cerca il <i>Gloria</i> della stessa messa: in quali passaggi le voci enunciano le sillabe quasi contemporaneamente? <a href="https://online.ucpress.edu/jams/article-abstract/55/1/1/49809/The-Council-of-Trent-Revisited" target="_blank" rel="noopener noreferrer">C. Monson · il Concilio e la musica, studio documentario ↗</a>.</p>
+      </div>
+
+      <div class="media-row">
+        <button id="ascolto-youtube-EJj0as_Mic4" type="button" class="media-card video" data-video="EJj0as_Mic4" data-title="Palestrina · Missa Papae Marcelli, Kyrie">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mensuralnotation-Missa_papae_marcelli.jpg" alt="Inizio della Missa Papae Marcelli in notazione mensurale">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto</span><h3>Missa Papae Marcelli, Kyrie</h3></span>
+        </button>
+        <button type="button" class="media-card resource" data-title="Giovanni Pierluigi da Palestrina" data-url="https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Palestrina">
+          <span class="shade"></span><span class="meta"><span class="tag">Roma</span><h3>Palestrina</h3></span>
+        </button>
+        <button type="button" class="media-card resource" data-title="Sacrosanctum Concilium" data-url="https://press.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_const_19631204_sacrosanctum-concilium_it.html">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Second_Vatican_Council.jpg" alt="Concilio Vaticano II">
+          <span class="shade"></span><span class="meta"><span class="tag">Una lunga durata</span><h3>Il latino fino al Novecento</h3></span>
+        </button>
+      </div>
+
+
+<div class="literary-aside" id="rinascimento-fonte-e-coro">
+  <div class="eyebrow">Interpretazione storicamente informata · Il libro corale</div>
+  <h3>Una partitura per molte voci, un libro per cantare insieme</h3>
+  <p>La <strong>Cappella Pratensis</strong> affronta la polifonia franco-fiamminga cantando da riproduzioni della <strong>notazione mensurale originale</strong>, disposte su un libro corale comune. Il metodo pone problemi che la trascrizione moderna tende a nascondere: lettura condivisa, segni mensurali, formazione dei cantori, pronuncia e relazione fra scrittura e gesto. L'ensemble documenta sul proprio sito le fonti e il lavoro di ricostruzione, compresa l'improvvisazione storica. Non significa che un'esecuzione odierna ricrei con certezza il timbro di una cappella del Cinquecento.</p>
+  <p>Nel sito ufficiale è presente anche un filmato di <strong>Josquin, <i>Inviolata, integra et casta es Maria</i></strong>: una composizione diversa sia dalla <i>Missa Pange lingua</i> sia dalla <i>Missa Papae Marcelli</i>. È un ascolto di confronto sulla <strong>prassi del leggere e del cantare</strong>, non un video intercambiabile con gli altri titoli.</p>
+  <div class="source-row"><a href="https://www.cappellapratensis.nl/en/" target="_blank" rel="noopener noreferrer">♪ Cappella Pratensis · filmato e metodo ufficiali ↗</a><a href="https://www.cappellapratensis.nl/en/EXPLORE-AND-LEARN/" target="_blank" rel="noopener noreferrer">♫ Libri corali, facsimili e notazione storica ↗</a></div>
+  <p><small>Documentazione filologica dell'ensemble verificata; riproducibilità del filmato su Android da controllare. Il collegamento non avvia automaticamente l'ascolto.</small></p>
+</div>
+
+      <div class="literary-aside">
+        <div class="eyebrow">Una continuità sorprendente</div>
+        <h3>Il latino rimane la norma fino al pieno Novecento</h3>
+        <p>Il Concilio di Trento non sceglie la via luterana del volgare e la Chiesa romana difenderà per secoli il latino come lingua normativa della liturgia. Ancora nel 1963 la costituzione <em>Sacrosanctum Concilium</em> afferma che l'uso del latino debba essere conservato nei riti latini, pur aprendo contemporaneamente uno spazio molto più ampio alle lingue nazionali. La riforma applicata negli anni successivi rovescerà progressivamente il rapporto fra norma ed eccezione.</p>
+        <p>Questa lunghissima continuità può essere letta come una scelta istituzionale fortemente conservatrice, soprattutto se confrontata con la decisione della Riforma di affidare molto prima la parola religiosa alla lingua della comunità. Il confronto va però precisato, perché Roma non ha mai imposto che ogni Messa fosse cantata: la <em>Missa lecta</em>, o Messa bassa, era comunissima. Nelle celebrazioni cantate, invece, il latino e il gregoriano conservarono per secoli un ruolo normativo e simbolico eccezionalmente forte.</p>
+      </div>
+    <p>L'unificazione delle pratiche ecclesiastiche occidentali non è stata né immediata né totale. Nell'Italia nordorientale sopravviveva ancora nel Cinquecento l'<strong>antico rito aquileiese, detto patriarchino</strong>, con libri e consuetudini locali. Il <strong>sinodo provinciale di Udine del 1596</strong>, sotto il patriarca Francesco Barbaro, stabilì l'adozione dei libri romani e l'abolizione del rito precedente. È un passaggio decisivo per la storia della liturgia, ma non prova da solo che ogni melodia o uso musicale locale fosse scomparso il giorno successivo: per affermarlo servono antichi codici, documenti di cappella e testimonianze delle pratiche reali. La musica sacra ha anche una geografia di memorie regionali, non soltanto una successione di grandi maestri. <a href="https://www.treccani.it/enciclopedia/francesco-barbaro_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Dizionario Biografico Treccani · Barbaro e il sinodo del 1596 ↗</a>.</p>
+    </section>
+
+    <section id="venezia">
+      <div class="section-title"><div class="section-no">10</div><div><h2>Venezia, quando lo spazio diventa musica</h2></div></div>
+      <div class="two-col">
+        <p>San Marco non è ancora la cattedrale di Venezia, ma la cappella del doge, legata direttamente alla rappresentazione politica della Serenissima. Questa condizione istituzionale, insieme alla particolare architettura della basilica e alla presenza di organi e cantorie, crea un ambiente nel quale la musica può sviluppare una identità molto diversa da quella romana.</p>
+        <p>Venezia non è protestante e non vive fuori dal cattolicesimo, ma possiede una autonomia politica sufficiente per negoziare duramente con Roma. L'interdetto del 1606 appartiene già al secolo successivo, ma mostra con chiarezza quanto la Repubblica considerasse la propria sovranità un limite reale all'ingerenza pontificia. Anche la cultura musicale di San Marco cresce dentro questa sicurezza istituzionale.</p>
+        <p>Adrian Willaert, maestro di cappella dal 1527, porta la grande tecnica franco fiamminga dentro un edificio che suggerisce la separazione fisica delle masse sonore. I cori spezzati non vengono inventati dal nulla, perché pratiche antifonali sono molto più antiche, ma a Venezia diventano un principio compositivo nel quale la distanza fra gruppi differenti acquista una funzione strutturale.</p>
+        <p>Con Andrea e Giovanni Gabrieli la ricerca si spinge ancora oltre. Cornetti, tromboni, viole, organi e voci possono essere distribuiti in gruppi differenti, rispondersi e riunirsi, mentre il timbro e la dinamica acquistano una evidenza crescente. Nelle <em>Sacrae symphoniae</em> del 1597 Giovanni Gabrieli pubblica anche la celebre <em>Sonata pian e forte</em>, uno dei documenti più eloquenti del momento in cui lo strumento comincia a essere pensato non soltanto come sostituto della voce ma come portatore di colore e contrasto autonomi.</p>
+        <p>Per le cappelle veneziane il dialogo fra gruppi non è un gioco acustico applicato dall'esterno a una partitura già conclusa. Nella scrittura policorale sacra, <strong>due o più complessi vocali possono articolare frasi alternate, sovrapporsi o riunirsi</strong>; gli strumenti non duplicano sempre e obbligatoriamente le voci. Le combinazioni dipendono dai brani e dalle condizioni della pratica esecutiva. È in questa pluralità di risposte — coro, organo, solista, insieme strumentale — che la lezione veneziana passa a compositori come Heinrich Schütz, rendendo permeabile il confine convenzionale fra Rinascimento e Barocco. Non bisogna immaginare ogni mottetto a cori spezzati eseguito con una disposizione spaziale identica.</p>
+<p>La collocazione dei cantori veneziani richiede tuttavia una ricostruzione documentaria, non soltanto l'osservazione dell'edificio. Lo studio di <strong>David Bryant</strong> sui <i>cori spezzati</i> di San Marco mostra che il cerimoniale indicava occasioni precise nelle quali i Vespri venivano cantati da due cori. Da questo non si può ricavare una disposizione spaziale fissa per ogni composizione. Le indicazioni relative alle voci, agli organi e agli strumenti vanno confrontate con i libri e con gli usi di una celebrazione concreta. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5" target="_blank" rel="noopener noreferrer">David Bryant · <i>The cori spezzati of St Mark's: myth and reality</i> ↗</a>.</p>
+<p>Dire <strong>antifonia</strong> e dire <strong>policoralità</strong> non è esattamente la stessa cosa. Nell'alternanza semplice un gruppo enuncia una formula e l'altro risponde; in una composizione policorale i gruppi possono anche <strong>cantare contemporaneamente linee autonome</strong>, ricompattandosi nei punti di maggiore evidenza testuale. Questa differenza è scritta nella musica prima che nell'effetto prodotto da una basilica riverberante. Per riconoscerla non basta ascoltare un'eco: bisogna confrontare nella partitura <strong>tessiture, ingressi, pause e riunioni dei gruppi</strong>. La ricerca di Bryant sugli usi cerimoniali di San Marco impedisce anche di trasformare una soluzione spaziale moderna in una regola invariabile del Cinquecento. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5" target="_blank" rel="noopener noreferrer">David Bryant · documenti su cori e cerimoniale marciano ↗</a>.</p>
+<p>La musica, in questo modo, non occupa soltanto il tempo ma anche lo spazio. Roma aveva cercato trasparenza dentro la polifonia, mentre Venezia scopre che una composizione può essere progettata anche stabilendo da dove arrivi il suono, quale gruppo risponda a un altro e quando una massa sonora debba apparire vicina, lontana, piena o rarefatta.</p>
+      </div>
+
+      <div class="media-row">
+        <button type="button" class="media-card resource" data-title="Adrian Willaert e la scuola veneziana" data-url="https://www.europeana.eu/es/stories/adrian-willaert-and-the-foundation-of-the-venetian-school">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Adrian_Willaert.jpg" alt="Adrian Willaert">
+          <span class="shade"></span><span class="meta"><span class="tag">San Marco</span><h3><span id="mm-autore-compositore-adriano-willaert" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Willaert e i cori spezzati</h3></span>
+        </button>
+        <button id="ascolto-youtube-HJbbuTV5Q_I" type="button" class="media-card video" data-video="HJbbuTV5Q_I" data-title="Giovanni Gabrieli · Sonata pian e forte">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Gabrieli_-_Sonata_pian%27_e_forte_%28Beginn%29.png" alt="Inizio della Sonata pian e forte di Giovanni Gabrieli">
+          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto spaziale</span><h3>Sonata pian e forte</h3></span>
+        </button>
+        <button type="button" class="media-card resource" data-title="Basilica di San Marco · tradizione musicale" data-url="https://www.basilicasanmarco.it/basilica/tradizione-musicale/">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Interni_basilica_san_Marco_04.jpg" alt="Interno della Basilica di San Marco">
+          <span class="shade"></span><span class="meta"><span class="tag">Architettura sonora</span><h3>San Marco come strumento</h3></span>
+        </button>
+      </div>
+
+      <div class="network">
+        <svg viewBox="0 0 950 300" role="img" aria-label="Schema di disposizione policorale a San Marco">
+          <line class="edge blue" x1="210" y1="150" x2="475" y2="150"></line>
+          <line class="edge red" x1="740" y1="150" x2="475" y2="150"></line>
+          <circle cx="210" cy="150" r="72" fill="#253d63"></circle>
+          <circle cx="740" cy="150" r="72" fill="#7f1d1d"></circle>
+          <circle cx="475" cy="150" r="58" fill="#a5792a"></circle>
+          <text x="210" y="145" text-anchor="middle" fill="#fff">CORO I</text>
+          <text x="210" y="168" text-anchor="middle" fill="#fff">voci + strumenti</text>
+          <text x="740" y="145" text-anchor="middle" fill="#fff">CORO II</text>
+          <text x="740" y="168" text-anchor="middle" fill="#fff">voci + strumenti</text>
+          <text x="475" y="145" text-anchor="middle" fill="#fff">NAVATA</text>
+          <text x="475" y="168" text-anchor="middle" fill="#fff">ascoltatore</text>
+        </svg>
+      </div>
+      <aside class="student-box" id="ragazzi-spazio">
+        <div class="student-label">✦ Per iniziare</div>
+        <h3>Il suono ha un posto</h3>
+        <p>A San Marco due cori, anche con strumenti, stanno in punti diversi della basilica e si rispondono. Chi ascolta sente il suono arrivare da una parte, poi dall'altra, poi da entrambe.</p>
+        <div class="try"><strong>Prova tu.</strong> In classe, due gruppi si dispongono ai lati opposti della stanza e si rispondono su una frase semplice, mentre un compagno ascolta al centro. Poi cambiate la distanza: il suono sembra più vicino o più lontano? Dove mettereste i due gruppi per far sentire “tanto spazio”?</div>
+      </aside>
+
+    </section>
+
+
     <section id="strumenti">
-      <div class="section-title"><div class="section-no">05</div><div><h2>Quando gli strumenti imparano a parlare</h2></div></div>
+      <div class="section-title"><div class="section-no">11</div><div><h2>Quando gli strumenti imparano a parlare</h2></div></div>
       <div class="two-col">
         <p>Gli strumenti non compaiono improvvisamente nel Rinascimento, perché appartengono da secoli alla festa, alla danza, alla strada, alla corte, alla pratica domestica e anche a contesti religiosi. Ciò che cambia è la loro organizzazione. Sempre più spesso vengono costruiti in famiglie di diverse taglie, capaci di coprire registri differenti come fanno le voci di un coro, e proprio questa imitazione del modello vocale permette loro di affrontare una polifonia completa senza dipendere necessariamente dai cantanti.</p>
         <p>Nascono così consort di flauti, viole e altri strumenti nei quali soprano, alto, tenore e basso diventano quasi una anatomia sonora. Lo strumento, però, non rimane a lungo una voce sostitutiva, perché ogni gesto tecnico produce possibilità che la voce non possiede. Le dita del liutista, l'arco della viola, il fiato del cornettista e la tastiera dell'organista trasformano progressivamente il materiale ricevuto dalla polifonia vocale in un linguaggio autonomo.</p>
@@ -747,27 +1028,9 @@
 
     
 
-<section id="temperamenti">
-      <div class="section-title"><div class="section-no">06</div><div><h2>Accordare il mondo</h2></div></div>
-      <div class="two-col">
-        <p>La costruzione di strumenti sempre più raffinati porta inevitabilmente a una domanda che la voce e gli strumenti senza tasti possono risolvere con una certa elasticità: che cosa accade quando le altezze devono essere fissate una volta per tutte su una tastiera o su uno strumento con posizioni determinate? Accordatura e temperamento non sono sinonimi. Accordare significa stabilire le altezze, mentre temperare significa accettare consapevolmente che alcuni intervalli debbano essere leggermente modificati per rendere utilizzabile l'intero sistema.</p>
-        <p>Gli intervalli più stabili possono essere descritti attraverso rapporti semplici, come l'ottava 2 a 1, la quinta 3 a 2 e la terza maggiore pura 5 a 4. Il problema nasce quando questi rapporti vengono concatenati, perché dodici quinte perfette non coincidono esattamente con sette ottave. La differenza, nota come comma pitagorico, mostra che la matematica stessa impedisce di costruire una tastiera nella quale tutti gli intervalli siano contemporaneamente puri.</p>
-        <p>Il temperamento mesotonico risponde sacrificando leggermente le quinte per ottenere terze molto più soddisfacenti, mentre la conseguenza inevitabile è la comparsa di intervalli fortemente sgradevoli quando ci si allontana dalle zone più favorevoli del sistema. Gioseffo Zarlino, nelle <em>Istitutioni harmoniche</em> del 1558, riflette sui rapporti che includono il numero 5 e sulla consonanza delle terze, mentre Vincenzo Galilei, suo allievo e poi avversario, sposta progressivamente il problema verso una osservazione più pratica ed esperimentale.</p>
-        <p>Non dobbiamo raccontare il Cinquecento come se stesse già cercando la libertà di modulare in tutte le tonalità maggiori e minori del sistema moderno, perché quel linguaggio non è ancora pienamente formato. Ciò che cresce è piuttosto la necessità di far convivere voci e strumenti, trasporre, utilizzare tastiere e percepire sempre più chiaramente la dimensione verticale degli accordi. Il temperamento equabile, che divide l'ottava in dodici semitoni uguali, rappresenterà una soluzione radicale, ma la sua affermazione pratica sarà lenta e per secoli continueranno a convivere sistemi differenti.</p>
-      </div>
-
-      <div class="ratio-grid">
-        <div class="ratio-card"><b>2 : 1</b><span>Ottava</span></div>
-        <div class="ratio-card"><b>3 : 2</b><span>Quinta</span></div>
-        <div class="ratio-card"><b>5 : 4</b><span>Terza maggiore pura</span></div>
-        <div class="ratio-card"><b>12 ≠ 7</b><span>Dodici quinte non coincidono con sette ottave</span></div>
-      </div>
-
-      <div class="callout"><strong>Temperare non significa accordare male.</strong> Significa distribuire una imperfezione inevitabile in modo che lo strumento possa funzionare nel repertorio per il quale viene pensato.</div>
-    </section>
 
     <section id="trattati">
-      <div class="section-title"><div class="section-no">07</div><div><h2>La musica comincia a spiegare se stessa</h2></div></div>
+      <div class="section-title"><div class="section-no">12</div><div><h2>La musica comincia a spiegare se stessa</h2></div></div>
       <div class="two-col">
         <p>La stampa non moltiplica soltanto repertori da eseguire, ma rende possibile la circolazione di libri che spiegano come costruire, suonare, ornamentare e intavolare la musica. È una trasformazione decisiva, perché molti aspetti della prassi esecutiva non vengono registrati nelle partiture e possono essere ricostruiti soltanto attraverso le parole e le immagini dei trattatisti.</p>
         <p>Il <em>Musica getutscht</em> di Sebastian Virdung, pubblicato nel 1511, è uno dei primi grandi libri a stampa dedicati agli strumenti, mentre Silvestro Ganassi, nella <em>Fontegara</em> del 1535, insegna non soltanto a suonare il flauto diritto ma a diminuire, cioè a trasformare note lunghe in figurazioni rapide e ornamentali. Diego Ortiz, Girolamo Dalla Casa e Giovanni Bassano continueranno questa tradizione mostrando quanto l'esecutore rinascimentale fosse tutt'altro che un lettore passivo del testo scritto.</p>
@@ -788,8 +1051,29 @@
     
       </section>
 
-<section id="danza">
-      <div class="section-title"><div class="section-no">08</div><div><h2>La danza: quando la musica mette in moto il corpo</h2></div></div>
+
+    <section id="temperamenti">
+      <div class="section-title"><div class="section-no">13</div><div><h2>Accordare il mondo</h2></div></div>
+      <div class="two-col">
+        <p>La costruzione di strumenti sempre più raffinati porta inevitabilmente a una domanda che la voce e gli strumenti senza tasti possono risolvere con una certa elasticità: che cosa accade quando le altezze devono essere fissate una volta per tutte su una tastiera o su uno strumento con posizioni determinate? Accordatura e temperamento non sono sinonimi. Accordare significa stabilire le altezze, mentre temperare significa accettare consapevolmente che alcuni intervalli debbano essere leggermente modificati per rendere utilizzabile l'intero sistema.</p>
+        <p>Gli intervalli più stabili possono essere descritti attraverso rapporti semplici, come l'ottava 2 a 1, la quinta 3 a 2 e la terza maggiore pura 5 a 4. Il problema nasce quando questi rapporti vengono concatenati, perché dodici quinte perfette non coincidono esattamente con sette ottave. La differenza, nota come comma pitagorico, mostra che la matematica stessa impedisce di costruire una tastiera nella quale tutti gli intervalli siano contemporaneamente puri.</p>
+        <p>Il temperamento mesotonico risponde sacrificando leggermente le quinte per ottenere terze molto più soddisfacenti, mentre la conseguenza inevitabile è la comparsa di intervalli fortemente sgradevoli quando ci si allontana dalle zone più favorevoli del sistema. Gioseffo Zarlino, nelle <em>Istitutioni harmoniche</em> del 1558, riflette sui rapporti che includono il numero 5 e sulla consonanza delle terze, mentre Vincenzo Galilei, suo allievo e poi avversario, sposta progressivamente il problema verso una osservazione più pratica ed esperimentale.</p>
+        <p>Non dobbiamo raccontare il Cinquecento come se stesse già cercando la libertà di modulare in tutte le tonalità maggiori e minori del sistema moderno, perché quel linguaggio non è ancora pienamente formato. Ciò che cresce è piuttosto la necessità di far convivere voci e strumenti, trasporre, utilizzare tastiere e percepire sempre più chiaramente la dimensione verticale degli accordi. Il temperamento equabile, che divide l'ottava in dodici semitoni uguali, rappresenterà una soluzione radicale, ma la sua affermazione pratica sarà lenta e per secoli continueranno a convivere sistemi differenti.</p>
+      </div>
+
+      <div class="ratio-grid">
+        <div class="ratio-card"><b>2 : 1</b><span>Ottava</span></div>
+        <div class="ratio-card"><b>3 : 2</b><span>Quinta</span></div>
+        <div class="ratio-card"><b>5 : 4</b><span>Terza maggiore pura</span></div>
+        <div class="ratio-card"><b>12 ≠ 7</b><span>Dodici quinte non coincidono con sette ottave</span></div>
+      </div>
+
+      <div class="callout"><strong>Temperare non significa accordare male.</strong> Significa distribuire una imperfezione inevitabile in modo che lo strumento possa funzionare nel repertorio per il quale viene pensato.</div>
+    </section>
+
+
+    <section id="danza">
+      <div class="section-title"><div class="section-no">14</div><div><h2>La danza: quando la musica mette in moto il corpo</h2></div></div>
       <div class="literary-aside mm-prose-illustrated">
         <div class="eyebrow">La musica che mette in moto il corpo</div>
         <h3>Pavana, gagliarda e il laboratorio della danza</h3>
@@ -821,307 +1105,9 @@
       </aside>
 </section>
 
-    <section id="hip">
-      <div class="section-title"><div class="section-no">09</div><div><h2>Filologia musicale e HIP</h2></div></div>
-      <div class="literary-aside" id="hip-focus">
-        <div class="eyebrow">Come possiamo ascoltare oggi una musica di cinquecento anni fa?</div>
-        <h3>Filologia musicale e HIP, Historically Informed Performance</h3>
-        <p>Una partitura rinascimentale non contiene tutto ciò che un esecutore deve sapere. Non ci dice sempre con precisione quale organico utilizzare, quale altezza di riferimento adottare, quanto ornamentare, come pronunciare il latino o l'italiano, quale temperamento scegliere, come articolare una diminuzione e quale rapporto debba esistere fra voci e strumenti. Per questo l'interprete di musica antica lavora anche come ricercatore, confrontando manoscritti e prime edizioni, trattati, iconografia, strumenti sopravvissuti, descrizioni storiche e caratteristiche degli spazi nei quali quella musica veniva eseguita.</p>
-        <p>La cosiddetta <strong>HIP</strong>, abbreviazione di <em>Historically Informed Performance</em>, non promette di farci ascoltare esattamente ciò che avrebbe sentito un ascoltatore del Cinquecento, perché prima dell'epoca delle registrazioni quel suono è irrimediabilmente perduto. Cerca invece di costruire interpretazioni informate dalle testimonianze storiche disponibili. La parola “filologia”, usata in questo contesto, indica quindi un metodo critico più che una macchina del tempo, perché una fonte viene studiata, confrontata e interpretata, mentre le lacune devono essere dichiarate e colmate attraverso scelte consapevoli.</p>
-        <p>È proprio per questo che i trattati di Virdung, Ganassi, Ortiz, Dalla Casa, Bassano e Galilei sono tanto importanti. Non rappresentano soltanto curiosità bibliografiche, ma sono strumenti attraverso i quali un musicista contemporaneo può ricostruire ciò che la notazione non dice. Anche fra gli specialisti esistono naturalmente scuole differenti, e due ensemble filologicamente consapevoli possono produrre risultati molto diversi senza che uno dei due debba necessariamente essere considerato “sbagliato”.</p>
-        <div class="media-row">
-          <button id="ascolto-youtube-Tku8ceGJ4dk" type="button" class="media-card video" data-video="Tku8ceGJ4dk" data-title="The Tallis Scholars · Palestrina, Missa Brevis">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tallis_Scholars_2015.jpg" alt="The Tallis Scholars alla Winchester Cathedral nel 2015">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">The Tallis Scholars</span><h3><span id="mm-autore-compositore-giovanni-pierluigi-da-palestrina" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Palestrina · Missa Brevis</h3></span>
-          </button>
-          <button id="ascolto-youtube-DIZDxaF511I" type="button" class="media-card video" data-video="DIZDxaF511I" data-title="The Hilliard Ensemble · Renaissance Madrigals">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Codex_specialnik_p64.jpg" alt="Codex Speciálník, inizio dell’Ave Maria di Josquin Desprez">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Hilliard Ensemble</span><h3>Renaissance Madrigals</h3></span>
-          </button>
-          <button id="ascolto-youtube-K38ZfTu0DxE" type="button" class="media-card video" data-video="K38ZfTu0DxE" data-title="Stile Antico · Palestrina, Exultate Deo">
-            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Giovanni Pierluigi da Palestrina">
-            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Stile Antico</span><h3>Palestrina · Exultate Deo</h3></span>
-          </button>
-        </div>
-        <div class="route-links">
-          <button type="button" class="source-card resource" data-title="Clemencic Consort" data-url="https://www.allmusic.com/artist/clemencic-consort-mn0001639777"><span class="src">Pionieri</span><b>Clemencic Consort</b><span>René Clemencic è fra i protagonisti storici della riscoperta di Medioevo e Rinascimento con strumenti e prassi d'epoca.</span></button>
-          <button type="button" class="source-card resource" data-title="The Tallis Scholars" data-url="https://www.thetallisscholars.co.uk/about-us"><span class="src">Polifonia vocale</span><b>The Tallis Scholars</b><span>Dal 1973 hanno contribuito in modo decisivo alla moderna fortuna della polifonia sacra rinascimentale.</span></button>
-          <button type="button" class="source-card resource" data-title="Stile Antico" data-url="https://www.stileantico.co.uk/about"><span class="src">Nuova generazione</span><b>Stile Antico</b><span>Dodici cantori senza direttore, con un approccio cameristico alla polifonia del Cinquecento.</span></button>
-        </div>
-        <p class="source-caveat"><strong>Musica Antiqua Köln</strong> occupa un posto fondamentale nella rivoluzione filologica novecentesca, soprattutto per il repertorio strumentale del Seicento e del Settecento. Per il Rinascimento risultano invece particolarmente pertinenti ensemble come The Tallis Scholars, Hilliard Ensemble, Clemencic Consort, Stile Antico, Doulce Mémoire, Hespèrion XXI e Cinquecento. La differenza non è una graduatoria di qualità, ma una questione di repertorio e specializzazione.</p>
-      </div>
-
-    </section>
-
-    <section id="parole">
-      <div class="section-title"><div class="section-no">10</div><div><h2>Parole in viaggio</h2></div></div>
-      <div class="two-col">
-        <p>Poche parole raccontano le traslazioni musicali meglio di “canzone”. La sua origine appartiene al cantare e la <em>canso</em> trobadorica nasce dentro un rapporto strettissimo fra testo poetico e melodia, ma nella letteratura italiana la parola diventa progressivamente il nome di una forma poetica autonoma. Dante conserva ancora la memoria della sua origine sonora, mentre Petrarca porta la canzone a una altissima elaborazione letteraria.</p>
-        <p>Il titolo tradizionale <em>Canzoniere</em>, con cui indichiamo i <em>Rerum vulgarium fragmenta</em>, crea poi un cortocircuito affascinante, perché molti testi petrarcheschi, non tutti metricamente “canzoni”, tornano nelle mani dei compositori e diventano materia per i libri di madrigali. La poesia che aveva conquistato la propria autonomia rispetto a una melodia specifica viene quindi nuovamente letta attraverso il suono, questa volta non per ricostruire un canto perduto ma per produrre una interpretazione musicale nuova.</p>
-        <p>La stessa parola attraversa la chanson franco fiamminga e arriva alla canzona strumentale, mentre in epoche successive tornerà a indicare repertori urbani e popolari. Le canzoni da battello veneziane appartengono soprattutto al Settecento, non al Seicento, e più tardi la parola comprenderà tradizioni di lavoro, repertori regionali, canzone napoletana e infine la moderna canzone italiana. Non esiste una genealogia rettilinea dalla <em>canso</em> trobadorica a Sanremo, ma la persistenza della parola ci ricorda quanto tenace sia l'idea di un testo che trova una parte decisiva della propria identità nel canto.</p>
-        <p>L'inglese <em>song</em> arriva allo stesso significato da un'altra strada, perché appartiene alla famiglia germanica di <em>sing</em> e non discende dal latino <em>canere</em>. La parentela è dunque semantica, non etimologica, e proprio questa convergenza mostra quanto il bisogno di nominare insieme parola e suono sia più antico delle singole lingue.</p>
-      </div>
-
-      <div class="history-pivot">
-        <h3>Da Orfeo alla Camerata fiorentina</h3>
-        <p>L'antichità aveva consegnato al Rinascimento una figura potentissima, quella del poeta musicista capace di accompagnare il canto con uno strumento. Omero viene immaginato dentro la tradizione dell'aedo, Orfeo incanta uomini e natura con la lira, mentre perfino la leggenda di Nerone che canta davanti all'incendio di Roma, storicamente molto problematica, conserva la stessa idea culturale. Quando la Camerata de' Bardi cercherà di ricostruire il teatro greco, sarà proprio questo antico legame fra parola, voce e strumento a diventare una delle sue ossessioni.</p>
-      </div>
-    </section>
-
-    <section id="madrigale">
-<div class="parola-canto-related" style="margin:1rem 0 1.8rem;padding:.85rem 1rem;border-left:3px solid #ad8959;background:rgba(177,141,85,.09);font:600 .88rem/1.55 system-ui,-apple-system,Segoe UI,sans-serif"><a href="../parola-e-canto/#rinascimento" style="text-decoration:underline;text-underline-offset:3px">♪ La parola e il canto · La parola nella polifonia ↗</a></div>
-      <div class="section-title"><div class="section-no">11</div><div><h2>Frottola e madrigale</h2></div></div>
-      <div class="two-col">
-        <p>Frottola e madrigale non devono essere disposti come due gradini inevitabili della stessa scala. La frottola tende spesso alla regolarità strofica, alla chiarezza, alla prevalenza della voce superiore e a un andamento omoritmico che rende immediatamente percepibile il testo. Il madrigale cinquecentesco, invece, costruisce sempre più spesso una forma musicale determinata dalla poesia specifica che il compositore ha davanti e utilizza con grande libertà la polifonia imitativa.</p>
-<p>La stessa melodia può inoltre <strong>cambiare appartenenza e significato senza cambiare necessariamente identità sonora</strong>. Nella Firenze di Savonarola, parte della tradizione dei canti urbani poteva essere riutilizzata per <strong>laudi spirituali</strong> attraverso la pratica del <i>cantasi come</i>: il testo nuovo indicava una melodia già conosciuta, anche quando non veniva riprodotta una partitura completa. I falò delle vanità e la condanna di molte forme del divertimento profano hanno però reso lacunosa la trasmissione delle fonti; oggi numerose melodie vengono ricostruite con cautela, non «ritrovate» in una registrazione del Rinascimento. Questa trasformazione da canto di festa a canto devoto mostra che <strong>il significato collettivo dipende anche dalle parole, dalla situazione e da chi autorizza o proibisce il canto</strong>. <a href="https://www.treccani.it/enciclopedia/philippe-verdelot_%28Enciclopedia-machiavelliana%29/" target="_blank" rel="noopener noreferrer">Treccani · Firenze, Savonarola, Isaac e il <i>cantasi come</i> ↗</a>.</p>
-        <p>La parentela più interessante non consiste quindi nel trasformare la frottola nella madre necessaria del madrigale, ma nel fatto che entrambi i generi attraggono musicisti formati nella tradizione franco fiamminga. Questi possono apprezzare nella frottola la chiarezza della declamazione italiana e, nello stesso tempo, trovare nel madrigale il luogo ideale nel quale riversare una tecnica polifonica capace di seguire con precisione le articolazioni del testo.</p>
-        <p>Negli anni in cui il nuovo madrigale si afferma, Pietro Bembo propone Petrarca come grande modello della lingua poetica. La poesia italiana offre così ai compositori un repertorio di suoni, immagini e opposizioni nel quale ardere e gelare, vivere e morire, salire e cadere, luce e ombra possono diventare materiale compositivo. Verdelot, Arcadelt e poi Cipriano de Rore mostrano progressivamente quanto la musica possa aderire non soltanto al metro ma al significato particolare di una parola.</p>
-<div class="mm-prose-illustrated">
-<figure class="mm-prose-figure mm-prose-figure--left"><img width="770" height="1020" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bartolomeo_Veneto_Woman_playing_a_lute.jpg" alt="Donna con liuto dipinta da Bartolomeo Veneto, circa 1520" loading="lazy" decoding="async"><figcaption>Bartolomeo Veneto, <i>Donna che suona il liuto</i> (1520), Pinacoteca di Brera, Milano. Un’immagine della cultura musicale dell’epoca, <strong>non</strong> un ritratto di Casulana. <a href="https://commons.wikimedia.org/wiki/File:Bartolomeo_Veneto_Woman_playing_a_lute.jpg" target="_blank" rel="noopener noreferrer">Fonte e diritti: Wikimedia Commons (pubblico dominio) ↗</a></figcaption></figure>
-<p>Nel madrigale a quattro voci <strong>Maddalena Casulana</strong> lavora con lo stesso materiale di Verdelot, Rore e Marenzio: entrate imitanti, parole distribuite fra le parti e dissonanze che acquistano senso attraverso la declamazione. La sua musica circola nelle antologie prima del <i>Primo libro de’ madrigali a quattro voci</i> (Venezia, Girolamo Scotto, <strong>1568</strong>). <strong><i>Morir non può il mio cuore</i></strong>, poi ottavo brano del libro, era già stato stampato a quattro parti nell’antologia <i>Il Desiderio</i> del <strong>1566</strong>. Nel testo poetico l'impossibilità di morire è legata alla dipendenza dal cuore della persona amata: nell'ascolto conviene seguire le risposte tra le parti e le diverse pronunce della stessa parola, senza inventare un unico «madrigalismo» a ogni verso. <a href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/item/18138" target="_blank" rel="noopener noreferrer">Digital Casulana · <i>Morir non può</i>, trascrizione e varianti ↗</a>.</p>
-<p>La storia materiale della raccolta obbliga a distinguere <strong>testo conservato e ricostruzione moderna</strong>. Delle edizioni del <i>Primo libro</i> del 1568 e del 1583 sono noti soltanto i libri-parte di <strong>canto e tenore</strong>; quelli di alto e basso sono perduti. Alcuni madrigali, fra cui <i>Morir non può</i>, possono essere studiati attraverso antologie anteriori giunte complete; altri richiedono la ricostruzione critica delle parti mancanti. La dedica a <strong>Isabella de’ Medici Orsini</strong>, che contesta l'esclusione delle donne dai «doni dell'intelletto», appartiene alla medesima vicenda di stampe, patronato e attribuzioni: non sostituisce l'esame delle note. <a href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_sources" target="_blank" rel="noopener noreferrer">Digital Casulana · censimento delle fonti a stampa ↗</a> · <a href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_dedicace" target="_blank" rel="noopener noreferrer">Dedica del 1568, trascrizione ↗</a>.</p></div>
-<div class="mm-doc-section" role="group" aria-label="Maddalena Casulana: fonti, partitura e video"><div class="mm-doc-heading">Casulana: dalla stampa all'ascolto</div><p class="mm-doc-intro">Tre porte nello stesso progetto di edizione critica. Distingui sempre le parti superstiti dalle voci ricostruite oggi.</p><div class="mm-doc-grid"><a class="mm-doc-card" href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_sources" target="_blank" rel="noopener noreferrer"><span class="mm-doc-kind">Fonti storiche · Digital Casulana</span><strong>Il libro del 1568 e le parti perdute</strong><span class="mm-doc-description">Le edizioni conosciute, i libri-parte conservati e i madrigali attestati nelle antologie complete del 1566–67.</span><span class="mm-doc-action">Consulta la fonte ↗</span></a><a class="mm-doc-card" href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/item/17965" target="_blank" rel="noopener noreferrer"><span class="mm-doc-kind">Partitura critica + video</span><strong>Tant’alto s’erge la tua chiara luce</strong><span class="mm-doc-description">Edizione moderna consultabile in PDF e MEI, con video dell'esecuzione. Le parti ricostruite sono segnalate dal progetto.</span><span class="mm-doc-action">Consulta la fonte ↗</span></a><a class="mm-doc-card" href="https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_dedicace" target="_blank" rel="noopener noreferrer"><span class="mm-doc-kind">Documento · 1568</span><strong>La dedica a Isabella de’ Medici</strong><span class="mm-doc-description">Leggi il testo con cui Casulana rivendica il valore dell'ingegno femminile nella musica.</span><span class="mm-doc-action">Consulta la fonte ↗</span></a></div></div>
-<div class="route-links"><button type="button" class="source-card resource" data-title="Treccani · Maddalena Casulana" data-url="https://www.treccani.it/enciclopedia/maddalena-mezari_%28Dizionario-Biografico%29/"><span class="src">Madrigale · fonti e stampa</span><b>Maddalena Casulana</b><span>Il Primo libro (1568), le parti perdute e le versioni precedenti dei madrigali: storia materiale della polifonia.</span></button></div>
-
-        <p>È qui che il madrigalismo diventa uno dei grandi laboratori del Rinascimento. Una linea che sale può rendere una ascesa, un movimento discendente può suggerire una caduta, una pausa può trasformarsi in sospiro e una voce lasciata sola può rendere concretamente la parola “solo”. Ma la ricerca diventa molto più profonda quando smette di disegnare oggetti visibili e prova a rendere udibili dolore, esitazione, desiderio, instabilità e contrasto attraverso dissonanze, cromatismi, cambiamenti di densità e improvvise trasformazioni della tessitura.</p>
-        <p>Il madrigalismo può essere letto come una vera sinestesia compositiva, perché la parola scritta viene trasformata in altezza, movimento, ritmo, tensione e colore sonoro. Il compositore non accompagna più semplicemente una poesia, ma la legge e ne propone una interpretazione. Con Marenzio, Gesualdo e infine Monteverdi questa capacità arriverà a mettere in discussione perfino la gerarchia tradizionale delle regole contrappuntistiche, preparando l'idea secondo cui, quando la parola lo richiede, la norma può essere piegata all'affetto.</p>
-<p>Alla corte di Ferrara il <strong>Concerto delle Dame</strong>, con <strong>Laura Peverara, Anna Guarini e Livia d’Arco</strong>, porta le possibilità vocali del madrigale verso una scrittura virtuosistica. Luzzasco Luzzaschi pubblica nel <strong>1601</strong> i <i>Madrigali per cantare et sonare a uno, due e tre soprani</i>: la stampa mostra un organico e un accompagnamento notati, oltre a elaborazioni vocali che richiedono di osservare la parte scritta e le possibili aggiunte degli interpreti. Non è un semplice passo obbligato «dal madrigale all'opera»: è una specifica pratica di corte, in cui le interpreti specializzate e le condizioni dell'esecuzione incidono sulla composizione. <a href="https://www.loc.gov/item/2008561305/" target="_blank" rel="noopener noreferrer">Library of Congress · stampa del 1601, partitura completa ↗</a> · <a href="https://www.treccani.it/enciclopedia/laura-peperara_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Treccani · Peverara e Ferrara ↗</a>.</p><div class="route-links"><button type="button" class="source-card resource" data-title="Treccani · Laura Peverara e il Concerto delle Dame" data-url="https://www.treccani.it/enciclopedia/laura-peperara_%28Dizionario-Biografico%29/"><span class="src">Ferrara · 1601</span><b>Concerto delle Dame</b><span>Luzzaschi, tre voci acute, scrittura virtuosistica e accompagnamento nelle fonti della corte estense.</span></button></div>
-
-      </div>
-
-      
-      <div class="student-box" id="imitazione">
-        <div class="student-label">Una parola da capire</div>
-        <h3>Che cos'è l'imitazione?</h3>
-        <p>Una voce presenta un breve motivo e, poco dopo, un'altra voce riprende lo stesso disegno, spesso da un'altezza diversa, mentre la prima continua il proprio percorso. Il motivo può poi passare alle altre parti, producendo l'impressione che le voci si chiamino e si rincorrano. Se la ripetizione è rigidissima possiamo avvicinarci al canone, ma nell'<strong>imitazione rinascimentale</strong> le voci sono spesso libere di modificare il materiale e di separarsene dopo l'ingresso.</p>
-        <p><strong>Josquin Desprez</strong> è uno dei grandi protagonisti della diffusione di questo modo di costruire la polifonia: nei suoi mottetti l'ingresso imitativo può organizzare una frase del testo e poi lasciare spazio a un nuovo motivo per la frase successiva. Quando più punti di imitazione si susseguono lungo quasi tutta la composizione si parla spesso di <em>imitazione pervasiva</em>.</p>
-        <div class="try"><strong>Prova ad ascoltare così:</strong> non cercare subito “la melodia”. Individua invece la prima piccola frase riconoscibile e prova a sentire quando entra nella seconda, nella terza e nella quarta voce.</div>
-        <button type="button" class="source-card resource" style="margin-top:1rem;width:100%" data-title="Treccani · La canzone polifonica francese" data-url="https://www.treccani.it/enciclopedia/la-canzone-polifonica-francese_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"><span class="src">Approfondimento</span><b>Josquin e la circolazione del motivo fra le voci</b><span>Treccani descrive l'imitazione come uno dei principi centrali del nuovo linguaggio franco fiammingo.</span></button>
-      </div>
-      <aside class="student-box" id="ragazzi-canone">
-        <div class="student-label">✦ Per iniziare</div>
-        <h3>Il canone in classe</h3>
-        <p>Nell'imitazione una voce presenta un breve motivo e le altre lo riprendono, una dopo l'altra. La forma più rigida è il canone.</p>
-        <div class="try"><strong>Prova tu.</strong> Cantate in classe un canone semplice, per esempio <em>Fra' Martino</em>, divisi in due o tre gruppi che entrano a distanza. Poi ascoltate un mottetto di Josquin e cercate dove la stessa frase passa da una voce all'altra.</div>
-        <p><strong>Domande guida:</strong></p>
-        <ul>
-          <li>Quando le voci entrano una dopo l'altra, riesci ancora a capire le parole?</li>
-          <li>Che problema avrà avuto la Chiesa con questo tipo di musica? Ne parla la sezione su Palestrina.</li>
-        </ul>
-      </aside>
-
-      <div class="media-row">
-        <button id="ascolto-youtube-FOXMfgHNb90" type="button" class="media-card video" data-video="FOXMfgHNb90" data-title="Arcadelt · Il bianco e dolce cigno">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Madrigaux_%C3%A0_4%2C_5_et_6_voix_-_btv1b52519345s_%28021_of_216%29.jpg" alt="Pagina di una raccolta cinquecentesca di madrigali">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto guidato</span><h3>Il bianco e dolce cigno</h3></span>
-        </button>
-        <button type="button" class="media-card resource" data-title="Jacques Arcadelt" data-url="https://www.treccani.it/enciclopedia/jacques-arcadelt_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Arcadelt.jpg" alt="Jacques Arcadelt">
-          <span class="shade"></span><span class="meta"><span class="tag">Madrigale</span><h3>Verdelot e Arcadelt</h3></span>
-        </button>
-        <button type="button" class="media-card resource" data-title="Madrigale rinascimentale" data-url="https://www.treccani.it/enciclopedia/il-madrigale_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/">
-          <img loading="lazy" src="https://tile.loc.gov/image-services/iiif/public%3Amusic%3Amusihas-200154760%3Amusihas-200154760.0005/full/pct%3A100.0/0/default.jpg" alt="Libro di madrigali">
-          <span class="shade"></span><span class="meta"><span class="tag">Parola e suono</span><h3>Il testo diventa forma</h3></span>
-        </button>
-      </div>
-      <div class="media-row" id="rinascimento-gibbons" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));align-items:stretch" aria-label="Confronto tra madrigale italiano e inglese">
-        <button type="button" id="gibbons-silver-swan" class="media-card video" data-video="XOK0uH0HruI" data-title="Orlando Gibbons · The Silver Swan">
-          <img loading="lazy" src="https://i.ytimg.com/vi/XOK0uH0HruI/hqdefault.jpg" alt="Anteprima del video del madrigale The Silver Swan di Orlando Gibbons">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · madrigale inglese</span><h3>Orlando Gibbons · The Silver Swan</h3></span>
-        </button>
-        <button type="button" id="gibbons-what-is-our-life" class="media-card video" data-video="W8BW-cRDDw4" data-title="Orlando Gibbons · What Is Our Life? · Consort of Musicke, Anthony Rooley (Decca, 1975)">
-          <img loading="lazy" src="https://i.ytimg.com/vi/W8BW-cRDDw4/hqdefault.jpg" alt="Copertina o anteprima della registrazione di What Is Our Life? di Orlando Gibbons, Consort of Musicke">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto · cinque voci · 1612</span><h3>Gibbons · What Is Our Life?</h3></span>
-        </button>
-        <div class="student-box" style="margin:0">
-          <div class="student-label">✦ Tre ascolti a confronto</div>
-          <h3>Da Arcadelt a Gibbons: il madrigale e la parola</h3>
-          <p>Il madrigale viaggia dall'Italia all'Inghilterra e si trasforma. Dopo <i>Il bianco e dolce cigno</i> di Arcadelt, ascolta due pagine della raccolta di <strong>Orlando Gibbons</strong> del <strong>1612</strong>: <i>The Silver Swan</i> e <i>What Is Our Life?</i>. Nel secondo testo, tradizionalmente attribuito a <strong>Walter Raleigh</strong> (attribuzione discussa), la vita viene rappresentata come una breve recita teatrale. Come si distribuiscono fra cinque parti le domande e le immagini poetiche?</p>
-          <p><strong>Voce e strumenti.</strong> Il frontespizio originale presenta i brani come adatti a <i>viols and voyces</i>: la stampa documenta dunque una flessibilità d'organico. Il video di <i>The Silver Swan</i> con Spirit of Gambo e Freek Borstlap valorizza l'intreccio delle linee strumentali; <i>What Is Our Life?</i>, nell'incisione del <strong>Consort of Musicke</strong> diretto da <strong>Anthony Rooley</strong>, invita a seguire la parola cantata. <a href="https://www.loc.gov/item/2012563594/" target="_blank" rel="noopener noreferrer">Consulta i libri-parte della stampa del 1612 · Library of Congress ↗</a>.</p>
-          <p><a href="../atlante3d/?n=compositore-orlando-gibbons" title="Esplora Orlando Gibbons nell’Atlante grafico">◈ Orlando Gibbons nella costellazione Musurgia Mundi: biografia, connessioni e ascolti ↗</a></p>
-          <p><strong>La registrazione.</strong> <i>Gibbons: Madrigals &amp; Motets, 1612</i>, traccia XIV <i>What Is Our Life?</i>, ℗ 1975 <strong>Decca Music Group Limited</strong>, produzione <strong>Peter Wadland</strong>, tecnico del suono <strong>Iain Churches</strong>. La numerazione XIV si riferisce all'album; alcuni indici della raccolta del 1612 elencano il brano come XV. <a href="https://classical.music.apple.com/us/album/1783831474" target="_blank" rel="noopener noreferrer">Crediti dell'album ↗</a> · <a href="https://imslp.org/wiki/Madrigals_and_Motets_for_5_Voices_(Gibbons,_Orlando)" target="_blank" rel="noopener noreferrer">Indice dell'edizione originale ↗</a> · <a href="https://youtu.be/W8BW-cRDDw4" target="_blank" rel="noopener noreferrer">Video originale ↗</a>.</p>
-        </div>
-      </div>
-      <aside class="student-box" id="ragazzi-madrigalismo">
-        <div class="student-label">✦ Per iniziare</div>
-        <h3>Disegnare con la voce</h3>
-        <p>Nel madrigale una linea può salire per dire “ascendere”, scendere per dire “cadere”, fermarsi per un sospiro. Poi i compositori provano a rendere anche ciò che non si vede: dolore, esitazione, desiderio.</p>
-        <div class="try"><strong>Prova tu.</strong> Scegli un verso di una poesia o di una canzone e inventa un gesto vocale per due o tre parole, una salita, una pausa, un suono lungo. Poi chiediti: quali parole si lasciano “disegnare” facilmente? Quali no?</div>
-      </aside>
-
-    </section>
-
-    <section id="riforma">
-      <div class="section-title"><div class="section-no">12</div><div><h2>La parola della fede</h2></div></div>
-      <div class="two-col">
-        <p>Quando Lutero pubblica le novantacinque tesi nel 1517, la stampa trasforma una controversia teologica in un fenomeno capace di attraversare rapidamente l'Europa. Nel 1522 il Nuovo Testamento tedesco e nel 1534 la Bibbia completa inseriscono la traduzione dentro un progetto religioso nel quale la lettura personale della Scrittura acquista un valore nuovo, pur senza abolire chiese, catechismi, scuole e nuove forme di autorità.</p>
-        <p>L'uomo rinascimentale diventa così non soltanto <em>homo faber</em>, ma anche <em>homo legens</em> e inevitabilmente <em>homo interpretans</em>. La musica partecipa a questa trasformazione perché Lutero comprende quanto un testo cantato possa essere memorizzato, pronunciato e interiorizzato dalla comunità. Il corale luterano mette quindi la lingua tedesca nella bocca dei fedeli e costruisce una forma di partecipazione che non coincide con la grande polifonia professionale.</p>
-        <p>Sarebbe però sbagliato opporre schematicamente un protestantesimo semplice a un cattolicesimo complesso. Johann Walter mostra già nel 1524 come i nuovi canti possano diventare il materiale di elaborazioni polifoniche destinate a esecutori preparati, mentre nei secoli successivi la stessa melodia corale potrà sostenere costruzioni di enorme complessità. Ciò che cambia è la possibilità che la comunità riconosca come propria una linea musicale che può essere cantata semplicemente oppure trasformata dal compositore.</p>
-<p>Un confronto di <strong>fonti a stampa del 1524</strong> rende tangibile questa distinzione. L'<strong><i>Achtliederbuch</i></strong>, conosciuto come il «libretto degli otto canti», raccoglie melodie e testi in tedesco per la nuova pratica religiosa; il <strong><i>Geystliche gesangk Buchleyn</i></strong> curato da <strong>Johann Walter</strong> presenta invece elaborazioni a <strong>quattro e cinque parti</strong> per un ambiente di cantori preparati. Non si tratta di un volume elementare seguito da una versione più «evoluta» della stessa cosa: cambiano <strong>chi legge la notazione, chi canta, quale rapporto si cerca fra assemblea e coro</strong>. Anche la filologia della stampa conta: l'<i>Achtliederbuch</i> reca sul frontespizio l'indicazione di Wittenberg, ma la ricerca segnala che fu stampato <strong>fuori dalla città</strong>; quello di Walter è un libro di parti effettivamente stampato a Wittenberg. La provenienza dichiarata non coincide sempre con il luogo materiale di stampa. <a href="https://www.lutheranchoralebook.com/sources/achtliederbuch/" target="_blank" rel="noopener noreferrer">Free Lutheran Chorale-Book · fonti dell'<i>Achtliederbuch</i> ↗</a> · <a href="https://wordandworld.luthersem.edu/wp-content/uploads/pdfs/44-2_Hymns_and_Hymnals_Singing_The_Faith/04_From_Broadside_to_Hymnal_How_Things_Began_in_Wittenberg_in_1524.pdf" target="_blank" rel="noopener noreferrer">Luther Seminary · studio sulle stampe del 1524 ↗</a>.</p>
-        <p>Il contrasto non riguarda soltanto il latino e il volgare, né può essere ridotto a «coro contro assemblea». <strong>La comunità che intona una melodia corale</strong>, la cappella di cantori addestrati che la sviluppa a più voci e la scuola che insegna il repertorio appartengono a pratiche differenti, spesso comunicanti. Una medesima melodia può avere una funzione collettiva immediata e diventare il materiale di un mottetto complesso: la Riforma modifica anche <em>chi ha diritto e occasione di cantare</em>, non soltanto che cosa viene composto.</p>
-<p>Anche il <strong>Salterio di Ginevra</strong>, portato a compimento nel <strong>1562</strong>, impedisce di parlare di un unico modello «protestante». Le melodie dei salmi francesi tradotti in versi, legate fra gli altri a <strong>Clément Marot e Théodore de Bèze</strong>, erano concepite per la partecipazione della comunità e per il canto <strong>all'unisono senza accompagnamento</strong> nel culto ginevrino. Nelle armonizzazioni a quattro voci di <strong>Claude Goudimel</strong>, pubblicate nel <strong>1565</strong>, quelle stesse linee entrano invece in una scrittura polifonica destinata anche a pratiche differenti dal canto assembleare ordinario. Non significa che i fedeli ginevrini intonassero abitualmente i quattro pentagrammi di Goudimel come un coro accademico. Si tratta piuttosto di riconoscere una <strong>melodia collettivamente condivisa</strong> e le sue diverse vite editoriali ed esecutive. <a href="https://www.cambridge.org/core/journals/proceedings-of-the-musical-association/article/abs/genevan-psalter-of-1562-set-in-fourpart-harmony-by-claude-goudimel-in-1565/9A9AE1E0E11AEABF458429CABA32460D" target="_blank" rel="noopener noreferrer">G. R. Woodward · storia del Salterio e di Goudimel, RMA/Cambridge ↗</a> · <a href="https://genevanpsalter.com/files/complete-collections/Genevan_Psalter_pages.pdf" target="_blank" rel="noopener noreferrer">Genevan Psalter · tradizione e prassi del canto ↗</a>.</p>
-<p>La stampa, la scuola, la lingua e la musica finiscono così per sostenersi reciprocamente. La questione della comprensibilità non rimane però confinata al mondo riformato, perché proprio la centralità attribuita alla parola sacra costringerà anche Roma a interrogarsi su quanto della liturgia riesca realmente ad arrivare all'ascoltatore quando il latino viene avvolto da una polifonia sempre più complessa.</p>
-      </div>
-      
-      <div class="rin-focus" id="corale-e-parola">
-        <div class="eyebrow">Lutero · la centralità della parola cantata</div>
-        <h3>Il corale protestante: una parola che tutti possono cantare</h3>
-        <p>La Riforma non nasce da una condanna generale della musica complessa. <strong>Martin Lutero</strong> conosce e apprezza la polifonia, ma attribuisce un'importanza centrale alla <strong>Scrittura tradotta, annunciata, imparata e cantata</strong>. La lingua tedesca permette al testo di essere ripetuto nelle scuole e nella comunità: la musica diventa uno strumento di educazione religiosa e di memoria. Cantare non è soltanto ascoltare specialisti: il fedele può appropriarsi direttamente di una parte del repertorio.</p>
-        <p>Il <strong>corale luterano</strong> è prima di tutto un <strong>canto strofico in tedesco</strong> con una melodia riconoscibile, riutilizzata sulle diverse strofe. Vi confluiscono melodie nuove e materiali adattati da repertori precedenti. Il canto dell'assemblea può avvenire <strong>all'unisono</strong>: non dobbiamo immaginare il primo corale del Cinquecento già nella veste armonizzata a quattro voci che conosciamo soprattutto attraverso secoli successivi. Nemmeno il canto comunitario nasce ex novo nel 1517: cambia la sua importanza entro un programma liturgico e pedagogico.</p>
-        <h4>Omoritmia: più voci, sillabe insieme</h4>
-        <p>Quando più parti vocali pronunciano <strong>le stesse sillabe sostanzialmente con il medesimo ritmo</strong>, parliamo di <strong>omoritmia</strong>. In un impianto prevalentemente omofonico, una melodia può emergere sopra un sostegno armonico che fa avanzare simultaneamente le parole. Nella <strong>polifonia imitativa</strong>, invece, i cantori possono presentare le sillabe in momenti diversi. La comprensibilità è spesso più immediata nel primo caso, ma questo non rende automaticamente incomprensibile ogni contrappunto, né trasforma uno stile nell'unico lecito per il culto.</p>
-        <div class="rin-compare">
-          <div><b>Unisono</b><p>Tutti intonano un'unica linea, pronunciando insieme il testo: la partecipazione della comunità è centrale.</p></div>
-          <div><b>Omoritmia</b><p>Note differenti, ma sillabe simultanee: le parole possono arrivare con maggiore evidenza.</p></div>
-          <div><b>Imitazione</b><p>Una stessa idea passa da una voce all'altra; le entrate sfalsate creano un intreccio polifonico.</p></div>
-        </div>
-        <p><strong>Johann Walter</strong>, collaboratore di Lutero, pubblica nel <strong>1524</strong> il <i>Geystliche gesangk Buchleyn</i> con elaborazioni polifoniche per cantori formati. Nello stesso anno l'<i>Achtliederbuch</i> testimonia un'altra modalità di diffusione dei canti. Non sono due gradi di una medesima scala dalla «semplicità» alla «perfezione»: servono <strong>destinatari, occasioni e pratiche differenti</strong>. Anche la celebre melodia di <i>Ein feste Burg ist unser Gott</i> ha conosciuto ritmi e armonizzazioni diverse. L'immagine scolastica di quattro parti sempre omoritmiche non basta, da sola, a raccontare il primo repertorio luterano.</p>
-        <p>Occorre infine distinguere le confessioni della Riforma. A <strong>Ginevra</strong> il canto dei salmi tradotti in versi trova largo spazio nell'assemblea, generalmente all'unisono nel culto; <strong>Claude Goudimel</strong> ne pubblica successivamente armonizzazioni destinate anche ad altre pratiche. Nelle chiese luterane sopravvivono inoltre cori addestrati e ampie elaborazioni contrappuntistiche. <strong>Chi canta, in quale lingua e in quale situazione?</strong> È una domanda storica più efficace della formula «protestanti semplici, cattolici complicati».</p>
-        <p class="rin-activity"><strong>✦ Per iniziare · Tre modi di pronunciare un testo.</strong> Fate dire a tutti «La parola deve arrivare» insieme; poi suddividete la classe e fate iniziare la frase a distanza di due battiti; infine pronunciatela contemporaneamente su tre altezze diverse. Come cambia la possibilità di capire? È un modello didattico, non una ricostruzione di culto cinquecentesco. <a href="https://www.lutheranchoralebook.com/tunes/ein-feste-burg/" target="_blank" rel="noopener noreferrer">Fonti e versioni di <i>Ein feste Burg</i> ↗</a>.</p>
-      </div>
-
-      <div class="callout"><strong>Francesco non è Lutero prima di Lutero.</strong> Il confronto è utile soltanto per vedere come il volgare e il canto comunitario possano avere significati completamente diversi quando operano nello spazio devozionale medievale oppure nel cuore di una nuova organizzazione liturgica protestante.</div>
-    </section>
-
-    <section id="censura">
-      <div class="section-title"><div class="section-no">13</div><div><h2>Quando stampare significa anche controllare</h2></div></div>
-      <div class="two-col">
-        <p>La stessa tecnologia che rende possibile una diffusione rapidissima dei testi produce inevitabilmente il problema opposto, perché chi detiene una autorità religiosa o politica deve ora confrontarsi con libri che possono circolare in centinaia di copie prima che sia possibile fermarli. La censura non nasce con la stampa, ma la stampa ne modifica radicalmente la scala.</p>
-        <p>La storia dell'Inquisizione deve essere distinta con attenzione. L'Inquisizione medievale, quella spagnola e quella romana appartengono a contesti istituzionali differenti. Nel 1542 Paolo III istituisce la Congregazione della romana e universale Inquisizione, mentre nel 1559 viene promulgato sotto Paolo IV il primo grande <em>Index librorum prohibitorum</em> romano. L'Indice tridentino del 1564 modifica alcune delle rigidità precedenti, ma conferma il principio che la circolazione dei libri possa essere disciplinata dall'autorità ecclesiastica.</p>
-        <p>Il problema attraversa direttamente la cultura umanistica, perché filologia, traduzioni bibliche, letteratura e critica storica possono diventare terreno di sospetto. Machiavelli entra nell'Indice, Erasmo viene colpito pesantemente e la possibilità di leggere la Scrittura in volgare rimane a lungo una questione estremamente sensibile. La stessa ansia di controllo che riguarda il libro ha un parallelo musicale nella preoccupazione per ciò che viene detto dentro la liturgia, per la presenza di materiali profani e per una bellezza sonora capace di attirare l'attenzione su se stessa.</p>
-      </div>
-      <div class="history-pivot">
-        <h3>La stampa moltiplica. L'autorità tenta di selezionare.</h3>
-        <p>È uno dei grandi paradossi della prima età moderna: la stessa invenzione che permette una circolazione senza precedenti del sapere produce apparati sempre più sofisticati per sorvegliarne la circolazione.</p>
-      </div>
-    </section>
-
-    <section id="roma">
-      <div class="section-title"><div class="section-no">14</div><div><h2>Roma, Palestrina e il problema della parola</h2></div></div>
-      <div class="two-col">
-        <p>Quando ascoltiamo una messa di Palestrina dobbiamo ricordare che la polifonia liturgica non nasce nel Cinquecento. L'organum medievale aveva già aggiunto nuove voci al canto e la scuola di Notre Dame aveva portato la polifonia direttamente dentro la liturgia, mentre l'organo era entrato progressivamente nella pratica ecclesiastica. La Chiesa non abbandona dunque una monodia assoluta per scoprire improvvisamente il contrappunto, ma attraversa secoli nei quali il canto gregoriano rimane fondamento mentre intorno ad esso crescono possibilità sempre nuove.</p>
-        <p>Prima di Palestrina, la rete delle cappelle ecclesiastiche e principesche ha fatto della polifonia franco-fiamminga una lingua sovraregionale. Le messe di <strong>Josquin des Prez</strong>, Jacob Obrecht e Heinrich Isaac mostrano strategie diverse: un canto preesistente può fornire l'ossatura di un ciclo, mentre nella <i>Missa Pange lingua</i> di Josquin la melodia dell'inno viene continuamente trasformata attraverso l'imitazione. Non va confuso il <strong>ciclo dell'Ordinario della messa</strong> — Kyrie, Gloria, Credo, Sanctus, Agnus Dei — con il <strong>mottetto</strong>, la cui scelta testuale e destinazione sono assai più variabili. In entrambi i casi il coro professionale è un laboratorio di scrittura, memoria e disciplina delle voci, non una semplice massa che canta tutta insieme.</p>
-<p>Nel Cinquecento la domanda sulla comprensione del testo diventa più urgente: le voci, sfalsando le entrate delle sillabe, possono costruire architetture meravigliose, ma anche rendere difficile seguire la parola. Nel clima della Riforma cattolica il problema acquista un peso particolare. <strong>Il Concilio di Trento non prescrive però uno stile omoritmico obbligatorio:</strong> i suoi provvedimenti generali insistono soprattutto sull'esclusione di elementi profani o sconvenienti, mentre l'intelligibilità viene discussa e perseguita più concretamente in iniziative locali successive. Palestrina va compreso in questa storia complessa, non come obbediente a un inesistente regolamento compositivo.</p>
-        <p>La <em>Missa Papae Marcelli</em>, pubblicata nel 1567 e costruita prevalentemente a sei voci, diventa il simbolo di una soluzione nella quale la polifonia non viene impoverita ma dosata. Nel <em>Kyrie</em>, dove le parole sono poche, l'imitazione può espandersi con maggiore libertà, mentre nel <em>Gloria</em> e nel <em>Credo</em> l'esigenza di percorrere testi più lunghi favorisce passaggi nei quali le voci procedono con maggiore accordo ritmico. La complessità rimane, ma viene governata in funzione della parola.</p>
-<p><strong>Due messe, due modi di organizzare il canto.</strong> Nella <i>Missa Pange lingua</i> Josquin non si limita a collocare una melodia preesistente nel tenore: distribuisce e trasforma i frammenti dell'inno nelle diverse parti, facendo riconoscere la parentela fra i movimenti grazie alla <strong>parafrasi imitativa</strong>. Nella <i>Missa Papae Marcelli</i> di Palestrina è invece istruttivo confrontare <i>Kyrie</i>, con parole brevi ed entrate più distese, e <i>Gloria</i> e <i>Credo</i>, dove testi assai più lunghi richiedono anche momenti di pronunciata simultaneità ritmica. La differenza non si spiega come un progresso dalla «confusione» alla «semplicità», ma come una risposta musicale alla diversa estensione e funzione delle parole. <a href="https://academic.oup.com/book/4751/chapter-abstract/146990513" target="_blank" rel="noopener noreferrer">Oxford Academic · Josquin, <i>Missa Pange lingua</i>, parafrasi e prassi ↗</a>.</p>
-<p><strong>L'ascolto va confrontato con la fonte, non soltanto con il nome del coro.</strong> Contano la notazione mensurale, la sottoposizione del testo, il <i>tactus</i>, le alterazioni editoriali e le scelte di organico e pronuncia. Il <i>Kyrie</i> di Palestrina già disponibile in questa sezione permette di riconoscere gli ingressi; un eventuale video di Josquin verrà inserito solo dopo l'identificazione documentata degli interpreti e dell'opera. La chiarezza dell'incisione moderna non dimostra da sola quale fosse il numero dei cantori in una cappella del Cinquecento.</p>
-        <p>La storia, però, non finisce a Roma. Nella Spagna cattolica <strong>Tomás Luis de Victoria</strong> imprime al linguaggio polifonico un'intensità retorica particolare: l'<i>Officium defunctorum</i>, pubblicato nel 1605, riunisce musica per le esequie e testi affini, e non coincide semplicemente con una «messa da Requiem» isolata. Nell'Inghilterra delle trasformazioni religiose, <strong>Thomas Tallis</strong> e <strong>William Byrd</strong> compongono in condizioni confessionali e istituzionali differenti: il latino cattolico, la liturgia anglicana in inglese e la pratica corale delle cappelle non possono essere fusi in una sola scuola. Le scelte di lingua, organico e circolazione hanno conseguenze musicali, oltre che politiche. <a href="https://www.victoria.uma.es/osuna.html" target="_blank" rel="noopener noreferrer">Catalogo Victoria · <i>Officium defunctorum</i> e testi ↗</a>.</p>
-<p>Il frontespizio madrileno del <strong>1605</strong> precisa perché l'<strong><i>Officium defunctorum</i> di Victoria</strong> sia più di una messa polifonica: l'edizione comprende la <i>Missa pro defunctis</i> a <strong>sei voci</strong>, ma anche il mottetto <i>Versa est in luctum</i>, il responsorio <i>Libera me</i> e la lezione <i>Taedet animam meam</i>. Appartengono a <strong>momenti e generi testuali differenti</strong> dei riti per i defunti: selezionare soltanto il <i>Kyrie</i> o il mottetto senza spiegarne l'uso significa perderne l'architettura cerimoniale. La fonte identifica espressamente le esequie dell'imperatrice Maria come occasione commemorata, ma una stampa del 1605 non è la registrazione integrale di un'unica celebrazione: occorre ricostruire anche canto piano e successione liturgica. <a href="https://victoria.uma.es/ediciones_antiguas.html" target="_blank" rel="noopener noreferrer">Catalogo critico Victoria · contenuto della stampa del 1605 ↗</a>.</p>
-<p>Accanto a Victoria va riconosciuta una più vasta <strong>cultura corale iberica</strong>. <strong>Cristóbal de Morales</strong>, cantore della cappella pontificia e autore di messe, mottetti e Magnificat, e <strong>Francisco Guerrero</strong>, legato per decenni alla cattedrale di Siviglia, mostrano come le reti delle cattedrali spagnole dialoghino con Roma senza esserne semplici succursali. Un <i>Magnificat</i>, un responsorio e un mottetto non richiedono la medesima distribuzione del testo né la stessa occasione: il confronto dei loro organici e delle loro sezioni è più significativo della ricerca di un generico «sentimento religioso spagnolo». <a href="https://www.treccani.it/enciclopedia/tomas-luis-de-victoria/" target="_blank" rel="noopener noreferrer">Treccani · Victoria e la tradizione polifonica spagnola ↗</a>.</p>
-<p>In Inghilterra la tensione fra pratica ufficiale e devozione cattolica assume anche una dimensione editoriale. I <strong><i>Gradualia</i> di William Byrd</strong>, pubblicati nel 1605 e nel 1607, raccolgono musiche latine per il Proprio della messa e altre occasioni del calendario romano, ben lontane dalla destinazione anglicana di molte altre sue composizioni. Siamo già nel Seicento, ma proprio questo sconfinamento mostra perché il racconto del Rinascimento non debba fermarsi a una data: la stessa tecnica corale può servire comunità e circostanze religiose molto diverse, talvolta segnate da rischi politici concreti. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/notes-as-a-garland-the-chronology-and-narrative-of-byrds-gradualia/FB023A53FE441E50FF4BAEA99AAF66FA" target="_blank" rel="noopener noreferrer">Cambridge · Kerry McCarthy, <i>Gradualia</i> e contesto delle edizioni ↗</a>.</p>
-<p>Il caso di <strong>Byrd</strong> è particolarmente istruttivo se si leggono fianco a fianco <strong>due tipi di testo destinati a due pratiche diverse</strong>. I <i>Gradualia</i> offrono piccoli brani latini per il calendario liturgico cattolico; il suo <i>Great Service</i>, invece, distribuisce in un ampio organico polifonico i cantici e le parti del servizio anglicano in lingua inglese. La differenza non è soltanto confessionale: nel <i>service</i> occorre seguire una sequenza di testi prescritti all'interno dell'ufficio, mentre nel <i>Graduale</i> il brano prende posto in un punto specifico del Proprio della messa. A distanza di quattro secoli, un ordine di culto di <strong>Westminster Abbey</strong> documenta ancora l'esecuzione del <i>Great Service</i>: <strong>questa è continuità di repertorio</strong>, non prova che la sonorità odierna riproduca quella elisabettiana. <a href="https://www.westminster-abbey.org/order-of-service?id=10988" target="_blank" rel="noopener noreferrer">Westminster Abbey · <i>Great Service</i> nel contesto dell'ufficio ↗</a> · <a href="https://www.cambridge.org/core/journals/proceedings-of-the-royal-musical-association/article/abs/wordsetting-in-the-songs-of-byrd/842951298457B780526FB768A52B56B7" target="_blank" rel="noopener noreferrer">Philip Brett · articolazione del repertorio vocale di Byrd ↗</a>.</p>
-<p>Con <strong>Thomas Tallis</strong> l'idea di coro come entità ben delimitata diventa perfino un problema <strong>di trasmissione manoscritta</strong>. Il mottetto <i>Spem in alium</i> dispone <strong>quaranta parti vocali</strong>; la copia <strong>Egerton MS 3512</strong>, conservata alla British Library e risalente circa al 1610, le presenta in <strong>cinque gruppi di otto voci affini</strong>, insieme a un adattamento testuale inglese. Una successiva partitura ottocentesca, <strong>Add MS 29968</strong>, le riordina invece in <strong>otto cori da cinque parti</strong>. Questa differenza nella disposizione <em>scritta</em> non significa che Tallis abbia composto due mottetti diversi, né permette di dedurre meccanicamente quante persone cantassero, dove fossero collocate o quale acustica udissero. La notissima immagine degli «otto cori» va pertanto confrontata con <strong>l'età e la natura della fonte</strong>, prima di diventare una prescrizione filologica. <a href="https://searcharchives.bl.uk/catalog/032-001985761" target="_blank" rel="noopener noreferrer">British Library · Egerton MS 3512 ↗</a> · <a href="https://searcharchives.bl.uk/catalog/032-002021550" target="_blank" rel="noopener noreferrer">British Library · Add MS 29968 ↗</a>.</p>
-<p>Quando parliamo di «coro rinascimentale», dobbiamo evitare di immaginare automaticamente la compagine sinfonica odierna. Nelle <strong>cappelle</strong> il canto era affidato a cantori formati, con funzioni diverse secondo celebrazione e città; il numero degli esecutori per parte, l'eventuale sostegno strumentale e la distribuzione nello spazio non si ricavano da un pentagramma a quattro o sei voci. Nello stesso rito potevano alternarsi <strong>canto piano, polifonia e organo</strong>. La distinzione fra notazione e prassi effettiva è tanto importante quanto la differenza fra un mottetto e un ciclo di messa.</p>
-<p>Una <strong>cappella musicale</strong> è anche una struttura educativa e professionale. Un esempio documentato è il <strong>Magdalen College di Oxford</strong>: gli statuti del 1480 prevedevano sedici ragazzi cantori, otto <i>Academical Clerks</i> e quattro cappellani. Non stiamo guardando una massa corale moderna che si raduna per un concerto, ma un organismo incaricato del canto regolare, della preparazione musicale e della continuità del servizio. Formazione, composizione dei gruppi e repertorio mutano insieme alle vicende confessionali e istituzionali. <a href="https://www.magd.ox.ac.uk/chapel-and-choir/the-choir/" target="_blank" rel="noopener noreferrer">Magdalen College · storia della fondazione corale ↗</a>.</p>
-<p>La Roma di <strong>Filippo Neri</strong> offre un'altra dimensione della vocalità sacra: le <strong>laudi spirituali in volgare</strong>, cantate nelle riunioni dell'Oratorio, non coincidono con i testi dell'Ordinario della messa e neppure con il futuro melodramma. <strong>Giovanni Animuccia</strong>, maestro della Cappella Giulia, ne pubblica raccolte nel <strong>1563</strong> e nel <strong>1570</strong>, fra semplicità declamatoria e polifonia più elaborata. Il canto può così diventare strumento di partecipazione, comprensione del testo e devozione fuori da una celebrazione liturgica in senso stretto. <a href="https://www.treccani.it/enciclopedia/giovanni-animuccia_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Dizionario Biografico Treccani · Animuccia e la lauda filippina ↗</a>.</p>
-<p>Un confronto di esecuzioni va fatto con la stessa prudenza delle partiture. Il motetto <strong><i>Exultate Deo</i></strong> di Palestrina, già proposto fra gli ascolti, è pubblicato sul <strong>canale ufficiale di Stile Antico</strong> (2025), complesso specializzato nella polifonia rinascimentale. La provenienza del documento è dunque verificabile; <strong>non lo chiameremo una ricostruzione certa del suono della cappella papale cinquecentesca</strong>. Impasto vocale, pronuncia del latino, altezza d'esecuzione, ornamentazione e numero dei cantori sono scelte da discutere alla luce delle fonti. <a href="https://www.youtube.com/watch?v=K38ZfTu0DxE" target="_blank" rel="noopener noreferrer">Stile Antico · registrazione ufficiale di <i>Exultate Deo</i> ↗</a>.</p>
-<p>La leggenda secondo cui Palestrina avrebbe salvato da solo la polifonia davanti ai padri conciliari è una costruzione successiva. Nel 1565 alcune messe furono effettivamente ascoltate in ambiente romano per verificare se le parole risultassero comprensibili, ma non esiste la scena teatrale nella quale un unico capolavoro impedisce all'ultimo momento una proibizione generale. La realtà è più interessante, perché mostra un'intera cultura che cerca lentamente un equilibrio fra tecnica, bellezza e funzione liturgica.</p>
-      </div>
-
-      
-      <div class="rin-focus" id="messa-ciclo">
-        <div class="eyebrow">Scuola romana · una grande forma sacra</div>
-        <h3>La messa come composizione, non soltanto come rito</h3>
-        <p>Occorre distinguere <strong>la celebrazione della messa</strong> dalla <strong>messa come composizione musicale</strong>. I grandi cicli rinascimentali intonano abitualmente le parti cantate e relativamente stabili dell'<strong>Ordinario</strong>: <strong>Kyrie, Gloria, Credo, Sanctus (con Benedictus) e Agnus Dei</strong>. Non mettono quindi in musica ogni momento del rito: il <strong>Proprio</strong>, con testi variabili secondo la festa, e le altre azioni liturgiche seguono logiche proprie.</p>
-        <p>Già fra Quattro e Cinquecento i maestri franco-fiamminghi cercano <strong>l'unità musicale di queste cinque sezioni</strong>. Una melodia può essere mantenuta come <i>cantus firmus</i>, trasformata e distribuita in una <strong>messa di parafrasi</strong>, oppure l'autore può riprendere più linee da una composizione anteriore, nella <strong>messa d'imitazione</strong> (storicamente detta anche <i>parodia</i>, senza il significato moderno di scherzo). Le grandi messe di Du Fay, Ockeghem, Obrecht e Josquin precedono la maturità della scuola romana: <strong>Roma non inventa la messa polifonica</strong>.</p>
-        <p>Nel Cinquecento la <strong>scuola romana</strong>, con Palestrina fra i suoi maggiori esponenti, fa della scrittura contrappuntistica un equilibrio di linee vocali, dissonanze, cadenze e articolazioni del testo. Nel <i>Kyrie</i> le poche invocazioni possono essere distese e imitate; nel <i>Gloria</i> e nel <i>Credo</i>, molto più lunghi, le voci possono spesso riunirsi in episodi <strong>omoritmici</strong>. La parola non espelle la polifonia: ne influenza l'organizzazione. Anche nel mondo cattolico il rapporto tra intelligibilità, lingua latina e complessità sonora è dunque un tema fondamentale.</p>
-        <p>Va evitata la leggenda secondo cui il <strong>Concilio di Trento</strong> avrebbe vietato la polifonia, oppure imposto un unico stile. I decreti generali si soffermano sull'esclusione di elementi profani o sconvenienti; la discussione sull'intelligibilità del testo assume maggiore concretezza in orientamenti e controlli locali successivi. La <i>Missa Papae Marcelli</i> non salvò da sola la musica sacra: mostra invece quanto raffinato possa essere il rapporto fra <strong>contrappunto e comprensione delle parole</strong>.</p>
-        <div class="rin-compare">
-          <div><b>Ordinario</b><p>I cinque gruppi di testi ricorrenti che formano abitualmente l'architettura della messa ciclica.</p></div>
-          <div><b>Proprio</b><p>I testi variabili in base alla ricorrenza liturgica: non coincidono con il ciclo di cinque sezioni.</p></div>
-          <div><b>Unità compositiva</b><p><i>Cantus firmus</i>, parafrasi e imitazione di un modello musicale sono tre strategie differenti.</p></div>
-        </div>
-        <p class="rin-activity"><strong>✦ Ascolto comparato.</strong> Ascolta il <i>Kyrie</i> della <i>Missa Papae Marcelli</i> qui sotto e poi cerca il <i>Gloria</i> della stessa messa: in quali passaggi le voci enunciano le sillabe quasi contemporaneamente? <a href="https://online.ucpress.edu/jams/article-abstract/55/1/1/49809/The-Council-of-Trent-Revisited" target="_blank" rel="noopener noreferrer">C. Monson · il Concilio e la musica, studio documentario ↗</a>.</p>
-      </div>
-
-      <div class="media-row">
-        <button id="ascolto-youtube-EJj0as_Mic4" type="button" class="media-card video" data-video="EJj0as_Mic4" data-title="Palestrina · Missa Papae Marcelli, Kyrie">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mensuralnotation-Missa_papae_marcelli.jpg" alt="Inizio della Missa Papae Marcelli in notazione mensurale">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto</span><h3>Missa Papae Marcelli, Kyrie</h3></span>
-        </button>
-        <button type="button" class="media-card resource" data-title="Giovanni Pierluigi da Palestrina" data-url="https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Palestrina">
-          <span class="shade"></span><span class="meta"><span class="tag">Roma</span><h3>Palestrina</h3></span>
-        </button>
-        <button type="button" class="media-card resource" data-title="Sacrosanctum Concilium" data-url="https://press.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_const_19631204_sacrosanctum-concilium_it.html">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Second_Vatican_Council.jpg" alt="Concilio Vaticano II">
-          <span class="shade"></span><span class="meta"><span class="tag">Una lunga durata</span><h3>Il latino fino al Novecento</h3></span>
-        </button>
-      </div>
-
-
-<div class="literary-aside" id="rinascimento-fonte-e-coro">
-  <div class="eyebrow">Interpretazione storicamente informata · Il libro corale</div>
-  <h3>Una partitura per molte voci, un libro per cantare insieme</h3>
-  <p>La <strong>Cappella Pratensis</strong> affronta la polifonia franco-fiamminga cantando da riproduzioni della <strong>notazione mensurale originale</strong>, disposte su un libro corale comune. Il metodo pone problemi che la trascrizione moderna tende a nascondere: lettura condivisa, segni mensurali, formazione dei cantori, pronuncia e relazione fra scrittura e gesto. L'ensemble documenta sul proprio sito le fonti e il lavoro di ricostruzione, compresa l'improvvisazione storica. Non significa che un'esecuzione odierna ricrei con certezza il timbro di una cappella del Cinquecento.</p>
-  <p>Nel sito ufficiale è presente anche un filmato di <strong>Josquin, <i>Inviolata, integra et casta es Maria</i></strong>: una composizione diversa sia dalla <i>Missa Pange lingua</i> sia dalla <i>Missa Papae Marcelli</i>. È un ascolto di confronto sulla <strong>prassi del leggere e del cantare</strong>, non un video intercambiabile con gli altri titoli.</p>
-  <div class="source-row"><a href="https://www.cappellapratensis.nl/en/" target="_blank" rel="noopener noreferrer">♪ Cappella Pratensis · filmato e metodo ufficiali ↗</a><a href="https://www.cappellapratensis.nl/en/EXPLORE-AND-LEARN/" target="_blank" rel="noopener noreferrer">♫ Libri corali, facsimili e notazione storica ↗</a></div>
-  <p><small>Documentazione filologica dell'ensemble verificata; riproducibilità del filmato su Android da controllare. Il collegamento non avvia automaticamente l'ascolto.</small></p>
-</div>
-
-      <div class="literary-aside">
-        <div class="eyebrow">Una continuità sorprendente</div>
-        <h3>Il latino rimane la norma fino al pieno Novecento</h3>
-        <p>Il Concilio di Trento non sceglie la via luterana del volgare e la Chiesa romana difenderà per secoli il latino come lingua normativa della liturgia. Ancora nel 1963 la costituzione <em>Sacrosanctum Concilium</em> afferma che l'uso del latino debba essere conservato nei riti latini, pur aprendo contemporaneamente uno spazio molto più ampio alle lingue nazionali. La riforma applicata negli anni successivi rovescerà progressivamente il rapporto fra norma ed eccezione.</p>
-        <p>Questa lunghissima continuità può essere letta come una scelta istituzionale fortemente conservatrice, soprattutto se confrontata con la decisione della Riforma di affidare molto prima la parola religiosa alla lingua della comunità. Il confronto va però precisato, perché Roma non ha mai imposto che ogni Messa fosse cantata: la <em>Missa lecta</em>, o Messa bassa, era comunissima. Nelle celebrazioni cantate, invece, il latino e il gregoriano conservarono per secoli un ruolo normativo e simbolico eccezionalmente forte.</p>
-      </div>
-    </section>
-
-    <p>L'unificazione delle pratiche ecclesiastiche occidentali non è stata né immediata né totale. Nell'Italia nordorientale sopravviveva ancora nel Cinquecento l'<strong>antico rito aquileiese, detto patriarchino</strong>, con libri e consuetudini locali. Il <strong>sinodo provinciale di Udine del 1596</strong>, sotto il patriarca Francesco Barbaro, stabilì l'adozione dei libri romani e l'abolizione del rito precedente. È un passaggio decisivo per la storia della liturgia, ma non prova da solo che ogni melodia o uso musicale locale fosse scomparso il giorno successivo: per affermarlo servono antichi codici, documenti di cappella e testimonianze delle pratiche reali. La musica sacra ha anche una geografia di memorie regionali, non soltanto una successione di grandi maestri. <a href="https://www.treccani.it/enciclopedia/francesco-barbaro_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Dizionario Biografico Treccani · Barbaro e il sinodo del 1596 ↗</a>.</p>
-<section id="venezia">
-      <div class="section-title"><div class="section-no">15</div><div><h2>Venezia, quando lo spazio diventa musica</h2></div></div>
-      <div class="two-col">
-        <p>San Marco non è ancora la cattedrale di Venezia, ma la cappella del doge, legata direttamente alla rappresentazione politica della Serenissima. Questa condizione istituzionale, insieme alla particolare architettura della basilica e alla presenza di organi e cantorie, crea un ambiente nel quale la musica può sviluppare una identità molto diversa da quella romana.</p>
-        <p>Venezia non è protestante e non vive fuori dal cattolicesimo, ma possiede una autonomia politica sufficiente per negoziare duramente con Roma. L'interdetto del 1606 appartiene già al secolo successivo, ma mostra con chiarezza quanto la Repubblica considerasse la propria sovranità un limite reale all'ingerenza pontificia. Anche la cultura musicale di San Marco cresce dentro questa sicurezza istituzionale.</p>
-        <p>Adrian Willaert, maestro di cappella dal 1527, porta la grande tecnica franco fiamminga dentro un edificio che suggerisce la separazione fisica delle masse sonore. I cori spezzati non vengono inventati dal nulla, perché pratiche antifonali sono molto più antiche, ma a Venezia diventano un principio compositivo nel quale la distanza fra gruppi differenti acquista una funzione strutturale.</p>
-        <p>Con Andrea e Giovanni Gabrieli la ricerca si spinge ancora oltre. Cornetti, tromboni, viole, organi e voci possono essere distribuiti in gruppi differenti, rispondersi e riunirsi, mentre il timbro e la dinamica acquistano una evidenza crescente. Nelle <em>Sacrae symphoniae</em> del 1597 Giovanni Gabrieli pubblica anche la celebre <em>Sonata pian e forte</em>, uno dei documenti più eloquenti del momento in cui lo strumento comincia a essere pensato non soltanto come sostituto della voce ma come portatore di colore e contrasto autonomi.</p>
-        <p>Per le cappelle veneziane il dialogo fra gruppi non è un gioco acustico applicato dall'esterno a una partitura già conclusa. Nella scrittura policorale sacra, <strong>due o più complessi vocali possono articolare frasi alternate, sovrapporsi o riunirsi</strong>; gli strumenti non duplicano sempre e obbligatoriamente le voci. Le combinazioni dipendono dai brani e dalle condizioni della pratica esecutiva. È in questa pluralità di risposte — coro, organo, solista, insieme strumentale — che la lezione veneziana passa a compositori come Heinrich Schütz, rendendo permeabile il confine convenzionale fra Rinascimento e Barocco. Non bisogna immaginare ogni mottetto a cori spezzati eseguito con una disposizione spaziale identica.</p>
-<p>La collocazione dei cantori veneziani richiede tuttavia una ricostruzione documentaria, non soltanto l'osservazione dell'edificio. Lo studio di <strong>David Bryant</strong> sui <i>cori spezzati</i> di San Marco mostra che il cerimoniale indicava occasioni precise nelle quali i Vespri venivano cantati da due cori. Da questo non si può ricavare una disposizione spaziale fissa per ogni composizione. Le indicazioni relative alle voci, agli organi e agli strumenti vanno confrontate con i libri e con gli usi di una celebrazione concreta. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5" target="_blank" rel="noopener noreferrer">David Bryant · <i>The cori spezzati of St Mark's: myth and reality</i> ↗</a>.</p>
-<p>Dire <strong>antifonia</strong> e dire <strong>policoralità</strong> non è esattamente la stessa cosa. Nell'alternanza semplice un gruppo enuncia una formula e l'altro risponde; in una composizione policorale i gruppi possono anche <strong>cantare contemporaneamente linee autonome</strong>, ricompattandosi nei punti di maggiore evidenza testuale. Questa differenza è scritta nella musica prima che nell'effetto prodotto da una basilica riverberante. Per riconoscerla non basta ascoltare un'eco: bisogna confrontare nella partitura <strong>tessiture, ingressi, pause e riunioni dei gruppi</strong>. La ricerca di Bryant sugli usi cerimoniali di San Marco impedisce anche di trasformare una soluzione spaziale moderna in una regola invariabile del Cinquecento. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5" target="_blank" rel="noopener noreferrer">David Bryant · documenti su cori e cerimoniale marciano ↗</a>.</p>
-<p>La musica, in questo modo, non occupa soltanto il tempo ma anche lo spazio. Roma aveva cercato trasparenza dentro la polifonia, mentre Venezia scopre che una composizione può essere progettata anche stabilendo da dove arrivi il suono, quale gruppo risponda a un altro e quando una massa sonora debba apparire vicina, lontana, piena o rarefatta.</p>
-      </div>
-
-      <div class="media-row">
-        <button type="button" class="media-card resource" data-title="Adrian Willaert e la scuola veneziana" data-url="https://www.europeana.eu/es/stories/adrian-willaert-and-the-foundation-of-the-venetian-school">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Adrian_Willaert.jpg" alt="Adrian Willaert">
-          <span class="shade"></span><span class="meta"><span class="tag">San Marco</span><h3><span id="mm-autore-compositore-adriano-willaert" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Willaert e i cori spezzati</h3></span>
-        </button>
-        <button id="ascolto-youtube-HJbbuTV5Q_I" type="button" class="media-card video" data-video="HJbbuTV5Q_I" data-title="Giovanni Gabrieli · Sonata pian e forte">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Gabrieli_-_Sonata_pian%27_e_forte_%28Beginn%29.png" alt="Inizio della Sonata pian e forte di Giovanni Gabrieli">
-          <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Ascolto spaziale</span><h3>Sonata pian e forte</h3></span>
-        </button>
-        <button type="button" class="media-card resource" data-title="Basilica di San Marco · tradizione musicale" data-url="https://www.basilicasanmarco.it/basilica/tradizione-musicale/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Interni_basilica_san_Marco_04.jpg" alt="Interno della Basilica di San Marco">
-          <span class="shade"></span><span class="meta"><span class="tag">Architettura sonora</span><h3>San Marco come strumento</h3></span>
-        </button>
-      </div>
-
-      <div class="network">
-        <svg viewBox="0 0 950 300" role="img" aria-label="Schema di disposizione policorale a San Marco">
-          <line class="edge blue" x1="210" y1="150" x2="475" y2="150"></line>
-          <line class="edge red" x1="740" y1="150" x2="475" y2="150"></line>
-          <circle cx="210" cy="150" r="72" fill="#253d63"></circle>
-          <circle cx="740" cy="150" r="72" fill="#7f1d1d"></circle>
-          <circle cx="475" cy="150" r="58" fill="#a5792a"></circle>
-          <text x="210" y="145" text-anchor="middle" fill="#fff">CORO I</text>
-          <text x="210" y="168" text-anchor="middle" fill="#fff">voci + strumenti</text>
-          <text x="740" y="145" text-anchor="middle" fill="#fff">CORO II</text>
-          <text x="740" y="168" text-anchor="middle" fill="#fff">voci + strumenti</text>
-          <text x="475" y="145" text-anchor="middle" fill="#fff">NAVATA</text>
-          <text x="475" y="168" text-anchor="middle" fill="#fff">ascoltatore</text>
-        </svg>
-      </div>
-      <aside class="student-box" id="ragazzi-spazio">
-        <div class="student-label">✦ Per iniziare</div>
-        <h3>Il suono ha un posto</h3>
-        <p>A San Marco due cori, anche con strumenti, stanno in punti diversi della basilica e si rispondono. Chi ascolta sente il suono arrivare da una parte, poi dall'altra, poi da entrambe.</p>
-        <div class="try"><strong>Prova tu.</strong> In classe, due gruppi si dispongono ai lati opposti della stanza e si rispondono su una frase semplice, mentre un compagno ascolta al centro. Poi cambiate la distanza: il suono sembra più vicino o più lontano? Dove mettereste i due gruppi per far sentire “tanto spazio”?</div>
-      </aside>
-
-    </section>
 
     <section id="firenze">
-      <div class="section-title"><div class="section-no">16</div><div><h2>Firenze e la voce che torna sola</h2></div></div>
+      <div class="section-title"><div class="section-no">15</div><div><h2>Firenze e la voce che torna sola</h2></div></div>
       <div class="two-col">
         <p>Il madrigale aveva portato la polifonia a una capacità straordinaria di leggere la poesia, ma proprio questa raffinatezza rendeva sempre più evidente un limite. Quando cinque o sei voci pronunciano insieme un testo, la parola può essere interpretata in profondità e nello stesso tempo perdere la presenza concreta di una persona che parla. Alla fine del Cinquecento la Camerata riunita intorno a Giovanni de' Bardi trasforma questo problema in una ricerca teorica.</p>
         <p>Gli uomini della Camerata immaginano che la tragedia greca avesse raggiunto una unione fra parola, canto e gesto che la polifonia moderna avrebbe smarrito. La loro ricostruzione dell'antichità è inevitabilmente ipotetica e in parte sbagliata, ma proprio questo fraintendimento diventa artisticamente fecondo, perché suggerisce una musica nella quale una voce sola possa seguire con chiarezza l'andamento del discorso mentre gli strumenti la sostengono.</p>
@@ -1172,6 +1158,40 @@
         <p>Non è una condanna del Seicento, che sarà uno dei periodi più fertili e sorprendenti della storia della musica, ma una differenza di accento. La misura, la parola, la proporzione e l'indagine umanistica non scompaiono, però vengono investite sempre più spesso dal piacere del contrasto, della teatralità, della sorpresa e della magnificenza.</p>
       </div>
     </section>
+
+
+    <section id="hip">
+      <div class="section-title"><div class="section-no">16</div><div><h2>Filologia musicale e HIP</h2></div></div>
+      <div class="literary-aside" id="hip-focus">
+        <div class="eyebrow">Come possiamo ascoltare oggi una musica di cinquecento anni fa?</div>
+        <h3>Filologia musicale e HIP, Historically Informed Performance</h3>
+        <p>Una partitura rinascimentale non contiene tutto ciò che un esecutore deve sapere. Non ci dice sempre con precisione quale organico utilizzare, quale altezza di riferimento adottare, quanto ornamentare, come pronunciare il latino o l'italiano, quale temperamento scegliere, come articolare una diminuzione e quale rapporto debba esistere fra voci e strumenti. Per questo l'interprete di musica antica lavora anche come ricercatore, confrontando manoscritti e prime edizioni, trattati, iconografia, strumenti sopravvissuti, descrizioni storiche e caratteristiche degli spazi nei quali quella musica veniva eseguita.</p>
+        <p>La cosiddetta <strong>HIP</strong>, abbreviazione di <em>Historically Informed Performance</em>, non promette di farci ascoltare esattamente ciò che avrebbe sentito un ascoltatore del Cinquecento, perché prima dell'epoca delle registrazioni quel suono è irrimediabilmente perduto. Cerca invece di costruire interpretazioni informate dalle testimonianze storiche disponibili. La parola “filologia”, usata in questo contesto, indica quindi un metodo critico più che una macchina del tempo, perché una fonte viene studiata, confrontata e interpretata, mentre le lacune devono essere dichiarate e colmate attraverso scelte consapevoli.</p>
+        <p>È proprio per questo che i trattati di Virdung, Ganassi, Ortiz, Dalla Casa, Bassano e Galilei sono tanto importanti. Non rappresentano soltanto curiosità bibliografiche, ma sono strumenti attraverso i quali un musicista contemporaneo può ricostruire ciò che la notazione non dice. Anche fra gli specialisti esistono naturalmente scuole differenti, e due ensemble filologicamente consapevoli possono produrre risultati molto diversi senza che uno dei due debba necessariamente essere considerato “sbagliato”.</p>
+        <div class="media-row">
+          <button id="ascolto-youtube-Tku8ceGJ4dk" type="button" class="media-card video" data-video="Tku8ceGJ4dk" data-title="The Tallis Scholars · Palestrina, Missa Brevis">
+            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tallis_Scholars_2015.jpg" alt="The Tallis Scholars alla Winchester Cathedral nel 2015">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">The Tallis Scholars</span><h3><span id="mm-autore-compositore-giovanni-pierluigi-da-palestrina" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Palestrina · Missa Brevis</h3></span>
+          </button>
+          <button id="ascolto-youtube-DIZDxaF511I" type="button" class="media-card video" data-video="DIZDxaF511I" data-title="The Hilliard Ensemble · Renaissance Madrigals">
+            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Codex_specialnik_p64.jpg" alt="Codex Speciálník, inizio dell’Ave Maria di Josquin Desprez">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Hilliard Ensemble</span><h3>Renaissance Madrigals</h3></span>
+          </button>
+          <button id="ascolto-youtube-K38ZfTu0DxE" type="button" class="media-card video" data-video="K38ZfTu0DxE" data-title="Stile Antico · Palestrina, Exultate Deo">
+            <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_Pierluigi_da_Palestrina_portrait_%289566465365%29.jpg" alt="Giovanni Pierluigi da Palestrina">
+            <span class="shade"></span><span class="play">▶</span><span class="meta"><span class="tag">Stile Antico</span><h3>Palestrina · Exultate Deo</h3></span>
+          </button>
+        </div>
+        <div class="route-links">
+          <button type="button" class="source-card resource" data-title="Clemencic Consort" data-url="https://www.allmusic.com/artist/clemencic-consort-mn0001639777"><span class="src">Pionieri</span><b>Clemencic Consort</b><span>René Clemencic è fra i protagonisti storici della riscoperta di Medioevo e Rinascimento con strumenti e prassi d'epoca.</span></button>
+          <button type="button" class="source-card resource" data-title="The Tallis Scholars" data-url="https://www.thetallisscholars.co.uk/about-us"><span class="src">Polifonia vocale</span><b>The Tallis Scholars</b><span>Dal 1973 hanno contribuito in modo decisivo alla moderna fortuna della polifonia sacra rinascimentale.</span></button>
+          <button type="button" class="source-card resource" data-title="Stile Antico" data-url="https://www.stileantico.co.uk/about"><span class="src">Nuova generazione</span><b>Stile Antico</b><span>Dodici cantori senza direttore, con un approccio cameristico alla polifonia del Cinquecento.</span></button>
+        </div>
+        <p class="source-caveat"><strong>Musica Antiqua Köln</strong> occupa un posto fondamentale nella rivoluzione filologica novecentesca, soprattutto per il repertorio strumentale del Seicento e del Settecento. Per il Rinascimento risultano invece particolarmente pertinenti ensemble come The Tallis Scholars, Hilliard Ensemble, Clemencic Consort, Stile Antico, Doulce Mémoire, Hespèrion XXI e Cinquecento. La differenza non è una graduatoria di qualità, ma una questione di repertorio e specializzazione.</p>
+      </div>
+
+    </section>
+
 
     <section id="galileo">
       <div class="section-title"><div class="section-no">17</div><div><h2>Postludio · Galileo ascolta il mondo</h2></div></div>
@@ -1597,8 +1617,8 @@
   setActiveSection();
 })();
 </script>
-<script src="../shared/atlas-autonav-v1.js?v=20261021-gerarchia02" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261018-global-v07" defer></script><script src="../shared/atlas-video-preview-v1.js?v=20261016-qa02" defer></script>
+<script src="../shared/atlas-autonav-v1.js?v=20261025-rinascimento01" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261018-global-v07" defer></script><script src="../shared/atlas-video-preview-v1.js?v=20261016-qa02" defer></script>
 <script src="../assets/atlante-indice-condiviso.js" defer></script>
-<script src="../shared/mm-menu-compatto-v1.js?v=20261023-compact04" defer></script>
+<script src="../shared/mm-menu-compatto-v1.js?v=20261025-rinascimento01" defer></script>
 <script src="../shared/mm-menu-posizione-v1.js?v=20261025b" defer></script></body>
 </html>
