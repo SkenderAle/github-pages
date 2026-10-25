@@ -101,3 +101,42 @@ Nuovo controllo `tools/check-site-link-registry.mjs`: verifica che il contatore 
 - I file `grafo.json` e `relazioni.json` dell'Atlante superano il contenuto recuperabile in un'unica lettura del connettore e non sono stati sottoposti a audit filologico integrale in questo lotto.
 - Il controllo HTML/JSON degli identificativi non equivale a riproduzione di una pagina caricata realmente, né attesta YouTube, scroll, comportamento delle categorie e compatibilità mobile.
 - Le restanti **268 riserve** non vanno promosse per analogia, cognome o sola presenza in un indice: occorre una citazione specifica o un'opera, un'ancora e una ragione editoriale.
+
+
+## Maxi-lotto IV — Audit Concerti: 161 riserve generiche e 95 arrivi in archivio nascosto
+
+**Eseguito su `main`, senza nuovi branch e senza modifiche a `verso-le-avanguardie`.**
+
+### A. Confronto filologico delle destinazioni generiche
+
+All'avvio risultavano **161 voci `pendingReview` relative ai Concerti**, tutte derivate da associazioni poco specifiche a categorie, famiglie strumentali o macrosezioni. L'analisi ha distinto l'archivio HTML nascosto dalle schede pubbliche dell'audioteca.
+
+Matrice di controllo `atlante3d/database/audit-candidati-concerti-20261025.json` e registro documentario `atlante3d/database/audit-risoluzioni-concerti-20261025.json`:
+
+- **68 compositori** associati a **125 ancore di scheda visibili**, con nome e opera controllati nelle intestazioni H3.
+- **97** ancore erano già state pubblicate nello storico Atlante; **27** ulteriori ancore puntavano a una copia/variante di opera già documentata. Queste **non sono state replicate** nel grafo.
+- **Una** opera non ancora collegata come voce autonoma: **Robert Schumann, Concerto per violoncello in la minore op. 129**, inserito con destinazione `../concerti/#audit-lotto30-17`.
+- **142 riserve generaliste** sostituite/rifiutate come ridondanti, con i loro dati originali conservati nel file di audit; **19** restano sospese per mancanza di una corrispondenza puntuale dimostrata. Nessuna promozione sulla sola somiglianza di cognome.
+- Casi esplicitamente esclusi: **Marian Anderson ≠ Leroy Anderson**, **Rubin Goldmark ≠ Karl Goldmark**; distinti i concerti di Robert e Clara Schumann e la Rapsodia *su tema di Paganini* di Rachmaninov.
+
+**Correzione di lettura del registro:** nel vecchio file attivo l'attributo `page` per i Concerti non era sempre `concerti`, ma una lunga etichetta `Concerti · [titolo]`. Un filtro precedente sul solo `page=="concerti"` sottocontava gravemente i collegamenti: all'inizio di questo maxi-lotto **erano già attivi 219 URL `../concerti/#...`**, non uno. Per questo l'audit è stato rifatto basandosi sulle URL effettive e non sulla convenzione del campo `page`. I dati storici non sono stati gonfiati da doppioni.
+
+### B. Correzione effettiva della navigazione nascosta
+
+Dei 219 URL attivi nei Concerti, ben **95** puntavano a ID all'interno di `<div id="archivio-schede-sorgente" hidden aria-hidden="true">`. L'ID esisteva ma il contenuto era invisibile. Non basta considerare `getElementById` o un match statico come prova che il lettore raggiunga la scheda.
+
+Sono stati corretti **tutti i 95 arrivi** in due blocchi documentati:
+- `atlante3d/database/audit-migrazione-ancore-nascoste-concerti-20261025.json`: **80** casi, di cui **27** URL spostati sulla scheda visibile della stessa opera e **53** collegamenti duplicati rimossi perché l'opera aveva già un suo rimando visibile.
+- `atlante3d/database/audit-ultime-15-ancore-concerti-20261025.json`: gli ultimi **15**, risolti con **11** migrazioni e **4** doppioni rimossi. In `concerti/index.html` sono state aggiunte nove ancore pubbliche per opere/personaggi privi di un identificativo stabile visibile: Händel (concerto per arpa), Nino Rota (trombone), Carl Stamitz (viola), Dittersdorf (contrabbasso), Jolivet (fagotto), Lars-Erik Larsson (sassofono), Creston (sassofono), Sergej Taneev (contestualizzazione delle elaborazioni del terzo concerto di Čajkovskij), e Glière (concerto per corno).
+- Per **Glière, Concerto per corno op. 91**, è stata pubblicata una vera scheda nel catalogo visibile con il riferimento discografico Chandos già documentato nell'archivio; **nessun player inventato**. Il contatore del catalogo Corno è stato adeguato.
+- Il contenitore dell'archivio storico rimane nascosto: non è stato esposto indiscriminatamente né cancellato.
+
+**Verifica finale sul sorgente:** **163** collegamenti attivi ai Concerti, tutti con ID esistente e **nessuno** dentro l'archivio storico; nessun ID duplicato nel documento. La riduzione dei link complessivi riflette l'eliminazione di doppioni invisibili, non la perdita di opere visibili.
+
+### C. Anti-regressione e stato finale
+
+- Nuovo `tools/check-concert-visible-targets.mjs` verifica che ogni URL `../concerti/#...` del registro punti a un ID unico **fuori** dall'archivio nascosto. Collegato a `.github/workflows/musurgia-site-links.yml` insieme ai test per 198 ancore dinamiche, collegamenti interni e quarantena.
+- **Rimandi Atlante attivi: 460**. **Riserve: 126** (di cui **19** ai Concerti; le altre 107 relative ad altre sezioni). Sono state archiviate le motivazioni delle eliminazioni.
+- **Limiti del collaudo:** il controllo strutturale dei sorgenti HTML/JSON è verificato; un'esecuzione GitHub Actions conclusa con successo non è ancora stata osservata tramite connettore. Rimangono da provare in browser le rotte, le finestre `details`, le registrazioni e la resa responsive. Non è stato eseguito audit filologico integrale dei file grandi `grafo.json` e `relazioni.json`.
+
+**Nessuna attribuzione ambigua ai cosiddetti falsi amici è stata pubblicata.**
