@@ -287,7 +287,12 @@
   .modal-body audio{width:min(680px,90%)}
   .modal-foot{font-family:var(--sans);display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:#eee4d3;border-top:1px solid #d1c5b1;font-size:.78rem;flex-wrap:wrap}
   /* Il Trionfo è un contenuto interno: non mostrare i comandi per URL inesistenti. */
-  .modal.mm-bacco-dialog .modal-panel{grid-template-rows:auto minmax(0,1fr)}
+  .modal.mm-bacco-dialog .modal-panel{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);min-width:0;max-width:100%}
+  .modal.mm-bacco-dialog .modal-head,.modal.mm-bacco-dialog .modal-body{min-width:0}
+  .modal.mm-bacco-dialog .modal-title{min-width:0;flex:1 1 auto}
+  .modal.mm-bacco-dialog .modal-close{flex:0 0 auto}
+  .modal.mm-bacco-dialog .modal-body{overflow-x:hidden}
+  .modal.mm-bacco-dialog .mm-bacco-pane{width:100%;min-width:0;overflow-wrap:break-word}
   .modal.mm-bacco-dialog .modal-foot{display:none}
   .url-box{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:180px;color:#6c5f50}
   .copy-btn,.open-btn{border:1px solid #9f8e75;background:#f8f4ea;padding:.48rem .72rem;cursor:pointer;font-weight:700}
@@ -576,7 +581,11 @@
   .mm-marciana-network svg .mm-marciana-listener{fill:#a5792a;stroke:#f6efe4;stroke-width:5}
   .mm-marciana-network svg .mm-line-accent{stroke:#715f46;stroke-width:3;opacity:.7}
   .mm-marciana-network .mini-caption{margin-top:1.2rem}
-  @media (max-width:580px){.mm-bacco-teaser{padding:.85rem}.mm-bacco-open{width:100%}.mm-marciana-network{padding:.4rem}.mm-marciana-network svg text.mm-marciana-on-dark{font-size:24px}}
+  @media (max-width:580px){
+    .mm-bacco-teaser{padding:.85rem}.mm-bacco-open{width:100%}
+    .modal.mm-bacco-dialog .modal-title{white-space:normal;font-size:.85rem;line-height:1.35}
+    .mm-marciana-network{padding:.4rem}.mm-marciana-network svg text.mm-marciana-on-dark{font-size:24px}
+  }
 
   /* L'ambiente fiorentino è una sottosezione delle corti: nessun secondo capitolo nell'indice. */
   .mm-corte-firenze{scroll-margin-top:7.5rem;margin:4rem 0 0;padding:clamp(1.3rem,2.3vw,2.2rem);background:#efe4d3;border-top:4px solid #986c33;box-shadow:0 8px 24px rgba(44,32,20,.06)}
