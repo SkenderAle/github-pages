@@ -603,6 +603,29 @@
   .mm-parola-shortactivity{padding:.85rem 1rem;border-left:4px solid #2f5e48;background:#edf1e8;font-size:.91rem!important}
   #parole{margin-bottom:3rem}
   @media(max-width:580px){.mm-corte-firenze{padding:1rem}.mm-parola-links a{width:100%}}
+
+/* Audit contrasto 2026-10-27: ogni scheda risorsa su fondo chiaro deve avere testo scuro. */
+.source-card.resource, button.source-card, .mm-corte-firenze .source-card {
+  background:#f3eadc !important;
+  border:1px solid #9d8666 !important;
+  color:#251f19 !important;
+  text-shadow:none !important;
+}
+.source-card.resource .src, button.source-card .src, .mm-corte-firenze .source-card .src {
+  color:#68431f !important;
+  text-shadow:none !important;
+}
+.source-card.resource b, button.source-card b, .mm-corte-firenze .source-card b,
+.source-card.resource strong, button.source-card strong {
+  color:#241d18 !important;
+  text-shadow:none !important;
+}
+.source-card.resource span:not(.src), button.source-card span:not(.src), .mm-corte-firenze .source-card span:not(.src) {
+  color:#3c342c !important;
+  text-shadow:none !important;
+}
+.source-card.resource:hover, button.source-card:hover {background:#e9dcc7 !important;border-color:#725333 !important}
+.source-card.resource:focus-visible, button.source-card:focus-visible {outline:3px solid #285c50;outline-offset:3px}
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261021-gerarchia02"><link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
 <link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-responsive02">
@@ -616,7 +639,7 @@
     <div>
       <div class="kicker">Storia della musica · percorso interattivo</div>
       <h1>Il Rinascimento musicale</h1>
-      <p class="dek">Dalla parola alla polifonia, dalla polifonia agli strumenti, dagli strumenti allo spazio, fino alla voce che torna sola sulla scena.</p>
+      <p class="dek">Dalla parola alla polifonia, dalla polifonia agli strumenti, dagli strumenti allo spazio, fino alla voce che torna sola sulla scena. E, nel postludio, il suono diventa una domanda scientifica.</p>
     </div>
     <aside class="hero-card">
       <small>Una chiave di lettura</small>
@@ -629,36 +652,11 @@
 <div class="shell">
   <div class="nav-wrap atlas-autonav"><button class="atlas-menu-toggle" type="button" aria-expanded="false" aria-label="Apri o chiudi il menu di navigazione">☰ Menu <span class="atlas-menu-arrow" aria-hidden="true">▾</span></button>
     <nav id="nav">
-      <div class="nav-row" aria-label="Contesti, corti e stampa" data-mm-group-title="I · Contesti, corti e circolazione">
-        <a href="../" class="nav-home" title="Torna alla pagina madre">⌂ Home</a>
-        <a href="#prologo">Prima del Rinascimento</a>
-        <a href="#umanesimo">L'Umanesimo</a>
-        <a href="#corti">Corti, mecenatismo e spettacolo</a>
-        <a href="#stampa">La stampa musicale</a>
-      </div>
-      <div class="nav-row" aria-label="Le scuole nell'Europa della Riforma" data-mm-group-title="II · Le scuole nell'Europa della Riforma">
-        <a href="#scuole-cinquecento">Fiamminghi, Lutero, Roma e Venezia</a>
-      </div>
-      <div class="nav-row" aria-label="Poesia e forme vocali" data-mm-group-title="III · Poesia, canto e forme vocali">
-        <a href="#parole">Dalla poesia alla voce</a>
-        <a href="#madrigale">Frottola, madrigale e altre forme</a>
-      </div>
-      <div class="nav-row" aria-label="Strumenti, prassi e teoria" data-mm-group-title="IV · Strumenti, ascolto e metodo">
-        <a href="#strumenti">Gli strumenti</a>
-        <a href="#hip">Filologia e HIP</a>
-        <a href="#trattati">Trattati e pratica musicale</a>
-        <a href="#temperamenti">Accordature e temperamenti</a>
-      </div>
-      <div class="nav-row" aria-label="Danza e postludio" data-mm-group-title="V · Danza e conclusione">
-        <a href="#danza">Pavana, gagliarda e danza</a>
-        <a href="#galileo">Postludio · Galileo</a>
-      </div>
-      <div class="nav-row" aria-label="Materiali di studio" data-mm-group-title="Materiali e verifica">
-        <a href="#fonti">Fonti</a>
-        <a href="#verifica" class="nav-verifica">✦ Verifica</a>
-        <a href="assets/SOS_Il_Rinascimento_in_musica.pdf" class="nav-sos" target="_blank" rel="noopener noreferrer" title="Libretto facilitato a colori">SOS</a>
-      </div>
-    </nav>
+<div class="nav-row" aria-label="Origini e parola" data-mm-group-title="I · Origini, Umanesimo e parola"><a href="../" class="nav-home">⌂ Home</a><a href="#prologo">Prima del Rinascimento</a><a href="#umanesimo">L'Umanesimo</a><a href="#parole">Dalla poesia alla voce</a></div>
+<div class="nav-row" aria-label="Corti, stampa e scuole" data-mm-group-title="II · Corti, stampa e polifonia"><a href="#corti">Corti e mecenatismo</a><a href="#stampa">La stampa musicale</a><a href="#scuole-cinquecento">Fiandre, Riforma e Roma</a><a href="#madrigale">Frottola e madrigale</a></div>
+<div class="nav-row" aria-label="Danza, strumenti e spazio" data-mm-group-title="III · Dalla danza allo spazio"><a href="#danza">La danza di corte</a><a href="#strumenti">Gli strumenti</a><a href="#hip">Filologia e HIP</a><a href="#venezia">Venezia</a></div>
+<div class="nav-row" aria-label="Firenze e scienza del suono" data-mm-group-title="IV · Dal teatro alla scienza del suono"><a href="#firenze">Firenze e Camerata</a><a href="#trattati">Trattati e pratica musicale</a><a href="#temperamenti">Accordature e temperamenti</a><a href="#galileo">Postludio · Galileo</a></div>
+<div class="nav-row" aria-label="Materiali" data-mm-group-title="Materiali e verifica"><a href="#fonti">Fonti</a><a href="#verifica" class="nav-verifica">✦ Verifica</a><a href="assets/SOS_Il_Rinascimento_in_musica.pdf" class="nav-sos" target="_blank" rel="noopener noreferrer">SOS</a></div></nav>
   </div>
 
   <main class="content">
@@ -693,7 +691,7 @@
     <div class="history-pivot" id="scelta">
       <h3>Una scelta, volutamente</h3>
       <p>Questo non è un atlante completo della musica europea del Rinascimento. Il filo scelto segue soprattutto l'Italia e l'incontro fra la penisola e i musicisti franco fiamminghi, perché proprio lungo questa traiettoria diventano particolarmente leggibili la stampa musicale, le corti, il madrigale, l'emancipazione degli strumenti, Venezia e la nascita del teatro musicale.</p>
-      <p>Restano quindi ai margini figure che meriterebbero da sole un capitolo, fra le quali Josquin Desprez, Orlando di Lasso, Tomás Luis de Victoria, William Byrd, Thomas Tallis e John Dowland. Non sono dimenticanze: appartengono a un panorama europeo molto più vasto, che qui viene richiamato quando serve a comprendere il percorso principale senza trasformare la pagina in una storia generale del Cinquecento musicale.</p>
+      <p>Josquin des Prez, Orlando di Lasso, Tomás Luis de Victoria, William Byrd, Thomas Tallis e Orlando Gibbons non ricevono qui un capitolo autonomo: ricorrono come testimoni dei passaggi esaminati. Altre figure importanti, come John Dowland, restano fuori dalla selezione principale.</p><p>Il percorso supera i confini dell’Italia o del Cinquecento quando lo sconfinamento illumina una <strong>traslazione</strong>: una tecnica, uno strumento o un testo cambiano ambiente e, nel nuovo contesto, assumono una funzione diversa. È in questo senso che vengono richiamati, fra gli altri, i <em>Gradualia</em> di Byrd, la viola di Marais e l’ukulele; i riferimenti fuori periodo sono dichiarati come tali, non presentati come testimonianze direttamente rinascimentali. Il postludio su Galileo, nel 1623, segna volutamente il limite conclusivo della riflessione.</p>
     </div>
 
     <section id="prologo">
@@ -723,12 +721,7 @@
       </div>
     </section>
 
-
-
-
-
-
-    <section id="umanesimo">
+<section id="umanesimo">
       <div class="section-title"><div class="section-no">02</div><div><h2>Quando l'uomo entra al centro del suono</h2></div></div>
       <div class="two-col">
         <p>L'Umanesimo non sostituisce improvvisamente Dio con l'uomo. L'Europa rimane profondamente religiosa, ma lo sguardo comincia a ruotare e a interrogare con una intensità nuova il corpo, la natura, le passioni, la lingua e la capacità dell'individuo di comprendere ciò che lo circonda. L'Uomo vitruviano di Leonardo, intorno al 1490, rende visibile questa rotazione, perché il corpo umano diventa contemporaneamente oggetto di misura, proporzione e conoscenza.</p>
@@ -749,13 +742,20 @@
       </div>
     </section>
 
+<section id="parole">
+      <div class="section-title"><div class="section-no">03</div><div><h2>Dalla poesia alla voce: le parole in musica</h2></div></div>
+      <div class="two-col">
+        <p>Dalle esperienze medievali del canto in volgare prende forma un filo che attraversa tutta l'epoca:  <strong>come la poesia in volgare diventa musica</strong>. Non si tratta di un fenomeno successivo al 1517: musica profana e sacra cambiano contemporaneamente, attraverso secoli di scambi.</p>
+        <p>Il Medioevo aveva già conosciuto la parola cantata dei trovatori e dei trovieri. In Italia, il <strong>Dolce Stil Novo</strong> affina le possibilità espressive della lingua volgare, attribuendo grande importanza al suono, al ritmo e all'immagine poetica. Non è una scuola musicale e non coincide con l'<strong>Ars nova</strong>, ma contribuisce a quella cultura della parola che i compositori continueranno a interrogare.</p>
+        <p>Nell'<strong>Ars nova italiana del Trecento</strong>, con figure come <strong>Francesco Landini</strong>, il volgare incontra raffinate composizioni vocali profane: <em>ballate</em>, <em>cacce</em> e <em>madrigali trecenteschi</em>. Le voci possono alternarsi, imitarsi, inseguirsi; la trama musicale intreccia parole e durate con grande inventiva. Il <strong>madrigale del Trecento</strong> non è però semplicemente la prima versione del <strong>madrigale cinquecentesco</strong>: il nome ritorna, ma le forme e la loro storia non coincidono.</p>
+        <p>La poesia conquista nel frattempo una propria autonomia letteraria. Dante ricorda ancora nel <em>Purgatorio</em> un canto capace di sospendere l'azione; Petrarca porta il volgare poetico a un'elaborazione destinata a influenzare profondamente il Rinascimento. Quando i compositori del Cinquecento mettono in musica i testi dei <em>Rerum vulgarium fragmenta</em>, comunemente detti <em>Canzoniere</em>, <strong>non recuperano una melodia antica</strong>: costruiscono una lettura musicale nuova di versi già compiuti, ascoltandone accenti, immagini e opposizioni.</p>
+        <p>Poche parole mostrano questo viaggio meglio di «canzone»: dalla <em>canso</em> trobadorica alla poesia italiana, dalla <em>chanson</em> franco-fiamminga alla <em>canzona</em> strumentale, incontriamo significati diversi, non un genere unico e immutabile. Anche la canzone moderna eredita una parola che ha attraversato molte epoche, senza discendere in modo rettilineo da ciascuna delle forme medievali.</p>
+        <p>L'inglese <em>song</em> proviene invece dalla famiglia germanica di <em>sing</em>, non dal latino <em>canere</em>. La parentela è di significato, non di etimologia: lingue differenti danno comunque un nome a quella relazione tenace fra <strong>parola, memoria e canto</strong>.</p>
+      </div>
+    </section>
 
-
-
-
-
-    <section id="corti">
-      <div class="section-title"><div class="section-no">03</div><div><h2>Le corti: mecenati, musicisti e spettacolo</h2></div></div>
+<section id="corti">
+      <div class="section-title"><div class="section-no">04</div><div><h2>Le corti: mecenati, musicisti e spettacolo</h2></div></div>
       <div class="two-col">
         <p>Il mecenatismo rinascimentale tiene insieme politica culturale, rappresentazione del potere e partecipazione personale. Le corti finanziano pittori, poeti e musicisti perché la cultura produce prestigio, rafforza relazioni diplomatiche e contribuisce all'immagine della dinastia, mentre molti signori coltivano direttamente le arti che proteggono. In questo contesto il “dilettante” può essere un aristocratico musicalmente istruito che pratica un'arte per formazione, piacere e distinzione sociale.</p>
         <p>Isabella d'Este canta, suona, commissiona strumenti, discute con gli artisti e sostiene musicisti come Marchetto Cara e Bartolomeo Tromboncino. A Firenze Lorenzo de' Medici partecipa in prima persona alla vita letteraria e musicale della città. I due casi mostrano una corte nella quale il prestigio politico cresce anche attraverso la competenza culturale di chi governa.</p>
@@ -796,7 +796,7 @@
           <div><b>Dilettante</b><p>Studia e pratica la musica per diletto senza dipendere da essa economicamente: non significa inesperto.</p></div>
         </div>
         <p><strong>Chi dispone di denaro, educazione e accesso alla stampa contribuisce a decidere che cosa la storia conserverà.</strong> Per questo la musica delle corti va studiata come una rete di scelte e opportunità, non come un elenco di geni isolati. <a href="https://www.treccani.it/enciclopedia/isabella-d-este-marchesa-di-mantova_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Treccani · Isabella d'Este ↗</a> · <a href="https://www.treccani.it/enciclopedia/laura-peperara_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Treccani · il Concerto delle Dame ↗</a>.</p>
-        <p class="rin-activity"><strong>✦ Per iniziare · Segui il denaro e la musica.</strong> Scegli uno dei tre rapporti fra principi e musicisti, poi ricostruisci: chi paga, chi compone, chi esegue e chi ottiene prestigio? Infine chiediti: perché <strong>Gesualdo e Isabella d'Este</strong> possono essere detti musicisti «per diletto», pur avendo competenze vere? <a href="#fiamminghi">La rete franco-fiamminga ↑</a> · <a href="#madrigale">Frottola e madrigale ↓</a>.</p>
+        <p class="rin-activity"><strong>✦ Per iniziare · Segui il denaro e la musica.</strong> Scegli uno dei tre rapporti fra principi e musicisti, poi ricostruisci: chi paga, chi compone, chi esegue e chi ottiene prestigio? Infine chiediti: perché <strong>Gesualdo e Isabella d'Este</strong> possono essere detti musicisti «per diletto», pur avendo competenze vere? <a href="#fiamminghi">La rete franco-fiamminga ↓</a> · <a href="#madrigale">Frottola e madrigale ↓</a>.</p>
       </div>
       <div class="literary-aside" id="lorenzo-focus">
         <div class="eyebrow">Ritratto di un mecenate umanista</div>
@@ -866,72 +866,11 @@ di doman non c’è certezza.</blockquote>
         </button>
       </div>
     
-      <div class="mm-corte-firenze" id="firenze" role="region" aria-labelledby="firenze-titolo">
-      <div class="mm-corte-firenze-header">
-        <div class="eyebrow">Dalle corti rinascimentali alla nascita del teatro in musica</div>
-        <h3 id="firenze-titolo">Firenze: dal mecenatismo alla parola in scena</h3>
-        <p>Dalle feste del tempo di Lorenzo de' Medici agli <em>Intermedi della Pellegrina</em> e agli esperimenti della Camerata passa quasi un secolo: <strong>non è Lorenzo a fondare il melodramma</strong>. Ma le corti fiorentine, i loro intellettuali e gli spettacoli finanziati da principi e famiglie influenti mostrano come la protezione delle arti possa trasformarsi in ricerca sul teatro musicale.</p>
-      </div>
-      <div class="two-col">
-        <p>Nel tardo Cinquecento il madrigale aveva portato la polifonia a una capacità straordinaria di leggere la poesia, ma proprio questa raffinatezza rendeva sempre più evidente un limite. Quando cinque o sei voci pronunciano insieme un testo, la parola può essere interpretata in profondità e nello stesso tempo perdere la presenza concreta di una persona che parla. Alla fine del Cinquecento la Camerata riunita intorno a Giovanni de' Bardi trasforma questo problema in una ricerca teorica.</p>
-        <p>Gli uomini della Camerata immaginano che la tragedia greca avesse raggiunto una unione fra parola, canto e gesto che la polifonia moderna avrebbe smarrito. La loro ricostruzione dell'antichità è inevitabilmente ipotetica e in parte sbagliata, ma proprio questo fraintendimento diventa artisticamente fecondo, perché suggerisce una musica nella quale una voce sola possa seguire con chiarezza l'andamento del discorso mentre gli strumenti la sostengono.</p>
-        <p>Vincenzo Galilei torna così al centro del nostro percorso. Il teorico che aveva discusso con Zarlino, scritto per il liuto e riflettuto sulla pratica strumentale diventa uno degli intellettuali che criticano gli eccessi della polifonia e cercano nell'antico una giustificazione per una nuova monodia. Jacopo Peri, Giulio Caccini e Ottavio Rinuccini trasformano questa idea in teatro attraverso il <em>recitar cantando</em>.</p>
-        <p>La <em>Dafne</em> di Peri, rappresentata intorno al 1598 e conservata solo frammentariamente, viene generalmente ricordata come la prima opera di questo nuovo teatro musicale, mentre l'<em>Euridice</em> del 1600 è il primo esempio giunto quasi interamente fino a noi. Il basso continuo diventa fondamentale perché una linea grave e la realizzazione armonica permettono alla voce di emergere senza essere circondata da un tessuto di parti vocali equivalenti.</p>
-        <p>Monteverdi comprende però che la nuova monodia non deve distruggere tutto ciò che il madrigale aveva conquistato. Nell'<em>Orfeo</em> del 1607 il recitar cantando, i cori, gli strumenti, la danza, il madrigale e il nuovo senso drammatico vengono assorbiti dentro un organismo molto più ricco, mentre la distinzione fra <em>prima pratica</em> e <em>seconda pratica</em> rende esplicita l'idea che, quando l'espressione della parola lo richiede, la regola contrappuntistica possa essere piegata all'affetto.</p>
-      </div>
-
       
-      <div class="history-pivot" id="intermedi-1589">
-        <h3>1589: gli Intermedi della <em>Pellegrina</em>, il teatro prima dell'opera</h3>
-        <p>Fra il madrigale e le prime opere manca un passaggio decisivo. Nel 1589, per le nozze fiorentine di <strong>Ferdinando I de' Medici e Cristina di Lorena</strong>, la commedia <em>La Pellegrina</em> di Girolamo Bargagli viene intervallata da sei spettacoli musicali di una magnificenza eccezionale. Giovanni de' Bardi coordina il progetto e vi partecipano Cristofano Malvezzi, Luca Marenzio, Giulio Caccini, Jacopo Peri, Emilio de' Cavalieri, Antonio Archilei e altri protagonisti dell'ambiente fiorentino.</p>
-        <p>Gli intermedi non sono ancora un'opera, perché rimangono spettacoli inseriti fra gli atti di una commedia, ma fanno già convergere musica, canto solistico e corale, strumenti, macchine sceniche, costumi e scenografie in un unico evento. Proprio per questo sono uno dei ponti più concreti fra la cultura spettacolare della corte rinascimentale e il teatro musicale che Peri e Caccini svilupperanno pochi anni dopo.</p>
-        <figure class="scene-inline">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/La_pellegrina_1589_-_Intermedio_1_-_L%27armonia_delle_sfere.jpg" alt="Bernardo Buontalenti, scena del primo intermedio della Pellegrina, 1589">
-          <figcaption>Bernardo Buontalenti, progetto scenico per il primo intermedio della <em>Pellegrina</em>, “L'armonia delle sfere”, Firenze 1589. Immagine in pubblico dominio.</figcaption>
-        </figure>
-        <button type="button" class="source-card resource" style="width:100%" data-title="Maggio Musicale Fiorentino · Intermedi della Pellegrina" data-url="https://www.maggiofiorentino.com/events/intermedi-della-pellegrina-3"><span class="src">1589 · Firenze</span><b>La Pellegrina e gli intermedi</b><span>Il Maggio Musicale Fiorentino ricostruisce il contesto, i compositori e il ruolo di questi spettacoli come precursori del teatro musicale.</span></button>
-      </div>
-      <div class="media-row">
-        <button type="button" class="media-card resource" data-title="Camerata de' Bardi" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_de%27_Bardi.jpg" alt="Camerata de' Bardi">
-          <span class="shade"></span><span class="meta"><span class="tag">Firenze</span><h3>La Camerata de' Bardi</h3></span>
-        </button>
-        <button type="button" class="media-card resource mm-peri-card" data-title="Jacopo Peri" data-url="https://www.treccani.it/enciclopedia/iacopo-peri_%28Enciclopedia-Italiana%29/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacopo_Peri.jpg" alt="Jacopo Peri">
-          <span class="shade"></span><span class="meta"><span class="tag">1600</span><h3>Euridice e il recitar cantando</h3></span>
-        </button>
-        <div class="mm-compact-listening" aria-label="Monteverdi · L'Orfeo, Tu se' morta">
-  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/SyPUJwGEUgA?rel=0" title="Monteverdi · L'Orfeo, Tu se' morta" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-  <div class="mm-compact-caption">Monteverdi · L'Orfeo, Tu se' morta</div>
-  <span class="mm-mini-resources" aria-label="Risorse di Claudio Monteverdi"><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Claudio Monteverdi" data-mm-author="Claudio Monteverdi">✧ Musurgia · Claudio Monteverdi</a></span>
-</div>
-      </div>
-
-      <div class="compare-band">
-        <div class="compare-box">
-          <h3>Il mecenate rinascimentale</h3>
-          <p>Il principe umanista tende a presentarsi come partecipe della cultura che sostiene, attraverso studio, conversazione, pratica artistica e frequentazione degli intellettuali. Poco sopra ne abbiamo incontrato l'esempio mediceo, con Lorenzo il Magnifico.</p>
-        </div>
-        <div class="compare-box">
-          <h3>La corte barocca</h3>
-          <p>Nel Seicento il mecenatismo continua, ma la corte tende sempre più a trasformarsi in spettacolo di se stessa. Palazzo, giardino, festa, balletto, opera, scenografia e macchina teatrale concorrono a mostrare la magnificenza del potere, che invita artisti e musicisti non soltanto per partecipare alla cultura ma per costruire un ambiente capace di stupire.</p>
-        </div>
-      </div>
-
-      <div class="bridge-final">
-        <h3>Dalla festa di corte al teatro: una trasformazione, non una rottura</h3>
-        <p>Il Rinascimento aveva ricercato proporzione, parola e partecipazione alla cultura; fra gli ultimi decenni del Cinquecento e il Seicento la festa di corte diventa anche laboratorio di teatro, scenografia, meraviglia e canto drammatico. Le conquiste del madrigale non scompaiono: si trasformano in un linguaggio nel quale la musica può dare voce a un personaggio. <a href="../melodramma/#camerata">Prosegui nel percorso sulle origini del melodramma ↗</a>.</p>
-      </div>
-    </div>
     </section>
 
-
-
-
-
-
-    <section id="stampa">
-      <div class="section-title"><div class="section-no">04</div><div><h2>La scoperta del millennio</h2></div></div>
+<section id="stampa">
+      <div class="section-title"><div class="section-no">05</div><div><h2>La scoperta del millennio</h2></div></div>
       <div class="two-col">
         <p>Il Rinascimento non potrebbe esistere nella forma che conosciamo senza il lavoro degli amanuensi e delle botteghe manoscritte, perché il libro stampato eredita dal manoscritto la pagina, i margini, le iniziali, l'organizzazione del testo e molte convenzioni che i primi tipografi imitano quasi con deferenza. La svolta di Gutenberg, intorno alla metà del Quattrocento, non consiste quindi nell'invenzione del libro, ma nella possibilità di produrre molte copie sufficientemente uniformi da far circolare lo stesso testo in luoghi differenti con una velocità prima inconcepibile.</p>
         <p>La stampa, però, non cancella in un giorno la cultura della <strong>miniatura</strong>. I primi libri a stampa possono conservare spazi per iniziali dipinte, rubriche e interventi eseguiti a mano, mentre codici musicali riccamente decorati continuano a essere prodotti come oggetti di prestigio. La differenza decisiva non è quindi fra un Medioevo “a mano” e un Rinascimento improvvisamente meccanico, ma fra due modi di far vivere la pagina che per lungo tempo convivono: il manoscritto può rimanere unico e prezioso, mentre la stampa rende possibile che molte persone lontane lavorino sopra un testo sufficientemente simile.</p>
@@ -981,19 +920,14 @@ di doman non c’è certezza.</blockquote>
 
     </section>
 
-
-
-
-
-
-    <section id="scuole-cinquecento" class="mm-school-comparison">
-      <div class="section-title"><div class="section-no">05</div><div><h2>La polifonia nell'Europa della Riforma: Fiandre, Germania, Roma e Venezia</h2></div></div>
-      <p class="lead">L'arte di intrecciare più voci attraversa le frontiere e incontra istituzioni diverse. La tradizione franco-fiamminga circola fra corti e cappelle; Lutero e i suoi seguaci ripensano il rapporto fra canto, parola e comunità; a Roma le esigenze liturgiche orientano la polifonia; Venezia, cattolica e politicamente autonoma, sviluppa un'esuberante tradizione vocale e strumentale.</p>
+<section id="scuole-cinquecento" class="mm-school-comparison">
+      <div class="section-title"><div class="section-no">06</div><div><h2>La polifonia nell'Europa della Riforma: Fiandre, Germania, Roma e Venezia</h2></div></div>
+      <p class="lead">L'arte di intrecciare più voci attraversa le frontiere e incontra istituzioni diverse. La tradizione franco-fiamminga circola fra corti e cappelle; Lutero e i suoi seguaci ripensano il rapporto fra canto, parola e comunità; a Roma le esigenze liturgiche orientano la polifonia; a Venezia, cattolica e politicamente autonoma, la tradizione franco-fiamminga si trasforma in un linguaggio nel quale acquistano rilievo il dialogo fra gruppi e la dimensione cerimoniale. Qui confrontiamo le quattro esperienze; nel capitolo 10 approfondiremo specificamente lo spazio sonoro veneziano.</p>
       <div class="callout"><strong>Una storia di differenze e scambi.</strong> La Riforma del 1517 cambia lo sfondo politico e religioso, ma il linguaggio policorale di Venezia non nasce direttamente da Lutero. L'uso degli strumenti dipende anche dalla tradizione cerimoniale, dalle strutture delle cappelle e dalla presenza di interpreti specializzati.</div>
       <div class="rin-compare">
         <div><b>Franco-fiamminghi</b><p>Contrappunto e grandi reti europee di cantori, compositori e maestri.</p></div>
         <div><b>Mondo luterano</b><p>Corale, lingua della comunità e polifonia: esiti diversi nelle Chiese riformate.</p></div>
-        <div><b>Roma e Venezia</b><p>Due tradizioni cattoliche, con differenti istituzioni, modelli sonori e cerimoniali.</p></div>
+        <div><b>Roma e Venezia</b><p>Due tradizioni cattoliche messe a confronto in questo capitolo, con un approfondimento sulla spazialità veneziana nel capitolo 10.</p></div>
       </div>
       <div class="mm-school-subsection mm-school-fiamminghi">
         <div class="section-title"><div class="section-no">A</div><div><h3>I franco-fiamminghi: la tecnica delle voci in viaggio</h3></div></div>
@@ -1206,111 +1140,21 @@ di doman non c’è certezza.</blockquote>
     </div>
 
 
-            <div class="mm-school-subsection" id="venezia">
-      <div class="section-title"><div class="section-no">E</div><div><h3>Venezia: una scuola cattolica dalla voce al suono strumentale</h3></div></div>
-      <div class="two-col">
-        <p>San Marco non è ancora la cattedrale di Venezia, ma la cappella del doge, legata direttamente alla rappresentazione politica della Serenissima. Questa condizione istituzionale, insieme alla particolare architettura della basilica e alla presenza di organi e cantorie, crea un ambiente nel quale la musica può sviluppare una identità molto diversa da quella romana.</p>
-        <p>Venezia non è protestante e non vive fuori dal cattolicesimo, ma possiede una autonomia politica sufficiente per negoziare duramente con Roma. L'interdetto del 1606 appartiene già al secolo successivo, ma mostra con chiarezza quanto la Repubblica considerasse la propria sovranità un limite reale all'ingerenza pontificia. Anche la cultura musicale di San Marco cresce dentro questa sicurezza istituzionale.</p>
-        <p>Adrian Willaert, maestro di cappella dal 1527, porta la grande tecnica franco fiamminga dentro un edificio che suggerisce la separazione fisica delle masse sonore. I cori spezzati non vengono inventati dal nulla, perché pratiche antifonali sono molto più antiche, ma a Venezia diventano un principio compositivo nel quale la distanza fra gruppi differenti acquista una funzione strutturale.</p>
-        <p>Con Andrea e Giovanni Gabrieli la ricerca si spinge ancora oltre. Cornetti, tromboni, viole, organi e voci possono essere distribuiti in gruppi differenti, rispondersi e riunirsi, mentre il timbro e la dinamica acquistano una evidenza crescente. Nelle <em>Sacrae symphoniae</em> del 1597 Giovanni Gabrieli pubblica anche la celebre <em>Sonata pian e forte</em>, uno dei documenti più eloquenti del momento in cui lo strumento comincia a essere pensato non soltanto come sostituto della voce ma come portatore di colore e contrasto autonomi.</p>
-        <p>Per le cappelle veneziane il dialogo fra gruppi non è un gioco acustico applicato dall'esterno a una partitura già conclusa. Nella scrittura policorale sacra, <strong>due o più complessi vocali possono articolare frasi alternate, sovrapporsi o riunirsi</strong>; gli strumenti non duplicano sempre e obbligatoriamente le voci. Le combinazioni dipendono dai brani e dalle condizioni della pratica esecutiva. È in questa pluralità di risposte — coro, organo, solista, insieme strumentale — che la lezione veneziana passa a compositori come Heinrich Schütz, rendendo permeabile il confine convenzionale fra Rinascimento e Barocco. Non bisogna immaginare ogni mottetto a cori spezzati eseguito con una disposizione spaziale identica.</p>
-<p>La collocazione dei cantori veneziani richiede tuttavia una ricostruzione documentaria, non soltanto l'osservazione dell'edificio. Lo studio di <strong>David Bryant</strong> sui <i>cori spezzati</i> di San Marco mostra che il cerimoniale indicava occasioni precise nelle quali i Vespri venivano cantati da due cori. Da questo non si può ricavare una disposizione spaziale fissa per ogni composizione. Le indicazioni relative alle voci, agli organi e agli strumenti vanno confrontate con i libri e con gli usi di una celebrazione concreta. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5" target="_blank" rel="noopener noreferrer">David Bryant · <i>The cori spezzati of St Mark's: myth and reality</i> ↗</a>.</p>
-<p>Dire <strong>antifonia</strong> e dire <strong>policoralità</strong> non è esattamente la stessa cosa. Nell'alternanza semplice un gruppo enuncia una formula e l'altro risponde; in una composizione policorale i gruppi possono anche <strong>cantare contemporaneamente linee autonome</strong>, ricompattandosi nei punti di maggiore evidenza testuale. Questa differenza è scritta nella musica prima che nell'effetto prodotto da una basilica riverberante. Per riconoscerla non basta ascoltare un'eco: bisogna confrontare nella partitura <strong>tessiture, ingressi, pause e riunioni dei gruppi</strong>. La ricerca di Bryant sugli usi cerimoniali di San Marco impedisce anche di trasformare una soluzione spaziale moderna in una regola invariabile del Cinquecento. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5" target="_blank" rel="noopener noreferrer">David Bryant · documenti su cori e cerimoniale marciano ↗</a>.</p>
-<p>La musica, in questo modo, non occupa soltanto il tempo ma anche lo spazio. Roma aveva cercato trasparenza dentro la polifonia, mentre Venezia scopre che una composizione può essere progettata anche stabilendo da dove arrivi il suono, quale gruppo risponda a un altro e quando una massa sonora debba apparire vicina, lontana, piena o rarefatta.</p>
-      </div>
+            
 
 
-      <div class="rin-focus" id="venezia-strumenti">
-        <div class="eyebrow">Dalla cappella ducale alla nascita di nuovi organici</div>
-        <h4>Fiati e archi: i colori di una città autonoma</h4>
-        <p>A Venezia la libertà sonora non deriva semplicemente dall'assenza di vincoli ecclesiastici. <strong>San Marco è la cappella del doge</strong>, centro religioso e simbolo dello Stato, dotato di risorse e di una tradizione di musicisti impegnati nelle processioni e nelle feste. La Repubblica rimane cattolica, ma difende le proprie prerogative nei confronti di Roma: l'organizzazione ducale offre condizioni istituzionali e materiali favorevoli a esperimenti che nella cappella papale assumono un carattere differente. <a href="https://www.treccani.it/enciclopedia/andrea-e-giovanni-gabrieli_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/" target="_blank" rel="noopener noreferrer">Treccani · Il fasto della Serenissima e la scuola veneziana ↗</a>.</p>
-        <p>La <a href="https://www.basilicasanmarco.it/basilica/tradizione-musicale/" target="_blank" rel="noopener noreferrer">storia ufficiale della Cappella Marciana ↗</a> chiarisce che soltanto dalla <strong>seconda metà del Cinquecento</strong> gli strumenti, oltre all'organo, acquisiscono un posto stabile nelle funzioni liturgiche, con predilezione per <strong>cornetti e tromboni</strong>. L'uso musicale di strumenti a fiato era tuttavia ben più antico nelle processioni e nelle cerimonie. Gli <strong>archi</strong> non compaiono improvvisamente dopo i fiati: viole da braccio e altri strumenti ad arco erano già presenti e diventano progressivamente più riconoscibili negli organici misti del tardo Cinquecento.</p>
-        <h4>Zarlino, Girolamo Dalla Casa e Giovanni Bassano</h4>
-        <p>Nel <strong>1568</strong> il maestro di cappella <strong>Gioseffo Zarlino</strong> ingaggia il virtuoso di cornetto <strong>Girolamo Dalla Casa, detto da Udine</strong>, e i suoi fratelli per l'attività strumentale di San Marco. Dalla Casa pubblica nel 1584 un trattato sulle diminuzioni: il cornetto è capace di sfumature e articolazioni ispirate alla voce. <strong>Giovanni Bassano</strong>, cornettista, autore e didatta attivo a San Marco dal 1576, diviene <em>maestro de' concerti</em> nel <strong>1601</strong>. L'innovazione non nasce dunque soltanto dai Gabrieli: richiede una rete di esecutori, insegnanti e organizzatori musicali. <a href="https://www.treccani.it/enciclopedia/giovanni-bassano_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Treccani · Giovanni Bassano ↗</a>.</p>
-        <h4>Giovanni Gabrieli: non soltanto voci raddoppiate</h4>
-        <p>Fra Cinquecento e Seicento l'impiego degli strumenti supera gradualmente il semplice sostegno della polifonia vocale. In un brano si possono alternare gruppi, mettere a confronto timbri e persino affidare agli strumenti parti autonome. Nelle <em>Sacrae symphoniae</em> del <strong>1597</strong> Giovanni Gabrieli indica cornetti, tromboni, viole da braccio e organi. La <em>Sonata pian e forte</em> trasforma il contrasto dinamico e la scelta dell'organico in elementi della scrittura: non inventa il piano e il forte, ma li prescrive espressamente in un disegno concertante.</p>
-        <div class="rin-compare">
-          <div><b>Fiati</b><p>Cornetti e tromboni: una sonorità prediletta per la solennità delle cerimonie.</p></div>
-          <div><b>Archi</b><p>Viole da braccio, violini e altri strumenti ad arco entrano in combinazioni sempre più diversificate.</p></div>
-          <div><b>Voce e organi</b><p>Raddoppio, alternanza, risposta e autonomia dei gruppi coesistono nelle pratiche del periodo.</p></div>
-        </div>
-        <h4>Roma e Venezia: due cattolicesimi musicali, non due Chiese contrapposte</h4>
-        <p>Il modello della <strong>Cappella Sistina</strong> privilegia il canto vocale, ma altre chiese romane impiegano organi e strumenti: sarebbe inesatto definire «senza strumenti» tutta Roma. Simmetricamente, non ogni brano veneziano è policorale. La diversità nasce dall'incrocio fra cerimoniale, spazio, risorse, committenza e musicisti. Il protestantesimo cambiò il quadro politico dell'Europa, ma <strong>non è dimostrato</strong> che Venezia adottasse organici più ricchi perché poteva minacciare il papa di diventare luterana o ortodossa.</p>
-        <p>Esiste invece una circolazione dimostrabile dalla Serenissima verso la Germania luterana: <strong>Heinrich Schütz</strong> studiò con Giovanni Gabrieli e rielaborò i suoi modelli nel mondo protestante. La libertà veneziana è perciò una chiave interpretativa utile, se la intendiamo come <strong>autonomia istituzionale e disponibilità di risorse</strong>, non come assenza di vincoli o effetto automatico della Riforma.</p>
-        <p class="rin-activity"><strong>✦ Per iniziare · Ascolta tre mondi.</strong> Confronta un corale luterano, una messa di Palestrina e una canzona di Gabrieli. Dove si riconosce meglio il testo? Dove emerge l'organico? Come cambiano lo spazio, le entrate e il colore?</p>
-      </div>
-      <div class="media-row">
-        <button type="button" class="media-card resource" data-title="Adrian Willaert e la scuola veneziana" data-url="https://www.europeana.eu/es/stories/adrian-willaert-and-the-foundation-of-the-venetian-school">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Adrian_Willaert.jpg" alt="Adrian Willaert">
-          <span class="shade"></span><span class="meta"><span class="tag">San Marco</span><h3><span id="mm-autore-compositore-adriano-willaert" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Willaert e i cori spezzati</h3></span>
-        </button>
-        <div class="mm-compact-listening" aria-label="Giovanni Gabrieli · Sonata pian e forte">
-  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/HJbbuTV5Q_I?rel=0" title="Giovanni Gabrieli · Sonata pian e forte" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-  <div class="mm-compact-caption">Giovanni Gabrieli · Sonata pian e forte</div>
-  <span class="mm-mini-resources" aria-label="Risorse di Giovanni Gabrieli"><a href="https://imslp.org/wiki/Category:Giovanni_Gabrieli" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Gabrieli">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Gabrieli" data-mm-author="Giovanni Gabrieli">✧ Musurgia · Giovanni Gabrieli</a></span>
+
+    <div class="mm-school-subsection" id="venezia-scuola">
+<div class="section-title"><div class="section-no">E</div><div><h3>La scuola veneziana: San Marco, cori spezzati e policoralità</h3></div></div>
+<div class="two-col">
+<p>Il confronto con Roma mostra due modi diversi, ma non contrapposti in assoluto, di vivere la polifonia in ambito cattolico. A San Marco, cappella del doge e centro cerimoniale della Serenissima, la presenza di organi, cantorie e musicisti specializzati favorisce pratiche nelle quali voci e strumenti possono alternarsi, rispondersi e riunirsi. La distribuzione dei gruppi non nasce dal nulla: sviluppa anche tradizioni antifonali più antiche, reinterpretate nel contesto veneziano.</p>
+<p>Con <strong>Adrian Willaert</strong>, maestro di cappella dal 1527, la scrittura franco-fiamminga trova a Venezia un ambiente peculiare; con <strong>Andrea e Giovanni Gabrieli</strong>, il dialogo tra gruppi sonori e la differenziazione timbrica assumono un'evidenza crescente. La polifonia romana, legata alle cappelle e alla liturgia, e quella veneziana condividono tecniche e repertori, ma rispondono a condizioni istituzionali e acustiche differenti. Il modello veneziano non deriva dalla Riforma luterana.</p>
 </div>
-        <button type="button" class="media-card resource" data-title="Basilica di San Marco · tradizione musicale" data-url="https://www.basilicasanmarco.it/basilica/tradizione-musicale/">
-          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Interni_basilica_san_Marco_04.jpg" alt="Interno della Basilica di San Marco">
-          <span class="shade"></span><span class="meta"><span class="tag">Architettura sonora</span><h3>San Marco come strumento</h3></span>
-        </button>
-      </div>
+<p class="mm-inset-followup"><strong>Dal confronto fra scuole all'ascolto dello spazio.</strong> Qui Venezia completa il quadro delle scuole del Cinquecento; nel <a href="#venezia">capitolo 10, «Venezia: il suono progettato nello spazio»</a>, ascolti, strumenti e testimonianze permettono di approfondire la stessa esperienza dalla prospettiva dell'organizzazione del suono.</p>
+</div>
+</section>
 
-      <div class="network mm-marciana-network">
-        <svg viewBox="0 0 950 445" role="img" aria-label="Schema didattico, non pianta storica: altare in alto, gruppo strumentale davanti all'altare, due cori laterali e ascoltatore nella navata">
-          <line x1="475" y1="92" x2="475" y2="116" class="mm-line-accent"></line>
-          <line x1="475" y1="237" x2="290" y2="269" class="edge blue"></line>
-          <line x1="475" y1="237" x2="660" y2="269" class="edge red"></line>
-          <line x1="475" y1="245" x2="475" y2="346" class="mm-line-accent"></line>
-          <rect x="355" y="16" width="240" height="78" rx="12" class="mm-marciana-altar"></rect>
-          <text x="475" y="53" text-anchor="middle" class="mm-marciana-altar-label">ALTARE</text>
-          <text x="475" y="75" text-anchor="middle" class="mm-marciana-altar-note">polo liturgico</text>
-          <circle cx="475" cy="174" r="79" class="mm-marciana-instruments"></circle>
-          <text x="475" y="169" text-anchor="middle" class="mm-marciana-on-dark">ORGANO E</text>
-          <text x="475" y="192" text-anchor="middle" class="mm-marciana-on-dark">STRUMENTI</text>
-          <circle cx="205" cy="270" r="88" class="mm-marciana-choir1"></circle>
-          <text x="205" y="265" text-anchor="middle" class="mm-marciana-on-dark">CORO I</text>
-          <text x="205" y="290" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">voci + strumenti</text>
-          <circle cx="745" cy="270" r="88" class="mm-marciana-choir2"></circle>
-          <text x="745" y="265" text-anchor="middle" class="mm-marciana-on-dark">CORO II</text>
-          <text x="745" y="290" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">voci + strumenti</text>
-          <circle cx="475" cy="371" r="63" class="mm-marciana-listener"></circle>
-          <text x="475" y="367" text-anchor="middle" class="mm-marciana-on-dark">NAVATA</text>
-          <text x="475" y="391" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">ascoltatore</text>
-        </svg>
-        <p class="mini-caption"><strong>Schema concettuale, non ricostruzione della planimetria di San Marco.</strong> Il terzo gruppo rappresenta la possibilità di un ulteriore polo strumentale vicino all'altare: numero, posizione e combinazione degli esecutori variavano e devono essere verificati nelle fonti della singola celebrazione.</p>
-      </div>
-      <aside class="student-box" id="ragazzi-spazio">
-        <div class="student-label">✦ Per iniziare</div>
-        <h3>Il suono ha un posto</h3>
-        <p>In questo schema didattico due cori dialogano da posizioni diverse, mentre un gruppo strumentale può contribuire vicino all'altare. Non è la pianta certa di una singola esecuzione a San Marco: disposizione e organico potevano cambiare secondo l'occasione.</p>
-        <div class="try"><strong>Prova tu.</strong> In classe, due gruppi si dispongono ai lati opposti della stanza e si rispondono su una frase semplice, mentre un compagno ascolta al centro. Poi cambiate la distanza: il suono sembra più vicino o più lontano? Dove mettereste i due gruppi per far sentire “tanto spazio”?</div>
-      </aside>
-
-    </div>
-
-
-
-    </section>
-
-
-
-
-
-    <section id="parole">
-      <div class="section-title"><div class="section-no">06</div><div><h2>Dalla poesia alla voce: le parole in musica</h2></div></div>
-      <div class="two-col">
-        <p>Dopo aver incontrato le scuole nell'Europa della Riforma, torniamo deliberatamente indietro lungo un filo che attraversa tutta l'epoca: <strong>come la poesia in volgare diventa musica</strong>. Non si tratta di un fenomeno successivo al 1517: musica profana e sacra cambiano contemporaneamente, attraverso secoli di scambi.</p>
-        <p>Il Medioevo aveva già conosciuto la parola cantata dei trovatori e dei trovieri. In Italia, il <strong>Dolce Stil Novo</strong> affina le possibilità espressive della lingua volgare, attribuendo grande importanza al suono, al ritmo e all'immagine poetica. Non è una scuola musicale e non coincide con l'<strong>Ars nova</strong>, ma contribuisce a quella cultura della parola che i compositori continueranno a interrogare.</p>
-        <p>Nell'<strong>Ars nova italiana del Trecento</strong>, con figure come <strong>Francesco Landini</strong>, il volgare incontra raffinate composizioni vocali profane: <em>ballate</em>, <em>cacce</em> e <em>madrigali trecenteschi</em>. Le voci possono alternarsi, imitarsi, inseguirsi; la trama musicale intreccia parole e durate con grande inventiva. Il <strong>madrigale del Trecento</strong> non è però semplicemente la prima versione del <strong>madrigale cinquecentesco</strong>: il nome ritorna, ma le forme e la loro storia non coincidono.</p>
-        <p>La poesia conquista nel frattempo una propria autonomia letteraria. Dante ricorda ancora nel <em>Purgatorio</em> un canto capace di sospendere l'azione; Petrarca porta il volgare poetico a un'elaborazione destinata a influenzare profondamente il Rinascimento. Quando i compositori del Cinquecento mettono in musica i testi dei <em>Rerum vulgarium fragmenta</em>, comunemente detti <em>Canzoniere</em>, <strong>non recuperano una melodia antica</strong>: costruiscono una lettura musicale nuova di versi già compiuti, ascoltandone accenti, immagini e opposizioni.</p>
-        <p>Poche parole mostrano questo viaggio meglio di «canzone»: dalla <em>canso</em> trobadorica alla poesia italiana, dalla <em>chanson</em> franco-fiamminga alla <em>canzona</em> strumentale, incontriamo significati diversi, non un genere unico e immutabile. Anche la canzone moderna eredita una parola che ha attraversato molte epoche, senza discendere in modo rettilineo da ciascuna delle forme medievali.</p>
-        <p>L'inglese <em>song</em> proviene invece dalla famiglia germanica di <em>sing</em>, non dal latino <em>canere</em>. La parentela è di significato, non di etimologia: lingue differenti danno comunque un nome a quella relazione tenace fra <strong>parola, memoria e canto</strong>.</p>
-      </div>
-    </section>
-
-
-
-    <section id="madrigale">
+<section id="madrigale">
 <div class="parola-canto-related" style="margin:1rem 0 1.8rem;padding:.85rem 1rem;border-left:3px solid #ad8959;background:rgba(177,141,85,.09);font:600 .88rem/1.55 system-ui,-apple-system,Segoe UI,sans-serif"><a href="../parola-e-canto/#rinascimento" style="text-decoration:underline;text-underline-offset:3px">♪ La parola e il canto · La parola nella polifonia ↗</a></div>
       <div class="section-title"><div class="section-no">07</div><div><h2>Frottola e madrigale</h2></div></div>
 
@@ -1336,7 +1180,7 @@ di doman non c’è certezza.</blockquote>
 <figure class="mm-prose-listening mm-hip-inline" aria-label="Clément Janequin · Le Chant des oiseaux"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/LfAPXBEhX2s?rel=0" title="Clément Janequin · Le Chant des oiseaux" allow="encrypted-media;picture-in-picture;web-share" allowfullscreen></iframe><figcaption>Clément Janequin · Le Chant des oiseaux<span style="display:block;font-weight:500">De Caelis Ensemble · ascolta il gioco imitativo dei richiami degli uccelli</span></figcaption></figure>
         <p>La <strong>chanson francese</strong> attraversa stili diversi, dall'imitazione polifonica alla chiarezza declamatoria e ai quadri sonori di Clément Janequin. Esistono inoltre <strong>Lieder polifonici in area tedesca</strong>. Le lingue nordiche non erano inadatte al canto: i maestri franco-fiamminghi eccellevano in numerosi repertori vocali e accolsero anche generi italiani, trasformandoli.</p>
         <h4>Laudi spirituali e melodie riutilizzate</h4>
-        <p>Accanto alle forme profane vive il <strong>canto devozionale in volgare</strong>. Con la pratica del <em>cantasi come</em> si possono cantare testi spirituali su melodie già note: la musica mantiene alcuni tratti riconoscibili ma cambia funzione, pubblico e significato. Questo passaggio dialoga con il capitolo precedente dedicato alla Riforma e alla musica sacra.</p>
+        <p>Accanto alle forme profane vive il <strong>canto devozionale in volgare</strong>. Con la pratica del <em>cantasi come</em> si possono cantare testi spirituali su melodie già note: la musica mantiene alcuni tratti riconoscibili ma cambia funzione, pubblico e significato. Questa trasformazione può essere confrontata con le diverse funzioni attribuite alla parola cantata nella Riforma e nella musica sacra, esaminate nel capitolo sulle scuole del Cinquecento.</p>
         <h4>Quando nasce il madrigalismo?</h4>
 <figure class="mm-prose-listening" style="float:left;margin: .25rem 1.3rem 1rem 0" aria-label="Ascolto: Arcadelt · Il bianco e dolce cigno"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FOXMfgHNb90?rel=0" title="Arcadelt · Il bianco e dolce cigno" allow="encrypted-media;picture-in-picture;web-share" allowfullscreen></iframe><figcaption>Arcadelt · Il bianco e dolce cigno</figcaption><span class="mm-mini-resources"><a href="../atlante3d/?n=compositore-jacques-arcadelt" target="_blank" rel="noopener noreferrer" title="Scheda di Jacques Arcadelt in Musurgia">✧ Musurgia · Jacques Arcadelt</a></span></figure>
         <p>Il <strong>madrigalismo</strong> non è un genere autonomo e nemmeno una tecnica universale del Rinascimento. È il nome che attribuiamo a gesti musicali capaci di rappresentare o evocare immagini e affetti del testo, particolarmente evidenti nel madrigale cinquecentesco: una melodia che sale, una pausa che sospende il discorso, una dissonanza che intensifica una parola. Cresce l'attenzione alla relazione espressiva fra musica e poesia, senza che ogni verso debba trovare una traduzione letterale nelle note.</p>
@@ -1436,14 +1280,42 @@ di doman non c’è certezza.</blockquote>
 
     </section>
 
+<section id="danza">
+      <div class="section-title"><div class="section-no">08</div><div><h2>La danza di corte: dalla pavana alla scena</h2></div></div>
+      <div class="literary-aside mm-prose-illustrated">
+        <div class="eyebrow">La musica che mette in moto il corpo</div>
+        <h3>Pavana, gagliarda e il laboratorio della danza</h3>
+<figure class="mm-prose-figure">
+          <img width="1381" height="652" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Woodcut_Galliard.png" alt="Xilografia con danzatori di gagliarda">
+          <figcaption>Danzatori di gagliarda in una xilografia riferita al XVI secolo, riprodotta nell’opera di Paul Lacroix <em>Manners, Custom and Dress</em>. <a href="https://commons.wikimedia.org/wiki/File:Woodcut_Galliard.png" target="_blank" rel="noopener noreferrer">Fonte e diritti: Wikimedia Commons (pubblico dominio) ↗</a></figcaption>
+        </figure>
+        <p>Una parte enorme della musica strumentale rinascimentale nasce per accompagnare il movimento. La <strong>pavana</strong>, lenta e solenne, viene frequentemente accostata alla <strong>gagliarda</strong>, più vivace e in ritmo ternario, mentre altre coppie molto diffuse sono passamezzo e saltarello. Il contrasto fra una danza più grave e una più rapida diventa così anche un principio musicale e prepara quelle successioni di danze che, nel secolo successivo, confluiranno nella suite.</p>
+        <p>La danza appartiene pienamente alla formazione del cortigiano. Nel <em>Libro del Cortegiano</em> Castiglione considera il ballare una competenza necessaria all'uomo di corte, purché esercitata con dignità e misura. Ancora una volta il “dilettante” rinascimentale non è semplicemente chi pratica male un'arte, ma una persona educata a cantare, suonare e danzare come parte della propria formazione sociale.</p>
+        
+        <div class="route-links">
+          <button type="button" class="source-card resource" data-title="Treccani · La musica per danza" data-url="https://www.treccani.it/enciclopedia/la-musica-per-danza_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"><span class="src">Danza</span><b>Pavana e gagliarda</b><span>Dalla funzione coreutica alle coppie di danze che preparano la futura suite.</span></button>
+          <button type="button" class="source-card resource" data-title="Treccani · Il ballo di corte" data-url="https://www.treccani.it/enciclopedia/il-ballo-di-corte_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"><span class="src">Corte</span><b>Castiglione e il gentiluomo che danza</b><span>La pratica del ballo come parte dell'educazione e della rappresentazione sociale.</span></button>
+        </div>
+      </div>
+    
+      <aside class="student-box" id="ragazzi-danza">
+      <div class="history-pivot" id="approfondimenti-friuli">
+        <h3>Una melodia che attraversa i secoli: Scjaraçule Maraçule</h3>
+        <p>Nel 1578 Giorgio Mainerio pubblica <em>Schiarazula Marazula</em> fra le danze del suo <em>Primo libro de balli</em>; nel 1624 un canto dallo stesso incipit ricompare in una testimonianza inquisitoriale relativa a un rito della pioggia nella Bassa friulana. Nel Novecento la melodia viene reinventata da Domenico Zannier e da Angelo Branduardi, fino a sollevare una domanda sull'autorialità e sulla memoria delle fonti.</p>
+        <p><a href="scjaracule/"><strong>Leggi il saggio «Scjaraçule Maraçule: dalla paleografia popolare al plagio d'autore?» →</strong></a></p>
+        <p>Per comprendere l'ambiente aquileiese nel quale questo repertorio circolava, <a href="rito-patriarchino/">approfondisci la storia del rito patriarchino, della tradizione orale e dei benandanti →</a>.</p>
+      </div>
 
+        <div class="student-label">✦ Per iniziare</div>
+        <h3>Camminare o saltare?</h3>
+        <p>La <strong>pavana</strong> è lenta e solenne, la <strong>gagliarda</strong> più vivace e in tre tempi. Venivano spesso suonate in coppia: prima una, poi l'altra.</p>
+        <div class="try"><strong>Prova tu.</strong> Ascolta una pavana e una gagliarda, le trovi nella teca. Batti il ritmo con le mani: quale ti fa pensare a un passo calmo, quale a un salto? Perché secondo te si alternavano?</div>
+        <p class="mm-inset-followup"><strong>Dal salone al teatro.</strong> Pavana, gagliarda e danza di corte hanno anche un ruolo scenico: gesto, musica e disposizione dei corpi si incontrano nelle feste e negli intermedi. La continuità fra festa, gesto e spettacolo è approfondita nel capitolo sulle corti: <a href="#firenze">Firenze, dalla festa al teatro musicale ↓</a>.</p>
+      </aside>
+</section>
 
-
-
-
-
-    <section id="strumenti">
-      <div class="section-title"><div class="section-no">08</div><div><h2>Quando gli strumenti imparano a parlare</h2></div></div>
+<section id="strumenti">
+      <div class="section-title"><div class="section-no">09</div><div><h2>Quando gli strumenti imparano a parlare</h2></div></div><aside id="hip" class="callout" aria-label="Filologia e prassi storicamente informata"><h3>Filologia e HIP: come ascoltiamo il Rinascimento</h3><p>La prassi esecutiva storicamente informata non è una promessa di ricostruzione perfetta: mette in dialogo fonti scritte, iconografia, trattati, strumenti originali o loro copie e scelte interpretative esplicite. Intonazione, pronuncia, organici, ornamentazione e collocazione dei musicisti cambiano con il luogo, la data e la funzione della musica. Per ogni ascolto conviene distinguere ciò che la fonte documenta da ciò che l’esecutore ricostruisce.</p><p>Gli ensemble richiamati nel percorso offrono ipotesi d’ascolto differenti, non un’unica versione autentica. Anche il repertorio più tardo, quando appare, viene proposto come confronto e non come prova diretta della prassi rinascimentale.</p></aside>
       <div class="two-col">
         <p>Gli strumenti non compaiono improvvisamente nel Rinascimento, perché appartengono da secoli alla festa, alla danza, alla strada, alla corte, alla pratica domestica e anche a contesti religiosi. Ciò che cambia è la loro organizzazione. Sempre più spesso vengono costruiti in famiglie di diverse taglie, capaci di coprire registri differenti come fanno le voci di un coro, e proprio questa imitazione del modello vocale permette loro di affrontare una polifonia completa senza dipendere necessariamente dai cantanti.</p>
         <p>Nascono così consort di flauti, viole e altri strumenti nei quali soprano, alto, tenore e basso diventano quasi una anatomia sonora. Lo strumento, però, non rimane a lungo una voce sostitutiva, perché ogni gesto tecnico produce possibilità che la voce non possiede. Le dita del liutista, l'arco della viola, il fiato del cornettista e la tastiera dell'organista trasformano progressivamente il materiale ricevuto dalla polifonia vocale in un linguaggio autonomo.</p>
@@ -1452,6 +1324,11 @@ di doman non c’è certezza.</blockquote>
         <p>Accanto alla vihuela esiste la chitarra a quattro cori, mentre quella a cinque cori acquisterà grande fortuna fra tardo Cinquecento e Barocco. Il passaggio delle famiglie chitarristiche nelle Americhe produrrà trasformazioni nuove, fra le quali charango e guitarrón. La <strong>vihuela messicana</strong>, molto più tarda e legata alla famiglia della chitarra, non va quindi confusa con la vihuela de mano cinquecentesca.</p>
       </div>
 
+      <aside class="callout mm-strumenti-venezia" aria-label="Venezia come esempio della pratica strumentale">
+        <h3>Un esempio concreto: gli strumenti a San Marco</h3>
+        <p>A Venezia il rapporto fra strumenti e voci si osserva in un contesto preciso: nella cappella di San Marco, <strong>cornetti, tromboni e organi</strong> potevano dialogare con i cantori, sostenere le parti o contribuire a gruppi sonori distinti. Con <strong>Andrea e Giovanni Gabrieli</strong> la differenza fra organici, timbri e masse sonore assume un ruolo sempre più evidente nella scrittura. Ciò non significa che ogni brano prevedesse lo stesso organico o che le disposizioni fossero fissate una volta per tutte.</p>
+        <p>È un esempio della trasformazione discussa in questo capitolo: gli strumenti non si limitano a raddoppiare le voci, ma possono contribuire all'identità musicale di una composizione. Abbiamo incontrato <a href="#venezia-scuola">Venezia come scuola nel capitolo 06</a>; nel <a href="#venezia">capitolo 10</a> approfondiremo come lo spazio, la distanza e l'alternanza dei gruppi entrino nell'esperienza dell'ascolto.</p>
+      </aside>
       <div class="media-row">
         <button type="button" class="media-card resource" data-title="Gironda, hurdy gurdy" data-url="https://commons.wikimedia.org/wiki/File:Hurdy-Gurdy.jpg">
           <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hurdy-Gurdy.jpg" alt="Gironda">
@@ -1589,15 +1466,150 @@ di doman non c’è certezza.</blockquote>
 
     </section>
 
-
-
-
-
-
-    <section id="trattati">
-      <div class="section-title"><div class="section-no">10</div><div><h2>La musica comincia a spiegare se stessa</h2></div></div>
+<section class="mm-school-comparison mm-venezia-standalone" id="venezia"><div class="section-title"><div class="section-no">10</div><div><h2>Venezia: il suono progettato nello spazio</h2></div></div><p class="lead">Dopo la danza e gli strumenti, la tradizione polifonica ritorna in un ambiente nel quale la distribuzione fisica degli esecutori diventa una risorsa compositiva. Il caso di San Marco prosegue il confronto fra istituzioni musicali senza assimilare Venezia alla scuola romana.</p><div class="mm-school-subsection">
+      
       <div class="two-col">
-        <p>La stampa non moltiplica soltanto repertori da eseguire, ma rende possibile la circolazione di libri che spiegano come costruire, suonare, ornamentare e intavolare la musica. È una trasformazione decisiva, perché molti aspetti della prassi esecutiva non vengono registrati nelle partiture e possono essere ricostruiti soltanto attraverso le parole e le immagini dei trattatisti.</p>
+        <p>San Marco non è ancora la cattedrale di Venezia, ma la cappella del doge, legata direttamente alla rappresentazione politica della Serenissima. Questa condizione istituzionale, insieme alla particolare architettura della basilica e alla presenza di organi e cantorie, crea un ambiente nel quale la musica può sviluppare una identità molto diversa da quella romana.</p>
+        <p>Venezia non è protestante e non vive fuori dal cattolicesimo, ma possiede una autonomia politica sufficiente per negoziare duramente con Roma. L'interdetto del 1606 appartiene già al secolo successivo, ma mostra con chiarezza quanto la Repubblica considerasse la propria sovranità un limite reale all'ingerenza pontificia. Anche la cultura musicale di San Marco cresce dentro questa sicurezza istituzionale.</p>
+        <p>Adrian Willaert, maestro di cappella dal 1527, porta la grande tecnica franco fiamminga dentro un edificio che suggerisce la separazione fisica delle masse sonore. I cori spezzati non vengono inventati dal nulla, perché pratiche antifonali sono molto più antiche, ma a Venezia diventano un principio compositivo nel quale la distanza fra gruppi differenti acquista una funzione strutturale.</p>
+        <p>Con Andrea e Giovanni Gabrieli la ricerca si spinge ancora oltre. Cornetti, tromboni, viole, organi e voci possono essere distribuiti in gruppi differenti, rispondersi e riunirsi, mentre il timbro e la dinamica acquistano una evidenza crescente. Nelle <em>Sacrae symphoniae</em> del 1597 Giovanni Gabrieli pubblica anche la celebre <em>Sonata pian e forte</em>, uno dei documenti più eloquenti del momento in cui lo strumento comincia a essere pensato non soltanto come sostituto della voce ma come portatore di colore e contrasto autonomi.</p>
+        <p>Per le cappelle veneziane il dialogo fra gruppi non è un gioco acustico applicato dall'esterno a una partitura già conclusa. Nella scrittura policorale sacra, <strong>due o più complessi vocali possono articolare frasi alternate, sovrapporsi o riunirsi</strong>; gli strumenti non duplicano sempre e obbligatoriamente le voci. Le combinazioni dipendono dai brani e dalle condizioni della pratica esecutiva. È in questa pluralità di risposte — coro, organo, solista, insieme strumentale — che la lezione veneziana passa a compositori come Heinrich Schütz, rendendo permeabile il confine convenzionale fra Rinascimento e Barocco. Non bisogna immaginare ogni mottetto a cori spezzati eseguito con una disposizione spaziale identica.</p>
+<p>La collocazione dei cantori veneziani richiede tuttavia una ricostruzione documentaria, non soltanto l'osservazione dell'edificio. Lo studio di <strong>David Bryant</strong> sui <i>cori spezzati</i> di San Marco mostra che il cerimoniale indicava occasioni precise nelle quali i Vespri venivano cantati da due cori. Da questo non si può ricavare una disposizione spaziale fissa per ogni composizione. Le indicazioni relative alle voci, agli organi e agli strumenti vanno confrontate con i libri e con gli usi di una celebrazione concreta. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5" target="_blank" rel="noopener noreferrer">David Bryant · <i>The cori spezzati of St Mark's: myth and reality</i> ↗</a>.</p>
+<p>Dire <strong>antifonia</strong> e dire <strong>policoralità</strong> non è esattamente la stessa cosa. Nell'alternanza semplice un gruppo enuncia una formula e l'altro risponde; in una composizione policorale i gruppi possono anche <strong>cantare contemporaneamente linee autonome</strong>, ricompattandosi nei punti di maggiore evidenza testuale. Questa differenza è scritta nella musica prima che nell'effetto prodotto da una basilica riverberante. Per riconoscerla non basta ascoltare un'eco: bisogna confrontare nella partitura <strong>tessiture, ingressi, pause e riunioni dei gruppi</strong>. La ricerca di Bryant sugli usi cerimoniali di San Marco impedisce anche di trasformare una soluzione spaziale moderna in una regola invariabile del Cinquecento. <a href="https://www.cambridge.org/core/journals/early-music-history/article/abs/cori-spezzati-of-st-marks-myth-and-reality/A7A9F78946DE4A5F423F9D160747C2C5" target="_blank" rel="noopener noreferrer">David Bryant · documenti su cori e cerimoniale marciano ↗</a>.</p>
+<p>La musica, in questo modo, non occupa soltanto il tempo ma anche lo spazio. Roma aveva cercato trasparenza dentro la polifonia, mentre Venezia scopre che una composizione può essere progettata anche stabilendo da dove arrivi il suono, quale gruppo risponda a un altro e quando una massa sonora debba apparire vicina, lontana, piena o rarefatta.</p>
+      </div>
+
+
+      <div class="rin-focus" id="venezia-strumenti">
+        <div class="eyebrow">Dalla cappella ducale alla nascita di nuovi organici</div>
+        <h4>Fiati e archi: i colori di una città autonoma</h4>
+        <p>A Venezia la libertà sonora non deriva semplicemente dall'assenza di vincoli ecclesiastici. <strong>San Marco è la cappella del doge</strong>, centro religioso e simbolo dello Stato, dotato di risorse e di una tradizione di musicisti impegnati nelle processioni e nelle feste. La Repubblica rimane cattolica, ma difende le proprie prerogative nei confronti di Roma: l'organizzazione ducale offre condizioni istituzionali e materiali favorevoli a esperimenti che nella cappella papale assumono un carattere differente. <a href="https://www.treccani.it/enciclopedia/andrea-e-giovanni-gabrieli_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/" target="_blank" rel="noopener noreferrer">Treccani · Il fasto della Serenissima e la scuola veneziana ↗</a>.</p>
+        <p>La <a href="https://www.basilicasanmarco.it/basilica/tradizione-musicale/" target="_blank" rel="noopener noreferrer">storia ufficiale della Cappella Marciana ↗</a> chiarisce che soltanto dalla <strong>seconda metà del Cinquecento</strong> gli strumenti, oltre all'organo, acquisiscono un posto stabile nelle funzioni liturgiche, con predilezione per <strong>cornetti e tromboni</strong>. L'uso musicale di strumenti a fiato era tuttavia ben più antico nelle processioni e nelle cerimonie. Gli <strong>archi</strong> non compaiono improvvisamente dopo i fiati: viole da braccio e altri strumenti ad arco erano già presenti e diventano progressivamente più riconoscibili negli organici misti del tardo Cinquecento.</p>
+        <h4>Zarlino, Girolamo Dalla Casa e Giovanni Bassano</h4>
+        <p>Nel <strong>1568</strong> il maestro di cappella <strong>Gioseffo Zarlino</strong> ingaggia il virtuoso di cornetto <strong>Girolamo Dalla Casa, detto da Udine</strong>, e i suoi fratelli per l'attività strumentale di San Marco. Dalla Casa pubblica nel 1584 un trattato sulle diminuzioni: il cornetto è capace di sfumature e articolazioni ispirate alla voce. <strong>Giovanni Bassano</strong>, cornettista, autore e didatta attivo a San Marco dal 1576, diviene <em>maestro de' concerti</em> nel <strong>1601</strong>. L'innovazione non nasce dunque soltanto dai Gabrieli: richiede una rete di esecutori, insegnanti e organizzatori musicali. <a href="https://www.treccani.it/enciclopedia/giovanni-bassano_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Treccani · Giovanni Bassano ↗</a>.</p>
+        <h4>Giovanni Gabrieli: non soltanto voci raddoppiate</h4>
+        <p>Fra Cinquecento e Seicento l'impiego degli strumenti supera gradualmente il semplice sostegno della polifonia vocale. In un brano si possono alternare gruppi, mettere a confronto timbri e persino affidare agli strumenti parti autonome. Nelle <em>Sacrae symphoniae</em> del <strong>1597</strong> Giovanni Gabrieli indica cornetti, tromboni, viole da braccio e organi. La <em>Sonata pian e forte</em> trasforma il contrasto dinamico e la scelta dell'organico in elementi della scrittura: non inventa il piano e il forte, ma li prescrive espressamente in un disegno concertante.</p>
+        <div class="rin-compare">
+          <div><b>Fiati</b><p>Cornetti e tromboni: una sonorità prediletta per la solennità delle cerimonie.</p></div>
+          <div><b>Archi</b><p>Viole da braccio, violini e altri strumenti ad arco entrano in combinazioni sempre più diversificate.</p></div>
+          <div><b>Voce e organi</b><p>Raddoppio, alternanza, risposta e autonomia dei gruppi coesistono nelle pratiche del periodo.</p></div>
+        </div>
+        <h4>Roma e Venezia: due cattolicesimi musicali, non due Chiese contrapposte</h4>
+        <p>Il modello della <strong>Cappella Sistina</strong> privilegia il canto vocale, ma altre chiese romane impiegano organi e strumenti: sarebbe inesatto definire «senza strumenti» tutta Roma. Simmetricamente, non ogni brano veneziano è policorale. La diversità nasce dall'incrocio fra cerimoniale, spazio, risorse, committenza e musicisti. Il protestantesimo cambiò il quadro politico dell'Europa, ma <strong>non è dimostrato</strong> che Venezia adottasse organici più ricchi perché poteva minacciare il papa di diventare luterana o ortodossa.</p>
+        <p>Esiste invece una circolazione dimostrabile dalla Serenissima verso la Germania luterana: <strong>Heinrich Schütz</strong> studiò con Giovanni Gabrieli e rielaborò i suoi modelli nel mondo protestante. La libertà veneziana è perciò una chiave interpretativa utile, se la intendiamo come <strong>autonomia istituzionale e disponibilità di risorse</strong>, non come assenza di vincoli o effetto automatico della Riforma.</p>
+        <p class="rin-activity"><strong>✦ Per iniziare · Ascolta tre mondi.</strong> Confronta un corale luterano, una messa di Palestrina e una canzona di Gabrieli. Dove si riconosce meglio il testo? Dove emerge l'organico? Come cambiano lo spazio, le entrate e il colore?</p>
+      </div>
+      <div class="media-row">
+        <button type="button" class="media-card resource" data-title="Adrian Willaert e la scuola veneziana" data-url="https://www.europeana.eu/es/stories/adrian-willaert-and-the-foundation-of-the-venetian-school">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Adrian_Willaert.jpg" alt="Adrian Willaert">
+          <span class="shade"></span><span class="meta"><span class="tag">San Marco</span><h3><span id="mm-autore-compositore-adriano-willaert" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Willaert e i cori spezzati</h3></span>
+        </button>
+        <div class="mm-compact-listening" aria-label="Giovanni Gabrieli · Sonata pian e forte">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/HJbbuTV5Q_I?rel=0" title="Giovanni Gabrieli · Sonata pian e forte" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Giovanni Gabrieli · Sonata pian e forte</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Giovanni Gabrieli"><a href="https://imslp.org/wiki/Category:Giovanni_Gabrieli" target="_blank" rel="noopener noreferrer" title="Partiture IMSLP di Giovanni Gabrieli">♬ IMSLP</a><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Giovanni Gabrieli" data-mm-author="Giovanni Gabrieli">✧ Musurgia · Giovanni Gabrieli</a></span>
+</div>
+        <button type="button" class="media-card resource" data-title="Basilica di San Marco · tradizione musicale" data-url="https://www.basilicasanmarco.it/basilica/tradizione-musicale/">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Interni_basilica_san_Marco_04.jpg" alt="Interno della Basilica di San Marco">
+          <span class="shade"></span><span class="meta"><span class="tag">Architettura sonora</span><h3>San Marco come strumento</h3></span>
+        </button>
+      </div>
+
+      <div class="network mm-marciana-network">
+        <svg viewBox="0 0 950 445" role="img" aria-label="Schema didattico, non pianta storica: altare in alto, gruppo strumentale davanti all'altare, due cori laterali e ascoltatore nella navata">
+          <line x1="475" y1="92" x2="475" y2="116" class="mm-line-accent"></line>
+          <line x1="475" y1="237" x2="290" y2="269" class="edge blue"></line>
+          <line x1="475" y1="237" x2="660" y2="269" class="edge red"></line>
+          <line x1="475" y1="245" x2="475" y2="346" class="mm-line-accent"></line>
+          <rect x="355" y="16" width="240" height="78" rx="12" class="mm-marciana-altar"></rect>
+          <text x="475" y="53" text-anchor="middle" class="mm-marciana-altar-label">ALTARE</text>
+          <text x="475" y="75" text-anchor="middle" class="mm-marciana-altar-note">polo liturgico</text>
+          <circle cx="475" cy="174" r="79" class="mm-marciana-instruments"></circle>
+          <text x="475" y="169" text-anchor="middle" class="mm-marciana-on-dark">ORGANO E</text>
+          <text x="475" y="192" text-anchor="middle" class="mm-marciana-on-dark">STRUMENTI</text>
+          <circle cx="205" cy="270" r="88" class="mm-marciana-choir1"></circle>
+          <text x="205" y="265" text-anchor="middle" class="mm-marciana-on-dark">CORO I</text>
+          <text x="205" y="290" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">voci + strumenti</text>
+          <circle cx="745" cy="270" r="88" class="mm-marciana-choir2"></circle>
+          <text x="745" y="265" text-anchor="middle" class="mm-marciana-on-dark">CORO II</text>
+          <text x="745" y="290" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">voci + strumenti</text>
+          <circle cx="475" cy="371" r="63" class="mm-marciana-listener"></circle>
+          <text x="475" y="367" text-anchor="middle" class="mm-marciana-on-dark">NAVATA</text>
+          <text x="475" y="391" text-anchor="middle" class="mm-marciana-on-dark mm-marciana-small">ascoltatore</text>
+        </svg>
+        <p class="mini-caption"><strong>Schema concettuale, non ricostruzione della planimetria di San Marco.</strong> Il terzo gruppo rappresenta la possibilità di un ulteriore polo strumentale vicino all'altare: numero, posizione e combinazione degli esecutori variavano e devono essere verificati nelle fonti della singola celebrazione.</p>
+      </div>
+      <aside class="student-box" id="ragazzi-spazio">
+        <div class="student-label">✦ Per iniziare</div>
+        <h3>Il suono ha un posto</h3>
+        <p>In questo schema didattico due cori dialogano da posizioni diverse, mentre un gruppo strumentale può contribuire vicino all'altare. Non è la pianta certa di una singola esecuzione a San Marco: disposizione e organico potevano cambiare secondo l'occasione.</p>
+        <div class="try"><strong>Prova tu.</strong> In classe, due gruppi si dispongono ai lati opposti della stanza e si rispondono su una frase semplice, mentre un compagno ascolta al centro. Poi cambiate la distanza: il suono sembra più vicino o più lontano? Dove mettereste i due gruppi per far sentire “tanto spazio”?</div>
+      </aside>
+
+    </div></section>
+
+<section class="mm-firenze-standalone" id="firenze"><div class="section-title"><div class="section-no">11</div><div><h2>Firenze: la voce che torna sola</h2></div></div><p class="lead">Dopo aver ascoltato a Venezia le voci e gli strumenti dialogare nello spazio, il percorso segue una diversa ricerca: nella Firenze di fine Cinquecento si tenta di restituire alla parola cantata la riconoscibilità di un personaggio. Non si tratta di una sostituzione necessaria della polifonia, bensì di un'altra risposta a differenti esigenze artistiche.</p><div class="mm-corte-firenze" role="region" aria-labelledby="firenze-titolo">
+      <div class="mm-corte-firenze-header">
+        <div class="eyebrow">Dalle corti rinascimentali alla nascita del teatro in musica</div>
+        <h3 id="firenze-titolo">Dalle feste medicee alla Camerata</h3>
+        <p>Dalle feste del tempo di Lorenzo de' Medici agli <em>Intermedi della Pellegrina</em> e agli esperimenti della Camerata passa quasi un secolo: <strong>non è Lorenzo a fondare il melodramma</strong>. Ma le corti fiorentine, i loro intellettuali e gli spettacoli finanziati da principi e famiglie influenti mostrano come la protezione delle arti possa trasformarsi in ricerca sul teatro musicale.</p>
+      </div>
+      <div class="two-col">
+        <p>Nel tardo Cinquecento il madrigale aveva portato la polifonia a una capacità straordinaria di leggere la poesia, ma proprio questa raffinatezza rendeva sempre più evidente un limite. Quando cinque o sei voci pronunciano insieme un testo, la parola può essere interpretata in profondità e nello stesso tempo perdere la presenza concreta di una persona che parla. Alla fine del Cinquecento la Camerata riunita intorno a Giovanni de' Bardi trasforma questo problema in una ricerca teorica.</p>
+        <p>Gli uomini della Camerata immaginano che la tragedia greca avesse raggiunto una unione fra parola, canto e gesto che la polifonia moderna avrebbe smarrito. La loro ricostruzione dell'antichità è inevitabilmente ipotetica e in parte sbagliata, ma proprio questo fraintendimento diventa artisticamente fecondo, perché suggerisce una musica nella quale una voce sola possa seguire con chiarezza l'andamento del discorso mentre gli strumenti la sostengono.</p>
+        <p>Vincenzo Galilei entra così al centro del nostro percorso. Liutista, teorico e interlocutore critico di Zarlino, diventa uno degli intellettuali che criticano gli eccessi della polifonia e cercano nell'antico una giustificazione per una nuova monodia. Jacopo Peri, Giulio Caccini e Ottavio Rinuccini trasformano questa idea in teatro attraverso il <em>recitar cantando</em>.</p>
+        <p>La <em>Dafne</em> di Peri, rappresentata intorno al 1598 e conservata solo frammentariamente, viene generalmente ricordata come la prima opera di questo nuovo teatro musicale, mentre l'<em>Euridice</em> del 1600 è il primo esempio giunto quasi interamente fino a noi. Il basso continuo diventa fondamentale perché una linea grave e la realizzazione armonica permettono alla voce di emergere senza essere circondata da un tessuto di parti vocali equivalenti.</p>
+        <p>Monteverdi comprende però che la nuova monodia non deve distruggere tutto ciò che il madrigale aveva conquistato. Nell'<em>Orfeo</em> del 1607 il recitar cantando, i cori, gli strumenti, la danza, il madrigale e il nuovo senso drammatico vengono assorbiti dentro un organismo molto più ricco, mentre la distinzione fra <em>prima pratica</em> e <em>seconda pratica</em> rende esplicita l'idea che, quando l'espressione della parola lo richiede, la regola contrappuntistica possa essere piegata all'affetto.</p>
+      </div>
+
+      
+      <div class="history-pivot" id="intermedi-1589">
+        <h3>1589: gli Intermedi della <em>Pellegrina</em>, il teatro prima dell'opera</h3>
+        <p>Fra il madrigale e le prime opere manca un passaggio decisivo. Nel 1589, per le nozze fiorentine di <strong>Ferdinando I de' Medici e Cristina di Lorena</strong>, la commedia <em>La Pellegrina</em> di Girolamo Bargagli viene intervallata da sei spettacoli musicali di una magnificenza eccezionale. Giovanni de' Bardi coordina il progetto e vi partecipano Cristofano Malvezzi, Luca Marenzio, Giulio Caccini, Jacopo Peri, Emilio de' Cavalieri, Antonio Archilei e altri protagonisti dell'ambiente fiorentino.</p>
+        <p>Gli intermedi non sono ancora un'opera, perché rimangono spettacoli inseriti fra gli atti di una commedia, ma fanno già convergere musica, canto solistico e corale, strumenti, macchine sceniche, costumi e scenografie in un unico evento. Proprio per questo sono uno dei ponti più concreti fra la cultura spettacolare della corte rinascimentale e il teatro musicale che Peri e Caccini svilupperanno pochi anni dopo.</p>
+        <figure class="scene-inline">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/La_pellegrina_1589_-_Intermedio_1_-_L%27armonia_delle_sfere.jpg" alt="Bernardo Buontalenti, scena del primo intermedio della Pellegrina, 1589">
+          <figcaption>Bernardo Buontalenti, progetto scenico per il primo intermedio della <em>Pellegrina</em>, “L'armonia delle sfere”, Firenze 1589. Immagine in pubblico dominio.</figcaption>
+        </figure>
+        <button type="button" class="source-card resource" style="width:100%" data-title="Maggio Musicale Fiorentino · Intermedi della Pellegrina" data-url="https://www.maggiofiorentino.com/events/intermedi-della-pellegrina-3"><span class="src">1589 · Firenze</span><b>La Pellegrina e gli intermedi</b><span>Il Maggio Musicale Fiorentino ricostruisce il contesto, i compositori e il ruolo di questi spettacoli come precursori del teatro musicale.</span></button>
+      </div>
+      <div class="media-row">
+        <button type="button" class="media-card resource" data-title="Camerata de' Bardi" data-url="https://www.treccani.it/enciclopedia/camerata-de-bardi/">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni_de%27_Bardi.jpg" alt="Camerata de' Bardi">
+          <span class="shade"></span><span class="meta"><span class="tag">Firenze</span><h3>La Camerata de' Bardi</h3></span>
+        </button>
+        <button type="button" class="media-card resource mm-peri-card" data-title="Jacopo Peri" data-url="https://www.treccani.it/enciclopedia/iacopo-peri_%28Enciclopedia-Italiana%29/">
+          <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacopo_Peri.jpg" alt="Jacopo Peri">
+          <span class="shade"></span><span class="meta"><span class="tag">1600</span><h3>Euridice e il recitar cantando</h3></span>
+        </button>
+        <div class="mm-compact-listening" aria-label="Monteverdi · L'Orfeo, Tu se' morta">
+  <div class="mm-compact-player"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/SyPUJwGEUgA?rel=0" title="Monteverdi · L'Orfeo, Tu se' morta" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="mm-compact-caption">Monteverdi · L'Orfeo, Tu se' morta</div>
+  <span class="mm-mini-resources" aria-label="Risorse di Claudio Monteverdi"><a href="../atlante3d/" target="_blank" rel="noopener noreferrer" title="Apri Musurgia Mundi e cerca Claudio Monteverdi" data-mm-author="Claudio Monteverdi">✧ Musurgia · Claudio Monteverdi</a></span>
+</div>
+      </div>
+
+      <div class="compare-band">
+        <div class="compare-box">
+          <h3>Il mecenate rinascimentale</h3>
+          <p>Il principe umanista tende a presentarsi come partecipe della cultura che sostiene, attraverso studio, conversazione, pratica artistica e frequentazione degli intellettuali. Lo abbiamo incontrato nella figura di Lorenzo il Magnifico, esempio di partecipazione diretta del principe alla vita artistica.</p>
+        </div>
+        <div class="compare-box">
+          <h3>La corte barocca</h3>
+          <p>Nel Seicento il mecenatismo continua, ma la corte tende sempre più a trasformarsi in spettacolo di se stessa. Palazzo, giardino, festa, balletto, opera, scenografia e macchina teatrale concorrono a mostrare la magnificenza del potere, che invita artisti e musicisti non soltanto per partecipare alla cultura ma per costruire un ambiente capace di stupire.</p>
+        </div>
+      </div>
+
+      <div class="bridge-final">
+        <h3>Dalla festa di corte al teatro: una trasformazione, non una rottura</h3>
+        <p>Il Rinascimento aveva ricercato proporzione, parola e partecipazione alla cultura; fra gli ultimi decenni del Cinquecento e il Seicento la festa di corte diventa anche laboratorio di teatro, scenografia, meraviglia e canto drammatico. Le conquiste del madrigale non scompaiono: si trasformano in un linguaggio nel quale la musica può dare voce a un personaggio. <a href="../melodramma/#camerata">Prosegui nel percorso sulle origini del melodramma ↗</a>.</p>
+      </div>
+    </div></section>
+
+<section id="trattati">
+      <div class="section-title"><div class="section-no">12</div><div><h2>La musica comincia a spiegare se stessa</h2></div></div>
+      <div class="two-col">
+        <p>Dopo la svolta teatrale fiorentina, torniamo alle fonti attraverso le quali possiamo ricostruire la pratica musicale. La stampa, incontrata nel capitolo sulle botteghe e sulla circolazione musicale, non moltiplica soltanto repertori da eseguire: rende possibile anche la diffusione di libri che spiegano come costruire, suonare, ornamentare e intavolare la musica. È una trasformazione decisiva, perché molti aspetti della prassi esecutiva non vengono registrati nelle partiture e possono essere ricostruiti soltanto attraverso le parole e le immagini dei trattatisti.</p>
         <p>Il <em>Musica getutscht</em> di Sebastian Virdung, pubblicato nel 1511, è uno dei primi grandi libri a stampa dedicati agli strumenti, mentre Silvestro Ganassi, nella <em>Fontegara</em> del 1535, insegna non soltanto a suonare il flauto diritto ma a diminuire, cioè a trasformare note lunghe in figurazioni rapide e ornamentali. Diego Ortiz, Girolamo Dalla Casa e Giovanni Bassano continueranno questa tradizione mostrando quanto l'esecutore rinascimentale fosse tutt'altro che un lettore passivo del testo scritto.</p>
         <p>La diminuzione non consiste nel rendere il suono più debole, ma nel suddividere e fiorire una linea, trasformando una struttura relativamente semplice in una superficie ricca di passaggi. La fedeltà storica, quindi, non coincide sempre con l'esecuzione letterale di tutto ciò che è stampato, perché proprio le fonti dell'epoca mostrano che una parte dell'arte consisteva nel conoscere ciò che sulla pagina non veniva completamente specificato.</p>
         <p>Il <em>Fronimo</em> di Vincenzo Galilei, pubblicato nel 1568 e ampliato nel 1584, affronta l'arte di intavolare per liuto. Una intavolatura non descrive soltanto quali suoni eseguire, ma indica materialmente dove mettere le dita, proprio come quando oggi un ragazzo disegna la forma di un accordo di ukulele sulle corde e sui tasti. Trasferire una composizione polifonica sul liuto significa però raccogliere più voci dentro le mani di un solo esecutore e costringe quindi a pensare la musica anche come insieme simultaneo di suoni.</p>
@@ -1616,54 +1628,10 @@ di doman non c’è certezza.</blockquote>
     
       </section>
 
-
-
-
-
-
-    <section id="danza">
-      <div class="section-title"><div class="section-no">11</div><div><h2>La danza di corte: dalla pavana alla scena</h2></div></div>
-      <div class="literary-aside mm-prose-illustrated">
-        <div class="eyebrow">La musica che mette in moto il corpo</div>
-        <h3>Pavana, gagliarda e il laboratorio della danza</h3>
-<figure class="mm-prose-figure">
-          <img width="1381" height="652" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Woodcut_Galliard.png" alt="Xilografia con danzatori di gagliarda">
-          <figcaption>Danzatori di gagliarda in una xilografia riferita al XVI secolo, riprodotta nell’opera di Paul Lacroix <em>Manners, Custom and Dress</em>. <a href="https://commons.wikimedia.org/wiki/File:Woodcut_Galliard.png" target="_blank" rel="noopener noreferrer">Fonte e diritti: Wikimedia Commons (pubblico dominio) ↗</a></figcaption>
-        </figure>
-        <p>Una parte enorme della musica strumentale rinascimentale nasce per accompagnare il movimento. La <strong>pavana</strong>, lenta e solenne, viene frequentemente accostata alla <strong>gagliarda</strong>, più vivace e in ritmo ternario, mentre altre coppie molto diffuse sono passamezzo e saltarello. Il contrasto fra una danza più grave e una più rapida diventa così anche un principio musicale e prepara quelle successioni di danze che, nel secolo successivo, confluiranno nella suite.</p>
-        <p>La danza appartiene pienamente alla formazione del cortigiano. Nel <em>Libro del Cortegiano</em> Castiglione considera il ballare una competenza necessaria all'uomo di corte, purché esercitata con dignità e misura. Ancora una volta il “dilettante” rinascimentale non è semplicemente chi pratica male un'arte, ma una persona educata a cantare, suonare e danzare come parte della propria formazione sociale.</p>
-        
-        <div class="route-links">
-          <button type="button" class="source-card resource" data-title="Treccani · La musica per danza" data-url="https://www.treccani.it/enciclopedia/la-musica-per-danza_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"><span class="src">Danza</span><b>Pavana e gagliarda</b><span>Dalla funzione coreutica alle coppie di danze che preparano la futura suite.</span></button>
-          <button type="button" class="source-card resource" data-title="Treccani · Il ballo di corte" data-url="https://www.treccani.it/enciclopedia/il-ballo-di-corte_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"><span class="src">Corte</span><b>Castiglione e il gentiluomo che danza</b><span>La pratica del ballo come parte dell'educazione e della rappresentazione sociale.</span></button>
-        </div>
-      </div>
-    
-      <aside class="student-box" id="ragazzi-danza">
-      <div class="history-pivot" id="approfondimenti-friuli">
-        <h3>Una melodia che attraversa i secoli: Scjaraçule Maraçule</h3>
-        <p>Nel 1578 Giorgio Mainerio pubblica <em>Schiarazula Marazula</em> fra le danze del suo <em>Primo libro de balli</em>; nel 1624 un canto dallo stesso incipit ricompare in una testimonianza inquisitoriale relativa a un rito della pioggia nella Bassa friulana. Nel Novecento la melodia viene reinventata da Domenico Zannier e da Angelo Branduardi, fino a sollevare una domanda sull'autorialità e sulla memoria delle fonti.</p>
-        <p><a href="scjaracule/"><strong>Leggi il saggio «Scjaraçule Maraçule: dalla paleografia popolare al plagio d'autore?» →</strong></a></p>
-        <p>Per comprendere l'ambiente aquileiese nel quale questo repertorio circolava, <a href="rito-patriarchino/">approfondisci la storia del rito patriarchino, della tradizione orale e dei benandanti →</a>.</p>
-      </div>
-
-        <div class="student-label">✦ Per iniziare</div>
-        <h3>Camminare o saltare?</h3>
-        <p>La <strong>pavana</strong> è lenta e solenne, la <strong>gagliarda</strong> più vivace e in tre tempi. Venivano spesso suonate in coppia: prima una, poi l'altra.</p>
-        <div class="try"><strong>Prova tu.</strong> Ascolta una pavana e una gagliarda, le trovi nella teca. Batti il ritmo con le mani: quale ti fa pensare a un passo calmo, quale a un salto? Perché secondo te si alternavano?</div>
-        <p class="mm-inset-followup"><strong>Dal salone al teatro.</strong> Pavana, gagliarda e danza di corte hanno anche un ruolo scenico: gesto, musica e disposizione dei corpi si incontrano nelle feste e negli intermedi. La continuità fra festa, gesto e spettacolo è approfondita nel capitolo sulle corti: <a href="#firenze">Firenze, dalla festa al teatro musicale ↑</a>.</p>
-      </aside>
-</section>
-
-
-
-
-
-
-    <section id="temperamenti">
-      <div class="section-title"><div class="section-no">12</div><div><h2>Accordare il mondo</h2></div></div>
+<section id="temperamenti">
+      <div class="section-title"><div class="section-no">13</div><div><h2>Accordare il mondo</h2></div></div>
       <div class="two-col">
-        <p>La costruzione di strumenti sempre più raffinati porta inevitabilmente a una domanda che la voce e gli strumenti senza tasti possono risolvere con una certa elasticità: che cosa accade quando le altezze devono essere fissate una volta per tutte su una tastiera o su uno strumento con posizioni determinate? Accordatura e temperamento non sono sinonimi. Accordare significa stabilire le altezze, mentre temperare significa accettare consapevolmente che alcuni intervalli debbano essere leggermente modificati per rendere utilizzabile l'intero sistema.</p>
+        <p>La costruzione di strumenti sempre più raffinati pone una domanda che la voce e gli strumenti senza tasti possono risolvere con una certa elasticità: che cosa accade quando le altezze devono essere fissate una volta per tutte su una tastiera o su uno strumento con posizioni determinate? Accordatura e temperamento non sono sinonimi. Accordare significa stabilire le altezze, mentre temperare significa accettare consapevolmente che alcuni intervalli debbano essere leggermente modificati per rendere utilizzabile l'intero sistema.</p>
         <p>Gli intervalli più stabili possono essere descritti attraverso rapporti semplici, come l'ottava 2 a 1, la quinta 3 a 2 e la terza maggiore pura 5 a 4. Il problema nasce quando questi rapporti vengono concatenati, perché dodici quinte perfette non coincidono esattamente con sette ottave. La differenza, nota come comma pitagorico, mostra che la matematica stessa impedisce di costruire una tastiera nella quale tutti gli intervalli siano contemporaneamente puri.</p>
         <p>Il temperamento mesotonico risponde sacrificando leggermente le quinte per ottenere terze molto più soddisfacenti, mentre la conseguenza inevitabile è la comparsa di intervalli fortemente sgradevoli quando ci si allontana dalle zone più favorevoli del sistema. Gioseffo Zarlino, nelle <em>Istitutioni harmoniche</em> del 1558, riflette sui rapporti che includono il numero 5 e sulla consonanza delle terze, mentre Vincenzo Galilei, suo allievo e poi avversario, sposta progressivamente il problema verso una osservazione più pratica ed esperimentale.</p>
         <p>Non dobbiamo raccontare il Cinquecento come se stesse già cercando la libertà di modulare in tutte le tonalità maggiori e minori del sistema moderno, perché quel linguaggio non è ancora pienamente formato. Ciò che cresce è piuttosto la necessità di far convivere voci e strumenti, trasporre, utilizzare tastiere e percepire sempre più chiaramente la dimensione verticale degli accordi. Il temperamento equabile, che divide l'ottava in dodici semitoni uguali, rappresenterà una soluzione radicale, ma la sua affermazione pratica sarà lenta e per secoli continueranno a convivere sistemi differenti.</p>
@@ -1682,13 +1650,8 @@ di doman non c’è certezza.</blockquote>
       </button>
     </section>
 
-
-
-
-
-
-    <section id="galileo">
-      <div class="section-title"><div class="section-no">13</div><div><h2>Postludio · Galileo ascolta il mondo</h2></div></div>
+<section id="galileo">
+      <div class="section-title"><div class="section-no">14</div><div><h2>Postludio · Galileo ascolta il mondo</h2></div></div>
       <div class="essay-section">
         <p class="essay-lead">Nel 1623 siamo ormai cronologicamente oltre il Rinascimento, ma la “favola dei suoni” inserita da Galileo nel <em>Saggiatore</em> costituisce un postludio perfetto per il nostro percorso, perché il figlio di Vincenzo Galilei racconta un uomo curioso che crede di conoscere il modo in cui nasce un suono e viene continuamente smentito dall'esperienza.</p>
         <p>L'uomo ascolta dapprima gli uccelli, poi incontra uno zufolo, uno strumento ad arco, una porta che risuona sui cardini, un bicchiere sfregato, insetti e altri fenomeni che lo costringono ad ampliare continuamente la propria idea di ciò che possa produrre un suono. Quando cerca infine di capire la cicala, la sua indagine diventa distruttiva e non gli consegna neppure la certezza che cercava, così la conoscenza si conclude non con il trionfo di chi sa tutto, ma con una consapevolezza più profonda dei limiti del proprio sapere.</p>
