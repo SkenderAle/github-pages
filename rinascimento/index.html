@@ -603,6 +603,29 @@
   .mm-parola-shortactivity{padding:.85rem 1rem;border-left:4px solid #2f5e48;background:#edf1e8;font-size:.91rem!important}
   #parole{margin-bottom:3rem}
   @media(max-width:580px){.mm-corte-firenze{padding:1rem}.mm-parola-links a{width:100%}}
+
+/* Audit contrasto 2026-10-27: ogni scheda risorsa su fondo chiaro deve avere testo scuro. */
+.source-card.resource, button.source-card, .mm-corte-firenze .source-card {
+  background:#f3eadc !important;
+  border:1px solid #9d8666 !important;
+  color:#251f19 !important;
+  text-shadow:none !important;
+}
+.source-card.resource .src, button.source-card .src, .mm-corte-firenze .source-card .src {
+  color:#68431f !important;
+  text-shadow:none !important;
+}
+.source-card.resource b, button.source-card b, .mm-corte-firenze .source-card b,
+.source-card.resource strong, button.source-card strong {
+  color:#241d18 !important;
+  text-shadow:none !important;
+}
+.source-card.resource span:not(.src), button.source-card span:not(.src), .mm-corte-firenze .source-card span:not(.src) {
+  color:#3c342c !important;
+  text-shadow:none !important;
+}
+.source-card.resource:hover, button.source-card:hover {background:#e9dcc7 !important;border-color:#725333 !important}
+.source-card.resource:focus-visible, button.source-card:focus-visible {outline:3px solid #285c50;outline-offset:3px}
 </style>
 <link rel="stylesheet" href="../shared/atlas-autonav-v1.css?v=20261021-gerarchia02"><link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
 <link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-responsive02">
