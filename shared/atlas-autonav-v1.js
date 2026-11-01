@@ -34,9 +34,10 @@
     const after=nodes.slice(breakAt+1).filter(node=>node.matches&&node.matches("a,button"));
     chunks.push(before);
     // Gruppi editoriali stabili: non dividere i percorsi ogni sette voci.
-    // Percorsi III: esclusivamente audioteche effettive.
-    // I percorsi storici sul melodramma e sull'opera lirica restano in Percorsi II.
+    // Percorsi III: quattro percorsi tematici di ascolto.
+    // La parola e il canto appartiene qui; i percorsi storici restano nelle prime due sezioni.
     const order=[
+      "parola-e-canto/",
       "melodramma/audioteca/",
       "musica-da-camera/",
       "dalla-sinfonia-alla-rapsodia/"
@@ -53,8 +54,8 @@
       return rank(a)-rank(b);
     });
     const narrative=after.filter(a=>!inAudio(a));
-    // Percorsi I: dal Medioevo alla musica da camera; II: percorsi trasversali, compreso il cinema.
-    const boundary=narrative.findIndex(a=>(a.getAttribute("href")||"").includes("parola-e-canto/"));
+    // Percorsi I: dal Medioevo al melodramma classico; II: i successivi percorsi storici e trasversali.
+    const boundary=narrative.findIndex(a=>(a.getAttribute("href")||"").includes("romanticismo/"));
     const first=boundary>=0?narrative.slice(0,boundary):narrative.slice(0,7);
     const second=boundary>=0?narrative.slice(boundary):narrative.slice(7);
     chunks.push(first,second,audio);
