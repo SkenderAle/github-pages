@@ -1037,6 +1037,45 @@ function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4
   }
  }
  ctx.globalAlpha=1;
+ // Quando lo zoom porta un collegamento diretto fuori campo, segnala
+ // il nodo remoto sul bordo dell'area utile senza modificarne la geografia.
+ if(selected){
+  const stage=graphStage(),origin=map.get(selected.id);
+  if(origin){
+   const margin=18,rect={left:stage.left+margin,right:stage.right-margin,top:stage.top+margin,bottom:stage.bottom-margin};
+   const inside=p=>p.x>=rect.left&&p.x<=rect.right&&p.y>=rect.top&&p.y<=rect.bottom;
+   const guides=[],seen=new Set();
+   for(const e of activeEdges){
+    const otherId=e.source===selected.id?e.target:e.target===selected.id?e.source:null;
+    if(!otherId||seen.has(otherId))continue;
+    const distant=map.get(otherId);
+    if(!distant||!visibleNode(distant.node)||inside(distant)||!Number.isFinite(distant.x)||!Number.isFinite(distant.y))continue;
+    seen.add(otherId);
+    const dx=distant.x-origin.x,dy=distant.y-origin.y;
+    if(Math.hypot(dx,dy)<1)continue;
+    const anchor={x:clamp(origin.x,rect.left,rect.right),y:clamp(origin.y,rect.top,rect.bottom)};
+    let t=Infinity;
+    if(dx>0)t=Math.min(t,(rect.right-anchor.x)/dx);
+    if(dx<0)t=Math.min(t,(rect.left-anchor.x)/dx);
+    if(dy>0)t=Math.min(t,(rect.bottom-anchor.y)/dy);
+    if(dy<0)t=Math.min(t,(rect.top-anchor.y)/dy);
+    if(!Number.isFinite(t)||t<0)continue;
+    guides.push({x:anchor.x+dx*t,y:anchor.y+dy*t,angle:Math.atan2(dy,dx),label:distant.node.label});
+   }
+   ctx.save();ctx.font="600 10px system-ui";
+   for(const g of guides.slice(0,12)){
+    const bx=clamp(g.x,rect.left+5,rect.right-5),by=clamp(g.y,rect.top+5,rect.bottom-5);
+    ctx.globalAlpha=.91;ctx.fillStyle="#f1d08c";ctx.strokeStyle="#0b1b2d";ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(bx,by,5,0,Math.PI*2);ctx.fill();ctx.stroke();
+    const tx=clamp(bx+Math.cos(g.angle)*(-20),rect.left+35,rect.right-35);
+    const ty=clamp(by+Math.sin(g.angle)*(-20),rect.top+12,rect.bottom-12);
+    const label=g.label.length>28?g.label.slice(0,27)+"…":g.label;
+    ctx.textAlign=bx>stage.cx?"right":"left";ctx.textBaseline="middle";
+    ctx.lineWidth=3;ctx.strokeText(label,tx,ty);ctx.fillStyle="#ffe3a4";ctx.fillText(label,tx,ty);
+   }
+   ctx.restore();
+  }
+ }
  const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>{
   if(a.node===selected)return 1;if(b.node===selected)return -1;
   const ac=selected&&neighbors.has(a.node.id)?1:0,bc=selected&&neighbors.has(b.node.id)?1:0;
