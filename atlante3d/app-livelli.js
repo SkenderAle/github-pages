@@ -378,6 +378,10 @@ const COUNTRY_AREAS={
  "Svizzera":[46.8,8.2,1.2,2.0],"Armenia":[40.2,44.5,1.2,1.4]
 };
 const MUSICIAN_GEO_OVERRIDES={
+ "compositore-ennio-morricone":[41.9028,12.4964,"Roma"],
+ "compositore-giovanni-battista-sammartini":[45.4642,9.19,"Milano"],
+ "compositore-baldassare-galuppi":[45.4408,12.3155,"Venezia"],
+ "compositore-giovanni-battista-martini":[44.4949,11.3426,"Bologna"],
  "compositore-guillaume-de-machaut":[49.2583,4.0317,"Reims"],
  "compositore-adam-de-la-halle":[50.291,2.777,"Arras"],
  "compositore-guillaume-dufay":[50.176,3.235,"Cambrai"],
