@@ -612,12 +612,12 @@ function explodeNetwork(){
   if(e.source===selected.id)spotlightNodes.add(e.target);
   if(e.target===selected.id)spotlightNodes.add(e.source);
  }
- // Explode only a readable subset. All other nodes remain in the geographic graph.
+ // Esplodi ridistribuisce esclusivamente nodi non compositori. I compositori restano sulla propria geografia.
  const limits=[[6,0,0],[12,6,0],[14,9,6]][readingLevel];
  const rotation=Math.random()*Math.PI*2;
  let moved=0,available=0;
  for(let depth=1;depth<=readingDepth();depth++){
-  const pool=nodes.filter(n=>n!==selected&&depths.get(n.id)===depth&&visibleNode(n)&&(rawGeoPoint(n)||contextRawPoint(n)));
+  const pool=nodes.filter(n=>n!==selected&&n.type!=="compositore"&&depths.get(n.id)===depth&&visibleNode(n)&&(rawGeoPoint(n)||contextRawPoint(n)));
   available+=pool.length;
   pool.sort((a,b)=>(Number(spotlightNodes.has(b.id))-Number(spotlightNodes.has(a.id)))||a.label.localeCompare(b.label,"it")||a.id.localeCompare(b.id));
   const limit=limits[depth-1],count=Math.min(pool.length,limit);
