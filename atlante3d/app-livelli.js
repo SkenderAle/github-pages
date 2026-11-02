@@ -378,6 +378,12 @@ const COUNTRY_AREAS={
  "Svizzera":[46.8,8.2,1.2,2.0],"Armenia":[40.2,44.5,1.2,1.4]
 };
 const MUSICIAN_GEO_OVERRIDES={
+ "compositore-francesco-durante":[40.8518,14.2681,"Napoli"],
+ "compositore-nicola-porpora":[40.8518,14.2681,"Napoli"],
+ "compositore-amilcare-ponchielli":[45.4642,9.19,"Milano"],
+ "compositore-luigi-dallapiccola":[43.7696,11.2558,"Firenze"],
+ "compositore-nino-rota":[41.1171,16.8719,"Bari"],
+ "compositore-gaspare-spontini":[48.8566,2.3522,"Parigi"],
  "compositore-ennio-morricone":[41.9028,12.4964,"Roma"],
  "compositore-giovanni-battista-sammartini":[45.4642,9.19,"Milano"],
  "compositore-baldassare-galuppi":[45.4408,12.3155,"Venezia"],
