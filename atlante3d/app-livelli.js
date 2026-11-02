@@ -379,6 +379,7 @@ const COUNTRY_AREAS={
 };
 const MUSICIAN_GEO_OVERRIDES={
  "compositore-antonio-vivaldi":[45.4408,12.3155,"Venezia"],
+ "compositore-benedetto-marcello":[45.4408,12.3155,"Venezia"],
  "compositore-ludwig-van-beethoven":[50.7374,7.0982,"Bonn"],
  "compositore-leonard-bernstein":[40.7128,-74.0060,"New York"],
  "compositore-johann-sebastian-bach":[51.3397,12.3731,"Lipsia"],
