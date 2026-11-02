@@ -8,6 +8,7 @@ window.MUSIC_PROJECT_PAGES=[
 {slug:"romanticismo",title:"Romanticismo",period:"Ottocento · radici nel Settecento",tags:["pathos","Lied","scuole nazionali"],tone:"plum"},
 {slug:"risorgimento",title:"Risorgimento",period:"1847 · 1861",tags:["Mameli","Novaro","Verdi"],tone:"red"},
 {slug:"opera-lirica",title:"Opera lirica",period:"Ottocento",tags:["teatro","voce","opera"],tone:"future",construction:true},
-{slug:"post-romanticismo",title:"Verso le avanguardie",period:"Fine Ottocento · Novecento",tags:["sinfonismo","blues","jazz"],tone:"blue"},
+{slug:"post-romanticismo",title:"Verso le avanguardie",period:"Fine Ottocento · Novecento",tags:["blues","jazz"],tone:"blue"},
 {slug:"dal-musical-al-film",title:"Dal musical al film",period:"Dal teatro allo schermo",tags:["musical","cinema","colonna sonora"],tone:"plum"},
 ];
+window.MUSIC_PROJECT_TOPICS=[{label:"sinfonismo",href:"./dalla-sinfonia-alla-rapsodia/"}];
