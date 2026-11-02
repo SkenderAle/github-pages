@@ -378,6 +378,13 @@ const COUNTRY_AREAS={
  "Svizzera":[46.8,8.2,1.2,2.0],"Armenia":[40.2,44.5,1.2,1.4]
 };
 const MUSICIAN_GEO_OVERRIDES={
+ "compositore-giuseppe-malerbi":[44.421,11.912,"Lugo"],
+ "compositore-johann-christoph-bach-1671":[50.83,10.734,"Ohrdruf"],
+ "compositore-josquin-des-prez":[50.449,3.592,"Condé-sur-l’Escaut"],
+ "compositore-lauro-rossi":[45.4642,9.19,"Milano"],
+ "compositore-luigi-felice-rossi":[45.0703,7.6869,"Torino"],
+ "compositore-heinrich-kaminski":[47.7,11.4,"Ried presso Benediktbeuern"],
+ "compositore-maddalena-casulana":[43.7696,11.2558,"Firenze"],
  "compositore-andre-gedalge":[48.8566,2.3522,"Parigi"],
  "compositore-bartolomeo-tromboncino":[45.1564,10.7914,"Mantova"],
  "compositore-charles-hambitzer":[43.0389,-87.9065,"Milwaukee"],
