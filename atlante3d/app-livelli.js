@@ -378,6 +378,10 @@ const COUNTRY_AREAS={
  "Svizzera":[46.8,8.2,1.2,2.0],"Armenia":[40.2,44.5,1.2,1.4]
 };
 const MUSICIAN_GEO_OVERRIDES={
+ "compositore-pietro-mascagni":[43.5485,10.3106,"Livorno"],
+ "compositore-ruggero-leoncavallo":[40.8518,14.2681,"Napoli"],
+ "compositore-arrigo-boito":[45.4642,9.19,"Milano"],
+ "compositore-giacomo-meyerbeer":[48.8566,2.3522,"Parigi"],
  "compositore-francesco-durante":[40.8518,14.2681,"Napoli"],
  "compositore-nicola-porpora":[40.8518,14.2681,"Napoli"],
  "compositore-amilcare-ponchielli":[45.4642,9.19,"Milano"],
