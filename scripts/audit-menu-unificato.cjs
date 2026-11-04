@@ -68,6 +68,7 @@ fs.mkdirSync(saveDir,{recursive:true});
       canonical:canonical.length,
       canonicalHref:canonical[0]||null,
       legacy:old.length,
+      legacyAtlasInline:!!document.querySelector('.atlas-autonav')&&[...document.querySelectorAll('style')].some(el=>/\.nav-wrap\s*\{|\.nav-home\s*\{/.test(el.textContent||'')),
       legacyUrls:old,
       oldSubmenus:document.querySelectorAll('.atlas-autonav .atlas-subindex').length,
       oldSummary:summaries.filter(x=>/paragrafi\s*·\s*apri elenco/i.test(x)).length,
@@ -83,6 +84,7 @@ fs.mkdirSync(saveDir,{recursive:true});
     if(state.canonical!==1)errs.push('CSS unico assente/duplicato: '+state.canonical);
     if(state.canonicalHref&&!state.canonicalHref.includes('20261104-menu-unico03'))errs.push('Cache CSS obsoleta: '+state.canonicalHref);
     if(state.legacy)errs.push('CSS storico ancora importato: '+state.legacy+' '+state.legacyUrls.join(', '));
+    if(state.legacyAtlasInline)errs.push('Ancora CSS locale atlas nav-wrap/nav-home in HTML');
     if(!state.menu)errs.push('Pannello menu non generato');
     if(state.background!=='rgb(250, 247, 241)')errs.push('Sfondo difforme: '+state.background);
     if(state.oldSubmenus)errs.push('Sottoindici vecchi rimasti: '+state.oldSubmenus);
