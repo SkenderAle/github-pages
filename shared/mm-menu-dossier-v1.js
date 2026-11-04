@@ -29,7 +29,8 @@ for(const nav of navs){
   const id=(a.getAttribute('href')||'').slice(1);
   const section=document.getElementById(id);
   const chapter=make('details','mm-dossier-chapter');
-  chapter.append(make('summary',null,a.textContent.trim()));
+  const title=a.textContent.trim();
+  chapter.append(make('summary',null,title));
   a.classList.add('mm-dossier-go');a.textContent='Vai alla sezione ↗';chapter.append(a);
   if(section){
    let n=0;
@@ -46,7 +47,9 @@ for(const nav of navs){
     link.href='#'+heading.id;chapter.append(link);
    }
   }
-  panel.append(chapter);
+  if(chapter.querySelectorAll('a[href]').length===1){
+   a.textContent=title;a.classList.add('mm-dossier-leaf');panel.append(a);
+  }else panel.append(chapter);
  });
  menu.append(panel);
  holder.replaceChildren();
