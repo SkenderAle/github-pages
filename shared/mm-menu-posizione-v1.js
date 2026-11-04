@@ -10,6 +10,8 @@ function init(){
    const allLinks=[...entry.querySelectorAll('a[href]')];
    const direct=entry.querySelector(':scope > a[href]');
    if(!direct||allLinks.length!==1)continue;
+   // Converti solo il link introduttivo del capitolo, non l'unico vero figlio.
+   if(!/Vai alla sezione/i.test(direct.textContent)&&!direct.classList.contains('mm-compact-go')&&!direct.classList.contains('mm-dossier-go'))continue;
    const label=entry.querySelector(':scope > summary')?.textContent.trim();
    if(!label||/^☰|^Indice completo/i.test(label))continue;
    direct.textContent=label;direct.classList.add('mm-menu-leaf');
