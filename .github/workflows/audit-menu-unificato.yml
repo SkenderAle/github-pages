@@ -1,0 +1,42 @@
+name: Audit menu unificato (Chromium)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'shared/mm-menu-unificato-v1.css'
+      - 'shared/mm-menu-compatto-v1.js'
+      - 'shared/mm-menu-dossier-v1.js'
+      - 'shared/atlas-autonav-v1.js'
+      - 'scripts/audit-menu-unificato.cjs'
+      - '.github/workflows/audit-menu-unificato.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  menu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installa Chromium per Playwright
+        run: |
+          npm install --no-save playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Avvia il sito locale
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/mm-menu-server.log 2>&1 &
+          sleep 2
+      - name: Verifica tutti gli indici su desktop e mobile
+        run: node scripts/audit-menu-unificato.cjs
+      - name: Allega risultati e schermate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-menu-desktop-mobile
+          if-no-files-found: ignore
+          path: |
+            audit-menu-report.json
+            audit-menu-screenshots/
