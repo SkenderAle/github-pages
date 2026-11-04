@@ -16,6 +16,9 @@ const targets = [
  'rinascimento/scjaracule/index.html',
  'romanticismo/destino-provvidenza/index.html'
 ];
+// Verifica anche URL reali del dominio personalizzato: /rinascimento/, non solo /rinascimento/index.html.
+const domainPaths = ['/',...targets.filter(path=>path.endsWith('/index.html')).map(path=>path.replace(/index\.html$/, ''))];
+const allPaths = [...targets, ...domainPaths];
 const panelSelector = [
  '.atlas-autonav > nav.mm-compact-ready',
  '.menu-panel.mm-compact-romantic',
@@ -45,7 +48,7 @@ fs.mkdirSync(saveDir,{recursive:true});
    if(url.startsWith('http://127.0.0.1:8765/'))return route.continue();
    return route.abort();
   });
-  for(const path of targets){
+  for(const path of allPaths){
    const page=await context.newPage();
    try{
     await page.goto('http://127.0.0.1:8765/'+path,{waitUntil:'domcontentloaded',timeout:35000});
@@ -69,6 +72,9 @@ fs.mkdirSync(saveDir,{recursive:true});
       oldSummary:summaries.filter(x=>/paragrafi\s*·\s*apri elenco/i.test(x)).length,
       nestedCount:summaries.length,
       compactReady:!!document.querySelector('.atlas-autonav nav.mm-compact-ready'),
+      homeMode:!!document.querySelector('.atlas-autonav nav.mm-compact-home'),
+      detectedPage:document.querySelector('.atlas-autonav')?.dataset.atlasPage||null,
+      oldLabelVisible: /\\b\\d+\\s+paragrafi\\s*·\\s*apri elenco/i.test(menu?.textContent||''),
       detailsCount:menu?.querySelectorAll('details').length||0
      };
     },panelSelector);
@@ -78,9 +84,14 @@ fs.mkdirSync(saveDir,{recursive:true});
     if(!state.menu)errs.push('Pannello menu non generato');
     if(state.background!=='rgb(250, 247, 241)')errs.push('Sfondo difforme: '+state.background);
     if(state.oldSubmenus)errs.push('Sottoindici vecchi rimasti: '+state.oldSubmenus);
-    if(state.oldSummary)errs.push('Etichette legacy presenti: '+state.oldSummary);
+    if(state.oldSummary || state.oldLabelVisible)errs.push('Etichette legacy presenti: '+state.oldSummary);
+    const expectedHome = path==='/' || path==='index.html';
+    if(state.detectedPage){
+      if(expectedHome && (state.detectedPage!=='home'||!state.homeMode)) errs.push('Home non riconosciuta correttamente: '+state.detectedPage);
+      if(!expectedHome && (state.detectedPage==='home'||state.homeMode)) errs.push('Sottopagina scambiata per home: '+state.detectedPage);
+    }
     if(state.font&&!/system-ui/i.test(state.font))errs.push('Font menu difforme: '+state.font);
-    const name=path.split('/').filter(Boolean).slice(0,-1).join('-')||'home';
+    const name=(path.endsWith('/')?path.slice(0,-1):path.replace(/\/index\.html$/,'')).split('/').filter(Boolean).join('-')||'home';
     const toggle=page.locator([
      '.atlas-autonav>.atlas-menu-toggle','#indice-menu>summary',
      '#av-indice>summary','.classico-menu>summary',
@@ -121,7 +132,7 @@ fs.mkdirSync(saveDir,{recursive:true});
   await context.close();
  }
  await browser.close();
- fs.writeFileSync('audit-menu-report.json',JSON.stringify({time:new Date().toISOString(),pages:targets.length,modes:modes.map(x=>x.name),failures,report},null,2));
+ fs.writeFileSync('audit-menu-report.json',JSON.stringify({time:new Date().toISOString(),pages:targets.length,urls:allPaths.length,modes:modes.map(x=>x.name),failures,report},null,2));
  console.log('Audit: '+report.length+' controlli, '+failures.length+' difformità.');
  if(failures.length)process.exitCode=1;
 })().catch(err=>{console.error(err);process.exitCode=2;});
