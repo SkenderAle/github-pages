@@ -68,17 +68,41 @@
    outro.replaceWith(details);
   }
  }
- // Avanguardie: freccina direttamente sul titolo solo se sono presenti figli.
- // Le voci prive di paragrafi restano link diretti, senza righe supplementari.
+ // Avanguardie: tre macro-parti autonome, ciascuna con i propri capitoli.
+ // Si impagina il gruppo, mai i singoli capitoli distribuiti a scacchiera.
  const av=document.querySelector('#av-indice > .av-panel');
  if(av&&!av.classList.contains('mm-compact-ready')){
   const links=[...av.querySelectorAll(':scope > a[href^="#"]')];
   if(links.length){
-   av.classList.add('mm-compact-ready','mm-av-direct-links');
+   av.classList.add('mm-compact-ready','mm-av-direct-links','mm-av-grouped');
    const title=av.querySelector(':scope > strong')||make('strong',null,'Verso le avanguardie · Indice');
-   const fragment=document.createDocumentFragment();fragment.append(title);
-   let idx=0;
+   const fragment=document.createDocumentFragment();
+   fragment.append(title);
+   const groups=make('div','mm-av-group-grid');
+   fragment.append(groups);
+   let currentGroup=null,idx=0;
    for(const link of links){
+    if(link.classList.contains('av-part-link')){
+     currentGroup=make('section','mm-av-part-group');
+     const heading=make('h2','mm-av-part-heading');
+     const label=link.textContent.trim();
+     const match=label.match(/^([IVX]+)\s*·\s*(.+)$/);
+     if(match){
+      link.textContent='';
+      link.append(make('span','mm-av-part-number',match[1]));
+      link.append(make('span','mm-av-part-name',match[2]));
+      link.setAttribute('aria-label',label);
+     }
+     link.classList.add('mm-av-part-anchor');
+     heading.append(link);
+     currentGroup.append(heading);
+     groups.append(currentGroup);
+     continue;
+    }
+    if(!currentGroup){
+     currentGroup=make('section','mm-av-part-group');
+     groups.append(currentGroup);
+    }
     const id=link.getAttribute('href').slice(1);
     const target=document.getElementById(id);
     const next=links.slice(idx+1).map(a=>document.getElementById(a.getAttribute('href').slice(1))).find(Boolean);
@@ -111,7 +135,7 @@
      link.classList.add('mm-compact-go','mm-compact-leaf');
      item.append(link);
     }
-    fragment.append(item);idx++;
+    currentGroup.append(item);idx++;
    }
    av.replaceChildren(fragment);
    av.addEventListener('click',event=>{
