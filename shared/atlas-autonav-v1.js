@@ -113,6 +113,7 @@
   button.setAttribute("aria-haspopup","true");
   button.setAttribute("aria-expanded","false");
   function toggle(open){
+   if(!open)nav.querySelectorAll("details[open]").forEach(details=>{details.open=false;});
    bar.classList.toggle("atlas-menu-open",open);
    button.setAttribute("aria-expanded",String(open));
   }
