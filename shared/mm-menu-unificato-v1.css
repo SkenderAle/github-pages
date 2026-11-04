@@ -1315,3 +1315,14 @@ nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf:hover{background:#e4d9e4
  }
  a.mm-menu-leaf:hover,a.mm-menu-leaf:focus-visible{background:#e3d7e6!important}
  a.mm-menu-leaf.mm-reading-chapter{border-left:4px solid #7b4b77!important;background:#dfcfe3!important}
+
+/* Dossier Romanticismo / Destino e Provvidenza: il menu canonico e' nav.mm-dossier-menu.
+   Se JavaScript non parte, manteniamo navigabili i link originali tramite questo fallback. */
+nav.site-nav:not(.mm-dossier-menu){position:sticky;top:0;z-index:10;background:#282637;color:#fff;border-bottom:1px solid #ffffff30;min-height:55px}
+nav.site-nav:not(.mm-dossier-menu) .nav-inner{margin:auto;max-width:1200px;display:flex;align-items:center;gap:.65rem;padding:.45rem clamp(.7rem,3vw,1.5rem)}
+nav.site-nav:not(.mm-dossier-menu) .nav-home{flex:none;color:#fff!important;text-decoration:none;border:1px solid #ffffff55;border-radius:4px;padding:.5rem .7rem;font:750 .8rem/1.25 system-ui}
+nav.site-nav:not(.mm-dossier-menu) .nav-items{display:flex;gap:.25rem;overflow-x:auto;white-space:nowrap}
+nav.site-nav:not(.mm-dossier-menu) .nav-items a{color:#fffaf1;text-decoration:none;font:600 .8rem/1.4 system-ui;padding:.5rem .68rem}
+nav.site-nav:not(.mm-dossier-menu) .nav-items a:hover{background:#ffffff1d}
+@media(max-width:680px){nav.site-nav:not(.mm-dossier-menu) .nav-items a{font-size:.78rem;padding:.5rem}}
+@media print{nav.site-nav{display:none!important}}

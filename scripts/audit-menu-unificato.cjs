@@ -83,7 +83,7 @@ fs.mkdirSync(saveDir,{recursive:true});
       canonicalHref:canonical[0]||null,
       legacy:old.length,
       legacyExternalRules,
-      legacyAtlasInline:!!document.querySelector('.atlas-autonav')&&[...document.querySelectorAll('style')].some(el=>/\.nav-wrap\s*\{|\.nav-home\s*\{/.test(el.textContent||'')),
+      legacyAtlasInline:[...document.querySelectorAll('style')].some(el=>/\.(?:nav-wrap|nav-home|site-nav|nav-items)\s*\{/.test(el.textContent||'')),
       legacyUrls:old,
       oldSubmenus:document.querySelectorAll('.atlas-autonav .atlas-subindex').length,
       oldSummary:summaries.filter(x=>/paragrafi\s*·\s*apri elenco/i.test(x)).length,
