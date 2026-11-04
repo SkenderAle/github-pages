@@ -237,3 +237,18 @@
 @media print{
  .av-panel.mm-av-grouped{display:none!important}
 }
+
+/* Il triangolo nativo è l'unico indicatore di espansione:
+   il simbolo ☰ del bottone principale non va ripetuto nei capitoli. */
+.menu-panel.mm-compact-romantic details.mm-compact-chapter>summary::before,
+.menu-panel.mm-compact-romantic details.mm-compact-outro>summary::before{
+ content:none!important;
+ display:none!important;
+}
+.menu-panel.mm-compact-romantic .menu-preface>.mm-compact-prologue{
+ margin:.34rem 0 .55rem!important;
+}
+.menu-panel.mm-compact-romantic .menu-preface>.mm-compact-prologue>summary{
+ background:var(--mm-menu-subtle)!important;
+ color:var(--mm-menu-text)!important;
+}
