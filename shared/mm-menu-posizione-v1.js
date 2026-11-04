@@ -1,6 +1,37 @@
 /* Musurgia Mundi — posizione di lettura in capitoli/paragrafi, senza toccare lo scroll. */
 (()=>{'use strict';
 function init(){
+ // Lo stesso criterio vale per tutti i modelli di indice che usano questo script.
+ // Con un solo link ("Vai alla sezione") e nessun figlio, niente <details> e niente freccina.
+ const menuPanels='.av-panel,.classico-menu-panel,.anatomia-menu-panel,.mm-audio-panel,.mm-dossier-panel,.mm-index-panel,.mm-concerti-panel,.mm-compact-romantic,#menu > .panel,.atlas-autonav nav.mm-compact-ready,.mm-index-panel,.classico-menu-panel';
+ for(const panel of document.querySelectorAll(menuPanels)){
+  for(const entry of [...panel.querySelectorAll('details')]){
+   if(!entry.isConnected||!entry.querySelector(':scope > summary'))continue;
+   const allLinks=[...entry.querySelectorAll('a[href]')];
+   const direct=entry.querySelector(':scope > a[href]');
+   if(!direct||allLinks.length!==1)continue;
+   const label=entry.querySelector(':scope > summary')?.textContent.trim();
+   if(!label||/^☰|^Indice completo/i.test(label))continue;
+   direct.textContent=label;direct.classList.add('mm-menu-leaf');
+   entry.replaceWith(direct);
+  }
+ }
+ // La selezione di un collegamento terminale chiude SEMPRE il menu esterno,
+ // anche quando l'ancora non avvia una navigazione a un'altra pagina.
+ const menuPanelSelector='.av-panel,.classico-menu-panel,.anatomia-menu-panel,.mm-audio-panel,.mm-dossier-panel,.mm-index-panel,.mm-concerti-panel,.mm-compact-romantic,#menu > .panel,.atlas-autonav nav.mm-compact-ready';
+ document.addEventListener('click',event=>{
+  const a=event.target.closest('a[href]');
+  const panel=a?.closest(menuPanelSelector);
+  if(!panel)return;
+  const owner=panel.closest('details');
+  if(owner){
+   owner.querySelectorAll('details[open]').forEach(d=>d.open=false);
+   owner.open=false;
+  }
+  const bar=panel.closest('.atlas-autonav');
+  if(bar){bar.classList.remove('atlas-menu-open');bar.querySelector('.atlas-menu-toggle')?.setAttribute('aria-expanded','false');}
+ });
+ // Evidenziazione e gestione dei pannelli: anche i menu dedicati restano richiusibili.
  const selectors='.atlas-autonav nav.mm-compact-ready:not(.mm-compact-home),.menu-panel.mm-compact-romantic,.mm-index-panel,.mm-concerti-panel,.av-panel,#menu > .panel,.classico-menu-panel,.anatomia-menu-panel,.menu-panel';
  const panels=[...document.querySelectorAll(selectors)];
  const links=[];
@@ -8,7 +39,7 @@ function init(){
   let id;try{id=decodeURIComponent(a.getAttribute('href').slice(1))}catch{continue}
   const target=document.getElementById(id);
   if(!target||panel.contains(target))continue;
-  const parent=a.closest('.mm-av-chapter,details.mm-compact-chapter,details.mm-chapter,details.pc-chapter,details.classico-chapter,details.anatomia-chapter,.menu-chapter,details');
+  const parent=a.closest('.mm-av-chapter,.mm-menu-leaf,.mm-compact-leaf,details.mm-compact-chapter,details.mm-chapter,details.pc-chapter,details.classico-chapter,details.anatomia-chapter,.menu-chapter,details');
   if(!parent||parent===panel.closest('details'))continue;
   links.push({a,id,target,parent,panel});
  }
@@ -22,6 +53,16 @@ function init(){
  .mm-reading-chapter>summary{background:#dfcfe3!important;color:#331e39!important;box-shadow:inset 0 0 0 1px #976c9b!important}
  a.mm-reading-paragraph{background:#e5d5ec!important;color:#2c1539!important;font-weight:800!important;border-left:4px solid #795385!important;padding-left:.45rem!important}
  .mm-reading-chapter>summary::after{content:" · in lettura";font-size:.72em;font-weight:650;opacity:.76}
+ a.mm-menu-leaf{
+  display:block!important;min-width:0!important;padding:.55rem .7rem!important;
+  margin:.3rem 0 .5rem!important;border:1px solid #dacdd4!important;
+  border-left:3px solid #bdaabd!important;border-radius:4px!important;
+  color:#342437!important;background:#eee6ec!important;text-decoration:none!important;
+  font:750 .83rem/1.5 system-ui,-apple-system,sans-serif!important;
+  overflow-wrap:anywhere!important;
+ }
+ a.mm-menu-leaf:hover,a.mm-menu-leaf:focus-visible{background:#e3d7e6!important}
+ a.mm-menu-leaf.mm-reading-chapter{border-left:4px solid #7b4b77!important;background:#dfcfe3!important}
  `;document.head.append(style);
  function position(){
   scheduled=false;const y=window.scrollY+Math.min(105,Math.max(65,innerHeight*.11));
@@ -36,7 +77,7 @@ function init(){
  function queue(){if(!scheduled){scheduled=true;requestAnimationFrame(position)}}
  // I sottoindici si aprono esclusivamente per volontà dell'utente.
  // Alla chiusura del menu principale ogni capitolo torna richiuso.
- const outerMenus=[...new Set([...panels].map(p=>p.closest('details')).filter(Boolean))];
+ const outerMenus=[...new Set([...panels].map(p=>p.closest('details')).concat([...document.querySelectorAll('#indice-menu,#menu,#av-indice,.mm-index-details,.mm-concerti-index,.classico-menu,.anatomia-menu,.mm-audio-index,.mm-dossier-index')]).filter(Boolean))];
  for(const menu of outerMenus){
   menu.addEventListener('toggle',()=>{
    if(!menu.open){menu.querySelectorAll('details').forEach(d=>d.open=false);return;}
