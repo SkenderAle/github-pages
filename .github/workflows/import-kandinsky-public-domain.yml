@@ -15,8 +15,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - name: Prepare image tools
-        run: python3 -m pip install --quiet --user requests pillow beautifulsoup4
+        run: python3 -m pip install --quiet requests pillow beautifulsoup4
       - name: Download and validate public-domain reproductions
         run: python3 tools/import-kandinsky-public-domain.py
       - name: Confirm all referenced local images exist
