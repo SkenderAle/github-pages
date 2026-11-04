@@ -74,7 +74,7 @@ fs.mkdirSync(saveDir,{recursive:true});
       compactReady:!!document.querySelector('.atlas-autonav nav.mm-compact-ready'),
       homeMode:!!document.querySelector('.atlas-autonav nav.mm-compact-home'),
       detectedPage:document.querySelector('.atlas-autonav')?.dataset.atlasPage||null,
-      oldLabelVisible: /\\b\\d+\\s+paragrafi\\s*·\\s*apri elenco/i.test(menu?.textContent||''),
+      oldLabelVisible: /\b\d+\s+paragrafi\s*·\s*apri elenco/i.test(menu?.textContent||''),
       detailsCount:menu?.querySelectorAll('details').length||0
      };
     },panelSelector);
