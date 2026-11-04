@@ -89,6 +89,8 @@
     let node=start.nextElementSibling;
     while(node&&!node.matches('section,article')){candidates.push(...(node.matches('h3,h4')?[node]:[...node.querySelectorAll('h3,h4')]));node=node.nextElementSibling;}
    }
+   // Medioevo: gli H3/H4 di ascolti e laboratori non sono paragrafi editoriali.
+   if(page==='medioevo')candidates=candidates.filter(h=>!h.closest('.verified-listen,.listen-copy,.voice-demo,.polytime-lab,.poly-mixer'));
    if(!candidates.length)continue;
    const details=document.createElement('details');details.className='atlas-subindex';
    const summary=document.createElement('summary');summary.textContent=candidates.length+' paragrafi · apri elenco';details.appendChild(summary);
