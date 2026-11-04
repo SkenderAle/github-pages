@@ -1326,3 +1326,19 @@ nav.site-nav:not(.mm-dossier-menu) .nav-items a{color:#fffaf1;text-decoration:no
 nav.site-nav:not(.mm-dossier-menu) .nav-items a:hover{background:#ffffff1d}
 @media(max-width:680px){nav.site-nav:not(.mm-dossier-menu) .nav-items a{font-size:.78rem;padding:.5rem}}
 @media print{nav.site-nav{display:none!important}}
+
+/* Modernità: navigazione e fallback solo nel CSS menu canonico.
+   Il contenitore resta sticky quando JS trasforma nav in .mm-index-bar. */
+.mm-modern-nav-host{
+ position:sticky;top:0;z-index:1000;background:var(--mm-top-night);
+}
+.mm-modern-nav-host>nav:not(.mm-index-bar){
+ max-width:1200px;margin:auto;display:flex;align-items:center;gap:.3rem;
+ overflow-x:auto;padding:.62rem .8rem;white-space:nowrap;scrollbar-width:thin;
+ color:#fff4e9;font:700 .83rem/1.4 var(--mm-menu-font);
+}
+.mm-modern-nav-host>nav:not(.mm-index-bar)>a{
+ padding:.5rem .7rem;color:#fff4e9;text-decoration:none;border-radius:4px;
+}
+.mm-modern-nav-host>nav:not(.mm-index-bar)>a:hover{background:var(--mm-top-button-hover)}
+.mm-modern-nav-host>nav:not(.mm-index-bar)>a.home{border:1px solid #ffffff55}
