@@ -30,7 +30,7 @@ const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
      const url=BASE+'/'+test.slug+'/?mm_menu_audit=20261104-dominio01';
      const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:28000});
      if(!response || response.status()!==200)throw new Error('HTTP '+response?.status());
-     await page.waitForSelector('.atlas-autonav nav.mm-compact-ready',{timeout:10000});
+     await page.waitForSelector('.atlas-autonav nav.mm-compact-ready',{state:'attached',timeout:10000});
      const state=await page.evaluate(()=>{
       const bar=document.querySelector('.atlas-autonav');
       const nav=bar?.querySelector(':scope > nav');
