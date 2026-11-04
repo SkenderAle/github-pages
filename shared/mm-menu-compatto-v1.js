@@ -81,7 +81,7 @@
    const groups=make('div','mm-av-group-grid');
    fragment.append(groups);
    let currentGroup=null,idx=0;
-   for(const link of links){
+   for(const [position,link] of links.entries()){
     if(link.classList.contains('av-part-link')){
      currentGroup=make('section','mm-av-part-group');
      const heading=make('h2','mm-av-part-heading');
@@ -105,7 +105,7 @@
     }
     const id=link.getAttribute('href').slice(1);
     const target=document.getElementById(id);
-    const next=links.slice(idx+1).map(a=>document.getElementById(a.getAttribute('href').slice(1))).find(Boolean);
+    const next=links.slice(position+1).map(a=>document.getElementById(a.getAttribute('href').slice(1))).find(Boolean);
     const item=make('div','mm-compact-chapter mm-av-chapter');
     const originalTitle=link.textContent.trim();
     const root=target?.closest('section')||target;
