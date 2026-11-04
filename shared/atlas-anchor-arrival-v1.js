@@ -175,6 +175,22 @@
    if(a.closest(".atlas-autonav, .details-menu, #indice .index-grid"))return;
    let id;try{id=decodeURIComponent(a.getAttribute("href").slice(1))}catch{return}
    if(!document.getElementById(id))return;
+   // Il click viene intercettato in capture e non raggiunge i listener
+   // degli indici: chiudere qui il pannello PRIMA di stopPropagation.
+   // Funziona per le voci finali e per i titoli di parte che portano a un'ancora.
+   const panel=a.closest('.av-panel,.classico-menu-panel,.anatomia-menu-panel,.mm-audio-panel,.mm-dossier-panel,.mm-index-panel,.mm-concerti-panel,.mm-compact-romantic,#menu > .panel,.atlas-autonav nav.mm-compact-ready');
+   if(panel){
+    const owner=panel.closest('details');
+    if(owner){
+     owner.querySelectorAll('details[open]').forEach(d=>d.open=false);
+     owner.open=false;
+    }
+    const bar=panel.closest('.atlas-autonav');
+    if(bar){
+     bar.classList.remove('atlas-menu-open');
+     bar.querySelector('.atlas-menu-toggle')?.setAttribute('aria-expanded','false');
+    }
+   }
    event.preventDefault();
    event.stopPropagation();
    history.pushState(null,"","#"+encodeURIComponent(id));
