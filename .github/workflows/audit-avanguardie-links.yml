@@ -1,0 +1,32 @@
+name: Musurgia - audit fonti esterne Avanguardie
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-avanguardie-links.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prepare HTTP client
+        run: python3 -m pip install --quiet requests
+      - name: Audit external references, local assets and Atlas IDs
+        run: python3 tools/audit_avanguardie_links.py
+      - name: Publish dated audit in main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add verso-le-avanguardie/AUDIT_LINK_ESTERNI_2026-11-04.md
+          if git diff --cached --quiet; then echo 'No report changes'; exit 0; fi
+          git commit -m 'Audit Avanguardie: rapporto completo HTTP e nodi Atlante'
+          git push origin HEAD:main
