@@ -39,6 +39,23 @@
     }
    }
   }
+  // Rinascimento: gruppi verticali, I–III a sinistra e IV–Materiali a destra.
+  // La conversione compatta e gli href restano invariati nelle altre pagine.
+  if(count&&bar.dataset.atlasPage==='rinascimento'){
+   const children=[...fragment.childNodes];
+   const title=children.shift();
+   const columns=[make('div','mm-compact-column'),make('div','mm-compact-column')];
+   let groupIndex=-1,container=columns[0];
+   for(const child of children){
+    if(child.nodeType===1&&child.classList.contains('mm-compact-part')){
+     groupIndex++;
+     container=make('div','mm-compact-group');
+     columns[groupIndex<3?0:1].append(container);
+    }
+    container.append(child);
+   }
+   fragment.append(title,...columns);
+  }
   if(count){nav.replaceChildren(fragment);nav.dataset.mmChapterCount=String(count);}
  });
  // Romanticismo: riutilizza gli ancoraggi e gli ascolti, ma elimina il doppio passaggio
