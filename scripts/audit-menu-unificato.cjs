@@ -64,6 +64,7 @@ fs.mkdirSync(saveDir,{recursive:true});
       font:css?.fontFamily||null,
       canonical:canonical.length,
       legacy:old.length,
+      legacyUrls:old,
       oldSubmenus:document.querySelectorAll('.atlas-autonav .atlas-subindex').length,
       oldSummary:summaries.filter(x=>/paragrafi\s*·\s*apri elenco/i.test(x)).length,
       nestedCount:summaries.length,
@@ -73,7 +74,7 @@ fs.mkdirSync(saveDir,{recursive:true});
     },panelSelector);
     const errs=[];
     if(state.canonical!==1)errs.push('CSS unico assente/duplicato: '+state.canonical);
-    if(state.legacy)errs.push('CSS storico ancora importato: '+state.legacy);
+    if(state.legacy)errs.push('CSS storico ancora importato: '+state.legacy+' '+state.legacyUrls.join(', '));
     if(!state.menu)errs.push('Pannello menu non generato');
     if(state.background!=='rgb(250, 247, 241)')errs.push('Sfondo difforme: '+state.background);
     if(state.oldSubmenus)errs.push('Sottoindici vecchi rimasti: '+state.oldSubmenus);
