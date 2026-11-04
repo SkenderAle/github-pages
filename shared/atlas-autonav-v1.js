@@ -91,6 +91,7 @@
    }
    // Medioevo: gli H3/H4 di ascolti e laboratori non sono paragrafi editoriali.
    if(page==='medioevo')candidates=candidates.filter(h=>!h.closest('.verified-listen,.listen-copy,.voice-demo,.polytime-lab,.poly-mixer'));
+   if(page==='rinascimento')candidates=candidates.filter(h=>!h.closest('.journey-card'));
    if(!candidates.length)continue;
    const details=document.createElement('details');details.className='atlas-subindex';
    const summary=document.createElement('summary');summary.textContent=candidates.length+' paragrafi · apri elenco';details.appendChild(summary);
