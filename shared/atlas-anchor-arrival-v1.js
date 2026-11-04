@@ -26,9 +26,13 @@
   }
   const nav=original.matches("nav")?original:original.querySelector("nav");if(!nav)return;
   const links=Array.from(nav.querySelectorAll("a[href]"));if(!links.length)return;
-  const css=document.createElement("link");css.rel="stylesheet";
-  css.href=new URL("atlas-autonav-v1.css",document.currentScript.src).href;
-  if(!document.querySelector('link[href*="atlas-autonav-v1.css"]'))document.head.appendChild(css);
+  // L'indice deve usare un solo CSS: evita di reiniettare il vecchio foglio
+  // sulle pagine che caricano gia' il tema condiviso.
+  if(!document.querySelector('link[rel="stylesheet"][href*="mm-menu-unificato-v1.css"]')){
+   const css=document.createElement("link");css.rel="stylesheet";
+   css.href=new URL("mm-menu-unificato-v1.css?v=20261104-audit-unico01",parentScript.src).href;
+   document.head.appendChild(css);
+  }
   const top=document.createElement("div");top.className="atlas-autonav atlas-topmenu";
   const path=location.pathname.split("/").filter(Boolean),last=path[path.length-1]||"home";
   top.dataset.atlasPage=last==="index.html"?(path[path.length-2]||"home"):last;
