@@ -39,18 +39,19 @@
     }
    }
   }
-  // Rinascimento: gruppi verticali, I–III a sinistra e IV–Materiali a destra.
+  // Rinascimento e Medioevo: gruppi verticali non spezzati, su due colonne.
   // La conversione compatta e gli href restano invariati nelle altre pagine.
-  if(count&&bar.dataset.atlasPage==='rinascimento'){
+  if(count&&(bar.dataset.atlasPage==='rinascimento'||bar.dataset.atlasPage==='medioevo')){
    const children=[...fragment.childNodes];
    const title=children.shift();
    const columns=[make('div','mm-compact-column'),make('div','mm-compact-column')];
+   const leftGroups=bar.dataset.atlasPage==='rinascimento'?3:2;
    let groupIndex=-1,container=columns[0];
    for(const child of children){
     if(child.nodeType===1&&child.classList.contains('mm-compact-part')){
      groupIndex++;
      container=make('div','mm-compact-group');
-     columns[groupIndex<3?0:1].append(container);
+     columns[groupIndex<leftGroups?0:1].append(container);
     }
     container.append(child);
    }
