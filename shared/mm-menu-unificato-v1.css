@@ -1,3 +1,596 @@
+/* MUSURGIA MUNDI — UNICO FOGLIO MENU (2026-11-04).
+   Versione audit: barre, pannelli, gerarchie e palette in un solo CSS.
+   I sorgenti precedentemente separati sono stati consolidati senza cambiare gli href.
+*/
+
+/* ===== Sorgente integrata: shared/atlas-autonav-v1.css ===== */
+/* Musurgia Mundi | menu condiviso: impostazione visiva del Romanticismo.
+   L'indice mantiene gli href originali: soltanto la presentazione e il controllo cambiano. */
+html{scroll-padding-top:4.8rem}
+.atlas-autonav{
+ --atlas-menu-night:#282637;--atlas-menu-accent:#53405d;--atlas-menu-highlight:#705570;
+ position:sticky!important;top:0!important;z-index:1000!important;
+ display:flex!important;align-items:center!important;gap:.65rem!important;
+ width:100%!important;min-height:55px!important;height:auto!important;
+ margin:0!important;padding:.38rem clamp(12px,3vw,30px)!important;
+ overflow:visible!important;background:var(--atlas-menu-night)!important;
+ color:#fff4e9!important;border-bottom:0!important;
+ box-shadow:0 5px 20px rgba(24,19,34,.19)!important;
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;
+}
+.atlas-autonav[data-atlas-page="barocco"]{--atlas-menu-night:#2b2932;--atlas-menu-accent:#763c32;--atlas-menu-highlight:#925449}
+.atlas-autonav[data-atlas-page="rinascimento"]{--atlas-menu-night:#2b3038;--atlas-menu-accent:#55634c;--atlas-menu-highlight:#687b5c}
+.atlas-autonav[data-atlas-page="medioevo"]{--atlas-menu-night:#272f33;--atlas-menu-accent:#556a70;--atlas-menu-highlight:#667e85}
+.atlas-autonav[data-atlas-page="melodramma"]{--atlas-menu-night:#302636;--atlas-menu-accent:#744c58;--atlas-menu-highlight:#906277}
+.atlas-autonav[data-atlas-page="classicismo"]{--atlas-menu-night:#303041;--atlas-menu-accent:#71604b;--atlas-menu-highlight:#937c5e}
+.atlas-autonav[data-atlas-page="risorgimento"]{--atlas-menu-night:#29313a;--atlas-menu-accent:#5b5b51;--atlas-menu-highlight:#777667}
+.atlas-autonav[data-atlas-page="home"]{--atlas-menu-night:#29231f;--atlas-menu-accent:#675039;--atlas-menu-highlight:#876c49}
+.atlas-autonav>.atlas-home-link{
+ display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;
+ margin:0!important;padding:.47rem .7rem!important;
+ color:#f8f0e4!important;background:transparent!important;
+ border:1px solid #ffffff52!important;border-radius:4px!important;
+ font:750 .79rem/1.3 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ text-decoration:none!important;white-space:nowrap!important;
+}
+.atlas-autonav>.atlas-home-link:hover,.atlas-autonav>.atlas-home-link:focus-visible{background:#ffffff20!important;color:#fff!important}
+.atlas-autonav>.atlas-menu-toggle{
+ display:inline-flex!important;align-items:center!important;gap:.5rem!important;
+ height:auto!important;min-height:34px!important;margin:0!important;
+ padding:.52rem .82rem!important;border:0!important;border-radius:4px!important;
+ background:var(--atlas-menu-accent)!important;color:#fff4e9!important;
+ font:750 .8rem/1.25 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ cursor:pointer!important;position:relative!important;
+ white-space:normal!important;text-align:left!important;
+}
+.atlas-autonav>.atlas-menu-toggle:hover,.atlas-autonav>.atlas-menu-toggle:focus-visible,
+.atlas-autonav.atlas-menu-open>.atlas-menu-toggle{background:var(--atlas-menu-highlight)!important;color:#fff!important}
+.atlas-autonav>.atlas-menu-toggle .atlas-menu-arrow{font-size:.8rem;transition:transform .18s}
+.atlas-autonav.atlas-menu-open>.atlas-menu-toggle .atlas-menu-arrow{transform:rotate(180deg)}
+.atlas-autonav>.atlas-menu-context{
+ display:block!important;margin-left:auto!important;
+ font:600 .7rem/1.35 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ letter-spacing:.045em;color:#e9ddd1!important;text-align:right;
+}
+.atlas-autonav>nav{
+ position:absolute!important;top:calc(100% + .55rem)!important;
+ left:clamp(12px,3vw,30px)!important;right:auto!important;
+ width:min(920px,calc(100vw - 24px))!important;max-width:none!important;
+ max-height:0!important;margin:0!important;padding:0!important;
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:1rem!important;align-content:start!important;
+ background:#faf7f1!important;color:#222333!important;
+ border:0!important;border-radius:4px!important;
+ box-shadow:0 14px 42px rgba(23,19,35,.32)!important;
+ overflow:hidden!important;visibility:hidden!important;opacity:0!important;
+ pointer-events:none!important;transform:translateY(-5px);
+ transition:opacity .16s,transform .16s,visibility .16s!important;
+}
+.atlas-autonav.atlas-menu-open>nav{
+ padding:1.15rem!important;max-height:calc(100dvh - 5rem)!important;
+ overflow-x:hidden!important;overflow-y:auto!important;
+ visibility:visible!important;opacity:1!important;
+ pointer-events:auto!important;transform:translateY(0);
+ border:1px solid #d5c8bd!important;
+}
+.atlas-autonav>nav .atlas-group,.atlas-autonav>nav .nav-row.atlas-group{
+ display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ justify-content:flex-start!important;gap:0!important;
+ padding:0!important;margin:0!important;min-width:0!important;
+ width:100%!important;max-width:none!important;height:auto!important;
+ overflow:visible!important;scroll-snap-type:none!important;
+ border:0!important;background:transparent!important;
+}
+.atlas-autonav>nav .atlas-group-title{
+ display:block!important;margin:0 0 .45rem!important;padding:0 0 .5rem!important;
+ font:800 .72rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ text-transform:uppercase!important;letter-spacing:.07em!important;
+ color:#63445e!important;border-bottom:1px solid #d5c8bd!important;
+}
+.atlas-autonav>nav .atlas-group>a,.atlas-autonav>nav .atlas-group>button{
+ display:block!important;flex:0 0 auto!important;max-width:100%!important;
+ width:100%!important;min-height:0!important;
+ padding:.42rem .45rem!important;margin:0!important;
+ border:0!important;border-bottom:1px solid #e2d9cf!important;
+ border-radius:0!important;background:transparent!important;
+ color:#282636!important;text-decoration:none!important;
+ font:600 .87rem/1.35 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ text-align:left!important;white-space:normal!important;
+ overflow-wrap:anywhere!important;scroll-snap-align:none!important;
+}
+.atlas-autonav>nav .atlas-group>a:hover,.atlas-autonav>nav .atlas-group>a:focus-visible,
+.atlas-autonav>nav .atlas-group>a.active{
+ background:#eee7dd!important;color:#513551!important;
+}
+.atlas-autonav>nav .atlas-group>a.under{
+ color:#776c64!important;border-bottom-style:dashed!important;font-size:.81rem!important;
+}
+.atlas-autonav>nav .atlas-group>a.nav-verifica,
+.atlas-autonav>nav .atlas-group>a.nav-sos{
+ font-weight:800!important;color:#684a31!important;
+}
+.atlas-autonav>nav .atlas-group>button.nav-stop{
+ background:#7b2a24!important;color:#fff!important;
+ border-radius:3px!important;cursor:pointer!important;margin-top:.35rem!important;
+}
+.atlas-autonav a:focus-visible,.atlas-autonav button:focus-visible{
+ outline:2px solid #c5a05f!important;outline-offset:2px!important;
+}
+@media(max-width:700px){
+ .atlas-autonav{gap:.45rem!important;padding:.38rem .6rem!important}
+ .atlas-autonav>.atlas-home-link{padding:.47rem .55rem!important;font-size:.74rem!important}
+ .atlas-autonav>.atlas-menu-toggle{font-size:.76rem!important;padding:.48rem .6rem!important}
+ .atlas-autonav>.atlas-menu-context{display:none!important}
+ .atlas-autonav>nav{left:8px!important;width:calc(100vw - 16px)!important;
+  grid-template-columns:1fr!important;top:calc(100% + .28rem)!important}
+ .atlas-autonav.atlas-menu-open>nav{padding:.9rem!important;max-height:calc(100dvh - 4.4rem)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .atlas-autonav>nav,.atlas-autonav>.atlas-menu-toggle .atlas-menu-arrow{transition:none!important}
+}
+
+/* Sottoindici leggibili, coerenti con il Romanticismo. */
+.atlas-autonav>nav .atlas-subindex{display:block!important;margin:.2rem 0 .55rem!important;border-left:2px solid #bdaabd!important;padding:0 0 0 .55rem!important;background:transparent!important}
+.atlas-autonav>nav .atlas-subindex>summary{display:list-item!important;list-style:disclosure-closed inside!important;cursor:pointer!important;background:#eee6ec!important;color:#342437!important;border:1px solid #dacdd4!important;border-radius:4px!important;padding:.5rem .6rem!important;font:700 .83rem/1.45 system-ui!important}
+.atlas-autonav>nav .atlas-subindex[open]>summary{list-style:disclosure-open inside!important;background:#e4d9e4!important}
+.atlas-autonav>nav .atlas-subindex>a{display:block!important;background:#fffdf9!important;color:#302834!important;border-bottom:1px solid #e2d9e0!important;padding:.48rem .6rem!important;font:500 .83rem/1.5 system-ui!important;text-decoration:none!important}
+.atlas-autonav>nav .atlas-subindex>a:hover{background:#eee6ef!important;color:#25192a!important}
+
+
+/* ===== Sorgente integrata: shared/mm-menu-compatto-v1.css ===== */
+/* Musurgia Mundi — modello compatto dell'indice del Melodramma classico.
+   Un'unica colonna; titoli di capitolo espandibili, paragrafi al primo clic. */
+.atlas-autonav>nav.mm-compact-ready{
+ width:min(700px,calc(100vw - 24px))!important;
+ grid-template-columns:minmax(0,1fr)!important;gap:0!important;
+}
+.atlas-autonav>nav.mm-compact-ready.mm-compact-home{display:grid!important;gap:.45rem!important}
+.atlas-autonav>nav.mm-compact-ready.mm-compact-home .atlas-group-title{margin-top:.35rem!important}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-heading{
+ display:block!important;color:#403041!important;margin:.05rem 0 .8rem!important;
+ font:750 .88rem/1.4 system-ui!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter,
+.menu-panel.mm-compact-romantic .mm-compact-chapter{
+ display:block!important;min-width:0!important;margin:.32rem 0 .52rem!important;
+ border-left:2px solid #bdaabd!important;padding:0 0 0 .65rem!important;
+ background:transparent!important;overflow:visible!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>summary,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>summary{
+ display:list-item!important;list-style:disclosure-closed inside!important;
+ cursor:pointer!important;padding:.52rem .65rem!important;
+ font:750 .83rem/1.45 system-ui,-apple-system,sans-serif!important;
+ color:#342437!important;background:#eee6ec!important;
+ border:1px solid #dacdd4!important;border-radius:4px!important;
+ overflow-wrap:anywhere!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter[open]>summary,
+.menu-panel.mm-compact-romantic .mm-compact-chapter[open]>summary{
+ list-style:disclosure-open inside!important;background:#e4d9e4!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>a,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>a{
+ display:block!important;width:100%!important;min-height:0!important;
+ padding:.5rem .7rem!important;margin:0!important;text-decoration:none!important;
+ border:0!important;border-bottom:1px solid #e9e1da!important;border-radius:0!important;
+ font:500 .83rem/1.5 system-ui,-apple-system,sans-serif!important;
+ color:#302834!important;background:#fffdf9!important;white-space:normal!important;
+ overflow-wrap:anywhere!important;box-sizing:border-box!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>a.mm-compact-go,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>a.mm-compact-go{font-weight:650!important;background:#faf7f1!important}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>a:hover,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>a:hover{background:#eee6ef!important}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>a:focus-visible,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>a:focus-visible,
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter>summary:focus-visible,
+.menu-panel.mm-compact-romantic .mm-compact-chapter>summary:focus-visible{
+ outline:2px solid #7b567c!important;outline-offset:2px!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-extra{
+ display:block!important;width:100%!important;padding:.45rem .7rem!important;
+ font:650 .83rem/1.5 system-ui!important;color:#342437!important;background:#f6f0e9!important;
+ border:0!important;border-bottom:1px solid #e5dbd4!important;text-decoration:none!important;
+}
+.menu-panel.mm-compact-romantic{
+ position:absolute!important;top:calc(100% + 9px)!important;left:0!important;right:auto!important;
+ width:min(700px,calc(100vw - 24px))!important;
+ max-height:calc(100dvh - 85px)!important;overflow-y:auto!important;
+ display:block!important;grid-template-columns:1fr!important;gap:0!important;
+ padding:1rem!important;box-sizing:border-box!important;
+}
+.menu-panel.mm-compact-romantic .menu-group{display:block!important;grid-column:auto!important;margin:.55rem 0!important}
+.menu-panel.mm-compact-romantic .menu-group>strong{
+ display:block!important;font:800 .73rem/1.45 system-ui!important;
+ padding:.5rem .3rem!important;color:#60425f!important;
+}
+.menu-panel.mm-compact-romantic .menu-preface .index-subsections{margin-bottom:.45rem!important}
+.menu-panel.mm-compact-romantic .mm-compact-outro{margin-top:.9rem!important}
+.mm-index-panel.mm-compact-ready{
+ width:min(700px,calc(100vw - 24px))!important;max-height:calc(100dvh - 86px)!important;
+ grid-template-columns:1fr!important;padding:.9rem!important;
+}
+#menu>.panel.mm-compact-ready{
+ width:min(700px,calc(100vw - 24px))!important;
+ max-height:calc(100dvh - 86px)!important;grid-template-columns:1fr!important;
+}
+@media(max-width:700px){
+ .atlas-autonav>nav.mm-compact-ready{left:8px!important;width:calc(100vw - 16px)!important}
+ .menu-panel.mm-compact-romantic{left:-48px!important;width:calc(100vw - 16px)!important;
+  max-height:calc(100dvh - 73px)!important;padding:.85rem!important}
+ .mm-index-panel.mm-compact-ready,#menu>.panel.mm-compact-ready{
+  max-height:calc(100dvh - 73px)!important;
+ }
+}
+@media print{
+ .atlas-autonav>nav.mm-compact-ready,.menu-panel.mm-compact-romantic{display:none!important}
+}
+
+/* Concerti: indice compatto nello stesso stile, Audioteca sempre accessibile. */
+nav.main .mm-concerti-index{position:relative!important;flex:0 0 auto!important;margin:0!important}
+nav.main .mm-concerti-index>summary{
+ cursor:pointer!important;list-style:none!important;
+ border-radius:4px!important;padding:.53rem .72rem!important;
+ background:#6a4c69!important;color:#fff!important;
+ font:750 .82rem/1.3 system-ui!important;
+}
+nav.main .mm-concerti-index>summary::-webkit-details-marker{display:none}
+nav.main .mm-concerti-index[open]>summary{background:#826185!important}
+nav.main .mm-concerti-panel{
+ position:absolute!important;top:calc(100% + 9px)!important;left:0!important;
+ width:min(700px,calc(100vw - 24px))!important;max-height:calc(100dvh - 86px)!important;
+ overflow-y:auto!important;background:#faf7f1!important;color:#292331!important;
+ padding:1rem!important;box-shadow:0 14px 42px #17132355!important;
+ border:1px solid #d5c8bd!important;border-radius:4px!important;
+ box-sizing:border-box!important;white-space:normal!important;
+}
+nav.main .mm-concerti-panel .mm-compact-heading{display:block!important;margin:0 0 .7rem!important;font:750 .86rem/1.45 system-ui!important}
+nav.main .mm-concerti-panel .mm-compact-chapter{margin:.32rem 0 .5rem!important;border-left:2px solid #bdaabd!important;padding-left:.55rem!important}
+nav.main .mm-concerti-panel .mm-compact-chapter>summary{list-style:disclosure-closed inside!important;cursor:pointer!important;
+ background:#eee6ec!important;border:1px solid #dacdd4!important;border-radius:4px!important;
+ padding:.53rem .6rem!important;font:750 .83rem/1.45 system-ui!important;color:#342437!important}
+nav.main .mm-concerti-panel .mm-compact-chapter[open]>summary{list-style:disclosure-open inside!important;background:#e4d9e4!important}
+nav.main .mm-concerti-panel .mm-compact-chapter>a{
+ display:block!important;background:#fffdf9!important;color:#302834!important;text-decoration:none!important;
+ font:500 .83rem/1.5 system-ui!important;padding:.48rem .65rem!important;border-bottom:1px solid #e9e1da!important;white-space:normal!important
+}
+nav.main .mm-concerti-panel .mm-compact-chapter>a:hover{background:#eee6ef!important}
+@media(max-width:700px){
+ nav.main .mm-concerti-panel{position:fixed!important;left:8px!important;right:8px!important;
+ top:58px!important;width:auto!important;max-height:calc(100dvh - 73px)!important}
+ .menu-panel.mm-compact-romantic{position:fixed!important;top:58px!important;left:8px!important;right:8px!important;width:auto!important}
+ .mm-index-panel.mm-compact-ready{position:fixed!important;top:58px!important;left:8px!important;right:8px!important;width:auto!important}
+ #menu>.panel.mm-compact-ready{position:fixed!important;top:58px!important;left:8px!important;right:8px!important;width:auto!important}
+}
+
+/* Avanguardie: capitoli e sottoindici in una colonna, senza toccare la bozza. */
+.av-panel.mm-compact-ready{
+ display:block!important;grid-template-columns:1fr!important;
+ width:min(700px,calc(100vw - 24px))!important;
+ padding:.9rem!important;max-height:calc(100dvh - 85px)!important;overflow-y:auto!important;
+}
+.av-panel.mm-compact-ready>strong{display:block!important;margin:.2rem 0 .7rem!important;font:800 .87rem/1.45 system-ui!important;color:#403041!important}
+.av-panel.mm-compact-ready>.mm-compact-chapter{display:block!important;margin:.33rem 0 .5rem!important;border-left:2px solid #bdaabd!important;padding-left:.55rem!important}
+.av-panel.mm-compact-ready>.mm-compact-chapter>summary{display:list-item!important;list-style:disclosure-closed inside!important;cursor:pointer!important;
+ padding:.53rem .65rem!important;border:1px solid #dacdd4!important;border-radius:4px!important;
+ background:#eee6ec!important;color:#342437!important;font:750 .83rem/1.45 system-ui!important}
+.av-panel.mm-compact-ready>.mm-compact-chapter[open]>summary{list-style:disclosure-open inside!important;background:#e4d9e4!important}
+.av-panel.mm-compact-ready>.mm-compact-chapter>a{display:block!important;width:100%!important;text-decoration:none!important;
+ background:#fffdf9!important;color:#302834!important;font:500 .83rem/1.5 system-ui!important;
+ padding:.48rem .65rem!important;border:0!important;border-bottom:1px solid #e9e1da!important;
+ box-sizing:border-box!important;overflow-wrap:anywhere!important}
+.av-panel.mm-compact-ready>.mm-compact-chapter>a:hover{background:#eee6ef!important}
+@media(max-width:700px){
+ .av-panel.mm-compact-ready{position:fixed!important;top:58px!important;left:8px!important;right:8px!important;width:auto!important;max-height:calc(100dvh - 73px)!important}
+}
+
+/* mm-compact-desktop-two-columns — due colonne sui desktop, una sui telefoni.
+   La gerarchia dei dettagli resta indipendente dalla disposizione grafica. */
+@media (min-width:821px){
+ .atlas-autonav>nav.mm-compact-ready{
+  width:min(920px,calc(100vw - 24px))!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-content:start!important;gap:.15rem 1rem!important;
+ }
+ .atlas-autonav>nav.mm-compact-ready>.mm-compact-heading{
+  grid-column:1/-1!important;
+ }
+ .menu-panel.mm-compact-romantic{
+  width:min(920px,calc(100vw - 24px))!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-content:start!important;gap:.25rem 1rem!important;
+ }
+ .menu-panel.mm-compact-romantic .menu-group{min-width:0!important}
+ .menu-panel.mm-compact-romantic .menu-preface,
+ .menu-panel.mm-compact-romantic .menu-outro{grid-column:1/-1!important}
+ .mm-index-panel.mm-compact-ready,
+ #menu>.panel.mm-compact-ready{
+  width:min(920px,calc(100vw - 24px))!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-content:start!important;gap:.25rem 1rem!important;
+ }
+ nav.main .mm-concerti-panel{
+  width:min(920px,calc(100vw - 24px))!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-content:start!important;gap:.2rem 1rem!important;
+ }
+ nav.main .mm-concerti-panel>.mm-compact-heading{grid-column:1/-1!important}
+ .av-panel.mm-compact-ready{
+  width:min(920px,calc(100vw - 24px))!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-content:start!important;gap:.2rem 1rem!important;
+ }
+ .av-panel.mm-compact-ready>strong{grid-column:1/-1!important}
+}
+@media (max-width:820px){
+ .atlas-autonav>nav.mm-compact-ready,
+ .menu-panel.mm-compact-romantic,
+ .mm-index-panel.mm-compact-ready,
+ #menu>.panel.mm-compact-ready,
+ nav.main .mm-concerti-panel,
+ .av-panel.mm-compact-ready{
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+}
+/* Nessuna larghezza fissa per le voci, incluse quelle con titoli molto lunghi. */
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter,
+.menu-panel.mm-compact-romantic .mm-compact-chapter,
+.mm-index-panel.mm-compact-ready .mm-chapter,
+#menu>.panel.mm-compact-ready .pc-chapter,
+nav.main .mm-concerti-panel .mm-compact-chapter,
+.av-panel.mm-compact-ready>.mm-compact-chapter{
+ min-width:0!important;break-inside:avoid!important;
+}
+
+
+/* Avanguardie: il titolo cliccabile non deve essere nascosto dentro <details>. */
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter{display:block!important;min-width:0!important;margin:.34rem 0 .55rem!important;padding:0 0 0 .55rem!important;border-left:2px solid #bdaabd!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a.mm-compact-go{display:block!important;width:100%!important;box-sizing:border-box!important;padding:.57rem .75rem!important;border:1px solid #dacdd4!important;border-radius:4px!important;text-decoration:none!important;background:#eee6ec!important;color:#342437!important;font:750 .83rem/1.5 system-ui!important;overflow-wrap:anywhere!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a.mm-compact-go:hover,.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a.mm-compact-go:focus-visible{background:#e3d7e6!important;text-decoration:underline!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist{display:block!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>summary{display:list-item!important;cursor:pointer!important;list-style:disclosure-closed inside!important;font:550 .75rem/1.45 system-ui!important;padding:.28rem .8rem!important;color:#4c3755!important;background:#faf7f1!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist[open]>summary{list-style:disclosure-open inside!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>a{display:block!important;margin:0!important;padding:.45rem .75rem!important;font:500 .8rem/1.45 system-ui!important;text-decoration:none!important;color:#302834!important;background:#fffdf9!important;border-bottom:1px solid #e9e1da!important;overflow-wrap:anywhere!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter.mm-reading-chapter>a.mm-compact-go{border-left:4px solid #7b4b77!important;background:#dfcfe3!important;color:#331e39!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a:focus-visible,.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>details>summary:focus-visible{outline:2px solid #795385!important;outline-offset:2px!important}
+
+/* Gerarchia uniforme · 2026-11-04: una freccina indica sempre veri figli.
+   Le voci terminali non diventano falsi capitoli espandibili. */
+.atlas-autonav>nav.mm-compact-ready>a.mm-compact-leaf,
+.menu-panel.mm-compact-romantic>a.mm-compact-leaf,
+nav.main .mm-concerti-panel>a.mm-compact-leaf{
+ display:block!important;min-width:0!important;margin:.32rem 0 .52rem!important;
+ border:1px solid #dacdd4!important;border-left:3px solid #bdaabd!important;
+ border-radius:4px!important;background:#eee6ec!important;color:#342437!important;
+ padding:.55rem .7rem!important;text-decoration:none!important;
+ font:750 .83rem/1.45 system-ui,-apple-system,sans-serif!important;
+ white-space:normal!important;overflow-wrap:anywhere!important;
+}
+.atlas-autonav>nav.mm-compact-ready>a.mm-compact-leaf:hover,
+.menu-panel.mm-compact-romantic>a.mm-compact-leaf:hover,
+nav.main .mm-concerti-panel>a.mm-compact-leaf:hover{background:#e4d9e4!important}
+@media(min-width:821px){
+ .atlas-autonav>nav.mm-compact-ready>a.mm-compact-leaf,
+ .menu-panel.mm-compact-romantic>a.mm-compact-leaf,
+ nav.main .mm-concerti-panel>a.mm-compact-leaf{grid-column:auto!important}
+}
+/* Avanguardie: espansione e titolo sulla medesima riga. */
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist{
+ display:block!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;
+}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>summary{
+ display:list-item!important;list-style:disclosure-closed inside!important;
+ cursor:pointer!important;box-sizing:border-box!important;width:100%!important;
+ padding:.57rem .75rem!important;margin:0!important;
+ border:1px solid #dacdd4!important;border-radius:4px!important;
+ background:#eee6ec!important;color:#342437!important;
+ font:750 .83rem/1.5 system-ui!important;overflow-wrap:anywhere!important;
+}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist[open]>summary{
+ list-style:disclosure-open inside!important;background:#e4d9e4!important;
+}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>summary:hover{background:#e3d7e6!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>a.mm-compact-go{
+ font-weight:700!important;background:#f7f1f5!important;
+}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter.mm-reading-chapter>.mm-av-sublist>summary,
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter.mm-reading-chapter>a.mm-compact-go{
+ border-left:4px solid #7b4b77!important;background:#dfcfe3!important;color:#331e39!important;
+}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>summary:focus-visible,
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a.mm-compact-go:focus-visible{
+ outline:2px solid #795385!important;outline-offset:2px!important;
+}
+
+/* Anche le voci terminali interne ai gruppi del Romanticismo sono link diretti. */
+.menu-panel.mm-compact-romantic .menu-group>a.mm-compact-leaf{
+ display:block!important;min-width:0!important;margin:.32rem 0 .52rem!important;
+ border:1px solid #dacdd4!important;border-left:3px solid #bdaabd!important;
+ border-radius:4px!important;background:#eee6ec!important;color:#342437!important;
+ padding:.55rem .7rem!important;text-decoration:none!important;
+ font:750 .83rem/1.45 system-ui!important;overflow-wrap:anywhere!important;
+}
+.menu-panel.mm-compact-romantic .menu-group>a.mm-compact-leaf:hover{background:#e4d9e4!important}
+
+/* Avanguardie: tre parti riconoscibili, ognuna contiene le proprie voci.
+   La griglia impagina gruppi interi, non alterna capitoli di sezioni diverse. */
+.av-panel.mm-av-grouped{
+ display:block!important;
+ grid-template-columns:none!important;
+ width:min(1160px,calc(100vw - 120px))!important;
+ box-sizing:border-box!important;
+ padding:1rem!important;
+}
+.av-panel.mm-av-grouped>.mm-av-group-grid{
+ display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:1rem!important;
+ align-items:start!important;
+ min-width:0!important;
+}
+.av-panel.mm-av-grouped>.mm-av-group-grid>.mm-av-part-group{
+ min-width:0!important;
+ padding:.7rem!important;
+ background:#fcfaf7!important;
+ border:1px solid #d9cdd5!important;
+ border-radius:7px!important;
+ box-shadow:0 2px 10px #2116290b!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading{
+ margin:0 0 .85rem!important;
+ padding:0!important;
+ font:inherit!important;
+ border-left:4px solid #cba774!important;
+ border-radius:4px!important;
+ background:#faf7f1!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading>a.mm-av-part-anchor{
+ display:flex!important;align-items:flex-start!important;gap:.65rem!important;
+ margin:0!important;padding:.8rem .72rem!important;
+ border:0!important;background:transparent!important;
+ color:#62445f!important;text-decoration:none!important;
+ font:800 .86rem/1.38 system-ui,-apple-system,sans-serif!important;
+ min-width:0!important;overflow-wrap:anywhere!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading .mm-av-part-number{
+ display:inline-block!important;flex:0 0 auto!important;
+ border:1px solid #dacdd4!important;border-radius:3px!important;
+ color:#62445f!important;background:#eee6ec!important;
+ padding:.16rem .38rem!important;font-weight:800!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading .mm-av-part-name{
+ flex:1!important;min-width:0!important;color:#62445f!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading>a:hover,
+.av-panel.mm-av-grouped .mm-av-part-heading>a:focus-visible{
+ background:#e4d9e4!important;outline:2px solid #795385!important;outline-offset:2px!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-group>.mm-av-chapter{
+ margin:.3rem 0 .5rem!important;
+ min-width:0!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-group>.mm-av-chapter:last-child{
+ margin-bottom:0!important;
+}
+@media(max-width:1139px){
+ .av-panel.mm-av-grouped>.mm-av-group-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+}
+@media(max-width:739px){
+ .av-panel.mm-av-grouped{
+  position:fixed!important;top:58px!important;
+  left:8px!important;right:8px!important;width:auto!important;
+  max-height:calc(100dvh - 73px)!important;
+  padding:.72rem!important;
+ }
+ .av-panel.mm-av-grouped>.mm-av-group-grid{
+  grid-template-columns:minmax(0,1fr)!important;gap:.8rem!important;
+ }
+ .av-panel.mm-av-grouped>.mm-av-group-grid>.mm-av-part-group{
+  padding:.65rem!important;
+ }
+}
+
+
+/* ===== Sorgente integrata: shared/mm-menu-dossier-v1.css ===== */
+/* Musurgia Mundi — saggi interni, menu coerente con l'indice compatto. */
+nav.mm-dossier-menu{
+ position:sticky!important;top:0!important;z-index:1000!important;
+ display:flex!important;align-items:center!important;gap:.6rem!important;
+ background:#282637!important;color:#fff!important;
+ border-bottom:1px solid #ffffff30!important;
+ min-height:55px!important;padding:.45rem clamp(.7rem,3vw,1.5rem)!important;
+ overflow:visible!important;backdrop-filter:none!important;
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;
+}
+nav.mm-dossier-menu .nav-inner{display:flex!important;align-items:center!important;gap:.65rem!important;width:100%!important;max-width:1200px!important}
+nav.mm-dossier-menu .nav-items{overflow:visible!important}
+nav.mm-dossier-menu a.mm-dossier-home,nav.mm-dossier-menu .nav-home{
+ flex:none!important;color:#fff!important;text-decoration:none!important;
+ border:1px solid #ffffff55!important;border-radius:4px!important;
+ padding:.5rem .7rem!important;font:750 .8rem/1.25 system-ui!important;
+}
+nav.mm-dossier-menu .mm-dossier-index{
+ position:relative!important;flex:none!important;margin:0!important;color:#fff!important;
+}
+nav.mm-dossier-menu .mm-dossier-index>summary{
+ display:list-item!important;list-style:none!important;cursor:pointer!important;
+ background:#6a4c69!important;color:#fff!important;border:0!important;border-radius:4px!important;
+ padding:.58rem .8rem!important;font:750 .82rem/1.3 system-ui!important;
+}
+nav.mm-dossier-menu .mm-dossier-index>summary::-webkit-details-marker{display:none!important}
+nav.mm-dossier-menu .mm-dossier-index[open]>summary{background:#826185!important}
+nav.mm-dossier-menu .mm-dossier-panel{
+ position:absolute!important;top:calc(100% + 9px)!important;left:0!important;
+ width:min(700px,calc(100vw - 24px))!important;max-height:calc(100dvh - 84px)!important;
+ padding:.95rem!important;overflow-x:hidden!important;overflow-y:auto!important;
+ background:#faf7f1!important;border:1px solid #d5c8bd!important;border-radius:4px!important;
+ box-shadow:0 14px 42px #17132355!important;
+ display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:.15rem .9rem!important;
+ color:#25212b!important;white-space:normal!important;box-sizing:border-box!important;
+}
+nav.mm-dossier-menu .mm-dossier-title{
+ display:block!important;font:800 .88rem/1.4 system-ui!important;color:#342437!important;
+ margin:0 0 .55rem!important;grid-column:1/-1!important;
+}
+nav.mm-dossier-menu .mm-dossier-chapter{
+ display:block!important;min-width:0!important;margin:.28rem 0 .5rem!important;
+ border:0!important;border-left:2px solid #bdaabd!important;padding:0 0 0 .58rem!important;
+ break-inside:avoid!important;
+}
+nav.mm-dossier-menu .mm-dossier-chapter>summary{
+ display:list-item!important;list-style:disclosure-closed inside!important;
+ cursor:pointer!important;background:#eee6ec!important;color:#342437!important;
+ border:1px solid #dacdd4!important;border-radius:4px!important;
+ padding:.54rem .62rem!important;font:750 .83rem/1.45 system-ui!important;
+}
+nav.mm-dossier-menu .mm-dossier-chapter[open]>summary{list-style:disclosure-open inside!important;background:#e4d9e4!important}
+nav.mm-dossier-menu .mm-dossier-chapter>a{
+ display:block!important;width:100%!important;color:#302834!important;background:#fffdf9!important;
+ border:0!important;border-bottom:1px solid #e9e1da!important;border-radius:0!important;
+ font:500 .83rem/1.5 system-ui!important;padding:.46rem .65rem!important;
+ white-space:normal!important;text-decoration:none!important;box-sizing:border-box!important;
+}
+nav.mm-dossier-menu .mm-dossier-chapter>a.mm-dossier-go{font-weight:650!important;background:#faf7f1!important}
+nav.mm-dossier-menu .mm-dossier-chapter>a:hover{background:#eee6ef!important}
+nav.mm-dossier-menu :is(summary,a):focus-visible{outline:2px solid #aa78bc!important;outline-offset:2px!important}
+@media(min-width:821px){
+ nav.mm-dossier-menu .mm-dossier-panel{
+  width:min(920px,calc(100vw - 24px))!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+}
+@media(max-width:700px){
+ nav.mm-dossier-menu{gap:.4rem!important;padding:.4rem .5rem!important}
+ nav.mm-dossier-menu .mm-dossier-panel{
+  position:fixed!important;top:58px!important;left:8px!important;right:8px!important;
+  width:auto!important;max-height:calc(100dvh - 72px)!important;padding:.8rem!important;
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+ nav.mm-dossier-menu .atlas-menu-context-local{display:none!important}
+}
+@media print{nav.mm-dossier-menu{display:none!important}}
+
+/* Voci senza sotto-paragrafi: collegamento immediato, senza freccina. */
+nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf{
+ display:block!important;min-width:0!important;box-sizing:border-box!important;
+ margin:.28rem 0 .5rem!important;padding:.54rem .7rem!important;
+ border:1px solid #dacdd4!important;border-left:3px solid #bdaabd!important;
+ border-radius:4px!important;background:#eee6ec!important;color:#342437!important;
+ text-decoration:none!important;font:750 .83rem/1.45 system-ui!important;
+ overflow-wrap:anywhere!important;
+}
+nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf:hover{background:#e4d9e4!important}
+
+
+/* ===== Tema finale e compatibilita' (ex shared/mm-menu-unificato-v1.css) ===== */
 /* Musurgia Mundi | Tema unico degli indici v1 (2026-11-04).
    Una sola palette e un solo linguaggio visivo, qualunque sia il generatore.
    Il layout semantico resta specifico: gruppi del Romanticismo,
@@ -251,4 +844,169 @@
 .menu-panel.mm-compact-romantic .menu-preface>.mm-compact-prologue>summary{
  background:var(--mm-menu-subtle)!important;
  color:var(--mm-menu-text)!important;
+}
+
+
+
+/* ==== AUDIT 2026-11-04 · Norme finali comuni, dopo TUTTE le varianti ==== */
+/* L'organizzazione editoriale può cambiare, mai la pelle del menu. */
+:root{
+ --mm-top-night:#282637;
+ --mm-top-button:#62445f;
+ --mm-top-button-hover:#795c79;
+ --mm-menu-font:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.atlas-autonav{
+ --atlas-menu-night:var(--mm-top-night)!important;
+ --atlas-menu-accent:var(--mm-top-button)!important;
+ --atlas-menu-highlight:var(--mm-top-button-hover)!important;
+}
+:is(.atlas-autonav,nav.mm-dossier-menu,nav.mm-audio-nav,
+ .avanguardie-nav,.classico-nav,.anatomia-nav,nav.main){
+ background:var(--mm-top-night)!important;
+ color:#fff4e9!important;
+ border-bottom-color:#ffffff30!important;
+ font-family:var(--mm-menu-font)!important;
+}
+:is(
+ .atlas-autonav>.atlas-menu-toggle,
+ nav.mm-dossier-menu .mm-dossier-index>summary,
+ nav.mm-audio-nav .mm-audio-index>summary,
+ .avanguardie-nav #av-indice>summary,
+ .classico-menu>summary,.anatomia-menu>summary,
+ nav.main .mm-concerti-index>summary,
+ .details-menu#indice-menu>summary,
+ .mm-index-details>summary,
+ #menu>summary
+){
+ color:#fff!important;
+ background:var(--mm-top-button)!important;
+ border:0!important;
+ border-radius:4px!important;
+ font:750 .82rem/1.3 var(--mm-menu-font)!important;
+ cursor:pointer!important;
+}
+:is(
+ .atlas-autonav>.atlas-menu-toggle,
+ nav.mm-dossier-menu .mm-dossier-index>summary,
+ nav.mm-audio-nav .mm-audio-index>summary,
+ .avanguardie-nav #av-indice>summary,
+ .classico-menu>summary,.anatomia-menu>summary,
+ nav.main .mm-concerti-index>summary,
+ .details-menu#indice-menu>summary,
+ .mm-index-details>summary,
+ #menu>summary
+):hover{
+ background:var(--mm-top-button-hover)!important;
+}
+:is(
+ .atlas-autonav>nav.mm-compact-ready,
+ .menu-panel.mm-compact-romantic,
+ .mm-index-panel.mm-compact-ready,
+ #menu>.panel.mm-compact-ready,
+ nav.main .mm-concerti-panel,
+ .av-panel.mm-compact-ready,
+ .classico-menu-panel,
+ .anatomia-menu-panel,
+ .mm-audio-panel,
+ nav.mm-dossier-menu .mm-dossier-panel
+){
+ background:var(--mm-menu-paper)!important;
+ color:var(--mm-menu-text)!important;
+ border:1px solid #d5c8bd!important;
+ border-radius:4px!important;
+ box-shadow:0 14px 42px rgba(23,19,35,.25)!important;
+ font-family:var(--mm-menu-font)!important;
+}
+:is(
+ .atlas-autonav>nav.mm-compact-ready .mm-compact-chapter>summary,
+ .menu-panel.mm-compact-romantic .mm-compact-chapter>summary,
+ .mm-index-panel.mm-compact-ready details.mm-chapter>summary,
+ #menu>.panel.mm-compact-ready details.pc-chapter>summary,
+ nav.main .mm-concerti-panel .mm-compact-chapter>summary,
+ .av-panel.mm-av-direct-links .mm-av-chapter>.mm-av-sublist>summary,
+ .classico-menu-panel details>summary,.anatomia-menu-panel details>summary,
+ nav.mm-audio-nav .mm-audio-chapter>summary,
+ nav.mm-dossier-menu .mm-dossier-chapter>summary
+){
+ padding:.54rem .65rem!important;
+ background:var(--mm-menu-subtle)!important;
+ border:1px solid var(--mm-menu-border)!important;
+ border-radius:4px!important;
+ color:var(--mm-menu-text)!important;
+ font:750 .86rem/1.48 var(--mm-menu-font)!important;
+ cursor:pointer!important;
+}
+:is(
+ .atlas-autonav>nav.mm-compact-ready a.mm-compact-leaf,
+ .menu-panel.mm-compact-romantic a.mm-compact-leaf,
+ .mm-index-panel a.mm-menu-leaf,
+ #menu>.panel a.mm-menu-leaf,
+ nav.main .mm-concerti-panel a.mm-compact-leaf,
+ .av-panel.mm-av-direct-links .mm-av-chapter>a.mm-compact-go,
+ .classico-menu-panel a.mm-menu-leaf,
+ .anatomia-menu-panel a.mm-menu-leaf,
+ nav.mm-audio-nav a.mm-menu-leaf,
+ nav.mm-dossier-menu a.mm-dossier-leaf
+){
+ padding:.54rem .65rem!important;
+ background:var(--mm-menu-subtle)!important;
+ border-color:var(--mm-menu-border)!important;
+ color:var(--mm-menu-text)!important;
+ font:750 .86rem/1.48 var(--mm-menu-font)!important;
+ border-radius:4px!important;
+ text-decoration:none!important;
+ white-space:normal!important;
+}
+:is(
+ .atlas-autonav nav.mm-compact-ready a.mm-compact-sub,
+ .menu-panel.mm-compact-romantic a.mm-compact-sub,
+ .mm-index-panel details a,
+ #menu>.panel details a,
+ nav.main .mm-concerti-panel details a,
+ .av-panel .mm-av-sublist>a,
+ .classico-menu-panel details a,
+ .anatomia-menu-panel details a,
+ nav.mm-audio-nav .mm-audio-chapter>a,
+ nav.mm-dossier-menu .mm-dossier-chapter>a
+){
+ padding:.48rem .65rem!important;
+ color:var(--mm-menu-text)!important;
+ background:var(--mm-menu-white)!important;
+ border-bottom-color:var(--mm-menu-divider)!important;
+ font:500 .83rem/1.5 var(--mm-menu-font)!important;
+ text-decoration:none!important;
+ white-space:normal!important;
+}
+/* Il pannello resta compatto anche quando un CSS editoriale dava molto spazio. */
+.atlas-autonav>nav.mm-compact-ready:not(.mm-compact-home){
+ align-content:start!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ gap:0!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-heading.mm-compact-part{
+ display:block!important;
+ margin:.65rem 0 .35rem!important;
+ padding:.32rem .2rem .45rem!important;
+ border-bottom:1px solid var(--mm-menu-border)!important;
+ background:transparent!important;
+ font:800 .78rem/1.45 var(--mm-menu-font)!important;
+ color:var(--mm-menu-accent)!important;
+}
+.atlas-autonav>nav.mm-compact-ready>.mm-compact-chapter,
+.atlas-autonav>nav.mm-compact-ready>a.mm-compact-leaf{
+ margin:.26rem 0 .42rem!important;
+}
+:is(.atlas-autonav>nav.mm-compact-ready,
+ .menu-panel.mm-compact-romantic,.mm-index-panel.mm-compact-ready,
+ #menu>.panel.mm-compact-ready, .av-panel.mm-compact-ready,
+ .classico-menu-panel,.anatomia-menu-panel, .mm-audio-panel,
+ nav.mm-dossier-menu .mm-dossier-panel) :is(a,summary):focus-visible{
+ outline:2px solid var(--mm-menu-focus)!important;
+ outline-offset:2px!important;
+}
+@media(max-width:820px){
+ .av-panel.mm-av-grouped>.mm-av-group-grid{
+  grid-template-columns:minmax(0,1fr)!important;
+ }
 }
