@@ -186,7 +186,10 @@ const gallery=$('gallery'),panelRoot=$('panels');
 // Le immagini esterne possono diventare irraggiungibili: fonti alternative
 // identificate per singola scena e collegamento documentario se tutte falliscono.
 function attachSceneImage(scene,img,isThumb,priority=false){
- const candidates=[...new Set([...(scene.fallbackImages||[]),scene.img,scene.backup].filter(Boolean))];
+ const first=scene.img&&scene.img.startsWith('./assets/')
+  ?[scene.img,...(scene.fallbackImages||[]),scene.backup]
+  :[...(scene.fallbackImages||[]),scene.img,scene.backup];
+ const candidates=[...new Set(first.filter(Boolean))];
  let index=0;
  img.alt=isThumb?'':(scene.photo?'Fotografia di scena associata a ':'Tavola associata a ')+scene.title;
  img.loading=isThumb?'lazy':(priority?'eager':'lazy');
