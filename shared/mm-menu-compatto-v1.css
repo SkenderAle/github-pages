@@ -210,15 +210,15 @@ nav.main .mm-concerti-panel .mm-compact-chapter,
 
 
 /* Avanguardie: il titolo cliccabile non deve essere nascosto dentro <details>. */
-.av-panel.mm-av-direct-links>.mm-av-chapter{display:block!important;min-width:0!important;margin:.34rem 0 .55rem!important;padding:0 0 0 .55rem!important;border-left:2px solid #bdaabd!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter>a.mm-compact-go{display:block!important;width:100%!important;box-sizing:border-box!important;padding:.57rem .75rem!important;border:1px solid #dacdd4!important;border-radius:4px!important;text-decoration:none!important;background:#eee6ec!important;color:#342437!important;font:750 .83rem/1.5 system-ui!important;overflow-wrap:anywhere!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter>a.mm-compact-go:hover,.av-panel.mm-av-direct-links>.mm-av-chapter>a.mm-compact-go:focus-visible{background:#e3d7e6!important;text-decoration:underline!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist{display:block!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist>summary{display:list-item!important;cursor:pointer!important;list-style:disclosure-closed inside!important;font:550 .75rem/1.45 system-ui!important;padding:.28rem .8rem!important;color:#4c3755!important;background:#faf7f1!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist[open]>summary{list-style:disclosure-open inside!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist>a{display:block!important;margin:0!important;padding:.45rem .75rem!important;font:500 .8rem/1.45 system-ui!important;text-decoration:none!important;color:#302834!important;background:#fffdf9!important;border-bottom:1px solid #e9e1da!important;overflow-wrap:anywhere!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter.mm-reading-chapter>a.mm-compact-go{border-left:4px solid #7b4b77!important;background:#dfcfe3!important;color:#331e39!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter>a:focus-visible,.av-panel.mm-av-direct-links>.mm-av-chapter>details>summary:focus-visible{outline:2px solid #795385!important;outline-offset:2px!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter{display:block!important;min-width:0!important;margin:.34rem 0 .55rem!important;padding:0 0 0 .55rem!important;border-left:2px solid #bdaabd!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a.mm-compact-go{display:block!important;width:100%!important;box-sizing:border-box!important;padding:.57rem .75rem!important;border:1px solid #dacdd4!important;border-radius:4px!important;text-decoration:none!important;background:#eee6ec!important;color:#342437!important;font:750 .83rem/1.5 system-ui!important;overflow-wrap:anywhere!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a.mm-compact-go:hover,.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a.mm-compact-go:focus-visible{background:#e3d7e6!important;text-decoration:underline!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist{display:block!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>summary{display:list-item!important;cursor:pointer!important;list-style:disclosure-closed inside!important;font:550 .75rem/1.45 system-ui!important;padding:.28rem .8rem!important;color:#4c3755!important;background:#faf7f1!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist[open]>summary{list-style:disclosure-open inside!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>a{display:block!important;margin:0!important;padding:.45rem .75rem!important;font:500 .8rem/1.45 system-ui!important;text-decoration:none!important;color:#302834!important;background:#fffdf9!important;border-bottom:1px solid #e9e1da!important;overflow-wrap:anywhere!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter.mm-reading-chapter>a.mm-compact-go{border-left:4px solid #7b4b77!important;background:#dfcfe3!important;color:#331e39!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a:focus-visible,.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>details>summary:focus-visible{outline:2px solid #795385!important;outline-offset:2px!important}
 
 /* Gerarchia uniforme · 2026-11-04: una freccina indica sempre veri figli.
    Le voci terminali non diventano falsi capitoli espandibili. */
@@ -241,10 +241,10 @@ nav.main .mm-concerti-panel>a.mm-compact-leaf:hover{background:#e4d9e4!important
  nav.main .mm-concerti-panel>a.mm-compact-leaf{grid-column:auto!important}
 }
 /* Avanguardie: espansione e titolo sulla medesima riga. */
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist{
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist{
  display:block!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;
 }
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist>summary{
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>summary{
  display:list-item!important;list-style:disclosure-closed inside!important;
  cursor:pointer!important;box-sizing:border-box!important;width:100%!important;
  padding:.57rem .75rem!important;margin:0!important;
@@ -252,19 +252,19 @@ nav.main .mm-concerti-panel>a.mm-compact-leaf:hover{background:#e4d9e4!important
  background:#eee6ec!important;color:#342437!important;
  font:750 .83rem/1.5 system-ui!important;overflow-wrap:anywhere!important;
 }
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist[open]>summary{
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist[open]>summary{
  list-style:disclosure-open inside!important;background:#e4d9e4!important;
 }
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist>summary:hover{background:#e3d7e6!important}
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist>a.mm-compact-go{
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>summary:hover{background:#e3d7e6!important}
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>a.mm-compact-go{
  font-weight:700!important;background:#f7f1f5!important;
 }
-.av-panel.mm-av-direct-links>.mm-av-chapter.mm-reading-chapter>.mm-av-sublist>summary,
-.av-panel.mm-av-direct-links>.mm-av-chapter.mm-reading-chapter>a.mm-compact-go{
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter.mm-reading-chapter>.mm-av-sublist>summary,
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter.mm-reading-chapter>a.mm-compact-go{
  border-left:4px solid #7b4b77!important;background:#dfcfe3!important;color:#331e39!important;
 }
-.av-panel.mm-av-direct-links>.mm-av-chapter>.mm-av-sublist>summary:focus-visible,
-.av-panel.mm-av-direct-links>.mm-av-chapter>a.mm-compact-go:focus-visible{
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>.mm-av-sublist>summary:focus-visible,
+.av-panel.mm-av-direct-links .mm-av-part-group>.mm-av-chapter>a.mm-compact-go:focus-visible{
  outline:2px solid #795385!important;outline-offset:2px!important;
 }
 
@@ -277,3 +277,83 @@ nav.main .mm-concerti-panel>a.mm-compact-leaf:hover{background:#e4d9e4!important
  font:750 .83rem/1.45 system-ui!important;overflow-wrap:anywhere!important;
 }
 .menu-panel.mm-compact-romantic .menu-group>a.mm-compact-leaf:hover{background:#e4d9e4!important}
+
+/* Avanguardie: tre parti riconoscibili, ognuna contiene le proprie voci.
+   La griglia impagina gruppi interi, non alterna capitoli di sezioni diverse. */
+.av-panel.mm-av-grouped{
+ display:block!important;
+ grid-template-columns:none!important;
+ width:min(1160px,calc(100vw - 120px))!important;
+ box-sizing:border-box!important;
+ padding:1rem!important;
+}
+.av-panel.mm-av-grouped>.mm-av-group-grid{
+ display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:1rem!important;
+ align-items:start!important;
+ min-width:0!important;
+}
+.av-panel.mm-av-grouped>.mm-av-group-grid>.mm-av-part-group{
+ min-width:0!important;
+ padding:.7rem!important;
+ background:#fcfaf7!important;
+ border:1px solid #d9cdd5!important;
+ border-radius:7px!important;
+ box-shadow:0 2px 10px #2116290b!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading{
+ margin:0 0 .85rem!important;
+ padding:0!important;
+ font:inherit!important;
+ border-left:4px solid #cba774!important;
+ border-radius:4px!important;
+ background:#332d41!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading>a.mm-av-part-anchor{
+ display:flex!important;align-items:flex-start!important;gap:.65rem!important;
+ margin:0!important;padding:.8rem .72rem!important;
+ border:0!important;background:transparent!important;
+ color:#fff!important;text-decoration:none!important;
+ font:800 .86rem/1.38 system-ui,-apple-system,sans-serif!important;
+ min-width:0!important;overflow-wrap:anywhere!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading .mm-av-part-number{
+ display:inline-block!important;flex:0 0 auto!important;
+ border:1px solid #cfb68d!important;border-radius:3px!important;
+ color:#faeccd!important;background:#54435b!important;
+ padding:.16rem .38rem!important;font-weight:800!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading .mm-av-part-name{
+ flex:1!important;min-width:0!important;color:#fff!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading>a:hover,
+.av-panel.mm-av-grouped .mm-av-part-heading>a:focus-visible{
+ background:#55415f!important;outline:2px solid #bf9dcd!important;outline-offset:2px!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-group>.mm-av-chapter{
+ margin:.3rem 0 .5rem!important;
+ min-width:0!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-group>.mm-av-chapter:last-child{
+ margin-bottom:0!important;
+}
+@media(max-width:1139px){
+ .av-panel.mm-av-grouped>.mm-av-group-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+}
+@media(max-width:739px){
+ .av-panel.mm-av-grouped{
+  position:fixed!important;top:58px!important;
+  left:8px!important;right:8px!important;width:auto!important;
+  max-height:calc(100dvh - 73px)!important;
+  padding:.72rem!important;
+ }
+ .av-panel.mm-av-grouped>.mm-av-group-grid{
+  grid-template-columns:minmax(0,1fr)!important;gap:.8rem!important;
+ }
+ .av-panel.mm-av-grouped>.mm-av-group-grid>.mm-av-part-group{
+  padding:.65rem!important;
+ }
+}
