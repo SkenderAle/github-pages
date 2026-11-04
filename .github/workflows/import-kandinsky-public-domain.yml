@@ -1,0 +1,44 @@
+name: Musurgia - localizza immagini Kandinskij
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-kandinsky-public-domain.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  download-and-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Prepare image tools
+        run: python3 -m pip install --quiet --user requests pillow beautifulsoup4
+      - name: Download and validate public-domain reproductions
+        run: python3 tools/import-kandinsky-public-domain.py
+      - name: Confirm all referenced local images exist
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json
+          path=Path("verso-le-avanguardie/quadri-in-movimento.html")
+          text=path.read_text()
+          a=json.loads(re.search(r"const scenes=(\[.*?\]);\s*const \$ = id",text,re.S).group(1))
+          for x in a:
+            u=x.get("img","")
+            if u.startswith("./assets/"):
+              assert (path.parent / u[2:]).is_file(),u
+          print("Validated",len(a),"scenes")
+          PY
+      - name: Commit verified local images and references to main
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add verso-le-avanguardie/assets/kandinsky verso-le-avanguardie/index.html verso-le-avanguardie/quadri-in-movimento.html
+          if git diff --cached --quiet; then echo 'No image changes'; exit 0; fi
+          git commit -m 'Quadri: immagini Kandinskij archiviate localmente con provenienza'
+          git push origin HEAD:main
