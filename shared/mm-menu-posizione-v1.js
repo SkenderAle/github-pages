@@ -8,7 +8,7 @@ function init(){
   let id;try{id=decodeURIComponent(a.getAttribute('href').slice(1))}catch{continue}
   const target=document.getElementById(id);
   if(!target||panel.contains(target))continue;
-  const parent=a.closest('details.mm-compact-chapter,details.mm-chapter,details.pc-chapter,details.classico-chapter,details.anatomia-chapter,.menu-chapter,details');
+  const parent=a.closest('.mm-av-chapter,details.mm-compact-chapter,details.mm-chapter,details.pc-chapter,details.classico-chapter,details.anatomia-chapter,.menu-chapter,details');
   if(!parent||parent===panel.closest('details'))continue;
   links.push({a,id,target,parent,panel});
  }
