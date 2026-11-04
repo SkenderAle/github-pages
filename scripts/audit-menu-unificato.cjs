@@ -119,6 +119,37 @@ fs.mkdirSync(saveDir,{recursive:true});
      if(['medioevo','rinascimento','romanticismo','verso-le-avanguardie','melodramma-classico','anatomia-del-melodramma','melodramma-audioteca'].includes(name)){
       await page.screenshot({path:saveDir+'/'+mode.name+'-'+name+'.png',fullPage:false,animations:'disabled'});
      }
+     // Non basta che il pannello si apra: deve richiudersi scegliendo una voce finale.
+     // Se tutte le voci sono espandibili, apri prima un capitolo per trovare un link visibile.
+     const panel=page.locator(panelSelector).first();
+     let sectionLink=panel.locator('a[href^="#"]:visible').first();
+     if(!(await sectionLink.count())){
+      const subToggle=panel.locator('details > summary:visible').first();
+      if(await subToggle.count())await subToggle.click({timeout:6500});
+      sectionLink=panel.locator('a[href^="#"]:visible').first();
+     }
+     if(await sectionLink.count()){
+      const href=await sectionLink.getAttribute('href');
+      await sectionLink.click({timeout:6500});
+      const closed=await toggle.evaluate(el=>
+       el.tagName==='SUMMARY'?!el.parentElement.open:el.getAttribute('aria-expanded')==='false'
+      );
+      state.linkClosedMenu=closed;
+      if(!closed)errs.push('Il menu resta aperto dopo il clic sulla voce '+href);
+     }
+     // Avanguardie: tre parti editoriali in colonne autonome sul desktop, non voci a scacchiera.
+     if(path.includes('verso-le-avanguardie')){
+      const layout=await page.evaluate(()=>{
+       const grid=document.querySelector('.av-panel.mm-av-grouped > .mm-av-group-grid');
+       if(!grid)return null;
+       return {groups:grid.querySelectorAll(':scope > .mm-av-part-group').length,
+        columns:getComputedStyle(grid).gridTemplateColumns.split(/\\s+/).filter(Boolean).length};
+      });
+      state.partsLayout=layout;
+      if(!layout||layout.groups!==3)errs.push('Avanguardie: tre macro-parti non generate');
+      else if(layout.columns!==(mode.name==='desktop'?3:1))
+       errs.push('Avanguardie: colonne errate per '+mode.name+': '+layout.columns);
+     }
     }else errs.push('Nessun comando per aprire il menu');
     const item={path,mode:mode.name,...state,errors:errs};
     report.push(item);if(errs.length)failures.push(item);
