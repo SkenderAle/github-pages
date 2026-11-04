@@ -1,0 +1,239 @@
+/* Musurgia Mundi | Tema unico degli indici v1 (2026-11-04).
+   Una sola palette e un solo linguaggio visivo, qualunque sia il generatore.
+   Il layout semantico resta specifico: gruppi del Romanticismo,
+   tre parti delle Avanguardie, indici di ascolti e saggi. */
+:root{
+ --mm-menu-paper:#faf7f1;
+ --mm-menu-text:#342437;
+ --mm-menu-accent:#62445f;
+ --mm-menu-subtle:#eee6ec;
+ --mm-menu-hover:#e4d9e4;
+ --mm-menu-border:#dacdd4;
+ --mm-menu-divider:#e8dfe5;
+ --mm-menu-white:#fffdfa;
+ --mm-menu-focus:#795385;
+}
+/* Tutti i menu di capitoli: stesso fondo, contrasto e cornice. */
+:is(
+ .atlas-autonav>nav.mm-compact-ready,
+ .menu-panel.mm-compact-romantic,
+ .mm-index-panel.mm-compact-ready,
+ #menu>.panel.mm-compact-ready,
+ nav.main .mm-concerti-panel,
+ .av-panel.mm-compact-ready,
+ .classico-menu-panel,
+ .anatomia-menu-panel,
+ .mm-audio-panel,
+ nav.mm-dossier-menu .mm-dossier-panel
+){
+ background:var(--mm-menu-paper)!important;
+ color:var(--mm-menu-text)!important;
+ border-color:#d5c8bd!important;
+ border-radius:5px!important;
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ box-sizing:border-box!important;
+}
+/* Titoli generali: testo leggibile, mai barre scure. */
+:is(
+ .atlas-autonav>nav.mm-compact-ready>.mm-compact-heading,
+ .menu-panel.mm-compact-romantic .menu-group>strong,
+ .av-panel.mm-compact-ready>strong,
+ .classico-menu-label,
+ .anatomia-menu-label,
+ nav.mm-audio-nav .mm-audio-title,
+ nav.mm-dossier-menu .mm-dossier-title,
+ nav.main .mm-concerti-panel .mm-compact-heading
+){
+ color:var(--mm-menu-accent)!important;
+ background:transparent!important;
+ font-weight:800!important;
+}
+/* Una vera voce espandibile ha lo stesso trattamento ovunque. */
+:is(
+ .atlas-autonav>nav.mm-compact-ready .mm-compact-chapter>summary,
+ .menu-panel.mm-compact-romantic .mm-compact-chapter>summary,
+ .mm-index-panel.mm-compact-ready details.mm-chapter>summary,
+ #menu>.panel.mm-compact-ready details.pc-chapter>summary,
+ nav.main .mm-concerti-panel .mm-compact-chapter>summary,
+ .av-panel.mm-av-direct-links .mm-av-chapter>.mm-av-sublist>summary,
+ .classico-menu-panel details>summary,
+ .anatomia-menu-panel details>summary,
+ nav.mm-audio-nav .mm-audio-chapter>summary,
+ nav.mm-dossier-menu .mm-dossier-chapter>summary
+){
+ color:var(--mm-menu-text)!important;
+ background:var(--mm-menu-subtle)!important;
+ border:1px solid var(--mm-menu-border)!important;
+ border-radius:4px!important;
+ font:750 .86rem/1.5 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ overflow-wrap:anywhere!important;
+}
+:is(
+ .atlas-autonav>nav.mm-compact-ready .mm-compact-chapter[open]>summary,
+ .menu-panel.mm-compact-romantic .mm-compact-chapter[open]>summary,
+ .mm-index-panel.mm-compact-ready details.mm-chapter[open]>summary,
+ #menu>.panel.mm-compact-ready details.pc-chapter[open]>summary,
+ nav.main .mm-concerti-panel .mm-compact-chapter[open]>summary,
+ .av-panel.mm-av-direct-links .mm-av-chapter>.mm-av-sublist[open]>summary,
+ .classico-menu-panel details[open]>summary,
+ .anatomia-menu-panel details[open]>summary,
+ nav.mm-audio-nav .mm-audio-chapter[open]>summary,
+ nav.mm-dossier-menu .mm-dossier-chapter[open]>summary
+){
+ background:var(--mm-menu-hover)!important;
+}
+:is(
+ .atlas-autonav>nav.mm-compact-ready .mm-compact-chapter>summary,
+ .menu-panel.mm-compact-romantic .mm-compact-chapter>summary,
+ .mm-index-panel.mm-compact-ready details.mm-chapter>summary,
+ #menu>.panel.mm-compact-ready details.pc-chapter>summary,
+ nav.main .mm-concerti-panel .mm-compact-chapter>summary,
+ .av-panel.mm-av-direct-links .mm-av-chapter>.mm-av-sublist>summary,
+ .classico-menu-panel details>summary,
+ .anatomia-menu-panel details>summary,
+ nav.mm-audio-nav .mm-audio-chapter>summary,
+ nav.mm-dossier-menu .mm-dossier-chapter>summary
+):hover{
+ background:var(--mm-menu-hover)!important;
+}
+/* Link diretti: nessuna freccina fittizia o secondo comando. */
+:is(
+ .atlas-autonav nav.mm-compact-ready a.mm-compact-leaf,
+ .menu-panel.mm-compact-romantic a.mm-compact-leaf,
+ .mm-index-panel a.mm-menu-leaf,
+ #menu>.panel a.mm-menu-leaf,
+ nav.main .mm-concerti-panel a.mm-compact-leaf,
+ .av-panel.mm-av-direct-links .mm-av-chapter>a.mm-compact-go,
+ .classico-menu-panel a.mm-menu-leaf,
+ .anatomia-menu-panel a.mm-menu-leaf,
+ nav.mm-audio-nav a.mm-menu-leaf,
+ nav.mm-dossier-menu a.mm-dossier-leaf
+){
+ color:var(--mm-menu-text)!important;
+ background:var(--mm-menu-subtle)!important;
+ border-color:var(--mm-menu-border)!important;
+ border-radius:4px!important;
+ font:750 .86rem/1.5 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ text-decoration:none!important;
+ overflow-wrap:anywhere!important;
+}
+:is(
+ .atlas-autonav nav.mm-compact-ready a.mm-compact-leaf,
+ .menu-panel.mm-compact-romantic a.mm-compact-leaf,
+ .mm-index-panel a.mm-menu-leaf,
+ #menu>.panel a.mm-menu-leaf,
+ nav.main .mm-concerti-panel a.mm-compact-leaf,
+ .av-panel.mm-av-direct-links .mm-av-chapter>a.mm-compact-go,
+ .classico-menu-panel a.mm-menu-leaf,
+ .anatomia-menu-panel a.mm-menu-leaf,
+ nav.mm-audio-nav a.mm-menu-leaf,
+ nav.mm-dossier-menu a.mm-dossier-leaf
+):hover{
+ background:var(--mm-menu-hover)!important;
+}
+/* Link all'interno dei gruppi e dei sottoindici. */
+:is(
+ .atlas-autonav nav.mm-compact-ready a.mm-compact-sub,
+ .menu-panel.mm-compact-romantic a.mm-compact-sub,
+ .mm-index-panel details a,
+ #menu>.panel details a,
+ nav.main .mm-concerti-panel details a,
+ .av-panel .mm-av-sublist>a,
+ .classico-menu-panel details a,
+ .anatomia-menu-panel details a,
+ nav.mm-audio-nav .mm-audio-chapter>a,
+ nav.mm-dossier-menu .mm-dossier-chapter>a
+){
+ background:var(--mm-menu-white)!important;
+ color:var(--mm-menu-text)!important;
+ border-bottom-color:var(--mm-menu-divider)!important;
+ font:500 .83rem/1.5 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ text-decoration:none!important;
+ overflow-wrap:anywhere!important;
+}
+:is(
+ .atlas-autonav nav.mm-compact-ready a.mm-compact-sub,
+ .menu-panel.mm-compact-romantic a.mm-compact-sub,
+ .mm-index-panel details a,
+ #menu>.panel details a,
+ nav.main .mm-concerti-panel details a,
+ .av-panel .mm-av-sublist>a,
+ .classico-menu-panel details a,
+ .anatomia-menu-panel details a,
+ nav.mm-audio-nav .mm-audio-chapter>a,
+ nav.mm-dossier-menu .mm-dossier-chapter>a
+):hover{
+ background:var(--mm-menu-hover)!important;
+}
+:is(.av-panel,.classico-menu-panel,.anatomia-menu-panel,
+ .mm-index-panel,nav.mm-dossier-menu .mm-dossier-panel,
+ .menu-panel.mm-compact-romantic) :is(a,summary):focus-visible{
+ outline:2px solid var(--mm-menu-focus)!important;
+ outline-offset:2px!important;
+}
+/* Avanguardie: le tre macrosezioni seguono la medesima gerarchia
+   tipografica del Romanticismo, NON tre riquadri neri. */
+.av-panel.mm-av-grouped>.mm-av-group-grid>.mm-av-part-group{
+ background:transparent!important;
+ border:0!important;
+ border-radius:0!important;
+ box-shadow:none!important;
+ padding:.2rem .35rem!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading{
+ background:transparent!important;
+ border:0!important;
+ border-bottom:2px solid var(--mm-menu-border)!important;
+ border-radius:0!important;
+ padding:0!important;
+ margin:0 0 .9rem!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading>a.mm-av-part-anchor{
+ display:flex!important;align-items:baseline!important;gap:.52rem!important;
+ background:transparent!important;
+ border:0!important;border-radius:0!important;
+ color:var(--mm-menu-accent)!important;
+ padding:.55rem .22rem .65rem!important;
+ font:800 .79rem/1.45 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ text-transform:uppercase!important;letter-spacing:.045em!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading .mm-av-part-number{
+ color:var(--mm-menu-accent)!important;
+ border:0!important;border-radius:0!important;
+ background:transparent!important;
+ padding:0!important;
+ font:800 .84rem/1.45 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading .mm-av-part-name{
+ color:var(--mm-menu-accent)!important;
+}
+.av-panel.mm-av-grouped .mm-av-part-heading>a:hover,
+.av-panel.mm-av-grouped .mm-av-part-heading>a:focus-visible{
+ color:#412b43!important;background:var(--mm-menu-subtle)!important;
+}
+/* Gli elenchi rimangono indipendenti, nessun accostamento a scacchiera. */
+.av-panel.mm-av-grouped .mm-av-part-group>.mm-av-chapter{
+ break-inside:avoid!important;
+}
+/* Stile mobile coerente: un'unica colonna per gli indici. */
+@media(max-width:820px){
+ .av-panel.mm-av-grouped>.mm-av-group-grid,
+ #classico-menu-sections,
+ #anatomia-menu-sections,
+ nav.mm-audio-nav .mm-audio-chapters{
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+}
+@media(min-width:821px) and (max-width:1139px){
+ .av-panel.mm-av-grouped>.mm-av-group-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+}
+@media(min-width:1140px){
+ .av-panel.mm-av-grouped>.mm-av-group-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ }
+}
+@media print{
+ .av-panel.mm-av-grouped{display:none!important}
+}
