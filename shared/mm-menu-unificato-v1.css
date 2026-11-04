@@ -76,6 +76,45 @@ nav.mm-index-bar>a:first-child{color:#fff!important}
 nav.mm-index-bar>.mm-audioteca{background:#6a4c69!important;color:#fff!important;border-radius:4px!important;padding:.55rem .7rem!important}
 @media(max-width:600px){nav.mm-index-bar{gap:.28rem!important}nav.mm-index-bar>a,nav.mm-index-bar summary{font-size:.67rem!important;padding:.42rem!important}.mm-context{font-size:.56rem!important}}
 
+/* NAVIGAZIONE LOCALE CONFLUITA NEL FOGLIO UNICO (Melodramma, Parola e canto, Concerti). */
+/* melodramma/index.html */
+/* Un'unica barra di navigazione: Home, Indice, titolo a destra. */
+.nav-wrap.atlas-autonav{display:flex!important;align-items:center!important;flex-wrap:nowrap!important;position:sticky!important;top:0!important;z-index:1000!important}
+.nav-wrap.atlas-autonav>.atlas-home-link{order:0!important;flex-shrink:0!important}
+.nav-wrap.atlas-autonav>.atlas-menu-toggle{order:1!important}
+.nav-wrap.atlas-autonav>.atlas-menu-context{order:2!important;margin-left:auto!important}
+.nav-wrap.atlas-autonav>nav{order:3!important;position:absolute!important}
+@media(max-width:650px){.nav-wrap.atlas-autonav>.atlas-menu-context{font-size:.6rem!important}}
+
+/* parola-e-canto/index.html */
+/* Allineamento uniforme Atlante: Home + Indice a sinistra, intestazione a destra. */
+.nav .navin{max-width:none!important;width:100%!important;margin:0!important;padding:.5rem clamp(12px,3vw,30px)!important;display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:.65rem!important}
+.nav .navin>.home:first-child{order:0;flex:0 0 auto}
+.nav .navin>#menu{order:1;flex:0 0 auto}
+.nav .navin>.home[href="#catalogo"]{order:2;flex:0 0 auto}
+.nav .navin>.atlas-menu-context-local{order:3;flex:0 1 auto!important;margin-left:auto!important;text-align:right!important;white-space:normal!important;max-width:none!important;padding:0!important}
+@media(max-width:560px){.nav .navin{gap:.25rem!important;padding:.4rem .45rem!important}.nav .navin>.home{font-size:.67rem;padding:.4rem}.nav .navin>#menu>summary{font-size:.7rem;padding:.4rem}.nav .navin>.atlas-menu-context-local{font-size:.55rem!important}}
+
+/* parola-e-canto/index.html */
+.nav .navin{max-width:none!important;margin:0!important;width:100%!important;padding-left:clamp(12px,3vw,30px)!important;padding-right:clamp(12px,3vw,30px)!important}
+.nav .navin #menu>summary{background:#f8f4ee!important;color:#27212e!important;border:1px solid #d5c8bd!important;padding:.55rem .82rem!important;box-shadow:none!important}
+.nav .navin #menu>summary:hover{background:#e8e0e9!important}
+.nav .navin .panel{background:#faf7f1!important;color:#25212b!important;max-height:calc(100dvh - 100px)!important}
+.nav .navin .panel a{color:#342437!important;font-weight:600!important}
+.nav .navin .panel a:hover{background:#eee6ef!important}
+
+/* parola-e-canto/index.html */
+.nav #menu>.panel{display:block!important;grid-template-columns:none!important;width:min(790px,calc(100vw - 32px))!important}
+.nav #menu .pc-chapter{position:static!important;display:block!important;margin:.3rem 0 .6rem!important;border-left:2px solid #b8a1b5;padding-left:.5rem}
+.nav #menu .pc-chapter>summary{background:#eee6ec!important;color:#302434!important;border:1px solid #d9cbd4!important;list-style:disclosure-closed inside!important;font:750 .87rem/1.45 system-ui!important;padding:.55rem .7rem!important}
+.nav #menu .pc-chapter[open]>summary{list-style:disclosure-open inside!important;background:#e3d8e4!important}
+.nav #menu .pc-chapter>summary:before{content:none!important}
+.nav #menu .pc-chapter a{display:block!important;color:#302834!important;background:#fffdf9!important;font:550 .83rem/1.5 system-ui!important;padding:.44rem .7rem!important}
+.nav #menu .pc-paragraphs{padding-left:.8rem}
+
+/* concerti/index.html */
+/* Identità grafica comune ai menu di Musurgia Mundi */nav.main .atlas-menu-context-local{margin-left:auto;padding:.55rem .72rem;color:#e9ddd1;font:600 .7rem/1.4 var(--sans);letter-spacing:.045em;flex:none}@media(max-width:800px){nav.main .atlas-menu-context-local{display:none!important}}
+
 /* ===== Sorgente integrata: shared/atlas-autonav-v1.css ===== */
 /* Musurgia Mundi | menu condiviso: impostazione visiva del Romanticismo.
    L'indice mantiene gli href originali: soltanto la presentazione e il controllo cambiano. */
