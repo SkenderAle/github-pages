@@ -81,13 +81,34 @@ fs.mkdirSync(saveDir,{recursive:true});
     if(state.oldSummary)errs.push('Etichette legacy presenti: '+state.oldSummary);
     if(state.font&&!/system-ui/i.test(state.font))errs.push('Font menu difforme: '+state.font);
     const name=path.split('/').filter(Boolean).slice(0,-1).join('-')||'home';
-    if(['medioevo','rinascimento','romanticismo','verso-le-avanguardie','melodramma-classico'].includes(name)){
-     const open=page.locator('.atlas-autonav>.atlas-menu-toggle, #indice-menu>summary, #av-indice>summary, .classico-menu>summary').first();
-     if(await open.count()){
-      await open.click({timeout:6000});
+    const toggle=page.locator([
+     '.atlas-autonav>.atlas-menu-toggle','#indice-menu>summary',
+     '#av-indice>summary','.classico-menu>summary',
+     '.anatomia-menu>summary','.mm-audio-index>summary',
+     '.mm-dossier-index>summary','.mm-index-details>summary',
+     '#menu>summary','.mm-concerti-index>summary'
+    ].join(',')).first();
+    if(await toggle.count()){
+     await toggle.click({timeout:6500});
+     const geometry=await page.evaluate((selector)=>{
+      const el=document.querySelector(selector);
+      if(!el)return null;
+      const r=el.getBoundingClientRect();
+      return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,
+       viewportWidth:window.innerWidth,viewportHeight:window.innerHeight,
+       visible:r.width>0&&r.height>0,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth};
+     },panelSelector);
+     state.geometry=geometry;
+     if(geometry?.visible){
+      if(geometry.left< -2||geometry.right>geometry.viewportWidth+2)
+       errs.push('Menu fuori dallo schermo: '+JSON.stringify(geometry));
+      if(geometry.scrollWidth>geometry.clientWidth+5)
+       errs.push('Menu con overflow orizzontale: '+JSON.stringify(geometry));
+     }else errs.push('Il pannello non si apre al clic');
+     if(['medioevo','rinascimento','romanticismo','verso-le-avanguardie','melodramma-classico','anatomia-del-melodramma','melodramma-audioteca'].includes(name)){
       await page.screenshot({path:saveDir+'/'+mode.name+'-'+name+'.png',fullPage:false,animations:'disabled'});
      }
-    }
+    }else errs.push('Nessun comando per aprire il menu');
     const item={path,mode:mode.name,...state,errors:errs};
     report.push(item);if(errs.length)failures.push(item);
     console.log((errs.length?'FAIL ':'OK   ')+mode.name+' '+path+(errs.length?' => '+errs.join('; '):''));
