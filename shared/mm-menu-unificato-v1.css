@@ -1010,3 +1010,23 @@ nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf:hover{background:#e4d9e4
   grid-template-columns:minmax(0,1fr)!important;
  }
 }
+
+
+/* Audit geometrico mobile: i pannelli devono restare interamente nello schermo.
+   In particolare i menu del Melodramma classico e di Anatomia non devono
+   ereditare il left:0 del loro pulsante, spostato rispetto al bordo pagina. */
+@media(max-width:700px){
+ :is(.classico-menu-panel,.anatomia-menu-panel,nav.mm-audio-nav .mm-audio-panel){
+  position:fixed!important;
+  top:58px!important;
+  left:8px!important;
+  right:8px!important;
+  width:calc(100vw - 16px)!important;
+  max-width:calc(100vw - 16px)!important;
+  max-height:calc(100dvh - 72px)!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+ }
+}
