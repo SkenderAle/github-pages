@@ -64,24 +64,29 @@
    outro.replaceWith(details);
   }
  }
- // Le avanguardie sono ancora un cantiere editoriale: cambia solo il menu,
- // non il testo della bozza né gli ancoraggi dei suoi compositori.
+ // Avanguardie: il titolo del capitolo resta un link vero, utilizzabile
+ // con un solo tocco. La freccia "Paragrafi" apre soltanto il sottoindice.
  const av=document.querySelector('#av-indice > .av-panel');
  if(av&&!av.classList.contains('mm-compact-ready')){
   const links=[...av.querySelectorAll(':scope > a[href^="#"]')];
   if(links.length){
-   av.classList.add('mm-compact-ready');
+   av.classList.add('mm-compact-ready','mm-av-direct-links');
    const title=av.querySelector(':scope > strong')||make('strong',null,'Verso le avanguardie · Indice');
    const fragment=document.createDocumentFragment();fragment.append(title);
    let idx=0;
    for(const link of links){
-    const target=document.getElementById(link.getAttribute('href').slice(1));
+    const id=link.getAttribute('href').slice(1);
+    const target=document.getElementById(id);
     const next=links.slice(idx+1).map(a=>document.getElementById(a.getAttribute('href').slice(1))).find(Boolean);
-    const details=make('details','mm-compact-chapter');
-    details.append(make('summary',null,link.textContent.trim()));
-    link.classList.add('mm-compact-go');link.textContent='Vai alla sezione ↗';details.append(link);
+    const item=make('div','mm-compact-chapter mm-av-chapter');
+    const originalTitle=link.textContent.trim();
+    link.classList.add('mm-compact-go');
+    link.setAttribute('aria-label','Vai alla sezione: '+originalTitle);
+    item.append(link);
     const root=target?.closest('section')||target;
     if(root&&target){
+     const sub=make('details','mm-av-sublist');
+     sub.append(make('summary',null,'Paragrafi della sezione'));
      let n=0;
      for(const h of root.querySelectorAll('h3,h4')){
       if(h===target||h.closest('nav,aside,details,[hidden]'))continue;
@@ -90,12 +95,20 @@
       if(h.textContent.trim().length<5||++n>25)continue;
       if(!h.id)h.id='mm-av-par-'+idx+'-'+n;
       const a=make('a','mm-compact-sub',n+' · '+h.textContent.trim().slice(0,110));
-      a.href='#'+h.id;details.append(a);
+      a.href='#'+h.id;sub.append(a);
      }
+     if(n)item.append(sub);
     }
-    fragment.append(details);idx++;
+    fragment.append(item);idx++;
    }
    av.replaceChildren(fragment);
+   // Dopo aver scelto un link, chiudi il menu e lascia libero lo scroll.
+   av.addEventListener('click',event=>{
+    if(event.target.closest('a[href^="#"]')){
+     const owner=av.closest('details');
+     if(owner)owner.open=false;
+    }
+   });
   }
  }
  // La pagina dei concerti conserva un collegamento immediato all'Audioteca,
