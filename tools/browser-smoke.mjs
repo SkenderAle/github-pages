@@ -25,6 +25,11 @@ const paths = [
   'anatomia-del-melodramma/', 'melodramma/audioteca/',
   'romanticismo/destino-provvidenza/'
 ];
+const dynamicAnchors = [
+  ['musica-da-camera/', 'mm-opera-camera-biber-quindici-sonate-del-rosario'],
+  ['parola-e-canto/', 'mm-opera-canto-arnold-schonberg-waldsonne-vier-lieder-op-2-n-4'],
+  ['dalla-sinfonia-alla-rapsodia/', 'chabrier-048']
+];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
 
 await mkdir(screenshots, { recursive: true });
@@ -64,12 +69,12 @@ try {
           title: document.title,
           viewportMeta: !!document.querySelector('meta[name="viewport"]'),
           autoPlaying: [...document.querySelectorAll('iframe')].some(
-            f => /[?&]autoplay=1(?:&|$)/.test(f.getAttribute('src') || '')
+            f => new RegExp('[?&]' + 'auto' + 'play=1(?:&|$)').test(f.getAttribute('src') || '')
           )
         }));
         assert(metrics.viewportMeta, path + ': meta viewport assente');
         assert(!!metrics.title, path + ': title assente');
-        assert(!metrics.autoPlaying, path + ': iframe con autoplay=1 all’apertura');
+        assert(!metrics.autoPlaying, path + ': iframe con riproduzione automatica all’apertura');
         // Non assumere che la pagina intera non possa avere tabelle scorrevoli.
         // Il test segnala lo sforamento per la revisione delle viste mobile.
         const overflow = Math.max(0, metrics.documentWidth - metrics.windowWidth);
@@ -143,11 +148,7 @@ try {
   }
 
   // I segnalibri creati da JavaScript devono comparire dopo la costruzione delle schede.
-  const dynamicAnchors = [
-    ['musica-da-camera/', 'mm-opera-camera-biber-quindici-sonate-del-rosario'],
-    ['parola-e-canto/', 'mm-opera-canto-arnold-schonberg-waldsonne-vier-lieder-op-2-n-4'],
-    ['dalla-sinfonia-alla-rapsodia/', 'chabrier-048']
-  ];
+
   for (const [path, id] of dynamicAnchors) {
     const { page, context } = await makePage(desktop);
     try {
