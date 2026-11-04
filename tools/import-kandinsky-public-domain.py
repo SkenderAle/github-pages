@@ -16,16 +16,12 @@ UA = "Mozilla/5.0 (compatible; MusurgiaMundiEducationalPreservation/1.0)"
 sess = requests.Session()
 sess.headers.update({"User-Agent": UA})
 links = {
-    "promenade": [("file", "https://upload.wikimedia.org/wikipedia/commons/c/c7/Couple_Riding_by_Wassily_Kandinsky.jpg")],
-    "gnomus": [("page", "https://www.wikiart.org/en/wassily-kandinsky/not_detected_189367"),
-               ("file", "https://www.meisterdrucke.uk/kunstwerke/1260px/Wassily_Kandinsky_-_Bilder_einer_Ausstellung_Bild_II_Gnomus_-_%28MeisterDrucke-684875%29.jpg")],
+    "gnomus": [("file", "https://www.meisterdrucke.uk/kunstwerke/1260px/Wassily_Kandinsky_-_Bilder_einer_Ausstellung_Bild_II_Gnomus_-_%28MeisterDrucke-684875%29.jpg")],
     "vecchio-castello": [("file", "https://www.wassilykandinsky.net/images/works/324.jpg?v=75")],
-    "tuileries": [("file", "https://www.meisterdrucke.it/kunstwerke/1260px/Wassily_Kandinsky_-_Bilder_einer_Ausstellung_Figurinen_zu_Bild_XVI_-_%28MeisterDrucke-684909%29.jpg")],
     "bydlo": [("file", "https://www.meisterdrucke.uk/kunstwerke/1000px/Wassily%20Kandinsky%20-%20Bilder%20einer%20Ausstellung%20Bild%20VII%20Bydlo%20-%20%28MeisterDrucke-683258%29.jpg"),
               ("file", "https://www.wassilykandinsky.net/images/works/325.jpg?v=75")],
     "samuel-goldenberg": [("file", "https://www.wassilykandinsky.net/images/works/326.jpg?v=75")],
-    "limoges": [("file", "https://cdn-thumbs.ohmyprints.net/1/13b0a40eb5f65d0b79ddec45322ca801/817x600/thumbnail/fit.jpg"),
-                ("file", "https://www.wassilykandinsky.net/images/works/327.jpg?v=75")],
+    "limoges": [("file", "https://www.wassilykandinsky.net/images/works/327.jpg?v=75")],
     "catacombe": [("file", "https://www.wassilykandinsky.net/images/works/328.jpg?v=75")],
     "baba-yaga": [("file", "https://www.centrepompidou.fr/media/picture/58/fa/58fa0e6716633f2a43505239291a0bcc/thumb_large.jpg"),
                   ("file", "https://www.wassilykandinsky.net/images/works/329.jpg?v=75")],
@@ -96,8 +92,11 @@ if not match:
     raise RuntimeError("scene array not found")
 scenes = json.loads(match.group(1))
 assert len(scenes) == 15
-mapping = {1:"promenade", 2:"gnomus", 3:"promenade", 4:"vecchio-castello",
-           5:"promenade", 6:"tuileries", 7:"bydlo", 8:"promenade",
+# Promenades 1, 3, 5, 8 currently show *Couple Riding* (1906),
+# which is NOT a Kandinsky stage design for Mussorgsky (1928).
+# Scene 6 incorrectly points to figure sketches for Tableau XVI,
+# not to Tuileries. NEVER import these substitutes as originals.
+mapping = {2:"gnomus", 4:"vecchio-castello", 7:"bydlo",
            10:"samuel-goldenberg", 11:"limoges", 12:"catacombe",
            13:"catacombe", 14:"baba-yaga", 15:"grande-porta-kiev"}
 for scene in scenes:
