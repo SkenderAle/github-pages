@@ -20,18 +20,20 @@
    if(group.dataset.mmGroupTitle)fragment.append(make('strong','mm-compact-heading mm-compact-part',group.dataset.mmGroupTitle));
    for(const node of [...group.children]){
     if(node.matches('a[href^="#"]')&&!node.classList.contains('atlas-home-link')){
-     const details=make('details','mm-compact-chapter');
-     const title=node.textContent.trim();
-     const summary=make('summary',null,title);details.append(summary);
-     const after=node.nextElementSibling; // Prima di trasferire il link nel capitolo.
-     node.classList.add('mm-compact-go');node.textContent='Vai alla sezione ↗';details.append(node);
-     // Il sottoindice viene preparato dal componente originale: qui è visibile
-     // con un solo clic sul capitolo anziché aprire un secondo sottomenu.
-     if(after&&after.classList.contains('atlas-subindex')){
-      for(const a of [...after.querySelectorAll(':scope > a[href]')]){a.classList.add('mm-compact-sub');details.append(a);}
-      after.remove();
+     const after=node.nextElementSibling;
+     const children=after&&after.classList.contains('atlas-subindex')?[...after.querySelectorAll(':scope > a[href]')]:[];
+     if(children.length){
+      const details=make('details','mm-compact-chapter');
+      details.append(make('summary',null,node.textContent.trim()));
+      node.classList.add('mm-compact-go');node.textContent='Vai alla sezione ↗';details.append(node);
+      for(const a of children){a.classList.add('mm-compact-sub');details.append(a);}
+      after.remove();fragment.append(details);
+     }else{
+      // Senza figli, il titolo è un collegamento diretto: nessuna freccina.
+      node.classList.add('mm-compact-leaf');fragment.append(node);
+      if(after&&after.classList.contains('atlas-subindex'))after.remove();
      }
-     fragment.append(details);count++;
+     count++;
     }else if(node.matches('a[href],button')){
      node.classList.add('mm-compact-extra');fragment.append(node);
     }
@@ -47,13 +49,15 @@
   for(const chapter of romantic.querySelectorAll('.menu-chapter')){
    const link=chapter.querySelector(':scope > a.menu-chapter-main');
    if(!link)continue;
+   const sub=chapter.querySelector(':scope > .index-subsections');
+   const children=sub?[...sub.querySelectorAll('.menu-sub-links a[href]')]:[];
+   if(!children.length){
+    link.classList.add('mm-compact-leaf');chapter.replaceWith(link);continue;
+   }
    const details=make('details','mm-compact-chapter');
    details.append(make('summary',null,link.textContent.trim()));
    link.textContent='Vai alla sezione ↗';link.classList.add('mm-compact-go');details.append(link);
-   const sub=chapter.querySelector(':scope > .index-subsections');
-   if(sub)for(const a of [...sub.querySelectorAll('.menu-sub-links a[href]')]){
-    a.classList.add('mm-compact-sub');details.append(a);
-   }
+   for(const a of children){a.classList.add('mm-compact-sub');details.append(a);}
    chapter.replaceWith(details);
   }
   const outro=romantic.querySelector('.menu-group.menu-outro');
@@ -64,8 +68,8 @@
    outro.replaceWith(details);
   }
  }
- // Avanguardie: il titolo del capitolo resta un link vero, utilizzabile
- // con un solo tocco. La freccia "Paragrafi" apre soltanto il sottoindice.
+ // Avanguardie: freccina direttamente sul titolo solo se sono presenti figli.
+ // Le voci prive di paragrafi restano link diretti, senza righe supplementari.
  const av=document.querySelector('#av-indice > .av-panel');
  if(av&&!av.classList.contains('mm-compact-ready')){
   const links=[...av.querySelectorAll(':scope > a[href^="#"]')];
@@ -80,31 +84,38 @@
     const next=links.slice(idx+1).map(a=>document.getElementById(a.getAttribute('href').slice(1))).find(Boolean);
     const item=make('div','mm-compact-chapter mm-av-chapter');
     const originalTitle=link.textContent.trim();
-    link.classList.add('mm-compact-go');
-    link.setAttribute('aria-label','Vai alla sezione: '+originalTitle);
-    item.append(link);
     const root=target?.closest('section')||target;
+    const children=[];
     if(root&&target){
-     const sub=make('details','mm-av-sublist');
-     sub.append(make('summary',null,'Paragrafi della sezione'));
      let n=0;
      for(const h of root.querySelectorAll('h3,h4')){
       if(h===target||h.closest('nav,aside,details,[hidden]'))continue;
       if(!(target.compareDocumentPosition(h)&Node.DOCUMENT_POSITION_FOLLOWING))continue;
       if(next&&!(h.compareDocumentPosition(next)&Node.DOCUMENT_POSITION_FOLLOWING))continue;
-      if(h.textContent.trim().length<5||++n>25)continue;
+      if(h.textContent.trim().length<5||n>=25)continue;
+      n++;
       if(!h.id)h.id='mm-av-par-'+idx+'-'+n;
       const a=make('a','mm-compact-sub',n+' · '+h.textContent.trim().slice(0,110));
-      a.href='#'+h.id;sub.append(a);
+      a.href='#'+h.id;children.push(a);
      }
-     if(n)item.append(sub);
+    }
+    if(children.length){
+     const sub=make('details','mm-av-sublist');
+     sub.append(make('summary',null,originalTitle));
+     link.classList.add('mm-compact-go');
+     link.textContent='Vai alla sezione ↗';
+     link.setAttribute('aria-label','Vai alla sezione: '+originalTitle);
+     sub.append(link,...children);
+     item.append(sub);
+    }else{
+     link.classList.add('mm-compact-go','mm-compact-leaf');
+     item.append(link);
     }
     fragment.append(item);idx++;
    }
    av.replaceChildren(fragment);
-   // Dopo aver scelto un link, chiudi il menu e lascia libero lo scroll.
    av.addEventListener('click',event=>{
-    if(event.target.closest('a[href^="#"]')){
+    if(event.target.closest('a[href]')){
      const owner=av.closest('details');
      if(owner)owner.open=false;
     }
@@ -125,23 +136,26 @@
    for(const link of links){
     const id=(link.getAttribute('href')||'').slice(1);
     const target=document.getElementById(id);
-    const chapter=make('details','mm-compact-chapter');
-    chapter.append(make('summary',null,link.textContent.trim()));
-    const go=link.classList.contains('audio')?link.cloneNode(true):link;
-    go.classList.add('mm-compact-go');go.textContent='Vai alla sezione ↗';chapter.append(go);
     const root=target?.closest('section[id]')||target;
+    const children=[];
     if(root){
      let n=0;
      for(const heading of root.querySelectorAll('h2,h3')){
       if(heading.closest('nav,aside,details,[hidden],.audio-card,.catalog-card'))continue;
       if(heading===target||heading===root.querySelector('h2')||heading.textContent.trim().length<5)continue;
-      if(++n>35)break;
+      if(n>=35)break;
+      n++;
       if(!heading.id)heading.id='mm-concerti-'+id+'-'+n;
       const a=make('a','mm-compact-sub',n+' · '+heading.textContent.trim().replace(/\s+/g,' ').slice(0,105));
-      a.href='#'+heading.id;chapter.append(a);
+      a.href='#'+heading.id;children.push(a);
      }
     }
-    panel.append(chapter);
+    const go=link.classList.contains('audio')?link.cloneNode(true):link;
+    if(!children.length){go.classList.add('mm-compact-leaf');panel.append(go);continue;}
+    const chapter=make('details','mm-compact-chapter');
+    chapter.append(make('summary',null,link.textContent.trim()));
+    go.classList.add('mm-compact-go');go.textContent='Vai alla sezione ↗';
+    chapter.append(go,...children);panel.append(chapter);
    }
    details.append(sum,panel);
    home.insertAdjacentElement('afterend',details);
