@@ -37,7 +37,7 @@ const report=[];
 const saveDir='audit-menu-screenshots';
 fs.mkdirSync(saveDir,{recursive:true});
 (async()=>{
- const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ const browser=await chromium.launch({channel:'chrome',headless:true,args:['--no-sandbox']});
  for(const mode of modes){
   const context=await browser.newContext({viewport:{width:mode.width,height:mode.height},deviceScaleFactor:1});
   await context.route('**/*',route=>{
