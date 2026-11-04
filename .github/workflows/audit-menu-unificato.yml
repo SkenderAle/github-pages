@@ -22,10 +22,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Installa Chromium per Playwright
+      - name: Usa Chrome del runner
         run: |
           npm install --no-save playwright@1.58.2
-          npx playwright install --with-deps chromium
+          google-chrome --version
       - name: Avvia il sito locale
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/mm-menu-server.log 2>&1 &
