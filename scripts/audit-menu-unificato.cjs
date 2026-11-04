@@ -66,6 +66,7 @@ fs.mkdirSync(saveDir,{recursive:true});
       background:css?.backgroundColor||null,
       font:css?.fontFamily||null,
       canonical:canonical.length,
+      canonicalHref:canonical[0]||null,
       legacy:old.length,
       legacyUrls:old,
       oldSubmenus:document.querySelectorAll('.atlas-autonav .atlas-subindex').length,
@@ -80,6 +81,7 @@ fs.mkdirSync(saveDir,{recursive:true});
     },panelSelector);
     const errs=[];
     if(state.canonical!==1)errs.push('CSS unico assente/duplicato: '+state.canonical);
+    if(state.canonicalHref&&!state.canonicalHref.includes('20261104-menu-unico03'))errs.push('Cache CSS obsoleta: '+state.canonicalHref);
     if(state.legacy)errs.push('CSS storico ancora importato: '+state.legacy+' '+state.legacyUrls.join(', '));
     if(!state.menu)errs.push('Pannello menu non generato');
     if(state.background!=='rgb(250, 247, 241)')errs.push('Sfondo difforme: '+state.background);
