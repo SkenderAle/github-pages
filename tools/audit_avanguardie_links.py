@@ -90,7 +90,9 @@ def main():
     lines+=["","## Riferimenti ai nodi dell'Atlante 3D","",
        "Controllo preliminare della presenza come stringa esatta nel database. L'esistenza della stringa non garantisce l'apertura corretta del nodo.",
        "","| Nodo | Presente come stringa esatta |","|---|---|"]
-    lines += [f"| {n} | {'SI' if ('\"'+n+'\"') in database else 'DA VERIFICARE'} |" for n,u in atlas]
+    for n,u in atlas:
+        marker='"'+n+'"' 
+        lines.append(f"| {n} | {'SI' if marker in database else 'DA VERIFICARE'} |")
     lines+=["","## Risultato per ogni URL","",
        "| Esito | HTTP | Indirizzo | Destinazione o errore |","|---|---:|---|---|"]
     for url in sorted(urls):
