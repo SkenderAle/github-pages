@@ -248,6 +248,27 @@ nav.mm-audio-nav :is(a,summary):focus-visible{outline:2px solid #cda5de!importan
 .details-menu .menu-panel .menu-sub-links a:hover,.details-menu .menu-panel .menu-sub-links a:focus-visible{background:#eee6ef!important;color:#25192a!important}
 .details-menu .menu-panel .menu-sub-links .sub-num{color:#633b5c!important;font-size:.8rem;min-width:2.8em}
 
+/* ROMANTICISMO: barra e pannello, stesso peso dei selettori tramite :where(). */
+:where(body.mm-romanticismo) .nav-wrap{position:sticky;top:0;z-index:80;background:rgba(31,31,52,.98);box-shadow:0 5px 20px #1a172622;color:#fff;font-family:var(--sans)}
+:where(body.mm-romanticismo) .nav-inner{max-width:1320px;margin:auto;display:flex;align-items:center;gap:.6rem;min-height:3.45rem;padding:.3rem 1rem}
+:where(body.mm-romanticismo) .nav-home,:where(body.mm-romanticismo) .nav-direct{display:inline-block;text-decoration:none;color:#f8f0e4;font:750 .79rem var(--sans);border:1px solid #ffffff52;border-radius:4px;padding:.47rem .7rem;white-space:nowrap}
+:where(body.mm-romanticismo) .nav-home:hover,:where(body.mm-romanticismo) .nav-direct:hover{color:#fff;background:#ffffff22}
+:where(body.mm-romanticismo) .nav-direct{border-color:transparent}:where(body.mm-romanticismo) .nav-direct[href="#per-iniziare"]{margin-left:auto}:where(body.mm-romanticismo) .nav-inserto{margin-left:0}
+:where(body.mm-romanticismo) .details-menu{position:relative}
+:where(body.mm-romanticismo) .details-menu summary{cursor:pointer;list-style:none;color:#fff4e9;font:750 .8rem var(--sans);padding:.5rem .8rem;border-radius:4px;background:#53405d}
+:where(body.mm-romanticismo) .details-menu summary::-webkit-details-marker{display:none}
+:where(body.mm-romanticismo) .details-menu summary::before{content:"☰";margin-right:.5rem;font-size:1rem}
+:where(body.mm-romanticismo) .details-menu[open] summary{background:#705570}
+:where(body.mm-romanticismo) .menu-panel{position:absolute;left:0;top:calc(100% + .6rem);background:#faf7f1;color:var(--ink);padding:1.15rem;box-shadow:0 14px 42px #17132357;border:1px solid var(--line);width:min(89vw,920px);max-height:calc(100dvh - 5rem);overflow-y:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+:where(body.mm-romanticismo) .menu-group strong{display:block;font-size:.72rem;color:#63445e;letter-spacing:.07em;padding-bottom:.5rem;text-transform:uppercase}
+:where(body.mm-romanticismo) .menu-group a{display:block;text-decoration:none;color:#282636;font-size:.87rem;line-height:1.35;padding:.38rem .4rem;border-bottom:1px solid #e2d9cf}
+:where(body.mm-romanticismo) .menu-group a:hover{background:#eee7dd;color:#513551}
+:where(body.mm-romanticismo) .menu-extras{grid-column:1/-1;border-top:1px solid var(--line);padding-top:.75rem;display:flex;flex-wrap:wrap;gap:.7rem}
+:where(body.mm-romanticismo) .menu-extras a{font:.83rem var(--sans);color:#503654}
+@media(max-width:760px){:where(body.mm-romanticismo) .nav-inner{padding:.38rem .6rem;gap:.3rem}:where(body.mm-romanticismo) .nav-direct{display:none}:where(body.mm-romanticismo) .menu-panel{position:fixed;left:.5rem;right:.5rem;top:3.6rem;width:auto;grid-template-columns:1fr;max-height:calc(100dvh - 4rem);gap:1.2rem}}
+@media(max-width:420px){:where(body.mm-romanticismo) .details-menu summary{padding:.52rem .55rem;font-size:.75rem}:where(body.mm-romanticismo) .nav-home{font-size:.72rem;padding:.5rem .5rem}}
+@media print{:where(body.mm-romanticismo) .nav-wrap,:where(body.mm-romanticismo) .menu-panel{display:none!important}}
+
 /* ===== Sorgente integrata: shared/atlas-autonav-v1.css ===== */
 /* Musurgia Mundi | menu condiviso: impostazione visiva del Romanticismo.
    L'indice mantiene gli href originali: soltanto la presentazione e il controllo cambiano. */
