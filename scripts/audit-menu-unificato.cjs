@@ -143,7 +143,7 @@ fs.mkdirSync(saveDir,{recursive:true});
        const grid=document.querySelector('.av-panel.mm-av-grouped > .mm-av-group-grid');
        if(!grid)return null;
        return {groups:grid.querySelectorAll(':scope > .mm-av-part-group').length,
-        columns:getComputedStyle(grid).gridTemplateColumns.split(/\\s+/).filter(Boolean).length};
+        columns:getComputedStyle(grid).gridTemplateColumns.trim().split(' ').filter(Boolean).length};
       });
       state.partsLayout=layout;
       if(!layout||layout.groups!==3)errs.push('Avanguardie: tre macro-parti non generate');
