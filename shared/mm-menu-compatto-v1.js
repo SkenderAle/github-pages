@@ -60,6 +60,25 @@
    for(const a of children){a.classList.add('mm-compact-sub');details.append(a);}
    chapter.replaceWith(details);
   }
+  // Anche il Prologo ha veri figli: il titolo apre gli otto paragrafi,
+  // senza la riga separata "8 paragrafi del prologo".
+  const preface=romantic.querySelector('.menu-group.menu-preface');
+  if(preface){
+   const prologue=preface.querySelector('a[href="#musica-assoluta"]');
+   const oldIndex=prologue?.nextElementSibling;
+   if(prologue&&oldIndex?.matches('details.index-subsections')){
+    const chapter=make('details','mm-compact-chapter mm-compact-prologue');
+    chapter.append(make('summary',null,prologue.textContent.trim()));
+    prologue.classList.add('mm-compact-go');
+    prologue.textContent='Vai alla sezione ↗';
+    chapter.append(prologue);
+    for(const child of [...oldIndex.querySelectorAll('.menu-sub-links a[href]')]){
+     child.classList.add('mm-compact-sub');
+     chapter.append(child);
+    }
+    oldIndex.replaceWith(chapter);
+   }
+  }
   const outro=romantic.querySelector('.menu-group.menu-outro');
   if(outro){
    const details=make('details','mm-compact-chapter mm-compact-outro');
