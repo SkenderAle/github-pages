@@ -58,6 +58,20 @@ fs.mkdirSync(saveDir,{recursive:true});
      const links=[...document.querySelectorAll('link[rel="stylesheet"]')].map(x=>x.getAttribute('href')||'');
      const canonical=links.filter(x=>x.includes('mm-menu-unificato-v1.css'));
      const old=links.filter(x=>/(atlas-autonav-v1|mm-menu-compatto-v1|mm-menu-dossier-v1)\.css/.test(x));
+     // Individua anche regole di menu residue nei fogli base, non soltanto negli <style> inline.
+     const legacyExternalRules=[];
+     for(const sheet of document.styleSheets){
+       if(!sheet.href||sheet.href.includes('mm-menu-unificato-v1.css'))continue;
+       const walk=rules=>{
+         for(const rule of rules){
+           const sel=rule.selectorText||'';
+           if(/(?:^|[\\s>,+~])\\.(?:nav-wrap|nav-home)(?![\\w-])/.test(sel))
+             legacyExternalRules.push(sheet.href.split('/').pop()+': '+sel.slice(0,100));
+           if(rule.cssRules)walk(rule.cssRules);
+         }
+       };
+       try{walk(sheet.cssRules)}catch(_){}
+     }
      const summaries=[...document.querySelectorAll('details.mm-compact-chapter>summary, .av-panel .mm-av-sublist>summary')]
       .map(x=>x.textContent.trim());
      const css=menu?getComputedStyle(menu):null;
@@ -68,6 +82,7 @@ fs.mkdirSync(saveDir,{recursive:true});
       canonical:canonical.length,
       canonicalHref:canonical[0]||null,
       legacy:old.length,
+      legacyExternalRules,
       legacyAtlasInline:!!document.querySelector('.atlas-autonav')&&[...document.querySelectorAll('style')].some(el=>/\.nav-wrap\s*\{|\.nav-home\s*\{/.test(el.textContent||'')),
       legacyUrls:old,
       oldSubmenus:document.querySelectorAll('.atlas-autonav .atlas-subindex').length,
@@ -84,6 +99,7 @@ fs.mkdirSync(saveDir,{recursive:true});
     if(state.canonical!==1)errs.push('CSS unico assente/duplicato: '+state.canonical);
     if(state.canonicalHref&&!state.canonicalHref.includes('20261104-menu-unico03'))errs.push('Cache CSS obsoleta: '+state.canonicalHref);
     if(state.legacy)errs.push('CSS storico ancora importato: '+state.legacy+' '+state.legacyUrls.join(', '));
+    if(state.legacyExternalRules?.length)errs.push('CSS di navigazione obsoleto in fogli esterni: '+state.legacyExternalRules.join('; '));
     if(state.legacyAtlasInline)errs.push('Ancora CSS locale atlas nav-wrap/nav-home in HTML');
     if(!state.menu)errs.push('Pannello menu non generato');
     if(state.background!=='rgb(250, 247, 241)')errs.push('Sfondo difforme: '+state.background);
