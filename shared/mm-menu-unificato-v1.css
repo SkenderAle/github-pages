@@ -1278,6 +1278,38 @@ nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf:hover{background:#e4d9e4
 }
 
 
+/* Rinascimento: cinque parti in due colonne VERTICALI, senza spezzare i gruppi.
+   I–III nella prima colonna, IV e Materiali nella seconda. */
+.atlas-autonav[data-atlas-page="rinascimento"]>nav.mm-compact-ready:not(.mm-compact-home){
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:.4rem 1.1rem!important;
+}
+.atlas-autonav[data-atlas-page="rinascimento"]>nav.mm-compact-ready>.mm-compact-heading:first-child{
+ grid-column:1/-1!important;
+}
+.atlas-autonav[data-atlas-page="rinascimento"]>nav.mm-compact-ready>.mm-compact-column{
+ display:flex!important;flex-direction:column!important;gap:.55rem!important;min-width:0!important;
+}
+.atlas-autonav[data-atlas-page="rinascimento"]>nav.mm-compact-ready .mm-compact-group{
+ display:flex!important;flex-direction:column!important;min-width:0!important;
+}
+.atlas-autonav[data-atlas-page="rinascimento"]>nav.mm-compact-ready .mm-compact-group>.mm-compact-part{
+ display:block!important;margin:.65rem 0 .35rem!important;
+ padding:.32rem .2rem .45rem!important;
+ border-bottom:1px solid var(--mm-menu-border)!important;
+ background:transparent!important;
+ font:800 .78rem/1.45 var(--mm-menu-font)!important;
+ color:var(--mm-menu-accent)!important;
+}
+.atlas-autonav[data-atlas-page="rinascimento"]>nav.mm-compact-ready .mm-compact-group>:is(.mm-compact-chapter,a.mm-compact-leaf){
+ margin:.26rem 0 .42rem!important;
+}
+@media(max-width:700px){
+ .atlas-autonav[data-atlas-page="rinascimento"]>nav.mm-compact-ready:not(.mm-compact-home){
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+}
+
 /* Audit geometrico mobile: i pannelli devono restare interamente nello schermo.
    In particolare i menu del Melodramma classico e di Anatomia non devono
    ereditare il left:0 del loro pulsante, spostato rispetto al bordo pagina. */
