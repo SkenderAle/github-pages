@@ -75,3 +75,14 @@ nav.mm-dossier-menu :is(summary,a):focus-visible{outline:2px solid #aa78bc!impor
  nav.mm-dossier-menu .atlas-menu-context-local{display:none!important}
 }
 @media print{nav.mm-dossier-menu{display:none!important}}
+
+/* Voci senza sotto-paragrafi: collegamento immediato, senza freccina. */
+nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf{
+ display:block!important;min-width:0!important;box-sizing:border-box!important;
+ margin:.28rem 0 .5rem!important;padding:.54rem .7rem!important;
+ border:1px solid #dacdd4!important;border-left:3px solid #bdaabd!important;
+ border-radius:4px!important;background:#eee6ec!important;color:#342437!important;
+ text-decoration:none!important;font:750 .83rem/1.45 system-ui!important;
+ overflow-wrap:anywhere!important;
+}
+nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf:hover{background:#e4d9e4!important}
