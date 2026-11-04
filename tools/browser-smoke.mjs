@@ -23,7 +23,7 @@ const paths = [
   'dalla-sinfonia-alla-rapsodia/', 'parola-e-canto/', 'concerti/',
   'risorgimento/', 'dal-musical-al-film/', 'melodramma-classico/',
   'anatomia-del-melodramma/', 'melodramma/audioteca/',
-  'romanticismo/destino-provvidenza/'
+  'romanticismo/destino-provvidenza/', 'verso-le-avanguardie/'
 ];
 const dynamicAnchors = [
   ['musica-da-camera/', 'mm-opera-camera-biber-quindici-sonate-del-rosario'],
@@ -83,7 +83,7 @@ try {
         });
         if (viewport.width === 390 && overflow > 16)
           errors.push(path + ': sforamento orizzontale mobile di ' + overflow + 'px');
-        if (path === 'barocco/' || path === 'concerti/' || path === 'romanticismo/')
+        if (path === 'barocco/' || path === 'concerti/' || path === 'romanticismo/' || path === 'verso-le-avanguardie/')
           await page.screenshot({
             path: screenshots + '/' + path.replaceAll('/', '') + '-' + viewport.width + '.png',
             fullPage: false
