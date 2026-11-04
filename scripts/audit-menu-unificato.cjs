@@ -65,7 +65,7 @@ fs.mkdirSync(saveDir,{recursive:true});
        const walk=rules=>{
          for(const rule of rules){
            const sel=rule.selectorText||'';
-           if(/(?:^|[\\s>,+~])\\.(?:nav-wrap|nav-home)(?![\\w-])/.test(sel))
+           if(sel.includes('.nav-wrap') || sel.includes('.nav-home'))
              legacyExternalRules.push(sheet.href.split('/').pop()+': '+sel.slice(0,100));
            if(rule.cssRules)walk(rule.cssRules);
          }
