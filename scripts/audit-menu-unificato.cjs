@@ -97,7 +97,7 @@ fs.mkdirSync(saveDir,{recursive:true});
     },panelSelector);
     const errs=[];
     if(state.canonical!==1)errs.push('CSS unico assente/duplicato: '+state.canonical);
-    if(state.canonicalHref&&!/20261104-menu-unico0[34]/.test(state.canonicalHref))errs.push('Cache CSS obsoleta: '+state.canonicalHref);
+    if(state.canonicalHref&&!state.canonicalHref.includes('20261104-menu-unico04'))errs.push('Cache CSS obsoleta: '+state.canonicalHref);
     if(state.legacy)errs.push('CSS storico ancora importato: '+state.legacy+' '+state.legacyUrls.join(', '));
     if(state.legacyExternalRules?.length)errs.push('CSS di navigazione obsoleto in fogli esterni: '+state.legacyExternalRules.join('; '));
     if(state.legacyAtlasInline)errs.push('Ancora CSS locale atlas nav-wrap/nav-home in HTML');
