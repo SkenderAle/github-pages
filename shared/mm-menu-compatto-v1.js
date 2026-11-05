@@ -163,12 +163,12 @@
     if(children.length){
      const sub=make('details','mm-av-sublist');
      const summary=make('summary');
+     summary.setAttribute('aria-label','Espandi o richiudi i paragrafi di: '+originalTitle);
      link.classList.add('mm-av-chapter-link');
      link.textContent=originalTitle;
      link.setAttribute('aria-label','Leggi il capitolo: '+originalTitle);
-     summary.append(link);
      sub.append(summary,...children);
-     item.append(sub);
+     item.append(link,sub);
     }else{
      link.classList.add('mm-compact-go','mm-compact-leaf');
      item.append(link);
