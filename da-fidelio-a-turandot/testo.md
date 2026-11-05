@@ -138,6 +138,14 @@ Questa **italianità ritmica** non coincide con un presunto carattere nazionale 
 
 La «solita forma» — tempo d'attacco, cantabile, tempo di mezzo, cabaletta, con molte varianti ed eccezioni — diviene uno strumento drammatico proprio perché il pubblico ne riconosce le attese. Nel tempo di mezzo entra una notizia, un personaggio, un evento che cambia ciò che sembrava stabilito; la sezione veloce non ripete semplicemente la precedente, ma registra una decisione o una fuga dalla decisione. Verdi conosce questa grammatica abbastanza profondamente da violarne le aspettative quando il dramma lo esige. Il suo progresso non procede dalla forma alla sua abolizione: procede **dalla formula disponibile alla forma necessaria**.
 
+#### I due Foscari (1844): il potere non protegge il padre
+
+In ***I due Foscari*** (Roma, 1844), dal dramma di Byron rielaborato da Piave, la vicenda non è dominata dall'esaltazione del potere veneziano ma dalla sua **impotenza affettiva**. Il doge Francesco Foscari è chiamato a rappresentare la Repubblica proprio mentre il figlio Jacopo viene condannato: padre e magistrato coincidono nello stesso corpo, ma non possono parlare con la medesima voce. La moglie di Jacopo, Lucrezia, tenta inutilmente di aprire uno spazio alla pietà. In un Verdi ancora giovane, la tragedia non dipende soltanto da un antagonista esterno; nasce da un'istituzione che rende impossibile l'azione del suo stesso rappresentante.
+
+La materia musicale tende a riconoscere ai protagonisti **profili caratteristici** che ritornano nelle loro apparizioni: non ancora una rete wagneriana, ma una memoria timbrica e motivica che stabilisce una continuità fra le scene. Il clima grave della parte del doge e la diversa tensione affidata a Jacopo conferiscono al conflitto una colorazione riconoscibile. Qui la regolarità del periodo cantabile può diventare il segno di un potere immobile: la musica vorrebbe procedere mentre la situazione resta bloccata.
+
+È utile affiancare a questo titolo *Ernani* (1844), dove Verdi aveva cercato l'urgenza di azioni e passioni contrapposte. Nei *Foscari* il movimento sembra invece arrestarsi sotto il peso dell'obbligo. Non è ancora una vetta unanimemente riconosciuta del catalogo, ma è un laboratorio essenziale per comprendere i futuri padri verdiani: Miller, Rigoletto, Boccanegra, Filippo II.
+
 #### Macbeth: il colore della tragedia e la parola che ferisce
 
 In *Macbeth* (1847, poi riveduto per Parigi nel 1865) Verdi affronta Shakespeare con una domanda che supera l'eleganza della melodia: come dare voce all'ambizione, alla paura e alla colpa? Il libretto, la recitazione, la disposizione delle pause e il timbro delle voci diventano parte di un progetto unitario, che egli chiamerà spesso **«tinta»**. La «parola scenica», formulata con particolare chiarezza negli anni di *Aida*, non è una parola semplicemente ben accentata: concentra un'intera situazione e la rende immediatamente percepibile anche dentro un organismo musicale complesso.
@@ -145,6 +153,22 @@ In *Macbeth* (1847, poi riveduto per Parigi nel 1865) Verdi affronta Shakespeare
 La Lady Macbeth non deve essere una creatura di sola bellezza vocale: Verdi chiede all'interprete una presenza inquietante, capace di far prevalere l'intenzione sull'ornamento. Nella scena del sonnambulismo, «Una macchia è qui tuttora», la parola frammentata, il percorso armonico e la tensione del canto mostrano una mente che non riesce più a governarsi. L'efficacia non dipende da quanto «grande» sia la melodia, ma da quanto è esatta la sua deformazione rispetto alla situazione. Il tragico verdiano si costruisce anche attraverso l'imperfezione voluta, il suono trattenuto, l'interruzione.
 
 Il ritmo conserva qui una funzione determinante: può essere il passo inesorabile del potere, la pulsazione dell'ossessione o l'energia che improvvisamente viene meno. Non occorre cercare in ogni battuta un ritmo di danza per riconoscervi una tradizione italiana profondamente trasfigurata. L'originalità consiste nel governare **il momento in cui la musica spinge l'azione e quello in cui le impedisce di procedere**.
+
+#### Luisa Miller (1849): il tragico entra nelle case
+
+Con ***Luisa Miller*** (Napoli, 1849), da *Kabale und Liebe* di Schiller attraverso il libretto di Salvatore Cammarano, la tragedia si avvicina a un mondo meno monumentale. La figlia di un soldato a riposo ama Rodolfo, figlio del potente conte Walter; Wurm e il conte costruiscono l'inganno che costringe Luisa a scrivere una lettera falsa e spezza la fiducia fra gli innamorati. Il conflitto sociale non è uno sfondo ideologico: agisce nei gesti domestici, nella paura per il padre, nelle esitazioni della figlia.
+
+Il ritratto del vecchio **Miller** offre a Verdi un baritono che non vive soltanto per l'ira o la vendetta. Il rapporto con la figlia ha una concretezza tenera, continuamente minacciata dall'autorità esterna. In «Quando le sere al placido», Rodolfo ripercorre un passato che crede tradito: la distensione cantabile ricorda la felicità e, simultaneamente, la rende irrimediabilmente perduta. Quando le passioni esplodono, la ripetizione delle formule musicali non appare più rassicurante; misura quanto i personaggi non riescano a correggere l'errore.
+
+Lo studioso **Gabriele Baldini** ha riconosciuto in *Luisa Miller* l'apertura di una fase nuova: la sua lettura insiste sull'intimità dei rapporti familiari e sulla distanza dai grandi quadri retorici delle prime opere. Senza farne artificialmente l'inizio della maturità, possiamo ascoltarvi la scoperta di un elemento fondamentale: **la violenza della società può diventare tragica attraverso una voce che cerca soltanto di dire la verità**.
+
+#### Stiffelio (1850): il perdono che la censura non poteva tollerare
+
+Fra i titoli meno frequentati, ***Stiffelio*** (Trieste, 1850) è uno dei più audaci. Il protagonista è un pastore protestante contemporaneo, sposato con Lina, che scopre l'infedeltà della moglie e deve scegliere fra il proprio dolore, l'autorità religiosa e il precetto evangelico del perdono. Il conflitto non è uno dei consueti enigmi di successione, onore dinastico o vendetta familiare. È la domanda se un individuo possa vivere la propria fede quando la sua dignità appare ferita.
+
+Il finale, nel quale la lettura del passo evangelico sulla donna adultera rende possibile il perdono, era particolarmente delicato per la censura: si temeva la rappresentazione scenica di un ministro religioso e dei sacramenti, oltre al soggetto stesso dell'adulterio. Le imposizioni modificarono profondamente la prima rappresentazione, anche contro il senso drammatico voluto da Verdi. In un lavoro nel quale **la parola pronunciata deve trasformare la coscienza**, alterare la parola finale significa compromettere l'intero organismo.
+
+Verdi e Piave tentarono più tardi di salvare la musica trasferendo l'intreccio in un contesto medievale: nacque ***Aroldo*** (Rimini, 1857), con un cavaliere di ritorno dalle crociate al posto del pastore. Non si tratta di un semplice cambio di costume; la revisione introduce nuovi materiali e perde inevitabilmente parte dell'urgenza contemporanea del soggetto originario. Questo doppio percorso, prima e dopo la censura, è un documento particolarmente efficace di come la sperimentazione verdiana dipendesse anche dalle possibilità concrete del teatro.
 
 Questa prima fase culmina nella ricerca di un teatro più stringente, dal rapporto con Shakespeare alla trasformazione del canto in azione. Le opere dal 1851 in avanti — a cominciare da *Rigoletto*, *Il trovatore* e *La traviata* — sono esaminate nella sezione [Verdi: il canto come gesto drammatico](#verdi-il-canto-come-gesto-drammatico), dove la maturità dell'autore viene considerata accanto, ma non subordinata, alla riforma di Wagner.
 
@@ -346,9 +370,33 @@ Anche *La traviata* (1853) oppone i ritmi della società al tempo interiore di V
 
 Il rapporto con la tradizione francese è diretto in *Les vêpres siciliennes* (1855) e *Don Carlos* (1867), dove storia pubblica e sentimenti privati si condizionano a vicenda. *Simon Boccanegra* (1857, poi riveduto nel 1881), *Un ballo in maschera* (1859), *La forza del destino* (1862) e *Aida* (1871) sviluppano ulteriormente questa tensione. *Aida*, rappresentata per la prima volta al Cairo il 24 dicembre 1871, sa accostare fasto pubblico e vicende di dolorosa intimità.
 
+#### Simon Boccanegra: il suono della memoria fra il 1857 e il 1881
+
+***Simon Boccanegra*** nacque alla Fenice nel **1857** e tornò alla Scala in una redazione profondamente rielaborata nel **1881**. Verdi sceglie un protagonista insolito: un uomo di mare diventato doge di Genova, diviso fra doveri pubblici, memoria di un amore perduto e desiderio di ritrovare la figlia. La scena del riconoscimento fra Simone e Amelia-Maria non risolve la tragedia, ma ne apre una possibilità di tenerezza. Per il baritono Verdi cerca colori capaci di dire insieme l'autorità e la stanchezza.
+
+La grande innovazione della revisione, condotta con **Arrigo Boito**, è la **scena del Consiglio**. Mentre patrizi e popolani minacciano di dividersi, Boccanegra tenta di trasformare l'invettiva e il tumulto in una parola di pace: «Plebe! Patrizi! Popolo». È un passaggio in cui l'azione collettiva non s'interrompe per lasciar cantare il protagonista. Il suo intervento vocale agisce dentro il caos della scena, ne sposta gli equilibri e rivela la solitudine del potere.
+
+La differenza fra il *Boccanegra* del 1857 e quello del 1881 non è soltanto una questione di maggiore raffinatezza orchestrale. La musicologa **Inori Hayashi** ha studiato in modo specifico come, nella revisione, mutino i rapporti fra **prosodia e accenti musicali**, mostrando che la precisione della parola cantata è parte della nuova forma. La scena del Consiglio costituisce così un laboratorio della maturità estrema, scritto ben prima di *Otello* ma con una libertà drammatica che lo anticipa.
+
+#### Un ballo in maschera (1859): la leggerezza annuncia l'assassinio
+
+In ***Un ballo in maschera*** (Roma, 1859) Verdi affronta una delle contraddizioni più fertili del proprio teatro: il protagonista può essere luminoso, capriccioso, sentimentalmente esitante, mentre tutto intorno a lui si prepara una congiura. Il soggetto risale all'assassinio di Gustavo III di Svezia, ma gli interventi della censura conducono a sostituire il re con **Riccardo, governatore di Boston**. Questo trasferimento non cancella l'ambiguità centrale: l'amicizia e l'amore diventano indiscernibili nel momento in cui il potere interviene nella vita privata.
+
+Oscar, paggio brillante, e Ulrica, figura profetica, non sono distrazioni decorative. L'uno imprime alla scena un movimento rapido e leggero che rende più terribile la minaccia; l'altra fissa nel rito del vaticinio un tempo diverso, attraversato dall'idea della morte. Nel celebre «Eri tu» di Renato, l'amico che si sente tradito, l'impulso della vendetta si intreccia al rimpianto: la voce non descrive un carattere univoco, ma una decisione presa contro la propria stessa memoria.
+
+Per comprendere Verdi bisogna ascoltare il **ritmo del ballo** accanto alla violenza che esso nasconde. La musica festiva non contraddice accidentalmente il delitto: è proprio il suo movimento irresistibile a creare la condizione della catastrofe. La capacità di far convivere leggerezza e tragedia non compare all'improvviso in *Falstaff*; attraversa già il Verdi centrale.
+
+#### La forza del destino: il mondo irrompe nella tragedia
+
+***La forza del destino***, rappresentata per la prima volta a San Pietroburgo nel **1862** e radicalmente riconsiderata per Milano nel **1869**, può sembrare un accumulo di coincidenze, fughe e incontri improbabili. Ma Verdi costruisce proprio su questa instabilità una forma teatrale senza un centro sicuro. Alvaro, Leonora e Carlo cercano di sottrarsi a una colpa o a una vendetta; la società, la guerra, la miseria e le istituzioni religiose continuano a spostarli, separarli e ricongiungerli. La «forza» non coincide con una fatalità soprannaturale sempre riconoscibile: comprende anche pregiudizi, ostinazioni e scelte umane.
+
+Accanto all'universo dei tre protagonisti agiscono **Preziosilla**, **Fra Melitone**, soldati, pellegrini, mercanti e folla. Non sono una cornice comica inutile: aprono la tragedia a una dimensione quasi romanzesca, nella quale il dolore privato convive con la vita che continua indifferente. Qui si vede quanto Verdi sappia usare marce, canti popolari e ritmi di massa senza degradare la tragedia. Proprio la vitalità di quelle pagine rende più acuto l'isolamento di Leonora in «Pace, pace mio Dio!».
+
+Il confronto fra le due redazioni è illuminante. Nel 1862 l'opera si apre con un breve preludio e culmina in una conclusione senza riconciliazione, con il suicidio di Alvaro; nella versione del 1869 Verdi scrive una **sinfonia più estesa** e trasforma profondamente il finale: Alvaro resta vivo, mentre il Padre Guardiano tenta di condurlo alla pietà e Leonora muore. Anche la celebre cellula di tre note comunemente chiamata «motivo del destino» va ascoltata con attenzione, senza ridurla a un cartellino wagneriano ante litteram. Il mutamento del finale non rende il lavoro semplicemente più consolatorio: cambia la domanda che la musica pone dopo la catastrofe.
+
 #### Dal dramma familiare alla scena pubblica: una musica di contrasti
 
-L'opera della maturità amplia progressivamente il proprio orizzonte senza perdere la rapidità dei gesti. In *Un ballo in maschera* (1859) la leggerezza di Oscar e la brillantezza di un ambiente mondano convivono con il presagio dell'assassinio; ne *La forza del destino* (1862) incontri grotteschi, episodi popolari e una vicenda di colpa irrimediabile non appartengono a due opere diverse, ma al medesimo universo. Verdi ricava dal contrasto fra registri una rappresentazione più aspra dell'esistenza. La tensione non nasce soltanto dall'intensificarsi del tragico: può nascere anche da una danza che continua mentre il personaggio va incontro alla catastrofe.
+Le opere appena attraversate mostrano una maturità che non cresce per semplice accumulo di mezzi. Verdi dispone il duello fra parola intima e parola pubblica, il contrasto fra danza e minaccia, la distanza fra il tempo vissuto dai personaggi e il movimento della folla. La tensione non nasce soltanto dall'intensificarsi del tragico: può nascere da una musica festosa che prosegue quando il personaggio non può più arrestare la propria catastrofe. La continuità dell'azione è così affidata anche al conflitto fra forme diverse.
 
 In *Les vêpres siciliennes* (1855) e *Don Carlos* (1867) il confronto con il *grand opéra* francese è diretto: masse corali, balletto, cerimonie e grandi quadri storici forniscono nuove dimensioni al conflitto. Ma il nucleo drammatico continua a essere affidato a relazioni fragili, a parole dette troppo tardi, a decisioni prive di soluzione. La scena dell'autodafé in *Don Carlos* non è il trionfo di una monumentalità fine a se stessa; la magnificenza del potere esiste per rendere più crudele ciò che esso impone ai singoli.
 
@@ -411,6 +459,8 @@ Quando *Otello* si apre con la tempesta, l'orchestra e il coro gettano immediata
 **Da ascoltare e confrontare.** Il preludio di *Tristan und Isolde* e l'inizio di *Otello*; un episodio orchestrale del *Ring* e un concertato di *Rigoletto*; la fuga di *Falstaff*. Per iniziare: confrontare il modo in cui un motivo ricorrente cambia senso in Wagner e in Verdi.
 
 ---
+
+Per la produzione vocale e strumentale da camera, distinta dal teatro musicale, vedi [Romanticismo · Le romanze e il Quartetto di Verdi](../romanticismo/#verdi-camera).
 
 ## 5. Le tradizioni nazionali: lingue, memorie, invenzioni
 
@@ -622,6 +672,11 @@ Per l'integrazione nel sito è preferibile collegare **esecuzioni complete e doc
 ## Bibliografia ragionata e riferimenti
 
 - **Julian Budden**, *The Operas of Verdi*, 3 voll., Oxford University Press. Studio di riferimento sul teatro di Verdi e la sua evoluzione drammaturgica.
+- **Roger Parker**, *The New Grove Guide to Verdi and His Operas*, Oxford University Press, 2007. Analisi delle opere meno frequentate, delle revisioni e delle circostanze teatrali. https://academic.oup.com/book/49368
+- **Gabriele Baldini**, *The Story of Giuseppe Verdi: Oberto to Un Ballo in Maschera*, Cambridge University Press. Interpretazione di Luisa Miller e della trasformazione drammatica del primo Verdi. https://www.cambridge.org/core/books/abs/story-of-giuseppe-verdi/luisa-miller/906D4AEF7015E4D8CBB88C86F0ECC4EA
+- **Inori Hayashi**, *The Correlativity between Prosodic and Musical Modifications in the Revision of Simon Boccanegra*, Ongakugaku 69/2, 2024, pp. 111–125. Studio sulla revisione del 1881, sugli accenti musicali e sulla prosodia. https://doi.org/10.20591/ongakugaku.69.2_111
+- **Casa Ricordi**, *La forza del destino: edizione critica*, Ricordi. Le fonti e le difficoltà editoriali fra 1862 e 1869. https://www.ricordi.com/it-IT/Critical-Editions/Verdi-Giuseppe-Critical-Editions/Verdi-Giuseppe-WGV/Verdi-La-forza-del-destino.aspx
+- **Royal Ballet and Opera**, *Creative Spotlight: Giuseppe Verdi*, Royal Ballet and Opera. Contesto di Stiffelio e delle opere centrali. https://www.rbo.org.uk/creative-spotlight-giuseppe-verdi
 - **Anna Tedesco**, *Giuseppe Verdi*, Treccani (2014). Linguaggio teatrale, tinta e parola scenica. https://www.treccani.it/enciclopedia/giuseppe-verdi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
 - **William Rothstein**, *The Musical Language of Italian Opera, 1813–1859*, Oxford University Press, 2023. Forme, ritmo e funzione drammatica. https://doi.org/10.1093/oso/9780197609682.001.0001
 - **Renato Meucci**, *The Pelitti Firm: Makers of Brass Instruments in Nineteenth-Century Milan*, Historic Brass Society Journal. Storia delle trombe da Aida. https://www.ibew.org.uk/dvarch/DV01604.pdf
