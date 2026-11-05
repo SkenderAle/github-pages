@@ -177,6 +177,7 @@
    av.replaceChildren(fragment);
    av.addEventListener('click',event=>{
     if(event.target.closest('a[href]')){
+     for(const submenu of av.querySelectorAll('details[open]'))submenu.open=false;
      const owner=av.closest('details');
      if(owner)owner.open=false;
     }
