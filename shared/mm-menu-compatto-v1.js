@@ -150,7 +150,9 @@
     if(root&&target){
      let n=0;
      for(const h of root.querySelectorAll('h3,h4')){
-      if(h===target||h.closest('nav,aside,details,[hidden],.av-modern-listen,.av-afro-listen,.av-listen-guide')||(h.closest('.cards')&&!h.id))continue;
+      // Le tre sezioni editoriali Brecht–Weill sono in un aside, ma hanno ancore proprie.
+      const isWeillEditorial=/^brecht-weill-(?:teatro|mahagonny|alabama)$/.test(h.id)&&!!h.closest('aside.late-context');
+      if(h===target||h.closest('nav,details,[hidden],.av-modern-listen,.av-afro-listen,.av-listen-guide')||(h.closest('aside')&&!isWeillEditorial)||(h.closest('.cards')&&!h.id))continue;
       if(!(target.compareDocumentPosition(h)&Node.DOCUMENT_POSITION_FOLLOWING))continue;
       if(next&&!(h.compareDocumentPosition(next)&Node.DOCUMENT_POSITION_FOLLOWING))continue;
       if(h.textContent.trim().length<5||n>=25)continue;
