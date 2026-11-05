@@ -126,9 +126,39 @@ Ma lo stesso compositore firma *L'elisir d'amore* (1832) e *Don Pasquale* (1843)
 
 ### Verdi: gli «anni di galera» e l'urgenza della scena
 
-Giuseppe Verdi (1813–1901) esordisce con *Oberto* (1839), conosce un grave insuccesso con *Un giorno di regno* (1840) e conquista il pubblico con *Nabucco* (1842). Il coro *Va, pensiero* sarà poi investito di un enorme valore identitario nel racconto del Risorgimento italiano; è però opportuno distinguere quella ricezione successiva dalle reazioni documentabili del pubblico del 1842. Il rapporto fra opera e nazione non è una leggenda da ripetere, bensì un processo storico da ricostruire.
+Giuseppe Verdi (1813–1901) esordisce con *Oberto* (1839), conosce un grave insuccesso con *Un giorno di regno* (1840) e conquista il pubblico con *Nabucco* (1842). Il coro *Va, pensiero* appartiene anche alla storia della costruzione dell'identità italiana: per questa ricezione e per le sue stratificazioni politiche si rinvia al percorso [Risorgimento · Verdi e la nazione](../risorgimento/#verdi). Qui interessa osservare come Verdi cominci a trasformare l'efficacia del ritmo, della scena e della voce in una nuova drammaturgia.
 
 Negli anni successivi Verdi scrive a ritmo serrato: *I Lombardi alla prima crociata* (1843), *Ernani* (1844), *Attila* (1846), *Macbeth* (1847), *La battaglia di Legnano* (1849), *Luisa Miller* (1849). Questa stagione, da lui ricordata come gli «anni di galera», presenta già i suoi caratteri distintivi: il desiderio di un'azione stringente, una parola che ferisca, personaggi collocati in conflitti politici e familiari insolubili. *Macbeth* introduce inoltre un rapporto modernissimo con Shakespeare: la ricerca della «parola scenica», cioè di una parola musicale capace di produrre un effetto drammatico immediato.
+
+#### Il ritmo italiano non è una formula: dalla convenzione all'azione
+
+Il giovane Verdi lavora entro un teatro di forme riconoscibili: arie, cabalette, pezzi concertati, cori, duetti e finali. La loro riconoscibilità è stata talora scambiata per ripetizione meccanica. Eppure, per comprendere la sua originalità, occorre ascoltare **ciò che egli fa accadere dentro la forma**. La scansione ritmica, la ripresa di una figura, la brusca accelerazione o l'arresto di un accompagnamento non sono ornamenti applicati a un sentimento preesistente: producono la situazione scenica, danno un corpo al conflitto e trasformano il canto in gesto.
+
+Questa **italianità ritmica** non coincide con un presunto carattere nazionale sempre brillante o marziale; è una storia di pratiche teatrali, di prosodia e di memoria dell'ascoltatore. Rossini gli consegna l'energia della ripetizione e degli insiemi, Donizetti la flessibilità del passaggio fra effusione e azione, Bellini la capacità di sospendere il tempo nella linea vocale. Verdi non si limita a sommare queste eredità: le comprime, le contraddice, le fa urtare una contro l'altra. Perfino una pagina lirica può essere percorsa da un'impazienza sotterranea; una cabaletta può diventare la misura di una volontà ormai irreversibile.
+
+La «solita forma» — tempo d'attacco, cantabile, tempo di mezzo, cabaletta, con molte varianti ed eccezioni — diviene uno strumento drammatico proprio perché il pubblico ne riconosce le attese. Nel tempo di mezzo entra una notizia, un personaggio, un evento che cambia ciò che sembrava stabilito; la sezione veloce non ripete semplicemente la precedente, ma registra una decisione o una fuga dalla decisione. Verdi conosce questa grammatica abbastanza profondamente da violarne le aspettative quando il dramma lo esige. Il suo progresso non procede dalla forma alla sua abolizione: procede **dalla formula disponibile alla forma necessaria**.
+
+#### Macbeth: il colore della tragedia e la parola che ferisce
+
+In *Macbeth* (1847, poi riveduto per Parigi nel 1865) Verdi affronta Shakespeare con una domanda che supera l'eleganza della melodia: come dare voce all'ambizione, alla paura e alla colpa? Il libretto, la recitazione, la disposizione delle pause e il timbro delle voci diventano parte di un progetto unitario, che egli chiamerà spesso **«tinta»**. La «parola scenica», formulata con particolare chiarezza negli anni di *Aida*, non è una parola semplicemente ben accentata: concentra un'intera situazione e la rende immediatamente percepibile anche dentro un organismo musicale complesso.
+
+La Lady Macbeth non deve essere una creatura di sola bellezza vocale: Verdi chiede all'interprete una presenza inquietante, capace di far prevalere l'intenzione sull'ornamento. Nella scena del sonnambulismo, «Una macchia è qui tuttora», la parola frammentata, il percorso armonico e la tensione del canto mostrano una mente che non riesce più a governarsi. L'efficacia non dipende da quanto «grande» sia la melodia, ma da quanto è esatta la sua deformazione rispetto alla situazione. Il tragico verdiano si costruisce anche attraverso l'imperfezione voluta, il suono trattenuto, l'interruzione.
+
+Il ritmo conserva qui una funzione determinante: può essere il passo inesorabile del potere, la pulsazione dell'ossessione o l'energia che improvvisamente viene meno. Non occorre cercare in ogni battuta un ritmo di danza per riconoscervi una tradizione italiana profondamente trasfigurata. L'originalità consiste nel governare **il momento in cui la musica spinge l'azione e quello in cui le impedisce di procedere**.
+
+#### Il trovatore e La traviata: quando la musica contraddice il personaggio
+
+In *Il trovatore* (1853) la frequente nettezza delle sezioni, le figure ritmiche ostinate e l'energia delle cabalette sono state spesso interpretate come segni di un teatro primitivo rispetto ai lavori posteriori. Ma l'opera è costruita su testimonianze incompatibili, racconti di un passato traumatico e una concatenazione di vendette: le riprese, lungi dall'essere rassicuranti, possono far sentire l'impossibilità di sottrarsi al medesimo destino. La canzone di Azucena, «Stride la vampa», è ossessiva proprio perché il racconto della violenza cerca nella regolarità del canto un ordine che non possiede.
+
+Anche *La traviata* (1853) oppone i ritmi della società al tempo interiore di Violetta. Il valzer del salotto e il moto euforico di «Sempre libera» non definiscono una ragazza spensierata: si confrontano con il ricordo della voce di Alfredo e con l'ipotesi di una vita diversa, già dischiusa in «Ah, fors'è lui». La pulsazione ternaria, così immediatamente identificabile, diventa il segno di un mondo sociale che invita a vivere senza fermarsi e, nello stesso tempo, impedisce alla protagonista di sottrarsi alla propria maschera.
+
+La capacità verdiana di distribuire l'energia fra i personaggi è forse ancora più evidente nel quartetto «Bella figlia dell'amore» di *Rigoletto* (1851). Quattro voci cantano contemporaneamente intenzioni incompatibili: la seduzione del Duca, il divertimento di Maddalena, il dolore di Gilda e la volontà di vendetta di Rigoletto. La regolarità metrica non appiattisce le psicologie: rende **udibile il loro conflitto simultaneo**. La tradizione del concertato si trasforma in un dispositivo teatrale di sorprendente precisione.
+
+**Da ascoltare e confrontare.** *Casta diva* da *Norma* e la scena della follia da *Lucia*: due modi diversi di dilatare l'espressione vocale. Poi il coro *Va, pensiero* e una pagina di *Macbeth*: la collettività e il dramma individuale. Per iniziare: individuare nel libretto il momento preciso in cui cambia il tempo musicale.
+
+Immagina due teatri parigini: uno punta sul grande spettacolo storico, l'altro su sentimenti e ironia. Quali pubblici cercano?
+
+*Parigi fra spettacolo monumentale, lirismo, satira e realismo*
 
 **Da ascoltare e confrontare.** *Casta diva* da *Norma* e la scena della follia da *Lucia*: due modi diversi di dilatare l'espressione vocale. Poi il coro *Va, pensiero* e una pagina di *Macbeth*: la collettività e il dramma individuale. Per iniziare: individuare nel libretto il momento preciso in cui cambia il tempo musicale.
 
@@ -316,6 +346,44 @@ Con ***Rigoletto*** (1851), ***Il trovatore*** (1853) e ***La traviata*** (1853)
 
 Il rapporto con la tradizione francese è diretto in *Les vêpres siciliennes* (1855) e *Don Carlos* (1867), dove storia pubblica e sentimenti privati si condizionano a vicenda. *Simon Boccanegra* (1857, poi riveduto nel 1881), *Un ballo in maschera* (1859), *La forza del destino* (1862) e *Aida* (1871) sviluppano ulteriormente questa tensione. *Aida*, rappresentata per la prima volta al Cairo il 24 dicembre 1871, sa accostare fasto pubblico e vicende di dolorosa intimità.
 
+#### Dal dramma familiare alla scena pubblica: una musica di contrasti
+
+L'opera della maturità amplia progressivamente il proprio orizzonte senza perdere la rapidità dei gesti. In *Un ballo in maschera* (1859) la leggerezza di Oscar e la brillantezza di un ambiente mondano convivono con il presagio dell'assassinio; ne *La forza del destino* (1862) incontri grotteschi, episodi popolari e una vicenda di colpa irrimediabile non appartengono a due opere diverse, ma al medesimo universo. Verdi ricava dal contrasto fra registri una rappresentazione più aspra dell'esistenza. La tensione non nasce soltanto dall'intensificarsi del tragico: può nascere anche da una danza che continua mentre il personaggio va incontro alla catastrofe.
+
+In *Les vêpres siciliennes* (1855) e *Don Carlos* (1867) il confronto con il *grand opéra* francese è diretto: masse corali, balletto, cerimonie e grandi quadri storici forniscono nuove dimensioni al conflitto. Ma il nucleo drammatico continua a essere affidato a relazioni fragili, a parole dette troppo tardi, a decisioni prive di soluzione. La scena dell'autodafé in *Don Carlos* non è il trionfo di una monumentalità fine a se stessa; la magnificenza del potere esiste per rendere più crudele ciò che esso impone ai singoli.
+
+È proprio qui che il ritmo tradizionale italiano rivela una risorsa anziché un limite. Verdi sa dare al coro la forza dell'organismo collettivo, a un accompagnamento regolare la fissità di una norma sociale, a un gesto sincopato la violenza di una decisione; sa anche svuotare quelle stesse risorse, creando uno spazio di silenzio e di esitazione. **L'orchestra non traduce in suoni la scenografia: costruisce i rapporti di forza che la scenografia rende visibili.**
+
+#### Aida: il trionfo pubblico contro la voce privata
+
+La prima di *Aida*, al Cairo il 24 dicembre 1871, è un punto di osservazione esemplare. La scena del trionfo nel secondo atto dispiega cori, processione, danza, fanfare e apparati solenni, ma il suo centro drammatico non è soltanto la vittoria dell'Egitto: quella festa pubblica trascina davanti a tutti il dramma di Aida, principessa etiope fatta schiava, del padre Amonasro e del generale Radamès. La musica del potere si mostra in tutta la sua energia mentre la vita privata della protagonista ne rivela il prezzo.
+
+L'impressione di grandezza nasce dalla precisione dell'organizzazione ritmica e timbrica, non dalla generica accumulazione di suono. La marcia presenta un profilo netto, scandito, facilmente memorizzabile; il balletto successivo mette in circolazione cellule contrastanti e cambia più volte il carattere della scena. Verdi usa la **chiarezza ritmica italiana** come un'architettura capace di sostenere masse, spostamenti e cerimonie, senza confondere la magnificenza del quadro con l'idea morale dell'opera.
+
+Eppure *Aida* è altrettanto definita dal suo opposto: la tensione trattenuta di «Ritorna vincitor!», il paesaggio notturno del Nilo in «O patria mia» e l'ultimo duetto «O terra addio». La scrittura può farsi lieve, quasi incorporea, quando lo spettacolo esterno si ritira. Nel finale Verdi dispone due luoghi e due tempi sovrapposti: sotto la pietra, Aida e Radamès muoiono insieme; sopra di loro, Amneris prega. Nessuna marcia potrebbe risolvere questa contraddizione. La tragedia è nella **coesistenza di sonorità e prospettive inconciliabili**.
+
+#### Le trombe di Aida: quando l'orchestrazione richiede strumenti nuovi
+
+Per la marcia trionfale Verdi non si accontenta dei normali ottoni d'orchestra. Cerca l'aspetto delle trombe lunghe raffigurate nelle testimonianze dell'antico Egitto, ma vuole anche ottenere tutte le note necessarie alla propria fanfara. Chiede quindi alla fabbrica milanese di **Giuseppe Clemente Pelitti** la costruzione di **sei trombe diritte**, destinate alla prima del 1871. Si tratta di un'innovazione funzionale: non una ricostruzione archeologica esatta, ma uno strumento moderno che deve apparire antico mentre esegue una musica moderna.
+
+La soluzione è particolarmente eloquente: le trombe sono dotate di **un pistone**, collocato e dissimulato in modo da conservare il profilo allungato della tromba naturale. Sono previste due accordature, **la bemolle e si naturale**, così da articolare la fanfara in due diversi colori e registri. Verdi progetta la necessità scenica e musicale; **Pelitti realizza materialmente gli strumenti**. Dire che «Verdi inventa le trombe» sarebbe una scorciatoia: più interessante è osservare il compositore alle prese con artigiani, valvole, fori, qualità del timbro e visibilità sulla scena.
+
+L'idea ha una propria storia successiva. Le trombe impiegate in altre produzioni non coincidono necessariamente con gli esemplari milanesi del 1871: per il teatro parigino furono costruiti anche strumenti da **Adolphe Sax**, e altri fabbricanti ne realizzarono modelli differenti. La forma allungata diventa così un segno iconografico dell'opera. La storia delle «trombe di Aida» va raccontata distinguendo l'invenzione di una *funzione teatrale*, la realizzazione della prima serie di strumenti e le imitazioni successive.
+
+Questo episodio rovescia un luogo comune sull'orchestrazione italiana: il compositore non rinuncia alla specificità strumentale per mantenere la voce al centro, ma pretende dall'organico ciò che la scena richiede. La fanfara non è un effetto che si potrebbe sostituire senza conseguenze con qualsiasi squillo di ottoni; è un suono pensato per provenire da un certo spazio, da una certa figura visiva, nel momento esatto in cui il potere egiziano si esibisce davanti agli spettatori.
+
+#### Dopo Aida: il trombone contrabbasso Verdi e la ricerca del registro grave
+
+La sperimentazione non si chiude con le trombe egiziane. Nel **1881** Verdi, insieme a Boito e a Giulio Ricordi, ascolta presso l'officina Pelitti prove di un nuovo **trombone contrabbasso in si bemolle**, costruito per ottenere un registro grave capace di fondersi con il gruppo dei tromboni senza assumere la qualità timbrica del basso tuba. Lo strumento viene ricordato anche come **«trombone contrabbasso Verdi»** e si inserisce nella storia complessa degli ottoni bassi dell'orchestra italiana.
+
+La parola *cimbasso*, che oggi viene spesso usata per strumenti di questa famiglia, ebbe nell'Ottocento significati differenti e non designava sempre il medesimo oggetto. Non conviene dunque proiettare le classificazioni moderne all'indietro sulle prime partiture di Verdi. Il punto storico è più significativo del nome: Verdi è parte attiva di una cultura in cui il compositore discute con i costruttori, verifica l'equilibrio fra i registri e modifica concretamente le condizioni del suono orchestrale. Quell'attenzione al corpo degli strumenti è uno degli aspetti della sua modernità.
+
+#### Una modernità italiana, non un Wagner incompiuto
+
+Sarebbe un errore misurare questa traiettoria soltanto con il metro dell'opera tedesca, come se il destino dell'arte lirica fosse l'abbandono progressivo dei suoi caratteri italiani. Wagner radicalizza l'orchestra come memoria e coscienza del dramma; Verdi attribuisce spesso al ritmo cantabile, alla prosodia incisiva e al contrasto fra sezioni la stessa capacità di produrre significato, senza fare della continuità sonora un principio esclusivo. Entrambi ripensano il rapporto fra musica e scena, ma non stanno su una scala evolutiva nella quale uno costituisca la versione più completa dell'altro.
+
+L'italianità di Verdi non è dunque una sostanza immutabile né un elenco di cadenze riconoscibili: è la fedeltà creativa a un sistema di comunicazione musicale nel quale il pubblico sente immediatamente che cosa una ripetizione promette, che cosa una pausa nega, che cosa una pulsazione accelera. La tradizione gli offre una lingua comune e Verdi, come i maggiori drammaturghi, la usa per dire cose che prima non vi erano state dette. **Non un realismo della superficie, ma una precisione dell'azione.**
+
 #### Boito, *Otello*, *Falstaff*: la trasformazione dall'interno
 
 Arrigo Boito (1842–1918) non fu soltanto il librettista degli ultimi capolavori verdiani. Con *Mefistofele* (1868, poi profondamente riveduto) portò sulla scena italiana una personale elaborazione del *Faust*, delle suggestioni tedesche e delle ambizioni della Scapigliatura. La sua collaborazione con Verdi in *Otello* (1887) e *Falstaff* (1893) diviene l'incontro fra due idee forti di teatro: parola precisa, orchestra mobile, continuità drammatica, caratterizzazione rapidissima.
@@ -323,6 +391,14 @@ Arrigo Boito (1842–1918) non fu soltanto il librettista degli ultimi capolavor
 *Otello* non è un'imitazione di Wagner, e *Falstaff* non rappresenta un semplice ritorno all'opera buffa settecentesca. In entrambi, Verdi rinnova dall'interno la sintassi del melodramma, senza rinunciare al peso del canto. La fuga conclusiva di *Falstaff* — «Tutto nel mondo è burla» — è insieme un prodigio contrappuntistico e una conclusione teatrale: nessun personaggio possiede l'ultima parola perché tutti vi partecipano.
 
 Verdi muore a Milano il 27 gennaio 1901. L'esecuzione di *Va, pensiero* sotto la direzione di Toscanini appartiene alla solenne traslazione delle salme di Verdi e Giuseppina Strepponi alla Casa di Riposo per Musicisti, il 27 febbraio: un episodio emblematico di come l'opera, dalla scena, possa passare nella memoria civile.
+
+#### Otello e Falstaff: la lezione del ritmo arriva fino alla fine
+
+L'apertura di *Otello* (1887) ne offre una prova folgorante. Non c'è un'ouverture separata: la tempesta, il coro e l'improvvisa apparizione dell'eroe precipitano subito nell'azione. Il celebre «Esultate!» è un intervento brevissimo, tanto più incisivo quanto più grande è il tumulto che lo prepara. Verdi non ha abbandonato la chiarezza dell'accento e del gesto: li ha concentrati al punto da farne un dispositivo di regia teatrale. Nel «Credo» di Jago l'impulso ritmico può diventare una logica feroce, quasi una costruzione argomentativa che avanza senza pietà.
+
+Nel quarto atto, al contrario, la *Canzone del salice* e l'*Ave Maria* di Desdemona aprono spazi di tempo sospeso, in cui la semplicità dell'enunciazione diventa una forma estrema di vulnerabilità. È precisamente il confronto fra la forza incalzante dell'azione e la fragilità di queste soste a produrre la catastrofe. Lo stesso autore che sa mobilitare fanfare, bande e masse corali sceglie qui di restringere tutto al respiro di una donna sola.
+
+In *Falstaff* (1893) il ritmo si fa intelligenza collettiva: la conversazione sembra rincorrersi da una voce all'altra, i gruppi entrano ed escono come corpi scenici e la trama contrappuntistica segue la velocità dell'equivoco. La fuga conclusiva, «Tutto nel mondo è burla», non è una firma accademica apposta a una commedia, ma l'ultima metamorfosi dell'ensemble italiano: più voci indipendenti costruiscono, nell'incastro rigoroso, una verità che nessun personaggio può rivendicare da solo. **La tradizione italiana non scompare: arriva a riconoscere se stessa attraverso una libertà formale nuova.**
 
 #### Due drammaturgie a confronto: il motivo e la parola scenica
 
@@ -546,6 +622,11 @@ Per l'integrazione nel sito è preferibile collegare **esecuzioni complete e doc
 ## Bibliografia ragionata e riferimenti
 
 - **Julian Budden**, *The Operas of Verdi*, 3 voll., Oxford University Press. Studio di riferimento sul teatro di Verdi e la sua evoluzione drammaturgica.
+- **Anna Tedesco**, *Giuseppe Verdi*, Treccani (2014). Linguaggio teatrale, tinta e parola scenica. https://www.treccani.it/enciclopedia/giuseppe-verdi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- **William Rothstein**, *The Musical Language of Italian Opera, 1813–1859*, Oxford University Press, 2023. Forme, ritmo e funzione drammatica. https://doi.org/10.1093/oso/9780197609682.001.0001
+- **Renato Meucci**, *The Pelitti Firm: Makers of Brass Instruments in Nineteenth-Century Milan*, Historic Brass Society Journal. Storia delle trombe da Aida. https://www.ibew.org.uk/dvarch/DV01604.pdf
+- **Renato Meucci**, *Pelitti*, Dizionario Biografico degli Italiani, Treccani (2015). Trombe e trombone contrabbasso Verdi. https://www.treccani.it/enciclopedia/pelitti_%28Dizionario-Biografico%29/
+- **Steven Huebner**, *Parlante Talk: Texture and Formal Function in the Operas of Verdi*, Cambridge University Press, 2021. Il discorso vocale e la forma. https://www.cambridge.org/core/books/abs/formal-functions-in-perspective/parlante-talk-texture-and-formal-function-in-the-operas-of-verdi/F7BD4803605FCD3B1BAC16C46BA13D39
 - **Philip Gossett**, *Divas and Scholars: Performing Italian Opera*, University of Chicago Press, 2006. Filologia, prassi esecutiva, varianti e problemi del repertorio italiano.
 - **Carolyn Abbate e Roger Parker**, *A History of Opera: The Last Four Hundred Years*, Allen Lane / W. W. Norton, 2012. Quadro storico e critico, utile per interrogare il canone.
 - **Carl Dahlhaus**, *Nineteenth-Century Music*, University of California Press. Il contesto delle trasformazioni musicali e culturali dell'Ottocento.
