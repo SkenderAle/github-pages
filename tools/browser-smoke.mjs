@@ -21,7 +21,7 @@ const paths = [
   'medioevo/', 'rinascimento/', 'barocco/', 'classicismo/',
   'romanticismo/', 'melodramma/', 'musica-da-camera/',
   'dalla-sinfonia-alla-rapsodia/', 'parola-e-canto/', 'concerti/',
-  'risorgimento/', 'dal-musical-al-film/', 'melodramma-classico/',
+  'risorgimento/', 'dal-musical-al-film/', 'melodramma-classico/', 'da-fidelio-a-turandot/',
   'anatomia-del-melodramma/', 'melodramma/audioteca/',
   'romanticismo/destino-provvidenza/', 'verso-le-avanguardie/'
 ];
@@ -157,6 +157,34 @@ try {
       assert(await page.locator('[id="' + id + '"]').count() === 1,
         path + ': ancora dinamica duplicata ' + id);
     } catch (e) { errors.push(path + ': segnalibro dinamico ' + id + ': ' + e.message); }
+    finally { await context.close(); }
+  }
+
+  // Il nuovo percorso sull'opera deve caricare il lettore solo dopo un clic.
+  {
+    const { page, context } = await makePage(desktop);
+    try {
+      await visit(page, 'da-fidelio-a-turandot/');
+      const cards = page.locator('[data-mm-clips]');
+      assert(await cards.count() === 8, 'Fidelio–Turandot: mancano laboratori di ascolto');
+      assert(await page.locator('iframe').count() === 0,
+        'Fidelio–Turandot: un iframe risulta caricato prima del clic');
+      const first = cards.first();
+      const preview = first.locator('.mm-compare-preview').first();
+      await preview.waitFor({ timeout: 15000 });
+      await preview.click();
+      const frame = first.locator('iframe').first();
+      await frame.waitFor();
+      const src = await frame.getAttribute('src');
+      assert(!!src && src.includes('youtube-nocookie.com/embed/ywZ-wKBljWQ'),
+        'Fidelio–Turandot: video diverso da quello previsto');
+      assert(!!src && src.includes('autoplay=0'),
+        'Fidelio–Turandot: il lettore avvia automaticamente la riproduzione');
+      await first.locator('button[data-mm-clip-stop]').first().click();
+      assert(await first.locator('iframe').count() === 0,
+        'Fidelio–Turandot: il video rimane caricato dopo Chiudi');
+      await page.screenshot({path: screenshots + '/fidelio-turandot-ascolti-1280.png', fullPage:false});
+    } catch (e) { errors.push('Fidelio–Turandot, lettore manuale: ' + e.message); }
     finally { await context.close(); }
   }
 
