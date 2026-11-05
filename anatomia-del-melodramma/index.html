@@ -199,6 +199,11 @@ for(const [i,section] of chapters.entries()){
 }
 holder.addEventListener('click',event=>{if(event.target.closest('a[href^="#"]'))menu.open=false});
 document.addEventListener('click',event=>{if(menu.open&&!menu.contains(event.target))menu.open=false});
-document.addEventListener('keydown',event=>{if(event.key==='Escape')menu.open=false});
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'&&menu.open){
+  menu.open=false;
+  menu.querySelector(':scope > summary')?.focus();
+ }
+});
 })();
 </script><script src="../shared/mm-confronto-estratti-v1.js?v=20261024-optimized-x" defer></script><script src="../shared/mm-menu-posizione-v1.js?v=20261104-nav02" defer></script></body></html>
