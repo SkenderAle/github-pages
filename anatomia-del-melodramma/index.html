@@ -183,17 +183,18 @@ for(const [i,section] of chapters.entries()){
  const link=document.createElement('a');
  link.className='mm-compact-go';
  link.href='#'+section.id;link.textContent='Vai al capitolo ↗';item.append(link);
- const sub=document.createElement('div');sub.className='anatomia-sub';
+ const sub=[];
  let n=0;
  for(const heading3 of section.querySelectorAll('h3')){
    if(heading3.closest('.mm-compare-clips, .reference details, nav'))continue;
    n++;
    if(!heading3.id)heading3.id='anatomia-paragrafo-'+(i+1)+'-'+n;
    const target=document.createElement('a');
+   target.className='mm-compact-sub';
    target.href='#'+heading3.id;target.textContent=(i+1)+'.'+n+' · '+heading3.textContent.trim();
-   sub.append(target);
+   sub.push(target);
  }
- if(n)item.append(sub);
+ if(n)item.append(...sub);
  holder.append(item);
 }
 holder.addEventListener('click',event=>{if(event.target.closest('a[href^="#"]'))menu.open=false});
