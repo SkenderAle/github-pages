@@ -41,7 +41,7 @@ function init(){
   let id;try{id=decodeURIComponent(a.getAttribute('href').slice(1))}catch{continue}
   const target=document.getElementById(id);
   if(!target||panel.contains(target))continue;
-  const parent=a.closest('.mm-av-chapter,.mm-menu-leaf,.mm-compact-leaf,details.mm-compact-chapter,details.mm-chapter,details.pc-chapter,details.classico-chapter,details.anatomia-chapter,.menu-chapter,details');
+  const parent=a.closest('.mm-av-chapter,.mm-av-part-group,.mm-menu-leaf,.mm-compact-leaf,details.mm-compact-chapter,details.mm-chapter,details.pc-chapter,details.classico-chapter,details.anatomia-chapter,.menu-chapter,details');
   if(!parent||parent===panel.closest('details'))continue;
   links.push({a,id,target,parent,panel});
  }
@@ -58,9 +58,11 @@ function init(){
   for(const entry of order){const top=entry.target.getBoundingClientRect().top+scrollY;if(top<=y)candidate=entry;else break}
   if(candidate===active)return;
   for(const x of unique){x.a.classList.remove('mm-reading-paragraph');x.a.removeAttribute('aria-current');x.parent.classList.remove('mm-reading-chapter')}
+   document.querySelectorAll('.av-panel .mm-av-part-group.mm-reading-part').forEach(g=>g.classList.remove('mm-reading-part'));
   active=candidate;if(!candidate)return;
   for(const x of unique)if(x.id===candidate.id||x.parent===candidate.parent){x.parent.classList.add('mm-reading-chapter')}
   candidate.a.classList.add('mm-reading-paragraph');candidate.a.setAttribute('aria-current','location');
+   candidate.a.closest('.mm-av-part-group')?.classList.add('mm-reading-part');
  }
  function queue(){if(!scheduled){scheduled=true;requestAnimationFrame(position)}}
  // I sottoindici si aprono esclusivamente per volontà dell'utente.
