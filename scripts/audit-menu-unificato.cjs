@@ -6,7 +6,7 @@ const targets = [
  'index.html',
  'medioevo/index.html','rinascimento/index.html',
  'barocco/index.html','melodramma/index.html',
- 'melodramma-classico/index.html','classicismo/index.html',
+ 'melodramma-classico/index.html','da-fidelio-a-turandot/index.html','classicismo/index.html',
  'risorgimento/index.html','romanticismo/index.html',
  'verso-le-avanguardie/index.html','concerti/index.html',
  'parola-e-canto/index.html','musica-da-camera/index.html',
