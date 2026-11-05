@@ -163,14 +163,13 @@
      }
     }
     if(children.length){
-     const sub=make('details','mm-av-sublist');
-     const summary=make('summary');
-     summary.setAttribute('aria-label','Espandi o richiudi i paragrafi di: '+originalTitle);
-     link.classList.add('mm-av-chapter-link');
-     link.textContent=originalTitle;
-     link.setAttribute('aria-label','Leggi il capitolo: '+originalTitle);
-     sub.append(summary,...children);
-     item.append(link,sub);
+     // Modello Barocco: freccina nativa a sinistra, poi "Vai alla sezione" e paragrafi.
+     const sub=make('details','mm-av-sublist mm-compact-chapter');
+     sub.append(make('summary',null,originalTitle));
+     link.classList.add('mm-compact-go');
+     link.textContent='Vai alla sezione ↗';
+     sub.append(link,...children);
+     item.append(sub);
     }else{
      link.classList.add('mm-compact-go','mm-compact-leaf');
      item.append(link);
