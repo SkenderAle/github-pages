@@ -146,13 +146,7 @@ La Lady Macbeth non deve essere una creatura di sola bellezza vocale: Verdi chie
 
 Il ritmo conserva qui una funzione determinante: può essere il passo inesorabile del potere, la pulsazione dell'ossessione o l'energia che improvvisamente viene meno. Non occorre cercare in ogni battuta un ritmo di danza per riconoscervi una tradizione italiana profondamente trasfigurata. L'originalità consiste nel governare **il momento in cui la musica spinge l'azione e quello in cui le impedisce di procedere**.
 
-#### Il trovatore e La traviata: quando la musica contraddice il personaggio
-
-In *Il trovatore* (1853) la frequente nettezza delle sezioni, le figure ritmiche ostinate e l'energia delle cabalette sono state spesso interpretate come segni di un teatro primitivo rispetto ai lavori posteriori. Ma l'opera è costruita su testimonianze incompatibili, racconti di un passato traumatico e una concatenazione di vendette: le riprese, lungi dall'essere rassicuranti, possono far sentire l'impossibilità di sottrarsi al medesimo destino. La canzone di Azucena, «Stride la vampa», è ossessiva proprio perché il racconto della violenza cerca nella regolarità del canto un ordine che non possiede.
-
-Anche *La traviata* (1853) oppone i ritmi della società al tempo interiore di Violetta. Il valzer del salotto e il moto euforico di «Sempre libera» non definiscono una ragazza spensierata: si confrontano con il ricordo della voce di Alfredo e con l'ipotesi di una vita diversa, già dischiusa in «Ah, fors'è lui». La pulsazione ternaria, così immediatamente identificabile, diventa il segno di un mondo sociale che invita a vivere senza fermarsi e, nello stesso tempo, impedisce alla protagonista di sottrarsi alla propria maschera.
-
-La capacità verdiana di distribuire l'energia fra i personaggi è forse ancora più evidente nel quartetto «Bella figlia dell'amore» di *Rigoletto* (1851). Quattro voci cantano contemporaneamente intenzioni incompatibili: la seduzione del Duca, il divertimento di Maddalena, il dolore di Gilda e la volontà di vendetta di Rigoletto. La regolarità metrica non appiattisce le psicologie: rende **udibile il loro conflitto simultaneo**. La tradizione del concertato si trasforma in un dispositivo teatrale di sorprendente precisione.
+Questa prima fase culmina nella ricerca di un teatro più stringente, dal rapporto con Shakespeare alla trasformazione del canto in azione. Le opere dal 1851 in avanti — a cominciare da *Rigoletto*, *Il trovatore* e *La traviata* — sono esaminate nella sezione [Verdi: il canto come gesto drammatico](#verdi-il-canto-come-gesto-drammatico), dove la maturità dell'autore viene considerata accanto, ma non subordinata, alla riforma di Wagner.
 
 **Da ascoltare e confrontare.** *Casta diva* da *Norma* e la scena della follia da *Lucia*: due modi diversi di dilatare l'espressione vocale. Poi il coro *Va, pensiero* e una pagina di *Macbeth*: la collettività e il dramma individuale. Per iniziare: individuare nel libretto il momento preciso in cui cambia il tempo musicale.
 
@@ -340,9 +334,15 @@ La grandezza musicale non rende secondarie le responsabilità ideologiche. Wagne
 
 ### Verdi: il canto come gesto drammatico
 
-Verdi non oppone a Wagner una semplice fedeltà alla tradizione italiana. Anche la sua scrittura tende progressivamente a eliminare ciò che appare convenzionale, ma lo fa attraverso una diversa centralità della voce, della parola teatrale e del conflitto umano.
+Nella maturità Verdi trasforma dall'interno il melodramma italiano, senza rinnegare la tradizione di cui conosce ogni possibilità. A partire dagli anni Cinquanta dell'Ottocento, la voce, il ritmo, l'orchestra e il rapporto fra i personaggi sono ripensati con crescente libertà: non per aderire a un modello teatrale esterno, ma per ricavare da ogni vicenda la sua forma drammatica necessaria.
 
 Con ***Rigoletto*** (1851), ***Il trovatore*** (1853) e ***La traviata*** (1853) l'opera italiana raggiunge un'intensità nuova. Nel primo titolo, *Rigoletto*, la censura austriaca a Venezia si oppone alla rappresentazione di *Le roi s’amuse* di Victor Hugo con il re Francesco I come protagonista libertino: Verdi e Piave trasferiscono l’azione dalla corte di Francia a quella di Mantova, sostituendo il re con un duca e Triboulet con Rigoletto, ma conservano il nucleo tragico del dramma; nel secondo il passato fantastico e la violenza familiare generano una macchina tragica implacabile; nel terzo una cortigiana contemporanea diventa il centro morale della storia, mentre la rispettabilità sociale appare profondamente ambigua.
+
+#### Il trovatore e La traviata: quando la musica contraddice il personaggio
+
+In *Il trovatore* (1853) la frequente nettezza delle sezioni, le figure ritmiche ostinate e l'energia delle cabalette sono state spesso interpretate come segni di un teatro primitivo rispetto ai lavori posteriori. Ma l'opera è costruita su testimonianze incompatibili, racconti di un passato traumatico e una concatenazione di vendette: le riprese, lungi dall'essere rassicuranti, possono far sentire l'impossibilità di sottrarsi al medesimo destino. La canzone di Azucena, «Stride la vampa», è ossessiva proprio perché il racconto della violenza cerca nella regolarità del canto un ordine che non possiede.
+
+Anche *La traviata* (1853) oppone i ritmi della società al tempo interiore di Violetta. Il valzer del salotto e il moto euforico di «Sempre libera» non definiscono una ragazza spensierata: si confrontano con il ricordo della voce di Alfredo e con l'ipotesi di una vita diversa, già dischiusa in «Ah, fors'è lui». La pulsazione ternaria, così immediatamente identificabile, diventa il segno di un mondo sociale che invita a vivere senza fermarsi e, nello stesso tempo, impedisce alla protagonista di sottrarsi alla propria maschera.
 
 Il rapporto con la tradizione francese è diretto in *Les vêpres siciliennes* (1855) e *Don Carlos* (1867), dove storia pubblica e sentimenti privati si condizionano a vicenda. *Simon Boccanegra* (1857, poi riveduto nel 1881), *Un ballo in maschera* (1859), *La forza del destino* (1862) e *Aida* (1871) sviluppano ulteriormente questa tensione. *Aida*, rappresentata per la prima volta al Cairo il 24 dicembre 1871, sa accostare fasto pubblico e vicende di dolorosa intimità.
 
