@@ -118,7 +118,7 @@ for (const [node, destinations] of Object.entries(all.byNode || {})) {
 // Verifica bidirezionale del percorso Da Fidelio a Turandot (2026-11-05).
 // Per ciascun compositore: la carta Atlante deve puntare all'ancora testuale,
 // e accanto a quell'ancora deve esistere un link di ritorno alla carta stessa.
-const operaPage = 'da-fidelio-a-turandot';
+const operaPage = 'opera-lirica';
 const operaHtml = html(operaPage);
 const indexAuthors = new Set((json('atlante3d/database/indice-autori.json').people || []).map(p => p.id));
 const operaLinks = Object.entries(all.byNode || {}).flatMap(([node, links]) =>

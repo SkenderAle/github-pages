@@ -13,7 +13,7 @@ const sourcePages = [
   'barocco/index.html', 'classicismo/index.html', 'romanticismo/index.html',
   'romanticismo/destino-provvidenza/index.html',
   'melodramma/index.html', 'melodramma/audioteca/index.html',
-  'melodramma-classico/index.html',
+  'teatro-classico/index.html',
   'anatomia-del-melodramma/index.html', 'musica-da-camera/index.html',
   'dalla-sinfonia-alla-rapsodia/index.html', 'parola-e-canto/index.html',
   'concerti/index.html', 'risorgimento/index.html',

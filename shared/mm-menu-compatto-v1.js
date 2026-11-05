@@ -229,7 +229,7 @@
  }
  // I restanti indici già gerarchici conservano il loro meccanismo di navigazione.
  document.querySelectorAll('.mm-index-panel,#menu > .panel').forEach(panel=>panel.classList.add('mm-compact-ready'));
- // Il collegamento in un indice chiude il menu, come nel Melodramma classico.
+ // Il collegamento in un indice chiude il menu, come nel Teatro del Classicismo.
  document.querySelectorAll('.mm-compact-romantic,.mm-index-panel,#menu > .panel').forEach(panel=>{
   panel.addEventListener('click',e=>{
    const a=e.target.closest('a[href^="#"]');if(!a)return;
