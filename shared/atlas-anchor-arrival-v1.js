@@ -30,7 +30,7 @@
   // sulle pagine che caricano gia' il tema condiviso.
   if(!document.querySelector('link[rel="stylesheet"][href*="mm-menu-unificato-v1.css"]')){
    const css=document.createElement("link");css.rel="stylesheet";
-   css.href=new URL("mm-menu-unificato-v1.css?v=20261104-menu-unico03",parentScript.src).href;
+   css.href=new URL("mm-menu-unificato-v1.css?v=20261104-menu-unico04",parentScript.src).href;
    document.head.appendChild(css);
   }
   const top=document.createElement("div");top.className="atlas-autonav atlas-topmenu";
