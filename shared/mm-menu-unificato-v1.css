@@ -1470,3 +1470,55 @@ nav.mm-audio-nav .mm-audio-panel details.mm-audio-chapter>a.mm-reading-paragraph
  .anatomia-menu-panel>.anatomia-cross{order:2}
  .anatomia-menu-panel{overflow-y:auto!important;max-height:calc(100dvh - 72px)!important}
 }
+
+/* Anatomia: titolo navigabile e freccina indipendente, nove capitoli. */
+#anatomia-menu-sections>.anatomia-chapter{
+ position:relative!important;min-width:0!important;margin:.3rem 0 .6rem!important;
+ padding-left:.6rem!important;border-left:2px solid var(--mm-menu-border)!important;
+ break-inside:avoid!important;
+}
+#anatomia-menu-sections>.anatomia-chapter>a.anatomia-chapter-link{
+ display:block!important;width:calc(100% - 44px)!important;min-height:44px!important;
+ box-sizing:border-box!important;margin:0!important;padding:.54rem .65rem!important;
+ color:var(--mm-menu-text)!important;background:var(--mm-menu-subtle)!important;
+ border:1px solid var(--mm-menu-border)!important;border-radius:4px!important;
+ font:750 .86rem/1.48 var(--mm-menu-font)!important;
+ text-decoration:none!important;white-space:normal!important;overflow-wrap:anywhere!important;
+}
+#anatomia-menu-sections>.anatomia-chapter.anatomia-chapter--leaf>a.anatomia-chapter-link{width:100%!important}
+#anatomia-menu-sections>.anatomia-chapter>details.anatomia-chapter-sublist{
+ display:block!important;position:static!important;width:100%!important;
+ margin:0!important;padding:0!important;border:0!important;background:transparent!important;
+}
+#anatomia-menu-sections>.anatomia-chapter>details.anatomia-chapter-sublist>summary{
+ position:absolute!important;top:0!important;right:0!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ box-sizing:border-box!important;width:44px!important;height:44px!important;min-height:44px!important;
+ padding:0!important;margin:0!important;list-style:none!important;cursor:pointer!important;
+ border:1px solid var(--mm-menu-border)!important;border-radius:4px!important;
+ background:var(--mm-menu-subtle)!important;color:var(--mm-menu-text)!important;font-size:0!important;
+}
+#anatomia-menu-sections>.anatomia-chapter>details.anatomia-chapter-sublist>summary::-webkit-details-marker{display:none!important}
+#anatomia-menu-sections>.anatomia-chapter>details.anatomia-chapter-sublist>summary::before{
+ content:"▸"!important;display:block!important;font:800 1.2rem/1 var(--mm-menu-font)!important;
+}
+#anatomia-menu-sections>.anatomia-chapter>details.anatomia-chapter-sublist[open]>summary::before{content:"▾"!important}
+#anatomia-menu-sections>.anatomia-chapter>a.anatomia-chapter-link:hover{
+ background:var(--mm-menu-hover)!important;text-decoration:underline!important;
+}
+#anatomia-menu-sections>.anatomia-chapter>a.anatomia-chapter-link:focus-visible{
+ outline:2px solid var(--mm-menu-focus)!important;outline-offset:2px!important;
+}
+#anatomia-menu-sections>.anatomia-chapter.mm-reading-chapter>a.anatomia-chapter-link,
+#anatomia-menu-sections>.anatomia-chapter:has(>details.mm-reading-chapter)>a.anatomia-chapter-link{
+ background:#dfcfe3!important;color:#331e39!important;border-left:4px solid #7b4b77!important;
+}
+#anatomia-menu-sections>.anatomia-chapter>details.anatomia-chapter-sublist a.mm-reading-paragraph{
+ background:#e5d5ec!important;color:#2c1539!important;
+ font-weight:800!important;border-left:4px solid #795385!important;
+}
+@media(max-width:820px){
+ #anatomia-menu-sections>.anatomia-chapter>details.anatomia-chapter-sublist .anatomia-sub>a{
+  min-height:44px!important;box-sizing:border-box!important;
+ }
+}
