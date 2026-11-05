@@ -104,6 +104,14 @@ Una forma tipica di molti pezzi d'assieme e arie del periodo viene spesso descri
 
 Il libretto costituisce parte integrante di questa costruzione. Felice Romani, Salvadore Cammarano e Francesco Maria Piave lavorano sulle cesure metriche, sui passaggi dal dialogo all'effusione lirica e sulla disposizione delle parole in rapporto ai tempi musicali. Dunque, parlare di belcanto non significa descrivere soltanto «belle voci»: significa interrogare il rapporto fra vocalità, testo e azione.
 
+#### La voce non è una casella: cantanti, ruoli e scrittura
+
+Il sistema teatrale del primo Ottocento dipende dalle voci, ma non nel senso che oggi attribuiamo alle classificazioni vocali. Le parti vengono spesso pensate per interpreti determinati, per un'estensione, un colore e una personalità scenica singolari; una stessa tessitura può essere affrontata con equilibri differenti secondo la cantante e il teatro. Isabella Colbran, Giuditta Pasta e Maria Malibran non sono soltanto nomi da collocare nello *star system*: contribuiscono a determinare ciò che i compositori possono chiedere alla voce e, quindi, ciò che un personaggio può diventare.
+
+Il *travestimento vocale* continua ad avere un ruolo decisivo. Arsace nella *Semiramide* di Rossini e Romeo nei *Capuleti e i Montecchi* di Bellini sono personaggi maschili affidati a voci femminili: non per inerzia di una convenzione priva di significato, ma all'interno di un preciso immaginario timbrico e teatrale. Nel medesimo secolo cresce l'importanza del tenore eroico e di una declamazione più incisiva; tuttavia il passaggio dal tenore di grazia al tenore di forza non avviene in una notte, né coincide semplicemente con l'abbandono della tecnica del belcanto.
+
+Con Verdi il baritono acquista una centralità drammatica straordinaria: Nabucco, Macbeth, Rigoletto e Simon Boccanegra sono uomini nei quali il potere pubblico collide con la paternità, la colpa o la memoria. Anche il basso e le voci gravi possono incarnare autorità, minaccia o inquietudine. Perciò soprano, contralto, tenore, baritono e basso non sono soltanto etichette acustiche: nella storia del melodramma costituiscono una distribuzione di conflitti, gerarchie e possibilità d'azione. Per le distinzioni fra registri, estensioni e denominazioni moderne si rinvia all'[approfondimento sulle voci dell'Ottocento](../opera-lirica/#voci-ottocento).
+
 ### Bellini: la melodia che dilata il tempo
 
 Vincenzo Bellini (1801–1835) attraversa in pochi anni l'intero repertorio del melodramma romantico. Dopo *Il pirata* (1827) e *La straniera* (1829), affronta *I Capuleti e i Montecchi* (1830) e ottiene due risultati opposti e complementari con *La sonnambula* (1831), sospesa fra innocenza e malinteso sociale, e *Norma* (1831), tragedia di passione e responsabilità. Seguono *Beatrice di Tenda* (1833) e, a Parigi, *I puritani*, rappresentati il 24 gennaio 1835. Bellini muore a Puteaux il 23 settembre dello stesso anno, a trentatré anni.
@@ -135,6 +143,12 @@ Negli anni successivi Verdi scrive a ritmo serrato: *I Lombardi alla prima croci
 Nella Parigi dell'Ottocento il teatro musicale è insieme arte, industria e rappresentazione del prestigio. I teatri hanno identità e pubblici differenti; le istituzioni, gli editori e il sistema delle commissioni orientano la scelta dei soggetti. L'Opéra sviluppa il *grand opéra*, che associa grandi quadri storici, masse corali, balli, scene complesse e orchestrazioni ricchissime. La presenza del balletto e la magnificenza visiva rispondono tanto alle convenzioni del genere quanto alle aspettative sociali dei suoi spettatori.
 
 La nascita del modello non si deve a un solo autore. *La muette de Portici* (1828) di Daniel-François Auber propone un teatro storico e collettivo; *La Juive* (1835) di Fromental Halévy fa della persecuzione religiosa un conflitto spettacolare e privato insieme. Eugène Scribe diviene il grande organizzatore di libretti costruiti per una scena dove ogni atto produce una svolta.
+
+#### Opéra-Comique: un nome che non significa sempre commedia
+
+La geografia parigina non si lascia dividere in un teatro «serio» e uno «leggero». L'*Opéra-Comique* è anzitutto un'istituzione e una tradizione teatrale, con proprie convenzioni: una delle più importanti è l'alternanza di canto e **dialogo parlato**. Il termine non garantisce affatto un finale felice. Per capire la differenza con il *grand opéra*, occorre chiedersi non soltanto quali storie vengano raccontate, ma in quale teatro, con quale organico e attraverso quale rapporto fra recitazione e musica.
+
+*Carmen* ne offrirà il caso più eloquente: alla prima parigina del 1875, all'Opéra-Comique, Bizet affida le transizioni drammatiche anche al parlato. Dopo la sua morte Ernest Guiraud compone recitativi cantati destinati alla circolazione dell'opera fuori dalla Francia. Le due pratiche non producono esattamente lo stesso ritmo scenico: una battuta pronunciata può conservare il carattere spoglio e tagliente della conversazione, mentre il recitativo la immette in una continuità musicale. In questa prospettiva *grand opéra*, *opéra-comique* e *opéra lyrique* non sono gradini di una medesima scala, ma tradizioni che convivono e si influenzano.
 
 ### Meyerbeer: l'orchestra, le folle, la tecnologia
 
@@ -198,6 +212,14 @@ Arrigo Boito (1842–1918) non fu soltanto il librettista degli ultimi capolavor
 
 Verdi muore a Milano il 27 gennaio 1901. L'esecuzione di *Va, pensiero* sotto la direzione di Toscanini appartiene alla solenne traslazione delle salme di Verdi e Giuseppina Strepponi alla Casa di Riposo per Musicisti, il 27 febbraio: un episodio emblematico di come l'opera, dalla scena, possa passare nella memoria civile.
 
+#### Due drammaturgie a confronto: il motivo e la parola scenica
+
+In Wagner il motivo ricorrente non funziona soltanto come un cartellino che identifica un personaggio. Può anticipare un sapere che la scena non ha ancora rivelato, contraddire le parole pronunciate oppure far percepire una relazione che i protagonisti non comprendono. Nel *Tristan* la tensione armonica e il suo differimento non illustrano un desiderio già formulato: sono parte del modo in cui quel desiderio prende forma nel tempo. La continuità musicale non annulla l'articolazione drammatica, ma la trasferisce in larga misura al discorso orchestrale.
+
+Verdi lavora spesso nella direzione opposta senza essere meno innovatore. Nel quartetto del terzo atto di *Rigoletto*, «Bella figlia dell'amore», quattro personaggi cantano simultaneamente sentimenti incompatibili: la seduzione del Duca, il dolore di Gilda, l'ironia di Maddalena e la volontà di vendetta di Rigoletto. L'insieme non scioglie il conflitto, lo rende udibile in una simultaneità che nessuna voce isolata potrebbe raccontare. Qui la forma concertante, lontana dall'essere un arresto dell'azione, diventa il dispositivo dell'azione stessa.
+
+Quando *Otello* si apre con la tempesta, l'orchestra e il coro gettano immediatamente lo spettatore nella crisi, senza bisogno di un'ouverture separata. In *Falstaff* la rapidità dello scambio, i frammenti motivici e la fuga conclusiva producono una continuità ancora diversa da quella wagneriana. Non si tratta di stabilire chi abbia «superato» i numeri chiusi: l'ascolto rivela due concezioni del teatro musicale, ciascuna capace di reinventare la relazione fra voce, orchestra, personaggio e tempo.
+
 **Da ascoltare e confrontare.** Il preludio di *Tristan und Isolde* e l'inizio di *Otello*; un episodio orchestrale del *Ring* e un concertato di *Rigoletto*; la fuga di *Falstaff*. Per iniziare: confrontare il modo in cui un motivo ricorrente cambia senso in Wagner e in Verdi.
 
 ---
@@ -253,6 +275,14 @@ Un aspetto determinante è il sistema produttivo. La competizione fra gli editor
 ***Cavalleria rusticana*** di Pietro Mascagni (1863–1945), rappresentata al Teatro Costanzi di Roma il 17 maggio 1890, trasferisce in un atto il mondo di Verga: relazioni collettive, gelosia, onore e violenza. L'*Intermezzo* sembra sospendere la tragedia in una meditazione orchestrale. Il grande successo non esaurisce Mascagni, che scriverà anche *L'amico Fritz* (1891), *Iris* (1898) e opere di diversa ambizione stilistica.
 
 In ***Pagliacci*** (1892) Ruggero Leoncavallo (1857–1919) sovrappone vita e rappresentazione: il delitto reale irrompe nella commedia degli attori girovaghi. Il Prologo, il teatro nel teatro e *Vesti la giubba* interrogano esplicitamente il confine fra maschera e dolore. Con ***Andrea Chénier*** (1896) e ***Fedora*** (1898), Umberto Giordano (1867–1948) mostra invece che l'immediatezza drammatica della «giovane scuola» può accompagnarsi a storie politiche e ambientazioni non veriste in senso stretto.
+
+#### Il verismo si costruisce: scene, musica e rappresentazione
+
+Il successo di *Cavalleria rusticana* nasce anche da una scelta teatrale esattissima. Dal racconto e dal dramma di Verga, Giovanni Targioni-Tozzetti e Guido Menasci ricavano per Mascagni una vicenda che deve compiersi in un solo atto, entro una comunità pronta a giudicare i propri membri. La piazza, la festa religiosa, le voci fuori scena e gli sguardi collettivi non sono semplici dettagli d'ambiente: esercitano una pressione sui personaggi. L'*Intermezzo*, collocato prima della catastrofe, sospende l'azione visibile proprio quando lo spettatore ne avverte l'inevitabilità.
+
+*Pagliacci* organizza il realismo attraverso un procedimento persino più scopertamente artificiale. Il Prologo promette verità, ma la tragedia si compie dentro uno spettacolo nel quale gli spettatori della commedia non riconoscono subito la trasformazione della finzione in violenza. L'aria «Vesti la giubba» resta una forma musicale riconoscibile: la forza del teatro non consiste perciò nella scomparsa automatica delle arie, bensì nella loro nuova posizione all'interno della catena degli eventi.
+
+Neppure la brevità diventa una legge del genere. *Andrea Chénier* attraversa la Rivoluzione francese, *Adriana Lecouvreur* mette in scena attori, corti e rivalità, *Francesca da Rimini* intreccia una materia medievale con una scrittura orchestrale ricchissima. Sotto la formula «giovane scuola» convivono dunque estetiche e soggetti differenti. Se si vuole parlare di verismo con precisione, bisogna distinguere **ambiente sociale, fonte letteraria, tecnica vocale e forma del dramma**, invece di ridurre tutto al canto concitato.
 
 ### I ponti tra Verdi e Puccini
 
@@ -320,6 +350,14 @@ Puccini muore a Bruxelles il **29 novembre 1924**, dove si era recato per curare
 Il **25 aprile 1926** l'opera debutta alla Scala di Milano. Toscanini dirige; Rosa Raisa interpreta Turandot, Miguel Fleta Calaf e Maria Zamboni Liù. Alla conclusione del corteo funebre di Liù, laddove termina la parte interamente compiuta da Puccini, il direttore interrompe la rappresentazione. Le parole che avrebbe rivolto al pubblico sono tramandate in formulazioni diverse: il significato del gesto, invece, è chiaro. Quella sera il teatro si arresta davanti alla morte del proprio autore. Nelle rappresentazioni successive viene eseguito il completamento di Alfano.
 
 La storia non termina qui. Il finale di *Turandot* continuerà a interrogare compositori e studiosi: nel 2001 Luciano Berio elaborerà un proprio completamento, presentato nel 2002. Il problema della conclusione non è dunque soltanto filologico, ma riguarda la credibilità del mutamento psicologico della protagonista e il difficile rapporto fra frammento e totalità.
+
+#### Il finale impossibile: una questione di drammaturgia
+
+Non basta riempire le battute mancanti per concludere *Turandot*. Il problema nasce dal rapporto fra le sue due figure femminili: Liù porta nella vicenda il linguaggio del sacrificio e dell'amore incondizionato, mentre Turandot ha costruito la propria identità sulla paura, sulla memoria della violenza e sul rifiuto di essere posseduta. Dopo la morte di Liù, la principessa dovrebbe attraversare una trasformazione tanto radicale da rendere credibile il lieto fine senza cancellare ciò che lo precede. Il bacio di Calaf, da solo, non risolve il conflitto: ne rende anzi visibile la difficoltà.
+
+Gli abbozzi lasciati da Puccini non costituiscono un finale già composto e semplicemente da orchestrare. Alfano dovette elaborare materiale proprio per dare forma al duetto e alla conclusione corale; la sua **prima versione** fu poi modificata e abbreviata, sotto la pressione di Toscanini e dell'editore. È soprattutto questa seconda redazione, non l'intero primo tentativo di Alfano, a essere entrata nella tradizione esecutiva. Parlare di «finale di Alfano» come se esistesse un unico testo immutabile appiattisce perciò un problema insieme musicale, teatrale ed editoriale.
+
+Anche il completamento di **Luciano Berio**, elaborato nel 2001 e presentato nel 2002, non pretende di restituire una soluzione autentica che Puccini non ha lasciato. Il lungo interludio orchestrale intorno al bacio di Calaf, le reminiscenze della partitura e i riferimenti alla musica del Novecento rendono percepibile il passaggio fra mondi sonori. Il confronto fra il silenzio scelto da Toscanini alla prima, le due stesure di Alfano e la proposta di Berio illumina così tre risposte differenti alla stessa domanda: **può la musica persuaderci di una riconciliazione che il teatro ha reso quasi impossibile?**
 
 ### Non la fine dell'opera, ma la fine del nostro percorso
 
@@ -402,6 +440,9 @@ Per l'integrazione nel sito è preferibile collegare **esecuzioni complete e doc
 - **Anselm Gerhard**, *The Urbanization of Opera: Music Theater in Paris in the Nineteenth Century*, University of Chicago Press. La centralità della metropoli, del pubblico e dello spettacolo.
 - **John Deathridge**, *Wagner Beyond Good and Evil*, University of California Press. Wagner fra musica, ideologia e ricezione.
 - **William Ashbrook e Harold Powers**, *Puccini's Turandot: The End of the Great Tradition*, Princeton University Press, 1991. Per la genesi e la problematica incompiutezza di *Turandot*.
+- **Linda B. Fairtile**, «Duetto a tre: Franco Alfano's completion of Turandot», *Cambridge Opera Journal, 16/2 (2004), pp. 163–185*. Le due versioni del finale di Alfano e le richieste di Toscanini. https://doi.org/10.1017/S0954586704001831
+- **Marco Uvietta**, «È l'ora della prova: Berio's finale for Puccini's Turandot», *Cambridge Opera Journal, 16/2 (2004), pp. 187–238*. Il finale di Berio e l'interludio orchestrale. https://doi.org/10.1017/S0954586704001843
+- **Alexandra Wilson**, «Modernism and the Machine Woman in Puccini's Turandot», *Music & Letters, 86/3 (2005), pp. 432–451*. La ricezione di Turandot e la modernità della protagonista. https://doi.org/10.1093/ml/gci102
 - **Michele Girardi**, *Giacomo Puccini: l'arte internazionale di un musicista italiano*, Marsilio. Per la modernità del linguaggio pucciniano e le sue relazioni europee.
 - **Corago – Università di Bologna**, catalogo di libretti e prime rappresentazioni: https://corago.unibo.it/
 - **Beethoven-Haus Bonn**, catalogo e materiali sulle opere: https://www.beethoven.de/
