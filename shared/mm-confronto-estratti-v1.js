@@ -17,6 +17,8 @@ function preview(card){
  const stage=card.querySelector('[data-mm-clip-stage]');
  const info=details(trigger);
  if(!info||!stage)return;
+ const stopButton=card.querySelector('[data-mm-clip-stop]');
+ if(stopButton)stopButton.hidden=true; // Reimposta il controllo quando torna la miniatura.
  const button=document.createElement('button');
  button.type='button';button.className='mm-compare-preview';
  button.setAttribute('aria-label','Carica video: '+info.title);
