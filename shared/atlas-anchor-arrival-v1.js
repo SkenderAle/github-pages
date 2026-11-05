@@ -1,7 +1,7 @@
 /* Musurgia Mundi — ancore esatte: clic locali e arrivo da altre pagine.
    Non modifica gli href. Evita i menu che gestiscono già il salto diretto. */
 (()=>{"use strict";
- const barSelector=".atlas-autonav, .nav-wrap, nav.main, nav.site-nav, nav[aria-label='Navigazione']";
+ const barSelector=".atlas-autonav, .nav-wrap, .avanguardie-nav, nav.main, nav.site-nav, nav[aria-label='Navigazione']";
  // Ponte editoriale: caricato separatamente e innocuo in caso di errore di rete.
  const parentScript=document.currentScript;
  if(parentScript?.src){
