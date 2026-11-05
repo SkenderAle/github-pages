@@ -1456,3 +1456,17 @@ nav.mm-audio-nav .mm-audio-panel details.mm-audio-chapter>a.mm-reading-paragraph
   min-height:44px!important;box-sizing:border-box!important;
  }
 }
+
+/* Anatomia: sul desktop i nove capitoli vengono prima dei rimandi ad altre pagine. */
+@media(min-width:821px){
+ .anatomia-menu-panel>.anatomia-menu-label{order:0}
+ .anatomia-menu-panel>#anatomia-menu-sections{
+  order:1;
+  grid-auto-flow:column!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(5,max-content)!important;
+  align-content:start!important;
+ }
+ .anatomia-menu-panel>.anatomia-cross{order:2}
+ .anatomia-menu-panel{overflow-y:auto!important;max-height:calc(100dvh - 72px)!important}
+}
