@@ -195,6 +195,14 @@
    event.stopPropagation();
    history.pushState(null,"","#"+encodeURIComponent(id));
    settle(id);
+   // Avanguardie: dopo la chiusura dell’indice, il focus segue il contenuto raggiunto.
+   if(panel?.matches(".av-panel")){
+     const target=document.getElementById(id);
+     if(target){
+       if(!target.hasAttribute("tabindex"))target.setAttribute("tabindex","-1");
+       target.focus({preventScroll:true});
+     }
+   }
  },true);
  if(!location.hash||location.hash.length<2)return;
  let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}
