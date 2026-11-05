@@ -115,6 +115,28 @@ for (const [node, destinations] of Object.entries(all.byNode || {})) {
     byPage.set(page, stats);
   }
 }
+// Verifica bidirezionale del percorso Da Fidelio a Turandot (2026-11-05).
+// Per ciascun compositore: la carta Atlante deve puntare all'ancora testuale,
+// e accanto a quell'ancora deve esistere un link di ritorno alla carta stessa.
+const operaPage = 'da-fidelio-a-turandot';
+const operaHtml = html(operaPage);
+const indexAuthors = new Set((json('atlante3d/database/indice-autori.json').people || []).map(p => p.id));
+const operaLinks = Object.entries(all.byNode || {}).flatMap(([node, links]) =>
+  links.filter(link => link.page === operaPage).map(link => ({ node, link }))
+);
+if (operaLinks.length < 30) errors.push(operaPage + ': copertura autori scesa sotto le 30 carte verificate');
+const backlinksSeen = new Set();
+for (const { node, link } of operaLinks) {
+  const id = 'mm-autore-' + node;
+  const expected = '../' + operaPage + '/#' + id;
+  if (link.url !== expected) errors.push(node + ': URL di andata non corrisponde al nodo testuale');
+  if (!indexAuthors.has(node)) errors.push(node + ': carta autore assente nell’indice dell’Atlante');
+  if (!operaHtml.includes('id="' + id + '"')) errors.push(node + ': ancora HTML assente nel percorso');
+  if (!operaHtml.includes('href="../atlante3d/?n=' + node + '"')) errors.push(node + ': rimando di ritorno non presente');
+  if (backlinksSeen.has(node)) errors.push(node + ': rimando duplicato dal capitolo');
+  backlinksSeen.add(node);
+}
+
 console.log('Musurgia Mundi — audit Atlante → pagine');
 console.log('Rimandi: ' + checked + ', ancore HTML: ' + fixed +
             ', ID generati dal modello: ' + generated +
