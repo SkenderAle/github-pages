@@ -124,7 +124,7 @@ const indexAuthors = new Set((json('atlante3d/database/indice-autori.json').peop
 const operaLinks = Object.entries(all.byNode || {}).flatMap(([node, links]) =>
   links.filter(link => link.page === operaPage).map(link => ({ node, link }))
 );
-if (operaLinks.length < 30) errors.push(operaPage + ': copertura autori scesa sotto le 30 carte verificate');
+if (operaLinks.length !== 48) errors.push(operaPage + ': copertura autori difforme; attesi 48 rimandi puntuali, trovati ' + operaLinks.length);
 const backlinksSeen = new Set();
 for (const { node, link } of operaLinks) {
   const id = 'mm-autore-' + node;
