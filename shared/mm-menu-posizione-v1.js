@@ -34,7 +34,7 @@ function init(){
   if(bar){bar.classList.remove('atlas-menu-open');bar.querySelector('.atlas-menu-toggle')?.setAttribute('aria-expanded','false');}
  });
  // Evidenziazione e gestione dei pannelli: anche i menu dedicati restano richiusibili.
- const selectors='.atlas-autonav nav.mm-compact-ready:not(.mm-compact-home),.menu-panel.mm-compact-romantic,.mm-index-panel,.mm-concerti-panel,.av-panel,#menu > .panel,.classico-menu-panel,.anatomia-menu-panel,.menu-panel';
+ const selectors='.atlas-autonav nav.mm-compact-ready:not(.mm-compact-home),.menu-panel.mm-compact-romantic,.mm-index-panel,.mm-concerti-panel,.av-panel,#menu > .panel,.classico-menu-panel,.anatomia-menu-panel,.mm-audio-panel,.menu-panel';
  const panels=[...document.querySelectorAll(selectors)];
  const links=[];
  for(const panel of panels)for(const a of panel.querySelectorAll('a[href^="#"]')){
