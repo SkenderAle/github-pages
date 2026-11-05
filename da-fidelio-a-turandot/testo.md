@@ -1,4 +1,4 @@
-# Da *Fidelio* a *Turandot*
+# Opera lirica
 
 ### 1805–1926 · L'apogeo e la trasformazione del melodramma
 
@@ -11,6 +11,14 @@ La trasformazione non va raccontata come il passaggio improvviso da un'arte rise
 Accanto al melodramma corre un secondo filo, meno appariscente ma fecondissimo: **la musica per il teatro di prosa**. Ouverture, intermezzi, cori, melodrammi recitati e danze composte per drammi parlati attraversano l'intero periodo, talvolta sopravvivendo autonomamente in concerto. Partiremo da Beethoven, ne ricostruiremo le radici e seguiremo le ricomparse di questa tradizione fino alla soglia del Novecento.
 
 ---
+
+### Tre denominazioni, una storia: una scelta editoriale
+
+Ho scelto di chiamare **«Melodramma»** il percorso delle origini e del Barocco, **«Teatro del Classicismo»** quello che attraversa Gluck, Mozart e le forme del Settecento, e **«Opera lirica»** questo itinerario, che da Beethoven e Rossini arriva alle trasformazioni del primo Novecento. Non propongo tre generi successivi, né tre fratture che la storia non conosce: introduco *una sfumatura semantica* per mettere a fuoco ogni volta una diversa condizione del rapporto fra parola, scena e musica.
+
+Il termine italiano *melodramma*, nella sua lunga storia, può designare l'intera tradizione operistica; *opera* e *opera lirica* attraversano anch'essi epoche e usi differenti, mentre il teatro musicale del Classicismo continua a chiamarsi, a buon diritto, melodramma. Le tre etichette, qui, servono per orientarsi senza uniformare: non è cambiato il nome della cosa, **è cambiato l'angolo da cui intendiamo guardarla**.
+
+Per seguire le continuità, si può tornare al [Melodramma delle origini e del Barocco](../melodramma/) o attraversare il [Teatro del Classicismo](../teatro-classico/). Per la struttura di atti, arie, recitativi e libretti rimane disponibile l'[Anatomia del melodramma](../anatomia-del-melodramma/).
 
 ## 1. La nascita dell'opera romantica
 
@@ -190,7 +198,7 @@ Il sistema teatrale del primo Ottocento dipende dalle voci, ma non nel senso che
 
 Il *travestimento vocale* continua ad avere un ruolo decisivo. Arsace nella *Semiramide* di Rossini e Romeo nei *Capuleti e i Montecchi* di Bellini sono personaggi maschili affidati a voci femminili: non per inerzia di una convenzione priva di significato, ma all'interno di un preciso immaginario timbrico e teatrale. Nel medesimo secolo cresce l'importanza del tenore eroico e di una declamazione più incisiva; tuttavia il passaggio dal tenore di grazia al tenore di forza non avviene in una notte, né coincide semplicemente con l'abbandono della tecnica del belcanto.
 
-Con Verdi il baritono acquista una centralità drammatica straordinaria: Nabucco, Macbeth, Rigoletto e Simon Boccanegra sono uomini nei quali il potere pubblico collide con la paternità, la colpa o la memoria. Anche il basso e le voci gravi possono incarnare autorità, minaccia o inquietudine. Perciò soprano, contralto, tenore, baritono e basso non sono soltanto etichette acustiche: nella storia del melodramma costituiscono una distribuzione di conflitti, gerarchie e possibilità d'azione. Per le distinzioni fra registri, estensioni e denominazioni moderne si rinvia all'[approfondimento sulle voci dell'Ottocento](../opera-lirica/#voci-ottocento).
+Con Verdi il baritono acquista una centralità drammatica straordinaria: Nabucco, Macbeth, Rigoletto e Simon Boccanegra sono uomini nei quali il potere pubblico collide con la paternità, la colpa o la memoria. Anche il basso e le voci gravi possono incarnare autorità, minaccia o inquietudine. Perciò soprano, contralto, tenore, baritono e basso non sono soltanto etichette acustiche: nella storia del melodramma costituiscono una distribuzione di conflitti, gerarchie e possibilità d'azione. Per le distinzioni fra registri, estensioni e denominazioni moderne si rinvia all'[approfondimento sulle voci dell'Ottocento](#voci-ottocento).
 
 ### Bellini: la melodia che dilata il tempo
 
@@ -684,6 +692,116 @@ Anche il completamento di **Luciano Berio**, elaborato nel 2001 e presentato nel
 **Da ascoltare e confrontare.** Il duetto di *Bohème* «O soave fanciulla»; l'ingresso di Tosca e il suo *Vissi d'arte*; una scena della partita a poker di *Fanciulla*; il finale di *Gianni Schicchi*; *Nessun dorma* e la morte di Liù. Per iniziare: cercare un breve motivo che ritorna in due momenti diversi e chiedersi perché non significhi più esattamente la stessa cosa.
 
 ---
+
+## Strumenti di lettura · Voci dell’Ottocento
+
+#### Dall'agilità belcantistica alla voce drammatica ottocentesca
+
+Questo approfondimento affronta un tema fondamentale: **come sono cambiate le tecniche vocali, l'impiego delle voci e le aspettative dei teatri fra Rossini, Bellini, Donizetti, Verdi e Wagner?** Non esiste un anno in cui il canto cambia improvvisamente. Si trasformano progressivamente repertorio, gusto, organici orchestrali, dimensioni delle sale, ideali espressivi e possibilità degli interpreti.
+
+##### Il bel canto non è sinonimo di decorazione
+
+Nelle opere di **Rossini** agilità, legato, controllo del fiato e precisione ritmica convivono con un'arte complessa della parola. La coloratura può rivelare prontezza, ironia, sfida o disperazione. All'inizio dell'Ottocento molte opere nascono pensando a specifici interpreti, alla loro estensione e alle risorse più personali della voce. Le categorie moderne di soprano, mezzosoprano e contralto non si sovrappongono senza residui a quelle adoperate dai contemporanei; le protagoniste che possedevano registri ampi potevano affrontare ruoli molto differenti.
+
+Le cantanti **Isabella Colbran**, **Giuditta Pasta** e **Maria Malibran** testimoniano un repertorio che unisce agilità e crescente intensità espressiva. In *Norma*, di Bellini, una linea di canto apparentemente semplice può richiedere fiato, continuità e capacità di sfumare il suono tanto quanto una pagina rapidissima. Nelle opere di Donizetti le scene di dolore o di follia uniscono spesso virtuosismo e teatro psicologico: ascoltare soltanto gli acuti isolati non rende giustizia al personaggio.
+
+##### Il tenore eroico e il do di petto
+
+Un racconto famoso fissa nel **1837**, all'Opéra di Parigi, il trionfo di **Gilbert-Louis Duprez** in *Guillaume Tell* di Rossini con una modalità di emissione del do acuto percepita come potente ed eroica. La leggenda lo presenta come l'inventore del *do di petto*, ma la ricerca storica mostra antecedenti e un processo tecnico e culturale più lungo. L'ideale del tenore leggero o di grazia, con uso di registri e mescolanze differenti, coesiste e poi entra in competizione con l'ideale della voce di forza.
+
+Il confronto con **Adolphe Nourrit**, celebre interprete del repertorio francese, mostra quanto questa trasformazione fosse anche una questione di gusto pubblico e di rivalità professionale. La voce del tenore cambia in rapporto alla scrittura dei compositori: le nuove aspettative sul registro acuto influenzeranno le parti eroiche del Romanticismo e, più tardi, altri tipi di vocalità drammatica. Non bisogna tuttavia cercare di distinguere il «petto» dalla «testa» ascoltando una nota come fosse un esperimento scientifico privo del resto della frase.
+
+##### Il baritono acquista una nuova centralità
+
+Nel melodramma dell'Ottocento il **baritono** assume una posizione fondamentale come padre, rivale, amico, uomo politico o personaggio tormentato. Il baritono verdiano, espressione moderna utile ma non uniforme, può richiedere un centro vocale solido, grande chiarezza della parola e una capacità di affrontare tensioni drammatiche prolungate. Rigoletto non canta nello stesso modo di Figaro: le loro scene rappresentano mondi e funzioni differenti, e lo stile vocalmente adatto all'uno non è automaticamente adatto all'altro.
+
+##### Verdi, Puccini, Wagner: la voce dentro un'orchestra che cambia
+
+Con **Verdi** i contrasti drammatici, la forza del declamato e la cantabilità non si escludono; in *La traviata* Violetta attraversa una scena che va dalla riflessione alla sfida di «Sempre libera». Con **Puccini** la scrittura orchestrale e la cura della prosodia creano ulteriori esigenze di presenza sonora e di fraseggio. Il canto non perde la dimensione lirica, ma spesso deve attraversare una tavolozza strumentale più densa. Nella drammaturgia di **Wagner**, la continuità orchestrale e i grandi archi delle scene richiedono preparazioni di resistenza e di intensità specifiche: parlare di «voce wagneriana» non significa semplicemente cantare più forte.
+
+È un errore descrivere una linea progressiva in cui le voci sono «sempre più potenti»: molte scelte riguardano l'equilibrio con strumenti e sale, l'articolazione della parola e le concezioni estetiche del tempo. Le modalità storiche di produzione del suono non possono essere ricostruite fedelmente dai video moderni, e una registrazione può essere condizionata dall'acustica, dai microfoni, dall'incisione e dal montaggio.
+
+Tre interpreti e tre scene diverse: segui l'agilità di Rosina, la continuità del cantabile di Norma e il cambiamento interiore di Violetta. Non paragonare i brani come se fossero esercizi identici: le differenze sono anche sceniche e drammatiche.
+
+###### Rossini · «Una voce poco fa»
+
+Cecilia Bartoli · Radio-Sinfonieorchester Stuttgart · Gabriele Ferro · DG · [Registrazione originale ↗](https://www.youtube.com/watch?v=q3UNeqTHfgQ)
+
+###### Bellini · «Casta diva»
+
+Maria Callas · Orchestre de l'Opéra National de Paris · Georges Sébastian · Warner · [Registrazione originale ↗](https://www.youtube.com/watch?v=s-TwMfgaDC8)
+
+###### Verdi · «Sempre libera»
+
+Renée Fleming · Royal Ballet and Opera · [Registrazione originale ↗](https://www.youtube.com/watch?v=IGlugsYQZgg)
+
+Tocca una miniatura per ascoltare.
+
+I lettori si attivano su richiesta; le incisioni non documentano le voci delle prime rappresentazioni.
+
+##### Per continuare il percorso
+
+La storia precedente delle voci è raccontata nel [melodramma delle origini](../melodramma/#voci-origini) e nel [teatro del classicismo](../teatro-classico/#voci-classiche). Per comprendere **estensione, tessitura, registri, passaggio, colore, peso, controtenori, castrati e tipologie vocali** è disponibile il [capitolo VIII dell'Anatomia del melodramma](../anatomia-del-melodramma/#voci-liriche).
+
+**Riferimenti:** [Palazzetto Bru Zane, storia della voce tenorile](https://www.bruzanemediabase.com/en/exploration/focus/tenor-voice); [Gregory W. Bloch, studio su Duprez (*Cambridge Opera Journal*)](https://www.cambridge.org/core/journals/cambridge-opera-journal/article/abs/pathological-voice-of-gilbertlouis-duprez/F423A1004404FAEB448D7A0AD3C0E37B); [English National Opera, le voci liriche](https://www.eno.org/discover-opera/articles/the-beginners-guide-to-opera/).
+
+**Confronti d'ascolto nella pagina web:** Rossini, «Una voce poco fa» (Cecilia Bartoli); Bellini, «Casta diva» (Maria Callas); Verdi, «Sempre libera» (Renée Fleming). I video sono caricati su richiesta.
+
+## Strumenti di lettura · I librettisti dell’Ottocento
+
+#### I libretti dell'Ottocento: poeti, drammi e compositori
+
+**Prima di «Casta diva», «Va, pensiero», «Vissi d'arte» o «Nessun dorma», qualcuno ha costruito le parole che quelle voci porteranno sulla scena.** Il compositore può cambiarle, ripeterle, spostarle, ma non parte da un materiale senza autore. L'Ottocento non consegna alla musica un solo modello di libretto: il bel canto italiano, il teatro storico francese, il dramma verdiano, la concezione wagneriana e l'opera di Puccini sviluppano rapporti differenti fra pagina poetica, gesto scenico e partitura.
+
+##### Felice Romani e Salvadore Cammarano: il bel canto è anche teatro scritto
+
+**Felice Romani** (1788–1865) è uno dei protagonisti della poesia teatrale ottocentesca, non un semplice versificatore alle dipendenze di Bellini. Lavora con compositori diversi: Rossini, Donizetti e soprattutto Bellini. Nei libretti della *Sonnambula* e di *Norma* le situazioni sono costruite perché un sentimento si riveli attraverso dialogo, conflitto e decisione; il momento lirico non sospende necessariamente il significato della storia. Un testo di Romani è il risultato di selezioni, riscritture e negoziazioni con l'impresa teatrale, i tempi della stagione e le voci disponibili.
+
+**Salvadore Cammarano** (1801–1852), legato fra gli altri a Donizetti e Verdi, lavora in modo particolarmente efficace sulla tensione del dramma romantico. La *Lucia di Lammermoor* di Donizetti nasce da Walter Scott attraverso un adattamento teatrale; il *Trovatore* di Verdi deriva da un dramma di Antonio García Gutiérrez. Il pubblico non assiste alla lettura di un romanzo: vede una serie di incontri, equivoci, confessioni e svolte distribuiti in atti e scene. Il libretto decide *quando* far sapere una verità, e la musica decide *come* quella verità diventa esperienza.
+
+**Una storia non vale una partitura.** Due trame ugualmente tragiche possono richiedere scelte vocali molto diverse. Per questo non basta riassumere *Norma* o *Lucia*: leggiamo la scena in cui cambia il destino del personaggio e domandiamoci che cosa il poeta prepara e che cosa il musicista aggiunge.
+
+##### Solera, Piave e Verdi: la scena negozia con il potere
+
+**Temistocle Solera** (1815–1878) scrive fra l'altro i libretti di *Nabucco* e *I Lombardi alla prima crociata*. I soggetti collettivi, i contrasti religiosi e politici, la partecipazione del coro attraversano l'azione prima ancora che Verdi ne elabori la forma musicale. Occorre tuttavia distinguere le intenzioni degli autori, la situazione della prima rappresentazione e la successiva ricezione risorgimentale.
+
+**Francesco Maria Piave** (1810–1876) diventa un interlocutore fondamentale per Verdi. Scrive i libretti di *Ernani*, *Macbeth*, *Rigoletto*, *La traviata*, *Simon Boccanegra* (prima versione) e *La forza del destino*. Conoscere Shakespeare, Victor Hugo o Dumas non è sufficiente per comprendere le loro opere: il librettista deve trasformare una vicenda preesistente in teatro cantabile, con tagli, nuovi rapporti fra i personaggi e una distribuzione di versi capace di sostenere una forma musicale. Censura, contratti, compagnie e compositore partecipano a questo processo; Piave non fu però soltanto una mano passiva che eseguiva istruzioni.
+
+##### Dumas → Piave → Verdi: come nasce *La traviata*
+
+*La dame aux camélias* nasce come romanzo di **Alexandre Dumas figlio**, poi diventa un dramma teatrale rappresentato nel 1852. Piave prepara il libretto della *Traviata* a partire da quel mondo drammatico, per Verdi e per la Fenice di Venezia (1853). Il passaggio alla musica obbliga a condensare tempi, rapporti e discorsi: **Violetta** deve poter agire, parlare e cantare entro una sequenza di scene la cui durata non è quella di un romanzo. La direzione del teatro volle inoltre spostare l'ambientazione, pensata come contemporanea, nel passato: segno che una scelta scenica può avere anche ragioni di convenienza morale e istituzionale.
+
+**✦ Per iniziare · Tre domande sulla stessa scena.** Nel colloquio fra Violetta e Giorgio Germont chiediti: chi esercita il potere, chi rinuncia, chi conosce davvero le conseguenze della decisione? Confronta una pagina del dramma di Dumas con il libretto di Piave e poi con un'esecuzione del duetto verdiano. **Non confondere il testo originale, l'adattamento e la musica:** la differenza fra i tre è precisamente l'oggetto del laboratorio.
+
+##### Scribe e il teatro francese: scrivere per le grandi macchine sceniche
+
+**Eugène Scribe** (1791–1861) è determinante nello sviluppo del teatro d'opera francese: nel *grand opéra* il libretto deve articolare vicende individuali e conflitti storici, preparare cori, scene pubbliche, balletti e grandi cambiamenti di quadro. Le collaborazioni con Meyerbeer mostrano che l'architettura spettacolare non nasce soltanto dalla scenografia; richiede una drammaturgia che renda indispensabile l'azione collettiva. Il teatro francese non è però riducibile al *grand opéra*.
+
+Un caso diverso è *Carmen* di Bizet (1875), con libretto di **Henri Meilhac** e **Ludovic Halévy** dalla novella di Mérimée. I due autori trasformano materiale narrativo in dialoghi e situazioni sceniche; l'*opéra-comique* storica può avere anche un esito tragico, non equivale a «opera con finale divertente». Studiare i libretti francesi significa comprendere che **lingua, istituzione teatrale e convenzione del dialogo** contribuiscono a costruire il genere.
+
+##### Boito e Verdi: Shakespeare rinasce in versi per la musica
+
+**Arrigo Boito** (1842–1918) è insieme poeta, compositore e uomo di teatro. Scrive il testo del proprio *Mefistofele*, rivede il libretto del *Simon Boccanegra* per Verdi e realizza quelli di *Otello* e *Falstaff*. Con Shakespeare il problema non è trascrivere fedelmente ogni scena: occorre costruire un tempo teatrale in cui parola, orchestra e azione possano coincidere. Il celebre monologo di Iago, la scena del fazzoletto o il movimento corale di *Falstaff* richiedono una progettazione poetica attentissima alla musica.
+
+Il passaggio da Piave a Boito non è una graduatoria di qualità. Sono rapporti compositore–poeta differenti, attraversati da fasi diverse della carriera verdiana e da convenzioni teatrali mutate.
+
+##### Illica, Giacosa e Puccini: due librettisti, molte riscritture
+
+**Luigi Illica** (1857–1919) e **Giuseppe Giacosa** (1847–1906) firmano insieme i libretti di *La bohème*, *Tosca* e *Madama Butterfly*. La collaborazione con Puccini, nella quale ha un ruolo anche l'editore Giulio Ricordi, non è una divisione di mansioni rigidamente identica in ogni momento: preparazione scenica, costruzione dei versi, revisioni, richieste del compositore e scelte editoriali si intrecciano. Per la *Bohème* il materiale di Henri Murger diventa una successione di **quattro quadri**: il racconto viene selezionato per produrre un'esperienza di incontri, separazioni e ritorni.
+
+*Madama Butterfly* dimostra quanto una prima esecuzione non sia la forma definitiva dell'opera. Dopo il debutto scaligero del 1904 si susseguono revisioni: il libretto e la partitura vanno considerati nelle loro versioni, non come un unico oggetto immobile.
+
+##### Quando il compositore scrive anche il testo: Wagner, e dopo
+
+**Richard Wagner** scrive i testi poetici dei propri drammi musicali. Questo cambia il rapporto materiale fra le due scritture, ma non elimina il problema dell'adattamento: mitologia, leggende, teatro e filosofia vengono reinterpretati in una nuova drammaturgia. Non tutti i compositori ottocenteschi aspirano a essere anche poeti, e la collaborazione non rappresenta un grado inferiore di autorialità.
+
+All'inizio del Novecento il rapporto fra **Richard Strauss e Hugo von Hofmannsthal** offre un'altra soluzione di particolare ricchezza: *Elektra* e *Der Rosenkavalier* mostrano due diverse forme di incontro fra scrittura poetica e musica. L'epoca non cancella il librettista; continua a reinventarne il mestiere.
+
+**✦ Verifica documentaria.** Cerca un'edizione del libretto su [Corago ↗](https://corago.unibo.it/libretti), annota autore, edizione, teatro e anno; controlla se il testo corrisponde alla versione che ascolti. Un frontespizio è una testimonianza storica; non autorizza a descrivere come certa ogni battuta della rappresentazione.
+
+**Per collegare le epoche:** [la professione del poeta teatrale nel Seicento ↗](../melodramma/#librettisti-veneziani), [Goldoni e il dramma giocoso ↗](../teatro-classico/#goldoni-librettista), [Da Ponte e Mozart ↗](../teatro-classico/#daponte), [come leggere un libretto ↗](../anatomia-del-melodramma/#scrivere-il-libretto) e [il teatro romantico nel suo contesto storico ↗](../romanticismo/#teatro).
+
+**Fonti e controlli:** [Treccani · Romani ↗](https://www.treccani.it/enciclopedia/felice-romani_%28Dizionario-Biografico%29/) · [Treccani · Piave ↗](https://www.treccani.it/enciclopedia/francesco-maria-piave_%28Dizionario-Biografico%29/) · [Treccani · Boito ↗](https://www.treccani.it/enciclopedia/arrigo-boito/) · [Treccani · Illica ↗](https://www.treccani.it/enciclopedia/luigi-illica_%28Dizionario-Biografico%29/) · [La Fenice · *Traviata* ↗](https://www.teatrolafenice.it/en/event/giuseppe-verdi-la-traviata/) · [Puccini Museum · *Butterfly* e le revisioni ↗](https://www.puccinimuseum.org/giacomo-puccini/le-opere/madama-butterfly/) · [Metropolitan Opera · *Carmen* ↗](https://www.metopera.org/Discover/Synopses/Carmen).
 
 ## Epilogo. Intanto, altrove: le nuove forme del teatro musicale
 
