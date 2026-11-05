@@ -873,26 +873,6 @@ nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf:hover{background:#e4d9e4
  background:transparent!important;
  font-weight:800!important;
 }
-/* Una vera voce espandibile ha lo stesso trattamento ovunque. */
-:is(
- .atlas-autonav>nav.mm-compact-ready .mm-compact-chapter>summary,
- .menu-panel.mm-compact-romantic .mm-compact-chapter>summary,
- .mm-index-panel.mm-compact-ready details.mm-chapter>summary,
- #menu>.panel.mm-compact-ready details.pc-chapter>summary,
- nav.main .mm-concerti-panel .mm-compact-chapter>summary,
- .av-panel.mm-av-direct-links .mm-av-chapter>.mm-av-sublist>summary,
- .classico-menu-panel details>summary,
- .anatomia-menu-panel details>summary,
- nav.mm-audio-nav .mm-audio-chapter>summary,
- nav.mm-dossier-menu .mm-dossier-chapter>summary
-){
- color:var(--mm-menu-text)!important;
- background:var(--mm-menu-subtle)!important;
- border:1px solid var(--mm-menu-border)!important;
- border-radius:4px!important;
- font:750 .86rem/1.5 system-ui,-apple-system,"Segoe UI",sans-serif!important;
- overflow-wrap:anywhere!important;
-}
 :is(
  .atlas-autonav>nav.mm-compact-ready .mm-compact-chapter[open]>summary,
  .menu-panel.mm-compact-romantic .mm-compact-chapter[open]>summary,
@@ -1168,6 +1148,7 @@ nav.mm-dossier-menu .mm-dossier-panel>a.mm-dossier-leaf:hover{background:#e4d9e4
  color:var(--mm-menu-text)!important;
  font:750 .86rem/1.48 var(--mm-menu-font)!important;
  cursor:pointer!important;
+ overflow-wrap:anywhere!important;
 }
 :is(
  .atlas-autonav>nav.mm-compact-ready a.mm-compact-leaf,
