@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Alessandro Zilli"><meta name="theme-color" content="#25273d">
+<meta name="description" content="Videoteca di Musica e Film: 14 funzioni della musica nel cinema con 17 scene audiovisive commentate e due ascolti supplementari.">
+<title>Videoteca · Musica e Film · Musurgia Mundi</title>
+<link rel="stylesheet" href="../../shared/modernita-percorsi-v1.css?v=20261104-nav-clean01">
+<link rel="stylesheet" href="../../shared/mm-menu-unificato-v1.css?v=20261104-menu-unico04">
+<link rel="stylesheet" href="../../shared/atlas-video-preview-v1.css?v=20261106-film-funzioni01">
+<style>
+/* Le funzioni si ascoltano: lettori collegati agli esempi, mai in autoplay. */
+.film-av-jump{display:block;margin-top:.5rem;font:750 .78rem/1.4 var(--sans);text-decoration:none;color:#564167}
+.film-av-jump:hover,.film-av-jump:focus-visible{text-decoration:underline}
+.film-av-intro{margin:2.8rem 0 1.1rem;padding-top:1.5rem;border-top:1px solid var(--line);scroll-margin-top:6.5rem}
+.film-av-intro h3{margin:.3rem 0 1rem!important}
+.film-av-intro p{max-width:850px}
+.film-av-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem;margin:1.2rem 0 2rem}
+.film-av-card{min-width:0;background:#f5f0e8;border:1px solid #d8cbbd;border-top:4px solid #8d728c;border-radius:7px;padding:1.1rem 1.15rem 1.35rem;scroll-margin-top:6.5rem;display:flex;flex-direction:column}
+.film-av-eyebrow{font:800 .72rem/1.5 var(--sans);text-transform:uppercase;letter-spacing:.075em;color:#67516d}
+.film-av-card h4{font:600 clamp(1.35rem,2.1vw,1.8rem)/1.3 var(--serif);margin:.3rem 0 .5rem;letter-spacing:-.01em}
+.film-av-context{font:.97rem/1.6 var(--serif);margin:.2rem 0 .9rem}
+.film-av-media{width:100%;position:relative;min-width:0;aspect-ratio:16/9;background:#18212d;border-radius:6px;overflow:hidden}
+.film-av-media iframe{width:100%;height:100%;display:block;border:0;aspect-ratio:16/9}
+.film-av-media .mm-site-preview--standalone{border-radius:6px;aspect-ratio:16/9;width:100%;height:100%}
+.film-av-media .mm-site-preview-stop{z-index:5}
+.film-av-prompt{font:.91rem/1.62 var(--sans);margin:.95rem 0 .7rem;color:#3b3440}
+.film-av-prompt strong{color:#514160}
+.film-av-source{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.35rem .6rem;font:.75rem/1.5 var(--sans);margin:.45rem 0 .15rem}
+.film-av-source a{font-weight:750;text-decoration:underline}
+.film-av-source span{color:#6c6268}
+.film-av-extra{border-top:1px solid #d5c9bc;margin:1.1rem 0 0;padding:1.15rem 0 0}
+.film-av-secondary-label{font:700 .9rem/1.45 var(--sans);margin:.75rem 0 .2rem}
+.film-av-secondary-label span{font-weight:400;font-size:.8rem}
+@media(max-width:790px){.film-av-grid{grid-template-columns:1fr;gap:1rem}.film-av-card{padding:.95rem}.film-av-intro{margin-top:2rem}}
+
+.film-av-intro{margin:1.5rem 0 1.4rem;padding-top:0;border-top:none}
+.film-av-intro h3{font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.18}
+.film-av-backups{font:.85rem/1.65 var(--sans);margin:.6rem 0 0}
+.film-av-backups a{text-decoration:underline}
+.film-av-card h3{font:600 clamp(1.35rem,2.1vw,1.8rem)/1.3 var(--serif);margin:.3rem 0 .5rem}
+.film-av-context{font:.97rem/1.7 var(--serif);max-width:880px}
+.videoteca-head{padding:3.5rem max(1.2rem,calc((100% - 1110px)/2)) 2.6rem}
+.videoteca-head h1{font-size:clamp(2.5rem,6.5vw,5.1rem)}
+.videoteca-head p{font-size:1.12rem}
+.videoteca-nav{display:flex;flex-wrap:wrap;gap:.55rem 1rem;align-items:center;padding:.8rem 1.2rem;background:#ede5dc;border-bottom:1px solid #d4c7bc;font:750 .86rem/1.5 var(--sans);position:sticky;top:0;z-index:12}
+.videoteca-nav a{text-decoration:none}
+.videoteca-nav a:hover,.videoteca-nav a:focus-visible{text-decoration:underline}
+.videoteca-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.25rem 1rem;margin:1.4rem 0 2rem;font:750 .84rem/1.6 var(--sans)}
+.videoteca-index a{padding:.4rem .35rem;border-bottom:1px solid #e0d6cc;text-decoration:none}
+.videoteca-index a:hover{text-decoration:underline}
+.film-av-card:target{outline:3px solid #a27c55;outline-offset:4px}
+.film-av-card{scroll-margin-top:5.5rem}
+@media(max-width:780px){.videoteca-index{grid-template-columns:repeat(2,minmax(0,1fr))}.videoteca-head{padding:3rem 1.2rem 2rem}}
+@media(max-width:430px){.videoteca-index{grid-template-columns:1fr}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+<header class="hero videoteca-head"><div class="eyebrow">Musurgia Mundi · Musica e Film</div><h1>Videoteca delle funzioni musicali</h1><p>Il rapporto fra musica e immagine: scene, osservazioni e confronti in un'unica pagina di approfondimento.</p><span class="state">14 funzioni · 17 sequenze · 2 ascolti supplementari</span></header>
+<nav class="videoteca-nav" aria-label="Collegamenti alla pagina di lettura"><a href="../#funzioni">← Torna a Musica e Film</a><a href="#indice-video">Indice degli esempi</a><a href="#ascolti-approfondimento">Ascolti supplementari</a></nav>
+<main id="contenuto">
+<section id="indice-video" class="film-av-intro"><div class="kicker">Vai direttamente alla funzione</div><h2>Indice dei video</h2><p class="film-av-context">14 funzioni musicali, 17 sequenze audiovisive e due ascolti musicali supplementari. Ogni estratto comprende una domanda di osservazione. I filmati si attivano soltanto quando scegli l'anteprima e poi premi Play; non c'è riproduzione automatica.</p><nav class="videoteca-index" aria-label="Vai ai video delle singole funzioni"><a href="#film-av-01">01 · Commento e interiorità</a><a href="#film-av-02">02 · Rottura delle convenzioni</a><a href="#film-av-03">03 · Ambientale e sociale</a><a href="#film-av-04">04 · Storico-politica</a><a href="#film-av-05">05 · Identificativa</a><a href="#film-av-06">06 · Sostegno al tono</a><a href="#film-av-07">07 · Collegamento</a><a href="#film-av-08">08 · Segnaletica</a><a href="#film-av-09">09 · Informativa</a><a href="#film-av-10">10 · Accompagnamento e coreografia</a><a href="#film-av-11">11 · Mickey mousing</a><a href="#film-av-12">12 · Anticipatrice</a><a href="#film-av-13">13 · Mnemonica e strutturale</a><a href="#film-av-14">14 · Ironica e critica</a></nav><p>Per i filmati che non si possono riprodurre all'interno della pagina usa il collegamento alla piattaforma. Alcune sequenze rappresentano violenza e non sono adatte a ogni età.</p></section>
+<div class="film-av-intro" id="film-av-scene">
+<h3>Le funzioni si vedono e si ascoltano</h3>
+<p>Un estratto audiovisivo per ciascuna funzione, con una domanda d'ascolto precisa. Le anteprime non riproducono nulla automaticamente: scegli la sequenza, apri il lettore e premi Play. Se il titolare dei diritti impedisce la visione incorporata, usa il collegamento diretto a YouTube. Alcuni estratti contengono violenza, perciò la selezione va adattata all'età degli studenti.</p>
+</div>
+<div class="film-av-grid" aria-label="Videoteca delle funzioni musicali"><article class="film-av-card" id="film-av-01">
+<div class="film-av-eyebrow">01 · Commento e interiorità</div>
+<h4>C’era una volta in America</h4>
+<p class="film-av-context">Deborah e Noodles: un incontro filtrato dalla memoria.</p>
+<div class="film-av-media"><iframe title="C’era una volta in America · Commento e interiorità" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/QFDmMyavjNs"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=QFDmMyavjNs" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · estratto del film</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Ascolta il Tema di Deborah mentre Noodles la segue. La musica descrive un’azione concreta oppure rivela il ricordo e il desiderio che l’immagine non esplicita?</p></article>
+<article class="film-av-card" id="film-av-02">
+<div class="film-av-eyebrow">02 · Rottura delle convenzioni</div>
+<h4>Il pianeta delle scimmie</h4>
+<p class="film-av-context">La caccia degli esseri umani: Goldsmith costruisce uno straniamento sonoro.</p>
+<div class="film-av-media"><iframe title="Il pianeta delle scimmie · Rottura delle convenzioni" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/DruCG3LJiiU"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=DruCG3LJiiU" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Movieclips</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Durante la caccia agli esseri umani, riconosci percussioni, dissonanze e gesti orchestrali inconsueti. Come cambierebbe questo mondo con un convenzionale tema eroico?</p></article>
+<article class="film-av-card" id="film-av-03">
+<div class="film-av-eyebrow">03 · Ambientale e sociale</div>
+<h4>Titanic</h4>
+<p class="film-av-context">La festa nella terza classe: musica da ballo, spazio e appartenenza.</p>
+<div class="film-av-media"><iframe title="Titanic · Ambientale e sociale" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/erAQ9LkftwA"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=erAQ9LkftwA" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · 20th Century Studios UK</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Quali strumenti, ritmo e movimenti distinguono il ballo della terza classe? I personaggi ascoltano la stessa musica che ascoltiamo noi?</p><div class="film-av-extra"><div class="film-av-media"><iframe title="Gli strumentisti durante il naufragio" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/uffHb6JgoiQ"></iframe></div>
+<p class="film-av-secondary-label">Gli strumentisti durante il naufragio · <span>YouTube · estratto del film</span></p>
+<p class="film-av-prompt"><strong>Da osservare.</strong> Confronta la funzione della musica eseguita sulla nave con quella della festa. Qui è un segno di classe o un gesto di consolazione?</p>
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=uffHb6JgoiQ" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · estratto del film</span></p></div></article>
+<article class="film-av-card" id="film-av-04">
+<div class="film-av-eyebrow">04 · Storico-politica</div>
+<h4>Senso</h4>
+<p class="film-av-context">Il Trovatore alla Fenice e il lancio dei volantini patriottici.</p>
+<div class="film-av-media"><iframe title="Senso · Storico-politica" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/7m4sAGzKnc0"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=7m4sAGzKnc0" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Teatro La Fenice (canale ufficiale)</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Nel momento in cui «Di quella pira» si intreccia alla protesta, cerca il passaggio dal palcoscenico alla platea: quando l’opera diventa storia politica?</p></article>
+<article class="film-av-card" id="film-av-05">
+<div class="film-av-eyebrow">05 · Identificativa</div>
+<h4>Per un pugno di dollari</h4>
+<p class="film-av-context">Titoli iniziali: l’identità sonora del western di Leone.</p>
+<div class="film-av-media"><iframe title="Per un pugno di dollari · Identificativa" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/r0fHdB6r1bE"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=r0fHdB6r1bE" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · sequenza dei titoli</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Individua fischio, chitarra, percussioni e voci. Quali dettagli sonori bastano a dichiarare un genere, prima ancora di conoscere la vicenda?</p></article>
+<article class="film-av-card" id="film-av-06">
+<div class="film-av-eyebrow">06 · Sostegno al tono</div>
+<h4>Taxi Driver</h4>
+<p class="film-av-context">Titoli di testa: New York fra attrazione, solitudine e minaccia.</p>
+<div class="film-av-media"><iframe title="Taxi Driver · Sostegno al tono" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/hOIuJYYIUPM"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=hOIuJYYIUPM" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Screen Themes</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Confronta i fiati inquietanti e il fraseggio del sassofono con gli scorci notturni. La musica accompagna la città reale o lo sguardo alterato di Travis?</p></article>
+<article class="film-av-card" id="film-av-07">
+<div class="film-av-eyebrow">07 · Collegamento</div>
+<h4>Rocky</h4>
+<p class="film-av-context">Montaggio dell’allenamento su Gonna Fly Now.</p>
+<div class="film-av-media"><iframe title="Rocky · Collegamento" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/_YYmfM2TfUA"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=_YYmfM2TfUA" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Movieclips</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Segna mentalmente ogni cambio di luogo e di azione. È la musica a trasformare giornate separate in una sola progressione narrativa?</p></article>
+<article class="film-av-card" id="film-av-08">
+<div class="film-av-eyebrow">08 · Segnaletica</div>
+<h4>Casablanca</h4>
+<p class="film-av-context">Sam canta: un brano diventa il segnale di una memoria.</p>
+<div class="film-av-media"><iframe title="Casablanca · Segnaletica" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/plSKtjfSjrA"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=plSKtjfSjrA" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · estratto del film</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Osserva il volto di Rick quando Sam suona e canta As Time Goes By. Che cosa ci viene comunicato attraverso il suo cambiamento prima che venga spiegato a parole?</p></article>
+<article class="film-av-card" id="film-av-09">
+<div class="film-av-eyebrow">09 · Informativa</div>
+<h4>Il pianista</h4>
+<p class="film-av-context">Szpilman suona Chopin davanti al capitano Hosenfeld.</p>
+<div class="film-av-media"><iframe title="Il pianista · Informativa" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/KS0SxW19XaM"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=KS0SxW19XaM" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Movie Clips Classics</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Osserva il passaggio dalla richiesta dell’ufficiale all’esecuzione della Ballata n. 1 di Chopin. Che cosa scopriamo su Szpilman ascoltandolo, prima che altri lo descrivano?</p></article>
+<article class="film-av-card" id="film-av-10">
+<div class="film-av-eyebrow">10 · Accompagnamento e coreografia</div>
+<h4>Luci della città</h4>
+<p class="film-av-context">L’incontro di pugilato come coreografia comica.</p>
+<div class="film-av-media"><iframe title="Luci della città · Accompagnamento e coreografia" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/o9NfXIXzgnA"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=o9NfXIXzgnA" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Charlie Chaplin (canale ufficiale)</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Isola tre momenti in cui gli spostamenti del pugile, dell’avversario e dell’arbitro coincidono con la pulsazione musicale. Dove finisce lo sport e comincia la danza?</p></article>
+<article class="film-av-card" id="film-av-11">
+<div class="film-av-eyebrow">11 · Mickey mousing</div>
+<h4>Steamboat Willie</h4>
+<p class="film-av-context">Il cortometraggio del 1928 nella pubblicazione dello studio originale.</p>
+<div class="film-av-media"><iframe title="Steamboat Willie · Mickey mousing" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/8LdpvQHg3e0"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=8LdpvQHg3e0" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Vailskibum (cortometraggio integrale, 1928)</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Durante i gesti e gli scherzi di Topolino, prova a contare quanti eventi visivi corrispondono a un effetto sonoro o musicale. Sono tutti propriamente musicali?</p><p class="film-av-backups"><strong>Copie alternative:</strong> <a target="_blank" rel="noopener noreferrer" href="https://video.disney.com/watch/steamboat-willie-4ea9de5180b375f7476ada2c">Disney Video</a> · <a target="_blank" rel="noopener noreferrer" href="https://commons.wikimedia.org/wiki/File:Steamboat_Willie_(1928)_by_Walt_Disney.webm">Wikimedia Commons (archivio)</a>.</p></article>
+<article class="film-av-card" id="film-av-12">
+<div class="film-av-eyebrow">12 · Anticipatrice</div>
+<h4>Lo squalo (Jaws)</h4>
+<p class="film-av-context">Il primo attacco: una minaccia che arriva con l’udito.</p>
+<div class="film-av-media"><iframe title="Lo squalo (Jaws) · Anticipatrice" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/dg-HlHMhthY"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=dg-HlHMhthY" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Universal Pictures At Home</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Quando cominciano le due note? Quale pericolo possiamo «sentire» prima di vederlo? Nota anche ciò che la regia decide di non mostrare.</p><div class="film-av-extra"><div class="film-av-media"><iframe title="M - Il mostro di Düsseldorf (1931): il fischio" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/juDxzeD_N4U?start=340"></iframe></div>
+<p class="film-av-secondary-label">M - Il mostro di Düsseldorf (1931): il fischio · <span>YouTube · Netzkino · film integrale dal minuto 5:40</span></p>
+<p class="film-av-prompt"><strong>Da osservare.</strong> All’inizio del film, ascolta il fischio sul tema di Grieg: chi identifica il personaggio dal suono e chi, invece, ancora non può riconoscerlo?</p>
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=juDxzeD_N4U&t=340s" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Netzkino · film integrale dal minuto 5:40</span></p></div></article>
+<article class="film-av-card" id="film-av-13">
+<div class="film-av-eyebrow">13 · Mnemonica e strutturale</div>
+<h4>Star Wars</h4>
+<p class="film-av-context">Il tramonto di Luke: un motivo che accompagna il destino.</p>
+<div class="film-av-media"><iframe title="Star Wars · Mnemonica e strutturale" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/41ak2jr55fE"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=41ak2jr55fE" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Star Wars UK (canale ufficiale)</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Nel tramonto dei due soli, come può il tema suggerire un desiderio e dare al futuro del personaggio una dimensione più ampia dell’immagine?</p><div class="film-av-extra"><div class="film-av-media"><iframe title="Harry Potter: le apparizioni del tema di Edvige" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/psrKIFGiFPM"></iframe></div>
+<p class="film-av-secondary-label">Harry Potter: le apparizioni del tema di Edvige · <span>YouTube · Harry Potter (canale ufficiale)</span></p>
+<p class="film-av-prompt"><strong>Da osservare.</strong> Segui lo stesso tema di Edvige in film e contesti diversi: quando cambia timbro, significato o funzione drammaturgica?</p>
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=psrKIFGiFPM" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Harry Potter (canale ufficiale)</span></p></div></article>
+<article class="film-av-card" id="film-av-14">
+<div class="film-av-eyebrow">14 · Ironica e critica</div>
+<h4>Il padrino</h4>
+<p class="film-av-context">Il battesimo e gli omicidi: la musica attraversa un montaggio morale.</p>
+<div class="film-av-media"><iframe title="Il padrino · Ironica e critica" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/1CDlBLvc3YE"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=1CDlBLvc3YE" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Movieclips</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Quale rapporto nasce fra la professione di fede, l’organo di Bach e il montaggio degli assassinii? L’accostamento commenta il personaggio o denuncia una contraddizione?</p></article>
+</div>
+
+
+<section class="chapter" id="ascolti-approfondimento"><div class="kicker">Approfondimenti</div><h2>Due ascolti ulteriori: Williams e Morricone</h2><p>Queste registrazioni musicali integrano le sequenze audiovisive, ma non le sostituiscono: il confronto con le immagini resta il centro dell'analisi.</p><div class="film-av-grid"><article class="film-av-card" id="film-av-williams"><div class="film-av-eyebrow">Ascolto supplementare</div><h3>John Williams · Tema di Star Wars</h3><p class="film-av-context">Ascolto supplementare · tema orchestrale, Skywalker Symphony Orchestra</p><div class="film-av-media"><iframe title="John Williams · Tema di Star Wars" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/HrIJT_4Txqw"></iframe></div><p class="film-av-prompt"><strong>Da ascoltare.</strong> Confronta il tema esposto fuori dal film con la sua funzione dentro la narrazione: perché una melodia nota non basta, da sola, a descrivere il lavoro del compositore?</p><p class="film-av-source"><a href="https://www.youtube.com/watch?v=HrIJT_4Txqw" target="_blank" rel="noopener noreferrer">Apri su YouTube ↗</a></p></article>
+<article class="film-av-card" id="film-av-morricone"><div class="film-av-eyebrow">Ascolto supplementare</div><h3>Ennio Morricone · C'era una volta il West</h3><p class="film-av-context">Ascolto supplementare · colonna sonora ufficiale</p><div class="film-av-media"><iframe title="Ennio Morricone · C'era una volta il West" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/QLnW6IBGINI"></iframe></div><p class="film-av-prompt"><strong>Da ascoltare.</strong> Ascolta il tema di Jill, poi Armonica (circa 13:33) e Frank (circa 20:57). Quali materiali identificano personaggi e rapporti fra loro?</p><p class="film-av-source"><a href="https://www.youtube.com/watch?v=QLnW6IBGINI" target="_blank" rel="noopener noreferrer">Apri su YouTube ↗</a></p></article></div></section>
+</main>
+<footer>Musurgia Mundi · Alessandro Zilli · <a href="../#funzioni">Torna a Musica e Film</a> · <a href="#top">Inizio della videoteca</a></footer>
+<script src="../../shared/atlas-video-preview-v1.js?v=20261106-film-funzioni01" defer></script>
+</body></html>
