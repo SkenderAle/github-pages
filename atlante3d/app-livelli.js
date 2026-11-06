@@ -938,6 +938,46 @@ function unproject(px,py,depth){
  const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;
  return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};
 }
+// Integrazione editoriale dei generi recenti: due nodi veri, non scorciatoie di menu.
+// Il grafo storico resta intatto; l'estensione JSON conserva la provenienza delle aggiunte.
+function integrateGenreExtension(db,extension){
+ if(!extension||!Array.isArray(extension.nodes)||!Array.isArray(extension.relations))return;
+ const key=v=>String(v||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("it").trim();
+ const names=new Map(),ids=new Map(),aliases=new Map();
+ for(const n of db.nodes){
+  ids.set(n.id,n);
+  if(["compositore","corrente"].includes(n.type)){
+   for(const name of [n.label,n.name,...(n.aliases||[])]){
+    const k=key(name);if(k&&!names.has(k))names.set(k,n);
+   }
+  }
+ }
+ for(const wanted of extension.nodes){
+  const existing=ids.get(wanted.id)||(names.get(key(wanted.label))?.type==="corrente"?names.get(key(wanted.label)):null);
+  if(existing){
+   aliases.set(wanted.id,existing.id);
+   if(wanted.url)existing.url=wanted.url;
+   if(!existing.taxonomy)existing.taxonomy=wanted.taxonomy;
+  }else{
+   const n={...wanted};db.nodes.push(n);ids.set(n.id,n);names.set(key(n.label),n);aliases.set(wanted.id,n.id);
+  }
+ }
+ const seen=new Set(db.edges.map(e=>[e.source,e.target].sort().join("|")));
+ let added=0;
+ for(const relation of extension.relations){
+  const source=aliases.get(relation.source)||relation.source;
+  const labels=[relation.target_label,...(relation.target_aliases||[])].filter(Boolean);
+  const target=relation.target?(aliases.get(relation.target)||relation.target)
+   :labels.map(label=>names.get(key(label))).find(n=>n?.type==="compositore")?.id;
+  if(!ids.has(source)||!ids.has(target)||source===target)continue;
+  const pair=[source,target].sort().join("|");if(seen.has(pair))continue;
+  db.edges.push({id:"genre-extension-operetta-musical-"+added,source,target,
+   kind:relation.kind||"appartenenza-tematica",weight:relation.weight||2,
+   forward:relation.forward,reverse:relation.reverse});
+  seen.add(pair);added++;
+ }
+ console.info("[Musurgia Mundi] Operetta e Musical: nodi integrati, relazioni documentate",added);
+}
 function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw Error("Schema non valido");
  // Un regista non e' un compositore: la categoria resta ontologica, anche nei rapporti con le colonne sonore.
  // Conversione in sola visualizzazione per gli eventuali record storici mal classificati.
@@ -1862,7 +1902,9 @@ function populate(n){
  // prevale sui link storici del database: un'etichetta corretta non deve
  // aprire un altro capitolo (ad es. Balletto -> Barocco).
  const canonicalGeneralRoutes=Object.freeze({
-  "balletto":"../balletto/"
+  "balletto":"../balletto/",
+  "operetta":"../dall-operetta-a-broadway/",
+  "musical":"../dall-operetta-a-broadway/"
  });
  const routeKey=String(n.label||"").normalize("NFKD")
   .replace(/[\u0300-\u036f]/g,"").trim().toLowerCase();
@@ -2220,7 +2262,8 @@ Promise.all([
  fetch("database/video.json",{cache:"no-cache"}),
  fetch("database/relazioni.json",{cache:"no-cache"}),
  fetch("database/consultazione.json?v=20261018-profili491",{cache:"no-store"}),
- fetch("database/collegamenti-sito.json",{cache:"no-cache"})
+ fetch("database/collegamenti-sito.json",{cache:"no-cache"}),
+ fetch("database/integrazione-operetta-musical.json?v=20261106-nodi01",{cache:"no-store"})
 ]).then(async responses=>{
  if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);
  if(!responses[2].ok)throw Error("HTTP lenti "+responses[2].status);
@@ -2232,6 +2275,8 @@ Promise.all([
  const crosslinks=responses[4].ok?await responses[4].json():{};
  editorialBacklinks=crosslinks.byNode||{};
  historicalChapterRoutes=crosslinks.generalChapterRoutes||{};
+ if(responses[5]?.ok){integrateGenreExtension(db,await responses[5].json());}
+ else console.warn("[Musurgia Mundi] Estensione generi non disponibile");
  return db;
 }).then(db=>{
  prepare(db);
