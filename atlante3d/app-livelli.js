@@ -973,7 +973,9 @@ function integrateGenreExtension(db,extension){
   const pair=[source,target].sort().join("|");if(seen.has(pair))continue;
   db.edges.push({id:"genre-extension-operetta-musical-"+added,source,target,
    kind:relation.kind||"appartenenza-tematica",weight:relation.weight||2,
-   forward:relation.forward,reverse:relation.reverse});
+   forward:relation.forward,reverse:relation.reverse,
+   sources:Array.isArray(relation.sources)?relation.sources:[],
+   note:relation.note||"Relazione documentata nel percorso storico collegato."});
   seen.add(pair);added++;
  }
  console.info("[Musurgia Mundi] Operetta e Musical: nodi integrati, relazioni documentate",added);
