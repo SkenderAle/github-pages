@@ -1552,6 +1552,36 @@ function populate(n){
  document.getElementById("panelTitle").textContent=n.label;
  document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica",persona:"Figura storica"}[n.type]||"");
  const dst=document.getElementById("panelContent");dst.replaceChildren();
+ // I collegamenti diretti ai generi sono un accesso primario, anche nelle
+ // schede dei compositori: non possono dipendere da profondità o dalla
+ // posizione temporanea della bolla sulla cartografia.
+ if(n.type==="compositore"||n.type==="corrente"){
+  const directGenreEdges=edges.filter(e=>e.source===n.id||e.target===n.id)
+   .map(e=>({edge:e,other:byId.get(e.source===n.id?e.target:e.source)}))
+   .filter(x=>x.other?.type==="corrente"&&
+    (x.other.taxonomy?.visibility==="principale"||
+     ["genere-operetta","genere-musical"].includes(x.other.id)))
+   .sort((a,b)=>a.other.label.localeCompare(b.other.label,"it"));
+  if(directGenreEdges.length){
+   const area=document.createElement("section");area.className="mm-direct-genres";
+   area.style.cssText="margin:.65rem 0 1rem;padding:.85rem;border:1px solid #c7a46c;border-radius:10px;background:rgba(193,152,87,.09)";
+   const h=document.createElement("h3");h.textContent="Generi musicali direttamente collegati";area.append(h);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Collegamenti presenti nel grafo, indipendenti dai livelli di profondità. Tocca un genere per esplorarne la rete.";area.append(note);
+   for(const {edge,other} of directGenreEdges){
+    const row=document.createElement("div");row.style.margin=".5rem 0";
+    const button=document.createElement("button");button.type="button";button.textContent=other.label+" ↗";
+    button.addEventListener("click",()=>focusOn(other,true));row.append(button);
+    if(edge.sources?.length){
+     const source=document.createElement("a");source.href=edge.sources[0];source.target="_blank";
+     source.rel="noopener noreferrer";source.textContent=" Fonte ↗";
+     source.style.marginLeft=".7rem";row.append(source);
+    }
+    area.append(row);
+   }
+   dst.append(area);
+  }
+ }
  // Navigazione fra categorie generali, tipologie storiche e pratiche.
  // Le relazioni e le schede di ascolto non vengono sostituite né ridotte.
  if(n.type==="corrente"&&!n.work_archive&&!n.document_archive){
