@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#151e2b">
+<meta name="description" content="Laboratorio di accompagnamento dal vivo a Le Voyage dans la Lune: mixer a cinque canali sincronizzato al video, cue luminosi e crossfade manuali a movimento automatico.">
+<title>La Luna in cinque musiche · Mixer Méliès · Musurgia Mundi</title>
+<style>
+:root{color-scheme:dark;--bg:#101926;--panel:#1b293a;--panel2:#233449;--text:#f0eee9;--muted:#b6c5d4;--gold:#f1c876;--border:#42556c;--green:#9de1a6;--red:#ff967c;--amber:#ffdc8b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#263b52 0%,#101926 55%);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+a{color:var(--gold)}a:hover{text-decoration-thickness:2px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+main{max-width:1180px;margin:auto;padding:1rem clamp(.75rem,3vw,1.6rem) 3rem}
+header{padding:1.15rem 0 .8rem}
+.eyebrow{font-size:.77rem;text-transform:uppercase;letter-spacing:.13em;color:var(--gold);font-weight:800}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:1.1;font-size:clamp(1.9rem,5vw,3.35rem);margin:.6rem 0}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:1.45rem;font-weight:500;margin:0 0 .6rem}
+header p{max-width:70ch;color:var(--muted);margin:.5rem 0}
+header .back{font-size:.85rem;display:inline-block;margin-bottom:.9rem}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:clamp(.85rem,2.2vw,1.25rem);margin:1rem 0}
+.helper{font-size:.86rem;color:var(--muted)}
+.video-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(240px,1fr);gap:1.1rem;align-items:start}
+video{width:100%;aspect-ratio:4/3;background:#03070c;display:block;border-radius:10px}
+.field{display:grid;gap:.28rem;font-size:.85rem;margin:.7rem 0}
+input[type=file]{max-width:100%;font-size:.82rem;background:#132234;border:1px dashed var(--border);border-radius:9px;padding:.55rem;color:var(--text)}
+button,.action{border:1px solid #7790a6;background:var(--panel2);color:var(--text);border-radius:10px;padding:.63rem .85rem;font-weight:650}
+button:hover:not(:disabled){border-color:var(--gold);background:#314760}
+button:disabled{opacity:.52;cursor:not-allowed}
+button.primary{color:#161e2a;background:var(--gold);border-color:var(--gold)}
+button.primary:hover{background:#ffe0a2}
+.controls{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}
+.time-line{display:flex;justify-content:space-between;gap:.5rem;font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem}
+input[type=range]{accent-color:var(--gold)}
+#scrub{width:100%;margin:.65rem 0 .3rem;height:16px}
+.notice{border-left:4px solid var(--gold);padding:.65rem .9rem;background:#28364a;border-radius:0 10px 10px 0;margin:.8rem 0;font-size:.9rem}
+.notice[role=status]{min-height:2.6rem}
+.cue-banner{display:flex;align-items:center;gap:.8rem;min-height:66px;background:#213449;border:1px solid #526981;border-radius:12px;padding:.8rem 1rem}
+.lamp{display:inline-block;width:18px;height:18px;border:1px solid #6d8598;flex-shrink:0;border-radius:50%;background:#5b6472;box-shadow:inset 0 2px 3px #182533}
+.lamp.pre{background:var(--amber);box-shadow:0 0 12px #ffcb5e}
+.lamp.now{background:var(--red);box-shadow:0 0 16px #ff6e4d;animation:pulse 1s ease-in-out infinite}
+.lamp.done{background:var(--green);box-shadow:0 0 9px #a2e7b1}
+@keyframes pulse{50%{opacity:.3;box-shadow:0 0 2px #ff6e4d}}
+#cueTitle{font-size:1.06rem;font-weight:800}
+#mixer-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.48rem}
+.channel{background:linear-gradient(160deg,#293a51,#172638);border:1px solid #53647b;border-radius:12px;padding:.65rem .4rem;min-width:0;display:flex;align-items:center;flex-direction:column;gap:.35rem;text-align:center}
+.channel.active{border-color:var(--gold);box-shadow:inset 0 0 0 1px #ad8b54}
+.channel-head{font-size:.74rem;color:var(--gold);font-weight:800}
+.channel h3{font-size:clamp(.7rem,1.6vw,.95rem);line-height:1.2;margin:.05rem 0;min-height:2.4em;overflow-wrap:anywhere}
+.channel .work{font-size:.73rem;color:var(--muted);line-height:1.18;min-height:2.4em}
+.meter{height:5px;width:80%;background:#0c1725;border-radius:3px;overflow:hidden}
+.meter-inner{height:100%;width:0;background:var(--green);transition:width .035s linear}
+.fader-box{height:155px;display:flex;align-items:center;justify-content:center;position:relative;width:60px}
+.fader{writing-mode:vertical-lr;direction:rtl;appearance:slider-vertical;-webkit-appearance:slider-vertical;width:32px;height:145px;margin:0}
+.level{font-size:.79rem;font-variant-numeric:tabular-nums;font-weight:700}
+.file-label{font-size:.7rem;color:var(--muted);max-width:100%;min-height:2.5em;overflow-wrap:anywhere;line-height:1.16}
+.channel input[type=file]{font-size:.7rem;padding:.25rem;width:100%;max-width:100%}
+.channel label{font-size:.72rem}
+.channel label.repeat{display:flex;align-items:center;gap:.3rem}
+#reuse1{font-size:.72rem;padding:.3rem .35rem}
+.fade-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem}
+.fade-item{border:1px solid #4b6077;border-radius:12px;padding:.6rem;background:#1b2b3d;display:grid;gap:.5rem}
+.fade-item.due{border-color:#ffb67a;background:#402e2b}
+.fade-item.done{border-color:#507a66}
+.fade-item .cue-head{display:flex;gap:.4rem;align-items:center;justify-content:space-between;font-weight:800;font-size:.9rem}
+.fade-item .cue-head .lamp{width:12px;height:12px}
+.fade-button{width:100%;padding:.78rem .35rem;font-size:1rem}
+.fade-item.due .fade-button{border-color:var(--red);box-shadow:0 0 0 2px #f5a07844}
+.fade-item input[type=text]{font-size:.9rem;text-align:center;max-width:85px;width:100%;padding:.35rem;border:1px solid var(--border);border-radius:6px;background:#101d2c;color:var(--text);font-variant-numeric:tabular-nums}
+.fade-item .setrow{display:flex;gap:.3rem;align-items:center;justify-content:space-between}
+.fade-item .setrow button{font-size:.77rem;padding:.35rem .4rem}
+.options{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.7rem 0}
+.options select{background:#142638;color:#fff;padding:.38rem;border:1px solid var(--border);border-radius:7px}
+#cueDetail{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.86rem}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.steps p{margin:.25rem 0;font-size:.91rem;color:var(--muted)}
+.steps strong{color:var(--text)}
+footer{font-size:.84rem;color:var(--muted);margin-top:2rem}
+@media(max-width:780px){.video-grid{grid-template-columns:1fr}.fade-list{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}}
+@media(max-width:550px){main{padding:.75rem .55rem 2rem}.panel{padding:.65rem;border-radius:11px}.channel{padding:.4rem .17rem}.channel h3{font-size:.67rem;min-height:2.8em}.channel .work{font-size:.65rem;min-height:3em}.channel-head{font-size:.68rem}.file-label{font-size:.62rem}.channel input[type=file]{font-size:.58rem;padding:.16rem}.fader-box{width:42px;height:136px}.fader{height:129px}.fade-item .setrow{flex-wrap:wrap}.fade-item input[type=text]{max-width:70px}.video-grid{gap:.55rem}h2{font-size:1.2rem}}
+@media(prefers-reduced-motion:reduce){.lamp.now{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body><main>
+<header>
+<a class="back" href="../dal-musical-al-film/#muto">← Torna a «Dal musical al film»</a>
+<div class="eyebrow">Musurgia Mundi · laboratorio audiovisivo</div>
+<h1>La Luna in cinque musiche</h1>
+<p>Un piccolo banco di regia sonora per <i>Le Voyage dans la Lune</i> (1902) di Georges Méliès. Il film detta il tempo; tu scegli quando far entrare la musica. Ogni crossfade muove davvero i due cursori del mixer.</p>
+</header>
+
+<section class="panel" aria-labelledby="video-h">
+<h2 id="video-h">1 · Il film e il tempo</h2>
+<div class="video-grid">
+<div>
+<video id="film" controls playsinline preload="metadata" muted aria-label="Lettore del film, senza audio originale"></video>
+<input id="scrub" type="range" min="0" max="766" value="0" step=".1" aria-label="Spostamento nel film">
+<div class="time-line"><span id="clock">00:00</span><span id="duration">12:46 · durata di riferimento</span></div>
+<div class="controls"><button id="start" class="primary" type="button">▶ Avvia video e mixer</button><button id="stop" type="button">↺ Ricomincia</button></div>
+</div>
+<div>
+<p class="helper">Per sincronizzare con precisione serve un file video controllabile dal lettore HTML5, non un video YouTube incorporato.</p>
+<label class="field">Carica la tua copia del film (MP4 / WebM)
+<input type="file" id="video-file" accept="video/*,.mp4,.webm,.ogv"></label>
+<p class="helper">Puoi ottenere una copia leggera dal <a href="https://commons.wikimedia.org/wiki/File:Le_Voyage_dans_la_Lune_(1902).webm" target="_blank" rel="noopener noreferrer">film su Wikimedia Commons</a> (nel menu delle risoluzioni seleziona un file transcodificato, preferibilmente MP4 360p). La versione integrale Commons dura 12′46″. Non carichiamo nulla sul server.</p>
+<div class="notice" id="message" role="status" aria-live="polite">Carica il film e almeno il primo brano. Poi premi «Avvia video e mixer».</div>
+</div>
+</div>
+</section>
+
+<section class="panel" aria-labelledby="mixer-h">
+<h2 id="mixer-h">2 · Mixer a cinque canali</h2>
+<p class="helper">Carica un file audio per ogni parte. Gli slider sono anche regolabili a mano: durante il crossfade automatico vedrai gli slider di uscita e d'ingresso spostarsi in direzioni opposte. Il quinto canale può riutilizzare il file del primo.</p>
+<div class="cue-banner" aria-live="polite"><span id="mainLamp" class="lamp" aria-hidden="true"></span><div><div id="cueTitle">In attesa del film</div><div class="helper" id="cueDetail">Le spie diventano gialle 12 secondi prima della scena, rosse al cambio e verdi dopo il crossfade.</div></div></div>
+<div class="options"><label for="fade-length">Durata del crossfade</label><select id="fade-length"><option value="2">2 secondi</option><option value="4" selected>4 secondi</option><option value="6">6 secondi</option><option value="8">8 secondi</option></select><span class="helper">Livelli a curva di uguale potenza</span></div>
+<div id="mixer-row">
+<div class="channel" data-channel="0"><div class="channel-head">CH 1</div><h3>Congresso</h3><div class="work">Offenbach · <i>Galop infernal</i></div><div class="meter"><div class="meter-inner"></div></div><div class="fader-box"><input class="fader" type="range" orient="vertical" min="0" max="100" step="1" value="0" aria-label="Volume canale 1"></div><div class="level">0%</div><input class="track-file" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac" aria-label="Carica brano canale 1"><div class="file-label">Nessun file</div><label class="repeat"><input class="loop" type="checkbox"> Ripeti</label></div>
+<div class="channel" data-channel="1"><div class="channel-head">CH 2</div><h3>Lancio</h3><div class="work">Grieg · <i>Nell'antro del re della montagna</i></div><div class="meter"><div class="meter-inner"></div></div><div class="fader-box"><input class="fader" type="range" orient="vertical" min="0" max="100" step="1" value="0" aria-label="Volume canale 2"></div><div class="level">0%</div><input class="track-file" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac" aria-label="Carica brano canale 2"><div class="file-label">Nessun file</div><label class="repeat"><input class="loop" type="checkbox"> Ripeti</label></div>
+<div class="channel" data-channel="2"><div class="channel-head">CH 3</div><h3>Paesaggio lunare</h3><div class="work">Saint-Saëns · <i>Aquarium</i></div><div class="meter"><div class="meter-inner"></div></div><div class="fader-box"><input class="fader" type="range" orient="vertical" min="0" max="100" step="1" value="0" aria-label="Volume canale 3"></div><div class="level">0%</div><input class="track-file" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac" aria-label="Carica brano canale 3"><div class="file-label">Nessun file</div><label class="repeat"><input class="loop" type="checkbox"> Ripeti</label></div>
+<div class="channel" data-channel="3"><div class="channel-head">CH 4</div><h3>Seleniti</h3><div class="work">Saint-Saëns · <i>Danse macabre</i></div><div class="meter"><div class="meter-inner"></div></div><div class="fader-box"><input class="fader" type="range" orient="vertical" min="0" max="100" step="1" value="0" aria-label="Volume canale 4"></div><div class="level">0%</div><input class="track-file" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac" aria-label="Carica brano canale 4"><div class="file-label">Nessun file</div><label class="repeat"><input class="loop" type="checkbox"> Ripeti</label></div>
+<div class="channel" data-channel="4"><div class="channel-head">CH 5</div><h3>Ritorno</h3><div class="work">Offenbach · ripresa del <i>Galop</i></div><div class="meter"><div class="meter-inner"></div></div><div class="fader-box"><input class="fader" type="range" orient="vertical" min="0" max="100" step="1" value="0" aria-label="Volume canale 5"></div><div class="level">0%</div><input class="track-file" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac" aria-label="Carica brano canale 5"><div class="file-label">Nessun file</div><button type="button" id="reuse1">Riusa file CH 1</button><label class="repeat"><input class="loop" type="checkbox"> Ripeti</label></div>
+</div>
+</section>
+
+<section class="panel" aria-labelledby="cues-h">
+<h2 id="cues-h">3 · Punti di ingresso e dissolvenze</h2>
+<p class="helper">I tempi sono <strong>indicativi</strong>, ricavati dalla scaletta preliminare per la copia Commons di 12′46″. Regolali guardando le scene. Il passaggio NON è automatico: quando la spia diventa rossa, premi il pulsante corrispondente.</p>
+<div class="fade-list">
+<div class="fade-item" data-transition="0"><div class="cue-head"><span><span class="lamp"></span> 1 → 2</span><span class="helper">Officine</span></div><button class="fade-button" type="button">Crossfade 1 → 2</button><div class="setrow"><label>Scena <input class="cue-time" type="text" value="03:10" inputmode="numeric" aria-label="Tempo del passaggio 1 verso 2"></label><button class="capture" type="button" title="Usa il tempo attuale del video">Segna ora</button></div></div>
+<div class="fade-item" data-transition="1"><div class="cue-head"><span><span class="lamp"></span> 2 → 3</span><span class="helper">Luna</span></div><button class="fade-button" type="button">Crossfade 2 → 3</button><div class="setrow"><label>Scena <input class="cue-time" type="text" value="06:00" inputmode="numeric" aria-label="Tempo del passaggio 2 verso 3"></label><button class="capture" type="button" title="Usa il tempo attuale del video">Segna ora</button></div></div>
+<div class="fade-item" data-transition="2"><div class="cue-head"><span><span class="lamp"></span> 3 → 4</span><span class="helper">Seleniti</span></div><button class="fade-button" type="button">Crossfade 3 → 4</button><div class="setrow"><label>Scena <input class="cue-time" type="text" value="08:30" inputmode="numeric" aria-label="Tempo del passaggio 3 verso 4"></label><button class="capture" type="button" title="Usa il tempo attuale del video">Segna ora</button></div></div>
+<div class="fade-item" data-transition="3"><div class="cue-head"><span><span class="lamp"></span> 4 → 5</span><span class="helper">Fuga</span></div><button class="fade-button" type="button">Crossfade 4 → 5</button><div class="setrow"><label>Scena <input class="cue-time" type="text" value="10:10" inputmode="numeric" aria-label="Tempo del passaggio 4 verso 5"></label><button class="capture" type="button" title="Usa il tempo attuale del video">Segna ora</button></div></div>
+</div>
+</section>
+
+<section class="panel" aria-labelledby="guide-h"><h2 id="guide-h">Come si suona il film</h2>
+<div class="steps"><div><strong>1 · Prepara</strong><p>Scarica una copia autorizzata del film e scegli le tue registrazioni. Caricale nei cinque canali. L'audio resta nel browser, non viene inviato al repository.</p></div><div><strong>2 · Guarda la spia</strong><p>Il mixer osserva l'orologio del video. Dodici secondi prima di ogni cambio avvisa in giallo; allo scoccare del tempo lampeggia in rosso.</p></div><div><strong>3 · Dirigi il passaggio</strong><p>Premi 1→2, 2→3, 3→4 o 4→5. In quattro secondi (modificabili) i cursori si incrociano con un vero cambiamento dei livelli audio. Pausa e ripresa seguono il video.</p></div></div>
+<p class="helper">Ricorda: nessuna di queste musiche costituisce la colonna sonora originale del film di Méliès. Sono una proposta di sonorizzazione creativa. Verifica la licenza delle registrazioni prima di condividerle pubblicamente.</p>
+</section>
+<footer>Musurgia Mundi · La musica non sta in fila · <a href="../dal-musical-al-film/">Dal musical al film</a> · <a href="https://commons.wikimedia.org/wiki/File:Le_Voyage_dans_la_Lune_(1902).webm">Fonte del film: Wikimedia Commons</a></footer>
+</main>
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id);};
+var video=$("film"),scrub=$("scrub"),message=$("message"),lamp=$("mainLamp"),cueTitle=$("cueTitle"),cueDetail=$("cueDetail");
+var defaults=[190,360,510,610],cues=defaults.slice(),active=0,fade=null,frame=0,videoURL=null,ctx=null,master=null,loading=false;
+var cueRows=Array.from(document.querySelectorAll(".fade-item"));
+var channels=Array.from(document.querySelectorAll(".channel")).map(function(el,i){
+var audio=new Audio();audio.preload="auto";audio.loop=false;
+return {index:i,el:el,audio:audio,file:null,url:null,source:null,gain:null,value:0,fader:el.querySelector(".fader"),meter:el.querySelector(".meter-inner"),number:el.querySelector(".level"),fileLabel:el.querySelector(".file-label")};
+});
+function notify(t){message.textContent=t;}
+function mmss(sec){sec=Math.max(0,Math.floor(Number(sec)||0));return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");}
+function parseTime(s){s=String(s).trim();var m=/^(\d{1,2}):([0-5]\d)$/.exec(s);return m?Number(m[1])*60+Number(m[2]):null;}
+function safeStore(){try{localStorage.setItem("mmx-melies-cues-v1",JSON.stringify(cues));}catch(e){}}
+function loadCues(){try{var x=JSON.parse(localStorage.getItem("mmx-melies-cues-v1"));if(Array.isArray(x)&&x.length===4&&x.every(function(v,i){return Number.isFinite(v)&&v>0&&v<766&&(i===0||v>x[i-1]);}))cues=x;}catch(e){}cueRows.forEach(function(r,i){r.querySelector(".cue-time").value=mmss(cues[i]);});}
+function ensureAudio(){if(!ctx){var C=window.AudioContext||window.webkitAudioContext;if(!C){notify("Questo browser non supporta Web Audio. Prova Chrome, Firefox o Safari aggiornato.");return false;}ctx=new C();master=ctx.createGain();master.gain.value=.88;master.connect(ctx.destination);channels.forEach(function(ch){ch.source=ctx.createMediaElementSource(ch.audio);ch.gain=ctx.createGain();ch.gain.gain.value=0;ch.source.connect(ch.gain);ch.gain.connect(master);});}if(ctx.state==="suspended")ctx.resume().catch(function(){notify("Per attivare l'audio tocca di nuovo «Avvia video e mixer».");});return true;}
+function level(i,v){var ch=channels[i];v=Math.max(0,Math.min(1,Number(v)||0));ch.value=v;if(ch.gain)ch.gain.gain.value=v;ch.fader.value=String(Math.round(v*100));ch.number.textContent=Math.round(v*100)+"%";ch.meter.style.width=(v*100)+"%";}
+function pauseAudios(){channels.forEach(function(ch){ch.audio.pause();});}
+function resetLevels(index){channels.forEach(function(ch,i){level(i,i===index?1:0);ch.el.classList.toggle("active",i===index);if(i!==index)ch.audio.pause();});}
+function audioSeek(ch,offset){if(!ch.file)return;var duration=ch.audio.duration;if(Number.isFinite(duration)&&duration>0){if(ch.audio.loop)offset=offset%duration;else offset=Math.min(offset,Math.max(0,duration-.05));}try{ch.audio.currentTime=Math.max(0,offset);}catch(e){}}
+function startTrack(index,offset,play){var ch=channels[index];if(!ch.file)return;if(typeof offset==="number")audioSeek(ch,offset);ch.audio.playbackRate=video.playbackRate||1;if(play){var promise=ch.audio.play();if(promise&&promise.catch)promise.catch(function(){notify("Il browser ha bloccato la riproduzione audio: tocca «Avvia video e mixer».");});}}
+function segmentAt(t){var k=0;for(var i=0;i<4;i++)if(t>=cues[i])k=i+1;return k;}
+function reposition(){if(!video.src)return;fade=null;active=segmentAt(video.currentTime);pauseAudios();resetLevels(active);var at=active===0?0:cues[active-1];startTrack(active,Math.max(0,video.currentTime-at),!video.paused);refresh();}
+function applyFade(){if(!fade)return;var p=Math.max(0,Math.min(1,(video.currentTime-fade.start)/fade.seconds));var ang=p*Math.PI/2;level(fade.from,fade.fromValue*Math.cos(ang));level(fade.to,fade.toValue+(1-fade.toValue)*Math.sin(ang));if(p>=1){channels[fade.from].audio.pause();level(fade.from,0);level(fade.to,1);fade=null;notify("Crossfade completato. Ora è in evidenza il canale "+(active+1)+".");}}
+function crossTo(i){if(!video.src){notify("Carica prima un film.");return;}if(video.paused){notify("Avvia il film per eseguire il crossfade sincronizzato.");return;}if(i<1||i>4)return;if(active!==i-1){notify("Per il passaggio "+i+"→"+(i+1)+" devi essere sul canale "+i+". Ora è attivo CH "+(active+1)+". Se hai spostato il film, il mixer si è riallineato alla nuova scena.");return;}if(!channels[i].file){notify("Manca il file audio del canale "+(i+1)+". Caricalo prima del passaggio.");return;}if(!ensureAudio())return;
+if(fade){level(fade.from,0);channels[fade.from].audio.pause();fade=null;}
+startTrack(i,0,true);
+var from=i-1;fade={from:from,to:i,fromValue:channels[from].value,toValue:channels[i].value,start:video.currentTime,seconds:Number($("fade-length").value)||4};active=i;channels.forEach(function(ch,j){ch.el.classList.toggle("active",j===i);});
+notify("Crossfade "+(from+1)+"→"+(i+1)+" in corso. I due cursori si muovono insieme.");refresh();}
+function cueUI(){var t=video.currentTime||0;var next=active;cueRows.forEach(function(r,i){var isDone=i<active,isNext=i===next&&i<4,delta=cues[i]-t,isPre=isNext&&delta<=12&&delta>0,isNow=isNext&&delta<=0;
+r.classList.toggle("done",isDone);r.classList.toggle("due",isNow);
+var led=r.querySelector(".lamp");led.className="lamp"+(isDone?" done":isNow?" now":isPre?" pre":"");});
+var nextCue=active<4?cues[active]:null;
+if(nextCue!==null){var dt=nextCue-t;
+lamp.className="lamp"+(dt<=0?" now":dt<=12?" pre":"");
+cueTitle.textContent=dt<=0?"ORA · premi "+(active+1)+" → "+(active+2):dt<=12?"PREPARATI · "+(active+1)+" → "+(active+2):"In ascolto · canale "+(active+1);
+cueDetail.textContent=dt<=0?"Cambio scena raggiunto "+mmss(cues[active])+". Premi il crossfade quando lo ritieni musicalmente opportuno.":dt<=12?"Mancano "+Math.ceil(dt)+" secondi al cambio di scena.":"Prossimo passaggio a "+mmss(cues[active])+". La spia si accende 12 secondi prima.";
+}else{lamp.className="lamp done";cueTitle.textContent="Ultima musica · ritorno a Terra";cueDetail.textContent="Il quinto canale conclude la sonorizzazione. Il mixer si arresterà con il film.";}
+}
+function refresh(){var dur=Number.isFinite(video.duration)?video.duration:766;scrub.max=String(dur);if(!scrub.matches(":active"))scrub.value=String(video.currentTime||0);$("clock").textContent=mmss(video.currentTime);$("duration").textContent=mmss(dur);cueUI();}
+function tick(){cancelAnimationFrame(frame);applyFade();refresh();if(!video.paused&&!video.ended)frame=requestAnimationFrame(tick);}
+function play(){if(!video.src){notify("Carica la copia del film dal dispositivo (puoi scaricarla da Wikimedia Commons).");return;}if(!ensureAudio())return;if(!channels.some(function(ch){return !!ch.file;})){notify("Film pronto, ma nessun brano è caricato. Puoi guardarlo senza musica.");}
+if(!fade){var chosen=channels[active];if(chosen.file){level(active,1);startTrack(active,undefined,true);}}
+else{startTrack(fade.from,undefined,true);startTrack(fade.to,undefined,true);}
+var p=video.play();if(p&&p.catch)p.catch(function(){notify("Impossibile avviare il video. Verifica il formato del file.");});}
+function reset(){video.pause();pauseAudios();fade=null;try{video.currentTime=0;}catch(e){}active=0;resetLevels(0);refresh();notify("Pronto da capo. Premi «Avvia video e mixer».");}
+function assignFile(i,file){if(!file)return;var ch=channels[i];ch.audio.pause();if(ch.url)URL.revokeObjectURL(ch.url);ch.file=file;ch.url=URL.createObjectURL(file);ch.audio.src=ch.url;ch.audio.loop=ch.el.querySelector(".loop").checked;ch.audio.load();ch.fileLabel.textContent=file.name;ch.el.title=file.name;if(i===active&&!video.paused){level(i,1);var at=i===0?0:cues[i-1];startTrack(i,Math.max(0,video.currentTime-at),true);}notify("Canale "+(i+1)+" caricato: "+file.name+".");}
+$("video-file").addEventListener("change",function(e){var f=e.target.files&&e.target.files[0];if(!f)return;video.pause();pauseAudios();if(videoURL)URL.revokeObjectURL(videoURL);videoURL=URL.createObjectURL(f);video.src=videoURL;video.muted=true;video.load();fade=null;active=0;resetLevels(0);notify("Film caricato: "+f.name+". Il player resta senza l'eventuale audio registrato.");});
+$("start").addEventListener("click",function(){if(video.paused)play();else video.pause();});
+$("stop").addEventListener("click",reset);
+video.addEventListener("play",function(){if(!ctx)ensureAudio();if(!fade)startTrack(active,undefined,true);else{startTrack(fade.from,undefined,true);startTrack(fade.to,undefined,true);}tick();$("start").textContent="❚❚ Pausa video e mixer";});
+video.addEventListener("pause",function(){pauseAudios();cancelAnimationFrame(frame);refresh();$("start").textContent="▶ Avvia video e mixer";});
+video.addEventListener("ended",function(){pauseAudios();cancelAnimationFrame(frame);fade=null;refresh();notify("Fine del film. Tutte le musiche sono state fermate.");});
+video.addEventListener("seeking",function(){pauseAudios();cancelAnimationFrame(frame);});
+video.addEventListener("seeked",reposition);
+video.addEventListener("timeupdate",function(){if(!video.paused)applyFade();refresh();});
+video.addEventListener("ratechange",function(){channels.forEach(function(ch){ch.audio.playbackRate=video.playbackRate;});});
+video.addEventListener("loadedmetadata",function(){refresh();if(Math.abs(video.duration-766)>12)notify("Attenzione: questa copia dura "+mmss(video.duration)+" anziché 12:46. Ricalibra i quattro punti di ingresso.");});
+video.addEventListener("error",function(){notify("Il browser non riesce a leggere questo file video. Prova una copia MP4 H.264 / 360p.");});
+scrub.addEventListener("input",function(){if(video.src){var time=Number(scrub.value);if(Number.isFinite(time))video.currentTime=time;}});
+channels.forEach(function(ch,i){
+ch.el.querySelector(".track-file").addEventListener("change",function(e){assignFile(i,e.target.files&&e.target.files[0]);});
+ch.el.querySelector(".loop").addEventListener("change",function(e){ch.audio.loop=e.target.checked;});
+ch.fader.addEventListener("input",function(){if(fade)fade=null;level(i,Number(ch.fader.value)/100);if(ch.value>0&&ch.file&&!video.paused){if(!ctx)ensureAudio();startTrack(i,undefined,true);}else if(ch.value===0)ch.audio.pause();notify("Livello manuale del canale "+(i+1)+": "+Math.round(ch.value*100)+"%.");});
+});
+$("reuse1").addEventListener("click",function(){if(!channels[0].file){notify("Carica prima Offenbach nel canale 1.");return;}assignFile(4,channels[0].file);});
+cueRows.forEach(function(r,i){r.querySelector(".fade-button").addEventListener("click",function(){crossTo(i+1);});
+r.querySelector(".capture").addEventListener("click",function(){changeCue(i,Math.floor(video.currentTime||0));});
+r.querySelector(".cue-time").addEventListener("change",function(){var t=parseTime(this.value);if(t===null||!changeCue(i,t))this.value=mmss(cues[i]);});});
+function changeCue(i,t){var end=Number.isFinite(video.duration)?video.duration:766;
+if(!(t>=(i?cues[i-1]+1:1)&&t<=(i<3?cues[i+1]-1:end-1))){notify("Tempo non valido: i quattro cambi devono restare in ordine e all'interno del film.");return false;}
+cues[i]=t;cueRows[i].querySelector(".cue-time").value=mmss(t);safeStore();refresh();notify("Passaggio "+(i+1)+"→"+(i+2)+" fissato a "+mmss(t)+".");return true;}
+window.addEventListener("beforeunload",function(){channels.forEach(function(ch){if(ch.url)URL.revokeObjectURL(ch.url);});if(videoURL)URL.revokeObjectURL(videoURL);});
+loadCues();resetLevels(0);refresh();
+})();
+</script>
+</body>
+</html>
