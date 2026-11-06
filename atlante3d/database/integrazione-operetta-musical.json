@@ -1,7 +1,7 @@
 {
   "schema": "genre-extension-v1",
   "updated": "2026-11-06",
-  "editorial_note": "Nodi generali integrativi. Le relazioni nominative sono risolte solo quando il compositore esiste nel grafo, evitando duplicazioni e inferenze geografiche.",
+  "editorial_note": "I due generi e gli autori vengono riconciliati con il grafo storico tramite id e nome; collegamenti aggiunti solo con fonti esplicite. Nessuna localizzazione geografica desunta dal genere.",
   "nodes": [
     {
       "id": "genere-operetta",
@@ -44,6 +44,121 @@
         "https://www.treccani.it/enciclopedia/musical/",
         "https://musurgiamundi.com/dall-operetta-a-broadway/"
       ]
+    },
+    {
+      "id": "compositore-herve",
+      "label": "Hervé (Florimond Ronger)",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore e autore teatrale francese, fra i protagonisti delle prime forme dell'operetta parigina.",
+      "aliases": [
+        "Hervé",
+        "Florimond Ronger"
+      ],
+      "sources": [
+        "https://www.eno.org/discover-opera/articles/the-beginners-guide-to-operetta/"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "compositore-franz-von-suppe",
+      "label": "Franz von Suppé",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore attivo a Vienna, autore di Die schöne Galathée e Boccaccio, figura decisiva dell'operetta viennese.",
+      "aliases": [],
+      "sources": [
+        "https://www.eno.org/discover-opera/articles/the-beginners-guide-to-operetta/"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "compositore-johann-strauss-ii",
+      "label": "Johann Strauss figlio",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore austriaco, maestro del valzer e dell'operetta viennese, autore di Die Fledermaus (1874).",
+      "aliases": [
+        "Johann Strauss II",
+        "Johann Strauss (figlio)",
+        "Johann Strauss Jr."
+      ],
+      "sources": [
+        "https://www.metopera.org/discover/education/educator-guides/merry-widow/composer-timeline/"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "compositore-franz-lehar",
+      "label": "Franz Lehár",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore dell'operetta viennese del primo Novecento, autore di Die lustige Witwe (1905).",
+      "aliases": [],
+      "sources": [
+        "https://www.metopera.org/discover/education/educator-guides/merry-widow/composer-timeline/"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "compositore-emmerich-kalman",
+      "label": "Emmerich Kálmán",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore di operette viennesi con una forte presenza di danze e stilemi mitteleuropei, autore di Die Csárdásfürstin.",
+      "aliases": [],
+      "sources": [
+        "https://www.naxos.com/Handler/GetBackcover.ashx/?file=https%3A%2F%2Fcdn.naxos.com%2FSharedFiles%2Fpdf%2Frear%2F8.571083r.pdf"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "compositore-arthur-sullivan",
+      "label": "Arthur Sullivan",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore britannico, autore delle Savoy operas in collaborazione con W. S. Gilbert, fra cui The Mikado.",
+      "aliases": [],
+      "sources": [
+        "https://www.treccani.it/enciclopedia/sir-arthur-seymour-sullivan/"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "compositore-victor-herbert",
+      "label": "Victor Herbert",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore e direttore d'orchestra attivo negli Stati Uniti, protagonista dell'operetta americana, autore di Babes in Toyland.",
+      "aliases": [],
+      "sources": [
+        "https://www.loc.gov/exhibits/musical-worlds-of-victor-herbert/exhibition-items.html"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "compositore-rudolf-friml",
+      "label": "Rudolf Friml",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore della tradizione dell'operetta americana, autore di Rose-Marie (1924) e The Vagabond King.",
+      "aliases": [],
+      "sources": [
+        "https://www.loc.gov/item/jukebox-72098/"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "compositore-sigmund-romberg",
+      "label": "Sigmund Romberg",
+      "type": "compositore",
+      "status": "catalogato",
+      "description": "Compositore di operette americane, autore di The Student Prince (1924).",
+      "aliases": [],
+      "sources": [
+        "https://catalog.afi.com/Film/51364-THE-STUDENT-PRINCE"
+      ],
+      "url": "../dall-operetta-a-broadway/"
     }
   ],
   "relations": [
@@ -87,8 +202,10 @@
       "reverse": "compose celebri opere del genere",
       "document": "../dall-operetta-a-broadway/#vienna",
       "sources": [
+        "https://www.metopera.org/discover/education/educator-guides/merry-widow/composer-timeline/",
         "https://musurgiamundi.com/dall-operetta-a-broadway/#vienna"
-      ]
+      ],
+      "target": "compositore-johann-strauss-ii"
     },
     {
       "source": "genere-operetta",
@@ -99,8 +216,10 @@
       "reverse": "con Gilbert coltivò la comic opera inglese, in rapporto con l'operetta",
       "document": "../dall-operetta-a-broadway/#londra",
       "sources": [
+        "https://www.treccani.it/enciclopedia/sir-arthur-seymour-sullivan/",
         "https://musurgiamundi.com/dall-operetta-a-broadway/#londra"
-      ]
+      ],
+      "target": "compositore-arthur-sullivan"
     },
     {
       "source": "genere-operetta",
@@ -114,8 +233,10 @@
       "reverse": "coltivò l'operetta viennese",
       "document": "../dall-operetta-a-broadway/#vienna",
       "sources": [
+        "https://www.metopera.org/discover/education/educator-guides/merry-widow/composer-timeline/",
         "https://musurgiamundi.com/dall-operetta-a-broadway/#vienna"
-      ]
+      ],
+      "target": "compositore-franz-lehar"
     },
     {
       "source": "genere-operetta",
@@ -126,8 +247,10 @@
       "reverse": "lavorò nella tradizione dell'operetta americana",
       "document": "../dall-operetta-a-broadway/#atlantico",
       "sources": [
+        "https://www.loc.gov/exhibits/musical-worlds-of-victor-herbert/exhibition-items.html",
         "https://musurgiamundi.com/dall-operetta-a-broadway/#atlantico"
-      ]
+      ],
+      "target": "compositore-victor-herbert"
     },
     {
       "source": "genere-musical",
@@ -193,6 +316,66 @@
       "sources": [
         "https://musurgiamundi.com/dall-operetta-a-broadway/#altre-radici"
       ]
+    },
+    {
+      "source": "genere-operetta",
+      "target": "compositore-herve",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende opere musicali composte da",
+      "reverse": "contribuì allo sviluppo del genere",
+      "sources": [
+        "https://www.eno.org/discover-opera/articles/the-beginners-guide-to-operetta/"
+      ],
+      "note": "Fra i primi protagonisti dell'operetta francese."
+    },
+    {
+      "source": "genere-operetta",
+      "target": "compositore-franz-von-suppe",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende opere musicali composte da",
+      "reverse": "contribuì allo sviluppo del genere",
+      "sources": [
+        "https://www.eno.org/discover-opera/articles/the-beginners-guide-to-operetta/"
+      ],
+      "note": "Tra gli artefici dell'operetta viennese."
+    },
+    {
+      "source": "genere-operetta",
+      "target": "compositore-emmerich-kalman",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende opere musicali composte da",
+      "reverse": "contribuì allo sviluppo del genere",
+      "sources": [
+        "https://www.naxos.com/Handler/GetBackcover.ashx/?file=https%3A%2F%2Fcdn.naxos.com%2FSharedFiles%2Fpdf%2Frear%2F8.571083r.pdf"
+      ],
+      "note": "Operetta viennese, Die Csárdásfürstin."
+    },
+    {
+      "source": "genere-operetta",
+      "target": "compositore-rudolf-friml",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende opere musicali composte da",
+      "reverse": "contribuì allo sviluppo del genere",
+      "sources": [
+        "https://www.loc.gov/item/jukebox-72098/"
+      ],
+      "note": "Autore di Rose-Marie e di Indian Love Call."
+    },
+    {
+      "source": "genere-operetta",
+      "target": "compositore-sigmund-romberg",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende opere musicali composte da",
+      "reverse": "contribuì allo sviluppo del genere",
+      "sources": [
+        "https://catalog.afi.com/Film/51364-THE-STUDENT-PRINCE"
+      ],
+      "note": "Autore di The Student Prince."
     }
   ]
 }
