@@ -38,7 +38,7 @@ details a{color:#e4d39d}
 <h1>Le Voyage dans la Lune · 1902</h1>
 <video id="film" controls playsinline muted preload="metadata" aria-label="Film Le Voyage dans la Lune, 1902, con sonorizzazione alternativa"></video>
 <div class="cues" aria-label="Quattro pulsanti di cambio musicale">
-<button type="button" data-i="0" title="Offenbach → Grieg">1 → 2<small>03:10</small></button>
+<button type="button" data-i="0" title="Offenbach → Grieg">1 → 2<small>02:58</small></button>
 <button type="button" data-i="1" title="Grieg → Aquarium">2 → 3<small>06:00</small></button>
 <button type="button" data-i="2" title="Aquarium → Danse macabre">3 → 4<small>08:30</small></button>
 <button type="button" data-i="3" title="Danse macabre → Offenbach">4 → 5<small>10:10</small></button>
@@ -48,93 +48,126 @@ details a{color:#e4d39d}
 <span id="now" role="status" aria-live="polite">Premi ▶ sul film per iniziare con Offenbach.</span>
 </div>
 <details>
-<summary>Film, registrazioni e licenze</summary>
-<p>Film di Georges Méliès (1902): <a href="https://commons.wikimedia.org/wiki/File:Le_Voyage_dans_la_Lune_(1902).webm">Wikimedia Commons</a> (pubblico dominio). La sequenza dei brani è una proposta didattica moderna, non la musica originale del 1902. I cambi sono indicativi per la copia da 12′46″.</p>
-<p>1 e 5. Offenbach, <i>Galop infernal</i>: <a href="https://commons.wikimedia.org/wiki/File:Jacques_Offenbach_-_Galop_Infernal_from_Orpheus_in_the_Underworld_(Can_Can)_(1858).ogg">Gnissah, CC BY-SA 3.0</a>.</p>
+<summary>Registrazioni e licenze</summary>
+<p>Film: <a href="https://commons.wikimedia.org/wiki/File:Le_Voyage_dans_la_Lune_(1902).webm">Georges Méliès (1902), Wikimedia Commons</a>. Le musiche sono una sonorizzazione didattica, non la colonna sonora originale.</p>
+<p>1 e 5. Offenbach, <i>Galop infernal</i> (estratto dalla ouverture di <i>Orphée aux enfers</i>): <a href="https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture,_Can_Can_section.ogg">Musopen, registrazione CC0 / pubblico dominio</a>.</p>
 <p>2. Grieg, <i>Nell'antro del re della montagna</i>: <a href="https://commons.wikimedia.org/wiki/File:Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg">Czech National Symphony Orchestra / Musopen, pubblico dominio</a>.</p>
 <p>3. Saint-Saëns, <i>Aquarium</i>: <a href="https://commons.wikimedia.org/wiki/File:Saint-Saens_-_The_Carnival_of_the_Animals_-_07_Aquarium.ogg">Neil e Nancy O'Doan, Seattle Youth Symphony, Vilem Sokol, CC BY-SA 2.0</a>.</p>
-<p>4. Saint-Saëns, <i>Danse macabre</i>: <a href="https://commons.wikimedia.org/wiki/File:PhiladelphiaSymphonyOrchestra-DanseMacabre.ogg">Philadelphia Symphony Orchestra, Leopold Stokowski, 1925, pubblico dominio negli USA</a>.</p>
-<p>Le registrazioni sono riprodotte in streaming da Wikimedia Commons; non sono memorizzate nel repository. Se desideri creare e distribuire una colonna sonora montata, verifica le rispettive condizioni di licenza.</p>
+<p>4. Saint-Saëns, <i>Danse macabre</i>: <a href="https://commons.wikimedia.org/wiki/File:PhiladelphiaSymphonyOrchestra-DanseMacabre.ogg">Philadelphia Symphony Orchestra, Leopold Stokowski (1925), pubblico dominio negli USA</a>.</p>
+<p>Il primo estratto dura 1′47″ ed è ripetuto fino alla tua scelta di cambio; i passaggi sono sempre manuali. Le registrazioni sono trasmesse da Wikimedia Commons e non caricate sul nostro repository.</p>
 </details>
 </main>
 <script>
 (function(){
 "use strict";
-const video=document.getElementById("film"),silent=document.getElementById("silent"),now=document.getElementById("now");
-const buttons=Array.from(document.querySelectorAll(".cues button"));
-const marks=[190,360,510,610];
+const video=document.getElementById("film");
+const silent=document.getElementById("silent");
+const now=document.getElementById("now");
+const buttons=[...document.querySelectorAll(".cues button")];
+const marks=[178,360,510,610];
+const volume=.78,fadeSeconds=3.5;
 const root="https://upload.wikimedia.org/wikipedia/commons/";
-const files=[
-root+"7/7d/Jacques_Offenbach_-_Galop_Infernal_from_Orpheus_in_the_Underworld_%28Can_Can%29_%281858%29.ogg",
-root+"b/bb/Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg",
-root+"c/c2/Saint-Saens_-_The_Carnival_of_the_Animals_-_07_Aquarium.ogg",
-root+"7/76/PhiladelphiaSymphonyOrchestra-DanseMacabre.ogg"
+const media=[
+  ["6/63/Offenbach_-_Orpheus_in_the_Underworld_-_Overture%2C_Can_Can_section.ogg","Offenbach · Galop infernal"],
+  ["b/bb/Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg","Grieg · Nell'antro del re della montagna"],
+  ["c/c2/Saint-Saens_-_The_Carnival_of_the_Animals_-_07_Aquarium.ogg","Saint-Saëns · Aquarium"],
+  ["7/76/PhiladelphiaSymphonyOrchestra-DanseMacabre.ogg","Saint-Saëns · Danse macabre"]
 ];
-const tracks=[files[0],files[1],files[2],files[3],files[0]].map(function(src,i){
- const a=new Audio();a.src=src;a.preload="auto";a.loop=true;a.volume=0;
- a.addEventListener("error",function(){if(a.dataset.mp3)return;a.dataset.mp3="1";
- const parts=src.split("/commons/");a.src=root+"transcoded/"+parts[1]+"/"+parts[1].split("/").slice(-1)[0]+".mp3";a.load();if(i===active&&!video.paused&&!silent.checked)play(a);});
- a.load();return a;
+const tracks=[0,1,2,3,0].map(function(k,i){
+ const a=new Audio();
+ a.preload="auto";a.loop=true;a.volume=0;
+ const filename=media[k][0];
+ const original=root+filename;
+ const transcoded=root+"transcoded/"+filename+"/"+filename.split("/").slice(-1)[0]+".mp3";
+ let fallback=false;
+ a.src=transcoded;
+ a.addEventListener("error",function(){
+   if(!fallback){fallback=true;a.src=original;a.load();}
+   else if(i===active)hint("Impossibile caricare il brano "+(i+1)+". Controlla la connessione.",true);
+ });
+ a.load();
+ return a;
 });
-let active=0,fade=null,raf=0;const fadeSeconds=3.5,volume=.8;
-const sources=["Offenbach","Grieg","Saint-Saëns · Aquarium","Saint-Saëns · Danse macabre","Offenbach"];
-const mp3Video="https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6d/Le_Voyage_dans_la_Lune_%281902%29.webm/Le_Voyage_dans_la_Lune_%281902%29.webm.360p.mpeg4.mov";
-const sourceVideo=["https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6d/Le_Voyage_dans_la_Lune_%281902%29.webm/Le_Voyage_dans_la_Lune_%281902%29.webm.360p.vp9.webm","https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6d/Le_Voyage_dans_la_Lune_%281902%29.webm/Le_Voyage_dans_la_Lune_%281902%29.webm.240p.vp9.webm"];
-let videoSource=0;
+const labels=[media[0][1],media[1][1],media[2][1],media[3][1],media[0][1]];
+const sourceVideo=[
+ "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6d/Le_Voyage_dans_la_Lune_%281902%29.webm/Le_Voyage_dans_la_Lune_%281902%29.webm.360p.vp9.webm",
+ "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6d/Le_Voyage_dans_la_Lune_%281902%29.webm/Le_Voyage_dans_la_Lune_%281902%29.webm.240p.vp9.webm"
+];
+let active=0,fade=null,raf=0,videoSource=0,loadingSwitch=false;
 video.src=sourceVideo[0];video.load();
-function hint(t,bad){now.textContent=t;now.classList.toggle("error",!!bad);}
-function pauseTracks(){tracks.forEach(a=>a.pause());}
-function play(a){a.playbackRate=video.playbackRate||1;const p=a.play();if(p&&p.catch)p.catch(()=>hint("Audio bloccato dal browser: tocca Muto e riattiva la musica.",true));}
-function resetChannel(i){active=i;fade=null;pauseTracks();tracks.forEach((a,j)=>a.volume=(j===i&&!silent.checked)?volume:0);if(!video.paused&&!silent.checked)play(tracks[active]);state();}
-function correctAt(t){let n=0;for(let i=0;i<marks.length;i++)if(t>=marks[i])n=i+1;return n;}
-function state(){const t=video.currentTime||0;buttons.forEach(function(b,i){
- const done=i<active;const eligible=i===active;
- b.disabled=!eligible||silent.checked;
- b.classList.toggle("done",done);
- b.classList.toggle("due",eligible&&t>=marks[i]-6);
- });}
-function step(){
- if(fade&&!silent.checked){
-  const p=Math.min(1,Math.max(0, (video.currentTime-fade.start)/fadeSeconds)),ang=p*Math.PI/2;
-  tracks[fade.from].volume=volume*Math.cos(ang);
-  tracks[fade.to].volume=volume*Math.sin(ang);
-  if(p===1){tracks[fade.from].pause();tracks[fade.from].volume=0;tracks[fade.to].volume=volume;fade=null;}
- }
- state();if(!video.paused&&!video.ended)raf=requestAnimationFrame(step);
+function hint(text,error){now.textContent=text;now.classList.toggle("error",!!error);}
+function stopAll(){tracks.forEach(a=>a.pause());}
+function play(a){a.playbackRate=video.playbackRate||1;return a.play();}
+function stageAt(t){let x=0;for(let i=0;i<marks.length;i++)if(t>=marks[i])x=i+1;return x;}
+function update(){
+ const t=video.currentTime||0;
+ buttons.forEach((b,i)=>{
+   b.disabled=silent.checked||loadingSwitch||!!fade||i!==active;
+   b.classList.toggle("done",i<active);
+   b.classList.toggle("due",i===active&&t>=marks[i]-4);
+ });
+ if(silent.checked){hint("Muto");return;}
+ if(loadingSwitch){hint("Preparo la prossima registrazione…");return;}
+ if(active<4&&t>=marks[active]){hint("ORA · premi "+(active+1)+" → "+(active+2));return;}
+ if(active<4&&t>=marks[active]-4){hint("Prossimo cambio tra "+Math.ceil(marks[active]-t)+" s");return;}
+ if(fade)return;
+ hint(labels[active]);
 }
-buttons.forEach((b,i)=>b.addEventListener("click",function(){
- if(silent.checked)return;
- if(video.paused){hint("Avvia il film prima di cambiare musica.");return;}
- if(i!==active||fade)return;
- const next=i+1;
- const incoming=tracks[next];try{incoming.currentTime=0;}catch(e){}
- incoming.volume=0;play(incoming);
- fade={from:i,to:next,start:video.currentTime};active=next;
- hint(sources[next]);state();
+function syncAt(t){
+ active=stageAt(t);fade=null;loadingSwitch=false;stopAll();
+ tracks.forEach((a,i)=>a.volume=(i===active&&!silent.checked)?volume:0);
+ const a=tracks[active],begin=active?marks[active-1]:0;
+ if(Number.isFinite(a.duration)&&a.duration>0){try{a.currentTime=Math.max(0,t-begin)%a.duration;}catch(e){}}
+ if(!silent.checked&&!video.paused)play(a).catch(()=>hint("Audio non disponibile. Tocca Muto e disattivalo.",true));
+ update();
+}
+function progress(){
+ if(fade&&!silent.checked){
+  let p=Math.max(0,Math.min(1,(video.currentTime-fade.start)/fadeSeconds));
+  tracks[fade.from].volume=volume*Math.cos(p*Math.PI/2);
+  tracks[fade.to].volume=volume*Math.sin(p*Math.PI/2);
+  if(p>=1){tracks[fade.from].pause();tracks[fade.from].volume=0;tracks[fade.to].volume=volume;fade=null;}
+ }
+ update();
+ if(!video.paused&&!video.ended)raf=requestAnimationFrame(progress);
+}
+buttons.forEach((b,i)=>b.addEventListener("click",async function(){
+ if(video.paused||silent.checked||i!==active||fade||loadingSwitch)return;
+ loadingSwitch=true;update();
+ const next=i+1,a=tracks[next];
+ try{
+  a.currentTime=0;a.volume=0;
+  // Il fade inizia solo quando la traccia successiva sta suonando realmente.
+  await play(a);
+  if(video.paused||silent.checked||!loadingSwitch){a.pause();return;}
+  const from=active;active=next;
+  fade={from,to:next,start:video.currentTime};
+  loadingSwitch=false;update();
+ }catch(e){
+  loadingSwitch=false;a.pause();hint("Il brano "+(next+1)+" non si avvia: verifica la connessione.",true);update();
+ }
 }));
 video.addEventListener("play",function(){
- if(!silent.checked){if(fade){play(tracks[fade.from]);play(tracks[fade.to]);}
- else{tracks[active].volume=volume;play(tracks[active]);hint(sources[active]);}}
- cancelAnimationFrame(raf);raf=requestAnimationFrame(step);
+ if(!silent.checked){
+  const indexes=fade?[fade.from,fade.to]:[active];
+  indexes.forEach(i=>{if(!fade)tracks[i].volume=volume;play(tracks[i]).catch(()=>hint("Audio bloccato: prova a disattivare e riattivare Muto.",true));});
+ }
+ cancelAnimationFrame(raf);raf=requestAnimationFrame(progress);
 });
-video.addEventListener("pause",function(){cancelAnimationFrame(raf);pauseTracks();});
-video.addEventListener("ended",function(){cancelAnimationFrame(raf);pauseTracks();});
-video.addEventListener("seeked",function(){const t=video.currentTime||0;const idx=correctAt(t);resetChannel(idx);
- const start=idx?marks[idx-1]:0;const a=tracks[idx];if(Number.isFinite(a.duration)&&a.duration>0)try{a.currentTime=((t-start)%a.duration+a.duration)%a.duration;}catch(e){}
- hint(silent.checked?"Muto":sources[active]);
-});
+video.addEventListener("pause",function(){cancelAnimationFrame(raf);stopAll();});
+video.addEventListener("ended",function(){cancelAnimationFrame(raf);stopAll();});
+video.addEventListener("seeked",function(){syncAt(video.currentTime||0);});
 video.addEventListener("ratechange",function(){tracks.forEach(a=>a.playbackRate=video.playbackRate);});
 video.addEventListener("error",function(){
- if(videoSource===0){videoSource=1;video.src=sourceVideo[1];video.load();hint("Caricamento della versione leggera del film…");}
- else hint("Film non disponibile in questo momento su Wikimedia Commons.",true);
+ if(videoSource===0){videoSource=1;video.src=sourceVideo[1];video.load();}
+ else hint("Video non disponibile su Wikimedia Commons.",true);
 });
 silent.addEventListener("change",function(){
- if(this.checked){fade=null;pauseTracks();tracks.forEach(a=>a.volume=0);hint("Muto");}
- else{if(!video.paused){tracks[active].volume=volume;play(tracks[active]);}
- hint(sources[active]);}
- state();
+ if(this.checked){loadingSwitch=false;fade=null;stopAll();tracks.forEach(a=>a.volume=0);}
+ else{tracks.forEach((a,i)=>a.volume=i===active?volume:0);if(!video.paused)play(tracks[active]).catch(()=>hint("Riproduzione audio non disponibile.",true));}
+ update();
 });
-state();
+update();
 })();
 </script>
 </body>
