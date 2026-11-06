@@ -57,7 +57,23 @@
 .diegesi-verifica{border-left:4px solid #986c81;background:#f4e9e7;max-width:940px;padding:.8rem 1rem;font:1rem/1.6 var(--sans)}
 @media(max-width:800px){.diegesi-quadri{grid-template-columns:1fr}.diegesi-quadri strong{min-height:0}.diegesi-links{gap:.7rem}}
 @media(max-width:450px){.film-diegesi-thumb{flex-basis:95px;width:95px}.diegesi-links{padding:.5rem}.diegesi-links p{font-size:.81rem}}
+
+/* Mickey Mousing: una dimostrazione orchestrale in pagina, con avvio manuale. */
+.mickey-session-video{max-width:800px;margin:1.7rem 0 2.25rem;padding:1rem 1.15rem 1.2rem;background:#f3ede4;border:1px solid #d1c5b5;border-top:4px solid #8d6e83;border-radius:8px}
+.mickey-session-head{margin:0 0 .9rem}.mickey-session-head h3{font:650 clamp(1.3rem,2.6vw,1.8rem)/1.34 var(--serif);margin:.3rem 0 .6rem}
+.mickey-session-eyebrow{font:800 .72rem/1.45 var(--sans);text-transform:uppercase;letter-spacing:.08em;color:#6b556e}
+.mickey-session-player{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:7px;background:#19242b}
+.mickey-session-player iframe{display:block;width:100%;height:100%;aspect-ratio:16/9;border:0}
+.mickey-session-player .mm-site-preview--standalone{height:100%;width:100%;aspect-ratio:16/9;border-radius:7px}
+.mickey-session-video figcaption{font:.86rem/1.65 var(--sans);margin:.9rem 0 .7rem;color:#4b4250}
+.mickey-session-video figcaption a{text-decoration:underline;font-weight:700}
+.mickey-session-captions details{border-top:1px solid #d4c5b4;border-bottom:1px solid #d4c5b4;padding:.75rem 0}
+.mickey-session-captions summary{font:.86rem/1.5 var(--sans);cursor:pointer;color:#594160}
+.mickey-session-captions details p{font:.85rem/1.6 var(--sans);color:#4f4850;margin:.7rem 0 .15rem}
+.mickey-session-question{font:.92rem/1.65 var(--serif);margin:.9rem 0 .2rem}
+@media(max-width:600px){.mickey-session-video{padding:.8rem}}
 </style>
+<link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261106-mickey-session01">
 </head>
 <body id="top">
 <a class="skip" href="#contenuto">Salta al contenuto</a>
@@ -314,6 +330,20 @@
 <h2>Mickey Mousing: quando la musica segue il gesto</h2>
 <p>Un personaggio cade e una scala musicale precipita con lui; una porta sbatte e l'orchestra ne sottolinea il colpo; una camminata furtiva diventa pizzicato. Questa relazione ravvicinata fra evento visivo e accento musicale prende il nome di <em>mickey mousing</em>. Il nome nasce dai cartoni di Topolino, ma non la pratica: il cinema muto e il teatro musicale conoscevano già modi di far coincidere gesto, suono e ritmo. Il sonoro cinematografico ne rese possibile la sincronizzazione precisa e ripetibile.</p>
 
+<figure class="mickey-session-video" id="mickey-orchestra-session">
+<div class="mickey-session-head"><span class="mickey-session-eyebrow">Dal principio alla pratica · Dietro le quinte</span><h3>Una vera orchestra, le immagini sullo schermo</h3></div>
+<div class="mickey-session-player">
+<iframe title="Sessione di registrazione orchestrale per un film di animazione, video segnalato dall'autore" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/VZz6Rh0mFTo?hl=it&amp;cc_load_policy=1&amp;cc_lang_pref=it"></iframe>
+</div>
+<figcaption><strong>Guarda e ascolta.</strong> In questa sessione di registrazione il lavoro dei musicisti si confronta con la proiezione delle immagini. È un'occasione per osservare come una partitura si coordina con il tempo del film: movimenti, entrate, pause, accenti e gestione dell'insieme. <a href="https://www.youtube.com/watch?v=VZz6Rh0mFTo" target="_blank" rel="noopener noreferrer">Apri il filmato su YouTube ↗</a></figcaption>
+<div class="mickey-session-captions">
+<details><summary><strong>Sottotitoli in italiano</strong> · come attivarli</summary>
+<p>Il lettore richiede a YouTube l'italiano come lingua preferita dei sottotitoli, quando una traccia italiana è disponibile. Se compaiono soltanto sottotitoli in un'altra lingua, apri il filmato su YouTube e scegli <strong>CC / Sottotitoli → Impostazioni → Sottotitoli → Traduzione automatica → Italiano</strong> (se l'opzione è offerta). La traduzione automatica dipende dalla disponibilità delle trascrizioni su YouTube e può contenere errori.</p>
+<p>Non è stata aggiunta una trascrizione manuale: per creare sottotitoli italiani affidabili occorre disporre del parlato originale o di una trascrizione verificata, evitando di inventare battute.</p>
+</details>
+</div>
+<p class="mickey-session-question"><strong>Un ascolto guidato.</strong> Confronta le azioni sulla proiezione con gli attacchi dell'orchestra. Ogni gesto visivo è sottolineato da una nota? Oppure i musicisti alternano <em>mickey mousing</em>, accompagnamento generale e silenzi? La sincronizzazione non coincide necessariamente con una caricatura sonora di ogni movimento.</p>
+</figure>
 <h3 id="mickey-radici">Prima dei cartoni: il cinema muto e l'accompagnamento dal vivo</h3>
 <p>Il pianista, l'organista e talvolta l'orchestra che accompagnavano le proiezioni mute potevano adattare formule musicali a inseguimenti, cadute, passi e apparizioni. Nelle sale dotate di effetti si aggiungevano campanelli, percussioni e altri dispositivi. Queste pratiche erano assai diverse da sala a sala, ma dimostrano che <strong>la musica poteva già recitare insieme all'attore</strong>, anziché limitarsi a creare un'atmosfera. Non è dunque Disney a inventare il suono sincronizzato, bensì uno dei protagonisti del suo perfezionamento nell'animazione.</p>
 
@@ -426,5 +456,6 @@ document.addEventListener('click', function(event){
   }
 });
 </script>
+<script src="../shared/atlas-video-preview-v1.js?v=20261106-mickey-session01" defer></script>
 </body>
 </html>
