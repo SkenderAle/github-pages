@@ -104,6 +104,7 @@ footer{font-size:.84rem;color:var(--muted);margin-top:2rem}
 </div>
 <div>
 <p class="helper">Per sincronizzare con precisione serve un file video controllabile dal lettore HTML5, non un video YouTube incorporato.</p>
+<div class="controls"><button id="commons-load" class="primary" type="button">▶ Usa la copia Commons online</button></div><p class="helper">Se la connessione è lenta, usa invece un file locale:</p>
 <label class="field">Carica la tua copia del film (MP4 / WebM)
 <input type="file" id="video-file" accept="video/*,.mp4,.webm,.ogv"></label>
 <p class="helper">Puoi ottenere una copia leggera dal <a href="https://commons.wikimedia.org/wiki/File:Le_Voyage_dans_la_Lune_(1902).webm" target="_blank" rel="noopener noreferrer">film su Wikimedia Commons</a> (nel menu delle risoluzioni seleziona un file transcodificato, preferibilmente MP4 360p). La versione integrale Commons dura 12′46″. Non carichiamo nulla sul server.</p>
@@ -191,6 +192,24 @@ else{startTrack(fade.from,undefined,true);startTrack(fade.to,undefined,true);}
 var p=video.play();if(p&&p.catch)p.catch(function(){notify("Impossibile avviare il video. Verifica il formato del file.");});}
 function reset(){video.pause();pauseAudios();fade=null;try{video.currentTime=0;}catch(e){}active=0;resetLevels(0);refresh();notify("Pronto da capo. Premi «Avvia video e mixer».");}
 function assignFile(i,file){if(!file)return;var ch=channels[i];ch.audio.pause();if(ch.url)URL.revokeObjectURL(ch.url);ch.file=file;ch.url=URL.createObjectURL(file);ch.audio.src=ch.url;ch.audio.loop=ch.el.querySelector(".loop").checked;ch.audio.load();ch.fileLabel.textContent=file.name;ch.el.title=file.name;if(i===active&&!video.paused){level(i,1);var at=i===0?0:cues[i-1];startTrack(i,Math.max(0,video.currentTime-at),true);}notify("Canale "+(i+1)+" caricato: "+file.name+".");}
+$("commons-load").addEventListener("click",async function(){
+var btn=this;btn.disabled=true;notify("Cerco una versione leggera del film su Wikimedia Commons…");
+try{
+var api="https://commons.wikimedia.org/w/api.php?action=query&prop=videoinfo&viprop=derivatives&titles="+encodeURIComponent("File:Le Voyage dans la Lune (1902).webm")+"&format=json&origin=*";
+var response=await fetch(api,{mode:"cors"});
+if(!response.ok)throw new Error("API Wikimedia non disponibile");
+var json=await response.json();var pages=Object.values(json.query&&json.query.pages||{});var info=pages[0]&&pages[0].videoinfo&&pages[0].videoinfo[0];var ds=info&&info.derivatives||[];
+var preference=["480p.vp9.webm","360p.vp9.webm","360p.mpeg4.mov","240p.vp9.webm"];
+var candidate=null;
+for(var p=0;p<preference.length&&!candidate;p++){candidate=ds.find(function(d){var u=d.src||d.url||"";return u.includes(preference[p])&&(/^https:\/\//).test(u);});}
+if(!candidate)throw new Error("Nessuna versione leggera disponibile");
+var source=candidate.src||candidate.url;
+video.pause();pauseAudios();if(videoURL){URL.revokeObjectURL(videoURL);videoURL=null;}
+video.src=source;video.muted=true;video.load();fade=null;active=0;resetLevels(0);
+notify("Film Commons collegato in streaming. Premi «Avvia video e mixer». Se non si riproduce, scarica il file in MP4 360p.");
+}catch(err){notify("Non riesco a collegare automaticamente Wikimedia Commons. Usa il collegamento Commons e carica il film dal dispositivo. Dettaglio: "+String(err.message||err));}
+finally{btn.disabled=false;}
+});
 $("video-file").addEventListener("change",function(e){var f=e.target.files&&e.target.files[0];if(!f)return;video.pause();pauseAudios();if(videoURL)URL.revokeObjectURL(videoURL);videoURL=URL.createObjectURL(f);video.src=videoURL;video.muted=true;video.load();fade=null;active=0;resetLevels(0);notify("Film caricato: "+f.name+". Il player resta senza l'eventuale audio registrato.");});
 $("start").addEventListener("click",function(){if(video.paused)play();else video.pause();});
 $("stop").addEventListener("click",reset);
