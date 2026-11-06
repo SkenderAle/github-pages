@@ -750,7 +750,15 @@ function contextRawPoint(n){
  const stage=graphStage(),center=schematic?{x:stage.cx,y:stage.cy}:rawGeoPoint(selected);
  if(!center)return null;
  const h=stableHash(n.id),angle=((h%100000)/100000)*Math.PI*2;
- const ring=schematic?Math.min(110,Math.max(55,Math.min(stage.right-stage.left,stage.bottom-stage.top)*.22))+(depth-1)*65+((h>>>8)%31):76+depth*54+((h>>>8)%27);
+ // Generi direttamente collegati a un compositore: mantieni una distanza
+ // leggibile anche in visualizzazione geografica, senza inventare coordinate.
+ const directGenre=!schematic&&depth===1&&n.type==="corrente"&&
+  (n.taxonomy?.visibility==="principale"||
+   ["genere-musical","genere-operetta"].includes(n.id));
+ const ring=schematic
+  ?Math.min(110,Math.max(55,Math.min(stage.right-stage.left,stage.bottom-stage.top)*.22))+(depth-1)*65+((h>>>8)%31)
+  :directGenre?Math.min(105,Math.max(66,Math.min(stage.right-stage.left,stage.bottom-stage.top)*.19))+(h%13)
+  :76+depth*54+((h>>>8)%27);
  return {x:center.x+Math.cos(angle)*ring,y:center.y+Math.sin(angle)*ring,depth:0,scale:1,r:15,geo:false,context:true};
 }
 function contextScreenPoint(n,withManual=true){
@@ -1527,7 +1535,10 @@ function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=fa
  // Su schermi stretti una scheda laterale aperta copre la rete schematica.
  // Il doppio clic su genere/scuola conserva il grafo; il lettore può aprire Esplora.
  const schematicCategory=!gp&&(n.type==="corrente"||n.type==="ambito");
- const keepGraphVisible=openPanel&&w<=700&&schematicCategory;
+ // Anche un compositore geolocalizzato ha collegamenti verso generi e forme
+ // senza coordinate. Su smartphone la scheda copriva la rete di Bernstein:
+ // scegliendo il genere Musical la scheda restava invece chiusa.
+ const keepGraphVisible=openPanel&&w<=700&&(schematicCategory||n.type==="compositore");
  populate(n);
  if(openPanel)setPanel(!keepGraphVisible);
  if(keepGraphVisible)status.textContent+=" · scheda disponibile in Esplora";
