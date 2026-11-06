@@ -26,7 +26,33 @@
 .film-pull{font-size:1.23rem;line-height:1.6;border-left:4px solid #b18e54;padding:.4rem 0 .4rem 1.25rem;margin:1.8rem 0;max-width:850px}
 .film-links{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.2rem 0}.film-links a{border:1px solid #b8a591;padding:.65rem .9rem;border-radius:6px;text-decoration:none;font:700 .85rem/1.4 var(--sans);background:#f2eadf}
 @media(max-width:780px){.film-grid,.film-steps{grid-template-columns:1fr}.film-table{font-size:.78rem}.film-table th,.film-table td{padding:.55rem .5rem}}
+
+/* Le funzioni si ascoltano: lettori collegati agli esempi, mai in autoplay. */
+.film-av-jump{display:block;margin-top:.5rem;font:750 .78rem/1.4 var(--sans);text-decoration:none;color:#564167}
+.film-av-jump:hover,.film-av-jump:focus-visible{text-decoration:underline}
+.film-av-intro{margin:2.8rem 0 1.1rem;padding-top:1.5rem;border-top:1px solid var(--line);scroll-margin-top:6.5rem}
+.film-av-intro h3{margin:.3rem 0 1rem!important}
+.film-av-intro p{max-width:850px}
+.film-av-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem;margin:1.2rem 0 2rem}
+.film-av-card{min-width:0;background:#f5f0e8;border:1px solid #d8cbbd;border-top:4px solid #8d728c;border-radius:7px;padding:1.1rem 1.15rem 1.35rem;scroll-margin-top:6.5rem;display:flex;flex-direction:column}
+.film-av-eyebrow{font:800 .72rem/1.5 var(--sans);text-transform:uppercase;letter-spacing:.075em;color:#67516d}
+.film-av-card h4{font:600 clamp(1.35rem,2.1vw,1.8rem)/1.3 var(--serif);margin:.3rem 0 .5rem;letter-spacing:-.01em}
+.film-av-context{font:.97rem/1.6 var(--serif);margin:.2rem 0 .9rem}
+.film-av-media{width:100%;position:relative;min-width:0;aspect-ratio:16/9;background:#18212d;border-radius:6px;overflow:hidden}
+.film-av-media iframe{width:100%;height:100%;display:block;border:0;aspect-ratio:16/9}
+.film-av-media .mm-site-preview--standalone{border-radius:6px;aspect-ratio:16/9;width:100%;height:100%}
+.film-av-media .mm-site-preview-stop{z-index:5}
+.film-av-prompt{font:.91rem/1.62 var(--sans);margin:.95rem 0 .7rem;color:#3b3440}
+.film-av-prompt strong{color:#514160}
+.film-av-source{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.35rem .6rem;font:.75rem/1.5 var(--sans);margin:.45rem 0 .15rem}
+.film-av-source a{font-weight:750;text-decoration:underline}
+.film-av-source span{color:#6c6268}
+.film-av-extra{border-top:1px solid #d5c9bc;margin:1.1rem 0 0;padding:1.15rem 0 0}
+.film-av-secondary-label{font:700 .9rem/1.45 var(--sans);margin:.75rem 0 .2rem}
+.film-av-secondary-label span{font-weight:400;font-size:.8rem}
+@media(max-width:790px){.film-av-grid{grid-template-columns:1fr;gap:1rem}.film-av-card{padding:.95rem}.film-av-intro{margin-top:2rem}}
 </style>
+<link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261106-film-funzioni01">
 </head>
 <body id="top">
 <a class="skip" href="#contenuto">Salta al contenuto</a>
@@ -108,21 +134,162 @@
 <p>La musica è capace di partecipare all'emozione di una scena, ma la sua funzione non si esaurisce nell'emotività. Organizza il tempo, collega luoghi e persone, stabilisce continuità fra sequenze separate, introduce un'ambiguità che né la parola né l'immagine potrebbero produrre da sole.</p>
 <table class="film-table">
 <thead><tr><th>Funzione</th><th>Che cosa fa la musica</th><th>Un caso da ascoltare</th></tr></thead><tbody>
-<tr><td><strong>Commento e interiorità</strong></td><td>Esprime nostalgia, memoria o sentimenti che l'azione non esplicita.</td><td><em>C'era una volta in America</em> (Leone–Morricone, 1984): il <em>Tema di Deborah</em> rende percepibili desiderio e perdita.</td></tr>
-<tr><td><strong>Rottura delle convenzioni</strong></td><td>Rende estraneo un mondo rompendo le attese timbriche e armoniche.</td><td><em>Il pianeta delle scimmie</em> (Schaffner–Goldsmith, 1968): dodecafonia, atonalità e sonorità inconsuete.</td></tr>
-<tr><td><strong>Ambientale e sociale</strong></td><td>Connota ambienti, gruppi, usi e differenze di classe.</td><td><em>Titanic</em> (Cameron–Horner, 1997): balli della terza classe e musiche degli strumentisti di bordo contribuiscono a distinguere gli ambienti.</td></tr>
-<tr><td><strong>Storico-politica</strong></td><td>Inserisce il suono di una scena nella vicenda collettiva.</td><td><em>Senso</em> (Visconti, 1954): il <em>Trovatore</em> alla Fenice incontra una manifestazione patriottica.</td></tr>
-<tr><td><strong>Identificativa</strong></td><td>Fissa una firma sonora per un personaggio o un intero genere.</td><td><em>Per un pugno di dollari</em> (Leone–Morricone, 1964): fischi, chitarra elettrica e percussioni ridefiniscono il western.</td></tr>
-<tr><td><strong>Sostegno al tono</strong></td><td>Conferisce un colore psicologico all'insieme senza mimare ogni gesto.</td><td><em>Taxi Driver</em> (Scorsese–Herrmann, 1976): il sassofono notturno oscilla fra seduzione e minaccia.</td></tr>
-<tr><td><strong>Collegamento</strong></td><td>Dà continuità a luoghi e tempi uniti dal montaggio.</td><td><em>Rocky</em> (Avildsen–Conti, 1976): <em>Gonna Fly Now</em> unifica le fasi dell'allenamento.</td></tr>
-<tr><td><strong>Segnaletica</strong></td><td>Un suono riconoscibile richiama un evento, un ricordo o un pericolo.</td><td><em>Casablanca</em> (Curtiz, 1942): <em>As Time Goes By</em> suonata da Sam riapre la memoria di Parigi.</td></tr>
-<tr><td><strong>Informativa</strong></td><td>Rivela un'identità o una capacità prima delle parole.</td><td><em>Il pianista</em> (Polanski, 2002): l'esecuzione di Chopin davanti all'ufficiale tedesco rende udibile chi sia davvero Szpilman.</td></tr>
-<tr><td><strong>Accompagnamento e coreografia</strong></td><td>Coordina ritmo, movimenti e gag.</td><td><em>Luci della città</em> (Chaplin, 1931): l'incontro di pugilato è organizzato come una danza.</td></tr>
-<tr><td><strong>Mickey mousing</strong></td><td>Punteggia con precisione musicale i singoli movimenti visivi.</td><td><em>Steamboat Willie</em> (Disney–Ub Iwerks, 1928): una tappa storica della sincronizzazione fra animazione e suono.</td></tr>
-<tr><td><strong>Anticipatrice</strong></td><td>Annuncia una presenza prima che venga mostrata.</td><td><em>Jaws</em> (Spielberg–Williams, 1975) con le due note dello squalo; <em>M</em> (Lang, 1931) con il fischio fuori campo.</td></tr>
-<tr><td><strong>Mnemonica e strutturale</strong></td><td>Rende riconoscibili relazioni e trasformazioni narrative.</td><td><em>Star Wars</em> (Williams) e <em>Il Signore degli Anelli</em> (Howard Shore): famiglie di motivi che ritornano trasformate.</td></tr>
-<tr><td><strong>Ironica e critica</strong></td><td>Mette in dubbio o contraddice il significato apparente dell'immagine.</td><td><em>Il padrino</em> (Coppola, 1972): il rito del battesimo e l'organo bachiano sugli omicidi.</td></tr>
+<tr><td><strong>Commento e interiorità</strong><a class="film-av-jump" href="#film-av-01">▶ Guarda e ascolta</a></td><td>Esprime nostalgia, memoria o sentimenti che l'azione non esplicita.</td><td><em>C'era una volta in America</em> (Leone–Morricone, 1984): il <em>Tema di Deborah</em> rende percepibili desiderio e perdita.</td></tr>
+<tr><td><strong>Rottura delle convenzioni</strong><a class="film-av-jump" href="#film-av-02">▶ Guarda e ascolta</a></td><td>Rende estraneo un mondo rompendo le attese timbriche e armoniche.</td><td><em>Il pianeta delle scimmie</em> (Schaffner–Goldsmith, 1968): dodecafonia, atonalità e sonorità inconsuete.</td></tr>
+<tr><td><strong>Ambientale e sociale</strong><a class="film-av-jump" href="#film-av-03">▶ Guarda e ascolta</a></td><td>Connota ambienti, gruppi, usi e differenze di classe.</td><td><em>Titanic</em> (Cameron–Horner, 1997): balli della terza classe e musiche degli strumentisti di bordo contribuiscono a distinguere gli ambienti.</td></tr>
+<tr><td><strong>Storico-politica</strong><a class="film-av-jump" href="#film-av-04">▶ Guarda e ascolta</a></td><td>Inserisce il suono di una scena nella vicenda collettiva.</td><td><em>Senso</em> (Visconti, 1954): il <em>Trovatore</em> alla Fenice incontra una manifestazione patriottica.</td></tr>
+<tr><td><strong>Identificativa</strong><a class="film-av-jump" href="#film-av-05">▶ Guarda e ascolta</a></td><td>Fissa una firma sonora per un personaggio o un intero genere.</td><td><em>Per un pugno di dollari</em> (Leone–Morricone, 1964): fischi, chitarra elettrica e percussioni ridefiniscono il western.</td></tr>
+<tr><td><strong>Sostegno al tono</strong><a class="film-av-jump" href="#film-av-06">▶ Guarda e ascolta</a></td><td>Conferisce un colore psicologico all'insieme senza mimare ogni gesto.</td><td><em>Taxi Driver</em> (Scorsese–Herrmann, 1976): il sassofono notturno oscilla fra seduzione e minaccia.</td></tr>
+<tr><td><strong>Collegamento</strong><a class="film-av-jump" href="#film-av-07">▶ Guarda e ascolta</a></td><td>Dà continuità a luoghi e tempi uniti dal montaggio.</td><td><em>Rocky</em> (Avildsen–Conti, 1976): <em>Gonna Fly Now</em> unifica le fasi dell'allenamento.</td></tr>
+<tr><td><strong>Segnaletica</strong><a class="film-av-jump" href="#film-av-08">▶ Guarda e ascolta</a></td><td>Un suono riconoscibile richiama un evento, un ricordo o un pericolo.</td><td><em>Casablanca</em> (Curtiz, 1942): <em>As Time Goes By</em> suonata da Sam riapre la memoria di Parigi.</td></tr>
+<tr><td><strong>Informativa</strong><a class="film-av-jump" href="#film-av-09">▶ Guarda e ascolta</a></td><td>Rivela un'identità o una capacità prima delle parole.</td><td><em>Il pianista</em> (Polanski, 2002): l'esecuzione di Chopin davanti all'ufficiale tedesco rende udibile chi sia davvero Szpilman.</td></tr>
+<tr><td><strong>Accompagnamento e coreografia</strong><a class="film-av-jump" href="#film-av-10">▶ Guarda e ascolta</a></td><td>Coordina ritmo, movimenti e gag.</td><td><em>Luci della città</em> (Chaplin, 1931): l'incontro di pugilato è organizzato come una danza.</td></tr>
+<tr><td><strong>Mickey mousing</strong><a class="film-av-jump" href="#film-av-11">▶ Guarda e ascolta</a></td><td>Punteggia con precisione musicale i singoli movimenti visivi.</td><td><em>Steamboat Willie</em> (Disney–Ub Iwerks, 1928): una tappa storica della sincronizzazione fra animazione e suono.</td></tr>
+<tr><td><strong>Anticipatrice</strong><a class="film-av-jump" href="#film-av-12">▶ Guarda e ascolta</a></td><td>Annuncia una presenza prima che venga mostrata.</td><td><em>Jaws</em> (Spielberg–Williams, 1975) con le due note dello squalo; <em>M</em> (Lang, 1931) con il fischio fuori campo.</td></tr>
+<tr><td><strong>Mnemonica e strutturale</strong><a class="film-av-jump" href="#film-av-13">▶ Guarda e ascolta</a></td><td>Rende riconoscibili relazioni e trasformazioni narrative.</td><td><em>Star Wars</em> (Williams) e <em>Il Signore degli Anelli</em> (Howard Shore): famiglie di motivi che ritornano trasformate.</td></tr>
+<tr><td><strong>Ironica e critica</strong><a class="film-av-jump" href="#film-av-14">▶ Guarda e ascolta</a></td><td>Mette in dubbio o contraddice il significato apparente dell'immagine.</td><td><em>Il padrino</em> (Coppola, 1972): il rito del battesimo e l'organo bachiano sugli omicidi.</td></tr>
 </tbody></table>
+<div class="film-av-intro" id="film-av-scene">
+<h3>Le funzioni si vedono e si ascoltano</h3>
+<p>Un estratto audiovisivo per ciascuna funzione, con una domanda d'ascolto precisa. Le anteprime non riproducono nulla automaticamente: scegli la sequenza, apri il lettore e premi Play. Se il titolare dei diritti impedisce la visione incorporata, usa il collegamento diretto a YouTube. Alcuni estratti contengono violenza, perciò la selezione va adattata all'età degli studenti.</p>
+</div>
+<div class="film-av-grid" aria-label="Videoteca delle funzioni musicali"><article class="film-av-card" id="film-av-01">
+<div class="film-av-eyebrow">01 · Commento e interiorità</div>
+<h4>C’era una volta in America</h4>
+<p class="film-av-context">Deborah e Noodles: un incontro filtrato dalla memoria.</p>
+<div class="film-av-media"><iframe title="C’era una volta in America · Commento e interiorità" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/QFDmMyavjNs"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=QFDmMyavjNs" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · estratto del film</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Ascolta il Tema di Deborah mentre Noodles la segue. La musica descrive un’azione concreta oppure rivela il ricordo e il desiderio che l’immagine non esplicita?</p></article>
+<article class="film-av-card" id="film-av-02">
+<div class="film-av-eyebrow">02 · Rottura delle convenzioni</div>
+<h4>Il pianeta delle scimmie</h4>
+<p class="film-av-context">La caccia degli esseri umani: Goldsmith costruisce uno straniamento sonoro.</p>
+<div class="film-av-media"><iframe title="Il pianeta delle scimmie · Rottura delle convenzioni" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/DruCG3LJiiU"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=DruCG3LJiiU" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Movieclips</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Durante la caccia agli esseri umani, riconosci percussioni, dissonanze e gesti orchestrali inconsueti. Come cambierebbe questo mondo con un convenzionale tema eroico?</p></article>
+<article class="film-av-card" id="film-av-03">
+<div class="film-av-eyebrow">03 · Ambientale e sociale</div>
+<h4>Titanic</h4>
+<p class="film-av-context">La festa nella terza classe: musica da ballo, spazio e appartenenza.</p>
+<div class="film-av-media"><iframe title="Titanic · Ambientale e sociale" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/erAQ9LkftwA"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=erAQ9LkftwA" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · 20th Century Studios UK</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Quali strumenti, ritmo e movimenti distinguono il ballo della terza classe? I personaggi ascoltano la stessa musica che ascoltiamo noi?</p><div class="film-av-extra"><div class="film-av-media"><iframe title="Gli strumentisti durante il naufragio" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/uffHb6JgoiQ"></iframe></div>
+<p class="film-av-secondary-label">Gli strumentisti durante il naufragio · <span>YouTube · estratto del film</span></p>
+<p class="film-av-prompt"><strong>Da osservare.</strong> Confronta la funzione della musica eseguita sulla nave con quella della festa. Qui è un segno di classe o un gesto di consolazione?</p>
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=uffHb6JgoiQ" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · estratto del film</span></p></div></article>
+<article class="film-av-card" id="film-av-04">
+<div class="film-av-eyebrow">04 · Storico-politica</div>
+<h4>Senso</h4>
+<p class="film-av-context">Il Trovatore alla Fenice e il lancio dei volantini patriottici.</p>
+<div class="film-av-media"><iframe title="Senso · Storico-politica" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/Ma7g7FjKwcE"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=Ma7g7FjKwcE" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · sequenza iniziale</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Nel momento in cui «Di quella pira» si intreccia alla protesta, cerca il passaggio dal palcoscenico alla platea: quando l’opera diventa storia politica?</p></article>
+<article class="film-av-card" id="film-av-05">
+<div class="film-av-eyebrow">05 · Identificativa</div>
+<h4>Per un pugno di dollari</h4>
+<p class="film-av-context">Titoli iniziali: l’identità sonora del western di Leone.</p>
+<div class="film-av-media"><iframe title="Per un pugno di dollari · Identificativa" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/r0fHdB6r1bE"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=r0fHdB6r1bE" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · sequenza dei titoli</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Individua fischio, chitarra, percussioni e voci. Quali dettagli sonori bastano a dichiarare un genere, prima ancora di conoscere la vicenda?</p></article>
+<article class="film-av-card" id="film-av-06">
+<div class="film-av-eyebrow">06 · Sostegno al tono</div>
+<h4>Taxi Driver</h4>
+<p class="film-av-context">Titoli di testa: New York fra attrazione, solitudine e minaccia.</p>
+<div class="film-av-media"><iframe title="Taxi Driver · Sostegno al tono" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/hOIuJYYIUPM"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=hOIuJYYIUPM" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Screen Themes</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Confronta i fiati inquietanti e il fraseggio del sassofono con gli scorci notturni. La musica accompagna la città reale o lo sguardo alterato di Travis?</p></article>
+<article class="film-av-card" id="film-av-07">
+<div class="film-av-eyebrow">07 · Collegamento</div>
+<h4>Rocky</h4>
+<p class="film-av-context">Montaggio dell’allenamento su Gonna Fly Now.</p>
+<div class="film-av-media"><iframe title="Rocky · Collegamento" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/_YYmfM2TfUA"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=_YYmfM2TfUA" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Movieclips</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Segna mentalmente ogni cambio di luogo e di azione. È la musica a trasformare giornate separate in una sola progressione narrativa?</p></article>
+<article class="film-av-card" id="film-av-08">
+<div class="film-av-eyebrow">08 · Segnaletica</div>
+<h4>Casablanca</h4>
+<p class="film-av-context">Sam canta: un brano diventa il segnale di una memoria.</p>
+<div class="film-av-media"><iframe title="Casablanca · Segnaletica" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/plSKtjfSjrA"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=plSKtjfSjrA" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · estratto del film</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Osserva il volto di Rick quando Sam suona e canta As Time Goes By. Che cosa ci viene comunicato attraverso il suo cambiamento prima che venga spiegato a parole?</p></article>
+<article class="film-av-card" id="film-av-09">
+<div class="film-av-eyebrow">09 · Informativa</div>
+<h4>Il pianista</h4>
+<p class="film-av-context">Szpilman suona Chopin davanti al capitano Hosenfeld.</p>
+<div class="film-av-media"><iframe title="Il pianista · Informativa" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/KS0SxW19XaM"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=KS0SxW19XaM" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Movie Clips Classics</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Osserva il passaggio dalla richiesta dell’ufficiale all’esecuzione della Ballata n. 1 di Chopin. Che cosa scopriamo su Szpilman ascoltandolo, prima che altri lo descrivano?</p></article>
+<article class="film-av-card" id="film-av-10">
+<div class="film-av-eyebrow">10 · Accompagnamento e coreografia</div>
+<h4>Luci della città</h4>
+<p class="film-av-context">L’incontro di pugilato come coreografia comica.</p>
+<div class="film-av-media"><iframe title="Luci della città · Accompagnamento e coreografia" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/o9NfXIXzgnA"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=o9NfXIXzgnA" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Charlie Chaplin (canale ufficiale)</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Isola tre momenti in cui gli spostamenti del pugile, dell’avversario e dell’arbitro coincidono con la pulsazione musicale. Dove finisce lo sport e comincia la danza?</p></article>
+<article class="film-av-card" id="film-av-11">
+<div class="film-av-eyebrow">11 · Mickey mousing</div>
+<h4>Steamboat Willie</h4>
+<p class="film-av-context">Il cortometraggio del 1928 nella pubblicazione dello studio originale.</p>
+<div class="film-av-media"><iframe title="Steamboat Willie · Mickey mousing" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/BBgghnQF6E4"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=BBgghnQF6E4" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Walt Disney Animation Studios</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Durante i gesti e gli scherzi di Topolino, prova a contare quanti eventi visivi corrispondono a un effetto sonoro o musicale. Sono tutti propriamente musicali?</p></article>
+<article class="film-av-card" id="film-av-12">
+<div class="film-av-eyebrow">12 · Anticipatrice</div>
+<h4>Lo squalo (Jaws)</h4>
+<p class="film-av-context">Il primo attacco: una minaccia che arriva con l’udito.</p>
+<div class="film-av-media"><iframe title="Lo squalo (Jaws) · Anticipatrice" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/dg-HlHMhthY"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=dg-HlHMhthY" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Universal Pictures At Home</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Quando cominciano le due note? Quale pericolo possiamo «sentire» prima di vederlo? Nota anche ciò che la regia decide di non mostrare.</p><div class="film-av-extra"><div class="film-av-media"><iframe title="M - Il mostro di Düsseldorf (1931): il fischio" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/juDxzeD_N4U?start=340"></iframe></div>
+<p class="film-av-secondary-label">M - Il mostro di Düsseldorf (1931): il fischio · <span>YouTube · Netzkino · film integrale dal minuto 5:40</span></p>
+<p class="film-av-prompt"><strong>Da osservare.</strong> All’inizio del film, ascolta il fischio sul tema di Grieg: chi identifica il personaggio dal suono e chi, invece, ancora non può riconoscerlo?</p>
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=juDxzeD_N4U&t=340s" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Netzkino · film integrale dal minuto 5:40</span></p></div></article>
+<article class="film-av-card" id="film-av-13">
+<div class="film-av-eyebrow">13 · Mnemonica e strutturale</div>
+<h4>Star Wars</h4>
+<p class="film-av-context">Il tramonto di Luke: un motivo che accompagna il destino.</p>
+<div class="film-av-media"><iframe title="Star Wars · Mnemonica e strutturale" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/41ak2jr55fE"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=41ak2jr55fE" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Star Wars UK (canale ufficiale)</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Nel tramonto dei due soli, come può il tema suggerire un desiderio e dare al futuro del personaggio una dimensione più ampia dell’immagine?</p><div class="film-av-extra"><div class="film-av-media"><iframe title="Il Signore degli Anelli: Concerning Hobbits" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/-PcUnqlPA8A"></iframe></div>
+<p class="film-av-secondary-label">Il Signore degli Anelli: Concerning Hobbits · <span>YouTube · scena del film, edizione estesa</span></p>
+<p class="film-av-prompt"><strong>Da osservare.</strong> Ascolta il tema della Contea mentre Bilbo ne parla: quali tratti della comunità vengono affidati alla musica? Cerca poi i ritorni del tema in altre scene.</p>
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=-PcUnqlPA8A" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · scena del film, edizione estesa</span></p></div></article>
+<article class="film-av-card" id="film-av-14">
+<div class="film-av-eyebrow">14 · Ironica e critica</div>
+<h4>Il padrino</h4>
+<p class="film-av-context">Il battesimo e gli omicidi: la musica attraversa un montaggio morale.</p>
+<div class="film-av-media"><iframe title="Il padrino · Ironica e critica" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen data-mm-preview-src="https://www.youtube-nocookie.com/embed/1CDlBLvc3YE"></iframe></div>
+
+
+<p class="film-av-source"><a href="https://www.youtube.com/watch?v=1CDlBLvc3YE" target="_blank" rel="noopener noreferrer">Guarda su YouTube ↗</a> <span>YouTube · Movieclips</span></p>
+<p class="film-av-prompt"><strong>Che cosa osservare?</strong> Quale rapporto nasce fra la professione di fede, l’organo di Bach e il montaggio degli assassinii? L’accostamento commenta il personaggio o denuncia una contraddizione?</p></article>
+</div>
+
 <h3 id="senso-trovatore">Il teatro dentro il film: <em>Senso</em> e il <em>Trovatore</em></h3>
 <p>La sequenza iniziale di <em>Senso</em> è particolarmente significativa per Musurgia Mundi. Visconti ambienta l'azione nella Venezia del 1866, durante una recita del <em>Trovatore</em> di Verdi al Teatro La Fenice. La musica operistica continua mentre alcuni patrioti lanciano dall'alto volantini tricolori sugli ufficiali austriaci. Il teatro diventa lo spazio di una manifestazione politica, e l'opera è simultaneamente un evento all'interno della storia, un richiamo al Risorgimento e un elemento dell'organizzazione audiovisiva del film. La musica di Bruckner impiegata altrove nel film aggiunge un ulteriore piano extradiegetico, distinto dal <em>Trovatore</em> che i personaggi possono ascoltare in teatro. Esiste una licenza storica da non nascondere: nella realtà la Fenice rimase chiusa dal 1859 fino dopo l'annessione di Venezia nel 1866.</p>
 <div class="film-links"><a href="../risorgimento/">Risorgimento · La musica e la politica ↗</a><a href="../opera-lirica/">Opera lirica · Verdi ↗</a></div>
@@ -256,5 +423,6 @@
 <script src="../assets/atlante-menu-gerarchico-pagine.js?v=20261104-nav02" defer></script>
 <script src="../shared/mm-menu-compatto-v1.js?v=20261104-nav02" defer></script>
 <script src="../shared/mm-menu-posizione-v1.js?v=20261104-nav02" defer></script>
+<script src="../shared/atlas-video-preview-v1.js?v=20261106-film-funzioni01" defer></script>
 </body>
 </html>
