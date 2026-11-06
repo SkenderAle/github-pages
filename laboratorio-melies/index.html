@@ -232,7 +232,7 @@ function changeCue(i,t){var end=Number.isFinite(video.duration)?video.duration:7
 if(!(t>=(i?cues[i-1]+1:1)&&t<=(i<3?cues[i+1]-1:end-1))){notify("Tempo non valido: i quattro cambi devono restare in ordine e all'interno del film.");return false;}
 cues[i]=t;cueRows[i].querySelector(".cue-time").value=mmss(t);safeStore();refresh();notify("Passaggio "+(i+1)+"→"+(i+2)+" fissato a "+mmss(t)+".");return true;}
 window.addEventListener("beforeunload",function(){channels.forEach(function(ch){if(ch.url)URL.revokeObjectURL(ch.url);});if(videoURL)URL.revokeObjectURL(videoURL);});
-loadCues();resetLevels(0);refresh();
+loadCues();resetLevels(0);useCommons(0);
 })();
 </script>
 </body>
