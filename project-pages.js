@@ -8,6 +8,7 @@ window.MUSIC_PROJECT_PAGES=[
 {slug:"romanticismo",title:"Romanticismo",period:"Ottocento · radici nel Settecento",tags:["pathos","Lied","scuole nazionali"],tone:"plum"},
 {slug:"risorgimento",title:"Risorgimento",period:"1847 · 1861",tags:["Mameli","Novaro","Verdi"],tone:"red"},
 {slug:"opera-lirica",title:"Opera lirica",period:"1805 · 1926",tags:["Beethoven","Verdi","Puccini"],tone:"plum"},
+{slug:"dall-operetta-a-broadway",title:"Dall’operetta a Broadway",period:"1850 · 1943",tags:["Offenbach","Strauss","Broadway"],tone:"plum"},
 {slug:"balletto",title:"Il balletto",period:"Dalle corti italiane al Novecento",tags:["danza","Čajkovskij","Stravinskij"],tone:"plum"},
 {slug:"verso-le-avanguardie",title:"Verso le avanguardie",period:"Fine Ottocento · Novecento",tags:["blues","jazz"],tone:"blue"},
 {slug:"dal-musical-al-film",title:"Dal musical al film",period:"Dal teatro allo schermo",tags:["musical","cinema","colonna sonora"],tone:"plum"},
