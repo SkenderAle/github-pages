@@ -81,7 +81,7 @@ input[type=range]{accent-color:var(--gold)}
 .steps strong{color:var(--text)}
 footer{font-size:.84rem;color:var(--muted);margin-top:2rem}
 @media(max-width:780px){.video-grid{grid-template-columns:1fr}.fade-list{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}}
-@media(max-width:550px){main{padding:.75rem .55rem 2rem}.panel{padding:.65rem;border-radius:11px}.channel{padding:.4rem .17rem}.channel h3{font-size:.67rem;min-height:2.8em}.channel .work{font-size:.65rem;min-height:3em}.channel-head{font-size:.68rem}.file-label{font-size:.62rem}.channel input[type=file]{font-size:.58rem;padding:.16rem}.fader-box{width:42px;height:136px}.fader{height:129px}.fade-item .setrow{flex-wrap:wrap}.fade-item input[type=text]{max-width:70px}.video-grid{gap:.55rem}h2{font-size:1.2rem}}
+@media(max-width:550px){#mixer-row{display:flex;overflow-x:auto;gap:.55rem;scroll-snap-type:x proximity;padding-bottom:.7rem}#mixer-row .channel{flex:0 0 136px;scroll-snap-align:start;padding:.65rem .5rem}#mixer-row .channel h3{font-size:.85rem}#mixer-row .channel .work{font-size:.77rem;min-height:3.4em}#mixer-row .channel input[type=file]{font-size:.7rem}main{padding:.75rem .55rem 2rem}.panel{padding:.65rem;border-radius:11px}.channel{padding:.4rem .17rem}.channel h3{font-size:.67rem;min-height:2.8em}.channel .work{font-size:.65rem;min-height:3em}.channel-head{font-size:.68rem}.file-label{font-size:.62rem}.channel input[type=file]{font-size:.58rem;padding:.16rem}.fader-box{width:42px;height:136px}.fader{height:129px}.fade-item .setrow{flex-wrap:wrap}.fade-item input[type=text]{max-width:70px}.video-grid{gap:.55rem}h2{font-size:1.2rem}}
 @media(prefers-reduced-motion:reduce){.lamp.now{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -97,14 +97,14 @@ footer{font-size:.84rem;color:var(--muted);margin-top:2rem}
 <h2 id="video-h">1 · Il film e il tempo</h2>
 <div class="video-grid">
 <div>
-<video id="film" controls playsinline preload="metadata" muted aria-label="Lettore del film, senza audio originale"></video>
+<video id="film" controls playsinline preload="metadata" muted poster="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Le_Voyage_dans_la_Lune_%281902%29.webm/960px--Le_Voyage_dans_la_Lune_%281902%29.webm.jpg" aria-label="Lettore del film, senza audio originale"></video>
 <input id="scrub" type="range" min="0" max="766" value="0" step=".1" aria-label="Spostamento nel film">
 <div class="time-line"><span id="clock">00:00</span><span id="duration">12:46 · durata di riferimento</span></div>
 <div class="controls"><button id="start" class="primary" type="button">▶ Avvia video e mixer</button><button id="stop" type="button">↺ Ricomincia</button></div>
 </div>
 <div>
 <p class="helper">Per sincronizzare con precisione serve un file video controllabile dal lettore HTML5, non un video YouTube incorporato.</p>
-<div class="controls"><button id="commons-load" class="primary" type="button">▶ Usa la copia Commons online</button></div><p class="helper">Se la connessione è lenta, usa invece un file locale:</p>
+<div class="controls"><button id="commons-load" class="primary" type="button">▶ Carica film online · 360p</button><button id="commons-alt" type="button">Versione leggera · 240p</button></div><p class="helper">Se la connessione è lenta, usa invece un file locale:</p>
 <label class="field">Carica la tua copia del film (MP4 / WebM)
 <input type="file" id="video-file" accept="video/*,.mp4,.webm,.ogv"></label>
 <p class="helper">Puoi ottenere una copia leggera dal <a href="https://commons.wikimedia.org/wiki/File:Le_Voyage_dans_la_Lune_(1902).webm" target="_blank" rel="noopener noreferrer">film su Wikimedia Commons</a> (nel menu delle risoluzioni seleziona un file transcodificato, preferibilmente MP4 360p). La versione integrale Commons dura 12′46″. Non carichiamo nulla sul server.</p>
@@ -118,6 +118,7 @@ footer{font-size:.84rem;color:var(--muted);margin-top:2rem}
 <p class="helper">Carica un file audio per ogni parte. Gli slider sono anche regolabili a mano: durante il crossfade automatico vedrai gli slider di uscita e d'ingresso spostarsi in direzioni opposte. Il quinto canale può riutilizzare il file del primo.</p>
 <div class="cue-banner" aria-live="polite"><span id="mainLamp" class="lamp" aria-hidden="true"></span><div><div id="cueTitle">In attesa del film</div><div class="helper" id="cueDetail">Le spie diventano gialle 12 secondi prima della scena, rosse al cambio e verdi dopo il crossfade.</div></div></div>
 <div class="options"><label for="fade-length">Durata del crossfade</label><select id="fade-length"><option value="2">2 secondi</option><option value="4" selected>4 secondi</option><option value="6">6 secondi</option><option value="8">8 secondi</option></select><span class="helper">Livelli a curva di uguale potenza</span></div>
+<div class="helper" id="mixer-swipe">Su telefono scorri orizzontalmente per vedere tutti i cinque cursori.</div>
 <div id="mixer-row">
 <div class="channel" data-channel="0"><div class="channel-head">CH 1</div><h3>Congresso</h3><div class="work">Offenbach · <i>Galop infernal</i></div><div class="meter"><div class="meter-inner"></div></div><div class="fader-box"><input class="fader" type="range" orient="vertical" min="0" max="100" step="1" value="0" aria-label="Volume canale 1"></div><div class="level">0%</div><input class="track-file" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac" aria-label="Carica brano canale 1"><div class="file-label">Nessun file</div><label class="repeat"><input class="loop" type="checkbox"> Ripeti</label></div>
 <div class="channel" data-channel="1"><div class="channel-head">CH 2</div><h3>Lancio</h3><div class="work">Grieg · <i>Nell'antro del re della montagna</i></div><div class="meter"><div class="meter-inner"></div></div><div class="fader-box"><input class="fader" type="range" orient="vertical" min="0" max="100" step="1" value="0" aria-label="Volume canale 2"></div><div class="level">0%</div><input class="track-file" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac" aria-label="Carica brano canale 2"><div class="file-label">Nessun file</div><label class="repeat"><input class="loop" type="checkbox"> Ripeti</label></div>
@@ -192,25 +193,20 @@ else{startTrack(fade.from,undefined,true);startTrack(fade.to,undefined,true);}
 var p=video.play();if(p&&p.catch)p.catch(function(){notify("Impossibile avviare il video. Verifica il formato del file.");});}
 function reset(){video.pause();pauseAudios();fade=null;try{video.currentTime=0;}catch(e){}active=0;resetLevels(0);refresh();notify("Pronto da capo. Premi «Avvia video e mixer».");}
 function assignFile(i,file){if(!file)return;var ch=channels[i];ch.audio.pause();if(ch.url)URL.revokeObjectURL(ch.url);ch.file=file;ch.url=URL.createObjectURL(file);ch.audio.src=ch.url;ch.audio.loop=ch.el.querySelector(".loop").checked;ch.audio.load();ch.fileLabel.textContent=file.name;ch.el.title=file.name;if(i===active&&!video.paused){level(i,1);var at=i===0?0:cues[i-1];startTrack(i,Math.max(0,video.currentTime-at),true);}notify("Canale "+(i+1)+" caricato: "+file.name+".");}
-$("commons-load").addEventListener("click",async function(){
-var btn=this;btn.disabled=true;notify("Cerco una versione leggera del film su Wikimedia Commons…");
-try{
-var api="https://commons.wikimedia.org/w/api.php?action=query&prop=videoinfo&viprop=derivatives&titles="+encodeURIComponent("File:Le Voyage dans la Lune (1902).webm")+"&format=json&origin=*";
-var response=await fetch(api,{mode:"cors"});
-if(!response.ok)throw new Error("API Wikimedia non disponibile");
-var json=await response.json();var pages=Object.values(json.query&&json.query.pages||{});var info=pages[0]&&pages[0].videoinfo&&pages[0].videoinfo[0];var ds=info&&info.derivatives||[];
-var preference=["480p.vp9.webm","360p.vp9.webm","360p.mpeg4.mov","240p.vp9.webm"];
-var candidate=null;
-for(var p=0;p<preference.length&&!candidate;p++){candidate=ds.find(function(d){var u=d.src||d.url||"";return u.includes(preference[p])&&(/^https:\/\//).test(u);});}
-if(!candidate)throw new Error("Nessuna versione leggera disponibile");
-var source=candidate.src||candidate.url;
-video.pause();pauseAudios();if(videoURL){URL.revokeObjectURL(videoURL);videoURL=null;}
-video.src=source;video.muted=true;video.load();fade=null;active=0;resetLevels(0);
-notify("Film Commons collegato in streaming. Premi «Avvia video e mixer». Se non si riproduce, scarica il file in MP4 360p.");
-}catch(err){notify("Non riesco a collegare automaticamente Wikimedia Commons. Usa il collegamento Commons e carica il film dal dispositivo. Dettaglio: "+String(err.message||err));}
-finally{btn.disabled=false;}
-});
-$("video-file").addEventListener("change",function(e){var f=e.target.files&&e.target.files[0];if(!f)return;video.pause();pauseAudios();if(videoURL)URL.revokeObjectURL(videoURL);videoURL=URL.createObjectURL(f);video.src=videoURL;video.muted=true;video.load();fade=null;active=0;resetLevels(0);notify("Film caricato: "+f.name+". Il player resta senza l'eventuale audio registrato.");});
+// Percorsi di transcodifica verificabili nella scheda del file Commons:
+var commonsBase="https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6d/Le_Voyage_dans_la_Lune_%281902%29.webm/Le_Voyage_dans_la_Lune_%281902%29.webm.";
+var commonsSources=[commonsBase+"360p.vp9.webm",commonsBase+"240p.vp9.webm"];
+var commonsAttempt=-1;
+function useCommons(quality){
+  commonsAttempt=quality;
+  video.pause();pauseAudios();fade=null;active=0;resetLevels(0);
+  if(videoURL){URL.revokeObjectURL(videoURL);videoURL=null;}
+  video.src=commonsSources[quality];video.muted=true;video.load();refresh();
+  notify("Collegamento a Wikimedia Commons "+(quality===0?"360p":"240p")+" in corso. Attendi la comparsa della durata del film, poi premi «Avvia video e mixer».");
+}
+$("commons-load").addEventListener("click",function(){useCommons(0);});
+$("commons-alt").addEventListener("click",function(){useCommons(1);});
+$("video-file").addEventListener("change",function(e){var f=e.target.files&&e.target.files[0];if(!f)return;commonsAttempt=-1;video.pause();pauseAudios();if(videoURL)URL.revokeObjectURL(videoURL);videoURL=URL.createObjectURL(f);video.src=videoURL;video.muted=true;video.load();fade=null;active=0;resetLevels(0);notify("Film caricato: "+f.name+". Il player resta senza l'eventuale audio registrato.");});
 $("start").addEventListener("click",function(){if(video.paused)play();else video.pause();});
 $("stop").addEventListener("click",reset);
 video.addEventListener("play",function(){if(!ctx)ensureAudio();if(!fade)startTrack(active,undefined,true);else{startTrack(fade.from,undefined,true);startTrack(fade.to,undefined,true);}tick();$("start").textContent="❚❚ Pausa video e mixer";});
@@ -220,8 +216,8 @@ video.addEventListener("seeking",function(){pauseAudios();cancelAnimationFrame(f
 video.addEventListener("seeked",reposition);
 video.addEventListener("timeupdate",function(){if(!video.paused)applyFade();refresh();});
 video.addEventListener("ratechange",function(){channels.forEach(function(ch){ch.audio.playbackRate=video.playbackRate;});});
-video.addEventListener("loadedmetadata",function(){refresh();if(Math.abs(video.duration-766)>12)notify("Attenzione: questa copia dura "+mmss(video.duration)+" anziché 12:46. Ricalibra i quattro punti di ingresso.");});
-video.addEventListener("error",function(){notify("Il browser non riesce a leggere questo file video. Prova una copia MP4 H.264 / 360p.");});
+video.addEventListener("loadedmetadata",function(){refresh();if(Math.abs(video.duration-766)>12)notify("Attenzione: questa copia dura "+mmss(video.duration)+" anziché 12:46. Ricalibra i quattro punti di ingresso.");else if(commonsAttempt>=0)notify("Film Commons "+(commonsAttempt===0?"360p":"240p")+" pronto ("+mmss(video.duration)+"). Carica i brani e premi «Avvia video e mixer».");});
+video.addEventListener("error",function(){var c=video.error&&video.error.code||0;if(commonsAttempt===0){notify("La versione 360p non è stata caricata. Provo automaticamente 240p…");useCommons(1);return;}notify("Video non riproducibile (codice "+c+"). Se il film online non è disponibile, apri il collegamento Wikimedia Commons, scarica la versione compatibile e caricala con «Carica la tua copia».");});
 scrub.addEventListener("input",function(){if(video.src){var time=Number(scrub.value);if(Number.isFinite(time))video.currentTime=time;}});
 channels.forEach(function(ch,i){
 ch.el.querySelector(".track-file").addEventListener("change",function(e){assignFile(i,e.target.files&&e.target.files[0]);});
