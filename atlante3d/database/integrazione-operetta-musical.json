@@ -1,7 +1,7 @@
 {
   "schema": "genre-extension-v1",
   "updated": "2026-11-06",
-  "editorial_note": "I due generi e gli autori vengono riconciliati con il grafo storico tramite id e nome; collegamenti aggiunti solo con fonti esplicite. Nessuna localizzazione geografica desunta dal genere.",
+  "editorial_note": "Generi distinti dalle tradizioni storiche: Operetta e Musical rimangono nodi autonomi; le quattro tradizioni sono articolazioni dell'operetta con relazioni di repertorio, senza coordinate inventate.",
   "nodes": [
     {
       "id": "genere-operetta",
@@ -159,6 +159,74 @@
         "https://catalog.afi.com/Film/51364-THE-STUDENT-PRINCE"
       ],
       "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "tradizione-operetta-francese",
+      "label": "Operetta francese",
+      "type": "corrente",
+      "status": "catalogato",
+      "description": "Tradizione parigina di opérette e opéra-bouffe: satira sociale, parodia, dialogo e ritmi di danza. Non equivale all'intera opéra-comique.",
+      "taxonomy": {
+        "class": "tradizione-storica",
+        "parent": "genere-operetta",
+        "presentation": "nodo",
+        "semantic_note": "Articolazione storica e geografico-culturale del genere operetta, non scuola chiusa né sinonimo dell'intero teatro musicale nazionale."
+      },
+      "url": "../dall-operetta-a-broadway/#parigi",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/offenbach-e-l-opera-comique_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ]
+    },
+    {
+      "id": "tradizione-operetta-viennese",
+      "label": "Operetta viennese",
+      "type": "corrente",
+      "status": "catalogato",
+      "description": "Tradizione viennese fra commedia, valzer, polka e sentimentalismo, dalle opere di Suppé e Strauss alla stagione di Lehár e Kálmán.",
+      "taxonomy": {
+        "class": "tradizione-storica",
+        "parent": "genere-operetta",
+        "presentation": "nodo",
+        "semantic_note": "Articolazione storica e geografico-culturale del genere operetta, non scuola chiusa né sinonimo dell'intero teatro musicale nazionale."
+      },
+      "url": "../dall-operetta-a-broadway/#vienna",
+      "sources": [
+        "https://austria-forum.org/af/AEIOU/Operette/Operette_english"
+      ]
+    },
+    {
+      "id": "tradizione-operetta-britannica",
+      "label": "Comic opera britannica e Savoy operas",
+      "type": "corrente",
+      "status": "catalogato",
+      "description": "Tradizione britannica di comic opera legata a Gilbert, Sullivan e D’Oyly Carte; fonde satira verbale, ensemble e convenzioni teatrali proprie.",
+      "taxonomy": {
+        "class": "tradizione-storica",
+        "parent": "genere-operetta",
+        "presentation": "nodo",
+        "semantic_note": "Articolazione storica e geografico-culturale del genere operetta, non scuola chiusa né sinonimo dell'intero teatro musicale nazionale."
+      },
+      "url": "../dall-operetta-a-broadway/#londra",
+      "sources": [
+        "https://www.doylycarte.org.uk/resources/about"
+      ]
+    },
+    {
+      "id": "tradizione-operetta-americana",
+      "label": "Operetta americana",
+      "type": "corrente",
+      "status": "catalogato",
+      "description": "Tradizione produttiva americana fra fine Ottocento e primo Novecento: operette di Herbert, Friml e Romberg convivono con rivista e commedia musicale.",
+      "taxonomy": {
+        "class": "tradizione-storica",
+        "parent": "genere-operetta",
+        "presentation": "nodo",
+        "semantic_note": "Articolazione storica e geografico-culturale del genere operetta, non scuola chiusa né sinonimo dell'intero teatro musicale nazionale."
+      },
+      "url": "../dall-operetta-a-broadway/#atlantico",
+      "sources": [
+        "https://guides.loc.gov/victor-herbert"
+      ]
     }
   ],
   "relations": [
@@ -377,6 +445,174 @@
         "https://catalog.afi.com/Film/51364-THE-STUDENT-PRINCE"
       ],
       "note": "Autore di The Student Prince."
+    },
+    {
+      "source": "genere-operetta",
+      "target": "tradizione-operetta-francese",
+      "kind": "articolazione-storica",
+      "weight": 3,
+      "forward": "si articola anche nella tradizione denominata",
+      "reverse": "è una delle tradizioni storiche dell'",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/offenbach-e-l-opera-comique_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "note": "Relazione di articolazione del genere, non successione cronologica esclusiva."
+    },
+    {
+      "source": "tradizione-operetta-francese",
+      "target": "compositore-herve",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/offenbach-e-l-opera-comique_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "tradizione-operetta-francese",
+      "target": "compositore-jacques-offenbach",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/offenbach-e-l-opera-comique_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "genere-operetta",
+      "target": "tradizione-operetta-viennese",
+      "kind": "articolazione-storica",
+      "weight": 3,
+      "forward": "si articola anche nella tradizione denominata",
+      "reverse": "è una delle tradizioni storiche dell'",
+      "sources": [
+        "https://austria-forum.org/af/AEIOU/Operette/Operette_english"
+      ],
+      "note": "Relazione di articolazione del genere, non successione cronologica esclusiva."
+    },
+    {
+      "source": "tradizione-operetta-viennese",
+      "target": "compositore-franz-von-suppe",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://austria-forum.org/af/AEIOU/Operette/Operette_english"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "tradizione-operetta-viennese",
+      "target": "compositore-johann-strauss-ii",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://austria-forum.org/af/AEIOU/Operette/Operette_english"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "tradizione-operetta-viennese",
+      "target": "compositore-franz-lehar",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://austria-forum.org/af/AEIOU/Operette/Operette_english"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "tradizione-operetta-viennese",
+      "target": "compositore-emmerich-kalman",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://austria-forum.org/af/AEIOU/Operette/Operette_english"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "genere-operetta",
+      "target": "tradizione-operetta-britannica",
+      "kind": "articolazione-storica",
+      "weight": 3,
+      "forward": "si articola anche nella tradizione denominata",
+      "reverse": "è una delle tradizioni storiche dell'",
+      "sources": [
+        "https://www.doylycarte.org.uk/resources/about"
+      ],
+      "note": "Relazione di articolazione del genere, non successione cronologica esclusiva."
+    },
+    {
+      "source": "tradizione-operetta-britannica",
+      "target": "compositore-arthur-sullivan",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://www.doylycarte.org.uk/resources/about"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "genere-operetta",
+      "target": "tradizione-operetta-americana",
+      "kind": "articolazione-storica",
+      "weight": 3,
+      "forward": "si articola anche nella tradizione denominata",
+      "reverse": "è una delle tradizioni storiche dell'",
+      "sources": [
+        "https://guides.loc.gov/victor-herbert"
+      ],
+      "note": "Relazione di articolazione del genere, non successione cronologica esclusiva."
+    },
+    {
+      "source": "tradizione-operetta-americana",
+      "target": "compositore-victor-herbert",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://guides.loc.gov/victor-herbert"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "tradizione-operetta-americana",
+      "target": "compositore-rudolf-friml",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://guides.loc.gov/victor-herbert"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
+    },
+    {
+      "source": "tradizione-operetta-americana",
+      "target": "compositore-sigmund-romberg",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "comprende contributi teatrali di",
+      "reverse": "contribuì al repertorio della tradizione",
+      "sources": [
+        "https://guides.loc.gov/victor-herbert"
+      ],
+      "note": "Collegamento di repertorio, non appartenenza biografica o geografica dedotta."
     }
   ]
 }
