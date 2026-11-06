@@ -1858,8 +1858,19 @@ function populate(n){
   ref.match==="narrative-author-anchor");
  // Un'opera non equivale a un capitolo storico: le due destinazioni restano separate.
  // Il campo node.url non prova una menzione dell'autore e NON viene usato come scorciatoia.
- if(["periodo","corrente","ambito"].includes(n.type)&&n.url&&!editorials.some(ref=>ref.url===n.url))
-  editorials.unshift({page:"Contesto storico",url:n.url,title:"Percorso generale · "+n.label});
+ // Per i nodi di genere con un percorso dedicato, la destinazione canonica
+ // prevale sui link storici del database: un'etichetta corretta non deve
+ // aprire un altro capitolo (ad es. Balletto -> Barocco).
+ const canonicalGeneralRoutes=Object.freeze({
+  "balletto":"../balletto/"
+ });
+ const routeKey=String(n.label||"").normalize("NFKD")
+  .replace(/[\u0300-\u036f]/g,"").trim().toLowerCase();
+ const canonicalRoute=["periodo","corrente","ambito"].includes(n.type)
+  ?canonicalGeneralRoutes[routeKey]:null;
+ const generalRoute=canonicalRoute||n.url;
+ if(["periodo","corrente","ambito"].includes(n.type)&&generalRoute&&!editorials.some(ref=>ref.url===generalRoute))
+  editorials.unshift({page:"Contesto storico",url:generalRoute,title:"Percorso generale · "+n.label});
  const isSingleWork=ref=>ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||
   /#mm-opera-(camera|canto)-/.test(ref.url||"");
  const workRefs=editorials.filter(isSingleWork);
