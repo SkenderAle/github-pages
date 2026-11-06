@@ -1,0 +1,145 @@
+{
+  "schema": "genre-extension-v1",
+  "updated": "2026-11-06",
+  "editorial_note": "Nodi generali integrativi. Le relazioni nominative sono risolte solo quando il compositore esiste nel grafo, evitando duplicazioni e inferenze geografiche.",
+  "nodes": [
+    {
+      "id": "genere-operetta",
+      "label": "Operetta",
+      "type": "corrente",
+      "description": "Genere teatrale fra canto, dialogo, danza e satira, sviluppato nelle tradizioni francese, viennese e britannica.",
+      "taxonomy": {
+        "class": "genere-trasversale",
+        "presentation": "nodo"
+      },
+      "aliases": [
+        "opéra-bouffe",
+        "teatro d'operetta"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    },
+    {
+      "id": "genere-musical",
+      "label": "Musical",
+      "type": "corrente",
+      "description": "Teatro musicale moderno nel quale canto, recitazione e danza possono concorrere alla drammaturgia; intreccia molteplici tradizioni europee e americane.",
+      "taxonomy": {
+        "class": "genere-trasversale",
+        "presentation": "nodo"
+      },
+      "aliases": [
+        "musical teatrale",
+        "Broadway musical"
+      ],
+      "url": "../dall-operetta-a-broadway/"
+    }
+  ],
+  "relations": [
+    {
+      "source": "genere-operetta",
+      "target": "genere-musical",
+      "kind": "genealogia-plurale",
+      "weight": 3,
+      "forward": "costituisce una delle matrici storiche del",
+      "reverse": "riceve una parte della propria eredità teatrale dall'",
+      "document": "../dall-operetta-a-broadway/"
+    },
+    {
+      "source": "genere-operetta",
+      "target_label": "Jacques Offenbach",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "è una forma teatrale coltivata da",
+      "reverse": "è fra i protagonisti del genere",
+      "document": "../opera-lirica/#offenbach-la-modernita-della-satira"
+    },
+    {
+      "source": "genere-operetta",
+      "target_label": "Johann Strauss II",
+      "target_aliases": [
+        "Johann Strauss figlio",
+        "Johann Strauss"
+      ],
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende il teatro musicale di",
+      "reverse": "compose celebri opere del genere",
+      "document": "../dall-operetta-a-broadway/#vienna"
+    },
+    {
+      "source": "genere-operetta",
+      "target_label": "Arthur Sullivan",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende opere musicate da",
+      "reverse": "con Gilbert coltivò la comic opera inglese, in rapporto con l'operetta",
+      "document": "../dall-operetta-a-broadway/#londra"
+    },
+    {
+      "source": "genere-operetta",
+      "target_label": "Franz Lehár",
+      "target_aliases": [
+        "Franz Lehar"
+      ],
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende le operette di",
+      "reverse": "coltivò l'operetta viennese",
+      "document": "../dall-operetta-a-broadway/#vienna"
+    },
+    {
+      "source": "genere-operetta",
+      "target_label": "Victor Herbert",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "prosegue anche nel teatro americano di",
+      "reverse": "lavorò nella tradizione dell'operetta americana",
+      "document": "../dall-operetta-a-broadway/#atlantico"
+    },
+    {
+      "source": "genere-musical",
+      "target_label": "Jerome Kern",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "si sviluppa anche attraverso il teatro di",
+      "reverse": "contribuì al musical americano",
+      "document": "../dall-operetta-a-broadway/#broadway"
+    },
+    {
+      "source": "genere-musical",
+      "target_label": "Richard Rodgers",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende la drammaturgia musicale di",
+      "reverse": "contribuì allo sviluppo del musical",
+      "document": "../dall-operetta-a-broadway/#broadway"
+    },
+    {
+      "source": "genere-musical",
+      "target_label": "Leonard Bernstein",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende il teatro musicale di",
+      "reverse": "ampliò il linguaggio del musical",
+      "document": "../dal-musical-al-film/#convergenza"
+    },
+    {
+      "source": "genere-musical",
+      "target_label": "Stephen Sondheim",
+      "kind": "pratica-di-genere",
+      "weight": 4,
+      "forward": "comprende il teatro musicale di",
+      "reverse": "rinnovò la drammaturgia del musical",
+      "document": "../dall-operetta-a-broadway/#broadway"
+    },
+    {
+      "source": "genere-musical",
+      "target_label": "George Gershwin",
+      "kind": "pratica-di-genere",
+      "weight": 3,
+      "forward": "è un ambito con cui dialoga il teatro musicale di",
+      "reverse": "attraversò il confine fra musical, jazz e opera",
+      "document": "../dall-operetta-a-broadway/#altre-radici"
+    }
+  ]
+}
