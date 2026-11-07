@@ -210,12 +210,15 @@ footer a{text-decoration:none}
 .form-piece{background:#eee3d1;border-top:4px solid #8f7654;padding:.85rem;text-align:center;font:800 .78rem/1.2 var(--sans)}
 .form-piece.refrain{background:#e1d2bc;border-top-color:var(--red);color:#5d2b25}
 .chase-track{position:relative;height:130px;background:#eadfce;overflow:hidden;margin-bottom:1rem;border:1px solid var(--line)}
-.chase-track span{position:absolute;left:-18%;width:130px;padding:.55rem .65rem;border-radius:999px;font:850 .72rem/1 var(--sans);color:#fff;text-align:center}
-.voice-a{top:28px;background:var(--blue)}
-.voice-b{top:76px;background:var(--red)}
-.chase-lab.play .voice-a{animation:chaseRun 4.4s linear forwards}
-.chase-lab.play .voice-b{animation:chaseRun 4.4s linear .8s forwards}
-@keyframes chaseRun{to{left:88%}}
+.chase-track span{position:absolute;box-sizing:border-box;left:-140px;width:130px;padding:.55rem .65rem;border-radius:999px;font:850 .72rem/1 var(--sans);color:#fff;text-align:center;white-space:nowrap;will-change:left}
+/* A riposo è visibile soltanto la prima voce: la seconda attende fuori dal riquadro. */
+.chase-track .voice-a{top:28px;left:0;background:var(--blue)}
+.chase-track .voice-b{top:76px;background:var(--red)}
+/* Scorrimento continuo, uscita totale a destra e rientro da fuori a sinistra.
+   Il secondo moto comincia 1,55 secondi dopo il primo, senza alcuna attesa finale. */
+.chase-lab.play .chase-track .voice-a{animation:chaseRun 5.4s linear -1s infinite}
+.chase-lab.play .chase-track .voice-b{animation:chaseRun 5.4s linear .55s infinite backwards}
+@keyframes chaseRun{from{left:-140px}to{left:100%}}
 .word-lab{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 .word-stage{flex:1 1 100%;min-height:92px;background:#eadfcf;border:1px solid var(--line);padding:1rem;margin-top:.5rem;font-size:1rem;line-height:1.5}
 .word-stage.ascend{background:linear-gradient(15deg,#eadfcf 0 44%,#cfb070 45% 50%,#eadfcf 51%)}
