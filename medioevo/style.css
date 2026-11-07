@@ -183,11 +183,22 @@ footer a{text-decoration:none}
 .cycle.talea{grid-template-columns:repeat(4,1fr)}
 .cycle.color{grid-template-columns:repeat(6,1fr)}
 .cycle span{height:34px;background:#e6d6bd;border:1px solid #c2ab86}
-.isorythm-lab.play .talea span{animation:taleaPulse 1.6s linear infinite}
-.isorythm-lab.play .color span{animation:colorPulse 2.4s linear infinite}
-@keyframes taleaPulse{0%,100%{transform:scaleY(.75)}50%{transform:scaleY(1);background:#c99d55}}
-@keyframes colorPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px);background:#8b4a3d}}
+/* La luce segue la stessa pulsazione del suono; nessuna animazione CSS indipendente. */
+.isorythm-lab .cycle-row{grid-template-columns:80px minmax(0,1fr);gap:.6rem;align-items:center}
+.isorythm-lab .cycle-heading{display:flex;flex-direction:column;align-items:flex-start;gap:.3rem}
+.isorythm-lab .cycle{min-width:0}
+.isorythm-lab .cycle span{min-width:0;transition:background-color .1s,border-color .1s,transform .1s}
+.isorythm-lab.play .cycle.talea span.current{background:#b47a49;border-color:#87592e;transform:scaleY(1.12);box-shadow:0 0 0 2px #b47a4933}
+.isorythm-lab.play .cycle.color span.current{background:#557b90;border-color:#2e576c;transform:scaleY(1.12);box-shadow:0 0 0 2px #557b9033}
+.isorythm-lab.talea-muted .cycle.talea,.isorythm-lab.color-muted .cycle.color{opacity:.40}
+.isorythm-lab .isorythm-help{font:.87rem/1.6 var(--sans);color:#645749;margin:.75rem 0 .7rem}
+.isorythm-lab .isorythm-caveat{font:.77rem/1.55 var(--sans);color:#766b5d;margin:1rem 0 0;border-top:1px solid var(--line);padding-top:.75rem}
+.isorythm-lab #isorythmText{font-size:1rem;line-height:1.55;margin:1rem 0 .5rem}
 .isorythm-lab button,.chase-lab button,.word-lab button{border:0;background:#28211c;color:#fff;padding:.62rem .85rem;border-radius:999px;font:850 .78rem/1 var(--sans);cursor:pointer}
+.isorythm-lab .cycle-mute{border:1px solid #ad977d;background:#eee2d0;color:#3a3028;padding:.34rem .46rem;border-radius:.4rem;font:750 .65rem/1 var(--sans);min-height:31px;max-width:77px;touch-action:manipulation}
+.isorythm-lab .cycle-mute[aria-pressed="true"]{background:#d5c9b7;color:#564d43;border-color:#a89885}
+.isorythm-lab button:focus-visible{outline:3px solid #ba914a;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.isorythm-lab .cycle span{transition:none}}
 .return-lab{display:grid;grid-template-columns:repeat(5,minmax(110px,1fr));gap:.5rem;overflow-x:auto;margin:1.5rem 0 2rem;padding-bottom:.2rem}
 .form-piece{background:#eee3d1;border-top:4px solid #8f7654;padding:.85rem;text-align:center;font:800 .78rem/1.2 var(--sans)}
 .form-piece.refrain{background:#e1d2bc;border-top-color:var(--red);color:#5d2b25}
