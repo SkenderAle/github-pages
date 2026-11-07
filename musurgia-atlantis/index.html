@@ -34,7 +34,7 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
 @media(max-width:680px){header{min-height:69px;padding:10px 12px}.brand{font-size:18px}.tagline{font-size:9px}.sigil{width:40px;height:40px;font-size:22px}.topstats{gap:4px}.topstats>.ghost{padding:8px;font-size:11px}#mobileFilters{display:inline-block}.side{display:none;left:9px;right:9px;top:auto;bottom:10px;width:auto;max-height:64dvh;max-height:64vh;border-radius:17px;padding:14px}.side.open{display:block}#detail{top:auto;bottom:10px;left:9px;right:9px;width:auto;max-height:62dvh}#footer{bottom:12px;padding:8px 11px;font-size:10px;max-width:calc(100vw - 20px);white-space:normal}#footer.hidden{display:none}#toast{bottom:75px}.heading{font-size:19px}}
 @media(prefers-reduced-motion:reduce){.loader{animation:none}}
 </style>
-<script id="atlantis3DEngine" async src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.1/dist/3d-force-graph.min.js"></script>
+<script id="atlantis3DEngine"></script>
 </head>
 <body>
 <div id="graph" aria-label="Grafo tridimensionale delle connessioni musicali"><img id="graphBackdrop" src="./fallback.svg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none" /></div>
@@ -86,6 +86,9 @@ const TIER_COLORS={trattazione:'#80d8bc',menzione:'#88aedd',navigazione:'#d4bc82
 const TIER_LABEL={trattazione:'Trattazione riscontrata nel progetto',menzione:'Menzione o confronto non causale',navigazione:'Rimando editoriale tra pagine',ipotesi:'Ipotesi editoriale non validata',sospeso:'Raccordo sospeso o contestato'};
 const ALL_TYPES=new Set(['capitolo','persona','opera','nodo-di-senso','luogo','strumento','altro']);
 const workTypes=new Set(['opera','versione-opera','allestimento','produzione','parte-di-opera']);
+// On Android, mobile WebViews and touch-screen browsers, a WebGL context can exist but render black.
+// Use the local rotating 3D Canvas renderer by default on these devices; native 3D remains available on desktop.
+const preferCanvas=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||navigator.maxTouchPoints>0||(window.matchMedia&&window.matchMedia('(pointer:coarse)').matches)||new URLSearchParams(location.search).get('renderer')==='canvas';
 let DATA,graph,view='chapters',selectedId=null,selectedEdge=null,steps=1,types=new Set(ALL_TYPES),tiers=new Set(['trattazione','menzione']),visible={nodes:[],links:[]},neighbors=new Map(),lookup=new Map();
 let toastTimeout;
 const textSafe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -190,7 +193,7 @@ async function init(){
  lookup=new Map(DATA.nodes.map(n=>[n.id,n]));
  for(const e of DATA.links){if(!lookup.has(e.source)||!lookup.has(e.target))throw Error('È presente un collegamento verso un nodo mancante: '+e.id);e.tier=tier(e)}
  const webglOK=(()=>{try{const c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}})();
- const Engine=typeof ForceGraph3D==='function'&&webglOK?ForceGraph3D:window.AtlantisCompatGraph;
+ const Engine=!preferCanvas&&typeof ForceGraph3D==='function'&&webglOK?ForceGraph3D:window.AtlantisCompatGraph;
  if(typeof Engine!=='function')throw Error('Impossibile inizializzare anche la grafica di compatibilità.');
  let mountPoint=null;
  try { if(Engine===window.ForceGraph3D){mountPoint=document.createElement('div');mountPoint.style.cssText='position:absolute;inset:0;z-index:3';$('graph').appendChild(mountPoint)}
@@ -216,7 +219,7 @@ async function init(){
 }
 window.addEventListener('DOMContentLoaded',()=>init().catch(err=>{console.error(err);error(err.message||'Impossibile inizializzare la mappa.') }));
 const external=$('atlantis3DEngine');
-if(external) external.addEventListener('load',()=>{if(typeof ForceGraph3D!=='function'||!graph?.isFallback||!DATA)return;
+if(external) external.addEventListener('load',()=>{if(preferCanvas||typeof ForceGraph3D!=='function'||!graph?.isFallback||!DATA)return;
 let mountPoint=null; try {const oldGraph=graph;mountPoint=document.createElement('div');mountPoint.style.cssText='position:absolute;inset:0;z-index:3';$('graph').appendChild(mountPoint);const newGraph=ForceGraph3D(mountPoint,{controlType:'orbit'}).backgroundColor('#07141f').showNavInfo(false).nodeRelSize(4.5).nodeResolution(7)
  .nodeVal(n=>n.category==='capitolo'?14:(grp(n)==='nodo-di-senso'?3.7:(grp(n)==='opera'?3:2.5))).nodeLabel(n=>textSafe(n.name)).nodeColor(nodeColor)
  .linkColor(linkColor).linkOpacity(.27).linkWidth(e=>e.tier==='trattazione'?1.2:.75).onNodeClick(n=>focusNode(n.id)).onLinkClick(e=>renderEdgeDetail(e))
@@ -224,6 +227,7 @@ let mountPoint=null; try {const oldGraph=graph;mountPoint=document.createElement
  .width(innerWidth).height(innerHeight).warmupTicks(25).cooldownTicks(250);if(newGraph.d3Force('charge'))newGraph.d3Force('charge').strength(-95);
  graph=newGraph;oldGraph.destroy();update();$('footer').textContent='Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo';setTimeout(()=>graph.zoomToFit(700,80),1200);
 } catch(e) {mountPoint?.remove();console.warn('Motore 3D non disponibile; vista compatibile conservata',e);if(graph?.isFallback){$('footer').textContent='Vista 3D semplificata · Trascina per ruotare · Tocca un nodo';}}}); 
+if(external&&!preferCanvas) external.src='https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.1/dist/3d-force-graph.min.js';
 })();
 </script>
 </body></html>
