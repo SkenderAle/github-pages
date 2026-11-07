@@ -300,3 +300,24 @@ Entrambi ricevono `quality_gate=sospeso`, `verification_status=duplicato_di_rela
 ### Commit
 - Dataset: `9f7b46f0a7e573163e067db0b3986c3bada00027`.
 - Registro: aggiornato nel commit di questa sezione.
+
+
+### Regressione livelli post-Lotto 5 (dataset remoto, filtri standard)
+
+Verifica effettuata dopo i commit sul dataset remoto con riproduzione dell'espansione in `musurgia-atlantis/index.html`. Attivi `trattazione` e `menzione`; gli stati `sospeso` e i candidati restano esclusi. **Si tratta di test della logica sui dati, non di collaudo visivo nel browser.**
+
+| Nodo | Livelli I–V prima del Lotto 5 | Livelli I–V dopo il Lotto 5 |
+| --- | --- | --- |
+| Gluck | 10 / 8 / 5 / 3 / 3 | 10 / 8 / 6 / 3 / 3 |
+| Beethoven | 11 / 6 / 5 / 0 / 0 | 11 / 7 / 6 / 0 / 0 |
+| Verdi | 13 / 5 / 1 / 2 / 1 | 13 / 6 / 1 / 2 / 1 |
+| Hammerstein II | 2 / 0 / 0 / 0 / 0 | 4 / 0 / 0 / 0 / 0 |
+| Calzabigi | 4 / 1 / 2 / 7 / 5 | 5 / 5 / 5 / 3 / 2 |
+| Wagner | 8 / 0 / 0 / 0 / 0 | 8 / 0 / 0 / 0 / 0 |
+| Rossini | 8 / 2 / 3 / 6 / 3 | 8 / 2 / 3 / 6 / 4 |
+
+La modifica non elimina i percorsi di quinto livello di Gluck, Calzabigi, Verdi e Rossini; Beethoven si ferma al terzo e Wagner al primo, a causa della rete attualmente documentata, non per un'eccezione costruita ad hoc.
+
+**Problema strutturale aperto:** gli archi `L03-A18`, `L03-A19`, `L03-A26`, `L03-A27` collegano correttamente testi e persone, ma i loro nodi letterari sono classificati come `documento-storico`. La funzione `atlasMayBridge()` dell'interfaccia, oggi, consente l'attraversamento indiretto soltanto da `persona`, `opera` e `nodo-di-senso`. Di conseguenza un documento storico è visibile come estremo ma non può ancora fare da ponte in profondità; inoltre la categorizzazione `grp()` può mostrarlo come `altro`. Questa limitazione **non è stata corretta nel presente lotto**, dedicato al dataset e al registro. Prima di estendere il rendering, definire un trattamento coerente per fonti letterarie e documenti storici, evitando che i documenti generici diventino scorciatoie fra compositori.
+
+**Controllo d'integrità remoto:** 608 nodi; 1.520 relazioni; ID univoci; nessun estremo mancante. `riscontro_storico_indipendente=83`, flag `historical_verified_independently=true` su 118 archi (non equivalenti per lo storico degli audit); 339 proposte editoriali e 359 candidati non fusi, 698 provvisorie. I due doppioni sospesi `L06-A028` e `L06-A032` sono classificati correttamente come `sospeso` dalla funzione `tier()` e non sono attivi nel rendering standard.
