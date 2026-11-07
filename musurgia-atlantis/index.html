@@ -414,7 +414,15 @@ update=function(){
 };
 function atlasDepth(v){
  if(!selectedId){showToast('Seleziona prima un nodo');return}
- view='near';steps=Math.max(1,Math.min(5,Math.round(Number(v)||1)));syncTabs();update();graph.zoomToFit(500,80);
+ view='near';steps=Math.max(1,Math.min(5,Math.round(Number(v)||1)));
+ syncTabs();update();
+ const reached=Math.max(0,...visible.nodes.map(n=>n._depth));
+ if(steps>reached&&steps>1){
+  steps=Math.max(1,reached);
+  update();
+  showToast('Nessun altro rapporto specifico documentato oltre questo livello');
+ }
+ graph.zoomToFit(500,80);
 }
 focusNode=function(id,showDetail=false){
  if(!lookup.has(id))return;
@@ -427,6 +435,7 @@ focusNode=function(id,showDetail=false){
 };
 nodeColor=function(n){
  const c=COLORS[grp(n)]||COLORS.altro;
+ if(n._bridge)return '#47616a';
  return !selectedId?c:n.id===selectedId?'#fdf1c6':n._depth===1?c:'#69848c';
 };
 linkColor=function(e){
