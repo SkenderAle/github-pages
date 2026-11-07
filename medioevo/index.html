@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
 <link rel="stylesheet" href="../shared/mm-documenti-griglia-v1.css?v=20261022-container01">
 <link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-iconografia03">
-<link rel="stylesheet" href="../shared/mm-menu-unificato-v1.css?v=20261104-menu-unico04"><link rel="stylesheet" href="../shared/mm-uda-v1.css?v=20261106-uda02"></head>
+<link rel="stylesheet" href="../shared/mm-menu-unificato-v1.css?v=20261104-menu-unico04"><link rel="stylesheet" href="../shared/mm-uda-v1.css?v=20261106-uda02"><link rel="stylesheet" href="../shared/mm-mappa-viva-v1.css?v=20261107-mappa01"></head>
 <body>
 <div class="progress" id="progress"></div>
 
@@ -54,6 +54,7 @@
         <a href="#continua">11 · La linea continua</a>
       </div>
       <div class="nav-row" aria-label="Materiali" data-mm-group-title="Materiali e fonti">
+        <a href="#mappa-studio">Mappa concettuale · studio</a>
         <a href="#bibliografia">Fonti</a>
       </div>
     </nav>
@@ -2460,6 +2461,26 @@
       <div class="question">Il Medioevo non si chiude. <em>Comincia a trasformarsi.</em></div>
     </section>
 
+    <section id="mappa-studio" class="mm-study-map" aria-labelledby="mm-mappa-title">
+      <div class="section-title">
+        <div class="eyebrow">Per ripercorrere e studiare · Mappa interattiva</div>
+        <h2 id="mm-mappa-title">Il Medioevo in una mappa concettuale</h2>
+      </div>
+      <p class="mm-mappa-intro">Una mappa da esplorare: apri i rami, avvicina i concetti e raggiungi con un tocco i paragrafi del capitolo. La <strong>mappa ragionata</strong> conserva gli approfondimenti didattici; la <strong>struttura della pagina</strong> ricava i propri rami direttamente dai titoli attuali.</p>
+      <div class="mm-mappa-toolbar" role="group" aria-label="Visualizzazione della mappa">
+        <button type="button" data-mm-mappa-mode="concetti" aria-pressed="true">Mappa ragionata</button>
+        <button type="button" data-mm-mappa-mode="struttura" aria-pressed="false">Struttura della pagina</button>
+        <button type="button" id="mm-mappa-fullscreen">Schermo intero</button>
+        <a href="./mappa-studio.md" download="medioevo-mappa-studio.md">Scarica il Markdown</a>
+      </div>
+      <div id="mm-mappa-pannello" class="mm-mappa-panel">
+        <markmap-view id="mm-medioevo-map" theme="cards" layout="tree" toolbar aria-label="Mappa interattiva dei contenuti del capitolo Medioevo"></markmap-view>
+      </div>
+      <p id="mm-mappa-stato" class="mm-mappa-status" role="status">Caricamento della mappa…</p>
+      <p class="mm-mappa-help">La struttura e i titoli delle sezioni vengono riletti a ogni visita. I concetti di approfondimento della mappa ragionata restano curati nel file Markdown: una semplice modifica a un paragrafo non ne riscrive automaticamente il significato. Nessun audio parte da solo.</p>
+      <noscript>Per esplorare la mappa interattiva occorre attivare JavaScript. Puoi comunque <a href="./mappa-studio.md">leggere il suo schema testuale</a>.</noscript>
+    </section>
+
     <section id="bibliografia">
       <div class="section-title">
         <div class="eyebrow">Fonti · bibliografia e sitografia essenziale</div>
@@ -2481,6 +2502,7 @@
   </footer>
 </div>
 
+<script type="module" src="../shared/mm-mappa-viva-v1.js?v=20261107-mappa01"></script>
 <script src="script.js?v=20261107-caccia-loop-v1"></script>
 <script src="isorythm-audio.js?v=20261107-talea-color-tempi60-180-01"></script>
 <script src="../shared/atlas-autonav-v1.js?v=20261105-ancore-titoli01" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261104-audit-unico01" defer></script><script src="../shared/atlas-video-preview-v1.js?v=20261016-qa02" defer></script>
