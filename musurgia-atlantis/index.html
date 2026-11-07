@@ -70,7 +70,7 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
  <div class="searchwrap"><input id="search" type="search" placeholder="Cerca un compositore, un'opera…" aria-label="Cerca un nodo" autocomplete="off"><div id="suggestions" role="listbox" aria-label="Risultati della ricerca"></div></div>
  <hr class="sep"><div class="controltitle">Prospettiva</div>
  <div class="segmented" id="viewSelect"><button data-view="chapters" class="active" aria-pressed="true">Capitoli</button><button data-view="all" aria-pressed="false">Tutta la rete</button><button data-view="near" aria-pressed="false" title="Collegamenti del nodo selezionato">Vicini</button></div>
- <div class="hint" style="margin-top:8px">Cerca un nome per vedere subito la sua rete diretta. «Vicini» la espande progressivamente.</div>
+ <div class="hint" style="margin-top:8px">Cerca un nome: il I livello mostra i collegamenti diretti. Dal II livello, solo percorsi specifici attraverso persone e opere, non semplici co-citazioni nei capitoli.</div>
  <div id="levelSection"><hr class="sep"><label class="controltitle" for="levelRange">Distanza dal nodo cercato</label>
  <div class="depthrow"><input type="range" id="levelRange" min="1" max="5" step="1" value="1" aria-label="Livelli di relazioni"><output id="levelValue" class="depthvalue" for="levelRange">1</output></div>
  <div id="levelCount" class="hint">Primo livello · collegamenti diretti</div></div>
@@ -107,7 +107,7 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
  </div>
  <hr class="sep"><div class="controltitle">Didascalie sulla mappa</div>
  <label class="choice"><input id="labelFirst" type="checkbox" checked> Centro e I livello, quando sono in primo piano</label>
- <div class="hint" style="margin:9px 0 6px">Mostra inoltre queste categorie (solo sul lato anteriore della nebulosa):</div>
+ <div class="hint" style="margin:9px 0 6px">Mostra inoltre queste categorie (solo sul lato anteriore della nebulosa). I nodi intermedi necessari ai percorsi restano attenuati:</div>
  <div class="pillgrid" id="labelsByType">
   <button class="chip" data-label-type="capitolo" aria-pressed="false">Capitoli</button>
   <button class="chip" data-label-type="persona" aria-pressed="false">Persone</button>
@@ -283,26 +283,74 @@ async function init(){
 tiers=new Set(['trattazione','menzione','navigazione','ipotesi']);
 const atlasLabelTypes=new Set();let atlasFirstLabels=true,atlasSignature='';
 edgesAccepted=()=>DATA.links.filter(e=>tiers.has(e.tier));
+// A co-mention in a chapter, generic topic, place or instrument is not a
+// relationship between all the entities mentioned there. Only people and
+// concrete works can serve as intermediate bridges; and only named semantic
+// relations may be traversed beyond one hop.
+const atlasGenericRelations=new Set([
+ 'tratta_o_menziona','analizza_o_richiama','rimanda_a',
+ 'sviluppa_o_illumina','documenta_o_trasforma','condivide_un_nodo_di_senso',
+ 'si_svolge_anche_a','menziona_con_identita_separata','tratta_in_modo_specifico',
+ 'analizzata_in','tratta_nel_contesto_storico','tratta_la_collaborazione_coreografico_musicale',
+ 'concorre_alla_storia_di','accoglie_il_lavoro_di','tratta_in_contesto','si_colloca_nella_storia_di'
+]);
+function atlasMayBridge(n){return n&&(grp(n)==='persona'||grp(n)==='opera')}
+function atlasIsSpecific(e){
+ return e.tier!=='navigazione'&&e.tier!=='sospeso'&&
+  !atlasGenericRelations.has(e.relation)&&
+  !/^(menziona|tratta_|rimanda_|analizza_o_richiama|condivide_|sviluppa_o_illumina|documenta_o_trasforma)/.test(e.relation||'');
+}
 buildVisible=function(){
- const edges=edgesAccepted(),dist=new Map();let ids,links;
+ const accepted=edgesAccepted();
  if(view==='near'&&selectedId&&lookup.has(selectedId)){
-  dist.set(selectedId,0);let frontier=new Set([selectedId]);
-  for(let i=1;i<=steps;i++){
+  const distance=new Map([[selectedId,0]]);
+  const parents=new Map();
+  const parentLinks=new Map();
+  let frontier=new Set([selectedId]);
+  const tieScore=e=>({trattazione:4,ipotesi:3,menzione:2,navigazione:1,sospeso:0}[e.tier]||0);
+  for(let depth=1;depth<=steps;depth++){
    const next=new Set();
-   for(const e of edges){
-    if(frontier.has(e.source)&&!dist.has(e.target)){dist.set(e.target,i);next.add(e.target)}
-    if(frontier.has(e.target)&&!dist.has(e.source)){dist.set(e.source,i);next.add(e.source)}
+   const candidate=new Map();
+   for(const e of accepted){
+    if(depth>1&&!atlasIsSpecific(e))continue;
+    for(const [from,to] of [[e.source,e.target],[e.target,e.source]]){
+     if(!frontier.has(from)||distance.has(to))continue;
+     if(depth>1&&!atlasMayBridge(lookup.get(from)))continue;
+     // Chapter nodes are end points: they cannot be used to infer historical links.
+     if(depth>1&&lookup.get(to)?.category==='capitolo')continue;
+     const best=candidate.get(to);
+     if(!best||tieScore(e)>tieScore(best.edge))candidate.set(to,{from,edge:e});
+    }
+   }
+   for(const [id,choice] of candidate){
+    distance.set(id,depth);parents.set(id,choice.from);parentLinks.set(id,choice.edge);next.add(id);
    }
    frontier=next;if(!frontier.size)break;
   }
-  ids=new Set([...dist.keys()].filter(id=>id===selectedId||types.has(grp(lookup.get(id)))));
-  links=edges.filter(e=>ids.has(e.source)&&ids.has(e.target));
- }else{
-  links=edges.filter(e=>(view!=='chapters'||e.source.startsWith('cap:')||e.target.startsWith('cap:'))&&types.has(grp(lookup.get(e.source)))&&types.has(grp(lookup.get(e.target))));
-  ids=new Set(links.flatMap(e=>[e.source,e.target]));
-  if(view==='chapters'&&types.has('capitolo'))for(const n of DATA.nodes)if(n.category==='capitolo')ids.add(n.id);
+  // Category filtering is only a display choice. Include the minimal chain of
+  // muted intermediary nodes needed to keep paths to displayed entities intact.
+  const chosen=new Set([selectedId]);
+  for(const id of distance.keys()){
+   if(id===selectedId||!types.has(grp(lookup.get(id))))continue;
+   let current=id;
+   while(current&&!chosen.has(current)){chosen.add(current);current=parents.get(current)}
+  }
+  const links=[...parentLinks.entries()].filter(([id])=>chosen.has(id)).map(([,edge])=>edge);
+  const nodes=DATA.nodes.filter(n=>chosen.has(n.id)).map(n=>{
+   const shown=n.id===selectedId||types.has(grp(n));
+   const path=[];let current=n.id;
+   for(let i=0;current&&i<=steps;i++){path.unshift(current);current=parents.get(current)}
+   return {...n,_depth:distance.get(n.id)??-1,_focus:n.id===selectedId,
+    _bridge:!shown,
+    _path:path,
+    _label:shown&&(n.id===selectedId||(atlasFirstLabels&&distance.get(n.id)===1)||atlasLabelTypes.has(grp(n)))};
+  });
+  return {nodes,links};
  }
- return {nodes:DATA.nodes.filter(n=>ids.has(n.id)).map(n=>({...n,_depth:dist.get(n.id)??-1,_focus:view==='near'&&n.id===selectedId,_label:n.id===selectedId||(view==='near'&&atlasFirstLabels&&dist.get(n.id)===1)||atlasLabelTypes.has(grp(n))||(view==='chapters'&&n.category==='capitolo')})),links};
+ const links=accepted.filter(e=>(view!=='chapters'||e.source.startsWith('cap:')||e.target.startsWith('cap:'))&&types.has(grp(lookup.get(e.source)))&&types.has(grp(lookup.get(e.target))));
+ const ids=new Set(links.flatMap(e=>[e.source,e.target]));
+ if(view==='chapters'&&types.has('capitolo'))for(const n of DATA.nodes)if(n.category==='capitolo')ids.add(n.id);
+ return {nodes:DATA.nodes.filter(n=>ids.has(n.id)).map(n=>({...n,_depth:-1,_focus:false,_bridge:false,_path:[],_label:atlasLabelTypes.has(grp(n))||(view==='chapters'&&n.category==='capitolo')})),links};
 };
 function atlasSync(){
  const active=view==='near'&&!!selectedId;
@@ -333,7 +381,19 @@ function atlasLabelLoop(){
  }
 }
 const oldRenderNodeDetail=renderNodeDetail;
-renderNodeDetail=function(id){oldRenderNodeDetail(id);$('exploreDock').classList.add('hidden')};
+renderNodeDetail=function(id){
+ oldRenderNodeDetail(id);
+ $('exploreDock').classList.add('hidden');
+ const n=visible.nodes.find(x=>x.id===id);
+ if(n&&n._depth>=2&&n._path?.length){
+  const names=n._path.map(k=>lookup.get(k)?.name||k);
+  const expl=document.createElement('div');
+  expl.className='detail-intro';
+  expl.style.cssText='padding:9px 10px;margin:9px 0 13px;background:#102f3b;border:1px solid #355968;border-radius:9px';
+  expl.innerHTML='<strong>Percorso indiretto ('+n._depth+' passaggi)</strong><div style="margin-top:5px">'+names.map(textSafe).join(' → ')+'</div><small>È un percorso fra entità del grafo, non la prova di un’influenza o di un rapporto diretto.</small>';
+  $('detailContent').prepend(expl);
+ }
+};
 const oldRenderEdgeDetail=renderEdgeDetail;
 renderEdgeDetail=function(e){oldRenderEdgeDetail(e);$('exploreDock').classList.add('hidden')};
 update=function(){
