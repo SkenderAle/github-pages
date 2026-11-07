@@ -524,11 +524,33 @@ const chaseLab=document.getElementById('chaseLab');
 const chasePlay=document.getElementById('chasePlay');
 const chaseText=document.getElementById('chaseText');
 if(chaseLab&&chasePlay){
+  let chaseExplanationTimer=null;
+  const stopChase=()=>{
+    chaseLab.classList.remove('play');
+    chasePlay.textContent="▶ Fai partire l'inseguimento";
+    chasePlay.setAttribute('aria-pressed','false');
+    if(chaseExplanationTimer!==null)clearTimeout(chaseExplanationTimer);
+    chaseExplanationTimer=null;
+    if(chaseText)chaseText.textContent='Prima guarda ciò che accade. Il nome tecnico arriverà dopo.';
+  };
+  chasePlay.setAttribute('aria-pressed','false');
   chasePlay.addEventListener('click',()=>{
-    chaseLab.classList.remove('play'); void chaseLab.offsetWidth; chaseLab.classList.add('play');
-    chasePlay.textContent='↻ Ripeti';
-    if(chaseText) setTimeout(()=>chaseText.innerHTML='La seconda voce riprende la prima dopo un intervallo: <strong>questo procedimento si chiama canone</strong>.',4600);
+    if(chaseLab.classList.contains('play')){stopChase();return;}
+    chaseLab.classList.add('play');
+    chasePlay.textContent='■ Ferma';
+    chasePlay.setAttribute('aria-pressed','true');
+    if(chaseText)chaseText.textContent='La prima voce si mette in moto; la seconda entrerà dopo, mentre la prima continuerà a ripartire dall’inizio.';
+    chaseExplanationTimer=setTimeout(()=>{
+      if(chaseLab.classList.contains('play')&&chaseText){
+        chaseText.innerHTML='La seconda voce riprende la prima dopo un intervallo e le due continuano a inseguirsi: <strong>questo procedimento si chiama canone</strong>.';
+      }
+      chaseExplanationTimer=null;
+    },2300);
   });
+  document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState==='hidden'&&chaseLab.classList.contains('play'))stopChase();
+  });
+  window.addEventListener('pagehide',stopChase);
 }
 
 const wordStage=document.getElementById('wordStage');
