@@ -321,3 +321,67 @@ La modifica non elimina i percorsi di quinto livello di Gluck, Calzabigi, Verdi 
 **Problema strutturale aperto:** gli archi `L03-A18`, `L03-A19`, `L03-A26`, `L03-A27` collegano correttamente testi e persone, ma i loro nodi letterari sono classificati come `documento-storico`. La funzione `atlasMayBridge()` dell'interfaccia, oggi, consente l'attraversamento indiretto soltanto da `persona`, `opera` e `nodo-di-senso`. Di conseguenza un documento storico è visibile come estremo ma non può ancora fare da ponte in profondità; inoltre la categorizzazione `grp()` può mostrarlo come `altro`. Questa limitazione **non è stata corretta nel presente lotto**, dedicato al dataset e al registro. Prima di estendere il rendering, definire un trattamento coerente per fonti letterarie e documenti storici, evitando che i documenti generici diventino scorciatoie fra compositori.
 
 **Controllo d'integrità remoto:** 608 nodi; 1.520 relazioni; ID univoci; nessun estremo mancante. `riscontro_storico_indipendente=83`, flag `historical_verified_independently=true` su 118 archi (non equivalenti per lo storico degli audit); 339 proposte editoriali e 359 candidati non fusi, 698 provvisorie. I due doppioni sospesi `L06-A028` e `L06-A032` sono classificati correttamente come `sospeso` dalla funzione `tier()` e non sono attivi nel rendering standard.
+
+
+---
+
+## Lotto 06 — 8 novembre 2026: prime coreografiche, Ballets Russes e autorialità collettiva
+
+**Perimetro:** 37 candidati sottoposti a riscontro storico indipendente e promossi a `riscontro_storico_indipendente`; una relazione generica sospesa con rinvio motivato a una versione specifica. Nessun nodo o arco aggiunto o eliminato. Nessuna modifica ad altre pagine o ai menu.
+
+### Nuclei e identificativi verificati
+
+| Nucleo | Archi aggiornati | Distinzione accertata |
+| --- | --- | --- |
+| Debussy / Mallarmé / *Faune* (1894 / 1912) | L05-A013, L05-A014, L05-A015, L05-A016 | Poema di Mallarmé → partitura concertistica di Debussy del 1894 → coreografia di Nižinskij 29 maggio 1912; nessuna commissione retroattiva della musica per il balletto |
+| *Jeux* (1913) | L05-A019, L05-A020, L05-A021, L05-A022 | Debussy musica, Nižinskij soggetto e coreografia, Diaghilev commissione, Bakst scene e costumi; prima 15 maggio 1913 al Théâtre des Champs-Élysées |
+| *L'uccello di fuoco* (1910) | L05-A024, L05-A025, L05-A026 | Stravinskij musica, Fokine soggetto/coreografia, Diaghilev commissione/produzione; prima 25 giugno 1910 all'Opéra di Parigi |
+| *Petrushka* (1911) | L05-A027, L05-A028, L05-A029 | Stravinskij musica e soggetto con Benois, Fokine coreografia, Benois scene e costumi; prima 13 giugno 1911 |
+| *La sagra della primavera* (1913) | L05-A030, L05-A031, L05-A032, L05-A033, L05-A034, L05-A035 | Stravinskij musica, Nižinskij coreografia, Roerich scene/costumi e collaborazione al soggetto, Rambert assistente/testimone, Diaghilev produttore, Monteux direttore; prima 29 maggio 1913 |
+| *La sagra della primavera* di Pina Bausch (1975) | L05-A036, L05-A037, L05-A038 | Nuova coreografia di Bausch sulla stessa partitura di Stravinskij, non ripresa integrale dei passi originali del 1913; prima 3 dicembre 1975, Wuppertal |
+| *Fantasia* (1940) | L05-A039 | Riutilizzo audiovisivo della musica della *Sagra*, non la stessa produzione coreografica |
+| *Daphnis et Chloé* (1912) | L05-A040, L05-A041, L05-A042, L05-A043, L05-A044 | Ravel musica, Fokine coreografia e collaborazione al soggetto, Diaghilev commissione, Monteux direzione, Bakst apparati visivi; prima 8 giugno 1912 al Théâtre du Châtelet |
+| *Boléro* (1928) | L05-A047, L05-A048, L05-A049, L05-A050 | Ravel composizione, Ida Rubinstein commissione e interpretazione, Bronislava Nižinskaja coreografia; prima all'Opéra di Parigi il 22 novembre 1928 |
+| *Parade* (1917) | L05-A058, L05-A059, L05-A060, L05-A061 | Satie musica, Cocteau soggetto, Picasso costumi/scenografia/sipario, Massine coreografia; prima 18 maggio 1917 al Théâtre du Châtelet |
+
+### Arco sospeso senza cancellazione
+
+- `E0879` (Nižinskij → *La sagra della primavera*; `coreografa_la_versione_del_1913`) aveva `proposta_editoriale_revisionata`. L'attribuzione è **vera nel contenuto**, ma il nodo di arrivo era l'opera-base e non la prima coreografia specifica. Il medesimo rapporto è ora convalidato e rappresentato più precisamente dall'arco `L05-A031` (Nižinskij → prima coreografia del 1913). `E0879` riceve `quality_gate=sospeso`, `verification_status=ridondanza_della_versione_coreografica_specifica`, `more_specific_edge=L05-A031`; conserva `previous_quality_gate`, `previous_description`, evidenze e motivo della sospensione. Non è un duplicato con gli stessi estremi.
+
+### Riscontri indipendenti principali
+
+- Conservatoire de Paris, rapporto fra poema di Mallarmé, partitura del 1894 e balletto del 1912: https://www.conservatoiredeparis.fr/fr/enquete-autour-du-prelude-lapres-midi-dun-faune-de-debussy
+- Metropolitan Museum, coreografia del Fauno del 1912: https://www.metmuseum.org/art/collection/search/285965
+- Philharmonie de Paris, *Jeux*, coreografia/commissione/costumi/prima: https://pad.philharmoniedeparis.fr/0769157-jeux-de-claude-debussy.aspx?_lg=fr-FR
+- BnF, scheda di spettacolo di *Jeux*, 15 maggio 1913: https://catalogue.bnf.fr/ark:/12148/cb40175015b
+- Library of Congress, *The Firebird*: https://www.loc.gov/collections/ballets-russes-de-serge-diaghilev/articles-and-essays/works-listing-by-title/f/
+- Library of Congress, *Petrouchka*: https://www.loc.gov/collections/bronislava-nijinska/articles-and-essays/petrouchka/
+- Library of Congress, *Le Sacre* e note di Marie Rambert: https://www.loc.gov/collections/bronislava-nijinska/articles-and-essays/le-sacre-du-printemps/
+- Philharmonie de Paris, *Le Sacre*, ruoli, cronologia, direzione Monteux: https://pad.philharmoniedeparis.fr/0743340-le-sacre-du-printemps-de-igor-stravinski.aspx?_lg=fr-FR
+- Archivio ufficiale Pina Bausch, *The Rite of Spring*: https://www.pinabausch.org/work/sacr ; stagione https://www.pinabausch.org/season/season1975_76
+- Library of Congress, *Fantasia* (1940): https://www.loc.gov/exhibits/music-and-animation/fantasia-1940.html
+- IRCAM, *Daphnis et Chloé*, commissione, libretto, data, direzione, apparati: https://resources.ircam.fr/en/work/daphnis-et-chloe-1
+- BnF, catalogo Boléro O 81, prima coreografica: https://catalogue.bnf.fr/ark:/12148/cb13917708q
+- Philharmonie de Paris, *Boléro*, prima e ruoli: https://pad.philharmoniedeparis.fr/0824129-bolero-de-maurice-ravel.aspx?_lg=fr-FR
+- Library of Congress, *Parade* nel catalogo Ballets Russes: https://www.loc.gov/collections/ballets-russes-de-serge-diaghilev/articles-and-essays/works-listing-by-title/p/
+- Library of Congress, programma storico di *Parade* con responsabilità: https://tile.loc.gov/storage-services/public/music/musihas-200181871/musihas-200181871.pdf
+
+### Discordanze, cautele e lavori ancora aperti
+
+1. **Data di *Le Sacre du printemps*:** la pagina dedicata nella collezione LOC e la Philharmonie de Paris danno **29 maggio 1913**; una didascalia del materiale espositivo LOC presenta **28 maggio 1913**. Si adotta il 29 maggio come data documentata maggiormente coerente e si conserva la discordanza per futuro controllo sui programmi originali. Nessun arco prova la recuperabilità perfetta della coreografia.
+2. **Data di *Boléro*:** la BnF conferma la prima scenica all'Opéra di Parigi il 22 novembre 1928, distinta dalle esecuzioni concertistiche successive. Una scheda sintetica IRCAM colloca ambiguamente «concerts Lamoureux» in corrispondenza del campo della prima; non utilizzare tale ambiguità per trasformare la prima teatrale in concerto.
+3. Non sono stati esaminati in questo lotto il sistema storico 1877/1895 del *Lago dei cigni*, *La bella addormentata*, *Lo schiaccianoci*, le suites di *Daphnis*, *La Valse* e *Il mandarino meraviglioso*. Rimangono candidati; nessuna convalida presunta.
+4. *La Valse* reca nel dataset una nota che menziona un allestimento ad Anversa nel 1926, mentre Bru Zane presenta come primo allestimento scenico quello parigino del 1929. La discordanza richiede collazione dei materiali, dunque L05-A053–L05-A055 restano **non convalidati**.
+5. La categoria editoriale «lavoro collettivo» non autorizza relazioni di collaborazione diretta fra tutti i soggetti della produzione: ogni rapporto deve essere rappresentato attraverso il lavoro specifico.
+
+### Controlli prima della pubblicazione
+
+- Dataset JSON serializzato e riparsato; nodi **608**, archi **1.520**, ID degli archi univoci, nessun estremo mancante.
+- Le 37 nuove relazioni recano `previous_quality_gate`, `previous_description`, `verification_note`, `evidence_urls`, `verification_status`, `verified_at` e `historical_verified_independently=true`.
+- `riscontro_storico_indipendente` **120**; `proposta_editoriale_revisionata` **338**; `candidato_non_fuso` **322**; somma provvisori **660**; `da_verificare` **0**.
+- I conteggi del flag `historical_verified_independently=true` restano distinti da quelli di `quality_gate`.
+- Integrità dei livelli, comportamento browser e simulazione esplorativa: da verificare sul remoto dopo i commit.
+
+### Pubblicazione
+- Dataset su main: `93f32c00086c5965dcc351da5a7361d9ad977848`.
+- Registro: commit di aggiornamento della presente sezione, consultabile dalla cronologia del file.
