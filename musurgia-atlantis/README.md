@@ -8,3 +8,7 @@ Interfaccia pubblicata nella cartella `musurgia-atlantis/` senza alcuna modifica
 - Una relazione presente nell'audit non equivale automaticamente a una relazione storica verificata.
 
 **Nota:** URL diretta, non indicizzata dai menu. `noindex` nel documento è una richiesta ai motori di ricerca, non un controllo di accesso. Gli script 3D sono caricati da una CDN esterna.
+
+## Grafica resiliente
+
+La pagina include un anteprima SVG locale (`fallback.svg`) e un motore di compatibilità tridimensionale su canvas locale (`compat-graph.js`). Il motore originale `3d-force-graph` viene caricato in modo asincrono dal CDN, senza bloccare la pagina. Se non è raggiungibile, la mappa locale continua a essere navigabile.

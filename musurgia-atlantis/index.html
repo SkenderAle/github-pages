@@ -34,10 +34,10 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
 @media(max-width:680px){header{min-height:69px;padding:10px 12px}.brand{font-size:18px}.tagline{font-size:9px}.sigil{width:40px;height:40px;font-size:22px}.topstats{gap:4px}.topstats>.ghost{padding:8px;font-size:11px}#mobileFilters{display:inline-block}.side{display:none;left:9px;right:9px;top:auto;bottom:10px;width:auto;max-height:64dvh;max-height:64vh;border-radius:17px;padding:14px}.side.open{display:block}#detail{top:auto;bottom:10px;left:9px;right:9px;width:auto;max-height:62dvh}#footer{bottom:12px;padding:8px 11px;font-size:10px;max-width:calc(100vw - 20px);white-space:normal}#footer.hidden{display:none}#toast{bottom:75px}.heading{font-size:19px}}
 @media(prefers-reduced-motion:reduce){.loader{animation:none}}
 </style>
-<script defer src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.1/dist/3d-force-graph.min.js"></script>
+<script id="atlantis3DEngine" async src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.1/dist/3d-force-graph.min.js"></script>
 </head>
 <body>
-<div id="graph" aria-label="Grafo tridimensionale delle connessioni musicali"></div>
+<div id="graph" aria-label="Grafo tridimensionale delle connessioni musicali"><img id="graphBackdrop" src="./fallback.svg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none" /></div>
 <div id="loading" class="loading"><div class="loader"></div>Sto aprendo la costellazione…</div>
 <header>
  <div class="identity"><div class="sigil" aria-hidden="true">✧</div><div><div class="brand">MUSURGIA ATLANTIS</div><div class="tagline">La musica non sta in fila · rete sperimentale</div></div></div>
@@ -71,12 +71,13 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
  </div>
  <div class="bottomtools"><button class="btn primary" id="resetBtn">↺ Reimposta vista</button><button class="btn" id="unfoldBtn">◎ Due salti</button></div>
  <hr class="sep"><div class="controltitle">I capitoli principali</div><div id="chapters" class="pillgrid"></div>
- <hr class="sep"><p class="hint">Prima pubblicazione autonoma · Dataset di lavoro v8. “Riscontrato” significa confrontato con i contenuti del progetto, <strong>non</strong> prova storiografica indipendente. Le proposte sono disattivate all'avvio. Nessun collegamento è stato aggiunto ai menu del sito principale.</p>
+ <hr class="sep"><p class="hint">Versione con grafica di compatibilità integrata · Dataset di lavoro v8. “Riscontrato” significa confrontato con i contenuti del progetto, <strong>non</strong> prova storiografica indipendente. Le proposte sono disattivate all'avvio. Nessun collegamento è stato aggiunto ai menu del sito principale.</p>
 </aside>
 <aside id="detail" aria-label="Scheda di approfondimento"><button class="detail-close" id="closeDetail" aria-label="Chiudi scheda">×</button><div id="detailContent"></div></aside>
 <div id="footer">Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo</div>
 <div id="toast" role="status"></div>
 <div id="error"><h2>La costellazione non si è aperta</h2><p id="errorMessage"></p><button class="btn" onclick="location.reload()">Riprova</button></div>
+<script src="./compat-graph.js"></script>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
@@ -183,12 +184,17 @@ function setupUI(){
  $('mobileFilters').onclick=()=>{const yes=$('side').classList.toggle('open');$('mobileFilters').setAttribute('aria-expanded',String(yes));if(yes)$('detail').classList.remove('open')};
 }
 async function init(){
- if(typeof ForceGraph3D!=='function')throw Error('Il motore grafico 3D non è stato caricato. Verifica la connessione al servizio di libreria e riprova.');
+ // A compatibility renderer guarantees a visible 3D network even when the CDN is blocked.
  const response=await fetch('./grafo.json',{cache:'no-store'});if(!response.ok)throw Error('Non riesco a leggere grafo.json ('+response.status+').');
  DATA=await response.json();if(!Array.isArray(DATA.nodes)||!Array.isArray(DATA.links))throw Error('Il grafo non contiene nodi e relazioni validi.');
  lookup=new Map(DATA.nodes.map(n=>[n.id,n]));
  for(const e of DATA.links){if(!lookup.has(e.source)||!lookup.has(e.target))throw Error('È presente un collegamento verso un nodo mancante: '+e.id);e.tier=tier(e)}
- graph=ForceGraph3D($('graph'), {controlType:'orbit'})
+ const webglOK=(()=>{try{const c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}})();
+ const Engine=typeof ForceGraph3D==='function'&&webglOK?ForceGraph3D:window.AtlantisCompatGraph;
+ if(typeof Engine!=='function')throw Error('Impossibile inizializzare anche la grafica di compatibilità.');
+ let mountPoint=null;
+ try { if(Engine===window.ForceGraph3D){mountPoint=document.createElement('div');mountPoint.style.cssText='position:absolute;inset:0;z-index:3';$('graph').appendChild(mountPoint)}
+ graph=Engine(mountPoint||$('graph'), {controlType:'orbit'})
  .backgroundColor('#07141f').showNavInfo(false).nodeRelSize(4.5).nodeResolution(7)
  .nodeVal(n=>n.category==='capitolo'?14:(grp(n)==='nodo-di-senso'?3.7:(grp(n)==='opera'?3:2.5)))
  .nodeLabel(n=>textSafe(n.name)+'<br><span style="opacity:.75;font-size:10px">'+textSafe(n.category)+'</span>')
@@ -201,12 +207,23 @@ async function init(){
  .onBackgroundClick(()=>{$('suggestions').classList.remove('visible')})
  .width(innerWidth).height(innerHeight)
  .warmupTicks(25).cooldownTicks(250);
+ }catch(e){console.warn('WebGL non disponibile, passo alla vista compatibile',e);mountPoint?.remove();graph=window.AtlantisCompatGraph($('graph'),{controlType:'orbit'}).nodeVal(n=>n.category==='capitolo'?14:2.8).nodeColor(nodeColor).linkColor(linkColor).linkOpacity(.3).onNodeClick(n=>focusNode(n.id)).onNodeHover(n=>document.body.style.cursor=n?'pointer':'default').onBackgroundClick(()=>$('suggestions').classList.remove('visible')).width(innerWidth).height(innerHeight)}
  if(graph.d3Force('charge'))graph.d3Force('charge').strength(-95);
  setupUI();update();$('loading').style.display='none';
+ $('footer').textContent=graph.isFallback?'Vista 3D semplificata · Trascina per ruotare · Tocca un nodo':'Trascina per ruotare · scorri per avvicinare · tocca un nodo';
  window.addEventListener('resize',()=>{graph.width(innerWidth).height(innerHeight)});
  setTimeout(()=>graph.zoomToFit(1000,95),1700);
 }
-window.addEventListener('load',()=>init().catch(err=>{console.error(err);error(err.message||'Impossibile inizializzare la mappa.') }));
+window.addEventListener('DOMContentLoaded',()=>init().catch(err=>{console.error(err);error(err.message||'Impossibile inizializzare la mappa.') }));
+const external=$('atlantis3DEngine');
+if(external) external.addEventListener('load',()=>{if(typeof ForceGraph3D!=='function'||!graph?.isFallback||!DATA)return;
+let mountPoint=null; try {const oldGraph=graph;mountPoint=document.createElement('div');mountPoint.style.cssText='position:absolute;inset:0;z-index:3';$('graph').appendChild(mountPoint);const newGraph=ForceGraph3D(mountPoint,{controlType:'orbit'}).backgroundColor('#07141f').showNavInfo(false).nodeRelSize(4.5).nodeResolution(7)
+ .nodeVal(n=>n.category==='capitolo'?14:(grp(n)==='nodo-di-senso'?3.7:(grp(n)==='opera'?3:2.5))).nodeLabel(n=>textSafe(n.name)).nodeColor(nodeColor)
+ .linkColor(linkColor).linkOpacity(.27).linkWidth(e=>e.tier==='trattazione'?1.2:.75).onNodeClick(n=>focusNode(n.id)).onLinkClick(e=>renderEdgeDetail(e))
+ .onNodeHover(n=>document.body.style.cursor=n?'pointer':'default').onBackgroundClick(()=>$('suggestions').classList.remove('visible'))
+ .width(innerWidth).height(innerHeight).warmupTicks(25).cooldownTicks(250);if(newGraph.d3Force('charge'))newGraph.d3Force('charge').strength(-95);
+ graph=newGraph;oldGraph.destroy();update();$('footer').textContent='Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo';setTimeout(()=>graph.zoomToFit(700,80),1200);
+} catch(e) {mountPoint?.remove();console.warn('Motore 3D non disponibile; vista compatibile conservata',e);if(graph?.isFallback){$('footer').textContent='Vista 3D semplificata · Trascina per ruotare · Tocca un nodo';}}}); 
 })();
 </script>
 </body></html>
