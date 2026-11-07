@@ -550,7 +550,7 @@ function isorythmRefreshMuteUI(){
     button.setAttribute('aria-pressed',muted?'true':'false');
     button.textContent=muted?'Riattiva':'Muto';
     button.setAttribute('aria-label',(muted?'Riattiva':'Silenzia')+
-      (key==='talea'?' i colpi percussivi della talea':' la melodia del color'));
+      (key==='talea'?' gli impulsi percussivi della talea':' la melodia del color'));
   }
   if(isorythmLab){
     isorythmLab.classList.toggle('talea-muted',isorythmMuted.talea);
@@ -564,7 +564,7 @@ function isorythmRefreshMuteUI(){
 }
 
 function isorythmPercussion(state,when,position){
-  // Un colpo brevissimo di rumore filtrato, NON un oscillatore e NON una nota.
+  // Un impulso brevissimo di rumore filtrato, NON un oscillatore e NON una nota.
   const source=state.context.createBufferSource();
   source.buffer=state.noise;
   const filter=state.context.createBiquadFilter();
@@ -623,7 +623,7 @@ function isorythmDraw(){
       if(beat>0&&beat%12===0){
         isorythmText.textContent='Dopo 12 pulsazioni i due cicli ricominciano insieme: la talea ha compiuto tre giri, il color due.';
       }else if(beat===0){
-        isorythmText.textContent='In ascolto: i colpi della talea scandiscono quattro caselle; la melodia Do–Sol del color ne percorre sei. Prova i pulsanti Muto.';
+        isorythmText.textContent='In ascolto: gli impulsi della talea scandiscono quattro caselle; la melodia Do–Sol del color ne percorre sei. Prova i pulsanti Muto.';
       }
     }
   }
