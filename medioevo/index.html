@@ -6,7 +6,7 @@
 <title>Medioevo musicale · Una voce contro il tempo</title>
 <meta name="description" content="Un percorso narrativo e interattivo nella musica medievale: voce, memoria, liturgia, notazione, Guido d'Arezzo, polifonia, viaggio e trasformazione.">
 <meta name="author" content="Alessandro Zilli">
-<link rel="stylesheet" href="style.css?v=20261107-boezio-ratios01">
+<link rel="stylesheet" href="style.css?v=20261107-arsnova-talea-color02">
 <link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
 <link rel="stylesheet" href="../shared/mm-documenti-griglia-v1.css?v=20261022-container01">
 <link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-iconografia03">
@@ -2327,17 +2327,25 @@
       <div class="isorythm-lab" id="isorythmLab">
         <div class="lab-kicker">Laboratorio · talea e color</div>
         <h3>Due cicli che non devono coincidere</h3>
-        <p>Immaginiamo una successione ritmica che ritorna, la <em>talea</em>, e una successione melodica, il <em>color</em>. Se hanno lunghezze differenti, i loro punti di incontro cambiano a ogni ripetizione.</p>
+        <p>Nell'isoritmia medievale la <strong><em>talea</em> è uno schema ritmico</strong> che ritorna; il <strong><em>color</em> è una successione di altezze</strong> che può avere una lunghezza differente. Per ascoltarne l'intreccio usiamo una rappresentazione semplificata: quattro colpi percussivi per la talea, sei note che alternano <strong>Do e Sol</strong> per il color. Ogni casella corrisponde alla stessa unità di tempo. I due inizi tornano a coincidere dopo <strong>12 pulsazioni</strong>.</p>
         <div class="cycle-row">
-          <div class="cycle-label">TALEA</div>
-          <div class="cycle talea"><span></span><span></span><span></span><span></span></div>
+          <div class="cycle-heading">
+            <div class="cycle-label">TALEA</div>
+            <button type="button" class="cycle-mute" id="isorythmMuteTalea" aria-pressed="false" aria-label="Silenzia i colpi percussivi della talea">Muto</button>
+          </div>
+          <div class="cycle talea" aria-label="Talea, ciclo ritmico di quattro pulsazioni"><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="cycle-row">
-          <div class="cycle-label">COLOR</div>
-          <div class="cycle color"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="cycle-heading">
+            <div class="cycle-label">COLOR</div>
+            <button type="button" class="cycle-mute" id="isorythmMuteColor" aria-pressed="false" aria-label="Silenzia le note Do e Sol del color">Muto</button>
+          </div>
+          <div class="cycle color" aria-label="Color, ciclo melodico di sei note alternate Do e Sol"><span></span><span></span><span></span><span></span><span></span></div>
         </div>
-        <button type="button" id="isorythmPlay">▶ Fai scorrere i cicli</button>
-        <p id="isorythmText">La struttura può essere perfettamente organizzata anche quando non è evidente al primo ascolto.</p>
+        <button type="button" id="isorythmPlay" aria-pressed="false">▶ Ascolta i due cicli</button>
+        <p class="isorythm-help">Durante l'ascolto le caselle si illuminano al momento del suono. Puoi escludere la percussione o la melodia con i rispettivi pulsanti <strong>Muto</strong>, senza interrompere l'altro ciclo.</p>
+        <p id="isorythmText">Talea: colpi secchi, non intonati. Color: note Do–Sol. Premi Play per ascoltare, poi Ferma per interrompere.</p>
+        <p class="isorythm-caveat">Modello acustico-didattico, non esecuzione di un mottetto medievale: nella composizione isoritmica talea e color possono governare <strong>la stessa voce</strong>, non sono obbligatoriamente due parti strumentali autonome.</p>
       </div>
 
       <h3><span id="mm-autore-compositore-guillaume-de-machaut" style="display:inline-block;scroll-margin-top:7rem" aria-hidden="true"></span>Guillaume de Machaut: quando l'autore diventa visibile</h3>
@@ -2470,7 +2478,7 @@
   </footer>
 </div>
 
-<script src="script.js?v=20261107-ratios-audio01"></script>
+<script src="script.js?v=20261107-arsnova-talea-color02"></script>
 <script src="../shared/atlas-autonav-v1.js?v=20261105-ancore-titoli01" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261104-audit-unico01" defer></script><script src="../shared/atlas-video-preview-v1.js?v=20261016-qa02" defer></script>
 <script src="../assets/atlante-indice-condiviso.js" defer></script>
 <script src="../shared/mm-menu-compatto-v1.js?v=20261105-medioevo-colonne01" defer></script>
