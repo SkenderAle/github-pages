@@ -14,7 +14,7 @@
 button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}a{color:#abd9f0}
 #graph{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 58% 47%,#0a2837 0,#071521 41%,#030a11 100%)}
 #graph::before{content:"";pointer-events:none;position:absolute;inset:0;z-index:2;background:radial-gradient(circle at 50% 52%,transparent 35%,rgba(2,9,16,.47) 100%)}
-#graph canvas{display:block;outline:none}
+#graph canvas{display:block;outline:none;position:absolute;inset:0;z-index:3;touch-action:none}#graphBackdrop{z-index:0}
 header{position:absolute;top:0;left:0;right:0;z-index:5;min-height:81px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(14px,2.1vw,34px);background:linear-gradient(180deg,rgba(3,12,19,.96),rgba(3,12,19,.75) 72%,transparent);pointer-events:none}
 header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;min-width:0}.sigil{display:grid;place-items:center;width:48px;height:48px;border:1px solid #ab8a59;border-radius:50%;color:var(--gold);background:linear-gradient(145deg,#1a3540,#0b1c25);box-shadow:inset 0 0 22px #d6ac4f20;flex:none;font-size:26px;font-family:Georgia,serif}.brand{font-family:Georgia,"Times New Roman",serif;letter-spacing:.09em;font-size:clamp(17px,2vw,25px);font-weight:500;color:#f1d3a2;white-space:nowrap}.tagline{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:#a5bbc2;margin-top:2px}
 .topstats{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.stat{font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:30px;padding:7px 11px;background:#0e2530bb}.stat strong{color:#d4f5ed;font-weight:600}.ghost{border:1px solid var(--border);background:#0e2530cc;color:var(--ink);padding:9px 12px;border-radius:10px;font-size:12px}.ghost:hover{background:#1d3642}
@@ -209,7 +209,7 @@ async function init(){
  .warmupTicks(25).cooldownTicks(250);
  }catch(e){console.warn('WebGL non disponibile, passo alla vista compatibile',e);mountPoint?.remove();graph=window.AtlantisCompatGraph($('graph'),{controlType:'orbit'}).nodeVal(n=>n.category==='capitolo'?14:2.8).nodeColor(nodeColor).linkColor(linkColor).linkOpacity(.3).onNodeClick(n=>focusNode(n.id)).onNodeHover(n=>document.body.style.cursor=n?'pointer':'default').onBackgroundClick(()=>$('suggestions').classList.remove('visible')).width(innerWidth).height(innerHeight)}
  if(graph.d3Force('charge'))graph.d3Force('charge').strength(-95);
- setupUI();update();$('loading').style.display='none';
+ setupUI();update();$('graphBackdrop').style.display='none';$('loading').style.display='none';
  $('footer').textContent=graph.isFallback?'Vista 3D semplificata · Trascina per ruotare · Tocca un nodo':'Trascina per ruotare · scorri per avvicinare · tocca un nodo';
  window.addEventListener('resize',()=>{graph.width(innerWidth).height(innerHeight)});
  setTimeout(()=>graph.zoomToFit(1000,95),1700);
