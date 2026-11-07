@@ -12,6 +12,6 @@ window.MUSIC_PROJECT_PAGES=[
 {slug:"balletto",title:"Il balletto",period:"Dalle corti italiane al Novecento",tags:["danza","Čajkovskij","Stravinskij"],tone:"plum"},
 {slug:"verso-le-avanguardie",title:"Verso le avanguardie",period:"Fine Ottocento · Novecento",tags:["blues","jazz"],tone:"blue"},
 {slug:"dal-musical-al-film",title:"Dal musical al film",period:"Dal teatro allo schermo",tags:["musical","cinema","colonna sonora"],tone:"plum"},
-{slug:"musica-e-film",title:"Musica e Film",period:"Le funzioni della musica nell’audiovisivo",tags:["cinema","leitmotiv","empatia"],tone:"plum"},
+{slug:"musica-e-film",title:"Musica nell’audiovisivo",period:"Le funzioni della musica nell’audiovisivo",tags:["cinema","leitmotiv","empatia"],tone:"plum"},
 ];
 window.MUSIC_PROJECT_TOPICS=[{label:"sinfonismo",href:"./dalla-sinfonia-alla-rapsodia/"}];
