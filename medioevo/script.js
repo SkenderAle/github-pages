@@ -496,6 +496,7 @@ function startRatioSound(button,option){
 ratioButtons.forEach(button=>{
   button.setAttribute('aria-pressed','false');
   button.addEventListener('click',()=>{
+    if(isorythmState)stopIsorythm('Ascolto dei cicli fermato per lasciare spazio al monocordo.');
     if(ratioActiveButton===button){
       stopRatioSound();
       setRatioVisual(null,'Suono interrotto. Seleziona un rapporto per confrontare di nuovo le altezze.');
@@ -517,18 +518,214 @@ document.addEventListener('visibilitychange',()=>{
 });
 window.addEventListener('pagehide',stopRatioSound);
 
+// Ars nova: due periodicità 4/6 con durata comune e strumenti TIMBRICAMENTE distinti.
+// Talea = impulsi non intonati da buffer di rumore percussivo (NESSUN oscillatore).
+// Color = successione melodica Do-Sol generata con oscillatore sinusoidale.
+// Semplice analogia d'ascolto: nel mottetto storico talea e color possono riguardare la stessa voce.
 const isorythmLab=document.getElementById('isorythmLab');
 const isorythmPlay=document.getElementById('isorythmPlay');
 const isorythmText=document.getElementById('isorythmText');
-if(isorythmLab&&isorythmPlay){
+const isorythmMuteTalea=document.getElementById('isorythmMuteTalea');
+const isorythmMuteColor=document.getElementById('isorythmMuteColor');
+const isorythmTaleaCells=[...document.querySelectorAll('#isorythmLab .cycle.talea span')];
+const isorythmColorCells=[...document.querySelectorAll('#isorythmLab .cycle.color span')];
+const isorythmBeatSeconds=0.5; // Quattro caselle = 2 s, sei caselle = 3 s; insieme ogni 6 s.
+const isorythmMuted={talea:false,color:false};
+let isorythmState=null;
+let isorythmContext=null;
+let isorythmNoiseBuffer=null;
+let isorythmScheduler=null;
+let isorythmFrame=null;
+let isorythmPreviousBeat=-1;
+
+function isorythmUpdateCells(beat){
+  isorythmTaleaCells.forEach((cell,i)=>cell.classList.toggle('current',beat>=0&&i===beat%4));
+  isorythmColorCells.forEach((cell,i)=>cell.classList.toggle('current',beat>=0&&i===beat%6));
+}
+
+function isorythmRefreshMuteUI(){
+  for(const [key,button] of [['talea',isorythmMuteTalea],['color',isorythmMuteColor]]){
+    if(!button)continue;
+    const muted=isorythmMuted[key];
+    button.setAttribute('aria-pressed',muted?'true':'false');
+    button.textContent=muted?'Riattiva':'Muto';
+    button.setAttribute('aria-label',(muted?'Riattiva':'Silenzia')+
+      (key==='talea'?' i colpi percussivi della talea':' la melodia del color'));
+  }
+  if(isorythmLab){
+    isorythmLab.classList.toggle('talea-muted',isorythmMuted.talea);
+    isorythmLab.classList.toggle('color-muted',isorythmMuted.color);
+  }
+  if(isorythmState){
+    const now=isorythmState.context.currentTime;
+    isorythmState.taleaBus.gain.setTargetAtTime(isorythmMuted.talea?0:1,now,0.012);
+    isorythmState.colorBus.gain.setTargetAtTime(isorythmMuted.color?0:1,now,0.012);
+  }
+}
+
+function isorythmPercussion(state,when,position){
+  // Un colpo brevissimo di rumore filtrato, NON un oscillatore e NON una nota.
+  const source=state.context.createBufferSource();
+  source.buffer=state.noise;
+  const filter=state.context.createBiquadFilter();
+  filter.type='highpass';
+  filter.frequency.value=880;
+  const envelope=state.context.createGain();
+  const accent=[0.30,0.12,0.22,0.13][position];
+  envelope.gain.setValueAtTime(0,when);
+  envelope.gain.linearRampToValueAtTime(accent,when+0.004);
+  envelope.gain.exponentialRampToValueAtTime(0.0001,when+0.07);
+  source.connect(filter);
+  filter.connect(envelope);
+  envelope.connect(state.taleaBus);
+  source.start(when);
+  source.stop(when+0.075);
+}
+
+function isorythmMelody(state,when,position){
+  // Due altezze stabili in alternanza: Do4 e Sol4, a onda sinusoidale.
+  const source=state.context.createOscillator();
+  source.type='sine';
+  source.frequency.setValueAtTime(position%2===0?261.625565:391.995436,when);
+  const envelope=state.context.createGain();
+  const amplitude=position===0?0.23:0.17; // Lieve accento al principio delle sei note.
+  envelope.gain.setValueAtTime(0,when);
+  envelope.gain.linearRampToValueAtTime(amplitude,when+0.025);
+  envelope.gain.setValueAtTime(amplitude,when+0.27);
+  envelope.gain.exponentialRampToValueAtTime(0.0001,when+0.43);
+  source.connect(envelope);
+  envelope.connect(state.colorBus);
+  source.start(when);
+  source.stop(when+0.45);
+}
+
+function isorythmSchedule(){
+  const state=isorythmState;
+  if(!state||state.context.state!=='running')return;
+  const horizon=state.context.currentTime+0.13;
+  while(isorythmState===state&&state.nextBeatAt<horizon){
+    const n=state.nextBeat++;
+    isorythmPercussion(state,state.nextBeatAt,n%4);
+    isorythmMelody(state,state.nextBeatAt,n%6);
+    state.nextBeatAt+=isorythmBeatSeconds;
+  }
+}
+
+function isorythmDraw(){
+  const state=isorythmState;
+  if(!state)return;
+  const elapsed=(state.context.currentTime-state.startAt)/isorythmBeatSeconds;
+  const beat=Math.max(-1,Math.floor(elapsed));
+  if(beat!==isorythmPreviousBeat){
+    isorythmPreviousBeat=beat;
+    isorythmUpdateCells(beat);
+    if(isorythmText&&beat>=0){
+      if(beat>0&&beat%12===0){
+        isorythmText.textContent='Dopo 12 pulsazioni i due cicli ricominciano insieme: la talea ha compiuto tre giri, il color due.';
+      }else if(beat===0){
+        isorythmText.textContent='In ascolto: i colpi della talea scandiscono quattro caselle; la melodia Do–Sol del color ne percorre sei. Prova i pulsanti Muto.';
+      }
+    }
+  }
+  isorythmFrame=requestAnimationFrame(isorythmDraw);
+}
+
+function stopIsorythm(message){
+  const state=isorythmState;
+  isorythmState=null;
+  if(isorythmScheduler!==null){clearInterval(isorythmScheduler);isorythmScheduler=null;}
+  if(isorythmFrame!==null){cancelAnimationFrame(isorythmFrame);isorythmFrame=null;}
+  isorythmPreviousBeat=-1;
+  isorythmUpdateCells(-1);
+  if(state){
+    const now=state.context.currentTime;
+    state.master.gain.cancelScheduledValues(now);
+    state.master.gain.setValueAtTime(state.master.gain.value,now);
+    state.master.gain.setTargetAtTime(0,now,0.018);
+    setTimeout(()=>{try{state.master.disconnect();}catch(error){}},160);
+  }
+  if(isorythmLab)isorythmLab.classList.remove('play');
+  if(isorythmPlay){
+    isorythmPlay.textContent='▶ Ascolta i due cicli';
+    isorythmPlay.setAttribute('aria-pressed','false');
+  }
+  if(isorythmText&&message)isorythmText.textContent=message;
+}
+
+function startIsorythm(){
+  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextClass){
+    if(isorythmText)isorythmText.textContent='Il browser non supporta l’audio Web Audio necessario per questo laboratorio.';
+    return;
+  }
+  try{
+    // Il contesto sonoro è creato solo su un click reale, non all'apertura della pagina.
+    const context=isorythmContext||(isorythmContext=new AudioContextClass());
+    if(ratioActiveButton){stopRatioSound();setRatioVisual(null,'Suono del monocordo spento: ora ascolti talea e color.');}
+    if(context.state==='suspended'){
+      const resumed=context.resume();
+      if(resumed&&typeof resumed.catch==='function'){
+        resumed.catch(()=>stopIsorythm('L’audio è stato bloccato dal browser; tocca nuovamente Play.'));
+      }
+    }
+    if(!isorythmNoiseBuffer){
+      const count=Math.ceil(context.sampleRate*0.085);
+      isorythmNoiseBuffer=context.createBuffer(1,count,context.sampleRate);
+      const channel=isorythmNoiseBuffer.getChannelData(0);
+      for(let i=0;i<count;i++){
+        channel[i]=(Math.random()*2-1)*Math.exp(-i/(context.sampleRate*0.012));
+      }
+    }
+    const master=context.createGain();
+    master.gain.value=0.7;
+    master.connect(context.destination);
+    const taleaBus=context.createGain();
+    taleaBus.gain.value=isorythmMuted.talea?0:1;
+    taleaBus.connect(master);
+    const colorBus=context.createGain();
+    colorBus.gain.value=isorythmMuted.color?0:1;
+    colorBus.connect(master);
+    const startAt=context.currentTime+0.065;
+    isorythmState={
+      context,noise:isorythmNoiseBuffer,master,taleaBus,colorBus,
+      startAt,nextBeatAt:startAt,nextBeat:0
+    };
+    isorythmPreviousBeat=-1;
+    isorythmLab.classList.add('play');
+    isorythmPlay.textContent='■ Ferma';
+    isorythmPlay.setAttribute('aria-pressed','true');
+    isorythmSchedule();
+    isorythmScheduler=setInterval(isorythmSchedule,25);
+    isorythmDraw();
+  }catch(error){
+    stopIsorythm('Impossibile avviare l’audio in questo browser. Le caselle restano consultabili.');
+  }
+}
+
+if(isorythmLab&&isorythmPlay&&isorythmTaleaCells.length===4&&isorythmColorCells.length===6){
+  isorythmRefreshMuteUI();
   isorythmPlay.addEventListener('click',()=>{
-    isorythmLab.classList.toggle('play');
-    isorythmPlay.textContent=isorythmLab.classList.contains('play')?'■ Ferma':'▶ Fai scorrere i cicli';
-    if(isorythmText)isorythmText.textContent=isorythmLab.classList.contains('play')
-      ?'I due cicli ritornano con periodicità differenti: la relazione cambia mentre ciascuno conserva la propria identità.'
-      :'La struttura può essere perfettamente organizzata anche quando non è evidente al primo ascolto.';
+    if(isorythmState){
+      stopIsorythm('Ascolto interrotto. Play riavvia insieme talea e color dalla prima casella.');
+    }else{
+      startIsorythm();
+    }
+  });
+  isorythmMuteTalea?.addEventListener('click',()=>{
+    isorythmMuted.talea=!isorythmMuted.talea;
+    isorythmRefreshMuteUI();
+  });
+  isorythmMuteColor?.addEventListener('click',()=>{
+    isorythmMuted.color=!isorythmMuted.color;
+    isorythmRefreshMuteUI();
   });
 }
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='hidden'&&isorythmState){
+    stopIsorythm('Ascolto interrotto: la pagina non è più visibile.');
+  }
+});
+window.addEventListener('pagehide',()=>{if(isorythmState)stopIsorythm();});
 
 const chaseLab=document.getElementById('chaseLab');
 const chasePlay=document.getElementById('chasePlay');
