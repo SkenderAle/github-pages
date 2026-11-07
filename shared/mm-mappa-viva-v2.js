@@ -13,10 +13,13 @@
   const panel = wrapper.querySelector('#mm-mappa-pannello');
   const fullscreen = wrapper.querySelector('#mm-mappa-fullscreen');
   const sourceUrl = root.dataset.mmSource || './mappa-studio.md';
-  const sectionElements = [...document.querySelectorAll('section[id]')]
+  // Considera anche i capitoli articolati in <article class="chapter">,
+  // come nel Romanticismo: i nodi non devono essere limitati ai <section>.
+  const sectionElements = [...document.querySelectorAll('section[id], article.chapter[id]')]
     .filter(section => section !== wrapper &&
       !section.closest('#mappa-studio') &&
-      !section.parentElement?.closest('section[id]'));
+      (section.matches('article.chapter[id]') ||
+       !section.parentElement?.closest('section[id]')));
   const sections = new Map(sectionElements.map(section => [section.id, section]));
   let source = '';
   let mode = 'concetti';
@@ -80,9 +83,9 @@
         return '- [' + escapeLabel(title) + '](#' + el.id + ')';
       });
     }
-    const headings = [...section.querySelectorAll('h3')]
+    const headingSelector = section.matches('article.chapter') ? 'h4' : 'h3';
+    const headings = [...section.querySelectorAll(headingSelector)]
       .filter(el => !el.closest('dialog, [hidden], [aria-hidden="true"], .mm-uda, .mm-study-map'))
-      .filter(el => !el.closest('details:not([open])'))
       .filter(el => {
         const named = el.closest('[id]');
         return !named || named === section || !groups.some(group => group.ids.includes(named.id));
@@ -92,7 +95,7 @@
       const label = clean(heading.textContent);
       if (!label) continue;
       if (!heading.id) {
-        const slug = 'mm-mappa-' + section.id + '-h3-' + (list.length + 1);
+        const slug = 'mm-mappa-' + section.id + '-' + headingSelector + '-' + (list.length + 1);
         let id = slug, counter = 2;
         while (document.getElementById(id)) id = slug + '-' + counter++;
         heading.id = id;
