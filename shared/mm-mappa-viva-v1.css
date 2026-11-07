@@ -1,0 +1,18 @@
+/* MUSURGIA MUNDI — mappa di studio condivisibile, indipendente dal CSS dei menu. */
+.mm-study-map{margin:clamp(2rem,5vw,4rem) 0;padding:clamp(1rem,3vw,1.75rem);border:1px solid #cbbeb8;border-radius:10px;background:#fbf8f1;color:#302a2b}
+.mm-study-map .section-title{margin-bottom:.8rem}
+.mm-study-map>.mm-mappa-intro{max-width:72ch;line-height:1.55;margin:.6rem 0 1.2rem}
+.mm-mappa-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;margin:0 0 .85rem}
+.mm-mappa-toolbar button,.mm-mappa-toolbar a{font:650 .85rem/1.35 system-ui,-apple-system,sans-serif;padding:.6rem .85rem;min-height:40px;border-radius:5px;border:1px solid #a8949b;background:#fff;color:#382d38;text-decoration:none;cursor:pointer}
+.mm-mappa-toolbar button[aria-pressed="true"]{background:#604661;color:#fff;border-color:#604661}
+.mm-mappa-toolbar :is(button,a):focus-visible{outline:3px solid #bf8e63;outline-offset:2px}
+.mm-mappa-toolbar button:hover,.mm-mappa-toolbar a:hover{border-color:#654d67}
+.mm-mappa-panel{position:relative;border:1px solid #c8c4c1;border-radius:8px;overflow:hidden;background:#f6f7f9}
+.mm-mappa-panel markmap-view{display:block;width:100%;height:min(72vh,680px);min-height:460px;background:#f6f7f9;touch-action:pan-x pan-y}
+.mm-mappa-panel:fullscreen{width:100vw;height:100dvh;border:0;border-radius:0}
+.mm-mappa-panel:fullscreen markmap-view{height:100dvh;min-height:0}
+.mm-mappa-status{font:500 .78rem/1.5 system-ui,-apple-system,sans-serif;color:#655a60;margin:.7rem 0 0}
+.mm-mappa-help{font-size:.88rem;line-height:1.55;margin:1rem 0 0}
+.mm-study-map [id]{scroll-margin-top:100px}
+@media(max-width:680px){.mm-study-map{padding:1rem .7rem;margin:2rem -.15rem}.mm-mappa-panel markmap-view{height:62vh;min-height:400px}.mm-mappa-toolbar button,.mm-mappa-toolbar a{font-size:.78rem;padding:.52rem .6rem}}
+@media print{.mm-mappa-panel markmap-view{height:500px!important;min-height:0}.mm-mappa-toolbar{display:none}}
