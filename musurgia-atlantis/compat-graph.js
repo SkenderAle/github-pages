@@ -75,28 +75,94 @@ function makeGraph(host){
     const k=Math.max(.40,Math.min(2.15,820/(820+depth))), s=Math.min(W,H)/890*zoom*k;
     return {x:W/2+shiftX+x*s,y:H/2+shiftY+y*s,z:depth,s,scale:k,n};
   }
-  function frame(time){if(!active)return;requestAnimationFrame(frame);if(time-last<30)return;last=time;
-    ctx.fillStyle='#061522';ctx.fillRect(0,0,W,H);
-    const grd=ctx.createRadialGradient(W*.51,H*.53,20,W*.5,H*.5,Math.max(W,H)*.68);grd.addColorStop(0,'#123648');grd.addColorStop(.55,'#071724');grd.addColorStop(1,'#020b14');ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
-    for(let i=0;i<125;i++){let x=rnd('stars',i)*W,y=rnd('far',i)*H,r=.3+rnd('radius',i)*1.1;ctx.fillStyle=`rgba(197,220,236,${.10+rnd('alpha',i)*.3})`;ctx.fillRect(x,y,r,r)}
-    projected=points.map(project);const map=new Map(projected.map(p=>[p.n.id,p]));
-    ctx.lineWidth=.7;for(const o of linkObjects){const a=map.get(o.a.id),b=map.get(o.b.id);if(!a||!b)continue;
-      const col=linkColors(o.e),direct=o.a._depth===0||o.b._depth===0;const atmospheric=Math.max(.38,Math.min(1.0,1-(a.z+b.z)/2200));ctx.strokeStyle=colorRgba(col,(direct?.69:options.linkOpacity*.92)*atmospheric);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
-    projected.sort((a,b)=>b.z-a.z);
-    for(const p of projected){const n=p.n;const chapter=n.category==='capitolo',root=!!n._focus;const base=nodeColors(n),r=(root?9.5:chapter?6.8:Math.min(4.5,2+Math.sqrt(Math.max(1,nodeSize(n)))*.3))*Math.max(.52,Math.min(2.4,p.scale*Math.sqrt(zoom)));
-      if(p.x<-40||p.y<-30||p.x>W+40||p.y>H+40)continue;
-      ctx.globalAlpha=root?1:Math.max(.55,Math.min(1,1-p.z/1450));ctx.fillStyle=base;ctx.shadowBlur=root?23:chapter?16:7;ctx.shadowColor=colorRgba(base,.55);ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*Math.PI);ctx.fill();ctx.shadowBlur=0;ctx.globalAlpha=1;
-      if(n._label||n.id===hovered||n.id===selected){
-        const important=root||n._depth===1;
-        const size=important?12:11;
-        ctx.font=(important?'600 ':'500 ')+size+'px system-ui';
-        ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='#061521';
-        ctx.fillStyle=root?'#ffe2a3':chapter?'#f5dfba':'#e8f7f1';
-        const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
-        const y=p.y-r-8;
-        ctx.strokeText(label,p.x,y);ctx.fillText(label,p.x,y);
-      }
+  // Negative camera depth is toward the viewer. Far-side nodes remain visible
+  // as translucent points, but their captions appear only when rotated forward.
+  function frontness(p){return Math.max(0,Math.min(1,.5-p.z/125));}
+  function alphaAt(p){return p.n._focus?1:.19+.81*frontness(p);}
+  function drawCaption(p,r,occupied){
+    const n=p.n,root=!!n._focus;
+    if(!root){
+      if(!n._label && n.id!==hovered && n.id!==selected)return;
+      if(frontness(p)<.68)return; // Same foreground threshold as opaque nodes.
     }
+    const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
+    const size=root?13:n._depth===1?11.5:11;
+    ctx.font=(root||n._depth===1?'600 ':'500 ')+size+'px system-ui';
+    const labelWidth=Math.ceil(ctx.measureText(label).width+13);
+    const width=Math.min(W-12,labelWidth),height=root?24:21;
+    const shift=r+9;
+    const candidates=[
+      [p.x-width/2,p.y-shift-height],
+      [p.x+shift,p.y-height/2],
+      [p.x-shift-width,p.y-height/2],
+      [p.x-width/2,p.y+shift],
+      [p.x-width/2,p.y-shift-height-24],
+      [p.x-width/2,p.y+shift+24],
+      [p.x+shift,p.y-shift-height],
+      [p.x-shift-width,p.y+shift]
+    ];
+    let rect=null;
+    for(const [rawX,rawY] of candidates){
+      const x=Math.max(6,Math.min(W-width-6,rawX)),y=rawY;
+      if(y<100||y+height>H-72)continue;
+      const candidate={x,y,w:width,h:height};
+      if(occupied.some(b=>x<b.x+b.w+5&&x+width>b.x-5&&y<b.y+b.h+4&&y+height>b.y-4))continue;
+      rect=candidate;break;
+    }
+    if(!rect)return;
+    occupied.push(rect);
+    ctx.globalAlpha=1;
+    ctx.fillStyle=root?'rgba(24,43,49,.94)':'rgba(4,19,30,.88)';
+    ctx.fillRect(rect.x,rect.y,rect.w,rect.h);
+    ctx.fillStyle=root?'#ffe1a1':n._depth===1?'#ecf8f3':'#d7e6e3';
+    ctx.textAlign='left';ctx.textBaseline='middle';
+    ctx.fillText(label,rect.x+6,rect.y+rect.h/2,Math.max(10,rect.w-12));
+    ctx.textBaseline='alphabetic';
+  }
+  function frame(time){
+    if(!active)return;
+    requestAnimationFrame(frame);
+    if(time-last<30)return;
+    last=time;
+    ctx.fillStyle='#061522';ctx.fillRect(0,0,W,H);
+    const grd=ctx.createRadialGradient(W*.51,H*.53,20,W*.5,H*.5,Math.max(W,H)*.68);
+    grd.addColorStop(0,'#123648');grd.addColorStop(.55,'#071724');grd.addColorStop(1,'#020b14');
+    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<125;i++){
+      const x=rnd('stars',i)*W,y=rnd('far',i)*H,r=.3+rnd('radius',i)*1.1;
+      ctx.fillStyle='rgba(197,220,236,'+(.10+rnd('alpha',i)*.3)+')';ctx.fillRect(x,y,r,r);
+    }
+    projected=points.map(project);
+    const map=new Map(projected.map(p=>[p.n.id,p]));
+    ctx.lineWidth=.8;
+    for(const o of linkObjects){
+      const a=map.get(o.a.id),b=map.get(o.b.id);if(!a||!b)continue;
+      const near=Math.max(frontness(a),frontness(b));
+      const direct=o.a._depth===0||o.b._depth===0;
+      ctx.strokeStyle=colorRgba(linkColors(o.e),(direct?.48:options.linkOpacity*.65)*(.30+.70*near));
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+    }
+    projected.sort((a,b)=>b.z-a.z);
+    for(const p of projected){
+      const n=p.n,chapter=n.category==='capitolo',root=!!n._focus;
+      const base=nodeColors(n);
+      const r=(root?9.5:chapter?6.8:Math.min(4.5,2+Math.sqrt(Math.max(1,nodeSize(n)))*.3))*Math.max(.52,Math.min(2.4,p.scale*Math.sqrt(zoom)));
+      p.r=r;
+      if(p.x<-40||p.y<-30||p.x>W+40||p.y>H+40)continue;
+      ctx.globalAlpha=alphaAt(p);ctx.fillStyle=base;
+      ctx.shadowBlur=root?23:frontness(p)>.68?chapter?15:8:2;
+      ctx.shadowColor=colorRgba(base,.55);
+      ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*Math.PI);ctx.fill();
+      ctx.shadowBlur=0;ctx.globalAlpha=1;
+    }
+    // Draw labels in one foreground-only pass; keep the center first and avoid
+    // collisions. Rotating naturally reveals captions hidden behind the nebula.
+    const occupied=[];
+    const captions=projected.filter(p=>p.n._focus||p.n._label||p.n.id===hovered||p.n.id===selected)
+      .sort((a,b)=>(b.n._focus?1:0)-(a.n._focus?1:0)
+        ||(a.n._depth===1?0:1)-(b.n._depth===1?0:1)
+        ||a.z-b.z);
+    for(const p of captions)drawCaption(p,p.r||4,occupied);
     if(!drag&&pointers.size===0){rotY+=.00037;rotX+=.000085;if(rotX>Math.PI)rotX-=2*Math.PI;}
   }
   function coordinates(evt){const b=canvas.getBoundingClientRect();return {x:evt.clientX-b.left,y:evt.clientY-b.top};}
