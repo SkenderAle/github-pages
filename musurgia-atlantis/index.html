@@ -83,6 +83,19 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
   <label class="choice"><input type="checkbox" data-tier="sospeso"><i class="swatch" style="background:#e18d8d"></i>Archi sospesi o contestati <span class="count" id="n-sospeso"></span></label>
  </div>
  <hr class="sep"><div class="controltitle">Entità visibili</div>
+ <label class="hint" for="quickFilter">Filtro rapido delle categorie</label>
+ <select id="quickFilter" aria-label="Filtro rapido per tipo di nodo" style="display:block;width:100%;margin:7px 0 10px;background:#0c2b39;color:#e4f0ee;border:1px solid #557580;border-radius:9px;padding:10px">
+  <option value="all">Tutte le categorie</option>
+  <option value="capitolo">Solo capitoli</option>
+  <option value="persona">Solo persone</option>
+  <option value="opera">Solo opere</option>
+  <option value="nodo-di-senso">Solo generi e idee</option>
+  <option value="strumento">Solo strumenti</option>
+  <option value="luogo">Solo luoghi</option>
+  <option value="altro">Solo altri nodi</option>
+  <option value="custom" disabled>Selezione personalizzata</option>
+ </select>
+ <div class="hint" style="margin-bottom:7px">Puoi anche combinare più categorie usando i pulsanti qui sotto. Il nodo cercato resta sempre visibile.</div>
  <div class="pillgrid" id="types">
   <button class="chip active" data-type="capitolo" aria-pressed="true">Capitoli</button>
   <button class="chip active" data-type="persona" aria-pressed="true">Persone</button>
@@ -328,7 +341,7 @@ update=function(){
  const g=buildVisible();visible=g;neighbors=new Map();
  for(const e of g.links){if(!neighbors.has(e.source))neighbors.set(e.source,[]);if(!neighbors.has(e.target))neighbors.set(e.target,[]);
   neighbors.get(e.source).push({id:e.target,e});neighbors.get(e.target).push({id:e.source,e})}
- const signature=view+'|'+selectedId+'|'+steps+'|'+g.nodes.map(n=>n.id).join(',')+'|'+g.links.map(e=>e.id||e.source+'>'+e.target).join(',');
+ const signature=view+'|'+selectedId+'|'+steps+'|'+g.nodes.map(n=>n.id).join(',')+'|'+g.links.map(e=>(e.id||e.source+'>'+e.target)+'/'+e.tier).join(',');
  if(signature!==atlasSignature){
   graph.graphData({nodes:g.nodes.map(n=>({...n})),links:g.links.map(e=>({...e}))});atlasSignature=signature;
  }else{
@@ -371,10 +384,20 @@ setupUI=function(){
  for(const c of document.querySelectorAll('[data-tier]'))c.onchange=()=>{
   c.checked?tiers.add(c.dataset.tier):tiers.delete(c.dataset.tier);update();graph.zoomToFit(500,80)
  };
+ function syncTypeButtons(){
+  for(const b of document.querySelectorAll('[data-type]')){
+   const enabled=types.has(b.dataset.type);b.classList.toggle('active',enabled);b.setAttribute('aria-pressed',String(enabled))
+  }
+ }
+ $('quickFilter').onchange=e=>{
+  const choice=e.target.value;
+  if(choice==='custom')return;
+  types=choice==='all'?new Set(ALL_TYPES):new Set([choice]);
+  syncTypeButtons();update();graph.zoomToFit(500,80);
+ };
  for(const b of document.querySelectorAll('[data-type]'))b.onclick=()=>{
   const t=b.dataset.type;types.has(t)?types.delete(t):types.add(t);
-  b.classList.toggle('active',types.has(t));b.setAttribute('aria-pressed',String(types.has(t)));
-  update();graph.zoomToFit(500,80)
+  $('quickFilter').value='custom';syncTypeButtons();update();graph.zoomToFit(500,80)
  };
  $('levelRange').oninput=e=>atlasDepth(e.target.value);
  $('depthMinus').onclick=()=>atlasDepth(steps-1);
@@ -392,7 +415,7 @@ setupUI=function(){
   for(const c of document.querySelectorAll('[data-tier]'))c.checked=tiers.has(c.dataset.tier);
   for(const b of document.querySelectorAll('[data-type]')){b.classList.add('active');b.setAttribute('aria-pressed','true')}
   for(const b of document.querySelectorAll('[data-label-type]')){b.classList.remove('active');b.setAttribute('aria-pressed','false')}
-  $('labelFirst').checked=true;$('detail').classList.remove('open');$('footer').classList.remove('hidden');$('search').value='';$('suggestions').classList.remove('visible');
+  $('quickFilter').value='all';$('labelFirst').checked=true;$('detail').classList.remove('open');$('footer').classList.remove('hidden');$('search').value='';$('suggestions').classList.remove('visible');
   syncTabs();update();graph.zoomToFit(600,85);
  };
  $('closeDetail').onclick=()=>{$('detail').classList.remove('open');$('footer').classList.remove('hidden');atlasSync();graph.nodeColor(nodeColor);graph.linkColor(linkColor)};
@@ -411,7 +434,7 @@ let mountPoint=null; try {const oldGraph=graph;mountPoint=document.createElement
  .linkColor(linkColor).linkOpacity(.27).linkWidth(e=>e.tier==='trattazione'?1.2:.75).onNodeClick(n=>focusNode(n.id,true)).onLinkClick(e=>renderEdgeDetail(e))
  .onNodeHover(n=>document.body.style.cursor=n?'pointer':'default').onBackgroundClick(()=>$('suggestions').classList.remove('visible'))
  .width(innerWidth).height(innerHeight).warmupTicks(25).cooldownTicks(250);if(newGraph.d3Force('charge'))newGraph.d3Force('charge').strength(-95);
- graph=newGraph;oldGraph.destroy();update();$('footer').textContent='Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo';setTimeout(()=>graph.zoomToFit(700,80),1200);
+ graph=newGraph;atlasSignature='';oldGraph.destroy();update();$('footer').textContent='Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo';setTimeout(()=>graph.zoomToFit(700,80),1200);
 } catch(e) {mountPoint?.remove();console.warn('Motore 3D non disponibile; vista compatibile conservata',e);if(graph?.isFallback){$('footer').textContent='Vista 3D semplificata · Trascina per ruotare · Tocca un nodo';}}}); 
 if(external&&!preferCanvas) external.src='https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.1/dist/3d-force-graph.min.js';
 })();
