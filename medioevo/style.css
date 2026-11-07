@@ -159,6 +159,14 @@ footer a{text-decoration:none}
 .string-box{height:74px;display:flex;align-items:center;padding:0 1rem;background:#2c261f}
 .string-line{height:4px;width:100%;background:#d6b66f;box-shadow:0 0 8px rgba(214,182,111,.35);transform-origin:left;transition:.35s}
 .ratio-note{font:700 .85rem/1.4 var(--sans);color:#66584b}
+.ratio-lab .ratio-instructions{font:650 .88rem/1.55 var(--sans);padding:.75rem .9rem;margin:.85rem 0;background:#ede2cf;color:#41352b;border-left:3px solid var(--gold)}
+.ratio-lab .ratio-instructions strong{font-weight:850}
+.ratio-lab .ratio-disclaimer{font:500 .76rem/1.6 var(--sans);color:#63584d;margin:.85rem 0 0}
+.ratio-grid button{touch-action:manipulation;min-height:70px}
+.ratio-grid button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.ratio-grid button.active{box-shadow:inset 0 -3px 0 var(--gold)}
+.ratio-lab .ratio-note{margin:.95rem 0 .55rem;min-height:2.25em}
+@media(prefers-reduced-motion:reduce){.ratio-lab .string-line{transition:none}}
 @media(max-width:760px){.contrast-grid,.book-compare{grid-template-columns:1fr}.ratio-grid{grid-template-columns:repeat(2,1fr)}}
 
 .source-dialog{max-width:620px;width:calc(100% - 2rem);border:1px solid #bca57e;background:#f8f0e3;color:var(--ink);padding:1.5rem 1.6rem 1.4rem;box-shadow:0 24px 70px rgba(23,18,14,.35)}
