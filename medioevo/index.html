@@ -6,7 +6,7 @@
 <title>Medioevo musicale · Una voce contro il tempo</title>
 <meta name="description" content="Un percorso narrativo e interattivo nella musica medievale: voce, memoria, liturgia, notazione, Guido d'Arezzo, polifonia, viaggio e trasformazione.">
 <meta name="author" content="Alessandro Zilli">
-<link rel="stylesheet" href="style.css?v=20261104-menu-unico02">
+<link rel="stylesheet" href="style.css?v=20261107-boezio-ratios01">
 <link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
 <link rel="stylesheet" href="../shared/mm-documenti-griglia-v1.css?v=20261022-container01">
 <link rel="stylesheet" href="../shared/mm-prose-figure-v1.css?v=20261022-iconografia03">
@@ -2274,18 +2274,34 @@
         <p>La stessa distanza emerge nella distinzione fra <em>musicus</em> e <em>cantor</em>. Il primo comprende razionalmente i principi della musica, il secondo possiede la pratica del cantare. Dietro una gerarchia che appartiene al suo tempo rimane una domanda ancora viva: sapere fare musica e sapere spiegare ciò che accade nella musica sono davvero la stessa cosa?</p>
       </div>
 
+      <div class="theory-essay theory-bridge" id="boezio-pitagorici">
+        <h3>Prima di Boezio: perché un intervallo può essere un numero?</h3>
+        <p>Questa idea non nasce nel Medioevo. Nel mondo greco antico la <strong>tradizione pitagorica</strong> aveva già posto al centro della riflessione musicale il rapporto fra grandezze numeriche e intervalli sonori. Il racconto di Pitagora che riconosce le consonanze ascoltando i martelli di un fabbro appartiene alla <strong>tradizione leggendaria</strong>; ciò che conta storicamente è lo sviluppo di un pensiero matematico sui suoni, coltivato e discusso nei secoli da autori e scuole differenti. Non tutta la teoria greca fu pitagorica: accanto al primato dei numeri vi furono anche approcci che assegnavano maggiore rilievo alla percezione e alla pratica.</p>
+        <p>La differenza tra ciò che sappiamo della <em>teoria</em> e ciò che possiamo ricostruire della <em>musica eseguita</em> è decisiva. <strong>I Greci avevano una notazione musicale</strong>, con segni per la musica vocale e strumentale, ma sono sopravvissute soltanto poche decine di testimonianze musicali, molte frammentarie. Di conseguenza conosciamo molto meglio i loro sistemi teorici che non l'immensa varietà delle esecuzioni quotidiane, delle tradizioni orali e dei repertori perduti.</p>
+        <p>All'inizio del VI secolo <strong>Boezio</strong> raccoglie e rielabora in latino parte di questo sapere, soprattutto attraverso fonti greche più tarde come Nicomaco di Gerasa. Il suo <em>De institutione musica</em> diviene per i lettori medievali un riferimento fondamentale: <strong>ottava, quinta e quarta</strong> sono riconosciute come consonanze legate a rapporti semplici. Non è la trasmissione ininterrotta della pratica musicale greca, né una descrizione di come «suonava» il Medioevo; è piuttosto un insieme di <strong>principi teorici assunti come fondamenti del sapere</strong>, sul quale si organizza la <em>musica</em> come disciplina del <em>quadrivium</em>.</p>
+        <h3>Dal quadrivium al monocordo</h3>
+        <p>Il <strong>monocordo</strong> rende visibile questa relazione. Immaginiamo una sola corda, sempre con la <strong>stessa tensione e massa per unità di lunghezza</strong>: se lasciamo vibrare l'intera corda otteniamo un suono; se ne facciamo vibrare tre quarti, due terzi o metà, il suono diventa progressivamente più acuto. Con il linguaggio della fisica moderna possiamo dirlo così: la frequenza è inversamente proporzionale alla lunghezza vibrante. <strong>Tre quarti di corda danno una quarta (4:3), due terzi una quinta (3:2), metà un'ottava (2:1)</strong>. I numeri indicano il <em>rapporto fra le frequenze</em> del suono più acuto e di quello di partenza; le parti della corda sono invece il loro reciproco. Nel laboratorio qui sotto puoi ascoltare la relazione che Boezio avrebbe studiato anzitutto come proporzione.</p>
+        <div class="source-row">
+          <a href="https://www.treccani.it/enciclopedia/boezio-e-la-scienza-della-musica_%28Storia-della-civilta-Europea%29/" target="_blank" rel="noopener noreferrer">Cecilia Panti · Boezio e la scienza della musica · Treccani ↗</a>
+          <a href="https://www.cambridge.org/core/books/abs/cambridge-companion-to-medieval-music/theory-and-notation/D22C4F460CEC09F427D0A19117DB3CFE" target="_blank" rel="noopener noreferrer">Dolores Pesce · Teoria e notazione medievale · Cambridge ↗</a>
+          <a href="https://www.cambridge.org/core/books/abs/ancient-greek-music/evolution-of-ancient-greek-musical-notation/4F5F070EC6D90FB3EEF438697A9CF693" target="_blank" rel="noopener noreferrer">Stefan Hagel · La notazione musicale greca · Cambridge ↗</a>
+        </div>
+      </div>
+
       <div class="ratio-lab" id="ratioLab">
         <div class="lab-kicker">Laboratorio · proporzione e intervallo</div>
         <h3>Si può ascoltare una frazione?</h3>
-        <p>Riduci idealmente la lunghezza di una corda. La frequenza cambia secondo rapporti semplici.</p>
-        <div class="ratio-grid">
-          <button type="button" data-ratio="1">1:1 <span>unisono</span></button>
-          <button type="button" data-ratio="0.75">4:3 <span>quarta</span></button>
-          <button type="button" data-ratio="0.667">3:2 <span>quinta</span></button>
-          <button type="button" data-ratio="0.5">2:1 <span>ottava</span></button>
+        <p>Il primo suono è il riferimento; il secondo è più acuto secondo il rapporto scelto. Prima ascolti il riferimento, poi <strong>i due suoni insieme</strong>. Osserva anche la porzione di corda che resta vibrante.</p>
+        <p class="ratio-instructions" id="ratioInstructions"><strong>▶ Tocca un rapporto per ascoltare.</strong> Toccalo di nuovo per spegnere, oppure scegline un altro per cambiare intervallo. Nessun suono parte automaticamente.</p>
+        <div class="ratio-grid" role="group" aria-label="Ascolta gli intervalli e osserva le proporzioni">
+          <button type="button" data-ratio="1" aria-pressed="false" aria-label="Ascolta o ferma l’unisono, rapporto uno a uno">1:1 <span>unisono</span></button>
+          <button type="button" data-ratio="0.75" aria-pressed="false" aria-label="Ascolta o ferma la quarta, rapporto quattro a tre">4:3 <span>quarta</span></button>
+          <button type="button" data-ratio="0.667" aria-pressed="false" aria-label="Ascolta o ferma la quinta, rapporto tre a due">3:2 <span>quinta</span></button>
+          <button type="button" data-ratio="0.5" aria-pressed="false" aria-label="Ascolta o ferma l’ottava, rapporto due a uno">2:1 <span>ottava</span></button>
         </div>
-        <div class="string-box"><div class="string-line" id="stringLine"></div></div>
-        <p class="ratio-note" id="ratioNote">Una corda intera: punto di partenza.</p>
+        <div class="string-box" aria-hidden="true"><div class="string-line" id="stringLine"></div></div>
+        <p class="ratio-note" id="ratioNote" role="status" aria-live="polite">Corda intera: seleziona un rapporto per ascoltare come cambia l’altezza del secondo suono.</p>
+        <p class="ratio-disclaimer">Toni di confronto prodotti in tempo reale dal browser: <strong>non sono una registrazione di musica greca o medievale</strong> né la ricostruzione di uno strumento storico. Il rapporto fra i suoni, invece, è esatto.</p>
       </div>
 
       <div class="question">E se la musica fosse, prima ancora che suono, <em>un modo di pensare le relazioni?</em></div>
@@ -2454,7 +2470,7 @@
   </footer>
 </div>
 
-<script src="script.js?v=20261024-clausula-audio03"></script>
+<script src="script.js?v=20261107-ratios-audio01"></script>
 <script src="../shared/atlas-autonav-v1.js?v=20261105-ancore-titoli01" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261104-audit-unico01" defer></script><script src="../shared/atlas-video-preview-v1.js?v=20261016-qa02" defer></script>
 <script src="../assets/atlante-indice-condiviso.js" defer></script>
 <script src="../shared/mm-menu-compatto-v1.js?v=20261105-medioevo-colonne01" defer></script>
