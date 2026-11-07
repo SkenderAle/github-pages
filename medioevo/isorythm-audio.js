@@ -17,7 +17,12 @@
   };
   const AudioClass = window.AudioContext || window.webkitAudioContext;
   const muted = {talea: false, color: false};
-  const stepSeconds = 0.5;
+  // Dodici note del color in quattro secondi: 180 BPM, due note per casella.
+  // La talea interviene ogni tre note: quattro impulsi in quattro secondi, 60 BPM.
+  const noteSeconds = 60 / 180;
+  const notesPerTaleaPulse = 3;
+  const notesPerColorCell = 2;
+  const colorCycleNotes = 12;
   let context = null, noise = null, master = null, buses = null;
   let running = false, pending = false, generation = 0;
   let timer = null, frame = null, watchdog = null;
@@ -40,11 +45,16 @@
       buses[which].gain.setTargetAtTime(muted[which] ? 0 : 1, context.currentTime, 0.012);
     }
   }
-  function highlight(n) {
-    for (const which of ['talea', 'color']) {
-      const length = cells[which].length;
-      cells[which].forEach((cell, i) => cell.classList.toggle('current', n >= 0 && i === n % length));
-    }
+  function highlight(note) {
+    const taleaIndex = note >= 0 ? Math.floor(note / notesPerTaleaPulse) % cells.talea.length : -1;
+    const colorIndex = note >= 0 ? Math.floor(note / notesPerColorCell) % cells.color.length : -1;
+    const colorHalf = note >= 0 ? note % notesPerColorCell : -1;
+    cells.talea.forEach((cell, i) => cell.classList.toggle('current', i === taleaIndex));
+    cells.color.forEach((cell, i) => {
+      cell.classList.toggle('current', i === colorIndex);
+      [...cell.querySelectorAll('i')].forEach((half, j) =>
+        half.classList.toggle('note-on', i === colorIndex && j === colorHalf));
+    });
   }
   function makeNoise(ctx) {
     const count = Math.ceil(ctx.sampleRate * 0.09);
@@ -77,36 +87,36 @@
     source.type = 'sine';
     source.frequency.setValueAtTime(n % 2 ? 391.995436 : 261.625565, when);
     const amp = context.createGain();
-    const level = n % 6 === 0 ? 0.27 : 0.21;
+    const level = n % colorCycleNotes === 0 ? 0.27 : 0.21;
     amp.gain.setValueAtTime(0, when);
     amp.gain.linearRampToValueAtTime(level, when + 0.015);
-    amp.gain.setValueAtTime(level, when + 0.32);
-    amp.gain.exponentialRampToValueAtTime(0.0001, when + 0.45);
+    amp.gain.setValueAtTime(level, when + 0.235);
+    amp.gain.exponentialRampToValueAtTime(0.0001, when + 0.305);
     source.connect(amp);
     amp.connect(buses.color);
     source.start(when);
-    source.stop(when + 0.47);
+    source.stop(when + 0.32);
   }
   function schedule() {
     if (!running || !context || context.state !== 'running') return;
     let scheduled = 0;
     while (nextAt < context.currentTime + 0.16 && scheduled++ < 8) {
-      percussion(nextAt, step);
+      if (step % notesPerTaleaPulse === 0) percussion(nextAt, Math.floor(step / notesPerTaleaPulse));
       melody(nextAt, step);
-      nextAt += stepSeconds;
+      nextAt += noteSeconds;
       step++;
     }
   }
   function draw() {
     if (!running) return;
-    const current = Math.floor((context.currentTime - firstAt) / stepSeconds);
+    const current = Math.floor((context.currentTime - firstAt) / noteSeconds);
     if (current !== lastVisual) {
       lastVisual = current;
       highlight(current);
       if (current === 0) {
-        say('In ascolto: gli impulsi della talea seguono quattro caselle; la melodia Do–Sol del color ne percorre sei. Usa Muto per isolare una voce.');
-      } else if (current > 0 && current % 12 === 0) {
-        say('Dopo 12 pulsazioni talea e color ricominciano insieme: tre cicli ritmici e due melodici.');
+        say('Talea: 60 impulsi al minuto. Color: 180 note al minuto, due per ciascuna delle sei celle. Un impulso per ogni tre note; usa Muto per isolare la voce.');
+      } else if (current > 0 && current % colorCycleNotes === 0) {
+        say('Dopo quattro secondi tornano insieme: quattro impulsi della talea e dodici note del color (sei celle di due note).');
       }
     }
     frame = requestAnimationFrame(draw);
