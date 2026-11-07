@@ -1,11 +1,12 @@
 ---
 markmap:
   theme: cards
+  layout: two-sided
 ---
 
 # MEDIOEVO — Musurgia Mundi
 ## 1. Radici, liturgia e memoria
-### [Dalla voce d'Israele alla voce cristiana](https://musurgiamundi.com/medioevo/#radici)
+### [Dalla voce d'Israele alla voce cristiana](#radici)
 - Musica nell'antico Israele
   - Tempio: canto, strumenti e ritualità
   - Cantillazione dei testi sacri
@@ -18,7 +19,7 @@ markmap:
   - Parola sacra e intonazione
   - Tradizioni differenti, contatti storici
 
-### [Il canto liturgico cristiano](https://musurgiamundi.com/medioevo/#voce)
+### [Il canto liturgico cristiano](#voce)
 - La comunità precede il libro musicale
 - Ufficio delle Ore
   - Antifone e salmodia
@@ -33,7 +34,7 @@ markmap:
   - Riorganizzazione carolingia
   - Trasmissione e memoria collettiva
 
-### [Dai gesti ai neumi](https://musurgiamundi.com/medioevo/#gesto)
+### [Dai gesti ai neumi](#gesto)
 - Chironomia
   - La mano guida l'intonazione
 - Prime notazioni neumatiche
@@ -50,7 +51,7 @@ markmap:
   - Confronto fra tradizioni grafiche
 
 ## 2. La nascita della polifonia
-### [Dall'organum alla scuola di Notre-Dame](https://musurgiamundi.com/medioevo/#polifonia)
+### [Dall'organum alla scuola di Notre-Dame](#polifonia)
 - Monodia e polifonia
 - Prime forme di organum
   - Organum parallelo
@@ -74,7 +75,7 @@ markmap:
   - Quattro voci da ricostruire
 
 ## 3. La musica fuori dalla liturgia
-### [Poesia e canto nell'Europa medievale](https://musurgiamundi.com/medioevo/#cammina)
+### [Poesia e canto nell'Europa medievale](#cammina)
 - Clerici vagantes
 - Giullari e menestrelli
   - Ruoli sociali differenti
@@ -94,7 +95,7 @@ markmap:
 - Testimonianze anche in Friuli
 
 ## 4. Strumenti, immagini e società
-### [L'organologia attraverso le fonti](https://musurgiamundi.com/medioevo/#occhio)
+### [L'organologia attraverso le fonti](#occhio)
 - Iconografia musicale
   - Sculture
   - Affreschi
@@ -120,7 +121,7 @@ markmap:
 - Marginalia
   - Animali, mostri e musicisti
 
-### [Monasteri, conventi e nuovi ordini](https://musurgiamundi.com/medioevo/#convento)
+### [Monasteri, conventi e nuovi ordini](#convento)
 - Vita monastica
   - Regola
   - Liturgia
@@ -134,7 +135,7 @@ markmap:
 - Latino e lingue volgari
   - Coesistenza, non sostituzione immediata
 
-### [Francesco d'Assisi e la lauda](https://musurgiamundi.com/medioevo/#lodare)
+### [Francesco d'Assisi e la lauda](#lodare)
 - *Cantico delle creature*
   - Poesia volgare
   - Dimensione spirituale
@@ -146,7 +147,7 @@ markmap:
   - Tre libri con funzioni differenti
 
 ## 5. La musica come numero e come costruzione
-### [Boezio e il quadrivium](https://musurgiamundi.com/medioevo/#numero)
+### [Boezio e il quadrivium](#numero)
 - Musica come disciplina matematica
 - *Musica mundana*
 - *Musica humana*
@@ -157,7 +158,7 @@ markmap:
   - Rapporti e consonanze
 - Laboratorio sui rapporti sonori
 
-### [Ars nova: nuove possibilità della scrittura](https://musurgiamundi.com/medioevo/#arsnova)
+### [Ars nova: nuove possibilità della scrittura](#arsnova)
 - Notazione mensurale
 - Durate e proporzioni
 - Mottetto isoritmico
@@ -169,7 +170,7 @@ markmap:
   - Composizione e autorialità
 - Dal manoscritto alla costruzione musicale
 
-### [Il Trecento musicale italiano](https://musurgiamundi.com/medioevo/#trecento)
+### [Il Trecento musicale italiano](#trecento)
 - Ars nova italiana
 - Ballata
   - Ripresa
@@ -185,13 +186,13 @@ markmap:
   - Testimonianza musicale e iconografica
   - Memoria dei compositori
 
-### [Dal Medioevo al Rinascimento](https://musurgiamundi.com/medioevo/#continua)
+### [Dal Medioevo al Rinascimento](#continua)
 - Nessuna cesura musicale improvvisa
 - Continuità delle pratiche
 - Nuove scritture e nuovi contesti
 - [Prosegui nel Rinascimento](https://musurgiamundi.com/rinascimento/)
 
-## 6. [Fonti e bibliografia](https://musurgiamundi.com/medioevo/#bibliografia)
+## 6. [Fonti e bibliografia](#bibliografia)
 ### Fonti musicali
 - *Graduale Triplex*
   - Abbaye Saint-Pierre de Solesmes, 1979
@@ -211,7 +212,7 @@ markmap:
 - [Case Western Reserve University](https://caslabs.case.edu/medren/)
   - Risorse per strumenti medievali
 
-## 7. [Percorsi didattici](https://musurgiamundi.com/medioevo/#uda-percorsi)
+## 7. [Percorsi didattici](#uda-percorsi)
 - Una melodia, molte memorie
   - Oralità
   - Notazione
