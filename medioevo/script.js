@@ -537,6 +537,7 @@ let isorythmNoiseBuffer=null;
 let isorythmScheduler=null;
 let isorythmFrame=null;
 let isorythmPreviousBeat=-1;
+let isorythmPending=false;
 
 function isorythmUpdateCells(beat){
   isorythmTaleaCells.forEach((cell,i)=>cell.classList.toggle('current',beat>=0&&i===beat%4));
@@ -652,22 +653,24 @@ function stopIsorythm(message){
   if(isorythmText&&message)isorythmText.textContent=message;
 }
 
-function startIsorythm(){
+async function startIsorythm(){
+  if(isorythmPending)return;
   const AudioContextClass=window.AudioContext||window.webkitAudioContext;
   if(!AudioContextClass){
     if(isorythmText)isorythmText.textContent='Il browser non supporta l’audio Web Audio necessario per questo laboratorio.';
     return;
   }
+  isorythmPending=true;
   try{
-    // Il contesto sonoro è creato solo su un click reale, non all'apertura della pagina.
+    // L'attivazione parte direttamente dal click dell'utente, come richiesto da Android/iOS.
     const context=isorythmContext||(isorythmContext=new AudioContextClass());
     if(ratioActiveButton){stopRatioSound();setRatioVisual(null,'Suono del monocordo spento: ora ascolti talea e color.');}
-    if(context.state==='suspended'){
-      const resumed=context.resume();
-      if(resumed&&typeof resumed.catch==='function'){
-        resumed.catch(()=>stopIsorythm('L’audio è stato bloccato dal browser; tocca nuovamente Play.'));
-      }
+    if(context.state!=='running'){
+      if(isorythmText)isorythmText.textContent='Attivazione dell’audio…';
+      await context.resume();
     }
+    if(context.state!=='running')throw new Error('AudioContext non attivo dopo resume');
+    // Pianifica l'avvio solo dopo la riattivazione: evita note programmate a vuoto.
     if(!isorythmNoiseBuffer){
       const count=Math.ceil(context.sampleRate*0.085);
       isorythmNoiseBuffer=context.createBuffer(1,count,context.sampleRate);
@@ -698,7 +701,9 @@ function startIsorythm(){
     isorythmScheduler=setInterval(isorythmSchedule,25);
     isorythmDraw();
   }catch(error){
-    stopIsorythm('Impossibile avviare l’audio in questo browser. Le caselle restano consultabili.');
+    stopIsorythm('Audio non avviato. Controlla il volume del dispositivo, riattiva entrambe le voci e riprova Play.');
+  }finally{
+    isorythmPending=false;
   }
 }
 
