@@ -190,6 +190,13 @@ footer a{text-decoration:none}
 .isorythm-lab .cycle span{min-width:0;transition:background-color .1s,border-color .1s,transform .1s}
 .isorythm-lab.play .cycle.talea span.current{background:#b47a49;border-color:#87592e;transform:scaleY(1.12);box-shadow:0 0 0 2px #b47a4933}
 .isorythm-lab.play .cycle.color span.current{background:#557b90;border-color:#2e576c;transform:scaleY(1.12);box-shadow:0 0 0 2px #557b9033}
+/* Ogni cella del color contiene due note visibili (Do–Sol), a 180 BPM. */
+.isorythm-lab .cycle.color span{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden}
+.isorythm-lab .cycle.color span i{display:flex;align-items:center;justify-content:center;min-width:0;font:750 .58rem/1 var(--sans);font-style:normal;color:#60554b;transition:background-color .08s,color .08s}
+.isorythm-lab .cycle.color span i+i{border-left:1px solid #bdab93}
+.isorythm-lab.play .cycle.color span.current i{color:#183e52}
+.isorythm-lab.play .cycle.color span.current i.note-on{background:#19435e;color:#fff}
+@media(max-width:460px){.isorythm-lab .cycle.color span i{font-size:.51rem}}
 .isorythm-lab.talea-muted .cycle.talea,.isorythm-lab.color-muted .cycle.color{opacity:.40}
 .isorythm-lab .isorythm-help{font:.87rem/1.6 var(--sans);color:#645749;margin:.75rem 0 .7rem}
 .isorythm-lab .isorythm-caveat{font:.77rem/1.55 var(--sans);color:#766b5d;margin:1rem 0 0;border-top:1px solid var(--line);padding-top:.75rem}
