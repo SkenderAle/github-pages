@@ -83,7 +83,7 @@
         return '- [' + escapeLabel(title) + '](#' + el.id + ')';
       });
     }
-    const headingSelector = section.matches('article.chapter') ? 'h4' : 'h3';
+    const headingSelector = section.matches('article.chapter') || (section.matches('section.chapter') && section.querySelector(':scope > h3')) ? 'h4' : 'h3';
     const headings = [...section.querySelectorAll(headingSelector)]
       .filter(el => !el.closest('dialog, [hidden], [aria-hidden="true"], .mm-uda, .mm-study-map'))
       .filter(el => {
