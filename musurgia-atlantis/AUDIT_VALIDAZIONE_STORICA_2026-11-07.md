@@ -385,3 +385,24 @@ La modifica non elimina i percorsi di quinto livello di Gluck, Calzabigi, Verdi 
 ### Pubblicazione
 - Dataset su main: `93f32c00086c5965dcc351da5a7361d9ad977848`.
 - Registro: commit di aggiornamento della presente sezione, consultabile dalla cronologia del file.
+
+
+### Regressione livelli post-Lotto 6 (dataset remoto)
+
+Verifica effettuata mediante simulazione della logica di esplorazione di `musurgia-atlantis/index.html` sui dati prima e dopo il Lotto 6. Filtri standard: `trattazione` e `menzione`; candidati e archi sospesi esclusi. Le relazioni editoriali generiche e i capitoli non fungono da ponti dal livello II in poi. **È un test dei percorsi sui dati, non un collaudo visuale del renderer nel browser.**
+
+| Nodo iniziale | Prima I / II / III / IV / V | Dopo I / II / III / IV / V | Massimo dopo |
+| --- | --- | --- | --- |
+| Igor Stravinskij | 4 / 0 / 0 / 0 / 0 | 6 / 3 / 4 / 7 / 4 | V |
+| Claude Debussy | 4 / 0 / 0 / 0 / 0 | 6 / 5 / 4 / 6 / 3 | V |
+| Maurice Ravel | 4 / 1 / 1 / 0 / 0 | 5 / 3 / 2 / 0 / 0 | III |
+| Vaclav Nižinskij | 1 / 0 / 0 / 0 / 0 | 4 / 8 / 6 / 3 / 1 | V |
+| Sergej Diaghilev | 1 / 0 / 0 / 0 / 0 | 5 / 10 / 5 / 3 / 0 | IV |
+| Pablo Picasso | 0 / 0 / 0 / 0 / 0 | 1 / 3 / 0 / 0 / 0 | II |
+| Pina Bausch | 1 / 0 / 0 / 0 / 0 | 2 / 1 / 2 / 5 / 5 | V |
+| Pierre Monteux | 0 / 0 / 0 / 0 / 0 | 2 / 8 / 6 / 5 / 1 | V |
+| Bronislava Nižinskaja | 1 / 0 / 0 / 0 / 0 | 2 / 1 / 2 / 1 / 1 | V |
+
+Le nuove profondità documentano percorsi attraverso produzioni e opere specifiche, non un'autorizzazione a inferire influenze personali dirette fra i collaboratori. Il collegamento generico `E0879` rimane sospeso nel filtro predefinito; quello specifico `L05-A031` è attivo.
+
+**Controllo remoto:** `main` dopo il commit del registro Lotto 6; 608 nodi, 1.520 archi, ID univoci, nessun estremo orfano. 120 nello stato `riscontro_storico_indipendente`, 155 con flag booleano storico, 338 proposte e 322 candidati (660 in tutto). Restano 0 `da_verificare`.
