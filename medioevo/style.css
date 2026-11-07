@@ -214,10 +214,10 @@ footer a{text-decoration:none}
 /* A riposo è visibile soltanto la prima voce: la seconda attende fuori dal riquadro. */
 .chase-track .voice-a{top:28px;left:0;background:var(--blue)}
 .chase-track .voice-b{top:76px;background:var(--red)}
-/* Scorrimento continuo, uscita totale a destra e rientro da fuori a sinistra.
-   Il secondo moto comincia 1,55 secondi dopo il primo, senza alcuna attesa finale. */
-.chase-lab.play .chase-track .voice-a{animation:chaseRun 5.4s linear -1s infinite}
-.chase-lab.play .chase-track .voice-b{animation:chaseRun 5.4s linear .55s infinite backwards}
+/* Inseguimento ravvicinato: entrata della seconda 0,60 s dopo la prima.
+   Le etichette si accavallano orizzontalmente, poi escono e rientrano senza pause. */
+.chase-lab.play .chase-track .voice-a{animation:chaseRun 5.4s linear -.45s infinite}
+.chase-lab.play .chase-track .voice-b{animation:chaseRun 5.4s linear .15s infinite backwards}
 @keyframes chaseRun{from{left:-140px}to{left:100%}}
 .word-lab{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 .word-stage{flex:1 1 100%;min-height:92px;background:#eadfcf;border:1px solid var(--line);padding:1rem;margin-top:.5rem;font-size:1rem;line-height:1.5}
