@@ -1268,7 +1268,8 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
 @media(max-width:720px){#scanderbeg-vivaldi .mm-scanderbeg-cols,#scanderbeg-vivaldi .mm-scanderbeg-sources{grid-template-columns:minmax(0,1fr)}#scanderbeg-vivaldi .mm-scanderbeg-cols>section{padding:0}}
 </style>
 <link rel="stylesheet" href="../shared/atlas-video-preview-v1.css?v=20261016-qa02">
-<link rel="stylesheet" href="../shared/mm-menu-unificato-v1.css?v=20261104-menu-unico04"><link rel="stylesheet" href="../shared/mm-uda-v1.css?v=20261106-uda02"></head>
+<link rel="stylesheet" href="../shared/mm-menu-unificato-v1.css?v=20261104-menu-unico04"><link rel="stylesheet" href="../shared/mm-uda-v1.css?v=20261106-uda02"><link rel="stylesheet" href="../shared/mm-mappa-viva-v1.css?v=20261107-barocco01">
+</head>
 <body>
 <div class="progress" id="progress"></div>
 <div class="shell">
@@ -1317,6 +1318,7 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       <a href="./sos/" class="nav-sos" title="Gioco interattivo · L’orchestra dei Fireworks di Händel">SOS</a>
       <a class="cross" href="../melodramma/">Melodramma ↗</a>
       <a class="cross" href="../concerti/#storia">Il concerto ↗</a>
+      <a href="#mappa-studio">Mappa concettuale · studio</a>
     </div>
   </nav>
 </div>
@@ -1360,6 +1362,8 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
       <a class="index-card" href="#orchestra"><b>Quando l’insieme diventa orchestra</b><span>Ouverture francese, sinfonia italiana, Sammartini, Mannheim e la nascita del pensiero orchestrale moderno.</span></a>
       <a class="index-card" href="#classicismo"><b>Il Barocco cambia pelle</b><span>Ciò che si trasforma mentre il Classicismo comincia a comparire.</span></a>
       <a class="index-card" href="#fonti"><b>Gabinetto delle fonti</b><span>Partiture, trattati, archivi e strumenti per riaprire direttamente le tracce sulle quali è costruito il percorso.</span></a>
+      <a class="index-card" href="#mappa-studio"><b>Mappa concettuale · studio</b><span>Due viste interattive: concetti essenziali e struttura aggiornata del capitolo.</span></a>
+      <a class="index-card" href="#uda-percorsi"><b>UDA · Percorsi didattici</b><span>Proposte di lavoro strutturate per approfondire e mettere alla prova i collegamenti.</span></a>
     </div>
   </section>
 
@@ -4098,6 +4102,26 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
     </div>
   </section>
 
+  <section class="mm-study-map" id="mappa-studio" aria-labelledby="mm-mappa-title">
+    <div class="section-title">
+      <div class="eyebrow">Per ripercorrere e studiare · Mappa interattiva</div>
+      <h2 id="mm-mappa-title">Il Barocco in una mappa concettuale</h2>
+    </div>
+    <p class="mm-mappa-intro">Esplora le relazioni fra compositori, forme, istituzioni, strumenti e idee. Apri o chiudi i rami e tocca i titoli per raggiungere il punto corrispondente del capitolo. La <strong>mappa ragionata</strong> conserva gli approfondimenti editoriali; la <strong>struttura della pagina</strong> si costruisce dai titoli e sottotitoli attualmente pubblicati.</p>
+    <div class="mm-mappa-toolbar" role="group" aria-label="Scegli la visualizzazione della mappa">
+      <button type="button" data-mm-mappa-mode="concetti" aria-pressed="true">Mappa ragionata</button>
+      <button type="button" data-mm-mappa-mode="struttura" aria-pressed="false">Struttura della pagina</button>
+      <button type="button" id="mm-mappa-fullscreen">Schermo intero</button>
+      <a href="./mappa-studio.md" download="barocco-mappa-studio.md">Scarica il Markdown</a>
+    </div>
+    <div id="mm-mappa-pannello" class="mm-mappa-panel">
+      <markmap-view id="mm-barocco-map" data-mm-source="./mappa-studio.md" theme="cards" layout="two-sided" toolbar aria-label="Mappa interattiva di studio del Barocco musicale"></markmap-view>
+    </div>
+    <p id="mm-mappa-stato" class="mm-mappa-status" role="status">Caricamento della mappa…</p>
+    <p class="mm-mappa-help">A ogni nuova apertura la vista strutturale rilegge titoli, nuove sezioni e sottoparagrafi della pagina. I nodi concettuali più approfonditi sono invece curati nel Markdown: la riscrittura di un paragrafo non li aggiorna automaticamente. Nessun audio parte senza un gesto dell'utente.</p>
+    <noscript>Attiva JavaScript per esplorare la mappa interattiva. Puoi comunque <a href="./mappa-studio.md">consultare lo schema in Markdown</a>.</noscript>
+  </section>
+
   <section id="fonti" class="source-cabinet">
     <div class="source-cabinet-inner">
       <div class="section-title">
@@ -4677,6 +4701,7 @@ figure.liuteria-photo-error .liuteria-img-fallback{display:block!important}
   });
 })();
 </script>
+<script type="module" src="../shared/mm-mappa-viva-v2.js?v=20261107-barocco01"></script>
 <script src="../shared/atlas-autonav-v1.js?v=20261104-dominio01" defer></script><script src="../shared/atlas-anchor-arrival-v1.js?v=20261104-audit-unico01" defer></script><script>
 /* Indice a schede: atterraggio diretto e preciso, indipendente dallo scroll fluido globale. */
 (() => {
