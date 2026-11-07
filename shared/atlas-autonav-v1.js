@@ -36,32 +36,40 @@
     const before=nodes.slice(0,breakAt).filter(node=>node.matches&&node.matches("a,button"));
     const after=nodes.slice(breakAt+1).filter(node=>node.matches&&node.matches("a,button"));
     chunks.push(before);
-    // Gruppi editoriali stabili: non dividere i percorsi ogni sette voci.
-    // Percorsi III: quattro percorsi tematici di ascolto.
-    // La parola e il canto appartiene qui; i percorsi storici restano nelle prime due sezioni.
-    const order=[
+    // Gruppi editoriali stabili della homepage: progetto, percorsi I e II,
+    // cinque capitoli sul teatro (III), audioteche e ascolti (IV).
+    // Le destinazioni rimangono quelle originali della homepage.
+    const audioOrder=[
       "parola-e-canto/",
       "melodramma/audioteca/",
       "musica-da-camera/",
       "dalla-sinfonia-alla-rapsodia/"
     ];
-    const inAudio=a=>order.some(slug=>(a.getAttribute("href")||"").includes(slug));
-    const unique=new Set();
-    const audio=after.filter(a=>{
-      if(!inAudio(a))return false;
-      const href=a.getAttribute("href")||"";
-      if(unique.has(href))return false;
-      unique.add(href);return true;
-    }).sort((a,b)=>{
-      const rank=a=>order.findIndex(slug=>(a.getAttribute("href")||"").includes(slug));
-      return rank(a)-rank(b);
-    });
-    const narrative=after.filter(a=>!inAudio(a));
-    // Percorsi I: dal Medioevo al melodramma classico; II: i successivi percorsi storici e trasversali.
+    const teatroOrder=[
+      "melodramma/",
+      "teatro-classico/",
+      "opera-lirica/",
+      "dall-operetta-a-broadway/",
+      "balletto/"
+    ];
+    const takeOrdered=order=>{
+      const used=new Set();
+      return order.flatMap(slug=>{
+        const item=after.find(a=>(a.getAttribute("href")||"").replace(/^\.\//,"")===slug);
+        if(!item||used.has(item))return [];
+        used.add(item);
+        return [item];
+      });
+    };
+    const audio=takeOrdered(audioOrder);
+    const teatro=takeOrdered(teatroOrder);
+    const separate=new Set([...audio,...teatro]);
+    const narrative=after.filter(a=>!separate.has(a));
+    // Il punto di separazione I/II è il Romanticismo, non un numero fisso di voci.
     const boundary=narrative.findIndex(a=>(a.getAttribute("href")||"").includes("romanticismo/"));
-    const first=boundary>=0?narrative.slice(0,boundary):narrative.slice(0,7);
-    const second=boundary>=0?narrative.slice(boundary):narrative.slice(7);
-    chunks.push(first,second,audio);
+    const first=boundary>=0?narrative.slice(0,boundary):narrative.slice(0,5);
+    const second=boundary>=0?narrative.slice(boundary):narrative.slice(5);
+    chunks.push(first,second,teatro,audio);
    }else{
     items=items.filter(node=>node.matches&&node.matches("a,button"));
     while(items.length)chunks.push(items.splice(0,8));
@@ -71,7 +79,7 @@
     group.className="atlas-group";
     const label=document.createElement("strong");
     label.className="atlas-group-title";
-    label.textContent=page==="home"?(index===0?"Il progetto":index===3?"Percorsi · III · Audioteche":"Percorsi · "+["I","II"][index-1]):"Indice · "+["I","II","III","IV"][index%4];
+    label.textContent=page==="home"?["Il progetto","Percorsi · I","Percorsi · II","Percorsi · III · Teatro","Percorsi · IV · Audioteche"][index]:"Indice · "+["I","II","III","IV"][index%4];
     group.append(label,...entries);
     nav.append(group);
    });
