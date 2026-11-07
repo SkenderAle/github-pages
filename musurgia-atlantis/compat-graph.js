@@ -10,21 +10,55 @@ function makeGraph(host){
   const hashed=str=>{let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619);return h>>>0};
   const rnd=(str,k)=>((hashed(str+'-'+k)%100003)/100003);
   function layout(){
-    const chapters=current.nodes.filter(n=>n.category==='capitolo').sort((a,b)=>a.name.localeCompare(b.name,'it')); const centers=new Map();
-    chapters.forEach((n,i)=>{const a=i*2*Math.PI/Math.max(chapters.length,1)-Math.PI/2;
-      centers.set(n.id,{x:Math.cos(a)*300,y:Math.sin(a)*220,z:Math.sin(a*2.1)*115});});
-    const memberships=new Map();for(const e of current.links){const a=typeof e.source==='object'?e.source.id:e.source,b=typeof e.target==='object'?e.target.id:e.target;
-      if(a.startsWith('cap:')&&!b.startsWith('cap:')){if(!memberships.has(b))memberships.set(b,[]);memberships.get(b).push(a)}
-      if(b.startsWith('cap:')&&!a.startsWith('cap:')){if(!memberships.has(a))memberships.set(a,[]);memberships.get(a).push(b)}}
-    const rest=current.nodes.filter(n=>n.category!=='capitolo');
-    rest.forEach((n,i)=>{let seeds=(memberships.get(n.id)||[]).filter(x=>centers.has(x));let x=0,y=0,z=0;
-      if(seeds.length){for(const s of seeds){const p=centers.get(s);x+=p.x;y+=p.y;z+=p.z}x/=seeds.length;y/=seeds.length;z/=seeds.length}
-      else{const phi=rnd(n.id,4)*6.283; x=Math.cos(phi)*150;y=Math.sin(phi)*150;z=(rnd(n.id,5)-.5)*130;}
-      const spread=seeds.length>1?80:128;
-      n.x=x+(rnd(n.id,0)-.5)*spread*2;n.y=y+(rnd(n.id,1)-.5)*spread*1.5;n.z=z+(rnd(n.id,2)-.5)*spread*2;});
-    chapters.forEach(n=>Object.assign(n,centers.get(n.id)));
-    points=current.nodes;const byId=new Map(points.map(n=>[n.id,n]));
-    linkObjects=current.links.map(e=>({e,a:byId.get(typeof e.source==='object'?e.source.id:e.source),b:byId.get(typeof e.target==='object'?e.target.id:e.target)})).filter(x=>x.a&&x.b);
+    const focus=current.nodes.find(n=>n._focus);
+    if(focus){
+      // Arrange the selected entity centrally; each BFS depth forms a separate 3D orbit.
+      focus.x=0;focus.y=0;focus.z=0;
+      const groups=new Map();
+      for(const n of current.nodes){
+        if(n.id===focus.id)continue;
+        const d=Math.max(1,n._depth||1);
+        if(!groups.has(d))groups.set(d,[]);
+        groups.get(d).push(n);
+      }
+      for(const [depth,nodes] of groups){
+        nodes.sort((a,b)=>a.category.localeCompare(b.category)||a.name.localeCompare(b.name,'it'));
+        const radius=140+(depth-1)*138;
+        nodes.forEach((n,i)=>{
+          const angle=(i/nodes.length)*2*Math.PI-Math.PI/2+(depth%2)*.19;
+          const wave=(rnd(n.id,8)-.5)*Math.min(60,depth*20);
+          n.x=Math.cos(angle)*(radius+wave);
+          n.y=Math.sin(angle)*(radius+wave);
+          n.z=Math.sin(angle*2+depth)*Math.min(65,depth*22)+(rnd(n.id,9)-.5)*20;
+        });
+      }
+      rotY=-.22;rotX=.12;shiftX=0;shiftY=0;
+    }else{
+      const chapters=current.nodes.filter(n=>n.category==='capitolo').sort((a,b)=>a.name.localeCompare(b.name,'it'));
+      const centers=new Map();
+      chapters.forEach((n,i)=>{const angle=i*2*Math.PI/Math.max(chapters.length,1)-Math.PI/2;
+        centers.set(n.id,{x:Math.cos(angle)*300,y:Math.sin(angle)*220,z:Math.sin(angle*2.1)*115});
+      });
+      const memberships=new Map();
+      for(const e of current.links){
+        const a=typeof e.source==='object'?e.source.id:e.source,b=typeof e.target==='object'?e.target.id:e.target;
+        if(a.startsWith('cap:')&&!b.startsWith('cap:')){if(!memberships.has(b))memberships.set(b,[]);memberships.get(b).push(a)}
+        if(b.startsWith('cap:')&&!a.startsWith('cap:')){if(!memberships.has(a))memberships.set(a,[]);memberships.get(a).push(b)}
+      }
+      current.nodes.filter(n=>n.category!=='capitolo').forEach(n=>{
+        const seeds=(memberships.get(n.id)||[]).filter(x=>centers.has(x));let x=0,y=0,z=0;
+        if(seeds.length){for(const k of seeds){const p=centers.get(k);x+=p.x;y+=p.y;z+=p.z}x/=seeds.length;y/=seeds.length;z/=seeds.length}
+        else{const angle=rnd(n.id,4)*6.283;x=Math.cos(angle)*150;y=Math.sin(angle)*150;z=(rnd(n.id,5)-.5)*130}
+        const spread=seeds.length>1?80:128;
+        n.x=x+(rnd(n.id,0)-.5)*spread*2;
+        n.y=y+(rnd(n.id,1)-.5)*spread*1.5;
+        n.z=z+(rnd(n.id,2)-.5)*spread*2;
+      });
+      chapters.forEach(n=>Object.assign(n,centers.get(n.id)));
+    }
+    points=current.nodes;
+    const byId=new Map(points.map(n=>[n.id,n]));
+    linkObjects=current.links.map(e=>({e,a:byId.get(typeof e.source==='object'?e.source.id:e.source),b:byId.get(typeof e.target==='object'?e.target.id:e.target)})).filter(e=>e.a&&e.b);
     if(selected&&!byId.has(selected))selected=null;
   }
   function resize(){pxRatio=Math.min(devicePixelRatio||1,1.6);canvas.width=Math.round(W*pxRatio);canvas.height=Math.round(H*pxRatio);canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(pxRatio,0,0,pxRatio,0,0);}
@@ -40,12 +74,21 @@ function makeGraph(host){
     for(let i=0;i<125;i++){let x=rnd('stars',i)*W,y=rnd('far',i)*H,r=.3+rnd('radius',i)*1.1;ctx.fillStyle=`rgba(197,220,236,${.10+rnd('alpha',i)*.3})`;ctx.fillRect(x,y,r,r)}
     projected=points.map(project);const map=new Map(projected.map(p=>[p.n.id,p]));
     ctx.lineWidth=.7;for(const o of linkObjects){const a=map.get(o.a.id),b=map.get(o.b.id);if(!a||!b)continue;
-      const col=linkColors(o.e);ctx.strokeStyle=colorRgba(col,options.linkOpacity*.8);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+      const col=linkColors(o.e),direct=o.a._depth===0||o.b._depth===0;ctx.strokeStyle=colorRgba(col,direct?.70:options.linkOpacity*.92);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
     projected.sort((a,b)=>b.z-a.z);
-    for(const p of projected){const n=p.n;const chapter=n.category==='capitolo';const base=nodeColors(n),r=(chapter?6.8:Math.min(4.0,2+Math.sqrt(Math.max(1,nodeSize(n)))*.3))*Math.max(.6,Math.min(2.2,p.s*1.35));
+    for(const p of projected){const n=p.n;const chapter=n.category==='capitolo',root=!!n._focus;const base=nodeColors(n),r=(root?9:chapter?6.8:Math.min(4.5,2+Math.sqrt(Math.max(1,nodeSize(n)))*.3))*Math.max(.6,Math.min(2.2,p.s*1.35));
       if(p.x<-40||p.y<-30||p.x>W+40||p.y>H+40)continue;
       ctx.fillStyle=base;ctx.shadowBlur=chapter?16:7;ctx.shadowColor=colorRgba(base,.55);ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*Math.PI);ctx.fill();ctx.shadowBlur=0;
-      if(chapter||n.id===hovered||n.id===selected){ctx.font=chapter?'600 12px system-ui':'11px system-ui';ctx.fillStyle=chapter?'#f5dfba':'#e8f7f1';ctx.textAlign='center';ctx.lineWidth=3.5;ctx.strokeStyle='#061827';const label=n.name.length>31?n.name.slice(0,29)+'…':n.name;ctx.strokeText(label,p.x,p.y-r-7);ctx.fillText(label,p.x,p.y-r-7);}
+      if(n._label||n.id===hovered||n.id===selected){
+        const important=root||n._depth===1;
+        const size=important?12:11;
+        ctx.font=(important?'600 ':'500 ')+size+'px system-ui';
+        ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='#061521';
+        ctx.fillStyle=root?'#ffe2a3':chapter?'#f5dfba':'#e8f7f1';
+        const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
+        const y=p.y-r-8;
+        ctx.strokeText(label,p.x,y);ctx.fillText(label,p.x,y);
+      }
     }
     if(!drag&&pointers.size===0)rotY+=.00037;
   }
@@ -104,7 +147,17 @@ function makeGraph(host){
   canvas.addEventListener('wheel',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*Math.exp(-ev.deltaY*.001),p.x,p.y)},{passive:false});
   canvas.addEventListener('dblclick',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*1.6,p.x,p.y)});
   let api={isFallback:true,destroy(){active=false;canvas.remove()},graphData(v){if(v===undefined)return current;current=v;layout();return api},
-    zoomToFit(){zoom=.95;shiftX=0;shiftY=0;selected=null;return api},
+    zoomToFit(){
+      zoom=1;shiftX=0;shiftY=0;selected=null;
+      const focus=points.find(n=>n._focus);
+      if(!focus){zoom=.95;return api}
+      const p=points.map(project);
+      const dx=Math.max(35,...p.map(q=>Math.abs(q.x-W/2)));
+      const dy=Math.max(35,...p.map(q=>Math.abs(q.y-H/2)));
+      const farthest=Math.max(1,...points.map(n=>n._depth||1));
+      zoom=Math.max(.35,Math.min(2.35/Math.sqrt(farthest), (W-75)/(dx*2),(H-165)/(dy*2)));
+      return api;
+    },
     zoom(value){if(value===undefined)return zoom;const node=selected?points.find(n=>n.id===selected):null;const p=node?project(node):{x:W/2,y:H/2};zoomAt(value,p.x,p.y);return api},
     cameraPosition(_pos,lookAt){if(lookAt&&Number.isFinite(lookAt.x)){const p=project(lookAt);shiftX+=W/2-p.x;shiftY+=H/2-p.y;selected=lookAt.id||null;zoomAt(Math.max(zoom,1.7),W/2,H/2)}return api},
     d3Force(){return {strength(){return this}}},
