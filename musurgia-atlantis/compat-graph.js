@@ -12,27 +12,34 @@ function makeGraph(host){
   function layout(){
     const focus=current.nodes.find(n=>n._focus);
     if(focus){
-      // Arrange the selected entity centrally; each BFS depth forms a separate 3D orbit.
+      // True volumetric layout: each graph-distance level occupies a 3D spherical
+      // cloud/shell, never a flat XY ring. The label tier does not alter 3D depth.
       focus.x=0;focus.y=0;focus.z=0;
       const groups=new Map();
       for(const n of current.nodes){
         if(n.id===focus.id)continue;
-        const d=Math.max(1,n._depth||1);
-        if(!groups.has(d))groups.set(d,[]);
-        groups.get(d).push(n);
+        const depth=Math.max(1,n._depth||1);
+        if(!groups.has(depth))groups.set(depth,[]);
+        groups.get(depth).push(n);
       }
+      const goldenAngle=Math.PI*(3-Math.sqrt(5));
       for(const [depth,nodes] of groups){
-        nodes.sort((a,b)=>a.category.localeCompare(b.category)||a.name.localeCompare(b.name,'it'));
-        const radius=140+(depth-1)*138;
+        nodes.sort((a,b)=>a.id.localeCompare(b.id));
+        const shellRadius=145+(depth-1)*124;
         nodes.forEach((n,i)=>{
-          const angle=(i/nodes.length)*2*Math.PI-Math.PI/2+(depth%2)*.19;
-          const wave=(rnd(n.id,8)-.5)*Math.min(60,depth*20);
-          n.x=Math.cos(angle)*(radius+wave);
-          n.y=Math.sin(angle)*(radius+wave);
-          n.z=Math.sin(angle*2+depth)*Math.min(65,depth*22)+(rnd(n.id,9)-.5)*20;
+          // Fibonacci-sphere distribution prevents planar rings and polar clumping.
+          const latitude=1-2*(i+.5)/nodes.length;
+          const radial=Math.sqrt(Math.max(0,1-latitude*latitude));
+          const longitude=goldenAngle*i+depth*1.27+.32;
+          // Small, deterministic 3-axis drift makes each shell a diffuse nebula.
+          const variation=depth===1?.94+rnd(n.id,8)*.12:.79+rnd(n.id,8)*.39;
+          const r=shellRadius*variation;
+          n.x=r*radial*Math.cos(longitude)+(rnd(n.id,10)-.5)*shellRadius*.075;
+          n.y=r*latitude+(rnd(n.id,11)-.5)*shellRadius*.075;
+          n.z=r*radial*Math.sin(longitude)+(rnd(n.id,12)-.5)*shellRadius*.075;
         });
       }
-      rotY=-.22;rotX=.12;shiftX=0;shiftY=0;
+      rotY=-.52;rotX=.33;shiftX=0;shiftY=0;
     }else{
       const chapters=current.nodes.filter(n=>n.category==='capitolo').sort((a,b)=>a.name.localeCompare(b.name,'it'));
       const centers=new Map();
@@ -65,7 +72,7 @@ function makeGraph(host){
   function colorRgba(hex,alpha){if(!/^#[0-9a-f]{6}$/i.test(hex))return 'rgba(160,197,197,'+alpha+')';let h=hex.slice(1);return `rgba(${parseInt(h.slice(0,2),16)},${parseInt(h.slice(2,4),16)},${parseInt(h.slice(4,6),16)},${alpha})`}
   function project(n){const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),sx=Math.sin(rotX);
     const x=n.x*cy-n.z*sy, z=n.x*sy+n.z*cy, y=n.y*cx-z*sx, depth=n.y*sx+z*cx;
-    const k=820/(820+depth), s=Math.min(W,H)/890*zoom*k;
+    const k=Math.max(.40,Math.min(2.15,820/(820+depth))), s=Math.min(W,H)/890*zoom*k;
     return {x:W/2+shiftX+x*s,y:H/2+shiftY+y*s,z:depth,s,scale:k,n};
   }
   function frame(time){if(!active)return;requestAnimationFrame(frame);if(time-last<30)return;last=time;
@@ -74,11 +81,11 @@ function makeGraph(host){
     for(let i=0;i<125;i++){let x=rnd('stars',i)*W,y=rnd('far',i)*H,r=.3+rnd('radius',i)*1.1;ctx.fillStyle=`rgba(197,220,236,${.10+rnd('alpha',i)*.3})`;ctx.fillRect(x,y,r,r)}
     projected=points.map(project);const map=new Map(projected.map(p=>[p.n.id,p]));
     ctx.lineWidth=.7;for(const o of linkObjects){const a=map.get(o.a.id),b=map.get(o.b.id);if(!a||!b)continue;
-      const col=linkColors(o.e),direct=o.a._depth===0||o.b._depth===0;ctx.strokeStyle=colorRgba(col,direct?.70:options.linkOpacity*.92);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+      const col=linkColors(o.e),direct=o.a._depth===0||o.b._depth===0;const atmospheric=Math.max(.38,Math.min(1.0,1-(a.z+b.z)/2200));ctx.strokeStyle=colorRgba(col,(direct?.69:options.linkOpacity*.92)*atmospheric);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
     projected.sort((a,b)=>b.z-a.z);
-    for(const p of projected){const n=p.n;const chapter=n.category==='capitolo',root=!!n._focus;const base=nodeColors(n),r=(root?9:chapter?6.8:Math.min(4.5,2+Math.sqrt(Math.max(1,nodeSize(n)))*.3))*Math.max(.6,Math.min(2.2,p.s*1.35));
+    for(const p of projected){const n=p.n;const chapter=n.category==='capitolo',root=!!n._focus;const base=nodeColors(n),r=(root?9.5:chapter?6.8:Math.min(4.5,2+Math.sqrt(Math.max(1,nodeSize(n)))*.3))*Math.max(.52,Math.min(2.4,p.scale*Math.sqrt(zoom)));
       if(p.x<-40||p.y<-30||p.x>W+40||p.y>H+40)continue;
-      ctx.fillStyle=base;ctx.shadowBlur=chapter?16:7;ctx.shadowColor=colorRgba(base,.55);ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*Math.PI);ctx.fill();ctx.shadowBlur=0;
+      ctx.globalAlpha=root?1:Math.max(.55,Math.min(1,1-p.z/1450));ctx.fillStyle=base;ctx.shadowBlur=root?23:chapter?16:7;ctx.shadowColor=colorRgba(base,.55);ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*Math.PI);ctx.fill();ctx.shadowBlur=0;ctx.globalAlpha=1;
       if(n._label||n.id===hovered||n.id===selected){
         const important=root||n._depth===1;
         const size=important?12:11;
@@ -90,7 +97,7 @@ function makeGraph(host){
         ctx.strokeText(label,p.x,y);ctx.fillText(label,p.x,y);
       }
     }
-    if(!drag&&pointers.size===0)rotY+=.00037;
+    if(!drag&&pointers.size===0){rotY+=.00037;rotX+=.000085;if(rotX>Math.PI)rotX-=2*Math.PI;}
   }
   function coordinates(evt){const b=canvas.getBoundingClientRect();return {x:evt.clientX-b.left,y:evt.clientY-b.top};}
   const pointers=new Map();let pinch=null,ignoreTap=false;
