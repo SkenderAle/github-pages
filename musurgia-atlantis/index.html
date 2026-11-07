@@ -26,6 +26,11 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
 .pillgrid{display:flex;flex-wrap:wrap;gap:6px}.chip{border:1px solid #42656d;background:#102c38;color:#b7d6d4;font-size:11px;border-radius:18px;padding:7px 9px}.chip.active{border-color:#efc387;color:#ffe3b7;background:#3b302a}.chip:hover{filter:brightness(1.22)}
 .bottomtools{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.btn{border:1px solid #41606a;border-radius:10px;background:#0d2b39;color:#e4f3ef;font-size:12px;padding:9px 11px}.btn:hover{background:#1b404b}.btn.primary{background:#b38d5e;color:#09151b;border-color:#ddb982;font-weight:700}
 #detail{position:absolute;z-index:5;top:95px;right:18px;width:320px;max-height:calc(100vh - 116px);max-height:calc(100dvh - 116px);overflow:auto;border:1px solid var(--border);border-radius:18px;background:var(--panel);box-shadow:var(--shadow);backdrop-filter:blur(16px);padding:18px;display:none;scrollbar-width:thin}#detail.open{display:block}.detail-close{position:absolute;right:12px;top:10px;background:transparent;color:#cde2df;border:0;font-size:22px}.detail-kind{color:var(--gold);text-transform:uppercase;font-size:10px;letter-spacing:.14em;margin:4px 30px 8px 0}.detail-name{font-family:Georgia,serif;font-size:25px;line-height:1.18;margin:0 20px 10px 0}.detail-tag{color:var(--muted);font-size:11px;margin-bottom:12px;word-break:break-word}.detail-list{display:grid;gap:7px;margin:11px 0}.connection{background:#102b39;border:1px solid #294a54;border-radius:10px;width:100%;padding:9px;text-align:left;color:#d6f1eb;font-size:12px}.connection small{display:block;color:#8fabaf;font-size:10px;margin-top:2px}.connection:hover{background:#21414a}.source-link{display:inline-block;border:1px solid #456c73;padding:7px 9px;font-size:11px;border-radius:8px;text-decoration:none;margin:2px 3px 3px 0}.source-link:hover{background:#193943}.detail-intro{color:#b1c9ca;font-size:12px;line-height:1.55}
+#zoomTools{position:absolute;z-index:6;right:14px;bottom:65px;display:flex;flex-direction:column;gap:7px;align-items:center;pointer-events:auto}
+#zoomTools button{width:46px;height:46px;border:1px solid #7faaa8;border-radius:13px;background:#0b2938ed;color:#f4dbad;font-size:29px;font-weight:400;line-height:1;display:grid;place-items:center;box-shadow:0 5px 18px #0007;touch-action:manipulation}
+#zoomTools button:hover,#zoomTools button:active{background:#22505c}
+#zoomTools small{font-size:10px;color:#b7cbd0;text-shadow:0 1px 4px #000;letter-spacing:.06em}
+@media(max-width:680px){#zoomTools{top:101px;bottom:auto;right:11px}#zoomTools button{width:45px;height:45px}}
 #footer{position:absolute;z-index:3;bottom:10px;left:50%;transform:translateX(-50%);pointer-events:none;background:#081924b8;border:1px solid #34525b7a;border-radius:30px;color:#a6c3c7;padding:8px 16px;text-align:center;font-size:11px;white-space:nowrap}
 #toast{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);z-index:15;background:#25454b;color:white;border:1px solid #65959c;border-radius:10px;padding:10px 15px;font-size:12px;display:none;box-shadow:var(--shadow);max-width:85vw}#toast.show{display:block}
 #error{position:absolute;z-index:6;top:50%;left:50%;transform:translate(-50%,-50%);background:#102834;border:1px solid #577784;border-radius:17px;padding:25px;max-width:520px;text-align:center;display:none}#error p{line-height:1.6;color:#bed5d7}#error h2{font-family:Georgia,serif;font-size:24px;color:#f4cd9c}
@@ -43,6 +48,7 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
  <div class="identity"><div class="sigil" aria-hidden="true">✧</div><div><div class="brand">MUSURGIA ATLANTIS</div><div class="tagline">La musica non sta in fila · rete sperimentale</div></div></div>
  <div class="topstats"><span class="stat"><strong id="visibleNodes">—</strong> nodi · <strong id="visibleLinks">—</strong> relazioni</span><button class="ghost" id="centerBtn" title="Inquadra la rete">◎ Centra</button><button class="ghost" id="mobileFilters" aria-expanded="false" aria-controls="side">☷ Filtri</button></div>
 </header>
+<div id="zoomTools" role="group" aria-label="Controlli di ingrandimento della mappa"><button type="button" id="zoomIn" aria-label="Ingrandisci la costellazione" title="Zoom avanti">+</button><button type="button" id="zoomOut" aria-label="Riduci la costellazione" title="Zoom indietro">−</button><small>ZOOM</small></div>
 <aside class="side" id="side" aria-label="Filtri della mappa">
  <div class="panelheader"><span class="smallcaps">Laboratorio delle connessioni</span><span style="font-size:11px;color:#869da5">v1 · grafo v8</span></div>
  <h1 class="heading">Esplora la costellazione</h1>
@@ -77,7 +83,7 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
 <div id="footer">Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo</div>
 <div id="toast" role="status"></div>
 <div id="error"><h2>La costellazione non si è aperta</h2><p id="errorMessage"></p><button class="btn" onclick="location.reload()">Riprova</button></div>
-<script src="./compat-graph.js"></script>
+<script src="./compat-graph.js?v=zoom-touch-1"></script>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
@@ -183,6 +189,15 @@ function setupUI(){
  $('resetBtn').onclick=()=>{view='chapters';tiers=new Set(['trattazione','menzione']);types=new Set(ALL_TYPES);steps=1;selectedId=null;selectedEdge=null;for(const x of document.querySelectorAll('[data-tier]'))x.checked=tiers.has(x.dataset.tier);for(const b of document.querySelectorAll('[data-type]')){b.classList.add('active');b.setAttribute('aria-pressed','true')}syncTabs();$('detail').classList.remove('open');$('footer').classList.remove('hidden');$('search').value='';$('suggestions').classList.remove('visible');update();setTimeout(()=>graph.zoomToFit(700,110),450)};
  $('unfoldBtn').onclick=()=>{if(!selectedId){showToast('Prima seleziona un nodo');return}steps=2;view='near';syncTabs();update()};
  $('centerBtn').onclick=()=>graph.zoomToFit(800,90);
+ function changeZoom(factor){
+  if(!graph)return;
+  if(graph.isFallback&&typeof graph.zoom==='function'){graph.zoom(graph.zoom()*factor);return}
+  const camera=graph.cameraPosition();const n=selectedId?graph.graphData().nodes.find(x=>x.id===selectedId):null;
+  const target=n||{x:0,y:0,z:0};const q={x:target.x+(camera.x-target.x)/factor,y:target.y+(camera.y-target.y)/factor,z:target.z+(camera.z-target.z)/factor};
+  graph.cameraPosition(q,target,350);
+ }
+ $('zoomIn').onclick=()=>changeZoom(1.55);
+ $('zoomOut').onclick=()=>changeZoom(1/1.55);
  $('closeDetail').onclick=()=>{selectedId=null;selectedEdge=null;$('detail').classList.remove('open');$('footer').classList.remove('hidden');graph.nodeColor(nodeColor);graph.linkColor(linkColor)};
  $('mobileFilters').onclick=()=>{const yes=$('side').classList.toggle('open');$('mobileFilters').setAttribute('aria-expanded',String(yes));if(yes)$('detail').classList.remove('open')};
 }
@@ -213,7 +228,7 @@ async function init(){
  }catch(e){console.warn('WebGL non disponibile, passo alla vista compatibile',e);mountPoint?.remove();graph=window.AtlantisCompatGraph($('graph'),{controlType:'orbit'}).nodeVal(n=>n.category==='capitolo'?14:2.8).nodeColor(nodeColor).linkColor(linkColor).linkOpacity(.3).onNodeClick(n=>focusNode(n.id)).onNodeHover(n=>document.body.style.cursor=n?'pointer':'default').onBackgroundClick(()=>$('suggestions').classList.remove('visible')).width(innerWidth).height(innerHeight)}
  if(graph.d3Force('charge'))graph.d3Force('charge').strength(-95);
  setupUI();update();$('graphBackdrop').style.display='none';$('loading').style.display='none';
- $('footer').textContent=graph.isFallback?'Vista 3D semplificata · Trascina per ruotare · Tocca un nodo':'Trascina per ruotare · scorri per avvicinare · tocca un nodo';
+ $('footer').textContent=graph.isFallback?'Un dito: ruota · Due dita: zoom · Tocca un nodo':'Trascina per ruotare · scorri per zoom · tocca un nodo';
  window.addEventListener('resize',()=>{graph.width(innerWidth).height(innerHeight)});
  setTimeout(()=>graph.zoomToFit(1000,95),1700);
 }
