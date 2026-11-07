@@ -232,3 +232,71 @@ Gli archi compositivi E0776, E0780, E0783, E0786, E0790, E0794, E0797, E0800, E0
 **Limite da correggere editorialmente in seguito, non con falsi archi:** per Vivaldi, Weber, Bellini e Wagner non emergono attualmente catene specifiche di secondo livello con i filtri standard. La profondità massima selezionabile (5) non implica la presenza di un percorso effettivo di quella lunghezza per ogni compositore. L'arricchimento della rete richiederà legami storici specifici con librettisti, fonti, opere o altre persone, confermati uno per uno.
 
 **Verifiche remote:** commit del dataset `5ac70cad6abdcb06e9cd9f96372be6618c036d7d`; il file remoto è JSON valido con 608 nodi, 1.520 link, ID degli archi univoci, nessun estremo orfano; 342 proposte, 375 candidati, 0 `da_verificare`. I file `index.html` e `compat-graph.js` sono stati letti per controllo, non modificati.
+
+
+---
+
+## Lotto 05 — 8 novembre 2026: librettisti, fonti letterarie e adattamenti
+
+**Obiettivo:** collegamenti specifici tra autore del testo, opera musicale, fonte letteraria e redazione. La convalida non deve scambiare una fonte di soggetto con l'autore del libretto, né moltiplicare archi equivalenti.
+
+**Esito:** 17 relazioni con riscontro storico indipendente; 2 duplicati sostanziali riconosciuti e sospesi. Nessun nodo o arco aggiunto/rimosso.
+
+| Nucleo | Arco | Esito e distinzione |
+| --- | --- | --- |
+| Gluck, *Orfeo* 1762 | E0876 | Calzabigi è il librettista della versione originale italiana viennese |
+| Gluck, *Orphée* 1774 | L02-A19 | Pierre-Louis Moline è l'adattatore del libretto francese parigino; redazione distinta |
+| Antecedente di *Fidelio* | L03-A18 | Bouilly firma *Léonore, ou l'amour conjugal* (1798), testo già musicato da Gaveaux. Precisato il verbo `scrive_libretto_originale_di` |
+| *Fidelio* e Bouilly | L03-A19 | Il soggetto di *Fidelio* deriva dall'opera francese; non implica collaborazione biografica Bouilly–Beethoven |
+| *Leonore* 1806 | L03-A21 | Stephan von Breuning rivede il libretto della seconda redazione |
+| *Egmont* | L03-A26, L03-A27 | Goethe autore del dramma; Beethoven delle musiche di scena op.84 (1809–1810), distinte |
+| *An die ferne Geliebte* | L03-A41 | I testi poetici sono di Alois Jeitteles; i testimoni originari e l'eventuale revisione di Beethoven richiedono cautela |
+| *La traviata* | L04-A26 | Alexandre Dumas figlio è l'autore della fonte letteraria; il libretto operistico è di Francesco Maria Piave |
+| *Don Carlos* francese 1867 | L04-A55, L04-A56 | Joseph Méry e Camille du Locle coautori del testo francese, da Schiller |
+| *Don Carlo* italiano | L04-A57, L04-A58 | Achille de Lauzières traduce il francese; Angelo Zanardini rivede l'italiano per la redazione scaligera 1884 |
+| *Show Boat* (1927) | E0877 | Oscar Hammerstein II, book e lyrics; musica di Jerome Kern; soggetto dal romanzo di Edna Ferber |
+| *Oklahoma!* (1943) | E0878 | Oscar Hammerstein II, book e lyrics; musica di Richard Rodgers; fonte *Green Grow the Lilacs* di Lynn Riggs |
+| *West Side Story* (1957) | L06-A036, L06-A037 | Stephen Sondheim firma le lyrics, Arthur Laurents il book; Bernstein la musica, Robbins l'ideazione e la coreografia |
+
+### Duplicati individuati e sospesi
+
+- **L06-A028** (Hammerstein II → *Show Boat*, `scrive_book_e_lyrics_di`): duplica l'arco canonico e verificato **E0877**, già attributivo dello stesso book e lyrics.
+- **L06-A032** (Hammerstein II → *Oklahoma!*, `scrive_book_e_lyrics_di`): duplica l'arco canonico e verificato **E0878**.
+
+Entrambi ricevono `quality_gate=sospeso`, `verification_status=duplicato_di_relazione_confermata`, `duplicate_of`, `previous_quality_gate` e `previous_description`. **Le prove e gli ID originari sono conservati**, ma gli archi non entrano più nei percorsi attivi.
+
+### Fonti indipendenti consultate (per arco)
+
+- E0876 — Gluck-Gesamtausgabe, GluckWV 1.30, originali viennesi e poeta: https://www.gluck-gesamtausgabe.de/gwv/werkregister/eintrag/work-60.html
+- L02-A19 — Gluck-Gesamtausgabe, *Orphée et Eurydice* Parigi 1774, frontespizio della partitura con parole di Moline: https://www.gluck-gesamtausgabe.de/en/gwv/werkregister/eintrag/work-65.html
+- L03-A18 — Beethoven-Haus, libretto di Bouilly: https://www.beethoven.de/en/media/view/4614156506365952?page=0 ; storico musicale https://www.lvbeethoven.org/hess109/
+- L03-A19, L03-A21 — Beethoven-Haus, cronologia dell'op.72: https://www.beethoven.de/en/work/view/4984496705241088/ ; Metropolitan Opera, fasi 1805/1806/1814: https://www.metopera.org/discover/education/educator-guides/fidelio/composer-timeline/
+- L03-A26, L03-A27 — Beethoven-Haus, *Egmont* op.84: https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA7Of6jwsM/ ; Berliner Philharmoniker: https://www.berliner-philharmoniker.de/en/programme-notes/ludwig-van-beethoven-incidental-music-to-goethes-egmont-op-84/
+- L03-A41 — Beethoven-Haus, autografo e problemi della tradizione testuale: https://www.beethoven.de/en/media/view/6507161798574080/Ludwig%2Bvan%2BBeethoven%2C%2B%26quot%3BAn%2Bdie%2Bferne%2BGeliebte%26quot%3B%2C%2BLiederkreis%2Bf%C3%BCr%2BSingstimme%2Bund%2BKlavier%2Bop.%2B98%2C%2BAutograph?fromWork=5564103917568000
+- L04-A26 — Teatro La Fenice: https://www.teatrolafenice.it/event/giuseppe-verdi-la-traviata/ ; BnF, opera e soggetto: https://catalogue.bnf.fr/ark:/12148/cb13920589h
+- L04-A55–L04-A58 — Royal Opera House Collections, 1867 e 1884: https://rohcollections.org.uk/Work.aspx?work=12939 ; https://rohcollections.org.uk/work.aspx?work=516 ; Morgan Library, libretto a stampa del 1884: https://www.themorgan.org/music-manuscripts-and-printed-music/70134
+- E0877 — Catalogo ufficiale Rodgers & Hammerstein, *Show Boat*: https://rodgersandhammerstein.com/show/show-boat/
+- E0878 — Catalogo ufficiale Rodgers & Hammerstein, *Oklahoma!*: https://rodgersandhammerstein.com/show/oklahoma/
+- L06-A036, L06-A037 — Library of Congress, *West Side Story: Birth of a Classic*: https://www.loc.gov/exhibits/westsidestory/westsidestory-overview.html ; catalogo partiture: https://guides.loc.gov/leonard-bernstein/published-scores
+
+### Principali cautele filologiche
+1. *Orfeo* italiano (1762) e *Orphée* francese (1774) non hanno lo stesso libretto in senso testuale: Calzabigi e Moline ricoprono incarichi diversi.
+2. La vicenda di Bouilly era già stata musicata da Gaveaux nel 1798. Beethoven riprese il soggetto con collaboratori tedeschi successivi.
+3. *Don Carlos*: la lingua francese dell'originale non viene annullata dalle traduzioni italiane. Il lavoro di Zanardini riguarda la redazione del 1884, non l'atto fondativo del 1867.
+4. *La traviata*: l'adattamento della pièce di Dumas da parte di Piave costituisce mediazione drammaturgica reale; fonte letteraria ≠ librettista.
+5. *Show Boat*, *Oklahoma!*, *West Side Story*: book, lyrics e musica devono rimanere attribuzioni distinte.
+
+### Stato dopo il Lotto 5
+- Convalide indipendenti introdotte **17**; archi duplicati sospesi **2**.
+- `riscontro_storico_indipendente` **83** (il totale dei flag booleani storici resta distinto); `proposta_editoriale_revisionata` **339**; `candidato_non_fuso` **359**; somma provvisori **698**; `da_verificare` **0**.
+- Dataset invariato quanto a dimensione: **608 nodi, 1.520 archi**. Nessun nodo orfano, ID univoci. Integrità del JSON verificata prima del commit.
+- Verificare dopo la pubblicazione i percorsi ai livelli I–V, in particolare la presenza di raccordi *Fidelio → Bouilly*, *Gluck → Orphée/Calzabigi*, *Verdi → Don Carlos* e *Hammerstein → Show Boat/Oklahoma!* senza duplicazioni.
+
+### Questioni aperte
+- I collegamenti *Don Carlos* di natura editoriale o storiografica vanno trattati con maggiore granularità: redazioni, traduzioni e versione 1886 non sono intercambiabili.
+- Verificare se i nodi delle fonti letterarie richiedano una classificazione distinta da «opera» e se i ponti possano essere percorsi dal motore di ricerca senza attraversare capitoli.
+- Proseguire sui librettisti e collaboratori ancora candidati per il teatro del primo Novecento, il balletto e la scena audiovisiva; nessuna convalida massiva.
+
+### Commit
+- Dataset: `9f7b46f0a7e573163e067db0b3986c3bada00027`.
+- Registro: aggiornato nel commit di questa sezione.
