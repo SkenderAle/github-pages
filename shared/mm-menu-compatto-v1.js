@@ -8,7 +8,7 @@
   nav.classList.add('mm-compact-ready');
   if(bar.dataset.atlasPage==='home'){
    nav.classList.add('mm-compact-home');
-   return; // L'Atlante conserva le proprie quattro famiglie di percorsi.
+   return; // La homepage conserva i propri cinque gruppi editoriali (progetto, I, II, teatro III, audioteche IV).
   }
   const groups=[...nav.querySelectorAll(':scope > .atlas-group')];
   if(!groups.length)return;
