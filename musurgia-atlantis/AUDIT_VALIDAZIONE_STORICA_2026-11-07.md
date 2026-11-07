@@ -153,3 +153,61 @@ Fonti principali:
 
 ### Lotto successivo consigliato
 Consolidare le attribuzioni operistiche ancora provvisorie (Weber, Rossini, Bellini, Wagner, Bizet e Puccini) e, separatamente, distinguere le coreografie storiche da musica e scenografie (*Swan Lake*, *Sacre*, Ravel, Ballets Russes). Verificare le fonti una per una, senza trattare come automaticamente convalidati tutti gli archi di un personaggio.
+
+---
+
+## Lotto 04 — 8 novembre 2026: attribuzioni operistiche Weber–Puccini
+
+**Perimetro:** 10 archi compositore → opera, tutti inizialmente `proposta_editoriale_revisionata`. La validazione riguarda l'attribuzione della **musica**, non la convalida automatica delle altre relazioni editoriali, tematiche e di ricezione. Nessun nodo o arco è stato aggiunto o rimosso.
+
+| Opera | Arco | Musica e libretto | Prima assoluta e fonte/adattamento |
+| --- | --- | --- | --- |
+| *Der Freischütz* | E0776 | Carl Maria von Weber; Friedrich Kind | Berlino, Schauspielhaus, 18 giugno 1821. Materiale narrativo dal *Gespensterbuch* (Apel/Laun) |
+| *Il barbiere di Siviglia* (originariamente *Almaviva*) | E0780 | Gioachino Rossini; Cesare Sterbini | Roma, Teatro Argentina, 20 febbraio 1816. Da Beaumarchais; distinto da Paisiello |
+| *Norma* | E0783 | Vincenzo Bellini; Felice Romani | Milano, Teatro alla Scala, 26 dicembre 1831. Dalla tragedia di Alexandre Soumet |
+| *Guillaume Tell* | E0786 | Gioachino Rossini; Étienne de Jouy e Hippolyte Bis | Parigi, Académie royale de musique, 3 agosto 1829. Dal *Wilhelm Tell* di Schiller |
+| *Tannhäuser* | E0790 | Richard Wagner, autore sia della musica sia del libretto | Dresda, teatro di corte, 19 ottobre 1845. Tradizioni e leggende medievali; versione parigina rivista del 1861 |
+| *Tristan und Isolde* | E0794 | Richard Wagner, autore sia della musica sia del libretto | Monaco di Baviera, 10 giugno 1865. Ciclo medievale di Tristano e Isotta |
+| *Carmen* | E0797 | Georges Bizet; Henri Meilhac e Ludovic Halévy | Parigi, Opéra-Comique, 3 marzo 1875. Da Mérimée; originale con dialoghi parlati |
+| *La bohème* | E0800 | Giacomo Puccini; Luigi Illica e Giuseppe Giacosa | Torino, Teatro Regio, 1 febbraio 1896. Dal materiale narrativo e teatrale di Henri Murger |
+| *Le Villi* | E0803 | Giacomo Puccini; Ferdinando Fontana | Milano, Teatro Dal Verme, 31 maggio 1884. Leggenda delle Willi attraverso Heine; revisioni successive |
+| *Turandot* | E0806 | Giacomo Puccini; Giuseppe Adami e Renato Simoni | Milano, Teatro alla Scala, 25 aprile 1926. Da Gozzi (anche attraverso Schiller/Maffei); incompiuta nel 1924 |
+
+### Distinzioni filologiche da preservare
+- `Der Freischütz`: il rifacimento francese dell'Opéra con recitativi di Berlioz (1841) è una fase diversa dall'originale berlinese con dialoghi.
+- `Il barbiere`: *Almaviva, ossia L'inutile precauzione* è il titolo originario rossiniano; Paisiello (1782) è opera distinta sul medesimo soggetto.
+- `Guillaume Tell`: la coreografia della produzione parigina è di Jean-Louis Aumer; non promuovere il rapporto con il balletto a identità di genere né ad attribuzione compositiva.
+- `Tannhäuser`: prima Dresda 1845; riadattamento per Parigi 1861, con ampliamento della scena del Venusberg e differenti mediazioni linguistiche/teatrali.
+- `Tristan`: il libretto è di Wagner; la tradizione letteraria medievale non implica partecipazione diretta degli autori medievali alla creazione operistica.
+- `Carmen`: i recitativi di Guiraud per Vienna 1875 sono un rifacimento postumo e non appartengono alla versione presentata il 3 marzo 1875.
+- `La bohème`: il soggetto di Murger è condiviso con l'opera di Leoncavallo; le due partiture sono autonome.
+- `Le Villi`: opera-ballo, non balletto autonomo; successione della versione originale 1884, versione in due atti 1884 e successive revisioni 1885/1889.
+- `Turandot`: la prima rappresentazione del 25 aprile 1926 terminò dopo la morte di Liù, **senza** il finale di Alfano. Le diverse conclusioni di Alfano e Berio restano attribuite ai rispettivi autori.
+
+### Fonti catalografiche e istituzionali per gli archi modificati
+- **E0776:** BnF https://catalogue.bnf.fr/ark:/12148/cb139138786 ; Staatsoper Berlin https://www.staatsoper-berlin.de/en/veranstaltungen/der-freischuetz.2745/
+- **E0780:** Rossini Opera Festival https://www.rossinioperafestival.it/soggetti/almaviva-ossia-linutile-precauzione/ ; BnF https://catalogue.bnf.fr/ark:/12148/cb13918009c
+- **E0783:** Corago https://corago.unibo.it/opera/Z000001048 ; Opera di Roma https://archiviostorico.operaroma.it/opera/norma/
+- **E0786:** BnF, libretto https://catalogue.bnf.fr/ark:/12148/cb41887191r ; BnF, spettacolo https://catalogue.bnf.fr/ark:/12148/cb396843363
+- **E0790:** BnF, catalogo WWV 70 https://catalogue.bnf.fr/ark:/12148/cb13920776q ; BnF, versione parigina https://catalogue.bnf.fr/ark:/12148/cb396844758
+- **E0794:** BnF, catalogo WWV 90 https://catalogue.bnf.fr/ark:/12148/cb13920779r.public ; BnF, parti https://catalogue.bnf.fr/ark:/12148/cb43534813w
+- **E0797:** BnF, catalogo GB 9 https://catalogue.bnf.fr/ark:/12148/cb12241834c ; BnF, prima https://catalogue.bnf.fr/ark:/12148/cb42224395t
+- **E0800:** catalogo Puccini https://catalog.puccini.it/works/la-boheme ; note https://catalog.puccini.it/works/la-boheme/notes ; archivio Opera di Roma https://archiviostorico.operaroma.it/opera/la-boheme/
+- **E0803:** catalogo Puccini https://catalog.puccini.it/works/60-le-villi ; note https://catalog.puccini.it/works/60-le-villi/notes ; Corago, libretto https://corago.unibo.it/libretto/0000198123
+- **E0806:** catalogo Puccini https://catalog.puccini.it/works/turandot ; note critiche https://catalog.puccini.it/works/turandot/notes ; edizioni e completamenti https://catalog.puccini.it/works/turandot/sources/91.D.7
+
+### Stato e integrità dopo il Lotto 4
+- **10 relazioni storiche convalidate**: E0776, E0780, E0783, E0786, E0790, E0794, E0797, E0800, E0803, E0806.
+- Per ciascuna: `quality_gate = riscontro_storico_indipendente`, `historical_verified_independently = true`, `verification_status`, `verified_at`, `verification_note`, `evidence_urls`, `previous_quality_gate`, `previous_description`.
+- Rimangono **342** proposte editoriali revisionate e **375** candidati non fusi, in totale **717** provvisorie. **0** `da_verificare`.
+- Nodi e archi immutati: **608 / 1.520**. ID degli archi univoci, estremi presenti nel set dei nodi, serializzazione JSON valida.
+- Nessun arco `analizza_o_richiama` viene convalidato per il solo fatto che l'opera o il compositore sia ben documentato; tutte le attribuzioni librettistiche non già presenti come archi rimangono documentate nel registro e nelle note, non introdotte automaticamente.
+
+### Questioni aperte
+1. **Discrepanza cronologica da non risolvere per congettura:** la cronologia critica Puccini data la prima della versione in due atti delle *Villi* al **27 dicembre 1884**, mentre una scheda Corago del libretto torinese riporta **26 dicembre 1884**. Per il Lotto 4 è validata soltanto la prima assoluta del **31 maggio 1884**; l'evento della revisione resta da collazionare.
+2. Conservare separati i rapporti di versioni e completamenti dai dieci archi compositivi: le fonti danno informazioni ulteriori, ma non impongono archi mancanti.
+3. Prossimi lotti: librettisti e fonti letterarie rappresentati come nodi; successivamente coreografie e relazioni storico-estetiche, senza promozione massiva.
+
+### Pubblicazione
+- Commit dataset su `main`: **5ac70cad6abdcb06e9cd9f96372be6618c036d7d**
+- Commit registro su `main`: coincide con il commit di aggiornamento di questo documento, consultabile dalla cronologia del file.
