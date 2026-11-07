@@ -211,3 +211,24 @@ Consolidare le attribuzioni operistiche ancora provvisorie (Weber, Rossini, Bell
 ### Pubblicazione
 - Commit dataset su `main`: **5ac70cad6abdcb06e9cd9f96372be6618c036d7d**
 - Commit registro su `main`: coincide con il commit di aggiornamento di questo documento, consultabile dalla cronologia del file.
+
+
+### Verifica percorsi 1–5 sul dataset pubblicato
+Test effettuato sull'ultima versione remota di `grafo.json` mediante riproduzione della logica di espansione di `buildVisible()` da `index.html`: filtri predefiniti `trattazione` + `menzione`, nessuna attraversata indiretta tramite capitoli e blocco delle relazioni editoriali generiche oltre il primo livello. Non è un collaudo visivo sul browser.
+
+| Nodo iniziale | I | II | III | IV | V | Profondità massima |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Mozart | 13 | 4 | 2 | 3 | 3 | 5 |
+| Vivaldi | 6 | 0 | 0 | 0 | 0 | 1 |
+| Weber | 2 | 0 | 0 | 0 | 0 | 1 |
+| Rossini | 8 | 2 | 3 | 6 | 3 | 5 |
+| Bellini | 4 | 0 | 0 | 0 | 0 | 1 |
+| Wagner | 8 | 0 | 0 | 0 | 0 | 1 |
+| Bizet | 3 | 1 | 1 | 0 | 0 | 3 |
+| Puccini | 9 | 3 | 2 | 0 | 0 | 3 |
+
+Gli archi compositivi E0776, E0780, E0783, E0786, E0790, E0794, E0797, E0800, E0803, E0806 sono tutti classificati dall'interfaccia come `trattazione` e quindi accettati dal filtro iniziale. I percorsi di Mozart e Rossini raggiungono ancora il quinto livello.
+
+**Limite da correggere editorialmente in seguito, non con falsi archi:** per Vivaldi, Weber, Bellini e Wagner non emergono attualmente catene specifiche di secondo livello con i filtri standard. La profondità massima selezionabile (5) non implica la presenza di un percorso effettivo di quella lunghezza per ogni compositore. L'arricchimento della rete richiederà legami storici specifici con librettisti, fonti, opere o altre persone, confermati uno per uno.
+
+**Verifiche remote:** commit del dataset `5ac70cad6abdcb06e9cd9f96372be6618c036d7d`; il file remoto è JSON valido con 608 nodi, 1.520 link, ID degli archi univoci, nessun estremo orfano; 342 proposte, 375 candidati, 0 `da_verificare`. I file `index.html` e `compat-graph.js` sono stati letti per controllo, non modificati.
