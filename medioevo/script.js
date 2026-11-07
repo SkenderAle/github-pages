@@ -389,24 +389,133 @@ if(canticoClose&&canticoDialog){
   });
 }
 
-const ratioButtons=[...document.querySelectorAll('[data-ratio]')];
+// Monocordo matematico · confronto udibile fra due altezze senza MIDI e senza autoplay.
+// Suoni di prova generati dal browser (non registrazioni storiche). Tensione e massa lineare costanti:
+// rapporto delle frequenze = inverso del rapporto delle lunghezze vibranti.
+const ratioButtons=[...document.querySelectorAll('#ratioLab [data-ratio]')];
 const stringLine=document.getElementById('stringLine');
 const ratioNote=document.getElementById('ratioNote');
-const ratioLabels={
-  '1':'1:1 · unisono',
-  '0.75':'4:3 · quarta',
-  '0.667':'3:2 · quinta',
-  '0.5':'2:1 · ottava'
+const ratioOptions={
+  '1':    {label:'1:1 · unisono',length:1,pitch:1,portion:'l’intera corda',explain:'entrambi i suoni hanno la medesima altezza'},
+  '0.75': {label:'4:3 · quarta',length:3/4,pitch:4/3,portion:'3/4 della corda',explain:'il secondo suono è una quarta pura sopra il primo'},
+  '0.667':{label:'3:2 · quinta',length:2/3,pitch:3/2,portion:'2/3 della corda',explain:'il secondo suono è una quinta pura sopra il primo'},
+  '0.5':  {label:'2:1 · ottava',length:1/2,pitch:2,portion:'1/2 della corda',explain:'il secondo suono è un’ottava sopra il primo'}
 };
-ratioButtons.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    ratioButtons.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const v=Number(btn.dataset.ratio);
-    if(stringLine)stringLine.style.transform='scaleX('+v+')';
-    if(ratioNote)ratioNote.textContent=ratioLabels[btn.dataset.ratio]+' · la lunghezza della corda cambia secondo un rapporto semplice.';
+let ratioAudioContext=null;
+let ratioSound=null;
+let ratioActiveButton=null;
+
+function stopRatioSound(){
+  if(!ratioSound)return;
+  const sound=ratioSound;
+  ratioSound=null;
+  const now=sound.context.currentTime;
+  // Sfumatura brevissima: nessun clic improvviso all'uscita o al cambio d'intervallo.
+  sound.envelopes.forEach(gain=>{
+    gain.gain.cancelScheduledValues(now);
+    gain.gain.setValueAtTime(gain.gain.value,now);
+    gain.gain.linearRampToValueAtTime(0,now+0.11);
+  });
+  sound.oscillators.forEach(osc=>{
+    try{osc.stop(now+0.14);}catch(error){}
+  });
+}
+
+function setRatioVisual(button,message){
+  ratioActiveButton=button;
+  ratioButtons.forEach(btn=>{
+    const active=btn===button;
+    btn.classList.toggle('active',active);
+    btn.setAttribute('aria-pressed',active?'true':'false');
+  });
+  const selected=button&&ratioOptions[button.dataset.ratio];
+  if(stringLine)stringLine.style.transform='scaleX('+(selected?selected.length:1)+')';
+  if(ratioNote)ratioNote.textContent=message||'Corda intera. Tocca un rapporto per ascoltare un intervallo.';
+}
+
+function startRatioSound(button,option){
+  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextClass){
+    setRatioVisual(null,'Questo browser non supporta l’audio interattivo. La proporzione resta leggibile nel laboratorio.');
+    return;
+  }
+  let context;
+  try{
+    context=ratioAudioContext||(ratioAudioContext=new AudioContextClass());
+    if(context.state==='suspended'){
+      const resumed=context.resume(); // Il gesto dell'utente abilita l'audio su Android/iOS.
+      if(resumed&&typeof resumed.catch==='function'){
+        resumed.catch(()=>{
+          if(ratioActiveButton===button){
+            stopRatioSound();
+            setRatioVisual(null,'Il browser ha bloccato l’audio. Verifica il volume e tocca di nuovo il rapporto.');
+          }
+        });
+      }
+    }
+  }catch(error){
+    setRatioVisual(null,'Impossibile avviare l’audio in questo browser. Il laboratorio resta consultabile.');
+    return;
+  }
+  const now=context.currentTime;
+  const fundamental=220; // La3 = 220 Hz; seconda altezza esattamente nel rapporto selezionato.
+  const master=context.createGain();
+  master.gain.value=0.6; // Livello volutamente contenuto.
+  master.connect(context.destination);
+  const oscillators=[];
+  const envelopes=[];
+  // Timbro essenziale con tre armonici; non è un file MIDI e non imita un'esecuzione storica.
+  function note(frequency,delay){
+    const envelope=context.createGain();
+    envelope.gain.setValueAtTime(0,now);
+    envelope.gain.setValueAtTime(0,now+delay);
+    envelope.gain.linearRampToValueAtTime(0.12,now+delay+0.11);
+    envelope.connect(master);
+    envelopes.push(envelope);
+    [[1,0.8],[2,0.2],[3,0.08]].forEach(([partial,amount])=>{
+      const oscillator=context.createOscillator();
+      const partialGain=context.createGain();
+      oscillator.type='sine';
+      oscillator.frequency.setValueAtTime(frequency*partial,now);
+      partialGain.gain.value=amount;
+      oscillator.connect(partialGain);
+      partialGain.connect(envelope);
+      oscillator.start(now);
+      oscillators.push(oscillator);
+    });
+  }
+  note(fundamental,0);
+  note(fundamental*option.pitch,0.34); // Prima il riferimento, poi entrambe le altezze.
+  ratioSound={context,master,oscillators,envelopes};
+  const resultFrequency=(fundamental*option.pitch).toLocaleString('it-IT',{maximumFractionDigits:1});
+  setRatioVisual(button,option.label+' · '+option.portion+
+    '. Frequenze: 220 Hz e '+resultFrequency+' Hz; '+option.explain+
+    '. Ora ascolti le due altezze insieme: tocca di nuovo per spegnere.');
+}
+
+ratioButtons.forEach(button=>{
+  button.setAttribute('aria-pressed','false');
+  button.addEventListener('click',()=>{
+    if(ratioActiveButton===button){
+      stopRatioSound();
+      setRatioVisual(null,'Suono interrotto. Seleziona un rapporto per confrontare di nuovo le altezze.');
+      return;
+    }
+    const option=ratioOptions[button.dataset.ratio];
+    if(!option)return;
+    stopRatioSound();
+    startRatioSound(button,option);
   });
 });
+
+// Evita suoni persistenti quando si cambia scheda o si lascia la pagina.
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='hidden'&&ratioActiveButton){
+    stopRatioSound();
+    setRatioVisual(null,'Suono interrotto perché la pagina non è più visibile.');
+  }
+});
+window.addEventListener('pagehide',stopRatioSound);
 
 const isorythmLab=document.getElementById('isorythmLab');
 const isorythmPlay=document.getElementById('isorythmPlay');
