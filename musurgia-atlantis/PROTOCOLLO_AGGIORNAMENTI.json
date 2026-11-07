@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "document_type": "musurgia_mundi_editorial_update_protocol",
+  "protocol_version": "1.0.0",
+  "created_on": "2026-11-08",
+  "language": "it",
+  "repository": {
+    "full_name": "SkenderAle/github-pages",
+    "branch": "main",
+    "commit_policy": "Pubblicare su main dopo verifica del diff e dei controlli; leggere lo stato remoto prima di ogni scrittura."
+  },
+  "scope": {
+    "site": "Musurgia Mundi",
+    "network": "Musurgia Atlantis",
+    "atlantis_independence": "Musurgia Atlantis resta autonoma: non aggiungere link o voci nei menu delle altre pagine senza richiesta esplicita.",
+    "editable_during_atlantis_audit": [
+      "musurgia-atlantis/grafo.json",
+      "musurgia-atlantis/AUDIT_VALIDAZIONE_STORICA_2026-11-07.md",
+      "musurgia-atlantis/PROTOCOLLO_AGGIORNAMENTI.json"
+    ],
+    "rule": "Non modificare pagine esterne al lotto o allo specifico intervento richiesto."
+  },
+  "current_implementations": {
+    "chapter_structure_map": {
+      "state": "IMPLEMENTATO",
+      "engine": "shared/mm-mappa-viva-v2.js",
+      "behavior": "La vista «Struttura della pagina» rilegge le sezioni, i titoli e i sottotitoli HTML all'apertura del capitolo.",
+      "limits": "Non interpreta semanticamente il testo; le sezioni devono avere intestazioni e ancore coerenti."
+    },
+    "reasoned_study_map": {
+      "state": "IMPLEMENTATO_CON_MANUTENZIONE_EDITORIALE",
+      "source_pattern": "<capitolo>/mappa-studio.md",
+      "behavior": "La vista «Mappa ragionata» legge il Markdown e aggiorna i testi dei collegamenti quando corrispondono a sezioni esistenti; concetti e nessi richiedono revisione manuale.",
+      "limits": "Una nuova frase o un concetto nel corpo del capitolo non genera automaticamente un ramo ragionato."
+    },
+    "atlantis": {
+      "state": "DATASET_STATICO",
+      "data": "musurgia-atlantis/grafo.json",
+      "interface": "musurgia-atlantis/index.html",
+      "canvas_fallback": "musurgia-atlantis/compat-graph.js",
+      "behavior": "Atlantis legge il JSON corrente all'apertura; le modifiche a pagine o menu non scrivono automaticamente nodi o relazioni nel JSON.",
+      "sync_with_chapters": "NON_IMPLEMENTATA"
+    }
+  },
+  "triggers": [
+    {
+      "id": "nuovo_capitolo",
+      "when": "Viene pubblicata una nuova pagina o un macrocapitolo.",
+      "run": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09"
+      ]
+    },
+    {
+      "id": "revisione_capitolo",
+      "when": "Vengono modificati titolo, gerarchia, contenuto, autori, opere o fonti in una pagina esistente.",
+      "run": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09"
+      ]
+    },
+    {
+      "id": "modifica_solo_testuale",
+      "when": "Si modifica soltanto prosa senza nuove intestazioni o relazioni.",
+      "run": [
+        "P01",
+        "P02",
+        "P03",
+        "P06",
+        "P09"
+      ]
+    },
+    {
+      "id": "nuova_relazione_storica",
+      "when": "Viene proposta o verificata una relazione di Atlantis.",
+      "run": [
+        "P01",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09"
+      ]
+    },
+    {
+      "id": "correzione_di_mappa",
+      "when": "Si corregge o espande una mappa di studio ragionata.",
+      "run": [
+        "P01",
+        "P04",
+        "P06",
+        "P08",
+        "P09"
+      ]
+    }
+  ],
+  "procedure": [
+    {
+      "id": "P01",
+      "phase": "preflight",
+      "title": "Leggere il remoto e delimitare l'intervento",
+      "mode": "OBBLIGATORIO",
+      "actions": [
+        "Leggere il commit HEAD effettivo di main e i contenuti dei file interessati; verificare cambi concorrenti.",
+        "Identificare se l'intervento riguarda pagina, mappa strutturale, mappa ragionata, Atlantis o più ambiti.",
+        "Registrare le ancore esistenti e le URL da preservare, e non ricominciare audit già conclusi."
+      ],
+      "checks": [
+        "Non sovrascrivere modifiche remote di terzi.",
+        "Definire in anticipo i soli file modificabili."
+      ]
+    },
+    {
+      "id": "P02",
+      "phase": "contenuti",
+      "title": "Aggiornare capitolo e struttura semantica",
+      "mode": "SE_APPLICABILE",
+      "actions": [
+        "Pubblicare o correggere il contenuto della pagina nel proprio percorso <capitolo>/index.html.",
+        "Usare sezioni e intestazioni HTML h2/h3/h4 coerenti, con identificativi stabili e ancore navigabili.",
+        "In caso di nuovo capitolo verificare riferimenti, percorsi relativi, indice, bibliografia, materiali didattici e accessibilità.",
+        "Non aggiungere automaticamente un capitolo ai menu generali senza esplicita autorizzazione."
+      ],
+      "checks": [
+        "Titoli e ancore corretti.",
+        "Riferimenti a opere e persone distinguono fatti, ipotesi e interpretazioni."
+      ]
+    },
+    {
+      "id": "P03",
+      "phase": "mappa_strutturale",
+      "title": "Confermare l'aggiornamento della vista Struttura della pagina",
+      "mode": "AUTOMATICO_CON_TEST",
+      "actions": [
+        "Verificare la presenza del componente markmap-view nella sezione #mappa-studio e del motore condiviso shared/mm-mappa-viva-v2.js.",
+        "Aprire o ricaricare la pagina dopo la pubblicazione: la vista ricostruisce titoli, sezioni e sottoparagrafi effettivamente presenti.",
+        "Controllare che le nuove intestazioni siano incluse e portino alle ancore giuste."
+      ],
+      "checks": [
+        "Nessuna voce fantasma o duplicata.",
+        "I link della mappa raggiungono il paragrafo previsto.",
+        "Non dichiarare aggiornata la vista senza il test reale se la pagina ha struttura non standard."
+      ]
+    },
+    {
+      "id": "P04",
+      "phase": "mappa_ragionata",
+      "title": "Allineare i concetti didattici e il Markdown",
+      "mode": "MANUALE_EDITORIALE",
+      "actions": [
+        "Aprire <capitolo>/mappa-studio.md se esiste; crearla per la nuova pagina solo se si prevede la mappa.",
+        "Confrontare concetti, scuole, generi, opere, persone e connessioni del Markdown con le modifiche al capitolo.",
+        "Aggiungere o correggere i rami ragionati solo quando il rapporto è davvero spiegato o utile didatticamente.",
+        "Verificare link ad ancore esistenti; mantenere la distinzione fra organizzazione didattica e relazione storica.",
+        "Controllare la visualizzazione per smartphone e desktop e il collegamento di download del Markdown."
+      ],
+      "checks": [
+        "Niente relazioni storiche inventate per semplice vicinanza dei nomi.",
+        "Rami e link apribili; concetti rappresentati correttamente.",
+        "Il Markdown ragionato non viene confuso con la struttura automatica."
+      ]
+    },
+    {
+      "id": "P05",
+      "phase": "candidati_atlantis",
+      "title": "Rilevare variazioni potenzialmente rilevanti per Atlantis",
+      "mode": "MANUALE_ORA_AUTOMATIZZABILE_IN_FUTURO",
+      "actions": [
+        "Confrontare i contenuti cambiati con nodi e archi attuali di musurgia-atlantis/grafo.json.",
+        "Distinguere nuovo nodo, identità già esistente, sinonimo, omonimia, fonte letteraria, opera, versione, persona, genere, capitolo, luogo e semplice menzione.",
+        "Formulare eventuali candidati con identificativi e provenienza specifica; annotare i casi dubbi per la validazione.",
+        "Non generare relazioni dirette tra compositori perché compaiono nella medesima pagina o sono associati allo stesso periodo."
+      ],
+      "checks": [
+        "Nessuna fusione automatica di opere omonime o di versioni storiche.",
+        "La pagina di provenienza non costituisce prova indipendente di influenza."
+      ]
+    },
+    {
+      "id": "P06",
+      "phase": "verifica_storica_e_fonti",
+      "title": "Verificare i rapporti uno per uno",
+      "mode": "OBBLIGATORIO_PER_ARCHI_STORICI",
+      "actions": [
+        "Usare fonti indipendenti e autorevoli: libretti originali, cataloghi musicologici, edizioni critiche, Corago, Treccani, archivi istituzionali.",
+        "Per ogni opera distinguere compositore, librettista, adattamento, fonte letteraria, prima rappresentazione, revisioni, traduzioni e completamenti.",
+        "Classificare ogni rapporto come confermato, editoriale/contestuale, candidato, duplicato, sospeso o non riscontrato.",
+        "Conservare per ogni arco verificato evidence_urls, verification_note, verification_status, verified_at, previous_quality_gate e previous_description quando viene sostituita.",
+        "Mantenere le informazioni riutilizzabili editorialmente nel registro storico-filologico per possibili integrazioni future delle pagine, senza applicarle automaticamente."
+      ],
+      "checks": [
+        "Nessuna convalida massiva o per semplice co-citazione.",
+        "Gli archi dubbi non vengono cancellati senza tracciabilità.",
+        "Non equiparare historical_verified_independently e quality_gate."
+      ]
+    },
+    {
+      "id": "P07",
+      "phase": "grafo_atlantis",
+      "title": "Aggiornare selettivamente grafo e registro",
+      "mode": "SOLO_DOPO_VALIDAZIONE",
+      "actions": [
+        "Modificare soltanto nodi e archi effettivamente esaminati in musurgia-atlantis/grafo.json.",
+        "Se necessario introdurre nuove entità, assegnare ID persistenti e collegamenti specifici; preservare gli ID e i metadati già esistenti.",
+        "Per un arco storicamente accertato usare quality_gate=riscontro_storico_indipendente e historical_verified_independently=true insieme a fonti e motivazione.",
+        "Registrare nel documento musurgia-atlantis/AUDIT_VALIDAZIONE_STORICA_2026-11-07.md gli ID, le fonti, i dubbi, le revisioni, i conteggi e i commit.",
+        "Non introdurre link di Atlantis nei menu o nelle altre pagine salvo richiesta esplicita."
+      ],
+      "checks": [
+        "Nessun arco diventa influenza diretta per effetto del solo capitolo.",
+        "Distinguere percorsi convergenti, comparazioni, mediazioni e influenze biografiche."
+      ]
+    },
+    {
+      "id": "P08",
+      "phase": "quality_assurance",
+      "title": "Controllare dati, percorsi e interfaccia",
+      "mode": "OBBLIGATORIO_QUANDO_SI_MODIFICA_GRAFO_O_MAPPA",
+      "actions": [
+        "Validare la sintassi JSON e il formato dei campi del grafo.",
+        "Controllare l'unicità degli ID, l'esistenza di source e target, i duplicati semantici e gli stati quality_gate.",
+        "Ricalcolare conteggi di nodi, archi e relazioni provvisorie senza imporre totali storici costanti.",
+        "Verificare che le relazioni sospese non siano attivate nei filtri di default.",
+        "Provare ricerca, filtri, etichette anteriori, zoom e rotazione su desktop e smartphone, compreso il renderer compat-graph.js.",
+        "Riprodurre percorsi dai livelli 1 a 5 per compositori campione, evitando la propagazione da capitoli o co-citazioni; non pretendere che ogni nodo raggiunga sempre il quinto livello.",
+        "Aprire le mappe di studio e controllare navigazione delle ancore e visualizzazione su schermi diversi."
+      ],
+      "checks": [
+        "Nessun riferimento a nodi mancanti.",
+        "Nessuna regressione dei percorsi già validati.",
+        "La navigazione e le didascalie funzionano realmente nel browser quando possibile."
+      ]
+    },
+    {
+      "id": "P09",
+      "phase": "pubblicazione_e_resoconto",
+      "title": "Pubblicare, verificare il remoto e lasciare un resoconto",
+      "mode": "OBBLIGATORIO",
+      "actions": [
+        "Rileggere HEAD del branch main e il diff prima della scrittura, evitando overwrite concorrenti.",
+        "Creare commit descrittivi sui soli file autorizzati; se grafo e registro richiedono due commit, riportarli entrambi.",
+        "Rileggere i file dopo il commit, verificare l'integrità del remoto e i link pubblici.",
+        "Riportare cosa è cambiato, cosa si è aggiornato automaticamente, cosa è stato revisionato manualmente, risultati QA, commit e questioni ancora aperte.",
+        "Per nuovi temi o scoperte distinguere informazioni già presenti nelle pagine, da integrare, da correggere e da approfondire."
+      ],
+      "checks": [
+        "Nessuna dichiarazione di aggiornamento automatico per funzionalità non implementate.",
+        "Atlantis rimane separato da menu e pagine ordinarie."
+      ]
+    }
+  ],
+  "future_automation": {
+    "state": "PROPOSTA_NON_IMPLEMENTATA",
+    "event": "Push o modifica ai capitoli sul branch main",
+    "suggested_sequence": [
+      "Rilevare file nuovi o modificati, intestazioni, ancore e citazioni con diff contro il commit precedente.",
+      "Produrre un elenco di nuove entità e relazioni candidate, con prove e provenienza.",
+      "Controllare le mappe ragionate che richiedono intervento editoriale.",
+      "Richiedere validazione dei rapporti storici non già verificati, evitando inserimenti massivi.",
+      "Solo dopo la validazione, aggiornare il dataset di Atlantis e il registro, collaudare e pubblicare."
+    ],
+    "safety_gate": "Nessuna sincronizzazione automatica di relazioni storiche non verificate.",
+    "not_enabled_by_this_document": true
+  },
+  "editorial_reuse": {
+    "purpose": "Riutilizzare le scoperte filologiche di Atlantis per migliorare i capitoli senza modificarli durante l'audit.",
+    "statuses": [
+      "gia_presente",
+      "da_integrare",
+      "da_correggere",
+      "da_approfondire",
+      "non_applicabile"
+    ],
+    "tracking_fields": [
+      "capitolo_destinazione",
+      "argomento",
+      "fonte",
+      "arco_o_nodo",
+      "stato",
+      "azione_editoriale_proposta"
+    ],
+    "rule": "L'integrazione in una pagina è un intervento editoriale distinto che richiede verifica del testo attuale e autorizzazione nell'ambito del lavoro richiesto."
+  }
+}
