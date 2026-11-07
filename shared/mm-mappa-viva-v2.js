@@ -18,7 +18,7 @@
   const sectionElements = [...document.querySelectorAll('section[id], article.chapter[id]')]
     .filter(section => section !== wrapper &&
       !section.closest('#mappa-studio') &&
-      (section.matches('article.chapter[id]') ||
+      (section.matches('article.chapter[id], section.chapter[id]') ||
        !section.parentElement?.closest('section[id]')));
   const sections = new Map(sectionElements.map(section => [section.id, section]));
   let source = '';
@@ -86,6 +86,11 @@
     const headingSelector = section.matches('article.chapter') || (section.matches('section.chapter') && section.querySelector(':scope > h3')) ? 'h4' : 'h3';
     const headings = [...section.querySelectorAll(headingSelector)]
       .filter(el => !el.closest('dialog, [hidden], [aria-hidden="true"], .mm-uda, .mm-study-map'))
+      // Non duplicare i titoli di capitoli annidati quando si legge la parte madre.
+      .filter(el => {
+        const childChapter = el.closest('section.chapter[id], article.chapter[id]');
+        return !childChapter || childChapter === section;
+      })
       .filter(el => {
         const named = el.closest('[id]');
         return !named || named === section || !groups.some(group => group.ids.includes(named.id));
