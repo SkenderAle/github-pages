@@ -70,7 +70,7 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
  <div class="searchwrap"><input id="search" type="search" placeholder="Cerca un compositore, un'opera…" aria-label="Cerca un nodo" autocomplete="off"><div id="suggestions" role="listbox" aria-label="Risultati della ricerca"></div></div>
  <hr class="sep"><div class="controltitle">Prospettiva</div>
  <div class="segmented" id="viewSelect"><button data-view="chapters" class="active" aria-pressed="true">Capitoli</button><button data-view="all" aria-pressed="false">Tutta la rete</button><button data-view="near" aria-pressed="false" title="Collegamenti del nodo selezionato">Vicini</button></div>
- <div class="hint" style="margin-top:8px">Cerca un nome: il I livello mostra i collegamenti diretti. Dal II livello, solo percorsi specifici attraverso persone e opere, non semplici co-citazioni nei capitoli.</div>
+ <div class="hint" style="margin-top:8px">Cerca un nome: il I livello mostra i collegamenti diretti. Dal II livello, percorsi specifici attraverso persone, opere, generi e forme. I capitoli non collegano automaticamente i loro autori.</div>
  <div id="levelSection"><hr class="sep"><label class="controltitle" for="levelRange">Distanza dal nodo cercato</label>
  <div class="depthrow"><input type="range" id="levelRange" min="1" max="5" step="1" value="1" aria-label="Livelli di relazioni"><output id="levelValue" class="depthvalue" for="levelRange">1</output></div>
  <div id="levelCount" class="hint">Primo livello · collegamenti diretti</div></div>
@@ -294,7 +294,7 @@ const atlasGenericRelations=new Set([
  'analizzata_in','tratta_nel_contesto_storico','tratta_la_collaborazione_coreografico_musicale',
  'concorre_alla_storia_di','accoglie_il_lavoro_di','tratta_in_contesto','si_colloca_nella_storia_di'
 ]);
-function atlasMayBridge(n){return n&&(grp(n)==='persona'||grp(n)==='opera')}
+function atlasMayBridge(n){return !!n&&(grp(n)==='persona'||grp(n)==='opera'||grp(n)==='nodo-di-senso')}
 function atlasIsSpecific(e){
  return e.tier!=='navigazione'&&e.tier!=='sospeso'&&
   !atlasGenericRelations.has(e.relation)&&
@@ -335,13 +335,31 @@ buildVisible=function(){
    let current=id;
    while(current&&!chosen.has(current)){chosen.add(current);current=parents.get(current)}
   }
-  const links=[...parentLinks.entries()].filter(([id])=>chosen.has(id)).map(([,edge])=>edge);
+  // Keep independently supported links when multiple Mozart branches converge.
+  // A chapter can never create new relationships between its mentioned entities.
+  const links=accepted.filter(e=>{
+   if(!chosen.has(e.source)||!chosen.has(e.target))return false;
+   if(e.source===selectedId||e.target===selectedId)return true;
+   if(lookup.get(e.source)?.category==='capitolo'||lookup.get(e.target)?.category==='capitolo')return false;
+   if(!atlasIsSpecific(e))return false;
+   const a=distance.get(e.source),b=distance.get(e.target);
+   return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<=1;
+  });
+  const incoming=new Map();
+  for(const e of links){
+   const a=distance.get(e.source),b=distance.get(e.target);
+   if(a===b)continue;
+   const farther=a>b?e.source:e.target,closer=a>b?e.target:e.source;
+   if(!incoming.has(farther))incoming.set(farther,new Set());
+   incoming.get(farther).add(closer);
+  }
   const nodes=DATA.nodes.filter(n=>chosen.has(n.id)).map(n=>{
    const shown=n.id===selectedId||types.has(grp(n));
    const path=[];let current=n.id;
    for(let i=0;current&&i<=steps;i++){path.unshift(current);current=parents.get(current)}
    return {...n,_depth:distance.get(n.id)??-1,_focus:n.id===selectedId,
     _bridge:!shown,
+    _convergences:incoming.get(n.id)?.size||0,
     _path:path,
     _label:shown&&(n.id===selectedId||(atlasFirstLabels&&distance.get(n.id)===1)||atlasLabelTypes.has(grp(n)))};
   });
@@ -391,6 +409,12 @@ renderNodeDetail=function(id){
   expl.className='detail-intro';
   expl.style.cssText='padding:9px 10px;margin:9px 0 13px;background:#102f3b;border:1px solid #355968;border-radius:9px';
   expl.innerHTML='<strong>Percorso indiretto ('+n._depth+' passaggi)</strong><div style="margin-top:5px">'+names.map(textSafe).join(' → ')+'</div><small>È un percorso fra entità del grafo, non la prova di un’influenza o di un rapporto diretto.</small>';
+  if(n._convergences>1){
+   const extra=document.createElement('p');
+   extra.style.cssText='margin:9px 0 0;color:#d5eddf;font-size:11px';
+   extra.textContent='Convergenza: '+n._convergences+' collegamenti specifici da nodi del livello precedente.';
+   expl.appendChild(extra);
+  }
   $('detailContent').prepend(expl);
  }
 };
