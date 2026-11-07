@@ -10,7 +10,7 @@
   // Una sottopagina del dominio personalizzato (es. /rinascimento/) ha
   // UNA sola componente nel percorso, ma NON e' la home. Riconosci la home
   // dalla sua struttura editoriale, identica sul dominio e su GitHub Pages.
-  const isHome=Boolean(nav.querySelector(".nav-break"))&&Boolean(nav.querySelector('a[href="./atlante3d/"]'));
+  const isHome=Boolean(nav.querySelector(":scope > .nav-break"))&&Boolean(nav.querySelector('a[href="#atlante"]'));
   const page=isHome?"home":(parts[parts.length-1]==="index.html"?parts[parts.length-2]||"home":parts[parts.length-1]||"home");
   bar.dataset.atlasPage=page;
   const home=nav.querySelector(".nav-home")||document.createElement("a");
