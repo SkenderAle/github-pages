@@ -1013,3 +1013,38 @@ Dukas è autore di *L'Apprenti sorcier* (1897) e non della colonna sonora origin
 ### Prossima ricognizione
 
 Rimangono archi di contenuto a *Shuffle Along* e ai collaboratori storici del musical, da esaminare separatamente dai nodi concettuali e dai semplici rimandi ai capitoli.
+
+
+---
+
+## Lotto 19 — 8 novembre 2026: Shuffle Along (1921), responsabilità e prima produzione
+
+**Preflight:** `main` al commit `f297b577969ba60c2878f3f243c7d494a2de3596`. Modificati esclusivamente gli archi esistenti `L06-A022`–`L06-A027`; nessuna aggiunta/eliminazione di nodi e nessun intervento ai capitoli, alla grafica, al protocollo o all'indice.
+
+| ID | Quality gate | Esito della verifica |
+| --- | --- | --- |
+| `L06-A022` | **riscontro_storico_indipendente** | Noble Sissle è il paroliere delle canzoni del musical Shuffle Along (1921), con musica composta da Eubie Blake. I contributi di Sissle riguardano le lyrics; libro/libretto firmato da Flournoy Miller e Aubrey Lyles. Evitare di attribuire a un solo autore tutti gli elementi musicali e drammatici dello spettacolo. |
+| `L06-A023` | **riscontro_storico_indipendente** | Flournoy E. Miller è coautore con Aubrey Lyles del libretto teatrale (book) di Shuffle Along, presentato a Broadway il 23 maggio 1921. La loro precedente scena comica The Mayor of Jimtown / The Mayor of Dixie costituisce un antecedente dello spettacolo, distinto dalla musica di Eubie Blake e dai testi cantati di Noble Sissle. |
+| `L06-A024` | **riscontro_storico_indipendente** | Aubrey Lyles è coautore con Flournoy Miller del libretto teatrale (book) di Shuffle Along (1921); non è autore esclusivo delle canzoni composte musicalmente da Eubie Blake e scritte da Noble Sissle. Il musical adatta un loro precedente numero di vaudeville. |
+| `L06-A025` | **riscontro_storico_indipendente** | Il musical Shuffle Along (book Miller e Lyles, musica Blake, lyrics Sissle) debuttò nella prima produzione di Broadway il 23 maggio 1921 al 63rd Street Music Hall, con regia di Walter Brooks e produzione della Nikko Producing Company. La produzione originale resta distinta dalle riprese del 1932, del 1952 e dal nuovo spettacolo del 2016. |
+| `L06-A026` | **confronto_non_causale** | Shuffle Along (1921), prodotto e interpretato da artisti afroamericani, è un caso storicamente importante per lo sviluppo della commedia musicale afroamericana a Broadway, ma il nesso tra una tradizione teatrale complessa e un singolo titolo è un inquadramento editoriale, non la prova che il teatro musicale afroamericano abbia avuto origine nel 1921. |
+| `L06-A027` | **riscontro_storico_indipendente** | Will (Bill) Vodery è accreditato per gli arrangiamenti musicali della prima produzione di Broadway di Shuffle Along (1921), non come compositore esclusivo dello score di Eubie Blake. La produzione originale del 1921 è distinta dal revival del 1932, per il quale Vodery è accreditato anche come orchestratore e autore degli arrangiamenti corali. |
+
+**Note di metodo:** i ruoli sono distinti: Eubie Blake **musica**, Noble Sissle **lyrics**, Flournoy Miller e Aubrey Lyles **book**, Will Vodery **arrangiamenti** per la produzione 1921. Le attribuzioni per l'originale 1921 non si applicano senza verifica alle riprese 1932/1952 o alla rivisitazione 2016. Gli archivi IBDB attestano che Josephine Baker **non** era nella prima compagnia Broadway 1921, ma entrò nella tournée del 1922; il rapporto contestuale con la tradizione afroamericana non pretende che questa cominci nel 1921. Nessun rapporto interpretativo diventa un ponte generico oltre il I livello.
+
+### Fonti indipendenti
+
+- ibdb: https://www.ibdb.com/broadway-production/shuffle-along-9073
+- ibdbshow: https://www.ibdb.com/broadway-show/shuffle-along-9656
+- ibdbvodery: https://www.ibdb.com/broadway-cast-staff/bill-vodery-115069
+- playbill: https://playbill.com/production/shuffle-along-1921-63rd-street-music-hall-vault-0000000521
+- nmaahc: https://nmaahc.si.edu/explore/stories/remembering-milestone-entertainment-history
+- loc: https://www.loc.gov/item/n87116909/noble-sissle/
+- ibdb1932: https://www.ibdb.com/broadway-production/shuffle-along-11549
+
+### Controllo dati prima della pubblicazione
+
+- JSON serializzato e riparsato; 608 nodi, 1.520 archi, nessun ID duplicato né estremo inesistente.
+- Quality gate: **196** `riscontro_storico_indipendente`, **250** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **38** `confronto_non_causale`, **44** `sospeso`.
+- Flag booleano distinto `historical_verified_independently=true`: **231**.
+- Restano necessari controllo sul remoto e regressione dei percorsi I–V. Non è stato effettuato un test browser 3D.
