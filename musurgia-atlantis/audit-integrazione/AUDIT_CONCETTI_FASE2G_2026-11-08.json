@@ -1,0 +1,100 @@
+{
+  "schema": "musurgia-atlantis-fase2g-semantic-crosswalk-v1",
+  "date": "2026-11-08",
+  "status": "conceptual-classification-stage-no-public-merge",
+  "source": "CROSSWALK_CANDIDATI_2026-11-08.json",
+  "summary": {
+    "candidates_examined": 4,
+    "conceptual_label_alignment_proposed": 3,
+    "scope_mismatch_prevents_merge": 1,
+    "validated_edge_mappings": 0,
+    "merges": 0,
+    "editorial_period_homonyms_keep_distinct": 7
+  },
+  "decisions": [
+    {
+      "legacy_id": "dramma-giocoso",
+      "atlantis_id": "senso:dramma-giocoso",
+      "legacy_label": "Dramma giocoso",
+      "atlantis_label": "Dramma giocoso",
+      "legacy_type": "corrente",
+      "atlantis_category": "nodo-di-senso",
+      "status": "historically_documented_conceptual_alignment_pending_adjacency",
+      "name": "Dramma giocoso",
+      "authority": [
+        "https://www.metopera.org/discover/education/educator-guides/don-giovanni/divine-dramedy/",
+        "https://sandbox.metopera.org/discover/education/educator-guides/don-giovanni/10-essential-opera-terms/",
+        "https://www.treccani.it/vocabolario/ricerca/opera-buffa/"
+      ],
+      "semantic_comment": "Genere o designazione teatrale del Settecento, particolarmente importante in Don Giovanni. Le fonti differiscono nella classificazione: Treccani lo include tra le designazioni dell'opera buffa, il Metropolitan Opera ne sottolinea la commistione con elementi seri. Non imporre uguaglianza ontologica con opera buffa né fusione con l'etichetta di un capitolo.",
+      "suggested_model": "historical_genre_with_contextual_relation_to_opera_buffa_and_opera_seria",
+      "merge_allowed": false,
+      "graph_edge_created": false,
+      "requires_edge_adjacency_review": true
+    },
+    {
+      "legacy_id": "opera-buffa",
+      "atlantis_id": "senso:opera-buffa",
+      "legacy_label": "Opera buffa",
+      "atlantis_label": "Opera buffa",
+      "legacy_type": "corrente",
+      "atlantis_category": "nodo-di-senso",
+      "status": "historically_documented_conceptual_alignment_pending_adjacency",
+      "name": "Opera buffa",
+      "authority": [
+        "https://sandbox.metopera.org/discover/education/educator-guides/don-giovanni/10-essential-opera-terms/",
+        "https://www.treccani.it/enciclopedia/opera/"
+      ],
+      "semantic_comment": "Genere d'opera comica con personaggi anche popolari e sviluppi storici differenziati. Non si deve attribuire automaticamente ogni opera del compositore al genere opera buffa per una relazione generica.",
+      "suggested_model": "historical_opera_genre",
+      "merge_allowed": false,
+      "graph_edge_created": false,
+      "requires_edge_adjacency_review": true
+    },
+    {
+      "legacy_id": "opera-seria",
+      "atlantis_id": "senso:opera-seria",
+      "legacy_label": "Opera seria",
+      "atlantis_label": "Opera seria",
+      "legacy_type": "corrente",
+      "atlantis_category": "nodo-di-senso",
+      "status": "historically_documented_conceptual_alignment_pending_adjacency",
+      "name": "Opera seria",
+      "authority": [
+        "https://sandbox.metopera.org/discover/education/educator-guides/don-giovanni/10-essential-opera-terms/",
+        "https://www.treccani.it/enciclopedia/opera/"
+      ],
+      "semantic_comment": "Genere teatrale storicamente distinto da opera buffa, soggetti classici/storici e convenzioni vocali; non è sinonimo di tutte le opere serie o tragiche di qualsiasi periodo.",
+      "suggested_model": "historical_opera_genre",
+      "merge_allowed": false,
+      "graph_edge_created": false,
+      "requires_edge_adjacency_review": true
+    },
+    {
+      "legacy_id": "genere-quartetto-archi",
+      "atlantis_id": "senso:quartetto",
+      "legacy_label": "Quartetto d’archi",
+      "atlantis_label": "Quartetto d'archi",
+      "legacy_type": "corrente",
+      "atlantis_category": "nodo-di-senso",
+      "status": "semantic_scope_conflict_no_merge",
+      "name": "Quartetto d'archi",
+      "authority": [
+        "https://www.treccani.it/enciclopedia/quartetto/",
+        "https://www.treccani.it/vocabolario/quartetto/"
+      ],
+      "semantic_comment": "'Quartetto d'archi' indica un organico specifico (2 violini, viola, violoncello), un ensemble di esecutori oppure il repertorio/composizione per tale organico. 'Quartetto' senza 'd'archi' comprende anche quartetto vocale, fiati e pianoforte: il concetto Atlantis più generico non va fuso col sottotipo più stretto.",
+      "suggested_model": "preserve_string_quartet_concept_separate_from_generic_quartet; consider three linked senses: ensemble_instrumentation, performing_group, chamber_work",
+      "merge_allowed": false,
+      "graph_edge_created": false,
+      "requires_edge_adjacency_review": true
+    }
+  ],
+  "core_invariants": [
+    "Every chapter is editorial-only and never a node in historical graph depth I–V.",
+    "Historical periods and genus categories are contextual, never unrestricted traversal hubs.",
+    "Reconcile names and adjacency before mapping relations or promoting evidence.",
+    "Rerun Mozart-Leopold tests, and verify opera buffa/seria/dramma giocoso do not become gateways."
+  ],
+  "next_step": "Cross-check source and target concept neighbors before authorizing mappings. Keep string quartet as a narrower concept than generic quartet and implement typed non-traversable semantic links only where justified."
+}
