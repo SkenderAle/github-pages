@@ -1,0 +1,646 @@
+{
+  "schema": "musurgia-atlantis-staging-phase2K-root-relevance-test-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "status": "EXECUTED against current Atlantis JSON with staged source overlay; NOT an integrated UI/production runtime test",
+  "inputs": [
+    "musurgia-atlantis/grafo.json",
+    "atlante3d/database/relazioni.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_TEST_MOZART_LEOPOLD_FASE2D_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_NUOVE_PERSONE_FASE2K_347_2026-11-08.json"
+  ],
+  "policy": {
+    "root_level_1": "independently verified root-adjacent historical links; distinct documented Leopold father and teacher relations",
+    "depth_2_to_5": "per-arc evidence and exact root-anchored work contribution; no free traversal from parent, genre, period, or editorial chapter",
+    "work_credit_predicate_used": "scrive_il_libretto_di",
+    "caveat": "This deliberately conservative test does not claim all historically relevant second- to fifth-level branches have been annotated yet."
+  },
+  "counts": {
+    "checks": 8,
+    "passed": 8,
+    "failed": 0,
+    "atlantis_nodes": 754,
+    "atlantis_edges": 1718,
+    "specialist_relations": 1389,
+    "persons_staged_new": 347,
+    "leopold_source_available": true,
+    "mozart_direct_historical_source_edges": 8,
+    "mozart_direct_editorial_source_edges": 9
+  },
+  "checks": [
+    {
+      "id": "R-MOZ-01",
+      "result": true,
+      "detail": "Provisional Leopold appears at level I; not present in production Atlantis",
+      "status": "PASS"
+    },
+    {
+      "id": "R-MOZ-02",
+      "result": true,
+      "detail": "Actual specialist relations for Leopold's court and violin treatise remain excluded from rooted Mozart levels II–V",
+      "status": "PASS"
+    },
+    {
+      "id": "R-MOZ-03",
+      "result": true,
+      "detail": "Editorial chapters exist in source graph but remain excluded at all historic levels",
+      "status": "PASS"
+    },
+    {
+      "id": "R-MOZ-04",
+      "result": true,
+      "detail": "The two genuine Leopold-specific source links appear when Leopold is the root",
+      "status": "PASS"
+    },
+    {
+      "id": "R-MOZ-05",
+      "result": true,
+      "detail": "Actual specialist teacher relation retains original forward, reverse, note and source; overlay contains correctly oriented hover/tap wording",
+      "status": "PASS"
+    },
+    {
+      "id": "R-MOZ-06",
+      "result": true,
+      "detail": "Positive level II root-related path Mozart→Le nozze di Figaro→Lorenzo Da Ponte, historically verified at both steps",
+      "status": "PASS"
+    },
+    {
+      "id": "R-MOZ-07",
+      "result": true,
+      "detail": "Generic periods and editorial links do not generate arbitrary Mozart-to-Haydn adjacency",
+      "status": "PASS"
+    },
+    {
+      "id": "R-MOZ-08",
+      "result": true,
+      "detail": "All independent historical direct links of Mozart in current Atlantis are retained, while editorial links are excluded",
+      "status": "PASS"
+    }
+  ],
+  "mozart_levels": {
+    "1": {
+      "nodes_visible": 10,
+      "at_exact_depth": [
+        "opera:figaro",
+        "opera:Don-giovanni",
+        "opera:flauto-magico",
+        "opera:les-petits-riens-1778",
+        "opera:cosi-fan-tutte-1790",
+        "opera:sei-quartetti-haydn-mozart-1785",
+        "evento:mozart-clementi-1781",
+        "pers:clementi",
+        "pers:leopold-mozart"
+      ],
+      "visible_ids": [
+        "pers:mozart",
+        "opera:figaro",
+        "opera:Don-giovanni",
+        "opera:flauto-magico",
+        "opera:les-petits-riens-1778",
+        "opera:cosi-fan-tutte-1790",
+        "opera:sei-quartetti-haydn-mozart-1785",
+        "evento:mozart-clementi-1781",
+        "pers:clementi",
+        "pers:leopold-mozart"
+      ],
+      "passed_edges": [
+        {
+          "id": "E0732",
+          "from": "pers:mozart",
+          "to": "opera:figaro",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0736",
+          "from": "pers:mozart",
+          "to": "opera:Don-giovanni",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0739",
+          "from": "pers:mozart",
+          "to": "opera:flauto-magico",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L02-A24",
+          "from": "pers:mozart",
+          "to": "opera:les-petits-riens-1778",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L141-A01",
+          "from": "pers:mozart",
+          "to": "opera:cosi-fan-tutte-1790",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L143-A01",
+          "from": "pers:mozart",
+          "to": "opera:sei-quartetti-haydn-mozart-1785",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A01",
+          "from": "pers:mozart",
+          "to": "evento:mozart-clementi-1781",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A03",
+          "from": "pers:mozart",
+          "to": "pers:clementi",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "staging:leopold-wolfgang-parentela",
+          "from": "pers:mozart",
+          "to": "pers:leopold-mozart",
+          "level": 1,
+          "reason": "documented root-specific father/teacher predicate"
+        }
+      ]
+    },
+    "2": {
+      "nodes_visible": 11,
+      "at_exact_depth": [
+        "pers:da-ponte"
+      ],
+      "visible_ids": [
+        "pers:mozart",
+        "opera:figaro",
+        "opera:Don-giovanni",
+        "opera:flauto-magico",
+        "opera:les-petits-riens-1778",
+        "opera:cosi-fan-tutte-1790",
+        "opera:sei-quartetti-haydn-mozart-1785",
+        "evento:mozart-clementi-1781",
+        "pers:clementi",
+        "pers:leopold-mozart",
+        "pers:da-ponte"
+      ],
+      "passed_edges": [
+        {
+          "id": "E0732",
+          "from": "pers:mozart",
+          "to": "opera:figaro",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0736",
+          "from": "pers:mozart",
+          "to": "opera:Don-giovanni",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0739",
+          "from": "pers:mozart",
+          "to": "opera:flauto-magico",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L02-A24",
+          "from": "pers:mozart",
+          "to": "opera:les-petits-riens-1778",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L141-A01",
+          "from": "pers:mozart",
+          "to": "opera:cosi-fan-tutte-1790",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L143-A01",
+          "from": "pers:mozart",
+          "to": "opera:sei-quartetti-haydn-mozart-1785",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A01",
+          "from": "pers:mozart",
+          "to": "evento:mozart-clementi-1781",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A03",
+          "from": "pers:mozart",
+          "to": "pers:clementi",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "staging:leopold-wolfgang-parentela",
+          "from": "pers:mozart",
+          "to": "pers:leopold-mozart",
+          "level": 1,
+          "reason": "documented root-specific father/teacher predicate"
+        },
+        {
+          "id": "E0874",
+          "from": "opera:figaro",
+          "to": "pers:da-ponte",
+          "level": 2,
+          "reason": "documented librettist of a specific work composed by root"
+        }
+      ]
+    },
+    "3": {
+      "nodes_visible": 11,
+      "at_exact_depth": [],
+      "visible_ids": [
+        "pers:mozart",
+        "opera:figaro",
+        "opera:Don-giovanni",
+        "opera:flauto-magico",
+        "opera:les-petits-riens-1778",
+        "opera:cosi-fan-tutte-1790",
+        "opera:sei-quartetti-haydn-mozart-1785",
+        "evento:mozart-clementi-1781",
+        "pers:clementi",
+        "pers:leopold-mozart",
+        "pers:da-ponte"
+      ],
+      "passed_edges": [
+        {
+          "id": "E0732",
+          "from": "pers:mozart",
+          "to": "opera:figaro",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0736",
+          "from": "pers:mozart",
+          "to": "opera:Don-giovanni",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0739",
+          "from": "pers:mozart",
+          "to": "opera:flauto-magico",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L02-A24",
+          "from": "pers:mozart",
+          "to": "opera:les-petits-riens-1778",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L141-A01",
+          "from": "pers:mozart",
+          "to": "opera:cosi-fan-tutte-1790",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L143-A01",
+          "from": "pers:mozart",
+          "to": "opera:sei-quartetti-haydn-mozart-1785",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A01",
+          "from": "pers:mozart",
+          "to": "evento:mozart-clementi-1781",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A03",
+          "from": "pers:mozart",
+          "to": "pers:clementi",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "staging:leopold-wolfgang-parentela",
+          "from": "pers:mozart",
+          "to": "pers:leopold-mozart",
+          "level": 1,
+          "reason": "documented root-specific father/teacher predicate"
+        },
+        {
+          "id": "E0874",
+          "from": "opera:figaro",
+          "to": "pers:da-ponte",
+          "level": 2,
+          "reason": "documented librettist of a specific work composed by root"
+        }
+      ]
+    },
+    "4": {
+      "nodes_visible": 11,
+      "at_exact_depth": [],
+      "visible_ids": [
+        "pers:mozart",
+        "opera:figaro",
+        "opera:Don-giovanni",
+        "opera:flauto-magico",
+        "opera:les-petits-riens-1778",
+        "opera:cosi-fan-tutte-1790",
+        "opera:sei-quartetti-haydn-mozart-1785",
+        "evento:mozart-clementi-1781",
+        "pers:clementi",
+        "pers:leopold-mozart",
+        "pers:da-ponte"
+      ],
+      "passed_edges": [
+        {
+          "id": "E0732",
+          "from": "pers:mozart",
+          "to": "opera:figaro",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0736",
+          "from": "pers:mozart",
+          "to": "opera:Don-giovanni",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0739",
+          "from": "pers:mozart",
+          "to": "opera:flauto-magico",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L02-A24",
+          "from": "pers:mozart",
+          "to": "opera:les-petits-riens-1778",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L141-A01",
+          "from": "pers:mozart",
+          "to": "opera:cosi-fan-tutte-1790",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L143-A01",
+          "from": "pers:mozart",
+          "to": "opera:sei-quartetti-haydn-mozart-1785",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A01",
+          "from": "pers:mozart",
+          "to": "evento:mozart-clementi-1781",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A03",
+          "from": "pers:mozart",
+          "to": "pers:clementi",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "staging:leopold-wolfgang-parentela",
+          "from": "pers:mozart",
+          "to": "pers:leopold-mozart",
+          "level": 1,
+          "reason": "documented root-specific father/teacher predicate"
+        },
+        {
+          "id": "E0874",
+          "from": "opera:figaro",
+          "to": "pers:da-ponte",
+          "level": 2,
+          "reason": "documented librettist of a specific work composed by root"
+        }
+      ]
+    },
+    "5": {
+      "nodes_visible": 11,
+      "at_exact_depth": [],
+      "visible_ids": [
+        "pers:mozart",
+        "opera:figaro",
+        "opera:Don-giovanni",
+        "opera:flauto-magico",
+        "opera:les-petits-riens-1778",
+        "opera:cosi-fan-tutte-1790",
+        "opera:sei-quartetti-haydn-mozart-1785",
+        "evento:mozart-clementi-1781",
+        "pers:clementi",
+        "pers:leopold-mozart",
+        "pers:da-ponte"
+      ],
+      "passed_edges": [
+        {
+          "id": "E0732",
+          "from": "pers:mozart",
+          "to": "opera:figaro",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0736",
+          "from": "pers:mozart",
+          "to": "opera:Don-giovanni",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "E0739",
+          "from": "pers:mozart",
+          "to": "opera:flauto-magico",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L02-A24",
+          "from": "pers:mozart",
+          "to": "opera:les-petits-riens-1778",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L141-A01",
+          "from": "pers:mozart",
+          "to": "opera:cosi-fan-tutte-1790",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L143-A01",
+          "from": "pers:mozart",
+          "to": "opera:sei-quartetti-haydn-mozart-1785",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A01",
+          "from": "pers:mozart",
+          "to": "evento:mozart-clementi-1781",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "L144-A03",
+          "from": "pers:mozart",
+          "to": "pers:clementi",
+          "level": 1,
+          "reason": "independent historical link directly tied to root"
+        },
+        {
+          "id": "staging:leopold-wolfgang-parentela",
+          "from": "pers:mozart",
+          "to": "pers:leopold-mozart",
+          "level": 1,
+          "reason": "documented root-specific father/teacher predicate"
+        },
+        {
+          "id": "E0874",
+          "from": "opera:figaro",
+          "to": "pers:da-ponte",
+          "level": 2,
+          "reason": "documented librettist of a specific work composed by root"
+        }
+      ]
+    }
+  },
+  "leopold_level1": {
+    "root": "pers:leopold-mozart",
+    "depth": 1,
+    "levels": [
+      [
+        "pers:leopold-mozart"
+      ],
+      [
+        "pers:mozart",
+        "cappella-principesca-salisburgo-settecento",
+        "trattato-violino-leopold-1756"
+      ]
+    ],
+    "visible": [
+      "pers:leopold-mozart",
+      "pers:mozart",
+      "cappella-principesca-salisburgo-settecento",
+      "trattato-violino-leopold-1756"
+    ],
+    "visited_edges": [
+      {
+        "id": "staging:leopold-wolfgang-parentela",
+        "from": "pers:leopold-mozart",
+        "to": "pers:mozart",
+        "level": 1,
+        "reason": "documented root-specific father/teacher predicate"
+      },
+      {
+        "id": "audit8-leopold-cappella-salisburgo",
+        "from": "pers:leopold-mozart",
+        "to": "cappella-principesca-salisburgo-settecento",
+        "level": 1,
+        "reason": "direct Leopold-only neighborhood (not automatically Mozart-related)"
+      },
+      {
+        "id": "audit09-leopold-violinschule",
+        "from": "pers:leopold-mozart",
+        "to": "trattato-violino-leopold-1756",
+        "level": 1,
+        "reason": "direct Leopold-only neighborhood (not automatically Mozart-related)"
+      }
+    ]
+  },
+  "original_teacher_record": {
+    "id": "form-leopold-wolfgang",
+    "group": "formazione",
+    "source": "compositore-leopold-mozart",
+    "target": "compositore-wolfgang-amadeus-mozart",
+    "kind": "maestro-allievo",
+    "forward": "insegnò composizione e pratica musicale a",
+    "reverse": "apprese composizione e pratica musicale da",
+    "note": "Leopold fu il primo insegnante di composizione e pratica musicale di Wolfgang.",
+    "sources": [
+      "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+    ],
+    "status": "documentato",
+    "formation_review": {
+      "date": "2026-10-20",
+      "batch": "formazione-lotto1-20261020",
+      "scope": "redazione-da-note",
+      "prior_forward": "insegnò a",
+      "prior_reverse": "studiò con",
+      "criterion": "Rendere esplicito il contenuto didattico già presente nelle note; non implica nuova verifica indipendente delle fonti"
+    }
+  },
+  "source_leopold_adjacent": [
+    {
+      "id": "audit8-leopold-cappella-salisburgo",
+      "group": "scuole",
+      "source": "cappella-principesca-salisburgo-settecento",
+      "target": "compositore-leopold-mozart",
+      "kind": "servizio-corte-arcivescovile",
+      "forward": "annoverò fra i propri violinisti e vicekapellmeister",
+      "reverse": "fu violinista e vicekapellmeister nella",
+      "note": "Leopold Mozart svolse una lunga attività nella cappella di corte dell’arcivescovo di Salisburgo, ricoprendo il ruolo di vicekapellmeister e curando la vita strumentale e pedagogica locale. È relazione professionale autonoma dal rapporto padre-figlio con Wolfgang.",
+      "sources": [
+        "https://www.mozarteum.at/en/museums/mozart-residence",
+        "https://www.britannica.com/biography/Leopold-Mozart"
+      ],
+      "status": "documentato",
+      "natura_semantica": "servizio-cappella-salisburghese",
+      "semantic_review": {
+        "date": "2026-10-20",
+        "review_batch": "scuole-lotto4-20261020",
+        "prior_forward": "annoverò come violinista e vicekapellmeister",
+        "prior_reverse": "servì come violinista e vicekapellmeister nella",
+        "prior_status": "documentato",
+        "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+      }
+    },
+    {
+      "id": "audit09-leopold-violinschule",
+      "group": "genealogie",
+      "source": "trattato-violino-leopold-1756",
+      "target": "compositore-leopold-mozart",
+      "kind": "trattato-violinistico-1756",
+      "forward": "documenta un’opera o una pratica musicale di",
+      "reverse": "lasciò una testimonianza musicale nel repertorio di",
+      "note": "Leopold Mozart pubblicò nel 1756 il Versuch einer gründlichen Violinschule, testo capitale di didattica violinistica. Questa relazione è con la codificazione della prassi, non soltanto con il figlio Wolfgang.",
+      "sources": [
+        "https://www.britannica.com/biography/Leopold-Mozart"
+      ],
+      "status": "documentato",
+      "provenance": "ricostruito dal rapporto audit09 originale; fonte da ricontrollare prima del commit",
+      "reconciliation_status": "testo_ricostruito_dal_rapporto_09; URL_e_interpretazione_da_riconvalidare_integralmente"
+    }
+  ],
+  "public_unchanged": true,
+  "non_certified": [
+    "full 3856+1718 edge reconciliation",
+    "historical qualification of all 347 new identities",
+    "full root relevance across every entity",
+    "actual UI browser hover and Android tap",
+    "real site integration and runtime performance"
+  ]
+}
