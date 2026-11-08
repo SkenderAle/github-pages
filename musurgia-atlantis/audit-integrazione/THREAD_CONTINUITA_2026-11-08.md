@@ -150,3 +150,15 @@ Aggiornare questo thread/documento di ripresa ad ogni fase significativa, **prim
 - Nessun file di produzione modificato; **210 lotti**, capitoli editoriali separati e 5 livelli di pertinenza radicata preservati come vincoli.
 
 **PROSSIMA RIPRESA (FASE 2I):** approfondire i **59** match nominali pendenti, ricercare alias fra **349** persone senza target attestato e confrontare le adiacenze dei 4 concetti prima del crosswalk. Preparare staging non distruttivo degli archi e spiegazioni bidirezionali hover/tap, quindi **eseguire** i test Mozart→Leopold e blocco ramificazioni non pertinenti, senza cambiare la UI pubblica finché il collaudo non è superato.
+
+
+### Fase 2I — 20 ulteriori identità documentate, ruoli multipli e anomalie autorevoli (8 novembre 2026)
+**Pubblicato su `main`, esclusivamente in `audit-integrazione/`:**
+- `CONVALIDA_IDENTITA_FASE2I_2026-11-08.json`: **20** nuove coppie ID sorgente/Atlantis con fonti storico-biografiche o d'autorità: Prokof'ev, Schönberg, Berg, Webern, Berio, Cage, Reich, Bartók, Ligeti, Stockhausen, Ockeghem, Heinrich Isaac, Massenet, Gounod, Goldoni, Zelter, Giulio Ricordi, Salvatore Cammarano, Cathy Berberian ed Ennio Morricone. Tutte distinte dai 96 ID già confermati nelle Fasi 2D–2H.
+- `AUDIT_FASE2I_NOMI_RUOLI_FONTI_2026-11-08.md`: registro narrativo, fonti puntuali, varianti, biografie originali preservate e cautele sulla modellazione degli archi.
+- **Totale 116/155** nominali con supporto storico (**96 + 20**), **39** ancora aperti. A parte, **5** equivalenze per alias documentate; **349** persone legacy senza equivalenza target attestata. **0 fusioni, 0 archi convalidati da questo audit, 0 modifiche ai file pubblici**. Tutte le 509 persone sorgente e le 297 persone preesistenti Atlantis restano tutelate.
+- **Correzioni/contraddizioni rilevate e NON propagate in produzione:** Prokof'ev IRCAM 1890 intestazione vs 1891 testo e bibliografia; Gounod Opéra de Paris 1993 anziché **1893** (Académie des beaux-arts); luogo di nascita Zelter NDB Berlino vs Treccani vecchia Petzow-Werder; Heinrich Isaac 1584 anomalo per servizio del tardo Quattrocento; Ockeghem date e rapporti formativi da verificare.
+- **Difese strutturali:** Bartók padre omonimo distinto; Giulio Ricordi con pseudonimo compositivo J. Burgmein, non altro nodo; Berio e Berberian persone distinte con possibili predicati indipendenti matrimonio/collaborazione; Goldoni librettista non ponte generico attraverso dramma giocoso; fonte d'identità non valida i singoli archi.
+- Capitoli soltanto editoriali, periodi/forme non traversabili indiscriminatamente, tutte le spiegazioni bidirezionali hover/tap e le fonti da salvaguardare. I 210 lotti storico-filologici originali rimangono intatti.
+
+**PROSSIMA RIPRESA (FASE 2J):** esaminare i **39** match nominali pendenti, poi cercare alias/documentazione nei **349** persone legacy senza target attestato. Confrontare adiacenze per i 4 concetti e predisporre staging reversibile dei 3.856 archi legacy / 1.718 Atlantis senza sommarli automaticamente; convalidare tooltip `forward/reverse` e implementare/eseguire i test Mozart–Leopold I–V prima di mutare il grafo/UI pubblici.
