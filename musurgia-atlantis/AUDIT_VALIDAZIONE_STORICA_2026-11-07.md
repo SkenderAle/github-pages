@@ -637,3 +637,34 @@ I controlli descritti sono **test algoritmici dei dati**, non collaudo grafico W
 ### Prossimo lotto indicato
 
 **Lotto 11:** ricognizione delle restanti candidature fuori da L05, soprattutto attribuzioni specifiche autore–opera e produzione, distinti dai rimandi editoriali, prima di ogni nuova fusione con l'Atlante 3D.
+
+ 
+---
+
+## Lotto 11 — 8 novembre 2026: cinque attribuzioni storico-musicali dal Rinascimento al Barocco
+
+**Preflight:** `main` @ `f803a48e92900c8e43af4622bd839f8c00f1b15d`; modifica selettiva di cinque archi preesistenti, senza nuovi nodi o archi. Non sono stati modificati i capitoli né gli altri componenti del sito.
+
+| ID | Compositore → opera | Decisione e cautela |
+| --- | --- | --- |
+| `E0706` | Palestrina → *Missa Papae Marcelli* | Convalidato. Data precisa di composizione incerta, stampa 1567; la leggenda della «salvezza della polifonia» non è una prova storica del rapporto col Concilio di Trento. |
+| `E0709` | Pergolesi → *Stabat mater* | Convalidato. Gestazione 1735–1736, autografo a Montecassino; separata la documentazione dalla narrazione romantica del «letto di morte». |
+| `E0717` | Bach → *Matthäus-Passion*, BWV 244 | Convalidato. Versioni iniziali 1727/1729 e redazione 1736 non vengono confuse. Picander è autore dei testi poetici, non della musica. |
+| `E0720` | Rameau → *Les Indes galantes*, RCT 44 | Convalidato. Prima 23 agosto 1735 con due entrées; versioni accresciute 1735/1736. Libretto di Fuzelier. |
+| `E0723` | Lully → *Le Bourgeois gentilhomme*, LWV 43 | Convalidato. Musica di Lully, testo di Molière; prima Chambord 14 ottobre 1670. |
+
+**Regola filologica:** la promozione riguarda soltanto la paternità musicale. Non istituisce legami causali fra i compositori, le loro opere, i librettisti o istituzioni senza archi e fonti specifici.
+
+### Fonti indipendenti consultate
+
+- `E0706`: https://iris.unipv.it/handle/11571/1510580 ; https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/ ; https://www.duomomilano.it/cappella-musicale-la-missa-papae-marcelli-di-giovanni-pierluigi-da-palestrina-per-la-celebrazione-eucaristica-capitolare-nella-solennita-di-cristo-re-delluniverso/
+- `E0709`: https://www.ricordi.com/it-IT/Critical-Editions/Pergolesi-Giovanni-Battista-Critical-Editions/Pergolesi-Stabat-mater.aspx ; https://www.treccani.it/enciclopedia/giovanni-battista-pergolesi_%28Dizionario-Biografico%29/
+- `E0717`: https://www.bachvereniging.nl/en/bwv/bwv-244 ; https://www.bach.de/werk/bwv/244.html ; https://www.bachvereniging.nl/en/st-matthew-passion-2021
+- `E0720`: https://catalogue.bnf.fr/ark:/12148/cb139176805 ; https://collectionsdumusee.philharmoniedeparis.fr/0751016-les-indes-galantes-de-jean-philippe-rameau.aspx?_lg=fr-FR
+- `E0723`: https://catalogue.bnf.fr/ark:/12148/cb139157501 ; https://philidor.cmbv.fr/Publications/Catalogues-de-genre/Pierre-I-Ballard-et-Robert-III-Ballard-Imprimeurs-du-roy-pour-la-musique-1599-1673/Oeuvres/LULLY-Jean-Baptiste-1632-1687-LE-BOURGEOIS-GENTILHOMME2
+
+### Validazione e residui
+
+- Campi `previous_quality_gate`, `previous_description`, `verification_note`, `evidence_urls`, `verification_status`, `verified_at` conservati/aggiunti su ogni arco.
+- **608 nodi**, **1.520 archi**, ID unici, estremi presenti, JSON parsabile; **149** quality-gate `riscontro_storico_indipendente`, **331** `proposta_editoriale_revisionata`, **296** `candidato_non_fuso`; **184** booleani `historical_verified_independently=true`.
+- Simulazione dei percorsi I–V e verifica della pubblicazione da eseguire sul remoto; non equivale a un collaudo visivo del renderer.
