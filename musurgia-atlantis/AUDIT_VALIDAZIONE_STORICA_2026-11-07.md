@@ -2506,3 +2506,24 @@ Il controllo riproduce la logica di `musurgia-atlantis/index.html` per la vista 
 - Nessuna modifica ai capitoli di Musurgia Mundi, a menu, a renderer, a interfaccia Atlantis o al protocollo.
 - Prossimo ambito consigliato: continuare dalle proposte restanti dopo `E0368`, evitando promozioni in blocco e preservando i gate dei lotti chiusi.
 
+### QA supplementare — simulazione della navigazione multilivello dopo i Lotti 52–56
+
+Verifica effettuata confrontando i blob del dataset precedenti e successivi: `08ddffe7c798ba143233f9e10049419020bf73f9` e `bcc0cf41f24c777cec136ab3774beff716265217`. È stata riprodotta la logica di `musurgia-atlantis/index.html` con filtri predefiniti «trattazione» e «menzione», cinque livelli e regola di non attraversabilità oltre il livello I per la relazione generica `sviluppa_o_illumina`.
+
+| Nodo focale | Prima, livelli I–V | Dopo, livelli I–V |
+| --- | --- | --- |
+| Wolfgang Amadeus Mozart | 13 / 4 / 3 / 3 / 5 | 13 / 4 / 3 / 3 / 5 |
+| Ludwig van Beethoven | 17 / 17 / 7 / 0 / 0 | 17 / 17 / 7 / 0 / 0 |
+| Giuseppe Verdi | 22 / 16 / 15 / 3 / 1 | 22 / 16 / 15 / 3 / 1 |
+| Medioevo | 10 / 4 / 2 / 0 / 0 | 18 / 6 / 1 / 0 / 0 |
+| Rinascimento | 25 / 11 / 10 / 2 / 0 | 35 / 14 / 13 / 2 / 0 |
+| Quadrivium: musica, numero e proporzione | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Madrigale e rapporto parola-musica | 2 / 1 / 0 / 0 / 0 | 4 / 1 / 0 / 0 / 0 |
+| Il balletto | 60 / 63 / 47 / 26 / 21 | 61 / 63 / 47 / 26 / 21 |
+
+**Interpretazione rigorosa:** tutte le 30 relazioni modificate conservano il verbo `sviluppa_o_illumina`; quindi non diventano direttamente ponti oltre livello I. Tuttavia un nodo concettuale raggiunto al livello I può poi essere attraversato mediante **altri archi storici specifici già presenti**. I cambiamenti osservati nei livelli II–III di Medioevo e Rinascimento sono perciò possibili e non vanno confusi con relazioni causali fra gli interi periodi o fra tutti i soggetti contenuti nei capitoli. Nessuna prova visiva reale del renderer desktop/mobile è stata eseguita.
+
+**Ambito dei dati:** esattamente 30 archi `E0338`–`E0368` con esclusione degli ID non candidati già presenti nell'intervallo, 0 modifiche ai nodi, 0 ID aggiunti o eliminati, 0 errori d'integrità. Tutti i cambiamenti sono entro `musurgia-atlantis/grafo.json`; il registro contiene la tracciabilità delle decisioni.
+
+**Stato verso il Lotto 57:** restano 287 `proposta_editoriale_revisionata`, 60 `sospeso`; continuare dal primo blocco successivo a `E0368` senza riaprire i Lotti 52–56.
+
