@@ -821,3 +821,44 @@ I due nessi classificati `confronto_non_causale` hanno verbo `sviluppa_o_illumin
 ### Lotto 15 suggerito
 
 Verificare per gruppi separati gli altri candidati audiovisivi rimasti, le responsabilità musicali dei cortometraggi e i rapporti tra opera originale, riutilizzo cinematografico e materiali storici, senza creare archi causali tra repertori solo per somiglianza stilistica.
+
+
+---
+
+## Lotto 15 — 8 novembre 2026: cinema muto, partiture, cue sheets e Vitaphone
+
+**Preflight**: `main` al commit `6bb5fb10c75b63bd63e209c9fdc346109ed99782`; esaminati singolarmente `L06-A045`–`L06-A054`. Nessun nodo o arco aggiunto/rimosso. Solo dataset e questo registro.
+
+| ID | Decisione | Motivazione |
+| --- | --- | --- |
+| `L06-A045` | **confronto_non_causale** | Il cinema muto si accompagnava spesso con musica dal vivo, eseguita da pianisti, organisti, ensemble e grandi orchestre a seconda della sala e dell'epoca; il nesso è contestuale, non documenta una pratica obbligatoria e identica per ogni singola proiezione. |
+| `L06-A046` | **confronto_non_causale** | Gli accompagnamenti dal vivo potevano usare cue sheets con suggerimenti di pezzi e punti di attacco, senza imporre a ogni esecuzione una partitura obbligatoria. Le indicazioni cambiavano fra film, sale e musicisti. |
+| `L06-A047` | **confronto_non_causale** | L'Assassinat du duc de Guise (1908) esemplifica la presenza precoce di partiture originali composte per film: musica di Saint-Saëns. Non è dimostrata con quest'arco una prima assoluta mondiale. |
+| `L06-A048` | **riscontro_storico_indipendente** | Camille Saint-Saëns scrive la musica originale per L'Assassinat du duc de Guise (1908), film del Film d'Art; la partitura, op. 128, è distinta dalla regia cinematografica e dal testo di Lavedan. È un caso precoce documentato, senza primato universale presunto. |
+| `L06-A049` | **riscontro_storico_indipendente** | Charles Le Bargy co-dirige con André Calmettes L'Assassinat du duc de Guise (1908) e vi recita; non compose la musica del film. |
+| `L06-A050` | **riscontro_storico_indipendente** | André Calmettes co-dirige con Charles Le Bargy L'Assassinat du duc de Guise (1908), con musica di Saint-Saëns e soggetto sceneggiato da Henri Lavedan. |
+| `L06-A051` | **riscontro_storico_indipendente** | Il Vitaphone viene utilizzato in Don Juan (Warner Bros., 1926) per musica orchestrale di William Axt ed effetti sonori sincronizzati su disco. Il lungometraggio non contiene dialoghi parlati come The Jazz Singer. |
+| `L06-A052` | **riscontro_storico_indipendente** | In The Jazz Singer (1927), il Vitaphone sincronizza numeri cantati di Al Jolson e alcune brevi sequenze dialogate; la maggior parte del film impiega ancora didascalie. Non è il primo film interamente parlato. |
+| `L06-A053` | **riscontro_storico_indipendente** | Al Jolson è il protagonista e interprete vocale di numeri cantati in The Jazz Singer (1927), con alcuni segmenti dialogati; il ruolo non significa che compose l'intera colonna sonora. |
+| `L06-A054` | **confronto_non_causale** | Don Juan (1926) e The Jazz Singer (1927) condividono l'uso del Vitaphone, ma la forma sonora differisce: partitura ed effetti nel primo, canzoni e alcuni dialoghi nel secondo. È un confronto storico non causale, non una derivazione di soggetto o di partitura. |
+
+**Metodo:** gli archi storici attestano compositore/registi del film 1908, l'uso specifico del sistema Vitaphone e il ruolo interpretativo di Jolson. Gli archi generali e il paragone fra due titoli sono didattico-interpretativi e ricevono il verbo generico `sviluppa_o_illumina`, già escluso dai ponti oltre il I livello. Il 1908 non è proclamato «primo film con colonna sonora assoluta» e The Jazz Singer non è trattato come film interamente parlato.
+
+### Fonti indipendenti
+
+- loc: https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/a-warming-flame/
+- cues: https://guides.loc.gov/music-for-silent-film/scores
+- blog: https://blogs.loc.gov/music/2025/04/by-the-people-transcribing-cue-sheets-for-silent-film/
+- fr: https://www.cinematheque.fr/film/47211.html
+- ch: https://cinematheque.ch/actualites/toutes-les-actualites/lassassinat-du-duc-de-guise-et-lempreinte-ou-la-main-rouge
+- afi: https://catalog.afi.com/Film/3803-DON-JUAN
+- score: https://www.loc.gov/item/2020561117/
+- jazz: https://www.loc.gov/static/programs/national-film-preservation-board/documents/jazz_singer.pdf
+- registry: https://www.loc.gov/programs/national-film-preservation-board/film-registry/descriptions-and-essays/
+
+### Integrità prima del commit
+
+- JSON riparsato, **608 nodi**, **1.520 archi**, nessun ID duplicato o estremo inesistente.
+- `riscontro_storico_indipendente`: **174**; `candidato_non_fuso`: **277**; `proposta_editoriale_revisionata`: **317**; `confronto_non_causale`: **33**.
+- `historical_verified_independently=true`: **209**, campo distinto.
+- Verifiche dei percorsi I–V e lettura sul remoto dopo pubblicazione; non sostituiscono collaudo WebGL.
