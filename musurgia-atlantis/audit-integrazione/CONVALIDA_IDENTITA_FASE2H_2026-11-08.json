@@ -1,0 +1,364 @@
+{
+  "schema": "musurgia-atlantis-fase2h-nominal-identity-authority-overlay-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "status": "audit_only_no_public_merge",
+  "inputs": [
+    "VERIFICA_DOCUMENTALE_NOMI_FASE2D_2026-11-08.json",
+    "CONVALIDA_IDENTITA_FASE2E_2026-11-08.json",
+    "CONVALIDA_IDENTITA_FASE2F_2026-11-08.json",
+    "CONVALIDA_IDENTITA_FASE2G_2026-11-08.json",
+    "STAGING_IMPORT_PERSONE_2026-11-08.json"
+  ],
+  "counting_rule": "Distinct source_id across earlier authority-backed nominal overlays; not sum of narratively overlapping milestones.",
+  "counts": {
+    "nominal_candidates": 155,
+    "authority_supported_previous": 76,
+    "added_this_phase": 20,
+    "authority_supported_total": 96,
+    "nominal_pending": 59,
+    "authority_supported_aliases_separate": 5,
+    "unmatched_after_previous_alias_screening": 349,
+    "merges": 0,
+    "validated_edges": 0,
+    "public_graph_modifications": 0
+  },
+  "identity_decisions": [
+    {
+      "source_id": "compositore-arcangelo-corelli",
+      "target_id": "pers:corelli",
+      "source_label": "Arcangelo Corelli",
+      "atlantis_label": "Arcangelo Corelli",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Violinista e compositore, Fusignano 1653–Roma 1713; attività romana documentata.",
+      "evidence_urls": [
+        "https://www.treccani.it/enciclopedia/arcangelo-corelli_%28Dizionario-Biografico%29/"
+      ],
+      "caution": "Non confondere i rapporti di patronato o di allievo con archi già convalidati.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-pietro-mascagni",
+      "target_id": "pers:mascagni",
+      "source_label": "Pietro Mascagni",
+      "atlantis_label": "Pietro Mascagni",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Livorno 1863–Roma 1945, compositore e direttore; autore di Cavalleria rusticana.",
+      "evidence_urls": [
+        "https://www.treccani.it/enciclopedia/pietro-mascagni_%28Dizionario-Biografico%29/"
+      ],
+      "caution": "Studi al Conservatorio e vicinanza con Puccini non certificano da soli un arco di influenza.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-ruggero-leoncavallo",
+      "target_id": "pers:leoncavallo",
+      "source_label": "Ruggero Leoncavallo",
+      "atlantis_label": "Ruggero Leoncavallo",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Napoli 1857–1919; nome di nascita Ruggiero, spesso scritto Ruggero; autore di Pagliacci.",
+      "evidence_urls": [
+        "https://www.treccani.it/enciclopedia/ruggiero-leoncavallo_%28Dizionario-Biografico%29/"
+      ],
+      "caution": "Ruggiero/Ruggero sono varianti dello stesso autore; distinguere fatti documentati da ricordi autobiografici controversi.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-carl-maria-von-weber",
+      "target_id": "pers:weber",
+      "source_label": "Carl Maria von Weber",
+      "atlantis_label": "Carl Maria von Weber",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Carl Maria Friedrich Ernst von Weber (Eutin 1786–Londra 1826), compositore, pianista, Kapellmeister; Der Freischütz.",
+      "evidence_urls": [
+        "https://www.weber-gesamtausgabe.de/de/A002068.html"
+      ],
+      "caution": "Usare edizione critica Weber: fonti sintetiche antiche riportano nascita erronea (1736 o 18 dicembre).",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-hector-berlioz",
+      "target_id": "pers:berlioz",
+      "source_label": "Hector Berlioz",
+      "atlantis_label": "Hector Berlioz",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Louis-Hector Berlioz (1803–1869), compositore e direttore francese.",
+      "evidence_urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb138914125"
+      ],
+      "caution": "Non trasformare la documentazione di opere o concerti in relazioni causali non provate.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-camille-saint-saens",
+      "target_id": "pers:saint-saens",
+      "source_label": "Camille Saint-Saëns",
+      "atlantis_label": "Camille Saint-Saëns",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Camille Saint-Saëns (1835–1921), compositore, pianista e organista; pseudonimo Un ancien organiste.",
+      "evidence_urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb13899342r"
+      ],
+      "caution": "Conservare grafia diacritica e pseudonimo senza generare doppioni.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-georges-bizet",
+      "target_id": "pers:bizet",
+      "source_label": "Georges Bizet",
+      "atlantis_label": "Georges Bizet",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Alexandre-César-Léopold Bizet, detto Georges (1838–1875), compositore; pseudonimo Gaston de Betzi.",
+      "evidence_urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb13891543q"
+      ],
+      "caution": "Nome anagrafico, nome d'uso e pseudonimo sono varianti, non persone aggiuntive.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-petr-il-ic-cajkovskij",
+      "target_id": "pers:cajkovskij",
+      "source_label": "Pëtr Il'ič Čajkovskij",
+      "atlantis_label": "Pëtr Il’ič Čajkovskij",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Pëtr Il'ič Čajkovskij / Pyotr Ilyich Tchaikovsky (1840–1893), compositore russo.",
+      "evidence_urls": [
+        "https://academic.oup.com/reference/62400/reference-article-abstract/555402402",
+        "https://www.operadeparis.fr/en/artists/piotr-ilyitch-tchaikovski"
+      ],
+      "caution": "Non scambiare traslitterazioni con omonimi; mantenere alias cirillici e occidentali.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-modest-musorgskij",
+      "target_id": "pers:musorgskij",
+      "source_label": "Modest Musorgskij",
+      "atlantis_label": "Modest Musorgskij",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Modest Petrovič Musorgskij/Mussorgsky (1839–1881), compositore russo; Gruppo dei Cinque.",
+      "evidence_urls": [
+        "https://www.treccani.it/enciclopedia/modest-petrovic-musorgskij/"
+      ],
+      "caution": "La partecipazione al gruppo è una relazione specifica, non un ponte verso ogni membro per qualunque radice.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-nikolaj-rimskij-korsakov",
+      "target_id": "pers:nikolaj-rimskij-korsakov",
+      "source_label": "Nikolaj Rimskij-Korsakov",
+      "atlantis_label": "Nikolaj Rimskij-Korsakov",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Nikolaj Rimskij-Korsakov / Nikolai Rimsky-Korsakov (1844–1908), compositore e docente russo.",
+      "evidence_urls": [
+        "https://www.aso.org/composer/detail/nikolai-rimsky-korsakov"
+      ],
+      "caution": "Per Stravinskij il rapporto maestro/allievo richiede arco con fonte propria; non ereditarietà di tutti i rapporti del docente.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-antonin-dvorak",
+      "target_id": "pers:antonin-dvorak",
+      "source_label": "Antonín Dvořák",
+      "atlantis_label": "Antonín Dvořák",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Antonín Leopold Dvořák (1841–1904), compositore ceco, nato a Nelahozeves.",
+      "evidence_urls": [
+        "https://www.antonin-dvorak.cz/en/life/biography/"
+      ],
+      "caution": "Archiviare grafie diacritiche; rapporti di lavoro con Smetana documentabili separatamente.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-bedrich-smetana",
+      "target_id": "pers:bedrich-smetana",
+      "source_label": "Bedřich Smetana",
+      "atlantis_label": "Bedřich Smetana",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Bedřich/Friedrich Smetana (1824–1884), compositore, pianista e direttore ceco.",
+      "evidence_urls": [
+        "https://bedrichsmetana.nm.cz/en/info/life"
+      ],
+      "caution": "Conservare Bedřich e Friedrich come nomi dello stesso soggetto; non fondere con Dvořák.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-gustav-mahler",
+      "target_id": "pers:mahler",
+      "source_label": "Gustav Mahler",
+      "atlantis_label": "Gustav Mahler",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Gustav Mahler (1860–1911), compositore e direttore; attività a Vienna e New York.",
+      "evidence_urls": [
+        "https://societemahler-france.org/en/biography/"
+      ],
+      "caution": "Completamento di Die drei Pintos di Weber non implica rapporto personale fra i due.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-anton-bruckner",
+      "target_id": "pers:bruckner",
+      "source_label": "Anton Bruckner",
+      "atlantis_label": "Anton Bruckner",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Josef Anton Bruckner (1824–1896), compositore e organista austriaco.",
+      "evidence_urls": [
+        "https://www.deutsche-biographie.de/sfz6007.html"
+      ],
+      "caution": "Non confondere ricezione estetica con rapporto personale o filiazione diretta.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-maurice-ravel",
+      "target_id": "pers:ravel",
+      "source_label": "Maurice Ravel",
+      "atlantis_label": "Maurice Ravel",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Joseph Maurice Ravel (1875–1937), compositore, pianista e direttore francese.",
+      "evidence_urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb138988406"
+      ],
+      "caution": "Alias anagrafico Joseph Maurice; opere e orchestrazioni non provano collaborazioni dirette con altri compositori.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-erik-satie",
+      "target_id": "pers:erik-satie",
+      "source_label": "Erik Satie",
+      "atlantis_label": "Erik Satie",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Éric Alfred Leslie Satie, detto Erik (1866–1925), compositore francese.",
+      "evidence_urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb11923748x"
+      ],
+      "caution": "Variante Éric/Erik da conservare; non assimilare indiscriminatamente a Debussy o ai Sei.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-olivier-messiaen",
+      "target_id": "pers:messiaen",
+      "source_label": "Olivier Messiaen",
+      "atlantis_label": "Olivier Messiaen",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Olivier Messiaen (1908–1992), compositore, organista, pianista e docente francese.",
+      "evidence_urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb138974416"
+      ],
+      "caution": "Rapporto con Pierre Boulez allievo è candidato a verifica autonoma degli archi; non propagarne tutti i contatti.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-pierre-boulez",
+      "target_id": "pers:pierre-boulez",
+      "source_label": "Pierre Boulez",
+      "atlantis_label": "Pierre Boulez",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Pierre Boulez (1925–2016), compositore e direttore, fondatore IRCAM.",
+      "evidence_urls": [
+        "https://brahms.ircam.fr/en/composer/pierre-boulez/biography"
+      ],
+      "caution": "Diversificare allievo, interprete, direttore, fondatore: ruoli multipli non sono un unico predicato.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-francis-poulenc",
+      "target_id": "pers:poulenc",
+      "source_label": "Francis Poulenc",
+      "atlantis_label": "Francis Poulenc",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Francis Jean Marcel Poulenc (1899–1963), compositore francese; associato al Groupe des Six.",
+      "evidence_urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb13898628s"
+      ],
+      "caution": "La partecipazione ai Sei non produce ponti automatici ad altri membri.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-igor-stravinskij",
+      "target_id": "pers:stravinskij",
+      "source_label": "Igor Stravinskij",
+      "atlantis_label": "Igor Stravinskij",
+      "source_role": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "evidence_scope": "historical individual and broad composer role only; no graph edges or biography text certified",
+      "documentary_signature": "Igor Fëdorovič Stravinskij/Igor Stravinsky (1882–1971), compositore e direttore.",
+      "evidence_urls": [
+        "https://guides.loc.gov/igor-stravinsky",
+        "https://resources.ircam.fr/en/composer/igor-stravinsky/biography"
+      ],
+      "caution": "Varianti Stravinsky/Stravinski/Stravinskij; relazioni Rimskij-Korsakov e Djagilev da validare come archi distinti.",
+      "source_biography_placeholder": true,
+      "merge_allowed": false
+    }
+  ],
+  "guards": [
+    "All 509 source person records remain preserved; 297 existing Atlantis people untouched.",
+    "Count identity confirmations by distinct source IDs; source biographical placeholders remain unverified editorial text.",
+    "No chapters in historical graph; periods and genres are not transit hubs.",
+    "Forward/reverse explanatory texts, notes and sources remain migration requirements.",
+    "Mozart-Leopold rooted pertinence test remains unexecuted, must precede UI release."
+  ],
+  "next": [
+    "Review 59 remaining nominal correspondences with authority evidence.",
+    "Review aliases and religious/artistic names among 349 unmatched records.",
+    "Audit 4 conceptual mappings by actual adjacency, including quartetto polysemy.",
+    "Stage reversible relation merge (2437 + 1389 + 30 legacy, plus 1718 Atlantis) with provenance and bidirectional explanation preservation.",
+    "Execute Mozart-Leopold rooted I–V test before production changes."
+  ]
+}
