@@ -304,6 +304,9 @@ function atlasIsSpecific(e){
   !/^(menziona|tratta_|rimanda_|analizza_o_richiama|condivide_|sviluppa_o_illumina|documenta_o_trasforma)/.test(e.relation||'');
 }
 buildVisible=function(){
+ // Protezione dagli stati UI preesistenti: un capitolo non diventa mai radice storica.
+ if(view==='near'&&atlasIsEditorialNode(lookup.get(selectedId))){view='chapters';syncTabs()}
+ if(view==='all'&&atlasIsEditorialNode(lookup.get(selectedId)))selectedId=null;
  // Solo la prospettiva Capitoli mostra nodi/archi editoriali.
  // Filtrare PRIMA di calcolare la distanza, anche per il livello I.
  const accepted=edgesAccepted().filter(e=>view==='chapters'||atlasIsHistoricalEdge(e));
@@ -442,6 +445,7 @@ update=function(){
  if(selectedId&&$('detail').classList.contains('open'))renderNodeDetail(selectedId);
 };
 function atlasDepth(v){
+ if(atlasIsEditorialNode(lookup.get(selectedId))){showToast('I capitoli sono risorse editoriali: scegli un autore o un’opera');return}
  if(!selectedId){showToast('Seleziona prima un nodo');return}
  view='near';steps=Math.max(1,Math.min(5,Math.round(Number(v)||1)));
  syncTabs();update();
@@ -477,7 +481,7 @@ setupUI=function(){
  baseSetupUI();
  for(const c of document.querySelectorAll('[data-tier]'))c.checked=tiers.has(c.dataset.tier);
  for(const b of document.querySelectorAll('[data-view]'))b.onclick=()=>{
-  if(b.dataset.view==='near'&&!selectedId){showToast('Cerca o tocca un nodo');return}
+  if(b.dataset.view==='near'&&(!selectedId||atlasIsEditorialNode(lookup.get(selectedId)))){showToast('Seleziona un nodo storico-musicale');return}
   view=b.dataset.view;syncTabs();update();graph.zoomToFit(500,80);
  };
  for(const c of document.querySelectorAll('[data-tier]'))c.onchange=()=>{
