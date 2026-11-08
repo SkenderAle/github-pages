@@ -1234,3 +1234,76 @@ Sono fondate storicamente l'esistenza delle quattro tradizioni e l'attività deg
 ### Prosecuzione indicata
 
 Verificare specifici lavori/manoscritti, eventi e relazioni documentali della scuola di Notre-Dame e Ars nova, tenendo separati repertori, pratiche e categorie teoriche.
+
+---
+
+## Lotto 23 — 8 novembre 2026: Machaut, Vitry e polifonia di Notre-Dame
+
+**Ambito:** sette archi dal `L07-A013` al `L07-A019`. Verifica di repertori, testimonianze, tradizioni e genealogie compositive. Nessuna integrazione editoriale nelle pagine.
+
+| ID | Esito | Riscontro puntuale |
+| --- | --- | --- |
+| `L07-A013` | **riscontro_storico_indipendente** | Machaut: 23 mottetti documentati dal manoscritto BnF Français 1584; la *Messe de Nostre Dame* è un'opera distinta. |
+| `L07-A014` | **riscontro_storico_indipendente** | Philippe de Vitry: contributo alla teoria ars nova attestato, ma tradizione trattatistica frammentaria e attribuzioni discusse; non presupporre un testo integralmente autografo e stabile del 1322. |
+| `L07-A015` | **riscontro_storico_indipendente** | Notre-Dame è il luogo centrale della tradizione polifonica parigina; la «scuola» è un costrutto storico-musicale e non un'accademia moderna. |
+| `L07-A016` | **riscontro_storico_indipendente** | Léonin associato al *Magnus liber organi* da Anonimo IV; non attribuire automaticamente ogni brano anonimo a Léonin. |
+| `L07-A017` | **riscontro_storico_indipendente** | Pérotin associato dal medesimo testimone a revisioni, clausulae e alcune composizioni a più voci, senza estendere la paternità a tutto il corpus. |
+| `L07-A018` | **riscontro_storico_indipendente** | Rete di Notre-Dame quale centro rilevante per organum, discanto e clausulae fra XII e XIII secolo, senza escludere altri centri. |
+| `L07-A019` | **confronto_non_causale** | Clausula e mottetto condividono materiali; la priorità cronologica della clausula non vale in tutte le trasmissioni manoscritte. Esclusa una derivazione automatica. |
+
+**Fonti indipendenti e fonti riutilizzabili nei capitoli:**
+- DIAMM, Français 1584, elenco dei 23 mottetti di Machaut: https://www.diamm.ac.uk/sources/89/
+- Oxford Bibliographies, *The Notre Dame School and the Music of the Magnus liber organi*: https://academic.oup.com/reference/62384/reference-article-abstract/555063369?login=false
+- Notre-Dame de Paris, *Polyphony and Motets*: https://www.notredamedeparis.fr/en/understand/music/polyphony-and-motets/
+- Berkeley, studio sulla trasmissione del repertorio di Notre-Dame: https://escholarship.org/uc/item/10v1x47m
+- *Music & Letters*, discussione recente della ricostruzione dei testi di Vitry: https://academic.oup.com/ml/article/103/4/772/6748880
+- Treccani, *L'ars nova francese e Guillaume de Machaut*: https://www.treccani.it/enciclopedia/l-ars-nova-francese-e-guillaume-de-machaut_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- Cambridge, *Origins and Interactions: Clausula, Motet, Conductus*: https://www.cambridge.org/core/books/abs/critical-companion-to-medieval-motets/origins-and-interactions-clausula-motet-conductus/5470776C538E8317F26335BDE055C7B8
+- Università di Glasgow, *Musical reuse in the Notre Dame repertory*: https://theses.gla.ac.uk/85172/
+
+**Nota storico-filologica da conservare:** la distanza cronologica del testimone Anonimo IV impone cautela nelle attribuzioni nominali. La disputa sulla cronologia clausula–mottetto deve rimanere visibile nelle future integrazioni della pagina *Medioevo*. Lo studio più recente della tradizione teorica di Vitry non consente né la certezza ingenua di un unico testo del 1322 né l'assoluta negazione della trasmissione scritta.
+
+---
+
+## Lotto 24 — 8 novembre 2026: continuità di generi, cantus firmus, monocordo, Squarcialupi e madrigale
+
+**Ambito:** nove archi `L07-A020`–`L07-A028`. Due riscontri storici specifici, sei confronti storico-editoriali non causali, una relazione negativa sospesa. Nodi e archi non sono stati aggiunti o cancellati.
+
+| ID | Esito | Riscontro puntuale |
+| --- | --- | --- |
+| `L07-A020` | **confronto_non_causale** | Mottetto medievale e rinascimentale: permanenza del termine, profonda differenziazione del repertorio; no discendenza lineare automatica. |
+| `L07-A021` | **confronto_non_causale** | La pratica mottettistica nel primo Seicento coesiste con concerti sacri e basso continuo; esempi di Dering, Raval e Viadana, non passaggio unico valido per ogni tradizione. |
+| `L07-A022` | **confronto_non_causale** | Il cantus firmus è una tecnica di uso di materiali preesistenti, distinta dall'imitazione polifonica in senso generale. |
+| `L07-A023` | **confronto_non_causale** | I cantus firmi possono attingere al canto liturgico ma anche a melodie profane. |
+| `L07-A024` | **riscontro_storico_indipendente** | Il monocordo esemplifica rapporti di lunghezza delle corde e consonanze (2:1, 3:2, 4:3) nel quadro matematico del quadrivium. |
+| `L07-A025` | **sospeso** | Arco negativo monocordo → «modalità, tonalità e teoria armonica» non tradotto in un percorso attivo; teoria delle proporzioni e tonalità funzionale non sono sinonimi. |
+| `L07-A026` | **riscontro_storico_indipendente** | Il Codice Squarcialupi, manoscritto quattrocentesco con repertorio trecentesco, conserva opere di Francesco Landini nei fogli 121v–171r. |
+| `L07-A027` | **confronto_non_causale** | Squarcialupi documenta il Trecento musicale italiano: non va confuso senza precisazioni con il corpus francese dell'Ars nova. |
+| `L07-A028` | **confronto_non_causale** | Madrigale trecentesco e cinquecentesco: omonimia e tradizioni diverse, non evoluzione necessaria dell'uno nell'altro. |
+
+**Fonti indipendenti e occasioni editoriali future:**
+- Oxford Bibliographies, storia dei mottetti: https://academic.oup.com/reference/62400/reference-article-abstract/555408575?login=false
+- Oxford, generi e tecniche rinascimentali: https://academic.oup.com/book/44835/chapter-abstract/384399545
+- *Music & Letters*, mottetti concertati di Richard Dering: https://doi.org/10.1093/ml/gcm131
+- Studi su Raval e le raccolte di Viadana: https://novaresearch.unl.pt/en/publications/still-another-book-of-small-scale-motets-sebasti%C3%A1n-ravals-motecta/
+- Oxford Bibliographies, *Cantus Firmus*: https://academic.oup.com/reference/62400/reference-article-abstract/555393534
+- Whipple Museum, Cambridge, *Monochord*: https://www.whipplemuseum.cam.ac.uk/explore-whipple-collections/acoustics/monochord
+- Treccani, Boezio, matematica della musica e quadrivium: https://www.treccani.it/enciclopedia/boezio-e-la-scienza-della-musica_%28Storia-della-civilta-Europea%29/
+- DIAMM, Codice Squarcialupi (MS Mediceo Palatino 87): https://www.diamm.ac.uk/sources/671/
+- Treccani, *Ars nova*: https://www.treccani.it/enciclopedia/ars-nova/
+- Treccani, *Madrigale*: https://www.treccani.it/enciclopedia/madrigale/
+- Treccani, madrigale cinquecentesco e contesti poetici: https://www.treccani.it/enciclopedia/il-madrigale_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+
+**Precisazione utile per una futura revisione del capitolo *Rinascimento*:** il Codice Squarcialupi **non è un manoscritto del Trecento**, ma un manoscritto del Quattrocento che conserva musica del Trecento. La fonte DIAMM registra una datazione controversa all'interno del XV secolo. Il madrigale cinquecentesco si colloca in una tradizione nuova, che attinge anche alla frottola e alle tecniche contrappuntistiche franco-fiamminghe.
+
+### Integrità e verifiche sui due lotti
+- **608 nodi, 1.520 relazioni**; nessun ID duplicato o estremo mancante, JSON ricodificato/riparsato in formato originale.
+- Archi riesaminati: **16** (Lotto 23: 7; Lotto 24: 9).
+- Esiti: **8 riscontri storici indipendenti**, **7 confronti non causali**, **1 sospeso**.
+- Quality gate al termine: **211** `riscontro_storico_indipendente`, **203** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **67** `confronto_non_causale`, **47** `sospeso`.
+- Flag autonomo `historical_verified_independently=true`: **246**. La differenza rispetto ai 211 quality gate confermati è stata preservata, non appianata artificialmente.
+- Le sette relazioni di confronto impiegano `sviluppa_o_illumina`, verbo già escluso dall'espansione automatica dal II livello nel Lotto 21, per evitare nuovi hub genealogici nei percorsi.
+- Nessuna modifica a interfaccia, menu, capitoli o automatismi; i test sul dato non sostituiscono il collaudo grafico WebGL.
+
+### Prossima verifica consigliata
+Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e primo Seicento, Monteverdi e Ottaviano Petrucci. Per le opere a stampa controllare la data dell'edizione specifica e distinguere la prima edizione dalle copie superstiti. Conservare l'origine documentaria delle correzioni per eventuali integrazioni editoriali future.
