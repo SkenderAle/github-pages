@@ -4073,3 +4073,276 @@ La vista focalizzata di `index.html` usa `buildVisible()` con espansione per liv
 **Limitazione:** simulazione dati del codice `buildVisible()`; non è un collaudo visivo su Android/desktop. Sospendere i ponti generici in `quality_gate` mitiga la propagazione, ma altri percorsi possono restare raggiungibili attraverso nodi di senso condivisi.
 
 **Ripresa:** **Lotto 117**, da `E0932`, con i rapporti fra forme musicali, linguaggi teatrali, musica per immagini e collegamenti semantici; mantenere il gate storico indipendente solo dove sussistano fonti specifiche.
+
+---
+## Lotto 117 — 2026-11-08: Sinfonia, programma, recitativo e Gluck
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E0932` | **proposta non promossa** | Sinfonia e musica a programma possono convivere (Pastorale di Beethoven, Fantastique di Berlioz), ma non tutte le sinfonie sono programmatiche: non inferire una discendenza. |
+| `E0933` | **verifica indipendente** | Il poema sinfonico lisztiano costituisce una via storicamente attestata della musica a programma; le radici sinfoniche precedenti non coincidono con il genere definito nell'Ottocento (Royal Holloway). |
+| `E0934` | **sospeso** | L'analogia fra musica a programma e colonna sonora non prova una trasmissione storica diretta: ponte fra macroconcetti sospeso per evitare propagazione impropria. |
+| `E0935` | **proposta non promossa** | Il recitativo è una tecnica documentata nel melodramma, ma non ogni titolo o epoca lo impiega nello stesso modo; relazione generica da esemplificare. |
+| `E0936` | **proposta non promossa** | Aria, cavatina, romanza e cantabile appartengono a grammatiche vocali diverse: non sono equivalenti né obbligatorie in ogni opera. |
+| `E0937` | **proposta non promossa** | Recitativo e aria possono svolgere funzioni differenti nel tempo scenico; il Met documenta la convenzione barocca, non una legge universale del teatro musicale. |
+| `E0938` | **verifica indipendente** | Gluck e Calzabigi riformulano convenzioni dell'opera seria: ornamentazione, separazione recitativo–aria e rapporto parola/azione; riscontro storico Metropolitan Opera. |
+| `E0939` | **proposta non promossa** | La scrittura del libretto organizza parole e azioni, influenzando la declamazione: verificare su libretti e compositori specifici prima di promuovere un rapporto generale. |
+| `E0940` | **sospeso** | Il concertato di solisti e il coro come soggetto collettivo sono categorie differenti: il verbo 'distingue' non indica filiazione storica. Ponte sospeso. |
+| `E0941` | **proposta non promossa** | Cantabile, tempo di mezzo, cabaletta e stretta costituiscono una grammatica situata del teatro italiano ottocentesco, non l'intero belcanto. |
+
+### Fonti esterne per nuove verifiche
+- https://www.royalholloway.ac.uk/research-and-education/subjects/music/about-us/teacherhubmusic/franz-liszt-symphonic-poems/
+- https://www.metopera.org/user-information/nightly-met-opera-streams/week-34/opera-history-tour-guide/
+
+**Bilancio Lotto 117:** 10 archi, S=2, H=2, P=6.
+
+---
+
+## Lotto 118 — 2026-11-08: Leitmotiv, canti civici, opera e danza
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E0942` | **proposta non promossa** | Il ritorno dei motivi può costruire memoria drammatica; non ogni opera romantica o fantastica adotta il leitmotiv in senso wagneriano. |
+| `E0943` | **proposta non promossa** | Il cinema rielabora temi ricorrenti (per esempio Williams) con proprie funzioni: da evitare la tesi di un trasferimento uniforme dal teatro wagneriano. |
+| `E0944` | **sospensione precedente conservata** | Il nesso astratto fra nazionalità e mobilitazione politica rimane sospeso; servono esempi documentati come Mameli e Novaro. |
+| `E0945` | **proposta non promossa** | Inno politico e poesia civile si intersecano in episodi precisi, tra cui Il Canto degli Italiani: non inferire che ogni inno sia poesia politica mobilitante. |
+| `E0946` | **proposta non promossa** | Gli inni hanno pratiche per canto, banda, orchestra e cerimoniale, che non coincidono con una partitura originale; servono casi circoscritti. |
+| `E0947` | **proposta non promossa** | L'opera può accogliere danza e divertissement, per esempio Guillaume Tell, ma genere teatrale e spettacolo coreografico non sono sovrapponibili. |
+| `E0948` | **sospeso** | La danza interna all'opera e il balletto autonomo non coincidono: relazione di differenza e non discendenza, sospesa nel grafo storico. |
+| `E0949` | **proposta non promossa** | Il ballet d'action e la pantomima del Settecento ripensano la narrazione coreografica, senza costituire tutta la storia del balletto. |
+| `E0950` | **proposta non promossa** | I Ballets Russes intrecciano partiture, scene, costumi e coreografie differenti; non ridurre le avanguardie a una sola genealogia. |
+| `E0951` | **verifica precedente conservata** | Resta conservata la verifica indipendente su Cage e Cunningham: autonomia della composizione coreografica e musicale, non semplice sinonimia. |
+
+### Fonti esterne per nuove verifiche
+- Nessuna nuova verifica indipendente: confronto dei capitoli, oppure qualificazione/sospensione motivata delle proposte.
+
+**Bilancio Lotto 118:** 10 archi, S=1, P=7, K=1, U=1.
+
+---
+
+## Lotto 119 — 2026-11-08: Dall'operetta al musical e al cinema sonoro
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E0952` | **proposta non promossa** | L'operetta può parodiare convenzioni dell'opera e mitologie, come Offenbach, senza coincidere con l'intero genere operistico. |
+| `E0953` | **proposta non promossa** | Operetta, vaudeville, varietà e rivista convivono in sistemi produttivi ma sono forme distinte: rapporto editoriale da precisare. |
+| `E0954` | **verifica indipendente** | La Library of Congress annovera l'operetta fra le diverse matrici del musical statunitense, insieme a music hall, vaudeville e tradizioni afroamericane; nessuna origine esclusiva. |
+| `E0955` | **verifica indipendente** | La Library of Congress documenta il ruolo di ragtime, tap e teatro afroamericano nell'evoluzione del musical, specialmente Shuffle Along (1921); contributo autonomo e non derivativo. |
+| `E0956` | **proposta non promossa** | Il jazz contribuisce al musical in modi diversi, ma l'improvvisazione non è caratteristica obbligatoria delle partiture teatrali. |
+| `E0957` | **verifica indipendente** | La Library of Congress include il vaudeville fra le radici del musical americano, in convergenza con tradizioni diverse; non si tratta di una genealogia unica. |
+| `E0958` | **proposta non promossa** | Passaggio dal musical scenico al film musicale: montaggio, riprese e coreografia si trasformano; il film musicale non è solo teatro filmato. |
+| `E0959` | **verifica indipendente** | La Library of Congress documenta il passaggio graduale dall'accompagnamento dal vivo al cinema con sonoro sincronizzato, tra pratiche coesistenti negli anni Venti. |
+| `E0960` | **proposta non promossa** | Sincronizzazione e cinema sonoro trasformano il lavoro sul suono, ma la composizione specifica per il film precede i talkies. |
+| `E0961` | **proposta non promossa** | L'animazione può ricorrere al Mickey Mousing; non ogni cartone sincronizza ogni gesto e il metodo non coincide con tutta la musica d'animazione. |
+
+### Fonti esterne per nuove verifiche
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/tap-dance/
+- https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/photoplay-albums-for-silent-film-scores/
+
+**Bilancio Lotto 119:** 10 archi, H=4, P=6.
+
+---
+
+## Lotto 120 — 2026-11-08: Diegesi, Foley, registrazione e sperimentazioni
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E0962` | **sospeso** | Mickey Mousing coordina musica e gesto, Foley produce effetti e rumori: confronto didattico, non discendenza storica; arco sospeso. |
+| `E0963` | **proposta non promossa** | Diegesi ed extradiegesi descrivono la collocazione narrativa del suono, non la paternità della musica; casi da verificare su scene particolari. |
+| `E0964` | **proposta non promossa** | Empatia e anempatia sono categorie d'interpretazione di musica e immagine, non generi genealogicamente connessi all'intera colonna sonora. |
+| `E0965` | **proposta non promossa** | Una colonna sonora può usare musica composta per il film o repertorio preesistente: distinguere gli autori e le fonti di ciascun brano. |
+| `E0966` | **sospeso** | Diegesi riguarda il mondo narrativo del suono; Foley il processo di produzione dei rumori. Piani analitici diversi: arco sospeso. |
+| `E0967` | **proposta non promossa** | Fonografia e ascolto riproducibile incidono sulla storia del cinema sonoro, ma non equivalgono alle specifiche tecnologie audiovisive di sincronizzazione. |
+| `E0968` | **proposta non promossa** | Trascrizione, arrangiamento, registrazione e riuso producono oggetti distinti: l'uno non causa obbligatoriamente l'altro. |
+| `E0969` | **sospeso** | Atonalità, dodecafonia e serialismo dei parametri non sono sinonimi né fasi obbligate di una stessa traiettoria; rapporto generico sospeso. |
+| `E0970` | **sospeso** | Musica concreta ed elettroacustica possono incontrare il cinema in casi documentati, ma il ponte globale a ogni colonna sonora non è provato: sospeso. |
+| `E0971` | **sospeso** | Minimalismo e musica cinematografica possono incontrarsi in opere specifiche, ma senza esempi attestati non è corretto attivare il ponte generale: sospeso. |
+
+### Fonti esterne per nuove verifiche
+- Nessuna nuova verifica indipendente: confronto dei capitoli, oppure qualificazione/sospensione motivata delle proposte.
+
+**Bilancio Lotto 120:** 10 archi, S=5, P=5.
+
+---
+
+## Lotto 121 — 2026-11-08: Boezio, polifonia medievale e stampa
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E0972` | **trattazione** | Boezio: quadrivium e teoria dei rapporti numerici; non è una biografia completa. |
+| `E0973` | **trattazione** | Guido d'Arezzo: didattica del canto e sviluppo della notazione, con cautela verso i racconti leggendari. |
+| `E0974` | **trattazione** | Léonin e Notre-Dame: fonti e attribuzioni tramandate da Anonimo IV. |
+| `E0975` | **trattazione** | Pérotin, organa a più voci e testimonianza tarda di Anonimo IV. |
+| `E0976` | **trattazione** | Francesco d'Assisi, Cantico e cultura della lauda; non è l'autore di tutte le laudi. |
+| `E0977` | **richiamo** | Walther von der Vogelweide come esempio di Minnesang e cultura manoscritta. |
+| `E0978` | **richiamo** | Bernart de Ventadorn nel contesto della fin'amor e della canso, non diaristica autobiografica. |
+| `E0979` | **trattazione** | Ottaviano Petrucci, privilegi veneziani e stampa musicale del primo Cinquecento. |
+| `E0980` | **trattazione** | Lorenzo de' Medici, mecenatismo fiorentino e canti carnascialeschi, distinto da Caterina. |
+
+### Fonti esterne per nuove verifiche
+- Nessuna nuova verifica indipendente: confronto dei capitoli, oppure qualificazione/sospensione motivata delle proposte.
+
+**Bilancio Lotto 121:** 9 archi, T=7, R=2.
+
+---
+
+## Lotto 122 — 2026-11-08: Compositori e polifonie rinascimentali
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E0981` | **trattazione** | Orazio Vecchi e L'Amfiparnaso (1597), teatro madrigalistico non coincidente con l'opera lirica. |
+| `E0982` | **trattazione** | Adriano Banchieri, Festino e caricatura del contrappunto nella commedia polifonica. |
+| `E0983` | **trattazione** | Giovanni Croce, Mascarate piacevoli e Triaca musicale. |
+| `E0984` | **trattazione** | Gioseffo Zarlino, Istitutioni harmoniche (1558) e prassi veneziana. |
+| `E0985` | **trattazione** | Giovanni Gabrieli: policoralità veneziana, timbri e spazio di San Marco. |
+| `E0986` | **richiamo** | Orlando di Lasso e cappella bavarese, senza una monografia autonoma. |
+| `E0987` | **richiamo** | Tomás Luis de Victoria e Officium defunctorum nel contesto della polifonia spagnola. |
+| `E0988` | **richiamo** | Thomas Tallis nella musica inglese delle trasformazioni confessionali. |
+| `E0989` | **trattazione** | William Byrd, repertori cattolici e anglicani nella polifonia inglese. |
+
+### Fonti esterne per nuove verifiche
+- Nessuna nuova verifica indipendente: confronto dei capitoli, oppure qualificazione/sospensione motivata delle proposte.
+
+**Bilancio Lotto 122:** 9 archi, T=6, R=3.
+
+---
+
+## Lotto 123 — 2026-11-08: Romanticismo, opera lirica e scuole nazionali
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E0990` | **trattazione** | Dvořák nel Romanticismo: Danze slave e scuole nazionali dalla Boemia all'America. |
+| `E0991` | **trattazione** | Dvořák in Opera lirica: Rusalka (1901) e il suo teatro musicale ceco. |
+| `E0992` | **trattazione** | Smetana nel Romanticismo: Má vlast e Vltava nel quadro della memoria boema. |
+| `E0993` | **trattazione** | Smetana nell'Opera lirica: La sposa venduta, lingua, scena e danza. |
+| `E0994` | **trattazione** | Rimskij-Korsakov in Romanticismo: Shéhérazade come suite, non sinfonia a programma. |
+| `E0995` | **trattazione** | Rimskij-Korsakov nell'Opera lirica: Sneguročka, Sadko e teatro russo. |
+| `E0996` | **trattazione** | Grieg nel Romanticismo: identità norvegese e confronto con altre scuole nordiche. |
+| `E0997` | **richiamo** | Grieg citato in Opera lirica per Peer Gynt come musica di scena, non come opera lirica. |
+| `E0998` | **richiamo** | Albéniz richiamato nella cultura pianistica spagnola, senza studio analitico esteso. |
+| `E0999` | **richiamo** | Granados richiamato accanto ad Albéniz nella scrittura spagnola di fine Ottocento. |
+
+### Fonti esterne per nuove verifiche
+- Nessuna nuova verifica indipendente: confronto dei capitoli, oppure qualificazione/sospensione motivata delle proposte.
+
+**Bilancio Lotto 123:** 10 archi, T=7, R=3.
+
+---
+
+## Lotto 124 — 2026-11-08: Autrici, Risorgimento e operetta
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1000` | **trattazione** | Clara Schumann: ruolo di autrice, interprete e testimone di fonti, non soltanto riferimento coniugale. |
+| `E1001` | **trattazione** | Saint-Saëns: Carnevale degli animali e Société nationale de musique. |
+| `E1002` | **trattazione** | Glinka e il problema del teatro nazionale russo; non confonderlo con il Gruppo dei Cinque. |
+| `E1003` | **trattazione** | Glinka nell'Opera lirica: Una vita per lo zar e Ruslan e Ljudmila. |
+| `E1004` | **trattazione** | Dall'Ongaro, poeta e collaboratore di Novaro nel repertorio politico del Risorgimento. |
+| `E1005` | **trattazione** | Alessandro Botti e la sua versione musicale del Canto degli Italiani, distinta da quella di Novaro. |
+| `E1006` | **richiamo** | Massimo d'Azeglio citato per le memorie sulla formazione nazionale, non come compositore. |
+| `E1007` | **richiamo** | Hervé/Florimond Ronger nella satira dell'operetta francese, senza un profilo monografico. |
+| `E1008` | **richiamo** | Franz von Suppé citato con Die schöne Galathée e Boccaccio. |
+| `E1009` | **richiamo** | Emmerich Kálmán citato per Die Csárdásfürstin del 1915. |
+
+### Fonti esterne per nuove verifiche
+- Nessuna nuova verifica indipendente: confronto dei capitoli, oppure qualificazione/sospensione motivata delle proposte.
+
+**Bilancio Lotto 124:** 10 archi, T=6, R=4.
+
+---
+
+## Lotto 125 — 2026-11-08: Autori di Shuffle Along e il balletto di corte
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1010` | **richiamo** | Noble Sissle paroliere di Shuffle Along, distinto dal compositore Eubie Blake. |
+| `E1011` | **richiamo** | Flournoy Miller librettista di Shuffle Along insieme ad Aubrey Lyles. |
+| `E1012` | **richiamo** | Aubrey Lyles coautore del libretto di Shuffle Along insieme a Miller. |
+| `E1013` | **richiamo** | George M. Cohan fra canzone urbana e Broadway, senza analisi biografica. |
+| `E1014` | **richiamo** | Irving Berlin citato nella trasformazione della canzone urbana in teatro musicale. |
+| `E1015` | **trattazione** | Caterina de' Medici nel Balletto: spettacoli di corte e passaggio culturale Italia–Francia, non invenzione solitaria del balletto. |
+| `E1016` | **sospeso** | In Rinascimento compare Lorenzo de' Medici, non Caterina de' Medici: persone distinte; falso richiamo sospeso. |
+| `E1017` | **trattazione** | Luigi XIV, balletto di corte e Académie royale de danse, tra pratica e istituzionalizzazione. |
+
+### Fonti esterne per nuove verifiche
+- Nessuna nuova verifica indipendente: confronto dei capitoli, oppure qualificazione/sospensione motivata delle proposte.
+
+**Bilancio Lotto 125:** 8 archi, T=2, R=5, S=1.
+
+---
+
+## Lotto 126 — 2026-11-08: Coreografi dal Settecento al Novecento
+
+**Protocollo:** audit storico-filologico dei capitoli HTML e delle fonti indipendenti. Non si inferiscono influenze dirette da analogie fra generi, co-occorrenze o appartenenze generiche.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1018` | **trattazione** | Pierre Beauchamp e codificazione tecnica, senza attribuzione esclusiva delle cinque posizioni. |
+| `E1019` | **trattazione** | Salvatore Viganò coreografo delle Creature di Prometeo, distinto da Beethoven autore della musica. |
+| `E1020` | **trattazione** | Isadora Duncan e danza moderna in contrasto con i codici accademici. |
+| `E1021` | **trattazione** | Bronislava Nižinskaja e le coreografie di Les Noces e Les Biches, distinta dal fratello Vaclav. |
+| `E1022` | **trattazione** | Maurice Béjart e repertorio coreografico rituale e collettivo, distinto da Pina Bausch. |
+| `E1023` | **richiamo** | Agnes de Mille citata in Dall'operetta a Broadway per Oklahoma! (1943). |
+| `E1024` | **sospeso** | Agnes de Mille non compare nel testo della pagina Balletto verificata; il riferimento è nell'altra pagina. Sospeso. |
+
+### Fonti esterne per nuove verifiche
+- Nessuna nuova verifica indipendente: confronto dei capitoli, oppure qualificazione/sospensione motivata delle proposte.
+
+**Bilancio Lotto 126:** 7 archi, T=5, R=1, S=1.
+
+---
+### Bilancio dopo i Lotti 117–126
+
+- **93 archi esaminati**, `E0932`–`E1024`; **91 aggiornati**, due preesistenti conservati (`E0944` sospeso, `E0951` indipendente).
+- Esiti: **33 trattazioni riscontrate**, **18 richiami**, **10 sospensioni nuove**, **6 nuovi riscontri indipendenti**, **24 proposte semantiche riconsiderate ma non promosse**, un sospeso e un verificato già presenti e conservati.
+- Sei nuove verifiche: `E0933` poema sinfonico/musica a programma (Royal Holloway), `E0938` opera seria/riforma Gluck–Calzabigi (Metropolitan Opera), `E0954` operetta fra le matrici del musical (Library of Congress), `E0955` ragtime e teatro afroamericano (Library of Congress), `E0957` vaudeville (Library of Congress), `E0959` compresenza cinema muto con musica dal vivo/cinema sonoro nella transizione (Library of Congress). I verbi specifici sono attestati; non sono genealogie universali.
+- Integrità: **608 nodi e 1520 archi**; duplicati ID nodo 0, duplicati ID arco 0, orfani 0, triplette duplicate 0.
+- **Residui:** proposte editoriali 62; sospensioni 122; trattazioni 296; richiami contestuali 97; flag indipendenti 368 → **374**; gate `riscontro_storico_indipendente` 338.
+
+### Falsi collegamenti capitolo–persona
+
+- `E1016`: Rinascimento cita Lorenzo de' Medici, non Caterina de' Medici, trattata invece in Balletto. Sospeso per assenza nel capitolo di partenza.
+- `E1024`: Balletto non cita Agnes de Mille; l'autrice è invece presente in Dall'operetta a Broadway in relazione a *Oklahoma!* (1943). Sospeso.
+
+### Controllo di propagazione I–V secondo il filtro predefinito
+
+Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie `trattazione` e `menzione`. Conteggi cumulativi; i cinque livelli di navigazione del grafo non dimostrano influenza storica fra ogni coppia raggiungibile.
+
+| Nodo focale | Prima I–V | Dopo I–V |
+| --- | --- | --- |
+| Wolfgang Amadeus Mozart | 14 / 284 / 417 / 554 / 579 | 14 / 283 / 415 / 553 / 579 |
+| Ludwig van Beethoven | 18 / 262 / 411 / 549 / 579 | 18 / 262 / 410 / 548 / 579 |
+| Giuseppe Verdi | 23 / 267 / 388 / 527 / 565 | 23 / 266 / 386 / 526 / 565 |
+| Medioevo | 21 / 39 / 155 / 220 / 471 | 21 / 39 / 154 / 220 / 471 |
+| Rinascimento | 52 / 94 / 407 / 525 / 583 | 51 / 93 / 406 / 524 / 583 |
+| Romanticismo | 97 / 190 / 466 / 551 / 587 | 97 / 191 / 467 / 552 / 587 |
+| Il balletto | 76 / 156 / 455 / 545 / 586 | 75 / 155 / 454 / 545 / 586 |
+| Dall’operetta a Broadway | 45 / 65 / 351 / 473 / 568 | 45 / 65 / 351 / 473 / 568 |
+| Musica nell’audiovisivo | 40 / 118 / 411 / 501 / 570 | 40 / 119 / 415 / 502 / 570 |
+
+**Le otto sospensioni concettuali:** `E0934`, `E0940`, `E0948`, `E0962`, `E0966`, `E0969`, `E0970`, `E0971`. Non fanno più da ponti attivabili di default; restano consultabili tramite descrizioni e `previous_quality_gate`.
+
+**Riutilizzo editoriale:** i capitoli potranno integrare, in un intervento separato, la distinzione fra polifonia e madrigale, autore e fonte scenica, fra musica a programma e colonna sonora, fra tecnologie del sonoro e accompagnamento dal vivo, e i due nomi falsamente riscontrati. Non è stata applicata alcuna modifica alle pagine.
+
+**Limiti QA:** controllata integrità, simulazione dati e filtro di default, non una sessione grafica reale su Android/desktop; nessun test delle etichette, rotazione, zoom e fallback canvas dal vivo. Atlantis mantiene il dataset statico e non si sincronizza automaticamente coi capitoli.
+
+**Continuazione:** dal **Lotto 127** e dall'arco `E1025`, organologia, strumenti, tradizioni esecutive e relazioni con i capitoli. Distinguere impiego, trasformazione organologica e semplice menzione.
