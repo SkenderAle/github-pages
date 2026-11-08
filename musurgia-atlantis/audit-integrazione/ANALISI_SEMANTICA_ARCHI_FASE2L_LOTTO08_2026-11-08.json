@@ -1,0 +1,2159 @@
+{
+  "schema": "musurgia-atlantis-2L-lotto08-semantic-review-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "scope": "only staging audit, groups 141–160; no production writes",
+  "source_index": {
+    "path": "musurgia-atlantis/audit-integrazione/CANDIDATI_COLLISIONI_ARCHI_FASE2K_2026-11-08.json",
+    "sha": "074ae790819d7210da12e4c798e8d1dd2fad17e2"
+  },
+  "source_staging_sha": {
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json": "22916a9c6a59452f77048f04dbe9b229091ddf89",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE02_2026-11-08.json": "d1516f1681e4d5fd13f4da6b96c11228823300ff",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json": "80124aa47bd0b514d83b360879c95f79627cb9be"
+  },
+  "counts": {
+    "groups_total": 250,
+    "previously_classified": 140,
+    "groups_in_this_lotto": 20,
+    "cumulative_classified": 160,
+    "groups_remaining": 90,
+    "base_records": 20,
+    "specialist_records": 20,
+    "originals_preserved": 40
+  },
+  "entries": [
+    {
+      "group_number": 141,
+      "mapped_pair": "legacy:modernita-francese-primo-novecento|pers:erik-satie",
+      "classification": "independent_french_modernism",
+      "semantic_analysis": "Satie incarna una traiettoria individuale della modernità musicale francese. La categoria non è una scuola unitaria e non prova rapporti diretti con Debussy o Ravel.",
+      "guardrails": "poetiche individuali; nessun ponte tra membri",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1470,
+          "stage_id": "base2K:1471",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-erik-satie",
+          "target_original": "modernita-francese-primo-novecento",
+          "source_mapped": "pers:erik-satie",
+          "target_mapped": "legacy:modernita-francese-primo-novecento",
+          "raw_payload": {
+            "source": "compositore-erik-satie",
+            "target": "modernita-francese-primo-novecento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Erik Satie; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/erik-alfred-leslie-satie_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Erik Satie; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/erik-alfred-leslie-satie_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Erik Satie; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/erik-alfred-leslie-satie_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 290,
+          "stage_id": "special2K:cat-scuole-modernita-francese-primo-novecento-erik-satie",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "ricerca-francese-non-uniforme",
+          "source_original": "modernita-francese-primo-novecento",
+          "target_original": "compositore-erik-satie",
+          "source_mapped": "legacy:modernita-francese-primo-novecento",
+          "target_mapped": "pers:erik-satie",
+          "raw_payload": {
+            "id": "cat-scuole-modernita-francese-primo-novecento-erik-satie",
+            "group": "scuole",
+            "source": "modernita-francese-primo-novecento",
+            "target": "compositore-erik-satie",
+            "kind": "ricerca-francese-non-uniforme",
+            "forward": "comprende sperimentazioni musicali differenti nella produzione di",
+            "reverse": "sviluppò una ricerca musicale autonoma nell'ambito della",
+            "note": "Satie rappresentò un percorso eccentrico della modernità francese, con gesti antiretorici e sperimentazioni ripetitive.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/debussy-ravel-satie-la-musica-francese-del-primo-novecento_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "poetiche-moderne-non-sodalizio",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "forward_original": "comprende sperimentazioni musicali differenti nella produzione di",
+          "reverse_original": "sviluppò una ricerca musicale autonoma nell'ambito della",
+          "note_original": "Satie rappresentò un percorso eccentrico della modernità francese, con gesti antiretorici e sperimentazioni ripetitive.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/debussy-ravel-satie-la-musica-francese-del-primo-novecento_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende sperimentazioni musicali differenti nella produzione di",
+            "reverse_fragment": "sviluppò una ricerca musicale autonoma nell'ambito della",
+            "original_note": "Satie rappresentò un percorso eccentrico della modernità francese, con gesti antiretorici e sperimentazioni ripetitive.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/debussy-ravel-satie-la-musica-francese-del-primo-novecento_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 142,
+      "mapped_pair": "legacy:scuola-darmstadt|pers:pierre-boulez",
+      "classification": "darmstadt_courses_not_school_membership",
+      "semantic_analysis": "Boulez partecipò al confronto musicale dei Ferienkurse di Darmstadt; «scuola» è una comoda etichetta storiografica, non un istituto di appartenenza esclusiva. Nessuna relazione personale automaticamente dedotta dai corsi.",
+      "guardrails": "specificare corso/funzione/anno ove documentato",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1473,
+          "stage_id": "base2K:1474",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-pierre-boulez",
+          "target_original": "scuola-darmstadt",
+          "source_mapped": "pers:pierre-boulez",
+          "target_mapped": "legacy:scuola-darmstadt",
+          "raw_payload": {
+            "source": "compositore-pierre-boulez",
+            "target": "scuola-darmstadt",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Pierre Boulez; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/pierre-boulez/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Pierre Boulez; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/pierre-boulez/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Pierre Boulez; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/pierre-boulez/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 181,
+          "stage_id": "special2K:scuola-darmstadt-pierre-boulez",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "protagonista-dei-corsi",
+          "source_original": "scuola-darmstadt",
+          "target_original": "compositore-pierre-boulez",
+          "source_mapped": "legacy:scuola-darmstadt",
+          "target_mapped": "pers:pierre-boulez",
+          "raw_payload": {
+            "id": "scuola-darmstadt-pierre-boulez",
+            "group": "scuole",
+            "source": "scuola-darmstadt",
+            "target": "compositore-pierre-boulez",
+            "kind": "protagonista-dei-corsi",
+            "forward": "videro tra i protagonisti",
+            "reverse": "fu fra i protagonisti dei corsi di",
+            "note": "Boulez è una delle figure più rappresentative dei Ferienkurse di Darmstadt, luogo di confronto sul serialismo e sulle possibilità di nuova organizzazione musicale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/stockhausen-e-la-scuola-di-darmstadt-boulez_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "frequenza-corsi-e-rete-di-confronto",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "forward_original": "videro tra i protagonisti",
+          "reverse_original": "fu fra i protagonisti dei corsi di",
+          "note_original": "Boulez è una delle figure più rappresentative dei Ferienkurse di Darmstadt, luogo di confronto sul serialismo e sulle possibilità di nuova organizzazione musicale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/stockhausen-e-la-scuola-di-darmstadt-boulez_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "videro tra i protagonisti",
+            "reverse_fragment": "fu fra i protagonisti dei corsi di",
+            "original_note": "Boulez è una delle figure più rappresentative dei Ferienkurse di Darmstadt, luogo di confronto sul serialismo e sulle possibilità di nuova organizzazione musicale.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/stockhausen-e-la-scuola-di-darmstadt-boulez_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 143,
+      "mapped_pair": "legacy:gruppo-dei-sei|pers:poulenc",
+      "classification": "six_historical_membership",
+      "semantic_analysis": "Poulenc fu membro del Gruppo dei Sei. La membership condivisa va registrata come fatto collettivo, non prova di uniformità stilistica o insegnamento reciproco.",
+      "guardrails": "gruppo reale; relazioni interpersonali autonome",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1474,
+          "stage_id": "base2K:1475",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-francis-poulenc",
+          "target_original": "gruppo-dei-sei",
+          "source_mapped": "pers:poulenc",
+          "target_mapped": "legacy:gruppo-dei-sei",
+          "raw_payload": {
+            "source": "compositore-francis-poulenc",
+            "target": "gruppo-dei-sei",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Francis Poulenc; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/francis-poulenc/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Francis Poulenc; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/francis-poulenc/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Francis Poulenc; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/francis-poulenc/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 177,
+          "stage_id": "special2K:scuola-dei-sei-francis-poulenc",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "membro-del-gruppo",
+          "source_original": "gruppo-dei-sei",
+          "target_original": "compositore-francis-poulenc",
+          "source_mapped": "legacy:gruppo-dei-sei",
+          "target_mapped": "pers:poulenc",
+          "raw_payload": {
+            "id": "scuola-dei-sei-francis-poulenc",
+            "group": "scuole",
+            "source": "gruppo-dei-sei",
+            "target": "compositore-francis-poulenc",
+            "kind": "membro-del-gruppo",
+            "forward": "annoverò tra i propri membri",
+            "reverse": "fece parte del gruppo",
+            "note": "Francis Poulenc fu fra i Six e trasformò l'estetica di semplicità e ironia del dopoguerra attraverso teatro, canzone e musica sacra.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "gruppo-storico-documentato",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "forward_original": "annoverò tra i propri membri",
+          "reverse_original": "fece parte del gruppo",
+          "note_original": "Francis Poulenc fu fra i Six e trasformò l'estetica di semplicità e ironia del dopoguerra attraverso teatro, canzone e musica sacra.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annoverò tra i propri membri",
+            "reverse_fragment": "fece parte del gruppo",
+            "original_note": "Francis Poulenc fu fra i Six e trasformò l'estetica di semplicità e ironia del dopoguerra attraverso teatro, canzone e musica sacra.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 144,
+      "mapped_pair": "legacy:gruppo-dei-sei|pers:darius-milhaud",
+      "classification": "six_historical_membership",
+      "semantic_analysis": "Milhaud fu membro del Gruppo dei Sei, con poetica distinta e interesse per jazz e politonalità. L'appartenenza non unifica attività né legami personali.",
+      "guardrails": "gruppo reale; poetiche non equivalenti",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1476,
+          "stage_id": "base2K:1477",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-darius-milhaud",
+          "target_original": "gruppo-dei-sei",
+          "source_mapped": "pers:darius-milhaud",
+          "target_mapped": "legacy:gruppo-dei-sei",
+          "raw_payload": {
+            "source": "compositore-darius-milhaud",
+            "target": "gruppo-dei-sei",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Darius Milhaud; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/darius-milhaud/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Darius Milhaud; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/darius-milhaud/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Darius Milhaud; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/darius-milhaud/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 175,
+          "stage_id": "special2K:scuola-dei-sei-darius-milhaud",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "membro-del-gruppo",
+          "source_original": "gruppo-dei-sei",
+          "target_original": "compositore-darius-milhaud",
+          "source_mapped": "legacy:gruppo-dei-sei",
+          "target_mapped": "pers:darius-milhaud",
+          "raw_payload": {
+            "id": "scuola-dei-sei-darius-milhaud",
+            "group": "scuole",
+            "source": "gruppo-dei-sei",
+            "target": "compositore-darius-milhaud",
+            "kind": "membro-del-gruppo",
+            "forward": "annoverò tra i propri membri",
+            "reverse": "fece parte del gruppo",
+            "note": "Darius Milhaud fu fra i sei compositori nominati da Henri Collet nel 1920, portando nel sodalizio una poetica individuale aperta a jazz e politonalità.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "gruppo-storico-documentato",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "forward_original": "annoverò tra i propri membri",
+          "reverse_original": "fece parte del gruppo",
+          "note_original": "Darius Milhaud fu fra i sei compositori nominati da Henri Collet nel 1920, portando nel sodalizio una poetica individuale aperta a jazz e politonalità.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annoverò tra i propri membri",
+            "reverse_fragment": "fece parte del gruppo",
+            "original_note": "Darius Milhaud fu fra i sei compositori nominati da Henri Collet nel 1920, portando nel sodalizio una poetica individuale aperta a jazz e politonalità.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 145,
+      "mapped_pair": "legacy:gruppo-dei-sei|pers:arthur-honegger",
+      "classification": "six_historical_membership",
+      "semantic_analysis": "Honegger fu membro del Gruppo dei Sei, pur con un idioma sinfonico e drammatico individuale. Evitare di inferire che tutti i Sei condividessero lo stesso programma estetico.",
+      "guardrails": "gruppo reale; nessuna pedagogia implicita",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1477,
+          "stage_id": "base2K:1478",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-arthur-honegger",
+          "target_original": "gruppo-dei-sei",
+          "source_mapped": "pers:arthur-honegger",
+          "target_mapped": "legacy:gruppo-dei-sei",
+          "raw_payload": {
+            "source": "compositore-arthur-honegger",
+            "target": "gruppo-dei-sei",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Arthur Honegger; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/arthur-oskar-honegger_%28Enciclopedia-del-Cinema%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Arthur Honegger; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/arthur-oskar-honegger_%28Enciclopedia-del-Cinema%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Arthur Honegger; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/arthur-oskar-honegger_%28Enciclopedia-del-Cinema%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 176,
+          "stage_id": "special2K:scuola-dei-sei-arthur-honegger",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "membro-del-gruppo",
+          "source_original": "gruppo-dei-sei",
+          "target_original": "compositore-arthur-honegger",
+          "source_mapped": "legacy:gruppo-dei-sei",
+          "target_mapped": "pers:arthur-honegger",
+          "raw_payload": {
+            "id": "scuola-dei-sei-arthur-honegger",
+            "group": "scuole",
+            "source": "gruppo-dei-sei",
+            "target": "compositore-arthur-honegger",
+            "kind": "membro-del-gruppo",
+            "forward": "annoverò tra i propri membri",
+            "reverse": "fece parte del gruppo",
+            "note": "Arthur Honegger era uno dei Six, pur coltivando una sensibilità sinfonica e drammatica diversa da quella degli altri compagni.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "gruppo-storico-documentato",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "forward_original": "annoverò tra i propri membri",
+          "reverse_original": "fece parte del gruppo",
+          "note_original": "Arthur Honegger era uno dei Six, pur coltivando una sensibilità sinfonica e drammatica diversa da quella degli altri compagni.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annoverò tra i propri membri",
+            "reverse_fragment": "fece parte del gruppo",
+            "original_note": "Arthur Honegger era uno dei Six, pur coltivando una sensibilità sinfonica e drammatica diversa da quella degli altri compagni.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 146,
+      "mapped_pair": "legacy:seconda-scuola-vienna|pers:schonberg",
+      "classification": "second_vienna_founder",
+      "semantic_analysis": "Schönberg figura come riferimento formativo della Seconda scuola di Vienna. La relazione fra persona e corrente non sostituisce i distinti fatti maestro→Berg e maestro→Webern.",
+      "guardrails": "fatti personali richiedono archi e fonti propri",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1487,
+          "stage_id": "base2K:1488",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-arnold-schonberg",
+          "target_original": "seconda-scuola-vienna",
+          "source_mapped": "pers:schonberg",
+          "target_mapped": "legacy:seconda-scuola-vienna",
+          "raw_payload": {
+            "source": "compositore-arnold-schonberg",
+            "target": "seconda-scuola-vienna",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Arnold Schönberg; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/arnold-schonberg_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Arnold Schönberg; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/arnold-schonberg_%28Enciclopedia-dei-ragazzi%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Arnold Schönberg; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/arnold-schonberg_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 172,
+          "stage_id": "special2K:scuola-seconda-scuola-vienna-arnold-schonberg",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "guida-della-scuola",
+          "source_original": "seconda-scuola-vienna",
+          "target_original": "compositore-arnold-schonberg",
+          "source_mapped": "legacy:seconda-scuola-vienna",
+          "target_mapped": "pers:schonberg",
+          "raw_payload": {
+            "id": "scuola-seconda-scuola-vienna-arnold-schonberg",
+            "group": "scuole",
+            "source": "seconda-scuola-vienna",
+            "target": "compositore-arnold-schonberg",
+            "kind": "guida-della-scuola",
+            "forward": "ebbe come fondatore, maestro e punto di riferimento",
+            "reverse": "guidò il nucleo storico della",
+            "note": "Schönberg è il fondatore del nucleo viennese che esplorò l'atonalità libera e in seguito il metodo dei dodici suoni.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "nucleo-formativo-compositivo",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "forward_original": "ebbe come fondatore, maestro e punto di riferimento",
+          "reverse_original": "guidò il nucleo storico della",
+          "note_original": "Schönberg è il fondatore del nucleo viennese che esplorò l'atonalità libera e in seguito il metodo dei dodici suoni.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "ebbe come fondatore, maestro e punto di riferimento",
+            "reverse_fragment": "guidò il nucleo storico della",
+            "original_note": "Schönberg è il fondatore del nucleo viennese che esplorò l'atonalità libera e in seguito il metodo dei dodici suoni.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 147,
+      "mapped_pair": "legacy:seconda-scuola-vienna|pers:alban-berg",
+      "classification": "second_vienna_pupil_member",
+      "semantic_analysis": "Berg fu allievo di Schönberg e protagonista della Seconda scuola viennese: insegnamento diretto e appartenenza storiografica sono predicati diversi, non un solo collegamento transitivo.",
+      "guardrails": "distinguere formazione e corrente",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1488,
+          "stage_id": "base2K:1489",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-alban-berg",
+          "target_original": "seconda-scuola-vienna",
+          "source_mapped": "pers:alban-berg",
+          "target_mapped": "legacy:seconda-scuola-vienna",
+          "raw_payload": {
+            "source": "compositore-alban-berg",
+            "target": "seconda-scuola-vienna",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Alban Berg; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/alban-berg_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Alban Berg; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/alban-berg_%28Enciclopedia-dei-ragazzi%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Alban Berg; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/alban-berg_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 173,
+          "stage_id": "special2K:scuola-seconda-scuola-vienna-alban-berg",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "allievo-e-protagonista",
+          "source_original": "seconda-scuola-vienna",
+          "target_original": "compositore-alban-berg",
+          "source_mapped": "legacy:seconda-scuola-vienna",
+          "target_mapped": "pers:alban-berg",
+          "raw_payload": {
+            "id": "scuola-seconda-scuola-vienna-alban-berg",
+            "group": "scuole",
+            "source": "seconda-scuola-vienna",
+            "target": "compositore-alban-berg",
+            "kind": "allievo-e-protagonista",
+            "forward": "annoverò fra i suoi protagonisti, allievi di Schönberg",
+            "reverse": "studiò con Schönberg e fu tra i protagonisti della",
+            "note": "Berg fu allievo di Schönberg e uno dei principali autori della Seconda scuola di Vienna, con una scrittura che accolse anche forti elementi espressivi e drammatici.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "nucleo-formativo-compositivo",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            },
+            "linguistic_review": {
+              "date": "2026-10-20",
+              "batch": "scuole-frasi-terza-lettura-20261020",
+              "prior_forward": "annoverò fra i protagonisti, allievi di Schönberg",
+              "prior_reverse": "studiò con Schönberg e fu tra i protagonisti della",
+              "purpose": "Chiarezza grammaticale e delle distinzioni già descritte nelle note e fonti",
+              "change_scope": "forward/reverse"
+            }
+          },
+          "forward_original": "annoverò fra i suoi protagonisti, allievi di Schönberg",
+          "reverse_original": "studiò con Schönberg e fu tra i protagonisti della",
+          "note_original": "Berg fu allievo di Schönberg e uno dei principali autori della Seconda scuola di Vienna, con una scrittura che accolse anche forti elementi espressivi e drammatici.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annoverò fra i suoi protagonisti, allievi di Schönberg",
+            "reverse_fragment": "studiò con Schönberg e fu tra i protagonisti della",
+            "original_note": "Berg fu allievo di Schönberg e uno dei principali autori della Seconda scuola di Vienna, con una scrittura che accolse anche forti elementi espressivi e drammatici.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 148,
+      "mapped_pair": "legacy:seconda-scuola-vienna|pers:anton-webern",
+      "classification": "second_vienna_pupil_member",
+      "semantic_analysis": "Webern fu allievo di Schönberg e protagonista della Seconda scuola viennese. Non usarne la categoria comune per inventare passaggi fra allievi.",
+      "guardrails": "distinguere formazione e corrente",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1490,
+          "stage_id": "base2K:1491",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-anton-webern",
+          "target_original": "seconda-scuola-vienna",
+          "source_mapped": "pers:anton-webern",
+          "target_mapped": "legacy:seconda-scuola-vienna",
+          "raw_payload": {
+            "source": "compositore-anton-webern",
+            "target": "seconda-scuola-vienna",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Anton Webern; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/anton-webern/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Anton Webern; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/anton-webern/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Anton Webern; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/anton-webern/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 174,
+          "stage_id": "special2K:scuola-seconda-scuola-vienna-anton-webern",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "allievo-e-protagonista",
+          "source_original": "seconda-scuola-vienna",
+          "target_original": "compositore-anton-webern",
+          "source_mapped": "legacy:seconda-scuola-vienna",
+          "target_mapped": "pers:anton-webern",
+          "raw_payload": {
+            "id": "scuola-seconda-scuola-vienna-anton-webern",
+            "group": "scuole",
+            "source": "seconda-scuola-vienna",
+            "target": "compositore-anton-webern",
+            "kind": "allievo-e-protagonista",
+            "forward": "annoverò fra i suoi protagonisti, allievi di Schönberg",
+            "reverse": "studiò con Schönberg e fu tra i protagonisti della",
+            "note": "Webern studiò con Schönberg e sviluppò una scrittura concentrata, contribuendo all'eredità della Seconda scuola di Vienna nel Novecento.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "nucleo-formativo-compositivo",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            },
+            "linguistic_review": {
+              "date": "2026-10-20",
+              "batch": "scuole-frasi-terza-lettura-20261020",
+              "prior_forward": "annoverò fra i protagonisti, allievi di Schönberg",
+              "prior_reverse": "studiò con Schönberg e fu tra i protagonisti della",
+              "purpose": "Chiarezza grammaticale e delle distinzioni già descritte nelle note e fonti",
+              "change_scope": "forward/reverse"
+            }
+          },
+          "forward_original": "annoverò fra i suoi protagonisti, allievi di Schönberg",
+          "reverse_original": "studiò con Schönberg e fu tra i protagonisti della",
+          "note_original": "Webern studiò con Schönberg e sviluppò una scrittura concentrata, contribuendo all'eredità della Seconda scuola di Vienna nel Novecento.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annoverò fra i suoi protagonisti, allievi di Schönberg",
+            "reverse_fragment": "studiò con Schönberg e fu tra i protagonisti della",
+            "original_note": "Webern studiò con Schönberg e sviluppò una scrittura concentrata, contribuendo all'eredità della Seconda scuola di Vienna nel Novecento.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/la-seconda-scuola-di-vienna-schonberg-berg-webern_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 149,
+      "mapped_pair": "legacy:generazione-1880-musica-italiana|pers:alfredo-casella",
+      "classification": "generation_1880_storiographic_source_warning",
+      "semantic_analysis": "Casella appartiene alla cosiddetta generazione dell'Ottanta; categoria storiografica, non sodalizio chiuso. La fonte specialistica registrata rinvia però alla scheda di Malipiero e va sostituita/affiancata con fonte pertinente prima di convalida della singola relazione.",
+      "guardrails": "ALLERTA fonte fuori soggetto: Casella→scheda Malipiero",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1495,
+          "stage_id": "base2K:1496",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-alfredo-casella",
+          "target_original": "generazione-1880-musica-italiana",
+          "source_mapped": "pers:alfredo-casella",
+          "target_mapped": "legacy:generazione-1880-musica-italiana",
+          "raw_payload": {
+            "source": "compositore-alfredo-casella",
+            "target": "generazione-1880-musica-italiana",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Alfredo Casella; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/alfredo-casella_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Alfredo Casella; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/alfredo-casella_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Alfredo Casella; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/alfredo-casella_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 292,
+          "stage_id": "special2K:cat-scuole-generazione-1880-musica-italiana-alfredo-casella",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "rinnovamento-strumentale-italiano",
+          "source_original": "generazione-1880-musica-italiana",
+          "target_original": "compositore-alfredo-casella",
+          "source_mapped": "legacy:generazione-1880-musica-italiana",
+          "target_mapped": "pers:alfredo-casella",
+          "raw_payload": {
+            "id": "cat-scuole-generazione-1880-musica-italiana-alfredo-casella",
+            "group": "scuole",
+            "source": "generazione-1880-musica-italiana",
+            "target": "compositore-alfredo-casella",
+            "kind": "rinnovamento-strumentale-italiano",
+            "forward": "annovera fra gli autori del rinnovamento strumentale italiano",
+            "reverse": "è annoverato nella generazione storiografica della",
+            "note": "Casella favorì la circolazione europea dei linguaggi novecenteschi e il rilancio della musica strumentale in Italia.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "generazione-storiografica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "forward_original": "annovera fra gli autori del rinnovamento strumentale italiano",
+          "reverse_original": "è annoverato nella generazione storiografica della",
+          "note_original": "Casella favorì la circolazione europea dei linguaggi novecenteschi e il rilancio della musica strumentale in Italia.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annovera fra gli autori del rinnovamento strumentale italiano",
+            "reverse_fragment": "è annoverato nella generazione storiografica della",
+            "original_note": "Casella favorì la circolazione europea dei linguaggi novecenteschi e il rilancio della musica strumentale in Italia.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 150,
+      "mapped_pair": "legacy:generazione-1880-musica-italiana|pers:gian-francesco-malipiero",
+      "classification": "generation_1880_storiographic",
+      "semantic_analysis": "Malipiero appartiene alla generazione dell'Ottanta; la sua rilettura della tradizione italiana non va equiparata all'attività di Casella né fatta diventare un rapporto di maestro-allievo.",
+      "guardrails": "categoria storiografica; biografie individuali",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1496,
+          "stage_id": "base2K:1497",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-gian-francesco-malipiero",
+          "target_original": "generazione-1880-musica-italiana",
+          "source_mapped": "pers:gian-francesco-malipiero",
+          "target_mapped": "legacy:generazione-1880-musica-italiana",
+          "raw_payload": {
+            "source": "compositore-gian-francesco-malipiero",
+            "target": "generazione-1880-musica-italiana",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Gian Francesco Malipiero; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Gian Francesco Malipiero; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Gian Francesco Malipiero; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 293,
+          "stage_id": "special2K:cat-scuole-generazione-1880-musica-italiana-gian-francesco-malipiero",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "rinnovamento-strumentale-italiano",
+          "source_original": "generazione-1880-musica-italiana",
+          "target_original": "compositore-gian-francesco-malipiero",
+          "source_mapped": "legacy:generazione-1880-musica-italiana",
+          "target_mapped": "pers:gian-francesco-malipiero",
+          "raw_payload": {
+            "id": "cat-scuole-generazione-1880-musica-italiana-gian-francesco-malipiero",
+            "group": "scuole",
+            "source": "generazione-1880-musica-italiana",
+            "target": "compositore-gian-francesco-malipiero",
+            "kind": "rinnovamento-strumentale-italiano",
+            "forward": "annovera fra gli autori del rinnovamento strumentale italiano",
+            "reverse": "è annoverato nella generazione storiografica della",
+            "note": "Malipiero reinterpretò la musica italiana dei secoli precedenti in una ricerca antiromantica di forme e linguaggi nuovi.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "generazione-storiografica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "forward_original": "annovera fra gli autori del rinnovamento strumentale italiano",
+          "reverse_original": "è annoverato nella generazione storiografica della",
+          "note_original": "Malipiero reinterpretò la musica italiana dei secoli precedenti in una ricerca antiromantica di forme e linguaggi nuovi.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annovera fra gli autori del rinnovamento strumentale italiano",
+            "reverse_fragment": "è annoverato nella generazione storiografica della",
+            "original_note": "Malipiero reinterpretò la musica italiana dei secoli precedenti in una ricerca antiromantica di forme e linguaggi nuovi.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gian-francesco-malipiero/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 151,
+      "mapped_pair": "legacy:musica-del-rumore-futurista|pers:luigi-russolo",
+      "classification": "noise_art_1913_specific",
+      "semantic_analysis": "Russolo: manifesto L'arte dei rumori e intonarumori del 1913. Legame con una pratica e strumenti determinati; non implica continuità diretta documentata con ogni successiva musica elettronica.",
+      "guardrails": "fatto tecnologico e manifesto distinti",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1497,
+          "stage_id": "base2K:1498",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-luigi-russolo",
+          "target_original": "musica-del-rumore-futurista",
+          "source_mapped": "pers:luigi-russolo",
+          "target_mapped": "legacy:musica-del-rumore-futurista",
+          "raw_payload": {
+            "source": "compositore-luigi-russolo",
+            "target": "musica-del-rumore-futurista",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luigi Russolo; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/luigi-russolo/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luigi Russolo; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/luigi-russolo/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luigi Russolo; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/luigi-russolo/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 789,
+          "stage_id": "special2K:audit8g-russolo-rumorismo",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "arte-dei-rumori-intonarumori-1913",
+          "source_original": "musica-del-rumore-futurista",
+          "target_original": "compositore-luigi-russolo",
+          "source_mapped": "legacy:musica-del-rumore-futurista",
+          "target_mapped": "pers:luigi-russolo",
+          "raw_payload": {
+            "id": "audit8g-russolo-rumorismo",
+            "group": "genealogie",
+            "source": "musica-del-rumore-futurista",
+            "target": "compositore-luigi-russolo",
+            "kind": "arte-dei-rumori-intonarumori-1913",
+            "forward": "prese forma con esperimenti e manifesti di",
+            "reverse": "progettò gli intonarumori e l’arte dei rumori nella",
+            "note": "Russolo scrisse L’arte dei rumori (1913) e inventò famiglie di intonarumori per una pratica musicale fondata sull’organizzazione dei rumori; il collegamento è storico-tecnologico e non mera somiglianza con musica elettronica successiva.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/luigi-carlo-filippo-russolo_%28Dizionario-Biografico%29/",
+              "https://www.treccani.it/enciclopedia/intonarumori/"
+            ],
+            "status": "documentato"
+          },
+          "forward_original": "prese forma con esperimenti e manifesti di",
+          "reverse_original": "progettò gli intonarumori e l’arte dei rumori nella",
+          "note_original": "Russolo scrisse L’arte dei rumori (1913) e inventò famiglie di intonarumori per una pratica musicale fondata sull’organizzazione dei rumori; il collegamento è storico-tecnologico e non mera somiglianza con musica elettronica successiva.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/luigi-carlo-filippo-russolo_%28Dizionario-Biografico%29/",
+            "https://www.treccani.it/enciclopedia/intonarumori/"
+          ],
+          "display_contract": {
+            "forward_fragment": "prese forma con esperimenti e manifesti di",
+            "reverse_fragment": "progettò gli intonarumori e l’arte dei rumori nella",
+            "original_note": "Russolo scrisse L’arte dei rumori (1913) e inventò famiglie di intonarumori per una pratica musicale fondata sull’organizzazione dei rumori; il collegamento è storico-tecnologico e non mera somiglianza con musica elettronica successiva.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/luigi-carlo-filippo-russolo_%28Dizionario-Biografico%29/",
+              "https://www.treccani.it/enciclopedia/intonarumori/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 152,
+      "mapped_pair": "legacy:avanguardia-italiana-secondo-novecento|pers:luigi-nono",
+      "classification": "italian_postwar_avantgarde_plural",
+      "semantic_analysis": "Nono: ricerca seriale, attenzione politica e sviluppo successivo dell'ascolto/elettroacustica. L'avanguardia italiana è un contenitore plurale, non un'organizzazione e non un ponte fra tutti i suoi autori.",
+      "guardrails": "una poetica non equivale all'altra",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1498,
+          "stage_id": "base2K:1499",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-luigi-nono",
+          "target_original": "avanguardia-italiana-secondo-novecento",
+          "source_mapped": "pers:luigi-nono",
+          "target_mapped": "legacy:avanguardia-italiana-secondo-novecento",
+          "raw_payload": {
+            "source": "compositore-luigi-nono",
+            "target": "avanguardia-italiana-secondo-novecento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luigi Nono; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/luigi-nono_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luigi Nono; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/luigi-nono_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luigi Nono; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/luigi-nono_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 298,
+          "stage_id": "special2K:cat-scuole-avanguardia-italiana-secondo-novecento-luigi-nono",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "ricerca-musicale-del-dopoguerra",
+          "source_original": "avanguardia-italiana-secondo-novecento",
+          "target_original": "compositore-luigi-nono",
+          "source_mapped": "legacy:avanguardia-italiana-secondo-novecento",
+          "target_mapped": "pers:luigi-nono",
+          "raw_payload": {
+            "id": "cat-scuole-avanguardia-italiana-secondo-novecento-luigi-nono",
+            "group": "scuole",
+            "source": "avanguardia-italiana-secondo-novecento",
+            "target": "compositore-luigi-nono",
+            "kind": "ricerca-musicale-del-dopoguerra",
+            "forward": "comprende linguaggi sperimentali differenti nella produzione di",
+            "reverse": "sviluppò ricerca musicale moderna nel quadro delle",
+            "note": "Nono trasformò il linguaggio seriale e la ricerca elettroacustica in un percorso personale con forte attenzione alla storia e all'ascolto.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/italia/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "avanguardia-pluralita-di-poetiche",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "forward_original": "comprende linguaggi sperimentali differenti nella produzione di",
+          "reverse_original": "sviluppò ricerca musicale moderna nel quadro delle",
+          "note_original": "Nono trasformò il linguaggio seriale e la ricerca elettroacustica in un percorso personale con forte attenzione alla storia e all'ascolto.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/italia/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende linguaggi sperimentali differenti nella produzione di",
+            "reverse_fragment": "sviluppò ricerca musicale moderna nel quadro delle",
+            "original_note": "Nono trasformò il linguaggio seriale e la ricerca elettroacustica in un percorso personale con forte attenzione alla storia e all'ascolto.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/italia/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 153,
+      "mapped_pair": "legacy:avanguardia-italiana-secondo-novecento|pers:luciano-berio",
+      "classification": "italian_postwar_avantgarde_plural",
+      "semantic_analysis": "Berio: sperimentazione della voce, studio dei linguaggi ed elettronica. Distinguere appartenenza al contesto da fatti collaborativi particolari (come lo Studio di fonologia RAI), da documentare con archi propri.",
+      "guardrails": "attenzione a collaborazione documentata con Maderna",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1499,
+          "stage_id": "base2K:1500",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-luciano-berio",
+          "target_original": "avanguardia-italiana-secondo-novecento",
+          "source_mapped": "pers:luciano-berio",
+          "target_mapped": "legacy:avanguardia-italiana-secondo-novecento",
+          "raw_payload": {
+            "source": "compositore-luciano-berio",
+            "target": "avanguardia-italiana-secondo-novecento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luciano Berio; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/luciano-berio_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luciano Berio; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/luciano-berio_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Luciano Berio; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/luciano-berio_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 296,
+          "stage_id": "special2K:cat-scuole-avanguardia-italiana-secondo-novecento-luciano-berio",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "ricerca-musicale-del-dopoguerra",
+          "source_original": "avanguardia-italiana-secondo-novecento",
+          "target_original": "compositore-luciano-berio",
+          "source_mapped": "legacy:avanguardia-italiana-secondo-novecento",
+          "target_mapped": "pers:luciano-berio",
+          "raw_payload": {
+            "id": "cat-scuole-avanguardia-italiana-secondo-novecento-luciano-berio",
+            "group": "scuole",
+            "source": "avanguardia-italiana-secondo-novecento",
+            "target": "compositore-luciano-berio",
+            "kind": "ricerca-musicale-del-dopoguerra",
+            "forward": "comprende linguaggi sperimentali differenti nella produzione di",
+            "reverse": "sviluppò ricerca musicale moderna nel quadro delle",
+            "note": "Berio sviluppò la ricerca elettronica e una scrittura aperta all'esplorazione della voce e alla relazione fra suoni, parole e gesti.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/italia/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "avanguardia-pluralita-di-poetiche",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "forward_original": "comprende linguaggi sperimentali differenti nella produzione di",
+          "reverse_original": "sviluppò ricerca musicale moderna nel quadro delle",
+          "note_original": "Berio sviluppò la ricerca elettronica e una scrittura aperta all'esplorazione della voce e alla relazione fra suoni, parole e gesti.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/italia/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende linguaggi sperimentali differenti nella produzione di",
+            "reverse_fragment": "sviluppò ricerca musicale moderna nel quadro delle",
+            "original_note": "Berio sviluppò la ricerca elettronica e una scrittura aperta all'esplorazione della voce e alla relazione fra suoni, parole e gesti.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/italia/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 154,
+      "mapped_pair": "legacy:avanguardia-italiana-secondo-novecento|pers:bruno-maderna",
+      "classification": "italian_postwar_avantgarde_plural",
+      "semantic_analysis": "Maderna: composizione e direzione oltre alla ricerca elettronica. La fondazione dello Studio di fonologia RAI con Berio è un fatto interpersonale/istituzionale separato dal generico nodo «avanguardia».",
+      "guardrails": "fonte specialistica generale troppo ampia per fatto specifico",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1500,
+          "stage_id": "base2K:1501",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-bruno-maderna",
+          "target_original": "avanguardia-italiana-secondo-novecento",
+          "source_mapped": "pers:bruno-maderna",
+          "target_mapped": "legacy:avanguardia-italiana-secondo-novecento",
+          "raw_payload": {
+            "source": "compositore-bruno-maderna",
+            "target": "avanguardia-italiana-secondo-novecento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Bruno Maderna; il rimando non indica un rapporto personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/bruno-maderna_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Bruno Maderna; il rimando non indica un rapporto personale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/bruno-maderna_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza musicale ricavata dal repertorio o dall'attività descritti nella scheda biografica di Bruno Maderna; il rimando non indica un rapporto personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/bruno-maderna_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 297,
+          "stage_id": "special2K:cat-scuole-avanguardia-italiana-secondo-novecento-bruno-maderna",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "kind": "ricerca-musicale-del-dopoguerra",
+          "source_original": "avanguardia-italiana-secondo-novecento",
+          "target_original": "compositore-bruno-maderna",
+          "source_mapped": "legacy:avanguardia-italiana-secondo-novecento",
+          "target_mapped": "pers:bruno-maderna",
+          "raw_payload": {
+            "id": "cat-scuole-avanguardia-italiana-secondo-novecento-bruno-maderna",
+            "group": "scuole",
+            "source": "avanguardia-italiana-secondo-novecento",
+            "target": "compositore-bruno-maderna",
+            "kind": "ricerca-musicale-del-dopoguerra",
+            "forward": "comprende linguaggi sperimentali differenti nella produzione di",
+            "reverse": "sviluppò ricerca musicale moderna nel quadro delle",
+            "note": "Maderna fu fra i principali compositori italiani del dopoguerra e fondò con Berio lo Studio di fonologia musicale della RAI a Milano.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/italia/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "avanguardia-pluralita-di-poetiche",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "forward_original": "comprende linguaggi sperimentali differenti nella produzione di",
+          "reverse_original": "sviluppò ricerca musicale moderna nel quadro delle",
+          "note_original": "Maderna fu fra i principali compositori italiani del dopoguerra e fondò con Berio lo Studio di fonologia musicale della RAI a Milano.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/italia/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende linguaggi sperimentali differenti nella produzione di",
+            "reverse_fragment": "sviluppò ricerca musicale moderna nel quadro delle",
+            "original_note": "Maderna fu fra i principali compositori italiani del dopoguerra e fondò con Berio lo Studio di fonologia musicale della RAI a Milano.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/italia/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 155,
+      "mapped_pair": "legacy:teatro-musicale-broadway|pers:george-gershwin",
+      "classification": "broadway_musical_documented_collaboration",
+      "semantic_analysis": "George Gershwin compose musical per Broadway con Ira autore di testi: la Library of Congress attesta quindici musical in collaborazione, a partire da Lady, Be Good! (1924). Ira resta persona distinta, non fusione di identità.",
+      "guardrails": "compositore e paroliere due ruoli distinti",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1505,
+          "stage_id": "base2K:1506",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-george-gershwin",
+          "target_original": "teatro-musicale-broadway",
+          "source_mapped": "pers:george-gershwin",
+          "target_mapped": "legacy:teatro-musicale-broadway",
+          "raw_payload": {
+            "source": "compositore-george-gershwin",
+            "target": "teatro-musicale-broadway",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di George Gershwin; non costituisce relazione interpersonale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/george-gershwin_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di George Gershwin; non costituisce relazione interpersonale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/george-gershwin_%28Enciclopedia-dei-ragazzi%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di George Gershwin; non costituisce relazione interpersonale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/george-gershwin_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 615,
+          "stage_id": "special2K:audit8-gershwin-broadway",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "produzione-musical-broadway",
+          "source_original": "teatro-musicale-broadway",
+          "target_original": "compositore-george-gershwin",
+          "source_mapped": "legacy:teatro-musicale-broadway",
+          "target_mapped": "pers:george-gershwin",
+          "raw_payload": {
+            "id": "audit8-gershwin-broadway",
+            "group": "scuole",
+            "source": "teatro-musicale-broadway",
+            "target": "compositore-george-gershwin",
+            "kind": "produzione-musical-broadway",
+            "forward": "comprende musical di Broadway composti da",
+            "reverse": "scrisse spettacoli con Ira Gershwin per il",
+            "note": "La Library of Congress documenta quindici musical di Broadway scritti da George Gershwin con Ira Gershwin, a partire da Lady, Be Good! (1924), oltre alle opere da concerto e al successivo Porgy and Bess. Si tratta di produzione teatrale verificata.",
+            "sources": [
+              "https://www.loc.gov/collections/george-and-ira-gershwin-treasures/about-this-collection/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "produzione-teatro-musicale",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "annoverò fra i suoi grandi compositori",
+              "prior_reverse": "contribuì al repertorio dei musical di",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "forward_original": "comprende musical di Broadway composti da",
+          "reverse_original": "scrisse spettacoli con Ira Gershwin per il",
+          "note_original": "La Library of Congress documenta quindici musical di Broadway scritti da George Gershwin con Ira Gershwin, a partire da Lady, Be Good! (1924), oltre alle opere da concerto e al successivo Porgy and Bess. Si tratta di produzione teatrale verificata.",
+          "sources_original": [
+            "https://www.loc.gov/collections/george-and-ira-gershwin-treasures/about-this-collection/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende musical di Broadway composti da",
+            "reverse_fragment": "scrisse spettacoli con Ira Gershwin per il",
+            "original_note": "La Library of Congress documenta quindici musical di Broadway scritti da George Gershwin con Ira Gershwin, a partire da Lady, Be Good! (1924), oltre alle opere da concerto e al successivo Porgy and Bess. Si tratta di produzione teatrale verificata.",
+            "original_sources": [
+              "https://www.loc.gov/collections/george-and-ira-gershwin-treasures/about-this-collection/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [
+        {
+          "source": "https://www.loc.gov/collections/george-and-ira-gershwin-treasures/about-this-collection/",
+          "scope": "15 Broadway musicals with Ira, Lady Be Good! 1924",
+          "result": "verified_primary_collection"
+        }
+      ],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 156,
+      "mapped_pair": "legacy:rapsodia-jazz-e-sala-da-concerto|pers:george-gershwin",
+      "classification": "rhapsody_blue_original_orchestration",
+      "semantic_analysis": "Rhapsody in Blue, prima 12 febbraio 1924, musica di George Gershwin, orchestrazione della prima versione per l'ensemble di Whiteman realizzata da Ferde Grofé. Non attribuire a Grofé la composizione né confondere arrangiamenti successivi.",
+      "guardrails": "distinzione composizione/orchestrazione e versioni",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1506,
+          "stage_id": "base2K:1507",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-george-gershwin",
+          "target_original": "rapsodia-jazz-e-sala-da-concerto",
+          "source_mapped": "pers:george-gershwin",
+          "target_mapped": "legacy:rapsodia-jazz-e-sala-da-concerto",
+          "raw_payload": {
+            "source": "compositore-george-gershwin",
+            "target": "rapsodia-jazz-e-sala-da-concerto",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di George Gershwin; non costituisce relazione interpersonale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/george-gershwin_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di George Gershwin; non costituisce relazione interpersonale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/george-gershwin_%28Enciclopedia-dei-ragazzi%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di George Gershwin; non costituisce relazione interpersonale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/george-gershwin_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 706,
+          "stage_id": "special2K:audit8e-rhapsody-jazz-gershwin",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "ibridazione-jazz-concerto-1924",
+          "source_original": "rapsodia-jazz-e-sala-da-concerto",
+          "target_original": "compositore-george-gershwin",
+          "source_mapped": "legacy:rapsodia-jazz-e-sala-da-concerto",
+          "target_mapped": "pers:george-gershwin",
+          "raw_payload": {
+            "id": "audit8e-rhapsody-jazz-gershwin",
+            "group": "genealogie",
+            "source": "rapsodia-jazz-e-sala-da-concerto",
+            "target": "compositore-george-gershwin",
+            "kind": "ibridazione-jazz-concerto-1924",
+            "forward": "ebbe un’opera di riferimento nella",
+            "reverse": "scrisse un lavoro di riferimento per la",
+            "note": "Rhapsody in Blue rese udibile nel 1924 un dialogo tra linguaggi jazz, pianoforte solista e una grande forma concertistica, con orchestrazione di Ferde Grofé; la Library of Congress documenta l’ibridazione e la sua influenza successiva.",
+            "sources": [
+              "https://www.loc.gov/collections/songs-of-america/articles-and-essays/articles-about-songs/rhapsody-in-blue/"
+            ],
+            "status": "documentato"
+          },
+          "forward_original": "ebbe un’opera di riferimento nella",
+          "reverse_original": "scrisse un lavoro di riferimento per la",
+          "note_original": "Rhapsody in Blue rese udibile nel 1924 un dialogo tra linguaggi jazz, pianoforte solista e una grande forma concertistica, con orchestrazione di Ferde Grofé; la Library of Congress documenta l’ibridazione e la sua influenza successiva.",
+          "sources_original": [
+            "https://www.loc.gov/collections/songs-of-america/articles-and-essays/articles-about-songs/rhapsody-in-blue/"
+          ],
+          "display_contract": {
+            "forward_fragment": "ebbe un’opera di riferimento nella",
+            "reverse_fragment": "scrisse un lavoro di riferimento per la",
+            "original_note": "Rhapsody in Blue rese udibile nel 1924 un dialogo tra linguaggi jazz, pianoforte solista e una grande forma concertistica, con orchestrazione di Ferde Grofé; la Library of Congress documenta l’ibridazione e la sua influenza successiva.",
+            "original_sources": [
+              "https://www.loc.gov/collections/songs-of-america/articles-and-essays/articles-about-songs/rhapsody-in-blue/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [
+        {
+          "source": "https://www.loc.gov/collections/songs-of-america/articles-and-essays/articles-about-songs/rhapsody-in-blue/",
+          "scope": "12 February 1924; Gershwin piano/music; Grofé original orchestration",
+          "result": "verified_primary_collection"
+        }
+      ],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 157,
+      "mapped_pair": "legacy:avanguardia-americana-indeterminazione|pers:cage",
+      "classification": "cage_indeterminacy_specific_performance",
+      "semantic_analysis": "Cage: pratiche aleatorie/indeterminate e Reunion (1968). Il dispositivo scacchistico con Lowell Cross attivava musiche di autori diversi; non attribuire a Cage tutte le composizioni eseguite, né dedurre relazioni personali da «avanguardia americana».",
+      "guardrails": "separare evento, meccanismo, compositori delle musiche",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1508,
+          "stage_id": "base2K:1509",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-john-cage",
+          "target_original": "avanguardia-americana-indeterminazione",
+          "source_mapped": "pers:cage",
+          "target_mapped": "legacy:avanguardia-americana-indeterminazione",
+          "raw_payload": {
+            "source": "compositore-john-cage",
+            "target": "avanguardia-americana-indeterminazione",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di John Cage; non costituisce relazione interpersonale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/john-cage_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di John Cage; non costituisce relazione interpersonale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/john-cage_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di John Cage; non costituisce relazione interpersonale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/john-cage_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 598,
+          "stage_id": "special2K:audit6-cage-indeterminazione",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE02_2026-11-08.json",
+          "kind": "ricerca-sperimentale-indeterminazione",
+          "source_original": "avanguardia-americana-indeterminazione",
+          "target_original": "compositore-john-cage",
+          "source_mapped": "legacy:avanguardia-americana-indeterminazione",
+          "target_mapped": "pers:cage",
+          "raw_payload": {
+            "id": "audit6-cage-indeterminazione",
+            "group": "scuole",
+            "source": "avanguardia-americana-indeterminazione",
+            "target": "compositore-john-cage",
+            "kind": "ricerca-sperimentale-indeterminazione",
+            "forward": "comprende operazioni casuali e indeterminazione nella produzione di",
+            "reverse": "sperimentò processi aleatori nel contesto della",
+            "note": "John Cage elaborò musica fondata su operazioni casuali e indeterminazione esecutiva: il progetto Reunion del 1968 impiega una partita a scacchi come struttura aperta per la distribuzione sonora. L'arco riguarda una specifica pratica compositiva e il suo contributo storico, non la cittadinanza americana.",
+            "sources": [
+              "https://johncage.org/reunion",
+              "https://johncage.org/cage-autobiographical-statement"
+            ],
+            "status": "documentato",
+            "natura_semantica": "ricerca-tecnica-non-istituzione",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "ebbe come protagonista e innovatore",
+              "prior_reverse": "sviluppò pratiche di alea e indeterminazione nella",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "forward_original": "comprende operazioni casuali e indeterminazione nella produzione di",
+          "reverse_original": "sperimentò processi aleatori nel contesto della",
+          "note_original": "John Cage elaborò musica fondata su operazioni casuali e indeterminazione esecutiva: il progetto Reunion del 1968 impiega una partita a scacchi come struttura aperta per la distribuzione sonora. L'arco riguarda una specifica pratica compositiva e il suo contributo storico, non la cittadinanza americana.",
+          "sources_original": [
+            "https://johncage.org/reunion",
+            "https://johncage.org/cage-autobiographical-statement"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende operazioni casuali e indeterminazione nella produzione di",
+            "reverse_fragment": "sperimentò processi aleatori nel contesto della",
+            "original_note": "John Cage elaborò musica fondata su operazioni casuali e indeterminazione esecutiva: il progetto Reunion del 1968 impiega una partita a scacchi come struttura aperta per la distribuzione sonora. L'arco riguarda una specifica pratica compositiva e il suo contributo storico, non la cittadinanza americana.",
+            "original_sources": [
+              "https://johncage.org/reunion",
+              "https://johncage.org/cage-autobiographical-statement"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [
+        {
+          "source": "https://johncage.org/reunion",
+          "scope": "1968 Reunion, Lowell Cross chessboard, separate compositions",
+          "result": "verified_primary_archive"
+        }
+      ],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 158,
+      "mapped_pair": "legacy:pianoforte-preparato-novecentesco|pers:cage",
+      "classification": "cage_prepared_piano_1940_source_guard",
+      "semantic_analysis": "Bacchanale (1940) e il pianoforte preparato sono documentati dal John Cage Trust. Il URL Library of Congress registrato nel record specialistico sembra identificare un'altra opera, Wonderful Widow of Eighteen Springs: richiede fonte mirata per l'affermazione su Bacchanale.",
+      "guardrails": "ALLERTA fonte di attribuzione non pertinente al titolo",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1509,
+          "stage_id": "base2K:1510",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-john-cage",
+          "target_original": "pianoforte-preparato-novecentesco",
+          "source_mapped": "pers:cage",
+          "target_mapped": "legacy:pianoforte-preparato-novecentesco",
+          "raw_payload": {
+            "source": "compositore-john-cage",
+            "target": "pianoforte-preparato-novecentesco",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di John Cage; non costituisce relazione interpersonale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/john-cage_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di John Cage; non costituisce relazione interpersonale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/john-cage_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di John Cage; non costituisce relazione interpersonale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/john-cage_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 705,
+          "stage_id": "special2K:audit8e-cage-pianoforte-preparato",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "sperimentazione-pianistica-1940",
+          "source_original": "pianoforte-preparato-novecentesco",
+          "target_original": "compositore-john-cage",
+          "source_mapped": "legacy:pianoforte-preparato-novecentesco",
+          "target_mapped": "pers:cage",
+          "raw_payload": {
+            "id": "audit8e-cage-pianoforte-preparato",
+            "group": "genealogie",
+            "source": "pianoforte-preparato-novecentesco",
+            "target": "compositore-john-cage",
+            "kind": "sperimentazione-pianistica-1940",
+            "forward": "fu sviluppato in opere di",
+            "reverse": "sperimentò il",
+            "note": "La Library of Congress documenta le sperimentazioni sul pianoforte preparato già con Bacchanale (1940), dalle quali Cage derivò nuove possibilità timbriche e ritmiche.",
+            "sources": [
+              "https://www.loc.gov/collections/moldenhauer-archives/articles-and-essays/guide-to-archives/wonderful-widow-of-eighteen-springs/"
+            ],
+            "status": "documentato"
+          },
+          "forward_original": "fu sviluppato in opere di",
+          "reverse_original": "sperimentò il",
+          "note_original": "La Library of Congress documenta le sperimentazioni sul pianoforte preparato già con Bacchanale (1940), dalle quali Cage derivò nuove possibilità timbriche e ritmiche.",
+          "sources_original": [
+            "https://www.loc.gov/collections/moldenhauer-archives/articles-and-essays/guide-to-archives/wonderful-widow-of-eighteen-springs/"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu sviluppato in opere di",
+            "reverse_fragment": "sperimentò il",
+            "original_note": "La Library of Congress documenta le sperimentazioni sul pianoforte preparato già con Bacchanale (1940), dalle quali Cage derivò nuove possibilità timbriche e ritmiche.",
+            "original_sources": [
+              "https://www.loc.gov/collections/moldenhauer-archives/articles-and-essays/guide-to-archives/wonderful-widow-of-eighteen-springs/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [
+        {
+          "source": "https://johncage.org/",
+          "scope": "Bacchanale 1940 and prepared piano documented by Trust; legacy LOC URL likely title mismatch",
+          "result": "verified_primary_archive_source_mismatch_flag"
+        }
+      ],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 159,
+      "mapped_pair": "legacy:teatro-musicale-broadway|pers:bernstein",
+      "classification": "broadway_musical_credits_exact",
+      "semantic_analysis": "Bernstein compose le musiche di West Side Story, debutto Broadway 26 settembre 1957; book di Arthur Laurents, lyrics di Stephen Sondheim, ideazione/coreografia/regia di Jerome Robbins. Non confondere le responsabilità e non assimilare automaticamente al cinema del 1961.",
+      "guardrails": "precisare ruoli teatrali e distinzione versione film",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1511,
+          "stage_id": "base2K:1512",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-leonard-bernstein",
+          "target_original": "teatro-musicale-broadway",
+          "source_mapped": "pers:bernstein",
+          "target_mapped": "legacy:teatro-musicale-broadway",
+          "raw_payload": {
+            "source": "compositore-leonard-bernstein",
+            "target": "teatro-musicale-broadway",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di Leonard Bernstein; non costituisce relazione interpersonale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/leonard-bernstein/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di Leonard Bernstein; non costituisce relazione interpersonale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/leonard-bernstein/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di Leonard Bernstein; non costituisce relazione interpersonale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/leonard-bernstein/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 616,
+          "stage_id": "special2K:audit8-bernstein-broadway",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "composizione-musical-broadway",
+          "source_original": "teatro-musicale-broadway",
+          "target_original": "compositore-leonard-bernstein",
+          "source_mapped": "legacy:teatro-musicale-broadway",
+          "target_mapped": "pers:bernstein",
+          "raw_payload": {
+            "id": "audit8-bernstein-broadway",
+            "group": "scuole",
+            "source": "teatro-musicale-broadway",
+            "target": "compositore-leonard-bernstein",
+            "kind": "composizione-musical-broadway",
+            "forward": "comprende il musical West Side Story composto da",
+            "reverse": "compose West Side Story per il",
+            "note": "Bernstein compose West Side Story, debuttato a Broadway il 26 settembre 1957 con libretto di Arthur Laurents, testi di Stephen Sondheim e coreografia di Jerome Robbins. Il teatro musicale è un’attività documentata accanto alla direzione e alla composizione sinfonica.",
+            "sources": [
+              "https://leonardbernstein.com/works/view/9/west-side-story",
+              "https://www.loc.gov/collections/leonard-bernstein/about-this-collection/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "composizione-musical",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "annoverò fra i suoi compositori",
+              "prior_reverse": "partecipò alla storia del musical con",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "forward_original": "comprende il musical West Side Story composto da",
+          "reverse_original": "compose West Side Story per il",
+          "note_original": "Bernstein compose West Side Story, debuttato a Broadway il 26 settembre 1957 con libretto di Arthur Laurents, testi di Stephen Sondheim e coreografia di Jerome Robbins. Il teatro musicale è un’attività documentata accanto alla direzione e alla composizione sinfonica.",
+          "sources_original": [
+            "https://leonardbernstein.com/works/view/9/west-side-story",
+            "https://www.loc.gov/collections/leonard-bernstein/about-this-collection/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende il musical West Side Story composto da",
+            "reverse_fragment": "compose West Side Story per il",
+            "original_note": "Bernstein compose West Side Story, debuttato a Broadway il 26 settembre 1957 con libretto di Arthur Laurents, testi di Stephen Sondheim e coreografia di Jerome Robbins. Il teatro musicale è un’attività documentata accanto alla direzione e alla composizione sinfonica.",
+            "original_sources": [
+              "https://leonardbernstein.com/works/view/9/west-side-story",
+              "https://www.loc.gov/collections/leonard-bernstein/about-this-collection/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [
+        {
+          "source": "https://leonardbernstein.com/works/view/9/west-side-story",
+          "scope": "26 September 1957 Broadway premiere, creative credits",
+          "result": "verified_composer_archive"
+        }
+      ],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    },
+    {
+      "group_number": 160,
+      "mapped_pair": "legacy:jazz-orchestrale-big-band|pers:duke-ellington",
+      "classification": "ellington_bigband_composer_director",
+      "semantic_analysis": "Duke Ellington dirigeva e componeva per la propria orchestra: scrittura calibrata sui musicisti e colori strumentali. Big band è una pratica/organico, non prova di relazione personale con ogni altro jazzista.",
+      "guardrails": "distinguere direzione/composizione da puro stile",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1515,
+          "stage_id": "base2K:1516",
+          "source_file": "STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "kind": "forma-o-pratica-documentata",
+          "source_original": "compositore-duke-ellington",
+          "target_original": "jazz-orchestrale-big-band",
+          "source_mapped": "pers:duke-ellington",
+          "target_mapped": "legacy:jazz-orchestrale-big-band",
+          "raw_payload": {
+            "source": "compositore-duke-ellington",
+            "target": "jazz-orchestrale-big-band",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di Duke Ellington; non costituisce relazione interpersonale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/duke-ellington_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          },
+          "forward_original": null,
+          "reverse_original": null,
+          "note_original": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di Duke Ellington; non costituisce relazione interpersonale.",
+          "sources_original": [
+            "https://www.treccani.it/enciclopedia/duke-ellington_%28Enciclopedia-dei-ragazzi%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Pertinenza di genere, forma, scuola o pratica documentata nel profilo biografico di Duke Ellington; non costituisce relazione interpersonale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/duke-ellington_%28Enciclopedia-dei-ragazzi%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 614,
+          "stage_id": "special2K:audit8-ellington-bigband",
+          "source_file": "STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+          "kind": "composizione-e-direzione-big-band",
+          "source_original": "jazz-orchestrale-big-band",
+          "target_original": "compositore-duke-ellington",
+          "source_mapped": "legacy:jazz-orchestrale-big-band",
+          "target_mapped": "pers:duke-ellington",
+          "raw_payload": {
+            "id": "audit8-ellington-bigband",
+            "group": "scuole",
+            "source": "jazz-orchestrale-big-band",
+            "target": "compositore-duke-ellington",
+            "kind": "composizione-e-direzione-big-band",
+            "forward": "annovera fra i direttori e compositori fondamentali",
+            "reverse": "diresse la propria orchestra e innovò la scrittura del",
+            "note": "Ellington diresse una delle principali big band jazz e compose sfruttando consapevolmente i timbri e le peculiarità dei suoi solisti. Lo Smithsonian conserva documentazione orchestrale e partiture della sua attività.",
+            "sources": [
+              "https://music.si.edu/story/duke-ellington-smithsonian",
+              "https://amhistory.si.edu/documentsgallery/exhibitions/ellington_strayhorn_2.html"
+            ],
+            "status": "documentato",
+            "natura_semantica": "direzione-composizione-jazz",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "ebbe fra i massimi innovatori",
+              "prior_reverse": "scrisse per la propria orchestra sviluppando il",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "forward_original": "annovera fra i direttori e compositori fondamentali",
+          "reverse_original": "diresse la propria orchestra e innovò la scrittura del",
+          "note_original": "Ellington diresse una delle principali big band jazz e compose sfruttando consapevolmente i timbri e le peculiarità dei suoi solisti. Lo Smithsonian conserva documentazione orchestrale e partiture della sua attività.",
+          "sources_original": [
+            "https://music.si.edu/story/duke-ellington-smithsonian",
+            "https://amhistory.si.edu/documentsgallery/exhibitions/ellington_strayhorn_2.html"
+          ],
+          "display_contract": {
+            "forward_fragment": "annovera fra i direttori e compositori fondamentali",
+            "reverse_fragment": "diresse la propria orchestra e innovò la scrittura del",
+            "original_note": "Ellington diresse una delle principali big band jazz e compose sfruttando consapevolmente i timbri e le peculiarità dei suoi solisti. Lo Smithsonian conserva documentazione orchestrale e partiture della sua attività.",
+            "original_sources": [
+              "https://music.si.edu/story/duke-ellington-smithsonian",
+              "https://amhistory.si.edu/documentsgallery/exhibitions/ellington_strayhorn_2.html"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_spot_checks": [],
+      "merge_authorized": false,
+      "rooted_traversal": "closed_pending_independent_fact_and_root_relevance",
+      "public_graph_edited": false,
+      "evidence_status": "preliminary_semantic_triage_with_targeted_external_checks"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Exactly 20 numbered groups 141–160",
+      "passed": true
+    },
+    {
+      "name": "250 source groups maintained",
+      "passed": true
+    },
+    {
+      "name": "40 records exactly 20 base + 20 specialist",
+      "passed": true
+    },
+    {
+      "name": "All source stage IDs resolved",
+      "passed": true
+    },
+    {
+      "name": "Original endpoints and kinds identical to index",
+      "passed": true
+    },
+    {
+      "name": "All 20 mapped unordered endpoint pairs agree",
+      "passed": true
+    },
+    {
+      "name": "Original raw payloads all preserved",
+      "passed": true
+    },
+    {
+      "name": "Specialist forward and reverse all retained",
+      "passed": true
+    },
+    {
+      "name": "All original notes and sources preserved",
+      "passed": true
+    },
+    {
+      "name": "Base JS renderer port remains outstanding",
+      "passed": true
+    },
+    {
+      "name": "No automatic dedup or unlocking of historical traversal",
+      "passed": true
+    },
+    {
+      "name": "Casella 149 and Cage 158 source mismatch cautions flagged",
+      "passed": true
+    },
+    {
+      "name": "Genres and movements never give person-to-person BFS shortcuts",
+      "passed": true
+    },
+    {
+      "name": "No production file is target of the write operation",
+      "passed": true
+    }
+  ],
+  "not_certified": [
+    "historic truth of all 40 edge facts",
+    "full fidelity of final legacy tooltip sentences in both directions",
+    "desktop hover and Android tap interface",
+    "rooted relevance across five levels on an integrated graph",
+    "merge of legacy and Atlantis or publication to public graphs"
+  ],
+  "next": "Fase 2L Lotto 09 groups 161–180; adapter relationSentence exact final overrides, independent gates and browser UI later"
+}
