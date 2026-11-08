@@ -93,3 +93,14 @@ Atlantis diventerà la nuova interfaccia esplorativa di Musurgia Mundi, mantenen
 
 ### Protocollo di continuità
 Aggiornare questo thread/documento di ripresa ad ogni fase significativa, **prima** di raggiungere il limite della chat. In una nuova conversazione richiamare il file sopra anziché ricostruire a memoria. Non promettere di poter aprire automaticamente una nuova chat: il documento è il passaggio di consegne.
+
+
+### Fase 2D — prima tranche documentale dei candidati nominali (8 novembre 2026)
+**Fatto e pubblicato su `main`, solo in `audit-integrazione/`:**
+- `VERIFICA_DOCUMENTALE_NOMI_FASE2D_2026-11-08.json`: matrice integrale di **155/155** coppie con identità nominale coincidente. **16** hanno riscontro esterno autorevole su identità e ruolo (`authority_supported_no_merge`); **139** restano `pending_independent_historical_review`. **Zero fusioni**; le fonti nelle schede supportano la riconciliazione d'identità, non convalidano automaticamente gli archi.
+- `AUDIT_FASE2D_VERIFICA_DOCUMENTALE_2026-11-08.md`: rapporto filologico e casi discriminanti: Petrucci stampatore (data di morte 1538 in DBI rispetto a sintesi con 1539); Mameli poeta; Giulio/Francesca Caccini distinti; Johann Strauss II diverso da I; Hervé alias Florimond Ronger; ruoli precisi in *West Side Story*; George/Ira Gershwin distinti; Zarlino teorico e compositore.
+- **4 concetti** ancora candidati, senza fusione: dramma giocoso, opera buffa, opera seria; **quartetto d'archi** presenta polisemia (organico, formazione, repertorio/genere) e richiede verifica delle definizioni e degli archi.
+- Le **5 corrispondenze per alias** già documentate (2B–2C) restano distinte dalle 16 nominali di questa tranche; **349** persone fonte restano prive di corrispondenza attestata.
+- **Produzione invariata:** nessuna modifica a `musurgia-atlantis/grafo.json`, `index.html`, script di navigazione o file pubblici di Musurgia Mundi. Preservati tutti i 210 lotti storici.
+
+**PROSSIMA RIPRESA:** procedere con le **139 identità nominali ancora in verifica**, a piccoli gruppi con fonti autorevoli e attenzione a omonimi, cronologie, professioni, pseudonimi e attribuzioni. Cercare ulteriori alias fra i **349** nuovi record; verificare la semantica dei **4 concetti**. Preparare successivamente merge reversibile di persone e relazioni senza perdere la logica bidirezionale delle spiegazioni hover/tap. Collaudare i cinque livelli della pertinenza radicata: Mozart→Leopold sì, ramificazioni genericamente incidenti no; nessun capitolo in modalità storico-musicale. Aggiornare il thread dopo ogni tranche significativa.
