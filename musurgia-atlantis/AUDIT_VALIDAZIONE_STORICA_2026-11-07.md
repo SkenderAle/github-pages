@@ -549,3 +549,37 @@ Per confronto, con il filtro esteso che include anche `navigazione` e `ipotesi`,
 ### Lotto successivo
 
 **Lotto 09:** valutare separatamente `L05-A062` (Daphnis → lavoro collettivo), `L05-A063` (Fauno → frizione musica/coreografia) e altri candidati ancora non verificati nel teatro coreografico; classificare le relazioni concettuali senza trasformarle in causazioni storiche.
+
+
+---
+
+## Lotto 09 — 8 novembre 2026: Daphnis e Fauno, revisione degli archi concettuali
+
+**Preflight**: branch `main` al commit `fe6089fbeee2103d92d333003cbef295dafac607`. Non si creano nodi né archi e non si interviene fuori da dataset e registro.
+
+| ID | Decisione | Motivo |
+| --- | --- | --- |
+| `L05-A062` | `candidato_non_fuso` → `confronto_non_causale`; relazione `sviluppa_o_illumina` | La prima produzione di *Daphnis et Chloé* (8 giugno 1912) è un caso didattico di collaborazione fra responsabilità distinte, non prova di coautorialità universale. Il rapporto con il nodo metodologico `senso:produzione-coreografica` è **editoriale**, non un nesso storico causale. |
+| `L05-A063` | `candidato_non_fuso` → `sospeso`; relazione originaria conservata | Attribuire la «frizione musica/coreografia» direttamente al *Prélude* del 1894 rischia di anticipare un problema interpretativo posto dall'allestimento di Nižinskij del 1912. La fonte del Conservatoire riguarda il confronto fra linguaggi, non una proprietà causale intrinseca del brano. Vedere L05-A017, più preciso. |
+
+### Riscontri e distinzioni
+
+- *Daphnis et Chloé*, «symphonie chorégraphique» in tre quadri: commissione di Diaghilev, musica di Ravel, argomento/scenario di Fokine e Ravel da Longo, coreografia di Fokine, scene e costumi di Bakst, direzione della prima di Monteux. Il programma catalogato dalla BnF conferma la prima del **8 giugno 1912** a Parigi; il nodo metodologico non è un autore né un ente committente.
+- *Prélude à l'après-midi d'un faune*: il brano orchestrale di Debussy viene eseguito in concerto il 22 dicembre 1894; Nižinskij crea sul suo materiale musicale la propria coreografia il **29 maggio 1912**. La BnF ha una scheda dello spettacolo ricavata dal programma originale, coerente con Conservatoire e British Library. Una diversa scheda BnF riporta «19 maggio»: difformità catalografica da non riportare come prima alternativa senza collazione.
+- Ogni collegamento editoriale attivato in questo lotto ha `historical_verified_independently=false`; non deve trasformarsi in un ponte al II–V livello. `sviluppa_o_illumina` è già escluso da `atlasIsSpecific` nel renderer attuale; nessun intervento a interfaccia.
+
+### Fonti
+
+- BnF, spettacolo di *Daphnis* e responsabilità artistiche: https://catalogue.bnf.fr/ark:/12148/cb39684188s
+- BnF, scheda dell'opera di Ravel: https://catalogue.bnf.fr/ark:/12148/cb139177228
+- IRCAM, catalogo *Daphnis*: https://resources.ircam.fr/en/work/daphnis-et-chloe-1
+- Conservatoire de Paris, Claude Abromont, analisi del *Faune*: https://www.conservatoiredeparis.fr/fr/enquete-autour-du-prelude-lapres-midi-dun-faune-de-debussy
+- BnF, *Prélude* orchestrale 1894: https://catalogue.bnf.fr/ark:/12148/cb13911386z.public
+- BnF, programma prima coreografica 29 maggio 1912: https://catalogue.bnf.fr/ark:/12148/cb396842224
+- British Library, autografo coreografico di Nižinskij: https://searcharchives.bl.uk/catalog/032-002103433
+
+### Integrità prima del commit
+
+- 608 nodi, 1.520 archi, 0 ID duplicati, 0 estremi inesistenti; JSON riparsato.
+- Quality gate: 142 `riscontro_storico_indipendente`, 299 `candidato_non_fuso`, 337 `proposta_editoriale_revisionata`.
+- Nessun aumento artificiale di attestazioni storiche. Regressione dei percorsi e lettura dal remoto previste dopo pubblicazione.
