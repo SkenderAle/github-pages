@@ -4346,3 +4346,206 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 **Limiti QA:** controllata integrità, simulazione dati e filtro di default, non una sessione grafica reale su Android/desktop; nessun test delle etichette, rotazione, zoom e fallback canvas dal vivo. Atlantis mantiene il dataset statico e non si sincronizza automaticamente coi capitoli.
 
 **Continuazione:** dal **Lotto 127** e dall'arco `E1025`, organologia, strumenti, tradizioni esecutive e relazioni con i capitoli. Distinguere impiego, trasformazione organologica e semplice menzione.
+
+---
+
+## Lotto 127 — 2026-11-08: Organo nei quattro capitoli, fra polifonia e pratica liturgica
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1025` | **trattazione verificata nel capitolo** | Medioevo tratta l'organo portativo, con il ritratto di Landini nel Codice Squarcialupi; organum è anche una pratica polifonica, non lo strumento. |
+| `E1026` | **trattazione verificata nel capitolo** | Rinascimento affronta l'organo nell'alternanza con canto e polifonia e nei contesti di cappella: impiego, non origine dello strumento. |
+| `E1027` | **trattazione verificata nel capitolo** | Barocco distingue organo come realizzatore possibile del basso continuo e come strumento solistico/liturgico, con Frescobaldi; continuo non equivale a organo. |
+| `E1028` | **richiamo circoscritto** | Classicismo menziona l'organo nel repertorio sacro e nella realizzazione del continuo; non è una monografia sull'evoluzione dell'organo. |
+
+### Fonti e controlli
+- Capitoli HTML del sito presenti su `main` (URL già conservati negli archi); nessuna nuova verifica indipendente per i rapporti capitolo–strumento.
+
+**Bilancio Lotto 127:** 4 archi; 3 trattazioni, 1 richiami, 0 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 128 — 2026-11-08: Organistrum, ghironda e ribeca: iconografia e genealogie non lineari
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1029` | **trattazione verificata nel capitolo** | Medioevo documenta l'organistrum con iconografia medievale e ne descrive la ruota a manovella; distinguere la sua forma storica dalle successive ghironde. |
+| `E1030` | **sospensione conservata** | Rinascimento non attesta l'organistrum: resta la sospensione preesistente, senza trasferire per semplice analogia la trattazione medievale. |
+| `E1031` | **trattazione verificata nel capitolo** | Medioevo presenta la ribeca tramite immagini e considerazioni organologiche: uno strumento ad arco che non coincide col violino moderno. |
+| `E1032` | **richiamo circoscritto** | Rinascimento richiama la ribeca fra gli strumenti ad arco nell'emergere della famiglia del violino: vicinanza storica, non discendenza esclusiva. |
+
+### Fonti e controlli
+- Capitoli HTML del sito presenti su `main` (URL già conservati negli archi); nessuna nuova verifica indipendente per i rapporti capitolo–strumento.
+
+**Bilancio Lotto 128:** 4 archi; 2 trattazioni, 1 richiami, 1 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 129 — 2026-11-08: Famiglie degli archi: viola da gamba e violino nei diversi repertori
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1033` | **trattazione verificata nel capitolo** | Rinascimento distingue viola da gamba e famiglia da braccio per struttura, corde, tastatura, postura e repertorio; non sono lo stesso strumento. |
+| `E1034` | **trattazione verificata nel capitolo** | Barocco include la viola da gamba fra gli strumenti solistici e di basso: può partecipare alla pratica del continuo ma non coincide col violoncello. |
+| `E1035` | **trattazione verificata nel capitolo** | Rinascimento colloca la definizione progressiva del violino nel contesto della lira da braccio e di altri strumenti, senza una genealogia meccanica unica. |
+| `E1036` | **trattazione verificata nel capitolo** | Barocco tratta la scrittura per violino da Biber e Corelli a Vivaldi; la centralità repertoriale non implica invenzione barocca dello strumento. |
+| `E1037` | **trattazione verificata nel capitolo** | Classicismo tratta il violino nel quartetto, nel concerto e nell'orchestra; l'arco riguarda prassi e ruoli musicali, non solo trasformazioni costruttive. |
+| `E1038` | **trattazione verificata nel capitolo** | Romanticismo richiama e sviluppa il violino nel virtuosismo e nella musica da camera/orchestrale; non proietta un solo assetto tecnico su tutto l'Ottocento. |
+| `E1039` | **sospeso** | Balletto parla dell'orchestra come organico ma nel testo controllato non menziona il violino come oggetto specifico: falso ponte strumentale da sospendere. |
+
+### Fonti e controlli
+- https://www.metmuseum.org/it/perspectives/viola-da-gamba (distinzione fra viole e famiglia del violino)
+
+**Bilancio Lotto 129:** 7 archi; 6 trattazioni, 0 richiami, 1 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 130 — 2026-11-08: Clavicembalo e fortepiano: uso, sovrapposizioni e mutamento
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1040` | **trattazione verificata nel capitolo** | Rinascimento distingue clavicembalo, spinetta e virginale fra gli strumenti a corde pizzicate: non sono pianoforti rudimentali. |
+| `E1041` | **trattazione verificata nel capitolo** | Barocco distingue clavicembalo e funzione del basso continuo, che può essere realizzata anche da organo, liuto, tiorba o arpa. |
+| `E1042` | **trattazione verificata nel capitolo** | Classicismo colloca clavicembalo e fortepiano in pratiche anche sovrapposte; la sostituzione non avviene immediatamente. |
+| `E1043` | **trattazione verificata nel capitolo** | Classicismo presenta il fortepiano in Haydn, Clementi e Mozart, con dinamica, meccanica e prassi di tocco proprie; non è uno Steinway incompleto. |
+| `E1044` | **richiamo circoscritto** | Romanticismo richiama il fortepiano come riferimento storico per confrontare pratiche e timbri col pianoforte più tardo, non come strumento dominante del secolo. |
+
+### Fonti e controlli
+- Capitoli HTML del sito presenti su `main` (URL già conservati negli archi); nessuna nuova verifica indipendente per i rapporti capitolo–strumento.
+
+**Bilancio Lotto 130:** 5 archi; 4 trattazioni, 1 richiami, 0 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 131 — 2026-11-08: Il pianoforte dal Settecento al Novecento
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1045` | **trattazione verificata nel capitolo** | Classicismo collega la meccanica a martelletti di Cristofori e le pratiche di Mozart e Beethoven; distinguere l'innovazione tecnica dall'uso repertoriale. |
+| `E1046` | **trattazione verificata nel capitolo** | Romanticismo dedica spazio al pianoforte nei salotti, nel concerto, nella didattica e nel virtuosismo ottocentesco. |
+| `E1047` | **trattazione verificata nel capitolo** | Verso le avanguardie affronta le poetiche pianistiche di Rachmaninov, Debussy, Ravel e Cage; pianoforte preparato significa intervento sul timbro, non nuovo strumento universale. |
+
+### Fonti e controlli
+- Capitoli HTML del sito presenti su `main` (URL già conservati negli archi); nessuna nuova verifica indipendente per i rapporti capitolo–strumento.
+
+**Bilancio Lotto 131:** 3 archi; 3 trattazioni, 0 richiami, 0 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 132 — 2026-11-08: Cornetto, trombone e serpentone: tra prassi e falsa presenza
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1048` | **trattazione verificata nel capitolo** | Rinascimento tratta il cornetto a bocchino e fori digitali in rapporto alla policoralità; non è il moderno corno a valvole. |
+| `E1049` | **sospeso** | Barocco presenta 'Cornetts' solo nel nome dell'ensemble del video su Gabrieli, non in una trattazione autonoma del cornetto: il collegamento di capitolo è sospeso. |
+| `E1050` | **trattazione verificata nel capitolo** | Rinascimento presenta tromboni storici/sackbut con cornetti nella pratica veneziana; confrontare organico attestato e prassi moderna senza identità retroattiva. |
+| `E1051` | **sospeso** | Nel testo di Barocco su main non compare una trattazione o menzione autonoma di trombone/tromboni: collegamento sospeso. |
+| `E1052` | **trattazione verificata nel capitolo** | Romanticismo tratta l'uso del trombone, incluso il problema del registro grave e del trombone contrabbasso in Verdi. |
+| `E1053` | **trattazione verificata nel capitolo** | Opera lirica analizza il trombone contrabbasso nella ricerca timbrica verdiana dopo Aida; si tratta di un caso specifico, non dell'intera evoluzione dei tromboni. |
+| `E1054` | **trattazione verificata nel capitolo** | Rinascimento contestualizza il serpentone dalla fine del Cinquecento in Francia: presenza nel capitolo non equivale a un uso generalizzato in ogni musica rinascimentale. |
+
+### Fonti e controlli
+- https://www.metmuseum.org/art/collection/search/504257 (storia d'uso e transizione serpentone/oficleide)
+
+**Bilancio Lotto 132:** 7 archi; 5 trattazioni, 0 richiami, 2 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 133 — 2026-11-08: Serpentone e flauti: trasformazioni e sopravvivenze
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1055` | **trattazione verificata nel capitolo** | Romanticismo confronta serpentone, oficleide e tuba nel basso strumentale: succedono usi e costruzioni differenti, senza equivalenza timbrica o sviluppo universale lineare. |
+| `E1056` | **trattazione verificata nel capitolo** | Rinascimento tratta la famiglia del flauto dolce e i consort di taglie diverse: non coincide con l'evoluzione del traversiere. |
+| `E1057` | **trattazione verificata nel capitolo** | Barocco presenta il flauto dolce in organici concertanti insieme a oboe, tromba e violino; la sua presenza non definisce da sola l'intero stile. |
+| `E1058` | **richiamo circoscritto** | Romanticismo nomina il flauto dolce per distinguerlo dal traversiere e dalle trasformazioni di Boehm: menzione contrastiva, non centralità orchestrale. |
+
+### Fonti e controlli
+- https://www.metmuseum.org/art/collection/search/504257 (storia d'uso e transizione serpentone/oficleide)
+
+**Bilancio Lotto 133:** 4 archi; 3 trattazioni, 1 richiami, 0 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 134 — 2026-11-08: Corno naturale e corno a valvole: continuità non sostituzione improvvisa
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1059` | **richiamo circoscritto** | Barocco cita i corni naturali tra gli strumenti degli organici storicamente informati, senza analisi sistematica della tecnica. |
+| `E1060` | **trattazione verificata nel capitolo** | Classicismo presenta il corno naturale, ritorte e tecnica della mano; variazione delle altezze e limiti della serie armonica sono decisivi. |
+| `E1061` | **trattazione verificata nel capitolo** | Romanticismo descrive la convivenza di corno naturale e corno a valvole durante l'Ottocento; non una sostituzione repentina. |
+
+### Fonti e controlli
+- https://www.bate.ox.ac.uk/horns (corni naturali, ritorte e valvole)
+
+**Bilancio Lotto 134:** 3 archi; 2 trattazioni, 1 richiami, 0 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 135 — 2026-11-08: Violoncello dal continuo all'orchestra e alla musica da camera
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1062` | **trattazione verificata nel capitolo** | Barocco documenta violoncello e varianti a cinque corde nella scrittura per archi e nella pratica del basso continuo; non confonderlo con la viola da gamba. |
+| `E1063` | **trattazione verificata nel capitolo** | Classicismo tratta il violoncello come parte degli archi orchestrali e delle formazioni cameristiche, distinto dal solo basso armonico. |
+| `E1064` | **trattazione verificata nel capitolo** | Romanticismo considera il violoncello come voce dell'orchestra e della scrittura cameristica; il legame col capitolo è repertoriale, non genealogia organologica. |
+
+### Fonti e controlli
+- Capitoli HTML del sito presenti su `main` (URL già conservati negli archi); nessuna nuova verifica indipendente per i rapporti capitolo–strumento.
+
+**Bilancio Lotto 135:** 3 archi; 3 trattazioni, 0 richiami, 0 sospensioni, 0 riscontri indipendenti.
+
+---
+
+## Lotto 136 — 2026-11-08: Interpreti e compositori: il verbo documentato, non una vicinanza generica
+
+**Protocollo:** distinzione fra impiego documentato, trasformazioni organologiche, confronto, semplice richiamo e ruolo di interprete/compositore. Presenza nella pagina non prova automaticamente genealogia o influenza.
+
+| Arco | Esito | Precisazione recuperabile editorialmente |
+| --- | --- | --- |
+| `E1065` | **riscontro indipendente** | Paganini fu violinista virtuoso e compositore: i 24 Capricci e i concerti documentano sia la pratica esecutiva sia la scrittura per violino. |
+| `E1066` | **riscontro indipendente conservato** | Vivaldi: resta la precedente verifica indipendente dei concerti per violino dell'op. 8; non riaprire la convalida né ampliare il verbo a prassi non documentate. |
+| `E1067` | **riscontro indipendente** | Corelli fu violinista e compose per violino, tra l'altro le sonate op. 5 (1700); distinguere la sua attività d'interprete dalle opere destinate allo strumento. |
+| `E1068` | **riscontro indipendente** | Boccherini fu violoncellista e compose numerose sonate, concerti e quintetti con violoncello; una parte del catalogo esplora il proprio strumento. |
+| `E1069` | **riscontro indipendente** | Chopin fu pianista e compositore di repertorio soprattutto pianistico; non significa che ogni suo lavoro sia per pianoforte solo. |
+| `E1070` | **riscontro indipendente** | Liszt fu pianista virtuoso e compositore per pianoforte, con trascrizioni e studi; il nesso riguarda lavoro esecutivo e creativo, non tutta la sua produzione. |
+
+### Fonti e controlli
+- https://www.treccani.it/enciclopedia/niccolo-paganini/
+- https://www.treccani.it/enciclopedia/arcangelo-corelli/
+- https://chambermusicsociety.org/about-the-music/composers/luigi-boccherini
+- https://www.treccani.it/enciclopedia/fryderyk-franciszek-chopin/
+- https://www.loc.gov/item/n79079048/franz-liszt/
+
+**Bilancio Lotto 136:** 6 archi; 0 trattazioni, 0 richiami, 0 sospensioni, 6 riscontri indipendenti.
+
+---
+
+### Bilancio dopo i Lotti 127–136
+
+- **46 archi esaminati**, `E1025`–`E1070`: **44 aggiornati**, **2 conservati** (`E1030` sospeso, `E1066` verificato indipendentemente).
+- Esiti di lotto: **31 trattazioni di strumenti riscontrate in pagina**, **5 richiami circoscritti**, **3 nuove sospensioni**, **5 nuove verifiche storiche esterne**, con una sospensione e un riscontro indipendente preesistenti conservati.
+- Verifiche indipendenti nuove: `E1065` Paganini/violino (Treccani), `E1067` Corelli/violino (Treccani), `E1068` Boccherini/violoncello (Chamber Music Society), `E1069` Chopin/pianoforte (Treccani), `E1070` Liszt/pianoforte (Library of Congress). La verifica certifica insieme l'attività d'interprete e la produzione attestata, non l'esclusività del repertorio.
+- I falsi ponti verso i capitoli comprendono `E1039` (Balletto/violino), `E1049` (Barocco/cornetto: solo nome dell'ensemble nell'ascolto) e `E1051` (Barocco/trombone). `E1030` resta sospeso per l'organistrum non attestato in Rinascimento.
+- Precisazioni da riutilizzare in interventi **separati**: organum ≠ organo; organistrum ≠ ogni forma successiva di ghironda; ribeca ≠ violino; viola da gamba ≠ violoncello; basso continuo ≠ clavicembalo; fortepiano e pianoforte non si sostituiscono immediatamente; corno naturale e corno a valvole convivono; serpentone/oficleide/tuba non sono equivalenti timbrici.
+- **Integrità:** 608 nodi, 1520 archi, duplicati nodi 0, archi 0, triplette 0, orfani 0. Flag di verifica indipendente 379; gate `riscontro_storico_indipendente` 343. Proposte editoriali residue 32; sospensioni 125; trattazioni strumentali 31; richiami 102.
+- **QA:** verificati struttura del JSON, copertura consecutiva degli ID e assenza di nodi orfani o triplette duplicate; nessun collaudo grafico reale su Android/desktop. L'interfaccia, i capitoli e il protocollo non sono stati modificati. Non è stata implementata sincronizzazione automatica.
+- **Continuazione:** la serie numerica storica `E` termina a `E1070`. Prima di assegnare un successivo lotto occorre scegliere un nuovo gruppo **reale** di archi preesistenti da verificare o un intervento distinto di revisione dei percorsi; non inventare `E1071`.
