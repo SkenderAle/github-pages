@@ -1,0 +1,135 @@
+{
+  "schema": "musurgia-atlantis-2K-lotto02-staging-integrity-check-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "scope": "staging-data structural and raw-payload integrity, NOT historical relation, renderer parity, UI or production certification",
+  "inputs": {
+    "atlante3d/database/grafo.json": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "atlante3d/database/relazioni.json": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+    "atlante3d/database/integrazione-operetta-musical.json": "0fa3fa708c0fc45ef2d8f0a24221c8dcf3290f13",
+    "atlante3d/app-livelli.js": "b7644154af527666d7b15bca8e31fe4f13924547",
+    "musurgia-atlantis/grafo.json": "4863b3fe263154387de3388c0b813b5f94546f12"
+  },
+  "checks": [
+    {
+      "id": "2K-01",
+      "name": "complete base edge staging",
+      "expected": 2437,
+      "observed": 2437,
+      "method": "read 5 staging parts; compare every raw record to base graph edges[source_index]",
+      "status": "PASS"
+    },
+    {
+      "id": "2K-02",
+      "name": "unique base edge stage identifiers",
+      "expected": 2437,
+      "observed": 2437,
+      "status": "PASS"
+    },
+    {
+      "id": "2K-03",
+      "name": "complete specialist edge staging",
+      "expected": 1389,
+      "observed": 1389,
+      "method": "read 5 specialist parts; strict JSON equality original payload and forward/reverse",
+      "status": "PASS"
+    },
+    {
+      "id": "2K-04",
+      "name": "complete operetta/musical extension edge staging",
+      "expected": 30,
+      "observed": 30,
+      "method": "read extension stage; strict equality original source payload",
+      "status": "PASS"
+    },
+    {
+      "id": "2K-05",
+      "name": "non-person source payload preservation",
+      "expected": 375,
+      "observed": 375,
+      "method": "compare all 369 base non-person + 6 extension non-person payloads",
+      "status": "PASS"
+    },
+    {
+      "id": "2K-06",
+      "name": "unique non-person IDs, keeping colliding genre variant",
+      "expected": 374,
+      "observed": 374,
+      "details": "genere-musical has two source variants, no overwrite",
+      "status": "PASS"
+    },
+    {
+      "id": "2K-07",
+      "name": "all legacy endpoints resolve to native source node IDs",
+      "expected": 3856,
+      "observed": 3856,
+      "method": "0 invalid endpoints in any of three source datasets",
+      "status": "PASS"
+    },
+    {
+      "id": "2K-08",
+      "name": "original JS archive exact copy",
+      "expected": true,
+      "observed": true,
+      "method": "renderer archive ends with exact source JS bytes after an explicitly marked header; three relationSentence reassignments",
+      "status": "PASS"
+    },
+    {
+      "id": "2K-09",
+      "name": "source files still match staged baseline blob SHAs",
+      "expected": true,
+      "observed": true,
+      "method": "read current branch blob identifiers for all four source datasets and JS",
+      "status": "PASS"
+    },
+    {
+      "id": "2K-10",
+      "name": "relationship pair candidate index complete",
+      "expected": {
+        "interlayer_groups": 250,
+        "legacy_to_atlantis_overlap_rows": 20
+      },
+      "observed": {
+        "interlayer_groups": 250,
+        "legacy_to_atlantis_overlap_rows": 20
+      },
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "all_legacy_edges": 3856,
+    "base": 2437,
+    "specialist": 1389,
+    "extension": 30,
+    "existing_atlantis_edges_untouched": 1718,
+    "legacy_people": 509,
+    "legacy_nonperson_unique": 374,
+    "legacy_nonperson_variants": 375,
+    "interlayer_shared_endpoint_groups": 250,
+    "within_layer_shared_endpoint_groups": 36,
+    "atlantis_same_pair_legacy_rows": 20,
+    "atlantis_same_pair_distinct_pairs": 16,
+    "semantic_merges_performed": 0,
+    "public_graph_changes": 0
+  },
+  "legacy_language_completeness": {
+    "base_explicit_forward_reverse": 0,
+    "base_original_notes_present": 1231,
+    "base_original_nonempty_sources_present": 1210,
+    "specialist_explicit_forward_reverse": 1389,
+    "specialist_notes": 1389,
+    "specialist_nonempty_sources": 1389,
+    "extension_explicit_forward_reverse": 30,
+    "extension_notes": 20,
+    "extension_nonempty_sources": 30
+  },
+  "deferred": {
+    "historical_fact_check_of_all_edges": "NOT_EXECUTED",
+    "faithful_forward_reverse_sentence_rendering_for_all_edges": "NOT_EXECUTED",
+    "semantic_deduplication": "NOT_EXECUTED",
+    "root_relevance_all_nodes_I_to_V": "NOT_EXECUTED",
+    "desktop_hover_and_android_tap": "NOT_EXECUTED",
+    "production_merge": "NOT_EXECUTED"
+  },
+  "policy": "PASS only assures source payloads are preserved and indexable; not that all links are historical, accurate, traversable or ready for publication."
+}
