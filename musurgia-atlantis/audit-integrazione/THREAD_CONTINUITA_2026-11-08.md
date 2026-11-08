@@ -334,3 +334,14 @@ Aggiornare questo thread/documento di ripresa ad ogni fase significativa, **prim
 - **I dati e le pagine pubbliche sono invariati**. Triage 250/250 concluso, 210 lotti storici intatti; **3.856 archi legacy + 1.718 Atlantis** non fusi, nessun gate storico aperto.
 
 **PROSSIMA RIPRESA: Fase 2M Lotto 03 — eseguire i conteggi REALI `--live` in ambiente Node e audit coppie/etichette.** Poi disegnare e collaudare in staging filtro di pertinenza radicata **I–V** con test Mozart–Leopold e protezione dai ponti generici; infine verificare hover/tap e pianificare merge reversibile. NON modificare `grafo.json`, `app-livelli.js` o UI pubblici prima dei gate.
+
+
+### Decisione progettuale — Profondità derivata fino al III livello (8 novembre 2026)
+**Nuovo requisito dell'utente, da implementare e collaudare esclusivamente in staging prima di qualsiasi modifica alla UI pubblica.**
+- Tenere distinti **livelli generali** di esplorazione rispetto alla radice iniziale (I–V) e **livelli derivati** rispetto a un *nodo pivot* selezionato in un ramo (**I, II, III**).
+- A partire, per esempio, da Mozart → Leopold (I generale), scegliere Leopold come pivot e aprire **fino al III livello derivato di Leopold**, mantenendo visibili la radice e l'intera catena d'accesso; analogamente un pivot al III livello può dispiegare i propri tre passi e arrivare a sei passaggi **lungo quel percorso** (anche quando la distanza minima nel grafo sia inferiore). Non confondere profondità del cammino espanso e distanza minima globale.
+- Le espansioni derivate sono **selettive**: aprono soltanto il ramo desiderato, senza attivare automaticamente tutte le reti dei nodi intermedi. Limitare il numero di nodi visualizzati per leggibilità, **non** la conservazione delle relazioni sottostanti.
+- Ogni nuova relazione deve essere storicamente documentata e **pertinente al pivot o al cammino scelto**. Distinguere visivamente «pertinente alla radice originale» da «pertinente al pivot ma non dimostrato pertinente alla radice». Mai inferire un rapporto Mozart–X dal solo percorso Mozart→Leopold→X.
+- Generi, periodi, scuole, istituzioni e categorie possono essere nodi informativi, ma non ponti indiscriminati. I capitoli restano esclusivamente risorse editoriali, mai attraversabili nella rete storica.
+- Conservare identità del pivot, arco di provenienza, cammino e profondità locale. Prevedere controlli **Generale I–V**, **Nodo da espandere**, **Derivata I–III**, e comandi richiudi ramo/torna alla radice; evitare confusione sul significato del livello VI di un cammino espanso quando il selettore generale mostra al massimo V.
+- **Stato: scelta di progettazione registrata, NON ancora codice implementato o testato.** Preservare i vincoli di non pubblicazione e i gate storici della Fase 2M.
