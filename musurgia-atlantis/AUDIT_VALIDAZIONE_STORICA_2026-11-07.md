@@ -921,3 +921,34 @@ Dukas è autore di *L'Apprenti sorcier* (1897) e non della colonna sonora origin
 | Flowers and Trees (1932) | 0 / 0 / 0 / 0 / 0 | 1 / 0 / 0 / 0 / 0 |
 
 **Limite del test:** simulazione algoritmica sul dataset, non collaudo WebGL/Canvas nel browser. Restano da verificare i successivi candidati L06, in particolare le versioni teatrali e cinematografiche di *Show Boat*, *Oklahoma!* e *West Side Story*.
+
+
+---
+
+## Lotto 17 — 8 novembre 2026: Show Boat e Oklahoma!, opera teatrale e produzione storica
+
+**Preflight:** `main` al commit `a0f725c737841fd94cbeb0c1f296d42974d22311`. Modificati esclusivamente i sei archi preesistenti `L06-A029`–`L06-A031` e `L06-A033`–`L06-A035`; nessun nodo o relazione introdotto, nessun capitolo/menu/rendering modificato.
+
+| ID | Decisione | Precisazione |
+| --- | --- | --- |
+| `L06-A029` | **riscontro_storico_indipendente** | Il musical teatrale Show Boat, creato da Jerome Kern e Oscar Hammerstein II e inaugurato a Broadway il 27 dicembre 1927, è una delle fonti del film Show Boat di James Whale (Universal, 1936), insieme al romanzo di Edna Ferber del 1926. Il film è una produzione distinta, con interpreti, montaggio e musica di repertorio propri. |
+| `L06-A030` | **riscontro_storico_indipendente** | James Whale dirige il film Show Boat (Universal, 1936), distinto dal musical teatrale del 1927 e dagli altri adattamenti dell'opera. Il suo credito registico non lo rende autore delle musiche di Kern né del romanzo di Edna Ferber. |
+| `L06-A031` | **riscontro_storico_indipendente** | Paul Robeson interpreta il personaggio Joe e canta Ol' Man River nel film Show Boat (1936) di James Whale. Robeson non faceva parte del cast originale del 1927 a Broadway: interpretò Joe nella produzione londinese del 1928 e nel revival di Broadway del 1932. Non assimilare la registrazione cinematografica alla prima del 1927. |
+| `L06-A033` | **riscontro_storico_indipendente** | Il musical teatrale Oklahoma! di Richard Rodgers (musiche) e Oscar Hammerstein II (libretto e lyrics) debutta a Broadway il 31 marzo 1943 allo St. James Theatre, diretto da Rouben Mamoulian e coreografato da Agnes de Mille. È la prima produzione teatrale, non l'adattamento cinematografico omonimo del 1955. |
+| `L06-A034` | **riscontro_storico_indipendente** | Agnes de Mille crea le coreografie per la produzione originale di Oklahoma! (Broadway, 31 marzo 1943), con il dream ballet che esplora i desideri e i conflitti psicologici dei personaggi. Non è l'autrice della partitura di Rodgers né del libretto di Hammerstein. |
+| `L06-A035` | **confronto_non_causale** | La produzione Broadway di Oklahoma! (1943), con il dream ballet di Agnes de Mille, è un caso emblematico del musical integrato, in cui danza, canzone, racconto e psicologia dei personaggi partecipano all'azione. Si tratta di una qualificazione storico-critica, non dell'origine assoluta dell'uso della danza narrativa. |
+
+**Distinzione importante:** *Show Boat* di Broadway (1927), il film (1936) diretto da Whale e l'interpretazione filmica di Robeson sono oggetti storici differenti; Robeson non fu nella prima compagnia newyorkese del 1927. L'opera teatrale è derivata dal romanzo di Edna Ferber e il film del 1936 usa anche fonti letterarie e musicali; la genealogia è di adattamento, non identità assoluta fra copioni. *Oklahoma!* (1943) integra la danza nella narrazione, ma le categorie del «musical integrato» e del «dream ballet» non hanno un'unica data di invenzione incontestabile. I due casi non vengono uniti per generica affinità di genere.
+
+**Fonti:**
+- afiShow: https://catalog.afi.com/Film/1033-SHOW-BOAT
+- afiRobeson: https://www.afi.com/robert-detail/1033-SHOWBOAT/
+- ibdbShow: https://www.ibdb.com/broadway-production/show-boat-10538
+- ibdbOklahoma: https://www.ibdb.com/broadway-production/oklahoma-1285
+- pbsOklahoma: https://www.pbs.org/wnet/broadway/shows/oklahoma/
+- rhOklahoma: https://rodgersandhammerstein.com/production/oklahoma/1943-original-broadway-production/
+- locAgnes: https://guides.loc.gov/agnes-de-mille
+
+**Audit dei campi:** `previous_quality_gate` e `previous_description` preservano i valori iniziali; a tutti i link sono aggiunti `verification_note`, `evidence_urls` e data; gli archi storici hanno `historical_verified_independently=true`. `L06-A035` è relazione concettuale `confronto_non_causale`, con `historical_verified_independently=false` e verbo `sviluppa_o_illumina`, escluso dai ponti automatici oltre il primo livello.
+
+**Integrità prima del commit:** 608 nodi, 1.520 archi, nessun ID duplicato, nessun estremo mancante, JSON parsabile; `riscontro_storico_indipendente` = **184**, `candidato_non_fuso` = **263**, `proposta_editoriale_revisionata` = **317**, `confronto_non_causale` = **37**, booleani verificati = **219**. Test I–V sul remoto dopo pubblicazione; non equivalgono a controllo grafico WebGL.
