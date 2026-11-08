@@ -755,3 +755,69 @@ I tre archi conservano `previous_quality_gate`, `previous_description`, URL prec
 - `riscontro_storico_indipendente`: **160**; `proposta_editoriale_revisionata`: **320**; `candidato_non_fuso`: **295**.
 - Flag storico booleano: **195** (diverso dai quality gate).
 - Navigazione I–V e lettura del remoto da controllare dopo pubblicazione; verifica dei dati non equivale a test browser 3D.
+
+
+---
+
+## Lotto 14 — 8 novembre 2026: Disney, Hitchcock, Fantasia e Steamboat Willie
+
+**Preflight:** `main` al commit `0ca393cd27d4dec3b9dbd48a63d159ef08f68dc8` dopo Lotto 13. Modificati solo gli archi sottoelencati in `musurgia-atlantis/grafo.json` e questo registro, senza nuovi nodi o archi e senza intervenire su sito, menu, visualizzatore o sincronizzazione.
+
+### Otto relazioni storicamente convalidate
+
+| ID | Relazione | Decisione e delimitazione |
+| --- | --- | --- |
+| `E0881` | Walt Disney → *Fantasia* (1940) | `produce`; Disney è produttore e promotore, non autore delle musiche o unico regista. Ben Sharpsteen supervisiona la produzione; Stokowski dirige l'orchestra. |
+| `E0882` | Walt Disney → *Steamboat Willie* (1928) | `dirige_e_cura_la_produzione_di`; MoMA documenta la regia; Ub Iwerks realizza principalmente disegni e animazione. |
+| `E0883` | Alfred Hitchcock → *Psycho* (1960) | Regia del film distinta dalla composizione di Herrmann, dallo script di Stefano e dal romanzo di Bloch. |
+| `L06-A056` | Ub Iwerks → *Steamboat Willie* | `realizza_l_animazione_principale_di`; non attribuire l'intera produzione o la regia a Iwerks. |
+| `L06-A063` | Leopold Stokowski → *Fantasia* | Direzione musicale della Philadelphia Orchestra, collaboratore di Disney e arrangiatore di alcuni brani; non compositore delle opere del programma. |
+| `L06-A064` | Deems Taylor → *Fantasia* | Presentatore/narratore, non compositore delle musiche. |
+| `L06-A065` | *Fantasia* → Fantasound | Uso nel 1940 di tecnologia stereofonica speciale, diversa dal sonoro del corto del 1928; non equivale al colore. |
+| `L06-A067` | Dukas, *L'Apprenti sorcier* → *Fantasia* | Musica preesistente del 1897, rielaborata visivamente nel film del 1940; non composta per Disney. |
+
+### Due nessi concettuali e un duplicato
+
+- `L06-A057` (*Steamboat Willie* → Mickey Mousing) passa a `confronto_non_causale`, con verbo `sviluppa_o_illumina`: la sincronizzazione dei gesti, della musica e degli effetti sonori è documentata, ma il film non è dimostrato essere il primo cartone sonoro in senso assoluto né l'inventore esclusivo della tecnica.
+- `L06-A068` (*Fantasia* → musica preesistente) passa a `confronto_non_causale`, `sviluppa_o_illumina`: documenta un caso didattico, non consente di saltare automaticamente a tutte le opere e agli autori dei repertori.
+- `L06-A055` (Disney → *Steamboat Willie*, `dirige_e_produce`) è un **duplicato** di `E0882` già promosso e più precisamente documentato: passa a `sospeso`, con `more_specific_edge=E0882` e conserva precedente stato, note e provenienza.
+
+### Fonti indipendenti
+
+- MoMA, *Steamboat Willie* (1928), Walt Disney e Ub Iwerks: https://www.moma.org/collection/works/302797
+- MoMA, analisi della sincronizzazione sonora: https://www.moma.org/momaorg/shared/flattened_pages/moma_learning/walt-disney-ub-iwerks-steamboat-willie-1928/
+- Library of Congress / Copyright Office, contesto storico del cortometraggio: https://blogs.loc.gov/copyright/2024/01/lifecycle-of-copyright-1928-works-in-the-public-domain/
+- British Film Institute, crediti di *Psycho*: https://www.bfi.org.uk/film/18313136-53d5-53d4-a89b-1d19d24a30f2/psycho
+- British Film Institute, *Fantasia*, credito di produttore e registi: https://www.bfi.org.uk/film/283b7796-aac5-5b3a-8396-a50cf4f05707/fantasia
+- Library of Congress, esposizione *Fantasia*, Stokowski, Taylor e Fantasound: https://www.loc.gov/exhibits/music-and-animation/fantasia-1940.html
+- Library of Congress, catalogo film e supervisione Ben Sharpsteen: https://www.loc.gov/item/96517622/
+- Walt Disney Family Museum, collaborazione Disney–Stokowski: https://www.waltdisney.org/education/films/fantasia-1940
+- Disney D23, segmenti, orchestra e data della première: https://d23.com/a-to-z/fantasia-film/
+- Morgan Library & Museum, prima edizione *L'Apprenti sorcier* (1897): https://www.themorgan.org/music-manuscripts-and-printed-music/135830
+
+**Cautele filologiche:** *Steamboat Willie* è un fenomeno industriale e artistico di sincronizzazione, non il primo esperimento audio-animato in assoluto. Non sono attribuiti automaticamente a Disney la colonna sonora, il disegno animato o tutte le responsabilità dei suoi collaboratori. *Fantasia* contiene partiture preesistenti; Fantasound è un sistema di riproduzione, non un genere musicale. La prima americana del film del 1940 non deve essere confusa con altre date di distribuzione indicate dalle schede Disney.
+
+### Verifica del grafo e navigazione
+
+- JSON serializzato e riparsato; **608 nodi**, **1.520 archi**; 0 ID duplicati e 0 estremi inesistenti.
+- Quality gate: **168** `riscontro_storico_indipendente`, **287** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **29** `confronto_non_causale`, **44** `sospeso`.
+- Flag separato `historical_verified_independently=true`: **203**.
+- Simulazione dei livelli I–V con soli filtri `trattazione` e `menzione`; oltre il I livello, capitoli e relazioni generiche non vengono usati come ponti. La tabella riporta nuovi nodi per livello e non una profondità obbligatoria.
+
+| Radice | Prima I / II / III / IV / V | Dopo I / II / III / IV / V |
+| --- | --- | --- |
+| Walt Disney | 2 / 0 / 0 / 0 / 0 | 4 / 6 / 2 / 6 / 6 |
+| Ub Iwerks | 0 / 0 / 0 / 0 / 0 | 1 / 1 / 1 / 5 / 2 |
+| Leopold Stokowski | 0 / 0 / 0 / 0 / 0 | 1 / 5 / 3 / 7 / 6 |
+| Deems Taylor | 0 / 0 / 0 / 0 / 0 | 1 / 5 / 3 / 7 / 6 |
+| Alfred Hitchcock | 1 / 0 / 0 / 0 / 0 | 2 / 1 / 0 / 0 / 0 |
+| Steamboat Willie | 0 / 0 / 0 / 0 / 0 | 3 / 1 / 5 / 2 / 6 |
+| Fantasia (1940) | 1 / 2 / 6 / 6 / 9 | 7 / 3 / 7 / 6 / 9 |
+| Psycho | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Dukas, L’apprendista stregone (1897) | 0 / 0 / 0 / 0 / 0 | 1 / 5 / 3 / 7 / 6 |
+
+I due nessi classificati `confronto_non_causale` hanno verbo `sviluppa_o_illumina`, già escluso come ponte specifico nel renderer attuale. La prova dei percorsi sui dati non costituisce collaudo visivo tridimensionale nel browser.
+
+### Lotto 15 suggerito
+
+Verificare per gruppi separati gli altri candidati audiovisivi rimasti, le responsabilità musicali dei cortometraggi e i rapporti tra opera originale, riutilizzo cinematografico e materiali storici, senza creare archi causali tra repertori solo per somiglianza stilistica.
