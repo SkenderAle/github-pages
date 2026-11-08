@@ -862,3 +862,62 @@ Verificare per gruppi separati gli altri candidati audiovisivi rimasti, le respo
 - `riscontro_storico_indipendente`: **174**; `candidato_non_fuso`: **277**; `proposta_editoriale_revisionata`: **317**; `confronto_non_causale`: **33**.
 - `historical_verified_independently=true`: **209**, campo distinto.
 - Verifiche dei percorsi I–V e lettura sul remoto dopo pubblicazione; non sostituiscono collaudo WebGL.
+
+
+---
+
+## Lotto 16 — 8 novembre 2026: Carl Stalling, The Skeleton Dance, Grieg e Dukas
+
+**Preflight:** `main` al commit `eb2a8584f8f0bb92f32dc30400595ccc5ea6bbd9`, dopo Lotto 15. Singolarmente verificati 8 archi `L06-A058`, `L06-A059`, `L06-A060`, `L06-A061`, `L06-A062`, `L06-A066`, `L06-A069`, `L06-A070`; senza aggiungere o eliminare nodi e senza modificare sito, mappe e interfaccia.
+
+### Decisioni
+
+| ID | Quality gate | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L06-A058` | **riscontro_storico_indipendente** | Carl Stalling compose le musiche originali di The Skeleton Dance (1929), primo corto della serie Silly Symphonies, incorporando anche una rielaborazione della Marcia dei nani di Edvard Grieg. Il materiale di Saint-Saëns non viene suonato nel film. |
+| `L06-A059` | **riscontro_storico_indipendente** | Ub Iwerks realizza gran parte dell'animazione di The Skeleton Dance (1929). Les Clark e Wilfred Jackson partecipano ad alcune sequenze, quindi non si attribuisce a Iwerks il disegno esclusivo di ogni fotogramma né la regia dello spettacolo. |
+| `L06-A060` | **riscontro_storico_indipendente** | La Danse macabre op. 40 di Camille Saint-Saëns ispira l'idea originaria di The Skeleton Dance (1929), proposta da Carl Stalling; tuttavia la partitura di Saint-Saëns non è usata nella colonna sonora definitiva del cartone. Il rapporto è di ispirazione progettuale, non di impiego musicale. |
+| `L06-A061` | **riscontro_storico_indipendente** | La Marcia dei nani (Marche des nains / March of the Dwarfs), dai Pezzi lirici op. 54 n. 3 di Edvard Grieg, è rielaborata e inserita da Carl Stalling nella partitura di The Skeleton Dance (1929) insieme a materiale composto appositamente. Non confonderla con la Danse macabre di Saint-Saëns. |
+| `L06-A062` | **confronto_non_causale** | The Skeleton Dance (1929) illustra la differenza metodologica tra ispirazione di un progetto, uso effettivo di una composizione preesistente e creazione di una partitura originale: il primo riguarda Saint-Saëns, il secondo Grieg e il terzo Carl Stalling. |
+| `L06-A066` | **riscontro_storico_indipendente** | Paul Dukas compone lo scherzo sinfonico L'Apprenti sorcier, ispirato alla ballata Der Zauberlehrling di Goethe e datato 1897; la partitura orchestrale preesiste di decenni alla sequenza animata di Fantasia (1940). |
+| `L06-A069` | **confronto_non_causale** | Biancaneve e i sette nani (1937) è un lungometraggio d'animazione con canzoni integrate nella narrazione; è pertinente come esempio di cinema musicale animato, senza dichiararne identità con il musical teatrale né attribuire la musica a un unico autore. |
+| `L06-A070` | **confronto_non_causale** | Flowers and Trees (1932), diretto da Burt Gillett, è un esempio importante dell'impiego del Technicolor a tre matrici nella serie Silly Symphonies, distinto dalla sincronizzazione del suono e dalla nascita dell'animazione stessa; vince l'Oscar per il corto animato. |
+
+**Distinzione chiave:** *The Skeleton Dance* (1929) nasce da un progetto ispirato alla *Danse macabre* di Saint-Saëns; **la partitura di Saint-Saëns non viene usata nel corto**. Carl Stalling scrive la musica e integra la *Marcia dei nani* di Edvard Grieg. L'ispirazione progettuale, il riuso effettivo e la composizione originale sono tre relazioni differenti. Ub Iwerks è responsabile della parte prevalente dell'animazione, con altri collaboratori presenti; non viene definito unico animatore.
+
+Dukas è autore di *L'Apprenti sorcier* (1897) e non della colonna sonora originale di *Fantasia* (1940), che ne riusa la partitura. *Biancaneve* (1937) e *Flowers and Trees* (1932) sono esempi didattici di tipologie filmiche e novità tecniche; la classificazione non autorizza genealogie generiche.
+
+### Fonti istituzionali e musicologiche
+
+- care: https://www.waltdisney.org/blog/composing-walt-disneys-silly-symphonies-historian-ross-care-stalling-after-mickey
+- skeleton: https://www.waltdisney.org/blog/skeleton-idea
+- eastman: https://www.eastman.org/event/film-screenings/nitrate-shorts-nitrate-picture-show
+- afi: https://catalog.afi.com/Film/70418-THE-SKELETON-DANCE
+- moma: https://www.moma.org/calendar/events/5825
+- bnf: https://catalogue.bnf.fr/resultats-autorite-avancee.do?index=OEUV3&numNotice=13893486&pageRech=rat
+- imslp: https://imslp.org/wiki/L%27Apprenti_sorcier_(Dukas%2C_Paul)
+- disney: https://movies.disney.com/snow-white-and-the-seven-dwarfs
+- snow: https://www.waltdisney.org/blog/fairest-one-all
+- academy: https://awardsdatabase.oscars.org/Search/GetResults?query=%7B%22Nominee%22%3A%22Walt+Disney%22%2C%22Sort%22%3A%221-Nominee-Alpha%22%2C%22Search%22%3A%22Basic%22%7D
+- flowers: https://www.waltdisney.org/blog/flowers-and-trees-first-color-movie
+- osc: https://awardsdatabase.oscars.org/Search/GetResults?query=%7B%22AwardCategory%22%3A%5B%2220%22%5D%2C%22Sort%22%3A%223-Award+Category-Chron%22%2C%22Search%22%3A%22Basic%22%7D
+
+### Integrità e regressione I–V
+
+- JSON serializzato/riparsato; **608 nodi**, **1.520 archi**, 0 ID duplicati, 0 estremi mancanti.
+- `riscontro_storico_indipendente`: **179**; `candidato_non_fuso`: **269**; `proposta_editoriale_revisionata`: **317**; `confronto_non_causale`: **36**.
+- Flag booleano storico `historical_verified_independently=true`: **214**.
+- Test rooted-BFS I–V riprodotto con filtri `trattazione` e `menzione`; capitoli e relazioni generiche non fungono da ponti dopo il primo livello. Ogni cifra = nuovi nodi raggiunti.
+
+| Nodo di partenza | Prima I / II / III / IV / V | Dopo I / II / III / IV / V |
+| --- | --- | --- |
+| Carl W. Stalling | 0 / 0 / 0 / 0 / 0 | 1 / 3 / 1 / 1 / 1 |
+| Ub Iwerks | 1 / 1 / 1 / 5 / 2 | 2 / 4 / 1 / 5 / 3 |
+| The Skeleton Dance (1929) | 0 / 0 / 0 / 0 / 0 | 5 / 1 / 1 / 1 / 5 |
+| Saint-Saëns, Danse macabre op. 40 | 0 / 0 / 0 / 0 / 0 | 1 / 3 / 1 / 1 / 1 |
+| Grieg, Marcia dei nani (Trolltog), op. 54 n. 3 | 0 / 0 / 0 / 0 / 0 | 1 / 3 / 1 / 1 / 1 |
+| Paul Dukas | 0 / 0 / 0 / 0 / 0 | 1 / 1 / 5 / 3 / 7 |
+| Biancaneve e i sette nani (film 1937) | 0 / 0 / 0 / 0 / 0 | 1 / 0 / 0 / 0 / 0 |
+| Flowers and Trees (1932) | 0 / 0 / 0 / 0 / 0 | 1 / 0 / 0 / 0 / 0 |
+
+**Limite del test:** simulazione algoritmica sul dataset, non collaudo WebGL/Canvas nel browser. Restano da verificare i successivi candidati L06, in particolare le versioni teatrali e cinematografiche di *Show Boat*, *Oklahoma!* e *West Side Story*.
