@@ -1,0 +1,1352 @@
+{
+  "schema": "musurgia-atlantis-2L-lotto01-semantic-edge-review-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "status": "STAGING ONLY; no merge, deletion, public graph, interface or navigation changes",
+  "scope": {
+    "legacy_vs_atlantis_reviewed": 20,
+    "source_cross_layer_groups_reviewed": 20,
+    "total_cross_layer_groups": 250,
+    "source_cross_layer_groups_remaining": 230,
+    "legacy_vs_atlantis_total": 20,
+    "decision_counts": {
+      "identical_specific_relation": 12,
+      "related_distinct_predicate": 6,
+      "pending_authority": 2
+    }
+  },
+  "provenance": {
+    "candidate_index_file": "musurgia-atlantis/audit-integrazione/CANDIDATI_COLLISIONI_ARCHI_FASE2K_2026-11-08.json",
+    "candidate_index_sha": "074ae790819d7210da12e4c798e8d1dd2fad17e2",
+    "legacy_specialist_file": "atlante3d/database/relazioni.json",
+    "legacy_specialist_blob": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+    "atlantis_graph_blob": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "external_checks": [
+      {
+        "point": "Boulez commissione Oiseaux exotiques 1955-1956",
+        "url": "https://brahms.ircam.fr/fr/work/oiseaux-exotiques",
+        "support": "IRCAM lists Commande: Pierre Boulez"
+      }
+    ]
+  },
+  "classification_legend": {
+    "identical_specific_relation": "Coincidenza della faccetta storica esplicita; NON autorizza fusione, cancellazione di registrazioni o trasferimento automatico di gate.",
+    "related_distinct_predicate": "Stessa coppia di estremi, fatti/sensi diversi e coesistenti, entrambi da preservare con provenienza propria.",
+    "pending_authority": "Una fonte riscontra un rapporto vicino o una tradizione, ma non prova l'affermazione specifica dell'arco legacy; sospenderne attraversabilità.",
+    "contradiction": "Incompatibilità documentale dimostrata; nessun caso certificato in questo lotto."
+  },
+  "legacy_atlantis_candidates": [
+    {
+      "n": 1,
+      "legacy_id": "form-haydn-beethoven",
+      "legacy_index": 2,
+      "legacy_kind": "maestro-allievo",
+      "legacy_endpoints": [
+        "compositore-joseph-haydn",
+        "compositore-ludwig-van-beethoven"
+      ],
+      "normalized_endpoints": [
+        "pers:haydn",
+        "pers:beethoven"
+      ],
+      "legacy_forward": "fu maestro di",
+      "legacy_reverse": "studiò con",
+      "legacy_note": "Beethoven prese lezioni da Haydn a Vienna: il rapporto non fu privo di tensioni.",
+      "legacy_sources": [
+        "https://www.britannica.com/biography/Ludwig-van-Beethoven"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L145-A01",
+          "source": "pers:haydn",
+          "target": "pers:beethoven",
+          "relation": "insegna_composizione_a_vienna_1792_1794",
+          "description": "Haydn impartisce lezioni di composizione a Beethoven a Vienna dalla fine del 1792 all'inizio del 1794; il rapporto pedagogico non implica identità stilistica.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Lezione di composizione Haydn→Beethoven: medesimo evento; l'arco Atlantis specifica periodo e luogo. Conservare entrambi i testi e le fonti.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 2,
+      "legacy_id": "coll-wagner-liszt",
+      "legacy_index": 8,
+      "legacy_kind": "sostegno-artistico",
+      "legacy_endpoints": [
+        "compositore-richard-wagner",
+        "compositore-franz-liszt"
+      ],
+      "normalized_endpoints": [
+        "pers:wagner",
+        "pers:liszt"
+      ],
+      "legacy_forward": "ricevette sostegno da",
+      "legacy_reverse": "sostenne",
+      "legacy_note": "Liszt sostenne Wagner anche durante gli anni di esilio e promosse la diffusione della sua opera.",
+      "legacy_sources": [
+        "https://www.richard-wagner.org/rwvi/en/about-wagner/the-man/",
+        "https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-richard-wagner/franz-liszt/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L147-A02",
+          "source": "pers:liszt",
+          "target": "pers:wagner",
+          "relation": "sostiene_wagner_e_ne_diventa_suocero",
+          "description": "Liszt è amico e sostenitore di Wagner; Cosima, figlia di Liszt, sposa Wagner nel 1870. L'arco registra rapporto personale, non coincidenza artistica.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Il sostegno di Liszt a Wagner coincide come faccetta specifica; l'arco Atlantis accorpa anche la parentela acquisita, da preservare come predicato distinto.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 3,
+      "legacy_id": "coll-clara-robert",
+      "legacy_index": 9,
+      "legacy_kind": "collaborazione-artistica",
+      "legacy_endpoints": [
+        "compositore-clara-schumann",
+        "compositore-robert-schumann"
+      ],
+      "normalized_endpoints": [
+        "pers:clara-schumann",
+        "pers:robert-schumann"
+      ],
+      "legacy_forward": "interpretò e promosse",
+      "legacy_reverse": "fu interpretato e promosso da",
+      "legacy_note": "Clara fu interprete autorevole e divulgatrice della produzione pianistica di Robert.",
+      "legacy_sources": [
+        "https://www.britannica.com/biography/Clara-Schumann"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L08-A012",
+          "source": "pers:robert-schumann",
+          "target": "pers:clara-schumann",
+          "relation": "collaborano_nell_interpretazione_ed_edizione_musicale",
+          "description": "Robert Schumann e Clara Wieck Schumann sviluppano un rapporto artistico di confronto e collaborazione, oltre al matrimonio. Clara è pianista, compositrice autonoma e interprete di opere di Robert; produce anche trascrizioni e, dopo la morte del marito nel 1856, cura la pubblicazione delle sue opere con l'aiuto di altri musicisti, tra cui Brahms. Non attribuire a Robert le composizioni originali di Clara né fare di Clara una semplice mediatrice passiva.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "L'attività di Clara come interprete e promotrice delle opere di Robert rientra nella collaborazione artistica documentata; conservare l'autonomia di Clara e la specificità interpretativa.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 4,
+      "legacy_id": "form-messiaen-boulez",
+      "legacy_index": 81,
+      "legacy_kind": "maestro-allievo",
+      "legacy_endpoints": [
+        "compositore-olivier-messiaen",
+        "compositore-pierre-boulez"
+      ],
+      "normalized_endpoints": [
+        "pers:messiaen",
+        "pers:pierre-boulez"
+      ],
+      "legacy_forward": "fu maestro di",
+      "legacy_reverse": "studiò con",
+      "legacy_note": "Boulez studiò al Conservatorio di Parigi con Messiaen, in un percorso che sarebbe poi proseguito verso il serialismo del dopoguerra.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/pierre-boulez/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L180-A01",
+          "source": "pers:messiaen",
+          "target": "pers:pierre-boulez",
+          "relation": "insegna_armonia_a_boulez_dal_1944",
+          "description": "Boulez entra nel 1944 nella classe di armonia di Olivier Messiaen al Conservatorio di Parigi; il rapporto di insegnamento è documentato direttamente.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Insegnamento Messiaen→Boulez: medesimo rapporto didattico; Atlantis specifica la classe di armonia dal 1944.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 5,
+      "legacy_id": "form-schonberg-berg",
+      "legacy_index": 82,
+      "legacy_kind": "maestro-allievo",
+      "legacy_endpoints": [
+        "compositore-arnold-schonberg",
+        "compositore-alban-berg"
+      ],
+      "normalized_endpoints": [
+        "pers:schonberg",
+        "pers:alban-berg"
+      ],
+      "legacy_forward": "insegnò composizione a",
+      "legacy_reverse": "studiò composizione con",
+      "legacy_note": "Berg studiò composizione con Schönberg dal 1904 al 1910, poi sviluppò una propria sintesi di atonalità, dodecafonia e lirismo romantico.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/alban-berg_%28Enciclopedia-dei-ragazzi%29/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L154-A01",
+          "source": "pers:schonberg",
+          "target": "pers:alban-berg",
+          "relation": "insegna_composizione_a_dal_1904",
+          "description": "Schönberg accoglie Alban Berg come allievo nel 1904, secondo la testimonianza registrata dello stesso maestro.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Insegnamento Schönberg→Berg: stesso rapporto didattico; il dettaglio temporale 1904–1910 non deve trasformarsi in asserzione aggiuntiva non controllata.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 6,
+      "legacy_id": "form-schonberg-webern",
+      "legacy_index": 83,
+      "legacy_kind": "maestro-allievo",
+      "legacy_endpoints": [
+        "compositore-arnold-schonberg",
+        "compositore-anton-webern"
+      ],
+      "normalized_endpoints": [
+        "pers:schonberg",
+        "pers:anton-webern"
+      ],
+      "legacy_forward": "insegnò composizione a",
+      "legacy_reverse": "studiò composizione con",
+      "legacy_note": "Webern fu allievo di composizione di Schönberg e ne sviluppò il metodo con una propria radicale concentrazione della scrittura musicale.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/anton-von-webern_%28Enciclopedia-Italiana%29/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L179-A01",
+          "source": "pers:schonberg",
+          "target": "pers:anton-webern",
+          "relation": "insegna_composizione_a_webern_1904_1908",
+          "description": "Arnold Schönberg insegna composizione ad Anton Webern fra il 1904 e il 1908; rapporto personale didattico attestato, non semplice appartenenza alla medesima scuola.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Insegnamento Schönberg→Webern: stesso rapporto didattico; manteniamo due descrizioni e fonti differenti.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 7,
+      "legacy_id": "coll-schumann-brahms",
+      "legacy_index": 92,
+      "legacy_kind": "sostegno-critico",
+      "legacy_endpoints": [
+        "compositore-robert-schumann",
+        "compositore-johannes-brahms"
+      ],
+      "normalized_endpoints": [
+        "pers:robert-schumann",
+        "pers:brahms"
+      ],
+      "legacy_forward": "riconobbe e sostenne pubblicamente",
+      "legacy_reverse": "fu presentato al pubblico da",
+      "legacy_note": "Dopo aver ascoltato il ventenne Brahms nel 1853, Robert Schumann gli dedicò il celebre articolo 'Neue Bahnen', decisivo per farne conoscere il talento: un rapporto di sostegno artistico, non di insegnamento.",
+      "legacy_sources": [
+        "https://musiclib-exhibits.library.yale.edu/exhibits/schumann/neue_zeitschrift.html"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L146-A01",
+          "source": "pers:robert-schumann",
+          "target": "pers:brahms",
+          "relation": "promuove_pubblicamente_dal_1853",
+          "description": "Robert Schumann conosce Brahms nel 1853 e ne promuove pubblicamente il talento; il rapporto è documentato, non un'influenza stilistica estesa per presunzione.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Promozione di Brahms da parte di Robert Schumann nel 1853: coincidenza specifica; non inferire insegnamento.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 8,
+      "legacy_id": "coll-clara-brahms",
+      "legacy_index": 93,
+      "legacy_kind": "amicizia-e-dialogo-artistico",
+      "legacy_endpoints": [
+        "compositore-clara-schumann",
+        "compositore-johannes-brahms"
+      ],
+      "normalized_endpoints": [
+        "pers:clara-schumann",
+        "pers:brahms"
+      ],
+      "legacy_forward": "condivise un duraturo dialogo musicale con",
+      "legacy_reverse": "fu legato da un dialogo musicale a",
+      "legacy_note": "Clara Schumann e Brahms stabilirono un rapporto duraturo di fiducia personale e artistica. L'incontro avvenne a Düsseldorf nel 1853, quando Clara e Robert ascoltarono le prime composizioni di Brahms.",
+      "legacy_sources": [
+        "https://musiclib-exhibits.library.yale.edu/exhibits/schumann/neue_zeitschrift.html"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L146-A02",
+          "source": "pers:clara-schumann",
+          "target": "pers:brahms",
+          "relation": "collabora_esegue_e_promuove_repertorio",
+          "description": "Clara Schumann esegue e sostiene pubblicamente musiche di Brahms, mantenendo con lui un lungo confronto professionale documentato.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "Dialogo personale e critica reciproca Clara–Brahms è distinto dall'esecuzione/promozione pubblica delle musiche di Brahms; conservare entrambi.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 9,
+      "legacy_id": "coll-brahms-dvorak",
+      "legacy_index": 94,
+      "legacy_kind": "sostegno-editoriale",
+      "legacy_endpoints": [
+        "compositore-johannes-brahms",
+        "compositore-antonin-dvorak"
+      ],
+      "normalized_endpoints": [
+        "pers:brahms",
+        "pers:antonin-dvorak"
+      ],
+      "legacy_forward": "sostenne e raccomandò all'editore",
+      "legacy_reverse": "ricevette sostegno e raccomandazione editoriale da",
+      "legacy_note": "Brahms segnalò a Fritz Simrock i Duetti moravi di Dvořák, contribuendo alla loro pubblicazione e alla successiva diffusione internazionale del compositore ceco; i due svilupparono una vera amicizia.",
+      "legacy_sources": [
+        "https://www.berliner-philharmoniker.de/en/stories/dvoraks-path-to-fame/",
+        "https://www.antonin-dvorak.cz/en/index-of-names/brahms-johannes-1833-1897/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L152-A01",
+          "source": "pers:brahms",
+          "target": "pers:antonin-dvorak",
+          "relation": "raccomanda_il_compositore_a_simrock",
+          "description": "Brahms sostiene il giovane Dvořák nel sistema delle borse statali e lo segnala all'editore Fritz Simrock: patrocinio documentato, non discepolato.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Sostegno editoriale di Brahms a Dvořák tramite Simrock: stessa faccetta documentata; non implica rapporto maestro–allievo.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 10,
+      "legacy_id": "infl-brahms-dvorak",
+      "legacy_index": 95,
+      "legacy_kind": "modello-sinfonico-documentato",
+      "legacy_endpoints": [
+        "compositore-johannes-brahms",
+        "compositore-antonin-dvorak"
+      ],
+      "normalized_endpoints": [
+        "pers:brahms",
+        "pers:antonin-dvorak"
+      ],
+      "legacy_forward": "fornì un modello sinfonico a",
+      "legacy_reverse": "riprese e trasformò l'esempio sinfonico di",
+      "legacy_note": "Dvořák decise di tornare alla sinfonia dopo aver ascoltato la Terza di Brahms nel 1884, avviando il lavoro sulla propria Settima. È un'influenza musicale specifica, diversa dal sostegno editoriale.",
+      "legacy_sources": [
+        "https://www.berliner-philharmoniker.de/en/stories/dvoraks-path-to-fame/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L152-A01",
+          "source": "pers:brahms",
+          "target": "pers:antonin-dvorak",
+          "relation": "raccomanda_il_compositore_a_simrock",
+          "description": "Brahms sostiene il giovane Dvořák nel sistema delle borse statali e lo segnala all'editore Fritz Simrock: patrocinio documentato, non discepolato.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "Ripresa del modello sinfonico (Terza di Brahms e Settima di Dvořák) è fatto diverso dal sostegno editoriale a Simrock; richiede prova autonoma per l'arco d'influenza.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 11,
+      "legacy_id": "form-willaert-zarlino",
+      "legacy_index": 190,
+      "legacy_kind": "insegnamento-documentato",
+      "legacy_endpoints": [
+        "compositore-adriano-willaert",
+        "compositore-gioseffo-zarlino"
+      ],
+      "normalized_endpoints": [
+        "pers:adriano-willaert",
+        "pers:gioseffo-zarlino"
+      ],
+      "legacy_forward": "fu maestro di",
+      "legacy_reverse": "studiò con",
+      "legacy_note": "Zarlino si trasferì a Venezia nel 1541 per studiare con Adriano Willaert, prima di succedergli nella tradizione teorica e musicale di San Marco.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/gioseffo-zarlino/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L163-A01",
+          "source": "pers:adriano-willaert",
+          "target": "pers:gioseffo-zarlino",
+          "relation": "insegna_musica_a_zarlino_dal_1541",
+          "description": "Zarlino è documentato come allievo di Willaert a Venezia dal 1541; rapporto didattico e non equivalenza delle loro teorie.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Rapporto didattico Willaert→Zarlino, a Venezia dal 1541, semanticamente coincidente; non rendere equivalenti le teorie.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 12,
+      "legacy_id": "form-andrea-giovanni-gabrieli",
+      "legacy_index": 191,
+      "legacy_kind": "insegnamento-documentato",
+      "legacy_endpoints": [
+        "compositore-andrea-gabrieli",
+        "compositore-giovanni-gabrieli"
+      ],
+      "normalized_endpoints": [
+        "pers:andrea-gabrieli",
+        "pers:giovanni-gabrieli"
+      ],
+      "legacy_forward": "seguì la formazione compositiva e organistica di",
+      "legacy_reverse": "si formò nella composizione e nell'organo con",
+      "legacy_note": "Giovanni Gabrieli fu allievo dello zio Andrea nella pratica compositiva e organistica veneziana: qui conta il rapporto didattico, non quello di parentela.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-gabrieli/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L08-A010",
+          "source": "pers:andrea-gabrieli",
+          "target": "pers:giovanni-gabrieli",
+          "relation": "e_mentore_e_maestro_di",
+          "description": "Andrea Gabrieli, organista della basilica di San Marco, è zio e maestro di Giovanni Gabrieli. Il rapporto comprende formazione e trasmissione della prassi compositiva veneziana; Giovanni fu attivo anche presso la corte bavarese ed elaborò poi una propria opera autonoma. Non deriva da questo arco un'invenzione individuale di tutta la policoralità.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Formazione di Giovanni presso lo zio Andrea Gabrieli: coincide la faccetta didattica, ma parentela e patronato artistico rimangono separabili.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 13,
+      "legacy_id": "lotto05-tallis-byrd",
+      "legacy_index": 451,
+      "legacy_kind": "maestro-allievo",
+      "legacy_endpoints": [
+        "compositore-thomas-tallis",
+        "compositore-william-byrd"
+      ],
+      "normalized_endpoints": [
+        "pers:thomas-tallis",
+        "pers:william-byrd"
+      ],
+      "legacy_forward": "formò musicalmente",
+      "legacy_reverse": "fu formato musicalmente da",
+      "legacy_note": "Byrd è ricordato come allievo di Tallis dalla tradizione biografica inglese; la documentazione comprende un riferimento poetico contemporaneo alla raccolta congiunta Cantiones sacrae del 1575.",
+      "legacy_sources": [
+        "https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Tallis,_Thomas"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L164-A03",
+          "source": "pers:thomas-tallis",
+          "target": "pers:william-byrd",
+          "relation": "condividono_privilegio_stampa_regio_1575",
+          "description": "Nel 1575 Elisabetta I concede a Tallis e Byrd un privilegio congiunto per la stampa musicale; specifico rapporto editoriale, non documentazione di maestro–allievo.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "pending_authority",
+      "reason": "Il privilegio di stampa congiunto del 1575 non prova che Tallis fosse il maestro diretto di Byrd. Conservare la relazione legacy chiusa alla navigazione storica finché non verificata con una fonte specifica.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 14,
+      "legacy_id": "lotto05-tallis-byrd-cantiones",
+      "legacy_index": 452,
+      "legacy_kind": "edizione-congiunta",
+      "legacy_endpoints": [
+        "compositore-thomas-tallis",
+        "compositore-william-byrd"
+      ],
+      "normalized_endpoints": [
+        "pers:thomas-tallis",
+        "pers:william-byrd"
+      ],
+      "legacy_forward": "pubblicò con",
+      "legacy_reverse": "pubblicò con",
+      "legacy_note": "Nel 1575 Tallis e Byrd ottennero insieme il privilegio di stampa musicale e pubblicarono la raccolta Cantiones sacrae: è un sodalizio editoriale dimostrabile, distinto dall'insegnamento.",
+      "legacy_sources": [
+        "https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Tallis,_Thomas"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L164-A03",
+          "source": "pers:thomas-tallis",
+          "target": "pers:william-byrd",
+          "relation": "condividono_privilegio_stampa_regio_1575",
+          "description": "Nel 1575 Elisabetta I concede a Tallis e Byrd un privilegio congiunto per la stampa musicale; specifico rapporto editoriale, non documentazione di maestro–allievo.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "Pubblicazione congiunta dei Cantiones sacrae e privilegio regio di stampa 1575 sono collegati ma non sinonimi; preservare eventi e fonti distinti.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 15,
+      "legacy_id": "lotto05-alessandro-domenico",
+      "legacy_index": 455,
+      "legacy_kind": "maestro-allievo",
+      "legacy_endpoints": [
+        "compositore-alessandro-scarlatti",
+        "compositore-domenico-scarlatti"
+      ],
+      "normalized_endpoints": [
+        "pers:alessandro-scarlatti",
+        "pers:domenico-scarlatti"
+      ],
+      "legacy_forward": "guidò i primi studi musicali di",
+      "legacy_reverse": "ricevette i primi studi musicali da",
+      "legacy_note": "Domenico Scarlatti apprese musica da Alessandro Scarlatti prima della carriera autonoma; qui viene rappresentato esclusivamente l'insegnamento attestato, non il rapporto biologico tra i due.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/domenico-scarlatti_%28Enciclopedia-dei-ragazzi%29/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L08-A011",
+          "source": "pers:alessandro-scarlatti",
+          "target": "pers:domenico-scarlatti",
+          "relation": "orienta_formazione_e_carriera_di",
+          "description": "Alessandro Scarlatti, padre di Domenico, ne orienta le prime scelte professionali e formative: dopo la fase napoletana lo conduce verso Roma e nel 1705 lo invia a Venezia, affidandolo al maestro Francesco Gasparini. Sebbene Domenico sia tradizionalmente definito allievo del padre, non è documentalmente certo chi abbia impartito tutte le sue prime lezioni. Non si convalida un arco di insegnamento diretto continuativo.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "pending_authority",
+      "reason": "La documentazione Atlantis conferma il ruolo del padre Alessandro nella formazione/carriera di Domenico, ma avverte che non sono certe le singole lezioni dirette. Non convalidare «maestro-allievo» letteralmente.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 16,
+      "legacy_id": "lotto07-messiaen-boulez-oiseaux",
+      "legacy_index": 528,
+      "legacy_kind": "commissione-oiseaux-exotiques",
+      "legacy_endpoints": [
+        "compositore-pierre-boulez",
+        "compositore-olivier-messiaen"
+      ],
+      "normalized_endpoints": [
+        "pers:pierre-boulez",
+        "pers:messiaen"
+      ],
+      "legacy_forward": "commissionò un lavoro concertante a",
+      "legacy_reverse": "compose su commissione di",
+      "legacy_note": "IRCAM indica Boulez quale committente di Oiseaux exotiques (1955–56) di Messiaen, destinato al Domaine musical, distinto dal precedente rapporto maestro–allievo.",
+      "legacy_sources": [
+        "https://resources.ircam.fr/fr/work/oiseaux-exotiques"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L180-A01",
+          "source": "pers:messiaen",
+          "target": "pers:pierre-boulez",
+          "relation": "insegna_armonia_a_boulez_dal_1944",
+          "description": "Boulez entra nel 1944 nella classe di armonia di Olivier Messiaen al Conservatorio di Parigi; il rapporto di insegnamento è documentato direttamente.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "Commissione Boulez→Messiaen di Oiseaux exotiques (1955–56) distinta dall'insegnamento Messiaen→Boulez (1944); conferma esterna IRCAM del committente.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 17,
+      "legacy_id": "audit8d-gershwin-ira",
+      "legacy_index": 676,
+      "legacy_kind": "compositore-paroliere-broadway",
+      "legacy_endpoints": [
+        "compositore-george-gershwin",
+        "persona-ira-gershwin"
+      ],
+      "normalized_endpoints": [
+        "pers:george-gershwin",
+        "pers:ira-gershwin"
+      ],
+      "legacy_forward": "collaborò a musical e canzoni con",
+      "legacy_reverse": "scrisse testi per le musiche di",
+      "legacy_note": "La Library of Congress documenta la collaborazione creativa di George e Ira Gershwin in 15 musical per Broadway, quattro film e Porgy and Bess: un sodalizio artistico, distinto dalla loro parentela.",
+      "legacy_sources": [
+        "https://www.loc.gov/collections/george-and-ira-gershwin-treasures/about-this-collection/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L08-A013",
+          "source": "pers:george-gershwin",
+          "target": "pers:ira-gershwin",
+          "relation": "collaborano_come_compositore_e_paroliere",
+          "description": "George Gershwin e Ira Gershwin collaborano professionalmente come compositore delle musiche e autore dei testi delle canzoni, rispettivamente; Lady, Be Good! (1924) è il loro primo musical completo scritto insieme. La coppia scrive repertori teatrali, canzoni e lavori per il cinema, ma ciascun fratello collaborò anche con altri autori e le singole opere richiedono attributi propri.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Collaborazione George Gershwin compositore / Ira Gershwin paroliere: stesso rapporto professionale; distinguere ruolo creativo e parentela.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 18,
+      "legacy_id": "audit11-chopin-liszt-chants-polonais-s480",
+      "legacy_index": 966,
+      "legacy_kind": "six-chants-polonais-s480",
+      "legacy_endpoints": [
+        "compositore-frederic-chopin",
+        "compositore-franz-liszt"
+      ],
+      "normalized_endpoints": [
+        "pers:chopin",
+        "pers:liszt"
+      ],
+      "legacy_forward": "fornì materiale musicale rielaborato o commemorato da",
+      "legacy_reverse": "rielaborò, trascrisse o commemorò materiale musicale di",
+      "legacy_note": "Liszt elaborò per pianoforte sei canti polacchi di Chopin op. 74 nei Six Chants polonais S 480.",
+      "legacy_sources": [
+        "https://imslp.org/wiki/6_Polish_Songs%2C_S.480_%28Liszt%2C_Franz%29"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L147-A01",
+          "source": "pers:liszt",
+          "target": "pers:chopin",
+          "relation": "scrive_biografia_del_collega",
+          "description": "Liszt e Chopin si conoscono nella Parigi degli anni Trenta; Liszt pubblica un libro su Chopin dopo la sua morte. Non erano necessariamente amici intimi.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "Liszt trascrive Six Chants polonais di Chopin op. 74 (S.480), fatto indipendente dalla biografia di Chopin scritta da Liszt.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 19,
+      "legacy_id": "audit21-mozart-clementi-gara-vienna-1781",
+      "legacy_index": 1195,
+      "legacy_kind": "confronto-pianistico-corte-vienna-1781",
+      "legacy_endpoints": [
+        "compositore-wolfgang-amadeus-mozart",
+        "compositore-muzio-clementi"
+      ],
+      "normalized_endpoints": [
+        "pers:mozart",
+        "pers:clementi"
+      ],
+      "legacy_forward": "si confrontò pubblicamente al pianoforte con",
+      "legacy_reverse": "si confrontò pubblicamente al pianoforte con",
+      "legacy_note": "Nel 1781 Clementi e Mozart furono protagonisti del celebre confronto musicale alla corte imperiale viennese; l’arco registra l’evento documentato, non una generica rivalità stilistica.",
+      "legacy_sources": [
+        "https://internet.beethoven.de/pdf-sonderausstellung/Wo-man-Ihre-Composition-allen-andern-vorzieht-Brief-Guide.pdf"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L144-A03",
+          "source": "pers:mozart",
+          "target": "pers:clementi",
+          "relation": "si_esibiscono_nello_stesso_confronto_1781",
+          "description": "Mozart e Clementi sono documentati nello stesso confronto musicale del 24 dicembre 1781: contatto effettivo, non genealogia musicale.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "identical_specific_relation",
+      "reason": "Il confronto pianistico di Mozart e Clementi il 24 dicembre 1781 è lo stesso evento; non generalizzare in rivalità stilistica.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    },
+    {
+      "n": 20,
+      "legacy_id": "audit26-clara-brahms-influenza-critica",
+      "legacy_index": 1270,
+      "legacy_kind": "consiglio-critico-compositivo",
+      "legacy_endpoints": [
+        "compositore-clara-schumann",
+        "compositore-johannes-brahms"
+      ],
+      "normalized_endpoints": [
+        "pers:clara-schumann",
+        "pers:brahms"
+      ],
+      "legacy_forward": "fu interlocutrice critica delle composizioni di",
+      "legacy_reverse": "sottopose composizioni al giudizio di",
+      "legacy_note": "La Library of Congress ricorda che Brahms rispettava profondamente il giudizio di Clara Schumann e le sottoponeva composizioni pianistiche per riceverne la critica; l'arco distingue questa funzione dal rapporto personale già catalogato.",
+      "legacy_sources": [
+        "https://blogs.loc.gov/nls-music-notes/2015/04/remembering-the-ladies/"
+      ],
+      "legacy_status": "documentato",
+      "atlantis_links": [
+        {
+          "id": "L146-A02",
+          "source": "pers:clara-schumann",
+          "target": "pers:brahms",
+          "relation": "collabora_esegue_e_promuove_repertorio",
+          "description": "Clara Schumann esegue e sostiene pubblicamente musiche di Brahms, mantenendo con lui un lungo confronto professionale documentato.",
+          "quality_gate": "riscontro_storico_indipendente",
+          "historical_verified_independently": true
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "Il giudizio critico di Clara sulle composizioni di Brahms non coincide con esecuzione e promozione pubblica: mantenere due predicati verificabili.",
+      "comparison_status": "PRELIMINARY_SEMANTIC_TRIAGE_NO_MERGE",
+      "provenance_preserved": true,
+      "rooted_traversal_gate": "closed_pending_relation_certification"
+    }
+  ],
+  "cross_layer_first_20": [
+    {
+      "n": 1,
+      "pair": "legacy:scuola-fiamminga|pers:ockeghem",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 366,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0367",
+          "original_source": "compositore-johannes-ockeghem",
+          "original_target": "scuola-fiamminga",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 116,
+          "source_record_id": "scuola-fiamminga-johannes-ockeghem",
+          "stage_record_id": "special2K:scuola-fiamminga-johannes-ockeghem",
+          "original_source": "scuola-fiamminga",
+          "original_target": "compositore-johannes-ockeghem",
+          "kind": "maestro-di-tradizione"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 2,
+      "pair": "legacy:scuola-fiamminga|pers:jacob-obrecht",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 367,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0368",
+          "original_source": "compositore-jacob-obrecht",
+          "original_target": "scuola-fiamminga",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 117,
+          "source_record_id": "scuola-fiamminga-jacob-obrecht",
+          "stage_record_id": "special2K:scuola-fiamminga-jacob-obrecht",
+          "original_source": "scuola-fiamminga",
+          "original_target": "compositore-jacob-obrecht",
+          "kind": "contrappunto-e-messa"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 3,
+      "pair": "legacy:scuola-fiamminga|pers:gilles-binchois",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 368,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0369",
+          "original_source": "compositore-gilles-binchois",
+          "original_target": "scuola-fiamminga",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 115,
+          "source_record_id": "scuola-fiamminga-gilles-binchois",
+          "stage_record_id": "special2K:scuola-fiamminga-gilles-binchois",
+          "original_source": "scuola-fiamminga",
+          "original_target": "compositore-gilles-binchois",
+          "kind": "tradizione-borgognona"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 4,
+      "pair": "legacy:scuola-fiamminga|pers:heinrich-isaac",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 369,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0370",
+          "original_source": "compositore-heinrich-isaac",
+          "original_target": "scuola-fiamminga",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 119,
+          "source_record_id": "scuola-fiamminga-heinrich-isaac",
+          "stage_record_id": "special2K:scuola-fiamminga-heinrich-isaac",
+          "original_source": "scuola-fiamminga",
+          "original_target": "compositore-heinrich-isaac",
+          "kind": "diffusione-internazionale"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 5,
+      "pair": "legacy:scuola-fiamminga|pers:jacob-clemens-non-papa",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 370,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0371",
+          "original_source": "compositore-jacob-clemens-non-papa",
+          "original_target": "scuola-fiamminga",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 123,
+          "source_record_id": "scuola-fiamminga-jacob-clemens-non-papa",
+          "stage_record_id": "special2K:scuola-fiamminga-jacob-clemens-non-papa",
+          "original_source": "scuola-fiamminga",
+          "original_target": "compositore-jacob-clemens-non-papa",
+          "kind": "polifonia-neerlandese"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 6,
+      "pair": "legacy:scuola-romana|pers:giovanni-animuccia",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 371,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0372",
+          "original_source": "compositore-giovanni-animuccia",
+          "original_target": "scuola-romana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 126,
+          "source_record_id": "scuola-romana-giovanni-animuccia",
+          "stage_record_id": "special2K:scuola-romana-giovanni-animuccia",
+          "original_source": "scuola-romana",
+          "original_target": "compositore-giovanni-animuccia",
+          "kind": "tradizione-liturgica"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 7,
+      "pair": "legacy:scuola-romana|pers:giovanni-maria-nanino",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 372,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0373",
+          "original_source": "compositore-giovanni-maria-nanino",
+          "original_target": "scuola-romana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 127,
+          "source_record_id": "scuola-romana-giovanni-maria-nanino",
+          "stage_record_id": "special2K:scuola-romana-giovanni-maria-nanino",
+          "original_source": "scuola-romana",
+          "original_target": "compositore-giovanni-maria-nanino",
+          "kind": "erede-e-didatta"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 8,
+      "pair": "legacy:scuola-romana|pers:felice-anerio",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 373,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0374",
+          "original_source": "compositore-felice-anerio",
+          "original_target": "scuola-romana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 128,
+          "source_record_id": "scuola-romana-felice-anerio",
+          "stage_record_id": "special2K:scuola-romana-felice-anerio",
+          "original_source": "scuola-romana",
+          "original_target": "compositore-felice-anerio",
+          "kind": "erede-palestriniano"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 9,
+      "pair": "legacy:scuola-romana|pers:giovanni-francesco-anerio",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 374,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0375",
+          "original_source": "compositore-giovanni-francesco-anerio",
+          "original_target": "scuola-romana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 129,
+          "source_record_id": "scuola-romana-giovanni-francesco-anerio",
+          "stage_record_id": "special2K:scuola-romana-giovanni-francesco-anerio",
+          "original_source": "scuola-romana",
+          "original_target": "compositore-giovanni-francesco-anerio",
+          "kind": "tradizione-e-rinnovamento"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 10,
+      "pair": "legacy:scuola-romana|pers:francesco-soriano",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 375,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0376",
+          "original_source": "compositore-francesco-soriano",
+          "original_target": "scuola-romana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 130,
+          "source_record_id": "scuola-romana-francesco-soriano",
+          "stage_record_id": "special2K:scuola-romana-francesco-soriano",
+          "original_source": "scuola-romana",
+          "original_target": "compositore-francesco-soriano",
+          "kind": "trasmissione-didattica"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 11,
+      "pair": "legacy:scuola-romana|pers:costanzo-festa",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 376,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0377",
+          "original_source": "compositore-costanzo-festa",
+          "original_target": "scuola-romana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 125,
+          "source_record_id": "scuola-romana-costanzo-festa",
+          "stage_record_id": "special2K:scuola-romana-costanzo-festa",
+          "original_source": "scuola-romana",
+          "original_target": "compositore-costanzo-festa",
+          "kind": "precedente-stilistico"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 12,
+      "pair": "legacy:scuola-romana|pers:gregorio-allegri",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 377,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0378",
+          "original_source": "compositore-gregorio-allegri",
+          "original_target": "scuola-romana",
+          "kind": "eredita-stilistica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 131,
+          "source_record_id": "scuola-romana-gregorio-allegri",
+          "stage_record_id": "special2K:scuola-romana-gregorio-allegri",
+          "original_source": "scuola-romana",
+          "original_target": "compositore-gregorio-allegri",
+          "kind": "erede-cappella-romana"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 13,
+      "pair": "legacy:scuola-veneziana|pers:claudio-merulo",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 378,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0379",
+          "original_source": "compositore-claudio-merulo",
+          "original_target": "scuola-veneziana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 135,
+          "source_record_id": "scuola-veneziana-claudio-merulo",
+          "stage_record_id": "special2K:scuola-veneziana-claudio-merulo",
+          "original_source": "scuola-veneziana",
+          "original_target": "compositore-claudio-merulo",
+          "kind": "organista-e-innovatore"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 14,
+      "pair": "legacy:scuola-veneziana|pers:giovanni-croce",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 379,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0380",
+          "original_source": "compositore-giovanni-croce",
+          "original_target": "scuola-veneziana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 138,
+          "source_record_id": "scuola-veneziana-giovanni-croce",
+          "stage_record_id": "special2K:scuola-veneziana-giovanni-croce",
+          "original_source": "scuola-veneziana",
+          "original_target": "compositore-giovanni-croce",
+          "kind": "maestro-di-cappella"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 15,
+      "pair": "legacy:scuola-veneziana|pers:gioseffo-zarlino",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 380,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0381",
+          "original_source": "compositore-gioseffo-zarlino",
+          "original_target": "scuola-veneziana",
+          "kind": "attivita-e-insegnamento"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 134,
+          "source_record_id": "scuola-veneziana-gioseffo-zarlino",
+          "stage_record_id": "special2K:scuola-veneziana-gioseffo-zarlino",
+          "original_source": "scuola-veneziana",
+          "original_target": "compositore-gioseffo-zarlino",
+          "kind": "teorico-e-maestro-di-cappella"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 16,
+      "pair": "legacy:scuola-luterana|pers:johann-walter",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 381,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0382",
+          "original_source": "compositore-johann-walter",
+          "original_target": "scuola-luterana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 141,
+          "source_record_id": "scuola-luterana-johann-walter",
+          "stage_record_id": "special2K:scuola-luterana-johann-walter",
+          "original_source": "scuola-luterana",
+          "original_target": "compositore-johann-walter",
+          "kind": "corale-della-riforma"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 17,
+      "pair": "legacy:scuola-luterana|pers:michael-praetorius",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 382,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0383",
+          "original_source": "compositore-michael-praetorius",
+          "original_target": "scuola-luterana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 142,
+          "source_record_id": "scuola-luterana-michael-praetorius",
+          "stage_record_id": "special2K:scuola-luterana-michael-praetorius",
+          "original_source": "scuola-luterana",
+          "original_target": "compositore-michael-praetorius",
+          "kind": "polifonia-del-corale"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 18,
+      "pair": "legacy:scuola-luterana|pers:johann-hermann-schein",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 383,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0384",
+          "original_source": "compositore-johann-hermann-schein",
+          "original_target": "scuola-luterana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 143,
+          "source_record_id": "scuola-luterana-johann-hermann-schein",
+          "stage_record_id": "special2K:scuola-luterana-johann-hermann-schein",
+          "original_source": "scuola-luterana",
+          "original_target": "compositore-johann-hermann-schein",
+          "kind": "sintesi-tedesco-italiana"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 19,
+      "pair": "legacy:scuola-luterana|pers:samuel-scheidt",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 384,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0385",
+          "original_source": "compositore-samuel-scheidt",
+          "original_target": "scuola-luterana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 144,
+          "source_record_id": "scuola-luterana-samuel-scheidt",
+          "stage_record_id": "special2K:scuola-luterana-samuel-scheidt",
+          "original_source": "scuola-luterana",
+          "original_target": "compositore-samuel-scheidt",
+          "kind": "tastiere-e-corale"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    },
+    {
+      "n": 20,
+      "pair": "legacy:scuola-romana|pers:palestrina",
+      "records": [
+        {
+          "layer": "base",
+          "index_zero_based": 385,
+          "source_record_id": null,
+          "stage_record_id": "base2K:0386",
+          "original_source": "compositore-giovanni-pierluigi-da-palestrina",
+          "original_target": "scuola-romana",
+          "kind": "appartenenza-storica"
+        },
+        {
+          "layer": "specialist",
+          "index_zero_based": 124,
+          "source_record_id": "scuola-romana-giovanni-pierluigi-da-palestrina",
+          "stage_record_id": "special2K:scuola-romana-giovanni-pierluigi-da-palestrina",
+          "original_source": "scuola-romana",
+          "original_target": "compositore-giovanni-pierluigi-da-palestrina",
+          "kind": "centro-della-tradizione"
+        }
+      ],
+      "semantic_decision": "related_distinct_predicate",
+      "reason": "L'arco base esprime appartenenza o eredità a scuola/corrente, mentre lo specialistico descrive un ruolo o una caratteristica più circoscritti. Non sono sinonimi e non autorizzano attraversamento persona→scuola→altre persone.",
+      "comparison_status": "STRUCTURAL_TRIAGE_ONLY_NO_INDEPENDENT_RELATION_CHECK",
+      "rooted_traversal_gate": "blocked_via_school"
+    }
+  ],
+  "not_certified": [
+    "verità storico-filologica di tutti gli archi",
+    "tooltip finale su renderer",
+    "traversal I-V generale",
+    "parità hover desktop e tap Android",
+    "grafo o sito pubblici"
+  ],
+  "next_phase": "Fase 2L lotto 02: gruppi 21–40, poi porting esatto relationSentence, test snapshot/adapter e audit restanti sovrapposizioni senza merge."
+}
