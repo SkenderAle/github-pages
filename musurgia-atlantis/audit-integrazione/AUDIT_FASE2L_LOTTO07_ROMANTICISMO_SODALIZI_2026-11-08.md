@@ -165,19 +165,19 @@ Bruckner sviluppò architetture sinfoniche monumentali e processi tematici disti
 
 ## Test eseguiti
 
-- **FAIL** — Groups 121–140 exactly.
-- **FAIL** — All 40 records retained (20 base + 20 specialist).
-- **FAIL** — No orphaned staging records.
-- **FAIL** — Exact mapped pairs preserved.
-- **FAIL** — Bidirectional specialist phrases retained.
-- **FAIL** — Base JS explanation port explicitly outstanding.
-- **FAIL** — No merge/public publication or traversal unlocked.
-- **FAIL** — Paganini and Liszt separated despite shared hub.
-- **FAIL** — Collective membership not automatically person-to-person.
-- **FAIL** — Puccini 20th c issue flagged.
-- **FAIL** — Turandot 25/26 April external conflict explicitly preserved.
-- **FAIL** — Smetana cycle six parts, completion span confirmed.
-- **FAIL** — Mahler and Bruckner not conflated.
+- **PASS** — Groups 121–140 exactly.
+- **PASS** — All 40 records retained (20 base + 20 specialist).
+- **PASS** — No orphaned staging records.
+- **PASS** — Exact mapped pairs preserved.
+- **PASS** — Bidirectional specialist phrases retained.
+- **PASS** — Base JS explanation port explicitly outstanding.
+- **PASS** — No merge/public publication or traversal unlocked.
+- **PASS** — Paganini and Liszt separated despite shared hub.
+- **PASS** — Collective membership not automatically person-to-person.
+- **PASS** — Puccini 20th c issue flagged.
+- **PASS** — Turandot 25/26 April external conflict explicitly preserved.
+- **PASS** — Smetana cycle six parts, completion span confirmed.
+- **PASS** — Mahler and Bruckner not conflated.
 
 ## Gate, limiti e principi conservati
 
