@@ -1,0 +1,434 @@
+{
+  "schema": "musurgia-atlantis-fase2j-identity-documentary-audit-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "status": "audit_only_not_merged",
+  "sources": [
+    "VERIFICA_DOCUMENTALE_NOMI_FASE2D_2026-11-08.json",
+    "CONVALIDA_IDENTITA_FASE2E_2026-11-08.json",
+    "CONVALIDA_IDENTITA_FASE2F_2026-11-08.json",
+    "CONVALIDA_IDENTITA_FASE2G_2026-11-08.json",
+    "CONVALIDA_IDENTITA_FASE2H_2026-11-08.json",
+    "CONVALIDA_IDENTITA_FASE2I_2026-11-08.json",
+    "STAGING_IMPORT_PERSONE_2026-11-08.json"
+  ],
+  "counts": {
+    "source_people": 509,
+    "atlantis_preexisting_people": 297,
+    "nominal_candidates": 155,
+    "prior_supported_nominal": 116,
+    "documented_this_lot": 20,
+    "supported_nominal_total": 136,
+    "remaining_nominal": 19,
+    "separate_supported_aliases": 5,
+    "source_people_without_matched_target": 349,
+    "identity_merges": 0,
+    "certified_edges": 0,
+    "public_changes": 0
+  },
+  "principles": [
+    "Every person ID remains distinct until a reversible sourced merge is authorized.",
+    "Evidence from an authority is limited to identity and role, not graph edges.",
+    "Chapters are editorial resources only and never historical expansion paths.",
+    "Period, genre or work links alone cannot open unrelated relationship branches.",
+    "Preserve forward/reverse explanations, notes, evidence URLs, role metadata and hover/tap experience."
+  ],
+  "decisions": [
+    {
+      "source_id": "persona-montagu-slater",
+      "atlantis_id": "pers:montagu-slater",
+      "source_label": "Montagu Slater",
+      "atlantis_label": "Montagu Slater",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Charles Montagu Slater (1902–1956), scrittore e librettista britannico; autore del libretto di Peter Grimes di Britten.",
+      "authority_urls": [
+        "https://www.npg.org.uk/collections/search/person/mp101526/montagu-slater",
+        "https://www.brittenpearsarts.org/music/peter-grimes",
+        "https://academic.oup.com/oxford-dictionary-of-national-biography/reference/63486/reference-article-abstract/582687735"
+      ],
+      "alias_candidates": [
+        "Charles Montagu Slater"
+      ],
+      "guard_and_uncertainty": "Il libretto di Peter Grimes è collegamento a un'opera e a Britten, non definizione univoca della figura; verificare singoli lavori e cronologie.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-merce-cunningham",
+      "atlantis_id": "pers:cunningham",
+      "source_label": "Merce Cunningham",
+      "atlantis_label": "Merce Cunningham",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Merce Cunningham (1919–2009), danzatore e coreografo, fondatore nel 1953 della propria compagnia.",
+      "authority_urls": [
+        "https://www.mercecunningham.org/about/biography/"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "Distingue relazione di formazione/impiego con Martha Graham, relazione affettiva/artistica con Cage e collaborazione con Tudor. Nessuna propagazione indiscriminata tra i loro vicini.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-david-tudor",
+      "atlantis_id": "pers:david-tudor",
+      "source_label": "David Tudor",
+      "atlantis_label": "David Tudor",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "David Tudor (1926–1996), pianista e compositore statunitense, protagonista nell'interpretazione delle avanguardie e della musica elettronica dal vivo.",
+      "authority_urls": [
+        "https://www.getty.edu/research/tools/guides_bibliographies/david_tudor/biography.html",
+        "https://ressources.ircam.fr/en/composer/david-tudor/biography"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "Tenere distinti i ruoli interprete/compositore e i rapporti con Cage, Boulez, Cunningham; un'esecuzione non implica automaticamente relazione maestro-allievo.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-martha-graham",
+      "atlantis_id": "pers:graham",
+      "source_label": "Martha Graham",
+      "atlantis_label": "Martha Graham",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Martha Graham (1894–1991), danzatrice e coreografa statunitense, fondatrice della Martha Graham Dance Company (1926).",
+      "authority_urls": [
+        "https://marthagraham.org/epk/",
+        "https://www.mercecunningham.org/about/biography/"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "Il rapporto con Cunningham è storicamente attestato come danzatore della sua compagnia, ma non rende transitivi tutti i legami della danza moderna.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-agnes-de-mille",
+      "atlantis_id": "pers:agnes-de-mille",
+      "source_label": "Agnes de Mille",
+      "atlantis_label": "Agnes de Mille",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Agnes de Mille (1905–1993), danzatrice/coreografa attiva nel balletto e nel musical statunitense; Rodeo, Oklahoma!.",
+      "authority_urls": [
+        "https://guides.loc.gov/agnes-de-mille"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "Rodeo musica di Copland, Oklahoma! musical Rodgers e Hammerstein: agganci specifici per opera, non scorciatoia attraverso il genere musical.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-jean-cocteau",
+      "atlantis_id": "pers:jean-cocteau",
+      "source_label": "Jean Cocteau",
+      "atlantis_label": "Jean Cocteau",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Jean Cocteau (1889–1963), scrittore, drammaturgo, artista e cineasta francese, in contatto con Picasso.",
+      "authority_urls": [
+        "https://www.bnf.fr/fr/jean-cocteau-1889-1963-bibliographie"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "Il contatto dal 1916 con Picasso non dimostra collaborazione in ogni balletto o con qualunque artista delle avanguardie.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-pablo-picasso",
+      "atlantis_id": "pers:pablo-picasso",
+      "source_label": "Pablo Picasso",
+      "atlantis_label": "Pablo Picasso",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Pablo Ruiz Picasso (1881–1973), pittore spagnolo, protagonista dell'arte moderna, collaboratore per progetti scenici.",
+      "authority_urls": [
+        "https://www.museepicassoparis.fr/en/picasso-biography/timeline/",
+        "https://cep.museepicassoparis.fr/en/plan-archivage/3180"
+      ],
+      "alias_candidates": [
+        "Pablo Ruiz Picasso"
+      ],
+      "guard_and_uncertainty": "Non è un compositore; scenografie e costumi collegano a specifici spettacoli, non automaticamente a tutta la produzione musicale del periodo.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-leonide-massine",
+      "atlantis_id": "pers:leonide-massine",
+      "source_label": "Léonide Massine",
+      "atlantis_label": "Léonide Massine",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Léonide Massine (1895–1979), danzatore e coreografo dei Ballets Russes, già collaboratore di Djagilev.",
+      "authority_urls": [
+        "https://www.metmuseum.org/de/research-centers/leonard-a-lauder-research-center/research-resources/modern-art-index-project/massine-l",
+        "https://www.staatsoper.de/en/biographies/massine-leonide",
+        "https://www.loc.gov/collections/ballets-russes-de-serge-diaghilev/articles-and-essays/timeline-of-ballets-russes/"
+      ],
+      "alias_candidates": [
+        "Leonid Fedorovich Miasin"
+      ],
+      "guard_and_uncertainty": "Cronologia ingresso Ballets Russes: la Staatsoper ricorda incontro 1913, Met 1914; distinguerli. Teatro, musica e pittura si toccano tramite opere individuate.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-lorenzo-de-medici",
+      "atlantis_id": "pers:lorenzo-il-magnifico",
+      "source_label": "Lorenzo de’ Medici",
+      "atlantis_label": "Lorenzo de’ Medici",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Lorenzo il Magnifico (1449–1492), politico, mecenate e poeta fiorentino; figlio di Piero di Cosimo de' Medici.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/lorenzo-de-medici_%28Dizionario-Biografico%29/",
+        "https://www.treccani.it/enciclopedia/lorenzo-de-medici-duca-di-urbino_%28Dizionario-Biografico%29/"
+      ],
+      "alias_candidates": [
+        "Lorenzo il Magnifico"
+      ],
+      "guard_and_uncertainty": "NON confondere Lorenzo il Magnifico, morto 1492, con il nipote Lorenzo de' Medici duca di Urbino (1492–1519), chiamato analogamente.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-martin-lutero",
+      "atlantis_id": "pers:martin-lutero",
+      "source_label": "Martin Lutero",
+      "atlantis_label": "Martin Lutero",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Martin Luther / Martin Lutero (1483–1546), teologo e riformatore, autore e traduttore di testi religiosi.",
+      "authority_urls": [
+        "https://www.deutschebiographie.de/personen/martin-luther/"
+      ],
+      "alias_candidates": [
+        "Martin Luther"
+      ],
+      "guard_and_uncertainty": "Ruolo teologico non deve essere ridotto a 'compositore'; corale luterano è genere/contesto, non ponte automatico verso ogni compositore protestante.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-bertolt-brecht",
+      "atlantis_id": "pers:bertolt-brecht",
+      "source_label": "Bertolt Brecht",
+      "atlantis_label": "Bertolt Brecht",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Eugen Berthold Friedrich Brecht (1898–1956), drammaturgo e poeta tedesco, promotore del teatro epico.",
+      "authority_urls": [
+        "https://www.dhm.de/lemo/biografie/bertolt-brecht",
+        "https://www.treccani.it/enciclopedia/bertolt-brecht/"
+      ],
+      "alias_candidates": [
+        "Eugen Berthold Friedrich Brecht"
+      ],
+      "guard_and_uncertainty": "I rapporti con Weill ed altri musicisti vanno ancorati a spettacoli e lavori documentati, non tramite il nodo generico teatro politico.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-muzio-clementi",
+      "atlantis_id": "pers:clementi",
+      "source_label": "Muzio Clementi",
+      "atlantis_label": "Muzio Clementi",
+      "source_type": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Muzio Clementi (1752–1832), compositore, pianista, editore e insegnante italiano naturalizzato britannico.",
+      "authority_urls": [
+        "https://academic.oup.com/oxford-dictionary-of-national-biography/reference/63486/reference-article-abstract/579867753"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "Rapporti con Mozart e Beethoven da documentare separatamente; identità composta da più ruoli e non solo 'compositore'.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-paul-dukas",
+      "atlantis_id": "pers:paul-dukas",
+      "source_label": "Paul Dukas",
+      "atlantis_label": "Paul Dukas",
+      "source_type": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Paul Dukas (1865–1935), compositore, critico musicale e docente francese, autore di L'apprenti sorcier e La Péri.",
+      "authority_urls": [
+        "https://catalogue.bnf.fr/ark%3A/12148/cb138934866",
+        "https://catalogue.bnf.fr/ark%3A/12148/cb38419830p"
+      ],
+      "alias_candidates": [
+        "Abraham Dukas"
+      ],
+      "guard_and_uncertainty": "BnF registra 'Abraham Dukas' come forma scartata nella medesima autorità: non generare una seconda persona.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-johann-wolfgang-von-goethe",
+      "atlantis_id": "pers:johann-wolfgang-goethe",
+      "source_label": "Johann Wolfgang von Goethe",
+      "atlantis_label": "Johann Wolfgang von Goethe",
+      "source_type": "persona",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Johann Wolfgang von Goethe (1749–1832), scrittore, uomo politico e studioso tedesco attivo a Weimar.",
+      "authority_urls": [
+        "https://ores.klassik-stiftung.de/ords/f?p=900%3A2%3A17509026139490%3A%3A%3A%3Ap2_id%3A2475",
+        "https://goethe.klassik-stiftung.de/de/personen/goethe-johann-wolfgang-von/"
+      ],
+      "alias_candidates": [
+        "Johann Wolfgang Goethe",
+        "Johann Philipp Moeller",
+        "Wilton"
+      ],
+      "guard_and_uncertainty": "Goethe nasce senza 'von' nobiliare (dal 1782). Le poesie musicate e le collaborazioni con Zelter vanno distinte da incontri personali.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-bernart-de-ventadorn",
+      "atlantis_id": "pers:bernart-de-ventadorn",
+      "source_label": "Bernart de Ventadorn",
+      "atlantis_label": "Bernart de Ventadorn",
+      "source_type": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Bernart de Ventadorn / Bernardo di Ventadorn, poeta e trovatore in lingua d'oc della seconda metà del XII secolo.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/bernardo-di-ventadorn/",
+        "https://www.treccani.it/enciclopedia/bernardo-di-ventadorn_%28Enciclopedia-Italiana%29/",
+        "https://www.treccani.it/enciclopedia/trovatori_%28Storia-della-civilta-Europea%29/"
+      ],
+      "alias_candidates": [
+        "Bernardo di Ventadorn",
+        "Bernard de Ventadour"
+      ],
+      "guard_and_uncertainty": "Le vidas narrano episodi leggendari su nascita e rapporti sentimentali; non trasformarli in archi storici attestati.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-walther-von-der-vogelweide",
+      "atlantis_id": "pers:walther-von-der-vogelweide",
+      "source_label": "Walther von der Vogelweide",
+      "atlantis_label": "Walther von der Vogelweide",
+      "source_type": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Walther von der Vogelweide, poeta e Minnesänger in area germanofona, attivo tra XII e XIII secolo (circa 1170–1230).",
+      "authority_urls": [
+        "https://www.deutsche-biographie.de/118628976.html"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "La Deutsche Biographie evidenzia una sola attestazione archivistica diretta, a Zeiselmauer il 12 novembre 1203: non attribuire certezza a luogo di nascita, maestri e itinerari.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-nino-rota",
+      "atlantis_id": "pers:nino-rota",
+      "source_label": "Nino Rota",
+      "atlantis_label": "Nino Rota",
+      "source_type": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Nino Rota (1911–1979), compositore italiano di musica per cinema, opera, balletto e repertorio concertistico.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/nino-rota_%28Enciclopedia-del-Cinema%29/",
+        "https://brahms4.ircam.fr/en/composer/nino-rota/biography"
+      ],
+      "alias_candidates": [
+        "Giovanni Rota"
+      ],
+      "guard_and_uncertainty": "Rota non è solo collaboratore di Fellini; le partiture filmiche sono collegate a film precisi, non a tutti i film di Fellini indiscriminatamente.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-bernard-herrmann",
+      "atlantis_id": "pers:herrmann",
+      "source_label": "Bernard Herrmann",
+      "atlantis_label": "Bernard Herrmann",
+      "source_type": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Bernard Herrmann (1911–1975), compositore e direttore statunitense attivo nel cinema, radio, televisione e concerto.",
+      "authority_urls": [
+        "https://resources.ircam.fr/en/composer/bernard-herrmann/biography"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "Hitchcock collega a singoli film realizzati fra anni Cinquanta e Sessanta, non a ogni film del regista; preservare opere da concerto.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-max-steiner",
+      "atlantis_id": "pers:steiner",
+      "source_label": "Max Steiner",
+      "atlantis_label": "Max Steiner",
+      "source_type": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Max Steiner (1888–1971), compositore e direttore austro-americano, importante nella musica cinematografica hollywoodiana.",
+      "authority_urls": [
+        "https://blogs.loc.gov/nls-music-notes/2023/02/lets-go-to-the-movies-max-steiner/",
+        "https://entities.oclc.org/worldcat/entity/E39PBJhMq7PrRF6FpJqgYccXVC.html"
+      ],
+      "alias_candidates": [],
+      "guard_and_uncertainty": "La scheda OCLC riportata nei risultati ha un errore '1988–1971', che contraddice Library of Congress (1888–1971). Il brano 'As Time Goes By' non fu composto da Steiner.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-erich-wolfgang-korngold",
+      "atlantis_id": "pers:korngold",
+      "source_label": "Erich Wolfgang Korngold",
+      "atlantis_label": "Erich Wolfgang Korngold",
+      "source_type": "compositore",
+      "identity_status": "authority_supported_no_merge",
+      "documentary_signature": "Erich Wolfgang Korngold (1897–1957), compositore austro-americano, attivo nell'opera, nella musica da concerto e nel cinema.",
+      "authority_urls": [
+        "https://data.onb.ac.at/nlv/nlv_lex/perslex/K/Korngold_Erich_Wolfgang.htm",
+        "https://findingaids.loc.gov/repositories/15/resources/1481"
+      ],
+      "alias_candidates": [
+        "Erich W. Korngold"
+      ],
+      "guard_and_uncertainty": "Non confondere il compositore con il padre, critico Julius Korngold, né fondere la sua attività lirica e filmica in un unico genere.",
+      "original_payload_preserved_in": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "identity_confirmed_scope": "person and historical role only; individual graph edges remain unverified",
+      "merge_allowed": false
+    }
+  ],
+  "source_discrepancies": [
+    "Lorenzo il Magnifico (1449–1492) is distinct from Lorenzo duca di Urbino (1492–1519).",
+    "Max Steiner (1888–1971) per Library of Congress, not OCLC's 1988–1971 typo.",
+    "Walther von der Vogelweide has one direct archival record as documented by Deutsche Biographie; specific courts/life episodes may be inferred but not independently certified.",
+    "Bernart de Ventadorn: troubadour vidas include legendary biographical material; relationships need independent corroboration.",
+    "Léonide Massine met Diaghilev in 1913 but joined the Ballets Russes in 1914 per institutional biographies.",
+    "David Tudor pianist and experimental composer, with role-specific relationships, not merely generic performer."
+  ],
+  "remaining_tasks": [
+    "Complete 19 remaining nominal identities",
+    "Explore 349 previously unmatched persons through source aliases/authorities, without forcing merges",
+    "Cross-check four conceptual mappings against incident edges and polysemy",
+    "Design reversible legacy/Atlantis 3856/1718 relationship reconciliation",
+    "Implement and execute rooted pertinence tests Mozart–Leopold levels I–V including blocked chapter and period bridges."
+  ]
+}
