@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "branch": "main",
   "status": "STAGING_ONLY_INVENTORY_NOT_HISTORICALLY_VALIDATED",
-  "meaning": "All legacy corrente concepts, composers, persons, and incident source-edge pointers. No automatic identity fusion or new historical edges.",
+  "meaning": "All legacy corrente concepts, composers, persons, and incident source-edge pointers. No automatic identity fusion or new historical edges. NOTE: `incident_counts.composers` counts relation records; `incident_counts.distinct_composers` counts unique author IDs.",
   "origin_paths": {
     "base": {
       "path": "atlante3d/database/grafo.json",
@@ -56,7 +56,10 @@
     "textevidence_flags": 21,
     "link_source_endpoint_errors": 0,
     "atlantis_sense_nodes": 176,
-    "atlantis_direct_sense_person_links": 48
+    "atlantis_direct_sense_person_links": 48,
+    "concepts_with_repeated_composer_records": 111,
+    "concepts_with_distinct_composer": 343,
+    "priority_distinct_authors_are_not_edge_counts": true
   },
   "hard_rules": [
     "No blind category mapping for legacy corrente",
@@ -76,7 +79,8 @@
         "status": "no_corresponding_node_identified",
         "target_id": null,
         "validated_identity": false
-      }
+      },
+      "author_relation_records": 40
     },
     {
       "id": "genere-opera",
@@ -88,7 +92,8 @@
         "status": "candidate",
         "target_id": "senso:opera",
         "validated_identity": false
-      }
+      },
+      "author_relation_records": 121
     },
     {
       "id": "genere-sinfonia",
@@ -100,7 +105,8 @@
         "status": "candidate",
         "target_id": "senso:sinfonia",
         "validated_identity": false
-      }
+      },
+      "author_relation_records": 71
     },
     {
       "id": "genere-concerto",
@@ -112,19 +118,21 @@
         "status": "candidate",
         "target_id": "senso:concerto",
         "validated_identity": false
-      }
+      },
+      "author_relation_records": 75
     },
     {
       "id": "genere-musical",
       "label": "Musical",
-      "authors": 10,
+      "authors": 6,
       "periods": 0,
       "other_concepts": 2,
       "pri": {
         "status": "candidate",
         "target_id": "senso:musical",
         "validated_identity": false
-      }
+      },
+      "author_relation_records": 10
     },
     {
       "id": "genere-operetta",
@@ -132,7 +140,8 @@
       "authors": 10,
       "periods": 0,
       "other_concepts": 5,
-      "pri": null
+      "pri": null,
+      "author_relation_records": 10
     },
     {
       "id": "genere-suite",
@@ -144,7 +153,8 @@
         "status": "no_corresponding_node_identified",
         "target_id": null,
         "validated_identity": false
-      }
+      },
+      "author_relation_records": 25
     },
     {
       "id": "genere-cantata",
@@ -156,7 +166,8 @@
         "status": "candidate",
         "target_id": "senso:cantata",
         "validated_identity": false
-      }
+      },
+      "author_relation_records": 30
     },
     {
       "id": "forma-fuga",
@@ -168,15 +179,17 @@
         "status": "candidate",
         "target_id": "senso:fuga",
         "validated_identity": false
-      }
+      },
+      "author_relation_records": 17
     },
     {
       "id": "scuola-veneziana",
       "label": "Scuola veneziana",
-      "authors": 18,
+      "authors": 10,
       "periods": 2,
       "other_concepts": 7,
-      "pri": null
+      "pri": null,
+      "author_relation_records": 18
     }
   ],
   "concepts": [
@@ -723,7 +736,10 @@
           "base": 28,
           "specialist": 11,
           "extension": 0
-        }
+        },
+        "distinct_composers": 23,
+        "distinct_people": 23,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luca-marenzio",
@@ -1208,7 +1224,10 @@
           "base": 32,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 24,
+        "distinct_people": 24,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-leonin",
@@ -1352,7 +1371,10 @@
           "base": 6,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 5,
+        "distinct_people": 5,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-guillaume-de-machaut",
@@ -1758,7 +1780,10 @@
           "base": 16,
           "specialist": 12,
           "extension": 0
-        }
+        },
+        "distinct_composers": 10,
+        "distinct_people": 10,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-claudio-merulo",
@@ -2378,7 +2403,10 @@
           "base": 25,
           "specialist": 18,
           "extension": 0
-        }
+        },
+        "distinct_composers": 16,
+        "distinct_people": 16,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-giovanni-battista-pergolesi",
@@ -2489,7 +2517,10 @@
           "base": 4,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-joseph-haydn",
@@ -2586,7 +2617,10 @@
           "base": 4,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-pietro-mascagni",
@@ -2681,7 +2715,10 @@
           "base": 4,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-claude-debussy",
@@ -2843,7 +2880,10 @@
           "base": 8,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 7,
+        "distinct_people": 7,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-igor-stravinskij",
@@ -2957,7 +2997,10 @@
           "base": 4,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luigi-russolo"
@@ -3078,7 +3121,10 @@
           "base": 6,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-arnold-schonberg",
@@ -3331,7 +3377,10 @@
           "base": 11,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-arnold-schonberg",
@@ -3602,7 +3651,10 @@
           "base": 8,
           "specialist": 9,
           "extension": 0
-        }
+        },
+        "distinct_composers": 6,
+        "distinct_people": 6,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-steve-reich",
@@ -3863,7 +3915,10 @@
           "base": 14,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 11,
+        "distinct_people": 11,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-karlheinz-stockhausen",
@@ -4223,7 +4278,10 @@
           "base": 15,
           "specialist": 9,
           "extension": 0
-        }
+        },
+        "distinct_composers": 10,
+        "distinct_people": 10,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-giovanni-animuccia",
@@ -4610,7 +4668,10 @@
           "base": 14,
           "specialist": 12,
           "extension": 0
-        }
+        },
+        "distinct_composers": 10,
+        "distinct_people": 10,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-johannes-ockeghem",
@@ -4917,7 +4978,10 @@
           "base": 12,
           "specialist": 8,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-johann-walter",
@@ -5249,7 +5313,10 @@
           "base": 12,
           "specialist": 9,
           "extension": 0
-        }
+        },
+        "distinct_composers": 10,
+        "distinct_people": 10,
+        "distinct_periods": 3
       },
       "direct_person_ids": [
         "compositore-giovanni-paisiello",
@@ -5445,7 +5512,10 @@
           "base": 6,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-gioachino-rossini",
@@ -5600,7 +5670,10 @@
           "base": 5,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-wolfgang-amadeus-mozart",
@@ -5789,7 +5862,10 @@
           "base": 6,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-vincenzo-bellini",
@@ -6055,7 +6131,10 @@
           "base": 9,
           "specialist": 8,
           "extension": 0
-        }
+        },
+        "distinct_composers": 7,
+        "distinct_people": 7,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-giacomo-meyerbeer",
@@ -6350,7 +6429,10 @@
           "base": 10,
           "specialist": 9,
           "extension": 0
-        }
+        },
+        "distinct_composers": 9,
+        "distinct_people": 9,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-egidio-duni",
@@ -6572,7 +6654,10 @@
           "base": 11,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 6,
+        "distinct_people": 6,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-giovanni-battista-pergolesi",
@@ -6766,7 +6851,10 @@
           "base": 6,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-pierre-schaeffer",
@@ -6884,7 +6972,10 @@
           "base": 4,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-leonin",
@@ -7029,7 +7120,10 @@
           "base": 4,
           "specialist": 4,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-giulio-caccini",
@@ -7474,7 +7568,10 @@
           "base": 16,
           "specialist": 15,
           "extension": 0
-        }
+        },
+        "distinct_composers": 15,
+        "distinct_people": 15,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-alessandro-scarlatti",
@@ -7671,7 +7768,10 @@
           "base": 6,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-carl-stamitz",
@@ -7831,7 +7931,10 @@
           "base": 2,
           "specialist": 7,
           "extension": 0
-        }
+        },
+        "distinct_composers": 6,
+        "distinct_people": 6,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-joseph-haydn",
@@ -8058,7 +8161,10 @@
           "base": 7,
           "specialist": 7,
           "extension": 0
-        }
+        },
+        "distinct_composers": 6,
+        "distinct_people": 6,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-modest-musorgskij",
@@ -8233,7 +8339,10 @@
           "base": 5,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-arnold-schonberg",
@@ -8470,7 +8579,10 @@
           "base": 8,
           "specialist": 7,
           "extension": 0
-        }
+        },
+        "distinct_composers": 7,
+        "distinct_people": 7,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-francis-poulenc",
@@ -8711,7 +8823,10 @@
           "base": 5,
           "specialist": 10,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-pierre-boulez",
@@ -8810,7 +8925,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-guillaume-de-machaut"
@@ -8941,7 +9059,10 @@
           "base": 3,
           "specialist": 4,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-francesco-landini",
@@ -9140,7 +9261,10 @@
           "base": 5,
           "specialist": 7,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luca-marenzio",
@@ -9287,7 +9411,10 @@
           "base": 4,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-bartolomeo-tromboncino",
@@ -9458,7 +9585,10 @@
           "base": 5,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 5,
+        "distinct_people": 5,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-thomas-tallis",
@@ -9606,7 +9736,10 @@
           "base": 5,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-tomas-luis-de-victoria",
@@ -9726,7 +9859,10 @@
           "base": 3,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-francesco-cavalli",
@@ -9833,7 +9969,10 @@
           "base": 2,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-antonio-vivaldi",
@@ -10044,7 +10183,10 @@
           "base": 3,
           "specialist": 10,
           "extension": 0
-        }
+        },
+        "distinct_composers": 10,
+        "distinct_people": 10,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-antonio-vivaldi",
@@ -10171,7 +10313,10 @@
           "base": 3,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-francois-couperin",
@@ -10278,7 +10423,10 @@
           "base": 2,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-jean-baptiste-lully",
@@ -10489,7 +10637,10 @@
           "base": 6,
           "specialist": 7,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-dietrich-buxtehude",
@@ -10640,7 +10791,10 @@
           "base": 4,
           "specialist": 4,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-carl-philipp-emanuel-bach",
@@ -10741,7 +10895,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-giovanni-battista-sammartini"
@@ -10859,7 +11016,10 @@
           "base": 3,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-bedrich-smetana",
@@ -11057,7 +11217,10 @@
           "base": 4,
           "specialist": 8,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-giuseppe-verdi",
@@ -11299,7 +11462,10 @@
           "base": 3,
           "specialist": 12,
           "extension": 0
-        }
+        },
+        "distinct_composers": 12,
+        "distinct_people": 12,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-georges-bizet",
@@ -11537,7 +11703,10 @@
           "base": 4,
           "specialist": 10,
           "extension": 0
-        }
+        },
+        "distinct_composers": 11,
+        "distinct_people": 11,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-alma-mahler",
@@ -11735,7 +11904,10 @@
           "base": 8,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 6,
+        "distinct_people": 6,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-edward-elgar",
@@ -11871,7 +12043,10 @@
           "base": 3,
           "specialist": 4,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-erik-satie",
@@ -12018,7 +12193,10 @@
           "base": 5,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-alfredo-casella",
@@ -12113,7 +12291,10 @@
           "base": 2,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-bela-bartok",
@@ -12271,7 +12452,10 @@
           "base": 6,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luigi-nono",
@@ -12353,7 +12537,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-barbara-strozzi"
@@ -12445,7 +12632,10 @@
           "base": 2,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-domenico-scarlatti",
@@ -12564,7 +12754,10 @@
           "base": 4,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-henry-purcell",
@@ -12691,7 +12884,10 @@
           "base": 4,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-christoph-willibald-gluck",
@@ -12901,7 +13097,10 @@
           "base": 7,
           "specialist": 6,
           "extension": 0
-        }
+        },
+        "distinct_composers": 9,
+        "distinct_people": 9,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-mauro-giuliani",
@@ -13014,7 +13213,10 @@
           "base": 2,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-cesar-franck",
@@ -13179,7 +13381,10 @@
           "base": 7,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-mel-bonis",
@@ -13300,7 +13505,10 @@
           "base": 3,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-hanns-eisler",
@@ -13407,7 +13615,10 @@
           "base": 2,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-ferruccio-busoni",
@@ -13501,7 +13712,10 @@
           "base": 2,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luigi-dallapiccola",
@@ -13588,7 +13802,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 0,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-ottaviano-petrucci"
@@ -13684,7 +13901,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-hildegard-von-bingen"
@@ -13789,7 +14009,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-adam-de-la-halle",
@@ -13904,7 +14127,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-juan-del-encina"
@@ -14035,7 +14261,10 @@
           "base": 4,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-girolamo-frescobaldi",
@@ -14136,7 +14365,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-francesca-caccini"
@@ -14254,7 +14486,10 @@
           "base": 2,
           "specialist": 4,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-alessandro-marcello",
@@ -14354,7 +14589,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-georg-friedrich-handel"
@@ -14459,7 +14697,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-jean-marie-leclair",
@@ -14572,7 +14813,10 @@
           "base": 2,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-marianna-martines",
@@ -14692,7 +14936,10 @@
           "base": 3,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luigi-felice-rossi",
@@ -14806,7 +15053,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luigi-boccherini",
@@ -14886,7 +15136,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-giovanni-simone-mayr"
@@ -15008,7 +15261,10 @@
           "base": 4,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-carl-maria-von-weber",
@@ -15127,7 +15383,10 @@
           "base": 4,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-frederic-chopin",
@@ -15234,7 +15493,10 @@
           "base": 2,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-aleksandr-skrjabin",
@@ -15380,7 +15642,10 @@
           "base": 2,
           "specialist": 6,
           "extension": 0
-        }
+        },
+        "distinct_composers": 6,
+        "distinct_people": 6,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-petr-il-ic-cajkovskij",
@@ -15490,7 +15755,10 @@
           "base": 2,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-krzysztof-penderecki",
@@ -15597,7 +15865,10 @@
           "base": 4,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-charles-ives",
@@ -15677,7 +15948,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-benjamin-britten"
@@ -15756,7 +16030,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-giovanni-bonaventura-viviani"
@@ -15835,7 +16112,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-antonio-caldara"
@@ -15914,7 +16194,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-maria-teresa-agnesi"
@@ -16019,7 +16302,10 @@
           "base": 2,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-girolamo-frescobaldi",
@@ -16125,7 +16411,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-antonio-caldara",
@@ -16218,7 +16507,10 @@
           "base": 2,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-georg-philipp-telemann",
@@ -16324,7 +16616,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-marin-marais",
@@ -16404,7 +16699,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luigi-boccherini"
@@ -16496,7 +16794,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-johann-georg-albrechtsberger"
@@ -16627,7 +16928,10 @@
           "base": 2,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 5,
+        "distinct_people": 5,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-luigi-cherubini",
@@ -16723,7 +17027,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-leonardo-leo",
@@ -16786,7 +17093,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-arrigo-boito"
@@ -16848,7 +17158,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-olivier-messiaen",
@@ -16911,7 +17224,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-carl-orff"
@@ -16960,7 +17276,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-ennio-morricone"
@@ -17042,7 +17361,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-alexander-von-zemlinsky"
@@ -17104,7 +17426,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-nadia-boulanger",
@@ -17154,7 +17479,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-florence-price"
@@ -17314,7 +17642,10 @@
           "base": 5,
           "specialist": 4,
           "extension": 0
-        }
+        },
+        "distinct_composers": 5,
+        "distinct_people": 5,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-duke-ellington",
@@ -17477,7 +17808,10 @@
           "base": 5,
           "specialist": 4,
           "extension": 0
-        }
+        },
+        "distinct_composers": 5,
+        "distinct_people": 5,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-george-gershwin",
@@ -17589,7 +17923,10 @@
           "base": 4,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-alexander-von-zemlinsky",
@@ -17653,7 +17990,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-pietro-nardini",
@@ -17703,7 +18043,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jozef-elsner"
@@ -17765,7 +18108,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-michael-haydn",
@@ -17815,7 +18161,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-siegfried-wagner"
@@ -17864,7 +18213,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-charles-koechlin"
@@ -17913,7 +18265,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-henry-cowell"
@@ -17962,7 +18317,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-rene-leibowitz"
@@ -18011,7 +18369,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giacinto-scelsi"
@@ -18060,7 +18421,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-edgard-varese"
@@ -18109,7 +18473,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-marcantonio-ingegneri"
@@ -18158,7 +18525,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-isabella-colbran"
@@ -18207,7 +18577,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-carl-friedrich-zelter"
@@ -18256,7 +18629,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giuseppe-sarti"
@@ -18305,7 +18681,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-lauro-rossi"
@@ -18367,7 +18746,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-george-whitefield-chadwick",
@@ -18443,7 +18825,10 @@
           "base": 0,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-george-whitefield-chadwick",
@@ -18507,7 +18892,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-simon-sechter",
@@ -18557,7 +18945,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-friedrich-fasch"
@@ -18606,7 +18997,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-charles-ives"
@@ -18655,7 +19049,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-christian-gottlob-neefe"
@@ -18704,7 +19101,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-andre-gedalge"
@@ -18753,7 +19153,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gyorgy-kurtag"
@@ -18815,7 +19218,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-fritz-reiner"
@@ -18864,7 +19270,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giuseppe-malerbi"
@@ -18913,7 +19322,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-christian-theodor-weinlig"
@@ -18975,7 +19387,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-christoph-bach-1671"
@@ -19024,7 +19439,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-rubin-goldmark"
@@ -19086,7 +19504,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-otto-kitzler"
@@ -19148,7 +19569,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-michele-novaro",
@@ -19216,7 +19640,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-benjamin-britten"
@@ -19295,7 +19722,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gian-carlo-menotti",
@@ -19365,7 +19795,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-john-cage"
@@ -19461,7 +19894,10 @@
           "base": 2,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-george-gershwin",
@@ -19528,7 +19964,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-hildegard-von-bingen"
@@ -19595,7 +20034,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-guillaume-de-machaut"
@@ -19677,7 +20119,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-guillaume-de-machaut"
@@ -19743,7 +20188,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-guillaume-dufay"
@@ -19818,7 +20266,10 @@
           "base": 1,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gilles-binchois",
@@ -19927,7 +20378,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-francesco-landini",
@@ -19994,7 +20448,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gherardello-da-firenze"
@@ -20043,7 +20500,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johannes-ockeghem"
@@ -20105,7 +20565,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jacob-obrecht",
@@ -20175,7 +20638,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-heinrich-isaac"
@@ -20237,7 +20703,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jacob-clemens-non-papa"
@@ -20299,7 +20768,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-pierluigi-da-palestrina",
@@ -20366,7 +20838,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-john-dowland"
@@ -20428,7 +20903,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-orlando-gibbons"
@@ -20477,7 +20955,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-tomas-luis-de-victoria"
@@ -20552,7 +21033,10 @@
           "base": 0,
           "specialist": 3,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-cristobal-de-morales",
@@ -20603,7 +21087,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-francisco-guerrero"
@@ -20698,7 +21185,10 @@
           "base": 2,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-animuccia",
@@ -20766,7 +21256,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-francesco-anerio"
@@ -20847,7 +21340,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-claudio-merulo"
@@ -20935,7 +21431,10 @@
           "base": 0,
           "specialist": 4,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-claudio-merulo",
@@ -21018,7 +21517,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-walter"
@@ -21067,7 +21569,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-michael-praetorius"
@@ -21121,7 +21626,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-michael-praetorius"
@@ -21187,7 +21695,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-hermann-schein"
@@ -21236,7 +21747,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-hermann-schein"
@@ -21285,7 +21799,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-samuel-scheidt"
@@ -21351,7 +21868,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-tomaso-albinoni"
@@ -21400,7 +21920,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-legrenzi"
@@ -21518,7 +22041,10 @@
           "base": 5,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jean-philippe-rameau",
@@ -21587,7 +22113,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-elisabeth-jacquet-de-la-guerre"
@@ -21636,7 +22165,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-franz-xaver-richter"
@@ -21702,7 +22234,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-hugo-wolf"
@@ -21980,7 +22515,10 @@
           "base": 16,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 16,
+        "distinct_people": 16,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-franz-liszt",
@@ -22077,7 +22615,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-luigi-russolo"
@@ -22139,7 +22680,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-leonin",
@@ -22222,7 +22766,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-perotin"
@@ -22271,7 +22818,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-adam-de-la-halle"
@@ -22377,7 +22927,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jacopo-da-bologna",
@@ -22440,7 +22993,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-da-cascia",
@@ -22507,7 +23063,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-andrea-gabrieli"
@@ -22556,7 +23115,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-thomas-morley"
@@ -22605,7 +23167,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-thomas-morley"
@@ -22674,7 +23239,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giuseppe-tartini"
@@ -22723,7 +23291,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giuseppe-torelli"
@@ -22792,7 +23363,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giuseppe-torelli"
@@ -22854,7 +23428,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jacopo-peri"
@@ -22920,7 +23497,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-maria-teresa-agnesi"
@@ -22982,7 +23562,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-dietrich-buxtehude"
@@ -23051,7 +23634,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-pachelbel"
@@ -23100,7 +23686,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-john-blow"
@@ -23149,7 +23738,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-michele-novaro"
@@ -23254,7 +23846,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-pietro-mascagni",
@@ -23324,7 +23919,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-arrigo-boito"
@@ -23419,7 +24017,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-arrigo-boito",
@@ -23486,7 +24087,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-pauline-viardot"
@@ -23548,7 +24152,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-louise-farrenc"
@@ -23614,7 +24221,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-louise-farrenc"
@@ -23680,7 +24290,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-arthur-honegger"
@@ -23749,7 +24362,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-sergej-prokof-ev"
@@ -23815,7 +24431,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-dmitrij-sostakovic"
@@ -23864,7 +24483,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-aleksandr-skrjabin"
@@ -23926,7 +24548,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-ottorino-respighi"
@@ -23995,7 +24620,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-ottorino-respighi"
@@ -24044,7 +24672,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-alfredo-casella"
@@ -24093,7 +24724,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-goffredo-petrassi"
@@ -24188,7 +24822,10 @@
           "base": 2,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-bela-bartok",
@@ -24238,7 +24875,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-bela-bartok"
@@ -24307,7 +24947,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-witold-lutos-awski"
@@ -24376,7 +25019,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-krzysztof-penderecki"
@@ -24425,7 +25071,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-krzysztof-penderecki"
@@ -24491,7 +25140,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-henryk-gorecki"
@@ -24560,7 +25212,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-paul-hindemith"
@@ -24609,7 +25264,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-karlheinz-stockhausen"
@@ -24664,7 +25322,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-karlheinz-stockhausen"
@@ -24730,7 +25391,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-la-monte-young"
@@ -24779,7 +25443,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-terry-riley"
@@ -24828,7 +25495,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-terry-riley"
@@ -24894,7 +25564,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-john-adams"
@@ -24943,7 +25616,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-michael-nyman"
@@ -25044,7 +25720,10 @@
           "base": 0,
           "specialist": 5,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 5,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-margaret-bonds",
@@ -25097,7 +25776,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-bonaventura-viviani"
@@ -25163,7 +25845,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-hans-pfitzner"
@@ -25217,7 +25902,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-louis-durey"
@@ -25283,7 +25971,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-germaine-tailleferre"
@@ -25349,7 +26040,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-ferde-grofe"
@@ -25415,7 +26109,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-horatio-parker"
@@ -25464,7 +26161,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-juan-tizol"
@@ -25526,7 +26226,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-francesco-soriano",
@@ -25576,7 +26279,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gregorio-allegri"
@@ -25671,7 +26377,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-croce"
@@ -25753,7 +26462,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-nicola-porpora"
@@ -25822,7 +26534,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-battista-sammartini"
@@ -25871,7 +26586,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-leopold-mozart"
@@ -25940,7 +26658,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gioachino-rossini",
@@ -26007,7 +26728,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-niccolo-antonio-zingarelli"
@@ -26102,7 +26826,10 @@
           "base": 3,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gioachino-rossini",
@@ -26169,7 +26896,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-cezar-cui"
@@ -26224,7 +26954,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-georges-auric"
@@ -26290,7 +27023,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-antonio-soler"
@@ -26356,7 +27092,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-jakob-froberger"
@@ -26436,7 +27175,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jean-bretel",
@@ -26486,7 +27228,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-friedrich-wilhelm-zachow"
@@ -26552,7 +27297,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-monsieur-de-sainte-colombe"
@@ -26618,7 +27366,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jean-francois-lesueur"
@@ -26667,7 +27418,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-hildegard-von-bingen"
@@ -26716,7 +27470,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-francesco-landini"
@@ -26782,7 +27539,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-josquin-des-prez"
@@ -26848,7 +27608,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-pierluigi-da-palestrina"
@@ -26914,7 +27677,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-luca-marenzio"
@@ -26976,7 +27742,10 @@
           "base": 0,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-bartolomeo-tromboncino",
@@ -27026,7 +27795,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-vittoria-aleotti"
@@ -27092,7 +27864,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-john-dowland"
@@ -27171,7 +27946,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-orlando-gibbons"
@@ -27220,7 +27998,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-tomas-luis-de-victoria"
@@ -27269,7 +28050,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-juan-del-encina"
@@ -27335,7 +28119,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-tomaso-albinoni"
@@ -27401,7 +28188,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-hugo-wolf"
@@ -27467,7 +28257,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-aleksandr-borodin"
@@ -27516,7 +28309,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-bedrich-smetana"
@@ -27565,7 +28361,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gyorgy-ligeti"
@@ -27614,7 +28413,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-witold-lutos-awski"
@@ -27663,7 +28465,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-henryk-gorecki"
@@ -27729,7 +28534,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-paul-hindemith"
@@ -27795,7 +28603,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jacob-obrecht"
@@ -27844,7 +28655,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-samuel-scheidt"
@@ -27910,7 +28724,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-pietro-alessandro-guglielmi"
@@ -27959,7 +28776,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-la-monte-young"
@@ -28008,7 +28828,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-michael-nyman"
@@ -28057,7 +28880,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-edgard-varese"
@@ -28123,7 +28949,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-luigi-dallapiccola"
@@ -28189,7 +29018,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-hans-werner-henze"
@@ -28238,7 +29070,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-charles-ives"
@@ -28287,7 +29122,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giacinto-scelsi"
@@ -28336,7 +29174,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-john-cage"
@@ -28385,7 +29226,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-karlheinz-stockhausen"
@@ -28434,7 +29278,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-benjamin-britten"
@@ -28500,7 +29347,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-ottorino-respighi"
@@ -28549,7 +29399,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-richard-strauss"
@@ -28598,7 +29451,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gustav-mahler"
@@ -28664,7 +29520,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-florence-price"
@@ -28730,7 +29589,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-maurice-ravel"
@@ -28779,7 +29641,10 @@
           "base": 0,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-billy-strayhorn"
@@ -28845,7 +29710,10 @@
           "base": 1,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-kuhnau"
@@ -29163,7 +30031,10 @@
           "base": 15,
           "specialist": 6,
           "extension": 0
-        }
+        },
+        "distinct_composers": 15,
+        "distinct_people": 15,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-michael-nyman",
@@ -29280,7 +30151,10 @@
           "base": 3,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-bernart-de-ventadorn",
@@ -29362,7 +30236,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-alberto-ginastera"
@@ -29469,7 +30346,10 @@
           "base": 5,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-heitor-villa-lobos",
@@ -29552,7 +30432,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-ney-rosauro"
@@ -29633,7 +30516,10 @@
           "base": 2,
           "specialist": 1,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-astor-piazzolla"
@@ -29727,7 +30613,10 @@
           "base": 2,
           "specialist": 2,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-astor-piazzolla"
@@ -29808,7 +30697,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-lili-boulanger",
@@ -29890,7 +30782,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-rebecca-clarke"
@@ -29973,7 +30868,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-leos-janacek",
@@ -30055,7 +30953,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-gustav-holst"
@@ -30227,7 +31128,10 @@
           "base": 10,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-francesco-geminiani",
@@ -30328,7 +31232,10 @@
           "base": 4,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-bohuslav-martinu",
@@ -30413,7 +31320,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-max-reger"
@@ -30494,7 +31404,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-lars-erik-larsson"
@@ -30565,7 +31478,10 @@
           "base": 2,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-alfred-schnittke"
@@ -30649,7 +31565,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-emmanuel-chabrier"
@@ -30730,7 +31649,10 @@
           "base": 3,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-carl-reinecke"
@@ -31933,7 +32855,10 @@
           "base": 89,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 75,
+        "distinct_people": 75,
+        "distinct_periods": 3
       },
       "direct_person_ids": [
         "compositore-antonio-vivaldi",
@@ -32693,7 +33618,10 @@
           "base": 49,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 42,
+        "distinct_people": 42,
+        "distinct_periods": 3
       },
       "direct_person_ids": [
         "compositore-arcangelo-corelli",
@@ -33848,7 +34776,10 @@
           "base": 82,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 71,
+        "distinct_people": 71,
+        "distinct_periods": 3
       },
       "direct_person_ids": [
         "compositore-joseph-haydn",
@@ -34382,7 +35313,10 @@
           "base": 32,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 25,
+        "distinct_people": 25,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-maurice-ravel",
@@ -35584,7 +36518,10 @@
           "base": 87,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 77,
+        "distinct_people": 77,
+        "distinct_periods": 3
       },
       "direct_person_ids": [
         "compositore-francois-couperin",
@@ -36352,7 +37289,10 @@
           "base": 49,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 46,
+        "distinct_people": 46,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-joseph-haydn",
@@ -36860,7 +37800,10 @@
           "base": 32,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 30,
+        "distinct_people": 30,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-barbara-strozzi",
@@ -37364,7 +38307,10 @@
           "base": 33,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 26,
+        "distinct_people": 26,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-antonio-caldara",
@@ -38034,7 +38980,10 @@
           "base": 46,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 40,
+        "distinct_people": 40,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-luigi-cherubini",
@@ -38432,7 +39381,10 @@
           "base": 24,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 20,
+        "distinct_people": 20,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-franz-schubert",
@@ -40460,7 +41412,10 @@
           "base": 151,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 121,
+        "distinct_people": 121,
+        "distinct_periods": 3
       },
       "direct_person_ids": [
         "compositore-claudio-monteverdi",
@@ -41109,7 +42064,10 @@
           "base": 37,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 34,
+        "distinct_people": 34,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-heinrich-schutz",
@@ -41436,7 +42394,10 @@
           "base": 19,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 17,
+        "distinct_people": 17,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-johann-sebastian-bach",
@@ -41966,7 +42927,10 @@
           "base": 36,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 34,
+        "distinct_people": 34,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-johann-sebastian-bach",
@@ -42162,7 +43126,10 @@
           "base": 9,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 7,
+        "distinct_people": 7,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-andrea-gabrieli",
@@ -42565,7 +43532,10 @@
           "base": 27,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 25,
+        "distinct_people": 25,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-girolamo-frescobaldi",
@@ -43012,7 +43982,10 @@
           "base": 29,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 26,
+        "distinct_people": 26,
+        "distinct_periods": 2
       },
       "direct_person_ids": [
         "compositore-petr-il-ic-cajkovskij",
@@ -43474,7 +44447,10 @@
           "base": 30,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 29,
+        "distinct_people": 29,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-felix-mendelssohn",
@@ -43666,7 +44642,10 @@
           "base": 9,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-claudio-merulo",
@@ -43822,7 +44801,10 @@
           "base": 8,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 7,
+        "distinct_people": 7,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-johann-sebastian-bach",
@@ -44002,7 +44984,10 @@
           "base": 10,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-franz-liszt",
@@ -44131,7 +45116,10 @@
           "base": 6,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-guillaume-dufay",
@@ -44256,7 +45244,10 @@
           "base": 6,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-francesco-landini",
@@ -44355,7 +45346,10 @@
           "base": 4,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-giovanni-animuccia",
@@ -44463,7 +45457,10 @@
           "base": 5,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-girolamo-frescobaldi",
@@ -44575,7 +45572,10 @@
           "base": 5,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-duke-ellington",
@@ -44777,7 +45777,10 @@
           "base": 6,
           "specialist": 0,
           "extension": 6
-        }
+        },
+        "distinct_composers": 6,
+        "distinct_people": 6,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-stephen-sondheim",
@@ -44878,7 +45881,10 @@
           "base": 4,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-scott-joplin",
@@ -45028,7 +46034,10 @@
           "base": 8,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 8,
+        "distinct_people": 8,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-john-field",
@@ -45209,7 +46218,10 @@
           "base": 10,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 9,
+        "distinct_people": 9,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-gabriel-faure",
@@ -45288,7 +46300,10 @@
           "base": 2,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-walther-von-der-vogelweide",
@@ -45409,7 +46424,10 @@
           "base": 6,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-orazio-vecchi",
@@ -45545,7 +46563,10 @@
           "base": 7,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 5,
+        "distinct_periods": 1
       },
       "direct_person_ids": [
         "compositore-stefano-landi",
@@ -45682,7 +46703,10 @@
           "base": 7,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-francesco-provenzale",
@@ -45792,7 +46816,10 @@
           "base": 5,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-francesco-provenzale",
@@ -45886,7 +46913,10 @@
           "base": 4,
           "specialist": 0,
           "extension": 0
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-leonardo-vinci"
@@ -46122,7 +47152,10 @@
           "base": 0,
           "specialist": 0,
           "extension": 15
-        }
+        },
+        "distinct_composers": 10,
+        "distinct_people": 10,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-jacques-offenbach",
@@ -46211,7 +47244,10 @@
           "base": 0,
           "specialist": 0,
           "extension": 3
-        }
+        },
+        "distinct_composers": 2,
+        "distinct_people": 2,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-herve",
@@ -46325,7 +47361,10 @@
           "base": 0,
           "specialist": 0,
           "extension": 5
-        }
+        },
+        "distinct_composers": 4,
+        "distinct_people": 4,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-franz-von-suppe",
@@ -46395,7 +47434,10 @@
           "base": 0,
           "specialist": 0,
           "extension": 2
-        }
+        },
+        "distinct_composers": 1,
+        "distinct_people": 1,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-arthur-sullivan"
@@ -46488,7 +47530,10 @@
           "base": 0,
           "specialist": 0,
           "extension": 4
-        }
+        },
+        "distinct_composers": 3,
+        "distinct_people": 3,
+        "distinct_periods": 0
       },
       "direct_person_ids": [
         "compositore-victor-herbert",
