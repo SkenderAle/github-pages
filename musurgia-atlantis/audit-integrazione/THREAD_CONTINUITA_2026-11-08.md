@@ -57,5 +57,15 @@ Atlantis diventerà la nuova interfaccia esplorativa di Musurgia Mundi, mantenen
 
 **PROSSIMA RIPRESA AGGIORNATA:** confronto biografico effettivo dei 155 candidati nominali con i metadati Atlantis, poi controllo degli alias per i 351 nuovi. Preparare schema unione non distruttiva, quindi traduzione fedele di tutte le spiegazioni bidirezionali (comprese le eccezioni di `relationSentence`). Test radicati Mozart→Leopold, blocco di ponti generici, nessun capitolo nel grafo storico, hover/tap. Nessuna pubblicazione di grafo pubblico prima della certificazione.
 
+### Fase 2C — confronto effettivo dei grafi, nuove identità e blocco delle false fusioni (8 novembre 2026)
+**Fatto su `main` (solo audit; produzione invariata):**
+- `CONFRONTO_IDENTITA_GRAFO_FASE2C_2026-11-08.json` — confronto di **509** record con il JSON *reale* Atlantis (754 nodi, 297 persone); verifica delle **155** coincidenze nominali e **3** alias precedentemente documentati: tutti i **158** target esistono e sono `persona`; 0 conflitti di ruolo macroscopici, ma **155 identità non sono per questo certificate storicamente**. Rispetto allo staging: 500/500 record base e 9/9 estensione conservati integralmente (payload invariati).
+- Ricerca per similarità anche fra i **351** inizialmente senza match: **34** presentano un nome simile (soglia 0,66); **due vere ulteriori identità recuperate con fonti d'autorità**: Sergej Djagilev = Sergej Diaghilev (BnF) e Bronislava Nijinska = Bronislava Nižinskaja (GND/Deutsche Biographie). Le coppie alias convalidate sono quindi **5** (3 + 2); i nomi senza corrispondenza attestata scendono a **349**.
+- **Tre false fusioni proibite:** Giuseppe Tartini ≠ Giuseppe Mazzini; Johann Christian Bach ≠ Johann Sebastian Bach; Giulio Rospigliosi (**Clemente IX**) ≠ Clemente VIII (**Ippolito Aldobrandini**; prova vatican.va).
+- `AUDIT_FASE2C_RICONCILIAZIONE_IDENTITA_2026-11-08.md` — verbale completo e fonti.
+- Nessun nodo/collegamento nel grafo pubblico alterato. Nessuna cancellazione o fusione di record.
+
+**PROSSIMA RIPRESA:** audit di identità storico-documentale dei 155 match nominali; ricerca alias/nomi religiosi/titoli nei 349 senza match; valutazione 4 concetti. Solo dopo certificazione, progettare merge reversibile e preservazione di tutti gli archi spiegati, direzioni, fonti e dei 210 lotti, con test Mozart/Leopold e filtro di pertinenza radicata I–V. Mantenere **tutti i capitoli solo nella vista editoriale**.
+
 ### Protocollo di continuità
 Aggiornare questo thread/documento di ripresa ad ogni fase significativa, **prima** di raggiungere il limite della chat. In una nuova conversazione richiamare il file sopra anziché ricostruire a memoria. Non promettere di poter aprire automaticamente una nuova chat: il documento è il passaggio di consegne.
