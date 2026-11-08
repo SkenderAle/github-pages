@@ -5070,3 +5070,215 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 - **Limiti QA:** struttura del JSON, univocità di ID e triplette, endpoint e simulazione dei livelli I–V; non eseguiti test grafici reali su Chrome/Android e non inferite nuove relazioni semplicemente perché un nodo è raggiungibile. Gli enti musicali (es. Kronos Quartet) sono modellati come `rete-culturale`, non falsamente come persone.
 - **Non modificati:** pagine didattiche, mappe per capitolo, interfaccia `index.html`, protocollo. Nessuna sincronizzazione automatica attivata.
 - **Continuazione:** lotti 161–170 su isolamenti residui verificati e controllo dei collegamenti sospesi solo quando le fonti di pagina o primarie lo consentono.
+
+---
+
+## Lotto 161 — 2026-11-08: Josquin, Molinet e la Déploration per Ockeghem
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L161-A01` | **H — documentato** | Josquin compone Nymphes des bois, déploration musicale legata alla morte di Ockeghem nel 1497: non costituisce prova autonoma di un rapporto pedagogico diretto. |
+| `L161-A02` | **H — documentato** | Jean Molinet è autore del testo poetico francese che Josquin mette in musica, integrato dal materiale liturgico del Requiem. |
+| `L161-A03` | **H — documentato** | La composizione celebra Ockeghem dopo la sua morte; un omaggio musicale non equivale a relazione documentata maestro–allievo. |
+
+### Fonti effettivamente consultate
+- https://popups.uliege.be/1371-6735/index.php?id=708
+- https://www.lieder.net/lieder/get_text.html?SettingId=67673&TextId=52554
+
+**Totale:** 2 nodi e 3 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 162 — 2026-11-08: Du Fay: Nuper rosarum flores per Santa Maria del Fiore
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L162-A01` | **H — documentato** | Guillaume Du Fay compone il mottetto Nuper rosarum flores nel 1436 in occasione della consacrazione del Duomo di Firenze. |
+| `L162-A02` | **H — documentato** | La BnF documenta la prima esecuzione del 25 marzo 1436 per la consacrazione di Santa Maria del Fiore, non la costruzione della cupola in sé. |
+
+### Fonti effettivamente consultate
+- https://catalogue.bnf.fr/ark%3A/12148/cb139117026
+
+**Totale:** 2 nodi e 2 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 163 — 2026-11-08: Willaert, Zarlino, San Marco e Le istitutioni harmoniche
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L163-A01` | **H — documentato** | Zarlino è documentato come allievo di Willaert a Venezia dal 1541; rapporto didattico e non equivalenza delle loro teorie. |
+| `L163-A02` | **H — documentato** | Adriano Willaert dirige la cappella di San Marco dal 1527 fino alla morte, nel 1562, secondo la storia ufficiale della basilica. |
+| `L163-A03` | **H — documentato** | Zarlino assume la direzione della cappella di San Marco nel 1565: non è il successore immediato di Willaert nel 1562. |
+| `L163-A04` | **H — documentato** | Zarlino pubblica Le istitutioni harmoniche a Venezia nel 1558, documentato da esemplare catalogato dalla Library of Congress. |
+
+### Fonti effettivamente consultate
+- https://www.treccani.it/enciclopedia/gioseffo-zarlino/
+- https://www.basilicasanmarco.it/basilica/tradizione-musicale/
+- https://www.loc.gov/item/11027718/
+
+**Totale:** 1 nodi e 4 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 164 — 2026-11-08: Tallis e Byrd: Cantiones sacrae e privilegio editoriale del 1575
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L164-A01` | **H — documentato** | Thomas Tallis contribuisce a una raccolta condivisa di mottetti latini pubblicata nel 1575: le composizioni dei due autori non vanno fuse. |
+| `L164-A02` | **H — documentato** | William Byrd è coautore con Tallis della raccolta Cantiones sacrae pubblicata nel 1575. |
+| `L164-A03` | **H — documentato** | Nel 1575 Elisabetta I concede a Tallis e Byrd un privilegio congiunto per la stampa musicale; specifico rapporto editoriale, non documentazione di maestro–allievo. |
+
+### Fonti effettivamente consultate
+- https://www.chapelroyalhamptoncourt.org.uk/music/musical-heritage/
+- https://searcharchives.bl.uk/catalog/036-001949672
+
+**Totale:** 1 nodi e 3 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 165 — 2026-11-08: Isaac, Poliziano e la memoria di Lorenzo de’ Medici
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L165-A01` | **H — documentato** | Heinrich Isaac compone Quis dabit capiti meo aquam? in memoria di Lorenzo de' Medici, riutilizzando materiale preesistente della Missa Salva nos. |
+| `L165-A02` | **H — documentato** | Il testo latino del mottetto funebre è attribuito ad Angelo Poliziano, distinto dal suo compositore Heinrich Isaac. |
+| `L165-A03` | **H — documentato** | Il mottetto Quis dabit capiti meo aquam? commemora la morte di Lorenzo de' Medici nel 1492; è documentazione di memoria, non prova di influenza stilistica. |
+
+### Fonti effettivamente consultate
+- https://www.jstor.org/stable/j.ctvt6rjfb
+- https://www.musicanet.org/bdd/en/score/73035-quis-dabit-capiti-meo-aquam--heinrich-isaac
+
+**Totale:** 2 nodi e 3 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 166 — 2026-11-08: Barbara Strozzi: op. 1 e dedica a Vittoria della Rovere
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L166-A01` | **H — documentato** | Barbara Strozzi pubblica a Venezia presso Vincenti nel 1644 il Primo libro di madrigali per due, tre, quattro e cinque voci; non è una raccolta esclusivamente per voce sola. |
+| `L166-A02` | **H — documentato** | La dedica dell'op. 1 è indirizzata a Vittoria della Rovere, granduchessa di Toscana, documentata dal frontespizio e dal testo dedicatorio. |
+
+### Fonti effettivamente consultate
+- https://barbarastrozzi.com/texts-translations/opus-1/
+
+**Totale:** 2 nodi e 2 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 167 — 2026-11-08: François Couperin: L’art de toucher le clavecin
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L167-A01` | **H — documentato** | François Couperin pubblica il metodo L'art de toucher le clavecin, presente nell'edizione parigina del 1717 e comprensivo di otto preludi. |
+| `L167-A02` | **H — documentato** | Il trattato documenta insegnamenti per l'esecuzione sul clavicembalo; il nodo indica una fonte storica concreta, non una ricostruzione automaticamente normativa di tutta la prassi francese. |
+
+### Fonti effettivamente consultate
+- https://www.loc.gov/item/20010859/
+
+**Totale:** 1 nodi e 2 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 168 — 2026-11-08: Telemann, Tafelmusik e la sottoscrizione di Händel
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L168-A01` | **H — documentato** | Telemann pubblica in proprio Musique de table in tre 'Productions' nel 1733; è un progetto editoriale strutturato, non un unico concerto. |
+| `L168-A02` | **H — documentato** | Händel figura tra i sottoscrittori dell'edizione del 1733; il dato certifica circolazione editoriale e conoscenza della raccolta, non da solo un prestito tematico verificato. |
+
+### Fonti effettivamente consultate
+- https://rism.info/rism_a_z/2020/10/29/georg-philipp-telemann-as-the-publisher-of-his-own-compositions.html
+- https://academic.oup.com/edited-volume/42059/chapter/355877659
+
+**Totale:** 1 nodi e 2 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 169 — 2026-11-08: Händel e Charles Jennens: testo e composizione del Messiah
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L169-A01` | **H — documentato** | Händel compone la musica dell'oratorio Messiah nel 1741, la cui prima esecuzione si tiene a Dublino il 13 aprile 1742. |
+| `L169-A02` | **H — documentato** | Charles Jennens seleziona e organizza il testo del Messiah a partire da passi della Bibbia e del Prayer Book; non è autore originale dei versi scritturali. |
+
+### Fonti effettivamente consultate
+- https://gfhandel.org/handel/worklist/43to100.html
+- https://churchofirelandhist.org/the-200th-anniversary-of-the-first-performance-of-handels-messiah/
+- https://www.gfhandel.org/handel/messiah.html
+
+**Totale:** 2 nodi e 2 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+## Lotto 170 — 2026-11-08: Ligeti e Stockhausen: composizione originale e riuso cinematografico
+
+**Metodo:** nuove identità solo quando assenti dal grafo; controllo delle attribuzioni presso fonti esterne specifiche, distinguendo titolo storico, prima esecuzione, edizione, dedica, funzione d'autore ed eventuale riuso successivo.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L170-A01` | **H — documentato** | György Ligeti compone Atmosphères per grande orchestra nel 1961, prima dell'esistenza del film di Kubrick; non si tratta di musica originale su commissione cinematografica. |
+| `L170-A02` | **H — documentato** | La musica preesistente di Ligeti è utilizzata in 2001: A Space Odyssey (1968); la fonte AFI ne identifica anche la registrazione, non un incarico compositivo da Kubrick. |
+| `L170-A03` | **H — documentato** | Stanley Kubrick dirige 2001: A Space Odyssey, uscito nel 1968; l'uso di musica di Ligeti non ne fa il compositore della colonna sonora originale. |
+| `L170-A04` | **H — documentato** | Karlheinz Stockhausen compone Gesang der Jünglinge nel 1955–1956, accostando sintesi elettronica e voce di ragazzo registrata; prima trasmissione a Colonia il 30 maggio 1956. |
+
+### Fonti effettivamente consultate
+- https://brahms.ircam.fr/en/work/atmospheres
+- https://catalog.afi.com/Film/23399-2001-ASPACEODYSSEY
+- https://www.bfi.org.uk/film/cefccdb2-b558-5623-9c17-72b4be7bd4c1/2001-a-space-odyssey
+- https://resources.ircam.fr/en/work/gesang-der-junglinge
+- https://www1.wdr.de/mediathek/audio/wdr3/meisterstuecke/audio-karlheinz-stockhausen-gesang-der-juenglinge-100.html
+
+**Totale:** 4 nodi e 4 archi nuovi. Nessuna conferma di influenza/stile generale derivata dalla sola prossimità.
+
+---
+
+### Bilancio dopo lotti 161–170
+
+- **Nodi introdotti:** 18; **archi documentati introdotti:** 27; esistenti preservati, nessun riuso di ID.
+- **Integrità:** 657 nodi, 1604 archi, 0 duplicati ID e triple relazionali, 0 riferimenti orfani; **125 archi sospesi** immutati; 472 flag di verifiche indipendenti, 436 gate di riscontro esterno.
+- **Distinzioni essenziali:** Nymphes des bois è omaggio a Ockeghem, non prova che Josquin fosse suo allievo; Nuper rosarum flores è attestata per la consacrazione del Duomo di Firenze il 25 marzo 1436; Zarlino non succede immediatamente a Willaert; Tallis e Byrd hanno una pubblicazione comune ma composizioni proprie; Isaac compone e Poliziano scrive il testo commemorativo; Strozzi dedica il libro del 1644 a Vittoria della Rovere; Couperin è autore del metodo di clavicembalo; Händel è sottoscrittore della Tafelmusik, non presunto coautore; il Messiah ha testo compilato da Jennens; Atmosphères del 1961 è usata nel film 2001 del 1968 come musica preesistente, mentre Gesang der Jünglinge è opera elettroacustica autonoma di Stockhausen.
+- **BFS simulata (filtri ordinari, livelli I–V; non collaudo visivo):**
+
+| Nodo | Prima | Dopo |
+| --- | --- | --- |
+| Josquin des Prez | 2 / 2 / 2 / 2 / 2 | 3 / 5 / 5 / 5 / 5 |
+| Johannes Ockeghem | 1 / 1 / 1 / 1 / 1 | 2 / 4 / 5 / 5 / 5 |
+| Guillaume Du Fay | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 3 / 3 / 3 |
+| Adriano Willaert | 1 / 1 / 1 / 1 / 1 | 3 / 4 / 4 / 4 / 4 |
+| Gioseffo Zarlino | 1 / 1 / 1 / 1 / 1 | 4 / 4 / 4 / 4 / 4 |
+| Thomas Tallis | 1 / 1 / 1 / 1 / 1 | 3 / 3 / 3 / 3 / 3 |
+| William Byrd | 1 / 1 / 1 / 1 / 1 | 3 / 3 / 3 / 3 / 3 |
+| Heinrich Isaac | 1 / 1 / 1 / 1 / 1 | 2 / 4 / 4 / 4 / 4 |
+| Barbara Strozzi | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 3 / 3 / 3 |
+| François Couperin | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 3 / 3 / 3 |
+| Georg Philipp Telemann | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 4 / 5 / 5 |
+| Georg Friedrich Händel | 4 / 4 / 4 / 4 / 4 | 6 / 8 / 8 / 8 / 8 |
+| György Ligeti | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 4 / 4 / 4 |
+| Karlheinz Stockhausen | 1 / 1 / 1 / 1 / 1 | 2 / 2 / 2 / 2 / 2 |
+| Rinascimento | 59 / 69 / 74 / 76 / 76 | 59 / 74 / 82 / 84 / 84 |
+| Barocco | 67 / 105 / 136 / 150 / 151 | 67 / 109 / 142 / 156 / 157 |
+
+- **Cautela sui percorsi:** un arco di dedica, stampa o riuso autorizza soltanto il significato enunciato. La concatenazione di due o più archi non dimostra che gli autori si siano influenzati reciprocamente.
+- **Non modificati:** pagine dei capitoli, mappe di fine capitolo, index.html dell'interfaccia, protocollo di aggiornamenti. Nessuna sincronizzazione automatica attivata.
+- **Da collaudare:** visibilità effettiva delle etichette e navigazione 3D in browser, soprattutto nel fallback Canvas Android. Qui verificati JSON e simulazione logica dei livelli.
+- **Ripresa suggerita:** lotti 171–180, privilegiando le lacune che emergono dalle fonti dei capitoli prima di aggiungere genealogie generiche.
