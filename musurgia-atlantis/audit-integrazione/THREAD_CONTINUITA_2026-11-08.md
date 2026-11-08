@@ -80,5 +80,16 @@ Atlantis diventerà la nuova interfaccia esplorativa di Musurgia Mundi, mantenen
 
 **Prossima ripresa:** continuare verifica documentale dei 134 nominali; predisporre in staging 349 nuovi nodi con Leopold prioritario; confrontare i 3.856 archi sorgente e 1.718 Atlantis senza sommare ciecamente; convertire le spiegazioni mouse-over e `forward/reverse` originali con eccezioni; *eseguire* (non soltanto definire) i test Mozart/Leopold e il filtro di pertinenza radicata. Nessuna pubblicazione grafico/UI storica senza verifica.
 
+### Fase 2D — Lotto 01, identità nominali documentate (8 novembre 2026)
+**Lavoro concluso su branch `main`, soltanto in `audit-integrazione/`:**
+- `CONVALIDA_STORICA_NOMI_FASE2D_LOTTO01_2026-11-08.json`: **11 identità nominali** con riscontro storico indipendente, 6 gruppi: Andrea/Giovanni Gabrieli (Treccani); Alessandro/Domenico Scarlatti (Treccani); Giulio/Francesca Caccini (Treccani); Robert/Clara Schumann (Schumann-Haus); George/Ira Gershwin (Cambridge); Wolfgang Amadeus Mozart (Mozarteum). I rapporti familiari sono **relazioni fra individui distinti**, mai una fusione reciproca.
+- `AUDIT_FASE2D_LOTTO01_2026-11-08.md`: verbale, fonti, cautele e prossimi passi.
+- **Identità documentate complessivamente: 16** = 5 alias delle Fasi 2B–2C + 11 nominali di questo lotto. **144** corrispondenze nominali ancora da verificare; **349** record senza equivalenza Atlantis attestata (da importare salvo ulteriori varianti dimostrate).
+- **9/11 schede sorgenti di questo lotto hanno descrizioni provvisorie**: la convalida dell'identità NON trasforma il testo generico in biografia certificata. I ruoli specializzati di Atlantis devono sopravvivere.
+- I riferimenti a 6 relazioni familiari/professionali sono riportati con versi e fonti originali, ma la verifica **degli archi** rimane autonoma rispetto alla verifica delle **persone**. Mozart–Leopold rimane test sentinella di pertinenza radicata.
+- Nessuna modifica a grafi o UI pubblici; nessuna fusione.
+
+**PROSSIMA RIPRESA:** Fase 2D, **Lotto 02**: esaminare le **144** corrispondenze nominali residue con fonti indipendenti, dando priorità a omonimi, pseudonimi e ruoli multipli. Poi 349 senza equivalenza attestata, 4 concetti, archi bidirezionali e collaudo filtro radicato. Tutti i capitoli esclusivamente editoriali.
+
 ### Protocollo di continuità
 Aggiornare questo thread/documento di ripresa ad ogni fase significativa, **prima** di raggiungere il limite della chat. In una nuova conversazione richiamare il file sopra anziché ricostruire a memoria. Non promettere di poter aprire automaticamente una nuova chat: il documento è il passaggio di consegne.
