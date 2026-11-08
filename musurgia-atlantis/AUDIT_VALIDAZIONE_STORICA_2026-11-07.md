@@ -583,3 +583,57 @@ Per confronto, con il filtro esteso che include anche `navigazione` e `ipotesi`,
 - 608 nodi, 1.520 archi, 0 ID duplicati, 0 estremi inesistenti; JSON riparsato.
 - Quality gate: 142 `riscontro_storico_indipendente`, 299 `candidato_non_fuso`, 337 `proposta_editoriale_revisionata`.
 - Nessun aumento artificiale di attestazioni storiche. Regressione dei percorsi e lettura dal remoto previste dopo pubblicazione.
+
+
+---
+
+## Lotto 10 — 8 novembre 2026: Fauno, riuso orchestrale e attribuzioni a Ravel
+
+**Preflight**: `main` al commit `1bfe28499c03fb6c998998c1ba1222a80d58ff2d` dopo Lotto 9. Perimetro: `L05-A017`, `L05-A018`, `L05-A023`, `E0823`. Niente capitoli, menu, motore 3D o protocollo.
+
+| Arco | Decisione | Precisa attestazione |
+| --- | --- | --- |
+| `L05-A017` | candidato → **confronto_non_causale**, `sviluppa_o_illumina` | La *produzione* del *Fauno* di Nižinskij del 1912 è un caso storico pertinente al confronto fra drammaturgia musicale e coreografia. Il nesso col nodo «frizione musica/coreografia» è una lettura musicologica, non una filiazione storica. |
+| `L05-A018` | candidato → **confronto_non_causale**, `sviluppa_o_illumina` | Il *Prélude* orchestrale del 1894 è usato nel balletto del 1912; il collegamento all'idea del «riuso» è un esempio editoriale. Resta distinto dal rapporto documentato opera → *specifica produzione*, già validato come `L05-A015`. |
+| `L05-A023` | candidato → **riscontro_storico_indipendente** | Ravel compone *Jeux d'eau* per pianoforte solo il **11 novembre 1901** (catalogo BnF), dedicandolo a Fauré; prima con Ricardo Viñes il **5 aprile 1902**. Nessuna assimilazione con il balletto *Jeux* di Debussy. |
+| `E0823` | proposta editoriale → **riscontro_storico_indipendente** | Ravel compone la partitura di *Daphnis et Chloé* fra il 1909 e il 5 aprile 1912, su commissione di Diaghilev; argomento anche di Fokine, che ne cura la coreografia; prima il **8 giugno 1912**. |
+
+### Fonti indipendenti
+
+- Conservatoire de Paris, Claude Abromont, analisi del *Prélude* e della sua interpretazione scenica: https://www.conservatoiredeparis.fr/fr/enquete-autour-du-prelude-lapres-midi-dun-faune-de-debussy
+- BnF, composizione e prima del *Prélude*: https://catalogue.bnf.fr/ark:/12148/cb13911386z.public
+- BnF, programma della prima coreografica del *Fauno* il 29 maggio 1912: https://catalogue.bnf.fr/ark:/12148/cb396842224
+- British Library, partitura coreografica autografa di Nižinskij: https://searcharchives.bl.uk/catalog/032-002103433
+- BnF, catalogo di *Jeux d'eau* (Ravel, O 30), composizione 1901 e prima Viñes 1902: https://catalogue.bnf.fr/ark:/12148/cb139177379
+- IRCAM, *Jeux d'eau*, genere pianistico e interprete della prima: https://ressources.ircam.fr/fr/work/jeux-d%27eau
+- BnF, *Daphnis et Chloé*, catalogo opera e attribuzione Ravel–Fokine: https://catalogue.bnf.fr/ark:/12148/cb139177228
+- BnF, scheda della prima produzione 8 giugno 1912: https://catalogue.bnf.fr/ark:/12148/cb39684188s
+- IRCAM, *Daphnis et Chloé*, organico e ruoli: https://resources.ircam.fr/en/work/daphnis-et-chloe-1
+
+### Regole preservate
+
+- Tutti gli archi `confronto_non_causale` conservano `historical_verified_independently=false` e non aumentano i conteggi dei riscontri storici.
+- La relazione `sviluppa_o_illumina` è già riconosciuta nel renderer come rapporto **generico da non attraversare oltre il I livello**. I nodi concettuali possono essere visti direttamente, ma non trasformarsi in ponti che uniscano tutte le opere di un'epoca.
+- I nuovi rapporti di composizione sono specifici: identità compositore–opera attestata da due fonti indipendenti; non si inferiscono relazioni personali tra Ravel e Nižinskij.
+- Il `L05-A063` sospeso nel Lotto 9 resta sospeso. Nessun arco cancella la provenienza originale di uno precedente.
+
+### Integrità e test I–V prima della pubblicazione
+
+- JSON serializzato e riparsato; **608 nodi, 1.520 relazioni**; zero ID duplicati, zero estremi inesistenti.
+- `riscontro_storico_indipendente`: **144**; `candidato_non_fuso`: **296**; `proposta_editoriale_revisionata`: **336**; `confronto_non_causale`: **27**.
+- Booleano `historical_verified_independently=true`: **179**, non da confondere con quality_gate.
+- Simulazione con soli filtri `trattazione` e `menzione` e logica rooted/BFS di Atlantis, nuovi nodi raggiunti per profondità:
+
+| Radice | Prima Lotto 10 I/II/III/IV/V | Dopo Lotto 10 I/II/III/IV/V |
+| --- | --- | --- |
+| Maurice Ravel | 6 / 4 / 5 / 12 / 5 | 8 / 7 / 7 / 7 / 5 |
+| Daphnis et Chloé | 5 / 7 / 9 / 9 / 3 | 6 / 10 / 10 / 6 / 2 |
+| Prélude à l’après-midi d’un faune (1894) | 3 / 2 / 3 / 8 / 8 | 4 / 2 / 3 / 8 / 8 |
+| L’Après-midi d’un faune · balletto di Nižinskij (1912) | 2 / 4 / 6 / 6 / 7 | 3 / 4 / 6 / 6 / 7 |
+| Jeux d’eau (Ravel, 1901) | 0 / 0 / 0 / 0 / 0 | 1 / 4 / 7 / 7 / 7 |
+
+I controlli descritti sono **test algoritmici dei dati**, non collaudo grafico WebGL/Canvas nel browser. Verifica remota dei file dopo pubblicazione.
+
+### Prossimo lotto indicato
+
+**Lotto 11:** ricognizione delle restanti candidature fuori da L05, soprattutto attribuzioni specifiche autore–opera e produzione, distinti dai rimandi editoriali, prima di ogni nuova fusione con l'Atlante 3D.
