@@ -26,48 +26,48 @@ Palestrina, Mozart, i Gabrieli e il genere «Messa» sono **esempi**, non una li
 - Atlantis ha attualmente **48** archi diretti `persona`↔`nodo-di-senso`; non confrontare questo numero come fossero gli stessi predicati degli **1.846** riferimenti persona↔`corrente` Mundi. Serve il crosswalk individuale delle entità e la preservazione delle relazioni spiegate.
 
 ### I 38 nodi prioritari: audit comparativo (tutti, non solo Messa)
-| Concetto | Compositori connessi nel sorgente | Crosswalk precedente | Candidato Atlantis |
-|---|---:|---|---|
-| Madrigale | 32 | candidate | senso:madrigale |
-| Polifonia | 24 | candidate | senso:polifonia |
-| Musica elettronica ed elettroacustica | 12 | partial | senso:musica-concreta |
-| Frottola | 4 | candidate | senso:frottola |
-| Villancico | 3 | no_corresponding_node_identified | — |
-| Poema sinfonico | 17 | candidate | senso:poema-sinfonico |
-| Musica per il cinema | 20 | partial | senso:colonna-sonora |
-| Concerto | 75 | candidate | senso:concerto |
-| Sonata | 42 | candidate | senso:sonata |
-| Sinfonia | 71 | candidate | senso:sinfonia |
-| Suite | 25 | no_corresponding_node_identified | — |
-| Musica da camera | 77 | candidate | senso:musica-camera |
-| Quartetto d’archi | 46 | candidate | senso:quartetto |
-| Cantata | 30 | candidate | senso:cantata |
-| Oratorio | 26 | candidate | senso:oratorio |
-| Messa | 40 | no_corresponding_node_identified | — |
-| Lied | 20 | candidate | senso:lied |
-| Opera | 121 | candidate | senso:opera |
-| Mottetto | 34 | partial | senso:motetto-rinascimentale |
-| Fuga | 17 | candidate | senso:fuga |
-| Variazioni | 34 | no_corresponding_node_identified | — |
-| Ricercare | 7 | candidate | senso:ricercare |
-| Fantasia | 25 | no_corresponding_node_identified | — |
-| Balletto | 26 | candidate | senso:balletto |
-| Ouverture | 29 | no_corresponding_node_identified | — |
-| Toccata | 8 | no_corresponding_node_identified | — |
-| Preludio | 7 | no_corresponding_node_identified | — |
-| Rapsodia | 8 | no_corresponding_node_identified | — |
-| Chanson | 4 | no_corresponding_node_identified | — |
-| Ballata | 4 | no_corresponding_node_identified | — |
-| Lauda | 2 | candidate | senso:lauda |
-| Jazz | 3 | candidate | senso:jazz |
-| Musical | 10 | candidate | senso:musical |
-| Ragtime | 3 | candidate | senso:ragtime |
-| Notturno | 8 | no_corresponding_node_identified | — |
-| Mélodie francese | 9 | no_corresponding_node_identified | — |
-| Minnesang | 2 | partial | senso:canto-cortese |
-| Operetta | 10 | da-valutare-estensione | — |
+| Concetto | Autori distinti | Record verso compositori | Crosswalk precedente | Candidato Atlantis |
+|---|---:|---:|---|---|
+| Madrigale | 23 | 32 | candidate | senso:madrigale |
+| Polifonia | 24 | 24 | candidate | senso:polifonia |
+| Musica elettronica ed elettroacustica | 11 | 12 | partial | senso:musica-concreta |
+| Frottola | 2 | 4 | candidate | senso:frottola |
+| Villancico | 1 | 3 | no_corresponding_node_identified | — |
+| Poema sinfonico | 16 | 17 | candidate | senso:poema-sinfonico |
+| Musica per il cinema | 15 | 20 | partial | senso:colonna-sonora |
+| Concerto | 75 | 75 | candidate | senso:concerto |
+| Sonata | 42 | 42 | candidate | senso:sonata |
+| Sinfonia | 71 | 71 | candidate | senso:sinfonia |
+| Suite | 25 | 25 | no_corresponding_node_identified | — |
+| Musica da camera | 77 | 77 | candidate | senso:musica-camera |
+| Quartetto d’archi | 46 | 46 | candidate | senso:quartetto |
+| Cantata | 30 | 30 | candidate | senso:cantata |
+| Oratorio | 26 | 26 | candidate | senso:oratorio |
+| Messa | 40 | 40 | no_corresponding_node_identified | — |
+| Lied | 20 | 20 | candidate | senso:lied |
+| Opera | 121 | 121 | candidate | senso:opera |
+| Mottetto | 34 | 34 | partial | senso:motetto-rinascimentale |
+| Fuga | 17 | 17 | candidate | senso:fuga |
+| Variazioni | 34 | 34 | no_corresponding_node_identified | — |
+| Ricercare | 7 | 7 | candidate | senso:ricercare |
+| Fantasia | 25 | 25 | no_corresponding_node_identified | — |
+| Balletto | 26 | 26 | candidate | senso:balletto |
+| Ouverture | 29 | 29 | no_corresponding_node_identified | — |
+| Toccata | 8 | 8 | no_corresponding_node_identified | — |
+| Preludio | 7 | 7 | no_corresponding_node_identified | — |
+| Rapsodia | 8 | 8 | no_corresponding_node_identified | — |
+| Chanson | 4 | 4 | no_corresponding_node_identified | — |
+| Ballata | 4 | 4 | no_corresponding_node_identified | — |
+| Lauda | 2 | 2 | candidate | senso:lauda |
+| Jazz | 3 | 3 | candidate | senso:jazz |
+| Musical | 6 | 10 | candidate | senso:musical |
+| Ragtime | 3 | 3 | candidate | senso:ragtime |
+| Notturno | 8 | 8 | no_corresponding_node_identified | — |
+| Mélodie francese | 9 | 9 | no_corresponding_node_identified | — |
+| Minnesang | 2 | 2 | partial | senso:canto-cortese |
+| Operetta | 10 | 10 | da-valutare-estensione | — |
 
-Il numero dei compositori è tratto dalle relazioni base e specialistiche più estensione, con ripetizioni di record non equiparate a individui distinti. Questi sono i rapporti già registrati, **non la garanzia che il catalogo delle composizioni di ogni autore sia completo**.
+Gli **autori distinti** sono contati una sola volta per ID, mentre i **record** preservano rapporti multipli e fonti diverse (base, specialistiche, estensione). In **111 dei 344 concetti** il numero di record verso compositori supera quello degli autori distinti. Questi sono rapporti già registrati, **non la garanzia che il catalogo delle composizioni di ogni autore sia completo**.
 
 ### Perché non associare genericamente i 409 compositori a tutto
 I 21 rilievi testuali sono **solo segnali per un audit documentale**. Già la prima ricognizione contiene 6 casi ad alto rischio di falso positivo:
