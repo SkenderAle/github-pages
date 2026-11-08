@@ -1162,3 +1162,75 @@ Sono fondate storicamente l'esistenza delle quattro tradizioni e l'attività deg
 - Quality gate: **200** `riscontro_storico_indipendente`, **231** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **53** `confronto_non_causale`, **44** `sospeso`. Booleano `historical_verified_independently=true` = **235**.
 - Le 15 relazioni hanno `sviluppa_o_illumina`, verbo escluso dall'espansione automatica dal livello II. Il nesso di genere può essere visualizzato al I livello con il filtro `menzione`, ma non deve diventare un hub di secondo grado.
 - Test dei percorsi I–V sul remoto e controllo finale del commit richiesti; la simulazione non sostituisce collaudo WebGL nel browser.
+
+
+---
+
+## Lotto 22 — 8 novembre 2026: neumi, rigo guidoniano, mensuralismo, modi e isoritmia
+
+**Preflight:** `main` al commit `9f5b7f26108cd2ccc4278dc71eb1bfae8cceead5` dopo Lotto 21. Revisionati esattamente 12 candidati `L07-A001`–`L07-A012`; soltanto dataset e questo audit. Non è stato modificato alcun capitolo, menu, renderer o protocollo.
+
+| ID | Quality gate | Motivazione puntuale |
+| --- | --- | --- |
+| `L07-A001` | **confronto_non_causale** | La notazione neumatica medievale comprende scritture assai diverse: i neumi più antichi ricordano il profilo del canto trasmesso oralmente, mentre le forme diastematiche successive indicano le altezze con maggiore precisione. Collegare genericamente «neumi» e «notazione» è una classificazione didattica, non una genealogia univoca. |
+| `L07-A002` | **confronto_non_causale** | Il sistema di rigo associato a Guido d'Arezzo è una tappa fondamentale della notazione delle altezze, formatasi gradualmente nel X e XI secolo. Il nesso con la nozione generalissima di «notazione» è classificatorio, non afferma un'invenzione individuale dal nulla. |
+| `L07-A003` | **riscontro_storico_indipendente** | Guido d'Arezzo, nella prima metà dell'XI secolo, sistematizza e diffonde tecniche per scrivere e insegnare le altezze mediante linee e spazi, nel percorso verso la notazione tetragrammata; è uno specifico contributo tecnico-didattico, non l'invenzione esclusiva di tutti i segni neumici o delle linee preesistenti. |
+| `L07-A004` | **confronto_non_causale** | La notazione mensurale introdusse indicazioni più articolate delle durate, con forme delle figure e rapporti quantitativi, sviluppandosi soprattutto fra la seconda metà del XIII e il XV secolo. Il legame col nodo generale «notazione» descrive una classificazione storica, non una discendenza personale. |
+| `L07-A005` | **confronto_non_causale** | Nella polifonia parigina di Notre-Dame (fra XII e XIII secolo) i modi ritmici strutturavano temporalmente parti del repertorio di organum e discanto. Non tutti gli esempi storici di organum impiegano questa notazione o gli stessi schemi. |
+| `L07-A006` | **sospeso** | L'arco negativo «non equivale a» viene sospeso: i modi ritmici della polifonia indicano combinazioni di durate, mentre i modi ecclesiastici designano organizzazioni melodiche e d'ambito del canto. La distinzione resta documentata nella nota, senza creare un passaggio navigabile fra concetti non equivalenti. |
+| `L07-A007` | **sospeso** | L'arco dai modi ecclesiastici al nodo generico «modo e tonalità» è sospeso: non consente di inferire un'identità fra finalis, ambitus e modi gregoriani da un lato e tonalità funzionale maggiore-minore dell'età moderna dall'altro. Un rapporto evolutivo richiederebbe fonti e casi storici più precisi. |
+| `L07-A008` | **confronto_non_causale** | Le tecniche mensurali permisero l'articolazione del ritmo di molte composizioni dell'Ars nova, ma il mensuralismo non è proprietà esclusiva del Trecento francese; il nesso fra i due insiemi è di contestualizzazione tecnico-storica. |
+| `L07-A009` | **confronto_non_causale** | La tecnica oggi spesso definita «isoritmia» compare in specifici mottetti dell'Ars nova, ma non caratterizza ogni composizione del periodo; inoltre il termine musicologico moderno va applicato con precisione alle ripetizioni ritmiche realmente constatabili. |
+| `L07-A010` | **riscontro_storico_indipendente** | La talea, nell'analisi dei mottetti tardomedievali, è un segmento riconoscibile di durate ritmiche reiterate, frequentemente nel tenor delle strutture dette isoritmiche. Non designa una singola voce musicale né coincide necessariamente per lunghezza con il color. |
+| `L07-A011` | **riscontro_storico_indipendente** | Nel modello analitico comunemente usato per il mottetto isoritmico, il color è il segmento di melodia del tenor, che può ricorrere indipendentemente dalla talea ritmica. Il color non è il colore timbrico; la musicologia recente segnala tuttavia usi storici dei termini color e talea meno rigidi dell'opposizione «sole altezze/sole durate». |
+| `L07-A012` | **confronto_non_causale** | L'isoritmia, nel senso musicologico circoscritto di organizzazione di ripetizioni ritmiche, compare in alcuni mottetti medievali e trecenteschi; non tutti i mottetti medievali sono isoritmici, né il genere si definisce unicamente mediante questa tecnica. |
+
+### Precisazioni storico-filologiche
+
+- **Guido:** ruolo confermato nella sistematizzazione della notazione delle altezze e delle tecniche didattiche sul rigo. John Haines (Oxford), Open University e Met ricordano che l'evoluzione della notazione non inizia dal nulla con Guido e la leggenda dell'inventore unico è da correggere.
+- **«Modi»:** i modi ritmici delle pratiche polifoniche e i modi ecclesiastici del canto sono ambiti distinti, mentre modalità medievale e tonalità maggiore/minore non sono identiche. `L07-A006` e `L07-A007` conservano documentazione e provenienza, ma passano a `sospeso` per impedire falsi passaggi concettuali.
+- **Talea/color:** nel modello didattico dell'isoritmia la talea è un disegno di durate ritmiche, il color un segmento melodico del tenor. L'opposizione è metodologicamente utile, ma non va assolutizzata in tutte le fonti e in tutti i mottetti: Margaret Bent (*What is Isorhythm?*, 2023) e Anna Zayaruznaya (*Upper-Voice Structures and Compositional Process in the Ars Nova Motet*, 2018) documentano maggior varietà terminologica e costruttiva.
+- **Ars nova/mottetto:** le relazioni fra categorie generali restano `confronto_non_causale`, con `relation=sviluppa_o_illumina`, anziché diventare discendenze generali attraversabili ai livelli II–V.
+
+### Riferimenti indipendenti
+
+- Siena: https://www.corimu.unisi.it/public/pagine/introduzioni/idintroduzioni/2
+- BaselStaff: https://tales.nmc.unibas.ch/en/from-ink-to-sound-32/from-sound-to-ink-early-forms-of-musical-notation-188/lines-and-staff-949
+- Haines: https://academic.oup.com/mq/article-abstract/91/3-4/327/1061299?login=false
+- OpenU: https://www.open.edu/openlearn/mod/oucontent/view.php?id=26857&section=2.3
+- Met: https://www.metmuseum.org/pt/perspectives/musical-bodies-guidonian-hand
+- Modal: https://tales.nmc.unibas.ch/en/from-ink-to-sound-32/coordination-in-rhythm-modal-notation-189/encoding-musical-rhythm-954
+- Mensural: https://tales.nmc.unibas.ch/en/from-ink-to-sound-32/early-mensural-notation-190/the-notational-system-of-mensural-music-965
+- Cambridge: https://www.cambridge.org/core/books/abs/cambridge-history-of-western-music-theory/evolution-of-rhythmic-notation/FCDC004AB5A57E00A088E379263018C3
+- Treccani: https://www.treccani.it/enciclopedia/l-ars-nova-francese-e-guillaume-de-machaut_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- Bent: https://academic.oup.com/book/55812/chapter-abstract/435424405
+- Zayaruznaya: https://www.routledge.com/Upper-Voice-Structures-and-Compositional-Process-in-the-Ars-Nova-Motet/Zayaruznaya/p/book/9780203730867
+- Nebraska: https://pressbooks.nebraska.edu/openmusictheory/chapter/diatonic-modes/
+
+### Integrità e regressione algoritmica
+
+- 608 nodi, 1.520 archi, 0 ID duplicati, 0 estremi mancanti; JSON serializzato e riparsato.
+- **203** `riscontro_storico_indipendente`, **219** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **60** `confronto_non_causale`, **46** `sospeso`. Flag distinto `historical_verified_independently=true`: **238**.
+- Simulazione dei vicini I–V sul dataset, esclusi i ponti genericamente classificatori dopo il livello I, con soli filtri `trattazione` e `menzione`. Le cifre sono nuovi nodi raggiunti per profondità:
+
+| Radice | Prima I / II / III / IV / V | Dopo I / II / III / IV / V |
+| --- | --- | --- |
+| Guido d’Arezzo | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Rigo diatonico e solmisazione guidoniana | 0 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Neumi e memoria del gesto | 0 / 0 / 0 / 0 / 0 | 1 / 0 / 0 / 0 / 0 |
+| Modi ritmici della polifonia medievale | 0 / 0 / 0 / 0 / 0 | 1 / 0 / 0 / 0 / 0 |
+| Notazione mensurale e rapporti di durata | 0 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Isoritmia del mottetto trecentesco | 0 / 0 / 0 / 0 / 0 | 4 / 0 / 0 / 0 / 0 |
+| Talea: serie ritmica ricorrente | 0 / 0 / 0 / 0 / 0 | 1 / 1 / 0 / 0 / 0 |
+| Color: successione melodica ricorrente | 0 / 0 / 0 / 0 / 0 | 1 / 1 / 0 / 0 / 0 |
+| Jacques Offenbach | 6 / 0 / 0 / 0 / 0 | 6 / 0 / 0 / 0 / 0 |
+| Johann Strauss figlio | 3 / 0 / 0 / 0 / 0 | 3 / 0 / 0 / 0 / 0 |
+| Franz Lehár | 4 / 0 / 0 / 0 / 0 | 4 / 0 / 0 / 0 / 0 |
+| Operetta francese / opéra-bouffe | 4 / 1 / 0 / 0 / 0 | 4 / 1 / 0 / 0 / 0 |
+
+- Verifica anti-regressione: i 15 archi dell'operetta del Lotto 21 rimangono rapporti `confronto_non_causale` e i livelli II–V di Offenbach, Strauss II e Lehár non si allargano per effetto di questo lotto.
+- **Limite:** la simulazione sui dati non costituisce collaudo visivo WebGL in browser.
+
+### Prosecuzione indicata
+
+Verificare specifici lavori/manoscritti, eventi e relazioni documentali della scuola di Notre-Dame e Ars nova, tenendo separati repertori, pratiche e categorie teoriche.
