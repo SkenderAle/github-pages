@@ -1878,3 +1878,164 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - Rimane distinta la verifica del runtime 3D/WebGL e del fallback mobile su dispositivi reali, che non è stata effettuata durante i lotti.
 
 **Nuovo HEAD da controllare prima del Lotto 40:** riportare l'ultimo commit del registro presente su `main`; non ripetere le revisioni dei Lotti 35–39.
+
+---
+
+## Lotto 40 — 8 novembre 2026: Mameli, Verdi e Mazzini — Inno popolare del 1848 e teoria civile
+
+**Metodo:** confronto fra documentazione storica indipendente (Treccani, cataloghi di teatro, edizioni critiche, ricerca musicologica) e controllo delle sezioni effettive in `main`. Non sono stati introdotti nodi o archi, né modificati capitoli, menu o renderer.
+
+| ID | Gate conclusivo | Precisazione |
+| --- | --- | --- |
+| `L04-A01` | **riscontro_storico_indipendente** | Goffredo Mameli scrisse nel 1848 i versi del canto patriottico Suona la tromba, denominato anche Inno popolare o militare, successivamente musicati da Giuseppe Verdi su sollecitazione di Mazzini. Non è Il Canto degli Italiani del 1847. |
+| `L04-A02` | **riscontro_storico_indipendente** | Verdi compose nell'autunno 1848 la musica di Suona la tromba sui versi di Mameli, inviandola a Mazzini il 18 ottobre. La partitura è diversa da quella di Michele Novaro per Il Canto degli Italiani. |
+| `L04-A03` | **riscontro_storico_indipendente** | Giuseppe Mazzini sollecitò Verdi a scrivere un inno politico nel 1848, impiegando il testo di Mameli; è promotore della commissione informale, non compositore della musica. |
+| `L04-A04` | **riscontro_storico_indipendente** | Suona la tromba (1848) è una composizione di canto civile e patriottico, indicata nelle fonti come Inno popolare o Inno militare, sul testo di Mameli e musica di Verdi. Non è l'attuale inno nazionale italiano. |
+| `L04-A05` | **confronto_non_causale** | Il Canto degli Italiani (Mameli–Novaro, 1847) e Suona la tromba (Mameli–Verdi, 1848) condividono l'autore dei versi ma hanno testo, musica, occasione e funzione storico-politica distinti. Il confronto non autorizza a fonderli né ad attribuire la musica del primo a Verdi. |
+| `L04-A06` | **riscontro_storico_indipendente** | Mazzini pubblicò nel 1836 il saggio Filosofia della musica, dedicato alle potenzialità civili e sociali dell'arte e al rapporto fra culture musicali italiana e tedesca. |
+| `L04-A07` | **riscontro_storico_indipendente** | In Filosofia della musica (1836) Mazzini propone che il teatro musicale concorra a una coscienza civile collettiva; auspica un'opera corale e una musica europea capace di superare l'individualismo. È argomento mazziniano, non libretto né prescrizione obbligatoria a Verdi. |
+| `L04-A08` | **riscontro_storico_indipendente** | Verdi conobbe Mazzini durante il soggiorno londinese del 1847 e lo incontrò a Milano il 5 aprile 1848; nello stesso anno Mazzini sollecitò il canto popolare su versi di Mameli. Non va inferita una collaborazione sulla librettistica delle opere di Verdi. |
+
+### Fonti consultate
+- https://www.treccani.it/enciclopedia/giuseppe-fortunino-francesco-verdi_%28Dizionario-Biografico%29/
+- https://it.wikisource.org/wiki/Suona_la_tromba
+- https://musurgiamundi.com/risorgimento/#verdi
+- https://www.treccani.it/enciclopedia/giuseppe-mazzini_%28Dizionario-Biografico%29/
+- https://www.treccani.it/enciclopedia/musica-e-teatro_%28L%27Unificazione%29/
+
+### Informazioni da conservare per le revisioni dei capitoli
+- Il Canto degli Italiani (Mameli–Novaro, 1847) e Suona la tromba (Mameli–Verdi, 1848) sono due composizioni autonome; la condivisione del poeta non implica uguaglianza delle musiche.
+- Verdi conobbe Mazzini a Londra nel 1847 e lo incontrò a Milano nel 1848; su sua sollecitazione musicò l'Inno popolare, inviato il 18 ottobre 1848. La sequenza è utile nel capitolo Risorgimento.
+- Filosofia della musica di Mazzini (1836) riflette su funzione civile, pubblico e aspirazione a una musica europea; il titolo è assente dal capitolo Risorgimento attuale e va valutato come integrazione futura, non come presenza dichiarata.
+
+**Controllo Lotto 40:** 8 relazioni revisionate; `previous_quality_gate`, descrizioni, verbi pregressi e fonti conservati. Le analogie critiche ricevono `sviluppa_o_illumina`, non percorribile come nesso storico oltre il livello I.
+
+
+---
+
+## Lotto 41 — 8 novembre 2026: Verdi, Va pensiero e costruzione della memoria risorgimentale
+
+**Metodo:** confronto fra documentazione storica indipendente (Treccani, cataloghi di teatro, edizioni critiche, ricerca musicologica) e controllo delle sezioni effettive in `main`. Non sono stati introdotti nodi o archi, né modificati capitoli, menu o renderer.
+
+| ID | Gate conclusivo | Precisazione |
+| --- | --- | --- |
+| `L04-A11` | **riscontro_storico_indipendente** | La battaglia di Legnano, opera di Verdi su libretto di Salvatore Cammarano, debuttò il 27 gennaio 1849 al Teatro Argentina di Roma nel clima dell'agitazione patriottica. In questo caso l'investimento politico originario è molto più esplicito che nei primi cori di Nabucco. |
+| `L04-A12` | **riscontro_storico_indipendente** | Verdi compose Va, pensiero, coro della parte III del Nabucco (Milano, 1842) su testo di Temistocle Solera. È un numero di un'opera teatrale, non un inno statale autonomo. |
+| `L04-A14` | **riscontro_storico_indipendente** | Va, pensiero è il coro degli Ebrei della parte III di Nabucco di Verdi (prima alla Scala il 9 marzo 1842). Il nodo dell'estratto va collegato all'opera senza creare una seconda composizione indipendente. |
+| `L04-A15` | **riscontro_storico_indipendente** | Va, pensiero acquisì una forte ricezione patriottica e identitaria, in particolare attraverso la mitizzazione tardo-ottocentesca e postunitaria. Non è documentato come manifesto esplicito scritto per l'Unità nel 1842, né si può attribuire un solo significato a tutte le ricezioni. |
+| `L04-A16` | **confronto_non_causale** | La ricezione politica di opere e cori di Verdi ha contribuito, soprattutto dopo l'Unità, alla costruzione dell'immagine di «cantore del Risorgimento». Il processo memoriale non coincide con tutte le intenzioni dell'autore o con una lettura pubblica uniformemente patriottica già nel 1842. |
+| `L04-A17` | **riscontro_storico_indipendente** | La scritta Viva V.E.R.D.I. è documentata nella primavera del 1859 come allusione a Vittorio Emanuele Re d'Italia. È un uso politico pubblico del nome del compositore, indipendente dalla specifica ricezione della singola partitura. |
+| `L04-A18` | **riscontro_storico_indipendente** | L'acronimo Viva V.E.R.D.I. sfruttò nel 1859 il cognome già celebre di Giuseppe Verdi per indicare il sostegno politico a Vittorio Emanuele. Nessuna fonte qui esaminata ne documenta l'invenzione da parte del musicista. |
+| `L04-A19` | **riscontro_storico_indipendente** | La partecipazione politica di Verdi agli ideali risorgimentali è documentata da lettere e prese di posizione, fra cui quella a Piave del 21 aprile 1848 sull'Italia libera e repubblicana. Le sue idee personali vanno mantenute distinte dall'interpretazione di ogni singola opera. |
+
+### Fonti consultate
+- https://archiviostorico.operaroma.it/opera/la-battaglia-di-legnano/
+- https://www.treccani.it/enciclopedia/giuseppe-fortunino-francesco-verdi_%28Dizionario-Biografico%29/
+- https://www.tandfonline.com/doi/full/10.1080/1354571X.2012.690581
+- https://www.treccani.it/enciclopedia/giuseppe-verdi/
+- https://www.tandfonline.com/doi/abs/10.1080/1354571X.2012.753009
+
+### Informazioni da conservare per le revisioni dei capitoli
+- La battaglia di Legnano (Roma, Teatro Argentina, 27 gennaio 1849) ha una pertinenza patriottica originaria documentabile. La lettura patriottica dell'intero corpus verdiano, soprattutto retrodatata al 1842, non è altrettanto documentata.
+- Va, pensiero è il coro del Nabucco (1842), non un inno di Stato composto come tale; la fortuna politica del coro comprende ricezioni e riappropriazioni posteriori.
+- La scritta Viva V.E.R.D.I. come acronimo Vittorio Emanuele Re D'Italia è attestata nel 1859, ma non viene attribuita come invenzione personale del compositore; identità storica, impegno e uso pubblico sono livelli distinti.
+
+**Controllo Lotto 41:** 8 relazioni revisionate; `previous_quality_gate`, descrizioni, verbi pregressi e fonti conservati. Le analogie critiche ricevono `sviluppa_o_illumina`, non percorribile come nesso storico oltre il livello I.
+
+
+---
+
+## Lotto 42 — 8 novembre 2026: Ricezione politica, intenzione autoriale e sezioni dei capitoli
+
+**Metodo:** confronto fra documentazione storica indipendente (Treccani, cataloghi di teatro, edizioni critiche, ricerca musicologica) e controllo delle sezioni effettive in `main`. Non sono stati introdotti nodi o archi, né modificati capitoli, menu o renderer.
+
+| ID | Gate conclusivo | Precisazione |
+| --- | --- | --- |
+| `L04-A20` | **trattazione_diretta_con_ancora_verificata** | La pagina Risorgimento, sezione #verdi, affronta direttamente il mito retrospettivo di Verdi «cantore del Risorgimento», le canzoni patriottiche, Viva VERDI e la ricezione del coro di Nabucco. La presenza in pagina è verificata e non costituisce prova autonoma delle intenzioni di composizione. |
+| `L04-A21` | **trattazione_riscontrata** | Romanticismo presenta esplicitamente l'uso politico posteriore del Va, pensiero di Nabucco e mette in guardia da narrazioni patriottiche apocrife; distingue inoltre scuole musicali nazionali, nazionalismo e pubblici differenti. |
+| `L04-A22` | **trattazione_riscontrata** | Opera lirica menziona Nabucco e il Va pensiero come casi di ricezione identitaria italiana e rimanda al capitolo Risorgimento per l'approfondimento politico; distingue l'analisi musicale dall'uso pubblico successivo. |
+| `L04-A23` | **confronto_non_causale** | L'impegno politico verificabile di un autore e la ricezione pubblica della sua musica sono categorie analitiche distinte. Nel caso di Verdi, né le lettere politiche provano il programma di ogni opera né la mitizzazione postunitaria ricostruisce automaticamente l'intenzione originaria. |
+| `L04-A24` | **riscontro_storico_indipendente** | I Lombardi alla prima crociata (1843) conobbe interpretazioni patriottiche nel corso della ricezione, ma la stampa prossima alla prima ne registrò più frequentemente caratteri drammatici e musicali che espliciti programmi nazionali. Evitare aneddoti non documentati e automatismi dal solo testo corale. |
+
+### Fonti consultate
+- https://musurgiamundi.com/risorgimento/#verdi
+- https://www.tandfonline.com/doi/full/10.1080/1354571X.2012.690581
+- https://musurgiamundi.com/romanticismo/#forme-orchestrali
+- https://www.tandfonline.com/doi/abs/10.1080/1354571X.2012.753009
+- https://musurgiamundi.com/opera-lirica/#4-il-dramma-musicale-wagner-e-verdi
+- https://www.treccani.it/enciclopedia/giuseppe-fortunino-francesco-verdi_%28Dizionario-Biografico%29/
+
+### Informazioni da conservare per le revisioni dei capitoli
+- Risorgimento tratta il mito di Verdi come cantore nazionale, mentre Romanticismo tratta anche la ricezione del Va pensiero. Opera lirica rinvia a Risorgimento per la fortuna politica del coro.
+- La letteratura specialistica segnala che Nabucco e I Lombardi ricevettero recensioni del 1842–43 meno patriottiche di quanto suggerisca il mito postunitario: evitare l'asserzione che ogni coro fosse recepito sin dall'origine come proclama nazionale.
+- Scelte politiche documentate di Verdi e ricezione pubblica delle opere non coincidono automaticamente: conservare le due categorie disgiunte.
+
+**Controllo Lotto 42:** 5 relazioni revisionate; `previous_quality_gate`, descrizioni, verbi pregressi e fonti conservati. Le analogie critiche ricevono `sviluppa_o_illumina`, non percorribile come nesso storico oltre il livello I.
+
+
+---
+
+## Lotto 43 — 8 novembre 2026: Parola scenica, mediazione di Ricordi e revisione di Simon Boccanegra
+
+**Metodo:** confronto fra documentazione storica indipendente (Treccani, cataloghi di teatro, edizioni critiche, ricerca musicologica) e controllo delle sezioni effettive in `main`. Non sono stati introdotti nodi o archi, né modificati capitoli, menu o renderer.
+
+| ID | Gate conclusivo | Precisazione |
+| --- | --- | --- |
+| `L04-A28` | **confronto_non_causale** | La traviata (1853) offre un caso di efficacia della parola, della situazione e del tempo scenico nella poetica verdiana; il termine «parola scenica» fu tuttavia articolato più esplicitamente nella riflessione di Verdi degli anni successivi, specie in relazione ad Aida. Non retroproiettare una sua autoclassificazione terminologica al 1853. |
+| `L04-A29` | **riscontro_storico_indipendente** | Giulio Ricordi favorì nel 1879, insieme a Franco Faccio, il riavvicinamento fra Verdi e Arrigo Boito sul progetto operistico Otello. Mediazione editoriale e interpersonale documentata, non autorìa del libretto. |
+| `L04-A30` | **riscontro_storico_indipendente** | Boito revisionò e integrò il libretto originario di Simon Boccanegra, di Francesco Maria Piave, per la seconda versione rappresentata alla Scala il 24 marzo 1881. Il lavoro drammaturgico di Boito non cancella l'autore del 1857. |
+| `L04-A31` | **riscontro_storico_indipendente** | Verdi compose Simon Boccanegra per Venezia nel 1857 e lo sottopose a una revisione profonda per Milano nel 1881, sulla base di interventi di Boito al testo originale di Piave. Sono redazioni storicamente distinte della medesima opera. |
+
+### Fonti consultate
+- https://www.treccani.it/enciclopedia/giuseppe-verdi/
+- https://musurgiamundi.com/opera-lirica/#4-il-dramma-musicale-wagner-e-verdi
+- https://www.teatroallascala.org/it/media/la-scala-rivista-del-teatro/otello-una-storia-scaligera.html
+- https://www.metopera.org/globalassets/discover/education/educator-guides/otello/otello.15-16.guide.pdf
+- https://academic.oup.com/book/49368/chapter-abstract/422380202
+- https://www.arrigoboito.it/node/190
+- https://www.ricordi.com/it-IT/Critical-Editions/Verdi-Giuseppe-Critical-Editions/Verdi-Giuseppe-Other-Works/Verdi-Simon-Boccanegra.aspx
+
+### Informazioni da conservare per le revisioni dei capitoli
+- La locuzione tecnica «parola scenica» viene formulata esplicitamente nella maturità verdiana, soprattutto negli anni di Aida: non retroproiettarla in modo letterale su La traviata del 1853.
+- Giulio Ricordi e Franco Faccio svolsero un ruolo nella ripresa della collaborazione Verdi–Boito sul progetto di Otello. Il nome Ricordi non equivale a un ruolo di librettista.
+- Simon Boccanegra ebbe una prima redazione veneziana nel 1857, poi una revisione testuale di Boito e musicale di Verdi presentata alla Scala il 24 marzo 1881. Piave rimane autore del libretto originario.
+
+**Controllo Lotto 43:** 4 relazioni revisionate; `previous_quality_gate`, descrizioni, verbi pregressi e fonti conservati. Le analogie critiche ricevono `sviluppa_o_illumina`, non percorribile come nesso storico oltre il livello I.
+
+
+---
+
+## Lotto 44 — 8 novembre 2026: Otello, Falstaff e differenza fra drammaturgia verdiana e wagnerismo
+
+**Metodo:** confronto fra documentazione storica indipendente (Treccani, cataloghi di teatro, edizioni critiche, ricerca musicologica) e controllo delle sezioni effettive in `main`. Non sono stati introdotti nodi o archi, né modificati capitoli, menu o renderer.
+
+| ID | Gate conclusivo | Precisazione |
+| --- | --- | --- |
+| `L04-A33` | **riscontro_storico_indipendente** | L'Otello di Verdi (Scala, 1887), su libretto di Boito da Shakespeare, sviluppa una continuità drammatica fatta di declamazione, orchestre e relazioni sceniche. Il rapporto con l'idea verdiana di necessità della parola in scena non deve essere trasformato in prova di imitazione di Wagner. |
+| `L04-A34` | **riscontro_storico_indipendente** | Falstaff (1893), opera di Verdi su libretto di Arrigo Boito ricavato da Shakespeare, articola un intreccio comico serrato tramite dialogo musicale, contrappunto e rapidi mutamenti di scena. Il legame con la poetica della parola scenica è critico e analitico, non attribuzione del testo al compositore. |
+| `L04-A35` | **confronto_non_causale** | La poetica verdiana della parola scenica e il dibattito intorno al wagnerismo possono essere messi a confronto sul rapporto fra testo, voce, orchestra e continuità drammatica, ma non sono termini storicamente equivalenti né prova di una derivazione necessaria. |
+| `L04-A36` | **riscontro_storico_indipendente** | Verdi sviluppò la nozione di parola scenica quale condensazione espressiva capace di chiarire la situazione drammatica, esplicitata soprattutto nella fase matura della sua riflessione sull'opera. Le forme chiuse precedenti non sono per questo prive di efficacia scenica. |
+
+### Fonti consultate
+- https://www.teatroallascala.org/it/media/la-scala-rivista-del-teatro/otello-una-storia-scaligera.html
+- https://www.metopera.org/globalassets/discover/education/educator-guides/otello/otello.15-16.guide.pdf
+- https://musurgiamundi.com/opera-lirica/#4-il-dramma-musicale-wagner-e-verdi
+- https://www.metopera.org/Discover/Education/Educator-Guides-Archive/Falstaff/
+- https://www.treccani.it/enciclopedia/giuseppe-fortunino-francesco-verdi_%28Dizionario-Biografico%29/
+- https://www.treccani.it/enciclopedia/giuseppe-verdi/
+
+### Informazioni da conservare per le revisioni dei capitoli
+- Otello (1887) e Falstaff (1893) mostrano sviluppi della continuità drammatica verdiana senza prova di una filiazione indistinta da Wagner.
+- La parola scenica è un concetto della poetica di Verdi: pertinenza storica accertabile; il rapporto con la ricezione del wagnerismo rimane confronto critico, non causalità automatica.
+- Il testo di Falstaff è di Boito e adatta più materiali shakespeariani; distinzione fra libretto e musica indispensabile.
+
+**Controllo Lotto 44:** 4 relazioni revisionate; `previous_quality_gate`, descrizioni, verbi pregressi e fonti conservati. Le analogie critiche ricevono `sviluppa_o_illumina`, non percorribile come nesso storico oltre il livello I.
+
+---
+
+### QA intermedio dopo Lotto 44
+- 608 nodi, 1520 relazioni: invariati, sintassi JSON valida; 0 ID duplicati, 0 estremi orfani, 0 duplicati esatti di tripletta orientata fonte–destinazione–verbo.
+- 29 relazioni revisionate in Lotti 40–44. Gate indipendenti: 302; candidati: 47; confronti non causali: 106; sospensioni: 54; flag indipendente: 339.
+- `L04-A05`, `L04-A16`, `L04-A23`, `L04-A28`, `L04-A35` sono confronti non causali; non promuovono un nesso genealogico diretto. La navigazione va interpretata per cammino dichiarato, non per prossimità grafica.
+- Prossimi Lotti 45–49: esaminare da `L04-A37` fino a `L04-A70` saltando gli ID già convalidati: `L04-A41`, `L04-A55`–`L04-A58`.
+
