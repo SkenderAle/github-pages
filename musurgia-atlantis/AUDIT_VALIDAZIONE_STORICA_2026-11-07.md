@@ -2746,3 +2746,28 @@ Verifica effettuata confrontando i blob del dataset precedenti e successivi: `08
 - Le relazioni `sviluppa_o_illumina` restano generiche. I gate sospesi sono fuori dalla vista ordinaria; trattazioni e richiami eventualmente visibili sono **solo connessioni di primo livello** e non attestano dipendenze storiche indirette.
 - **Da Lotto 67:** riprendere dalle proposte successive a `E0460`, comprese lingua e identità nazionale, canto civico, bande e teatro; non riesaminare gli archi già conclusi.
 
+### QA supplementare — percorsi a cinque livelli dopo i Lotti 57–66
+
+**Ambito e tecnica:** confrontati i blob remoti `bcc0cf41f24c777cec136ab3774beff716265217` (dopo Lotto 56) e `3684a1453b7a901d4d936fba3ec0c20873618f6d` (dopo Lotto 66). Riprodotto l'algoritmo della vista focalizzata di `musurgia-atlantis/index.html`, filtri iniziali «trattazione» e «menzione», profondità I–V. Dopo il livello I sono attraversabili solo relazioni non generiche, con ponti intermedi costituiti da persone, opere o nodi di senso. I nodi capitolo restano terminali.
+
+| Nodo focale | Prima I–V | Dopo I–V |
+| --- | --- | --- |
+| Mozart | 13 / 4 / 3 / 3 / 5 | 13 / 4 / 3 / 3 / 5 |
+| Beethoven | 17 / 17 / 7 / 0 / 0 | 17 / 17 / 7 / 0 / 0 |
+| Giuseppe Verdi | 22 / 16 / 15 / 3 / 1 | 22 / 16 / 15 / 3 / 1 |
+| Rinascimento | 35 / 14 / 13 / 2 / 0 | 44 / 14 / 12 / 2 / 0 |
+| Barocco | 55 / 37 / 35 / 17 / 1 | 66 / 38 / 34 / 17 / 1 |
+| Classicismo | 39 / 32 / 30 / 29 / 13 | 49 / 32 / 29 / 28 / 13 |
+| Romanticismo | 84 / 65 / 57 / 29 / 15 | 95 / 65 / 55 / 28 / 15 |
+| Musica nell'audiovisivo | 18 / 51 / 52 / 31 / 13 | 20 / 51 / 51 / 31 / 13 |
+| Dal musical al film | 26 / 24 / 16 / 13 / 15 | 30 / 25 / 17 / 21 / 31 |
+| Il balletto | 61 / 63 / 47 / 26 / 21 | 63 / 63 / 47 / 26 / 21 |
+
+**Controllo semantico supplementare:** la rete di Dal musical al film amplia fortemente i livelli IV–V. Un cammino campione è `Dal musical al film — E0455 (richiamo contestuale) → Musica a programma → Sinfonia Pastorale → Beethoven → Fidelio → Leonore 1805/1806/Fidelio 1814`. Si tratta di una successione di collegamenti documentati, ma **non è una relazione di influenza diretta fra la pagina sul film e le versioni di Fidelio**. Lo stesso vale per le diramazioni verso *Egmont*, *Prometeo* e altre opere beethoveniane: la paternità comune non prova trasmissioni specifiche al cinema.
+
+**Criticità UI da preservare senza interventi in questa fase:** il renderer permette a un nodo concettuale raggiunto con un richiamo generico al livello I di diventare a sua volta un ponte attraverso altri archi specifici ai livelli successivi. La regola `sviluppa_o_illumina` non espandibile oltre livello I non basta, da sola, a garantire la **pertinenza semantica dell'intero percorso**. In futuro valutare una restrizione sui nodi raggiunti attraverso richiami contestuali, o l'esplicitazione dei cammini con relativi verbi e gate. Nessuna modifica a `index.html` o `compat-graph.js` ora.
+
+**Integrità confermata:** 59 archi modificati, tutti `E0370`–`E0460` ancora proposti nel blocco previsto (salti numerici conservati). 608 nodi e 1.520 archi invariati, nessun ID duplicato, nessun estremo orfano, nessuna tripletta orientata identica fonte–destinazione–verbo duplicata. Le 228 proposte editoriali rimanenti e le 62 sospensioni devono essere mantenute distinguendo trattazioni da causalità storiche.
+
+**Limite della verifica:** QA dati e simulazione della logica dei livelli, non test grafico in browser desktop o su Android. La criticità documentata non autorizza in questo audit una modifica dell'interfaccia.
+
