@@ -30,8 +30,22 @@ Atlantis diventerà la nuova interfaccia esplorativa di Musurgia Mundi, mantenen
 - `musurgia-atlantis/audit-integrazione/CROSSWALK_CANDIDATI_2026-11-08.json` — 157 associazioni candidate, tutte `not_validated`, 7 `editorial_collision_keep_distinct`.
 - File origine preservati; repository `SkenderAle/github-pages`, branch `main`.
 
+
+### Fase 2 avviata e documentata — importazione integrale di compositori/persone, spiegazioni archi
+**Nuovo vincolo dell'utente:** importare **tutti** i compositori e le persone di Musurgia Mundi, non solo i 146 nomi in comune. Inoltre **tutti gli archi dell'Atlante 3D erano spiegati on mouse-over**: non perdere testo, logica direzionale, note e fonti nella migrazione; su Android rendere disponibili le stesse informazioni con tap e scheda.
+
+**Fatto e pubblicato su branch main:**
+- `musurgia-atlantis/audit-integrazione/STAGING_IMPORT_PERSONE_2026-11-08.json`: snapshot integrale di **509 record sorgente**, ossia **400 compositori + 100 altre persone** del grafo principale, più **9 compositori** dell'estensione operetta/musical. Per ogni record: payload originale completo, file e ID di provenienza, candidati Atlantis, stato non verificato. In questa fase nessuna fusione e nessun dato pubblico alterato.
+- Analisi identità dei 509: **155** corrispondenze per nome (146 grafo base + 9 estensione), **3** per alias (Dufay, Chopin, Kusevickij), **351** senza corrispondenza per nome/alias. Anche i 351 devono entrare; crosswalk ancora da confermare; 297 persone già in Atlantis restano tutelate.
+- `musurgia-atlantis/audit-integrazione/AUDIT_FASE2_PERSONE_E_SPIEGAZIONI_2026-11-08.md`: contratto tecnico, schema dati senza perdita e test Mozart-Leopold.
+- Nel JS originale `atlante3d/app-livelli.js`: `relationSentenceBase` / `relationSentence(e,perspectiveId)` con tre livelli di eccezioni linguistiche; `pointermove` mostra la frase sopra l'arco; `pointerup` e `showRelation` aprono scheda «Perché sono collegati?» con frase, nota e fonti.
+- `relazioni.json`: **1.389** relazioni specialistiche, tutte con `forward`, `reverse`, `note` e fonti. `grafo.json` Atlante: **2.437** archi descrivibili da funzione JS ma solo **1.231** note e **1.210** fonti dichiarate. Atlantis: **1.718** archi, **1.712** descrizioni e **1.698** con `evidence_urls`. Non confondere spiegazione automatica con validazione filologica.
+- Principio già fissato: periodi storici restano visibili, capitoli editoriali solo su esplicita interrogazione dei materiali del sito; in profondità I–V applicare **pertinenza radicata**, non BFS indiscriminata.
+
+**Prossima ripresa:** convalidare identità e alias dei 509, partendo dalle 155 corrispondenze nominali e dalle 3 per alias, e definire conversione senza perdita delle **3.856** relazioni Atlante (2.437 base + 1.389 specialistiche + 30 estensione), più le 1.718 Atlantis, senza sommarle ciecamente. Estrarre/frammentare le spiegazioni bidirezionali finali, incluse eccezioni testuali. Costruire un dataset unificato su staging separato; collaudare Mozart→Leopold e blocco delle ramificazioni non pertinenti prima della UI pubblica. Aggiornare questo thread prima del limite chat. Nessuna modifica ai dati di produzione finora.
+
 ### Prossima ripresa AUTOMATICA
-**Fase 2 — audit di identità e ontologia del crosswalk**: confermare le 146 persone, valutare i 4 concetti, NON fondere 7 categorie omonime con i capitoli; ricercare alias e identità non riconoscibili dal nome. Poi affrontare fusione delle relazioni specialistiche e del patrimonio multimediale. Nessuna interfaccia pubblica da modificare fino al collaudo.
+**Prosecuzione Fase 2 — convalida identità e spiegazioni**: esaminare le 509 persone già in staging (155 coincidenze nominali, 3 alias, 351 senza corrispondenza), mantenere separate 7 omonimie concettuali/editoriali, valutare 4 concetti. Poi convertire e confrontare le relazioni spiegate, successivamente patrimonio audiovisivo/editoriale e collaudo. Nessuna interfaccia pubblica da modificare fino alla certificazione.
 
 ### Protocollo di continuità
 Aggiornare questo thread/documento di ripresa ad ogni fase significativa, **prima** di raggiungere il limite della chat. In una nuova conversazione richiamare il file sopra anziché ricostruire a memoria. Non promettere di poter aprire automaticamente una nuova chat: il documento è il passaggio di consegne.
