@@ -1,0 +1,119 @@
+{
+  "schema": "musurgia-atlantis-concept-identity-crosswalk-v1",
+  "date": "2026-11-08",
+  "status": "semantics reconciled in audit; no production graph merge",
+  "rules": [
+    "Concepts and genres can be the same historical concept across the two graphs, but must not be used as automatic BFS bridges between arbitrary people or works.",
+    "Chapters are separate editorial resources, never traversable historical nodes.",
+    "Do not conflate opera buffa with dramma giocoso, or string quartet genre with arbitrary quartets."
+  ],
+  "stats": {
+    "concepts": 4,
+    "source_incident_edges_sum": 91,
+    "atlantis_incident_edges_sum": 18,
+    "atlantis_editorial_incident_edges_sum": 13,
+    "atlantis_noneditorial_incident_edges_sum": 5
+  },
+  "records": [
+    {
+      "atlante_id": "dramma-giocoso",
+      "atlantis_id": "senso:dramma-giocoso",
+      "atlante_name": "Dramma giocoso",
+      "atlantis_name": "Dramma giocoso",
+      "atlante_source_type": "corrente",
+      "atlante_taxonomy": {
+        "parent": "genere-opera",
+        "class": "sottogenere-teatrale",
+        "audit": "2026-10-20"
+      },
+      "atlantis_category": "nodo-di-senso",
+      "atlantis_subtype": "genere teatrale",
+      "decision": "semantic_identity_compatible_keep_provenance",
+      "merge_executed": false,
+      "graph_node_class": "historical_genre_or_form",
+      "editorial_node_class": "never_historical",
+      "source_incident_edges": 5,
+      "atlantis_incident_edges": 4,
+      "atlantis_editorial_incident_edges": 2,
+      "atlantis_historical_incident_edges": 2,
+      "root_traversability": "predicate_and_root_evidence_required_not_generic_bridge",
+      "sense_disambiguation": "Genere teatrale con compresenza di elementi comici e seri; non equiparare automaticamente a tutta l'opera buffa. In Atlantis c'è almeno un arco storicamente verificato verso Don Giovanni; le tratttazioni editoriali vanno separate.",
+      "edge_policy": "retain all original parallel historical assertions; no blanket migration of editorial chapter links; do not deduplicate by endpoint alone"
+    },
+    {
+      "atlante_id": "opera-buffa",
+      "atlantis_id": "senso:opera-buffa",
+      "atlante_name": "Opera buffa",
+      "atlantis_name": "Opera buffa",
+      "atlante_source_type": "corrente",
+      "atlante_taxonomy": {
+        "parent": "genere-opera",
+        "class": "sottogenere-teatrale",
+        "audit": "2026-10-20"
+      },
+      "atlantis_category": "nodo-di-senso",
+      "atlantis_subtype": "genere",
+      "decision": "semantic_identity_compatible_keep_provenance",
+      "merge_executed": false,
+      "graph_node_class": "historical_genre_or_form",
+      "editorial_node_class": "never_historical",
+      "source_incident_edges": 25,
+      "atlantis_incident_edges": 4,
+      "atlantis_editorial_incident_edges": 4,
+      "atlantis_historical_incident_edges": 0,
+      "root_traversability": "predicate_and_root_evidence_required_not_generic_bridge",
+      "sense_disambiguation": "Genere teatrale storico, non sinonimo necessario di dramma giocoso; i 4 archi Atlantis correnti sono tutti provenienti da capitoli editoriali, quindi non diventano percorso storico.",
+      "edge_policy": "retain all original parallel historical assertions; no blanket migration of editorial chapter links; do not deduplicate by endpoint alone"
+    },
+    {
+      "atlante_id": "opera-seria",
+      "atlantis_id": "senso:opera-seria",
+      "atlante_name": "Opera seria",
+      "atlantis_name": "Opera seria",
+      "atlante_source_type": "corrente",
+      "atlante_taxonomy": {
+        "parent": "genere-opera",
+        "class": "sottogenere-teatrale",
+        "audit": "2026-10-20"
+      },
+      "atlantis_category": "nodo-di-senso",
+      "atlantis_subtype": "genere",
+      "decision": "semantic_identity_compatible_keep_provenance",
+      "merge_executed": false,
+      "graph_node_class": "historical_genre_or_form",
+      "editorial_node_class": "never_historical",
+      "source_incident_edges": 12,
+      "atlantis_incident_edges": 6,
+      "atlantis_editorial_incident_edges": 4,
+      "atlantis_historical_incident_edges": 2,
+      "root_traversability": "predicate_and_root_evidence_required_not_generic_bridge",
+      "sense_disambiguation": "Tradizione operistica distinta da opera buffa; i rapporti con periodi sono contestualizzazioni non ponti indiscriminati verso persone.",
+      "edge_policy": "retain all original parallel historical assertions; no blanket migration of editorial chapter links; do not deduplicate by endpoint alone"
+    },
+    {
+      "atlante_id": "genere-quartetto-archi",
+      "atlantis_id": "senso:quartetto",
+      "atlante_name": "Quartetto d’archi",
+      "atlantis_name": "Quartetto d'archi",
+      "atlante_source_type": "corrente",
+      "atlante_taxonomy": {
+        "class": "genere",
+        "visibility": "principale",
+        "audit": "2026-10-18"
+      },
+      "atlantis_category": "nodo-di-senso",
+      "atlantis_subtype": "genere",
+      "decision": "semantic_identity_compatible_keep_provenance",
+      "merge_executed": false,
+      "graph_node_class": "historical_genre_or_form",
+      "editorial_node_class": "never_historical",
+      "source_incident_edges": 49,
+      "atlantis_incident_edges": 4,
+      "atlantis_editorial_incident_edges": 3,
+      "atlantis_historical_incident_edges": 1,
+      "root_traversability": "predicate_and_root_evidence_required_not_generic_bridge",
+      "sense_disambiguation": "Genere cameristico del quartetto d'archi, non identico a ogni 'quartetto' in senso generico. La specificazione lessicale nell'Atlantis è identica; il movimento dalla Große Fuge ha fonte storica, ma i link da capitoli non sono storici.",
+      "edge_policy": "retain all original parallel historical assertions; no blanket migration of editorial chapter links; do not deduplicate by endpoint alone"
+    }
+  ]
+}
