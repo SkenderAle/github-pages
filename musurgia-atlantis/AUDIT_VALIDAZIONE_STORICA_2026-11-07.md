@@ -2374,3 +2374,135 @@ Il controllo riproduce la logica di `musurgia-atlantis/index.html` per la vista 
 
 **Frontiera di lavoro:** 0 candidati non fusi nel dataset; restano 317 proposte editoriali revisionate e 58 sospensioni da conservare e vagliare per categoria, senza promozione indiscriminata a nessi storici.
 
+---
+## Lotto 52 — 2026-11-08: Canto liturgico e notazione fra Medioevo e Barocco
+
+**Metodo:** lettura dei capitoli effettivi del branch `main`, confronto con riscontri indipendenti e distinzione fra trattazione specifica, richiamo storico e assenza documentale. Tutti gli archi sono fra capitoli e concetti: non costituiscono filiazioni causali, anche se il contenuto storico illustrato è verificabile. Il verbo `sviluppa_o_illumina` resta generico e non traversabile oltre livello I.
+
+| ID | Gate | Precisazione sul contenuto effettivo |
+| --- | --- | --- |
+| `E0338` | **trattazione_riscontrata** | Medioevo ricostruisce canto liturgico, salmodia e trasmissione monodica con contesto comunitario e tradizione orale. Il canto non è una forma senza storia né una categoria esclusivamente medievale. |
+| `E0339` | **richiamo_contestuale** | Rinascimento menziona la permanenza del canto liturgico/gregoriano come fondamento della pratica ecclesiastica e della polifonia; non sviluppa una storia autonoma della salmodia nel Quattro-Cinquecento. |
+| `E0340` | **trattazione_riscontrata** | Medioevo tratta notazione neumatica adiastematica, rigo e Guido d'Arezzo, con problemi di ritmo scritto. Il nodo aggregato cita anche il mensuralismo, che non va identificato con i neumi o con il tetragramma. |
+| `E0341` | **trattazione_riscontrata** | Rinascimento discute segni e canoni mensurali, sottoposizione del testo, tactus e trascrizione delle fonti polifoniche. Il riscontro riguarda la componente mensurale del nodo, non una trattazione estesa dei neumi altomedievali. |
+| `E0342` | **sospeso** | Barocco mostra manoscritti, intavolature e stampe, ma non presenta una trattazione storica specifica del complesso neumi–notazione mensurale. L'arco aggregato è troppo ampio: resta sospeso senza equiparare l'uso barocco della scrittura a sistemi medievali. |
+
+### Fonti di confronto indipendente
+- https://www.treccani.it/enciclopedia/guido-d-arezzo-e-la-nuova-pedagogia-musicale_%28Storia-della-civilta-Europea%29/
+- https://www.loc.gov/exhibits/vatican/music.html
+- https://www.metmuseum.org/pt/essays/music-in-the-renaissance
+
+**QA Lotto 52:** 5 archi revisionati: 3 trattazioni, 1 richiami contestuali, 1 sospensioni. Conservati `previous_quality_gate` e `previous_description`. Nessuna fusione di nodi o variazione del numero di archi.
+
+**Riuso futuro:** il nodo «Notazione musicale, neumi e mensuralismo» accorpa tecniche diverse per cronologia e funzione. Valutare in una revisione tassonomica futura una distinzione fra neumi e diastemazia, notazione mensurale e forme di trascrizione/edizione, senza dividere ora il nodo.
+
+---
+## Lotto 53 — 2026-11-08: Organum, polifonia e Ars nova: la cronologia dei linguaggi
+
+**Metodo:** lettura dei capitoli effettivi del branch `main`, confronto con riscontri indipendenti e distinzione fra trattazione specifica, richiamo storico e assenza documentale. Tutti gli archi sono fra capitoli e concetti: non costituiscono filiazioni causali, anche se il contenuto storico illustrato è verificabile. Il verbo `sviluppa_o_illumina` resta generico e non traversabile oltre livello I.
+
+| ID | Gate | Precisazione sul contenuto effettivo |
+| --- | --- | --- |
+| `E0343` | **trattazione_riscontrata** | Medioevo analizza organum, diaphonia e discanto e propone laboratori sulle relazioni fra le voci. Discantus non è sinonimo di moto contrario; distinguere la coordinazione ritmica dall'andamento delle linee. |
+| `E0344` | **richiamo_contestuale** | Nel Rinascimento l'organum medievale e Notre-Dame sono citati come antecedenti nella storia della polifonia liturgica; la pagina non attribuisce al Rinascimento una pratica autonoma dell'organum notredamense. |
+| `E0345` | **trattazione_riscontrata** | Medioevo tratta l'emergere e le trasformazioni della polifonia dal canto preesistente agli organismi plurivocali. Non va però sovrapposta l'imitazione sistematica di Josquin alle tecniche di Notre-Dame. |
+| `E0346` | **trattazione_riscontrata** | Rinascimento dedica ampio spazio alla polifonia franco-fiamminga e al contrappunto imitativo, con canon e canoni mensurali, Ockeghem e Josquin: relazione diretta con il nodo. |
+| `E0347` | **trattazione_riscontrata** | Barocco affronta il contrappunto e la polifonia, la convivenza di scrittura imitativa e concerto e le fughe, specialmente in Bach; non si tratta di una semplice replica dello stile di Josquin. |
+| `E0348` | **trattazione_riscontrata** | Medioevo colloca l'Ars nova nel Trecento, con Machaut, ritmi e notazione più articolati; categoria cronologicamente e tecnicamente diversa dalle pratiche del Cinquecento. |
+| `E0349` | **richiamo_contestuale** | Rinascimento richiama l'Ars nova trecentesca nel prologo, fra i precedenti della musica in volgare e della polifonia. Non è corretto trattarla come movimento rinascimentale. |
+
+### Fonti di confronto indipendente
+- https://www.treccani.it/enciclopedia/guido-d-arezzo-e-la-nuova-pedagogia-musicale_%28Storia-della-civilta-Europea%29/
+- https://www.notredamedeparis.fr/en/understand/music/ars-antiqua-and-renaissance/
+- https://www.sapere.it/enciclopedia/Ars%2Bnova.html
+- https://www.metmuseum.org/pt/essays/music-in-the-renaissance
+
+**QA Lotto 53:** 7 archi revisionati: 5 trattazioni, 2 richiami contestuali, 0 sospensioni. Conservati `previous_quality_gate` e `previous_description`. Nessuna fusione di nodi o variazione del numero di archi.
+
+**Riuso futuro:** non proiettare tecniche notredamensi sul Rinascimento né attribuire a tutta la polifonia l'imitazione cinquecentesca; l'Ars nova trecentesca può fungere da precedente, non da categoria rinascimentale.
+
+---
+## Lotto 54 — 2026-11-08: Lauda, poesia cortese e quadrivium: continuità senza identità
+
+**Metodo:** lettura dei capitoli effettivi del branch `main`, confronto con riscontri indipendenti e distinzione fra trattazione specifica, richiamo storico e assenza documentale. Tutti gli archi sono fra capitoli e concetti: non costituiscono filiazioni causali, anche se il contenuto storico illustrato è verificabile. Il verbo `sviluppa_o_illumina` resta generico e non traversabile oltre livello I.
+
+| ID | Gate | Precisazione sul contenuto effettivo |
+| --- | --- | --- |
+| `E0350` | **trattazione_riscontrata** | Medioevo tratta la lauda come canto devozionale in volgare legato a confraternite, processioni e religiosità urbana, distinta dal canto liturgico latino ufficiale. |
+| `E0351` | **richiamo_contestuale** | Rinascimento cita le laude nel prologo come forme di parola e canto devozionale che consentono il dialogo, senza offrire una storia specifica delle nuove prassi laudistiche fra Quattro e Cinquecento. |
+| `E0352` | **trattazione_riscontrata** | Medioevo dedica spazio a trovatori, trovieri e Minnesänger, distinguendone lingue e tradizioni cortesi: non sono tutti una singola istituzione né meri discendenti dei chierici vaganti. |
+| `E0353` | **richiamo_contestuale** | Rinascimento menziona trovatori e trovieri come precedente medievale della parola cantata; la poesia cortese medievale non coincide con la vita musicale delle corti cinquecentesche. |
+| `E0355` | **trattazione_riscontrata** | Medioevo espone Boezio, quadrivium, musica come proporzione e dimostrazione sul monocordo. La teoria dei rapporti non va confusa con l'intera esperienza sonora e sociale della musica medievale. |
+| `E0356` | **sospeso** | Rinascimento non contiene una trattazione espressa del quadrivium né di Boezio. Un'eventuale continuità filosofica non autorizza ad attribuire al capitolo una sezione inesistente: proposta di integrazione futura, senza collegamento riscontrato. |
+
+### Fonti di confronto indipendente
+- https://www.treccani.it/enciclopedia/la-lauda-spirituale_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/enciclopedia/la-nova-musica-monodia-sacra-non-liturgica-e-monodia-profana_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/enciclopedia/trovieri-e-minnesanger_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- https://www.cambridge.org/core/books/abs/cambridge-companion-to-medieval-music/theory-and-notation/D22C4F460CEC09F427D0A19117DB3CFE
+- https://academic.oup.com/ml/article-abstract/90/2/177/1027958
+
+**QA Lotto 54:** 6 archi revisionati: 3 trattazioni, 2 richiami contestuali, 1 sospensioni. Conservati `previous_quality_gate` e `previous_description`. Nessuna fusione di nodi o variazione del numero di archi.
+
+**Riuso futuro:** Treccani documenta che la lauda persiste e si trasforma anche nei secoli XV–XVII. Il prologo rinascimentale però la richiama storicamente, senza trattarne la storia autonoma. Lo stesso vale per trovatori e trovieri. Il quadrivium nel capitolo Rinascimento non è riscontrato: sospensione tracciabile.
+
+---
+## Lotto 55 — 2026-11-08: Mecenatismo, corti, istituzioni e pubblici
+
+**Metodo:** lettura dei capitoli effettivi del branch `main`, confronto con riscontri indipendenti e distinzione fra trattazione specifica, richiamo storico e assenza documentale. Tutti gli archi sono fra capitoli e concetti: non costituiscono filiazioni causali, anche se il contenuto storico illustrato è verificabile. Il verbo `sviluppa_o_illumina` resta generico e non traversabile oltre livello I.
+
+| ID | Gate | Precisazione sul contenuto effettivo |
+| --- | --- | --- |
+| `E0357` | **trattazione_riscontrata** | Rinascimento sviluppa il mecenatismo di corte, le cappelle e lo spettacolo come prestigio, diplomazia e lavoro per musicisti; sistemi civici, religiosi e signorili restano differenziati. |
+| `E0358` | **trattazione_riscontrata** | Barocco documenta la funzione di mecenati quali Cristina di Svezia, Maria Casimira Sobieska e Maria Barbara di Braganza, e circuiti di dedicatari, cappelle e corti, senza ridurre il sistema al teatro pubblico. |
+| `E0359` | **trattazione_riscontrata** | Classicismo confronta le corti, fra cui gli Esterházy, con l'emergere del concerto pubblico, dell'editoria e degli imprenditori come Salomon. Il mercato non sostituisce improvvisamente la committenza aristocratica. |
+| `E0360` | **trattazione_riscontrata** | Melodramma barocco descrive le corti medicea e gonzaghesca, il sostegno di Corsi e le nozze del 1600; distingue l'opera di corte dai successivi meccanismi dei teatri pubblici. |
+| `E0361` | **trattazione_riscontrata** | Balletto ricostruisce feste di corte italiane, trasferimenti alla Francia e professionalizzazione sotto Luigi XIV. Académie royale de danse 1661 non equivale alla successiva scuola professionale del 1713. |
+
+### Fonti di confronto indipendente
+- https://www.metmuseum.org/pt/essays/music-in-the-renaissance
+- https://www.cambridge.org/core/books/abs/cambridge-history-of-musical-performance/performance-in-the-long-eighteenth-century-an-overview/C1BA895F69C674CCA78290B326DF3D78
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/opera/
+- https://www.operadeparis.fr/en/about/history/the-17th-century
+- https://www.operadeparis.fr/artistes/ecole-de-danse/histoire
+
+**QA Lotto 55:** 5 archi revisionati: 5 trattazioni, 0 richiami contestuali, 0 sospensioni. Conservati `previous_quality_gate` e `previous_description`. Nessuna fusione di nodi o variazione del numero di archi.
+
+**Riuso futuro:** evitare la narrativa lineare «mecenatismo → mercato»; nel Settecento corti, editoria e concerti pubblici convivono. Non identificare la fondazione dell'Académie royale de danse (1661) con la successiva istituzionalizzazione della scuola dell'Opéra (1713).
+
+---
+## Lotto 56 — 2026-11-08: Stampa musicale, circolazione delle fonti e madrigale
+
+**Metodo:** lettura dei capitoli effettivi del branch `main`, confronto con riscontri indipendenti e distinzione fra trattazione specifica, richiamo storico e assenza documentale. Tutti gli archi sono fra capitoli e concetti: non costituiscono filiazioni causali, anche se il contenuto storico illustrato è verificabile. Il verbo `sviluppa_o_illumina` resta generico e non traversabile oltre livello I.
+
+| ID | Gate | Precisazione sul contenuto effettivo |
+| --- | --- | --- |
+| `E0362` | **trattazione_riscontrata** | Rinascimento tratta Petrucci e la stampa musicale veneziana, la circolazione delle parti e l'Odhecaton (1501), distinguendo tecniche di stampa, commercio e pratiche di lettura. |
+| `E0363` | **trattazione_riscontrata** | Barocco presenta casi di stampa e trasmissione: Orfeo rappresentato nel 1607 e stampato nel 1609, Corelli e la circolazione europea, Vivaldi e l'op. 8 del 1725. Date di scena e pubblicazione non coincidono necessariamente. |
+| `E0364` | **trattazione_riscontrata** | Classicismo tratta editoria, circolazione commerciale delle partiture, editori come Artaria e l'attività di Clementi: processo storico distinto dalla stampa rinascimentale di Petrucci. |
+| `E0365` | **trattazione_riscontrata** | Romanticismo spiega editoria, stampa, riduzioni pianistiche e trascrizioni come fattori di circolazione domestica e internazionale delle opere. Una riduzione non è la stessa cosa della partitura orchestrale né di una registrazione. |
+| `E0366` | **trattazione_riscontrata** | Risorgimento documenta editori, tipografi, raccolte di canti, partiture e circolazione di repertori patriottici come l'album Viva l'Italia! di Novaro. È una trattazione dell'uso politico e sociale delle stampe, non un'analisi tecnica generale della tipografia musicale. |
+| `E0367` | **trattazione_riscontrata** | Rinascimento tratta direttamente il madrigale polifonico cinquecentesco e il rapporto fra poesia e composizione vocale; non lo identifica con il diverso madrigale trecentesco dell'Ars nova. |
+| `E0368` | **trattazione_riscontrata** | Barocco tratta Monteverdi, la coesistenza della polifonia e della seconda prattica e l'evoluzione concertata del madrigale. Il genere non resta immutato fra Cinquecento e Seicento. |
+
+### Fonti di confronto indipendente
+- https://www.bl.uk/stories/blogs/posts/the-paul-hirsch-music-collection
+- https://www.metmuseum.org/pt/essays/music-in-the-renaissance
+- https://opentext.uoregon.edu/payforplay/chapter/chapter-3-a-brief-history-of-music-printing-and-publishing/
+- https://www.treccani.it/enciclopedia/claudio-monteverdi_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/vocabolario/madrigale/
+
+**QA Lotto 56:** 7 archi revisionati: 7 trattazioni, 0 richiami contestuali, 0 sospensioni. Conservati `previous_quality_gate` e `previous_description`. Nessuna fusione di nodi o variazione del numero di archi.
+
+**Riuso futuro:** Petrucci non inventa ex nihilo la stampa musicale; il primato e la diffusione dell'Odhecaton vanno contestualizzati. Il madrigale trecentesco, quello polifonico cinquecentesco e il madrigale concertato del Seicento sono nozioni storicamente distinte, benché condividano il nome.
+
+---
+### Bilancio complessivo dopo i Lotti 52–56
+
+- Verificati **30 archi**, in cinque lotti tematici: Lotto 52 (5), Lotto 53 (7), Lotto 54 (6), Lotto 55 (5), Lotto 56 (7).
+- **608 nodi e 1520 archi** invariati; duplicati ID nodo **0**, duplicati ID arco **0**, nodi orfani **0**, triplette orientate esatte duplicate **0**.
+- Proposte editoriali residue **287**; sospensioni **60**; richiami contestuali **11**; trattazioni riscontrate **53**.
+- Riscontri indipendenti storici con gate esplicito **322**; flag `historical_verified_independently` **359** (immutati: in questi cinque lotti sono stati auditati rimandi editoriali di capitolo, non nuove influenze storiche).
+- Nessuna modifica ai capitoli di Musurgia Mundi, a menu, a renderer, a interfaccia Atlantis o al protocollo.
+- Prossimo ambito consigliato: continuare dalle proposte restanti dopo `E0368`, evitando promozioni in blocco e preservando i gate dei lotti chiusi.
+
