@@ -5736,4 +5736,247 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 
 **Collaudo aperto:** visualizzazione reale 3D desktop/Android, etichette e profondità in browser. Nessun intervento all'interfaccia o al menu principale.
 
+---
+
+# Lotti 191–200 — Validazione documentaria storico-musicale (8 novembre 2026)
+
+**Preflight:** `main` su `75e78ef32cd35ebbf5d3e020a400999fb41f5c1c`; grafico iniziale 698 nodi e 1654 archi; file di protocollo letto e invariato. Ambito della pubblicazione: `grafo.json` e registro storico-filologico, senza modifiche a capitoli, mappe didattiche, menu o interfaccia.
+
+## Lotto 191 — Cimarosa, Bertati e Il matrimonio segreto (1792)
+
+**Nodi introdotti:** `opera:cimarosa-il-matrimonio-segreto-1792`, `pers:giovanni-bertati`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L191-A01` | **H — documentato** | Cimarosa compone Il matrimonio segreto, dramma giocoso in due atti; la prima assoluta si tiene al Burgtheater di Vienna il 7 febbraio 1792. |
+| `L191-A02` | **H — documentato** | Giovanni Bertati scrive il libretto del Matrimonio segreto, distinto dalla partitura musicale di Cimarosa; il soggetto deriva da The Clandestine Marriage di Colman e Garrick. |
+
+**Fonti esterne consultate per gli archi:**
+- https://corago.unibo.it/opera/Z000001897
+- https://archiviostorico.operaroma.it/opera/il-matrimonio-segreto/
+
+**Cautele, esclusioni e questioni aperte:** La fonte letteraria inglese non dimostra un rapporto personale fra Cimarosa e i suoi drammaturghi; evitare nodi ulteriori senza necessità.
+
+**Totale Lotto 191:** 2 nodi e 2 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 192 — Donizetti, Cammarano e Walter Scott: Lucia di Lammermoor
+
+**Nodi introdotti:** `opera:donizetti-lucia-di-lammermoor-1835`, `pers:walter-scott`, `opera:scott-the-bride-of-lammermoor-1819`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L192-A01` | **H — documentato** | Donizetti compone la musica di Lucia di Lammermoor, la cui prima assoluta è documentata al Teatro San Carlo di Napoli nel settembre 1835. |
+| `L192-A02` | **H — documentato** | Salvadore Cammarano scrive il libretto di Lucia di Lammermoor, come documenta il libretto del 1835 conservato in Corago. |
+| `L192-A03` | **H — documentato** | Walter Scott è l'autore del romanzo The Bride of Lammermoor (1819), fonte letteraria e non libretto dell'opera di Donizetti. |
+| `L192-A04` | **H — documentato** | Lucia di Lammermoor riprende per tramite del libretto di Cammarano la vicenda del romanzo di Scott, con adattamenti drammaturgici: l'opera e il romanzo restano separati. |
+
+**Fonti esterne consultate per gli archi:**
+- https://corago.unibo.it/opera/Z000002194
+- https://corago.unibo.it/libretto/0000623327
+- https://bergamoinmusica.comune.bergamo.it/approfondimenti/gaetano-donizetti-lucia-di-lammermoor
+- https://www.rohcollections.org.uk/work.aspx?work=521
+
+**Cautele, esclusioni e questioni aperte:** Discrepanza bibliografica sulla data: Corago, Biblioteca Braidense, Bergamo in Musica e ROH indicano 26 settembre 1835; l'Archivio del Teatro dell'Opera di Roma riporta invece 23 settembre. Registrare il conflitto e privilegiare prudentemente 26/09 citando l'apparato documentario. Non confondere romanzo di Scott, libretto di Cammarano e musica di Donizetti.
+
+**Totale Lotto 192:** 3 nodi e 4 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 193 — Smetana: ciclo Má vlast e secondo poema Vltava
+
+**Nodi introdotti:** `opera:smetana-ma-vlast-1874-1879`, `opera:smetana-vltava-1874`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L193-A01` | **H — documentato** | Smetana compone il ciclo Má vlast in sei poemi sinfonici fra il 1874 e il 1879; il ciclo non è una singola sinfonia in sei movimenti. |
+| `L193-A02` | **H — documentato** | Smetana conclude Vltava l'8 dicembre 1874 e la presenta per la prima volta a Praga il 4 aprile 1875. |
+| `L193-A03` | **H — documentato** | Vltava è il secondo dei sei poemi sinfonici del ciclo Má vlast; mantiene un'identità distinta come composizione singola. |
+
+**Fonti esterne consultate per gli archi:**
+- https://bedrichsmetana.nm.cz/cs/dilo/detail/ma-vlast/133
+- https://www.nm.cz/ceske-muzeum-hudby/pribeh-smetanovy-me-vlasti-a-jeji-prvni-souborne-provedeni
+
+**Cautele, esclusioni e questioni aperte:** Non identificare Má vlast con la sola Vltava; non confondere completamento dei singoli poemi, prima esecuzione di ciascuno e prima esecuzione integrale del ciclo.
+
+**Totale Lotto 193:** 2 nodi e 3 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 194 — Grieg, Ibsen: musica scenica Peer Gynt e suite op. 46
+
+**Nodi introdotti:** `pers:henrik-ibsen`, `opera:ibsen-peer-gynt-1867`, `opera:grieg-peer-gynt-musiche-scena-op23`, `opera:grieg-peer-gynt-suite1-op46-1888`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L194-A01` | **H — documentato** | Henrik Ibsen è autore del poema drammatico Peer Gynt del 1867, successivamente adattato per il teatro. |
+| `L194-A02` | **H — documentato** | Grieg compone nel 1874–1875 le musiche di scena op. 23 per Peer Gynt; la produzione va in scena a Christiania il 24 febbraio 1876. |
+| `L194-A03` | **H — documentato** | La partitura op. 23 accompagna la versione scenica del dramma di Ibsen; la musica e il testo letterario non sono la stessa opera. |
+| `L194-A04` | **H — documentato** | Grieg ricava e pubblica nel 1888 la prima suite da concerto op. 46, con selezione e riordino di numeri delle musiche di scena. |
+| `L194-A05` | **H — documentato** | La Suite n. 1 op. 46 deriva dalla musica di scena op. 23 senza coincidere con l'intero lavoro teatrale; non attribuire alla suite la prima del 1876. |
+
+**Fonti esterne consultate per gli archi:**
+- https://collectionsdumusee.philharmoniedeparis.fr/0763433-peer-gynt-de-edvard-grieg.aspx?_lg=fr-FR
+- https://snl.no/Peer_Gynt_-_musikk
+- https://www.wienersymphoniker.at/en/opus/peer-gynt-incidental-music-henrik-ibsens-drama-op-23
+
+**Cautele, esclusioni e questioni aperte:** La suite op. 46 non è il medesimo oggetto storico dell'op. 23. Le fonti indicano consistenze differenti della musica completa per via delle edizioni: non fissare il numero dei brani senza specificare l'edizione.
+
+**Totale Lotto 194:** 4 nodi e 5 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 195 — Ravel, Musorgskij e Koussevitzky: incarico di orchestrazione
+
+**Nodi introdotti:** `pers:serge-koussevitzky`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L195-A01` | **H — documentato** | Serge Koussevitzky commissiona a Maurice Ravel l'orchestrazione del ciclo pianistico Quadri di un'esposizione di Musorgskij; l'orchestrazione viene completata nel 1922. |
+
+**Fonti esterne consultate per gli archi:**
+- https://www.bso.org/works/pictures-at-an-exhibition
+- https://www.laphil.com/works/pictures-at-an-exhibition-modest-mussorgsky-zs2phpn9
+
+**Cautele, esclusioni e questioni aperte:** Già presenti gli archi L09-E06 (Ravel realizza l'orchestrazione) e L09-E07 (versione 1922 dell'originale pianistico): riesaminati con riscontro nelle fonti BSO/LA Phil e NON duplicati. Koussevitzky è committente dell'orchestrazione, non compositore della musica.
+
+**Totale Lotto 195:** 1 nodi e 1 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 196 — Rimskij-Korsakov: Shéhérazade op. 35 (1888)
+
+**Nodi introdotti:** `opera:rimskij-korsakov-sheherazade-op35-1888`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L196-A01` | **H — documentato** | Rimskij-Korsakov compone nel 1888 la suite sinfonica Shéhérazade op. 35, che evoca il mondo narrativo delle Mille e una notte e prevede una parte importante per violino solista. |
+
+**Fonti esterne consultate per gli archi:**
+- https://www.laphil.com/works/scheherazade
+- https://www.jaxsymphony.org/1001-nights-scheherazade/
+
+**Cautele, esclusioni e questioni aperte:** La suite non è una sinfonia a programma con corrispondenze obbligate scena-per-scena; la fonte narrativa collettiva delle Mille e una notte non autorizza ad attribuirne il testo a un singolo autore.
+
+**Totale Lotto 196:** 1 nodi e 1 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 197 — Janáček, Preissová e Jenůfa: dramma e opera non coincidenti
+
+**Nodi introdotti:** `pers:gabriela-preissova`, `opera:preissova-jeji-pastorkyna-1890`, `opera:janacek-jenufa-jwi4-1904`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L197-A01` | **H — documentato** | Gabriela Preissová scrive il dramma Její pastorkyňa, rappresentato a Praga nel 1890 e distinto dall'omonima opera. |
+| `L197-A02` | **H — documentato** | Janáček compone Jenůfa fra il 1894 e il 1903 e adatta personalmente il testo della Preissová; la prima è del 21 gennaio 1904 a Brno. |
+| `L197-A03` | **H — documentato** | L'opera di Janáček adatta il dramma in prosa di Preissová; gli interventi e le revisioni successive non autorizzano la fusione fra dramma e opera. |
+
+**Fonti esterne consultate per gli archi:**
+- https://www.leosjanacek.eu/en/jenufa/
+- https://www.narodni-divadlo.cz/en/show/jeji-pastorkyna-Jf-g1CcVSOWgvmDPYmoYEQ
+
+**Cautele, esclusioni e questioni aperte:** Distinguere debutto a Brno nel 1904, prima a Praga nel 1916 e revisioni della partitura. Non far coincidere l'autrice del dramma con il compositore-adattatore del libretto.
+
+**Totale Lotto 197:** 3 nodi e 3 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 198 — Prokof’ev: Romeo e Giulietta e produzione originale di Brno
+
+**Nodi introdotti:** `opera:prokofev-romeo-giulietta-op64`, `pers:ivo-vana-psota`, `produzione:prokofev-romeo-giulietta-brno-1938`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L198-A01` | **H — documentato** | Prokof’ev compone la musica del balletto Romeo e Giulietta, op. 64, basato sulla vicenda di Shakespeare. |
+| `L198-A02` | **H — documentato** | La prima produzione mondiale del balletto è presentata al teatro di Brno il 30 dicembre 1938; distinta dalle produzioni coreografiche successive. |
+| `L198-A03` | **H — documentato** | Ivo Váňa Psota cura la coreografia della prima produzione del balletto di Prokof’ev a Brno nel 1938, senza essere autore della musica. |
+
+**Fonti esterne consultate per gli archi:**
+- https://www.ndbrno.cz/en/balet/romeo-and-juliet/
+- https://teatrwielki.pl/en/polish-national-ballet/repertoire/romeo-and-juliet/
+
+**Cautele, esclusioni e questioni aperte:** Una nuova produzione/coreografia non crea una nuova composizione originale di Prokof’ev; qui rimangono distinte opera musicale e prima produzione del 1938.
+
+**Totale Lotto 198:** 3 nodi e 3 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 199 — Weill, Brecht e Hauptmann: Die Dreigroschenoper
+
+**Nodi introdotti:** `pers:bertolt-brecht`, `pers:elisabeth-hauptmann`, `pers:john-gay`, `opera:gay-the-beggars-opera-1728`, `opera:weill-die-dreigroschenoper-1928`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L199-A01` | **H — documentato** | Kurt Weill compone la musica di Die Dreigroschenoper, presentata il 31 agosto 1928 al Theater am Schiffbauerdamm di Berlino. |
+| `L199-A02` | **H — documentato** | Bertolt Brecht è responsabile dell'adattamento drammaturgico di Die Dreigroschenoper, con musica di Weill e collaborazione di Hauptmann. |
+| `L199-A03` | **H — documentato** | Elisabeth Hauptmann collabora al testo e figura nei crediti originali del 1928 come traduttrice; non è accreditata come compositrice della musica. |
+| `L199-A04` | **H — documentato** | John Gay è autore di The Beggar’s Opera del 1728, opera teatrale con canzoni preesistente alla versione tedesca del 1928. |
+| `L199-A05` | **H — documentato** | Die Dreigroschenoper è una rielaborazione della Beggar’s Opera di John Gay e non una mera traduzione integrale né una nuova partitura di Gay. |
+
+**Fonti esterne consultate per gli archi:**
+- https://www.kwf.org/works/die-dreigroschenoper/
+- https://www.kwf.org/research-center/elisabeth-hauptmann-chronology/
+
+**Cautele, esclusioni e questioni aperte:** Crediti differenziati del programma 1928: traduzione Hauptmann, adattamento Brecht, musica Weill. Non cancellare il ruolo documentato di Hauptmann né attribuire a Brecht la partitura musicale. Distinguere The Beggar's Opera (1728) da Die Dreigroschenoper (1928).
+
+**Totale Lotto 199:** 5 nodi e 5 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 200 — Cage, Tudor e 4′33″: esecuzione originale e diversa notazione
+
+**Nodi introdotti:** `opera:cage-433-1952`, `pers:david-tudor`, `versione:cage-433-notazione-proporzionale-1952-53`, `pers:irwin-kremen`.
+
+| Arco | Esito | Precisazione storico-filologica |
+| --- | --- | --- |
+| `L200-A01` | **H — documentato** | John Cage compone 4′33″ nel 1952 in tre parti senza produzione intenzionale di suoni strumentali; la durata invita all'ascolto dei suoni ambientali. |
+| `L200-A02` | **H — documentato** | David Tudor presenta per la prima volta 4′33″ a Woodstock (New York) il 29 agosto 1952; il pianista non compone l'opera. |
+| `L200-A03` | **H — documentato** | La versione in notazione proporzionale, una delle diverse redazioni della partitura di 4′33″, è un esemplare del 1952–1953 e non coincide con il manoscritto originale andato perduto. |
+| `L200-A04` | **H — documentato** | Cage dedica la redazione in notazione proporzionale a Irwin Kremen nel 1953; la dedica non costituisce prova di commissione. |
+
+**Fonti esterne consultate per gli archi:**
+- https://www.moma.org/collection/works/163616
+- https://data-johncage.org/pp/John-Cage-Work-Detail.back.cfm
+
+**Cautele, esclusioni e questioni aperte:** Il compositore è Cage; il primo interprete Tudor. La partitura originale del 1952 è perduta, l'esemplare proporzionale 1952–1953 non è lo stesso manoscritto, e il silenzio riguarda il non suonare intenzionalmente, non l'assenza fisica di suono.
+
+**Totale Lotto 200:** 4 nodi e 4 archi storici nuovi. Nessuna sospensione riattivata.
+
+---
+
+## Riesame mirato delle sospensioni e delle precedenti verifiche
+
+- Gli archi sospesi `E0571`, `E0727`, `E0740`, `E0767`, `E0810`, `E0822`, `E0910`, `L02-A39`, `L05-A063` sono stati controllati nel loro significato rispetto alle nuove fonti: restano sospesi, perché le fonti storiche documentano opere, versioni o produzioni ma non certificano che le corrispondenti pagine del sito contengano le trattazioni specifiche originariamente proposte. Nessuna riattivazione o cancellazione massiva.
+- `L09-E06` e `L09-E07` già documentano l'orchestrazione Ravel e la sua dipendenza dall'originale di Musorgskij, con flag di verifica storica indipendente: mantenuti intatti, senza duplicazioni. Il Lotto 195 aggiunge esclusivamente la committenza di Koussevitzky.
+- La data della prima di Lucia di Lammermoor presenta discrepanza fra un catalogo divulgativo (23 settembre) e Corago, libretto/archivi e altri repertori (26 settembre): mantenere la nota critica senza cancellare la fonte difforme.
+
+## Bilancio numerico e controlli
+
+- **Introduzioni:** 28 nodi e 31 archi verificati indipendentemente.
+- **Totali:** 726 nodi; 1685 archi.
+- **Indicatori distinti:** 553 flag `historical_verified_independently=true`; 517 quality gate `riscontro_storico_indipendente`; non sommabili.
+- **Sospensioni preservate:** 125 su 125. **Duplicati di ID:** 0. **Triplette duplicate:** 0. **Riferimenti orfani:** 0.
+- **Test logico BFS I–V:** primo livello diretto; dopo il primo livello solo archi specifici, persone e opere concrete come intermedi, esclusi i capitoli come ponti e i rimandi editoriali. Non equivale a verifica grafica su browser.
+
+| Radice | Prima (I–V) | Dopo (I–V) |
+| --- | --- | --- |
+| `pers:cimarosa` | 3 / 3 / 3 / 3 / 3 | 4 / 5 / 5 / 5 / 5 |
+| `pers:donizetti` | 3 / 3 / 3 / 3 / 3 | 4 / 5 / 6 / 8 / 22 |
+| `pers:salvatore-cammarano` | 1 / 3 / 17 / 29 / 38 | 2 / 5 / 19 / 31 / 40 |
+| `pers:bedrich-smetana` | 2 / 2 / 2 / 2 / 2 | 4 / 4 / 4 / 4 / 4 |
+| `pers:edvard-grieg` | 2 / 2 / 2 / 2 / 2 | 4 / 5 / 6 / 6 / 6 |
+| `pers:musorgskij` | 3 / 4 / 5 / 9 / 16 | 3 / 4 / 6 / 10 / 17 |
+| `pers:ravel` | 8 / 16 / 25 / 33 / 42 | 8 / 17 / 26 / 34 / 43 |
+| `pers:nikolaj-rimskij-korsakov` | 2 / 2 / 2 / 2 / 2 | 3 / 3 / 3 / 3 / 3 |
+| `pers:janacek` | 2 / 2 / 2 / 2 / 2 | 3 / 4 / 5 / 5 / 5 |
+| `pers:prokofev` | 2 / 2 / 2 / 2 / 2 | 3 / 4 / 5 / 5 / 5 |
+| `pers:kurt-weill` | 2 / 2 / 2 / 2 / 2 | 3 / 6 / 7 / 7 / 7 |
+| `pers:cage` | 3 / 4 / 4 / 4 / 4 | 4 / 7 / 8 / 8 / 8 |
+| `pers:henrik-ibsen` | nodo assente | 1 / 2 / 4 / 4 / 4 |
+| `pers:bertolt-brecht` | nodo assente | 1 / 4 / 5 / 5 / 5 |
+| `pers:david-tudor` | nodo assente | 1 / 3 / 5 / 6 / 6 |
+
+**Collaudo aperto:** grafica tridimensionale WebGL e fallback Canvas Android, visibilità etichette, interazioni touch e percorsi indiretti reali. **Non modificati:** capitoli, menu, mappe di studio, `index.html` e `PROTOCOLLO_AGGIORNAMENTI.json`.
 
