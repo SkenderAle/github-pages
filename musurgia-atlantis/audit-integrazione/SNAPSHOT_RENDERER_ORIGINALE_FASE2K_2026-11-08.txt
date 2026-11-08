@@ -1,0 +1,2339 @@
+/* ARCHIVE ONLY / NOT EXECUTED IN PRODUCTION.
+ * Source: atlante3d/app-livelli.js
+ * Blob sha: b7644154af527666d7b15bca8e31fe4f13924547
+ * Date: 2026-11-08
+ * Preservation of original JS, including relationSentenceBase, relationSentence and THREE subsequent reassignments and hover/tap interactions.
+ */
+"use strict";
+(() => {
+const canvas=document.getElementById("sky"),ctx=canvas.getContext("2d",{alpha:true});
+const panel=document.getElementById("panel"),tab=document.getElementById("panelTab"),status=document.getElementById("status");
+const search=document.getElementById("search"),reset=document.getElementById("reset"),labels=document.getElementById("labels"),lensChoices=document.getElementById("lensChoices"),categoryChoices=document.getElementById("categoryChoices"),lensHelp=document.getElementById("lensHelp"),relationTooltip=document.getElementById("relationTooltip");
+const moreControls=document.getElementById("moreControls"),explodeBtn=document.getElementById("explode");
+const backFocus=document.getElementById("backFocus");
+const zoomIn=document.getElementById("zoomIn"),zoomOut=document.getElementById("zoomOut"),zoomSlider=document.getElementById("zoomSlider"),zoomValue=document.getElementById("zoomValue");
+const earthMap=document.getElementById("earthMap"),followGeo=document.getElementById("followGeo"),geoLabel=document.getElementById("geoLabel"),periodContext=document.getElementById("periodContext");
+const COLORS={compositore:"#f3bd74",persona:"#a8dcb8",periodo:"#7ec3d4",ambito:"#c8a2e5",corrente:"#e49ca4",geografia:"#8bc5a1"};
+let nodes=[],edges=[],byId=new Map(),videos=[],videoLinks=[],camera={x:0,y:0,z:0},focus=null,zoom=1,geoZoomPct=0,geoAutoSpan=360,rotY=.15,rotX=-.12,w=0,h=0,dpr=1;
+let selected=null,drag=null,screen=[],hitOrder=[],lineHits=[],showAllLabels=false,frame=0,hover=null,searchText="",lensEdges=[],lensGroups=[],historySchoolEdges=[],derivedGenreEdges=[],freeNodes=[],freeEdges=[],explodeActive=false;
+let encyclopediaIndex={},editorialBacklinks={},historicalChapterRoutes={};
+// Questi rimandi sono contesti generali, non affermazioni di menzione individuale.
+const curatedGeneralAuthorPages=Object.freeze({"compositore-marcantonio-ingegneri":"rinascimento","persona-isabella-d-este":"rinascimento","persona-lorenzo-de-medici":"rinascimento","persona-martin-lutero":"rinascimento","compositore-giacomo-antonio-perti":"barocco","compositore-francesco-durante":"barocco","compositore-johann-christoph-bach-1671":"barocco","compositore-johann-friedrich-fasch":"barocco","persona-moliere":"barocco","persona-voltaire":"barocco","persona-giulio-strozzi":"barocco","compositore-giovanni-battista-martini":"classicismo","compositore-michael-haydn":"classicismo","compositore-pietro-nardini":"classicismo","compositore-wojciech-zywny":"romanticismo","compositore-jozef-elsner":"romanticismo","compositore-anton-reicha":"romanticismo","compositore-christian-theodor-weinlig":"romanticismo","compositore-anton-rubinstein":"romanticismo","compositore-carl-friedrich-zelter":"romanticismo","compositore-carl-czerny":"romanticismo","compositore-eduard-marxsen":"romanticismo","compositore-camillo-sivori":"romanticismo","persona-friedrich-wieck":"romanticismo","compositore-simon-sechter":"romanticismo","compositore-otto-kitzler":"romanticismo","compositore-george-whitefield-chadwick":"romanticismo","compositore-horatio-parker":"romanticismo","persona-johann-wolfgang-von-goethe":"romanticismo","compositore-fromental-halevy":"romanticismo","compositore-engelbert-humperdinck":"romanticismo","compositore-gennaro-manna":"melodramma","persona-ranieri-de-calzabigi":"melodramma","persona-angelo-tesei":"melodramma","compositore-amilcare-ponchielli":"melodramma","compositore-lauro-rossi":"melodramma","persona-giovanni-faustini":"melodramma","persona-felice-romani":"melodramma","persona-giulio-ricordi":"melodramma","persona-salvatore-cammarano":"melodramma","persona-hugo-von-hofmannsthal":"melodramma","persona-peter-pears":"melodramma","persona-wh-auden":"melodramma","persona-myfanwy-piper":"melodramma","persona-eric-crozier":"melodramma","persona-em-forster":"melodramma","persona-montagu-slater":"melodramma","persona-alice-goodman":"melodramma","persona-guido-menasci":"melodramma","persona-giovanni-targioni-tozzetti":"melodramma","persona-henri-meilhac":"melodramma","persona-ludovic-halevy":"melodramma","persona-ivan-turgenev":"melodramma","persona-adelheid-wette":"melodramma","persona-louis-anseaume":"melodramma","persona-giuseppe-maria-foppa":"melodramma","persona-francesco-saverio-zini":"melodramma","persona-chester-kallman":"melodramma","compositore-nadia-boulanger":"post-romanticismo","compositore-rubin-goldmark":"post-romanticismo","compositore-fritz-reiner":"post-romanticismo","compositore-billy-strayhorn":"post-romanticismo","compositore-charles-hambitzer":"post-romanticismo","compositore-anatolij-ljadov":"post-romanticismo","compositore-maksimilian-steinberg":"post-romanticismo","compositore-charles-koechlin":"post-romanticismo","compositore-rene-leibowitz":"post-romanticismo","compositore-andre-gedalge":"post-romanticismo","compositore-henry-cowell":"post-romanticismo","compositore-walter-klein":"post-romanticismo","persona-andree-vaurabourg":"post-romanticismo","persona-ricardo-vines":"post-romanticismo","persona-cathy-berberian":"post-romanticismo","persona-sergej-diaghilev":"post-romanticismo","compositore-frank-bridge":"post-romanticismo","persona-merce-cunningham":"post-romanticismo","persona-david-tudor":"post-romanticismo","persona-martha-graham":"post-romanticismo","persona-dorothee-guenther":"post-romanticismo","persona-le-corbusier":"post-romanticismo","compositore-iannis-xenakis":"post-romanticismo","persona-marian-anderson":"post-romanticismo","persona-jean-cocteau":"post-romanticismo","persona-pablo-picasso":"post-romanticismo","persona-leonide-massine":"post-romanticismo","compositore-margaret-bonds":"post-romanticismo","persona-katherine-dunham":"post-romanticismo","compositore-juan-tizol":"post-romanticismo","persona-ugo-piatti":"post-romanticismo","persona-sergej-ejzenstejn":"post-romanticismo","persona-langston-hughes":"post-romanticismo","persona-bertolt-brecht":"post-romanticismo","persona-bronislava-nijinska":"post-romanticismo","persona-marian-zazeela":"post-romanticismo","persona-paul-whiteman":"post-romanticismo","persona-peter-greenaway":"dal-musical-al-film","persona-ira-gershwin":"dal-musical-al-film","persona-dubose-heyward":"dal-musical-al-film","persona-sergio-leone":"dal-musical-al-film","persona-giuseppe-tornatore":"dal-musical-al-film","persona-jane-campion":"dal-musical-al-film","persona-arthur-laurents":"dal-musical-al-film","persona-jerome-robbins":"dal-musical-al-film","compositore-ferde-grofe":"dal-musical-al-film","compositore-stephen-sondheim":"dal-musical-al-film","persona-james-lapine":"dal-musical-al-film","persona-oscar-hammerstein-ii":"dal-musical-al-film","persona-giuseppe-bertoldi":"risorgimento","compositore-sergej-taneev":"concerti"});
+const curatedGeneralPageTitles=Object.freeze({"rinascimento":"Rinascimento","barocco":"Barocco","classicismo":"Classicismo","romanticismo":"Romanticismo","melodramma":"Origini e riforma del teatro musicale","post-romanticismo":"Dal postromanticismo alle avanguardie","dal-musical-al-film":"Dal musical al film","risorgimento":"Risorgimento","concerti":"Concerti"});
+const geoCache=new Map();
+let activeEdgesCacheKey="",activeEdgesCache=[],selectedNeighborCacheKey="",selectedNeighborCache=new Set(),selectedDepthCacheKey="",selectedDepthCache=new Map(),lastDrawTime=0;
+const activeLenses=new Set(["musica","trasmissioni","genealogie","collaborazioni"]);
+let readingLevel=0;const readingLimits=[6,15,Infinity];
+const readingNames=["Scoprire","Approfondire","Ricercare"];
+function readingKey(e){return e.id||[e.source,e.target,e.group||"",e.kind||""].join("|")}
+function readingScore(e){return ({formazione:100,scuole:85,collaborazioni:75,influenze:65,genealogie:45}[e.group]||30)+(e.sources?.length||0)*2}
+// Accessibility invariant: a reading level NEVER deletes a documented direct edge.
+let readingDirectKey="",readingDirectCache=new Set(),readingSpotlightKey="",readingSpotlightCache=new Set();
+function readingChoices(){
+ if(!selected)return [];
+ return currentEdges().filter(e=>e.source===selected.id||e.target===selected.id).filter(e=>{
+  const n=byId.get(e.source===selected.id?e.target:e.source);
+  return n&&n.type!=="geografia"&&n.type!=="periodo"&&categoryVisible(n);
+ }).sort((a,b)=>readingScore(b)-readingScore(a)||readingKey(a).localeCompare(readingKey(b)));
+}
+function readingAllowed(){
+ if(!selected)return new Set();
+ const key=selected.id+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",");
+ if(readingDirectKey!==key){readingDirectKey=key;readingDirectCache=new Set(readingChoices().map(readingKey));}
+ return readingDirectCache;
+}
+function readingSpotlight(){
+ if(!selected)return new Set();
+ const key=selected.id+"|"+readingLevel+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",");
+ if(key===readingSpotlightKey)return readingSpotlightCache;
+ const choices=readingChoices(),limit=readingLimits[readingLevel],result=[],seen=new Set(),groups=new Set(),otherIds=new Set();
+ const push=e=>{const id=readingKey(e);if(seen.has(id))return false;seen.add(id);result.push(e);otherIds.add(e.source===selected.id?e.target:e.source);return true};
+ for(const e of choices){if(result.length>=limit)break;const other=e.source===selected.id?e.target:e.source,group=e.group||"generale";if(groups.has(group)||otherIds.has(other))continue;push(e);groups.add(group);}
+ for(const e of choices){if(result.length>=limit)break;const other=e.source===selected.id?e.target:e.source;if(!otherIds.has(other))push(e);}
+ for(const e of choices){if(result.length>=limit)break;push(e);}
+ readingSpotlightKey=key;readingSpotlightCache=new Set(result.map(readingKey));
+ return readingSpotlightCache;
+}
+function readingDepth(){return [1,2,3][readingLevel]}
+const activeCategories=new Set(["compositore","corrente","persona"]);
+const EXPLORATION_LENSES=[
+ {id:"musica",label:"Storia e appartenenze",description:"Epoche, contesti storici, scuole compositive e tradizioni documentate.",color:"#9fc7d9"},
+ {id:"trasmissioni",label:"Maestri, allievi e influenze",description:"Rapporti didattici e influenze documentate. La freccia indica sempre la direzione storica.",color:"#63c7ff"},
+ {id:"genealogie",label:"Altri autori correlati",description:"Autori collegati da ricezioni, rielaborazioni, citazioni, trascrizioni o altri rapporti musicali documentati.",color:"#c892ff"},
+ {id:"collaborazioni",label:"Incontri e collaborazioni",description:"Rapporti artistici e professionali documentati. Linea bidirezionale, senza freccia.",color:"#77d7a6"}
+];
+const EXPLORATION_GROUPS={musica:["scuole"],trasmissioni:["formazione","influenze"],genealogie:["genealogie"],collaborazioni:["collaborazioni"]};
+const lensMeta=id=>EXPLORATION_LENSES.find(l=>l.id===id);
+const lensActive=id=>activeLenses.has(id);
+const hasNonMusicLens=()=>[...activeLenses].some(id=>id!=="musica");
+const activeLensLabel=()=>EXPLORATION_LENSES.filter(l=>activeLenses.has(l.id)).map(l=>l.label).join(" + ")||"nessuna lente";
+function displayRelations(id){return lensEdges.filter(e=>(EXPLORATION_GROUPS[id]||[]).includes(e.group));}
+const RELATION_STYLE={
+ formazione:{from:"#53bfff",to:"#b8edff",arrow:true,label:"maestro → allievo"},
+ influenze:{from:"#ffd166",to:"#ff8b5c",arrow:true,label:"influenza → ricezione"},
+ genealogie:{from:"#b98cff",to:"#f39bff",arrow:true,label:"genealogia → sviluppo"},
+ scuole:{from:"#73d7c4",to:"#d1f3d8",arrow:true,label:"tradizione → autore"},
+ collaborazioni:{from:"#72dea2",to:"#72dea2",arrow:false,label:"collaborazione ↔"},
+ storia:{from:"#9db7ca",to:"#d7e1e8",arrow:false,label:"relazione storica"},
+ tassonomia:{from:"#dba66c",to:"#dca0aa",arrow:false,label:"famiglia attraverso articolazione"}
+};
+function relationStyle(e){return RELATION_STYLE[e.group]||RELATION_STYLE.storia;}
+// Le relazioni documentate hanno DUE verbi: ciascuno e' riferito a un soggetto preciso.
+// Per le relazioni storiche generiche non si inferiscono maestro, allievo o causalita'.
+function relationSentenceBase(e,perspectiveId=null){
+ if(e.taxonomyDerived){
+  const author=byId.get(e.source),family=byId.get(e.target);
+  return (author?.label||e.source)+" si collega a «"+(family?.label||e.target)+"» attraverso "+e.via_labels.join(", ")+". È una risalita tassonomica, non un nuovo arco diretto del database.";
+ }
+ const a=e.a?.label||byId.get(e.source)?.label||e.source;
+ const b=e.b?.label||byId.get(e.target)?.label||e.target;
+ const reversed=perspectiveId!=null&&perspectiveId===e.target;
+ const subject=reversed?b:a,object=reversed?a:b;
+ const verb=reversed?e.reverse:e.forward;
+ if(typeof verb==="string"&&verb.trim()){
+  let fragment=verb.trim().replace(/^([A-ZÀ-ÖØ-Þ])/,c=>c.toLocaleLowerCase("it"));
+  // Solo le scuole: la forma di intestazione non coincide sempre con la frase.
+  // Le intestazioni delle categorie sono lemmi, non sempre sintagmi pronti per una frase.
+  let spokenSubject=subject;
+  if(e.group==="scuole"){
+   if(subject==="Camerata fiorentina e ambiente di Corsi")spokenSubject="La Camerata fiorentina e l'ambiente di Corsi";
+   else if(/^(?:Scuola\b|Seconda scuola\b|Tradizione\b|Musica\b)/i.test(subject))spokenSubject="La "+subject;
+   else if(/^(?:Classicismo\b|Teatro musicale\b|Gruppo dei Cinque\b|Risorgimento\b|Lied romantico\b|Madrigalismo\b|Sinfonismo\b|Minimalismo\b)/i.test(subject))spokenSubject="Il "+subject;
+   if(subject==="Les Six")spokenSubject="Il gruppo Les Six";
+   if(subject==="Minimalismo")spokenSubject="Il minimalismo";
+   if(subject==="Melodramma barocco")spokenSubject="Il melodramma barocco";
+   if(subject==="Dodecafonia")spokenSubject="La dodecafonia";
+   if(subject==="Seconda scuola di Vienna")spokenSubject="La seconda scuola di Vienna";
+   if(subject==="Madrigalismo cinquecentesco")spokenSubject="Il madrigalismo cinquecentesco";
+   if(/^Teatro musicale\b/.test(subject))spokenSubject="Il teatro musicale"+subject.slice("Teatro musicale".length);
+   if(/^Sinfonismo\b/.test(subject))spokenSubject="Il sinfonismo"+subject.slice("Sinfonismo".length);
+  }
+  // Correzioni mirate ai titoli editoriali: nessuna modifica alle bolle.
+  if(e.group==="scuole"&&subject==="Darmstadt: corsi e avanguardie"&&e.id.startsWith("scuola-darmstadt-")){
+   if(e.id==="scuola-darmstadt-luciano-berio")return "I corsi estivi di Darmstadt furono un luogo di confronto frequentato da Luciano Berio.";
+   return "I corsi estivi di Darmstadt "+fragment.replace(/^accolse/,"accolsero")+" "+object+".";
+  }
+  if(e.group==="scuole"&&object==="Darmstadt: corsi e avanguardie"&&e.id.startsWith("scuola-darmstadt-"))
+   return subject+" "+fragment+" Darmstadt.";
+  if(e.group==="scuole"&&e.id==="ponte-seconda-vienna-darmstadt")
+   return reversed?"I corsi estivi di Darmstadt rielaborarono criticamente l'eredità seriale della seconda scuola di Vienna.":"La seconda scuola di Vienna fornì, soprattutto attraverso Webern, un repertorio critico di studio ai corsi estivi di Darmstadt.";
+  if(e.group==="scuole"&&subject==="Ospedali musicali veneziani del Settecento")
+   spokenSubject="Gli ospedali musicali veneziani del Settecento";
+  if(e.group==="scuole"&&subject==="Opera seria")spokenSubject="L'opera seria";
+  if(e.group==="scuole"&&subject==="Opera buffa")spokenSubject="L'opera buffa";
+  // Distinzione storiografica: una scuola non è un teatro o una città.
+  if(e.group==="scuole"&&e.id==="ponte-napoletana-opera-seria")
+   return reversed?"L'opera seria si sviluppò in diversi centri italiani; la tradizione operistica napoletana contribuì alla definizione e alla diffusione dei suoi modelli.":"La tradizione operistica napoletana contribuì allo sviluppo dell'opera seria, insieme ad altri centri teatrali italiani.";
+  if(e.group==="scuole"&&e.id==="ponte-napoletana-opera-buffa")
+   return reversed?"L'opera buffa trovò nella Napoli settecentesca uno dei suoi importanti centri di sviluppo, accanto ad altre realtà teatrali italiane.":"La tradizione operistica napoletana contribuì allo sviluppo dell'opera buffa, anche attraverso i teatri della Napoli settecentesca.";
+  // Partecipazione ai Ferienkurse: non equivale ad adesione a una scuola estetica.
+  if(e.group==="scuole"&&e.id==="audit2-darmstadt-ligeti")
+   return reversed?"György Ligeti partecipò ai corsi estivi di Darmstadt e vi svolse anche attività didattica.":"I corsi estivi di Darmstadt accolsero György Ligeti fra i partecipanti e i docenti.";
+  if(e.group==="scuole"&&e.id==="audit8-henze-darmstadt")
+   return reversed?"Hans Werner Henze frequentò i corsi estivi di Darmstadt e nel 1948 vi studiò con René Leibowitz.":"I corsi estivi di Darmstadt furono frequentati da Hans Werner Henze, che nel 1948 vi studiò con René Leibowitz.";
+  // L'orchestra di Mannheim è l'ambiente formativo, non una scuola-persona.
+  if(e.group==="scuole"&&e.id==="scuola-mannheim-carl-stamitz")
+   return reversed?"Carl Stamitz si formò nell'orchestra di corte di Mannheim e contribuì a diffonderne la tradizione in Europa.":"La tradizione orchestrale di Mannheim si diffuse anche attraverso Carl Stamitz, formatosi nella locale orchestra di corte.";
+  // Forme discorsive: etichette storiografiche e titoli editoriali.
+  if(e.group==="scuole"&&subject==="Classicismo viennese (categoria storiografica)")spokenSubject="Il classicismo viennese";
+  if(e.group==="scuole"&&object==="Classicismo viennese (categoria storiografica)"){
+   if(e.id==="lotto02-sc-ditters-classic")return "Carl Ditters von Dittersdorf si colloca nel più ampio ambiente del classicismo viennese, senza appartenere alla triade canonica.";
+   if(e.id==="scuola-viennese-classica-joseph-haydn"||e.id==="scuola-viennese-classica-wolfgang-amadeus-mozart"||e.id==="scuola-viennese-classica-ludwig-van-beethoven")
+    return subject+" è annoverato dalla storiografia fra i protagonisti del classicismo viennese.";
+   if(e.id==="lotto02-sc-martines-class")return "Marianna Martines partecipò alla cultura musicale viennese dell'età classica, soprattutto con la produzione vocale e tastieristica.";
+   if(e.id==="audit21-vienna-hummel-tradizione")return "Johann Nepomuk Hummel si formò con diversi maestri, fra cui Mozart, nella cultura del classicismo viennese.";
+  }
+  if(e.group==="scuole"&&e.id==="audit6-scriabin-mosca")
+   return reversed?"Aleksandr Skrjabin studiò e insegnò al Conservatorio di Mosca.":"Il Conservatorio di Mosca accolse Aleksandr Skrjabin prima come studente e poi come docente.";
+  if(e.group==="scuole"&&e.id==="audit6-rachmaninov-mosca")
+   return reversed?"Sergej Rachmaninov studiò e conseguì i diplomi al Conservatorio di Mosca.":"Il Conservatorio di Mosca annoverò Sergej Rachmaninov fra i propri diplomati.";
+  if(e.group==="scuole"&&e.id==="audit7-taneev-mosca")
+   return reversed?"Sergej Taneev studiò, insegnò e diresse il Conservatorio di Mosca.":"Il Conservatorio di Mosca ebbe Sergej Taneev fra gli allievi, i docenti e i direttori.";
+  if(e.group==="scuole"&&subject==="Polifonia sacra spagnola del Cinquecento")
+   spokenSubject="La tradizione della polifonia sacra spagnola del Cinquecento";
+  if(e.group==="scuole"&&object==="Polifonia sacra spagnola del Cinquecento")
+   return subject+" "+fragment+" tradizione della polifonia sacra spagnola del Cinquecento.";
+  if(e.group==="scuole"&&subject==="Riforma operistica del Settecento")
+   spokenSubject="La riforma operistica del Settecento";
+  // Eccezioni editoriali documentate: la coppia conserva la prospettiva del nodo.
+  if(e.group==="scuole"){
+   const editorialPairs={"ponte-mannheim-classici":["La scuola di Mannheim offrì, anche a Mozart, modelli di prassi orchestrale che contribuirono al classicismo viennese.","Il classicismo viennese accolse, fra altre influenze, stimoli orchestrali provenienti dalla scuola di Mannheim."],"audit6-prokofiev-pietroburgo":["Il Conservatorio di San Pietroburgo annoverò Sergej Prokof'ev fra gli allievi di composizione e strumentazione.","Sergej Prokof'ev studiò e si diplomò al Conservatorio di San Pietroburgo."],"audit6-shostakovich-pietroburgo":["Il Conservatorio di Pietrogrado accolse Dmitrij Šostakovič come allievo.","Dmitrij Šostakovič studiò composizione al Conservatorio di Pietrogrado, oggi Conservatorio di San Pietroburgo."],"catalogo-accademia-degli-unisoni-barbara-strozzi":["L'Accademia degli Unisoni di Venezia ebbe Barbara Strozzi fra le protagoniste delle sue adunanze.","Barbara Strozzi partecipò alle adunanze dell'Accademia degli Unisoni di Venezia."],"audit5-messiaen-jeune-france":["Il gruppo La Jeune France fu cofondato nel 1936 da Olivier Messiaen.","Olivier Messiaen fu fra i fondatori del gruppo La Jeune France nel 1936."],"audit2-20261018-jeune-france-jolivet":["Il gruppo La Jeune France annoverò André Jolivet fra i quattro fondatori del 1936.","André Jolivet partecipò nel 1936 alla fondazione del gruppo La Jeune France."],"audit8-orff-gunther-schule":["La Günther-Schule di Monaco fu fondata nel 1924 da Carl Orff e Dorothee Günther.","Carl Orff fondò nel 1924 con Dorothee Günther la Günther-Schule di Monaco, dedicata a musica, danza e movimento."],"audit8-zemlinsky-vereinigung":["Alexander von Zemlinsky fu tra i fondatori della Vereinigung schaffender Tonkünstler a Vienna nel 1904.","Alexander von Zemlinsky contribuì nel 1904 alla fondazione della Vereinigung schaffender Tonkünstler insieme a Schönberg."],"audit8b-gedalge-parigi":["Il Conservatorio di Parigi annoverò André Gedalge fra i professori di contrappunto e fuga dal 1905.","André Gedalge insegnò contrappunto e fuga al Conservatorio di Parigi dal 1905."],"audit8c-kurtag-accademia-liszt":["L'Accademia musicale Franz Liszt di Budapest annoverò György Kurtág fra i docenti di pianoforte e musica da camera.","György Kurtág insegnò pianoforte e musica da camera all'Accademia musicale Franz Liszt di Budapest."],"audit8c-reiner-curtis":["Il Curtis Institute affidò a Fritz Reiner responsabilità didattiche nella direzione d'orchestra.","Fritz Reiner insegnò direzione d'orchestra al Curtis Institute."],"audit8c-goldmark-juilliard":["La Juilliard ebbe Rubin Goldmark come responsabile della composizione dal 1924.","Rubin Goldmark diresse dal 1924 il dipartimento di composizione della Juilliard."],"audit8b-ives-yale":["Lo Yale College accolse Charles Ives come studente di Horatio Parker.","Charles Ives studiò composizione con Horatio Parker allo Yale College."],"audit8g-victoria-collegio-germanico":["Il Collegio Germanico di Roma accolse Tomás Luis de Victoria come cantore e docente.","Tomás Luis de Victoria cantò e insegnò al Collegio Germanico di Roma."],"audit8g-legrenzi-mendicanti":["L'Ospedale dei Mendicanti di Venezia ebbe Giovanni Legrenzi fra i maestri di coro e, successivamente, di cappella.","Giovanni Legrenzi fu maestro di coro e in seguito di cappella all'Ospedale dei Mendicanti di Venezia."]};
+   const pair=editorialPairs[e.id];
+   if(pair)return pair[reversed?1:0];
+  }
+  // Titoli editoriali di nodi istituzionali e storiografici: frasi autonome nei due versi.
+  if(e.group==="scuole"){
+   const additionalPairs={"audit8-price-chicago-renaissance":["L'ambiente culturale del Black Chicago Renaissance annoverò Florence Price fra le compositrici attive a Chicago.","Florence Price partecipò alla vita musicale e culturale del Black Chicago Renaissance."],"audit8-elsner-varsavia":["La Scuola principale di musica di Varsavia ebbe Józef Elsner fra i suoi principali organizzatori e direttori.","Józef Elsner diresse la Scuola principale di musica di Varsavia e vi insegnò composizione."],"audit8-nardini-tartini-padova":["La tradizione violinistica di Tartini a Padova proseguì anche attraverso l'attività di Pietro Nardini.","Pietro Nardini studiò con Tartini e contribuì a trasmetterne il magistero violinistico."],"audit8-manfredi-tartini-padova":["La scuola violinistica di Tartini a Padova annoverò Filippo Manfredi fra gli allievi.","Filippo Manfredi si formò nell'ambiente violinistico padovano di Tartini."],"audit8-koechlin-smi":["La Société musicale indépendante di Parigi ebbe Charles Koechlin fra i fondatori e promotori.","Charles Koechlin contribuì alla fondazione e alle attività della Société musicale indépendante a Parigi."],"audit8-cowell-new-music-society":["La New Music Society of California fu fondata nel 1925 da Henry Cowell.","Henry Cowell fondò nel 1925 la New Music Society of California per promuovere la musica contemporanea."],"audit8-scelsi-nuova-consonanza":["L'associazione Nuova Consonanza, fondata a Roma nel 1961, promosse anche musiche e attività cui contribuì Giacinto Scelsi.","Giacinto Scelsi collaborò con l'ambiente dell'associazione romana Nuova Consonanza, distinta dal successivo Gruppo di Improvvisazione."],"audit8-varese-guild":["L'International Composers’ Guild di New York fu promossa e cofondata da Edgard Varèse.","Edgard Varèse contribuì a fondare e promuovere a New York l'International Composers’ Guild."],"audit8-colbran-san-carlo":["Il Teatro San Carlo di Napoli annoverò Isabella Colbran fra le sue principali interpreti del primo Ottocento.","Isabella Colbran cantò da protagonista al Teatro San Carlo di Napoli nei primi decenni dell'Ottocento."],"audit8-zelter-singakademie":["La Sing-Akademie zu Berlin fu diretta da Carl Friedrich Zelter a partire dal 1800.","Carl Friedrich Zelter assunse nel 1800 la direzione della Sing-Akademie zu Berlin."],"audit8b-chadwick-second-ne":["La Second New England School annovera retrospettivamente George Whitefield Chadwick fra i propri compositori.","George Whitefield Chadwick è associato dalla storiografia alla Second New England School."],"audit8b-fasch-zerbst":["La cappella di corte di Anhalt-Zerbst fu diretta dal 1722 da Johann Friedrich Fasch.","Johann Friedrich Fasch fu maestro di cappella ad Anhalt-Zerbst a partire dal 1722."],"audit8c-malerbi-lugo":["La cappella della collegiata di Lugo fu diretta da Giuseppe Malerbi a partire dal 1792.","Giuseppe Malerbi assunse nel 1792 la direzione della cappella della collegiata di Lugo."],"audit8c-jchristoph-ohrdruf":["La Michaeliskirche di Ohrdruf ebbe come organista Johann Christoph Bach (1671–1721).","Johann Christoph Bach (1671–1721) fu organista della Michaeliskirche di Ohrdruf."],"audit8c-kitzler-linz":["Il Teatro di Linz ebbe Otto Kitzler come direttore musicale nei primi anni Sessanta dell'Ottocento.","Otto Kitzler diresse il Teatro di Linz e, negli stessi anni, impartì lezioni ad Anton Bruckner."],"audit8h-giovanni-cascia-scaligeri":["La corte degli Scaligeri a Verona accolse l'attività musicale di Giovanni da Cascia.","Giovanni da Cascia svolse attività musicale presso l'ambiente cortigiano degli Scaligeri a Verona."],"audit8h-jacopo-scaligeri":["La corte degli Scaligeri a Verona sostenne anche l'attività musicale di Jacopo da Bologna.","Jacopo da Bologna fu associato al mecenatismo musicale della corte degli Scaligeri."],"audit8h-casella-festival-venezia-1930":["Il Festival internazionale di musica contemporanea di Venezia del 1930 vide Alfredo Casella impegnato nell'organizzazione.","Alfredo Casella contribuì all'organizzazione del Festival internazionale di musica contemporanea di Venezia del 1930."],"audit8h-bartok-ricerca-popolar-ungherese":["La ricerca sui canti popolari ungheresi comprende il lavoro di raccolta e analisi di Béla Bartók.","Béla Bartók raccolse, classificò e analizzò canti popolari ungheresi nell'ambito delle ricerche etnomusicologiche."],"audit8h-kodaly-ricerca-popolar-ungherese":["La ricerca sui canti popolari ungheresi comprende il lavoro scientifico di Zoltán Kodály.","Zoltán Kodály studiò il repertorio popolare ungherese e contribuì alla sua pubblicazione scientifica."],"audit8h-stockhausen-wdr-colonia":["Lo Studio di musica elettronica della WDR a Colonia ospitò la realizzazione di opere di Karlheinz Stockhausen.","Karlheinz Stockhausen realizzò presso lo Studio di musica elettronica della WDR a Colonia opere come Gesang der Jünglinge."],"daily01-grofe-rhapsody":["L'incontro fra jazz e sala da concerto negli anni Venti comprende anche l'orchestrazione di Rhapsody in Blue realizzata da Ferde Grofé per l'organico di Whiteman.","Ferde Grofé orchestrò Rhapsody in Blue di Gershwin per l'organico di Paul Whiteman."],"audit09-porpora-opera-nobility":["L'Opera of the Nobility, compagnia londinese attiva dal 1733, annoverò Nicola Porpora fra i compositori.","Nicola Porpora compose opere per la compagnia londinese Opera of the Nobility a partire dal 1733."],"audit22-parker-second-new-england-school":["La Second New England School annovera retrospettivamente Horatio W. Parker fra i compositori statunitensi di fine Ottocento.","Horatio W. Parker è associato dalla storiografia musicale alla Second New England School."],"integr20261018-beach-boston":["La Second New England School annovera retrospettivamente Amy Beach fra i propri compositori.","Amy Beach è associata dalla storiografia musicale alla Second New England School."]};
+   const pair=additionalPairs[e.id];
+   if(pair)return pair[reversed?1:0];
+  }
+  // Articoli e minuscole per nomi comuni di categorie: solo nella frase, non nelle bolle.
+  if(e.group==="scuole"){
+   if(/^(?:Cappella|Tradizione|Riforma|Polifonia|Sperimentazione|Musica|Scuola|Accademia)\b/.test(subject)&&spokenSubject===subject)
+    spokenSubject="La "+subject.charAt(0).toLocaleLowerCase("it")+subject.slice(1);
+   else if(/^Conservatorio\b/.test(subject)&&spokenSubject===subject)
+    spokenSubject="Il "+subject.charAt(0).toLocaleLowerCase("it")+subject.slice(1);
+   if(/^La (Scuola|Tradizione|Musica|Riforma)\b/.test(spokenSubject))
+    spokenSubject=spokenSubject.replace(/^La ([A-ZÀ-ÖØ-Þ])/,(m,l)=>"La "+l.toLocaleLowerCase("it"));
+  }
+  if(e.group==="scuole"&&e.id==="lotto01-scuola-caccini")
+   return reversed?"Francesca Caccini fu cantante e compositrice alla corte medicea, partecipando alle sue attività musicali e teatrali.":"Le attività musicali e teatrali della corte medicea videro Francesca Caccini fra le cantanti e compositrici.";
+  if(e.group==="scuole"&&e.id==="ponte-veneziana-schutz")
+   return reversed?"Heinrich Schütz studiò a Venezia con Giovanni Gabrieli e rielaborò poi quell'esperienza nella musica sacra luterana.":"La tradizione veneziana contribuì alla formazione di Heinrich Schütz attraverso l'insegnamento di Giovanni Gabrieli.";
+  if(e.group==="scuole"&&e.id==="cat-scuole-stile-galante-e-sensibile-carl-philipp-emanuel-bach")
+   return reversed?"Carl Philipp Emanuel Bach fu tra i principali esponenti dello stile sensibile (empfindsamer Stil), vicino ma non identico allo stile galante.":"La categoria dello stile galante e dello stile sensibile comprende Carl Philipp Emanuel Bach come protagonista dell'empfindsamer Stil.";
+  if(e.group==="scuole"&&e.id==="cat-scuole-stile-galante-e-sensibile-johann-christian-bach")
+   return reversed?"Johann Christian Bach fu fra i principali esponenti tedeschi dello stile galante.":"La categoria dello stile galante e dello stile sensibile comprende Johann Christian Bach soprattutto come esponente dello stile galante.";
+  if(e.group==="scuole"&&e.id==="audit6-cage-indeterminazione")
+   return reversed?"John Cage sperimentò processi aleatori nell'ambito della ricerca musicale americana sull'indeterminazione.":"La sperimentazione musicale americana sull'indeterminazione comprende anche le pratiche compositive aleatorie di John Cage.";
+  // "di Scuola di Notre-Dame" manca della preposizione articolata.
+  if(e.group==="scuole"&&reversed&&/^Scuola\b/i.test(object)&&/\bdi$/.test(fragment))
+   fragment=fragment.replace(/\bdi$/,"della");
+  // Prima il nome, poi la qualifica: conserva la caratterizzazione storica.
+  // I testimoni medievali vanno nominati prima della lunga specificazione.
+  if(e.group==="scuole"&&!reversed&&fragment==="riconosce nelle testimonianze medievali fra i maestri dell\'organum")
+   return spokenSubject+" riconosce "+object+" fra i maestri dell\'organum attestati dalle testimonianze medievali.";
+  // La voce di Bardi/Corsi riunisce DUE ambienti: nel verso inverso è un titolo citato.
+  if(e.group==="scuole"&&object==="Camerata fiorentina e ambiente di Corsi"&&/\bnella voce$/.test(fragment))
+   return spokenSubject+" "+fragment+" «"+object+"».";
+  // La qualificazione di Berg e Webern segue il nome anziché precederlo.
+  if(e.group==="scuole"&&!reversed&&fragment==="annoverò fra i suoi protagonisti, allievi di Schönberg")
+   return spokenSubject+" annoverò "+object+" fra i suoi protagonisti, allievi di Schönberg.";
+  if(e.group==="scuole"&&!reversed&&fragment==="annovera retrospettivamente fra i propri grandi protagonisti")
+   return spokenSubject+" annovera retrospettivamente "+object+" fra i propri grandi protagonisti.";
+  // Anticipa il nome anche quando il complemento contiene altri nomi propri.
+  if(e.group==="scuole"&&!reversed){
+   const reorder=[
+    ["annoverarono fra i protagonisti della prima e della successiva cerchia","annoverarono", "fra i protagonisti della prima e della successiva cerchia"],
+    ["annoverarono nel solo ambiente successivo di Corsi","annoverarono", "nel solo ambiente successivo di Corsi"],
+    ["annoverarono fra i teorici della prima cerchia legata a Bardi","annoverarono","fra i teorici della prima cerchia legata a Bardi"],
+    ["annovera fra i compositori formatisi con César Franck","annovera","fra i compositori formatisi con César Franck"],
+    ["annovera fra gli allievi e continuatori del magistero di César Franck","annovera","fra gli allievi e continuatori del magistero di César Franck"],
+    ["riconosce come principale riferimento didattico e compositivo","riconosce","come principale riferimento didattico e compositivo"],
+    ["annoverò fra i compositori attivi a Londra dal 1733","annoverò","fra i compositori attivi a Londra dal 1733"]
+   ];
+   const matched=reorder.find(([pattern])=>fragment===pattern);
+   if(matched)return spokenSubject+" "+matched[1]+" "+object+" "+matched[2]+".";
+  }
+  const pattern="annovera nella propria storia musicale come ";
+  if(e.group==="scuole"&&!reversed&&fragment.startsWith(pattern))
+   return spokenSubject+" annovera "+object+" nella propria storia musicale come "+fragment.slice(pattern.length)+".";
+  // Le etichette dei nodi restano invariate: qui si usa solo la forma discorsiva.
+  let spokenObject=object;
+  if(e.group==="scuole"&&["Minimalismo","Melodramma barocco","Dodecafonia"].includes(object))spokenObject=object.charAt(0).toLocaleLowerCase("it")+object.slice(1);
+  if(e.group==="scuole"&&/^(?:Teatro musicale|Sinfonismo)\b/.test(object))spokenObject=object.charAt(0).toLocaleLowerCase("it")+object.slice(1);
+  if(e.group==="scuole" && /^(?:Scuola|Seconda scuola|Tradizione|Musica|Riforma|Avanguardie|Ospedali)\b/i.test(object))
+   spokenObject=object.charAt(0).toLocaleLowerCase("it")+object.slice(1);
+  if(e.group==="scuole" && !reversed && e.id==="ponte-darmstadt-avanguardie")
+   return "I corsi estivi di Darmstadt furono un luogo di confronto fondamentale per le avanguardie.";
+  if(e.group==="scuole" && !reversed && e.id==="audit8-siegfried-festival-bayreuth")
+   return "Il Festival di Bayreuth fu diretto da Siegfried Wagner, che contribuì anche al rinnovamento delle pratiche di regia.";
+  if(e.group==="scuole" && reversed && e.id==="ponte-darmstadt-avanguardie")
+   return "Le avanguardie trovarono nei corsi estivi di Darmstadt un centro di studio e confronto.";
+  if(e.group==="scuole" && reversed && e.id==="audit8-siegfried-festival-bayreuth")
+   return "Siegfried Wagner assunse la guida del Festival di Bayreuth nel 1908 e contribuì alle pratiche di regia.";
+  const separator=/['’]$/.test(fragment)?"":" ";
+  return spokenSubject+" "+fragment+separator+spokenObject+".";
+ }
+ // Legami del grafo di base: etichette descrittive, non deduzioni biografiche.
+ switch(e.kind){
+  case "appartenenza":
+  case "appartenenza-storica":
+  case "appartenenza-tematica":
+   return reversed?subject+" è un contesto storico o tematico a cui è collegato "+object+".":subject+" è collegato al contesto di "+object+".";
+  case "ambito-geografico":
+  case "origine-biografica":
+   return reversed?subject+" è un riferimento geografico per "+object+".":subject+" è collegato geograficamente a "+object+".";
+  case "inquadramento-storico":
+  case "corrente-nel-periodo":
+   return reversed?subject+" è il contesto storico nel quale si colloca "+object+".":subject+" si colloca nel contesto storico di "+object+".";
+  case "relazione-storico-musicale":
+  case "connessione-storico-artistica":
+   return subject+" è collegato storicamente a "+object+".";
+  case "maestro-allievo":
+   return reversed?subject+" fu allievo di "+object+".":subject+" fu maestro di "+object+".";
+  default:
+   return subject+" e "+object+" sono collegati da una relazione di "+String(e.kind||"natura storica da approfondire").replace(/-/g," ")+".";
+ }
+}
+// Il testo discorsivo omette qualificatori editoriali, non presenti nei nomi storici.
+function relationSentence(e,perspectiveId=null){
+ let sentence=relationSentenceBase(e,perspectiveId);
+ if(e.group!=="scuole")return sentence;
+ const names={"Conservatorio di Parigi e scuola di composizione":"Conservatorio di Parigi","Conservatorio di San Pietroburgo e sue trasformazioni":"Conservatorio di San Pietroburgo","Conservatorio viennese e insegnamento della composizione nell’Ottocento":"Conservatorio viennese","Cappella di corte e musica sacra di Salisburgo nel Settecento":"cappella di corte di Salisburgo","Cappella di Saint-Donatien a Bruges nel Rinascimento":"cappella di Saint-Donatien a Bruges","Cappella musicale del Duomo di Cremona nel Cinquecento":"cappella musicale del Duomo di Cremona","Cappella pontificia romana nel Cinquecento":"cappella pontificia romana","Cappella regia francese nel Quattrocento":"cappella regia francese","Cappella della cattedrale di Strasburgo nel Settecento":"cappella della cattedrale di Strasburgo","Cappella musicale della cattedrale di Siviglia nel Cinquecento":"cappella musicale della cattedrale di Siviglia","Cappella di corte di Innsbruck nel Seicento":"cappella di corte di Innsbruck","Cappella imperiale viennese del primo Settecento":"cappella imperiale viennese","Conservatorio di Milano nell’Ottocento":"Conservatorio di Milano","Cappella e teatro della corte elettorale di Bonn nel tardo Settecento":"cappella e teatro della corte elettorale di Bonn"};
+ for(const [label,short] of Object.entries(names)){
+  sentence=sentence.split(label).join(short);
+  const lower=label.charAt(0).toLocaleLowerCase("it")+label.slice(1);
+  if(lower!==label)sentence=sentence.split(lower).join(short);
+ }
+ sentence=sentence.replace(/nell'cappella/gi,"nella cappella");
+ return sentence;
+}
+// Audit frasi Scuole: trasformazioni linguistiche circoscritte alle tradizioni.
+const relationSentenceUnpolished=relationSentence;
+relationSentence=function(e,perspectiveId=null){
+ let s=relationSentenceUnpolished(e,perspectiveId);
+ if(e.group!=="scuole")return s;
+ const sourceLabel=e.a?.label||byId.get(e.source)?.label||e.source;
+ const targetLabel=e.b?.label||byId.get(e.target)?.label||e.target;
+ const reversed=perspectiveId!=null&&perspectiveId===e.target;
+ const subject=reversed?targetLabel:sourceLabel;
+ const object=reversed?sourceLabel:targetLabel;
+ if(subject==="Ars nova francese")s=s.replace(/^Ars nova francese /,"L'ars nova francese ");
+ if(subject==="Ars nova italiana")s=s.replace(/^Ars nova italiana /,"L'ars nova italiana ");
+ if(subject==="Frottola delle corti italiane")s=s.replace(/^Frottola delle corti italiane /,"La tradizione della frottola nelle corti italiane ");
+ if(subject==="Tradizioni inglesi elisabettiane")s=s.replace(/^Tradizioni inglesi elisabettiane /,"Le tradizioni musicali inglesi dell'età elisabettiana ").replace(/^Le tradizioni musicali inglesi dell'età elisabettiana annovera\b/,"Le tradizioni musicali inglesi dell'età elisabettiana annoverano");
+ if(subject==="Tradizioni organistiche tedesche del Barocco")s=s.replace(/^Tradizioni organistiche tedesche del Barocco comprende /,"Le tradizioni organistiche tedesche del Barocco comprendono ");
+ if(subject==="Stile galante ed empfindsamer Stil")s=s.replace(/^Stile galante ed empfindsamer Stil trova /,"Lo stile galante e l'empfindsamer Stil trovano ");
+ if(object==="Tradizioni organistiche tedesche del Barocco")s=s.replace("nelle Tradizioni organistiche tedesche del Barocco","nell'ambito delle tradizioni organistiche tedesche del Barocco");
+ if(object==="Tradizioni inglesi elisabettiane")s=s.replace("nelle Tradizioni inglesi elisabettiane","nelle tradizioni musicali inglesi dell'età elisabettiana");
+ if(object==="Frottola delle corti italiane")s=s.replace("chiamata Frottola delle corti italiane","della frottola nelle corti italiane");
+ if(object==="Stile galante ed empfindsamer Stil")s=s.replace("dello Stile galante ed empfindsamer Stil","dello stile galante o dello stile sensibile");
+ if(object==="Madrigalismo cinquecentesco")s=s.replace("del Madrigalismo cinquecentesco","del madrigalismo cinquecentesco");
+ return s;
+};
+// Audit integrale Scuole: forme discorsive senza alterare etichette e archi.
+const schoolSentencePrior20261020=relationSentence;
+const fullSchoolNames={"Modernità francese del primo Novecento":"La modernità francese del primo Novecento","Generazione italiana del 1880":"La generazione italiana del 1880","Avanguardie italiane del dopoguerra":"Le avanguardie italiane del dopoguerra","Virtuosismo e concerto romantico":"Il virtuosismo e il concerto romantico","Ripresa del contrappunto e neobarocco":"La ripresa del contrappunto e il neobarocco","Ricezione italiana della dodecafonia":"La ricezione italiana della dodecafonia","Tastiere italiane del primo Seicento":"Le pratiche tastieristiche italiane del primo Seicento","Pratiche musicali veneziane del Settecento":"Le pratiche musicali veneziane del Settecento","Oratorio inglese del Settecento":"L'oratorio inglese del Settecento","Collegium musicum di Lipsia":"Il Collegium musicum di Lipsia","Vita musicale viennese dell'Illuminismo":"La vita musicale viennese dell'Illuminismo","Futurismo":"Il futurismo","Nuova musica polacca dopo il 1956":"La nuova musica polacca dopo il 1956","Opera romantica tedesca":"L'opera romantica tedesca","Rinascita operistica inglese del Novecento":"La rinascita operistica inglese del Novecento","Pianismo e composizione romantica":"Il pianismo e la composizione romantica","Scapigliatura milanese":"La Scapigliatura milanese","Opéra-comique":"L'opéra-comique","Gruppo di Improvvisazione Nuova Consonanza":"Il Gruppo di Improvvisazione Nuova Consonanza","Ambiente musicale viennese del fin de siècle":"L'ambiente musicale viennese del fin de siècle","Jazz orchestrale e big band":"Il jazz orchestrale e le big band","Ricezione e insegnamento della dodecafonia in Francia dopo il 1945":"La ricezione e l'insegnamento della dodecafonia in Francia dopo il 1945","New England Conservatory di Boston":"Il New England Conservatory di Boston","Thomaskantorat di Lipsia nell’Ottocento":"Il Thomaskantorat di Lipsia nell’Ottocento","Thomaskantorat di Lipsia nel primo Seicento":"Il Thomaskantorat di Lipsia nel primo Seicento","Canti patriottici del Piemonte del 1847":"I canti patriottici del Piemonte del 1847","Chapel Royal inglese fra Elisabetta e gli Stuart":"La Chapel Royal inglese fra Elisabetta e gli Stuart","Abendmusiken della Marienkirche di Lubecca":"Le Abendmusiken della Marienkirche di Lubecca","Musica per il cinema del Novecento":"La musica per il cinema del Novecento","Musica afroamericana del Novecento":"La musica afroamericana del Novecento","Accademie domestiche musicali della Milano settecentesca":"Le accademie domestiche musicali della Milano settecentesca","Ambiente musicale dei Medici nella Firenze quattrocentesca":"L'ambiente musicale dei Medici nella Firenze quattrocentesca","Tradizioni organistiche tedesche del Barocco":"Le tradizioni organistiche tedesche del Barocco"};
+const fullSchoolPlural=new Set(["Avanguardie italiane del dopoguerra","Virtuosismo e concerto romantico","Ripresa del contrappunto e neobarocco","Tastiere italiane del primo Seicento","Pianismo e composizione romantica","Jazz orchestrale e big band","Ricezione e insegnamento della dodecafonia in Francia dopo il 1945"]);
+const fullSchoolCustom={"cat-scuole-tradizione-inglese-elisabettiana-orlando-gibbons":["La tradizione musicale inglese dell'età elisabettiana continuò sotto gli Stuart, quando operò Orlando Gibbons.","Orlando Gibbons operò soprattutto sotto i primi Stuart, proseguendo una tradizione musicale inglese precedente."],"catalogo-tradizione-cembalistica-iberica-domenico-scarlatti":["La tradizione cembalistica iberica comprende le sonate di Domenico Scarlatti composte negli ambienti delle corti portoghese e spagnola.","Domenico Scarlatti sviluppò la propria produzione per tastiera presso le corti portoghese e spagnola."],"catalogo-tradizione-cembalistica-iberica-antonio-soler":["La tradizione cembalistica iberica comprende le sonate per tastiera di Antonio Soler, attivo all'Escorial.","Antonio Soler compose sonate per tastiera nella tradizione iberica, assimilando anche l'esempio di Domenico Scarlatti."],"lotto01-scuola-frescobaldi":["Le pratiche tastieristiche italiane del primo Seicento annoverano Girolamo Frescobaldi fra i principali innovatori della toccata e del ricercare.","Girolamo Frescobaldi rinnovò toccata, ricercare e canzona per tastiera nel primo Seicento."],"lotto01-scuola-froberger":["Le pratiche tastieristiche italiane del primo Seicento raggiunsero l'Europa centrale attraverso Johann Jakob Froberger.","Johann Jakob Froberger assimilò a Roma la scrittura di Frescobaldi e la rielaborò poi nell'Europa centrale."],"lotto02-sc-handel-roma":["I circoli musicali romani accolsero Georg Friedrich Händel, autore di oratori e cantate sotto il patrocinio aristocratico.","Georg Friedrich Händel frequentò i circoli musicali di Ottoboni e Ruspoli durante il soggiorno romano."],"audit2-minimalismo-adams":["Il minimalismo fu una delle matrici del linguaggio postminimalista di John Adams.","John Adams rielaborò tecniche ripetitive minimaliste in un linguaggio compositivo personale."],"audit2-minimalismo-nyman":["Il minimalismo fu oggetto di riflessione critica e di pratica compositiva da parte di Michael Nyman.","Michael Nyman contribuì alla fortuna del termine «minimal music» e sviluppò un linguaggio compositivo personale."],"audit4-weber-opera-romantica":["L'opera romantica tedesca trovò in Der Freischütz di Carl Maria von Weber uno dei suoi modelli fondamentali.","Carl Maria von Weber contribuì allo sviluppo dell'opera romantica tedesca con Der Freischütz."],"audit4-wagner-opera-romantica":["Richard Wagner trasformò la tradizione dell'opera romantica tedesca elaborando una propria concezione del dramma musicale.","Richard Wagner rielaborò le convenzioni dell'opera romantica tedesca nel proprio progetto di dramma musicale."],"audit5-chopin-pianismo-romantico":["Il pianismo romantico fu profondamente trasformato dalla scrittura di Frédéric Chopin.","Frédéric Chopin rinnovò forme, sonorità e tecnica del pianoforte romantico."],"audit8-czerny-pianismo-romantico":["La didattica pianistica romantica trovò in Carl Czerny uno dei suoi artefici principali.","Carl Czerny sviluppò metodi e studi per pianoforte che influenzarono la formazione pianistica ottocentesca."],"audit09-zachow-marktkirche":["La Marktkirche di Halle ebbe Friedrich Wilhelm Zachow come organista e maestro del giovane Händel.","Friedrich Wilhelm Zachow fu organista alla Marktkirche di Halle e maestro del giovane Händel."],"audit8b-chadwick-nec":["Il New England Conservatory di Boston ebbe George Whitefield Chadwick fra i docenti e i direttori.","George Whitefield Chadwick insegnò e svolse incarichi direttivi al New England Conservatory di Boston."],"lotto02-sc-telemann-luther":["La tradizione della musica sacra luterana ad Amburgo si sviluppò anche attraverso l'attività di Georg Philipp Telemann.","Georg Philipp Telemann diresse la musica delle principali chiese di Amburgo nella tradizione sacra luterana."]};
+relationSentence=function(e,perspectiveId=null){
+ let s=schoolSentencePrior20261020(e,perspectiveId);if(e.group!=="scuole")return s;
+ const reversed=perspectiveId!=null&&perspectiveId===e.target;
+ const subject=(reversed?e.b?.label||byId.get(e.target)?.label:e.a?.label||byId.get(e.source)?.label)||"";
+ const obj=(reversed?e.a?.label||byId.get(e.source)?.label:e.b?.label||byId.get(e.target)?.label)||"";
+ if(fullSchoolCustom[e.id])return fullSchoolCustom[e.id][reversed?1:0];
+ if(!reversed){
+  if(fullSchoolNames[subject]&&s.startsWith(subject+" "))s=fullSchoolNames[subject]+s.slice(subject.length);
+  if(fullSchoolPlural.has(subject))s=s.replace(" comprende "," comprendono ").replace(" si sviluppò "," si svilupparono ").replace(" ebbe "," ebbero ").replace(" fu "," furono ");
+  if(subject==="Jazz orchestrale e big band")s=s.replace(" annovera "," annoverano ");
+  if(subject==="Pratiche musicali veneziane del Settecento")s=s.replace(" vide "," videro ");
+  if(subject==="Scuola luterana")s=s.replace(/^La scuola luterana/,"La tradizione musicale luterana");
+ }else{
+  if(obj==="Scuola luterana")s=s.replace("nella tradizione della scuola luterana","nella tradizione della musica sacra luterana");
+  if(obj==="Generazione italiana del 1880")s=subject+" è ricondotto dalla storiografia alla cosiddetta generazione italiana del 1880.";
+  if(obj==="Virtuosismo e concerto romantico")s=s.replace("nell'ambito di Virtuosismo e concerto romantico","nell'ambito del virtuosismo e del concerto romantico");
+  if(obj==="Jazz orchestrale e big band")s=s.replace("del Jazz orchestrale e big band","del jazz orchestrale e delle big band").replace("di Jazz orchestrale e big band","del jazz orchestrale e delle big band");
+  if(obj==="Modernità francese del primo Novecento")s=s.replace("Modernità francese del primo Novecento","modernità francese del primo Novecento");
+  if(obj==="Avanguardie italiane del dopoguerra")s=s.replace("Avanguardie italiane del dopoguerra","avanguardie italiane del dopoguerra");
+  if(obj==="Pratiche musicali veneziane del Settecento")s=s.replace("Pratiche musicali veneziane del Settecento","pratiche musicali veneziane del Settecento");
+  if(obj==="Vita musicale viennese dell'Illuminismo")s=s.replace("Vita musicale viennese dell'Illuminismo","vita musicale viennese dell'Illuminismo");
+  if(obj==="Musica per il cinema del Novecento")s=s.replace("Musica per il cinema del Novecento","musica per il cinema del Novecento");
+  if(obj==="Musica afroamericana del Novecento")s=s.replace("Musica afroamericana del Novecento","musica afroamericana del Novecento");
+  if(obj==="Opera romantica tedesca")s=s.replace("dell'Opera romantica tedesca","dell'opera romantica tedesca");
+  if(obj==="Teatro musicale francese dell'Ottocento")s=s.replace("dell'teatro musicale","del teatro musicale");
+  if(obj==="Futurismo")s=s.replace("del Futurismo","del futurismo");
+  if(obj==="Nuova musica polacca dopo il 1956")s=s.replace("Nuova musica polacca dopo il 1956","nuova musica polacca dopo il 1956");
+  if(obj==="Canti patriottici del Piemonte del 1847")s=s.replace("Canti patriottici del Piemonte del 1847","canti patriottici del Piemonte del 1847");
+  if(obj==="Ambiente musicale dei Medici nella Firenze quattrocentesca")s=s.replace("nell'Ambiente musicale","nell'ambiente musicale");
+ }return s;
+};
+// Eccezioni editoriali finali dopo la verifica bidirezionale delle 392 relazioni.
+const schoolSentenceBeforeExceptions20261020=relationSentence;
+const schoolAuditExceptionPairs={
+ "scuola-luterana-johann-walter":["La tradizione musicale luterana si sviluppò anche grazie alle raccolte di canti e corali in tedesco curate da Johann Walter.","Johann Walter contribuì alla prima tradizione musicale luterana con raccolte di canti e corali in tedesco."],
+ "scuola-luterana-michael-praetorius":["La tradizione musicale luterana fu arricchita dalle armonizzazioni e dalle composizioni corali di Michael Praetorius.","Michael Praetorius contribuì alla musica sacra luterana con composizioni vocali e rielaborazioni del corale."],
+ "scuola-luterana-johann-hermann-schein":["La tradizione musicale luterana accolse, nelle opere di Johann Hermann Schein, elementi della scrittura italiana del primo Seicento.","Johann Hermann Schein adattò procedimenti della musica italiana alla propria produzione sacra luterana."],
+ "scuola-luterana-samuel-scheidt":["La tradizione musicale luterana trovò in Samuel Scheidt un importante interprete delle pratiche organistiche e del corale.","Samuel Scheidt sviluppò musica organistica e rielaborazioni del corale nell'ambito della tradizione luterana."],
+ "scuola-luterana-heinrich-schutz":["La tradizione musicale luterana accolse nelle opere sacre di Heinrich Schütz linguaggi concertanti maturati anche durante la sua formazione veneziana.","Heinrich Schütz rielaborò nella musica sacra luterana procedimenti italiani appresi durante la formazione a Venezia."],
+ "scuola-luterana-johann-sebastian-bach":["La tradizione musicale luterana trovò nella produzione sacra di Johann Sebastian Bach una vasta sintesi di corale, cantata e Passione.","Johann Sebastian Bach rielaborò il corale e altre forme della musica sacra entro la tradizione luterana."],
+ "cat-scuole-tradizione-inglese-elisabettiana-thomas-tallis":["Le tradizioni musicali inglesi fra Tudor e Stuart comprendono la produzione sacra di Thomas Tallis nell'Inghilterra Tudor.","Thomas Tallis fu una figura centrale della musica sacra inglese sotto i Tudor, precedente alla stagione dei primi Stuart."],
+ "cat-scuole-tradizione-inglese-elisabettiana-william-byrd":["Le tradizioni musicali inglesi fra Tudor e Stuart comprendono l'opera vocale e strumentale di William Byrd, attivo soprattutto in età elisabettiana.","William Byrd contribuì alla musica inglese tardo-tudoriana con opere vocali e repertori per tastiera."],
+ "cat-scuole-tradizione-inglese-elisabettiana-thomas-morley":["Le tradizioni musicali inglesi fra Tudor e Stuart comprendono l'opera madrigalistica di Thomas Morley, attivo sotto Elisabetta I.","Thomas Morley contribuì alla diffusione del madrigale inglese durante il regno di Elisabetta I."],
+ "cat-scuole-tradizione-inglese-elisabettiana-john-dowland":["Le tradizioni musicali inglesi fra Tudor e Stuart comprendono la produzione per liuto e voce di John Dowland, attivo a cavallo dei due periodi.","John Dowland coltivò il repertorio per liuto e il canto accompagnato fra la tarda età Tudor e i primi Stuart."],
+ "cat-scuole-tradizione-inglese-elisabettiana-orlando-gibbons":["Le tradizioni musicali inglesi fra Tudor e Stuart proseguirono nell'attività di Orlando Gibbons presso la Chapel Royal sotto Giacomo I.","Orlando Gibbons fu musicista della Chapel Royal sotto i primi Stuart, proseguendo tradizioni vocali e strumentali inglesi precedenti."],
+ "catalogo-concerto-violinistico-italiano-benedetto-marcello":["La tradizione italiana del concerto per violino comprende i dodici Concerti a cinque, op. 1 (1708), di Benedetto Marcello, con violino solista e violoncello obbligato.","Benedetto Marcello pubblicò nel 1708 i dodici Concerti a cinque con violino solo e violoncello obbligato, op. 1, nella tradizione concertistica italiana."],
+ "catalogo-neobarocco-novecento-igor-stravinskij":["La ripresa novecentesca di modelli barocchi si manifesta nel concerto neoclassico «Dumbarton Oaks» di Igor Stravinskij, ispirato ai Concerti brandeburghesi.","Igor Stravinskij riprese modelli del concerto barocco in «Dumbarton Oaks» (1938) durante la stagione neoclassica, senza per questo aderire a un'unica corrente neobarocca."],
+"catalogo-tradizione-melodie-francese-gabriel-faure":["La tradizione francese della mélodie e della musica da camera annovera Gabriel Fauré fra i compositori più rappresentativi.","Gabriel Fauré contribuì allo sviluppo della mélodie francese e della musica da camera."],"catalogo-tradizione-melodie-francese-pauline-viardot":["La tradizione francese della mélodie annovera Pauline Viardot fra le sue protagoniste.","Pauline Viardot fu cantante e compositrice di liriche vocali nella cultura musicale francese dell'Ottocento."],"lotto01-scuola-hildegard":["La tradizione della monodia sacra medievale comprende le liriche spirituali e l'Ordo virtutum di Hildegard von Bingen.","Hildegard von Bingen compose liriche monodiche e l'Ordo virtutum nel contesto della vita religiosa medievale."],"lotto01-scuola-encina":["Il villancico profano e il teatro iberico fra Quattrocento e Cinquecento comprendono la produzione di Juan del Encina.","Juan del Encina compose villancicos e opere poetico-teatrali nella cultura iberica fra Quattrocento e Cinquecento."],"lotto01-scuola-caldara-roma":["I circoli aristocratici romani di oratorio e cantata accolsero Antonio Caldara, attivo al servizio dei Ruspoli.","Antonio Caldara compose oratori e cantate a Roma al servizio dei Ruspoli."],"lotto02-sc-handel-london":["L'oratorio inglese del Settecento trovò in Georg Friedrich Händel uno dei suoi principali artefici a Londra.","Georg Friedrich Händel sviluppò una propria forma di oratorio in inglese a Londra."],"lotto02-sc-telemann-stile":["Le ultime composizioni di Georg Philipp Telemann mostrano la transizione fra il tardo Barocco e nuovi gusti settecenteschi, compreso lo stile galante.","Georg Philipp Telemann accolse diversi linguaggi europei e contribuì alla transizione dal Barocco verso il gusto galante."],"lotto02-sc-ditters-galante":["Lo stile galante del tardo Settecento è riconoscibile anche in parte della produzione strumentale di Carl Ditters von Dittersdorf.","Carl Ditters von Dittersdorf coltivò tratti del gusto galante nella propria produzione strumentale."],"audit4-henry-musica-concreta":["La musica concreta annoverò Pierre Henry fra i pionieri, anche grazie alla sua collaborazione con Pierre Schaeffer.","Pierre Henry collaborò con Pierre Schaeffer e contribuì allo sviluppo della musica concreta."],"audit8-sarti-corte-russa":["La corte di Caterina II affidò incarichi e commissioni musicali a Giuseppe Sarti.","Giuseppe Sarti lavorò presso la corte di Caterina II come compositore di musica teatrale e sacra."],"audit8h-buxtehude-abendmusiken":["Le Abendmusiken della Marienkirche di Lubecca furono sviluppate e rese celebri da Dietrich Buxtehude.","Dietrich Buxtehude organizzò i concerti sacri serali delle Abendmusiken alla Marienkirche di Lubecca."],"integr20261018-cinema-korngold":["La musica per il cinema del Novecento comprende le colonne sonore di Erich Wolfgang Korngold, che vi trasferì esperienze operistiche e sinfoniche.","Erich Wolfgang Korngold trasferì nella musica cinematografica tecniche del repertorio operistico e concertistico."],"lotto02-sc-handel-halle":["Le tradizioni organistiche tedesche del Barocco contribuirono alla formazione di Georg Friedrich Händel, allievo di Zachow a Halle.","Georg Friedrich Händel studiò organo e contrappunto con Friedrich Wilhelm Zachow a Halle."]};
+relationSentence=function(e,perspectiveId=null){
+ let s=schoolSentenceBeforeExceptions20261020(e,perspectiveId);if(e.group!=="scuole")return s;
+ const reversed=perspectiveId!=null&&perspectiveId===e.target;
+ if(schoolAuditExceptionPairs[e.id])return schoolAuditExceptionPairs[e.id][reversed?1:0];
+ const object=(reversed?e.a?.label||byId.get(e.source)?.label:e.b?.label||byId.get(e.target)?.label)||"";
+ if(reversed){
+  if(object==="Ripresa del contrappunto e neobarocco")s=s.replace("nella Ripresa del contrappunto e neobarocco","nella ripresa del contrappunto e nel neobarocco");
+  if(object==="Tradizioni organistiche tedesche del Barocco")s=s.replace("Tradizioni organistiche tedesche del Barocco","tradizioni organistiche tedesche del Barocco");
+  if(object==="Ricezione e insegnamento della dodecafonia in Francia dopo il 1945")s=s.replace("della Ricezione e insegnamento della dodecafonia in Francia dopo il 1945","della ricezione e dell'insegnamento della dodecafonia in Francia dopo il 1945");
+ }
+ return s;
+};
+function dedupeEdges(list){const seen=new Set();return list.filter(e=>{const k=e.id||[e.source,e.target,e.group||"",e.kind||""].join("|");if(seen.has(k))return false;seen.add(k);return true;});}
+const rnd=(()=>{let x=94327;return ()=>((x=(Math.imul(x,1664525)+1013904223)>>>0)/4294967296)})();
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const normSearch=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/ł/g,"l").replace(/ß/g,"ss").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[ʹʺ'’ʼ`´]/g,"").replace(/[‐‑‒–—]/g,"-").replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
+function searchNames(n){return [n.label,...(n.aliases||[])];}
+function matchesSearch(n,q){return !!q&&searchNames(n).some(name=>normSearch(name).includes(q));}
+function searchRank(n,q){const variants=searchNames(n).map(normSearch);if(variants.some(v=>v===q))return 0;if(variants.some(v=>v.split(" ").includes(q)))return 1;if(variants.some(v=>v.startsWith(q)))return 2;return 3;}
+function findSearchResults(q){return nodes.filter(n=>n.type!=="geografia"&&matchesSearch(n,q)&&(n.type!=="persona"||n.music_relevance||hasNonMusicLens())).sort((a,b)=>searchRank(a,q)-searchRank(b,q)||a.label.localeCompare(b.label,"it"));}
+function resize(){w=canvas.clientWidth;h=canvas.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
+
+const geoState={lat:20,lon:0,span:360,targetLat:20,targetLon:0,targetSpan:360,enabled:true};
+
+const COUNTRY_AREAS={
+ "Italia":[42.6,12.5,4.8,5.2],"Francia":[46.4,2.2,3.8,4.2],"Germania":[51.0,10.1,3.2,4.4],
+ "Austria":[47.7,14.1,2.2,3.2],"Russia":[56.0,38.0,10.0,20.0],"Cechia":[49.8,15.5,2.0,2.6],
+ "Stati Uniti":[39.0,-98.0,12.0,24.0],"Ungheria":[47.1,19.2,2.0,2.8],"Polonia":[52.0,19.1,3.2,4.0],
+ "Inghilterra":[52.7,-1.6,2.8,3.0],"Regno Unito":[54.0,-2.0,4.0,4.0],"Spagna":[40.2,-3.7,4.0,4.8],
+ "Paesi Bassi":[52.2,5.3,1.5,1.8],"Belgio":[50.7,4.6,1.2,1.4],"Croazia":[45.2,15.5,2.3,3.0],
+ "Slovenia":[46.1,14.9,1.2,1.5],"Romania":[45.9,24.9,3.0,4.0],"Grecia":[39.0,22.0,3.0,4.0],
+ "Albania":[41.1,20.0,1.4,1.2],"Svezia":[62.0,15.0,5.0,5.5],"Norvegia":[62.0,10.0,6.0,4.0],
+ "Finlandia":[64.0,26.0,5.0,5.0],"Danimarca":[56.0,10.0,2.0,2.2],"Portogallo":[39.6,-8.0,2.3,1.8],
+ "Brasile":[-14.2,-51.9,12.0,15.0],"Argentina":[-34.0,-64.0,11.0,8.0],"Messico":[23.6,-102.5,8.0,10.0],
+ "Canada":[56.1,-106.3,14.0,25.0],"Giappone":[36.2,138.3,4.0,4.5],"Cina":[35.9,104.2,10.0,14.0],
+ "Australia":[-25.3,133.8,9.0,12.0],
+ "Svizzera":[46.8,8.2,1.2,2.0],"Armenia":[40.2,44.5,1.2,1.4]
+};
+const MUSICIAN_GEO_OVERRIDES={
+ "compositore-giuseppe-malerbi":[44.421,11.912,"Lugo"],
+ "compositore-johann-christoph-bach-1671":[50.83,10.734,"Ohrdruf"],
+ "compositore-josquin-des-prez":[50.449,3.592,"Condé-sur-l’Escaut"],
+ "compositore-lauro-rossi":[45.4642,9.19,"Milano"],
+ "compositore-luigi-felice-rossi":[45.0703,7.6869,"Torino"],
+ "compositore-heinrich-kaminski":[47.7,11.4,"Ried presso Benediktbeuern"],
+ "compositore-maddalena-casulana":[43.7696,11.2558,"Firenze"],
+ "compositore-andre-gedalge":[48.8566,2.3522,"Parigi"],
+ "compositore-bartolomeo-tromboncino":[45.1564,10.7914,"Mantova"],
+ "compositore-charles-hambitzer":[43.0389,-87.9065,"Milwaukee"],
+ "compositore-cipriano-de-rore":[44.8381,11.6198,"Ferrara"],
+ "compositore-claudin-de-sermisy":[48.8566,2.3522,"Parigi"],
+ "compositore-costanzo-festa":[41.9028,12.4964,"Roma"],
+ "compositore-egidio-duni":[48.8566,2.3522,"Parigi"],
+ "compositore-engelbert-humperdinck":[51.2277,6.7735,"Düsseldorf"],
+ "compositore-hans-pfitzner":[48.5839,7.7455,"Strasburgo"],
+ "compositore-hans-werner-henze":[41.9028,12.4964,"Roma"],
+ "compositore-heinrich-isaac":[43.7696,11.2558,"Firenze"],
+ "compositore-horatio-parker":[41.3083,-72.9279,"New Haven"],
+ "compositore-johann-walter":[51.5606,13.005,"Torgau"],
+ "compositore-johannes-ockeghem":[47.3941,0.6848,"Tours"],
+ "compositore-juan-tizol":[40.7128,-74.006,"New York"],
+ "compositore-marcantonio-ingegneri":[45.1332,10.0227,"Cremona"],
+ "compositore-otto-kitzler":[48.3069,14.2858,"Linz"],
+ "compositore-pietro-alessandro-guglielmi":[40.8518,14.2681,"Napoli"],
+ "compositore-sofia-gubaidulina":[53.5511,9.9937,"Amburgo"],
+ "compositore-walter-klein":[48.2082,16.3738,"Vienna"],
+ "compositore-anton-reicha":[48.8566,2.3522,"Parigi"],
+ "compositore-anton-rubinstein":[59.9343,30.3351,"San Pietroburgo"],
+ "compositore-carl-ditters-von-dittersdorf":[48.2082,16.3738,"Vienna"],
+ "compositore-carl-stamitz":[49.4875,8.466,"Mannheim"],
+ "compositore-carlo-gesualdo":[40.93,15.069,"Gesualdo"],
+ "compositore-christian-theodor-weinlig":[51.3397,12.3731,"Lipsia"],
+ "compositore-claudio-merulo":[43.8756,10.254,"Parma"],
+ "compositore-cristobal-de-morales":[37.3891,-5.9845,"Siviglia"],
+ "compositore-eduard-marxsen":[53.5511,9.9937,"Amburgo"],
+ "compositore-felice-anerio":[41.9028,12.4964,"Roma"],
+ "compositore-francesco-gasparini":[45.4408,12.3155,"Venezia"],
+ "compositore-francesco-maria-veracini":[43.7696,11.2558,"Firenze"],
+ "compositore-francesco-soriano":[41.9028,12.4964,"Roma"],
+ "compositore-francisco-guerrero":[37.3891,-5.9845,"Siviglia"],
+ "compositore-francois-adrien-boieldieu":[49.4432,1.0993,"Rouen"],
+ "compositore-franz-anton-hoffmeister":[48.2082,16.3738,"Vienna"],
+ "compositore-franz-xaver-richter":[49.4875,8.466,"Mannheim"],
+ "compositore-frederick-converse":[42.3601,-71.0589,"Boston"],
+ "compositore-gennaro-manna":[40.8518,14.2681,"Napoli"],
+ "compositore-gioseffo-zarlino":[45.4408,12.3155,"Venezia"],
+ "compositore-giovanni-animuccia":[41.9028,12.4964,"Roma"],
+ "compositore-giovanni-bonaventura-viviani":[43.7696,11.2558,"Firenze"],
+ "compositore-giovanni-croce":[45.4408,12.3155,"Venezia"],
+ "compositore-giovanni-francesco-anerio":[41.9028,12.4964,"Roma"],
+ "compositore-giovanni-maria-nanino":[41.9028,12.4964,"Roma"],
+ "compositore-gregorio-allegri":[41.9028,12.4964,"Roma"],
+ "compositore-heinrich-ignaz-franz-von-biber":[47.8095,13.055,"Salisburgo"],
+ "compositore-henri-tomasi":[48.8566,2.3522,"Parigi"],
+ "compositore-jacob-obrecht":[51.0543,3.7174,"Gand"],
+ "compositore-jean-francois-lesueur":[48.8566,2.3522,"Parigi"],
+ "compositore-jean-marie-leclair":[48.8566,2.3522,"Parigi"],
+ "compositore-jeanine-tesori":[40.7128,-74.006,"New York"],
+ "compositore-joaquin-rodrigo":[40.4168,-3.7038,"Madrid"],
+ "compositore-johann-baptist-vanhal":[48.2082,16.3738,"Vienna"],
+ "compositore-johann-friedrich-fasch":[51.8413,12.2346,"Zerbst"],
+ "compositore-johann-friedrich-reichardt":[52.52,13.405,"Berlino"],
+ "compositore-johann-georg-albrechtsberger":[48.2082,16.3738,"Vienna"],
+ "compositore-johann-hermann-schein":[51.3397,12.3731,"Lipsia"],
+ "compositore-johann-kuhnau":[51.3397,12.3731,"Lipsia"],
+ "compositore-john-blow":[51.5074,-0.1278,"Londra"],
+ "compositore-jozef-elsner":[52.2297,21.0122,"Varsavia"],
+ "compositore-juan-del-encina":[40.9701,-5.6635,"Salamanca"],
+ "compositore-la-monte-young":[40.7128,-74.006,"New York"],
+ "compositore-launy-gr-ndahl":[55.6761,12.5683,"Copenaghen"],
+ "compositore-leonardo-leo":[40.8518,14.2681,"Napoli"],
+ "compositore-leonardo-vinci":[40.8518,14.2681,"Napoli"],
+ "compositore-luigi-russolo":[45.4642,9.19,"Milano"],
+ "compositore-maksimilian-steinberg":[59.9343,30.3351,"San Pietroburgo"],
+ "compositore-marchetto-cara":[45.1564,10.7914,"Mantova"],
+ "compositore-maria-teresa-agnesi":[45.4642,9.19,"Milano"],
+ "compositore-michael-haydn":[47.8095,13.055,"Salisburgo"],
+ "compositore-michael-nyman":[51.5074,-0.1278,"Londra"],
+ "compositore-michael-praetorius":[52.2271,10.5802,"Wolfenbüttel"],
+ "compositore-michele-novaro":[44.4056,8.9463,"Genova"],
+ "compositore-milij-balakirev":[59.9343,30.3351,"San Pietroburgo"],
+ "compositore-nadia-boulanger":[48.8566,2.3522,"Parigi"],
+ "compositore-niccolo-antonio-zingarelli":[40.8518,14.2681,"Napoli"],
+ "compositore-nicola-logroscino":[40.8518,14.2681,"Napoli"],
+ "compositore-pablo-de-sarasate":[42.8125,-1.6458,"Pamplona"],
+ "compositore-paul-creston":[40.7128,-74.006,"New York"],
+ "compositore-paul-dessau":[52.52,13.405,"Berlino"],
+ "compositore-paul-hindemith":[52.52,13.405,"Berlino"],
+ "compositore-pietro-antonio-locatelli":[52.3676,4.9041,"Amsterdam"],
+ "compositore-pietro-nardini":[43.5485,10.3106,"Livorno"],
+ "compositore-rene-leibowitz":[48.8566,2.3522,"Parigi"],
+ "compositore-richard-strauss":[48.1372,11.5756,"Monaco di Baviera"],
+ "compositore-rubin-goldmark":[40.7128,-74.006,"New York"],
+ "compositore-samuel-barber":[39.9526,-75.1636,"Filadelfia"],
+ "compositore-samuel-scheidt":[51.4828,11.9698,"Halle"],
+ "compositore-sergej-kusevickij":[42.3601,-71.0589,"Boston"],
+ "compositore-sergej-prokof-ev":[55.7558,37.6173,"Mosca"],
+ "compositore-sergej-taneev":[55.7558,37.6173,"Mosca"],
+ "compositore-simon-sechter":[48.2082,16.3738,"Vienna"],
+ "compositore-stanislao-mattei":[44.4949,11.3426,"Bologna"],
+ "compositore-stephen-sondheim":[40.7128,-74.006,"New York"],
+ "compositore-terry-riley":[37.7749,-122.4194,"San Francisco"],
+ "compositore-thomas-morley":[51.5074,-0.1278,"Londra"],
+ "compositore-vittoria-aleotti":[44.8381,11.6198,"Ferrara"],
+ "compositore-william-walton":[51.5074,-0.1278,"Londra"],
+ "compositore-witold-lutos-awski":[52.2297,21.0122,"Varsavia"],
+ "compositore-wojciech-zywny":[52.2297,21.0122,"Varsavia"],
+ "compositore-aleksandr-borodin":[59.9343,30.3351,"San Pietroburgo"],
+ "compositore-aleksandr-skrjabin":[55.7558,37.6173,"Mosca"],
+ "compositore-alexander-arutjunjan":[40.1792,44.4991,"Erevan"],
+ "compositore-alexander-von-zemlinsky":[48.2082,16.3738,"Vienna"],
+ "compositore-alfredo-casella":[45.0703,7.6869,"Torino"],
+ "compositore-ambroise-thomas":[49.1193,6.1757,"Metz"],
+ "compositore-amy-beach":[42.3601,-71.0589,"Boston"],
+ "compositore-anatolij-ljadov":[59.9343,30.3351,"San Pietroburgo"],
+ "compositore-andre-jolivet":[48.8566,2.3522,"Parigi"],
+ "compositore-bernard-herrmann":[40.7128,-74.006,"New York"],
+ "compositore-bruno-maderna":[45.4408,12.3155,"Venezia"],
+ "compositore-camillo-sivori":[44.4056,8.9463,"Genova"],
+ "compositore-carl-czerny":[48.2082,16.3738,"Vienna"],
+ "compositore-carl-friedrich-zelter":[52.52,13.405,"Berlino"],
+ "compositore-carl-maria-von-weber":[51.0504,13.7373,"Dresda"],
+ "compositore-charles-gounod":[48.8566,2.3522,"Parigi"],
+ "compositore-charles-koechlin":[48.8566,2.3522,"Parigi"],
+ "compositore-christian-cannabich":[49.4875,8.466,"Mannheim"],
+ "compositore-daniel-francois-esprit-auber":[48.8566,2.3522,"Parigi"],
+ "compositore-dora-pejacevic":[45.488,18.087,"Našice"],
+ "compositore-edgard-varese":[40.7128,-74.006,"New York"],
+ "compositore-edouard-lalo":[50.6292,3.0573,"Lilla"],
+ "compositore-edvard-grieg":[60.3913,5.3221,"Bergen"],
+ "compositore-emilie-mayer":[52.52,13.405,"Berlino"],
+ "compositore-erich-wolfgang-korngold":[34.0522,-118.2437,"Los Angeles"],
+ "compositore-eugene-ysaye":[50.6326,5.5797,"Liegi"],
+ "compositore-ferde-grofe":[40.7128,-74.006,"New York"],
+ "compositore-ferdinand-david":[51.3397,12.3731,"Lipsia"],
+ "compositore-florence-price":[41.8781,-87.6298,"Chicago"],
+ "compositore-frank-bridge":[51.5074,-0.1278,"Londra"],
+ "compositore-fritz-reiner":[47.4979,19.0402,"Budapest"],
+ "compositore-fromental-halevy":[48.8566,2.3522,"Parigi"],
+ "compositore-george-whitefield-chadwick":[42.3601,-71.0589,"Boston"],
+ "compositore-giacinto-scelsi":[41.9028,12.4964,"Roma"],
+ "compositore-giacomo-antonio-perti":[44.4949,11.3426,"Bologna"],
+ "compositore-gian-francesco-malipiero":[45.4298,12.3204,"Venezia"],
+ "compositore-giovanni-bottesini":[45.3629,9.6812,"Crema"],
+ "compositore-giovanni-simone-mayr":[45.6983,9.6773,"Bergamo"],
+ "compositore-gyorgy-kurtag":[47.4979,19.0402,"Budapest"],
+ "compositore-gyorgy-ligeti":[48.2082,16.3738,"Vienna"],
+ "compositore-henri-vieuxtemps":[50.5891,5.8624,"Verviers"],
+ "compositore-henry-cowell":[37.7749,-122.4194,"San Francisco"],
+ "compositore-henryk-gorecki":[50.2649,19.0238,"Katowice"],
+ "compositore-henryk-wieniawski":[51.2465,22.5684,"Lublino"],
+ "compositore-hugo-wolf":[48.2082,16.3738,"Vienna"],
+ "compositore-iannis-xenakis":[48.8566,2.3522,"Parigi"],
+ "compositore-jacques-ibert":[48.8566,2.3522,"Parigi"],
+ "compositore-jacques-offenbach":[48.8566,2.3522,"Parigi"],
+ "compositore-john-williams":[34.0522,-118.2437,"Los Angeles"],
+ "compositore-jules-massenet":[48.8566,2.3522,"Parigi"],
+ "compositore-krzysztof-penderecki":[50.0647,19.945,"Cracovia"],
+ "compositore-leroy-anderson":[42.3736,-71.1097,"Cambridge (Massachusetts)"],
+ "compositore-louis-armstrong":[29.9511,-90.0715,"New Orleans"],
+ "compositore-louis-spohr":[52.2689,10.5268,"Braunschweig"],
+ "compositore-mario-castelnuovo-tedesco":[43.7696,11.2558,"Firenze"],
+ "compositore-mary-lou-williams":[40.4406,-79.9959,"Pittsburgh"],
+ "compositore-max-bruch":[50.9375,6.9603,"Colonia"],
+ "compositore-max-steiner":[48.2082,16.3738,"Vienna"],
+ "compositore-pietro-mascagni":[43.5485,10.3106,"Livorno"],
+ "compositore-ruggero-leoncavallo":[40.8518,14.2681,"Napoli"],
+ "compositore-arrigo-boito":[45.4642,9.19,"Milano"],
+ "compositore-giacomo-meyerbeer":[48.8566,2.3522,"Parigi"],
+ "compositore-francesco-durante":[40.8518,14.2681,"Napoli"],
+ "compositore-nicola-porpora":[40.8518,14.2681,"Napoli"],
+ "compositore-amilcare-ponchielli":[45.4642,9.19,"Milano"],
+ "compositore-luigi-dallapiccola":[43.7696,11.2558,"Firenze"],
+ "compositore-nino-rota":[41.1171,16.8719,"Bari"],
+ "compositore-gaspare-spontini":[48.8566,2.3522,"Parigi"],
+ "compositore-ennio-morricone":[41.9028,12.4964,"Roma"],
+ "compositore-giovanni-battista-sammartini":[45.4642,9.19,"Milano"],
+ "compositore-baldassare-galuppi":[45.4408,12.3155,"Venezia"],
+ "compositore-giovanni-battista-martini":[44.4949,11.3426,"Bologna"],
+ "compositore-guillaume-de-machaut":[49.2583,4.0317,"Reims"],
+ "compositore-adam-de-la-halle":[50.291,2.777,"Arras"],
+ "compositore-guillaume-dufay":[50.176,3.235,"Cambrai"],
+ "compositore-francesco-landini":[43.7696,11.2558,"Firenze"],
+ "compositore-gherardello-da-firenze":[43.7696,11.2558,"Firenze"],
+ "compositore-girolamo-frescobaldi":[44.8381,11.6198,"Ferrara"],
+ "compositore-adriano-willaert":[45.4408,12.3155,"Venezia"],
+ "compositore-barbara-strozzi":[45.4408,12.3155,"Venezia"],
+ "compositore-luca-marenzio":[41.9028,12.4964,"Roma"],
+ "compositore-orlando-di-lasso":[48.1372,11.5756,"Monaco di Baviera"],
+ "compositore-thomas-tallis":[51.5074,-0.1278,"Londra"],
+ "compositore-william-byrd":[51.5074,-0.1278,"Londra"],
+ "compositore-tomas-luis-de-victoria":[40.4168,-3.7038,"Madrid"],
+ "compositore-giuseppe-tartini":[45.4064,11.8768,"Padova"],
+ "compositore-giovanni-battista-pergolesi":[40.8518,14.2681,"Napoli"],
+ "compositore-alessandro-scarlatti":[40.8518,14.2681,"Napoli"],
+ "compositore-domenico-scarlatti":[40.4168,-3.7038,"Madrid"],
+ "compositore-giuseppe-torelli":[44.4949,11.3426,"Bologna"],
+ "compositore-tomaso-albinoni":[45.4408,12.3155,"Venezia"],
+ "compositore-alessandro-marcello":[45.4408,12.3155,"Venezia"],
+ "compositore-francesca-caccini":[43.7696,11.2558,"Firenze"],
+ "compositore-giulio-caccini":[43.7696,11.2558,"Firenze"],
+ "compositore-jacopo-peri":[43.7696,11.2558,"Firenze"],
+ "compositore-giovanni-legrenzi":[45.4408,12.3155,"Venezia"],
+ "compositore-francesco-cavalli":[45.4408,12.3155,"Venezia"],
+ "compositore-antonio-caldara":[48.2082,16.3738,"Vienna"],
+ "compositore-georg-philipp-telemann":[53.5511,9.9937,"Amburgo"],
+ "compositore-dietrich-buxtehude":[53.8655,10.6866,"Lubecca"],
+ "compositore-johann-pachelbel":[49.4521,11.0767,"Norimberga"],
+ "compositore-francois-couperin":[48.8566,2.3522,"Parigi"],
+ "compositore-jean-philippe-rameau":[48.8566,2.3522,"Parigi"],
+ "compositore-elisabeth-jacquet-de-la-guerre":[48.8566,2.3522,"Parigi"],
+ "compositore-marin-marais":[48.8566,2.3522,"Parigi"],
+ "compositore-henry-purcell":[51.5074,-0.1278,"Londra"],
+ "compositore-franz-schubert":[48.2082,16.3738,"Vienna"],
+ "compositore-marianna-martines":[48.2082,16.3738,"Vienna"],
+ "compositore-christoph-willibald-gluck":[48.2082,16.3738,"Vienna"],
+ "compositore-carl-philipp-emanuel-bach":[53.5511,9.9937,"Amburgo"],
+ "compositore-johann-christian-bach":[51.5074,-0.1278,"Londra"],
+ "compositore-johann-stamitz":[49.4875,8.466,"Mannheim"],
+ "compositore-giovanni-paisiello":[40.8518,14.2681,"Napoli"],
+ "compositore-domenico-cimarosa":[40.8518,14.2681,"Napoli"],
+ "compositore-luigi-cherubini":[48.8566,2.3522,"Parigi"],
+ "compositore-niccolo-piccinni":[48.8566,2.3522,"Parigi"],
+ "compositore-vincenzo-bellini":[48.8566,2.3522,"Parigi"],
+ "compositore-gaetano-donizetti":[45.6983,9.6773,"Bergamo"],
+ "compositore-felix-mendelssohn":[51.3397,12.3731,"Lipsia"],
+ "compositore-fanny-hensel":[52.52,13.405,"Berlino"],
+ "compositore-robert-schumann":[51.3397,12.3731,"Lipsia"],
+ "compositore-clara-schumann":[51.3397,12.3731,"Lipsia"],
+ "compositore-georges-bizet":[48.8566,2.3522,"Parigi"],
+ "compositore-cesar-franck":[48.8566,2.3522,"Parigi"],
+ "compositore-pauline-viardot":[48.8566,2.3522,"Parigi"],
+ "compositore-louise-farrenc":[48.8566,2.3522,"Parigi"],
+ "compositore-igor-stravinskij":[48.8566,2.3522,"Parigi"],
+ "compositore-anton-bruckner":[48.2082,16.3738,"Vienna"],
+ "compositore-francis-poulenc":[48.8566,2.3522,"Parigi"],
+ "compositore-darius-milhaud":[48.8566,2.3522,"Parigi"],
+ "compositore-arthur-honegger":[48.8566,2.3522,"Parigi"],
+ "compositore-ferruccio-busoni":[52.52,13.405,"Berlino"],
+ "compositore-ottorino-respighi":[41.9028,12.4964,"Roma"],
+ "compositore-luigi-nono":[45.4408,12.3155,"Venezia"],
+ "compositore-luciano-berio":[43.7696,11.2558,"Firenze"],
+ "compositore-goffredo-petrassi":[41.9028,12.4964,"Roma"],
+ "compositore-aaron-copland":[40.7128,-74.006,"New York"],
+ "compositore-steve-reich":[40.7128,-74.006,"New York"],
+ "compositore-philip-glass":[40.7128,-74.006,"New York"],
+ "compositore-carl-orff":[48.1372,11.5756,"Monaco di Baviera"],
+ "compositore-karlheinz-stockhausen":[50.9375,6.9603,"Colonia"],
+ "compositore-benjamin-britten":[52.1579,1.6024,"Aldeburgh"],
+ "compositore-john-adams":[37.7749,-122.4194,"San Francisco"],
+ "compositore-pierre-schaeffer":[48.8566,2.3522,"Parigi"],
+ "compositore-pierre-henry":[48.8566,2.3522,"Parigi"],
+ "compositore-kurt-weill":[52.52,13.405,"Berlino"],
+ "compositore-antonio-vivaldi":[45.4408,12.3155,"Venezia"],
+ "compositore-benedetto-marcello":[45.4408,12.3155,"Venezia"],
+ "compositore-ludwig-van-beethoven":[50.7374,7.0982,"Bonn"],
+ "compositore-leonard-bernstein":[40.7128,-74.0060,"New York"],
+ "compositore-johann-sebastian-bach":[51.3397,12.3731,"Lipsia"],
+ "compositore-georg-friedrich-handel":[51.4828,11.9698,"Halle"],
+ "compositore-wolfgang-amadeus-mozart":[47.8095,13.0550,"Salisburgo"],
+ "compositore-joseph-haydn":[47.8457,16.5233,"Eisenstadt"],
+ "compositore-claudio-monteverdi":[45.4408,12.3155,"Venezia"],
+ "compositore-giovanni-pierluigi-da-palestrina":[41.9028,12.4964,"Roma"],
+ "compositore-arcangelo-corelli":[41.9028,12.4964,"Roma"],
+ "compositore-gioachino-rossini":[43.9102,12.9133,"Pesaro"],
+ "compositore-niccolo-paganini":[44.4056,8.9463,"Genova"],
+ "compositore-antonio-salieri":[48.2082,16.3738,"Vienna"],
+ "compositore-giuseppe-verdi":[45.0527,9.6966,"Busseto"],
+ "compositore-giacomo-puccini":[43.8430,10.5079,"Lucca"],
+ "compositore-hector-berlioz":[48.8566,2.3522,"Parigi"],
+ "compositore-claude-debussy":[48.8566,2.3522,"Parigi"],
+ "compositore-maurice-ravel":[48.8566,2.3522,"Parigi"],
+ "compositore-gabriel-faure":[48.8566,2.3522,"Parigi"],
+ "compositore-camille-saint-saens":[48.8566,2.3522,"Parigi"],
+ "compositore-erik-satie":[48.8566,2.3522,"Parigi"],
+ "compositore-olivier-messiaen":[48.8566,2.3522,"Parigi"],
+ "compositore-pierre-boulez":[48.8566,2.3522,"Parigi"],
+ "compositore-frederic-chopin":[52.2297,21.0122,"Varsavia"],
+ "compositore-franz-liszt":[50.9795,11.3235,"Weimar"],
+ "compositore-richard-wagner":[49.9456,11.5713,"Bayreuth"],
+ "compositore-johannes-brahms":[48.2082,16.3738,"Vienna"],
+ "compositore-gustav-mahler":[48.2082,16.3738,"Vienna"],
+ "compositore-arnold-schonberg":[48.2082,16.3738,"Vienna"],
+ "compositore-anton-webern":[48.2082,16.3738,"Vienna"],
+ "compositore-alban-berg":[48.2082,16.3738,"Vienna"],
+ "compositore-petr-il-ic-cajkovskij":[55.7558,37.6173,"Mosca"],
+ "compositore-nikolaj-rimskij-korsakov":[59.9311,30.3609,"San Pietroburgo"],
+ "compositore-modest-musorgskij":[59.9311,30.3609,"San Pietroburgo"],
+ "compositore-dmitrij-sostakovic":[59.9311,30.3609,"San Pietroburgo"],
+ "compositore-sergej-prokofev":[55.7558,37.6173,"Mosca"],
+ "compositore-sergej-rachmaninov":[55.7558,37.6173,"Mosca"],
+ "compositore-bela-bartok":[47.4979,19.0402,"Budapest"],
+ "compositore-zoltan-kodaly":[47.4979,19.0402,"Budapest"],
+ "compositore-bedrich-smetana":[50.0755,14.4378,"Praga"],
+ "compositore-antonin-dvorak":[50.0755,14.4378,"Praga"],
+ "compositore-leos-janacek":[49.1951,16.6068,"Brno"],
+ "compositore-john-cage":[40.7128,-74.0060,"New York"],
+ "compositore-charles-ives":[41.0534,-73.5387,"Connecticut"],
+ "compositore-george-gershwin":[40.7128,-74.0060,"New York"],
+ "compositore-duke-ellington":[38.9072,-77.0369,"Washington"],
+ "compositore-billy-strayhorn":[40.7128,-74.0060,"New York"],
+ "compositore-margaret-bonds":[41.8781,-87.6298,"Chicago"]
+};
+function stableHash(s){let h=2166136261;for(const ch of String(s)){h^=ch.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
+function fallbackCountryGeo(n){
+ const area=COUNTRY_AREAS[n?.country];if(!area)return null;
+ const h=stableHash(n.id),u=((h&65535)/65535)-.5,v=(((h>>>16)&65535)/65535)-.5;
+ return {lat:area[0]+u*area[2],lon:area[1]+v*area[3],span:50,precision:"country-distributed",place:n.country};
+}
+function baseGeo(n){
+ if(!n)return null;
+ const ov=MUSICIAN_GEO_OVERRIDES[n.id];if(ov)return {lat:ov[0],lon:ov[1],span:32,precision:"city-override",place:ov[2]};
+ if(n.type==="geografia"){
+  const cc=({"geografia-francia":[46.6,2.3],"geografia-italia":[42.8,12.5],"geografia-inghilterra":[53,-1.5],"geografia-spagna":[40,-4],"geografia-germania":[51,10],"geografia-austria":[47.6,14.1],"geografia-russia":[56,37.6],"geografia-cechia":[49.8,15.5],"geografia-stati-uniti":[39,-98],"geografia-ungheria":[47.2,19.4],"geografia-polonia":[52,19.1],"geografia-paesi-bassi":[52.2,5.3]})[n.id];
+  return cc?{lat:cc[0],lon:cc[1],span:70,precision:"country"}:null;
+ }
+ if(n.geo_focus&&Number.isFinite(n.geo_focus.lat)&&Number.isFinite(n.geo_focus.lon)&&n.geo_focus.precision!=="country-approximation")return {...n.geo_focus};
+ // Niente coordinate casuali o centri nazionali presentati come luoghi biografici.
+ // In assenza di una città documentata il nodo rimane disponibile nella rete schematica.
+ return null;
+}
+function circularMeanLon(values){
+ if(!values.length)return 0;let x=0,y=0;
+ for(const lon of values){const r=lon*Math.PI/180;x+=Math.cos(r);y+=Math.sin(r);}
+ return Math.atan2(y,x)*180/Math.PI;
+}
+function geoFromNode(n){
+ if(!n)return null;
+ if(geoCache.has(n.id))return geoCache.get(n.id);
+ const own=baseGeo(n);if(own){geoCache.set(n.id,own);return own;}
+ // Una corrente, un ambito o un personaggio senza coordinate proprie non è un luogo:
+ // niente baricentri artificiali nell'Atlantico.
+ if(n.type==="corrente"||n.type==="ambito"||n.type==="persona"){
+  geoCache.set(n.id,null);return null;
+ }
+ // Non collocare un autore nel baricentro delle sue relazioni: non è una località biografica.
+ // In assenza di coordinate attendibili resta ricercabile, senza un pallino falso sulla carta.
+ geoCache.set(n.id,null);return null;
+}
+const lonDelta=(a,b)=>((a-b+540)%360)-180;
+const mapBase=()=>Math.max(320,Math.min(w,2*h));
+function rawGeoPoint(n){
+ const point=geoFromNode(n);if(!point)return null;
+ const g=geoState,world=mapBase()*360/Math.max(6,g.span),height=world/2;
+ return {x:w/2+lonDelta(point.lon,g.lon)/360*world,y:h/2+(g.lat-point.lat)/180*height,point,world,height};
+}
+function geoScreenPoint(n,withManual=true){
+ const raw=rawGeoPoint(n);if(!raw)return null;
+ const manual=withManual?(n.manualDx||0):0,manualY=withManual?(n.manualDy||0):0;
+ const auto=withManual&&!n.manualPinned?(n.autoDx||0):0,autoY=withManual&&!n.manualPinned?(n.autoDy||0):0;
+ const ex=withManual?(n.explodeDx||0):0,ey=withManual?(n.explodeDy||0):0;
+ return {x:raw.x+manual+auto+ex,y:raw.y+manualY+autoY+ey,depth:0,scale:1,r:15,geo:true,point:raw.point};
+}
+function contextRawPoint(n){
+ if(!selected)return null;
+ const schematic=!geoFromNode(selected);
+ // Per scuole, correnti e generi senza coordinate, anche i compositori
+ // collegati sono disposti in una rete schematica, non fuori campo.
+ if(n===selected&&schematic){
+  const stage=graphStage();
+  return {x:stage.cx,y:stage.cy,depth:0,scale:1,r:15,geo:false,context:true,unlocated:true};
+ }
+ if(!schematic&&geoFromNode(n))return null;
+ const depths=selectedDepths(readingDepth()),depth=depths?.get(n.id);
+ if(depth==null||depth<1||depth>3)return null;
+ // Anche un compositore privo di coordinate puo comparire come nodo schematico
+ // quando e collegato direttamente al nodo geografico selezionato.
+ if(!schematic&&!(n.type==="corrente"||n.type==="ambito"||n.type==="persona"||(n.type==="compositore"&&depth===1&&!geoFromNode(n))))return null;
+ const stage=graphStage(),center=schematic?{x:stage.cx,y:stage.cy}:rawGeoPoint(selected);
+ if(!center)return null;
+ const h=stableHash(n.id),angle=((h%100000)/100000)*Math.PI*2;
+ // Generi direttamente collegati a un compositore: mantieni una distanza
+ // leggibile anche in visualizzazione geografica, senza inventare coordinate.
+ const directGenre=!schematic&&depth===1&&n.type==="corrente"&&
+  (n.taxonomy?.visibility==="principale"||
+   ["genere-musical","genere-operetta"].includes(n.id));
+ const ring=schematic
+  ?Math.min(110,Math.max(55,Math.min(stage.right-stage.left,stage.bottom-stage.top)*.22))+(depth-1)*65+((h>>>8)%31)
+  :directGenre?Math.min(105,Math.max(66,Math.min(stage.right-stage.left,stage.bottom-stage.top)*.19))+(h%13)
+  :76+depth*54+((h>>>8)%27);
+ return {x:center.x+Math.cos(angle)*ring,y:center.y+Math.sin(angle)*ring,depth:0,scale:1,r:15,geo:false,context:true};
+}
+function contextScreenPoint(n,withManual=true){
+ const raw=contextRawPoint(n);if(!raw)return null;
+ const manual=withManual?(n.manualDx||0):0,manualY=withManual?(n.manualDy||0):0;
+ const ex=withManual?(n.explodeDx||0):0,ey=withManual?(n.explodeDy||0):0;
+ // I nodi di una rete non geolocalizzata devono restare nello spazio utile
+ // del grafo anche dopo spostamenti manuali e rimescolamenti.
+ const stage=graphStage(),margin=22;
+ return {...raw,
+  x:clamp(raw.x+manual+ex,stage.left+margin,stage.right-margin),
+  y:clamp(raw.y+manualY+ey,stage.top+margin,stage.bottom-margin)
+ };
+}
+function resetAutoLayout(){
+ for(const n of nodes){if(!n.manualPinned){n.autoDx=0;n.autoDy=0;}}
+}
+function clearExplodeLayout(){
+ explodeActive=false;
+ for(const n of nodes){n.explodeDx=0;n.explodeDy=0;}
+ if(explodeBtn){explodeBtn.disabled=!selected;explodeBtn.textContent="✦ Esplodi";}
+}
+function shuffleNodes(list){
+ const out=[...list];
+ for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}
+ return out;
+}
+let explodeCycle=0;
+function explodeNetwork(){
+ if(!selected)return;
+ const repeat=explodeActive;
+ explodeCycle=repeat?explodeCycle+1:0;
+ clearExplodeLayout();resetAutoLayout();
+ const center=rawGeoPoint(selected)||contextRawPoint(selected);if(!center)return;
+ const depths=selectedDepths(readingDepth());if(!depths)return;
+ const spotlight=readingSpotlight(),spotlightNodes=new Set();
+ for(const e of currentEdges()){
+  if(!spotlight.has(readingKey(e)))continue;
+  if(e.source===selected.id)spotlightNodes.add(e.target);
+  if(e.target===selected.id)spotlightNodes.add(e.source);
+ }
+ // Esplodi ridistribuisce esclusivamente nodi non compositori. I compositori restano sulla propria geografia.
+ const limits=[[6,0,0],[12,6,0],[14,9,6]][readingLevel];
+ const rotation=Math.random()*Math.PI*2;
+ let moved=0,available=0;
+ for(let depth=1;depth<=readingDepth();depth++){
+  const pool=nodes.filter(n=>n!==selected&&n.type!=="compositore"&&depths.get(n.id)===depth&&visibleNode(n)&&(rawGeoPoint(n)||contextRawPoint(n)));
+  available+=pool.length;
+  pool.sort((a,b)=>(Number(spotlightNodes.has(b.id))-Number(spotlightNodes.has(a.id)))||a.label.localeCompare(b.label,"it")||a.id.localeCompare(b.id));
+  const limit=limits[depth-1],count=Math.min(pool.length,limit);
+  if(!count)continue;
+  const offset=(explodeCycle*count)%pool.length;
+  const ringNodes=Array.from({length:count},(_,i)=>pool[(offset+i)%pool.length]);
+  const rx=[150,265,350][depth-1],ry=[117,195,270][depth-1];
+  const phase=rotation+(depth-1)*.43;
+  for(let i=0;i<count;i++){
+   const n=ringNodes[i],raw=rawGeoPoint(n)||contextRawPoint(n);
+   const angle=phase+(Math.PI*2*i/count);
+   const stage=graphStage(),margin=22;
+   const targetX=clamp(center.x+Math.cos(angle)*rx,stage.left+margin,stage.right-margin);
+   const targetY=clamp(center.y+Math.sin(angle)*ry,stage.top+margin,stage.bottom-margin);
+   n.explodeDx=targetX-(raw.x+(n.manualDx||0));
+   n.explodeDy=targetY-(raw.y+(n.manualDy||0));
+   moved++;
+  }
+ }
+ if(!moved)return;
+ explodeActive=true;
+ if(explodeBtn){explodeBtn.disabled=false;explodeBtn.textContent="✦ Rimescola";}
+ status.textContent=selected.label+" · raggiera esplosa · "+moved+" di "+available+" nodi · "+readingNames[readingLevel];
+}
+function categoryVisible(n){return n===selected||activeCategories.has(n.type);}
+function networkNodesForFocus(n){
+ if(!n)return [];
+ const out=[n],seen=new Set([n.id]);
+ for(const e of currentEdges()){
+  let other=null;if(e.source===n.id)other=byId.get(e.target);else if(e.target===n.id)other=byId.get(e.source);
+  if(!other||other.type==="geografia"||!categoryVisible(other)||seen.has(other.id))continue;
+  seen.add(other.id);out.push(other);
+ }
+ return out;
+}
+function fitGeoNetwork(n,tight=false){
+ if(!geoState.enabled)return;
+ if(!n){geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";return;}
+ const center=geoFromNode(n);
+ if(!center){
+  // Evita che la mappa resti su Copland (o sull'ultimo autore navigato).
+  // La selezione è schematica finché non esiste una città documentata.
+  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
+  geoAutoSpan=360;geoZoomPct=0;syncZoomControls();
+  geoLabel.textContent=n.label+" · nodo non geolocalizzato";
+  return;
+ }
+ const pts=networkNodesForFocus(n).map(geoFromNode).filter(Boolean);
+ let maxLon=0,maxLat=0;
+ for(const p of pts){maxLon=Math.max(maxLon,Math.abs(lonDelta(p.lon,center.lon)));maxLat=Math.max(maxLat,Math.abs(p.lat-center.lat));}
+ const verticalFactor=Math.max(.65,w/Math.max(320,h)),padding=tight?1.78:2.12,minSpan=tight?10:14;
+ const span=Math.min(360,Math.max(minSpan,maxLon*padding,maxLat*padding*verticalFactor,center.span&&pts.length<=1?Math.min(center.span,tight?18:28):0));
+ geoState.targetLat=center.lat;geoState.targetLon=center.lon;geoState.targetSpan=span;
+ geoAutoSpan=span;geoZoomPct=50;syncZoomControls();
+ geoLabel.textContent=n.label+" · "+(center.place||"centro geografico")+" · rete "+pts.length+" nodi";
+}
+function moveGeo(n,tight=false){fitGeoNetwork(n,tight);}
+function paintGeo(dt=16.7){
+ if(!earthMap)return;
+ const g=geoState,moveK=1-Math.exp(-dt/92),zoomK=1-Math.exp(-dt/112);
+ const dl=lonDelta(g.targetLon,g.lon);
+ g.lon+=dl*moveK;g.lat+=(g.targetLat-g.lat)*moveK;g.span+=(g.targetSpan-g.span)*zoomK;
+ if(Math.abs(dl)<.0005)g.lon=g.targetLon;if(Math.abs(g.targetLat-g.lat)<.0005)g.lat=g.targetLat;if(Math.abs(g.targetSpan-g.span)<.001)g.span=g.targetSpan;
+ const world=mapBase()*360/Math.max(6,g.span),height=world/2;
+ const centerX=(g.lon+180)/360*world,centerY=(90-g.lat)/180*height;
+ earthMap.style.backgroundSize=world.toFixed(1)+"px "+height.toFixed(1)+"px";
+ earthMap.style.backgroundPosition=(w/2-centerX).toFixed(1)+"px "+(h/2-centerY).toFixed(1)+"px";
+}
+followGeo?.addEventListener("change",()=>{geoState.enabled=followGeo.checked;if(geoState.enabled)fitGeoNetwork(selected);});
+function resolveScreenCollisions(points){
+ const visible=points.filter(p=>p.node.type!=="geografia"&&visibleNode(p.node));
+ if(visible.length<2)return;
+ // In una vista continentale o mondiale la geografia prevale:
+ // nessuna "esplosione" grafica dei nodi lontano dalla loro città.
+ if(geoState.span>70){resetAutoLayout();return;}
+ const cellSize=48;
+ const world=mapBase()*360/Math.max(6,geoState.span),height=world/2;
+ // Scostamento massimo espresso in gradi, poi convertito in pixel.
+ // Serve solo a distinguere nodi quasi coincidenti senza falsarne la posizione.
+ const maxAutoX=clamp(world*(.45/360),2,18);
+ const maxAutoY=clamp(height*(.35/180),2,16);
+ const push=(p,dx,dy)=>{
+  if(p.node.manualPinned||p.node===selected)return;
+  const oldX=p.node.autoDx||0,oldY=p.node.autoDy||0;
+  const nextX=clamp(oldX+dx,-maxAutoX,maxAutoX);
+  const nextY=clamp(oldY+dy,-maxAutoY,maxAutoY);
+  p.node.autoDx=nextX;p.node.autoDy=nextY;
+  // Applica solo la parte consentita: il limite vale anche sul fotogramma corrente.
+  p.x+=nextX-oldX;p.y+=nextY-oldY;
+ };
+ for(let pass=0;pass<2;pass++){
+  const grid=new Map();
+  for(const a of visible){
+   const gx=Math.floor(a.x/cellSize),gy=Math.floor(a.y/cellSize);
+   for(let ox=-1;ox<=1;ox++)for(let oy=-1;oy<=1;oy++){
+    const bucket=grid.get((gx+ox)+","+(gy+oy));if(!bucket)continue;
+    for(const b of bucket){
+     let dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy),min=(a.r||12)+(b.r||12)+7;
+     if(d>=min)continue;
+     if(d<.01){dx=(stableHash(a.node.id+b.node.id)%2?1:-1);dy=.3;d=Math.hypot(dx,dy);}
+     const k=Math.min(7,(min-d)*.42)/d,nx=dx*k,ny=dy*k;
+     const aFixed=a.node===selected||a.node.manualPinned,bFixed=b.node===selected||b.node.manualPinned;
+     if(aFixed&&bFixed)continue;
+     if(aFixed)push(b,-2*nx,-2*ny);
+     else if(bFixed)push(a,2*nx,2*ny);
+     else{push(a,nx,ny);push(b,-nx,-ny);}
+    }
+   }
+   const key=gx+","+gy;if(!grid.has(key))grid.set(key,[]);grid.get(key).push(a);
+  }
+ }
+}
+// Lo spazio effettivo del grafo non coincide con tutto lo schermo:
+// testata, lenti, strumenti e scheda devono restare fuori dal suo centro.
+function graphStage(){
+ const mobile=w<=700;
+ const rightPanel=!mobile&&document.body.classList.contains("panel-open")?Math.min(315,w*.85):0;
+ const top=mobile?Math.min(211,h*.32):Math.min(232,h*.32);
+ const bottomRoom=mobile?(document.body.classList.contains("controls-open")?Math.min(218,h*.29):Math.min(118,h*.20)):Math.min(92,h*.14);
+ const left=mobile?17:32,right=Math.max(left+130,w-rightPanel-(mobile?17:32));
+ const bottom=Math.max(top+135,h-bottomRoom);
+ const cx=(left+right)/2,cy=(top+bottom)/2;
+ const base=Math.max(9,Math.min((right-left)*.106,(bottom-top)*.109));
+ return {left,right,top,bottom,cx,cy,base};
+}
+function sxworld(node){
+ const g=graphStage();
+ let x=node.x-camera.x,y=node.y-camera.y,z=node.z-camera.z;
+ const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),si=Math.sin(rotX);
+ const rx=x*cy-z*sy,rz=x*sy+z*cy,ry=y*cx-rz*si,depth=y*si+rz*cx;
+ const k=9/(16+depth),scale=g.base*zoom*k;
+ return {x:g.cx+rx*scale,y:g.cy+ry*scale,scale,depth};
+}
+function unproject(px,py,depth){
+ const g=graphStage(),scale=g.base*zoom*9/(16+depth);
+ const rx=(px-g.cx)/scale,ry=(py-g.cy)/scale;
+ const cx=Math.cos(rotX),si=Math.sin(rotX),cy=Math.cos(rotY),sy=Math.sin(rotY);
+ const yy=ry*cx+depth*si,rz=-ry*si+depth*cx;
+ return {x:camera.x+rx*cy+rz*sy,y:camera.y+yy,z:camera.z-rx*sy+rz*cy};
+}
+// Integrazione editoriale dei generi recenti: due nodi veri, non scorciatoie di menu.
+// Il grafo storico resta intatto; l'estensione JSON conserva la provenienza delle aggiunte.
+function integrateGenreExtension(db,extension){
+ if(!extension||!Array.isArray(extension.nodes)||!Array.isArray(extension.relations))return;
+ const key=v=>String(v||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("it").trim();
+ const names=new Map(),ids=new Map(),aliases=new Map();
+ for(const n of db.nodes){
+  ids.set(n.id,n);
+  if(["compositore","corrente"].includes(n.type)){
+   for(const name of [n.label,n.name,...(n.aliases||[])]){
+    const k=key(name);if(k&&!names.has(k))names.set(k,n);
+   }
+  }
+ }
+ for(const wanted of extension.nodes){
+  const existing=ids.get(wanted.id)||(names.get(key(wanted.label))?.type==="corrente"?names.get(key(wanted.label)):null);
+  if(existing){
+   aliases.set(wanted.id,existing.id);
+   if(wanted.url)existing.url=wanted.url;
+   if(!existing.taxonomy)existing.taxonomy=wanted.taxonomy;
+  }else{
+   const n={...wanted};db.nodes.push(n);ids.set(n.id,n);names.set(key(n.label),n);aliases.set(wanted.id,n.id);
+  }
+ }
+ const seen=new Set(db.edges.map(e=>[e.source,e.target].sort().join("|")));
+ let added=0;
+ for(const relation of extension.relations){
+  const source=aliases.get(relation.source)||relation.source;
+  const labels=[relation.target_label,...(relation.target_aliases||[])].filter(Boolean);
+  const target=relation.target?(aliases.get(relation.target)||relation.target)
+   :labels.map(label=>names.get(key(label))).find(n=>n?.type==="compositore")?.id;
+  if(!ids.has(source)||!ids.has(target)||source===target)continue;
+  const pair=[source,target].sort().join("|");if(seen.has(pair))continue;
+  db.edges.push({id:"genre-extension-operetta-musical-"+added,source,target,
+   kind:relation.kind||"appartenenza-tematica",weight:relation.weight||2,
+   forward:relation.forward,reverse:relation.reverse,
+   sources:Array.isArray(relation.sources)?relation.sources:[],
+   note:relation.note||"Relazione documentata nel percorso storico collegato."});
+  seen.add(pair);added++;
+ }
+ console.info("[Musurgia Mundi] Operetta e Musical: nodi integrati, relazioni documentate",added);
+}
+function prepare(db){if(!Array.isArray(db.nodes)||!Array.isArray(db.edges))throw Error("Schema non valido");
+ // Un regista non e' un compositore: la categoria resta ontologica, anche nei rapporti con le colonne sonore.
+ // Conversione in sola visualizzazione per gli eventuali record storici mal classificati.
+ const cinemaDirectors=new Set(["alfred hitchcock","stanley kubrick","federico fellini","sergej ejzenstejn","sergei eisenstein","s. m. eisenstein","orson welles","luchino visconti","francois truffaut","françois truffaut","akira kurosawa","charlie chaplin","charles chaplin","bernardo bertolucci","sergio leone","david lynch","martin scorsese","steven spielberg","alfonso cuaron","alfonso cuarón","tim burton"]);
+ // Per una figura gia' registrata come persona, il filtro della lente musicale
+ // non deve nascondere i registi per i quali la pagina sul cinema documenta
+ // un rapporto specifico con la partitura (Hitchcock/Herrmann, Fellini/Rota)
+ // o con la pratica musicale delle proiezioni (Melies). Non li trasforma in compositori.
+ const cinemaNarrativePeople=new Set(["alfred hitchcock","federico fellini","georges melies","georges méliès"]);
+ const all=db.nodes.filter(n=>n.type!=="ambito"&&n.visible!==0&&n.visible!=="0").map(n=>{
+  const name=String(n.label||n.name||"").toLocaleLowerCase("it").trim();
+  if(n.type==="compositore"&&cinemaDirectors.has(name))
+   return {...n,type:"persona",music_relevance:true,category_audit:"regista cinematografico; categoria corretta nella visualizzazione"};
+  if(n.type==="persona"&&cinemaNarrativePeople.has(name))
+   return {...n,music_relevance:true,category_audit:"figura del cinema: relazione con la musica documentata nel percorso Dal musical al film"};
+  return n;
+ });
+ const anchors=new Map();let i=0;
+ for(const n of all){let a=i++*2.399963,rad=8*Math.sqrt((i+.5)/all.length),offset=n.type==="periodo"?6:n.type==="ambito"?5:rad;
+  const item={...n,x:Math.cos(a)*offset+(rnd()-.5)*2,y:Math.sin(a)*offset+(rnd()-.5)*2,z:(rnd()-.5)*9,vx:0,vy:0,vz:0,autoDx:0,autoDy:0,explodeDx:0,explodeDy:0,radius:n.type==="compositore"||n.type==="persona"?5:n.type==="geografia"?8:11};
+  nodes.push(item);byId.set(item.id,item);if(item.type==="periodo")anchors.set(item.id,item);}
+ for(const n of nodes){if(n.type!=="compositore"&&!(n.type==="persona"&&n.music_relevance))continue;const period=db.edges.find(e=>e.source===n.id&&byId.get(e.target)?.type==="periodo");if(period){const a=anchors.get(period.target);if(a){n.x=a.x+(rnd()-.5)*5;n.y=a.y+(rnd()-.5)*5;n.z=a.z+(rnd()-.5)*5;}}}
+ edges=db.edges.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>({...e,a:byId.get(e.source),b:byId.get(e.target)}));
+ videos=db.videos||[];videoLinks=db.video_nodes||[];
+ const lenses=db.lenses||{};lensGroups=lenses.groups||[];
+ const auditLensExclusions={missingNode:0,missingSources:0,notDocumented:0};
+ lensEdges=(lenses.relations||[]).filter(e=>{
+  if(!(typeof e.status==="string"&&e.status.startsWith("documentato"))){auditLensExclusions.notDocumented++;return false;}
+  if(!byId.has(e.source)||!byId.has(e.target)){auditLensExclusions.missingNode++;return false;}
+  if(!e.sources?.length){auditLensExclusions.missingSources++;return false;}
+  return true;
+ }).map(e=>({...e,weight:2,a:byId.get(e.source),b:byId.get(e.target)}));
+ if(auditLensExclusions.missingNode||auditLensExclusions.missingSources){
+  console.warn("[Musurgia Mundi] Relazioni specialistiche escluse dalla visualizzazione",auditLensExclusions);
+ }
+  const schoolLensEdges=lensEdges.filter(e=>e.group==="scuole");
+  const schoolPairs=new Set(schoolLensEdges.map(e=>[e.source,e.target].sort().join("|")));
+  // Un legame di scuola presente sia nel grafo storico sia nella lente documentata
+  // viene disegnato una sola volta. Prevale la relazione specialistica con fonti e verbi direzionali.
+  historySchoolEdges=[...edges.filter(e=>!schoolPairs.has([e.source,e.target].sort().join("|"))),...schoolLensEdges];
+ // Solo visibilità: raccordi ricostruiti da specializzazioni già documentate; nessun nuovo arco persistente.
+ derivedGenreEdges=compileDerivedGenreEdges();
+ geoCache.clear();activeEdgesCacheKey="";activeEdgesCache=[];selectedNeighborCacheKey="";selectedNeighborCache=new Set();selectedDepthCacheKey="";selectedDepthCache=new Map();
+ freeNodes=nodes.filter(n=>!geoFromNode(n));const freeIds=new Set(freeNodes.map(n=>n.id));freeEdges=edges.filter(e=>freeIds.has(e.source)&&freeIds.has(e.target));
+ const composerCount=nodes.filter(n=>n.type==="compositore").length;
+ status.textContent=composerCount+" compositori · "+edges.length+" relazioni musicali · doppio clic per esplorare";
+ zoom=1;geoZoomPct=0;geoAutoSpan=360;geoState.lat=20;geoState.lon=0;geoState.span=360;geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
+ resize();syncLensControls();syncCategoryControls();syncZoomControls();
+}
+function physics(){
+ if(!freeNodes.length)return;
+ for(const n of freeNodes){n.vx+=-n.x*.00021;n.vy+=-n.y*.00021;n.vz+=-n.z*.00021;}
+ for(const e of freeEdges){const a=e.a,b=e.b;let dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d=Math.hypot(dx,dy,dz)||.001,preferred=(a.type==="compositore"&&b.type==="compositore")?2.8:3.6;let f=clamp((d-preferred)*.0025*(e.weight||1),-.035,.035)/d;dx*=f;dy*=f;dz*=f;a.vx+=dx;a.vy+=dy;a.vz+=dz;b.vx-=dx;b.vy-=dy;b.vz-=dz;}
+ for(let i=0;i<freeNodes.length;i++){let a=freeNodes[i];for(let j=i+1;j<freeNodes.length;j++){let b=freeNodes[j],dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,d2=dx*dx+dy*dy+dz*dz;if(d2>5.5||d2<.00001)continue;let f=.008/(d2+.2);a.vx-=dx*f;a.vy-=dy*f;a.vz-=dz*f;b.vx+=dx*f;b.vy+=dy*f;b.vz+=dz*f;}}
+ for(const n of freeNodes){if((drag&&drag.node===n)||n.manualPinned){n.vx=n.vy=n.vz=0;continue;}n.vx=clamp(n.vx*.89,-.12,.12);n.vy=clamp(n.vy*.89,-.12,.12);n.vz=clamp(n.vz*.89,-.12,.12);n.x+=n.vx;n.y+=n.vy;n.z+=n.vz;}
+}
+function activeLensKey(){return [...activeLenses].sort().join("|");}
+function currentEdges(){
+ const key=activeLensKey();if(key===activeEdgesCacheKey)return activeEdgesCache;
+ const all=[];if(activeLenses.has("musica"))all.push(...historySchoolEdges,...derivedGenreEdges);
+ for(const id of activeLenses)if(id!=="musica")all.push(...displayRelations(id));
+ activeEdgesCacheKey=key;activeEdgesCache=dedupeEdges(all);selectedNeighborCacheKey="";selectedDepthCacheKey="";return activeEdgesCache;
+}
+function nodeEligibleForDepth(n){
+ if(!n||n.type==="geografia"||n.type==="periodo")return false;
+ if(!categoryVisible(n))return false;
+ // Le opere archiviate restano ricercabili e apribili come schede, non come bolle della tassonomia.
+ if(n.work_archive?.kind==="opera-specifica"&&n!==selected)return false;
+ // Le fonti, le raccolte editoriali e i cicli sono schede ricercabili, non nuove bolle.
+ if(n.document_archive?.presentation==="scheda"&&n!==selected)return false;
+ // Schede di pratiche e contesti: ricercabili, ma non bolle autonome.
+ if(n.taxonomy?.presentation==="scheda"&&n!==selected)return false;
+ // Le specificazioni di organico e i casi particolari restano consultabili dal loro genere padre e tramite ricerca diretta.
+ if(n.taxonomy?.presentation==="approfondimento"&&n!==selected&&selected?.id!==n.taxonomy.parent)return false;
+ if(n.type==="persona"&&!n.music_relevance&&!hasNonMusicLens()&&n!==selected)return false;
+ return true;
+}
+function selectedDepths(maxDepth=4){
+ if(!selected)return null;
+ const key=selected.id+"|"+activeLensKey()+"|"+[...activeCategories].sort().join(",")+"|"+maxDepth+"|"+readingLevel;
+ if(key===selectedDepthCacheKey)return selectedDepthCache;
+ // All documented direct relations remain reachable in every reading level.
+ // Only indirect context is budgeted to prevent uncontrolled 2/3-hop explosions.
+ const allowed=readingAllowed(),adj=new Map();
+ for(const e of currentEdges()){
+  if(!adj.has(e.source))adj.set(e.source,[]);
+  if(!adj.has(e.target))adj.set(e.target,[]);
+  adj.get(e.source).push(e);adj.get(e.target).push(e);
+ }
+ const depth=new Map([[selected.id,0]]);
+ let frontier=[selected.id];
+ const dmax=Math.min(maxDepth,readingDepth());
+ for(let step=1;step<=dmax;step++){
+  const candidates=new Map();
+  for(const from of frontier){
+   for(const e of adj.get(from)||[]){
+    if(from===selected.id&&!allowed.has(readingKey(e)))continue;
+    const next=e.source===from?e.target:e.source,n=byId.get(next);
+    if(depth.has(next)||!nodeEligibleForDepth(n))continue;
+    const candidate={id:next,label:n.label||next,priority:readingScore(e)};
+    const prev=candidates.get(next);
+    if(!prev||candidate.priority>prev.priority)candidates.set(next,candidate);
+   }
+  }
+  const ranked=[...candidates.values()].sort((a,b)=>b.priority-a.priority||a.label.localeCompare(b.label,"it")||a.id.localeCompare(b.id));
+  // Layer 1 is unbounded: we never conceal a direct historical relation.
+  // Layer 2/3 are context, available for further exploration via double-click.
+  const budget=step===1?Infinity:step===2?(readingLevel===1?12:22):14;
+  frontier=ranked.slice(0,budget).map(x=>x.id);
+  for(const id of frontier)depth.set(id,step);
+  if(!frontier.length)break;
+ }
+ selectedDepthCacheKey=key;selectedDepthCache=depth;return depth;
+}
+function selectedNeighborIds(){
+ if(!selected)return null;
+ const key=selected.id+"|"+activeLensKey()+"|"+readingLevel;if(key===selectedNeighborCacheKey)return selectedNeighborCache;
+ const depth=selectedDepths(readingDepth()),out=new Set();
+ for(const [id,d] of depth)if(d<=1)out.add(id);
+ selectedNeighborCacheKey=key;selectedNeighborCache=out;return out;
+}
+function ambitoOverview(){return false;}
+function ambitoOverviewPoint(n){
+ if(!ambitoOverview()||n.type!=="ambito")return null;
+ const all=nodes.filter(x=>x.type==="ambito").sort((a,b)=>(a.label||a.id).localeCompare(b.label||b.id,"it"));
+ const i=all.findIndex(x=>x.id===n.id);if(i<0)return null;
+ const stage=graphStage(),angle=-Math.PI/2+2*Math.PI*i/all.length;
+ const radius=Math.min((stage.right-stage.left)*.31,(stage.bottom-stage.top)*.32);
+ return {x:stage.cx+Math.cos(angle)*radius,y:stage.cy+Math.sin(angle)*radius,depth:0,scale:1,r:15,geo:false,context:true};
+}
+function visibleNode(n){
+ if(!nodeEligibleForDepth(n))return false;
+ // Il filtro esclusivo Ambiti mostra il catalogo completo, anche con un nodo selezionato.
+ if(ambitoOverview()&&n.type==="ambito")return true;
+ // Senza geografia documentata nessuna proiezione libera sopra o sotto la cartografia.
+ // Le figure concettuali emergono soltanto attorno a un nodo geografico selezionato.
+ if(!selected)return !!geoFromNode(n);
+ if(!selectedDepths(readingDepth()).has(n.id))return false;
+ return !geoFromNode(selected)?!!contextRawPoint(n):!!geoFromNode(n)||!!contextRawPoint(n);
+}
+function nodeDepth(n){
+ if(!selected)return 0;
+ return selectedDepths(readingDepth()).get(n.id)??99;
+}
+function lineHit(pt){
+ let hit=null,best=12;
+ for(const e of lineHits){for(let i=0;i<=16;i++){
+  const t=i/16,q=1-t,x=q*q*e.x1+2*q*t*e.cx+t*t*e.x2,y=q*q*e.y1+2*q*t*e.cy+t*t*e.y2;
+  const dist=Math.hypot(pt.x-x,pt.y-y);if(dist<best){best=dist;hit=e.edge;}
+ }}return hit;
+}
+function showRelation(e){
+ if(!selected){selected=e.a;focus=e.a;moveGeo(e.a);}
+ populate(selected);
+ const dst=document.getElementById("panelContent"),box=document.createElement("section");
+ box.className="lens-explanation";
+ const h=document.createElement("h3");h.textContent="Perché sono collegati?";
+ const names=document.createElement("strong");names.textContent=relationSentence(e,selected?.id);
+ const p=document.createElement("p");p.textContent=e.note||"Relazione da approfondire.";
+ box.append(h,names,p);
+ const foot=document.createElement("div");foot.className="lens-sources";
+ for(const [i,url] of (e.sources||[]).entries()){if(!/^https:\/\//.test(url))continue;
+  const link=document.createElement("a");link.href=url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Fonte "+(i+1)+" ↗";foot.append(link);
+ }
+ if(foot.childElementCount)box.append(foot);
+ else{const note=document.createElement("p");note.textContent="Fonti in revisione.";box.append(note);}
+ dst.prepend(box);setPanel(true);
+}
+
+/* Paesaggio immaginario: viene dipinto solo al ridimensionamento, non a ogni frame. */
+
+/* Costellazione v3: cartografia notturna prerenderizzata e cinque sfere vetrose.
+   Le sprite sono generate una sola volta per colore, non a ogni fotogramma. */
+let cartography=null;
+const sphereCache=new Map();
+const sphereHEX=hex=>{
+ const n=parseInt(hex.replace("#",""),16);
+ return [n>>16&255,n>>8&255,n&255];
+};
+function sphereColor(hex,factor){
+ const c=sphereHEX(hex);
+ return "rgb("+c.map(v=>Math.max(0,Math.min(255,Math.round(v*factor)))).join(",")+")";
+}
+function makeSphereSprite(color){
+ if(sphereCache.has(color))return sphereCache.get(color);
+ const out=document.createElement("canvas"),size=256;
+ out.width=out.height=size;
+ const g=out.getContext("2d"),x=128,y=119,r=100;
+ // L'ombra è interna allo sprite, mai disegnata con asset di terze parti.
+ let shadow=g.createRadialGradient(x+8,y+94,5,x+8,y+94,85);
+ shadow.addColorStop(0,"rgba(0,0,0,.44)");shadow.addColorStop(1,"rgba(0,0,0,0)");
+ g.fillStyle=shadow;g.beginPath();g.ellipse(x+8,y+99,93,42,-.10,0,Math.PI*2);g.fill();
+ g.save();g.beginPath();g.arc(x,y,r,0,Math.PI*2);g.clip();
+ // Smalto colorato con volume: illuminazione obliqua alto-destra.
+ let body=g.createRadialGradient(x+36,y-54,2,x-24,y+24,r*1.66);
+ body.addColorStop(0,sphereColor(color,1.34));
+ body.addColorStop(.35,sphereColor(color,1.08));
+ body.addColorStop(.68,color);
+ body.addColorStop(.87,sphereColor(color,.76));
+ body.addColorStop(1,sphereColor(color,.37));
+ g.fillStyle=body;g.fillRect(x-r,y-r,2*r,2*r);
+ const shade=g.createLinearGradient(x-r,y-r,x+r,y+r);
+ shade.addColorStop(0,"rgba(255,255,255,.04)");
+ shade.addColorStop(.42,"rgba(255,255,255,.02)");
+ shade.addColorStop(.73,"rgba(0,24,54,.11)");
+ shade.addColorStop(1,"rgba(0,11,30,.42)");
+ g.fillStyle=shade;g.fillRect(x-r,y-r,2*r,2*r);
+ // Riflesso ampio e curvo, ispirato alle sfere vetrose degli atlanti illustrati.
+ g.beginPath();g.moveTo(x+5,y-87);
+ g.bezierCurveTo(x+60,y-97,x+89,y-62,x+91,y-3);
+ g.bezierCurveTo(x+91,y+13,x+86,y+32,x+80,y+39);
+ g.lineTo(x+32,y+31);
+ g.bezierCurveTo(x+30,y-14,x+21,y-54,x+5,y-87);
+ g.closePath();
+ let glint=g.createLinearGradient(x+28,y-92,x+83,y+40);
+ glint.addColorStop(0,"rgba(255,255,255,.35)");
+ glint.addColorStop(.7,"rgba(255,255,255,.19)");
+ glint.addColorStop(1,"rgba(255,255,255,.04)");
+ g.fillStyle=glint;g.fill();
+ // Una seconda incisione di luce corre lungo l'arco superiore.
+ g.beginPath();g.moveTo(x+26,y-96);
+ g.bezierCurveTo(x+64,y-99,x+93,y-69,x+97,y-28);
+ g.lineTo(x+89,y-28);
+ g.bezierCurveTo(x+84,y-65,x+62,y-83,x+39,y-88);
+ g.closePath();g.fillStyle="rgba(246,255,255,.67)";g.fill();
+ // Lunetta azzurrata sul bordo sinistro e riverbero nella parte bassa.
+ g.beginPath();g.arc(x,y,94,Math.PI*.57,Math.PI*1.30);
+ g.lineWidth=8;g.strokeStyle="rgba(255,255,255,.14)";g.stroke();
+ g.beginPath();g.arc(x,y,93,Math.PI*.16,Math.PI*.78);
+ g.lineWidth=5;g.strokeStyle="rgba(10,31,69,.20)";g.stroke();
+ g.restore();
+ g.beginPath();g.arc(x,y,r-.5,0,Math.PI*2);g.strokeStyle=sphereColor(color,.77);g.lineWidth=2.3;g.stroke();
+ g.beginPath();g.arc(x,y,r-6,Math.PI*.97,Math.PI*1.76);g.lineWidth=1.8;g.strokeStyle="rgba(243,253,255,.22)";g.stroke();
+ const image={canvas:out,cx:x/size,cy:y/size,baseRadius:r/size};sphereCache.set(color,image);return image;
+}
+function drawSphere(x,y,r,color,active,related){
+ if(r<1.5)return;
+ if(active||related){
+  const glow=ctx.createRadialGradient(x,y,r*.65,x,y,r*(active?2.7:2));
+  glow.addColorStop(0,active?"rgba(255,227,170,.32)":"rgba(180,226,255,.15)");
+  glow.addColorStop(1,"rgba(0,0,0,0)");
+  ctx.fillStyle=glow;ctx.beginPath();ctx.arc(x,y,r*(active?2.7:2),0,Math.PI*2);ctx.fill();
+ }
+ const sp=makeSphereSprite(color),scale=r/(sp.canvas.width*sp.baseRadius);
+ ctx.drawImage(sp.canvas,x-sp.cx*sp.canvas.width*scale,y-sp.cy*sp.canvas.height*scale,sp.canvas.width*scale,sp.canvas.height*scale);
+ if(active){ctx.strokeStyle="rgba(255,242,213,.90)";ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(x,y,r+1,0,Math.PI*2);ctx.stroke();}
+}
+function drawNightAtlas(){
+ const bg=document.createElement("canvas");bg.width=Math.max(1,Math.round(w));bg.height=Math.max(1,Math.round(h));
+ const g=bg.getContext("2d"),W=bg.width,H=bg.height;
+ const sea=g.createRadialGradient(W*.46,H*.40,0,W*.50,H*.55,Math.max(W,H)*.90);
+ sea.addColorStop(0,"#243b52");sea.addColorStop(.4,"#11283e");sea.addColorStop(1,"#07101d");
+ g.fillStyle=sea;g.fillRect(0,0,W,H);
+ // Curve di livello nautiche, non una griglia rettangolare.
+ g.lineWidth=.8;g.strokeStyle="rgba(154,195,212,.17)";
+ for(let t=1;t<12;t++){const X=t*W/12;g.beginPath();g.moveTo(X,0);g.bezierCurveTo(X-W*.043,H*.25,X+W*.053,H*.77,X,H);g.stroke();}
+ for(let t=1;t<10;t++){const Y=t*H/10;g.beginPath();g.moveTo(0,Y);g.bezierCurveTo(W*.24,Y-H*.037,W*.73,Y+H*.035,W,Y);g.stroke();}
+ const polys=[
+ [[-.06,.08],[.09,.04],[.21,.12],[.27,.21],[.33,.20],[.33,.34],[.27,.41],[.21,.53],[.11,.46],[.03,.49],[-.06,.35]],
+ [[.55,-.08],[.74,-.04],[.85,.08],[1.07,.12],[1.05,.29],[.96,.35],[.83,.29],[.73,.43],[.65,.38],[.58,.28],[.49,.17]],
+ [[.20,.60],[.33,.53],[.47,.56],[.53,.66],[.48,.78],[.42,.91],[.31,.96],[.24,.84],[.16,.73]],
+ [[.70,.61],[.82,.55],[.94,.59],[1.06,.70],[1.02,.91],[.91,.98],[.80,.87],[.75,.79]],
+ [[.47,.37],[.54,.38],[.57,.48],[.51,.52],[.44,.48]],
+ [[.11,.83],[.15,.79],[.19,.84],[.17,.91],[.12,.92]]
+ ];
+ const rand=(()=>{let k=72617;return ()=>((k=(Math.imul(k,1664525)+1013904223)>>>0)/4294967296)})();
+ polys.forEach((poly,n)=>{
+  const pts=[];
+  for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length];
+    for(let j=0;j<10;j++){const t=j/10,wig=Math.sin(Math.PI*t)*(rand()-.5)*.021;pts.push([(a[0]+(b[0]-a[0])*t+wig)*W,(a[1]+(b[1]-a[1])*t+wig)*H]);}}
+  g.beginPath();pts.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();
+  g.fillStyle=n%2?"rgba(88,120,111,.55)":"rgba(74,110,104,.64)";g.fill();
+  g.shadowColor="rgba(145,211,188,.40)";g.shadowBlur=15;g.strokeStyle="rgba(169,221,196,.53)";g.lineWidth=1.7;g.stroke();g.shadowBlur=0;
+  // Rilievi, linee sinuose interne e luci urbane ritagliate sulle terre.
+  g.save();g.clip();
+  const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+  for(let j=0;j<85;j++){const X=x0+rand()*(x1-x0),Y=y0+rand()*(y1-y0);if(j%4===0){
+    g.beginPath();g.arc(X,Y,1.4+rand()*1.7,0,Math.PI*2);g.fillStyle="rgba(255,210,137,.59)";g.shadowColor="#f9bd76";g.shadowBlur=9;g.fill();g.shadowBlur=0;
+  }else{g.beginPath();g.ellipse(X,Y,9+rand()*15,2+rand()*4,-.35,0,Math.PI*2);g.strokeStyle="rgba(171,208,180,.11)";g.lineWidth=.8;g.stroke();}}
+  g.restore();
+ });
+ // Rotte tracciate sul mare, piccoli fari e toponomastica immaginaria.
+ const paths=[[.06,.62,.43,.47,.91,.58],[.28,.20,.45,.66,.76,.37],[.15,.80,.54,.91,.88,.73]];
+ g.setLineDash([3,10]);g.strokeStyle="rgba(241,198,129,.32)";g.lineWidth=1;
+ paths.forEach(p=>{g.beginPath();g.moveTo(W*p[0],H*p[1]);g.quadraticCurveTo(W*p[2],H*p[3],W*p[4],H*p[5]);g.stroke()});g.setLineDash([]);
+ const labels=[["MARE DELLE VOCI",.37,.19],["OCCIDENTE",.09,.24],["TERRE DELL'ECO",.32,.73],["LEVANTE",.76,.19],["ARCIPELAGO DEL TEMPO",.73,.53]];
+ g.font=Math.max(10,Math.min(17,W/90))+"px Georgia,serif";g.textAlign="center";
+ labels.forEach(([str,x,y])=>{g.fillStyle="rgba(225,228,218,.34)";g.fillText(str,W*x,H*y)});
+ // Atmosfera e bordi scuri conservano il contrasto con le sfere.
+ const vignette=g.createRadialGradient(W*.5,H*.49,Math.min(W,H)*.24,W*.5,H*.5,Math.max(W,H)*.84);
+ vignette.addColorStop(0,"rgba(2,9,15,0)");vignette.addColorStop(1,"rgba(1,5,12,.52)");
+ g.fillStyle=vignette;g.fillRect(0,0,W,H);
+ cartography=bg;
+}
+
+function draw(ts=performance.now()){const dt=lastDrawTime?Math.min(60,Math.max(4,ts-lastDrawTime)):16.7;lastDrawTime=ts;frame++;physics();
+ ctx.clearRect(0,0,w,h);paintGeo(dt);
+ const spanForSize=Math.max(6,geoState.span);
+ const composerBase=spanForSize>=260?4.2:spanForSize>=150?5.2:spanForSize>=80?6.8:spanForSize>=35?8.8:11;
+ const contextBase=spanForSize>=260?5.2:spanForSize>=150?6.2:spanForSize>=80?8:spanForSize>=35?10.5:14;
+ screen=nodes.map(n=>{
+  let p=ambitoOverviewPoint(n)||(selected&&!geoFromNode(selected)?(contextScreenPoint(n,true)||geoScreenPoint(n,true)||sxworld(n)):(geoScreenPoint(n,true)||contextScreenPoint(n,true)||sxworld(n)));p.node=n;
+  const base=(n.type==="compositore"||n.type==="persona")?composerBase:contextBase;
+  p.r=clamp(base*(n===selected?1.55:1),3.8,25);
+  return p;
+ });
+ resolveScreenCollisions(screen);
+ const map=new Map(screen.map(p=>[p.node.id,p]));
+ const neighbors=new Set(),activeEdges=currentEdges(),lensFocus=selected||hover;lineHits=[];
+ const depths=selected?selectedDepths(readingDepth()):null;
+ const spotlight=selected?readingSpotlight():new Set();
+ const spotlightNodes=new Set();
+ if(lensFocus){
+  neighbors.add(lensFocus.id);
+  for(const e of activeEdges){
+   if(e.source===lensFocus.id){neighbors.add(e.target);if(spotlight.has(readingKey(e)))spotlightNodes.add(e.target);}
+   if(e.target===lensFocus.id){neighbors.add(e.source);if(spotlight.has(readingKey(e)))spotlightNodes.add(e.source);}
+  }
+ }
+ for(const e of activeEdges){
+  const a=map.get(e.source),b=map.get(e.target);
+  if(!a||!b||!visibleNode(a.node)||!visibleNode(b.node))continue;
+  let edgeDepth=1,direct=false,contextEdge=false;
+  if(selected){
+   const da=depths.get(e.source),db=depths.get(e.target);
+   direct=e.source===selected.id||e.target===selected.id;
+   if(da==null||db==null||Math.abs(da-db)>1){contextEdge=true;}
+   else edgeDepth=Math.max(da,db);
+  }else{
+   if(!lensFocus)continue;
+   direct=e.source===lensFocus.id||e.target===lensFocus.id;
+   if(!direct)continue;
+  }
+  const isSpotlight=selected&&direct&&spotlight.has(readingKey(e));
+  const edgeAlpha=!selected?.94:contextEdge?.04:direct?(isSpotlight?.96:(readingLevel===0?.35:readingLevel===1?.48:.70)):(edgeDepth===2?.20:.11);
+  const strokeSize=!selected?2.7:contextEdge?.65:direct?(isSpotlight?2.8:(readingLevel===2?1.6:1.25)):edgeDepth===2?1.2:.8;
+  const style=relationStyle(e);
+  ctx.globalAlpha=edgeAlpha;ctx.lineWidth=strokeSize;
+  const path=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+  path.addColorStop(0,style.from);path.addColorStop(1,style.to);ctx.strokeStyle=path;
+  const bend=Math.min(34,Math.hypot(b.x-a.x,b.y-a.y)*.075);
+  const cx=(a.x+b.x)*.5+bend*.32,cy=(a.y+b.y)*.5-bend;
+  ctx.beginPath();ctx.moveTo(a.x,a.y);
+  if(!contextEdge&&(e.taxonomyDerived||e.group==="influenze"&&/^(eredita|affinita|antecedente|tradizione)/.test(e.kind||"")))ctx.setLineDash(e.taxonomyDerived?[3,5]:[6,5]);
+  ctx.quadraticCurveTo(cx,cy,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
+  if(!contextEdge&&(!selected||direct||edgeDepth<=2))lineHits.push({edge:e,x1:a.x,y1:a.y,x2:b.x,y2:b.y,cx,cy});
+  if(style.arrow&&!contextEdge){
+   const t=.77,q=1-t,px=q*q*a.x+2*q*t*cx+t*t*b.x,py=q*q*a.y+2*q*t*cy+t*t*b.y;
+   const dx=2*q*(cx-a.x)+2*t*(b.x-cx),dy=2*q*(cy-a.y)+2*t*(b.y-cy),ang=Math.atan2(dy,dx);
+   ctx.save();ctx.globalAlpha=Math.min(.93,edgeAlpha*1.1);ctx.fillStyle=style.to;ctx.beginPath();
+   ctx.moveTo(px+8*Math.cos(ang),py+8*Math.sin(ang));
+   ctx.lineTo(px-6*Math.cos(ang-.5),py-6*Math.sin(ang-.5));
+   ctx.lineTo(px-6*Math.cos(ang+.5),py-6*Math.sin(ang+.5));ctx.closePath();ctx.fill();ctx.restore();
+  }
+ }
+ ctx.globalAlpha=1;
+ // Quando lo zoom porta un collegamento diretto fuori campo, segnala
+ // il nodo remoto sul bordo dell'area utile senza modificarne la geografia.
+ if(selected){
+  const stage=graphStage(),origin=map.get(selected.id);
+  if(origin){
+   const margin=18,rect={left:stage.left+margin,right:stage.right-margin,top:stage.top+margin,bottom:stage.bottom-margin};
+   const inside=p=>p.x>=rect.left&&p.x<=rect.right&&p.y>=rect.top&&p.y<=rect.bottom;
+   const guides=[],seen=new Set();
+   for(const e of activeEdges){
+    const otherId=e.source===selected.id?e.target:e.target===selected.id?e.source:null;
+    if(!otherId||seen.has(otherId))continue;
+    const distant=map.get(otherId);
+    if(!distant||!visibleNode(distant.node)||inside(distant)||!Number.isFinite(distant.x)||!Number.isFinite(distant.y))continue;
+    seen.add(otherId);
+    const dx=distant.x-origin.x,dy=distant.y-origin.y;
+    if(Math.hypot(dx,dy)<1)continue;
+    const anchor={x:clamp(origin.x,rect.left,rect.right),y:clamp(origin.y,rect.top,rect.bottom)};
+    let t=Infinity;
+    if(dx>0)t=Math.min(t,(rect.right-anchor.x)/dx);
+    if(dx<0)t=Math.min(t,(rect.left-anchor.x)/dx);
+    if(dy>0)t=Math.min(t,(rect.bottom-anchor.y)/dy);
+    if(dy<0)t=Math.min(t,(rect.top-anchor.y)/dy);
+    if(!Number.isFinite(t)||t<0)continue;
+    guides.push({x:anchor.x+dx*t,y:anchor.y+dy*t,angle:Math.atan2(dy,dx),label:distant.node.label});
+   }
+   ctx.save();ctx.font="600 10px system-ui";
+   for(const g of guides.slice(0,12)){
+    const bx=clamp(g.x,rect.left+5,rect.right-5),by=clamp(g.y,rect.top+5,rect.bottom-5);
+    ctx.globalAlpha=.91;ctx.fillStyle="#f1d08c";ctx.strokeStyle="#0b1b2d";ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(bx,by,5,0,Math.PI*2);ctx.fill();ctx.stroke();
+    const tx=clamp(bx+Math.cos(g.angle)*(-20),rect.left+35,rect.right-35);
+    const ty=clamp(by+Math.sin(g.angle)*(-20),rect.top+12,rect.bottom-12);
+    const label=g.label.length>28?g.label.slice(0,27)+"…":g.label;
+    ctx.textAlign=bx>stage.cx?"right":"left";ctx.textBaseline="middle";
+    ctx.lineWidth=3;ctx.strokeText(label,tx,ty);ctx.fillStyle="#ffe3a4";ctx.fillText(label,tx,ty);
+   }
+   ctx.restore();
+  }
+ }
+ const drawable=screen.filter(p=>p.depth>-14&&visibleNode(p.node)).sort((a,b)=>{
+  if(a.node===selected)return 1;if(b.node===selected)return -1;
+  const ac=selected&&neighbors.has(a.node.id)?1:0,bc=selected&&neighbors.has(b.node.id)?1:0;
+  return ac-bc||b.depth-a.depth;
+ });
+ hitOrder=drawable;
+ for(const p of drawable){
+  const n=p.node,depth=nodeDepth(n),related=selected&&depth<=1;
+  const highlight=n===selected||(n===hover)||(searchText.length>1&&matchesSearch(n,searchText));
+  const depthAlpha=!selected?1:n===selected?1:neighbors.has(n.id)?(spotlightNodes.has(n.id)?1:.72):({2:.33,3:.23}[depth]||.22);
+  ctx.globalAlpha=highlight?1:depthAlpha;
+  const rad=highlight?Math.max(p.r*1.2,n===selected?13:p.r):p.r;
+  p.hitRadius=Math.max(8,rad);
+  drawSphere(p.x,p.y,rad,COLORS[n.type]||"#aaaaaa",Boolean(highlight),Boolean(related&&n!==selected));
+  if(n===selected&&p.unlocated){
+   ctx.save();ctx.globalAlpha=1;ctx.setLineDash([4,4]);ctx.strokeStyle="#f4d79c";ctx.lineWidth=1.6;
+   ctx.beginPath();ctx.arc(p.x,p.y,rad+7,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+   ctx.font="bold 10px system-ui";ctx.textAlign="center";ctx.textBaseline="top";ctx.fillStyle="#f4d79c";
+   ctx.fillText("NODO NON GEOLOCALIZZATO",p.x,p.y+rad+12);ctx.restore();
+  }
+  const isLabel=Boolean(
+   selected
+    ? (showAllLabels||n===selected||n===hover||(neighbors.has(n.id)&&(readingLevel===2||spotlightNodes.has(n.id)||(selected?.type==="compositore"&&(n.type==="corrente"||n.type==="ambito"))))||(searchText.length>1&&matchesSearch(n,searchText)))
+    : (showAllLabels||highlight||n.type==="periodo")
+  );
+  if(isLabel){
+   ctx.font=(highlight?"bold 13px":"11px")+" system-ui";
+   ctx.textAlign="center";ctx.textBaseline="bottom";ctx.lineWidth=3;
+   ctx.strokeStyle="#071321";ctx.strokeText(n.label,p.x,p.y-rad-9);
+   const labelAlpha=selected?Math.max(.32,depthAlpha):1;
+   ctx.fillStyle=highlight?"#fff4d9":"rgba(240,242,247,"+labelAlpha.toFixed(2)+")";
+   ctx.fillText(n.label,p.x,p.y-rad-9);
+  }
+ }
+
+ ctx.globalAlpha=1;requestAnimationFrame(draw);}
+function linked(n){return currentEdges().filter(e=>e.source===n.id||e.target===n.id).map(e=>({e,n:e.a===n?e.b:e.a})).sort((a,b)=>(b.e.weight||1)-(a.e.weight||1));}
+// Un genere o una forma generali attraversano le epoche: i loro archi storici
+// documentano sviluppi, non un'appartenenza cronologica esclusiva.
+// Le correnti storicamente specifiche (es. concerto grosso barocco) restano distinte.
+const TRANSVERSAL_MUSICAL_CLASSES=new Set(["genere-trasversale","genere","ambito-musicale","forma","forma-tecnica","forma-genere","teatro-danza","tecnica-trasversale","famiglia-di-forme"]);
+
+// Ricostruisce il raccordo alle famiglie senza falsificare gli archi diretti.
+// Le imprese teatrali, le scuole e i contesti biografici non trasmettono da soli
+// un'appartenenza di genere al compositore.
+const GENRE_CONTEXT_NOT_INHERITED=new Set(["impresa-teatrale-storica","riforma-storico-teatrale","ambiente-storico-musicale","ambiente-di-corte","contesto-teatrale-vocale","teoria-acustica","tecnologia-di-diffusione","caso-tecnico-biografico","ricerca-etnomusicologica"]);
+function mainGenreAncestor(n){
+ if(!n||n.type!=="corrente"||n.taxonomy?.presentation==="scheda"||n.work_archive||n.document_archive)return null;
+ const seen=new Set([n.id]);
+ let here=n;
+ while(here?.taxonomy?.parent){
+  if(GENRE_CONTEXT_NOT_INHERITED.has(here.taxonomy.class))return null;
+  const parent=byId.get(here.taxonomy.parent);
+  if(!parent||seen.has(parent.id))return null;
+  if(parent.type==="corrente"&&parent.taxonomy?.visibility==="principale")return parent;
+  seen.add(parent.id);here=parent;
+ }
+ return null;
+}
+// Un raccordo alla famiglia emerge da una specializzazione esistente; resta distinto dagli archi documentari.
+function compileDerivedGenreEdges(){
+ const direct=new Set(),links=new Map();
+ for(const e of edges){
+  const author=byId.get(e.source)?.type==="compositore"?byId.get(e.source):byId.get(e.target)?.type==="compositore"?byId.get(e.target):null;
+  if(!author)continue;
+  const other=byId.get(e.source===author.id?e.target:e.source);
+  if(other?.type==="corrente"&&other.taxonomy?.visibility==="principale")direct.add(author.id+"|"+other.id);
+ }
+ for(const e of edges){
+  const author=byId.get(e.source)?.type==="compositore"?byId.get(e.source):byId.get(e.target)?.type==="compositore"?byId.get(e.target):null;
+  if(!author)continue;
+  const child=byId.get(e.source===author.id?e.target:e.source),parent=mainGenreAncestor(child);
+  if(!parent||direct.has(author.id+"|"+parent.id))continue;
+  const key=author.id+"|"+parent.id;
+  if(!links.has(key))links.set(key,{id:"taxonomia:"+key,source:author.id,target:parent.id,group:"tassonomia",
+   kind:"accesso-indiretto-alla-famiglia",taxonomyDerived:true,weight:.55,via_labels:[],sources:[]});
+  const row=links.get(key);
+  if(!row.via_labels.includes(child.label))row.via_labels.push(child.label);
+  for(const url of e.sources||[])if(typeof url==="string"&&url.startsWith("https://")&&!row.sources.includes(url))row.sources.push(url);
+ }
+ return [...links.values()].map(e=>({...e,note:"Raccordo di consultazione attraverso "+e.via_labels.join(", ")+". Non corrisponde a un secondo arco documentario.",a:byId.get(e.source),b:byId.get(e.target)}));
+}
+function isTranshistoricalMusicalCategory(n){
+ return Boolean(n?.type==="corrente"&&TRANSVERSAL_MUSICAL_CLASSES.has(n.taxonomy?.class));
+}
+function periodsFor(n){
+ if(!n)return [];
+ if(n.type==="periodo")return [{node:n,weight:99,kind:"periodo"}];
+ const rows=[];
+ for(const e of edges){
+  if(e.source!==n.id&&e.target!==n.id)continue;
+  const other=byId.get(e.source===n.id?e.target:e.source);
+  if(other?.type!=="periodo")continue;
+  rows.push({node:other,weight:Number(e.weight)||1,kind:e.kind||""});
+ }
+ return rows.sort((a,b)=>{
+  const pa=/^appartenenza$/.test(a.kind)?2:/appartenenza/.test(a.kind)?1:0;
+  const pb=/^appartenenza$/.test(b.kind)?2:/appartenenza/.test(b.kind)?1:0;
+  return pb-pa||b.weight-a.weight||a.node.label.localeCompare(b.node.label,"it");
+ });
+}
+function updatePeriodContext(n){
+ if(!periodContext)return;
+ // Nessuna etichetta «CLASSICISMO» per Variazioni, «BAROCCO» per Fuga,
+ // né altre attribuzioni monoperiodali ai generi e alle forme trasversali.
+ if(isTranshistoricalMusicalCategory(n)){
+  periodContext.textContent="";
+  periodContext.title="";
+  periodContext.hidden=true;
+  return;
+ }
+ const periods=periodsFor(n);
+ if(!periods.length){periodContext.textContent="";periodContext.title="";periodContext.hidden=true;return;}
+ periodContext.textContent=periods[0].node.label.toUpperCase();
+ periodContext.hidden=false;
+ periodContext.title=periods.length>1?"Altri contesti: "+periods.slice(1).map(x=>x.node.label).join(" · "):periods[0].node.label;
+}
+const navigationHistory=[];
+function syncBackControl(){
+ if(!backFocus)return;
+ const previous=byId.get(navigationHistory[navigationHistory.length-1]);
+ backFocus.disabled=!previous;
+ backFocus.title=previous?"Torna a "+previous.label:"Nessun nodo precedente";
+ backFocus.setAttribute("aria-label",previous?"Torna a "+previous.label:"Torna al nodo precedente");
+}
+function goBackFocus(){
+ while(navigationHistory.length){
+  const id=navigationHistory.pop(),previous=byId.get(id);
+  if(previous&&previous!==selected){focusOn(previous,true,false,false);return;}
+ }
+ syncBackControl();
+}
+function focusOn(n,openPanel=true,tight=false,saveHistory=true,preserveSearch=false){
+ if(!n)return;
+ hideSearchChoices();
+ if(saveHistory&&selected&&selected!==n){
+  navigationHistory.push(selected.id);
+  if(navigationHistory.length>40)navigationHistory.shift();
+ }
+ syncBackControl();
+ clearExplodeLayout();
+ if(selected!==n){if(!preserveSearch){search.value="";searchText="";}resetAutoLayout();}
+ selected=n;selectedNeighborCacheKey="";selectedDepthCacheKey="";n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;
+ if(explodeBtn)explodeBtn.disabled=false;
+ updatePeriodContext(n);
+ const gp=geoFromNode(n);focus=gp?null:n;moveGeo(n,tight);
+ status.textContent=n.label+" · "+readingAllowed().size+" relazioni musicali"+
+  (isTranshistoricalMusicalCategory(n)?"":" · "+periodsFor(n).length+" contesti storici")+
+  " · "+readingNames[readingLevel];
+ // Su schermi stretti una scheda laterale aperta copre la rete schematica.
+ // Il doppio clic su genere/scuola conserva il grafo; il lettore può aprire Esplora.
+ const schematicCategory=!gp&&(n.type==="corrente"||n.type==="ambito");
+ // Anche un compositore geolocalizzato ha collegamenti verso generi e forme
+ // senza coordinate. Su smartphone la scheda copriva la rete di Bernstein:
+ // scegliendo il genere Musical la scheda restava invece chiusa.
+ const keepGraphVisible=openPanel&&w<=700&&(schematicCategory||n.type==="compositore");
+ populate(n);
+ if(openPanel)setPanel(!keepGraphVisible);
+ if(keepGraphVisible)status.textContent+=" · scheda disponibile in Esplora";
+}
+function setPanel(open){document.body.classList.toggle("panel-open",open);tab.textContent=open?"▶ Chiudi":"◀ Esplora";tab.setAttribute("aria-expanded",String(open));}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function updateLensCounts(n){
+ lensChoices?.querySelectorAll("input[data-lens]").forEach(input=>{
+  const countEl=input.closest("label")?.querySelector(".lens-count");
+  if(!countEl)return;
+  const list=input.value==="musica"?[...historySchoolEdges,...derivedGenreEdges]:displayRelations(input.value);
+  const count=list.filter(e=>e.source===n.id||e.target===n.id).length;
+  countEl.textContent=String(count);
+  countEl.hidden=false;
+  countEl.title=(count===1?"1 collegamento consultabile":count+" collegamenti consultabili")+(input.value==="musica"?" (compresi raccordi tassonomici tratteggiati)":"");
+ });
+}
+function clearLensCounts(){
+ lensChoices?.querySelectorAll(".lens-count").forEach(el=>{el.hidden=true;el.textContent="";});
+}
+function populate(n){
+ document.getElementById("panelTitle").textContent=n.label;
+ document.getElementById("panelSub").textContent=n.description||({compositore:"Compositore",periodo:"Periodo storico",corrente:"Corrente artistica",ambito:"Ambito trasversale",geografia:"Area geografica",persona:"Figura storica"}[n.type]||"");
+ const dst=document.getElementById("panelContent");dst.replaceChildren();
+ // I collegamenti diretti ai generi sono un accesso primario, anche nelle
+ // schede dei compositori: non possono dipendere da profondità o dalla
+ // posizione temporanea della bolla sulla cartografia.
+ if(n.type==="compositore"||n.type==="corrente"){
+  const directGenreEdges=edges.filter(e=>e.source===n.id||e.target===n.id)
+   .map(e=>({edge:e,other:byId.get(e.source===n.id?e.target:e.source)}))
+   .filter(x=>x.other?.type==="corrente"&&
+    (x.other.taxonomy?.visibility==="principale"||
+     ["genere-operetta","genere-musical"].includes(x.other.id)))
+   .sort((a,b)=>a.other.label.localeCompare(b.other.label,"it"));
+  if(directGenreEdges.length){
+   const area=document.createElement("section");area.className="mm-direct-genres";
+   area.style.cssText="margin:.65rem 0 1rem;padding:.85rem;border:1px solid #c7a46c;border-radius:10px;background:rgba(193,152,87,.09)";
+   const h=document.createElement("h3");h.textContent="Generi musicali direttamente collegati";area.append(h);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Collegamenti presenti nel grafo, indipendenti dai livelli di profondità. Tocca un genere per esplorarne la rete.";area.append(note);
+   for(const {edge,other} of directGenreEdges){
+    const row=document.createElement("div");row.style.margin=".5rem 0";
+    const button=document.createElement("button");button.type="button";button.textContent=other.label+" ↗";
+    button.addEventListener("click",()=>focusOn(other,true));row.append(button);
+    if(edge.sources?.length){
+     const source=document.createElement("a");source.href=edge.sources[0];source.target="_blank";
+     source.rel="noopener noreferrer";source.textContent=" Fonte ↗";
+     source.style.marginLeft=".7rem";row.append(source);
+    }
+    area.append(row);
+   }
+   dst.append(area);
+  }
+ }
+ // Navigazione fra categorie generali, tipologie storiche e pratiche.
+ // Le relazioni e le schede di ascolto non vengono sostituite né ridotte.
+ if(n.type==="corrente"&&!n.work_archive&&!n.document_archive){
+  const typeNames={
+   "genere":"Genere musicale","genere-trasversale":"Genere musicale",
+   "forma":"Forma musicale","forma-tecnica":"Forma e tecnica","forma-genere":"Forma e genere",
+   "tecnica-trasversale":"Tecnica compositiva","ambito-musicale":"Ambito musicale",
+   "teatro-danza":"Teatro e danza","famiglia-di-forme":"Famiglia di forme musicali","genere-storico":"Genere musicale storico","corrente-stilistica":"Orientamento stilistico","tecnica-compositiva":"Tecnica compositiva","sottogenere-teatrale":"Tipologia teatrale",
+   "tipologia-operistica":"Tipologia operistica","tradizione-omonima-distinta":"Tradizione storica distinta",
+   "tipologia-concertistica":"Tipologia concertistica","pratica-polifonica":"Pratica polifonica",
+   "ambito-storico":"Ambito storico","tradizione-storica":"Tradizione storica"
+  };
+  const cls=n.taxonomy?.class;
+  const label=typeNames[cls]||(cls?cls.replace(/-/g," "):"");
+  if(label){const type=document.createElement("p");type.className="small";
+   type.textContent="Natura della voce: "+label+".";dst.append(type);}
+  const parent=byId.get(n.taxonomy?.parent);
+  if(parent){
+   const area=document.createElement("section");area.className="mm-taxonomy-parent";
+   const h=document.createElement("h3");h.textContent="Categoria di riferimento";area.append(h);
+   const b=document.createElement("button");b.type="button";b.textContent=parent.label+" ↗";
+   b.addEventListener("click",()=>focusOn(parent,true));area.append(b);
+   if(n.taxonomy?.semantic_note){
+    const p=document.createElement("p");p.className="small";
+    p.textContent=n.taxonomy.semantic_note;area.append(p);
+   }
+   dst.append(area);
+  }
+  const children=nodes.filter(child=>child.taxonomy?.parent===n.id&&!child.work_archive&&!child.document_archive)
+   .sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(children.length){
+   const area=document.createElement("section");area.className="mm-taxonomy-children";
+   const h=document.createElement("h3");h.textContent="Tipologie e contesti · "+children.length;area.append(h);
+   const p=document.createElement("p");p.className="small";
+   p.textContent="Approfondimenti collegati: tipologie, tradizioni e pratiche storiche, non tutti nuovi generi.";
+   area.append(p);
+   for(const child of children){
+    const b=document.createElement("button");b.type="button";b.textContent=child.label+" ↗";
+    b.addEventListener("click",()=>focusOn(child,true));area.append(b);
+   }
+   dst.append(area);
+  }
+ }
+ // Accesso esplicito a tutti gli autori del genere, anche quando la mappa mostra
+ // soltanto le etichette principali per non sovrapporre decine di nomi.
+ if(n.type==="corrente"&&n.taxonomy?.visibility==="principale"){
+  const authorIds=new Set();
+  for(const edge of edges){
+   if(edge.source===n.id&&byId.get(edge.target)?.type==="compositore")authorIds.add(edge.target);
+   if(edge.target===n.id&&byId.get(edge.source)?.type==="compositore")authorIds.add(edge.source);
+  }
+  const authors=[...authorIds].map(id=>byId.get(id)).filter(Boolean)
+   .sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(authors.length){
+   const details=document.createElement("details");details.className="related-list";details.open=authors.length<=10;
+   const sum=document.createElement("summary");sum.textContent="Compositori direttamente collegati · "+authors.length;details.append(sum);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Autori con un collegamento diretto a questa categoria. Le attribuzioni presenti soltanto nelle articolazioni rimangono distinte.";
+   details.append(note);
+   const ul=document.createElement("ul");
+   for(const author of authors){
+    const li=document.createElement("li"),button=document.createElement("button");button.type="button";
+    button.textContent=author.label+" ↗";button.addEventListener("click",()=>focusOn(author,true));li.append(button);ul.append(li);
+   }
+   details.append(ul);dst.append(details);
+  }
+ }
+  // Autori testimoniati attraverso sottogeneri, non attribuzioni dirette aggiunte.
+  if(n.type==="corrente"&&n.taxonomy?.visibility==="principale"){
+   const direct=new Set();
+   for(const edge of edges){
+    if(edge.source===n.id&&byId.get(edge.target)?.type==="compositore")direct.add(edge.target);
+    if(edge.target===n.id&&byId.get(edge.source)?.type==="compositore")direct.add(edge.source);
+   }
+   const indirect=new Map();
+   for(const edge of edges){
+    const author=byId.get(edge.source)?.type==="compositore"?byId.get(edge.source):byId.get(edge.target)?.type==="compositore"?byId.get(edge.target):null;
+    if(!author||direct.has(author.id))continue;
+    const child=byId.get(edge.source===author.id?edge.target:edge.source);
+    if(mainGenreAncestor(child)?.id!==n.id)continue;
+    if(!indirect.has(author.id))indirect.set(author.id,{author,via:new Set()});
+    indirect.get(author.id).via.add(child.label);
+   }
+   const list=[...indirect.values()].sort((a,b)=>a.author.label.localeCompare(b.author.label,"it"));
+   if(list.length){
+    const details=document.createElement("details");details.className="related-list";details.open=list.length<=8;
+    const title=document.createElement("summary");title.textContent="Altri compositori nelle articolazioni · "+list.length;details.append(title);
+    const note=document.createElement("p");note.className="small";note.textContent="Autori attestati solo attraverso un sottogenere o una tradizione; il collegamento alla categoria generale è indirettamente ricostruibile, non un nuovo arco diretto.";details.append(note);
+    const ul=document.createElement("ul");
+    for(const item of list){
+     const li=document.createElement("li"),btn=document.createElement("button");btn.type="button";
+     btn.textContent=item.author.label+" ↗";btn.addEventListener("click",()=>focusOn(item.author,true));
+     const p=document.createElement("span");p.textContent=" · attraverso "+[...item.via].join(", ");
+     li.append(btn,p);ul.append(li);
+    }
+    details.append(ul);dst.append(details);
+   }
+  }
+ // Archivio delle opere: consultabile dalla carta del compositore senza moltiplicare le bolle.
+ if(n.type==="compositore"){
+  const works=nodes.filter(w=>w.work_archive?.composer_id===n.id)
+   .sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(works.length){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Opere documentate · "+works.length;area.append(heading);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Opere conservate nell'archivio di Musurgia Mundi; seleziona un titolo per leggere la scheda. La presenza non implica un ascolto disponibile.";
+   area.append(note);
+   for(const work of works){
+    const btn=document.createElement("button");btn.type="button";btn.textContent=work.label+" ↗";
+    btn.addEventListener("click",()=>focusOn(work,true));area.append(btn);
+   }
+   dst.append(area);
+  }
+ }
+ // Documenti, raccolte e cicli con legame redazionale esplicito all'autore, editore o curatore.
+ if(n.type==="compositore"){
+  const docs=nodes.filter(w=>w.document_archive?.contacts?.some(c=>c.node_id===n.id)).sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(docs.length){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Fonti, raccolte e cicli · "+docs.length;area.append(heading);
+   for(const doc of docs){
+    const contact=doc.document_archive.contacts.find(c=>c.node_id===n.id);
+    const roles={"compositore":"compositore","autore-del-trattato":"autore","autore-della-raccolta":"autore","curatore-della-raccolta":"curatore","editore":"editore","attribuzione-discussa":"attribuzione discussa","trascrittore-arrangiatore":"trascrittore e arrangiatore","associazione-storica-da-fonte-tarda":"associazione documentata da fonte tarda","rielaborazione-storicamente-testimoniata":"rielaborazione testimoniata","intervento-editoriale":"intervento editoriale","attribuzione-catalografica":"attribuzione catalografica","repertorio-tramandato":"repertorio tramandato","repertorio-attribuito-e-tramandato":"repertorio attribuito e tramandato"};
+    const btn=document.createElement("button");btn.type="button";
+    btn.textContent=doc.label+" · "+(roles[contact.role]||contact.role)+" ↗";
+    btn.addEventListener("click",()=>focusOn(doc,true));area.append(btn);
+   }
+   dst.append(area);
+  }
+ }
+ // Generi e forme dell'autore: distinte le attestazioni esplicite dalle risalite.
+ if(n.type==="compositore"){
+  const direct=new Map(),indirect=new Map();
+  for(const edge of edges){
+   if(edge.source!==n.id&&edge.target!==n.id)continue;
+   const cat=byId.get(edge.source===n.id?edge.target:edge.source);
+   if(cat?.type!=="corrente"||cat.work_archive||cat.document_archive)continue;
+   if(cat.taxonomy?.visibility==="principale")direct.set(cat.id,cat);
+   else{
+    const main=mainGenreAncestor(cat);
+    if(main){
+     if(!indirect.has(main.id))indirect.set(main.id,{node:main,via:new Set()});
+     indirect.get(main.id).via.add(cat.label);
+    }
+   }
+  }
+  for(const id of direct.keys())indirect.delete(id);
+  if(direct.size||indirect.size){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const h=document.createElement("h3");h.textContent="Generi, forme e ambiti attestati";area.append(h);
+   const p=document.createElement("p");p.className="small";p.textContent="Voci con collegamento diretto e, separatamente, categorie generali raggiungibili attraverso una specificazione storica. Non si deducono generi da rapporti personali o istituzionali.";area.append(p);
+   if(direct.size){
+    const h2=document.createElement("h4");h2.textContent="Collegamenti diretti · "+direct.size;area.append(h2);
+    for(const node of [...direct.values()].sort((a,b)=>a.label.localeCompare(b.label,"it"))){
+     const b=document.createElement("button");b.type="button";b.textContent=node.label+" ↗";b.addEventListener("click",()=>focusOn(node,true));area.append(b);
+    }
+   }
+   if(indirect.size){
+    const h2=document.createElement("h4");h2.textContent="Tramite articolazioni · "+indirect.size;area.append(h2);
+    for(const item of [...indirect.values()].sort((a,b)=>a.node.label.localeCompare(b.node.label,"it"))){
+     const b=document.createElement("button");b.type="button";b.textContent=item.node.label+" (tramite "+[...item.via].join(", ")+") ↗";b.addEventListener("click",()=>focusOn(item.node,true));area.append(b);
+    }
+   }
+   dst.append(area);
+  }
+ }
+ // Pratiche e contesti non rappresentati come bolle, raggiungibili dalla carta autore.
+ if(n.type==="compositore"){
+  const ids=new Set();
+  for(const e of edges){
+   if(e.source===n.id&&byId.get(e.target)?.taxonomy?.presentation==="scheda")ids.add(e.target);
+   if(e.target===n.id&&byId.get(e.source)?.taxonomy?.presentation==="scheda")ids.add(e.source);
+  }
+  const sheets=[...ids].map(id=>byId.get(id)).filter(v=>v&&!v.work_archive&&!v.document_archive)
+   .sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(sheets.length){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Pratiche e contesti documentati · "+sheets.length;area.append(heading);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Raccordi a repertori, tecniche e contesti documentati, non automaticamente rapporti personali.";area.append(note);
+   for(const sheet of sheets){const b=document.createElement("button");b.type="button";b.textContent=sheet.label+" ↗";b.addEventListener("click",()=>focusOn(sheet,true));area.append(b);}
+   dst.append(area);
+  }
+ }
+ // Repertorio del genere: esclusivamente opere con un arco esplicito, senza deduzioni automatiche.
+ if(n.type==="corrente"&&n.taxonomy?.visibility==="principale"){
+  const workIds=new Set();
+  for(const edge of edges){
+   if(edge.source===n.id&&byId.get(edge.target)?.work_archive?.kind==="opera-specifica")workIds.add(edge.target);
+   if(edge.target===n.id&&byId.get(edge.source)?.work_archive?.kind==="opera-specifica")workIds.add(edge.source);
+  }
+  const works=[...workIds].map(id=>byId.get(id)).filter(Boolean).sort((a,b)=>a.label.localeCompare(b.label,"it"));
+  if(works.length){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Repertorio documentato · "+works.length;area.append(heading);
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Solo opere collegate esplicitamente a questo genere. Apri la scheda per fonti, contesto e autore; un ascolto non è necessariamente disponibile.";
+   area.append(note);
+   for(const work of works){
+    const composer=byId.get(work.work_archive.composer_id);
+    const btn=document.createElement("button");btn.type="button";
+    btn.textContent=work.label+(composer?" · "+composer.label:"")+" ↗";
+    btn.addEventListener("click",()=>focusOn(work,true));area.append(btn);
+   }
+   dst.append(area);
+  }
+ }
+ if(n.work_archive?.kind==="opera-specifica"){
+  const composer=byId.get(n.work_archive.composer_id);
+  if(composer){
+   const area=document.createElement("section");area.className="mm-work-archive";
+   const heading=document.createElement("h3");heading.textContent="Scheda d'opera";area.append(heading);
+   const btn=document.createElement("button");btn.type="button";
+   btn.textContent="Compositore · "+composer.label+" ↗";
+   btn.addEventListener("click",()=>focusOn(composer,true));area.append(btn);
+   dst.append(area);
+  }
+ }
+ if(n.document_archive?.presentation==="scheda"){
+  const labels={"fonte-manoscritta":"Fonte manoscritta","trattato":"Trattato e testimonianza teorica","raccolta-editoriale":"Raccolta e trasmissione editoriale","fonte-editoriale":"Edizione e fonte a stampa","ciclo-compositivo":"Ciclo compositivo"};
+  const area=document.createElement("section");area.className="mm-work-archive";
+  const heading=document.createElement("h3");heading.textContent=labels[n.document_archive.kind]||"Documento musicale";area.append(heading);
+  const note=document.createElement("p");note.className="small";
+  note.textContent="Scheda di consultazione conservata fuori dalle bolle generali. Le attribuzioni e le fonti sono riportate nei dati originari; una fonte non implica collaborazione fra gli autori.";
+  area.append(note);
+  for(const contact of n.document_archive.contacts||[]){
+   const person=byId.get(contact.node_id);if(!person)continue;
+   const btn=document.createElement("button");btn.type="button";
+   const roles={"compositore":"Compositore","autore-del-trattato":"Autore","autore-della-raccolta":"Autore","curatore-della-raccolta":"Curatore","editore":"Editore","attribuzione-discussa":"Attribuzione discussa","trascrittore-arrangiatore":"Trascrittore e arrangiatore","associazione-storica-da-fonte-tarda":"associazione documentata da fonte tarda","rielaborazione-storicamente-testimoniata":"rielaborazione testimoniata","intervento-editoriale":"intervento editoriale","attribuzione-catalografica":"attribuzione catalografica","repertorio-tramandato":"repertorio tramandato","repertorio-attribuito-e-tramandato":"repertorio attribuito e tramandato"};
+   btn.textContent=(roles[contact.role]||"Riferimento")+" · "+person.label+" ↗";
+   btn.addEventListener("click",()=>focusOn(person,true));area.append(btn);
+  }
+  dst.append(area);
+ }
+ // Carta di identità PRIMA delle spiegazioni delle relazioni.
+ // Una fonte esterna non viene mai simulata con il collegamento alla ricerca generale.
+ if(n.type==="compositore"||n.type==="persona"){
+  const curated=encyclopediaIndex.profiles?.[n.id]||null;
+  const treccaniRefs=(encyclopediaIndex.entries?.[n.id]||[]).filter(ref=>
+   /^https:\/\/www\.treccani\.it\/enciclopedia\/[a-z0-9]/i.test(ref.url||""));
+  const alternativeRefs=(encyclopediaIndex.otherSources?.[n.id]||[]).filter(ref=>/^https:\/\//i.test(ref.url||"")&&ref.institution&&ref.title);
+  const card=document.createElement("section");card.className="mm-identity-card";
+  const title=document.createElement("h3");title.textContent="Carta d’identità · "+(treccaniRefs.length?"Treccani":alternativeRefs.length?"Fonti autorevoli":"Atlante");card.append(title);
+  const name=document.createElement("strong");name.className="mm-identity-name";name.textContent=n.label;card.append(name);
+  if(curated?.dates||curated?.place||n.country){
+   const meta=document.createElement("p");meta.className="mm-identity-meta";
+   meta.textContent=[curated?.dates,curated?.place||n.country].filter(Boolean).join(" · ");card.append(meta);
+  }
+  const description=document.createElement("p");description.className="mm-identity-description";
+  description.textContent=curated?.summary||n.description||"Profilo biografico ancora da documentare.";
+  card.append(description);
+  if(treccaniRefs.length){
+   const attribution=document.createElement("p");attribution.className="small";
+   attribution.textContent="Sintesi editoriale dell’Atlante; consulta la voce Treccani per verifiche e approfondimenti biografici.";
+   card.append(attribution);
+   for(const ref of treccaniRefs.slice(0,2)){
+    const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";
+    a.textContent="Leggi la voce specifica su Treccani ↗";card.append(a);
+   }
+  }
+  if(alternativeRefs.length){
+   const intro=document.createElement("p");intro.className="small";intro.textContent="Altre fonti biografiche autorevoli:";card.append(intro);
+   for(const ref of alternativeRefs.slice(0,3)){
+    const a=document.createElement("a");a.href=ref.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=ref.institution+" · "+ref.title+" ↗";card.append(a);
+   }
+  }
+  if(!treccaniRefs.length&&!alternativeRefs.length){
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Fonti biografiche individuali in corso di ricognizione.";card.append(note);
+  }
+  dst.append(card);
+ }
+ const periods=periodsFor(n);
+ if(periods.length){
+  const area=document.createElement("section");area.className="mm-period-links";
+  const transversal=isTranshistoricalMusicalCategory(n);
+  const title=document.createElement("h3");
+  title.textContent=(transversal?"Presenza e sviluppi nelle epoche":"Appartenenze e contesti storici")+" · "+periods.length;
+  area.append(title);
+  if(transversal){
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Questi collegamenti descrivono momenti della storia della forma o del genere, non un'appartenenza esclusiva a un'epoca.";
+   area.append(note);
+  }
+  for(const row of periods.slice(0,6)){
+   const b=document.createElement("button");b.type="button";b.textContent=row.node.label+" ↗";
+   b.addEventListener("click",()=>focusOn(row.node,true));area.append(b);
+  }
+  dst.append(area);
+ }
+ if(n.aliases?.length){
+  const names=document.createElement("details");names.className="name-variants";
+  const title=document.createElement("summary");title.textContent="Altri nomi e grafie · "+n.aliases.length;names.append(title);
+  const variants=document.createElement("p");variants.className="small";variants.textContent=n.aliases.join(" · ");names.append(variants);
+  if(n.name_review?.status==="verificato"&&n.name_review.sources?.length){
+   const source=document.createElement("a");source.href=n.name_review.sources[0];source.target="_blank";source.rel="noopener noreferrer";source.textContent="Fonte sulle grafie ↗";names.append(source);
+  }else{const note=document.createElement("p");note.className="small";note.textContent="Varianti in revisione bibliografica.";names.append(note);}
+  dst.append(names);
+ }
+ const allowedInPanel=readingAllowed();
+  const conn=linked(n).filter(({e})=>allowedInPanel.has(readingKey(e)));
+ updateLensCounts(n);
+ const box=document.createElement("section");box.className="lens-relations";
+ const head=document.createElement("h3");head.textContent="Relazioni musicali e personali · "+conn.length+" ("+readingSpotlight().size+" evidenziate)";box.append(head);
+ const readingNote=document.createElement("p");readingNote.className="small reading-note";readingNote.textContent="La profondità cambia i collegamenti in risalto: gli archi tratteggiati verso le famiglie sono raccordi tassonomici, non nuove relazioni dirette del database.";box.append(readingNote);
+ if(!conn.length){const p=document.createElement("p");p.className="small";p.textContent="Nessuna relazione personale documentata e visibile con le lenti attive. Le appartenenze storiche e i rimandi alle opere sono mostrati separatamente.";box.append(p);}
+ for(const {e,n:other} of conn){
+  const item=document.createElement("article");item.className="lens-relation-item";
+  const b=document.createElement("button");b.type="button";b.textContent=other.label+" ↗";b.title="Segui il collegamento";b.addEventListener("click",()=>focusOn(other,true));
+  const kind=document.createElement("span");kind.className="lens-relation-kind";kind.textContent=relationSentence(e,n.id);
+  const p=document.createElement("p");p.textContent=e.note||"Relazione documentata.";item.append(b,kind,p);
+  // Rendere visibile anche la documentazione qualificata, senza perdere la cautela della fonte.
+  if(e.status&&e.status!=="documentato"){
+   const cautionLabels={
+    "documentato-con-cautela":"Attestazione da leggere con cautela",
+    "documentato-con-provenienza-biografica":"Testimonianza di provenienza biografica",
+    "documentato-con-cautela-attributiva":"Attribuzione storica discussa",
+    "documentato-con-cautela-testimoniale":"Episodio riportato da una testimonianza",
+    "documentato-catalograficamente":"Attestazione catalografica"
+   };
+   const qualification=document.createElement("p");qualification.className="small";
+   qualification.textContent="Qualificazione della fonte: "+(cautionLabels[e.status]||e.status.replace(/-/g," "))+".";
+   item.append(qualification);
+  }
+  // Una fonte e' un vero collegamento esterno, non un pulsante che apre
+  // una seconda spiegazione duplicata. Nessuna CTA se manca una fonte valida.
+  const sources=[...new Set((Array.isArray(e.sources)?e.sources:[])
+   .filter(url=>typeof url==="string"&&/^https:\/\/[^\s/]+(?:\/|$)/i.test(url)))];
+  if(sources.length){
+   const foot=document.createElement("div");foot.className="lens-sources";
+   for(const [i,url] of sources.entries()){
+    const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";
+    a.textContent=sources.length===1?"Consulta la fonte ↗":"Fonte "+(i+1)+" ↗";foot.append(a);
+   }
+   item.append(foot);
+  }
+  box.append(item);
+ }dst.append(box);
+ const relatedMedia=[...new Map(videoLinks.filter(v=>v.node_id===n.id||v.node===n.id).map(link=>videos.find(v=>v.id===(link.video_id||link.video))).filter(Boolean).map(v=>[v.id,v])).values()];
+ // Le pagine editoriali non sono sinonimi di un lemma biografico:
+ // i rimandi derivano da titoli e/o URL editoriali verificati.
+ const editorials=[...(editorialBacklinks[n.id]||[])].filter(ref=>
+  ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||
+  ref.match==="author-heading-anchor"||ref.match==="author-text-anchor"||
+  ref.match==="narrative-author-anchor");
+ // Un'opera non equivale a un capitolo storico: le due destinazioni restano separate.
+ // Il campo node.url non prova una menzione dell'autore e NON viene usato come scorciatoia.
+ // Per i nodi di genere con un percorso dedicato, la destinazione canonica
+ // prevale sui link storici del database: un'etichetta corretta non deve
+ // aprire un altro capitolo (ad es. Balletto -> Barocco).
+ const canonicalGeneralRoutes=Object.freeze({
+  "balletto":"../balletto/",
+  "operetta":"../dall-operetta-a-broadway/",
+  "musical":"../dall-operetta-a-broadway/"
+ });
+ const routeKey=String(n.label||"").normalize("NFKD")
+  .replace(/[\u0300-\u036f]/g,"").trim().toLowerCase();
+ const canonicalRoute=["periodo","corrente","ambito"].includes(n.type)
+  ?canonicalGeneralRoutes[routeKey]:null;
+ const generalRoute=canonicalRoute||n.url;
+ if(["periodo","corrente","ambito"].includes(n.type)&&generalRoute&&!editorials.some(ref=>ref.url===generalRoute))
+  editorials.unshift({page:"Contesto storico",url:generalRoute,title:"Percorso generale · "+n.label});
+ const isSingleWork=ref=>ref.match==="opera-strutturata"||ref.match==="catalogue-work-anchor"||
+  /#mm-opera-(camera|canto)-/.test(ref.url||"");
+ const workRefs=editorials.filter(isSingleWork);
+ const specificNavigationRefs=editorials.filter(ref=>!isSingleWork(ref));
+ const isAuthor=n.type==="compositore"||n.type==="persona";
+ // In mancanza di una menzione narrativa individuale, il capitolo storico
+ // resta accessibile, ma e' marcato come GENERALE, mai come scheda dell'autore.
+ // Gerarchia: rimando specifico > periodo diretto > corrente diretta > curatela.
+ // Non dedurre l'appartenenza biografica da relazioni con altre persone.
+ const periodRouteRefs=isAuthor&&!specificNavigationRefs.length?
+  periodsFor(n).map(row=>historicalChapterRoutes[row.node.id])
+   .filter(ref=>ref?.url&&ref?.title):[];
+ const currentRouteRefs=isAuthor&&!specificNavigationRefs.length&&!periodRouteRefs.length?
+  edges.filter(e=>e.source===n.id||e.target===n.id)
+   .map(e=>byId.get(e.source===n.id?e.target:e.source))
+   .filter(other=>other?.type==="corrente"&&typeof other.url==="string"&&
+    /^\.\.\/[a-z0-9-]+\/(?:#[a-z0-9-]+)?$/.test(other.url))
+   .map(other=>({page:other.label,url:other.url,title:"Percorso generale · "+other.label,
+    match:"general-current-fallback"})):[];
+ const curatedPage=isAuthor&&!specificNavigationRefs.length&&!periodRouteRefs.length&&
+  !currentRouteRefs.length?curatedGeneralAuthorPages[n.id]:null;
+ const curatedRouteRefs=curatedPage?[{page:curatedPage,url:"../"+curatedPage+"/",
+  title:"Contesto musicale generale · "+curatedGeneralPageTitles[curatedPage],
+  match:"general-curated-context-fallback"}]:[];
+ const chapterNavigationRefs=[...new Map([...periodRouteRefs,...currentRouteRefs,...curatedRouteRefs]
+  .filter(ref=>ref?.url&&ref?.title).map(ref=>[ref.url,{...ref,
+   match:ref.match||"general-chapter-fallback"}])).values()].slice(0,2);
+ const navigationRefs=specificNavigationRefs.length?specificNavigationRefs:chapterNavigationRefs;
+ if(navigationRefs.length||isAuthor){
+  const place=document.createElement("section");place.className="mm-site-links";
+  const title=document.createElement("h3");title.textContent="Percorsi nell’Atlante";place.append(title);
+  if(chapterNavigationRefs.length){
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Non è ancora disponibile un passaggio specifico verificato. I collegamenti conducono a contesti generali, non a schede individuali; gli ascolti sono presentati separatamente.";
+   place.append(note);
+  }else if(isAuthor&&!navigationRefs.length){
+   const note=document.createElement("p");note.className="small";
+   note.textContent="Il capitolo storico generale è ancora da attribuire e verificare. Le opere già censite restano accessibili nella sezione successiva.";
+   place.append(note);
+  }
+  for(const ref of navigationRefs.slice(0,8)){
+   const a=document.createElement("a");a.href=ref.url;
+   a.textContent="↗ "+(ref.title||"Percorso · "+ref.page.replace(/-/g," ")+" · "+decodeURIComponent((ref.url||"").split("#")[1]||"approfondimento").replace(/-/g," "));
+   a.title=["general-chapter-fallback","general-current-fallback","general-curated-context-fallback"].includes(ref.match)?
+    "Capitolo generale del periodo; non è una scheda dedicata a "+n.label:
+    "Apri nell’Atlante il passaggio dedicato a "+n.label;
+   place.append(a);
+  }
+  if(navigationRefs.length>8){
+   const more=document.createElement("details");more.className="mm-extra-links";
+   const head=document.createElement("summary");head.textContent="Altri "+(navigationRefs.length-8)+" percorsi";more.append(head);
+   for(const ref of navigationRefs.slice(8)){
+    const a=document.createElement("a");a.href=ref.url;a.textContent="↗ "+(ref.title||"Passaggio nell’Atlante");more.append(a);
+   }
+   place.append(more);
+  }
+  dst.append(place);
+ }
+ const mediaHead=document.createElement("div");mediaHead.className="panel-section-header";
+ const h=document.createElement("h3");h.textContent="Ascolti e video";mediaHead.append(h);
+ const total=document.createElement("span");total.className="media-count";total.textContent=(relatedMedia.length+workRefs.length)+" risorse";mediaHead.append(total);dst.append(mediaHead);
+ for(const ref of workRefs.slice(0,12)){
+  const item=document.createElement("article");item.className="mm-work-listening";
+  const title=document.createElement("strong");title.textContent=ref.title||ref.page||"Opera nell’Atlante";item.append(title);
+  const link=document.createElement("a");link.href=ref.url;
+  link.textContent="▶ Apri la scheda d’ascolto nell’Atlante ↗";
+  link.title="Il lettore è nella scheda dell’opera. Nessun avvio automatico.";item.append(link);dst.append(item);
+ }
+ if(workRefs.length>12){
+  const p=document.createElement("p");p.className="small";
+  const extra=document.createElement("details");extra.className="mm-extra-links";
+  const head=document.createElement("summary");head.textContent="Mostra altre "+(workRefs.length-12)+" opere";extra.append(head);
+  for(const ref of workRefs.slice(12)){
+   const article=document.createElement("article");article.className="mm-work-listening";
+   const title=document.createElement("strong");title.textContent=ref.title||ref.page||"Opera";
+   const a=document.createElement("a");a.href=ref.url;a.textContent="▶ Apri la scheda dell’opera ↗";
+   article.append(title,a);extra.append(article);
+  }
+  dst.append(extra);
+ }
+ if(!relatedMedia.length&&!workRefs.length){
+  const p=document.createElement("p");p.className="small";
+  p.textContent="Nessun ascolto specifico ancora collegato a questa voce: consulta i percorsi dell’Atlante indicati sopra.";dst.append(p);
+ }
+ for(const media of relatedMedia){
+   const box=document.createElement("article");box.className="video";
+   if(media.youtube_id&&/^[a-zA-Z0-9_-]{11}$/.test(media.youtube_id)){
+      const link=document.createElement("a");link.href=media.url;link.target="_blank";link.rel="noopener noreferrer";link.className="media-image";
+      const img=document.createElement("img");img.src="https://i.ytimg.com/vi/"+media.youtube_id+"/hqdefault.jpg";img.alt="Anteprima dell'ascolto";img.loading="lazy";
+      const play=document.createElement("span");play.className="play-glyph";play.textContent="▶";link.append(img,play);box.append(link);
+   }
+   const t=document.createElement("strong");t.className="media-title";t.textContent=media.title||"Ascolto";box.append(t);
+   if(media.kind==="audio"&&/^https:/.test(media.url||"")){
+     const audio=document.createElement("audio");audio.controls=true;audio.preload="none";audio.src=media.url;audio.setAttribute("aria-label",media.title||"Ascolto audio");box.append(audio);
+   }
+   const link=document.createElement("a");link.className="media-link";link.href=media.url||("#");link.target="_blank";link.rel="noopener noreferrer";link.textContent=media.kind==="audio"?"Fonte audio ↗":"Ascolta su YouTube ↗";box.append(link);
+   const original=media.source_bookmarks||{};
+   const entries=Object.entries(original);
+   if(entries.length){
+    const references=document.createElement("div");references.className="source-bookmarks";
+    for(const [slug,url] of entries){
+      const toPage=document.createElement("a");toPage.href=url;toPage.className="source-bookmark";
+      toPage.textContent="↳ Vai alla pagina "+slug.charAt(0).toUpperCase()+slug.slice(1);
+      toPage.title="Vai alla pagina "+slug+" nel punto dedicato a questo ascolto";
+      references.append(toPage);
+    }box.append(references);
+   }
+   dst.append(box);
+ }
+ const group=document.createElement("details");group.className="related-list";group.open=false;
+ const summary=document.createElement("summary");summary.textContent="Vai a un collegamento";group.append(summary);
+ const ul=document.createElement("ul");for(const row of conn.slice(0,45)){const li=document.createElement("li"),button=document.createElement("button");button.textContent=row.n.label;button.onclick=()=>focusOn(row.n,false);li.append(button);ul.append(li);}group.append(ul);
+ if(conn.length>45){const p=document.createElement("p");p.className="small";p.textContent="Altre "+(conn.length-45)+" connessioni esplorabili nella rete.";group.append(p);}
+ dst.append(group);
+}
+function pointer(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
+function hit(pt){
+ for(let i=hitOrder.length-1;i>=0;i--){const p=hitOrder[i];if(!visibleNode(p.node))continue;if(Math.hypot(p.x-pt.x,p.y-pt.y)<=p.hitRadius)return p;}return null;
+}
+canvas.addEventListener("pointerleave",()=>{
+ if(!drag){hover=null;canvas.title="";canvas.style.cursor="grab";if(relationTooltip)relationTooltip.hidden=true;}
+});
+canvas.addEventListener("pointerdown",e=>{
+ if(e.button!==0)return;const pt=pointer(e),p=hit(pt);
+ drag={node:p?.node||null,relation:p?null:lineHit(pt),x:pt.x,y:pt.y,lastX:pt.x,lastY:pt.y,moved:false};
+ canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");
+});
+canvas.addEventListener("pointermove",e=>{
+ const pt=pointer(e);
+ if(!drag){
+  hover=hit(pt)?.node||null;const edge=!hover?lineHit(pt):null;canvas.style.cursor=hover||edge?"pointer":"grab";
+  canvas.title=hover&&selected&&!geoFromNode(selected)?(geoFromNode(hover)?"Doppio clic su "+hover.label+" per localizzarlo sulla mappa.":"Nodo non geolocalizzato. Fai doppio clic su un compositore collegato per localizzarlo sulla mappa."):"";
+  if(relationTooltip){relationTooltip.hidden=!edge;if(edge){relationTooltip.textContent=relationSentence(edge,selected?.id);relationTooltip.style.left=Math.max(0,Math.min(pt.x+16,w-285))+"px";relationTooltip.style.top=Math.max(0,Math.min(pt.y+16,h-95))+"px";}}
+  return;
+ }
+ const dx=pt.x-drag.lastX,dy=pt.y-drag.lastY;if(Math.hypot(pt.x-drag.x,pt.y-drag.y)>4)drag.moved=true;
+ drag.lastX=pt.x;drag.lastY=pt.y;
+ if(drag.node){
+  const base=geoScreenPoint(drag.node,false)||contextScreenPoint(drag.node,false);
+  if(base){drag.node.manualDx=pt.x-base.x;drag.node.manualDy=pt.y-base.y;drag.node.manualPinned=true;}
+  else{const current=screen.find(p=>p.node===drag.node),pos=unproject(pt.x,pt.y,current?.depth||0);Object.assign(drag.node,pos);drag.node.manualPinned=true;}
+  drag.node.vx=drag.node.vy=drag.node.vz=0;
+ }else if(!drag.relation){
+  const world=mapBase()*360/Math.max(6,geoState.span);
+  geoState.lon-=dx/world*360;geoState.lat+=dy/world*360;geoState.lat=clamp(geoState.lat,-80,80);
+  geoState.targetLon=geoState.lon;geoState.targetLat=geoState.lat;
+ }
+});
+function release(){if(!drag)return;const d=drag;drag=null;canvas.classList.remove("dragging");if(d.relation&&!d.moved)showRelation(d.relation);}
+canvas.addEventListener("pointerup",release);canvas.addEventListener("pointercancel",release);
+canvas.addEventListener("dblclick",e=>{const p=hit(pointer(e));if(p){e.preventDefault();focusOn(p.node,true);}});
+function syncZoomControls(){
+ const pct=Math.round(geoZoomPct);
+ zoomSlider.value=String(pct);zoomValue.textContent=pct+"%";
+ zoomSlider.setAttribute("aria-valuetext",pct+" per cento");
+ zoomSlider.disabled=false;
+ zoomIn.disabled=pct>=100;zoomOut.disabled=pct<=0;
+}
+function setZoomPct(next){
+ geoZoomPct=clamp(Number(next)||0,0,100);
+ clearExplodeLayout();resetAutoLayout();
+ if(selected){
+  const anchor=geoFromNode(selected);
+  if(anchor){
+   if(geoZoomPct<=50){
+    const t=geoZoomPct/50;
+    geoState.targetLat=20+(anchor.lat-20)*t;
+    geoState.targetLon=lonDelta(anchor.lon,0)*t;
+    geoState.targetSpan=360+(geoAutoSpan-360)*t;
+   }else{
+    const t=(geoZoomPct-50)/50;
+    geoState.targetLat=anchor.lat;geoState.targetLon=anchor.lon;
+    geoState.targetSpan=geoAutoSpan+(6-geoAutoSpan)*t;
+   }
+  }
+ }else{
+  const t=geoZoomPct/100;
+  geoState.targetLat=geoState.lat;geoState.targetLon=geoState.lon;
+  geoState.targetSpan=360+(30-360)*t;
+ }
+ syncZoomControls();
+}
+zoomIn.addEventListener("click",e=>{e.preventDefault();setZoomPct(geoZoomPct+10);});
+zoomOut.addEventListener("click",e=>{e.preventDefault();setZoomPct(geoZoomPct-10);});
+zoomSlider.addEventListener("input",()=>setZoomPct(Number(zoomSlider.value)));
+syncZoomControls();
+canvas.addEventListener("wheel",e=>{
+ e.preventDefault();setZoomPct(geoZoomPct-e.deltaY*.035);
+},{passive:false});
+
+tab.addEventListener("click",()=>setPanel(!document.body.classList.contains("panel-open")));
+backFocus?.addEventListener("click",goBackFocus);
+syncBackControl();
+// Ricerca progressiva: un solo risultato apre automaticamente la rete;
+ // nei casi ambigui si offre una scelta esplicita, utilizzabile anche da Android.
+const searchResults=document.createElement("div");
+searchResults.id="searchResults";
+searchResults.setAttribute("role","group");
+searchResults.setAttribute("aria-label","Scegli il risultato della ricerca");
+searchResults.hidden=true;
+search.after(searchResults);
+let searchFocusTimer=null;
+function hideSearchChoices(){searchResults.hidden=true;searchResults.replaceChildren();}
+function matchingSearchFocus(q){
+ const results=findSearchResults(q);
+ const exact=results.filter(n=>searchNames(n).some(name=>normSearch(name)===q));
+ return {results,target:exact.length===1?exact[0]:(results.length===1?results[0]:null)};
+}
+function selectSearchTarget(chosen,closeKeyboard=false){
+ if(!chosen)return false;
+ hideSearchChoices();
+ // Lo stesso percorso di navigazione del doppio clic: aggiorna focus,
+ // mappa, archi, pannello e cronologia anche quando l'autore era già selezionato.
+ focusOn(chosen,true,true,true,true);
+ if(closeKeyboard)search.blur();
+ return true;
+}
+function showSearchChoices(results){
+ searchResults.replaceChildren();
+ if(results.length<2){searchResults.hidden=true;return;}
+ const label=document.createElement("p");
+ label.className="search-results-note";
+ label.textContent=results.length+" corrispondenze · scegli il nome";
+ searchResults.append(label);
+ for(const n of results.slice(0,12)){
+  const button=document.createElement("button");
+  button.type="button";
+  button.textContent=n.label+(n.type==="compositore"?" · compositore":"");
+  button.setAttribute("aria-label","Esplora "+n.label);
+  button.addEventListener("click",()=>{
+   clearTimeout(searchFocusTimer);
+   search.value=n.label;searchText=normSearch(search.value);
+   selectSearchTarget(n,true);
+  });
+  searchResults.append(button);
+ }
+ if(results.length>12){
+  const more=document.createElement("p");
+  more.className="search-results-note";
+  more.textContent="Altri risultati disponibili: continua a scrivere per restringere la scelta.";
+  searchResults.append(more);
+ }
+ searchResults.hidden=false;
+}
+function activateSearchSelection(){
+ const query=normSearch(search.value);
+ if(!query){hideSearchChoices();return;}
+ const {results,target}=matchingSearchFocus(query);
+ if(!target){
+  status.textContent=results.length?results.length+" corrispondenze · scegli il nome":"Nessuna corrispondenza";
+  showSearchChoices(results);
+  return;
+ }
+ selectSearchTarget(target,window.matchMedia("(max-width:700px)").matches);
+}
+search.addEventListener("input",()=>{
+ clearTimeout(searchFocusTimer);
+ searchText=normSearch(search.value);
+ if(!searchText){hideSearchChoices();return;}
+ const {results,target}=matchingSearchFocus(searchText);
+ status.textContent=results.length+" corrispondenze · "+(target?target.label+" · apertura rete":results.length?"scegli o precisa il nome":"nessuna corrispondenza");
+ if(!target){showSearchChoices(results);return;}
+ hideSearchChoices();
+ if(searchText.length<2)return;
+ const query=searchText;
+ searchFocusTimer=setTimeout(()=>{
+  if(normSearch(search.value)!==query)return;
+  activateSearchSelection();
+ },550);
+});
+search.addEventListener("focus",()=>{
+ const q=normSearch(search.value);if(!q)return;
+ const {results,target}=matchingSearchFocus(q);
+ if(!target)showSearchChoices(results);
+});
+search.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){hideSearchChoices();search.blur();return;}
+ if(e.key!=="Enter")return;
+ e.preventDefault();
+ clearTimeout(searchFocusTimer);
+ const q=normSearch(search.value),match=q?matchingSearchFocus(q):null;
+ if(match?.target){selectSearchTarget(match.target,true);}
+ else if(match){showSearchChoices(match.results);status.textContent=match.results.length+" corrispondenze · scegli il nome"; }
+});
+document.addEventListener("pointerdown",e=>{
+ if(e.target!==search&&!searchResults.contains(e.target))hideSearchChoices();
+});
+const readingControl=document.getElementById("readingLevel");
+syncCategoryControls();syncLensControls();
+function applyReadingLevel(value){
+ readingLevel=Math.max(0,Math.min(2,Number(value)||0));
+ if(readingControl)readingControl.value=String(readingLevel);
+ selectedNeighborCacheKey="";selectedDepthCacheKey="";
+ clearExplodeLayout();resetAutoLayout();
+ if(selected){fitGeoNetwork(selected);populate(selected);
+  status.textContent=selected.label+" · "+readingNames[readingLevel]+" · "+readingAllowed().size+" collegamenti consultabili, "+readingSpotlight().size+" evidenziati";
+ }
+}
+readingControl?.addEventListener("change",e=>applyReadingLevel(e.target.value));
+function syncCategoryControls(){categoryChoices?.querySelectorAll("input[data-category]").forEach(i=>{i.checked=activeCategories.has(i.value);});}
+function syncLensControls(){lensChoices?.querySelectorAll("input[data-lens]").forEach(i=>{i.checked=activeLenses.has(i.value);});}
+function setLensState(id,enabled){
+ if(enabled)activeLenses.add(id);else activeLenses.delete(id);
+ activeEdgesCacheKey="";selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();
+ syncLensControls();if(relationTooltip)relationTooltip.hidden=true;if(selected){fitGeoNetwork(selected);populate(selected);}
+ status.textContent=(selected?selected.label+" · "+linked(selected).length+" relazioni · ":"")+"Lenti: "+activeLensLabel();
+}
+function toggleLens(id){setLensState(id,!activeLenses.has(id));}
+lensChoices?.addEventListener("change",e=>{
+ const input=e.target.closest("input[data-lens]");if(!input)return;
+ setLensState(input.value,input.checked);
+});
+categoryChoices?.addEventListener("change",e=>{const input=e.target.closest("input[data-category]");if(!input)return;if(input.checked)activeCategories.add(input.value);else activeCategories.delete(input.value);if(!activeCategories.size){activeCategories.add("compositore");syncCategoryControls();}selectedNeighborCacheKey="";selectedDepthCacheKey="";clearExplodeLayout();resetAutoLayout();if(selected){fitGeoNetwork(selected);populate(selected);}});
+moreControls?.addEventListener("click",()=>{
+ const open=document.body.classList.toggle("controls-open");
+ moreControls.setAttribute("aria-expanded",String(open));
+ moreControls.textContent=open?"− Meno":"☷ Opzioni";
+});
+
+explodeBtn?.addEventListener("click",()=>explodeNetwork());
+labels.addEventListener("click",()=>{showAllLabels=!showAllLabels;labels.textContent=showAllLabels?"Etichette: tutte":"Etichette: vicine";});
+reset.addEventListener("click",()=>{
+ clearTimeout(searchFocusTimer);hideSearchChoices();
+ navigationHistory.length=0;syncBackControl();
+ selected=null;focus=null;camera={x:0,y:0,z:0};rotX=-.12;rotY=.15;geoAutoSpan=360;geoZoomPct=0;zoom=1;syncZoomControls();
+ geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;geoLabel.textContent="Mondo · panoramica";if(periodContext){periodContext.textContent="";periodContext.hidden=true;}
+ search.value="";searchText="";readingLevel=0;if(readingControl)readingControl.value="0";explodeCycle=0;activeLenses.clear();for(const l of EXPLORATION_LENSES)activeLenses.add(l.id);
+ activeCategories.clear();for(const c of ["compositore","ambito","corrente","persona"])activeCategories.add(c);
+ syncLensControls();syncCategoryControls();clearLensCounts();
+ for(const n of nodes){n.manualDx=0;n.manualDy=0;n.manualPinned=false;n.autoDx=0;n.autoDy=0;n.explodeDx=0;n.explodeDy=0;}
+ explodeActive=false;if(explodeBtn){explodeBtn.disabled=true;explodeBtn.textContent="✦ Esplodi";}
+ document.body.classList.remove("controls-open");if(moreControls){moreControls.setAttribute("aria-expanded","false");moreControls.textContent="☷ Opzioni";}
+ if(lensHelp)lensHelp.textContent="Puoi attivare più lenti contemporaneamente. Doppio clic su un nodo per centrarlo.";
+ if(relationTooltip)relationTooltip.hidden=true;setPanel(false);status.textContent=nodes.filter(n=>n.type==="compositore").length+" compositori · doppio clic per esplorare";
+});
+window.addEventListener("resize",resize);
+window.addEventListener("pageshow",()=>{
+ if(!selected){
+  zoom=1;geoZoomPct=0;geoAutoSpan=360;
+  geoState.lat=20;geoState.lon=0;geoState.span=360;
+  geoState.targetLat=20;geoState.targetLon=0;geoState.targetSpan=360;
+  syncZoomControls();
+ }
+});
+Promise.all([
+ fetch("database/grafo.json",{cache:"no-cache"}),
+ fetch("database/video.json",{cache:"no-cache"}),
+ fetch("database/relazioni.json",{cache:"no-cache"}),
+ fetch("database/consultazione.json?v=20261018-profili491",{cache:"no-store"}),
+ fetch("database/collegamenti-sito.json",{cache:"no-cache"}),
+ fetch("database/integrazione-operetta-musical.json?v=20261106-nodi01",{cache:"no-store"})
+]).then(async responses=>{
+ if(!responses[0].ok)throw Error("HTTP database "+responses[0].status);
+ if(!responses[2].ok)throw Error("HTTP lenti "+responses[2].status);
+ const db=await responses[0].json();
+ const media=responses[1].ok?await responses[1].json():{videos:[],video_nodes:[]};
+ db.videos=media.videos||[];db.video_nodes=media.video_nodes||[];
+ db.lenses=await responses[2].json();
+ encyclopediaIndex=responses[3].ok?await responses[3].json():{};
+ const crosslinks=responses[4].ok?await responses[4].json():{};
+ editorialBacklinks=crosslinks.byNode||{};
+ historicalChapterRoutes=crosslinks.generalChapterRoutes||{};
+ if(responses[5]?.ok){integrateGenreExtension(db,await responses[5].json());}
+ else console.warn("[Musurgia Mundi] Estensione generi non disponibile");
+ return db;
+}).then(db=>{
+ prepare(db);
+ const requested=new URLSearchParams(location.search).get("n");
+ if(requested&&byId.has(requested))focusOn(byId.get(requested),true,true,false);
+ requestAnimationFrame(draw);
+}).catch(e=>{
+ document.body.classList.add("error");
+ status.textContent="Errore caricamento: "+e.message;console.error(e);
+});
+})();
