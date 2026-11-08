@@ -1,0 +1,2135 @@
+{
+  "schema": "musurgia-atlantis-2L-lotto04-v1",
+  "date": "2026-11-08",
+  "scope": "audit-only: cross-layer groups 61-80",
+  "source_index": {
+    "path": "musurgia-atlantis/audit-integrazione/CANDIDATI_COLLISIONI_ARCHI_FASE2K_2026-11-08.json",
+    "sha": "074ae790819d7210da12e4c798e8d1dd2fad17e2"
+  },
+  "snapshot_blobs": {
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE02_2026-11-08.json": "c9a67d13b50da4337ec4a9325f5d5d4a422635c5",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json": "22916a9c6a59452f77048f04dbe9b229091ddf89",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE02_2026-11-08.json": "d1516f1681e4d5fd13f4da6b96c11228823300ff",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json": "618c1f0962509b750345b14079dc9b1459cd93c7"
+  },
+  "counts": {
+    "groups_before": 60,
+    "groups_this": 20,
+    "groups_completed": 80,
+    "groups_total": 250,
+    "groups_remaining": 170,
+    "raw_rows": 45,
+    "raw_base": 20,
+    "raw_specialist": 25
+  },
+  "records": [
+    {
+      "group_n": 61,
+      "normalized_pair": "legacy:minimalismo|pers:philip-glass",
+      "semantic_class": "dual_specialist_predicates",
+      "reason": "Glass: distinguere ruolo storico nella prima generazione minimalista da scrittura a strutture ripetitive; non appiattire autodefinizione e classificazione esterna, né collegarlo automaticamente a Reich.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0636",
+          "source_index": 635,
+          "raw_source": "compositore-philip-glass",
+          "raw_target": "minimalismo",
+          "proposed_source": "pers:philip-glass",
+          "proposed_target": "legacy:minimalismo",
+          "kind": "relazione-storico-musicale",
+          "payload": {
+            "source": "compositore-philip-glass",
+            "target": "minimalismo",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:gen-minimalismo-glass",
+          "source_index": 109,
+          "raw_source": "minimalismo",
+          "raw_target": "compositore-philip-glass",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:philip-glass",
+          "kind": "strutture-ripetitive",
+          "payload": {
+            "id": "gen-minimalismo-glass",
+            "group": "genealogie",
+            "source": "minimalismo",
+            "target": "compositore-philip-glass",
+            "kind": "strutture-ripetitive",
+            "forward": "fu rielaborato in strutture ripetitive da",
+            "reverse": "sviluppò una musica di strutture ripetitive associata al",
+            "note": "Glass è storicamente associato al minimalismo, ma preferisce definire il proprio linguaggio 'musica con strutture ripetitive'. Nei lavori giovanili sviluppò processi di reiterazione e trasformazione graduale.",
+            "sources": [
+              "https://philipglass.com/biography/",
+              "https://ressources.ircam.fr/en/composer/philip-glass/workcourse"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "fu rielaborato in strutture ripetitive da",
+          "fragment_reverse": "sviluppò una musica di strutture ripetitive associata al",
+          "raw_note": "Glass è storicamente associato al minimalismo, ma preferisce definire il proprio linguaggio 'musica con strutture ripetitive'. Nei lavori giovanili sviluppò processi di reiterazione e trasformazione graduale.",
+          "raw_sources": [
+            "https://philipglass.com/biography/",
+            "https://ressources.ircam.fr/en/composer/philip-glass/workcourse"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu rielaborato in strutture ripetitive da",
+            "reverse_fragment": "sviluppò una musica di strutture ripetitive associata al",
+            "original_note": "Glass è storicamente associato al minimalismo, ma preferisce definire il proprio linguaggio 'musica con strutture ripetitive'. Nei lavori giovanili sviluppò processi di reiterazione e trasformazione graduale.",
+            "original_sources": [
+              "https://philipglass.com/biography/",
+              "https://ressources.ircam.fr/en/composer/philip-glass/workcourse"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:scuola-minimalismo-philip-glass",
+          "source_index": 189,
+          "raw_source": "minimalismo",
+          "raw_target": "compositore-philip-glass",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:philip-glass",
+          "kind": "generazione-fondativa",
+          "payload": {
+            "id": "scuola-minimalismo-philip-glass",
+            "group": "scuole",
+            "source": "minimalismo",
+            "target": "compositore-philip-glass",
+            "kind": "generazione-fondativa",
+            "forward": "annovera fra i pionieri",
+            "reverse": "è annoverato fra i pionieri del",
+            "note": "Philip Glass è associato alla prima stagione minimalista per le strutture ripetitive, poi sviluppate in una produzione teatrale e strumentale personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "orientamento-estetico-non-sodalizio",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "fragment_forward": "annovera fra i pionieri",
+          "fragment_reverse": "è annoverato fra i pionieri del",
+          "raw_note": "Philip Glass è associato alla prima stagione minimalista per le strutture ripetitive, poi sviluppate in una produzione teatrale e strumentale personale.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annovera fra i pionieri",
+            "reverse_fragment": "è annoverato fra i pionieri del",
+            "original_note": "Philip Glass è associato alla prima stagione minimalista per le strutture ripetitive, poi sviluppate in una produzione teatrale e strumentale personale.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 62,
+      "normalized_pair": "legacy:minimalismo|pers:la-monte-young",
+      "semantic_class": "historiographic_pioneer",
+      "reason": "La Monte Young: la categoria 'minimalismo' descrive un orientamento estetico; bordone e lunga durata non coincidono con i processi di sfasamento propri di altri compositori.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0637",
+          "source_index": 636,
+          "raw_source": "compositore-la-monte-young",
+          "raw_target": "minimalismo",
+          "proposed_source": "pers:la-monte-young",
+          "proposed_target": "legacy:minimalismo",
+          "kind": "relazione-storico-musicale",
+          "payload": {
+            "source": "compositore-la-monte-young",
+            "target": "minimalismo",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:scuola-minimalismo-la-monte-young",
+          "source_index": 186,
+          "raw_source": "minimalismo",
+          "raw_target": "compositore-la-monte-young",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:la-monte-young",
+          "kind": "generazione-fondativa",
+          "payload": {
+            "id": "scuola-minimalismo-la-monte-young",
+            "group": "scuole",
+            "source": "minimalismo",
+            "target": "compositore-la-monte-young",
+            "kind": "generazione-fondativa",
+            "forward": "annovera fra i pionieri",
+            "reverse": "è annoverato fra i pionieri del",
+            "note": "La Monte Young fu tra i pionieri del minimalismo americano e sperimentò durata estesa, bordone e riduzione dei materiali sonori.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "orientamento-estetico-non-sodalizio",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "fragment_forward": "annovera fra i pionieri",
+          "fragment_reverse": "è annoverato fra i pionieri del",
+          "raw_note": "La Monte Young fu tra i pionieri del minimalismo americano e sperimentò durata estesa, bordone e riduzione dei materiali sonori.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annovera fra i pionieri",
+            "reverse_fragment": "è annoverato fra i pionieri del",
+            "original_note": "La Monte Young fu tra i pionieri del minimalismo americano e sperimentò durata estesa, bordone e riduzione dei materiali sonori.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 63,
+      "normalized_pair": "legacy:minimalismo|pers:terry-riley",
+      "semantic_class": "dual_specialist_predicates",
+      "reason": "Terry Riley: In C (1964), cellule ripetute in forma aperta, è pratica specifica. Pioniere del minimalismo è un secondo predicato storiografico; i due specialistici vanno preservati.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0638",
+          "source_index": 637,
+          "raw_source": "compositore-terry-riley",
+          "raw_target": "minimalismo",
+          "proposed_source": "pers:terry-riley",
+          "proposed_target": "legacy:minimalismo",
+          "kind": "relazione-storico-musicale",
+          "payload": {
+            "source": "compositore-terry-riley",
+            "target": "minimalismo",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:gen-minimalismo-riley",
+          "source_index": 110,
+          "raw_source": "minimalismo",
+          "raw_target": "compositore-terry-riley",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:terry-riley",
+          "kind": "modello-di-ripetizione-aperta",
+          "payload": {
+            "id": "gen-minimalismo-riley",
+            "group": "genealogie",
+            "source": "minimalismo",
+            "target": "compositore-terry-riley",
+            "kind": "modello-di-ripetizione-aperta",
+            "forward": "trovò un punto di svolta nell'opera di",
+            "reverse": "contribuì al lessico ripetitivo del",
+            "note": "Con In C (1964), Riley costruì una forma aperta a partire da cellule ripetibili e avanzamento non rigidamente sincronizzato fra gli esecutori, segnando un passaggio fondamentale del minimalismo americano.",
+            "sources": [
+              "https://academic.oup.com/book/1491"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "trovò un punto di svolta nell'opera di",
+          "fragment_reverse": "contribuì al lessico ripetitivo del",
+          "raw_note": "Con In C (1964), Riley costruì una forma aperta a partire da cellule ripetibili e avanzamento non rigidamente sincronizzato fra gli esecutori, segnando un passaggio fondamentale del minimalismo americano.",
+          "raw_sources": [
+            "https://academic.oup.com/book/1491"
+          ],
+          "display_contract": {
+            "forward_fragment": "trovò un punto di svolta nell'opera di",
+            "reverse_fragment": "contribuì al lessico ripetitivo del",
+            "original_note": "Con In C (1964), Riley costruì una forma aperta a partire da cellule ripetibili e avanzamento non rigidamente sincronizzato fra gli esecutori, segnando un passaggio fondamentale del minimalismo americano.",
+            "original_sources": [
+              "https://academic.oup.com/book/1491"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:scuola-minimalismo-terry-riley",
+          "source_index": 187,
+          "raw_source": "minimalismo",
+          "raw_target": "compositore-terry-riley",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:terry-riley",
+          "kind": "generazione-fondativa",
+          "payload": {
+            "id": "scuola-minimalismo-terry-riley",
+            "group": "scuole",
+            "source": "minimalismo",
+            "target": "compositore-terry-riley",
+            "kind": "generazione-fondativa",
+            "forward": "annovera fra i pionieri",
+            "reverse": "è annoverato fra i pionieri del",
+            "note": "Terry Riley è una figura centrale della prima generazione minimalista; In C nel 1964 esplorò cellule ripetitive aperte a differenti durate.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "orientamento-estetico-non-sodalizio",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "fragment_forward": "annovera fra i pionieri",
+          "fragment_reverse": "è annoverato fra i pionieri del",
+          "raw_note": "Terry Riley è una figura centrale della prima generazione minimalista; In C nel 1964 esplorò cellule ripetitive aperte a differenti durate.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annovera fra i pionieri",
+            "reverse_fragment": "è annoverato fra i pionieri del",
+            "original_note": "Terry Riley è una figura centrale della prima generazione minimalista; In C nel 1964 esplorò cellule ripetitive aperte a differenti durate.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 64,
+      "normalized_pair": "legacy:minimalismo|pers:john-adams",
+      "semantic_class": "postminimalist_reception",
+      "reason": "John Adams recepisce e trasforma procedimenti minimalisti in costruzioni postminimaliste, teatrali e orchestrali; non identificarlo con la fase fondativa di Young/Riley.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0639",
+          "source_index": 638,
+          "raw_source": "compositore-john-adams",
+          "raw_target": "minimalismo",
+          "proposed_source": "pers:john-adams",
+          "proposed_target": "legacy:minimalismo",
+          "kind": "relazione-storico-musicale",
+          "payload": {
+            "source": "compositore-john-adams",
+            "target": "minimalismo",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:audit2-minimalismo-adams",
+          "source_index": 570,
+          "raw_source": "minimalismo",
+          "raw_target": "compositore-john-adams",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:john-adams",
+          "kind": "evoluzione-postminimalista",
+          "payload": {
+            "id": "audit2-minimalismo-adams",
+            "group": "scuole",
+            "source": "minimalismo",
+            "target": "compositore-john-adams",
+            "kind": "evoluzione-postminimalista",
+            "forward": "furono una delle matrici del linguaggio postminimalista sviluppato da",
+            "reverse": "ripensò tecniche ripetitive a partire dal",
+            "note": "Treccani e English National Opera attestano l'uso di tecniche minimaliste in Adams e la loro trasformazione in forme armonicamente, orchestralmene e drammaturgicamente più articolate; la relazione non indica adesione al programma di un singolo compositore.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/john-adams/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "ricezione-postminimalista",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "è una tradizione da cui sviluppò linguaggio autonomo",
+              "prior_reverse": "rielaborò le tecniche della tradizione",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "fragment_forward": "furono una delle matrici del linguaggio postminimalista sviluppato da",
+          "fragment_reverse": "ripensò tecniche ripetitive a partire dal",
+          "raw_note": "Treccani e English National Opera attestano l'uso di tecniche minimaliste in Adams e la loro trasformazione in forme armonicamente, orchestralmene e drammaturgicamente più articolate; la relazione non indica adesione al programma di un singolo compositore.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/john-adams/"
+          ],
+          "display_contract": {
+            "forward_fragment": "furono una delle matrici del linguaggio postminimalista sviluppato da",
+            "reverse_fragment": "ripensò tecniche ripetitive a partire dal",
+            "original_note": "Treccani e English National Opera attestano l'uso di tecniche minimaliste in Adams e la loro trasformazione in forme armonicamente, orchestralmene e drammaturgicamente più articolate; la relazione non indica adesione al programma di un singolo compositore.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/john-adams/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 65,
+      "normalized_pair": "legacy:minimalismo|pers:michael-nyman",
+      "semantic_class": "critical_terminology_vs_style",
+      "reason": "Michael Nyman: il suo ruolo di critico nella diffusione del termine 'minimal music' va distinto dalla produzione compositiva ripetitiva. L'attribuzione puntuale al 1968 è spesso riportata ma va conservata con cautela documentale.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0640",
+          "source_index": 639,
+          "raw_source": "compositore-michael-nyman",
+          "raw_target": "minimalismo",
+          "proposed_source": "pers:michael-nyman",
+          "proposed_target": "legacy:minimalismo",
+          "kind": "relazione-storico-musicale",
+          "payload": {
+            "source": "compositore-michael-nyman",
+            "target": "minimalismo",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:audit2-minimalismo-nyman",
+          "source_index": 571,
+          "raw_source": "minimalismo",
+          "raw_target": "compositore-michael-nyman",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:michael-nyman",
+          "kind": "elaborazione-estetica-e-terminologica",
+          "payload": {
+            "id": "audit2-minimalismo-nyman",
+            "group": "scuole",
+            "source": "minimalismo",
+            "target": "compositore-michael-nyman",
+            "kind": "elaborazione-estetica-e-terminologica",
+            "forward": "furono definiti anche nella critica e nella produzione musicale di",
+            "reverse": "impiegò il termine e sviluppò un linguaggio personale legato al",
+            "note": "Nyman applicò il termine minimalismo alla musica nella critica del 1968 e sviluppò una propria scrittura ripetitiva. IRCAM e Treccani documentano la coniazione critica e la successiva pratica compositiva: ruolo distinto da quello dei fondatori statunitensi.",
+            "sources": [
+              "https://medias.ircam.fr/en/composer/michael-nyman/biography"
+            ],
+            "status": "documentato",
+            "natura_semantica": "terminologia-critica-e-composizione",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "fu definito e sviluppato anche da",
+              "prior_reverse": "contribuì a descrivere e praticare",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "fragment_forward": "furono definiti anche nella critica e nella produzione musicale di",
+          "fragment_reverse": "impiegò il termine e sviluppò un linguaggio personale legato al",
+          "raw_note": "Nyman applicò il termine minimalismo alla musica nella critica del 1968 e sviluppò una propria scrittura ripetitiva. IRCAM e Treccani documentano la coniazione critica e la successiva pratica compositiva: ruolo distinto da quello dei fondatori statunitensi.",
+          "raw_sources": [
+            "https://medias.ircam.fr/en/composer/michael-nyman/biography"
+          ],
+          "display_contract": {
+            "forward_fragment": "furono definiti anche nella critica e nella produzione musicale di",
+            "reverse_fragment": "impiegò il termine e sviluppò un linguaggio personale legato al",
+            "original_note": "Nyman applicò il termine minimalismo alla musica nella critica del 1968 e sviluppò una propria scrittura ripetitiva. IRCAM e Treccani documentano la coniazione critica e la successiva pratica compositiva: ruolo distinto da quello dei fondatori statunitensi.",
+            "original_sources": [
+              "https://medias.ircam.fr/en/composer/michael-nyman/biography"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [
+        "https://www.cambridge.org/core/books/abs/stage-works-of-philip-glass/terminology-and-stages-of-minimalism/42024499AFCBCAA75D24B37FBFC2170C",
+        "https://www.treccani.it/enciclopedia/minimal-music_%28Enciclopedia-Italiana%29/"
+      ],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "LIMITED_TO_STATED_FACTS",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 66,
+      "normalized_pair": "legacy:risorgimento|pers:verdi",
+      "semantic_class": "specific_historical_work",
+      "reason": "Verdi: nel Risorgimento l'Inno popolare/Inno militare su testo di Mameli (1848) è una relazione specifica, diversa dalla lettura patriottica generica delle opere teatrali. Tenere distinta la sua composizione dal Canto degli Italiani di Novaro.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0650",
+          "source_index": 649,
+          "raw_source": "compositore-giuseppe-verdi",
+          "raw_target": "risorgimento",
+          "proposed_source": "pers:verdi",
+          "proposed_target": "legacy:risorgimento",
+          "kind": "relazione-storico-musicale",
+          "payload": {
+            "source": "compositore-giuseppe-verdi",
+            "target": "risorgimento",
+            "kind": "relazione-storico-musicale",
+            "weight": 1.7
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:catalogo-risorgimento-giuseppe-verdi",
+          "source_index": 324,
+          "raw_source": "risorgimento",
+          "raw_target": "compositore-giuseppe-verdi",
+          "proposed_source": "legacy:risorgimento",
+          "proposed_target": "pers:verdi",
+          "kind": "inno-militare-su-testo-di-mameli",
+          "payload": {
+            "id": "catalogo-risorgimento-giuseppe-verdi",
+            "group": "scuole",
+            "source": "risorgimento",
+            "target": "compositore-giuseppe-verdi",
+            "kind": "inno-militare-su-testo-di-mameli",
+            "forward": "comprende composizioni patriottiche di",
+            "reverse": "compose pagine patriottiche, anche su versi di Mameli, nel",
+            "note": "Giuseppe Verdi mise in musica l'Inno militare di Goffredo Mameli, testimonianza del rapporto fra composizione teatrale e patriottismo nell'età risorgimentale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/goffredo-mameli_%28L%27Unificazione%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "musica-e-risorgimento",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include l'attività o la partecipazione di",
+              "prior_reverse": "partecipò al contesto o alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "fragment_forward": "comprende composizioni patriottiche di",
+          "fragment_reverse": "compose pagine patriottiche, anche su versi di Mameli, nel",
+          "raw_note": "Giuseppe Verdi mise in musica l'Inno militare di Goffredo Mameli, testimonianza del rapporto fra composizione teatrale e patriottismo nell'età risorgimentale.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/goffredo-mameli_%28L%27Unificazione%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende composizioni patriottiche di",
+            "reverse_fragment": "compose pagine patriottiche, anche su versi di Mameli, nel",
+            "original_note": "Giuseppe Verdi mise in musica l'Inno militare di Goffredo Mameli, testimonianza del rapporto fra composizione teatrale e patriottismo nell'età risorgimentale.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/goffredo-mameli_%28L%27Unificazione%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [
+        "https://www.treccani.it/enciclopedia/giuseppe-fortunino-francesco-verdi_%28Dizionario-Biografico%29/"
+      ],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "LIMITED_TO_STATED_FACTS",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 67,
+      "normalized_pair": "legacy:risorgimento|pers:mameli",
+      "semantic_class": "role_type_correction",
+      "reason": "Goffredo Mameli è poeta/patriota autore dei versi, NON compositore della musica. L'ID legacy 'compositore-goffredo-mameli' è un identificativo storico improprio, ma il record tipo persona va mantenuto senza migrazione di ruolo falsa.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0651",
+          "source_index": 650,
+          "raw_source": "compositore-goffredo-mameli",
+          "raw_target": "risorgimento",
+          "proposed_source": "pers:mameli",
+          "proposed_target": "legacy:risorgimento",
+          "kind": "relazione-storico-musicale",
+          "payload": {
+            "source": "compositore-goffredo-mameli",
+            "target": "risorgimento",
+            "kind": "relazione-storico-musicale",
+            "weight": 1.7
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:catalogo-risorgimento-goffredo-mameli",
+          "source_index": 322,
+          "raw_source": "risorgimento",
+          "raw_target": "compositore-goffredo-mameli",
+          "proposed_source": "legacy:risorgimento",
+          "proposed_target": "pers:mameli",
+          "kind": "poeta-del-canto-patriottico",
+          "payload": {
+            "id": "catalogo-risorgimento-goffredo-mameli",
+            "group": "scuole",
+            "source": "risorgimento",
+            "target": "compositore-goffredo-mameli",
+            "kind": "poeta-del-canto-patriottico",
+            "forward": "comprende la poesia patriottica musicata di",
+            "reverse": "scrisse versi per il canto civile durante il",
+            "note": "Goffredo Mameli è l'autore dei versi del Canto degli Italiani e dell'Inno militare: i due testi furono musicati rispettivamente da Novaro e Verdi.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/goffredo-mameli_%28L%27Unificazione%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "poesia-patriottica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include l'attività o la partecipazione di",
+              "prior_reverse": "partecipò al contesto o alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "fragment_forward": "comprende la poesia patriottica musicata di",
+          "fragment_reverse": "scrisse versi per il canto civile durante il",
+          "raw_note": "Goffredo Mameli è l'autore dei versi del Canto degli Italiani e dell'Inno militare: i due testi furono musicati rispettivamente da Novaro e Verdi.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/goffredo-mameli_%28L%27Unificazione%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende la poesia patriottica musicata di",
+            "reverse_fragment": "scrisse versi per il canto civile durante il",
+            "original_note": "Goffredo Mameli è l'autore dei versi del Canto degli Italiani e dell'Inno militare: i due testi furono musicati rispettivamente da Novaro e Verdi.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/goffredo-mameli_%28L%27Unificazione%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [
+        "https://www.treccani.it/enciclopedia/goffredo-mameli/"
+      ],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "LIMITED_TO_STATED_FACTS",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 68,
+      "normalized_pair": "legacy:risorgimento|pers:novaro",
+      "semantic_class": "specific_historical_work",
+      "reason": "Michele Novaro compose nel 1847 la musica del Canto degli Italiani, distinta dall'Inno militare musicato da Giuseppe Verdi; entrambi i brani hanno testo di Mameli.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0652",
+          "source_index": 651,
+          "raw_source": "compositore-michele-novaro",
+          "raw_target": "risorgimento",
+          "proposed_source": "pers:novaro",
+          "proposed_target": "legacy:risorgimento",
+          "kind": "relazione-storico-musicale",
+          "payload": {
+            "source": "compositore-michele-novaro",
+            "target": "risorgimento",
+            "kind": "relazione-storico-musicale",
+            "weight": 1.7
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:catalogo-risorgimento-michele-novaro",
+          "source_index": 323,
+          "raw_source": "risorgimento",
+          "raw_target": "compositore-michele-novaro",
+          "proposed_source": "legacy:risorgimento",
+          "proposed_target": "pers:novaro",
+          "kind": "autore-della-musica-dell-inno",
+          "payload": {
+            "id": "catalogo-risorgimento-michele-novaro",
+            "group": "scuole",
+            "source": "risorgimento",
+            "target": "compositore-michele-novaro",
+            "kind": "autore-della-musica-dell-inno",
+            "forward": "comprende musiche patriottiche, fra cui l'inno nazionale, di",
+            "reverse": "mise in musica versi patriottici durante il",
+            "note": "Michele Novaro compose la musica del Canto degli Italiani sul testo di Mameli nel 1847, nel mondo delle bande, dei cori e dei canti patriottici.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/michele-novaro_%28Dizionario-Biografico%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "composizione-patriottica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include l'attività o la partecipazione di",
+              "prior_reverse": "partecipò al contesto o alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "fragment_forward": "comprende musiche patriottiche, fra cui l'inno nazionale, di",
+          "fragment_reverse": "mise in musica versi patriottici durante il",
+          "raw_note": "Michele Novaro compose la musica del Canto degli Italiani sul testo di Mameli nel 1847, nel mondo delle bande, dei cori e dei canti patriottici.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/michele-novaro_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende musiche patriottiche, fra cui l'inno nazionale, di",
+            "reverse_fragment": "mise in musica versi patriottici durante il",
+            "original_note": "Michele Novaro compose la musica del Canto degli Italiani sul testo di Mameli nel 1847, nel mondo delle bande, dei cori e dei canti patriottici.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/michele-novaro_%28Dizionario-Biografico%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [
+        "https://www.treccani.it/enciclopedia/goffredo-mameli_%28Dizionario-Biografico%29/"
+      ],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "LIMITED_TO_STATED_FACTS",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 69,
+      "normalized_pair": "legacy:opera-buffa|legacy:opera-lirica",
+      "semantic_class": "abstract_taxonomy_relation",
+      "reason": "Opera buffa e opera lirica: non sono due persone né due capitoli editoriali; l'eredità storica è rapporto concettuale e non ponte attraverso cui espandere indiscriminatamente tutti gli operisti; verificare nel crosswalk il nodo genere distinto da cap:opera-lirica.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0655",
+          "source_index": 654,
+          "raw_source": "opera-buffa",
+          "raw_target": "opera-lirica",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "legacy:opera-lirica",
+          "kind": "eredita-teatrale",
+          "payload": {
+            "source": "opera-buffa",
+            "target": "opera-lirica",
+            "kind": "eredita-teatrale",
+            "weight": 1.15
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:gen-opera-buffa-opera-lirica",
+          "source_index": 36,
+          "raw_source": "opera-buffa",
+          "raw_target": "opera-lirica",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "legacy:opera-lirica",
+          "kind": "eredità-storica",
+          "payload": {
+            "id": "gen-opera-buffa-opera-lirica",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "opera-lirica",
+            "kind": "eredità-storica",
+            "forward": "trasmise forme al teatro di",
+            "reverse": "raccolse sviluppi di",
+            "note": "Il teatro lirico dell'Ottocento integra e modifica anche la commedia musicale settecentesca; il genere buffo non scompare con l'affermarsi del Romanticismo.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "trasmise forme al teatro di",
+          "fragment_reverse": "raccolse sviluppi di",
+          "raw_note": "Il teatro lirico dell'Ottocento integra e modifica anche la commedia musicale settecentesca; il genere buffo non scompare con l'affermarsi del Romanticismo.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "trasmise forme al teatro di",
+            "reverse_fragment": "raccolse sviluppi di",
+            "original_note": "Il teatro lirico dell'Ottocento integra e modifica anche la commedia musicale settecentesca; il genere buffo non scompare con l'affermarsi del Romanticismo.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 70,
+      "normalized_pair": "legacy:grand-opera|legacy:opera-lirica",
+      "semantic_class": "abstract_taxonomy_relation",
+      "reason": "Grand opéra è una specificazione del teatro lirico francese ottocentesco, non una tradizione separata che produce legami personali; il verso base e specialistico è invertito, ma i frammenti non sono frazioni simmetriche intercambiabili.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0694",
+          "source_index": 693,
+          "raw_source": "grand-opera",
+          "raw_target": "opera-lirica",
+          "proposed_source": "legacy:grand-opera",
+          "proposed_target": "legacy:opera-lirica",
+          "kind": "tradizione-teatrale",
+          "payload": {
+            "source": "grand-opera",
+            "target": "opera-lirica",
+            "kind": "tradizione-teatrale",
+            "weight": 1.6
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:gen-opera-lirica-grand-opera",
+          "source_index": 39,
+          "raw_source": "opera-lirica",
+          "raw_target": "grand-opera",
+          "proposed_source": "legacy:opera-lirica",
+          "proposed_target": "legacy:grand-opera",
+          "kind": "specializzazione-di-genere",
+          "payload": {
+            "id": "gen-opera-lirica-grand-opera",
+            "group": "genealogie",
+            "source": "opera-lirica",
+            "target": "grand-opera",
+            "kind": "specializzazione-di-genere",
+            "forward": "si articolò anche nel",
+            "reverse": "è una forma spettacolare dell'",
+            "note": "Il grand opéra è una specifica forma del teatro lirico ottocentesco francese, caratterizzata da vasti quadri storici, cori e grandi scene collettive.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/il-grand-opera_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "si articolò anche nel",
+          "fragment_reverse": "è una forma spettacolare dell'",
+          "raw_note": "Il grand opéra è una specifica forma del teatro lirico ottocentesco francese, caratterizzata da vasti quadri storici, cori e grandi scene collettive.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/il-grand-opera_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "si articolò anche nel",
+            "reverse_fragment": "è una forma spettacolare dell'",
+            "original_note": "Il grand opéra è una specifica forma del teatro lirico ottocentesco francese, caratterizzata da vasti quadri storici, cori e grandi scene collettive.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/il-grand-opera_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 71,
+      "normalized_pair": "legacy:intermezzo-comico|legacy:opera-buffa",
+      "semantic_class": "abstract_taxonomy_relation",
+      "reason": "Intermezzo comico è una delle matrici dell'opera buffa, non l'unica origine. Mantenere 'contribuì alla nascita' senza equivalenza classificatoria intermezzo=opera buffa.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0696",
+          "source_index": 695,
+          "raw_source": "intermezzo-comico",
+          "raw_target": "opera-buffa",
+          "proposed_source": "legacy:intermezzo-comico",
+          "proposed_target": "legacy:opera-buffa",
+          "kind": "origine-storica",
+          "payload": {
+            "source": "intermezzo-comico",
+            "target": "opera-buffa",
+            "kind": "origine-storica",
+            "weight": 1.9
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:gen-intermezzo-opera-buffa",
+          "source_index": 32,
+          "raw_source": "intermezzo-comico",
+          "raw_target": "opera-buffa",
+          "proposed_source": "legacy:intermezzo-comico",
+          "proposed_target": "legacy:opera-buffa",
+          "kind": "genere-fonte",
+          "payload": {
+            "id": "gen-intermezzo-opera-buffa",
+            "group": "genealogie",
+            "source": "intermezzo-comico",
+            "target": "opera-buffa",
+            "kind": "genere-fonte",
+            "forward": "contribuì alla nascita di",
+            "reverse": "raccolse sviluppi di",
+            "note": "Gli intermezzi comici sono fra le matrici teatrali che contribuirono, con altre pratiche napoletane, all'espansione dell'opera buffa nel Settecento.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "contribuì alla nascita di",
+          "fragment_reverse": "raccolse sviluppi di",
+          "raw_note": "Gli intermezzi comici sono fra le matrici teatrali che contribuirono, con altre pratiche napoletane, all'espansione dell'opera buffa nel Settecento.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "contribuì alla nascita di",
+            "reverse_fragment": "raccolse sviluppi di",
+            "original_note": "Gli intermezzi comici sono fra le matrici teatrali che contribuirono, con altre pratiche napoletane, all'espansione dell'opera buffa nel Settecento.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 72,
+      "normalized_pair": "pers:antonin-dvorak|pers:josef-suk",
+      "semantic_class": "distinct_personal_predicates",
+      "reason": "Dvořák→Josef Suk: rapporto didattico 1891–92 e influenza del linguaggio giovanile sono due relazioni diverse. Il successivo matrimonio di Suk con Otilie Dvořák (1898) è terzo fatto biografico, non implicato dagli archi legacy.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0703",
+          "source_index": 702,
+          "raw_source": "compositore-josef-suk",
+          "raw_target": "compositore-antonin-dvorak",
+          "proposed_source": "pers:josef-suk",
+          "proposed_target": "pers:antonin-dvorak",
+          "kind": "trasmissione-artistica",
+          "payload": {
+            "source": "compositore-josef-suk",
+            "target": "compositore-antonin-dvorak",
+            "kind": "trasmissione-artistica",
+            "weight": 1.25
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:form-dvorak-josef-suk",
+          "source_index": 101,
+          "raw_source": "compositore-antonin-dvorak",
+          "raw_target": "compositore-josef-suk",
+          "proposed_source": "pers:antonin-dvorak",
+          "proposed_target": "pers:josef-suk",
+          "kind": "maestro-allievo",
+          "payload": {
+            "id": "form-dvorak-josef-suk",
+            "group": "formazione",
+            "source": "compositore-antonin-dvorak",
+            "target": "compositore-josef-suk",
+            "kind": "maestro-allievo",
+            "forward": "insegnò composizione a",
+            "reverse": "studiò composizione con",
+            "note": "Josef Suk fu allievo di Dvořák al Conservatorio di Praga nel 1891–1892. La relazione è didattica e documentata, non una semplice vicinanza di scuola nazionale.",
+            "sources": [
+              "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "insegnò composizione a",
+          "fragment_reverse": "studiò composizione con",
+          "raw_note": "Josef Suk fu allievo di Dvořák al Conservatorio di Praga nel 1891–1892. La relazione è didattica e documentata, non una semplice vicinanza di scuola nazionale.",
+          "raw_sources": [
+            "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/"
+          ],
+          "display_contract": {
+            "forward_fragment": "insegnò composizione a",
+            "reverse_fragment": "studiò composizione con",
+            "original_note": "Josef Suk fu allievo di Dvořák al Conservatorio di Praga nel 1891–1892. La relazione è didattica e documentata, non una semplice vicinanza di scuola nazionale.",
+            "original_sources": [
+              "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:infl-dvorak-josef-suk",
+          "source_index": 102,
+          "raw_source": "compositore-antonin-dvorak",
+          "raw_target": "compositore-josef-suk",
+          "proposed_source": "pers:antonin-dvorak",
+          "proposed_target": "pers:josef-suk",
+          "kind": "modello-giovanile-e-superamento",
+          "payload": {
+            "id": "infl-dvorak-josef-suk",
+            "group": "influenze",
+            "source": "compositore-antonin-dvorak",
+            "target": "compositore-josef-suk",
+            "kind": "modello-giovanile-e-superamento",
+            "forward": "influenzò il linguaggio giovanile di",
+            "reverse": "assimilò e poi superò lo stile di",
+            "note": "L'influenza di Dvořák è riconoscibile nella Serenata in mi bemolle e nelle musiche per Radúz e Mahulena. Suk maturò poi un linguaggio personale, segnato anche dalla morte del maestro e della moglie.",
+            "sources": [
+              "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "influenzò il linguaggio giovanile di",
+          "fragment_reverse": "assimilò e poi superò lo stile di",
+          "raw_note": "L'influenza di Dvořák è riconoscibile nella Serenata in mi bemolle e nelle musiche per Radúz e Mahulena. Suk maturò poi un linguaggio personale, segnato anche dalla morte del maestro e della moglie.",
+          "raw_sources": [
+            "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/"
+          ],
+          "display_contract": {
+            "forward_fragment": "influenzò il linguaggio giovanile di",
+            "reverse_fragment": "assimilò e poi superò lo stile di",
+            "original_note": "L'influenza di Dvořák è riconoscibile nella Serenata in mi bemolle e nelle musiche per Radúz e Mahulena. Suk maturò poi un linguaggio personale, segnato anche dalla morte del maestro e della moglie.",
+            "original_sources": [
+              "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [
+        "https://www.antonin-dvorak.cz/en/index-of-names/suk-josef-1874-1935/"
+      ],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "LIMITED_TO_STATED_FACTS",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 73,
+      "normalized_pair": "legacy:musica-concreta|pers:pierre-schaeffer",
+      "semantic_class": "two_aspects_of_practice_foundation",
+      "reason": "Pierre Schaeffer: nascita del nome e della prassi di musica concreta nel 1948 e realizzazione dei primi studi sono faccette complementari ma non automaticamente la stessa opera.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0705",
+          "source_index": 704,
+          "raw_source": "compositore-pierre-schaeffer",
+          "raw_target": "musica-concreta",
+          "proposed_source": "pers:pierre-schaeffer",
+          "proposed_target": "legacy:musica-concreta",
+          "kind": "ideazione-della-pratica",
+          "payload": {
+            "source": "compositore-pierre-schaeffer",
+            "target": "musica-concreta",
+            "kind": "ideazione-della-pratica",
+            "weight": 2
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:gen-musica-concreta-schaeffer",
+          "source_index": 105,
+          "raw_source": "musica-concreta",
+          "raw_target": "compositore-pierre-schaeffer",
+          "proposed_source": "legacy:musica-concreta",
+          "proposed_target": "pers:pierre-schaeffer",
+          "kind": "ideazione-pratica",
+          "payload": {
+            "id": "gen-musica-concreta-schaeffer",
+            "group": "genealogie",
+            "source": "musica-concreta",
+            "target": "compositore-pierre-schaeffer",
+            "kind": "ideazione-pratica",
+            "forward": "fu ideata e sperimentata da",
+            "reverse": "ideò e sperimentò la pratica della",
+            "note": "Pierre Schaeffer coniò nel 1948 la denominazione 'musica concreta' e avviò una pratica compositiva che tratta registrazioni e rumori come materiali musicali. Non va confusa con la sintesi puramente elettronica del suono.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/musica-concreta/",
+              "https://www.larousse.fr/encyclopedie/musdico/musique_concr%C3%A8te/166944"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "fu ideata e sperimentata da",
+          "fragment_reverse": "ideò e sperimentò la pratica della",
+          "raw_note": "Pierre Schaeffer coniò nel 1948 la denominazione 'musica concreta' e avviò una pratica compositiva che tratta registrazioni e rumori come materiali musicali. Non va confusa con la sintesi puramente elettronica del suono.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/musica-concreta/",
+            "https://www.larousse.fr/encyclopedie/musdico/musique_concr%C3%A8te/166944"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu ideata e sperimentata da",
+            "reverse_fragment": "ideò e sperimentò la pratica della",
+            "original_note": "Pierre Schaeffer coniò nel 1948 la denominazione 'musica concreta' e avviò una pratica compositiva che tratta registrazioni e rumori come materiali musicali. Non va confusa con la sintesi puramente elettronica del suono.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/musica-concreta/",
+              "https://www.larousse.fr/encyclopedie/musdico/musique_concr%C3%A8te/166944"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:audit4-schaeffer-musica-concreta",
+          "source_index": 584,
+          "raw_source": "musica-concreta",
+          "raw_target": "compositore-pierre-schaeffer",
+          "proposed_source": "legacy:musica-concreta",
+          "proposed_target": "pers:pierre-schaeffer",
+          "kind": "ideazione-e-prima-realizzazione",
+          "payload": {
+            "id": "audit4-schaeffer-musica-concreta",
+            "group": "scuole",
+            "source": "musica-concreta",
+            "target": "compositore-pierre-schaeffer",
+            "kind": "ideazione-e-prima-realizzazione",
+            "forward": "fu ideata e nominata nel 1948 da",
+            "reverse": "realizzò nel 1948 i primi studi di quella che chiamò",
+            "note": "Schaeffer coniò nel 1948 la denominazione musica concreta e realizzò studi composti da suoni registrati e manipolati; la sperimentazione radiofonica e gli studi del GRMC aprirono una specifica pratica compositiva.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/musica-concreta/",
+              "https://ressources.ircam.fr/fr/pierre-schaeffer"
+            ],
+            "status": "documentato",
+            "natura_semantica": "fondazione-tecnica-compositiva",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "fu fondata e teorizzata da",
+              "prior_reverse": "ideò e praticò dal 1948 la",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "fragment_forward": "fu ideata e nominata nel 1948 da",
+          "fragment_reverse": "realizzò nel 1948 i primi studi di quella che chiamò",
+          "raw_note": "Schaeffer coniò nel 1948 la denominazione musica concreta e realizzò studi composti da suoni registrati e manipolati; la sperimentazione radiofonica e gli studi del GRMC aprirono una specifica pratica compositiva.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/musica-concreta/",
+            "https://ressources.ircam.fr/fr/pierre-schaeffer"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu ideata e nominata nel 1948 da",
+            "reverse_fragment": "realizzò nel 1948 i primi studi di quella che chiamò",
+            "original_note": "Schaeffer coniò nel 1948 la denominazione musica concreta e realizzò studi composti da suoni registrati e manipolati; la sperimentazione radiofonica e gli studi del GRMC aprirono una specifica pratica compositiva.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/musica-concreta/",
+              "https://ressources.ircam.fr/fr/pierre-schaeffer"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 74,
+      "normalized_pair": "legacy:musica-concreta|pers:pierre-henry",
+      "semantic_class": "two_aspects_of_practice_collaboration",
+      "reason": "Pierre Henry: sviluppo della musica concreta e collaborazione con Schaeffer sono distinti; la Symphonie pour un homme seul è documentata come composta fra 1949 e 1950, prima esecuzione 18 marzo 1950 (BnF/IRCAM). Lo staging che la fa nascere nel 1949 va letto come avvio, non data univoca dell'opera conclusa.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:0706",
+          "source_index": 705,
+          "raw_source": "compositore-pierre-henry",
+          "raw_target": "musica-concreta",
+          "proposed_source": "pers:pierre-henry",
+          "proposed_target": "legacy:musica-concreta",
+          "kind": "sviluppo-della-pratica",
+          "payload": {
+            "source": "compositore-pierre-henry",
+            "target": "musica-concreta",
+            "kind": "sviluppo-della-pratica",
+            "weight": 1.8
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:gen-musica-concreta-henry",
+          "source_index": 106,
+          "raw_source": "musica-concreta",
+          "raw_target": "compositore-pierre-henry",
+          "proposed_source": "legacy:musica-concreta",
+          "proposed_target": "pers:pierre-henry",
+          "kind": "sviluppo-pratica",
+          "payload": {
+            "id": "gen-musica-concreta-henry",
+            "group": "genealogie",
+            "source": "musica-concreta",
+            "target": "compositore-pierre-henry",
+            "kind": "sviluppo-pratica",
+            "forward": "fu sviluppata anche da",
+            "reverse": "contribuì allo sviluppo della",
+            "note": "Pierre Henry fu tra i principali pionieri della musica concreta insieme a Schaeffer. La Symphonie pour un homme seul nacque dalla loro collaborazione nel 1949.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/musica-concreta/",
+              "https://www.larousse.fr/encyclopedie/musdico/musique_concr%C3%A8te/166944"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "fu sviluppata anche da",
+          "fragment_reverse": "contribuì allo sviluppo della",
+          "raw_note": "Pierre Henry fu tra i principali pionieri della musica concreta insieme a Schaeffer. La Symphonie pour un homme seul nacque dalla loro collaborazione nel 1949.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/musica-concreta/",
+            "https://www.larousse.fr/encyclopedie/musdico/musique_concr%C3%A8te/166944"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu sviluppata anche da",
+            "reverse_fragment": "contribuì allo sviluppo della",
+            "original_note": "Pierre Henry fu tra i principali pionieri della musica concreta insieme a Schaeffer. La Symphonie pour un homme seul nacque dalla loro collaborazione nel 1949.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/musica-concreta/",
+              "https://www.larousse.fr/encyclopedie/musdico/musique_concr%C3%A8te/166944"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:audit4-henry-musica-concreta",
+          "source_index": 585,
+          "raw_source": "musica-concreta",
+          "raw_target": "compositore-pierre-henry",
+          "proposed_source": "legacy:musica-concreta",
+          "proposed_target": "pers:pierre-henry",
+          "kind": "pioniere-e-coautore",
+          "payload": {
+            "id": "audit4-henry-musica-concreta",
+            "group": "scuole",
+            "source": "musica-concreta",
+            "target": "compositore-pierre-henry",
+            "kind": "pioniere-e-coautore",
+            "forward": "ebbe un pioniere che collaborò con Schaeffer in",
+            "reverse": "collaborò con Schaeffer e realizzò lavori pionieristici nella",
+            "note": "Henry entrò in collaborazione con Schaeffer nel 1949, cofirmò la Symphonie pour un homme seul e diresse lavori presso il Groupe de Recherche de Musique Concrète fino al 1958; compositore autonomo, non semplice allievo di Schaeffer.",
+            "sources": [
+              "https://ressources.ircam.fr/fr/composer/pierre-henry/biography",
+              "https://www.treccani.it/enciclopedia/musica-concreta/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "collaborazione-elettroacustica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "fu sviluppata anche da",
+              "prior_reverse": "partecipò alla fondazione e allo sviluppo della",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "fragment_forward": "ebbe un pioniere che collaborò con Schaeffer in",
+          "fragment_reverse": "collaborò con Schaeffer e realizzò lavori pionieristici nella",
+          "raw_note": "Henry entrò in collaborazione con Schaeffer nel 1949, cofirmò la Symphonie pour un homme seul e diresse lavori presso il Groupe de Recherche de Musique Concrète fino al 1958; compositore autonomo, non semplice allievo di Schaeffer.",
+          "raw_sources": [
+            "https://ressources.ircam.fr/fr/composer/pierre-henry/biography",
+            "https://www.treccani.it/enciclopedia/musica-concreta/"
+          ],
+          "display_contract": {
+            "forward_fragment": "ebbe un pioniere che collaborò con Schaeffer in",
+            "reverse_fragment": "collaborò con Schaeffer e realizzò lavori pionieristici nella",
+            "original_note": "Henry entrò in collaborazione con Schaeffer nel 1949, cofirmò la Symphonie pour un homme seul e diresse lavori presso il Groupe de Recherche de Musique Concrète fino al 1958; compositore autonomo, non semplice allievo di Schaeffer.",
+            "original_sources": [
+              "https://ressources.ircam.fr/fr/composer/pierre-henry/biography",
+              "https://www.treccani.it/enciclopedia/musica-concreta/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [
+        "https://catalogue.bnf.fr/ark:/12148/cb14488152h",
+        "https://medias.ircam.fr/en/work/symphonie-pour-un-homme-seul",
+        "https://mediatheque.philharmoniedeparis.fr/mediatheque/doc/ALOES/0079929/mix-02-1-symphonie-pour-un-seul-homme-1949-1950-pierre-henry-pierre-schaeffer-composition?_lg=fr-FR"
+      ],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "LIMITED_TO_STATED_FACTS",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 75,
+      "normalized_pair": "legacy:forma-nuevo-tango|pers:astor-piazzolla",
+      "semantic_class": "form_innovation",
+      "reason": "Piazzolla: nuevo tango è linguaggio e repertorio trasformato, non relazione personale con ogni autore di tango; distinguere forma di genere e autore.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:1099",
+          "source_index": 1098,
+          "raw_source": "compositore-astor-piazzolla",
+          "raw_target": "forma-nuevo-tango",
+          "proposed_source": "pers:astor-piazzolla",
+          "proposed_target": "legacy:forma-nuevo-tango",
+          "kind": "innovazione-di-genere",
+          "payload": {
+            "source": "compositore-astor-piazzolla",
+            "target": "forma-nuevo-tango",
+            "kind": "innovazione-di-genere",
+            "weight": 1.8
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": null,
+          "raw_sources": [],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:audit-piazzolla-nuevo-tango-pratica",
+          "source_index": 1336,
+          "raw_source": "compositore-astor-piazzolla",
+          "raw_target": "forma-nuevo-tango",
+          "proposed_source": "pers:astor-piazzolla",
+          "proposed_target": "legacy:forma-nuevo-tango",
+          "kind": "sviluppo-di-linguaggio",
+          "payload": {
+            "id": "audit-piazzolla-nuevo-tango-pratica",
+            "group": "genealogie",
+            "source": "compositore-astor-piazzolla",
+            "target": "forma-nuevo-tango",
+            "kind": "sviluppo-di-linguaggio",
+            "forward": "fu figura centrale nello sviluppo del",
+            "reverse": "fu sviluppato in modo decisivo da",
+            "note": "Piazzolla trasformò la prassi tanguera in una scrittura che comprende repertori da concerto e cameristici.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/astor-piazzolla/",
+              "https://www.treccani.it/enciclopedia/astor-piazzolla_%28Enciclopedia-del-Cinema%29/"
+            ],
+            "status": "documentato"
+          },
+          "fragment_forward": "fu figura centrale nello sviluppo del",
+          "fragment_reverse": "fu sviluppato in modo decisivo da",
+          "raw_note": "Piazzolla trasformò la prassi tanguera in una scrittura che comprende repertori da concerto e cameristici.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/astor-piazzolla/",
+            "https://www.treccani.it/enciclopedia/astor-piazzolla_%28Enciclopedia-del-Cinema%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu figura centrale nello sviluppo del",
+            "reverse_fragment": "fu sviluppato in modo decisivo da",
+            "original_note": "Piazzolla trasformò la prassi tanguera in una scrittura che comprende repertori da concerto e cameristici.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/astor-piazzolla/",
+              "https://www.treccani.it/enciclopedia/astor-piazzolla_%28Enciclopedia-del-Cinema%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 76,
+      "normalized_pair": "legacy:monodia-sacra-medievale|pers:hildegard-von-bingen",
+      "semantic_class": "historical_practice_context",
+      "reason": "Ildegarda: la Symphonia contiene liriche sacre monodiche, mentre Ordo virtutum è un dramma liturgico/morale. La relazione alla monodia medievale non identifica tutte le forme né un'appartenenza scolastica istituzionale.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:1270",
+          "source_index": 1269,
+          "raw_source": "compositore-hildegard-von-bingen",
+          "raw_target": "monodia-sacra-medievale",
+          "proposed_source": "pers:hildegard-von-bingen",
+          "proposed_target": "legacy:monodia-sacra-medievale",
+          "kind": "forma-o-pratica-documentata",
+          "payload": {
+            "source": "compositore-hildegard-von-bingen",
+            "target": "monodia-sacra-medievale",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Symphonia: liriche liturgiche; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/ildegarda-di-bingen-santa_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": "Symphonia: liriche liturgiche; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/ildegarda-di-bingen-santa_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Symphonia: liriche liturgiche; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/ildegarda-di-bingen-santa_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:lotto01-scuola-hildegard",
+          "source_index": 348,
+          "raw_source": "monodia-sacra-medievale",
+          "raw_target": "compositore-hildegard-von-bingen",
+          "proposed_source": "legacy:monodia-sacra-medievale",
+          "proposed_target": "pers:hildegard-von-bingen",
+          "kind": "canto-monastico-mistico",
+          "payload": {
+            "id": "lotto01-scuola-hildegard",
+            "group": "scuole",
+            "source": "monodia-sacra-medievale",
+            "target": "compositore-hildegard-von-bingen",
+            "kind": "canto-monastico-mistico",
+            "forward": "comprende liriche sacre e drammi di carattere spirituale composti da",
+            "reverse": "compose liriche monodiche e Ordo virtutum nell'ambito della",
+            "note": "Ildegarda sviluppò a Rupertsberg la propria raccolta di liriche monodiche, Symphonia armoniae caelestium revelationum, e il dramma Ordo virtutum. Il rapporto è con una pratica musicale e un ambiente monastico, non con una scuola organizzata.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/musica-e-spiritualita-femminile-ildegarda-di-bingen_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "monodia-liturgica-e-drammatica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "è il contesto storico-musicale di",
+              "prior_reverse": "partecipò a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "fragment_forward": "comprende liriche sacre e drammi di carattere spirituale composti da",
+          "fragment_reverse": "compose liriche monodiche e Ordo virtutum nell'ambito della",
+          "raw_note": "Ildegarda sviluppò a Rupertsberg la propria raccolta di liriche monodiche, Symphonia armoniae caelestium revelationum, e il dramma Ordo virtutum. Il rapporto è con una pratica musicale e un ambiente monastico, non con una scuola organizzata.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/musica-e-spiritualita-femminile-ildegarda-di-bingen_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende liriche sacre e drammi di carattere spirituale composti da",
+            "reverse_fragment": "compose liriche monodiche e Ordo virtutum nell'ambito della",
+            "original_note": "Ildegarda sviluppò a Rupertsberg la propria raccolta di liriche monodiche, Symphonia armoniae caelestium revelationum, e il dramma Ordo virtutum. Il rapporto è con una pratica musicale e un ambiente monastico, non con una scuola organizzata.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/musica-e-spiritualita-femminile-ildegarda-di-bingen_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 77,
+      "normalized_pair": "legacy:scuola-notre-dame|pers:leonin",
+      "semantic_class": "traditional_source_attribution",
+      "reason": "Léonin e Notre-Dame: testimonianza dell'Anonimo IV, attribuzioni tradizionali del Magnus liber organi; non inventare rapporto diretto maestro-allievo con Pérotin dalla medesima categoria.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:1271",
+          "source_index": 1270,
+          "raw_source": "compositore-leonin",
+          "raw_target": "scuola-notre-dame",
+          "proposed_source": "pers:leonin",
+          "proposed_target": "legacy:scuola-notre-dame",
+          "kind": "forma-o-pratica-documentata",
+          "payload": {
+            "source": "compositore-leonin",
+            "target": "scuola-notre-dame",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Magnus liber organi: attribuzione tradizionale; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/leonin/"
+            ]
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": "Magnus liber organi: attribuzione tradizionale; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/leonin/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Magnus liber organi: attribuzione tradizionale; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/leonin/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:scuola-notre-dame-leonin",
+          "source_index": 112,
+          "raw_source": "scuola-notre-dame",
+          "raw_target": "compositore-leonin",
+          "proposed_source": "legacy:scuola-notre-dame",
+          "proposed_target": "pers:leonin",
+          "kind": "testimone-di-scuola",
+          "payload": {
+            "id": "scuola-notre-dame-leonin",
+            "group": "scuole",
+            "source": "scuola-notre-dame",
+            "target": "compositore-leonin",
+            "kind": "testimone-di-scuola",
+            "forward": "riconosce nelle testimonianze medievali fra i maestri dell'organum",
+            "reverse": "è ricordato come maestro dell'organum nell'ambiente di",
+            "note": "Léonin è il primo dei due maestri ricordati dall'Anonimo IV per la polifonia di Notre-Dame; a lui è attribuita una fase importante dello sviluppo dell'organum.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/l-ars-antiqua_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "testimonianza-organum-medievale",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "è un ambiente storico cui contribuì",
+              "prior_reverse": "appartiene alla tradizione o al contesto di",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "fragment_forward": "riconosce nelle testimonianze medievali fra i maestri dell'organum",
+          "fragment_reverse": "è ricordato come maestro dell'organum nell'ambiente di",
+          "raw_note": "Léonin è il primo dei due maestri ricordati dall'Anonimo IV per la polifonia di Notre-Dame; a lui è attribuita una fase importante dello sviluppo dell'organum.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/l-ars-antiqua_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "riconosce nelle testimonianze medievali fra i maestri dell'organum",
+            "reverse_fragment": "è ricordato come maestro dell'organum nell'ambiente di",
+            "original_note": "Léonin è il primo dei due maestri ricordati dall'Anonimo IV per la polifonia di Notre-Dame; a lui è attribuita una fase importante dello sviluppo dell'organum.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/l-ars-antiqua_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 78,
+      "normalized_pair": "legacy:scuola-notre-dame|pers:perotin",
+      "semantic_class": "traditional_source_attribution",
+      "reason": "Pérotin e Notre-Dame: testimonianza dell'Anonimo IV e sviluppo polifonico; non trattare l'etichetta 'scuola' come certificazione di rapporti diretti con tutti gli altri maestri.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:1272",
+          "source_index": 1271,
+          "raw_source": "compositore-perotin",
+          "raw_target": "scuola-notre-dame",
+          "proposed_source": "pers:perotin",
+          "proposed_target": "legacy:scuola-notre-dame",
+          "kind": "forma-o-pratica-documentata",
+          "payload": {
+            "source": "compositore-perotin",
+            "target": "scuola-notre-dame",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Organa a più voci; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/perotin/"
+            ]
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": "Organa a più voci; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/perotin/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Organa a più voci; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/perotin/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:scuola-notre-dame-perotin",
+          "source_index": 113,
+          "raw_source": "scuola-notre-dame",
+          "raw_target": "compositore-perotin",
+          "proposed_source": "legacy:scuola-notre-dame",
+          "proposed_target": "pers:perotin",
+          "kind": "testimone-di-scuola",
+          "payload": {
+            "id": "scuola-notre-dame-perotin",
+            "group": "scuole",
+            "source": "scuola-notre-dame",
+            "target": "compositore-perotin",
+            "kind": "testimone-di-scuola",
+            "forward": "riconosce nelle testimonianze medievali fra i maestri dell'organum",
+            "reverse": "è ricordato come maestro dell'organum nell'ambiente di",
+            "note": "Pérotin è l'altro grande nome trasmesso dall'Anonimo IV: a Notre-Dame contribuì all'ampliamento dell'organum, anche fino a quattro voci.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/l-ars-antiqua_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "testimonianza-organum-medievale",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "è un ambiente storico cui contribuì",
+              "prior_reverse": "appartiene alla tradizione o al contesto di",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "fragment_forward": "riconosce nelle testimonianze medievali fra i maestri dell'organum",
+          "fragment_reverse": "è ricordato come maestro dell'organum nell'ambiente di",
+          "raw_note": "Pérotin è l'altro grande nome trasmesso dall'Anonimo IV: a Notre-Dame contribuì all'ampliamento dell'organum, anche fino a quattro voci.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/l-ars-antiqua_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "riconosce nelle testimonianze medievali fra i maestri dell'organum",
+            "reverse_fragment": "è ricordato come maestro dell'organum nell'ambiente di",
+            "original_note": "Pérotin è l'altro grande nome trasmesso dall'Anonimo IV: a Notre-Dame contribuì all'ampliamento dell'organum, anche fino a quattro voci.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/l-ars-antiqua_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 79,
+      "normalized_pair": "legacy:ars-nova-francese|pers:machaut",
+      "semantic_class": "historical_practice_context",
+      "reason": "Machaut e ars nova francese: fonti di polifonia sacra e profana, notazione e forme; non ridurre la Messe de Nostre Dame a 'polifonia profana' solo perché il frammento specialistico parla di quest'ultima.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:1273",
+          "source_index": 1272,
+          "raw_source": "compositore-guillaume-de-machaut",
+          "raw_target": "ars-nova-francese",
+          "proposed_source": "pers:machaut",
+          "proposed_target": "legacy:ars-nova-francese",
+          "kind": "forma-o-pratica-documentata",
+          "payload": {
+            "source": "compositore-guillaume-de-machaut",
+            "target": "ars-nova-francese",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Messe de Nostre Dame e chansons; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/guillaume-de-machaut/"
+            ]
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": "Messe de Nostre Dame e chansons; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/guillaume-de-machaut/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Messe de Nostre Dame e chansons; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/guillaume-de-machaut/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:cat-scuole-ars-nova-francese-guillaume-de-machaut",
+          "source_index": 225,
+          "raw_source": "ars-nova-francese",
+          "raw_target": "compositore-guillaume-de-machaut",
+          "proposed_source": "legacy:ars-nova-francese",
+          "proposed_target": "pers:machaut",
+          "kind": "tradizione-polifonica",
+          "payload": {
+            "id": "cat-scuole-ars-nova-francese-guillaume-de-machaut",
+            "group": "scuole",
+            "source": "ars-nova-francese",
+            "target": "compositore-guillaume-de-machaut",
+            "kind": "tradizione-polifonica",
+            "forward": "annovera fra i maestri della polifonia profana",
+            "reverse": "sviluppò repertori polifonici nell'ambito dell'",
+            "note": "Machaut è il maggiore protagonista dell'ars nova francese, sviluppata intorno al mottetto, alla ballade e alle nuove forme di notazione ritmica.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/ars-nova/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "corrente-polifonica-francese",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "fragment_forward": "annovera fra i maestri della polifonia profana",
+          "fragment_reverse": "sviluppò repertori polifonici nell'ambito dell'",
+          "raw_note": "Machaut è il maggiore protagonista dell'ars nova francese, sviluppata intorno al mottetto, alla ballade e alle nuove forme di notazione ritmica.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/ars-nova/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annovera fra i maestri della polifonia profana",
+            "reverse_fragment": "sviluppò repertori polifonici nell'ambito dell'",
+            "original_note": "Machaut è il maggiore protagonista dell'ars nova francese, sviluppata intorno al mottetto, alla ballade e alle nuove forme di notazione ritmica.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/ars-nova/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    },
+    {
+      "group_n": 80,
+      "normalized_pair": "legacy:tradizione-trovieri-francia|pers:adam-de-la-halle",
+      "semantic_class": "historical_practice_context",
+      "reason": "Adam de la Halle: tradizione dei trovieri di Arras, formes fixes, jeux-partis e teatro; il rapporto è repertoriale e urbano, non discepolato presso tutti gli altri trovieri.",
+      "source_records": [
+        {
+          "layer": "base",
+          "staging_id": "base2K:1274",
+          "source_index": 1273,
+          "raw_source": "compositore-adam-de-la-halle",
+          "raw_target": "tradizione-trovieri-francia",
+          "proposed_source": "pers:adam-de-la-halle",
+          "proposed_target": "legacy:tradizione-trovieri-francia",
+          "kind": "forma-o-pratica-documentata",
+          "payload": {
+            "source": "compositore-adam-de-la-halle",
+            "target": "tradizione-trovieri-francia",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Liriche e teatro del troviero; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/adam-de-la-halle_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "fragment_forward": null,
+          "fragment_reverse": null,
+          "raw_note": "Liriche e teatro del troviero; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/adam-de-la-halle_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Liriche e teatro del troviero; pertinenza attestata nella scheda biografica specifica, da distinguere da una relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/adam-de-la-halle_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "staging_id": "special2K:lotto01-scuola-adam",
+          "source_index": 349,
+          "raw_source": "tradizione-trovieri-francia",
+          "raw_target": "compositore-adam-de-la-halle",
+          "proposed_source": "legacy:tradizione-trovieri-francia",
+          "proposed_target": "pers:adam-de-la-halle",
+          "kind": "troviero-cittadino-arras",
+          "payload": {
+            "id": "lotto01-scuola-adam",
+            "group": "scuole",
+            "source": "tradizione-trovieri-francia",
+            "target": "compositore-adam-de-la-halle",
+            "kind": "troviero-cittadino-arras",
+            "forward": "comprende la produzione di chansons e jeux-partis del troviero di Arras",
+            "reverse": "compose liriche e giochi poetico-musicali nella",
+            "note": "Adam de la Halle fu un troviero di Arras, autore di chansons, rondeaux, jeux-partis e teatro profano. Il suo percorso testimonia l'incontro fra lirica cortese e cultura urbana artigiana del XIII secolo.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/trovieri-e-minnesanger_%28Storia-della-civilta-Europea%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "tradizione-trovieristica-arras",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "è il contesto storico-musicale di",
+              "prior_reverse": "partecipò a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "fragment_forward": "comprende la produzione di chansons e jeux-partis del troviero di Arras",
+          "fragment_reverse": "compose liriche e giochi poetico-musicali nella",
+          "raw_note": "Adam de la Halle fu un troviero di Arras, autore di chansons, rondeaux, jeux-partis e teatro profano. Il suo percorso testimonia l'incontro fra lirica cortese e cultura urbana artigiana del XIII secolo.",
+          "raw_sources": [
+            "https://www.treccani.it/enciclopedia/trovieri-e-minnesanger_%28Storia-della-civilta-Europea%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende la produzione di chansons e jeux-partis del troviero di Arras",
+            "reverse_fragment": "compose liriche e giochi poetico-musicali nella",
+            "original_note": "Adam de la Halle fu un troviero di Arras, autore di chansons, rondeaux, jeux-partis e teatro profano. Il suo percorso testimonia l'incontro fra lirica cortese e cultura urbana artigiana del XIII secolo.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/trovieri-e-minnesanger_%28Storia-della-civilta-Europea%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "authorities_spotchecked": [],
+      "disposition": "RETAIN_ALL_RAW_RECORDS_NO_MERGE",
+      "rooted_traversal": "BLOCK_GENERIC_CATEGORIES_PENDING_EDGE_CERTIFICATION",
+      "external_relation_verification": "NOT_PERFORMED",
+      "editorial_chapters": "NEVER_NODES_IN_HISTORICAL_VIEW"
+    }
+  ],
+  "checks": [
+    {
+      "name": "20 consecutive groups 61–80",
+      "passed": true
+    },
+    {
+      "name": "45 underlying records total",
+      "passed": true
+    },
+    {
+      "name": "source record layer count 20 base 25 specialist",
+      "passed": true
+    },
+    {
+      "name": "all identity endpoints match cross-layer group",
+      "passed": true
+    },
+    {
+      "name": "no missing original source payload",
+      "passed": true
+    },
+    {
+      "name": "explicit specialist direction text retained",
+      "passed": true
+    },
+    {
+      "name": "no base generated phrase falsely asserted",
+      "passed": true
+    },
+    {
+      "name": "no automatic merge or traversal",
+      "passed": true
+    },
+    {
+      "name": "Mameli correct role noted",
+      "passed": true
+    },
+    {
+      "name": "Suk dual predicates not conflated",
+      "passed": true
+    },
+    {
+      "name": "Henry composition years flagged",
+      "passed": true
+    },
+    {
+      "name": "opera-lirica chapter distinction retained",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Semantical triage; selected historical facts independently spot checked, not all 45 records certified",
+    "Hover/tap and relationSentence renderer still pending; no text inferred for base source",
+    "No public graph, editor or chapter changes",
+    "Multi-record overlaps are not duplicate links merely because endpoints are identical"
+  ],
+  "next": "Lotto05 groups 81–100; then adapter original renderer and independent regression tests"
+}
