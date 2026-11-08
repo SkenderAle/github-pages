@@ -8,6 +8,10 @@ Atlantis diventerà la nuova interfaccia esplorativa di Musurgia Mundi, mantenen
 ### Regola chiave dell'utente
 **PERTINENZA RADICATA:** cercando Mozart, al livello I compare Leopold per il rapporto padre-maestro. Ai livelli successivi si mostrano solo rami dotati di evidenza pertinente *a Mozart*, NON tutti i vicini di Leopold. I capitoli del sito, le tassonomie, i luoghi e i generi non sono ponti automatici. Persone e opere possono essere collegate tramite rapporti specifici e documentati, non generici.
 
+
+### Precisazione strutturale dell'utente (decisione definitiva)
+**Ogni capitolo è SOLO una risorsa editoriale.** Non appare mai fra i nodi o archi nella modalità storico-musicale. «Barocco» è il nodo del periodo storico; «Barocco» capitolo è un'entità editoriale distinta, visibile esclusivamente interrogando Musurgia Mundi per le trattazioni, i paragrafi, gli ascolti e i materiali del sito. Nessun capitolo attraversabile ai livelli I–V, nemmeno in modalità integrata. Applicare a tutte le pagine. Le **7 omonimie periodo/ambito ↔ capitolo** del crosswalk sono ora **risolte: keep_distinct**; restano **150** identità candidate da valutare, inclusi **146** nominativi e **4** concetti. Test di regressione: Vivaldi→Barocco periodo sì; Vivaldi→cap:barocco no; Mozart→cap:musica-e-film no; attraverso periodo non si passa indiscriminatamente a tutti gli altri autori.
+
 ### Stato attuale verificato
 - Atlante 3D `database/grafo.json`: 869 nodi / 2.437 archi.
 - `database/relazioni.json`: 1.389 relazioni specialistiche con testi direzionali e fonti.
