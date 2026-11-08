@@ -280,7 +280,7 @@ async function init(){
 }
 
 /* Atlantis Explorer v2: rooted breadth-first graph, independent node/label filters. */
-tiers=new Set(['trattazione','menzione','navigazione','ipotesi']);
+tiers=new Set(['trattazione','menzione']);
 const atlasLabelTypes=new Set();let atlasFirstLabels=true,atlasSignature='';
 edgesAccepted=()=>DATA.links.filter(e=>tiers.has(e.tier));
 // A co-mention in a chapter, generic topic, place or instrument is not a
@@ -294,9 +294,9 @@ const atlasGenericRelations=new Set([
  'analizzata_in','tratta_nel_contesto_storico','tratta_la_collaborazione_coreografico_musicale',
  'concorre_alla_storia_di','accoglie_il_lavoro_di','tratta_in_contesto','si_colloca_nella_storia_di'
 ]);
-function atlasMayBridge(n){return !!n&&(grp(n)==='persona'||grp(n)==='opera'||grp(n)==='nodo-di-senso')}
+function atlasMayBridge(n){return !!n&&(grp(n)==='persona'||grp(n)==='opera')}
 function atlasIsSpecific(e){
- return e.tier!=='navigazione'&&e.tier!=='sospeso'&&
+ return e.tier==='trattazione'&&
   !atlasGenericRelations.has(e.relation)&&
   !/^(menziona|tratta_|rimanda_|analizza_o_richiama|condivide_|sviluppa_o_illumina|documenta_o_trasforma)/.test(e.relation||'');
 }
@@ -504,7 +504,7 @@ setupUI=function(){
  };
  $('resetBtn').onclick=()=>{
   view='chapters';selectedId=null;selectedEdge=null;steps=1;atlasFirstLabels=true;atlasLabelTypes.clear();
-  tiers=new Set(['trattazione','menzione','navigazione','ipotesi']);types=new Set(ALL_TYPES);
+  tiers=new Set(['trattazione','menzione']);types=new Set(ALL_TYPES);
   for(const c of document.querySelectorAll('[data-tier]'))c.checked=tiers.has(c.dataset.tier);
   for(const b of document.querySelectorAll('[data-type]')){b.classList.add('active');b.setAttribute('aria-pressed','true')}
   for(const b of document.querySelectorAll('[data-label-type]')){b.classList.remove('active');b.setAttribute('aria-pressed','false')}

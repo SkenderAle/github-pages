@@ -4549,3 +4549,111 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 - **Integrità:** 608 nodi, 1520 archi, duplicati nodi 0, archi 0, triplette 0, orfani 0. Flag di verifica indipendente 379; gate `riscontro_storico_indipendente` 343. Proposte editoriali residue 32; sospensioni 125; trattazioni strumentali 31; richiami 102.
 - **QA:** verificati struttura del JSON, copertura consecutiva degli ID e assenza di nodi orfani o triplette duplicate; nessun collaudo grafico reale su Android/desktop. L'interfaccia, i capitoli e il protocollo non sono stati modificati. Non è stata implementata sincronizzazione automatica.
 - **Continuazione:** la serie numerica storica `E` termina a `E1070`. Prima di assegnare un successivo lotto occorre scegliere un nuovo gruppo **reale** di archi preesistenti da verificare o un intervento distinto di revisione dei percorsi; non inventare `E1071`.
+
+---
+
+## Lotto 137 — 2026-11-08: Polifonia, teoria, forme e sinfonismo: confronti senza discendenze presunte
+
+**Seconda passata:** ogni rapporto è stato riclassificato come **H** (riscontro esterno circoscritto) o **C** (confronto editoriale non causale). I confronti restano accessibili al primo livello ma non diventano trampolini storici nei livelli II–V.
+
+| Arco | Esito | Giudizio storico-filologico |
+| --- | --- | --- |
+| `E0924` | **C — confronto non causale** | Polifonia e madrigale hanno repertori connessi ma nessuna equivalenza di genere. |
+| `E0925` | **C — confronto non causale** | La policoralità veneziana usa la distribuzione spaziale, non inventa tutte le tecniche orchestrali successive. |
+| `E0926` | **C — confronto non causale** | Quadrivium e storia della tonalità richiedono comparazione delle teorie, non un unico schema. |
+| `E0927` | **C — confronto non causale** | Il continuo può sostenere il recitar cantando; non è condizione universale dell'espressione scenica. |
+| `E0928` | **C — confronto non causale** | La sonata come genere e la forma-sonata come principio analitico hanno storie e funzioni distinte. |
+| `E0929` | **C — confronto non causale** | Concerto, concertino e insieme orchestrale sono termini e pratiche contestuali. |
+| `E0930` | **C — confronto non causale** | Fuga e imitazione sono pratiche contrappuntistiche; evitare una definizione atemporale. |
+| `E0931` | **C — confronto non causale** | Il dibattito sulla musica assoluta è successivo a molte pratiche sinfoniche. |
+| `E0932` | **C — confronto non causale** | Sinfonia programmatica e musica a programma si intersecano in opere circoscritte. |
+
+### Fonti per gli archi H
+- Non applicabile: in questo lotto soltanto confronti dichiaratamente editoriali.
+
+**Bilancio:** 9 archi; 0 riscontri indipendenti circoscritti; 9 confronti non causali.
+
+---
+
+## Lotto 138 — 2026-11-08: Recitativo, aria, belcanto, leitmotiv e politica del teatro
+
+**Seconda passata:** ogni rapporto è stato riclassificato come **H** (riscontro esterno circoscritto) o **C** (confronto editoriale non causale). I confronti restano accessibili al primo livello ma non diventano trampolini storici nei livelli II–V.
+
+| Arco | Esito | Giudizio storico-filologico |
+| --- | --- | --- |
+| `E0935` | **H — riscontro indipendente** | L'opera impiega il recitativo in repertori storicamente documentati per declamare e far procedere l'azione, con accompagnamenti diversi; non è obbligatorio in ogni opera. |
+| `E0936` | **H — riscontro indipendente** | Arie solistiche compaiono in molti repertori operistici; cavatina, cabaletta, cantabile e romanza non designano un'unica forma universale. |
+| `E0937` | **H — riscontro indipendente** | Recitativo e aria possono articolare rispettivamente avanzamento della narrazione e sosta espressiva: prassi documentata in opere storiche, non schema valido per tutta l'opera. |
+| `E0939` | **C — confronto non causale** | Parola di libretto e declamazione sono comparabili ma occorre analisi d'opera. |
+| `E0941` | **C — confronto non causale** | La solita forma non descrive tutto il belcanto. |
+| `E0942` | **C — confronto non causale** | Non ogni opera fantastica adotta il motivo conduttore wagneriano. |
+| `E0943` | **C — confronto non causale** | La ricorrenza tematica filmica non implica un'unica derivazione da Wagner. |
+| `E0945` | **C — confronto non causale** | Poesia civile e canto politico si incontrano in inni specifici. |
+| `E0946` | **C — confronto non causale** | Pratiche civiche vocali e bandistiche variano per organico e circostanza. |
+| `E0947` | **C — confronto non causale** | Danza e opera convivono in alcuni allestimenti senza equivalere come generi. |
+
+### Fonti per gli archi H
+- https://www.metopera.org/discover/education/educator-guides/agrippina/10-essential-musical-terms/
+- https://www.metopera.org/discover/education/educator-guides/medea/10-essential-opera-terms/
+
+**Bilancio:** 10 archi; 3 riscontri indipendenti circoscritti; 7 confronti non causali.
+
+---
+
+## Lotto 139 — 2026-11-08: Balletto, operetta, musical, animazione e cinema sonoro
+
+**Seconda passata:** ogni rapporto è stato riclassificato come **H** (riscontro esterno circoscritto) o **C** (confronto editoriale non causale). I confronti restano accessibili al primo livello ma non diventano trampolini storici nei livelli II–V.
+
+| Arco | Esito | Giudizio storico-filologico |
+| --- | --- | --- |
+| `E0949` | **H — riscontro indipendente** | Noverre e la riforma settecentesca del ballet d'action sviluppano pantomima e azione scenica autonoma; un episodio fondamentale, non l'origine unica del balletto. |
+| `E0950` | **C — confronto non causale** | I Ballets Russes sono caso di collaborazione artistica, non la fonte unica dell'avanguardia. |
+| `E0952` | **C — confronto non causale** | L'operetta può parodiare l'opera, senza diventare opera in ogni manifestazione. |
+| `E0953` | **C — confronto non causale** | Operetta e varietà condividono contesti ma hanno grammatiche distinte. |
+| `E0956` | **C — confronto non causale** | Il jazz contribuisce alla storia dei musical senza renderli necessariamente improvvisati. |
+| `E0958` | **H — riscontro indipendente** | Nel musical cinematografico coreografia, inquadrature e montaggio possono produrre figure impossibili sul palcoscenico, come nei numeri di Busby Berkeley; non tutti i film musicali derivano da spettacoli teatrali. |
+| `E0960` | **H — riscontro indipendente** | Le tecnologie del cinema sonoro rendono riproducibile e montabile la sincronizzazione registrata fra musica e immagini, senza inventare la composizione per film, già attestata nell'epoca muta. |
+| `E0961` | **H — riscontro indipendente** | Il Mickey Mousing designa la corrispondenza puntuale fra gesto animato ed evento musicale o sonoro, attestata dalla Library of Congress; è una tecnica possibile, non sinonimo di animazione. |
+
+### Fonti per gli archi H
+- https://www.operadeparis.fr/en/about/history/jean-georges-noverre-1727-1810
+- https://www.bfi.org.uk/sight-and-sound/features/all-that-glitters-restless-art-movie-musical
+- https://www.bfi.org.uk/features/all-about-film-sound-how-we-restore-it
+- https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/a-warming-flame/
+- https://loc.gov/exhibits/music-and-animation/about.html
+
+**Bilancio:** 8 archi; 4 riscontri indipendenti circoscritti; 4 confronti non causali.
+
+---
+
+## Lotto 140 — 2026-11-08: Musica cinematografica, diegesi, registrazione e riuso
+
+**Seconda passata:** ogni rapporto è stato riclassificato come **H** (riscontro esterno circoscritto) o **C** (confronto editoriale non causale). I confronti restano accessibili al primo livello ma non diventano trampolini storici nei livelli II–V.
+
+| Arco | Esito | Giudizio storico-filologico |
+| --- | --- | --- |
+| `E0963` | **C — confronto non causale** | Diegesi e extradiegesi sono categorie della collocazione narrativa del suono. |
+| `E0964` | **C — confronto non causale** | Empatia e anempatia sono modi analitici d'interpretare un film, non generi musicali. |
+| `E0965` | **H — riscontro indipendente** | L'accompagnamento cinematografico ha documentati impieghi sia di musiche originali sia di repertori preesistenti: distinguere singole partiture, arrangiamenti, interpretazioni e colonne sonore. |
+| `E0967` | **H — riscontro indipendente** | La registrazione e la riproduzione sonora contribuirono alla sincronizzazione fra pellicola e suono registrato; il cinema sonoro ha però tecnologie e pratiche proprie, non coincide con il fonografo. |
+| `E0968` | **C — confronto non causale** | Trascrizione, registrazione e riuso non sono fasi obbligate di un processo. |
+
+### Fonti per gli archi H
+- https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/a-warming-flame/
+- https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/photoplay-albums-for-silent-film-scores/
+- https://www.bfi.org.uk/features/all-about-film-sound-how-we-restore-it
+
+**Bilancio:** 5 archi; 2 riscontri indipendenti circoscritti; 3 confronti non causali.
+
+---
+
+### Bilancio seconda passata e correzione della propagazione II–V
+
+- **32 proposte originali riesaminate** in quattro lotti: **9 verifiche indipendenti circoscritte**, **23 confronti editoriali dichiaratamente non causali**, **0 proposte editoriali revisionate senza decisione** in questa specifica serie. I 23 confronti NON sono verifiche storiche indipendenti.
+- **Sospensioni confermate senza alterazioni: 125**. Classificazione dei loro estremi: capitolo 101; altri 23; capitolo_dest 1. Con filtri ordinari non entrano nella navigazione. Le sospensioni non sono state arbitrariamente promosse.
+- **Correzione interfaccia:** lo stato iniziale e il reset dell'esploratore attivano solo `trattazione` e `menzione`, conformemente ai controlli visibili; `ipotesi`, `navigazione` e `sospeso` sono disattivati finché l'utente non li seleziona.
+- **Correzione della transitività:** ai livelli II–V un collegamento può espandersi solo se di classe `trattazione` e se il nodo intermedio è una persona o un'opera/produzione concreta. I nodi di senso concettuali non fanno da ponti fra loro. Confronti, proposte, sospensioni e rimandi editoriali rimangono visibili al I livello se il filtro è acceso, ma non propagano vicinanze storiche.
+- **Cautela interpretativa:** un percorso di più archi non equivale automaticamente a una relazione storica diretta tra i suoi estremi; il visualizzatore mostra catene documentate, non una prova di influenza transitiva.
+- **Integrità JSON:** 608 nodi, 1520 archi, ID duplicati 0, orfani 0, triplette duplicate 0. Flag indipendenti 388; gate `riscontro_storico_indipendente` 352; sospensioni 125.
+- **Limiti QA:** test statici del codice e del JSON; il comportamento visivo reale deve ancora essere provato manualmente su desktop/Android. Nessuna modifica ai capitoli e nessuna sincronizzazione automatica aggiunta.
+- **Passo successivo:** prova visiva della rete focalizzata su Mozart, Beethoven, Verdi e capitoli-ponte; eventualmente terza passata delle sospensioni più rilevanti con riscontri di pagina e fonti puntuali, non riattivazione massiva.
