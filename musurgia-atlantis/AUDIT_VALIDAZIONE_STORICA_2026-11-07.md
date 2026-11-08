@@ -2039,3 +2039,180 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - `L04-A05`, `L04-A16`, `L04-A23`, `L04-A28`, `L04-A35` sono confronti non causali; non promuovono un nesso genealogico diretto. La navigazione va interpretata per cammino dichiarato, non per prossimità grafica.
 - Prossimi Lotti 45–49: esaminare da `L04-A37` fino a `L04-A70` saltando gli ID già convalidati: `L04-A41`, `L04-A55`–`L04-A58`.
 
+---
+
+## Lotto 45 — 8 novembre 2026: Wagner, motivi di reminiscenza, Wolzogen e ricezione ideologica
+
+**Metodo:** fonti indipendenti (edizioni critiche, documenti storici, teatri e musicologia), confrontate con i testi reali dei capitoli `main` per gli archi editoriali. Nessuna modifica ai capitoli, menu, renderer o protocollo.
+
+| ID | Gate conclusivo | Verifica e precisazione |
+| --- | --- | --- |
+| `L04-A37` | **riscontro_storico_indipendente** | Wagner sviluppò una rete di motivi ricorrenti trasformati all'interno dei propri drammi musicali, specie nel Ring, mediante variazioni e riconoscimenti tematici. Le pratiche di reminiscenza precedenti esistono: l'arco non attribuisce a Wagner l'invenzione assoluta di qualsiasi motivo ricorrente. |
+| `L04-A38` | **riscontro_storico_indipendente** | Hans von Wolzogen sistematizzò e denominò molti motivi del Ring nei suoi Leitfäden, attestati nel 1876. Il termine Leitmotiv circolava già nel 1871 in altri contesti (Jähns e Weber), mentre Wolzogen contribuì alla sua adozione nell'esegesi wagneriana; non fu necessariamente l'inventore unico del vocabolo. |
+| `L04-A39` | **confronto_non_causale** | I motivi di reminiscenza delle tradizioni operistiche precedenti e il Leitmotiv wagneriano condividono la ricorrenza e memoria tematica, ma non sono identici per organizzazione, trasformazione o funzione drammatica. Il richiamo è analitico e genealogico in senso ampio, non un arco di filiazione univoca. |
+| `L04-A40` | **riscontro_storico_indipendente** | Richard Wagner partecipò all'insurrezione di Dresda del maggio 1849, fu ricercato dalle autorità e fuggì in esilio, inizialmente in Svizzera. L'evento è distinto dagli avvenimenti rivoluzionari del Risorgimento italiano. |
+| `L04-A42` | **riscontro_storico_indipendente** | Wagner pubblicò l'opuscolo antisemita Das Judenthum in der Musik nella Neue Zeitschrift für Musik nel 1850 con pseudonimo K. Freigedenk, ripubblicandolo in versione ampliata nel 1869 a proprio nome. Il dato documenta ideologia scritta e polemica pubblica, non definisce di per sé ogni procedura della sua musica. |
+| `L04-A43` | **riscontro_storico_indipendente** | Il teatro e la teoria musicale di Wagner suscitarono una vasta ricezione interpretativa, controversa e non uniforme, alimentata anche da commentatori come Hans von Wolzogen. Il wagnerismo designa pluralità di letture e scuole, non una linea di discepoli diretti. |
+| `L04-A44` | **confronto_non_causale** | Verdi fu posto nel confronto storiografico e critico con il wagnerismo per soluzioni di dramma musicale, continuità e orchestrazione, ma ciò non documenta un rapporto maestro-allievo né un prestito necessariamente diretto. L'originalità di ciascuno va conservata. |
+| `L04-A45` | **sospeso** | Rimando inverso semanticamente equivalente al confronto già conservato in L04-A35 (parola scenica ↔ ricezione del wagnerismo). Non è un fatto storico ulteriore: sospeso come probabile duplicato non fuso, con ID e fonti conservati per una futura deduplicazione ragionata. |
+
+### Fonti indipendenti e pagine controllate
+- https://www.treccani.it/enciclopedia/leitmotiv/
+- https://www.dhm.de/lemo/biografie/richard-wagner
+- https://hanslick-online.github.io/hsl-app/c__1876.08.20.html?lang=de
+- https://books.google.com/books/about/Thematischer_Leitfaden_durch_die_Musik_z.html?id=-yHOJ_ldCkMC
+- https://germanhistorydocs.org/en/forging-an-empire-bismarckian-germany-1866-1890/ghdi%3Adocument-1786
+- https://germanhistorydocs.org/en/forging-an-empire-bismarckian-germany-1866-1890/ghdi%3Adocument-5072
+- https://www.treccani.it/magazine/lingua_italiana/speciali/Verdi/Bonomi.html
+- https://musurgiamundi.com/opera-lirica/#4-il-dramma-musicale-wagner-e-verdi
+
+### Precisazioni da conservare per il riuso editoriale futuro
+- Il termine Leitmotiv ha storia terminologica articolata: Treccani segnala l'uso di Jähns nel 1871 per Weber e l'applicazione wagneriana di Wolzogen; un Leitfaden di Wolzogen per il Ring è documentato già nel 1876. Non attribuire a Wagner le etichette analitiche della posteriore manualistica.
+- Wagner partecipò all'insurrezione di Dresda del maggio 1849 e pubblicò l'opuscolo antisemita Das Judenthum in der Musik nel 1850 (pseudonimo), ampliandolo nel 1869 (nome proprio). Distinguere biografia politica, idee scritte, poetica e ricezione.
+- L04-A35 e L04-A45 esprimono in direzioni inverse la stessa relazione comparativa fra parola scenica e wagnerismo. L04-A45 è sospeso come possibile duplicato semantico, preservandone l'ID.
+
+**QA lotto 45:** 8 archi revisionati, con `previous_quality_gate`, `previous_description` e `previous_relation` quando sostituita. 1 sospesi; nessuna fusione effettuata.
+
+
+---
+
+## Lotto 46 — 8 novembre 2026: Grand opéra francese, Meyerbeer, Halévy e Don Carlos
+
+**Metodo:** fonti indipendenti (edizioni critiche, documenti storici, teatri e musicologia), confrontate con i testi reali dei capitoli `main` per gli archi editoriali. Nessuna modifica ai capitoli, menu, renderer o protocollo.
+
+| ID | Gate conclusivo | Verifica e precisazione |
+| --- | --- | --- |
+| `L04-A46` | **trattazione_diretta_con_ancora_verificata** | Opera lirica, sezione #3-il-grande-teatro-europeo, presenta esplicitamente il grand opéra parigino come sistema di grandi quadri storici, cori, danza, scenotecnica e collaborazione teatrale; cita Meyerbeer, Halévy e il contesto di Don Carlos. |
+| `L04-A47` | **riscontro_storico_indipendente** | Giacomo Meyerbeer fu protagonista della codificazione del grand opéra parigino: Robert le Diable (1831) e Les Huguenots (1836) rappresentano modelli di teatro storico spettacolare con grandi cori, scene collettive e apparato scenico. |
+| `L04-A48` | **riscontro_storico_indipendente** | Fromental Halévy, con La Juive (Opéra di Parigi, 23 febbraio 1835), fu uno dei protagonisti del grand opéra storico francese, al pari ma non come semplice sinonimo di Meyerbeer. L'opera indaga intolleranza religiosa, conflitto e spettacolarità. |
+| `L04-A49` | **riscontro_storico_indipendente** | Don Carlos di Verdi fu concepito per l'Opéra di Parigi su libretto francese, debuttando l'11 marzo 1867 in cinque atti con apparato coreografico. Appartiene al contesto del grand opéra, benché scritto da un compositore italiano e poi tradotto. |
+
+### Fonti indipendenti e pagine controllate
+- https://musurgiamundi.com/opera-lirica/#3-il-grande-teatro-europeo
+- https://www.operadeparis.fr/en/season-18-19/opera/les-huguenots
+- https://www.operadeparis.fr/en/visits/exhibitions/grand-opera-1828-1867-history-made-spectacular/meyerbeer-the-triumphs-of-grand-opera
+- https://www.degruyterbrill.com/document/doi/10.1515/semi.2011.026/html
+- https://www.rohcollections.org.uk/work.aspx?work=12939
+- https://www.operadeparis.fr/en/season-17-18/opera/don-carlos
+- https://www.opera.mc/en/seasons/23-24/don-carlo
+
+### Precisazioni da conservare per il riuso editoriale futuro
+- Robert le Diable (Meyerbeer, 1831), La Juive (Halévy, 1835), Les Huguenots (Meyerbeer, 1836) illustrano istituzioni e tipologie del grand opéra; dramma storico, grandi scene corali, macchine teatrali e balletto sono tratti frequenti, non una checklist identica per ogni lavoro.
+- Don Carlos, commissionato da Parigi e composto su libretto originale francese, nasce nella tradizione del grand opéra; la sua identità non si riduce al cognome italiano del compositore.
+- Il capitolo Opera lirica contiene una trattazione diretta del grand opéra; le versioni dettagliate di Don Carlos (1867, 1884, 1886) non vi sono ancora ricostruite analiticamente.
+
+**QA lotto 46:** 4 archi revisionati, con `previous_quality_gate`, `previous_description` e `previous_relation` quando sostituita. 0 sospesi; nessuna fusione effettuata.
+
+
+---
+
+## Lotto 47 — 8 novembre 2026: Don Carlos — distinguere originale francese e revisioni 1884/1886
+
+**Metodo:** fonti indipendenti (edizioni critiche, documenti storici, teatri e musicologia), confrontate con i testi reali dei capitoli `main` per gli archi editoriali. Nessuna modifica ai capitoli, menu, renderer o protocollo.
+
+| ID | Gate conclusivo | Verifica e precisazione |
+| --- | --- | --- |
+| `L04-A50` | **riscontro_storico_indipendente** | Il nodo identitario Don Carlos / Don Carlo comprende come redazione storica la versione francese rappresentata all'Opéra l'11 marzo 1867 in cinque atti; distinguere il testo rappresentato dalle sezioni composte in precedenza e tagliate già in prova. |
+| `L04-A51` | **riscontro_storico_indipendente** | La revisione di Verdi presentata alla Scala il 10 gennaio 1884, in italiano, riduce Don Carlo a quattro atti eliminando Fontainebleau e il balletto e include nuove rielaborazioni musicali sostanziali. Non è una semplice ristampa del libretto francese del 1867. |
+| `L04-A52` | **riscontro_storico_indipendente** | La configurazione presentata a Modena nel dicembre 1886 ripristina l'atto di Fontainebleau entro la revisione di Don Carlo del 1884, tornando a cinque atti ma senza reintegrare il balletto originale. Non coincide integralmente con la redazione parigina 1867. |
+| `L04-A53` | **riscontro_storico_indipendente** | Don Carlos in lingua francese ebbe prima rappresentazione pubblica all'Opéra di Parigi, Salle Le Peletier, l'11 marzo 1867. L'esecuzione d'esordio subì tagli rispetto alla partitura concepita originariamente; non confondere data di prima e data di composizione delle sezioni. |
+| `L04-A54` | **riscontro_storico_indipendente** | Giuseppe Verdi compose Don Carlos per Parigi (1867) e partecipò alle sue principali revisioni, culminate nella redazione in quattro atti del 1884 e nella configurazione di Modena 1886. Il nodo generale raccoglie redazioni collegate della stessa opera, senza fonderne la musica. |
+
+### Fonti indipendenti e pagine controllate
+- https://www.rohcollections.org.uk/work.aspx?work=12939
+- https://www.operadeparis.fr/en/season-17-18/opera/don-carlos
+- https://www.opera.mc/en/seasons/23-24/don-carlo
+- https://www.rohcollections.org.uk/work.aspx?work=516
+- https://www.sfopera.com/blog/2015/03/did-you-know-verdis-don-carlo/
+
+### Precisazioni da conservare per il riuso editoriale futuro
+- La prima di Don Carlos: Opéra di Parigi, 11 marzo 1867, libretto francese Méry–du Locle da Schiller, cinque atti. Lo spartito fu ridotto prima e dopo la prima rispetto al progetto integrale delle prove.
+- Scala 10 gennaio 1884: Don Carlo italiano in quattro atti, con Fontainebleau soppresso e riscritture sostanziali, non mera traduzione. Nel 1886 a Modena si reintroduce Fontainebleau nel testo quattrocentesco rivisto, senza ricostituire l'identità integrale del 1867.
+- Le diverse redazioni dovrebbero avere un futuro approfondimento nel capitolo Opera lirica; il grafo le distingue già senza fonderle.
+
+**QA lotto 47:** 5 archi revisionati, con `previous_quality_gate`, `previous_description` e `previous_relation` quando sostituita. 0 sospesi; nessuna fusione effettuata.
+
+
+---
+
+## Lotto 48 — 8 novembre 2026: Versioni, lingua, editoria e censura nel teatro ottocentesco
+
+**Metodo:** fonti indipendenti (edizioni critiche, documenti storici, teatri e musicologia), confrontate con i testi reali dei capitoli `main` per gli archi editoriali. Nessuna modifica ai capitoli, menu, renderer o protocollo.
+
+| ID | Gate conclusivo | Verifica e precisazione |
+| --- | --- | --- |
+| `L04-A59` | **confronto_non_causale** | La pluralità delle versioni di Don Carlos / Don Carlo è un caso di studio di revisione d'opera, taglio, reinserimento, modifica musicale e traduzione; la categoria generale «versioni, revisioni e traduzioni» non è un'opera o un agente causale da cui derivino redazioni concrete. |
+| `L04-A60` | **riscontro_storico_indipendente** | Il Don Carlos del 1867 fu composto su un libretto originale francese, benché Verdi fosse italiano; una traduzione in italiano di Achille de Lauzières circolò già nel 1867, poi riveduta per altre redazioni. Distinguere lingua di composizione e successivo repertorio tradotto. |
+| `L04-A61` | **confronto_non_causale** | Il grand opéra è legato alle istituzioni parigine e spesso alla lingua francese, ma la pratica produttiva è transnazionale per compositori, librettisti e versioni. Il genere non attribuisce automaticamente nazionalità o ideologia politica univoca agli autori. |
+| `L04-A62` | **riscontro_storico_indipendente** | Giulio Ricordi fu editore e imprenditore del teatro musicale italiano ottocentesco, con un ruolo documentato nella mediazione artistica ed editoriale della collaborazione Verdi–Boito e nelle strategie di produzione e diffusione. |
+| `L04-A63` | **confronto_non_causale** | Censura teatrale ed editoria/impresa teatrale interagirono nelle negoziazioni su libretto, azione, allestimento e autorizzazione delle rappresentazioni. Sono istituzioni e processi distinti: la relazione concettuale non prova dipendenza causale fra le due categorie astratte. |
+
+### Fonti indipendenti e pagine controllate
+- https://www.rohcollections.org.uk/work.aspx?work=12939
+- https://www.rohcollections.org.uk/work.aspx?work=516
+- https://www.opera.mc/en/seasons/23-24/don-carlo
+- https://www.operadeparis.fr/en/season-17-18/opera/don-carlos
+- https://www.operadeparis.fr/en/season-18-19/opera/les-huguenots
+- https://musurgiamundi.com/opera-lirica/#3-il-grande-teatro-europeo
+- https://academic.oup.com/book/4538/chapter-abstract/146629472
+- https://www.treccani.it/magazine/lingua_italiana/speciali/Verdi/Bonomi.html
+- https://www.metopera.org/discover/education/educator-guides/rigoletto/dodging-the-censors-pen/
+- https://doi.org/10.1017/S0954586700005061
+
+### Precisazioni da conservare per il riuso editoriale futuro
+- Tradurre un'opera e revisionarne partitura, atti o struttura scenica sono interventi distinti. Don Carlos è un caso cruciale: compito futuro spiegare redazioni in francese e allestimenti in italiano separatamente.
+- Giulio Ricordi opera nell'industria editoriale e teatrale della seconda metà dell'Ottocento, che può mediare commissioni, revisione e circolazione del repertorio.
+- Censura, editoria e imprese teatrali partecipano allo stesso sistema di negoziazione ma non coincidono istituzionalmente né costituiscono un rapporto di derivazione automatica.
+
+**QA lotto 48:** 5 archi revisionati, con `previous_quality_gate`, `previous_description` e `previous_relation` quando sostituita. 0 sospesi; nessuna fusione effettuata.
+
+
+---
+
+## Lotto 49 — 8 novembre 2026: Coro collettivo, identità linguistica e rimandi editoriali
+
+**Metodo:** fonti indipendenti (edizioni critiche, documenti storici, teatri e musicologia), confrontate con i testi reali dei capitoli `main` per gli archi editoriali. Nessuna modifica ai capitoli, menu, renderer o protocollo.
+
+| ID | Gate conclusivo | Verifica e precisazione |
+| --- | --- | --- |
+| `L04-A64` | **confronto_non_causale** | Le grandi scene corali sono caratteristiche di molti grand opéras parigini, fra cui esempi di Meyerbeer e Halévy, ma il coro come massa teatrale può avere funzioni assai diverse da un inno patriottico; l'arco descrive un dispositivo scenico, non una filiazione causale di categorie. |
+| `L04-A65` | **confronto_non_causale** | Un coro nato come voce collettiva di un dramma può ricevere impieghi politici e commemorativi successivi, come nel caso della ricezione del Va pensiero di Nabucco. Tuttavia, non ogni coro teatrale diventa un simbolo pubblico né mantiene un solo significato. |
+| `L04-A66` | **confronto_non_causale** | Lingua scenica, genere teatrale, cittadinanza del compositore e identità o nazionalismo politico sono dimensioni non coincidenti. Don Carlos, scritto in francese da Verdi e tradotto in italiano, dimostra l'utilità della distinzione senza instaurare un rapporto causale fra categorie. |
+| `L04-A67` | **sospeso** | I due nodi «Coro come personaggio collettivo» e «Coro operistico come soggetto collettivo» sembrano parzialmente equivalenti dal punto di vista semantico. Il nesso viene sospeso come candidato di sovrapposizione tassonomica, senza fusione o cancellazione; occorre comparare estensione storica e funzioni dei nodi prima della deduplicazione. |
+| `L04-A68` | **richiamo_contestuale** | Romanticismo discute lingue, identità culturali, scuole nazionali, imperi plurali e migrazioni; il capitolo però non sviluppa in modo sistematico la lingua nel teatro musicale per singola opera. Il ponte è contestuale, non una trattazione operistica specifica. |
+| `L04-A69` | **sospeso** | Risorgimento affronta lingua dei canti civili e identità nazionale, ma non svolge una trattazione autonoma della categoria «lingua e identità del teatro musicale». Il rapporto richiesto dall'arco è troppo specifico rispetto al testo attuale e rimane proposta di integrazione futura. |
+| `L04-A70` | **trattazione_riscontrata** | Opera lirica esamina versioni e revisioni di Fidelio, Rossini, Simon Boccanegra e altre opere, collegandole a traduzioni e circostanze produttive. Per Don Carlos, tuttavia, la pagina cita il 1867 e il grand opéra senza ricostruire sistematicamente 1884 e 1886: quest'ultima integrazione resta distinta. |
+
+### Fonti indipendenti e pagine controllate
+- https://www.operadeparis.fr/en/season-18-19/opera/les-huguenots
+- https://www.degruyterbrill.com/document/doi/10.1515/semi.2011.026/html
+- https://www.treccani.it/enciclopedia/musica-e-teatro_%28L%27Unificazione%29/
+- https://www.treccani.it/enciclopedia/giuseppe-fortunino-francesco-verdi_%28Dizionario-Biografico%29/
+- https://www.rohcollections.org.uk/work.aspx?work=12939
+- https://www.operadeparis.fr/en/season-17-18/opera/don-carlos
+- https://musurgiamundi.com/opera-lirica/#5-le-tradizioni-nazionali-lingue-memorie-invenzioni
+- https://musurgiamundi.com/anatomia-del-melodramma/#orchestra
+- https://musurgiamundi.com/romanticismo/#scuole-fonti
+- https://musurgiamundi.com/risorgimento/#musica
+- https://musurgiamundi.com/opera-lirica/#3-il-grande-teatro-europeo
+- https://musurgiamundi.com/opera-lirica/#4-il-dramma-musicale-wagner-e-verdi
+- https://www.rohcollections.org.uk/work.aspx?work=516
+
+### Precisazioni da conservare per il riuso editoriale futuro
+- Il grand opéra può impiegare grandi scene corali, ma il coro non è per ciò stesso un inno politico. La ricezione pubblica di alcuni cori verdiani è un percorso storico distinto dalla loro funzione nel dramma.
+- I due nodi «Coro come personaggio collettivo» e «Coro operistico come soggetto collettivo» appaiono semanticamente sovrapposti: L04-A67 resta sospeso come candidato di fusione da esaminare, senza cancellare la tracciabilità o unire oggi i nodi.
+- Romanticismo analizza identità nazionali e lingue in senso ampio. Risorgimento tratta testi e canti civili, ma non analizza autonomamente la lingua del teatro musicale come categoria: L04-A69 sospeso. Opera lirica tratta numerose revisioni, ma le varianti di Don Carlos sono ancora da sistematizzare nella pagina.
+
+**QA lotto 49:** 7 archi revisionati, con `previous_quality_gate`, `previous_description` e `previous_relation` quando sostituita. 2 sospesi; nessuna fusione effettuata.
+
+---
+
+### Controlli complessivi dopo il Lotto 49
+- JSON serializzato e riparsato, **608 nodi, 1520 archi** invariati; 0 ID duplicati, 0 nodi orfani, 0 duplicati di tripletta orientata esatta fonte–destinazione–verbo.
+- **58** relazioni esaminate nei Lotti 40–49 (29 nei Lotti 40–44 e 29 nei Lotti 45–49). Rimangono 18 candidati non fusi nel grafo.
+- Gate principali: 317 riscontri indipendenti, 317 proposte editoriali, 114 confronti non causali, 57 sospensioni; flag `historical_verified_independently` su **354** archi.
+- Sospesi L04-A45 come rimando inverso probabilmente duplicato di L04-A35; L04-A67 come sovrapposizione tassonomica dei due nodi sul coro; L04-A69 per assenza di trattazione specifica della lingua del teatro musicale nel capitolo Risorgimento.
+- I confronti tipologici e classificatori sono espressi col verbo generico `sviluppa_o_illumina`, che il filtro attuale esclude dalla propagazione oltre il livello I. Il QA strutturale non equivale a prova reale dei renderer WebGL/Canvas su desktop e mobile.
+- **Nota editoriale futura:** nel capitolo Opera lirica la storia delle revisioni di Don Carlos/Don Carlo (1867, 1884, 1886) richiede un paragrafo specifico, senza modifiche in questa fase; inoltre Wagner e Verdi non vanno ridotti a derivazioni automatiche.
+- **Lotti successivi suggeriti:** risolvere i candidati rimasti fra `L01-*`, `L06-*` e l'eventuale blocco di proposte editoriali, controllando `main` prima di ogni scrittura.
+
