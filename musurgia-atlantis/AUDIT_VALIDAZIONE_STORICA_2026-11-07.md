@@ -5507,3 +5507,233 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 
 **Pubblicazione prevista:** commit `Atlantis Lotti 171-180: opere, trascrizioni e rapporti documentati` su `main`; recuperare l'ID esatto dalla cronologia dei commit. I dati del lotto sono registrati senza dichiarare prove grafiche non effettuate.
 
+---
+
+# Lotti 181–190 — Audit delle opere e delle attribuzioni (8 novembre 2026)
+
+**Preflight:** branch `main`, HEAD `8df403d3049594cbefa0b3b97aba3f07acff923a`, 675 nodi e 1624 archi. Ambito: esclusivamente `grafo.json` e questo registro. Gli archi sospesi e il protocollo restano invariati.
+
+## Lotto 181 — Haydn e Gottfried van Swieten: Die Schöpfung
+
+**Nodi introdotti:** `opera:haydn-die-schoepfung-1798`, `pers:gottfried-van-swieten`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L181-A01` | **H — documentato** | Haydn compone l'oratorio Die Schöpfung, presentato nel 1798 e concepito dall'inizio anche per un testo bilingue tedesco/inglese. |
+| `L181-A02` | **H — documentato** | Van Swieten predispone e rivede il testo tedesco-inglese di Die Schöpfung, collaborando alla sua impostazione editoriale; non è autore originale delle fonti bibliche. |
+
+### Fonti esterne per rapporti specifici
+- https://www.haydn-institut.de/index.php/gesamtausgabe/bandinformationen/73-2008-jhw-xxviii-3
+
+**Esclusioni e cautele:** Van Swieten non è presentato come autore dei testi biblici o compositore della musica; nessuna datazione unitaria dei materiali preparatori.
+
+**Totale lotto:** 2 nuovi nodi; 2 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 182 — Beethoven, arciduca Rodolfo e Missa solemnis
+
+**Nodi introdotti:** `opera:beethoven-missa-solemnis-op123`, `pers:rudolfo-arciduca-austria`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L182-A01` | **H — documentato** | Beethoven inizia la Missa solemnis nel 1819 e la conclude nel 1823, oltre il termine previsto per l'insediamento arcivescovile del 1820. |
+| `L182-A02` | **H — documentato** | La messa fu progettata per l'insediamento dell'arciduca Rodolfo come arcivescovo di Olmütz, ma fu completata solo nel 1823 e non eseguita in quella cerimonia. |
+| `L182-A03` | **H — documentato** | Beethoven impartì a Rodolfo lezioni di pianoforte e composizione; la fonte ne distingue i ruoli di allievo, amico e patrono. |
+
+### Fonti esterne per rapporti specifici
+- https://www.beethoven.de/en/work/view/4890449437261824/Mass%2Bin%2BD%2Bmajor%2Bfor%2Bfour%2Bsolo%2Bvoices%2C%2Bchorus%2C%2Borchestra%2Band%2Borgan%2Bop.%2B123%2B%28Missa%2Bsolemnis%29?fromArchive=5376194534965248
+- https://www.beethoven.de/en/media/view/5380928427786240/Rudolph%2C%20Erzherzog%20von%20%C3%96sterreich%20%26%2340%3B1788-1831%26%2341%3B%20-%20Stich%20von%20Blasius%20H%C3%B6fel%20nach%20einer%20Zeichnung%20von%20Adalbert%20Suchy%2C%20Wien%2C%20um%201820?fromWork=4652052546322432
+
+**Esclusioni e cautele:** La messa non è stata eseguita nella cerimonia del 1820, e il rapporto didattico non implica che Rodolfo sia coautore.
+
+**Totale lotto:** 2 nuovi nodi; 3 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 183 — Schubert, Goethe ed Erlkönig D 328
+
+**Nodi introdotti:** `opera:schubert-erlkoenig-d328`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L183-A01` | **H — documentato** | Schubert mette in musica per voce e pianoforte la ballata Erlkönig di Goethe, D 328; prima edizione nel 1821. |
+| `L183-A02` | **H — documentato** | Goethe è autore del testo poetico Erlkönig utilizzato da Schubert; non è autore della musica. |
+
+### Fonti esterne per rapporti specifici
+- https://schubert-online.at/activpage/werke_einzelansicht.php?herkunft=gattung_einzelansicht&top=7&werke_id=2
+
+**Esclusioni e cautele:** La pubblicazione del 1821 non è la data di composizione e la ripresa del testo non certifica un incontro personale fra Schubert e Goethe.
+
+**Totale lotto:** 1 nuovi nodi; 2 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 184 — Mendelssohn e Ferdinand David: Concerto per violino op. 64
+
+**Nodi introdotti:** `opera:mendelssohn-concerto-violino-op64`, `pers:ferdinand-david`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L184-A01` | **H — documentato** | Mendelssohn completa nel 1844 il Concerto per violino op. 64, concepito per Ferdinand David già dalla fine degli anni Trenta. |
+| `L184-A02` | **H — documentato** | Ferdinand David esegue la parte solistica alla prima del Concerto op. 64 al Gewandhaus di Lipsia, 13 marzo 1845, direttore Niels Gade. |
+| `L184-A03` | **H — documentato** | La corrispondenza fra Mendelssohn e David include discussioni su dettagli tecnici del Concerto, senza attribuire a David la composizione del brano. |
+
+### Fonti esterne per rapporti specifici
+- https://www.bso.org/works/mendelssohn-violin-concerto
+
+**Esclusioni e cautele:** David è interlocutore e primo solista, non co-compositore; Mendelssohn non dirige la prima del 1845.
+
+**Totale lotto:** 2 nuovi nodi; 3 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 185 — Berlioz, Paganini, Chrétien Urhan: Harold en Italie
+
+**Nodi introdotti:** `opera:berlioz-harold-en-italie-op16`, `pers:chretien-urhan`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L185-A01` | **H — documentato** | Berlioz compone nel 1834 Harold en Italie per orchestra e viola solista; il lavoro assunse la forma di sinfonia e non quella del concerto virtuosistico previsto da Paganini. |
+| `L185-A02` | **H — documentato** | La richiesta di Paganini di un brano virtuosistico per viola è all'origine di Harold en Italie, ma Paganini non ne tiene la prima esecuzione e inizialmente ne contesta il ruolo solistico. |
+| `L185-A03` | **H — documentato** | Chrétien Urhan è il violista della prima esecuzione di Harold en Italie nel 1834, non Paganini. |
+
+### Fonti esterne per rapporti specifici
+- https://www.cambridge.org/core/journals/nineteenth-century-music-review/article/abs/concerto-that-wasnt-paganini-urhan-and-harold-in-italy/0DC00C4A8D4CD8329BD30DF93E855F44
+- https://www.medici.tv/en/concerts/leonard-bernstein-berlioz-harold-en-italie
+
+**Esclusioni e cautele:** Non usare l'etichetta di concerto solistico in luogo di sinfonia con viola; non attribuire a Paganini una prima esecuzione mai avvenuta.
+
+**Totale lotto:** 2 nuovi nodi; 3 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 186 — Gustav Mahler: Ottava Sinfonia e Faust II
+
+**Nodi introdotti:** `opera:mahler-sinfonia-8-1906`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L186-A01` | **H — documentato** | Mahler compone l'Ottava nel 1906 e ne dirige la prima il 12 settembre 1910 a Monaco; la data della prima non è quella della composizione. |
+| `L186-A02` | **H — documentato** | La seconda parte dell'Ottava utilizza la scena conclusiva del Faust II di Goethe, distinta dal testo latino Veni creator spiritus della prima parte. |
+
+### Fonti esterne per rapporti specifici
+- https://www.mahlerfoundation.org/mahler/compositions/symphony-no-8/symphony-no-8-history/
+- https://www.mahler.cz/en/about-gustav-mahler/world-class-composer
+
+**Esclusioni e cautele:** Non attribuire a Goethe l'inno latino Veni creator spiritus, né dedurre un rapporto diretto Mahler–Goethe.
+
+**Totale lotto:** 1 nuovi nodi; 2 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 187 — Richard Strauss e Oscar Wilde: Salome (1905)
+
+**Nodi introdotti:** `opera:strauss-salome-op54-1905`, `pers:oscar-wilde`, `opera:wilde-salome-dramma`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L187-A01` | **H — documentato** | Richard Strauss compone l'opera Salome, rappresentata per la prima volta a Dresda il 9 dicembre 1905. |
+| `L187-A02` | **H — documentato** | Oscar Wilde scrive il dramma Salomé, preesistente all'adattamento operistico di Richard Strauss. |
+| `L187-A03` | **H — documentato** | Strauss mette in musica il testo teatrale di Wilde in traduzione tedesca, senza un librettista incaricato di scrivere ex novo il soggetto. |
+
+### Fonti esterne per rapporti specifici
+- https://www.richardstrauss.at/biography.html
+
+**Esclusioni e cautele:** Il dramma letterario di Wilde e l'opera musicale di Strauss restano entità distinte; non attribuire a Wilde la musica.
+
+**Totale lotto:** 3 nuovi nodi; 3 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 188 — Debussy e Maeterlinck: Pelléas et Mélisande
+
+**Nodi introdotti:** `opera:debussy-pelleas-melisande-1902`, `pers:maurice-maeterlinck`, `opera:maeterlinck-pelleas-melisande-dramma`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L188-A01` | **H — documentato** | Debussy mette in musica il dramma Pelléas et Mélisande; l'opera debutta all'Opéra-Comique di Parigi il 30 aprile 1902. |
+| `L188-A02` | **H — documentato** | Maurice Maeterlinck è l'autore del dramma simbolista omonimo, fonte letteraria dell'opera di Debussy. |
+| `L188-A03` | **H — documentato** | L'opera di Debussy deriva dal dramma di Maeterlinck: due opere distinte, unite da un rapporto specifico di adattamento. |
+
+### Fonti esterne per rapporti specifici
+- https://archiviostorico.operaroma.it/opera/pelleas-e-melisanda-pelleas-et-melisande/
+- https://ccfr.bnf.fr/portailccfr/ark:/16871/004a1405482
+
+**Esclusioni e cautele:** La prima operistica del 1902 non è la data del dramma e le due opere non vengono fuse in un solo nodo.
+
+**Totale lotto:** 3 nuovi nodi; 3 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 189 — Poulenc, Bernanos e Gertrud von Le Fort: Dialogues des Carmélites
+
+**Nodi introdotti:** `opera:poulenc-dialogues-carmelites-1957`, `pers:georges-bernanos`, `pers:gertrud-von-le-fort`, `opera:bernanos-dialogues-carmelites`, `opera:le-fort-letzte-am-schafott-1931`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L189-A01` | **H — documentato** | Poulenc compone l'opera Dialogues des Carmélites e ne prepara il libretto a partire dal testo di Bernanos; prima assoluta alla Scala nel 1957. |
+| `L189-A02` | **H — documentato** | Bernanos scrive il testo drammatico dal quale Poulenc ricava e struttura il libretto, senza che Bernanos componga la musica. |
+| `L189-A03` | **H — documentato** | Gertrud von Le Fort è autrice della novella Die Letzte am Schafott del 1931, uno dei fondamenti letterari della vicenda. |
+| `L189-A04` | **H — documentato** | Il testo di Bernanos nasce da un progetto di sceneggiatura basato sulla novella di Gertrud von Le Fort; non sono opere identiche. |
+| `L189-A05` | **H — documentato** | Poulenc riduce e struttura come libretto il testo drammatico di Bernanos, senza limitarsi a intonare integralmente un libretto originariamente operistico. |
+
+### Fonti esterne per rapporti specifici
+- https://www.metopera.org/user-information/old-seasons/2022-23-season/2022-23-season/dialogues-des-carmelites/
+- https://www.metopera.org/globalassets/user-information/nightly-opera-streams/week-3/playbills/051119-dialogues-carmelites.pdf
+
+**Esclusioni e cautele:** Poulenc è librettista dell'opera a partire da Bernanos; Bernanos non è il compositore e la novella di Le Fort non è il libretto originale della prima scaligera.
+
+**Totale lotto:** 5 nuovi nodi; 5 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Lotto 190 — Berio e Mahler: Sinfonia e Scherzo della Seconda
+
+**Nodi introdotti:** `opera:berio-sinfonia-1968-69`, `opera:mahler-sinfonia-2-resurrezione`.
+
+| Arco | Stato | Precisazione storica |
+| --- | --- | --- |
+| `L190-A01` | **H — documentato** | Berio compone Sinfonia per otto voci e orchestra nel 1968 e ne realizza una revisione nel 1969. |
+| `L190-A02` | **H — documentato** | Gustav Mahler è l'autore della Seconda Sinfonia, detta Resurrezione, il cui terzo movimento è uno scherzo. |
+| `L190-A03` | **H — documentato** | Berio dichiara che il terzo movimento della propria Sinfonia utilizza quale struttura portante lo Scherzo, terzo movimento della Seconda Sinfonia di Mahler; non è un'interpretazione di tutta la sinfonia di Mahler. |
+| `L190-A04` | **H — documentato** | Sinfonia è dedicata da Luciano Berio a Leonard Bernstein: il rapporto è una dedica specifica, non coautorialità o esecuzione della prima. |
+
+### Fonti esterne per rapporti specifici
+- https://www.lucianoberio.org/en/program-note-work/sinfonia-authors-note/
+- https://www.lucianoberio.org/opera/sinfonia/
+
+**Esclusioni e cautele:** Nessuna presunta collaborazione diretta Berio–Mahler, morto prima della nascita di Berio; citazione/rielaborazione non equivalgono a composizione originale dello Scherzo.
+
+**Totale lotto:** 2 nuovi nodi; 4 nuovi archi. Nessuna sospensione riattivata.
+
+---
+
+## Bilancio dopo il Lotto 190
+
+- **Aggiunte:** 23 nodi e 30 archi storici specifici.
+- **Base risultante:** 698 nodi e 1654 archi.
+- **Indicatori distinti:** 522 flag di riscontro storico indipendente e 486 gate `riscontro_storico_indipendente`, non sommabili.
+- **Archi sospesi:** 125 immutati. Nessun ID duplicato, triplette duplicate o collegamento orfano.
+- **BFS simulata (I–V, filtri di rete ordinari)**: oltre il primo livello attraversa soltanto legami specifici fra persone e opere; non è una prova di incontro o influenza diretta.
+
+| Nodo iniziale | Prima I–V | Dopo I–V |
+| --- | --- | --- |
+| `pers:haydn` | 8 / 18 / 42 / 54 / 55 | 9 / 22 / 46 / 58 / 59 |
+| `pers:beethoven` | 19 / 37 / 45 / 52 / 57 | 21 / 40 / 49 / 56 / 61 |
+| `pers:schubert` | 5 / 5 / 5 / 5 / 5 | 6 / 7 / 9 / 10 / 11 |
+| `pers:mendelssohn` | 3 / 3 / 3 / 3 / 3 | 5 / 5 / 5 / 5 / 5 |
+| `pers:berlioz` | 4 / 6 / 13 / 25 / 37 | 5 / 9 / 17 / 29 / 41 |
+| `pers:mahler` | 2 / 2 / 2 / 2 / 2 | 4 / 6 / 10 / 13 / 22 |
+| `pers:r-strauss` | 3 / 3 / 3 / 3 / 3 | 4 / 5 / 6 / 6 / 6 |
+| `pers:debussy` | 6 / 11 / 18 / 31 / 44 | 7 / 13 / 21 / 34 / 47 |
+| `pers:poulenc` | 2 / 2 / 2 / 2 / 2 | 3 / 4 / 6 / 7 / 7 |
+| `pers:luciano-berio` | 1 / 2 / 5 / 8 / 8 | 2 / 5 / 10 / 20 / 23 |
+| `pers:johann-wolfgang-goethe` | 1 / 1 / 1 / 1 / 1 | 3 / 5 / 8 / 9 / 11 |
+| `pers:bernstein` | 4 / 10 / 12 / 13 / 14 | 5 / 13 / 17 / 20 / 25 |
+
+**Questioni editoriali:** fonti letterarie e musicali non vanno fuse; premiere, dedica e origine dell'idea sono date/funzioni distinte. Le osservazioni sono registrate per futuri interventi nelle pagine, non applicate ora.
+
+**Collaudo aperto:** visualizzazione reale 3D desktop/Android, etichette e profondità in browser. Nessun intervento all'interfaccia o al menu principale.
+
+
