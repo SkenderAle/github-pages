@@ -47,5 +47,15 @@ Atlantis diventerà la nuova interfaccia esplorativa di Musurgia Mundi, mantenen
 ### Prossima ripresa AUTOMATICA
 **Prosecuzione Fase 2 — convalida identità e spiegazioni**: esaminare le 509 persone già in staging (155 coincidenze nominali, 3 alias, 351 senza corrispondenza), mantenere separate 7 omonimie concettuali/editoriali, valutare 4 concetti. Poi convertire e confrontare le relazioni spiegate, successivamente patrimonio audiovisivo/editoriale e collaudo. Nessuna interfaccia pubblica da modificare fino alla certificazione.
 
+### Fase 2B — Aggiornamento successivo (8 novembre 2026)
+**Fatto e pubblicato su `main`, soltanto in `audit-integrazione/`:**
+- `VERIFICA_FORMALE_IDENTITA_2026-11-08.json` — controllo meccanico **509/509**: 155 match nominali; 3 alias; 351 senza match; **zero** duplicati di ID, nomi normalizzati e target proposti. Nessuna convalida storica automatica. Segnalati ID legacy `compositore-ottaviano-petrucci` e `compositore-goffredo-mameli` che hanno tipo corretto `persona`.
+- `CONVALIDA_ALIAS_2026-11-08.json` — convalidate **3 coppie d'identità** con fonti d'autorità indipendenti: Guillaume Dufay / Guillaume Du Fay; Frédéric / Fryderyk Chopin; Sergej Kusevickij / Serge Koussevitzky. **Nessuna fusione dei nodi** o degli archi eseguita.
+- `AUDIT_FASE2_TRIAGE_IDENTITA_2026-11-08.md` — verbale completo con riferimenti e limiti.
+- **Ancora da convalidare storicamente:** 155 candidati nominali e 351 record senza candidato. Nel crosswalk restano 4 concetti da valutare; 7 collisioni capitolo/periodo confermate separate.
+- **Produzione invariata:** grafo, interfaccia e JS pubblici non toccati. I 210 lotti storico-filologici restano intatti.
+
+**PROSSIMA RIPRESA AGGIORNATA:** confronto biografico effettivo dei 155 candidati nominali con i metadati Atlantis, poi controllo degli alias per i 351 nuovi. Preparare schema unione non distruttiva, quindi traduzione fedele di tutte le spiegazioni bidirezionali (comprese le eccezioni di `relationSentence`). Test radicati Mozart→Leopold, blocco di ponti generici, nessun capitolo nel grafo storico, hover/tap. Nessuna pubblicazione di grafo pubblico prima della certificazione.
+
 ### Protocollo di continuità
 Aggiornare questo thread/documento di ripresa ad ogni fase significativa, **prima** di raggiungere il limite della chat. In una nuova conversazione richiamare il file sopra anziché ricostruire a memoria. Non promettere di poter aprire automaticamente una nuova chat: il documento è il passaggio di consegne.
