@@ -2216,3 +2216,29 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - **Nota editoriale futura:** nel capitolo Opera lirica la storia delle revisioni di Don Carlos/Don Carlo (1867, 1884, 1886) richiede un paragrafo specifico, senza modifiche in questa fase; inoltre Wagner e Verdi non vanno ridotti a derivazioni automatiche.
 - **Lotti successivi suggeriti:** risolvere i candidati rimasti fra `L01-*`, `L06-*` e l'eventuale blocco di proposte editoriali, controllando `main` prima di ogni scrittura.
 
+
+### QA supplementare — revisione trasversale Lotti 40–49
+
+**Confronto del diff rispetto all'HEAD dopo Lotto 39:** esattamente **58 archi modificati**, tutti identificati come `L04-*` ancora candidati; nessuna modifica ai 608 nodi, nessun ID nuovo o rimosso. Sono rimaste intatte le 12 relazioni `L04-*` già convalidate nei lotti precedenti.
+
+**Integrità dati e navigazione:** 608 ID di nodo e 1.520 ID di arco distinti, 0 estremi orfani. Simulato l'algoritmo a cinque livelli presente in `musurgia-atlantis/index.html` con i filtri di default («trattazione» e «menzione»).
+
+| Nodo iniziale | Prima: livelli I–V | Dopo: livelli I–V |
+| --- | --- | --- |
+| Giuseppe Verdi | 13 / 6 / 1 / 2 / 1 | 22 / 15 / 16 / 3 / 1 |
+| Richard Wagner | 8 / 0 / 0 / 0 / 0 | 12 / 0 / 0 / 0 / 0 |
+| Goffredo Mameli | 1 / 0 / 0 / 0 / 0 | 2 / 3 / 14 / 11 / 11 |
+| Giuseppe Mazzini | 0 / 0 / 0 / 0 / 0 | 3 / 15 / 11 / 11 / 3 |
+| Grand opéra francese | 0 / 0 / 0 / 0 / 0 | 6 / 4 / 19 / 10 / 3 |
+| Don Carlos / Don Carlo (identità) | 0 / 0 / 0 / 0 / 0 | 6 / 22 / 10 / 3 / 3 |
+| Mozart | 13 / 4 / 3 / 3 / 5 | 13 / 4 / 3 / 3 / 5 |
+| Beethoven | 17 / 17 / 7 / 0 / 0 | 17 / 17 / 7 / 0 / 0 |
+
+I confronti non causali `L04-A05`, `A16`, `A23`, `A28`, `A35`, `A39`, `A44`, `A59`, `A61`, `A63`, `A64`, `A65`, `A66` sono già **non espandibili oltre il livello I** grazie al verbo generico `sviluppa_o_illumina`; i sospesi `A45`, `A67`, `A69` non entrano nella vista di default.
+
+**Criterio interpretativo:** due opere raggiunte passando dal medesimo compositore non sono per questo legate da una trasmissione tematica. Per esempio `Don Carlos → Verdi → La traviata` indica la paternità comune, non un prestito diretto fra le opere.
+
+**Limite:** questo test riproduce la logica dei percorsi sui dati JSON, non equivale all'esecuzione visuale del sito in browser reale su desktop e smartphone. Nessuna modifica a `musurgia-atlantis/index.html`, `compat-graph.js`, capitoli, menu o `PROTOCOLLO_AGGIORNAMENTI.json`.
+
+**Prossimo lotto da proporre (50):** ripartire dai **18** `candidato_non_fuso` rimasti nei blocchi `L01` e `L06`, senza rivedere gli archi L04 già chiusi; successivamente affrontare le 317 proposte editoriali ancora da verificare.
+
