@@ -1,0 +1,55 @@
+{
+  "schema": "musurgia-atlantis-authority-identity-v1",
+  "date": "2026-11-08",
+  "scope": "only the 3 alias candidates previously flagged",
+  "source": "STAGING_IMPORT_PERSONE_2026-11-08.json",
+  "formal_checks": "VERIFICA_FORMALE_IDENTITA_2026-11-08.json",
+  "validated_count": 3,
+  "merge_executed": false,
+  "production_unchanged": true,
+  "records": [
+    {
+      "source_id": "compositore-guillaume-dufay",
+      "atlantis_id": "pers:dufay",
+      "source_name": "Guillaume Dufay",
+      "atlantis_name": "Guillaume Du Fay",
+      "identity_status": "same_historical_person_authority_checked",
+      "decision": "identity_pair_validated_only_no_node_merge",
+      "evidence": [
+        "https://goethe.klassik-stiftung.de/de/objekt/gnd/118527924/",
+        "https://www.cambridge.org/core/books/guillaume-du-fay/C1FA92429F59A808EE02AE69BC1D76AE"
+      ],
+      "reason": "GND explicitly lists Du Fay / Guillaume Du Fay as name variants of the same composer. Biography in Cambridge corroborates historical referent.",
+      "retention": "preserve both original provenance records and conflicting fields until full union schema and relational migration approved"
+    },
+    {
+      "source_id": "compositore-frederic-chopin",
+      "atlantis_id": "pers:chopin",
+      "source_name": "Frédéric Chopin",
+      "atlantis_name": "Fryderyk Chopin",
+      "identity_status": "same_historical_person_authority_checked",
+      "decision": "identity_pair_validated_only_no_node_merge",
+      "evidence": [
+        "https://www.staatsoper.de/en/biographies/chopin-frederic",
+        "https://chopin.nifc.pl/en/chopin/osoba/1_chopin_fryderyk"
+      ],
+      "reason": "Bayerische Staatsoper explicitly explains that Fryderyk Franciszek is the Polish form and Frédéric the Parisian French form; NIFC confirms identity.",
+      "retention": "preserve both original provenance records and conflicting fields until full union schema and relational migration approved"
+    },
+    {
+      "source_id": "compositore-sergej-kusevickij",
+      "atlantis_id": "pers:serge-koussevitzky",
+      "source_name": "Sergej Kusevickij",
+      "atlantis_name": "Serge Koussevitzky",
+      "identity_status": "same_historical_person_authority_checked",
+      "decision": "identity_pair_validated_only_no_node_merge",
+      "evidence": [
+        "https://www.treccani.it/enciclopedia/sergej-aleksandrovic-kusevickij/",
+        "https://brockhaus.de/ecs/julex/article/koussevitzky-serge-alexandrowitsch",
+        "https://www.loc.gov/collections/serge-koussevitzky-archive/about-this-collection/"
+      ],
+      "reason": "Treccani uses Kusevickij for the same Russian conductor; Brockhaus explicitly equates Koussevitzky and Kusevickij, confirmed by the Library of Congress archive.",
+      "retention": "preserve both original provenance records and conflicting fields until full union schema and relational migration approved"
+    }
+  ]
+}
