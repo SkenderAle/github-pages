@@ -1866,3 +1866,15 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 
 **Lotto 40 suggerito:** esaminare i candidati residui `L04-*` per primo, preservando le distinzioni opera/versione, tradizioni e trattazioni effettive delle pagine.
 
+
+### Verifica supplementare dei percorsi multilivello e del diff — Lotti 35–39
+
+- Confronto file `grafo.json` prima/dopo i cinque lotti: **33 relazioni effettivamente modificate**, esattamente `L03-A02`…`L03-A50` secondo l'elenco puntuale dei cinque lotti; nessun nodo modificato, creato o eliminato.
+- Ricontrollate su blob remoto la sintassi, le cardinalità (**608 nodi, 1.520 archi**), l'unicità degli ID e l'assenza di estremi orfani.
+- Simulazione a cinque livelli dell'algoritmo attualmente in `musurgia-atlantis/index.html`, con filtri predefiniti «trattazione» e «menzione»: partendo da **Beethoven** i nodi per profondità passano da **11 / 7 / 6 / 0 / 0** a **17 / 17 / 7 / 0 / 0**, in ragione dei nuovi collegamenti espliciti alla sua opera.
+- **Mozart:** **13 / 4 / 3 / 3 / 5**, invariati; **Gluck:** **11 / 8 / 7 / 3 / 4**, invariati; **Rameau:** **7 / 0 / 0 / 0 / 0**, invariati.
+- Le sospensioni `L03-A44` e `L03-A48` non sono presenti nel filtro di default. Gli archi `L03-A38` e `L03-A39` sono confronti classificatori con verbo generico e non fungono da ponte oltre il livello I.
+- La navigazione può raggiungere altre opere dello stesso autore per il collegamento storico documentato attraverso la persona (es. Nona → Beethoven → Eroica). **Questo non è attestazione di influenza fra le due opere:** nel pannello occorre leggere il cammino effettivo e non interpretare qualunque vicinanza grafica come rapporto causale.
+- Rimane distinta la verifica del runtime 3D/WebGL e del fallback mobile su dispositivi reali, che non è stata effettuata durante i lotti.
+
+**Nuovo HEAD da controllare prima del Lotto 40:** riportare l'ultimo commit del registro presente su `main`; non ripetere le revisioni dei Lotti 35–39.
