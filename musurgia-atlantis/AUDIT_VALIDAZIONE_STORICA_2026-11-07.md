@@ -668,3 +668,62 @@ I controlli descritti sono **test algoritmici dei dati**, non collaudo grafico W
 - Campi `previous_quality_gate`, `previous_description`, `verification_note`, `evidence_urls`, `verification_status`, `verified_at` conservati/aggiunti su ogni arco.
 - **608 nodi**, **1.520 archi**, ID unici, estremi presenti, JSON parsabile; **149** quality-gate `riscontro_storico_indipendente`, **331** `proposta_editoriale_revisionata`, **296** `candidato_non_fuso`; **184** booleani `historical_verified_independently=true`.
 - Simulazione dei percorsi I–V e verifica della pubblicazione da eseguire sul remoto; non equivale a un collaudo visivo del renderer.
+
+
+---
+
+## Lotto 12 — 8 novembre 2026: otto attribuzioni dall'operetta a Broadway, un duplicato sospeso
+
+**Preflight:** `main` @ `a30c69403ae625248f61e3b2d43a5ad5456ac9a6` dopo Lotto 11. Ambito: soltanto otto relazioni già esistenti autore–opera e un candidato ridondante. Nessun nuovo nodo o arco; nessuna modifica a menu, capitoli, mappe o renderer.
+
+### Promozioni individuali
+
+| ID | Compositore → opera | Precisazione verificata |
+| --- | --- | --- |
+| `E0837` | Offenbach → *Orphée aux enfers* | Opéra-bouffon, prima 21 ottobre 1858 ai Bouffes-Parisiens; revisione ampliata e distinta del 1874 al Théâtre de la Gaîté. Libretto di Crémieux/Halévy. |
+| `E0840` | Johann Strauss II → *Die Fledermaus* | Operetta in tre atti, prima Theater an der Wien il 5 aprile 1874; libretto di Haffner/Genée. Non Johann Strauss I. |
+| `E0843` | Lehár → *Die lustige Witwe* | Operetta, prima al Theater an der Wien il 30 dicembre 1905. Testo di Victor Léon e Leo Stein. |
+| `E0845` | Sullivan → *The Mikado* | Prima al Savoy di Londra il 14 marzo 1885; testo di W. S. Gilbert. |
+| `E0848` | Eubie Blake → *Shuffle Along* | Musica e canzoni insieme a Noble Sissle, libro di Miller e Lyles; prima a Broadway il 23 maggio 1921; **non attribuire a Blake la paternità esclusiva**. |
+| `E0851` | Kern → *Show Boat* | Musical teatrale originale 1927, Hammerstein II per libretto e testi, dal romanzo di Edna Ferber. Film del 1936 distinto. |
+| `E0854` | Rodgers → *Oklahoma!* | Musical teatrale 1943, Hammerstein II autore di libretto e testi, Agnes de Mille coreografa. Film 1955 distinto. |
+| `E0857` | Bernstein → *West Side Story* | Musical teatrale, Broadway 26 settembre 1957; Laurents libretto, Sondheim testi, Robbins concezione/regia/coreografia. Film 1961 distinto. |
+
+Tutti e otto gli archi passano da `proposta_editoriale_revisionata` a `riscontro_storico_indipendente`, con `historical_verified_independently=true` e metadati precedenti conservati.
+
+### Duplicato non attivato
+
+`L06-A021` (Offenbach → *Orphée aux enfers*, `compone`) presenta gli stessi estremi di `E0837`: è **vero nel contenuto ma ridondante**. Passa da `candidato_non_fuso` a `sospeso`, `verification_status=ridondanza_di_arco_specifico` e `more_specific_edge=E0837`. La provenienza editoriale e il vecchio stato restano leggibili; non si crea una seconda relazione attiva per lo stesso fatto.
+
+### Fonti storiche
+
+- `E0837`: https://catalogue.bnf.fr/ark:/12148/cb13916735c ; https://collectionsdumusee.philharmoniedeparis.fr/0780615-orphee-aux-enfers-de-jacques-offenbach.aspx?_lg=fr-FR
+- `E0840`: https://www.wiener-staatsoper.at/kalender/detail/die-fledermaus/ ; https://www.staatsoper.de/en/productions/die-fledermaus ; https://marionetten.at/shows/die-fledermaus
+- `E0843`: https://archiviostorico.operaroma.it/operetta/la-vedova-allegra-die-lustige-witwe/ ; https://www.rohcollections.org.uk/work.aspx?work=1324
+- `E0845`: https://www.themorgan.org/music-manuscripts-and-printed-music/69133 ; https://www.doylycarte.org.uk/operas/the-mikado
+- `E0848`: https://nmaahc.si.edu/explore/stories/remembering-milestone-entertainment-history ; https://www.si.edu/object/love-will-find-way%3Anmaahc_2013.118.288
+- `E0851`: https://rodgersandhammerstein.com/show/show-boat/ ; https://www.ibdb.com/broadway-show/show-boat-7970
+- `E0854`: https://www.pbs.org/wnet/broadway/shows/oklahoma/ ; https://rodgersandhammerstein.com/song/oklahoma/oklahoma/
+- `E0857`: https://www.loc.gov/exhibits/westsidestory/westsidestory-overview.html ; https://leonardbernstein.com/works/view/9/west-side-story ; https://www.ibdb.com/broadway-production/west-side-story-2639
+
+### Integrità, navigazione e limiti
+
+- **608 nodi**, **1.520 relazioni**, nessun ID duplicato, nessun estremo orfano, JSON serializzato e riparsato.
+- `riscontro_storico_indipendente` = **157**, `candidato_non_fuso` = **295**, `proposta_editoriale_revisionata` = **323**, `sospeso` = **43**.
+- Totale booleano distinto `historical_verified_independently=true` = **192**.
+- Simulazione rooted-BFS su dati con soli `trattazione` e `menzione`; dalla profondità II esclusi ponti per capitoli e relazioni generiche; numeri = nuovi nodi raggiunti a I–V:
+
+| Radice | Prima I / II / III / IV / V | Dopo I / II / III / IV / V |
+| --- | --- | --- |
+| Jacques Offenbach | 4 / 0 / 0 / 0 / 0 | 5 / 0 / 0 / 0 / 0 |
+| Johann Strauss figlio | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Eubie Blake | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Jerome Kern | 2 / 0 / 0 / 0 / 0 | 3 / 1 / 1 / 1 / 0 |
+| Richard Rodgers | 2 / 0 / 0 / 0 / 0 | 3 / 1 / 1 / 1 / 0 |
+| Leonard Bernstein | 3 / 0 / 0 / 0 / 0 | 4 / 2 / 0 / 0 / 0 |
+
+- I test di percorribilità sui dati **non** costituiscono collaudo visivo tridimensionale WebGL/Canvas.
+
+### Lotto successivo
+
+**Lotto 13:** proseguire con attribuzioni musica/teatro e cinema (`Psycho`, `Star Wars`, Morricone, Disney) e riesaminare i restanti rapporti storici duplicati o editoriali senza inferire genealogie per contiguità stilistica.
