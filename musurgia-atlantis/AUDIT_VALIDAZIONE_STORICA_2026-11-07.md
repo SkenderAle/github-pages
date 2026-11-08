@@ -1048,3 +1048,64 @@ Rimangono archi di contenuto a *Shuffle Along* e ai collaboratori storici del mu
 - Quality gate: **196** `riscontro_storico_indipendente`, **250** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **38** `confronto_non_causale`, **44** `sospeso`.
 - Flag booleano distinto `historical_verified_independently=true`: **231**.
 - Restano necessari controllo sul remoto e regressione dei percorsi I–V. Non è stato effettuato un test browser 3D.
+
+
+---
+
+## Lotto 20 — 8 novembre 2026: quattro rapporti documentati fra musicisti
+
+**Preflight:** `main` @ `da3c786b9a8eaa4fc76045df5d8621eb11518e99`, dopo Lotto 19. Soltanto i quattro archi `L08-A010`–`L08-A013` vengono aggiornati: nessuna creazione di nodi o relazioni, nessuna modifica a pagine, menu, protocolli, sincronizzazione o grafica.
+
+| ID | Decisione | Relazione specifica verificata |
+| --- | --- | --- |
+| `L08-A010` | **riscontro_storico_indipendente** | Andrea Gabrieli, organista della basilica di San Marco, è zio e maestro di Giovanni Gabrieli. Il rapporto comprende formazione e trasmissione della prassi compositiva veneziana; Giovanni fu attivo anche presso la corte bavarese ed elaborò poi una propria opera autonoma. Non deriva da questo arco un'invenzione individuale di tutta la policoralità. |
+| `L08-A011` | **riscontro_storico_indipendente** | Alessandro Scarlatti, padre di Domenico, ne orienta le prime scelte professionali e formative: dopo la fase napoletana lo conduce verso Roma e nel 1705 lo invia a Venezia, affidandolo al maestro Francesco Gasparini. Sebbene Domenico sia tradizionalmente definito allievo del padre, non è documentalmente certo chi abbia impartito tutte le sue prime lezioni. Non si convalida un arco di insegnamento diretto continuativo. |
+| `L08-A012` | **riscontro_storico_indipendente** | Robert Schumann e Clara Wieck Schumann sviluppano un rapporto artistico di confronto e collaborazione, oltre al matrimonio. Clara è pianista, compositrice autonoma e interprete di opere di Robert; produce anche trascrizioni e, dopo la morte del marito nel 1856, cura la pubblicazione delle sue opere con l'aiuto di altri musicisti, tra cui Brahms. Non attribuire a Robert le composizioni originali di Clara né fare di Clara una semplice mediatrice passiva. |
+| `L08-A013` | **riscontro_storico_indipendente** | George Gershwin e Ira Gershwin collaborano professionalmente come compositore delle musiche e autore dei testi delle canzoni, rispettivamente; Lady, Be Good! (1924) è il loro primo musical completo scritto insieme. La coppia scrive repertori teatrali, canzoni e lavori per il cinema, ma ciascun fratello collaborò anche con altri autori e le singole opere richiedono attributi propri. |
+
+### Cautela storiografica essenziale
+
+L'arco **Alessandro Scarlatti → Domenico Scarlatti** non è mantenuto sotto la formula preesistente «insegnamento_documentato»: Treccani e gli studi documentano il rapporto di padre/figlio, il percorso di carriera organizzato da Alessandro e il trasferimento formativo a Francesco Gasparini nel 1705, ma non dimostrano ogni fase del suo insegnamento diretto iniziale. La relazione diventa `orienta_formazione_e_carriera_di`, **riscontro storico circoscritto e testabile**, senza inventare lezioni dirette continuative.
+
+Anche il rapporto Robert–Clara Schumann è formulato con precisione cronologica: si distinguono collaborazione artistica durante la vita di Robert, interpretazioni pianistiche autonome di Clara, sue composizioni proprie e l'edizione delle opere di Robert curata **dopo la morte** del marito (1856). Andrea–Giovanni Gabrieli è invece un rapporto maestro–allievo documentato, e George–Ira Gershwin è una collaborazione professionale compositore–paroliere, non una genealogia familiare generica.
+
+### Fonti di verifica
+
+- oxGab: https://academic.oup.com/reference/62400/reference-article-abstract/571523757
+- treGab: https://www.treccani.it/enciclopedia/giovanni-gabrieli/
+- treDomenico: https://www.treccani.it/enciclopedia/domenico-scarlatti/
+- treHistory: https://www.treccani.it/enciclopedia/domenico-scarlatti_%28Enciclopedia-Italiana%29/
+- oxDomenico: https://academic.oup.com/reference/62400/reference-article-abstract/555402496?login=false
+- locClara: https://guides.loc.gov/clara-schumann
+- locClaraScores: https://guides.loc.gov/clara-schumann/published-scores
+- camClara: https://www.cambridge.org/core/books/abs/clara-and-robert-schumann-in-context/editing-and-publishing/D244E51C1DF116496D8DF2446560136F
+- lincolnClara: https://chambermusicsociety.org/about-the-music/composers/clara-schumann
+- locGershwin: https://www.loc.gov/collections/george-and-ira-gershwin-treasures/about-this-collection/
+- gershwinOfficial: https://gershwin.com/the-gershwin-brothers/
+- locGershwinArchive: https://findingaids.loc.gov/repositories/15/resources/6841
+
+### Invarianti e prova I–V
+
+- 608 nodi, 1.520 archi; JSON serializzato/riparsato, ID unici, nessun estremo orfano.
+- `riscontro_storico_indipendente`: **200**; `candidato_non_fuso`: **246**; `proposta_editoriale_revisionata`: **317**; `confronto_non_causale`: **38**; `sospeso`: **44**.
+- Booleano storico `historical_verified_independently=true`: **235**; diverso da quality gate.
+- Simulazione data-driven dei livelli I–V con soli filtri `trattazione`/`menzione` e parentela radicata, evitando i ponti capitolo/relazione generica oltre I livello. I numeri sono **nuovi nodi**, non somma cumulativa.
+
+| Radice | Prima I / II / III / IV / V | Dopo I / II / III / IV / V |
+| --- | --- | --- |
+| Andrea Gabrieli | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Giovanni Gabrieli | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Alessandro Scarlatti | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Domenico Scarlatti | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Robert Schumann | 2 / 0 / 0 / 0 / 0 | 3 / 0 / 0 / 0 / 0 |
+| Clara Schumann | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| George Gershwin | 2 / 0 / 0 / 0 / 0 | 3 / 0 / 0 / 0 / 0 |
+| Ira Gershwin | 1 / 0 / 0 / 0 / 0 | 2 / 0 / 0 / 0 / 0 |
+| Shuffle Along | 6 / 1 / 0 / 0 / 0 | 6 / 1 / 0 / 0 / 0 |
+| Shuffle Along, prima produzione Broadway 1921 | 2 / 4 / 0 / 0 / 0 | 2 / 4 / 0 / 0 / 0 |
+
+**Limite:** test sui dati; collaudo visuale 3D nel browser ancora da svolgere. Lo stato del remoto e il registro vanno riverificati dopo il commit.
+
+### Lotti successivi
+
+Procedere per gruppi di relazioni tra tradizioni dell'operetta e figure documentate, o di trasmissione e prassi dalla notazione medievale alla policoralità rinascimentale, senza fondere generi o epoche per analogia.
