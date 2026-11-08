@@ -1,0 +1,1989 @@
+{
+  "schema": "musurgia-atlantis-fase2L-lotto10-review-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "scope": "STAGING ONLY groups 181..200, no public mutation",
+  "source_index": {
+    "path": "musurgia-atlantis/audit-integrazione/CANDIDATI_COLLISIONI_ARCHI_FASE2K_2026-11-08.json",
+    "sha": "074ae790819d7210da12e4c798e8d1dd2fad17e2"
+  },
+  "counts": {
+    "source_groups_total": 250,
+    "previously_classified": 180,
+    "groups_in_lotto": 20,
+    "cumulative_classified": 200,
+    "remaining": 50,
+    "records_preserved": 40,
+    "base_records": 20,
+    "specialist_records": 20
+  },
+  "entries": [
+    {
+      "group_number": 181,
+      "mapped_pair": "legacy:gruppo-dei-cinque|pers:cezar-cui",
+      "classification": "russian_five_member_and_critic",
+      "analysis": "Cezar' Cui fu membro storico del Gruppo dei Cinque, insieme compositore e critico. La sua appartenenza al sodalizio non implica omogeneità stilistica o che ogni controversia critica equivalga a collaborazione personale.",
+      "guardrails": "membro reale distinto dagli altri quattro; non generare archi Cui→tutti tramite il gruppo",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1582,
+          "stage_id": "base2K:1583",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:cezar-cui",
+          "target_mapped": "legacy:gruppo-dei-cinque",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-cezar-cui",
+            "target": "gruppo-dei-cinque",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «Gruppo dei Cinque». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/cezar-antonovic-cui/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «Gruppo dei Cinque». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/cezar-antonovic-cui/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 171,
+          "stage_id": "special2K:scuola-dei-cinque-cezar-cui",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:gruppo-dei-cinque",
+          "target_mapped": "pers:cezar-cui",
+          "kind": "critico-e-compositore-del-gruppo",
+          "raw_payload": {
+            "id": "scuola-dei-cinque-cezar-cui",
+            "group": "scuole",
+            "source": "gruppo-dei-cinque",
+            "target": "compositore-cezar-cui",
+            "kind": "critico-e-compositore-del-gruppo",
+            "forward": "annoverò fra i membri e critici",
+            "reverse": "fu membro e critico musicale del",
+            "note": "Cezar Cui, compositore e critico musicale, era il quinto membro del sodalizio; le sue posizioni pubbliche e il suo stile non coincidono esattamente con quelli degli altri.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-cinque/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "sodalizio-effettivo",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "original_forward": "annoverò fra i membri e critici",
+          "original_reverse": "fu membro e critico musicale del",
+          "original_note": "Cezar Cui, compositore e critico musicale, era il quinto membro del sodalizio; le sue posizioni pubbliche e il suo stile non coincidono esattamente con quelli degli altri.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/gruppo-dei-cinque/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "annoverò fra i membri e critici",
+            "reverse_fragment": "fu membro e critico musicale del",
+            "original_speaker_orientation": [
+              "gruppo-dei-cinque",
+              "compositore-cezar-cui"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 182,
+      "mapped_pair": "legacy:gruppo-dei-sei|pers:georges-auric",
+      "classification": "six_french_auric_member",
+      "analysis": "Georges Auric fu uno dei Sei, e lavorò anche per cinema e teatro; la partecipazione a un gruppo non autorizza a far confluire tutte le colonne sonore dei membri nella stessa «scuola» musicale.",
+      "guardrails": "separare appartenenza ai Six e attività cinematografica",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1585,
+          "stage_id": "base2K:1586",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:georges-auric",
+          "target_mapped": "legacy:gruppo-dei-sei",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-georges-auric",
+            "target": "gruppo-dei-sei",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «gruppo dei Sei». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/georges-auric_%28Enciclopedia-del-Cinema%29/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «gruppo dei Sei». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/georges-auric_%28Enciclopedia-del-Cinema%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 178,
+          "stage_id": "special2K:scuola-dei-sei-georges-auric",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:gruppo-dei-sei",
+          "target_mapped": "pers:georges-auric",
+          "kind": "membro-del-gruppo",
+          "raw_payload": {
+            "id": "scuola-dei-sei-georges-auric",
+            "group": "scuole",
+            "source": "gruppo-dei-sei",
+            "target": "compositore-georges-auric",
+            "kind": "membro-del-gruppo",
+            "forward": "annoverò tra i propri membri",
+            "reverse": "fece parte del gruppo",
+            "note": "Georges Auric era fra i sei autori francesi indicati da Collet; collaborò anche alla modernità teatrale e cinematografica.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "gruppo-storico-documentato",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "original_forward": "annoverò tra i propri membri",
+          "original_reverse": "fece parte del gruppo",
+          "original_note": "Georges Auric era fra i sei autori francesi indicati da Collet; collaborò anche alla modernità teatrale e cinematografica.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "annoverò tra i propri membri",
+            "reverse_fragment": "fece parte del gruppo",
+            "original_speaker_orientation": [
+              "gruppo-dei-sei",
+              "compositore-georges-auric"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 183,
+      "mapped_pair": "legacy:gruppo-dei-sei|pers:louis-durey",
+      "classification": "six_french_durey_member",
+      "analysis": "Louis Durey fu uno dei Sei ma mantenne percorsi e interessi autonomi. Non retrodatare o prolungare una collaborazione continuativa sulla base dell'etichetta collettiva.",
+      "guardrails": "il gruppo non equivale a un sodalizio permanente con relazioni personali universali",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1587,
+          "stage_id": "base2K:1588",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:louis-durey",
+          "target_mapped": "legacy:gruppo-dei-sei",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-louis-durey",
+            "target": "gruppo-dei-sei",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «gruppo dei Sei». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/louis-durey/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «gruppo dei Sei». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/louis-durey/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 179,
+          "stage_id": "special2K:scuola-dei-sei-louis-durey",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:gruppo-dei-sei",
+          "target_mapped": "pers:louis-durey",
+          "kind": "membro-del-gruppo",
+          "raw_payload": {
+            "id": "scuola-dei-sei-louis-durey",
+            "group": "scuole",
+            "source": "gruppo-dei-sei",
+            "target": "compositore-louis-durey",
+            "kind": "membro-del-gruppo",
+            "forward": "annoverò tra i propri membri",
+            "reverse": "fece parte del gruppo",
+            "note": "Louis Durey fu uno dei sei compositori del gruppo, pur proseguendo una traiettoria personale nell'attività critica e nella musica vocale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "gruppo-storico-documentato",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "original_forward": "annoverò tra i propri membri",
+          "original_reverse": "fece parte del gruppo",
+          "original_note": "Louis Durey fu uno dei sei compositori del gruppo, pur proseguendo una traiettoria personale nell'attività critica e nella musica vocale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "annoverò tra i propri membri",
+            "reverse_fragment": "fece parte del gruppo",
+            "original_speaker_orientation": [
+              "gruppo-dei-sei",
+              "compositore-louis-durey"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 184,
+      "mapped_pair": "legacy:gruppo-dei-sei|pers:germaine-tailleferre",
+      "classification": "six_french_tailleferre_member",
+      "analysis": "Germaine Tailleferre fu l'unica donna del Gruppo dei Sei, compositrice con identità autonoma. Evitare marginalizzazione e trattare le opere in modo non derivativo dagli altri membri.",
+      "guardrails": "identità e produzione individuale; nessuna falsa fusione con colleghi",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1588,
+          "stage_id": "base2K:1589",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:germaine-tailleferre",
+          "target_mapped": "legacy:gruppo-dei-sei",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-germaine-tailleferre",
+            "target": "gruppo-dei-sei",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «gruppo dei Sei». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/marcelle-germaine-tailleferre/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «gruppo dei Sei». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/marcelle-germaine-tailleferre/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 180,
+          "stage_id": "special2K:scuola-dei-sei-germaine-tailleferre",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:gruppo-dei-sei",
+          "target_mapped": "pers:germaine-tailleferre",
+          "kind": "membro-del-gruppo",
+          "raw_payload": {
+            "id": "scuola-dei-sei-germaine-tailleferre",
+            "group": "scuole",
+            "source": "gruppo-dei-sei",
+            "target": "compositore-germaine-tailleferre",
+            "kind": "membro-del-gruppo",
+            "forward": "annoverò tra i propri membri",
+            "reverse": "fece parte del gruppo",
+            "note": "Germaine Tailleferre era l'unica donna del Gruppo dei Sei e partecipò ai suoi esperimenti negli anni del primo dopoguerra.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "gruppo-storico-documentato",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "original_forward": "annoverò tra i propri membri",
+          "original_reverse": "fece parte del gruppo",
+          "original_note": "Germaine Tailleferre era l'unica donna del Gruppo dei Sei e partecipò ai suoi esperimenti negli anni del primo dopoguerra.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/gruppo-dei-sei/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "annoverò tra i propri membri",
+            "reverse_fragment": "fece parte del gruppo",
+            "original_speaker_orientation": [
+              "gruppo-dei-sei",
+              "compositore-germaine-tailleferre"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 185,
+      "mapped_pair": "legacy:scuola-napoletana|pers:gennaro-manna",
+      "classification": "manna_neapolitan_institution_specific",
+      "analysis": "Gennaro Manna operò nell'opera seria napoletana e in istituzioni formative; dal 1755 alla Santa Maria di Loreto risulta un incarico in collaborazione con Pietro Antonio Gallo. Non fondere genericamente i ruoli di conservatorio e teatro.",
+      "guardrails": "distinguere conservatorio Sant'Onofrio, Santa Maria di Loreto, teatri e date delle cariche; fonte DBI",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1611,
+          "stage_id": "base2K:1612",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:gennaro-manna",
+          "target_mapped": "legacy:scuola-napoletana",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-gennaro-manna",
+            "target": "scuola-napoletana",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «scuola napoletana». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/manna_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «scuola napoletana». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/manna_%28Dizionario-Biografico%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 607,
+          "stage_id": "special2K:audit7-manna-napoli",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+          "source_snapshot_sha": "80124aa47bd0b514d83b360879c95f79627cb9be",
+          "source_mapped": "legacy:scuola-napoletana",
+          "target_mapped": "pers:gennaro-manna",
+          "kind": "pratica-operistica-e-magistero-napoletano",
+          "raw_payload": {
+            "id": "audit7-manna-napoli",
+            "group": "scuole",
+            "source": "scuola-napoletana",
+            "target": "compositore-gennaro-manna",
+            "kind": "pratica-operistica-e-magistero-napoletano",
+            "forward": "ebbe fra i suoi maestri di teatro e composizione",
+            "reverse": "si formò e contribuì al repertorio operistico della",
+            "note": "Gennaro Manna si formò nel Conservatorio di Sant'Onofrio a Napoli e fu compositore di opere serie, tra cui Tito Manlio (1742) e Achille in Sciro per il San Carlo (1745). Insegnò inoltre a Santa Maria di Loreto dopo Francesco Durante. L'arco riguarda la tradizione operistica napoletana, senza confonderla con il distinto nodo sul partimento.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/manna_%28Dizionario-Biografico%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "formazione-e-teatro-napoletano",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "annoverò tra i suoi protagonisti operistici",
+              "prior_reverse": "compose opere e svolse attività didattica entro la",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "original_forward": "ebbe fra i suoi maestri di teatro e composizione",
+          "original_reverse": "si formò e contribuì al repertorio operistico della",
+          "original_note": "Gennaro Manna si formò nel Conservatorio di Sant'Onofrio a Napoli e fu compositore di opere serie, tra cui Tito Manlio (1742) e Achille in Sciro per il San Carlo (1745). Insegnò inoltre a Santa Maria di Loreto dopo Francesco Durante. L'arco riguarda la tradizione operistica napoletana, senza confonderla con il distinto nodo sul partimento.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/manna_%28Dizionario-Biografico%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "ebbe fra i suoi maestri di teatro e composizione",
+            "reverse_fragment": "si formò e contribuì al repertorio operistico della",
+            "original_speaker_orientation": [
+              "scuola-napoletana",
+              "compositore-gennaro-manna"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [
+        {
+          "url": "https://www.treccani.it/enciclopedia/manna_%28Dizionario-Biografico%29/",
+          "finding": "Gennaro Manna, Loreto interim maestro 1755 and later secondary role; distinction of institutions",
+          "status": "biographical_specific_confirmed"
+        }
+      ],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 186,
+      "mapped_pair": "legacy:grand-opera|pers:halevy",
+      "classification": "grand_opera_halevy_specific_work",
+      "analysis": "Halévy e La Juive (1835) sono un episodio specifico del grand opéra francese. Non trasformare il suo rapporto con il genere in una relazione diretta implicita con Auber e Meyerbeer.",
+      "guardrails": "La Juive: autore, titolo, data e funzione; genere non è ponte fra compositori",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1613,
+          "stage_id": "base2K:1614",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:halevy",
+          "target_mapped": "legacy:grand-opera",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-fromental-halevy",
+            "target": "grand-opera",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «grand opéra». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/jacques-francois-fromental-elie-levy-detto-halevy/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «grand opéra». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/jacques-francois-fromental-elie-levy-detto-halevy/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 579,
+          "stage_id": "special2K:audit3-grandopera-halevy",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE02_2026-11-08.json",
+          "source_snapshot_sha": "d1516f1681e4d5fd13f4da6b96c11228823300ff",
+          "source_mapped": "legacy:grand-opera",
+          "target_mapped": "pers:halevy",
+          "kind": "esponente-del-genere",
+          "raw_payload": {
+            "id": "audit3-grandopera-halevy",
+            "group": "genealogie",
+            "source": "grand-opera",
+            "target": "compositore-fromental-halevy",
+            "kind": "esponente-del-genere",
+            "forward": "ebbe fra i principali interpreti",
+            "reverse": "contribuì al genere con La Juive (1835)",
+            "note": "La Juive (1835) di Halévy è una delle opere emblematiche del grand opéra francese, genere di grande dimensione spettacolare e impiego esteso di orchestra, cori e balletto; Treccani annovera Halévy fra i maggiori esponenti.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/grand-opera/",
+              "https://www.treccani.it/enciclopedia/il-grand-opera_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "original_forward": "ebbe fra i principali interpreti",
+          "original_reverse": "contribuì al genere con La Juive (1835)",
+          "original_note": "La Juive (1835) di Halévy è una delle opere emblematiche del grand opéra francese, genere di grande dimensione spettacolare e impiego esteso di orchestra, cori e balletto; Treccani annovera Halévy fra i maggiori esponenti.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/grand-opera/",
+            "https://www.treccani.it/enciclopedia/il-grand-opera_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "ebbe fra i principali interpreti",
+            "reverse_fragment": "contribuì al genere con La Juive (1835)",
+            "original_speaker_orientation": [
+              "grand-opera",
+              "compositore-fromental-halevy"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 187,
+      "mapped_pair": "legacy:musica-per-film-novecento|pers:morricone",
+      "classification": "morricone_film_music_not_direct_tutorship",
+      "analysis": "Morricone compose per il cinema italiano e internazionale con poetiche e tecniche articolate; il nodo cinema non prova rapporti di influenza, amicizia o insegnamento diretti con gli altri compositori di colonne sonore.",
+      "guardrails": "nessun shortcut Steiner→Morricone→Williams attraverso «musica per film»",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1619,
+          "stage_id": "base2K:1620",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:morricone",
+          "target_mapped": "legacy:musica-per-film-novecento",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-ennio-morricone",
+            "target": "musica-per-film-novecento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «colonne sonore». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/ennio-morricone/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «colonne sonore». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/ennio-morricone/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 1282,
+          "stage_id": "special2K:integr20261018-cinema-morricone",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+          "source_snapshot_sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+          "source_mapped": "legacy:musica-per-film-novecento",
+          "target_mapped": "pers:morricone",
+          "kind": "musica-per-cinema",
+          "raw_payload": {
+            "id": "integr20261018-cinema-morricone",
+            "group": "scuole",
+            "source": "musica-per-film-novecento",
+            "target": "compositore-ennio-morricone",
+            "kind": "musica-per-cinema",
+            "forward": "comprende la scrittura per il cinema italiano e internazionale di",
+            "reverse": "compose colonne sonore e sperimentò timbri originali nel contesto della",
+            "note": "L'opera di Morricone attraversa il cinema italiano e internazionale; questa affiliazione non sostiene un rapporto diretto di insegnamento con gli altri compositori della categoria.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/musica-e-cinema_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "composizione-cinematografica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "include la scrittura cinematografica di",
+              "prior_reverse": "compose musiche per",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "original_forward": "comprende la scrittura per il cinema italiano e internazionale di",
+          "original_reverse": "compose colonne sonore e sperimentò timbri originali nel contesto della",
+          "original_note": "L'opera di Morricone attraversa il cinema italiano e internazionale; questa affiliazione non sostiene un rapporto diretto di insegnamento con gli altri compositori della categoria.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/musica-e-cinema_%28Enciclopedia-Italiana%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "comprende la scrittura per il cinema italiano e internazionale di",
+            "reverse_fragment": "compose colonne sonore e sperimentò timbri originali nel contesto della",
+            "original_speaker_orientation": [
+              "musica-per-film-novecento",
+              "compositore-ennio-morricone"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 188,
+      "mapped_pair": "legacy:camerata-fiorentina|pers:vincenzo-galilei",
+      "classification": "galilei_bardi_distinct_from_corsi",
+      "analysis": "Vincenzo Galilei è figura centrale nei dibattiti della Camerata de' Bardi e nella riscoperta della declamazione monodica. La cerchia Bardi non coincide con l'ambiente di Jacopo Corsi successivo: non attribuire alla sola Camerata la nascita dell'opera.",
+      "guardrails": "Bardi e Corsi due reti distinte, non un identico nodo",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1627,
+          "stage_id": "base2K:1628",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:vincenzo-galilei",
+          "target_mapped": "legacy:camerata-fiorentina",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-vincenzo-galilei",
+            "target": "camerata-fiorentina",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «Camerata fiorentina». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «Camerata fiorentina». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 1234,
+          "stage_id": "special2K:audit23-camerata-vincenzo-galilei",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+          "source_snapshot_sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+          "source_mapped": "legacy:camerata-fiorentina",
+          "target_mapped": "pers:vincenzo-galilei",
+          "kind": "ideologo-e-praticante-monodia-camerata",
+          "raw_payload": {
+            "id": "audit23-camerata-vincenzo-galilei",
+            "group": "scuole",
+            "source": "camerata-fiorentina",
+            "target": "compositore-vincenzo-galilei",
+            "kind": "ideologo-e-praticante-monodia-camerata",
+            "forward": "annoverarono fra i teorici della prima cerchia legata a Bardi",
+            "reverse": "partecipò come teorico alla cerchia di Bardi, distinta dal successivo ambiente di Corsi nella voce",
+            "note": "Treccani presenta Vincenzo Galilei come principale ideologo della Camerata fiorentina, autore di scritti e sperimentazioni monodiche che tradussero in pratica le discussioni sul rapporto fra parola e musica.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "ideazione-monodia-camerata",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "include fra le figure teoriche e musicali centrali",
+              "prior_reverse": "partecipò come figura teorica centrale a",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            },
+            "linguistic_review": {
+              "date": "2026-10-20",
+              "batch": "scuole-frasi-terza-lettura-20261020",
+              "prior_forward": "ebbe fra i principali teorici della monodia accompagnata",
+              "prior_reverse": "partecipò come teorico agli esperimenti musicali della",
+              "purpose": "Chiarezza grammaticale e delle distinzioni già descritte nelle note e fonti",
+              "change_scope": "forward/reverse"
+            }
+          },
+          "original_forward": "annoverarono fra i teorici della prima cerchia legata a Bardi",
+          "original_reverse": "partecipò come teorico alla cerchia di Bardi, distinta dal successivo ambiente di Corsi nella voce",
+          "original_note": "Treccani presenta Vincenzo Galilei come principale ideologo della Camerata fiorentina, autore di scritti e sperimentazioni monodiche che tradussero in pratica le discussioni sul rapporto fra parola e musica.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "annoverarono fra i teorici della prima cerchia legata a Bardi",
+            "reverse_fragment": "partecipò come teorico alla cerchia di Bardi, distinta dal successivo ambiente di Corsi nella voce",
+            "original_speaker_orientation": [
+              "camerata-fiorentina",
+              "compositore-vincenzo-galilei"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 189,
+      "mapped_pair": "legacy:tradizione-trovatori-occitani|pers:bernart-de-ventadorn",
+      "classification": "occitan_troubadour_ventadorn",
+      "analysis": "Bernart de Ventadorn è autore della tradizione poetico-musicale dei trovatori in lingua d'oc, in particolare della canso. Una comune lingua/tradizione non comprova un incontro con la Comtessa de Dia.",
+      "guardrails": "tradizione occitana ≠ filiazione diretta o contemporaneità verificata",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1630,
+          "stage_id": "base2K:1631",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:bernart-de-ventadorn",
+          "target_mapped": "legacy:tradizione-trovatori-occitani",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-bernart-de-ventadorn",
+            "target": "tradizione-trovatori-occitani",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «Trovatore occitano». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/bernardo-di-ventadorn/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «Trovatore occitano». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/bernardo-di-ventadorn/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 1283,
+          "stage_id": "special2K:integr20261018-trovatori-bernart",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+          "source_snapshot_sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+          "source_mapped": "legacy:tradizione-trovatori-occitani",
+          "target_mapped": "pers:bernart-de-ventadorn",
+          "kind": "canso-occitana",
+          "raw_payload": {
+            "id": "integr20261018-trovatori-bernart",
+            "group": "scuole",
+            "source": "tradizione-trovatori-occitani",
+            "target": "compositore-bernart-de-ventadorn",
+            "kind": "canso-occitana",
+            "forward": "comprende le canzoni in lingua d'oc tramandate per",
+            "reverse": "compose canso nell'ambito della",
+            "note": "Bernart de Ventadorn è documentato come trovatore provenzale; il nodo segnala appartenenza culturale, non una filiazione pedagogica.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/bernardo-di-ventadorn/",
+              "https://www.treccani.it/enciclopedia/trovatore/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "tradizione-trobadorica-occitana",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "comprende la produzione poetico-musicale di",
+              "prior_reverse": "partecipò alla tradizione della",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "original_forward": "comprende le canzoni in lingua d'oc tramandate per",
+          "original_reverse": "compose canso nell'ambito della",
+          "original_note": "Bernart de Ventadorn è documentato come trovatore provenzale; il nodo segnala appartenenza culturale, non una filiazione pedagogica.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/bernardo-di-ventadorn/",
+            "https://www.treccani.it/enciclopedia/trovatore/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "comprende le canzoni in lingua d'oc tramandate per",
+            "reverse_fragment": "compose canso nell'ambito della",
+            "original_speaker_orientation": [
+              "tradizione-trovatori-occitani",
+              "compositore-bernart-de-ventadorn"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 190,
+      "mapped_pair": "legacy:tradizione-trovatori-occitani|pers:comtessa-de-dia",
+      "classification": "trobairitz_countess_dia_identity_guard",
+      "analysis": "La Comtessa de Dia è una trobairitz; Treccani documenta che l'identificazione biografica è incerta e che si conserva musica per un solo canto, A chantar m'er de so qu'eu no volria. Non attribuire automaticamente un'identità aristocratica univoca né altre melodie.",
+      "guardrails": "IDENTITÀ INCERTA; testimonianze poetico-musicali non sono genealogie personali",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1631,
+          "stage_id": "base2K:1632",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:comtessa-de-dia",
+          "target_mapped": "legacy:tradizione-trovatori-occitani",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-comtessa-de-dia",
+            "target": "tradizione-trovatori-occitani",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «Trobairitz occitana». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.rialto.unina.it/vidas_componimento/vida-della-contessa-di-dia/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «Trobairitz occitana». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.rialto.unina.it/vidas_componimento/vida-della-contessa-di-dia/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 1284,
+          "stage_id": "special2K:integr20261018-trovatori-dia",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+          "source_snapshot_sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+          "source_mapped": "legacy:tradizione-trovatori-occitani",
+          "target_mapped": "pers:comtessa-de-dia",
+          "kind": "trobairitz-occitana",
+          "raw_payload": {
+            "id": "integr20261018-trovatori-dia",
+            "group": "scuole",
+            "source": "tradizione-trovatori-occitani",
+            "target": "compositore-comtessa-de-dia",
+            "kind": "trobairitz-occitana",
+            "forward": "comprende le canso della trobairitz ricordata come",
+            "reverse": "compose canzoni d'amore in lingua d'oc nell'ambito della",
+            "note": "La Comtessa de Dia è rappresentata nel repertorio della canso occitana; la categoria distingue la tradizione trobadorica da quella dei trovieri.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/trovatore/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "tradizione-trobairitz-occitana",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "comprende la poesia musicale di",
+              "prior_reverse": "partecipò alla tradizione della",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "original_forward": "comprende le canso della trobairitz ricordata come",
+          "original_reverse": "compose canzoni d'amore in lingua d'oc nell'ambito della",
+          "original_note": "La Comtessa de Dia è rappresentata nel repertorio della canso occitana; la categoria distingue la tradizione trobadorica da quella dei trovieri.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/trovatore/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "comprende le canso della trobairitz ricordata come",
+            "reverse_fragment": "compose canzoni d'amore in lingua d'oc nell'ambito della",
+            "original_speaker_orientation": [
+              "tradizione-trovatori-occitani",
+              "compositore-comtessa-de-dia"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [
+        {
+          "url": "https://www.treccani.it/enciclopedia/musica-e-spiritualita-femminile-ildegarda-di-bingen_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/",
+          "finding": "Comtessa de Dia identity disputed; A chantar m'er is only surviving melody",
+          "status": "historical_specific_confirmed"
+        }
+      ],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 191,
+      "mapped_pair": "legacy:musica-per-film-novecento|pers:steiner",
+      "classification": "steiner_hollywood_symphonic_score",
+      "analysis": "Max Steiner contribuisce al modello orchestrale sinfonico del cinema sonoro di Hollywood. La categoria riguarda linguaggi, opere e attività, non un legame diretto con Korngold o Williams.",
+      "guardrails": "documentare eventuali rapporti personali su altra evidenza, non sull'etichetta film",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1642,
+          "stage_id": "base2K:1643",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:steiner",
+          "target_mapped": "legacy:musica-per-film-novecento",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-max-steiner",
+            "target": "musica-per-film-novecento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «cinematografico». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/max-steiner_%28Enciclopedia-del-Cinema%29/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «cinematografico». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/max-steiner_%28Enciclopedia-del-Cinema%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 1279,
+          "stage_id": "special2K:integr20261018-cinema-steiner",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+          "source_snapshot_sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+          "source_mapped": "legacy:musica-per-film-novecento",
+          "target_mapped": "pers:steiner",
+          "kind": "sinfonismo-hollywood-classico",
+          "raw_payload": {
+            "id": "integr20261018-cinema-steiner",
+            "group": "scuole",
+            "source": "musica-per-film-novecento",
+            "target": "compositore-max-steiner",
+            "kind": "sinfonismo-hollywood-classico",
+            "forward": "ebbe fra i principali artefici del sinfonismo hollywoodiano",
+            "reverse": "sviluppò una prassi sinfonica per il film sonoro nella",
+            "note": "Max Steiner fu fra i principali artefici della prassi sinfonica del cinema hollywoodiano sonoro.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/compositore_%28Enciclopedia-del-Cinema%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "composizione-sinfonica-cinematografica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "comprende la scrittura per film di",
+              "prior_reverse": "lavorò nella tradizione di",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "original_forward": "ebbe fra i principali artefici del sinfonismo hollywoodiano",
+          "original_reverse": "sviluppò una prassi sinfonica per il film sonoro nella",
+          "original_note": "Max Steiner fu fra i principali artefici della prassi sinfonica del cinema hollywoodiano sonoro.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/compositore_%28Enciclopedia-del-Cinema%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "ebbe fra i principali artefici del sinfonismo hollywoodiano",
+            "reverse_fragment": "sviluppò una prassi sinfonica per il film sonoro nella",
+            "original_speaker_orientation": [
+              "musica-per-film-novecento",
+              "compositore-max-steiner"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 192,
+      "mapped_pair": "legacy:musica-per-film-novecento|pers:korngold",
+      "classification": "korngold_opera_film_transfer",
+      "analysis": "Erich Wolfgang Korngold portò nel cinema americano un'esperienza compositiva teatrale e orchestrale europea. Distinguere i ruoli e non sostenere che tutti i compositori del cinema condividessero una medesima scuola.",
+      "guardrails": "opera teatrale e scoring cinematografico richiedono repertori distinti",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1644,
+          "stage_id": "base2K:1645",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:korngold",
+          "target_mapped": "legacy:musica-per-film-novecento",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-erich-wolfgang-korngold",
+            "target": "musica-per-film-novecento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «colonne sonore». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/erich-wolfgang-korngold/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «colonne sonore». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/erich-wolfgang-korngold/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 1280,
+          "stage_id": "special2K:integr20261018-cinema-korngold",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+          "source_snapshot_sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+          "source_mapped": "legacy:musica-per-film-novecento",
+          "target_mapped": "pers:korngold",
+          "kind": "teatro-e-cinema",
+          "raw_payload": {
+            "id": "integr20261018-cinema-korngold",
+            "group": "scuole",
+            "source": "musica-per-film-novecento",
+            "target": "compositore-erich-wolfgang-korngold",
+            "kind": "teatro-e-cinema",
+            "forward": "comprende il trasferimento di tecniche operistiche alle colonne sonore di",
+            "reverse": "portò nell'orchestrazione cinematografica esperienze operistiche e concertistiche per la",
+            "note": "Korngold portò nel cinema statunitense competenze ed esperienze maturate nell'ambito teatrale e orchestrale mitteleuropeo.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/compositore_%28Enciclopedia-del-Cinema%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "composizione-cinematografica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "comprende l'attività per film di",
+              "prior_reverse": "contribuì alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "original_forward": "comprende il trasferimento di tecniche operistiche alle colonne sonore di",
+          "original_reverse": "portò nell'orchestrazione cinematografica esperienze operistiche e concertistiche per la",
+          "original_note": "Korngold portò nel cinema statunitense competenze ed esperienze maturate nell'ambito teatrale e orchestrale mitteleuropeo.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/compositore_%28Enciclopedia-del-Cinema%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "comprende il trasferimento di tecniche operistiche alle colonne sonore di",
+            "reverse_fragment": "portò nell'orchestrazione cinematografica esperienze operistiche e concertistiche per la",
+            "original_speaker_orientation": [
+              "musica-per-film-novecento",
+              "compositore-erich-wolfgang-korngold"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 193,
+      "mapped_pair": "legacy:musica-per-film-novecento|pers:john-williams",
+      "classification": "williams_contemporary_film_symbiosis",
+      "analysis": "John Williams è esponente del sinfonismo cinematografico contemporaneo, con partiture di ampia articolazione orchestrale. Collegamenti specifici con film/registi vanno modellati per singole opere o collaborazioni documentate.",
+      "guardrails": "non inferire rapporti con Steiner/Korngold solo per affinità stilistica",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1645,
+          "stage_id": "base2K:1646",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:john-williams",
+          "target_mapped": "legacy:musica-per-film-novecento",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-john-williams",
+            "target": "musica-per-film-novecento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Attestazione dalla scheda biografica: «colonne sonore». Legame di repertorio o pratica, non di relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/john-williams_%28Enciclopedia-del-Cinema%29/"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Attestazione dalla scheda biografica: «colonne sonore». Legame di repertorio o pratica, non di relazione personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/john-williams_%28Enciclopedia-del-Cinema%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 1281,
+          "stage_id": "special2K:integr20261018-cinema-williams",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+          "source_snapshot_sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+          "source_mapped": "legacy:musica-per-film-novecento",
+          "target_mapped": "pers:john-williams",
+          "kind": "sinfonismo-cinema",
+          "raw_payload": {
+            "id": "integr20261018-cinema-williams",
+            "group": "scuole",
+            "source": "musica-per-film-novecento",
+            "target": "compositore-john-williams",
+            "kind": "sinfonismo-cinema",
+            "forward": "comprende la scrittura sinfonica cinematografica di",
+            "reverse": "compose grandi partiture sinfoniche nel contesto della",
+            "note": "John Williams è tra gli autori centrali del sinfonismo cinematografico contemporaneo; Treccani ne documenta l'attività filmica.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/john-williams_%28Enciclopedia-del-Cinema%29/",
+              "https://www.treccani.it/enciclopedia/musica-e-cinema_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "composizione-sinfonica-cinematografica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "include la scrittura cinematografica di",
+              "prior_reverse": "compose musiche per",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "original_forward": "comprende la scrittura sinfonica cinematografica di",
+          "original_reverse": "compose grandi partiture sinfoniche nel contesto della",
+          "original_note": "John Williams è tra gli autori centrali del sinfonismo cinematografico contemporaneo; Treccani ne documenta l'attività filmica.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/john-williams_%28Enciclopedia-del-Cinema%29/",
+            "https://www.treccani.it/enciclopedia/musica-e-cinema_%28Enciclopedia-Italiana%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "comprende la scrittura sinfonica cinematografica di",
+            "reverse_fragment": "compose grandi partiture sinfoniche nel contesto della",
+            "original_speaker_orientation": [
+              "musica-per-film-novecento",
+              "compositore-john-williams"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 194,
+      "mapped_pair": "legacy:teatro-musicale-broadway|pers:jeanine-tesori",
+      "classification": "tesori_musical_composer_not_all_roles",
+      "analysis": "Jeanine Tesori compose musica per il teatro musicale contemporaneo e l'opera; le relazioni con librettisti e produzioni richiedono credito puntuale. Non equiparare Broadway a un'unica tradizione immobile né inferire che tutti i musical abbiano identico formato.",
+      "guardrails": "compositore musicale distinto da librettista e paroliere; ruolo editoriale per opere specifiche",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1699,
+          "stage_id": "base2K:1700",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:jeanine-tesori",
+          "target_mapped": "legacy:teatro-musicale-broadway",
+          "kind": "forma-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-jeanine-tesori",
+            "target": "teatro-musicale-broadway",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Repertorio o pratica attestati nel profilo biografico di Jeanine Tesori. Il collegamento non implica rapporto personale o appartenenza a una scuola.",
+            "sources": [
+              "https://www.juilliard.edu/stage-beyond/creative-enterprise/creative-associates/jeanine-tesori"
+            ]
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Repertorio o pratica attestati nel profilo biografico di Jeanine Tesori. Il collegamento non implica rapporto personale o appartenenza a una scuola.",
+          "original_sources": [
+            "https://www.juilliard.edu/stage-beyond/creative-enterprise/creative-associates/jeanine-tesori"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 1314,
+          "stage_id": "special2K:integr4-broadway-tesori",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+          "source_snapshot_sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+          "source_mapped": "legacy:teatro-musicale-broadway",
+          "target_mapped": "pers:jeanine-tesori",
+          "kind": "musical-contemporaneo",
+          "raw_payload": {
+            "id": "integr4-broadway-tesori",
+            "group": "scuole",
+            "source": "teatro-musicale-broadway",
+            "target": "compositore-jeanine-tesori",
+            "kind": "musical-contemporaneo",
+            "forward": "comprende i musical contemporanei composti da",
+            "reverse": "compose musical contemporanei nel contesto del",
+            "note": "La English National Opera ricorda l'attività di Tesori nel musical e nell'opera contemporanea.",
+            "sources": [
+              "https://www.eno.org/people/jeanine-tesori/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "composizione-musical-contemporaneo",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "comprende le musiche teatrali di",
+              "prior_reverse": "compose musical nella tradizione di",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "original_forward": "comprende i musical contemporanei composti da",
+          "original_reverse": "compose musical contemporanei nel contesto del",
+          "original_note": "La English National Opera ricorda l'attività di Tesori nel musical e nell'opera contemporanea.",
+          "original_sources": [
+            "https://www.eno.org/people/jeanine-tesori/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "comprende i musical contemporanei composti da",
+            "reverse_fragment": "compose musical contemporanei nel contesto del",
+            "original_speaker_orientation": [
+              "teatro-musicale-broadway",
+              "compositore-jeanine-tesori"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 195,
+      "mapped_pair": "legacy:opera-semiseria|pers:rossini",
+      "classification": "rossini_semiseria_specific_operas",
+      "analysis": "Rossini partecipò al repertorio semiserio con La gazza ladra (1817) e Torvaldo e Dorliska. L'arco punta a titoli specifici; non implica che l'intero catalogo rossiniano appartenga allo stesso genere.",
+      "guardrails": "opera semiseria separata da buffa e seria; titoli specifici conservati",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1923,
+          "stage_id": "base2K:1924",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:rossini",
+          "target_mapped": "legacy:opera-semiseria",
+          "kind": "repertorio-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-gioachino-rossini",
+            "target": "opera-semiseria",
+            "kind": "repertorio-o-pratica-documentata",
+            "weight": 1.28,
+            "note": "Opera/repertorio: La gazza ladra (1817). Relazione musicologica: opera semiseria; genere attestato da Treccani. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "audit": "2026-10-19",
+            "audit_category": "inverso-quinto-lotto-generi-tradizioni-tecniche",
+            "evidence_status": "documentato-in-fonte-specialistica"
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Opera/repertorio: La gazza ladra (1817). Relazione musicologica: opera semiseria; genere attestato da Treccani. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 54,
+          "stage_id": "special2K:gen-opera-semiseria-gioachino-rossini",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:opera-semiseria",
+          "target_mapped": "pers:rossini",
+          "kind": "repertorio-e-trasformazione",
+          "raw_payload": {
+            "id": "gen-opera-semiseria-gioachino-rossini",
+            "group": "genealogie",
+            "source": "opera-semiseria",
+            "target": "compositore-gioachino-rossini",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "La gazza ladra e Torvaldo e Dorliska attestano l'attività rossiniana nel genere semiserio.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "original_forward": "fu praticato o trasformato da",
+          "original_reverse": "coltivò o trasformò il genere di",
+          "original_note": "La gazza ladra e Torvaldo e Dorliska attestano l'attività rossiniana nel genere semiserio.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_speaker_orientation": [
+              "opera-semiseria",
+              "compositore-gioachino-rossini"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 196,
+      "mapped_pair": "legacy:opera-semiseria|pers:bellini",
+      "classification": "bellini_sonnambula_subgenre_interpretive",
+      "analysis": "La sonnambula (1831) è spesso classificata in area semiseria per soggetto e trattamento; l'Archivio del Teatro dell'Opera di Roma la presenta però come «melodramma in due atti». Conservare la classificazione interpretativa ma NON convertire automaticamente in forma ufficiale esclusiva.",
+      "guardrails": "ALLERTA etichetta: catalogazione primaria «melodramma», semiseria è inquadramento storiografico da motivare",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1924,
+          "stage_id": "base2K:1925",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:bellini",
+          "target_mapped": "legacy:opera-semiseria",
+          "kind": "repertorio-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-vincenzo-bellini",
+            "target": "opera-semiseria",
+            "kind": "repertorio-o-pratica-documentata",
+            "weight": 1.28,
+            "note": "Opera/repertorio: La sonnambula (1831). Relazione musicologica: opera semiseria; non sinonimo di opera buffa. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "audit": "2026-10-19",
+            "audit_category": "inverso-quinto-lotto-generi-tradizioni-tecniche",
+            "evidence_status": "documentato-in-fonte-specialistica"
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Opera/repertorio: La sonnambula (1831). Relazione musicologica: opera semiseria; non sinonimo di opera buffa. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 55,
+          "stage_id": "special2K:gen-opera-semiseria-vincenzo-bellini",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:opera-semiseria",
+          "target_mapped": "pers:bellini",
+          "kind": "repertorio-e-trasformazione",
+          "raw_payload": {
+            "id": "gen-opera-semiseria-vincenzo-bellini",
+            "group": "genealogie",
+            "source": "opera-semiseria",
+            "target": "compositore-vincenzo-bellini",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "La sonnambula di Bellini appartiene alla tradizione dell'opera semiseria.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "original_forward": "fu praticato o trasformato da",
+          "original_reverse": "coltivò o trasformò il genere di",
+          "original_note": "La sonnambula di Bellini appartiene alla tradizione dell'opera semiseria.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_speaker_orientation": [
+              "opera-semiseria",
+              "compositore-vincenzo-bellini"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/la-sonnambula/",
+          "finding": "Archive labels La sonnambula «melodramma in due atti», premiere 6 March 1831",
+          "status": "catalog_label_difference_confirmed"
+        }
+      ],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 197,
+      "mapped_pair": "legacy:opera-semiseria|pers:donizetti",
+      "classification": "donizetti_linda_semiseria_documented",
+      "analysis": "Linda di Chamounix di Donizetti è descritta come «melodramma semiserio in tre atti», prima Vienna 19 maggio 1842, su libretto di Gaetano Rossi. Trattare il titolo specifico, non una vaga appartenenza a un'unica scuola con Rossini e Bellini.",
+      "guardrails": "melodramma semiserio documentato puntualmente dall'Archivio Opera Roma",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1925,
+          "stage_id": "base2K:1926",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:donizetti",
+          "target_mapped": "legacy:opera-semiseria",
+          "kind": "repertorio-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-gaetano-donizetti",
+            "target": "opera-semiseria",
+            "kind": "repertorio-o-pratica-documentata",
+            "weight": 1.28,
+            "note": "Opera/repertorio: Linda di Chamounix (1842). Relazione musicologica: melodramma semiserio con intreccio borghese e conclusione lieta. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "audit": "2026-10-19",
+            "audit_category": "inverso-quinto-lotto-generi-tradizioni-tecniche",
+            "evidence_status": "documentato-in-fonte-specialistica"
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Opera/repertorio: Linda di Chamounix (1842). Relazione musicologica: melodramma semiserio con intreccio borghese e conclusione lieta. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 56,
+          "stage_id": "special2K:gen-opera-semiseria-gaetano-donizetti",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:opera-semiseria",
+          "target_mapped": "pers:donizetti",
+          "kind": "repertorio-e-trasformazione",
+          "raw_payload": {
+            "id": "gen-opera-semiseria-gaetano-donizetti",
+            "group": "genealogie",
+            "source": "opera-semiseria",
+            "target": "compositore-gaetano-donizetti",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Donizetti praticò il repertorio semiserio accanto all'opera seria e buffa.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "original_forward": "fu praticato o trasformato da",
+          "original_reverse": "coltivò o trasformò il genere di",
+          "original_note": "Donizetti praticò il repertorio semiserio accanto all'opera seria e buffa.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_speaker_orientation": [
+              "opera-semiseria",
+              "compositore-gaetano-donizetti"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/linda-di-chamounix/",
+          "finding": "Linda di Chamounix melodramma semiserio in three acts; 19 May 1842 Vienna",
+          "status": "institutional_specific_confirmed"
+        }
+      ],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 198,
+      "mapped_pair": "legacy:dramma-giocoso|pers:mozart",
+      "classification": "mozart_don_giovanni_dramma_giocoso_specific",
+      "analysis": "Il dissoluto punito ossia Don Giovanni (1787) di Mozart, libretto di Lorenzo Da Ponte, è «dramma giocoso in due atti». Questa etichetta teatrale non deve fare entrare capitoli editoriali nel grafo storico né produrre ponti fra tutti gli operisti.",
+      "guardrails": "SENTINELLA: Mozart→dramma giocoso non abilita Mozart→tutti gli autori del genere",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1926,
+          "stage_id": "base2K:1927",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:mozart",
+          "target_mapped": "legacy:dramma-giocoso",
+          "kind": "repertorio-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-wolfgang-amadeus-mozart",
+            "target": "dramma-giocoso",
+            "kind": "repertorio-o-pratica-documentata",
+            "weight": 1.28,
+            "note": "Opera/repertorio: Il dissoluto punito ossia Don Giovanni (1787). Relazione musicologica: dramma giocoso in due atti, libretto di Lorenzo Da Ponte. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+            "sources": [
+              "https://www.teatroallascala.org/it/stagione/2026-2027/opera/don-giovanni.html"
+            ],
+            "audit": "2026-10-19",
+            "audit_category": "inverso-quinto-lotto-generi-tradizioni-tecniche",
+            "evidence_status": "documentato-in-fonte-specialistica"
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Opera/repertorio: Il dissoluto punito ossia Don Giovanni (1787). Relazione musicologica: dramma giocoso in due atti, libretto di Lorenzo Da Ponte. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+          "original_sources": [
+            "https://www.teatroallascala.org/it/stagione/2026-2027/opera/don-giovanni.html"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 58,
+          "stage_id": "special2K:gen-dramma-giocoso-wolfgang-amadeus-mozart",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:dramma-giocoso",
+          "target_mapped": "pers:mozart",
+          "kind": "repertorio-e-trasformazione",
+          "raw_payload": {
+            "id": "gen-dramma-giocoso-wolfgang-amadeus-mozart",
+            "group": "genealogie",
+            "source": "dramma-giocoso",
+            "target": "compositore-wolfgang-amadeus-mozart",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Mozart contribuì in modo fondamentale al dramma giocoso, soprattutto attraverso il suo teatro italiano.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "original_forward": "fu praticato o trasformato da",
+          "original_reverse": "coltivò o trasformò il genere di",
+          "original_note": "Mozart contribuì in modo fondamentale al dramma giocoso, soprattutto attraverso il suo teatro italiano.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_speaker_orientation": [
+              "dramma-giocoso",
+              "compositore-wolfgang-amadeus-mozart"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [
+        {
+          "url": "https://archiviostorico.operaroma.it/opera/don-giovanni/",
+          "finding": "Don Giovanni dramma giocoso in two acts, Da Ponte, first 29 October 1787 Prague",
+          "status": "institutional_specific_confirmed"
+        }
+      ],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 199,
+      "mapped_pair": "legacy:intermezzo-comico|pers:pergolesi",
+      "classification": "pergolesi_serva_intermezzo_not_buffa_full",
+      "analysis": "La serva padrona (1733) di Pergolesi è un intermezzo in due parti associato a Il prigionier superbo; non va trasformato senza cautela in «opera buffa integrale». I cataloghi offrono giorni differenti per la prima: non alterare l'originale, che specifica solo l'anno.",
+      "guardrails": "ALLERTA cronologia: Corago 5 settembre 1733, Braidense 28 agosto 1733. Intermezzo ≠ opera buffa integrale",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1929,
+          "stage_id": "base2K:1930",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:pergolesi",
+          "target_mapped": "legacy:intermezzo-comico",
+          "kind": "repertorio-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-giovanni-battista-pergolesi",
+            "target": "intermezzo-comico",
+            "kind": "repertorio-o-pratica-documentata",
+            "weight": 1.28,
+            "note": "Opera/repertorio: La serva padrona (1733). Relazione musicologica: intermezzo comico tra gli atti de Il prigionier superbo. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/giovan-battista-pergolesi/"
+            ],
+            "audit": "2026-10-19",
+            "audit_category": "inverso-quinto-lotto-generi-tradizioni-tecniche",
+            "evidence_status": "documentato-in-fonte-specialistica"
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Opera/repertorio: La serva padrona (1733). Relazione musicologica: intermezzo comico tra gli atti de Il prigionier superbo. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/giovan-battista-pergolesi/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 69,
+          "stage_id": "special2K:gen-intermezzo-comico-giovanni-battista-pergolesi",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:intermezzo-comico",
+          "target_mapped": "pers:pergolesi",
+          "kind": "repertorio-e-trasformazione",
+          "raw_payload": {
+            "id": "gen-intermezzo-comico-giovanni-battista-pergolesi",
+            "group": "genealogie",
+            "source": "intermezzo-comico",
+            "target": "compositore-giovanni-battista-pergolesi",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "La serva padrona è un intermezzo comico di Pergolesi, poi divenuto riferimento della fortuna del genere.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "original_forward": "fu praticato o trasformato da",
+          "original_reverse": "coltivò o trasformò il genere di",
+          "original_note": "La serva padrona è un intermezzo comico di Pergolesi, poi divenuto riferimento della fortuna del genere.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_speaker_orientation": [
+              "intermezzo-comico",
+              "compositore-giovanni-battista-pergolesi"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [
+        {
+          "url": "https://corago.unibo.it/opera/Z000005324",
+          "finding": "Corago first 5 September 1733 as intermezzo",
+          "status": "catalog_date_variant"
+        },
+        {
+          "url": "https://opac.bibliotecabraidense.org/opac_braidense/opac/braidense/scheda_sim.jsp?bid=MUS0286572&pager.offset=0&sim_bid=MUS0001528",
+          "finding": "Braidense first 28 August 1733",
+          "status": "catalog_date_variant"
+        },
+        {
+          "url": "https://corago.unibo.it/libretto/DD00309789",
+          "finding": "1733 printed libretto includes Il prigionier superbo and La serva padrona as intermezzo",
+          "status": "archival_work_type_confirmed"
+        }
+      ],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    },
+    {
+      "group_number": 200,
+      "mapped_pair": "legacy:belcanto|pers:rossini",
+      "classification": "rossini_belcanto_vocal_style_not_genre",
+      "analysis": "Rossini è figura centrale di una tradizione vocale belcantistica, ma «belcanto» è soprattutto categoria di prassi e scrittura vocale, non un genere teatrale esclusivo al pari di opera seria/semiseria.",
+      "guardrails": "non instradare Barbiere di Siviglia→tutti i cantanti e compositori via belcanto",
+      "original_records": [
+        {
+          "layer": "base",
+          "source_index": 1933,
+          "stage_id": "base2K:1934",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+          "source_snapshot_sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+          "source_mapped": "pers:rossini",
+          "target_mapped": "legacy:belcanto",
+          "kind": "repertorio-o-pratica-documentata",
+          "raw_payload": {
+            "source": "compositore-gioachino-rossini",
+            "target": "belcanto",
+            "kind": "repertorio-o-pratica-documentata",
+            "weight": 1.28,
+            "note": "Opera/repertorio: Il barbiere di Siviglia (1816). Relazione musicologica: tradizione belcantistica nella scrittura rossiniana; non afferma un genere teatrale a sé. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/opera/",
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "audit": "2026-10-19",
+            "audit_category": "inverso-quinto-lotto-generi-tradizioni-tecniche",
+            "evidence_status": "documentato-in-fonte-specialistica"
+          },
+          "original_forward": null,
+          "original_reverse": null,
+          "original_note": "Opera/repertorio: Il barbiere di Siviglia (1816). Relazione musicologica: tradizione belcantistica nella scrittura rossiniana; non afferma un genere teatrale a sé. Fonte puntuale sul titolo o sul repertorio; non va dedotta un'appartenenza istituzionale o personale.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/opera/",
+            "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_exact_relationSentence_override_port",
+            "source": "atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547",
+            "forward": null,
+            "reverse": null
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 59,
+          "stage_id": "special2K:gen-belcanto-gioachino-rossini",
+          "source_snapshot_path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+          "source_snapshot_sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+          "source_mapped": "legacy:belcanto",
+          "target_mapped": "pers:rossini",
+          "kind": "repertorio-e-trasformazione",
+          "raw_payload": {
+            "id": "gen-belcanto-gioachino-rossini",
+            "group": "genealogie",
+            "source": "belcanto",
+            "target": "compositore-gioachino-rossini",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Rossini riformulò la tradizione belcantistica settecentesca tramite una scrittura vocale virtuosistica di grande inventiva.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/opera/"
+            ],
+            "status": "documentato"
+          },
+          "original_forward": "fu praticato o trasformato da",
+          "original_reverse": "coltivò o trasformò il genere di",
+          "original_note": "Rossini riformulò la tradizione belcantistica settecentesca tramite una scrittura vocale virtuosistica di grande inventiva.",
+          "original_sources": [
+            "https://www.treccani.it/enciclopedia/opera/"
+          ],
+          "renderer_contract": {
+            "final_sentence_status": "requires_renderer_parity_test",
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_speaker_orientation": [
+              "belcanto",
+              "compositore-gioachino-rossini"
+            ]
+          }
+        }
+      ],
+      "independent_checks": [],
+      "cross_archive_match_decision": "preserve_distinct_records_no_dedup",
+      "historical_relation_certified_by_this_triage": false,
+      "rooted_traversal_gate": "closed_pending_specific_fact_relevance",
+      "production_edited": false
+    }
+  ],
+  "checks": [
+    {
+      "name": "20 groups cover 181..200",
+      "passed": true
+    },
+    {
+      "name": "40 originals 20 base 20 specialist",
+      "passed": true
+    },
+    {
+      "name": "Every group has 1 base and 1 specialist",
+      "passed": true
+    },
+    {
+      "name": "Every original source ID uniquely retained",
+      "passed": true
+    },
+    {
+      "name": "All endpoints normalized correctly",
+      "passed": true
+    },
+    {
+      "name": "All 20 specialist forward reverse fragments retained",
+      "passed": true
+    },
+    {
+      "name": "All original notes remain exact",
+      "passed": true
+    },
+    {
+      "name": "All original sources lists remain exact",
+      "passed": true
+    },
+    {
+      "name": "Every source kind original and canonical identity unchanged",
+      "passed": true
+    },
+    {
+      "name": "Comtessa de Dia biographical identity uncertainty preserved",
+      "passed": true
+    },
+    {
+      "name": "Sonnambula genre discrepancy preserved",
+      "passed": true
+    },
+    {
+      "name": "Serva padrona source date discrepancy preserved",
+      "passed": true
+    },
+    {
+      "name": "No category-as-bridge in rooted traversal",
+      "passed": true
+    },
+    {
+      "name": "No historical edge automatically approved",
+      "passed": true
+    },
+    {
+      "name": "Tooltip JS final renderer remains untested",
+      "passed": true
+    },
+    {
+      "name": "No public/production writes planned",
+      "passed": true
+    }
+  ],
+  "not_certified": [
+    "historical truth of every original relation",
+    "JS relationSentence final chain and both rendered directions",
+    "rooted relevance I-V in unified Atlantis",
+    "hover desktop or tap Android",
+    "public merge / dedup / production"
+  ],
+  "next": "Fase 2L Lotto 11 groups 201-220; adapter relationSentence remains a distinct technical priority"
+}
