@@ -2302,3 +2302,55 @@ I confronti non causali `L04-A05`, `A16`, `A23`, `A28`, `A35`, `A39`, `A44`, `A5
 - Gate indipendenti **322**, flag indipendenti **359**, confronti non causali **115**, sospensioni **57**, proposte editoriali **317**, candidati non fusi **8**.
 - Residui per Lotto 51: `L06-A071`–`L06-A078` (playback/diegesi, Foley/Mickey Mousing, rimandi fra cinema e capitoli).
 - QA strutturale, non prova visiva su desktop/mobile. Interfaccia e renderer invariati.
+
+---
+## Lotto 51 — 8 novembre 2026: cinema, sincronizzazione, diegesi e ultimi candidati
+
+**Metodo:** confronto del testo effettivo dei capitoli su `main` con fonti esterne (Walt Disney Family Museum, AFI, Library of Congress, Bru Zane, IMSLP, IBDB, documentazione filmologica). Nessuna modifica all'HTML, ai menu, al renderer o al protocollo.
+
+| ID | Gate | Verifica e precisazione |
+| --- | --- | --- |
+| `L06-A071` | **confronto_non_causale** | Playback = metodo di produzione; diegesi = statuto narrativo del suono, indipendente dall'esecuzione dal vivo. |
+| `L06-A072` | **confronto_non_causale** | Foley = effetti materialmente ricreati; Mickey Mousing = correlazione espressiva e spesso musicale fra gesto e suono. |
+| `L06-A073` | **sospeso** | La pagina #radici-afroamericane tratta blues/jazz, non specificamente istituzioni e repertori del teatro afroamericano. Il collegamento resta tracciato ma non propagabile. |
+| `L06-A074` | **trattazione_riscontrata** | The Skeleton Dance 1929: ispirazione Saint-Saëns, ma colonna sonora Stalling con Grieg (Marcia dei nani), non Danse macabre. |
+| `L06-A075` | **trattazione_riscontrata** | L’Assassinat du duc de Guise del 1908: partitura originale di Saint-Saëns, op. 128. Le fonti differiscono sulla data della prima (17/18 novembre). |
+| `L06-A076` | **trattazione_riscontrata** | Steamboat Willie (1928): suono sincronizzato con azione e effetti, senza primato storico assoluto. |
+| `L06-A077` | **trattazione_riscontrata** | West Side Story: teatro 1957 distinto dal film 1961, entrambi documentati nella pagina. |
+| `L06-A078` | **trattazione_riscontrata** | Le cue sheets fornivano indicazioni di accompagnamento nel cinema muto, spesso su musiche preesistenti, non partiture obbligatorie. |
+
+### Fonti e ancore controllate
+- https://musurgiamundi.com/musica-e-film/#diegesi-esecuzione
+- https://musurgiamundi.com/musica-e-film/#mickey-foley
+- https://musurgiamundi.com/musica-e-film/#mickey-silly
+- https://musurgiamundi.com/verso-le-avanguardie/#radici-afroamericane
+- https://musurgiamundi.com/dal-musical-al-film/#saint-saens-cinema
+- https://musurgiamundi.com/dal-musical-al-film/#west-side-story
+- https://musurgiamundi.com/dal-musical-al-film/#muto-partiture
+- https://www.waltdisney.org/blog/composing-walt-disneys-silly-symphonies-historian-ross-care-stalling-after-mickey
+- https://catalog.afi.com/Film/70418-THE-SKELETON-DANCE
+- https://silentfilm.org/wp-content/uploads/2020/06/2006_WinterEvent_Book.pdf
+- https://www.bruzanemediabase.com/en/exploration/works/assassinat-duc-guise-op-128-camille-saint-saens
+- https://imslp.org/wiki/L%27assassinat_du_duc_de_Guise%2C_Op.128_%28Saint-Sa%C3%ABns%2C_Camille%29
+- https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/photoplay-albums-for-silent-film-scores/
+- https://guides.loc.gov/music-for-silent-film/scores
+- https://blogs.loc.gov/music/2025/04/by-the-people-transcribing-cue-sheets-for-silent-film/
+- https://www.ibdb.com/broadway-production/west-side-story-2639
+- https://catalog.afi.com/Film/23857-west-sidestory
+- https://pressbooks.pub/reframingcinema/chapter/sound/
+- https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/26552573/synchronisation-extreme
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/ethnic/african-american-song/
+
+### Dati utili alla revisione editoriale futura
+- *The Skeleton Dance* (1929): **ispirazione** dalla Danse macabre di Saint-Saëns; **nessun impiego** del poema sinfonico nella colonna sonora; Stalling integra musica originale e la Marcia dei nani di Grieg. La distinzione è confermata dal Walt Disney Family Museum.
+- *L’Assassinat du duc de Guise*: op. 128 di Saint-Saëns, musica per film del 1908. Per la prima proiezione Bru Zane indica 18 novembre 1908; IMSLP 17 novembre, altre testimonianze riferiscono 16. Prima di pubblicare una data univoca approfondire luogo, anteprima e proiezioni.
+- *West Side Story*: il musical teatrale del 1957 e il film del 1961 sono due realizzazioni da mantenere concettualmente distinte.
+- Il capitolo Verso le avanguardie ricostruisce con ampiezza le origini afroamericane del blues e del jazz, ma il teatro afroamericano come forma scenica specifica non è sufficientemente trattato: il potenziale collegamento da `trad:teatro-afroamericano` è sospeso senza cancellazione.
+- Non confondere la sorgente narrativa di un suono (diegesi) con il modo in cui viene prodotto o registrato (playback), né scambiare un effetto Foley per una figura musicale di Mickey Mousing.
+
+### Controlli dopo Lotto 51
+- Archi modificati **8**: due confronti non causali, un sospeso, cinque trattazioni effettive. Campi pregressi conservati, compresi previous_quality_gate e previous_relation/previous_description dove applicabile.
+- **608 nodi, 1520 archi**; candidati non fusi **0**; proposte editoriali **317**; sospesi **58**; confronti non causali **117**; riscontri indipendenti **322**, flag indipendenti **359**.
+- **0** duplicati ID di nodo, **0** duplicati ID di arco, **0** estremi orfani, **0** triplette orientate duplicate.
+- Regole UI verificate in `musurgia-atlantis/index.html`: il filtro esclude i sospesi dalla vista ordinaria e le relazioni generiche `sviluppa_o_illumina`, `analizzata_in` e `tratta_in_modo_specifico` non diventano ponti storici multilivello. Test strutturale del codice, non resa WebGL/Canvas in browser reale.
+- **Prima fase di validazione dei candidati conclusa:** restano **317** `proposta_editoriale_revisionata`, che costituiscono un distinto insieme editoriale e non devono essere promosse in blocco a relazioni storiche. I 58 sospesi non sono stati cancellati.
