@@ -6216,3 +6216,11 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 
 **Pubblicazione:** commit previsto `Atlantis Lotti 201-210: Novecento tra opere, fonti e interpreti`. Verificare SHA effettivo sul remoto.
 
+---
+
+# Chiusura definitiva dell'audit storico-filologico — 8 novembre 2026
+
+**Revisione CHIUSA al Lotto 210** sul commit `12578a0726873af6c6c315d0e8c1089c363224fd`. Nessuna prosecuzione numerica pianificata. Dataset: 754 nodi, 1.718 archi, 586 flag indipendenti, 550 gate indipendenti e 125 sospensioni esplicite. Integrità strutturale e prove logiche di esplorazione I–V superate; tre nodi isolati registrati come anomalie non bloccanti. **Collaudo grafico/gestuale su browser reale ancora da certificare.** Nessuna modifica al grafo o ai capitoli.
+
+Dettagli, limiti e scenari di verifica nel [verbale di chiusura e collaudo](./VERBALE_CHIUSURA_E_COLLAUDO_2026-11-08.md).
+
