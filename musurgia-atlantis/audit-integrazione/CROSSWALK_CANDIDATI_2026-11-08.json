@@ -14,7 +14,9 @@
       "editorial_collision_keep_distinct": 7,
       "person_candidate": 146,
       "concept_candidate": 4
-    }
+    },
+    "resolved_keep_distinct": 7,
+    "pending_candidates": 150
   },
   "candidates": [
     {
@@ -26,7 +28,8 @@
       "atlantis_category": "capitolo",
       "match_method": "exact_normalized_label",
       "class": "editorial_collision_keep_distinct",
-      "status": "not_validated"
+      "status": "resolved_keep_distinct",
+      "resolution": "Historical period/ambit node is distinct from an editorial chapter node. Chapter visible only when the editorial view is explicitly requested, never in the historical graph or as a traversable bridge."
     },
     {
       "atlante_id": "classicismo",
@@ -37,7 +40,8 @@
       "atlantis_category": "capitolo",
       "match_method": "exact_normalized_label",
       "class": "editorial_collision_keep_distinct",
-      "status": "not_validated"
+      "status": "resolved_keep_distinct",
+      "resolution": "Historical period/ambit node is distinct from an editorial chapter node. Chapter visible only when the editorial view is explicitly requested, never in the historical graph or as a traversable bridge."
     },
     {
       "atlante_id": "medioevo",
@@ -48,7 +52,8 @@
       "atlantis_category": "capitolo",
       "match_method": "exact_normalized_label",
       "class": "editorial_collision_keep_distinct",
-      "status": "not_validated"
+      "status": "resolved_keep_distinct",
+      "resolution": "Historical period/ambit node is distinct from an editorial chapter node. Chapter visible only when the editorial view is explicitly requested, never in the historical graph or as a traversable bridge."
     },
     {
       "atlante_id": "melodramma",
@@ -59,7 +64,8 @@
       "atlantis_category": "capitolo",
       "match_method": "exact_normalized_label",
       "class": "editorial_collision_keep_distinct",
-      "status": "not_validated"
+      "status": "resolved_keep_distinct",
+      "resolution": "Historical period/ambit node is distinct from an editorial chapter node. Chapter visible only when the editorial view is explicitly requested, never in the historical graph or as a traversable bridge."
     },
     {
       "atlante_id": "rinascimento",
@@ -70,7 +76,8 @@
       "atlantis_category": "capitolo",
       "match_method": "exact_normalized_label",
       "class": "editorial_collision_keep_distinct",
-      "status": "not_validated"
+      "status": "resolved_keep_distinct",
+      "resolution": "Historical period/ambit node is distinct from an editorial chapter node. Chapter visible only when the editorial view is explicitly requested, never in the historical graph or as a traversable bridge."
     },
     {
       "atlante_id": "risorgimento",
@@ -81,7 +88,8 @@
       "atlantis_category": "capitolo",
       "match_method": "exact_normalized_label",
       "class": "editorial_collision_keep_distinct",
-      "status": "not_validated"
+      "status": "resolved_keep_distinct",
+      "resolution": "Historical period/ambit node is distinct from an editorial chapter node. Chapter visible only when the editorial view is explicitly requested, never in the historical graph or as a traversable bridge."
     },
     {
       "atlante_id": "romanticismo",
@@ -92,7 +100,8 @@
       "atlantis_category": "capitolo",
       "match_method": "exact_normalized_label",
       "class": "editorial_collision_keep_distinct",
-      "status": "not_validated"
+      "status": "resolved_keep_distinct",
+      "resolution": "Historical period/ambit node is distinct from an editorial chapter node. Chapter visible only when the editorial view is explicitly requested, never in the historical graph or as a traversable bridge."
     },
     {
       "atlante_id": "compositore-adriano-banchieri",
@@ -1744,5 +1753,7 @@
       "class": "person_candidate",
       "status": "not_validated"
     }
-  ]
+  ],
+  "policy_version": "editorial-separation-v1",
+  "conceptual_identity_rule": "Historical period/ambit versus editorial chapter: name equality never implies identity. Keep both identifiers, route chapter references through editorial resources, exclude chapter nodes and chapter arcs from historical traversal."
 }
