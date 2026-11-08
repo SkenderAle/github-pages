@@ -1,0 +1,142 @@
+{
+  "schema": "musurgia-atlantis-fase2M-source-parity-test-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "scope": "Only audit staging; no production edits",
+  "source": {
+    "original": "atlante3d/app-livelli.js",
+    "original_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+    "snapshot": "musurgia-atlantis/audit-integrazione/SNAPSHOT_RENDERER_ORIGINALE_FASE2K_2026-11-08.txt",
+    "snapshot_sha": "d6ad7e194e70877b8d45b86575b322b280337c12",
+    "extracted_section_lines": 277,
+    "extracted_section_characters": 47796,
+    "section_identical_original_snapshot": true,
+    "function_stages": 5,
+    "subsequent_reassignments": 3
+  },
+  "data": {
+    "node_label_entries": 883,
+    "files": [
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE01_2026-11-08.json",
+        "sha": "7eb7cc16b9c26295aac4eb6ffc3846e64382900e",
+        "layer": "base",
+        "records": 500
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE02_2026-11-08.json",
+        "sha": "c9a67d13b50da4337ec4a9325f5d5d4a422635c5",
+        "layer": "base",
+        "records": 500
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+        "sha": "22916a9c6a59452f77048f04dbe9b229091ddf89",
+        "layer": "base",
+        "records": 500
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+        "sha": "057bd9124ee03e97e48cc85a729af0e79a8a5709",
+        "layer": "base",
+        "records": 500
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE05_2026-11-08.json",
+        "sha": "a890002101faa40ee93ca1b975158cf14503ca38",
+        "layer": "base",
+        "records": 437
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+        "sha": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+        "layer": "specialist",
+        "records": 300
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE02_2026-11-08.json",
+        "sha": "d1516f1681e4d5fd13f4da6b96c11228823300ff",
+        "layer": "specialist",
+        "records": 300
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+        "sha": "80124aa47bd0b514d83b360879c95f79627cb9be",
+        "layer": "specialist",
+        "records": 300
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE04_2026-11-08.json",
+        "sha": "c7363b8df57c6888459d49a31efae5188c633db4",
+        "layer": "specialist",
+        "records": 300
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json",
+        "sha": "618c1f0962509b750345b14079dc9b1459cd93c7",
+        "layer": "specialist",
+        "records": 189
+      },
+      {
+        "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_ESTENSIONE_FASE2K_30_2026-11-08.json",
+        "sha": "9ff27d5ad77424a125dad0b824fa4c2451f16e25",
+        "layer": "extension",
+        "records": 30
+      }
+    ],
+    "counts": {
+      "base": 2437,
+      "specialist": 1389,
+      "extension": 30,
+      "total": 3856,
+      "golden_cases": 131,
+      "forward_reverse_assertions": 262
+    }
+  },
+  "execution": {
+    "reference": "verbatim original isolated with byId map of source labels",
+    "candidate": "CommonJS adapter containing verbatim original section; same inputs and node labels",
+    "checks": "strict equality forward and reverse, no exceptions or empty output",
+    "layers": {
+      "base": {
+        "rows": 2437,
+        "passed": 2437,
+        "errors": [],
+        "mismatches": [],
+        "missing": 0,
+        "rolling_fnv1a32": "eff12e8c"
+      },
+      "specialist": {
+        "rows": 1389,
+        "passed": 1389,
+        "errors": [],
+        "mismatches": [],
+        "missing": 0,
+        "rolling_fnv1a32": "904698da"
+      },
+      "extension": {
+        "rows": 30,
+        "passed": 30,
+        "errors": [],
+        "mismatches": [],
+        "missing": 0,
+        "rolling_fnv1a32": "a3f1f0c5"
+      }
+    }
+  },
+  "golden": {
+    "cases": 131,
+    "individual_direction_assertions": 262,
+    "default_direction_assertions": 131,
+    "fixture_file": "FIXTURE_RELATIONSENTENCE_FASE2M_2026-11-08.json",
+    "test_file": "TEST_RELATIONSENTENCE_FASE2M_2026-11-08.cjs"
+  },
+  "limitations": [
+    "Exact software text equivalence does not establish historical truth of any edge or source",
+    "Source/staging labels are used, not live browser DOM; runtime visibility filters and merged Atlantis graph are not tested",
+    "No loaded browser tests, Android tap, hover or visual quality certification",
+    "Any historical inaccuracies or grammatical defects in original strings are intentionally preserved; editorial corrections require a separate review",
+    "No historical edge or rooted traversal gate opened; no public graph modified"
+  ],
+  "next": "Fase 2M Lotto 02: contrast labels from final graph/runtime, run browser hover/tap and rooted relevance test I-V before any integration."
+}
