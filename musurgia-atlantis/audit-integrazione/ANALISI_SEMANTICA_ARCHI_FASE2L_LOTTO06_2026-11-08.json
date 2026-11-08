@@ -1,0 +1,2045 @@
+{
+  "schema": "musurgia-atlantis-2L-lotto06-semantic-review-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "scope": "audit staging only: groups 101–120",
+  "source_index": {
+    "path": "musurgia-atlantis/audit-integrazione/CANDIDATI_COLLISIONI_ARCHI_FASE2K_2026-11-08.json",
+    "blob_sha": "074ae790819d7210da12e4c798e8d1dd2fad17e2"
+  },
+  "stage_blobs": {
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json": "22916a9c6a59452f77048f04dbe9b229091ddf89",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE02_2026-11-08.json": "d1516f1681e4d5fd13f4da6b96c11228823300ff",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json": "80124aa47bd0b514d83b360879c95f79627cb9be"
+  },
+  "counts": {
+    "total_cross_layer_groups": 250,
+    "cumulative_before": 100,
+    "reviewed_in_lotto": 20,
+    "cumulative_after": 120,
+    "remaining": 130,
+    "base_records": 20,
+    "specialist_records": 20,
+    "total_raw_records": 40
+  },
+  "records": [
+    {
+      "number": 101,
+      "pair": "legacy:opera-veneziana-seicento|pers:francesco-cavalli",
+      "semantic_class": "specific_repertoire_with_context",
+      "decision_reason": "Cavalli sviluppò il repertorio d'opera nei teatri pubblici veneziani. Il riferimento a teatro pubblico non equivale alla definizione di tutti i compositori dell'epoca come suoi collaboratori.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1308,
+          "stage_id": "base2K:1309",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-francesco-cavalli",
+          "target": "opera-veneziana-seicento",
+          "stage_source": "pers:francesco-cavalli",
+          "stage_target": "legacy:opera-veneziana-seicento",
+          "original_payload": {
+            "source": "compositore-francesco-cavalli",
+            "target": "opera-veneziana-seicento",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Francesco Cavalli. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/caletti-pietro-francesco-detto-cavalli_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Francesco Cavalli. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/caletti-pietro-francesco-detto-cavalli_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Francesco Cavalli. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/caletti-pietro-francesco-detto-cavalli_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 246,
+          "stage_id": "special2K:cat-scuole-opera-veneziana-seicento-francesco-cavalli",
+          "kind": "teatro-pubblico-seicentesco",
+          "source": "opera-veneziana-seicento",
+          "target": "compositore-francesco-cavalli",
+          "stage_source": "legacy:opera-veneziana-seicento",
+          "stage_target": "pers:francesco-cavalli",
+          "original_payload": {
+            "id": "cat-scuole-opera-veneziana-seicento-francesco-cavalli",
+            "group": "scuole",
+            "source": "opera-veneziana-seicento",
+            "target": "compositore-francesco-cavalli",
+            "kind": "teatro-pubblico-seicentesco",
+            "forward": "ebbe fra i protagonisti dell'opera pubblica veneziana",
+            "reverse": "contribuì al teatro pubblico nel quadro della",
+            "note": "Cavalli fu uno degli artefici della fortuna commerciale dei teatri operistici veneziani nel Seicento e contribuì a diffonderne i modelli.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/opera_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "repertorio-teatrale-veneziano",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "ebbe fra i protagonisti dell'opera pubblica veneziana",
+          "legacy_reverse": "contribuì al teatro pubblico nel quadro della",
+          "legacy_note": "Cavalli fu uno degli artefici della fortuna commerciale dei teatri operistici veneziani nel Seicento e contribuì a diffonderne i modelli.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/opera_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "ebbe fra i protagonisti dell'opera pubblica veneziana",
+            "reverse_fragment": "contribuì al teatro pubblico nel quadro della",
+            "original_note": "Cavalli fu uno degli artefici della fortuna commerciale dei teatri operistici veneziani nel Seicento e contribuì a diffonderne i modelli.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/opera_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 102,
+      "pair": "legacy:tradizioni-organistiche-tedesche|pers:dietrich-buxtehude",
+      "semantic_class": "historical_regional_practice",
+      "decision_reason": "Buxtehude, organista a Lubecca nella tradizione settentrionale, è diverso da Pachelbel e Kuhnau per repertorio e contesto; un comune nodo 'tradizioni organistiche tedesche' non produce legami diretti.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1323,
+          "stage_id": "base2K:1324",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-dietrich-buxtehude",
+          "target": "tradizioni-organistiche-tedesche",
+          "stage_source": "pers:dietrich-buxtehude",
+          "stage_target": "legacy:tradizioni-organistiche-tedesche",
+          "original_payload": {
+            "source": "compositore-dietrich-buxtehude",
+            "target": "tradizioni-organistiche-tedesche",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Dietrich Buxtehude. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Dietrich Buxtehude. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Dietrich Buxtehude. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 252,
+          "stage_id": "special2K:cat-scuole-tradizioni-organistiche-tedesche-dietrich-buxtehude",
+          "kind": "tradizione-organistica-e-contrappuntistica",
+          "source": "tradizioni-organistiche-tedesche",
+          "target": "compositore-dietrich-buxtehude",
+          "stage_source": "legacy:tradizioni-organistiche-tedesche",
+          "stage_target": "pers:dietrich-buxtehude",
+          "original_payload": {
+            "id": "cat-scuole-tradizioni-organistiche-tedesche-dietrich-buxtehude",
+            "group": "scuole",
+            "source": "tradizioni-organistiche-tedesche",
+            "target": "compositore-dietrich-buxtehude",
+            "kind": "tradizione-organistica-e-contrappuntistica",
+            "forward": "comprende le diverse pratiche organistiche di",
+            "reverse": "contribuì al repertorio organistico nelle",
+            "note": "Buxtehude operò a Lubecca e rappresentò il modello organistico della Germania settentrionale che il giovane Bach volle ascoltare personalmente.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-sebastian-bach_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "tradizioni-organistiche-regionali",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "comprende le diverse pratiche organistiche di",
+          "legacy_reverse": "contribuì al repertorio organistico nelle",
+          "legacy_note": "Buxtehude operò a Lubecca e rappresentò il modello organistico della Germania settentrionale che il giovane Bach volle ascoltare personalmente.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-sebastian-bach_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende le diverse pratiche organistiche di",
+            "reverse_fragment": "contribuì al repertorio organistico nelle",
+            "original_note": "Buxtehude operò a Lubecca e rappresentò il modello organistico della Germania settentrionale che il giovane Bach volle ascoltare personalmente.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/johann-sebastian-bach_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 103,
+      "pair": "legacy:abendmusiken-lubecca-marienkirche|pers:dietrich-buxtehude",
+      "semantic_class": "documented_institutional_activity",
+      "decision_reason": "Buxtehude ampliò le Abendmusiken di San Marien a Lubecca dopo il 1668; la chiesa ne indica l'origine incerta e il possibile promotore precedente Franz Tunder: NON attribuire a Buxtehude l'invenzione assoluta della serie.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1324,
+          "stage_id": "base2K:1325",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-dietrich-buxtehude",
+          "target": "abendmusiken-lubecca-marienkirche",
+          "stage_source": "pers:dietrich-buxtehude",
+          "stage_target": "legacy:abendmusiken-lubecca-marienkirche",
+          "original_payload": {
+            "source": "compositore-dietrich-buxtehude",
+            "target": "abendmusiken-lubecca-marienkirche",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Dietrich Buxtehude. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Dietrich Buxtehude. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Dietrich Buxtehude. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 808,
+          "stage_id": "special2K:audit8h-buxtehude-abendmusiken",
+          "kind": "organizzazione-concerti-serali-lubecca",
+          "source": "abendmusiken-lubecca-marienkirche",
+          "target": "compositore-dietrich-buxtehude",
+          "stage_source": "legacy:abendmusiken-lubecca-marienkirche",
+          "stage_target": "pers:dietrich-buxtehude",
+          "original_payload": {
+            "id": "audit8h-buxtehude-abendmusiken",
+            "group": "scuole",
+            "source": "abendmusiken-lubecca-marienkirche",
+            "target": "compositore-dietrich-buxtehude",
+            "kind": "organizzazione-concerti-serali-lubecca",
+            "forward": "furono sviluppate e rese celebri a Lubecca da",
+            "reverse": "organizzò concerti sacri serali nel ciclo delle",
+            "note": "Buxtehude sviluppò dal 1668 e rese celebri le Abendmusiken alla Marienkirche di Lubecca, con concerti sacri in occasione dell’Avvento; non gli si attribuisce l’invenzione assoluta della tradizione.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "direzione-concerti-abendmusiken",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "accolse nella propria attività",
+              "prior_reverse": "operò nell’ambito di",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "legacy_forward": "furono sviluppate e rese celebri a Lubecca da",
+          "legacy_reverse": "organizzò concerti sacri serali nel ciclo delle",
+          "legacy_note": "Buxtehude sviluppò dal 1668 e rese celebri le Abendmusiken alla Marienkirche di Lubecca, con concerti sacri in occasione dell’Avvento; non gli si attribuisce l’invenzione assoluta della tradizione.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "furono sviluppate e rese celebri a Lubecca da",
+            "reverse_fragment": "organizzò concerti sacri serali nel ciclo delle",
+            "original_note": "Buxtehude sviluppò dal 1668 e rese celebri le Abendmusiken alla Marienkirche di Lubecca, con concerti sacri in occasione dell’Avvento; non gli si attribuisce l’invenzione assoluta della tradizione.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/dietrich-buxtehude_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [
+        {
+          "url": "https://www.st-marien-luebeck.de/en/music/evening-music",
+          "claim": "Origine incerta della tradizione attribuita come possibilità a Tunder; Buxtehude la sviluppò e la collocò al mutamento dell'anno ecclesiastico."
+        }
+      ],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 104,
+      "pair": "legacy:tradizioni-organistiche-tedesche|pers:johann-pachelbel",
+      "semantic_class": "historical_regional_practice",
+      "decision_reason": "Pachelbel rappresenta l'organismo contrappuntistico e il repertorio del corale dell'area medio/meridionale tedesca; non è stesso ramo istituzionale di Buxtehude.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1325,
+          "stage_id": "base2K:1326",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-johann-pachelbel",
+          "target": "tradizioni-organistiche-tedesche",
+          "stage_source": "pers:johann-pachelbel",
+          "stage_target": "legacy:tradizioni-organistiche-tedesche",
+          "original_payload": {
+            "source": "compositore-johann-pachelbel",
+            "target": "tradizioni-organistiche-tedesche",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Pachelbel. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-pachelbel_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Pachelbel. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-pachelbel_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Pachelbel. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/johann-pachelbel_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 253,
+          "stage_id": "special2K:cat-scuole-tradizioni-organistiche-tedesche-johann-pachelbel",
+          "kind": "tradizione-organistica-e-contrappuntistica",
+          "source": "tradizioni-organistiche-tedesche",
+          "target": "compositore-johann-pachelbel",
+          "stage_source": "legacy:tradizioni-organistiche-tedesche",
+          "stage_target": "pers:johann-pachelbel",
+          "original_payload": {
+            "id": "cat-scuole-tradizioni-organistiche-tedesche-johann-pachelbel",
+            "group": "scuole",
+            "source": "tradizioni-organistiche-tedesche",
+            "target": "compositore-johann-pachelbel",
+            "kind": "tradizione-organistica-e-contrappuntistica",
+            "forward": "comprende le diverse pratiche organistiche di",
+            "reverse": "contribuì al repertorio organistico nelle",
+            "note": "Pachelbel fu una figura decisiva della tradizione organistica della Turingia e contribuì al repertorio sul corale, distinto dalla scuola settentrionale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-pachelbel_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "tradizioni-organistiche-regionali",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "comprende le diverse pratiche organistiche di",
+          "legacy_reverse": "contribuì al repertorio organistico nelle",
+          "legacy_note": "Pachelbel fu una figura decisiva della tradizione organistica della Turingia e contribuì al repertorio sul corale, distinto dalla scuola settentrionale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-pachelbel_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende le diverse pratiche organistiche di",
+            "reverse_fragment": "contribuì al repertorio organistico nelle",
+            "original_note": "Pachelbel fu una figura decisiva della tradizione organistica della Turingia e contribuì al repertorio sul corale, distinto dalla scuola settentrionale.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/johann-pachelbel_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 105,
+      "pair": "legacy:tradizioni-organistiche-tedesche|pers:johann-kuhnau",
+      "semantic_class": "historical_regional_practice",
+      "decision_reason": "Kuhnau fu precedente di Bach a Lipsia come Thomaskantor e autore di sonate per tastiera; successione alla carica non equivale a rapporto didattico diretto.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1328,
+          "stage_id": "base2K:1329",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-johann-kuhnau",
+          "target": "tradizioni-organistiche-tedesche",
+          "stage_source": "pers:johann-kuhnau",
+          "stage_target": "legacy:tradizioni-organistiche-tedesche",
+          "original_payload": {
+            "source": "compositore-johann-kuhnau",
+            "target": "tradizioni-organistiche-tedesche",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Kuhnau. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-kuhnau_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Kuhnau. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-kuhnau_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Kuhnau. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/johann-kuhnau_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 254,
+          "stage_id": "special2K:cat-scuole-tradizioni-organistiche-tedesche-johann-kuhnau",
+          "kind": "tradizione-organistica-e-contrappuntistica",
+          "source": "tradizioni-organistiche-tedesche",
+          "target": "compositore-johann-kuhnau",
+          "stage_source": "legacy:tradizioni-organistiche-tedesche",
+          "stage_target": "pers:johann-kuhnau",
+          "original_payload": {
+            "id": "cat-scuole-tradizioni-organistiche-tedesche-johann-kuhnau",
+            "group": "scuole",
+            "source": "tradizioni-organistiche-tedesche",
+            "target": "compositore-johann-kuhnau",
+            "kind": "tradizione-organistica-e-contrappuntistica",
+            "forward": "comprende le diverse pratiche organistiche di",
+            "reverse": "contribuì al repertorio organistico nelle",
+            "note": "Kuhnau fu organista e Kantor a Lipsia prima di Bach, e compose importanti raccolte di sonate per tastiera oltre a cantate sacre.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-kuhnau_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "tradizioni-organistiche-regionali",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "comprende le diverse pratiche organistiche di",
+          "legacy_reverse": "contribuì al repertorio organistico nelle",
+          "legacy_note": "Kuhnau fu organista e Kantor a Lipsia prima di Bach, e compose importanti raccolte di sonate per tastiera oltre a cantate sacre.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-kuhnau_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende le diverse pratiche organistiche di",
+            "reverse_fragment": "contribuì al repertorio organistico nelle",
+            "original_note": "Kuhnau fu organista e Kantor a Lipsia prima di Bach, e compose importanti raccolte di sonate per tastiera oltre a cantate sacre.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/johann-kuhnau_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 106,
+      "pair": "legacy:clavicembalisti-francesi-barocchi|pers:couperin",
+      "semantic_class": "repertoire_with_specific_technique",
+      "decision_reason": "François Couperin: pièces de clavecin e ordres, scuola francese del clavicembalo. Non confondere il musicista con altri Couperin della stessa famiglia.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1329,
+          "stage_id": "base2K:1330",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-francois-couperin",
+          "target": "clavicembalisti-francesi-barocchi",
+          "stage_source": "pers:couperin",
+          "stage_target": "legacy:clavicembalisti-francesi-barocchi",
+          "original_payload": {
+            "source": "compositore-francois-couperin",
+            "target": "clavicembalisti-francesi-barocchi",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di François Couperin. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/couperin_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di François Couperin. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/couperin_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di François Couperin. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/couperin_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 248,
+          "stage_id": "special2K:cat-scuole-clavicembalisti-francesi-barocchi-francois-couperin",
+          "kind": "scrittura-per-clavicembalo",
+          "source": "clavicembalisti-francesi-barocchi",
+          "target": "compositore-francois-couperin",
+          "stage_source": "legacy:clavicembalisti-francesi-barocchi",
+          "stage_target": "pers:couperin",
+          "original_payload": {
+            "id": "cat-scuole-clavicembalisti-francesi-barocchi-francois-couperin",
+            "group": "scuole",
+            "source": "clavicembalisti-francesi-barocchi",
+            "target": "compositore-francois-couperin",
+            "kind": "scrittura-per-clavicembalo",
+            "forward": "comprende la produzione per clavicembalo di",
+            "reverse": "compose musica per clavicembalo nella tradizione della",
+            "note": "Couperin sviluppò raccolte di pièces de clavecin e un linguaggio di danza e carattere di grande influenza sulla tastiera barocca francese.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/clavicembalisti-e-clavicordisti_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "scrittura-clavicembalistica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "comprende la produzione per clavicembalo di",
+          "legacy_reverse": "compose musica per clavicembalo nella tradizione della",
+          "legacy_note": "Couperin sviluppò raccolte di pièces de clavecin e un linguaggio di danza e carattere di grande influenza sulla tastiera barocca francese.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/clavicembalisti-e-clavicordisti_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende la produzione per clavicembalo di",
+            "reverse_fragment": "compose musica per clavicembalo nella tradizione della",
+            "original_note": "Couperin sviluppò raccolte di pièces de clavecin e un linguaggio di danza e carattere di grande influenza sulla tastiera barocca francese.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/clavicembalisti-e-clavicordisti_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 107,
+      "pair": "legacy:tradizione-viola-da-gamba-francese|pers:marin-marais",
+      "semantic_class": "specific_instrumental_corpus",
+      "decision_reason": "Marin Marais pubblicò cinque libri di Pièces de viole; la tradizione francese della viola da gamba non autorizza da sola relazioni con ogni esecutore né riduce la sua attività esclusivamente alla gamba.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1337,
+          "stage_id": "base2K:1338",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-marin-marais",
+          "target": "tradizione-viola-da-gamba-francese",
+          "stage_source": "pers:marin-marais",
+          "stage_target": "legacy:tradizione-viola-da-gamba-francese",
+          "original_payload": {
+            "source": "compositore-marin-marais",
+            "target": "tradizione-viola-da-gamba-francese",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Marin Marais. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/marin-marais_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Marin Marais. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/marin-marais_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Marin Marais. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/marin-marais_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 391,
+          "stage_id": "special2K:lotto02-sc-marais-gamba",
+          "kind": "massimo-esponente-viola-da-gamba",
+          "source": "tradizione-viola-da-gamba-francese",
+          "target": "compositore-marin-marais",
+          "stage_source": "legacy:tradizione-viola-da-gamba-francese",
+          "stage_target": "pers:marin-marais",
+          "original_payload": {
+            "id": "lotto02-sc-marais-gamba",
+            "group": "scuole",
+            "source": "tradizione-viola-da-gamba-francese",
+            "target": "compositore-marin-marais",
+            "kind": "massimo-esponente-viola-da-gamba",
+            "forward": "annovera come massimo esponente del repertorio per viola da gamba",
+            "reverse": "compose e pubblicò cinque libri di pièces de viole nella",
+            "note": "Marin Marais sviluppò in cinque libri di Pièces de viole un repertorio per viola da gamba e continuo che rielabora la tradizione di Sainte-Colombe con una voce strumentale propria.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/marin-marais_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "repertorio-e-scuola-viola-da-gamba",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "costituì il contesto di",
+              "prior_reverse": "partecipò alla tradizione come",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "legacy_forward": "annovera come massimo esponente del repertorio per viola da gamba",
+          "legacy_reverse": "compose e pubblicò cinque libri di pièces de viole nella",
+          "legacy_note": "Marin Marais sviluppò in cinque libri di Pièces de viole un repertorio per viola da gamba e continuo che rielabora la tradizione di Sainte-Colombe con una voce strumentale propria.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/marin-marais_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "annovera come massimo esponente del repertorio per viola da gamba",
+            "reverse_fragment": "compose e pubblicò cinque libri di pièces de viole nella",
+            "original_note": "Marin Marais sviluppò in cinque libri di Pièces de viole un repertorio per viola da gamba e continuo che rielabora la tradizione di Sainte-Colombe con una voce strumentale propria.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/marin-marais_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 108,
+      "pair": "legacy:scuola-violinistica-francese|pers:jean-marie-leclair",
+      "semantic_class": "regional_cross_training",
+      "decision_reason": "Jean-Marie Leclair: formazione a Torino con Giovanni Battista Somis (allievo di Corelli) e carriera francese, con accostamento di pratiche italiane e francesi. L'arco documentato Leclair–Somis è distinto da categoria scuola violinistica francese.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1339,
+          "stage_id": "base2K:1340",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-jean-marie-leclair",
+          "target": "scuola-violinistica-francese",
+          "stage_source": "pers:jean-marie-leclair",
+          "stage_target": "legacy:scuola-violinistica-francese",
+          "original_payload": {
+            "source": "compositore-jean-marie-leclair",
+            "target": "scuola-violinistica-francese",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Jean-Marie Leclair. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/jean-marie-leclair_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Jean-Marie Leclair. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/jean-marie-leclair_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Jean-Marie Leclair. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/jean-marie-leclair_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 397,
+          "stage_id": "special2K:lotto02-sc-leclair-france",
+          "kind": "sviluppo-scuola-francese-violino",
+          "source": "scuola-violinistica-francese",
+          "target": "compositore-jean-marie-leclair",
+          "stage_source": "legacy:scuola-violinistica-francese",
+          "stage_target": "pers:jean-marie-leclair",
+          "original_payload": {
+            "id": "lotto02-sc-leclair-france",
+            "group": "scuole",
+            "source": "scuola-violinistica-francese",
+            "target": "compositore-jean-marie-leclair",
+            "kind": "sviluppo-scuola-francese-violino",
+            "forward": "ebbe fra i maestri della scrittura violinistica settecentesca",
+            "reverse": "integrò la formazione piemontese nella tecnica della",
+            "note": "Leclair è uno dei principali esponenti della scuola violinistica francese del Settecento; la sua produzione congiunge formazione torinese e gusto compositivo francese.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/jean-marie-leclair/",
+              "https://www.treccani.it/enciclopedia/somis_%28Dizionario-Biografico%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "trasmissione-violinistica-francese",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "costituì il contesto di",
+              "prior_reverse": "partecipò alla tradizione come",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "legacy_forward": "ebbe fra i maestri della scrittura violinistica settecentesca",
+          "legacy_reverse": "integrò la formazione piemontese nella tecnica della",
+          "legacy_note": "Leclair è uno dei principali esponenti della scuola violinistica francese del Settecento; la sua produzione congiunge formazione torinese e gusto compositivo francese.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/jean-marie-leclair/",
+            "https://www.treccani.it/enciclopedia/somis_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "ebbe fra i maestri della scrittura violinistica settecentesca",
+            "reverse_fragment": "integrò la formazione piemontese nella tecnica della",
+            "original_note": "Leclair è uno dei principali esponenti della scuola violinistica francese del Settecento; la sua produzione congiunge formazione torinese e gusto compositivo francese.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/jean-marie-leclair/",
+              "https://www.treccani.it/enciclopedia/somis_%28Dizionario-Biografico%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [
+        {
+          "url": "https://www.treccani.it/enciclopedia/jean-marie-leclair/",
+          "claim": "Leclair studiò a Torino con Somis, allievo di Corelli."
+        }
+      ],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 109,
+      "pair": "legacy:teatro-inglese-restaurazione|pers:purcell",
+      "semantic_class": "dramatic_repertoire_not_equivalence",
+      "decision_reason": "Henry Purcell: dramatic/semi-operas e teatro inglese della Restaurazione, diversi dall'opera integralmente cantata. Non convertire automaticamente tutte le dramatic operas in opera lirica italiana.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1342,
+          "stage_id": "base2K:1343",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-henry-purcell",
+          "target": "teatro-inglese-restaurazione",
+          "stage_source": "pers:purcell",
+          "stage_target": "legacy:teatro-inglese-restaurazione",
+          "original_payload": {
+            "source": "compositore-henry-purcell",
+            "target": "teatro-inglese-restaurazione",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Henry Purcell. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/henry-purcell_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Henry Purcell. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/henry-purcell_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Henry Purcell. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/henry-purcell_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 303,
+          "stage_id": "special2K:catalogo-teatro-inglese-restaurazione-henry-purcell",
+          "kind": "sintesi-nazionale",
+          "source": "teatro-inglese-restaurazione",
+          "target": "compositore-henry-purcell",
+          "stage_source": "legacy:teatro-inglese-restaurazione",
+          "stage_target": "pers:purcell",
+          "original_payload": {
+            "id": "catalogo-teatro-inglese-restaurazione-henry-purcell",
+            "group": "scuole",
+            "source": "teatro-inglese-restaurazione",
+            "target": "compositore-henry-purcell",
+            "kind": "sintesi-nazionale",
+            "forward": "comprende le composizioni per il teatro inglese di",
+            "reverse": "compose musica drammatica nel contesto del",
+            "note": "Purcell elaborò nelle dramatic operas una sintesi inglese di contrappunto, modelli francesi, monodia italiana e basso ostinato.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/henry-purcell-e-la-rinascita-musicale-inglese_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "teatro-inglese-restaurazione",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include l'attività o la partecipazione di",
+              "prior_reverse": "partecipò al contesto o alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "comprende le composizioni per il teatro inglese di",
+          "legacy_reverse": "compose musica drammatica nel contesto del",
+          "legacy_note": "Purcell elaborò nelle dramatic operas una sintesi inglese di contrappunto, modelli francesi, monodia italiana e basso ostinato.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/henry-purcell-e-la-rinascita-musicale-inglese_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende le composizioni per il teatro inglese di",
+            "reverse_fragment": "compose musica drammatica nel contesto del",
+            "original_note": "Purcell elaborò nelle dramatic operas una sintesi inglese di contrappunto, modelli francesi, monodia italiana e basso ostinato.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/henry-purcell-e-la-rinascita-musicale-inglese_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 110,
+      "pair": "legacy:teatro-inglese-restaurazione|pers:john-blow",
+      "semantic_class": "specific_earlier_stage_work",
+      "decision_reason": "John Blow: Venus and Adonis è un precedente del teatro musicale inglese. La cronologia e il rapporto con Purcell richiedono una relazione storica propria, non un attraversamento tramite genere.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1344,
+          "stage_id": "base2K:1345",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-john-blow",
+          "target": "teatro-inglese-restaurazione",
+          "stage_source": "pers:john-blow",
+          "stage_target": "legacy:teatro-inglese-restaurazione",
+          "original_payload": {
+            "source": "compositore-john-blow",
+            "target": "teatro-inglese-restaurazione",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di John Blow. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/john-blow/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di John Blow. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/john-blow/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di John Blow. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/john-blow/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 302,
+          "stage_id": "special2K:catalogo-teatro-inglese-restaurazione-john-blow",
+          "kind": "antecedente-drammatico",
+          "source": "teatro-inglese-restaurazione",
+          "target": "compositore-john-blow",
+          "stage_source": "legacy:teatro-inglese-restaurazione",
+          "stage_target": "pers:john-blow",
+          "original_payload": {
+            "id": "catalogo-teatro-inglese-restaurazione-john-blow",
+            "group": "scuole",
+            "source": "teatro-inglese-restaurazione",
+            "target": "compositore-john-blow",
+            "kind": "antecedente-drammatico",
+            "forward": "comprende le composizioni per il teatro inglese di",
+            "reverse": "compose musica drammatica nel contesto del",
+            "note": "John Blow scrisse Venus and Adonis, uno dei precedenti del teatro musicale inglese che anticipano il lavoro drammaturgico di Purcell.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/henry-purcell-e-la-rinascita-musicale-inglese_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "teatro-inglese-restaurazione",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include l'attività o la partecipazione di",
+              "prior_reverse": "partecipò al contesto o alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "comprende le composizioni per il teatro inglese di",
+          "legacy_reverse": "compose musica drammatica nel contesto del",
+          "legacy_note": "John Blow scrisse Venus and Adonis, uno dei precedenti del teatro musicale inglese che anticipano il lavoro drammaturgico di Purcell.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/henry-purcell-e-la-rinascita-musicale-inglese_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "comprende le composizioni per il teatro inglese di",
+            "reverse_fragment": "compose musica drammatica nel contesto del",
+            "original_note": "John Blow scrisse Venus and Adonis, uno dei precedenti del teatro musicale inglese che anticipano il lavoro drammaturgico di Purcell.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/henry-purcell-e-la-rinascita-musicale-inglese_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 111,
+      "pair": "legacy:scuola-contrappunto-viennese|pers:johann-georg-albrechtsberger",
+      "semantic_class": "specific_treatise_and_teaching",
+      "decision_reason": "Albrechtsberger: Gründliche Anweisung zur Composition (1790) come documento didattico; l'insegnamento a Beethoven è un secondo rapporto biografico da ancorare a evidenze specifiche.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1358,
+          "stage_id": "base2K:1359",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-johann-georg-albrechtsberger",
+          "target": "scuola-contrappunto-viennese",
+          "stage_source": "pers:johann-georg-albrechtsberger",
+          "stage_target": "legacy:scuola-contrappunto-viennese",
+          "original_payload": {
+            "source": "compositore-johann-georg-albrechtsberger",
+            "target": "scuola-contrappunto-viennese",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Georg Albrechtsberger. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-georg-albrechtsberger/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Georg Albrechtsberger. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-georg-albrechtsberger/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Georg Albrechtsberger. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/johann-georg-albrechtsberger/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 417,
+          "stage_id": "special2K:lotto02-sc-albrechts-counter",
+          "kind": "trattato-contrappunto-1790",
+          "source": "scuola-contrappunto-viennese",
+          "target": "compositore-johann-georg-albrechtsberger",
+          "stage_source": "legacy:scuola-contrappunto-viennese",
+          "stage_target": "pers:johann-georg-albrechtsberger",
+          "original_payload": {
+            "id": "lotto02-sc-albrechts-counter",
+            "group": "scuole",
+            "source": "scuola-contrappunto-viennese",
+            "target": "compositore-johann-georg-albrechtsberger",
+            "kind": "trattato-contrappunto-1790",
+            "forward": "ebbe fra i teorici e didatti più influenti",
+            "reverse": "pubblicò il trattato di contrappunto del 1790 nel quadro della",
+            "note": "Albrechtsberger sistematizzò l'insegnamento del contrappunto nel trattato Gründliche Anweisung zur Composition del 1790, pratica trasmessa anche a Beethoven durante il suo apprendistato viennese.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-georg-albrechtsberger/",
+              "https://www.treccani.it/enciclopedia/contrappunto_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "didattica-contrappuntistica-storica",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto5-20261020",
+              "prior_forward": "costituì il contesto di",
+              "prior_reverse": "partecipò alla tradizione come",
+              "prior_status": "documentato",
+              "method": "Seconda lettura editoriale della relazione esistente secondo kind, nota e fonti già associate; preservati estremi, gruppo e documentazione originale. Non equivale a verifica indipendente esaustiva delle fonti."
+            }
+          },
+          "legacy_forward": "ebbe fra i teorici e didatti più influenti",
+          "legacy_reverse": "pubblicò il trattato di contrappunto del 1790 nel quadro della",
+          "legacy_note": "Albrechtsberger sistematizzò l'insegnamento del contrappunto nel trattato Gründliche Anweisung zur Composition del 1790, pratica trasmessa anche a Beethoven durante il suo apprendistato viennese.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-georg-albrechtsberger/",
+            "https://www.treccani.it/enciclopedia/contrappunto_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "ebbe fra i teorici e didatti più influenti",
+            "reverse_fragment": "pubblicò il trattato di contrappunto del 1790 nel quadro della",
+            "original_note": "Albrechtsberger sistematizzò l'insegnamento del contrappunto nel trattato Gründliche Anweisung zur Composition del 1790, pratica trasmessa anche a Beethoven durante il suo apprendistato viennese.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/johann-georg-albrechtsberger/",
+              "https://www.treccani.it/enciclopedia/contrappunto_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 112,
+      "pair": "legacy:riforma-operistica-gluck|pers:gluck",
+      "semantic_class": "reform_collaboration_not_single_author",
+      "decision_reason": "Gluck rielabora il teatro d'opera collaborando con Ranieri de' Calzabigi; Orfeo ed Euridice prima rappresentazione a Vienna il 5 ottobre 1762. La riforma non è una persona né impone fusione di opere e autori.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1363,
+          "stage_id": "base2K:1364",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-christoph-willibald-gluck",
+          "target": "riforma-operistica-gluck",
+          "stage_source": "pers:gluck",
+          "stage_target": "legacy:riforma-operistica-gluck",
+          "original_payload": {
+            "source": "compositore-christoph-willibald-gluck",
+            "target": "riforma-operistica-gluck",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Christoph Willibald Gluck. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/christoph-willibald-gluck_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Christoph Willibald Gluck. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/christoph-willibald-gluck_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Christoph Willibald Gluck. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/christoph-willibald-gluck_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 304,
+          "stage_id": "special2K:catalogo-riforma-operistica-gluck-christoph-willibald-gluck",
+          "kind": "iniziatore-della-riforma",
+          "source": "riforma-operistica-gluck",
+          "target": "compositore-christoph-willibald-gluck",
+          "stage_source": "legacy:riforma-operistica-gluck",
+          "stage_target": "pers:gluck",
+          "original_payload": {
+            "id": "catalogo-riforma-operistica-gluck-christoph-willibald-gluck",
+            "group": "scuole",
+            "source": "riforma-operistica-gluck",
+            "target": "compositore-christoph-willibald-gluck",
+            "kind": "iniziatore-della-riforma",
+            "forward": "ebbe come promotore, accanto a Calzabigi,",
+            "reverse": "fu promotore della",
+            "note": "In collaborazione con Ranieri de' Calzabigi, Gluck promosse l'equilibrio fra parola, dramma, canto e orchestra nelle opere riformate.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/christoph-willibald-gluck_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "riforma-operistica-documentata",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include l'attività o la partecipazione di",
+              "prior_reverse": "partecipò al contesto o alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "ebbe come promotore, accanto a Calzabigi,",
+          "legacy_reverse": "fu promotore della",
+          "legacy_note": "In collaborazione con Ranieri de' Calzabigi, Gluck promosse l'equilibrio fra parola, dramma, canto e orchestra nelle opere riformate.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/christoph-willibald-gluck_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "ebbe come promotore, accanto a Calzabigi,",
+            "reverse_fragment": "fu promotore della",
+            "original_note": "In collaborazione con Ranieri de' Calzabigi, Gluck promosse l'equilibrio fra parola, dramma, canto e orchestra nelle opere riformate.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/christoph-willibald-gluck_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [
+        {
+          "url": "https://corago.unibo.it/opera/Z000002696",
+          "claim": "Orfeo ed Euridice, Gluck, libretto Calzabigi, debutto Vienna 5 ottobre 1762."
+        }
+      ],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 113,
+      "pair": "legacy:stile-galante-e-sensibile|pers:carl-philipp-emanuel-bach",
+      "semantic_class": "galant_empfindsam_distinct",
+      "decision_reason": "Carl Philipp Emanuel Bach esponente dell'Empfindsamer Stil; il campo legacy unisce galante e sensibile, ma lo specialista distingue l'espressività sensibile dalle tendenze galanti.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1365,
+          "stage_id": "base2K:1366",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-carl-philipp-emanuel-bach",
+          "target": "stile-galante-e-sensibile",
+          "stage_source": "pers:carl-philipp-emanuel-bach",
+          "stage_target": "legacy:stile-galante-e-sensibile",
+          "original_payload": {
+            "source": "compositore-carl-philipp-emanuel-bach",
+            "target": "stile-galante-e-sensibile",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Carl Philipp Emanuel Bach. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/carl-philipp-emanuel-bach_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Carl Philipp Emanuel Bach. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/carl-philipp-emanuel-bach_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Carl Philipp Emanuel Bach. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/carl-philipp-emanuel-bach_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 256,
+          "stage_id": "special2K:cat-scuole-stile-galante-e-sensibile-carl-philipp-emanuel-bach",
+          "kind": "tradizione-stilistica-di-meta-settecento",
+          "source": "stile-galante-e-sensibile",
+          "target": "compositore-carl-philipp-emanuel-bach",
+          "stage_source": "legacy:stile-galante-e-sensibile",
+          "stage_target": "pers:carl-philipp-emanuel-bach",
+          "original_payload": {
+            "id": "cat-scuole-stile-galante-e-sensibile-carl-philipp-emanuel-bach",
+            "group": "scuole",
+            "source": "stile-galante-e-sensibile",
+            "target": "compositore-carl-philipp-emanuel-bach",
+            "kind": "tradizione-stilistica-di-meta-settecento",
+            "forward": "trova un protagonista dello stile sensibile nella produzione di",
+            "reverse": "rappresentò lo stile sensibile nell'ambito dello",
+            "note": "Carl Philipp Emanuel Bach è un protagonista dello stile sensibile, con un linguaggio tastieristico capace di contrasti improvvisi e gesti espressivi.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/carl-philipp-emanuel-bach_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "orientamento-empfindsamer-stil",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "trova un protagonista dello stile sensibile nella produzione di",
+          "legacy_reverse": "rappresentò lo stile sensibile nell'ambito dello",
+          "legacy_note": "Carl Philipp Emanuel Bach è un protagonista dello stile sensibile, con un linguaggio tastieristico capace di contrasti improvvisi e gesti espressivi.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/carl-philipp-emanuel-bach_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "trova un protagonista dello stile sensibile nella produzione di",
+            "reverse_fragment": "rappresentò lo stile sensibile nell'ambito dello",
+            "original_note": "Carl Philipp Emanuel Bach è un protagonista dello stile sensibile, con un linguaggio tastieristico capace di contrasti improvvisi e gesti espressivi.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/carl-philipp-emanuel-bach_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 114,
+      "pair": "legacy:stile-galante-e-sensibile|pers:johann-christian-bach",
+      "semantic_class": "galant_empfindsam_distinct",
+      "decision_reason": "Johann Christian Bach legato allo stile galante internazionale di Milano e Londra; distinto da C. P. E. Bach (fratellastro) e da J. S. Bach. Non è corretto estendere automaticamente a lui l'Empfindsamer Stil di C. P. E.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1368,
+          "stage_id": "base2K:1369",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-johann-christian-bach",
+          "target": "stile-galante-e-sensibile",
+          "stage_source": "pers:johann-christian-bach",
+          "stage_target": "legacy:stile-galante-e-sensibile",
+          "original_payload": {
+            "source": "compositore-johann-christian-bach",
+            "target": "stile-galante-e-sensibile",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Christian Bach. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-christian-bach/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Christian Bach. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-christian-bach/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Christian Bach. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/johann-christian-bach/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 257,
+          "stage_id": "special2K:cat-scuole-stile-galante-e-sensibile-johann-christian-bach",
+          "kind": "tradizione-stilistica-di-meta-settecento",
+          "source": "stile-galante-e-sensibile",
+          "target": "compositore-johann-christian-bach",
+          "stage_source": "legacy:stile-galante-e-sensibile",
+          "stage_target": "pers:johann-christian-bach",
+          "original_payload": {
+            "id": "cat-scuole-stile-galante-e-sensibile-johann-christian-bach",
+            "group": "scuole",
+            "source": "stile-galante-e-sensibile",
+            "target": "compositore-johann-christian-bach",
+            "kind": "tradizione-stilistica-di-meta-settecento",
+            "forward": "trova un protagonista dello stile galante nella produzione di",
+            "reverse": "rappresentò lo stile galante nell'ambito dello",
+            "note": "Johann Christian Bach è fra i principali esponenti tedeschi dello stile galante, soprattutto nell'ambiente internazionale di Milano e Londra.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-christian-bach/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "orientamento-galante",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto3-20261020",
+              "prior_forward": "include fra i praticanti o innovatori",
+              "prior_reverse": "è collegato a questa tradizione come",
+              "prior_status": "documentato",
+              "method": "Revisione editoriale della natura del rapporto in base a kind, note e fonti associate; non si deduce un'appartenenza istituzionale da analogia o vicinanza temporale."
+            }
+          },
+          "legacy_forward": "trova un protagonista dello stile galante nella produzione di",
+          "legacy_reverse": "rappresentò lo stile galante nell'ambito dello",
+          "legacy_note": "Johann Christian Bach è fra i principali esponenti tedeschi dello stile galante, soprattutto nell'ambiente internazionale di Milano e Londra.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-christian-bach/"
+          ],
+          "display_contract": {
+            "forward_fragment": "trova un protagonista dello stile galante nella produzione di",
+            "reverse_fragment": "rappresentò lo stile galante nell'ambito dello",
+            "original_note": "Johann Christian Bach è fra i principali esponenti tedeschi dello stile galante, soprattutto nell'ambiente internazionale di Milano e Londra.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/johann-christian-bach/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 115,
+      "pair": "legacy:scuola-mannheim|pers:carl-stamitz",
+      "semantic_class": "specific_orchestral_institution",
+      "decision_reason": "Carl Stamitz si formò nell'orchestra di Mannheim; l'appartenenza alla tradizione non certifica ogni tecnica orchestrale come sua invenzione. Johann Stamitz è padre distinto, non stesso nodo.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1371,
+          "stage_id": "base2K:1372",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-carl-stamitz",
+          "target": "scuola-mannheim",
+          "stage_source": "pers:carl-stamitz",
+          "stage_target": "legacy:scuola-mannheim",
+          "original_payload": {
+            "source": "compositore-carl-stamitz",
+            "target": "scuola-mannheim",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Carl Stamitz. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.deutsche-biographie.de/gnd119000008.html"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Carl Stamitz. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.deutsche-biographie.de/gnd119000008.html"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Carl Stamitz. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.deutsche-biographie.de/gnd119000008.html"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 163,
+          "stage_id": "special2K:scuola-mannheim-carl-stamitz",
+          "kind": "tradizione-orchestrale",
+          "source": "scuola-mannheim",
+          "target": "compositore-carl-stamitz",
+          "stage_source": "legacy:scuola-mannheim",
+          "stage_target": "pers:carl-stamitz",
+          "original_payload": {
+            "id": "scuola-mannheim-carl-stamitz",
+            "group": "scuole",
+            "source": "scuola-mannheim",
+            "target": "compositore-carl-stamitz",
+            "kind": "tradizione-orchestrale",
+            "forward": "formò nell'orchestra di corte e contribuì alla carriera europea di",
+            "reverse": "si formò e suonò nella tradizione orchestrale della",
+            "note": "Carl Stamitz si formò nella tradizione della scuola di Mannheim, lavorò nell'orchestra di corte e ne diffuse la pratica sinfonico-concertante in Europa.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/karel-filip-stamitz/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "pratica-orchestrale-istituzionale",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "legacy_forward": "formò nell'orchestra di corte e contribuì alla carriera europea di",
+          "legacy_reverse": "si formò e suonò nella tradizione orchestrale della",
+          "legacy_note": "Carl Stamitz si formò nella tradizione della scuola di Mannheim, lavorò nell'orchestra di corte e ne diffuse la pratica sinfonico-concertante in Europa.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/karel-filip-stamitz/"
+          ],
+          "display_contract": {
+            "forward_fragment": "formò nell'orchestra di corte e contribuì alla carriera europea di",
+            "reverse_fragment": "si formò e suonò nella tradizione orchestrale della",
+            "original_note": "Carl Stamitz si formò nella tradizione della scuola di Mannheim, lavorò nell'orchestra di corte e ne diffuse la pratica sinfonico-concertante in Europa.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/karel-filip-stamitz/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 116,
+      "pair": "legacy:scuola-mannheim|pers:johann-stamitz",
+      "semantic_class": "specific_orchestral_institution",
+      "decision_reason": "Johann Stamitz contribuì alla disciplina e reputazione dell'orchestra di Mannheim; il rapporto padre-figlio con Carl è biografico, non ricavato transitivamente da 'scuola Mannheim'.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1373,
+          "stage_id": "base2K:1374",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-johann-stamitz",
+          "target": "scuola-mannheim",
+          "stage_source": "pers:johann-stamitz",
+          "stage_target": "legacy:scuola-mannheim",
+          "original_payload": {
+            "source": "compositore-johann-stamitz",
+            "target": "scuola-mannheim",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Stamitz. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/johann-wenzel-anton-stamitz_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Stamitz. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/johann-wenzel-anton-stamitz_%28Enciclopedia-Italiana%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Johann Stamitz. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/johann-wenzel-anton-stamitz_%28Enciclopedia-Italiana%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 160,
+          "stage_id": "special2K:scuola-mannheim-johann-stamitz",
+          "kind": "direzione-e-formazione-orchestra",
+          "source": "scuola-mannheim",
+          "target": "compositore-johann-stamitz",
+          "stage_source": "legacy:scuola-mannheim",
+          "stage_target": "pers:johann-stamitz",
+          "original_payload": {
+            "id": "scuola-mannheim-johann-stamitz",
+            "group": "scuole",
+            "source": "scuola-mannheim",
+            "target": "compositore-johann-stamitz",
+            "kind": "direzione-e-formazione-orchestra",
+            "forward": "ebbe come iniziatore e direttore musicale",
+            "reverse": "promosse e diresse l'orchestra legata alla",
+            "note": "Johann Stamitz fu uno degli iniziatori della scuola di Mannheim e della reputazione internazionale della sua orchestra di corte.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/mannheim/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "pratica-orchestrale-istituzionale",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "legacy_forward": "ebbe come iniziatore e direttore musicale",
+          "legacy_reverse": "promosse e diresse l'orchestra legata alla",
+          "legacy_note": "Johann Stamitz fu uno degli iniziatori della scuola di Mannheim e della reputazione internazionale della sua orchestra di corte.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/mannheim/"
+          ],
+          "display_contract": {
+            "forward_fragment": "ebbe come iniziatore e direttore musicale",
+            "reverse_fragment": "promosse e diresse l'orchestra legata alla",
+            "original_note": "Johann Stamitz fu uno degli iniziatori della scuola di Mannheim e della reputazione internazionale della sua orchestra di corte.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/mannheim/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 117,
+      "pair": "legacy:opera-seria|pers:rossini",
+      "semantic_class": "repertoire_and_form_distinction",
+      "decision_reason": "Rossini autore anche di opera seria, soprattutto nel periodo napoletano; distinguere tale repertorio dalla propria produzione buffa, non trasformare 'opera seria' in scuola di allievi.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1387,
+          "stage_id": "base2K:1388",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-gioachino-rossini",
+          "target": "opera-seria",
+          "stage_source": "pers:rossini",
+          "stage_target": "legacy:opera-seria",
+          "original_payload": {
+            "source": "compositore-gioachino-rossini",
+            "target": "opera-seria",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gioachino Rossini. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-antonio-rossini_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gioachino Rossini. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/gioachino-antonio-rossini_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gioachino Rossini. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-antonio-rossini_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 50,
+          "stage_id": "special2K:gen-opera-seria-gioachino-rossini",
+          "kind": "repertorio-e-trasformazione",
+          "source": "opera-seria",
+          "target": "compositore-gioachino-rossini",
+          "stage_source": "legacy:opera-seria",
+          "stage_target": "pers:rossini",
+          "original_payload": {
+            "id": "gen-opera-seria-gioachino-rossini",
+            "group": "genealogie",
+            "source": "opera-seria",
+            "target": "compositore-gioachino-rossini",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Rossini rimodellò profondamente le convenzioni dell'opera seria, specialmente nei lavori napoletani.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "legacy_forward": "fu praticato o trasformato da",
+          "legacy_reverse": "coltivò o trasformò il genere di",
+          "legacy_note": "Rossini rimodellò profondamente le convenzioni dell'opera seria, specialmente nei lavori napoletani.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Rossini rimodellò profondamente le convenzioni dell'opera seria, specialmente nei lavori napoletani.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 118,
+      "pair": "legacy:belcanto|pers:bellini",
+      "semantic_class": "vocal_style_not_sole_genre",
+      "decision_reason": "Bellini associato al belcanto e all'ampiezza del fraseggio; belcanto è tradizione tecnico-esecutiva e categoria storiografica, non un singolo genere teatrale o persona.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1389,
+          "stage_id": "base2K:1390",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-vincenzo-bellini",
+          "target": "belcanto",
+          "stage_source": "pers:bellini",
+          "stage_target": "legacy:belcanto",
+          "original_payload": {
+            "source": "compositore-vincenzo-bellini",
+            "target": "belcanto",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Vincenzo Bellini. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Vincenzo Bellini. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Vincenzo Bellini. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 60,
+          "stage_id": "special2K:gen-belcanto-vincenzo-bellini",
+          "kind": "repertorio-e-trasformazione",
+          "source": "belcanto",
+          "target": "compositore-vincenzo-bellini",
+          "stage_source": "legacy:belcanto",
+          "stage_target": "pers:bellini",
+          "original_payload": {
+            "id": "gen-belcanto-vincenzo-bellini",
+            "group": "genealogie",
+            "source": "belcanto",
+            "target": "compositore-vincenzo-bellini",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Bellini privilegiò l'ampiezza del fraseggio e la tenuta della melodia rispetto alla pura coloratura.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "legacy_forward": "fu praticato o trasformato da",
+          "legacy_reverse": "coltivò o trasformò il genere di",
+          "legacy_note": "Bellini privilegiò l'ampiezza del fraseggio e la tenuta della melodia rispetto alla pura coloratura.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Bellini privilegiò l'ampiezza del fraseggio e la tenuta della melodia rispetto alla pura coloratura.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/vincenzo-bellini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 119,
+      "pair": "legacy:opera-buffa|pers:donizetti",
+      "semantic_class": "same_person_distinct_genre",
+      "decision_reason": "Donizetti realizzò opera buffa e opere comiche/sentimentali; questo rapporto non va fuso con il parallelo gruppo 120 legato al teatro serio.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1391,
+          "stage_id": "base2K:1392",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-gaetano-donizetti",
+          "target": "opera-buffa",
+          "stage_source": "pers:donizetti",
+          "stage_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-gaetano-donizetti",
+            "target": "opera-buffa",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gaetano Donizetti. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gaetano Donizetti. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gaetano Donizetti. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 49,
+          "stage_id": "special2K:gen-opera-buffa-gaetano-donizetti",
+          "kind": "repertorio-e-trasformazione",
+          "source": "opera-buffa",
+          "target": "compositore-gaetano-donizetti",
+          "stage_source": "legacy:opera-buffa",
+          "stage_target": "pers:donizetti",
+          "original_payload": {
+            "id": "gen-opera-buffa-gaetano-donizetti",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-gaetano-donizetti",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Donizetti continuò a scrivere opere comiche e sentimentali, anche durante l'affermazione del teatro romantico.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "legacy_forward": "fu praticato o trasformato da",
+          "legacy_reverse": "coltivò o trasformò il genere di",
+          "legacy_note": "Donizetti continuò a scrivere opere comiche e sentimentali, anche durante l'affermazione del teatro romantico.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Donizetti continuò a scrivere opere comiche e sentimentali, anche durante l'affermazione del teatro romantico.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    },
+    {
+      "number": 120,
+      "pair": "legacy:opera-seria|pers:donizetti",
+      "semantic_class": "same_person_distinct_genre",
+      "decision_reason": "Donizetti realizzò anche repertorio serio e drammatico; il nodo opera seria ha predicato distinto dal gruppo 119. Una stessa persona può possedere entrambi gli archi senza contraddizione.",
+      "records": [
+        {
+          "layer": "base",
+          "source_index": 1392,
+          "stage_id": "base2K:1393",
+          "kind": "forma-o-pratica-documentata",
+          "source": "compositore-gaetano-donizetti",
+          "target": "opera-seria",
+          "stage_source": "pers:donizetti",
+          "stage_target": "legacy:opera-seria",
+          "original_payload": {
+            "source": "compositore-gaetano-donizetti",
+            "target": "opera-seria",
+            "kind": "forma-o-pratica-documentata",
+            "weight": 1.2,
+            "note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gaetano Donizetti. Non costituisce relazione personale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "legacy_forward": null,
+          "legacy_reverse": null,
+          "legacy_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gaetano Donizetti. Non costituisce relazione personale.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Dizionario-Biografico%29/"
+          ],
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Collegamento a genere, forma o tradizione attestato dal repertorio descritto nella carta biografica di Gaetano Donizetti. Non costituisce relazione personale.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Dizionario-Biografico%29/"
+            ]
+          }
+        },
+        {
+          "layer": "specialist",
+          "source_index": 52,
+          "stage_id": "special2K:gen-opera-seria-gaetano-donizetti",
+          "kind": "repertorio-e-trasformazione",
+          "source": "opera-seria",
+          "target": "compositore-gaetano-donizetti",
+          "stage_source": "legacy:opera-seria",
+          "stage_target": "pers:donizetti",
+          "original_payload": {
+            "id": "gen-opera-seria-gaetano-donizetti",
+            "group": "genealogie",
+            "source": "opera-seria",
+            "target": "compositore-gaetano-donizetti",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Donizetti trasformò il repertorio serio sviluppando nuove possibilità drammatiche e patetiche.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "legacy_forward": "fu praticato o trasformato da",
+          "legacy_reverse": "coltivò o trasformò il genere di",
+          "legacy_note": "Donizetti trasformò il repertorio serio sviluppando nuove possibilità drammatiche e patetiche.",
+          "legacy_sources": [
+            "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Donizetti trasformò il repertorio serio sviluppando nuove possibilità drammatiche e patetiche.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gaetano-donizetti_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          }
+        }
+      ],
+      "independent_sample": [],
+      "merge_authorized": false,
+      "public_release_allowed": false,
+      "rooted_traversal_gate": "closed_for_generic_category_intermediation",
+      "authority_status": "partial_semantic_review_not_edge_certification"
+    }
+  ],
+  "checks": [
+    {
+      "test": "Twenty consecutive groups 101–120",
+      "pass": true
+    },
+    {
+      "test": "Forty source records (20 base and 20 specialist)",
+      "pass": true
+    },
+    {
+      "test": "All original payloads preserved",
+      "pass": true
+    },
+    {
+      "test": "Each pair has exact mapped endpoints",
+      "pass": true
+    },
+    {
+      "test": "Specialist forward/reverse fragments preserved",
+      "pass": true
+    },
+    {
+      "test": "Base JS relationSentence not falsely ported",
+      "pass": true
+    },
+    {
+      "test": "No merges and traversals enabled",
+      "pass": true
+    },
+    {
+      "test": "Buxtehude prior Tunder caution",
+      "pass": true
+    },
+    {
+      "test": "C. P. E. and J. C. Bach roles distinguished",
+      "pass": true
+    },
+    {
+      "test": "Donizetti buffa and seria not collapsed",
+      "pass": true
+    },
+    {
+      "test": "Gluck and Calzabigi recognized separately",
+      "pass": true
+    }
+  ],
+  "not_certified": [
+    "historical independence of every recorded relation",
+    "whole unified graph historical validation",
+    "renderer output equivalence (three overrides)",
+    "hover desktop and Android tap",
+    "public merge/navigation release"
+  ],
+  "next": "Fase2L Lotto07 groups 121–140; keep source/editorial distinctions"
+}
