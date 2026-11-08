@@ -2242,3 +2242,12 @@ I confronti non causali `L04-A05`, `A16`, `A23`, `A28`, `A35`, `A39`, `A44`, `A5
 
 **Prossimo lotto da proporre (50):** ripartire dai **18** `candidato_non_fuso` rimasti nei blocchi `L01` e `L06`, senza rivedere gli archi L04 già chiusi; successivamente affrontare le 317 proposte editoriali ancora da verificare.
 
+
+### Errata cronologica editoriale rilevata nel Lotto 41 — da correggere nel capitolo Risorgimento (non modificato)
+
+- **Capitolo:** `risorgimento/index.html`, sezione `#verdi`. Il file HTML remoto contiene la frase «La battaglia di Legnano, rappresentata nella Roma repubblicana».
+- **Correzione storica:** la prima assoluta avvenne a Roma, Teatro Argentina, il **27 gennaio 1849**; il decreto di proclamazione della Repubblica Romana reca la data **9 febbraio 1849**. La prima precede pertanto di tredici giorni la proclamazione ufficiale della Repubblica.
+- **Formula suggerita per una successiva revisione autorizzata:** «La battaglia di Legnano, rappresentata a Roma il 27 gennaio 1849, nei giorni che precedono la proclamazione della Repubblica Romana, è l'opera verdiana più dichiaratamente patriottica».
+- **Riscontri:** https://archiviostorico.operaroma.it/opera/la-battaglia-di-legnano/ ; https://www.treccani.it/enciclopedia/roma_%28Dizionario-di-Storia%29/ ; https://it.wikisource.org/wiki/Bollettino_delle_leggi_e_disposizioni_della_Repubblica_Romana/Bollettino_N._1
+- **Riuso editoriale:** `da_correggere`. Nessuna modifica alla pagina è stata eseguita in questo audit.
+
