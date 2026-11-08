@@ -1109,3 +1109,56 @@ Anche il rapporto Robert–Clara Schumann è formulato con precisione cronologic
 ### Lotti successivi
 
 Procedere per gruppi di relazioni tra tradizioni dell'operetta e figure documentate, o di trasmissione e prassi dalla notazione medievale alla policoralità rinascimentale, senza fondere generi o epoche per analogia.
+
+
+---
+
+## Lotto 21 — 8 novembre 2026: quattro tradizioni dell'operetta, dieci autori e l'opéra-bouffe
+
+**Preflight:** `main` al commit `bfd9ff32e8cc3e3100c53c3953e3599e6305761d`, dopo Lotto 20. Esaminate 15 candidature preesistenti, precisamente `L06-A001`–`L06-A014` e `L06-A020`. Nessun nodo o arco aggiunto/rimosso; nessun file del motore 3D o dei capitoli modificato.
+
+### Scelta importante: documentare le tradizioni senza farne ponti genealogici
+
+Sono fondate storicamente l'esistenza delle quattro tradizioni e l'attività degli autori loro associati, ma il rapporto da un nodo aggregato **tradizione** a un nodo **compositore** non è un legame diretto fra due agenti storici. L'arco viene pertanto classificato `confronto_non_causale`, `relation=sviluppa_o_illumina`, `historical_verified_independently=false` (l'ultimo campo qualifica la *natura dell'arco*, non nega l'esistenza dell'autore). In questo modo una ricerca su Strauss II non si espande automaticamente verso Suppé, Lehár, Offenbach o Gilbert per la sola appartenenza a un genere. Ugualmente le quattro tradizioni, pur comprese nel contesto dell'operetta, non diventano scorciatoie fra reti non direttamente documentate.
+
+| Arco | Risultato editoriale filologicamente documentato |
+| --- | --- |
+| `L06-A001` | L'operetta francese dell'Ottocento è una tradizione scenica storicamente riconoscibile, con Hervé, Offenbach, Lecocq e altri. È parte dell'ampia famiglia dei teatri musicali leggeri, ma non coincide con tutte le pratiche del genere «operetta», né ne implica un'invenzione esclusiva. |
+| `L06-A002` | L'operetta viennese sviluppa una tradizione propria nella seconda metà dell'Ottocento, con Suppé e Johann Strauss II, poi Lehár, Kálmán e altri, caratterizzata anche da valzer e ritmi di danza. Non è un sottoinsieme identico all'operetta francese o britannica. |
+| `L06-A003` | L'operetta britannica comprende opere comiche e comic operas di Gilbert e Sullivan, sviluppatesi con istituzioni, impresari e pubblico propri nella Londra vittoriana; «comic opera» e «operetta» sono categorie affini, non sinonimi universali. |
+| `L06-A004` | L'operetta statunitense fra fine Ottocento e prima metà Novecento è una tradizione teatrale ibrida, con Herbert, Friml, Romberg e altri, in dialogo con modelli europei, Broadway, ragtime e musical comedy; non è un unico passaggio diretto dall'Europa al musical. |
+| `L06-A005` | Jacques Offenbach è un esponente eminente dell'operetta/opéra-bouffe parigina, autore di Orphée aux enfers (1858) e di altri spettacoli satirici. La relazione con la tradizione francese è un'appartenenza storico-editoriale, non un legame maestro–allievo con ogni suo esponente. |
+| `L06-A006` | Hervé (Florimond Ronger) è autore e organizzatore di teatro musicale comico parigino, vicino alle origini dell'operetta francese e dell'opéra-bouffe. La tradizione comprende indipendentemente anche Offenbach; la loro comune appartenenza non documenta un rapporto personale diretto. |
+| `L06-A007` | Johann Strauss II è autore di operette viennesi, fra cui Die Fledermaus (1874). L'associazione alla tradizione è storicamente documentata, ma non genera relazioni d'insegnamento o collaborazione con tutti gli autori del genere. |
+| `L06-A008` | Franz von Suppé è un compositore fondamentale della prima operetta viennese; lavori come Das Pensionat (1860) e Boccaccio (1879) fanno parte del suo repertorio. L'appartenenza alla tradizione non documenta relazioni personali dirette con Strauss o Lehár. |
+| `L06-A009` | Franz Lehár è autore della Die lustige Witwe (1905), uno dei vertici dell'operetta viennese del primo Novecento. Il legame con la tradizione viennese non implica che l'opera sia stata composta in collaborazione con Strauss II o Suppé. |
+| `L06-A010` | W. S. Gilbert è il librettista e drammaturgo delle Savoy Operas realizzate con Arthur Sullivan; il suo ruolo fa parte della tradizione britannica del teatro musicale comico, ma non è quello di compositore delle musiche. |
+| `L06-A011` | Arthur Sullivan è il compositore della musica delle Savoy Operas scritte con W. S. Gilbert, tra cui The Mikado (1885); tale attività è rappresentativa dell'operetta/opera comica britannica. Non attribuire automaticamente a Sullivan i testi di Gilbert. |
+| `L06-A012` | Victor Herbert, compositore irlandese naturalizzato statunitense, è figura fondamentale della tradizione operettistica di Broadway e del primo musical americano. La sua esperienza europea e la carriera statunitense non lo rendono fondatore esclusivo dell'intero musical. |
+| `L06-A013` | Rudolf Friml, nato a Praga ed emigrato negli Stati Uniti nel 1906, è tra i maggiori compositori di operetta di Broadway, con The Firefly (1912) e Rose-Marie (1924). Non tutte le sue opere vanno classificate automaticamente come 'musical' nello stesso senso dei titoli successivi. |
+| `L06-A014` | Sigmund Romberg, compositore originario dell'Europa centro-orientale e attivo a Broadway dal 1909, contribuisce in modo decisivo all'operetta americana con The Student Prince (1924), The Desert Song (1926) e The New Moon (1928). L'appartenenza a una tradizione comune non significa diretta collaborazione con Herbert o Friml. |
+| `L06-A020` | L'opéra-bouffe francese è un genere storico centrale nella formazione dell'operetta parigina, ma non coincide universalmente con opéra-comique, comic opera britannica o con l'intera produzione di Offenbach. L'arco concettuale fra genere e tradizione francese è un rimando comparativo, non una genealogia causale unica. |
+
+**Distinzioni:** opéra-bouffe, opéra-comique, comic opera britannica e musical comedy non sono termini automaticamente equivalenti. La tradizione statunitense include diversi apporti europei e afroamericani; né l'operetta americana né Victor Herbert costituiscono una spiegazione monocausale della nascita del musical. Le fonti sostengono classificazioni, non ascendenze personali fra tutti gli autori.
+
+**Fonti indipendenti:** 
+- tre: https://www.treccani.it/enciclopedia/operetta/
+- treHistory: https://www.treccani.it/enciclopedia/operetta_%28Enciclopedia-Italiana%29/
+- treHistory2: https://www.treccani.it/enciclopedia/offenbach-e-l-opera-comique_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- ox: https://academic.oup.com/reference/62400/reference-article-abstract/555394666?login=false
+- cam: https://www.cambridge.org/core/books/abs/cambridge-companion-to-operetta/camping-along-the-american-operetta-divide-on-the-road-to-the-musical-play/1D329E26E98557B4B7C58CCFAF3BF7D3
+- camCh: https://www.cambridge.org/core/books/german-operetta-on-broadway-and-in-the-west-end-19001940/music-of-operetta/CA584339A619B08BB924DACBF57983A8
+- loc: https://www.loc.gov/exhibits/musical-worlds-of-victor-herbert/overview.html
+- pbs: https://www.pbs.org/wnet/broadway/essays/operetta/
+- brit: https://www.larousse.fr/encyclopedie/divers/op%C3%A9rette/75001
+- yale: https://academic.oup.com/yale-scholarship-online/book/19771
+- camHistory: https://www.cambridge.org/core/books/abs/cambridge-companion-to-operetta/camping-along-the-american-operetta-divide-on-the-road-to-the-musical-play/1D329E26E98557B4B7C58CCFAF3BF7D3
+- eno: https://www.eno.org/discover-opera/articles/the-beginners-guide-to-operetta/
+
+### Regole di integrità
+
+- Preservati ID, estremi, `previous_quality_gate`, `previous_relation`, `previous_description`, URL precedenti, `verification_note`, `verification_status` e `editorial_verified_at`.
+- JSON serializzato/riparsato, **608 nodi**, **1.520 relazioni**, zero ID duplicati, zero estremi orfani.
+- Quality gate: **200** `riscontro_storico_indipendente`, **231** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **53** `confronto_non_causale`, **44** `sospeso`. Booleano `historical_verified_independently=true` = **235**.
+- Le 15 relazioni hanno `sviluppa_o_illumina`, verbo escluso dall'espansione automatica dal livello II. Il nesso di genere può essere visualizzato al I livello con il filtro `menzione`, ma non deve diventare un hub di secondo grado.
+- Test dei percorsi I–V sul remoto e controllo finale del commit richiesti; la simulazione non sostituisce collaudo WebGL nel browser.
