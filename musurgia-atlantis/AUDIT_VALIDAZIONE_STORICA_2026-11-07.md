@@ -3556,3 +3556,241 @@ La tabella riproduce il criterio di visibilità **trattazione + menzione** della
 **Limiti QA:** effettuati controllo dei dati e verifica dei collegamenti di primo livello secondo il filtro effettivo di `index.html`; non eseguita la prova grafica del renderer su Android/desktop e non dichiarato un collaudo interattivo completo dal livello I al V. L'interfaccia Atlantis e il protocollo non sono stati toccati.
 
 **Continuazione:** Lotto 97, a partire da `E0769`; alcuni numeri ID possono essere assenti per precedenti migrazioni, quindi utilizzare gli ID realmente presenti e non creare duplicati.
+
+---
+## Lotto 97 — 2026-11-08: Otello e Falstaff: identità dei titoli verdiani
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0769` | **trattazione_riscontrata** | Opera lirica sviluppa Otello di Verdi (1887) nel teatro tardo-ottocentesco, distinguendolo dall'Otello di Rossini (1816) che compare nella stessa pagina. |
+| `E0771` | **riscontro indipendente già convalidato (conservato)** | Verdi compose Otello (1887), su libretto di Arrigo Boito ispirato alla tragedia di Shakespeare; non confondere con l'Otello di Rossini (1816). |
+| `E0772` | **trattazione_riscontrata** | Opera lirica tratta Falstaff di Verdi (1893) nella drammaturgia degli insiemi, distinguendo libretto di Boito e fonti teatrali di Shakespeare. |
+| `E0773` | **riscontro indipendente già convalidato (conservato)** | Verdi compose Falstaff (1893) su libretto di Arrigo Boito, ispirato soprattutto alle Merry Wives of Windsor e all'Henry IV di Shakespeare. |
+
+### Fonti esterne
+- Fonti indipendenti già registrate negli archi compositore–opera e pagine HTML del progetto per i rimandi editoriali.
+
+**Bilancio Lotto 97:** 4 archi: 2 trattazioni, 0 richiami, 0 sospensioni, 0 passaggi al gate storico, 2 verifiche precedenti conservate.
+
+---
+
+## Lotto 98 — 2026-11-08: Freischütz, Barbiere di Rossini e Barbiere di Paisiello
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0774` | **trattazione_riscontrata** | Opera lirica dedica una sezione a Der Freischütz (1821) di Weber, dialoghi parlati, scena tedesca e soprannaturale. |
+| `E0775` | **richiamo_contestuale** | Romanticismo richiama Der Freischütz per la foresta, il soprannaturale e la scena tedesca. Approfondimento analitico situato soprattutto in Opera lirica. |
+| `E0776` | **riscontro indipendente già convalidato (conservato)** | Carl Maria von Weber compose Der Freischütz (J 277), opera romantica in tre atti su libretto di Friedrich Kind; prima al Schauspielhaus di Berlino il 18 giugno 1821. |
+| `E0777` | **trattazione_riscontrata** | Opera lirica tratta Il barbiere di Siviglia di Rossini (1816), inizialmente Almaviva, e lo distingue esplicitamente dalla precedente opera di Paisiello (1782). |
+| `E0778` | **trattazione_riscontrata** | Anatomia del melodramma tratta Largo al factotum e Una voce poco fa dal Barbiere rossiniano, come esempi di numeri specifici. |
+| `E0779` | **trattazione_riscontrata** | Teatro del Classicismo tratta Il barbiere di Siviglia di Paisiello (1782), distinto dall'opera del 1816 di Rossini. |
+| `E0780` | **riscontro indipendente già convalidato (conservato)** | Rossini compone Almaviva, ossia L'inutile precauzione, in seguito Il barbiere di Siviglia: libretto di Cesare Sterbini da Beaumarchais; prima Roma, Teatro Argentina, 20 febbraio 1816. Opera distinta dal Barbiere di Paisiello. |
+
+### Fonti esterne
+- Fonti indipendenti già registrate negli archi compositore–opera e pagine HTML del progetto per i rimandi editoriali.
+
+**Bilancio Lotto 98:** 7 archi: 4 trattazioni, 1 richiami, 0 sospensioni, 0 passaggi al gate storico, 2 verifiche precedenti conservate.
+
+---
+
+## Lotto 99 — 2026-11-08: Norma e Guillaume Tell: arie e teatro integrale
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0781` | **trattazione_riscontrata** | Opera lirica analizza Norma di Bellini (1831) e la collocazione drammaturgica di Casta diva: l'aria non è l'intera scena. |
+| `E0782` | **trattazione_riscontrata** | Anatomia del melodramma usa Casta diva come esempio di aria inserita in una scena più ampia; riscontro circoscritto. |
+| `E0783` | **riscontro indipendente già convalidato (conservato)** | Bellini compone Norma, tragedia lirica su libretto di Felice Romani derivato dalla tragedia di Alexandre Soumet; prima al Teatro alla Scala di Milano, 26 dicembre 1831. |
+| `E0784` | **trattazione_riscontrata** | Opera lirica analizza Guillaume Tell di Rossini (1829), il teatro storico francese e il contesto parigino. |
+| `E0785` | **richiamo_contestuale** | Balletto cita Guillaume Tell per le danze e la festa pastorale interne all'opera, non come balletto autonomo. |
+| `E0786` | **riscontro indipendente già convalidato (conservato)** | Rossini compone Guillaume Tell, grand opéra in quattro atti su libretto francese di Étienne de Jouy e Hippolyte Bis, da Schiller; prima a Parigi, Académie royale de musique, 3 agosto 1829. |
+
+### Fonti esterne
+- Fonti indipendenti già registrate negli archi compositore–opera e pagine HTML del progetto per i rimandi editoriali.
+
+**Bilancio Lotto 99:** 6 archi: 3 trattazioni, 1 richiami, 0 sospensioni, 0 passaggi al gate storico, 2 verifiche precedenti conservate.
+
+---
+
+## Lotto 100 — 2026-11-08: Tannhäuser e Tristan: versioni, ricezione, limiti dei rimandi
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0787` | **richiamo_contestuale** | Opera lirica cita Tannhäuser nel percorso wagneriano ma non ricostruisce le redazioni con la stessa specificità del capitolo Balletto. |
+| `E0788` | **trattazione_riscontrata** | Balletto sviluppa l'ampliamento del Venusberg di Tannhäuser per Parigi (1861), distinguendolo dalla versione di Dresda (1845). |
+| `E0789` | **sospeso** | Romanticismo non nomina Tannhäuser: la presenza di Wagner o del dramma romantico non costituisce attestazione dell'opera. |
+| `E0790` | **riscontro indipendente già convalidato (conservato)** | Richard Wagner compone la musica e scrive il libretto di Tannhäuser (WWV 70), rappresentato a Dresda il 19 ottobre 1845; la rielaborazione parigina del 1861 comprende modifiche al Venusberg. |
+| `E0791` | **trattazione_riscontrata** | Opera lirica analizza il preludio di Tristan und Isolde, il cromatismo e la dilatazione del tempo scenico. |
+| `E0792` | **sospeso** | Romanticismo non nomina Tristan und Isolde: riferimenti generali alla scrittura wagneriana non provano l'analisi di quest'opera. |
+| `E0793` | **sospeso** | Musica nell'audiovisivo non nomina Tristan und Isolde, né documenta una discendenza necessaria delle partiture cinematografiche dal suo linguaggio. |
+| `E0794` | **riscontro indipendente già convalidato (conservato)** | Richard Wagner compone musica e libretto di Tristan und Isolde (WWV 90), su rielaborazione del ciclo medievale di Tristano e Isotta; prima a Monaco di Baviera il 10 giugno 1865. |
+
+### Fonti esterne
+- Fonti indipendenti già registrate negli archi compositore–opera e pagine HTML del progetto per i rimandi editoriali.
+
+**Bilancio Lotto 100:** 8 archi: 2 trattazioni, 1 richiami, 3 sospensioni, 0 passaggi al gate storico, 2 verifiche precedenti conservate.
+
+---
+
+## Lotto 101 — 2026-11-08: Carmen e La bohème: dialoghi, libretti, opere
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0795` | **trattazione_riscontrata** | Opera lirica analizza Carmen di Bizet (1875), nata con dialoghi parlati; i recitativi di Guiraud sono una rielaborazione posteriore. |
+| `E0796` | **richiamo_contestuale** | Romanticismo menziona Carmen nel confronto fra opéra-comique, dialoghi parlati e recitativi successivi, senza analisi completa. |
+| `E0797` | **riscontro indipendente già convalidato (conservato)** | Georges Bizet compone Carmen, opéra-comique su libretto di Henri Meilhac e Ludovic Halévy dalla novella di Prosper Mérimée; prima a Parigi, Opéra-Comique, 3 marzo 1875, con dialoghi parlati. |
+| `E0798` | **trattazione_riscontrata** | Opera lirica tratta La bohème di Puccini, distinguendo l'opera da Illica/Giacosa e il suo antecedente letterario in Murger. |
+| `E0799` | **sospeso** | Romanticismo non nomina La bohème; la pertinenza cronologica non è trattazione documentata. |
+| `E0800` | **riscontro indipendente già convalidato (conservato)** | Puccini compone La bohème, quattro quadri su libretto di Luigi Illica e Giuseppe Giacosa da Scènes de la vie de bohème di Henri Murger; prima al Teatro Regio di Torino il 1 febbraio 1896. |
+
+### Fonti esterne
+- Fonti indipendenti già registrate negli archi compositore–opera e pagine HTML del progetto per i rimandi editoriali.
+
+**Bilancio Lotto 101:** 6 archi: 2 trattazioni, 1 richiami, 1 sospensioni, 0 passaggi al gate storico, 2 verifiche precedenti conservate.
+
+---
+
+## Lotto 102 — 2026-11-08: Le Villi e Turandot: confronto teatrale e partitura incompiuta
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0801` | **richiamo_contestuale** | Opera lirica cita Le Villi (1884) quale esordio pucciniano e lo confronta con Giselle, senza una trattazione analitica estesa. |
+| `E0802` | **trattazione_riscontrata** | Balletto confronta la vicenda delle villi in Giselle con Le Villi pucciniane, distinguendo balletto e opera-ballo. |
+| `E0803` | **riscontro indipendente già convalidato (conservato)** | Puccini compone Le Villi, opera-ballo su libretto di Ferdinando Fontana ispirato alla leggenda delle Willi tramite Heine; prima Milano, Teatro Dal Verme, 31 maggio 1884. Seguono revisioni in più atti. |
+| `E0804` | **trattazione_riscontrata** | Opera lirica approfondisce l'incompiuta Turandot di Puccini (1924), il completamento di Alfano e la prima del 1926. |
+| `E0805` | **richiamo_contestuale** | Verso le avanguardie cita Turandot nel percorso di Puccini e della sperimentazione timbrica, senza ricostruirne i completamenti. |
+| `E0806` | **riscontro indipendente già convalidato (conservato)** | Puccini compone la musica superstite di Turandot, dramma lirico su libretto di Giuseppe Adami e Renato Simoni dalla fiaba teatrale di Carlo Gozzi, mediata anche da Schiller/Maffei; opera incompiuta nel 1924, prima alla Scala il 25 aprile 1926 senza finale di Alfano. |
+
+### Fonti esterne
+- Fonti indipendenti già registrate negli archi compositore–opera e pagine HTML del progetto per i rimandi editoriali.
+
+**Bilancio Lotto 102:** 6 archi: 2 trattazioni, 2 richiami, 0 sospensioni, 0 passaggi al gate storico, 2 verifiche precedenti conservate.
+
+---
+
+## Lotto 103 — 2026-11-08: La Sylphide, Giselle e Lago dei cigni: versioni coreografiche
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0807` | **trattazione_riscontrata** | Balletto dedica uno spazio a La Sylphide, a Marie Taglioni e alla coreografia del 1832 di Filippo Taglioni; le versioni vanno distinte. |
+| `E0808` | **sospeso** | Romanticismo non nomina La Sylphide: il solo periodo non basta a convalidare il collegamento specifico. |
+| `E0809` | **trattazione_riscontrata** | Balletto tratta Giselle (1841), la storia delle villi e la costruzione drammaturgica in due mondi, non identificandola con Le Villi. |
+| `E0810` | **sospeso** | Romanticismo non nomina Giselle; resta un riferimento legittimo nella pagina specialistica Balletto, non una trattazione nella pagina d'epoca. |
+| `E0811` | **richiamo_contestuale** | Opera lirica cita Giselle come confronto narrativo con Le Villi di Puccini, non come opera lirica. |
+| `E0812` | **trattazione_riscontrata** | Balletto distingue la prima del Lago dei cigni a Mosca (1877) dalla produzione Petipa–Ivanov a San Pietroburgo (1895). |
+| `E0813` | **sospeso** | Romanticismo non nomina Il lago dei cigni, anche se esamina Čajkovskij: compositore e specifico titolo non sono equivalenti. |
+| `E0814` | **riscontro_storico_indipendente** | La Boston Symphony Orchestra attribuisce la musica del Lago dei cigni op. 20 a Čajkovskij. Reisinger (1877) e Petipa–Ivanov (1895) firmarono allestimenti coreografici distinti. |
+
+### Fonti esterne
+- https://www.bso.org/works/tchaikovsky-swan-lake
+
+**Bilancio Lotto 103:** 8 archi: 3 trattazioni, 1 richiami, 3 sospensioni, 1 passaggi al gate storico, 0 verifiche precedenti conservate.
+
+---
+
+## Lotto 104 — 2026-11-08: Schiaccianoci e Sagra della primavera: musica e danza
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0815` | **trattazione_riscontrata** | Balletto tratta Lo schiaccianoci (1892) e la partitura di Čajkovskij, distinguendo musicista e autori della coreografia. |
+| `E0816` | **sospeso** | Romanticismo non nomina Lo schiaccianoci: non dedurre la trattazione dal solo nome Čajkovskij. |
+| `E0817` | **riscontro_storico_indipendente** | Royal Ballet & Opera Collections attribuisce la musica dello Schiaccianoci op. 71 a Čajkovskij, lo scenario a Petipa e la coreografia a Lev Ivanov (1892). |
+| `E0818` | **trattazione_riscontrata** | Balletto confronta La sagra della primavera nella coreografia di Nižinskij (1913) e nella nuova lettura di Pina Bausch (1975). |
+| `E0819` | **trattazione_riscontrata** | Verso le avanguardie tratta La sagra della primavera, la prima parigina del 1913 e la scrittura ritmica di Stravinskij. |
+| `E0820` | **riscontro_storico_indipendente** | Il catalogo Boosey & Hawkes attribuisce La sagra della primavera a Stravinskij (1911–1913) e la coreografia della prima a Nižinskij, 29 maggio 1913. |
+
+### Fonti esterne
+- https://www.rohcollections.org.uk/Work.aspx?work=1180
+- https://www.boosey.com/pages/cr/catalogue/cat_detail?musicid=5253
+- https://www.pinabausch.org/fr/work/sacr
+
+**Bilancio Lotto 104:** 6 archi: 3 trattazioni, 0 richiami, 1 sospensioni, 2 passaggi al gate storico, 0 verifiche precedenti conservate.
+
+---
+
+## Lotto 105 — 2026-11-08: Daphnis et Chloé e Mandarino meraviglioso: specificità delle partiture
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0821` | **trattazione_riscontrata** | Balletto tratta Daphnis et Chloé di Ravel (1912) e il lavoro scenico di Fokine per i Ballets Russes; le suite sono versioni distinte. |
+| `E0822` | **sospeso** | Verso le avanguardie non nomina Daphnis et Chloé, pur trattando Ravel e i Ballets Russes. |
+| `E0823` | **riscontro indipendente già convalidato (conservato)** | Ravel compone la partitura della «symphonie chorégraphique» Daphnis et Chloé tra giugno 1909 e 5 aprile 1912 su commissione di Diaghilev; argomento di Fokine e Ravel da Longo, coreografia originale di Fokine, scene e costumi di Bakst; prima a Parigi il 8 giugno 1912 diretta da Pierre Monteux. |
+| `E0824` | **trattazione_riscontrata** | Balletto tratta Il mandarino meraviglioso di Bartók come pantomima danzata, con partitura precedente alla prima del 1926. |
+| `E0825` | **sospeso** | Verso le avanguardie discute Bartók, ma non menziona Il mandarino meraviglioso. |
+| `E0826` | **riscontro indipendente già convalidato (conservato)** | Béla Bartók compone la musica per la pantomima drammatica in un atto di Lengyel: stesura 1918–1919, ripresa dell'orchestrazione nel 1923 e completamento nel 1924; prima rappresentazione scenica a Colonia il 27 novembre 1926, direttore Jenő Szenkár. La suite del 1927 è una diversa redazione da concerto. |
+
+### Fonti esterne
+- https://catalogue.bnf.fr/ark:/12148/cb139177228
+- https://www.boosey.com/pages/Opera/catalogue/cat_detail?musicid=2185
+- https://mmb.org.gr/en/acquisition/csodalatos-mandarin
+
+**Bilancio Lotto 105:** 6 archi: 2 trattazioni, 0 richiami, 2 sospensioni, 0 passaggi al gate storico, 2 verifiche precedenti conservate.
+
+---
+
+## Lotto 106 — 2026-11-08: Quadri di un'esposizione e Symphonie fantastique: originali e mediazioni
+
+**Metodo:** verifica dei capitoli su `main`; fonti indipendenti per promuovere relazioni compositore–opera. Le relazioni a carattere editoriale non attestano causalità storica e i metadati di validazione precedenti restano disponibili.
+
+| Arco | Gate | Nota storico-filologica |
+| --- | --- | --- |
+| `E0827` | **trattazione_riscontrata** | Romanticismo analizza i Quadri di un'esposizione originali per pianoforte di Musorgskij (1874), la Promenade e il rapporto con Hartmann. |
+| `E0828` | **richiamo_contestuale** | Verso le avanguardie richiama la versione orchestrale di Ravel dei Quadri (1922), senza analizzare l'intera opera movimento per movimento. |
+| `E0829` | **riscontro_storico_indipendente** | Musorgskij compose l'originale pianistico dei Quadri di un'esposizione nel 1874; Ravel ne fece l'orchestrazione del 1922. LA Phil e IMSLP confermano; il flag indipendente era già presente e il gate viene allineato. |
+| `E0830` | **trattazione_riscontrata** | Romanticismo analizza la Symphonie fantastique di Berlioz (1830), l'idée fixe e la struttura del racconto programmatico. |
+| `E0831` | **sospeso** | Verso le avanguardie non nomina la Symphonie fantastique: l'affinità con la musica a programma è solo comparativa. |
+| `E0832` | **sospeso** | Musica nell'audiovisivo non tratta la Symphonie fantastique quale composizione; non inferire un nesso diretto dal solo uso della musica a programma. |
+| `E0833` | **riscontro_storico_indipendente** | IMSLP documenta la Symphonie fantastique, H 48, op. 14, composta da Hector Berlioz nel 1830, con partitura autografa conservata. |
+
+### Fonti esterne
+- https://www.laphil.com/works/pictures-at-an-exhibition-modest-mussorgsky-zs2phpn9
+- https://imslp.org/wiki/Pictures_at_an_Exhibition_%28Mussorgsky%2C_Modest%29
+- https://imslp.org/wiki/Symphonie_fantastique%2C_H_48_%28Berlioz%2C_Hector%29
+
+**Bilancio Lotto 106:** 7 archi: 2 trattazioni, 1 richiami, 2 sospensioni, 2 passaggi al gate storico, 0 verifiche precedenti conservate.
+
+---
+### Bilancio dopo i Lotti 97–106
+
+- **64 archi esaminati** da `E0769` a `E0833` (l'ID `E0770` non è presente nel dataset e non è stato creato). **50 archi aggiornati**, **14 rapporti compositore–opera precedentemente verificati lasciati immutati**.
+- Esiti: **25 trattazioni**, **8 richiami contestuali**, **12 sospensioni**, **5 gate storici promossi**, **14 gate indipendenti conservati**.
+- Cinque archi al gate indipendente: `E0814` Lago dei cigni (Boston Symphony), `E0817` Schiaccianoci (Royal Ballet and Opera), `E0820` Sagra (Boosey & Hawkes), `E0829` Quadri (LA Phil, IMSLP), `E0833` Symphonie fantastique (IMSLP).
+- **Quattro nuovi flag storici indipendenti:** 361 → **365**. `E0829` disponeva già di flag storico positivo e soltanto il gate è stato riallineato. Il totale dei gate `riscontro_storico_indipendente` è ora **329**.
+- **Integrità:** 608 nodi e 1520 archi; duplicati ID nodi 0, duplicati ID archi 0, orfani 0, tripletta fonte–destinazione–verbo duplicata 0.
+- **Residui:** proposte editoriali 99; sospensioni 83; trattazioni 246; richiami 77.
+- **Sospensioni di questi lotti:** `E0789`, `E0792`, `E0793`, `E0799`, `E0808`, `E0810`, `E0813`, `E0816`, `E0822`, `E0825`, `E0831`, `E0832`.
+
+### QA collegamenti diretti visibili secondo il filtro Atlantis
+
+Confrontate le adiacenze con gate `trattazione` e `menzione` secondo `tier()` del renderer corrente; il test riguarda i dati, non la visualizzazione su dispositivi e non la propagazione completa ai livelli I–V.
+
+| Nodo | Prima | Dopo |
+| --- | ---: | ---: |
+| Opera lirica — da Fidelio a Turandot | 102 | 104 |
+| Il balletto | 74 | 81 |
+| Verso le avanguardie e il Novecento | 48 | 49 |
+
+**Nota metodologica sui flag preesistenti:** i collegamenti editoriali `E0769`, `E0779`, `E0827`, `E0828` erano già marcati con `historical_verified_independently=true`, pur essendo collegamenti fra capitoli e opere. Per non distruggere metadati e riscontri precedenti, i flag sono stati conservati; andranno verificati separatamente, senza presumere causalità storica dalla sola presenza del flag. La classificazione editoriale `quality_gate` è stata resa più specifica.
+
+**Distinzioni essenziali:** Otello di Rossini 1816 e di Verdi 1887 sono opere diverse; così il Barbiere di Paisiello 1782 e Rossini 1816. Le redazioni del Tannhäuser del 1845 e 1861 non vanno fuse. Il Lago dei cigni nasce musicalmente da Čajkovskij e ha più versioni coreografiche. La Sagra usa la musica di Stravinskij ma la coreografia di Nižinskij (1913) non coincide con quella di Pina Bausch (1975). I Quadri di Musorgskij per pianoforte (1874) non sono la stessa versione dell'orchestrazione di Ravel (1922).
+
+**Limiti:** non eseguito test visuale del renderer su Android o desktop né simulazione completa livelli I–V. Nessuna modifica a pagine, menu o interfaccia di Atlantis; intervento circoscritto a grafo e registro.
+
+**Ripresa:** Lotto 107 da `E0834`, su operetta, musical e cinema, con distinzione fra opere teatrali, adattamenti filmici, musicisti, librettisti e produttori.
