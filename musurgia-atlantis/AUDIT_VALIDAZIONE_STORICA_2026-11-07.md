@@ -5980,3 +5980,239 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 
 **Collaudo aperto:** grafica tridimensionale WebGL e fallback Canvas Android, visibilità etichette, interazioni touch e percorsi indiretti reali. **Non modificati:** capitoli, menu, mappe di studio, `index.html` e `PROTOCOLLO_AGGIORNAMENTI.json`.
 
+---
+
+# Lotti 201–210 — Novecento: opere, fonti testuali, commissioni, interpreti e riusi (8 novembre 2026)
+
+**Base remota verificata:** `main` commit `7ae3f35a06763c8f70256e20de16bef32b425432`. Prima dell'intervento 726 nodi e 1685 archi. **Ambito:** solo dataset e registro; non modificati protocollo, interfaccia, capitoli, mappe didattiche e menu.
+
+## Lotto 201 — Berg: Lulu, Wedekind e i due drammi preesistenti
+
+**Nuovi nodi:** `opera:berg-lulu-1929-1935`, `pers:frank-wedekind`, `opera:wedekind-erdgeist`, `opera:wedekind-buechse-pandora`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L201-A01` | **H — documentato** | Berg compone la musica e adatta il libretto di Lulu dai due drammi di Wedekind; nel 1935 muore prima di completare l'orchestrazione dell'atto III. |
+| `L201-A02` | **H — documentato** | Frank Wedekind è autore del dramma Erdgeist, distinto dalla successiva trasposizione musicale di Berg. |
+| `L201-A03` | **H — documentato** | Frank Wedekind è autore del dramma Die Büchse der Pandora, una seconda fonte testuale distinta per Lulu. |
+| `L201-A04` | **H — documentato** | La Lulu di Berg rielabora il dramma Erdgeist insieme a Die Büchse der Pandora: non sono un unico dramma originale. |
+| `L201-A05` | **H — documentato** | Il libretto della Lulu di Berg comprende una rielaborazione di Die Büchse der Pandora, opera teatrale distinta. |
+
+**Fonti consultate:**
+- https://www.wienersymphoniker.at/werk/lulu-fragment-der-oper-3-akten-nach-den-tragoeden-der-erdgeist-und-die-buechse-der-pandora
+- https://academic.oup.com/book/39663/chapter-abstract/339644805
+
+**Esclusioni e questioni editoriali:** La prima parziale del 1937 e la prima forma integrale del 1979 non devono essere confuse; non assegnare a Wedekind la partitura musicale. Le eventuali versioni completate richiedono identità autonome.
+
+**Totale lotto:** 4 nodi e 5 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 202 — Schönberg: Pierrot lunaire, Giraud, Hartleben e Albertine Zehme
+
+**Nuovi nodi:** `opera:schoenberg-pierrot-lunaire-op21-1912`, `pers:albert-giraud`, `pers:otto-erich-hartleben`, `pers:albertine-zehme`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L202-A01` | **H — documentato** | Schönberg compone nel 1912 ventuno melodrammi di Pierrot lunaire per voce recitante e piccolo complesso, articolati in tre gruppi di sette. |
+| `L202-A02` | **H — documentato** | Le ventuno poesie intonate da Schönberg derivano dalla raccolta francese Pierrot lunaire di Albert Giraud; il compositore usa la versione tedesca di Hartleben. |
+| `L202-A03` | **H — documentato** | Otto Erich Hartleben fornisce la traduzione/adattamento tedesco delle poesie di Giraud effettivamente impiegata nel lavoro musicale di Schönberg. |
+| `L202-A04` | **H — documentato** | Albertine Zehme commissiona il Pierrot lunaire ed è voce recitante nella prima berlinese del 1912; la commissione non è composizione musicale. |
+
+**Fonti consultate:**
+- https://schoenberg.at/en/schoenberg/kompositionen/pierrot-lunaire-op-21-e
+- https://www.schoenberg.at/images/shopify/shop-pdf/companion-exc.pdf
+
+**Esclusioni e questioni editoriali:** Giraud è autore dei poemi originali, Hartleben del testo tedesco utilizzato e Zehme della commissione e prima interpretazione. Sprechstimme non autorizza a classificare genericamente la partitura come opera lirica scenica.
+
+**Totale lotto:** 4 nodi e 4 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 203 — Bartók e Paul Sacher: Musica per archi, percussioni e celesta
+
+**Nuovi nodi:** `opera:bartok-musica-archi-percussioni-celesta-1936`, `pers:paul-sacher`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L203-A01` | **H — documentato** | Bartók compone nel 1936 Musica per archi, percussioni e celesta, per due gruppi d'archi e un insieme di strumenti a percussione e tastiera. |
+| `L203-A02` | **H — documentato** | Paul Sacher commissiona la composizione a Bartók nel 1936; il ruolo di committente non equivale a coautorialità. |
+
+**Fonti consultate:**
+- https://www.paul-sacher-stiftung.ch/en/publications/facsimiles/2000-bartok-musik-fuer-saiteninstrumente-en.html
+- https://www.boosey.com/cr/music/Bela-Bartok-Music-for-String-Percussion-and-Celesta/3147
+
+**Esclusioni e questioni editoriali:** La presenza dell'opera in cinema e balletto non dimostra destinazione originaria filmica o coreografica. Commissione precisa, non genealogia generalizzata.
+
+**Totale lotto:** 2 nodi e 2 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 204 — Stravinskij, Ramuz e Ansermet: L'Histoire du soldat
+
+**Nuovi nodi:** `opera:stravinsky-histoire-du-soldat-1918`, `pers:charles-ferdinand-ramuz`, `pers:ernest-ansermet`, `pers:werner-reinhart`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L204-A01` | **H — documentato** | Stravinskij compone nel 1918 la musica di L'Histoire du soldat per sette strumentisti, attori e danza; la prima si tiene a Losanna il 28 settembre 1918. |
+| `L204-A02` | **H — documentato** | Ramuz scrive il testo di L'Histoire du soldat in collaborazione con Stravinskij; musica e testo conservano attribuzioni distinte. |
+| `L204-A03` | **H — documentato** | Ernest Ansermet dirige la prima esecuzione di L'Histoire du soldat al Teatro di Losanna il 28 settembre 1918. |
+| `L204-A04` | **H — documentato** | Il catalogo IRCAM indica Werner Reinhart come dedicatario dell'opera; non confondere automaticamente dedica e funzione di sostegno finanziario. |
+
+**Fonti consultate:**
+- https://ressources.ircam.fr/fr/works/work/12212
+- https://pad.philharmoniedeparis.fr/0745393-histoire-du-soldat-stravinski.aspx?_lg=fr-FR
+
+**Esclusioni e questioni editoriali:** Non classificare L'Histoire du soldat semplicemente come balletto senza narrazione; non dedurre dal medesimo allestimento una collaborazione continuativa con le persone coinvolte.
+
+**Totale lotto:** 4 nodi e 4 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 205 — Britten: War Requiem op. 66 e versi di Wilfred Owen
+
+**Nuovi nodi:** `opera:britten-war-requiem-op66-1962`, `pers:wilfred-owen`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L205-A01` | **H — documentato** | Britten compone il War Requiem op. 66 per la consacrazione della nuova cattedrale di Coventry, eseguito per la prima volta il 30 maggio 1962. |
+| `L205-A02` | **H — documentato** | Il War Requiem di Britten interpola poesie di Wilfred Owen con il testo latino della Messa per i defunti; Owen non è autore del testo liturgico né collaboratore personale di Britten. |
+
+**Fonti consultate:**
+- https://www.boosey.com/cr/music/Benjamin-Britten-War-Requiem/15495
+
+**Esclusioni e questioni editoriali:** Non imputare a Wilfred Owen l'intero testo liturgico e non confondere l'anno indicato in catalogo editoriale (1961) con la data della prima (1962).
+
+**Totale lotto:** 2 nodi e 2 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 206 — Messiaen: Quatuor pour la fin du temps, Liturgie de cristal, interpreti 1941
+
+**Nuovi nodi:** `opera:messiaen-quatuor-fin-du-temps-1940`, `pers:henri-akoka`, `pers:etienne-pasquier`, `pers:jean-le-boulaire`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L206-A01` | **H — documentato** | Messiaen compone il Quatuor pour la fin du temps nel 1940 per violino, clarinetto, violoncello e pianoforte, eseguito nello Stalag VIII A il 15 gennaio 1941. |
+| `L206-A02` | **H — documentato** | Liturgie de cristal è il primo degli otto movimenti del Quatuor pour la fin du temps; il nodo del movimento resta distinto dall'opera completa. |
+| `L206-A03` | **H — documentato** | Henri Akoka esegue la parte di clarinetto alla prima del Quatuor, tenuta in cattività il 15 gennaio 1941. |
+| `L206-A04` | **H — documentato** | Étienne Pasquier esegue la parte di violoncello nella prima del Quatuor, 15 gennaio 1941. |
+| `L206-A05` | **H — documentato** | Jean Le Boulaire esegue la parte di violino alla prima del Quatuor nello Stalag VIII A, 1941. |
+| `L206-A06` | **H — documentato** | Il compositore Olivier Messiaen esegue la parte pianistica nella prima del Quatuor il 15 gennaio 1941; ruolo esecutivo distinto da composizione. |
+
+**Fonti consultate:**
+- https://ressources.ircam.fr/en/work/quatuor-pour-la-fin-du-temps
+
+**Esclusioni e questioni editoriali:** Distinguere composizione del 1940, prima in prigionia del 15 gennaio 1941 e prima pubblica parigina del 24 giugno 1941. Non inferire altre parentele biografiche dalla partecipazione comune.
+
+**Totale lotto:** 4 nodi e 6 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 207 — Boulez: Le Marteau sans maître, René Char e Hans Rosbaud
+
+**Nuovi nodi:** `opera:boulez-le-marteau-sans-maitre-1954`, `pers:rene-char`, `pers:hans-rosbaud`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L207-A01` | **H — documentato** | Boulez compone Le Marteau sans maître nel 1954 per voce d'alto e sei strumenti; la prima è al Festival ISCM di Baden-Baden il 18 giugno 1955. |
+| `L207-A02` | **H — documentato** | Boulez impiega tre poesie di René Char, tratte dalla raccolta Le Marteau sans maître; poeta e compositore hanno ruoli distinti. |
+| `L207-A03` | **H — documentato** | Hans Rosbaud dirige la prima esecuzione del Marteau sans maître a Baden-Baden il 18 giugno 1955. |
+
+**Fonti consultate:**
+- https://resources.ircam.fr/fr/work/le-marteau-sans-maitre
+- https://www.ircam.fr/fr/magazine/la-vie-de-pierre-boulez-en-etincelles
+
+**Esclusioni e questioni editoriali:** La somiglianza o il riferimento strutturale a Pierrot lunaire va distinto dalla citazione diretta dimostrata. Qui si registrano soltanto autore, poesia e prima esecuzione.
+
+**Totale lotto:** 3 nodi e 3 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 208 — Berio: Sequenza III, Cathy Berberian e testo di Markus Kutter
+
+**Nuovi nodi:** `opera:berio-sequenza-iii-1965`, `pers:cathy-berberian`, `pers:markus-kutter`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L208-A01` | **H — documentato** | Luciano Berio compone nel 1965 Sequenza III per voce femminile, dedicata e scritta per Cathy Berberian. |
+| `L208-A02` | **H — documentato** | Cathy Berberian è la prima interprete di Sequenza III a Brema nel 1966; la sua esecuzione non coincide con la scrittura musicale di Berio. |
+| `L208-A03` | **H — documentato** | Sequenza III è scritta per Cathy Berberian, come riportano catalogo e nota autografa del compositore; dedica distinta dalla prima. |
+| `L208-A04` | **H — documentato** | Markus Kutter scrive il breve testo inglese scomposto e rielaborato musicalmente da Berio in Sequenza III. |
+
+**Fonti consultate:**
+- https://www.lucianoberio.org/en/work/sequenza-iii/
+- https://www.lucianoberio.org/en/program-note-work/sequenza-iii-authors-note/
+
+**Esclusioni e questioni editoriali:** Il testo di Kutter non è di Cathy Berberian; i gesti vocali non autorizzano una classificazione uniforme come canto tradizionale. Distinguere comporre, dedicare ed eseguire.
+
+**Totale lotto:** 3 nodi e 4 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 209 — Ligeti: Lux Aeterna e riuso in 2001
+
+**Nuovi nodi:** `opera:ligeti-lux-aeterna-1966`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L209-A01` | **H — documentato** | Ligeti compone nel 1966 Lux Aeterna per coro misto a sedici parti a cappella; la prima si svolge a Stoccarda il 2 novembre 1966. |
+| `L209-A02` | **H — documentato** | Il film 2001: A Space Odyssey del 1968 utilizza una registrazione di Lux Aeterna di Ligeti come musica preesistente, non commissionata come colonna sonora originale. |
+
+**Fonti consultate:**
+- https://brahms.ircam.fr/en/works/work/10123
+- https://catalog.afi.com/Film/23399-2001-ASPACEODYSSEY
+
+**Esclusioni e questioni editoriali:** Come già per Atmosphères, citazione filmica non equivale a commissione compositiva di Kubrick. Non utilizzare l'arco per inferire rapporti personali non attestati.
+
+**Totale lotto:** 1 nodi e 2 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Lotto 210 — Steve Reich: Music for 18 Musicians e prima del 1976
+
+**Nuovi nodi:** `opera:reich-music-for-18-musicians-1974-76`.
+
+| Arco | Esito | Rapporto verificato e delimitazione |
+| --- | --- | --- |
+| `L210-A01` | **H — documentato** | Steve Reich sviluppa Music for 18 Musicians dal maggio 1974 al marzo 1976, prima assoluta il 24 aprile 1976 alla Town Hall di New York con Steve Reich and Musicians. |
+
+**Fonti consultate:**
+- https://stevereich.com/composition/music-for-18-musicians/
+- https://www.boosey.com/cr/music/Steve-Reich-Music-for-18-Musicians/548
+
+**Esclusioni e questioni editoriali:** La prima esecuzione del 1976 non è la prima registrazione discografica; la partitura è per ensemble acustico con eventuale amplificazione, non composizione elettronica.
+
+**Totale lotto:** 1 nodi e 1 archi. Nessun arco sospeso riattivato.
+
+---
+
+## Bilancio dopo Lotto 210
+
+- **Nuovi:** 28 nodi, 33 archi storici circoscritti.
+- **Totali:** 754 nodi, 1718 archi.
+- **Indicatori distinti:** 586 flag di verifica indipendente, 550 archi con gate `riscontro_storico_indipendente`.
+- **Sospensioni:** 125, inalterate. Nessun ID duplicato, triplette relazionali duplicate o riferimenti orfani.
+- **Confronti editoriali e falsi negativi:** le sospensioni che riguardano rimandi capitolo/opera e analogie senza riscontro diretto non sono state riattivate. Trattamento di casi documentati come nuovi archi autonomi, non promozione massiva dei vecchi.
+- **Distinzioni:** testo originale/traduzione, opera/incompiuto/completamento, committente/dedicatario, interprete/compositore, movimento/opera completa, prima esecuzione/registrazione, colonna sonora originale/riuso preesistente.
+
+**BFS simulata con filtri di esplorazione I–V** (primo passo diretto; ai livelli successivi solo relazioni specifiche, intermedi persone od opere concrete, nessun capitolo-ponte):
+
+| Nodo iniziale | Prima I–V | Dopo I–V |
+| --- | --- | --- |
+| `pers:alban-berg` | 2 / 3 / 4 / 4 / 4 | 3 / 7 / 12 / 12 / 12 |
+| `pers:schonberg` | 3 / 5 / 5 / 5 / 5 | 4 / 10 / 12 / 13 / 13 |
+| `pers:bartok` | 4 / 6 / 6 / 6 / 6 | 5 / 8 / 8 / 8 / 8 |
+| `pers:stravinskij` | 8 / 17 / 32 / 44 / 63 | 9 / 21 / 36 / 48 / 67 |
+| `pers:britten` | 2 / 4 / 4 / 4 / 4 | 3 / 6 / 6 / 6 / 6 |
+| `pers:messiaen` | 3 / 4 / 4 / 4 / 4 | 4 / 9 / 11 / 11 / 11 |
+| `pers:pierre-boulez` | 2 / 3 / 3 / 3 / 3 | 3 / 7 / 10 / 10 / 10 |
+| `pers:luciano-berio` | 2 / 5 / 10 / 20 / 23 | 3 / 8 / 13 / 23 / 26 |
+| `pers:ligeti` | 2 / 3 / 4 / 4 / 4 | 3 / 4 / 5 / 5 / 5 |
+| `pers:reich` | 2 / 4 / 4 / 4 / 4 | 3 / 5 / 5 / 5 / 5 |
+| `opera:film-2001-space-odyssey-1968` | 2 / 3 / 3 / 3 / 3 | 3 / 4 / 4 / 4 / 4 |
+
+**Test non eseguiti:** collaudo grafico visivo reale su browser desktop, WebGL e fallback Canvas Android; legibilità delle etichette in profondità. Nessuna sincronizzazione automatica fra sito e Atlantis.
+
+**Pubblicazione:** commit previsto `Atlantis Lotti 201-210: Novecento tra opere, fonti e interpreti`. Verificare SHA effettivo sul remoto.
+
