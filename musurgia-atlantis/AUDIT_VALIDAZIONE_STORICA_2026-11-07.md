@@ -2527,3 +2527,222 @@ Verifica effettuata confrontando i blob del dataset precedenti e successivi: `08
 
 **Stato verso il Lotto 57:** restano 287 `proposta_editoriale_revisionata`, 60 `sospeso`; continuare dal primo blocco successivo a `E0368` senza riaprire i Lotti 52–56.
 
+---
+## Lotto 57 — 8 novembre 2026: Frottola, policoralità veneziana e confessioni
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0370` | **trattazione_riscontrata** | Rinascimento dedica un percorso alla frottola di corte fra Quattro e Cinquecento, con le sue pratiche vocali e strumentali. La frottola non va identificata automaticamente con il madrigale cinquecentesco, né con una canzone popolare indifferenziata. |
+| `E0372` | **trattazione_riscontrata** | Rinascimento sviluppa San Marco, Willaert, i Gabrieli e i cori spezzati: gruppi vocali/strumentali nello spazio e prassi veneziana documentata. San Marco è un centro importante, non il luogo in cui sarebbe nata da zero ogni policoralità. |
+| `E0373` | **richiamo_contestuale** | Barocco richiama i cori spezzati veneziani e la scrittura policorale come antecedente e confronto timbrico, ma non ricostruisce autonomamente la storia della policoralità seicentesca. La persistenza storica non equivale a trattazione articolata nella pagina. |
+| `E0374` | **trattazione_riscontrata** | Rinascimento distingue Riforma luterana, corali in lingua tedesca, passione e polifonia, senza ridurre tutte le tradizioni protestanti a una sola pratica liturgica. |
+| `E0375` | **trattazione_riscontrata** | Barocco tratta la cantata luterana, il corale e la loro presenza nel repertorio sacro di Bach: non va confuso il corale congregazionale con ogni pagina vocale della cantata. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://www.treccani.it/enciclopedia/frottola/
+- https://www.treccani.it/enciclopedia/andrea-e-giovanni-gabrieli_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- https://www.basilicasanmarco.it/basilica/tradizione-musicale/
+- https://www.treccani.it/enciclopedia/corale/
+
+**QA Lotto 57:** 5 archi revisionati (4 trattazioni, 1 richiami, 0 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 58 — 8 novembre 2026: Consort, monodia e recitar cantando
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0376` | **trattazione_riscontrata** | Rinascimento presenta consort di viole e voci, strumenti affini e prassi d'insieme storiche. Consort non è sinonimo di quartetto d'archi classico e non presuppone una sola combinazione timbrica. |
+| `E0377` | **richiamo_contestuale** | Barocco richiama in particolare la tradizione inglese del consort nel contesto di Purcell, senza costruire una storia sistematica delle famiglie strumentali consort seicentesche. |
+| `E0378` | **trattazione_riscontrata** | Rinascimento tratta gli esperimenti fiorentini di fine Cinquecento sulla monodia accompagnata: sono un passaggio storico specifico, non l'invenzione assoluta del canto a una voce. |
+| `E0379` | **trattazione_riscontrata** | Barocco esamina monodia e basso continuo nel Seicento accanto a scritture polifoniche persistenti. La novità stilistica non cancella il contrappunto. |
+| `E0380` | **trattazione_riscontrata** | Melodramma barocco distingue i circoli fiorentini e il ruolo della monodia accompagnata nel teatro nascente, senza fare della monodia l'unica risorsa formale dell'opera. |
+| `E0381` | **trattazione_riscontrata** | Rinascimento sviluppa il recitar cantando fra le nuove soluzioni per accento, testo e personaggio; il nodo è trattato come soglia fra tardo Cinquecento e primo Seicento. |
+| `E0382` | **trattazione_riscontrata** | Melodramma barocco analizza il recitar cantando e il passaggio alla forma scenica, con differenze rispetto al successivo recitativo secco e accompagnato. |
+| `E0383` | **trattazione_riscontrata** | Anatomia del melodramma spiega espressamente il recitar cantando e le diverse configurazioni storiche del recitativo: un procedimento di declamazione, non uno schema settecentesco già compiuto. |
+| `E0384` | **richiamo_contestuale** | Teatro del Classicismo richiama il recitar cantando nel quadro introduttivo e ne discute l'eredità attraverso recitativo e aria, ma la nascita della pratica resta un antecedente e non il centro della pagina. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://www.treccani.it/enciclopedia/monodia_%28Enciclopedia-Italiana%29/
+- https://www.treccani.it/enciclopedia/andrea-e-giovanni-gabrieli_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/enciclopedia/basso_%28Enciclopedia-Italiana%29/
+
+**QA Lotto 58:** 9 archi revisionati (7 trattazioni, 2 richiami, 0 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 59 — 8 novembre 2026: Basso continuo e differenziazione degli organici
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0385` | **trattazione_riscontrata** | Barocco dedica una trattazione esplicita al continuo, alla realizzazione della linea grave e alle differenze fra strumenti armonici e bassi melodici. |
+| `E0386` | **trattazione_riscontrata** | Melodramma barocco presenta il continuo nell'accompagnamento dei primi drammi in musica e nella prassi del recitativo secco, distinguendolo da impieghi più ricchi dell'orchestra. |
+| `E0387` | **trattazione_riscontrata** | Classicismo tratta il declino graduale del continuo e l'emergere di altre forme di scrittura e sostegno armonico: il mutamento non fu uniforme nei generi e nelle città. |
+| `E0388` | **richiamo_contestuale** | Anatomia del melodramma spiega il continuo nel contesto specifico dei recitativi, ma non offre un'esposizione organologica e storica autonoma del basso continuo. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://www.treccani.it/enciclopedia/basso_%28Enciclopedia-Italiana%29/
+- https://www.treccani.it/enciclopedia/monodia_%28Enciclopedia-Italiana%29/
+
+**QA Lotto 59:** 4 archi revisionati (3 trattazioni, 1 richiami, 0 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 60 — 8 novembre 2026: Modi, temperamenti, tonalità e linguaggi armonici
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0395` | **richiamo_contestuale** | Rinascimento affronta accordature, temperamenti e limiti di una lettura già pienamente tonale dei sistemi cinquecenteschi, senza offrire un quadro autonomo sistematico dei modi ecclesiastici. La relazione è contestuale. |
+| `E0396` | **trattazione_riscontrata** | Barocco dedica una sezione specifica alla trasformazione dei centri armonici, alle cadenze, alla modulazione e a Rameau: il passaggio dalla modalità alla tonalità è graduale. |
+| `E0397` | **trattazione_riscontrata** | Classicismo tratta i contrasti tonali, le cadenze e l'organizzazione formale in sistemi maggiore-minore; non si deduce che ogni composizione classica usi identicamente il medesimo schema. |
+| `E0398` | **sospeso** | Romanticismo contiene osservazioni locali sulle tonalità di brani e sull'armonia ma non una trattazione storica autonoma del passaggio modalità–tonalità–teoria armonica. Il nodo aggregato è troppo ampio per promuovere l'arco. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://www.treccani.it/enciclopedia/tonalita/
+
+**QA Lotto 60:** 4 archi revisionati (2 trattazioni, 1 richiami, 1 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 61 — 8 novembre 2026: Sonata, forma-sonata e ricezione della fuga
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0399` | **trattazione_riscontrata** | Barocco illustra la sonata strumentale fra Gabrieli e Corelli, sonata a tre, da chiesa e da camera; non equivale alla successiva forma-sonata classica. |
+| `E0400` | **trattazione_riscontrata** | Classicismo tratta il genere sonata e la relativa grammatica formale senza identificarli: la forma-sonata compare anche nei quartetti, nelle sinfonie e nei concerti. |
+| `E0401` | **trattazione_riscontrata** | Romanticismo tratta la tradizione sonatistica e le sue trasformazioni in organici e contesti differenti, senza supporre una continuità formale rigida. |
+| `E0405` | **trattazione_riscontrata** | Barocco presenta ricercare, contrappunto, fuga e Bach, distinguendo soggetto, imitazione e procedimenti dall'idea di una forma immutabile. |
+| `E0406` | **richiamo_contestuale** | Classicismo richiama tecniche contrappuntistiche, Mozart e distinzioni rispetto alla fuga europea; non dedica una trattazione autonoma sufficientemente ampia alla storia o alla tecnica della fuga. |
+| `E0407` | **trattazione_riscontrata** | Romanticismo sviluppa il contrappunto anche attraverso il Quartetto di Verdi del 1873 e il finale fugato, in un contesto diverso dalla fuga bachiana. |
+| `E0408` | **richiamo_contestuale** | Verso le avanguardie tratta il recupero del contrappunto e delle tecniche storiche nei neoclassicismi, fra cui Hindemith; non ricostruisce però in modo specifico la fuga come forma novecentesca. Richiamo tecnico, non trattazione completa. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://www.treccani.it/enciclopedia/sonata/
+- https://academic.oup.com/reference/62400/reference-article-abstract/555407423
+- https://chambermusicsociety.org/about-the-music/appreciation/sonata-form
+- https://www.treccani.it/enciclopedia/fuga_%28Enciclopedia-Italiana%29/
+
+**QA Lotto 61:** 7 archi revisionati (5 trattazioni, 2 richiami, 0 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 62 — 8 novembre 2026: Corale luterano, cantata e differenti tradizioni sacre
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0414` | **trattazione_riscontrata** | Rinascimento tratta la Riforma, il corale tedesco, il rapporto tra partecipazione comunitaria e scrittura polifonica, senza ridurre la musica delle Chiese riformate al solo modello luterano. |
+| `E0415` | **trattazione_riscontrata** | Barocco colloca il corale e la cantata liturgica luterana nelle pratiche sacre del Seicento-Settecento, con riferimento a Bach e all'intreccio di coro, aria e recitativo. |
+| `E0416` | **sospeso** | Classicismo discute inni, cori e repertori sacri, inclusa la tradizione americana di William Billings, ma non tratta autonomamente la categoria specifica del corale luterano. Un coro di carattere solenne non prova appartenenza a quella tradizione. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://www.treccani.it/enciclopedia/corale/
+- https://www.treccani.it/enciclopedia/cantata/
+
+**QA Lotto 62:** 3 archi revisionati (2 trattazioni, 0 richiami, 1 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 63 — 8 novembre 2026: Orchestra, timbri e trasformazioni dei fiati
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0419` | **trattazione_riscontrata** | Romanticismo ricostruisce l'ampliamento dell'orchestra e la differenziazione timbrica fra concerto, sinfonia e teatro, senza assumere una sola orchestra romantica standard. |
+| `E0421` | **trattazione_riscontrata** | Balletto tratta il ruolo dell'orchestra nei diversi repertori scenici e distingue partitura orchestrale, scelta esecutiva e realizzazione coreografica. |
+| `E0422` | **richiamo_contestuale** | Dal musical al film discute orchestra e partitura per cinema come risorsa drammaturgica, ma non descrive sistematicamente l'organizzazione storica delle famiglie e sezioni orchestrali. |
+| `E0423` | **trattazione_riscontrata** | Rinascimento dedica un approfondimento organologico a cornetti, cromorni, bombarde, tromboni e strumenti affini, distinguendo prassi storiche ed evoluzioni moderne non sempre dirette. |
+| `E0424` | **trattazione_riscontrata** | Barocco tratta l'impiego di flauti, oboi, trombe, corni e altre famiglie negli organici teatrali, sacri e strumentali; la scelta varia con il luogo e l'opera. |
+| `E0425` | **trattazione_riscontrata** | Classicismo ricostruisce Mannheim, l'assestamento dell'orchestra e l'evoluzione dei fiati, compresa la crescente integrazione del clarinetto. Nessun organico è fissato in modo universale. |
+| `E0426` | **trattazione_riscontrata** | Romanticismo discute amplificazione, nuovi colori e nuove combinazioni dei fiati nel tessuto orchestrale e nei linguaggi di Berlioz, Wagner e altri autori. |
+| `E0427` | **richiamo_contestuale** | Opera lirica valorizza parti dei fiati e richiami timbrici nella drammaturgia di Weber e Rossini, ma non offre una ricostruzione organologica autonoma dei mutamenti storici delle famiglie a fiato. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://www.treccani.it/enciclopedia/orchestra/
+- https://www.treccani.it/enciclopedia/clarinetto/
+
+**QA Lotto 63:** 8 archi revisionati (6 trattazioni, 2 richiami, 0 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 64 — 8 novembre 2026: Sociabilità cameristica e quartetto d’archi
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0428` | **trattazione_riscontrata** | Classicismo tratta i contesti domestici e pubblici della musica da camera, e distingue duo, trio, quartetto e altri organici come forme di dialogo fra interpreti. |
+| `E0429` | **trattazione_riscontrata** | Romanticismo discute musica da camera, circolazione domestica, trascrizioni e repertori concertistici, con particolare attenzione anche al Quartetto di Verdi. |
+| `E0430` | **trattazione_riscontrata** | Barocco tratta sonata da camera e da chiesa e gli organici della musica strumentale dell'epoca, ma non li identifica con la musica da camera ottocentesca. |
+| `E0431` | **trattazione_riscontrata** | Classicismo dedica un approfondimento al quartetto d'archi come genere e forma di dialogo fra quattro parti, soprattutto in Haydn, Mozart e Beethoven. Non è una sinfonia ridotta. |
+| `E0432` | **trattazione_riscontrata** | Romanticismo presenta la ricezione e le trasformazioni del quartetto, includendo il caso verdiano (completato nel 1873, pubblicato nel 1876), distinto dal teatro lirico. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://www.chambermusicsociety.org/about-the-music/appreciation/the-string-quartet
+- https://academic.oup.com/reference/62400/reference-article-abstract/555395436
+- https://academic.oup.com/reference/62400/reference-article-abstract/555407423
+
+**QA Lotto 64:** 5 archi revisionati (5 trattazioni, 0 richiami, 0 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 65 — 8 novembre 2026: Forma-sonata, sinfonia e immaginario orchestrale
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0434` | **trattazione_riscontrata** | Classicismo sviluppa forma-sonata, processi tematici, frase, cadenza e sviluppo: modello analitico storicamente variabile, non forma universale di ogni pezzo beethoveniano. |
+| `E0435` | **trattazione_riscontrata** | Romanticismo affronta motivi, elaborazione formale e trasformazioni della forma-sonata, senza presentare una rottura assoluta con il Classicismo. |
+| `E0437` | **trattazione_riscontrata** | Classicismo dedica un percorso alla sinfonia fra Mannheim, Haydn, Mozart e Beethoven e alla costruzione di grandi forme orchestrali. |
+| `E0438` | **trattazione_riscontrata** | Romanticismo sviluppa pluralità del sinfonismo, musica a programma e architetture differenti: la storia non consiste nella derivazione obbligata da una singola sinfonia di Beethoven. |
+| `E0440` | **richiamo_contestuale** | Dal musical al film richiama la scrittura sinfonica e il ruolo dell'orchestra per la colonna sonora, ma non studia il genere sinfonia come forma concertistica autonoma. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://chambermusicsociety.org/about-the-music/appreciation/sonata-form
+- https://academic.oup.com/reference/62400/reference-article-abstract/555407423
+- https://www.treccani.it/enciclopedia/orchestra/
+- https://academic.oup.com/reference/62400/reference-article-abstract/555395436
+
+**QA Lotto 65:** 5 archi revisionati (4 trattazioni, 1 richiami, 0 sospensioni, 0 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+## Lotto 66 — 8 novembre 2026: Lied, virtuosismo, musica assoluta e programma verso il cinema
+
+**Metodo:** confronto degli effettivi paragrafi pubblicati su `main` con le fonti indipendenti indicate. Gli archi fra capitoli e nodi concettuali descrivono trattazione, richiamo o sospensione, non filiazione storica. Nessuna modifica alle pagine, ai menu, all'interfaccia, ai renderer o al protocollo.
+
+| Arco | Gate conclusivo | Riscontro, limite e possibile riuso editoriale |
+| --- | --- | --- |
+| `E0441` | **trattazione_riscontrata** | Classicismo dedica spazio alla storia e agli esempi del Lied prima di Schubert: il genere per voce e strumenti possiede pratiche precedenti al Romanticismo. |
+| `E0442` | **trattazione_riscontrata** | Romanticismo sviluppa il Lied, Schubert e Schumann, poesia, pianoforte e ciclo di Lieder, includendo il Winterreise come esempio di percorso interiore. |
+| `E0448` | **confronto_non_causale** | Balletto problematizza il virtuosismo del danzatore attraverso Angiolini e Noverre: è un confronto tipologico con il virtuosismo strumentale, non identità di tecnica, organico o genealogia. Il verbo generico non è espandibile oltre livello I. |
+| `E0449` | **trattazione_riscontrata** | Romanticismo affronta la nozione storica ed estetica di musica assoluta, dibattuta e retrospettiva; non è un'etichetta dichiarata da Beethoven come programma d'autore. |
+| `E0453` | **trattazione_riscontrata** | Romanticismo esamina la Pastorale e il rapporto fra descrizione, programma ed espressione di sentimenti. Non va assimilato ogni tratto descrittivo a un prestito dalla musica per immagini. |
+| `E0455` | **richiamo_contestuale** | Dal musical al film riprende modelli strumentali e musica a programma come possibili risorse narrative per il cinema, ma non offre una storia autonoma del genere ottocentesco. |
+| `E0456` | **trattazione_riscontrata** | Musica nell'audiovisivo sviluppa il legame fra musica a programma, poema sinfonico e immaginazione visiva fino a Fantasia, distinguendo ispirazione, impiego di musica preesistente e composizione cinematografica. |
+| `E0459` | **richiamo_contestuale** | Musica nell'audiovisivo richiama il poema sinfonico come precedente concettuale per le associazioni di immagini e musica, ma non ne offre una trattazione indipendente della storia compositiva ottocentesca. |
+| `E0460` | **richiamo_contestuale** | Dal musical al film descrive il poema sinfonico e la scrittura strumentale europea come una delle risorse per il cinema, senza derivarne deterministicamente la colonna sonora o il musical. |
+
+### Fonti indipendenti usate per contestualizzare
+- https://academic.oup.com/reference/62400/reference-article-abstract/555407423
+- https://www.treccani.it/enciclopedia/fuga_%28Enciclopedia-Italiana%29/
+- https://www.treccani.it/enciclopedia/forme-musicali_%28Enciclopedia-dei-ragazzi%29/
+- https://www.chambermusicsociety.org/about-the-music/appreciation/the-string-quartet
+
+**QA Lotto 66:** 9 archi revisionati (5 trattazioni, 3 richiami, 0 sospensioni, 1 confronti non causali), tutti identificati e tracciati con `previous_quality_gate` e `previous_description` dove presente. Gli URL di capitolo originari sono conservati.
+
+---
+### Bilancio e continuità dopo i Lotti 57–66
+
+- **59 relazioni revisionate** in 10 lotti tematici; ripartizione 57: 5, 58: 9, 59: 4, 60: 4, 61: 7, 62: 3, 63: 8, 64: 5, 65: 5, 66: 9.
+- Nodi **608**, archi **1520** invariati; 0 duplicati di nodi, 0 duplicati di archi, 0 estremi orfani, 0 triplette orientate fonte–destinazione–verbo duplicate.
+- Proposte editoriali rimanenti **228**; sospensioni complessive **62**; richiami contestuali complessivi **24**; trattazioni riscontrate complessive **96**; confronti non causali complessivi **118**; candidati non fusi **0**.
+- Gate `riscontro_storico_indipendente` **322** e flag `historical_verified_independently` **359** invariati: questi lotti verificano rimandi capitolo-concetto, non nuovi archi causali fra persone, opere o istituzioni.
+- **Punti da preservare per il futuro:** il rapporto sonata/forma-sonata; distinzione fra corale luterano e inni genericamente corali; sistemi modali, temperamenti e tonalità non equivalenti; confronto fra virtuosismo del ballerino e strumentista; poesia musicale e trasposizione audiovisiva non sono prova di una filiazione unica.
+- Le relazioni `sviluppa_o_illumina` restano generiche. I gate sospesi sono fuori dalla vista ordinaria; trattazioni e richiami eventualmente visibili sono **solo connessioni di primo livello** e non attestano dipendenze storiche indirette.
+- **Da Lotto 67:** riprendere dalle proposte successive a `E0460`, comprese lingua e identità nazionale, canto civico, bande e teatro; non riesaminare gli archi già conclusi.
+
