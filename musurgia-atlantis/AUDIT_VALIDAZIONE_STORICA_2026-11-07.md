@@ -486,3 +486,66 @@ I livelli non sono obbligatori: Čajkovskij, Petipa, Ivanov e Drigo arrivano al 
 **Integrità confermata sul remoto:** 608 nodi, 1.520 archi, ID univoci, nessun estremo mancante; 139 archi `riscontro_storico_indipendente` e 641 ancora provvisori.
 
 **Nota sulla *Valse*:** Anversa 2 ottobre 1926 e allestimento Nižinskaja–Rubinstein 1929 sono produzioni distinte; nel database manca ancora un nodo specifico per Anversa. Il registro distingue il 15 gennaio 1929 a Monte-Carlo riportato dal programma del Festival Diaghilev e la data del 23 maggio 1929 documentata dalla BnF per Parigi. Non creare un nuovo arco di «prima assoluta» senza modellare le due sedi.
+
+
+---
+
+## Lotto 08 — 8 novembre 2026: Bartók, Lengyel e *Il mandarino meraviglioso*
+
+**Preflight remoto:** branch `main`, HEAD `c654ccc62868409d084b5d992aaca73d052d0da1`. Ambito: due candidati L05-A056, L05-A057 e la proposta E0826, verificati individualmente. Non modificati capitoli, menu, mappe, interfaccia o protocollo.
+
+### Archi convalidati
+
+| ID | Stato e relazione | Riscontro storico |
+| --- | --- | --- |
+| `L05-A056` | `candidato_non_fuso` → `riscontro_storico_indipendente`; `scrive_soggetto_letterario_di` | Menyhért (Melchior) Lengyel è autore del soggetto della pantomima grottesca, pubblicato il 1° gennaio 1917 su *Nyugat*. Non è opera originale di Bartók. |
+| `L05-A057` | `candidato_non_fuso` → `riscontro_storico_indipendente`; `rielabora_in_suite_orchestrale` | Bartók estrae e rielabora circa due terzi della musica scenica, preparando la suite nel febbraio 1927 con finale concertistico e senza il coro della pantomima integrale; prima della suite a Budapest il 15 ottobre 1928, Ernő Dohnányi. |
+| `E0826` | `proposta_editoriale_revisionata` → `riscontro_storico_indipendente`; `compone_la_musica_di` | Bartók compone la pantomima da Lengyel: stesura 1918–1919, completamento orchestrazione 1924; prima scenica il 27 novembre 1926 a Colonia, con Jenő Szenkár. |
+
+**Precisazione di genere:** il lavoro è una pantomima drammatica in un atto, non un balletto classico a numeri. La fonte musicologica di László Vikárius documenta la consapevole distinzione di Bartók tra pantomima e balletto; alcuni allestimenti sono classificati dalle istituzioni come *balletto*, ma ciò non annulla la definizione originaria. La suite concertistica del 1927 non è la medesima entità scenica.
+
+**Cronologia:** pubblicazione di Lengyel il 1° gennaio 1917; prima stesura di Bartók ottobre 1918–maggio 1919; orchestrazione avviata o ripresa nel 1923 e completata entro novembre 1924; estratti a quattro mani alla radio di Budapest l'8 aprile 1926; debutto scenico il 27 novembre 1926 a Colonia, seguito dalle proteste e dal divieto delle repliche; suite definita nel febbraio 1927; prima della suite il 15 ottobre 1928 a Budapest. L'opera integrale mantiene sezioni ed esigenze esecutive non presenti nella suite. Le varie versioni del finale e i progetti scenici successivi meritano audit separato.
+
+### Fonti indipendenti
+
+- Archivio Bartók, HUN-REN, inventario dei manoscritti BB 82 e dei finali alternativi: https://zti.abtk.hu/en/ba/bartok-compositions/manuscripts
+- Opera di Stato ungherese, storia del soggetto, composizione, prima e controversie: https://www.opera.hu/en/programme/2026-2027/the-miraculous-mandarin-bluebeards-castle/
+- Catalogo Boosey & Hawkes / Universal Edition, pantomima op. 19: https://www.boosey.com/pages/Opera/catalogue/cat_detail?musicid=2185
+- Berliner Philharmoniker, suite e distinzione delle prime: https://www.berliner-philharmoniker.de/en/programme-notes/bela-bartok-the-miraculous-mandarin-suite-sz-73/
+- Boston Symphony Orchestra, suite, durata, organico, cronologia: https://www.bso.org/works/suite-from-the-miraculous-mandarin
+- Biblioteca Musicale di Grecia, Bartók Weissmann Archive: https://mmb.org.gr/en/acquisition/csodalatos-mandarin
+- László Vikárius, *Transfigurations of The Miraculous Mandarin*, *Studia Musicologica* 60 (2019), DOI: https://doi.org/10.1556/6.2019.00003
+
+### Sospensioni e cautela filologica
+
+1. `E0824` (capitolo Balletto → Mandarino) resta proposta editoriale revisionata: l'attestazione dell'opera non comprova automaticamente l'ampiezza della trattazione nella pagina.
+2. `E0825` (capitolo Avanguardie → Mandarino) resta sospeso, poiché la presenza di Bartók nella pagina non implica un'analisi specifica della pantomima.
+3. `L05-A062` e `L05-A063` restano candidati: «lavoro collettivo» e «frizione musica/coreografia» sono rapporti concettuali da valutare separatamente, non nuove genealogie causali.
+4. Non creati archi Bartók–Stravinskij, Bartók–Diaghilev o Bartók–Avanguardie: affinità artistiche, stile espressionistico e eventuali progetti riferiti indirettamente a Diaghilev non attestano da soli influenze o collaborazioni dirette.
+5. Per la suite si registra il 15 ottobre 1928, indicato concordemente da Berliner Philharmoniker e Boston Symphony Orchestra. Eventuali date alternative nelle note secondarie devono essere vagliate sui documenti d'epoca, senza compromettere il rapporto di derivazione.
+
+### Validazione del dato e dei livelli
+
+- Dopo modifica: **608 nodi, 1.520 archi**, ID univoci, **0 estremi mancanti**; JSON serializzato e riparsato.
+- `riscontro_storico_indipendente`: **142**; `candidato_non_fuso`: **301**; `proposta_editoriale_revisionata`: **337**; provvisori: **638**.
+- Flag `historical_verified_independently=true`: **177**, conteggio distinto dai quality gate.
+- Simulazione della logica dei livelli I–V, con soli livelli `trattazione` e `menzione` selezionati e senza trattare capitoli e relazioni generiche come ponti (ogni cifra conta nuovi nodi al livello indicato):
+
+| Radice | Prima I / II / III / IV / V | Dopo I / II / III / IV / V |
+| --- | --- | --- |
+| Béla Bartók | 3 / 0 / 0 / 0 / 0 | 4 / 2 / 0 / 0 / 0 |
+| Menyhért Lengyel | 0 / 0 / 0 / 0 / 0 | 1 / 2 / 0 / 0 / 0 |
+| Il mandarino meraviglioso | 0 / 0 / 0 / 0 / 0 | 3 / 0 / 0 / 0 / 0 |
+| Il mandarino meraviglioso · Suite da concerto (1927) | 0 / 0 / 0 / 0 / 0 | 1 / 2 / 0 / 0 / 0 |
+
+Per confronto, con il filtro esteso che include anche `navigazione` e `ipotesi`, il numero di nodi raggiungibili risulta:
+- `pers:bartok`: 4 / 2 / 0 / 0 / 0 (I–V).
+- `pers:menyhert-lengyel`: 1 / 2 / 0 / 0 / 0 (I–V).
+- `opera:mandarino`: 4 / 0 / 0 / 0 / 0 (I–V).
+- `opera:mandarino-suite-1927`: 1 / 2 / 0 / 0 / 0 (I–V).
+
+**Limite del test:** regressione algoritmica sui dati. Non equivale a collaudo visuale effettivo WebGL/Canvas nel browser.
+
+### Lotto successivo
+
+**Lotto 09:** valutare separatamente `L05-A062` (Daphnis → lavoro collettivo), `L05-A063` (Fauno → frizione musica/coreografia) e altri candidati ancora non verificati nel teatro coreografico; classificare le relazioni concettuali senza trasformarle in causazioni storiche.
