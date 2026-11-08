@@ -2354,3 +2354,23 @@ I confronti non causali `L04-A05`, `A16`, `A23`, `A28`, `A35`, `A39`, `A44`, `A5
 - **0** duplicati ID di nodo, **0** duplicati ID di arco, **0** estremi orfani, **0** triplette orientate duplicate.
 - Regole UI verificate in `musurgia-atlantis/index.html`: il filtro esclude i sospesi dalla vista ordinaria e le relazioni generiche `sviluppa_o_illumina`, `analizzata_in` e `tratta_in_modo_specifico` non diventano ponti storici multilivello. Test strutturale del codice, non resa WebGL/Canvas in browser reale.
 - **Prima fase di validazione dei candidati conclusa:** restano **317** `proposta_editoriale_revisionata`, che costituiscono un distinto insieme editoriale e non devono essere promosse in blocco a relazioni storiche. I 58 sospesi non sono stati cancellati.
+
+### QA supplementare — percorsi multilivello dopo i Lotti 50–51
+
+Il controllo riproduce la logica di `musurgia-atlantis/index.html` per la vista focalizzata, con i filtri iniziali «trattazione» e «menzione». Sono confrontati il blob remoto conclusivo del Lotto 49 (`23cc1f8020804a348e4b07f110682c32923dc016`) e quello conclusivo del Lotto 51 (`08ddffe7c798ba143233f9e10049419020bf73f9`). Si applicano le regole del codice: gli archi genericamente descrittivi non propagano oltre livello I; i capitoli non sono nodi intermedi; dal livello II il ponte richiede persona, opera o nodo di senso.
+
+| Nodo focale | Dopo Lotto 49, livelli I–V | Dopo Lotto 51, livelli I–V |
+| --- | --- | --- |
+| Mozart | 13 / 4 / 3 / 3 / 5 | 13 / 4 / 3 / 3 / 5 |
+| Beethoven | 17 / 17 / 7 / 0 / 0 | 17 / 17 / 7 / 0 / 0 |
+| Giuseppe Verdi | 22 / 16 / 15 / 3 / 1 | 22 / 16 / 15 / 3 / 1 |
+| The Skeleton Dance (1929) | 5 / 1 / 1 / 1 / 5 | 6 / 1 / 1 / 1 / 5 |
+| Steamboat Willie | 3 / 2 / 8 / 3 / 6 | 4 / 2 / 8 / 3 / 6 |
+| West Side Story | 7 / 2 / 0 / 0 / 0 | 8 / 2 / 0 / 0 / 0 |
+| Teatro musicale afroamericano | 1 / 5 / 1 / 0 / 0 | 3 / 8 / 1 / 0 / 0 |
+| Camerata de' Bardi | 3 / 1 / 2 / 2 / 0 | 4 / 1 / 2 / 2 / 0 |
+
+**Esito:** le nuove trattazioni rendono più reperibili i relativi nodi al livello I; Mozart, Beethoven e Verdi mantengono invariati i percorsi già verificati. Il nesso del teatro afroamericano è un percorso a più relazioni nominate: non va letto come una filiazione causale di ciascun nodo raggiunto. Resta non verificata l'effettiva resa su schermo dei renderer WebGL e Canvas.
+
+**Frontiera di lavoro:** 0 candidati non fusi nel dataset; restano 317 proposte editoriali revisionate e 58 sospensioni da conservare e vagliare per categoria, senza promozione indiscriminata a nessi storici.
+
