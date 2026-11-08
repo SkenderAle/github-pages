@@ -1542,3 +1542,117 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - Nessuna modifica a capitoli, menu, renderer WebGL o protocollo. Validazione del JSON e tracciamento dei metadati non equivalgono al collaudo grafico su un browser reale.
 
 **Lotto 31 suggerito:** `L07-A086`–`L07-A092` (Grisey, *Talea*, color e analogie isoritmiche con *Liturgie de cristal* di Messiaen), poi esame di altri candidati residui del grafo; evitare ponti storici non documentati verso il capitolo del Novecento.
+
+---
+
+## Lotto 31 — 8 novembre 2026: Grisey, Talea, color medievale e Liturgie de cristal
+
+**Metodo:** verifica dell'esatto significato dei rapporti sui cataloghi musicologici, risorse accademiche e, per le sole menzioni editoriali, sul file di pagina effettivo del branch `main`. 7 relazioni revisionate. Non sono stati introdotti nodi o archi e nessuna pagina, menu o interfaccia è stata modificata.
+
+| ID | Gate conclusivo | Riscontro e precisazioni |
+| --- | --- | --- |
+| `L07-A086` | **riscontro_storico_indipendente** | Gérard Grisey compose Talea, ou la machine et les herbes folles fra 1985 e 1986 per flauto, clarinetto, violino, violoncello e pianoforte, su commissione di Radio France. La prima esecuzione avvenne il 13 gennaio 1987 alla Maison de Radio France, non nel 1986. |
+| `L07-A087` | **riscontro_storico_indipendente** | Nella nota d'autore di Talea Grisey richiama esplicitamente la talea medievale come schema ritmico ricorrente e la dissociazione fra durate e altezze. Il riferimento è cosciente e dichiarato, ma non costituisce ripresa letterale di uno specifico mottetto trecentesco. |
+| `L07-A088` | **riscontro_storico_indipendente** | Grisey scrive nella nota alla sua Talea che la parte seconda del quintetto potrebbe chiamarsi «color», richiamando così consapevolmente il rapporto medievale fra disegno ritmico e configurazione delle altezze. Non è la citazione di un color melodico documentato in un manoscritto particolare. |
+| `L07-A089` | **confronto_non_causale** | Il titolo Talea e la nota d'autore di Grisey dialogano con la distinzione talea/color propria di talune strutture isoritmiche del tardo Medioevo, compresa la tradizione dell'Ars nova. Il nodo «Ars nova e mensuralismo» è però assai più ampio: il quintetto moderno non discende dall'intero periodo o dalla sua notazione mensurale. |
+| `L07-A090` | **sospeso** | Il capitolo Verso le avanguardie e il Novecento tratta Gérard Grisey e lo spettralismo, ma nel corpo HTML del branch main esaminato l'opera Talea non è menzionata. Rimane proposta editoriale futura: non renderla visibile come relazione di trattazione già presente. |
+| `L07-A091` | **riscontro_storico_indipendente** | Olivier Messiaen è autore di Liturgie de cristal, primo movimento del Quatuor pour la fin du temps, composto nel 1940 e presentato integralmente il 15 gennaio 1941 a Görlitz nello Stalag VIII A. Il «1941» nel titolo del nodo si riferisce al contesto della prima esecuzione, non alla data di composizione indicata dall'IRCAM. |
+| `L07-A092` | **confronto_non_causale** | Nel primo movimento del Quatuor, Messiaen sovrappone al pianoforte un ciclo di 17 valori ritmici a una successione di 29 accordi, mentre altri strumenti mantengono cicli indipendenti. La dissociazione è comparabile a taluni principi dell'isoritmia medievale, ma non prova da sola il prestito consapevole da un determinato mottetto dell'Ars nova. |
+
+### Fonti indipendenti e pagine controllate
+- https://ressources.ircam.fr/fr/work/talea
+- https://ressources.ircam.fr/en/composer/gerard-grisey/workcourse
+- https://www.cambridge.org/core/books/abs/life-and-music-of-gerard-grisey/absolute-love-198688/369607EA5A20E6D9B0B76B481BB24DA0
+- https://resources.ircam.fr/en/work/quatuor-pour-la-fin-du-temps
+- https://www.chambermusicsociety.org/about-the-music/compositions/messiaen-quartet-for-the-end-of-time
+
+### Precisazioni da conservare per l'eventuale integrazione editoriale
+- La nota *autografa/autoriale trascritta* nel catalogo IRCAM di *Talea* esplicita tanto «talea» quanto «color», ma il riferimento a tutto il repertorio dell'Ars nova è comparativo e non afferma una citazione di un mottetto particolare.
+- *Talea*: composizione 1985–86, prima 13 gennaio 1987 (Paris, Maison de Radio France), non prima del 1986.
+- *Quatuor pour la fin du temps*: composizione catalogata nel 1940 e prima nel 1941; il nodo corrente «Liturgie de cristal (…1941)» va interpretato con tale distinzione, senza rinomina durante l'audit.
+- *Liturgie de cristal*: 17 durate ritmiche e 29 accordi al pianoforte forniscono un'analogia strutturale, non una filiazione attestata dall'isoritmia medievale.
+- Il file remoto `verso-le-avanguardie/index.html` menziona Grisey e lo spettralismo ma non «Talea»: `L07-A090` sospeso. Da considerare per futura integrazione autorizzata, senza modificarne ora il capitolo.
+
+---
+
+## Lotto 32 — 8 novembre 2026: due Camerate fiorentine, Peri e le diverse Euridici
+
+**Metodo:** verifica dell'esatto significato dei rapporti sui cataloghi musicologici, risorse accademiche e, per le sole menzioni editoriali, sul file di pagina effettivo del branch `main`. 8 relazioni revisionate. Non sono stati introdotti nodi o archi e nessuna pagina, menu o interfaccia è stata modificata.
+
+| ID | Gate conclusivo | Riscontro e precisazioni |
+| --- | --- | --- |
+| `L01-A01` | **riscontro_storico_indipendente** | Giovanni de' Bardi fu il riferimento e l'ospite della prima Camerata fiorentina, i cui membri si riunivano nella sua casa all'incirca fra 1573 e 1587. Non è corretto attribuire a quell'unico cenacolo, come invenzione collettiva diretta, tutte le successive opere teatrali fiorentine. |
+| `L01-A02` | **riscontro_storico_indipendente** | Jacopo Corsi promosse nel tardo Cinquecento un diverso ambiente fiorentino di sperimentazione teatrale e musicale; sostenne i lavori di Peri e Rinuccini che portarono a Dafne e all'Euridice del 1600. Il circolo non va fuso istituzionalmente con la precedente Camerata di Bardi. |
+| `L01-A03` | **riscontro_storico_indipendente** | La Camerata riunita intorno a Bardi (attiva circa 1573–1587) e la cerchia di Jacopo Corsi, documentata in particolare negli anni Novanta, furono ambienti storicamente distinti con contatti fra alcuni partecipanti. La denominazione generale «Camerata fiorentina» ha favorito la fusione retrospettiva delle loro attività. |
+| `L01-A04` | **riscontro_storico_indipendente** | Giulio Caccini frequentò il primo ambiente della Camerata de' Bardi, dedicato fra gli altri temi alla discussione del rapporto fra parola, declamazione e musica. La sua presenza in questo cenacolo non autorizza a collocare in quella fase la prima dell'Euridice (1600). |
+| `L01-A05` | **riscontro_storico_indipendente** | Giulio Caccini fu attivo anche nella successiva cerchia di Jacopo Corsi; contribuì con musica propria alla rappresentazione dell'Euridice del 6 ottobre 1600, pur senza esserne l'unico compositore. La sua opera completa sul libretto di Rinuccini fu rappresentata nel 1602. |
+| `L01-A06` | **riscontro_storico_indipendente** | Jacopo Peri collaborò nell'ambiente protetto da Jacopo Corsi agli esperimenti di dramma musicale, fra cui la Dafne con testo di Ottavio Rinuccini e l'Euridice del 1600. Il ruolo di Peri non deve essere trasformato nell'attribuzione esclusiva della musica di Dafne o dell'esecuzione composita dell'Euridice. |
+| `L01-A07` | **riscontro_storico_indipendente** | Ottavio Rinuccini fu collaboratore dell'ambiente di Jacopo Corsi e librettista di Dafne e dell'Euridice rappresentata nel 1600. Il testo drammatico di Rinuccini è distinto dalle diverse partiture musicali approntate da Peri e da Caccini. |
+| `L01-A14` | **riscontro_storico_indipendente** | Le Euridici di Jacopo Peri e Giulio Caccini utilizzano il medesimo libretto di Ottavio Rinuccini ma hanno partiture distinte. La prima del 6 ottobre 1600 impiegò musica di entrambi; la completa realizzazione musicale di Caccini fu eseguita nel 1602. Non bisogna confondere i due testi musicali con le diverse configurazioni dell'esecuzione del 1600. |
+
+### Fonti indipendenti e pagine controllate
+- https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- https://sscm-jscm.org/v9/no1/harness.html
+- https://corago.unibo.it/libretto/DRT0016963
+- https://mam-e.it/euridice/
+
+### Precisazioni da conservare per l'eventuale integrazione editoriale
+- I due gruppi di Bardi e Corsi non sono equivalenti: primo documentato circa 1573–1587, secondo specialmente negli anni Novanta; l'appellativo «Camerata fiorentina» spesso li confonde.
+- Caccini opera in entrambi gli ambienti. Peri e Rinuccini sono documentati in quello di Corsi; patronato, libretto e composizione non sono interscambiabili.
+- Nel 1600 esiste la partitura di Peri e una rappresentazione con inserti di Caccini; la completa partitura di Caccini sul medesimo libretto fu eseguita nel 1602. La distinzione in tre situazioni musicali è utile per l'audit di *Melodramma barocco*.
+
+---
+
+## Lotto 33 — 8 novembre 2026: Goldoni, Metastasio, balletto pantomimico e teatro musicale francese
+
+**Metodo:** verifica dell'esatto significato dei rapporti sui cataloghi musicologici, risorse accademiche e, per le sole menzioni editoriali, sul file di pagina effettivo del branch `main`. 14 relazioni revisionate. Non sono stati introdotti nodi o archi e nessuna pagina, menu o interfaccia è stata modificata.
+
+| ID | Gate conclusivo | Riscontro e precisazioni |
+| --- | --- | --- |
+| `L02-A08` | **riscontro_storico_indipendente** | Carlo Goldoni scrisse oltre cinquanta drammi giocosi e altri testi per musica: fra i titoli Il mondo della luna (1750), La favola de' tre gobbi (1749) e L'Arcadia in Brenta (1749). Il genere precede Mozart e Da Ponte e non è sinonimo perfetto di ogni opera buffa. |
+| `L02-A09` | **riscontro_storico_indipendente** | Pietro Metastasio elaborò libretti centrali per il dramma per musica serio settecentesco, come Didone abbandonata (1724), successivamente musicati in molteplici partiture di autori diversi. L'opera seria non consiste in un repertorio con una sola musica per libretto. |
+| `L02-A20` | **riscontro_storico_indipendente** | Franz Anton Hilverding fu una figura importante della riforma pantomimica della danza scenica, attivo nei teatri imperiali viennesi prima di Gasparo Angiolini. Non deve essere presentato come l'inventore unico del ballet d'action, né come autore di tutte le innovazioni di Angiolini e Noverre. |
+| `L02-A25` | **confronto_non_causale** | Les Petits Riens, creato a Parigi l'11 giugno 1778 con coreografia di Jean-Georges Noverre e musica solo parzialmente di Mozart, è documentato come ballet-pantomime. Si colloca nella costellazione delle riforme narrative della danza, ma le sue scene episodiche non equivalgono alla forma del balletto d'azione tragico di Don Juan (1761). |
+| `L02-A26` | **riscontro_storico_indipendente** | Giacomo Pier Francesco Durazzo organizzò la vita spettacolare della corte viennese negli anni della riforma di Gluck e promosse l'integrazione fra musica, testo, balletto e pantomima, favorendo la collaborazione di Gluck, Calzabigi e Angiolini. Non fu compositore delle musiche della riforma. |
+| `L02-A27` | **riscontro_storico_indipendente** | Gasparo Angiolini operò alla corte viennese come maestro di ballo e coreografo e, con la collaborazione di Gluck, realizzò il balletto pantomimico Don Juan (1761). La sua ricerca proseguì la riforma avviata da Hilverding senza coincidervi integralmente. |
+| `L02-A28` | **riscontro_storico_indipendente** | Christoph Willibald Gluck lavorò nel contesto dei teatri di corte viennesi, collaborando con Angiolini a Don Juan (1761) e con Calzabigi a Orfeo ed Euridice (1762). Sono progetti distinti fra balletto e opera, collegati dal contesto di riforma e dalla direzione teatrale di Durazzo. |
+| `L02-A29` | **riscontro_storico_indipendente** | Ranieri de' Calzabigi fu attivo nel contesto teatrale viennese dei primi anni Sessanta e scrisse il libretto dell'Orfeo ed Euridice di Gluck (prima il 5 ottobre 1762). La sua riforma drammaturgica coinvolse l'azione, il coro e la scena senza renderlo autore della coreografia di Angiolini. |
+| `L02-A30` | **riscontro_storico_indipendente** | Jean-Baptiste Lully compose musiche per diverse comédies-ballets legate alla collaborazione con Molière. Le Bourgeois gentilhomme (1670) documenta l'integrazione di prosa, musica e danza: il testo drammatico è di Molière, la musica di Lully. |
+| `L02-A31` | **riscontro_storico_indipendente** | Molière (Jean-Baptiste Poquelin) scrisse commedie che integravano intermezzi musicali e danza, fra cui Le Bourgeois gentilhomme (1670), in collaborazione con Lully e coreografi come Pierre Beauchamp. Il genere non equivale a una tragédie en musique o a un balletto autonomo. |
+| `L02-A32` | **riscontro_storico_indipendente** | Le Bourgeois gentilhomme, rappresentato a Chambord il 14 ottobre 1670, è esplicitamente documentato come comédie-ballet di Molière e Lully, con coreografie di Pierre Beauchamp. La definizione di genere attiene alla forma complessiva, non al solo contenuto degli intermezzi musicali. |
+| `L02-A33` | **riscontro_storico_indipendente** | Jean-Baptiste Lully, in collaborazione con il librettista Philippe Quinault, contribuì a codificare la tragédie en musique francese, inaugurata con Cadmus et Hermione (1673). Il genere comprende prologo e cinque atti e integra recitazione cantata, cori e danza, ma non equivale a balletto autonomo. |
+| `L02-A34` | **riscontro_storico_indipendente** | Jean-Philippe Rameau compose nel genere dell'opéra-ballet: Les Indes galantes (1735; aggiunte nel 1736) ne è un esempio catalogato. Il genere dell'opéra-ballet non va confuso con ogni divertissement danzato presente nell'opera. |
+| `L02-A35` | **riscontro_storico_indipendente** | Les Indes galantes di Rameau, su libretto di Louis Fuzelier, è un opéra-ballet. La prima del 23 agosto 1735 comprendeva prologo e due entrées; una terza entrata seguì il 28 agosto e la quarta (Les Sauvages) fu aggiunta nel marzo 1736. Non retrodatare l'assetto a quattro entrées alla prima del 1735. |
+
+### Fonti indipendenti e pagine controllate
+- https://www.treccani.it/enciclopedia/carlo-goldoni_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/enciclopedia/pietro-metastasio_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/enciclopedia/giacomo-pier-francesco-durazzo_%28Dizionario-Biografico%29/
+- https://www.treccani.it/enciclopedia/gasparo-angiolini_%28Dizionario-Biografico%29/
+- https://mediatheque.cnd.fr/spip.php?id_article=1182&page=les-petits-riens-article
+- https://mediatheque.cnd.fr/dossier/les-petits-riens-2006-de-marie-genevieve-masse-23
+- https://viv-it.org/schede/3-riforma-dell-opera-italiana-vienna
+- https://philidor.cmbv.fr/Publications/Catalogues-de-genre/Pierre-I-Ballard-et-Robert-III-Ballard-Imprimeurs-du-roy-pour-la-musique-1599-1673/Oeuvres/LULLY-Jean-Baptiste-1632-1687-LE-BOURGEOIS-GENTILHOMME2
+- https://collectionsdumusee.philharmoniedeparis.fr/0732491-le-bourgeois-gentilhomme-de-lully.aspx?_lg=fr-FR
+- https://www.operadeparis.fr/apropos/histoire/lopera-au-xviie-siecle
+- https://catalogue.bnf.fr/ark:/12148/cb139176805.public
+- https://collectionsdumusee.philharmoniedeparis.fr/0751016-les-indes-galantes-de-jean-philippe-rameau.aspx?_lg=fr-FR
+- https://catalogue.bnf.fr/ark:/12148/cb42357282q
+
+### Precisazioni da conservare per l'eventuale integrazione editoriale
+- Goldoni: più di cinquanta libretti di drammi giocosi; Metastasio: drammi seri messi in musica da autori differenti. Non confondere genere e singola versione musicale.
+- Hilverding, Angiolini, Durazzo, Gluck e Calzabigi ricoprono ruoli distinti nelle riforme di Vienna: non trasformare l'appartenenza alla corte in collaborazione diretta su ogni titolo.
+- *Les Petits Riens* (1778) è attestato come ballet-pantomime episodico; l'arco verso il contenitore «ballet d'action e pantomima» resta comparativo, non un'identità col balletto tragico.
+- *Le Bourgeois gentilhomme* (1670): Molière testo, Lully musica, Beauchamp coreografia; la comédie-ballet resta distinta dalla tragédie en musique di Quinault e Lully (Cadmus et Hermione, 1673).
+- *Les Indes galantes* (Rameau/Fuzelier): 23 agosto 1735 prologo e 2 entrées, 28 agosto 1735 aggiunta della terza, 10 marzo 1736 della quarta; non trattare la versione finale come identica alla prima.
+
+### Controlli di integrità dopo Lotto 33
+- **608 nodi, 1.520 archi**, invariati, JSON serializzato e riparsato, nessun identificativo di arco duplicato e nessun estremo orfano.
+- **29 archi revisionati**: **25** riscontri storici indipendenti, **3** confronti non causali, **1** sospeso.
+- Quality gate: **264** `riscontro_storico_indipendente`, **117** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **96** `confronto_non_causale`, **51** `sospeso`.
+- Flag storico distinto: `historical_verified_independently=true` su **299** relazioni. Non equipararlo al conteggio del singolo gate, perché permangono quality gate specifici da lotti precedenti.
+- Confronti genericamente classificatori `L07-A089`, `L07-A092` e `L02-A25` portano il verbo `sviluppa_o_illumina`, già escluso dall'espansione automatica dopo il livello I; `L07-A090` è sospeso e non navigabile in default.
+- Preservati identificativi, metadati anteriori, URL e gate precedenti. Le annotazioni di riuso editoriale sono nel registro, non nelle pagine.
+- Validazione del dataset non equivale al collaudo reale dell'interfaccia WebGL su browser e smartphone. Nessuna modifica ai capitoli o ai menu.
+
+**Prossimi lotti suggeriti:** riprendere da `L02-A36` in avanti (rapporti fra generi e danza), e continuare sugli insiemi `L03-*` e sulle `proposta_editoriale_revisionata`. Prima di promuovere archi di pagina controllare le sezioni effettive e le ancore.
