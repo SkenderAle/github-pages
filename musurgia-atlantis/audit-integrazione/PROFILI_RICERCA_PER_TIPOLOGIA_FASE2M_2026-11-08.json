@@ -1,0 +1,277 @@
+{
+  "schema": "musurgia-atlantis-profile-exploration-v1",
+  "date": "2026-11-08",
+  "status": "STAGING_PROPOSAL_NOT_APPLIED_TO_PUBLIC_UI_OR_GRAPH",
+  "scope": "Search-time UI controls only, no mutation of entity/link corpora",
+  "glossary": {
+    "radius_by_type": "Max admitted number of steps along certified paths from original search root to a VISIBLE node of that type; 0 hides type, 1 means direct only. Global max V.",
+    "selected_branch_depth_by_type": "Number of additional certified steps when an individual node of the named type is deliberately selected as a pivot: 0..III. This DOES NOT auto-expand every node of that class.",
+    "terminal_context": "Historical context is visible (if relevant to the original search root) but has no outgoing traversal in that search; selecting it as a new ROOT starts a distinct search.",
+    "root_exception": "The searched entity is always visible regardless of its type cap and can show its verified immediate neighbours, including when its type is terminal in other searches."
+  },
+  "hard_rules": {
+    "automatic_derived_expansion": false,
+    "historical_periods": "Only direct verified association with the current search ROOT. Always terminal when non-root; no path through period to other persons.",
+    "historical_geography": "No automatic bridges through shared country, city or institution; explicit certified edges only and default terminal.",
+    "generic_genre": "A generic genre/form/school never proves links among all composers practising it; non-root genre remains terminal without a deliberate pivot action.",
+    "editorial_chapters": "Always excluded from historical graph, available separately as editorial resources.",
+    "external_resources": "Site anchors, videos, audio, bibliography, catalogue links and metadata belong to nodes/edges as references. They never consume or generate historical graph depth.",
+    "source_preservation": "Preserve original node URLs; all exact anchors from collegamenti-sito.json, audio/video records and associations, consultazione.json, and relation forward/reverse/note/sources/status/group.",
+    "history_gates": "No predicate is admitted simply because nodes share a time period, geographical origin, genre, evidence URL or nominal similarity.",
+    "audit": "No global historical_verified or relevance flags inferred from existing tier/status; explicit evidence mapping is separate."
+  },
+  "node_types": [
+    {
+      "key": "persone",
+      "includes": [
+        "persona"
+      ],
+      "label": "Persone",
+      "allowedPivotMax": 3,
+      "bridgeClass": "certified_specific_person"
+    },
+    {
+      "key": "opere",
+      "includes": [
+        "opera",
+        "versione-opera",
+        "allestimento",
+        "produzione",
+        "parte-di-opera"
+      ],
+      "label": "Opere e versioni",
+      "allowedPivotMax": 3,
+      "bridgeClass": "certified_specific_work"
+    },
+    {
+      "key": "epoche",
+      "includes": [
+        "periodo"
+      ],
+      "label": "Epoche storiche",
+      "allowedPivotMax": 0,
+      "bridgeClass": "terminal_context"
+    },
+    {
+      "key": "generi_forme",
+      "includes": [
+        "genere",
+        "forma"
+      ],
+      "label": "Generi e forme",
+      "allowedPivotMax": 3,
+      "bridgeClass": "terminal_unless_explicit_pivot"
+    },
+    {
+      "key": "scuole_movimenti",
+      "includes": [
+        "scuola",
+        "tradizione",
+        "movimento"
+      ],
+      "label": "Scuole, movimenti e tradizioni",
+      "allowedPivotMax": 3,
+      "bridgeClass": "terminal_unless_explicit_pivot"
+    },
+    {
+      "key": "tecniche_prassi",
+      "includes": [
+        "tecnica",
+        "prassi"
+      ],
+      "label": "Tecniche e prassi",
+      "allowedPivotMax": 3,
+      "bridgeClass": "terminal_unless_explicit_pivot"
+    },
+    {
+      "key": "geografie",
+      "includes": [
+        "geografia",
+        "luogo"
+      ],
+      "label": "Paesi e luoghi",
+      "allowedPivotMax": 0,
+      "bridgeClass": "terminal_context"
+    },
+    {
+      "key": "istituzioni_reti",
+      "includes": [
+        "istituzione",
+        "rete-culturale"
+      ],
+      "label": "Istituzioni e reti",
+      "allowedPivotMax": 1,
+      "bridgeClass": "explicit_pivot_only"
+    },
+    {
+      "key": "strumenti",
+      "includes": [
+        "strumento"
+      ],
+      "label": "Strumenti",
+      "allowedPivotMax": 0,
+      "bridgeClass": "terminal_context"
+    },
+    {
+      "key": "documenti_eventi",
+      "includes": [
+        "documento",
+        "documento-storico",
+        "evento-storico"
+      ],
+      "label": "Fonti ed eventi",
+      "allowedPivotMax": 1,
+      "bridgeClass": "explicit_pivot_only"
+    }
+  ],
+  "default_profiles": {
+    "autore": {
+      "label": "Compositore o persona",
+      "globalMaxDepth": 5,
+      "rootDirectNeighbors": true,
+      "types": {
+        "persone": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 2
+        },
+        "opere": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 2
+        },
+        "epoche": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 0
+        },
+        "generi_forme": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 1
+        },
+        "scuole_movimenti": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 1
+        },
+        "tecniche_prassi": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 1
+        },
+        "geografie": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 0
+        },
+        "istituzioni_reti": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 1
+        },
+        "strumenti": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 0
+        },
+        "documenti_eventi": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        }
+      }
+    },
+    "genere": {
+      "label": "Genere o forma (es. Messa)",
+      "globalMaxDepth": 5,
+      "rootDirectNeighbors": true,
+      "types": {
+        "persone": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 2
+        },
+        "opere": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 2
+        },
+        "epoche": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 0
+        },
+        "generi_forme": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 1
+        },
+        "scuole_movimenti": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        },
+        "tecniche_prassi": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        },
+        "geografie": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        },
+        "istituzioni_reti": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        },
+        "strumenti": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        },
+        "documenti_eventi": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        }
+      }
+    },
+    "opera": {
+      "label": "Opera specifica",
+      "globalMaxDepth": 5,
+      "rootDirectNeighbors": true,
+      "types": {
+        "persone": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 2
+        },
+        "opere": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 2
+        },
+        "epoche": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 0
+        },
+        "generi_forme": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 1
+        },
+        "scuole_movimenti": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        },
+        "tecniche_prassi": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 1
+        },
+        "geografie": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        },
+        "istituzioni_reti": {
+          "visibleMaxDistance": 0,
+          "selectedPivotDepth": 0
+        },
+        "strumenti": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 0
+        },
+        "documenti_eventi": {
+          "visibleMaxDistance": 1,
+          "selectedPivotDepth": 1
+        }
+      }
+    }
+  },
+  "caveats": [
+    "Initial type membership needs audit: Mundi `corrente` includes genres, schools, institutions and more; Atlantis `nodo-di-senso` holds many subtypes and cannot be mapped by category alone.",
+    "These are suggested defaults, not approved final values; allow user per-search overrides and later custom saved presets.",
+    "Default is 2 for a manually selected person/work pivot, user may set 1, 2 or 3; no mass autoexpansion.",
+    "Potentially relevant historical periods must be attested as direct links to the CURRENT search root, not inherited from displayed authors.",
+    "Graph must retain distinct directed predicates, multiple edges, provenance, and exact media/site-anchor references."
+  ]
+}
