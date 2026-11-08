@@ -3011,3 +3011,31 @@ Verifica effettuata confrontando i blob del dataset precedenti e successivi: `08
 - Rimane da verificare nei successivi lotti la pertinenza multilivello dei nodi che vengono raggiunti a livello I tramite richiami contestuali: un percorso computabile non è sempre una filiazione storica.
 - **Ripresa dal Lotto 77:** prime proposte ancora aperte dopo `E0620`, conservando tutte le verifiche già concluse.
 
+### QA supplementare — simulazione dei percorsi dopo i Lotti 67–76
+
+**Metodo:** confronto degli archi del blob `3684a1453b7a901d4d936fba3ec0c20873618f6d` (prima) con `abf97a977a23550e41a38695dc974895d78f89d7` (dopo). Riprodotte le regole predefinite della vista focalizzata di Atlantis: gate visibili «trattazione» e «menzione», livelli I–V, nessuna espansione del verbo `sviluppa_o_illumina` oltre il primo livello; oltre I non si attraversano come ponti i capitoli o gli archi generici.
+
+| Nodo focale | Prima: I / II / III / IV / V | Dopo: I / II / III / IV / V |
+| --- | --- | --- |
+| Mozart | 13 / 4 / 3 / 3 / 5 | 13 / 4 / 3 / 3 / 5 |
+| Beethoven | 17 / 17 / 7 / 0 / 0 | 17 / 17 / 7 / 0 / 0 |
+| Giuseppe Verdi | 22 / 16 / 15 / 3 / 1 | 22 / 16 / 15 / 3 / 1 |
+| Risorgimento | 15 / 25 / 32 / 18 / 3 | 18 / 25 / 31 / 18 / 3 |
+| Romanticismo | 95 / 65 / 55 / 28 / 15 | 100 / 66 / 54 / 28 / 15 |
+| Opera lirica — da Fidelio a Turandot | 96 / 58 / 46 / 29 / 20 | 100 / 58 / 46 / 29 / 20 |
+| Teatro del Classicismo | 44 / 34 / 29 / 20 / 15 | 49 / 36 / 27 / 18 / 15 |
+| Il balletto | 63 / 63 / 47 / 26 / 21 | 69 / 62 / 46 / 26 / 21 |
+| Dall’operetta a Broadway | 25 / 9 / 7 / 5 / 0 | 34 / 10 / 7 / 5 / 0 |
+| Dal musical al film | 30 / 25 / 17 / 21 / 31 | 45 / 27 / 18 / 20 / 29 |
+| Musica nell’audiovisivo | 20 / 51 / 51 / 31 / 13 | 34 / 56 / 50 / 31 / 13 |
+
+**Interpretazione:** i capitoli sulle forme teatrali e cinematografiche acquisiscono nodi pertinenti di primo livello. Le variazioni dei livelli successivi sono effetti di percorsi già esistenti attraversati dopo il nuovo primo passo, non riscontri automatici di influenza storica fra tutte le opere coinvolte. Confermata la precauzione dei Lotti 57–66 sulla possibile propagazione semantica attraverso nodi di senso raggiunti via relazioni editoriali generiche. Nessuna modifica al renderer.
+
+**Integrità:** 608 nodi, 1.520 archi, esattamente 68 archi modificati fra Lotti 67 e 76, zero duplicati di ID nodo/arco, zero estremi orfani, zero triple fonte–destinazione–verbo duplicate. Residui: 160 proposte editoriali, 64 sospensioni; 359 flag di riscontro indipendente invariati.
+
+**Punti aperti documentati:** `E0571` (Classicismo → ballet d'action) e `E0611` (Dal musical al film → diegesi e off/over) sono sospesi perché manca l'approfondimento specifico nei rispettivi capitoli; un riferimento generico alla danza o al suono non basta a promuoverli. I gate potranno essere rivalutati dopo aggiornamenti editoriali verificabili.
+
+**Limite del QA:** si tratta di simulazione dati della navigazione e confronto remoti dei file, non di prova visuale/operativa su browser desktop o dispositivo Android.
+
+**Continuazione:** dal Lotto 77, proposte in ordine successivo a `E0620`, salvaguardando separatamente nodi geografici, istituzioni e arredi storici per evitare l'errata espansione dei contenitori generici.
+
