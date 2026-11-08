@@ -69,8 +69,8 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
  <p class="subcopy">Capitoli, compositori, opere, luoghi e idee si incrociano. I collegamenti non sono tutti dello stesso valore storico.</p>
  <div class="searchwrap"><input id="search" type="search" placeholder="Cerca un compositore, un'opera…" aria-label="Cerca un nodo" autocomplete="off"><div id="suggestions" role="listbox" aria-label="Risultati della ricerca"></div></div>
  <hr class="sep"><div class="controltitle">Prospettiva</div>
- <div class="segmented" id="viewSelect"><button data-view="chapters" class="active" aria-pressed="true">Capitoli</button><button data-view="all" aria-pressed="false">Tutta la rete</button><button data-view="near" aria-pressed="false" title="Collegamenti del nodo selezionato">Vicini</button></div>
- <div class="hint" style="margin-top:8px">Cerca un nome: il I livello mostra i collegamenti diretti. Dal II livello, percorsi specifici attraverso persone, opere, generi e forme. I capitoli non collegano automaticamente i loro autori.</div>
+ <div class="segmented" id="viewSelect"><button data-view="chapters" class="active" aria-pressed="true">Capitoli</button><button data-view="all" aria-pressed="false">Rete storica</button><button data-view="near" aria-pressed="false" title="Collegamenti del nodo selezionato">Vicini</button></div>
+ <div class="hint" style="margin-top:8px">Cerca un nome: il I livello mostra i collegamenti diretti. I capitoli e i rimandi editoriali restano nella prospettiva «Capitoli», mai nella rete storico-musicale. Dal II livello si attraversano soltanto percorsi specifici consentiti.</div>
  <div id="levelSection"><hr class="sep"><label class="controltitle" for="levelRange">Distanza dal nodo cercato</label>
  <div class="depthrow"><input type="range" id="levelRange" min="1" max="5" step="1" value="1" aria-label="Livelli di relazioni"><output id="levelValue" class="depthvalue" for="levelRange">1</output></div>
  <div id="levelCount" class="hint">Primo livello · collegamenti diretti</div></div>
@@ -287,6 +287,9 @@ edgesAccepted=()=>DATA.links.filter(e=>tiers.has(e.tier));
 // relationship between all the entities mentioned there. Only people and
 // concrete works can serve as intermediate bridges; and only named semantic
 // relations may be traversed beyond one hop.
+// Capitoli e rimandi al sito sono risorse editoriali: non nodi storico-musicali.
+function atlasIsEditorialNode(n){return !!n&&(n.category==='capitolo'||String(n.id||'').startsWith('cap:'))}
+function atlasIsHistoricalEdge(e){return !atlasIsEditorialNode(lookup.get(e.source))&&!atlasIsEditorialNode(lookup.get(e.target))}
 const atlasGenericRelations=new Set([
  'tratta_o_menziona','analizza_o_richiama','rimanda_a',
  'sviluppa_o_illumina','documenta_o_trasforma','condivide_un_nodo_di_senso',
@@ -301,7 +304,9 @@ function atlasIsSpecific(e){
   !/^(menziona|tratta_|rimanda_|analizza_o_richiama|condivide_|sviluppa_o_illumina|documenta_o_trasforma)/.test(e.relation||'');
 }
 buildVisible=function(){
- const accepted=edgesAccepted();
+ // Solo la prospettiva Capitoli mostra nodi/archi editoriali.
+ // Filtrare PRIMA di calcolare la distanza, anche per il livello I.
+ const accepted=edgesAccepted().filter(e=>view==='chapters'||atlasIsHistoricalEdge(e));
  if(view==='near'&&selectedId&&lookup.has(selectedId)){
   const distance=new Map([[selectedId,0]]);
   const parents=new Map();
@@ -450,7 +455,8 @@ function atlasDepth(v){
 }
 focusNode=function(id,showDetail=false){
  if(!lookup.has(id))return;
- selectedId=id;selectedEdge=null;view='near';steps=1;
+ const editorial=atlasIsEditorialNode(lookup.get(id));
+ selectedId=id;selectedEdge=null;view=editorial?'chapters':'near';steps=1;
  $('detail').classList.remove('open');$('footer').classList.remove('hidden');
  syncTabs();update();graph.zoomToFit(600,80);
  if(showDetail)renderNodeDetail(id);
