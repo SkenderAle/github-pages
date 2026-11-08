@@ -952,3 +952,64 @@ Dukas è autore di *L'Apprenti sorcier* (1897) e non della colonna sonora origin
 **Audit dei campi:** `previous_quality_gate` e `previous_description` preservano i valori iniziali; a tutti i link sono aggiunti `verification_note`, `evidence_urls` e data; gli archi storici hanno `historical_verified_independently=true`. `L06-A035` è relazione concettuale `confronto_non_causale`, con `historical_verified_independently=false` e verbo `sviluppa_o_illumina`, escluso dai ponti automatici oltre il primo livello.
 
 **Integrità prima del commit:** 608 nodi, 1.520 archi, nessun ID duplicato, nessun estremo mancante, JSON parsabile; `riscontro_storico_indipendente` = **184**, `candidato_non_fuso` = **263**, `proposta_editoriale_revisionata` = **317**, `confronto_non_causale` = **37**, booleani verificati = **219**. Test I–V sul remoto dopo pubblicazione; non equivalgono a controllo grafico WebGL.
+
+
+---
+
+## Lotto 18 — 8 novembre 2026: West Side Story, musical del 1957 e adattamenti del 1961 e 2021
+
+**Preflight:** `main` al commit `7d167d43859295a597053cb05fc9bd650a699a4a` dopo il Lotto 17; modificati esclusivamente i sette archi preesistenti da `L06-A038` a `L06-A044`. Nessun nuovo nodo, arco o intervento su pagine, menu, renderer e protocollo.
+
+| ID | Esito | Relazione storica |
+| --- | --- | --- |
+| `L06-A038` | **riscontro_storico_indipendente** | Jerome Robbins concepisce il progetto del musical West Side Story (1957), ne dirige e coreografa la prima produzione di Broadway. Le coreografie vedono anche il contributo accreditato di Peter Gennaro. Leonard Bernstein compone la musica, Arthur Laurents il book, Stephen Sondheim le lyrics; la concezione di Robbins non ne fa l'unico autore. |
+| `L06-A039` | **riscontro_storico_indipendente** | West Side Story esordisce a Broadway al Winter Garden Theatre il 26 settembre 1957 nella produzione originale diretta e coreografata da Jerome Robbins, con Robert E. Griffith e Harold S. Prince produttori, musica di Bernstein, libretto di Laurents e testi di Sondheim. La prova generale a Washington il 20 agosto 1957 non è la première di Broadway. |
+| `L06-A040` | **riscontro_storico_indipendente** | Il musical teatrale West Side Story (prima a Broadway nel 1957) viene adattato come film nel 1961, diretto congiuntamente da Robert Wise e Jerome Robbins, con sceneggiatura cinematografica di Ernest Lehman. Questa produzione cinematografica non coincide con l'originale teatrale né con il film del 2021. |
+| `L06-A041` | **riscontro_storico_indipendente** | Il musical originale West Side Story del 1957 è nuovamente adattato per il cinema da Steven Spielberg nel film del 2021, con sceneggiatura di Tony Kushner e coreografie nuove di Justin Peck. È una nuova trasposizione dell'opera scenica, non la rimasterizzazione e neppure una copia delle scene del film del 1961. |
+| `L06-A042` | **riscontro_storico_indipendente** | Robert Wise co-dirige con Jerome Robbins il film West Side Story (1961), del quale è anche produttore. Il credito cinematografico è distinto dalla regia della prima versione teatrale di Broadway, affidata a Robbins nel 1957. |
+| `L06-A043` | **riscontro_storico_indipendente** | Jerome Robbins co-dirige insieme a Robert Wise il film West Side Story (1961). La sua responsabilità cinematografica è distinta dal ruolo di ideatore, regista e coreografo della prima produzione teatrale del 1957; il film ha sceneggiatura di Ernest Lehman. |
+| `L06-A044` | **riscontro_storico_indipendente** | Steven Spielberg dirige e produce il nuovo film West Side Story (2021), sceneggiato da Tony Kushner e basato sul musical teatrale originale del 1957. La coreografia cinematografica è di Justin Peck e la direzione musicale di Gustavo Dudamel; Spielberg non è compositore delle melodie di Bernstein né regista del film precedente del 1961. |
+
+### Distinzioni editoriali da preservare
+
+- L'opera teatrale *West Side Story* (concepita da Robbins, musica Bernstein, book Laurents, testi Sondheim) esiste come entità distinta dalla **prima produzione Broadway del 26 settembre 1957** e da altre rappresentazioni. Peter Gennaro è co-coreografo della prima produzione, non va ignorato.
+- Il **film del 1961** è un adattamento con sceneggiatura di Ernest Lehman, direzione congiunta Robert Wise e Jerome Robbins. Il ruolo di Robbins nel film è documentato autonomamente rispetto al suo ruolo teatrale.
+- Il **film del 2021**, diretto/prodotto da Spielberg e sceneggiato da Tony Kushner, è un nuovo adattamento del musical del 1957. Non deriva come rimasterizzazione della pellicola del 1961; dispone di nuove coreografie di Justin Peck, arrangiamenti di David Newman e direzione musicale Gustavo Dudamel.
+- Nessuna di queste relazioni attesta che Spielberg, Wise, Robbins o i due registi cinematografici abbiano composto la musica di Bernstein.
+
+### Fonti istituzionali e catalografiche
+
+- ibdb: https://www.ibdb.com/broadway-production/west-side-story-2639
+- loc: https://www.loc.gov/exhibits/westsidestory/westsidestory-overview.html
+- pbs: https://www.pbs.org/wnet/broadway/shows/west-side-story/
+- afi: https://catalog.afi.com/Catalog/moviedetails/23857
+- originalFilm: https://www.westsidestory.com/1961-film
+- timeline: https://www.westsidestory.com/timeline
+- film2021: https://www.20thcenturystudios.com/movies/west-side-story
+- studio: https://thewaltdisneycompany.com/news/steven-spielberg-and-tony-kushners-fresh-take-on-west-side-story/
+- filmSite: https://www.westsidestory.com/2021-film
+
+### Integrità e test I–V
+
+- JSON serializzato e riparsato, **608 nodi e 1.520 archi**, nessun ID duplicato o estremo inesistente.
+- Quality gate: **191** `riscontro_storico_indipendente`, **256** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **37** `confronto_non_causale`, **44** `sospeso`.
+- Flag distinto `historical_verified_independently=true`: **226**.
+- Simulazione su dati con filtri `trattazione` e `menzione`; profondità I–V, esclusi i capitoli e i rapporti generici come ponti oltre il primo livello:
+
+| Radice | Prima I / II / III / IV / V | Dopo I / II / III / IV / V |
+| --- | --- | --- |
+| Show Boat | 3 / 3 / 2 / 1 / 0 | 3 / 3 / 2 / 1 / 0 |
+| Show Boat, film 1936 | 3 / 2 / 1 / 2 / 1 | 3 / 2 / 1 / 2 / 1 |
+| Oklahoma! | 3 / 2 / 2 / 2 / 0 | 3 / 2 / 2 / 2 / 0 |
+| Oklahoma!, produzione Broadway 1943 | 3 / 2 / 1 / 2 / 2 | 3 / 2 / 1 / 2 / 2 |
+| West Side Story | 3 / 0 / 0 / 0 / 0 | 7 / 2 / 0 / 0 / 0 |
+| Jerome Robbins | 0 / 0 / 0 / 0 / 0 | 2 / 6 / 1 / 0 / 0 |
+| West Side Story, film 1961 | 0 / 0 / 0 / 0 / 0 | 3 / 5 / 1 / 0 / 0 |
+| West Side Story, film 2021 | 0 / 0 / 0 / 0 / 0 | 2 / 6 / 1 / 0 / 0 |
+| Steven Spielberg | 0 / 0 / 0 / 0 / 0 | 1 / 1 / 6 / 1 / 0 |
+
+**Limite dichiarato:** test algoritmico dei percorsi sul dataset, non collaudo grafico 3D in browser.
+
+### Prossima ricognizione
+
+Rimangono archi di contenuto a *Shuffle Along* e ai collaboratori storici del musical, da esaminare separatamente dai nodi concettuali e dai semplici rimandi ai capitoli.
