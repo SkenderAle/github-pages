@@ -3794,3 +3794,282 @@ Confrontate le adiacenze con gate `trattazione` e `menzione` secondo `tier()` de
 **Limiti:** non eseguito test visuale del renderer su Android o desktop né simulazione completa livelli I–V. Nessuna modifica a pagine, menu o interfaccia di Atlantis; intervento circoscritto a grafo e registro.
 
 **Ripresa:** Lotto 107 da `E0834`, su operetta, musical e cinema, con distinzione fra opere teatrali, adattamenti filmici, musicisti, librettisti e produttori.
+
+---
+## Lotto 107 — 2026-11-08: Offenbach, Strauss, Lehár e Gilbert–Sullivan: opere e contesti distinti
+
+**Metodo:** Distinzione fra contenuti dei capitoli, riscontro indipendente di autori e ruoli, e rimandi non documentati. Le attribuzioni già storicamente confermate sono preservate.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0834` | **trattazione_riscontrata** | Opera lirica dedica una sezione alla satira di Offenbach e a Orphée aux enfers (1858), rovesciamento ironico del mito; non si tratta delle opere di Monteverdi o Gluck. |
+| `E0835` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta Orphée aux enfers (1858) come opéra-bouffe del teatro parigino, distinta dalla successiva revisione ampliata del 1874. |
+| `E0836` | **trattazione_riscontrata** | Romanticismo analizza Orphée aux enfers nel contesto della satira del Secondo Impero, con data della prima del 1858 e riflessione sulla sua ricezione visiva posteriore. |
+| `E0837` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Jacques Offenbach compose la musica di *Orphée aux enfers*, opéra-bouffon/opéra-bouffe in due atti, prima ai Bouffes-Parisiens di Parigi il 21 ottobre 1858; nel 1874 realizza una revisione ampliata in opéra-féerie (prima Théâtre de la Gaîté il 7 febbraio 1874). Libretti di Hector Crémieux e Ludovic Halévy: non attribuire a Offenbach testo, film o produzioni successive. |
+| `E0838` | **trattazione_riscontrata** | Dall'operetta a Broadway dedica spazio a Die Fledermaus (1874), con travestimento e maschere sociali, oltre all'ascolto dell'ouverture. |
+| `E0839` | **trattazione_riscontrata** | Romanticismo tratta Die Fledermaus (1874) come commedia teatrale sostenuta dalla musica di danza, non semplice raccolta di valzer. |
+| `E0840` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Johann Strauss II compose la musica dell'operetta *Die Fledermaus* in tre atti, su libretto di Karl Haffner e Richard Genée dalla commedia francese *Le Réveillon*. Prima mondiale a Vienna, Theater an der Wien, 5 aprile 1874. Non confondere il compositore con Johann Strauss I. |
+| `E0841` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta Die lustige Witwe / La vedova allegra di Lehár (1905), distinguendo valzer e funzione drammatica. |
+| `E0842` | **sospeso** | Romanticismo non nomina Die lustige Witwe né La vedova allegra nel testo: Vienna e l'operetta, da sole, non attestano il titolo specifico. |
+| `E0843` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Franz Lehár compose la musica dell'operetta in tre atti *Die lustige Witwe* (*La vedova allegra*), su libretto di Victor Léon e Leo Stein, da Henri Meilhac. Prima assoluta al Theater an der Wien il 30 dicembre 1905. Non attribuire al compositore il testo del libretto. |
+| `E0844` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta The Mikado (1885) della coppia Gilbert–Sullivan e il Giappone immaginario della sua satira, distinto dalle realtà giapponesi. |
+| `E0845` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Arthur Sullivan compone la musica dell'opera comica *The Mikado* (*The Town of Titipu*); libretto di W. S. Gilbert. Prima a Londra, Savoy Theatre, 14 marzo 1885, sotto l'egida D'Oyly Carte. Distinguere autore della musica, autore del testo e produzione. |
+
+### Fonti
+- https://www.treccani.it/enciclopedia/operetta/
+
+**Bilancio Lotto 107:** 12 archi; T=7, S=1, K=4.
+
+---
+
+## Lotto 108 — 2026-11-08: Shuffle Along, Show Boat, Oklahoma!: genealogie convergenti del musical
+
+**Metodo:** Distinzione fra contenuti dei capitoli, riscontro indipendente di autori e ruoli, e rimandi non documentati. Le attribuzioni già storicamente confermate sono preservate.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0846` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta Shuffle Along (1921), con musica di Eubie Blake, testi di Noble Sissle e libretto di Miller e Lyles, come produzione afroamericana autonoma. |
+| `E0847` | **trattazione_riscontrata** | Dal musical al film discute esplicitamente Shuffle Along (1921) quale precedente teatrale afroamericano; non lo presenta come un film del 1921. |
+| `E0848` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Eubie Blake partecipa con Noble Sissle alla musica e alle canzoni di *Shuffle Along* (1921); libro di Flournoy Miller e Aubrey Lyles. Prima a Broadway il 23 maggio 1921 (63rd Street Music Hall). Il rapporto di Blake non attribuisce a lui in esclusiva musica, testi o libretto. |
+| `E0849` | **trattazione_riscontrata** | Dall'operetta a Broadway analizza Show Boat (1927) e il processo di integrazione drammatica delle canzoni; non è l'invenzione improvvisa del musical. |
+| `E0850` | **trattazione_riscontrata** | Dal musical al film tratta Show Boat come spettacolo nato a teatro nel 1927 e discute la distinzione dagli adattamenti cinematografici successivi. |
+| `E0851` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Jerome Kern compone la musica del musical teatrale *Show Boat* (prima a Broadway il 27 dicembre 1927), su libretto e testi delle canzoni di Oscar Hammerstein II, tratto dal romanzo di Edna Ferber. Le versioni cinematografiche successive, fra cui il film del 1936, restano entità diverse. |
+| `E0852` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta Oklahoma! (1943), sottolineando l'integrazione di canzoni, danza e narrazione e il contributo coreografico di Agnes de Mille. |
+| `E0853` | **trattazione_riscontrata** | Dal musical al film ricostruisce Oklahoma! (1943) come spettacolo teatrale di Rodgers e Hammerstein, senza confonderlo con il film del 1955. |
+| `E0854` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Richard Rodgers compone la musica del musical teatrale *Oklahoma!* (prima St. James Theatre a Broadway il 31 marzo 1943), con libro e testi delle canzoni di Oscar Hammerstein II e coreografie di Agnes de Mille. L'omonimo film del 1955 è una distinta trasposizione cinematografica. |
+
+### Fonti
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/
+- https://loc.gov/exhibits/african-american-odyssey/world-war-i-and-postwar-society.html
+
+**Bilancio Lotto 108:** 9 archi; T=6, K=3.
+
+---
+
+## Lotto 109 — 2026-11-08: West Side Story, Steamboat Willie e Fantasia: teatro, animazione, cinema
+
+**Metodo:** Distinzione fra contenuti dei capitoli, riscontro indipendente di autori e ruoli, e rimandi non documentati. Le attribuzioni già storicamente confermate sono preservate.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0855` | **trattazione_riscontrata** | Dal musical al film tratta West Side Story (1957) come musical teatrale con musiche di Bernstein, lyrics di Sondheim e coreografia di Robbins, distinguendo il film del 1961. |
+| `E0856` | **sospeso** | Verso le avanguardie nomina Bernstein in diversi contesti, ma non West Side Story quale opera; il compositore non equivale alla presenza del titolo. |
+| `E0857` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Leonard Bernstein compone la musica per il musical teatrale *West Side Story*, prima a Broadway il 26 settembre 1957 al Winter Garden Theatre; concezione, regia e coreografia di Jerome Robbins, libretto di Arthur Laurents, testi delle canzoni di Stephen Sondheim. Il film del 1961 è una successiva versione distinta. |
+| `E0858` | **trattazione_riscontrata** | Dal musical al film tratta Steamboat Willie (1928) come decisivo successo della sincronizzazione sonora dei cartoon, non come primo cartone sonoro in assoluto. |
+| `E0859` | **trattazione_riscontrata** | Musica nell'audiovisivo usa Steamboat Willie nel dossier sul Mickey Mousing e distingue l'efficacia della sincronizzazione dalla sua pretesa invenzione assoluta. |
+| `E0860` | **trattazione_riscontrata** | Dal musical al film dedica una sezione a Fantasia (1940) come visualizzazione animata di musica preesistente, non come trasposizione di un musical teatrale. |
+| `E0861` | **trattazione_riscontrata** | Musica nell'audiovisivo sviluppa Fantasia in relazione a Disney, Stokowski, repertorio preesistente e tecniche di corrispondenza fra gesto e musica. |
+| `E0862` | **sospeso** | Verso le avanguardie menziona la Fantasia contrappuntistica di Busoni, non Fantasia di Walt Disney (1940). L'omonimia non giustifica un arco. |
+
+### Fonti
+- https://www.loc.gov/exhibits/music-and-animation/about.html
+
+**Bilancio Lotto 109:** 8 archi; T=5, S=2, K=1.
+
+---
+
+## Lotto 110 — 2026-11-08: Psycho, Star Wars e Morricone: composizione, titoli e presenza nelle pagine
+
+**Metodo:** Distinzione fra contenuti dei capitoli, riscontro indipendente di autori e ruoli, e rimandi non documentati. Le attribuzioni già storicamente confermate sono preservate.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0863` | **richiamo_contestuale** | Dal musical al film menziona Psycho (1960) come esempio circoscritto della scrittura per archi di Herrmann nel cinema di Hitchcock, senza trattare integralmente il film. |
+| `E0864` | **sospeso** | Musica nell'audiovisivo cita Herrmann (per altri film) ma non Psycho nel corpo della pagina: sospendere l'arco al titolo specifico. |
+| `E0865` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Bernard Herrmann compose la partitura originale per Psycho (1960), film diretto e prodotto da Alfred Hitchcock. La musica, celebre per la scrittura per archi, costituisce uno specifico contributo compositivo; effetti sonori, montaggio e regia rimangono responsabilità distinte. |
+| `E0866` | **richiamo_contestuale** | Dal musical al film richiama Star Wars (1977) per temi ricorrenti e organizzazione motivica nella colonna sonora di John Williams, senza analisi estesa del film. |
+| `E0867` | **trattazione_riscontrata** | Musica nell'audiovisivo approfondisce Star Wars e il ritorno dei motivi attraverso la saga, confrontando funzioni drammatiche senza attribuire una dipendenza totale da Wagner. |
+| `E0868` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: John Williams compose la partitura musicale originale di Star Wars (1977), film scritto e diretto da George Lucas, interpretata dalla London Symphony Orchestra. L'uso dei temi ricorrenti si inserisce nella tradizione del sinfonismo cinematografico, senza istituire da solo una filiazione causale diretta da Wagner. |
+| `E0869` | **sospeso** | Dal musical al film tratta Morricone, ma non menziona C'era una volta in America; la presenza del compositore non certifica l'analisi di questo film. |
+| `E0870` | **sospeso** | Musica nell'audiovisivo nomina C'era una volta il West, non C'era una volta in America; i due film di Leone con musiche di Morricone sono opere diverse. |
+| `E0871` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Ennio Morricone compose e dirige le musiche originali del film C'era una volta in America (1984) di Sergio Leone. Il montaggio sonoro del film contiene anche musiche preesistenti di altri autori; attribuire la partitura originale a Morricone non equivale ad attribuirgli tutti i brani ascoltati. |
+
+### Fonti
+- https://www.loc.gov/exhibits/music-and-animation/about.html
+
+**Bilancio Lotto 110:** 9 archi; T=1, R=2, S=3, K=3.
+
+---
+
+## Lotto 111 — 2026-11-08: Autorialità: Mameli, librettisti, Nižinskij, Bausch, Disney, Hitchcock
+
+**Metodo:** Distinzione fra contenuti dei capitoli, riscontro indipendente di autori e ruoli, e rimandi non documentati. Le attribuzioni già storicamente confermate sono preservate.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0872` | **riscontro_storico_indipendente** | Il Quirinale attribuisce a Goffredo Mameli la scrittura del testo del Canto degli Italiani nell'autunno 1847; Michele Novaro ne compone la musica poco dopo a Torino. |
+| `E0873` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Lorenzo Da Ponte scrisse il libretto del Don Giovanni (1787) di Mozart. |
+| `E0874` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Lorenzo Da Ponte scrisse il libretto di Le nozze di Figaro (1786), tratto da Beaumarchais. |
+| `E0875` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Arrigo Boito scrisse il libretto dell'Otello di Verdi (1887), adattando Shakespeare; opera distinta dall'Otello rossiniano. |
+| `E0876` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Ranieri de’ Calzabigi scrive il libretto italiano dell'Orfeo ed Euridice di Gluck, azione teatrale rappresentata al Burgtheater di Vienna il 5 ottobre 1762. La rielaborazione francese del 1774 è un testo distinto, affidato a Pierre-Louis Moline. |
+| `E0877` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Oscar Hammerstein II scrive il book e i testi cantati (lyrics) di Show Boat (1927), con musica di Jerome Kern e soggetto dal romanzo di Edna Ferber. Il ruolo di librettista e paroliere è distinto da quello di compositore. |
+| `E0878` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Oscar Hammerstein II scrive book e lyrics di Oklahoma! (1943), con musica di Richard Rodgers e soggetto derivato da Green Grow the Lilacs di Lynn Riggs; Agnes de Mille è responsabile della coreografia originale. |
+| `E0879` | **riscontro_storico_indipendente** | La Library of Congress attribuisce a Vaclav (Vaslav) Nižinskij la coreografia della Sagra della primavera rappresentata dai Ballets Russes nel 1913; ciò non significa possedere una ricostruzione integrale e sicura dei passi. |
+| `E0880` | **riscontro_storico_indipendente** | L'archivio della Fondazione Pina Bausch documenta la sua coreografia autonoma della Sagra della primavera, presentata a Wuppertal il 3 dicembre 1975, con musica preesistente di Stravinskij. |
+| `E0881` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Walt Disney promuove e produce Fantasia (1940) come lungometraggio dello studio Disney basato sulla visualizzazione di musiche preesistenti; Leopold Stokowski cura la direzione orchestrale con la Philadelphia Orchestra. Ben Sharpsteen svolge la supervisione di produzione e più registi firmano i singoli episodi: Disney non è il compositore delle musiche né l'unico regista. |
+| `E0882` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Walt Disney dirige e cura la produzione del cortometraggio sonoro Steamboat Willie, presentato il 18 novembre 1928 al Colony Theatre di New York. Ub Iwerks è il principale animatore e ideatore grafico della versione iniziale di Mickey Mouse; la regia di Disney non equivale alla realizzazione personale di ogni disegno o della partitura musicale. |
+| `E0883` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: Alfred Hitchcock dirige e produce Psycho (1960), da una sceneggiatura di Joseph Stefano basata sul romanzo di Robert Bloch, con musica originale di Bernard Herrmann. La regia non comporta l'attribuzione a Hitchcock della composizione della partitura. |
+
+### Fonti
+- https://www.quirinale.it/it/pagine/simboli-repubblica-inno-nazionale
+- https://www.loc.gov/loc/lcib/09078/rite.html
+- https://www.pinabausch.org/work/sacr
+
+**Bilancio Lotto 111:** 12 archi; H=3, K=9.
+
+---
+
+## Lotto 112 — 2026-11-08: Confronti intercapitolari I: Medioevo, Rinascimento, Barocco, Classicismo
+
+**Metodo:** L'analisi del renderer in `musurgia-atlantis/index.html` mostra che `buildVisible()` espande indiscriminatamente gli archi ammessi. I confronti fra capitoli non vanno trattati come relazioni di discendenza; i link generici attivi vengono sospesi, quelli già sospesi non vengono modificati.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0884` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Medioevo e Rinascimento condividono notazione, polifonia, lauda e fonti, ma i rapporti vanno mediati da singoli oggetti storici. |
+| `E0885` | **sospeso (ex confronto non causale)** | Fra capitoli il ponte è già esprimibile tramite monodia/madrigale; in 3D non duplicare ogni percorso. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (monodia e madrigale). |
+| `E0886` | **sospeso (ex confronto non causale)** | Fra capitoli privilegiare i mediatori semantici, non il solo arco diretto. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (recitar cantando e teatro delle corti). |
+| `E0887` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Arco intercapitolare generico: mostrare i nodi intermedi (fonti, pratiche, persone) e nascondere il ponte generico nella vista storica. |
+| `E0888` | **sospeso (ex confronto non causale)** | Barocco e melodramma sono percorsi paralleli con frequenti intersezioni, non una periodizzazione rigida. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (canto, recitativo e teatro barocco). |
+| `E0889` | **sospeso (ex confronto non causale)** | Barocco e Classicismo condividono tradizioni ma un arco generico è derivabile dai nodi Metastasio, opera seria, orchestra. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (orchestra, concerto e opera seria). |
+| `E0890` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (danza nell'opera e forme francesi). |
+| `E0891` | **sospeso (ex confronto non causale)** | Classicismo/Teatro classico si connettono attraverso Mozart, Gluck, opera seria e scena viennese. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Gluck, Mozart, istituzioni viennesi). |
+| `E0892` | **sospeso (ex confronto non causale)** | Non serve un arco storico diretto duplicato: Classicismo e Romanticismo risultano già connessi tramite opere e problemi specifici. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (forme sinfoniche, Beethoven e rapporti estetici). |
+
+### Fonti
+- Codice di navigazione `musurgia-atlantis/index.html` e capitoli già verificati; nessun riscontro di influenza diretta viene postulato.
+
+**Bilancio Lotto 112:** 9 archi; Q=7, U=2.
+
+---
+
+## Lotto 113 — 2026-11-08: Confronti intercapitolari II: Classicismo, Romanticismo, Risorgimento
+
+**Metodo:** L'analisi del renderer in `musurgia-atlantis/index.html` mostra che `buildVisible()` espande indiscriminatamente gli archi ammessi. I confronti fra capitoli non vanno trattati come relazioni di discendenza; i link generici attivi vengono sospesi, quelli già sospesi non vengono modificati.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0893` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Fidelio e riforme del teatro). |
+| `E0894` | **sospeso (ex confronto non causale)** | Un collegamento fra due capitoli è derivabile dagli archi via Gluck, Angiolini e ballet d’action. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Gluck, Angiolini e ballet d'action). |
+| `E0895` | **sospeso (ex confronto non causale)** | Romanticismo e Opera lirica si incontrano in compositori e categorie, non nell’appartenenza di una stessa opera a generi diversi. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Verdi, Wagner e generi teatrali). |
+| `E0896` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (canti patriottici, Verdi e ricezioni). |
+| `E0897` | **sospeso (ex confronto non causale)** | Il confronto Romanticismo ↔ Balletto è preferibile tramite autori, coreografie e generi, non arco generico. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (balletti, Čajkovskij e coreografie). |
+| `E0898` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0899` | **sospeso (ex confronto non causale)** | Romanticismo e avanguardie si incontrano in temi di continuità e reazione: evitare un arco di influenza impersonale. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (timbro, forma e reazioni novecentesche). |
+| `E0900` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0901` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Nabucco, Va' pensiero e ricezione patriottica). |
+| `E0902` | **sospeso (ex confronto non causale)** | È il verso speculare di E0896. Tenere entrambi nel registro storico, ma visualizzare un solo collegamento non direzionale. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Risorgimento, Romanticismo e Verdi (doppione inverso di E0896)). |
+
+### Fonti
+- Codice di navigazione `musurgia-atlantis/index.html` e capitoli già verificati; nessun riscontro di influenza diretta viene postulato.
+
+**Bilancio Lotto 113:** 10 archi; Q=8, U=2.
+
+---
+
+## Lotto 114 — 2026-11-08: Confronti intercapitolari III: melodramma, teatro, avanguardie e balletto
+
+**Metodo:** L'analisi del renderer in `musurgia-atlantis/index.html` mostra che `buildVisible()` espande indiscriminatamente gli archi ammessi. I confronti fra capitoli non vanno trattati come relazioni di discendenza; i link generici attivi vengono sospesi, quelli già sospesi non vengono modificati.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0903` | **sospeso (ex confronto non causale)** | La connessione Melodramma/Teatro classico si costruisce con forme e protagonisti, non con la sola somiglianza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Gluck, riforma operistica e recitativo). |
+| `E0904` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (atti, scene, numeri e forme). |
+| `E0905` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Mozart, concertato e finale d'atto). |
+| `E0906` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Verdi, cavatina e concertato). |
+| `E0907` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Puccini, Wagner e mutamento armonico). |
+| `E0908` | **sospeso (ex confronto non causale)** | Opera e balletto condividono produttori/luoghi/repertori, non necessariamente identiche forme. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (danza teatrale, grand opéra e balletto). |
+| `E0909` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0910` | **sospeso (ex confronto non causale)** | Balletto e Novecento comunicano attraverso Stravinskij, Debussy, Ravel, Diaghilev e opere specifiche. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (Stravinskij, Ravel e Diaghilev). |
+| `E0911` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0912` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+
+### Fonti
+- Codice di navigazione `musurgia-atlantis/index.html` e capitoli già verificati; nessun riscontro di influenza diretta viene postulato.
+
+**Bilancio Lotto 114:** 10 archi; Q=7, U=3.
+
+---
+
+## Lotto 115 — 2026-11-08: Confronti intercapitolari IV: musical, cinema e collegamenti ombrello
+
+**Metodo:** L'analisi del renderer in `musurgia-atlantis/index.html` mostra che `buildVisible()` espande indiscriminatamente gli archi ammessi. I confronti fra capitoli non vanno trattati come relazioni di discendenza; i link generici attivi vengono sospesi, quelli già sospesi non vengono modificati.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0913` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0914` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0915` | **sospeso (ex confronto non causale)** | Un balletto che compare nel cinema non identifica i due linguaggi; servono opere e produzioni di riferimento. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (balletto sullo schermo e tradizioni coreografiche). |
+| `E0916` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0917` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0918` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0919` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Due percorsi condividono temi, ma il confronto fra interi capitoli va sostituito da un itinerario che identifichi persone, opere e forme. |
+| `E0920` | **sospeso (ex confronto non causale)** | Condivide un problema di senso con altra pagina; va reso come confronto, non come freccia di influenza. Confronto intercapitolare conservato come traccia editoriale, ma non attraversabile nella mappa storica: servono i nodi mediatori (orchestra, forme e ricezione ottocentesca). |
+| `E0921` | **sospensione già presente, confermata** | Ponte fra interi capitoli già sospeso: Il collegamento diretto Medioevo→Barocco deve passare attraverso specifici meccanismi (canto liturgico, notazione, contrappunto, ricezioni). |
+
+### Fonti
+- Codice di navigazione `musurgia-atlantis/index.html` e capitoli già verificati; nessun riscontro di influenza diretta viene postulato.
+
+**Bilancio Lotto 115:** 9 archi; Q=2, U=7.
+
+---
+
+## Lotto 116 — 2026-11-08: Mediazioni storiche fra nodi di senso: riscontri e otto proposte aperte
+
+**Metodo:** Distinzione fra contenuti dei capitoli, riscontro indipendente di autori e ruoli, e rimandi non documentati. Le attribuzioni già storicamente confermate sono preservate.
+
+| ID | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0922` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: La monodia accompagnata favorisce lo stile rappresentativo e il recitar cantando nella nascita del melodramma; non è causa unica né equivale a ogni forma di monodia. |
+| `E0923` | **riscontro indipendente conservato** | Attribuzione specifica conservata da precedenti riscontri indipendenti: La tradizione madrigalistica interagisce con la monodia accompagnata e lo stile rappresentativo alle origini dell'opera: non si trasforma automaticamente e linearmente nel recitar cantando. |
+| `E0924` | **proposta mantenuta aperta** | La relazione polifonia–madrigale è plausibile ma deve distinguere generi e tessiture non contrappuntistiche; nessuna influenza persona–persona va dedotta automaticamente. |
+| `E0925` | **proposta mantenuta aperta** | La policoralità usa spazio e risposta antifonale, ma non è genealogia unica dell'orchestra moderna: mantenere la proposta in attesa di fonti specifiche. |
+| `E0926` | **proposta mantenuta aperta** | Quadrivium e teoria armonica appartengono a concezioni storiche differenti; accostamento non sinonimico, nessun attraversamento automatico. |
+| `E0927` | **proposta mantenuta aperta** | Il basso continuo può sostenere declamazione solistica, ma lo stile recitativo non si riduce al basso continuo. Necessarie fonti specifiche. |
+| `E0928` | **proposta mantenuta aperta** | Sonata come genere strumentale e forma-sonata come modello analitico posteriore non sono equivalenti terminologicamente; proposta non promossa. |
+| `E0929` | **proposta mantenuta aperta** | Il concerto mette in rapporto solisti, insieme e timbro, ma la sua storia non coincide con quella dell'orchestra: relazione da precisare. |
+| `E0930` | **proposta mantenuta aperta** | Il contrappunto e la fuga appartengono a pratiche polifoniche stratificate, non a un'unica scuola invariata tra epoche: proposta non promossa. |
+| `E0931` | **proposta mantenuta aperta** | Il dibattito su musica assoluta e autonomia delle forme investe anche il sinfonismo, ma una singola freccia astorica è insufficiente. |
+
+### Fonti
+- Fonti indipendenti preesistenti nei singoli archi o analisi di proposte, da mantenere aperte senza nuova promozione.
+
+**Bilancio Lotto 116:** 10 archi; K=2, P=8.
+
+---
+### Bilancio dopo i Lotti 107–116
+
+- **98 archi esaminati** da `E0834` a `E0931`. **54 archi aggiornati**; 22 riscontri storici già convalidati, 14 sospensioni preesistenti e 8 proposte semantiche conservati senza modifiche.
+- Esiti di questa serie: 19 trattazioni riscontrate, 2 richiami contestuali, 6 nuove sospensioni per titoli non attestati, 3 nuove verifiche autoriali, 24 confronti generici di capitoli sospesi perché attraversabili come ponti, 14 sospensioni preesistenti confermate, 8 proposte semantiche non ancora promosse.
+- **Riscontri indipendenti promossi:** `E0872` Mameli → testo del *Canto degli Italiani* (Quirinale); `E0879` Nižinskij → coreografia della *Sagra* del 1913 (Library of Congress); `E0880` Pina Bausch → nuova coreografia della *Sagra* nel 1975 (archivio della Fondazione Pina Bausch). 1913: le fonti istituzionali non sono perfettamente uniformi nel riportare il giorno della prima; la verifica qui riguarda l'attribuzione coreografica e l'anno.
+- **Integrità:** 608 nodi, 1520 archi; duplicati ID nodo/arco 0/0; orfani 0; triplette duplicate 0.
+- **Residui totali:** proposte editoriali **76**; sospensioni **112**; trattazioni **263**; richiami contestuali **79**.
+- **Verifiche storiche indipendenti:** 365 → **368** flag; gate `riscontro_storico_indipendente` **332**.
+
+### QA strutturale — ponti intercapitolari nel renderer attuale
+
+La vista focalizzata di `index.html` usa `buildVisible()` con espansione per livelli senza distinzione fra ponti di capitolo e relazioni specifiche. Il filtro predefinito include `trattazione` e `menzione`; `confronto_non_causale` rientra in `menzione`. Dunque 24 archi di confronto fra interi capitoli (qui `E0884`–`E0921`) erano attraversabili: tutti ora passano a `sospeso`, restando recuperabili nel registro e tramite `previous_quality_gate`; altri 14 erano già sospesi. Sono stati scelti i mediatori concettuali individuati nel testo del registro, senza creare nuove filiazioni.
+
+**Simulazione dati della vista focalizzata:** conteggio dei nodi raggiunti eseguendo cinque cicli d'espansione secondo il codice corrente, con filtri predefiniti; i dati di livello non costituiscono prova di parentela storica. Il renderer non è stato modificato.
+
+| Nodo focale | Nodi raggiunti prima, entro V | Dopo, entro V |
+| --- | ---: | ---: |
+| Wolfgang Amadeus Mozart | 586 | 579 |
+| Ludwig van Beethoven | 583 | 579 |
+| Giuseppe Verdi | 580 | 565 |
+| Romanticismo | 586 | 587 |
+| Barocco | 586 | 587 |
+| Teatro del Classicismo | 586 | 586 |
+| Dall’operetta a Broadway | 577 | 568 |
+| Dal musical al film | 587 | 586 |
+| Musica nell’audiovisivo | 578 | 570 |
+| Verso le avanguardie e il Novecento | 585 | 586 |
+
+**QA storico-editoriale supplementare:** `E0862` è un'omonimia fra *Fantasia* Disney e *Fantasia contrappuntistica* di Busoni; `E0869`–`E0870` confondevano il titolo *C'era una volta in America* con riferimenti più generali a Morricone o a *C'era una volta il West*; non vi è trattazione verificabile del film specifico. La nuova classificazione impedisce che queste corrispondenze spurie siano usate automaticamente nella rete.
+
+**Archi sospesi per assenza del titolo:** `E0842`, `E0856`, `E0862`, `E0864`, `E0869`, `E0870`.
+
+**Punti aperti:** i nodi concettuali `E0924`–`E0931` rimangono proposte editoriali, senza promozione storica indifferenziata. Un eventuale intervento sul renderer per impedire espansioni improprie o per etichettare diversamente i confronti resta un lavoro distinto e non è stato applicato. Nessun capitolo, menu o protocollo è stato modificato.
+
+**Limitazione:** simulazione dati del codice `buildVisible()`; non è un collaudo visivo su Android/desktop. Sospendere i ponti generici in `quality_gate` mitiga la propagazione, ma altri percorsi possono restare raggiungibili attraverso nodi di senso condivisi.
+
+**Ripresa:** **Lotto 117**, da `E0932`, con i rapporti fra forme musicali, linguaggi teatrali, musica per immagini e collegamenti semantici; mantenere il gate storico indipendente solo dove sussistano fonti specifiche.
