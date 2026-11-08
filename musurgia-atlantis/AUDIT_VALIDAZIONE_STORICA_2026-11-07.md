@@ -4865,3 +4865,208 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 - **Non modificati:** capitoli didattici, index.html dell'esploratore, protocollo, mappe di fine capitolo. Nessuna sincronizzazione automatica introdotta.
 - **Da verificare con browser reale:** rotazione ed etichette in 3D e fallback canvas Android; qui test solo strutturali e simulazione semantica del percorso.
 - **Prossimo controllo:** cercare archi sospesi per falso negativo solo quando il capitolo o la fonte primaria attesta davvero la relazione; non riattivare per estensione tematica.
+
+---
+
+## Lotto 151 — 2026-11-08: Schubert: dal Lied del 1817 al Quartetto D 810 (1824)
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L151-A01` | **H — esterno puntuale** | Schubert compone nel 1817 il Lied D 531 sul testo poetico di Matthias Claudius; il Lied non coincide con il quartetto successivo. |
+| `L151-A02` | **H — esterno puntuale** | Schubert compone il Quartetto D 810 nel 1824, distinto per organico e forma dal Lied preesistente. |
+| `L151-A03` | **H — esterno puntuale** | Il secondo movimento del Quartetto D 810 rielabora materiale ritmico e armonico del precedente Lied D 531; non va ridotto alla trasposizione letterale della linea vocale. |
+
+### Riscontri esterni
+- https://chambermusicsociety.org/about-the-music/compositions/schubert-string-quartet-14
+
+**Bilancio lotto:** 2 nodi nuovi, 3 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 152 — 2026-11-08: Brahms, Dvořák e Simrock: il tramite editoriale documentato
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L152-A01` | **H — esterno puntuale** | Brahms sostiene il giovane Dvořák nel sistema delle borse statali e lo segnala all'editore Fritz Simrock: patrocinio documentato, non discepolato. |
+| `L152-A02` | **H — esterno puntuale** | Dvořák compone nel 1878 la prima serie delle Danze slave op. 46, inizialmente destinata al pianoforte a quattro mani e con versione orchestrale. |
+| `L152-A03` | **H — esterno puntuale** | Simrock commissiona a Dvořák le Danze slave nel 1878, dopo il successo dei Duetti moravi sostenuti da Brahms; il nesso è editoriale. |
+
+### Riscontri esterni
+- https://www.antonin-dvorak.cz/en/index-of-names/brahms-johannes-1833-1897/
+- https://www.antonin-dvorak.cz/en/work/slavonic-dances-series-1/
+
+**Bilancio lotto:** 2 nodi nuovi, 3 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 153 — 2026-11-08: Bruckner e Wagner: la dedica della Terza sinfonia
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L153-A01` | **H — esterno puntuale** | Bruckner compone la Terza sinfonia nel 1872–1873, successivamente più volte riveduta: non esiste una sola versione testuale indifferenziata. |
+| `L153-A02` | **H — esterno puntuale** | Bruckner dedica la Sinfonia n. 3 a Richard Wagner, che nel 1873 ne accetta la dedica: il rapporto è documentato, senza inferirne imitazione totale. |
+
+### Riscontri esterni
+- https://karajan.org/stories/spotlight-bruckner-symphonies/
+
+**Bilancio lotto:** 1 nodi nuovi, 2 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 154 — 2026-11-08: Schönberg e Berg: formazione e Wozzeck
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L154-A01` | **H — esterno puntuale** | Schönberg accoglie Alban Berg come allievo nel 1904, secondo la testimonianza registrata dello stesso maestro. |
+| `L154-A02` | **H — esterno puntuale** | Alban Berg compone l'opera Wozzeck a partire dal dramma di Büchner, rappresentata per la prima volta a Berlino nel 1925. |
+| `L154-A03` | **H — esterno puntuale** | Berg elabora il proprio libretto da Woyzeck di Georg Büchner: Büchner è autore del dramma di partenza, non del libretto operistico redatto da Berg. |
+
+### Riscontri esterni
+- https://schoenberg.at/en/collection/holdings/voice-recordings/vr01-sp-145322340
+- https://archiviostorico.operaroma.it/opera/wozzeck/
+
+**Bilancio lotto:** 2 nodi nuovi, 3 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 155 — 2026-11-08: Cage e Cunningham: Sixteen Dances del 1951
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L155-A01` | **H — esterno puntuale** | John Cage compone la musica di Sixteen Dances, per pianoforte ed ensemble, realizzata per la coreografia di Cunningham. |
+| `L155-A02` | **H — esterno puntuale** | Merce Cunningham firma la coreografia di Sixteen Dances, presentata il 17 gennaio 1951 al Bennett Junior College: collaborazione accertata e non semplice analogia estetica. |
+
+### Riscontri esterni
+- https://www.mercecunningham.org/the-work/choreography/sixteen-dances-for-soloist-and-company-of-three/
+- https://ressources.ircam.fr/en/work/sixteen-dances
+
+**Bilancio lotto:** 1 nodi nuovi, 2 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 156 — 2026-11-08: Reich, Kronos Quartet e Betty Freeman: Different Trains
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L156-A01` | **H — esterno puntuale** | Steve Reich compone nel 1988 Different Trains per quartetto e nastro preregistrato, ricavando materiale melodico da campioni di parlato. |
+| `L156-A02` | **H — esterno puntuale** | Il Kronos Quartet esegue la prima assoluta di Different Trains il 2 novembre 1988 alla Queen Elizabeth Hall di Londra. |
+| `L156-A03` | **H — esterno puntuale** | La composizione di Different Trains nasce da una commissione di Betty Freeman per il Kronos Quartet, come riportato nell'archivio IRCAM. |
+
+### Riscontri esterni
+- https://stevereich.com/composition/different-trains/
+- https://resources.ircam.fr/en/work/different-trains
+
+**Bilancio lotto:** 3 nodi nuovi, 3 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 157 — 2026-11-08: Britten: Peter Grimes e la provenienza del testo
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L157-A01` | **H — esterno puntuale** | Britten compone Peter Grimes op. 33, presentata per la prima volta il 7 giugno 1945 al Sadler's Wells Theatre di Londra. |
+| `L157-A02` | **H — esterno puntuale** | Montagu Slater scrive il libretto di Peter Grimes, distinto dalla musica di Britten. |
+| `L157-A03` | **H — esterno puntuale** | La fonte letteraria dell'opera è il poema The Borough di George Crabbe; Crabbe non è il librettista della versione operistica. |
+
+### Riscontri esterni
+- https://www.rohcollections.org.uk/work.aspx?work=702
+- https://www.boosey.com/pages/Opera/catalogue/cat_detail?musicid=7101
+
+**Bilancio lotto:** 3 nodi nuovi, 3 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 158 — 2026-11-08: Korngold: partitura, orchestrazione e regia di Robin Hood
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L158-A01` | **H — esterno puntuale** | Erich Wolfgang Korngold è accreditato per le musiche di The Adventures of Robin Hood (1938); la funzione è distinta dalla direzione musicale e dalle orchestrazioni. |
+| `L158-A02` | **H — esterno puntuale** | Hugo Friedhofer è accreditato per orchestrazione/arrangiamenti musicali di The Adventures of Robin Hood, distinti dalla composizione di Korngold. |
+| `L158-A03` | **H — esterno puntuale** | Michael Curtiz è uno dei registi accreditati per The Adventures of Robin Hood (1938). |
+| `L158-A04` | **H — esterno puntuale** | William Keighley è l'altro regista accreditato per The Adventures of Robin Hood (1938): evitare l'attribuzione a un solo regista. |
+
+### Riscontri esterni
+- https://catalog.afi.com/Film/3983-THE-ADVENTURES-OF-ROBIN-HOOD
+
+**Bilancio lotto:** 4 nodi nuovi, 4 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 159 — 2026-11-08: Scott Joplin: Treemonisha fra opera e ragtime
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L159-A01` | **H — esterno puntuale** | Scott Joplin compone la musica di Treemonisha, opera in tre atti pubblicata in riduzione canto-pianoforte a proprie spese nel 1911. |
+| `L159-A02` | **H — esterno puntuale** | Joplin scrive anche il libretto di Treemonisha: non è corretto ridurre questa opera a un semplice ragtime pianistico. |
+
+### Riscontri esterni
+- https://www.loc.gov/collections/ragtime/articles-and-essays/treemonisha/
+
+**Bilancio lotto:** 1 nodi nuovi, 2 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+## Lotto 160 — 2026-11-08: Chaplin: The Kid del 1921 e la colonna sonora del 1971
+
+**Metodo:** collegare entità identificate attraverso verbi attestati in repertori, archivi, cataloghi di opere e crediti. Distinguere originale, trascrizione, commissione, riedizione, interpretazione e fonte letteraria.
+
+| Arco | Riscontro | Precisazione recuperabile |
+| --- | --- | --- |
+| `L160-A01` | **H — esterno puntuale** | Chaplin scrive, dirige, produce e interpreta The Kid, film muto del 1921; la musica aggiunta nel 1971 non va retrodatata alla prima uscita. |
+| `L160-A02` | **H — esterno puntuale** | Chaplin compone una nuova partitura per la riedizione di The Kid del 1971, come conferma il suo archivio. |
+| `L160-A03` | **H — esterno puntuale** | La partitura del 1971 accompagna una riedizione successiva del film muto del 1921: distinguere produzione filmica originale e revisione sonora. |
+
+### Riscontri esterni
+- https://www.charliechaplin.com/en/infos/p/33
+- https://www.charliechaplinarchive.org/en/collection/cerca/the-kid-ecci00004776
+
+**Bilancio lotto:** 2 nodi nuovi, 3 archi verificati. Nessuna deduzione di influenza transitiva.
+
+---
+
+### Bilancio dopo i lotti 151–160
+
+- **21 nuovi nodi, 28 nuovi archi con riscontro puntuale;** nessuna rimozione o modifica agli archi preesistenti. Le 125 sospensioni restano tali.
+- **Integrità:** nodi 639, archi 1577, duplicati ID nodo 0, duplicati ID arco 0, triplette duplicate 0, orfani 0; flag storici indipendenti 445; gate indipendenti 409.
+- **Principali rettifiche filologiche:** Quartetto D 810 di Schubert non è semplice trascrizione del Lied D 531; il patrocinio di Brahms per Dvořák è editoriale, non maestro-allievo; Bruckner dedica la Terza a Wagner, non gli attribuisce la composizione; Berg scrive il libretto tratto dal dramma di Büchner; Cage compone mentre Cunningham coreografa; Reich compone, Kronos interpreta, Freeman commissiona; Britten, Slater e Crabbe hanno ruoli distinti; per Robin Hood distinguere musiche, orchestrazioni e due registi; Joplin è autore di testo e musica di Treemonisha; Chaplin realizza la nuova colonna sonora di The Kid solo nel 1971.
+- **Simulazione BFS I–V sul JSON e filtro ordinario:**
+
+| Nodo | Prima I–V | Dopo I–V |
+| --- | --- | --- |
+| Franz Schubert | 3 / 3 / 3 / 3 / 3 | 5 / 5 / 5 / 5 / 5 |
+| Johannes Brahms | 4 / 8 / 16 / 20 / 29 | 5 / 10 / 20 / 25 / 34 |
+| Antonín Dvořák | 2 / 2 / 2 / 2 / 2 | 4 / 8 / 12 / 21 / 26 |
+| Anton Bruckner | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 10 / 14 / 19 |
+| Richard Wagner | 13 / 17 / 21 / 25 / 34 | 14 / 19 / 24 / 29 / 39 |
+| Arnold Schönberg | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 3 / 3 / 3 |
+| John Cage | 2 / 2 / 2 / 2 / 2 | 3 / 4 / 4 / 4 / 4 |
+| Merce Cunningham | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 3 / 3 / 3 |
+| Steve Reich | 1 / 1 / 1 / 1 / 1 | 2 / 4 / 4 / 4 / 4 |
+| Benjamin Britten | 1 / 1 / 1 / 1 / 1 | 2 / 4 / 4 / 4 / 4 |
+| Erich Wolfgang Korngold | 2 / 2 / 2 / 2 / 2 | 3 / 6 / 6 / 6 / 6 |
+| Scott Joplin | 1 / 1 / 1 / 1 / 1 | 2 / 2 / 2 / 2 / 2 |
+| Charlie Chaplin | 2 / 2 / 2 / 2 / 2 | 4 / 4 / 4 / 4 / 4 |
+| Romanticismo | 99 / 169 / 220 / 249 / 264 | 99 / 173 / 225 / 254 / 269 |
+| Il balletto | 74 / 142 / 195 / 230 / 240 | 74 / 144 / 198 / 234 / 245 |
+
+- **Limiti QA:** struttura del JSON, univocità di ID e triplette, endpoint e simulazione dei livelli I–V; non eseguiti test grafici reali su Chrome/Android e non inferite nuove relazioni semplicemente perché un nodo è raggiungibile. Gli enti musicali (es. Kronos Quartet) sono modellati come `rete-culturale`, non falsamente come persone.
+- **Non modificati:** pagine didattiche, mappe per capitolo, interfaccia `index.html`, protocollo. Nessuna sincronizzazione automatica attivata.
+- **Continuazione:** lotti 161–170 su isolamenti residui verificati e controllo dei collegamenti sospesi solo quando le fonti di pagina o primarie lo consentono.
