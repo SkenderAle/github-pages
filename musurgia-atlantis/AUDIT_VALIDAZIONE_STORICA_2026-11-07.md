@@ -1425,3 +1425,120 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - I controlli del grafo serializzato non equivalgono a collaudo del rendering 3D/WebGL su smartphone o desktop.
 
 **Prossimo gruppo proposto, Lotto 28:** `L07-A056` in avanti: consort, viola da gamba, viola/lira da braccio, violino, ribeca, organistrum/ghironda e violone storico. Distinguere famiglie organologiche, termini storici, filiazioni documentate e semplici analogie.
+
+---
+
+## Lotto 28 — 8 novembre 2026: Consort, viole, ribeca, ghironda, violone e strumenti d'insieme
+
+**Preflight e metodo:** riletti i file remoti `main` dopo il Lotto 27; soli `grafo.json` e questo registro modificati. Dieci relazioni candidate verificate `L07-A056`–`L07-A065`. Verificate indipendentemente le proposizioni storiche specifiche e differenziate le classificazioni e i raccordi metodologici. `confronto_non_causale` non equivale a `riscontro_storico_indipendente`.
+
+| ID | Nuovo gate | Relazione e motivazione |
+| --- | --- | --- |
+| `L07-A056` | **confronto_non_causale** | Le viole da gamba di differenti taglie (soprano, tenore, basso e varianti) furono impiegate in consort, soprattutto nelle pratiche domestiche e di corte tra Rinascimento ed età barocca. «Consort» non significa necessariamente solo ensemble di viole da gamba, né un organico immutato nel tempo. |
+| `L07-A057` | **confronto_non_causale** | Viola da gamba e violoncello sono cordofoni ad arco di famiglie organologiche storicamente distinte, che per alcuni secoli convissero. Differiscono di norma per tastatura, accordatura e costruzione; il violoncello appartiene alla famiglia del violino. La viola da gamba non è la «madre» diretta del violoncello. |
+| `L07-A058` | **confronto_non_causale** | Il violino cinquecentesco emerse nell'Italia settentrionale dalla combinazione di caratteristiche di diversi strumenti ad arco: ribeca, fiddle/vielle e lira da braccio. La lira da braccio offre un precedente morfologico, ma non è possibile ricondurre il violino a una semplice discendenza da tutta la famiglia delle «viole da braccio». |
+| `L07-A059` | **sospeso** | Il generico collegamento negativo tra «viola/lira da braccio» e «viola da gamba» non costituisce un rapporto storico traversabile. Le denominazioni sono in parte sovrapposte e le prassi/costruzioni differiscono, ma non si deduce un arco genealogico o un'autentica opposizione di tutte le famiglie. |
+| `L07-A060` | **riscontro_storico_indipendente** | La ribeca è uno degli antecedenti documentati della famiglia del violino; in particolare la sua accordatura a quinte contribuì al profilo dei primi violini cinquecenteschi, insieme agli apporti della vielle/fiddle e della lira da braccio. Non rappresenta un unico «antenato» esclusivo. |
+| `L07-A061` | **confronto_non_causale** | Organistrum medievale, symphonia e ghironda/vielle à roue sono varianti storicamente collegate di cordofoni nei quali una ruota azionata a manovella sfrega le corde, mentre tasti o tangenti regolano la melodia. L'organistrum più antico poteva richiedere due suonatori, diversamente da modelli posteriori più piccoli; non ogni denominazione identifica il medesimo strumento. |
+| `L07-A062` | **confronto_non_causale** | Nel XVI–XVIII secolo «violone» non indica un oggetto univoco: la terminologia può riferirsi a bassi ad arco differenti, in registri da 8' o 16' e in famiglie strumentali diverse, a seconda di regione e repertorio. Il termine «violoncello» si stabilizza in epoca successiva: non ogni violone è un violoncello, ma esistono intersezioni terminologiche. |
+| `L07-A063` | **riscontro_storico_indipendente** | Cornetto (aerofono a bocchino con fori digitali) e trombone rinascimentale/barocco furono spesso accostati in complessi strumentali e musica sacra tra XVI e XVII secolo. La loro associazione esecutiva è documentata, ma essi non appartengono alla stessa linea organologica. |
+| `L07-A064` | **confronto_non_causale** | La prassi esecutiva storicamente informata moderna studia trattati, strumenti superstiti e repertori per ricostruire la tecnica del cornetto, il suo impasto con le voci e l'associazione ai tromboni. È una ricerca contemporanea, non la prova di continuità orchestrale ininterrotta del cornetto storico. |
+| `L07-A065` | **confronto_non_causale** | Gli ensemble di musica antica moderni ricostruiscono tipologie di consort e scelte di organico sulla base di documenti e strumenti storici, distinguendo consort omogenei e misti. Le ricostruzioni differiscono fra interpreti e non restituiscono automaticamente un originale sonoro incontrovertibile. |
+
+### Fonti di riscontro
+- https://www.metmuseum.org/de/essays/the-viol
+- https://www.vdgsa.org/about-the-viol
+- https://academic.oup.com/book/62684/chapter-abstract/561965421
+- https://www.metmuseum.org/pt/essays/renaissance-violins
+- https://caslabs.case.edu/medren/medieval-instruments/hurdy-gurdy-medieval/
+- https://scholarship.claremont.edu/ppr/vol9/iss1/7/
+- https://www.cambridge.org/core/journals/eighteenth-century-music/article/abs/sixteenfoot-violone-in-concerted-music-of-the-seventeenth-and-eighteenth-centuries-issues-of-terminology-and-function/0F79CC23F21585D183801F943EDD9C23
+- https://academic.oup.com/em/article-abstract/46/2/343/4996924
+- https://americanarchive.org/catalog/cpb-aacip-2189aee4ff5
+
+### Precisazioni da conservare per i capitoli
+- *Ribeca e violino*: antecedente multiplo, accordatura e forma non sono attribuibili a un solo cordofono. Le viole da gamba restano distinta famiglia.
+- *Violone*: designazione storica mutevole; controllare funzione, registro (8'/16'), località e cronologia prima di dedurre il contrabbasso o il violoncello.
+- *Organistrum*: famiglia storica dei cordofoni a ruota. Non confondere nome medievale, ghironda moderna e organo a canne.
+- *Cornetto e trombone*: frequente compresenza di organico, non parentela fra strumenti. Il cornetto storico non è la moderna cornetta a pistoni.
+- *HIP*: confronto moderno con fonti antiche, senza certificare una ricostruzione sonora unica.
+
+---
+
+## Lotto 29 — 8 novembre 2026: Lutero, corale, ricercare, Bach e temperamenti
+
+**Preflight e metodo:** riletti i file remoti `main` dopo il Lotto 27; soli `grafo.json` e questo registro modificati. Dieci relazioni candidate verificate `L07-A066`–`L07-A075`. Verificate indipendentemente le proposizioni storiche specifiche e differenziate le classificazioni e i raccordi metodologici. `confronto_non_causale` non equivale a `riscontro_storico_indipendente`.
+
+| ID | Nuovo gate | Relazione e motivazione |
+| --- | --- | --- |
+| `L07-A066` | **riscontro_storico_indipendente** | Martin Lutero fu protagonista della Riforma nel XVI secolo e attribuì alla musica funzioni liturgiche, educative e comunitarie, favorendo lo sviluppo di particolari tradizioni luterane. Non gli si può attribuire da solo la totalità dei repertori protestanti, che variarono fra regioni e confessioni. |
+| `L07-A067` | **riscontro_storico_indipendente** | Lutero considerò utile e desiderabile il canto dei fedeli e contribuì alla tradizione del corale luterano in lingua tedesca; non abolì il canto corale liturgico né impose dappertutto una messa integralmente congregazionale. A Wittenberg il rito corale in latino persistette durante la sua vita. |
+| `L07-A068` | **confronto_non_causale** | Il corale luterano compare come melodia, testo e principio strutturante in numerose cantate sacre di Bach e dei suoi contemporanei, ma corale e cantata non sono lo stesso genere; il teatro spirituale raccoglie repertori ancora diversi. Non ogni cantata presenta lo stesso rapporto con un Kirchenlied. |
+| `L07-A069` | **confronto_non_causale** | Le pratiche contrappuntistiche del cosiddetto stile antico, legate anche alla ricezione di modelli polifonici rinascimentali, furono studiate e riutilizzate in età barocca. La fuga dei secoli XVII–XVIII non coincide però semplicemente con tutta la polifonia del Cinquecento né deriva da una sola scuola. |
+| `L07-A070` | **confronto_non_causale** | Il ricercare strumentale tra Cinque e Seicento sviluppa spesso imitazione e contrappunto tematico, in un panorama che comprende canzona, fantasia e altri generi. Alcune pratiche confluiscono nel linguaggio della fuga, ma ricercare e fuga non sono generi equivalenti e non vi è un unico percorso di origine. |
+| `L07-A071` | **riscontro_storico_indipendente** | Girolamo Frescobaldi pubblicò a Roma nel 1615 i Recercari et canzoni franzese fatte sopra diversi oblighi in partitura: dieci ricercari e cinque canzoni per strumento a tastiera. L'opera attesta l'impiego specialistico del ricercare senza farne il creatore esclusivo del genere. |
+| `L07-A072` | **riscontro_storico_indipendente** | Johann Sebastian Bach intitolò Ricercar a 3 e Ricercar a 6 due elaborazioni del tema regio comprese nell'Offerta musicale BWV 1079 (1747). Il ricercare a sei voci non va identificato con l'improvvisazione a tre voci eseguita a Potsdam: è una rielaborazione scritta successiva. |
+| `L07-A073` | **riscontro_storico_indipendente** | J. S. Bach compose i due libri del Wohltemperierte Clavier (il primo datato 1722, il secondo completato negli anni Quaranta del Settecento), esplorando tutti i 24 toni maggiori e minori. Il titolo rinvia alla possibilità pratica di utilizzare tutte le tonalità con un temperamento appropriato; non documenta l'adozione di un unico preciso schema né impone il temperamento equabile moderno. |
+| `L07-A074` | **sospeso** | «Wohltemperiert» indica storicamente temperamenti che rendono praticabili le diverse tonalità, non una prova di uguaglianza esatta dei dodici semitoni. Il collegamento negativo con il temperamento equabile è sospeso: non è una relazione storica navigabile e non si deve sostituire a una discussione documentata delle pratiche di accordatura. |
+| `L07-A075` | **confronto_non_causale** | Temperamenti mesotonici e diversi temperamenti ben temperati furono soluzioni storiche differenti alle limitazioni degli intervalli sulle tastiere. La loro diffusione e coesistenza variarono per luogo, periodo e repertorio: non si trattò di una sostituzione uniforme e improvvisa del mesotonico. |
+
+### Fonti di riscontro
+- https://www.cambridge.org/core/journals/church-history/article/abs/why-do-lutherans-sing-lutherans-music-and-the-gospel-in-the-first-century-of-the-reformation/A0B2A809E3EE5DAF47A9A7FCE5C07C24
+- https://academic.oup.com/book/12682
+- https://academic.oup.com/book/12682/chapter-abstract/162693855
+- https://digital.pitts.emory.edu/s/digital-collections/item/13151
+- https://imslp.org/wiki/Recercari_et_canzoni_%28Frescobaldi%2C_Girolamo%29
+- https://www.chambermusicsociety.org/about-the-music/compositions/bach-musical-offering
+- https://frederick.mml.ox.ac.uk/item11
+- https://girolamofrescobaldi.com/catalog-2/
+- https://www.tandfonline.com/doi/full/10.1080/09298215.2024.2375552
+- https://pubmed.ncbi.nlm.nih.gov/15532672/
+
+### Precisazioni da conservare per i capitoli
+- Lutero favorisce il canto dei fedeli senza estinguere immediatamente il coro o la Messa latina; non associare a lui ogni forma di musica protestante.
+- Nel linguaggio delle cantate bachiane il corale è un elemento documentato, non sinonimo dell'intera forma cantata.
+- Frescobaldi pubblica dieci ricercari e cinque canzoni per tastiera nel 1615; Bach usa il nome *Ricercar* nei due brani dell'Offerta musicale del 1747. Non dedurre un prestito diretto specifico senza ulteriori fonti.
+- *Wohltemperiert*: non coincide per definizione con equabile a dodici semitoni identici; la ricerca non identifica univocamente il temperamento concreto di Bach. Il collegamento negativo resta sospeso.
+
+---
+
+## Lotto 30 — 8 novembre 2026: Solesmes, paleografia gregoriana e ricezione bachiana nell'Ottocento
+
+**Preflight e metodo:** riletti i file remoti `main` dopo il Lotto 27; soli `grafo.json` e questo registro modificati. Dieci relazioni candidate verificate `L07-A076`–`L07-A085`. Verificate indipendentemente le proposizioni storiche specifiche e differenziate le classificazioni e i raccordi metodologici. `confronto_non_causale` non equivale a `riscontro_storico_indipendente`.
+
+| ID | Nuovo gate | Relazione e motivazione |
+| --- | --- | --- |
+| `L07-A076` | **riscontro_storico_indipendente** | I neumi medievali furono oggetto di trascrizione, confronto e interpretazione nella rinascita degli studi gregoriani nel XIX secolo, in particolare a Solesmes. I manoscritti sono fonti per le melodie e, con problemi specifici, per l'interpretazione ritmica; il restauro non replica automaticamente il suono medievale. |
+| `L07-A077` | **riscontro_storico_indipendente** | L'abbazia di Solesmes promosse dalla metà dell'Ottocento lo studio comparato dei manoscritti del canto gregoriano sotto impulso di Dom Guéranger, con Paul Jausions e Joseph Pothier; pubblicò il Graduale nel 1883 e avviò con Dom André Mocquereau la Paléographie musicale nel 1889. Le ricostruzioni sono ipotesi filologico-liturgiche storicamente situate. |
+| `L07-A078` | **confronto_non_causale** | Il restauro gregoriano ottocentesco rilegge testi e melodie dei repertori liturgici medievali secondo metodi di comparazione manoscritta, e ne plasma la ricezione e la stampa moderne. Non può identificarsi senza residui né con ogni pratica locale medievale né con l'intera storia della salmodia cristiana. |
+| `L07-A079` | **riscontro_storico_indipendente** | Felix Mendelssohn diresse l'11 marzo 1829 alla Sing-Akademie di Berlino una ripresa della Passione secondo Matteo di J. S. Bach, dopo averne preparato una versione abbreviata con tagli e adattamenti. Non fu una presentazione filologicamente identica all'esecuzione di Bach. |
+| `L07-A080` | **riscontro_storico_indipendente** | La Sing-Akademie zu Berlin fu l'istituzione corale in cui l'11 marzo 1829 Mendelssohn diresse la ripresa della Passione secondo Matteo. Era già un centro di studio e pratica del repertorio sacro, fondato nel 1791 da C. F. C. Fasch, dunque non creato per quell'evento. |
+| `L07-A081` | **riscontro_storico_indipendente** | Carl Friedrich Zelter succedette a C. F. C. Fasch nella direzione della Sing-Akademie dopo il 1800 e curò la trasmissione del repertorio bachiano, anche come insegnante di Felix e Fanny Mendelssohn. Il suo ruolo precede la ripresa del 1829. |
+| `L07-A082` | **riscontro_storico_indipendente** | L'evento berlinese dell'11 marzo 1829 fu una ripresa pubblica della Passione secondo Matteo di Bach, realizzata da Mendelssohn in forma ridotta e modificata. È corretto riconoscere l'identità dell'opera eseguita e contemporaneamente distinguere l'identità testuale e performativa della versione del 1829. |
+| `L07-A083` | **confronto_non_causale** | La ripresa berlinese del 1829 fu un momento simbolicamente determinante nella ricezione ottocentesca di Bach, specialmente per la Passione secondo Matteo. Non è l'origine assoluta del «ritorno» di Bach: la musica era già conservata, studiata e coltivata in circoli familiari e istituzionali, anche a Berlino. |
+| `L07-A084` | **riscontro_storico_indipendente** | Zelter contribuì alla ricezione e trasmissione della musica di J. S. Bach nell'ambiente berlinese: guidò la Sing-Akademie, mantenne il rapporto con il repertorio corale sacro e insegnò ai Mendelssohn. La ripresa del 1829 non fu un'iniziativa concepita nel vuoto culturale. |
+| `L07-A085` | **confronto_non_causale** | La ripresa di Bach da parte di Mendelssohn nel 1829 è un fenomeno di ricezione ottocentesca, con tagli e mediazioni per il pubblico del suo tempo. La moderna HIP può studiarlo come episodio storico, ma non deve considerare quella realizzazione una ricostruzione filologicamente fedele della prassi bachiana. |
+
+### Fonti di riscontro
+- https://www.solesmes.com/musical-palaeography-workshop
+- https://www.abbayedesolesmes.fr/notre-monastere/latelier-de-paleographie/
+- https://archives-en.centreculturelirlandais.com/digitized-collections/online-exhibitions/finding-the-source
+- https://www.loc.gov/collections/felix-mendelssohn/articles-and-essays/felix-mendelssohn-reviving-the-works-of-bach/
+
+### Precisazioni da conservare per i capitoli
+- *Solesmes*: studi paleografici avviati da Guéranger, Jausions e Pothier; nel 1883 Graduale, nel 1889 avvio *Paléographie musicale* con Mocquereau. Distinguere edizione/ricostruzione moderna da effettiva prassi medievale.
+- *Sing-Akademie*: fondata nel 1791 da Fasch, poi diretta da Zelter; non fu istituita per Mendelssohn.
+- *11 marzo 1829*: la Passione secondo Matteo fu diretta da Mendelssohn in una versione con tagli e adattamenti; la ricezione anteriore di Bach, compresa quella di Sarah Itzig Levy e Zelter, ne smentisce il mito della riscoperta ex nihilo.
+- *HIP e Romanticismo*: l'esecuzione del 1829 è un oggetto storico di studio, non automaticamente un modello filologico.
+
+### Integrità, filtri e prossima verifica dopo Lotto 30
+
+- **608 nodi, 1.520 archi** invariati; identificativi delle relazioni univoci, zero nodi orfani, struttura JSON serializzata nel formato originario.
+- **30 archi esaminati** fra `L07-A056` e `L07-A085`: **14** riscontri storici indipendenti, **14** confronti non causali, **2** sospesi.
+- Stati `quality_gate`: **239** `riscontro_storico_indipendente`; **146** `candidato_non_fuso`; **317** `proposta_editoriale_revisionata`; **93** `confronto_non_causale`; **50** `sospeso`.
+- Flag distinto `historical_verified_independently=true`: **274**. Non equiparare il valore al solo conteggio del gate `riscontro_storico_indipendente`.
+- Tutti i 14 archi di confronto sono `sviluppa_o_illumina`, classificazione esclusa dall'espansione automatica oltre il I livello secondo le regole verificate nel Lotto 21. Gli archi negativi `L07-A059` e `L07-A074` sono `sospeso`, non devono diventare scorciatoie di navigazione.
+- Preservati `previous_quality_gate`, `previous_description`, `previous_relation` quando modificata, fonti pregresse; annotate fonti indipendenti, note, esiti e date.
+- Nessuna modifica a capitoli, menu, renderer WebGL o protocollo. Validazione del JSON e tracciamento dei metadati non equivalgono al collaudo grafico su un browser reale.
+
+**Lotto 31 suggerito:** `L07-A086`–`L07-A092` (Grisey, *Talea*, color e analogie isoritmiche con *Liturgie de cristal* di Messiaen), poi esame di altri candidati residui del grafo; evitare ponti storici non documentati verso il capitolo del Novecento.
