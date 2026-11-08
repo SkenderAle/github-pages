@@ -1,0 +1,1696 @@
+{
+  "schema": "musurgia-atlantis-2L-lotto03-cross-legacy-review-v1",
+  "date": "2026-11-08",
+  "branch": "main",
+  "scope": "Only audit staging: legacy cross-layer groups 41–60; no public production edits.",
+  "source_index": {
+    "path": "musurgia-atlantis/audit-integrazione/CANDIDATI_COLLISIONI_ARCHI_FASE2K_2026-11-08.json",
+    "sha": "074ae790819d7210da12e4c798e8d1dd2fad17e2"
+  },
+  "stage_blob_shas": {
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE02_2026-11-08.json": "c9a67d13b50da4337ec4a9325f5d5d4a422635c5",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json": "c6fa357a6f0968c41cca3d3e9f93de9fb7491649",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE02_2026-11-08.json": "d1516f1681e4d5fd13f4da6b96c11228823300ff",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json": "80124aa47bd0b514d83b360879c95f79627cb9be"
+  },
+  "counts": {
+    "total_groups": 250,
+    "previous_reviewed": 40,
+    "reviewed_here": 20,
+    "cumulative_reviewed": 60,
+    "remaining": 190,
+    "source_records_in_lotto": 41,
+    "base_records": 20,
+    "specialist_records": 21,
+    "semantic_classes": {
+      "contextual_repertoire": 12,
+      "attribution_identity_hold": 1,
+      "movement_technique_role": 6,
+      "composite_specialist_overlap": 1
+    }
+  },
+  "classification_legend": {
+    "contextual_repertoire": "General generic adjacency refined by work, form or role; keep both original assertions and context.",
+    "attribution_identity_hold": "Unsettled personal attribution/identity: no merge, require independent source review.",
+    "movement_technique_role": "Technique/style affiliation must be distinguished from creation, adoption or personal transformation.",
+    "composite_specialist_overlap": "Multiple specialist edges share source/target but differ in historical predicate."
+  },
+  "groups": [
+    {
+      "group_number": 41,
+      "normalized_pair": "legacy:madrigale|pers:cipriano-de-rore",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0567",
+          "source_index": 566,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-cipriano-de-rore",
+          "original_target": "madrigale",
+          "proposed_source": "pers:cipriano-de-rore",
+          "proposed_target": "legacy:madrigale",
+          "original_payload": {
+            "source": "compositore-cipriano-de-rore",
+            "target": "madrigale",
+            "kind": "relazione-storico-musicale",
+            "weight": 1.7,
+            "sources": [
+              "https://www.treccani.it/enciclopedia/madrigale_%28Enciclopedia-Italiana%29/"
+            ],
+            "note": "Libri di madrigali a cinque voci: madrigalismo centrale alla sua scrittura contrappuntistica.",
+            "audit": "2026-10-21",
+            "audit_category": "audit-fonti-categorie-trasversali",
+            "evidence_status": "fonte-specifica-opera-o-catalogo"
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Libri di madrigali a cinque voci: madrigalismo centrale alla sua scrittura contrappuntistica.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/madrigale_%28Enciclopedia-Italiana%29/"
+            ]
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:audit8f-madrigale-rore",
+          "source_index": 713,
+          "kind": "madrigale-cromatico-cinquecentesco",
+          "original_source": "madrigale",
+          "original_target": "compositore-cipriano-de-rore",
+          "proposed_source": "legacy:madrigale",
+          "proposed_target": "pers:cipriano-de-rore",
+          "original_payload": {
+            "id": "audit8f-madrigale-rore",
+            "group": "genealogie",
+            "source": "madrigale",
+            "target": "compositore-cipriano-de-rore",
+            "kind": "madrigale-cromatico-cinquecentesco",
+            "forward": "fu intensificato espressivamente da",
+            "reverse": "promosse l’elaborazione cromatica del",
+            "note": "Cipriano de Rore pubblicò una raccolta di madrigali a cinque voci nel 1542, contribuendo all’ampliamento delle risorse espressive e cromatiche della polifonia vocale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/madrigale_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu intensificato espressivamente da",
+            "reverse_fragment": "promosse l’elaborazione cromatica del",
+            "original_note": "Cipriano de Rore pubblicò una raccolta di madrigali a cinque voci nel 1542, contribuendo all’ampliamento delle risorse espressive e cromatiche della polifonia vocale.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/madrigale_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Cipriano de Rore: repertorio madrigalistico e sperimentazione cromatica/espressiva, non rapporto personale con ogni madrigalista.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 42,
+      "normalized_pair": "legacy:madrigale|pers:maddalena-casulana",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0568",
+          "source_index": 567,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-maddalena-casulana",
+          "original_target": "madrigale",
+          "proposed_source": "pers:maddalena-casulana",
+          "proposed_target": "legacy:madrigale",
+          "original_payload": {
+            "source": "compositore-maddalena-casulana",
+            "target": "madrigale",
+            "kind": "relazione-storico-musicale",
+            "weight": 1.7,
+            "sources": [
+              "https://www.treccani.it/enciclopedia/maddalena-mezari_%28Dizionario-Biografico%29/"
+            ],
+            "note": "Cinque madrigali a quattro voci nelle antologie Il desiderio (1566 e 1567); Maddalena Mezari detta Casulana.",
+            "audit": "2026-10-21",
+            "audit_category": "audit-fonti-categorie-trasversali",
+            "evidence_status": "fonte-specifica-opera-o-catalogo"
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Cinque madrigali a quattro voci nelle antologie Il desiderio (1566 e 1567); Maddalena Mezari detta Casulana.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/maddalena-mezari_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:audit8f-madrigale-casulana",
+          "source_index": 718,
+          "kind": "primo-libro-madrigali-femminili-1568",
+          "original_source": "madrigale",
+          "original_target": "compositore-maddalena-casulana",
+          "proposed_source": "legacy:madrigale",
+          "proposed_target": "pers:maddalena-casulana",
+          "original_payload": {
+            "id": "audit8f-madrigale-casulana",
+            "group": "genealogie",
+            "source": "madrigale",
+            "target": "compositore-maddalena-casulana",
+            "kind": "primo-libro-madrigali-femminili-1568",
+            "forward": "ebbe una pioniera della pubblicazione musicale in",
+            "reverse": "stampò a proprio nome il primo libro del",
+            "note": "Maddalena Casulana pubblicò nel 1568 il Primo libro de madrigali a quattro voci, fra le prime raccolte musicali pubblicate a nome di una donna; l’opera è distinta dai madrigali precedentemente inseriti in antologie.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/maddalena-mezari_%28Dizionario-Biografico%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "ebbe una pioniera della pubblicazione musicale in",
+            "reverse_fragment": "stampò a proprio nome il primo libro del",
+            "original_note": "Maddalena Casulana pubblicò nel 1568 il Primo libro de madrigali a quattro voci, fra le prime raccolte musicali pubblicate a nome di una donna; l’opera è distinta dai madrigali precedentemente inseriti in antologie.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/maddalena-mezari_%28Dizionario-Biografico%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Maddalena Casulana: distinguere brani in antologie Il Desiderio (1566–1567) dal Primo libro a 4 voci del 1568, pubblicato a proprio nome.",
+      "external_sample_urls": [
+        "https://cenhtor-msh-lorraine.cnrs.fr/s/digital_casulana/page/primo_libro_sources_en"
+      ],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 43,
+      "normalized_pair": "legacy:madrigale|pers:vittoria-aleotti",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0569",
+          "source_index": 568,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-vittoria-aleotti",
+          "original_target": "madrigale",
+          "proposed_source": "pers:vittoria-aleotti",
+          "proposed_target": "legacy:madrigale",
+          "original_payload": {
+            "source": "compositore-vittoria-aleotti",
+            "target": "madrigale",
+            "kind": "relazione-storico-musicale",
+            "weight": 1.7,
+            "sources": [
+              "https://www.treccani.it/enciclopedia/vittoria-aleotti/"
+            ],
+            "note": "Madrigali a quattro voci pubblicati nel 1593; distinguere dalle attribuzioni alla sorella Raffaella.",
+            "audit": "2026-10-21",
+            "audit_category": "audit-fonti-categorie-trasversali",
+            "evidence_status": "fonte-specifica-opera-o-catalogo"
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": "Madrigali a quattro voci pubblicati nel 1593; distinguere dalle attribuzioni alla sorella Raffaella.",
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/vittoria-aleotti/"
+            ]
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:audit8f-madrigale-vittoria-aleotti",
+          "source_index": 717,
+          "kind": "madrigali-pubblicati-1593",
+          "original_source": "madrigale",
+          "original_target": "compositore-vittoria-aleotti",
+          "proposed_source": "legacy:madrigale",
+          "proposed_target": "pers:vittoria-aleotti",
+          "original_payload": {
+            "id": "audit8f-madrigale-vittoria-aleotti",
+            "group": "genealogie",
+            "source": "madrigale",
+            "target": "compositore-vittoria-aleotti",
+            "kind": "madrigali-pubblicati-1593",
+            "forward": "annovera fra le autrici documentate",
+            "reverse": "pubblicò madrigali a quattro voci nel",
+            "note": "Treccani attribuisce a Vittoria Aleotti madrigali a quattro voci pubblicati nel 1593. La relazione non confonde Vittoria con la sorella Raffaella, pur esistendo discussioni musicologiche sulla loro identità.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/vittoria-aleotti/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "annovera fra le autrici documentate",
+            "reverse_fragment": "pubblicò madrigali a quattro voci nel",
+            "original_note": "Treccani attribuisce a Vittoria Aleotti madrigali a quattro voci pubblicati nel 1593. La relazione non confonde Vittoria con la sorella Raffaella, pur esistendo discussioni musicologiche sulla loro identità.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/vittoria-aleotti/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "attribution_identity_hold",
+      "rationale": "Vittoria Aleotti: madrigali del 1593. Non decidere automaticamente l'identità con Raffaella Aleotti, questione musicologica discussa; conservare la distinzione di attribuzioni.",
+      "external_sample_urls": [
+        "https://scholarwolf.unr.edu/bitstreams/15363844-81ae-4ed8-b7d8-e478a92f8615/download"
+      ],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 44,
+      "normalized_pair": "legacy:opera-buffa|pers:pergolesi",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0597",
+          "source_index": 596,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-giovanni-battista-pergolesi",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:pergolesi",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-giovanni-battista-pergolesi",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-opera-buffa-giovanni-battista-pergolesi",
+          "source_index": 45,
+          "kind": "repertorio-e-trasformazione",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-giovanni-battista-pergolesi",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:pergolesi",
+          "original_payload": {
+            "id": "gen-opera-buffa-giovanni-battista-pergolesi",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-giovanni-battista-pergolesi",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Pergolesi, con La serva padrona, svolse un ruolo decisivo nella fortuna europea del teatro buffo.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Pergolesi, con La serva padrona, svolse un ruolo decisivo nella fortuna europea del teatro buffo.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Pergolesi: La serva padrona (1733) è un intermezzo tra gli atti de Il prigioniero superbo, influente nella storia dell'opera buffa, non un'opera buffa intera.",
+      "external_sample_urls": [
+        "https://www.treccani.it/enciclopedia/la-serva-padrona/"
+      ],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 45,
+      "normalized_pair": "legacy:opera-buffa|pers:paisiello",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0599",
+          "source_index": 598,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-giovanni-paisiello",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:paisiello",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-giovanni-paisiello",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-opera-buffa-giovanni-paisiello",
+          "source_index": 43,
+          "kind": "repertorio-e-trasformazione",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-giovanni-paisiello",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:paisiello",
+          "original_payload": {
+            "id": "gen-opera-buffa-giovanni-paisiello",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-giovanni-paisiello",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Paisiello fu fra i maggiori protagonisti europei dell'opera buffa del tardo Settecento.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Paisiello fu fra i maggiori protagonisti europei dell'opera buffa del tardo Settecento.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Paisiello: trattare i drammi giocosi e le opere comiche come repertorio specifico, non come identità assoluta del genere. Il Barbiere del 1782 non implica rapporto personale con Rossini.",
+      "external_sample_urls": [
+        "https://corago.unibo.it/opera/Z000002526"
+      ],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 46,
+      "normalized_pair": "legacy:opera-buffa|pers:cimarosa",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0600",
+          "source_index": 599,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-domenico-cimarosa",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:cimarosa",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-domenico-cimarosa",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-opera-buffa-domenico-cimarosa",
+          "source_index": 44,
+          "kind": "repertorio-e-trasformazione",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-domenico-cimarosa",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:cimarosa",
+          "original_payload": {
+            "id": "gen-opera-buffa-domenico-cimarosa",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-domenico-cimarosa",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Cimarosa portò a fama internazionale il teatro comico napoletano nel secondo Settecento.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Cimarosa portò a fama internazionale il teatro comico napoletano nel secondo Settecento.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Cimarosa: teatro comico e Il matrimonio segreto (1792), caso specifico di repertorio, non un legame automatico con altri operisti buffi.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 47,
+      "normalized_pair": "legacy:opera-buffa|pers:niccolo-piccinni",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0601",
+          "source_index": 600,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-niccolo-piccinni",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:niccolo-piccinni",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-niccolo-piccinni",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-opera-buffa-niccolo-piccinni",
+          "source_index": 47,
+          "kind": "repertorio-e-trasformazione",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-niccolo-piccinni",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:niccolo-piccinni",
+          "original_payload": {
+            "id": "gen-opera-buffa-niccolo-piccinni",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-niccolo-piccinni",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Piccinni contribuì alla diffusione internazionale dell'opera comica italiana.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Piccinni contribuì alla diffusione internazionale dell'opera comica italiana.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Piccinni: La buona figliuola / La Cecchina (1760, su Goldoni) segna anche il filone sentimentale, da distinguere dalla pura comicità.",
+      "external_sample_urls": [
+        "https://www.sapere.it/sapere/strumenti/studiafacile/musica/L-et--del-classicismo-e-Mozart/Transizione-e-rinnovamento/Dall-opera-buffa-all--op-ra-comique-.html"
+      ],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 48,
+      "normalized_pair": "legacy:opera-buffa|pers:mozart",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0602",
+          "source_index": 601,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-wolfgang-amadeus-mozart",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:mozart",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-wolfgang-amadeus-mozart",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-opera-buffa-wolfgang-amadeus-mozart",
+          "source_index": 48,
+          "kind": "repertorio-e-trasformazione",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-wolfgang-amadeus-mozart",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:mozart",
+          "original_payload": {
+            "id": "gen-opera-buffa-wolfgang-amadeus-mozart",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-wolfgang-amadeus-mozart",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Mozart trasformò la commedia italiana in un teatro di straordinaria complessità psicologica e sociale.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Mozart trasformò la commedia italiana in un teatro di straordinaria complessità psicologica e sociale.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Mozart: distinguere buffa, dramma giocoso e altri generi sulle singole opere; Le nozze di Figaro, Don Giovanni e Così fan tutte non autorizzano attraversamento via etichetta comune.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 49,
+      "normalized_pair": "legacy:opera-buffa|pers:rossini",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0603",
+          "source_index": 602,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-gioachino-rossini",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:rossini",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-gioachino-rossini",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-opera-buffa-gioachino-rossini",
+          "source_index": 42,
+          "kind": "repertorio-e-trasformazione",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-gioachino-rossini",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:rossini",
+          "original_payload": {
+            "id": "gen-opera-buffa-gioachino-rossini",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-gioachino-rossini",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Rossini rinnovò l'opera buffa con farse veneziane e capolavori come Il barbiere di Siviglia.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Rossini rinnovò l'opera buffa con farse veneziane e capolavori come Il barbiere di Siviglia.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/gioachino-rossini_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Rossini: farse e opere come Il barbiere di Siviglia costituiscono contributi concreti al genere, non prova di influenza su tutti i compositori collegati alla categoria.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 50,
+      "normalized_pair": "legacy:opera-buffa|pers:baldassare-galuppi",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0604",
+          "source_index": 603,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-baldassare-galuppi",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:baldassare-galuppi",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-baldassare-galuppi",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-opera-buffa-baldassare-galuppi",
+          "source_index": 46,
+          "kind": "repertorio-e-trasformazione",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-baldassare-galuppi",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:baldassare-galuppi",
+          "original_payload": {
+            "id": "gen-opera-buffa-baldassare-galuppi",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-baldassare-galuppi",
+            "kind": "repertorio-e-trasformazione",
+            "forward": "fu praticato o trasformato da",
+            "reverse": "coltivò o trasformò il genere di",
+            "note": "Galuppi contribuì alla tradizione dell'opera buffa e alla sua evoluzione europea.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu praticato o trasformato da",
+            "reverse_fragment": "coltivò o trasformò il genere di",
+            "original_note": "Galuppi contribuì alla tradizione dell'opera buffa e alla sua evoluzione europea.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/dall-intermezzo-all-opera-buffa_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Galuppi: coltivò il teatro comico, ma l'adiacenza a opera buffa non certifica collaborazioni con ogni librettista o compositore del genere.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 51,
+      "normalized_pair": "legacy:opera-buffa|pers:nicola-logroscino",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0605",
+          "source_index": 604,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-nicola-logroscino",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:nicola-logroscino",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-nicola-logroscino",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15,
+            "sources": [
+              "https://www.treccani.it/enciclopedia/nicola-logroscino_%28Dizionario-Biografico%29/"
+            ],
+            "evidence_status": "fonte-di-repertorio-specifica-verificata-20261021"
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": [
+              "https://www.treccani.it/enciclopedia/nicola-logroscino_%28Dizionario-Biografico%29/"
+            ]
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:audit8g-logroscino-opera-buffa",
+          "source_index": 781,
+          "kind": "commedie-per-musica-concertati",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-nicola-logroscino",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:nicola-logroscino",
+          "original_payload": {
+            "id": "audit8g-logroscino-opera-buffa",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-nicola-logroscino",
+            "kind": "commedie-per-musica-concertati",
+            "forward": "fu sviluppata nelle commedie per musica di",
+            "reverse": "compose commedie per musica e concertati nell’",
+            "note": "Logroscino scrisse commedie per musica napoletane fra cui Il governatore (1747), elaborando concertati vivaci. Treccani avverte che non può essere chiamato inventore del finale concertato.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/nicola-logroscino_%28Dizionario-Biografico%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu sviluppata nelle commedie per musica di",
+            "reverse_fragment": "compose commedie per musica e concertati nell’",
+            "original_note": "Logroscino scrisse commedie per musica napoletane fra cui Il governatore (1747), elaborando concertati vivaci. Treccani avverte che non può essere chiamato inventore del finale concertato.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/nicola-logroscino_%28Dizionario-Biografico%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Logroscino: concertati nelle commedie per musica, ma Treccani esclude che lo si definisca inventore dei finali concertati.",
+      "external_sample_urls": [
+        "https://www.treccani.it/enciclopedia/nicola-logroscino_%28Dizionario-Biografico%29/"
+      ],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 52,
+      "normalized_pair": "legacy:opera-buffa|pers:leonardo-leo",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0607",
+          "source_index": 606,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-leonardo-leo",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:leonardo-leo",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-leonardo-leo",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:audit8g-leo-buffa-amor",
+          "source_index": 783,
+          "kind": "commedia-per-musica-amor-vuol-sofferenza",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-leonardo-leo",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:leonardo-leo",
+          "original_payload": {
+            "id": "audit8g-leo-buffa-amor",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-leonardo-leo",
+            "kind": "commedia-per-musica-amor-vuol-sofferenza",
+            "forward": "è attestata anche da commedie musicate da",
+            "reverse": "compose Amor vuol sofferenza nella produzione di",
+            "note": "Leonardo Leo compose Amor vuol sofferenza, opera in seguito utilizzata nella tradizione di rifacimenti e adattamenti napoletani citati nella biografia di Logroscino. La relazione riguarda repertorio, non invenzione esclusiva del genere.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/nicola-logroscino_%28Dizionario-Biografico%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "è attestata anche da commedie musicate da",
+            "reverse_fragment": "compose Amor vuol sofferenza nella produzione di",
+            "original_note": "Leonardo Leo compose Amor vuol sofferenza, opera in seguito utilizzata nella tradizione di rifacimenti e adattamenti napoletani citati nella biografia di Logroscino. La relazione riguarda repertorio, non invenzione esclusiva del genere.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/nicola-logroscino_%28Dizionario-Biografico%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Leonardo Leo: Amor vuol sofferenza è una commedia per musica specifica, senza attribuire all'autore l'invenzione del teatro buffo.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 53,
+      "normalized_pair": "legacy:opera-buffa|pers:pietro-alessandro-guglielmi",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0609",
+          "source_index": 608,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-pietro-alessandro-guglielmi",
+          "original_target": "opera-buffa",
+          "proposed_source": "pers:pietro-alessandro-guglielmi",
+          "proposed_target": "legacy:opera-buffa",
+          "original_payload": {
+            "source": "compositore-pietro-alessandro-guglielmi",
+            "target": "opera-buffa",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:audit8g-guglielmi-opera-buffa",
+          "source_index": 784,
+          "kind": "produzione-operistica-buffa",
+          "original_source": "opera-buffa",
+          "original_target": "compositore-pietro-alessandro-guglielmi",
+          "proposed_source": "legacy:opera-buffa",
+          "proposed_target": "pers:pietro-alessandro-guglielmi",
+          "original_payload": {
+            "id": "audit8g-guglielmi-opera-buffa",
+            "group": "genealogie",
+            "source": "opera-buffa",
+            "target": "compositore-pietro-alessandro-guglielmi",
+            "kind": "produzione-operistica-buffa",
+            "forward": "ebbe un autore prolifico in",
+            "reverse": "compose numerose opere nel genere dell’",
+            "note": "Treccani documenta 61 opere buffe certe di Pietro Alessandro Guglielmi e la circolazione fra Napoli, Venezia e Londra; si registra produzione e diffusione, non una scuola di allievi.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/pietro-alessandro-guglielmi_%28Enciclopedia-Italiana%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "ebbe un autore prolifico in",
+            "reverse_fragment": "compose numerose opere nel genere dell’",
+            "original_note": "Treccani documenta 61 opere buffe certe di Pietro Alessandro Guglielmi e la circolazione fra Napoli, Venezia e Londra; si registra produzione e diffusione, non una scuola di allievi.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/pietro-alessandro-guglielmi_%28Enciclopedia-Italiana%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "contextual_repertoire",
+      "rationale": "Pietro Alessandro Guglielmi: produzione operistica buffa ampia da registrare con opere/fonti, non con inferenze di scuola o discepolato.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 54,
+      "normalized_pair": "legacy:neoclassicismo|pers:stravinskij",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0619",
+          "source_index": 618,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-igor-stravinskij",
+          "original_target": "neoclassicismo",
+          "proposed_source": "pers:stravinskij",
+          "proposed_target": "legacy:neoclassicismo",
+          "original_payload": {
+            "source": "compositore-igor-stravinskij",
+            "target": "neoclassicismo",
+            "kind": "relazione-storico-musicale",
+            "weight": 1.7
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-neoclassicismo-stravinskij",
+          "source_index": 100,
+          "kind": "rielaborazione-stilistica",
+          "original_source": "neoclassicismo",
+          "original_target": "compositore-igor-stravinskij",
+          "proposed_source": "legacy:neoclassicismo",
+          "proposed_target": "pers:stravinskij",
+          "original_payload": {
+            "id": "gen-neoclassicismo-stravinskij",
+            "group": "genealogie",
+            "source": "neoclassicismo",
+            "target": "compositore-igor-stravinskij",
+            "kind": "rielaborazione-stilistica",
+            "forward": "trovò una formulazione originale in",
+            "reverse": "rielaborò storicamente il linguaggio del",
+            "note": "Con Pulcinella (1920) Stravinskij avviò una svolta neoclassica: riprese modelli e musiche del passato, ma li ricompose secondo il proprio linguaggio ritmico e armonico.",
+            "sources": [
+              "https://ressources.ircam.fr/en/composer/igor-stravinsky/biography"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "trovò una formulazione originale in",
+            "reverse_fragment": "rielaborò storicamente il linguaggio del",
+            "original_note": "Con Pulcinella (1920) Stravinskij avviò una svolta neoclassica: riprese modelli e musiche del passato, ma li ricompose secondo il proprio linguaggio ritmico e armonico.",
+            "original_sources": [
+              "https://ressources.ircam.fr/en/composer/igor-stravinsky/biography"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "movement_technique_role",
+      "rationale": "Stravinskij: Pulcinella (1920) e rielaborazione neoclassica sono una fase/stile documentabile; non estendere il predicato a tutte le sue opere.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 55,
+      "normalized_pair": "legacy:futurismo|pers:luigi-russolo",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0626",
+          "source_index": 625,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-luigi-russolo",
+          "original_target": "futurismo",
+          "proposed_source": "pers:luigi-russolo",
+          "proposed_target": "legacy:futurismo",
+          "original_payload": {
+            "source": "compositore-luigi-russolo",
+            "target": "futurismo",
+            "kind": "relazione-storico-musicale",
+            "weight": 1.7
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:lotto07-russolo-futurismo",
+          "source_index": 531,
+          "kind": "ideazione-rumorismo",
+          "original_source": "futurismo",
+          "original_target": "compositore-luigi-russolo",
+          "proposed_source": "legacy:futurismo",
+          "proposed_target": "pers:luigi-russolo",
+          "original_payload": {
+            "id": "lotto07-russolo-futurismo",
+            "group": "scuole",
+            "source": "futurismo",
+            "target": "compositore-luigi-russolo",
+            "kind": "ideazione-rumorismo",
+            "forward": "ebbe fra i promotori dell'arte dei rumori",
+            "reverse": "elaborò il manifesto dell'arte dei rumori nell'ambito del",
+            "note": "Russolo firmò l'11 marzo 1913 il manifesto L'arte dei rumori, proponendo gli intonarumori come strumenti della musica futurista: un'adesione programmatica documentata, non una classificazione geografica.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/luigi-carlo-filippo-russolo_%28Dizionario-Biografico%29/",
+              "https://www.loc.gov/resource/gdcwdl.wdl_20037/?sp=1"
+            ],
+            "status": "documentato",
+            "natura_semantica": "movimento-artistico-futurista",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "review_batch": "scuole-lotto4-20261020",
+              "prior_forward": "comprende la poetica musicale elaborata da",
+              "prior_reverse": "formulò la poetica dei rumori nell'ambito di",
+              "prior_status": "documentato",
+              "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+            }
+          },
+          "display_contract": {
+            "forward_fragment": "ebbe fra i promotori dell'arte dei rumori",
+            "reverse_fragment": "elaborò il manifesto dell'arte dei rumori nell'ambito del",
+            "original_note": "Russolo firmò l'11 marzo 1913 il manifesto L'arte dei rumori, proponendo gli intonarumori come strumenti della musica futurista: un'adesione programmatica documentata, non una classificazione geografica.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/luigi-carlo-filippo-russolo_%28Dizionario-Biografico%29/",
+              "https://www.loc.gov/resource/gdcwdl.wdl_20037/?sp=1"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "movement_technique_role",
+      "rationale": "Russolo: ruolo nell'estetica futurista del rumore e degli intonarumori, distinto dall'essere sinonimo del Futurismo intero.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 56,
+      "normalized_pair": "legacy:dodecafonia|pers:schonberg",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0630",
+          "source_index": 629,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-arnold-schonberg",
+          "original_target": "dodecafonia",
+          "proposed_source": "pers:schonberg",
+          "proposed_target": "legacy:dodecafonia",
+          "original_payload": {
+            "source": "compositore-arnold-schonberg",
+            "target": "dodecafonia",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-dodecafonia-schonberg",
+          "source_index": 97,
+          "kind": "ideazione-metodo",
+          "original_source": "dodecafonia",
+          "original_target": "compositore-arnold-schonberg",
+          "proposed_source": "legacy:dodecafonia",
+          "proposed_target": "pers:schonberg",
+          "original_payload": {
+            "id": "gen-dodecafonia-schonberg",
+            "group": "genealogie",
+            "source": "dodecafonia",
+            "target": "compositore-arnold-schonberg",
+            "kind": "ideazione-metodo",
+            "forward": "fu elaborata come metodo da",
+            "reverse": "sviluppò il metodo di",
+            "note": "Schönberg formulò intorno al 1923 il metodo di composizione con dodici suoni in relazione soltanto fra loro. La dodecafonia è un procedimento compositivo, non un genere teatrale.",
+            "sources": [
+              "https://schoenberg.at/en/exhibitions/past-exhibitions/composition-with-twelve-tones"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu elaborata come metodo da",
+            "reverse_fragment": "sviluppò il metodo di",
+            "original_note": "Schönberg formulò intorno al 1923 il metodo di composizione con dodici suoni in relazione soltanto fra loro. La dodecafonia è un procedimento compositivo, non un genere teatrale.",
+            "original_sources": [
+              "https://schoenberg.at/en/exhibitions/past-exhibitions/composition-with-twelve-tones"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "movement_technique_role",
+      "rationale": "Schönberg: ideazione della tecnica dei dodici suoni intorno al 1923; non confondere ideazione, utilizzo personale e serialismo integrale del dopoguerra.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 57,
+      "normalized_pair": "legacy:dodecafonia|pers:alban-berg",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0631",
+          "source_index": 630,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-alban-berg",
+          "original_target": "dodecafonia",
+          "proposed_source": "pers:alban-berg",
+          "proposed_target": "legacy:dodecafonia",
+          "original_payload": {
+            "source": "compositore-alban-berg",
+            "target": "dodecafonia",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-dodecafonia-berg",
+          "source_index": 98,
+          "kind": "applicazione-e-rielaborazione",
+          "original_source": "dodecafonia",
+          "original_target": "compositore-alban-berg",
+          "proposed_source": "legacy:dodecafonia",
+          "proposed_target": "pers:alban-berg",
+          "original_payload": {
+            "id": "gen-dodecafonia-berg",
+            "group": "genealogie",
+            "source": "dodecafonia",
+            "target": "compositore-alban-berg",
+            "kind": "applicazione-e-rielaborazione",
+            "forward": "venne applicata e trasformata da",
+            "reverse": "applicò in modo personale la tecnica della",
+            "note": "Berg adottò il metodo dei dodici suoni senza rinunciare alla propria sensibilità espressiva. La Suite lirica costituisce una tappa centrale della sua produzione dodecafonica.",
+            "sources": [
+              "https://resources.ircam.fr/en/composer/alban-berg/biography"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "venne applicata e trasformata da",
+            "reverse_fragment": "applicò in modo personale la tecnica della",
+            "original_note": "Berg adottò il metodo dei dodici suoni senza rinunciare alla propria sensibilità espressiva. La Suite lirica costituisce una tappa centrale della sua produzione dodecafonica.",
+            "original_sources": [
+              "https://resources.ircam.fr/en/composer/alban-berg/biography"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "movement_technique_role",
+      "rationale": "Berg: applicazione espressiva personale della dodecafonia, che non autorizza ad attribuire la tecnica a tutta la sua musica.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 58,
+      "normalized_pair": "legacy:dodecafonia|pers:anton-webern",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0632",
+          "source_index": 631,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-anton-webern",
+          "original_target": "dodecafonia",
+          "proposed_source": "pers:anton-webern",
+          "proposed_target": "legacy:dodecafonia",
+          "original_payload": {
+            "source": "compositore-anton-webern",
+            "target": "dodecafonia",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-dodecafonia-webern",
+          "source_index": 99,
+          "kind": "sviluppo-seriale",
+          "original_source": "dodecafonia",
+          "original_target": "compositore-anton-webern",
+          "proposed_source": "legacy:dodecafonia",
+          "proposed_target": "pers:anton-webern",
+          "original_payload": {
+            "id": "gen-dodecafonia-webern",
+            "group": "genealogie",
+            "source": "dodecafonia",
+            "target": "compositore-anton-webern",
+            "kind": "sviluppo-seriale",
+            "forward": "fu applicata con rigore strutturale da",
+            "reverse": "sviluppò una scrittura seriale fondata sulla",
+            "note": "Webern adottò la tecnica dodecafonica dal 1925 e ne intensificò la simmetria e l'organizzazione contrappuntistica, come nella Sinfonia op. 21.",
+            "sources": [
+              "https://brahms.ircam.fr/en/composer/anton-webern/workcourse"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu applicata con rigore strutturale da",
+            "reverse_fragment": "sviluppò una scrittura seriale fondata sulla",
+            "original_note": "Webern adottò la tecnica dodecafonica dal 1925 e ne intensificò la simmetria e l'organizzazione contrappuntistica, come nella Sinfonia op. 21.",
+            "original_sources": [
+              "https://brahms.ircam.fr/en/composer/anton-webern/workcourse"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "movement_technique_role",
+      "rationale": "Webern: tecnica dodecafonica, simmetrie e contrappunto; distinguere tale pratica dal successivo serialismo integrale.",
+      "external_sample_urls": [
+        "https://resources.ircam.fr/en/composer/anton-webern/workcourse"
+      ],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 59,
+      "normalized_pair": "legacy:dodecafonia|pers:luigi-dallapiccola",
+      "source_record_count": 2,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0633",
+          "source_index": 632,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-luigi-dallapiccola",
+          "original_target": "dodecafonia",
+          "proposed_source": "pers:luigi-dallapiccola",
+          "proposed_target": "legacy:dodecafonia",
+          "original_payload": {
+            "source": "compositore-luigi-dallapiccola",
+            "target": "dodecafonia",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:audit8f-dodecafonia-dallapiccola",
+          "source_index": 731,
+          "kind": "rielaborazione-serialita-italiana",
+          "original_source": "dodecafonia",
+          "original_target": "compositore-luigi-dallapiccola",
+          "proposed_source": "legacy:dodecafonia",
+          "proposed_target": "pers:luigi-dallapiccola",
+          "original_payload": {
+            "id": "audit8f-dodecafonia-dallapiccola",
+            "group": "genealogie",
+            "source": "dodecafonia",
+            "target": "compositore-luigi-dallapiccola",
+            "kind": "rielaborazione-serialita-italiana",
+            "forward": "fu reinterpretata originalmente da",
+            "reverse": "sviluppò un linguaggio vocale e strumentale a partire dalla",
+            "note": "Dallapiccola praticò e trasformò la tecnica dodecafonica nella sua produzione, fra cui Sex carmina Alcaei (1946) e Il prigioniero; la fonte ne mette in luce l’elaborazione autonoma italiana, non un’adesione scolastica meccanica.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/serie-e-struttura-dodecafonia_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu reinterpretata originalmente da",
+            "reverse_fragment": "sviluppò un linguaggio vocale e strumentale a partire dalla",
+            "original_note": "Dallapiccola praticò e trasformò la tecnica dodecafonica nella sua produzione, fra cui Sex carmina Alcaei (1946) e Il prigioniero; la fonte ne mette in luce l’elaborazione autonoma italiana, non un’adesione scolastica meccanica.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/serie-e-struttura-dodecafonia_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "movement_technique_role",
+      "rationale": "Dallapiccola: adozione personale della dodecafonia in opere specifiche, non legame istituzionale indifferenziato con Schönberg e Webern.",
+      "external_sample_urls": [],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    },
+    {
+      "group_number": 60,
+      "normalized_pair": "legacy:minimalismo|pers:reich",
+      "source_record_count": 3,
+      "source_records": [
+        {
+          "layer": "base",
+          "stage_id": "base2K:0635",
+          "source_index": 634,
+          "kind": "relazione-storico-musicale",
+          "original_source": "compositore-steve-reich",
+          "original_target": "minimalismo",
+          "proposed_source": "pers:reich",
+          "proposed_target": "legacy:minimalismo",
+          "original_payload": {
+            "source": "compositore-steve-reich",
+            "target": "minimalismo",
+            "kind": "relazione-storico-musicale",
+            "weight": 2.15
+          },
+          "display_contract": {
+            "forward": null,
+            "reverse": null,
+            "source": "JS:atlante3d/app-livelli.js@b7644154af527666d7b15bca8e31fe4f13924547::relationSentence",
+            "status": "requires_exact_renderer_port",
+            "raw_note": null,
+            "raw_sources": null
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:gen-minimalismo-reich",
+          "source_index": 108,
+          "kind": "processi-graduali-e-ripetizione",
+          "original_source": "minimalismo",
+          "original_target": "compositore-steve-reich",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:reich",
+          "original_payload": {
+            "id": "gen-minimalismo-reich",
+            "group": "genealogie",
+            "source": "minimalismo",
+            "target": "compositore-steve-reich",
+            "kind": "processi-graduali-e-ripetizione",
+            "forward": "fu sviluppato attraverso processi ritmici da",
+            "reverse": "elaborò ripetizione, sfasamento e pulsazione nella tradizione del",
+            "note": "Dalle composizioni su nastro degli anni Sessanta fino a Drumming e Music for 18 Musicians, Reich indagò la ripetizione e i processi temporali come strumenti formali, non semplicemente come effetti decorativi.",
+            "sources": [
+              "https://stevereich.com/biography/",
+              "https://stevereich.com/composition/music-for-18-musicians/"
+            ],
+            "status": "documentato"
+          },
+          "display_contract": {
+            "forward_fragment": "fu sviluppato attraverso processi ritmici da",
+            "reverse_fragment": "elaborò ripetizione, sfasamento e pulsazione nella tradizione del",
+            "original_note": "Dalle composizioni su nastro degli anni Sessanta fino a Drumming e Music for 18 Musicians, Reich indagò la ripetizione e i processi temporali come strumenti formali, non semplicemente come effetti decorativi.",
+            "original_sources": [
+              "https://stevereich.com/biography/",
+              "https://stevereich.com/composition/music-for-18-musicians/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        },
+        {
+          "layer": "specialist",
+          "stage_id": "special2K:scuola-minimalismo-steve-reich",
+          "source_index": 188,
+          "kind": "generazione-fondativa",
+          "original_source": "minimalismo",
+          "original_target": "compositore-steve-reich",
+          "proposed_source": "legacy:minimalismo",
+          "proposed_target": "pers:reich",
+          "original_payload": {
+            "id": "scuola-minimalismo-steve-reich",
+            "group": "scuole",
+            "source": "minimalismo",
+            "target": "compositore-steve-reich",
+            "kind": "generazione-fondativa",
+            "forward": "annovera fra i pionieri",
+            "reverse": "è annoverato fra i pionieri del",
+            "note": "Steve Reich elaborò processi di ripetizione e sfasamento temporale, rinnovando la percezione di pulsazione e struttura.",
+            "sources": [
+              "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "status": "documentato",
+            "natura_semantica": "orientamento-estetico-non-sodalizio",
+            "semantic_review": {
+              "date": "2026-10-20",
+              "prior_forward": "include fra i protagonisti",
+              "prior_reverse": "partecipa alla tradizione di",
+              "prior_status": "documentato",
+              "method": "Precisazione della formula bidirezionale secondo fonte specifica già allegata e tipologia storica; invariati kind, nota, ID, gruppo e direzione dell'arco."
+            }
+          },
+          "display_contract": {
+            "forward_fragment": "annovera fra i pionieri",
+            "reverse_fragment": "è annoverato fra i pionieri del",
+            "original_note": "Steve Reich elaborò processi di ripetizione e sfasamento temporale, rinnovando la percezione di pulsazione e struttura.",
+            "original_sources": [
+              "https://www.treccani.it/enciclopedia/il-minimalismo_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+            ],
+            "renderer": "legacy_relationSentence_with_override_chain",
+            "renderer_sha": "b7644154af527666d7b15bca8e31fe4f13924547",
+            "full_display_sentence_verified": false
+          },
+          "forward_yet_ported": false
+        }
+      ],
+      "semantic_class": "composite_specialist_overlap",
+      "rationale": "Steve Reich: uno specialista descrive processi graduali e sfasamento, l'altro lo qualifica pioniere del minimalismo. Due predicati diversi con gli stessi estremi, NON duplicati da eliminare.",
+      "external_sample_urls": [
+        "https://stevereich.com/biography/"
+      ],
+      "historical_edge_certified": false,
+      "merge_authorized": false,
+      "rooted_traversal_gate": "closed_to_generic_category_bridge",
+      "release": "audit_staging_only"
+    }
+  ],
+  "checks": [
+    {
+      "name": "exactly groups 41–60",
+      "pass": true
+    },
+    {
+      "name": "exactly 41 source records (20 base, 21 specialist)",
+      "pass": true
+    },
+    {
+      "name": "Reich group 60 contains three original records",
+      "pass": true
+    },
+    {
+      "name": "all payloads preserved",
+      "pass": true
+    },
+    {
+      "name": "all specialist original forward/reverse retained",
+      "pass": true
+    },
+    {
+      "name": "base source phrase generation not falsely claimed",
+      "pass": true
+    },
+    {
+      "name": "normalized endpoints match all indexed pairs",
+      "pass": true
+    },
+    {
+      "name": "no data released or merged",
+      "pass": true
+    },
+    {
+      "name": "no genre or technique becomes automatic bridge",
+      "pass": true
+    },
+    {
+      "name": "Vittoria/Raffaella unresolved",
+      "pass": true
+    }
+  ],
+  "limits": [
+    "Not independent historical certification of every original source or relation.",
+    "No conversion or runtime parity test of relationSentence (including override chain).",
+    "No desktop/Android hover/tap test.",
+    "No public graph change; no traversal through genre/movement/technique.",
+    "Historical person identity validation does not validate each edge."
+  ],
+  "next": "Fase 2L Lotto 04: overlapping groups 61–80; separate exact renderer relationSentence adapter/test for both directions, then browser and touch UI QA."
+}
