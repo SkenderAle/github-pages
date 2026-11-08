@@ -1656,3 +1656,48 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - Validazione del dataset non equivale al collaudo reale dell'interfaccia WebGL su browser e smartphone. Nessuna modifica ai capitoli o ai menu.
 
 **Prossimi lotti suggeriti:** riprendere da `L02-A36` in avanti (rapporti fra generi e danza), e continuare sugli insiemi `L03-*` e sulle `proposta_editoriale_revisionata`. Prima di promuovere archi di pagina controllare le sezioni effettive e le ancore.
+
+---
+
+## Lotto 34 — 8 novembre 2026: generi teatrali francesi, danza e rimandi ai capitoli
+
+**Metodo:** verifica distinta della tassonomia storica mediante riscontri indipendenti e della effettiva trattazione editoriale nei file HTML di `main`. Revisionati otto archi, senza introdurre né eliminare entità; nessun intervento sulle pagine, sui menu o sull'interfaccia.
+
+| ID | Gate conclusivo | Riscontro e precisazioni |
+| --- | --- | --- |
+| `L02-A36` | **confronto_non_causale** | L’*opéra-ballet* è un genere drammatico-coreografico specifico, con *entrées* tematicamente collegate, non un sottotipo del generico «ballo inserito in un'opera». Confrontare genere e dispositivo senza fonderli. |
+| `L02-A37` | **confronto_non_causale** | La *comédie-ballet* fonde dialogo teatrale parlato, musica e danza (Molière e Lully, con Beauchamp); non coincide con una tragédie lyrique o con un semplice divertissement operistico. |
+| `L02-A38` | **confronto_non_causale** | La *tragédie en musique* francese incorpora scene danzate e divertissements nell'opera in prologo e cinque atti, ma non diventa per ciò stesso un balletto autonomo. |
+| `L02-A39` | **sospeso** | Il *Teatro del Classicismo* menziona Angiolini e la pantomima nella riforma viennese, ma non nomina *Don Juan* (1761): rapporto con quella singola opera non documentato nel testo corrente. |
+| `L02-A40` | **trattazione_diretta_con_ancora_verificata** | La pagina *Balletto* (#cap-4) dedica testo specifico a *Don Juan ou Le Festin de pierre* (Gluck/Angiolini, Vienna, 17 ottobre 1761), e distingue il balletto dal *Don Giovanni* di Mozart. |
+| `L02-A41` | **trattazione_diretta_con_ancora_verificata** | La pagina *Balletto* (#cap-4) esamina *Les Petits Riens* (1778), Noverre e la partitura solo parzialmente mozartiana. Non spaccia per originaria un'esecuzione coreografica successiva. |
+| `L02-A42` | **trattazione_riscontrata** | Il *Teatro del Classicismo* (#generi) contiene una sezione esplicita sul dramma giocoso, collegata a Goldoni e Galuppi. |
+| `L02-A43` | **trattazione_riscontrata** | *Classicismo* (#teatro) spiega il dramma giocoso nel contesto della maturazione teatrale mozartiana, con funzione sintetica anziché monografica. |
+
+### Fonti indipendenti e riscontri testuali
+- https://www.operadeparis.fr/visites/expositions/un-air-ditalie-lopera-de-paris-de-louis-xiv-a-la-revolution/3-au-temps-de-lopera-ballet
+- https://www.operadeparis.fr/visites/expositions/moliere-en-musiques/invention-comedie-ballet-17e-siecle
+- https://www.operadeparis.fr/apropos/histoire/lopera-au-xviie-siecle
+- https://pad.philharmoniedeparis.fr/la-musique-de-ballet-de-la-renaissance-au-xviiie-siecle.aspx?_lg=fr-FR
+- https://www.berliner-philharmoniker.de/en/programme-notes/christoph-willibald-gluck-don-juan-ballet/
+- https://mediatheque.cnd.fr/spip.php?id_article=1182&page=les-petits-riens-article
+- https://catalogue.bnf.fr/ark:/12148/cb43999746q
+- https://corago.unibo.it/libretto/DRT0018679
+- File `balletto/index.html` (sezione `#cap-4`), `teatro-classico/index.html` (sezioni `#gluck`, `#generi`) e `classicismo/index.html` (sezione `#teatro`) letti nel branch `main`.
+
+### Precisazioni riutilizzabili nelle future revisioni editoriali
+- Distinguere *opéra-ballet* (successione di entrées), *comédie-ballet* (parola parlata con danza), *tragédie en musique* (opera cantata con divertissements), *ballet-pantomime* (azione affidata al gesto). La presenza di scene danzate non definisce da sola il genere complessivo.
+- **Da integrare, non ora:** nel *Teatro del Classicismo* la menzione generale di Angiolini potrebbe essere completata con un riferimento esplicito a *Don Juan* (1761) e un rinvio alla pagina *Balletto*. Fino ad allora l'arco mirato resta sospeso.
+- *Don Juan* Gluck/Angiolini: prima viennese 17 ottobre 1761, distinta da *Don Giovanni* Mozart/Da Ponte 1787; la parentela del soggetto non implica identità di opera o genere.
+- *Les Petits Riens*: coreografia originale non conservata; differenziare le attribuzioni mozartiane dalla musica d'altro autore, come attestato da CND e BnF.
+- Il dramma giocoso è trattato in modo specifico nel *Teatro del Classicismo* e contestualizzato in *Classicismo*; evitare due descrizioni pretendendole equivalenti per ampiezza.
+
+### Controlli di integrità dopo Lotto 34
+- **608 nodi, 1520 archi**: invariati. JSON serializzato, riparsato; 0 ID di arco duplicati; 0 estremi orfani; 0 ID di nodo duplicati.
+- **Otto archi revisionati:** 3 confronti non causali, 1 sospeso, 2 trattazioni dirette con riscontro storico indipendente, 2 trattazioni editoriali riscontrate.
+- Gate principali: **264** `riscontro_storico_indipendente`, **109** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **99** `confronto_non_causale`, **52** `sospeso`, **4** `trattazione_diretta_con_ancora_verificata`; flag storico indipendente su **301** relazioni.
+- I tre confronti classificatori usano `sviluppa_o_illumina` (non propagato automaticamente oltre il livello I dal filtro esistente). Il collegamento al *Don Juan* nel *Teatro del Classicismo* è sospeso.
+- 0 gruppi di tripletta esatta fonte–destinazione–relazione ripetute nell'insieme (non sono stati aggiunti archi; verificare separatamente gli eventuali duplicati semantici preesistenti, senza dedurne automaticamente una fusione).
+- Conservati `previous_quality_gate`, `previous_relation` dove modificata, `previous_description`, fonti, note e data; nessuna modifica ai capitoli o al protocollo. Il controllo strutturale del grafo non sostituisce un collaudo grafico in browser.
+
+**Lotto 35 suggerito:** continuare sui candidati residui `L03-*` e sui nessi beethoveniani, separando opere, rielaborazioni, collaborazioni, affinità formalistiche e richiami editoriali.
