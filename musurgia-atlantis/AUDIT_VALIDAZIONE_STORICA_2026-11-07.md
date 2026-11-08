@@ -406,3 +406,62 @@ Verifica effettuata mediante simulazione della logica di esplorazione di `musurg
 Le nuove profondità documentano percorsi attraverso produzioni e opere specifiche, non un'autorizzazione a inferire influenze personali dirette fra i collaboratori. Il collegamento generico `E0879` rimane sospeso nel filtro predefinito; quello specifico `L05-A031` è attivo.
 
 **Controllo remoto:** `main` dopo il commit del registro Lotto 6; 608 nodi, 1.520 archi, ID univoci, nessun estremo orfano. 120 nello stato `riscontro_storico_indipendente`, 155 con flag booleano storico, 338 proposte e 322 candidati (660 in tutto). Restano 0 `da_verificare`.
+
+
+---
+
+## Lotto 07 — 8 novembre 2026: Čajkovskij, suites di Daphnis, versioni di La Valse
+
+**Perimetro:** 19 archi candidati verificati singolarmente e passati a `riscontro_storico_indipendente`. Nessun nodo o arco eliminato o aggiunto. Prima, consultato il branch remoto `main` al commit `bbe937ddd0a4a0c7fad6c7808550b80076f39e3e`. Nessuna modifica a capitoli, mappe o menu esterni ad Atlantis.
+
+### Relazioni verificate
+
+| Gruppo | ID | Precisazione musicologica |
+| --- | --- | --- |
+| Lago dei cigni, Mosca 1877 | L05-A001, L05-A002, L05-A003 | Reisinger coreografia, Čajkovskij musica, prima al Bol'šoj 20 febbraio OS / 4 marzo NS 1877 |
+| Lago dei cigni, San Pietroburgo 1895 | L05-A004, L05-A005, L05-A006, L05-A007, L05-A008 | Ripresa Petipa (atti I, III), Ivanov (atti II, IV), rielaborazione musicale e direzione Drigo; prima 15 gennaio OS / 27 gennaio NS 1895 |
+| La bella addormentata | L05-A009, L05-A010 | Čajkovskij musica, Petipa coreografia; libretto/scenario Vsevoložskij e Petipa da Perrault; prima 3 gennaio OS / 15 gennaio NS 1890 |
+| Lo schiaccianoci | L05-A011, L05-A012 | Ivanov coreografo prevalente della prima 1892 (6 dicembre OS / 18 dicembre NS); Petipa predispone scenario e piano coreografico. Evitare di attribuire con sicurezza ogni singolo passo a Ivanov |
+| Daphnis et Chloé, suites | L05-A045, L05-A046 | La Suite n. 1 (O 57a) fu eseguita in concerto già il 2 aprile 1911, prima del balletto integrale; la Suite n. 2 (O 57b), pubblicata nel 1913, deriva dalla parte conclusiva. Sono opere estratte, non repliche sceniche |
+| La Valse, composizione e rifiuto | L05-A051, L05-A052 | Ravel compone l'opera orchestrale nel 1919–1920, presentata in concerto il 12 dicembre 1920; Diaghilev incoraggia/commissiona ma rifiuta la produzione teatrale |
+| La Valse, versione Nižinskaja–Rubinstein | L05-A053, L05-A054, L05-A055 | Coreografia di Bronislava Nižinskaja per la compagnia di Ida Rubinstein nel 1929, spettacolo parigino del 23 maggio (BnF). L'allestimento non coincide con la prima coreografia ad Anversa del 1926 di Sonia Korty |
+
+**Campi:** ogni arco convalidato conserva `previous_quality_gate`, `previous_description`, `verification_note`, `evidence_urls`, `verified_at`, `verification_status` e `historical_verified_independently=true`. Dove il verbo storico era troppo generico, è conservato `previous_relation`: L05-A011 (coreografia prevalente di Ivanov), L05-A012 (scenario/piano coreografico di Petipa), L05-A045 e L05-A046 (suite orchestrale estratta).
+
+### Fonti principali
+
+- Teatro Mariinskij, versioni del Lago 1877 e 1895: https://www.mariinsky.ru/en/playbill/playbill/2019/3/30/2_1900/
+- Petipa Society, première nei calendari giuliano/gregoriano: https://petipasociety.com/swan-lake/
+- Tchaikovsky Research, storia del Lago e revisioni musicali: https://en.tchaikovsky-research.net/pages/Swan_Lake ; https://en.tchaikovsky-research.net/pages/Riccardo_Drigo
+- Royal Ballet and Opera, Lev Ivanov, atti coreografici: https://www.rbo.org.uk/people/lev-ivanov
+- Teatro Mariinskij, Bella addormentata 1890: https://site.mariinsky.ru/en/playbill/repertoire/ballet/spkras1/
+- Tchaikovsky Research, Bella addormentata: https://en.tchaikovsky-research.net/pages/The_Sleeping_Beauty
+- Royal Ballet Collections, Schiaccianoci, sceneggiatura Petipa e coreografia Ivanov: https://www.rohcollections.org.uk/work.aspx?work=1180
+- Tchaikovsky Research, manoscritto del piano Petipa: https://en.tchaikovsky-research.net/pages/The_Nutcracker
+- BnF, balletto Daphnis e suites O57a/O57b: https://catalogue.bnf.fr/ark:/12148/cb139177228 ; https://catalogue.bnf.fr/ark:/12148/cb13917723m ; https://catalogue.bnf.fr/ark:/12148/cb13917724z
+- Philharmonie de Paris, suites Daphnis: https://pad.philharmoniedeparis.fr/CIMU/ermes/player.aspx?id=0933899
+- Breitkopf & Härtel, edizione critica delle suites: https://www.breitkopf.com/en/work/20425/daphnis-et-chloe
+- Bru Zane, Ravel La Valse, commissione 1920 e 1929: https://www.bruzanemediabase.com/it/esplorazione/opere/valse-maurice-ravel
+- Repertorio raveliano con bibliografia Nichols (2011) / Baeck (2011), Anversa 1926: https://maurice-ravel.net/valse.htm
+- BnF, spettacolo La Valse a Parigi 23 maggio 1929: https://catalogue.bnf.fr/ark:/12148/cb47523610d
+- Festival Diaghilev (programma 2024, pp. 24–25), 1926 Anversa e gennaio 1929 Monte-Carlo: https://diaghilevfest.ru/upload/iblock/345/3450520d3d885d865448183e661c7ab9.pdf
+
+### Precisazioni e questioni aperte
+
+1. **Date del Lago dei cigni:** il Mariinskij riporta 20 febbraio 1877 e 15 gennaio 1895 in calendario giuliano. Le date gregoriane sono rispettivamente **4 marzo 1877** e **27 gennaio 1895**. La differenza non indica due prime differenti.
+2. **Schiaccianoci:** distinzione tra paternità dello scenario, piano delle danze e coreografia effettivamente eseguita. La distribuzione di tutti i singoli numeri tra Petipa e Ivanov non è pacifica. Verbi raffinati in L05-A011 e L05-A012 senza attribuzioni assolute improprie.
+3. **Daphnis, Suite n. 2:** la *prima esecuzione* è discordante: Berliner Philharmoniker indica **29 marzo 1914**, Philharmonie de Paris ipotizza **30 aprile 1914** e il programma del Festival Diaghilev menziona **22 giugno 1913** sotto Oscar Fried. La BnF ne certifica la composizione/pubblicazione nel 1913 e la derivazione dal balletto. La convalida riguarda esclusivamente questa derivazione, **non** la cronologia non riconciliata della prima esecuzione.
+4. **La Valse:** corretto il testo preesistente che tendeva a far coincidere prima coreografia con 1929: un allestimento di **Sonia Korty ad Anversa (2 ottobre 1926)** è attestato dal repertorio raveliano e da un programma del Festival Diaghilev; Bronislava Nižinskaja crea una differente produzione nel 1929 per Ida Rubinstein. La BnF cataloga la prima all'Opéra di Parigi **23 maggio 1929**. Un documento del Festival segnala presentazione a Monte-Carlo nel gennaio 1929: collazionare la data esatta (varie cronologie riportano giorni differenti). Non sono stati creati nuovi nodi per Anversa perché ciò richiede audit separato dei dati di produzione.
+5. **La Valse 1929:** la scheda BnF attribuisce ad Alexandre Benois la scenografia, a Dimitri Bouchène i costumi, a Gustave Cloez la direzione; questi ruoli non diventano archi nuovi nel presente lotto.
+6. Restano candidati del lotto scenico A056–A057 (Lengyel e suite del Mandarino meraviglioso) e altri rapporti non esaminati. Nessuna convalida per contiguità.
+
+### Dati e verifica prima del commit
+
+- 608 nodi, 1.520 archi, ID degli archi univoci, endpoint tutti presenti, JSON parsabile e riparsato.
+- `riscontro_storico_indipendente`: **139**; `candidato_non_fuso`: **303**; `proposta_editoriale_revisionata`: **338**; provvisori **641**; `da_verificare`: **0**.
+- Il totale booleano `historical_verified_independently` resta distinto da `quality_gate`; non usare il primo come conteggio delle relazioni promosse al secondo.
+- Test dei percorsi I–V e lettura dei file pubblicati: da effettuare dopo il commit.
+
+### Pubblicazione
+- Dataset: `15b5087e8872efb96f8fea33985cb14a2b34dc2d`
+- Registro: cronologia del presente documento su `main`.
