@@ -5282,3 +5282,228 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 - **Non modificati:** pagine dei capitoli, mappe di fine capitolo, index.html dell'interfaccia, protocollo di aggiornamenti. Nessuna sincronizzazione automatica attivata.
 - **Da collaudare:** visibilità effettiva delle etichette e navigazione 3D in browser, soprattutto nel fallback Canvas Android. Qui verificati JSON e simulazione logica dei livelli.
 - **Ripresa suggerita:** lotti 171–180, privilegiando le lacune che emergono dalle fonti dei capitoli prima di aggiungere genealogie generiche.
+
+---
+
+# Lotti 171–180 — Ripresa documentaria dell’8 novembre 2026
+
+**Base remota verificata:** `852e149ee9bf02ed508d9ad70d8354299b821ee6` (`main`). **Ambito:** esclusivamente grafo e registro storico; protocollo, interfaccia 3D, capitoli, mappe e menu non modificati.
+
+## Lotto 171 — Du Fay: ballata e messa di cantus firmus
+
+**Entità nuove:** `opera:dufay-se-la-face-ay-pale-ballade`, `opera:dufay-missa-se-la-face-ay-pale`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L171-A01` | **H — documentato** | Du Fay è autore della ballata omonima, distinta dalla successiva messa a quattro voci. |
+| `L171-A02` | **H — documentato** | Du Fay compone la Missa Se la face ay pale, opera liturgica autonoma basata su una ballata preesistente dello stesso autore. |
+| `L171-A03` | **H — documentato** | La messa utilizza come base compositiva la ballata Se la face ay pale; l'identità melodica non confonde i due lavori. |
+
+**Fonti esterne consultate:**
+- https://catalogue.bnf.fr/ark:/12148/cb139226220
+- https://online.ucpress.edu/jm/article-abstract/27/4/377/63459/The-Man-with-the-Pale-Face-the-Shroud-and-Du-Fay-s
+
+**Esclusioni e cautele:** Non attribuire senza prova la messa a una specifica cerimonia nuziale sabauda: l'occasione è oggetto di discussione storiografica.
+
+**Totale Lotto 171:** 2 nodi e 3 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 172 — Ockeghem: Missa prolationum e tecnica canonica
+
+**Entità nuove:** `opera:ockeghem-missa-prolationum`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L172-A01` | **H — documentato** | Ockeghem compone la Missa prolationum, costruita su canoni con differenti proporzioni o mensure; le caratteristiche della scrittura non provano una relazione biografica con altri autori. |
+
+**Fonti esterne consultate:**
+- https://www.goldbergstiftung.org/en/ockeghem-missa-prolationum/
+
+**Esclusioni e cautele:** Il canone mensurale non dimostra un rapporto diretto con Du Fay o Josquin.
+
+**Totale Lotto 172:** 1 nodi e 1 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 173 — Orlando di Lasso: Lagrime di San Pietro, Tansillo e dedica pontificia
+
+**Entità nuove:** `opera:lasso-lagrime-di-san-pietro-1594`, `pers:luigi-tansillo`, `pers:clemente-viii`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L173-A01` | **H — documentato** | Orlando di Lasso termina nel 1594 il ciclo dei venti madrigali spirituali e del mottetto conclusivo; la pubblicazione è postuma nel 1595. |
+| `L173-A02` | **H — documentato** | Luigi Tansillo è l'autore dei versi poetici dei venti madrigali, non del testo latino del mottetto conclusivo. |
+| `L173-A03` | **H — documentato** | La lettera dedicatoria di Lasso al papa Clemente VIII porta la data del 24 maggio 1594; dedica e committenza sono fatti distinti. |
+
+**Fonti esterne consultate:**
+- https://www.treccani.it/enciclopedia/orlando-di-lasso_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- https://www.cambridge.org/core/journals/journal-of-the-royal-musical-association/article/abs/per-mia-particolare-devotione-orlando-di-lassos-lagrime-di-san-pietro-and-catholic-spirituality-in-counterreformation-munich/1D1F01407005C1C06A482618F92FAE1F
+
+**Esclusioni e cautele:** Non dedurre che Clemente VIII abbia commissionato la raccolta, né assegnare a Tansillo il testo del mottetto finale.
+
+**Totale Lotto 173:** 3 nodi e 3 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 174 — Victoria: Officium defunctorum e memoria di Maria d'Austria
+
+**Entità nuove:** `opera:victoria-officium-defunctorum-1605`, `pers:maria-d-austria-imperatrice`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L174-A01` | **H — documentato** | Victoria compone l'Officium defunctorum a sei voci nel contesto delle esequie imperiali del 1603; l'edizione madrilena è del 1605. |
+| `L174-A02` | **H — documentato** | L'Officium defunctorum è associato alle esequie dell'imperatrice Maria d'Austria, vedova di Massimiliano II, celebrate a Madrid nel 1603. |
+
+**Fonti esterne consultate:**
+- https://victoria.uma.es/ediciones_antiguas.html
+- https://www.ceeh.es/en/publicacion/tomas-luis-de-victoria-1548-1611-officium-defunctorum-in-obitu-et-obsequiis-sacrae-imperatricis/
+
+**Esclusioni e cautele:** La persona commemorata, Maria d'Austria, non è la stessa della principessa Margherita cui è indirizzata la dedica a stampa del 1605; i due ruoli non vanno fusi.
+
+**Totale Lotto 174:** 2 nodi e 2 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 175 — Vivaldi e Bach: dal concerto RV 522 alla trascrizione BWV 593
+
+**Entità nuove:** `opera:vivaldi-rv522-op3-8`, `opera:bach-bwv593`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L175-A01` | **H — documentato** | Il concerto RV 522, op. 3 n. 8, è opera di Vivaldi, pubblicata nell'Estro armonico (1711). |
+| `L175-A02` | **H — documentato** | Bach realizza a Weimar circa nel 1713 una trascrizione organistica del concerto in la minore di Vivaldi, catalogata BWV 593. |
+| `L175-A03` | **H — documentato** | BWV 593 deriva specificamente da RV 522; è un arrangiamento di Bach di musica vivaldiana preesistente, non un'opera composta da Vivaldi per organo. |
+
+**Fonti esterne consultate:**
+- https://www.bachvereniging.nl/en/bwv/bwv-593
+
+**Esclusioni e cautele:** Nessun rapporto personale Bach–Vivaldi, né generalizzazione automatica a tutte le opere dei due compositori.
+
+**Totale Lotto 175:** 2 nodi e 3 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 176 — Corelli: dodici Concerti grossi op. 6 e stampa postuma
+
+**Entità nuove:** `opera:corelli-concerti-grossi-op6-1714`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L176-A01` | **H — documentato** | Corelli è autore dei dodici Concerti grossi op. 6, pubblicati postumi ad Amsterdam da Estienne Roger nel 1714; la data di stampa non coincide necessariamente con quella di composizione. |
+
+**Fonti esterne consultate:**
+- https://imslp.org/wiki/12_Concerti_grossi%2C_Op.6_%28Corelli%2C_Arcangelo%29
+- https://www.allmusic.com/composition/concerti-grossi-12-op-6-mc0002357062
+
+**Esclusioni e cautele:** L'etichetta concerto grosso non rende tutte le raccolte successive trasmissioni dirette dell'opera di Corelli.
+
+**Totale Lotto 176:** 1 nodi e 1 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 177 — Bach: sei Concerti brandeburghesi e dedica del 1721
+
+**Entità nuove:** `opera:bach-sei-concerti-brandeburghesi-1721`, `pers:christian-ludwig-brandeburgo`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L177-A01` | **H — documentato** | Bach invia nel marzo 1721 un manoscritto di sei concerti, oggi noti come Concerti brandeburghesi; il 1721 è la data della dedica e non della composizione di ogni singolo pezzo. |
+| `L177-A02` | **H — documentato** | Il manoscritto dei sei concerti reca la dedica a Christian Ludwig, margravio di Brandeburgo-Schwedt; la dedica non dimostra da sola una specifica commissione. |
+
+**Fonti esterne consultate:**
+- https://www.bachvereniging.nl/en/bwv/bwv-1050
+
+**Esclusioni e cautele:** Non trasformare la dedica in pagamento, commissione accertata o data compositiva unitaria.
+
+**Totale Lotto 177:** 2 nodi e 2 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 178 — François Couperin: Les Nations e le quattro sonate-suite
+
+**Entità nuove:** `opera:couperin-les-nations-1726`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L178-A01` | **H — documentato** | Couperin pubblica nel 1726 Les Nations, raccolta di quattro ordres che associano sonate in trio e suites: La Françoise, L'Espagnole, L'Impériale e La Piémontoise. |
+
+**Fonti esterne consultate:**
+- https://imslp.org/wiki/Les_nations_%28Couperin%2C_Fran%C3%A7ois%29
+
+**Esclusioni e cautele:** Non promuovere l'attribuzione problematica dell'arrangiamento BWV 587 a una relazione certa Bach–Couperin.
+
+**Totale Lotto 178:** 1 nodi e 1 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 179 — Schönberg e Webern: insegnamento e Passacaglia op. 1
+
+**Entità nuove:** `pers:anton-webern`, `opera:webern-passacaglia-op1-1908`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L179-A01` | **H — documentato** | Arnold Schönberg insegna composizione ad Anton Webern fra il 1904 e il 1908; rapporto personale didattico attestato, non semplice appartenenza alla medesima scuola. |
+| `L179-A02` | **H — documentato** | Webern compone la Passacaglia orchestrale op. 1 nel 1908, opera conclusiva del periodo di studio con Schönberg. |
+
+**Fonti esterne consultate:**
+- https://anton-webern.ch/en/anton-webern/overview.html
+- https://www.universaledition.com/en/Contacts/Anton-Webern/
+- https://findingaids.loc.gov/repositories/15/resources/1011
+- https://www.universaledition.com/media/04/6a/1e/1693312049/Milestones%201880-1915_Katalog_2.%20Auflage.pdf
+
+**Esclusioni e cautele:** La Passacaglia op. 1 non è presentata come opera composta da Schönberg né come prova automatica di dipendenza di tutta la produzione successiva.
+
+**Totale Lotto 179:** 2 nodi e 2 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Lotto 180 — Messiaen e Boulez: classe del 1944 e Douze Notations
+
+**Entità nuove:** `pers:pierre-boulez`, `opera:boulez-douze-notations-piano-1945`.
+
+| Arco | Esito | Rapporto circoscritto |
+| --- | --- | --- |
+| `L180-A01` | **H — documentato** | Boulez entra nel 1944 nella classe di armonia di Olivier Messiaen al Conservatorio di Parigi; il rapporto di insegnamento è documentato direttamente. |
+| `L180-A02` | **H — documentato** | Boulez compone nel 1945 il ciclo per pianoforte Douze Notations, da distinguere dalle successive elaborazioni orchestrali. |
+
+**Fonti esterne consultate:**
+- https://www.ircam.fr/fr/magazine/la-vie-de-pierre-boulez-en-etincelles
+- https://explorethescore.org/pgs/boulez/history_and_context/a_journeyman_composition.html
+- https://pierreboulez.org/doc/SYRACUSE/10
+- https://ressources.ircam.fr/en/work/douze-notations
+
+**Esclusioni e cautele:** Nessuna derivazione automatica delle Douze Notations dalla classe di Messiaen; le revisioni orchestrali successive richiedono nodi separati se introdotte in futuro.
+
+**Totale Lotto 180:** 2 nodi e 2 archi documentati; nessuna riattivazione di sospensioni.
+
+---
+
+## Bilancio successivo ai Lotti 171–180
+
+- **Nuovi:** 18 nodi, 20 archi verificati indipendentemente.
+- **Grafo risultante:** 675 nodi e 1624 archi.
+- **Indicatori separati:** 492 flag `historical_verified_independently=true`; 456 gate `riscontro_storico_indipendente`.
+- **Sospensioni:** 125, tutte preservate; **0** ID duplicati, **0** triplette relazionali duplicate, **0** archi orfani.
+- **Esclusioni generali:** non equiparare relazione di maestro–allievo a influenza universale, dedica a commissione, trascrizione a composizione originale, anno di pubblicazione a data di composizione, commemorazione a dedica.
+- **Simulazione locale BFS I–V:** relazione di primo livello secondo i filtri ordinari (trattazione o menzione); oltre il primo, solo archi specifici e ponti costituiti da persone od opere concrete. Non è un collaudo grafico del browser.
+
+| Nodo radice | Prima I–V | Dopo I–V |
+| --- | --- | --- |
+| `pers:dufay` | 2 / 3 / 3 / 3 / 3 | 4 / 5 / 5 / 5 / 5 |
+| `pers:ockeghem` | 2 / 4 / 5 / 5 / 5 | 3 / 5 / 6 / 6 / 6 |
+| `pers:orlando-di-lasso` | 1 / 1 / 1 / 1 / 1 | 2 / 4 / 4 / 4 / 4 |
+| `pers:tomas-luis-de-victoria` | 1 / 1 / 1 / 1 / 1 | 2 / 3 / 3 / 3 / 3 |
+| `pers:vivaldi` | 6 / 6 / 6 / 6 / 6 | 7 / 8 / 9 / 13 / 15 |
+| `pers:bach` | 10 / 11 / 11 / 11 / 11 | 12 / 15 / 16 / 19 / 19 |
+| `pers:corelli` | 3 / 3 / 3 / 3 / 3 | 4 / 4 / 4 / 4 / 4 |
+| `pers:couperin` | 2 / 3 / 3 / 3 / 3 | 3 / 4 / 4 / 4 / 4 |
+| `pers:schonberg` | 2 / 3 / 3 / 3 / 3 | 3 / 5 / 5 / 5 / 5 |
+| `pers:messiaen` | 2 / 2 / 2 / 2 / 2 | 3 / 4 / 4 / 4 / 4 |
+| `pers:anton-webern` | nodo assente | 2 / 3 / 4 / 4 / 4 |
+| `pers:pierre-boulez` | nodo assente | 2 / 3 / 3 / 3 / 3 |
+
+**Collaudo visivo:** rimane aperto su Android e desktop, inclusa la leggibilità delle etichette anteriori. **Conservazione dello storico:** nessuna rimozione o conversione massiva delle 125 sospensioni.
+
+**Pubblicazione prevista:** commit `Atlantis Lotti 171-180: opere, trascrizioni e rapporti documentati` su `main`; recuperare l'ID esatto dalla cronologia dei commit. I dati del lotto sono registrati senza dichiarare prove grafiche non effettuate.
+
