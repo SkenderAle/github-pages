@@ -3039,3 +3039,261 @@ Verifica effettuata confrontando i blob del dataset precedenti e successivi: `08
 
 **Continuazione:** dal Lotto 77, proposte in ordine successivo a `E0620`, salvaguardando separatamente nodi geografici, istituzioni e arredi storici per evitare l'errata espansione dei contenitori generici.
 
+---
+## Lotto 77 — 2026-11-08: Sperimentazione, atonalità e serialismo: non ogni novità è avanguardia
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0621` | **trattazione_riscontrata** | Verso le avanguardie confronta futurismo, espressionismo, nuovi timbri, ritmo e poetiche del Novecento: «sperimentazione» è un crocevia di fenomeni, non la denominazione di una scuola unitaria. |
+| `E0622` | **richiamo_contestuale** | Romanticismo esamina sperimentazioni della forma e della scrittura ottocentesca, ma non offre una storia autonoma delle avanguardie novecentesche. Il ponte è solo prospettico. |
+| `E0623` | **trattazione_riscontrata** | Balletto esamina le ricerche sceniche dei Ballets Russes e le successive trasformazioni del linguaggio coreutico. Innovazione coreografica, musicale e scenografica vanno distinte. |
+| `E0624` | **richiamo_contestuale** | Musica nell'audiovisivo affronta trasformazioni del linguaggio sonoro e cinematografico, ma non sviluppa una storia delle avanguardie musicali come categoria storiografica. |
+| `E0625` | **trattazione_riscontrata** | Verso le avanguardie distingue la fase atonale libera di Schönberg dal metodo dodecafonico elaborato nel primo dopoguerra: atonalità e tecnica dei dodici suoni non sono sinonimi. |
+| `E0626` | **sospeso** | Opera lirica non sviluppa un paragrafo tecnico riconoscibile sull'atonalità; l'appartenenza cronologica di alcune opere al primo Novecento non basta a provare questo nesso specifico. |
+| `E0627` | **trattazione_riscontrata** | Verso le avanguardie dedica sezioni alla dodecafonia e alle trasformazioni del serialismo, senza trasformare tutta la produzione novecentesca in musica seriale. |
+
+### Fonti di riscontro esterne
+- https://schoenberg.at/en/schoenberg/timeline
+
+**Bilancio Lotto 77:** 7 archi; 4 trattazioni, 2 richiami contestuali, 1 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 78 — 2026-11-08: Musica concreta, indeterminazione, minimalismo e neoclassicismi
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0628` | **trattazione_riscontrata** | Verso le avanguardie discute Pierre Schaeffer, suoni registrati e montaggio nella musica concreta; distingue queste pratiche dalla sintesi del suono elettronico. |
+| `E0629` | **sospeso** | Musica nell'audiovisivo esamina registrazione e postproduzione per immagini, non la musica concreta di Schaeffer come genere storico; l'analogia tecnica non autorizza il collegamento. |
+| `E0630` | **trattazione_riscontrata** | Verso le avanguardie affronta Cage, casualità e indeterminazione, distinguendo scelte compositive, autonomia dell'esecutore ed eventi acustici non progettati. |
+| `E0631` | **trattazione_riscontrata** | Balletto menziona esplicitamente Merce Cunningham e la collaborazione con John Cage, esaminando la rinegoziazione del rapporto fra musica e danza: non ogni danza libera è indeterminata. |
+| `E0632` | **trattazione_riscontrata** | Verso le avanguardie tratta Riley, Reich e Glass, distinguendo ripetizione, processo, pulsazione e differenti poetiche minimaliste. |
+| `E0633` | **sospeso** | Musica nell'audiovisivo non contiene una trattazione del minimalismo musicale come corrente: la semplice presenza di tecniche iterative nella musica per immagini non basta. |
+| `E0634` | **trattazione_riscontrata** | Verso le avanguardie colloca il neoclassicismo fra linguaggi plurali del Novecento; il recupero di modelli storici non coincide con una mera restaurazione stilistica. |
+| `E0635` | **trattazione_riscontrata** | Balletto esamina il neoclassicismo coreutico e Balanchine nei contesti della modernità teatrale; non va assimilato in modo meccanico al neoclassicismo compositivo di Stravinskij. |
+| `E0636` | **sospeso** | Romanticismo non tratta il neoclassicismo novecentesco quale corrente distinta; anticipazioni e confronti fra epoche non equivalgono a una trattazione presente. |
+
+### Fonti di riscontro esterne
+- https://brahms.ircam.fr/en/composer/pierre-schaeffer/biography
+- https://www.treccani.it/enciclopedia/musica-concreta/
+
+**Bilancio Lotto 78:** 9 archi; 6 trattazioni, 0 richiami contestuali, 3 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 79 — 2026-11-08: Registrazione, trascrizione e riuso: distinguere tecniche e mezzi
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0637` | **trattazione_riscontrata** | Romanticismo riflette sulla nascita della registrazione sonora e sul mutamento dell'ascolto, in dialogo con il virtuosismo e con la cultura musicale di fine Ottocento. |
+| `E0638` | **trattazione_riscontrata** | Verso le avanguardie distingue registrazione come documento, tecnica di riproduzione e materiale creativo per lo studio elettroacustico; un player d'ascolto moderno non documenta una pratica storica. |
+| `E0639` | **richiamo_contestuale** | Dal musical al film presenta le trasformazioni tecnologiche del sonoro sincronizzato e l'uso di registrazioni, ma non offre una ricostruzione autonoma di tutti i supporti di registrazione. |
+| `E0640` | **trattazione_riscontrata** | Musica nell'audiovisivo affronta registrazione, montaggio, Foley e missaggio come fasi di costruzione della traccia sonora; la registrazione del sonoro non è sempre diegetica. |
+| `E0641` | **trattazione_riscontrata** | Barocco discute le trascrizioni bachiane di concerti italiani per tastiera; distinguere trascrizione creativa d'epoca, adattamento strumentale ed edizione moderna. |
+| `E0642` | **richiamo_contestuale** | Classicismo usa «trascrizioni» nel contesto di copie, edizioni e fonti digitalizzate: non sviluppa una trattazione della trascrizione creativa paragonabile ai capitoli dedicati. |
+| `E0643` | **trattazione_riscontrata** | Romanticismo dedica una parte al virtuosismo e alla trascrizione pianistica, mostrando come la rielaborazione modifichi funzione e destinazione del materiale musicale. |
+| `E0644` | **trattazione_riscontrata** | Verso le avanguardie tratta anche il caso dell'orchestrazione dei Quadri di Musorgskij da parte di Ravel, distinguendo trascrizione, orchestrazione e riuso di repertorio. |
+| `E0645` | **richiamo_contestuale** | Dal musical al film menziona trascrizioni e raccolte di musiche preesistenti per il cinema muto e le cue sheets; è un uso funzionale al film, non una storia generale della trascrizione. |
+
+### Fonti di riscontro esterne
+- https://brahms.ircam.fr/en/composer/pierre-schaeffer/biography
+- https://www.treccani.it/enciclopedia/musica-concreta/
+
+**Bilancio Lotto 79:** 9 archi; 6 trattazioni, 3 richiami contestuali, 0 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 80 — 2026-11-08: Firenze e Venezia: corti, spettacoli e istituzioni, non contenitori equivalenti
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0646` | **trattazione_riscontrata** | Rinascimento tratta Firenze, Lorenzo de' Medici, la committenza e il rapporto fra vita di corte e produzione musicale; la città non identifica una sola scuola. |
+| `E0647` | **trattazione_riscontrata** | Melodramma sviluppa il contesto fiorentino delle camerate e dei primi esperimenti di teatro musicale intorno a Peri, Caccini e Rinuccini; il 1600 non è un'invenzione improvvisa dell'opera. |
+| `E0648` | **trattazione_riscontrata** | Barocco presenta Firenze e le feste medicee del 1600 come soglia tra pratiche precedenti e nuova drammaturgia musicale, senza far coincidere matrimonio ed origine unica dell'opera. |
+| `E0649` | **sospeso** | Balletto segue le corti italiane e Caterina de' Medici alla corte francese, ma non attribuisce esplicitamente a Firenze una trattazione della propria storia coreutica. |
+| `E0650` | **trattazione_riscontrata** | Rinascimento tratta Venezia, San Marco, la stampa musicale e la policoralità: sono fenomeni legati a istituzioni distinte, non alla sola identità urbana. |
+| `E0651` | **trattazione_riscontrata** | Barocco tratta Venezia, il circuito delle istituzioni musicali, Vivaldi e la Pietà; occorre distinguere sede dell'attività, pubblico, generi e prime rappresentazioni. |
+| `E0652` | **trattazione_riscontrata** | Melodramma esamina la nascita dell'impresa operistica veneziana e il modello dei teatri a pagamento, da San Cassiano (1637), distinto dalle feste delle corti fiorentine. |
+| `E0653` | **richiamo_contestuale** | Opera lirica richiama Venezia attraverso le prime rossiniane del 1813, fra cui Tancredi e L'italiana in Algeri; sono eventi produttivi concreti, non una storia generale della città. |
+
+### Fonti di riscontro esterne
+- https://www.cambridge.org/core/books/abs/cambridge-history-of-italian-literature/opera/2ED07033FD29BE67912A6D5D7D687127
+- https://publishing.cdlib.org/ucpressebooks/public/book/opera-in-seventeenth-century-venice-the-creation-of-a-genre.html
+- https://www.basilicasanmarco.it/basilica/tradizione-musicale/
+
+**Bilancio Lotto 80:** 8 archi; 6 trattazioni, 1 richiami contestuali, 1 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 81 — 2026-11-08: Roma e Napoli: patronage, conservatori, circuiti teatrali
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0654` | **trattazione_riscontrata** | Rinascimento tratta Roma e la cultura polifonica delle cappelle e delle istituzioni religiose; una sede comune non stabilisce relazioni maestro-allievo fra compositori. |
+| `E0655` | **trattazione_riscontrata** | Barocco descrive il patronage romano, Corelli e ambienti accademici; Roma è contesto di più istituzioni e non etichetta stilistica unica. |
+| `E0656` | **trattazione_riscontrata** | Melodramma distingue la Roma antica evocata nel teatro dalla Roma barocca di Barberini, Landi e spettacoli di corte; sono piani storici diversi dello stesso luogo. |
+| `E0657` | **richiamo_contestuale** | Barocco richiama Napoli in biografie e circuiti di Domenico Scarlatti, ma non dedica una ricostruzione autonoma ai quattro conservatori napoletani. |
+| `E0658` | **trattazione_riscontrata** | Melodramma ricostruisce la pluralità dei quattro conservatori napoletani, delle pratiche formative e dei teatri; «scuola napoletana» non indica uniformità di stile. |
+| `E0659` | **trattazione_riscontrata** | Opera lirica analizza il periodo napoletano di Rossini e il ruolo di Barbaja e del San Carlo nel circuito delle prime; localizzazione produttiva non significa provenienza nazionale. |
+
+### Fonti di riscontro esterne
+- https://www.treccani.it/enciclopedia/stefano-landi_%28Dizionario-Biografico%29/
+- https://www.rossinioperafestival.it/fondazione/la-fondazione/gioachino-rossini/
+- https://siusa-archivi.cultura.gov.it/cgi-bin/pagina.pl?Chiave=59012&TipoPag=prodente
+
+**Bilancio Lotto 81:** 6 archi; 5 trattazioni, 1 richiami contestuali, 0 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 82 — 2026-11-08: Parigi: tradizioni operistiche, danza, operetta, Ballets Russes
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0660` | **trattazione_riscontrata** | Melodramma affronta i passaggi fra teatro italiano, scena francese e riforma gluckiana a Parigi; va specificato il periodo per ogni collegamento. |
+| `E0661` | **trattazione_riscontrata** | Teatro del Classicismo distingue Parigi della riforma di Gluck, opéra-comique e sistemi istituzionali del teatro francese; non unificare sale e repertori distinti. |
+| `E0662` | **trattazione_riscontrata** | Opera lirica sviluppa l'attività parigina di Rossini e la circolazione fra grand opéra, Opéra-Comique e altri circuiti; lingua, luogo e versione di un'opera non sono sinonimi. |
+| `E0663` | **trattazione_riscontrata** | Romanticismo tratta l'operetta parigina, Offenbach e le culture urbane della Belle Époque, considerando produzione e ricezione come piani distinti. |
+| `E0664` | **trattazione_riscontrata** | Dall'operetta a Broadway dedica una sezione all'operetta parigina di Offenbach e ne distingue le linee da Vienna, Londra e musical statunitense. |
+| `E0665` | **trattazione_riscontrata** | Balletto segue Parigi come sede di codificazione professionale, compagnie, istituzioni e produzioni dei Ballets Russes; la storia della danza non si esaurisce nella capitale. |
+| `E0666` | **trattazione_riscontrata** | Verso le avanguardie segue il modernismo musicale e scenico dei Ballets Russes, con prime e collaborazioni a Parigi; non attribuire a tutti gli artisti della compagnia la stessa poetica. |
+
+### Fonti di riscontro esterne
+- https://www.operadeparis.fr/apropos/histoire/lopera-au-xviie-siecle
+- https://www.operadeparis.fr/artistes/ecole-de-danse/histoire
+- https://www.gluck-gesamtausgabe.de/gwv/werkregister/eintrag/work-60.html
+
+**Bilancio Lotto 82:** 7 archi; 7 trattazioni, 0 richiami contestuali, 0 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 83 — 2026-11-08: Vienna e Mannheim: epoche, generi e istituzioni distinti
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0667` | **richiamo_contestuale** | Barocco cita Vienna nel riferimento all'Alceste di Gluck del 1767, ma non costruisce una storia autonoma della vita musicale viennese: il nesso è circoscritto. |
+| `E0668` | **trattazione_riscontrata** | Classicismo approfondisce Vienna nel quadro asburgico e nelle pratiche musicali di Haydn, Mozart e Beethoven, separando corte, teatri e altri circuiti. |
+| `E0669` | **trattazione_riscontrata** | Teatro del Classicismo approfondisce la Vienna di Gluck, Calzabigi e Mozart; Orfeo ed Euridice del 1762 non è la stessa redazione di Orphée et Euridice parigino del 1774. |
+| `E0670` | **trattazione_riscontrata** | Romanticismo tratta Vienna come centro di valzer, operetta e cultura pubblica ottocentesca; la Vienna di Strauss non coincide con quella del Classicismo viennese. |
+| `E0671` | **trattazione_riscontrata** | Dall'operetta a Broadway ricostruisce l'operetta viennese di Suppé, Johann Strauss figlio e Lehár come percorso differenziato da quello francese. |
+| `E0672` | **trattazione_riscontrata** | Balletto richiama l'ambiente viennese e il balletto pantomimo di Gluck e Angiolini, incluso Don Juan (1761): non confonderlo con Don Giovanni (1787) di Mozart. |
+| `E0673` | **trattazione_riscontrata** | Classicismo dedica una sezione alla Hofkapelle di Mannheim e a innovazioni di scrittura ed esecuzione orchestrale; non attribuire retroattivamente ogni crescendo al solo ambiente di Mannheim. |
+
+### Fonti di riscontro esterne
+- https://www.gluck-gesamtausgabe.de/gwv/werkregister/eintrag/work-60.html
+- https://www.berliner-philharmoniker.de/en/programme-notes/christoph-willibald-gluck-don-juan-ballet/
+- https://www.treccani.it/enciclopedia/jan-vaclav-antonin-stamitz/
+
+**Bilancio Lotto 83:** 7 archi; 6 trattazioni, 1 richiami contestuali, 0 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 84 — 2026-11-08: San Pietroburgo e Torino: verificare opere ed eventi, non città astratte
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0674` | **trattazione_riscontrata** | Balletto tratta San Pietroburgo e i teatri imperiali, distinguendo il debutto moscovita del Lago dei cigni (1877) dalla successiva ripresa Petipa–Ivanov a San Pietroburgo (1895). |
+| `E0675` | **richiamo_contestuale** | Romanticismo menziona San Pietroburgo fra i diversi contesti russi e operistici, ma la città non costituisce una trattazione autonoma del balletto imperiale. |
+| `E0676` | **richiamo_contestuale** | Opera lirica tratta La forza del destino di Verdi nella prima di San Pietroburgo (1862), distinguendola dalla revisione milanese del 1869; è un evento documentato, non una panoramica cittadina. |
+| `E0677` | **trattazione_riscontrata** | Risorgimento tratta Torino nella circolazione dei canti patriottici e nel lavoro di Novaro sul Canto degli Italiani, senza cristallizzare una cronologia autografa controversa. |
+| `E0678` | **richiamo_contestuale** | Romanticismo menziona Torino come sede della messa in musica del Canto degli Italiani da parte di Novaro; il capitolo non offre una storia autonoma dei circoli musicali torinesi. |
+
+### Fonti di riscontro esterne
+- https://www.mariinsky.ru/en/playbill/playbill/2016/6/2/1_1900/
+- https://www.rossinioperafestival.it/fondazione/la-fondazione/gioachino-rossini/
+
+**Bilancio Lotto 84:** 5 archi; 2 trattazioni, 3 richiami contestuali, 0 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 85 — 2026-11-08: Broadway e Hollywood: contesti produttivi distinti
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0679` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta Broadway e New York come teatro dell'incontro fra operetta, vaudeville, ragtime, jazz e musical integrato; non ridurre tutto a una filiazione europea. |
+| `E0680` | **trattazione_riscontrata** | Dal musical al film sviluppa Broadway come circuito teatrale da distinguere dagli adattamenti cinematografici; un titolo condiviso non coincide con la medesima produzione. |
+| `E0681` | **trattazione_riscontrata** | Dal musical al film esamina Hollywood, il passaggio al sonoro e le forme del musical cinematografico, compresa la messa in scena pensata per cinepresa e montaggio. |
+| `E0682` | **trattazione_riscontrata** | Musica nell'audiovisivo analizza il sinfonismo hollywoodiano e l'uso drammaturgico dei temi nel cinema; Hollywood è qui una realtà produttiva, non una scuola stilistica omogenea. |
+
+### Fonti di riscontro esterne
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/
+- https://rodgersandhammerstein.com/production/show-boat/1927-original-broadway/
+
+**Bilancio Lotto 85:** 4 archi; 4 trattazioni, 0 richiami contestuali, 0 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+## Lotto 86 — 2026-11-08: Notre-Dame, Medici, San Marco e corti italiane: disambiguazione istituzionale
+
+**Metodo:** riscontro dei capitoli HTML pubblicati su `main`, classificazione fra trattazione, richiamo e sospensione, confronto con fonti storico-istituzionali. Non sono introdotte influenze causali o parentela mediante contenitori geografici.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0683` | **trattazione_riscontrata** | Medioevo dedica una sezione alla scuola polifonica di Notre-Dame e a Parigi fra XII e XIII secolo; una cattedrale non «inventa» da sola la polifonia. |
+| `E0684` | **trattazione_riscontrata** | Rinascimento affronta le corti e Lorenzo de' Medici a Firenze come luogo di committenza e attività culturali; distinguere corte, dinastia e città. |
+| `E0685` | **trattazione_riscontrata** | Melodramma tratta le committenze medicee fiorentine e le feste del 1600 in rapporto a Peri e Caccini; non fondere la corte fiorentina con quella francese. |
+| `E0686` | **sospeso** | Balletto cita Caterina de' Medici nel contesto della corte di Francia, ma non documenta un approfondimento sulla corte medicea fiorentina: rapporto diretto sospeso. |
+| `E0687` | **trattazione_riscontrata** | Rinascimento dedica spazio alla Cappella di San Marco e alla scuola veneziana, distinguendo istituzione, pratica dei cori spezzati e città di Venezia. |
+| `E0688` | **sospeso** | Barocco non tratta specificamente San Marco di Venezia nel testo controllato; l'importanza storica della cappella e il passaggio fra epoche non legittimano un arco di pagina diretto. |
+| `E0689` | **trattazione_riscontrata** | Rinascimento descrive la pluralità delle corti italiane e i loro scambi transalpini: non esiste un'unica istituzione denominata «corti italiane». |
+| `E0690` | **trattazione_riscontrata** | Balletto ripercorre le tradizioni della danza nelle corti italiane e il successivo consolidamento in Francia, evitando una genealogia lineare senza mediazioni. |
+| `E0691` | **trattazione_riscontrata** | Melodramma discute Medici, Gonzaga ed Este come differenti ambienti di patronage dell'opera nascente, senza ridurli a una corte unica. |
+
+### Fonti di riscontro esterne
+- https://www.notredamedeparis.fr/en/understand/music/polyphony-and-motets/
+- https://www.cambridge.org/core/books/abs/cambridge-history-of-italian-literature/opera/2ED07033FD29BE67912A6D5D7D687127
+- https://www.basilicasanmarco.it/basilica/tradizione-musicale/
+
+**Bilancio Lotto 86:** 9 archi; 7 trattazioni, 0 richiami contestuali, 2 sospensioni. Conservate le prove e le qualità precedenti dove mutate.
+
+---
+
+### Bilancio dopo i Lotti 77–86
+
+- **Archi revisionati:** 71 su 10 lotti, ID da `E0621` a `E0691` (tutti coperti). **53 trattazioni**, **11 richiami contestuali**, **7 sospensioni**.
+- **Integrità strutturale:** 608 nodi e 1520 archi; ID nodo e arco duplicati: 0; estremi orfani: 0; triplette fonte–destinazione–verbo duplicate: 0.
+- **Proposte editoriali residue:** 136. **Sospensioni totali:** 68. **Trattazioni riscontrate:** 192. **Richiami contestuali:** 56.
+- **Flag storici indipendenti:** 359, invariati. I collegamenti `sviluppa_o_illumina` e `si_svolge_anche_a` convalidano la presenza nel capitolo, non causalità, influenza personale o discendenza geografica.
+- **Verifica orientativa dei collegamenti di primo livello** (archi diretti con gate di trattazione, menzione o richiamo; non è un test browser né una simulazione dei cinque livelli):
+
+| Capitolo | Prima | Dopo |
+| --- | ---: | ---: |
+| Verso le avanguardie e il Novecento | 28 | 38 |
+| Il balletto | 48 | 54 |
+| Rinascimento | 40 | 46 |
+| Barocco | 37 | 43 |
+| Melodramma barocco | 24 | 31 |
+| Romanticismo | 66 | 71 |
+| Opera lirica — da Fidelio a Turandot | 54 | 58 |
+| Musica nell’audiovisivo | 32 | 35 |
+| Dal musical al film | 40 | 44 |
+| Dall’operetta a Broadway | 32 | 35 |
+| Medioevo | 18 | 19 |
+| Teatro del Classicismo | 24 | 26 |
+| Classicismo | 29 | 32 |
+| Risorgimento | 13 | 14 |
+
+**Punti sospesi:** `E0626`, `E0629`, `E0633`, `E0636`, `E0649`, `E0686`, `E0688`. La sospensione è un limite del riscontro testuale, non una negazione universale dell'affinità storica.
+
+**Nota filologica:** l'uso di luogo, corte o istituzione come nodo condiviso non autorizza l'inferenza di rapporti fra tutte le persone/opere raggiungibili attraverso quel nodo. Distinte la prima moscovita del *Lago dei cigni* (1877) e la ripresa pietroburghese (1895), le versioni viennese e parigina di *Orfeo ed Euridice*, la corte medicea di Firenze e quella francese di Caterina de' Medici.
+
+**QA:** sintassi JSON, preservazione di ID, provenienze e qualità precedenti, identificazione degli archi esaminati e nessuna variazione agli altri 1.449 archi. Non è stato eseguito un collaudo visuale browser su Android/desktop. Il renderer e le pagine del sito restano invariati. La simulazione multilivello 1–5 resta una verifica separata.
+
+**Continuazione:** Lotto 87 da `E0692`, controllando per ogni arco successivo persone, opere, versioni, editori e provenienze prima di eventuali modifiche.
