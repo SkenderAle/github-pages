@@ -1,0 +1,484 @@
+{
+  "schema": "musurgia-atlantis-fase2e-nominal-authority-overlay-v1",
+  "date": "2026-11-08",
+  "status": "audit staging only; not source graph or Atlantis production",
+  "inputs": [
+    "VERIFICA_DOCUMENTALE_NOMI_FASE2D_2026-11-08.json",
+    "CONFRONTO_IDENTITA_GRAFO_FASE2C_2026-11-08.json",
+    "STAGING_IMPORT_PERSONE_2026-11-08.json"
+  ],
+  "scope": "18 source-to-Atlantis name-equivalent person candidates with independent historical authority support; metadata/aliases need preservation, no merged record or edges",
+  "counts": {
+    "nominal_total": 155,
+    "documentary_supported_previous": 16,
+    "documentary_supported_added": 18,
+    "documentary_supported_total": 34,
+    "nominal_pending": 121,
+    "prior_alias_confirmed": 5,
+    "unmatched_since_phase2c": 349,
+    "merges": 0
+  },
+  "decisions": [
+    {
+      "source_id": "compositore-leonin",
+      "source_label": "Léonin",
+      "atlantis_id": "pers:leonin",
+      "atlantis_label": "Léonin",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Leoninus, maestro della scuola di Notre-Dame; documentazione medievale e identificazione storica prudente. Non presupporre date assolute certe.",
+      "authority_urls": [
+        "https://www.notredamedeparis.fr/en/understand/music/polyphony-and-motets/",
+        "https://www.treccani.it/enciclopedia/leonin/"
+      ],
+      "aliases_to_review": [
+        "Leoninus",
+        "Leonino"
+      ],
+      "relation_caution": "Pérotin: successore nella scuola, non identità.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-perotin",
+      "source_label": "Pérotin",
+      "atlantis_id": "pers:perotin",
+      "atlantis_label": "Pérotin",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Perotinus Magnus, scuola di Notre-Dame; identità medievale storicamente attestata, cronologia personale non certa.",
+      "authority_urls": [
+        "https://www.notredamedeparis.fr/en/understand/music/polyphony-and-motets/",
+        "https://www.treccani.it/enciclopedia/perotin-le-grand_%28Enciclopedia-Italiana%29/"
+      ],
+      "aliases_to_review": [
+        "Perotinus Magnus",
+        "Pérotin le Grand"
+      ],
+      "relation_caution": "Léonin: distinta persona nel medesimo ambiente storico.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-guillaume-de-machaut",
+      "source_label": "Guillaume de Machaut",
+      "atlantis_id": "pers:machaut",
+      "atlantis_label": "Guillaume de Machaut",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Poeta e compositore Ars nova (ca. 1300–1377), canonico a Reims. Preservare ruoli plurimi.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/guillaume-de-machaut/",
+        "https://academic.oup.com/reference/62384/reference-article-abstract/555062921?login=false"
+      ],
+      "aliases_to_review": [
+        "Guillaume de Machault"
+      ],
+      "relation_caution": "Ars nova come periodo/tecnica; non connettore indiscriminato.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-francesco-landini",
+      "source_label": "Francesco Landini",
+      "atlantis_id": "pers:landini",
+      "atlantis_label": "Francesco Landini",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Compositore e organista dell'Ars nova fiorentina; variante Francesco degli Organi. DBI propone nascita ca. 1335 (Fiesole), scheda generale 1325 (Firenze): cronologia controversa.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/francesco-landini_%28Dizionario-Biografico%29/",
+        "https://www.treccani.it/enciclopedia/francesco-landino/"
+      ],
+      "aliases_to_review": [
+        "Francesco degli Organi",
+        "Francesco Cieco",
+        "Franciscus de Florentia",
+        "Francesco Landino"
+      ],
+      "relation_caution": "Non inferire contatti personali con Machaut da sola coappartenenza all'Ars nova.",
+      "source_discrepancy": "birth_year_and_place_conflict_older_vs_DBI",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-andrea-gabrieli",
+      "source_label": "Andrea Gabrieli",
+      "atlantis_id": "pers:andrea-gabrieli",
+      "atlantis_label": "Andrea Gabrieli",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Compositore e organista veneziano, zio e maestro di Giovanni Gabrieli. Il DBI documenta morte 30 agosto 1585; sintesi del 1932 indica 1586.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/andrea-gabrieli_%28Dizionario-Biografico%29/",
+        "https://www.treccani.it/enciclopedia/andrea-gabrieli_%28Enciclopedia-Italiana%29/"
+      ],
+      "aliases_to_review": [
+        "Andrea da Cannaregio"
+      ],
+      "relation_caution": "Giovanni Gabrieli: nipote e allievo (arco, non fusione).",
+      "source_discrepancy": "death_year_1585_DBI_vs_1586_1932",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-giovanni-gabrieli",
+      "source_label": "Giovanni Gabrieli",
+      "atlantis_id": "pers:giovanni-gabrieli",
+      "atlantis_label": "Giovanni Gabrieli",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Compositore e organista veneziano (ca. 1554/57–1612), nipote di Andrea, allievo e in relazione con Orlando di Lasso; non è Andrea.",
+      "authority_urls": [
+        "https://academic.oup.com/reference/62400/reference-article-abstract/571523757",
+        "https://www.treccani.it/enciclopedia/giovanni-gabrieli/"
+      ],
+      "aliases_to_review": [],
+      "relation_caution": "Andrea Gabrieli: zio maestro; Orlando di Lasso: contatto storico circostanziato.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-alessandro-scarlatti",
+      "source_label": "Alessandro Scarlatti",
+      "atlantis_id": "pers:alessandro-scarlatti",
+      "atlantis_label": "Alessandro Scarlatti",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Compositore e operista palermitano (1660–1725), padre di Giuseppe Domenico Scarlatti (1685–1757); non confondere con il figlio.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/alessandro-scarlatti_%28Dizionario-Biografico%29/",
+        "https://www.treccani.it/enciclopedia/alessandro-scarlatti/"
+      ],
+      "aliases_to_review": [],
+      "relation_caution": "Domenico Scarlatti: padre e formatore.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-domenico-scarlatti",
+      "source_label": "Domenico Scarlatti",
+      "atlantis_id": "pers:domenico-scarlatti",
+      "atlantis_label": "Domenico Scarlatti",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Giuseppe Domenico Scarlatti, Napoli 1685–Madrid 1757, figlio di Alessandro; compositore e clavicembalista. Evitare antiche ipotesi di apprendistato non comprovate.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/giuseppe-domenico-scarlatti_%28Dizionario-Biografico%29/",
+        "https://www.treccani.it/enciclopedia/domenico-scarlatti/"
+      ],
+      "aliases_to_review": [
+        "Giuseppe Domenico Scarlatti",
+        "Mimmo Scarlatti"
+      ],
+      "relation_caution": "Alessandro Scarlatti: padre e prima formazione documentata.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-wolfgang-amadeus-mozart",
+      "source_label": "Wolfgang Amadeus Mozart",
+      "atlantis_id": "pers:mozart",
+      "atlantis_label": "Wolfgang Amadeus Mozart",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Compositore salisburghese 1756–1791, figlio di Leopold Mozart; insegnamento paterno documentato dal Mozarteum. Non equiparare il padre al figlio.",
+      "authority_urls": [
+        "https://mozarteum.at/en/wolfgang-amade-mozart"
+      ],
+      "aliases_to_review": [
+        "Wolfgang Amadé Mozart",
+        "Wolfgang Theophilus Mozart"
+      ],
+      "relation_caution": "Leopold Mozart: padre, maestro, organizzatore; Nannerl: sorella; solo rami Mozart-pertinenti.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-johann-sebastian-bach",
+      "source_label": "Johann Sebastian Bach",
+      "atlantis_id": "pers:bach",
+      "atlantis_label": "Johann Sebastian Bach",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Compositore tedesco 1685–1750; padre di Johann Christian Bach, distinto da Johann Christian e da Carl Philipp Emanuel.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/johann-sebastian-bach/",
+        "https://academic.oup.com/reference/62400/reference-article-abstract/555405316?login=false"
+      ],
+      "aliases_to_review": [
+        "J. S. Bach"
+      ],
+      "relation_caution": "Johann Christian Bach: figlio, non sinonimo di Johann Sebastian.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-francois-couperin",
+      "source_label": "François Couperin",
+      "atlantis_id": "pers:couperin",
+      "atlantis_label": "François Couperin",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "François Couperin le Grand (1668–1733), compositore e clavicembalista della dinastia Couperin; BnF data nascita 1668-11-10. Non coincidere con François Couperin l'Ancien (ca. 1630–1700).",
+      "authority_urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb138927932",
+        "https://www.treccani.it/enciclopedia/couperin/"
+      ],
+      "aliases_to_review": [
+        "Couperin le Grand",
+        "François Couperin le Grand"
+      ],
+      "relation_caution": "François Couperin l'Ancien, Charles, Louis: persone diverse.",
+      "source_discrepancy": "Oxford Bibliographies snippet reports 1688 vs primary authority BnF 1668: reject typo",
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-robert-schumann",
+      "source_label": "Robert Schumann",
+      "atlantis_id": "pers:robert-schumann",
+      "atlantis_label": "Robert Schumann",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Compositore 1810–1856, coniuge di Clara Wieck Schumann dal 1840; non assimilare le due personalità artistiche.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/robert-alexander-schumann/",
+        "https://guides.loc.gov/clara-schumann"
+      ],
+      "aliases_to_review": [
+        "Robert Alexander Schumann"
+      ],
+      "relation_caution": "Clara Schumann: coniuge, compositrice e pianista autonoma.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-clara-schumann",
+      "source_label": "Clara Schumann",
+      "atlantis_id": "pers:clara-schumann",
+      "atlantis_label": "Clara Schumann",
+      "source_role": "compositore",
+      "atlantis_role": "compositrice-pianista",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Clara Josephine Wieck (1819–1896), pianista, compositrice, coniuge di Robert dal 1840; preservare attribuzioni compositive autonome.",
+      "authority_urls": [
+        "https://guides.loc.gov/clara-schumann",
+        "https://www.treccani.it/enciclopedia/clara-josephine-schumann/",
+        "https://www.deutsche-biographie.de/gnd11861164X.html?language=en"
+      ],
+      "aliases_to_review": [
+        "Clara Wieck",
+        "Clara Josephine Schumann"
+      ],
+      "relation_caution": "Robert Schumann: marito dal 1840, non identità o attributo secondario.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-richard-strauss",
+      "source_label": "Richard Strauss",
+      "atlantis_id": "pers:r-strauss",
+      "atlantis_label": "Richard Strauss",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Richard Georg Strauss, compositore monacense 1864–1949; padre Franz Joseph Strauss (cornista), diverso da Johann Strauss I/II viennesi.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/richard-strauss/",
+        "https://www.richardstrauss.at/biography.html"
+      ],
+      "aliases_to_review": [
+        "Richard Georg Strauss"
+      ],
+      "relation_caution": "Franz Joseph Strauss (cornista): padre; NON fondere con Johann Strauss II (operetta).",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "persona-oscar-hammerstein-ii",
+      "source_label": "Oscar Hammerstein II",
+      "atlantis_id": "pers:hammerstein",
+      "atlantis_label": "Oscar Hammerstein II",
+      "source_role": "persona",
+      "atlantis_role": "librettista",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Oscar Hammerstein II (1895–1960), librettista, paroliere e produttore, nipote dell'impresario Oscar Hammerstein I; collaboratore di Richard Rodgers.",
+      "authority_urls": [
+        "https://findingaids.loc.gov/agents/people/29823",
+        "https://guides.loc.gov/lgbtq-performing-arts/special-collections/related-theater-collections",
+        "https://rodgersandhammerstein.com/about/"
+      ],
+      "aliases_to_review": [
+        "Oscar Greeley Clendenning Hammerstein II"
+      ],
+      "relation_caution": "Richard Rodgers: partner per musica/testi; Oscar Hammerstein I: nonno distinto.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-richard-rodgers",
+      "source_label": "Richard Rodgers",
+      "atlantis_id": "pers:rodgers",
+      "atlantis_label": "Richard Rodgers",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Richard Charles Rodgers (1902–1979), compositore di Broadway; musica nelle collaborazioni con Oscar Hammerstein II, che curava libretto e testi.",
+      "authority_urls": [
+        "https://www.loc.gov/item/2003561025/",
+        "https://rodgersandhammerstein.com/about/"
+      ],
+      "aliases_to_review": [
+        "Richard Charles Rodgers"
+      ],
+      "relation_caution": "Oscar Hammerstein II: paroliere/librettista, non compositore della stessa musica.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-ludwig-van-beethoven",
+      "source_label": "Ludwig van Beethoven",
+      "atlantis_id": "pers:beethoven",
+      "atlantis_label": "Ludwig van Beethoven",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Compositore nato a Bonn nel 1770, morto a Vienna nel 1827; identità attestata, distinto dall'avo e dal padre Johann Beethoven.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/ludwig-van-beethoven/"
+      ],
+      "aliases_to_review": [
+        "Ludovico van Beethoven"
+      ],
+      "relation_caution": "Johann van Beethoven: padre, non sinonimo.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    },
+    {
+      "source_id": "compositore-joseph-haydn",
+      "source_label": "Joseph Haydn",
+      "atlantis_id": "pers:haydn",
+      "atlantis_label": "Joseph Haydn",
+      "source_role": "compositore",
+      "atlantis_role": "compositore",
+      "status": "authority_supported_no_merge",
+      "confidence_scope": "historical identity and described person/role only, not any edge",
+      "documentary_context": "Franz Joseph Haydn, compositore austriaco 1732–1809, al servizio degli Esterházy; distinto da altri membri della famiglia, incluso Michael Haydn.",
+      "authority_urls": [
+        "https://www.treccani.it/enciclopedia/franz-joseph-haydn/"
+      ],
+      "aliases_to_review": [
+        "Franz Joseph Haydn"
+      ],
+      "relation_caution": "Michael Haydn: fratello e compositore distinto.",
+      "source_discrepancy": null,
+      "merge_allowed": false
+    }
+  ],
+  "semantic_guards": [
+    "Keep chapters exclusively editorial; never transit historical I–V depth.",
+    "Historical period nodes are historical context and cannot bridge all members.",
+    "Preserve distinct composer, family, stage-name, religious-name identities.",
+    "Related persons can be traversed only when root-pertinent and arc historically evidenced.",
+    "No edge validation follows solely from pair identity or automatic relationSentence rendering."
+  ],
+  "data_quality_flags": [
+    {
+      "subject": "François Couperin",
+      "issue": "Oxford Bibliographies search extract unexpectedly says b.1688; BnF authority and Treccani both say born 1668",
+      "preferred": "1668-11-10 BnF",
+      "urls": [
+        "https://catalogue.bnf.fr/ark:/12148/cb138927932",
+        "https://www.treccani.it/enciclopedia/couperin/"
+      ]
+    },
+    {
+      "subject": "Francesco Landini",
+      "issue": "Treccani DBI proposes ca.1335 birth Fiesole, shorter encyclopedia reports 1325 Firenze",
+      "preferred": "Circa 1335 DBI with uncertainty and alternative historic tradition tracked",
+      "urls": [
+        "https://www.treccani.it/enciclopedia/francesco-landini_%28Dizionario-Biografico%29/",
+        "https://www.treccani.it/enciclopedia/francesco-landino/"
+      ]
+    },
+    {
+      "subject": "Andrea Gabrieli",
+      "issue": "Treccani DBI documents death 30 Aug 1585; older Enciclopedia Italiana says 1586",
+      "preferred": "1585 DBI",
+      "urls": [
+        "https://www.treccani.it/enciclopedia/andrea-gabrieli_%28Dizionario-Biografico%29/",
+        "https://www.treccani.it/enciclopedia/andrea-gabrieli_%28Enciclopedia-Italiana%29/"
+      ]
+    }
+  ],
+  "relationship_proposals_only_not_graph_edges": [
+    {
+      "source": "Andrea Gabrieli",
+      "target": "Giovanni Gabrieli",
+      "types": [
+        "zio-nipote",
+        "maestro-allievo"
+      ]
+    },
+    {
+      "source": "Alessandro Scarlatti",
+      "target": "Domenico Scarlatti",
+      "types": [
+        "padre-figlio",
+        "formazione_musicale"
+      ]
+    },
+    {
+      "source": "Robert Schumann",
+      "target": "Clara Schumann",
+      "types": [
+        "coniugi",
+        "collegamento_artistico_storico"
+      ]
+    },
+    {
+      "source": "Leopold Mozart",
+      "target": "Wolfgang Amadeus Mozart",
+      "types": [
+        "padre-figlio",
+        "maestro-allievo"
+      ],
+      "required_for_root_test": true
+    },
+    {
+      "source": "Richard Rodgers",
+      "target": "Oscar Hammerstein II",
+      "types": [
+        "collaborazione_professionale_su_opere"
+      ],
+      "role_credits": "Rodgers music; Hammerstein text/libretto"
+    }
+  ]
+}
