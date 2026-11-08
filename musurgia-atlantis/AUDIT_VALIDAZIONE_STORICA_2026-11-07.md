@@ -2037,7 +2037,7 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - 608 nodi, 1520 relazioni: invariati, sintassi JSON valida; 0 ID duplicati, 0 estremi orfani, 0 duplicati esatti di tripletta orientata fonte–destinazione–verbo.
 - 29 relazioni revisionate in Lotti 40–44. Gate indipendenti: 302; candidati: 47; confronti non causali: 106; sospensioni: 54; flag indipendente: 339.
 - `L04-A05`, `L04-A16`, `L04-A23`, `L04-A28`, `L04-A35` sono confronti non causali; non promuovono un nesso genealogico diretto. La navigazione va interpretata per cammino dichiarato, non per prossimità grafica.
-- Prossimi Lotti 45–49: esaminare da `L04-A37` fino a `L04-A70` saltando gli ID già convalidati: `L04-A41`, `L04-A55`–`L04-A58`.
+- Prossimi Lotti 45–49: esaminare da `L04-A37` fino a `L04-A70` includendo anche `L04-A41` e saltando i soli ID già convalidati `L04-A55`–`L04-A58`.
 
 ---
 
@@ -2051,12 +2051,15 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 | `L04-A38` | **riscontro_storico_indipendente** | Hans von Wolzogen sistematizzò e denominò molti motivi del Ring nei suoi Leitfäden, attestati nel 1876. Il termine Leitmotiv circolava già nel 1871 in altri contesti (Jähns e Weber), mentre Wolzogen contribuì alla sua adozione nell'esegesi wagneriana; non fu necessariamente l'inventore unico del vocabolo. |
 | `L04-A39` | **confronto_non_causale** | I motivi di reminiscenza delle tradizioni operistiche precedenti e il Leitmotiv wagneriano condividono la ricorrenza e memoria tematica, ma non sono identici per organizzazione, trasformazione o funzione drammatica. Il richiamo è analitico e genealogico in senso ampio, non un arco di filiazione univoca. |
 | `L04-A40` | **riscontro_storico_indipendente** | Richard Wagner partecipò all'insurrezione di Dresda del maggio 1849, fu ricercato dalle autorità e fuggì in esilio, inizialmente in Svizzera. L'evento è distinto dagli avvenimenti rivoluzionari del Risorgimento italiano. |
+| `L04-A41` | **riscontro_storico_indipendente** | L'insurrezione di Dresda del maggio 1849, cui Wagner prese parte, documenta l'impegno politico diretto di un compositore senza confonderlo con il Risorgimento italiano né con una relazione automatica verso ogni sua opera. |
 | `L04-A42` | **riscontro_storico_indipendente** | Wagner pubblicò l'opuscolo antisemita Das Judenthum in der Musik nella Neue Zeitschrift für Musik nel 1850 con pseudonimo K. Freigedenk, ripubblicandolo in versione ampliata nel 1869 a proprio nome. Il dato documenta ideologia scritta e polemica pubblica, non definisce di per sé ogni procedura della sua musica. |
 | `L04-A43` | **riscontro_storico_indipendente** | Il teatro e la teoria musicale di Wagner suscitarono una vasta ricezione interpretativa, controversa e non uniforme, alimentata anche da commentatori come Hans von Wolzogen. Il wagnerismo designa pluralità di letture e scuole, non una linea di discepoli diretti. |
 | `L04-A44` | **confronto_non_causale** | Verdi fu posto nel confronto storiografico e critico con il wagnerismo per soluzioni di dramma musicale, continuità e orchestrazione, ma ciò non documenta un rapporto maestro-allievo né un prestito necessariamente diretto. L'originalità di ciascuno va conservata. |
 | `L04-A45` | **sospeso** | Rimando inverso semanticamente equivalente al confronto già conservato in L04-A35 (parola scenica ↔ ricezione del wagnerismo). Non è un fatto storico ulteriore: sospeso come probabile duplicato non fuso, con ID e fonti conservati per una futura deduplicazione ragionata. |
 
 ### Fonti indipendenti e pagine controllate
+- https://www.dhm.de/lemo/biografie/richard-wagner
+- https://germanhistorydocs.org/en/forging-an-empire-bismarckian-germany-1866-1890/ghdi%3Adocument-1786
 - https://www.treccani.it/enciclopedia/leitmotiv/
 - https://www.dhm.de/lemo/biografie/richard-wagner
 - https://hanslick-online.github.io/hsl-app/c__1876.08.20.html?lang=de
@@ -2071,7 +2074,7 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - Wagner partecipò all'insurrezione di Dresda del maggio 1849 e pubblicò l'opuscolo antisemita Das Judenthum in der Musik nel 1850 (pseudonimo), ampliandolo nel 1869 (nome proprio). Distinguere biografia politica, idee scritte, poetica e ricezione.
 - L04-A35 e L04-A45 esprimono in direzioni inverse la stessa relazione comparativa fra parola scenica e wagnerismo. L04-A45 è sospeso come possibile duplicato semantico, preservandone l'ID.
 
-**QA lotto 45:** 8 archi revisionati, con `previous_quality_gate`, `previous_description` e `previous_relation` quando sostituita. 1 sospesi; nessuna fusione effettuata.
+**QA lotto 45:** 9 archi revisionati, con `previous_quality_gate`, `previous_description` e `previous_relation` quando sostituita. 1 sospesi; nessuna fusione effettuata.
 
 
 ---
@@ -2209,8 +2212,8 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 
 ### Controlli complessivi dopo il Lotto 49
 - JSON serializzato e riparsato, **608 nodi, 1520 archi** invariati; 0 ID duplicati, 0 nodi orfani, 0 duplicati di tripletta orientata esatta fonte–destinazione–verbo.
-- **58** relazioni esaminate nei Lotti 40–49 (29 nei Lotti 40–44 e 29 nei Lotti 45–49). Rimangono 18 candidati non fusi nel grafo.
-- Gate principali: 317 riscontri indipendenti, 317 proposte editoriali, 114 confronti non causali, 57 sospensioni; flag `historical_verified_independently` su **354** archi.
+- **59** relazioni esaminate nei Lotti 40–49 (29 nei Lotti 40–44 e 30 nei Lotti 45–49). Rimangono 17 candidati non fusi nel grafo.
+- Gate principali: 318 riscontri indipendenti, 317 proposte editoriali, 114 confronti non causali, 57 sospensioni; flag `historical_verified_independently` su **355** archi.
 - Sospesi L04-A45 come rimando inverso probabilmente duplicato di L04-A35; L04-A67 come sovrapposizione tassonomica dei due nodi sul coro; L04-A69 per assenza di trattazione specifica della lingua del teatro musicale nel capitolo Risorgimento.
 - I confronti tipologici e classificatori sono espressi col verbo generico `sviluppa_o_illumina`, che il filtro attuale esclude dalla propagazione oltre il livello I. Il QA strutturale non equivale a prova reale dei renderer WebGL/Canvas su desktop e mobile.
 - **Nota editoriale futura:** nel capitolo Opera lirica la storia delle revisioni di Don Carlos/Don Carlo (1867, 1884, 1886) richiede un paragrafo specifico, senza modifiche in questa fase; inoltre Wagner e Verdi non vanno ridotti a derivazioni automatiche.
@@ -2219,18 +2222,18 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 
 ### QA supplementare — revisione trasversale Lotti 40–49
 
-**Confronto del diff rispetto all'HEAD dopo Lotto 39:** esattamente **58 archi modificati**, tutti identificati come `L04-*` ancora candidati; nessuna modifica ai 608 nodi, nessun ID nuovo o rimosso. Sono rimaste intatte le 12 relazioni `L04-*` già convalidate nei lotti precedenti.
+**Confronto del diff rispetto all'HEAD dopo Lotto 39:** esattamente **59 archi modificati**, tutti identificati come `L04-*` ancora candidati; nessuna modifica ai 608 nodi, nessun ID nuovo o rimosso. Sono rimaste intatte le 11 relazioni `L04-*` già convalidate nei lotti precedenti.
 
 **Integrità dati e navigazione:** 608 ID di nodo e 1.520 ID di arco distinti, 0 estremi orfani. Simulato l'algoritmo a cinque livelli presente in `musurgia-atlantis/index.html` con i filtri di default («trattazione» e «menzione»).
 
 | Nodo iniziale | Prima: livelli I–V | Dopo: livelli I–V |
 | --- | --- | --- |
-| Giuseppe Verdi | 13 / 6 / 1 / 2 / 1 | 22 / 15 / 16 / 3 / 1 |
+| Giuseppe Verdi | 13 / 6 / 1 / 2 / 1 | 22 / 16 / 15 / 3 / 1 |
 | Richard Wagner | 8 / 0 / 0 / 0 / 0 | 12 / 0 / 0 / 0 / 0 |
-| Goffredo Mameli | 1 / 0 / 0 / 0 / 0 | 2 / 3 / 14 / 11 / 11 |
-| Giuseppe Mazzini | 0 / 0 / 0 / 0 / 0 | 3 / 15 / 11 / 11 / 3 |
-| Grand opéra francese | 0 / 0 / 0 / 0 / 0 | 6 / 4 / 19 / 10 / 3 |
-| Don Carlos / Don Carlo (identità) | 0 / 0 / 0 / 0 / 0 | 6 / 22 / 10 / 3 / 3 |
+| Goffredo Mameli | 1 / 0 / 0 / 0 / 0 | 2 / 3 / 14 / 12 / 11 |
+| Giuseppe Mazzini | 0 / 0 / 0 / 0 / 0 | 3 / 15 / 12 / 11 / 3 |
+| Grand opéra francese | 0 / 0 / 0 / 0 / 0 | 6 / 4 / 19 / 11 / 3 |
+| Don Carlos / Don Carlo (identità) | 0 / 0 / 0 / 0 / 0 | 6 / 22 / 11 / 3 / 3 |
 | Mozart | 13 / 4 / 3 / 3 / 5 | 13 / 4 / 3 / 3 / 5 |
 | Beethoven | 17 / 17 / 7 / 0 / 0 | 17 / 17 / 7 / 0 / 0 |
 
@@ -2240,7 +2243,7 @@ I confronti non causali `L04-A05`, `A16`, `A23`, `A28`, `A35`, `A39`, `A44`, `A5
 
 **Limite:** questo test riproduce la logica dei percorsi sui dati JSON, non equivale all'esecuzione visuale del sito in browser reale su desktop e smartphone. Nessuna modifica a `musurgia-atlantis/index.html`, `compat-graph.js`, capitoli, menu o `PROTOCOLLO_AGGIORNAMENTI.json`.
 
-**Prossimo lotto da proporre (50):** ripartire dai **18** `candidato_non_fuso` rimasti nei blocchi `L01` e `L06`, senza rivedere gli archi L04 già chiusi; successivamente affrontare le 317 proposte editoriali ancora da verificare.
+**Prossimo lotto da proporre (50):** ripartire dai **17** `candidato_non_fuso` rimasti nei blocchi `L01` e `L06`, senza rivedere gli archi L04 già chiusi; successivamente affrontare le 317 proposte editoriali ancora da verificare.
 
 
 ### Errata cronologica editoriale rilevata nel Lotto 41 — da correggere nel capitolo Risorgimento (non modificato)
@@ -2250,4 +2253,9 @@ I confronti non causali `L04-A05`, `A16`, `A23`, `A28`, `A35`, `A39`, `A44`, `A5
 - **Formula suggerita per una successiva revisione autorizzata:** «La battaglia di Legnano, rappresentata a Roma il 27 gennaio 1849, nei giorni che precedono la proclamazione della Repubblica Romana, è l'opera verdiana più dichiaratamente patriottica».
 - **Riscontri:** https://archiviostorico.operaroma.it/opera/la-battaglia-di-legnano/ ; https://www.treccani.it/enciclopedia/roma_%28Dizionario-di-Storia%29/ ; https://it.wikisource.org/wiki/Bollettino_delle_leggi_e_disposizioni_della_Repubblica_Romana/Bollettino_N._1
 - **Riuso editoriale:** `da_correggere`. Nessuna modifica alla pagina è stata eseguita in questo audit.
+
+### Rettifica inventariale del Lotto 45 (8 novembre 2026)
+- La riconciliazione completa dei candidati `L04-*` ha individuato `L04-A41`, inizialmente saltato in un elenco intermedio e poi verificato storicamente: insurrezione di Dresda (maggio 1849) come documentazione della partecipazione politica di Richard Wagner. Convalidato da Deutsches Historisches Museum e German History in Documents and Images.
+- Il Lotto 45 comprende **9 archi**, la serie 40–49 **59 archi** e rimangono **17 candidati non fusi**, tutti nei blocchi `L01-*` e `L06-*`. I metadati originali dell'arco sono preservati.
+- Diff ricalcolato rispetto al commit conclusivo del Lotto 39: 59 identificativi univoci `L04-*`. Le 11 relazioni precedentemente convalidate nel blocco L04 sono rimaste inalterate.
 
