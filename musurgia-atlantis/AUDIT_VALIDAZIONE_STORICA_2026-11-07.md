@@ -2771,3 +2771,243 @@ Verifica effettuata confrontando i blob del dataset precedenti e successivi: `08
 
 **Limite della verifica:** QA dati e simulazione della logica dei livelli, non test grafico in browser desktop o su Android. La criticità documentata non autorizza in questo audit una modifica dell'interfaccia.
 
+---
+## Lotto 67 — 8 novembre 2026: Identità, inni, banda e poesia politica
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0461` | **trattazione_riscontrata** | Romanticismo tratta direttamente scuole nazionali, lingue, imperi, culture civiche e repertori di appartenenza. Una scuola musicale non coincide automaticamente con un programma nazionalista unitario. |
+| `E0463` | **trattazione_riscontrata** | Opera lirica confronta esplicitamente tradizioni russe, boeme e altre scene europee, lingue e circolazioni transnazionali. Nazionalità del compositore, lingua del libretto e luogo della prima non sono sinonimi. |
+| `E0466` | **trattazione_riscontrata** | Risorgimento ricostruisce gli inni del 1847–1849 e gli usi di Il Canto degli Italiani, dal contesto preunitario al riconoscimento repubblicano. La stessa composizione può acquisire funzioni politiche storicamente diverse. |
+| `E0467` | **trattazione_riscontrata** | Romanticismo confronta canti civici e comunitari tra contesti politici differenti, incluso Mameli–Novaro e la successiva funzione nazionale; non tutti gli inni sono partiture statali coeve alla loro nascita. |
+| `E0469` | **trattazione_riscontrata** | Risorgimento sviluppa gli impieghi delle bande e le trascrizioni dei canti politici; l'organico bandistico e la redazione originale per voce e pianoforte non sono la stessa partitura. Esistono elaborazioni successive documentate. |
+| `E0471` | **trattazione_riscontrata** | Risorgimento analizza espressamente la poesia di mobilitazione di Mameli, la costruzione del 'noi' e la diffusione della canzone politica tramite stampa e performance; non riduce il testo a lirica privata. |
+| `E0472` | **richiamo_contestuale** | Romanticismo collega lingua, immaginario politico e formazione delle identità culturali, ma non offre l'analisi specifica dei testi di poesia di mobilitazione politica propria del capitolo Risorgimento. |
+
+### Fonti di riscontro esterne
+- https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/inno.html
+- https://new.quirinale.it/page/inno
+- https://www.bibliotecauniversitaria.ge.it/collezioni/raccolte/materiali-del-risorgimento/inni-musicali.html
+- https://opac.bibliotecabraidense.org/opac_braidense/opac/braidense/scheda_sim.jsp?bid=MIL0930462&pager.offset=8&sim_bid=MIL0832567
+
+**Bilancio Lotto 67:** 7 archi; 6 trattazioni riscontrate, 1 richiami contestuali, 0 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 68 — 8 novembre 2026: Musica di scena, melodramma e funzioni del suono filmico
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0475` | **richiamo_contestuale** | Teatro del Classicismo tratta Fidelio e la drammaturgia operistica, ma non dedica una sezione autonoma alla musica di scena non operistica: rimando sul problema teatrale, non trattazione della musica per prosa. |
+| `E0476` | **trattazione_riscontrata** | Opera lirica dedica un approfondimento esplicito alla musica di scena, distinguendo Egmont op. 84 per la tragedia parlata di Goethe da Fidelio e dalle altre forme di teatro musicato di Beethoven. |
+| `E0478` | **richiamo_contestuale** | Dal musical al film richiama il teatro musicale e la partitura strumentale come precedenti del cinema; non si sostituisce a una storia autonoma della musica di scena teatrale. |
+| `E0479` | **trattazione_riscontrata** | Musica nell'audiovisivo apre con il passaggio dal teatro d'opera e dalla musica di scena alla drammaturgia cinematografica; individua analogie funzionali, non una derivazione diretta e automatica fra tutte le opere e i film. |
+
+### Fonti di riscontro esterne
+- https://www.jstor.org/stable/10.7312/chio19888
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/
+- https://www.treccani.it/enciclopedia/opera-comique/
+
+**Bilancio Lotto 68:** 4 archi; 2 trattazioni riscontrate, 2 richiami contestuali, 0 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 69 — 8 novembre 2026: Opéra-comique, collaborazione drammaturgica e coro collettivo
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0502` | **richiamo_contestuale** | Dall'operetta a Broadway distingue brevemente opéra-comique, opéra-bouffe e opera buffa nel discorso sui generi; la distinzione corretta è richiamata, non affrontata come trattazione storico-formale autonoma. |
+| `E0512` | **richiamo_contestuale** | Dall'operetta a Broadway menziona collaborazioni fra autori di musica, versi e libretto, incluse Young e la squadra di Shuffle Along; non sviluppa una teoria autonoma della scrittura librettistica. |
+| `E0525` | **trattazione_riscontrata** | Teatro del Classicismo confronta Gluck e Beethoven, attribuendo al coro funzioni drammatiche differenti: comunità che supplica, resiste o celebra, e coro dei prigionieri di Fidelio. |
+| `E0526` | **trattazione_riscontrata** | Opera lirica documenta il coro dei prigionieri di Fidelio come espressione collettiva della speranza e della libertà, distinto dalla funzione di altri cori del repertorio ottocentesco. |
+| `E0527` | **trattazione_riscontrata** | Anatomia del melodramma ha un paragrafo specifico 'Il coro può essere un personaggio collettivo' e confronta Furie gluckiane, prigionieri di Fidelio e Va, pensiero: uso scenico diverso nei vari contesti. |
+
+### Fonti di riscontro esterne
+- https://www.treccani.it/enciclopedia/opera-comique/
+- https://www.treccani.it/enciclopedia/operetta/
+- https://www.larousse.fr/encyclopedie/musdico/divertissement/167254
+
+**Bilancio Lotto 69:** 5 archi; 3 trattazioni riscontrate, 2 richiami contestuali, 0 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 70 — 8 novembre 2026: Leitmotiv e operetta fra teatro e cinema
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0542` | **trattazione_riscontrata** | Opera lirica affronta direttamente la tecnica dei motivi conduttori nel teatro di Wagner. Distinguere motivi musicali effettivi da nomi e schemi catalografici spesso attribuiti dalla ricezione posteriore. |
+| `E0543` | **richiamo_contestuale** | Romanticismo confronta idée fixe, ritorno tematico e trasformazione motivica, ma il semplice ritorno di un tema non equivale sempre al sistema di Leitmotive wagneriano. |
+| `E0544` | **trattazione_riscontrata** | Musica nell'audiovisivo dedica una sezione al leitmotiv nel cinema; l'associazione ricorrente fra suono e personaggio può trasformarsi con le immagini senza replicare necessariamente la tecnica di Wagner. |
+| `E0557` | **trattazione_riscontrata** | Dall'operetta a Broadway discute operetta francese e viennese, Offenbach, Strauss, Gilbert e Sullivan e i rapporti fra satira, dialogo, danza e scena, senza trattarli come un solo genere. |
+| `E0558` | **richiamo_contestuale** | Dal musical al film colloca l'operetta fra le origini plurali del musical e rimanda all'apposito capitolo storico; non sostituisce una trattazione autonoma del teatro satirico ottocentesco. |
+
+### Fonti di riscontro esterne
+- https://www.treccani.it/enciclopedia/leitmotiv/
+- https://www.treccani.it/enciclopedia/operetta/
+- https://www.jstor.org/stable/10.7312/chio19888
+
+**Bilancio Lotto 70:** 5 archi; 3 trattazioni riscontrate, 2 richiami contestuali, 0 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 71 — 8 novembre 2026: Valzer e nascita non lineare della danza teatrale
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0559` | **trattazione_riscontrata** | Romanticismo dedica un capitolo specifico a Vienna, al valzer, alla danza cittadina e all'operetta di Johann Strauss. Distinguere ballo sociale, pagina da concerto e funzione scenica. |
+| `E0560` | **trattazione_riscontrata** | Dall'operetta a Broadway presenta il valzer viennese in relazione a Strauss, alla cultura di Vienna e alla scrittura dell'operetta, non come unica forma di danza della modernità. |
+| `E0561` | **richiamo_contestuale** | Balletto impiega il valzer come numero coreografico, fra cui Coppélia; non costruisce una storia della diffusione urbana del valzer indipendente dal repertorio scenico. |
+| `E0562` | **trattazione_riscontrata** | Rinascimento tratta danza di corte, pavana e gagliarda, balletto vocale e intermedi scenici. Non va però retroproiettata su queste forme la tecnica del balletto accademico romantico. |
+| `E0563` | **trattazione_riscontrata** | Barocco dedica una sezione alle suite e alle danze teatrali, integrando esempi di teatro francese e pratiche sceniche; non vi è un'identità automatica con il ballet d'action. |
+| `E0564` | **richiamo_contestuale** | Teatro del Classicismo richiama la danza e le esperienze di Angiolini nella riforma teatrale di Gluck, ma il percorso storico autonomo del balletto è nella pagina dedicata. |
+
+### Fonti di riscontro esterne
+- https://www.treccani.it/enciclopedia/operetta/
+- https://www.treccani.it/enciclopedia/balletto/
+- https://www.larousse.fr/encyclopedie/musdico/divertissement/167254
+
+**Bilancio Lotto 71:** 6 archi; 4 trattazioni riscontrate, 2 richiami contestuali, 0 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 72 — 8 novembre 2026: Balletto, pantomima, divertissement e riforme della scena
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0567` | **trattazione_riscontrata** | Il balletto è la pagina specialistica che segue genealogie coreutiche, spettacoli, coreografi, partiture e rapporti fra musica e scena. La categoria non è sovrapponibile alla totalità delle danze sociali. |
+| `E0568` | **trattazione_riscontrata** | Verso le avanguardie documenta le musiche per i Ballets Russes e il ruolo dello spettacolo nei modernismi, con esempi di Stravinskij, Satie, Massine e Picasso; una compagnia non è un genere musicale. |
+| `E0569` | **richiamo_contestuale** | Teatro del Classicismo menziona Angiolini e il balletto pantomimo come contesto della riforma gluckiana; non analizza autonomamente la tecnica e la storia del ballet d'action. |
+| `E0570` | **trattazione_riscontrata** | Balletto dedica un capitolo al passaggio dal decoro alla narrazione attraverso Hilverding, Angiolini e Noverre, valorizzando la pantomima come azione senza parola. |
+| `E0571` | **sospeso** | Classicismo parla di danza teatrale francese ma non tratta in modo identificabile il ballet d'action, Noverre, Angiolini o la pantomima. Il collegamento specifico resta sospeso anziché essere promosso da un riferimento generico al balletto. |
+| `E0573` | **richiamo_contestuale** | Teatro del Classicismo menziona il balletto e la danza delle tradizioni francesi accanto alla riforma di Gluck, ma non ricostruisce in modo specifico il divertissement quale forma scenica autonoma. |
+| `E0575` | **trattazione_riscontrata** | Balletto tratta il ballet de cour, l'opéra-ballet e il divertissement delle tradizioni francesi, distinguendoli dal successivo balletto d'azione. Il divertissement può interrompere o incorniciare l'azione. |
+
+### Fonti di riscontro esterne
+- https://www.treccani.it/enciclopedia/balletto/
+- https://www.treccani.it/enciclopedia/jean-georges-noverre-e-il-nuovo-balletto_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- https://www.larousse.fr/encyclopedie/musdico/divertissement/167254
+- https://www.loc.gov/exhibits/ballets-russes/overview.html
+
+**Bilancio Lotto 72:** 7 archi; 4 trattazioni riscontrate, 2 richiami contestuali, 1 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 73 — 8 novembre 2026: Ballets Russes, teatrodanza e apporti afroamericani
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0578` | **trattazione_riscontrata** | Balletto dedica una sezione a Diaghilev e ai Ballets Russes: compagnia e rete produttiva fra coreografi, compositori, scenografi e danzatori, con sperimentazioni non omogenee per stile. |
+| `E0579` | **trattazione_riscontrata** | Verso le avanguardie colloca Stravinskij, Parade e collaborazioni dei Ballets Russes nel contesto dei modernismi del Novecento. Lo spettacolo è il risultato di agenti artistici diversi. |
+| `E0581` | **trattazione_riscontrata** | Balletto approfondisce Bausch, danza moderna e teatrodanza e confronta coreografie diverse della Sagra: il titolo musicale non determina una sola realizzazione scenica. |
+| `E0584` | **richiamo_contestuale** | Dall'operetta a Broadway inserisce jazz e tradizioni afroamericane fra le radici autonome del musical, ma non sviluppa una storia tecnica dell'improvvisazione jazz. |
+| `E0585` | **trattazione_riscontrata** | Dal musical al film dedica una sezione a jazz e musical nel teatro e nel cinema, distinguendo contesti produttivi e forme sonore; il jazz non nasce dall'operetta. |
+| `E0587` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta ragtime e teatro prodotto da artisti afroamericani, con il caso documentato Shuffle Along (1921); non riduce il repertorio alla genealogia dell'operetta europea. |
+| `E0588` | **richiamo_contestuale** | Dal musical al film menziona ragtime e apporti del teatro afroamericano come antecedenti del musical, ma la storia specialistica delle produzioni afroamericane è maggiormente sviluppata nella pagina Dall'operetta a Broadway. |
+
+### Fonti di riscontro esterne
+- https://www.loc.gov/exhibits/ballets-russes/overview.html
+- https://www.loc.gov/exhibits/ballets-russes/exhibition-items.html
+- https://nmaahc.si.edu/explore/stories/remembering-milestone-entertainment-history
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/
+
+**Bilancio Lotto 73:** 7 archi; 5 trattazioni riscontrate, 2 richiami contestuali, 0 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 74 — 8 novembre 2026: Vaudeville, musical integrato e drammaturgia del numero
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0589` | **trattazione_riscontrata** | Dall'operetta a Broadway discute vaudeville, rivista e spettacoli popolari americani come contributi distinti alla formazione del musical, senza identificarli con l'opéra-comique francese. |
+| `E0590` | **richiamo_contestuale** | Dal musical al film cita il vaudeville e il varietà tra le radici del musical, ma non ne ricostruisce la storia istituzionale o repertoriale in modo autonomo. |
+| `E0591` | **trattazione_riscontrata** | Dall'operetta a Broadway spiega la convergenza di numero musicale, personaggio, libro e canzone, con antecedenti multipli e casi quali Show Boat e Shuffle Along. |
+| `E0592` | **trattazione_riscontrata** | Dal musical al film presenta Show Boat, Oklahoma! e l'integrazione delle canzoni con l'azione, mettendo in relazione teatro e adattamento cinematografico senza identificarli. |
+| `E0593` | **richiamo_contestuale** | Musica nell'audiovisivo menziona film musicali e funzioni delle canzoni nel racconto, ma non offre una storia del musical come genere teatrale. |
+| `E0594` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta Show Boat come passaggio importante ma non invenzione ex nihilo del musical integrato; il modello si trasforma ulteriormente con Oklahoma!. |
+| `E0595` | **trattazione_riscontrata** | Dal musical al film analizza la crescente integrazione di numeri, personaggi e vicenda in Show Boat (1927) e Oklahoma! (1943), distinguendo la nascita scenica del modello dalle versioni sullo schermo. |
+
+### Fonti di riscontro esterne
+- https://nmaahc.si.edu/explore/stories/remembering-milestone-entertainment-history
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/
+- https://loc.gov/exhibits/art-of-theatrical-design/american-variety-and-musical-stage.html
+- https://www.treccani.it/enciclopedia/operetta/
+
+**Bilancio Lotto 74:** 7 archi; 5 trattazioni riscontrate, 2 richiami contestuali, 0 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 75 — 8 novembre 2026: Cinema muto, film musicale, sonoro e animazione
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0596` | **trattazione_riscontrata** | Dal musical al film ricostruisce accompagnamenti dal vivo, partiture specifiche, cue sheets e riusi di repertorio per film muti: il film muto non è per definizione proiezione priva di musica. |
+| `E0597` | **richiamo_contestuale** | Musica nell'audiovisivo richiama il cinema muto nel passaggio alla progettazione sonora del film, ma rimanda al capitolo storico per le prassi di sala, gli organici e le partiture. |
+| `E0599` | **trattazione_riscontrata** | Dal musical al film sviluppa cinema musicale, danza sullo schermo e trasformazione del musical teatrale in numeri pensati per il montaggio e per la cinepresa. |
+| `E0600` | **richiamo_contestuale** | Musica nell'audiovisivo affronta funzioni narrative di musica e canzoni e cita film musicali, ma non distingue sistematicamente la storia del film musicale da quella di ogni film dotato di partitura. |
+| `E0601` | **trattazione_riscontrata** | Dal musical al film tratta la diffusione del sonoro registrato e sincronizzato come passaggio graduale, distinto dalla storia del colore e dalla persistenza di pratiche senza dialoghi. |
+| `E0602` | **richiamo_contestuale** | Musica nell'audiovisivo assume il sonoro sincronizzato come contesto dei linguaggi filmici e della diegesi, senza proporre una cronologia tecnica autonoma dei diversi sistemi di registrazione. |
+| `E0603` | **trattazione_riscontrata** | Dal musical al film sviluppa Disney, Silly Symphonies e Fantasia come modelli diversi di rapporto fra partitura, immagine e animazione; Fantasia non coincide con il musical di scena. |
+| `E0604` | **trattazione_riscontrata** | Musica nell'audiovisivo dedica una trattazione alla sincronizzazione animata e al Mickey Mousing, incluso Steamboat Willie e la differenza tra gesto scandito e sincronizzazione di sequenze più lunghe. |
+
+### Fonti di riscontro esterne
+- https://guides.loc.gov/music-for-silent-film/scores
+- https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/a-warming-flame/
+- https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/photoplay-albums-for-silent-film-scores/
+- https://loc.gov/exhibits/music-and-animation/about.html
+- https://www.moma.org/momaorg/shared/flattened_pages/moma_learning/walt-disney-ub-iwerks-steamboat-willie-1928/
+
+**Bilancio Lotto 75:** 8 archi; 5 trattazioni riscontrate, 3 richiami contestuali, 0 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+## Lotto 76 — 8 novembre 2026: Mickey Mousing, composizione cinematografica e analisi del suono
+
+**Metodo:** riscontro dei contenuti effettivi delle pagine pubblicate in `main`, distinzione fra trattazione, richiamo contestuale e collegamento sospeso, controllo storico su fonti indipendenti. Gli archi sono rimandi da capitolo a concetto, non relazioni di discendenza. Non toccati capitoli, Atlante 3D, interfaccia Atlantis o protocollo.
+
+| ID | Gate aggiornato | Nota storico-filologica |
+| --- | --- | --- |
+| `E0605` | **trattazione_riscontrata** | Musica nell'audiovisivo dedica un capitolo al Mickey Mousing e spiega la corrispondenza puntuale fra gesto, musica e rumori; la sincronizzazione non si riduce all'intera storia della colonna sonora. |
+| `E0606` | **richiamo_contestuale** | Dal musical al film definisce e illustra il Mickey Mousing nel percorso Disney, ma rimanda alla pagina audiovisiva per l'analisi delle tecniche e delle funzioni del suono. |
+| `E0607` | **trattazione_riscontrata** | Dal musical al film affronta la composizione per immagini, dalle partiture per il muto alla colonna sonora orchestrale, distinguendo riuso di musica preesistente e musica originale. |
+| `E0608` | **trattazione_riscontrata** | Musica nell'audiovisivo analizza la composizione originale, il ruolo del compositore, i cue, la registrazione e il missaggio; la colonna sonora comprende anche voci e rumori, non solo partitura. |
+| `E0610` | **trattazione_riscontrata** | Musica nell'audiovisivo distingue diegetico/extradiegetico e in/off/over, precisando che off è spesso diegetico fuori campo e non sinonimo di musica extradiegetica. |
+| `E0611` | **sospeso** | Dal musical al film contiene riferimenti a sorgenti sonore, montaggio e scena ma non introduce né distingue sistematicamente diegesi, extradiegesi, in, off e over: il rimando tecnico specifico va sospeso. |
+| `E0612` | **trattazione_riscontrata** | Musica nell'audiovisivo confronta empatia, contrappunto e anempatia secondo Chion, spiegando che la musica apparentemente indifferente può intensificare l'effetto drammatico. |
+| `E0614` | **trattazione_riscontrata** | Musica nell'audiovisivo dedica una sezione alla distinzione fra musica composta per il film e preesistente, indipendente dalla distinzione fra suono diegetico ed extradiegetico. |
+| `E0615` | **richiamo_contestuale** | Dal musical al film discute il riuso di repertori preesistenti e i casi di Fantasia e del cinema muto, ma non sviluppa una tassonomia completa della musica originale e preesistente. |
+| `E0617` | **trattazione_riscontrata** | Musica nell'audiovisivo tratta il Foley come ricostruzione sincronizzata di rumori di passi, oggetti e gesti, distinta dal Mickey Mousing che usa eventi musicali per il movimento. |
+| `E0619` | **trattazione_riscontrata** | Musica nell'audiovisivo tratta esplicitamente il ruolo di montaggio, sonorizzazione, cue, missaggio e riorganizzazione delle sorgenti sonore nel racconto cinematografico. |
+| `E0620` | **richiamo_contestuale** | Dal musical al film discute montaggio, sincronizzazione e scelta della partitura in rapporto alle scene, ma la storia del suono montato come pratica audiovisiva autonoma resta nella pagina specialistica. |
+
+### Fonti di riscontro esterne
+- https://loc.gov/exhibits/music-and-animation/about.html
+- https://www.moma.org/momaorg/shared/flattened_pages/moma_learning/walt-disney-ub-iwerks-steamboat-willie-1928/
+- https://www.loc.gov/collections/silent-film-scores-and-arrangements/articles-and-essays/a-warming-flame/
+- https://www.acmi.net.au/education/school-program-and-resources/foley-sound/
+- https://www.jstor.org/stable/10.7312/chio19888
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/
+
+**Bilancio Lotto 76:** 12 archi; 8 trattazioni riscontrate, 3 richiami contestuali, 1 sospensioni. Conservati gli URL precedenti e gli attributi `previous_quality_gate` e `previous_description`.
+
+---
+### Bilancio dopo i Lotti 67–76
+
+- Revisionati **68 archi** distribuiti in dieci lotti tematici. Ripartizione: 67: 7, 68: 4, 69: 5, 70: 5, 71: 6, 72: 7, 73: 7, 74: 7, 75: 8, 76: 12.
+- **608 nodi** e **1520 archi** invariati; duplicati ID nodo: **0**; duplicati ID arco: **0**; orfani: **0**; triplette duplicate: **0**.
+- Proposte editoriali residue: **160**. Sospensioni: **64**. Richiami contestuali: **45**. Trattazioni riscontrate: **141**.
+- Verifiche indipendenti preesistenti: **359** flag e **322** gate espliciti, invariati; questi lotti non attribuiscono riscontri causali autonomi ai rimandi editoriali.
+- Nota filologica sul Canto degli Italiani: fonti istituzionali offrono cronologie non del tutto coincidenti per la prima intonazione o il momento della messa in musica di Novaro; il registro evita di fissare una data di composizione esatta non risolta senza confronto degli autografi. La prima diffusione risorgimentale e l'adozione provvisoria (1946) sono distinte dal riconoscimento legislativo (2017).
+- Le forme di opera francese, operetta e musical vanno tenute distinte; Show Boat, Shuffle Along e Oklahoma! non costituiscono un'unica genealogia lineare.
+- La differenza fra accompagnamento del cinema muto, sincronizzazione dei cartoon, Foley e teoria della diegesi è mantenuta sia nei gate sia nelle descrizioni.
+- Rimane da verificare nei successivi lotti la pertinenza multilivello dei nodi che vengono raggiunti a livello I tramite richiami contestuali: un percorso computabile non è sempre una filiazione storica.
+- **Ripresa dal Lotto 77:** prime proposte ancora aperte dopo `E0620`, conservando tutte le verifiche già concluse.
+
