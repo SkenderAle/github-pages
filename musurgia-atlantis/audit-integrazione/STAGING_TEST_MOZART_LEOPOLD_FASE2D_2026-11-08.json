@@ -1,0 +1,201 @@
+{
+  "schema": "musurgia-atlantis-mozart-root-relevance-sentinel-v1",
+  "date": "2026-11-08",
+  "status": "STAGING ONLY: no public graph or UI altered",
+  "expected_existing_root": "pers:mozart",
+  "root_source_id": "compositore-wolfgang-amadeus-mozart",
+  "missing_node_import_candidate": {
+    "proposed_atlantis_id": "pers:leopold-mozart",
+    "category": "persona",
+    "subtype": "violinista/compositore/didatta",
+    "original_source_id": "compositore-leopold-mozart",
+    "source_node_payload": {
+      "id": "compositore-leopold-mozart",
+      "label": "Leopold Mozart",
+      "type": "compositore",
+      "status": "catalogato",
+      "country": "Austria",
+      "description": "Violinista, compositore e didatta (1719–1787), padre e primo maestro di Wolfgang Amadeus Mozart.",
+      "url": null,
+      "geo_focus": {
+        "lat": 47.8,
+        "lon": 13.04,
+        "span": 40,
+        "precision": "historical-center"
+      },
+      "aliases": [
+        "Johann Georg Leopold Mozart"
+      ],
+      "name_review": {
+        "status": "verificato",
+        "sources": [
+          "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+        ],
+        "method": "Scheda biografica di riferimento, grafie e rapporti documentati."
+      }
+    },
+    "existing_in_public_atlantis": false,
+    "source_id_alias": "Johann Georg Leopold Mozart",
+    "identity_authority": [
+      "https://mozarteum.at/en/wolfgang-amade-mozart"
+    ],
+    "do_not_commit_until": "historical person import stage merged and all relevant relations converted"
+  },
+  "qualifying_root_relations": [
+    {
+      "proposed_id": "staging:leopold-wolfgang-parentela",
+      "from": "pers:leopold-mozart",
+      "to": "pers:mozart",
+      "kind": "padre-figlio",
+      "explanation_forward": "Leopold Mozart era il padre di Wolfgang Amadeus Mozart.",
+      "explanation_reverse": "Wolfgang Amadeus Mozart era figlio di Leopold Mozart.",
+      "evidence_urls": [
+        "https://mozarteum.at/en/wolfgang-amade-mozart"
+      ],
+      "domain": "storico-personale",
+      "allow_root_mozart_level1": true,
+      "evidence_status": "checked_authority_biography",
+      "source_original_relation_id": null,
+      "source_provenance": "Stiftung Mozarteum; new distinct kinship predicate, not a reinterpretation of original didactic relation"
+    },
+    {
+      "proposed_id": "staging:leopold-wolfgang-formazione",
+      "from": "pers:leopold-mozart",
+      "to": "pers:mozart",
+      "kind": "maestro-allievo",
+      "explanation_forward": "Leopold Mozart insegnò composizione e pratica musicale a Wolfgang Amadeus Mozart.",
+      "explanation_reverse": "Wolfgang Amadeus Mozart apprese composizione e pratica musicale da Leopold Mozart.",
+      "evidence_urls": [
+        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/",
+        "https://mozarteum.at/en/wolfgang-amade-mozart"
+      ],
+      "domain": "storico-formazione",
+      "allow_root_mozart_level1": true,
+      "evidence_status": "source_documented_crosschecked_with_mozarteum",
+      "source_original_relation_id": "form-leopold-wolfgang",
+      "original_record": {
+        "id": "form-leopold-wolfgang",
+        "group": "formazione",
+        "source": "compositore-leopold-mozart",
+        "target": "compositore-wolfgang-amadeus-mozart",
+        "kind": "maestro-allievo",
+        "forward": "insegnò composizione e pratica musicale a",
+        "reverse": "apprese composizione e pratica musicale da",
+        "note": "Leopold fu il primo insegnante di composizione e pratica musicale di Wolfgang.",
+        "sources": [
+          "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+        ],
+        "status": "documentato",
+        "formation_review": {
+          "date": "2026-10-20",
+          "batch": "formazione-lotto1-20261020",
+          "scope": "redazione-da-note",
+          "prior_forward": "insegnò a",
+          "prior_reverse": "studiò con",
+          "criterion": "Rendere esplicito il contenuto didattico già presente nelle note; non implica nuova verifica indipendente delle fonti"
+        }
+      }
+    }
+  ],
+  "leopold_adjacent_but_not_automatically_pertinent": [
+    {
+      "source_relation_id": "audit8-leopold-cappella-salisburgo",
+      "predicate": "servizio-corte-arcivescovile",
+      "source_id": "cappella-principesca-salisburgo-settecento",
+      "target_id": "compositore-leopold-mozart",
+      "root_relevance_to_mozart": "not_established_by_this_record",
+      "rooted_search_expansion": "blocked_pending_root_specific_evidence",
+      "original_relation_payload": {
+        "id": "audit8-leopold-cappella-salisburgo",
+        "group": "scuole",
+        "source": "cappella-principesca-salisburgo-settecento",
+        "target": "compositore-leopold-mozart",
+        "kind": "servizio-corte-arcivescovile",
+        "forward": "annoverò fra i propri violinisti e vicekapellmeister",
+        "reverse": "fu violinista e vicekapellmeister nella",
+        "note": "Leopold Mozart svolse una lunga attività nella cappella di corte dell’arcivescovo di Salisburgo, ricoprendo il ruolo di vicekapellmeister e curando la vita strumentale e pedagogica locale. È relazione professionale autonoma dal rapporto padre-figlio con Wolfgang.",
+        "sources": [
+          "https://www.mozarteum.at/en/museums/mozart-residence",
+          "https://www.britannica.com/biography/Leopold-Mozart"
+        ],
+        "status": "documentato",
+        "natura_semantica": "servizio-cappella-salisburghese",
+        "semantic_review": {
+          "date": "2026-10-20",
+          "review_batch": "scuole-lotto4-20261020",
+          "prior_forward": "annoverò come violinista e vicekapellmeister",
+          "prior_reverse": "servì come violinista e vicekapellmeister nella",
+          "prior_status": "documentato",
+          "method": "Qualificazione bilaterale costruita su kind, note storiche e fonti già registrate. Alcune fonti istituzionali verificate a campione; nessuna verifica indipendente sistematica di tutti i 111 rapporti."
+        }
+      }
+    },
+    {
+      "source_relation_id": "audit09-leopold-violinschule",
+      "predicate": "trattato-violinistico-1756",
+      "source_id": "trattato-violino-leopold-1756",
+      "target_id": "compositore-leopold-mozart",
+      "root_relevance_to_mozart": "not_established_by_this_record",
+      "rooted_search_expansion": "blocked_pending_root_specific_evidence",
+      "original_relation_payload": {
+        "id": "audit09-leopold-violinschule",
+        "group": "genealogie",
+        "source": "trattato-violino-leopold-1756",
+        "target": "compositore-leopold-mozart",
+        "kind": "trattato-violinistico-1756",
+        "forward": "documenta un’opera o una pratica musicale di",
+        "reverse": "lasciò una testimonianza musicale nel repertorio di",
+        "note": "Leopold Mozart pubblicò nel 1756 il Versuch einer gründlichen Violinschule, testo capitale di didattica violinistica. Questa relazione è con la codificazione della prassi, non soltanto con il figlio Wolfgang.",
+        "sources": [
+          "https://www.britannica.com/biography/Leopold-Mozart"
+        ],
+        "status": "documentato",
+        "provenance": "ricostruito dal rapporto audit09 originale; fonte da ricontrollare prima del commit",
+        "reconciliation_status": "testo_ricostruito_dal_rapporto_09; URL_e_interpretazione_da_riconvalidare_integralmente"
+      }
+    }
+  ],
+  "expected_ui": {
+    "desktop_hover": "sentence in the proper read direction over every visible arc",
+    "desktop_click": "full card with note, authority and provenance",
+    "mobile_tap": "equivalent full explanatory card",
+    "no_automatic_suggestion": "mere target similarity or historical period/genre/editorial chapter links"
+  },
+  "regression": [
+    {
+      "id": "R-MOZ-01",
+      "root": "pers:mozart",
+      "level": 1,
+      "expected": "pers:leopold-mozart visible as father and teacher",
+      "status": "PENDING_STAGING_INTEGRATION"
+    },
+    {
+      "id": "R-MOZ-02",
+      "root": "pers:mozart",
+      "level": 2,
+      "expected": "court chapel and violin treatise NOT traversed unless independently proven relevant to Wolfgang",
+      "status": "RULE_DOCUMENTED_NOT_EXECUTED"
+    },
+    {
+      "id": "R-MOZ-03",
+      "root": "pers:mozart",
+      "level": 3,
+      "expected": "chapter nodes never shown or traversed, historical periods/genres not indiscriminate hubs",
+      "status": "RULE_DOCUMENTED_NOT_EXECUTED"
+    },
+    {
+      "id": "R-MOZ-04",
+      "root": "pers:leopold-mozart",
+      "level": 1,
+      "expected": "court service and violin treatise can be explored on their own documented significance independent of Wolfgang",
+      "status": "RULE_DOCUMENTED_NOT_EXECUTED"
+    },
+    {
+      "id": "R-MOZ-05",
+      "root": "pers:mozart",
+      "level": 1,
+      "expected": "hover/tap relation explanation reverses as Wolfgang apprese ... da Leopold",
+      "status": "RULE_DOCUMENTED_NOT_EXECUTED"
+    }
+  ]
+}
