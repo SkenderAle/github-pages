@@ -3297,3 +3297,262 @@ Verifica effettuata confrontando i blob del dataset precedenti e successivi: `08
 **QA:** sintassi JSON, preservazione di ID, provenienze e qualità precedenti, identificazione degli archi esaminati e nessuna variazione agli altri 1.449 archi. Non è stato eseguito un collaudo visuale browser su Android/desktop. Il renderer e le pagine del sito restano invariati. La simulazione multilivello 1–5 resta una verifica separata.
 
 **Continuazione:** Lotto 87 da `E0692`, controllando per ogni arco successivo persone, opere, versioni, editori e provenienze prima di eventuali modifiche.
+
+---
+## Lotto 87 — 2026-11-08: Pergolesi, Strauss, Eubie Blake e le due identità Halévy
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0692` | **trattazione_riscontrata** | Melodramma affronta Pergolesi nella trasformazione del teatro comico settecentesco, soprattutto tramite La serva padrona; l'arco documenta la trattazione, non una discendenza stilistica universale. |
+| `E0693` | **richiamo_contestuale** | Opera lirica cita Pergolesi e La serva padrona quale precedente dell'intermezzo settecentesco; il percorso principale della pagina inizia nel 1805, non è una biografia di Pergolesi. |
+| `E0694` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta Johann Strauss figlio nel contesto dell'operetta viennese, accanto a Suppé e Lehár; non confonderlo con Johann Strauss padre né ridurre la sua produzione al solo valzer. |
+| `E0695` | **trattazione_riscontrata** | Dall'operetta a Broadway tratta Eubie Blake, autore delle musiche di Shuffle Along (1921), distinguendo musica, testi di Noble Sissle e libretto di Miller e Lyles. |
+| `E0696` | **richiamo_contestuale** | Romanticismo nomina Fromental Halévy attraverso La Juive nel contesto del grand opéra. Non confondere il compositore con Ludovic Halévy, librettista di Carmen. |
+| `E0697` | **richiamo_contestuale** | Opera lirica richiama Fromental Halévy per La Juive e, separatamente, Ludovic Halévy quale librettista di Carmen; l'omonimia parziale non genera un arco autore-opera fra persone diverse. |
+
+### Fonti storiche di confronto
+- https://www.operadeparis.fr/apropos/histoire/lopera-au-18e-siecle
+- https://nmaahc.si.edu/explore/stories/remembering-milestone-entertainment-history
+
+**Bilancio Lotto 87:** 6 archi esaminati, 3 trattazioni, 3 richiami, 0 sospensioni, 0 riscontri storici nuovi, 0 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 88 — 2026-11-08: Machaut, Monteverdi e Palestrina: opere, attribuzioni, cronologia
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0698` | **trattazione_riscontrata** | Medioevo usa il Kyrie della Messe de Nostre Dame nel laboratorio a quattro voci dell'Ars nova: riscontro esplicito di analisi pratica, non di semplice menzione. |
+| `E0699` | **riscontro_storico_indipendente** | La Bibliothèque nationale de France attribuisce la Messe de Notre Dame a Guillaume de Machaut. La denominazione francese «Messe de Nostre Dame» è una variante storica del titolo, non un'opera differente. |
+| `E0700` | **richiamo_contestuale** | Rinascimento cita esplicitamente l'Orfeo di Monteverdi del 1607 nel passaggio dal madrigale alla monodia; è confronto di soglia, non trattazione estesa dell'opera mantovana. |
+| `E0701` | **trattazione_riscontrata** | Barocco tratta L'Orfeo del 1607, il contesto mantovano e l'edizione a stampa del 1609; titolo e mito non coincidono con l'Orfeo gluckiano. |
+| `E0702` | **trattazione_riscontrata** | Melodramma analizza L'Orfeo di Monteverdi e le pratiche sceniche della corte dei Gonzaga; una delle prime opere mature non coincide con l'invenzione istantanea dell'intero genere. |
+| `E0703` | **richiamo_contestuale** | Teatro del Classicismo richiama L'Orfeo (1607), anche attraverso un ascolto di Gardiner, per confrontarlo con la riforma di Gluck. La sede primaria dell'analisi storica resta Melodramma/Barocco. |
+| `E0704` | **riscontro indipendente preesistente, conservato** | Conservata la verifica indipendente dell'attribuzione della musica de L'Orfeo a Claudio Monteverdi, distinta dal libretto di Alessandro Striggio. |
+| `E0705` | **trattazione_riscontrata** | Rinascimento analizza la Missa Papae Marcelli nel rapporto fra intelligibilità del testo e contrappunto polifonico. L'uso del Kyrie come ascolto non prova la leggenda del salvataggio della polifonia. |
+| `E0706` | **riscontro indipendente preesistente, conservato** | Conservata la verifica indipendente della composizione della Missa Papae Marcelli da parte di Palestrina e della stampa del 1567; la leggenda tridentina resta criticamente distinta. |
+
+### Fonti storiche di confronto
+- https://catalogue.bnf.fr/ark:/12148/cb38368252z
+- https://catalogue.bnf.fr/resultats-autorite-avancee.do?index=OEUV3&numNotice=13898203&pageRech=rat
+
+**Bilancio Lotto 88:** 9 archi esaminati, 4 trattazioni, 2 richiami, 0 sospensioni, 1 riscontri storici nuovi, 2 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 89 — 2026-11-08: Pergolesi e Vivaldi: Stabat Mater, Scanderbeg e Quattro stagioni
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0707` | **trattazione_riscontrata** | Barocco tratta lo Stabat Mater di Pergolesi come scrittura sacra per due voci soliste e archi; non trasformarlo retroattivamente in oratorio corale. |
+| `E0708` | **sospeso** | Melodramma nomina Pergolesi ma non analizza lo Stabat Mater in quanto opera: il collegamento specifico alla composizione resta sospeso. |
+| `E0709` | **riscontro indipendente preesistente, conservato** | Conservata la relazione Pergolesi→Stabat Mater già verificata indipendentemente, con attribuzione dell'opera distinta dal suo contesto di committenza. |
+| `E0710` | **trattazione_riscontrata** | Barocco dedica un dossier a Scanderbeg (RV 732) di Vivaldi, ai frammenti conservati e alle ricostruzioni moderne; il 1718 non documenta l'integrità di una partitura sopravvissuta. |
+| `E0711` | **richiamo_contestuale** | Melodramma cita Scanderbeg come caso breve di fonti frammentarie e rielaborazione moderna; il percorso documentario principale si trova in Barocco. |
+| `E0712` | **riscontro indipendente preesistente, conservato** | Conservata l'attribuzione storica di Scanderbeg a Vivaldi, senza considerare la reinvenzione scenica moderna come originale del 1718. |
+| `E0713` | **trattazione_riscontrata** | Barocco tratta le Quattro stagioni come primi quattro concerti dell'op. 8, con programmi poetici, stagioni distinte e documenti musicali specifici. |
+| `E0714` | **sospeso** | Romanticismo non nomina Le quattro stagioni come opera: la presenza di Vivaldi o di esempi di musica a programma non prova una trattazione diretta. |
+| `E0715` | **riscontro indipendente preesistente, conservato** | Conservata la relazione Vivaldi→quattro concerti dell'op. 8, distinguendo il ciclo dal singolo concerto La primavera. |
+
+### Fonti storiche di confronto
+- https://www.operadeparis.fr/apropos/histoire/lopera-au-18e-siecle
+
+**Bilancio Lotto 89:** 9 archi esaminati, 3 trattazioni, 1 richiami, 2 sospensioni, 0 riscontri storici nuovi, 3 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 90 — 2026-11-08: Passione secondo Matteo, Rameau e comédie-ballet di Lully
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0716` | **trattazione_riscontrata** | Barocco tratta la Matthäus-Passion BWV 244 nella sua costruzione drammatica, con narratore, cori, arie e testimonianze autografe; la Passione non è un'opera lirica messa in scena. |
+| `E0717` | **riscontro indipendente preesistente, conservato** | Conservata l'attribuzione della Passione secondo Matteo a Bach e la distinzione tra i materiali poetici di Picander, il Vangelo e le diverse redazioni musicali. |
+| `E0718` | **richiamo_contestuale** | Barocco cita la suite e alcuni ascolti da Les Indes galantes nel dossier su Rameau, rimandando all'audioteca specialistica; il riferimento non equivale ad analisi integrale dell'opéra-ballet. |
+| `E0719` | **trattazione_riscontrata** | Balletto analizza Les Indes galantes come opéra-ballet di Rameau e confronta allestimenti moderni con il repertorio del Settecento. La coreografia di Cogitore/Dembélé non è testimonianza diretta della danza del 1735. |
+| `E0720` | **riscontro indipendente preesistente, conservato** | Conservata l'attribuzione indipendente della musica di Les Indes galantes a Rameau, distinta dal libretto di Louis Fuzelier. |
+| `E0721` | **sospeso** | Barocco mostra soltanto un link a materiali IMSLP di Le Bourgeois gentilhomme, senza trattare il ruolo della comédie-ballet di Lully e Molière; link non è analisi. |
+| `E0722` | **trattazione_riscontrata** | Balletto esamina Le Bourgeois gentilhomme (1670), la cerimonia turca e l'integrazione di danza, testo e parodia sociale nel teatro di Molière e Lully. |
+| `E0723` | **riscontro indipendente preesistente, conservato** | Conservato il riscontro indipendente della musica composta da Lully per Le Bourgeois gentilhomme e della collaborazione drammaturgica con Molière. |
+
+### Fonti storiche di confronto
+- https://www.operadeparis.fr/apropos/histoire/lopera-au-18e-siecle
+- https://www.operadeparis.fr/saison-19-20/opera/les-indes-galantes
+- https://www.chateauversailles-spectacles.fr/app/uploads/sites/2/2024/01/PROG12-BOURGEOIS-Juin2022-32pages-BD.pdf
+
+**Bilancio Lotto 90:** 8 archi esaminati, 3 trattazioni, 1 richiami, 1 sospensioni, 0 riscontri storici nuovi, 3 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 91 — 2026-11-08: Orfeo ed Euridice di Gluck: redazioni e non-equivalenza delle versioni
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0724` | **trattazione_riscontrata** | Melodramma affronta la riforma di Gluck e Calzabigi attraverso Orfeo ed Euridice (Vienna 1762), distinguendola dalle precedenti opere sullo stesso mito. |
+| `E0725` | **trattazione_riscontrata** | Teatro del Classicismo analizza Orfeo ed Euridice, la vocalità, le Furie, il coro e la riforma teatrale; la redazione viennese del 1762 non è identica alla parigina del 1774. |
+| `E0726` | **richiamo_contestuale** | Classicismo cita e usa in confronti musicali Orfeo ed Euridice di Gluck, ma non ricostruisce nel dettaglio l'intera vicenda delle redazioni e allestimenti. |
+| `E0727` | **sospeso** | Balletto discute Gluck, Angiolini e Don Juan, ma non analizza espressamente Orfeo ed Euridice (1762); relazione specifica alla composizione sospesa. |
+| `E0728` | **riscontro indipendente preesistente, conservato** | Conservato il riscontro indipendente della musica di Gluck per la versione originale viennese del 1762. La Gluck-Gesamtausgabe documenta anche Parma 1769 e la distinta versione parigina 1774. |
+
+### Fonti storiche di confronto
+- https://www.gluck-gesamtausgabe.de/gwv/werkregister/eintrag/work-60.html
+
+**Bilancio Lotto 91:** 5 archi esaminati, 2 trattazioni, 1 richiami, 1 sospensioni, 0 riscontri storici nuovi, 1 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 92 — 2026-11-08: Mozart–Da Ponte: Nozze di Figaro e Don Giovanni
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0729` | **trattazione_riscontrata** | Teatro del Classicismo analizza Le nozze di Figaro di Mozart nel contesto dell'opera buffa, del concertato e dell'azione simultanea; non si confonde con il Barbiere di Rossini o Paisiello. |
+| `E0730` | **richiamo_contestuale** | Classicismo richiama Le nozze di Figaro soprattutto in rapporto al recitativo e alla collaborazione Mozart–Da Ponte, senza una trattazione completa dell'opera. |
+| `E0731` | **trattazione_riscontrata** | Anatomia del melodramma usa il finale del secondo atto delle Nozze di Figaro per mostrare come l'ingresso dei personaggi trasformi un numero d'insieme. |
+| `E0732` | **riscontro indipendente preesistente, conservato** | Conservata la relazione storica Mozart→musica delle Nozze di Figaro (KV 492, 1786), distinta dal libretto di Lorenzo Da Ponte. |
+| `E0733` | **trattazione_riscontrata** | Teatro del Classicismo dedica a Don Giovanni un'analisi centrale del dramma giocoso e della pluralità dei registri; non attribuire la drammaturgia della tradizione di Don Juan al solo Mozart. |
+| `E0734` | **richiamo_contestuale** | Classicismo menziona Don Giovanni per il recitativo e la scrittura mozartiana, ma rimanda implicitamente alla pagina specialistica per trama e scena. |
+| `E0735` | **trattazione_riscontrata** | Anatomia del melodramma analizza il finale di Don Giovanni e la statua del Commendatore, distinguendo l'episodio dall'insieme delle tradizioni letterarie sul personaggio. |
+| `E0736` | **riscontro indipendente preesistente, conservato** | Conservato il riscontro storico della musica di Mozart per Don Giovanni (KV 527, 1787), con libretto distinto di Lorenzo Da Ponte. |
+
+### Fonti storiche di confronto
+- Riscontri indipendenti dei rapporti compositore–opera già conservati nel dataset e fonti primarie/secondarie interne ai capitoli.
+
+**Bilancio Lotto 92:** 8 archi esaminati, 4 trattazioni, 2 richiami, 0 sospensioni, 0 riscontri storici nuovi, 2 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 93 — 2026-11-08: Flauto magico e Creature di Prometeo: Singspiel e balletto non sono opera equivalente
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0737` | **trattazione_riscontrata** | Teatro del Classicismo tratta Il flauto magico / Die Zauberflöte (1791) come Singspiel, con dialoghi parlati, prove iniziatiche e tipi vocali; non appartiene alla trilogia con Da Ponte. |
+| `E0738` | **richiamo_contestuale** | Classicismo cita la Zauberflöte nel contesto culturale e massonico di Mozart, dichiarando che il percorso teatrale approfondito appartiene al capitolo specialistico. |
+| `E0739` | **riscontro indipendente preesistente, conservato** | Conservata la verifica indipendente dell'attribuzione del Flauto magico a Mozart, distinta dal libretto di Emanuel Schikaneder. |
+| `E0740` | **sospeso** | Teatro del Classicismo non nomina Le creature di Prometeo nel testo esaminato: il ponte genericamente teatrale non basta a documentare il balletto. |
+| `E0741` | **trattazione_riscontrata** | Balletto tratta Le creature di Prometeo (1801) di Beethoven e Salvatore Viganò, e il riuso del tema finale nelle Variazioni Eroica e nella Terza Sinfonia. |
+| `E0742` | **sospeso** | Classicismo generale non nomina Le creature di Prometeo né Prometeo come balletto: rimandare al capitolo Balletto anziché costruire una trattazione assente. |
+| `E0743` | **riscontro indipendente preesistente, conservato** | Conservata l'attribuzione a Beethoven della partitura op. 43 per il balletto coreografato da Salvatore Viganò: non equivale alla paternità della coreografia. |
+
+### Fonti storiche di confronto
+- https://www.beethoven.de/en/media/view/6199185397252096/scan/0
+
+**Bilancio Lotto 93:** 7 archi esaminati, 2 trattazioni, 1 richiami, 2 sospensioni, 0 riscontri storici nuovi, 2 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 94 — 2026-11-08: Fidelio e Nona Sinfonia: versioni operistiche e forma sinfonico-vocale
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0744` | **trattazione_riscontrata** | Teatro del Classicismo discute Beethoven e Fidelio come soglia fra convenzioni settecentesche e teatro del riscatto politico, rinviando alla storia più ampia dell'opera lirica. |
+| `E0745` | **trattazione_riscontrata** | Opera lirica approfondisce Fidelio come unico lavoro operistico compiuto di Beethoven nelle redazioni del 1805, 1806 e 1814; le ouverture Leonore I–III e Fidelio non sono un solo oggetto. |
+| `E0746` | **sospeso** | Classicismo generale non nomina Fidelio né Leonore nel testo pubblicato: non attribuirgli la trattazione di quest'opera per semplice vicinanza a Beethoven. |
+| `E0747` | **sospeso** | Romanticismo non contiene una trattazione specifica di Fidelio o Leonore: l'opera è illustrata nei capitoli Teatro del Classicismo e Opera lirica. |
+| `E0748` | **riscontro indipendente preesistente, conservato** | Conservata la verifica indipendente della composizione di Fidelio/Leonore da parte di Beethoven, con versioni distinte del 1805, 1806 e 1814. |
+| `E0749` | **trattazione_riscontrata** | Classicismo approfondisce la Nona sinfonia di Beethoven, la compresenza di voci e orchestra e il contesto della prima del 1824; non identificare il finale corale con un semplice inno. |
+| `E0750` | **trattazione_riscontrata** | Romanticismo analizza il finale della Nona, i recitativi strumentali e la funzione della poesia di Schiller; distingue anche la Nona op. 95 di Dvořák, che è opera differente. |
+| `E0751` | **sospeso** | Risorgimento non tratta la Nona sinfonia di Beethoven: l'uso europeo novecentesco dell'Ode alla gioia non prova un ruolo nella mobilitazione patriottica italiana dell'Ottocento. |
+| `E0752` | **riscontro indipendente preesistente, conservato** | Conservata l'attribuzione della Sinfonia n. 9 op. 125 a Beethoven e la provenienza schilleriana, adattata, del testo del finale. |
+
+### Fonti storiche di confronto
+- https://www.metopera.org/discover/education/educator-guides/fidelio/composer-timeline/
+- https://www.beethoven.de/en/media/view/5839902524571648/Ludwig%2Bvan%2BBeethoven%2C%2BFidelio%2Bop.%2B72%2C%2B3.%2BFassung%2B1814%2C%2BFinale%2Bdes%2B1.%2BAktes%2C%2BPartitur%2C%2B%C3%9Cberpr%C3%BCfte%2BAbschrift
+
+**Bilancio Lotto 94:** 9 archi esaminati, 4 trattazioni, 0 richiami, 3 sospensioni, 0 riscontri storici nuovi, 2 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 95 — 2026-11-08: Canto degli Italiani e Nabucco: paternità e ricezione risorgimentale
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0753` | **trattazione_riscontrata** | Risorgimento studia Il Canto degli Italiani come poesia di Goffredo Mameli messa in musica da Michele Novaro nel 1847, distinta da Suona la tromba (Mameli–Verdi, 1848). |
+| `E0754` | **riscontro_storico_indipendente** | Il Quirinale attribuisce esplicitamente a Michele Novaro la musica del Canto degli Italiani, composto su versi di Goffredo Mameli, a Torino nel 1847. La fonte istituzionale non impone un giorno esatto di composizione autografa. |
+| `E0755` | **trattazione_riscontrata** | Opera lirica tratta Nabucco (1842) nel percorso verdiano, comprendendo il coro Va', pensiero e la sua ricezione: il personaggio biblico e l'inno patriottico retrospettivo non coincidono. |
+| `E0756` | **trattazione_riscontrata** | Risorgimento analizza Nabucco e il coro Va', pensiero distinguendo il testo teatrale del 1842, la ricezione politica e la costruzione successiva del mito nazionale. |
+| `E0757` | **trattazione_riscontrata** | Romanticismo tratta Nabucco e il coro nell'analisi di libertà, memoria e mito patriottico: non attribuisce al Va', pensiero una funzione politica univoca già nel 1842. |
+| `E0758` | **riscontro indipendente preesistente, conservato** | Conservata la verifica indipendente della musica composta da Giuseppe Verdi per Nabucco, distinto dal libretto di Temistocle Solera. |
+
+### Fonti storiche di confronto
+- https://new.quirinale.it/page/inno
+- https://www.treccani.it/enciclopedia/giuseppe-verdi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/enciclopedia/giuseppe-verdi_%28L%27Unificazione%29/
+
+**Bilancio Lotto 95:** 6 archi esaminati, 4 trattazioni, 0 richiami, 0 sospensioni, 1 riscontri storici nuovi, 1 riscontri indipendenti precedenti conservati.
+
+---
+
+## Lotto 96 — 2026-11-08: Traviata, Rigoletto, Aida: scrittura, fonti letterarie e sedi d'analisi
+
+**Metodo:** confronto diretto dei capitoli HTML pubblicati su `main`, distinzione fra analisi, richiamo e collegamento non attestato; riscontri storici autonomi solo per attribuzioni di composizione. Le fonti indipendenti già convalidate non vengono invalidate o riscritte.
+
+| Arco | Esito | Nota storico-filologica |
+| --- | --- | --- |
+| `E0759` | **trattazione_riscontrata** | Opera lirica tratta La traviata come dramma verdiano, con Violetta, le forme vocali e la tensione fra società e desiderio; non ridurla a un'unica aria. |
+| `E0760` | **trattazione_riscontrata** | Anatomia del melodramma analizza la scena di Violetta fra «Ah, fors'è lui» e «Sempre libera» per distinguere cantabile, cabaletta e funzione drammatica. |
+| `E0761` | **richiamo_contestuale** | Romanticismo richiama La traviata nel confronto con Dumas figlio, convenzione sociale e drammaturgia ottocentesca, ma non ne ricostruisce sistematicamente musica e struttura. |
+| `E0762` | **riscontro indipendente preesistente, conservato** | Conservata la verifica indipendente della composizione musicale di La traviata (1853) da parte di Verdi, con libretto distinto di Francesco Maria Piave. |
+| `E0763` | **trattazione_riscontrata** | Opera lirica analizza Rigoletto, i rapporti fra personaggi e il quartetto vocale, distinto dal quartetto d'archi composto da Verdi nel 1873. |
+| `E0764` | **richiamo_contestuale** | Romanticismo cita Rigoletto per il riadattamento di Victor Hugo e il ruolo della censura, senza sviluppare l'analisi musicale dell'opera. |
+| `E0765` | **riscontro indipendente preesistente, conservato** | Conservata la verifica indipendente della musica composta da Verdi per Rigoletto, su libretto di Piave, con prima veneziana del 1851. |
+| `E0766` | **trattazione_riscontrata** | Opera lirica tratta Aida, il contesto di produzione, l'orchestrazione e la particolare scrittura delle trombe. Ambientazione egizia e sedi di prima non definiscono la nazionalità dell'autore. |
+| `E0767` | **sospeso** | Balletto discute le danze operistiche e la grand opéra ma non nomina direttamente Aida: il collegamento alla specifica opera verdiana resta sospeso. |
+| `E0768` | **riscontro indipendente preesistente, conservato** | Conservata la verifica indipendente della musica composta da Verdi per Aida (1871), distinta dal libretto di Antonio Ghislanzoni e dai contributi al soggetto. |
+
+### Fonti storiche di confronto
+- https://www.treccani.it/enciclopedia/giuseppe-verdi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/enciclopedia/giuseppe-verdi_%28L%27Unificazione%29/
+
+**Bilancio Lotto 96:** 10 archi esaminati, 4 trattazioni, 2 richiami, 1 sospensioni, 0 riscontri storici nuovi, 3 riscontri indipendenti precedenti conservati.
+
+---
+### Bilancio dopo i Lotti 87–96
+
+- **77 archi esaminati** (`E0692`–`E0768`), dei quali **58 aggiornati** e **19 rapporti compositore–opera già verificati conservati senza riscriverli**.
+- Esiti: **33 trattazioni riscontrate**, **13 richiami contestuali**, **10 sospensioni**, **2 nuove verifiche indipendenti**, **19 verifiche indipendenti conservate**.
+- Le due attribuzioni indipendenti appena promosse sono `E0699` (Machaut → Messe de Nostre Dame, BnF) e `E0754` (Michele Novaro → Il Canto degli Italiani, Quirinale). Nessuna data autografa esatta viene desunta per Novaro.
+- **Integrità:** 608 nodi, 1520 archi. Zero duplicati di ID nodo, duplicati di ID arco, estremi orfani e triplette (fonte, destinazione, verbo).
+- **Proposte editoriali residue:** 115; **sospensioni totali:** 78; **trattazioni riscontrate:** 221; **richiami contestuali:** 69.
+- **Flag storici indipendenti:** 361, da 359; **gate `riscontro_storico_indipendente`:** 324.
+- **Sospensioni esplicite di questa serie:** `E0708`, `E0714`, `E0721`, `E0727`, `E0740`, `E0742`, `E0746`, `E0747`, `E0751`, `E0767`.
+
+### Verifica dati dei collegamenti diretti visibili in Atlantis
+
+La tabella riproduce il criterio di visibilità **trattazione + menzione** della funzione `tier()` di `index.html`, contato su tutte le relazioni incidenti al nodo (non sui livelli successivi e non su un browser reale).
+
+| Nodo focale | Prima | Dopo |
+| --- | ---: | ---: |
+| Medioevo | 19 | 20 |
+| Rinascimento | 51 | 53 |
+| Barocco | 67 | 68 |
+| Il balletto | 72 | 74 |
+| Teatro del Classicismo | 49 | 52 |
+| Classicismo | 50 | 53 |
+| Opera lirica — da Fidelio a Turandot | 100 | 102 |
+| Romanticismo | 102 | 103 |
+| Risorgimento | 19 | 21 |
+
+**Distinzioni fondamentali da preservare:** Fromental e Ludovic Halévy sono persone diverse; la *Messe de Nostre Dame* non è omonima rispetto alla grafia modernizzata *Notre Dame*; `Orfeo` di Monteverdi (1607) e `Orfeo ed Euridice` di Gluck (1762) non sono la stessa opera; la redazione parigina di Gluck (1774) è diversa dalla viennese; `Le creature di Prometeo` è un balletto; quattro concerti compongono `Le quattro stagioni`. Il titolo *Nona Sinfonia* deve essere disambiguato per compositore.
+
+**Questioni editoriali riutilizzabili:** se si vuole rendere attiva la relazione `Classicismo → Prometeo` occorre aggiungere un richiamo effettivo al capitolo in un intervento separato; lo stesso vale per `Romanticismo → Fidelio`, `Romanticismo → Le quattro stagioni`, `Balletto → Aida` e `Melodramma → Stabat Mater`. Nessuno di questi capitoli è stato modificato.
+
+**Limiti QA:** effettuati controllo dei dati e verifica dei collegamenti di primo livello secondo il filtro effettivo di `index.html`; non eseguita la prova grafica del renderer su Android/desktop e non dichiarato un collaudo interattivo completo dal livello I al V. L'interfaccia Atlantis e il protocollo non sono stati toccati.
+
+**Continuazione:** Lotto 97, a partire da `E0769`; alcuni numeri ID possono essere assenti per precedenti migrazioni, quindi utilizzare gli ID realmente presenti e non creare duplicati.
