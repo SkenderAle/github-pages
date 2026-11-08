@@ -1307,3 +1307,121 @@ Verificare specifici lavori/manoscritti, eventi e relazioni documentali della sc
 
 ### Prossima verifica consigliata
 Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e primo Seicento, Monteverdi e Ottaviano Petrucci. Per le opere a stampa controllare la data dell'edizione specifica e distinguere la prima edizione dalle copie superstiti. Conservare l'origine documentaria delle correzioni per eventuali integrazioni editoriali future.
+
+---
+
+## Lotto 25 — 8 novembre 2026: Monteverdi, madrigale, Petrucci e Odhecaton
+
+**Ambito:** L07-A029–L07-A036, 8 relazioni; controllo storico-filologico indipendente e distinzione fra attribuzione documentata e confronto contestuale. Non sono state cambiate pagine, menu o interfaccia.
+
+| ID | Quality gate | Motivo documentato e limiti della relazione |
+| --- | --- | --- |
+| `L07-A029` | **confronto_non_causale** | Il madrigale a più voci del Cinquecento non cessa alla soglia del 1600: coesiste, nel primo Seicento, con madrigali concertati, organici ridotti, basso continuo e scrittura espressiva sempre più differenziata. È una storia plurale, non l'evoluzione necessaria dell'intero genere in monodia. |
+| `L07-A030` | **riscontro_storico_indipendente** | Claudio Monteverdi pubblicò il primo libro dei madrigali a cinque voci nel 1587, il settimo nel 1619 e l'ottavo, Madrigali guerrieri et amorosi, nel 1638. Le raccolte documentano il passaggio da scritture polifoniche a prassi concertate e rappresentative, non l'abbandono universale della polifonia. |
+| `L07-A031` | **confronto_non_causale** | Nel tardo Cinquecento madrigale polifonico, sperimentazioni espressive sul testo e nuove scritture monodiche sono repertori in relazione, ma il recitar cantando fiorentino non è l'esito meccanico del madrigale. Confronto fra pratiche della parola musicale, non discendenza univoca del teatro musicale. |
+| `L07-A032` | **riscontro_storico_indipendente** | Ottaviano Petrucci pubblicò a Venezia la prima edizione dell'Harmonice musices Odhecaton A nel 1501. La copia digitalizzata dalla Library of Congress è una terza edizione del 1504, non l'esemplare originale del 1501; il primo esemplare superstite dell'edizione del 1501 è incompleto. |
+| `L07-A033` | **riscontro_storico_indipendente** | L'Odhecaton A (Venezia, 1501) è una delle prime grandi raccolte di polifonia prodotte a stampa con caratteri mobili e impresa decisiva nella storia dell'editoria musicale. Non fu la prima comparsa di note musicali a stampa in assoluto, né ogni esemplare oggi consultabile risale alla princeps. |
+| `L07-A034` | **confronto_non_causale** | L'Odhecaton raccoglie soprattutto chansons polifoniche a tre o quattro voci provenienti da più autori; documenta la circolazione di pratiche contrappuntistiche, ma non ogni brano è definibile mediante imitazione sistematica, né il libro coincide con tutta la polifonia rinascimentale. |
+| `L07-A035` | **confronto_non_causale** | La stampa di musica polifonica favorì progressivamente la disponibilità e la circolazione di repertori vocali fra centri europei, pur con costi, accesso selettivo e sopravvivenza della trasmissione manoscritta. Non equivale all'invenzione della diffusione della musica o all'immediata democratizzazione dell'accesso. |
+| `L07-A036` | **confronto_non_causale** | L'Odhecaton è un'antologia a stampa di musiche vocali polifoniche di tradizione quattrocentesca, soprattutto chansons, non una raccolta di madrigali italiani del Cinquecento. È un caso documentato della prima editoria musicale, non il modello unico di tutta la sua produzione vocale. |
+
+### Fonti esterne controllate
+- https://sscm-jscm.org/jscm-issues/volume-18-no-1/claudio-monteverdi-a-chronology/
+- https://www.treccani.it/enciclopedia/claudio-gian-antonio-monteverdi_%28Dizionario-Biografico%29/
+- https://www.treccani.it/enciclopedia/il-madrigale_%28Storia-della-civilta-europea-a-cura-di-Umberto-Eco%29/
+- https://www.fondazionemonteverdi.it/catalogo-pubblicazioni/art/madrigali-guerrieri-e-amorosi-libro-ottavo-1638
+- https://www.treccani.it/enciclopedia/ottaviano-petrucci_%28Dizionario-Biografico%29/
+- https://www.loc.gov/resource/music.musihas-200154768/?st=text
+- https://old-digitalcollections.nypl.org/items/3ccb04c0-67ff-0130-e14f-58d385a7bbd0
+- https://guides.loc.gov/music-anthologies/how-to-search
+- https://www.metmuseum.org/fr/essays/music-in-the-renaissance
+- https://catalogue.bnf.fr/ark:/12148/cb432000723
+
+### Questioni storico-editoriali da conservare
+- **Monteverdi:** la continuità dei libri di madrigali fino al 1638 (ottavo libro) non prova l'abbandono generale della polifonia a vantaggio del recitar cantando.
+- **Petrucci:** l'editore non è l'autore delle composizioni stampate. La princeps dell'Odhecaton è del 1501; Library of Congress e NYPL conservano copie della terza edizione del 1504.
+- **Stampa:** non asserire che Petrucci abbia stampato in assoluto le prime note musicali; l'innovazione riguarda la produzione sistematica di polifonia a caratteri mobili. L'Odhecaton contiene in prevalenza chansons e non madrigali cinquecenteschi.
+- Le categorie di lunga durata non aprono automaticamente percorsi genealogici ai livelli successivi.
+
+---
+
+## Lotto 26 — 8 novembre 2026: trattatistica, Franco-Fiamminghi, Roma e San Marco
+
+**Ambito:** L07-A037–L07-A046, 10 relazioni; controllo storico-filologico indipendente e distinzione fra attribuzione documentata e confronto contestuale. Non sono state cambiate pagine, menu o interfaccia.
+
+| ID | Quality gate | Motivo documentato e limiti della relazione |
+| --- | --- | --- |
+| `L07-A037` | **confronto_non_causale** | I trattati strumentali cinquecenteschi circolarono anche a stampa: la Fontegara di Silvestro Ganassi (Venezia, 1535) e il Tratado de glosas di Diego Ortiz (Roma, 1553) sono esempi specifici di trasmissione scritta di tecniche e diminuzioni. Non tutte le pratiche erano codificate né ogni trattato ebbe medesima diffusione. |
+| `L07-A038` | **confronto_non_causale** | Le fonti didattiche del XVI secolo, come Ganassi e Ortiz, sono documenti primari per ricostruire tecniche, ornamentazione e prassi dell'epoca, e oggi informano scelte interpretative HIP. Un trattato descrive tuttavia una pratica situata; non prescrive un'unica soluzione esecutiva 'autentica' per tutti gli autori e i luoghi. |
+| `L07-A039` | **confronto_non_causale** | Le diverse tradizioni franco-fiamminghe fra Quattrocento e Cinquecento contribuirono alla circolazione europea di repertori, tecniche contrappuntistiche e scrittura imitativa. Non costituirono un'unica scuola con programma immutabile, né ogni componimento appartenente a questi repertori è imitativo. |
+| `L07-A040` | **confronto_non_causale** | Musicisti e repertori dell'area franco-fiamminga operarono in reti europee di corti, cappelle e istituzioni ecclesiastiche. I casi di Josquin a Milano, Roma e nell'orbita estense mostrano la mobilità, senza ridurre tutte le carriere a una stessa filiera di mecenatismo. |
+| `L07-A041` | **riscontro_storico_indipendente** | Josquin des Prez è figura centrale della tradizione compositiva franco-fiamminga fra tardo Quattrocento e primo Cinquecento, attiva su scala europea. La sua biografia attraversa ambienti di cappella e corti; cronologie e attribuzioni di singoli incarichi sono state oggetto di revisioni musicologiche, quindi non vanno irrigidite in un itinerario senza riserve. |
+| `L07-A042` | **riscontro_storico_indipendente** | Giovanni Pierluigi da Palestrina fu nominato cantore della cappella pontificia nel 1555; il 30 luglio dello stesso anno fu allontanato, insieme ad altri, durante la riforma di Paolo IV. Non va confuso questo breve servizio nella Cappella Sistina con le sue cariche più estese alla Cappella Giulia di San Pietro e presso altre basiliche romane. |
+| `L07-A043` | **confronto_non_causale** | Il repertorio della cappella pontificia romana contribuì alla lunga ricezione di un ideale di polifonia sacra associato anche a Palestrina, che nelle teorie e prassi successive viene letto come stile antico. Questa etichetta retrospettiva non coincide con l'intera produzione dei cantori della Cappella Sistina né esaurisce la musica a Roma. |
+| `L07-A044` | **riscontro_storico_indipendente** | La Cappella musicale di San Marco opera storicamente presso la Basilica di San Marco a Venezia, quale istituzione musicale distinta dall'edificio e dalla sua funzione liturgica; la tradizione istituzionale viene documentata fin dagli inizi del XIV secolo. |
+| `L07-A045` | **riscontro_storico_indipendente** | Nella Cappella musicale di San Marco, soprattutto nel XVI secolo, si sviluppò un'importante tradizione di cori spezzati e policoralità, legata a musicisti come Willaert e i Gabrieli, alla pratica vocale e strumentale e alle occasioni cerimoniali. Il fenomeno non fu creato automaticamente dall'architettura né appartenne solo a Venezia. |
+| `L07-A046` | **riscontro_storico_indipendente** | Giovanni Gabrieli fu organista presso la cappella ducale di San Marco dal 1585 fino alla morte, nel 1612. È una relazione professionale specifica; non implica che ricoprisse stabilmente l'ufficio di maestro di cappella. |
+
+### Fonti esterne controllate
+- https://www.treccani.it/enciclopedia/silvestro-di-ganassi_%28Dizionario-Biografico%29/
+- https://www.bne.es/es/colecciones/partituras/partituras-compilaciones/primo-secondo-libro-diego-ortiz-tolletano
+- https://limateneo.com/index.php/Recercare/article/view/76
+- https://www.metmuseum.org/fr/essays/music-in-the-renaissance
+- https://www.treccani.it/enciclopedia/despres-josse-detto-josquin/
+- https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/
+- https://www.basilicasanmarco.it/basilica/tradizione-musicale/
+- https://academic.oup.com/reference/62400/reference-article-abstract/571523757
+- https://www.treccani.it/enciclopedia/giovanni-gabrieli/
+
+### Questioni storico-editoriali da conservare
+- **Ganassi e Ortiz:** Fontegara (Venezia 1535), Tratado de glosas (Roma 1553) descrivono tecniche esecutive situate; sono fonti per HIP ma non manuali normativi universali.
+- **Josquin:** appartenenza franco-fiamminga e attività italiana non devono ridursi a una singola scuola o itinerario professionale rigidamente accertato.
+- **Palestrina:** servizio alla cappella pontificia soltanto nel 1555, terminato il 30 luglio; da distinguere dalla Cappella Giulia e dalle altre istituzioni romane.
+- **Giovanni Gabrieli:** organista di San Marco dal 1585 al 1612, non automaticamente maestro di cappella. Policoralità veneziana non deriva meccanicamente dalla sola architettura.
+
+---
+
+## Lotto 27 — 8 novembre 2026: Giovanni Gabrieli, Sonata pian e forte e sonata strumentale
+
+**Ambito:** L07-A047–L07-A055, 9 relazioni; controllo storico-filologico indipendente e distinzione fra attribuzione documentata e confronto contestuale. Non sono state cambiate pagine, menu o interfaccia.
+
+| ID | Quality gate | Motivo documentato e limiti della relazione |
+| --- | --- | --- |
+| `L07-A047` | **confronto_non_causale** | La policoralità sviluppata a San Marco è un caso eminente di disposizione e dialogo fra gruppi sonori, nell'orizzonte dei 'cori spezzati'. La pratica non coincide esclusivamente con l'acustica della basilica, né ogni musica veneziana o ogni brano di Gabrieli deve essere descritto come policorale. |
+| `L07-A048` | **riscontro_storico_indipendente** | La raccolta a stampa Sacrae symphoniae, libro I (Venezia, 1597) include la Sonata pian e forte a otto parti di Giovanni Gabrieli (catalogo Ch. 175). La data è quella della pubblicazione, non una prova della prima esecuzione nel 1597. |
+| `L07-A049` | **riscontro_storico_indipendente** | Giovanni Gabrieli è il compositore della Sonata pian e forte a otto parti, pubblicata nel primo libro delle Sacrae symphoniae (1597). Il brano non è una forma-sonata classica e non autorizza affermazioni sull'invenzione delle indicazioni dinamiche in assoluto. |
+| `L07-A050` | **riscontro_storico_indipendente** | La Sonata pian e forte (1597) esemplifica l'uso tardocinquecentesco di 'sonata' come brano strumentale, qui per otto parti in due cori. Il titolo non implica né movimenti in forma-sonata né un'orchestrazione ottocentesca. |
+| `L07-A051` | **riscontro_storico_indipendente** | La Sonata pian e forte prevede nel primo dei due gruppi strumentali un cornetto e tre tromboni storici (sackbuts); il cornetto è un aerofono a bocchino distinto dalla moderna cornetta a pistoni. Non si deve sostituire nell'informazione del grafo con una tromba moderna. |
+| `L07-A052` | **riscontro_storico_indipendente** | La Sonata pian e forte dispone complessivamente sei parti di trombone storico, tre per ciascuno dei due cori. Il termine sackbut indica la famiglia storica del trombone a coulisse, non un moderno organico omogeneo di ottoni. |
+| `L07-A053` | **riscontro_storico_indipendente** | La Sonata pian e forte (1597) dispone otto parti in due cori strumentali: il primo con cornetto e tre tromboni, il secondo con uno strumento ad arco della famiglia della viola/violino e tre tromboni. Prevede alternanze, sovrapposizioni e indicazioni piano/forte; è un esempio della policoralità strumentale veneziana, senza prova che la prima esecuzione sia avvenuta dentro San Marco. |
+| `L07-A054` | **confronto_non_causale** | L'uso di 'sonata' nel tardo Cinquecento per musica strumentale appartiene alla storia, molto differenziata, del termine sonata. La sonata barocca e poi classica sviluppano organici e articolazioni mutevoli: il nome comune non prova una forma musicale immutata. |
+| `L07-A055` | **sospeso** | Il termine cinquecentesco 'sonata' designa una composizione da suonare e non il principio formale classicistico di esposizione-sviluppo-ripresa. L'arco negativo verso 'forma-sonata e processi tematici' è sospeso: serve a evitare un errore terminologico, non a generare un percorso navigabile fra generi storicamente distinti. |
+
+### Fonti esterne controllate
+- https://www.basilicasanmarco.it/basilica/tradizione-musicale/
+- https://academic.oup.com/reference/62400/reference-article-abstract/571523757
+- https://imslp.org/wiki/Sonata_pian_e_forte%2C_Ch.175_%28Gabrieli%2C_Giovanni%29
+- https://www.treccani.it/enciclopedia/giovanni-gabrieli/
+- https://natlib.govt.nz/records/22112668
+- https://www.allmusic.com/composition/sacrae-symphoniae-no-6-sonata-pian-e-forte-for-8-parts-c-175-mc0002477790
+- https://www.treccani.it/enciclopedia/sonata/
+- https://www.treccani.it/enciclopedia/sonata_%28Enciclopedia-dei-ragazzi%29/
+- https://www.treccani.it/enciclopedia/sonata_%28Enciclopedia-Italiana%29/
+
+### Questioni storico-editoriali da conservare
+- **Sonata pian e forte:** stampata nelle Sacrae symphoniae I (1597). Non dare per certa una prima esecuzione nel 1597 o una prima esecuzione nella Basilica di San Marco.
+- **Organico originale:** primo coro cornetto + 3 tromboni; secondo coro viola/violino + 3 tromboni. Alcune partiture novecentesche sostituiscono gli strumenti con ottoni moderni: non retroproiettare le trascrizioni nell'originale.
+- **Indicazioni dinamiche:** piano/forte sono esplicite e storicamente notevoli, ma non attribuire a Gabrieli il primo uso assoluto di indicazioni dinamiche.
+- **Forma-sonata:** l'identità del termine 'sonata' in epoche diverse non autorizza l'identità con la forma-sonata classica; l'arco di negazione è sospeso.
+
+### Controlli di integrità e stato dopo Lotto 27
+
+- Lotti 25–27: **27** relazioni esaminate, **14** convalidate con riscontro indipendente, **12** classificate confronti non causali, **1** sospesa.
+- Dataset invariato nelle dimensioni: **608 nodi**, **1.520 relazioni**; nessun ID duplicato, estremità di tutti gli archi esistenti.
+- Gate aggiornati: **225** `riscontro_storico_indipendente`, **176** `candidato_non_fuso`, **317** `proposta_editoriale_revisionata`, **79** `confronto_non_causale`, **48** `sospeso`.
+- Flag autonomo `historical_verified_independently=true`: **260**; non forzare la sua uguaglianza con il gate storico (esistono altre relazioni già confermate con gate specifici).
+- Tutti i collegamenti contestuali sono stati riformulati con `sviluppa_o_illumina`, già escluso dalla propagazione automatica dopo il primo livello secondo la regola del Lotto 21. Il collegamento avversativo `L07-A055` resta sospeso.
+- Fonti, motivazioni, ID precedenti, `previous_quality_gate`, `previous_description`, eventuale `previous_relation` preservati. Nessuna nuova entità, nessun nuovo collegamento, nessuna nuova voce di menu.
+- I controlli del grafo serializzato non equivalgono a collaudo del rendering 3D/WebGL su smartphone o desktop.
+
+**Prossimo gruppo proposto, Lotto 28:** `L07-A056` in avanti: consort, viola da gamba, viola/lira da braccio, violino, ribeca, organistrum/ghironda e violone storico. Distinguere famiglie organologiche, termini storici, filiazioni documentate e semplici analogie.
