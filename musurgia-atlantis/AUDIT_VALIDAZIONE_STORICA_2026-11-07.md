@@ -465,3 +465,24 @@ Le nuove profondità documentano percorsi attraverso produzioni e opere specific
 ### Pubblicazione
 - Dataset: `15b5087e8872efb96f8fea33985cb14a2b34dc2d`
 - Registro: cronologia del presente documento su `main`.
+
+
+### Regressione livelli post-Lotto 7 (dataset remoto)
+
+Test riprodotto sulla logica di esplorazione I–V con i filtri standard `trattazione` e `menzione`, esclusi `candidato_non_fuso`, `proposta_editoriale_revisionata` e `sospeso`. Dal livello II sono attraversabili soltanto relazioni specifiche e nodi intermedi `persona`, `opera`, `nodo-di-senso`, con `allestimento` e `produzione` trattati come opere. **Simulazione della logica sui dati, non collaudo grafico nel browser.**
+
+| Nodo | Prima I / II / III / IV / V | Dopo I / II / III / IV / V |
+| --- | --- | --- |
+| Čajkovskij | 4 / 0 / 0 / 0 / 0 | 6 / 4 / 3 / 0 / 0 |
+| Petipa | 1 / 0 / 0 / 0 / 0 | 4 / 5 / 1 / 0 / 0 |
+| Lev Ivanov | 0 / 0 / 0 / 0 / 0 | 2 / 4 / 3 / 0 / 0 |
+| Riccardo Drigo | 0 / 0 / 0 / 0 / 0 | 1 / 4 / 4 / 0 / 0 |
+| Ravel | 5 / 3 / 2 / 0 / 0 | 6 / 5 / 6 / 12 / 5 |
+| Ida Rubinstein | 1 / 2 / 2 / 1 / 1 | 2 / 4 / 2 / 5 / 13 |
+| Bronislava Nižinskaja | 2 / 1 / 2 / 1 / 1 | 3 / 3 / 2 / 5 / 13 |
+
+I livelli non sono obbligatori: Čajkovskij, Petipa, Ivanov e Drigo arrivano al massimo al III con i soli legami attualmente documentati. La rete di Ravel raggiunge il V senza attraversare capitoli come ponti.
+
+**Integrità confermata sul remoto:** 608 nodi, 1.520 archi, ID univoci, nessun estremo mancante; 139 archi `riscontro_storico_indipendente` e 641 ancora provvisori.
+
+**Nota sulla *Valse*:** Anversa 2 ottobre 1926 e allestimento Nižinskaja–Rubinstein 1929 sono produzioni distinte; nel database manca ancora un nodo specifico per Anversa. Il registro distingue il 15 gennaio 1929 a Monte-Carlo riportato dal programma del Festival Diaghilev e la data del 23 maggio 1929 documentata dalla BnF per Parigi. Non creare un nuovo arco di «prima assoluta» senza modellare le due sedi.
