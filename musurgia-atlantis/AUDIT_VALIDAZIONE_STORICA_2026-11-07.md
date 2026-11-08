@@ -4657,3 +4657,211 @@ Simulazione dei cinque cicli in `buildVisible()`, considerando le sole categorie
 - **Integrità JSON:** 608 nodi, 1520 archi, ID duplicati 0, orfani 0, triplette duplicate 0. Flag indipendenti 388; gate `riscontro_storico_indipendente` 352; sospensioni 125.
 - **Limiti QA:** test statici del codice e del JSON; il comportamento visivo reale deve ancora essere provato manualmente su desktop/Android. Nessuna modifica ai capitoli e nessuna sincronizzazione automatica aggiunta.
 - **Passo successivo:** prova visiva della rete focalizzata su Mozart, Beethoven, Verdi e capitoli-ponte; eventualmente terza passata delle sospensioni più rilevanti con riscontri di pagina e fonti puntuali, non riattivazione massiva.
+
+---
+
+## Lotto 141 — 2026-11-08: Mozart e Da Ponte: Così fan tutte, opera assente nel grafo
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L141-A01` | **H — verifica indipendente** | Mozart compone la musica di Così fan tutte, rappresentata il 26 gennaio 1790 a Vienna; il titolo è distinto da Figaro e Don Giovanni. |
+| `L141-A02` | **H — verifica indipendente** | Lorenzo Da Ponte scrive il libretto originale di Così fan tutte: terza collaborazione operistica completa con Mozart. |
+
+### Fonti indipendenti
+- https://corago.unibo.it/opera/Z000003863
+
+**Bilancio:** 2 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 142 — 2026-11-08: Il flauto magico: il ruolo distinto di Schikaneder
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L142-A01` | **H — verifica indipendente** | Emanuel Schikaneder scrive il libretto tedesco del Flauto magico (1791), distinto dalla musica di Mozart. |
+| `L142-A02` | **H — verifica indipendente** | Schikaneder interpreta Papageno nella prima produzione viennese del 1791; libretto e interpretazione sono due responsabilità diverse. |
+
+### Fonti indipendenti
+- https://www.metopera.org/discover/education/educator-guides/the-magic-flute/the-operas-plot-and-creation/
+- https://www.metopera.org/discover/synopses/the-magic-flute/
+
+**Bilancio:** 2 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 143 — 2026-11-08: I quartetti di Mozart e la dedica a Haydn
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L143-A01` | **H — verifica indipendente** | Mozart compone i sei quartetti K. 387, 421, 428, 458, 464 e 465, pubblicati insieme nel 1785. |
+| `L143-A02` | **H — verifica indipendente** | L'edizione Artaria del 1785 dedica esplicitamente i sei quartetti a Joseph Haydn: omaggio documentato, non rapporto didattico Mozart–Haydn. |
+
+### Fonti indipendenti
+- https://kv.mozarteum.at/en/work/quartet-in-c-5528
+- https://searcharchives.bl.uk/catalog/040-002054175
+
+**Bilancio:** 2 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 144 — 2026-11-08: Mozart e Clementi: confronto pianistico attestato nel 1781
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L144-A01` | **H — verifica indipendente** | Mozart partecipa all'esibizione pianistica con Clementi alla corte di Giuseppe II il 24 dicembre 1781; i resoconti sulla 'vittoria' sono da distinguere dalle testimonianze contemporanee. |
+| `L144-A02` | **H — verifica indipendente** | Clementi si esibisce nella medesima occasione a Vienna; non si deduce da questo incontro una relazione maestro–allievo. |
+| `L144-A03` | **H — verifica indipendente** | Mozart e Clementi sono documentati nello stesso confronto musicale del 24 dicembre 1781: contatto effettivo, non genealogia musicale. |
+
+### Fonti indipendenti
+- https://www.mozartdocuments.org/documents/24-december-1781/
+
+**Bilancio:** 3 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 145 — 2026-11-08: Beethoven e Haydn: insegnamento e dedica delle Sonate op. 2
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L145-A01` | **H — verifica indipendente** | Haydn impartisce lezioni di composizione a Beethoven a Vienna dalla fine del 1792 all'inizio del 1794; il rapporto pedagogico non implica identità stilistica. |
+| `L145-A02` | **H — verifica indipendente** | Beethoven compone le tre sonate per pianoforte op. 2 nel 1794–1795, pubblicate nel 1796. |
+| `L145-A03` | **H — verifica indipendente** | Le tre Sonate op. 2 di Beethoven sono dedicate a Haydn, suo maestro negli anni precedenti. |
+
+### Fonti indipendenti
+- https://www.beethoven.de/en/media/view/5294665553149952
+- https://www.beethoven.de/en/work/view/6583658152460288/Drei%2BSonaten%2Bf%C3%BCr%2BKlavier%2B%26%23040%3Bf-Moll%2C%2BA-Dur%2C%2BC-Dur%26%23041%3B%2Bop.%2B2
+
+**Bilancio:** 3 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 146 — 2026-11-08: Robert e Clara Schumann con Brahms: sostegno professionale documentato
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L146-A01` | **H — verifica indipendente** | Robert Schumann conosce Brahms nel 1853 e ne promuove pubblicamente il talento; il rapporto è documentato, non un'influenza stilistica estesa per presunzione. |
+| `L146-A02` | **H — verifica indipendente** | Clara Schumann esegue e sostiene pubblicamente musiche di Brahms, mantenendo con lui un lungo confronto professionale documentato. |
+
+### Fonti indipendenti
+- https://www.cambridge.org/core/books/abs/clara-and-robert-schumann-in-context/johannes-brahms/0ABDC367E5F3F2A0F4F5EAF634CDCF87
+- https://www.cambridge.org/core/books/abs/brahms-in-context/germany/B24973028403FF41A630A80AE2F61C60
+
+**Bilancio:** 2 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 147 — 2026-11-08: Liszt, Chopin, Wagner e Brahms: incontri e testimonianze precise
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L147-A01` | **H — verifica indipendente** | Liszt e Chopin si conoscono nella Parigi degli anni Trenta; Liszt pubblica un libro su Chopin dopo la sua morte. Non erano necessariamente amici intimi. |
+| `L147-A02` | **H — verifica indipendente** | Liszt è amico e sostenitore di Wagner; Cosima, figlia di Liszt, sposa Wagner nel 1870. L'arco registra rapporto personale, non coincidenza artistica. |
+| `L147-A03` | **H — verifica indipendente** | Nel viaggio del 1853 Brahms presenta sue composizioni anche a Liszt; l'incontro attestato non dimostra adesione alla poetica lisztiana. |
+
+### Fonti indipendenti
+- https://musiclib-exhibits.library.yale.edu/exhibits/chopin/liszt_life_of_chopin.html
+- https://www.metopera.org/discover/education/educator-guides/der-fliegende-hollander/the-operas-plot-creation
+- https://www.cambridge.org/core/books/abs/brahms-in-context/germany/B24973028403FF41A630A80AE2F61C60
+
+**Bilancio:** 3 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 148 — 2026-11-08: Berlioz–Liszt–Schumann: la trascrizione della Symphonie fantastique
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L148-A01` | **H — verifica indipendente** | Liszt trascrive per pianoforte la Symphonie fantastique di Berlioz; prima edizione Schlesinger del 1834, distinto dall'originale orchestrale. |
+| `L148-A02` | **H — verifica indipendente** | La versione pianistica di Liszt rielabora una composizione di Berlioz del 1830, non è una seconda sinfonia autonoma. |
+| `L148-A03` | **H — verifica indipendente** | Schumann utilizza la trascrizione di Liszt nello studio della Symphonie fantastique per la propria recensione: ruolo della circolazione pianistica. |
+
+### Fonti indipendenti
+- https://catalogue.bnf.fr/ark%3A/12148/cb42847439s
+- https://guides.library.yale.edu/c.php?g=1091796&p=7962377
+
+**Bilancio:** 3 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 149 — 2026-11-08: Les Sylphides: Chopin preesistente, Fokine e Ballets Russes
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L149-A01` | **H — verifica indipendente** | Michel Fokine firma la coreografia di Les Sylphides nella versione presentata dai Ballets Russes a Parigi nel 1909. |
+| `L149-A02` | **H — verifica indipendente** | Les Sylphides utilizza brani per pianoforte di Chopin orchestrati e adattati successivamente; Chopin non compose il balletto del 1909. |
+| `L149-A03` | **H — verifica indipendente** | I Ballets Russes di Diaghilev presentano Les Sylphides al Théâtre du Châtelet nel giugno 1909. |
+| `L149-A04` | **H — verifica indipendente** | Stravinskij è fra gli orchestratori di brani chopiniani impiegati nella produzione; non ne compose la musica originale né orchestrò tutto il balletto. |
+
+### Fonti indipendenti
+- https://www.loc.gov/collections/ballets-russes-de-serge-diaghilev/articles-and-essays/works-listing-by-title/l/
+- https://catalogue.bnf.fr/ark%3A/12148/cb396845777
+
+**Bilancio:** 4 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+## Lotto 150 — 2026-11-08: Cinema: tre casi di attribuzione musica-regia senza ponti generici
+
+**Metodo:** aggiunte soltanto relazioni concrete e verificabili. Persone, opere, versioni ed eventi hanno identità separate. Le affinità stilistiche non vengono scambiate per genealogie; gli archi di competizione ed esecuzione sono distinti da quelli di composizione.
+
+| Arco | Riscontro | Precisazione storica |
+| --- | --- | --- |
+| `L150-A01` | **H — verifica indipendente** | Max Steiner compone la partitura originale di King Kong (1933), distinta dagli effetti sonori e dai materiali musicali eventualmente riusati. |
+| `L150-A02` | **H — verifica indipendente** | Nino Rota firma le musiche del film La strada (1954), come documentato nei crediti. |
+| `L150-A03` | **H — verifica indipendente** | Federico Fellini dirige La strada (1954), con musiche di Nino Rota: ruoli distinti. |
+| `L150-A04` | **H — verifica indipendente** | John Williams compone la colonna sonora originale di Jaws (Lo squalo, 1975). |
+| `L150-A05` | **H — verifica indipendente** | Steven Spielberg dirige Jaws (1975); la collaborazione regista–compositore è rappresentata tramite questo film concreto. |
+
+### Fonti indipendenti
+- https://www.loc.gov/item/89716156/
+- https://catalog.afi.com/Film/4005-KING-KONG?cxt=filmography
+- https://www.cinematografo.it/film/la-strada-lfxaouri
+- https://catalog.afi.com/Catalog/moviedetails/55193
+- https://www.afi.com/news/jaws-afi-movie-club/
+
+**Bilancio:** 5 nuovi archi con fonte esplicita; tutti verificati su identità e verbo della relazione, non su analogie tematiche.
+
+---
+
+### Bilancio della ripresa 141–150
+
+- **10 nuovi nodi e 29 nuovi archi, tutti con almeno una fonte esterna identificata**; nessuna sostituzione o modifica ai 1.520 archi precedenti.
+- **Integrità:** nodi 618, archi 1549, duplicati nodo 0, duplicati arco 0, triplette duplicate 0, orfani 0. Relazioni sospese 125; flag di riscontro storico indipendente 417; gate indipendenti 381.
+- **Casi fondamentali:** Così fan tutte: Mozart compone, Da Ponte scrive. Flauto magico: Schikaneder scrive e interpreta Papageno. Mozart/Clementi: documentato confronto di corte, non maestro-allievo. Haydn/Beethoven: insegnamento accertato. Les Sylphides: Chopin musiche preesistenti, Fokine coreografia, Stravinskij orchestrazione parziale. Film: attribuzioni a partiture originali e regie specifiche.
+- **Controllo BFS dati I–V (filtro predefinito, non sessione grafica reale):**
+
+| Nodo focale | Prima I–V | Dopo I–V |
+| --- | --- | --- |
+| Wolfgang Amadeus Mozart | 13 / 17 / 18 / 18 / 18 | 17 / 23 / 26 / 35 / 52 |
+| Ludwig van Beethoven | 17 / 34 / 41 / 41 / 41 | 19 / 37 / 45 / 52 / 57 |
+| Giuseppe Verdi | 22 / 36 / 45 / 49 / 50 | 22 / 36 / 45 / 49 / 50 |
+| Johannes Brahms | 1 / 1 / 1 / 1 / 1 | 4 / 8 / 16 / 20 / 29 |
+| Fryderyk Chopin | 2 / 2 / 2 / 2 / 2 | 4 / 10 / 27 / 42 / 55 |
+| Franz Liszt | 4 / 4 / 4 / 4 / 4 | 8 / 18 / 22 / 31 / 46 |
+| Rinascimento | 59 / 69 / 74 / 76 / 76 | 59 / 69 / 74 / 76 / 76 |
+| Romanticismo | 99 / 162 / 210 / 239 / 255 | 99 / 169 / 220 / 249 / 264 |
+| Il balletto | 74 / 136 / 182 / 214 / 225 | 74 / 142 / 195 / 230 / 240 |
+| Dall’operetta a Broadway | 44 / 48 / 56 / 58 / 58 | 44 / 48 / 56 / 58 / 59 |
+
+- **Limite metodologico:** il percorso di profondità V indica raggiungibilità all'interno delle sole relazioni consentite, non influenza transitiva. I nuovi nodi d'opera possono rendere documentabili percorsi composti, ma non promuovono automaticamente nodi concettuali o capitoli a mediatori storici.
+- **Non modificati:** capitoli didattici, index.html dell'esploratore, protocollo, mappe di fine capitolo. Nessuna sincronizzazione automatica introdotta.
+- **Da verificare con browser reale:** rotazione ed etichette in 3D e fallback canvas Android; qui test solo strutturali e simulazione semantica del percorso.
+- **Prossimo controllo:** cercare archi sospesi per falso negativo solo quando il capitolo o la fonte primaria attesta davvero la relazione; non riattivare per estensione tematica.
