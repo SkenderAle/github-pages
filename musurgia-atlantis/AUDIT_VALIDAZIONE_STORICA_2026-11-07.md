@@ -727,3 +727,31 @@ Tutti e otto gli archi passano da `proposta_editoriale_revisionata` a `riscontro
 ### Lotto successivo
 
 **Lotto 13:** proseguire con attribuzioni musica/teatro e cinema (`Psycho`, `Star Wars`, Morricone, Disney) e riesaminare i restanti rapporti storici duplicati o editoriali senza inferire genealogie per contiguità stilistica.
+
+
+---
+
+## Lotto 13 — 8 novembre 2026: musiche originali cinematografiche (Herrmann, Williams, Morricone)
+
+**Preflight:** `main` @ `91c2a12ecbbe80ab9c18de034e52414f5f15ae8f`. Perimetro selettivo di tre archi autore–film già presenti nel JSON; nessuna modifica a nodi, capitoli, menu, interfaccia, protocollo o sincronizzazione automatica.
+
+| ID | Decisione | Fatto storico documentato |
+| --- | --- | --- |
+| `E0865` | `proposta_editoriale_revisionata` → `riscontro_storico_indipendente` | Bernard Herrmann compone la musica originale di *Psycho* (1960), diretto e prodotto da Hitchcock; attribuzione della partitura, non degli effetti sonori o del montaggio. |
+| `E0868` | `proposta_editoriale_revisionata` → `riscontro_storico_indipendente` | John Williams compone la partitura di *Star Wars* (1977), di George Lucas, interpretata dalla London Symphony Orchestra. Non equiparare temi ricorrenti e prova automatica di una filiazione diretta da Wagner. |
+| `E0871` | `proposta_editoriale_revisionata` → `riscontro_storico_indipendente` | Ennio Morricone compone e dirige le musiche originali di *C'era una volta in America* (1984) di Sergio Leone, che utilizza anche musica preesistente; film, score e canzoni sono entità distinte. |
+
+I tre archi conservano `previous_quality_gate`, `previous_description`, URL precedenti, e aggiungono `verification_note`, `verification_status`, `verified_at`, `historical_verified_independently=true`. Non si introducono archi di influenza diretta fra Wagner, Herrmann, Williams, Morricone o i rispettivi registi.
+
+### Fonti indipendenti
+
+- `E0865`: https://www.afi.com/afis-100-years-of-film-scores/ ; https://silver.afi.com/movies/detail/0100002685/ ; https://www.bfi.org.uk/film/18313136-53d5-53d4-a89b-1d19d24a30f2/psycho
+- `E0868`: https://catalog.afi.com/Catalog/MovieDetails/55187 ; https://www.loc.gov/item/prn-05-087/librarian-names-50-recordings-to-the-2004-registry/2005-04-05/ ; https://blogs.loc.gov/now-see-hear/2022/05/happy-star-wars-day-john-williams-and-the-making-of-a-musical-masterpiece/ ; https://www.oscars.org/oscars/ceremonies/1978/R
+- `E0871`: https://catalog.afi.com/Film/57162-ONCE-UPONATIMEINAMERICA ; https://www.fondazionemorricone.it/colonne-sonore/ ; https://www.fondazionemorricone.it/la-biografia/
+
+### Controlli pre-pubblicazione
+
+- 608 nodi, 1.520 archi; nessun ID duplicato o estremi mancanti; JSON riparsato.
+- `riscontro_storico_indipendente`: **160**; `proposta_editoriale_revisionata`: **320**; `candidato_non_fuso`: **295**.
+- Flag storico booleano: **195** (diverso dai quality gate).
+- Navigazione I–V e lettura del remoto da controllare dopo pubblicazione; verifica dei dati non equivale a test browser 3D.
