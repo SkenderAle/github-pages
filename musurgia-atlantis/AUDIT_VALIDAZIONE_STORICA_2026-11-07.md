@@ -1701,3 +1701,168 @@ Lotto 25: `L07-A029` e successivi, verificando il madrigale fra Cinquecento e pr
 - Conservati `previous_quality_gate`, `previous_relation` dove modificata, `previous_description`, fonti, note e data; nessuna modifica ai capitoli o al protocollo. Il controllo strutturale del grafo non sostituisce un collaudo grafico in browser.
 
 **Lotto 35 suggerito:** continuare sui candidati residui `L03-*` e sui nessi beethoveniani, separando opere, rielaborazioni, collaborazioni, affinità formalistiche e richiami editoriali.
+
+---
+
+## Lotto 35 — 8 novembre 2026: Prometeo, Variazioni op. 35, Eroica e riuso tematico
+
+**Metodo:** verifica distinta fra bibliografia indipendente (attribuzioni, opere, cronologia, ricezioni) e controllo del testo HTML delle pagine di Musurgia Mundi su `main`. Revisione di 9 archi candidati, senza introdurre o eliminare nodi o archi e senza modificare pagine, menu o renderer.
+
+| ID | Gate conclusivo | Riscontro storico-filologico o editoriale |
+| --- | --- | --- |
+| `L03-A02` | **riscontro_storico_indipendente** | Le creature di Prometeo op. 43 (1800–1801), balletto di Beethoven per Salvatore Viganò, comprende il n. 16 Finale; il tema di quel numero è poi riutilizzato in altri lavori beethoveniani. Distinguere la composizione del balletto dalla successiva rielaborazione del materiale. |
+| `L03-A03` | **riscontro_storico_indipendente** | Il Finale n. 16 del Prometeo fornisce materiale tematico per la contredanse WoO 14 n. 7, le Variazioni op. 35 e il movimento conclusivo dell'Eroica. La relazione conserva l'identità del materiale, non l'identità di forma o funzione delle diverse opere. |
+| `L03-A04` | **riscontro_storico_indipendente** | Le Variazioni e fuga op. 35 (1802), per pianoforte, lavorano sul materiale del finale del balletto Prometeo; la trasformazione usa in modo autonomo basso e tema, con quindici variazioni e fuga finale. Non sono la trascrizione del balletto. |
+| `L03-A05` | **riscontro_storico_indipendente** | Nel quarto movimento della Sinfonia n. 3 op. 55 Beethoven rielabora il materiale tematico già impiegato in Prometeo e nell'op. 35, trasformandolo in un finale sinfonico in forma di variazioni. L'arco riguarda il finale, non l'intero impianto eroico della sinfonia. |
+| `L03-A06` | **riscontro_storico_indipendente** | Ludwig van Beethoven compose la Terza Sinfonia in mi bemolle maggiore op. 55, detta Eroica, elaborata soprattutto nel 1803–1804. La storia della dedica e la ricezione politica non autorizzano un unico programma descrittivo per tutti i movimenti. |
+| `L03-A07` | **riscontro_storico_indipendente** | Beethoven compose le quindici variazioni e fuga in mi bemolle maggiore op. 35 per pianoforte nel 1802, su materiale già utilizzato nel finale del Prometeo. Il soprannome Variazioni Eroica è posteriore e va distinto dal titolo originale. |
+| `L03-A08` | **trattazione_diretta_con_ancora_verificata** | Il capitolo Classicismo, sezione #beethoven, esamina l'Eroica come soglia narrativa del linguaggio classico, non come data di fine ufficiale del periodo. La sinfonia è nominata più volte nel testo e nella cronologia. |
+| `L03-A09` | **trattazione_diretta_con_ancora_verificata** | Romanticismo discute direttamente l'Eroica nelle premesse e nella riflessione sul sinfonismo, con proporzioni formali e ideale eroico non ridotti a una trama storica obbligatoria. |
+| `L03-A10` | **trattazione_diretta_con_ancora_verificata** | Balletto, sezione #cap-4, richiama il finale del Prometeo e il suo riuso nell'op. 35 e nel finale della Terza Sinfonia. La pagina colloca questo ponte in una riflessione sul passaggio dal gesto alla musica strumentale. |
+
+### Fonti e riscontri del lotto
+- https://www.lvbeethoven.org/opus043/
+- https://www.cambridge.org/core/books/abs/new-beethoven/prometheus-theme-and-beethovens-shift-from-avoidance-to-embrace-of-possibilities/D1D0D760DA713A8C5BC27F32C6CC4AC5
+- https://www.cambridge.org/core/books/abs/cambridge-companion-to-the-eroica-symphony/after-invention-traces-and-materials-in-the-eroica-finale/5B64B7D6F1144C83F1F62B754C744624
+- https://imslp.org/wiki/Eroica_Variations_Op.35_%28Beethoven%2C_Ludwig_van%29
+- https://www.cambridge.org/core/books/abs/cambridge-companion-to-the-eroica-symphony/who-is-the-hero-the-early-reception-of-the-eroica/5757BA9AAFE043901574FDEF2E8DE87B
+- https://musurgiamundi.com/classicismo/#beethoven
+- https://musurgiamundi.com/romanticismo/#beethoven-caparezza-wellington
+- https://musurgiamundi.com/balletto/#cap-4
+
+### Precisazioni da conservare per future integrazioni editoriali
+- Il materiale tematico del finale di Le creature di Prometeo (1801) riappare nella contredanse WoO 14 n. 7, nelle Variazioni op. 35 (1802) e nel finale dell'Eroica. La bass-line è parte essenziale della trasformazione: non ridurre il rapporto alla mera copia della melodia.
+- Le tre manifestazioni appartengono a contesti diversi: balletto, variazioni pianistiche e sinfonia; l'origine condivisa non rende equivalenti le opere.
+
+**Esiti lotto 35:** L03-A02, L03-A03, L03-A04, L03-A05, L03-A06, L03-A07, L03-A08, L03-A09, L03-A10. 0 archi sospesi; 6 riscontri storici indipendenti; 0 confronti non causali. Conservati i metadati anteriori.
+
+---
+
+## Lotto 36 — 8 novembre 2026: Fidelio, Rettungsoper ed Egmont
+
+**Metodo:** verifica distinta fra bibliografia indipendente (attribuzioni, opere, cronologia, ricezioni) e controllo del testo HTML delle pagine di Musurgia Mundi su `main`. Revisione di 6 archi candidati, senza introdurre o eliminare nodi o archi e senza modificare pagine, menu o renderer.
+
+| ID | Gate conclusivo | Riscontro storico-filologico o editoriale |
+| --- | --- | --- |
+| `L03-A23` | **riscontro_storico_indipendente** | Fidelio appartiene al filone drammatico del salvataggio di un innocente incarcerato, radicato anche nel teatro francese rivoluzionario; Rettungsoper/rescue opera è però un'etichetta storiografica formulata retrospettivamente, non un genere d'epoca con identità istituzionale univoca. |
+| `L03-A24` | **trattazione_diretta_con_ancora_verificata** | Opera lirica, sezione #1-la-nascita-dell-opera-romantica, presenta le redazioni del 1805, 1806 e del 1814 di Fidelio, con la versione del 23 maggio 1814 al Kärntnertortheater quale forma stabilmente entrata in repertorio. |
+| `L03-A25` | **trattazione_diretta_con_ancora_verificata** | Teatro del Classicismo, #beethoven, chiama esplicitamente Fidelio opera di salvataggio o Rettungsoper, trattando liberazione, carcerazione e teatro francese. L'etichetta è storiografica, non prova di un programma politico univoco dell'opera. |
+| `L03-A28` | **riscontro_storico_indipendente** | Beethoven compose nel 1809–1810 le musiche di scena op. 84 per l'Egmont di Goethe, presentate a Vienna il 15 giugno 1810. L'opera teatrale è di Goethe, non un libretto d'opera autonoma di Beethoven. |
+| `L03-A29` | **riscontro_storico_indipendente** | Egmont op. 84 è musica di scena per il dramma parlato di Goethe, con ouverture, intermezzi, canti di Clärchen, melologo e conclusione strumentale; il genere non coincide con un melodramma interamente cantato. |
+| `L03-A30` | **trattazione_diretta_con_ancora_verificata** | Opera lirica tratta espressamente Egmont fra le musiche di scena di Beethoven, in una sezione che ne confronta la funzione teatrale con Fidelio e altre forme destinate al teatro parlato. |
+
+### Fonti e riscontri del lotto
+- https://www.cambridge.org/core/books/abs/rossini-and-postnapoleonic-europe/rossini-beethoven-and-rescue-opera-fidelio-and-la-gazza-ladra/9B6A6901CA649D94F4891543C78E0026
+- https://www.cambridge.org/core/books/abs/cambridge-companion-to-beethoven/beethovens-essay-in-opera-historical-textcritical-and-interpretative-issues-in-fidelio/BBBF0100EDDC63749D046644B941F4C7
+- https://www.metopera.org/discover/education/educator-guides/fidelio/composer-timeline/
+- https://musurgiamundi.com/opera-lirica/#1-la-nascita-dell-opera-romantica
+- https://musurgiamundi.com/teatro-classico/#beethoven
+- https://www.berliner-philharmoniker.de/en/programme-notes/ludwig-van-beethoven-incidental-music-to-goethes-egmont-op-84/
+- https://www.filharmonikusok.hu/en/muvek/egmont-kiserozene-op-84/
+
+### Precisazioni da conservare per future integrazioni editoriali
+- La classificazione di Fidelio come rescue opera/Rettungsoper è storiografica retrospettiva: secondo David Charlton, citato in un volume Cambridge, l'etichetta non è un genere contemporaneo autentico come opera buffa. Distinguere convenzione moderna, modello teatrale francese e versioni 1805, 1806, 1814.
+- Egmont (1809–10) è musica di scena per Goethe con ouverture, entr'actes, canzoni, melologo e sinfonia conclusiva; non una seconda opera lirica di Beethoven. Il progetto di teatro di parola/teatro cantato è fertile per una futura integrazione editoriale.
+
+**Esiti lotto 36:** L03-A23, L03-A24, L03-A25, L03-A28, L03-A29, L03-A30. 0 archi sospesi; 3 riscontri storici indipendenti; 0 confronti non causali. Conservati i metadati anteriori.
+
+---
+
+## Lotto 37 — 8 novembre 2026: Pastorale, pittura sonora ed espressione soggettiva
+
+**Metodo:** verifica distinta fra bibliografia indipendente (attribuzioni, opere, cronologia, ricezioni) e controllo del testo HTML delle pagine di Musurgia Mundi su `main`. Revisione di 4 archi candidati, senza introdurre o eliminare nodi o archi e senza modificare pagine, menu o renderer.
+
+| ID | Gate conclusivo | Riscontro storico-filologico o editoriale |
+| --- | --- | --- |
+| `L03-A31` | **riscontro_storico_indipendente** | Beethoven compose la Sesta Sinfonia in fa maggiore op. 68, Pastorale, presentata a Vienna il 22 dicembre 1808 al Theater an der Wien. I cinque movimenti hanno intestazioni descrittive collegate a situazioni naturali. |
+| `L03-A32` | **riscontro_storico_indipendente** | La Pastorale op. 68 presenta cinque quadri con titoli programmatici, ma Beethoven la definì principalmente espressione del sentimento piuttosto che pittura sonora. L'arco è un esempio qualificato di programma espressivo, non una trascrizione mimetica completa di eventi. |
+| `L03-A33` | **trattazione_diretta_con_ancora_verificata** | Romanticismo discute esplicitamente la Pastorale, la relazione fra descrizione, evocazione e sentimento e i cinque contesti nominati dal compositore, nel quadro del rapporto fra musica strumentale e interpretazione. |
+| `L03-A34` | **trattazione_diretta_con_ancora_verificata** | Classicismo, sezione #beethoven, dedica un passaggio espresso alla Pastorale, intesa come trasformazione sinfonica legata a continuità e percezione più che al solo conflitto eroico. |
+
+### Fonti e riscontri del lotto
+- https://www.berliner-philharmoniker.de/en/programme-notes/ludwig-van-beethoven-symphony-no-6-in-f-major-op-68-pastoral/
+- https://www.esm.rochester.edu/beethoven/symphony-no-6/
+- https://musurgiamundi.com/romanticismo/#beethoven-caparezza-wellington
+- https://musurgiamundi.com/classicismo/#beethoven
+
+### Precisazioni da conservare per future integrazioni editoriali
+- La Sesta Sinfonia op. 68 debuttò il 22 dicembre 1808 al Theater an der Wien, insieme alla Quinta; comprende cinque movimenti con indicazioni di contesto naturale. Il compositore privilegia «più espressione del sentimento che pittura», non una cronaca sonora obbligatoria.
+- Classicismo e Romanticismo la discutono in modi diversi ma reali: la presenza in entrambi i capitoli è testuale, non una dichiarazione che l'opera appartenga a due scuole istituzionali.
+
+**Esiti lotto 37:** L03-A31, L03-A32, L03-A33, L03-A34. 0 archi sospesi; 2 riscontri storici indipendenti; 0 confronti non causali. Conservati i metadati anteriori.
+
+---
+
+## Lotto 38 — 8 novembre 2026: Nona, ricezione dell'Inno alla gioia e ciclo di Lied
+
+**Metodo:** verifica distinta fra bibliografia indipendente (attribuzioni, opere, cronologia, ricezioni) e controllo del testo HTML delle pagine di Musurgia Mundi su `main`. Revisione di 8 archi candidati, senza introdurre o eliminare nodi o archi e senza modificare pagine, menu o renderer.
+
+| ID | Gate conclusivo | Riscontro storico-filologico o editoriale |
+| --- | --- | --- |
+| `L03-A35` | **riscontro_storico_indipendente** | La Nona Sinfonia op. 125, presentata a Vienna il 7 maggio 1824, include nel quarto movimento voci soliste e coro con il testo di Schiller An die Freude; i tre movimenti iniziali sono strumentali. Distinguere tipologia con finale corale da opera lirica. |
+| `L03-A37` | **trattazione_diretta_con_ancora_verificata** | Romanticismo affronta la Nona e l'ingresso del testo di Schiller nel finale, con una specifica guida all'ascolto delle voci e del coro. È una trattazione concreta, non soltanto un riferimento generico al genere sinfonico. |
+| `L03-A38` | **confronto_non_causale** | Una sinfonia può integrare la voce, come dimostra la Nona beethoveniana, ma la categoria sinfonia con intervento corale descrive una variante del genere, non un'altra specie di brano storicamente discendente dal nodo astratto Sinfonia. Il collegamento classificatorio non abilita propagazione storica automatica. |
+| `L03-A39` | **confronto_non_causale** | La melodia del finale della Nona ha ricezione istituzionale come inno europeo: Consiglio d'Europa dal 1972, Comunità europee dal 1985, in versione senza parole. Non fu concepita come inno del Risorgimento né come inno istituzionale europeo nel 1824; il target generale Inno politico e canto civico resta un confronto di ricezioni. |
+| `L03-A40` | **riscontro_storico_indipendente** | Beethoven compose An die ferne Geliebte op. 98 per voce e pianoforte nell'aprile 1816 su sei testi di Alois Jeitteles, pubblicati come Liederkreis: la continuità pianistica e tematica lega i sei Lieder in un'unità organica. |
+| `L03-A42` | **riscontro_storico_indipendente** | An die ferne Geliebte op. 98 è un Liederkreis di sei canti su testi di Alois Jeitteles, pubblicato nel 1816 per voce e pianoforte. Il valore pionieristico per il ciclo liederistico non significa che Beethoven abbia inventato da zero il Lied o qualsiasi forma di raccolta poetica. |
+| `L03-A43` | **trattazione_diretta_con_ancora_verificata** | Classicismo, sezione #lied, tratta An die ferne Geliebte op. 98 per nome, data, poeta, sei Lieder, collegamenti pianistici e natura ciclica; l'opera è analizzata come soglia del futuro ciclo romantico, non come invenzione del Lied. |
+| `L03-A44` | **sospeso** | Romanticismo discute il Lied e i cicli dell'Ottocento, ma nel file romanticismo/index.html corrente non compare An die ferne Geliebte né la corrispondente op. 98 beethoveniana. Il ponte alla singola opera resta proposta futura, non trattazione presente. |
+
+### Fonti e riscontri del lotto
+- https://www.esm.rochester.edu/beethoven/symphony-no-9/
+- https://www.metopera.org/discover/education/educator-guides/fidelio/composer-timeline/
+- https://musurgiamundi.com/romanticismo/#beethoven-caparezza-wellington
+- https://european-union.europa.eu/principles-countries-history/symbols/european-anthem_en
+- https://katalog.beethoven.de/cgi-bin/biblio/hans_en.pl?reccheck=1337&t_show=x
+- https://www.lvbeethoven.it/opus098/
+- https://www.schubertsong.uk/collection/song-cycles-putative-cycles-groups-and-collections/
+- https://musurgiamundi.com/classicismo/#lied
+- https://musurgiamundi.com/romanticismo/#intrecci
+
+### Precisazioni da conservare per future integrazioni editoriali
+- La Nona (7 maggio 1824) è sinfonia con solisti e coro solo nel finale, su Schiller. Il suo tema è adottato come inno europeo nel 1972 dal Consiglio d'Europa e nel 1985 dalle Comunità europee, in versione senza parole; l'adozione non va retroproiettata come intenzione istituzionale di Beethoven.
+- An die ferne Geliebte op. 98 (1816) forma una corona organica di sei Lieder sui versi di Alois Jeitteles; è spesso indicato come primo ciclo liederistico, ma l'etichetta non deve negare precedenti di raccolte strutturate. In Classicismo è trattato esplicitamente, in Romanticismo l'op. 98 non è nominata.
+
+**Esiti lotto 38:** L03-A35, L03-A37, L03-A38, L03-A39, L03-A40, L03-A42, L03-A43, L03-A44. 1 archi sospesi; 3 riscontri storici indipendenti; 2 confronti non causali. Conservati i metadati anteriori.
+
+---
+
+## Lotto 39 — 8 novembre 2026: Quartetto op. 130, Große Fuge, ricezione e canone
+
+**Metodo:** verifica distinta fra bibliografia indipendente (attribuzioni, opere, cronologia, ricezioni) e controllo del testo HTML delle pagine di Musurgia Mundi su `main`. Revisione di 6 archi candidati, senza introdurre o eliminare nodi o archi e senza modificare pagine, menu o renderer.
+
+| ID | Gate conclusivo | Riscontro storico-filologico o editoriale |
+| --- | --- | --- |
+| `L03-A45` | **riscontro_storico_indipendente** | Beethoven compose il Quartetto in si bemolle maggiore op. 130 nel 1825, fra i quartetti commissionati da Nikolaj Galitzin. La prima esecuzione con il finale fugato ebbe luogo il 21 marzo 1826. |
+| `L03-A46` | **riscontro_storico_indipendente** | La Große Fuge fu composta come sesto e ultimo movimento del Quartetto op. 130 ed eseguita in tale posizione il 21 marzo 1826; Beethoven compose poi un finale sostitutivo nell'autunno 1826 e la fuga venne pubblicata separatamente come op. 133 nel 1827. La pressione dell'editore come causa univoca è dibattuta. |
+| `L03-A47` | **riscontro_storico_indipendente** | La Große Fuge op. 133 è musica per quartetto d'archi, originariamente il finale dell'op. 130. La versione per pianoforte a quattro mani è un adattamento successivo distinto, op. 134, e non va scambiata con il testo originario per quattro archi. |
+| `L03-A48` | **sospeso** | Classicismo, sezione #quartetto, discute i quartetti tardi di Beethoven e cita esplicitamente op. 131, ma non il Quartetto op. 130. Non promuovere il rinvio a questa singola opera finché non sia realmente integrata nel testo. |
+| `L03-A49` | **richiamo_contestuale** | Romanticismo presenta Beethoven come riferimento fondamentale per lo sviluppo successivo della forma e dei generi, con rimandi a Schubert, Mendelssohn, Brahms, Bruckner e Mahler; non elabora tuttavia in modo specifico la storia istituzionale del canone beethoveniano. |
+| `L03-A50` | **trattazione_riscontrata** | Classicismo, sezione #classico, esplicita che la canonizzazione di Haydn, Mozart e Beethoven si consolida soprattutto nell'Ottocento e cita la lettura romantica della Quinta da parte di E. T. A. Hoffmann nel 1810; è una trattazione di ricezione storica, non un dato di appartenenza istituzionale contemporanea. |
+
+### Fonti e riscontri del lotto
+- https://www.chambermusicsociety.org/about-the-music/compositions/beethoven-op-130-133
+- https://www.beethoven.de/de/work/view/4922660014260224
+- https://beethovens-werkstatt.de/publications/vergleich-133-134/
+- https://musurgiamundi.com/classicismo/#quartetto
+- https://musurgiamundi.com/romanticismo/#musica-assoluta
+- https://academic.oup.com/book/49279/chapter-abstract/422032618
+- https://musurgiamundi.com/classicismo/#classico
+
+### Precisazioni da conservare per future integrazioni editoriali
+- Il Quartetto op. 130 (1825) ebbe come finale originario la fuga poi edita separatamente come op. 133; il nuovo finale fu scritto nell'autunno 1826. È certa la sostituzione, discussa l'interpretazione delle pressioni dell'editore Artaria; conservare le due letture documentarie senza scioglierle come dato univoco.
+- Classicismo cita come esempio di tardo quartetto soprattutto l'op. 131, non l'op. 130: il ponte specifico all'op. 130 va sospeso. La canonizzazione ottocentesca di Haydn, Mozart e Beethoven è invece effettivamente discussa in Classicismo; Romanticismo riprende l'eredità di Beethoven senza trattare il canone come oggetto esclusivo.
+
+**Esiti lotto 39:** L03-A45, L03-A46, L03-A47, L03-A48, L03-A49, L03-A50. 1 archi sospesi; 3 riscontri storici indipendenti; 0 confronti non causali. Conservati i metadati anteriori.
+
+---
+
+### Controlli complessivi dopo il Lotto 39
+- Dataset: **608 nodi**, **1520 archi**, invariati. JSON serializzato e riparsato; nessun ID duplicato; nessun estremo orfano; 0 doppioni di tripletta esatta fonte–destinazione–verbo.
+- Revisionati nei lotti 35–39 **33** archi candidati: 17 con gate indipendente, 10 trattazioni dirette, 1 trattazioni riscontrate, 1 richiami contestuali, 2 confronti non causali, 2 sospensioni.
+- Gate: 281 riscontri indipendenti; 76 candidati non fusi; 317 proposte editoriali; 101 confronti non causali; 54 sospensioni. Flag `historical_verified_independently=true`: **318** (diverso dal gate).
+- I collegamenti `sospeso` restano nascosti nei filtri predefiniti. Per i confronti di categoria e i rimandi vaghi il verbo generico `sviluppa_o_illumina` impedisce di usarli come ponti storici oltre il livello I, secondo il filtro già presente nel renderer.
+- Nessuna pagina, menu o interfaccia è stata modificata. Il controllo strutturale non equivale al collaudo grafico in browser.
+
+**Lotto 40 suggerito:** esaminare i candidati residui `L04-*` per primo, preservando le distinzioni opera/versione, tradizioni e trattazioni effettive delle pagine.
+
