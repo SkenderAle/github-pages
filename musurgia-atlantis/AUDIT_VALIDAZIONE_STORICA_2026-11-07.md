@@ -2259,3 +2259,46 @@ I confronti non causali `L04-A05`, `A16`, `A23`, `A28`, `A35`, `A39`, `A44`, `A5
 - Il Lotto 45 comprende **9 archi**, la serie 40–49 **59 archi** e rimangono **17 candidati non fusi**, tutti nei blocchi `L01-*` e `L06-*`. I metadati originali dell'arco sono preservati.
 - Diff ricalcolato rispetto al commit conclusivo del Lotto 39: 59 identificativi univoci `L04-*`. Le 11 relazioni precedentemente convalidate nel blocco L04 sono rimaste inalterate.
 
+---
+## Lotto 50 — 8 novembre 2026: rimandi fiorentini e radici plurali del musical
+
+**Metodo:** verifica di quattro sezioni HTML effettive su `main` e confronto con fonti indipendenti (Treccani, Corago, Library of Congress, IBDB) per cinque relazioni storico-culturali. Nessuna modifica ai capitoli, ai menu, alla UI o al protocollo.
+
+| ID | Gate conclusivo | Verifica e precisazione |
+| --- | --- | --- |
+| `L01-A18` | **trattazione_riscontrata** | Rinascimento #firenze: Camerata di Bardi e monodia come contesto della nascita del teatro in musica, non invenzione esclusiva. |
+| `L01-A19` | **trattazione_riscontrata** | Melodramma #camerata: Bardi e Jacopo Corsi sono esplicitamente distinti come circoli storici. |
+| `L01-A23` | **trattazione_riscontrata** | Melodramma #euridice: versione di Peri del 1600 distinta dalla partitura di Caccini sul medesimo testo. |
+| `L01-A24` | **trattazione_riscontrata** | Dafne: corretta l'ancora da #camerata a #euridice; partitura frammentaria e coinvolgimento di Corsi accanto a Peri. |
+| `L06-A015` | **riscontro_storico_indipendente** | Il vaudeville è una delle radici plurali del musical; Shuffle Along deriva anche da uno sketch vaudevillistico. |
+| `L06-A016` | **riscontro_storico_indipendente** | Ragtime e sincopazione appartengono al contesto del primo teatro musicale americano, senza coincidere con jazz e musical. |
+| `L06-A017` | **riscontro_storico_indipendente** | Jazz tap e teatro musicale: Shuffle Along (1921) è un caso documentato, non prova di origine esclusiva. |
+| `L06-A018` | **riscontro_storico_indipendente** | Il teatro afroamericano contribuisce autonomamente al musical di Broadway; Shuffle Along è una produzione storicamente identificata. |
+| `L06-A019` | **confronto_non_causale** | Blackface e minstrelsy: contesto conflittuale di stereotipi e resistenze, non filiazione artistica positiva. Verbo generico per impedire propagazione oltre livello I. |
+
+### Fonti e sezioni
+- https://www.treccani.it/enciclopedia/la-camerata-de-bardi_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/
+- https://www.treccani.it/enciclopedia/jacopo-peri_%28Dizionario-Biografico%29/
+- https://corago.unibo.it/opera/7AN0002699
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/ethnic/african-american-song/
+- https://guides.loc.gov/music-theater-dance-illustrated-guide/music-of-african-americans
+- https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/tap-dance/
+- https://www.ibdb.com/broadway-production/shuffle-along-9073
+- https://musurgiamundi.com/rinascimento/#firenze
+- https://musurgiamundi.com/melodramma/#camerata
+- https://musurgiamundi.com/melodramma/#euridice
+- https://musurgiamundi.com/dall-operetta-a-broadway/#altre-radici
+
+### Precisazioni per il futuro riuso editoriale
+- Camerata de' Bardi e ambiente di Jacopo Corsi non costituiscono un cenacolo unico; distinguere la ricerca teorica e le realizzazioni di Dafne ed Euridice. Per Dafne non confondere testo, autori delle musiche e frammenti conservati.
+- Nel musical americano non vi è una sola genealogia europea: vaudeville, ragtime, jazz e teatro afroamericano compongono storie plurali e intrecciate.
+- *Shuffle Along* debuttò a Broadway il 23 maggio 1921: musiche Eubie Blake, testi cantati Noble Sissle, libretto Flournoy Miller e Aubrey Lyles. Distinguere il contesto razzista del blackface dalle risposte artistiche afroamericane; The Creole Show (1890) e il rifiuto di Sissle e Blake (1919) sono casi da preservare per futura revisione dei capitoli.
+- Il gate «trattazione_riscontrata» per gli archi L01 prova la presenza del tema nelle sezioni attuali, non la convalida indipendente dell'intera pagina.
+
+### Controlli complessivi dopo Lotto 50
+- Sono stati modificati esattamente **9 archi** (4 rimandi di pagina, 4 relazioni con riscontro indipendente, 1 confronto non causale), conservando previous_quality_gate e previous_relation/previous_description quando necessario.
+- JSON serializzato e riparsato: **608 nodi, 1520 archi**; 0 nodi duplicati, 0 ID di arco duplicati, 0 estremi orfani, 0 triplette orientate duplicate.
+- Gate indipendenti **322**, flag indipendenti **359**, confronti non causali **115**, sospensioni **57**, proposte editoriali **317**, candidati non fusi **8**.
+- Residui per Lotto 51: `L06-A071`–`L06-A078` (playback/diegesi, Foley/Mickey Mousing, rimandi fra cinema e capitoli).
+- QA strutturale, non prova visiva su desktop/mobile. Interfaccia e renderer invariati.
