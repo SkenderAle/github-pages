@@ -1,0 +1,674 @@
+{
+  "schema": "musurgia-atlantis-checkpoint04-overlap-semantic-triage-v1",
+  "date": "2026-11-09",
+  "scope": "non-executing comparison of 20 real legacy/Atlantis endpoint overlaps",
+  "input_checkpoint": "CHECKPOINT_RICONCILIAZIONE_03_GRAFI_COMPLETI_2026-11-09.json",
+  "source_blobs": {
+    "legacy_specialist": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+    "atlantis": "4863b3fe263154387de3388c0b813b5f94546f12"
+  },
+  "summary": {
+    "total": 20,
+    "unique_legacy_ids": 20,
+    "unique_atlantis_ids": 16,
+    "classification_counts": {
+      "same_specific_fact": 10,
+      "partial_overlap": 4,
+      "distinct_parallel_fact": 4,
+      "requires_historical_qualification": 2
+    },
+    "automatic_merges": 0,
+    "public_changes": 0
+  },
+  "source_checks": {
+    "source_records_all_exist": true,
+    "atlantis_targets_all_exist": true,
+    "all_statuses_explicit": true,
+    "each_preserved_in_original_direction": true,
+    "all_merge_gates_closed": true,
+    "all_original_source_metadata_preserved": true
+  },
+  "selected_authority_evidence": {
+    "tallis_byrd_scholarly": [
+      "https://api.pageplace.de/preview/DT0400.9781351536950_A30394531/preview-9781351536950_A30394531.pdf",
+      "https://www.chapelroyalhamptoncourt.org.uk/music/musical-heritage/",
+      "https://www.cambridge.org/core/books/abs/tallis-and-byrds-cantiones-sacrae-1575/introduction/B90A49C1E442919A8AC046E65FFE3679"
+    ],
+    "scarlatti": [
+      "https://www.treccani.it/enciclopedia/giuseppe-domenico-scarlatti_%28Dizionario-Biografico%29/",
+      "https://www.treccani.it/enciclopedia/domenico-scarlatti_%28Enciclopedia-dei-ragazzi%29/"
+    ],
+    "messiaen": [
+      "https://brahms.ircam.fr/fr/work/oiseaux-exotiques",
+      "https://www.universaledition.com/en/Works/Oiseaux-exotiques/P0028646"
+    ],
+    "dvorak": [
+      "https://www.berliner-philharmoniker.de/en/stories/dvoraks-path-to-fame/",
+      "https://www.antonin-dvorak.cz/en/index-of-names/brahms-johannes-1833-1897/"
+    ]
+  },
+  "records": [
+    {
+      "source_record_id": "form-haydn-beethoven",
+      "legacy_source": "compositore-joseph-haydn",
+      "legacy_target": "compositore-ludwig-van-beethoven",
+      "legacy_kind": "maestro-allievo",
+      "legacy_forward": "fu maestro di",
+      "legacy_reverse": "studiò con",
+      "legacy_note": "Beethoven prese lezioni da Haydn a Vienna: il rapporto non fu privo di tensioni.",
+      "legacy_sources": [
+        "https://www.britannica.com/biography/Ludwig-van-Beethoven"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L145-A01",
+          "source": "pers:haydn",
+          "target": "pers:beethoven",
+          "relation": "insegna_composizione_a_vienna_1792_1794",
+          "description": "Haydn impartisce lezioni di composizione a Beethoven a Vienna dalla fine del 1792 all'inizio del 1794; il rapporto pedagogico non implica identità stilistica.",
+          "evidence_urls": [
+            "https://www.beethoven.de/en/media/view/5294665553149952"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Insegnamento Haydn→Beethoven: Atlantis circoscrive cronologia viennese, il legacy conserva frase inversa e nota; mantenere entrambe le prove, non due fatti duplicati.",
+      "staging_policy": "reuse_existing_fact_only_after_joint_provenance_mapping",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "coll-wagner-liszt",
+      "legacy_source": "compositore-richard-wagner",
+      "legacy_target": "compositore-franz-liszt",
+      "legacy_kind": "sostegno-artistico",
+      "legacy_forward": "ricevette sostegno da",
+      "legacy_reverse": "sostenne",
+      "legacy_note": "Liszt sostenne Wagner anche durante gli anni di esilio e promosse la diffusione della sua opera.",
+      "legacy_sources": [
+        "https://www.richard-wagner.org/rwvi/en/about-wagner/the-man/",
+        "https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-richard-wagner/franz-liszt/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L147-A02",
+          "source": "pers:liszt",
+          "target": "pers:wagner",
+          "relation": "sostiene_wagner_e_ne_diventa_suocero",
+          "description": "Liszt è amico e sostenitore di Wagner; Cosima, figlia di Liszt, sposa Wagner nel 1870. L'arco registra rapporto personale, non coincidenza artistica.",
+          "evidence_urls": [
+            "https://www.metopera.org/discover/education/educator-guides/der-fliegende-hollander/the-operas-plot-creation"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "partial_overlap",
+      "analysis": "Sostegno di Liszt a Wagner è condiviso, ma il legacy è Wagner→Liszt (ricevette sostegno) e Atlantis Liszt→Wagner (sostenne, più parentela acquisita). Canonicalizzare la direzione SEMANTICA non quella dell'indice; preservare relazione con Cosima separatamente.",
+      "staging_policy": "keep_directional_variants_and_parental_scope",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "coll-clara-robert",
+      "legacy_source": "compositore-clara-schumann",
+      "legacy_target": "compositore-robert-schumann",
+      "legacy_kind": "collaborazione-artistica",
+      "legacy_forward": "interpretò e promosse",
+      "legacy_reverse": "fu interpretato e promosso da",
+      "legacy_note": "Clara fu interprete autorevole e divulgatrice della produzione pianistica di Robert.",
+      "legacy_sources": [
+        "https://www.britannica.com/biography/Clara-Schumann"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L08-A012",
+          "source": "pers:robert-schumann",
+          "target": "pers:clara-schumann",
+          "relation": "collaborano_nell_interpretazione_ed_edizione_musicale",
+          "description": "Robert Schumann e Clara Wieck Schumann sviluppano un rapporto artistico di confronto e collaborazione, oltre al matrimonio. Clara è pianista, compositrice autonoma e interprete di opere di Robert; produce anche trascrizioni e, dopo la morte del marito nel 1856, cura la pubblicazione delle sue opere con l'aiuto di altri musicisti, tra cui Brahms. Non attribuire a Robert le composizioni originali di Clara né fare di Clara una semplice mediatrice passiva.",
+          "evidence_urls": [
+            "https://guides.loc.gov/clara-schumann",
+            "https://guides.loc.gov/clara-schumann/published-scores",
+            "https://www.cambridge.org/core/books/abs/clara-and-robert-schumann-in-context/editing-and-publishing/D244E51C1DF116496D8DF2446560136F",
+            "https://chambermusicsociety.org/about-the-music/composers/clara-schumann"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "partial_overlap",
+      "analysis": "Interpretazione/promozione di Robert da parte di Clara sovrapposta solo parzialmente alla collaborazione e all'editing anche postumo in Atlantis; non retrodatare la collaborazione editoriale postuma alla vita di Robert.",
+      "staging_policy": "retain_specialized_promotional_and_posthumous_claims",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "form-messiaen-boulez",
+      "legacy_source": "compositore-olivier-messiaen",
+      "legacy_target": "compositore-pierre-boulez",
+      "legacy_kind": "maestro-allievo",
+      "legacy_forward": "fu maestro di",
+      "legacy_reverse": "studiò con",
+      "legacy_note": "Boulez studiò al Conservatorio di Parigi con Messiaen, in un percorso che sarebbe poi proseguito verso il serialismo del dopoguerra.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/pierre-boulez/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L180-A01",
+          "source": "pers:messiaen",
+          "target": "pers:pierre-boulez",
+          "relation": "insegna_armonia_a_boulez_dal_1944",
+          "description": "Boulez entra nel 1944 nella classe di armonia di Olivier Messiaen al Conservatorio di Parigi; il rapporto di insegnamento è documentato direttamente.",
+          "evidence_urls": [
+            "https://www.ircam.fr/fr/magazine/la-vie-de-pierre-boulez-en-etincelles",
+            "https://explorethescore.org/pgs/boulez/history_and_context/a_journeyman_composition.html"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Insegnamento Messiaen→Boulez documentato dal 1944; l'altro arco Boulez→Messiaen per Oiseaux exotiques è un fatto diverso e non deve essere fuso con questo.",
+      "staging_policy": "reuse_existing_fact_only_after_joint_provenance_mapping",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "form-schonberg-berg",
+      "legacy_source": "compositore-arnold-schonberg",
+      "legacy_target": "compositore-alban-berg",
+      "legacy_kind": "maestro-allievo",
+      "legacy_forward": "insegnò composizione a",
+      "legacy_reverse": "studiò composizione con",
+      "legacy_note": "Berg studiò composizione con Schönberg dal 1904 al 1910, poi sviluppò una propria sintesi di atonalità, dodecafonia e lirismo romantico.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/alban-berg_%28Enciclopedia-dei-ragazzi%29/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L154-A01",
+          "source": "pers:schonberg",
+          "target": "pers:alban-berg",
+          "relation": "insegna_composizione_a_dal_1904",
+          "description": "Schönberg accoglie Alban Berg come allievo nel 1904, secondo la testimonianza registrata dello stesso maestro.",
+          "evidence_urls": [
+            "https://schoenberg.at/en/collection/holdings/voice-recordings/vr01-sp-145322340"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Studi di Berg con Schönberg dal 1904; la fine 1910 del legacy è cronologia più estesa del dato Atlas, verificarla separatamente senza perdita.",
+      "staging_policy": "retain_extended_chronology_as_source_qualified",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "form-schonberg-webern",
+      "legacy_source": "compositore-arnold-schonberg",
+      "legacy_target": "compositore-anton-webern",
+      "legacy_kind": "maestro-allievo",
+      "legacy_forward": "insegnò composizione a",
+      "legacy_reverse": "studiò composizione con",
+      "legacy_note": "Webern fu allievo di composizione di Schönberg e ne sviluppò il metodo con una propria radicale concentrazione della scrittura musicale.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/anton-von-webern_%28Enciclopedia-Italiana%29/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L179-A01",
+          "source": "pers:schonberg",
+          "target": "pers:anton-webern",
+          "relation": "insegna_composizione_a_webern_1904_1908",
+          "description": "Arnold Schönberg insegna composizione ad Anton Webern fra il 1904 e il 1908; rapporto personale didattico attestato, non semplice appartenenza alla medesima scuola.",
+          "evidence_urls": [
+            "https://anton-webern.ch/en/anton-webern/overview.html",
+            "https://www.universaledition.com/en/Contacts/Anton-Webern/",
+            "https://findingaids.loc.gov/repositories/15/resources/1011"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Formazione di Webern con Schönberg nel periodo 1904–1908; compatibilità documentale, ma entrambe le spiegazioni originali e URL rimangono.",
+      "staging_policy": "reuse_existing_fact_only_after_joint_provenance_mapping",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "coll-schumann-brahms",
+      "legacy_source": "compositore-robert-schumann",
+      "legacy_target": "compositore-johannes-brahms",
+      "legacy_kind": "sostegno-critico",
+      "legacy_forward": "riconobbe e sostenne pubblicamente",
+      "legacy_reverse": "fu presentato al pubblico da",
+      "legacy_note": "Dopo aver ascoltato il ventenne Brahms nel 1853, Robert Schumann gli dedicò il celebre articolo 'Neue Bahnen', decisivo per farne conoscere il talento: un rapporto di sostegno artistico, non di insegnamento.",
+      "legacy_sources": [
+        "https://musiclib-exhibits.library.yale.edu/exhibits/schumann/neue_zeitschrift.html"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L146-A01",
+          "source": "pers:robert-schumann",
+          "target": "pers:brahms",
+          "relation": "promuove_pubblicamente_dal_1853",
+          "description": "Robert Schumann conosce Brahms nel 1853 e ne promuove pubblicamente il talento; il rapporto è documentato, non un'influenza stilistica estesa per presunzione.",
+          "evidence_urls": [
+            "https://www.cambridge.org/core/books/abs/clara-and-robert-schumann-in-context/johannes-brahms/0ABDC367E5F3F2A0F4F5EAF634CDCF87",
+            "https://www.cambridge.org/core/books/abs/brahms-in-context/germany/B24973028403FF41A630A80AE2F61C60"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Sostegno pubblico di Robert Schumann verso Brahms e Neue Bahnen (1853) specificato; non trasformare in maestro-allievo.",
+      "staging_policy": "reuse_existing_fact_only_after_joint_provenance_mapping",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "coll-clara-brahms",
+      "legacy_source": "compositore-clara-schumann",
+      "legacy_target": "compositore-johannes-brahms",
+      "legacy_kind": "amicizia-e-dialogo-artistico",
+      "legacy_forward": "condivise un duraturo dialogo musicale con",
+      "legacy_reverse": "fu legato da un dialogo musicale a",
+      "legacy_note": "Clara Schumann e Brahms stabilirono un rapporto duraturo di fiducia personale e artistica. L'incontro avvenne a Düsseldorf nel 1853, quando Clara e Robert ascoltarono le prime composizioni di Brahms.",
+      "legacy_sources": [
+        "https://musiclib-exhibits.library.yale.edu/exhibits/schumann/neue_zeitschrift.html"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L146-A02",
+          "source": "pers:clara-schumann",
+          "target": "pers:brahms",
+          "relation": "collabora_esegue_e_promuove_repertorio",
+          "description": "Clara Schumann esegue e sostiene pubblicamente musiche di Brahms, mantenendo con lui un lungo confronto professionale documentato.",
+          "evidence_urls": [
+            "https://www.cambridge.org/core/books/abs/clara-and-robert-schumann-in-context/johannes-brahms/0ABDC367E5F3F2A0F4F5EAF634CDCF87"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "partial_overlap",
+      "analysis": "Dialogo personale/artistico Clara↔Brahms e diffusione esecutiva/editoriale in Atlantis coincidono soltanto parzialmente, distinguere amicizia da attività repertoriale.",
+      "staging_policy": "keep_as_parallel_facets",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "coll-brahms-dvorak",
+      "legacy_source": "compositore-johannes-brahms",
+      "legacy_target": "compositore-antonin-dvorak",
+      "legacy_kind": "sostegno-editoriale",
+      "legacy_forward": "sostenne e raccomandò all'editore",
+      "legacy_reverse": "ricevette sostegno e raccomandazione editoriale da",
+      "legacy_note": "Brahms segnalò a Fritz Simrock i Duetti moravi di Dvořák, contribuendo alla loro pubblicazione e alla successiva diffusione internazionale del compositore ceco; i due svilupparono una vera amicizia.",
+      "legacy_sources": [
+        "https://www.berliner-philharmoniker.de/en/stories/dvoraks-path-to-fame/",
+        "https://www.antonin-dvorak.cz/en/index-of-names/brahms-johannes-1833-1897/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L152-A01",
+          "source": "pers:brahms",
+          "target": "pers:antonin-dvorak",
+          "relation": "raccomanda_il_compositore_a_simrock",
+          "description": "Brahms sostiene il giovane Dvořák nel sistema delle borse statali e lo segnala all'editore Fritz Simrock: patrocinio documentato, non discepolato.",
+          "evidence_urls": [
+            "https://www.antonin-dvorak.cz/en/index-of-names/brahms-johannes-1833-1897/"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Raccomandazione Brahms→Dvořák a Fritz Simrock e tutela editoriale; separare dal predicato sinfonico ulteriore infl-brahms-dvorak.",
+      "staging_policy": "reuse_existing_fact_only_after_joint_provenance_mapping",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "infl-brahms-dvorak",
+      "legacy_source": "compositore-johannes-brahms",
+      "legacy_target": "compositore-antonin-dvorak",
+      "legacy_kind": "modello-sinfonico-documentato",
+      "legacy_forward": "fornì un modello sinfonico a",
+      "legacy_reverse": "riprese e trasformò l'esempio sinfonico di",
+      "legacy_note": "Dvořák decise di tornare alla sinfonia dopo aver ascoltato la Terza di Brahms nel 1884, avviando il lavoro sulla propria Settima. È un'influenza musicale specifica, diversa dal sostegno editoriale.",
+      "legacy_sources": [
+        "https://www.berliner-philharmoniker.de/en/stories/dvoraks-path-to-fame/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L152-A01",
+          "source": "pers:brahms",
+          "target": "pers:antonin-dvorak",
+          "relation": "raccomanda_il_compositore_a_simrock",
+          "description": "Brahms sostiene il giovane Dvořák nel sistema delle borse statali e lo segnala all'editore Fritz Simrock: patrocinio documentato, non discepolato.",
+          "evidence_urls": [
+            "https://www.antonin-dvorak.cz/en/index-of-names/brahms-johannes-1833-1897/"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "distinct_parallel_fact",
+      "analysis": "Influenza sulla ripresa del lavoro sinfonico, in particolare dopo ascolto della Terza di Brahms nel 1884; non è il patrocinio presso Simrock che Atlantis già registra. Fonte Berliner Philharmoniker corroborante.",
+      "staging_policy": "retain_as_separate_specific_claim_not_merge",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "form-willaert-zarlino",
+      "legacy_source": "compositore-adriano-willaert",
+      "legacy_target": "compositore-gioseffo-zarlino",
+      "legacy_kind": "insegnamento-documentato",
+      "legacy_forward": "fu maestro di",
+      "legacy_reverse": "studiò con",
+      "legacy_note": "Zarlino si trasferì a Venezia nel 1541 per studiare con Adriano Willaert, prima di succedergli nella tradizione teorica e musicale di San Marco.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/gioseffo-zarlino/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L163-A01",
+          "source": "pers:adriano-willaert",
+          "target": "pers:gioseffo-zarlino",
+          "relation": "insegna_musica_a_zarlino_dal_1541",
+          "description": "Zarlino è documentato come allievo di Willaert a Venezia dal 1541; rapporto didattico e non equivalenza delle loro teorie.",
+          "evidence_urls": [
+            "https://www.treccani.it/enciclopedia/gioseffo-zarlino/",
+            "https://www.basilicasanmarco.it/basilica/tradizione-musicale/"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Allievo Zarlino di Willaert dal 1541: confronti coincidenti a predicato insegnamento, preservare provenienze.",
+      "staging_policy": "reuse_existing_fact_only_after_joint_provenance_mapping",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "form-andrea-giovanni-gabrieli",
+      "legacy_source": "compositore-andrea-gabrieli",
+      "legacy_target": "compositore-giovanni-gabrieli",
+      "legacy_kind": "insegnamento-documentato",
+      "legacy_forward": "seguì la formazione compositiva e organistica di",
+      "legacy_reverse": "si formò nella composizione e nell'organo con",
+      "legacy_note": "Giovanni Gabrieli fu allievo dello zio Andrea nella pratica compositiva e organistica veneziana: qui conta il rapporto didattico, non quello di parentela.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/giovanni-gabrieli/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L08-A010",
+          "source": "pers:andrea-gabrieli",
+          "target": "pers:giovanni-gabrieli",
+          "relation": "e_mentore_e_maestro_di",
+          "description": "Andrea Gabrieli, organista della basilica di San Marco, è zio e maestro di Giovanni Gabrieli. Il rapporto comprende formazione e trasmissione della prassi compositiva veneziana; Giovanni fu attivo anche presso la corte bavarese ed elaborò poi una propria opera autonoma. Non deriva da questo arco un'invenzione individuale di tutta la policoralità.",
+          "evidence_urls": [
+            "https://www.treccani.it/enciclopedia/giovanni-gabrieli/",
+            "https://academic.oup.com/reference/62400/reference-article-abstract/571523757"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Formazione Giovanni da Andrea Gabrieli; l'ulteriore parentela zio–nipote è un predicato distinto che non sostituisce la didattica.",
+      "staging_policy": "retain_teacher_fact_and_distinct_family_predicate",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "lotto05-tallis-byrd",
+      "legacy_source": "compositore-thomas-tallis",
+      "legacy_target": "compositore-william-byrd",
+      "legacy_kind": "maestro-allievo",
+      "legacy_forward": "formò musicalmente",
+      "legacy_reverse": "fu formato musicalmente da",
+      "legacy_note": "Byrd è ricordato come allievo di Tallis dalla tradizione biografica inglese; la documentazione comprende un riferimento poetico contemporaneo alla raccolta congiunta Cantiones sacrae del 1575.",
+      "legacy_sources": [
+        "https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Tallis,_Thomas"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L164-A03",
+          "source": "pers:thomas-tallis",
+          "target": "pers:william-byrd",
+          "relation": "condividono_privilegio_stampa_regio_1575",
+          "description": "Nel 1575 Elisabetta I concede a Tallis e Byrd un privilegio congiunto per la stampa musicale; specifico rapporto editoriale, non documentazione di maestro–allievo.",
+          "evidence_urls": [
+            "https://www.chapelroyalhamptoncourt.org.uk/music/musical-heritage/"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "requires_historical_qualification",
+      "analysis": "Rapporto maestro-allievo nella tradizione biografica, ma prova non conclusiva: John Harley discute ambiguità di 'magister' nel poema del 1575. Atlantis certifica soltanto il privilegio editoriale e NON conferma l'insegnamento.",
+      "staging_policy": "hold_pedagogy_gate_pending_critical_source_review",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "lotto05-tallis-byrd-cantiones",
+      "legacy_source": "compositore-thomas-tallis",
+      "legacy_target": "compositore-william-byrd",
+      "legacy_kind": "edizione-congiunta",
+      "legacy_forward": "pubblicò con",
+      "legacy_reverse": "pubblicò con",
+      "legacy_note": "Nel 1575 Tallis e Byrd ottennero insieme il privilegio di stampa musicale e pubblicarono la raccolta Cantiones sacrae: è un sodalizio editoriale dimostrabile, distinto dall'insegnamento.",
+      "legacy_sources": [
+        "https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Tallis,_Thomas"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L164-A03",
+          "source": "pers:thomas-tallis",
+          "target": "pers:william-byrd",
+          "relation": "condividono_privilegio_stampa_regio_1575",
+          "description": "Nel 1575 Elisabetta I concede a Tallis e Byrd un privilegio congiunto per la stampa musicale; specifico rapporto editoriale, non documentazione di maestro–allievo.",
+          "evidence_urls": [
+            "https://www.chapelroyalhamptoncourt.org.uk/music/musical-heritage/"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "partial_overlap",
+      "analysis": "Privilegio tipografico congiunto 1575 ≠ sola pubblicazione congiunta delle Cantiones sacrae nello stesso anno; eventi correlati da conservare distinti anche se stessi autori.",
+      "staging_policy": "retain_joint_publication_and_royal_privilege_distinct",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "lotto05-alessandro-domenico",
+      "legacy_source": "compositore-alessandro-scarlatti",
+      "legacy_target": "compositore-domenico-scarlatti",
+      "legacy_kind": "maestro-allievo",
+      "legacy_forward": "guidò i primi studi musicali di",
+      "legacy_reverse": "ricevette i primi studi musicali da",
+      "legacy_note": "Domenico Scarlatti apprese musica da Alessandro Scarlatti prima della carriera autonoma; qui viene rappresentato esclusivamente l'insegnamento attestato, non il rapporto biologico tra i due.",
+      "legacy_sources": [
+        "https://www.treccani.it/enciclopedia/domenico-scarlatti_%28Enciclopedia-dei-ragazzi%29/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L08-A011",
+          "source": "pers:alessandro-scarlatti",
+          "target": "pers:domenico-scarlatti",
+          "relation": "orienta_formazione_e_carriera_di",
+          "description": "Alessandro Scarlatti, padre di Domenico, ne orienta le prime scelte professionali e formative: dopo la fase napoletana lo conduce verso Roma e nel 1705 lo invia a Venezia, affidandolo al maestro Francesco Gasparini. Sebbene Domenico sia tradizionalmente definito allievo del padre, non è documentalmente certo chi abbia impartito tutte le sue prime lezioni. Non si convalida un arco di insegnamento diretto continuativo.",
+          "evidence_urls": [
+            "https://www.treccani.it/enciclopedia/domenico-scarlatti/",
+            "https://www.treccani.it/enciclopedia/domenico-scarlatti_%28Enciclopedia-Italiana%29/",
+            "https://academic.oup.com/reference/62400/reference-article-abstract/555402496?login=false"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "requires_historical_qualification",
+      "analysis": "Legacy formula istruzione diretta forte. DBI Treccani (2018) dice verosimilmente formazione curata dal padre; documentato indirizzo formativo e professionale, non ogni lezione diretta/continuativa. Atlantis è già più prudente.",
+      "staging_policy": "hold_strong_direct_instruction_assertion_preserve_source",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "lotto07-messiaen-boulez-oiseaux",
+      "legacy_source": "compositore-pierre-boulez",
+      "legacy_target": "compositore-olivier-messiaen",
+      "legacy_kind": "commissione-oiseaux-exotiques",
+      "legacy_forward": "commissionò un lavoro concertante a",
+      "legacy_reverse": "compose su commissione di",
+      "legacy_note": "IRCAM indica Boulez quale committente di Oiseaux exotiques (1955–56) di Messiaen, destinato al Domaine musical, distinto dal precedente rapporto maestro–allievo.",
+      "legacy_sources": [
+        "https://resources.ircam.fr/fr/work/oiseaux-exotiques"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L180-A01",
+          "source": "pers:messiaen",
+          "target": "pers:pierre-boulez",
+          "relation": "insegna_armonia_a_boulez_dal_1944",
+          "description": "Boulez entra nel 1944 nella classe di armonia di Olivier Messiaen al Conservatorio di Parigi; il rapporto di insegnamento è documentato direttamente.",
+          "evidence_urls": [
+            "https://www.ircam.fr/fr/magazine/la-vie-de-pierre-boulez-en-etincelles",
+            "https://explorethescore.org/pgs/boulez/history_and_context/a_journeyman_composition.html"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "distinct_parallel_fact",
+      "analysis": "Boulez commissiona Oiseaux exotiques a Messiaen (1955–56), confermato da IRCAM e editore Universal Edition. Direzione Boulez→Messiaen opposta al maestro Messiaen→Boulez. Due predicati indipendenti.",
+      "staging_policy": "retain_commission_as_separate_historical_relation",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "audit8d-gershwin-ira",
+      "legacy_source": "compositore-george-gershwin",
+      "legacy_target": "persona-ira-gershwin",
+      "legacy_kind": "compositore-paroliere-broadway",
+      "legacy_forward": "collaborò a musical e canzoni con",
+      "legacy_reverse": "scrisse testi per le musiche di",
+      "legacy_note": "La Library of Congress documenta la collaborazione creativa di George e Ira Gershwin in 15 musical per Broadway, quattro film e Porgy and Bess: un sodalizio artistico, distinto dalla loro parentela.",
+      "legacy_sources": [
+        "https://www.loc.gov/collections/george-and-ira-gershwin-treasures/about-this-collection/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L08-A013",
+          "source": "pers:george-gershwin",
+          "target": "pers:ira-gershwin",
+          "relation": "collaborano_come_compositore_e_paroliere",
+          "description": "George Gershwin e Ira Gershwin collaborano professionalmente come compositore delle musiche e autore dei testi delle canzoni, rispettivamente; Lady, Be Good! (1924) è il loro primo musical completo scritto insieme. La coppia scrive repertori teatrali, canzoni e lavori per il cinema, ma ciascun fratello collaborò anche con altri autori e le singole opere richiedono attributi propri.",
+          "evidence_urls": [
+            "https://www.loc.gov/collections/george-and-ira-gershwin-treasures/about-this-collection/",
+            "https://gershwin.com/the-gershwin-brothers/",
+            "https://findingaids.loc.gov/repositories/15/resources/6841"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "George musiche, Ira versi/testi: collaborazione professionale attestata LOC, indipendente dalla parentela; descrizioni comparabili, conservare dettaglio sulle opere.",
+      "staging_policy": "reuse_existing_fact_only_after_joint_provenance_mapping",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "audit11-chopin-liszt-chants-polonais-s480",
+      "legacy_source": "compositore-frederic-chopin",
+      "legacy_target": "compositore-franz-liszt",
+      "legacy_kind": "six-chants-polonais-s480",
+      "legacy_forward": "fornì materiale musicale rielaborato o commemorato da",
+      "legacy_reverse": "rielaborò, trascrisse o commemorò materiale musicale di",
+      "legacy_note": "Liszt elaborò per pianoforte sei canti polacchi di Chopin op. 74 nei Six Chants polonais S 480.",
+      "legacy_sources": [
+        "https://imslp.org/wiki/6_Polish_Songs%2C_S.480_%28Liszt%2C_Franz%29"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L147-A01",
+          "source": "pers:liszt",
+          "target": "pers:chopin",
+          "relation": "scrive_biografia_del_collega",
+          "description": "Liszt e Chopin si conoscono nella Parigi degli anni Trenta; Liszt pubblica un libro su Chopin dopo la sua morte. Non erano necessariamente amici intimi.",
+          "evidence_urls": [
+            "https://musiclib-exhibits.library.yale.edu/exhibits/chopin/liszt_life_of_chopin.html"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "distinct_parallel_fact",
+      "analysis": "Liszt trascrive Sei canti polacchi op.74 di Chopin (S.480) vs Atlantis registra biografia di Chopin scritta da Liszt. Sono opere e predicati distinti, no merge.",
+      "staging_policy": "retain_transcription_distinct_from_biography",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "audit21-mozart-clementi-gara-vienna-1781",
+      "legacy_source": "compositore-wolfgang-amadeus-mozart",
+      "legacy_target": "compositore-muzio-clementi",
+      "legacy_kind": "confronto-pianistico-corte-vienna-1781",
+      "legacy_forward": "si confrontò pubblicamente al pianoforte con",
+      "legacy_reverse": "si confrontò pubblicamente al pianoforte con",
+      "legacy_note": "Nel 1781 Clementi e Mozart furono protagonisti del celebre confronto musicale alla corte imperiale viennese; l’arco registra l’evento documentato, non una generica rivalità stilistica.",
+      "legacy_sources": [
+        "https://internet.beethoven.de/pdf-sonderausstellung/Wo-man-Ihre-Composition-allen-andern-vorzieht-Brief-Guide.pdf"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L144-A03",
+          "source": "pers:mozart",
+          "target": "pers:clementi",
+          "relation": "si_esibiscono_nello_stesso_confronto_1781",
+          "description": "Mozart e Clementi sono documentati nello stesso confronto musicale del 24 dicembre 1781: contatto effettivo, non genealogia musicale.",
+          "evidence_urls": [
+            "https://www.mozartdocuments.org/documents/24-december-1781/"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "same_specific_fact",
+      "analysis": "Confronto documentato alla corte imperiale viennese il 24 dicembre 1781. Concordano evento e i due partecipanti, non attribuire rivalità stilistica generalizzata.",
+      "staging_policy": "reuse_existing_fact_only_after_joint_provenance_mapping",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    },
+    {
+      "source_record_id": "audit26-clara-brahms-influenza-critica",
+      "legacy_source": "compositore-clara-schumann",
+      "legacy_target": "compositore-johannes-brahms",
+      "legacy_kind": "consiglio-critico-compositivo",
+      "legacy_forward": "fu interlocutrice critica delle composizioni di",
+      "legacy_reverse": "sottopose composizioni al giudizio di",
+      "legacy_note": "La Library of Congress ricorda che Brahms rispettava profondamente il giudizio di Clara Schumann e le sottoponeva composizioni pianistiche per riceverne la critica; l'arco distingue questa funzione dal rapporto personale già catalogato.",
+      "legacy_sources": [
+        "https://blogs.loc.gov/nls-music-notes/2015/04/remembering-the-ladies/"
+      ],
+      "atlantis_matches": [
+        {
+          "id": "L146-A02",
+          "source": "pers:clara-schumann",
+          "target": "pers:brahms",
+          "relation": "collabora_esegue_e_promuove_repertorio",
+          "description": "Clara Schumann esegue e sostiene pubblicamente musiche di Brahms, mantenendo con lui un lungo confronto professionale documentato.",
+          "evidence_urls": [
+            "https://www.cambridge.org/core/books/abs/clara-and-robert-schumann-in-context/johannes-brahms/0ABDC367E5F3F2A0F4F5EAF634CDCF87"
+          ],
+          "quality_gate": "riscontro_storico_indipendente"
+        }
+      ],
+      "classification": "distinct_parallel_fact",
+      "analysis": "Brahms sottopone composizioni a Clara per parere critico: distinto dall'esecuzione/promozione dei suoi lavori da parte di Clara nell'arco Atlantis. Mantenere verso della consulenza.",
+      "staging_policy": "retain_critical_feedback_as_specific_relation",
+      "merge_executed": false,
+      "individual_relation_historically_certified_by_this_checkpoint": false
+    }
+  ],
+  "limits": [
+    "Triage is semantic comparison plus targeted archival checks, not historical certification of all individual claims.",
+    "The equivalence classes describe fact/meaning overlap, not permission to replace notes, directions, sources, or original edge identities.",
+    "No 3D UI/browser, Node --live, prepare/byId, pivot or rooted I-V traversal runtime performed.",
+    "No public graph modified; historical and editorials remain separate."
+  ]
+}
