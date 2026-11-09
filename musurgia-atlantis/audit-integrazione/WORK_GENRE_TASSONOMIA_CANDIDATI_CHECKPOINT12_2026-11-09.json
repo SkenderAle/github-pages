@@ -1,0 +1,86 @@
+{
+  "schema": "atlantis-work-genre-audit-candidates-v1",
+  "date": "2026-11-09",
+  "status": "preview-only-proposals-not-certified_historical_arcs",
+  "work_candidates": [
+    {
+      "work_id": "opera:figaro",
+      "genre_legacy_id": "mm:genere-opera",
+      "specific_genre_legacy_id": "mm:opera-buffa",
+      "label": "Le nozze di Figaro",
+      "relationship": "appartiene_al_genere_operistico",
+      "fact": "Opera buffa e opera teatrale",
+      "supporting_atlantis_edge_ids": [
+        "E0732",
+        "E0729"
+      ],
+      "verification": "requires_work_to_genre_editorial_gate"
+    },
+    {
+      "work_id": "opera:Don-giovanni",
+      "genre_legacy_id": "mm:genere-opera",
+      "specific_genre_legacy_id": "mm:dramma-giocoso",
+      "label": "Don Giovanni",
+      "relationship": "appartiene_al_genere_operistico",
+      "fact": "Dramma giocoso, classificazione attestata dal libretto",
+      "supporting_atlantis_edge_ids": [
+        "E0736",
+        "L02-A06"
+      ],
+      "verification": "requires_work_to_genre_editorial_gate"
+    },
+    {
+      "work_id": "opera:flauto-magico",
+      "genre_legacy_id": "mm:genere-opera",
+      "specific_genre_legacy_id": null,
+      "label": "Il flauto magico",
+      "relationship": "appartiene_al_teatro_operistico",
+      "fact": "Singspiel con dialoghi parlati, non opera buffa né dramma giocoso",
+      "supporting_atlantis_edge_ids": [
+        "E0739",
+        "E0737"
+      ],
+      "verification": "requires_work_to_genre_editorial_gate"
+    },
+    {
+      "work_id": "opera:cosi-fan-tutte-1790",
+      "genre_legacy_id": "mm:genere-opera",
+      "specific_genre_legacy_id": "mm:dramma-giocoso",
+      "label": "Così fan tutte",
+      "relationship": "appartiene_al_genere_operistico",
+      "fact": "Dramma giocoso operistico, Mozart–Da Ponte",
+      "supporting_atlantis_edge_ids": [
+        "L141-A01",
+        "L141-A02"
+      ],
+      "verification": "requires_work_to_genre_editorial_gate"
+    }
+  ],
+  "future_taxonomy_audit": [
+    {
+      "source": "mm:dramma-giocoso",
+      "target": "mm:genere-opera",
+      "proposed_relation": "è_un_sottogenere_del_teatro_operistico",
+      "status": "audit_pending_not_active",
+      "reason": "Dramma giocoso è una tradizione/formulazione di opera, non equivalente all'insieme delle opere. Explicitly requested for later taxonomy review.",
+      "must_not_infer": [
+        "opera_is_always_dramma_giocoso",
+        "all_dramma_giocoso_works_belong_to_mozart"
+      ]
+    },
+    {
+      "source": "mm:opera-buffa",
+      "target": "mm:genere-opera",
+      "proposed_relation": "è_una_tradizione_operistica",
+      "status": "audit_pending_not_active",
+      "reason": "Distinguish opera buffa from dramma giocoso historically; do not collapse."
+    }
+  ],
+  "rules": [
+    "No production changes",
+    "All facts remain proposed until reviewed",
+    "No automatic global classification by composers' genre links",
+    "Preserve specific subgenre distinction",
+    "Do not traverse future taxonomy proposals before certification"
+  ]
+}
