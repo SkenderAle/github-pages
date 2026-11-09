@@ -89,9 +89,20 @@ function makeGraph(host){
     }
     const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
     const size=root?13:n._depth===1?11.5:11;
+    // One Canvas caption, optionally with a classification line on hover/selection.
+    const showType=n.id===hovered||n.id===selected;
+    const catNames={persona:'Persona',opera:'Opera','versione-opera':'Versione d’opera',
+     'parte-di-opera':'Parte d’opera',allestimento:'Allestimento',produzione:'Produzione',
+     'nodo-di-senso':'Nodo di senso',luogo:'Luogo',strumento:'Strumento',
+     'rete-culturale':'Rete culturale','evento-storico':'Evento storico',
+     'documento-storico':'Documento storico',documento:'Documento',capitolo:'Capitolo'};
+    const metadata=showType?(catNames[n.category]||n.category)+(n.subtype?' · '+n.subtype:''):null;
     ctx.font=(root||n._depth===1?'600 ':'500 ')+size+'px system-ui';
-    const labelWidth=Math.ceil(ctx.measureText(label).width+13);
-    const width=Math.min(W-12,labelWidth),height=root?24:21;
+    const nameWidth=ctx.measureText(label).width;
+    ctx.font='10px system-ui';
+    const typeWidth=metadata?ctx.measureText(metadata).width:0;
+    const width=Math.min(W-12,Math.ceil(Math.max(nameWidth,typeWidth)+13));
+    const height=metadata?37:(root?24:21);
     const shift=r+9;
     const candidates=[
       [p.x-width/2,p.y-shift-height],
@@ -121,8 +132,14 @@ function makeGraph(host){
     ctx.fillStyle=root?'rgba(24,43,49,.94)':'rgba(4,19,30,.88)';
     ctx.fillRect(rect.x,rect.y,rect.w,rect.h);
     ctx.fillStyle=root?'#ffe1a1':n._depth===1?'#ecf8f3':'#d7e6e3';
+    ctx.font=(root||n._depth===1?'600 ':'500 ')+size+'px system-ui';
     ctx.textAlign='left';ctx.textBaseline='middle';
-    ctx.fillText(label,rect.x+6,rect.y+rect.h/2,Math.max(10,rect.w-12));
+    ctx.fillText(label,rect.x+6,rect.y+(metadata?13:rect.h/2),Math.max(10,rect.w-12));
+    if(metadata){
+      ctx.fillStyle='#a6d0d0';
+      ctx.font='10px system-ui';
+      ctx.fillText(metadata,rect.x+6,rect.y+rect.h-10,Math.max(10,rect.w-12));
+    }
     ctx.textBaseline='alphabetic';
   }
   function frame(time){
