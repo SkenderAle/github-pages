@@ -1,0 +1,106 @@
+{
+  "schema": "musurgia-atlantis/reconciliation-checkpoint-01-v1",
+  "date": "2026-11-09",
+  "phase": "reconciliation-after-2M-35",
+  "checked_inputs": [
+    {
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_TEST_MOZART_LEOPOLD_FASE2D_2026-11-08.json",
+      "sha": "48d2022f50c0b380215f751fd40eb95a6816a23e"
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/CROSSWALK_CONCETTI_FASE2D_2026-11-08.json",
+      "sha": "eb4395e807f600cdea3cf224756f3f174e1eaebe"
+    }
+  ],
+  "execution_environment": "V8 isolate over complete retrieved staging JSON records; actual assertions executed",
+  "tests": [
+    {
+      "id": "ROOT_01",
+      "status": "PASS",
+      "description": "Root Mozart e candidato Leopold separati"
+    },
+    {
+      "id": "PRED_02",
+      "status": "PASS",
+      "description": "Predicati padre-figlio e maestro-allievo distinti"
+    },
+    {
+      "id": "DIRECTION_03",
+      "status": "PASS",
+      "description": "Testi forward/reverse presenti"
+    },
+    {
+      "id": "PROVENANCE_04",
+      "status": "PASS",
+      "description": "Fonti esplicite per le due relazioni"
+    },
+    {
+      "id": "ROOT_FILTER_05",
+      "status": "PASS",
+      "description": "Due relazioni di Leopold escluse dal pivot Mozart nello staging"
+    },
+    {
+      "id": "ROOT_REVERSE_06",
+      "status": "PASS",
+      "description": "Direzione Leopold verso Wolfgang"
+    },
+    {
+      "id": "CROSS_07",
+      "status": "PASS",
+      "description": "Quattro target distinti"
+    },
+    {
+      "id": "EDITORIAL_08",
+      "status": "PASS",
+      "description": "Partizione storica/editoriale coerente"
+    },
+    {
+      "id": "NO_MERGE_09",
+      "status": "PASS",
+      "description": "Nessun merge registrato"
+    },
+    {
+      "id": "PARALLEL_POLICY_10",
+      "status": "PASS",
+      "description": "Preservazione dei predicati e dei capitoli editoriali"
+    },
+    {
+      "id": "SUM_11",
+      "status": "PASS",
+      "description": "Totale 91 incidenze sorgente"
+    },
+    {
+      "id": "SUM_12",
+      "status": "PASS",
+      "description": "Totale 18 incidenze Atlantis"
+    },
+    {
+      "id": "SUM_13",
+      "status": "PASS",
+      "description": "Totale 13 editoriali"
+    },
+    {
+      "id": "SUM_14",
+      "status": "PASS",
+      "description": "Totale 5 non editoriali"
+    }
+  ],
+  "summary": {
+    "passed": 14,
+    "failed": 0,
+    "source_incident_edge_occurrences": 91,
+    "atlantis_incident_edge_occurrences": 18,
+    "editorial_incident_edge_occurrences": 13,
+    "noneditorial_incident_edge_occurrences": 5
+  },
+  "limit": "Checks validate internal historical staging declarations and counts, not full Atlantis/Atlante JSON graphs, not real runtime selector or UI, and not individual historical truth of every edge",
+  "runtime_gates": {
+    "actual_prepare": "not_executed",
+    "actual_byId": "not_executed",
+    "root_specific_BFS": "not_executed",
+    "node_live": "not_executed",
+    "browser_hover": "not_executed",
+    "android_tap": "not_executed"
+  },
+  "public_graph_changed": false
+}
