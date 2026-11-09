@@ -1248,3 +1248,14 @@ L'utente chiede prosecuzione dopo Lotto 10, mantenendo priorità alla **classifi
 **Controlli:** nuova preview verificata staticamente sul codice JavaScript inline (compilazione riuscita), overlay letto integralmente. **Non ancora collaudati i comportamenti runtime in browser reale/Android; non dichiarare che la grafica è già verificata.** La preview richiede almeno profondità 3 per vedere `Concerto→tipo→opera→autore`, categorie Persone/Opere/Generi e forme abilitate. Verificare search esatta su «Concerto», «Concerto grosso barocco», Corelli, Vivaldi, Bach, Mendelssohn; se la ricerca o i filtri escludono qualcosa correggere prima di estendere.
 
 **Prossima priorità globale:** estendere la tassonomia ad altri generi e forme e soprattutto importare sistematicamente compositore→opera concreta→forme documentate, usando Flaminio con fonti e deduplicazione. Il Checkpoint24 storico-filologico rimane a **74/233**, prossimi **50** alla volta. Produzione `grafo.json`, `atlante3d/`, sito narrativo e 210 lotti storici preservati.
+
+
+### Checkpoint 26 — gerarchie generi e forme oltre «Concerto» (10 novembre 2026)
+
+**Pubblicato su `main`, esclusivamente nello staging `audit-integrazione/`:**
+- `OVERLAY_TASSONOMIA_GLOBALE_CHECKPOINT26_2026-11-10.json` — commit `029431a5f67003bc7d0e2bdf8f3441df2a92a7d8`. Rilette tutte le **50** voci del vocabolario selezionato al Checkpoint11: **16** hanno un `taxonomy.parent` dichiarato, **15** risolti all'interno di quelle 50 voci, **6** già rappresentati dal Checkpoint25 Concerto, **9** nuovi archi classe→classe in staging. Rami: Opera→Opera buffa/seria/semiseria/Dramma giocoso; Tango→Nuevo tango; Sonata→Sonata per viola nel Novecento; Suite→Suite orchestrale novecentesca; Musica da camera→Musica da camera novecentesca; Rapsodia→Rapsodia orchestrale ottocentesca.
+- **Un genitore non risolto nella selezione:** `forma-contrappunto-organistico-tardoottocento` → `polifonia`; verificare grafo sorgente integrale, NON inventare ID o trasformare il riferimento in arco pubblico.
+- `AUDIT_CHECKPOINT26_TASSONOMIA_GLOBALE_2026-11-10.md` — commit `86519e6f34848c70bd0cae25701ef67b72be7a44`, rapporto con conti, limiti e prossimi test.
+- **Stato preciso:** overlay creato e conservato ma NON ancora caricato dalla preview; nessun collaudo grafico live, nessuna classificazione di opere nuova, nessuna modifica ai JSON/HTML di produzione. La gerarchia deve espandersi a partire dalla radice del genere, senza attraversamento genere→autori estranei nella rete personale. I 210 lotti storici restano intatti.
+
+**Prossima ripresa:** integrare e testare il nuovo overlay nella sola preview, con deduplicazione Checkpoint25; poi ampliare il controllo a TUTTI i termini della federazione, non soltanto alle 50 voci Checkpoint11, e collegare compositore→opera specifica→generi documentati con fonti. Checkpoint24 resta **74/233** archi persona↔persona esaminati, prossimo lotto da **50** a parte.
