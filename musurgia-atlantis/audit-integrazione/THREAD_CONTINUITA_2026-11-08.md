@@ -720,3 +720,23 @@ L'utente propone, per **ogni ricerca**, un'impostazione differente dei livelli d
 **Limite ancora sostanziale:** i tre grafi pubblici monolitici (`atlante3d/database/grafo.json`, `atlante3d/database/relazioni.json`, `musurgia-atlantis/grafo.json`) sono troppo grandi per il contenuto restituito dal connettore attuale; non ancora effettuato il loro confronto **diretto** integrale né `prepare`/`byId` runtime, vera navigazione I–V, Node `--live`, hover desktop, tap Android. Il fatto di aver letto tutti i 3.856 record **di staging** non certifica un merge pronto.
 
 **Prossima ripresa — Checkpoint 03:** eseguire lo script Node in ambiente con clone completo del repository; verificare presenza reale degli ID Atlantis e confrontare 3 JSON di produzione, endpoint/predicati/direzione/fonti e incidenze. Poi implementare ed eseguire filtro radicato per tipologia I–V e UI su browser/Android. Non modificare produzione senza certificazione.
+
+
+### Riconciliazione — Checkpoint 03 · accesso INTEGRALE ai JSON pubblici, confronti diretti (9 novembre 2026)
+**ESEGUITO in V8**, produzione invariata; nuovi documenti sul branch `main` soltanto in `audit-integrazione/`:
+- `CHECKPOINT_RICONCILIAZIONE_03_GRAFI_COMPLETI_2026-11-09.json` — commit `025d7fce1b9eecc7b3c7a20704028f0420c553b4`, registro dettagliato di **22/22 asserzioni PASS**; archivio dei 20 record sovrapposti.
+- `AUDIT_RICONCILIAZIONE_CHECKPOINT03_2026-11-09.md` — commit `edd817d55bc977f29cc1a826fb3d44206b8844fd`, verbale con limiti.
+
+**Sblocco tecnico decisivo:** le fetch ordinarie dei 3 JSON grandi restituivano contenuto vuoto, ma i **blob Git per SHA** hanno restituito il contenuto integrale. Verificati direttamente `atlante3d/database/grafo.json` (**869 nodi / 2.437 archi**, blob `57c65e20...`), `atlante3d/database/relazioni.json` (**1.389**, blob `b25f0487...`), `musurgia-atlantis/grafo.json` (**754 nodi / 1.718 archi**, blob `4863b3fe...`), oltre a `integrazione-operetta-musical.json` (**15 nodi dichiarati / 30 relazioni**). **0 estremità orfane** nei quattro insiemi.
+
+**Test 3.856/3.856:** confrontate *una per una* le relazioni dei **11 file di staging** (5 base + 5 specialistici + 1 estensione) con le tre sorgenti originali di archi, all'indice originario: **2.437 + 1.389 + 30 payload esattamente uguali** (incluse note, fonti e frasi dove presenti); nessuna normalizzazione o perdita. Questo non conferma la verità storica di ogni arco.
+
+**Persone:** confronto degli ID effettivi del grafo Atlantis: **162** equivalenze di identità già documentate hanno tutte target esistente e distinto, **347** ulteriori candidati fonte hanno ID proposti senza collisione. I 509 record si partizionano senza residui. I quattro ID concettuali del crosswalk sono presenti nei rispettivi grafi, ma **nessun merge**.
+
+**Sovrapposizioni effettive:** **20** relazioni specialistiche fonte su **16** coppie di estremi coincidono con coppie già esistenti in Atlantis; non equivale a 20 relazioni identiche. **0** collisioni di coppie per gli archi base/estensione nel mapping conservativo applicato. Le 20 schede del JSON riportano predicati e gate, da certificare semanticamente una per una prima di qualsiasi deduplicazione.
+
+**Mozart–Leopold:** Mozart pubblico ha 17 archi diretti: **8** storici indipendentemente verificati e **9** puramente editoriali ai capitoli. Leopold ha 3 relazioni specialistiche nell'originale (insegnamento a Wolfgang, cappella di Salisburgo, trattato 1756) e NON è ancora presente come nodo pubblico Atlantis. `E0732` (Mozart→*Figaro*) e `E0874` (Da Ponte→*Figaro*) sono presenti e verificati: esempio positivo di cammino via opera specifica, non autorizzazione di una BFS indiscriminata.
+
+**LIMITI IMPORTANTI:** il test V8 è ora sui **veri JSON integrali**; non è un'esecuzione Node `--live`, né test dell'implementazione `prepare`/`byId`, pivot, filtro I–V, hover browser o tap Android. Non dichiararli completati. Il test di confronto dei 20 predicati/fonti non è ancora stato deciso; nessuna modifica ai grafi, nessuna fusione e nessun arco nuovo autorizzato.
+
+**PROSSIMA RIPRESA — Checkpoint 04:** sfruttare l'accesso diretto ai blob per **analizzare predicato, verso, cronologia e fonti di tutte le 20 sovrapposizioni**, classificando identità, parallelismi distinti e conflitti senza cancellazioni; poi costruire/testare in staging un algoritmo di pertinenza radicata con profondità indipendente per tipo e pivot, collaudare `prepare`/`byId`, esecuzione Node e UI. Proteggere le 210 campagne storico-filologiche, 3.856 relazioni legacy, 1.718 Atlantis, 509 persone, 115 media/207 associazioni, 537 URL con ancora, tooltip `forward/reverse` e distinzione assoluta fra capitoli editoriali e grafo storico.
