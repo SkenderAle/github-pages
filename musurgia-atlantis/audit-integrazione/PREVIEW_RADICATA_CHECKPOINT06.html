@@ -193,7 +193,7 @@ function selected(id){
   const info=renderer.relationDetail(edge,id);
   if(info.phrase)item.append(makeEl("small",info.phrase));
   if(info.description)item.append(makeEl("small",info.description));
-  if(info.note)item.append(makeEl("small",info.note));
+  if(info.note&&info.note!==info.description)item.append(makeEl("small",info.note));
   const meaning=edge.statement_type==="legacy_catalogue"?"GENERI E FORME · catalogo legacy Musurgia Mundi, non ancora certificato/fuso in Atlantis":
    edge.statement_type==="comparison"?"Confronto senza nesso causale":
    edge.statement_type==="exploration"?"Itinerario esplorativo, non relazione diretta fra gli estremi del percorso":
