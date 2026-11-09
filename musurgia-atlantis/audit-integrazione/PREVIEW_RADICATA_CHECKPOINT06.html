@@ -268,6 +268,11 @@ function selected(id){
   const a=makeEl("a","Apri la pagina o l'ancora collegata");a.href=candidate.url;a.className="node-url";a.target="_blank";a.rel="noopener noreferrer";place.append(a);
  }
  if(candidate?.description)place.append(makeEl("p",candidate.description,"note-excerpt"));
+ const flaminioGuide=(flaminioPreview.guides||[]).find(g=>g.work_id===id);
+ if(flaminioGuide&&safeUrl(flaminioGuide.guide_url)){
+  const a=makeEl("a","Guida all’ascolto · Orchestra Flaminio");a.href=flaminioGuide.guide_url;a.target="_blank";a.rel="noopener noreferrer";
+  place.append(a);
+ }
  const within=last?.nodes.find(n=>n.id===id);
  if(within?._depth>=2&&Array.isArray(within._path)){
   const pathNames=within._path.map(k=>dataset.nodes.find(n=>n.id===k)?.name||k);
@@ -431,7 +436,7 @@ async function init(){
  dataset.nodes.push(...flaminioPreview.nodes);
  dataset.links.push(...flaminioPreview.links);
  renderer=rootLib.createRootedExplorer(g,reg);
- $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). Il catalogo legacy è provvisorio, non fuso né certificato in Atlantis; restano fuori altre relazioni, media e ancore.";
+ $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
  engine=window.AtlantisAuditCompatGraph($("graph"))
   .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
