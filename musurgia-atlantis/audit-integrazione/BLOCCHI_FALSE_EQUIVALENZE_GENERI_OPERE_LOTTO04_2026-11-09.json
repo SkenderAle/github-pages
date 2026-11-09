@@ -1,0 +1,78 @@
+{
+  "schema": "atlantis-taxonomy-identity-guard-lotto04-v1",
+  "date": "2026-11-09",
+  "base": "TRIAGE_GLOBALE_GENERI_FORME_LOTTO04_2026-11-09.json",
+  "cases": [
+    {
+      "source_id": "sinfonia-canti-dolenti-gorecki-1976",
+      "source_label": "Sinfonia dei canti dolorosi · Górecki 1976",
+      "target_id": "opera:sinfonia-nona",
+      "predicted_target": "opera:sinfonia-nona",
+      "decision": "REJECT_AS_IDENTITY",
+      "reason": "False match: Górecki Symphony No.3 distinct Beethoven Symphony No.9",
+      "allowed_relationship": "work_is_example_of_or_has_genre_when_independently_proven",
+      "prohibits_merge": true
+    },
+    {
+      "source_id": "jeux-venitiens-lutoslawski-1961",
+      "source_label": "Jeux vénitiens · scrittura controllata e ad libitum",
+      "target_id": "opera:jeux-debussy-1913",
+      "predicted_target": "opera:jeux-debussy-1913",
+      "decision": "REJECT_AS_IDENTITY",
+      "reason": "False match: Lutosławski Jeux vénitiens distinct Debussy Jeux",
+      "allowed_relationship": "work_is_example_of_or_has_genre_when_independently_proven",
+      "prohibits_merge": true
+    },
+    {
+      "source_id": "bella-pescatrice-guglielmi-1789",
+      "source_label": "La bella pescatrice (1789) · opera buffa",
+      "target_id": "senso:opera-buffa",
+      "predicted_target": "senso:opera-buffa",
+      "decision": "REJECT_AS_IDENTITY",
+      "reason": "Genre node not identity of a particular opera",
+      "allowed_relationship": "work_is_example_of_or_has_genre_when_independently_proven",
+      "prohibits_merge": true
+    },
+    {
+      "source_id": "genere-suite",
+      "source_label": "Suite",
+      "target_id": "opera:daphnis-suite-1",
+      "predicted_target": "opera:daphnis-suite-1",
+      "decision": "REJECT_AS_IDENTITY",
+      "reason": "Genre Suite not identity of Ravel's individual Suite No.1",
+      "allowed_relationship": "work_is_example_of_or_has_genre_when_independently_proven",
+      "prohibits_merge": true
+    },
+    {
+      "source_id": "forma-variazioni",
+      "source_label": "Variazioni",
+      "target_id": "opera:variazioni-eroica-op35",
+      "predicted_target": "opera:variazioni-eroica-op35",
+      "decision": "REJECT_AS_IDENTITY",
+      "reason": "Generic variation form not same entity as Beethoven's particular work",
+      "allowed_relationship": "work_is_example_of_or_has_genre_when_independently_proven",
+      "prohibits_merge": true
+    },
+    {
+      "source_id": "forma-fantasia",
+      "source_label": "Fantasia",
+      "target_id": "opera:fantasia",
+      "predicted_target": "opera:fantasia",
+      "decision": "REJECT_AS_IDENTITY",
+      "reason": "Fantasia as form not Walt Disney film",
+      "allowed_relationship": "work_is_example_of_or_has_genre_when_independently_proven",
+      "prohibits_merge": true
+    },
+    {
+      "source_id": "forma-ouverture",
+      "source_label": "Ouverture",
+      "target_id": "opera:fidelio-ouverture-1814",
+      "predicted_target": "opera:fidelio-ouverture-1814",
+      "decision": "REJECT_AS_IDENTITY",
+      "reason": "Ouverture genre not same as Beethoven's specific overture",
+      "allowed_relationship": "work_is_example_of_or_has_genre_when_independently_proven",
+      "prohibits_merge": true
+    }
+  ],
+  "policy": "Name similarity is never entity identity. Do not claim these targets are historically or semantically the same. Preserve graph production unchanged."
+}
