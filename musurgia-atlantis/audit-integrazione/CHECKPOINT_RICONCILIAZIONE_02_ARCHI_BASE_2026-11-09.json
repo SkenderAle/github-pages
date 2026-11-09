@@ -1,0 +1,48 @@
+{
+  "schema": "musurgia-atlantis/reconciliation-02-base-integral-v1",
+  "date": "2026-11-09",
+  "scope": "All 2437 real base legacy edges as snapshotted in five staged JSON parts, not live Atlantis edge diff",
+  "source_paths": [
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE01_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE02_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE03_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE04_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_BASE_FASE2K_PARTE05_2026-11-08.json"
+  ],
+  "source_sha": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+  "node_id_registries": [
+    "musurgia-atlantis/audit-integrazione/STAGING_NUOVE_PERSONE_FASE2K_347_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_NODI_NON_PERSONE_FASE2K_374_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_IMPORT_PERSONE_2026-11-08.json"
+  ],
+  "counts": {
+    "base_edges": 2437,
+    "original_triples": 2437,
+    "unique_endpoint_stage_ids": 705,
+    "unique_person_known_stage_ids": 505,
+    "unique_nonperson_stage_ids": 374,
+    "uncovered_stage_endpoints": 1,
+    "uncovered_raw_endpoints": 0
+  },
+  "uncovered_stage_ids": [
+    "pers:ferdinand-david"
+  ],
+  "uncovered_legacy_ids": [],
+  "checks": {
+    "part_lengths": true,
+    "contiguous": true,
+    "all_2437": true,
+    "unique_stage_ids": true,
+    "source_sha_same": true,
+    "raw_source_targets_in_node_registry": true,
+    "stage_endpoints_in_identity_registry": false,
+    "all_gates_closed": true,
+    "no_historical_certification_asserted": true,
+    "raw_payload_preserved": true
+  },
+  "notes": [
+    "Input records taken directly from five complete stage snapshots and person/nonperson source registries",
+    "Stage person target IDs are candidates or matched name IDs only, not verified Atlantis identities",
+    "No public graph changed or root traversal enabled"
+  ]
+}
