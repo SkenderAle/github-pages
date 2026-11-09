@@ -1207,3 +1207,14 @@ L'utente chiede prosecuzione dopo Lotto 10, mantenendo priorità alla **classifi
 - Cautele: Wagner→Schönberg (eredità armonica non insegnamento), Schaeffer→Boulez (collaborazione da accertare), Cavalli→Barbara Strozzi (dedica op. II 1651 da verificare come prova), poeta→compositore mediato da testo, `retuschen` di sinfonie non come incontro fra persone.
 
 **Prossima ripresa Checkpoint24:** verifica storica individuale degli **233** archi fra identità già riconciliate (primo sottolotto prioritario con archi Mozart/Haydn, Gabrieli/Schütz e casi cronologicamente impossibili), poi **554** con nuovi candidati e 2 senza fonte, separando rapporti diretti da opera/evento. Progettare overlay generale solo post certificazione e collaudo della pertinenza radicata. **Nessuna modifica a produzione, 210 lotti preservati.**
+
+
+### Checkpoint 24 — Lotto 01, riscontro storico di 12 archi persona↔persona (10 novembre 2026)
+
+**Pubblicato su `main` soltanto nello staging `audit-integrazione/`:**
+- `CONVALIDA_ARCHI_FASE24_LOTTO01_2026-11-10.json`, commit `5c8b8bfd8b3e1e0556f4f5468bc17be4fb879cd8`: **12/233** archi fra identità riconciliate rilette dalle partizioni integrali. **9** fatti supportati da verifiche esterne specifiche, **3** rinviati a controllo più puntuale: `fd:ms:7` Bach→Mozart (specificare le opere della ricezione), `fd:ms:726` Händel→Mozart (Messiah K572, catalogo da riesaminare), `fd:ms:956` Mozart→Beethoven (variazioni WoO40 e op66, cataloghi da ricontrollare). **221** archi del gruppo restano da analizzare.
+- `AUDIT_CHECKPOINT24_LOTTO01_2026-11-10.md`, commit `da24fec5b1129bb64da4ee6a52a98aacaa25023a`: matrice delle decisioni e URL di consultazione (Beethoven-Haus, British Library, Netherlands Bach Society, Mozarteum, DBI/Treccani, Bachipedia, Neue Mozart-Ausgabe).
+- Confermati nel primo lotto: Haydn→Beethoven studio; Bach→Mendelssohn evento Passione 1829; Vivaldi→Bach concerto trascritto; Haydn→Mozart modello quartettistico e Mozart→Haydn dedica **distinti**; Andrea→Giovanni Gabrieli apprendistato **con cautela DBI («si presume»)**; Pergolesi→Bach Stabat Mater/BWV1083; Paisiello→Mozart K398; Gluck→Mozart K455. **Nessun fatto promosso come traversabile**: nove riscontri di singole asserzioni non certificano l'intero percorso radicato.
+- **9/9 controlli readback e integrità PASS**; tutti originali `forward/reverse`, note, fonti e ID conservati. Nessuna interfaccia browser/Android collaudata.
+- **Prossima ripresa Checkpoint24 Lotto02:** proseguire i **221** archi del pool 233 fra identità già convalidate, privilegiando insegnamenti biografici e ricezioni mediate da composizioni; confrontare Gabrieli/Schütz con gli archi Atlantis ed evitare duplicati semantici. Restano poi 554 archi con identità candidate e 2 senza URL.
+- Nessun JSON o GUI di produzione modificati, nessuna fusione, **210 lotti storico-filologici** intatti.
