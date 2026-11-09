@@ -638,3 +638,20 @@ L'utente propone, per **ogni ricerca**, un'impostazione differente dei livelli d
 **Vincoli intatti:** 210 lotti storico-filologici Atlantis, 3.856 relazioni legacy, 1.718 archi Atlantis, 509 persone legacy, testi forward/reverse e fonti, 115 media/207 associazioni, 537 URL con ancora. Tooltip adapter 7.712 frasi V8 già verificato Lotto 01. Test effettivi `prepare`/`byId`/pivot I–V, Node `--live`, browser/Android restano aperti; non confondere i controlli del registro con questi collaudi.
 
 **PROSSIMA RIPRESA — Fase 2M Lotto 22:** proseguire da 70/210 senza ripetizioni, privilegiare casi opera/versione/istituzione e fonti primarie, confrontare adiacenze complete Atlante–Atlantis prima di proporre equivalenze, specificare ed eseguire in staging i test reversibili e il filtro di pertinenza radicata, senza modifiche pubbliche prima della certificazione.
+
+
+### Fase 2M — Lotti 22–26 · cinquanta nuovi dossier (9 novembre 2026)
+**Pubblicati su `main`, esclusivamente in `musurgia-atlantis/audit-integrazione/`:**
+- **Lotto 22**: `VERIFICA_DOCUMENTALE_CONCETTI_FASE2M_LOTTO22_2026-11-09.json` e `AUDIT_FASE2M_LOTTO22_2026-11-09.md`; 10 nuovi dossier, avanzamento 80/210.
+- **Lotto 23**: `VERIFICA_DOCUMENTALE_CONCETTI_FASE2M_LOTTO23_2026-11-09.json` e `AUDIT_FASE2M_LOTTO23_2026-11-09.md`; 10 nuovi dossier, avanzamento 90/210.
+- **Lotto 24**: `VERIFICA_DOCUMENTALE_CONCETTI_FASE2M_LOTTO24_2026-11-09.json` e `AUDIT_FASE2M_LOTTO24_2026-11-09.md`; 10 nuovi dossier, avanzamento 100/210.
+- **Lotto 25**: `VERIFICA_DOCUMENTALE_CONCETTI_FASE2M_LOTTO25_2026-11-09.json` e `AUDIT_FASE2M_LOTTO25_2026-11-09.md`; 10 nuovi dossier, avanzamento 110/210.
+- **Lotto 26**: `VERIFICA_DOCUMENTALE_CONCETTI_FASE2M_LOTTO26_2026-11-09.json` e `AUDIT_FASE2M_LOTTO26_2026-11-09.md`; 10 nuovi dossier, avanzamento 120/210.
+
+**Evidenze storico-documentali circoscritte** (URL nel registro del lotto pertinente): Abendmusiken della Marienkirche (fondazione probabilmente riconducibile a Tunder, ruolo di Buxtehude), Lutosławski e *Venetian Games* (Library of Congress), Cappella Giulia e Palestrina (Treccani DBI), Conservatoire américain de Fontainebleau (istituzione fondata nel 1921), Henze *Elegy for Young Lovers* (1961, revisione 1987), Hugo Wolf *Italienisches Liederbuch* (46 Lieder in due volumi, fonte accademica secondaria), Hindemith *Mathis der Maler* (sinfonia 1934 distinta dall'opera 1938). Il riferimento dimostra solo il fatto o tipo circoscritto: **non** la corrispondenza inter-grafo o la validità di tutti gli archi.
+
+**Stato aggiornato:** **120/210** schede affrontate per tipo storico/semantico e screening di fonti, **90** ancora senza questa revisione. Tutti i 50 ID sono nuovi rispetto ai 70 precedenti. In ciascun lotto verifiche strutturali di unicità, esistenza nel registro 210, gate di fusione e attraversamento sempre chiusi. Nessuna identità Atlantis certificata attraverso questo solo screening, nessun arco nuovo approvato, nessuna modifica pubblica.
+
+**Limiti espliciti:** per le schede senza URL rimane la documentazione indipendente da reperire. Nessuna prova integrale delle adiacenze dei due grafi, nessun test `prepare`, `byId`, pivot radicato e livelli I–V effettivamente eseguiti, nessun Node `--live` / browser hover / Android tap. L'adapter di 7.712 frasi V8 era già stato verificato al Lotto 01 e non ripetuto. Produzione intatta: 210 lotti filologici, 3.856 archi legacy, 1.718 Atlantis, 509 persone, spiegazioni bidirezionali e fonti, 115 media/207 associazioni, 537 ancore.
+
+**PROSSIMA RIPRESA — Fase 2M Lotto 27:** esaminare le 90 schede residue e le fonti mancanti, ma dare priorità crescente al confronto reale di adiacenze e ai test eseguiti di import reversibile `prepare`, `byId`, pivot selettivo e profondità per tipo I–V, Node, browser e Android. Nessuna fusione pubblica prima della certificazione.
