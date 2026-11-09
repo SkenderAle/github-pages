@@ -1,0 +1,143 @@
+{
+  "schema": "musurgia-atlantis-materialized-federation-v1",
+  "date": "2026-11-09",
+  "status": "materialized_staging_readback_verified_no_production_merge",
+  "branch": "main",
+  "source_blobs": {
+    "musurgia-atlantis/grafo.json": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "atlante3d/database/grafo.json": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "atlante3d/database/relazioni.json": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+    "atlante3d/database/integrazione-operetta-musical.json": "0fa3fa708c0fc45ef2d8f0a24221c8dcf3290f13"
+  },
+  "counts": {
+    "nodes": 1637,
+    "edges": 5574,
+    "partition_files": 14,
+    "nodes_by_origin": {
+      "atlantis": 754,
+      "mundi_base": 869,
+      "mundi_extension": 14
+    },
+    "edges_by_origin": {
+      "atlantis": 1718,
+      "mundi_base": 2437,
+      "mundi_specialist": 1389,
+      "mundi_extension": 30
+    }
+  },
+  "checks": {
+    "readback_all_partitions": true,
+    "unique_node_ids": true,
+    "unique_edge_ids": true,
+    "orphan_edge_count": 0,
+    "counts_match_expected": true
+  },
+  "extension_existing_id_variants": [
+    {
+      "id": "mm:genere-musical",
+      "source_path": "atlante3d/database/integrazione-operetta-musical.json",
+      "original_extension_record": {
+        "id": "genere-musical",
+        "label": "Musical",
+        "type": "corrente",
+        "description": "Teatro musicale moderno nel quale canto, recitazione e danza possono concorrere alla drammaturgia; intreccia molteplici tradizioni europee e americane.",
+        "taxonomy": {
+          "class": "genere-trasversale",
+          "presentation": "nodo",
+          "visibility": "principale",
+          "semantic_note": "Genere teatrale distinto dal suo ambiente produttivo: Broadway è una tradizione storica, non un sinonimo del musical."
+        },
+        "aliases": [
+          "musical teatrale",
+          "Broadway musical"
+        ],
+        "url": "../dall-operetta-a-broadway/",
+        "sources": [
+          "https://www.treccani.it/enciclopedia/musical/",
+          "https://musurgiamundi.com/dall-operetta-a-broadway/"
+        ]
+      },
+      "note": "Variant retained here; existing Mundi node remains canonical in data partitions. No payload lost."
+    }
+  ],
+  "partitions": [
+    {
+      "path": "nodi-01.json",
+      "record_count": 300,
+      "blob_sha": "54ae7a736b76566543d398f7eb62b3057e4bb61b"
+    },
+    {
+      "path": "nodi-02.json",
+      "record_count": 300,
+      "blob_sha": "3f9443e35a3c219b18361656d0d2745ecec24fa2"
+    },
+    {
+      "path": "nodi-03.json",
+      "record_count": 300,
+      "blob_sha": "9aa8950cb8be69bcedfb27faa946ee3f929550c8"
+    },
+    {
+      "path": "nodi-04.json",
+      "record_count": 300,
+      "blob_sha": "8aee5e7e292b0055d7b4322b3be6c0a1e3c46425"
+    },
+    {
+      "path": "nodi-05.json",
+      "record_count": 300,
+      "blob_sha": "9a62ded01405af2a231521d0d80e9c94cbc3ca5e"
+    },
+    {
+      "path": "nodi-06.json",
+      "record_count": 137,
+      "blob_sha": "7513e73689177a2c6f5e55a0df902e14ed2f4dd8"
+    },
+    {
+      "path": "archi-01.json",
+      "record_count": 700,
+      "blob_sha": "48ff8ceb53e8e8e73f41413c0c4cdf494dc108ce"
+    },
+    {
+      "path": "archi-02.json",
+      "record_count": 700,
+      "blob_sha": "e6e6721037957b70834cb159eb45a695cafd9655"
+    },
+    {
+      "path": "archi-03.json",
+      "record_count": 700,
+      "blob_sha": "edde5605c0f26efd1b1a084a880f258624cf2c40"
+    },
+    {
+      "path": "archi-04.json",
+      "record_count": 700,
+      "blob_sha": "cf8e3bcd44bbb302b3173fc4d14386f651e7ecb6"
+    },
+    {
+      "path": "archi-05.json",
+      "record_count": 700,
+      "blob_sha": "45b92ccba297817cc3026a391337f792f627c2b4"
+    },
+    {
+      "path": "archi-06.json",
+      "record_count": 700,
+      "blob_sha": "244f4abe563892546c05b52cb580749e82464d65"
+    },
+    {
+      "path": "archi-07.json",
+      "record_count": 700,
+      "blob_sha": "0acc85d9153df0bdb4c88dbcb896540ec3ae15b0"
+    },
+    {
+      "path": "archi-08.json",
+      "record_count": 674,
+      "blob_sha": "b6159826bb6bb855faaee8000ff8ac78ad16c1f5"
+    }
+  ],
+  "composition_policy": [
+    "Read all node partitions in order; do not merge namespaced mm: with Atlantis entities without certified identity mapping",
+    "Read all edge partitions; retain _fed.origin and original_index fields",
+    "One extension node collision is kept as variant in manifest",
+    "Future guide URLs and work genre facets remain in attributed overlay files, not historic causal links",
+    "No public graph or UI has been modified"
+  ],
+  "future_work": "Test read-only combined queries and explicit identity crosswalk; attach Flaminio link overlay; then GUI."
+}
