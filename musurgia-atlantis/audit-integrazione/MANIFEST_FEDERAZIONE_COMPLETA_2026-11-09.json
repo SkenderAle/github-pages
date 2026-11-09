@@ -1,0 +1,40 @@
+{
+  "schema": "musurgia-atlantis-federated-source-manifest-v1",
+  "date": "2026-11-09",
+  "status": "full_sources_reconciled_by_namespace_not_semantic_merge",
+  "source_blobs": {
+    "atlantis": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "mundi_base": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "mundi_special": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+    "mundi_extension": "0fa3fa708c0fc45ef2d8f0a24221c8dcf3290f13"
+  },
+  "counts": {
+    "atlantis_nodes": 754,
+    "mundi_base_nodes": 869,
+    "mundi_extension_new_nodes": 14,
+    "mundi_extension_duplicate_nodes": 1,
+    "combined_source_nodes": 1637,
+    "atlantis_edges": 1718,
+    "mundi_base_edges": 2437,
+    "mundi_special_edges": 1389,
+    "mundi_extension_edges": 30,
+    "combined_source_edges": 5574
+  },
+  "checks": {
+    "all_source_nodes_have_disjoint_namespaced_ids": true,
+    "orphan_edges": [],
+    "duplicate_local_edge_ids": [],
+    "edge_id_duplicate_count": 0,
+    "expected_total_nodes_1637": true,
+    "expected_total_edges_5574": true
+  },
+  "rules": [
+    "All source nodes and edges retained in federation; no semantic dedup",
+    "Namespace mm: protects legacy identity; Atlantis IDs remain unchanged",
+    "Source copies or aliases must not be interpreted as two persons when candidates are projected",
+    "No publication of source data into public grafo.json",
+    "Render categories and historical traversals only through certified gates",
+    "External catalogue ingest in separate attributed staging"
+  ],
+  "next": "Implement materialized versioned federation and Flaminio metadata importer with provenance and consent-aware access"
+}
