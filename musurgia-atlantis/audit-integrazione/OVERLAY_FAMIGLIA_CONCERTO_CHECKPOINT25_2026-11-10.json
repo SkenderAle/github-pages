@@ -1,0 +1,197 @@
+{
+  "schema": "musurgia-atlantis-concerto-family-checkpoint25-v1",
+  "date": "2026-11-10",
+  "status": "staging_taxonomy_and_existing_work_classification_no_public_merge",
+  "root_id": "legacy:gf:genere-concerto",
+  "rules": [
+    "Genre taxonomy is not a historical interpersonal edge",
+    "Composer root only reveals own attested works; never traverse a genre to unrelated composers",
+    "Work to subgenre does not invent unrecorded titles or establish a sole genre",
+    "A specific arrangement (BWV 593) retains its derivation link to RV 522 and does not replace Vivaldi as author",
+    "The family includes editorial subclassification and legacy taxonomy candidates; keep provenance"
+  ],
+  "counts": {
+    "added_nodes": 2,
+    "hierarchy_links": 9,
+    "work_classifications": 7,
+    "source_work_ids": 5
+  },
+  "sources": [
+    "musurgia-atlantis/grafo.json (Atlantis work records, historical links fd:at:1613–1617, fd:at:1631)",
+    "atlante3d/database/grafo.json (original taxonomy.parent for five concerto subtype terms)",
+    "musurgia-atlantis/audit-integrazione/GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json"
+  ],
+  "nodes": [
+    {
+      "id": "audit:gf25:concerto-solistico",
+      "name": "Concerto solistico",
+      "category": "genere-forma",
+      "subtype": "tipologia concertistica",
+      "description": "Concerto imperniato su uno strumento solista e un complesso strumentale; il rapporto fra solo e tutti varia storicamente.",
+      "preview_only": true,
+      "status": "taxonomy_editorial_staging"
+    },
+    {
+      "id": "audit:gf25:concerto-di-gruppo",
+      "name": "Concerto di gruppo",
+      "category": "genere-forma",
+      "subtype": "tipologia concertistica",
+      "description": "Concerto che valorizza un gruppo di strumenti solisti; classe ampia, da non confondere automaticamente con lo specifico concerto grosso.",
+      "preview_only": true,
+      "status": "taxonomy_editorial_staging"
+    }
+  ],
+  "links": [
+    {
+      "id": "audit:gf25:tax:01",
+      "source": "legacy:gf:forma-concerto-grosso",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "legacy_taxonomy_parent_or_editorial_type"
+    },
+    {
+      "id": "audit:gf25:tax:02",
+      "source": "audit:gf25:concerto-di-gruppo",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "legacy_taxonomy_parent_or_editorial_type"
+    },
+    {
+      "id": "audit:gf25:tax:03",
+      "source": "audit:gf25:concerto-solistico",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "legacy_taxonomy_parent_or_editorial_type"
+    },
+    {
+      "id": "audit:gf25:tax:04",
+      "source": "legacy:gf:forma-concerto-strumentale-romantico",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "legacy_taxonomy_parent_or_editorial_type"
+    },
+    {
+      "id": "audit:gf25:tax:05",
+      "source": "legacy:gf:forma-concerto-per-arpa-novecento",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "legacy_taxonomy_parent_or_editorial_type"
+    },
+    {
+      "id": "audit:gf25:tax:06",
+      "source": "legacy:gf:forma-concerto-per-chitarra-novecento",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "legacy_taxonomy_parent_or_editorial_type"
+    },
+    {
+      "id": "audit:gf25:tax:07",
+      "source": "legacy:gf:forma-concerto-per-marimba-novecento",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "legacy_taxonomy_parent_or_editorial_type"
+    },
+    {
+      "id": "audit:gf25:tax:08",
+      "source": "legacy:gf:forma-concertino-novecento",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "legacy_taxonomy_parent_or_editorial_type"
+    },
+    {
+      "id": "audit:gf25:tax:09",
+      "source": "legacy:gf:forma-concerto-grosso",
+      "target": "audit:gf25:concerto-di-gruppo",
+      "relation": "sottogenere_di",
+      "statement_type": "taxonomy_hierarchy_preview",
+      "traversal_scope": "only_explicit_taxonomy_root",
+      "source_basis": "editorial_concerto_grosso_is_group_concerto"
+    },
+    {
+      "id": "audit:gf25:work:01",
+      "source": "opera:corelli-concerti-grossi-op6-1714",
+      "target": "legacy:gf:forma-concerto-grosso",
+      "relation": "ha_forma",
+      "statement_type": "work_classification_preview",
+      "traversal_scope": "specific_work_and_selected_root_only",
+      "classification_note": "raccolta_di_dodici_concerti_grossi",
+      "source_basis": "existing_atlantis_documented_work"
+    },
+    {
+      "id": "audit:gf25:work:02",
+      "source": "opera:vivaldi-rv522-op3-8",
+      "target": "audit:gf25:concerto-di-gruppo",
+      "relation": "ha_forma",
+      "statement_type": "work_classification_preview",
+      "traversal_scope": "specific_work_and_selected_root_only",
+      "classification_note": "concerto_per_due_violini",
+      "source_basis": "existing_atlantis_documented_work"
+    },
+    {
+      "id": "audit:gf25:work:03",
+      "source": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_forma",
+      "statement_type": "work_classification_preview",
+      "traversal_scope": "specific_work_and_selected_root_only",
+      "classification_note": "raccolta_di_sei_concerti_con_organici_variabili",
+      "source_basis": "existing_atlantis_documented_work"
+    },
+    {
+      "id": "audit:gf25:work:04",
+      "source": "opera:mendelssohn-concerto-violino-op64",
+      "target": "audit:gf25:concerto-solistico",
+      "relation": "ha_forma",
+      "statement_type": "work_classification_preview",
+      "traversal_scope": "specific_work_and_selected_root_only",
+      "classification_note": "concerto_per_violino_e_orchestra",
+      "source_basis": "existing_atlantis_documented_work"
+    },
+    {
+      "id": "audit:gf25:work:05",
+      "source": "opera:bach-bwv593",
+      "target": "audit:gf25:concerto-solistico",
+      "relation": "ha_forma",
+      "statement_type": "work_classification_preview",
+      "traversal_scope": "specific_work_and_selected_root_only",
+      "classification_note": "trascrizione_per_organo_da_concerto_di_vivaldi",
+      "source_basis": "existing_atlantis_documented_work"
+    },
+    {
+      "id": "audit:gf25:work:06",
+      "source": "opera:vivaldi-rv522-op3-8",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_forma",
+      "statement_type": "work_classification_preview",
+      "traversal_scope": "specific_work_and_selected_root_only",
+      "classification_note": "concerto_originale",
+      "source_basis": "existing_atlantis_documented_work"
+    },
+    {
+      "id": "audit:gf25:work:07",
+      "source": "opera:bach-bwv593",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_forma",
+      "statement_type": "work_classification_preview",
+      "traversal_scope": "specific_work_and_selected_root_only",
+      "classification_note": "trascrizione_di_concerto_non_composizione_originale",
+      "source_basis": "existing_atlantis_documented_work"
+    }
+  ]
+}
