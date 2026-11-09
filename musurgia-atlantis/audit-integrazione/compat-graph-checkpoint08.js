@@ -84,7 +84,7 @@ function makeGraph(host){
   function drawCaption(p,r,occupied){
     const n=p.n,root=!!n._focus;
     if(!root){
-      if(!n._label && n.id!==hovered && n.id!==selected)return;
+      if(!n._label && !n._forceLabel && n.id!==hovered && n.id!==selected)return;
       if(frontness(p)<.68 && !n._forceLabel && n.id!==hovered && n.id!==selected)return; // Persistent labels ignore hemisphere; hovered nodes use the SAME caption.
     }
     const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
