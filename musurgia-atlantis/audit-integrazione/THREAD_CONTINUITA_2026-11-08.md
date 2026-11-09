@@ -1171,3 +1171,15 @@ L'utente chiede prosecuzione dopo Lotto 10, mantenendo priorità alla **classifi
 **Etichette Clementi:** nel renderer la radice mantiene sempre `_label=true` anche con tutte le etichette generali spente. Se Clementi è la radice è comportamento intenzionale; se rimane etichettato come nodo secondario, occorre test live hover/selezione prima della conclusione. Nessun test grafico live/Android eseguito.
 
 **Prossima ripresa prioritaria (Checkpoint21):** costruire il crosswalk globale versione-stabile per le 509 persone, senza duplicare le 162 equivalenze, classificare e filtrare i 789 archi persona↔persona per tipo, predicato, provenienza, fonte e gate; produrre overlay generale soltanto di fatti documentati con test radicati positivi/negativi. Riprendere parallelamente opera→genere (Checkpoint19) e Flaminio. Non usare generi, epoche o capitoli come ponti indiscriminati; evitare inferenze di rapporti da cicli generici. **Produzione invariata, 210 lotti intatti.**
+
+
+### Checkpoint 21 — crosswalk globale 509 persone e inventario 789 relazioni (10 novembre 2026)
+
+**Pubblicato su `main`, solo in `audit-integrazione/`:**
+- `CROSSWALK_GLOBALE_PERSONE_CHECKPOINT21_2026-11-10.json` (commit `23816822e7d98412571e8845df9e01053c82cbdb`) — **509/509** ID Mundi mappati: **162** equivalenze già documentate ad Atlantis e **347** nuovi ingressi candidati, con 509 target univoci; identità ≠ validazione di archi, nessun merge.
+- `INVENTARIO_ARCHI_PERSONA_CHECKPOINT21_2026-11-10.json` (commit `ab9ed1ed9ca5929467888381e50b9124b5dc6c9a`) — **789/789** archi persona↔persona da partizioni federate (**9** base, **780** specialistici) con origini, ID/versi, ID destinazione proposti, predicati letterali, indicatori di fonti e gate chiusi. Sono state rilevate **622** denominazioni `kind`/`relation` diverse: non appiattire in «influenza» o «collaborazione».
+- `AUDIT_CHECKPOINT21_CROSSWALK_789_ARCHI_2026-11-10.md` (commit `3374ada371488c7e2c600f07aefa210673d532d7`) — verbale, sentinelle, cautele, decisioni.
+- **Readback e integrità 11/11 PASS** sul repository dopo pubblicazione, NON certificazione storica o UI.
+- Triage non esecutivo: **554** archi `needs_identity_review` (almeno una persona nuova candidata), **233** `needs_edge_authority_review` (entrambe le identità riconciliate, da verificare il fatto), **2** `needs_independent_source` (URL fonte non presente nel payload). **Zero archi promossi alla preview o al grafo pubblico.**
+- Mozart/Leopold, Mozart/J. C. Bach, Mozart/Haydn, Mozart/Padre Martini e Mozart/Sarti sono sentinelle: distinguere insegnamento, ricezione, citazione, opera e dedica. Predicati `forward/reverse` e note originali restano nelle partizioni; il nuovo indice conserva gli identificativi di accesso per recuperarli.
+- **Prossimo Checkpoint22:** raggruppare i 622 predicati in macro-famiglie non distruttive, certificare progressivamente i 233 archi fra identità riconciliate e poi i 554 con nuovi ingressi; introdurre gate esplicito `persona-pertinente-alla-radice` senza allargare per generi, scuole, epoche o capitoli. Solo dopo overlay generale e collaudo desktop/Android. Preservati 210 lotti e dati pubblici.
