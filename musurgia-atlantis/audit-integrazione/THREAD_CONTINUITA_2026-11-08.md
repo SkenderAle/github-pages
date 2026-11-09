@@ -816,3 +816,28 @@ https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_
 **Stato irrevocato:** `musurgia-atlantis/index.html`, `grafo.json`, `atlante3d/`, il sito Musurgia Mundi e i suoi capitoli **non sono stati modificati**. Non sono fusi né scartati i 3.856 archi legacy o le 509 persone candidate, gli archivi media e i 210 lotti. Tutto il Checkpoint 07 è ancora solo `audit-integrazione/`.
 
 **PROSSIMA RIPRESA:** prima ricevere un riscontro sul link reale e collaudare browser/Android; verificare eventuali problemi reali di compat-graph e touch, poi decidere con evidenza se e come portare il regolatore nell'Atlantis pubblico. Non certificare o fondere i grafi fino al via libera.
+
+
+### Riconciliazione — Checkpoint 08 · ripristino delle interazioni e lenti di zoom (9 novembre 2026)
+
+**Nuova anteprima sperimentale pubblicata su `main` unicamente in `musurgia-atlantis/audit-integrazione/`**. Richiesta confermata: *hover mostra l'etichetta, clic seleziona e mostra note/fonti, doppio clic cambia la radice centrale SENZA zoom*. Due pulsanti con icona di **lente + e lente −** applicano il fattore di ingrandimento indipendentemente; restano possibili la rotella desktop e il pinch con due dita su Android. Il pulsante laterale `Nuova radice` è rimosso. Su Android primo tocco = note; secondo tocco sullo stesso nodo = centratura, anche se non ravvicinato nel tempo.
+
+**Renderer indipendente** `compat-graph-checkpoint08.js`: derivato dal Canvas pubblico ma confinato nell'audit; richiamo di `onNodeDoubleClick` senza mai fare `zoomAt`, `pointerleave` cancella hover e label su nodi lontani/retroilluminati resta visibile quando richiesta. Commit `6f1a591a1391778e9c4f6a4dbb2d7db6bab0aa5e` → `a3a62c46dba1342e8fc0c27a102dd8eb5078eeb4` → `1b4e82dbf8fca543bcf59581016610348e991c1c`. Il Canvas originale `musurgia-atlantis/compat-graph.js` resta intatto.
+
+**Anteprima HTML** `PREVIEW_RADICATA_CHECKPOINT06.html`: ora carica il renderer isolato e mostra lente + / −, tooltip etichetta, scheda note/descrizioni/fonti e link del nodo se presenti; `setRoot(id,{fit:false})` mantiene il livello di zoom al doppio clic. Categorie originali elencate automaticamente dalle 14 tipologie attuali: le 13 storiche filtrabili, i 15 capitoli editoriali mostrati nel conteggio ma disattivati come ponti. I nodi intermedi necessari possono restare attenuati. Commit `c1daf0ceb5c9989f2c8eef2fadc06024adf596df`, poi `28af4a96911ce0e4a22656f6035871339ee1d177` con nota sorgente dati.
+
+**RISPOSTA ALLA DOMANDA SUL PATRIMONIO:** no, l'anteprima non integra ancora i **3.856 archi legacy**, le **509 persone fonte**, i **115 media/207 associazioni** o i **537 URL con ancore**: legge **soltanto il grafo pubblico Atlantis (754 nodi/1.718 archi)**. Il patrimonio di Musurgia Mundi è conservato nei file di staging, e le sue note e fonti non devono essere confuse con quelle già presenti in `grafo.json`. Non cancellare o fondere alcun materiale prima della revisione e certificazione.
+
+**Test effettivamente eseguiti con script reali e API simulate (NON browser reale):**
+- Hover etichetta e uscita: PASS; primo clic scheda note senza cambiare root: PASS.
+- Doppio clic re-root: PASS con fattore zoom **invariato** e 0 chiamate `zoomToFit`; lente + 1→1,25, lente − 1,25→1: PASS.
+- Tocchi: primo selezione, secondo sullo stesso nodo anche dopo 1.300 ms re-root: PASS.
+- Categoria opera disattivata rispetta la visibilità: PASS; capitoli non attraversati.
+- Non collaudati vero rendering grafico, dominio HTTP live o Android. Nessuna modifica di produzione.
+
+**Verbale dettagliato:** `AUDIT_INTERAZIONI_CHECKPOINT08_2026-11-09.md` (commit `284935cedf632c652ac2a2fdef668ed0c97ce449`).
+
+**Link da provare:**
+https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint08-20261109
+
+**PROSSIMA RIPRESA — Checkpoint 09:** verificare il riscontro visuale reale e correggere eventuali anomalie mouse/touch/pinch/etichette; poi costruire una vera anteprima di integrazione *non distruttiva* con le persone, predicati e note bidirezionali legacy, mostrando chiaramente la provenienza di ogni relazione e evitando fusioni non certificate. Conservare i 210 lotti, tutti i file e le verifiche.
