@@ -21,6 +21,7 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 #relevanceDescription{font-size:12px;color:#e2d1b6;line-height:1.5;margin:7px 0 10px}
 #legend{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0 12px;font-size:11px;color:#c5d6d5}
 #legend span{padding:4px 6px;border:1px solid #486473;border-radius:7px}
+#legend .specific{color:#90b9cb}#legend .comparison{color:#e8bd82}#legend .explore{color:#e8a5c3}
 #stats{padding:8px 0;font-size:12px;color:var(--muted)}#status{font-size:12px;color:#f3c7a1;min-height:1.6em}
 #selected{margin-top:15px;border-top:1px solid var(--line);padding-top:11px}
 #selected h2{font:20px Georgia,serif;color:#ead7b6;margin:8px 0}
@@ -46,7 +47,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <label for="relevance">Pertinenza della rete: <output id="relevanceOutput">2 · Mirata</output></label>
 <input id="relevance" type="range" min="1" max="4" step="1" value="2" aria-describedby="relevanceDescription">
 <p id="relevanceDescription">Relazioni specifiche e collaborazioni sulla stessa opera; nessuna propagazione automatica attraverso le persone.</p>
-<div id="legend"><span>● Rapporti specifici</span><span>● Confronti non causali</span><span>● Itinerari esplorativi</span></div>
+<div id="legend"><span class="specific">● Rapporti specifici</span><span class="comparison">● Confronti non causali</span><span class="explore">● Itinerari esplorativi</span></div>
 <div class="controls">
  <div><label for="depth">Profondità totale <output id="depthOutput">5</output></label><input id="depth" type="range" min="1" max="5" value="5"></div>
  <div><label for="peopleDepth">Persone fino al livello <output id="peopleOutput">5</output></label><input id="peopleDepth" type="range" min="0" max="5" value="5"></div>
@@ -77,6 +78,11 @@ function selected(id){
  const place=$("selected");place.querySelectorAll("h2,p").forEach(e=>e.remove());
  place.prepend(makeEl("h2",candidate?.name||"Nodo sconosciuto"));
  place.insertBefore(makeEl("p",candidate?candidate.category+" · Tocca «Nuova radice» per cambiare prospettiva.":"Tocca un nodo per i dettagli."),$("pivotBtn"));
+ const within=last?.nodes.find(n=>n.id===id);
+ if(within?._depth>=2&&Array.isArray(within._path)){
+  const pathNames=within._path.map(k=>dataset.nodes.find(n=>n.id===k)?.name||k);
+  place.insertBefore(makeEl("p","Percorso dalla radice ("+within._depth+" passaggi): "+pathNames.join(" → ")+". L'esistenza della catena non dimostra un rapporto diretto fra gli estremi."),$("pivotBtn"));
+ }
  $("pivotBtn").disabled=!candidate||candidate.id===currentRoot;
  const ul=$("edges");ul.replaceChildren();
  if(!candidate)return;
@@ -143,11 +149,17 @@ function search(){
  if(!v||!n){say("Nessun nodo storico-musicale trovato");return}setRoot(n.id)
 }
 async function init(){
+ say("Caricamento del grafo storico e del registro di audit…");
  if(!rootLib?.createRootedExplorer||!window.AtlantisCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
- const [g,reg]=await Promise.all([
-  fetch("../grafo.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
-  fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()})
- ]);
+ const controller=new AbortController();
+ const timeout=setTimeout(()=>controller.abort(),30000);
+ let g,reg;
+ try{
+  [g,reg]=await Promise.all([
+   fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
+   fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()})
+  ]);
+ }finally{clearTimeout(timeout)}
  dataset=g;renderer=rootLib.createRootedExplorer(dataset,reg);
  engine=window.AtlantisCompatGraph($("graph")).nodeColor(n=>n._focus?"#ffdf9a":n._depth===1?"#86d9cd":"#9d9cbf")
   .linkColor(e=>e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
@@ -164,6 +176,10 @@ async function init(){
  addEventListener("resize",()=>engine.width($("graph").clientWidth).height($("graph").clientHeight));
  engine.width($("graph").clientWidth).height($("graph").clientHeight);setRoot(currentRoot);
 }
-init().catch(e=>{console.error(e);say("Errore: "+e.message)});
+init().catch(e=>{
+ console.error(e);
+ $("stats").textContent="Caricamento non riuscito";
+ say("Errore: "+(e.name==="AbortError"?"tempo di caricamento superato (30 secondi)":e.message)+". Ricarica la pagina per riprovare.");
+});
 </script>
 </body></html>
