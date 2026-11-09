@@ -239,6 +239,7 @@ function makeGraph(host){
     }
   });
   canvas.addEventListener('pointercancel',ev=>{pointers.delete(ev.pointerId);drag=null;pinch=null;ignoreTap=true;lastTap=null;canvas.style.cursor='grab'});
+  canvas.addEventListener('pointerleave',()=>{if(pointers.size===0){hovered=null;onHover(null);canvas.style.cursor='grab'}});
   canvas.addEventListener('wheel',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*Math.exp(-ev.deltaY*.001),p.x,p.y)},{passive:false});
   canvas.addEventListener('dblclick',ev=>{ev.preventDefault()}); // Double click changes the root; NEVER apply zoom here.
   let api={isFallback:true,destroy(){active=false;canvas.remove()},graphData(v){if(v===undefined)return current;current=v;layout();return api},
