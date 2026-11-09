@@ -347,7 +347,7 @@ function render({fit=false}={}){
  const nodes=full.nodes.filter(n=>desired.has(n.id)).map(n=>({...n,_focus:n.id===currentRoot,
    _bridge:n.id!==currentRoot&&!shownCategories.has(n.category),
    _forceLabel:shownCategories.has(n.category)&&permanentLabelCategories.has(n.category),
-   _label:n.id===currentRoot||(n._depth===1&&shownCategories.has(n.category))}));
+   _label:n.id===currentRoot||(shownCategories.has(n.category)&&permanentLabelCategories.has(n.category))}));
  const ids=new Set(nodes.map(n=>n.id));
  const links=full.links.filter(e=>ids.has(e.source)&&ids.has(e.target));
  last={...full,nodes,links};
