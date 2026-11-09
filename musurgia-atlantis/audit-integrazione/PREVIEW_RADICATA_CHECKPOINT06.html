@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="it"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Atlantis · Laboratorio di pertinenza radicata — Checkpoint 06</title>
+<style>
+:root{color-scheme:dark;--bg:#07141f;--pane:#0d2633;--line:#365463;--text:#e8f1ef;--muted:#aec1c8;--gold:#eac27e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px system-ui,sans-serif}
+header{padding:13px 20px;border-bottom:1px solid var(--line);background:#06131c}
+header h1{font:22px Georgia,serif;color:var(--gold);margin:0 0 5px}header p{margin:0;color:var(--muted);font-size:12px}
+main{display:grid;grid-template-columns:minmax(270px,320px) minmax(0,1fr);height:calc(100dvh - 83px)}
+aside{padding:16px;background:var(--pane);border-right:1px solid var(--line);overflow:auto;z-index:2}
+#graph{min-height:250px;height:100%;position:relative;background:#061522}
+label{display:block;font-size:12px;color:#d9e7e5;margin:12px 0 5px}
+input,select,button{font:inherit;border-radius:8px;padding:9px 10px;border:1px solid #527182;background:#071823;color:#eff9f5}
+input,select{width:100%}input[type=range]{padding:0;accent-color:var(--gold)}
+button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--gold)}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.controls>div{min-width:0}
+.actions{display:flex;gap:8px;margin:9px 0}.actions button{flex:1;background:#214f5b}
+#stats{padding:8px 0;font-size:12px;color:var(--muted)}#status{font-size:12px;color:#f3c7a1;min-height:1.6em}
+#selected{margin-top:15px;border-top:1px solid var(--line);padding-top:11px}
+#selected h2{font:20px Georgia,serif;color:#ead7b6;margin:8px 0}
+#selected p{font-size:12px;line-height:1.5;color:var(--muted)}
+#edges{display:grid;gap:7px;padding:0;margin:10px 0;list-style:none}
+#edges li{border:1px solid #2f5361;border-radius:9px;padding:10px;background:#09202c}
+#edges b,#edges small{display:block}#edges small{color:var(--muted);font-size:11px;margin-top:5px}
+#edges button{padding:5px 8px;font-size:11px;margin-top:6px}
+#edges a{color:#b9dfed;display:inline-block;margin-top:7px;font-size:11px}
+.note{font-size:11px;line-height:1.5;color:#b4c7ca;border-top:1px solid var(--line);padding-top:11px}
+@media(max-width:720px){header{padding:10px 12px}header h1{font-size:18px}
+main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-height:245px;border-right:0;border-bottom:1px solid var(--line)}#graph{height:56dvh;min-height:280px;order:2}}
+</style>
+</head><body>
+<header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
+<p>Anteprima isolata del Checkpoint 06 · Solo lettura · Non sostituisce l'Atlante pubblico</p></header>
+<main>
+<aside>
+<label for="search">Cerca una persona o un'opera</label>
+<input id="search" type="search" list="matches" placeholder="Mozart, Beethoven, Orfeo…" autocomplete="off">
+<datalist id="matches"></datalist>
+<div class="actions"><button id="searchBtn">Cerca</button><button id="mozartBtn">Mozart</button></div>
+<div class="controls">
+ <div><label for="depth">Profondità totale <output id="depthOutput">5</output></label><input id="depth" type="range" min="1" max="5" value="5"></div>
+ <div><label for="peopleDepth">Persone fino al livello <output id="peopleOutput">5</output></label><input id="peopleDepth" type="range" min="0" max="5" value="5"></div>
+ <div><label for="workDepth">Opere fino al livello <output id="worksOutput">5</output></label><input id="workDepth" type="range" min="0" max="5" value="5"></div>
+ <div><label for="contextDepth">Contesti fino al livello <output id="contextOutput">5</output></label><input id="contextDepth" type="range" min="0" max="5" value="5"></div>
+</div>
+<div id="stats">Lettura dei dati…</div><div id="status" role="status"></div>
+<section id="selected"><h2>Seleziona un nodo</h2><p>Tocca un nodo per leggerne i rapporti, poi usa «Nuova radice» per esplorarlo autonomamente.</p>
+ <button id="pivotBtn" disabled>Nuova radice dal nodo selezionato</button><ul id="edges"></ul>
+</section>
+<p class="note">Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. I testimoni di III–V livello devono essere verificati e presenti nel registro revisionato: il registro iniziale è vuoto. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
+</aside>
+<div id="graph" aria-label="Grafo 3D radicato, ruotabile e ingrandibile"></div>
+</main>
+<script src="../compat-graph.js"></script>
+<script>window.module={exports:{}};</script>
+<script src="./ROOTED_RELEVANCE_CHECKPOINT06.cjs"></script>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const rootLib=window.module?.exports;
+let dataset,engine,renderer,currentRoot="pers:mozart",candidate=null,last;
+const typesForWork=["opera","versione-opera","parte-di-opera","allestimento","produzione"];
+const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
+function say(s){$("status").textContent=s}
+function makeEl(tag,text,cls){const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e}
+function selected(id){
+ candidate=dataset.nodes.find(n=>n.id===id)||null;
+ const place=$("selected");place.querySelectorAll("h2,p").forEach(e=>e.remove());
+ place.prepend(makeEl("h2",candidate?.name||"Nodo sconosciuto"));
+ place.insertBefore(makeEl("p",candidate?candidate.category+" · Tocca «Nuova radice» per cambiare prospettiva.":"Tocca un nodo per i dettagli."),$("pivotBtn"));
+ $("pivotBtn").disabled=!candidate||candidate.id===currentRoot;
+ const ul=$("edges");ul.replaceChildren();
+ if(!candidate)return;
+ const related=last.links.filter(e=>e.source===id||e.target===id);
+ for(const edge of related){
+  const target=edge.source===id?edge.target:edge.source;
+  const other=dataset.nodes.find(n=>n.id===target);
+  const item=makeEl("li");
+  item.append(makeEl("b",other?.name||target),makeEl("small",edge.relation?.replace(/_/g," ")||"Rapporto storico"));
+  const info=renderer.relationDetail(edge,id);
+  if(info.phrase)item.append(makeEl("small",info.phrase));
+  if(info.description)item.append(makeEl("small",info.description));
+  if(info.note)item.append(makeEl("small",info.note));
+  item.append(makeEl("small","Percorso: "+edge.root_permission+" · Fonte "+edge.id));
+  const nav=makeEl("button","Esplora da qui");nav.addEventListener("click",()=>setRoot(target));item.append(nav);
+  for(const [i,url]of info.sources.filter(safeUrl).slice(0,3).entries()){
+   const a=makeEl("a","Fonte "+(i+1));a.href=url;a.target="_blank";a.rel="noopener noreferrer";item.append(a);
+  }
+  ul.append(item);
+ }
+ if(!related.length)ul.append(makeEl("li","Nessuna relazione visibile con i filtri attuali."));
+}
+function render(){
+ if(!renderer)return;
+ const depth=Number($("depth").value),person=Number($("peopleDepth").value);
+ const work=Number($("workDepth").value),context=Number($("contextDepth").value);
+ $("depthOutput").value=depth;$("peopleOutput").value=person;$("worksOutput").value=work;$("contextOutput").value=context;
+ const depthByCategory={persona:person,opera:work,"versione-opera":work,"parte-di-opera":work,allestimento:work,produzione:work,"nodo-di-senso":context,luogo:context,strumento:context,"rete-culturale":context};
+ last=renderer.explore(currentRoot,{maxDepth:depth,depthByCategory});
+ const ids=new Map(last.nodes.map(n=>[n.id,n]));
+ const links=last.links.filter(e=>ids.has(e.source)&&ids.has(e.target));
+ const nodes=last.nodes.map(n=>({...n,_focus:n.id===currentRoot,_label:n.id===currentRoot||n._depth===1}));
+ engine.graphData({nodes,links:links.map(e=>({...e}))});engine.zoomToFit();
+ const x=nodes.filter(n=>n._depth===1).length;
+ $("stats").textContent=nodes.length+" nodi · "+links.length+" archi · "+x+" vicini diretti";
+ selected(candidate&&ids.has(candidate.id)?candidate.id:currentRoot);
+ say("Radice: "+(dataset.nodes.find(n=>n.id===currentRoot)?.name||currentRoot));
+}
+function setRoot(id){
+ const n=dataset.nodes.find(x=>x.id===id);
+ if(!n||n.category==="capitolo"||n.id.startsWith("cap:")){say("I capitoli sono soltanto risorse editoriali");return}
+ currentRoot=id;candidate=n;render();
+}
+function search(){
+ const v=$("search").value.trim().toLocaleLowerCase("it");
+ const n=dataset.nodes.find(n=>n.name?.toLocaleLowerCase("it")===v&&n.category!=="capitolo")||
+ dataset.nodes.find(n=>n.name?.toLocaleLowerCase("it").includes(v)&&n.category!=="capitolo");
+ if(!v||!n){say("Nessun nodo storico-musicale trovato");return}setRoot(n.id)
+}
+async function init(){
+ if(!rootLib?.createRootedExplorer||!window.AtlantisCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
+ const [g,reg]=await Promise.all([
+  fetch("../grafo.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
+  fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()})
+ ]);
+ dataset=g;renderer=rootLib.createRootedExplorer(dataset,reg);
+ engine=window.AtlantisCompatGraph($("graph")).nodeColor(n=>n._focus?"#ffdf9a":n._depth===1?"#86d9cd":"#9d9cbf")
+  .linkColor(e=>e.statement_type==="comparison"?"#e8bd82":"#90b9cb")
+  .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
+  .onNodeClick(n=>selected(n.id)).onLinkClick(e=>{candidate=dataset.nodes.find(n=>n.id===e.source)||null;selected(candidate?.id)});
+ const unique=new Map();for(const n of dataset.nodes)if(n.category!=="capitolo"&&!unique.has(n.name))unique.set(n.name,n);
+ for(const name of [...unique.keys()].sort((a,b)=>a.localeCompare(b,"it"))){
+  const option=document.createElement("option");option.value=name;$("matches").append(option);
+ }
+ $("searchBtn").addEventListener("click",search);$("mozartBtn").addEventListener("click",()=>setRoot("pers:mozart"));
+ $("search").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
+ $("pivotBtn").addEventListener("click",()=>{if(candidate)setRoot(candidate.id)});
+ for(const id of ["depth","peopleDepth","workDepth","contextDepth"])$(id).addEventListener("input",render);
+ addEventListener("resize",()=>engine.width($("graph").clientWidth).height($("graph").clientHeight));
+ engine.width($("graph").clientWidth).height($("graph").clientHeight);setRoot(currentRoot);
+}
+init().catch(e=>{console.error(e);say("Errore: "+e.message)});
+</script>
+</body></html>
