@@ -1232,3 +1232,19 @@ L'utente chiede prosecuzione dopo Lotto 10, mantenendo priorità alla **classifi
 **Stato Checkpoint24:** Lotto01 **12** + Lotto02 **12** + Lotto03 **50** = **74/233** archi esaminati, **159** ancora da prendere in carico in lotti di **50** (ultimo eventuale lotto più piccolo). Non confondere i 74 esaminati con 74 approvati storicamente. Restano fuori da questo pool i 554 archi con almeno una identità da verificare e i due senza URL source.
 
 **Prossima ripresa:** Lotto04 **50** archi, continuando cataloghi di opere mediatrici e rapporti personali; incrementare le convalide storiche indipendenti con fonti autorevoli prima di qualunque merge o UI pubblica. I **210** lotti filologici Atlantis rimangono intatti.
+
+
+### Checkpoint 25 — «Concerto» deve figliare i sottogeneri e le composizioni (10 novembre 2026)
+
+**Richiesta immediata dell'utente:** cercando «Concerto», vedere anche «Concerto grosso», «Concerto di gruppo», «Concerto solistico» ecc. e, risalendo o cercando il compositore, le **singole opere** effettivamente composte; non soltanto il generico collegamento compositore↔genere.
+
+**Diagnosi effettuata sul repository:** il ramo `legacyGenresByGenre` della preview elencava le persone associate direttamente al genere ma non espandeva le relazioni tassonomiche legacy `taxonomy.parent`. Il database Atlantis già documenta cinque opere/raccolte concertistiche specifiche, con autori e link diretti.
+
+**Modifiche effettuate su `main`, ESCLUSIVAMENTE in `audit-integrazione/`:**
+- `OVERLAY_FAMIGLIA_CONCERTO_CHECKPOINT25_2026-11-10.json` — commit `ce42435f1201009e08a05b95fec5f393fd23e2ae`: 2 termini provvisori (Concerto solistico, Concerto di gruppo), 9 relazioni tassonomiche tra «Concerto» e forme preesistenti (incluso Concerto grosso), 7 classificazioni su 5 opere/raccolte già documentate. Non inventare opere né confondere arrangiamenti con composizioni originarie.
+- `PREVIEW_RADICATA_CHECKPOINT06.html` — ultimo commit `76f568b94230f42a9c97944e60da1e6e92e0ffeb`: caricamento overlay, navigazione `Concerto→sottogeneri→opere→autore` entro profondità/categorie abilitate; ricerca compositore `→` lavori già attestati `→` forme proprie; nessuna traversata genere→altri compositori nella rete personale.
+- `AUDIT_CHECKPOINT25_CONCERTO_TASSONOMIA_OPERE_2026-11-10.md` — commit `3caf140069d70ab2754eb45803f16a6f909eb997`: spiegazioni, opere sentinella, limiti.
+
+**Controlli:** nuova preview verificata staticamente sul codice JavaScript inline (compilazione riuscita), overlay letto integralmente. **Non ancora collaudati i comportamenti runtime in browser reale/Android; non dichiarare che la grafica è già verificata.** La preview richiede almeno profondità 3 per vedere `Concerto→tipo→opera→autore`, categorie Persone/Opere/Generi e forme abilitate. Verificare search esatta su «Concerto», «Concerto grosso barocco», Corelli, Vivaldi, Bach, Mendelssohn; se la ricerca o i filtri escludono qualcosa correggere prima di estendere.
+
+**Prossima priorità globale:** estendere la tassonomia ad altri generi e forme e soprattutto importare sistematicamente compositore→opera concreta→forme documentate, usando Flaminio con fonti e deduplicazione. Il Checkpoint24 storico-filologico rimane a **74/233**, prossimi **50** alla volta. Produzione `grafo.json`, `atlante3d/`, sito narrativo e 210 lotti storici preservati.
