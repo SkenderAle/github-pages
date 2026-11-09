@@ -1,3 +1,4 @@
+(function(){
 "use strict";
 /**
  * CHECKPOINT 06 — PURE, READ-ONLY, STAGING ONLY.
@@ -109,3 +110,4 @@ function createRootedExplorer(graph,proofRegistry={schema:"root-evidence-v1",wit
  return {explore,relationDetail,catalogue:{...stats},registered_proofs:evidence.size};
 }
 window.MusurgiaRooted={createRootedExplorer};
+})();
