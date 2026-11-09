@@ -1,0 +1,83 @@
+{
+  "schema": "musurgia-atlantis-staging-federated-person-links-v1",
+  "checkpoint": 18,
+  "date": "2026-11-09",
+  "purpose": "Restore verified direct person-to-person relationships present in Musurgia Mundi federation but absent from currently loaded public Atlantis graph",
+  "status": "staging_preview_only_no_public_graph_change",
+  "identity_crosswalk": [
+    {
+      "source_id": "mm:compositore-wolfgang-amadeus-mozart",
+      "target_preview_id": "pers:mozart",
+      "method": "exact reviewed historical identity",
+      "status": "reviewed_for_this_pair_only"
+    },
+    {
+      "source_id": "mm:compositore-leopold-mozart",
+      "target_preview_id": "mm:compositore-leopold-mozart",
+      "method": "reuse federated origin ID, retyped as person in preview",
+      "status": "staging_identity_not_physically_merged"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "mm:compositore-leopold-mozart",
+      "name": "Leopold Mozart",
+      "category": "persona",
+      "subtype": "compositore, violinista e didatta",
+      "description": "Johann Georg Leopold Mozart (1719–1787), padre e primo insegnante di Wolfgang Amadeus Mozart; violinista e autore del Versuch einer gründlichen Violinschule (1756).",
+      "year_birth": 1719,
+      "year_death": 1787,
+      "source_record_id": "mm:compositore-leopold-mozart",
+      "source_record_origin": "mundi_base",
+      "source_original_id": "compositore-leopold-mozart",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/",
+        "https://www.britannica.com/biography/Leopold-Mozart"
+      ],
+      "preview_only": true
+    }
+  ],
+  "links": [
+    {
+      "id": "audit:person18:leopold-teaches-wolfgang",
+      "source": "mm:compositore-leopold-mozart",
+      "target": "pers:mozart",
+      "relation": "primo_maestro_di",
+      "forward": "Leopold Mozart fu il primo insegnante di composizione e pratica musicale di Wolfgang.",
+      "reverse": "Wolfgang ricevette dal padre Leopold la prima formazione musicale.",
+      "source_federated_edge_id": "fd:ms:0",
+      "source_origin": "mundi_specialist",
+      "original_source": "mm:compositore-leopold-mozart",
+      "original_target": "mm:compositore-wolfgang-amadeus-mozart",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+      ],
+      "statement_type": "federated_person_relation",
+      "root_permission": "direct_documented",
+      "quality_gate": "source_traceable_identity_mapping_staging"
+    },
+    {
+      "id": "audit:person18:leopold-father-wolfgang",
+      "source": "mm:compositore-leopold-mozart",
+      "target": "pers:mozart",
+      "relation": "padre_di",
+      "forward": "Leopold Mozart è il padre di Wolfgang Amadeus Mozart.",
+      "reverse": "Wolfgang Amadeus Mozart è figlio di Leopold Mozart.",
+      "source_federated_node_id": "mm:compositore-leopold-mozart",
+      "source_origin": "mundi_base_biographic_description",
+      "sources": [
+        "https://www.treccani.it/enciclopedia/mozart_%28Il-Libro-dell%27Anno%29/"
+      ],
+      "statement_type": "federated_person_relation",
+      "root_permission": "direct_documented",
+      "quality_gate": "biographic_source_staging"
+    }
+  ],
+  "notes": [
+    "Historical person relations are traversable directly only between source and target; no generic genre nodes involved.",
+    "Root Wolfgang shows Leopold at depth one, not only via father/teacher category.",
+    "The full 1637-node federation was NOT already integrated in the preview; this corrects one documented gap and records precise lineage.",
+    "No assertion of whole-database publication or complete historical certification.",
+    "No changes to musurgia-atlantis/grafo.json, main GUI, or legacy database."
+  ]
+}
