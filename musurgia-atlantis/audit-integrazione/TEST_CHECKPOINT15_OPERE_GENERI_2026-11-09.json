@@ -1,0 +1,126 @@
+{
+  "schema": "musurgia-atlantis-checkpoint15-data-validation-v1",
+  "date": "2026-11-09",
+  "status": "PASS_ON_ISOLATED_JS_WITH_STAGING_SOURCE_DATA_NOT_LIVE_BROWSER_CERTIFICATION",
+  "input_files": [
+    "CATALOGO_FLAMINIO_OPERE_MULTIAUTORE_LOTTO06_2026-11-09.json",
+    "CATALOGO_FLAMINIO_OPERE_LOTTO07_2026-11-09.json",
+    "CATALOGO_FLAMINIO_CLASSIFICAZIONE_MULTIFACCETTA_LOTTO08_2026-11-09.json",
+    "CATALOGO_FLAMINIO_BRITTEN_GENERI_FORME_LOTTO12_2026-11-09.json",
+    "CATALOGO_FLAMINIO_MUSORGSKIJ_BRITTEN_LOTTO13_2026-11-09.json"
+  ],
+  "overlay": "OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT15_2026-11-09.json",
+  "preview": "PREVIEW_RADICATA_CHECKPOINT06.html",
+  "measurements": {
+    "source_records": 73,
+    "overlaid_nodes": 85,
+    "overlaid_edges": 151,
+    "relations_of_work_genre_form_subgenre_ambit": 71,
+    "source_work_records_lacking_adequate_classification": 19,
+    "identifiers_reused_in_existing_atlantis_or_previous_preview": 19
+  },
+  "assertions": [
+    {
+      "id": 1,
+      "check": "JavaScript inline della preview sintatticamente valido",
+      "result": "PASS"
+    },
+    {
+      "id": 2,
+      "check": "73 record sorgente rappresentati",
+      "result": "PASS"
+    },
+    {
+      "id": 3,
+      "check": "73 ID sorgente univoci",
+      "result": "PASS"
+    },
+    {
+      "id": 4,
+      "check": "Nessun duplicato nell'elenco degli ID nodo dell'overlay",
+      "result": "PASS"
+    },
+    {
+      "id": 5,
+      "check": "Nessun duplicato nell'elenco degli ID arco dell'overlay",
+      "result": "PASS"
+    },
+    {
+      "id": 6,
+      "check": "Nessun estremo di arco mancante nelle viste radicate isolate",
+      "result": "PASS"
+    },
+    {
+      "id": 7,
+      "check": "Musorgskij: cinque opere teatrali collegate individualmente a Opera",
+      "result": "PASS"
+    },
+    {
+      "id": 8,
+      "check": "Britten: tre opere teatrali collegate individualmente a Opera",
+      "result": "PASS"
+    },
+    {
+      "id": 9,
+      "check": "Auber: sei opere teatrali collegate individualmente a Opera",
+      "result": "PASS"
+    },
+    {
+      "id": 10,
+      "check": "Bellini: Norma usa il nodo Atlantis già esistente",
+      "result": "PASS"
+    },
+    {
+      "id": 11,
+      "check": "Berg: Wozzeck usa il nodo Atlantis già esistente",
+      "result": "PASS"
+    },
+    {
+      "id": 12,
+      "check": "Opera come radice non importa automaticamente generi musicali estranei",
+      "result": "PASS"
+    },
+    {
+      "id": 13,
+      "check": "Musorgskij non incorpora opere di Britten tramite Opera",
+      "result": "PASS"
+    },
+    {
+      "id": 14,
+      "check": "Britten non incorpora opere di Musorgskij tramite Opera",
+      "result": "PASS"
+    },
+    {
+      "id": 15,
+      "check": "Te Deum non è trasformato in Messa",
+      "result": "PASS"
+    },
+    {
+      "id": 16,
+      "check": "Boris Godunov mantiene due versioni proprie",
+      "result": "PASS"
+    },
+    {
+      "id": 17,
+      "check": "Opéra-comique mostra opere del relativo sottogenere",
+      "result": "PASS"
+    },
+    {
+      "id": 18,
+      "check": "Wozzeck da radice mostra il genere Opera",
+      "result": "PASS"
+    },
+    {
+      "id": 19,
+      "check": "Nessuna espansione da Barber ad altri compositori solo per tipologia condivisa",
+      "result": "PASS"
+    }
+  ],
+  "important_limits": [
+    "I test sono stati eseguiti invocando la funzione JS su nodi e archi di staging simulando diverse radici, non in un vero browser desktop o Android.",
+    "Non è una certificazione di tutti i rapporti storico-musicali e delle 73 attribuzioni Flaminio.",
+    "19 schede esterne non hanno una forma/genere singolo sufficientemente supportato; operazioni di versione e organico restano distinte.",
+    "I nuovi termini sono proposte tassonomiche, ancora da sottoporre a revisione filologica e crosswalk globale.",
+    "Nessuna modifica al grafo pubblico Atlantis o al legacy Musurgia Mundi."
+  ]
+}
