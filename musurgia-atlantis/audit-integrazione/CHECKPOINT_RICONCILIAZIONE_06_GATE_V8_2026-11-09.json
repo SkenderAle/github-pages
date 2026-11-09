@@ -145,5 +145,31 @@
     "Two-reviewer test is a structural fixture, not actual independent historical review",
     "Original public HTML not modified, no browser/Android test",
     "Legacy staging archive not activated"
-  ]
+  ],
+  "postfix_regression": {
+    "date": "2026-11-09",
+    "phase": "after patch of ROOTED_RELEVANCE_CHECKPOINT06.cjs",
+    "engine_commit": "705866c274258409597f816b1cb8a34e4d3d17dc",
+    "execution": "V8 against same full Atlantis source blob",
+    "checks": [
+      {
+        "name": "Rossini Otello retains noncausal relation to Verdi Otello, but not people Verdi/Boito",
+        "pass": true,
+        "observed_nodes": [
+          "opera:otello-rossini-1816",
+          "pers:rossini",
+          "opera:otello-verdi-1887"
+        ]
+      },
+      {
+        "name": "Explicit pivot on Verdi Otello shows composer Verdi",
+        "pass": true
+      },
+      {
+        "name": "Mozart result unchanged at 15 nodes and 18 edges",
+        "pass": true
+      }
+    ],
+    "nodes": "comparison endpoints are visible leaves, not a historical chain"
+  }
 }
