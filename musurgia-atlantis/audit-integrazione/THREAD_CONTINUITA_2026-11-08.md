@@ -862,3 +862,22 @@ https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_
 https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=etichette-09-20261109
 
 **PROSSIMA RIPRESA — Checkpoint 10:** chiedere riscontro visuale vero sull'unicità dell'etichetta e sulla permanenza dei nomi alle spalle, poi procedere con audit dell'importazione legacy (3.856 archi, 509 persone, 115 media/207 associazioni, 537 URL/ancore), senza fusione prematura.
+
+
+### Riconciliazione — Checkpoint 10 · classificazione Les Petits Riens e selettore Etichette finalmente visibile (9 novembre 2026)
+
+**RISCONTRO SUL JSON REALE:** `opera:les-petits-riens-1778` / `Les Petits Riens (1778)` **è già categoria `opera`, sottotipo `balletto`**; archi `L02-A23` con Jean-Georges Noverre (coreografia) e `L02-A24` con Mozart (**una parte** della musica), entrambi autonomamente verificati. La prossimità grafica a Persone e Reti culturali è solo una conseguenza del layout 3D, non riclassificazione: **grafo pubblico corretto e non modificato**.
+
+**PERCHÉ IL DOPPIO SELETTORE NON SI VEDEVA:** era realmente presente nel documento precedente ma dentro la colonna scrollabile, dopo ricerca, pertinenza e quattro slider di profondità. Su mobile la colonna è limitata in altezza e sullo screenshot della sola nebulosa non appariva. Ora l'unico pannello `Categorie · Nodi / Etichette` è **collocato sopra il Canvas nell'angolo alto sinistro della nebulosa**, **aperto all'avvio**, scrollabile al suo interno e richiudibile con un clic/tap sulla propria intestazione. Commit HTML `193a6ce6386ac8c1504f31324afdd825b0073d81`. Mantiene i due flag indipendenti, con capitoli editoriali non attivabili.
+
+**CATEGORIA ANCHE IN ETICHETTA:** la *stessa e unica* didascalia Canvas, quando puntata o selezionata, ora mostra una seconda riga **«Opera · balletto»** per *Les Petits Riens*, senza creare un altro popup. Commit renderer isolato `f64f0c917f572575a83cf20c40682405d0665318`. Modifica UI solo nello staging.
+
+**RISPETTO DELLA PROSPETTIVA:** per chiarezza il pannello indica `vista/catalogo`: con radice Mozart e pertinenza 2, ad esempio **«Opere (6/193)»**, sei opere nella rete visibile su 193 totali presenti nel JSON Atlantis. Il flag `Etichette` riguarda la categoria **nel sottografo corrente**, non implica che tutti i nodi del catalogo siano legati storicamente a Mozart. Quando il flag cambia e la struttura è la stessa, l'HTML aggiorna i metadati Canvas in-place senza riorganizzare/ruotare la nebulosa: commit `4ebb5ad2668b6d04a420381df62ab45144ae7ca5`. Cambio del parametro anticache per il renderer: `81889c182d91ef65a572d0e451555d126cc73520`.
+
+**TEST V8 CON SORGENTI REALI (NON browser live):** render Canvas della didascalia *Les Petits Riens* = una sola etichetta nome più metadato `Opera · balletto` PASS. App reale HTML e motore browser, dati `grafo.json` completi con API DOM/Canvas simulate: Mozart 15 nodi/18 archi, *Les Petits Riens* classificato opera, flag Opere rende permanenti tutte e sei le etichette della vista e non sposta la nebulosa, Persone indipendenti, nuova radice via doppio clic non altera lo zoom. PASS.
+
+**VERBALE:** `AUDIT_CATEGORIE_CHECKPOINT10_2026-11-09.md`, commit `e4fb7fed01eae327a476d54e930c46a7733dff02`.
+
+**LINK aggiornato:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=categorie10-20261109
+
+**VINCOLI INVARIATI:** nessuna fusione dei 3.856 archi legacy né delle 509 persone o dei media/ancore; nessuna modifica a `musurgia-atlantis/index.html`, `grafo.json`, `compat-graph.js` o `atlante3d/`. Prossima ripresa: riscontro visivo dell'utente sull'overlay etichette, poi audit dello staging per la migrazione additiva mantenendo provenienze e spiegazioni bidirezionali.
