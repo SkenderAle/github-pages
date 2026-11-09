@@ -913,3 +913,16 @@ https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_
 **Pubblicato soltanto il verbale** `AUDIT_TASSONOMIA_OPERE_GENERI_CHECKPOINT12_2026-11-09.md`, commit `62da26789100932d300c8f6dce9ca5141101cf38`. Nessuna modifica a grafo/UI pubblici, dati legacy, 210 lotti o overlay del Checkpoint 11.
 
 **Prossima ripresa:** verificare tutte le gerarchie tassonomiche sorgenti, ricostruire con fonti gli archi composizione–genere per le opere specifiche già documentate (Mozart come test di regressione, ma batch sull'intero dataset), costruire overlay additivo e reversibile, collaudare che i generi non diventino ponti automatici tra compositori; tooltip bidirezionali e Android ancora da verificare.
+
+
+### Checkpoint 12B — audit per classificare OPERE in Generi e forme (9 novembre 2026)
+
+**Decisione esplicita dell'utente:** i tre alberi forniti (musica da camera, sinfonica/orchestrale, sacra) non sono semplici materiali di consultazione: costituiscono la base dell'**audit di classificazione di tutte le opere documentate** in Atlantis e nell'Atlante 3D originario. Fare cernita musicologica, ricondurre sinonimi e duplicati alle voci legacy esistenti, e consentire **più generi/forme per una stessa composizione**, purché ogni attribuzione abbia tipo, provenienza e grado di verifica propri. Non confondere ambiti generali, sottogeneri, forme, organici, tecniche, destinazioni liturgiche, periodi o capitoli editoriali.
+
+**Verbale pubblico pubblicato in sola area di audit:** `musurgia-atlantis/audit-integrazione/AUDIT_TASSONOMIE_CAMERA_SINFONICA_SACRA_2026-11-09.md`, commit `72920ec895709468b826bfe2b0342319ea3e10a7`. Nell'overlay Checkpoint 11 sono stati individuati 15 ID rilevanti già esistenti, tra cui musica da camera, quartetto, sonata, sinfonia, concerto, suite, messa, mottetto, oratorio, cantata. Non ricrearli.
+
+**Protocollo operativo aggiuntivo:** inventariare e riconciliare ID delle *opere individuali* prima di classificare, mantenere la gerarchia come grafo a più faccette, non come albero monogenitore; per ogni tripla opera–predicato–categoria salvare `source_work_id`, `target_term_id`, predicato, fonti, eventuale contesto cronologico, `evidence_status`, `provenance`, `review_status` e testo leggibile nei due versi. Una nota che nomina un titolo non è automaticamente un arco strutturato; crea un candidato da verificare. Costruire in staging prima la copertura delle opere già documentate; registrare lacune senza inserire attribuzioni inventate. I generi non diventano ponti tra autori nella pertinenza radicata I–V.
+
+**Esempi di regressione:** Don Giovanni → dramma giocoso → opera; Missa solemnis op. 123 → messa, musica sacra, sinfonico-corale (faccette distinte); Sinfonia fantastica → sinfonia, sinfonia a programma; Pierrot lunaire → melologo/ciclo con Sprechstimme e ensemble (non etichettare automaticamente Lied); Ein deutsches Requiem → musica sacra non liturgica/requiem concertistico di specifica tradizione, **non** messa latina dei defunti. Ogni prova è da confermare sui record originari e con fonti.
+
+**Stato onesto:** pubblicato audit tassonomico, **non ancora** eseguita classificazione sistematica di tutte le composizioni né fusione in produzione. Mantenere intatti grafo pubblico, renderer, Atlante legacy e lotti storico-filologici; aggiornare il thread a ogni fase.
