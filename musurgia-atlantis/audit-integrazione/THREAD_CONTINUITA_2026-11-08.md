@@ -692,3 +692,15 @@ L'utente propone, per **ogni ricerca**, un'impostazione differente dei livelli d
 **Patrimonio invariato:** 210 lotti storico-filologici, 3.856 archi legacy, 1.718 Atlantis, 509 persone, 115 media/207 associazioni, 537 URL con ancora, spiegazioni `forward/reverse`, fonti e note, adapter tooltip V8 7.712 stringhe già testato al Lotto 01. Capitoli editoriali non diventano nodi storici; generi, epoche, luoghi, scuole e istituzioni non creano ponti transitori automatici.
 
 **PROSSIMA FASE:** non continuare a produrre lotti di *mera classificazione* dei 210, ormai coperti. Passare invece a **reale riconciliazione delle adiacenze** e validazione per predicato, con accesso ai JSON integrali Atlas/Atlantis, documentazione della direzione, cronologia, fonte, spiegazioni bidirezionali, confronto alla radice per livelli I–V; collaudi eseguibili in staging isolato prima di qualsiasi merge pubblico. Mantenere le schede in attesa di fonti come questioni aperte per l'audit storico-filologico.
+
+
+### Riconciliazione post-catalogazione — Checkpoint 01 (9 novembre 2026)
+**Nuovi file pubblicati esclusivamente in `musurgia-atlantis/audit-integrazione/`:**
+- `CHECKPOINT_RICONCILIAZIONE_01_2026-11-09.json` (commit `f0b5a792ed3fc0634cc4c0e59045a2527f2a1c84`): **14/14 asserzioni realmente eseguite in V8** su due JSON di staging completi: `STAGING_TEST_MOZART_LEOPOLD_FASE2D_2026-11-08.json` e `CROSSWALK_CONCETTI_FASE2D_2026-11-08.json`; hash input e risultati di ogni test nel registro.
+- `AUDIT_RICONCILIAZIONE_CHECKPOINT01_2026-11-09.md` (commit `296d1ed7f22a7deafb82552169b5100b751af08c`): metodo, interpretazione e limiti.
+
+**Risultato:** caso Mozart–Leopold: padre/figlio e maestro/allievo restano **due predicati paralleli**, con testi `forward`/`reverse` e URL di fonte; due archi di Leopold (servizio alla cappella di Salisburgo, trattato 1756) sono esplicitamente marcati come **non pertinenti per transitività automatica** alla radice Mozart. I 4 crosswalk concettuali esistenti hanno target differenti e somme coerenti: **91 incidenze di archi legacy**, **18 Atlantis**, di cui **13 editoriali** e **5 non editoriali**. Incidenze != archi distinti. Policy di preservazione e non-merge confermate nei dati.
+
+**Scope onesto:** test di integrità di staging, NON test del grafo integrale o del vero motore `prepare`/`byId`/BFS, né certificazione dei singoli archi. Accesso integrale ai JSON grandi di produzione non completato (connettore rigetta output grandi; download container esterno non disponibile). Non dichiarare browser/Android/Node `--live` testati. Nessun grafo o UI pubblici modificati. Non ripetere la mera classificazione delle 210 schede (già chiusa 210/210) e non confondere 14 PASS con l'integrazione completata.
+
+**PROSSIMA RIPRESA:** confronto reale tra `atlante3d/database/grafo.json`, `atlante3d/database/relazioni.json` e `musurgia-atlantis/grafo.json`, acquisizione dei payload con metodo adatto alle dimensioni, analisi delle adiacenze per ID/predicato/fonti, poi esecuzione del filtro radicato I–V e collaudi runtime in staging. Solo dopo certificazione autorizzare eventuale merge.
