@@ -1,0 +1,93 @@
+{
+  "schema": "musurgia-atlantis-unified-master-v1",
+  "date": "2026-11-09",
+  "status": "unified_staging_read_path_with_media_preservation_not_public_graph_promotion",
+  "branch": "main",
+  "project": "Musurgia Atlantis · unificazione del patrimonio Musurgia Mundi",
+  "flaminio_import_status": "PAUSED per richiesta esplicita dell'utente",
+  "source_graph": {
+    "partition_base": "./federazione-v1/",
+    "manifest_path": "./federazione-v1/MANIFEST.json",
+    "node_partitions": [
+      "nodi-01.json",
+      "nodi-02.json",
+      "nodi-03.json",
+      "nodi-04.json",
+      "nodi-05.json",
+      "nodi-06.json"
+    ],
+    "edge_partitions": [
+      "archi-01.json",
+      "archi-02.json",
+      "archi-03.json",
+      "archi-04.json",
+      "archi-05.json",
+      "archi-06.json",
+      "archi-07.json",
+      "archi-08.json"
+    ],
+    "expected_raw_nodes": 1637,
+    "expected_raw_edges": 5574
+  },
+  "identity_crosswalk": {
+    "path": "./CROSSWALK_IDENTITA_CANONICHE_CHECKPOINT20_2026-11-09.json",
+    "expected_pairs": 155,
+    "expected_unmatched_legacy_people": 354,
+    "quality": "exact_unique_name_one_to_one_provisional",
+    "expected_canonical_nodes_if_applied": 1482
+  },
+  "media": {
+    "path": "./RISORSE_AUDIO_AUDIOTECHE_UNIFICATE_CHECKPOINT20_2026-11-09.json",
+    "expected_recordings": 115,
+    "expected_media_associations": 207,
+    "expected_precise_narrative_links": 537,
+    "original_video_db": "../../atlante3d/database/video.json",
+    "original_site_links": "../../atlante3d/database/collegamenti-sito.json",
+    "galleries": [
+      "https://musurgiamundi.com/melodramma/audioteca/",
+      "https://musurgiamundi.com/musica-e-film/videoteca/"
+    ]
+  },
+  "additional_legacy_metadata": {
+    "consultazione": "../../atlante3d/database/consultazione.json",
+    "identita_esterne": "../../atlante3d/database/identita-esterne.json",
+    "indice_autori": "../../atlante3d/database/indice-autori.json",
+    "policy": "Preserve all as source files and add their fields to node detail gradually without discarding source provenance."
+  },
+  "semantics": {
+    "historical_edges": "Every original edge is kept in unified registry with original endpoints and source. Edges with missing historical review remain searchable but must not be promoted to certified causal chains.",
+    "media_edges": "Links to audio/video/pages/chapters are metadata resources, never historical influence edges.",
+    "taxonomy": "Do not assume arbitrary mm: corrente is a form; classify by taxonomy, with provisional genre nodes subject to audit.",
+    "categories_order": [
+      "persona",
+      "opera",
+      "rete-culturale",
+      "genere-forma"
+    ],
+    "relevance": "Do not expand unrelated composers merely because they share a form; work-anchored cycles provide strongest relevance.",
+    "no_autoplay": true
+  },
+  "preservation": {
+    "never_drop_origin": true,
+    "retain_legacy_alias_ids": true,
+    "retain_all_original_node_properties": true,
+    "retain_all_original_edge_properties": true,
+    "retain_source_url_and_bookmarks": true,
+    "do_not_copy_copyright_text": true,
+    "do_not_treat_media_as_music_composition": true
+  },
+  "checks_to_run": [
+    "Partition counts and unique IDs",
+    "All canonicalized historical edges still have endpoints",
+    "Media IDs resolve",
+    "Every media association remains represented even if target node missing",
+    "All link URLs remain available in catalogue",
+    "Sample Leopold→Wolfgang and Mozart→Don Giovanni→Dramma giocoso→Opera",
+    "Browser UI desktop and Android manual visual audit"
+  ],
+  "source_file_sha": {
+    "federation_manifest": "c318c88815747e1f7894fec7de3d64e90e88aa53",
+    "media_inventory": "14017cad0dfc97b1992ec006f475dfa70cb668fd",
+    "identity_crosswalk": "c04300ea7b8c248bec6eaccb66e30fa0e540f092"
+  }
+}
