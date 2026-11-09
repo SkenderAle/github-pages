@@ -1,0 +1,2439 @@
+{
+  "schema": "musurgia-flaminio-work-to-form-crosswalk-staging-v1",
+  "date": "2026-11-09",
+  "phase": "Lotto 09",
+  "status": "candidate_links_only_not_historically_certified",
+  "work_count": 52,
+  "facet_count": 130,
+  "mapped_facet_count": 33,
+  "unmapped_facet_count": 97,
+  "mapping_policy": [
+    "Only reuse target IDs confirmed to exist in federazione-v1 1637-node corpus",
+    "One work may have multiple genre/form facets; instrumentation and production status remain separate dimensions",
+    "No direct person-to-genre shortcut stands in for person-to-work-to-genre",
+    "No inheritance of a composer via common genre node during rooted exploration",
+    "Opera work identity vs opera genre must remain different",
+    "Parent genre inheritance requires independently reviewed taxonomy semantics",
+    "Candidate link counts are NOT accepted historical graph edges"
+  ],
+  "records": [
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:alban-berg:op-1",
+      "composer": "Alban Berg",
+      "title": "Sonata in si minore per pianoforte",
+      "catalogue_number": "op. 1",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "sonata"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "pianoforte solo"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "sonata",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "mm:genere-sonata",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing mm:genere-sonata is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "pianoforte solo",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:alban-berg:op-2",
+      "composer": "Alban Berg",
+      "title": "Quattro Lieder",
+      "catalogue_number": "op. 2",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "lied"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "lied",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:lied",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing senso:lied is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:alban-berg:op-3",
+      "composer": "Alban Berg",
+      "title": "Quartetto per archi",
+      "catalogue_number": "op. 3",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "quartetto d'archi"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "musica da camera"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "quartetto d'archi",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:quartetto",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing senso:quartetto is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "musica da camera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "mm:genere-musica-da-camera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing mm:genere-musica-da-camera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:alban-berg:op-4",
+      "composer": "Alban Berg",
+      "title": "Fünf Orchesterlieder nach Ansichtskarten",
+      "catalogue_number": "op. 4",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "ciclo di lieder orchestrali"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e orchestra"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "ciclo di lieder orchestrali",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e orchestra",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:alban-berg:op-5",
+      "composer": "Alban Berg",
+      "title": "Quattro pezzi per clarinetto e pianoforte",
+      "catalogue_number": "op. 5",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "musica da camera"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "clarinetto e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "musica da camera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "mm:genere-musica-da-camera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing mm:genere-musica-da-camera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "clarinetto e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:alban-berg:op-6",
+      "composer": "Alban Berg",
+      "title": "Drei Orchesterstücke",
+      "catalogue_number": "op. 6",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "musica orchestrale"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "ciclo di pezzi per orchestra"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "musica orchestrale",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "ciclo di pezzi per orchestra",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:alban-berg:op-7",
+      "composer": "Alban Berg",
+      "title": "Wozzeck",
+      "catalogue_number": "op. 7",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "teatro musicale"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:vincenzo-bellini:catalogue-local-n-1",
+      "composer": "Vincenzo Bellini",
+      "title": "Adelson e Salvini",
+      "catalogue_number": "catalogue local n. 1",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "dramma semiserio"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "dramma semiserio",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:vincenzo-bellini:catalogue-local-n-2",
+      "composer": "Vincenzo Bellini",
+      "title": "Bianca e Gernando",
+      "catalogue_number": "catalogue local n. 2",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "melodramma"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "melodramma",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:vincenzo-bellini:catalogue-local-n-3",
+      "composer": "Vincenzo Bellini",
+      "title": "Il pirata",
+      "catalogue_number": "catalogue local n. 3",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "melodramma"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "melodramma",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:vincenzo-bellini:catalogue-local-n-4",
+      "composer": "Vincenzo Bellini",
+      "title": "Bianca e Fernando",
+      "catalogue_number": "catalogue local n. 4",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "melodramma"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "melodramma",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:samuel-barber:heyman-b-1",
+      "composer": "Samuel Barber",
+      "title": "Sadness",
+      "catalogue_number": "Heyman B. 1",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "pianoforte solo"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "pianoforte solo",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 6,
+      "source_work_id": "flaminio:samuel-barber:heyman-b-2",
+      "composer": "Samuel Barber",
+      "title": "Sometime",
+      "catalogue_number": "Heyman B. 2",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "canto da camera"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "canto da camera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Bellini:flaminio-local:5",
+      "composer": "Bellini",
+      "title": "La straniera",
+      "catalogue_number": "flaminio-local:5",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "melodramma"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "melodramma",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Bellini:flaminio-local:6",
+      "composer": "Bellini",
+      "title": "Zaira",
+      "catalogue_number": "flaminio-local:6",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "tragedia lirica"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "tragedia lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Bellini:flaminio-local:7",
+      "composer": "Bellini",
+      "title": "I Capuleti e i Montecchi",
+      "catalogue_number": "flaminio-local:7",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "tragedia lirica"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "tragedia lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Bellini:flaminio-local:8",
+      "composer": "Bellini",
+      "title": "La sonnambula",
+      "catalogue_number": "flaminio-local:8",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "melodramma"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "melodramma",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Bellini:flaminio-local:9",
+      "composer": "Bellini",
+      "title": "Norma",
+      "catalogue_number": "flaminio-local:9",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "tragedia lirica"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "tragedia lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Berg:op:3a",
+      "composer": "Berg",
+      "title": "Quartetto per archi (riduzione per pianoforte a quattro mani)",
+      "catalogue_number": "op:3a",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "musica da camera"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "riduzione per pianoforte a quattro mani"
+        }
+      ],
+      "kind": "arrangement",
+      "derive": "Berg:op:3",
+      "classification_links": [
+        {
+          "source_label": "musica da camera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "mm:genere-musica-da-camera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing mm:genere-musica-da-camera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "riduzione per pianoforte a quattro mani",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Berg:op:7a",
+      "composer": "Berg",
+      "title": "Drei Bruchstücke aus Wozzeck",
+      "catalogue_number": "op:7a",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "suite/estratti da opera"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e orchestra"
+        }
+      ],
+      "kind": "excerpt_collection",
+      "derive": "Berg:op:7",
+      "classification_links": [
+        {
+          "source_label": "suite/estratti da opera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e orchestra",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Berg:senza-opus:incipit-es-ist-ein-reis-entsprungen",
+      "composer": "Berg",
+      "title": "Es ist ein Reis entsprungen",
+      "catalogue_number": "senza-opus:incipit-es-ist-ein-reis-entsprungen",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "musica corale"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "coro a cappella"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "musica corale",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "coro a cappella",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Berg:senza-opus:incipit-schliesse-mir-die-augen-beide",
+      "composer": "Berg",
+      "title": "Schliesse mir die Augen beide",
+      "catalogue_number": "senza-opus:incipit-schliesse-mir-die-augen-beide",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "lied"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "versioned_work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "lied",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:lied",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing senso:lied is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Berg:senza-opus:incipit-heiliger-himmel",
+      "composer": "Berg",
+      "title": "Heiliger Himmel",
+      "catalogue_number": "senza-opus:incipit-heiliger-himmel",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "lied"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "lied",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:lied",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "Existing senso:lied is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B3",
+      "composer": "Barber",
+      "title": "Melody in F",
+      "catalogue_number": "heyman:B3",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "pianoforte solo"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "pianoforte solo",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B4",
+      "composer": "Barber",
+      "title": "Why Not?",
+      "catalogue_number": "heyman:B4",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "canto da camera"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "canto da camera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B5",
+      "composer": "Barber",
+      "title": "Largo",
+      "catalogue_number": "heyman:B5",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "pianoforte solo"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "pianoforte solo",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B6",
+      "composer": "Barber",
+      "title": "War Song",
+      "catalogue_number": "heyman:B6",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "pianoforte solo"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "pianoforte solo",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B7",
+      "composer": "Barber",
+      "title": "In the Firelight",
+      "catalogue_number": "heyman:B7",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "canto da camera"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "canto da camera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B8",
+      "composer": "Barber",
+      "title": "Isabel",
+      "catalogue_number": "heyman:B8",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "canto da camera"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "canto da camera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B9",
+      "composer": "Barber",
+      "title": "At Twilight",
+      "catalogue_number": "heyman:B9",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "pianoforte solo"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "pianoforte solo",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B10",
+      "composer": "Barber",
+      "title": "Lullaby",
+      "catalogue_number": "heyman:B10",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "pianoforte solo"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "pianoforte solo",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B11",
+      "composer": "Barber",
+      "title": "Thy Will be Done",
+      "catalogue_number": "heyman:B11",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e organo"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "musica vocale"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "voce e organo",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "musica vocale",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B12",
+      "composer": "Barber",
+      "title": "Nursery Songs (Mother Goose Rhymes Set to Music)",
+      "catalogue_number": "heyman:B12",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "ciclo di canzoni"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "ciclo di canzoni",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B13",
+      "composer": "Barber",
+      "title": "The Rose Tree",
+      "catalogue_number": "heyman:B13",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera lirica"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "opera incompiuta"
+        }
+      ],
+      "kind": "unfinished",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera lirica",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "opera incompiuta",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B13-arr",
+      "composer": "Barber",
+      "title": "Gypsy Dance",
+      "catalogue_number": "heyman:B13-arr",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "violino e pianoforte"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "arrangiamento"
+        }
+      ],
+      "kind": "arrangement",
+      "derive": "Barber:heyman:B13",
+      "classification_links": [
+        {
+          "source_label": "violino e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "arrangiamento",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 7,
+      "source_work_id": "Flaminio:Barber:heyman:B14",
+      "composer": "Barber",
+      "title": "Prayer",
+      "catalogue_number": "heyman:B14",
+      "source_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "canto da camera"
+        },
+        {
+          "dimension": "legacy_label_unseparated",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "original",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "canto da camera",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "legacy_label_unseparated",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Barber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:auber:awv-1",
+      "composer": "Auber",
+      "title": "Julie ou L'Erreur d'un moment",
+      "catalogue_number": "AWV 1",
+      "source_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "opera"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "commedia per musica"
+        },
+        {
+          "dimension": "ambito",
+          "value": "teatro musicale"
+        },
+        {
+          "dimension": "organico",
+          "value": "archi"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera",
+          "source_dimension": "genere",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "commedia per musica",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "archi",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:auber:awv-2",
+      "composer": "Auber",
+      "title": "Jean de Chimay",
+      "catalogue_number": "AWV 2",
+      "source_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "opera"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "opéra-comique"
+        },
+        {
+          "dimension": "ambito",
+          "value": "teatro musicale"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera",
+          "source_dimension": "genere",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "opéra-comique",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:auber:awv-3",
+      "composer": "Auber",
+      "title": "Le séjour militaire",
+      "catalogue_number": "AWV 3",
+      "source_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "opera"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "opéra-comique"
+        },
+        {
+          "dimension": "ambito",
+          "value": "teatro musicale"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera",
+          "source_dimension": "genere",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "opéra-comique",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:auber:awv-4",
+      "composer": "Auber",
+      "title": "Le testament et les billets doux",
+      "catalogue_number": "AWV 4",
+      "source_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "opera"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "opéra-comique"
+        },
+        {
+          "dimension": "ambito",
+          "value": "teatro musicale"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera",
+          "source_dimension": "genere",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "opéra-comique",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:auber:awv-5",
+      "composer": "Auber",
+      "title": "La Bergère châtelaine",
+      "catalogue_number": "AWV 5",
+      "source_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "opera"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "opéra-comique"
+        },
+        {
+          "dimension": "ambito",
+          "value": "teatro musicale"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera",
+          "source_dimension": "genere",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "opéra-comique",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:auber:awv-6",
+      "composer": "Auber",
+      "title": "Emma, ou La promesse imprudente",
+      "catalogue_number": "AWV 6",
+      "source_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "opera"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "opéra-comique"
+        },
+        {
+          "dimension": "ambito",
+          "value": "teatro musicale"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera",
+          "source_dimension": "genere",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "opéra-comique",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Auber-catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:bizet:wd-1",
+      "composer": "Bizet",
+      "title": "La maison du docteur",
+      "catalogue_number": "WD 1",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "opera"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "opéra-comique"
+        },
+        {
+          "dimension": "ambito",
+          "value": "teatro musicale"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "opera",
+          "source_dimension": "genere",
+          "target_id": "senso:opera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "Existing senso:opera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "opéra-comique",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:bizet:wd-2",
+      "composer": "Bizet",
+      "title": "Le Docteur Miracle",
+      "catalogue_number": "WD 2",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "operetta"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "operetta in un atto"
+        },
+        {
+          "dimension": "ambito",
+          "value": "teatro musicale"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "operetta",
+          "source_dimension": "genere",
+          "target_id": "senso:operetta",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "Existing senso:operetta is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "operetta in un atto",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "teatro musicale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:bizet:wd-32",
+      "composer": "Bizet",
+      "title": "Sinfonia in do maggiore",
+      "catalogue_number": "WD 32",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "sinfonia"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "sinfonia in quattro movimenti"
+        },
+        {
+          "dimension": "ambito",
+          "value": "musica sinfonica"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "sinfonia",
+          "source_dimension": "genere",
+          "target_id": "mm:genere-sinfonia",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "Existing mm:genere-sinfonia is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "sinfonia in quattro movimenti",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "musica sinfonica",
+          "source_dimension": "ambito",
+          "target_id": "senso:sinfonia",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "Existing senso:sinfonia is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:bizet:wd-31",
+      "composer": "Bizet",
+      "title": "Ouverture in la minore-maggiore",
+      "catalogue_number": "WD 31",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "ouverture"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "ouverture da concerto"
+        },
+        {
+          "dimension": "ambito",
+          "value": "musica orchestrale"
+        },
+        {
+          "dimension": "organico",
+          "value": "orchestra"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "ouverture",
+          "source_dimension": "genere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "ouverture da concerto",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "musica orchestrale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "orchestra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:bizet:wd-62",
+      "composer": "Bizet",
+      "title": "Fuga a quattro voci in la minore",
+      "catalogue_number": "WD 62",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "fuga"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "fuga a quattro voci"
+        },
+        {
+          "dimension": "ambito",
+          "value": "esercizio contrappuntistico"
+        },
+        {
+          "dimension": "organico",
+          "value": "organico non specificato"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "fuga",
+          "source_dimension": "genere",
+          "target_id": "senso:fuga",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "Existing senso:fuga is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "fuga a quattro voci",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "esercizio contrappuntistico",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "organico non specificato",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:bizet:senza-wd",
+      "composer": "Bizet",
+      "title": "Sinfonia in re maggiore di Gounod (trascrizione)",
+      "catalogue_number": "senza WD",
+      "source_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "trascrizione"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "riduzione per pianoforte a quattro mani"
+        },
+        {
+          "dimension": "ambito",
+          "value": "musica per pianoforte"
+        },
+        {
+          "dimension": "organico",
+          "value": "pianoforte a quattro mani"
+        }
+      ],
+      "kind": "arrangement",
+      "derive": "Gounod:Sinfonia in re maggiore",
+      "classification_links": [
+        {
+          "source_label": "trascrizione",
+          "source_dimension": "genere",
+          "target_id": "senso:trascrizione",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "Existing senso:trascrizione is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "riduzione per pianoforte a quattro mani",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "musica per pianoforte",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "pianoforte a quattro mani",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Bizet-catalogo-cronologico.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:berlioz:h-1",
+      "composer": "Berlioz",
+      "title": "Pot-pourri concertant sur des thèmes italiens",
+      "catalogue_number": "H 1",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "pot-pourri concertante"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "musica da camera"
+        },
+        {
+          "dimension": "ambito",
+          "value": "musica strumentale"
+        },
+        {
+          "dimension": "organico",
+          "value": "flauto, corno, quartetto d'archi"
+        }
+      ],
+      "kind": "lost_work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "pot-pourri concertante",
+          "source_dimension": "genere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "musica da camera",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": "mm:genere-musica-da-camera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "Existing mm:genere-musica-da-camera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "musica strumentale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "flauto, corno, quartetto d'archi",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:berlioz:h-2",
+      "composer": "Berlioz",
+      "title": "Quintet pour flûte, cor et cordes",
+      "catalogue_number": "H 2",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "quintetto"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "musica da camera"
+        },
+        {
+          "dimension": "ambito",
+          "value": "musica strumentale"
+        },
+        {
+          "dimension": "organico",
+          "value": "flauto e archi (catalogo descrive anche corno)"
+        }
+      ],
+      "kind": "lost_work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "quintetto",
+          "source_dimension": "genere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "musica da camera",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": "mm:genere-musica-da-camera",
+          "predicate": "classified_as_candidate",
+          "status": "candidate_target_existing_not_certified",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "Existing mm:genere-musica-da-camera is a candidate semantic endpoint; no edge promoted without work identity and genre review"
+        },
+        {
+          "source_label": "musica strumentale",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "flauto e archi (catalogo descrive anche corno)",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:berlioz:h-7",
+      "composer": "Berlioz",
+      "title": "Le dépit de la bergère",
+      "catalogue_number": "H 7",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "romanza"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "romanza vocale"
+        },
+        {
+          "dimension": "ambito",
+          "value": "musica vocale da camera"
+        },
+        {
+          "dimension": "organico",
+          "value": "voce e pianoforte"
+        }
+      ],
+      "kind": "work",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "romanza",
+          "source_dimension": "genere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "romanza vocale",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "musica vocale da camera",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voce e pianoforte",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    },
+    {
+      "lot": 8,
+      "source_work_id": "flaminio:berlioz:h-8",
+      "composer": "Berlioz",
+      "title": "Recueil de romances",
+      "catalogue_number": "H 8",
+      "source_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+      "facets": [
+        {
+          "dimension": "genere",
+          "value": "raccolta di romanze"
+        },
+        {
+          "dimension": "forma_o_sottogenere",
+          "value": "arrangiamenti e accompagnamenti"
+        },
+        {
+          "dimension": "ambito",
+          "value": "musica vocale da camera"
+        },
+        {
+          "dimension": "organico",
+          "value": "voci e chitarra"
+        }
+      ],
+      "kind": "collection_of_arrangements",
+      "derive": null,
+      "classification_links": [
+        {
+          "source_label": "raccolta di romanze",
+          "source_dimension": "genere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "arrangiamenti e accompagnamenti",
+          "source_dimension": "forma_o_sottogenere",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "musica vocale da camera",
+          "source_dimension": "ambito",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        },
+        {
+          "source_label": "voci e chitarra",
+          "source_dimension": "organico",
+          "target_id": null,
+          "predicate": "unmapped_facet",
+          "status": "requires_taxonomy_definition_or_crosswalk",
+          "source_catalogue_url": "https://www.flaminioonline.it/Biografie/Berlioz%20-%20catalogo.html",
+          "reason": "No semantically safe exact term mapping; avoid using approximate historic/context nodes"
+        }
+      ]
+    }
+  ]
+}
