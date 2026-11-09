@@ -91,7 +91,7 @@ function makeGraph(host){
     const size=root?13:n._depth===1?11.5:11;
     // One Canvas caption, optionally with a classification line on hover/selection.
     const showType=n.id===hovered||n.id===selected;
-    const catNames={persona:'Persona',opera:'Opera','versione-opera':'Versione d’opera',
+    const catNames={persona:'Persona',opera:'Opera','genere-forma':'Genere o forma','versione-opera':'Versione d’opera',
      'parte-di-opera':'Parte d’opera',allestimento:'Allestimento',produzione:'Produzione',
      'nodo-di-senso':'Nodo di senso',luogo:'Luogo',strumento:'Strumento',
      'rete-culturale':'Rete culturale','evento-storico':'Evento storico',
