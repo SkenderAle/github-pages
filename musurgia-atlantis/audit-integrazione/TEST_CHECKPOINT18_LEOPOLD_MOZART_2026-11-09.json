@@ -1,0 +1,46 @@
+{
+  "schema": "atlantis-preview-federated-family-regression-v1",
+  "date": "2026-11-09",
+  "status": "PASS_ISOLATED_LOGIC_NOT_BROWSER_RENDER",
+  "inputs": [
+    "OVERLAY_PERSONE_FEDERATE_CHECKPOINT18_2026-11-09.json",
+    "PREVIEW_RADICATA_CHECKPOINT06.html",
+    "federazione-v1/nodi-*.json",
+    "federazione-v1/archi-*.json"
+  ],
+  "results": [
+    {
+      "check": "Wolfgang root directly includes Leopold at depth 1",
+      "result": "PASS"
+    },
+    {
+      "check": "Leopold root directly includes Wolfgang at depth 1",
+      "result": "PASS"
+    },
+    {
+      "check": "Both original relationships shown with their distinct meanings (father, first teacher)",
+      "result": "PASS"
+    },
+    {
+      "check": "Pessoa depth=0 omits Leopold",
+      "result": "PASS"
+    },
+    {
+      "check": "Clementi root does not accidentally include Leopold",
+      "result": "PASS"
+    },
+    {
+      "check": "No visible orphan relations in isolated test",
+      "result": "PASS"
+    },
+    {
+      "check": "Preview loader includes federated person relations JSON",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "This test invokes preview JavaScript helper with isolated node sets; no desktop or Android rendering certified.",
+    "Only Leopold relationship mapped; NOT a claim of complete Musurgia Mundi or Atlante3D import into the visible application.",
+    "Mundi and Atlantis data remain in separate provenance layers; production grafo.json unchanged."
+  ]
+}
