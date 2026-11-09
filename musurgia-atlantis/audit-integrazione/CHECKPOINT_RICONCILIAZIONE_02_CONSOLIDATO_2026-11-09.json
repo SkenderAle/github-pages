@@ -1,0 +1,113 @@
+{
+  "schema": "musurgia-atlantis/reconciliation-02-integrated-audit-v1",
+  "date": "2026-11-09",
+  "scope": "Reconciliation of complete original edge staging, endpoint registries, declared nominal equivalence exceptions and extension; not full live Atlantis graph comparison",
+  "inputs": [
+    {
+      "path": "musurgia-atlantis/audit-integrazione/CHECKPOINT_RICONCILIAZIONE_02_ARCHI_BASE_2026-11-09.json",
+      "blob_sha": "7f73aed55f8d2498757a7d264b50eac0a059f13c"
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/CHECKPOINT_RICONCILIAZIONE_02_ARCHI_SPECIALISTICI_2026-11-09.json",
+      "blob_sha": "833b1c10f0d060a84cbc1dfc0cc2336f666b337c"
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_ESTENSIONE_FASE2K_30_2026-11-08.json",
+      "blob_sha": "9ff27d5ad77424a125dad0b824fa4c2451f16e25"
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_NUOVE_PERSONE_FASE2K_347_2026-11-08.json",
+      "blob_sha": "2217c4bf984b6381ed85259f7776061137b66c7f"
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "blob_sha": "9188f82aca597acb7b4448435499077bed62a886"
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_NODI_NON_PERSONE_FASE2K_374_2026-11-08.json",
+      "blob_sha": "9b11d46b78e465e637d331b4e17da82337c747d9"
+    }
+  ],
+  "counts": {
+    "base_edges": 2437,
+    "specialist_edges": 1389,
+    "extension_edges": 30,
+    "total_original_edge_snapshots": 3856,
+    "source_people": 509,
+    "new_person_candidates": 347,
+    "identity_pairs": 162,
+    "nonperson_source_ids": 374,
+    "nonperson_variants": 375,
+    "naive_unresolved_person_ids": 4,
+    "unexplained_after_exception_review": 0
+  },
+  "nominal_exceptions": [
+    {
+      "stage_id": "pers:moliere",
+      "legacy_source": "persona-moliere",
+      "specialist_edge": "lotto06-lully-moliere",
+      "ledger": "new_authority_equivalences",
+      "expected_target": "pers:moliere",
+      "reference_authorities": [
+        "https://catalogue.bnf.fr/ark:/12148/cb11916418p",
+        "https://www.comedie-francaise.fr/moliere"
+      ],
+      "status": "explained_by_staging_ledger_not_verified_against_live_graph"
+    },
+    {
+      "stage_id": "pers:ferdinand-david",
+      "legacy_source": "compositore-ferdinand-david",
+      "specialist_edge": "audit2-20261018-spoh-david",
+      "ledger": "new_authority_equivalences",
+      "expected_target": "pers:ferdinand-david",
+      "reference_authorities": [
+        "https://www.deutsche-biographie.de/sfz11399.html",
+        "https://weber-gesamtausgabe.de/de/A003165.html"
+      ],
+      "status": "explained_by_staging_ledger_not_verified_against_live_graph"
+    },
+    {
+      "stage_id": "pers:diaghilev",
+      "legacy_source": "persona-sergej-diaghilev",
+      "specialist_edge": "lotto07-stravinsky-diaghilev",
+      "ledger": "previous_alias_ids_excluded",
+      "expected_target": "pers:diaghilev",
+      "status": "explained_by_staging_ledger_not_verified_against_live_graph"
+    },
+    {
+      "stage_id": "pers:bronislava-nizinskaja",
+      "legacy_source": "persona-bronislava-nijinska",
+      "specialist_edge": "audit10-nijinska-ravel-1929",
+      "ledger": "previous_alias_ids_excluded",
+      "expected_target": "pers:bronislava-nizinskaja",
+      "status": "explained_by_staging_ledger_not_verified_against_live_graph"
+    }
+  ],
+  "unexpected_stage_ids": [],
+  "source_collision": [
+    {
+      "legacy_id": "genere-musical",
+      "variants": 2,
+      "source_files": [
+        "atlante3d/database/grafo.json",
+        "atlante3d/database/integrazione-operetta-musical.json"
+      ],
+      "policy": "not_an_automatic_bridge"
+    }
+  ],
+  "checks": {
+    "total_3856": true,
+    "full_source_endpoints_in_registries": true,
+    "extension_30": true,
+    "extension_payloads": true,
+    "all_four_exceptions_explained": true,
+    "one_nonperson_payload_collision_to_preserve": true,
+    "all_original_gates_remain_closed": true
+  },
+  "limitations": [
+    "The original source endpoint identifiers all exist in source node registries; four stage-ID lookup misses are explicitly documented nominal exception categories, not evidence of missing public Atlantis nodes",
+    "Authority-supported equivalence and previous alias exclusion do not certify the present production Atlantis graph's exact IDs or any individual historical edge",
+    "Published checks based on complete staged snapshots and original source-payload preservation; no runtime prepare/byId/root graph diff executed",
+    "The conflicting duplicate legacy source payload for genere-musical must retain both record variants"
+  ]
+}
