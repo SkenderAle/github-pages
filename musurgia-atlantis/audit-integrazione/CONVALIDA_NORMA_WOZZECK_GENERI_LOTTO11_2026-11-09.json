@@ -1,0 +1,85 @@
+{
+  "schema": "musurgia-atlantis-flaminio-identity-and-genre-audit-v1",
+  "date": "2026-11-09",
+  "lot": "11",
+  "status": "two_work_identities_cross_source_verified_staging_only",
+  "identity_records": [
+    {
+      "flaminio_source_work_id": "Flaminio:Bellini:flaminio-local:9",
+      "flaminio_catalogue_url": "https://www.flaminioonline.it/Biografie/Bellini-catalogo.html",
+      "atlantis_work_id": "opera:norma",
+      "atlantis_composer_id": "pers:bellini",
+      "flaminio_composer": "Vincenzo Bellini",
+      "work_title": "Norma",
+      "premiere_year": 1831,
+      "identity_evidence": "Existing Atlantis author-work edge identifies Bellini and Norma; Flaminio catalogue identifies same author title and 1831 premiere.",
+      "identity_status": "supported_identity_no_physical_merge",
+      "classification": [
+        {
+          "dimension": "genere",
+          "term_id": "mm:genere-opera",
+          "label": "Opera",
+          "predicate": "ha_genere",
+          "status": "supported_with_source"
+        },
+        {
+          "dimension": "sottogenere_storico",
+          "term_id": null,
+          "proposed_term": "tragedia lirica",
+          "predicate": "ha_sottogenere",
+          "status": "supported_label_needs_taxonomy_node"
+        },
+        {
+          "dimension": "struttura_drammaturgica",
+          "value": "due atti",
+          "status": "source_supported_not_genre"
+        }
+      ],
+      "notes": "Flaminio-local:9 is not a canonical opus number; preserve cataloguing provenance. No automatic traversal between composers by genre."
+    },
+    {
+      "flaminio_source_work_id": "flaminio:alban-berg:op-7",
+      "flaminio_catalogue_url": "https://www.flaminioonline.it/Biografie/Berg-catalogo.html",
+      "flaminio_guide_url": "https://www.flaminioonline.it/Guide/Berg/Berg-Wozzeck.html",
+      "atlantis_work_id": "opera:berg-wozzeck-1925",
+      "atlantis_composer_id": "pers:alban-berg",
+      "flaminio_composer": "Alban Berg",
+      "work_title": "Wozzeck",
+      "opus": "op. 7",
+      "composition_years": "1914–1922",
+      "premiere_year": 1925,
+      "identity_evidence": "Atlantis links Berg to Wozzeck premiered in 1925; Flaminio catalog and individual guide confirm same author title opus and premiere.",
+      "identity_status": "supported_identity_no_physical_merge",
+      "classification": [
+        {
+          "dimension": "genere",
+          "term_id": "mm:genere-opera",
+          "label": "Opera",
+          "predicate": "ha_genere",
+          "status": "supported_with_source"
+        },
+        {
+          "dimension": "struttura_drammaturgica",
+          "value": "tre atti e quindici quadri",
+          "status": "source_supported_not_genre"
+        }
+      ],
+      "notes": "Three acts and fifteen tableaux are work structure, not a standalone genre. The three orchestral excerpts op. 7a remain derivative work, not the opera itself."
+    }
+  ],
+  "taxonomy_reuse": {
+    "existing_general_opera": "mm:genere-opera",
+    "existing_broader_discussion": "senso:opera",
+    "rule": "Use the general taxonomy node mm:genere-opera, not the chapter or a generic discussion node. Record the two as distinct concepts unless a later reviewed crosswalk proves alignment."
+  },
+  "work_graph_changes": {
+    "new_nodes": 0,
+    "new_edges": 0,
+    "public_graph_modified": false
+  },
+  "next_actions": [
+    "Continue semantic term crosswalk for all 52 work records; classify terms as genre/form, ensemble, context, version or structural descriptor.",
+    "Audit narrower opera subgenres with sourced definitions; do not invent a tragedy-lyrique node prior to approved taxonomy.",
+    "Use candidate author+title+catalogue matches to reconcile other Flaminio works, and keep source links."
+  ]
+}
