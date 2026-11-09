@@ -2,7 +2,7 @@
 <html lang="it"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Atlantis · Laboratorio di pertinenza radicata — Checkpoint 06</title>
+<title>Atlantis · Anteprima 3D interattiva — Checkpoint 08</title>
 <style>
 :root{color-scheme:dark;--bg:#07141f;--pane:#0d2633;--line:#365463;--text:#e8f1ef;--muted:#aec1c8;--gold:#eac27e}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px system-ui,sans-serif}
@@ -27,7 +27,8 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 #legend{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0 12px;font-size:11px;color:#c5d6d5}
 #legend span{padding:4px 6px;border:1px solid #486473;border-radius:7px}
 #legend .specific{color:#90b9cb}#legend .comparison{color:#e8bd82}#legend .explore{color:#e8a5c3}
-#stats{padding:8px 0;font-size:12px;color:var(--muted)}#status{font-size:12px;color:#f3c7a1;min-height:1.6em}
+#stats{padding:8px 0;font-size:12px;color:var(--muted)}
+#sourceState{font-size:11px;color:#bad0d0;line-height:1.45;margin:8px 0 10px}#status{font-size:12px;color:#f3c7a1;min-height:1.6em}
 #selected{margin-top:15px;border-top:1px solid var(--line);padding-top:11px}
 #selected h2{font:20px Georgia,serif;color:#ead7b6;margin:8px 0}
 #selected p{font-size:12px;line-height:1.5;color:var(--muted)}
@@ -51,7 +52,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 </style>
 </head><body>
 <header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
-<p>Anteprima isolata del Checkpoint 06 · Solo lettura · Non sostituisce l'Atlante pubblico</p></header>
+<p>Anteprima isolata del Checkpoint 08 · Solo lettura · Non sostituisce l'Atlante pubblico</p></header>
 <main>
 <aside>
 <label for="search">Cerca un nodo storico-musicale</label>
@@ -73,7 +74,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
  <div id="categoryGrid"></div>
  <p id="categoryHint">Le categorie disattivate non vengono mostrate, salvo i nodi indispensabili come ponte verso quelli rimasti visibili. I capitoli sono risorse editoriali e non possono essere attraversati.</p>
 </details>
-<div id="stats">Lettura dei dati…</div><div id="status" role="status"></div>
+<div id="stats">Lettura dei dati…</div><p id="sourceState"></p><div id="status" role="status"></div>
 <section id="selected"><div id="nodeInfo"><h2>Seleziona un nodo</h2><p>Clic: note e fonti. Doppio clic: il nodo diventa il centro, senza aumentare lo zoom.</p></div>
  <ul id="edges"></ul>
 </section>
@@ -223,6 +224,7 @@ async function init(){
   ]);
  }finally{clearTimeout(timeout)}
  dataset=g;renderer=rootLib.createRootedExplorer(dataset,reg);
+ $("sourceState").textContent="Fonte: grafo Atlantis pubblico ("+g.nodes.length+" nodi · "+g.links.length+" relazioni). Il patrimonio legacy di Musurgia Mundi, le 3.856 relazioni e i relativi media/ancore restano in staging, non ancora fusi.";
  buildCategoryPicker();
  engine=window.AtlantisAuditCompatGraph($("graph"))
   .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
