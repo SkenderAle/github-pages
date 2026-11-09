@@ -18,6 +18,9 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .controls>div{min-width:0}
 .actions{display:flex;gap:8px;margin:9px 0}.actions button{flex:1;background:#214f5b}
+#relevanceDescription{font-size:12px;color:#e2d1b6;line-height:1.5;margin:7px 0 10px}
+#legend{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0 12px;font-size:11px;color:#c5d6d5}
+#legend span{padding:4px 6px;border:1px solid #486473;border-radius:7px}
 #stats{padding:8px 0;font-size:12px;color:var(--muted)}#status{font-size:12px;color:#f3c7a1;min-height:1.6em}
 #selected{margin-top:15px;border-top:1px solid var(--line);padding-top:11px}
 #selected h2{font:20px Georgia,serif;color:#ead7b6;margin:8px 0}
@@ -40,6 +43,10 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <input id="search" type="search" list="matches" placeholder="Mozart, Beethoven, Orfeo…" autocomplete="off">
 <datalist id="matches"></datalist>
 <div class="actions"><button id="searchBtn">Cerca</button><button id="mozartBtn">Mozart</button></div>
+<label for="relevance">Pertinenza della rete: <output id="relevanceOutput">2 · Mirata</output></label>
+<input id="relevance" type="range" min="1" max="4" step="1" value="2" aria-describedby="relevanceDescription">
+<p id="relevanceDescription">Relazioni specifiche e collaborazioni sulla stessa opera; nessuna propagazione automatica attraverso le persone.</p>
+<div id="legend"><span>● Rapporti specifici</span><span>● Confronti non causali</span><span>● Itinerari esplorativi</span></div>
 <div class="controls">
  <div><label for="depth">Profondità totale <output id="depthOutput">5</output></label><input id="depth" type="range" min="1" max="5" value="5"></div>
  <div><label for="peopleDepth">Persone fino al livello <output id="peopleOutput">5</output></label><input id="peopleDepth" type="range" min="0" max="5" value="5"></div>
@@ -50,12 +57,12 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <section id="selected"><h2>Seleziona un nodo</h2><p>Tocca un nodo per leggerne i rapporti, poi usa «Nuova radice» per esplorarlo autonomamente.</p>
  <button id="pivotBtn" disabled>Nuova radice dal nodo selezionato</button><ul id="edges"></ul>
 </section>
-<p class="note">Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. I testimoni di III–V livello devono essere verificati e presenti nel registro revisionato: il registro iniziale è vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
+<p class="note">Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
 </aside>
 <div id="graph" aria-label="Grafo 3D radicato, ruotabile e ingrandibile"></div>
 </main>
 <script src="../compat-graph.js"></script>
-<script src="./ROOTED_RELEVANCE_CHECKPOINT06.browser.js"></script>
+<script src="./ROOTED_RELEVANCE_CHECKPOINT06.browser.js?v=pertinenza-07-20261109"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -83,7 +90,12 @@ function selected(id){
   if(info.phrase)item.append(makeEl("small",info.phrase));
   if(info.description)item.append(makeEl("small",info.description));
   if(info.note)item.append(makeEl("small",info.note));
-  item.append(makeEl("small","Percorso: "+edge.root_permission+" · Fonte "+edge.id));
+  const meaning=edge.statement_type==="comparison"?"Confronto senza nesso causale":
+   edge.statement_type==="exploration"?"Itinerario esplorativo, non relazione diretta fra gli estremi del percorso":
+   edge.root_permission==="direct_specific"?"Rapporto diretto documentato":
+   edge.root_permission==="same_specific_work_or_event"?"Legame attraverso un'opera/evento specifico":
+   "Percorso radicato e documentato";
+  item.append(makeEl("small",meaning+" · Arco "+edge.id));
   const nav=makeEl("button","Esplora da qui");nav.addEventListener("click",()=>setRoot(target));item.append(nav);
   for(const [i,url]of info.sources.filter(safeUrl).slice(0,3).entries()){
    const a=makeEl("a","Fonte "+(i+1));a.href=url;a.target="_blank";a.rel="noopener noreferrer";item.append(a);
@@ -96,15 +108,26 @@ function render(){
  if(!renderer)return;
  const depth=Number($("depth").value),person=Number($("peopleDepth").value);
  const work=Number($("workDepth").value),context=Number($("contextDepth").value);
+ const relevance=Number($("relevance").value);
+ const relevanceNames={1:"1 · Diretta",2:"2 · Mirata",3:"3 · Contestuale",4:"4 · Esplorativa"};
+ const relevanceExplanations={
+  1:"Mostra solo le relazioni specifiche direttamente documentate dal nodo centrale.",
+  2:"Aggiunge i collaboratori sulla stessa opera o evento e i confronti diretti non causali, senza trasformarli in ponti.",
+  3:"Aggiunge un solo passaggio esplorativo attraverso una persona collegata a un'opera specifica. Le nuove ramificazioni sono terminali.",
+  4:"Esplora catene più ampie di fatti verificati fino alla profondità scelta, senza attraversare capitoli, epoche generiche o confronti non causali. Le catene NON dimostrano un rapporto diretto."
+ };
+ $("relevanceOutput").value=relevanceNames[relevance];
+ $("relevanceDescription").textContent=relevanceExplanations[relevance];
  $("depthOutput").value=depth;$("peopleOutput").value=person;$("worksOutput").value=work;$("contextOutput").value=context;
  const depthByCategory={persona:person,opera:work,"versione-opera":work,"parte-di-opera":work,allestimento:work,produzione:work,"nodo-di-senso":context,luogo:context,strumento:context,"rete-culturale":context};
- last=renderer.explore(currentRoot,{maxDepth:depth,depthByCategory});
+ last=renderer.explore(currentRoot,{maxDepth:depth,relevance,depthByCategory});
  const ids=new Map(last.nodes.map(n=>[n.id,n]));
  const links=last.links.filter(e=>ids.has(e.source)&&ids.has(e.target));
  const nodes=last.nodes.map(n=>({...n,_focus:n.id===currentRoot,_label:n.id===currentRoot||n._depth===1}));
  engine.graphData({nodes,links:links.map(e=>({...e}))});engine.zoomToFit();
  const x=nodes.filter(n=>n._depth===1).length;
- $("stats").textContent=nodes.length+" nodi · "+links.length+" archi · "+x+" vicini diretti";
+ const exploratory=links.filter(e=>e.statement_type==="exploration").length;
+ $("stats").textContent=nodes.length+" nodi · "+links.length+" archi · "+x+" vicini diretti"+(exploratory?" · "+exploratory+" collegamenti esplorativi":"");
  selected(candidate&&ids.has(candidate.id)?candidate.id:currentRoot);
  say("Radice: "+(dataset.nodes.find(n=>n.id===currentRoot)?.name||currentRoot));
 }
@@ -127,7 +150,7 @@ async function init(){
  ]);
  dataset=g;renderer=rootLib.createRootedExplorer(dataset,reg);
  engine=window.AtlantisCompatGraph($("graph")).nodeColor(n=>n._focus?"#ffdf9a":n._depth===1?"#86d9cd":"#9d9cbf")
-  .linkColor(e=>e.statement_type==="comparison"?"#e8bd82":"#90b9cb")
+  .linkColor(e=>e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
   .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
   .onNodeClick(n=>selected(n.id)).onLinkClick(e=>{candidate=dataset.nodes.find(n=>n.id===e.source)||null;selected(candidate?.id)});
  const unique=new Map();for(const n of dataset.nodes)if(n.category!=="capitolo"&&!unique.has(n.name))unique.set(n.name,n);
@@ -137,7 +160,7 @@ async function init(){
  $("searchBtn").addEventListener("click",search);$("mozartBtn").addEventListener("click",()=>setRoot("pers:mozart"));
  $("search").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
  $("pivotBtn").addEventListener("click",()=>{if(candidate)setRoot(candidate.id)});
- for(const id of ["depth","peopleDepth","workDepth","contextDepth"])$(id).addEventListener("input",render);
+ for(const id of ["relevance","depth","peopleDepth","workDepth","contextDepth"])$(id).addEventListener("input",render);
  addEventListener("resize",()=>engine.width($("graph").clientWidth).height($("graph").clientHeight));
  engine.width($("graph").clientWidth).height($("graph").clientHeight);setRoot(currentRoot);
 }
