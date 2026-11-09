@@ -37,9 +37,17 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 #edges button{padding:5px 8px;font-size:11px;margin-top:6px}
 #edges a{color:#b9dfed;display:inline-block;margin-top:7px;font-size:11px}
 .note{font-size:11px;line-height:1.5;color:#b4c7ca;border-top:1px solid var(--line)}
-#categoryPicker{margin:12px 0 8px;padding:8px 0;border-top:1px solid var(--line)}
-#categoryPicker summary{cursor:pointer;font-weight:600;color:#eed4ab}
-#categoryGrid{display:grid;grid-template-columns:minmax(0,1fr) 51px 67px;gap:6px 8px;align-items:center;margin-top:11px}
+#categoryPicker{position:absolute;top:12px;left:12px;z-index:9;width:min(338px,calc(100% - 24px));margin:0;padding:0;background:#0a2633f4;border:1px solid #6b929b;border-radius:10px;box-shadow:0 6px 26px #0008;overflow:hidden}
+#categoryPicker summary{display:flex;align-items:center;gap:6px;cursor:pointer;list-style-position:inside;padding:11px 12px;font-weight:650;color:#f4dfb1;background:#194150;touch-action:manipulation}
+#categoryPicker summary:hover{background:#235263}
+#categoryPicker summary:focus-visible{outline:2px solid #ecd6a8;outline-offset:-2px}
+#categoryPicker summary .category-expand{font-size:10px;font-weight:400;color:#d5dfe0;margin-left:auto}
+#categoryPicker:not([open]){width:min(338px,calc(100% - 24px))}
+#categoryPicker #categoryGrid{max-height:min(52vh,390px);overflow-y:auto;overscroll-behavior:contain;padding:6px 10px 10px}
+#categoryPicker #categoryHint{padding:0 12px 10px;margin:0}
+#categoryPicker .category-heading{position:sticky;top:-6px;background:#0a2633;z-index:1;padding:5px 0}
+
+#categoryGrid{display:grid;grid-template-columns:minmax(0,1fr) 51px 67px;gap:6px 8px;align-items:center;margin-top:0}
 #categoryGrid .category-heading{font-size:11px;color:#d5c4a5;font-weight:700}
 #categoryGrid .category-heading:not(:first-child){text-align:center}
 #categoryGrid .category-name{min-width:0;overflow-wrap:anywhere;font-size:12px}
@@ -50,7 +58,11 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 #selected .node-url{font-size:12px;display:inline-block;overflow-wrap:anywhere;color:#a4dfee;margin:5px 0}
 #selected .note-excerpt{background:#102d39;padding:7px;border-left:2px solid #8bbbc5}
 @media(max-width:720px){header{padding:10px 12px}header h1{font-size:18px}
-main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-height:245px;border-right:0;border-bottom:1px solid var(--line)}#graph{height:56dvh;min-height:280px;order:2}}
+main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-height:245px;border-right:0;border-bottom:1px}#graph{height:56dvh;min-height:280px;order:2}
+#categoryPicker{top:8px;left:8px;width:min(310px,calc(100% - 16px))}
+#categoryPicker #categoryGrid{max-height:min(43dvh,310px)}
+#categoryPicker summary{font-size:12px;padding:9px 11px}
+#zoomDock{right:9px;bottom:12px}}
 </style>
 </head><body>
 <header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
@@ -71,11 +83,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
  <div><label for="workDepth">Opere fino al livello <output id="worksOutput">5</output></label><input id="workDepth" type="range" min="0" max="5" value="5"></div>
  <div><label for="contextDepth">Contesti fino al livello <output id="contextOutput">5</output></label><input id="contextDepth" type="range" min="0" max="5" value="5"></div>
 </div>
-<details id="categoryPicker" open>
- <summary>Categorie presenti nel grafo di Atlantis</summary>
- <div id="categoryGrid"></div>
- <p id="categoryHint"><b>Nodi:</b> visualizza la categoria nella rete corrente. <b>Etichette:</b> mantiene visibili tutti i nomi della categoria presente nella rete, anche dietro la nebulosa (possono sovrapporsi). I ponti necessari restano attenuati; i capitoli editoriali non sono percorsi storici.</p>
-</details>
+
 <div id="stats">Lettura dei dati…</div><p id="sourceState"></p><div id="status" role="status"></div>
 <section id="selected"><div id="nodeInfo"><h2>Seleziona un nodo</h2><p>Clic: note e fonti. Doppio clic: il nodo diventa il centro, senza aumentare lo zoom.</p></div>
  <ul id="edges"></ul>
@@ -83,6 +91,11 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <p class="note">Desktop: passaggio del mouse = etichetta; clic = note e fonti; doppio clic = nuova radice senza zoom. Android: primo tocco = note; secondo tocco sullo stesso nodo = nuova radice. Per ingrandire e rimpicciolire usa le lenti + e − (oppure due dita sul grafo). I dati legacy di Musurgia Mundi non sono ancora fusi in questa anteprima. Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
 </aside>
 <div id="graph" aria-label="Grafo 3D radicato: clic per le note, doppio clic per centrare">
+ <details id="categoryPicker" open>
+ <summary><span aria-hidden="true">☷</span> Categorie · <strong>Nodi / Etichette</strong><span class="category-expand"> apri/chiudi</span></summary>
+ <div id="categoryGrid"></div>
+ <p id="categoryHint"><b>Nodi:</b> visualizza la categoria nella rete corrente. <b>Etichette:</b> mantiene visibili tutti i nomi della categoria presente nella rete, anche dietro la nebulosa (possono sovrapporsi). I ponti necessari restano attenuati; i capitoli editoriali non sono percorsi storici.</p>
+</details>
  <div id="zoomDock" aria-label="Controlli d'ingrandimento">
   <button type="button" id="zoomIn" title="Ingrandisci la nebulosa" aria-label="Ingrandisci">
    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.3" cy="10.3" r="6.6"/><path d="m15.4 15.4 5.1 5.1M10.3 7.4v5.8M7.4 10.3h5.8"/></svg>
