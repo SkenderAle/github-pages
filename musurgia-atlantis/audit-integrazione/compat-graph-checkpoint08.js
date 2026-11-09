@@ -1,6 +1,7 @@
 /* Musurgia Atlantis: AUDIT CHECKPOINT 08 copy for hover/selection/double click. Public compat graph is UNCHANGED.
    Canvas 3D compatibility view, independent of third-party CDNs.
-   Used when the WebGL ForceGraph3D engine cannot load. Creative Commons-free original code. */
+   Used when the WebGL ForceGraph3D engine cannot load. Creative Commons-free original code.
+   CP09: A single Canvas caption per node; forced category labels bypass rear-hemisphere and collision filters. */
 (function(){'use strict';
 function makeGraph(host){
   const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
@@ -84,7 +85,7 @@ function makeGraph(host){
     const n=p.n,root=!!n._focus;
     if(!root){
       if(!n._label && n.id!==hovered && n.id!==selected)return;
-      if(frontness(p)<.68 && n.id!==hovered && n.id!==selected)return; // Hover and selection always reveal label, even in the far hemisphere.
+      if(frontness(p)<.68 && !n._forceLabel && n.id!==hovered && n.id!==selected)return; // Persistent labels ignore hemisphere; hovered nodes use the SAME caption.
     }
     const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
     const size=root?13:n._depth===1?11.5:11;
@@ -105,12 +106,12 @@ function makeGraph(host){
     let rect=null;
     for(const [rawX,rawY] of candidates){
       const x=Math.max(6,Math.min(W-width-6,rawX)),y=rawY;
-      if(y<100||y+height>H-72)continue;
+      if(!n._forceLabel && n.id!==hovered && n.id!==selected && (y<100||y+height>H-72))continue;
       const candidate={x,y,w:width,h:height};
-      if(n.id!==hovered && n.id!==selected && occupied.some(b=>x<b.x+b.w+5&&x+width>b.x-5&&y<b.y+b.h+4&&y+height>b.y-4))continue;
+      if(!n._forceLabel && n.id!==hovered && n.id!==selected && occupied.some(b=>x<b.x+b.w+5&&x+width>b.x-5&&y<b.y+b.h+4&&y+height>b.y-4))continue;
       rect=candidate;break;
     }
-    if(!rect && (n.id===hovered||n.id===selected)){
+    if(!rect && (n._forceLabel||n.id===hovered||n.id===selected)){
       // Fall back near the pointer: never suppress a requested hover/selected label.
       rect={x:Math.max(6,Math.min(W-width-6,p.x-width/2)),y:Math.max(8,Math.min(H-height-8,p.y-r-height-10)),w:width,h:height};
     }
@@ -164,7 +165,7 @@ function makeGraph(host){
     // Draw labels in one foreground-only pass; keep the center first and avoid
     // collisions. Rotating naturally reveals captions hidden behind the nebula.
     const occupied=[];
-    const captions=projected.filter(p=>p.n._focus||p.n._label||p.n.id===hovered||p.n.id===selected)
+    const captions=projected.filter(p=>p.n._focus||p.n._label||p.n._forceLabel||p.n.id===hovered||p.n.id===selected)
       .sort((a,b)=>(b.n._focus?1:0)-(a.n._focus?1:0)
         ||(a.n._depth===1?0:1)-(b.n._depth===1?0:1)
         ||a.z-b.z);
