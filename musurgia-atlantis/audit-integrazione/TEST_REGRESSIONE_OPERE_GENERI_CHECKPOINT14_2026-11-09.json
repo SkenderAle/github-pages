@@ -1,0 +1,85 @@
+{
+  "schema": "musurgia-atlantis-checkpoint14-regression-v1",
+  "date": "2026-11-09",
+  "status": "passed_in_isolated_v8_logic_and_static_validation_not_live_browser",
+  "source_preview": "PREVIEW_RADICATA_CHECKPOINT06.html",
+  "source_overlay": "OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT14_2026-11-09.json",
+  "checks": [
+    {
+      "id": "01",
+      "name": "inline JavaScript syntax",
+      "result": "PASS",
+      "method": "new Function parse of inline script"
+    },
+    {
+      "id": "02",
+      "name": "overlay unique node and arc ids",
+      "result": "PASS",
+      "method": "readback of JSON"
+    },
+    {
+      "id": "03",
+      "name": "Musorgskij root shows 5 individual operatic works linked to Opera",
+      "result": "PASS",
+      "method": "isolated attachFlaminioPreview with root Musorgskij"
+    },
+    {
+      "id": "04",
+      "name": "Britten root shows 3 operatic works linked to Opera",
+      "result": "PASS",
+      "method": "isolated attachFlaminioPreview with root Britten"
+    },
+    {
+      "id": "05",
+      "name": "Opera genre root identifies 8 work-genre links from checkpoint14",
+      "result": "PASS",
+      "method": "isolated genre-root scenario"
+    },
+    {
+      "id": "06",
+      "name": "Boris Godunov shows 1869 and 1872 versions as children",
+      "result": "PASS",
+      "method": "isolated work-root scenario"
+    },
+    {
+      "id": "07",
+      "name": "Church parables have distinct category, not automatic Opera",
+      "result": "PASS",
+      "method": "isolated staged-genre scenario"
+    },
+    {
+      "id": "08",
+      "name": "No cross-composer work leakage from Musorgskij or Britten",
+      "result": "PASS",
+      "method": "isolated author-root scenarios"
+    },
+    {
+      "id": "09",
+      "name": "No orphan visible overlay edges",
+      "result": "PASS",
+      "method": "isolated rooted scenarios"
+    },
+    {
+      "id": "10",
+      "name": "Six directly opened guide URLs recorded and visible in source schema",
+      "result": "PASS",
+      "method": "web direct link visits and JSON readback"
+    }
+  ],
+  "counts": {
+    "overlay_new_work_nodes": 15,
+    "overlay_version_nodes": 2,
+    "overlay_provisional_genre_nodes": 1,
+    "overlay_links": 32,
+    "opera_specific_genre_links_new": 8,
+    "opera_specific_genre_links_checkpoint13": 2,
+    "flaminio_guide_links_verified": 6
+  },
+  "limitations": [
+    "No full Playwright/Android live browser interaction checked; screenshot confirmation needed to certify rendering.",
+    "Sources are catalogue links and guides; full texts not imported.",
+    "Only preview/audit staging updated; production graphs remain untouched.",
+    "Tested code paths are isolated and do not certify historic correctness of every source relation.",
+    "Rooted operation on full production data not re-run in browser."
+  ]
+}
