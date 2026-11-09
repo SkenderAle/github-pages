@@ -58,15 +58,22 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
   const support=w.supporting_atlantis_edge_ids.map(id=>atlasEdges.get(id));
   if(!nodes.has(w.work_id)||!nodes.has(w.genre_legacy_id)||support.some(x=>!x))
    throw Error("Unresolved staged work classification "+w.work_id);
-  candidates.push({...w,id:"fd:proposal:work-genre:"+w.work_id,
-   source:w.work_id,target:w.genre_legacy_id,category:"preview_classification",
-   relation:w.relationship,forward:"appartiene a",reverse:"comprende l'opera",note:w.fact,
-   evidence_urls:[...new Set(support.flatMap(fieldUrls))],
-   historical_verified_independently:false,provenance:"editorial_audit_candidate",
-   statement_type:"derived_classification_preview",root_permission:"classification_proposed_not_certified",
-   supporting_edges:w.supporting_atlantis_edge_ids});
+  for(const [kind,genreId]of [["broad",w.genre_legacy_id],["specific",w.specific_genre_legacy_id]]){
+   if(!genreId)continue;
+   if(!nodes.has(genreId))throw Error("Unresolved classification target "+genreId);
+   candidates.push({...w,id:"fd:proposal:"+kind+":"+w.work_id,
+    source:w.work_id,target:genreId,category:"preview_classification",
+    relation:kind==="specific"?"e_classificata_nella_forma_specfica":w.relationship,
+    forward:kind==="specific"?"è classificata come":"appartiene a",
+    reverse:kind==="specific"?"comprende l'esempio":"comprende l'opera",
+    note:w.fact,evidence_urls:[...new Set(support.flatMap(fieldUrls))],
+    historical_verified_independently:false,provenance:"editorial_audit_candidate",
+    statement_type:"derived_classification_preview",root_permission:"classification_proposed_not_certified",
+    classification_scope:kind,supporting_edges:w.supporting_atlantis_edge_ids});
+  }
  }
- const candidateByWork=new Map(candidates.map(x=>[x.source,x]));
+ const candidateByWork=new Map();
+ for(const c of candidates){if(!candidateByWork.has(c.source))candidateByWork.set(c.source,[]);candidateByWork.get(c.source).push(c)}
  const totals={nodes:nodes.size,original_edges:edges.length,preview_classification_candidates:candidates.length,
   atlantis_nodes:atlantis.nodes.length,atlantis_edges:atlantis.links.length,
   legacy_base_nodes:legacy.nodes.length,legacy_extension_new_nodes:extAdds.length,legacy_variants:variants.length,
@@ -118,13 +125,14 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
   const workIds=[...selected.values()].filter(n=>n.category==="opera"&&n.id.startsWith("opera:"))
    .map(n=>({id:n.id,depth:n._depth}));
   for(const w of workIds){
-   const c=candidateByWork.get(w.id);
-   if(!c||w.depth+1>maxDepth)continue;
-   const target=nodes.get(c.target);
-   if(!target||(w.depth+1)>(depthByCategory[target.category]??maxDepth))continue;
-   if(!selected.has(target.id))selected.set(target.id,{...target,_depth:w.depth+1,
-    _path:[root,...(w.id===root?[]:[w.id]),target.id],_permission:"preview_work_genre_classification"});
-   visibleEdges.set(c.id,{...c,at_root_depth:w.depth+1,root_permission:"preview_work_genre_classification"});
+   if(w.depth+1>maxDepth)continue;
+   for(const c of candidateByWork.get(w.id)||[]){
+    const target=nodes.get(c.target);
+    if(!target||(w.depth+1)>(depthByCategory[target.category]??maxDepth))continue;
+    if(!selected.has(target.id))selected.set(target.id,{...target,_depth:w.depth+1,
+      _path:[root,...(w.id===root?[]:[w.id]),target.id],_permission:"preview_work_genre_classification"});
+    visibleEdges.set(c.id,{...c,at_root_depth:w.depth+1,root_permission:"preview_work_genre_classification"});
+   }
   }
   return {root,nodes:[...selected.values()],links:[...visibleEdges.values()],
    source_totals:totals,notes:"Full source federation, projected identities provisional, work classification proposals isolated."};
