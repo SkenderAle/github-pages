@@ -106,23 +106,13 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
     for(const e of incident.get(legacyRoot)||[]){
      // When viewing a person from Atlantis, use a provisional *visual* alias,
      // with original IDs preserved. No source node is deleted or changed.
-     const src=e.source===legacyRoot?root:e.source;
-     const dst=e.target===legacyRoot?root:e.target;
+     const src=e.source===legacyRoot?root:(legacyToAtlantis.get(e.source)||e.source);
+     const dst=e.target===legacyRoot?root:(legacyToAtlantis.get(e.target)||e.target);
      const other=src===root?dst:src;
      const sourceNode=nodes.get(other);
      if(!sourceNode||sourceNode.category==="capitolo")continue;
      takeEdge(e,src,dst,1,e.provenance==="atlantis"?"original_direct":"legacy_direct");
     }
-   }
-  }
-  // Genre roots may preview the already catalogued composers without
-  // expanding into their unrelated works. Candidate identity mapping is display-only.
-  if(root.startsWith("mm:")&&maxDepth>=1){
-   for(const e of incident.get(root)||[]){
-    let src=e.source===root?root:(legacyToAtlantis.get(e.source)||e.source);
-    let dst=e.target===root?root:(legacyToAtlantis.get(e.target)||e.target);
-    if(src===dst)continue;
-    takeEdge(e,src,dst,1,"legacy_direct_from_genre");
    }
   }
   const workIds=[...selected.values()].filter(n=>n.category==="opera"&&n.id.startsWith("opera:"))
