@@ -2,7 +2,7 @@
 <html lang="it"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Atlantis · Anteprima 3D interattiva — Checkpoint 08</title>
+<title>Atlantis · Anteprima generi e forme — Checkpoint 11</title>
 <style>
 :root{color-scheme:dark;--bg:#07141f;--pane:#0d2633;--line:#365463;--text:#e8f1ef;--muted:#aec1c8;--gold:#eac27e}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px system-ui,sans-serif}
@@ -25,7 +25,7 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 #relevanceDescription{font-size:12px;color:#e2d1b6;line-height:1.5;margin:7px 0 10px}
 #legend{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0 12px;font-size:11px;color:#c5d6d5}
 #legend span{padding:4px 6px;border:1px solid #486473;border-radius:7px}
-#legend .specific{color:#90b9cb}#legend .comparison{color:#e8bd82}#legend .explore{color:#e8a5c3}
+#legend .specific{color:#90b9cb}#legend .comparison{color:#e8bd82}#legend .explore{color:#e8a5c3}#legend .legacy{color:#83d0a7}
 #stats{padding:8px 0;font-size:12px;color:var(--muted)}
 #sourceState{font-size:11px;color:#bad0d0;line-height:1.45;margin:8px 0 10px}#status{font-size:12px;color:#f3c7a1;min-height:1.6em}
 #selected{margin-top:15px;border-top:1px solid var(--line);padding-top:11px}
@@ -66,7 +66,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 </style>
 </head><body>
 <header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
-<p>Anteprima isolata del Checkpoint 08 · Solo lettura · Non sostituisce l'Atlante pubblico</p></header>
+<p>Anteprima isolata del Checkpoint 11 · Generi e forme recuperati da Musurgia Mundi · Solo lettura</p></header>
 <main>
 <aside>
 <label for="search">Cerca un nodo storico-musicale</label>
@@ -76,7 +76,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <label for="relevance">Pertinenza della rete: <output id="relevanceOutput">2 · Mirata</output></label>
 <input id="relevance" type="range" min="1" max="4" step="1" value="2" aria-describedby="relevanceDescription">
 <p id="relevanceDescription">Relazioni specifiche e collaborazioni sulla stessa opera; nessuna propagazione automatica attraverso le persone.</p>
-<div id="legend"><span class="specific">● Rapporti specifici</span><span class="comparison">● Confronti non causali</span><span class="explore">● Itinerari esplorativi</span></div>
+<div id="legend"><span class="specific">● Rapporti specifici</span><span class="comparison">● Confronti non causali</span><span class="explore">● Itinerari esplorativi</span><span class="legacy">● Generi e forme · archivio Musurgia Mundi</span></div>
 <div class="controls">
  <div><label for="depth">Profondità totale <output id="depthOutput">5</output></label><input id="depth" type="range" min="1" max="5" value="5"></div>
  <div><label for="peopleDepth">Persone fino al livello <output id="peopleOutput">5</output></label><input id="peopleDepth" type="range" min="0" max="5" value="5"></div>
@@ -88,13 +88,13 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <section id="selected"><div id="nodeInfo"><h2>Seleziona un nodo</h2><p>Clic: note e fonti. Doppio clic: il nodo diventa il centro, senza aumentare lo zoom.</p></div>
  <ul id="edges"></ul>
 </section>
-<p class="note">Desktop: passaggio del mouse = etichetta; clic = note e fonti; doppio clic = nuova radice senza zoom. Android: primo tocco = note; secondo tocco sullo stesso nodo = nuova radice. Per ingrandire e rimpicciolire usa le lenti + e − (oppure due dita sul grafo). I dati legacy di Musurgia Mundi non sono ancora fusi in questa anteprima. Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
+<p class="note">Desktop: passaggio del mouse = etichetta; clic = note e fonti; doppio clic = nuova radice senza zoom. Android: primo tocco = note; secondo tocco sullo stesso nodo = nuova radice. Per ingrandire e rimpicciolire usa le lenti + e − (oppure due dita sul grafo). I generi e le forme del vecchio Atlante sono recuperati in un archivio di anteprima separato; le altre relazioni legacy non sono ancora fuse. Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
 </aside>
 <div id="graph" aria-label="Grafo 3D radicato: clic per le note, doppio clic per centrare">
  <details id="categoryPicker" open>
  <summary><span aria-hidden="true">☷</span> Categorie · <strong>Nodi / Etichette</strong><span class="category-expand"> apri/chiudi</span></summary>
  <div id="categoryGrid"></div>
- <p id="categoryHint">I numeri indicano <b>nodi nella vista / nodi nel catalogo</b>. La posizione nello spazio non determina la categoria. <b>Nodi:</b> visualizza la categoria nella rete corrente. <b>Etichette:</b> mantiene visibili tutti i nomi della categoria presente nella rete, anche dietro la nebulosa (possono sovrapporsi). I ponti necessari restano attenuati; i capitoli editoriali non sono percorsi storici.</p>
+ <p id="categoryHint">I numeri indicano <b>nodi nella vista / nodi nel catalogo</b>. I generi e le forme provengono da Musurgia Mundi; le relative relazioni sono catalogate ma non ancora certificate in Atlantis. La posizione nello spazio non determina la categoria. <b>Nodi:</b> visualizza la categoria nella rete corrente. <b>Etichette:</b> mantiene visibili tutti i nomi della categoria presente nella rete, anche dietro la nebulosa (possono sovrapporsi). I ponti necessari restano attenuati; i capitoli editoriali non sono percorsi storici.</p>
 </details>
  <div id="zoomDock" aria-label="Controlli d'ingrandimento">
   <button type="button" id="zoomIn" title="Ingrandisci la nebulosa" aria-label="Ingrandisci">
@@ -106,7 +106,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
  </div>
 </div>
 </main>
-<script src="./compat-graph-checkpoint08.js?v=categorie10-20261109"></script>
+<script src="./compat-graph-checkpoint08.js?v=generiforme11-20261109"></script>
 <script src="./ROOTED_RELEVANCE_CHECKPOINT06.browser.js?v=pertinenza-07-20261109"></script>
 <script>
 "use strict";
