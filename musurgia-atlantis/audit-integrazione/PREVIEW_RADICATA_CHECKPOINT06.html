@@ -186,7 +186,12 @@ function attachFlaminioPreview(result,maxDepth,depths){
   const parent=shown.get(from),node={...n,_depth:depth,_path:[...(parent?._path||[currentRoot]),id],_permission:"catalogue_sourced_direct"};
   result.nodes.push(node);shown.set(id,node);return node;
  }
- function edge(e){if(shown.has(e.source)&&shown.has(e.target)&&!edgeIds.has(e.id)){result.links.push({...e});edgeIds.add(e.id)}}
+ function edge(e){
+  if(!shown.has(e.source)||!shown.has(e.target)||edgeIds.has(e.id))return;
+  // Prefer an already-rendered historical author→work edge over a duplicate staging edge.
+  if(e.relation==="ha_composto"&&result.links.some(x=>x.source===e.source&&x.target===e.target))return;
+  result.links.push({...e});edgeIds.add(e.id);
+ }
  // Only the selected composer can introduce its OWN works; no walk across a genre.
  for(const e of flaminioPreview.links.filter(e=>e.relation==="ha_composto")){
   if(e.source===currentRoot)addNode(e.target,1,e.source);
