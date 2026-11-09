@@ -1,0 +1,46 @@
+{
+  "schema": "musurgia-atlantis/reconciliation-02-specialist-integral-v1",
+  "date": "2026-11-09",
+  "scope": "All specialist original relations from 5 staged snapshots; identity registry comparison not whole live Atlantis graph",
+  "source_paths": [
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE01_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE02_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE03_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE04_2026-11-08.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_SPECIALISTICI_FASE2K_PARTE05_2026-11-08.json"
+  ],
+  "source_sha": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+  "counts": {
+    "specialist_edges": 1389,
+    "unique_stage_ids": 1389,
+    "unique_source_target_kind_triples": 1389,
+    "raw_uncovered_endpoints": 0,
+    "stage_uncovered_endpoints": 4
+  },
+  "uncovered_stage_ids": [
+    "pers:moliere",
+    "pers:diaghilev",
+    "pers:bronislava-nizinskaja",
+    "pers:ferdinand-david"
+  ],
+  "uncovered_legacy_ids": [],
+  "checks": {
+    "five_parts": true,
+    "contiguous": true,
+    "all_1389": true,
+    "stage_id_unique": true,
+    "all_raw_endpoints_known": true,
+    "all_stage_ids_resolved": false,
+    "original_payload_preserved": true,
+    "all_gates_closed": true,
+    "no_auto_merge": true
+  },
+  "source_group_distribution": {
+    "formazione": 233,
+    "influenze": 186,
+    "collaborazioni": 274,
+    "genealogie": 304,
+    "scuole": 392
+  },
+  "note": "Failed checks reveal mismatches in staged namespace resolution, not necessarily missing nodes in public Atlantis; preserve both original endpoints."
+}
