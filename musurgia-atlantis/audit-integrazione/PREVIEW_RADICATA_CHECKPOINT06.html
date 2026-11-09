@@ -11,6 +11,11 @@ header h1{font:22px Georgia,serif;color:var(--gold);margin:0 0 5px}header p{marg
 main{display:grid;grid-template-columns:minmax(270px,320px) minmax(0,1fr);height:calc(100dvh - 83px)}
 aside{padding:16px;background:var(--pane);border-right:1px solid var(--line);overflow:auto;z-index:2}
 #graph{min-height:250px;height:100%;position:relative;background:#061522}
+#zoomDock{position:absolute;right:15px;bottom:18px;z-index:8;display:flex;flex-direction:column;gap:9px}
+#zoomDock button{display:grid;place-items:center;width:48px;height:48px;padding:8px;border-radius:50%;background:#123746ed;color:#f1dba6;border:1px solid #a9bdba;box-shadow:0 3px 15px #0008;touch-action:manipulation}
+#zoomDock button:hover,#zoomDock button:focus-visible{background:#235566}
+#zoomDock svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+#hoverLabel{display:none;position:absolute;z-index:10;pointer-events:none;max-width:min(320px,80%);padding:6px 10px;border:1px solid #a9c9c6;border-radius:8px;background:#06202bea;color:#f8e9c0;font-weight:600;box-shadow:0 4px 16px #0009}
 label{display:block;font-size:12px;color:#d9e7e5;margin:12px 0 5px}
 input,select,button{font:inherit;border-radius:8px;padding:9px 10px;border:1px solid #527182;background:#071823;color:#eff9f5}
 input,select{width:100%}input[type=range]{padding:0;accent-color:var(--gold)}
@@ -31,7 +36,16 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 #edges b,#edges small{display:block}#edges small{color:var(--muted);font-size:11px;margin-top:5px}
 #edges button{padding:5px 8px;font-size:11px;margin-top:6px}
 #edges a{color:#b9dfed;display:inline-block;margin-top:7px;font-size:11px}
-.note{font-size:11px;line-height:1.5;color:#b4c7ca;border-top:1px solid var(--line);padding-top:11px}
+.note{font-size:11px;line-height:1.5;color:#b4c7ca;border-top:1px solid var(--line)}
+#categoryPicker{margin:12px 0 8px;padding:8px 0;border-top:1px solid var(--line)}
+#categoryPicker summary{cursor:pointer;font-weight:600;color:#eed4ab}
+#categoryGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px 8px;margin-top:11px}
+#categoryGrid label{display:flex;align-items:flex-start;gap:7px;margin:0;line-height:1.3;font-size:11px}
+#categoryGrid input{width:auto;flex:0 0 auto;margin-top:2px;accent-color:#eac27e}
+#categoryGrid label.disabled{opacity:.53}
+#categoryHint{color:var(--muted);font-size:11px;line-height:1.5;margin:8px 0 0}
+#selected .node-url{font-size:12px;display:inline-block;overflow-wrap:anywhere;color:#a4dfee;margin:5px 0}
+#selected .note-excerpt{background:#102d39;padding:7px;border-left:2px solid #8bbbc5}
 @media(max-width:720px){header{padding:10px 12px}header h1{font-size:18px}
 main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-height:245px;border-right:0;border-bottom:1px solid var(--line)}#graph{height:56dvh;min-height:280px;order:2}}
 </style>
@@ -40,7 +54,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <p>Anteprima isolata del Checkpoint 06 · Solo lettura · Non sostituisce l'Atlante pubblico</p></header>
 <main>
 <aside>
-<label for="search">Cerca una persona o un'opera</label>
+<label for="search">Cerca un nodo storico-musicale</label>
 <input id="search" type="search" list="matches" placeholder="Mozart, Beethoven, Orfeo…" autocomplete="off">
 <datalist id="matches"></datalist>
 <div class="actions"><button id="searchBtn">Cerca</button><button id="mozartBtn">Mozart</button></div>
@@ -54,36 +68,56 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
  <div><label for="workDepth">Opere fino al livello <output id="worksOutput">5</output></label><input id="workDepth" type="range" min="0" max="5" value="5"></div>
  <div><label for="contextDepth">Contesti fino al livello <output id="contextOutput">5</output></label><input id="contextDepth" type="range" min="0" max="5" value="5"></div>
 </div>
+<details id="categoryPicker" open>
+ <summary>Categorie presenti nel grafo di Atlantis</summary>
+ <div id="categoryGrid"></div>
+ <p id="categoryHint">Le categorie disattivate non vengono mostrate, salvo i nodi indispensabili come ponte verso quelli rimasti visibili. I capitoli sono risorse editoriali e non possono essere attraversati.</p>
+</details>
 <div id="stats">Lettura dei dati…</div><div id="status" role="status"></div>
-<section id="selected"><h2>Seleziona un nodo</h2><p>Tocca un nodo per leggerne i rapporti, poi usa «Nuova radice» per esplorarlo autonomamente.</p>
- <button id="pivotBtn" disabled>Nuova radice dal nodo selezionato</button><ul id="edges"></ul>
+<section id="selected"><div id="nodeInfo"><h2>Seleziona un nodo</h2><p>Clic: note e fonti. Doppio clic: il nodo diventa il centro, senza aumentare lo zoom.</p></div>
+ <ul id="edges"></ul>
 </section>
-<p class="note">Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
+<p class="note">Desktop: passaggio del mouse = etichetta; clic = note e fonti; doppio clic = nuova radice senza zoom. Android: primo tocco = note; secondo tocco sullo stesso nodo = nuova radice. Per ingrandire e rimpicciolire usa le lenti + e − (oppure due dita sul grafo). I dati legacy di Musurgia Mundi non sono ancora fusi in questa anteprima. Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
 </aside>
-<div id="graph" aria-label="Grafo 3D radicato, ruotabile e ingrandibile"></div>
+<div id="graph" aria-label="Grafo 3D radicato: clic per le note, doppio clic per centrare">
+ <div id="hoverLabel" role="status" aria-live="off"></div>
+ <div id="zoomDock" aria-label="Controlli d'ingrandimento">
+  <button type="button" id="zoomIn" title="Ingrandisci la nebulosa" aria-label="Ingrandisci">
+   <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.3" cy="10.3" r="6.6"/><path d="m15.4 15.4 5.1 5.1M10.3 7.4v5.8M7.4 10.3h5.8"/></svg>
+  </button>
+  <button type="button" id="zoomOut" title="Rimpicciolisci la nebulosa" aria-label="Rimpicciolisci">
+   <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.3" cy="10.3" r="6.6"/><path d="m15.4 15.4 5.1 5.1M7.4 10.3h5.8"/></svg>
+  </button>
+ </div>
+</div>
 </main>
-<script src="../compat-graph.js"></script>
+<script src="./compat-graph-checkpoint08.js?v=gesti-08-20261109"></script>
 <script src="./ROOTED_RELEVANCE_CHECKPOINT06.browser.js?v=pertinenza-07-20261109"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
 const rootLib=window.MusurgiaRooted;
 let dataset,engine,renderer,currentRoot="pers:mozart",candidate=null,last;
-const typesForWork=["opera","versione-opera","parte-di-opera","allestimento","produzione"];
+const typeNames={persona:"Persone",opera:"Opere","versione-opera":"Versioni d'opera","parte-di-opera":"Parti di opere",allestimento:"Allestimenti",produzione:"Produzioni","nodo-di-senso":"Nodi di senso",luogo:"Luoghi",strumento:"Strumenti","rete-culturale":"Reti culturali","evento-storico":"Eventi storici","documento-storico":"Documenti storici",documento:"Altri documenti",capitolo:"Capitoli (editoriali)"};
+const categoryColors={persona:"#b1a2ec",opera:"#e9a092","versione-opera":"#eaa4a0","parte-di-opera":"#dc999b",allestimento:"#e4b8a0",produzione:"#d7ac90","nodo-di-senso":"#71d5c5",luogo:"#83bceb",strumento:"#c5d885","rete-culturale":"#85bdb3","evento-storico":"#f2c583","documento-storico":"#c2b1d9",documento:"#a1c4c9",capitolo:"#eec482"};
+const shownCategories=new Set();
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
 function say(s){$("status").textContent=s}
 function makeEl(tag,text,cls){const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e}
 function selected(id){
  candidate=dataset.nodes.find(n=>n.id===id)||null;
- const place=$("selected");place.querySelectorAll("h2,p").forEach(e=>e.remove());
- place.prepend(makeEl("h2",candidate?.name||"Nodo sconosciuto"));
- place.insertBefore(makeEl("p",candidate?candidate.category+" · Tocca «Nuova radice» per cambiare prospettiva.":"Tocca un nodo per i dettagli."),$("pivotBtn"));
+ const place=$("nodeInfo");place.replaceChildren();
+ place.append(makeEl("h2",candidate?.name||"Nodo sconosciuto"));
+ place.append(makeEl("p",candidate?(typeNames[candidate.category]||candidate.category)+(candidate.subtype?" · "+candidate.subtype:""):"Seleziona un nodo per leggere le note."));
+ if(candidate&&safeUrl(candidate.url)){
+  const a=makeEl("a","Apri la pagina o l'ancora collegata");a.href=candidate.url;a.className="node-url";a.target="_blank";a.rel="noopener noreferrer";place.append(a);
+ }
+ if(candidate?.description)place.append(makeEl("p",candidate.description,"note-excerpt"));
  const within=last?.nodes.find(n=>n.id===id);
  if(within?._depth>=2&&Array.isArray(within._path)){
   const pathNames=within._path.map(k=>dataset.nodes.find(n=>n.id===k)?.name||k);
-  place.insertBefore(makeEl("p","Percorso dalla radice ("+within._depth+" passaggi): "+pathNames.join(" → ")+". L'esistenza della catena non dimostra un rapporto diretto fra gli estremi."),$("pivotBtn"));
+  place.append(makeEl("p","Percorso dalla radice ("+within._depth+" passaggi): "+pathNames.join(" → ")+". La concatenazione non dimostra un rapporto diretto."));
  }
- $("pivotBtn").disabled=!candidate||candidate.id===currentRoot;
  const ul=$("edges");ul.replaceChildren();
  if(!candidate)return;
  const related=last.links.filter(e=>e.source===id||e.target===id);
@@ -110,7 +144,7 @@ function selected(id){
  }
  if(!related.length)ul.append(makeEl("li","Nessuna relazione visibile con i filtri attuali."));
 }
-function render(){
+function render({fit=false}={}){
  if(!renderer)return;
  const depth=Number($("depth").value),person=Number($("peopleDepth").value);
  const work=Number($("workDepth").value),context=Number($("contextDepth").value);
@@ -126,21 +160,49 @@ function render(){
  $("relevanceDescription").textContent=relevanceExplanations[relevance];
  $("depthOutput").value=depth;$("peopleOutput").value=person;$("worksOutput").value=work;$("contextOutput").value=context;
  const depthByCategory={persona:person,opera:work,"versione-opera":work,"parte-di-opera":work,allestimento:work,produzione:work,"nodo-di-senso":context,luogo:context,strumento:context,"rete-culturale":context};
- last=renderer.explore(currentRoot,{maxDepth:depth,relevance,depthByCategory});
- const ids=new Map(last.nodes.map(n=>[n.id,n]));
- const links=last.links.filter(e=>ids.has(e.source)&&ids.has(e.target));
- const nodes=last.nodes.map(n=>({...n,_focus:n.id===currentRoot,_label:n.id===currentRoot||n._depth===1}));
- engine.graphData({nodes,links:links.map(e=>({...e}))});engine.zoomToFit();
+ const full=renderer.explore(currentRoot,{maxDepth:depth,relevance,depthByCategory});
+ // Category filters are presentation only: preserve necessary parent paths, dim them.
+ const desired=new Set([currentRoot]);
+ for(const n of full.nodes)if(shownCategories.has(n.category)||n.id===currentRoot)
+   for(const id of n._path||[n.id])desired.add(id);
+ const nodes=full.nodes.filter(n=>desired.has(n.id)).map(n=>({...n,_focus:n.id===currentRoot,
+   _bridge:n.id!==currentRoot&&!shownCategories.has(n.category),
+   _label:n.id===currentRoot||(n._depth===1&&shownCategories.has(n.category))}));
+ const ids=new Set(nodes.map(n=>n.id));
+ const links=full.links.filter(e=>ids.has(e.source)&&ids.has(e.target));
+ last={...full,nodes,links};
+ engine.graphData({nodes,links:links.map(e=>({...e}))});
+ if(fit)engine.zoomToFit();
  const x=nodes.filter(n=>n._depth===1).length;
  const exploratory=links.filter(e=>e.statement_type==="exploration").length;
  $("stats").textContent=nodes.length+" nodi · "+links.length+" archi · "+x+" vicini diretti"+(exploratory?" · "+exploratory+" collegamenti esplorativi":"");
  selected(candidate&&ids.has(candidate.id)?candidate.id:currentRoot);
  say("Radice: "+(dataset.nodes.find(n=>n.id===currentRoot)?.name||currentRoot));
 }
-function setRoot(id){
+function setRoot(id,{fit=true}={}){
  const n=dataset.nodes.find(x=>x.id===id);
  if(!n||n.category==="capitolo"||n.id.startsWith("cap:")){say("I capitoli sono soltanto risorse editoriali");return}
- currentRoot=id;candidate=n;render();
+ currentRoot=id;candidate=n;render({fit});
+}
+function zoomBy(factor){
+ if(!engine)return;
+ const old=engine.zoom(),next=Math.max(.3,Math.min(10,old*factor));
+ engine.zoom(next);
+ say("Ingrandimento: "+Math.round(next*100)+"% · doppio clic/tocco solo per cambiare centro");
+}
+function buildCategoryPicker(){
+ const grid=$("categoryGrid");grid.replaceChildren();
+ const counts=new Map();
+ for(const n of dataset.nodes)counts.set(n.category,(counts.get(n.category)||0)+1);
+ for(const [key,count] of [...counts].sort((a,b)=>(typeNames[a[0]]||a[0]).localeCompare(typeNames[b[0]]||b[0],"it"))){
+  const item=makeEl("label");
+  const toggle=document.createElement("input");toggle.type="checkbox";toggle.checked=key!=="capitolo";
+  toggle.disabled=key==="capitolo";toggle.setAttribute("aria-label",(typeNames[key]||key)+": "+count+" nodi");
+  if(key!=="capitolo")shownCategories.add(key);else item.className="disabled";
+  toggle.addEventListener("change",()=>{toggle.checked?shownCategories.add(key):shownCategories.delete(key);render({fit:false})});
+  item.append(toggle,makeEl("span",(typeNames[key]||key)+" ("+count+")"));
+  grid.append(item);
+ }
 }
 function search(){
  const v=$("search").value.trim().toLocaleLowerCase("it");
@@ -150,7 +212,7 @@ function search(){
 }
 async function init(){
  say("Caricamento del grafo storico e del registro di audit…");
- if(!rootLib?.createRootedExplorer||!window.AtlantisCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
+ if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
  let g,reg;
@@ -161,20 +223,31 @@ async function init(){
   ]);
  }finally{clearTimeout(timeout)}
  dataset=g;renderer=rootLib.createRootedExplorer(dataset,reg);
- engine=window.AtlantisCompatGraph($("graph")).nodeColor(n=>n._focus?"#ffdf9a":n._depth===1?"#86d9cd":"#9d9cbf")
+ buildCategoryPicker();
+ engine=window.AtlantisAuditCompatGraph($("graph"))
+  .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
   .linkColor(e=>e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
   .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
-  .onNodeClick(n=>selected(n.id)).onLinkClick(e=>{candidate=dataset.nodes.find(n=>n.id===e.source)||null;selected(candidate?.id)});
+  .onNodeClick(n=>selected(n.id))
+  .onNodeDoubleClick(n=>setRoot(n.id,{fit:false}))
+  .onNodeHover((n,point)=>{
+   const el=$("hoverLabel");
+   el.style.display=n?"block":"none";
+   if(n){el.textContent=n.name;el.style.left=Math.min($("graph").clientWidth-140,(point?.x||0)+17)+"px";
+    el.style.top=Math.max(6,(point?.y||0)-40)+"px"}
+  })
+  .onLinkClick(e=>selected(e.source));
  const unique=new Map();for(const n of dataset.nodes)if(n.category!=="capitolo"&&!unique.has(n.name))unique.set(n.name,n);
  for(const name of [...unique.keys()].sort((a,b)=>a.localeCompare(b,"it"))){
   const option=document.createElement("option");option.value=name;$("matches").append(option);
  }
  $("searchBtn").addEventListener("click",search);$("mozartBtn").addEventListener("click",()=>setRoot("pers:mozart"));
  $("search").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
- $("pivotBtn").addEventListener("click",()=>{if(candidate)setRoot(candidate.id)});
- for(const id of ["relevance","depth","peopleDepth","workDepth","contextDepth"])$(id).addEventListener("input",render);
+ $("zoomIn").addEventListener("click",()=>zoomBy(1.25));
+ $("zoomOut").addEventListener("click",()=>zoomBy(1/1.25));
+ for(const id of ["relevance","depth","peopleDepth","workDepth","contextDepth"])$(id).addEventListener("input",()=>render({fit:false}));
  addEventListener("resize",()=>engine.width($("graph").clientWidth).height($("graph").clientHeight));
- engine.width($("graph").clientWidth).height($("graph").clientHeight);setRoot(currentRoot);
+ engine.width($("graph").clientWidth).height($("graph").clientHeight);setRoot(currentRoot,{fit:true});
 }
 init().catch(e=>{
  console.error(e);
