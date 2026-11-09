@@ -34,7 +34,7 @@ LINK_KINDS = [
 
 
 def clean(s):
-    return re.sub(r"\\s+", " ", s or "").strip()
+    return re.sub(r"\s+", " ", s or "").strip()
 
 
 def same_site(url):
@@ -158,7 +158,7 @@ def main():
     }
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-        f.write("\\n")
+        f.write("\n")
     print(f"Wrote {len(rows)} composer link records to {args.output}")
 
 
