@@ -66,7 +66,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 </style>
 </head><body>
 <header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
-<p>Anteprima di audit · Checkpoint 13: collegamenti opera–genere · Solo lettura</p></header>
+<p>Anteprima di audit · Checkpoint 14: opere Flaminio collegate ai generi · Solo lettura</p></header>
 <main>
 <aside>
 <label for="search">Cerca un nodo storico-musicale</label>
@@ -163,7 +163,66 @@ function attachWorkGenreEdges(result,maxDepth,depthByCategory){
  }
  return result;
 }
+// Checkpoint 14: load only independently sourced catalogue-work genre edges.
+let flaminioPreview={nodes:[],links:[]},flaminioPreviewNodes=new Map();
+function prepareFlaminioPreview(data){
+ if(data?.schema!=="musurgia-atlantis-catalogue-work-genre-preview-v1"||!Array.isArray(data.nodes)||!Array.isArray(data.links))throw Error("Overlay composizioni e generi Flaminio non valido");
+ const ids=new Set([...dataset.nodes.map(n=>n.id),...data.nodes.map(n=>n.id)]);
+ if(data.nodes.some(n=>dataset.nodes.some(old=>old.id===n.id)))throw Error("Overlay Flaminio tenta di duplicare un nodo Atlantis");
+ if(data.links.some(e=>!ids.has(e.source)||!ids.has(e.target)))throw Error("Arco Flaminio orfano");
+ flaminioPreview=data;flaminioPreviewNodes=new Map(data.nodes.map(n=>[n.id,n]));
+}
+function attachFlaminioPreview(result,maxDepth,depths){
+ if(!flaminioPreview.links.length||maxDepth<1)return result;
+ const shown=new Map(result.nodes.map(n=>[n.id,n]));
+ const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const workDepth=depths.opera??maxDepth,versionDepth=depths["versione-opera"]??workDepth,genreDepth=depths["genere-forma"]??maxDepth;
+ const edgeIds=new Set(result.links.map(e=>e.id));
+ function addNode(id,depth,from){
+  if(shown.has(id))return shown.get(id);
+  const n=universe.get(id);if(!n||depth>maxDepth)return null;
+  const kind=n.category;const limit=kind==="versione-opera"?versionDepth:kind==="opera"?workDepth:kind==="genere-forma"?genreDepth:kind==="persona"?(depths.persona??maxDepth):maxDepth;
+  if(depth>limit)return null;
+  const parent=shown.get(from),node={...n,_depth:depth,_path:[...(parent?._path||[currentRoot]),id],_permission:"catalogue_sourced_direct"};
+  result.nodes.push(node);shown.set(id,node);return node;
+ }
+ function edge(e){if(shown.has(e.source)&&shown.has(e.target)&&!edgeIds.has(e.id)){result.links.push({...e});edgeIds.add(e.id)}}
+ // Only the selected composer can introduce its OWN works; no walk across a genre.
+ for(const e of flaminioPreview.links.filter(e=>e.relation==="ha_composto")){
+  if(e.source===currentRoot)addNode(e.target,1,e.source);
+  else if(e.target===currentRoot)addNode(e.source,1,e.target);
+  edge(e);
+ }
+ // Genre roots are indexes of works; work roots reveal their genre and composer.
+ for(const e of flaminioPreview.links.filter(e=>e.relation==="ha_genere")){
+  if(e.target===currentRoot)addNode(e.source,1,e.target);
+  if(e.source===currentRoot)addNode(e.target,1,e.source);
+  edge(e);
+ }
+ // Work roots reveal their own versions. From a composer root, versions remain at depth 2.
+ for(const e of flaminioPreview.links.filter(e=>e.relation==="versione_di"||e.relation==="deriva_da")){
+  if(e.source===currentRoot)addNode(e.target,1,e.source);
+  if(e.target===currentRoot)addNode(e.source,1,e.target);
+  edge(e);
+ }
+ for(const e of flaminioPreview.links.filter(e=>e.relation==="ha_genere")){
+  const work=shown.get(e.source);
+  if(work&&!shown.has(e.target)&&work._depth+1<=maxDepth)addNode(e.target,work._depth+1,e.source);
+  edge(e);
+ }
+ for(const e of flaminioPreview.links.filter(e=>e.relation==="versione_di"||e.relation==="deriva_da")){
+  const parent=shown.get(e.target);
+  if(parent&&!shown.has(e.source)&&parent._depth+1<=maxDepth)addNode(e.source,parent._depth+1,e.target);
+  edge(e);
+ }
+ return result;
+}
 function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(flaminioPreviewNodes.has(currentRoot)){
+  const root={...flaminioPreviewNodes.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_catalogue_work"};
+  return attachFlaminioPreview({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
+ }
+
  if(legacyGenresByNode.has(currentRoot)){
   const root=legacyGenresByNode.get(currentRoot);
   const nodes=[{...root,_depth:0,_path:[root.id],_permission:"legacy_genre_root"}];
@@ -176,7 +235,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory);
+  return attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -189,7 +248,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return attachWorkGenreEdges(result,maxDepth,depthByCategory);
+ return attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -352,22 +411,26 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay;
+ let g,reg,legacyOverlay,flaminioWorks;
  try{
-  [g,reg,legacyOverlay]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
-   fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()})
+   fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
+   fetch("./OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT14_2026-11-09.json?v=checkpoint14",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Overlay opere Flaminio mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
  dataset={nodes:[...g.nodes,...legacyOverlay.nodes],links:[...g.links,...legacyOverlay.links,...verifiedWorkGenreLinks]};
+ prepareFlaminioPreview(flaminioWorks);
+ dataset.nodes.push(...flaminioPreview.nodes);
+ dataset.links.push(...flaminioPreview.links);
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). Il catalogo legacy è provvisorio, non fuso né certificato in Atlantis; restano fuori altre relazioni, media e ancore.";
  buildCategoryPicker();
  engine=window.AtlantisAuditCompatGraph($("graph"))
   .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
-  .linkColor(e=>e.statement_type==="work_genre_verified"?"#ffd37a":e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
+  .linkColor(e=>e.statement_type==="work_genre_verified"||e.statement_type==="catalogue_work_genre"?"#ffd37a":e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
   .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
   .onNodeClick(n=>selected(n.id))
   .onNodeDoubleClick(n=>setRoot(n.id,{fit:false}))
