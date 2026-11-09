@@ -68,7 +68,9 @@ function createRootedExplorer(graph,proofRegistry={schema:"root-evidence-v1",wit
   for(let qi=0;qi<queue.length;qi++){
    const from=queue[qi],state=selected.get(from),node=byId.get(from),depth=state.depth;
    if(depth>=maxDepth)continue;
-   if(depth>0&&CONTEXT_CATEGORIES.has(node.category))continue;
+   // A verified comparison is visible but is NEVER a transit authorization.
+   // E.g., Rossini's Otello and Verdi's Otello share a subject, NOT a single work.
+   if(depth>0&&(CONTEXT_CATEGORIES.has(node.category)||state.reason==="direct_comparison"))continue;
    for(const {edge,other,classification}of adj.get(from)||[]){
     const next=depth+1,otherNode=byId.get(other);
     if(next>maxDepth||next>(categoryLimits[otherNode.category]??maxDepth)||state.path.includes(other))continue;
