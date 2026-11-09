@@ -6,15 +6,23 @@
     {
       "work_id": "opera:figaro",
       "genre_legacy_id": "mm:genere-opera",
-      "specific_genre_legacy_id": "mm:opera-buffa",
+      "specific_genre_legacy_id": "mm:dramma-giocoso",
       "label": "Le nozze di Figaro",
       "relationship": "appartiene_al_genere_operistico",
-      "fact": "Opera buffa e opera teatrale",
+      "fact": "Le nozze di Figaro (1786): il frontespizio originale specifica 'commedia per musica'; già la Gazzetta universale del 16 maggio 1786 usa 'dramma giocoso', dicitura ripresa anche nel libretto fiorentino del 1788. Il collegamento al dramma giocoso è dunque contestuale/terminologico attestato, non sinonimia indiscriminata.",
       "supporting_atlantis_edge_ids": [
         "E0732",
         "E0729"
       ],
-      "verification": "requires_work_to_genre_editorial_gate"
+      "verification": "historical_terminological_variant_attested_in_period_sources_not_an_equivalence_claim",
+      "alternate_genre_legacy_id": "mm:opera-buffa",
+      "classification_context": "first_libretto_commedia_per_musica_1786; contemporary_dramma_giocoso_usage; later_dramma_giocoso_titlepage_1788",
+      "classification_sources": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?l=2",
+        "https://www.mozart-digital.at/DME/libretti-catalog/liste.php?l=5&r=-1&t=0",
+        "https://www.mozartdocuments.org/documents/7-may-1786/",
+        "https://corago.unibo.it/libretto/DRT0030541"
+      ]
     },
     {
       "work_id": "opera:Don-giovanni",
@@ -61,19 +69,29 @@
       "source": "mm:dramma-giocoso",
       "target": "mm:genere-opera",
       "proposed_relation": "è_un_sottogenere_del_teatro_operistico",
-      "status": "audit_pending_not_active",
-      "reason": "Dramma giocoso è una tradizione/formulazione di opera, non equivalente all'insieme delle opere. Explicitly requested for later taxonomy review.",
+      "status": "audit_pending_preview_visual_only",
+      "reason": "Dramma giocoso is an operatic genre/designation, not identical to all opera. For Figaro distinguish 1786 original commedia per musica, contemporary dramma giocoso usage, and later 1788 edition. Proposed historical taxonomy link for preview, not production.",
       "must_not_infer": [
         "opera_is_always_dramma_giocoso",
         "all_dramma_giocoso_works_belong_to_mozart"
-      ]
+      ],
+      "evidence_urls": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?l=2",
+        "https://www.mozartdocuments.org/documents/7-may-1786/",
+        "https://www.mozart-digital.at/DME/libretti-catalog/liste.php?l=5&r=-1&t=0"
+      ],
+      "preview_visible": true
     },
     {
       "source": "mm:opera-buffa",
       "target": "mm:genere-opera",
       "proposed_relation": "è_una_tradizione_operistica",
       "status": "audit_pending_not_active",
-      "reason": "Distinguish opera buffa from dramma giocoso historically; do not collapse."
+      "reason": "Distinguish opera buffa from dramma giocoso historically; do not collapse.",
+      "preview_visible": true,
+      "evidence_urls": [
+        "https://corago.unibo.it/opera/Z000003969"
+      ]
     }
   ],
   "rules": [
@@ -81,6 +99,7 @@
     "All facts remain proposed until reviewed",
     "No automatic global classification by composers' genre links",
     "Preserve specific subgenre distinction",
-    "Do not traverse future taxonomy proposals before certification"
+    "Do not traverse future taxonomy proposals before certification",
+    "Figaro may connect to dramma giocoso only as source-attested historical nomenclature alongside original commedia per musica; not a claim of exclusive formal genre."
   ]
 }
