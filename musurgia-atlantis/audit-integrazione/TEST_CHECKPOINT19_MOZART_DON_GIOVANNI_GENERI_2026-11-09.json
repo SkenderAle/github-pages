@@ -1,0 +1,83 @@
+{
+  "schema": "musurgia-atlantis-mozart-work-taxonomy-regression-v1",
+  "date": "2026-11-09",
+  "status": "PASS_STATIC_AND_ISOLATED_JS_NOT_BROWSER_CERTIFIED",
+  "preview": "PREVIEW_RADICATA_CHECKPOINT06.html",
+  "overlay": "OVERLAY_TASSONOMIA_MOZART_CHECKPOINT19_2026-11-09.json",
+  "purpose": "Regression for the screenshot problem: Don Giovanni and Dramma giocoso appeared as two nodes without a visible edge despite existing Atlantis sense relation",
+  "results": [
+    {
+      "name": "Don Giovanni → Dramma giocoso at relevance 1",
+      "status": "PASS"
+    },
+    {
+      "name": "Opera comica italiana only introduced from relevance 2",
+      "status": "PASS"
+    },
+    {
+      "name": "Relevance 2 adds macrotradition",
+      "status": "PASS"
+    },
+    {
+      "name": "Dramma giocoso → Opera comica italiana",
+      "status": "PASS"
+    },
+    {
+      "name": "Opera comica italiana → Opera",
+      "status": "PASS"
+    },
+    {
+      "name": "Don Giovanni → Opera general genre",
+      "status": "PASS"
+    },
+    {
+      "name": "Così fan tutte → Dramma giocoso",
+      "status": "PASS"
+    },
+    {
+      "name": "Le nozze di Figaro → Opera buffa",
+      "status": "PASS"
+    },
+    {
+      "name": "Il flauto magico → Singspiel",
+      "status": "PASS"
+    },
+    {
+      "name": "Don Giovanni as root reveals Dramma giocoso",
+      "status": "PASS"
+    },
+    {
+      "name": "Dramma giocoso as root finds Don Giovanni",
+      "status": "PASS"
+    },
+    {
+      "name": "An unrelated composer (Clementi) does not receive Mozart theatrical edges",
+      "status": "PASS"
+    },
+    {
+      "name": "No orphan links in all isolated rooted tests",
+      "status": "PASS"
+    },
+    {
+      "name": "Overlay edge IDs are unique",
+      "status": "PASS"
+    },
+    {
+      "name": "Preview references correct taxonomy JSON",
+      "status": "PASS"
+    }
+  ],
+  "reference_urls": [
+    "https://corago.unibo.it/libretto/DRT0014519",
+    "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=-1&t=0",
+    "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?l=2",
+    "https://kv.mozarteum.at/en/work/le-nozze-di-figaro-opera-buffa-commedia-per-musica-in-4-acts-11980"
+  ],
+  "notes": [
+    "Static test invokes the actual attachMozartTaxonomy helper extracted from the preview on realistic mocked visible nodes, not a browser screenshot.",
+    "User-proposed broad Italian comic opera category is provisional, not a falsely asserted historical equivalence.",
+    "The cycle Mozart→Don Giovanni→Dramma giocoso→Opera comica italiana→Opera→Mozart uses an existing legacy Mozart→Opera edge; it does not invent a directed Opera→Mozart edge.",
+    "The native grafo.json already contains Don Giovanni→senso:dramma-giocoso, which was not the visible legacy genre node. This overlay is an explicit crosswalk to the visible taxonomy node.",
+    "No public graph changes."
+  ]
+}
