@@ -1022,3 +1022,14 @@ https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_
 **Federazione e GUI:** invariati i 1.637 nodi e 5.574 archi della federazione v1, 0 relazioni pubbliche aggiunte, 0 modifiche a `musurgia-atlantis/grafo.json`, interfaccia, dati Mundi e lotti 1–210. Conservare le priorità visive Persone, Opere, Reti culturali, Generi e forme, e pertinenza radicata I–V. I link Flaminio sono editoriali e mai ponti storici.
 
 **Prossimo passo:** verificare accessi/condizioni e collaudare parser su HTML reale; predisporre riconciliazione non distruttiva con chiavi autore+numero catalogo+titolo, versioni/arrangiamenti, faccette di genere a più appartenenze con fonti separate. Ampliare la raccolta dell'indice completo in modo consentito; passare ai record delle opere per autore senza confondere cataloghi collegati con record acquisiti. Aggiornare il presente thread a ogni avanzamento.
+
+
+### Flaminio — Lotto 07, ampliamento controllato opere Bellini/Berg/Barber (9 novembre 2026)
+
+Pubblicato su `main` esclusivamente nello staging di audit `CATALOGO_FLAMINIO_OPERE_LOTTO07_2026-11-09.json`, commit `96b02c8010a88a44c7dfa8d430822d008a0cb4aa`. Riletti via accesso web i cataloghi reali Bellini, Berg, Barber. **23 nuovi record sorgente**: Bellini 5 (voci 5–9), Berg 5 (op.3a, op.7a e tre senza opus), Barber 13 (Heyman B.3–B.14, con B.13 arr come voce distinta di arrangiamento). Identificativi sorgente univoci 23/23 controllati dopo rilettura GitHub. Aggiungendo il Lotto 06: **36 record-opera candidati multiautore** in staging; NON 36 nuovi nodi del grafo e NON 36 identità certificate. Guide dirette precedentemente verificate: 4 nel Lotto 06; Lotto 07 non aggiunge guide verificate.
+
+**Versioni da non perdere:** Berg Quartetto op.3a è una riduzione di op.3, e Drei Bruchstücke op.7a trae materiale da Wozzeck op.7; Berg Schliesse mir die Augen beide porta una revisione del 1925. Barber Gypsy Dance deriva da The Rose Tree; The Rose Tree resta opera incompiuta. I campi `work_kind` e `derives_from_source_key` preservano queste differenze senza generare archi storici pubblici. Generi/organici sono etichette candidate con review pending, non ID tassonomici riconciliati.
+
+**Accesso:** pagine catalogo lette con browser di ricerca; lo scraper Python continua a non essere stato eseguito, e permessi/robots per crawling massivo non risultano verificati. Nessuna affermazione di raccolta integrale del catalogo Flaminio. Non copiare prosa protetta. 1.637 nodi e 5.574 archi federati v1, UI pubblica e 210 lotti filologici immutati.
+
+**Prossima ripresa:** confrontare le 36 schede esterne con nodi opere/versioni del corpus federato senza falsi match; proseguire per altri compositori e guide dirette effettivamente visitate, dando priorità a copertura sistematica e controllo delle varianti catalografiche. Aggiornare thread.
