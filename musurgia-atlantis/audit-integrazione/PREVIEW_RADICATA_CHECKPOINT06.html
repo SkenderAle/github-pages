@@ -343,7 +343,74 @@ function attachMozartTaxonomy(result,maxDepth,relevance,depths){
  }
  return result;
 }
+
+let concertoFamily={nodes:[],links:[]},concertoFamilyByNode=new Map();
+const concertoAuthors=[["pers:vivaldi","opera:vivaldi-rv522-op3-8"],["pers:bach","opera:bach-bwv593"],["pers:bach","opera:bach-sei-concerti-brandeburghesi-1721"],["pers:corelli","opera:corelli-concerti-grossi-op6-1714"],["pers:mendelssohn","opera:mendelssohn-concerto-violino-op64"]];
+function prepareConcertoFamily(data){
+ if(data?.schema!=="musurgia-atlantis-concerto-family-checkpoint25-v1"||!Array.isArray(data.nodes)||!Array.isArray(data.links))throw Error("Overlay famiglia Concerto non valido");
+ const ids=new Set([...dataset.nodes.map(x=>x.id),...data.nodes.map(x=>x.id)]);
+ if(data.nodes.some(x=>dataset.nodes.some(y=>x.id===y.id))||data.links.some(x=>!ids.has(x.source)||!ids.has(x.target)))throw Error("Concerto: nodo duplicato o arco orfano");
+ if(concertoAuthors.some(([a,w])=>!ids.has(a)||!ids.has(w)))throw Error("Concerto: compositore o opera non presenti");
+ concertoFamily=data;concertoFamilyByNode=new Map(data.nodes.map(x=>[x.id,x]));
+}
+function attachConcertoFamily(result,maxDepth,depths){
+ if(!concertoFamily.links.length||maxDepth<1)return result;
+ const shown=new Map(result.nodes.map(x=>[x.id,x])), universe=new Map(dataset.nodes.map(x=>[x.id,x])),links=new Set(result.links.map(x=>x.id));
+ const taxonomy=concertoFamily.links.filter(x=>x.relation==="sottogenere_di"), classes=concertoFamily.links.filter(x=>x.relation==="ha_forma");
+ const genreRoot=currentRoot==="legacy:gf:genere-concerto"||taxonomy.some(e=>e.source===currentRoot||e.target===currentRoot);
+ function add(id,d,from,permission){
+  if(shown.has(id))return shown.get(id);
+  const n=universe.get(id);if(!n||d>maxDepth||d>(depths[n.category]??maxDepth))return null;
+  const p=shown.get(from),v={...n,_depth:d,_path:[...(p?._path||[currentRoot]),id],_permission:permission};
+  result.nodes.push(v);shown.set(id,v);return v;
+ }
+ function draw(e){
+  if(!shown.has(e.source)||!shown.has(e.target)||links.has(e.id))return;
+  result.links.push({...e});links.add(e.id);
+ }
+ if(genreRoot){
+  for(let depth=1;depth<=maxDepth;depth++){
+   let grew=false;
+   for(const e of taxonomy){const p=shown.get(e.target);
+    if(p&&p._depth===depth-1){if(!shown.has(e.source)&&add(e.source,depth,e.target,"concerto_taxonomy_child"))grew=true;draw(e)}
+   }
+   if(!grew)break;
+  }
+ }
+ // Composer-rooted works are taken exclusively from individually attested
+ // authorship links; genre categories never import another composer's works.
+ for(const [author,work] of concertoAuthors)if(author===currentRoot){
+  add(work,1,author,"concerto_attested_work");
+  const e=dataset.links.find(x=>x.source===author&&x.target===work&&/^(compone|presenta|trascrive)/.test(x.relation||""));
+  if(e)draw(e);
+ }
+ for(let pass=0;pass<= (genreRoot?maxDepth:0);pass++){
+  for(const e of classes){
+   const w=shown.get(e.source),g=shown.get(e.target);
+   if(w&&!g)add(e.target,(w._depth??0)+1,e.source,"concerto_specific_work_form");
+   else if(genreRoot&&g&&!w)add(e.source,(g._depth??0)+1,e.target,"concerto_indexed_work");
+   draw(e);
+  }
+ }
+ if(genreRoot){
+  for(const [author,work] of concertoAuthors){
+   const w=shown.get(work);if(!w||w._depth>=maxDepth)continue;
+   add(author,w._depth+1,work,"concerto_terminal_author_index");
+   const e=dataset.links.find(x=>x.source===author&&x.target===work&&/^(compone|presenta|trascrive)/.test(x.relation||""));
+   if(e)draw(e);
+  }
+ }else{
+  for(const e of taxonomy){const child=shown.get(e.source);if(child){add(e.target,(child._depth??0)+1,e.source,"concerto_taxonomy_parent_terminal");draw(e)}}
+ }
+ return result;
+}
+
 function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(concertoFamilyByNode.has(currentRoot)){
+  const root={...concertoFamilyByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_concerto_subgenre"};
+  return attachConcertoFamily({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
+ }
+
  if(mozartTaxonomyNodes.has(currentRoot)){
   const root={...mozartTaxonomyNodes.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_taxonomy_term"};
   return attachMozartTaxonomy({root:currentRoot,nodes:[root],links:[]},maxDepth,relevance,depthByCategory);
@@ -371,7 +438,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory);
+  return attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -384,7 +451,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory);
+ return attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -552,15 +619,16 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
    fetch("./OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT17_2026-11-09.json?v=checkpoint17",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Overlay opere Flaminio mancante "+r.status);return r.json()}),
    fetch("./OVERLAY_PERSONE_FEDERATE_CHECKPOINT18_2026-11-09.json?v=checkpoint18",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Relazioni persone federate mancanti "+r.status);return r.json()}),
-   fetch("./OVERLAY_TASSONOMIA_MOZART_CHECKPOINT19_2026-11-09.json?v=checkpoint19",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Tassonomia delle opere Mozart mancante "+r.status);return r.json()})
+   fetch("./OVERLAY_TASSONOMIA_MOZART_CHECKPOINT19_2026-11-09.json?v=checkpoint19",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Tassonomia delle opere Mozart mancante "+r.status);return r.json()}),
+    fetch("./OVERLAY_FAMIGLIA_CONCERTO_CHECKPOINT25_2026-11-10.json?v=checkpoint25",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Famiglia Concerto mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -571,11 +639,14 @@ async function init(){
  prepareMozartTaxonomy(mozartTaxonomyInput);
  dataset.nodes.push(...mozartTaxonomy.nodes);
  dataset.links.push(...mozartTaxonomy.links);
- prepareFlaminioPreview(flaminioWorks);
+ prepareConcertoFamily(concertoFamilyInput);
+  dataset.nodes.push(...concertoFamily.nodes);
+  dataset.links.push(...concertoFamily.links);
+  prepareFlaminioPreview(flaminioWorks);
  dataset.nodes.push(...flaminioPreview.nodes);
  dataset.links.push(...flaminioPreview.links);
  renderer=rootLib.createRootedExplorer(g,reg);
- $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
+ $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
  engine=window.AtlantisAuditCompatGraph($("graph"))
   .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
