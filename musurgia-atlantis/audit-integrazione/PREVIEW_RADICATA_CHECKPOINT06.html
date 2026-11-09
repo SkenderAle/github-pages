@@ -445,7 +445,7 @@ async function init(){
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
-   fetch("./OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT15_2026-11-09.json?v=checkpoint15",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Overlay opere Flaminio mancante "+r.status);return r.json()})
+   fetch("./OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT16_2026-11-09.json?v=checkpoint16",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Overlay opere Flaminio mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
