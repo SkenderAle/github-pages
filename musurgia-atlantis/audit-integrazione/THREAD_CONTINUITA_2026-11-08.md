@@ -841,3 +841,24 @@ https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_
 https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint08-20261109
 
 **PROSSIMA RIPRESA — Checkpoint 09:** verificare il riscontro visuale reale e correggere eventuali anomalie mouse/touch/pinch/etichette; poi costruire una vera anteprima di integrazione *non distruttiva* con le persone, predicati e note bidirezionali legacy, mostrando chiaramente la provenienza di ogni relazione e evitando fusioni non certificate. Conservare i 210 lotti, tutti i file e le verifiche.
+
+
+### Riconciliazione — Checkpoint 09 · un'unica etichetta su hover, due flag per categoria (9 novembre 2026)
+
+**Feedback screenshot:** su Jean-Georges Noverre apparivano **due etichette**, una nativa Canvas (normalmente nascosta se il nodo era sul retro) e una seconda overlay HTML creata dalla nuova pagina. **Correzione effettivamente pubblicata:** la pagina `PREVIEW_RADICATA_CHECKPOINT06.html` non crea più `#hoverLabel` né callback di overlay; il puntatore rende visibile la **medesima etichetta Canvas esistente**, senza duplicarla, anche nell'emisfero posteriore. Il renderer non pubblico `compat-graph-checkpoint08.js` resta l'unico disegnatore delle etichette. Commit `a02da71a3a99ae5d2435516c12232385867b38a2`.
+
+**Categorie: doppio selettore indipendente `Nodi` | `Etichette`** a fianco di ogni categoria effettivamente presente in `grafo.json` (14, inclusa la categoria editoriale capitoli con entrambi i flag disabilitati). `Nodi` gestisce la visibilità della categoria **nel sottografo corrente**; `Etichette` aggiunge `_forceLabel:true` a **tutti i nodi di quella categoria già appartenenti al sottografo**, bypassando nascondimento per emisfero posteriore e collisioni. Molte etichette possono quindi sovrapporsi, intenzionalmente. Togliendo `Nodi` si spegne e disabilita `Etichette`; riattivando la categoria il secondo flag rimane spento. Restano intatti i gate storici, la profondità 1–5 e la pertinenza 1–4. Il **doppio clic NON gestisce lo zoom**: rimangono le lenti +/-.
+
+**Bug di regression guard risolto durante i test:** dopo la prima implementazione, la guardia iniziale di `drawCaption` non lasciava passare `_forceLabel` nei nodi di II–V livello. Patch `fed43cb0d40dbbb9e6a5226710a249354a90cbeb` oltre alla prima patch renderer `966656c6a44055e2e0a92cd1c0a6d20027100164`. Ora la guardia iniziale, l'emisfero e il filtro di sovrapposizione rispettano tutti `_forceLabel`.
+
+**TEST ESEGUITI (V8 con DOM/Canvas simulati, NON browser/Android reale):**
+- 13 nodi (una radice + 12 altre persone) con etichette permanenti: **13/13 didascalie disegnate, ciascuna UNA sola volta**; senza flag solo la didascalia di default della radice. PASS.
+- DOM HTML e motore browser effettivi con fixture di cinque nodi: due colonne di flag, selezione etichette forzate per tutte le persone presenti, disattivazione di `Nodi` spegne e disabilita `Etichette`, riattivazione non accende etichette automaticamente. Il vecchio `hoverLabel` non esiste più. PASS.
+- Sintassi JavaScript e riferimenti in repository verificati; produzione `musurgia-atlantis/index.html`, `compat-graph.js`, `grafo.json` e i dati `atlante3d/` intatti.
+
+**Verbale analitico:** `AUDIT_ETICHETTE_CHECKPOINT09_2026-11-09.md`, commit `f35ae145d2232f67cec409306c196720e602d2bc`.
+
+**LINK aggiornato:**
+https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=etichette-09-20261109
+
+**PROSSIMA RIPRESA — Checkpoint 10:** chiedere riscontro visuale vero sull'unicità dell'etichetta e sulla permanenza dei nomi alle spalle, poi procedere con audit dell'importazione legacy (3.856 archi, 509 persone, 115 media/207 associazioni, 537 URL/ancore), senza fusione prematura.
