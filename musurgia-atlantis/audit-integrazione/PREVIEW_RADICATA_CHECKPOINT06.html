@@ -240,7 +240,43 @@ function attachFlaminioPreview(result,maxDepth,depths){
  }
  return result;
 }
+// Checkpoint 18: reconcile direct person relations from Mundi federation in staging.
+let federatedPeople={nodes:[],links:[]},federatedPeopleByNode=new Map();
+function prepareFederatedPeople(data){
+ if(data?.schema!=="musurgia-atlantis-staging-federated-person-links-v1"||!Array.isArray(data.nodes)||!Array.isArray(data.links))
+  throw Error("Archivio persone federate non valido");
+ const known=new Set([...dataset.nodes.map(n=>n.id),...data.nodes.map(n=>n.id)]);
+ if(data.nodes.some(n=>dataset.nodes.some(old=>old.id===n.id)))throw Error("Persona federata duplicata nella preview");
+ if(data.links.some(e=>!known.has(e.source)||!known.has(e.target)))throw Error("Arco persona federata orfano");
+ federatedPeople=data;federatedPeopleByNode=new Map(data.nodes.map(n=>[n.id,n]));
+}
+function attachFederatedPeople(result,maxDepth,depths){
+ if(maxDepth<1||(depths.persona??maxDepth)<1)return result;
+ const present=new Map(result.nodes.map(n=>[n.id,n]));
+ const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const seen=new Set(result.links.map(e=>e.id));
+ function add(id,from){
+  if(present.has(id))return;
+  const n=universe.get(id);if(!n)return;
+  const a=present.get(from);
+  const next={...n,_depth:1,_path:[...(a?._path||[currentRoot]),id],_permission:"federated_person_specific"};
+  result.nodes.push(next);present.set(id,next);
+ }
+ for(const e of federatedPeople.links){
+  if(e.source===currentRoot)add(e.target,e.source);
+  if(e.target===currentRoot)add(e.source,e.target);
+  if(present.has(e.source)&&present.has(e.target)&&!seen.has(e.id)){
+   result.links.push({...e});seen.add(e.id);
+  }
+ }
+ return result;
+}
 function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(federatedPeopleByNode.has(currentRoot)){
+  const root={...federatedPeopleByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_federated_person"};
+  return attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
+ }
+
  if(flaminioPreviewNodes.has(currentRoot)){
   const root={...flaminioPreviewNodes.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_catalogue_work"};
   return attachFlaminioPreview({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
@@ -258,7 +294,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -271,7 +307,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -439,17 +475,21 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations;
  try{
-  [g,reg,legacyOverlay,flaminioWorks]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
-   fetch("./OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT17_2026-11-09.json?v=checkpoint17",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Overlay opere Flaminio mancante "+r.status);return r.json()})
+   fetch("./OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT17_2026-11-09.json?v=checkpoint17",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Overlay opere Flaminio mancante "+r.status);return r.json()}),
+   fetch("./OVERLAY_PERSONE_FEDERATE_CHECKPOINT18_2026-11-09.json?v=checkpoint18",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Relazioni persone federate mancanti "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
  dataset={nodes:[...g.nodes,...legacyOverlay.nodes],links:[...g.links,...legacyOverlay.links,...verifiedWorkGenreLinks]};
+ prepareFederatedPeople(federatedRelations);
+ dataset.nodes.push(...federatedPeople.nodes);
+ dataset.links.push(...federatedPeople.links);
  prepareFlaminioPreview(flaminioWorks);
  dataset.nodes.push(...flaminioPreview.nodes);
  dataset.links.push(...flaminioPreview.links);
@@ -458,7 +498,7 @@ async function init(){
  buildCategoryPicker();
  engine=window.AtlantisAuditCompatGraph($("graph"))
   .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
-  .linkColor(e=>e.statement_type==="work_genre_verified"||e.statement_type==="catalogue_work_genre"?"#ffd37a":e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
+  .linkColor(e=>e.statement_type==="federated_person_relation"?"#acb7ef":e.statement_type==="work_genre_verified"||e.statement_type==="catalogue_work_genre"?"#ffd37a":e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
   .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
   .onNodeClick(n=>selected(n.id))
   .onNodeDoubleClick(n=>setRoot(n.id,{fit:false}))
