@@ -28,6 +28,9 @@ yes("Filtro visuale non cancella collegamenti",(()=>{const x=engine.explore("per
 yes("Orfeo: due versioni Gluck specificamente verificate",(()=>{const x=engine.explore("opera:orfeo-euridice",{maxDepth:1});return x.links.some(e=>e.id==="L02-A14")&&x.links.some(e=>e.id==="L02-A15")})());
 yes("Fidelio: redazioni certificate non perse",(()=>{const x=engine.explore("opera:fidelio",{maxDepth:1});return x.links.some(e=>e.id==="L03-A11")&&x.links.some(e=>e.id==="L03-A13")})());
 yes("Otello: stesso soggetto ma confronto non causale",engine.explore("opera:otello-rossini-1816",{maxDepth:1}).links.some(e=>e.id==="L09-E03"&&e.statement_type==="comparison"));
+yes("Il confronto NON attraversa automaticamente Verdi e Boito",(()=>{const x=engine.explore("opera:otello-rossini-1816",{maxDepth:5});return x.nodes.some(n=>n.id==="opera:otello-verdi-1887")&&!x.nodes.some(n=>n.id==="pers:verdi"||n.id==="pers:boito")})());
+yes("Pivot esplicito su Otello di Verdi mostra Verdi",engine.explore("opera:otello-verdi-1887",{maxDepth:1}).nodes.some(n=>n.id==="pers:verdi"));
+
 for(const id of ["pers:mozart","pers:messiaen","pers:beethoven","pers:vivaldi","pers:bach"]){
  const x=engine.explore(id,{maxDepth:5});
  yes(id+" non attraversa capitoli",x.nodes.every(n=>n.category!=="capitolo")&&x.links.every(e=>!e.source.startsWith("cap:")&&!e.target.startsWith("cap:")));
