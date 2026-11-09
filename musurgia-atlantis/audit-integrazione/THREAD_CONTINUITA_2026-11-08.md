@@ -1195,3 +1195,15 @@ L'utente chiede prosecuzione dopo Lotto 10, mantenendo priorità alla **classifi
 - 109 archi con famiglia `da_esame_semantico_individuale`; tutti gli altri rimangono pure provvisori. Ogni fonte e spiegazione direzionale rimane disponibile nelle partizioni di origine. **Nessun arco autorizzato in produzione**. Fatti mediati attraverso opera/evento non equivalgono automaticamente a contatti diretti fra persone.
 
 **Prossima ripresa:** Checkpoint23 — risolvere le etichette non classificabili o ambigue con un audit individuale verificabile, separare la forma della relazione dalla prova dell'evento e priorizzare i 233 archi con identità già riconciliate. Colloquio/hover/tap e pertinenza radicata ancora da collaudare in GUI. I 210 lotti storici restano intatti.
+
+
+### Checkpoint 23 — 109 archi eccezionali, testo originale recuperato e triage (10 novembre 2026)
+
+**Completato e pubblicato sul solo staging `audit-integrazione/`:**
+- `TRIAGE_INDIVIDUALE_CHECKPOINT23_109_ARCHI_2026-11-10.json` — commit `41912cd9d425a6accad4c0a26928a60d76276ff0`: analizzati **109/109** record in **104** predicati distinti residui del Checkpoint22, con rilettura diretta degli originali in `federazione-v1/archi-01..08.json`. Per ogni arco conservati `forward`, `reverse`, `note`, `sources`, origine/indice e ID, campo di possibile mediazione e gate chiuso.
+- `AUDIT_CHECKPOINT23_109_ARCHI_ECCEZIONALI_2026-11-10.md` — commit `395ecd51e7b5ab9f116e3c06f0dd1af55139f35c`: verbale, conti e sentinelle.
+- Code provvisorie: opera/evento 27, creazione condivisa 18, formazione 17, ricezione/contesto 16, contatti 11, istituzioni 8, editoria 6, testi/poesia 5, ripresa esecutiva 1. **Tutte le classificazioni sono soltanto proposte di revisione; non certificazioni storiche**.
+- **9/9 controlli di readback e integrità PASS**; **109/109** record recuperati con frasi nei due versi e almeno una URL fonte nel payload. Una fonte non approva automaticamente la relazione.
+- Cautele: Wagner→Schönberg (eredità armonica non insegnamento), Schaeffer→Boulez (collaborazione da accertare), Cavalli→Barbara Strozzi (dedica op. II 1651 da verificare come prova), poeta→compositore mediato da testo, `retuschen` di sinfonie non come incontro fra persone.
+
+**Prossima ripresa Checkpoint24:** verifica storica individuale degli **233** archi fra identità già riconciliate (primo sottolotto prioritario con archi Mozart/Haydn, Gabrieli/Schütz e casi cronologicamente impossibili), poi **554** con nuovi candidati e 2 senza fonte, separando rapporti diretti da opera/evento. Progettare overlay generale solo post certificazione e collaudo della pertinenza radicata. **Nessuna modifica a produzione, 210 lotti preservati.**
