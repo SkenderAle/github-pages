@@ -213,7 +213,7 @@ function makeGraph(host){
     if(ev.pointerType==="touch")return; // Hover is a mouse/pen concept; touch uses selection.
     const near=hitTest(p,17);
     const id=near?.n.id||null;
-    if(hovered!==id){hovered=id;onHover(near?.n||null);canvas.style.cursor=id?'pointer':'grab'}
+    if(hovered!==id){hovered=id;onHover(near?.n||null,{x:p.x,y:p.y});canvas.style.cursor=id?'pointer':'grab'}
   });
   canvas.addEventListener('pointerup',ev=>{
     const was=drag,multi=ignoreTap||pointers.size>1;
@@ -228,8 +228,9 @@ function makeGraph(host){
     if(!near){lastTap=null;onBackground();return}
     const now=Date.now(),same=lastTap&&lastTap.id===near.n.id&&lastTap.type===ev.pointerType&&
       now-lastTap.time<=360&&isNear(p,lastTap.pos,ev.pointerType==="touch"?34:24);
+    const alreadySelected=selected===near.n.id;
     selected=near.n.id;
-    if(same){
+    if(same||(ev.pointerType==="touch"&&alreadySelected)){
       lastTap=null;
       onDoubleNode(near.n);
     }else{
@@ -239,7 +240,7 @@ function makeGraph(host){
   });
   canvas.addEventListener('pointercancel',ev=>{pointers.delete(ev.pointerId);drag=null;pinch=null;ignoreTap=true;lastTap=null;canvas.style.cursor='grab'});
   canvas.addEventListener('wheel',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*Math.exp(-ev.deltaY*.001),p.x,p.y)},{passive:false});
-  canvas.addEventListener('dblclick',ev=>{ev.preventDefault()}); // Double click handled once by pointerup, including Android double tap.
+  canvas.addEventListener('dblclick',ev=>{ev.preventDefault()}); // Double click changes the root; NEVER apply zoom here.
   let api={isFallback:true,destroy(){active=false;canvas.remove()},graphData(v){if(v===undefined)return current;current=v;layout();return api},
     zoomToFit(){
       zoom=1;shiftX=0;shiftY=0;selected=null;
