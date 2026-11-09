@@ -154,6 +154,10 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
   // mistake a breadth-first traversal tree for the entire set of facts.
   // Taxonomy links are shown only when both endpoints are already visible.
   for(const e of taxonomy){
+   // An ORIGINAL Musurgia Mundi taxonomy edge takes precedence over a proposed
+   // duplicate with the same two endpoints. Retain the proposed record in audit.
+   if(edges.some(orig=>orig.provenance!=="atlantis" &&
+      ((orig.source===e.source&&orig.target===e.target)||(orig.source===e.target&&orig.target===e.source))))continue;
    if(selected.has(e.source)&&selected.has(e.target)){
     visibleEdges.set(e.id,{...e,at_root_depth:Math.max(selected.get(e.source)._depth,selected.get(e.target)._depth),
       root_permission:"taxonomy_display_between_existing_nodes"});
@@ -170,10 +174,20 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
   }
   // Other pre-existing provenance-preserving edges between visible endpoints
   // are still retained, but we never create transitive historical assertions.
+  const existingAtlasIds=new Set([...visibleEdges.values()]
+   .filter(e=>e.provenance!=="atlantis"&&!e.id.startsWith("fd:"))
+   .map(e=>e.id));
   for(const e of edges){
    if(selected.has(e.source)&&selected.has(e.target)&&!visibleEdges.has(e.id)){
-    if(e.provenance==="atlantis"&&e.statement_type==="legacy_original")continue;
     if(e.source.startsWith("cap:")||e.target.startsWith("cap:"))continue;
+    if(e.provenance==="atlantis"){
+      if(existingAtlasIds.has(e.original_id))continue; // avoid 1 source edge drawn twice
+      if(!e.historical_verified_independently)continue;
+      if(!["riscontro_storico_indipendente","versione_gluck_verificata",
+       "redazione_o_ouverture_verificata","compositore_opera_rossini","compositore_opera_paisiello",
+       "arrangiamento_non_composizione_originale","versione_di_un_opera","versione_o_completamento_documentato"]
+       .includes(e.quality_gate))continue;
+    }
     visibleEdges.set(e.id,{...e,at_root_depth:Math.max(selected.get(e.source)._depth,selected.get(e.target)._depth),
      root_permission:"federated_existing_endpoints"});
    }
