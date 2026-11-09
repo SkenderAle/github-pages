@@ -1,0 +1,152 @@
+/* Musurgia Atlantis — read-only federation / Checkpoint 12.
+ * ORIGINAL SOURCE DATA STAYS IN ITS EXISTING REPOSITORY FILES.
+ * This adapter never modifies production datasets and never certifies identity.
+ */
+(function(){
+"use strict";
+const otherGen=new Set(["madrigale","opera-buffa","opera-seria","opera-semiseria","dramma-giocoso"]);
+const isGenre=id=>/^(genere-|forma-)/.test(id)||otherGen.has(id);
+const fieldUrls=e=>(Array.isArray(e.evidence_urls)?e.evidence_urls:Array.isArray(e.sources)?e.sources:[]).filter(u=>typeof u==="string"&&/^https:\/\//.test(u));
+const nodeCategory=n=>{
+ if(n.type==="compositore"||n.type==="persona")return "persona";
+ if(n.type==="geografia")return "luogo";
+ if(isGenre(n.id))return "genere-forma";
+ if(n.type==="periodo")return "epoca";
+ if(n.type==="ambito")return "ambito";
+ return n.type==="corrente"?"nodo-di-senso":"altra-categoria-legacy";
+};
+function createFederation({atlantis,legacy,relations,extension,identityAudit,workAudit,rootedExplorer}){
+ if(!atlantis||!legacy||!relations||!extension||!identityAudit||!workAudit||typeof rootedExplorer!=="function")throw Error("Missing federation inputs");
+ const nodes=new Map(),edges=[],incident=new Map(),atlasEdges=new Map();
+ const addNode=n=>{if(nodes.has(n.id))throw Error("duplicate federated node ID "+n.id);nodes.set(n.id,n)};
+ for(const n of atlantis.nodes)addNode({...n,provenance:"atlantis",origin_id:n.id});
+ const baseIds=new Set(legacy.nodes.map(n=>n.id));
+ const extAdds=extension.nodes.filter(n=>!baseIds.has(n.id)),variants=extension.nodes.filter(n=>baseIds.has(n.id));
+ for(const n of [...legacy.nodes,...extAdds])
+  addNode({...n,id:"mm:"+n.id,name:n.label||n.name||n.id,category:nodeCategory(n),
+   subtype:n.subtype||(n.type==="compositore"?"compositore":""),
+   provenance:baseIds.has(n.id)?"musurgia_mundi_base":"musurgia_mundi_extension",origin_id:n.id,
+   description:n.description||n.desc||null});
+ const addEdge=(e,prefix,i,provenance,source,target)=>{
+  const id=prefix+i;
+  if(!nodes.has(source)||!nodes.has(target))throw Error("Missing endpoint "+id);
+  const item={...e,id,source,target,original_id:e.id||null,original_source:e.source,
+   original_target:e.target,provenance,statement_type:provenance==="atlantis"?"atlantis_original":"legacy_original",
+   historical_verified_independently:provenance==="atlantis"?e.historical_verified_independently===true:false,
+   evidence_urls:fieldUrls(e),root_permission:"federated_original_only",
+   provenance_note:provenance==="atlantis"?"Original Atlantis":
+    "Relazione originale Musurgia Mundi; integrazione storica non ancora certificata"};
+  edges.push(item);
+  for(const k of [source,target]){if(!incident.has(k))incident.set(k,[]);incident.get(k).push(item)}
+ };
+ for(const [i,e]of atlantis.links.entries()){atlasEdges.set(e.id,e);addEdge(e,"fd:a:",i,"atlantis",e.source,e.target)}
+ for(const [i,e]of legacy.edges.entries())addEdge(e,"fd:mb:",i,"musurgia_mundi_base","mm:"+e.source,"mm:"+e.target);
+ for(const [i,e]of relations.relations.entries())addEdge(e,"fd:mr:",i,"musurgia_mundi_specialist","mm:"+e.source,"mm:"+e.target);
+ for(const [i,e]of extension.relations.entries())addEdge(e,"fd:mx:",i,"musurgia_mundi_extension","mm:"+e.source,"mm:"+e.target);
+ const pairs=(identityAudit.pairs||[]).map(x=>({...x,original_legacy_id:"mm:"+x.source_id,provisional_identity:true}));
+ const legacyToAtlantis=new Map(),atlasToLegacy=new Map();
+ for(const x of pairs){
+  if(!nodes.has(x.original_legacy_id)||!nodes.has(x.target_id))continue;
+  // Explicit identity-audit pairs are NEVER production record mergers.
+  if(!legacyToAtlantis.has(x.original_legacy_id))legacyToAtlantis.set(x.original_legacy_id,x.target_id);
+  if(!atlasToLegacy.has(x.target_id))atlasToLegacy.set(x.target_id,[]);
+  atlasToLegacy.get(x.target_id).push(x.original_legacy_id);
+ }
+ const certifiedExplorer=rootedExplorer(atlantis);
+ const candidates=[];
+ for(const w of workAudit.work_candidates||[]){
+  const support=w.supporting_atlantis_edge_ids.map(id=>atlasEdges.get(id));
+  if(!nodes.has(w.work_id)||!nodes.has(w.genre_legacy_id)||support.some(x=>!x))
+   throw Error("Unresolved staged work classification "+w.work_id);
+  candidates.push({...w,id:"fd:proposal:work-genre:"+w.work_id,
+   source:w.work_id,target:w.genre_legacy_id,category:"preview_classification",
+   relation:w.relationship,forward:"appartiene a",reverse:"comprende l'opera",note:w.fact,
+   evidence_urls:[...new Set(support.flatMap(fieldUrls))],
+   historical_verified_independently:false,provenance:"editorial_audit_candidate",
+   statement_type:"derived_classification_preview",root_permission:"classification_proposed_not_certified",
+   supporting_edges:w.supporting_atlantis_edge_ids});
+ }
+ const candidateByWork=new Map(candidates.map(x=>[x.source,x]));
+ const totals={nodes:nodes.size,original_edges:edges.length,preview_classification_candidates:candidates.length,
+  atlantis_nodes:atlantis.nodes.length,atlantis_edges:atlantis.links.length,
+  legacy_base_nodes:legacy.nodes.length,legacy_extension_new_nodes:extAdds.length,legacy_variants:variants.length,
+  base_edges:legacy.edges.length,specialist_edges:relations.relations.length,extension_edges:extension.relations.length,
+  identity_pairs:pairs.length};
+ if(totals.nodes!==1637||totals.original_edges!==5574)
+  throw Error("Unexpected source totals: "+JSON.stringify(totals));
+ // Views use projected IDs for alias candidates, but raw nodes and original edges remain unchanged.
+ function view(root,options={}){
+  if(!nodes.has(root))throw Error("Root not in federation "+root);
+  const maxDepth=options.maxDepth??5,relevance=options.relevance??2;
+  const depthByCategory=options.depthByCategory||{};
+  const selected=new Map(),visibleEdges=new Map();
+  const takeNode=(id,depth,path,details)=>{
+   const n=nodes.get(id);if(!n)return false;
+   if(depth>maxDepth||depth>(depthByCategory[n.category]??maxDepth))return false;
+   if(!selected.has(id))selected.set(id,{...n,_depth:depth,_path:path,_permission:details});
+   return true;
+  };
+  takeNode(root,0,[root],"root");
+  const takeEdge=(e,src,dst,depth,details)=>{
+   const other=dst===root?src:dst;
+   if(!takeNode(other,depth,[root,other],details))return;
+   visibleEdges.set(e.id,{...e,source:src,target:dst,at_root_depth:depth,root_permission:details,
+    projected_source:src!==e.source||dst!==e.target,provisional_identity_projection:src!==e.source||dst!==e.target});
+  };
+  if(!root.startsWith("mm:")){
+   if(root.startsWith("pers:")||root.startsWith("opera:")||root.startsWith("senso:")){
+    const core=certifiedExplorer.explore(root,{maxDepth,relevance,depthByCategory});
+    for(const n of core.nodes)if(n.id!==root)selected.set(n.id,n);
+    for(const e of core.links)visibleEdges.set(e.id,e);
+   }
+  }
+  if(maxDepth>=1){
+   const alias=[root,...(atlasToLegacy.get(root)||[])];
+   for(const legacyRoot of alias){
+    for(const e of incident.get(legacyRoot)||[]){
+     // When viewing a person from Atlantis, use a provisional *visual* alias,
+     // with original IDs preserved. No source node is deleted or changed.
+     const src=e.source===legacyRoot?root:e.source;
+     const dst=e.target===legacyRoot?root:e.target;
+     const other=src===root?dst:src;
+     const sourceNode=nodes.get(other);
+     if(!sourceNode||sourceNode.category==="capitolo")continue;
+     takeEdge(e,src,dst,1,e.provenance==="atlantis"?"original_direct":"legacy_direct");
+    }
+   }
+  }
+  // Genre roots may preview the already catalogued composers without
+  // expanding into their unrelated works. Candidate identity mapping is display-only.
+  if(root.startsWith("mm:")&&maxDepth>=1){
+   for(const e of incident.get(root)||[]){
+    let src=e.source===root?root:(legacyToAtlantis.get(e.source)||e.source);
+    let dst=e.target===root?root:(legacyToAtlantis.get(e.target)||e.target);
+    if(src===dst)continue;
+    takeEdge(e,src,dst,1,"legacy_direct_from_genre");
+   }
+  }
+  const workIds=[...selected.values()].filter(n=>n.category==="opera"&&n.id.startsWith("opera:"))
+   .map(n=>({id:n.id,depth:n._depth}));
+  for(const w of workIds){
+   const c=candidateByWork.get(w.id);
+   if(!c||w.depth+1>maxDepth)continue;
+   const target=nodes.get(c.target);
+   if(!target||(w.depth+1)>(depthByCategory[target.category]??maxDepth))continue;
+   if(!selected.has(target.id))selected.set(target.id,{...target,_depth:w.depth+1,
+    _path:[root,...(w.id===root?[]:[w.id]),target.id],_permission:"preview_work_genre_classification"});
+   visibleEdges.set(c.id,{...c,at_root_depth:w.depth+1,root_permission:"preview_work_genre_classification"});
+  }
+  return {root,nodes:[...selected.values()],links:[...visibleEdges.values()],
+   source_totals:totals,notes:"Full source federation, projected identities provisional, work classification proposals isolated."};
+ }
+ function describe(edge,anchor){
+  const forward=edge.source===anchor;
+  return {phrase:forward?(edge.forward||null):(edge.reverse||null),
+   description:edge.description||edge.note||null, note:edge.note||null,
+   evidence_urls:fieldUrls(edge),provenance:edge.provenance||"atlantis",
+   relation:edge.relation||edge.kind||null,original_id:edge.original_id||null};
+ }
+ return {view,describe,totals,nodes,edges,candidates,crosswalk:pairs,lookup:id=>nodes.get(id)};
+}
+window.MusurgiaFederator={createFederation};
+})();
