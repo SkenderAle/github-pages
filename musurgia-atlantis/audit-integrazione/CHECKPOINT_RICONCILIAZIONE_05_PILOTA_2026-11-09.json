@@ -1,0 +1,66 @@
+{
+  "schema": "musurgia-atlantis-checkpoint05-rooted-traversal-pilot-v1",
+  "date": "2026-11-09",
+  "branch": "main",
+  "publication_scope": "audit-integrazione only; public production unchanged",
+  "execution_environment": "Connected GitHub full Atlantis blob parsed and V8 algorithm executed, NOT Node --live or browser",
+  "real_input": {
+    "path": "musurgia-atlantis/grafo.json",
+    "sha": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "nodes": 754,
+    "links": 1718,
+    "historically_independently_verified_links": 586
+  },
+  "tested": {
+    "assertions": 18,
+    "passed": 18,
+    "failed": 0,
+    "mozart": {
+      "selected_nodes": 15,
+      "selected_edges": 18,
+      "direct_verified_edges": 8,
+      "max_depth_reached": 2,
+      "figaro_id": "opera:figaro",
+      "da_ponte_id": "pers:da-ponte",
+      "da_ponte_depth": 2
+    },
+    "messiaen": {
+      "level1_edges": 4,
+      "teaching_edge": "L180-A01"
+    }
+  },
+  "data_policies": {
+    "editorial_chapters": "strict exclusion even if misflagged verified",
+    "context_nodes": "may appear directly but are not automatic transit hubs",
+    "automatic_depth2": "only shared specific work/event with independently verified edges",
+    "automatic_depth3_to5": "requires explicit individually-reviewed root witness",
+    "multiple_predicates": "preserve each edge by ID and forward/reverse",
+    "pivot": "new explicit root, not implicit traversal",
+    "legacy_edges": "still closed pending per-edge independent review"
+  },
+  "fixture": {
+    "kind": "synthetic, non-historical",
+    "covers": [
+      "Leopold as father and teacher",
+      "Leopold court and violin treatise do not propagate from Wolfgang",
+      "context period does not become transitive hub",
+      "Mozart-Figaro-Da Ponte",
+      "Messiaen-Boulez teaching and commissioning remain distinct",
+      "explicit pivot",
+      "per-type depth controls",
+      "root-specific witness for depth3"
+    ],
+    "historical_certification": false
+  },
+  "limits": [
+    "No execution under Node on cloned repository yet",
+    "No prepare/byId implementation integration",
+    "No actual hover/tap desktop Android UI checks",
+    "Actual legacy 3856 relations remain unmerged and separately gated",
+    "No evidence that all source edges are historically sound"
+  ],
+  "artifacts": [
+    "ROOTED_RELEVANCE_CHECKPOINT05.cjs",
+    "TEST_ROOTED_RELEVANCE_CHECKPOINT05.cjs"
+  ]
+}
