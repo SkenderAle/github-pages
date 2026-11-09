@@ -94,7 +94,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
  <details id="categoryPicker" open>
  <summary><span aria-hidden="true">☷</span> Categorie · <strong>Nodi / Etichette</strong><span class="category-expand"> apri/chiudi</span></summary>
  <div id="categoryGrid"></div>
- <p id="categoryHint"><b>Nodi:</b> visualizza la categoria nella rete corrente. <b>Etichette:</b> mantiene visibili tutti i nomi della categoria presente nella rete, anche dietro la nebulosa (possono sovrapporsi). I ponti necessari restano attenuati; i capitoli editoriali non sono percorsi storici.</p>
+ <p id="categoryHint">I numeri indicano <b>nodi nella vista / nodi nel catalogo</b>. La posizione nello spazio non determina la categoria. <b>Nodi:</b> visualizza la categoria nella rete corrente. <b>Etichette:</b> mantiene visibili tutti i nomi della categoria presente nella rete, anche dietro la nebulosa (possono sovrapporsi). I ponti necessari restano attenuati; i capitoli editoriali non sono percorsi storici.</p>
 </details>
  <div id="zoomDock" aria-label="Controlli d'ingrandimento">
   <button type="button" id="zoomIn" title="Ingrandisci la nebulosa" aria-label="Ingrandisci">
@@ -115,7 +115,7 @@ const rootLib=window.MusurgiaRooted;
 let dataset,engine,renderer,currentRoot="pers:mozart",candidate=null,last;
 const typeNames={persona:"Persone",opera:"Opere","versione-opera":"Versioni d'opera","parte-di-opera":"Parti di opere",allestimento:"Allestimenti",produzione:"Produzioni","nodo-di-senso":"Nodi di senso",luogo:"Luoghi",strumento:"Strumenti","rete-culturale":"Reti culturali","evento-storico":"Eventi storici","documento-storico":"Documenti storici",documento:"Altri documenti",capitolo:"Capitoli (editoriali)"};
 const categoryColors={persona:"#b1a2ec",opera:"#e9a092","versione-opera":"#eaa4a0","parte-di-opera":"#dc999b",allestimento:"#e4b8a0",produzione:"#d7ac90","nodo-di-senso":"#71d5c5",luogo:"#83bceb",strumento:"#c5d885","rete-culturale":"#85bdb3","evento-storico":"#f2c583","documento-storico":"#c2b1d9",documento:"#a1c4c9",capitolo:"#eec482"};
-const shownCategories=new Set(),permanentLabelCategories=new Set();
+const shownCategories=new Set(),permanentLabelCategories=new Set(),categoryDisplays=new Map();
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
 function say(s){$("status").textContent=s}
 function makeEl(tag,text,cls){const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e}
@@ -187,8 +187,26 @@ function render({fit=false}={}){
  const ids=new Set(nodes.map(n=>n.id));
  const links=full.links.filter(e=>ids.has(e.source)&&ids.has(e.target));
  last={...full,nodes,links};
- engine.graphData({nodes,links:links.map(e=>({...e}))});
+ // Switching just labels must not rotate/re-layout the entire nebula.
+ const previous=engine.graphData(),nodeMap=new Map(nodes.map(n=>[n.id,n]));
+ const linkMap=new Map(links.map(e=>[e.id,e]));
+ const sameTopology=previous&&previous.nodes.length===nodes.length&&previous.links.length===links.length&&
+   previous.nodes.some(n=>n.id===currentRoot&&n._focus)&&
+   previous.nodes.every(n=>nodeMap.has(n.id))&&previous.links.every(e=>linkMap.has(e.id));
+ if(sameTopology){
+  for(const node of previous.nodes){
+   const fresh=nodeMap.get(node.id);
+   Object.assign(node,{_focus:fresh._focus,_depth:fresh._depth,_path:fresh._path,
+     _label:fresh._label,_forceLabel:fresh._forceLabel,_bridge:fresh._bridge});
+  }
+  for(const edge of previous.links)Object.assign(edge,linkMap.get(edge.id));
+ }else engine.graphData({nodes,links:links.map(e=>({...e}))});
  if(fit)engine.zoomToFit();
+ const viewCounts=new Map();
+ for(const n of nodes)viewCounts.set(n.category,(viewCounts.get(n.category)||0)+1);
+ for(const [cat,entry]of categoryDisplays){
+  entry.name.textContent=entry.label+" ("+(viewCounts.get(cat)||0)+"/"+entry.total+")";
+ }
  const x=nodes.filter(n=>n._depth===1).length;
  const exploratory=links.filter(e=>e.statement_type==="exploration").length;
  $("stats").textContent=nodes.length+" nodi · "+links.length+" archi · "+x+" vicini diretti"+(exploratory?" · "+exploratory+" collegamenti esplorativi":"");
@@ -207,14 +225,17 @@ function zoomBy(factor){
  say("Ingrandimento: "+Math.round(next*100)+"% · doppio clic/tocco solo per cambiare centro");
 }
 function buildCategoryPicker(){
- const grid=$("categoryGrid");grid.replaceChildren();
+ const grid=$("categoryGrid");grid.replaceChildren();categoryDisplays.clear();
  const counts=new Map();
  for(const n of dataset.nodes)counts.set(n.category,(counts.get(n.category)||0)+1);
  for(const heading of ["Categoria","Nodi","Etichette"])grid.append(makeEl("div",heading,"category-heading"));
  for(const [key,count] of [...counts].sort((a,b)=>(typeNames[a[0]]||a[0]).localeCompare(typeNames[b[0]]||b[0],"it"))){
   const editorial=key==="capitolo";
   const categoryName=typeNames[key]||key;
-  const name=makeEl("span",categoryName+" ("+count+")","category-name");
+  const name=makeEl("span",categoryName+" (0/"+count+")","category-name");
+  name.style.borderLeft="3px solid "+(categoryColors[key]||"#b9cbd0");
+  name.style.paddingLeft="6px";
+  categoryDisplays.set(key,{name,label:categoryName,total:count});
   if(editorial)name.className+=" disabled";
   const visibilityCell=makeEl("label");
   const visibility=document.createElement("input");visibility.type="checkbox";visibility.checked=!editorial;visibility.disabled=editorial;
