@@ -271,7 +271,84 @@ function attachFederatedPeople(result,maxDepth,depths){
  }
  return result;
 }
+// Checkpoint 19 — work-attested Mozart taxonomy, with rooted relevance.
+let mozartTaxonomy={nodes:[],links:[]},mozartTaxonomyNodes=new Map();
+function prepareMozartTaxonomy(overlay){
+ if(overlay?.schema!=="musurgia-atlantis-mozart-work-taxonomy-v1"||!Array.isArray(overlay.nodes)||!Array.isArray(overlay.links))
+  throw Error("Classificazione tassonomica Mozart non valida");
+ const oldIds=new Set(dataset.nodes.map(n=>n.id));
+ if(overlay.nodes.some(n=>oldIds.has(n.id)))throw Error("Termine Mozart già presente: duplicazione");
+ const all=new Set([...oldIds,...overlay.nodes.map(n=>n.id)]);
+ if(overlay.links.some(e=>!all.has(e.source)||!all.has(e.target)))throw Error("Relazione Mozart con estremo assente");
+ mozartTaxonomy=overlay;mozartTaxonomyNodes=new Map(overlay.nodes.map(n=>[n.id,n]));
+}
+function attachMozartTaxonomy(result,maxDepth,relevance,depths){
+ if(maxDepth<1||!mozartTaxonomy.links.length)return result;
+ const visible=new Map(result.nodes.map(n=>[n.id,n])),available=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const oldLinks=new Set(result.links.map(e=>e.id)),workLimit=depths.opera??maxDepth,genreLimit=depths["genere-forma"]??maxDepth;
+ const specific=new Set(["ha_sottogenere","ha_genere"]);
+ const parent=new Set(["sottogenere_di","tradizione_teatrale_riconducibile_a"]);
+ const workIds=new Set(mozartTaxonomy.existing_works);
+ const rootIsMozart=currentRoot===mozartTaxonomy.existing_person;
+ const rootIsWork=workIds.has(currentRoot);
+ const rootIsGenre=mozartTaxonomy.links.some(e=>e.target===currentRoot||e.source===currentRoot)&&!rootIsMozart&&!rootIsWork;
+ // Other composers cannot inherit Mozart's works merely through Opera or
+ // Dramma giocoso; only a Mozart root, his own works or explicit genre query.
+ if(!rootIsMozart&&!rootIsWork&&!rootIsGenre)return result;
+ function addNode(id,depth,from){
+  if(visible.has(id))return visible.get(id);
+  const n=available.get(id);if(!n||depth>maxDepth||depth>(n.category==="genere-forma"?genreLimit:n.category==="opera"?workLimit:(depths.persona??maxDepth)))return null;
+  const old=visible.get(from);
+  const node={...n,_depth:depth,_path:[...(old?._path||[currentRoot]),id],_permission:"specific_work_taxonomy"};
+  result.nodes.push(node);visible.set(id,node);return node;
+ }
+ function addLink(e){
+  if(!visible.has(e.source)||!visible.has(e.target)||oldLinks.has(e.id))return;
+  if(result.links.some(x=>x.source===e.source&&x.target===e.target&&x.relation===e.relation))return;
+  result.links.push({...e});oldLinks.add(e.id);
+ }
+ // When Mozart is the focus, every admitted work-to-genre edge is evaluated
+ // ONLY if the concrete Mozart work itself is visible. This closes the cycle
+ // Mozart—Don Giovanni—Dramma giocoso—Opera—Mozart without importing peers.
+ // For a work root, show its documented genre at depth one.
+ for(const e of mozartTaxonomy.links.filter(x=>specific.has(x.relation))){
+  if(rootIsWork&&e.source===currentRoot)addNode(e.target,1,e.source);
+  else if(rootIsGenre&&e.target===currentRoot)addNode(e.source,1,e.target);
+  else if(rootIsMozart&&visible.has(e.source)){
+   const work=visible.get(e.source);
+   if(!visible.has(e.target))addNode(e.target,(work._depth??0)+1,e.source);
+  }
+  addLink(e);
+ }
+ // Historical taxonomy parents (including the explicitly PROVISIONAL macro-
+ // category Opera comica italiana) require relevance>=2. This has no right
+ // to traverse across composers. Do not synthesize genre→composer edges.
+ if(relevance>=2){
+  for(const e of mozartTaxonomy.links.filter(x=>parent.has(x.relation))){
+   if(rootIsGenre&&e.target===currentRoot)addNode(e.source,1,e.target);
+   if(rootIsGenre&&e.source===currentRoot)addNode(e.target,1,e.source);
+   const child=visible.get(e.source);
+   if(child&&!visible.has(e.target))addNode(e.target,(child._depth??0)+1,e.source);
+   // The general Opera node may already be at depth one. Its endpoint may
+   // be joined to a parent-taxonomy class without changing depth.
+   addLink(e);
+  }
+  // One additional pass is needed when the parent of Dramma giocoso is
+  // inserted after Dramma was already on screen.
+  for(const e of mozartTaxonomy.links.filter(x=>parent.has(x.relation))){
+   const child=visible.get(e.source);
+   if(child&&!visible.has(e.target))addNode(e.target,(child._depth??0)+1,e.source);
+   addLink(e);
+  }
+ }
+ return result;
+}
 function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(mozartTaxonomyNodes.has(currentRoot)){
+  const root={...mozartTaxonomyNodes.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_taxonomy_term"};
+  return attachMozartTaxonomy({root:currentRoot,nodes:[root],links:[]},maxDepth,relevance,depthByCategory);
+ }
+
  if(federatedPeopleByNode.has(currentRoot)){
   const root={...federatedPeopleByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_federated_person"};
   return attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
@@ -294,7 +371,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -307,7 +384,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -475,14 +552,15 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
    fetch("./OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT17_2026-11-09.json?v=checkpoint17",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Overlay opere Flaminio mancante "+r.status);return r.json()}),
-   fetch("./OVERLAY_PERSONE_FEDERATE_CHECKPOINT18_2026-11-09.json?v=checkpoint18",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Relazioni persone federate mancanti "+r.status);return r.json()})
+   fetch("./OVERLAY_PERSONE_FEDERATE_CHECKPOINT18_2026-11-09.json?v=checkpoint18",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Relazioni persone federate mancanti "+r.status);return r.json()}),
+   fetch("./OVERLAY_TASSONOMIA_MOZART_CHECKPOINT19_2026-11-09.json?v=checkpoint19",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Tassonomia delle opere Mozart mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -490,6 +568,9 @@ async function init(){
  prepareFederatedPeople(federatedRelations);
  dataset.nodes.push(...federatedPeople.nodes);
  dataset.links.push(...federatedPeople.links);
+ prepareMozartTaxonomy(mozartTaxonomyInput);
+ dataset.nodes.push(...mozartTaxonomy.nodes);
+ dataset.links.push(...mozartTaxonomy.links);
  prepareFlaminioPreview(flaminioWorks);
  dataset.nodes.push(...flaminioPreview.nodes);
  dataset.links.push(...flaminioPreview.links);
@@ -498,7 +579,7 @@ async function init(){
  buildCategoryPicker();
  engine=window.AtlantisAuditCompatGraph($("graph"))
   .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
-  .linkColor(e=>e.statement_type==="federated_person_relation"?"#acb7ef":e.statement_type==="work_genre_verified"||e.statement_type==="catalogue_work_genre"?"#ffd37a":e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
+  .linkColor(e=>e.statement_type==="taxonomy_work_classification"?"#ffbe6b":e.statement_type==="federated_person_relation"?"#acb7ef":e.statement_type==="work_genre_verified"||e.statement_type==="catalogue_work_genre"?"#ffd37a":e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
   .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
   .onNodeClick(n=>selected(n.id))
   .onNodeDoubleClick(n=>setRoot(n.id,{fit:false}))
