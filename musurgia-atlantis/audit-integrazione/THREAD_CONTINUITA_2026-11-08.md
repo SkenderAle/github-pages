@@ -1218,3 +1218,17 @@ L'utente chiede prosecuzione dopo Lotto 10, mantenendo priorità alla **classifi
 - **9/9 controlli readback e integrità PASS**; tutti originali `forward/reverse`, note, fonti e ID conservati. Nessuna interfaccia browser/Android collaudata.
 - **Prossima ripresa Checkpoint24 Lotto02:** proseguire i **221** archi del pool 233 fra identità già convalidate, privilegiando insegnamenti biografici e ricezioni mediate da composizioni; confrontare Gabrieli/Schütz con gli archi Atlantis ed evitare duplicati semantici. Restano poi 554 archi con identità candidate e 2 senza URL.
 - Nessun JSON o GUI di produzione modificati, nessuna fusione, **210 lotti storico-filologici** intatti.
+
+
+### Checkpoint 24 — Lotto 02 completato; Lotto 03 ampliato a 50 relazioni (10 novembre 2026)
+
+**Lotto02 già effettuato:** `CONVALIDA_ARCHI_FASE24_LOTTO02_2026-11-10.json` (commit `17f94eb5ca8ac6d3d9e92321fc3a6bad318979b9`) e `AUDIT_CHECKPOINT24_LOTTO02_2026-11-10.md` (commit `d46945e9bc2fdb2a1eb7f964316e2f9851ec7731`). 12 nuovi archi del pool 233, con riscontri esterni del nucleo storico e due cautele (Berg/Schönberg 1904–1910 vs 1904–1911; Liszt primo ascolto Paganini 1832 Morgan contro 1831 legacy). Gabrieli→Schütz compare due volte nei dati Mundi (`fd:mb:412` base e `fd:ms:192` specialistico) ma non è relazione diretta nel grafo Atlantis di 1.718 archi; conservare entrambe le provenienze senza duplicare il fatto, gate d'identità Schütz ancora aperto.
+
+**Nuova disposizione dell'utente: lavorare su lotti di 50 archi alla volta.** Lotto03 di 50 archi, non 12:
+- `CONVALIDA_ARCHI_FASE24_LOTTO03_50_2026-11-10.json`, commit `9e1d1b8ff2f24460e2f148218d646ec0751620c8` — **50** archi esaminati individualmente per estremi, predicato, originali `forward/reverse/note/sources`, modello interpretativo e cautele. **15** rapporti personali/professionali dichiarati, **29** mediate da opere/eventi, **6** compositi. Sono 50 audit dei record, NON 50 certificazioni storiche: **2** casi corroborati in modo mirato da fonti esterne (Debussy orchestratore di due Gymnopédies di Satie; attribuzioni spurie in Pulcinella), **48** ancora da verificare indipendentemente.
+- `AUDIT_CHECKPOINT24_LOTTO03_50_2026-11-10.md`, commit `e4fc8db320bb42648a2101b2d3a0b04a0268c3b5` — verbale e cautele: Tallis/Byrd maestro? Palestrina/Victoria contesto non prova allievo; Alessandro/Domenico Scarlatti parentela non supplisce a prova didattica; WDR Stockhausen/Ligeti non equivale a rapporto di insegnamento; Pulcinella contiene musica di altri compositori; Le Tombeau de Couperin non è mera trascrizione.
+- **10/10 readback/controlli strutturali PASS**, tutti gate di attraversamento **chiusi**. Nessuna modifica ai dati pubblici.
+
+**Stato Checkpoint24:** Lotto01 **12** + Lotto02 **12** + Lotto03 **50** = **74/233** archi esaminati, **159** ancora da prendere in carico in lotti di **50** (ultimo eventuale lotto più piccolo). Non confondere i 74 esaminati con 74 approvati storicamente. Restano fuori da questo pool i 554 archi con almeno una identità da verificare e i due senza URL source.
+
+**Prossima ripresa:** Lotto04 **50** archi, continuando cataloghi di opere mediatrici e rapporti personali; incrementare le convalide storiche indipendenti con fonti autorevoli prima di qualunque merge o UI pubblica. I **210** lotti filologici Atlantis rimangono intatti.
