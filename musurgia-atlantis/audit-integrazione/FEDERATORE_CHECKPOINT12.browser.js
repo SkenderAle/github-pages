@@ -58,7 +58,7 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
   const support=w.supporting_atlantis_edge_ids.map(id=>atlasEdges.get(id));
   if(!nodes.has(w.work_id)||!nodes.has(w.genre_legacy_id)||support.some(x=>!x))
    throw Error("Unresolved staged work classification "+w.work_id);
-  for(const [kind,genreId]of [["broad",w.genre_legacy_id],["specific",w.specific_genre_legacy_id]]){
+  for(const [kind,genreId]of [["broad",w.genre_legacy_id],["specific",w.specific_genre_legacy_id],["alternate",w.alternate_genre_legacy_id]]){
    if(!genreId)continue;
    if(!nodes.has(genreId))throw Error("Unresolved classification target "+genreId);
    candidates.push({...w,id:"fd:proposal:"+kind+":"+w.work_id,
@@ -66,15 +66,31 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
     relation:kind==="specific"?"e_classificata_nella_forma_specfica":w.relationship,
     forward:kind==="specific"?"è classificata come":"appartiene a",
     reverse:kind==="specific"?"comprende l'esempio":"comprende l'opera",
-    note:w.fact,evidence_urls:[...new Set(support.flatMap(fieldUrls))],
+    note:w.fact,evidence_urls:[...new Set([...support.flatMap(fieldUrls),...(w.classification_sources||[])])],
     historical_verified_independently:false,provenance:"editorial_audit_candidate",
     statement_type:"derived_classification_preview",root_permission:"classification_proposed_not_certified",
-    classification_scope:kind,supporting_edges:w.supporting_atlantis_edge_ids});
+    classification_scope:kind,
+    evidence_status:kind==="specific"&&w.classification_context?"attested_historical_genre_designation":"editorial_preview_unconfirmed",
+    classification_context:w.classification_context||null,supporting_edges:w.supporting_atlantis_edge_ids});
   }
+ }
+ // A second, explicitly separate set of PROPOSED taxonomy relations.
+ // These are not copies of original historical arcs and do NOT certify traversal.
+ const taxonomy=[];
+ for(const [i,t]of (workAudit.future_taxonomy_audit||[]).entries()){
+  if(t.preview_visible!==true)continue;
+  if(!nodes.has(t.source)||!nodes.has(t.target))throw Error("Unknown genus taxonomy ID "+i);
+  taxonomy.push({...t,id:"fd:proposal:taxonomy:"+i,relation:t.proposed_relation,
+    original_id:null,forward:"è una forma o tradizione compresa nell'ambito di",
+    reverse:"comprende anche la forma o tradizione di",
+    note:t.reason,description:t.reason,evidence_urls:fieldUrls(t),
+    statement_type:"preview_taxonomy_proposal",provenance:"editorial_audit_candidate",
+    historical_verified_independently:false,root_permission:"taxonomy_proposed_not_certified"});
  }
  const candidateByWork=new Map();
  for(const c of candidates){if(!candidateByWork.has(c.source))candidateByWork.set(c.source,[]);candidateByWork.get(c.source).push(c)}
  const totals={nodes:nodes.size,original_edges:edges.length,preview_classification_candidates:candidates.length,
+  preview_taxonomy_candidates:taxonomy.length,
   atlantis_nodes:atlantis.nodes.length,atlantis_edges:atlantis.links.length,
   legacy_base_nodes:legacy.nodes.length,legacy_extension_new_nodes:extAdds.length,legacy_variants:variants.length,
   base_edges:legacy.edges.length,specialist_edges:relations.relations.length,extension_edges:extension.relations.length,
@@ -134,6 +150,34 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
     visibleEdges.set(c.id,{...c,at_root_depth:w.depth+1,root_permission:"preview_work_genre_classification"});
    }
   }
+  // Complete the visible induced subgraph: display cycles/triangles, do not
+  // mistake a breadth-first traversal tree for the entire set of facts.
+  // Taxonomy links are shown only when both endpoints are already visible.
+  for(const e of taxonomy){
+   if(selected.has(e.source)&&selected.has(e.target)){
+    visibleEdges.set(e.id,{...e,at_root_depth:Math.max(selected.get(e.source)._depth,selected.get(e.target)._depth),
+      root_permission:"taxonomy_display_between_existing_nodes"});
+   }
+  }
+  // If a genre is the root, show its explicitly indexed works as candidates,
+  // but DO NOT expand to all composers via those works.
+  for(const c of candidates){
+   if(c.target!==root||selected.has(c.source)||maxDepth<1)continue;
+   const work=nodes.get(c.source);
+   if(!work||1>(depthByCategory[work.category]??maxDepth))continue;
+   selected.set(work.id,{...work,_depth:1,_path:[root,work.id],_permission:"preview_reverse_work_classification"});
+   visibleEdges.set(c.id,{...c,at_root_depth:1,root_permission:"preview_reverse_work_classification"});
+  }
+  // Other pre-existing provenance-preserving edges between visible endpoints
+  // are still retained, but we never create transitive historical assertions.
+  for(const e of edges){
+   if(selected.has(e.source)&&selected.has(e.target)&&!visibleEdges.has(e.id)){
+    if(e.provenance==="atlantis"&&e.statement_type==="legacy_original")continue;
+    if(e.source.startsWith("cap:")||e.target.startsWith("cap:"))continue;
+    visibleEdges.set(e.id,{...e,at_root_depth:Math.max(selected.get(e.source)._depth,selected.get(e.target)._depth),
+     root_permission:"federated_existing_endpoints"});
+   }
+  }
   return {root,nodes:[...selected.values()],links:[...visibleEdges.values()],
    source_totals:totals,notes:"Full source federation, projected identities provisional, work classification proposals isolated."};
  }
@@ -144,7 +188,7 @@ function createFederation({atlantis,legacy,relations,extension,identityAudit,wor
    evidence_urls:fieldUrls(edge),provenance:edge.provenance||"atlantis",
    relation:edge.relation||edge.kind||null,original_id:edge.original_id||null};
  }
- return {view,describe,totals,nodes,edges,candidates,crosswalk:pairs,lookup:id=>nodes.get(id)};
+ return {view,describe,totals,nodes,edges,candidates,taxonomy,crosswalk:pairs,lookup:id=>nodes.get(id)};
 }
 window.MusurgiaFederator={createFederation};
 })();
