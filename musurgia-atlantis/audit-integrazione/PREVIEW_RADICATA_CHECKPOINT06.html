@@ -15,7 +15,6 @@ aside{padding:16px;background:var(--pane);border-right:1px solid var(--line);ove
 #zoomDock button{display:grid;place-items:center;width:48px;height:48px;padding:8px;border-radius:50%;background:#123746ed;color:#f1dba6;border:1px solid #a9bdba;box-shadow:0 3px 15px #0008;touch-action:manipulation}
 #zoomDock button:hover,#zoomDock button:focus-visible{background:#235566}
 #zoomDock svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
-#hoverLabel{display:none;position:absolute;z-index:10;pointer-events:none;max-width:min(320px,80%);padding:6px 10px;border:1px solid #a9c9c6;border-radius:8px;background:#06202bea;color:#f8e9c0;font-weight:600;box-shadow:0 4px 16px #0009}
 label{display:block;font-size:12px;color:#d9e7e5;margin:12px 0 5px}
 input,select,button{font:inherit;border-radius:8px;padding:9px 10px;border:1px solid #527182;background:#071823;color:#eff9f5}
 input,select{width:100%}input[type=range]{padding:0;accent-color:var(--gold)}
@@ -40,10 +39,13 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 .note{font-size:11px;line-height:1.5;color:#b4c7ca;border-top:1px solid var(--line)}
 #categoryPicker{margin:12px 0 8px;padding:8px 0;border-top:1px solid var(--line)}
 #categoryPicker summary{cursor:pointer;font-weight:600;color:#eed4ab}
-#categoryGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px 8px;margin-top:11px}
-#categoryGrid label{display:flex;align-items:flex-start;gap:7px;margin:0;line-height:1.3;font-size:11px}
-#categoryGrid input{width:auto;flex:0 0 auto;margin-top:2px;accent-color:#eac27e}
-#categoryGrid label.disabled{opacity:.53}
+#categoryGrid{display:grid;grid-template-columns:minmax(0,1fr) 51px 67px;gap:6px 8px;align-items:center;margin-top:11px}
+#categoryGrid .category-heading{font-size:11px;color:#d5c4a5;font-weight:700}
+#categoryGrid .category-heading:not(:first-child){text-align:center}
+#categoryGrid .category-name{min-width:0;overflow-wrap:anywhere;font-size:12px}
+#categoryGrid label{display:flex;align-items:center;justify-content:center;margin:0;padding:4px;min-height:26px}
+#categoryGrid input{width:17px;height:17px;accent-color:#eac27e}
+#categoryGrid .disabled{opacity:.55}
 #categoryHint{color:var(--muted);font-size:11px;line-height:1.5;margin:8px 0 0}
 #selected .node-url{font-size:12px;display:inline-block;overflow-wrap:anywhere;color:#a4dfee;margin:5px 0}
 #selected .note-excerpt{background:#102d39;padding:7px;border-left:2px solid #8bbbc5}
@@ -72,7 +74,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <details id="categoryPicker" open>
  <summary>Categorie presenti nel grafo di Atlantis</summary>
  <div id="categoryGrid"></div>
- <p id="categoryHint">Le categorie disattivate non vengono mostrate, salvo i nodi indispensabili come ponte verso quelli rimasti visibili. I capitoli sono risorse editoriali e non possono essere attraversati.</p>
+ <p id="categoryHint"><b>Nodi:</b> visualizza la categoria nella rete corrente. <b>Etichette:</b> mantiene visibili tutti i nomi della categoria presente nella rete, anche dietro la nebulosa (possono sovrapporsi). I ponti necessari restano attenuati; i capitoli editoriali non sono percorsi storici.</p>
 </details>
 <div id="stats">Lettura dei dati…</div><p id="sourceState"></p><div id="status" role="status"></div>
 <section id="selected"><div id="nodeInfo"><h2>Seleziona un nodo</h2><p>Clic: note e fonti. Doppio clic: il nodo diventa il centro, senza aumentare lo zoom.</p></div>
@@ -81,7 +83,6 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <p class="note">Desktop: passaggio del mouse = etichetta; clic = note e fonti; doppio clic = nuova radice senza zoom. Android: primo tocco = note; secondo tocco sullo stesso nodo = nuova radice. Per ingrandire e rimpicciolire usa le lenti + e − (oppure due dita sul grafo). I dati legacy di Musurgia Mundi non sono ancora fusi in questa anteprima. Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
 </aside>
 <div id="graph" aria-label="Grafo 3D radicato: clic per le note, doppio clic per centrare">
- <div id="hoverLabel" role="status" aria-live="off"></div>
  <div id="zoomDock" aria-label="Controlli d'ingrandimento">
   <button type="button" id="zoomIn" title="Ingrandisci la nebulosa" aria-label="Ingrandisci">
    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.3" cy="10.3" r="6.6"/><path d="m15.4 15.4 5.1 5.1M10.3 7.4v5.8M7.4 10.3h5.8"/></svg>
@@ -92,7 +93,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
  </div>
 </div>
 </main>
-<script src="./compat-graph-checkpoint08.js?v=gesti-08-20261109"></script>
+<script src="./compat-graph-checkpoint08.js?v=etichette-09-20261109"></script>
 <script src="./ROOTED_RELEVANCE_CHECKPOINT06.browser.js?v=pertinenza-07-20261109"></script>
 <script>
 "use strict";
@@ -101,7 +102,7 @@ const rootLib=window.MusurgiaRooted;
 let dataset,engine,renderer,currentRoot="pers:mozart",candidate=null,last;
 const typeNames={persona:"Persone",opera:"Opere","versione-opera":"Versioni d'opera","parte-di-opera":"Parti di opere",allestimento:"Allestimenti",produzione:"Produzioni","nodo-di-senso":"Nodi di senso",luogo:"Luoghi",strumento:"Strumenti","rete-culturale":"Reti culturali","evento-storico":"Eventi storici","documento-storico":"Documenti storici",documento:"Altri documenti",capitolo:"Capitoli (editoriali)"};
 const categoryColors={persona:"#b1a2ec",opera:"#e9a092","versione-opera":"#eaa4a0","parte-di-opera":"#dc999b",allestimento:"#e4b8a0",produzione:"#d7ac90","nodo-di-senso":"#71d5c5",luogo:"#83bceb",strumento:"#c5d885","rete-culturale":"#85bdb3","evento-storico":"#f2c583","documento-storico":"#c2b1d9",documento:"#a1c4c9",capitolo:"#eec482"};
-const shownCategories=new Set();
+const shownCategories=new Set(),permanentLabelCategories=new Set();
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
 function say(s){$("status").textContent=s}
 function makeEl(tag,text,cls){const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e}
@@ -168,6 +169,7 @@ function render({fit=false}={}){
    for(const id of n._path||[n.id])desired.add(id);
  const nodes=full.nodes.filter(n=>desired.has(n.id)).map(n=>({...n,_focus:n.id===currentRoot,
    _bridge:n.id!==currentRoot&&!shownCategories.has(n.category),
+   _forceLabel:shownCategories.has(n.category)&&permanentLabelCategories.has(n.category),
    _label:n.id===currentRoot||(n._depth===1&&shownCategories.has(n.category))}));
  const ids=new Set(nodes.map(n=>n.id));
  const links=full.links.filter(e=>ids.has(e.source)&&ids.has(e.target));
@@ -195,14 +197,37 @@ function buildCategoryPicker(){
  const grid=$("categoryGrid");grid.replaceChildren();
  const counts=new Map();
  for(const n of dataset.nodes)counts.set(n.category,(counts.get(n.category)||0)+1);
+ for(const heading of ["Categoria","Nodi","Etichette"])grid.append(makeEl("div",heading,"category-heading"));
  for(const [key,count] of [...counts].sort((a,b)=>(typeNames[a[0]]||a[0]).localeCompare(typeNames[b[0]]||b[0],"it"))){
-  const item=makeEl("label");
-  const toggle=document.createElement("input");toggle.type="checkbox";toggle.checked=key!=="capitolo";
-  toggle.disabled=key==="capitolo";toggle.setAttribute("aria-label",(typeNames[key]||key)+": "+count+" nodi");
-  if(key!=="capitolo")shownCategories.add(key);else item.className="disabled";
-  toggle.addEventListener("change",()=>{toggle.checked?shownCategories.add(key):shownCategories.delete(key);render({fit:false})});
-  item.append(toggle,makeEl("span",(typeNames[key]||key)+" ("+count+")"));
-  grid.append(item);
+  const editorial=key==="capitolo";
+  const categoryName=typeNames[key]||key;
+  const name=makeEl("span",categoryName+" ("+count+")","category-name");
+  if(editorial)name.className+=" disabled";
+  const visibilityCell=makeEl("label");
+  const visibility=document.createElement("input");visibility.type="checkbox";visibility.checked=!editorial;visibility.disabled=editorial;
+  visibility.setAttribute("aria-label","Mostra nodi: "+categoryName);
+  visibilityCell.append(visibility);
+  const labelCell=makeEl("label");
+  const labels=document.createElement("input");labels.type="checkbox";labels.checked=false;labels.disabled=editorial;
+  labels.setAttribute("aria-label","Mostra tutte le etichette: "+categoryName);
+  labelCell.append(labels);
+  if(editorial){visibilityCell.className="disabled";labelCell.className="disabled"}
+  else shownCategories.add(key);
+  visibility.addEventListener("change",()=>{
+   if(visibility.checked)shownCategories.add(key);
+   else{shownCategories.delete(key);permanentLabelCategories.delete(key);labels.checked=false}
+   labels.disabled=!visibility.checked;
+   render({fit:false});
+  });
+  labels.addEventListener("change",()=>{
+   if(labels.checked){
+    permanentLabelCategories.add(key);
+    shownCategories.add(key);
+    visibility.checked=true;
+   }else permanentLabelCategories.delete(key);
+   render({fit:false});
+  });
+  grid.append(name,visibilityCell,labelCell);
  }
 }
 function search(){
@@ -232,12 +257,8 @@ async function init(){
   .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
   .onNodeClick(n=>selected(n.id))
   .onNodeDoubleClick(n=>setRoot(n.id,{fit:false}))
-  .onNodeHover((n,point)=>{
-   const el=$("hoverLabel");
-   el.style.display=n?"block":"none";
-   if(n){el.textContent=n.name;el.style.left=Math.min($("graph").clientWidth-140,(point?.x||0)+17)+"px";
-    el.style.top=Math.max(6,(point?.y||0)-40)+"px"}
-  })
+  // Hover is handled by Canvas's existing caption. Never create an HTML duplicate.
+  .onNodeHover(()=>{})
   .onLinkClick(e=>selected(e.source));
  const unique=new Map();for(const n of dataset.nodes)if(n.category!=="capitolo"&&!unique.has(n.name))unique.set(n.name,n);
  for(const name of [...unique.keys()].sort((a,b)=>a.localeCompare(b,"it"))){
