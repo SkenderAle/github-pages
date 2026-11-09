@@ -1259,3 +1259,10 @@ L'utente chiede prosecuzione dopo Lotto 10, mantenendo priorità alla **classifi
 - **Stato preciso:** overlay creato e conservato ma NON ancora caricato dalla preview; nessun collaudo grafico live, nessuna classificazione di opere nuova, nessuna modifica ai JSON/HTML di produzione. La gerarchia deve espandersi a partire dalla radice del genere, senza attraversamento genere→autori estranei nella rete personale. I 210 lotti storici restano intatti.
 
 **Prossima ripresa:** integrare e testare il nuovo overlay nella sola preview, con deduplicazione Checkpoint25; poi ampliare il controllo a TUTTI i termini della federazione, non soltanto alle 50 voci Checkpoint11, e collegare compositore→opera specifica→generi documentati con fonti. Checkpoint24 resta **74/233** archi persona↔persona esaminati, prossimo lotto da **50** a parte.
+
+
+### Nuova fonte Excel Flaminio — inventario iniziale (10 novembre 2026)
+
+L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analisi diretta di `Sheet1!A1:H52151`: **52.150 record**, **149** compositori, **1.167** denominazioni letterali `Genere/Forma`, **39.924** titoli distinti, **7.412** righe con link di spiegazione (**7.137** URL distinti). Non sono 52.150 composizioni necessariamente indipendenti, né 1.167 generi canonici: distinguere opere/movimenti/versioni, nomenclature e tassonomie specifiche, deduplicare contro Atlantis e attribuire più generi a una composizione quando documentato. Fonte in chat, non ancora importata. `AUDIT_IMPORT_FILE_FLAMINIO_EXCEL_2026-11-10.md` pubblicato su `main`, commit `bf577bff9fd6e2aab8845855f3ac7c606e963d44` — solo statistica, protocollo e cautele, nessun record Excel pubblicato.
+
+**Sospesi da riprendere:** Checkpoint26 overlay gerarchico preview (9 archi ancora non caricati nella UI di audit); Checkpoint24 storico-filologico **74/233**, prossimo blocco 50; porting/verifica spiegazioni e pertinenza radicata I–V. Niente fusione cieca e niente intervento al grafo pubblico.
