@@ -1,0 +1,484 @@
+{
+  "schema": "musurgia-atlantis-reconciliation-checkpoint03-full-production-inputs-v1",
+  "date": "2026-11-09",
+  "branch": "main",
+  "execution_environment": "V8 via connected GitHub blob and file access; NOT Node --live, not browser",
+  "publication_scope": "audit-integrazione only; public graphs and UI unchanged",
+  "inputs": [
+    {
+      "path": "atlante3d/database/grafo.json",
+      "blob_sha": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+      "nodes": 869,
+      "edges": 2437
+    },
+    {
+      "path": "atlante3d/database/relazioni.json",
+      "blob_sha": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+      "relations": 1389
+    },
+    {
+      "path": "atlante3d/database/integrazione-operetta-musical.json",
+      "nodes": 15,
+      "relations": 30
+    },
+    {
+      "path": "musurgia-atlantis/grafo.json",
+      "blob_sha": "4863b3fe263154387de3388c0b813b5f94546f12",
+      "nodes": 754,
+      "edges": 1718
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_IMPORT_PERSONE_2026-11-08.json",
+      "records": 509
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_NUOVE_PERSONE_FASE2K_347_2026-11-08.json",
+      "records": 347
+    },
+    {
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_ARCHI_...11_parts",
+      "records": 3856
+    }
+  ],
+  "checks": {
+    "executed": 22,
+    "passed": 22,
+    "failed": [],
+    "results": {
+      "three_monolithic_json_payloads_parsed": true,
+      "source_extension_15_nodes_30_relations": true,
+      "base_node_ids_unique": true,
+      "atlantis_node_ids_unique": true,
+      "legacy_base_no_orphan_endpoints": true,
+      "legacy_special_no_orphan_endpoints": true,
+      "extension_no_orphan_endpoints": true,
+      "atlantis_no_orphan_endpoints": true,
+      "full_staging_count_3856": true,
+      "base_staging_exact_by_original_index": true,
+      "special_staging_exact_by_original_index": true,
+      "extension_staging_exact_by_original_index": true,
+      "source_person_records_509": true,
+      "existing_identity_mapping_162": true,
+      "mapping_targets_exist_and_distinct": true,
+      "new_person_candidates_347_disjoint_from_mapping": true,
+      "proposed_new_person_ids_not_in_live_graph": true,
+      "crosswalk_four_concepts_present_but_not_merged": true,
+      "20_specialist_overlap_records_16_pairs": true,
+      "mozart_8_historical_plus_9_editorial": true,
+      "leopold_three_source_specialist_relations_and_absent_in_live_atlantis": true,
+      "figaro_daponte_confirmed_two_step_noneditorial": true
+    }
+  },
+  "identity_mapping": {
+    "existing_documented_pairs": 162,
+    "new_person_candidates": 347,
+    "target_ids_existing": 162,
+    "target_collisions": 0,
+    "new_candidate_id_collisions": 0,
+    "extra_alias_source_ids": [
+      "persona-sergej-diaghilev",
+      "persona-bronislava-nijinska"
+    ],
+    "existing_authority_equivalences": [
+      {
+        "source_id": "persona-moliere",
+        "target_id": "pers:moliere"
+      },
+      {
+        "source_id": "compositore-ferdinand-david",
+        "target_id": "pers:ferdinand-david"
+      }
+    ],
+    "note": "Identity pairs are historically documented in previous audit; this checkpoint only verifies mappings and existence in actual Atlantis. No edge automatically certified."
+  },
+  "graph_integrity": {
+    "legacy_base": {
+      "nodes": 869,
+      "edges": 2437
+    },
+    "legacy_specialist": {
+      "relations": 1389
+    },
+    "legacy_extension": {
+      "nodes": 15,
+      "relations": 30
+    },
+    "atlantis": {
+      "nodes": 754,
+      "links": 1718
+    },
+    "orphans": 0,
+    "staging_payloads_identical": 3856
+  },
+  "endpoint_overlaps": {
+    "record_count": 20,
+    "distinct_pairs": 16,
+    "classification": "same endpoints, not proven same meaning",
+    "records": [
+      {
+        "archive": "special",
+        "legacy_id": "form-haydn-beethoven",
+        "source": "compositore-joseph-haydn",
+        "target": "compositore-ludwig-van-beethoven",
+        "legacy_predicate": "maestro-allievo",
+        "atlantis_edges": [
+          {
+            "id": "L145-A01",
+            "predicate": "insegna_composizione_a_vienna_1792_1794",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:beethoven⟷pers:haydn",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "coll-wagner-liszt",
+        "source": "compositore-richard-wagner",
+        "target": "compositore-franz-liszt",
+        "legacy_predicate": "sostegno-artistico",
+        "atlantis_edges": [
+          {
+            "id": "L147-A02",
+            "predicate": "sostiene_wagner_e_ne_diventa_suocero",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:liszt⟷pers:wagner",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "coll-clara-robert",
+        "source": "compositore-clara-schumann",
+        "target": "compositore-robert-schumann",
+        "legacy_predicate": "collaborazione-artistica",
+        "atlantis_edges": [
+          {
+            "id": "L08-A012",
+            "predicate": "collaborano_nell_interpretazione_ed_edizione_musicale",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:clara-schumann⟷pers:robert-schumann",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "form-messiaen-boulez",
+        "source": "compositore-olivier-messiaen",
+        "target": "compositore-pierre-boulez",
+        "legacy_predicate": "maestro-allievo",
+        "atlantis_edges": [
+          {
+            "id": "L180-A01",
+            "predicate": "insegna_armonia_a_boulez_dal_1944",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:messiaen⟷pers:pierre-boulez",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "form-schonberg-berg",
+        "source": "compositore-arnold-schonberg",
+        "target": "compositore-alban-berg",
+        "legacy_predicate": "maestro-allievo",
+        "atlantis_edges": [
+          {
+            "id": "L154-A01",
+            "predicate": "insegna_composizione_a_dal_1904",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:alban-berg⟷pers:schonberg",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "form-schonberg-webern",
+        "source": "compositore-arnold-schonberg",
+        "target": "compositore-anton-webern",
+        "legacy_predicate": "maestro-allievo",
+        "atlantis_edges": [
+          {
+            "id": "L179-A01",
+            "predicate": "insegna_composizione_a_webern_1904_1908",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:anton-webern⟷pers:schonberg",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "coll-schumann-brahms",
+        "source": "compositore-robert-schumann",
+        "target": "compositore-johannes-brahms",
+        "legacy_predicate": "sostegno-critico",
+        "atlantis_edges": [
+          {
+            "id": "L146-A01",
+            "predicate": "promuove_pubblicamente_dal_1853",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:brahms⟷pers:robert-schumann",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "coll-clara-brahms",
+        "source": "compositore-clara-schumann",
+        "target": "compositore-johannes-brahms",
+        "legacy_predicate": "amicizia-e-dialogo-artistico",
+        "atlantis_edges": [
+          {
+            "id": "L146-A02",
+            "predicate": "collabora_esegue_e_promuove_repertorio",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:brahms⟷pers:clara-schumann",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "coll-brahms-dvorak",
+        "source": "compositore-johannes-brahms",
+        "target": "compositore-antonin-dvorak",
+        "legacy_predicate": "sostegno-editoriale",
+        "atlantis_edges": [
+          {
+            "id": "L152-A01",
+            "predicate": "raccomanda_il_compositore_a_simrock",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:antonin-dvorak⟷pers:brahms",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "infl-brahms-dvorak",
+        "source": "compositore-johannes-brahms",
+        "target": "compositore-antonin-dvorak",
+        "legacy_predicate": "modello-sinfonico-documentato",
+        "atlantis_edges": [
+          {
+            "id": "L152-A01",
+            "predicate": "raccomanda_il_compositore_a_simrock",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:antonin-dvorak⟷pers:brahms",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "form-willaert-zarlino",
+        "source": "compositore-adriano-willaert",
+        "target": "compositore-gioseffo-zarlino",
+        "legacy_predicate": "insegnamento-documentato",
+        "atlantis_edges": [
+          {
+            "id": "L163-A01",
+            "predicate": "insegna_musica_a_zarlino_dal_1541",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:adriano-willaert⟷pers:gioseffo-zarlino",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "form-andrea-giovanni-gabrieli",
+        "source": "compositore-andrea-gabrieli",
+        "target": "compositore-giovanni-gabrieli",
+        "legacy_predicate": "insegnamento-documentato",
+        "atlantis_edges": [
+          {
+            "id": "L08-A010",
+            "predicate": "e_mentore_e_maestro_di",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:andrea-gabrieli⟷pers:giovanni-gabrieli",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "lotto05-tallis-byrd",
+        "source": "compositore-thomas-tallis",
+        "target": "compositore-william-byrd",
+        "legacy_predicate": "maestro-allievo",
+        "atlantis_edges": [
+          {
+            "id": "L164-A03",
+            "predicate": "condividono_privilegio_stampa_regio_1575",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:thomas-tallis⟷pers:william-byrd",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "lotto05-tallis-byrd-cantiones",
+        "source": "compositore-thomas-tallis",
+        "target": "compositore-william-byrd",
+        "legacy_predicate": "edizione-congiunta",
+        "atlantis_edges": [
+          {
+            "id": "L164-A03",
+            "predicate": "condividono_privilegio_stampa_regio_1575",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:thomas-tallis⟷pers:william-byrd",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "lotto05-alessandro-domenico",
+        "source": "compositore-alessandro-scarlatti",
+        "target": "compositore-domenico-scarlatti",
+        "legacy_predicate": "maestro-allievo",
+        "atlantis_edges": [
+          {
+            "id": "L08-A011",
+            "predicate": "orienta_formazione_e_carriera_di",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:alessandro-scarlatti⟷pers:domenico-scarlatti",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "lotto07-messiaen-boulez-oiseaux",
+        "source": "compositore-pierre-boulez",
+        "target": "compositore-olivier-messiaen",
+        "legacy_predicate": "commissione-oiseaux-exotiques",
+        "atlantis_edges": [
+          {
+            "id": "L180-A01",
+            "predicate": "insegna_armonia_a_boulez_dal_1944",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:messiaen⟷pers:pierre-boulez",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "audit8d-gershwin-ira",
+        "source": "compositore-george-gershwin",
+        "target": "persona-ira-gershwin",
+        "legacy_predicate": "compositore-paroliere-broadway",
+        "atlantis_edges": [
+          {
+            "id": "L08-A013",
+            "predicate": "collaborano_come_compositore_e_paroliere",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:george-gershwin⟷pers:ira-gershwin",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "audit11-chopin-liszt-chants-polonais-s480",
+        "source": "compositore-frederic-chopin",
+        "target": "compositore-franz-liszt",
+        "legacy_predicate": "six-chants-polonais-s480",
+        "atlantis_edges": [
+          {
+            "id": "L147-A01",
+            "predicate": "scrive_biografia_del_collega",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:chopin⟷pers:liszt",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "audit21-mozart-clementi-gara-vienna-1781",
+        "source": "compositore-wolfgang-amadeus-mozart",
+        "target": "compositore-muzio-clementi",
+        "legacy_predicate": "confronto-pianistico-corte-vienna-1781",
+        "atlantis_edges": [
+          {
+            "id": "L144-A03",
+            "predicate": "si_esibiscono_nello_stesso_confronto_1781",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:clementi⟷pers:mozart",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      },
+      {
+        "archive": "special",
+        "legacy_id": "audit26-clara-brahms-influenza-critica",
+        "source": "compositore-clara-schumann",
+        "target": "compositore-johannes-brahms",
+        "legacy_predicate": "consiglio-critico-compositivo",
+        "atlantis_edges": [
+          {
+            "id": "L146-A02",
+            "predicate": "collabora_esegue_e_promuove_repertorio",
+            "quality_gate": "riscontro_storico_indipendente"
+          }
+        ],
+        "pair_key": "pers:brahms⟷pers:clara-schumann",
+        "semantic_decision": "pending_independent_predicate_review_no_merge"
+      }
+    ]
+  },
+  "concept_crosswalk": [
+    {
+      "source": "dramma-giocoso",
+      "target": "senso:dramma-giocoso",
+      "decision": "semantic_identity_compatible_keep_provenance",
+      "merged": false
+    },
+    {
+      "source": "opera-buffa",
+      "target": "senso:opera-buffa",
+      "decision": "semantic_identity_compatible_keep_provenance",
+      "merged": false
+    },
+    {
+      "source": "opera-seria",
+      "target": "senso:opera-seria",
+      "decision": "semantic_identity_compatible_keep_provenance",
+      "merged": false
+    },
+    {
+      "source": "genere-quartetto-archi",
+      "target": "senso:quartetto",
+      "decision": "semantic_identity_compatible_keep_provenance",
+      "merged": false
+    }
+  ],
+  "sentinel_mozart": {
+    "atlantis_direct_links": 17,
+    "historical_independent": 8,
+    "editorial_incident": 9,
+    "leopold_direct_specialist_relations": 3,
+    "leopold_existing_in_public_atlantis": false,
+    "documented_figaro_daponte_links": [
+      "E0732",
+      "E0874"
+    ],
+    "policy": "No generic traversal through editorial chapters, periods, genres, institutions or Leopold neighbours. Rooted-relevance depth I–V runtime not yet tested."
+  },
+  "limits_and_next": [
+    "No production merge, no deduplication by endpoints, no individual edge truth certified by the source-to-stage equality.",
+    "Execute new Node test against complete clone before claiming Node --live; compare predicate/direction/evidence for all 20 overlapping specialist edges and all non-overlapping claims.",
+    "Implement and run actual prepare/byId, pivot and rooted relevance depth I–V by node type; test hover desktop and tap Android.",
+    "Keep 210 historical audit lots, every source and authorial explanation, media and anchored editorial links intact."
+  ]
+}
