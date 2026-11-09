@@ -60,6 +60,11 @@ function createRootedExplorer(graph,proofRegistry={schema:"root-evidence-v1",wit
   if(!byId.has(rootId))throw Error("Unknown root "+rootId);
   if(isEditorial(byId.get(rootId)))throw Error("Editorial chapter cannot be a historical root");
   const maxDepth=options.maxDepth??5;if(!validDepth(maxDepth))throw Error("maxDepth must be 0..5");
+  // A slider changes exploration scope, not the historical verification of source edges.
+  // 1=direct facts; 2=specific shared work/event; 3=one exploratory branch via person;
+  // 4=longer verified-fact paths. Editorial nodes/context/analogies NEVER become bridges.
+  const relevance=options.relevance??2;
+  if(!Number.isInteger(relevance)||relevance<1||relevance>4)throw Error("relevance must be 1..4");
   const categoryLimits=options.depthByCategory||{};
   for(const [k,v]of Object.entries(categoryLimits))if(!validDepth(v))throw Error("Invalid category depth for "+k);
   const muted=new Set(options.mutedCategories||[]);
@@ -67,7 +72,9 @@ function createRootedExplorer(graph,proofRegistry={schema:"root-evidence-v1",wit
   const links=new Map(),queue=[rootId];
   for(let qi=0;qi<queue.length;qi++){
    const from=queue[qi],state=selected.get(from),node=byId.get(from),depth=state.depth;
-   if(depth>=maxDepth)continue;
+   if(depth>=maxDepth||(relevance===1&&depth>0))continue;
+   // In controlled contextual mode a single person-mediated step is a terminal leaf.
+   if(relevance===3&&state.reason==="exploratory_one_hop")continue;
    // A verified comparison is visible but is NEVER a transit authorization.
    // E.g., Rossini's Otello and Verdi's Otello share a subject, NOT a single work.
    if(depth>0&&(CONTEXT_CATEGORIES.has(node.category)||state.reason==="direct_comparison"))continue;
@@ -75,25 +82,37 @@ function createRootedExplorer(graph,proofRegistry={schema:"root-evidence-v1",wit
     const next=depth+1,otherNode=byId.get(other);
     if(next>maxDepth||next>(categoryLimits[otherNode.category]??maxDepth)||state.path.includes(other))continue;
     let permission=null;
-    if(depth===0)permission=classification==="specific"?"direct_specific":"direct_comparison";
-    else if(classification==="specific"&&depth===1&&SPECIFIC_BRIDGES.has(node.category)&&
-      state.path.length===2&&state.path[0]===rootId)permission="same_specific_work_or_event";
-    else if(classification==="specific"){
-      const nextPath=[...state.path,other];
-      const w=evidence.get(JSON.stringify([rootId,nextPath,edge.id]));
-      if(w)permission="root_specific_evidence:"+w.edge_id;
+    if(depth===0){
+      if(classification==="specific")permission="direct_specific";
+      else if(relevance>=2)permission="direct_comparison";
+    }else if(classification==="specific"){
+      if(relevance>=2&&depth===1&&SPECIFIC_BRIDGES.has(node.category)&&
+        state.path.length===2&&state.path[0]===rootId){
+        permission="same_specific_work_or_event";
+      }else{
+        const nextPath=[...state.path,other];
+        const w=evidence.get(JSON.stringify([rootId,nextPath,edge.id]));
+        if(w)permission="root_specific_evidence:"+w.edge_id;
+        else if(relevance>=3&&state.path.some(id=>SPECIFIC_BRIDGES.has(byId.get(id).category))){
+          if(relevance===3&&node.category==="persona"&&depth<=2)
+            permission="exploratory_one_hop";
+          else if(relevance===4&&(node.category==="persona"||SPECIFIC_BRIDGES.has(node.category)))
+            permission="exploratory_chain";
+        }
+      }
     }
     if(!permission)continue;
     // A comparison is a visible statement but never an automatic transit bridge.
     const key=edge.id;
-    if(!links.has(key))links.set(key,{...edge,root_permission:permission,at_root_depth:next,statement_type:classification});
+    if(!links.has(key))links.set(key,{...edge,root_permission:permission,at_root_depth:next,
+      statement_type:classification==="comparison"?"comparison":permission.startsWith("exploratory")?"exploration":"specific"});
     if(!selected.has(other)){
       selected.set(other,{depth:next,path:[...state.path,other],from,reason:permission});
       queue.push(other);
     }
    }
   }
-  return {root:rootId,maxDepth,
+  return {root:rootId,maxDepth,relevance,
     nodes:[...selected].map(([id,s])=>({...byId.get(id),_depth:s.depth,_path:s.path,_bridge:muted.has(byId.get(id).category),_permission:s.reason})),
     links:[...links.values()],catalogue:{...stats},note:"Audit-only. No legacy relation inferred or auto-merged."};
  }
