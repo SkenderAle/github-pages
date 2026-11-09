@@ -392,6 +392,13 @@ function attachConcertoFamily(result,maxDepth,depths){
    draw(e);
   }
  }
+ // On a selected subgenre, show its parent after indexing the specific
+ // children; never open sibling genres/works from that parent.
+ if(genreRoot&&currentRoot!=="legacy:gf:genere-concerto"){
+  for(const e of taxonomy)if(e.source===currentRoot){
+   add(e.target,1,e.source,"concerto_parent_context_terminal");draw(e);
+  }
+ }
  if(genreRoot){
   for(const [author,work] of concertoAuthors){
    const w=shown.get(work);if(!w||w._depth>=maxDepth)continue;
