@@ -66,7 +66,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 </style>
 </head><body>
 <header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
-<p>Anteprima isolata del Checkpoint 11 · Generi e forme recuperati da Musurgia Mundi · Solo lettura</p></header>
+<p>Anteprima di audit · Checkpoint 13: collegamenti opera–genere · Solo lettura</p></header>
 <main>
 <aside>
 <label for="search">Cerca un nodo storico-musicale</label>
@@ -136,6 +136,33 @@ function prepareLegacyOverlay(overlay){
   legacyGenresByGenre.get(edge.target).push(edge);
  }
 }
+// Checkpoint 13: opera-specific genre edges, sourced and isolated from production.
+const verifiedWorkGenreLinks=[
+ {id:"audit:work-genre:berg-wozzeck:opera",source:"opera:berg-wozzeck-1925",target:"legacy:gf:genere-opera",relation:"ha_genere",statement_type:"work_genre_verified",root_permission:"specific_work_genre_non_transitive",description:"Wozzeck di Alban Berg (op. 7) è un'opera lirica: la composizione specifica appartiene al genere Opera.",note:"Berg, Wozzeck op. 7; opera in tre atti. Classificazione della composizione, non rapporto personale fra autori.",sources:["https://www.flaminioonline.it/Biografie/Berg-catalogo.html"],evidence_urls:["https://www.flaminioonline.it/Biografie/Berg-catalogo.html"],forward:"Wozzeck appartiene al genere Opera.",reverse:"Opera comprende Wozzeck di Alban Berg."},
+ {id:"audit:work-genre:berg-lulu:opera",source:"opera:berg-lulu-1929-1935",target:"legacy:gf:genere-opera",relation:"ha_genere",statement_type:"work_genre_verified",root_permission:"specific_work_genre_non_transitive",description:"Lulu di Alban Berg è una composizione operistica, rimasta incompiuta nell'orchestrazione alla morte dell'autore.",note:"Lulu appartiene al genere Opera; le versioni/completamenti devono restare distinti dall'opera.",sources:["https://www.flaminioonline.it/Biografie/Berg-catalogo.html"],evidence_urls:["https://www.flaminioonline.it/Biografie/Berg-catalogo.html"],forward:"Lulu appartiene al genere Opera.",reverse:"Opera comprende Lulu di Alban Berg."}
+];
+function attachWorkGenreEdges(result,maxDepth,depthByCategory){
+ const lookup=new Map(result.nodes.map(n=>[n.id,n]));
+ const workAllowed=(depthByCategory.opera??maxDepth)>=1;
+ const genreAllowed=(depthByCategory["genere-forma"]??maxDepth)>=1;
+ if(maxDepth<1||!workAllowed||!genreAllowed)return result;
+ for(const e of verifiedWorkGenreLinks){
+  let source=lookup.get(e.source),target=lookup.get(e.target);
+  // Do not expand all operas from a genre when the root is another composer.
+  if(currentRoot===e.source && !target){
+   const n=legacyGenresByNode.get(e.target);
+   if(n){target={...n,_depth:1,_path:[e.source,e.target],_permission:"specific_work_genre_non_transitive"};result.nodes.push(target);lookup.set(e.target,target)}
+  }else if(currentRoot===e.target && !source){
+   const n=dataset.nodes.find(n=>n.id===e.source);
+   if(n){source={...n,_depth:1,_path:[e.target,e.source],_permission:"specific_work_genre_non_transitive"};result.nodes.push(source);lookup.set(e.source,source)}
+  }
+  source=lookup.get(e.source);target=lookup.get(e.target);
+  // If a composer root already displays the work and the genre,
+  // draw the missing work→genre relation without additional expansion.
+  if(source&&target&&!result.links.some(x=>x.id===e.id))result.links.push({...e});
+ }
+ return result;
+}
 function getRootedPreview(maxDepth,relevance,depthByCategory){
  if(legacyGenresByNode.has(currentRoot)){
   const root=legacyGenresByNode.get(currentRoot);
@@ -149,7 +176,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return {root:currentRoot,nodes,links:edges};
+  return attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -162,7 +189,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return result;
+ return attachWorkGenreEdges(result,maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -334,13 +361,13 @@ async function init(){
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
- dataset={nodes:[...g.nodes,...legacyOverlay.nodes],links:[...g.links,...legacyOverlay.links]};
+ dataset={nodes:[...g.nodes,...legacyOverlay.nodes],links:[...g.links,...legacyOverlay.links,...verifiedWorkGenreLinks]};
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). Il catalogo legacy è provvisorio, non fuso né certificato in Atlantis; restano fuori altre relazioni, media e ancore.";
  buildCategoryPicker();
  engine=window.AtlantisAuditCompatGraph($("graph"))
   .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
-  .linkColor(e=>e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
+  .linkColor(e=>e.statement_type==="work_genre_verified"?"#ffd37a":e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
   .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
   .onNodeClick(n=>selected(n.id))
   .onNodeDoubleClick(n=>setRoot(n.id,{fit:false}))
