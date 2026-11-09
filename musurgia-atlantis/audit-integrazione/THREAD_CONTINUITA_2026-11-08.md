@@ -1183,3 +1183,15 @@ L'utente chiede prosecuzione dopo Lotto 10, mantenendo priorità alla **classifi
 - Triage non esecutivo: **554** archi `needs_identity_review` (almeno una persona nuova candidata), **233** `needs_edge_authority_review` (entrambe le identità riconciliate, da verificare il fatto), **2** `needs_independent_source` (URL fonte non presente nel payload). **Zero archi promossi alla preview o al grafo pubblico.**
 - Mozart/Leopold, Mozart/J. C. Bach, Mozart/Haydn, Mozart/Padre Martini e Mozart/Sarti sono sentinelle: distinguere insegnamento, ricezione, citazione, opera e dedica. Predicati `forward/reverse` e note originali restano nelle partizioni; il nuovo indice conserva gli identificativi di accesso per recuperarli.
 - **Prossimo Checkpoint22:** raggruppare i 622 predicati in macro-famiglie non distruttive, certificare progressivamente i 233 archi fra identità riconciliate e poi i 554 con nuovi ingressi; introdurre gate esplicito `persona-pertinente-alla-radice` senza allargare per generi, scuole, epoche o capitoli. Solo dopo overlay generale e collaudo desktop/Android. Preservati 210 lotti e dati pubblici.
+
+
+### Checkpoint 22 — classificazione conservativa dei 622 predicati (10 novembre 2026)
+
+**Pubblicato su `main`, esclusivamente nello staging:**
+- `VOCABOLARIO_PREDICATI_CHECKPOINT22_2026-11-10.json` (ultimo commit `489460a0adff9dce5a80571f9edabeae10d87529`): 622 predicati letterali, 12 code di revisione non ontologicamente certificate.
+- `TRIAGE_SEMANTICO_ARCHI_CHECKPOINT22_2026-11-10.json` (ultimo commit `d0f1eed2505aa8ceafc0cc008e2483fa60081b28`): 789 archi, macro-famiglia proposta, indizio di possibile mediazione e gate radicato chiuso.
+- `AUDIT_CHECKPOINT22_TASSONOMIA_PREDICATI_2026-11-10.md` (commit `1e12aacff48ef996f8d3cc4f9acb3b2ce408a836`) con tabella dei risultati.
+- Corretta **prima della chiusura** una falsa classificazione di parentela che intercettava `zio` entro parole quali `composizione`, `ricezione`, `collaborazione`: riclassificati 259 predicati. Solo i JSON corretti sono validi. **9/9** test di readback e integrità superati.
+- 109 archi con famiglia `da_esame_semantico_individuale`; tutti gli altri rimangono pure provvisori. Ogni fonte e spiegazione direzionale rimane disponibile nelle partizioni di origine. **Nessun arco autorizzato in produzione**. Fatti mediati attraverso opera/evento non equivalgono automaticamente a contatti diretti fra persone.
+
+**Prossima ripresa:** Checkpoint23 — risolvere le etichette non classificabili o ambigue con un audit individuale verificabile, separare la forma della relazione dalla prova dell'evento e priorizzare i 233 archi con identità già riconciliate. Colloquio/hover/tap e pertinenza radicata ancora da collaudare in GUI. I 210 lotti storici restano intatti.
