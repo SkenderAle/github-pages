@@ -1,0 +1,282 @@
+{
+  "schema": "musurgia-atlantis-mozart-work-taxonomy-v1",
+  "checkpoint": 19,
+  "date": "2026-11-09",
+  "status": "staging_only_graph_directed_taxonomy_no_public_mutation",
+  "documented_work_count": 4,
+  "provisional_taxonomy_nodes": 2,
+  "links_count": 12,
+  "existing_person": "pers:mozart",
+  "existing_works": [
+    "opera:Don-giovanni",
+    "opera:cosi-fan-tutte-1790",
+    "opera:figaro",
+    "opera:flauto-magico"
+  ],
+  "existing_genres": [
+    "legacy:gf:dramma-giocoso",
+    "legacy:gf:opera-buffa",
+    "legacy:gf:genere-opera"
+  ],
+  "nodes": [
+    {
+      "id": "audit:gf19:opera-comica-italiana",
+      "name": "Opera comica italiana",
+      "category": "genere-forma",
+      "subtype": "macrotradizione · proposta editoriale",
+      "description": "Categoria tassonomica sovraordinata in questa proposta editoriale: repertori comici del teatro d'opera italiano, inclusi dramma giocoso e opera buffa. Non è sinonimo universale di opéra-comique francese.",
+      "taxonomy_status": "editorial_parent_pending_full_historical_scope_review",
+      "preview_only": true
+    },
+    {
+      "id": "audit:gf19:singspiel",
+      "name": "Singspiel",
+      "category": "genere-forma",
+      "subtype": "genere del teatro musicale tedesco",
+      "description": "Genere di teatro musicale in lingua tedesca, storicamente caratterizzato dall'alternanza di numeri musicali e dialoghi parlati. Il flauto magico di Mozart è un esempio.",
+      "taxonomy_status": "source_documented_pending_global_vocabulary_deduplication",
+      "preview_only": true
+    }
+  ],
+  "links": [
+    {
+      "id": "audit:tax19:e001",
+      "source": "opera:Don-giovanni",
+      "target": "legacy:gf:dramma-giocoso",
+      "relation": "ha_sottogenere",
+      "description": "Don Giovanni KV 527 è designato dramma giocoso nel libretto originale.",
+      "forward": "Don Giovanni KV 527 è designato dramma giocoso nel libretto originale.",
+      "reverse": "Don Giovanni KV 527 è designato dramma giocoso nel libretto originale.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://corago.unibo.it/libretto/DRT0014519",
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=-1&t=0"
+      ],
+      "evidence_urls": [
+        "https://corago.unibo.it/libretto/DRT0014519",
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=-1&t=0"
+      ],
+      "quality_gate": "attestazione_libretto_originale",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e002",
+      "source": "opera:cosi-fan-tutte-1790",
+      "target": "legacy:gf:dramma-giocoso",
+      "relation": "ha_sottogenere",
+      "description": "Così fan tutte KV 588 è designata dramma giocoso nel libretto originale.",
+      "forward": "Così fan tutte KV 588 è designata dramma giocoso nel libretto originale.",
+      "reverse": "Così fan tutte KV 588 è designata dramma giocoso nel libretto originale.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?l=2"
+      ],
+      "evidence_urls": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?l=2"
+      ],
+      "quality_gate": "attestazione_libretto_originale",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e003",
+      "source": "opera:figaro",
+      "target": "legacy:gf:opera-buffa",
+      "relation": "ha_sottogenere",
+      "description": "Le nozze di Figaro KV 492 appartiene alla tradizione dell'opera buffa; il titolo originale la designa commedia per musica.",
+      "forward": "Le nozze di Figaro KV 492 appartiene alla tradizione dell'opera buffa; il titolo originale la designa commedia per musica.",
+      "reverse": "Le nozze di Figaro KV 492 appartiene alla tradizione dell'opera buffa; il titolo originale la designa commedia per musica.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://kv.mozarteum.at/en/work/le-nozze-di-figaro-opera-buffa-commedia-per-musica-in-4-acts-11980"
+      ],
+      "evidence_urls": [
+        "https://kv.mozarteum.at/en/work/le-nozze-di-figaro-opera-buffa-commedia-per-musica-in-4-acts-11980"
+      ],
+      "quality_gate": "fonte_catalografica",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e004",
+      "source": "opera:flauto-magico",
+      "target": "audit:gf19:singspiel",
+      "relation": "ha_sottogenere",
+      "description": "Die Zauberflöte KV 620 è un Singspiel in lingua tedesca.",
+      "forward": "Die Zauberflöte KV 620 è un Singspiel in lingua tedesca.",
+      "reverse": "Die Zauberflöte KV 620 è un Singspiel in lingua tedesca.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=72&t=2"
+      ],
+      "evidence_urls": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=72&t=2"
+      ],
+      "quality_gate": "fonte_catalografica",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e005",
+      "source": "opera:Don-giovanni",
+      "target": "legacy:gf:genere-opera",
+      "relation": "ha_genere",
+      "description": "Don Giovanni è un'opera del teatro musicale.",
+      "forward": "Don Giovanni è un'opera del teatro musicale.",
+      "reverse": "Don Giovanni è un'opera del teatro musicale.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://corago.unibo.it/opera/Z000003882"
+      ],
+      "evidence_urls": [
+        "https://corago.unibo.it/opera/Z000003882"
+      ],
+      "quality_gate": "classificazione_generale",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e006",
+      "source": "opera:cosi-fan-tutte-1790",
+      "target": "legacy:gf:genere-opera",
+      "relation": "ha_genere",
+      "description": "Così fan tutte è un'opera del teatro musicale.",
+      "forward": "Così fan tutte è un'opera del teatro musicale.",
+      "reverse": "Così fan tutte è un'opera del teatro musicale.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?l=2"
+      ],
+      "evidence_urls": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?l=2"
+      ],
+      "quality_gate": "classificazione_generale",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e007",
+      "source": "opera:figaro",
+      "target": "legacy:gf:genere-opera",
+      "relation": "ha_genere",
+      "description": "Le nozze di Figaro è un'opera del teatro musicale.",
+      "forward": "Le nozze di Figaro è un'opera del teatro musicale.",
+      "reverse": "Le nozze di Figaro è un'opera del teatro musicale.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://kv.mozarteum.at/en/work/le-nozze-di-figaro-opera-buffa-commedia-per-musica-in-4-acts-11980"
+      ],
+      "evidence_urls": [
+        "https://kv.mozarteum.at/en/work/le-nozze-di-figaro-opera-buffa-commedia-per-musica-in-4-acts-11980"
+      ],
+      "quality_gate": "classificazione_generale",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e008",
+      "source": "opera:flauto-magico",
+      "target": "legacy:gf:genere-opera",
+      "relation": "ha_genere",
+      "description": "Il flauto magico è un'opera del teatro musicale.",
+      "forward": "Il flauto magico è un'opera del teatro musicale.",
+      "reverse": "Il flauto magico è un'opera del teatro musicale.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=72&t=2"
+      ],
+      "evidence_urls": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=72&t=2"
+      ],
+      "quality_gate": "classificazione_generale",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e009",
+      "source": "legacy:gf:dramma-giocoso",
+      "target": "audit:gf19:opera-comica-italiana",
+      "relation": "sottogenere_di",
+      "description": "Dramma giocoso come sottogenere della macrotradizione Opera comica italiana, secondo l'albero editoriale proposto.",
+      "forward": "Dramma giocoso come sottogenere della macrotradizione Opera comica italiana, secondo l'albero editoriale proposto.",
+      "reverse": "Dramma giocoso come sottogenere della macrotradizione Opera comica italiana, secondo l'albero editoriale proposto.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://corago.unibo.it/opera/Z000003882"
+      ],
+      "evidence_urls": [
+        "https://corago.unibo.it/opera/Z000003882"
+      ],
+      "quality_gate": "parent_editoriale_proposto",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e010",
+      "source": "legacy:gf:opera-buffa",
+      "target": "audit:gf19:opera-comica-italiana",
+      "relation": "sottogenere_di",
+      "description": "Opera buffa come espressione della tradizione comica italiana nel teatro d'opera.",
+      "forward": "Opera buffa come espressione della tradizione comica italiana nel teatro d'opera.",
+      "reverse": "Opera buffa come espressione della tradizione comica italiana nel teatro d'opera.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://kv.mozarteum.at/en/work/le-nozze-di-figaro-opera-buffa-commedia-per-musica-in-4-acts-11980"
+      ],
+      "evidence_urls": [
+        "https://kv.mozarteum.at/en/work/le-nozze-di-figaro-opera-buffa-commedia-per-musica-in-4-acts-11980"
+      ],
+      "quality_gate": "parent_editoriale_proposto",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e011",
+      "source": "audit:gf19:opera-comica-italiana",
+      "target": "legacy:gf:genere-opera",
+      "relation": "sottogenere_di",
+      "description": "Opera comica italiana è una tradizione interna al genere generale Opera.",
+      "forward": "Opera comica italiana è una tradizione interna al genere generale Opera.",
+      "reverse": "Opera comica italiana è una tradizione interna al genere generale Opera.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://corago.unibo.it/opera/Z000003882"
+      ],
+      "evidence_urls": [
+        "https://corago.unibo.it/opera/Z000003882"
+      ],
+      "quality_gate": "parent_editoriale_proposto",
+      "preview_only": true
+    },
+    {
+      "id": "audit:tax19:e012",
+      "source": "audit:gf19:singspiel",
+      "target": "legacy:gf:genere-opera",
+      "relation": "tradizione_teatrale_riconducibile_a",
+      "description": "Singspiel è classificato in questa gerarchia come teatro musicale operistico, preservando la sua distinta storia e lingua.",
+      "forward": "Singspiel è classificato in questa gerarchia come teatro musicale operistico, preservando la sua distinta storia e lingua.",
+      "reverse": "Singspiel è classificato in questa gerarchia come teatro musicale operistico, preservando la sua distinta storia e lingua.",
+      "statement_type": "taxonomy_work_classification",
+      "root_permission": "work_anchored_taxonomy_nontransitive",
+      "sources": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=72&t=2"
+      ],
+      "evidence_urls": [
+        "https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=72&t=2"
+      ],
+      "quality_gate": "parent_editoriale_proposto",
+      "preview_only": true
+    }
+  ],
+  "reasoning": "Composer→Opera and composer→work alone do not certify a work→subgenre edge. Works retain their explicit source-attested work classifications. Composer-centered relevance is established by a work-specific closure path; no walk to another composer through a shared genre.",
+  "taxonomy_warning": "Opera comica italiana is a proposed broader grouping from the user's tree, not a claim that dramma giocoso and opera buffa are identical. Singspiel retains its autonomous German identity.",
+  "notes": [
+    "Don Giovanni→Dramma giocoso already exists in the Atlantis sense layer (senso:dramma-giocoso) and is not being replaced. This is an explicit crosswalk to the distinct legacy genre/form node visible in the preview.",
+    "The user-facing cycle Mozart→Don Giovanni→Dramma giocoso→Opera comica italiana→Opera→Mozart is based on actual edges plus existing Mozart→Opera legacy link; the return is not a new directed historical event.",
+    "Do not propagate through a genre to unrelated composers when rooted on Mozart.",
+    "No duplicate work or composer node created.",
+    "All provenance and rights maintained."
+  ]
+}
