@@ -50,17 +50,16 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <section id="selected"><h2>Seleziona un nodo</h2><p>Tocca un nodo per leggerne i rapporti, poi usa «Nuova radice» per esplorarlo autonomamente.</p>
  <button id="pivotBtn" disabled>Nuova radice dal nodo selezionato</button><ul id="edges"></ul>
 </section>
-<p class="note">Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. I testimoni di III–V livello devono essere verificati e presenti nel registro revisionato: il registro iniziale è vuoto. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
+<p class="note">Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. I testimoni di III–V livello devono essere verificati e presenti nel registro revisionato: il registro iniziale è vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
 </aside>
 <div id="graph" aria-label="Grafo 3D radicato, ruotabile e ingrandibile"></div>
 </main>
 <script src="../compat-graph.js"></script>
-<script>window.module={exports:{}};</script>
-<script src="./ROOTED_RELEVANCE_CHECKPOINT06.cjs"></script>
+<script src="./ROOTED_RELEVANCE_CHECKPOINT06.browser.js"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
-const rootLib=window.module?.exports;
+const rootLib=window.MusurgiaRooted;
 let dataset,engine,renderer,currentRoot="pers:mozart",candidate=null,last;
 const typesForWork=["opera","versione-opera","parte-di-opera","allestimento","produzione"];
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
