@@ -113,9 +113,58 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 const $=id=>document.getElementById(id);
 const rootLib=window.MusurgiaRooted;
 let dataset,engine,renderer,currentRoot="pers:mozart",candidate=null,last;
-const typeNames={persona:"Persone",opera:"Opere","versione-opera":"Versioni d'opera","parte-di-opera":"Parti di opere",allestimento:"Allestimenti",produzione:"Produzioni","nodo-di-senso":"Nodi di senso",luogo:"Luoghi",strumento:"Strumenti","rete-culturale":"Reti culturali","evento-storico":"Eventi storici","documento-storico":"Documenti storici",documento:"Altri documenti",capitolo:"Capitoli (editoriali)"};
-const categoryColors={persona:"#b1a2ec",opera:"#e9a092","versione-opera":"#eaa4a0","parte-di-opera":"#dc999b",allestimento:"#e4b8a0",produzione:"#d7ac90","nodo-di-senso":"#71d5c5",luogo:"#83bceb",strumento:"#c5d885","rete-culturale":"#85bdb3","evento-storico":"#f2c583","documento-storico":"#c2b1d9",documento:"#a1c4c9",capitolo:"#eec482"};
+const typeNames={persona:"Persone",opera:"Opere","genere-forma":"Generi e forme","versione-opera":"Versioni d'opera","parte-di-opera":"Parti di opere",allestimento:"Allestimenti",produzione:"Produzioni","nodo-di-senso":"Nodi di senso",luogo:"Luoghi",strumento:"Strumenti","rete-culturale":"Reti culturali","evento-storico":"Eventi storici","documento-storico":"Documenti storici",documento:"Altri documenti",capitolo:"Capitoli (editoriali)"};
+const categoryColors={persona:"#b1a2ec",opera:"#e9a092","genere-forma":"#83d0a7","versione-opera":"#eaa4a0","parte-di-opera":"#dc999b",allestimento:"#e4b8a0",produzione:"#d7ac90","nodo-di-senso":"#71d5c5",luogo:"#83bceb",strumento:"#c5d885","rete-culturale":"#85bdb3","evento-storico":"#f2c583","documento-storico":"#c2b1d9",documento:"#a1c4c9",capitolo:"#eec482"};
 const shownCategories=new Set(),permanentLabelCategories=new Set(),categoryDisplays=new Map();
+const firstCategories=["persona","opera","rete-culturale","genere-forma"];
+let legacyGenres={nodes:[],links:[]},legacyGenresByNode=new Map(),legacyGenresByPerson=new Map(),legacyGenresByGenre=new Map();
+function categoryOrder(a,b){
+ const ai=firstCategories.indexOf(a[0]),bi=firstCategories.indexOf(b[0]);
+ if(ai>=0||bi>=0)return (ai<0?999:ai)-(bi<0?999:bi);
+ return (typeNames[a[0]]||a[0]).localeCompare(typeNames[b[0]]||b[0],"it");
+}
+function prepareLegacyOverlay(overlay){
+ if(overlay?.schema!=="musurgia-atlantis-staging-genre-form-v1"||!Array.isArray(overlay.nodes)||!Array.isArray(overlay.links))
+  throw Error("Archivio storico Generi e forme non valido");
+ legacyGenres=overlay;
+ legacyGenresByNode=new Map(overlay.nodes.map(n=>[n.id,n]));
+ legacyGenresByPerson=new Map();legacyGenresByGenre=new Map();
+ for(const edge of overlay.links){
+  if(!legacyGenresByPerson.has(edge.source))legacyGenresByPerson.set(edge.source,[]);
+  if(!legacyGenresByGenre.has(edge.target))legacyGenresByGenre.set(edge.target,[]);
+  legacyGenresByPerson.get(edge.source).push(edge);
+  legacyGenresByGenre.get(edge.target).push(edge);
+ }
+}
+function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(legacyGenresByNode.has(currentRoot)){
+  const root=legacyGenresByNode.get(currentRoot);
+  const nodes=[{...root,_depth:0,_path:[root.id],_permission:"legacy_genre_root"}];
+  const edges=[];
+  if(maxDepth>=1&&(depthByCategory.persona??maxDepth)>=1){
+   for(const e of legacyGenresByGenre.get(currentRoot)||[]){
+    const composer=dataset.nodes.find(n=>n.id===e.source);
+    if(!composer)continue;
+    nodes.push({...composer,_depth:1,_path:[currentRoot,composer.id],_permission:"legacy_catalogue_direct"});
+    edges.push(e);
+   }
+  }
+  return {root:currentRoot,nodes,links:edges};
+ }
+ const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
+ // Only directly documented links are visualized. Legacy edges do not become
+ // traversable historical paths or independently verified Atlantis edges.
+ if(maxDepth>=1&&(depthByCategory["genere-forma"]??maxDepth)>=1){
+  for(const e of legacyGenresByPerson.get(currentRoot)||[]){
+   const genre=legacyGenresByNode.get(e.target);
+   if(!genre)continue;
+   result.nodes.push({...genre,_depth:1,_path:[currentRoot,genre.id],_permission:"legacy_catalogue_direct"});
+   result.links.push(e);
+  }
+ }
+ return result;
+}
+
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
 function say(s){$("status").textContent=s}
 function makeEl(tag,text,cls){const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e}
@@ -145,7 +194,8 @@ function selected(id){
   if(info.phrase)item.append(makeEl("small",info.phrase));
   if(info.description)item.append(makeEl("small",info.description));
   if(info.note)item.append(makeEl("small",info.note));
-  const meaning=edge.statement_type==="comparison"?"Confronto senza nesso causale":
+  const meaning=edge.statement_type==="legacy_catalogue"?"GENERI E FORME · catalogo legacy Musurgia Mundi, non ancora certificato/fuso in Atlantis":
+   edge.statement_type==="comparison"?"Confronto senza nesso causale":
    edge.statement_type==="exploration"?"Itinerario esplorativo, non relazione diretta fra gli estremi del percorso":
    edge.root_permission==="direct_specific"?"Rapporto diretto documentato":
    edge.root_permission==="same_specific_work_or_event"?"Legame attraverso un'opera/evento specifico":
@@ -174,8 +224,8 @@ function render({fit=false}={}){
  $("relevanceOutput").value=relevanceNames[relevance];
  $("relevanceDescription").textContent=relevanceExplanations[relevance];
  $("depthOutput").value=depth;$("peopleOutput").value=person;$("worksOutput").value=work;$("contextOutput").value=context;
- const depthByCategory={persona:person,opera:work,"versione-opera":work,"parte-di-opera":work,allestimento:work,produzione:work,"nodo-di-senso":context,luogo:context,strumento:context,"rete-culturale":context};
- const full=renderer.explore(currentRoot,{maxDepth:depth,relevance,depthByCategory});
+ const depthByCategory={persona:person,opera:work,"versione-opera":work,"parte-di-opera":work,allestimento:work,produzione:work,"nodo-di-senso":context,luogo:context,strumento:context,"rete-culturale":context,"genere-forma":context};
+ const full=getRootedPreview(depth,relevance,depthByCategory);
  // Category filters are presentation only: preserve necessary parent paths, dim them.
  const desired=new Set([currentRoot]);
  for(const n of full.nodes)if(shownCategories.has(n.category)||n.id===currentRoot)
@@ -229,7 +279,7 @@ function buildCategoryPicker(){
  const counts=new Map();
  for(const n of dataset.nodes)counts.set(n.category,(counts.get(n.category)||0)+1);
  for(const heading of ["Categoria","Nodi","Etichette"])grid.append(makeEl("div",heading,"category-heading"));
- for(const [key,count] of [...counts].sort((a,b)=>(typeNames[a[0]]||a[0]).localeCompare(typeNames[b[0]]||b[0],"it"))){
+ for(const [key,count] of [...counts].sort(categoryOrder)){
   const editorial=key==="capitolo";
   const categoryName=typeNames[key]||key;
   const name=makeEl("span",categoryName+" (0/"+count+")","category-name");
@@ -238,7 +288,7 @@ function buildCategoryPicker(){
   categoryDisplays.set(key,{name,label:categoryName,total:count});
   if(editorial)name.className+=" disabled";
   const visibilityCell=makeEl("label");
-  const visibility=document.createElement("input");visibility.type="checkbox";visibility.checked=!editorial;visibility.disabled=editorial;
+  const visibility=document.createElement("input");visibility.type="checkbox";visibility.checked=firstCategories.includes(key);visibility.disabled=editorial;
   visibility.setAttribute("aria-label","Mostra nodi: "+categoryName);
   visibilityCell.append(visibility);
   const labelCell=makeEl("label");
@@ -246,7 +296,7 @@ function buildCategoryPicker(){
   labels.setAttribute("aria-label","Mostra tutte le etichette: "+categoryName);
   labelCell.append(labels);
   if(editorial){visibilityCell.className="disabled";labelCell.className="disabled"}
-  else shownCategories.add(key);
+  else if(firstCategories.includes(key))shownCategories.add(key);
   visibility.addEventListener("change",()=>{
    if(visibility.checked)shownCategories.add(key);
    else{shownCategories.delete(key);permanentLabelCategories.delete(key);labels.checked=false}
@@ -275,19 +325,22 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg;
+ let g,reg,legacyOverlay;
  try{
-  [g,reg]=await Promise.all([
+  [g,reg,legacyOverlay]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
-   fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()})
+   fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
+   fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
- dataset=g;renderer=rootLib.createRootedExplorer(dataset,reg);
- $("sourceState").textContent="Fonte: grafo Atlantis pubblico ("+g.nodes.length+" nodi · "+g.links.length+" relazioni). Il patrimonio legacy di Musurgia Mundi, le 3.856 relazioni e i relativi media/ancore restano in staging, non ancora fusi.";
+ prepareLegacyOverlay(legacyOverlay);
+ dataset={nodes:[...g.nodes,...legacyOverlay.nodes],links:[...g.links,...legacyOverlay.links]};
+ renderer=rootLib.createRootedExplorer(g,reg);
+ $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). Il catalogo legacy è provvisorio, non fuso né certificato in Atlantis; restano fuori altre relazioni, media e ancore.";
  buildCategoryPicker();
  engine=window.AtlantisAuditCompatGraph($("graph"))
   .nodeColor(n=>n._focus?"#ffdf9a":n._bridge?"#425967":categoryColors[n.category]||"#b9cbd0")
-  .linkColor(e=>e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
+  .linkColor(e=>e.statement_type==="legacy_catalogue"?"#83d0a7":e.statement_type==="comparison"?"#e8bd82":e.statement_type==="exploration"?"#e8a5c3":"#90b9cb")
   .nodeVal(n=>n._focus?8:n._depth===1?5:3).linkOpacity(.48)
   .onNodeClick(n=>selected(n.id))
   .onNodeDoubleClick(n=>setRoot(n.id,{fit:false}))
