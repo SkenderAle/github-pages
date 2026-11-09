@@ -48,4 +48,13 @@ yes("Testo inverso conservato",empty.relationDetail(fixture.links[0],"pers:p").p
 const manual={schema:"root-evidence-v1",witnesses:[{root:"pers:r",path:["pers:r","pers:p","pers:q"],edge_id:"f2",status:"approved",root_specific_claim:"Fixture sintetica: permesso di attraversamento basato sulla radice",evidence_urls:["https://example.org/fixture"],reviewers:["Reviewer1","Reviewer2"]}]};
 yes("Con prova revisionata simulata il II livello è possibile",createRootedExplorer(fixture,manual).explore("pers:r").nodes.some(n=>n.id==="pers:q"));
 yes("Un'immissione dal filtro UI non sblocca testimoni",!empty.explore("pers:r",{rootWitnesses:manual.witnesses}).nodes.some(n=>n.id==="pers:q"));
+for(const [r,nodes,links] of [[1,9,8],[2,15,18],[3,19,22],[4,49,55]]){
+ const x=engine.explore("pers:mozart",{maxDepth:5,relevance:r});
+ yes("Relevance "+r+" shapes Mozart's display",x.nodes.length===nodes&&x.links.length===links);
+ yes("Relevance "+r+" never adds unverified historical edges",x.links.every(e=>e.historical_verified_independently===true));
+}
+for(const r of [1,2,3,4]){
+ const x=engine.explore("opera:otello-rossini-1816",{maxDepth:5,relevance:r});
+ yes("Otello's noncausal comparison cannot be a transit at relevance "+r,!x.nodes.some(n=>n.id==="pers:verdi"||n.id==="pers:boito"));
+}
 console.log("TOTALE "+count+" asserzioni Node: PASS. Non è un test del renderer HTML, dei tap Android o delle 3856 relazioni legacy.");
