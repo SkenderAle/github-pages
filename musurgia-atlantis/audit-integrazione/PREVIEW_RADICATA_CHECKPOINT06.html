@@ -1322,6 +1322,9 @@ function prepareQuartet42(batch){
     throw Error("Lotto42: riuso op130 insicuro");
    if(!n.flaminio_explanation_url)n.flaminio_explanation_url=w.flaminio_explanation_url;
    if(!n.catalogue_id)n.catalogue_id=w.canonical_catalogue;
+   if(!n.source_excel_row)n.source_excel_row=w.source_excel_row;
+   if(!n.source_title_original)n.source_title_original=w.source_title_raw;
+   if(!n.source_opus_original)n.source_opus_original=w.source_opus_raw;
   }else{
    if(n)throw Error("Lotto42: nodo duplicato "+w.id);
    n={id:w.id,name:w.name,category:"opera",subtype:"quartetto per archi",
