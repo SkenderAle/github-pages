@@ -1148,7 +1148,12 @@ function attachConcerto40(result,maxDepth,limits){
   // as a second identical first-level branch.
   if(isMain&&seen.has("audit:gf25:concerto-di-gruppo"))
    add("legacy:gf:forma-concerto-grosso",2,"audit:gf25:concerto-di-gruppo","existing_group_concerto");
-  for(const e of taxEdges)link(e);
+  for(const e of taxEdges){
+   // In this view concerto grosso belongs below concerto di gruppo;
+   // retain the legacy direct parent assertion only in source data.
+   if(isMain&&e.source==="legacy:gf:forma-concerto-grosso"&&e.target===CONCERTO40_ROOT)continue;
+   link(e);
+  }
   for(const e of ownEdges)if(e.relation==="sottogenere_di")link(e);
  }else if(group){
   const parent=add(group.parent_id,1,currentRoot,"parent_genre_terminal");
