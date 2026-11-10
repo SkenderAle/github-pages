@@ -789,7 +789,10 @@ function prepareGenreRings(){
      /^(compone|compone_la_musica_di)$/.test(e.relation||"")))continue;
   const s=nodes.get(e.source),t=nodes.get(e.target);
   if(!s||!t)continue;
-  if(e.relation==="ha_composto"&&s.category==="persona"&&t.category==="opera"){
+  if((e.relation==="ha_composto"||
+     (beethoven38.ids.has(e.target)&&e.source==="pers:beethoven"&&
+      /^(compone|compone_la_musica_di)$/.test(e.relation||"")))&&
+     s.category==="persona"&&t.category==="opera"){
    if(!authors.has(t.id))authors.set(t.id,new Set());
    authors.get(t.id).add(s.id);
   }
