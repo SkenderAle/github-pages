@@ -1,0 +1,89 @@
+{
+  "schema": "musurgia-atlantis-flaminio-lotto21-verified-catalogue-distinction-v1",
+  "date": "2026-11-10",
+  "scope": "Two source-key collisions checked against specific external work catalogues plus one source-documentary case",
+  "cases": [
+    {
+      "id": "lotto21:chopin:opus15",
+      "source_rows": [
+        12650,
+        12651,
+        12652
+      ],
+      "original_catalogue_number": "15",
+      "source_title": "Tre notturni",
+      "original_parts": [
+        "brano 2",
+        "brano 3",
+        "brano 1"
+      ],
+      "status": "collection_with_distinct_work_members_confirmed",
+      "proposed_result": "One opus collection, three numbered individual nocturnes; each row points to a distinct composition. Source row order need not equal part number.",
+      "work_refs": [
+        {
+          "work": "Notturno op. 15 n. 1",
+          "row": 12652,
+          "source_url": "https://www.flaminioonline.it/Guide/Chopin/Chopin-Notturno55.html"
+        },
+        {
+          "work": "Notturno op. 15 n. 2",
+          "row": 12650,
+          "source_url": "https://www.flaminioonline.it/Guide/Chopin/Chopin-Notturno15-2.html"
+        },
+        {
+          "work": "Notturno op. 15 n. 3",
+          "row": 12651,
+          "source_url": "https://www.flaminioonline.it/Guide/Chopin/Chopin-Notturno15-3.html"
+        }
+      ],
+      "note": "The URL filename Notturno55 is a catalogue-filename convention, not a claim that the musical opus is Op.55; the page identifies Op.15 No.1. Do not force slug-to-work-ID equivalence.",
+      "public_graph_merge_authorized": false
+    },
+    {
+      "id": "lotto21:tchaikovsky:number29",
+      "source_rows": [
+        9502,
+        9504
+      ],
+      "original_catalogue_number": "29",
+      "status": "same_unqualified_number_two_catalogue_namespaces",
+      "entities": [
+        {
+          "row": 9502,
+          "work": "Sinfonia n. 3 in re maggiore, Polacca",
+          "catalogue_system": "opus",
+          "catalogue": "Op. 29"
+        },
+        {
+          "row": 9504,
+          "work": "Sinfonia n. 5 in mi minore",
+          "catalogue_system": "TH",
+          "catalogue": "TH 29",
+          "alternate_catalogue": "Op. 64"
+        }
+      ],
+      "source_urls": [
+        "https://en.tchaikovsky-research.net/pages/Symphonies",
+        "https://en.tchaikovsky-research.net/pages/Symphony_No._5"
+      ],
+      "proposed_result": "Two different works, not versions of one composition; a bare number 29 without namespace causes collision.",
+      "public_graph_merge_authorized": false
+    },
+    {
+      "id": "lotto21:beethoven:fidelio-op72",
+      "source_rows": [
+        4915,
+        4916
+      ],
+      "original_catalogue_number": "Op. 72",
+      "status": "single_opera_two_documentation_levels_candidate",
+      "evidence": "The Flaminio source row 4915 points to a Fidelio overture guide and row 4916 to the opera guide; titles both Fidelio, parts differ ('', 'opera').",
+      "proposed_result": "Do not create two independent operas. Preserve a documentation relation to the full opera and possible part-level overture, requiring individual source review.",
+      "source_urls": [
+        "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Fidelio.html"
+      ],
+      "public_graph_merge_authorized": false
+    }
+  ],
+  "evidence_level": "External titles and catalogue systems checked for Chopin and Tchaikovsky, source-row documentary comparison for Fidelio; none authorizes live graph edits."
+}
