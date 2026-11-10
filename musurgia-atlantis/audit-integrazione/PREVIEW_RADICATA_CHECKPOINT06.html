@@ -774,13 +774,72 @@ function prepareBeethoven38(batch){
  if(beethoven38.ids.size!==24)throw Error("Lotto38 non completo");
 }
 
+
+// Lotto41: documented individual keyboard works. No direct genre-to-author traversal.
+let lot41={ids:new Set(),sonatas:new Set(),concertos:new Set(),collectionEdges:[]};
+function prepareLot41(input){
+ if(input?.schema!=="musurgia-atlantis-lotto41-verified-keyboard-works-v1"||
+    input.entries?.length!==55||input.review_queue?.length!==4)
+   throw Error("Lotto41 schema/cases invalid");
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n])),rows=new Set();
+ const coll="opera:sonate-beethoven-op2-1796";
+ if(nodes.get(coll)?.category!=="opera")throw Error("Lotto41 legacy Op2 collection missing");
+ for(const w of input.entries){
+  if(nodes.has(w.id)||rows.has(w.source_excel_row)||!Number.isInteger(w.source_excel_row)||
+     nodes.get(w.composer_id)?.category!=="persona"||nodes.get(w.genre_id)?.category!=="genere-forma"||
+     !/^fl41:(beethoven:piano-sonata|mozart:piano-concerto)-\d+$/.test(w.id)||
+     !w.authority_urls?.length||
+     (w.flaminio_explanation_url&&!/^https:\/\/www\.flaminioonline\.it\/Guide\//.test(w.flaminio_explanation_url)))
+   throw Error("Lotto41 duplicate or invalid document "+w.id);
+  rows.add(w.source_excel_row);
+  const n={id:w.id,name:w.name,category:"opera",subtype:w.kind.replaceAll("_"," "),
+   catalogue_id:w.catalogue,source_catalogue_raw:w.source_catalogue_raw||w.source_opus_raw,
+   source_excel_row:w.source_excel_row,flaminio_explanation_url:w.flaminio_explanation_url||null,
+   source_collection:"Flaminio · catalogo strumenti a tastiera",
+   evidence_status:"work_specific_catalogue_concordance",description:w.version_note||""};
+  dataset.nodes.push(n);nodes.set(w.id,n);lot41.ids.add(w.id);
+  if(w.composer_id==="pers:beethoven")lot41.sonatas.add(w.id);
+  else if(w.composer_id==="pers:mozart")lot41.concertos.add(w.id);
+  else throw Error("Lotto41 unknown composer");
+  for(const [relation,source,target] of [["ha_composto",w.composer_id,w.id],["ha_genere",w.id,w.genre_id]]){
+   dataset.links.push({id:"fl41:"+relation+":"+w.id,source,target,relation,
+    statement_type:"specific_catalogue_evidence",root_permission:"non_transitive_work",
+    sources:[...w.authority_urls,...(w.flaminio_explanation_url?[w.flaminio_explanation_url]:[])],
+    description:"Attribution specific to this work, not a genre-level association."});
+  }
+  if(w.collection_id){
+   if(w.collection_id!==coll||w.composer_id!=="pers:beethoven"||!/^Op\. 2 n\. [123]$/.test(w.catalogue))
+     throw Error("Invalid opus2 membership");
+   const e={id:"fl41:op2:member:"+w.id,source:coll,target:w.id,relation:"contiene_opera",
+    statement_type:"specific_edition_membership",root_permission:"collection_only",
+    sources:w.authority_urls,description:"Individual sonata within the historic opus 2 publication."};
+   dataset.links.push(e);lot41.collectionEdges.push(e);
+  }
+ }
+ if(lot41.sonatas.size!==32||lot41.concertos.size!==23||lot41.collectionEdges.length!==3)
+  throw Error("Lotto41 missing sonatas, concertos or opus2 members");
+}
+function attachLot41Collections(result,maxDepth,limits){
+ if(currentRoot!=="opera:sonate-beethoven-op2-1796"||maxDepth<1)return result;
+ const seen=new Set(result.nodes.map(x=>x.id)),edges=new Set(result.links.map(x=>x.id));
+ const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ for(const e of lot41.collectionEdges){
+  if(!seen.has(e.target)&&(limits.opera??maxDepth)>=1){
+   const n=universe.get(e.target);result.nodes.push({...n,_depth:1,_path:[currentRoot,n.id],_permission:"op2_sonata_member"});
+   seen.add(n.id);
+  }
+  if(seen.has(e.source)&&seen.has(e.target)&&!edges.has(e.id)){result.links.push({...e});edges.add(e.id)}
+ }
+ return result;
+}
+
 // Checkpoint 38 — generic, work-anchored genre rings.
 // A ring is an index derived from independently catalogued individual works:
 // composer --[authored]--> work --[genre]--> genre --[repertory index]--> composer.
 // Never use it as an author-to-author or historical influence bridge.
 let genreRings={links:[],byGenre:new Map(),byAuthor:new Map(),byWork:new Map()};
 const genreRingEligible=e=>e&&typeof e.id==="string"&&
- /^fl35:|^fl36:|^fl37:|^fl38:|^audit:brandenburg27:/.test(e.id);
+ /^fl35:|^fl36:|^fl37:|^fl38:|^fl41:|^audit:brandenburg27:/.test(e.id);
 function prepareGenreRings(){
  const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
  const authors=new Map(),genres=new Map(),workList=new Map();
@@ -893,7 +952,7 @@ let sonata39={groups:new Map(),workToGroup:new Map(),parent:"legacy:gf:genere-so
 function prepareSonata39(){
  if(!dataset.nodes.some(n=>n.id===sonata39.parent))throw Error("Genere Sonata assente");
  const groups=[
-  {id:"atlas:gf:sonata-per-pianoforte",name:"Sonata per pianoforte",match:(w,n)=>w.author==="pers:mozart"&&/sonata per pianoforte/i.test(n.name||"")},
+  {id:"atlas:gf:sonata-per-pianoforte",name:"Sonata per pianoforte",match:(w,n)=>["pers:mozart","pers:beethoven"].includes(w.author)&&/sonata per pianoforte/i.test(n.name||"")},
   {id:"atlas:gf:sonata-per-violino-e-pianoforte",name:"Sonata per violino e pianoforte",match:(w,n)=>w.author==="pers:beethoven"&&/sonata per violino e pianoforte/i.test(n.name||"")}
  ];
  const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
@@ -1024,7 +1083,7 @@ const CONCERTO40_ROOT="legacy:gf:genere-concerto";
 let concerto40={groups:new Map(),byWork:new Map(),byAuthor:new Map(),edges:[],records:[]};
 function prepareConcerto40(input){
  if(input?.schema!=="musurgia-atlantis-concerto-subgenres-checkpoint40-v1"||
-    input.groups?.length!==4||input.works?.length!==21||
+    input.groups?.length!==5||input.works?.length!==44||
     input.works.filter(w=>w.group_id==="atlas:gf:concerto-brandeburghese").length!==6)
   throw Error("Checkpoint40: manifest di sottogeneri incoerente");
  const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
@@ -1099,7 +1158,7 @@ function prepareConcerto40(input){
     description:"La raccolta storica rimane un nodo distinto dalle sue sei opere; la categoria è editoriale."});
   }
  }
- if(concerto40.byWork.size!==21)throw Error("Checkpoint40: opere mancanti");
+ if(concerto40.byWork.size!==44)throw Error("Checkpoint40: opere mancanti");
 }
 function attachConcerto40(result,maxDepth,limits){
  if(!concerto40.groups.size||maxDepth<1)return result;
@@ -1283,11 +1342,15 @@ function getRootedPreview39(maxDepth,relevance,depthByCategory){
 
 // Add the checkpoint40 layer without changing checkpoint39 rooted logic.
 function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(lot41.ids.has(currentRoot)){
+  const root=dataset.nodes.find(n=>n.id===currentRoot);
+  return attachConcerto40(attachSonata39(attachGenreRings({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ }
  if(concerto40.groups.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
   return attachConcerto40({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
  }
- return attachConcerto40(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
+ return attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -1460,9 +1523,9 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
@@ -1475,7 +1538,8 @@ async function init(){
     fetch("./LOTTO36_MOZART_25_SINFONIE_2026-11-10.json?v=checkpoint36",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 36 mancante "+r.status);return r.json()}),
     fetch("./LOTTO37_MOZART_30_OPERE_2026-11-10.json?v=checkpoint37",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 37 mancante "+r.status);return r.json()}),
     fetch("./LOTTO38_BEETHOVEN_24_OPERE_2026-11-10.json?v=checkpoint38",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 38 mancante "+r.status);return r.json()}),
-    fetch("./CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json?v=checkpoint40-brandenburg",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Checkpoint40 Concerto mancante "+r.status);return r.json()})
+    fetch("./CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json?v=checkpoint40-brandenburg",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Checkpoint40 Concerto mancante "+r.status);return r.json()}),
+    fetch("./LOTTO41_55_OPERE_TASTIERA_CONCORDANZA_2026-11-10.json?v=checkpoint41",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto41 mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -1497,6 +1561,7 @@ async function init(){
  prepareSym36(sym36Input);
  prepareCatalog37(catalog37Input);
  prepareBeethoven38(beethoven38Input);
+ prepareLot41(lot41Input);
  prepareGenreRings();
  prepareSonata39();
  prepareConcerto40(concerto40Input);
