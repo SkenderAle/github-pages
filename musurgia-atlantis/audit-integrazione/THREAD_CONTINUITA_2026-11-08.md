@@ -1714,3 +1714,14 @@ https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_
 **Regola da estendere:** fra genere macro e opera individuale inserire nodi tassonomici di sottogenere/organico/forma solo quando la distinzione è documentata e serve a contenere l'espansione; non scambiare semplici attributi testuali per nodi né usare i sottogeneri come passaggi impropri verso altri compositori. Rispettare la pertinenza radicata e i cicli `autore↔sottogenere↔opera`.
 
 **URL di test:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint39-20261110
+
+
+### Checkpoint 39 — Chiusura e conferma visiva dell'utente (10 novembre 2026)
+
+**Conferma diretta dell'utente, successiva al nuovo tentativo di verifica:** «No, ora va bene». La GUI con nodo Sonata e i due sottogeneri intermedi è **accettata visivamente dall'utente nel proprio browser**. Non confondere questo feedback con un test browser automatizzato dell'assistente: quest'ultimo non è stato eseguito.
+
+**Stato GitHub:** versione da riprendere `musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html`, stesso indirizzo della UI con pannello flottante `Categorie · Nodi / Etichette`. Ultimo commit di correzione per la chiusura dei ring dentro i sottogeneri: `b991d8e353c4d78b59813962e96811be292bf292`. Link anticache provato dall'utente: `https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint39-retry-20261110`.
+
+**Regola convalidata per le prossime integrazioni:** `Sonata → Sonata per pianoforte → singole opere` e `Sonata → Sonata per violino e pianoforte → singole opere`. Nodi intermedi reali in categoria `genere-forma`, non solo `subtype` testuale. Sempre chiusura dei circuiti `compositore → singola opera → sottogenere/forma → compositore` come indice di repertorio, senza inferire causalità né collegamenti tra compositori che condividono un genere. Nel lotto corrente: 18 sonate pianistiche Mozart e 9 sonate violino-pianoforte Beethoven; conservati nodi e link Flaminio e la gerarchia Sonata.
+
+**Prossimo passo alla ripresa:** continuare a integrare dati Flaminio **soltanto sulla medesima GUI 3D federata**, con grandi lotti catalograficamente verificati, deduplicazione rispetto a `grafo.json`, classificazione al singolare e sottogeneri intermedi laddove utili alla leggibilità. Estendere con cautela la struttura gerarchica a Concerto, Sinfonia, Messa, Opera ecc.; svolgere regressioni sulle radici Mozart, Beethoven, Bach, Sonata, Sonata per pianoforte, Sonata per violino e pianoforte, Concerto e singole opere. Il vecchio `musurgia-atlantis/index.html` e il `grafo.json` fisico NON sono stati sostituiti dalla GUI di staging; non dichiarare completata la promozione a produzione.
