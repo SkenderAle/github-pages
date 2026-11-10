@@ -1785,3 +1785,38 @@ https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_
 **URL prova anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint42-20261110
 
 **Prossimo Lotto43:** nuova tranche Flaminio con riscontri catalografici, privilegiando quartetti per organici differenti (quartetto con pianoforte, flauto, oboe) per ampliare la vera gerarchia «Quartetto», oppure cantate sacre Bach con identificazione BWV/incipit. Distinguere ogni volta opere, raccolte, arrangiamenti e versioni; non promuovere in massa i casi euristici e non intasare i nodi macro con migliaia di opere al primo livello. Prima dell'eventuale promozione della GUI alla homepage effettuare collaudo reale browser e regressione sulle radici di Concerto, Sonata, Mozart, Beethoven, Bach. Aggiornare il thread dopo ogni tranche.
+
+
+### Checkpoint 43 — quartetti per pianoforte, flauto e oboe: 25 opere verificate, 4 sospensioni (11 novembre 2026)
+
+**Stato:** registro e GUI federata pubblicati sul branch `main`. La modifica è **staging soltanto** e non altera `musurgia-atlantis/grafo.json` né `musurgia-atlantis/index.html` di produzione. Il modello grafico mantiene le regole «Quartetto» (nodo famiglia) → organico reale (sottogenere intermedio) → opera individuale → autore, con circuito autore–opera–sottogenere–autore solo quale **indice documentato**, mai genealogia o relazione fra compositori.
+
+**Sorgente originale effettivamente esaminata:** `compositori_flaminio.xlsx`, foglio 1, campi A:H. Scannerizzato materialmente il documento (52.151 righe incluso header), 963 corrispondenze tematiche per "quartetto / quartet / quatuor"; triage mirato di **29 righe** (25 accettate e 4 trattenute). Righe e valori di A, C, D, E, H preservati nelle schede, inclusa la grafia **letterale** del compositore, distinta dal nome canonico di persona. Non equivale a dire che tutte le 963 righe siano state validate.
+
+**Registro:** `musurgia-atlantis/audit-integrazione/LOTTO43_25_QUARTETTI_ORGANICI_VARI_2026-11-11.json`:
+- Prima pubblicazione `d7594c183aba9e4a6690c1973b0f09248629ffc5`.
+- Correzione conservativa fedeltà campo autore originale `bba59ef331f6fb573d5049de7c36356c0c476580`.
+- **25 opere** con identità per numero di catalogo (21 quartetti **con pianoforte**, 3 **per flauto e archi**, 1 **per oboe e archi**), **18 URL guide Flaminio** letterali dalla colonna H e **7 URL assenti conservati come null**. **11 compositori**, tra cui quattro ancora assenti nel grafo storico federato come nodo persona (Fauré, Martinů, Enescu, Chausson) aggiunti **solo in memoria di staging**.
+- Beethoven WoO 36 n. 1–3: **tre opere individuali per pianoforte e archi**, una (n. 2) senza link guida; l'op. 16a è un **arrangiamento dal Quintetto op.16**, NON un quarto quartetto originale.
+- Mozart: due quartetti pianistici **K478, K493** (NMA conferma), tre quartetti per flauto ammessi **K285, K285a, K298** e un quartetto per oboe **K370 (K368b)**. La vera quarta voce dei quartetti per flauto, K285b / Anh.171, è **SOSPESA** per una contraddizione **documentata** tra urtext Henle (probabilmente attribuzione erronea) e l'attuale catalogo Köchel Mozarteum (autenticità indicata «gesichert»). **NON è stato generato alcun arco autore→K285b**. K285a tramandato in due movimenti; per K298 Flaminio indica anno **1778**, ma il catalogo Köchel aggiorna a **agosto 1786–febbraio 1787**. Preservare entrambe le date, non appiattirle.
+- Gli altri quartetti con pianoforte: 3 Brahms op25/26/60; 2 Dvořák op23/B53 e op87/B162; 2 Fauré op15/45; 3 Mendelssohn op1/MWV Q11, op2/MWV Q13, op3/MWV Q17; 1 Schumann op47; 1 Richard Strauss op13/TrV137; 1 Martinů H287; 2 Enescu op16/30; 1 Chausson op30. Numero d'opera e catalogazione secondaria convalidati mediante pagine Henle, Mozarteum, Dvořák ufficiale, catalogo MWV citato in Flaminio e fonti specifiche; non dedurre composizioni aggiuntive dal titolo (e.g. H287 «n. 1»).
+- **Altri 3 casi sospesi** assieme a K285b: Mozart **K493a** è una bozza del finale di K493, non un terzo quartetto pianistico; Beethoven **op16a** è una trascrizione, va modellata con arco `arrangiamento_di` verso quintetto op16; Mahler pianoforte quartetto in la minore è lavoro incompiuto (un movimento completo e schizzi): futura gerarchia «opera incompiuta» necessaria. Conservare le quattro schede HOLD senza attribuzioni errate.
+
+**Fonti autorevoli per le eccezioni:** 
+- Henle `https://www.henle.de/Flute-Quartets-for-Flute-Violin-Viola-and-Violoncello/HN-9635` contro Köchel `https://kv.mozarteum.at/de/work/quartett-in-c-3859` per K285b.
+- Köchel su K298 `https://kv.mozarteum.at/en/work/quartet-in-a-for-flute-violin-viola-and-violoncello-3964`.
+- NMA per K493a `https://dme.mozarteum.at/DME/objs/pdf/nma_183_-14_-3_eng.pdf`.
+- Henle sui Beethoven WoO36 `https://www.henle.de/media/bb/62/da/1740125740/2025-26%20GC.pdf`.
+- Dvořák `https://www.antonin-dvorak.cz/en/work/piano-quartet-1/` e `https://www.antonin-dvorak.cz/en/work/piano-quartet-no-2-in-e-flat-major-op-87-b162/`.
+
+**GUI 3D federata:** medesimo file `musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html`, pubblicazione principale `afa285ec40fa3935d5cebc2f30229388010f7b8d`, successiva restrizione radice `937bb377897bacd736d5784358b437092acf87a3`. Le funzioni `prepareQuartet43` e `attachQuartet43` aggiungono tre vere categorie intermedie:
+- `atlas:gf:quartetto-con-pianoforte` (21)
+- `atlas:gf:quartetto-per-flauto-e-archi` (3)
+- `atlas:gf:quartetto-per-oboe-e-archi` (1)
+assieme al ramo già presente `legacy:gf:genere-quartetto-archi` (39 opere Lotto42). Alla radice generale **Quartetto** compaiono **quattro rami di organico** e NON si spalancano a priori compositori od opere lontane; ciascun ramo può essere selezionato direttamente. Per Mozart la vista mostra tutte le sue opere certificate nel sottoalbero dei vari organici, senza includere K285b come attribuzione certa. Ogni opera apre il suo autore e il sottogenere corretto con link fonte dove disponibile.
+
+**Test strutturale sul dataset autentico `grafo.json` e overlay legacy e lotti 42–43:** 25 nuove opere, 4 nuovi nodi persona, 3 nuovi sottogeneri; **0 ID duplicati, 0 archi orfani e 0 ID arco duplicato**. Radici verificate: Quartetto; tutti e tre i nuovi sottogeneri; Quartetto per archi preesistente; Mozart; Beethoven; Brahms; Dvořák; Fauré; Enescu; Richard Strauss; singole opere K285, K298, K370, K478, Beethoven WoO36 n. 2. Sintassi JS integrata verificata con parser. **Non è stato effettuato un test browser/WebGL pubblico**. I link Flaminio derivano dal file reale ma non sono stati testati tutti uno per uno in HTTP. Staging non è certificazione di tutte le 52.150 voci.
+
+**URL prova anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint43-20261111
+
+**Prossimo Lotto44:** estendere famiglia Quartetto soltanto con dati di identità/organico sicuri; possibili 6 quartetti per flauto di J. C. F. Bach B37–42, ma condizionati a conferma catalografica delle fonti e compositore esatto, oppure passare alle cantate Bach BWV con incipit. Verificare possibile maggiore profondità «Quartetto con pianoforte» con 21 e futuri brani (nodo autore intermedio solo se migliora realmente leggibilità), controllare prima della promozione le radici di tutti i checkpoint Sonata, Concerto, Brandeburghesi, Quartetto e le fonti. Aggiornare il thread dopo ciascuna tranche.
