@@ -1374,3 +1374,12 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **File:** `AUDIT_FLAMINIO_LOTTO09_267_LEMMI_2026-11-10.md` pubblicato su `main`, commit `ee469d2087d38130b1774f9d4062d19554564083`. Dati analitici consegnati in conversazione: `ATLANTIS_FLAMINIO_LOTTO09_267.csv` e `.json` con 267 righe, status, candidati e gate chiusi. **Nessun nuovo nodo o arco di produzione.**
 
 **Prossima ripresa:** confronto dei 42 lemmi con TUTTI gli alberi storici Mundi e il database Atlantis complessivo, non con i soli 50 della preview. Poi incrociare i 1.167 titoli catalografici con opere reali e gestire la multiappartenenza. Checkpoint24 storico persona↔persona rimane a **74/233**, prossimi 50 separati; 210 lotti filologici preservati.
+
+
+### Lotto 10 — crosswalk dei 42 lemmi Flaminio (10 novembre 2026)
+
+**Fatto:** ripresi i 267 record delle denominazioni candidate Lotto09, aggregati in **42 lemmi singolari**, tutti documentati nel file completo **CSV/JSON** allegato alla conversazione (`ATLANTIS_FLAMINIO_LOTTO10_CROSSWALK_42_LEMMI`), con conteggio delle intestazioni, frequenze, esempi originali, ID selezionato e distinzione semantica. Dei 42, **19** hanno un ID corrispondente nella selezione di 50 nodi `GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json` e **23** NON compaiono *in quella selezione*. **Non dichiarare che manchino dal database completo**: i due file integrali `atlante3d/database/grafo.json` e `musurgia-atlantis/grafo.json` non sono stati ottenibili integralmente dal connettore in questa sessione. Il confronto con l'intero patrimonio e gli alberi preesistenti resta quindi **aperto**, non simulato.
+
+**Distinzioni chiave:** Quartetto vs Quartetto d'archi, Corale vs coro come organico, Trio vs Sonata a tre, testo liturgico vs composizione (Salmo, Messa, Antifona), intermezzo teatrale vs strumentale, variazione singolare canonica vs ID originario Variazioni. Nessuna equivalenza o arco pubblico autorizzato.
+
+**Pubblicato su GitHub, solo audit:** `AUDIT_FLAMINIO_LOTTO10_RICONCILIAZIONE_42_LEMMI_2026-11-10.md`, commit `c431d6a94b378ba509a2297cb78de99f0c0d2f91`. **Prossima ripresa:** reperire il vocabolario integrale e verificare sul serio i 23 lemmi ancora aperti, poi collegare singole opere e loro generi con provenienza e categorie multiple. Checkpoint24 storico persona↔persona fermo a **74/233**, prossimi 50 separati. Nessuna modifica ai grafi o UI pubblici, 210 lotti storici inalterati.
