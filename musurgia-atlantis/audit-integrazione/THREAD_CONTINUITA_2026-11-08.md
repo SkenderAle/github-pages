@@ -1522,3 +1522,14 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **File nuovi:** `STAGING_FLAMINIO_LOTTO22_RICALCOLO_CHIAVI_2026-11-10.json` (107 gruppi separati con tutte le rispettive righe, 30 P1 integrali, 447 ID P0); `AUDIT_FLAMINIO_LOTTO22_CORREZIONE_CASE_SENSITIVE_2026-11-10.md` (analisi musicologica, fonti, schema dati). Nessuna modifica a grafi/GUI pubblici, nessuna composizione fusa/creata, 210 lotti storico-filologici preservati. **Regola vincolante:** `casefold` usabile solo per ricerca, MAI come identificativo sufficiente di opera; normalizzazione per namespace, opera/raccolta/parte, versione, catalogo e fonte.
 
 **PROSSIMA RIPRESA:** audit musicologico dei **30 P1** ancora reali, con fonti e gate espliciti; poi **447 P0** dove la rubrica e il catalogo non garantiscono unicità. Audit storico person-to-person resta **74/233** e separato. Aggiornare questo thread ad ogni lotto significativo.
+
+
+### Lotto 23 — 30 P1 analizzati per identità d'opera, parti e documentazione (10 novembre 2026)
+
+**Completato e pubblicato solo in `audit-integrazione/`:** esaminati **30/30** gruppi P1 residui dal Lotto22, conservando tutte le righe Excel e relative URL come provenance; non significa 30 identità musicali definitivamente certificate. Triage per tipologia: collection_members 7; unresolved_catalogue 2; wrong_document_link 10; overture_or_part 7; same_bare_number_different_namespace 1; unresolved_version 1; wrong_catalogue_number 1; unresolved_local_numbering 1. **26** gruppi con pagine controllate o riscontri documentali già registrati; **4** con sole righe sorgente e HOLD indipendente.
+
+**Anomalie sostanziali:** Bononcini n.663 → collegamento improprio alla guida n.662; Palestrina due guide 625/626 incrociate; Poulenc FP15a n.5 → guida n.3; Prokof'ev op.44 → guida Seconda sinfonia op.40; Schubert `Winterreise` D911 → `An die Laute` D905; Chopin `Czary` BI51 → guida del Valzer. Gli omonimi di `Don Giovanni`, `Fidelio`, `Egmont`, `Médée`, `Agrippina`, `Euryanthe`, `Oberon` sono guide opera/parte, non nuove opere liriche; Chopin e Beethoven anche guide ai membri di raccolte. Conservare distinzione dei due arrangiamenti dal Rosenkavalier; correggere in derivato il n.43 di Mendelssohn, op.102 n.1, senza sovrascrivere il raw.
+
+**File pubblicati:** `STAGING_FLAMINIO_LOTTO23_TRIAGE_30_P1_2026-11-10.json` — 30 schede con righe sorgente, classificazioni, fonti e gate; `AUDIT_FLAMINIO_LOTTO23_30_P1_OPERE_E_SCHEDE_2026-11-10.md` — verbale analitico e 30 schede. **0 nodi/archi pubblicati, 0 merge eseguiti; 447 P0 restano sospesi e l'audit storico personale 74/233 separato.**
+
+**PROSSIMA RIPRESA:** Lotto24 Flaminio, confronto opera/documento/raccolta/parte e identità dei 30 P1 con gli ID reali Atlantis e Atlante 3D, prioritizzando incroci di link corretti, sottogeneri (dramma giocoso) e opere già esistenti; non pubblicare su `grafo.json` o GUI prima dei test e certificazione.
