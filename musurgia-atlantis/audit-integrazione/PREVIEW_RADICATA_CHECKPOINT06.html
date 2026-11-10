@@ -341,6 +341,74 @@ function attachBrandenburg(result,maxDepth,depths){
  return result;
 }
 
+
+// Lotto 35 — dieci opere Flaminio con concordanza esterna work-specific.
+// Nel grafo radicato sono attraversabili solo autore→opera e opera→genere;
+// il genere non funziona da ponte verso altri autori.
+let lot35={works:[],links:[],ids:new Set()};
+function prepareLot35(record){
+ if(record?.schema!=="musurgia-atlantis-flaminio-certified-lotto35-v1"||record.works?.length!==10)throw Error("Lotto35: formato inatteso");
+ const map=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const clean=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z ]/g,"").replace(/\s+/g," ").trim();
+ for(const w of record.works){
+  if(lot35.ids.has(w.id)||map.has(w.id)||!/BWV|K |Sz |op\. /i.test(w.catalogue)||!/^https:\/\//.test(w.evidence_url)||/271i|271a/i.test(w.catalogue))throw Error("Identità lotto35 non sicura: "+w.id);
+  const genre=map.get(w.genre_id);
+  if(!genre||genre.category!=="genere-forma")throw Error("Genere lotto35 mancante");
+  let author=map.get(w.composer_id_hint);
+  if(author?.category!=="persona"){
+   author=dataset.nodes.find(n=>n.category==="persona"&&(clean(n.name)===clean(w.composer_name)||
+    (clean(w.composer_name).includes("bartok")&&clean(n.name).includes("bartok"))||
+    (clean(w.composer_name).includes("barber")&&clean(n.name).includes("barber"))));
+  }
+  if(!author){
+   if(!w.composer_id_hint.startsWith("fl:autor:"))throw Error("Autore di repertorio non risolto: "+w.composer_name);
+   author={id:w.composer_id_hint,name:w.composer_name,category:"persona",evidence_status:"catalogue_author"};
+   dataset.nodes.push(author);map.set(author.id,author);
+  }
+  const node={id:w.id,name:w.name,category:"opera",subtype:w.genre.toLowerCase(),catalogue_id:w.catalogue,
+    source_excel_row:w.source_excel_row,flaminio_explanation_url:w.evidence_url,
+    evidence_status:"work_identity_external_concordance",source_collection:"Flaminio"};
+  dataset.nodes.push(node);map.set(node.id,node);lot35.ids.add(node.id);
+  lot35.works.push({...w,author_id:author.id});
+  for(const [rel,from,to]of [["ha_composto",author.id,node.id],["ha_genere",node.id,w.genre_id]]){
+   const e={id:"fl35:"+rel+":"+node.id,source:from,target:to,relation:rel,
+    statement_type:"work_specific_catalogue_concordance",root_permission:"specific_work_only",
+    sources:[w.evidence_url],evidence_urls:[w.evidence_url],
+    description:"Relazione specifica documentata nel catalogo esterno; non autorizza espansioni da un genere ad autori estranei."};
+   dataset.links.push(e);lot35.links.push(e);
+  }
+ }
+}
+function attachLot35(result,maxDepth,limits){
+ if(!lot35.works.length||maxDepth<1)return result;
+ const focus=lot35.works.some(w=>[w.id,w.author_id,w.genre_id].includes(currentRoot));
+ if(!focus)return result;
+ const shown=new Map(result.nodes.map(n=>[n.id,n])),all=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const present=new Set(result.links.map(e=>e.id));
+ function add(id,d,from,label){
+  if(shown.has(id))return shown.get(id);
+  const n=all.get(id);
+  if(!n||d>maxDepth||d>(limits[n.category]??maxDepth))return null;
+  const parent=shown.get(from),a={...n,_depth:d,_path:[...(parent?._path||[currentRoot]),id],_permission:label};
+  result.nodes.push(a);shown.set(id,a);return a;
+ }
+ const genreRoot=lot35.works.some(w=>w.genre_id===currentRoot);
+ for(const w of lot35.works){
+  if(currentRoot===w.author_id){
+   add(w.id,1,currentRoot,"attested_work");
+   if(maxDepth>=2)add(w.genre_id,2,w.id,"genre_terminal");
+  }else if(currentRoot===w.id){
+   add(w.author_id,1,currentRoot,"attested_author");add(w.genre_id,1,currentRoot,"attested_genre");
+  }else if(genreRoot&&currentRoot===w.genre_id){
+   add(w.id,1,currentRoot,"specific_genre_index");add(w.author_id,2,w.id,"terminal_author");
+  }
+ }
+ for(const e of lot35.links)if(shown.has(e.source)&&shown.has(e.target)&&!present.has(e.id)){
+  result.links.push({...e});present.add(e.id);
+ }
+ return result;
+}
+
 // Checkpoint 18: reconcile direct person relations from Mundi federation in staging.
 let federatedPeople={nodes:[],links:[]},federatedPeopleByNode=new Map();
 function prepareFederatedPeople(data){
@@ -529,6 +597,10 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
   return attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
  }
 
+ if(lot35.ids.has(currentRoot)){
+  const root=dataset.nodes.find(n=>n.id===currentRoot);
+  return attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"work_root"}],links:[]},maxDepth,depthByCategory);
+ }
  if(brandenburgIds.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
   return attachBrandenburg({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"individual_BWV_root"}],links:[]},maxDepth,depthByCategory);
@@ -550,7 +622,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -563,7 +635,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -731,9 +803,9 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
@@ -741,7 +813,8 @@ async function init(){
    fetch("./OVERLAY_PERSONE_FEDERATE_CHECKPOINT18_2026-11-09.json?v=checkpoint18",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Relazioni persone federate mancanti "+r.status);return r.json()}),
    fetch("./OVERLAY_TASSONOMIA_MOZART_CHECKPOINT19_2026-11-09.json?v=checkpoint19",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Tassonomia delle opere Mozart mancante "+r.status);return r.json()}),
     fetch("./OVERLAY_FAMIGLIA_CONCERTO_CHECKPOINT25_2026-11-10.json?v=checkpoint25",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Famiglia Concerto mancante "+r.status);return r.json()}),
-    fetch("./STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json?v=checkpoint34",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Schede Brandeburghesi mancanti "+r.status);return r.json()})
+    fetch("./STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json?v=checkpoint34",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Schede Brandeburghesi mancanti "+r.status);return r.json()}),
+    fetch("./LOTTO35_OPERE_CERTIFICATE_2026-11-10.json?v=checkpoint35",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 35 mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -759,6 +832,7 @@ async function init(){
  dataset.nodes.push(...flaminioPreview.nodes);
  dataset.links.push(...flaminioPreview.links);
  prepareBrandenburg(brandenburgInput);
+ prepareLot35(lot35Input);
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
