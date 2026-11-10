@@ -1363,3 +1363,14 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **Pubblicato:** `AUDIT_CROSSWALK_FLAMINIO_LOTTO08_265_SENZA_LEMMA_2026-11-10.md`, commit `73ae3fa98bd2ac08b47ecd9540f6489efd2af361`. Artefatti completi `ATLANTIS_FLAMINIO_LOTTO08_265.csv` e `.json` creati nella conversazione, NON ancora caricati su GitHub.
 
 **Prossima ripresa:** Lotto09 verifica delle **267** voci `candidato_forma_singolare_non_validato` con tassonomia Musurgia/Atlantis e, a seguire, crosswalk globale multiassiale. Le 635 composite sono già tutte triagiate, ma non convalidate singolarmente. Audit Checkpoint24 resta 74/233 (prossimi 50) separato. Grafo pubblico intatto; 210 lotti storico-filologici tutelati.
+
+
+### Lotto 09 — 267 candidati di genere/forma, confronto controllato coi 50 nodi legacy (10 novembre 2026)
+
+**Fonte:** `CROSSWALK_FLAMINIO_SINGOLARE_LOTTO03_2026-11-10.json` (stato esatto `candidato_forma_singolare_non_validato`): **267** intestazioni, **12.821** righe catalografiche. **42** lemmi singolari candidati distinti, **19** con ID verificato nella selezione dei **50** nodi `GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json`, **23** senza ID *in quella selezione*, NON necessariamente assenti da tutto Musurgia Mundi. Esiti delle intestazioni: **117** match lessicali semplici, **96** richiedono controllo opera per opera, **54** lemma assente dalla selezione 50 senza altri segnali critici intercettati. Questa partizione non implica alcuna convalida automatica.
+
+**Cautele decisive:** `Musica corale` ≠ `Corale` per il solo nome; `Quartetto vocale` ≠ `Quartetto d'archi`; `Sonata a tre` non sinonimo automatico di `Trio`; Messa completa distinta dalle sezioni; raccolte/editoria e versioni separate da opere individuali; le voci multi-forma non conferiscono ogni categoria a tutti i brani. Conservare sempre la denominazione originale Flaminio, la forma canonica al singolare, le fonti e la provenienza.
+
+**File:** `AUDIT_FLAMINIO_LOTTO09_267_LEMMI_2026-11-10.md` pubblicato su `main`, commit `ee469d2087d38130b1774f9d4062d19554564083`. Dati analitici consegnati in conversazione: `ATLANTIS_FLAMINIO_LOTTO09_267.csv` e `.json` con 267 righe, status, candidati e gate chiusi. **Nessun nuovo nodo o arco di produzione.**
+
+**Prossima ripresa:** confronto dei 42 lemmi con TUTTI gli alberi storici Mundi e il database Atlantis complessivo, non con i soli 50 della preview. Poi incrociare i 1.167 titoli catalografici con opere reali e gestire la multiappartenenza. Checkpoint24 storico persona↔persona rimane a **74/233**, prossimi 50 separati; 210 lotti filologici preservati.
