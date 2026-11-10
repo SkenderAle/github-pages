@@ -997,6 +997,15 @@ function attachSonata39(result,maxDepth,limits){
   links.clear();for(const e of result.links)links.add(e.id);
  }
  for(const e of sonata39.edges)link(e);
+ if(isGroup){
+  // Complete author → work → instrumental subtype → author rings inside the
+  // selected subtype only (not as a flood of links on the parent Sonata).
+  const group=sonata39.groups.get(currentRoot);
+  for(const e of dataset.links){
+   if(group.works.has(e.target)&&group.authors.has(e.source)&&
+      /^(ha_composto|compone|compone_la_musica_di)$/.test(e.relation||""))link(e);
+  }
+ }
  if(isWork){
   for(const e of dataset.links){
    if(e.target===currentRoot&&nodeById.get(e.source)?.category==="persona"&&
