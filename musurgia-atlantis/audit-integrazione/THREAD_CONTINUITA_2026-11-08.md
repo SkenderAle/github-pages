@@ -1275,3 +1275,14 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **Documento GitHub:** `AUDIT_CROSSWALK_FLAMINIO_TASSONOMIA_LOTTO01_2026-11-10.md`, commit `0982051d9c5ca227b2b837002ef12069417f0c5f`. File di lavoro consegnati in conversazione: `CROSSWALK_FLAMINIO_TASSONOMIA_LOTTO01_2026-11-10.csv` e `.json` con tutte le 1.167 denominazioni originali, frequenze, indicatori e candidati lessicali **senza fusioni autorizzate**. Non ancora caricati su GitHub; originale Excel non pubblicato.
 
 **Decisione metodologica:** non completare unilateralmente la tassonomia Checkpoint26. Confrontare prima TUTTI gli alberi Mundi e i vocabolari Atlantis con le intestazioni Flaminio. Separare genere/forma, organico, contesto storico, percorsi catalografici, versioni e titoli effettivi; crosswalk molteplici con provenienza. Checkpoint24 rimane **74/233**, prossimo lotto storico-filologico da 50 a parte. Nessuna modifica produzione.
+
+
+### Checkpoint 27 — canonizzazione al singolare e sei Brandeburghesi individuali (10 novembre 2026)
+
+**Decisione dell'utente:** generi e forme canonici al **singolare** anche quando Flaminio li registra in intestazioni plurali (Sonate→Sonata, Lieder→Lied, Concerti→Concerto); distinguere raccolta editoriale da brano individuale e conservare sempre il testo originale.
+
+**Verificato direttamente nell'Excel** `compositori_flaminio.xlsx`, righe **3081–3086**: Bach, `Concerti`, BWV **1046–1051**, ciascuno con titolo autonomo e proprio link di spiegazione. Il nodo Atlantis `opera:bach-sei-concerti-brandeburghesi-1721` deve restare **raccolta**, non sostituire le sei opere. Ogni opera potrà essere selezionata indipendentemente (per esempio mostrare soltanto 2 concerti); il genere canonicalizzato è `Concerto`. I dati di datazione delle singole righe non vengono appiattiti sul 1721.
+
+**Pubblicati su `main` solo in `audit-integrazione/`:** `STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json`, commit `5e0c535b94c3a5d697d1a0b99fc1f98ae94036fb` (**6** opere candidate; **18** archi di composizione, appartenenza alla raccolta e classificazione); `AUDIT_CHECKPOINT27_BRANDEBURGHESI_E_SINGOLARE_2026-11-10.md`, commit `0a0fda1b7b08115bfb1fe2a5d236369b1be00fd8`. Dati non ancora deduplicati contro l'intero grafo Atlantis né pubblicati nella UI; provenienza e link per opera preservati. Ancora da verificare la denominazione francese del nodo di raccolta nel database effettivo.
+
+**Prossimi passaggi:** deduplicazione opera per opera; lemmatizzazione singolare di tutte le intestazioni Flaminio con eccezioni e segmentazione dell'organico; crosswalk tassonomico globale; test browser di selezione di due opere su sei. Audit Checkpoint24 fermo a **74/233**, prossimo blocco 50 separato. Nessun grafo o interfaccia di produzione modificati; 210 lotti intatti.
