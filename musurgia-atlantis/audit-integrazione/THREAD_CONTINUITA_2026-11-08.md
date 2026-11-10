@@ -1317,3 +1317,14 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **Pubblicato su `main` in audit:** `AUDIT_CROSSWALK_FLAMINIO_LOTTO05_200_2026-11-10.md`, commit `3ab6fd3121bb5cb5bddd49aef072915fb44f5e24`. In conversazione disponibili `ATLANTIS_FLAMINIO_LOTTO05_200.csv` e `.json` con 200 record completi e gate chiusi; **non caricati integralmente nel repository**. Nessun file di produzione modificato, 210 lotti storici intatti.
 
 **Prossimo passo:** Lotto06 posizioni **251–450** (200 voci), quindi Lotto07 **451–635** (185), con revisione delle proposte sulle opere e confronto con tutti gli alberi Mundi. Separatamente Checkpoint24 storico persona↔persona fermo a **74/233** archi, prossimi 50.
+
+
+### Audit Flaminio–Atlantis — Lotto 06: altre 200 intestazioni composite, posizioni 251–450 (10 novembre 2026)
+
+**Eseguito:** confronto del Lotto03 (**635** intestazioni composite) e del Lotto05 (posizioni 51–250). Analizzate le **200** posizioni successive, **251–450**, senza duplicazioni e con ordinamento frequenza decrescente + nome a parità. Le denominazioni rappresentano **3.081** righe catalografiche, non 3.081 opere individuali. Stato cumulativo: **450/635** intestazioni coperte; **185** rimanenti.
+
+**Granularità reale:** **46** interpretazioni editoriali mirate e **154** classificazioni preliminari a regole; per tutte le 200, originale, frequenza, foglia, motivazione e stato `merge_autorizzato=false` conservati. Le 3.081 righe sottostanti non sono state verificate opera per opera. **Casi sentinella:** Piccolo libro di Anna Magdalena Bach = raccolta e non unica composizione; baryton strumento, non voce; arie da concerto non necessariamente estratti; sonata da chiesa specifica; concerto senza orchestra da preservare; pasticcio con paternità musicale distribuita; sinfonia d'opera vs sinfonia autonoma; Messa completa vs sezioni di Messa; libretti e brani individuali distinti.
+
+**Pubblicato:** `AUDIT_CROSSWALK_FLAMINIO_LOTTO06_200_2026-11-10.md`, commit `b3646a98444c33aa259dce18271b225f028a7e2d`. CSV e JSON completi `ATLANTIS_FLAMINIO_LOTTO06_200` creati nella conversazione, non ancora versati nel repository. Grafo Atlantis, pagine Mundi, renderer e 210 lotti storico-filologici invariati.
+
+**Prossima ripresa:** Lotto07 **451–635**, le ultime **185** intestazioni composite; poi revisione dei 265 casi senza lemma nel Lotto03 e crosswalk generale sui vocabolari completi. Separatamente Checkpoint24 storico persona↔persona fermo a **74/233**, prossimo lotto 50.
