@@ -14,24 +14,18 @@
   "metrics": {
     "mapped_work_groups": 3,
     "mapped_work_nodes": 4,
-    "mapped_sources_to_person_atlantis": 26,
-    "mapped_sources_to_person_legacy": 25,
+    "mapped_sources_to_person_atlantis": 28,
+    "mapped_sources_to_person_legacy": 29,
     "unique_composers": 20,
     "groups": 30,
     "groups_without_work_mapping": 27,
     "attested_relation_count": 9,
     "atlantis_composer_not_present": [
       "BONONCINI, Giovanni",
-      "CHERUBINI, Luigi",
-      "MENDELSSOHN-BARTOLDY, Felix",
-      "PROKOFIEV, Sergej"
+      "CHERUBINI, Luigi"
     ],
     "legacy_composer_not_present": [
-      "BONONCINI, Giovanni",
-      "HAYDN, Franz Joseph",
-      "MENDELSSOHN-BARTOLDY, Felix",
-      "MOZART, Wolfgang Amedeus",
-      "PROKOFIEV, Sergej"
+      "BONONCINI, Giovanni"
     ]
   },
   "warning": "The direct title-author mappings of Don Giovanni, Fidelio and Egmont reference verified existing Atlantis edges. The other 27 groups are NOT certified absent: no invented match and no automatic creation. Person matches are candidates and never merge authority.",
@@ -708,13 +702,15 @@
       "source_triage": "unresolved_catalogue",
       "atlantis_person_candidate": {
         "target_id": "pers:haydn",
-        "method": "unique_surname_only",
-        "status": "candidate_alias_or_spelling_review"
+        "method": "resolved_truncated_or_alias_source_name_verified_target_node",
+        "status": "candidate_identity_review",
+        "observed_name": "Joseph Haydn"
       },
       "legacy_person_candidate": {
-        "target_id": null,
-        "method": "ambiguous_surname",
-        "status": "unresolved"
+        "target_id": "compositore-joseph-haydn",
+        "method": "resolved_truncated_or_alias_source_name_verified_target_node",
+        "status": "candidate_identity_review",
+        "observed_name": "Joseph Haydn"
       },
       "work_ids_in_atlantis_snapshot": [],
       "existing_work_relation_evidence": [],
@@ -779,14 +775,16 @@
       ],
       "source_triage": "wrong_catalogue_number",
       "atlantis_person_candidate": {
-        "target_id": null,
-        "method": "no_name_candidate",
-        "status": "unresolved"
+        "target_id": "pers:mendelssohn",
+        "method": "resolved_truncated_or_alias_source_name_verified_target_node",
+        "status": "candidate_identity_review",
+        "observed_name": "Felix Mendelssohn"
       },
       "legacy_person_candidate": {
-        "target_id": null,
-        "method": "no_name_candidate",
-        "status": "unresolved"
+        "target_id": "compositore-felix-mendelssohn",
+        "method": "resolved_truncated_or_alias_source_name_verified_target_node",
+        "status": "candidate_identity_review",
+        "observed_name": "Felix Mendelssohn"
       },
       "work_ids_in_atlantis_snapshot": [],
       "existing_work_relation_evidence": [],
@@ -852,13 +850,15 @@
       "source_triage": "overture_or_part",
       "atlantis_person_candidate": {
         "target_id": "pers:mozart",
-        "method": "unique_surname_only",
-        "status": "candidate_alias_or_spelling_review"
+        "method": "resolved_truncated_or_alias_source_name_verified_target_node",
+        "status": "candidate_identity_review",
+        "observed_name": "Wolfgang Amadeus Mozart"
       },
       "legacy_person_candidate": {
-        "target_id": null,
-        "method": "ambiguous_surname",
-        "status": "unresolved"
+        "target_id": "compositore-wolfgang-amadeus-mozart",
+        "method": "resolved_truncated_or_alias_source_name_verified_target_node",
+        "status": "candidate_identity_review",
+        "observed_name": "Wolfgang Amadeus Mozart"
       },
       "work_ids_in_atlantis_snapshot": [
         "opera:Don-giovanni"
@@ -1017,14 +1017,16 @@
       ],
       "source_triage": "wrong_document_link",
       "atlantis_person_candidate": {
-        "target_id": null,
-        "method": "no_name_candidate",
-        "status": "unresolved"
+        "target_id": "pers:prokofev",
+        "method": "resolved_truncated_or_alias_source_name_verified_target_node",
+        "status": "candidate_identity_review",
+        "observed_name": "Sergej Prokof’ev"
       },
       "legacy_person_candidate": {
-        "target_id": null,
-        "method": "no_name_candidate",
-        "status": "unresolved"
+        "target_id": "compositore-sergej-prokof-ev",
+        "method": "resolved_truncated_or_alias_source_name_verified_target_node",
+        "status": "candidate_identity_review",
+        "observed_name": "Sergej Prokof'ev"
       },
       "work_ids_in_atlantis_snapshot": [],
       "existing_work_relation_evidence": [],
@@ -1250,5 +1252,6 @@
       "create_or_merge_allowed": false
     }
   ],
-  "all_production_gates_closed": true
+  "all_production_gates_closed": true,
+  "alias_resolution_note": "4 source labels require historical spelling/abbreviation reconciliation (Haydn, Mozart, Mendelssohn, Prokofiev). Their target nodes are real, checked by IDs. This is still a candidate source-to-graph identity crosswalk, not permission to merge."
 }
