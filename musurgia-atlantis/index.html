@@ -247,10 +247,44 @@ function setupUI(){
  $('closeDetail').onclick=()=>{selectedId=null;selectedEdge=null;$('detail').classList.remove('open');$('footer').classList.remove('hidden');graph.nodeColor(nodeColor);graph.linkColor(linkColor)};
  $('mobileFilters').onclick=()=>{const yes=$('side').classList.toggle('open');$('mobileFilters').setAttribute('aria-expanded',String(yes));if(yes)$('detail').classList.remove('open')};
 }
+// Flaminio: overlay documentato inserito nell'unico grafo runtime di Atlantis.
+// La sorgente originale rimane intatta; NON importiamo righe incerte come fatti storici.
+async function mergeFlaminioVerified(data){
+ const url='./catalogo-flaminio/overlay-verificati-pilota.json';
+ const response=await fetch(url,{cache:'no-store'});
+ if(!response.ok)throw Error('Impossibile caricare il registro Flaminio ('+response.status+')');
+ const overlay=await response.json();
+ if(!Array.isArray(overlay.nodes)||!Array.isArray(overlay.links)||!Array.isArray(overlay.sources))throw Error('Formato overlay Flaminio non valido');
+ const originalNodes=data.nodes.length,originalLinks=data.links.length;
+ const ids=new Set(data.nodes.map(n=>n.id));
+ const knownByName=new Map();
+ for(const n of data.nodes)if(n.category==='persona'){const k=norm(n.name);if(!knownByName.has(k))knownByName.set(k,n.id)}
+ const alias=new Map();
+ for(const n of overlay.nodes){
+   if(n.category==='persona'&&knownByName.has(norm(n.name))){alias.set(n.id,knownByName.get(norm(n.name)));continue}
+   if(ids.has(n.id))throw Error('Collisione ID Flaminio: '+n.id);
+   if(!['persona','opera'].includes(n.category))throw Error('Categoria Flaminio non ammessa');
+   data.nodes.push({...n,source_collection:'Flaminio — attribuzione documentata',evidence_status:n.status});
+   ids.add(n.id);
+ }
+ const refs=new Map(overlay.sources.map(s=>[s.id,s.url]));
+ const edgeIds=new Set(data.links.map(e=>e.id));
+ for(const e of overlay.links){
+   const from=alias.get(e.source)||e.source,to=alias.get(e.target)||e.target;
+   if(!ids.has(from)||!ids.has(to))throw Error('Estremo Flaminio non risolto: '+e.id);
+   if(edgeIds.has(e.id))throw Error('Collisione relazione Flaminio: '+e.id);
+   const evidence=refs.get(e.source_ref);
+   data.links.push({...e,source:from,target:to,quality_gate:'relazione_specifica_riscontrata',tier:'trattazione',description:'Attribuzione documentata a livello di opera. La vecchia intestazione del catalogo Flaminio non è una relazione di paternità.',evidence_urls:evidence?[evidence]:[]});
+   edgeIds.add(e.id);
+ }
+ console.info('Atlantis: overlay Flaminio unificato nel grafo principale', {newNodes:data.nodes.length-originalNodes,newLinks:data.links.length-originalLinks});
+ return data;
+}
 async function init(){
  // A compatibility renderer guarantees a visible 3D network even when the CDN is blocked.
  const response=await fetch('./grafo.json',{cache:'no-store'});if(!response.ok)throw Error('Non riesco a leggere grafo.json ('+response.status+').');
  DATA=await response.json();if(!Array.isArray(DATA.nodes)||!Array.isArray(DATA.links))throw Error('Il grafo non contiene nodi e relazioni validi.');
+ await mergeFlaminioVerified(DATA);
  lookup=new Map(DATA.nodes.map(n=>[n.id,n]));
  for(const e of DATA.links){if(!lookup.has(e.source)||!lookup.has(e.target))throw Error('È presente un collegamento verso un nodo mancante: '+e.id);e.tier=tier(e)}
  const webglOK=(()=>{try{const c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}})();
