@@ -1352,3 +1352,14 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **Casi sentinella Lotto07:** contrafactum spirituale = derivazione; quartetto vocale ≠ quartetto d'archi; aria da concerto non necessariamente Concerto; `Opere` non prova Opera; falsa attribuzione a Buxtehude blocca paternità; raccolte ed edizioni altrui ≠ opera originale; Te Deum/Stabat Mater tra testo e genere da distinguere; cinema/radio/televisione sono destinazioni; Trautonium è uno strumento. **Rapporto GitHub** `AUDIT_CROSSWALK_FLAMINIO_LOTTO07_185_2026-11-10.md`, commit `ffdf82981df26687bc71a2a8113a52fc90a5065b`.
 
 **Prossima fase, distinta:** completare confronto integrale delle 1.167 denominazioni con tutti gli alberi Mundi (inclusi i **265** casi senza lemma iniziale) e convalidare i match su opere reali; deduplicare composizioni, raccolte, numeri, versioni, fonti e attribuzioni. **Checkpoint24** persona↔persona ancora a **74/233**, prossimi 50 quando si riprende quell'audit. Produzione e 210 lotti storici invariati.
+
+
+### Lotto 08 — 265 denominazioni Flaminio senza lemma iniziale (10 novembre 2026)
+
+**Fonte:** `CROSSWALK_FLAMINIO_SINGOLARE_LOTTO03_2026-11-10.json`, categoria esatta `no_forma_riconosciuta` (**265 voci**, **8.608 righe catalografiche**). Nuovo triage con **20** note editoriali mirate e **245** preclassificazioni linguistiche non convalidate. Individuati **61** lemmi possibili e **204** voci senza lemma affidabile con le sole regole; fra queste **88** non ottengono neppure una tipologia informativa. Corrette le false equivalenze `Cantici→Canto` e `Melodie→Mélodie francese`; `Songs` non si traduce automaticamente come `Canzone`.
+
+**Esempi:** Canoni→Canone (tecnica/forma), Villanelle→Villanella, Triosonate→Sonata a tre, Anthems→Anthem, Catches→Catch; Gloria/Magnificat/Miserere come testi liturgici o opere/sezioni da distinguere; `Péchés de vieillesse` come ciclo/raccolta; musica sacra/profana, organici e indici non sono generi canonici. Nessuna fusione, nessuna classificazione di opere dedotta dalle sole intestazioni.
+
+**Pubblicato:** `AUDIT_CROSSWALK_FLAMINIO_LOTTO08_265_SENZA_LEMMA_2026-11-10.md`, commit `73ae3fa98bd2ac08b47ecd9540f6489efd2af361`. Artefatti completi `ATLANTIS_FLAMINIO_LOTTO08_265.csv` e `.json` creati nella conversazione, NON ancora caricati su GitHub.
+
+**Prossima ripresa:** Lotto09 verifica delle **267** voci `candidato_forma_singolare_non_validato` con tassonomia Musurgia/Atlantis e, a seguire, crosswalk globale multiassiale. Le 635 composite sono già tutte triagiate, ma non convalidate singolarmente. Audit Checkpoint24 resta 74/233 (prossimi 50) separato. Grafo pubblico intatto; 210 lotti storico-filologici tutelati.
