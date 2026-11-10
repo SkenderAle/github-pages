@@ -884,45 +884,171 @@ function attachGenreRings(result,maxDepth,limits){
  return result;
 }
 
+
+// Checkpoint 39 — genuine intermediate Sonata subgenres, grouped by instrumentation.
+// Categories are navigable graph nodes, not mere text under individual works.
+// Raw author/work/genre edges stay in the dataset, but a grouped view uses the
+// subtype path, avoiding 27 competing first-level edges.
+let sonata39={groups:new Map(),workToGroup:new Map(),parent:"legacy:gf:genere-sonata",edges:[]};
+function prepareSonata39(){
+ if(!dataset.nodes.some(n=>n.id===sonata39.parent))throw Error("Genere Sonata assente");
+ const groups=[
+  {id:"atlas:gf:sonata-per-pianoforte",name:"Sonata per pianoforte",match:(w,n)=>w.author==="pers:mozart"&&/sonata per pianoforte/i.test(n.name||"")},
+  {id:"atlas:gf:sonata-per-violino-e-pianoforte",name:"Sonata per violino e pianoforte",match:(w,n)=>w.author==="pers:beethoven"&&/sonata per violino e pianoforte/i.test(n.name||"")}
+ ];
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ for(const group of groups){
+  if(nodes.has(group.id))throw Error("Sottogenere Sonata già presente: "+group.id);
+  const records=(genreRings.byGenre.get(sonata39.parent)||[]).filter(r=>group.match(r,nodes.get(r.work)));
+  if(!records.length)throw Error("Gruppo sonate non popolato: "+group.name);
+  const uniqueWorks=new Set(records.map(r=>r.work));
+  const authors=new Set(records.map(r=>r.author));
+  const n={id:group.id,name:group.name,category:"genere-forma",subtype:"sottogenere per organico",
+   description:"Articolazione della sonata secondo l'organico documentato. Nodo di raggruppamento catalografico, non opera collettiva.",
+   taxonomy_status:"catalogue_instrumentation_subgenre",source_collection:"Flaminio, opere attribuite singolarmente"};
+  dataset.nodes.push(n);nodes.set(n.id,n);
+  const link=(id,source,target,relation,description)=>{
+   const e={id,source,target,relation,statement_type:"documented_subgenre_hierarchy",
+    root_permission:"non_transitive_instrumentation",description,
+    supporting_work_ids:[...uniqueWorks]};
+   dataset.links.push(e);sonata39.edges.push(e);
+  };
+  link("atlas:sonata39:parent:"+n.id,n.id,sonata39.parent,"sottogenere_di",
+   "Sonata per organico è una specializzazione catalografica del genere Sonata.");
+  for(const author of authors)link("atlas:sonata39:author:"+author+":"+n.id,author,n.id,
+   "ha_composto_opere_del_sottogenere","Indice derivato dalle singole sonate documentate di questo organico.");
+  for(const work of uniqueWorks){
+   if(sonata39.workToGroup.has(work))throw Error("Opera inserita in gruppi duplicati: "+work);
+   sonata39.workToGroup.set(work,n.id);
+   link("atlas:sonata39:work:"+work,work,n.id,"ha_sottogenere",
+    "Classificazione per organico della singola sonata.");
+  }
+  sonata39.groups.set(n.id,{...group,works:uniqueWorks,authors});
+ }
+}
+function attachSonata39(result,maxDepth,limits){
+ if(!sonata39.groups.size||maxDepth<1)return result;
+ const isGenre=currentRoot===sonata39.parent;
+ const isGroup=sonata39.groups.has(currentRoot);
+ const isWork=sonata39.workToGroup.has(currentRoot);
+ const isAuthor=[...sonata39.groups.values()].some(g=>g.authors.has(currentRoot));
+ if(!isGenre&&!isGroup&&!isWork&&!isAuthor)return result;
+ const nodeById=new Map(dataset.nodes.map(n=>[n.id,n]));
+ // Sonata is an entry into subgenres, not a flat list of all compositions.
+ if(isGenre||isGroup){
+  const root=nodeById.get(currentRoot);
+  result={root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]};
+ }
+ const seen=new Map(result.nodes.map(n=>[n.id,n]));
+ const links=new Set(result.links.map(e=>e.id));
+ function add(id,depth,from,permission){
+  if(seen.has(id))return seen.get(id);
+  const n=nodeById.get(id);
+  if(!n||depth>maxDepth||depth>(limits[n.category]??maxDepth))return null;
+  const parent=seen.get(from);
+  const item={...n,_depth:depth,_path:[...(parent?._path||[currentRoot]),id],_permission:permission};
+  result.nodes.push(item);seen.set(id,item);return item;
+ }
+ function link(e){
+  if(seen.has(e.source)&&seen.has(e.target)&&!links.has(e.id)){
+   result.links.push({...e});links.add(e.id);
+  }
+ }
+ if(isGenre){
+  for(const group of sonata39.groups.values()){
+   if(add(group.id,1,currentRoot,"instrumentation_subgenre")){
+    // A genre query expands its immediate subgenres first;
+    // composer/work branches appear only when user chooses a subtype.
+    for(const author of group.authors)if(maxDepth>=2)add(author,2,group.id,"subgenre_author_terminal");
+   }
+  }
+ }else if(isGroup){
+  const group=sonata39.groups.get(currentRoot);
+  add(sonata39.parent,1,currentRoot,"parent_genre_terminal");
+  for(const work of group.works)if(add(work,1,currentRoot,"individual_sonata")){}
+  for(const author of group.authors)if(maxDepth>=2)add(author,2,currentRoot,"subgenre_author_terminal");
+ }else if(isWork){
+  const subgroup=sonata39.workToGroup.get(currentRoot);
+  add(subgroup,1,currentRoot,"specific_instrumentation_subgenre");
+  add(sonata39.parent,2,subgroup,"genre_sonata_terminal");
+ }else if(isAuthor){
+  // Preserve the author's OTHER works, but group his sonatas under their
+  // instrumentation node instead of flattening them at level one.
+  for(const group of sonata39.groups.values()){
+   if(!group.authors.has(currentRoot))continue;
+   const gn=add(group.id,1,currentRoot,"authored_sonata_subgenre");
+   if(!gn)continue;
+   for(const work of group.works){
+    let n=seen.get(work);
+    if(n){
+     n._depth=2;n._path=[currentRoot,group.id,work];
+    }else n=add(work,2,group.id,"individual_sonata");
+   }
+   if(maxDepth>=2)add(sonata39.parent,2,group.id,"genre_sonata_terminal");
+  }
+  // Remove redundant direct spokes for grouped sonatas; the original facts
+  // remain in dataset and appear when an individual work is the root.
+  const subset=new Set([...sonata39.workToGroup.keys()]);
+  result.links=result.links.filter(e=>!(
+    (e.source===currentRoot&&subset.has(e.target))||
+    (e.target===currentRoot&&subset.has(e.source))||
+    (subset.has(e.source)&&e.target===sonata39.parent)
+  ));
+  links.clear();for(const e of result.links)links.add(e.id);
+ }
+ for(const e of sonata39.edges)link(e);
+ if(isWork){
+  for(const e of dataset.links){
+   if(e.target===currentRoot&&nodeById.get(e.source)?.category==="persona"&&
+       /^(ha_composto|compone|compone_la_musica_di)$/.test(e.relation||""))link(e);
+  }
+  for(const e of genreRings.links)link(e);
+ }
+ return result;
+}
+
 function getRootedPreview(maxDepth,relevance,depthByCategory){
  if(concertoFamilyByNode.has(currentRoot)){
   const root={...concertoFamilyByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_concerto_subgenre"};
-  return attachGenreRings(attachConcertoFamily({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachConcertoFamily({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
 
  if(mozartTaxonomyNodes.has(currentRoot)){
   const root={...mozartTaxonomyNodes.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_taxonomy_term"};
-  return attachGenreRings(attachMozartTaxonomy({root:currentRoot,nodes:[root],links:[]},maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachMozartTaxonomy({root:currentRoot,nodes:[root],links:[]},maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
 
  if(federatedPeopleByNode.has(currentRoot)){
   const root={...federatedPeopleByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_federated_person"};
-  return attachGenreRings(attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
 
  if(beethoven38.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachGenreRings({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"beethoven38_work_root"}],links:[]},maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"beethoven38_work_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+ }
+ if(sonata39.groups.has(currentRoot)||currentRoot===sonata39.parent){
+  return attachSonata39({root:currentRoot,nodes:[],links:[]},maxDepth,depthByCategory);
  }
  if(currentRoot==="legacy:gf:genere-sonata"||currentRoot==="fl:gf:sonata"||lot35.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachGenreRings(attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(sym36.ids.has(currentRoot)||currentRoot===sym36.genreId){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachGenreRings(attachLot35(attachSym36({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"symphony_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachLot35(attachSym36({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"symphony_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(lot35.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachGenreRings(attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"work_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"work_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(brandenburgIds.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachGenreRings(attachBrandenburg({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"individual_BWV_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachBrandenburg({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"individual_BWV_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(flaminioPreviewNodes.has(currentRoot)){
   const root={...flaminioPreviewNodes.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_catalogue_work"};
-  return attachGenreRings(attachFlaminioPreview({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachFlaminioPreview({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
 
  if(legacyGenresByNode.has(currentRoot)){
@@ -937,7 +1063,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return attachGenreRings(attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSonata39(attachGenreRings(attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -950,7 +1076,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return attachGenreRings(attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachSonata39(attachGenreRings(attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -1160,6 +1286,7 @@ async function init(){
  prepareCatalog37(catalog37Input);
  prepareBeethoven38(beethoven38Input);
  prepareGenreRings();
+ prepareSonata39();
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
