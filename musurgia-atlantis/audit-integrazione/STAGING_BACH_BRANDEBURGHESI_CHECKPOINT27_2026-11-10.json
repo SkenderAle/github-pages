@@ -1,0 +1,266 @@
+{
+  "schema": "musurgia-atlantis-flaminio-works-checkpoint27-v1",
+  "created": "2026-11-10",
+  "status": "staging_only_no_public_merge",
+  "source": "compositori_flaminio.xlsx Sheet1 A3081:H3086",
+  "source_verification": "direct_excel_rows_3081_3086",
+  "rules": [
+    "Singular canonical genre: Concerti => Concerto; original literal kept",
+    "Collection is not a work instance; preserve existing collection node and model membership",
+    "Each BWV concerto is distinct; do not auto-expand all six for a two-work request",
+    "No source row is automatically a new work without identity deduplication",
+    "Do not reuse year of collection 1721 as composition year for all works",
+    "No composer-to-composer traversal through generic genres"
+  ],
+  "counts": {
+    "works": 6,
+    "edges": 18,
+    "source_rows": 6
+  },
+  "nodes": [
+    {
+      "id": "audit:flaminio:bach:bwv1046",
+      "name": "Concerto brandeburghese n. 1 in fa maggiore",
+      "type": "opera",
+      "composer_id": "pers:bach",
+      "catalogue_id": "BWV 1046",
+      "flaminio_opus_raw": "1046",
+      "year_raw": "1721",
+      "flaminio_genre_forma_originale": "Concerti",
+      "genre_canonical_id": "legacy:gf:genere-concerto",
+      "source_excel_row": 3081,
+      "flaminio_explanation_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1046.html",
+      "collection_existing_atlantis_id": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "status": "staging_candidate_not_public"
+    },
+    {
+      "id": "audit:flaminio:bach:bwv1047",
+      "name": "Concerto brandeburghese n. 2 in fa maggiore",
+      "type": "opera",
+      "composer_id": "pers:bach",
+      "catalogue_id": "BWV 1047",
+      "flaminio_opus_raw": "1047",
+      "year_raw": "1719",
+      "flaminio_genre_forma_originale": "Concerti",
+      "genre_canonical_id": "legacy:gf:genere-concerto",
+      "source_excel_row": 3082,
+      "flaminio_explanation_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1047.html",
+      "collection_existing_atlantis_id": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "status": "staging_candidate_not_public"
+    },
+    {
+      "id": "audit:flaminio:bach:bwv1048",
+      "name": "Concerto brandeburghese n. 3 in sol maggiore",
+      "type": "opera",
+      "composer_id": "pers:bach",
+      "catalogue_id": "BWV 1048",
+      "flaminio_opus_raw": "1048",
+      "year_raw": "1718",
+      "flaminio_genre_forma_originale": "Concerti",
+      "genre_canonical_id": "legacy:gf:genere-concerto",
+      "source_excel_row": 3083,
+      "flaminio_explanation_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1048.html",
+      "collection_existing_atlantis_id": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "status": "staging_candidate_not_public"
+    },
+    {
+      "id": "audit:flaminio:bach:bwv1049",
+      "name": "Concerto brandeburghese n. 4 in sol maggiore",
+      "type": "opera",
+      "composer_id": "pers:bach",
+      "catalogue_id": "BWV 1049",
+      "flaminio_opus_raw": "1049",
+      "year_raw": "1719 - 1720",
+      "flaminio_genre_forma_originale": "Concerti",
+      "genre_canonical_id": "legacy:gf:genere-concerto",
+      "source_excel_row": 3084,
+      "flaminio_explanation_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1049.html",
+      "collection_existing_atlantis_id": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "status": "staging_candidate_not_public"
+    },
+    {
+      "id": "audit:flaminio:bach:bwv1050",
+      "name": "Concerto brandeburghese n. 5 in re maggiore",
+      "type": "opera",
+      "composer_id": "pers:bach",
+      "catalogue_id": "BWV 1050",
+      "flaminio_opus_raw": "1050",
+      "year_raw": "1720 - 1721",
+      "flaminio_genre_forma_originale": "Concerti",
+      "genre_canonical_id": "legacy:gf:genere-concerto",
+      "source_excel_row": 3085,
+      "flaminio_explanation_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1050.html",
+      "collection_existing_atlantis_id": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "status": "staging_candidate_not_public"
+    },
+    {
+      "id": "audit:flaminio:bach:bwv1051",
+      "name": "Concerto brandeburghese n. 6 in si bemolle maggiore",
+      "type": "opera",
+      "composer_id": "pers:bach",
+      "catalogue_id": "BWV 1051",
+      "flaminio_opus_raw": "1051",
+      "year_raw": "1718",
+      "flaminio_genre_forma_originale": "Concerti",
+      "genre_canonical_id": "legacy:gf:genere-concerto",
+      "source_excel_row": 3086,
+      "flaminio_explanation_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1051.html",
+      "collection_existing_atlantis_id": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "status": "staging_candidate_not_public"
+    }
+  ],
+  "links": [
+    {
+      "id": "audit:brandenburg27:composer:1",
+      "source": "pers:bach",
+      "target": "audit:flaminio:bach:bwv1046",
+      "relation": "ha_composto",
+      "assertion_type": "catalogue_composer_attribution",
+      "source_row": 3081
+    },
+    {
+      "id": "audit:brandenburg27:collection:1",
+      "source": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "target": "audit:flaminio:bach:bwv1046",
+      "relation": "contiene_opera",
+      "assertion_type": "collection_membership",
+      "source_row": 3081
+    },
+    {
+      "id": "audit:brandenburg27:genre:1",
+      "source": "audit:flaminio:bach:bwv1046",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_genere",
+      "assertion_type": "single_work_genre",
+      "source_row": 3081
+    },
+    {
+      "id": "audit:brandenburg27:composer:2",
+      "source": "pers:bach",
+      "target": "audit:flaminio:bach:bwv1047",
+      "relation": "ha_composto",
+      "assertion_type": "catalogue_composer_attribution",
+      "source_row": 3082
+    },
+    {
+      "id": "audit:brandenburg27:collection:2",
+      "source": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "target": "audit:flaminio:bach:bwv1047",
+      "relation": "contiene_opera",
+      "assertion_type": "collection_membership",
+      "source_row": 3082
+    },
+    {
+      "id": "audit:brandenburg27:genre:2",
+      "source": "audit:flaminio:bach:bwv1047",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_genere",
+      "assertion_type": "single_work_genre",
+      "source_row": 3082
+    },
+    {
+      "id": "audit:brandenburg27:composer:3",
+      "source": "pers:bach",
+      "target": "audit:flaminio:bach:bwv1048",
+      "relation": "ha_composto",
+      "assertion_type": "catalogue_composer_attribution",
+      "source_row": 3083
+    },
+    {
+      "id": "audit:brandenburg27:collection:3",
+      "source": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "target": "audit:flaminio:bach:bwv1048",
+      "relation": "contiene_opera",
+      "assertion_type": "collection_membership",
+      "source_row": 3083
+    },
+    {
+      "id": "audit:brandenburg27:genre:3",
+      "source": "audit:flaminio:bach:bwv1048",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_genere",
+      "assertion_type": "single_work_genre",
+      "source_row": 3083
+    },
+    {
+      "id": "audit:brandenburg27:composer:4",
+      "source": "pers:bach",
+      "target": "audit:flaminio:bach:bwv1049",
+      "relation": "ha_composto",
+      "assertion_type": "catalogue_composer_attribution",
+      "source_row": 3084
+    },
+    {
+      "id": "audit:brandenburg27:collection:4",
+      "source": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "target": "audit:flaminio:bach:bwv1049",
+      "relation": "contiene_opera",
+      "assertion_type": "collection_membership",
+      "source_row": 3084
+    },
+    {
+      "id": "audit:brandenburg27:genre:4",
+      "source": "audit:flaminio:bach:bwv1049",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_genere",
+      "assertion_type": "single_work_genre",
+      "source_row": 3084
+    },
+    {
+      "id": "audit:brandenburg27:composer:5",
+      "source": "pers:bach",
+      "target": "audit:flaminio:bach:bwv1050",
+      "relation": "ha_composto",
+      "assertion_type": "catalogue_composer_attribution",
+      "source_row": 3085
+    },
+    {
+      "id": "audit:brandenburg27:collection:5",
+      "source": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "target": "audit:flaminio:bach:bwv1050",
+      "relation": "contiene_opera",
+      "assertion_type": "collection_membership",
+      "source_row": 3085
+    },
+    {
+      "id": "audit:brandenburg27:genre:5",
+      "source": "audit:flaminio:bach:bwv1050",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_genere",
+      "assertion_type": "single_work_genre",
+      "source_row": 3085
+    },
+    {
+      "id": "audit:brandenburg27:composer:6",
+      "source": "pers:bach",
+      "target": "audit:flaminio:bach:bwv1051",
+      "relation": "ha_composto",
+      "assertion_type": "catalogue_composer_attribution",
+      "source_row": 3086
+    },
+    {
+      "id": "audit:brandenburg27:collection:6",
+      "source": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "target": "audit:flaminio:bach:bwv1051",
+      "relation": "contiene_opera",
+      "assertion_type": "collection_membership",
+      "source_row": 3086
+    },
+    {
+      "id": "audit:brandenburg27:genre:6",
+      "source": "audit:flaminio:bach:bwv1051",
+      "target": "legacy:gf:genere-concerto",
+      "relation": "ha_genere",
+      "assertion_type": "single_work_genre",
+      "source_row": 3086
+    }
+  ],
+  "verification_status": {
+    "source_rows_checked": true,
+    "source_titles_checked": true,
+    "existing_collection_id_from_checkpoint25": true,
+    "public_graph_deduplication_pending": true,
+    "live_ui_pending": true,
+    "links_live_pending": true
+  }
+}
