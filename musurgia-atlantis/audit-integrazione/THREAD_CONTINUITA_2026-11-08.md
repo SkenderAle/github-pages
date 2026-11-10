@@ -1662,3 +1662,21 @@ Riesaminati tutti i **50/125** casi delle dichiarazioni Lotto27 ancora aperte ch
 **Link di verifica:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint34-20261110
 
 **Prossimo lotto:** deduplicare e integrare ulteriori opere già esaminate nei lotti 15–29 nella *stessa* vista federata, portare con sé i singoli URL di spiegazione Flaminio, salvaguardare versioni e raccolte, mantenere i cicli radicati. Promuovere la GUI a `/musurgia-atlantis/` solo dopo regressioni e test, senza perdere le vecchie reti.
+
+
+### Checkpoint 35 — Secondo lotto incrementale nel 3D radicato: 10 opere Flaminio con concordanze esterne (10 novembre 2026)
+
+**Vincolo GUI:** proseguire in `musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html`, con pannello flottante `Categorie · Nodi / Etichette`; non costruire ulteriori anteprime, né sovrascrivere l'interfaccia principale vecchia senza regressioni.
+
+**Fonte e validazione:** selezionate 10 opere dal campione Lotto15 (`compositori_flaminio.xlsx`) distinguendole dalle righe controverse. Mozart: i cinque concerti per violino K 207/211/216/218/219 (Neue Mozart-Ausgabe, `https://dme.mozarteum.at/DME/nma/nma_toc.php?l=2&vsep=133`); Mozart: Grande Messa K 427, incompiuta (`https://kv.mozarteum.at/en/work/missa-in-c-5118`); Bartók: concerti per violino Sz 36 e Sz 112 (`https://www.harmoniamundi.com/en/albums/violin-concertos-nos-1-2/`); Barber: concerto per violino op. 14 (`https://www.laphil.com/works/violin-concerto-op-14`); Beethoven: concerto per violino op. 61 (`https://www.beethoven.de/en/work/view/6051325007626240/`). **Non incluso Mozart K 271i** per incertezza attributiva, né le opere con possibile collisione nei nodi Atlantis preesistenti (Don Giovanni, Le nozze di Figaro, Missa solemnis op.123). Per Barber/Bartók, risoluzione persona per nome prima di creare eventuali placeholder, senza inferire rapporto fra autori.
+
+**Pubblicati su GitHub `main`:**
+- `audit-integrazione/LOTTO35_OPERE_CERTIFICATE_2026-11-10.json`: 10 schede univoche, numeri di catalogo, riga sorgente, attribuzione e URL work-specific. Commit iniziale `b1c6bfcaa510c23207f505f4035be53b4e42e2a7`; correzione URL Beethoven-Haus `60e1e2505888b52b24eb4d42c6a9f6efcb753016`.
+- `audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html`: carica il lotto e crea nel dataset runtime 10 nodi `opera` e **20 archi** autore→opera, opera→genere (Concerto/Messa); nomi italiani, identificatori, fonte e numeri originali conservati. Per radice compositore aggiunge opere specifiche al primo livello e genere contestuale al secondo; per opera selezionata mostra compositore e genere; per genere mostra opere indicizzate e autori terminali, senza aprire automaticamente altri repertori tramite il genere. Commit `656d981155adfb64e36b9e66cbc647dd5d24d247`.
+
+**Totale nuovo materiale degli ultimi due lotti sulla GUI radicata:** 6 Brandeburghesi + 10 Lotto35 = **16 opere individuali Flaminio**, con **18 + 20 = 38 archi** specifici caricati nella GUI (oltre alle opere/relazioni già presenti nei precedenti overlay). **Non confondere il numero con il totale delle 52.150 righe catalografate** e non dichiarare l'integrazione fisica in `grafo.json`.
+
+**Verifiche:** riconfermati da GitHub dopo il commit: presenza caricamento JSON, preparazione dei nodi, modalità radice per singola opera, restituzioni del grafo e validità dei 10 ID univoci/URL. Il recupero via browser web di `musurgiamundi.com` ha restituito errore di accesso: **NON eseguito test reale del rendering/pagine GitHub Pages**. Verificare nel browser con query anticache:
+https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint35-20261110
+
+**Prossima ripresa:** test effettivo radici Mozart, K207, Concerto, Messa, Bach, BWV1046; audit collisioni e source-specific IDs; accelerare i lotti dove opera/catalogo/attribuzione sono documentati con riscontri work-specific (non basta il filtro euristico 46.205/52.150). Poi promuovere il frontend federato al percorso principale con regressioni e rollback.
