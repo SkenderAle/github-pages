@@ -1467,3 +1467,16 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **Pubblicazione completa su GitHub, ramo `main`, solo audit-integrazione:** `ATLANTIS_FLAMINIO_LOTTO18_500_VOCI_2026-11-10.csv` commit `6e19818b27743fcc9b7f479e4e7d16678868b486`; `STAGING_FLAMINIO_LOTTO18_500_VOCI_CONFRONTO_ATLANTIS_2026-11-10.json` commit `955bebcd4d77e4917f96307f2a5a93abfee1cbc0`; rapporto `AUDIT_FLAMINIO_LOTTO18_500_VOCI_2026-11-10.md` commit `c65073d3b0ce90d7b6dee6e70e1ad6613bb500b6`. CSV e JSON completi esistono anche come allegati conversazione.
 
 **Prossima ripresa:** blocchi almeno 500 non sovrapposti; rafforzare la deduplicazione con alias, diverse tradizioni catalografiche e unità opera/parte/raccolta. Audit storico Checkpoint24 a 74/233 archi resta distinto, prossimi 50. Produzione, GUI e 210 lotti storico-filologici inalterati.
+
+
+### Lotto 19 — 500 nuove righe Flaminio / 50 compositori, deduplicazione interna completa (10 novembre 2026)
+
+**Eseguito:** lettura di tutte le **52.150** righe A:H dell'Excel `compositori_flaminio.xlsx`, esclusione delle **1.523** righe già lavorate nei Lotti15–18, selezione di **500** nuove righe su **50 autori**, 10 voci per autore distribuite lungo il catalogo. **Cumulato Lotti15–19 = 2.023 righe sorgente distinte**, non 2.023 composizioni certificate. Conservati titolo e intestazione Flaminio originali, numero, anno, parte, dettagli, URL, lemma singolare candidato e stato di ogni gate.
+
+**Esito:** **102** generi candidati dal titolo individuale, **398** non determinabili dal solo titolo, **490** con numero di catalogo, **81** con scheda Flaminio, **30** voci con flag cautelari. **Controllo nuovo su TUTTO l'Excel:** **1** riga con altra voce avente medesimo autore+catalogo+titolo; **19** con catalogo uguale ma titolo differente; **124** con titolo uguale ma senza coincidenza completa di catalogo. Sono **segnali non esclusivi di revisione**, non duplicati di opera accertati: verificare raccolta, movimento, versione, omonimia prima di fondere. Caso `Sinfonia concertante` distinto da `Sinfonia` generica.
+
+**Atlantis:** confrontato snapshot completo di `musurgia-atlantis/grafo.json` (754 nodi/1718 archi; SHA `4863b3fe263154387de3388c0b813b5f94546f12`); **nessuna** corrispondenza d'opera sopra soglia nel semplice match conservativo dei titoli. **Non dedurre assenza dei lavori o necessità di creare 500 nodi**: restano alias di titoli e cataloghi, organici, identità di raccolte e collegamenti autore mancanti. Nessun merge o arco pubblico autorizzato.
+
+**Su GitHub i file analitici COMPLETI, non solo rapporto:** `ATLANTIS_FLAMINIO_LOTTO19_500_VOCI_CON_DEDUP_2026-11-10.csv` commit `3e72c9920255068db9c720595957165187e78e2d`, `STAGING_FLAMINIO_LOTTO19_500_VOCI_CON_DEDUP_2026-11-10.json` commit `eef6833c128d725b05faf6905f2e303bc599748c`, e `AUDIT_FLAMINIO_LOTTO19_500_VOCI_2026-11-10.md` commit `f45c0806f5dae3ebc77fa1eb3e4b96e4f4724a94`. Grafo pubblico, frontend e 210 lotti storici intatti.
+
+**Prossima fase:** blocchi da 500, rafforzando tabella identità per autore/catalogo/opera/versione e usando le righe correlate del catalogo come candidati; separatamente Checkpoint24 storico persona-persona ancora 74/233, prossimo blocco da 50.
