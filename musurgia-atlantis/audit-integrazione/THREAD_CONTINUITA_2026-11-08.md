@@ -1644,3 +1644,21 @@ Riesaminati tutti i **50/125** casi delle dichiarazioni Lotto27 ancora aperte ch
 **Distinzione tecnica:** `grafo.json` su disco **non è stato riscritto** (il connettore GitHub non restituisce il payload integrale del file grande). L'unificazione è **nel database di navigazione runtime del sito principale**, non una fusione fisica del JSON. È una strategia incrementale reversibile e visibile nello stesso Atlantis, in attesa di una pipeline completa per merge certificato e pubblicazione del grande grafo. Nessun test browser reale completato: GitHub commit confermato, non ancora verificata la propagazione GitHub Pages né l'interazione reale.
 
 **Prossima fase:** espandere l'overlay verso le altre opere già verificate, con `source_row → work_id`, attestazioni, blocchi di collisione, relazione compositore-opera/versione/raccolta, controllo di pertinenza radicata e test browser. Pubblicare progressivamente la stessa rete principale, senza altre anteprime separate.
+
+
+### Checkpoint 34 — Brandeburghesi nel grafo 3D della GUI radicata, non in una nuova anteprima (10 novembre 2026)
+
+**Scelta confermata:** proseguire sulla UI `audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html` del 9 novembre con finestra flottante `Categorie · Nodi / Etichette`; importare progressivamente dati Flaminio accertati, preservando il percorso ring e la pertinenza radicata. NON tornare alla vecchia GUI `musurgia-atlantis/index.html` e NON creare altre anteprime autonome.
+
+**Implementato e pubblicato nella UI radicata**, commit `3761810f13a71e98d808a7b88245bc032b5918c5`:
+- La pagina legge ora anche `STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json`, già attestato nel file XLSX `compositori_flaminio.xlsx` sulle righe 3081–3086, e verifica schema, sei opere, 18 archi, sei cataloghi distinti BWV 1046–1051 e presenza degli ID Bach/raccolta/Concerto.
+- I sei nodi `audit:flaminio:bach:bwv1046`…`bwv1051` sono disponibili nella stessa ricerca e nelle categorie della GUI; la raccolta Atlantis `opera:bach-sei-concerti-brandeburghesi-1721` è conservata come nodo autonomo con titolo visibile italiano «Concerti brandeburghesi (raccolta)» e precedente nome conservato come `name_original` solo nel dataset runtime.
+- Vengono aggiunte nel dataset federato dell'interfaccia le 18 relazioni di attribuzione Bach→opera, raccolta→opera, opera→Concerto, con URL individuale Flaminio e fonti di riga. Rimane attiva la relazione della raccolta `→ Concerto` prevista nel checkpoint25, senza duplicarla.
+- Espansione speciale radicata: da Bach sei opere visibili al I livello, Concerto al II livello; dalla raccolta i sei membri al I livello; da ciascun concerto solo Bach, raccolta e genere; da Concerto le sei opere indicizzate e Bach terminale. Il ring è reso da cicli **documentati** (es. Bach→BWV1046→Concerto→BWV1047→Bach oppure Bach→raccolta→BWV1046→Bach), NON da un arco causale `Concerto→Bach` inventato e NON tramite altri compositori.
+- Nessuna riscrittura di `grafo.json`, nessuna pubblicazione nel vecchio `index.html`: questa GUI resta staging federato. Non assumere che i record senza analisi siano certificati.
+
+**Verifica completata:** sorgente GitHub aggiornato e recuperato dopo il commit, funzioni di caricamento e di espansione presenti. **Non completato:** test browser reale/rendering e verifica dell'effettiva propagazione Pages al dominio (l'accesso via web ha riportato errore). L'utente deve controllare la schermata reale.
+
+**Link di verifica:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint34-20261110
+
+**Prossimo lotto:** deduplicare e integrare ulteriori opere già esaminate nei lotti 15–29 nella *stessa* vista federata, portare con sé i singoli URL di spiegazione Flaminio, salvaguardare versioni e raccolte, mantenere i cicli radicati. Promuovere la GUI a `/musurgia-atlantis/` solo dopo regressioni e test, senza perdere le vecchie reti.
