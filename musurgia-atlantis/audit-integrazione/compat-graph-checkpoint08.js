@@ -157,12 +157,16 @@ function makeGraph(host){
     }
     projected=points.map(project);
     const map=new Map(projected.map(p=>[p.n.id,p]));
-    ctx.lineWidth=.8;
     for(const o of linkObjects){
       const a=map.get(o.a.id),b=map.get(o.b.id);if(!a||!b)continue;
       const near=Math.max(frontness(a),frontness(b));
       const direct=o.a._depth===0||o.b._depth===0;
-      ctx.strokeStyle=colorRgba(linkColors(o.e),(direct?.48:options.linkOpacity*.65)*(.30+.70*near));
+      // Work→genre links must remain legible as edges in the 3D nebula,
+      // including Don Giovanni→Dramma giocoso. No new nodes or transitive paths.
+      const taxonomy=o.e.statement_type==="taxonomy_work_classification"
+        && ["ha_genere","ha_forma","ha_sottogenere"].includes(o.e.relation);
+      ctx.lineWidth=taxonomy?2.35:.8;
+      ctx.strokeStyle=colorRgba(linkColors(o.e),taxonomy?.93:(direct?.48:options.linkOpacity*.65)*(.30+.70*near));
       ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     }
     projected.sort((a,b)=>b.z-a.z);
