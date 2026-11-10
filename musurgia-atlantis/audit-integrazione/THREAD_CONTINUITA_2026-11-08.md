@@ -1697,3 +1697,20 @@ https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_
 **Controllo svolto:** JSON letto integralmente dal repository dopo commit, 25 ID univoci, 25 righe sorgente, nessuna K444, 17 URL di guide originali; HTML recuperato con funzione e caricamento JSON presenti, stessa finestra flottante. **NON verificato rendering reale da browser:** il web reader non è riuscito ad aprire il dominio e non è stato eseguito un test di interazione DOM sul sito. Link da provare: https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint36-20261110
 
 **Prossima ripresa:** priorità collaudo visivo e correzione di eventuali errori runtime; poi altri lotti di cataloghi ad alta identificabilità e già attestati in edizioni critiche, valutando seriamente dedup e la distinzione versioni/parti. Non incrementare conteggi di opere certificate sulla sola base del primo filtro automatico.
+
+
+### Checkpoint 38–39 — Ring generalizzato, Beethoven e sottogeneri reali della Sonata (10 novembre 2026)
+
+**UI vincolante:** `musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html`, finestra flottante `Categorie · Nodi / Etichette`. Non creare anteprime autonome o tornare al vecchio frontend. Conservare `grafo.json` storico fino alla certificazione della fusione.
+
+**Checkpoint 38 — Beethoven, 24 opere nel dataset federato:** documento `audit-integrazione/LOTTO38_BEETHOVEN_24_OPERE_2026-11-10.json`, commit `6471dfc9c8669bd2ce14d5af3a8c3d0598b05ced`; 9 sonate per violino e pianoforte, 9 sinfonie, 5 concerti pianistici e Triplo concerto. Reimpiegati 3 nodi storici in produzione (Eroica, Pastorale, Nona), senza clonazione. La GUI integra il file con commit `cbdaae17e46eae6ff59f903a194f1241ee864346` e correzione per rilevare anche archi di composizione storici `2de1aafdb8d3ac224a5cbc77422f1ba477798042`.
+
+**Ring generale non causale:** algoritmo `prepareGenreRings` / `attachGenreRings`, commit `999e2c1f69228de30b775fed0face07343e11d9f`, correzione scope `719e1f1d2942e7c4b0e392656c4780c6cb406c5c`. Da relazioni comprovate `autore→opera` e `opera→genere` ricava un indice `autore↔genere` di repertorio, classificato non transitivo; non crea relazioni tra compositori per il solo genere condiviso.
+
+**Checkpoint 39 — sottogeneri strumentali Sonata come veri nodi:** segnalazione utente: l'etichetta `opera · sonata per pianoforte` non è sufficiente, serve un livello intermedio navigabile. Aggiunti i nodi di categoria `genere-forma` `atlas:gf:sonata-per-pianoforte` e `atlas:gf:sonata-per-violino-e-pianoforte`, ciascuno figlio di `legacy:gf:genere-sonata`, con archi individuali opera→sottogenere e autore→sottogenere ricavati dalle composizioni. Commit GUI `c33f5dd1c0cdfe45de82904c8ce9ba3f54f71974`; chiusura degli archi autore→opera nel singolo sottogenere `b991d8e353c4d78b59813962e96811be292bf292`.
+
+**Test su dati autentici `grafo.json` GitHub (754 nodi, 1718 archi originali) + overlay precedenti, con motore radicato simulato DOM/Canvas, non browser live:** radice Sonata: 5 nodi, 2 sottogeneri al I livello, autori terminali, ZERO opere appiattite; radice Sonata per pianoforte: 18 opere Mozart; Sonata per violino e pianoforte: 9 opere Beethoven; opere singole K331 e op47 mostrano autore, sottogenere e genere. Nessun ID duplicato o arco orfano nei casi provati; altre radici Concerto/Sinfonia inalterate. Per Beethoven prima della suddivisione: 24/24 opere accessibili, 3 nodi storici riusati, ring Eroica/Pastorale/Nona validati. **Non eseguito collaudo reale browser pubblico.**
+
+**Regola da estendere:** fra genere macro e opera individuale inserire nodi tassonomici di sottogenere/organico/forma solo quando la distinzione è documentata e serve a contenere l'espansione; non scambiare semplici attributi testuali per nodi né usare i sottogeneri come passaggi impropri verso altri compositori. Rispettare la pertinenza radicata e i cicli `autore↔sottogenere↔opera`.
+
+**URL di test:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint39-20261110
