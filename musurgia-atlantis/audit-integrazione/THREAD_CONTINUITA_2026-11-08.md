@@ -1616,3 +1616,18 @@ Riesaminati tutti i **50/125** casi delle dichiarazioni Lotto27 ancora aperte ch
 **Pubblicato su main:** `musurgia-atlantis/audit-integrazione/CHECKPOINT30_CATALOGO_FLAMINIO_ESPLORAZIONE_INTEGRALE_2026-11-10.md` (commit `0feac88ca0eaf6b3f9e991a97c6e3d773dbed8bf`), con regole di collegamento eventuale alla UI e distinguo fonte/identità/attribuzione.
 
 **Prossima fase reale:** caricare i dati integrali in forma statica partizionata o compressa sotto `musurgia-atlantis/catalogo-flaminio/` e integrare un pannello separato nella UI Atlantis, garantendo ricerca di tutte le 52.150 righe, distinzione affidabilità e segnalazioni utente. Nessun arco storico dedotto automaticamente dalle rubriche; mantenere i 210 lotti storici e la pertinenza radicata.
+
+
+### Checkpoint 31–32 — primo giro 52.150 e prima anteprima 3D delle attribuzioni documentate (10 novembre 2026)
+
+**Decisione editoriale dell'utente:** grandi lotti sull'intero Flaminio, più giri successivi sulle incertezze e inserimento **graduale dei dati verificati nell'atlante 3D**, non accumulo indefinito di registri. Continuare a distinguere l'attribuzione storica conservata da una nuova convalida, senza creare ponti fra persone attraverso categorie.
+
+**Primo giro eseguito su tutto il file XLSX in sessione:** 52.150 righe divise in 11 lotti (10 x 5000 + 2150), 46.205 candidati documentari filtrati automaticamente, 5.945 con anomalie da riesaminare. I candidati **NON equivalgono a opere certificate**. Creati manifest e audit in `audit-integrazione/`: `CHECKPOINT31_PRIMO_GIRO_FLAMINIO_52150_2026-11-10.md` (commit `4c2810548f20cd2468c88e2fcb0cfba72dac9207`) e `MANIFEST_PRIMO_GIRO_FLAMINIO_52150_2026-11-10.json` (commit `becf316af3522b7edcbb653e24eb161575e2a059`). Creato file HTML 3D locale con tutte le righe; file gzip di tutti i lotti ancora **non caricati su GitHub**.
+
+**Prima anteprima 3D nel repository, pubblicata nella nuova cartella `musurgia-atlantis/catalogo-flaminio/`:**
+- `overlay-verificati-pilota.json` (commit `1e15e674dd64db03f9ee36cf2f9d14878f514f83`), 6 schede di opere documentate da sorgenti esterne: 4 Invenzioni di Bonporti op.10 n.2/5/6/7 (vecchie BWV Anh.173–176) e 2 minuetti Petzold (BWV Anh.114–115), con link e ID Flaminio;
+- `anteprima-verificati.html` (commit `fc9b2d2c89fa758cf29b66762a3a2770182345bb`), anteprima 3D che riusa il renderer `compat-graph.js` di Atlantis, selezione autore, click/tap dettagli, fonti e zoom. URL previsto: https://musurgiamundi.com/musurgia-atlantis/catalogo-flaminio/anteprima-verificati.html . Pubblicazione di file GitHub confermata, **comportamento runtime/browser non ancora testato**.
+
+**Limiti:** questo è un **overlay filologico autonomo** di sole 6 opere, NON il grafo di produzione combinato con tutte le opere sicure. Le restanti 52.144 righe non sono ancora pubblicate nel 3D online. `musurgia-atlantis/grafo.json`, `index.html`, i 210 lotti storici e il renderer di produzione rimangono invariati. Serve ora implementare l'import massivo statico dal file locale verso GitHub con un canale che supporti file grandi/binari, poi consolidare `source_row → work_identity` verificato e incorporare gli overlay nel 3D principale, con regressioni e filtri di pertinenza radicata.
+
+**Prossima ripresa:** verificare rendering/click/zoom in browser dell'anteprima; pubblicare 11 partizioni raw del catalogo sul repository con trasporto adatto; applicare crosswalk ai primi grandi lotti, creare nuovi nodi soltanto quando l'opera è identificata e la paternità attestata. Nessun merge automatico per mera concordanza di titolo/numero.
