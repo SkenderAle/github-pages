@@ -1304,3 +1304,16 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **Casi sentinella:** «Musica per pianoforte» NON è un genere; «Opere teatrali» NON implica automaticamente Opera; «Lieder e arie» è intestazione mista senza attribuzione dei due generi a ogni singola opera; «Preludi di corali» può essere un unico tipo specifico `Preludio corale`; «Arie tratte da opere» richiede relazione con l'opera madre; «Sinfonie di dubbia attribuzione» conserva il genere ma blocca la certezza sull'autore. Singolare canonico e originale Flaminio separati. Nessuna fusione né un solo nodo pubblico modificato.
 
 **File di audit GitHub:** `AUDIT_CROSSWALK_FLAMINIO_LOTTO04_TOP50_2026-11-10.md`, commit `c23fbc744a6b09e01826c6cc552218222a394bb5`. File CSV e JSON delle 50 decisioni creati come artefatti in conversazione, non caricati integralmente su GitHub. **Prossimo Lotto 05:** intestazioni 51–100; revisione con tutti i vocabolari Mundi ancora aperta. Checkpoint24 storico a **74/233**, prossimo blocco separato di 50. I 210 lotti storici restano tutelati.
+
+
+### Audit Flaminio–Atlantis — Lotto 05: 200 intestazioni composite in un blocco (10 novembre 2026)
+
+**Richiesta:** avanzamento di 200 voci anziché 50. **Eseguito:** selezionate le posizioni **51–250** fra le **635** intestazioni composite del Lotto03, per frequenza decrescente e ordinamento alfabetico dei pari frequenza. Il blocco è disgiunto dalle 50 già analizzate nel Lotto04 (stesso insieme delle prime 50; alcune parità interne con ordine diverso): **200 intestazioni nuove**, **10.707** righe catalografiche interessate. Totale ora **250/635**, **26.545** righe di catalogo rappresentate, **385** intestazioni rimaste. Conteggi di *intestazioni*, non di opere individuali.
+
+**Qualità della revisione:** **40** casi con note editoriali specifiche e **160** preclassificazioni a regole da verificare. Delle 200, **54** candidate organico/destinazione, **16** sezioni catalografiche con genere, **14** intestazioni multigenere, **13** genere+organico, **26** ambigue, altri gruppi specialistici. **NESSUN merge autorizzato**: gli indicatori lessicali non certificano categorie o attribuzioni storiche. Le 10.707 righe non sono state revisionate opera per opera.
+
+**Casi sentinella:** Trio sonate → Sonata a tre (non genere Trio); libretti distinti da partiture; contrafacta spirituali come derivazioni; opere perdute/progettate/spurie distinte; `Preludio corale` come locuzione specifica; musica per Flötenuhr come destinazione; arie di Mayr per opere altrui non trasferiscono la paternità dell'opera intera. Preservare sempre il letterale e la foglia del percorso Flaminio, il singolare canonico e gli attributi separati.
+
+**Pubblicato su `main` in audit:** `AUDIT_CROSSWALK_FLAMINIO_LOTTO05_200_2026-11-10.md`, commit `3ab6fd3121bb5cb5bddd49aef072915fb44f5e24`. In conversazione disponibili `ATLANTIS_FLAMINIO_LOTTO05_200.csv` e `.json` con 200 record completi e gate chiusi; **non caricati integralmente nel repository**. Nessun file di produzione modificato, 210 lotti storici intatti.
+
+**Prossimo passo:** Lotto06 posizioni **251–450** (200 voci), quindi Lotto07 **451–635** (185), con revisione delle proposte sulle opere e confronto con tutti gli alberi Mundi. Separatamente Checkpoint24 storico persona↔persona fermo a **74/233** archi, prossimi 50.
