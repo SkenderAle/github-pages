@@ -1016,7 +1016,195 @@ function attachSonata39(result,maxDepth,limits){
  return result;
 }
 
-function getRootedPreview(maxDepth,relevance,depthByCategory){
+
+// Checkpoint 40 — Concerto: corpus-specific branches, including the Brandenburg
+// family. This is an editorial classification, NOT a claim that BWV1046–1051
+// are all concerti grossi or share the same historical instrumentation.
+const CONCERTO40_ROOT="legacy:gf:genere-concerto";
+let concerto40={groups:new Map(),byWork:new Map(),byAuthor:new Map(),edges:[],records:[]};
+function prepareConcerto40(input){
+ if(input?.schema!=="musurgia-atlantis-concerto-subgenres-checkpoint40-v1"||
+    input.groups?.length!==4||input.works?.length!==21||
+    input.works.filter(w=>w.group_id==="atlas:gf:concerto-brandeburghese").length!==6)
+  throw Error("Checkpoint40: manifest di sottogeneri incoerente");
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const uniqueWork=new Set(),allEdges=new Set(dataset.links.map(e=>e.id));
+ function addEdge(e){
+  if(allEdges.has(e.id)||!nodes.has(e.source)||!nodes.has(e.target))
+   throw Error("Checkpoint40: arco duplicato o orfano "+e.id);
+  allEdges.add(e.id);dataset.links.push(e);concerto40.edges.push(e);
+ }
+ for(const g of input.groups){
+  if(nodes.has(g.id)||!nodes.has(g.parent_id)||
+    nodes.get(g.parent_id).category!=="genere-forma")
+   throw Error("Checkpoint40: nodo genere già presente o parent assente "+g.id);
+  const n={id:g.id,name:g.name,category:"genere-forma",
+   subtype:g.taxonomy_status==="editorial_corpus_branch_not_historical_distinct_genre"?
+     "famiglia editoriale di concerti":"sottogenere per organico",
+   taxonomy_status:g.taxonomy_status||"documented_instrumentation_subgenre",
+   description:g.description,source_collection:"Flaminio / cataloghi di opere individuali",
+   editorial_corpus:g.id==="atlas:gf:concerto-brandeburghese"};
+  dataset.nodes.push(n);nodes.set(g.id,n);
+  concerto40.groups.set(g.id,{...g,works:new Set(),authors:new Set()});
+  addEdge({id:"atlas:concerto40:parent:"+g.id,source:g.id,target:g.parent_id,
+   relation:"sottogenere_di",statement_type:"editorial_taxonomy_not_causal",
+   root_permission:"no_generic_transitive_traversal",
+   description:"Classificazione editoriale, non relazione fra compositori."});
+ }
+ for(const w of input.works){
+  if(uniqueWork.has(w.work_id)||!nodes.has(w.work_id)||
+      nodes.get(w.work_id).category!=="opera"||
+      !concerto40.groups.has(w.group_id)||!Number.isInteger(w.source_excel_row))
+   throw Error("Checkpoint40: opera duplicata o assente "+w.work_id);
+  uniqueWork.add(w.work_id);
+  const attestations=(genreRings.byWork.get(w.work_id)||[])
+   .filter(r=>r.genre===CONCERTO40_ROOT);
+  const authors=new Set(attestations.map(r=>r.author));
+  if(authors.size!==1||([...authors][0]!=="pers:bach"&&w.source_lot===27)||
+     (w.source_lot===27&&!brandenburgIds.has(w.work_id))||
+     (w.source_lot!==27&&brandenburgIds.has(w.work_id)))
+   throw Error("Checkpoint40: autore/opera non documentato "+w.work_id);
+  const author=[...authors][0],group=concerto40.groups.get(w.group_id);
+  group.works.add(w.work_id);group.authors.add(author);
+  if(!concerto40.byAuthor.has(author))concerto40.byAuthor.set(author,[]);
+  const record={work:w.work_id,group:w.group_id,author,source_row:w.source_excel_row};
+  concerto40.byWork.set(w.work_id,record);
+  concerto40.byAuthor.get(author).push(record);
+  concerto40.records.push(record);
+  addEdge({id:"atlas:concerto40:work:"+w.work_id,
+   source:w.work_id,target:w.group_id,relation:"ha_sottogenere",
+   statement_type:"catalogue_instrumentation_or_editorial_corpus",
+   root_permission:"specific_work_only",
+   description:"Classificazione della singola opera; non implica altri sottogeneri.",
+   source_excel_row:w.source_excel_row,
+   evidence_urls:(w.evidence_urls||[]).filter(Boolean)});
+ }
+ for(const [id,g] of concerto40.groups){
+  for(const author of g.authors){
+   addEdge({id:"atlas:concerto40:author:"+author+":"+id,
+    source:author,target:id,relation:"ha_composto_opere_del_sottogenere",
+    statement_type:"catalogue_derived_index",root_permission:"non_transitive_documented_ring",
+    supporting_work_ids:[...g.works],
+    description:"Indice non causale: compositore collegato soltanto alle proprie opere individuali del gruppo."});
+  }
+  if(g.collection_id){
+   if(id!=="atlas:gf:concerto-brandeburghese"||
+      g.collection_id!==BRANDENBURG_COLLECTION||
+      [...g.works].some(w=>!brandenburgIds.has(w))||g.works.size!==6)
+    throw Error("Checkpoint40: corpus brandeburghese errato");
+   addEdge({id:"atlas:concerto40:collection:"+id,
+    source:g.collection_id,target:id,relation:"raccolta_organizzata_in",
+    statement_type:"editorial_collection_cross_reference",
+    root_permission:"specific_collection_only",
+    description:"La raccolta storica rimane un nodo distinto dalle sue sei opere; la categoria è editoriale."});
+  }
+ }
+ if(concerto40.byWork.size!==21)throw Error("Checkpoint40: opere mancanti");
+}
+function attachConcerto40(result,maxDepth,limits){
+ if(!concerto40.groups.size||maxDepth<1)return result;
+ const group=concerto40.groups.get(currentRoot);
+ const isMain=currentRoot===CONCERTO40_ROOT;
+ const isFamily=currentRoot==="audit:gf25:concerto-solistico"||
+                currentRoot==="audit:gf25:concerto-di-gruppo";
+ const isWork=concerto40.byWork.has(currentRoot);
+ const isAuthor=concerto40.byAuthor.has(currentRoot);
+ const isCollection=currentRoot===BRANDENBURG_COLLECTION;
+ if(!group&&!isMain&&!isFamily&&!isWork&&!isAuthor&&!isCollection)return result;
+ const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ if(group||isMain||isFamily){
+  const root=universe.get(currentRoot);
+  result={root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]};
+ }
+ const seen=new Map(result.nodes.map(n=>[n.id,n])),links=new Set(result.links.map(e=>e.id));
+ const depthCap=(id,d)=>d<=maxDepth&&d<=(limits[universe.get(id)?.category]??maxDepth);
+ function add(id,d,from,permission){
+  const n=universe.get(id);if(!n||!depthCap(id,d))return null;
+  if(seen.has(id))return seen.get(id);
+  const parent=seen.get(from);
+  const item={...n,_depth:d,_path:[...(parent?._path||[currentRoot]),id],_permission:permission};
+  result.nodes.push(item);seen.set(id,item);return item;
+ }
+ function link(e){
+  if(seen.has(e.source)&&seen.has(e.target)&&!links.has(e.id)){
+   result.links.push({...e});links.add(e.id);
+  }
+ }
+ const taxEdges=concertoFamily.links.filter(e=>e.relation==="sottogenere_di");
+ const ownEdges=concerto40.edges;
+ if(isMain||isFamily){
+  // Navigate the hierarchy before opening works; do not fan out from a
+  // generic Concerto node into every connected composer or composition.
+  for(const e of taxEdges){
+   if(e.target===currentRoot&&
+      !(isMain&&e.source==="legacy:gf:forma-concerto-grosso"))
+    add(e.source,1,currentRoot,"existing_concerto_taxonomy");
+  }
+  for(const g of concerto40.groups.values()){
+   if(g.parent_id===currentRoot)add(g.id,1,currentRoot,"concerto_editorial_subgenre");
+   else if(isMain&&seen.has(g.parent_id))add(g.id,2,g.parent_id,"concerto_instrumentation_branch");
+  }
+  // Existing concerto grosso appears beneath concerto di gruppo rather than
+  // as a second identical first-level branch.
+  if(isMain&&seen.has("audit:gf25:concerto-di-gruppo"))
+   add("legacy:gf:forma-concerto-grosso",2,"audit:gf25:concerto-di-gruppo","existing_group_concerto");
+  for(const e of taxEdges)link(e);
+  for(const e of ownEdges)if(e.relation==="sottogenere_di")link(e);
+ }else if(group){
+  const parent=add(group.parent_id,1,currentRoot,"parent_genre_terminal");
+  if(parent&&group.parent_id!==CONCERTO40_ROOT)
+   add(CONCERTO40_ROOT,2,group.parent_id,"macro_concerto_terminal");
+  for(const work of group.works)add(work,1,currentRoot,"specific_individual_concerto");
+  for(const author of group.authors)if(maxDepth>=2)add(author,2,currentRoot,"specific_author_terminal");
+  if(group.collection_id)add(group.collection_id,1,currentRoot,"brandenburg_collection_context");
+  for(const e of ownEdges)link(e);
+  for(const e of dataset.links){
+   if(group.works.has(e.target)&&group.authors.has(e.source)&&
+      /^(ha_composto|compone|compone_la_musica_di)$/.test(e.relation||""))link(e);
+   if(group.collection_id&&e.source===group.collection_id&&
+      group.works.has(e.target)&&e.relation==="contiene_opera")link(e);
+  }
+ }else if(isAuthor){
+  // Rehome ONLY this composer's concrete concertos under their specific
+  // subgenre. Keep every other catalogue relationship unchanged.
+  const records=concerto40.byAuthor.get(currentRoot),grps=new Set(records.map(r=>r.group));
+  for(const id of grps){
+   const g=concerto40.groups.get(id);
+   if(!add(id,1,currentRoot,"authored_concerto_subgenre"))continue;
+   for(const record of records.filter(x=>x.group===id)){
+    const work=seen.get(record.work);
+    if(work){work._depth=2;work._path=[currentRoot,id,record.work];}
+    else add(record.work,2,id,"specific_individual_concerto");
+   }
+   if(maxDepth>=2)add(g.parent_id,2,id,"parent_genre_terminal");
+  }
+  result.links=result.links.filter(e=>!(
+   (e.source===currentRoot&&concerto40.byWork.has(e.target))||
+   (e.source===currentRoot&&e.target===CONCERTO40_ROOT&&
+     e.statement_type==="catalogue_derived_index")||
+   (concerto40.byWork.has(e.source)&&e.target===CONCERTO40_ROOT)
+  ));
+  links.clear();for(const e of result.links)links.add(e.id);
+  for(const e of ownEdges)link(e);
+ }else if(isWork){
+  const record=concerto40.byWork.get(currentRoot),g=concerto40.groups.get(record.group);
+  add(record.group,1,currentRoot,"specific_concerto_subgenre");
+  add(g.parent_id,2,record.group,"parent_genre_terminal");
+  if(g.parent_id!==CONCERTO40_ROOT)add(CONCERTO40_ROOT,3,g.parent_id,"macro_genre_terminal");
+  // The original macro classification remains in the dataset, but the
+  // visible path follows the selected concrete subgenre.
+  result.links=result.links.filter(e=>!(e.source===currentRoot&&e.target===CONCERTO40_ROOT&&
+    /^(ha_genere|ha_forma)$/.test(e.relation||"")));
+  links.clear();for(const e of result.links)links.add(e.id);
+  for(const e of ownEdges)link(e);
+ }else if(isCollection){
+  add("atlas:gf:concerto-brandeburghese",1,currentRoot,"editorial_corpus_context");
+  for(const e of ownEdges)link(e);
+ }
+ return result;
+}
+
+function getRootedPreview39(maxDepth,relevance,depthByCategory){
  if(concertoFamilyByNode.has(currentRoot)){
   const root={...concertoFamilyByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_concerto_subgenre"};
   return attachSonata39(attachGenreRings(attachConcertoFamily({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
@@ -1086,6 +1274,15 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
   }
  }
  return attachSonata39(attachGenreRings(attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+}
+
+// Add the checkpoint40 layer without changing checkpoint39 rooted logic.
+function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(concerto40.groups.has(currentRoot)){
+  const root=dataset.nodes.find(n=>n.id===currentRoot);
+  return attachConcerto40({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
+ }
+ return attachConcerto40(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -1258,9 +1455,9 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
@@ -1272,7 +1469,8 @@ async function init(){
     fetch("./LOTTO35_OPERE_CERTIFICATE_2026-11-10.json?v=checkpoint35",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 35 mancante "+r.status);return r.json()}),
     fetch("./LOTTO36_MOZART_25_SINFONIE_2026-11-10.json?v=checkpoint36",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 36 mancante "+r.status);return r.json()}),
     fetch("./LOTTO37_MOZART_30_OPERE_2026-11-10.json?v=checkpoint37",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 37 mancante "+r.status);return r.json()}),
-    fetch("./LOTTO38_BEETHOVEN_24_OPERE_2026-11-10.json?v=checkpoint38",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 38 mancante "+r.status);return r.json()})
+    fetch("./LOTTO38_BEETHOVEN_24_OPERE_2026-11-10.json?v=checkpoint38",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 38 mancante "+r.status);return r.json()}),
+    fetch("./CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json?v=checkpoint40-brandenburg",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Checkpoint40 Concerto mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -1296,6 +1494,7 @@ async function init(){
  prepareBeethoven38(beethoven38Input);
  prepareGenreRings();
  prepareSonata39();
+ prepareConcerto40(concerto40Input);
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
