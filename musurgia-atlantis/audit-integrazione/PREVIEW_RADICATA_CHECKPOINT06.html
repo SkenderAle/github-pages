@@ -721,41 +721,146 @@ function attachConcertoFamily(result,maxDepth,depths){
  return result;
 }
 
+
+// Checkpoint 38 — generic, work-anchored genre rings.
+// A ring is an index derived from independently catalogued individual works:
+// composer --[authored]--> work --[genre]--> genre --[repertory index]--> composer.
+// Never use it as an author-to-author or historical influence bridge.
+let genreRings={links:[],byGenre:new Map(),byAuthor:new Map(),byWork:new Map()};
+function prepareGenreRings(){
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const authors=new Map(),genres=new Map(),workList=new Map();
+ const eligible=e=>e&&typeof e.id==="string"&&(
+   /^fl35:|^fl36:|^fl37:|^audit:brandenburg27:/.test(e.id)
+ );
+ for(const e of dataset.links){
+  if(!eligible(e))continue;
+  const s=nodes.get(e.source),t=nodes.get(e.target);
+  if(!s||!t)continue;
+  if(e.relation==="ha_composto"&&s.category==="persona"&&t.category==="opera"){
+   if(!authors.has(t.id))authors.set(t.id,new Set());
+   authors.get(t.id).add(s.id);
+  }
+  if((e.relation==="ha_genere"||e.relation==="ha_forma")&&
+    s.category==="opera"&&t.category==="genere-forma"){
+   if(!genres.has(s.id))genres.set(s.id,new Set());
+   genres.get(s.id).add(t.id);
+  }
+ }
+ const triple=new Set();
+ for(const [work,authorSet]of authors){
+  for(const author of authorSet)for(const genre of genres.get(work)||[]){
+   const key=author+"|"+genre+"|"+work;
+   if(triple.has(key))continue;
+   triple.add(key);
+   const record={author,genre,work};
+   if(!genreRings.byGenre.has(genre))genreRings.byGenre.set(genre,[]);
+   if(!genreRings.byAuthor.has(author))genreRings.byAuthor.set(author,[]);
+   if(!genreRings.byWork.has(work))genreRings.byWork.set(work,[]);
+   genreRings.byGenre.get(genre).push(record);
+   genreRings.byAuthor.get(author).push(record);
+   genreRings.byWork.get(work).push(record);
+  }
+ }
+ const pairs=new Map();
+ for(const [author,entries]of genreRings.byAuthor)for(const e of entries){
+  const key=author+"|"+e.genre;
+  if(!pairs.has(key))pairs.set(key,{author,genre:e.genre,works:new Set()});
+  pairs.get(key).works.add(e.work);
+ }
+ for(const {author,genre,works}of pairs.values()){
+  const existing=dataset.links.find(e=>e.source===author&&e.target===genre&&
+    e.relation==="ha_composto_opere_del_genere");
+  if(existing){genreRings.links.push(existing);continue;}
+  const edge={id:"atlas:ring38:"+author+":"+genre,source:author,target:genre,
+   relation:"ha_composto_opere_del_genere",statement_type:"catalogue_derived_index",
+   root_permission:"non_transitive_documented_ring",
+   description:"Indice di repertorio dedotto da "+works.size+" opere individuali catalogate. Non indica causalità né crea relazioni fra compositori.",
+   supporting_work_ids:[...works],evidence_urls:[],sources:[]};
+  dataset.links.push(edge);genreRings.links.push(edge);
+ }
+}
+function attachGenreRings(result,maxDepth,limits){
+ if(!genreRings.byWork.size||maxDepth<1)return result;
+ const nodesById=new Map(result.nodes.map(n=>[n.id,n]));
+ const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const edgeIds=new Set(result.links.map(e=>e.id));
+ const a=genreRings.byAuthor.get(currentRoot)||[];
+ const g=genreRings.byGenre.get(currentRoot)||[];
+ const w=genreRings.byWork.get(currentRoot)||[];
+ if(!a.length&&!g.length&&!w.length)return result;
+ function add(id,depth,from,permission){
+  if(nodesById.has(id))return nodesById.get(id);
+  const n=universe.get(id),limit=limits[n?.category]??maxDepth;
+  if(!n||depth>maxDepth||depth>limit)return null;
+  const parent=nodesById.get(from);
+  const value={...n,_depth:depth,_path:[...(parent?._path||[currentRoot]),id],_permission:permission};
+  result.nodes.push(value);nodesById.set(id,value);return value;
+ }
+ if(a.length){
+  // Do not open other authors from a genre; only the selected author's works.
+  for(const record of a){
+   const work=add(record.work,1,currentRoot,"documented_repertoire_work");
+   if(work&&maxDepth>=2)add(record.genre,2,record.work,"terminal_genre_for_author");
+  }
+ }else if(g.length){
+  // A genre-root search is an index: works first, their own authors terminal.
+  for(const record of g){
+   const work=add(record.work,1,currentRoot,"genre_index_documented_work");
+   if(work&&maxDepth>=2)add(record.author,2,record.work,"terminal_author_of_work");
+  }
+ }else if(w.length){
+  for(const record of w){
+   add(record.author,1,currentRoot,"author_of_selected_work");
+   add(record.genre,1,currentRoot,"genre_of_selected_work");
+  }
+ }
+ const inView=new Set(result.nodes.map(n=>n.id));
+ for(const e of dataset.links){
+  if(!inView.has(e.source)||!inView.has(e.target)||edgeIds.has(e.id))continue;
+  if(genreRings.links.some(x=>x.id===e.id)||(
+   eligible(e)&&(e.relation==="ha_composto"||e.relation==="ha_genere"||e.relation==="ha_forma"))){
+   result.links.push({...e});edgeIds.add(e.id);
+  }
+ }
+ return result;
+}
+
 function getRootedPreview(maxDepth,relevance,depthByCategory){
  if(concertoFamilyByNode.has(currentRoot)){
   const root={...concertoFamilyByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_concerto_subgenre"};
-  return attachConcertoFamily({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
+  return attachGenreRings(attachConcertoFamily({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
 
  if(mozartTaxonomyNodes.has(currentRoot)){
   const root={...mozartTaxonomyNodes.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_taxonomy_term"};
-  return attachMozartTaxonomy({root:currentRoot,nodes:[root],links:[]},maxDepth,relevance,depthByCategory);
+  return attachGenreRings(attachMozartTaxonomy({root:currentRoot,nodes:[root],links:[]},maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
  }
 
  if(federatedPeopleByNode.has(currentRoot)){
   const root={...federatedPeopleByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_federated_person"};
-  return attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
+  return attachGenreRings(attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
 
  if(currentRoot==="legacy:gf:genere-sonata"||currentRoot==="fl:gf:sonata"||lot35.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
+  return attachGenreRings(attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(sym36.ids.has(currentRoot)||currentRoot===sym36.genreId){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachLot35(attachSym36({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"symphony_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachGenreRings(attachLot35(attachSym36({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"symphony_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(lot35.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"work_root"}],links:[]},maxDepth,depthByCategory);
+  return attachGenreRings(attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"work_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(brandenburgIds.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachBrandenburg({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"individual_BWV_root"}],links:[]},maxDepth,depthByCategory);
+  return attachGenreRings(attachBrandenburg({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"individual_BWV_root"}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(flaminioPreviewNodes.has(currentRoot)){
   const root={...flaminioPreviewNodes.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_catalogue_work"};
-  return attachFlaminioPreview({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
+  return attachGenreRings(attachFlaminioPreview({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
 
  if(legacyGenresByNode.has(currentRoot)){
@@ -770,7 +875,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachGenreRings(attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -783,7 +888,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachGenreRings(attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -990,6 +1095,7 @@ async function init(){
  prepareLot35(lot35Input);
  prepareSym36(sym36Input);
  prepareCatalog37(catalog37Input);
+ prepareGenreRings();
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
