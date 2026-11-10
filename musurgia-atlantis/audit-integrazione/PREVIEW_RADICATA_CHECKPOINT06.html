@@ -1396,8 +1396,9 @@ function attachQuartet42(result,maxDepth,limits){
  }}
  const hierarchy=quartet42.edges.find(e=>e.id==="fl42:quartetto:parent");
  if(isParent){
+  // Only instrument families appear at root. Composers are reached via an
+  // actual group or work, never pre-expanded from one arbitrary child.
   add(QUARTET42_CHILD,1,currentRoot,"quartetto_instrumentation_subgenre");
-  for(const author of quartet42.byAuthor.keys())if(maxDepth>=2)add(author,2,QUARTET42_CHILD,"terminal_documented_composer");
  }else if(isChild){
   add(QUARTET42_PARENT,1,currentRoot,"parent_genre_terminal");
   for(const [id]of quartet42.works)add(id,1,currentRoot,"individual_quartet");
