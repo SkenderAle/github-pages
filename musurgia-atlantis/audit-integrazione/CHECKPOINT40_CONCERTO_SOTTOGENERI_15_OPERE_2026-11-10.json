@@ -10,8 +10,10 @@
     "Le specializzazioni per organico sono nodi di genere-forma e non etichette",
     "Gli archi compositore↔sottogenere sono indici derivati da opere certificate, non relazioni storiche causali",
     "Concerto per tre solisti NON è automaticamente concerto grosso",
-    "Le sei opere brandeburghesi mantengono specificità di organico; nessuna attribuzione cumulativa al concerto grosso",
-    "Il grafo storico di produzione non viene modificato"
+    "Le sei opere brandeburghesi appartengono esclusivamente al nodo editoriale dedicato Concerto brandeburghese nella vista classificatoria; nessuna assegnazione automatica a concerto grosso, solistico o di gruppo.",
+    "Il grafo storico di produzione non viene modificato",
+    "Concerto brandeburghese è una famiglia editoriale dedicata al corpus BWV 1046–1051, non la proclamazione di un genere storico distinto.",
+    "Conservare separati il nodo raccolta dei sei Brandeburghesi, le sei composizioni e i rispettivi link Flaminio."
   ],
   "groups": [
     {
@@ -31,6 +33,15 @@
       "name": "Concerto per tre solisti",
       "parent_id": "audit:gf25:concerto-di-gruppo",
       "description": "Concerto con tre strumenti solisti e orchestra; per l'attuale campione piano, violino e violoncello"
+    },
+    {
+      "id": "atlas:gf:concerto-brandeburghese",
+      "name": "Concerto brandeburghese",
+      "parent_id": "legacy:gf:genere-concerto",
+      "description": "Famiglia editoriale dedicata ai sei concerti BWV 1046–1051: un omaggio alla varietà degli organici e alle invenzioni formali di J. S. Bach.",
+      "taxonomy_status": "editorial_corpus_branch_not_historical_distinct_genre",
+      "collection_id": "opera:bach-sei-concerti-brandeburghesi-1721",
+      "exclusive_membership": true
     }
   ],
   "works": [
@@ -189,15 +200,89 @@
         "https://imslp.org/wiki/List_of_works_by_Ludwig_van_Beethoven",
         "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Triplo.html"
       ]
+    },
+    {
+      "work_id": "audit:flaminio:bach:bwv1046",
+      "group_id": "atlas:gf:concerto-brandeburghese",
+      "catalogue": "BWV 1046",
+      "source_excel_row": 3081,
+      "source_lot": 27,
+      "evidence_urls": [
+        "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1046.html"
+      ],
+      "source_relation": "collection_member",
+      "collection_id": "opera:bach-sei-concerti-brandeburghesi-1721"
+    },
+    {
+      "work_id": "audit:flaminio:bach:bwv1047",
+      "group_id": "atlas:gf:concerto-brandeburghese",
+      "catalogue": "BWV 1047",
+      "source_excel_row": 3082,
+      "source_lot": 27,
+      "evidence_urls": [
+        "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1047.html"
+      ],
+      "source_relation": "collection_member",
+      "collection_id": "opera:bach-sei-concerti-brandeburghesi-1721"
+    },
+    {
+      "work_id": "audit:flaminio:bach:bwv1048",
+      "group_id": "atlas:gf:concerto-brandeburghese",
+      "catalogue": "BWV 1048",
+      "source_excel_row": 3083,
+      "source_lot": 27,
+      "evidence_urls": [
+        "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1048.html"
+      ],
+      "source_relation": "collection_member",
+      "collection_id": "opera:bach-sei-concerti-brandeburghesi-1721"
+    },
+    {
+      "work_id": "audit:flaminio:bach:bwv1049",
+      "group_id": "atlas:gf:concerto-brandeburghese",
+      "catalogue": "BWV 1049",
+      "source_excel_row": 3084,
+      "source_lot": 27,
+      "evidence_urls": [
+        "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1049.html"
+      ],
+      "source_relation": "collection_member",
+      "collection_id": "opera:bach-sei-concerti-brandeburghesi-1721"
+    },
+    {
+      "work_id": "audit:flaminio:bach:bwv1050",
+      "group_id": "atlas:gf:concerto-brandeburghese",
+      "catalogue": "BWV 1050",
+      "source_excel_row": 3085,
+      "source_lot": 27,
+      "evidence_urls": [
+        "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1050.html"
+      ],
+      "source_relation": "collection_member",
+      "collection_id": "opera:bach-sei-concerti-brandeburghesi-1721"
+    },
+    {
+      "work_id": "audit:flaminio:bach:bwv1051",
+      "group_id": "atlas:gf:concerto-brandeburghese",
+      "catalogue": "BWV 1051",
+      "source_excel_row": 3086,
+      "source_lot": 27,
+      "evidence_urls": [
+        "https://www.flaminioonline.it/Guide/Bach/Bach-Brandeburghese1051.html"
+      ],
+      "source_relation": "collection_member",
+      "collection_id": "opera:bach-sei-concerti-brandeburghesi-1721"
     }
   ],
   "counts": {
-    "works": 15,
-    "subgenres": 3,
+    "works": 21,
+    "subgenres": 4,
     "by_group": {
       "atlas:gf:concerto-per-violino": 9,
       "atlas:gf:concerto-per-pianoforte": 5,
-      "atlas:gf:concerto-per-tre-solisti": 1
+      "atlas:gf:concerto-per-tre-solisti": 1,
+      "atlas:gf:concerto-brandeburghese": 6
     }
-  }
+  },
+  "revision": "checkpoint40-brandenburg-editorial-branch"
 }
