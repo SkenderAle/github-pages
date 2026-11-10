@@ -1268,6 +1268,179 @@ function attachConcerto40(result,maxDepth,limits){
  return result;
 }
 
+
+// Lotto 42 — Beethoven & Mozart string quartets, including original Atlantis
+// Op.130 and the historic 1785 Mozart-to-Haydn publication. The form is a
+// navigable taxonomy, never a composer-to-composer bridge.
+const QUARTET42_PARENT="atlas:gf:quartetto";
+const QUARTET42_CHILD="legacy:gf:genere-quartetto-archi";
+const QUARTET42_HAYDN="opera:sei-quartetti-haydn-mozart-1785";
+const QUARTET42_OP130="opera:quartetto-op130";
+const QUARTET42_FUGUE="opera:grosse-fuge-op133";
+let quartet42={works:new Map(),byAuthor:new Map(),edges:[],authorship:new Map(),haydn:new Set(),newCount:0};
+function prepareQuartet42(batch){
+ if(batch?.schema!=="musurgia-atlantis-lotto42-string-quartets-v1"||
+    batch.entries?.length!==39||batch.exceptions?.length!==3||
+    batch.summary?.new_work_identities!==38)
+  throw Error("Lotto42: manifest quartetti incompleto");
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const sub=nodes.get(QUARTET42_CHILD),collection=nodes.get(QUARTET42_HAYDN);
+ if(sub?.category!=="genere-forma"||collection?.category!=="opera"||
+    nodes.get(QUARTET42_OP130)?.category!=="opera"||
+    nodes.get(QUARTET42_FUGUE)?.category!=="opera"||
+    nodes.has(QUARTET42_PARENT))
+   throw Error("Lotto42: patrimonio Atlantis o tassonomia mancante/duplicata");
+ const parent={id:QUARTET42_PARENT,name:"Quartetto",category:"genere-forma",
+   subtype:"famiglia cameristica",taxonomy_status:"editorial_genre_parent",
+   description:"Famiglia di forme e organici del quartetto: i singoli brani restano identificati per autore e catalogo."};
+ dataset.nodes.push(parent);nodes.set(parent.id,parent);
+ sub.name_original=sub.name;sub.name="Quartetto per archi";
+ const edgeIds=new Set(dataset.links.map(e=>e.id));
+ function pushEdge(e){
+  if(edgeIds.has(e.id)||!nodes.has(e.source)||!nodes.has(e.target))
+   throw Error("Lotto42: arco duplicato/orfano "+e.id);
+  edgeIds.add(e.id);dataset.links.push(e);quartet42.edges.push(e);
+ }
+ pushEdge({id:"fl42:quartetto:parent",source:QUARTET42_CHILD,target:QUARTET42_PARENT,
+   relation:"sottogenere_di",statement_type:"taxonomy_instrumentation",
+   root_permission:"non_transitive_taxonomy",
+   description:"Quartetto per archi è un ramo della famiglia Quartetto; non identifica gli autori fra loro."});
+ const rows=new Set(),catalogues=new Set();
+ for(const w of batch.entries){
+  if(rows.has(w.source_excel_row)||catalogues.has(w.composer_id+"|"+w.canonical_catalogue)||
+     w.genre_id!==QUARTET42_CHILD||w.parent_genre_id!==QUARTET42_PARENT||
+     !["pers:mozart","pers:beethoven"].includes(w.composer_id)||
+     nodes.get(w.composer_id)?.category!=="persona"||
+     !Number.isInteger(w.source_excel_row)||
+     !/^https:\/\/www\.flaminioonline\.it\/Guide\/(Beethoven|Mozart)\//.test(w.flaminio_explanation_url)||
+     !/^https:\/\//.test(w.external_authority_url))
+    throw Error("Lotto42: fonte o identità in conflitto "+w.id);
+  rows.add(w.source_excel_row);catalogues.add(w.composer_id+"|"+w.canonical_catalogue);
+  let n=nodes.get(w.id);
+  if(w.reuse_atlantis_id){
+   if(w.id!==QUARTET42_OP130||w.reuse_atlantis_id!==QUARTET42_OP130||n?.category!=="opera")
+    throw Error("Lotto42: riuso op130 insicuro");
+   if(!n.flaminio_explanation_url)n.flaminio_explanation_url=w.flaminio_explanation_url;
+   if(!n.catalogue_id)n.catalogue_id=w.canonical_catalogue;
+  }else{
+   if(n)throw Error("Lotto42: nodo duplicato "+w.id);
+   n={id:w.id,name:w.name,category:"opera",subtype:"quartetto per archi",
+    catalogue_id:w.canonical_catalogue,source_opus_original:w.source_opus_raw,
+    source_title_original:w.source_title_raw,source_year_original:w.source_year_raw,
+    source_excel_row:w.source_excel_row,flaminio_explanation_url:w.flaminio_explanation_url,
+    source_collection:"Flaminio · quartetti Beethoven/Mozart",
+    evidence_status:w.identity_status,authority_url:w.external_authority_url};
+   nodes.set(n.id,n);dataset.nodes.push(n);quartet42.newCount++;
+  }
+  quartet42.works.set(w.id,w);
+  if(!quartet42.byAuthor.has(w.composer_id))quartet42.byAuthor.set(w.composer_id,new Set());
+  quartet42.byAuthor.get(w.composer_id).add(w.id);
+  const existingAuthor=dataset.links.find(e=>e.source===w.composer_id&&e.target===w.id&&
+    /^(ha_composto|compone|compone_la_musica_di)$/.test(e.relation||""));
+  if(existingAuthor)quartet42.authorship.set(w.id,existingAuthor);
+  else{
+   const e={id:"fl42:author:"+w.id,source:w.composer_id,target:w.id,relation:"ha_composto",
+    statement_type:"work_specific_catalogue_concordance",root_permission:"non_transitive_documented_authorship",
+    sources:[w.external_authority_url,w.flaminio_explanation_url],
+    description:"Attribuzione del singolo quartetto (opus/Köchel), senza ponte attraverso altri compositori."};
+   pushEdge(e);quartet42.authorship.set(w.id,e);
+  }
+  pushEdge({id:"fl42:genre:"+w.id,source:w.id,target:QUARTET42_CHILD,
+   relation:"ha_sottogenere",statement_type:"work_specific_instrumentation",root_permission:"work_specific_only",
+   sources:[w.external_authority_url,w.flaminio_explanation_url],
+   description:"Il singolo brano appartiene al repertorio del quartetto per due violini, viola e violoncello."});
+  if(w.collection_id){
+   if(w.composer_id!=="pers:mozart"||w.collection_id!==QUARTET42_HAYDN||!/^K (387|421|428|458|464|465)$/.test(w.canonical_catalogue))
+    throw Error("Lotto42: gruppo Haydn attribuzione impropria");
+   quartet42.haydn.add(w.id);
+   pushEdge({id:"fl42:haydn:member:"+w.id,source:QUARTET42_HAYDN,target:w.id,
+    relation:"contiene_opera",statement_type:"historical_1785_collection_membership",
+    root_permission:"collection_only",sources:[w.external_authority_url,"https://searcharchives.bl.uk/catalog/040-002054175"],
+    description:"Uno dei sei quartetti dedicati a Haydn, la dedica non attribuisce la composizione a Haydn."});
+  }
+ }
+ for(const [author,works] of quartet42.byAuthor)
+  pushEdge({id:"fl42:quartetto:index:"+author,source:author,target:QUARTET42_CHILD,
+   relation:"ha_composto_opere_del_sottogenere",statement_type:"catalogue_derived_index",
+   root_permission:"non_transitive_documented_ring",supporting_work_ids:[...works],
+   description:"Indice di repertorio creato da opere singole documentate, non rapporto storico fra autori."});
+ if(quartet42.newCount!==38||quartet42.works.size!==39||quartet42.haydn.size!==6||
+    quartet42.byAuthor.get("pers:mozart")?.size!==23||quartet42.byAuthor.get("pers:beethoven")?.size!==16)
+  throw Error("Lotto42: controllo identità/collassi fallito");
+}
+function attachQuartet42(result,maxDepth,limits){
+ if(!quartet42.works.size||maxDepth<1)return result;
+ const isParent=currentRoot===QUARTET42_PARENT;
+ const isChild=currentRoot===QUARTET42_CHILD;
+ const isWork=quartet42.works.has(currentRoot);
+ const isAuthor=quartet42.byAuthor.has(currentRoot);
+ const isCollection=currentRoot===QUARTET42_HAYDN;
+ if(!isParent&&!isChild&&!isWork&&!isAuthor&&!isCollection)return result;
+ const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ if(isParent||isChild){
+  result={root:currentRoot,nodes:[{...universe.get(currentRoot),_depth:0,_path:[currentRoot]}],links:[]};
+ }
+ const shown=new Map(result.nodes.map(n=>[n.id,n])),edges=new Set(result.links.map(e=>e.id));
+ function add(id,depth,from,permission){
+  const n=universe.get(id),cap=limits[n?.category]??maxDepth;
+  if(!n||depth>maxDepth||depth>cap)return null;
+  if(shown.has(id))return shown.get(id);
+  const p=shown.get(from),node={...n,_depth:depth,_path:[...(p?._path||[currentRoot]),id],_permission:permission};
+  shown.set(id,node);result.nodes.push(node);return node;
+ }
+ function link(e){if(shown.has(e.source)&&shown.has(e.target)&&!edges.has(e.id)){
+  result.links.push({...e});edges.add(e.id);
+ }}
+ const hierarchy=quartet42.edges.find(e=>e.id==="fl42:quartetto:parent");
+ if(isParent){
+  add(QUARTET42_CHILD,1,currentRoot,"quartetto_instrumentation_subgenre");
+  for(const author of quartet42.byAuthor.keys())if(maxDepth>=2)add(author,2,QUARTET42_CHILD,"terminal_documented_composer");
+ }else if(isChild){
+  add(QUARTET42_PARENT,1,currentRoot,"parent_genre_terminal");
+  for(const [id]of quartet42.works)add(id,1,currentRoot,"individual_quartet");
+  for(const author of quartet42.byAuthor.keys())if(maxDepth>=2)add(author,2,currentRoot,"terminal_documented_composer");
+ }else if(isAuthor){
+  const group=add(QUARTET42_CHILD,1,currentRoot,"own_quartets_subgenre");
+  if(group){
+   for(const work of quartet42.byAuthor.get(currentRoot)){
+    const n=shown.get(work);
+    if(n){n._depth=2;n._path=[currentRoot,QUARTET42_CHILD,work];}
+    else add(work,2,QUARTET42_CHILD,"own_individual_quartet");
+   }
+   add(QUARTET42_PARENT,2,QUARTET42_CHILD,"quartetto_parent_terminal");
+  }
+  // Hide direct spokes from the author in the grouped view. The facts stay
+  // in the federated dataset and reappear when an individual work is rooted.
+  const own=quartet42.byAuthor.get(currentRoot);
+  result.links=result.links.filter(e=>!((e.source===currentRoot&&own.has(e.target))||
+   (own.has(e.source)&&e.target===QUARTET42_CHILD)));
+  edges.clear();for(const e of result.links)edges.add(e.id);
+ }else if(isWork){
+  const w=quartet42.works.get(currentRoot);
+  add(w.composer_id,1,currentRoot,"specific_composer");
+  add(QUARTET42_CHILD,1,currentRoot,"specific_subgenre");
+  add(QUARTET42_PARENT,2,QUARTET42_CHILD,"quartetto_parent_terminal");
+  if(w.collection_id)add(QUARTET42_HAYDN,1,currentRoot,"1785_publication_context");
+  if(currentRoot===QUARTET42_OP130){
+   const old=dataset.links.find(e=>e.source===QUARTET42_OP130&&e.target===QUARTET42_FUGUE&&
+    e.relation==="era_finale_originario_poi_pubblicato_separatamente");
+   if(old){add(QUARTET42_FUGUE,1,currentRoot,"historical_original_finale");link(old);}
+  }
+ }else if(isCollection){
+  for(const work of quartet42.haydn)add(work,1,currentRoot,"specific_member_of_1785_edition");
+ }
+ for(const e of quartet42.edges)link(e);
+ if(isChild||isWork){
+  for(const w of quartet42.works.values()){
+   if(isWork&&w.id!==currentRoot)continue;
+   link(quartet42.authorship.get(w.id));
+  }
+ }
+ if(isCollection)for(const e of quartet42.edges.filter(e=>e.relation==="contiene_opera"))link(e);
+ if(isParent||isChild||isAuthor||isWork)link(hierarchy);
+ return result;
+}
+
 function getRootedPreview39(maxDepth,relevance,depthByCategory){
  if(concertoFamilyByNode.has(currentRoot)){
   const root={...concertoFamilyByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_concerto_subgenre"};
@@ -1342,6 +1515,10 @@ function getRootedPreview39(maxDepth,relevance,depthByCategory){
 
 // Add the checkpoint40 layer without changing checkpoint39 rooted logic.
 function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(currentRoot===QUARTET42_PARENT||currentRoot===QUARTET42_CHILD||quartet42.works.has(currentRoot)){
+  const root=dataset.nodes.find(n=>n.id===currentRoot);
+  return attachQuartet42({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
+ }
  if(lot41.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
   return attachConcerto40(attachSonata39(attachGenreRings({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
@@ -1350,7 +1527,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
   return attachConcerto40({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
  }
- return attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachQuartet42(attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -1523,9 +1700,9 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
@@ -1539,7 +1716,8 @@ async function init(){
     fetch("./LOTTO37_MOZART_30_OPERE_2026-11-10.json?v=checkpoint37",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 37 mancante "+r.status);return r.json()}),
     fetch("./LOTTO38_BEETHOVEN_24_OPERE_2026-11-10.json?v=checkpoint38",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 38 mancante "+r.status);return r.json()}),
     fetch("./CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json?v=checkpoint40-brandenburg",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Checkpoint40 Concerto mancante "+r.status);return r.json()}),
-    fetch("./LOTTO41_55_OPERE_TASTIERA_CONCORDANZA_2026-11-10.json?v=checkpoint41",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto41 mancante "+r.status);return r.json()})
+    fetch("./LOTTO41_55_OPERE_TASTIERA_CONCORDANZA_2026-11-10.json?v=checkpoint41",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto41 mancante "+r.status);return r.json()}),
+    fetch("./LOTTO42_39_QUARTETTI_BEETHOVEN_MOZART_2026-11-10.json?v=checkpoint42",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto42 quartetti mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -1565,6 +1743,7 @@ async function init(){
  prepareGenreRings();
  prepareSonata39();
  prepareConcerto40(concerto40Input);
+ prepareQuartet42(lot42Input);
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
