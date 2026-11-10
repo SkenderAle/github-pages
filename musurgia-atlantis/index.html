@@ -284,7 +284,7 @@ async function init(){
  // A compatibility renderer guarantees a visible 3D network even when the CDN is blocked.
  const response=await fetch('./grafo.json',{cache:'no-store'});if(!response.ok)throw Error('Non riesco a leggere grafo.json ('+response.status+').');
  DATA=await response.json();if(!Array.isArray(DATA.nodes)||!Array.isArray(DATA.links))throw Error('Il grafo non contiene nodi e relazioni validi.');
- await mergeFlaminioVerified(DATA);
+ try { await mergeFlaminioVerified(DATA); } catch(flError) { console.error('Overlay Flaminio non disponibile; carico Atlantis originale:',flError); }
  lookup=new Map(DATA.nodes.map(n=>[n.id,n]));
  for(const e of DATA.links){if(!lookup.has(e.source)||!lookup.has(e.target))throw Error('È presente un collegamento verso un nodo mancante: '+e.id);e.tier=tier(e)}
  const webglOK=(()=>{try{const c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}})();
