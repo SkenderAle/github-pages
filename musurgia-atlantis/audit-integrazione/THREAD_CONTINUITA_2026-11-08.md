@@ -1680,3 +1680,20 @@ Riesaminati tutti i **50/125** casi delle dichiarazioni Lotto27 ancora aperte ch
 https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint35-20261110
 
 **Prossima ripresa:** test effettivo radici Mozart, K207, Concerto, Messa, Bach, BWV1046; audit collisioni e source-specific IDs; accelerare i lotti dove opera/catalogo/attribuzione sono documentati con riscontri work-specific (non basta il filtro euristico 46.205/52.150). Poi promuovere il frontend federato al percorso principale con regressioni e rollback.
+
+
+### Checkpoint 36 — 25 sinfonie di Mozart Flaminio/NMA, integrate nella GUI 3D radicata (10 novembre 2026)
+
+**Obiettivo:** procedere rapidamente per lotti consistenti, senza tornare alla vecchia GUI o moltiplicare le anteprime. Prosegue il lavoro sul vero file sperimentale `musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html`, con finestra flottante `Categorie · Nodi / Etichette`.
+
+**Verifica catalografica:** selezionate dal foglio originale `compositori_flaminio.xlsx` le righe 34610–34638 (25 sinfonie non contigue, K 128,129,130,132,133,134,162,181,182,183,184,199,200,201,202,297,318,319,338,385,425,504,543,550,551); riscontro work-specific nell'indice delle partiture della **Neue Mozart-Ausgabe**, pubblicazione Akademie der Wissenschaften und der Literatur Mainz, `https://www.adwmainz.de/fileadmin/adwmainz/MuKo_Publikationen/PV-2019.pdf`. Conservate 17 URL Flaminio della colonna H effettivamente presenti; nessuna URL costruita senza provenienza. **Esclusa** K 444 / 425a, la cosiddetta Sinfonia n. 37, in realtà composta in massima parte da Michael Haydn (introduzione riferibile a Mozart). Non confondere numero tradizionale sinfonia con numerazione KV.
+
+**Pubblicazione su GitHub, branch main:** `audit-integrazione/LOTTO36_MOZART_25_SINFONIE_2026-11-10.json` commit `cb44695852512c3466f4064bcf256014945d56fd`; integrazione GUI `audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html` commit `5aeebbcb503d8739641b4111a72e6b051ef1e8e1`.
+
+**Funzione del codice:** `prepareSym36` importa 25 identità d'opera, tenta il riuso di nodi preesistenti con concordanza nome/numero di catalogo, collega Mozart→opera→`Sinfonia`. Crea il nodo singolare `Sinfonia` solo se non già presente. Una relazione esplicitamente tipizzata `catalogue_derived_index` collega Mozart↔Sinfonia **solo come indice derivato da opere documentate**, NON come rapporto causale, così da chiudere i circuiti senza connettere arbitrariamente altri compositori. `attachSym36` rende visibili questi nodi nelle radici Mozart, singola sinfonia e Sinfonia, nel medesimo modello di pertinenza radicata. È vietato usare il nodo genere come ponte storico verso altri autori. Sono predisposte fino a 50 relazioni dirette (2 per opera; possono essere meno se si riusano archi preesistenti) più 1 arco indice non causale.
+
+**Stato complessivo ultime tre tranche:** 6 Brandeburghesi + 10 Lotto35 + 25 Lotto36 = **41 nuove identità d'opera candidate/integrate nel dataset federato runtime**, salvo riusi di nodi preesistenti; non sono 41 nuovi nodi nel `grafo.json` fisico. 52.150 righe del catalogo totale sono ancora al primo giro euristico, non certificate singolarmente.
+
+**Controllo svolto:** JSON letto integralmente dal repository dopo commit, 25 ID univoci, 25 righe sorgente, nessuna K444, 17 URL di guide originali; HTML recuperato con funzione e caricamento JSON presenti, stessa finestra flottante. **NON verificato rendering reale da browser:** il web reader non è riuscito ad aprire il dominio e non è stato eseguito un test di interazione DOM sul sito. Link da provare: https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint36-20261110
+
+**Prossima ripresa:** priorità collaudo visivo e correzione di eventuali errori runtime; poi altri lotti di cataloghi ad alta identificabilità e già attestati in edizioni critiche, valutando seriamente dedup e la distinzione versioni/parti. Non incrementare conteggi di opere certificate sulla sola base del primo filtro automatico.
