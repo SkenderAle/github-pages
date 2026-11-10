@@ -409,6 +409,98 @@ function attachLot35(result,maxDepth,limits){
  return result;
 }
 
+
+// Checkpoint 36: 25 individual Mozart symphonies checked against the Neue Mozart-Ausgabe.
+// Never incorporate K 444: most of that symphony is by Michael Haydn.
+let sym36={works:[],links:[],ids:new Set(),genreId:null};
+function prepareSym36(batch){
+ if(batch?.schema!=="musurgia-atlantis-flaminio-symphonies-checkpoint36-v1"||batch.entries?.length!==25)
+  throw Error("Lotto36 non coerente");
+ const ids=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const composer=ids.get("pers:mozart");
+ if(!composer||composer.category!=="persona")throw Error("Mozart non presente nel grafo di base");
+ const existingGenre=dataset.nodes.find(n=>n.category==="genere-forma"&&n.name?.trim().toLowerCase()==="sinfonia");
+ let genre=existingGenre;
+ if(!genre){
+  genre={id:"fl:gf:sinfonia",name:"Sinfonia",category:"genere-forma",subtype:"forma sinfonica",
+   source_collection:"Neue Mozart-Ausgabe · classificazione delle opere"};
+  if(ids.has(genre.id))throw Error("Collisione genere Sinfonia");
+  dataset.nodes.push(genre);ids.set(genre.id,genre);
+ }
+ sym36.genreId=genre.id;
+ const seen=new Set(),workRefs=new Set(),knownEdges=new Set(dataset.links.map(e=>e.id));
+ for(const w of batch.entries){
+  const match=w.catalogue.match(/^K (\d+)$/),kv=match?Number(match[1]):NaN;
+  if(!Number.isInteger(kv)||kv===444||seen.has(kv)||!/^https:\/\//.test(w.evidence_url)||
+    !Number.isInteger(w.source_excel_row)||!w.name.startsWith("Sinfonia n."))throw Error("Record Sinfonia da trattenere: "+w.id);
+  seen.add(kv);
+  const existing=dataset.nodes.find(n=>n.category==="opera"&&
+    /sinfon/i.test(n.name||"")&&new RegExp("(?:K\\.?\\s*|KV\\.?\\s*)"+kv+"(?!\\d)","i").test(n.name||""));
+  const wid=existing?.id||w.id;
+  if(workRefs.has(wid)||(!existing&&ids.has(wid)))throw Error("ID duplicato nella sinfonia K "+kv);
+  workRefs.add(wid);
+  if(!existing){
+   const n={id:wid,name:w.name,category:"opera",subtype:"sinfonia",
+    catalogue_id:w.catalogue,source_excel_row:w.source_excel_row,
+    guide_url:w.flaminio_explanation_url||null,flaminio_explanation_url:w.flaminio_explanation_url||null,
+    evidence_status:"NMA_catalogue_independently_indexed",source_collection:"Flaminio + NMA"};
+   dataset.nodes.push(n);ids.set(wid,n);
+  }
+  sym36.works.push({...w,id:wid,reused_existing_node:!!existing,genre_id:genre.id});
+  for(const [kind,source,target]of [["ha_composto","pers:mozart",wid],["ha_genere",wid,genre.id]]){
+   if(dataset.links.some(e=>e.source===source&&e.target===target&&e.relation===kind))continue;
+   const edge={id:"fl36:"+kind+":"+w.id,source,target,relation:kind,
+    statement_type:"documented_specific_work",root_permission:"specific_work_only",
+    description:"Classificazione o attribuzione del singolo concerto/sinfonia secondo il catalogo NMA; nessun ponte automatico fra compositori.",
+    evidence_urls:[w.evidence_url],sources:[w.evidence_url],flaminio_explanation_url:w.flaminio_explanation_url||null};
+   if(knownEdges.has(edge.id))throw Error("Arco duplicato "+edge.id);
+   dataset.links.push(edge);sym36.links.push(edge);knownEdges.add(edge.id);
+  }
+ }
+ if(seen.size!==25)throw Error("Lotto36 ha numeri duplicati");
+ // Derived index edge closes the ring but does not imply that a genre caused
+ // an authorial relationship or that other authors are related to Mozart.
+ const edge={id:"fl36:composer-genre-mozart-sinfonia",source:"pers:mozart",target:genre.id,
+  relation:"ha_composto_opere_del_genere",statement_type:"catalogue_derived_index",
+  root_permission:"cycle_closure_non_transitive",
+  description:"Mozart è autore di sinfonie identificate individualmente (25 attestazioni NMA). Collegamento di repertorio, non influenza causale.",
+  evidence_urls:[batch.authority],sources:[batch.authority]};
+ if(!dataset.links.some(e=>e.source===edge.source&&e.target===edge.target)){
+   dataset.links.push(edge);sym36.links.push(edge);
+ }
+ sym36.ids=new Set(sym36.works.map(w=>w.id));
+}
+function attachSym36(result,maxDepth,limits){
+ if(!sym36.works.length||maxDepth<1)return result;
+ const show=sym36.ids.has(currentRoot)||currentRoot==="pers:mozart"||currentRoot===sym36.genreId;
+ if(!show)return result;
+ const shown=new Map(result.nodes.map(n=>[n.id,n])),universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const edges=new Set(result.links.map(e=>e.id));
+ function add(id,depth,from,permission){
+  if(shown.has(id))return shown.get(id);
+  const n=universe.get(id);if(!n||depth>maxDepth||depth>(limits[n.category]??maxDepth))return null;
+  const p=shown.get(from),v={...n,_depth:depth,_path:[...(p?._path||[currentRoot]),id],_permission:permission};
+  result.nodes.push(v);shown.set(id,v);return v;
+ }
+ const genre=sym36.genreId;
+ if(currentRoot==="pers:mozart"){
+  for(const w of sym36.works)add(w.id,1,currentRoot,"individual_K_symphony");
+  add(genre,1,currentRoot,"derived_genre_index_terminal");
+ }else if(currentRoot===genre){
+  add("pers:mozart",1,genre,"documented_composer_terminal");
+  for(const w of sym36.works)add(w.id,1,genre,"symphony_catalogue_index");
+ }else{
+  add("pers:mozart",1,currentRoot,"specific_composer");
+  add(genre,1,currentRoot,"specific_genre");
+ }
+ for(const e of sym36.links){
+  if(shown.has(e.source)&&shown.has(e.target)&&!edges.has(e.id)){
+   result.links.push({...e});edges.add(e.id);
+  }
+ }
+ return result;
+}
+
 // Checkpoint 18: reconcile direct person relations from Mundi federation in staging.
 let federatedPeople={nodes:[],links:[]},federatedPeopleByNode=new Map();
 function prepareFederatedPeople(data){
@@ -597,6 +689,10 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
   return attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
  }
 
+ if(sym36.ids.has(currentRoot)||currentRoot===sym36.genreId){
+  const root=dataset.nodes.find(n=>n.id===currentRoot);
+  return attachSym36({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"symphony_root"}],links:[]},maxDepth,depthByCategory);
+ }
  if(lot35.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
   return attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot],_permission:"work_root"}],links:[]},maxDepth,depthByCategory);
@@ -622,7 +718,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
     edges.push(e);
    }
   }
-  return attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges({root:currentRoot,nodes,links:edges},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  const result=renderer.explore(currentRoot,{maxDepth,relevance,depthByCategory});
  // Only directly documented links are visualized. Legacy edges do not become
@@ -635,7 +731,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
    result.links.push(e);
   }
  }
- return attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachSym36(attachLot35(attachBrandenburg(attachConcertoFamily(attachMozartTaxonomy(attachFederatedPeople(attachFlaminioPreview(attachWorkGenreEdges(result,maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -803,9 +899,9 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
@@ -814,7 +910,8 @@ async function init(){
    fetch("./OVERLAY_TASSONOMIA_MOZART_CHECKPOINT19_2026-11-09.json?v=checkpoint19",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Tassonomia delle opere Mozart mancante "+r.status);return r.json()}),
     fetch("./OVERLAY_FAMIGLIA_CONCERTO_CHECKPOINT25_2026-11-10.json?v=checkpoint25",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Famiglia Concerto mancante "+r.status);return r.json()}),
     fetch("./STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json?v=checkpoint34",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Schede Brandeburghesi mancanti "+r.status);return r.json()}),
-    fetch("./LOTTO35_OPERE_CERTIFICATE_2026-11-10.json?v=checkpoint35",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 35 mancante "+r.status);return r.json()})
+    fetch("./LOTTO35_OPERE_CERTIFICATE_2026-11-10.json?v=checkpoint35",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 35 mancante "+r.status);return r.json()}),
+    fetch("./LOTTO36_MOZART_25_SINFONIE_2026-11-10.json?v=checkpoint36",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto 36 mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -833,6 +930,7 @@ async function init(){
  dataset.links.push(...flaminioPreview.links);
  prepareBrandenburg(brandenburgInput);
  prepareLot35(lot35Input);
+ prepareSym36(sym36Input);
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
