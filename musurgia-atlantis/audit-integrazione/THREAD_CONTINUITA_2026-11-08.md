@@ -1605,3 +1605,14 @@ Riesaminati tutti i **50/125** casi delle dichiarazioni Lotto27 ancora aperte ch
 **Conteggio cumulativo del Lotto27–29:** 137 dichiarazioni di fonte Flaminio tracciate, suddivise in 12 esaminate puntualmente nel Lotto27 + 50 nel Lotto28 + 75 nel Lotto29; non significa che 137 attribuzioni siano certificate. **Nessuna fusione, nessun arco/nodo pubblico aggiunto**, testo raw preservato, tutti i gate di produzione chiusi; 210 lotti storici inalterati.
 
 **Prossima ripresa (Lotto30):** revisione RV/rubriche di Vivaldi (**132** senza rubrica) con fonti tematiche e attributive prima dell'import, poi **199** righe delle cantate sacre Bach con identificazione BWV/incipit/versioni e **112** righe delle 17 partizioni ripetute del Lotto25. Prima di fondere, implementare controlli di tracciabilità, provenienza, e convalida work-specific, senza confondere numeri fonte con cataloghi.
+
+
+### Checkpoint 30 — decisione: rendere esplorabile *subito* tutto Flaminio (10 novembre 2026)
+
+**Nuova richiesta vincolante dell'utente:** l'intero catalogo Flaminio deve essere esplorabile prima del completamento degli audit, per osservare anomalie, riconoscere collegamenti e proporre correzioni. Abbandonare la sequenza «certificare prima 52.150 opere e solo dopo mostrarle». Separare **consultazione sorgente non verificata** dalla **rete storica certificata**.
+
+**Fatto realmente:** ritrovato il file sorgente utente `compositori_flaminio.xlsx` nella Libreria, lettura effettiva del foglio `Sheet1!A1:H52151`; estratte **52.150/52.150** righe complete, **149** etichette compositore e **1.167** rubriche non vuote (la rubrica vuota è ulteriore valore). Creato nella conversazione un HTML self-contained `Musurgia_Atlantis_Flaminio_Explorer_52150.html`, che incorpora l'intero dataset compresso e permette ricerche, filtri, schede sorgente, link e export risultati. Creato in sessione anche `flaminio_catalogo_integrale_52150.json.gz` e metadati. **Artefatti non ancora trasferiti su GitHub; la preview pubblica Atlantis e `grafo.json` restano immutati.**
+
+**Pubblicato su main:** `musurgia-atlantis/audit-integrazione/CHECKPOINT30_CATALOGO_FLAMINIO_ESPLORAZIONE_INTEGRALE_2026-11-10.md` (commit `0feac88ca0eaf6b3f9e991a97c6e3d773dbed8bf`), con regole di collegamento eventuale alla UI e distinguo fonte/identità/attribuzione.
+
+**Prossima fase reale:** caricare i dati integrali in forma statica partizionata o compressa sotto `musurgia-atlantis/catalogo-flaminio/` e integrare un pannello separato nella UI Atlantis, garantendo ricerca di tutte le 52.150 righe, distinzione affidabilità e segnalazioni utente. Nessun arco storico dedotto automaticamente dalle rubriche; mantenere i 210 lotti storici e la pertinenza radicata.
