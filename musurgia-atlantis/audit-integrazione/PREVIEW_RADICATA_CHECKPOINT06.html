@@ -509,7 +509,7 @@ function prepareCatalog37(batch){
  const known=new Set(dataset.nodes.map(n=>n.id)),genreIds=new Map(),seen=new Set();
  for(const w of batch.works){
   if(seen.has(w.id)||known.has(w.id)||!["Sonata","Sinfonia"].includes(w.genre)||
-     !/^fl:mozart:(piano|sym):kv\d+$/.test(w.id)||!/^K \d+$/.test(w.catalogue)||
+     !/^fl:mozart:(piano|sym):kv\d+$/.test(w.id)||!/^K \d+(?:\/\d+)?$/.test(w.catalogue)||
      !Number.isInteger(w.source_excel_row)||[17,18,84,444].includes(Number(w.catalogue.slice(2))))
     throw Error("Collisione o attribuzione sospetta Lotto37: "+w.id);
   seen.add(w.id);
@@ -737,7 +737,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
   return attachFederatedPeople({root:currentRoot,nodes:[root],links:[]},maxDepth,depthByCategory);
  }
 
- if(currentRoot==="fl:gf:sonata"||lot35.ids.has(currentRoot)){
+ if(currentRoot==="legacy:gf:genere-sonata"||currentRoot==="fl:gf:sonata"||lot35.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
   return attachLot35({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
  }
