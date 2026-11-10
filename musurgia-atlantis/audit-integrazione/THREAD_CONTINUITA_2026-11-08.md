@@ -1423,3 +1423,14 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **Commit solo in `audit-integrazione/`:** `CROSSWALK_FLAMINIO_LOTTO14_13_VS_TRE_MACROAREE_2026-11-10.json` `14bc4ac1f2d00d55d75474d1a7ecaffecb3b7ed1`; `AUDIT_FLAMINIO_LOTTO14_TRE_MACROAREE_2026-11-10.md` `82cb4c6e998eeefc34763a586e951166835f4687`. Nessun nuovo nodo o arco, nessun merge, GUI e produzione invariati.
 
 **Prossimo passo:** ottenere il testo originale completo degli alberi o dichiarare una proposta tassonomica autonoma, confrontare anche i 10 concetti composti/specifici del Lotto13, quindi classificare le composizioni individuali Flaminio con provenienza e multiappartenenza. Checkpoint24 storico resta 74/233 e i 210 lotti storico-filologici intatti.
+
+
+### Lotto 15 — prime 22 identità di opere individuali Flaminio, campione verificato (10 novembre 2026)
+
+**Eseguito sul catalogo utente:** scansione delle **52.150** righe dati dell'Excel `compositori_flaminio.xlsx` e selezione controllata di **23 righe riferite a 22 opere candidate**. Campione: sei concerti brandeburghesi BWV 1046–1051 (collegabili singolarmente alla raccolta esistente), concerti di Barber, Bartók e Beethoven, concerti per violino Mozart K 207/211/216/218/219/271i, Messe Beethoven op.123 e Mozart K 427, tre opere teatrali di Mozart (`Don Giovanni`, `Die Zauberflöte`, `Le nozze di Figaro`). **Non** sono 22 nuovi nodi pronti per il merge.
+
+**Deduplicazioni e gate:** due righe del `Don Giovanni` K 527 (**35267**, **35268**) costituiscono la stessa opera, ma rimandano a scheda ouverture e scheda opera: potenziale `parte_di`, non opera duplicata. Tre ID esistenti Atlantis candidati `opera:Don-giovanni`, `opera:figaro`, `opera:beethoven-missa-solemnis-op123`; raccolta dei Brandeburghesi `opera:bach-sei-concerti-brandeburghesi-1721`. **Mozart K 271i/K 271a** sotto **HOLD attributivo**, non promuovere la paternità senza riscontro. Generi singolari Concerto/Messa/Opera dedotti dai singoli titoli, sottogeneri teatrali da verificare separatamente.
+
+**Pubblicati nel solo audit:** `STAGING_FLAMINIO_LOTTO15_22_OPERE_2026-11-10.json`, commit `6cb06f4cbb802908708682c4c08d401590a3505a`; `AUDIT_FLAMINIO_LOTTO15_PRIME_22_OPERE_2026-11-10.md`, commit `8d73eaaf3789dc0aa8929eb35db6a3a98fc9f878`. File dettagliati CSV/JSON con link e titoli originali disponibili nella conversazione; non ancora nel repository. Nessuna modifica al grafo pubblico o GUI; 210 lotti storici intatti.
+
+**Prossimo passo:** allargare per batch il controllo opera-per-opera, includendo identità, versioni, parti, raccolte e attribuzioni; unire al crosswalk dei 42 generi solo mediante archi documentati e test della pertinenza. Checkpoint24 storico resta 74/233, prossimo lotto separato di 50.
