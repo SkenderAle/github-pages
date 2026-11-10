@@ -727,14 +727,13 @@ function attachConcertoFamily(result,maxDepth,depths){
 // composer --[authored]--> work --[genre]--> genre --[repertory index]--> composer.
 // Never use it as an author-to-author or historical influence bridge.
 let genreRings={links:[],byGenre:new Map(),byAuthor:new Map(),byWork:new Map()};
+const genreRingEligible=e=>e&&typeof e.id==="string"&&
+ /^fl35:|^fl36:|^fl37:|^audit:brandenburg27:/.test(e.id);
 function prepareGenreRings(){
  const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
  const authors=new Map(),genres=new Map(),workList=new Map();
- const eligible=e=>e&&typeof e.id==="string"&&(
-   /^fl35:|^fl36:|^fl37:|^audit:brandenburg27:/.test(e.id)
- );
  for(const e of dataset.links){
-  if(!eligible(e))continue;
+  if(!genreRingEligible(e))continue;
   const s=nodes.get(e.source),t=nodes.get(e.target);
   if(!s||!t)continue;
   if(e.relation==="ha_composto"&&s.category==="persona"&&t.category==="opera"){
@@ -819,7 +818,7 @@ function attachGenreRings(result,maxDepth,limits){
  for(const e of dataset.links){
   if(!inView.has(e.source)||!inView.has(e.target)||edgeIds.has(e.id))continue;
   if(genreRings.links.some(x=>x.id===e.id)||(
-   eligible(e)&&(e.relation==="ha_composto"||e.relation==="ha_genere"||e.relation==="ha_forma"))){
+   genreRingEligible(e)&&(e.relation==="ha_composto"||e.relation==="ha_genere"||e.relation==="ha_forma"))){
    result.links.push({...e});edgeIds.add(e.id);
   }
  }
