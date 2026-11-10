@@ -1412,3 +1412,14 @@ L'utente ha caricato `compositori_flaminio.xlsx` (NON caricato a GitHub). Analis
 **Su GitHub, solo staging:** `CROSSWALK_FLAMINIO_LOTTO13_GRAFI_INTEGRALI_23_LEMMI_2026-11-10.json`, commit `2dc3a6c4f43b6e433fb0b2202f958b626101aaf2`; `AUDIT_FLAMINIO_LOTTO13_GRAFI_INTEGRALI_2026-11-10.md`, commit `d63779e049608422a580b41d7c735e601b7c556d`. Nessuna identità semantica automaticamente certificata, nessun merge, nessuna modifica a grafi/UI pubblici o ai 210 lotti storici.
 
 **Prossimo passo:** verificare i tre alberi musicologici completi (camera/sinfonico/sacro), confrontare i 13 concetti non attestati come nodi generali e i 10 collegati a sottotipi, quindi proporre il vocabolario canonico e l'importazione delle singole opere Flaminio. Audit storico Checkpoint24 resta 74/233, prossimo blocco separato da 50.
+
+
+### Lotto 14 — tredici forme Flaminio e tre macroaree camera/sinfonica/sacra (10 novembre 2026)
+
+**Fatto:** riletto `AUDIT_TASSONOMIE_CAMERA_SINFONICA_SACRA_2026-11-09.md` assieme all'audit integrale dei due grafi del Lotto13. Elaborato il crosswalk di **13/13** lemmi ancora privi di una categoria generale pertinente: Antifona, Canzone, Duetto, Mazurca, Offertorio, Polacca, Quintetto, Rondò, Salmo, Scherzo, Sestetto, Studio, Trio. Per ogni termine sono conservati una macroarea di lavoro, la faccetta semantica, l'eventuale distinzione testo/forma/organico/funzione/parte e un gate di mancata pubblicazione. Esempi: Antifona e Offertorio (funzione/testo/intonazione distinti), Trio ≠ Sonata a tre, Quintetto generico ≠ quintetto d'archi, Polacca danza ≠ musica polacca, Studio pezzo ≠ studio come istituzione, Rondò e Scherzo come movimento oppure composizione autonoma.
+
+**Limite di evidenza da mantenere:** l'audit tassonomico originale pubblicato su GitHub riassume e discute i **tre alberi user-supplied** ma **NON conserva il loro testo integrale ramo per ramo**; pertanto la collocazione esatta delle 13 voci negli alberi non è certificata. Questo lotto contiene classificazioni per macroarea, alcune desunte dalle sintesi originali, altre proposte musicologiche da vagliare. **Non dichiarare come utente-fornita una diramazione non vista.**
+
+**Commit solo in `audit-integrazione/`:** `CROSSWALK_FLAMINIO_LOTTO14_13_VS_TRE_MACROAREE_2026-11-10.json` `14bc4ac1f2d00d55d75474d1a7ecaffecb3b7ed1`; `AUDIT_FLAMINIO_LOTTO14_TRE_MACROAREE_2026-11-10.md` `82cb4c6e998eeefc34763a586e951166835f4687`. Nessun nuovo nodo o arco, nessun merge, GUI e produzione invariati.
+
+**Prossimo passo:** ottenere il testo originale completo degli alberi o dichiarare una proposta tassonomica autonoma, confrontare anche i 10 concetti composti/specifici del Lotto13, quindi classificare le composizioni individuali Flaminio con provenienza e multiappartenenza. Checkpoint24 storico resta 74/233 e i 210 lotti storico-filologici intatti.
