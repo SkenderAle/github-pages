@@ -1,0 +1,223 @@
+{
+  "schema": "musurgia-atlantis-regression-lotto49-v1",
+  "date": "2026-11-11",
+  "status": "passed_module_regression_not_full_browser_or_federation",
+  "source_description": "JS functions extracted from published GitHub preview and executed with actual legacy genre overlay, actual lot45-49 JSON manifests, and synthetic Bach person node",
+  "source_files": [
+    "musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html",
+    "musurgia-atlantis/audit-integrazione/GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json",
+    "musurgia-atlantis/audit-integrazione/LOTTO49_34_SCHEDE_BACH_BWV111_140_2026-11-11.json"
+  ],
+  "fixture": {
+    "legacy_genre_nodes": 50,
+    "legacy_genre_edges": 271,
+    "synthetic_person_id": "pers:bach",
+    "other_staging_overlays_loaded": false,
+    "production_grafo_json_loaded": false,
+    "visual_webgl_tested": false
+  },
+  "new_lot": {
+    "nodes": 34,
+    "works": 33,
+    "versions": 1,
+    "edges": 93,
+    "documented_reuses": 4,
+    "chorale_classifications": 21,
+    "orphan_new_edges": 0,
+    "duplicate_node_ids": 0,
+    "duplicate_edge_ids": 0
+  },
+  "cumulative_45_to_49": {
+    "works_or_fragments": 154,
+    "versions": 5,
+    "sacred_cantatas": 142,
+    "secular_cantatas": 10,
+    "oratorios": 1,
+    "motets": 1,
+    "chorale_cantata_subset_of_sacred": 38
+  },
+  "checks": {
+    "all_19_structural_and_semantic_assertions_passed": true,
+    "roots_tested": 17,
+    "all_root_edges_with_endpoints": true,
+    "paginated_all_works_reachable": true,
+    "no_page_orphans": true,
+    "all_mode_restores_all_work_nodes": true,
+    "bwv118_motet_not_cantata": true,
+    "bwv118a_version_not_work": true,
+    "bwv120_to_120a_specific_reuse": true,
+    "bwv134a_secular": true,
+    "person_depth_zero_respected": true
+  },
+  "pagination": {
+    "default_page_size": 24,
+    "available_sizes": [
+      12,
+      24,
+      48,
+      "all"
+    ],
+    "families": [
+      {
+        "name": "Cantata sacra",
+        "genre_id": "atlas:gf:cantata-sacra",
+        "total": 142,
+        "pages": 6,
+        "page_counts": [
+          24,
+          24,
+          24,
+          24,
+          24,
+          22
+        ],
+        "coverage": 142
+      },
+      {
+        "name": "Cantata profana",
+        "genre_id": "atlas:gf:cantata-profana",
+        "total": 10,
+        "pages": 1,
+        "page_counts": [
+          10
+        ],
+        "coverage": 10
+      },
+      {
+        "name": "Cantata corale",
+        "genre_id": "atlas:gf:cantata-corale",
+        "total": 38,
+        "pages": 2,
+        "page_counts": [
+          24,
+          14
+        ],
+        "coverage": 38
+      },
+      {
+        "name": "Mottetto",
+        "genre_id": "legacy:gf:genere-mottetto",
+        "total": 1,
+        "pages": 1,
+        "page_counts": [
+          1
+        ],
+        "coverage": 1
+      }
+    ],
+    "sorting": "BWV ascending including suffixed identities",
+    "controls": "genre selector + previous/next + page status; state maintained independently per genre; 'Tutte' disables paging"
+  },
+  "root_cases": [
+    {
+      "root": "pers:bach",
+      "nodes": 44,
+      "edges": 85,
+      "orphan_links": 0
+    },
+    {
+      "root": "legacy:gf:genere-cantata",
+      "nodes": 4,
+      "edges": 5,
+      "orphan_links": 0
+    },
+    {
+      "root": "legacy:gf:genere-mottetto",
+      "nodes": 4,
+      "edges": 4,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv111",
+      "nodes": 5,
+      "edges": 8,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv118",
+      "nodes": 5,
+      "edges": 5,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv118a",
+      "nodes": 4,
+      "edges": 4,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv119",
+      "nodes": 4,
+      "edges": 5,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv120",
+      "nodes": 6,
+      "edges": 11,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv120a",
+      "nodes": 6,
+      "edges": 11,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv120b",
+      "nodes": 5,
+      "edges": 8,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv134",
+      "nodes": 5,
+      "edges": 7,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv134a",
+      "nodes": 5,
+      "edges": 7,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv137",
+      "nodes": 6,
+      "edges": 11,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl49:jsbach:bwv140",
+      "nodes": 5,
+      "edges": 8,
+      "orphan_links": 0
+    },
+    {
+      "root": "atlas:gf:cantata-corale",
+      "nodes": 28,
+      "edges": 78,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl48:jsbach:bwv82",
+      "nodes": 7,
+      "edges": 11,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl47:jsbach:bwv80",
+      "nodes": 7,
+      "edges": 13,
+      "orphan_links": 0
+    }
+  ],
+  "limitations": [
+    "The complete production graph was not fetched or loaded in this isolated test.",
+    "No browser or WebGL graphical interaction test; source JavaScript syntax compiled and extracted module executed only.",
+    "No complete HTTP check of guide links; source URLs grounded in Flaminio catalog/guide index.",
+    "Original compositori_flaminio.xlsx workbook unavailable; Excel source rows not inferred.",
+    "No production grafo.json or index.html changes."
+  ],
+  "next": "Lotto50 BWV141-170 after source and attribution audit; browser UI test for genre pagination and rest of federation"
+}
