@@ -1768,6 +1768,88 @@ function attachQuartet44(result,maxDepth,limits){
  return result;
 }
 
+
+// Checkpoint45a — display the work-anchored Mozart/Singspiel circle.
+// Provenance: Köchel KV620, the original Atlantis authorship E0739, and the
+// existing Mozart->Opera legacy index. Not a newly asserted personal contact.
+const SINGSPIEL45="audit:gf19:singspiel";
+const SINGSPIEL45_WORK="opera:flauto-magico";
+const SINGSPIEL45_OPERA="legacy:gf:genere-opera";
+const SINGSPIEL45_AUTHOR="pers:mozart";
+const SINGSPIEL45_INDEX_ID="audit:tax45:mozart-singspiel-kv620";
+let singspiel45={edges:[]};
+function prepareSingspiel45(){
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const edges=new Map(dataset.links.map(e=>[e.id,e]));
+ const required={
+  workGenre:"audit:tax19:e004",workOpera:"audit:tax19:e008",
+  genreParent:"audit:tax19:e012",authorWork:"E0739",
+  authorOpera:"legacy:gf:edge:1351"};
+ if(![SINGSPIEL45,SINGSPIEL45_WORK,SINGSPIEL45_OPERA,SINGSPIEL45_AUTHOR].every(id=>nodes.has(id)))
+   throw Error("Singspiel: four canonical nodes absent");
+ if(nodes.get(SINGSPIEL45)?.category!=="genere-forma"||
+    nodes.get(SINGSPIEL45_WORK)?.category!=="opera"||
+    nodes.get(SINGSPIEL45_AUTHOR)?.category!=="persona"||
+    nodes.get(SINGSPIEL45_OPERA)?.category!=="genere-forma")
+   throw Error("Singspiel: unexpected node types");
+ const expected={
+  workGenre:[SINGSPIEL45_WORK,SINGSPIEL45],
+  workOpera:[SINGSPIEL45_WORK,SINGSPIEL45_OPERA],
+  genreParent:[SINGSPIEL45,SINGSPIEL45_OPERA],
+  authorWork:[SINGSPIEL45_AUTHOR,SINGSPIEL45_WORK],
+  authorOpera:[SINGSPIEL45_AUTHOR,SINGSPIEL45_OPERA]};
+ for(const [name,id]of Object.entries(required)){
+   const e=edges.get(id),endpoints=expected[name];
+   if(!e||e.source!==endpoints[0]||e.target!==endpoints[1])
+     throw Error("Singspiel: documented relation missing or changed: "+name);
+   singspiel45.edges.push(e);
+ }
+ if(edges.has(SINGSPIEL45_INDEX_ID))throw Error("Singspiel index already present");
+ const index={
+  id:SINGSPIEL45_INDEX_ID,
+  source:SINGSPIEL45_AUTHOR,target:SINGSPIEL45,
+  relation:"ha_composto_opere_del_sottogenere",
+  statement_type:"catalogue_derived_work_specific_index",
+  root_permission:"non_transitive_supported_by_one_work",
+  supporting_work_ids:[SINGSPIEL45_WORK],
+  sources:["https://kv.mozarteum.at/de/work/7137"],
+  description:"Mozart è collegato a Singspiel perché compose Il flauto magico KV620, identificato dal Köchel come Singspiel. Indice di repertorio, non deduzione di rapporti fra compositori."
+ };
+ dataset.links.push(index);singspiel45.edges.push(index);
+}
+function attachSingspiel45(result,maxDepth,limits){
+ if(!singspiel45.edges.length||maxDepth<1)return result;
+ const atRoot=currentRoot===SINGSPIEL45;
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ if(atRoot){
+  // Do not use generic BFS here: it discovers the two genre edges but not the
+  // author of the specific Singspiel. Restore the grounded four-node ring.
+  result={root:currentRoot,nodes:[{...nodes.get(currentRoot),_depth:0,_path:[currentRoot]}],links:[]};
+  const idToDepth=[
+   [SINGSPIEL45_WORK,"documented_singspiel_work"],
+   [SINGSPIEL45_OPERA,"parent_theatre_genre"],
+   [SINGSPIEL45_AUTHOR,"documented_author_of_kv620"]
+  ];
+  for(const [id,permission]of idToDepth){
+   const n=nodes.get(id);
+   if(n&&(limits[n.category]??maxDepth)>=1)
+    result.nodes.push({...n,_depth:1,_path:[currentRoot,id],_permission:permission});
+  }
+ }
+ // Add the work-index edge when the two endpoints are already part of a
+ // Mozart/Zauberflöte root. Do not add unrelated authors through generic Opera.
+ const visible=new Set(result.nodes.map(n=>n.id));
+ const links=new Set(result.links.map(e=>e.id));
+ for(const e of singspiel45.edges)if(visible.has(e.source)&&visible.has(e.target)&&!links.has(e.id)){
+  const isRootSpecific=atRoot||currentRoot===SINGSPIEL45_WORK||
+   currentRoot===SINGSPIEL45_AUTHOR||currentRoot===SINGSPIEL45_OPERA;
+  if(!isRootSpecific)continue;
+  if(result.links.some(x=>x.source===e.source&&x.target===e.target&&x.relation===e.relation))continue;
+  result.links.push({...e});links.add(e.id);
+ }
+ return result;
+}
+
 function getRootedPreview39(maxDepth,relevance,depthByCategory){
  if(concertoFamilyByNode.has(currentRoot)){
   const root={...concertoFamilyByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_concerto_subgenre"};
@@ -1842,6 +1924,9 @@ function getRootedPreview39(maxDepth,relevance,depthByCategory){
 
 // Add the checkpoint40 layer without changing checkpoint39 rooted logic.
 function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(currentRoot===SINGSPIEL45){
+  return attachSingspiel45({root:currentRoot,nodes:[],links:[]},maxDepth,depthByCategory);
+ }
  if(currentRoot===Q44_PERSON||currentRoot===Q44_FLUTE||
     quartet44.works.has(currentRoot)||quartet44.collections.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
@@ -1863,7 +1948,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
   return attachConcerto40({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
  }
- return attachQuartet44(attachQuartet43(attachQuartet42(attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachSingspiel45(attachQuartet44(attachQuartet43(attachQuartet42(attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -2066,6 +2151,7 @@ async function init(){
  prepareMozartTaxonomy(mozartTaxonomyInput);
  dataset.nodes.push(...mozartTaxonomy.nodes);
  dataset.links.push(...mozartTaxonomy.links);
+ prepareSingspiel45();
  prepareConcertoFamily(concertoFamilyInput);
   dataset.nodes.push(...concertoFamily.nodes);
   dataset.links.push(...concertoFamily.links);
