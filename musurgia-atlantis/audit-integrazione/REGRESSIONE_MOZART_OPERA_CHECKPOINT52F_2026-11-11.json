@@ -1,0 +1,104 @@
+{
+  "schema": "musurgia-atlantis-checkpoint52f-mozart-opera-staging-regression-v1",
+  "date": "2026-11-11",
+  "checkpoint": "52F",
+  "result": "PASS_SCOPED_NOT_FULL_FEDERATION",
+  "source_graph_blob": "4863b3fe263154387de3388c0b813b5f94546f12",
+  "preview_blob": "510f582f307c30300fe7609cef0869b52941f7f2",
+  "preview_commit": "e13814bb2468ca66a3ea664fdcc9254307b579f6",
+  "sources": [
+    "grafo.json production blob",
+    "GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json",
+    "OVERLAY_TASSONOMIA_MOZART_CHECKPOINT19_2026-11-09.json",
+    "prepareSingspiel45 and attachMozartTaxonomy extracted from actual published preview",
+    "completeVisibleEvidence52E extracted from preview"
+  ],
+  "fix": "From root Opera, only already-rooted Mozart compositions receive intermediate genre classification; no new authors or foreign works imported.",
+  "roots": [
+    {
+      "root": "pers:mozart",
+      "nodes": 7,
+      "edges": 12,
+      "donRing": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "magicRing": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "root": "opera:Don-giovanni",
+      "nodes": 5,
+      "edges": 7,
+      "donRing": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "root": "opera:flauto-magico",
+      "nodes": 4,
+      "edges": 6,
+      "magicRing": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "root": "legacy:gf:genere-opera",
+      "nodes": 10,
+      "edges": 20,
+      "donRing": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "magicRing": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "root": "legacy:gf:dramma-giocoso",
+      "nodes": 5,
+      "edges": 6,
+      "workToGenre": true
+    },
+    {
+      "root": "audit:gf19:singspiel",
+      "nodes": 4,
+      "edges": 6,
+      "magicRing": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "root": "pers:clementi",
+      "nodes": 1,
+      "edges": 0,
+      "foreignMozartWorks": 0
+    }
+  ],
+  "orphanEdges": 0,
+  "duplicateLinkIds": 0,
+  "failedRootTests": 0,
+  "regressionLimits": [
+    "Test helper-level with source data and three relevant overlays, not all 24 manifests",
+    "No browser/WebGL rendering or smartphone audit",
+    "Opera initial work seeding in test reflects known rooted works rather than full live renderer explore",
+    "Genre context should still be reviewed for source-level pertinence and completeness"
+  ],
+  "production_modified": false
+}
