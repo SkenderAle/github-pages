@@ -289,6 +289,7 @@ function makeGraph(host){
       node_count:current.nodes.length,edge_count:current.links.length,
       projected:projected.map(p=>({id:p.n.id,x:p.x,y:p.y,
         depth:p.n._depth??0,focus:!!p.n._focus,
+        force_label:!!p.n._forceLabel,
         on_canvas:p.x>=0&&p.x<=W&&p.y>=0&&p.y<=H}))};},
     nodeColor(fn){if(fn===undefined)return nodeColors;nodeColors=fn;return api},linkColor(fn){if(fn===undefined)return linkColors;linkColors=fn;return api},nodeVal(fn){nodeSize=fn;return api},linkOpacity(n){options.linkOpacity=n;return api}
   };
