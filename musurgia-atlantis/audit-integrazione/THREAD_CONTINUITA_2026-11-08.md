@@ -1986,3 +1986,31 @@ HOLD di crosswalk per `BWV120/2→Et expecto BWV232` e `BWV140/4→BWV645` organ
 
 **Prossima ripresa:** Lotto50 **BWV 141–170**: prioritariamente attribuzioni spurie (BWV141/142), versioni e forme, evitando ogni arco autore spurio; estendere la tassonomia solo su evidenza. In parallelo collaudo 3D WebGL/browser della preview e verifica dell'intera federazione, con regressioni Singspiel/Mozart, Sonata, Concerto/Brandeburghesi, Quartetto e Cantata/Mottetto. Nessuna promozione in produzione prima della certificazione.
 
+### Lotto 50 — BWV 141–170: cinque attribuzioni in HOLD e 26 opere accertate nello staging (11 novembre 2026)
+
+**Aggiornato `main`, sempre e soltanto `musurgia-atlantis/audit-integrazione/`:**
+- Manifesto `LOTTO50_31_SCHEDE_BACH_BWV141_170_2026-11-11.json`, creazione `9e0db5a3b1bed6a54fa5a4c595331a51d173b676`, sospensione del legame corale BWV77/153 `c61c597f1474e8f5bdf5964e0dee1fb3474f4f79`.
+- Preview `PREVIEW_RADICATA_CHECKPOINT06.html`, integrazione `854533cfbc8b14bce1141d4ca2c91193d5424d0b`, allineamento cardinalità `de982a3f0b37f603093237007fc75521dc18e3e9`.
+- `REGRESSIONE_LOTTO50_BACH_2026-11-11.json`, commit `1bdc05768187b9990bbd3cfe25c3e2e03b8e2eae`.
+- Verbale `AUDIT_LOTTO50_BACH_BWV141_170_2026-11-11.md`, commit `4fbedb19ef6235422cb2eae13de468e2c0e7b554`.
+- **I file `musurgia-atlantis/grafo.json` e `musurgia-atlantis/index.html` di produzione NON sono stati modificati**. Non dichiarare fusione certificata.
+
+**Catalogazione:** 31 schede (30 numeri interi BWV141–170, più `BWV147a`). Nel circuito di Bach sono state aggiunte **26 opere**, tutte cantate sacre. **Cinque schede HOLD**, conservate solo nel JSON del lotto, senza nodi Bach né archi verso Bach:
+1. **BWV141**, Telemann **TWV1:183**, erroneamente attribuita a Bach;
+2. **BWV142**, attribuzione a Bach respinta, tradizionalmente a **Kuhnau**, ma autore esatto ancora non del tutto certo;
+3. **BWV143**, autenticità discussa: Flaminio e IMSLP segnalano dubbi, ma studi più recenti (Glöckner/NBA 2012, Smithers 2015) la sostengono; **HOLD filologico, NON dichiarazione di falsità**;
+4. **BWV150**, autenticità storicamente discussa, pur pubblicata dalla NBA come Bach; **HOLD filologico**, NON automaticamente spuria;
+5. **BWV160**, Telemann **TWV1:877**, attribuzione Bach errata (riscontro diretto editore Breitkopf).
+
+**Distinzione opere e riusi:** `BWV147a`, cantata incompleta di Weimar per il quarto Avvento, è una **composizione storicamente distinta** dalla BWV147 lipsiense, non fusa per l'incipit identico. Nuovi archi di **specifico riutilizzo materiale** `147a→147` e `132→164`; mantengono l'identità di entrambi i lavori e non transitano attraverso il genere. Il rimando Flaminio fra `BWV77` e `BWV153` ha **direzione di riuso cronologicamente ambigua**: annotato in review queue ma **nessun arco causale creato**. Sospesi fino al crosswalk canonico le relazioni da concerto `BWV1052→146`, `BWV1056→156`, `BWV1053→169`, e da cantata profana `BWV208→149`. `BWV145` contiene almeno un numero attribuito a Telemann: l'arco Bach→opera non certifica tutti i singoli movimenti. Revisioni di `BWV161/162` annotate senza generare nodi versioni non individuate in modo stabile. Per `BWV166` non inventare l'originale della parte di violino ricostruita da BWV584.
+
+**Classificazioni:** nessuna nuova `Cantata corale` nel Lotto50, perché la sola presenza di movimenti corali non basta. Dati nuovi solo `pers:bach→opera` e `opera→Cantata sacra`, con 2 riusi individuali e non transitivi. I link individuali disponibili nell'indice delle guide Flaminio sono 10 (148,149,151,153,155,156,161,162,163,170); quelli assenti `null`. Il workbook originale `compositori_flaminio.xlsx` **non consultato**: `source_excel_row=null`, senza righe ipotizzate.
+
+**Regressione sul modulo JS realmente pubblicato**, eseguita con manifesti Lotti45–50, overlay vero dei generi legacy (**50 nodi/271 archi**) e nodo Bach sintetico nel banco di prova: **+26 nodi, +54 archi**, **0 ID duplicati**, **0 archi nuovi orfani**. **25 radici provate**, comprese le cinque HOLD, BWV147/147a, 153,164,82,118 e BWV77/132 di regressione. Le HOLD non sono esplorabili come Bach. Paginazione 24/carta: **168 cantate sacre su 7 pagine** (24×7), **10 profane su 1**, **38 corali su 2** (24+14), **1 mottetto su 1**; l'unione delle pagine corrisponde a tutti gli ID, senza archi orfani. Persone=0 rispettato. **21 asserzioni vere** e sintassi JS corretta. NON equivalgono a test della preview grafica/WebGL reale o all'esecuzione end-to-end dell'intera federazione.
+
+**Cumulativo Lotti45–50:** **180 opere/frammenti** (**168** ramo sacro, **10** profano, **1** oratorio, **1** mottetto) + **5 versioni** (`BWV80b`, `BWV82.1`, `82.2`, `82.3`, `118a`). Le **38 cantate corali** sono sottoinsieme delle 168 sacre, NON un addendo autonomo.
+
+**Preview anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=cantate50-20261111
+
+**Prossima ripresa:** **Lotto51 BWV 171–200**, iniziando da autenticità, versioni storiche, riusi e frammenti (BWV200 non trattare come cantata integrale). Verificare specialmente le coppie **173/173a, 184/184a, 186/186a, 197/197a** e il repertorio funebre. Prima della promozione in `grafo.json`, collaudo browser WebGL effettivo e regressione completa della federazione inclusi Singspiel/Mozart, Sonata, Concerto/Brandeburghesi, Quartetto, Cantata/Mottetto. Riconciliazione XLSX originale ancora necessaria.
+
