@@ -998,14 +998,29 @@ function attachGenreRings(result,maxDepth,limits){
 let sonata39={groups:new Map(),workToGroup:new Map(),parent:"legacy:gf:genere-sonata",edges:[]};
 function prepareSonata39(){
  if(!dataset.nodes.some(n=>n.id===sonata39.parent))throw Error("Genere Sonata assente");
+ // Checkpoint52G: reuse Flaminio17's author/work/genre evidence and solo-piano facet.
+ // Records remain provisional and non-transitive; no new composer inference.
+ const flaminioPianoRecords=(flaminioPreview.work_registry||[]).filter(w=>{
+  const facets=w.facets||[];
+  const form=facets.some(f=>f.semantic_dimension==="genere_forma"&&
+   f.proposed_term_ids?.includes(sonata39.parent));
+  const organico=facets.some(f=>f.semantic_dimension==="organico"&&
+   /^pianoforte solo$/i.test(f.label||""));
+  const authorEdge=flaminioPreview.links.some(e=>e.source===w.person_id&&
+   e.target===w.work_id&&e.relation==="ha_composto");
+  const genreEdge=flaminioPreview.links.some(e=>e.source===w.work_id&&
+   e.target===sonata39.parent&&e.relation==="ha_genere");
+  return form&&organico&&authorEdge&&genreEdge;
+ }).map(w=>({author:w.person_id,genre:sonata39.parent,work:w.work_id}));
+ const pianoFlaminioIds=new Set(flaminioPianoRecords.map(w=>w.work));
  const groups=[
-  {id:"atlas:gf:sonata-per-pianoforte",name:"Sonata per pianoforte",match:(w,n)=>["pers:mozart","pers:beethoven"].includes(w.author)&&/sonata per pianoforte/i.test(n.name||"")},
+  {id:"atlas:gf:sonata-per-pianoforte",name:"Sonata per pianoforte",match:(w,n)=>(["pers:mozart","pers:beethoven"].includes(w.author)&&/sonata per pianoforte/i.test(n?.name||""))||pianoFlaminioIds.has(w.work)},
   {id:"atlas:gf:sonata-per-violino-e-pianoforte",name:"Sonata per violino e pianoforte",match:(w,n)=>w.author==="pers:beethoven"&&/sonata per violino e pianoforte/i.test(n.name||"")}
  ];
  const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
  for(const group of groups){
   if(nodes.has(group.id))throw Error("Sottogenere Sonata già presente: "+group.id);
-  const records=(genreRings.byGenre.get(sonata39.parent)||[]).filter(r=>group.match(r,nodes.get(r.work)));
+  const records=[...(genreRings.byGenre.get(sonata39.parent)||[]),...flaminioPianoRecords].filter(r=>group.match(r,nodes.get(r.work)));
   if(!records.length)throw Error("Gruppo sonate non popolato: "+group.name);
   const uniqueWorks=new Set(records.map(r=>r.work));
   const authors=new Set(records.map(r=>r.author));
@@ -1017,6 +1032,15 @@ function prepareSonata39(){
    const e={id,source,target,relation,statement_type:"documented_subgenre_hierarchy",
     root_permission:"non_transitive_instrumentation",description,
     supporting_work_ids:[...uniqueWorks]};
+   if((relation==="ha_sottogenere"&&pianoFlaminioIds.has(source))||
+      (relation==="ha_composto_opere_del_sottogenere"&&
+       flaminioPianoRecords.some(w=>w.author===source))){
+    e.preview_only=true;e.review_status="source_attested_not_independently_certified";
+    e.quality_gate="Flaminio17_catalogue_staging";
+    e.evidence_urls=[...new Set((flaminioPreview.work_registry||[])
+      .filter(w=>w.work_id===source||(w.person_id===source&&pianoFlaminioIds.has(w.work_id)))
+      .map(w=>w.source_url).filter(Boolean))];
+   }
    dataset.links.push(e);sonata39.edges.push(e);
   };
   link("atlas:sonata39:parent:"+n.id,n.id,sonata39.parent,"sottogenere_di",
