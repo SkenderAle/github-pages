@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="it"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Musurgia Atlantis — Checkpoint 52K · Collaudo Canvas e interazioni</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif}*{box-sizing:border-box}
+body{margin:0;background:#07141f;color:#eaf4f2}
+header{padding:18px 22px;border-bottom:1px solid #47616d}
+h1{font-size:21px;margin:0 0 7px;color:#f1d9a5}h2{font-size:16px;margin:12px 0}
+p{line-height:1.5;margin:7px 0;color:#c3d3d5}main{padding:16px 22px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+button{background:#245568;color:white;padding:11px 14px;border-radius:9px;border:1px solid #91b5c3;font:inherit;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+a{color:#aadfe7}.status{border:1px solid #567483;border-radius:9px;padding:12px;line-height:1.45}
+.pass{color:#8fe6ad}.fail{color:#ffa8a1}.warn{color:#ffdb94}
+#tests{display:grid;gap:7px;margin:13px 0}
+.test{padding:9px 11px;background:#102c38;border:1px solid #36596a;border-radius:8px}
+.test strong{display:block}.test small{display:block;color:#c3d2d2;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:4px}
+iframe{display:block;width:100%;height:65vh;min-height:480px;border:1px solid #5b8290;border-radius:9px;margin-top:12px}
+pre{max-height:330px;overflow:auto;overflow-wrap:anywhere;white-space:pre-wrap;padding:11px;border:1px solid #36596a;background:#0c2632;border-radius:8px}
+footer{font-size:12px;color:#b8cbcc;margin:15px 0 25px}
+@media(max-width:680px){header{padding:12px}main{padding:12px}h1{font-size:18px}iframe{height:70vh;min-height:500px}}
+</style></head><body>
+<header><h1>Musurgia Atlantis · Checkpoint 52K</h1>
+<p>Collaudo nel browser della preview di staging: caricamento dei 24 JSON, disegno Canvas 2D, ricerca, tocco simulato, zoom e filtri. La prova su schermo reale rimane separata da questi controlli automatici.</p></header>
+<main>
+<div id="status" class="status warn" role="status">La preview si sta inizializzando. Avvia il collaudo quando è pronta.</div>
+<div class="actions">
+<button id="run">Esegui collaudo 52K</button>
+<button id="export" disabled>Esporta rapporto JSON</button>
+<button id="capture">Salva immagine Canvas</button>
+</div>
+<p><strong>Interpretazione:</strong> «PASS» certifica soltanto la specifica asserzione eseguita in questo browser. I tocchi automatici sono eventi sintetici, non un test dell'hardware Android. Il controllo visivo di etichette, leggibilità e gesture reali deve essere effettuato dall'operatore.</p>
+<h2>Controlli automatici</h2><div id="tests" aria-live="polite">Nessuna prova ancora eseguita.</div>
+<h2>Rapporto</h2><pre id="output">Il rapporto verrà generato dopo il collaudo.</pre>
+<h2>Preview effettiva</h2>
+<iframe id="preview" src="./PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint52k-20261112" title="Preview interattiva Musurgia Atlantis" loading="eager"></iframe>
+<footer>Ambiente staging, nessuna mutazione del grafo pubblico. Il test naviga temporaneamente fra Mozart, Vivaldi e i concerti dell'op. 8, poi prova a ripristinare la radice iniziale. Per certificare l'uso su telefono, ripetere il test dal dispositivo e provare a mano tocco, doppio tocco, trascinamento, zoom con due dita e filtri.</footer>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const frame=$("preview");
+let lastReport=null,running=false;
+const pause=ms=>new Promise(done=>setTimeout(done,ms));
+function frameWindow(){return frame.contentWindow}
+function frameDocument(){return frame.contentDocument}
+function state(){const s=frameWindow()?.AtlantisCheckpoint52K?.status?.();if(!s)throw Error("Hook di collaudo 52K non disponibile");return s}
+function setStatus(message,kind="warn"){$("status").className="status "+kind;$("status").textContent=message}
+function logTest(t){
+ const element=document.createElement("div");element.className="test";
+ const name=document.createElement("strong");name.className=t.status.toLowerCase();name.textContent=t.status+" · "+t.name;
+ const explanation=document.createElement("small");explanation.textContent=t.details||"";
+ element.append(name,explanation);$("tests").append(element);
+}
+function ensure(ok,message){if(!ok)throw Error(message)}
+async function awaitReady(){
+ for(let i=0;i<150;i++){
+  const f=frameWindow(),info=f?.AtlantisCheckpoint52K?.status?.();
+  if(info?.init_error)throw Error("Inizializzazione della preview: "+info.init_error);
+  if(info?.ready&&info.view?.projected?.length&&f?.AtlantisCheckpoint52D?.status?.().ready)return info;
+  await pause(400);
+ }
+ throw Error("Preview non pronta entro 60 secondi: verificare il caricamento dei 24 JSON");
+}
+async function runCheck(tests,name,fn){
+ try{const detail=await fn();const row={name,status:"PASS",details:typeof detail==="string"?detail:JSON.stringify(detail)};tests.push(row);logTest(row);return true}
+ catch(error){const row={name,status:"FAIL",details:String(error?.message||error)};tests.push(row);logTest(row);return false}
+}
+async function searchRoot(term){
+ const doc=frameDocument();const field=doc.getElementById("search");
+ field.value=term;doc.getElementById("searchBtn").click();await pause(180);
+ return state();
+}
+function pixelFocus(){
+ const doc=frameDocument(),canvas=doc.querySelector("#graph canvas"),view=state().view;
+ ensure(canvas&&view?.projected?.length,"Canvas o proiezione assente");
+ const focus=view.projected.find(n=>n.focus);
+ ensure(focus?.on_canvas,"Nodo centrale non proiettato sul Canvas");
+ const ctx=canvas.getContext("2d");ensure(ctx,"Contesto Canvas 2D assente");
+ const px=Math.max(0,Math.min(canvas.width-1,Math.round(focus.x*canvas.width/view.canvas_css_width)));
+ const py=Math.max(0,Math.min(canvas.height-1,Math.round(focus.y*canvas.height/view.canvas_css_height)));
+ const rgb=[...ctx.getImageData(px,py,1,1).data];
+ return {id:focus.id,rgb,canvas:[canvas.width,canvas.height],css:[view.canvas_css_width,view.canvas_css_height]};
+}
+function syntheticTap(canvas,node,pointerId){
+ const rect=canvas.getBoundingClientRect(),win=frameWindow();
+ const attrs={bubbles:true,cancelable:true,pointerId,pointerType:"touch",isPrimary:true,
+  clientX:rect.left+node.x,clientY:rect.top+node.y};
+ canvas.dispatchEvent(new win.PointerEvent("pointerdown",attrs));
+ canvas.dispatchEvent(new win.PointerEvent("pointerup",attrs));
+}
+async function run(){
+ if(running)return;running=true;$("run").disabled=true;$("export").disabled=true;
+ $("tests").replaceChildren();$("output").textContent="Collaudo in corso…";
+ setStatus("Avvio delle verifiche della preview effettiva…");
+ const tests=[];let dataSummary=null;
+ const device={userAgent:navigator.userAgent,viewportWidth:innerWidth,viewportHeight:innerHeight,
+  devicePixelRatio:devicePixelRatio,maxTouchPoints:navigator.maxTouchPoints||0,
+  coarsePointer:matchMedia("(pointer:coarse)").matches};
+ try{
+  await awaitReady();
+  await runCheck(tests,"Federazione e 27 radici di dati",async()=>{
+   const r=frameWindow().AtlantisCheckpoint52D.run();dataSummary={
+    status:r.status,nodes:r.dataset.nodes,edges:r.dataset.edges,
+    roots:r.root_tests.length,rootFailures:r.root_tests.filter(x=>x.status==="FAIL").length,
+    globalViolations:r.global_violations,
+    missingDrawableEdges:r.root_tests.reduce((n,x)=>n+(x.undrawn_edges_between_visible_nodes?.unaccounted_count||0),0),
+    withheldOccurrences:r.root_tests.reduce((n,x)=>n+(x.undrawn_edges_between_visible_nodes?.withheld_uncertified_count||0),0)};
+   ensure(r.status==="PASS_STATIC_DATA"&&r.root_tests.length===27&&dataSummary.rootFailures===0,
+    "Federazione o radici non conformi: "+r.status);
+   ensure(dataSummary.missingDrawableEdges===0,"Archi ammissibili omessi: "+dataSummary.missingDrawableEdges);
+   return dataSummary;
+  });
+  await runCheck(tests,"Contesto grafico e dimensioni Canvas",async()=>{
+   const view=state().view,canvas=frameDocument().querySelector("#graph canvas");
+   ensure(canvas&&canvas.getContext("2d"),"Contesto Canvas 2D non disponibile");
+   ensure(canvas.width>150&&canvas.height>150&&view.node_count>0,"Dimensioni o scena non valide");
+   return {canvasPixels:[canvas.width,canvas.height],nodes:view.node_count,arcs:view.edge_count,
+    renderer:state().renderer_technology};
+  });
+  await runCheck(tests,"Punto centrale effettivamente disegnato",async()=>{
+   await pause(250);const v=pixelFocus();
+   ensure(v.rgb[0]>115&&v.rgb[1]>85,"Il pixel del nodo centrale non presenta il colore previsto: "+v.rgb.join(","));
+   return v;
+  });
+  await runCheck(tests,"Ricerca e cambio di radice: Vivaldi",async()=>{
+   const s=await searchRoot("Vivaldi");
+   ensure(s.current_root==="pers:vivaldi","Ricerca Vivaldi non ha centrato il compositore: "+s.current_root);
+   ensure(s.visible_nodes>=5&&s.visible_edges>=4,"Vista Vivaldi incompleta");
+   return {root:s.current_root,nodes:s.visible_nodes,arcs:s.visible_edges};
+  });
+  await runCheck(tests,"Primo tocco e secondo tocco sulla Primavera (eventi sintetici)",async()=>{
+   await pause(160);
+   const doc=frameDocument(),canvas=doc.querySelector("#graph canvas");
+   const work=state().view.projected.find(n=>n.id==="atlas:vivaldi-rv269-op8-1");
+   ensure(work?.on_canvas,"Primavera RV269 non disponibile nell'area del Canvas");
+   syntheticTap(canvas,work,521);
+   const selectedTitle=doc.querySelector("#nodeInfo h2")?.textContent||"";
+   ensure(state().current_root==="pers:vivaldi"&&/primavera/i.test(selectedTitle),
+    "Il primo tocco non mostra la scheda mantenendo Vivaldi come radice: "+selectedTitle);
+   syntheticTap(canvas,work,522);await pause(160);
+   ensure(state().current_root===work.id,"Il secondo tocco non centra RV269: "+state().current_root);
+   return {selectedTitle,secondTapRoot:state().current_root,mode:"synthetic_pointer_events_not_hardware"};
+  });
+  await runCheck(tests,"Pulsanti zoom + e −",async()=>{
+   const doc=frameDocument(),before=state().view.zoom;
+   doc.getElementById("zoomIn").click();const afterIn=state().view.zoom;
+   doc.getElementById("zoomOut").click();const afterOut=state().view.zoom;
+   ensure(afterIn>before&&Math.abs(afterOut-before)<0.025,
+    "I pulsanti zoom non conservano il fattore atteso");
+   return {before,afterIn,afterOut};
+  });
+  await runCheck(tests,"Filtro di profondità: opere a livello zero",async()=>{
+   await searchRoot("Vivaldi");
+   const doc=frameDocument(),slider=doc.getElementById("workDepth");
+   slider.value="0";slider.dispatchEvent(new frameWindow().Event("input",{bubbles:true}));
+   const hidden=state().visible_opera_nodes;
+   slider.value="5";slider.dispatchEvent(new frameWindow().Event("input",{bubbles:true}));
+   const restored=state().visible_opera_nodes;
+   ensure(hidden===0&&restored>0,"Filtro opere incoerente: livello 0="+hidden+", livello 5="+restored);
+   return {levelZeroWorks:hidden,restoredWorks:restored};
+  });
+  await runCheck(tests,"Etichette permanenti categoria Opere",async()=>{
+   const doc=frameDocument();
+   const box=[...doc.querySelectorAll("#categoryGrid input")].find(x=>x.getAttribute("aria-label")==="Mostra tutte le etichette: Opere");
+   ensure(box&&!box.disabled,"Selettore etichette Opere non disponibile");
+   const was=box.checked;
+   try{
+    box.checked=true;box.dispatchEvent(new frameWindow().Event("change",{bubbles:true}));
+    const count=state().forced_work_labels;
+    ensure(count>0,"Il flag delle etichette permanenti non raggiunge il renderer");
+    ensure(state().view.projected.some(n=>n.force_label),"La proiezione Canvas non riceve i flag");
+    return {forcedWorkLabels:count,projectedWithLabel:state().view.projected.filter(n=>n.force_label).length};
+   }finally{
+    box.checked=was;box.dispatchEvent(new frameWindow().Event("change",{bubbles:true}));
+   }
+  });
+ }catch(e){
+  const row={name:"Inizializzazione e accesso alla preview",status:"FAIL",details:String(e)};
+  tests.push(row);logTest(row);
+ }finally{
+  try{
+   const doc=frameDocument(),slider=doc?.getElementById("workDepth");
+   if(slider){slider.value="5";slider.dispatchEvent(new frameWindow().Event("input",{bubbles:true}))}
+   if(frameWindow()?.AtlantisCheckpoint52K?.status?.()?.ready)await searchRoot("Mozart");
+  }catch(_){}
+  const counts={PASS:tests.filter(x=>x.status==="PASS").length,
+   FAIL:tests.filter(x=>x.status==="FAIL").length};
+  lastReport={schema:"musurgia-atlantis-checkpoint52k-browser-acceptance-v1",
+   checkpoint:"52K",tested_at:new Date().toISOString(),browser_page:location.href,
+   device,files_intended:24,dataSummary,checks:tests,counts,
+   actual_canvas_browser_executed:counts.PASS>0,synthetic_touch_not_hardware:true,
+   manual_android_visual_certification:"NOT_CERTIFIED",
+   production_modified:false};
+  $("output").textContent=JSON.stringify(lastReport,null,2);
+  setStatus("52K: "+counts.PASS+" PASS, "+counts.FAIL+" FAIL. Verifica manuale Canvas/Android separata.",
+   counts.FAIL?"fail":"pass");
+  $("export").disabled=false;$("run").disabled=false;running=false;
+ }
+}
+$("run").addEventListener("click",()=>{void run()});
+$("export").addEventListener("click",()=>{
+ if(!lastReport)return;
+ const blob=new Blob([JSON.stringify(lastReport,null,2)+"\n"],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="COLLAUDO_BROWSER_52K_"+new Date().toISOString().slice(0,10)+".json";
+ a.click();URL.revokeObjectURL(url);
+});
+$("capture").addEventListener("click",()=>{
+ try{
+  const canvas=frameDocument().querySelector("#graph canvas");
+  if(!canvas)throw Error("Canvas mancante");
+  canvas.toBlob(blob=>{
+   if(!blob){setStatus("Cattura Canvas non riuscita","fail");return}
+   const url=URL.createObjectURL(blob),a=document.createElement("a");
+   a.href=url;a.download="ATLANTIS_CANVAS_52K.png";a.click();URL.revokeObjectURL(url);
+  },"image/png");
+ }catch(e){setStatus("Impossibile salvare il Canvas: "+String(e),"fail")}
+});
+</script></body></html>
