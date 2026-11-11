@@ -3138,8 +3138,25 @@ function getRootedPreviewCore(maxDepth,relevance,depthByCategory){
  return attachCantata47(attachCantata45(attachSingspiel45(attachQuartet44(attachQuartet43(attachQuartet42(attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
+// Checkpoint 52E: preserve all documented relationships whose two nodes
+// have ALREADY qualified for this rooted view. This function adds no nodes,
+// performs no graph traversal and never infers composer-to-composer edges.
+// Category/depth controls still select nodes. Later visual edge filters must
+// operate explicitly on this complete eligible edge set, never erase data.
+function completeVisibleEvidence52E(result){
+ const visible=new Set(result.nodes.map(n=>n.id));
+ const present=new Set(result.links.map(e=>e.id));
+ const added=[];
+ for(const edge of dataset.links){
+  if(!edge?.id||!visible.has(edge.source)||!visible.has(edge.target)||present.has(edge.id))continue;
+  result.links.push({...edge});present.add(edge.id);added.push(edge.id);
+ }
+ result.evidenceCompletion52E={added_count:added.length,added_ids:added};
+ return result;
+}
 function getRootedPreview(maxDepth,relevance,depthByCategory){
- return attachSeasons52(getRootedPreviewCore(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
+ const selected=attachSeasons52(getRootedPreviewCore(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
+ return completeVisibleEvidence52E(selected);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
