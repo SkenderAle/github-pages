@@ -1216,9 +1216,13 @@ function attachConcerto40(result,maxDepth,limits){
  }
  const taxEdges=concertoFamily.links.filter(e=>e.relation==="sottogenere_di");
  const ownEdges=concerto40.edges;
+ const authorIndex=dataset.links.filter(e=>e.target===CONCERTO40_ROOT&&
+   concertoIndex51.has(e.source)&&universe.get(e.source)?.category==="persona");
  if(isMain||isFamily){
-  // Navigate the hierarchy before opening works; do not fan out from a
-  // generic Concerto node into every connected composer or composition.
+  // Keep the full source taxonomy and its connection to generic Concerto.
+  if(isFamily)add(CONCERTO40_ROOT,1,currentRoot,"generic_parent_concerto");
+  // The catalogue is complete in data; people and works can be filtered by
+  // category and depth instead of being removed from the parent genre.
   for(const e of taxEdges){
    if(e.target===currentRoot&&
       !(isMain&&e.source==="legacy:gf:forma-concerto-grosso"))
@@ -1239,6 +1243,22 @@ function attachConcerto40(result,maxDepth,limits){
    link(e);
   }
   for(const e of ownEdges)if(e.relation==="sottogenere_di")link(e);
+  if(isMain){
+   // Every historically catalogued composer must be visible from Concerto.
+   for(const e of authorIndex)add(e.source,1,currentRoot,"documented_concerto_composer");
+  }
+  for(const record of concerto40.byWork.values()){
+   const parent=seen.get(record.group);
+   if(parent)add(record.work,parent._depth+1,parent.id,"specific_documented_concerto");
+  }
+  // When opening "Concerto solistico" or "Concerto di gruppo", also show
+  // each child group's composers via their individual catalogued concertos.
+  for(const group of concerto40.groups.values()){
+   if(!seen.has(group.id))continue;
+   const p=seen.get(group.id);
+   for(const author of group.authors)
+    add(author,Math.min(maxDepth,p._depth+2),group.id,"author_with_specific_concerto");
+  }
  }else if(group){
   const parent=add(group.parent_id,1,currentRoot,"parent_genre_terminal");
   if(parent&&group.parent_id!==CONCERTO40_ROOT)
@@ -1254,6 +1274,7 @@ function attachConcerto40(result,maxDepth,limits){
       group.works.has(e.target)&&e.relation==="contiene_opera")link(e);
   }
  }else if(isAuthor){
+  add(CONCERTO40_ROOT,1,currentRoot,"documented_composer_macro_concerto");
   // Rehome ONLY this composer's concrete concertos under their specific
   // subgenre. Keep every other catalogue relationship unchanged.
   const records=concerto40.byAuthor.get(currentRoot),grps=new Set(records.map(r=>r.group));
@@ -1290,9 +1311,69 @@ function attachConcerto40(result,maxDepth,limits){
   add("atlas:gf:concerto-brandeburghese",1,currentRoot,"editorial_corpus_context");
   for(const e of ownEdges)link(e);
  }
+ // Complete missing links all the way up from "Concerto per violino"
+ // through "Concerto solistico" to the generic "Concerto".
+ for(const e of taxEdges)link(e);
+ for(const e of ownEdges)link(e);
+ for(const e of authorIndex)link(e);
+ const groupWorkIds=new Set(concerto40.byWork.keys());
+ const genreWorkIds=new Set(concertoFamily.links.filter(e=>e.relation==="ha_forma").map(e=>e.source));
+ for(const e of concertoFamily.links)if(e.relation==="ha_forma")link(e);
+ for(const e of dataset.links){
+  if(!seen.has(e.source)||!seen.has(e.target))continue;
+  if(universe.get(e.source)?.category==="persona"&&
+     (groupWorkIds.has(e.target)||genreWorkIds.has(e.target))&&
+     /^(ha_composto|compone|compone_la_musica_di)$/.test(e.relation||""))link(e);
+  if(groupWorkIds.has(e.source)&&e.target===CONCERTO40_ROOT&&
+     /^(ha_genere|ha_forma)$/.test(e.relation||""))link(e);
+  if(e.relation==="contiene_opera"&&e.source===BRANDENBURG_COLLECTION&&
+     groupWorkIds.has(e.target))link(e);
+ }
  return result;
 }
 
+
+
+// Checkpoint 51: generi concertistici e compositori documentati sono
+// una rete reale, non nodi isolati. Gli archi derivati sono indici
+// non causali, sempre tracciati alle opere o ai legami legacy di fonte.
+let concertoIndex51=new Map();
+function prepareConcertoIndex51(){
+ const root=CONCERTO40_ROOT, nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const knownForms=new Set(concertoFamily.links.filter(e=>e.relation==="sottogenere_di").map(e=>e.source));
+ for(const id of concerto40.groups.keys())knownForms.add(id);
+ const register=(author,edge,work)=>{
+  if(nodes.get(author)?.category!=="persona")return;
+  if(!concertoIndex51.has(author))
+   concertoIndex51.set(author,{works:new Set(),sourceIds:new Set()});
+  const data=concertoIndex51.get(author);
+  if(edge?.id)data.sourceIds.add(edge.id);
+  if(work&&nodes.get(work)?.category==="opera")data.works.add(work);
+ };
+ for(const e of dataset.links){
+  if(nodes.get(e.source)?.category!=="persona")continue;
+  if((e.target===root||knownForms.has(e.target))&&
+     /^legacy:gf:edge:/.test(e.id||""))register(e.source,e,null);
+ }
+ for(const [author,records]of concerto40.byAuthor)
+  for(const record of records)register(author,{id:"atlas:concerto40:work:"+record.work},record.work);
+ for(const rec of genreRings.byGenre.get(root)||[])
+  register(rec.author,{id:"genre-ring:"+rec.work},rec.work);
+ // A transcription alone is NOT a composition: do not infer its source
+ // composer from the mere presence of a genre label.
+ for(const [author,entry]of concertoIndex51){
+  if(dataset.links.some(e=>e.source===author&&e.target===root))continue;
+  const edge={id:"atlas:concerto51:repertoire:"+author,source:author,target:root,
+   relation:"ha_composto_opere_del_genere",
+   statement_type:"repertoire_index_derived_from_specific_works_or_legacy",
+   root_permission:"index_only_not_composer_to_composer",
+   supporting_work_ids:[...entry.works],supporting_relation_ids:[...entry.sourceIds],
+   quality_gate:entry.works.size?"work_specific_evidence":"legacy_catalogue_evidence",
+   description:"Indice documentato di appartenenza a Concerto, senza implicare rapporti personali fra autori."};
+  dataset.links.push(edge);
+ }
+ if(concertoIndex51.size<18)throw Error("Checkpoint51: missing legacy concerto composers");
+}
 
 // Lotto 42 — Beethoven & Mozart string quartets, including original Atlantis
 // Op.130 and the historic 1785 Mozart-to-Haydn publication. The form is a
@@ -3021,6 +3102,7 @@ async function init(){
  prepareGenreRings();
  prepareSonata39();
  prepareConcerto40(concerto40Input);
+ prepareConcertoIndex51();
  prepareQuartet42(lot42Input);
  prepareQuartet43(lot43Input);
  prepareQuartet44(lot44Input);
