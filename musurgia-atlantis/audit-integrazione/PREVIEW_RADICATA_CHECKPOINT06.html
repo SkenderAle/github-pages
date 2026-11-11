@@ -1194,7 +1194,9 @@ function attachConcerto40(result,maxDepth,limits){
  const isWork=concerto40.byWork.has(currentRoot);
  const isAuthor=concerto40.byAuthor.has(currentRoot);
  const isCollection=currentRoot===BRANDENBURG_COLLECTION;
- if(!group&&!isMain&&!isFamily&&!isWork&&!isAuthor&&!isCollection)return result;
+ const isLegacySubtype=concertoFamily.links.some(e=>
+   e.relation==="sottogenere_di"&&e.source===currentRoot);
+ if(!group&&!isMain&&!isFamily&&!isWork&&!isAuthor&&!isCollection&&!isLegacySubtype)return result;
  const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
  if(group||isMain||isFamily){
   const root=universe.get(currentRoot);
@@ -1273,6 +1275,27 @@ function attachConcerto40(result,maxDepth,limits){
    if(group.collection_id&&e.source===group.collection_id&&
       group.works.has(e.target)&&e.relation==="contiene_opera")link(e);
   }
+ }else if(isLegacySubtype){
+  // Selecting a historical "Concerto grosso" or another legacy form must
+  // retain BOTH historical taxonomy parents, known authors and works.
+  for(const e of taxEdges){
+   if(e.source===currentRoot)
+    add(e.target,1,currentRoot,"specific_concerto_form_parent");
+   else if(e.target===currentRoot)
+    add(e.source,1,currentRoot,"specific_concerto_form_child");
+  }
+  for(const e of dataset.links){
+   if(e.target!==currentRoot||!/^legacy:gf:edge:/.test(e.id||""))continue;
+   if(universe.get(e.source)?.category==="persona")
+    add(e.source,1,currentRoot,"attested_legacy_form_composer");
+  }
+  for(const e of concertoFamily.links){
+   if(e.relation==="ha_forma"&&e.target===currentRoot)
+    add(e.source,1,currentRoot,"specific_legacy_concerto_work");
+  }
+  // Bring macro back through the group-parent when relevant.
+  const groupParent=seen.get("audit:gf25:concerto-di-gruppo");
+  if(groupParent)add(CONCERTO40_ROOT,2,groupParent.id,"second_form_parent_to_macro");
  }else if(isAuthor){
   add(CONCERTO40_ROOT,1,currentRoot,"documented_composer_macro_concerto");
   // Rehome ONLY this composer's concrete concertos under their specific
@@ -1328,6 +1351,11 @@ function attachConcerto40(result,maxDepth,limits){
      /^(ha_genere|ha_forma)$/.test(e.relation||""))link(e);
   if(e.relation==="contiene_opera"&&e.source===BRANDENBURG_COLLECTION&&
      groupWorkIds.has(e.target))link(e);
+  // Legacy repertoire edges remain catalogued evidence, not interpersonal
+  // influence. Draw only when their exact source and target are present.
+  if(isLegacySubtype&&e.target===currentRoot&&
+    /^legacy:gf:edge:/.test(e.id||"")&&
+    universe.get(e.source)?.category==="persona")link(e);
  }
  return result;
 }
