@@ -3531,6 +3531,16 @@ async function init(){
  engine.width($("graph").clientWidth).height($("graph").clientHeight);setRoot(currentRoot,{fit:true});
 }
 
+// Checkpoint 52K browser acceptance: read-only state and Canvas projection.
+// The caller operates the existing UI controls; this hook never changes data.
+window.AtlantisCheckpoint52K={
+ status:()=>({ready:!!dataset?.nodes?.length&&!!engine&&!!last?.nodes?.length,
+  current_root:currentRoot,renderer_technology:"canvas_2d_3d_projection",
+  view:engine?.auditView?.()??null,
+  visible_nodes:last?.nodes?.length??null,visible_edges:last?.links?.length??null,
+  init_error:window.atlantis52dInitError||null})
+};
+
 // Checkpoint 52D diagnostics: live federated runtime, no source mutation.
 // Runs only on demand from the separate staging audit page. Does not certify
 // browser rendering visually; results contain exact observed evidence.
