@@ -66,7 +66,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 </style>
 </head><body>
 <header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
-<p>Anteprima di audit · Checkpoint 15: classificazione dell'intero catalogo Flaminio in staging · Solo lettura</p></header>
+<p>Anteprima di audit · Checkpoint 48: cantate Bach BWV 1–110 in lotti verificati, senza fusione nella produzione · Solo lettura</p></header>
 <main>
 <aside>
 <label for="search">Cerca un nodo storico-musicale</label>
@@ -2762,6 +2762,12 @@ async function init(){
  prepareCantata46(lot46Input);
  prepareCantata47(lot47Input);
  prepareCantata48(lot48Input);
+ // Manifest-derived cardinalities, displayed separately from original production counts.
+ $("cantataLimitNote").textContent=
+ "Cantate nello staging lotti 45–48: "+cantata45.works.size+
+ " opere/frammenti, "+cantata47.versions.size+" versioni, "+
+ cantata45.byGenre.get(C46_CHORALE).size+
+ " cantate corali (incluse nelle sacre). Il limite è solo visivo; cerca ogni BWV per nome per aprirla direttamente.";
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
