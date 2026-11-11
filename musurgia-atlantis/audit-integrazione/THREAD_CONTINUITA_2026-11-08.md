@@ -2173,3 +2173,16 @@ Mozart→Flauto magico→Singspiel→Opera.
 **Prova completata sui manifesti reali** Lotti42/43/44/51: **8/8 PASS**, incluso il riparto del Lotto43 (21 quartetti con pianoforte, 3 per flauto, 1 per oboe), il frammento JCF Bach I4 escluso e il K285b controverso non promosso. Registro `REGRESSIONE_QUARTETTO_CANTATA_CHECKPOINT52H_2026-11-11.json` commit `1d4fbb46e071a747c28f090c5587de0742d7d613`; audit `AUDIT_QUARTETTO_CANTATA_CHECKPOINT52H_2026-11-11.md` commit `503bcb355711c6e3aec474b8554ccbffe4136f8d`.
 
 **Limiti:** prove sui quattro manifesti, **non** esecuzione federata end-to-end di tutti i 24 file, **non** collaudo browser/WebGL/mobile. Suite federata arricchita ma ancora da lanciare. Nessun cambiamento ai dati di produzione. Prossima ripresa: eseguire test 52D/52H insieme, analizzare eventuali FAIL di radici Quartetto/Cantata e correggere soltanto anomalie reali.
+
+
+### Checkpoint 52I — Regressione federata V8 dei 24 JSON, 27 radici e correzione quattro stagioni (11 novembre 2026)
+
+**Esecuzione reale su tutti i dati, ma senza browser:** recuperati dal repository i **24 JSON** referenziati nella preview, compreso il `grafo.json` originale via blob GitHub; eseguite in V8 isolato le funzioni JavaScript **effettive** di federazione, il motore radicato e la suite `AtlantisCheckpoint52D.run()`, con il solo DOM/renderer sostituito da uno stub. Dataset risultante **1.390 nodi, 3.391 archi**; **zero** ID nodo duplicati, ID arco duplicati, archi orfani o archi persona→persona erroneamente marcati `ha_composto`.
+
+**Bug dimostrato e corretto:** le quattro radici individuali Vivaldi RV269/315/293/297 fallivano con `Unknown root` perché `getRootedPreviewCore()` interrogava il grafo originale per nodi esistenti esclusivamente nello staging. `getRootedPreview()` ora avvia direttamente la radice per questi quattro nodi e lascia a `attachSeasons52()` la ricostruzione degli archi documentati, senza inventare autori o generi. Il rilevamento facoltativo delle radici `BWV174` e `BWV200` ora guarda nome **e ID**, non soltanto il titolo/incipit.
+
+**Esito dopo la patch:** **27/27 radici PASS**, **4/4 filtri categoria-profondità zero PASS**, **6/6 invarianti 52H PASS**, **0 violazioni globali**. Classificazione corretta: **`PASS_DATA_ONLY`**, *non* certificazione grafica o browser; lo stub rende improprio dichiarare che WebGL sia stato collaudato. Restano integri HOLD BWV189/K285b, natura frammentaria BWV200 e riuso specifico BWV1048→BWV174.
+
+**Commit GitHub, tutti su main e solo nello staging:** preview `1e2aa3e9893e0b51431b87f4017f770181cc755f`; rapporto macchina `REGRESSIONE_FEDERATA_CHECKPOINT52I_V8_2026-11-11.json` commit `1a09d44d5fc141808673577966938118d884ac7a`; audit `AUDIT_REGRESSIONE_FEDERATA_CHECKPOINT52I_2026-11-11.md` commit `713fe45f90fce933de81c1b3842d9fc8d158018d`. Produzione `musurgia-atlantis/grafo.json` e `musurgia-atlantis/index.html` **non modificata**.
+
+**Prossima ripresa:** eseguire il banco `REGRESSIONE_FEDERATA_CHECKPOINT52D.html` in browser reale, esportare il rapporto, collaudare la grafica WebGL/Canvas su Android e analizzare gli archi fra nodi visibili ancora non disegnati distinguendo omissioni illegittime e filtri intenzionali. Solo dopo valutare un'eventuale promozione in produzione. Non ripetere il 52I già pubblicato.
