@@ -2108,3 +2108,20 @@ Creato e aggiornato il file **`musurgia-atlantis/audit-integrazione/THREAD_API_C
 Il thread operativo contiene: tutte le osservazioni e regole finora espresse dall'utente sui nodi e sugli archi (ring autore–opera–genere, sottocategorie, Opera/Singspiel, Sonata, Quartetto, Concerto/Brandeburghesi, Vivaldi/Quattro stagioni, filtri e pertinenza radicata), inventario per ID dei record nei manifesti Flaminio Checkpoint17/27, Lotti35–51 e Checkpoint52A, inclusi HOLD/versioni dove documentati; checklist e criteri misurabili per la regressione integrata 52D, protocollo di report e vincolo di non toccare la produzione.
 
 **ATTENZIONE:** il file è un handoff per un eventuale agente API, NON l'evidenza che l'agente sia stato avviato o che il 52D sia concluso. Il prossimo agente deve leggere *prima* questo file, poi seguire il thread storico e i manifesti di fonte. Aggiornare entrambi i thread senza duplicare l'inventario integrale nel thread madre.
+
+
+### Checkpoint 52D — Ripresa dopo tentativo API, banco di regressione federata pubblicato (11 novembre 2026)
+
+Ripresa la lavorazione dal 52C. L'ispezione iniziale non ha mostrato nuovi commit `main` né aggiornamenti dei thread attribuibili al tentativo API esterno; questo non esclude modifiche su ambienti diversi.
+
+**Nuovi commit su `main`, solo staging `audit-integrazione/`:**
+- `PREVIEW_RADICATA_CHECKPOINT06.html`: `ba8a445599dfc23814f658e681d3125ba0593d3a` (hook `window.AtlantisCheckpoint52D` e regressioni) e `ae65d314c36b62f0700a498caf7eb25c28e9beac` (archi tra estremi visibili non disegnati, filtri categoria zero).
+- `REGRESSIONE_FEDERATA_CHECKPOINT52D.html`: `a70427e160deda089d2852098a1463b24c173a23` (interfaccia che carica la preview reale e permette esecuzione/export JSON).
+- `AUDIT_BANCO_REGRESSIONE_CHECKPOINT52D_2026-11-11.md`: `e7aa242beba480d7dcd0f5e8e6b1814527f098f3`.
+- Thread operativo API aggiornato con commit `c60491ba0d9a1f3f74dd7aa8793029c67e2c66b2`.
+
+**Verifica fin qui:** sintassi dei blocchi JavaScript controllata al momento della pubblicazione; infrastruttura di test presente. **NON ancora eseguito e registrato l'esito end-to-end reale nel browser**, né un collaudo grafico WebGL mobile; il 52D **non è certificato PASS**. Non scambiare un banco predisposto per risultati. La suite potrà evidenziare anche archi fra nodi visibili non disegnati, da distinguere fra omissioni illegittime e filtri intenzionali.
+
+**Esecuzione disponibile:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/REGRESSIONE_FEDERATA_CHECKPOINT52D.html
+
+**Prossimo:** eseguire la suite, allegare il JSON di risultato nello staging, correggere regressioni dimostrate e quindi proseguire verso collaudo visivo e 52E. `musurgia-atlantis/grafo.json` e `index.html` pubblici non modificati.
