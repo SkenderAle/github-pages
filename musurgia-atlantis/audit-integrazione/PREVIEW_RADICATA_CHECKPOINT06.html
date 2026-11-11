@@ -1868,7 +1868,7 @@ function prepareCantata45(batch){
     batch.counts?.ascension_oratorio!==1)
    throw Error("Lotto45: manifest del lotto incompleto");
  const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
- const ids=new Set(dataset.links.map(e=>[e.id,e].join("|")));
+ const ids=new Set(dataset.links.map(e=>e.id));
  if(!nodes.has(C45_AUTHOR)||!nodes.has(C45_MACRO)||!nodes.has(C45_ORATORIO))
    throw Error("Lotto45: autore o macrogeneri legacy assenti");
  function addNode(n){
@@ -1876,10 +1876,10 @@ function prepareCantata45(batch){
   dataset.nodes.push(n);nodes.set(n.id,n);
  }
  function addEdge(e){
-  if(ids.has(e.id+"|"+e.id)||dataset.links.some(x=>x.id===e.id)||
+  if(ids.has(e.id)||
      !nodes.has(e.source)||!nodes.has(e.target))
    throw Error("Lotto45: duplicato arco o estremo assente "+e.id);
-  dataset.links.push(e);cantata45.edges.push(e);ids.add(e.id+"|"+e.id);
+  dataset.links.push(e);cantata45.edges.push(e);ids.add(e.id);
  }
  for(const g of batch.taxonomy.new_genres){
   if(g.parent_id!==C45_MACRO||![C45_SACRED,C45_SECULAR].includes(g.id))
@@ -1939,19 +1939,20 @@ function prepareCantata45(batch){
     cantata45.byGenre.get(C45_SECULAR)?.size!==4||
     cantata45.byGenre.get(C45_ORATORIO)?.size!==1)
    throw Error("Lotto45: cardinalità finale errata");
- const byGenre=[C45_SACRED,C45_SECULAR,C45_ORATORIO];
- for(const genre of byGenre){
+ // Reuse the two *existing* person–macro-genre edges from the original
+ // Musurgia Mundi atlas: do not draw duplicate parallel Bach–Cantata/Oratorio links.
+ for(const genre of [C45_SACRED,C45_SECULAR,C45_ORATORIO,C45_MACRO]){
+  const prior=dataset.links.find(e=>e.source===C45_AUTHOR&&e.target===genre);
+  if(prior){cantata45.edges.push(prior);continue;}
+  const workIds=genre===C45_MACRO?
+   [...cantata45.byGenre.get(C45_SACRED),...cantata45.byGenre.get(C45_SECULAR)]:
+   [...cantata45.byGenre.get(genre)];
   addEdge({id:"fl45:index:"+genre,source:C45_AUTHOR,target:genre,
    relation:"ha_composto_opere_del_sottogenere",
    statement_type:"work_specific_composer_index",root_permission:"index_nontransitive",
-   supporting_work_ids:[...cantata45.byGenre.get(genre)],
+   supporting_work_ids:workIds,
    description:"Indice ricavato da opere BWV esplicite; non genera relazioni fra compositori."});
  }
- addEdge({id:"fl45:index:macro-cantata",source:C45_AUTHOR,target:C45_MACRO,
-  relation:"ha_composto_opere_del_genere",
-  statement_type:"work_specific_composer_index",root_permission:"index_nontransitive",
-  supporting_work_ids:[...cantata45.byGenre.get(C45_SACRED),...cantata45.byGenre.get(C45_SECULAR)],
-  description:"Indice di repertorio: cantate di J.S. Bach, con opere individuali elencate nei sottogeneri."});
 }
 function attachCantata45(result,maxDepth,limits){
  if(!cantata45.works.size||maxDepth<1)return result;
