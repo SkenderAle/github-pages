@@ -2067,3 +2067,15 @@ HOLD di crosswalk per `BWV120/2→Et expecto BWV232` e `BWV140/4→BWV645` organ
 
 **Prossima priorità:** collaudo browser WebGL reale per le radici `Concerto`, `Concerto per violino`, `Concerto grosso`, `BWV174` e `BWV200`. In secondo luogo regressione TUTTI gli overlay contemporaneamente, specialmente Sonata, Quartetto, Singspiel e Canti; e poi continuare in **BWV201–250** senza trattare automaticamente tutte le opere come cantate. Mantenere e potenziare i filtri per fonte, genere, profondità e pertinenza. Non fondere nel `grafo.json` pubblico prima della certificazione.
 
+
+
+### Checkpoint 52A — Vivaldi / Le quattro stagioni: quattro concerti e ripristino degli archi in preview (11 novembre 2026)
+
+- **Segnalazione:** screenshots con `Le quattro stagioni` apparentemente scollegate da Vivaldi e da `Concerto` / `Concerto solistico`.
+- **Riscontro dataset reale:** nel blob pubblico `grafo.json` `4863b3fe263154387de3388c0b813b5f94546f12` esiste già `E0715: pers:vivaldi→opera:quattro-stagioni`, quindi l'arco padre non era assente dai dati, ma nascosto dalla vista; la raccolta non era scomposta in quattro concerti individuali.
+- **Fonti:** catalogo Op.8 e quattro guide individuali Flaminio; RV269 Primavera, RV315 Estate, RV293 Autunno, RV297 Inverno, tutti concerti per violino, archi e continuo, op.8 nn.1–4.
+- **Preview aggiornata:** `PREVIEW_RADICATA_CHECKPOINT06.html`, commit `b2f7b5ee79b4c910c956d8c4ac7b8c1337592b4f`. Aggiunte **4 opere / 12 archi specifici**, preservati i nodi e l'arco E0715; visualizzazione con `attachSeasons52()` e limiti profondità/categoria. La raccolta non è un quinto concerto.
+- **Audit:** `AUDIT_CORRETTIVO_STAGIONI_CHECKPOINT52A_2026-11-11.md`, commit `3e08c207b07c231d35106ba361f492d8728eb291`.
+- **Collaudo:** riletto file GitHub, JavaScript inline passato al parser; **NON** ancora verificato rendering WebGL reale in browser né la regressione di tutti gli overlay insieme. **Non modificati** `grafo.json` e `index.html` pubblici.
+- **Preview anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=vivaldi52a-20261111
+- **Prossimo:** verificare visivamente le radici Vivaldi, Le quattro stagioni, i 4 concerti, Concerto per violino/solistico/Concerto; poi procedere con regressione federata, preservando ogni arco documentato. Audit BWV201–250 separato.
