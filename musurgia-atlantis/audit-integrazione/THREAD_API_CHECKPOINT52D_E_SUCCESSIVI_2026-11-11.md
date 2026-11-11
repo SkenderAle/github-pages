@@ -652,3 +652,158 @@ Nelle righe: `ID` è il codice del manifesto o ID editoriale; `catalogo` è RV/B
 - `fl48:jsbach:bwv82-2` · BWV 82.2 · BC A 169b — BWV 82.2 — versione per soprano, 1731 · stato: `incomplete_source` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata82.html · opera madre: `fl48:jsbach:bwv82`
 - `fl48:jsbach:bwv82-3` · BWV 82.3 · BC A 169c — BWV 82.3 — redazione 1735 · stato: `voice_source_discrepancy` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata82.html · opera madre: `fl48:jsbach:bwv82`
 
+
+## C4. Bach, repertorio vocale: Lotti 49–51, versioni, riusi e attribuzioni sospese
+
+### LOTTO49_34_SCHEDE_BACH_BWV111_140_2026-11-11.json — 30 record in entries
+
+- `fl49:jsbach:bwv111` · BWV 111 — Was mein Gott will, das g'scheh allzeit · BWV 111 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv112` · BWV 112 — Der Herr ist mein getreuer Hirt · BWV 112 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv113` · BWV 113 — Herr Jesu Christ, du höchstes Gut · BWV 113 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv114` · BWV 114 — Ach, lieben Christen, seid getrost · BWV 114 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv115` · BWV 115 — Mache dich, mein Geist, bereit · BWV 115 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv116` · BWV 116 — Du Friedefürst, Herr Jesu Christ · BWV 116 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv117` · BWV 117 — Sei Lob und Ehr dem höchsten Gut · BWV 117 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv118` · BWV 118 — O Jesu Christ, meins Lebens Licht · BWV 118 · mottetto_funebre · generi: `legacy:gf:genere-mottetto` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv119` · BWV 119 — Preise, Jerusalem, den Herrn · BWV 119 · cantata_sacra · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv120` · BWV 120 — Gott, man lobet dich in der Stille · BWV 120 · cantata_sacra · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv121` · BWV 121 — Christum wir sollen loben schon · BWV 121 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv122` · BWV 122 — Das neugeborne Kindelein · BWV 122 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv123` · BWV 123 — Liebster Immanuel, Herzog der Frommen · BWV 123 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv124` · BWV 124 — Meinen Jesum lass ich nicht · BWV 124 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv125` · BWV 125 — Mit Fried und Freud ich fahr dahin · BWV 125 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv126` · BWV 126 — Erhalt uns, Herr, bei deinem Wort · BWV 126 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv127` · BWV 127 — Herr Jesu Christ, wahr' Mensch und Gott · BWV 127 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv128` · BWV 128 — Auf Christi Himmelfahrt allein · BWV 128 · cantata_sacra · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv129` · BWV 129 — Gelobet sei der Herr, mein Gott · BWV 129 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv130` · BWV 130 — Herr Gott, dich loben alle wir · BWV 130 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv131` · BWV 131 — Aus der Tiefen rufe ich, Herr, zu dir · BWV 131 · cantata_sacra · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv132` · BWV 132 — Bereitet die Wege, bereitet die Bahn · BWV 132 · cantata_sacra · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv133` · BWV 133 — Ich freue mich in dir · BWV 133 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv134` · BWV 134 — Ein Herz, das seinen Jesum lebend weiß · BWV 134 · cantata_sacra · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv135` · BWV 135 — Ach Herr, mich armen Sünder · BWV 135 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv136` · BWV 136 — Erforsche mich, Gott, und erfahre mein Herz · BWV 136 · cantata_sacra · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv137` · BWV 137 — Lobe den Herren, den mächtigen König der Ehren · BWV 137 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv138` · BWV 138 — Warum betrübst du dich, mein Herz · BWV 138 · cantata_sacra · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv139` · BWV 139 — Wohl dem, der sich auf seinen Gott · BWV 139 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+- `fl49:jsbach:bwv140` · BWV 140 — Wachet auf, ruft uns die Stimme · BWV 140 · cantata_sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `flaminio_bachde_bwvinfo_staging`
+
+**Schede supplementari e versioni (NON comprese nelle righe primarie):**
+- `fl49:jsbach:bwv118a` · BWV 118a — O Jesu Christ, meins Lebens Licht · BWV 118a · versione · stato: `flaminio_catalogue_specific_staging` · madre: `fl49:jsbach:bwv118`
+- `fl49:jsbach:bwv120a` · BWV 120a — Herr Gott, Beherrscher aller Dinge · BWV 120a · cantata_sacra_nuziale · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_catalogue_specific_staging`
+- `fl49:jsbach:bwv120b` · BWV 120b — Gott, man lobet dich in der Stille · BWV 120b · cantata_sacra_commemorativa · generi: `atlas:gf:cantata-sacra` · stato: `flaminio_catalogue_specific_staging`
+- `fl49:jsbach:bwv134a` · BWV 134a — Die Zeit, die Tag und Jahre macht · BWV 134a · cantata_profana · generi: `atlas:gf:cantata-profana` · stato: `flaminio_catalogue_specific_staging`
+
+**Relazioni documentate interopera (non transitive):**
+- `fl49:reuse:1`: `fl49:jsbach:bwv120` → `fl49:jsbach:bwv120a` · specific_movement_parody_for_wedding 
+- `fl49:reuse:2`: `fl49:jsbach:bwv120` → `fl49:jsbach:bwv120b` · specific_movement_parody_for_confession_jubilee 
+- `fl49:reuse:3`: `fl49:jsbach:bwv134a` → `fl49:jsbach:bwv134` · secular_to_sacred_specific_parody 
+- `fl49:reuse:4`: `fl49:jsbach:bwv137` → `fl49:jsbach:bwv120a` · specific_chorale_movement_reused 
+
+### LOTTO50_31_SCHEDE_BACH_BWV141_170_2026-11-11.json — 31 record in entries
+
+- `fl50:jsbach:bwv141` · BWV 141 — Das ist je gewisslich wahr · BWV 141 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: spurious_confirmed, possibile/reale autore Georg Philipp Telemann
+- `fl50:jsbach:bwv142` · BWV 142 — Uns ist ein Kind geboren · BWV 142 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: spurious_to_bach_author_unsettled, possibile/reale autore Johann Kuhnau (probabile, non definitivo)
+- `fl50:jsbach:bwv143` · BWV 143 — Lobe den Herrn, meine Seele · BWV 143 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: disputed_authenticity, possibile/reale autore Johann Sebastian Bach (discusso)
+- `fl50:jsbach:bwv144` · BWV 144 — Nimm, was dein ist, und gehe hin · BWV 144 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv145` · BWV 145 — Ich lebe, mein Herze, zu deinem Ergötzen · BWV 145 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv146` · BWV 146 — Wir müssen durch viel Trübsal · BWV 146 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv147` · BWV 147 — Herz und Mund und Tat und Leben · BWV 147 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv148` · BWV 148 — Bringet dem Herrn Ehre seines Namens · BWV 148 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv149` · BWV 149 — Man singet mit Freuden vom Sieg · BWV 149 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv150` · BWV 150 — Nach dir, Herr, verlanget mich · BWV 150 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: disputed_authenticity, possibile/reale autore Johann Sebastian Bach (discusso)
+- `fl50:jsbach:bwv151` · BWV 151 — Süßer Trost, mein Jesus kömmt · BWV 151 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv152` · BWV 152 — Tritt auf die Glaubensbahn · BWV 152 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv153` · BWV 153 — Schau, lieber Gott, wie meine Feind · BWV 153 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv154` · BWV 154 — Mein liebster Jesus ist verloren · BWV 154 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv155` · BWV 155 — Mein Gott, wie lang, ach lange · BWV 155 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv156` · BWV 156 — Ich steh mit einem Fuß im Grabe · BWV 156 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv157` · BWV 157 — Ich lasse dich nicht, du segnest mich denn · BWV 157 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv158` · BWV 158 — Der Friede sei mit dir · BWV 158 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv159` · BWV 159 — Sehet, wir gehn hinauf gen Jerusalem · BWV 159 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv160` · BWV 160 — Ich weiß, dass mein Erlöser lebt · BWV 160 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: spurious_confirmed, possibile/reale autore Georg Philipp Telemann
+- `fl50:jsbach:bwv161` · BWV 161 — Komm, du süße Todesstunde · BWV 161 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv162` · BWV 162 — Ach! ich sehe, itzt, da ich zur Hochzeit gehe · BWV 162 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv163` · BWV 163 — Nur jedem das Seine · BWV 163 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv164` · BWV 164 — Ihr, die ihr euch von Christo nennet · BWV 164 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv165` · BWV 165 — O heilges Geist- und Wasserbad · BWV 165 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv166` · BWV 166 — Wo gehest du hin · BWV 166 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv167` · BWV 167 — Ihr Menschen, rühmet Gottes Liebe · BWV 167 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv168` · BWV 168 — Tüe Rechnung! Donnerwort · BWV 168 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv169` · BWV 169 — Gott soll allein mein Herze haben · BWV 169 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv170` · BWV 170 — Vergnügte Ruh, beliebte Seelenlust · BWV 170 · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+- `fl50:jsbach:bwv147a` · BWV 147a — Herz und Mund und Tat und Leben · BWV 147a · generi: `atlas:gf:cantata-sacra` · stato: `documented_work_staging`
+
+**Sospensioni (anche quando già presenti nell'elenco entries):**
+- `fl50:jsbach:bwv141` · BWV 141 — Das ist je gewisslich wahr · BWV 141 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: spurious_confirmed, possibile/reale autore Georg Philipp Telemann
+- `fl50:jsbach:bwv142` · BWV 142 — Uns ist ein Kind geboren · BWV 142 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: spurious_to_bach_author_unsettled, possibile/reale autore Johann Kuhnau (probabile, non definitivo)
+- `fl50:jsbach:bwv143` · BWV 143 — Lobe den Herrn, meine Seele · BWV 143 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: disputed_authenticity, possibile/reale autore Johann Sebastian Bach (discusso)
+- `fl50:jsbach:bwv150` · BWV 150 — Nach dir, Herr, verlanget mich · BWV 150 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: disputed_authenticity, possibile/reale autore Johann Sebastian Bach (discusso)
+- `fl50:jsbach:bwv160` · BWV 160 — Ich weiß, dass mein Erlöser lebt · BWV 160 · stato: `hold_do_not_publish_as_Bach` · **HOLD attribuzione**: spurious_confirmed, possibile/reale autore Georg Philipp Telemann
+
+**Relazioni documentate interopera (non transitive):**
+- `fl50:reuse:1`: `fl50:jsbach:bwv147a` → `fl50:jsbach:bwv147` · specific_revised_cantata_material 
+- `fl50:reuse:3`: `fl49:jsbach:bwv132` → `fl50:jsbach:bwv164` · specific_chorale_movement_reuse 
+
+### LOTTO51_37_SCHEDE_BACH_BWV171_200_2026-11-11.json — 37 record in entries
+
+- `fl51:jsbach:bwv171` · BWV 171 — Gott, wie dein Name, so ist auch dein Ruhm · BWV 171 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv172` · BWV 172 — Erschallet, ihr Lieder · BWV 172 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv173` · BWV 173 — Erhöhtes Fleisch und Blut · BWV 173 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv174` · BWV 174 — Ich liebe den Höchsten von ganzem Gemüte · BWV 174 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv175` · BWV 175 — Er rufet seinen Schafen mit Namen · BWV 175 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv176` · BWV 176 — Es ist ein trotzig und verzagt Ding · BWV 176 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv177` · BWV 177 — Ich ruf zu dir, Herr Jesu Christ · BWV 177 · sacred_cantata · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv178` · BWV 178 — Wo Gott der Herr nicht bei uns hält · BWV 178 · sacred_cantata · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv179` · BWV 179 — Siehe zu, dass deine Gottesfurcht nicht Heuchelei sei · BWV 179 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv180` · BWV 180 — Schmücke dich, o liebe Seele · BWV 180 · sacred_cantata · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv181` · BWV 181 — Leichtgesinnte Flattergeister · BWV 181 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv182` · BWV 182 — Himmelskönig, sei willkommen · BWV 182 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv183` · BWV 183 — Sie werden euch in den Bann tun · BWV 183 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv184` · BWV 184 — Erwünschtes Freudenlicht · BWV 184 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv185` · BWV 185 — Barmherziges Herze der ewigen Liebe · BWV 185 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv186` · BWV 186 — Ärgere dich, o Seele, nicht · BWV 186 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv187` · BWV 187 — Es wartet alles auf dich · BWV 187 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv188` · BWV 188 — Ich habe meine Zuversicht · BWV 188 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv189` · BWV 189 — Meine Seele rühmt und preist · BWV 189 · uncertain_author · stato: `hold_author_attribution`
+- `fl51:jsbach:bwv190` · BWV 190 — Singet dem Herrn ein neues Lied · BWV 190 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv191` · BWV 191 — Gloria in excelsis Deo · BWV 191 · latin_Christmas_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv192` · BWV 192 — Nun danket alle Gott · BWV 192 · sacred_cantata · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv193` · BWV 193 — Ihr Tore zu Zion · BWV 193 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv194` · BWV 194 — Höchsterwünschtes Freudenfest · BWV 194 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv195` · BWV 195 — Dem Gerechten muss das Licht · BWV 195 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv196` · BWV 196 — Der Herr denket an uns · BWV 196 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv197` · BWV 197 — Gott ist unsre Zuversicht · BWV 197 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv198` · BWV 198 — Lass, Fürstin, lass noch einen Strahl · BWV 198 · funeral_secular_ode · generi: `atlas:gf:cantata-profana` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv199` · BWV 199 — Mein Herze schwimmt im Blut · BWV 199 · sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv200` · BWV 200 — Bekennen will ich seinen Namen · BWV 200 · fragment_of_lost_sacred_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv173a` · BWV 173a — Durchlauchtster Leopold · BWV 173a · secular_birthday_serenata · generi: `atlas:gf:cantata-profana` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv184a` · BWV 184a — Erwünschtes Freudenlicht · BWV 184a · secular_new_year_celebration · generi: `atlas:gf:cantata-profana` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv186a` · BWV 186a — Ärgere dich, o Seele, nicht · BWV 186a · Weimar_Advent_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv190a` · BWV 190a — Singet dem Herrn ein neues Lied · BWV 190a · Augsburg_confession_jubilee_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv193a` · BWV 193a — Ihr Häuser des Himmels, ihr scheinenden Lichter · BWV 193a · Dramma_per_musica_for_ruler_name_day · generi: `atlas:gf:cantata-profana` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv194a` · BWV 194a — Höchsterwünschtes Freudenfest · BWV 194a · Kothen_secular_celebration · generi: `atlas:gf:cantata-profana` · stato: `catalogued_staging_only`
+- `fl51:jsbach:bwv197a` · BWV 197a — Ehre sei Gott in der Höhe · BWV 197a · Christmas_cantata · generi: `atlas:gf:cantata-sacra` · stato: `catalogued_staging_only`
+
+**Relazioni documentate interopera (non transitive):**
+- `fl51:reuse:1`: `fl51:jsbach:bwv173a` → `fl51:jsbach:bwv173` · secular_original_to_Pentecost_sacred 
+- `fl51:reuse:2`: `fl51:jsbach:bwv173a` → `fl51:jsbach:bwv175` · secular_aria_material_reused 
+- `fl51:reuse:3`: `fl51:jsbach:bwv184a` → `fl51:jsbach:bwv184` · secular_original_to_Pentecost_sacred 
+- `fl51:reuse:4`: `fl51:jsbach:bwv186a` → `fl51:jsbach:bwv186` · Weimar_Advent_to_Leipzig_version 
+- `fl51:reuse:5`: `fl51:jsbach:bwv190` → `fl51:jsbach:bwv190a` · New_Year_cantata_to_Augsburg_anniversary 
+- `fl51:reuse:6`: `fl51:jsbach:bwv193a` → `fl51:jsbach:bwv193` · secular_ceremonial_to_sacred_civic 
+- `fl51:reuse:7`: `fl51:jsbach:bwv194a` → `fl51:jsbach:bwv194` · secular_Kothen_to_church_consecration 
+- `fl51:reuse:8`: `fl51:jsbach:bwv197a` → `fl51:jsbach:bwv197` · Christmas_material_to_wedding_cantata 
+- `fl51:reuse:9`: `fl45:jsbach:bwv205` → `fl51:jsbach:bwv171` · secular_aria_reused_in_sacred_171_4 
+- `fl51:reuse:10`: `fl46:jsbach:bwv41` → `fl51:jsbach:bwv171` · chorale_41_6_reused_in_171_6 
+- `fl51:reuse:11`: `audit:flaminio:bach:bwv1048` → `fl51:jsbach:bwv174` · Brandenburg_no3_first_movement_as_cantata_sinfonia 
+
+## C5. Correttivo Vivaldi — Checkpoint 52A–52B (non parte dei lotti Bach)
+
+- `atlas:vivaldi-rv269-op8-1` — **La primavera**, RV 269, Op. 8 n. 1, mi maggiore; autore `pers:vivaldi`; raccolta `opera:quattro-stagioni`; sottogenere `atlas:gf:concerto-per-violino`; guida Flaminio `https://www.flaminioonline.it/Guide/Vivaldi/Vivaldi-Concerto269.html`.
+- `atlas:vivaldi-rv315-op8-2` — **L'estate**, RV 315, Op. 8 n. 2, sol minore; autore `pers:vivaldi`; raccolta `opera:quattro-stagioni`; sottogenere `atlas:gf:concerto-per-violino`; guida Flaminio `https://www.flaminioonline.it/Guide/Vivaldi/Vivaldi-Concerto315.html`.
+- `atlas:vivaldi-rv293-op8-3` — **L'autunno**, RV 293, Op. 8 n. 3, fa maggiore; autore `pers:vivaldi`; raccolta `opera:quattro-stagioni`; sottogenere `atlas:gf:concerto-per-violino`; guida Flaminio `https://www.flaminioonline.it/Guide/Vivaldi/Vivaldi-Concerto293.html`.
+- `atlas:vivaldi-rv297-op8-4` — **L'inverno**, RV 297, Op. 8 n. 4, fa minore; autore `pers:vivaldi`; raccolta `opera:quattro-stagioni`; sottogenere `atlas:gf:concerto-per-violino`; guida Flaminio `https://www.flaminioonline.it/Guide/Vivaldi/Vivaldi-Concerto297.html`.
+
+**Relazioni per concerto:** autore→opera, raccolta→opera, opera→sottogenere (12 archi nuovi). **Identità storica conservata:** `E0715`. Non introdurre un quinto concerto. La fonte canonica è nel codice `prepareSeasons52()` della preview, non in un manifesto JSON autonomo. Le prove 52B comprendono 10 radici, ma **non** l'intero rendering browser.
+
