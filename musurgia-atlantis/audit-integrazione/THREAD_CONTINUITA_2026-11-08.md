@@ -2099,3 +2099,12 @@ HOLD di crosswalk per `BWV120/2→Et expecto BWV232` e `BWV140/4→BWV645` organ
 - **NON certificato:** il limite operativo del connettore impedisce di eseguire nel medesimo ambiente il caricamento e la fusione simultanea di tutti i 24 file; non sono ancora state confrontate globalmente tutte le identità né eseguita la pipeline federata completa. Nessun collaudo WebGL/browser effettuato. Non descrivere questi controlli come regressione end-to-end.
 - **Produzione invariata:** `musurgia-atlantis/grafo.json` e `musurgia-atlantis/index.html` non toccati.
 - **Prossima ripresa:** predisporre regressione eseguibile di tutti gli overlay nello stesso runtime, controllare duplicati e archi orfani a livello globale e le radici Concerto/Vivaldi/Sonata/Quartetto/Singspiel/Cantata/Bach, poi collaudo WebGL reale e soltanto dopo eventuale promozione in produzione.
+
+
+### Consegna API dal Checkpoint 52D — thread operativo autonomo (11 novembre 2026)
+
+Creato e aggiornato il file **`musurgia-atlantis/audit-integrazione/THREAD_API_CHECKPOINT52D_E_SUCCESSIVI_2026-11-11.md`**, ultimo commit di compilazione `873cf7ff30a6fe155a19d619e3e41f0c7edabd7f`.
+
+Il thread operativo contiene: tutte le osservazioni e regole finora espresse dall'utente sui nodi e sugli archi (ring autore–opera–genere, sottocategorie, Opera/Singspiel, Sonata, Quartetto, Concerto/Brandeburghesi, Vivaldi/Quattro stagioni, filtri e pertinenza radicata), inventario per ID dei record nei manifesti Flaminio Checkpoint17/27, Lotti35–51 e Checkpoint52A, inclusi HOLD/versioni dove documentati; checklist e criteri misurabili per la regressione integrata 52D, protocollo di report e vincolo di non toccare la produzione.
+
+**ATTENZIONE:** il file è un handoff per un eventuale agente API, NON l'evidenza che l'agente sia stato avviato o che il 52D sia concluso. Il prossimo agente deve leggere *prima* questo file, poi seguire il thread storico e i manifesti di fonte. Aggiornare entrambi i thread senza duplicare l'inventario integrale nel thread madre.
