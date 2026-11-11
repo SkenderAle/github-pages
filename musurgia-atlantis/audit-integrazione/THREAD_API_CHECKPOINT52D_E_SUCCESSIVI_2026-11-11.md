@@ -500,3 +500,155 @@ Nelle righe: `ID` è il codice del manifesto o ID editoriale; `catalogo` è RV/B
 
 **Review queue:** 1 posizioni nel JSON originale, non promosse automaticamente.
 
+
+## C3. Bach, repertorio vocale: Lotti 45–48 (schede individuali e versioni)
+
+### LOTTO45_25_SCHEDE_CANTATE_BACH_2026-11-11.json — 25 schede primarie
+
+- `fl45:jsbach:bwv1` · BWV 1 — Wie schön leuchtet der Morgenstern · BWV 1 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata1.html
+- `fl45:jsbach:bwv2` · BWV 2 — Ach Gott, von Himmel sieh darein · BWV 2 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata2.html
+- `fl45:jsbach:bwv3` · BWV 3 — Ach Gott, wie manches Herzeleid · BWV 3 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata3.html
+- `fl45:jsbach:bwv4` · BWV 4 — Christ lag in Todesbanden · BWV 4 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata4.html
+- `fl45:jsbach:bwv5` · BWV 5 — Wo soll ich fliehen hin · BWV 5 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata5.html
+- `fl45:jsbach:bwv6` · BWV 6 — Bleib bei uns, denn es will Abend werden · BWV 6 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata6.html
+- `fl45:jsbach:bwv7` · BWV 7 — Christ unser Herr zum Jordan kam · BWV 7 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata7.html
+- `fl45:jsbach:bwv8` · BWV 8 — Liebster Gott, wenn werd ich sterben? · BWV 8 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata8.html
+- `fl45:jsbach:bwv9` · BWV 9 — Es ist das Heil uns kommen her · BWV 9 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata9.html
+- `fl45:jsbach:bwv10` · BWV 10 — Meine Seel erhebt den Herren · BWV 10 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata10.html
+- `fl45:jsbach:bwv11` · BWV 11 — Lobet Gott in seinen Reichen (Oratorio dell’Ascensione) · BWV 11 · oratorio · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata11.html
+- `fl45:jsbach:bwv12` · BWV 12 — Weinen, Klagen, Sorgen, Zagen · BWV 12 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata12.html
+- `fl45:jsbach:bwv13` · BWV 13 — Meine Seufzer, meine Tränen · BWV 13 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata13.html
+- `fl45:jsbach:bwv14` · BWV 14 — Wär Gott nicht mit uns diese Zeit · BWV 14 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata14.html
+- `fl45:jsbach:bwv15` · BWV 15 — Denn du wirst meine Seele nicht in der Hölle lassen · BWV 15 · hold_wrong_author · stato: `hold_do_not_publish`
+- `fl45:jsbach:bwv16` · BWV 16 — Herr Gott, dich loben wir · BWV 16 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata16.html
+- `fl45:jsbach:bwv17` · BWV 17 — Wer Dank opfert, der preiset mich · BWV 17 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata17.html
+- `fl45:jsbach:bwv18` · BWV 18 — Gleichwie der Regen und Schnee vom Himmel fällt · BWV 18 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata18.html
+- `fl45:jsbach:bwv19` · BWV 19 — Es erhub sich ein Streit · BWV 19 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata19.html
+- `fl45:jsbach:bwv20` · BWV 20 — O Ewigkeit, du Donnerwort · BWV 20 · sacra · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata20.html
+- `fl45:jsbach:bwv201` · BWV 201 — Geschwinde, ihr wirbelnden Winde (Der Streit zwischen Phoebus und Pan) · BWV 201 · profana · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata201.html
+- `fl45:jsbach:bwv202` · BWV 202 — Weichet nur, betrübte Schatten · BWV 202 · profana · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata202.html
+- `fl45:jsbach:bwv203` · BWV 203 — Amore traditore · BWV 203 · hold_uncertain · stato: `hold_do_not_publish`
+- `fl45:jsbach:bwv204` · BWV 204 — Ich bin in mir vergnügt · BWV 204 · profana · stato: `catalogue_supported_staging_only`
+- `fl45:jsbach:bwv205` · BWV 205 — Zerreißet, zersprenget, zertrümmert die Gruft (Der zufriedengestellte Äolus) · BWV 205 · profana · stato: `catalogue_supported_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata205.html
+
+**holds (non da promuovere senza riscontro):**
+- `fl45:jsbach:bwv15`
+- `fl45:jsbach:bwv203`
+
+### LOTTO46_35_SCHEDE_BACH_BWV21_50_2026-11-11.json — 35 schede primarie
+
+- `fl46:jsbach:bwv21` · BWV 21 — Ich hatte viel Bekümmernis · BWV 21 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata21.html
+- `fl46:jsbach:bwv22` · BWV 22 — Jesus nahm zu sich die Zwölfe · BWV 22 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata22.html
+- `fl46:jsbach:bwv23` · BWV 23 — Du wahrer Gott und Davids Sohn · BWV 23 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata23.html
+- `fl46:jsbach:bwv24` · BWV 24 — Ein ungefärbt Gemüte · BWV 24 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata24.html
+- `fl46:jsbach:bwv25` · BWV 25 — Es ist nichts Gesundes an meinem Leibe · BWV 25 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv26` · BWV 26 — Ach wie flüchtig, ach wie nichtig · BWV 26 · sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv27` · BWV 27 — Wer weiß, wie nahe mir mein Ende · BWV 27 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv28` · BWV 28 — Gottlob! Nun geht das Jahr zu Ende · BWV 28 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv29` · BWV 29 — Wir danken dir, Gott, wir danken dir · BWV 29 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv30` · BWV 30 — Freue dich, erlöste Schar · BWV 30 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv31` · BWV 31 — Der Himmel lacht! Die Erde jubilieret · BWV 31 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv32` · BWV 32 — Liebster Jesu, mein Verlangen · BWV 32 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv33` · BWV 33 — Allein zu dir, Herr Jesu Christ · BWV 33 · sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata33.html
+- `fl46:jsbach:bwv34` · BWV 34 — O ewiges Feuer, o Ursprung der Liebe · BWV 34 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv35` · BWV 35 — Geist und Seele wird verwirret · BWV 35 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv36` · BWV 36 — Schwingt freudig euch empor · BWV 36 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata36.html
+- `fl46:jsbach:bwv37` · BWV 37 — Wer da gläubet und getauft wird · BWV 37 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv38` · BWV 38 — Aus tiefer Not schrei ich zu dir · BWV 38 · sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv39` · BWV 39 — Brich dem Hungrigen dein Brot · BWV 39 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv40` · BWV 40 — Dazu ist erschienen der Sohn Gottes · BWV 40 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata40.html
+- `fl46:jsbach:bwv41` · BWV 41 — Jesu, nun sei gepreiset · BWV 41 · sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv42` · BWV 42 — Am Abend aber desselbigen Sabbats · BWV 42 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv43` · BWV 43 — Gott fähret auf mit Jauchzen · BWV 43 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv44` · BWV 44 — Sie werden euch in den Bann tun · BWV 44 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata44.html
+- `fl46:jsbach:bwv45` · BWV 45 — Es ist dir gesagt, Mensch, was gut ist · BWV 45 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv46` · BWV 46 — Schauet doch und sehet, ob irgend ein Schmerz sei · BWV 46 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv47` · BWV 47 — Wer sich selbst erhöhet, der soll erniedriget werden · BWV 47 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv48` · BWV 48 — Ich elender Mensch, wer wird mich erlösen · BWV 48 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue`
+- `fl46:jsbach:bwv49` · BWV 49 — Ich geh und suche mit Verlangen · BWV 49 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata49.html
+- `fl46:jsbach:bwv50` · BWV 50 — Nun ist das Heil und die Kraft · BWV 50 · fragment · generi: `atlas:gf:cantata-sacra` · stato: `fragment_separate_not_full_cantata` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata50.html
+- `fl46:jsbach:bwv30a` · BWV 30a — Angenehmes Wiederau · BWV 30a · profana · generi: `atlas:gf:cantata-profana` · stato: `work_level_crosschecked_catalogue_with_survival_caution`
+- `fl46:jsbach:bwv34a` · BWV 34a — O ewiges Feuer, o Ursprung der Liebe · BWV 34a · sacra · generi: `atlas:gf:cantata-sacra` · stato: `work_level_crosschecked_catalogue_with_survival_caution`
+- `fl46:jsbach:bwv36a` · BWV 36a — Steigt freudig in die Luft · BWV 36a · profana · generi: `atlas:gf:cantata-profana` · stato: `work_level_crosschecked_catalogue_with_survival_caution`
+- `fl46:jsbach:bwv36b` · BWV 36b — Die Freude reget sich · BWV 36b · profana · generi: `atlas:gf:cantata-profana` · stato: `work_level_crosschecked_catalogue_with_survival_caution`
+- `fl46:jsbach:bwv36c` · BWV 36c — Schwingt freudig euch empor · BWV 36c · profana · generi: `atlas:gf:cantata-profana` · stato: `work_level_crosschecked_catalogue_with_survival_caution` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata36c.html
+
+**suspensions (non da promuovere senza riscontro):**
+- `BWV 36d` · BWV 36d · stato: `hold_no_flaminio_catalogue_entry_in_checked_page`
+
+### LOTTO47_35_SCHEDE_BACH_BWV51_80_2026-11-11.json — 35 schede primarie
+
+- `fl47:jsbach:bwv51` · BWV 51 — Jauchzet Gott in allen Landen · BWV 51 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata51.html
+- `fl47:jsbach:bwv52` · BWV 52 — Falsche Welt, dir trau' ich nicht · BWV 52 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata52.html
+- `fl47:jsbach:bwv53` · BWV 53 — Schlage doch, gewünschte Stunde · BWV 53 · hold_wrong_attribution · stato: `hold_spurious_author` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata53.html
+- `fl47:jsbach:bwv54` · BWV 54 — Widerstehe doch der Sünde · BWV 54 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata54.html
+- `fl47:jsbach:bwv55` · BWV 55 — Ich armer Mensch, ich Sündenknecht · BWV 55 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata55.html
+- `fl47:jsbach:bwv56` · BWV 56 — Ich will den Kreuzstab gerne tragen · BWV 56 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata56.html
+- `fl47:jsbach:bwv57` · BWV 57 — Selig ist der Mann · BWV 57 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv58` · BWV 58 — Ach Gott, wie manches Herzeleid · BWV 58 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata58.html
+- `fl47:jsbach:bwv59` · BWV 59 — Wer mich liebet, der wird mein Wort halten · BWV 59 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata59.html
+- `fl47:jsbach:bwv60` · BWV 60 — O Ewigkeit, du Donnerwort · BWV 60 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata60.html
+- `fl47:jsbach:bwv61` · BWV 61 — Nun komm, der Heiden Heiland · BWV 61 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata61.html
+- `fl47:jsbach:bwv62` · BWV 62 — Nun komm, der Heiden Heiland · BWV 62 · sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata62.html
+- `fl47:jsbach:bwv63` · BWV 63 — Christen, ätzet diesen Tag · BWV 63 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv64` · BWV 64 — Sehet, welch eine Liebe hat uns der Vater erzeiget · BWV 64 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv65` · BWV 65 — Sie werden aus Saba alle kommen · BWV 65 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv66` · BWV 66 — Erfreut euch, ihr Herzen · BWV 66 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv67` · BWV 67 — Halt im Gedächtnis Jesum Christ · BWV 67 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv68` · BWV 68 — Also hat Gott die Welt geliebt · BWV 68 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv69` · BWV 69 — Lobe den Herrn, meine Seele · BWV 69 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv70` · BWV 70 — Wachet! betet! betet! wachet! · BWV 70 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata70.html
+- `fl47:jsbach:bwv71` · BWV 71 — Gott ist mein König · BWV 71 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv72` · BWV 72 — Alles nur nach Gottes Willen · BWV 72 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv73` · BWV 73 — Herr, wie du willt, so schicks mit mir · BWV 73 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv74` · BWV 74 — Wer mich liebet, der wird mein Wort halten · BWV 74 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv75` · BWV 75 — Die Elenden sollen essen · BWV 75 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv76` · BWV 76 — Die Himmel erzählen die Ehre Gottes · BWV 76 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv77` · BWV 77 — Du sollst Gott, deinem Herren, lieben · BWV 77 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv78` · BWV 78 — Jesu, der du meine Seele · BWV 78 · sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata78.html
+- `fl47:jsbach:bwv79` · BWV 79 — Gott, der Herr, ist Sonn' und Schild · BWV 79 · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata79.html
+- `fl47:jsbach:bwv80` · BWV 80 — Ein' feste Burg ist unser Gott · BWV 80 · sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv66a` · BWV 66a — Der Himmel dacht auf Anhalts Ruhm und Glück · BWV 66a · profana · generi: `atlas:gf:cantata-profana` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv69a` · BWV 69a — Lobe den Herrn, meine Seele · BWV 69a · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv70a` · BWV 70a — Wachet, betet, seid bereit allezeit · BWV 70a · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv80a` · BWV 80a — Alles, was von Gott geboren · BWV 80a · sacra · generi: `atlas:gf:cantata-sacra` · stato: `source_attested_staging_only`
+- `fl47:jsbach:bwv80b` · BWV 80b — Ein feste Burg ist unser Gott · BWV 80b · versione_sacra · stato: `source_attested_staging_only`
+
+### LOTTO48_30_CANTATE_BWV81_110_TRE_VERSIONI_BWV82_2026-11-11.json — 30 schede primarie
+
+- `fl48:jsbach:bwv81` · BWV 81 — Jesus schläft, was soll ich hoffen · BWV 81 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv82` · BWV 82 — Ich habe genug · BWV 82 · cantata solistica · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata82.html
+- `fl48:jsbach:bwv83` · BWV 83 — Erfreute Zeit im neuen Bunde · BWV 83 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv84` · BWV 84 — Ich bin vergnügt mit meinem Glücke · BWV 84 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv85` · BWV 85 — Ich bin ein guter Hirt · BWV 85 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv86` · BWV 86 — Wahrlich, wahrlich, ich sage euch · BWV 86 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata86.html
+- `fl48:jsbach:bwv87` · BWV 87 — Bisher habt ihr nichts gebeten in meinem Namen · BWV 87 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv88` · BWV 88 — Siehe, ich will viel Fischer aussenden · BWV 88 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv89` · BWV 89 — Was soll ich aus dir machen, Ephraim · BWV 89 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv90` · BWV 90 — Es reißet euch ein schrecklich Ende · BWV 90 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata90.html
+- `fl48:jsbach:bwv91` · BWV 91 — Gelobet seist du, Jesu Christ · BWV 91 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata91.html
+- `fl48:jsbach:bwv92` · BWV 92 — Ich hab in Gottes Herz und Sinn · BWV 92 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv93` · BWV 93 — Wer nur den lieben Gott lässt walten · BWV 93 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata93.html
+- `fl48:jsbach:bwv94` · BWV 94 — Was frag ich nach der Welt · BWV 94 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv95` · BWV 95 — Christus, der ist mein Leben · BWV 95 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv96` · BWV 96 — Herr Christ, der einge Gottessohn · BWV 96 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv97` · BWV 97 — In allen meinen Taten · BWV 97 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv98` · BWV 98 — Was Gott tut, das ist wohlgetan · BWV 98 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv99` · BWV 99 — Was Gott tut, das ist wohlgetan · BWV 99 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv100` · BWV 100 — Was Gott tut, das ist wohlgetan · BWV 100 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv101` · BWV 101 — Nimm von uns, Herr, du treuer Gott · BWV 101 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata101.html
+- `fl48:jsbach:bwv102` · BWV 102 — Herr, deine Augen sehen nach dem Glauben · BWV 102 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata102.html
+- `fl48:jsbach:bwv103` · BWV 103 — Ihr werdet weinen und heulen · BWV 103 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata103.html
+- `fl48:jsbach:bwv104` · BWV 104 — Du Hirte Israel, höre · BWV 104 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata104.html
+- `fl48:jsbach:bwv105` · BWV 105 — Herr, gehe nicht ins Gericht · BWV 105 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata105.html
+- `fl48:jsbach:bwv106` · BWV 106 — Gottes Zeit ist die allerbeste Zeit · BWV 106 · cantata funebre (Actus tragicus) · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata106.html
+- `fl48:jsbach:bwv107` · BWV 107 — Was willst du dich betrüben · BWV 107 · cantata sacra · generi: `atlas:gf:cantata-sacra, atlas:gf:cantata-corale` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv108` · BWV 108 — Es ist euch gut, dass ich hingehe · BWV 108 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv109` · BWV 109 — Ich glaube, lieber Herr, hilf meinem Unglauben · BWV 109 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only`
+- `fl48:jsbach:bwv110` · BWV 110 — Unser Mund sei voll Lachens · BWV 110 · cantata sacra · generi: `atlas:gf:cantata-sacra` · stato: `cross_checked_flaminio_bachde_staging_only` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata110.html
+
+**Versioni storiche distinte:**
+- `fl48:jsbach:bwv82-1` · BWV 82.1 · BC A 169a — BWV 82.1 — versione per basso, 1727 · stato: `surviving_source` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata82.html · opera madre: `fl48:jsbach:bwv82`
+- `fl48:jsbach:bwv82-2` · BWV 82.2 · BC A 169b — BWV 82.2 — versione per soprano, 1731 · stato: `incomplete_source` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata82.html · opera madre: `fl48:jsbach:bwv82`
+- `fl48:jsbach:bwv82-3` · BWV 82.3 · BC A 169c — BWV 82.3 — redazione 1735 · stato: `voice_source_discrepancy` · guida: https://www.flaminioonline.it/Guide/Bach/Bach-Cantata82.html · opera madre: `fl48:jsbach:bwv82`
+
