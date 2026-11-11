@@ -893,3 +893,14 @@ Mozart→Flauto magico→Singspiel→Opera.
 **Commit preview:** `bdf3e72c52edc09407c02ba9d7490a91d4303093`. **Audit:** `AUDIT_SONATA_FLAMINIO_CHECKPOINT52G_2026-11-11.md`, commit `9d5c9df26a9da819e2db31012b81e54a0f29ef9d`. **Thread madre:** aggiornato al commit `4b75d59d198ce3bb326a64a057f6a40c81b005f1`. Test: sintassi JS inline PASS, helper mirato su fonte Berg + fixture PASS (nessun orfano/duplicato); **non** end-to-end 24 JSON, **non** WebGL/browser. File di produzione invariati.
 
 **Da fare al prossimo agente:** regressione federata per Sonata / Quartetto / Cantata nel runtime reale, controllo dei quality gate e HOLD, esecuzione della suite `REGRESSIONE_FEDERATA_CHECKPOINT52D.html` con esportazione report e prova mobile WebGL. Il 52G è **aperto**, non dichiararlo certificato PASS.
+
+
+### Checkpoint 52H — Quartetto/Cantata: controlli federati e fonti originali (11 novembre 2026)
+
+**Nota di continuità:** prima di questo intervento il 52G era già stato pubblicato (Sonata op.1 di Berg, commit `bdf3e72c52edc09407c02ba9d7490a91d4303093`), quindi non viene ripetuto o sovrascritto.
+
+**Nuovo intervento:** `PREVIEW_RADICATA_CHECKPOINT06.html` commit `00d1cf4b6614731ceebdbe9c23bf441855b46908`. Il runner `AtlantisCheckpoint52D.run()` ora comprende 6 asserzioni `catalogue_invariants_52h` e conta ogni fallimento: quartetti J. C. F. Bach B37–42 con basso continuo, Mozart K285b in HOLD, BWV189 senza arco Bach, BWV200 frammento, BWV1048→BWV174 arco specifico di riuso, gerarchia Quartetto→Quartetto per archi.
+
+**Prova completata sui manifesti reali** Lotti42/43/44/51: **8/8 PASS**, incluso il riparto del Lotto43 (21 quartetti con pianoforte, 3 per flauto, 1 per oboe), il frammento JCF Bach I4 escluso e il K285b controverso non promosso. Registro `REGRESSIONE_QUARTETTO_CANTATA_CHECKPOINT52H_2026-11-11.json` commit `1d4fbb46e071a747c28f090c5587de0742d7d613`; audit `AUDIT_QUARTETTO_CANTATA_CHECKPOINT52H_2026-11-11.md` commit `503bcb355711c6e3aec474b8554ccbffe4136f8d`.
+
+**Limiti:** prove sui quattro manifesti, **non** esecuzione federata end-to-end di tutti i 24 file, **non** collaudo browser/WebGL/mobile. Suite federata arricchita ma ancora da lanciare. Nessun cambiamento ai dati di produzione. Prossima ripresa: eseguire test 52D/52H insieme, analizzare eventuali FAIL di radici Quartetto/Cantata e correggere soltanto anomalie reali.
