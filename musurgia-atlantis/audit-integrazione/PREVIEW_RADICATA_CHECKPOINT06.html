@@ -674,6 +674,28 @@ function attachMozartTaxonomy(result,maxDepth,relevance,depths){
    if(child&&!visible.has(e.target))addNode(e.target,(child._depth??0)+1,e.source);
    addLink(e);
   }
+  // Checkpoint 52F: from the explicit Opera root, restore the *intermediate*
+  // genre taxonomy for Mozart's works ALREADY indexed in this rooted view.
+  // Never expand from Opera to other authors or to unindexed works.
+  if(rootIsGenre&&currentRoot==="legacy:gf:genere-opera"){
+   for(let pass=0;pass<3;pass++){
+    for(const e of mozartTaxonomy.links.filter(x=>parent.has(x.relation))){
+     const upper=visible.get(e.target);
+     if(upper&&workIds.size){
+      addNode(e.source,(upper._depth??0)+1,e.target);
+      addLink(e);
+     }
+    }
+   }
+   for(const e of mozartTaxonomy.links.filter(x=>specific.has(x.relation))){
+    const work=visible.get(e.source);
+    if(work&&workIds.has(e.source)){
+     addNode(e.target,(work._depth??0)+1,e.source);
+     addLink(e);
+    }
+   }
+   for(const e of mozartTaxonomy.links.filter(x=>parent.has(x.relation)))addLink(e);
+  }
  }
  return result;
 }
