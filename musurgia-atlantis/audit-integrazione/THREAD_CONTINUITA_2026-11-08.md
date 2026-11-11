@@ -1884,3 +1884,24 @@ assieme al ramo già presente `legacy:gf:genere-quartetto-archi` (39 opere Lotto
 
 **Prossima ripresa:** Lotto46, BWV 21–50, con gate preventivi per attribuzione, versioni e classi «Cantata corale» solo dove effettivamente documentate, senza espansioni generiche. Eseguire appena possibile collaudo browser 3D sulla preview e successiva regressione completa di Singspiel/Mozart, Concerto/Brandeburghesi, Sonata, Quartetto e Cantata. Mantenere `musurgia-atlantis/grafo.json` e `index.html` storici invariati fino alla certificazione.
 
+### Lotto 46 — 35 schede BWV 21–50 e suffissi, cantata corale e opere rielaborate (11 novembre 2026)
+
+**Pubblicazione GitHub su `main`, soltanto `audit-integrazione/`:**
+- `LOTTO46_35_SCHEDE_BACH_BWV21_50_2026-11-11.json`, commit `c5034850fbfb70d5b8f9c5dd152d77d3d8225e16`.
+- `PREVIEW_RADICATA_CHECKPOINT06.html`, aggiornamento live della preview con `prepareCantata46`, commit `2025b2a28181b293c4b8b3c7e709349ea48f1b00`. I file di produzione `grafo.json` e `index.html` sono rimasti invariati.
+- `AUDIT_LOTTO46_BACH_BWV21_50_2026-11-11.md`, verbale e test, commit `2eafe4906f6609f67bce65613c9a7a1c7e8e2620`.
+
+**Ambito verificato:** BWV intere **21–50** (30 schede), più 5 voci catalografiche indipendenti **30a, 34a, 36a, 36b, 36c**. Totale **35** identità catalografiche: **34 opere**, di cui alcune incomplete o con musica perduta, e **1 frammento superstite** BWV 50. Non presentare BWV 50 come cantata completa o duplicare le versioni a 5/8 voci; la sua storia editoriale e organica è controversa. BWV36d è nota nella lista bach.de ma assente nella pagina Flaminio consultata: **HOLD** di confronto, nessun nodo nuovo. Le redazioni BWV23/31/36 e il rinvio BWV44–183 sono note, non nuove identità inventate.
+
+**Tassonomia:** 30 opere sacre (29 BWV 21–49 + BWV 34a nuziale che il catalogo Flaminio include fra le sacre), 4 opere profane celebrative (BWV30a, 36a/b/c), 1 frammento di cantata sacra. La nuova categoria **Cantata corale** `atlas:gf:cantata-corale` è figlia del nodo esistente **Cantata sacra** e si applica **in aggiunta**, non in sostituzione, alle 4 BWV **26, 33, 38, 41**, secondo documentazione del ciclo. Una cantata contenente un corale non è automaticamente una cantata corale. BWV32 e 49 mantengono il tratto dialogico, senza sconfinare in "opera lirica".
+
+**Cinque relazioni individuali di parodia/rielaborazione, non transitive:** `BWV30a→30`, `34a→34`, `36c→36`, `36c→36a`, `36c→36b`. BWV36a: musica perduta, non simulare tracce. I singoli lavori collegano direttamente J. S. Bach al lavoro e il lavoro alle tassonomie pertinenti; in ricerca dal lavoro appaiono le opere fonte/derivate, senza passare dal genere a tutti gli altri autori.
+
+**Guide Flaminio:** URL di 11 guide individuali effettivamente aperti dal catalogo, per BWV 21,22,23,24,33,36,36c,40,44,49,50. Per gli altri: `null`, nessun link ipotizzato. L'originale `compositori_flaminio.xlsx` **non era accessibile** per questa tranche: le righe Excel non sono attribuite e la riconciliazione è sospesa fino al file.
+
+**Prova strutturale effettuata su JS pubblicato** con overlay autentico generi (50 nodi / 271 archi), nodo Bach di prova e manifesti Lotti45+46: **36 nodi nuovi** (35 record + cantata corale) e **81 archi nuovi**, **0 duplicati** nodo/arco e **0 orfani** nel dataset di test. Totale delle opere/frammenti censiti dai due lotti: **58 = 23 + 35**. Lotti combinati: 49 record sotto Cantata sacra inclusa BWV50; 8 Cantata profana, 1 Oratorio BWV11; 4 dei 49 anche Cantata corale. Provate **17 radici** (Bach, 4 generi, 11 opere del Lotto46 e BWV11); test specifici dei circuiti fonte→parodia e filtro Persone=0; JS completo sintatticamente valido. Non dichiarare test integrale sul `grafo.json` o browser/WebGL: non eseguiti. Anche la preview live non è recuperabile dal lettore web disponibile, quindi la verifica visuale resta da effettuare.
+
+**Preview anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=cantate46-20261111
+
+**Prossimo Lotto 47:** BWV **51–80**, con status versioni, frammenti, spuri e sottogeneri solo quando supportati. Valutare un filtro/catalogo per non presentare centinaia di opere contemporaneamente dal nodo Bach. Poi collaudo browser reale e verifica sul workbook originale, senza fondere dati di produzione prima della certificazione.
+
