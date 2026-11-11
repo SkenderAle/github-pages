@@ -1,0 +1,168 @@
+{
+  "schema": "musurgia-atlantis-regression-concerto-checkpoint50c-v1",
+  "date": "2026-11-11",
+  "status": "passed_real_graph_and_relevant_overlays_structural_regression",
+  "trigger": "Segnalazione visiva dell'assenza di archi e del nodo Concerto isolato selezionando Concerto per violino",
+  "code_path": "musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html",
+  "source_paths": [
+    "musurgia-atlantis/grafo.json",
+    "musurgia-atlantis/audit-integrazione/GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json",
+    "musurgia-atlantis/audit-integrazione/OVERLAY_FAMIGLIA_CONCERTO_CHECKPOINT25_2026-11-10.json",
+    "musurgia-atlantis/audit-integrazione/CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json",
+    "musurgia-atlantis/audit-integrazione/LOTTO35_OPERE_CERTIFICATE_2026-11-10.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json",
+    "musurgia-atlantis/audit-integrazione/LOTTO38_BEETHOVEN_24_OPERE_2026-11-10.json",
+    "musurgia-atlantis/audit-integrazione/LOTTO41_55_OPERE_TASTIERA_CONCORDANZA_2026-11-10.json"
+  ],
+  "real_production_graph_blob": "4863b3fe263154387de3388c0b813b5f94546f12",
+  "preparation": "Escluse esclusivamente le funzioni browser init; eseguito JS reale di preparazione Legacy, Lotto35, Famiglia Concerto, Brandeburghesi, Lotto38, Lotto41, Genre Rings, Concerto40 e Indice Concerto51, recuperato da GitHub",
+  "source_graph": {
+    "nodes": 754,
+    "links": 1718
+  },
+  "source_legacy_genre_overlay": {
+    "nodes": 50,
+    "links": 271,
+    "existing_direct_concerto_composer_links": 18
+  },
+  "relevant_staging_graph_after_prepare": {
+    "nodes": 904,
+    "links": 2269,
+    "duplicate_node_ids": 0
+  },
+  "composers_indexed": 20,
+  "composer_ids": [
+    "fl:autor:barber",
+    "pers:alessandro-scarlatti",
+    "pers:antonin-dvorak",
+    "pers:bach",
+    "pers:bartok",
+    "pers:beethoven",
+    "pers:brahms",
+    "pers:cajkovskij",
+    "pers:clara-schumann",
+    "pers:corelli",
+    "pers:edvard-grieg",
+    "pers:handel",
+    "pers:mendelssohn",
+    "pers:mozart",
+    "pers:paganini",
+    "pers:prokofev",
+    "pers:saint-saens",
+    "pers:sibelius",
+    "pers:telemann",
+    "pers:vivaldi"
+  ],
+  "new_index_edges": 1,
+  "new_index_author_ids": [
+    "pers:alessandro-scarlatti"
+  ],
+  "new_index_basis": "Pre-existing legacy edge Alessandro Scarlatti → Concerto grosso; index to generic Concerto with support provenance, noncausal/nontransitive",
+  "source_specific_concerto_works": 44,
+  "roots": [
+    {
+      "root": "legacy:gf:genere-concerto",
+      "nodes": 78,
+      "links": 179,
+      "persons": 20,
+      "works": 44,
+      "orphan_links": 0
+    },
+    {
+      "root": "atlas:gf:concerto-per-violino",
+      "nodes": 16,
+      "links": 40,
+      "persons": 4,
+      "works": 9,
+      "orphan_links": 0
+    },
+    {
+      "root": "audit:gf25:concerto-solistico",
+      "nodes": 43,
+      "links": 121,
+      "persons": 4,
+      "works": 35,
+      "orphan_links": 0
+    },
+    {
+      "root": "atlas:gf:concerto-per-pianoforte",
+      "nodes": 31,
+      "links": 86,
+      "persons": 2,
+      "works": 26,
+      "orphan_links": 0
+    },
+    {
+      "root": "audit:gf25:concerto-di-gruppo",
+      "nodes": 10,
+      "links": 20,
+      "persons": 2,
+      "works": 3,
+      "orphan_links": 0
+    },
+    {
+      "root": "atlas:gf:concerto-brandeburghese",
+      "nodes": 10,
+      "links": 30,
+      "persons": 1,
+      "works": 7,
+      "orphan_links": 0
+    },
+    {
+      "root": "pers:mozart",
+      "nodes": 35,
+      "links": 94,
+      "persons": 1,
+      "works": 28,
+      "orphan_links": 0
+    },
+    {
+      "root": "pers:beethoven",
+      "nodes": 14,
+      "links": 31,
+      "persons": 1,
+      "works": 7,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl:cert35:bartok-sz36",
+      "nodes": 4,
+      "links": 4,
+      "persons": 0,
+      "works": 1,
+      "orphan_links": 0
+    },
+    {
+      "root": "fl:cert35:barber-op14",
+      "nodes": 4,
+      "links": 4,
+      "persons": 0,
+      "works": 1,
+      "orphan_links": 0
+    }
+  ],
+  "assertions": {
+    "macro_root_has_all_44_catalogued_works": true,
+    "macro_root_has_20_unique_composers": true,
+    "macro_root_shows_all_nine_source_taxonomy_edges": true,
+    "macro_root_has_179_visible_links": true,
+    "violin_root_shows_macro_concerto": true,
+    "violin_root_has_violin_to_solo_edge": true,
+    "violin_root_has_solo_to_macro_edge": true,
+    "violin_root_has_9_catalogued_works": true,
+    "old_legacy_18_composers_preserved": true,
+    "extra_legacy_composer_index_from_concerto_grosso_provenance": true,
+    "no_duplicate_bartok_person": true,
+    "all_tested_edges_have_both_endpoints": true,
+    "works_filter_depth_0_honored": true,
+    "people_filter_depth_0_honored": true,
+    "all_44_work_authorship_from_real_lot_manifest": true,
+    "dataset_no_duplicate_nodes": true
+  },
+  "blocked_or_unverified": [
+    "Il ramo Concerto grosso quando scelto direttamente passa attraverso attachConcertoFamily della pipeline completa: test diretto di attachConcerto40 da solo non è una simulazione del percorso applicativo.",
+    "Il test non avvia il browser grafico WebGL né verifica il clic fisico nel canvas.",
+    "Il test isola gli overlay pertinenti a Concerto; gli overlay Mozart, quartetto, Singspiel, cantate ecc. non sono stati combinati simultaneamente in questa regressione."
+  ],
+  "production_mutated": false
+}
