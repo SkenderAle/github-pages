@@ -904,3 +904,16 @@ Mozart→Flauto magico→Singspiel→Opera.
 **Prova completata sui manifesti reali** Lotti42/43/44/51: **8/8 PASS**, incluso il riparto del Lotto43 (21 quartetti con pianoforte, 3 per flauto, 1 per oboe), il frammento JCF Bach I4 escluso e il K285b controverso non promosso. Registro `REGRESSIONE_QUARTETTO_CANTATA_CHECKPOINT52H_2026-11-11.json` commit `1d4fbb46e071a747c28f090c5587de0742d7d613`; audit `AUDIT_QUARTETTO_CANTATA_CHECKPOINT52H_2026-11-11.md` commit `503bcb355711c6e3aec474b8554ccbffe4136f8d`.
 
 **Limiti:** prove sui quattro manifesti, **non** esecuzione federata end-to-end di tutti i 24 file, **non** collaudo browser/WebGL/mobile. Suite federata arricchita ma ancora da lanciare. Nessun cambiamento ai dati di produzione. Prossima ripresa: eseguire test 52D/52H insieme, analizzare eventuali FAIL di radici Quartetto/Cantata e correggere soltanto anomalie reali.
+
+
+### Checkpoint 52I — Regressione reale della federazione in V8, correttivo radici Vivaldi (11 novembre 2026)
+
+**Non ripetere questa operazione.** I 24 JSON **reali** della preview sono stati caricati simultaneamente tramite l'accesso GitHub (il grafo originario recuperato dal blob perché troppo grande per la normale fetch). Sono state eseguite le funzioni originali `prepare*`, `ROOTED_RELEVANCE_CHECKPOINT06.browser.js` e `AtlantisCheckpoint52D.run()` in un isolate JavaScript V8. DOM e motore grafico sono stati sostituiti da stub: esito **`PASS_DATA_ONLY`**, NON browser reale, NON WebGL, NON Android.
+
+**Baseline FAIL:** quattro opere singole delle Quattro stagioni (RV269, RV315, RV293, RV297) non navigabili come radice autonoma (`Unknown root` nel motore base); il dataset comunque le conteneva. **Patch:** inizializzare una radice staging quando `seasons52.ids.has(currentRoot)` prima di `attachSeasons52` e completamento archi 52E; nessuna fusione o arco storico inventato. Corretto anche il cercatore di `BWV174` e `BWV200` per usare il nome **o** l'identificativo: ora entrambe le radici sono incluse.
+
+**Post-patch:** 24/24 JSON, **1.390 nodi**, **3.391 archi**, **27/27 radici PASS**, **4/4 controlli filtri zero PASS**, **6/6 invarianti 52H PASS**, nessun duplicato ID nodo/arco, nessun arco orfano e nessun errore `ha_composto` fra persone. Mantengono HOLD e classificazioni BWV189, BWV200, K285b; non alterare il dataset per ridurre la densità di archi.
+
+**File e commit main, tutti soltanto in `audit-integrazione/`:** preview `1e2aa3e9893e0b51431b87f4017f770181cc755f`; report JSON `REGRESSIONE_FEDERATA_CHECKPOINT52I_V8_2026-11-11.json` commit `1a09d44d5fc141808673577966938118d884ac7a`; audit `AUDIT_REGRESSIONE_FEDERATA_CHECKPOINT52I_2026-11-11.md` commit `713fe45f90fce933de81c1b3842d9fc8d158018d`. Thread madre aggiornato commit `a7f4179491895252d070323156804e8ce0789828`.
+
+**Next gate:** lanciare `REGRESSIONE_FEDERATA_CHECKPOINT52D.html` da browser desktop, esportare il JSON generato sul campo, verificare grafica/etichette/filtri e comportamento Android. Registrare separatamente runtime dati e grafica, non riportare `webgl_renderer_constructed:true` dal test V8 con stub. Trattare `undrawn_edges_between_visible_nodes` come diagnostica, distinguere arco filtrato intenzionalmente da arco perso. Produzione `grafo.json` e `index.html` invariata.
