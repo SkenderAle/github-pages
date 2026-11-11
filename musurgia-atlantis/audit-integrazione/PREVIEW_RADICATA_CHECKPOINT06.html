@@ -91,7 +91,23 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
  <option value="48">48 per ramo</option><option value="9999">Tutte le opere del ramo</option>
  </select></div>
 </div>
-<p class="note" id="cantataLimitNote">La limitazione agisce solo sulla visualizzazione: tutte le opere restano nel catalogo e nella ricerca. Le cantate selezionate direttamente per nome mostrano sempre le loro relazioni.</p>
+<div class="controls">
+ <div>
+  <label for="cantataPageGroup">Sfoglia il catalogo per genere</label>
+  <select id="cantataPageGroup" aria-label="Genere da sfogliare">
+   <option value="atlas:gf:cantata-sacra" selected>Cantata sacra</option>
+   <option value="atlas:gf:cantata-profana">Cantata profana</option>
+   <option value="atlas:gf:cantata-corale">Cantata corale</option>
+   <option value="legacy:gf:genere-mottetto">Mottetto</option>
+  </select>
+ </div>
+ <div class="actions">
+  <button id="cantataPrev" type="button" aria-label="Pagina precedente del genere selezionato">← Precedente</button>
+  <button id="cantataNext" type="button" aria-label="Pagina successiva del genere selezionato">Successiva →</button>
+ </div>
+ <output id="cantataPageStatus" role="status" aria-live="polite">Pagina 1</output>
+</div>
+<p class="note" id="cantataLimitNote">Paginazione reale per ciascun genere: nessuna opera è eliminata. La ricerca di una BWV funziona sempre indipendentemente dalla pagina visibile.</p>
 
 <div id="stats">Lettura dei dati…</div><p id="sourceState"></p><div id="status" role="status"></div>
 <section id="selected"><div id="nodeInfo"><h2>Seleziona un nodo</h2><p>Clic: note e fonti. Doppio clic: il nodo diventa il centro, senza aumentare lo zoom.</p></div>
@@ -1869,9 +1885,44 @@ const C45_SACRED="atlas:gf:cantata-sacra";
 const C45_SECULAR="atlas:gf:cantata-profana";
 let cantata45={works:new Map(),byGenre:new Map(),edges:[],holds:new Set(),addedGenres:new Set()};
 let cantataBranchLimit=24;
-function cantataGroupSlice(group){
+const cantataPages=new Map();
+function cantataGroupAll(group){
  const all=[...(cantata45.byGenre.get(group)||[])];
- return all.slice(0,cantataBranchLimit);
+ // Catalogue order, not import batch order: BWV 30, 30a, 31 ... 140.
+ function bwvKey(id){
+  const m=id.match(/:bwv(\d+)([a-z]?)/i);
+  return [m?Number(m[1]):Infinity,m?.[2]||""];
+ }
+ all.sort((x,y)=>{
+  const a=bwvKey(x),b=bwvKey(y);
+  return a[0]-b[0]||a[1].localeCompare(b[1])||x.localeCompare(y);
+ });
+ return all;
+}
+function cantataPageCount(group){
+ const total=cantataGroupAll(group).length;
+ return cantataBranchLimit>=9999?1:Math.max(1,Math.ceil(total/cantataBranchLimit));
+}
+function cantataGroupSlice(group){
+ const all=cantataGroupAll(group);
+ if(cantataBranchLimit>=9999)return all;
+ const max=cantataPageCount(group)-1;
+ const page=Math.max(0,Math.min(max,cantataPages.get(group)||0));
+ cantataPages.set(group,page);
+ return all.slice(page*cantataBranchLimit,(page+1)*cantataBranchLimit);
+}
+function refreshCantataPager(){
+ const select=$("cantataPageGroup"),status=$("cantataPageStatus");
+ if(!select||!status)return;
+ const group=select.value,total=cantataGroupAll(group).length,
+  pages=cantataPageCount(group),page=Math.max(0,Math.min(pages-1,cantataPages.get(group)||0));
+ cantataPages.set(group,page);
+ const from=total?1+page*Math.min(cantataBranchLimit,total):0,
+       to=Math.min(total,(page+1)*cantataBranchLimit);
+ status.value="Pagina "+(page+1)+" di "+pages+" · opere "+from+"–"+to+" su "+total+
+  (cantataBranchLimit>=9999?" · tutte visibili":"");
+ $("cantataPrev").disabled=page<=0||pages===1;
+ $("cantataNext").disabled=page>=pages-1||pages===1;
 }
 
 function prepareCantata45(batch){
@@ -2709,6 +2760,7 @@ function selected(id){
 }
 function render({fit=false}={}){
  if(!renderer)return;
+ refreshCantataPager();
  const depth=Number($("depth").value),person=Number($("peopleDepth").value);
  const work=Number($("workDepth").value),context=Number($("contextDepth").value);
  const relevance=Number($("relevance").value);
@@ -2764,7 +2816,10 @@ function render({fit=false}={}){
 function setRoot(id,{fit=true}={}){
  const n=dataset.nodes.find(x=>x.id===id);
  if(!n||n.category==="capitolo"||n.id.startsWith("cap:")){say("I capitoli sono soltanto risorse editoriali");return}
- currentRoot=id;candidate=n;render({fit});
+ currentRoot=id;candidate=n;
+ if([C45_SACRED,C45_SECULAR,C46_CHORALE,C49_MOTET].includes(id)&&$("cantataPageGroup"))
+  $("cantataPageGroup").value=id;
+ render({fit});
 }
 function zoomBy(factor){
  if(!engine)return;
@@ -2911,9 +2966,25 @@ async function init(){
  for(const id of ["relevance","depth","peopleDepth","workDepth","contextDepth"])$(id).addEventListener("input",()=>render({fit:false}));
  $("cantataLimit").addEventListener("change",()=>{
   cantataBranchLimit=Number($("cantataLimit").value);
+  cantataPages.clear();
   $("cantataLimitOutput").value=cantataBranchLimit>=9999?"Tutte":cantataBranchLimit+" per genere";
   render({fit:false});
  });
+ $("cantataPageGroup").addEventListener("change",()=>{
+  const group=$("cantataPageGroup").value;
+  if(currentRoot!==C45_AUTHOR&&currentRoot!==group)setRoot(group,{fit:false});
+  else render({fit:false});
+ });
+ for(const [id,delta]of [["cantataPrev",-1],["cantataNext",1]]){
+  $(id).addEventListener("click",()=>{
+   const group=$("cantataPageGroup").value,
+    last=cantataPageCount(group)-1,
+    page=Math.max(0,Math.min(last,(cantataPages.get(group)||0)+delta));
+   cantataPages.set(group,page);
+   if(currentRoot!==C45_AUTHOR&&currentRoot!==group)setRoot(group,{fit:false});
+   else render({fit:false});
+  });
+ }
  addEventListener("resize",()=>engine.width($("graph").clientWidth).height($("graph").clientHeight));
  engine.width($("graph").clientWidth).height($("graph").clientHeight);setRoot(currentRoot,{fit:true});
 }
