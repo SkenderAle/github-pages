@@ -1905,3 +1905,22 @@ assieme al ramo già presente `legacy:gf:genere-quartetto-archi` (39 opere Lotto
 
 **Prossimo Lotto 47:** BWV **51–80**, con status versioni, frammenti, spuri e sottogeneri solo quando supportati. Valutare un filtro/catalogo per non presentare centinaia di opere contemporaneamente dal nodo Bach. Poi collaudo browser reale e verifica sul workbook originale, senza fondere dati di produzione prima della certificazione.
 
+### Lotto 47 — BWV 51–80, cinque suffissi, BWV53 spuria, BWV80b versione e parodie (11 novembre 2026)
+
+**Aggiornamento `main` concluso nella SOLA area audit:**
+- Manifesto `LOTTO47_35_SCHEDE_BACH_BWV51_80_2026-11-11.json` commit `aa57cfe79850b3d4552a08bc109180e1ca3bef72`.
+- Preview radicata `PREVIEW_RADICATA_CHECKPOINT06.html` commit `d239896a96f14176ead633a1d9bd27da4a36a7f0`.
+- Verbale `AUDIT_LOTTO47_BACH_BWV51_80_2026-11-11.md` commit `eeaae3e0db91b16805f83aa0a2f260e269f42c2e`.
+- **`musurgia-atlantis/grafo.json`, `index.html` originali NON modificati**, nessuna fusione in produzione, nessuna certificazione visiva.
+
+**Corpo delle 35 schede:** 30 numeri BWV interi **51–80** e cinque suffissi **66a, 69a, 70a, 80a, 80b**. **BWV53 HOLD** perché la stessa pagina Flaminio e IMSLP documentano la falsa attribuzione a J. S. Bach (probabile **Georg Melchior Hoffmann**); la scheda sopravvive nel manifesto ma non esiste un nodo BWV53 né un arco Bach→53. I rimanenti **34 nodi** sono **33 identità d'opera** e **1 nodo `versione-opera` (BWV80b)** collegato a BWV80. **BWV66a** è una *Serenata celebrativa profana*, non una cantata sacra solo perché Flaminio la ospita fra le BWV1–200. Delle 33 opere, 32 sono nel ramo Cantata sacra, 1 Cantata profana. Tre classificazioni **Cantata corale** aggiuntive sono assegnate a **BWV62, 78, 80**. Sono salvati 13 link a guide individuali Flaminio effettivamente aperte per opere pubblicate e 1 URL per BWV53 nello HOLD (14 link esaminati), gli altri `null`.
+
+**Relazioni individuali e non transitive:** sei intralotto `66a→66`, `69a→69`, `70a→70`, `59→74`, `80a→80`, `80b→80` (quest'ultima è **versione**, non parodia), più una interlotto `BWV12→BWV69a` (riuso del corale finale). Non convertire gli identici incipit BWV61/62, 59/74, 20/60 in versioni per inferenza dal titolo. Il rinvio Flaminio da BWV78 al *Crucifixus* della Messa BWV232 è dubbio (fonte notoria BWV12); sospendere l'arco. Pending crosswalk per BWV52/BWV1046 e BWV68/BWV208; per BWV80 distinguere l'orchestrazione con trombe e timpani di Wilhelm Friedemann Bach.
+
+**Regressione del codice JS realmente pubblicato** con overlay vero dei generi `50 nodi/271 archi`, manifesti veri 45/46/47 e un nodo Bach sintetico nel test isolato: **34 nodi + 77 archi**, **0 duplicati/0 archi orfani**, 22 radici provate (Bach, 4 generi, 17 voci di repertorio delle tre tranche, inclusi BWV53 HOLD, BWV80/80a/80b, BWV12 e BWV30 di controllo). Alla radice BWV80 compaiono 80a e 80b, con la versione come categoria propria; a radice BWV69a compare anche BWV12; a radice BWV59 compare BWV74. Nessuna BWV53 dalla ricerca di Bach; profondità Persone=0 non forzata. Codice HTML JavaScript sintatticamente valido. **Cumulativo 45–47:** 91 opere/frammenti, oltre a 1 versione; 81 record sotto Cantata sacra + 9 sotto Cantata profana + 1 Oratorio; 7 delle 81 sono anche Cantata corale. 
+**Limiti:** NON eseguiti test su browser WebGL o loader completo multi-overlay; non chiamarli certificazioni della preview pubblica. Excel originale `compositori_flaminio.xlsx` non consultato: `source_excel_row=null`. La radice Bach ora conta nel test isolato **98 nodi / 210 archi** a livello 4, quindi occorre introdurre un controllo di fan-out/paginazione senza cancellare il catalogo.
+
+**Preview anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=cantate47-20261111
+
+**Prossimo:** Lotto48 BWV **81–110** (versioni di BWV82, cantate corali e attribution gates) e, in parallelo, interfaccia scalabile per grandi cataloghi per sottogenere. Priorità di certificazione ancora aperta: prove WebGL/browser Singspiel, Mozart, Sonata, Concerto, Quartetto e Cantate. Non promuovere nulla a `grafo.json` pubblico fino al collaudo della fusione.
+
