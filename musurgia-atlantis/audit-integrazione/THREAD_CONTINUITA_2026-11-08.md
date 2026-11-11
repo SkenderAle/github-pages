@@ -2186,3 +2186,16 @@ Mozart→Flauto magico→Singspiel→Opera.
 **Commit GitHub, tutti su main e solo nello staging:** preview `1e2aa3e9893e0b51431b87f4017f770181cc755f`; rapporto macchina `REGRESSIONE_FEDERATA_CHECKPOINT52I_V8_2026-11-11.json` commit `1a09d44d5fc141808673577966938118d884ac7a`; audit `AUDIT_REGRESSIONE_FEDERATA_CHECKPOINT52I_2026-11-11.md` commit `713fe45f90fce933de81c1b3842d9fc8d158018d`. Produzione `musurgia-atlantis/grafo.json` e `musurgia-atlantis/index.html` **non modificata**.
 
 **Prossima ripresa:** eseguire il banco `REGRESSIONE_FEDERATA_CHECKPOINT52D.html` in browser reale, esportare il rapporto, collaudare la grafica WebGL/Canvas su Android e analizzare gli archi fra nodi visibili ancora non disegnati distinguendo omissioni illegittime e filtri intenzionali. Solo dopo valutare un'eventuale promozione in produzione. Non ripetere il 52I già pubblicato.
+
+
+### Checkpoint 52J — Archi non disegnati, prova canonica Da Ponte / Don Giovanni e renderer Canvas (12 novembre 2026)
+
+**Regressione federata ripetuta sul codice reale in isolate V8**, con i 24 JSON della preview e motore radicato; DOM e motore di disegno sostituiti da stub, quindi nessun collaudo browser/Canvas/Android eseguito. **1.390 nodi, 3.391 archi, 27/27 radici PASS, 4/4 controlli profondità zero PASS, 6/6 invarianti filologiche 52H PASS; zero archi orfani e ID duplicati**.
+
+**Diagnostica nuove omissioni:** su tutti i 27 sottografi **zero archi ammessi omessi**. Le uniche due segnalazioni (in radice Mozart e Don Giovanni) erano due occorrenze dello **stesso record sospeso** `L02-A07` Da Ponte→Don Giovanni, `duplicate_of:E0873`: la relazione canonica `E0873` ha `historical_verified_independently:true` ed è disegnata. La preview ora separa `withheld_uncertified_count`, `documented_duplicate_count`, `unaccounted_count` e registra il riscontro dell'arco canonico; se manca una prova canonica o è omesso un arco ammissibile, la suite fallisce. Record originali preservati, senza creare relazioni aggiuntive.
+
+**Correzione terminologica necessaria:** la preview staging impiega `compat-graph-checkpoint08.js`, che usa `canvas.getContext('2d')` con disposizione/proiezione tridimensionale, **non WebGL**. Metadati corretti in `renderer_technology:canvas_2d_3d_projection`, `webgl_renderer_constructed:false`; il test statico non dimostra il rendering visivo. Aggiornata la pagina `REGRESSIONE_FEDERATA_CHECKPOINT52D.html` con riepilogo degli archi esclusi e istruzioni di collaudo manuale.
+
+**Pubblicato su `main`, solo staging:** preview commit `5d745330889a87e201ad96ae31e6dfa233b2e35e`; registro `REGRESSIONE_ARCHI_VISIBILI_CHECKPOINT52J_2026-11-12.json` commit `451c8783c63a5ec98a8870dc1864e4190b1a75d5`; banco HTML commit `f035602fce0ee8d0de2c51036d74491683082f7d`; verbale `AUDIT_CHECKPOINT52J_ARCHI_VISIBILI_2026-11-12.md` commit `76c810375c05cde7451ad00672e678c59d2cef4e`. Produzione `grafo.json` e `index.html` NON modificata.
+
+**Prossima ripresa:** Checkpoint 52K: browser reale e smartphone, eventuali anomalie Canvas/etichette/filtri, report esportato. Prima della certificazione visiva nessuna promozione al grafo pubblico. Conservare tutti gli archi documentati e gestire la densità con filtri.
