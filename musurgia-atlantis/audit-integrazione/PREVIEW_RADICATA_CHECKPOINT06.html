@@ -3038,8 +3038,9 @@ function attachSeasons52(result,maxDepth,limits){
  const present=new Map(result.nodes.map(n=>[n.id,n]));
  const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
  const linkIds=new Set(result.links.map(e=>e.id));
- if(!focus.has(currentRoot)&&![...present.keys()].some(id=>seasons52.ids.has(id)||id===SEASONS52_COLLECTION))
-  return result;
+ // A collection merely appearing as context in an unrelated composer root
+ // must never import another author's repertoire.
+ if(!focus.has(currentRoot))return result;
  function add(id,depth,from,reason){
   if(present.has(id))return present.get(id);
   const n=universe.get(id);
@@ -3082,7 +3083,11 @@ function attachSeasons52(result,maxDepth,limits){
   if(currentRoot!==SEASONS52_GENRE&&currentRoot!==SEASONS52_PARENT&&currentRoot!==SEASONS52_MACRO){
    add(SEASONS52_AUTHOR,d,id,"author_of_work");
    add(SEASONS52_COLLECTION,d,id,"collection_of_work");
-   add(SEASONS52_GENRE,d,id,"genre_of_work");
+   const genre=add(SEASONS52_GENRE,d,id,"genre_of_work");
+   if(genre){
+    const parent=add(SEASONS52_PARENT,genre._depth+1,SEASONS52_GENRE,"taxonomy_parent");
+    if(parent)add(SEASONS52_MACRO,parent._depth+1,SEASONS52_PARENT,"taxonomy_parent");
+   }
   }
  }
  const allowed=[...seasons52.edges,
