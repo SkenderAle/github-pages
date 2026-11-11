@@ -1924,3 +1924,33 @@ assieme al ramo già presente `legacy:gf:genere-quartetto-archi` (39 opere Lotto
 
 **Prossimo:** Lotto48 BWV **81–110** (versioni di BWV82, cantate corali e attribution gates) e, in parallelo, interfaccia scalabile per grandi cataloghi per sottogenere. Priorità di certificazione ancora aperta: prove WebGL/browser Singspiel, Mozart, Sonata, Concerto, Quartetto e Cantate. Non promuovere nulla a `grafo.json` pubblico fino al collaudo della fusione.
 
+### Lotto 48 — BWV 81–110, tre versioni BWV82, 10 cantate corali e controllo fan-out (11 novembre 2026)
+
+**Pubblicato in `main` solo dentro `musurgia-atlantis/audit-integrazione/`:**
+- Manifesto `LOTTO48_30_CANTATE_BWV81_110_TRE_VERSIONI_BWV82_2026-11-11.json`, commit `8e69723e53b9df0837736bf1e594288abda92c95`.
+- Preview radicata `PREVIEW_RADICATA_CHECKPOINT06.html`, commit d'integrazione `98df5f505afe9a2308e93aedbd4f441ce41a03af`, revisione del titolo/conteggi `e72744b8c0536e89be8022bcbdc5b5599da7e7c2`.
+- Regressione strutturale `REGRESSIONE_LOTTO48_BACH_2026-11-11.json`, commit `daba33553351b8e7cdb44b0a6cdbcfb2abf1ea5f`.
+- Verbale `AUDIT_LOTTO48_BACH_BWV81_110_2026-11-11.md`, commit `9e8c838e7f6f9f7f3e7b01e79f6227fa1e5c3a20`.
+- **`musurgia-atlantis/grafo.json` e `musurgia-atlantis/index.html` NON modificati; pubblicazione di staging, NON certificazione di produzione.**
+
+**Catalogazione:** 30 identità d'opera sacra per BWV **81–110**, nessun duplicato per gli incipit omonimi BWV **98/99/100**. **10** nuove classificazioni aggiuntive `Cantata corale` per BWV **91,92,93,94,96,97,99,100,101,107**. Attenzione: BWV97 (inno di Paul Fleming per intero, 1734) e BWV100 (inno di Samuel Rodigast, circa 1732–35, occasione non certa) sono cantate corali ma **non** appartengono cronologicamente al ciclo corale regolare 1724–25. Non basta trovare un singolo movimento corale per assegnare il sottogenere.
+
+**BWV82 — `Ich habe genug`: UNA opera con 3 `versione-opera`:**
+- `BWV82.1` / BC A169a, basso, 1727;
+- `BWV82.2` / BC A169b, soprano, 1731, incompleta, detta talvolta `BWV82a` in cataloghi specifici;
+- `BWV82.3` / BC A169c, terza redazione 1735. **Caveat filologico:** Flaminio descrive tessitura da mezzosoprano, altre concordanze riportano contralto/soprano in diverse ricostruzioni; registrare la divergenza senza dedurre 3 opere autonome né falsi autori/interpreti.
+
+**BWV106:** `Gottes Zeit ist die allerbeste Zeit`, `Actus tragicus`, cantata funebre giovanile, nel ramo sacro, non in Oratorio. **Relazioni specifiche fra opere:** `BWV99→BWV100` (coro iniziale ripreso); `BWV75→BWV100` (corale finale ripreso). Non collegare per parodia la BWV98 solo perché ripete il titolo; nessuna propagazione ad altri compositori. Per le guide Flaminio: 12 URL individuali documentati nell'indice (BWV 82,86,90,91,93,101–106,110), altri `null`. Excel originale `compositori_flaminio.xlsx` non accessibile: `source_excel_row=null` ovunque.
+
+**Interfaccia / scalabilità:** nuovo select effettivo `Cantate per ramo visualizzate`: **12, 24 (default), 48, Tutte**. Il limite riguarda **solo la visualizzazione** della rete Bach/Cantata, **non** i record catalografici: tutte le opere restano nella ricerca e visibili da radice specifica. Attenzione: mostra le **prime N opere per ramo**, non è ancora paginazione sfogliabile con «avanti/indietro»; la paginazione numerica è una futura miglioria.
+
+**Regressione effettivamente eseguita sul codice JS pubblicato** più overlay autentico generi legacy 50 nodi/271 archi, manifesti Lotti45–48 e nodo Bach sintetico in test isolato: **33 nodi** nuovi (30 opere, 3 versioni), **78 archi** nuovi, **0 ID duplicati, 0 archi nuovi orfani**, **23 radici** verificate (Bach, Cantata, Cantata sacra/profana/corale, BWV 81/82/82.1/.2/.3/91/93/97/98/99/100/101/106/107/110, BWV75/80/30 di regressione). Con radice BWV82 le 3 versioni sono collegate, con radice BWV100 appaiono le opere fonte BWV99 e BWV75. `Persone=0` non forza Bach. JS della pagina intera validato sintatticamente.
+
+**Cumulativo Lotti45–48:** **121 opere/frammenti** (111 nel ramo sacro, 9 profane, 1 oratorio), più **4 versioni** separate (BWV80b, BWV82.1/.2/.3). **17 cantate corali** sono sottoinsieme delle 111 sacre (non sommare come quarto insieme). Con profondità4, nel test isolato da Bach: limite24 → **40 nodi/79 archi**; «Tutte» → **131 nodi/288 archi**; dal sottogenere Cantata sacra «Tutte» restituisce le 111 opere documentate.
+
+**Limiti aperti:** nessuna verifica reale del rendering WebGL/browser Android e nessuna regressione multi-overlay su `grafo.json` completo; prova strutturale ≠ certificazione browser. Nessuna collazione con righe Excel originali. I controlli URL individuali non sono esaustivi. Prima di produrre il grafo definitivo: risolvere questi gate e verificare Singspiel/Mozart, Concerto/Brandeburghesi, Sonata, Quartetto e Cantate insieme.
+
+**Preview anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=cantate48-20261111
+
+**Prossima ripresa:** **Lotto49 BWV 111–140**, con triage attribuzioni/versioni/cantate corali e riusi realmente documentati. Per GUI introdurre **paginazione navigabile per ramo**, mantenendo le 121 identità nel catalogo, senza eliminare o oscurare dati arbitrariamente.
+
