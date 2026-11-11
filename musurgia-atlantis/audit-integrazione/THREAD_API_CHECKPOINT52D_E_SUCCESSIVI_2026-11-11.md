@@ -849,3 +849,14 @@ Il thread incorpora gli elenchi per **18 file di provenienza**: overlay Flaminio
 ```
 
 **Stato al momento della creazione:** handoff pubblicato; nessun agente API attivato, nessuna credenziale fornita, 52D non ancora eseguito.
+
+
+## E. RIPRESA REALE — CHECKPOINT 52D (11 novembre 2026)
+
+**Stato: BANCO DI PROVA DISPONIBILE; esecuzione end-to-end e collaudo WebGL NON ancora certificati.** Non trattare l'esito come PASS finché non esiste il report JSON effettivamente generato dal browser.
+
+- **Pagina di regressione**: `audit-integrazione/REGRESSIONE_FEDERATA_CHECKPOINT52D.html`, commit `a70427e160deda089d2852098a1463b24c173a23`, https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/REGRESSIONE_FEDERATA_CHECKPOINT52D.html
+- **Hook sulla preview**: `window.AtlantisCheckpoint52D.status()/run()`, commit `ba8a445599dfc23814f658e681d3125ba0593d3a`; diagnostica aggiuntiva di archi non disegnati e filtri profondità zero, commit `ae65d314c36b62f0700a498caf7eb25c28e9beac`.
+- **Verbale**: `AUDIT_BANCO_REGRESSIONE_CHECKPOINT52D_2026-11-11.md`, commit `e7aa242beba480d7dcd0f5e8e6b1814527f098f3`.
+- La pagina carica la preview reale, che attiva la pipeline dei 24 JSON nel browser, ed esporta il risultato su file JSON dell'operatore. La suite controlla identità globali, orfani, radici dei generi, Bach/Vivaldi, raccolte, tassonomia Concerto e filtri zero. **Non certifica la resa WebGL visiva.** La lista `undrawn_edges_between_visible_nodes` è diagnostica e richiede revisione, non è automaticamente una violazione.
+- **Prossimo esatto passo:** eseguire la pagina sul browser con tutti i file disponibili, salvare il JSON nel repository e correggere soltanto gli errori dimostrati; poi collaudo WebGL e compatibilità smartphone. NON modificare `musurgia-atlantis/grafo.json` né `index.html` pubblici.
