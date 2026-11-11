@@ -1593,6 +1593,174 @@ function attachQuartet43(result,maxDepth,limits){
  return result;
 }
 
+
+// Lotto 44 — two documented cycles by Johann Christoph Friedrich Bach.
+// B37-42 use flute, violin, viola AND basso continuo (not a fixed solo cello).
+// B43-48 are string quartets. Historical headings are collection nodes.
+const Q44_PERSON="atlas:pers:johann-christoph-friedrich-bach";
+const Q44_FLUTE="atlas:gf:quartetto-flauto-violino-viola-continuo";
+let quartet44={works:new Map(),groups:new Map(),collections:new Map(),byGroup:new Map(),edges:[]};
+function prepareQuartet44(batch){
+ if(batch?.schema!=="musurgia-atlantis-lotto44-jcf-bach-quartets-v1"||
+    batch.entries?.length!==12||batch.collections?.length!==2||
+    batch.review_queue?.length!==1||batch.counts?.flute_with_continuo!==6||
+    batch.counts?.string_quartets!==6)throw Error("Lotto44 manifest incomplete");
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const ids=new Set(dataset.links.map(e=>e.id));
+ function addNode(n){
+  if(nodes.has(n.id))throw Error("Lotto44 node collision: "+n.id);
+  nodes.set(n.id,n);dataset.nodes.push(n);
+ }
+ function addEdge(e){
+  if(ids.has(e.id)||!nodes.has(e.source)||!nodes.has(e.target))
+   throw Error("Lotto44 duplicate or orphan edge: "+e.id);
+  ids.add(e.id);dataset.links.push(e);quartet44.edges.push(e);
+ }
+ if(nodes.has(Q44_PERSON)||nodes.has(Q44_FLUTE)||
+    nodes.get(QUARTET42_PARENT)?.category!=="genere-forma"||
+    nodes.get(QUARTET42_CHILD)?.category!=="genere-forma"||
+    nodes.get("atlas:gf:quartetto-per-flauto-e-archi")?.category!=="genere-forma")
+  throw Error("Lotto44 composer/Quartetto taxonomy collision");
+ addNode({id:Q44_PERSON,name:batch.person.name,category:"persona",
+  description:batch.person.disambiguation,authority_urls:batch.person.authority_urls,
+  url:batch.source.flaminio_catalogue_url,evidence_status:"specific_historical_composer"});
+ const flute=batch.taxonomy.flute_subgenre;
+ if(flute.id!==Q44_FLUTE||flute.parent_id!=="atlas:gf:quartetto-per-flauto-e-archi")
+  throw Error("Lotto44 invalid micro-instrumentation");
+ addNode({id:flute.id,name:flute.name,category:"genere-forma",
+  subtype:"organico con basso continuo",description:flute.description,
+  evidence_status:"catalogue_specific_instrumentation",url:batch.source.flaminio_catalogue_url});
+ quartet44.groups.set(flute.id,flute.parent_id);
+ quartet44.groups.set(QUARTET42_CHILD,QUARTET42_PARENT);
+ addEdge({id:"fl44:group:flute-continuo",source:flute.id,target:flute.parent_id,
+  relation:"sottogenere_di",statement_type:"catalogue_ensemble_subtype",
+  root_permission:"non_transitive_instrumentation",
+  description:"Ramo a basso continuo, distinto dal quartetto per flauto e tre archi di Mozart."});
+ for(const coll of batch.collections){
+  if(![Q44_FLUTE,QUARTET42_CHILD].includes(coll.child_group_id)||
+     !Number.isInteger(coll.source_excel_row))throw Error("Lotto44 invalid collection");
+  addNode({id:coll.id,name:coll.name,category:"opera",subtype:"raccolta editoriale",
+   source_excel_row:coll.source_excel_row,catalogue_id:coll.catalogue_range,
+   description:"Raccolta di sei quartetti individuali, non composizione singola.",
+   evidence_status:"source_group_heading",url:batch.source.flaminio_catalogue_url});
+  quartet44.collections.set(coll.id,coll);
+  addEdge({id:"fl44:collection-group:"+coll.id,source:coll.id,target:coll.child_group_id,
+   relation:"raccolta_di_opere_del_sottogenere",statement_type:"catalogue_edition_index",
+   root_permission:"non_transitive_collection",
+   description:"L'organico classificato è attestato dai sei singoli lavori della raccolta."});
+ }
+ const rows=new Set(),catalogues=new Set();
+ for(const w of batch.entries){
+  if(nodes.has(w.id)||w.composer_id!==Q44_PERSON||
+     !quartet44.groups.has(w.subgenre_id)||!quartet44.collections.has(w.collection_id)||
+     quartet44.collections.get(w.collection_id).child_group_id!==w.subgenre_id||
+     rows.has(w.source_excel_row)||catalogues.has(w.catalogue)||
+     !Number.isInteger(w.source_excel_row)||w.flaminio_explanation_url!==null||
+     !w.independent_catalogue_urls?.length||
+     !/^fl44:jcf-bach:quartetto-b(3[7-9]|4[0-8])$/.test(w.id))
+   throw Error("Lotto44: work provenance failure "+w.id);
+  rows.add(w.source_excel_row);catalogues.add(w.catalogue);
+  if(w.subgenre_id===Q44_FLUTE&&!w.source_ensemble_raw.includes("basso continuo"))
+   throw Error("Lotto44: cannot flatten basso continuo into cello");
+  addNode({id:w.id,name:w.name,category:"opera",subtype:"quartetto",
+   catalogue_id:w.catalogue,alternative_catalogue:w.alternative_catalogue,
+   source_excel_row:w.source_excel_row,source_title_original:w.source_title_raw,
+   source_date_original:w.source_year_raw,source_ensemble_original:w.source_ensemble_raw,
+   source_movements_original:w.source_movement_titles_original,
+   flaminio_explanation_url:null,url:w.catalogue_source_url,
+   description:"Organico: "+w.source_ensemble_raw+
+    (w.editorial_caution?". Nota catalografica: "+w.editorial_caution:""),
+   evidence_status:w.evidence_status,independent_catalogue_urls:w.independent_catalogue_urls});
+  quartet44.works.set(w.id,w);
+  if(!quartet44.byGroup.has(w.subgenre_id))quartet44.byGroup.set(w.subgenre_id,new Set());
+  quartet44.byGroup.get(w.subgenre_id).add(w.id);
+  const common={statement_type:"documented_individual_catalogue",root_permission:"work_specific_nontransitive",
+   sources:[w.catalogue_source_url,...w.independent_catalogue_urls]};
+  addEdge({id:"fl44:author:"+w.id,source:Q44_PERSON,target:w.id,
+   relation:"ha_composto",...common,description:"Attribuzione al Bach di Bückeburg secondo BR-JCFB, non a Johann Christian Bach."});
+  addEdge({id:"fl44:genre:"+w.id,source:w.id,target:w.subgenre_id,
+   relation:"ha_sottogenere",...common,description:"L'opera è classificata dall'organico attestato, con continuo o soli archi."});
+  addEdge({id:"fl44:collection-member:"+w.id,source:w.collection_id,target:w.id,
+   relation:"contiene_opera",...common,description:"Singolo quartetto appartenente alla raccolta storica, non opera collettiva."});
+ }
+ for(const [g,works] of quartet44.byGroup){
+  addEdge({id:"fl44:index:"+g,source:Q44_PERSON,target:g,
+   relation:"ha_composto_opere_del_sottogenere",
+   statement_type:"derived_from_12_specific_works",root_permission:"non_transitive_composer_index",
+   supporting_work_ids:[...works],
+   description:"Indice compositore–organico ricavato da opere certificate, non rapporto con altri autori."});
+ }
+ const b=(x)=>quartet44.byGroup.get(x)?.size??0;
+ if(quartet44.works.size!==12||b(Q44_FLUTE)!==6||b(QUARTET42_CHILD)!==6||
+    quartet44.collections.size!==2)throw Error("Lotto44 cardinality");
+}
+function attachQuartet44(result,maxDepth,limits){
+ if(!quartet44.works.size||maxDepth<1)return result;
+ const isAuthor=currentRoot===Q44_PERSON;
+ const isFluteParent=currentRoot==="atlas:gf:quartetto-per-flauto-e-archi";
+ const isMicro=currentRoot===Q44_FLUTE;
+ const isStrings=currentRoot===QUARTET42_CHILD;
+ const isWork=quartet44.works.has(currentRoot);
+ const isCollection=quartet44.collections.has(currentRoot);
+ if(!isAuthor&&!isFluteParent&&!isMicro&&!isStrings&&!isWork&&!isCollection)return result;
+ const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ if(isAuthor||isMicro||isWork||isCollection){
+  result={root:currentRoot,nodes:[{...universe.get(currentRoot),_depth:0,_path:[currentRoot]}],links:[]};
+ }
+ const shown=new Map(result.nodes.map(n=>[n.id,n])),edgeIds=new Set(result.links.map(e=>e.id));
+ function add(id,depth,from,permission){
+  const node=universe.get(id);
+  if(!node||depth>maxDepth||depth>(limits[node.category]??maxDepth))return null;
+  if(shown.has(id))return shown.get(id);
+  const parent=shown.get(from);
+  const n={...node,_depth:depth,_path:[...(parent?._path||[currentRoot]),id],_permission:permission};
+  shown.set(id,n);result.nodes.push(n);return n;
+ }
+ function connect(e){if(e&&shown.has(e.source)&&shown.has(e.target)&&!edgeIds.has(e.id)){
+  result.links.push({...e});edgeIds.add(e.id);
+ }}
+ if(isFluteParent){
+  add(Q44_FLUTE,1,currentRoot,"documented_continuo_ensemble");
+ }else if(isMicro){
+  add("atlas:gf:quartetto-per-flauto-e-archi",1,currentRoot,"parent_ensemble_terminal");
+  for(const w of quartet44.byGroup.get(Q44_FLUTE)||[])add(w,1,currentRoot,"specific_flute_continuo_quartet");
+  for(const col of quartet44.collections.values())if(col.child_group_id===Q44_FLUTE)
+   add(col.id,1,currentRoot,"six_work_collection");
+  add(Q44_PERSON,2,currentRoot,"specific_composer_terminal");
+ }else if(isStrings){
+  const col=[...quartet44.collections.values()].find(x=>x.child_group_id===QUARTET42_CHILD);
+  if(col){
+   add(col.id,1,currentRoot,"JCF_Bach_six_quartets_collection");
+   for(const work of quartet44.byGroup.get(QUARTET42_CHILD)||[])
+    add(work,2,col.id,"collection_member");
+  }
+  add(Q44_PERSON,3,col?.id||currentRoot,"terminal_composer");
+ }else if(isAuthor){
+  for(const [group,works] of quartet44.byGroup){
+   add(group,1,currentRoot,"own_composed_quartets_ensemble");
+   for(const work of works)add(work,2,group,"own_specific_quartet");
+   const col=[...quartet44.collections.values()].find(x=>x.child_group_id===group);
+   if(col)add(col.id,2,group,"six_work_collection");
+  }
+ }else if(isWork){
+  const w=quartet44.works.get(currentRoot);
+  add(Q44_PERSON,1,currentRoot,"catalogue_attributed_composer");
+  add(w.subgenre_id,1,currentRoot,"specific_instrumentation");
+  add(w.collection_id,1,currentRoot,"documented_edition");
+  const parent=quartet44.groups.get(w.subgenre_id);
+  add(parent,2,w.subgenre_id,"parent_instrumentation");
+  if(w.subgenre_id===Q44_FLUTE)add(QUARTET42_PARENT,3,parent,"main_quartet_family");
+ }else if(isCollection){
+  const coll=quartet44.collections.get(currentRoot);
+  add(coll.child_group_id,1,currentRoot,"collection_ensemble");
+  for(const [id,w] of quartet44.works)if(w.collection_id===currentRoot)
+   add(id,1,currentRoot,"six_distinct_quartets");
+  add(Q44_PERSON,2,currentRoot,"documented_composer");
+ }
+ for(const e of quartet44.edges)connect(e);
+ return result;
+}
+
 function getRootedPreview39(maxDepth,relevance,depthByCategory){
  if(concertoFamilyByNode.has(currentRoot)){
   const root={...concertoFamilyByNode.get(currentRoot),_depth:0,_path:[currentRoot],_permission:"selected_concerto_subgenre"};
@@ -1667,13 +1835,18 @@ function getRootedPreview39(maxDepth,relevance,depthByCategory){
 
 // Add the checkpoint40 layer without changing checkpoint39 rooted logic.
 function getRootedPreview(maxDepth,relevance,depthByCategory){
+ if(currentRoot===Q44_PERSON||currentRoot===Q44_FLUTE||
+    quartet44.works.has(currentRoot)||quartet44.collections.has(currentRoot)){
+  const root=dataset.nodes.find(n=>n.id===currentRoot);
+  return attachQuartet44({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
+ }
  if(quartet43.groups.has(currentRoot)||quartet43.works.has(currentRoot)||quartet43.people.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachQuartet43({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
+  return attachQuartet44(attachQuartet43({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(currentRoot===QUARTET42_PARENT||currentRoot===QUARTET42_CHILD||quartet42.works.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
-  return attachQuartet43(attachQuartet42({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory);
+  return attachQuartet44(attachQuartet43(attachQuartet42({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
  }
  if(lot41.ids.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
@@ -1683,7 +1856,7 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
   return attachConcerto40({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
  }
- return attachQuartet43(attachQuartet42(attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+ return attachQuartet44(attachQuartet43(attachQuartet42(attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -1856,9 +2029,9 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input,lot43Input;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input,lot43Input,lot44Input;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input,lot43Input]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input,lot43Input,lot44Input]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
@@ -1874,7 +2047,8 @@ async function init(){
     fetch("./CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json?v=checkpoint40-brandenburg",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Checkpoint40 Concerto mancante "+r.status);return r.json()}),
     fetch("./LOTTO41_55_OPERE_TASTIERA_CONCORDANZA_2026-11-10.json?v=checkpoint41",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto41 mancante "+r.status);return r.json()}),
     fetch("./LOTTO42_39_QUARTETTI_BEETHOVEN_MOZART_2026-11-10.json?v=checkpoint42",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto42 quartetti mancante "+r.status);return r.json()}),
-    fetch("./LOTTO43_25_QUARTETTI_ORGANICI_VARI_2026-11-11.json?v=checkpoint43",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto43 quartetti cameristici mancante "+r.status);return r.json()})
+    fetch("./LOTTO43_25_QUARTETTI_ORGANICI_VARI_2026-11-11.json?v=checkpoint43",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto43 quartetti cameristici mancante "+r.status);return r.json()}),
+    fetch("./LOTTO44_12_QUARTETTI_JCF_BACH_2026-11-11.json?v=checkpoint44",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto44 quartetti JCF Bach mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -1902,6 +2076,7 @@ async function init(){
  prepareConcerto40(concerto40Input);
  prepareQuartet42(lot42Input);
  prepareQuartet43(lot43Input);
+ prepareQuartet44(lot44Input);
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
