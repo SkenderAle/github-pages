@@ -2984,7 +2984,118 @@ function getRootedPreview39(maxDepth,relevance,depthByCategory){
 }
 
 // Add the checkpoint40 layer without changing checkpoint39 rooted logic.
-function getRootedPreview(maxDepth,relevance,depthByCategory){
+
+/* Checkpoint 52A — Vivaldi, Le quattro stagioni: source-based work identities.
+   Existing Atlantis E0715 remains the authoritative Vivaldi→collection edge.
+   The four op.8 individual concertos are NOT merged into the collection. */
+const SEASONS52_COLLECTION="opera:quattro-stagioni",SEASONS52_AUTHOR="pers:vivaldi";
+const SEASONS52_GENRE="atlas:gf:concerto-per-violino";
+const SEASONS52_PARENT="audit:gf25:concerto-solistico";
+const SEASONS52_MACRO="legacy:gf:genere-concerto";
+const SEASONS52_WORKS=[
+ ["269","La primavera","mi maggiore",1],
+ ["315","L'estate","sol minore",2],
+ ["293","L'autunno","fa maggiore",3],
+ ["297","L'inverno","fa minore",4]
+];
+let seasons52={ids:new Set(),edges:[]};
+function prepareSeasons52(){
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const edges=new Set(dataset.links.map(e=>e.id));
+ for(const id of [SEASONS52_AUTHOR,SEASONS52_COLLECTION,SEASONS52_GENRE,SEASONS52_PARENT,SEASONS52_MACRO])
+  if(!nodes.has(id))throw Error("Checkpoint52A: missing canonical "+id);
+ if(!dataset.links.some(e=>e.id==="E0715"&&e.source===SEASONS52_AUTHOR&&e.target===SEASONS52_COLLECTION))
+  throw Error("Checkpoint52A: Atlantis historical authorship E0715 missing");
+ for(const [rv,title,key,opus] of SEASONS52_WORKS){
+  const id="atlas:vivaldi-rv"+rv+"-op8-"+opus;
+  if(nodes.has(id))throw Error("Checkpoint52A: duplicate work "+id);
+  const url="https://www.flaminioonline.it/Guide/Vivaldi/Vivaldi-Concerto"+rv+".html";
+  const node={id,name:title+" · Concerto per violino, RV "+rv,
+    category:"opera",subtype:"concerto per violino, archi e continuo",
+    composer_id:SEASONS52_AUTHOR,rv:"RV "+rv,opus:"op. 8 n. "+opus,
+    tonalita:key,collection_id:SEASONS52_COLLECTION,
+    flaminio_explanation_url:url,source_collection:"Orchestra Virtuale del Flaminio",
+    description:"Concerto autonomo dell'op. 8 n. "+opus+" di Vivaldi; parte delle Quattro stagioni. Organico: violino solista, archi e basso continuo."};
+  dataset.nodes.push(node);nodes.set(id,node);seasons52.ids.add(id);
+  for(const [suffix,source,target,relation] of [
+   ["author",SEASONS52_AUTHOR,id,"ha_composto"],
+   ["collection",SEASONS52_COLLECTION,id,"contiene_opera"],
+   ["genre",id,SEASONS52_GENRE,"ha_genere"]]){
+   const e={id:"atlas:seasons52:"+rv+":"+suffix,source,target,relation,
+    statement_type:"specific_work_documented",root_permission:"specific_work_nontransitive",
+    sources:[url,"https://www.flaminioonline.it/Biografie/Vivaldi-catalogo-opus.html"],
+    description:"Vivaldi, Op. 8 n. "+opus+" / RV "+rv+"; lavoro individuale e suo genere, non arco fra compositori."};
+   if(edges.has(e.id))throw Error("Checkpoint52A duplicate edge "+e.id);
+   dataset.links.push(e);seasons52.edges.push(e);edges.add(e.id);
+  }
+ }
+ // This is a named corpus, not a fifth concerto. Existing E0715 stays intact.
+ if(seasons52.ids.size!==4||seasons52.edges.length!==12)throw Error("Checkpoint52A count");
+}
+function attachSeasons52(result,maxDepth,limits){
+ if(!seasons52.ids.size)return result;
+ const focus=new Set([SEASONS52_COLLECTION,SEASONS52_AUTHOR,SEASONS52_GENRE,SEASONS52_PARENT,SEASONS52_MACRO,...seasons52.ids]);
+ const present=new Map(result.nodes.map(n=>[n.id,n]));
+ const universe=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const linkIds=new Set(result.links.map(e=>e.id));
+ if(!focus.has(currentRoot)&&![...present.keys()].some(id=>seasons52.ids.has(id)||id===SEASONS52_COLLECTION))
+  return result;
+ function add(id,depth,from,reason){
+  if(present.has(id))return present.get(id);
+  const n=universe.get(id);
+  if(!n||depth>maxDepth||depth>(limits[n.category]??maxDepth))return null;
+  const p=present.get(from),v={...n,_depth:depth,
+   _path:[...(p?._path||[currentRoot]),id],_permission:reason};
+  present.set(id,v);result.nodes.push(v);return v;
+ }
+ const root=present.get(currentRoot);
+ if(!root){const n=universe.get(currentRoot);if(n){const v={...n,_depth:0,_path:[currentRoot]};result.nodes.push(v);present.set(currentRoot,v)}}
+ if(currentRoot===SEASONS52_AUTHOR||currentRoot===SEASONS52_COLLECTION){
+  add(SEASONS52_COLLECTION,1,currentRoot,"source_collection");
+  add(SEASONS52_AUTHOR,1,currentRoot,"source_author");
+  for(const id of seasons52.ids)add(id,1,currentRoot,"specific_work_member");
+ }else if(seasons52.ids.has(currentRoot)){
+  add(SEASONS52_AUTHOR,1,currentRoot,"specific_author");
+  add(SEASONS52_COLLECTION,1,currentRoot,"collection_context");
+  add(SEASONS52_GENRE,1,currentRoot,"specific_genre");
+  add(SEASONS52_PARENT,2,SEASONS52_GENRE,"taxonomy_parent");
+  add(SEASONS52_MACRO,3,SEASONS52_PARENT,"taxonomy_parent");
+ }else if([SEASONS52_GENRE,SEASONS52_PARENT,SEASONS52_MACRO].includes(currentRoot)){
+  if(currentRoot===SEASONS52_MACRO){
+   add(SEASONS52_PARENT,1,currentRoot,"taxonomy_child");
+   add(SEASONS52_GENRE,2,SEASONS52_PARENT,"taxonomy_child");
+  }else if(currentRoot===SEASONS52_PARENT)
+   add(SEASONS52_GENRE,1,currentRoot,"taxonomy_child");
+  for(const id of seasons52.ids)
+   add(id,currentRoot===SEASONS52_GENRE?1:currentRoot===SEASONS52_PARENT?2:3,
+       currentRoot===SEASONS52_GENRE?currentRoot:SEASONS52_GENRE,"specific_concerto");
+ }else if(present.has(SEASONS52_COLLECTION)){
+  const d=present.get(SEASONS52_COLLECTION)._depth;
+  for(const id of seasons52.ids)add(id,d+1,SEASONS52_COLLECTION,"collection_member");
+ }
+ // If an individual work is visible, keep its verified author and collection
+ // in the view when category/depth permits, rather than disconnecting it.
+ for(const id of seasons52.ids){
+  const work=present.get(id);
+  if(!work)continue;
+  const d=work._depth+1;
+  if(currentRoot!==SEASONS52_GENRE&&currentRoot!==SEASONS52_PARENT&&currentRoot!==SEASONS52_MACRO){
+   add(SEASONS52_AUTHOR,d,id,"author_of_work");
+   add(SEASONS52_COLLECTION,d,id,"collection_of_work");
+   add(SEASONS52_GENRE,d,id,"genre_of_work");
+  }
+ }
+ const allowed=[...seasons52.edges,
+  ...dataset.links.filter(e=>e.id==="E0715"||
+   (e.source===SEASONS52_GENRE&&e.target===SEASONS52_PARENT&&e.relation==="sottogenere_di")||
+   (e.source===SEASONS52_PARENT&&e.target===SEASONS52_MACRO&&e.relation==="sottogenere_di"))];
+ for(const e of allowed)if(present.has(e.source)&&present.has(e.target)&&!linkIds.has(e.id)){
+  result.links.push({...e});linkIds.add(e.id);
+ }
+ return result;
+}
+
+function getRootedPreviewCore(maxDepth,relevance,depthByCategory){
  if(cantata45.addedGenres.has(currentRoot)||cantata45.works.has(currentRoot)||
     cantata47.versions.has(currentRoot)){
   const root=dataset.nodes.find(n=>n.id===currentRoot);
@@ -3015,6 +3126,10 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
   return attachConcerto40({root:currentRoot,nodes:[{...root,_depth:0,_path:[currentRoot]}],links:[]},maxDepth,depthByCategory);
  }
  return attachCantata47(attachCantata45(attachSingspiel45(attachQuartet44(attachQuartet43(attachQuartet42(attachConcerto40(attachLot41Collections(getRootedPreview39(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory),maxDepth,depthByCategory);
+}
+
+function getRootedPreview(maxDepth,relevance,depthByCategory){
+ return attachSeasons52(getRootedPreviewCore(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
 }
 
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
@@ -3255,6 +3370,7 @@ async function init(){
  prepareCantata49(lot49Input);
  prepareCantata50(lot50Input);
  prepareCantata51(lot51Input);
+ prepareSeasons52();
  // Manifest-derived cardinalities, displayed separately from original production counts.
  $("cantataLimitNote").textContent=
  "Opere vocali nello staging lotti 45–51: "+cantata45.works.size+
