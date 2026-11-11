@@ -3616,8 +3616,46 @@ window.AtlantisCheckpoint52D={
       (nodeById?.get(e.target)==="persona");
    }).map(e=>e.id)
   };
+  // Checkpoint 52H: verified cross-family corpus invariants.
+  // These are catalogued facts, not genre-mediated links between composers.
+  const catalogueInvariants=[];
+  const check=(name,pass,evidence)=>catalogueInvariants.push({name,status:pass?"PASS":"FAIL",evidence});
+  const nodeIndex=new Map(dataset.nodes.map(n=>[n.id,n]));
+  const linksBetween=(source,target)=>dataset.links.filter(e=>e.source===source&&e.target===target);
+  const jcfFlute="atlas:gf:quartetto-flauto-violino-viola-continuo";
+  const jcfWorks=[...quartet44.works.values()].filter(w=>w.subgenre_id===jcfFlute);
+  check("JCF Bach B37–42: six continuo quartets",
+   jcfWorks.length===6&&jcfWorks.every(w=>w.composer_id===Q44_PERSON)&&
+   nodeIndex.get(jcfFlute)?.name?.toLowerCase().includes("continuo")===true,
+   {member_count:jcfWorks.length,subgenre:jcfFlute});
+  const heldQuartetId="fl43:mozart:quartetto-k-285b";
+  check("Mozart K285b disputed: no automatic authored-work node",
+   !nodeIndex.has(heldQuartetId)&&
+   !dataset.links.some(e=>e.source==="pers:mozart"&&e.target===heldQuartetId),
+   {held_candidate_id:heldQuartetId});
+  const bwv189="fl51:jsbach:bwv189",bwv200="fl51:jsbach:bwv200";
+  check("BWV189 remains attribution HOLD",
+   cantata51.holds.has(bwv189)&&!nodeIndex.has(bwv189)&&
+   linksBetween(C45_AUTHOR,bwv189).length===0,
+   {held_id:bwv189});
+  check("BWV200 is surviving fragment, not complete cantata",
+   nodeIndex.get(bwv200)?.work_completeness==="one_surviving_aria_fragment"&&
+   /frammento/i.test(nodeIndex.get(bwv200)?.subtype||""),
+   {id:bwv200,completeness:nodeIndex.get(bwv200)?.work_completeness});
+  const br3="audit:flaminio:bach:bwv1048",bwv174="fl51:jsbach:bwv174";
+  const crossReuse=linksBetween(br3,bwv174).filter(e=>e.id==="fl51:reuse:11");
+  check("BWV1048→BWV174: original movement reuse survives",
+   crossReuse.length===1&&
+   crossReuse[0].root_permission==="specific_work_nontransitive",
+   {source:br3,target:bwv174,arcs:crossReuse.map(e=>e.id)});
+  const quartetFamily="atlas:gf:quartetto",quartetStrings="legacy:gf:genere-quartetto-archi";
+  check("Quartetto→Quartetto per archi hierarchy exists",
+   nodeIndex.has(quartetFamily)&&nodeIndex.has(quartetStrings)&&
+   dataset.links.some(e=>e.source===quartetStrings&&e.target===quartetFamily&&e.relation==="sottogenere_di"),
+   {parent:quartetFamily,child:quartetStrings});
   const fail=globalDupNodes.length+globalDupEdges.length+orphans.length+
-   cases.filter(x=>x.status==="FAIL").length+filterTests.filter(x=>x.status==="FAIL").length;
+   cases.filter(x=>x.status==="FAIL").length+filterTests.filter(x=>x.status==="FAIL").length+
+   catalogueInvariants.filter(x=>x.status==="FAIL").length;
   return {schema:"musurgia-atlantis-checkpoint52d-runtime-audit-v1",
    status:fail?"FAIL":"PASS_STATIC_DATA",
    qualification:"Browser rendered viewport and mobile WebGL are NOT independently visually certified",
@@ -3626,7 +3664,8 @@ window.AtlantisCheckpoint52D={
    pipeline_executed:true,dataset:{nodes:dataset.nodes.length,edges:dataset.links.length,
     categories:categoryCounts,seasonalWorks:seasons52.ids.size,seasonalEdges:seasons52.edges.length},
    global_violations:allViolations,optional_root_resolution:resolved,
-   root_tests:cases,category_depth_zero_tests:filterTests,webgl_renderer_constructed:!!engine,
+   root_tests:cases,category_depth_zero_tests:filterTests,
+   catalogue_invariants_52h:catalogueInvariants,webgl_renderer_constructed:!!engine,
    visual_browser_verification:"NOT_CERTIFIED",
    production_modified:false};
  }
