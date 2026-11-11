@@ -3211,7 +3211,14 @@ function completeVisibleEvidence52E(result){
  return result;
 }
 function getRootedPreview(maxDepth,relevance,depthByCategory){
- const selected=attachSeasons52(getRootedPreviewCore(maxDepth,relevance,depthByCategory),maxDepth,depthByCategory);
+ // Checkpoint 52I: the four individual Vivaldi RV works live only in staging.
+ // Do not ask the immutable base explorer to resolve a non-base root.
+ const seasonal=seasons52.ids.has(currentRoot);
+ const base=seasonal?
+  {root:currentRoot,nodes:[{...dataset.nodes.find(n=>n.id===currentRoot),_depth:0,
+   _path:[currentRoot],_permission:"selected_individual_vivaldi_concerto"}],links:[]}:
+  getRootedPreviewCore(maxDepth,relevance,depthByCategory);
+ const selected=attachSeasons52(base,maxDepth,depthByCategory);
  return completeVisibleEvidence52E(selected);
 }
 
@@ -3532,8 +3539,8 @@ window.AtlantisCheckpoint52D={
   const optionalMatches=[
    ["Don Giovanni",n=>n.category==="opera"&&/don giovanni/i.test(n.name||"")],
    ["Il flauto magico",n=>n.category==="opera"&&/flauto magico|zauberflöte/i.test(n.name||"")],
-   ["BWV174",n=>n.category==="opera"&&/bwv\\s*174(?!\\d)/i.test(n.name||"")],
-   ["BWV200",n=>n.category==="opera"&&/bwv\\s*200(?!\\d)/i.test(n.name||"")]
+   ["BWV174",n=>n.category==="opera"&&/bwv[\s:_-]*174(?!\d)/i.test((n.name||"")+" "+n.id)],
+   ["BWV200",n=>n.category==="opera"&&/bwv[\s:_-]*200(?!\d)/i.test((n.name||"")+" "+n.id)]
   ];
   const resolved=optionalMatches.map(([label,fn])=>({label,id:dataset.nodes.find(fn)?.id||null}));
   for(const x of resolved)if(x.id&&!roots.includes(x.id))roots.push(x.id);
