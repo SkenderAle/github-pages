@@ -66,7 +66,7 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 </style>
 </head><body>
 <header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
-<p>Anteprima di audit · Checkpoint 50: Bach BWV 1–170, controlli attributivi e paginazione · Non in produzione</p></header>
+<p>Anteprima di audit · Checkpoint 50C: Concerto ricongiunto a sottogeneri, autori e opere · Non in produzione</p></header>
 <main>
 <aside>
 <label for="search">Cerca un nodo storico-musicale</label>
@@ -1257,7 +1257,7 @@ function attachConcerto40(result,maxDepth,limits){
    if(!seen.has(group.id))continue;
    const p=seen.get(group.id);
    for(const author of group.authors)
-    add(author,Math.min(maxDepth,p._depth+2),group.id,"author_with_specific_concerto");
+    add(author,p._depth+2,group.id,"author_with_specific_concerto");
   }
  }else if(group){
   const parent=add(group.parent_id,1,currentRoot,"parent_genre_terminal");
