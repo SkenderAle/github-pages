@@ -1990,6 +1990,7 @@ function attachCantata45(result,maxDepth,limits){
    for(const id of cantata45.byGenre.get(group)||[])if(seen.has(group))
     add(id,3,group,"individual_BWV_from_composer");
   }
+  if(seen.has(C45_SACRED))add(C46_CHORALE,3,C45_SACRED,"four_specific_chorale_cantatas");
   if(seen.has(C45_ORATORIO))
    for(const id of cantata45.byGenre.get(C45_ORATORIO)||[])
     add(id,2,C45_ORATORIO,"individual_BWV_oratorio");
@@ -2002,8 +2003,10 @@ function attachCantata45(result,maxDepth,limits){
   for(const id of cantata45.byGenre.get(C45_ORATORIO)||[])
    add(id,1,root,"ascension_oratorio_work");
  }else if(isGroup){
-  add(C45_MACRO,1,root,"parent_genre_terminal");
+  if(root===C46_CHORALE)add(C45_SACRED,1,root,"parent_sacred_chorale_taxonomy");
+  else add(C45_MACRO,1,root,"parent_genre_terminal");
   add(C45_AUTHOR,1,root,"author_supported_by_group_works");
+  if(root===C45_SACRED)add(C46_CHORALE,1,root,"explicit_chorale_subgenre");
   for(const id of cantata45.byGenre.get(root)||[])
    add(id,1,root,"individual_works_only");
  }else if(work){
@@ -2011,8 +2014,129 @@ function attachCantata45(result,maxDepth,limits){
   add(work.genre_id,1,root,"specific_work_genre");
   if(work.genre_id!==C45_ORATORIO&&seen.has(work.genre_id))
    add(C45_MACRO,2,work.genre_id,"macro_taxonomy_terminal");
+  for(const g of cantata46.secondary.get(root)||[])add(g,1,root,"additional_chorale_classification");
+  for(const e of cantata46.parodies){
+   if(e.source===root)add(e.target,1,root,"documented_work_reuse");
+   else if(e.target===root)add(e.source,1,root,"documented_work_source");
+  }
  }
  connect();return result;
+}
+
+
+// Lotto46: 35 voci BWV21–50 + 30a/34a/36a,b,c; tratte dal catalogo
+// originale Flaminio. Il frammento BWV50 non è una cantata completa.
+const C46_CHORALE="atlas:gf:cantata-corale";
+let cantata46={works:new Map(),parodies:[],secondary:new Map(),newEdges:[],addedIds:new Set()};
+function prepareCantata46(batch){
+ if(batch?.schema!=="musurgia-atlantis-lotto46-bach-cantatas-v1"||
+    batch.entries?.length!==35||batch.derivations?.length!==5||
+    batch.counts?.work_records!==34||batch.counts?.work_fragments!==1||
+    batch.counts?.sacred_compositions!==30||batch.counts?.secular_compositions!==4||
+    batch.counts?.chorale_multiple_classifications!==4)
+  throw Error("Lotto46: manifest incompleto");
+ if(cantata45.works.size!==23||cantata45.addedGenres.size!==2)
+  throw Error("Lotto46: manca o è incoerente il Lotto45");
+ const nodes=new Map(dataset.nodes.map(n=>[n.id,n]));
+ const edgeIds=new Set(dataset.links.map(e=>e.id));
+ if(!nodes.has(C45_AUTHOR)||!nodes.has(C45_SACRED)||!nodes.has(C45_SECULAR)||
+    nodes.has(C46_CHORALE))
+  throw Error("Lotto46: radici o sottogenere già esistente");
+ function newNode(n){
+  if(nodes.has(n.id))throw Error("Lotto46 nodo duplicato "+n.id);
+  dataset.nodes.push(n);nodes.set(n.id,n);cantata46.addedIds.add(n.id);
+ }
+ function newEdge(e){
+  if(edgeIds.has(e.id)||!nodes.has(e.source)||!nodes.has(e.target))
+   throw Error("Lotto46 arco duplicato/orfano "+e.id);
+  dataset.links.push(e);edgeIds.add(e.id);cantata46.newEdges.push(e);cantata45.edges.push(e);
+ }
+ newNode({id:C46_CHORALE,name:"Cantata corale",category:"genere-forma",
+  subtype:"sottogenere trasversale",evidence_status:"independently_supported_work_specific",
+  description:"Cantata su un corale luterano, tipologia specifica e non sinonimo di qualunque cantata che contenga un corale."});
+ cantata45.addedGenres.add(C46_CHORALE);
+ newEdge({id:"fl46:taxonomy:chorale",source:C46_CHORALE,target:C45_SACRED,
+  relation:"sottogenere_di",statement_type:"documented_chorale_taxonomy",
+  root_permission:"taxonomy_nontransitive",
+  sources:batch.chorale_catalogue_group.references,
+  description:"Cantata corale è un caso specifico di Cantata sacra, non una raccolta di movimenti."});
+ const codes=new Set();
+ for(const w of batch.entries){
+  if(!/^fl46:jsbach:bwv(2[1-9]|[34][0-9]|50|30a|34a|36[abc])$/.test(w.id)||
+     w.composer_id!==C45_AUTHOR||
+     w.bwv!=="BWV "+w.bwv_code||
+     codes.has(w.bwv_code)||nodes.has(w.id)||
+     w.source_excel_row!==null||
+     w.source_url!==batch.source.catalogue_url||
+     w.independent_catalogue_url?.startsWith("https://")!==true||
+     !Array.isArray(w.genre_ids)||w.genre_ids.length<1)
+   throw Error("Lotto46: validazione BWV o provenienza "+w.id);
+  codes.add(w.bwv_code);
+  const primary=w.work_kind==="profana"?C45_SECULAR:C45_SACRED;
+  if(w.genre_ids[0]!==primary||w.genre_ids.some(g=>![C45_SACRED,C45_SECULAR,C46_CHORALE].includes(g))||
+     (w.genre_ids.includes(C46_CHORALE)!==[26,33,38,41].includes(Number(w.bwv_code))))
+   throw Error("Lotto46: classificazione tassonomica "+w.bwv);
+  if(w.bwv_code==="50"&&w.completeness!=="single_surviving_chorus_from_lost_cantata")
+   throw Error("Lotto46: BWV50 non marcato come frammento");
+  newNode({id:w.id,name:w.name,category:"opera",
+   subtype:w.work_kind==="fragment"?"frammento di cantata":
+    w.work_kind==="profana"?"cantata profana":"cantata sacra",
+   catalogue_id:w.bwv,source_title_original:w.incipit,url:w.source_url,
+   flaminio_explanation_url:w.flaminio_explanation_url,
+   source_excel_row:null,work_completeness:w.completeness,
+   evidence_status:w.classification_status,
+   description:w.editor_notes||"Scheda catalografica per opera BWV. Movimenti e versioni non generano nuove opere."});
+  // Register with the existing rooted cantata engine, without re-importing Lotto45.
+  cantata46.works.set(w.id,w);
+  cantata45.works.set(w.id,{...w,genre_id:primary});
+  if(!cantata45.byGenre.has(primary))cantata45.byGenre.set(primary,new Set());
+  cantata45.byGenre.get(primary).add(w.id);
+  const evidence=[w.source_url,w.independent_catalogue_url,
+    ...(w.flaminio_explanation_url?[w.flaminio_explanation_url]:[])];
+  newEdge({id:"fl46:author:"+w.bwv_code,source:C45_AUTHOR,target:w.id,
+   relation:"ha_composto",statement_type:"catalogue_work_attribution",
+   root_permission:"single_work_only",sources:evidence,
+   description:"Opera "+w.bwv+" attribuita a J. S. Bach nel catalogo; "+(w.work_kind==="fragment"?"sopravvive solo un frammento.":"è una specifica identità d'opera.")});
+  for(const g of w.genre_ids){
+   if(!nodes.has(g))throw Error("Lotto46: genere inesistente "+g);
+   if(g===C46_CHORALE){
+    if(!cantata46.secondary.has(w.id))cantata46.secondary.set(w.id,[]);
+    cantata46.secondary.get(w.id).push(g);
+    if(!cantata45.byGenre.has(g))cantata45.byGenre.set(g,new Set());
+    cantata45.byGenre.get(g).add(w.id);
+   }
+   newEdge({id:"fl46:genre:"+w.bwv_code+":"+g.split(":").at(-1),
+    source:w.id,target:g,relation:"ha_sottogenere",
+    statement_type:"work_specific_cantata_classification",
+    root_permission:"catalogue_nontransitive",sources:evidence,
+    description:w.bwv+" → "+nodes.get(g).name+
+     (g===C46_CHORALE?" (classificazione ulteriore, non esclusiva).":".")});
+  }
+ }
+ if(codes.size!==35||cantata46.works.size!==35||
+    cantata45.byGenre.get(C46_CHORALE)?.size!==4||
+    cantata45.byGenre.get(C45_SACRED)?.size!==49||
+    cantata45.byGenre.get(C45_SECULAR)?.size!==8||
+    cantata45.byGenre.get(C45_ORATORIO)?.size!==1)
+   throw Error("Lotto46: totali non corrispondono al registro");
+ newEdge({id:"fl46:index:bach-chorale",source:C45_AUTHOR,target:C46_CHORALE,
+  relation:"ha_composto_opere_del_sottogenere",
+  statement_type:"four_work_specific_index",
+  root_permission:"nontransitive_composer_index",
+  supporting_work_ids:[...cantata45.byGenre.get(C46_CHORALE)],
+  description:"Indice specifico di 4 cantate corali Bach, non relazione fra autori."});
+ for(const d of batch.derivations){
+  if(d.non_transitive!==true||!cantata46.works.has(d.source_work_id)||
+     !cantata46.works.has(d.target_work_id))
+   throw Error("Lotto46: falso legame di derivazione "+d.id);
+  const edge={id:d.id,source:d.source_work_id,target:d.target_work_id,
+   relation:d.relation,statement_type:"documented_work_to_work_reuse",
+   root_permission:"work_specific_nontransitive",sources:[d.evidence_url],
+   description:"Relazione di riuso/rielaborazione fra due distinte opere BWV, NON identità di opera e NON collegamento fra compositori."};
+  newEdge(edge);cantata46.parodies.push(edge);
+ }
+ if(cantata46.addedIds.size!==36||cantata46.parodies.length!==5)
+  throw Error("Lotto46: validazione finale nodi/riusi");
 }
 
 function getRootedPreview39(maxDepth,relevance,depthByCategory){
@@ -2290,9 +2414,9 @@ async function init(){
  if(!rootLib?.createRootedExplorer||!window.AtlantisAuditCompatGraph)throw Error("Motore di prova o renderer 3D non caricati");
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
- let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input,lot43Input,lot44Input,lot45Input;
+ let g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input,lot43Input,lot44Input,lot45Input,lot46Input;
  try{
-  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input,lot43Input,lot44Input,lot45Input]=await Promise.all([
+  [g,reg,legacyOverlay,flaminioWorks,federatedRelations,mozartTaxonomyInput,concertoFamilyInput,brandenburgInput,lot35Input,sym36Input,catalog37Input,beethoven38Input,concerto40Input,lot41Input,lot42Input,lot43Input,lot44Input,lot45Input,lot46Input]=await Promise.all([
    fetch("../grafo.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Grafo mancante "+r.status);return r.json()}),
    fetch("./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Registro mancante "+r.status);return r.json()}),
    fetch("./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json?v=checkpoint11",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Archivio Generi e forme mancante "+r.status);return r.json()}),
@@ -2310,7 +2434,8 @@ async function init(){
     fetch("./LOTTO42_39_QUARTETTI_BEETHOVEN_MOZART_2026-11-10.json?v=checkpoint42",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto42 quartetti mancante "+r.status);return r.json()}),
     fetch("./LOTTO43_25_QUARTETTI_ORGANICI_VARI_2026-11-11.json?v=checkpoint43",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto43 quartetti cameristici mancante "+r.status);return r.json()}),
     fetch("./LOTTO44_12_QUARTETTI_JCF_BACH_2026-11-11.json?v=checkpoint44",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto44 quartetti JCF Bach mancante "+r.status);return r.json()}),
-    fetch("./LOTTO45_25_SCHEDE_CANTATE_BACH_2026-11-11.json?v=checkpoint45",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto45 cantate Bach mancante "+r.status);return r.json()})
+    fetch("./LOTTO45_25_SCHEDE_CANTATE_BACH_2026-11-11.json?v=checkpoint45",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto45 cantate Bach mancante "+r.status);return r.json()}),
+    fetch("./LOTTO46_35_SCHEDE_BACH_BWV21_50_2026-11-11.json?v=checkpoint46",{cache:"no-store",signal:controller.signal}).then(r=>{if(!r.ok)throw Error("Lotto46 cantate Bach mancante "+r.status);return r.json()})
   ]);
  }finally{clearTimeout(timeout)}
  prepareLegacyOverlay(legacyOverlay);
@@ -2341,6 +2466,7 @@ async function init(){
  prepareQuartet43(lot43Input);
  prepareQuartet44(lot44Input);
  prepareCantata45(lot45Input);
+ prepareCantata46(lot46Input);
  renderer=rootLib.createRootedExplorer(g,reg);
  $("sourceState").textContent="Anteprima: Atlantis pubblico ("+g.nodes.length+" nodi / "+g.links.length+" archi) + Generi e forme Musurgia Mundi in archivio separato ("+legacyOverlay.nodes.length+" nodi / "+legacyOverlay.links.length+" collegamenti catalogati, "+legacyOverlay.counts.atlas_composers_with_genre_links+" compositori già abbinati per nome). La famiglia Concerto espone "+concertoFamily.nodes.length+" nuovi termini e "+concertoFamily.links.length+" relazioni nello staging. I sei Concerti brandeburghesi BWV 1046–1051 sono opere individuali con 18 relazioni documentarie, la raccolta resta distinta e si collega a Concerto. L'overlay di opere Flaminio aggiunge "+flaminioPreview.nodes.length+" nodi di audit e "+flaminioPreview.links.length+" relazioni provvisorie, con generi non attraversabili come ponti fra autori. Il catalogo legacy resta distinto dalla produzione.";
  buildCategoryPicker();
