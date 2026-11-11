@@ -3189,21 +3189,39 @@ function getRootedPreviewCore(maxDepth,relevance,depthByCategory){
 // performs no graph traversal and never infers composer-to-composer edges.
 // Category/depth controls still select nodes. Later visual edge filters must
 // operate explicitly on this complete eligible edge set, never erase data.
+// Checkpoint 52J: the same evidence gate governs drawing and omission diagnostics.
+// A suspended/duplicate record remains in the dataset, but is not a drawable
+// certified historical fact. Deliberately do not suppress mere unknown gates.
+function excludedEvidenceReason52J(edge){
+ if(["sospeso","non_riscontrato","frottola_non_attestata_in_melodramma",
+     "retorica_barocca_non_trattata"].includes(edge.quality_gate))
+  return "quality_gate:"+edge.quality_gate;
+ if(/^(sospes|hold|non_riscontrato)/i.test(edge.verification_status||""))
+  return "verification_status:"+edge.verification_status;
+ if(/ponte_editoriale_non_documentato/.test(edge.relation||""))
+  return "unverified_editorial_bridge";
+ if(/^(hold|rejected|suspended)/i.test(edge.status||""))
+  return "status:"+edge.status;
+ return null;
+}
+function duplicateEvidenceWitness52J(edge,drawn){
+ if(!edge.duplicate_of)return null;
+ const canonical=dataset.links.find(e=>e.id===edge.duplicate_of);
+ return {duplicate_id:edge.id,canonical_id:edge.duplicate_of,
+  canonical_exists:!!canonical,
+  same_endpoints:!!canonical&&canonical.source===edge.source&&canonical.target===edge.target,
+  canonical_confirmed:!!canonical&&canonical.historical_verified_independently===true,
+  canonical_drawn:!!canonical&&drawn.has(canonical.id)};
+}
 function completeVisibleEvidence52E(result){
  const visible=new Set(result.nodes.map(n=>n.id));
  const present=new Set(result.links.map(e=>e.id));
  const added=[],held=[];
- const inHold=edge=>
-  ["sospeso","non_riscontrato","frottola_non_attestata_in_melodramma",
-   "retorica_barocca_non_trattata"].includes(edge.quality_gate)||
-  /^(sospes|hold|non_riscontrato)/i.test(edge.verification_status||"")||
-  /ponte_editoriale_non_documentato/.test(edge.relation||"")||
-  /^(hold|rejected|suspended)/i.test(edge.status||"");
  for(const edge of dataset.links){
   if(!edge?.id||!visible.has(edge.source)||!visible.has(edge.target)||present.has(edge.id))continue;
   // HOLD/rejected facts stay in the source database and audit queue but must
   // not silently gain the authority of a visible, certified historical edge.
-  if(inHold(edge)){held.push(edge.id);continue}
+  if(excludedEvidenceReason52J(edge)){held.push(edge.id);continue}
   result.links.push({...edge});present.add(edge.id);added.push(edge.id);
  }
  result.evidenceCompletion52E={added_count:added.length,added_ids:added,
@@ -3519,7 +3537,8 @@ async function init(){
 window.AtlantisCheckpoint52D={
  status:()=>({ready:!!dataset?.nodes?.length&&!!renderer&&!!engine,
   nodeCount:dataset?.nodes?.length||0,edgeCount:dataset?.links?.length||0,
-  webglRendererAvailable:!!engine,initError:window.atlantis52dInitError||null}),
+  renderer_technology:"canvas_2d_3d_projection",canvas2dRendererAvailable:!!engine,
+  webglRendererAvailable:false,initError:window.atlantis52dInitError||null}),
  run:()=>{
   if(!dataset?.nodes?.length||!renderer||!engine)
    throw Error("Federated preview not initialized: 24-file pipeline unavailable");
@@ -3576,8 +3595,26 @@ window.AtlantisCheckpoint52D={
      // them rather than silently declaring all to be bugs.
      const drawn=new Set(graph.links.map(e=>e.id));
      const candidates=dataset.links.filter(e=>nodeSet.has(e.source)&&nodeSet.has(e.target)&&!drawn.has(e.id));
-     row.undrawn_edges_between_visible_nodes={count:candidates.length,
-      examples:candidates.slice(0,40).map(e=>({id:e.id,source:e.source,target:e.target,relation:e.relation}))};
+     const withheld=candidates.filter(e=>excludedEvidenceReason52J(e));
+     const unaccounted=candidates.filter(e=>!excludedEvidenceReason52J(e));
+     const witnesses=withheld.map(e=>duplicateEvidenceWitness52J(e,drawn)).filter(Boolean);
+     const brokenWitnesses=witnesses.filter(w=>!w.canonical_exists||!w.same_endpoints||
+       !w.canonical_confirmed||!w.canonical_drawn);
+     row.undrawn_edges_between_visible_nodes={
+      count:candidates.length,withheld_uncertified_count:withheld.length,
+      documented_duplicate_count:witnesses.length,
+      unaccounted_count:unaccounted.length,broken_duplicate_witnesses:brokenWitnesses,
+      withheld_examples:withheld.slice(0,20).map(e=>({id:e.id,reason:excludedEvidenceReason52J(e),
+       duplicate_of:e.duplicate_of||null})),
+      unaccounted_examples:unaccounted.slice(0,40).map(e=>({id:e.id,source:e.source,
+       target:e.target,relation:e.relation}))};
+     if(unaccounted.length){row.status="FAIL";row.notes.push("Drawable edges omitted: "+unaccounted.length)}
+     if(brokenWitnesses.length){row.status="FAIL";row.notes.push("Unresolved canonical duplicate witnesses")}
+     if(["pers:mozart","opera:Don-giovanni"].includes(root)){
+      if(!drawn.has("E0873")||drawn.has("L02-A07")){
+       row.status="FAIL";row.notes.push("Da Ponte to Don Giovanni canonical/suspended edge mismatch");
+      }
+     }
      row.detectedEdges.seasons=graph.links.filter(e=>e.id?.startsWith("atlas:seasons52:")).length;
      row.detectedEdges.originalVivaldi=graph.links.some(e=>e.id==="E0715");
      row.detectedEdges.taxonomy=graph.links.filter(e=>
@@ -3672,7 +3709,9 @@ window.AtlantisCheckpoint52D={
     categories:categoryCounts,seasonalWorks:seasons52.ids.size,seasonalEdges:seasons52.edges.length},
    global_violations:allViolations,optional_root_resolution:resolved,
    root_tests:cases,category_depth_zero_tests:filterTests,
-   catalogue_invariants_52h:catalogueInvariants,webgl_renderer_constructed:!!engine,
+   catalogue_invariants_52h:catalogueInvariants,
+   renderer_technology:"canvas_2d_3d_projection",canvas2d_renderer_constructed:!!engine,
+   webgl_renderer_constructed:false,
    visual_browser_verification:"NOT_CERTIFIED",
    production_modified:false};
  }
