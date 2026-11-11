@@ -3491,6 +3491,13 @@ window.AtlantisCheckpoint52D={
      row.duplicateNodes=duplicated(graph.nodes.map(n=>n.id));
      row.duplicateEdges=duplicated(graph.links.map(e=>e.id));
      row.orphans=graph.links.filter(e=>!nodeSet.has(e.source)||!nodeSet.has(e.target)).map(e=>e.id);
+     // Report all factual edges whose endpoints are shown but whose edge was
+     // omitted by rooted presentation. Some omissions are deliberate; review
+     // them rather than silently declaring all to be bugs.
+     const drawn=new Set(graph.links.map(e=>e.id));
+     const candidates=dataset.links.filter(e=>nodeSet.has(e.source)&&nodeSet.has(e.target)&&!drawn.has(e.id));
+     row.undrawn_edges_between_visible_nodes={count:candidates.length,
+      examples:candidates.slice(0,40).map(e=>({id:e.id,source:e.source,target:e.target,relation:e.relation}))};
      row.detectedEdges.seasons=graph.links.filter(e=>e.id?.startsWith("atlas:seasons52:")).length;
      row.detectedEdges.originalVivaldi=graph.links.some(e=>e.id==="E0715");
      row.detectedEdges.taxonomy=graph.links.filter(e=>
@@ -3509,6 +3516,21 @@ window.AtlantisCheckpoint52D={
     cases.push(row);
    }
   }finally{currentRoot=savedRoot}
+  const filterTests=[];
+  try{
+   for(const [root,limitCategory] of [
+    ["pers:vivaldi","persona"],["legacy:gf:genere-concerto","persona"],
+    ["pers:mozart","opera"],["legacy:gf:genere-sonata","opera"]]){
+    currentRoot=root;
+    try{
+     const limits0={...limits,[limitCategory]:0};
+     const graph=getRootedPreview(4,2,limits0);
+     const forbidden=graph.nodes.filter(n=>n.category===limitCategory&&n.id!==root).map(n=>n.id);
+     filterTests.push({root,categoryDepthZero:limitCategory,forbiddenNodes:forbidden,
+      status:forbidden.length?"FAIL":"PASS"});
+    }catch(error){filterTests.push({root,categoryDepthZero:limitCategory,status:"FAIL",error:String(error)})}
+   }
+  }finally{currentRoot=savedRoot}
   const categoryCounts={};for(const n of dataset.nodes)
    categoryCounts[n.category]=(categoryCounts[n.category]||0)+1;
   const allViolations={
@@ -3522,7 +3544,7 @@ window.AtlantisCheckpoint52D={
    }).map(e=>e.id)
   };
   const fail=globalDupNodes.length+globalDupEdges.length+orphans.length+
-   cases.filter(x=>x.status==="FAIL").length;
+   cases.filter(x=>x.status==="FAIL").length+filterTests.filter(x=>x.status==="FAIL").length;
   return {schema:"musurgia-atlantis-checkpoint52d-runtime-audit-v1",
    status:fail?"FAIL":"PASS_STATIC_DATA",
    qualification:"Browser rendered viewport and mobile WebGL are NOT independently visually certified",
@@ -3531,7 +3553,7 @@ window.AtlantisCheckpoint52D={
    pipeline_executed:true,dataset:{nodes:dataset.nodes.length,edges:dataset.links.length,
     categories:categoryCounts,seasonalWorks:seasons52.ids.size,seasonalEdges:seasons52.edges.length},
    global_violations:allViolations,optional_root_resolution:resolved,
-   root_tests:cases,webgl_renderer_constructed:!!engine,
+   root_tests:cases,category_depth_zero_tests:filterTests,webgl_renderer_constructed:!!engine,
    visual_browser_verification:"NOT_CERTIFIED",
    production_modified:false};
  }
