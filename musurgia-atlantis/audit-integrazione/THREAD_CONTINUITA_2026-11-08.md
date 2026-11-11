@@ -2150,3 +2150,15 @@ Mozart→Flauto magico→Singspiel→Opera.
 **Evidenze GitHub:** `REGRESSIONE_MOZART_OPERA_CHECKPOINT52F_2026-11-11.json` commit `6dfb2f043a4ce1ca3d2c59a9733cac67216a35be`; `AUDIT_MOZART_OPERA_CHECKPOINT52F_2026-11-11.md` commit `415008275bc546da56cb822a8c37b42739530526`.
 
 **Limiti:** test helper-level, non completa federazione dei 24 file né WebGL/browser. Production `grafo.json`/`index.html` invariata. Prossimo: Sonata/Quartetto/Cantata, allineamento filtri e correzioni ulteriori delle identità musicali sospette.
+
+### Checkpoint 52G — Sonata per pianoforte / Alban Berg op. 1 (11 novembre 2026)
+
+**Fase 1 pubblicata soltanto nello staging** `musurgia-atlantis/audit-integrazione/`. Correttivo alla preview `PREVIEW_RADICATA_CHECKPOINT06.html`, commit `bdf3e72c52edc09407c02ba9d7490a91d4303093`; audit `AUDIT_SONATA_FLAMINIO_CHECKPOINT52G_2026-11-11.md`, commit `9d5c9df26a9da819e2db31012b81e54a0f29ef9d`. Produzione `grafo.json` / `index.html` **invariata**.
+
+**Lacuna reale:** `prepareSonata39` alimentava `Sonata per pianoforte` solo tramite le opere Mozart/Beethoven contenute in `genreRings` e perdeva il contributo dell'overlay Flaminio17. In quest'ultimo era già attestata `pers:alban-berg → audit:fl15:l06:w01` (Sonata op.1, `audit:fl15:e0033`) e `audit:fl15:l06:w01 → legacy:gf:genere-sonata` (`audit:fl15:e0034`), con organico `pianoforte solo`.
+
+**Patch:** il gruppo Sonata per pianoforte recupera dal `work_registry` Flaminio17 solo record che abbiano contemporaneamente faccette di genere e organico esplicite e **due archi fonte esistenti** (autore→opera, opera→Sonata). Crea il collegamento derivato `pers:alban-berg→atlas:gf:sonata-per-pianoforte` e `audit:fl15:l06:w01→atlas:gf:sonata-per-pianoforte`, senza duplicare nodi e senza inferire rapporti tra compositori. Entrambi i nuovi archi mantengono `preview_only:true`, `review_status:source_attested_not_independently_certified`, `quality_gate:Flaminio17_catalogue_staging` e URL fonte Flaminio. Restano operativi i normali archi del ring e la pertinenza radicata.
+
+**Test effettivo:** sintassi script inline **PASS**; helper `prepareSonata39` eseguito su un banco limitato che include nodo e archi Berg effettivi dell'overlay e due fixture Mozart/Beethoven: appartenenza al sottogenere, due archi nuovi, provenance, **0 orfani e 0 duplicati**. **Non** è un test simultaneo 24 JSON, **non** è esecuzione browser né certificazione grafica WebGL.
+
+**Prossima ripresa:** completare **52G** con la regressione delle famiglie `Sonata` / `Quartetto` / `Cantata` nel runtime federato, verificare la coerenza dei sottogeneri dei Lotti42–44 e 45–51, poi eseguire e archiviare il report della suite `REGRESSIONE_FEDERATA_CHECKPOINT52D.html` e collaudare WebGL reale. Preservare tutti gli archi attestati; gestire la densità con filtri, non eliminando prove. Non promuovere alla produzione finché non certificata.
