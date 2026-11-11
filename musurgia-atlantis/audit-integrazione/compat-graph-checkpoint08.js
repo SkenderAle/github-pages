@@ -281,6 +281,15 @@ function makeGraph(host){
     d3Force(){return {strength(){return this}}},
     width(v){if(v===undefined)return W;W=v;resize();return api},height(v){if(v===undefined)return H;H=v;resize();return api},
     onNodeClick(fn){onNode=fn;return api},onNodeDoubleClick(fn){onDoubleNode=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
+    // 52K: read-only projection for deterministic browser acceptance checks.
+    // This method changes neither the graph nor hit testing / touch behavior.
+    auditView(){return {canvas_css_width:W,canvas_css_height:H,
+      canvas_pixel_width:canvas.width,canvas_pixel_height:canvas.height,
+      zoom,selected_id:selected,hovered_id:hovered,
+      node_count:current.nodes.length,edge_count:current.links.length,
+      projected:projected.map(p=>({id:p.n.id,x:p.x,y:p.y,
+        depth:p.n._depth??0,focus:!!p.n._focus,
+        on_canvas:p.x>=0&&p.x<=W&&p.y>=0&&p.y<=H}))};},
     nodeColor(fn){if(fn===undefined)return nodeColors;nodeColors=fn;return api},linkColor(fn){if(fn===undefined)return linkColors;linkColors=fn;return api},nodeVal(fn){nodeSize=fn;return api},linkOpacity(n){options.linkOpacity=n;return api}
   };
   for(const prop of ['backgroundColor','showNavInfo','nodeRelSize','nodeResolution','nodeLabel','linkWidth','linkDirectionalArrowLength','warmupTicks','cooldownTicks'])api[prop]=()=>api;
