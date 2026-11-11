@@ -3065,8 +3065,13 @@ function attachSeasons52(result,maxDepth,limits){
   if(currentRoot===SEASONS52_MACRO){
    add(SEASONS52_PARENT,1,currentRoot,"taxonomy_child");
    add(SEASONS52_GENRE,2,SEASONS52_PARENT,"taxonomy_child");
-  }else if(currentRoot===SEASONS52_PARENT)
+  }else if(currentRoot===SEASONS52_PARENT){
    add(SEASONS52_GENRE,1,currentRoot,"taxonomy_child");
+   add(SEASONS52_MACRO,1,currentRoot,"taxonomy_parent");
+  }else{
+   add(SEASONS52_PARENT,1,currentRoot,"taxonomy_parent");
+   add(SEASONS52_MACRO,2,SEASONS52_PARENT,"taxonomy_parent");
+  }
   for(const id of seasons52.ids)
    add(id,currentRoot===SEASONS52_GENRE?1:currentRoot===SEASONS52_PARENT?2:3,
        currentRoot===SEASONS52_GENRE?currentRoot:SEASONS52_GENRE,"specific_concerto");
