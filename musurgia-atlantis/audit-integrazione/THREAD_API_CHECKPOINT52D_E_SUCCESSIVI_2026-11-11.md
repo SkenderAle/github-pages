@@ -297,3 +297,206 @@ Nelle righe: `ID` è il codice del manifesto o ID editoriale; `catalogo` è RV/B
 - `fl38:beethoven:op-73` — Concerto per pianoforte n. 5 in mi bemolle maggiore "Imperatore" · **Op. 73** · Concerto · XLSX 4851 · stato: `source_row_and_catalogue_correlated`
 - `fl38:beethoven:op-56` — Concerto per pianoforte, violino e violoncello in do maggiore "Triplo concerto" · **Op. 56** · Concerto · XLSX 4852 · stato: `source_row_and_catalogue_correlated`
 
+
+## C2. Catalogo Concerti, Sonata e Quartetti: Checkpoint 40 e Lotti 41–44
+
+### CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json — 44 voci in manifesto
+
+**Rami di genere:** `atlas:gf:concerto-per-violino` (audit:gf25:concerto-solistico); `atlas:gf:concerto-per-pianoforte` (audit:gf25:concerto-solistico); `atlas:gf:concerto-per-tre-solisti` (audit:gf25:concerto-di-gruppo); `atlas:gf:concerto-brandeburghese` (legacy:gf:genere-concerto); `atlas:gf:concerto-per-piu-pianoforti` (audit:gf25:concerto-di-gruppo).
+
+- `fl:cert35:mozart-k207` · **K 207** · atlas:gf:concerto-per-violino · XLSX 34764
+- `fl:cert35:mozart-k211` · **K 211** · atlas:gf:concerto-per-violino · XLSX 34765
+- `fl:cert35:mozart-k216` · **K 216** · atlas:gf:concerto-per-violino · XLSX 34766
+- `fl:cert35:mozart-k218` · **K 218** · atlas:gf:concerto-per-violino · XLSX 34767
+- `fl:cert35:mozart-k219` · **K 219** · atlas:gf:concerto-per-violino · XLSX 34768
+- `fl:cert35:bartok-sz36` · **Sz 36** · atlas:gf:concerto-per-violino · XLSX 4298
+- `fl:cert35:bartok-sz112` · **Sz 112** · atlas:gf:concerto-per-violino · XLSX 4299
+- `fl:cert35:barber-op14` · **op. 14** · atlas:gf:concerto-per-violino · XLSX 4182
+- `fl:cert35:beethoven-op61` · **op. 61** · atlas:gf:concerto-per-violino · XLSX 4853
+- `fl38:beethoven:op-15` · **Op. 15** · atlas:gf:concerto-per-pianoforte · XLSX 4846
+- `fl38:beethoven:op-19` · **Op. 19** · atlas:gf:concerto-per-pianoforte · XLSX 4848
+- `fl38:beethoven:op-37` · **Op. 37** · atlas:gf:concerto-per-pianoforte · XLSX 4849
+- `fl38:beethoven:op-58` · **Op. 58** · atlas:gf:concerto-per-pianoforte · XLSX 4850
+- `fl38:beethoven:op-73` · **Op. 73** · atlas:gf:concerto-per-pianoforte · XLSX 4851
+- `fl38:beethoven:op-56` · **Op. 56** · atlas:gf:concerto-per-tre-solisti · XLSX 4852
+- `audit:flaminio:bach:bwv1046` · **BWV 1046** · atlas:gf:concerto-brandeburghese · XLSX 3081
+- `audit:flaminio:bach:bwv1047` · **BWV 1047** · atlas:gf:concerto-brandeburghese · XLSX 3082
+- `audit:flaminio:bach:bwv1048` · **BWV 1048** · atlas:gf:concerto-brandeburghese · XLSX 3083
+- `audit:flaminio:bach:bwv1049` · **BWV 1049** · atlas:gf:concerto-brandeburghese · XLSX 3084
+- `audit:flaminio:bach:bwv1050` · **BWV 1050** · atlas:gf:concerto-brandeburghese · XLSX 3085
+- `audit:flaminio:bach:bwv1051` · **BWV 1051** · atlas:gf:concerto-brandeburghese · XLSX 3086
+- `fl41:mozart:piano-concerto-5` · **K 175** · atlas:gf:concerto-per-pianoforte · XLSX 34810
+- `fl41:mozart:piano-concerto-6` · **K 238** · atlas:gf:concerto-per-pianoforte · XLSX 34811
+- `fl41:mozart:piano-concerto-7` · **K 242** · atlas:gf:concerto-per-piu-pianoforti · XLSX 34814
+- `fl41:mozart:piano-concerto-8` · **K 246** · atlas:gf:concerto-per-pianoforte · XLSX 34812
+- `fl41:mozart:piano-concerto-9` · **K 271** · atlas:gf:concerto-per-pianoforte · XLSX 34813
+- `fl41:mozart:piano-concerto-10` · **K 365** · atlas:gf:concerto-per-piu-pianoforti · XLSX 34788
+- `fl41:mozart:piano-concerto-11` · **K 413** · atlas:gf:concerto-per-pianoforte · XLSX 34790
+- `fl41:mozart:piano-concerto-12` · **K 414** · atlas:gf:concerto-per-pianoforte · XLSX 34791
+- `fl41:mozart:piano-concerto-13` · **K 415** · atlas:gf:concerto-per-pianoforte · XLSX 34792
+- `fl41:mozart:piano-concerto-14` · **K 449** · atlas:gf:concerto-per-pianoforte · XLSX 34793
+- `fl41:mozart:piano-concerto-15` · **K 450** · atlas:gf:concerto-per-pianoforte · XLSX 34794
+- `fl41:mozart:piano-concerto-16` · **K 451** · atlas:gf:concerto-per-pianoforte · XLSX 34795
+- `fl41:mozart:piano-concerto-17` · **K 453** · atlas:gf:concerto-per-pianoforte · XLSX 34796
+- `fl41:mozart:piano-concerto-18` · **K 456** · atlas:gf:concerto-per-pianoforte · XLSX 34797
+- `fl41:mozart:piano-concerto-19` · **K 459** · atlas:gf:concerto-per-pianoforte · XLSX 34798
+- `fl41:mozart:piano-concerto-20` · **K 466** · atlas:gf:concerto-per-pianoforte · XLSX 34800
+- `fl41:mozart:piano-concerto-21` · **K 467** · atlas:gf:concerto-per-pianoforte · XLSX 34801
+- `fl41:mozart:piano-concerto-22` · **K 482** · atlas:gf:concerto-per-pianoforte · XLSX 34802
+- `fl41:mozart:piano-concerto-23` · **K 488** · atlas:gf:concerto-per-pianoforte · XLSX 34803
+- `fl41:mozart:piano-concerto-24` · **K 491** · atlas:gf:concerto-per-pianoforte · XLSX 34804
+- `fl41:mozart:piano-concerto-25` · **K 503** · atlas:gf:concerto-per-pianoforte · XLSX 34805
+- `fl41:mozart:piano-concerto-26` · **K 537** · atlas:gf:concerto-per-pianoforte · XLSX 34806
+- `fl41:mozart:piano-concerto-27` · **K 595** · atlas:gf:concerto-per-pianoforte · XLSX 34807
+
+### LOTTO41_55_OPERE_TASTIERA_CONCORDANZA_2026-11-10.json — 55 voci in manifesto
+
+- `fl41:beethoven:piano-sonata-1` — Sonata per pianoforte n. 1 in fa minore · **Op. 2 n. 1** · sonata_per_pianoforte · XLSX 4958 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-2` — Sonata per pianoforte n. 2 in la maggiore · **Op. 2 n. 2** · sonata_per_pianoforte · XLSX 4969 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-3` — Sonata per pianoforte n. 3 in do maggiore · **Op. 2 n. 3** · sonata_per_pianoforte · XLSX 4980 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-4` — Sonata per pianoforte n. 4 in mi bemolle maggiore · **Op. 7** · sonata_per_pianoforte · XLSX 4984 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-5` — Sonata per pianoforte n. 5 in do minore · **Op. 10 n. 1** · sonata_per_pianoforte · XLSX 4985 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-6` — Sonata per pianoforte n. 6 in fa maggiore · **Op. 10 n. 2** · sonata_per_pianoforte · XLSX 4986 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-7` — Sonata per pianoforte n. 7 in re maggiore · **Op. 10 n. 3** · sonata_per_pianoforte · XLSX 4987 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-8` — Sonata per pianoforte n. 8 in do minore («Patetica») · **Op. 13** · sonata_per_pianoforte · XLSX 4954 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-9` — Sonata per pianoforte n. 9 in mi maggiore · **Op. 14 n. 1** · sonata_per_pianoforte · XLSX 4988 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-10` — Sonata per pianoforte n. 10 in sol maggiore · **Op. 14 n. 2** · sonata_per_pianoforte · XLSX 4959 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-11` — Sonata per pianoforte n. 11 in si bemolle maggiore · **Op. 22** · sonata_per_pianoforte · XLSX 4960 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-12` — Sonata per pianoforte n. 12 in la bemolle maggiore («Marcia funebre») · **Op. 26** · sonata_per_pianoforte · XLSX 4961 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-13` — Sonata per pianoforte n. 13 in mi bemolle maggiore («Sonata quasi una fantasia») · **Op. 27 n. 1** · sonata_per_pianoforte · XLSX 4962 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-14` — Sonata per pianoforte n. 14 in do diesis minore («Al chiaro di luna») · **Op. 27 n. 2** · sonata_per_pianoforte · XLSX 4963 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-15` — Sonata per pianoforte n. 15 in re maggiore («Pastorale») · **Op. 28** · sonata_per_pianoforte · XLSX 4964 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-16` — Sonata per pianoforte n. 16 in sol maggiore · **Op. 31 n. 1** · sonata_per_pianoforte · XLSX 4965 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-17` — Sonata per pianoforte n. 17 in re minore («La tempesta») · **Op. 31 n. 2** · sonata_per_pianoforte · XLSX 4966 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-18` — Sonata per pianoforte n. 18 in mi bemolle maggiore («La caccia») · **Op. 31 n. 3** · sonata_per_pianoforte · XLSX 4967 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-19` — Sonata per pianoforte n. 19 in sol minore · **Op. 49 n. 1** · sonata_per_pianoforte · XLSX 4968 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-20` — Sonata per pianoforte n. 20 in sol maggiore · **Op. 49 n. 2** · sonata_per_pianoforte · XLSX 4970 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-21` — Sonata per pianoforte n. 21 in do maggiore («Waldstein») · **Op. 53** · sonata_per_pianoforte · XLSX 4971 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-22` — Sonata per pianoforte n. 22 in fa maggiore · **Op. 54** · sonata_per_pianoforte · XLSX 4972 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-23` — Sonata per pianoforte n. 23 in fa minore («Appassionata») · **Op. 57** · sonata_per_pianoforte · XLSX 4973 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-24` — Sonata per pianoforte n. 24 in fa diesis maggiore («À Thérèse») · **Op. 78** · sonata_per_pianoforte · XLSX 4974 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-25` — Sonata per pianoforte n. 25 in sol maggiore · **Op. 79** · sonata_per_pianoforte · XLSX 4975 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-26` — Sonata per pianoforte n. 26 in mi bemolle maggiore («Gli addii») · **Op. 81a** · sonata_per_pianoforte · XLSX 4976 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-27` — Sonata per pianoforte n. 27 in mi minore · **Op. 90** · sonata_per_pianoforte · XLSX 4977 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-28` — Sonata per pianoforte n. 28 in la maggiore · **Op. 101** · sonata_per_pianoforte · XLSX 4978 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-29` — Sonata per pianoforte n. 29 in si bemolle maggiore («Hammerklavier») · **Op. 106** · sonata_per_pianoforte · XLSX 4979 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-30` — Sonata per pianoforte n. 30 in mi maggiore · **Op. 109** · sonata_per_pianoforte · XLSX 4981 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-31` — Sonata per pianoforte n. 31 in la bemolle maggiore · **Op. 110** · sonata_per_pianoforte · XLSX 4982 · stato: `catalogue_concordance_work_specific`
+- `fl41:beethoven:piano-sonata-32` — Sonata per pianoforte n. 32 in do minore · **Op. 111** · sonata_per_pianoforte · XLSX 4983 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-5` — Concerto per pianoforte n. 5 in re maggiore · **K 175** · concerto_per_pianoforte · XLSX 34810 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-6` — Concerto per pianoforte n. 6 in si bemolle maggiore · **K 238** · concerto_per_pianoforte · XLSX 34811 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-7` — Concerto per tre pianoforti n. 7 in fa maggiore · **K 242** · concerto_per_piu_pianoforti · XLSX 34814 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-8` — Concerto per pianoforte n. 8 in do maggiore («Lützow») · **K 246** · concerto_per_pianoforte · XLSX 34812 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-9` — Concerto per pianoforte n. 9 in mi bemolle maggiore («Jeunehomme») · **K 271** · concerto_per_pianoforte · XLSX 34813 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-10` — Concerto per due pianoforti n. 10 in mi bemolle maggiore · **K 365** · concerto_per_piu_pianoforti · XLSX 34788 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-11` — Concerto per pianoforte n. 11 in fa maggiore · **K 413** · concerto_per_pianoforte · XLSX 34790 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-12` — Concerto per pianoforte n. 12 in la maggiore · **K 414** · concerto_per_pianoforte · XLSX 34791 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-13` — Concerto per pianoforte n. 13 in do maggiore · **K 415** · concerto_per_pianoforte · XLSX 34792 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-14` — Concerto per pianoforte n. 14 in mi bemolle maggiore · **K 449** · concerto_per_pianoforte · XLSX 34793 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-15` — Concerto per pianoforte n. 15 in si bemolle maggiore · **K 450** · concerto_per_pianoforte · XLSX 34794 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-16` — Concerto per pianoforte n. 16 in re maggiore · **K 451** · concerto_per_pianoforte · XLSX 34795 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-17` — Concerto per pianoforte n. 17 in sol maggiore · **K 453** · concerto_per_pianoforte · XLSX 34796 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-18` — Concerto per pianoforte n. 18 in si bemolle maggiore · **K 456** · concerto_per_pianoforte · XLSX 34797 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-19` — Concerto per pianoforte n. 19 in fa maggiore («Kronungs-Konzert n. 2 (denominazione Flaminio)») · **K 459** · concerto_per_pianoforte · XLSX 34798 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-20` — Concerto per pianoforte n. 20 in re minore · **K 466** · concerto_per_pianoforte · XLSX 34800 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-21` — Concerto per pianoforte n. 21 in do maggiore · **K 467** · concerto_per_pianoforte · XLSX 34801 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-22` — Concerto per pianoforte n. 22 in mi bemolle maggiore · **K 482** · concerto_per_pianoforte · XLSX 34802 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-23` — Concerto per pianoforte n. 23 in la maggiore · **K 488** · concerto_per_pianoforte · XLSX 34803 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-24` — Concerto per pianoforte n. 24 in do minore · **K 491** · concerto_per_pianoforte · XLSX 34804 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-25` — Concerto per pianoforte n. 25 in do maggiore · **K 503** · concerto_per_pianoforte · XLSX 34805 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-26` — Concerto per pianoforte n. 26 in re maggiore («Krönungs-Konzert») · **K 537** · concerto_per_pianoforte · XLSX 34806 · stato: `catalogue_concordance_work_specific`
+- `fl41:mozart:piano-concerto-27` — Concerto per pianoforte n. 27 in si bemolle maggiore · **K 595** · concerto_per_pianoforte · XLSX 34807 · stato: `catalogue_concordance_work_specific`
+
+**Review queue:** 4 posizioni nel JSON originale, non promosse automaticamente.
+
+### LOTTO42_39_QUARTETTI_BEETHOVEN_MOZART_2026-11-10.json — 39 voci in manifesto
+
+- `fl42:beethoven:quartetto-1` — Quartetto per archi n. 1 in fa maggiore · Op. 18 n. 1 · XLSX 4876
+- `fl42:beethoven:quartetto-2` — Quartetto per archi n. 2 in sol maggiore · Op. 18 n. 2 · XLSX 4885
+- `fl42:beethoven:quartetto-3` — Quartetto per archi n. 3 in re maggiore · Op. 18 n. 3 · XLSX 4886
+- `fl42:beethoven:quartetto-4` — Quartetto per archi n. 4 in do minore · Op. 18 n. 4 · XLSX 4887
+- `fl42:beethoven:quartetto-5` — Quartetto per archi n. 5 in la maggiore · Op. 18 n. 5 · XLSX 4888
+- `fl42:beethoven:quartetto-6` — Quartetto per archi n. 6 in si bemolle maggiore · Op. 18 n. 6 · XLSX 4889
+- `fl42:beethoven:quartetto-7` — Quartetto per archi n. 7 in fa maggiore "Razumowsky" · Op. 59 n. 1 · XLSX 4890
+- `fl42:beethoven:quartetto-8` — Quartetto per archi n. 8 in mi minore "Razumowsky" · Op. 59 n. 2 · XLSX 4891
+- `fl42:beethoven:quartetto-9` — Quartetto per archi n. 9 in do maggiore "Razumowsky" · Op. 59 n. 3 · XLSX 4892
+- `fl42:beethoven:quartetto-10` — Quartetto per archi n. 10 in mi bemolle maggiore "Delle arpe" · Op. 74 · XLSX 4878
+- `fl42:beethoven:quartetto-11` — Quartetto per archi n. 11 in fa minore "Serioso" · Op. 95 · XLSX 4879
+- `fl42:beethoven:quartetto-12` — Quartetto per archi n. 12 in mi bemolle maggiore · Op. 127 · XLSX 4880
+- `opera:quartetto-op130` — Quartetto per archi n. 13 in si bemolle maggiore · Op. 130 · XLSX 4881
+- `fl42:beethoven:quartetto-14` — Quartetto per archi n. 14 in do diesis minore · Op. 131 · XLSX 4882
+- `fl42:beethoven:quartetto-15` — Quartetto per archi n. 15 in la minore · Op. 132 · XLSX 4883
+- `fl42:beethoven:quartetto-16` — Quartetto per archi n. 16 in fa maggiore · Op. 135 · XLSX 4884
+- `fl42:mozart:quartetto-k80` — Quartetto per archi n. 1 in sol maggiore · K 80 · XLSX 34928
+- `fl42:mozart:quartetto-k155` — Quartetto per archi n. 2 in re maggiore · K 155 · XLSX 34939
+- `fl42:mozart:quartetto-k156` — Quartetto per archi n. 3 in sol maggiore · K 156 · XLSX 34944
+- `fl42:mozart:quartetto-k157` — Quartetto per archi n. 4 in do maggiore · K 157 · XLSX 34945
+- `fl42:mozart:quartetto-k158` — Quartetto per archi n. 5 in fa maggiore · K 158 · XLSX 34946
+- `fl42:mozart:quartetto-k159` — Quartetto per archi n. 6 in si bemolle maggiore · K 159 · XLSX 34947
+- `fl42:mozart:quartetto-k160` — Quartetto per archi n. 7 in mi bemolle maggiore · K 160 · XLSX 34948
+- `fl42:mozart:quartetto-k168` — Quartetto per archi n. 8 in fa maggiore · K 168 · XLSX 34949
+- `fl42:mozart:quartetto-k169` — Quartetto per archi n. 9 in la maggiore · K 169 · XLSX 34950
+- `fl42:mozart:quartetto-k170` — Quartetto per archi n. 10 in do maggiore · K 170 · XLSX 34929
+- `fl42:mozart:quartetto-k171` — Quartetto per archi n. 11 in mi bemolle maggiore · K 171 · XLSX 34930
+- `fl42:mozart:quartetto-k172` — Quartetto per archi n. 12 in si bemolle maggiore · K 172 · XLSX 34931
+- `fl42:mozart:quartetto-k173` — Quartetto per archi n. 13 in re minore · K 173 · XLSX 34932
+- `fl42:mozart:quartetto-k387` — Quartetto per archi n. 14 in sol maggiore "Frühlings-Quartett" · K 387 · XLSX 34933
+- `fl42:mozart:quartetto-k421` — Quartetto per archi n. 15 in re minore · K 421 · XLSX 34934
+- `fl42:mozart:quartetto-k428` — Quartetto per archi n. 16 in mi bemolle maggiore · K 428 · XLSX 34935
+- `fl42:mozart:quartetto-k458` — Quartetto per archi n. 17 in si bemolle maggiore "Jagd" (Della caccia) · K 458 · XLSX 34936
+- `fl42:mozart:quartetto-k464` — Quartetto per archi n. 18 in la maggiore · K 464 · XLSX 34937
+- `fl42:mozart:quartetto-k465` — Quartetto per archi n. 19 in do maggiore "Delle Dissonanze" · K 465 · XLSX 34938
+- `fl42:mozart:quartetto-k499` — Quartetto per archi n. 20 in re maggiore "Hoffmeister" · K 499 · XLSX 34940
+- `fl42:mozart:quartetto-k575` — Quartetto per archi n. 21 in re maggiore "Prussiano 1" · K 575 · XLSX 34941
+- `fl42:mozart:quartetto-k589` — Quartetto per archi n. 22 in si bemolle maggiore "Prussiano n. 2" · K 589 · XLSX 34942
+- `fl42:mozart:quartetto-k590` — Quartetto per archi n. 23 in fa maggiore "Prussiano n. 3" · K 590 · XLSX 34943
+
+### LOTTO43_25_QUARTETTI_ORGANICI_VARI_2026-11-11.json — 25 voci in manifesto
+
+**Rami di genere:** `atlas:gf:quartetto-con-pianoforte` (atlas:gf:quartetto); `atlas:gf:quartetto-per-flauto-e-archi` (atlas:gf:quartetto); `atlas:gf:quartetto-per-oboe-e-archi` (atlas:gf:quartetto).
+
+- `fl43:mozart:quartetto-k-285` — Quartetto per flauto ed archi n. 1 in re maggiore · K 285 · **K 285** · XLSX 34875
+- `fl43:mozart:quartetto-k-285a` — Quartetto per flauto ed archi n. 2 in sol maggiore · K 285a · **K 285a** · XLSX 34876
+- `fl43:mozart:quartetto-k-298` — Quartetto per flauto n. 4 in la maggiore · K 298 · **K 298** · XLSX 34878
+- `fl43:mozart:quartetto-k-370` — Quartetto per oboe in fa maggiore · K 370 · **K 370** · XLSX 34879
+- `fl43:mozart:quartetto-k-478` — Quartetto per pianoforte n. 1 in sol minore · K 478 · **K 478** · XLSX 34982
+- `fl43:mozart:quartetto-k-493` — Quartetto per pianoforte n. 2 in mi bemolle maggiore · K 493 · **K 493** · XLSX 34983
+- `fl43:beethoven:quartetto-woo-36-n-1` — Quartetto per pianoforte n. 1 in mi bemolle maggiore · WoO 36 n. 1 · **WoO 36 n. 1** · XLSX 4763
+- `fl43:beethoven:quartetto-woo-36-n-2` — Quartetto per pianoforte n. 2 in re maggiore · WoO 36 n. 2 · **WoO 36 n. 2** · XLSX 4764
+- `fl43:beethoven:quartetto-woo-36-n-3` — Quartetto per pianoforte n. 3 in do maggiore · WoO 36 n. 3 · **WoO 36 n. 3** · XLSX 4765
+- `fl43:brahms:quartetto-op-60` — Quartetto n. 3 in do minore per pianoforte e archi · Op. 60 · **Op. 60** · XLSX 7872
+- `fl43:brahms:quartetto-op-25` — Quartetto per pianoforte n. 1 in sol minore · Op. 25 · **Op. 25** · XLSX 7877
+- `fl43:brahms:quartetto-op-26` — Quartetto per pianoforte n. 2 in la maggiore · Op. 26 · **Op. 26** · XLSX 7878
+- `fl43:dvorak:quartetto-op-23-b-53` — Klavírní kvartet č.1 D dur (Quartetto per pianoforte n. 1 in re maggiore) · Op. 23 · B. 53 · **Op. 23 · B. 53** · XLSX 15099
+- `fl43:dvorak:quartetto-op-87-b-162` — Klavírní kvartet č.2 Es dur (Quartetto per pianoforte n. 2 in mi bemolle maggiore) · Op. 87 · B. 162 · **Op. 87 · B. 162** · XLSX 15100
+- `fl43:faure:quartetto-op-15` — Quartetto per pianoforte n. 1 in do minore · Op. 15 · **Op. 15** · XLSX 15661
+- `fl43:faure:quartetto-op-45` — Quartetto per pianoforte n. 2 in sol minore · Op. 45 · **Op. 45** · XLSX 15662
+- `fl43:mendelssohn:quartetto-op-1-mwv-q-11` — Quartetto per pianoforte n. 1 in do minore · Op. 1 · MWV Q 11 · **Op. 1 · MWV Q 11** · XLSX 31747
+- `fl43:mendelssohn:quartetto-op-2-mwv-q-13` — Quartetto per pianoforte n. 2 in fa minore · Op. 2 · MWV Q 13 · **Op. 2 · MWV Q 13** · XLSX 31748
+- `fl43:mendelssohn:quartetto-op-3-mwv-q-17` — Quartetto per pianoforte n. 3 in si minore · Op. 3 · MWV Q 17 · **Op. 3 · MWV Q 17** · XLSX 31749
+- `fl43:schumann:quartetto-op-47` — Quartetto per pianoforte in mi bemolle maggiore · Op. 47 · **Op. 47** · XLSX 45801
+- `fl43:strauss:quartetto-op-13-trv-137` — Quartetto per pianoforte in do minore · Op. 13 · TrV 137 · **Op. 13 · TrV 137** · XLSX 47721
+- `fl43:martinu:quartetto-h-287` — Quartetto con pianoforte n. 1 · H. 287 · **H. 287** · XLSX 28641
+- `fl43:enescu:quartetto-op-16` — Quartetto con pianoforte n. 1 in re maggiore · Op. 16 · **Op. 16** · XLSX 15492
+- `fl43:enescu:quartetto-op-30` — Quartetto con pianoforte n. 2 in re minore · Op. 30 · **Op. 30** · XLSX 15493
+- `fl43:chausson:quartetto-op-30` — Quartetto in la maggiore con pianoforte · Op. 30 · **Op. 30** · XLSX 12343
+
+**Review queue:** 4 posizioni nel JSON originale, non promosse automaticamente.
+
+### LOTTO44_12_QUARTETTI_JCF_BACH_2026-11-11.json — 12 voci in manifesto
+
+- `fl44:jcf-bach:quartetto-b37` — Quartetto n. 1 in re maggiore · BR-JCFB B 37 · **BR-JCFB B 37** · XLSX 2292
+- `fl44:jcf-bach:quartetto-b38` — Quartetto n. 2 in sol maggiore · BR-JCFB B 38 · **BR-JCFB B 38** · XLSX 2302
+- `fl44:jcf-bach:quartetto-b39` — Quartetto n. 3 in do maggiore · BR-JCFB B 39 · **BR-JCFB B 39** · XLSX 2294
+- `fl44:jcf-bach:quartetto-b40` — Quartetto n. 4 in la maggiore · BR-JCFB B 40 · **BR-JCFB B 40** · XLSX 2296
+- `fl44:jcf-bach:quartetto-b41` — Quartetto n. 5 in fa maggiore · BR-JCFB B 41 · **BR-JCFB B 41** · XLSX 2298
+- `fl44:jcf-bach:quartetto-b42` — Quartetto n. 6 in si bemolle maggiore · BR-JCFB B 42 · **BR-JCFB B 42** · XLSX 2301
+- `fl44:jcf-bach:quartetto-b43` — Quartetto n. 1 in mi bemolle maggiore · BR-JCFB B 43 · **BR-JCFB B 43** · XLSX 2291
+- `fl44:jcf-bach:quartetto-b44` — Quartetto n. 2 in si bemolle maggiore · BR-JCFB B 44 · **BR-JCFB B 44** · XLSX 2293
+- `fl44:jcf-bach:quartetto-b45` — Quartetto n. 3 in la maggiore · BR-JCFB B 45 · **BR-JCFB B 45** · XLSX 2295
+- `fl44:jcf-bach:quartetto-b46` — Quartetto n. 4 in re maggiore · BR-JCFB B 46 · **BR-JCFB B 46** · XLSX 2297
+- `fl44:jcf-bach:quartetto-b47` — Quartetto n. 5 in sol maggiore · BR-JCFB B 47 · **BR-JCFB B 47** · XLSX 2299
+- `fl44:jcf-bach:quartetto-b48` — Quartetto n. 6 in fa maggiore · BR-JCFB B 48 · **BR-JCFB B 48** · XLSX 2300
+
+**Review queue:** 1 posizioni nel JSON originale, non promosse automaticamente.
+
