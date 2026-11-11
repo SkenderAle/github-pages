@@ -2606,7 +2606,7 @@ let cantata50={works:new Map(),holds:new Set(),edges:[],reuses:[]};
 function prepareCantata50(batch){
  if(batch?.schema!=="musurgia-atlantis-lotto50-bach-cantatas-v1"||
     batch.entries?.length!==31||batch.holds?.length!==5||
-    batch.work_relationships?.length!==3||
+    batch.work_relationships?.length!==2||
     batch.counts?.active_work_nodes!==26||
     batch.counts?.held_disputed!==2||
     batch.counts?.chorale_secondary_classifications!==0)
@@ -2679,7 +2679,7 @@ function prepareCantata50(batch){
    description:r.details+" (nessuna transitività attraverso il genere)"};
   addEdge(e);cantata50.reuses.push(e);cantata47.reuse.push(e);
  }
- if(cantata50.edges.length!==55||cantata50.reuses.length!==3||
+ if(cantata50.edges.length!==54||cantata50.reuses.length!==2||
     cantata45.works.size!==180||
     cantata45.byGenre.get(C45_SACRED)?.size!==168||
     cantata45.byGenre.get(C45_SECULAR)?.size!==10||
