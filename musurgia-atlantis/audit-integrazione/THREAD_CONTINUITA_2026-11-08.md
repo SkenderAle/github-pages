@@ -2089,3 +2089,13 @@ HOLD di crosswalk per `BWV120/2→Et expecto BWV232` e `BWV140/4→BWV645` organ
 - **Limite esplicito:** questo è un test dell'helper 52B con quattro overlay pertinenti autentici e radici mirate, **NON** il caricamento simultaneo integrale di tutti e 24 file, né un rendering WebGL/browser effettivo. Gli altri overlay (Singspiel/Sonata/Quartetto/Cantate) restano da ricontrollare insieme. Il test non prova che i filtri WebGL siano visivamente leggibili. `musurgia-atlantis/grafo.json` e `musurgia-atlantis/index.html` **non modificati**.
 - **Preview anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=vivaldi52b-20261111
 - **Prossima fase:** test end-to-end di tutti i manifesti e collaudo browser 3D prima della promozione in produzione; controllo trasversale della regola che ogni opera visibile mantenga i propri archi attestati senza attraversare i generi per raggiungere altri compositori.
+
+
+### Checkpoint 52C — Inventario federato 24 JSON: accessibilità e limiti del collaudo (11 novembre 2026)
+
+- **Audit pubblicato:** `musurgia-atlantis/audit-integrazione/AUDIT_INVENTARIO_FEDERATO_CHECKPOINT52C_2026-11-11.md`, commit `83b0a1fd0fb91dbbce1bd27ce0684503992b0e2b`.
+- **Evidenza:** la preview Checkpoint52B (HTML blob `1b82081b3899faf6bcb169bcc2cc6b596ce46dab`) referenzia 24 percorsi JSON distinti: grafo reale, registro radicato e 22 overlay/manifesti. Tutti i 24 percorsi sono risolvibili dal repository e i JSON sono leggibili.
+- **Controlli per file:** gli identificativi nodi/archi e voci dei 22 manifesti non hanno mostrato duplicazioni interne nei campi ID analizzati; i tre script inline della preview passano il parser JavaScript. Il correttivo stagioni 52B resta presente.
+- **NON certificato:** il limite operativo del connettore impedisce di eseguire nel medesimo ambiente il caricamento e la fusione simultanea di tutti i 24 file; non sono ancora state confrontate globalmente tutte le identità né eseguita la pipeline federata completa. Nessun collaudo WebGL/browser effettuato. Non descrivere questi controlli come regressione end-to-end.
+- **Produzione invariata:** `musurgia-atlantis/grafo.json` e `musurgia-atlantis/index.html` non toccati.
+- **Prossima ripresa:** predisporre regressione eseguibile di tutti gli overlay nello stesso runtime, controllare duplicati e archi orfani a livello globale e le radici Concerto/Vivaldi/Sonata/Quartetto/Singspiel/Cantata/Bach, poi collaudo WebGL reale e soltanto dopo eventuale promozione in produzione.
