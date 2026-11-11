@@ -1758,6 +1758,13 @@ function attachQuartet44(result,maxDepth,limits){
   add(Q44_PERSON,2,currentRoot,"documented_composer");
  }
  for(const e of quartet44.edges)connect(e);
+ // Parent branches already existed in Checkpoints 42/43. Reuse their
+ // documented taxonomy edges when a rooted view shows both endpoints.
+ for(const e of dataset.links){
+  if(e.relation!=="sottogenere_di")continue;
+  if([Q44_FLUTE,QUARTET42_CHILD,"atlas:gf:quartetto-per-flauto-e-archi"].includes(e.source))
+   connect(e);
+ }
  return result;
 }
 
