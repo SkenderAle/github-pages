@@ -1847,3 +1847,25 @@ assieme al ramo già presente `legacy:gf:genere-quartetto-archi` (39 opere Lotto
 **URL prova anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=checkpoint44-20261111
 
 **Prossima tranche:** passare alle **cantate di Johann Sebastian Bach**, con riscontro BWV + incipit e distinzione fra opera singola, movimenti, versione e raccolta; non forzare automaticamente la classe «musica sacra» per ogni BWV 1–200 (alcuni sono profani). Verificare il numero di righe ripetute per movimento nell'Excel, unificare per **identità d'opera**, poi decidere il sottogenere «Cantata sacra / Cantata profana», eventualmente anche «Cantata corale» come classificazione multipla soltanto se documentata. Prima di una promozione del sito 3D è indispensabile collaudo browser pubblico e regressione delle categorie Sonata, Concerto, Quartetto. Aggiornare il thread prima della prossima chat o del prossimo lotto.
+
+
+### Checkpoint 45a — riparazione circuito Singspiel / Mozart / Flauto magico / Opera (11 novembre 2026)
+
+**Segnalazione GUI con schermata utente:** cercando/aprendo `Singspiel`, anche con categoria **Persone** ed etichette attive, apparivano soltanto `Il flauto magico`, `Singspiel` e `Opera`. Assente **Mozart**, benché `Mozart → Il flauto magico` e `Mozart → Opera` fossero già attestati nel grafo federato. Riproduzione concettuale: la diramazione `attachMozartTaxonomy` della radice di genere rendeva visibili opera e macro-genere ma non risaliva dall'opera concreta al suo compositore.
+
+**Correzione GitHub pubblicata `main`:** stesso file vincolante `musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html`, commit `9a60adef39cc0d336a7ab02b958d4d51def28c22`. Implementate `prepareSingspiel45` e `attachSingspiel45`: per la radice `audit:gf19:singspiel` ora vengono mostrati **esattamente 4 nodi** e **6 archi**. Riusate cinque relazioni preesistenti documentate:
+1. `opera:flauto-magico → audit:gf19:singspiel` (`audit:tax19:e004`, sottogenere);
+2. `opera:flauto-magico → legacy:gf:genere-opera` (`audit:tax19:e008`, genere opera);
+3. `audit:gf19:singspiel → legacy:gf:genere-opera` (`audit:tax19:e012`, parentela catalografica);
+4. `pers:mozart → opera:flauto-magico` (`E0739`, attribuzione storica della musica);
+5. `pers:mozart → legacy:gf:genere-opera` (`legacy:gf:edge:1351`, indice generale di repertorio).
+
+**Sesto arco appena aggiunto solo nel runtime federato:** `pers:mozart → audit:gf19:singspiel`, ID `audit:tax45:mozart-singspiel-kv620`; relazione `ha_composto_opere_del_sottogenere`, tipologia `catalogue_derived_work_specific_index`, permesso `non_transitive_supported_by_one_work`, `supporting_work_ids: ["opera:flauto-magico"]`. **Non è una relazione causal-storica autonoma né un arco autore↔autore**: è un indice ricavato dal fatto verificato Mozart autore di `Il flauto magico` K 620, catalogato esplicitamente come «Singspiel ("Große Oper") in 2 Aufzügen» nel Köchel aggiornato, fonte `https://kv.mozarteum.at/de/work/7137`. Evitare di derivare ulteriori compositori da Singspiel o dal nodo generico Opera.
+
+**Regressione con tre dataset reali** (`grafo.json` storico 754 nodi/1718 archi, overlay generi legacy 50/271, tassonomia Mozart checkpoint19 2 nodi/12 archi): prova eseguendo **il codice di funzione realmente pubblicato** su quei dati. Esito: con radice Singspiel, `nodi=4`, `archi=6`, nodi `Singspiel` depth 0, `Flauto magico`, `Opera`, `Mozart` depth 1; nessun arco orfano. Da radice Flauto magico con stessi quattro nodi i sei archi compaiono; radice Beethoven non eredita alcun compositore/opera dal solo genere. Test di controllo filtro `persona:0`: Mozart non viene forzato quando la profondità delle persone è realmente disattivata. Il codice HTML/JS completo passa il controllo sintattico. **Non è stato eseguito un collaudo visivo tramite browser/WebGL pubblico**.
+
+**Nota UI:** i due controlli per categoria sono separati: `Nodi` (abilita visibilità) ed `Etichette` (forza il nome). Il default di `Persone` è già attivo per i nodi, ma spuntare *soltanto* l'etichetta non deve pretendere di riattivare una categoria eventualmente disabilitata. Nel caso segnalato la causa primaria era comunque l'assenza del recupero del nodo Mozart quando `Singspiel` era la radice, indipendentemente dalle etichette.
+
+**Preview anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=singspiel45a-20261111
+
+**Continuità:** resta aperto il Lotto45 delle cantate di Bach pianificato al termine del Lotto44. Prima di ampliarlo, verificare in browser reale la riparazione radice Singspiel e il mantenimento delle radici Mozart, Opera, Flauto magico, Concerto, Sonata, Quartetto. Non modificare `grafo.json` e `index.html` di produzione prima della certificazione.
