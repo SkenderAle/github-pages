@@ -930,3 +930,18 @@ Mozart→Flauto magico→Singspiel→Opera.
 **Commit/registri main** (esclusivamente `audit-integrazione/`): preview `5d745330889a87e201ad96ae31e6dfa233b2e35e`; JSON `REGRESSIONE_ARCHI_VISIBILI_CHECKPOINT52J_2026-11-12.json` commit `451c8783c63a5ec98a8870dc1864e4190b1a75d5`; runner `f035602fce0ee8d0de2c51036d74491683082f7d`; audit `AUDIT_CHECKPOINT52J_ARCHI_VISIBILI_2026-11-12.md` commit `76c810375c05cde7451ad00672e678c59d2cef4e`; thread madre aggiornato `dfa7d2496953f211e01dbad65ac4c599cc2c4279`. Produzione `grafo.json` e `index.html` invariati.
 
 **Prossimo checkpoint 52K:** esecuzione nel browser reale della pagina di prova, export del JSON, controllo manuale Canvas 2D su desktop e mobile (Mozart/Da Ponte/Don Giovanni, Vivaldi/Stagioni, Sonata/Quartetto/Cantata, zoom, etichette, filtri). Distinguere le osservazioni visive umane dai PASS dati. Non promuovere alla produzione senza collaudo.
+
+
+### Checkpoint 52K — Browser acceptance scaffold + test logico Canvas (12 novembre 2026)
+
+**Stato:** TEST BROWSER PREDISPOSTO, **NON ESEGUITO QUI**; test isolato del renderer **PASS_SIMULATED_RENDERER_LOGIC**. Recuperati sorgenti GitHub della preview/renderer; l'ambiente Chromium disponibile non aveva accesso di rete al sito pubblico, quindi non è stato possibile generare un report autentico della pagina e non si certifica la resa visiva o Android.
+
+**File nuovi:** `COLLAUDO_BROWSER_CHECKPOINT52K_2026-11-12.html`, che incorpora la preview completa e può lanciare 8 prove nel browser e salvare JSON/PNG, e `REGRESSIONE_RENDERER_LOGICO_CHECKPOINT52K_2026-11-12.json`, 7/7 asserzioni logiche in isolate V8 sul sorgente renderer con Canvas e pointer sintetici simulati. **Prova sintetica non equivale a rendering del Canvas in un browser reale né a touch Android**. Schema di report browser `musurgia-atlantis-checkpoint52k-browser-acceptance-v1`.
+
+**Modifiche staging:** `compat-graph-checkpoint08.js` ora ha `auditView()` read-only con nodi proiettati, dimensioni, zoom, etichette e selezione; `PREVIEW_RADICATA_CHECKPOINT06.html` ora ha `AtlantisCheckpoint52K.status()` per recuperare queste misure e i conteggi di opere visibili/etichette, più nuovo query param anticache JS. Nessun mutamento al dataset storico o alla regola di pertinenza.
+
+**Rilievo funzionale preciso per 52L:** in `compat-graph-checkpoint08.js` il metodo `onLinkClick(fn)` registra il callback ma nessun percorso degli eventi invoca `onLink`: l'hit testing gestisce soltanto i nodi, e la selezione diretta delle linee non è implementata. Nel pannello del nodo sono comunque presenti gli archi e le fonti. Se si implementa l'hit-test degli archi, distinguere tap su nodi e tap su linee, aprire la scheda della relazione specifica preservando testi forward/reverse/fonti, non ricostruire archi inesistenti e non cambiare semantica delle radici.
+
+**Commit effettivi main:** renderer `eca86239af9d84541b96f3c45a3adb4782d078a2`, `76609ec258624e268a6bc2cf95fad3df943b81f3`; preview `83099d91f6de39afa20d8dcdb8e73b19d3632427`, `754437eedb717fafa5e8ecff5ac451b9e1b51e89`, `a81df41fb4d8f032e2c5554eacc0e44acdd9b594`; banco 52K `8b9142f1db4d57867d0765aadfe5f750a714d795`; test isolato `30428271bdeb3753b29ab44c80b78eca451d9b61`; audit `AUDIT_CHECKPOINT52K_COLLAUDO_CANVAS_2026-11-12.md` `585104c42098765ea21fdb967973c11e5a4a72aa`; thread madre aggiornato `dd123746a421a55c3a8f150dc41b53959f669478`.
+
+**Prossimo:** 52L, test e correzione interazione diretta con archi, poi lanciare da browser live `COLLAUDO_BROWSER_CHECKPOINT52K_2026-11-12.html`, esportare il JSON eseguito sul dispositivo e certificare separatamente l'esperienza Android. Non promuovere la produzione prima di verifica.
