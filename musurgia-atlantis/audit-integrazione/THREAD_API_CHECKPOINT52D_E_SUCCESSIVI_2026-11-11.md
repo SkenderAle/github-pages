@@ -807,3 +807,45 @@ Nelle righe: `ID` è il codice del manifesto o ID editoriale; `catalogo` è RV/B
 
 **Relazioni per concerto:** autore→opera, raccolta→opera, opera→sottogenere (12 archi nuovi). **Identità storica conservata:** `E0715`. Non introdurre un quinto concerto. La fonte canonica è nel codice `prepareSeasons52()` della preview, non in un manifesto JSON autonomo. Le prove 52B comprendono 10 radici, ma **non** l'intero rendering browser.
 
+
+# D. CONSEGNA, COPERTURA E CONTINUITÀ AUTOMATIZZATA
+
+## D1. Copertura esatta dell'inventario allegato
+Il thread incorpora gli elenchi per **18 file di provenienza**: overlay Flaminio Checkpoint17, Brandeburghesi Checkpoint27, Lotti35–38, Checkpoint40, Lotti41–51, più **4 identità di Stagioni** nel Checkpoint52A. Contiene anche le liste specifiche dei `specials`, delle `versions` e degli `holds` dove presenti. Le voci dei gruppi editoriali e le righe nei manifesti con sovrapposizioni non costituiscono automaticamente composizioni indipendenti. Le relazioni presenti nei JSON (tra cui i riusi) vanno sempre lette alla fonte originale oltre all'indice.
+
+**IMPORTANTE:** non interpretare il numero delle righe di questo documento come opere uniche; qualche ID ricompare intenzionalmente in diversi lotti o in liste HOLD, il catalogo 17 contiene anche `genere-forma` e `versione-opera`, e il checkpoint 40 è un **crosswalk di 44 opere già censite** nei lotti precedenti. Il lotto 49 ha 30 entries base più 4 specials; il lotto 50 presenta HOLD anche all'interno delle sue 31 entries; il lotto 51 contiene 37 schede con un HOLD. Le guide sono presenti come URL nei manifesti quando documentate; quelle assenti restano null. Gli eventuali record documentati fuori da questi manifesti (ad esempio fonti legacy non ancora catalogate in un batch Flaminio) richiedono audit autonomo.
+
+## D2. Regola per le future importazioni
+1. Ricostruire prima l'**insieme degli ID canonici** della federazione e una tabella `source_file → source_record_id → canonical_work_id → author_id → genres[] → status → evidence_urls[] → guide_urls[]`.
+2. **Deduplicare per identità storica documentata, non per stringa del titolo.** Un titolo omonimo non basta; una versione non è per forza un'opera nuova.
+3. Confrontare la nuova fonte Flaminio con tutte le righe dei 18 gruppi elencati sopra. Se la riga è già stata elaborata, aggiornare soltanto fonti/classificazioni mancanti e registrare differenze; non inventare un nuovo nodo.
+4. Validare l'**arco diretto di autore** per ogni opera individuale ammessa (salvo attribuzione dubbia/HOLD), l'arco di classificazione e l'eventuale arco di raccolta, con provenienza e identificativi espliciti.
+5. Prima di scrivere, generare rapporto di differenze tra stato iniziale e finale; in caso di errori non fare merge nella produzione.
+6. Dopo ogni lotto aggiornare questo thread **aggiungendo** una sezione nuova e la tabella dei record toccati, data/ora, commit, PASS/FAIL/HOLD, cause e test non eseguiti. Conservare il thread madre come memoria storica, con rinvio a questo file.
+
+## D3. Criteri di chiusura 52D e successivi
+**52D = PASS** soltanto con caricamento effettivo simultaneo di tutti i file e pipeline eseguita, inventario globale degli ID senza collisioni inspiegate e archi senza estremi mancanti, regressione delle radici obbligatorie e test di isolamento autore. Documentare separatamente l'esito del rendering WebGL (**PASS**, **FAIL** o **NON ESEGUITO**) e dei filtri: non trasformare un esito parziale in una certificazione totale. Se la pipeline fallisce, produrre comunque un report utile, patch nello staging e test della patch.
+
+**Formato minimo della chiusura:**
+```json
+{
+  "checkpoint": "52D",
+  "base_commit": "<SHA letto prima dei test>",
+  "result_commit": "<SHA effettivamente pubblicato oppure null>",
+  "files_loaded": 0,
+  "pipeline_executed": false,
+  "global_node_count": null,
+  "global_edge_count": null,
+  "duplicate_node_ids": null,
+  "duplicate_edge_ids": null,
+  "orphan_edges": null,
+  "root_tests": [],
+  "browser_webgl": "NOT_RUN",
+  "production_modified": false,
+  "result": "PASS|FAIL|HOLD",
+  "open_issues": [],
+  "evidence_files": []
+}
+```
+
+**Stato al momento della creazione:** handoff pubblicato; nessun agente API attivato, nessuna credenziale fornita, 52D non ancora eseguito.
