@@ -1,0 +1,135 @@
+{
+  "schema": "musurgia-atlantis-regression-50d-lotto51-v1",
+  "date": "2026-11-11",
+  "status": "passed_js_structural_on_real_grafo_input_and_relevant_overlays_not_webgl_browser_certified",
+  "inputs": {
+    "graph": "musurgia-atlantis/grafo.json",
+    "graph_sha": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "genre_overlay": "musurgia-atlantis/audit-integrazione/GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json",
+    "concerto_family": "musurgia-atlantis/audit-integrazione/OVERLAY_FAMIGLIA_CONCERTO_CHECKPOINT25_2026-11-10.json",
+    "concerto_checkpoint40": "musurgia-atlantis/audit-integrazione/CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json",
+    "brandenburg": "musurgia-atlantis/audit-integrazione/STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json",
+    "manifest": "musurgia-atlantis/audit-integrazione/LOTTO51_37_SCHEDE_BACH_BWV171_200_2026-11-11.json",
+    "preview": "musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html",
+    "history": "Lotti 45,46,47,48,49,50"
+  },
+  "concerto50d": {
+    "graph_input": {
+      "nodes": 754,
+      "edges": 1718
+    },
+    "with_relevant_overlays": {
+      "nodes": 904,
+      "edges": 2269
+    },
+    "tested_root_examples": [
+      {
+        "root": "Concerto",
+        "nodes": 78,
+        "edges": 179,
+        "composers": 20,
+        "works": 44
+      },
+      {
+        "root": "Concerto per violino",
+        "nodes": 16,
+        "edges": 40,
+        "composers": 4,
+        "works": 9
+      },
+      {
+        "root": "Concerto grosso",
+        "nodes": 9,
+        "edges": 16,
+        "composers": 5,
+        "parent_edges": [
+          "audit:gf25:tax:01",
+          "audit:gf25:tax:09",
+          "audit:gf25:tax:02"
+        ]
+      }
+    ],
+    "orphans": 0,
+    "people_depth_zero_respected": true,
+    "note": "Concerto grosso no longer isolated when opened as an independent root; legacy parents Concerto and Concerto di gruppo and historically attested authors are visible."
+  },
+  "lotto51": {
+    "source_entries": 37,
+    "active_work_or_fragment_nodes": 36,
+    "hold_attribution": [
+      "BWV 189"
+    ],
+    "chorale_classifications_new": 4,
+    "work_reuse_edges_new": 11,
+    "new_edges": 87,
+    "new_orphan_edges": 0,
+    "new_duplicate_edge_ids": 0,
+    "fragment_bwv200": "single surviving aria; not complete cantata",
+    "funeral_ode_bwv198": "secular ceremonial work",
+    "latin_gloria_bwv191": "sacred Latin cantata",
+    "exact_reuse_crosslot": [
+      "fl45:jsbach:bwv205 → fl51:jsbach:bwv171",
+      "fl46:jsbach:bwv41 → fl51:jsbach:bwv171",
+      "audit:flaminio:bach:bwv1048 → fl51:jsbach:bwv174"
+    ],
+    "original_grafo_loaded": true,
+    "enhanced_fixture": {
+      "nodes": 1034,
+      "links": 2509,
+      "duplicate_node_ids": 0
+    },
+    "tested_roots_count": 26,
+    "tested_root_orphans": 0,
+    "cumulative": {
+      "works_and_fragments": 216,
+      "versions": 5,
+      "sacred_cantatas_including_fragment": 199,
+      "secular_cantatas_including_funeral_ode": 15,
+      "oratorios": 1,
+      "motets": 1,
+      "secondary_chorale_classifications_subset": 42
+    },
+    "paging": {
+      "default_page_size": 24,
+      "by_group": [
+        {
+          "genre": "Cantata sacra",
+          "works": 199,
+          "pages": 9,
+          "all_works_covered": 199,
+          "orphans": 0
+        },
+        {
+          "genre": "Cantata profana",
+          "works": 15,
+          "pages": 1,
+          "all_works_covered": 15,
+          "orphans": 0
+        },
+        {
+          "genre": "Cantata corale",
+          "works": 42,
+          "pages": 2,
+          "all_works_covered": 42,
+          "orphans": 0
+        },
+        {
+          "genre": "Mottetto",
+          "works": 1,
+          "pages": 1,
+          "all_works_covered": 1,
+          "orphans": 0
+        }
+      ]
+    },
+    "assertions_passed": 19
+  },
+  "caveats": [
+    "This check executes the extracted, published JS modules with the complete 754/1718 original grafo and legacy genre overlay, but not all unrelated Singspiel/Quartet/Mozart layers simultaneously.",
+    "No graphical WebGL interaction/browser click test: JavaScript syntax parsing and graph logic tests are not a browser certification.",
+    "The original composers_flaminio.xlsx rows were not accessible; source_excel_row remains null.",
+    "No individual listening-guide URLs were conjectured.",
+    "All future source-attribution questions including BWV189 remain HOLD.",
+    "No production changes to musurgia-atlantis/grafo.json or index.html."
+  ]
+}
