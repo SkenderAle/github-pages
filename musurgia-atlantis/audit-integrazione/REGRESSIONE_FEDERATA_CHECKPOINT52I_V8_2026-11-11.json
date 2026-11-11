@@ -1,0 +1,800 @@
+{
+  "schema": "musurgia-atlantis-checkpoint52i-v8-federated-regression-v1",
+  "checkpoint": "52I",
+  "date": "2026-11-11",
+  "repo": "SkenderAle/github-pages",
+  "branch": "main",
+  "preview_base_blob_sha": "190b0e8ebf0a03264ed5941297f2613ed54df074",
+  "source_file_count": 24,
+  "source_paths": [
+    "../grafo.json",
+    "./REGISTRO_PROVE_RADICATE_CHECKPOINT06_2026-11-09.json",
+    "./GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json",
+    "./OVERLAY_OPERE_GENERI_FLAMINIO_CHECKPOINT17_2026-11-09.json",
+    "./OVERLAY_PERSONE_FEDERATE_CHECKPOINT18_2026-11-09.json",
+    "./OVERLAY_TASSONOMIA_MOZART_CHECKPOINT19_2026-11-09.json",
+    "./OVERLAY_FAMIGLIA_CONCERTO_CHECKPOINT25_2026-11-10.json",
+    "./STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json",
+    "./LOTTO35_OPERE_CERTIFICATE_2026-11-10.json",
+    "./LOTTO36_MOZART_25_SINFONIE_2026-11-10.json",
+    "./LOTTO37_MOZART_30_OPERE_2026-11-10.json",
+    "./LOTTO38_BEETHOVEN_24_OPERE_2026-11-10.json",
+    "./CHECKPOINT40_CONCERTO_SOTTOGENERI_15_OPERE_2026-11-10.json",
+    "./LOTTO41_55_OPERE_TASTIERA_CONCORDANZA_2026-11-10.json",
+    "./LOTTO42_39_QUARTETTI_BEETHOVEN_MOZART_2026-11-10.json",
+    "./LOTTO43_25_QUARTETTI_ORGANICI_VARI_2026-11-11.json",
+    "./LOTTO44_12_QUARTETTI_JCF_BACH_2026-11-11.json",
+    "./LOTTO45_25_SCHEDE_CANTATE_BACH_2026-11-11.json",
+    "./LOTTO46_35_SCHEDE_BACH_BWV21_50_2026-11-11.json",
+    "./LOTTO47_35_SCHEDE_BACH_BWV51_80_2026-11-11.json",
+    "./LOTTO48_30_CANTATE_BWV81_110_TRE_VERSIONI_BWV82_2026-11-11.json",
+    "./LOTTO49_34_SCHEDE_BACH_BWV111_140_2026-11-11.json",
+    "./LOTTO50_31_SCHEDE_BACH_BWV141_170_2026-11-11.json",
+    "./LOTTO51_37_SCHEDE_BACH_BWV171_200_2026-11-11.json"
+  ],
+  "execution": "actual preview JavaScript federation and 52D diagnostic in isolated V8, graphics skipped",
+  "status": "PASS_DATA_ONLY",
+  "baseline_findings": [
+    "Before patch, four Vivaldi season work root-tests fail with Unknown root because those works do not occur in the base graph."
+  ],
+  "patched_diagnostics": {
+    "schema": "musurgia-atlantis-checkpoint52d-runtime-audit-v1",
+    "status": "PASS_STATIC_DATA",
+    "qualification": "Offline V8 isolated execution of actual PREVIEW_RADICATA_CHECKPOINT06.html prepare* federation and AtlantisCheckpoint52D.run with all 24 real GitHub JSONs. DOM and WebGL replaced by minimal harness; no visual/browser claim.",
+    "tested_at": "2026-11-11T22:45:16.377Z",
+    "finished_at": "2026-11-11T22:45:16.463Z",
+    "files_required_by_preview": 24,
+    "pipeline_executed": true,
+    "dataset": {
+      "nodes": 1390,
+      "edges": 3391,
+      "categories": {
+        "capitolo": 15,
+        "nodo-di-senso": 176,
+        "documento-storico": 3,
+        "documento": 1,
+        "evento-storico": 3,
+        "luogo": 18,
+        "opera": 715,
+        "versione-opera": 30,
+        "parte-di-opera": 1,
+        "persona": 305,
+        "allestimento": 8,
+        "produzione": 7,
+        "rete-culturale": 4,
+        "strumento": 14,
+        "genere-forma": 90
+      },
+      "seasonalWorks": 4,
+      "seasonalEdges": 12
+    },
+    "global_violations": {
+      "duplicate_nodes": [],
+      "duplicate_edges": [],
+      "orphan_edges": [],
+      "orphan_edge_count": 0,
+      "direct_person_to_person_links": []
+    },
+    "optional_root_resolution": [
+      {
+        "label": "Don Giovanni",
+        "id": "opera:Don-giovanni"
+      },
+      {
+        "label": "Il flauto magico",
+        "id": "opera:flauto-magico"
+      },
+      {
+        "label": "BWV174",
+        "id": "fl51:jsbach:bwv174"
+      },
+      {
+        "label": "BWV200",
+        "id": "fl51:jsbach:bwv200"
+      }
+    ],
+    "root_tests": [
+      {
+        "root": "pers:vivaldi",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 18,
+        "edges": 31,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 12,
+          "originalVivaldi": true,
+          "taxonomy": [
+            "audit:gf25:tax:03",
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "opera:quattro-stagioni",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 9,
+        "edges": 16,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 12,
+          "originalVivaldi": true,
+          "taxonomy": [
+            "audit:gf25:tax:03",
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:vivaldi-rv269-op8-1",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 6,
+        "edges": 7,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 3,
+          "originalVivaldi": true,
+          "taxonomy": [
+            "audit:gf25:tax:03",
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:vivaldi-rv315-op8-2",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 6,
+        "edges": 7,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 3,
+          "originalVivaldi": true,
+          "taxonomy": [
+            "audit:gf25:tax:03",
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:vivaldi-rv293-op8-3",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 6,
+        "edges": 7,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 3,
+          "originalVivaldi": true,
+          "taxonomy": [
+            "audit:gf25:tax:03",
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:vivaldi-rv297-op8-4",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 6,
+        "edges": 7,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 3,
+          "originalVivaldi": true,
+          "taxonomy": [
+            "audit:gf25:tax:03",
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "legacy:gf:genere-concerto",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 82,
+        "edges": 194,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 8,
+          "originalVivaldi": false,
+          "taxonomy": [
+            "audit:gf25:tax:03",
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "audit:gf25:concerto-solistico",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 47,
+        "edges": 125,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 4,
+          "originalVivaldi": false,
+          "taxonomy": [
+            "audit:gf25:tax:03",
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "audit:gf25:concerto-di-gruppo",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 10,
+        "edges": 20,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "legacy:gf:forma-concerto-grosso",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 9,
+        "edges": 16,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:gf:concerto-per-violino",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 20,
+        "edges": 44,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 4,
+          "originalVivaldi": false,
+          "taxonomy": [
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino",
+            "audit:gf25:tax:03"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:gf:concerto-brandeburghese",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 10,
+        "edges": 31,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "pers:bach",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 76,
+        "edges": 150,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [
+            "audit:gf25:tax:03"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "pers:mozart",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 187,
+        "edges": 414,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [
+            "atlas:concerto40:parent:atlas:gf:concerto-per-violino",
+            "audit:gf25:tax:03"
+          ],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 1,
+          "examples": [
+            {
+              "id": "L02-A07",
+              "source": "pers:da-ponte",
+              "target": "opera:Don-giovanni",
+              "relation": "scrive_libretto_di"
+            }
+          ]
+        }
+      },
+      {
+        "root": "legacy:gf:genere-sonata",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 6,
+        "edges": 9,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:gf:sonata-per-pianoforte",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 56,
+        "edges": 160,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:gf:quartetto",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 5,
+        "edges": 4,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "legacy:gf:genere-quartetto-archi",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 51,
+        "edges": 103,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "audit:gf19:singspiel",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 4,
+        "edges": 6,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:gf:cantata-sacra",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 28,
+        "edges": 54,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:gf:cantata-profana",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 18,
+        "edges": 35,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "atlas:gf:cantata-corale",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 28,
+        "edges": 78,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "legacy:gf:genere-mottetto",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 4,
+        "edges": 4,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "opera:Don-giovanni",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 8,
+        "edges": 10,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 1,
+          "examples": [
+            {
+              "id": "L02-A07",
+              "source": "pers:da-ponte",
+              "target": "opera:Don-giovanni",
+              "relation": "scrive_libretto_di"
+            }
+          ]
+        }
+      },
+      {
+        "root": "opera:flauto-magico",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 5,
+        "edges": 8,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "fl51:jsbach:bwv174",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 5,
+        "edges": 7,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": [
+            "fl51:reuse:11"
+          ]
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      {
+        "root": "fl51:jsbach:bwv200",
+        "exists": true,
+        "status": "PASS",
+        "nodes": 4,
+        "edges": 5,
+        "orphans": [],
+        "duplicateNodes": [],
+        "duplicateEdges": [],
+        "detectedEdges": {
+          "seasons": 0,
+          "originalVivaldi": false,
+          "taxonomy": [],
+          "reuseBrandeburgBWV174": []
+        },
+        "notes": [],
+        "undrawn_edges_between_visible_nodes": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    ],
+    "category_depth_zero_tests": [
+      {
+        "root": "pers:vivaldi",
+        "categoryDepthZero": "persona",
+        "forbiddenNodes": [],
+        "status": "PASS"
+      },
+      {
+        "root": "legacy:gf:genere-concerto",
+        "categoryDepthZero": "persona",
+        "forbiddenNodes": [],
+        "status": "PASS"
+      },
+      {
+        "root": "pers:mozart",
+        "categoryDepthZero": "opera",
+        "forbiddenNodes": [],
+        "status": "PASS"
+      },
+      {
+        "root": "legacy:gf:genere-sonata",
+        "categoryDepthZero": "opera",
+        "forbiddenNodes": [],
+        "status": "PASS"
+      }
+    ],
+    "catalogue_invariants_52h": [
+      {
+        "name": "JCF Bach B37–42: six continuo quartets",
+        "status": "PASS",
+        "evidence": {
+          "member_count": 6,
+          "subgenre": "atlas:gf:quartetto-flauto-violino-viola-continuo"
+        }
+      },
+      {
+        "name": "Mozart K285b disputed: no automatic authored-work node",
+        "status": "PASS",
+        "evidence": {
+          "held_candidate_id": "fl43:mozart:quartetto-k-285b"
+        }
+      },
+      {
+        "name": "BWV189 remains attribution HOLD",
+        "status": "PASS",
+        "evidence": {
+          "held_id": "fl51:jsbach:bwv189"
+        }
+      },
+      {
+        "name": "BWV200 is surviving fragment, not complete cantata",
+        "status": "PASS",
+        "evidence": {
+          "id": "fl51:jsbach:bwv200",
+          "completeness": "one_surviving_aria_fragment"
+        }
+      },
+      {
+        "name": "BWV1048→BWV174: original movement reuse survives",
+        "status": "PASS",
+        "evidence": {
+          "source": "audit:flaminio:bach:bwv1048",
+          "target": "fl51:jsbach:bwv174",
+          "arcs": [
+            "fl51:reuse:11"
+          ]
+        }
+      },
+      {
+        "name": "Quartetto→Quartetto per archi hierarchy exists",
+        "status": "PASS",
+        "evidence": {
+          "parent": "atlas:gf:quartetto",
+          "child": "legacy:gf:genere-quartetto-archi"
+        }
+      }
+    ],
+    "webgl_renderer_constructed": false,
+    "visual_browser_verification": "NOT_RUN",
+    "production_modified": false
+  },
+  "production_modified": false,
+  "unperformed": [
+    "actual browser execution",
+    "visual WebGL rendering",
+    "smartphone compatibility"
+  ]
+}
