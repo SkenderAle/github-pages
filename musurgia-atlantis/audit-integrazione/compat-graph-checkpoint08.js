@@ -6,7 +6,7 @@
 function makeGraph(host){
   const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
   const ctx=canvas.getContext('2d',{alpha:false});
-  let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,drag=null,active=true,last=0;
+  let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,selectedEdgeId=null,hovered=null,drag=null,active=true,last=0;
   let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onDoubleNode=()=>{},onLink=()=>{},onHover=()=>{},onBackground=()=>{},nodeSize=n=>3;
   const options={linkOpacity:.3};
   const hashed=str=>{let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619);return h>>>0};
@@ -69,6 +69,7 @@ function makeGraph(host){
     const byId=new Map(points.map(n=>[n.id,n]));
     linkObjects=current.links.map(e=>({e,a:byId.get(typeof e.source==='object'?e.source.id:e.source),b:byId.get(typeof e.target==='object'?e.target.id:e.target)})).filter(e=>e.a&&e.b);
     if(selected&&!byId.has(selected))selected=null;
+    if(selectedEdgeId&&!current.links.some(e=>e.id===selectedEdgeId))selectedEdgeId=null;
   }
   function resize(){pxRatio=Math.min(devicePixelRatio||1,1.6);canvas.width=Math.round(W*pxRatio);canvas.height=Math.round(H*pxRatio);canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(pxRatio,0,0,pxRatio,0,0);}
   function colorRgba(hex,alpha){if(!/^#[0-9a-f]{6}$/i.test(hex))return 'rgba(160,197,197,'+alpha+')';let h=hex.slice(1);return `rgba(${parseInt(h.slice(0,2),16)},${parseInt(h.slice(2,4),16)},${parseInt(h.slice(4,6),16)},${alpha})`}
@@ -165,8 +166,9 @@ function makeGraph(host){
       // including Don Giovanni→Dramma giocoso. No new nodes or transitive paths.
       const taxonomy=o.e.statement_type==="taxonomy_work_classification"
         && ["ha_genere","ha_forma","ha_sottogenere"].includes(o.e.relation);
-      ctx.lineWidth=taxonomy?2.35:.8;
-      ctx.strokeStyle=colorRgba(linkColors(o.e),taxonomy?.93:(direct?.48:options.linkOpacity*.65)*(.30+.70*near));
+      const selectedLine=selectedEdgeId===o.e.id;
+      ctx.lineWidth=selectedLine?4.2:taxonomy?2.35:.8;
+      ctx.strokeStyle=selectedLine?'rgba(255,225,150,.99)':colorRgba(linkColors(o.e),taxonomy?.93:(direct?.48:options.linkOpacity*.65)*(.30+.70*near));
       ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     }
     projected.sort((a,b)=>b.z-a.z);
@@ -200,6 +202,24 @@ function makeGraph(host){
     const dist=Math.hypot(q.x-p.x,q.y-p.y);
     return dist<max&&(!best||dist<best.d)?{d:dist,n:q.n}:best;
   },null);
+  // 52L: test only drawn segments. Never generate new relationships.
+  function hitTestLink(p,max=12){
+    const byId=new Map(projected.map(q=>[q.n.id,q]));
+    let best=null;
+    for(const o of linkObjects){
+      const a=byId.get(o.a.id),b=byId.get(o.b.id);if(!a||!b)continue;
+      const vx=b.x-a.x,vy=b.y-a.y,len2=vx*vx+vy*vy;
+      if(len2<1)continue;
+      const t=Math.max(0,Math.min(1,((p.x-a.x)*vx+(p.y-a.y)*vy)/len2));
+      const dx=p.x-(a.x+t*vx),dy=p.y-(a.y+t*vy);
+      const d=Math.hypot(dx,dy);
+      if(d>max)continue;
+      const depth=(a.z+b.z)/2;
+      if(!best||d<best.d-.8||(Math.abs(d-best.d)<=.8&&depth<best.depth))
+        best={e:o.e,d,depth};
+    }
+    return best;
+  }
   function zoomAt(value,anchorX=W/2,anchorY=H/2){
     const next=Math.max(.3,Math.min(10,Number(value)||zoom)),ratio=next/zoom;
     shiftX=anchorX-W/2-(anchorX-W/2-shiftX)*ratio;
@@ -235,7 +255,8 @@ function makeGraph(host){
     if(ev.pointerType==="touch")return; // Hover is a mouse/pen concept; touch uses selection.
     const near=hitTest(p,17);
     const id=near?.n.id||null;
-    if(hovered!==id){hovered=id;onHover(near?.n||null,{x:p.x,y:p.y});canvas.style.cursor=id?'pointer':'grab'}
+    if(hovered!==id){hovered=id;onHover(near?.n||null,{x:p.x,y:p.y})}
+    canvas.style.cursor=id||hitTestLink(p,ev.pointerType==='pen'?14:11)?'pointer':'grab';
   });
   canvas.addEventListener('pointerup',ev=>{
     const was=drag,multi=ignoreTap||pointers.size>1;
@@ -247,7 +268,14 @@ function makeGraph(host){
     drag=null;pinch=null;ignoreTap=false;canvas.style.cursor='grab';
     if(!was||was.moved||multi){lastTap=null;return}
     const p=coordinates(ev),near=hitTest(p,ev.pointerType==="touch"?28:20);
-    if(!near){lastTap=null;onBackground();return}
+    const nearLink=hitTestLink(p,ev.pointerType==="touch"?20:12);
+    // Endpoints belong to nodes; along a line, prevent large touch targets
+    // from swallowing edge taps before they reach the line callback.
+    if(nearLink&&(!near||(near.d>(ev.pointerType==="touch"?12:9)&&nearLink.d<near.d*.75))){
+      lastTap=null;selectedEdgeId=nearLink.e.id;onLink(nearLink.e);return;
+    }
+    if(!near){selectedEdgeId=null;lastTap=null;onBackground();return}
+    selectedEdgeId=null;
     const now=Date.now(),same=lastTap&&lastTap.id===near.n.id&&lastTap.type===ev.pointerType&&
       now-lastTap.time<=360&&isNear(p,lastTap.pos,ev.pointerType==="touch"?34:24);
     const alreadySelected=selected===near.n.id;
@@ -280,17 +308,24 @@ function makeGraph(host){
     cameraPosition(_pos,lookAt){if(lookAt&&Number.isFinite(lookAt.x)){const p=project(lookAt);shiftX+=W/2-p.x;shiftY+=H/2-p.y;selected=lookAt.id||null;zoomAt(Math.max(zoom,1.7),W/2,H/2)}return api},
     d3Force(){return {strength(){return this}}},
     width(v){if(v===undefined)return W;W=v;resize();return api},height(v){if(v===undefined)return H;H=v;resize();return api},
-    onNodeClick(fn){onNode=fn;return api},onNodeDoubleClick(fn){onDoubleNode=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
+    onNodeClick(fn){onNode=fn;return api},onNodeDoubleClick(fn){onDoubleNode=fn;return api},onLinkClick(fn){onLink=fn;return api},selectLink(id){selectedEdgeId=current.links.some(e=>e.id===id)?id:null;return api},onNodeHover(fn){onHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
     // 52K: read-only projection for deterministic browser acceptance checks.
     // This method changes neither the graph nor hit testing / touch behavior.
     auditView(){return {canvas_css_width:W,canvas_css_height:H,
       canvas_pixel_width:canvas.width,canvas_pixel_height:canvas.height,
-      zoom,selected_id:selected,hovered_id:hovered,
+      zoom,selected_id:selected,selected_edge_id:selectedEdgeId,hovered_id:hovered,
       node_count:current.nodes.length,edge_count:current.links.length,
       projected:projected.map(p=>({id:p.n.id,x:p.x,y:p.y,
         depth:p.n._depth??0,focus:!!p.n._focus,
         force_label:!!p.n._forceLabel,
         on_canvas:p.x>=0&&p.x<=W&&p.y>=0&&p.y<=H}))};},
+    // Read-only projection for non-visual pointer test.
+    auditLinkProjection(id){
+      const o=linkObjects.find(x=>x.e.id===id);
+      if(!o)return null;
+      const a=project(o.a),b=project(o.b);
+      return {id,source:o.a.id,target:o.b.id,x1:a.x,y1:a.y,x2:b.x,y2:b.y};
+    },
     nodeColor(fn){if(fn===undefined)return nodeColors;nodeColors=fn;return api},linkColor(fn){if(fn===undefined)return linkColors;linkColors=fn;return api},nodeVal(fn){nodeSize=fn;return api},linkOpacity(n){options.linkOpacity=n;return api}
   };
   for(const prop of ['backgroundColor','showNavInfo','nodeRelSize','nodeResolution','nodeLabel','linkWidth','linkDirectionalArrowLength','warmupTicks','cooldownTicks'])api[prop]=()=>api;
