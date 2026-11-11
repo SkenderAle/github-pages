@@ -1954,3 +1954,35 @@ assieme al ramo già presente `legacy:gf:genere-quartetto-archi` (39 opere Lotto
 
 **Prossima ripresa:** **Lotto49 BWV 111–140**, con triage attribuzioni/versioni/cantate corali e riusi realmente documentati. Per GUI introdurre **paginazione navigabile per ramo**, mantenendo le 121 identità nel catalogo, senza eliminare o oscurare dati arbitrariamente.
 
+### Lotto 49 — BWV 111–140: mottetto BWV 118, varianti, parodie e paginazione completa (11 novembre 2026)
+
+**Pubblicazioni su `main`, solo in `musurgia-atlantis/audit-integrazione/`:**
+- `LOTTO49_34_SCHEDE_BACH_BWV111_140_2026-11-11.json`, commit `1c3c09059729a6a9888ba55c48f60fc6a29caa7c`.
+- `PREVIEW_RADICATA_CHECKPOINT06.html`, integrazione `e7dad58fc02e9b1fb353937d991c062f3d039cd3`, verifica cardinalità `4f7d553f91e5475e2211baa67d8fc287895822dd`, comandi di paginazione `ece97525b565f6d13ab82cb13a21e462e464c47e`.
+- `REGRESSIONE_LOTTO49_BACH_BWV111_140_2026-11-11.json`, commit `65bfc83f42ac3daf78e06a90b87aeda227b90036`.
+- `AUDIT_LOTTO49_BACH_BWV111_140_2026-11-11.md`, commit `8b59411dfdc96c4fd119eaa3aaa0a46f1610e65c`.
+- **Nessuna modifica** al grafo `musurgia-atlantis/grafo.json` né all'`index.html` pubblico.
+
+**Catalogazione:** 34 schede Flaminio, 30 BWV interi 111–140 più suffissi **118a, 120a, 120b, 134a**. **33 opere** distinte + **1 nodo versione**. Di queste 33: **31 cantate sacre**, **1 cantata profana** (BWV134a) e **1 mottetto funebre** (BWV118). **BWV118 NON è cantata**, nonostante la collocazione editoriale fra le BWV 1–200; collegata solo a `legacy:gf:genere-mottetto`. La seconda orchestrazione **BWV118a** in Flaminio è `versione-opera` di 118. **bwv.info la distingue come 118b**: risolvere in seguito le alias, senza creare due versioni per un unico stato di fonte.
+
+**Generi:** 21 classificazioni ulteriori `Cantata corale` per BWV **111,112,113,114,115,116,117,121,122,123,124,125,126,127,129,130,133,135,137,139,140**; non attribuire le tarde BWV 112,117,129,137,140 all'anno 1724–25. BWV138 contiene importante trattamento del corale ma resta senza classificazione automatica in questo lotto. BWV131a è fuga organistica, esclusa dal corpus vocali, non un nuovo brano di cantata.
+
+**Riuso documentato fra specifiche opere e non transitivo:**
+- BWV120 → BWV120a, cantata nuziale del 1729, distinte occasioni/identità;
+- BWV120 → BWV120b, commemorazione della Confessione di Augusta 1730, con parti musicali perdute;
+- BWV134a → BWV134, cantata profana celebrativa di Köthen (1719) riadattata in repertorio pasquale sacro;
+- BWV137 → BWV120a, ripresa del corale.
+HOLD di crosswalk per `BWV120/2→Et expecto BWV232` e `BWV140/4→BWV645` organistico, in attesa dei nodi canonici di opera/movimento; non generati archi immaginari. La funzione di BWV119 Ratswahl e BWV120 Ratswahl va preservata, senza trasformare cantate a testo sacro in profane solo perché cerimoniali/civiche.
+
+**Guide:** l'indice pubblico Flaminio contiene 14 riferimenti individuali ai BWV 114,115,118,119,120,122,125,126,127,129,130,132,139,140. Link assenti lasciati `null`, nessuna pretesa di HTTP test esaustivo. Originale `compositori_flaminio.xlsx` non accessibile in questa sessione: `source_excel_row=null`, da riconciliare.
+
+**Interfaccia / vera paginazione nel codice della preview:** `cantataPageGroup` sceglie Cantata sacra, profana, corale o Mottetto; `cantataLimit` sceglie **12/24 (default)/48/Tutte**; pulsanti `cantataPrev` / `cantataNext` avanzano e retrocedono di pagina **nel solo genere scelto**, mantenendo uno stato indipendente per ogni ramo; `cantataPageStatus` mostra pagina, intervallo e totale. Ordinamento BWV numerico e suffissi in sequenza. Ogni opera resta nel catalogo ed è cercabile direttamente anche quando è fuori dalla pagina corrente. La selezione `Tutte` ripristina tutto il ramo. **Non confondere il test JS con il collaudo dei pulsanti nel browser WebGL**, ancora aperto.
+
+**Regressione riproducibile:** eseguite funzioni JS realmente recuperate dalla preview GitHub con overlay autentico generi legacy (50 nodi / 271 archi), manifesti veri Lotti45–49 e nodo Bach sintetico del banco di prova; **+34 nodi / +93 archi**, **0 duplicati ID nodo/arco / 0 archi nuovi orfani**. Provate **17 radici** (Bach, Cantata, Mottetto, BWV111,118,118a,119,120,120a,120b,134,134a,137,140, Cantata corale, BWV82 e BWV80). Controllo Persone=0, pertinenza dei riusi e identità della versione 118a. **Tutte le pagine** del catalogo esercitate col limite24: Sacre **142 = 24×5+22** su 6 pagine, Profane **10** su 1, Corali **38 = 24+14** su 2, Mottetto **1**. Nessun arco orfano in alcuna pagina testata; `Tutte` restituisce il numero integrale delle opere. Javascript generale passato al parser. NON è una verifica della rete completa `grafo.json`, né del rendering WebGL/browser, né della rete su smartphone.
+
+**Totale staging Lotti45–49:** **154 opere/frammenti** (142 Cantata sacra, 10 Cantata profana, 1 Oratorio BWV11, 1 Mottetto BWV118) più **5 versioni** distinte (BWV80b, 82.1, 82.2, 82.3, 118a). Le **38 cantate corali** sono sottoinsieme delle 142 sacre e non vanno sommate.
+
+**Preview anticache:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/PREVIEW_RADICATA_CHECKPOINT06.html?v=cantate49-20261111
+
+**Prossima ripresa:** Lotto50 **BWV 141–170**: prioritariamente attribuzioni spurie (BWV141/142), versioni e forme, evitando ogni arco autore spurio; estendere la tassonomia solo su evidenza. In parallelo collaudo 3D WebGL/browser della preview e verifica dell'intera federazione, con regressioni Singspiel/Mozart, Sonata, Concerto/Brandeburghesi, Quartetto e Cantata/Mottetto. Nessuna promozione in produzione prima della certificazione.
+
