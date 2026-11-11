@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="it">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Atlantis · Regressione federata 52D</title>
+<meta name="robots" content="noindex,nofollow"><title>Atlantis · Regressione federata 52D / diagnostica 52J</title>
 <style>
 :root{color-scheme:dark;font-family:system-ui,sans-serif}body{background:#07141f;color:#e9f2f2;margin:0}
 header{padding:20px 24px;border-bottom:1px solid #486578}h1{font-size:23px;margin:0 0 7px}
@@ -13,15 +13,17 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#102c3b;border:1px so
 small{color:#abc1c7}a{color:#a5d9ec}
 </style>
 </head>
-<body><header><h1>Musurgia Atlantis · Checkpoint 52D</h1>
-<p>Banco di prova della <strong>federazione effettivamente caricata nella preview</strong>. I 24 JSON sono caricati dalla pagina sottostante; i test non modificano il grafo pubblico.</p></header>
+<body><header><h1>Musurgia Atlantis · Regressione 52D / diagnostica archi 52J</h1>
+<p>Banco di prova della <strong>federazione effettivamente caricata nella preview</strong>. I 24 JSON sono caricati dalla pagina sottostante; i test non modificano il grafo pubblico. La preview usa un renderer Canvas 2D con proiezione tridimensionale, non WebGL.</p></header>
 <main>
 <div id="status" class="status warn">Caricamento in corso. Eseguire la regressione dopo l'inizializzazione.</div>
 <p><button id="run" disabled>Esegui regressione 52D</button>
 <button id="save" disabled>Esporta report JSON</button></p>
-<small>I test controllano ID, archi orfani, radici e collegamenti di Vivaldi. Non sostituiscono una verifica visiva manuale WebGL né un test mobile reale. Un esito PASS_STATIC_DATA non autorizza la promozione in produzione.</small>
+<small>I test controllano ID, archi orfani, radici, classificazioni e archi documentati fra nodi visibili. Le relazioni sospese vengono distinte da quelle davvero omesse. Non sostituiscono una verifica visiva manuale del Canvas né un test mobile reale. Un esito PASS_STATIC_DATA non autorizza la promozione in produzione.</small>
+<p class="status" id="evidenceSummary">Diagnostica 52J degli archi visibili: non ancora eseguita.</p>
+<p><strong>Collaudo manuale ancora richiesto:</strong> in «Mozart» e «Don Giovanni» verificare che compaia il collegamento canonico con Da Ponte senza un duplicato; in «Vivaldi» e nelle quattro Stagioni verificare che tutti i concerti siano selezionabili e collegati; controllare etichette, filtri, zoom e selezione su smartphone.</p>
 <h2>Risultato</h2><pre id="output">Nessun test eseguito.</pre>
-<iframe id="preview" src="./PREVIEW_RADICATA_CHECKPOINT06.html?v=52d-live-20261111" title="Preview Atlantis federata" loading="eager"></iframe>
+<iframe id="preview" src="./PREVIEW_RADICATA_CHECKPOINT06.html?v=52j-edge-diagnostics-20261112" title="Preview Atlantis federata" loading="eager"></iframe>
 </main>
 <script>
 "use strict";
@@ -44,9 +46,21 @@ $("run").addEventListener("click",()=>{
  try{
   result=$("preview").contentWindow.AtlantisCheckpoint52D.run();
   const fail=result.status==="FAIL";
+  const evidence=result.root_tests.reduce((acc,x)=>{
+   const d=x.undrawn_edges_between_visible_nodes||{};
+   acc.unaccounted+=(d.unaccounted_count||0);
+   acc.withheld+=(d.withheld_uncertified_count||0);
+   acc.duplicates+=(d.documented_duplicate_count||0);
+   acc.broken+=d.broken_duplicate_witnesses?.length||0;
+   return acc;
+  },{unaccounted:0,withheld:0,duplicates:0,broken:0});
+  $("evidenceSummary").textContent="Archi non disegnati in 27 viste: "+evidence.unaccounted+
+    " omissioni inspiegate, "+evidence.withheld+" occorrenze sospese ("+evidence.duplicates+
+    " duplicati documentati), "+evidence.broken+" riferimenti canonici irrisolti.";
+  $("evidenceSummary").className="status "+(evidence.unaccounted||evidence.broken?"fail":"pass");
   const failures=result.root_tests.filter(x=>x.status==="FAIL");
   status("Esito "+result.status+": "+result.root_tests.length+" radici, "+failures.length+" radici fallite, "+
-   result.global_violations.orphan_edge_count+" archi orfani globali. Verifica visiva WebGL non certificata.",fail?"fail":"pass");
+   result.global_violations.orphan_edge_count+" archi orfani globali. Verifica visiva Canvas/mobile non certificata.",fail?"fail":"pass");
   $("output").textContent=JSON.stringify(result,null,2);
   $("save").disabled=false;
  }catch(e){status("Esecuzione interrotta: "+e.message,"fail");$("output").textContent=String(e.stack||e)}
