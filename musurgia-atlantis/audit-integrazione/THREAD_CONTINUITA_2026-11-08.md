@@ -2134,3 +2134,19 @@ Ripresa la lavorazione dal 52C. L'ispezione iniziale non ha mostrato nuovi commi
 - **Prova su 10 radici**, grafo reale più i tre overlay pertinenti: nessun duplicato/arco orfano, nessun arco ammesso mancante prima del filtro HOLD; 6 viste (Vivaldi, raccolta e quattro RV) recuperano un arco che i precedenti helper non disegnavano. **Prova successiva sul filtro HOLD:** arco sospeso `E0342` preservato nel dataset ma non disegnato; paternità `E0715` preservata e disegnata. JS 3/3 sintassi valida. Non rivendicare test end-to-end 24 file né WebGL.
 - **Evidenze GitHub**: `REGRESSIONE_CORRETTIVO_ARCHI_CHECKPOINT52E_2026-11-11.json` commit `26e56ed4c1a7d886452f8757a3272e76d956d42c`; `AUDIT_CORRETTIVO_ARCHI_CHECKPOINT52E_2026-11-11.md` commit `40287d64dd59d6a35775594bdb2d17c983c40774`.
 - **Prossimo**: run integrato dei 24 JSON e test delle famiglie Sonata, Quartetto, Opera/Singspiel, Cantata/Brandeburghese con filtri di pertinenza. Nessuna modifica alla produzione.
+
+
+### Checkpoint 52F — Mozart, Don Giovanni, Flauto magico, Singspiel e Opera (11 novembre 2026)
+
+**Riscontro reale:** gli archi `E0736` Mozart→Don Giovanni e `E0739` Mozart→Flauto magico sono nel grafo pubblico; l'overlay Checkpoint19 contiene i sottogeneri `Dramma giocoso` e `Singspiel` e la loro gerarchia teatrale. In preview il percorso radicato in Mozart o nell'opera era completo, **ma partendo da Opera mancava la ricostruzione di Dramma giocoso fra un'opera già mostrata e la categoria madre**.
+
+**Correttivo SOLO staging:** `PREVIEW_RADICATA_CHECKPOINT06.html` commit `e13814bb2468ca66a3ea664fdcc9254307b579f6`. `attachMozartTaxonomy()` ora ricostruisce da `Opera`, con pertinenza ≥2, i sottogeneri documentati delle sole opere Mozart già visualizzate, senza esplorare altri compositori o inventare archi.
+
+**Test mirato su codice reale e grafo originale + overlay legacy/Checkpoint19:** 7 radici (Mozart, Don Giovanni, Flauto magico, Opera, Dramma giocoso, Singspiel, Clementi), 0 archi orfani, 0 ID arco duplicati. **Opera 10 nodi/20 archi** nella prova, con entrambi i percorsi:
+Mozart→Don Giovanni→Dramma giocoso→Opera comica italiana (categoria provvisoria)→Opera;
+Mozart→Flauto magico→Singspiel→Opera.
+`pers:clementi` come test isolato non importa opere Mozart.
+
+**Evidenze GitHub:** `REGRESSIONE_MOZART_OPERA_CHECKPOINT52F_2026-11-11.json` commit `6dfb2f043a4ce1ca3d2c59a9733cac67216a35be`; `AUDIT_MOZART_OPERA_CHECKPOINT52F_2026-11-11.md` commit `415008275bc546da56cb822a8c37b42739530526`.
+
+**Limiti:** test helper-level, non completa federazione dei 24 file né WebGL/browser. Production `grafo.json`/`index.html` invariata. Prossimo: Sonata/Quartetto/Cantata, allineamento filtri e correzioni ulteriori delle identità musicali sospette.
