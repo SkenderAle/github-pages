@@ -2125,3 +2125,12 @@ Ripresa la lavorazione dal 52C. L'ispezione iniziale non ha mostrato nuovi commi
 **Esecuzione disponibile:** https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/REGRESSIONE_FEDERATA_CHECKPOINT52D.html
 
 **Prossimo:** eseguire la suite, allegare il JSON di risultato nello staging, correggere regressioni dimostrate e quindi proseguire verso collaudo visivo e 52E. `musurgia-atlantis/grafo.json` e `index.html` pubblici non modificati.
+
+
+### Checkpoint 52E — Completa gli archi fra nodi visibili, senza promuovere HOLD (11 novembre 2026)
+
+- **Correzione reale nello staging** `PREVIEW_RADICATA_CHECKPOINT06.html`: `704cb46f5c44af14ee47e7b01a426ebd192c6133` introduce `completeVisibleEvidence52E()` dopo la ricostruzione radicata. Rende visibili tutti gli archi già presenti nel dataset i cui due nodi sono già nella vista e che gli helper non hanno emesso; **non aggiunge nodi, non inventa archi, non apre altri autori tramite il genere**.
+- **Salvaguardia filologica** `8af6fe3758b07836675b3c27e820f6f775609f7c`: sospensioni, link non riscontrati e negazioni esplicite restano nel database, ma non sono riproposti automaticamente come legami certificati. I controlli attuali non costituiscono audit completo di tutti i quality gate.
+- **Prova su 10 radici**, grafo reale più i tre overlay pertinenti: nessun duplicato/arco orfano, nessun arco ammesso mancante prima del filtro HOLD; 6 viste (Vivaldi, raccolta e quattro RV) recuperano un arco che i precedenti helper non disegnavano. **Prova successiva sul filtro HOLD:** arco sospeso `E0342` preservato nel dataset ma non disegnato; paternità `E0715` preservata e disegnata. JS 3/3 sintassi valida. Non rivendicare test end-to-end 24 file né WebGL.
+- **Evidenze GitHub**: `REGRESSIONE_CORRETTIVO_ARCHI_CHECKPOINT52E_2026-11-11.json` commit `26e56ed4c1a7d886452f8757a3272e76d956d42c`; `AUDIT_CORRETTIVO_ARCHI_CHECKPOINT52E_2026-11-11.md` commit `40287d64dd59d6a35775594bdb2d17c983c40774`.
+- **Prossimo**: run integrato dei 24 JSON e test delle famiglie Sonata, Quartetto, Opera/Singspiel, Cantata/Brandeburghese con filtri di pertinenza. Nessuna modifica alla produzione.
