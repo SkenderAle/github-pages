@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Atlantis · Regressione federata 52D</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif}body{background:#07141f;color:#e9f2f2;margin:0}
+header{padding:20px 24px;border-bottom:1px solid #486578}h1{font-size:23px;margin:0 0 7px}
+p{line-height:1.5}main{padding:18px 24px}button{background:#326b80;color:white;border:1px solid #91bfcc;border-radius:8px;padding:11px 16px;font-size:15px;cursor:pointer;margin:4px}
+button:disabled{opacity:.45;cursor:not-allowed}.status{padding:12px;border:1px solid #517083;border-radius:8px}
+.pass{color:#8ee4ad}.fail{color:#ffb1a6}.warn{color:#ffd894}
+iframe{margin-top:16px;width:100%;height:65vh;min-height:420px;border:1px solid #547384;border-radius:8px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#102c3b;border:1px solid #3e6578;padding:12px;border-radius:8px;max-height:400px;overflow:auto}
+small{color:#abc1c7}a{color:#a5d9ec}
+</style>
+</head>
+<body><header><h1>Musurgia Atlantis · Checkpoint 52D</h1>
+<p>Banco di prova della <strong>federazione effettivamente caricata nella preview</strong>. I 24 JSON sono caricati dalla pagina sottostante; i test non modificano il grafo pubblico.</p></header>
+<main>
+<div id="status" class="status warn">Caricamento in corso. Eseguire la regressione dopo l'inizializzazione.</div>
+<p><button id="run" disabled>Esegui regressione 52D</button>
+<button id="save" disabled>Esporta report JSON</button></p>
+<small>I test controllano ID, archi orfani, radici e collegamenti di Vivaldi. Non sostituiscono una verifica visiva manuale WebGL né un test mobile reale. Un esito PASS_STATIC_DATA non autorizza la promozione in produzione.</small>
+<h2>Risultato</h2><pre id="output">Nessun test eseguito.</pre>
+<iframe id="preview" src="./PREVIEW_RADICATA_CHECKPOINT06.html?v=52d-live-20261111" title="Preview Atlantis federata" loading="eager"></iframe>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+let result=null;let tries=0;
+const status=(message,cls="warn")=>{$("status").className="status "+cls;$("status").textContent=message};
+function ready(){
+ try{
+ const frame=$("preview").contentWindow;
+ const hook=frame?.AtlantisCheckpoint52D;
+ const data=hook?.status?.();
+ if(data?.initError){status("Inizializzazione fallita: "+data.initError,"fail");return true}
+ if(data?.ready){$("run").disabled=false;status("Preview pronta: "+data.nodeCount+" nodi e "+data.edgeCount+" archi federati. Puoi avviare il test.","pass");return true}
+ }catch(e){status("Impossibile accedere alla preview: "+e.message,"fail");return true}
+ return false;
+}
+const check=setInterval(()=>{tries++;if(ready()||tries>180){clearInterval(check);if(tries>180)status("Tempo massimo raggiunto: consultare gli errori nella preview incorporata.","fail")}},500);
+$("run").addEventListener("click",()=>{
+ $("run").disabled=true;status("Regressione in esecuzione…");
+ try{
+  result=$("preview").contentWindow.AtlantisCheckpoint52D.run();
+  const fail=result.status==="FAIL";
+  const failures=result.root_tests.filter(x=>x.status==="FAIL");
+  status("Esito "+result.status+": "+result.root_tests.length+" radici, "+failures.length+" radici fallite, "+
+   result.global_violations.orphan_edge_count+" archi orfani globali. Verifica visiva WebGL non certificata.",fail?"fail":"pass");
+  $("output").textContent=JSON.stringify(result,null,2);
+  $("save").disabled=false;
+ }catch(e){status("Esecuzione interrotta: "+e.message,"fail");$("output").textContent=String(e.stack||e)}
+ finally{$("run").disabled=false}
+});
+$("save").addEventListener("click",()=>{
+ if(!result)return;
+ const blob=new Blob([JSON.stringify(result,null,2)+"\n"],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");a.href=url;a.download="REGRESSIONE_FEDERATA_52D_"+new Date().toISOString().slice(0,10)+".json";
+ a.click();URL.revokeObjectURL(url);
+});
+</script></body></html>
