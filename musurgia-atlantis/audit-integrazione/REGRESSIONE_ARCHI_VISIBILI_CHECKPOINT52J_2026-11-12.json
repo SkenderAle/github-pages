@@ -1,0 +1,151 @@
+{
+  "checkpoint": "52J",
+  "date": "2026-11-12",
+  "status": "PASS_DATA_ONLY",
+  "files_loaded": 24,
+  "source_preview_sha": "b0727343e3a35bef2c8d7c1fa898efba02ff2a19",
+  "published_preview_commit": "5d745330889a87e201ad96ae31e6dfa233b2e35e",
+  "runtime_kind": "actual preview federation + rooted engine + diagnostic in isolated V8 with nonvisual engine stub",
+  "qualification": "No real browser rendering, Canvas screenshot or Android interaction; WebGL is not used by preview",
+  "results": {
+    "node_count": 1390,
+    "edge_count": 3391,
+    "root_count": 27,
+    "root_failures": 0,
+    "duplicate_nodes": [],
+    "duplicate_edges": [],
+    "orphan_edges": 0,
+    "unaccounted_undrawn_edges": 0,
+    "withheld_duplicate_occurrences": 2,
+    "edge_witnesses": [
+      {
+        "root": "pers:mozart",
+        "details": {
+          "count": 1,
+          "withheld_uncertified_count": 1,
+          "documented_duplicate_count": 1,
+          "unaccounted_count": 0,
+          "broken_duplicate_witnesses": [],
+          "withheld_examples": [
+            {
+              "id": "L02-A07",
+              "reason": "quality_gate:sospeso",
+              "duplicate_of": "E0873"
+            }
+          ],
+          "unaccounted_examples": []
+        },
+        "status": "PASS",
+        "notes": []
+      },
+      {
+        "root": "opera:Don-giovanni",
+        "details": {
+          "count": 1,
+          "withheld_uncertified_count": 1,
+          "documented_duplicate_count": 1,
+          "unaccounted_count": 0,
+          "broken_duplicate_witnesses": [],
+          "withheld_examples": [
+            {
+              "id": "L02-A07",
+              "reason": "quality_gate:sospeso",
+              "duplicate_of": "E0873"
+            }
+          ],
+          "unaccounted_examples": []
+        },
+        "status": "PASS",
+        "notes": []
+      }
+    ],
+    "category_depth_zero_tests": [
+      {
+        "root": "pers:vivaldi",
+        "categoryDepthZero": "persona",
+        "forbiddenNodes": [],
+        "status": "PASS"
+      },
+      {
+        "root": "legacy:gf:genere-concerto",
+        "categoryDepthZero": "persona",
+        "forbiddenNodes": [],
+        "status": "PASS"
+      },
+      {
+        "root": "pers:mozart",
+        "categoryDepthZero": "opera",
+        "forbiddenNodes": [],
+        "status": "PASS"
+      },
+      {
+        "root": "legacy:gf:genere-sonata",
+        "categoryDepthZero": "opera",
+        "forbiddenNodes": [],
+        "status": "PASS"
+      }
+    ],
+    "catalogue_invariants_52h": [
+      {
+        "name": "JCF Bach B37–42: six continuo quartets",
+        "status": "PASS",
+        "evidence": {
+          "member_count": 6,
+          "subgenre": "atlas:gf:quartetto-flauto-violino-viola-continuo"
+        }
+      },
+      {
+        "name": "Mozart K285b disputed: no automatic authored-work node",
+        "status": "PASS",
+        "evidence": {
+          "held_candidate_id": "fl43:mozart:quartetto-k-285b"
+        }
+      },
+      {
+        "name": "BWV189 remains attribution HOLD",
+        "status": "PASS",
+        "evidence": {
+          "held_id": "fl51:jsbach:bwv189"
+        }
+      },
+      {
+        "name": "BWV200 is surviving fragment, not complete cantata",
+        "status": "PASS",
+        "evidence": {
+          "id": "fl51:jsbach:bwv200",
+          "completeness": "one_surviving_aria_fragment"
+        }
+      },
+      {
+        "name": "BWV1048→BWV174: original movement reuse survives",
+        "status": "PASS",
+        "evidence": {
+          "source": "audit:flaminio:bach:bwv1048",
+          "target": "fl51:jsbach:bwv174",
+          "arcs": [
+            "fl51:reuse:11"
+          ]
+        }
+      },
+      {
+        "name": "Quartetto→Quartetto per archi hierarchy exists",
+        "status": "PASS",
+        "evidence": {
+          "parent": "atlas:gf:quartetto",
+          "child": "legacy:gf:genere-quartetto-archi"
+        }
+      }
+    ],
+    "renderer_technology": "canvas_2d_3d_projection",
+    "webgl_renderer_constructed": false
+  },
+  "unchanged": [
+    "musurgia-atlantis/grafo.json",
+    "musurgia-atlantis/index.html"
+  ],
+  "pending": [
+    "Actual browser/Android visual verification",
+    "Interactivity test for Canvas 2D label and edge selection",
+    "Review visibility filters and category depth effects in real UI"
+  ]
+}
