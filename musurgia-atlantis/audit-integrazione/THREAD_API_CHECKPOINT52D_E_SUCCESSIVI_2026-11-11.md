@@ -885,3 +885,11 @@ Mozart→Flauto magico→Singspiel→Opera.
 **Evidenze GitHub:** `REGRESSIONE_MOZART_OPERA_CHECKPOINT52F_2026-11-11.json` commit `6dfb2f043a4ce1ca3d2c59a9733cac67216a35be`; `AUDIT_MOZART_OPERA_CHECKPOINT52F_2026-11-11.md` commit `415008275bc546da56cb822a8c37b42739530526`.
 
 **Limiti:** test helper-level, non completa federazione dei 24 file né WebGL/browser. Production `grafo.json`/`index.html` invariata. Prossimo: Sonata/Quartetto/Cantata, allineamento filtri e correzioni ulteriori delle identità musicali sospette.
+
+## Ripresa 52G fase 1 — Sonata per pianoforte / Berg op. 1
+
+**11 novembre 2026.** Sul branch `main`, solo staging, è stato corretto `prepareSonata39` affinché la Sonata op.1 di Alban Berg (`audit:fl15:l06:w01`) entri nella famiglia navigabile `Sonata per pianoforte` quando il manifest Flaminio17 documenta faccette `sonata` e `pianoforte solo` e gli archi fonte `audit:fl15:e0033` (Berg→opera) e `audit:fl15:e0034` (opera→Sonata). Non inventare attribuzioni, collegamenti autore-autore o prove indipendenti. I due nuovi archi derivati di indice verso il sottogenere conservano `preview_only`, `source_attested_not_independently_certified` e provenienza Flaminio. Non confondere i sottogeneri con opere o raccolte. Non cancellare archi documentati per alleggerire la visualizzazione.
+
+**Commit preview:** `bdf3e72c52edc09407c02ba9d7490a91d4303093`. **Audit:** `AUDIT_SONATA_FLAMINIO_CHECKPOINT52G_2026-11-11.md`, commit `9d5c9df26a9da819e2db31012b81e54a0f29ef9d`. **Thread madre:** aggiornato al commit `4b75d59d198ce3bb326a64a057f6a40c81b005f1`. Test: sintassi JS inline PASS, helper mirato su fonte Berg + fixture PASS (nessun orfano/duplicato); **non** end-to-end 24 JSON, **non** WebGL/browser. File di produzione invariati.
+
+**Da fare al prossimo agente:** regressione federata per Sonata / Quartetto / Cantata nel runtime reale, controllo dei quality gate e HOLD, esecuzione della suite `REGRESSIONE_FEDERATA_CHECKPOINT52D.html` con esportazione report e prova mobile WebGL. Il 52G è **aperto**, non dichiararlo certificato PASS.
