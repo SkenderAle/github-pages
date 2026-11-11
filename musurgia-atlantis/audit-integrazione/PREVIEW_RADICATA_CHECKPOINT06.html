@@ -3432,7 +3432,112 @@ async function init(){
  addEventListener("resize",()=>engine.width($("graph").clientWidth).height($("graph").clientHeight));
  engine.width($("graph").clientWidth).height($("graph").clientHeight);setRoot(currentRoot,{fit:true});
 }
+
+// Checkpoint 52D diagnostics: live federated runtime, no source mutation.
+// Runs only on demand from the separate staging audit page. Does not certify
+// browser rendering visually; results contain exact observed evidence.
+window.AtlantisCheckpoint52D={
+ status:()=>({ready:!!dataset?.nodes?.length&&!!renderer&&!!engine,
+  nodeCount:dataset?.nodes?.length||0,edgeCount:dataset?.links?.length||0,
+  webglRendererAvailable:!!engine,initError:window.atlantis52dInitError||null}),
+ run:()=>{
+  if(!dataset?.nodes?.length||!renderer||!engine)
+   throw Error("Federated preview not initialized: 24-file pipeline unavailable");
+  const started=new Date().toISOString(),savedRoot=currentRoot;
+  const roots=[
+   "pers:vivaldi","opera:quattro-stagioni",
+   "atlas:vivaldi-rv269-op8-1","atlas:vivaldi-rv315-op8-2",
+   "atlas:vivaldi-rv293-op8-3","atlas:vivaldi-rv297-op8-4",
+   "legacy:gf:genere-concerto","audit:gf25:concerto-solistico",
+   "audit:gf25:concerto-di-gruppo","legacy:gf:forma-concerto-grosso",
+   "atlas:gf:concerto-per-violino","atlas:gf:concerto-brandeburghese",
+   "pers:bach","pers:mozart","legacy:gf:genere-sonata",
+   "atlas:gf:sonata-per-pianoforte","atlas:gf:quartetto",
+   "legacy:gf:genere-quartetto-archi",SINGSPIEL45,
+   C45_SACRED,C45_SECULAR,C46_CHORALE,C49_MOTET
+  ];
+  const optionalMatches=[
+   ["Don Giovanni",n=>n.category==="opera"&&/don giovanni/i.test(n.name||"")],
+   ["Il flauto magico",n=>n.category==="opera"&&/flauto magico|zauberflöte/i.test(n.name||"")],
+   ["BWV174",n=>n.category==="opera"&&/bwv\\s*174(?!\\d)/i.test(n.name||"")],
+   ["BWV200",n=>n.category==="opera"&&/bwv\\s*200(?!\\d)/i.test(n.name||"")]
+  ];
+  const resolved=optionalMatches.map(([label,fn])=>({label,id:dataset.nodes.find(fn)?.id||null}));
+  for(const x of resolved)if(x.id&&!roots.includes(x.id))roots.push(x.id);
+  const limits={persona:5,opera:5,"versione-opera":5,"parte-di-opera":5,
+   allestimento:5,produzione:5,"rete-culturale":5,"genere-forma":5,
+   "nodo-di-senso":5,luogo:5,strumento:5};
+  const ids=new Set(dataset.nodes.map(n=>n.id));
+  const edgeIds=new Set(dataset.links.map(e=>e.id));
+  const duplicated=(items)=>{const seen=new Set(),duplicates=new Set();
+   for(const item of items){if(seen.has(item))duplicates.add(item);seen.add(item)}
+   return [...duplicates]};
+  const globalDupNodes=duplicated(dataset.nodes.map(n=>n.id));
+  const globalDupEdges=duplicated(dataset.links.map(e=>e.id));
+  const orphans=dataset.links.filter(e=>!ids.has(e.source)||!ids.has(e.target));
+  const cases=[];
+  const seasonIds=[...seasons52.ids];
+  try{
+   for(const root of roots){
+    currentRoot=root;
+    const row={root,exists:ids.has(root),status:"PASS",
+     nodes:null,edges:null,orphans:[],duplicateNodes:[],duplicateEdges:[],
+     detectedEdges:{},notes:[]};
+    if(!row.exists){row.status="FAIL";row.notes.push("missing required graph node");cases.push(row);continue}
+    try{
+     const graph=getRootedPreview(5,2,limits);
+     const nodeSet=new Set(graph.nodes.map(n=>n.id));
+     row.nodes=graph.nodes.length;row.edges=graph.links.length;
+     row.duplicateNodes=duplicated(graph.nodes.map(n=>n.id));
+     row.duplicateEdges=duplicated(graph.links.map(e=>e.id));
+     row.orphans=graph.links.filter(e=>!nodeSet.has(e.source)||!nodeSet.has(e.target)).map(e=>e.id);
+     row.detectedEdges.seasons=graph.links.filter(e=>e.id?.startsWith("atlas:seasons52:")).length;
+     row.detectedEdges.originalVivaldi=graph.links.some(e=>e.id==="E0715");
+     row.detectedEdges.taxonomy=graph.links.filter(e=>
+      (e.source==="atlas:gf:concerto-per-violino"&&e.target==="audit:gf25:concerto-solistico")||
+      (e.source==="audit:gf25:concerto-solistico"&&e.target==="legacy:gf:genere-concerto")).map(e=>e.id);
+     row.detectedEdges.reuseBrandeburgBWV174=graph.links.filter(e=>
+      e.source==="audit:flaminio:bach:bwv1048"&&/bwv174/i.test(e.target)).map(e=>e.id);
+     if(row.orphans.length||row.duplicateNodes.length||row.duplicateEdges.length)row.status="FAIL";
+     if(["pers:vivaldi","opera:quattro-stagioni"].includes(root)&&
+      seasonIds.some(id=>!nodeSet.has(id))){row.status="FAIL";row.notes.push("One of four RV works missing")}
+     if(root==="pers:bach"&&graph.links.some(e=>e.id?.startsWith("atlas:seasons52:"))){
+      row.status="FAIL";row.notes.push("Foreign Vivaldi repertoire leaked into Bach rooted view")}
+     if((root==="pers:vivaldi"||root==="opera:quattro-stagioni")&&
+      !row.detectedEdges.originalVivaldi){row.status="FAIL";row.notes.push("E0715 not visible")}
+    }catch(error){row.status="FAIL";row.notes.push(String(error))}
+    cases.push(row);
+   }
+  }finally{currentRoot=savedRoot}
+  const categoryCounts={};for(const n of dataset.nodes)
+   categoryCounts[n.category]=(categoryCounts[n.category]||0)+1;
+  const allViolations={
+   duplicate_nodes:globalDupNodes,duplicate_edges:globalDupEdges,
+   orphan_edges:orphans.slice(0,100).map(x=>x.id),orphan_edge_count:orphans.length,
+   direct_person_to_person_links:dataset.links.filter(e=>{
+    const nodeById=window.__atlas52dCategoryIndex;
+    return e.relation==="ha_composto"&&
+      ids.has(e.source)&&ids.has(e.target)&&
+      (nodeById?.get(e.target)==="persona");
+   }).map(e=>e.id)
+  };
+  const fail=globalDupNodes.length+globalDupEdges.length+orphans.length+
+   cases.filter(x=>x.status==="FAIL").length;
+  return {schema:"musurgia-atlantis-checkpoint52d-runtime-audit-v1",
+   status:fail?"FAIL":"PASS_STATIC_DATA",
+   qualification:"Browser rendered viewport and mobile WebGL are NOT independently visually certified",
+   tested_at:started,finished_at:new Date().toISOString(),
+   files_required_by_preview:24,
+   pipeline_executed:true,dataset:{nodes:dataset.nodes.length,edges:dataset.links.length,
+    categories:categoryCounts,seasonalWorks:seasons52.ids.size,seasonalEdges:seasons52.edges.length},
+   global_violations:allViolations,optional_root_resolution:resolved,
+   root_tests:cases,webgl_renderer_constructed:!!engine,
+   visual_browser_verification:"NOT_CERTIFIED",
+   production_modified:false};
+ }
+};
 init().catch(e=>{
+ window.atlantis52dInitError=String(e);
  console.error(e);
  $("stats").textContent="Caricamento non riuscito";
  say("Errore: "+(e.name==="AbortError"?"tempo di caricamento superato (30 secondi)":e.message)+". Ricarica la pagina per riprovare.");
