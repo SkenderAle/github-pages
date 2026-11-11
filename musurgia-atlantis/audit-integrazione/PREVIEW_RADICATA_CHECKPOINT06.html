@@ -3538,6 +3538,8 @@ window.AtlantisCheckpoint52K={
   current_root:currentRoot,renderer_technology:"canvas_2d_3d_projection",
   view:engine?.auditView?.()??null,
   visible_nodes:last?.nodes?.length??null,visible_edges:last?.links?.length??null,
+  visible_opera_nodes:last?.nodes?.filter(n=>n.category==="opera").length??null,
+  forced_work_labels:last?.nodes?.filter(n=>n.category==="opera"&&n._forceLabel).length??null,
   init_error:window.atlantis52dInitError||null})
 };
 
