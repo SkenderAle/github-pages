@@ -3146,12 +3146,22 @@ function getRootedPreviewCore(maxDepth,relevance,depthByCategory){
 function completeVisibleEvidence52E(result){
  const visible=new Set(result.nodes.map(n=>n.id));
  const present=new Set(result.links.map(e=>e.id));
- const added=[];
+ const added=[],held=[];
+ const inHold=edge=>
+  ["sospeso","non_riscontrato","frottola_non_attestata_in_melodramma",
+   "retorica_barocca_non_trattata"].includes(edge.quality_gate)||
+  /^(sospes|hold|non_riscontrato)/i.test(edge.verification_status||"")||
+  /ponte_editoriale_non_documentato/.test(edge.relation||"")||
+  /^(hold|rejected|suspended)/i.test(edge.status||"");
  for(const edge of dataset.links){
   if(!edge?.id||!visible.has(edge.source)||!visible.has(edge.target)||present.has(edge.id))continue;
+  // HOLD/rejected facts stay in the source database and audit queue but must
+  // not silently gain the authority of a visible, certified historical edge.
+  if(inHold(edge)){held.push(edge.id);continue}
   result.links.push({...edge});present.add(edge.id);added.push(edge.id);
  }
- result.evidenceCompletion52E={added_count:added.length,added_ids:added};
+ result.evidenceCompletion52E={added_count:added.length,added_ids:added,
+  withheld_uncertified_count:held.length,withheld_ids:held};
  return result;
 }
 function getRootedPreview(maxDepth,relevance,depthByCategory){
