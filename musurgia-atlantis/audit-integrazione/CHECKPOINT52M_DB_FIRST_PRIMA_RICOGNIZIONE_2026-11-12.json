@@ -1,0 +1,118 @@
+{
+  "schema": "musurgia-atlantis-database-first-checkpoint52m-v1",
+  "checkpoint": "52M",
+  "date": "2026-11-12",
+  "classification": "PARTIAL_RECORD_AUDIT_NOT_FULL_CORPUS_CERTIFICATION",
+  "priorities": {
+    "catalogue_records_first": true,
+    "gui_testing_deferred": true,
+    "public_graph_unchanged": true
+  },
+  "corpus_reference": {
+    "full_flaminio_source_rows": 52150,
+    "authors_source_labels": 149,
+    "documentary_candidates_first_heuristic": 46205,
+    "manual_recheck_first_heuristic": 5945,
+    "original_excel": "compositori_flaminio.xlsx!Sheet1 A1:H52151",
+    "coverage_warning": "Heuristic counts only, not certified works; sources not all fully uploaded as raw source partitions."
+  },
+  "sample_lot": {
+    "file": "LOTTO51_37_SCHEDE_BACH_BWV171_200_2026-11-11.json",
+    "blob_sha": "23b0f993f927392a40bcfe01ea783c1f2ccdd23c",
+    "rows": 37,
+    "bach_author_attested": 36,
+    "held_attribution": 1,
+    "hold_code": "BWV 189",
+    "reuse_relations": 11,
+    "internal_relations": 8,
+    "crosslot_relations": 3,
+    "checks": {
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "items": [
+        {
+          "name": "entry_count_matches",
+          "status": "PASS"
+        },
+        {
+          "name": "accepted_count_matches",
+          "status": "PASS"
+        },
+        {
+          "name": "hold_count_matches",
+          "status": "PASS"
+        },
+        {
+          "name": "unique_entry_ids",
+          "status": "PASS"
+        },
+        {
+          "name": "unique_bwv_codes",
+          "status": "PASS"
+        },
+        {
+          "name": "unique_relation_ids",
+          "status": "PASS"
+        },
+        {
+          "name": "valid_source_urls",
+          "status": "PASS"
+        },
+        {
+          "name": "primary_genre_in_genres",
+          "status": "PASS"
+        },
+        {
+          "name": "no_bach_assignment_bwv189",
+          "status": "PASS"
+        },
+        {
+          "name": "relation_count_matches",
+          "status": "PASS"
+        },
+        {
+          "name": "internal_relation_targets_present",
+          "status": "PASS"
+        }
+      ]
+    },
+    "metadata_gaps": {
+      "source_excel_row_resolved": 0,
+      "individual_guide_url_resolved": 0
+    },
+    "crosslot_references": [
+      {
+        "edge": "fl51:reuse:9",
+        "id": "fl45:jsbach:bwv205",
+        "source_file": "LOTTO45_25_SCHEDE_CANTATE_BACH_2026-11-11.json",
+        "exists_exact_once": true
+      },
+      {
+        "edge": "fl51:reuse:10",
+        "id": "fl46:jsbach:bwv41",
+        "source_file": "LOTTO46_35_SCHEDE_BACH_BWV21_50_2026-11-11.json",
+        "exists_exact_once": true
+      },
+      {
+        "edge": "fl51:reuse:11",
+        "id": "audit:flaminio:bach:bwv1048",
+        "source_file": "STAGING_BACH_BRANDEBURGHESI_CHECKPOINT27_2026-11-10.json",
+        "exists_exact_once": true
+      }
+    ],
+    "caveats": [
+      "No independent re-verification of musicological claims at Checkpoint 52M.",
+      "A source URL linking to a catalogue page is not an individual guide link.",
+      "Inter-lot endpoint existence was checked; not a separate historical verification of each relation.",
+      "This 37-record audit is a sample, not coverage of the 52,150 rows."
+    ]
+  },
+  "next_db_tasks": [
+    "Inventory all source rows by stable source ID and all previously handled batches without duplication",
+    "Construct an auditable source_row -> canonical work / collection / part / version identity registry",
+    "Classify unresolved collisions, attribution HOLD and multi-genre relations using cited sources",
+    "Continue substantive cataloguing with BWV 201–250 and other uncovered records after deduplication"
+  ],
+  "gui_checkpoint_52M_browser_status": "DEFERRED_BY_USER"
+}
