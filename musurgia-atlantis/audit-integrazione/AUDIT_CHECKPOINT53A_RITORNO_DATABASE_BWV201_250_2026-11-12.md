@@ -29,7 +29,7 @@ Crosswalk salvato in `CROSSWALK_CHECKPOINT53A_BWV201_250_VS_ATLANTIS_2026-11-12.
 ### Progressione obbligatoria dal prossimo checkpoint 53B
 
 1. Recuperare **davvero** il sorgente `compositori_flaminio.xlsx` (52.150 righe e 149 etichette autore nell'ultimo inventario), o la sua rappresentazione integra. Reperire per ciascuna scheda di BWV 201–250 le **righe esatte** e non inventare `source_excel_row`. Lo stesso vale per gli altri 149 repertori.
-2. Crosswalk `riga Flaminio → compositore certo → namespace di catalogo → opera / raccolta / parte / versione / frammento` su **entrambi** i grafi e sugli overlay; riaprire i 448 gruppi P0 e 136 P1 solo con prove puntuali già censiti nei Lotti21–22, senza ri-eseguire il triage da zero.
+2. Crosswalk `riga Flaminio → compositore certo → namespace di catalogo → opera / raccolta / parte / versione / frammento` su **entrambi** i grafi e sugli overlay; riprendere lo **stato corretto e più avanzato dei Lotti22–25**: 447 P0 e 30 P1 erano già stati riclassificati; il Lotto24 ha risolto strutturalmente 435/447 P0 e isolato **12 gruppi con 17 partizioni ripetute per 112 righe**, già preservate nel Lotto25. Le 30 P1 sono state triagiate nel Lotto23, non ripartire dal vecchio saldo 448/136 e non ri-eseguire il triage da zero.
 3. Sottoporre a verifiche filologiche specifiche i HOLD, registrando per ogni arco la frase direzionale, fonte, qualificazione della prova e stato. I generi e forme sono un albero di dati, non scorciatoie per inferire relazioni fra compositori.
 4. Pubblicare manifesti di record completi nello staging, poi audit globale di duplicati, archi orfani, paternità improprie e perdita di metadati prima del database consolidato. L'eventuale GUI si riprende solo dopo la certificazione catalografica.
 
