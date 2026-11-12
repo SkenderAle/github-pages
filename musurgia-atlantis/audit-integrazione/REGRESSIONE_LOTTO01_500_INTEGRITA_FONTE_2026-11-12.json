@@ -1,0 +1,52 @@
+{
+  "schema": "musurgia-atlantis-lotto01-linked-500-source-graph-test-v1",
+  "date": "2026-11-12",
+  "lot": 1,
+  "status": "PASS_SOURCE_INTEGRITY_ONLY",
+  "qualification": "SOURCE GRAPH ONLY; NOT HISTORICAL DATABASE OR GUI BROWSER CERTIFICATION",
+  "metrics": {
+    "raw_source_records": 500,
+    "exact_referenced_overlay_records": 92,
+    "unmatched_by_exact_criteria": 408,
+    "url_distinct": 494,
+    "source_graph_nodes": 574,
+    "source_graph_edges": 1000,
+    "node_categories": {
+      "intestazione_autore_flaminio": 10,
+      "scheda_catalogo_flaminio": 500,
+      "rubrica_fonte_flaminio": 64
+    },
+    "duplicate_node_ids": 0,
+    "orphan_edges": 0,
+    "duplicate_edge_ids": 0,
+    "inline_view_javascript_syntax": "PASS",
+    "graphics_browser_executed": false,
+    "mobile_device_acceptance": false,
+    "canonical_atlantis_work_certified": 0,
+    "production_promoted": false
+  },
+  "exceptions": {
+    "GUIDA_CONDIVISA_CON_ALTRA_RIGA": 12,
+    "NUMERO_CATALOGO_NON_PRESENTE": 4,
+    "ALLERTA_ATTRIBUZIONE_TESTUALE_DA_VERIFICARE": 71,
+    "TRIADE_AUTORE_NUMERO_TITOLO_RIPETUTA": 89
+  },
+  "errors": [],
+  "report_pointers": [
+    "AUDIT_IDENTITA_LOTTO01_500_RECORD_FEDERAZIONE_2026-11-12.json",
+    "CROSSWALK_LOTTO01_500_OVERLAY_SHARD01_2026-11-12.json",
+    "CROSSWALK_LOTTO01_500_OVERLAY_SHARD02_2026-11-12.json",
+    "CROSSWALK_LOTTO01_500_OVERLAY_SHARD03_2026-11-12.json",
+    "GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json",
+    "VISTA_GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.html"
+  ],
+  "unresolved": [
+    "408 rows lack an exact provenance hit in the scanned 23 federated manifests; these rows may nevertheless already exist in Atlantis under aliases or other overlays",
+    "92 matches are source-level references, not automatically certified work IDs",
+    "Online HTTP/live content availability of each of the 494 distinct guide URLs not batch verified",
+    "71 attribution-related flags are keyword screening, not individually corroborated critical-source decisions",
+    "Historical author/work/genre/part/version identities and all corresponding canonical arcs still need work-specific checking",
+    "Preview not executed in real browser or Android device; visual layout and 500/500 selection not certified",
+    "No changes to public Atlantis canonical graph or frontend"
+  ]
+}
