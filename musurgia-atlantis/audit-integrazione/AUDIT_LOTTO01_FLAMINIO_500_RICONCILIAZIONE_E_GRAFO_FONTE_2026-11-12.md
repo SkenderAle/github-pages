@@ -50,3 +50,9 @@ Pagina di ispezione `VISTA_GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.html`, co
 5. Eseguire collaudo del grafo storico effettivamente pubblicato, **500/500 record rintracciabili** nella visualizzazione e zero regressioni; chiudere `Lotto 01` solo a questo punto. Il precedente collaudo della sola sorgente non è sufficiente.
 
 **Regola utente vincolante:** lavorare soltanto su 7.412 record con guida, in 14 lotti da 500 e uno da 412; rimandare i 44.738 senza guida. **Lotti conclusi: 0/15.**
+
+### Addendum — test funzionale del codice della vista, ambiente simulato
+
+È stato **eseguito il codice JavaScript effettivamente pubblicato nella pagina di staging**, con un DOM simulato, `fetch` alimentato dal grafo JSON originale pubblicato e motore grafico compatibile simulato. Risultato `PASS_SIMULATED_DOM_ONLY`: **500/500 schede richiamate per la loro riga Excel e scheda dettagli aperta**, **10/10 filtri autore**, 5 ricerche campione e 10 callback di scheda arco, tutti senza errori. Rapporto `REGRESSIONE_LOGICA_VISTA_LOTTO01_500_2026-11-12.json`, commit `7553f577fd0aa1774c472624dc147ef446101a1e`.
+
+**Qualifica rigorosa:** non è stato avviato il browser Chromium reale sulla pagina pubblicata; il renderer grafico e le sue geometrie di disegno sono simulati. Quindi la selezionabilità logica 500/500 NON certifica la leggibilità delle etichette, le interazioni reali, la rete, il pinch Android o l'integrazione delle 500 identità nella vista storica Atlantis. Il lotto resta `APERTO`.
