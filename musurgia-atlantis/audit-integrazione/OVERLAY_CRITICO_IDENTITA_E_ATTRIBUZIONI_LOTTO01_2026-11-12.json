@@ -1,0 +1,697 @@
+{
+  "schema": "musurgia-atlantis-lotto01-work-specific-scholarly-correction-layer-v1",
+  "date": "2026-11-12",
+  "lot": 1,
+  "status": "STAGING_CRITICAL_CORRECTIONS_NOT_PRODUCTION",
+  "scope": "10 works matched to 14 source records, seven specific composer-work attributions, six genre relations, one staged context relation",
+  "sources_policy": "Each edge has work-specific URL; original source rows untouched; authorship disputed works have no composer edge",
+  "counts": {
+    "work_entities": 10,
+    "source_rows": 15,
+    "person_entities": 4,
+    "genre_terms": 6,
+    "overlay_nodes": 20,
+    "overlay_edges": 30,
+    "composer_edges": 7,
+    "authorship_hold_work_entities": 3,
+    "already_in_base_source_rows": 15,
+    "work_entities_with_multiple_source_rows": 5
+  },
+  "known_caveats": [
+    "Incorporation into official federated graph requires checking all 24 overlays and canonical IDs; temporary audit IDs avoid false merges.",
+    "Bach BWV 53, 968, 1070 must NOT get Johann Sebastian Bach composer edge.",
+    "Albinoni Astarto and Incostanza only partially preserved musically.",
+    "The source visualization is not a certified live browser test."
+  ],
+  "work_witnesses": [
+    {
+      "work_id": "audit:fl01:work:albinoni-pimpinone",
+      "name": "Vespetta e Pimpinone",
+      "source": [
+        {
+          "row": 78,
+          "source_id": "flaminio:excel:78",
+          "source_catalogue_number": "IV.B.4.1",
+          "original_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html"
+        },
+        {
+          "row": 401,
+          "source_id": "flaminio:excel:401",
+          "source_catalogue_number": "VI.A.62",
+          "original_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html"
+        }
+      ],
+      "attribution_status": "historical_work_verified",
+      "genre_id": "audit:fl01:genre:intermezzo",
+      "author_id": "audit:fl01:person:tomaso-albinoni",
+      "note": "Tre intermezzi comici per Astarto; due righe Flaminio in rubriche differenti; opera teatrale autonoma nel DB, intermezzo storicamente inserito in Astarto.",
+      "evidence_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:albinoni-astarto",
+      "name": "Astarto",
+      "source": [
+        {
+          "row": 87,
+          "source_id": "flaminio:excel:87",
+          "source_catalogue_number": "IV.B.5.2",
+          "original_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html"
+        },
+        {
+          "row": 345,
+          "source_id": "flaminio:excel:345",
+          "source_catalogue_number": "VI.A.10",
+          "original_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html"
+        }
+      ],
+      "attribution_status": "historical_work_verified_lost_parts",
+      "genre_id": "audit:fl01:genre:dramma-per-musica",
+      "author_id": "audit:fl01:person:tomaso-albinoni",
+      "note": "Dramma musicale in tre atti; musica in larga parte perduta, arie superstiti; due rubriche riportano la stessa opera.",
+      "evidence_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:albinoni-incostanza",
+      "name": "L'incostanza schernita",
+      "source": [
+        {
+          "row": 95,
+          "source_id": "flaminio:excel:95",
+          "source_catalogue_number": "IV.B.5.8",
+          "original_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html"
+        },
+        {
+          "row": 389,
+          "source_id": "flaminio:excel:389",
+          "source_catalogue_number": "VI.A.33",
+          "original_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html"
+        }
+      ],
+      "attribution_status": "historical_work_verified_lost_parts",
+      "genre_id": "audit:fl01:genre:dramma-comico-pastorale",
+      "author_id": "audit:fl01:person:tomaso-albinoni",
+      "note": "Dramma comico pastorale in tre atti, solo arie superstiti; non assumere disponibilità dell'intera partitura.",
+      "evidence_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:albinoni-statira",
+      "name": "Statira",
+      "source": [
+        {
+          "row": 98,
+          "source_id": "flaminio:excel:98",
+          "source_catalogue_number": "IV.B.5.11",
+          "original_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html"
+        },
+        {
+          "row": 399,
+          "source_id": "flaminio:excel:399",
+          "source_catalogue_number": "VI.A.53",
+          "original_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html"
+        }
+      ],
+      "attribution_status": "historical_work_verified",
+      "genre_id": "audit:fl01:genre:dramma-per-musica",
+      "author_id": "audit:fl01:person:tomaso-albinoni",
+      "note": "Dramma per musica in tre atti; due rubriche originali di catalogo, una sola opera.",
+      "evidence_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:bwv723",
+      "name": "Gelobet seist du, Jesu Christ (già BWV 723)",
+      "source": [
+        {
+          "row": 3390,
+          "source_id": "flaminio:excel:3390",
+          "source_catalogue_number": "723",
+          "original_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Corale723.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Corale723.html"
+        }
+      ],
+      "attribution_status": "composer_attribution_corroborated",
+      "genre_id": "audit:fl01:genre:preludio-corale",
+      "author_id": "audit:fl01:person:johann-michael-bach",
+      "note": "Opera per organo tradizionalmente ascritta a Johann Sebastian Bach, attribuita a Johann Michael Bach in repertori e fonte Neumeister; vecchio numero BWV conservato come alias.",
+      "evidence_url": "https://imslp.org/wiki/Gelobet_seist_du%2C_Jesu_Christ_%28Bach%2C_Johann_Michael%29",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:bwv771",
+      "name": "Variazioni su Allein Gott in der Höh sei Ehr (già BWV 771)",
+      "source": [
+        {
+          "row": 3434,
+          "source_id": "flaminio:excel:3434",
+          "source_catalogue_number": "771",
+          "original_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Variazioni771.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Variazioni771.html"
+        }
+      ],
+      "attribution_status": "composer_attribution_corroborated",
+      "genre_id": "audit:fl01:genre:variazioni-per-organo",
+      "author_id": "audit:fl01:person:nicolaus-vetter",
+      "note": "Attribuzione corrente a Nicolaus Vetter; ex BWV 771. La fonte Flaminio parla del compositore Andreas Nicolaus Vetter; confrontare identità personale prima del merge globale.",
+      "evidence_url": "https://imslp.org/wiki/Allein_Gott_in_der_H%C3%B6h_sei_Ehr_%28Vetter%2C_Nicolaus%29",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:bwv567",
+      "name": "Preludio in do maggiore (già BWV 567; Krebs-WV 401)",
+      "source": [
+        {
+          "row": 3831,
+          "source_id": "flaminio:excel:3831",
+          "source_catalogue_number": "467",
+          "original_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Preludio567.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Preludio567.html"
+        }
+      ],
+      "attribution_status": "composer_attribution_corroborated",
+      "genre_id": "audit:fl01:genre:preludio-per-organo",
+      "author_id": "audit:fl01:person:johann-ludwig-krebs",
+      "note": "Nel file Excel originale numero 467 per errore di trascrizione; numero guida e indice BWV 567, Krebs-WV 401; fonte autografa Krebs riferita in repertorio musicologico.",
+      "evidence_url": "https://imslp.org/wiki/Prelude_in_C_major%2C_Krebs-WV_401_%28Krebs%2C_Johann_Ludwig%29",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:bwv968",
+      "name": "Adagio in sol maggiore (BWV 968)",
+      "source": [
+        {
+          "row": 3942,
+          "source_id": "flaminio:excel:3942",
+          "source_catalogue_number": "968",
+          "original_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Adagio968.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Adagio968.html"
+        },
+        {
+          "row": 3943,
+          "source_id": "flaminio:excel:3943",
+          "source_catalogue_number": "968",
+          "original_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata527.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Adagio968.html"
+        }
+      ],
+      "attribution_status": "work_identity_corroborated_arranger_hold",
+      "genre_id": null,
+      "author_id": null,
+      "note": "Trascrizione per clavicembalo del primo movimento di BWV 1005, identità precisa; autore della trascrizione non sicuro; riga 3943 riporta errata guida BWV 527.",
+      "evidence_url": "https://www.bachvereniging.nl/en/bwv/bwv-968",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:bwv1070",
+      "name": "Ouverture in sol minore (BWV 1070)",
+      "source": [
+        {
+          "row": 3596,
+          "source_id": "flaminio:excel:3596",
+          "source_catalogue_number": "1070",
+          "original_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Ouverture1069.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Ouverture1070.html"
+        }
+      ],
+      "attribution_status": "work_identity_corroborated_composer_hold",
+      "genre_id": null,
+      "author_id": null,
+      "note": "Autenticità J. S. Bach non garantita; Wilhelm Friedemann Bach ipotesi, non attribuzione forte. Riga fonte linkata erroneamente alla guida BWV 1069.",
+      "evidence_url": "https://www.bachvereniging.nl/en/bwv/bwv-1070",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    },
+    {
+      "work_id": "audit:fl01:work:bwv53",
+      "name": "Schlage doch, gewünschte Stunde (già BWV 53)",
+      "source": [
+        {
+          "row": 3028,
+          "source_id": "flaminio:excel:3028",
+          "source_catalogue_number": "53",
+          "original_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Cantata53.html",
+          "effective_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Cantata53.html"
+        }
+      ],
+      "attribution_status": "work_identity_corroborated_composer_hold",
+      "genre_id": null,
+      "author_id": null,
+      "note": "Una sola aria funebre, non una cantata completa. Attribuzione a Georg Melchior Hoffmann probabile, non autograficamente certa; etichetta Bach storica conservata.",
+      "evidence_url": "https://imslp.org/wiki/Schlage_doch%2C_gew%C3%BCnschte_Stunde_%28Hoffmann%2C_Melchior%29",
+      "production_gate": "CLOSED_UNTIL_GLOBAL_ID_AND_GRAPH_VISUAL_ACCEPTANCE"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "audit:fl01:person:tomaso-albinoni",
+      "name": "Tomaso Albinoni",
+      "category": "persona_con_riscontro",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni-Guide.html",
+      "global_identity_crosswalk": "PENDING"
+    },
+    {
+      "id": "audit:fl01:person:johann-michael-bach",
+      "name": "Johann Michael Bach",
+      "category": "persona_con_riscontro",
+      "source_url": "https://imslp.org/wiki/Gelobet_seist_du%2C_Jesu_Christ_%28Bach%2C_Johann_Michael%29",
+      "global_identity_crosswalk": "PENDING"
+    },
+    {
+      "id": "audit:fl01:person:nicolaus-vetter",
+      "name": "Nicolaus Vetter",
+      "category": "persona_con_riscontro",
+      "source_url": "https://imslp.org/wiki/Allein_Gott_in_der_H%C3%B6h_sei_Ehr_%28Vetter%2C_Nicolaus%29",
+      "global_identity_crosswalk": "PENDING"
+    },
+    {
+      "id": "audit:fl01:person:johann-ludwig-krebs",
+      "name": "Johann Ludwig Krebs",
+      "category": "persona_con_riscontro",
+      "source_url": "https://imslp.org/wiki/Prelude_in_C_major%2C_Krebs-WV_401_%28Krebs%2C_Johann_Ludwig%29",
+      "global_identity_crosswalk": "PENDING"
+    },
+    {
+      "id": "audit:fl01:genre:intermezzo",
+      "name": "Intermezzo",
+      "category": "genere_forma_riscontrato",
+      "taxonomy_status": "SHARD_ONLY_NEEDS_GLOBAL_MERGE"
+    },
+    {
+      "id": "audit:fl01:genre:dramma-per-musica",
+      "name": "Dramma per musica",
+      "category": "genere_forma_riscontrato",
+      "taxonomy_status": "SHARD_ONLY_NEEDS_GLOBAL_MERGE"
+    },
+    {
+      "id": "audit:fl01:genre:dramma-comico-pastorale",
+      "name": "Dramma comico pastorale",
+      "category": "genere_forma_riscontrato",
+      "taxonomy_status": "SHARD_ONLY_NEEDS_GLOBAL_MERGE"
+    },
+    {
+      "id": "audit:fl01:genre:preludio-corale",
+      "name": "Preludio corale",
+      "category": "genere_forma_riscontrato",
+      "taxonomy_status": "SHARD_ONLY_NEEDS_GLOBAL_MERGE"
+    },
+    {
+      "id": "audit:fl01:genre:variazioni-per-organo",
+      "name": "Variazione per organo",
+      "category": "genere_forma_riscontrato",
+      "taxonomy_status": "SHARD_ONLY_NEEDS_GLOBAL_MERGE"
+    },
+    {
+      "id": "audit:fl01:genre:preludio-per-organo",
+      "name": "Preludio per organo",
+      "category": "genere_forma_riscontrato",
+      "taxonomy_status": "SHARD_ONLY_NEEDS_GLOBAL_MERGE"
+    },
+    {
+      "id": "audit:fl01:work:albinoni-pimpinone",
+      "name": "Vespetta e Pimpinone",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "historical_work_verified",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        78,
+        401
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html",
+      "notes": "Tre intermezzi comici per Astarto; due righe Flaminio in rubriche differenti; opera teatrale autonoma nel DB, intermezzo storicamente inserito in Astarto.",
+      "canonical_author_assertion": true
+    },
+    {
+      "id": "audit:fl01:work:albinoni-astarto",
+      "name": "Astarto",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "historical_work_verified_lost_parts",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        87,
+        345
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html",
+      "notes": "Dramma musicale in tre atti; musica in larga parte perduta, arie superstiti; due rubriche riportano la stessa opera.",
+      "canonical_author_assertion": true
+    },
+    {
+      "id": "audit:fl01:work:albinoni-incostanza",
+      "name": "L'incostanza schernita",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "historical_work_verified_lost_parts",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        95,
+        389
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html",
+      "notes": "Dramma comico pastorale in tre atti, solo arie superstiti; non assumere disponibilità dell'intera partitura.",
+      "canonical_author_assertion": true
+    },
+    {
+      "id": "audit:fl01:work:albinoni-statira",
+      "name": "Statira",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "historical_work_verified",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        98,
+        399
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html",
+      "notes": "Dramma per musica in tre atti; due rubriche originali di catalogo, una sola opera.",
+      "canonical_author_assertion": true
+    },
+    {
+      "id": "audit:fl01:work:bwv723",
+      "name": "Gelobet seist du, Jesu Christ (già BWV 723)",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "composer_attribution_corroborated",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        3390
+      ],
+      "source_url": "https://imslp.org/wiki/Gelobet_seist_du%2C_Jesu_Christ_%28Bach%2C_Johann_Michael%29",
+      "notes": "Opera per organo tradizionalmente ascritta a Johann Sebastian Bach, attribuita a Johann Michael Bach in repertori e fonte Neumeister; vecchio numero BWV conservato come alias.",
+      "canonical_author_assertion": true
+    },
+    {
+      "id": "audit:fl01:work:bwv771",
+      "name": "Variazioni su Allein Gott in der Höh sei Ehr (già BWV 771)",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "composer_attribution_corroborated",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        3434
+      ],
+      "source_url": "https://imslp.org/wiki/Allein_Gott_in_der_H%C3%B6h_sei_Ehr_%28Vetter%2C_Nicolaus%29",
+      "notes": "Attribuzione corrente a Nicolaus Vetter; ex BWV 771. La fonte Flaminio parla del compositore Andreas Nicolaus Vetter; confrontare identità personale prima del merge globale.",
+      "canonical_author_assertion": true
+    },
+    {
+      "id": "audit:fl01:work:bwv567",
+      "name": "Preludio in do maggiore (già BWV 567; Krebs-WV 401)",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "composer_attribution_corroborated",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        3831
+      ],
+      "source_url": "https://imslp.org/wiki/Prelude_in_C_major%2C_Krebs-WV_401_%28Krebs%2C_Johann_Ludwig%29",
+      "notes": "Nel file Excel originale numero 467 per errore di trascrizione; numero guida e indice BWV 567, Krebs-WV 401; fonte autografa Krebs riferita in repertorio musicologico.",
+      "canonical_author_assertion": true
+    },
+    {
+      "id": "audit:fl01:work:bwv968",
+      "name": "Adagio in sol maggiore (BWV 968)",
+      "category": "opera_identita_verificata_autore_in_hold",
+      "work_identity_status": "work_identity_corroborated_arranger_hold",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        3942,
+        3943
+      ],
+      "source_url": "https://www.bachvereniging.nl/en/bwv/bwv-968",
+      "notes": "Trascrizione per clavicembalo del primo movimento di BWV 1005, identità precisa; autore della trascrizione non sicuro; riga 3943 riporta errata guida BWV 527.",
+      "canonical_author_assertion": false
+    },
+    {
+      "id": "audit:fl01:work:bwv1070",
+      "name": "Ouverture in sol minore (BWV 1070)",
+      "category": "opera_identita_verificata_autore_in_hold",
+      "work_identity_status": "work_identity_corroborated_composer_hold",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        3596
+      ],
+      "source_url": "https://www.bachvereniging.nl/en/bwv/bwv-1070",
+      "notes": "Autenticità J. S. Bach non garantita; Wilhelm Friedemann Bach ipotesi, non attribuzione forte. Riga fonte linkata erroneamente alla guida BWV 1069.",
+      "canonical_author_assertion": false
+    },
+    {
+      "id": "audit:fl01:work:bwv53",
+      "name": "Schlage doch, gewünschte Stunde (già BWV 53)",
+      "category": "opera_identita_verificata_autore_in_hold",
+      "work_identity_status": "work_identity_corroborated_composer_hold",
+      "global_work_id": "TO_RECONCILE_PRIOR_TO_PRODUCTION",
+      "source_rows": [
+        3028
+      ],
+      "source_url": "https://imslp.org/wiki/Schlage_doch%2C_gew%C3%BCnschte_Stunde_%28Hoffmann%2C_Melchior%29",
+      "notes": "Una sola aria funebre, non una cantata completa. Attribuzione a Georg Melchior Hoffmann probabile, non autograficamente certa; etichetta Bach storica conservata.",
+      "canonical_author_assertion": false
+    }
+  ],
+  "links": [
+    {
+      "id": "audit:fl01:edge:source:78",
+      "source": "flaminio:excel:78",
+      "target": "audit:fl01:work:albinoni-pimpinone",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:401",
+      "source": "flaminio:excel:401",
+      "target": "audit:fl01:work:albinoni-pimpinone",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html"
+    },
+    {
+      "id": "audit:fl01:edge:author:albinoni-pimpinone",
+      "source": "audit:fl01:person:tomaso-albinoni",
+      "target": "audit:fl01:work:albinoni-pimpinone",
+      "relation": "compone_la_musica_di",
+      "status": "WORK_SPECIFIC_ATTRIBUTION_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html"
+    },
+    {
+      "id": "audit:fl01:edge:genre:albinoni-pimpinone",
+      "source": "audit:fl01:work:albinoni-pimpinone",
+      "target": "audit:fl01:genre:intermezzo",
+      "relation": "ha_genere_forma",
+      "status": "WORK_SPECIFIC_CLASSIFICATION_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:87",
+      "source": "flaminio:excel:87",
+      "target": "audit:fl01:work:albinoni-astarto",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:345",
+      "source": "flaminio:excel:345",
+      "target": "audit:fl01:work:albinoni-astarto",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html"
+    },
+    {
+      "id": "audit:fl01:edge:author:albinoni-astarto",
+      "source": "audit:fl01:person:tomaso-albinoni",
+      "target": "audit:fl01:work:albinoni-astarto",
+      "relation": "compone_la_musica_di",
+      "status": "WORK_SPECIFIC_ATTRIBUTION_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html"
+    },
+    {
+      "id": "audit:fl01:edge:genre:albinoni-astarto",
+      "source": "audit:fl01:work:albinoni-astarto",
+      "target": "audit:fl01:genre:dramma-per-musica",
+      "relation": "ha_genere_forma",
+      "status": "WORK_SPECIFIC_CLASSIFICATION_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:95",
+      "source": "flaminio:excel:95",
+      "target": "audit:fl01:work:albinoni-incostanza",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:389",
+      "source": "flaminio:excel:389",
+      "target": "audit:fl01:work:albinoni-incostanza",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html"
+    },
+    {
+      "id": "audit:fl01:edge:author:albinoni-incostanza",
+      "source": "audit:fl01:person:tomaso-albinoni",
+      "target": "audit:fl01:work:albinoni-incostanza",
+      "relation": "compone_la_musica_di",
+      "status": "WORK_SPECIFIC_ATTRIBUTION_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html"
+    },
+    {
+      "id": "audit:fl01:edge:genre:albinoni-incostanza",
+      "source": "audit:fl01:work:albinoni-incostanza",
+      "target": "audit:fl01:genre:dramma-comico-pastorale",
+      "relation": "ha_genere_forma",
+      "status": "WORK_SPECIFIC_CLASSIFICATION_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:98",
+      "source": "flaminio:excel:98",
+      "target": "audit:fl01:work:albinoni-statira",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:399",
+      "source": "flaminio:excel:399",
+      "target": "audit:fl01:work:albinoni-statira",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html"
+    },
+    {
+      "id": "audit:fl01:edge:author:albinoni-statira",
+      "source": "audit:fl01:person:tomaso-albinoni",
+      "target": "audit:fl01:work:albinoni-statira",
+      "relation": "compone_la_musica_di",
+      "status": "WORK_SPECIFIC_ATTRIBUTION_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html"
+    },
+    {
+      "id": "audit:fl01:edge:genre:albinoni-statira",
+      "source": "audit:fl01:work:albinoni-statira",
+      "target": "audit:fl01:genre:dramma-per-musica",
+      "relation": "ha_genere_forma",
+      "status": "WORK_SPECIFIC_CLASSIFICATION_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:3390",
+      "source": "flaminio:excel:3390",
+      "target": "audit:fl01:work:bwv723",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Corale723.html"
+    },
+    {
+      "id": "audit:fl01:edge:author:bwv723",
+      "source": "audit:fl01:person:johann-michael-bach",
+      "target": "audit:fl01:work:bwv723",
+      "relation": "compone_la_musica_di",
+      "status": "WORK_SPECIFIC_ATTRIBUTION_CORROBORATED",
+      "source_url": "https://imslp.org/wiki/Gelobet_seist_du%2C_Jesu_Christ_%28Bach%2C_Johann_Michael%29"
+    },
+    {
+      "id": "audit:fl01:edge:genre:bwv723",
+      "source": "audit:fl01:work:bwv723",
+      "target": "audit:fl01:genre:preludio-corale",
+      "relation": "ha_genere_forma",
+      "status": "WORK_SPECIFIC_CLASSIFICATION_CORROBORATED",
+      "source_url": "https://imslp.org/wiki/Gelobet_seist_du%2C_Jesu_Christ_%28Bach%2C_Johann_Michael%29"
+    },
+    {
+      "id": "audit:fl01:edge:source:3434",
+      "source": "flaminio:excel:3434",
+      "target": "audit:fl01:work:bwv771",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Variazioni771.html"
+    },
+    {
+      "id": "audit:fl01:edge:author:bwv771",
+      "source": "audit:fl01:person:nicolaus-vetter",
+      "target": "audit:fl01:work:bwv771",
+      "relation": "compone_la_musica_di",
+      "status": "WORK_SPECIFIC_ATTRIBUTION_CORROBORATED",
+      "source_url": "https://imslp.org/wiki/Allein_Gott_in_der_H%C3%B6h_sei_Ehr_%28Vetter%2C_Nicolaus%29"
+    },
+    {
+      "id": "audit:fl01:edge:genre:bwv771",
+      "source": "audit:fl01:work:bwv771",
+      "target": "audit:fl01:genre:variazioni-per-organo",
+      "relation": "ha_genere_forma",
+      "status": "WORK_SPECIFIC_CLASSIFICATION_CORROBORATED",
+      "source_url": "https://imslp.org/wiki/Allein_Gott_in_der_H%C3%B6h_sei_Ehr_%28Vetter%2C_Nicolaus%29"
+    },
+    {
+      "id": "audit:fl01:edge:source:3831",
+      "source": "flaminio:excel:3831",
+      "target": "audit:fl01:work:bwv567",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Preludio567.html"
+    },
+    {
+      "id": "audit:fl01:edge:author:bwv567",
+      "source": "audit:fl01:person:johann-ludwig-krebs",
+      "target": "audit:fl01:work:bwv567",
+      "relation": "compone_la_musica_di",
+      "status": "WORK_SPECIFIC_ATTRIBUTION_CORROBORATED",
+      "source_url": "https://imslp.org/wiki/Prelude_in_C_major%2C_Krebs-WV_401_%28Krebs%2C_Johann_Ludwig%29"
+    },
+    {
+      "id": "audit:fl01:edge:genre:bwv567",
+      "source": "audit:fl01:work:bwv567",
+      "target": "audit:fl01:genre:preludio-per-organo",
+      "relation": "ha_genere_forma",
+      "status": "WORK_SPECIFIC_CLASSIFICATION_CORROBORATED",
+      "source_url": "https://imslp.org/wiki/Prelude_in_C_major%2C_Krebs-WV_401_%28Krebs%2C_Johann_Ludwig%29"
+    },
+    {
+      "id": "audit:fl01:edge:source:3942",
+      "source": "flaminio:excel:3942",
+      "target": "audit:fl01:work:bwv968",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Adagio968.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:3943",
+      "source": "flaminio:excel:3943",
+      "target": "audit:fl01:work:bwv968",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Adagio968.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:3596",
+      "source": "flaminio:excel:3596",
+      "target": "audit:fl01:work:bwv1070",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Ouverture1070.html"
+    },
+    {
+      "id": "audit:fl01:edge:source:3028",
+      "source": "flaminio:excel:3028",
+      "target": "audit:fl01:work:bwv53",
+      "relation": "documenta_opera_identificata",
+      "status": "SOURCE_IDENTITY_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Cantata53.html"
+    },
+    {
+      "id": "audit:fl01:edge:intermezzi:pimpinone-astarto",
+      "source": "audit:fl01:work:albinoni-pimpinone",
+      "target": "audit:fl01:work:albinoni-astarto",
+      "relation": "intermezzi_eseguiti_in",
+      "status": "WORK_SPECIFIC_SOURCE_CORROBORATED",
+      "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html",
+      "note": "Vespetta e Pimpinone era eseguito come tre intermezzi dell'opera Astarto; non equivalenza fra le opere."
+    }
+  ]
+}
