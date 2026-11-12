@@ -46,18 +46,23 @@ function showNode(n){
  pane.append(detailTitle(n.name||n.id));
  if(n.category==="scheda_catalogo_flaminio"){
   pane.append(line("Riga Excel: "+n.excel_row+" · fonte "+n.author));
-  pane.append(line("Numero: "+(n.number||"non indicato")));
+  pane.append(line("Numero Excel: "+(n.number||"non indicato")));if(n.catalogue_number_source_disagreement)pane.append(line("Numero verificato nella guida: "+n.catalogue_number_derived+" (originale preservato)."));
   pane.append(line("Rubrica originale: "+n.genre_raw));
   pane.append(line("Stato: record fonte; identità storica non ancora certificata."));
   if(n.flags&&n.flags.length)pane.append(line("Segnali: "+n.flags.join("; ")));
   if(n.staging_references&&n.staging_references.length)pane.append(line("Riferimenti di staging già presenti: "+n.staging_references.join(", ")));
-  if(/^https:\/\/www\.flaminioonline\.it\/Guide\//.test(n.source_url||"")){
-   var a=document.createElement("a");a.href=n.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Apri la guida originale Flaminio";pane.append(a);
-  }
+  if(n.reviewed_work_candidate_id)pane.append(line("Opera corrispondente nello staging: "+n.reviewed_work_candidate_id));
+  if(n.guide_correction_reason)pane.append(line("Correzione documentata: "+n.guide_correction_reason));
+  var effective=n.source_url_effective||n.source_url;
+  if(/^https:\/\/www\.flaminioonline\.it\/Guide\//.test(effective||"")){var a=document.createElement("a");a.href=effective;a.target="_blank";a.rel="noopener noreferrer";a.textContent=n.url_was_corrected?"Apri guida Flaminio CORRETTA":"Apri guida originale Flaminio";pane.append(a)}
+  if(n.url_was_corrected)pane.append(line("Link Excel errato, mantenuto: "+n.source_url_original));
  }else if(n.category==="intestazione_autore_flaminio"){
   pane.append(line("Intestazione letterale del catalogo, non attribuzione musicologica certificata."));
   pane.append(line("ID persona Atlantis candidati: "+((n.matched_person_ids||[]).join(", ")||"da riconciliare")));
  }else if(n.category==="rubrica_fonte_flaminio")pane.append(line("Rubrica originale Flaminio, non sottogenere tassonomico validato."));
+ else if(n.category==="opera_identita_e_autore_riscontrati"||n.category==="opera_identita_verificata_autore_in_hold"){pane.append(line("IDENTITÀ D’OPERA RISCONTRATA · "+n.work_identity_status));pane.append(line("Righe originali: "+n.source_rows.join(", ")));pane.append(line(n.canonical_author_assertion?"Paternità: riscontrata con fonte specifica":"Paternità: IN HOLD, senza arco autore inventato"));pane.append(line(n.notes||""));if(n.source_url&&/^https:\/\//.test(n.source_url)){var a=document.createElement("a");a.href=n.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Fonte dell’identità storica";pane.append(a)}}
+ else if(n.category==="persona_con_riscontro")pane.append(line("Persona riscontrata ma ancora da unificare con tutti i nodi storici federati."));
+ else if(n.category==="genere_forma_riscontrato")pane.append(line("Forma attestata per l’opera; rimane da riconciliare con l’albero tassonomico complessivo."));
  else pane.append(line("Nucleo delle schede della fonte."));
 }
 function choose(id){var n=nodesById.get(id);if(!n)return false;var author=n.author||n.name;if(n.category==="scheda_catalogo_flaminio"&&$("author").value&&$("author").value!==author){$("author").value="";draw()}
@@ -94,15 +99,15 @@ function report(){
 function boot(data){
  all=data;nodesById=new Map(data.nodes.map(n=>[n.id,n]));records=data.nodes.filter(n=>n.category==="scheda_catalogo_flaminio");
  authors=data.nodes.filter(n=>n.category==="intestazione_autore_flaminio");rubrics=data.nodes.filter(n=>n.category==="rubrica_fonte_flaminio");
- if(records.length!==500||authors.length!==10||data.links.length!==1000)throw Error("Invarianti del lotto01 non rispettati");
+ if(records.length!==500||authors.length!==10||data.links.length!==1030||data.nodes.length!==594)throw Error("Invarianti fonte + overlay critico non rispettati");
  if(new Set(data.nodes.map(n=>n.id)).size!==data.nodes.length)throw Error("Identificativi duplicati nel grafo");
  if(data.links.some(e=>!nodesById.has(e.source)||!nodesById.has(e.target)))throw Error("Arco orfano nel grafo");
  authors.sort((a,b)=>a.name.localeCompare(b.name,"it"));for(var a of authors){var option=document.createElement("option");option.value=a.name;option.textContent=a.name;$("author").append(option)}
- engine=window.AtlantisAuditCompatGraph($("graph")).nodeColor(n=>n.category==="scheda_catalogo_flaminio"?"#eac48c":n.category==="intestazione_autore_flaminio"?"#75d8c0":n.category==="rubrica_fonte_flaminio"?"#98aee3":"#f5f0d0")
- .nodeVal(n=>n.category==="scheda_catalogo_flaminio"?3:n.category==="rubrica_fonte_flaminio"?6:9)
+ engine=window.AtlantisAuditCompatGraph($("graph")).nodeColor(n=>n.category==="scheda_catalogo_flaminio"?"#eac48c":n.category==="intestazione_autore_flaminio"?"#75d8c0":n.category==="rubrica_fonte_flaminio"?"#98aee3":n.category==="opera_identita_e_autore_riscontrati"?"#73e19e":n.category==="opera_identita_verificata_autore_in_hold"?"#e59c72":n.category==="persona_con_riscontro"?"#6fb7ff":n.category==="genere_forma_riscontrato"?"#e0c6fc":"#f5f0d0")
+ .nodeVal(n=>n.category==="scheda_catalogo_flaminio"?3:n.category==="rubrica_fonte_flaminio"?6:n.category==="opera_identita_e_autore_riscontrati"||n.category==="opera_identita_verificata_autore_in_hold"?10:9)
  .linkColor(e=>e.relation==="rubrica_editoriale_flaminio"?"#8290aa":"#5b9f8e")
  .linkOpacity(.2).onNodeClick(showNode).onNodeDoubleClick(showNode)
- .onLinkClick(e=>{var p=$("info");p.replaceChildren(detailTitle("Collegamento di fonte"));p.append(line(e.relation));p.append(line("Stato: "+e.status));p.append(line("Fonte: Excel Flaminio, nessun arco storico certificato."))})
+ .onLinkClick(e=>{var p=$("info");p.replaceChildren(detailTitle("Relazione documentata"));p.append(line(e.relation));p.append(line("Stato: "+e.status));p.append(line(e.note||""));if(e.source_url&&/^https:\/\//.test(e.source_url)){var a=document.createElement("a");a.href=e.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Apri fonte della relazione";p.append(a)}else p.append(line("Fonte: Excel Flaminio, relazione documentaria non verificata come fatto storico."))})
  .onBackgroundClick(()=>showNode(null));
  loaded=true;draw();search();
  window.AtlantisFlaminioLotto01={status:()=>({loaded,source_records:records.length,authors:authors.length,rubrics:rubrics.length,
@@ -114,8 +119,8 @@ function boot(data){
 }
 $("author").addEventListener("change",draw);$("reset").addEventListener("click",()=>{$("author").value="";draw()});
 $("search").addEventListener("input",search);$("report").addEventListener("click",report);
-fetch("./GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json",{cache:"no-store"})
- .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(boot)
+Promise.all(["./GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json","./OVERLAY_CRITICO_IDENTITA_E_ATTRIBUZIONI_LOTTO01_2026-11-12.json"].map(url=>fetch(url,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status+" "+url);return r.json()})))
+ .then(([base,overlay])=>{if(base.nodes.length!==574||base.links.length!==1000||overlay.nodes.length!==20||overlay.links.length!==30)throw Error("La coppia fonte-overlay non supera le invarianti");return boot({nodes:base.nodes.concat(overlay.nodes),links:base.links.concat(overlay.links)})})
  .catch(err=>{$("stats").textContent="ERRORE: "+err.message;console.error(err)});
 })();
 </script></body></html>
