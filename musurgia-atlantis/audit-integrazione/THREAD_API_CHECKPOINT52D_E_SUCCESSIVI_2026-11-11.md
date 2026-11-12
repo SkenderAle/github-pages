@@ -964,3 +964,17 @@ Thread madre aggiornato al 52L commit `0edcdef784d66a2c75fb88a69fa850547f226b30`
 **Prima verifica strutturale** 37 record del Lotto51, 11/11 test PASS, 3/3 ID di endpoint di riuso interlotto verificati nei manifesti Lotto45, Lotto46 e Brandeburghesi Lotto27; nessuna riga Excel originale e nessuna guida individuale mappata nelle 37 schede. JSON evidenza `CHECKPOINT52M_DB_FIRST_PRIMA_RICOGNIZIONE_2026-11-12.json`, commit `ae2739dc03741827516de71ef0f5a6eb2cdf1feb`. **Questo non certifica 52.150 righe, né le attribuzioni storiche in blocco.** Il manifest 31 distingue 52.150 righe fonte, 46.205 candidate documentarie e 5.945 da riesaminare: tutti numeri di audit/filtraggio, non opere validate. Gli archi di produzione restano invariati.
 
 **Prossimo agente:** non avviare il banco `COLLAUDO_BROWSER_CHECKPOINT52L` come attività prioritaria; costruire un inventario cumulativo senza duplicati di tutti i record già elaborati e delle righe scoperte, poi riprendere verifiche catalografiche in lotti significativi; aggiornare questo thread e il thread madre.
+
+### Checkpoint 53A — Sospensione GUI e ritorno alla certificazione dei record (12 novembre 2026)
+
+**Cambio vincolante richiesto dall'utente:** sospendere il previsto 52M browser/Android e gli ulteriori lavori sulla GUI. **Priorità ora a importazione integrale, identità, fonti, classificazione, verifica delle paternità e relazioni fra le opere**; le prove visive e i filtri verranno solo dopo la certificazione del database. Non eliminare la preview 52L già pubblicata, non toccare `grafo.json` o `index.html` di produzione e non creare archi per semplice appartenenza al genere.
+
+**Lotto 53A pubblicato in `main` solo nello staging audit:** `CHECKPOINT53A_BACH_BWV201_250_INVENTARIO_CONSERVATIVO_2026-11-12.json` (50 voci BWV numeriche + 14 suffissi + 13 testimoni di relazione; commit `141442ebbfc6455ba64cf125cf31a05e2ad2ccf5`). Stati distinti per opere catalogate, perdute/frammentarie, versioni, false attribuzioni, paternità disputata e arrangiamenti. Riscontri work-specific secondari per BWV203,222,241,246; nessun gate di creazione o attribuzione aperto. Non considerare `BWV218/219/222/246` opere composte da J. S. Bach, e mantenere sospeso `BWV231`. `REGRESSIONE_INVENTARIO_CHECKPOINT53A_2026-11-12.json` `b3196a5512e8bc0ff082995c9e3cb186ae951005` = PASS di sola integrità strutturale, non di autografia.
+
+**Crosswalk effettivo** col grafo pubblico originale 754/1718, 193 nodi opera: `CROSSWALK_CHECKPOINT53A_BWV201_250_VS_ATLANTIS_2026-11-12.json` commit `1b5e3ce2817a3fe7d1633884f0b0652ebd2bbf65`; unico match restrittivo `BWV244 ↔ opera:passione-matteo` con paternità `E0717`. Le altre 49 posizioni non abbinate non devono essere conteggiate come opere mancanti fino al confronto con il grafo federato, alias e sorgente Excel originale.
+
+**Relazione completa** `AUDIT_CHECKPOINT53A_RITORNO_DATABASE_BWV201_250_2026-11-12.md`, commit finale `1d8e650973adc12d366828bae90e9355ba855d04`.
+
+**53B prossimo, solo catalogo:** reperire le righe precise del file `compositori_flaminio.xlsx`, confrontare tutte le identità presenti nel primo giro 52.150/149 e gli overlay 24 JSON, distinguere fonte/cataloga/compone/copia/arrangia/riusa. Ricordare che l'ultimo stato del triage, non quello iniziale del Lotto21, segnala **12 gruppi ancora ambigui, 17 partizioni, 112 righe** nel Lotto24–25, con 30 P1 triagiati nel Lotto23. **Nessun collaudo GUI necessario finché il patrimonio record non è certificato.**
+
+Thread madre portato a 53A: commit `0c2fd9d3fac379b8e321857815e15aafdccb6108`.
