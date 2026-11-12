@@ -955,3 +955,12 @@ Mozart→Flauto magico→Singspiel→Opera.
 **Nuovo banco live da eseguire**: `COLLAUDO_BROWSER_CHECKPOINT52L_2026-11-12.html`, commit `8f694e7029029a471a2ec36d3dbf317a6de81c80`, 9 controlli incluso un tocco sintetico su un arco con comparsa della scheda. URL: https://musurgiamundi.com/musurgia-atlantis/audit-integrazione/COLLAUDO_BROWSER_CHECKPOINT52L_2026-11-12.html . Prossimo **52M**: esportare JSON realmente eseguito in browser con rete, controllare filtri, fonti, linee sovrapposte e collaudo manuale Android. No promozione di `grafo.json`/`index.html` pubblici.
 
 Thread madre aggiornato al 52L commit `0edcdef784d66a2c75fb88a69fa850547f226b30`.
+
+### Checkpoint 52M — Cambio di priorità: DB-first, stop collaudi GUI (12 novembre 2026)
+**La decisione utente annulla la priorità 52M browser/Android indicata al 52L.** Non ripetere test desktop/mobile finché non sia sostanzialmente completata la verifica dei record e degli archi nel corpus acquisito. Conservare gli interventi GUI già eseguiti, senza promuoverli in produzione; evitare altri checkpoint di pura visualizzazione.
+
+**Nuovo protocollo vincolante:** `PROTOCOLLO_DB_FIRST_2026-11-12.md`, commit `8970efc5140397599f8f5237a02241672d0a97b2`. Lotti futuri devono includere ID fonte e identità, differenza opera/raccolta/versione/parte, genere al singolare (anche multi-valore), archi ring tracciati ad almeno una opera, attribuzioni e qualità filologica, controllo interlotto, HOLD e provenienza senza perdere link originali. Completamento e freeze dei dati **prima** di progettazione/validazione GUI.
+
+**Prima verifica strutturale** 37 record del Lotto51, 11/11 test PASS, 3/3 ID di endpoint di riuso interlotto verificati nei manifesti Lotto45, Lotto46 e Brandeburghesi Lotto27; nessuna riga Excel originale e nessuna guida individuale mappata nelle 37 schede. JSON evidenza `CHECKPOINT52M_DB_FIRST_PRIMA_RICOGNIZIONE_2026-11-12.json`, commit `ae2739dc03741827516de71ef0f5a6eb2cdf1feb`. **Questo non certifica 52.150 righe, né le attribuzioni storiche in blocco.** Il manifest 31 distingue 52.150 righe fonte, 46.205 candidate documentarie e 5.945 da riesaminare: tutti numeri di audit/filtraggio, non opere validate. Gli archi di produzione restano invariati.
+
+**Prossimo agente:** non avviare il banco `COLLAUDO_BROWSER_CHECKPOINT52L` come attività prioritaria; costruire un inventario cumulativo senza duplicati di tutti i record già elaborati e delle righe scoperte, poi riprendere verifiche catalografiche in lotti significativi; aggiornare questo thread e il thread madre.
