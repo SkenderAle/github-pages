@@ -3579,7 +3579,8 @@ async function init(){
 window.AtlantisCheckpoint52L={
  status:()=>({ready:!!engine&&!!last,selected_edge_id:engine?.auditView?.().selected_edge_id??null,
   relation_panel_visible:!$("linkInfo").hidden,
-  visible_edge_ids:last?.links?.map(e=>e.id)||[]})
+  visible_edge_ids:last?.links?.map(e=>e.id)||[]}),
+ projectedLink:id=>engine?.auditLinkProjection?.(id)||null
 };
 window.AtlantisCheckpoint52K={
  status:()=>({ready:!!dataset?.nodes?.length&&!!engine&&!!last?.nodes?.length,
