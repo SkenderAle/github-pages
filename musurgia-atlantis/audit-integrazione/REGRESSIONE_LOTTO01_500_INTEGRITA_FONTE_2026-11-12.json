@@ -25,16 +25,23 @@
     "canonical_atlantis_work_certified": 0,
     "production_promoted": false,
     "unknown_lyricist_not_composer_warning": 36,
-    "source_attribution_text_warning": 35,
+    "source_attribution_text_warning": 28,
     "provenance_flag_consistency": "PASS_500_OF_500",
-    "graph_source_node_count": 500
+    "graph_source_node_count": 500,
+    "source_duplicate_exact_triple_rows": 14,
+    "false_duplicate_warnings_removed": 75,
+    "source_graph_flags_vs_audit": "PASS_500_OF_500",
+    "combined_critical_overlay_nodes": 594,
+    "combined_critical_overlay_edges": 1030
   },
   "exceptions": {
     "GUIDA_CONDIVISA_CON_ALTRA_RIGA": 12,
     "NUMERO_CATALOGO_NON_PRESENTE": 4,
     "PAROLIERE_IGNOTO_NON_EQUIVALE_AD_AUTORE_MUSICALE_IGNOTO": 36,
-    "ALLERTA_ATTRIBUZIONE_TESTUALE_DA_VERIFICARE": 35,
-    "TRIADE_AUTORE_NUMERO_TITOLO_RIPETUTA": 89
+    "ALLERTA_ATTRIBUZIONE_TESTUALE_DA_VERIFICARE": 28,
+    "AUTORE_DEL_TESTO_O_DELLA_MELODIA_IGNOTO_NON_EQUIVALE_A_COMPOSITORE_IGNOTO": 7,
+    "TRIADE_AUTORE_NUMERO_TITOLO_RIPETUTA": 14,
+    "RACCOLTA_CON_GUIDE_DISTINTE_NON_FONDERE_LE_OPERE": 12
   },
   "errors": [],
   "report_pointers": [
@@ -54,5 +61,5 @@
     "Preview not executed in real browser or Android device; visual layout and 500/500 selection not certified",
     "No changes to public Atlantis canonical graph or frontend"
   ],
-  "revision_note": "Corrected 36 false composer-attribution flags: `Testo: autore ignoto` is lyricist, not composer. 35 source records remain flagged for actual musical authorship review."
+  "revision_note": "Corrected 36 false composer-attribution flags: `Testo: autore ignoto` is lyricist, not composer. 35 source records remain flagged for actual musical authorship review. Followup: seven additional unknown melody/text author warnings removed, and 75 false catalogue-duplicate flags removed after restoring digit-preserving catalogue normalization."
 }
