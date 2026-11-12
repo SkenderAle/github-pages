@@ -57,12 +57,20 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid
 #categoryHint{color:var(--muted);font-size:11px;line-height:1.5;margin:8px 0 0}
 #selected .node-url{font-size:12px;display:inline-block;overflow-wrap:anywhere;color:#a4dfee;margin:5px 0}
 #selected .note-excerpt{background:#102d39;padding:7px;border-left:2px solid #8bbbc5}
+#linkInfo{background:#122f3e;border:2px solid #eac27e;border-radius:10px;padding:11px;margin:8px 0 14px;overflow-wrap:anywhere}
+#linkInfo[hidden]{display:none}
+#linkInfo h3{color:#ffdea5;margin:0 0 7px;font-size:16px}
+#linkInfo p{color:#d5e5e5;font-size:12px;line-height:1.5}
+#linkInfo a{color:#a4dfee;display:inline-block;margin:5px 12px 5px 0;font-size:12px}
+#linkInfo button{margin:5px 8px 4px 0;font-size:12px}
 @media(max-width:720px){header{padding:10px 12px}header h1{font-size:18px}
 main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-height:245px;border-right:0;border-bottom:1px}#graph{height:56dvh;min-height:280px;order:2}
 #categoryPicker{top:8px;left:8px;width:min(310px,calc(100% - 16px))}
 #categoryPicker #categoryGrid{max-height:min(43dvh,310px)}
 #categoryPicker summary{font-size:12px;padding:9px 11px}
-#zoomDock{right:9px;bottom:12px}}
+#zoomDock{right:9px;bottom:12px}
+#linkInfo:not([hidden]){position:fixed;bottom:8px;left:8px;right:8px;z-index:25;max-height:37dvh;overflow-y:auto;box-shadow:0 3px 25px #000c}
+}
 </style>
 </head><body>
 <header><h1>Musurgia Atlantis · Laboratorio radicato</h1>
@@ -110,10 +118,10 @@ main{height:auto;display:flex;flex-direction:column}aside{max-height:44dvh;min-h
 <p class="note" id="cantataLimitNote">Paginazione reale per ciascun genere: nessuna opera è eliminata. La ricerca di una BWV funziona sempre indipendentemente dalla pagina visibile.</p>
 
 <div id="stats">Lettura dei dati…</div><p id="sourceState"></p><div id="status" role="status"></div>
-<section id="selected"><div id="nodeInfo"><h2>Seleziona un nodo</h2><p>Clic: note e fonti. Doppio clic: il nodo diventa il centro, senza aumentare lo zoom.</p></div>
+<section id="selected"><div id="linkInfo" role="region" aria-label="Dettaglio della relazione selezionata" aria-live="polite" hidden></div><div id="nodeInfo"><h2>Seleziona un nodo</h2><p>Clic: note e fonti. Doppio clic: il nodo diventa il centro, senza aumentare lo zoom.</p></div>
  <ul id="edges"></ul>
 </section>
-<p class="note">Desktop: passaggio del mouse = etichetta; clic = note e fonti; doppio clic = nuova radice senza zoom. Android: primo tocco = note; secondo tocco sullo stesso nodo = nuova radice. Per ingrandire e rimpicciolire usa le lenti + e − (oppure due dita sul grafo). I generi e le forme del vecchio Atlante sono recuperati in un archivio di anteprima separato; le altre relazioni legacy non sono ancora fuse. Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
+<p class="note">Desktop: passaggio del mouse = etichetta; clic su nodo o linea = note e fonti; doppio clic sul nodo = nuova radice senza zoom. Android: tocco sulla linea = scheda della relazione; primo tocco sul nodo = note; secondo tocco sullo stesso nodo = nuova radice. Per ingrandire e rimpicciolire usa le lenti + e − (oppure due dita sul grafo). I generi e le forme del vecchio Atlante sono recuperati in un archivio di anteprima separato; le altre relazioni legacy non sono ancora fuse. Gli archi con riscontro storico specifico sono attraversabili; i confronti non causali restano dichiarazioni distinte. Le risorse editoriali non entrano mai in questa rete. Per gli itinerari con pertinenza ampia, le concatenazioni sono esplicitamente esplorative e non costituiscono prova di rapporti fra i loro estremi. I testimoni di pertinenza forte per i livelli III–V restano nel registro revisionato, attualmente vuoto. Leopold Mozart non appare ancora perché il suo nodo è conservato solo nello staging di importazione. Cliccare un nodo non autorizza un'espansione nella radice precedente.</p>
 </aside>
 <div id="graph" aria-label="Grafo 3D radicato: clic per le note, doppio clic per centrare">
  <details id="categoryPicker" open>
@@ -3243,7 +3251,41 @@ function getRootedPreview(maxDepth,relevance,depthByCategory){
 const safeUrl=url=>typeof url==="string"&&/^https:\/\//.test(url);
 function say(s){$("status").textContent=s}
 function makeEl(tag,text,cls){const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e}
+// 52L: link selection reads only existing visible edges and their source notes.
+function clearLinkDetails(){
+ const panel=$("linkInfo");if(panel)panel.hidden=true;
+ engine?.selectLink?.(null);
+}
+function showLinkDetails(edge){
+ const e=last?.links.find(x=>x.id===edge?.id);
+ if(!e){say("La relazione non è nella vista corrente");return}
+ selected(e.source);
+ engine?.selectLink?.(e.id);
+ const info=renderer.relationDetail(e,e.source);
+ const source=dataset.nodes.find(n=>n.id===e.source)?.name||e.source;
+ const target=dataset.nodes.find(n=>n.id===e.target)?.name||e.target;
+ const panel=$("linkInfo");panel.replaceChildren();panel.hidden=false;
+ panel.append(makeEl("h3","Relazione · "+source+" → "+target));
+ panel.append(makeEl("p",(e.relation||"Relazione documentata").replace(/_/g," ")+" · Arco "+e.id));
+ if(info.phrase)panel.append(makeEl("p",info.phrase));
+ if(info.description)panel.append(makeEl("p",info.description));
+ if(info.note&&info.note!==info.description)panel.append(makeEl("p",info.note));
+ const provenance=["statement_type","review_status","quality_gate"]
+   .filter(k=>e[k]!=null).map(k=>k+": "+e[k]);
+ if(e.historical_verified_independently===true)provenance.push("riscontro storico indipendente");
+ if(e.preview_only===true)provenance.push("solo anteprima, non produzione");
+ if(provenance.length)panel.append(makeEl("p",provenance.join(" · ")));
+ const sources=[...new Set((info.sources||[]).filter(safeUrl))];
+ if(!sources.length)panel.append(makeEl("p","Nessun URL di fonte disponibile per questa relazione."));
+ for(const [i,url]of sources.entries()){
+  const a=makeEl("a","Fonte "+(i+1));a.href=url;a.target="_blank";a.rel="noopener noreferrer";panel.append(a);
+ }
+ const close=makeEl("button","Chiudi dettaglio");close.type="button";
+ close.addEventListener("click",clearLinkDetails);panel.append(close);
+ say("Arco selezionato: "+e.id+" · "+source+" → "+target);
+}
 function selected(id){
+ clearLinkDetails();
  candidate=dataset.nodes.find(n=>n.id===id)||null;
  const place=$("nodeInfo");place.replaceChildren();
  place.append(makeEl("h2",candidate?.name||"Nodo sconosciuto"));
@@ -3496,7 +3538,8 @@ async function init(){
   .onNodeDoubleClick(n=>setRoot(n.id,{fit:false}))
   // Hover is handled by Canvas's existing caption. Never create an HTML duplicate.
   .onNodeHover(()=>{})
-  .onLinkClick(e=>selected(e.source));
+  .onLinkClick(e=>showLinkDetails(e))
+  .onBackgroundClick(()=>clearLinkDetails());
  const unique=new Map();for(const n of dataset.nodes)if(n.category!=="capitolo"&&!unique.has(n.name))unique.set(n.name,n);
  for(const name of [...unique.keys()].sort((a,b)=>a.localeCompare(b,"it"))){
   const option=document.createElement("option");option.value=name;$("matches").append(option);
@@ -3533,6 +3576,11 @@ async function init(){
 
 // Checkpoint 52K browser acceptance: read-only state and Canvas projection.
 // The caller operates the existing UI controls; this hook never changes data.
+window.AtlantisCheckpoint52L={
+ status:()=>({ready:!!engine&&!!last,selected_edge_id:engine?.auditView?.().selected_edge_id??null,
+  relation_panel_visible:!$("linkInfo").hidden,
+  visible_edge_ids:last?.links?.map(e=>e.id)||[]})
+};
 window.AtlantisCheckpoint52K={
  status:()=>({ready:!!dataset?.nodes?.length&&!!engine&&!!last?.nodes?.length,
   current_root:currentRoot,renderer_technology:"canvas_2d_3d_projection",
