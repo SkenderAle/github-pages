@@ -32,7 +32,7 @@ input{width:min(340px,100%)}button{cursor:pointer}button:hover{border-color:var(
 <div class="small" id="searchStats">Tutti i 500 record restano consultabili.</div>
 <div id="results"></div>
 <h2>Dettagli</h2><div id="info">Seleziona una scheda per leggere i dati e aprire il suo link di spiegazione originale.</div>
-<div class="notice">Questo è il grafo della FONTE, non il grafo storico certificato. Le 500 sfere rappresentano record dell’Excel (non necessariamente 500 opere autonome). Le due categorie di arco riproducono intestazioni autore e rubriche così come registrate da Flaminio; non dimostrano la paternità delle opere o la correttezza dei generi.</div></aside></main>
+<div class="notice">I 10 nodi d’opera aggiuntivi sono distinti: verde = 7 attribuzioni riscontrate con fonti specifiche; arancio = 3 identità verificate ma paternità in sospeso. Questo è il grafo della FONTE, non il grafo storico certificato. Le 500 sfere rappresentano record dell’Excel (non necessariamente 500 opere autonome). Le due categorie di arco riproducono intestazioni autore e rubriche così come registrate da Flaminio; non dimostrano la paternità delle opere o la correttezza dei generi.</div></aside></main>
 <script src="./compat-graph-checkpoint08.js"></script>
 <script>
 (function(){"use strict";
@@ -69,15 +69,26 @@ function choose(id){var n=nodesById.get(id);if(!n)return false;var author=n.auth
  showNode(n);return true}
 function draw(){
  if(!all||!engine)return;var av=$("author").value;
- var chosen=av?all.nodes.filter(n=>n.category==="scheda_catalogo_flaminio"?n.author===av:n.category==="intestazione_autore_flaminio"?n.name===av:n.category==="rubrica_fonte_flaminio"?n.author_label===av:false):all.nodes;
+ var chosen;
+ if(!av)chosen=all.nodes;
+ else {
+  var sourceIds=new Set(all.nodes.filter(n=>n.category==="scheda_catalogo_flaminio"&&n.author===av).map(n=>n.id));
+  var workIds=new Set(all.links.filter(e=>e.relation==="documenta_opera_identificata"&&sourceIds.has(e.source)).map(e=>e.target));
+  var otherIds=new Set();
+  for(var e of all.links){
+   if(e.relation==="compone_la_musica_di"&&workIds.has(e.target))otherIds.add(e.source);
+   if(e.relation==="ha_genere_forma"&&workIds.has(e.source))otherIds.add(e.target);
+  }
+  chosen=all.nodes.filter(n=>n.category==="scheda_catalogo_flaminio"?sourceIds.has(n.id):n.category==="intestazione_autore_flaminio"?n.name===av:n.category==="rubrica_fonte_flaminio"?n.author_label===av:workIds.has(n.id)||otherIds.has(n.id));
+ }
  var ids=new Set(chosen.map(n=>n.id));
  var root={id:"flaminio:source-root:lotto01",name:"Flaminio — 500 schede",category:"fonte_raccolta",_focus:true,_forceLabel:true,_depth:0};
- var n=chosen.map(n=>Object.assign({},n,{_depth:n.category==="intestazione_autore_flaminio"?1:n.category==="rubrica_fonte_flaminio"?2:3,
- _forceLabel:n.category==="intestazione_autore_flaminio"||(n.id===selected)}));
+ var n=chosen.map(n=>Object.assign({},n,{_depth:n.category==="intestazione_autore_flaminio"?1:n.category==="rubrica_fonte_flaminio"?2:n.category==="scheda_catalogo_flaminio"?3:4,
+ _forceLabel:n.category==="intestazione_autore_flaminio"||n.category==="opera_identita_e_autore_riscontrati"||(n.id===selected)}));
  var l=all.links.filter(e=>ids.has(e.source)&&ids.has(e.target)).map(e=>Object.assign({},e));
  for(var a of n.filter(x=>x.category==="intestazione_autore_flaminio"))l.push({id:"flaminio:source-edge:root:"+a.id,source:root.id,target:a.id,relation:"parte_del_lotto",status:"PROVENANCE_ASSERTION_ONLY"});
  n.unshift(root);shown={nodes:n,links:l};engine.graphData(shown).zoomToFit();
- $("stats").textContent=(n.length-1)+" nodi fonte + nucleo · "+l.length+" archi · "+chosen.filter(x=>x.category==="scheda_catalogo_flaminio").length+"/500 schede";
+ $("stats").textContent=(n.length-1)+" nodi (fonte + riscontri) · "+l.length+" archi · "+chosen.filter(x=>x.category==="scheda_catalogo_flaminio").length+"/500 schede";
 }
 function search(){
  if(!all)return;var q=$("search").value.trim().toLowerCase(),filtered=records.filter(n=>(n.name+" "+n.author+" "+n.number+" "+n.genre_raw+" "+n.excel_row).toLowerCase().includes(q));
