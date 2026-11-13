@@ -1,0 +1,57 @@
+{
+  "schema": "musurgia-atlantis-lot01-alfano-cpe-63-reconciliation-regression-v1",
+  "date": "2026-11-13",
+  "status": "PASS_STAGING_DATA_ONLY",
+  "inputs": [
+    "GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json",
+    "OVERLAY_CRITICO_IDENTITA_E_ATTRIBUZIONI_LOTTO01_2026-11-12.json",
+    "OVERLAY_BEETHOVEN_RACCOLTE_12_GUIDE_LOTTO01_2026-11-13.json",
+    "OVERLAY_AUDIT_ATTRIBUZIONI_17_LOTTO01_2026-11-13.json",
+    "OVERLAY_LOTTO01_ALBINONI_12_ALBENIZ_3_2026-11-13.json",
+    "CROSSWALK_OVERLAY_LOTTO01_ALFANO_41_CPE_BACH_22_DUE_GRAFI_2026-11-13.json"
+  ],
+  "baseline": {
+    "source_rows": 500,
+    "old_unique_node_ids": 649,
+    "old_link_count": 1137
+  },
+  "new_layer": {
+    "rows": 63,
+    "new_candidate_nodes": 74,
+    "documentary_reference_nodes": 11,
+    "new_edges": 211,
+    "new_ids_total": 85,
+    "new_endpoints_unresolved": [],
+    "old_layers_unresolved_count": 0,
+    "old_layers_unresolved_examples": []
+  },
+  "combined": {
+    "unique_nodes_plus_external_graph_references": 2350,
+    "old_distinct_plus_new_layer_and_doc_refs": 734,
+    "old_links_plus_new_links": 1348
+  },
+  "checks": {
+    "alfano_575_orig_extract": true,
+    "alfano_681_1951_revision": true,
+    "alfano_656_1935_collection_separate_1948": true,
+    "cpe_1133_h417_wq14": true,
+    "cpe_1152_version_h425_hold": true,
+    "cpe_2004_2005_distinct_ids_and_collections": true,
+    "cpe_1309_fantasia_old_form": true,
+    "both_author_refs_exact": true,
+    "no_new_work_collisions": true,
+    "no_source_rows_missing": true,
+    "no_misclassified_sonatina_as_sonata": true,
+    "no_song_wrongly_lied": true,
+    "zero_production_promotions": true
+  },
+  "summary": {
+    "passed": 13,
+    "total": 13,
+    "work_id_certified_global": false,
+    "browser_canvas_webgl_tested": false,
+    "production_modified": false,
+    "lot1_status": "OPEN",
+    "lot2_status": "BLOCKED"
+  }
+}
