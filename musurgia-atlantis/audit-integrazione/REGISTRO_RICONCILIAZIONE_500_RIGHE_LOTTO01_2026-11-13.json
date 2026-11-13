@@ -1,7 +1,7 @@
 {
   "schema": "musurgia-atlantis-linked500-work-identity-triage-v1",
   "date": "2026-11-13",
-  "status": "COMPLETE_SOURCE_ROW_TRIAGE_NOT_COMPLETE_WORK_IDENTITY_CERTIFICATION",
+  "status": "COMPLETE_500_ROW_SOURCE_TRIAGE_133_STAGING_IDENTITIES_NOT_GLOBAL_CERTIFICATION",
   "lot": 1,
   "source": "GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json",
   "source_sha": "34c56474efceac10656d45ab2cfa45dcaefa7acd",
@@ -13,7 +13,9 @@
     "OVERLAY_CRITICO_IDENTITA_E_ATTRIBUZIONI_LOTTO01_2026-11-12.json",
     "CROSSWALK_LOTTO01_BEETHOVEN_12_GUIDE_2026-11-13.json",
     "CHECKPOINT_LOTTO01_17_ATTRIBUZIONI_AUDIT_2026-11-13.json",
-    "BLOCCHI_FUSIONE_LOTTO01_101_COLLISIONI_NUMERO_2026-11-13.json"
+    "BLOCCHI_FUSIONE_LOTTO01_101_COLLISIONI_NUMERO_2026-11-13.json",
+    "CROSSWALK_LOTTO01_ALBINONI_12_ALBENIZ_3_2026-11-13.json",
+    "OVERLAY_LOTTO01_ALBINONI_12_ALBENIZ_3_2026-11-13.json"
   ],
   "caveats": [
     "500/500 means every SOURCE ROW classified, not every WORK identified.",
@@ -23,7 +25,8 @@
     "The 12 Beethoven source rows represent 4 collections and 11 individual guided members.",
     "Duplicate source URLs are not sufficient for work identity: see BWV1070 vs 1069 and BWV968 vs 527.",
     "Original and corrected guide URLs are both preserved.",
-    "No global graph promotion and no browser/Android rendering acceptance."
+    "No global graph promotion and no browser/Android rendering acceptance.",
+    "Albinoni 20/20 source rows now map to 16 DISTINCT staging works (4 shared 2-row source headings); Albéniz 3/3 map to distinct staging works; IDs still provisional."
   ],
   "counts": {
     "total_rows": 500,
@@ -32,29 +35,30 @@
     "beethoven_crosswalk_rows": 12,
     "attribution_audit_only_rows": 17,
     "number_collision_rows": 101,
-    "distinct_rows_with_any_work_identity_candidate": 118,
-    "rows_without_a_strict_work_candidate": 382,
-    "rows_with_any_documentary_case": 135,
-    "rows_without_work_or_audit_case": 365,
+    "distinct_rows_with_any_work_identity_candidate": 133,
+    "rows_without_a_strict_work_candidate": 367,
+    "rows_with_any_documentary_case": 150,
+    "rows_without_work_or_audit_case": 350,
     "canonical_merges_approved": 0,
-    "actual_browser_tested": 0
+    "actual_browser_tested": 0,
+    "new_albinoni_albeniz_candidates": 15
   },
   "per_author": [
     {
       "author": "ALBINONI, Tomaso",
       "total": 20,
-      "with_candidate": 8,
+      "with_candidate": 20,
       "audit": 0,
       "numeric_collision": 0,
-      "no_candidate": 12
+      "no_candidate": 0
     },
     {
       "author": "ALBÉNIZ, Isaac",
       "total": 3,
-      "with_candidate": 0,
+      "with_candidate": 3,
       "audit": 0,
       "numeric_collision": 0,
-      "no_candidate": 3
+      "no_candidate": 0
     },
     {
       "author": "ALFANO, Franco",
@@ -333,8 +337,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-4.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -343,7 +349,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-bel-fantasma-IVB14",
+        "name": "Bel fantasma tu fosti",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-4.html",
+        "work_type": "cantata_profana",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 153,
@@ -356,8 +373,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-5.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -366,7 +385,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-bella-perche-IVB15",
+        "name": "Bella perché tu fosti",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-5.html",
+        "work_type": "cantata_profana",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 161,
@@ -379,8 +409,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-13.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -389,7 +421,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-dove-sei-IVB113",
+        "name": "Dove sei che fai cor mio",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-13.html",
+        "work_type": "cantata_profana",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 170,
@@ -402,8 +445,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-22.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -412,7 +457,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-io-per-colpa-IVB122",
+        "name": "Io che per colpa sol del fato rio",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-22.html",
+        "work_type": "cantata_profana",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 228,
@@ -425,8 +481,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Sinfonia2-11.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -435,7 +493,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-sinfonia-op2-n11",
+        "name": "Sinfonia in sol minore, op. 2 n. 11",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Sinfonia2-11.html",
+        "work_type": "sinfonia_per_archi",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 238,
@@ -448,8 +517,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Sinfonia2-5.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -458,7 +529,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-sinfonia-op2-n5",
+        "name": "Sinfonia in la maggiore, op. 2 n. 5",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Sinfonia2-5.html",
+        "work_type": "sinfonia_per_archi",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 267,
@@ -471,8 +553,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Concerto5-1.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -481,7 +565,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-concerto-op5-n1",
+        "name": "Concerto a cinque in si bemolle maggiore, op. 5 n. 1",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Concerto5-1.html",
+        "work_type": "concerto_a_cinque_archi",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": "SOURCE_RUBRIC_IMPLIES_SOLO_CONCERTO_BUT_GUIDE_DESCRIBES_CONCERTO_A_CINQUE_WITHOUT_DESIGNATED_VIOLIN_SOLOIST"
+      }
     },
     {
       "source_excel_row": 300,
@@ -494,8 +589,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Concerto9-9.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -504,7 +601,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-concerto-op9-n9",
+        "name": "Concerto in do maggiore per due oboi, op. 9 n. 9",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Concerto9-9.html",
+        "work_type": "concerto_doppio_per_due_oboi",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 345,
@@ -553,8 +661,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Diomede618.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -563,7 +673,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-diomede-punito-1701",
+        "name": "Diomede punito da Alcide",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Diomede618.html",
+        "work_type": "opera_dramma_per_musica_partitura_perduta",
+        "librettist": "Aurelio Aureli",
+        "completion_author": null,
+        "score_status": "MUSIC_LOST_LIBRETTO_SURVIVES",
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 369,
@@ -576,8 +697,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Prodigio646.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -586,7 +709,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-prodigio-innocenza-1695",
+        "name": "Il prodigio dell’innocenza",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Prodigio646.html",
+        "work_type": "opera_dramma_per_musica_partitura_perduta",
+        "librettist": "Fulgenzio Maria Gualazzi",
+        "completion_author": null,
+        "score_status": "MUSIC_LOST_LIBRETTO_SURVIVES",
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 372,
@@ -599,8 +733,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Armida59.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -609,7 +745,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-trionfo-armida-1726",
+        "name": "Il trionfo di Armida",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Armida59.html",
+        "work_type": "opera_dramma_per_musica_partitura_perduta",
+        "librettist": "Girolamo Colatelli",
+        "completion_author": null,
+        "score_status": "MUSIC_LOST_LIBRETTO_SURVIVES",
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 381,
@@ -622,8 +769,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Laodice637.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -632,7 +781,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albinoni-laodice-1724",
+        "name": "Laodice",
+        "source_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Laodice637.html",
+        "work_type": "opera_dramma_per_musica_partitura_perduta",
+        "librettist": "Angelo Schietti",
+        "completion_author": null,
+        "score_status": "MUSIC_LOST_LIBRETTO_SURVIVES",
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 389,
@@ -753,8 +913,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albeniz/Albeniz-Clifford8.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -763,7 +925,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albeniz-henry-clifford-1895",
+        "name": "Henry Clifford",
+        "source_url": "https://www.flaminioonline.it/Guide/Albeniz/Albeniz-Clifford8.html",
+        "work_type": "opera_in_tre_atti",
+        "librettist": "Francis Burdett Money-Coutts (Mountjoy)",
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 436,
@@ -778,8 +951,10 @@
       "source_flags": [
         "NUMERO_CATALOGO_NON_PRESENTE"
       ],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -788,7 +963,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albeniz-cordoba-op232-n4",
+        "name": "Córdoba",
+        "source_url": "https://www.flaminioonline.it/Guide/Albeniz/Albeniz-Cordoba1014.html",
+        "work_type": "pezzo_per_pianoforte_numero_di_raccolta",
+        "librettist": null,
+        "completion_author": null,
+        "score_status": null,
+        "catalogue_source_discrepancy": "SOURCE_EXCEL_NUMBER_BLANK_SOURCE_GUIDE_OP232_N4",
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 468,
@@ -801,8 +987,10 @@
       "source_effective_guide_url": "https://www.flaminioonline.it/Guide/Albeniz/Albeniz-Navarra106.html",
       "source_url_changed_from_original": false,
       "source_flags": [],
-      "reconciliation_state": "NO_EXACT_WORK_IDENTITY_IN_CURRENT_AUDIT_MANIFESTS",
-      "evidence_layers": [],
+      "reconciliation_state": "WORK_GUIDE_SPECIFIC_STAGING_CANDIDATE_PENDING_GLOBAL_ID",
+      "evidence_layers": [
+        "ALBINONI_ALBENIZ_GUIDE_LEVEL_CROSSWALK"
+      ],
       "prior_staging_candidates": [],
       "critical_work_identity": null,
       "beethoven_identity": null,
@@ -811,7 +999,18 @@
       "shared_source_url_rows": [],
       "source_guide_integrity_gate": "NOT_ALL_GUIDES_LIVE_CHECKED",
       "ready_for_canonical_merge": false,
-      "real_browser_reviewed": false
+      "real_browser_reviewed": false,
+      "albinoni_albeniz_work_identity": {
+        "work_id": "audit:fl01:work:albeniz-navarra-severac-1908",
+        "name": "Navarra",
+        "source_url": "https://www.flaminioonline.it/Guide/Albeniz/Albeniz-Navarra106.html",
+        "work_type": "pezzo_per_pianoforte_completamento_postumo",
+        "librettist": null,
+        "completion_author": "Déodat de Sévérac",
+        "score_status": "UNFINISHED_BY_ALBENIZ_POSTHUMOUSLY_COMPLETED_BY_SEVERAC",
+        "catalogue_source_discrepancy": null,
+        "source_genre_discrepancy": null
+      }
     },
     {
       "source_excel_row": 575,
