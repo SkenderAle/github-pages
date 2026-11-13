@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Musurgia Atlantis — Lotto 01 | fonte, 17 audit e raccolte Beethoven</title>
+<style>
+:root{color-scheme:dark;--bg:#091821;--panel:#102936;--line:#365361;--ink:#e7eff1;--muted:#b6c6ce;--accent:#7bdac6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,Arial,sans-serif}
+header{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+h1{margin:0;font-size:1.1rem}h2{font-size:1.01rem;margin:0 0 11px}.small{font-size:12px;color:var(--muted)}
+main{display:grid;grid-template-columns:minmax(0,1fr) 340px;min-height:calc(100vh - 80px)}
+#left{min-width:0;display:flex;flex-direction:column}.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--line)}
+select,input,button{background:#163849;color:var(--ink);border:1px solid #496576;border-radius:6px;padding:9px 11px;font:inherit}
+input{width:min(340px,100%)}button{cursor:pointer}button:hover{border-color:var(--accent)}
+#graph{flex:1;height:calc(100vh - 230px);min-height:430px;position:relative}
+#side{border-left:1px solid var(--line);background:var(--panel);padding:16px;overflow:auto;max-height:calc(100vh - 80px)}
+#results{max-height:240px;overflow:auto;display:grid;gap:4px;margin:8px 0 20px}
+#results button{text-align:left;font-size:12px;padding:7px;white-space:normal}
+#info{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}
+#info a{color:var(--accent)}.notice{border-top:1px solid #54707d;padding:8px 0;color:#e7cf8c;font-size:12px}
+.tag{display:inline-block;margin:2px 4px 2px 0;padding:2px 5px;border:1px solid #6b8390;border-radius:4px;font-size:11px}
+#stats{font-variant-numeric:tabular-nums}
+@media(max-width:850px){main{display:block}#graph{height:50vh;min-height:360px}#side{max-height:none;border-left:none;border-top:1px solid var(--line)}}
+</style></head><body>
+<header><h1>Musurgia Atlantis · Flaminio — Lotto 01</h1><span class="small" id="stats">Caricamento dati…</span></header>
+<main><section id="left"><div class="toolbar">
+<label for="author">Autore</label><select id="author" aria-label="Filtra le intestazioni d'autore"><option value="">Tutti</option></select>
+<button id="reset">Vista completa</button><button id="report">Esporta controllo JSON</button>
+<span class="small">Trascina per ruotare · rotella/pinch per ingrandire · clicca un nodo o un arco</span>
+</div><div id="graph" aria-label="Grafo delle 500 schede catalografiche Flaminio"></div></section>
+<aside id="side"><h2>Ricerca delle schede</h2>
+<input id="search" placeholder="Titolo, autore, numero, riga Excel…" aria-label="Cerca tra i 500 record">
+<div class="small" id="searchStats">Tutti i 500 record restano consultabili.</div>
+<div id="results"></div>
+<h2>Dettagli</h2><div id="info">Seleziona una scheda per leggere i dati e aprire il suo link di spiegazione originale.</div>
+<div class="notice">Sono visualizzate le 500 schede fonte, 10 identità d'opera già in audit e 15 entità Beethoven in staging (4 raccolte, 11 brani), oltre a due riferimenti canonici. I canti scozzesi e gallesi sono elaborazioni di melodie tradizionali, NON composizioni delle melodie originali. Le 17 schede nuove sono soltanto NODI DI AUDIT, non 17 opere musicali certificate. La guida Flaminio per BWV 556 riporta contenuti propri di BWV 540. Questo è il grafo della FONTE, non il grafo storico certificato. Le 500 sfere rappresentano record dell’Excel (non necessariamente 500 opere autonome). Le due categorie di arco riproducono intestazioni autore e rubriche così come registrate da Flaminio; non dimostrano la paternità delle opere o la correttezza dei generi.</div></aside></main>
+<script src="./compat-graph-checkpoint08.js"></script>
+<script>
+(function(){"use strict";
+var $=id=>document.getElementById(id), all=null, engine=null, shown={nodes:[],links:[]}, selected=null, loaded=false;
+var nodesById=new Map(), records=[], authors=[], rubrics=[];
+function line(t){var d=document.createElement("div");d.textContent=t;return d}
+function detailTitle(t){var d=document.createElement("h3");d.textContent=t;d.style.margin="6px 0";return d}
+function showNode(n){
+ selected=n&&n.id||null;var pane=$("info");pane.replaceChildren();
+ if(!n){pane.append(line("Nessun nodo selezionato."));return}
+ pane.append(detailTitle(n.name||n.id));
+ if(n.category==="scheda_catalogo_flaminio"){
+  pane.append(line("Riga Excel: "+n.excel_row+" · fonte "+n.author));
+  pane.append(line("Numero Excel: "+(n.number||"non indicato")));if(n.catalogue_number_source_disagreement)pane.append(line("Numero verificato nella guida: "+n.catalogue_number_derived+" (originale preservato)."));
+  pane.append(line("Rubrica originale: "+n.genre_raw));
+  pane.append(line("Stato: record fonte; identità storica non ancora certificata."));
+  if(n.flags&&n.flags.length)pane.append(line("Segnali: "+n.flags.join("; ")));
+  if(n.staging_references&&n.staging_references.length)pane.append(line("Riferimenti di staging già presenti: "+n.staging_references.join(", ")));
+  if(n.reviewed_work_candidate_id)pane.append(line("Opera corrispondente nello staging: "+n.reviewed_work_candidate_id));
+  if(n.guide_correction_reason)pane.append(line("Correzione documentata: "+n.guide_correction_reason));
+  var effective=n.source_url_effective||n.source_url;
+  if(/^https:\/\/www\.flaminioonline\.it\/Guide\//.test(effective||"")){var a=document.createElement("a");a.href=effective;a.target="_blank";a.rel="noopener noreferrer";a.textContent=n.url_was_corrected?"Apri guida Flaminio CORRETTA":"Apri guida originale Flaminio";pane.append(a)}
+  if(n.url_was_corrected)pane.append(line("Link Excel errato, mantenuto: "+n.source_url_original));
+ }else if(n.category==="intestazione_autore_flaminio"){
+  pane.append(line("Intestazione letterale del catalogo, non attribuzione musicologica certificata."));
+  pane.append(line("ID persona Atlantis candidati: "+((n.matched_person_ids||[]).join(", ")||"da riconciliare")));
+ }else if(n.category==="rubrica_fonte_flaminio")pane.append(line("Rubrica originale Flaminio, non sottogenere tassonomico validato."));
+ else if(n.category==="opera_identita_e_autore_riscontrati"||n.category==="opera_identita_verificata_autore_in_hold"){pane.append(line("IDENTITÀ D’OPERA RISCONTRATA · "+n.work_identity_status));pane.append(line("Righe originali: "+n.source_rows.join(", ")));pane.append(line(n.canonical_author_assertion?"Paternità: riscontrata con fonte specifica":"Paternità: IN HOLD, senza arco autore inventato"));pane.append(line(n.notes||""));if(n.source_url&&/^https:\/\//.test(n.source_url)){var a=document.createElement("a");a.href=n.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Fonte dell’identità storica";pane.append(a)}}
+ else if(n.category==="scheda_audit_attribuzione_non_opera"){pane.append(line("AUDIT DI ATTRIBUZIONE — NON OPERA CERTIFICATA"));pane.append(line("Riga Excel: "+n.audit_source_row+" · autore nell’Excel: "+n.author_raw));pane.append(line("Esito: "+n.decision));pane.append(line("Stato paternità: "+n.author_assertion));pane.append(line("Nota: "+n.critical_note));if(n.source_quality_alert)pane.append(line("ANOMALIA DELLA FONTE: "+n.source_quality_alert));if(n.guide_integrity_gate==="BLOCKED_WRONG_WORK_PAGE")pane.append(line("Non usare questa guida come prova dell’opera qui nominata."));if(n.evidence_urls)for(var src of n.evidence_urls){if(/^https:\/\//.test(src)){var a=document.createElement("a");a.href=src;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Apri riscontro documentale";pane.append(a)}}}
+  else if(n.category==="raccolta_identita_catalografica"){pane.append(line("RACCOLTA · "+n.catalogue_number+" · "+n.member_count_catalogue+" brani nel catalogo"));pane.append(line("Identità provvisoria di staging, da confrontare con tutti gli overlay."));if(n.beethoven_haus_url){var a=document.createElement("a");a.href=n.beethoven_haus_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Catalogo Beethoven-Haus";pane.append(a)}}
+  else if(n.category==="opera_elaborazione_popolare_attestata"){pane.append(line("CANTO ELABORATO n. "+n.member_number+" · melodia tradizionale"));pane.append(line("Beethoven elaboratore/arrangiatore, NON compositore accertato della melodia tradizionale."));pane.append(line("Riga Excel: "+n.source_rows.join(", ")+" · staging non certificato"));if(n.source_url){var a=document.createElement("a");a.href=n.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Guida Flaminio";pane.append(a)}}
+  else if(n.category==="persona_con_riscontro")pane.append(line("Persona riscontrata ma ancora da unificare con tutti i nodi storici federati."));
+ else if(n.category==="genere_forma_riscontrato")pane.append(line("Forma attestata per l’opera; rimane da riconciliare con l’albero tassonomico complessivo."));
+ else pane.append(line("Nucleo delle schede della fonte."));
+}
+function choose(id){var n=nodesById.get(id);if(!n)return false;var author=n.author||n.name;if(n.category==="scheda_catalogo_flaminio"&&$("author").value&&$("author").value!==author){$("author").value="";draw()}
+ showNode(n);return true}
+function draw(){
+ if(!all||!engine)return;var av=$("author").value;
+ var chosen;
+ if(!av)chosen=all.nodes;
+ else {
+  var sourceIds=new Set(all.nodes.filter(n=>n.category==="scheda_catalogo_flaminio"&&n.author===av).map(n=>n.id));
+  var workIds=new Set(all.links.filter(e=>(e.relation==="documenta_opera_identificata"||e.relation==="ha_audit_attribuzione")&&sourceIds.has(e.source)).map(e=>e.target));
+  for(var e of all.links){if(e.relation.indexOf("contiene_brano_numero_")===0&&workIds.has(e.target))workIds.add(e.source)}
+   var otherIds=new Set();
+  for(var e of all.links){
+   if((e.relation==="compone_la_musica_di"||e.relation==="elabora_melodia_tradizionale"||e.relation==="elabora_raccolta_di_canti_tradizionali"||e.relation==="compone_musiche_riunite_in_raccolta")&&workIds.has(e.target))otherIds.add(e.source);
+   if(e.relation==="ha_genere_forma"&&workIds.has(e.source))otherIds.add(e.target);
+  }
+  chosen=all.nodes.filter(n=>n.category==="scheda_catalogo_flaminio"?sourceIds.has(n.id):n.category==="intestazione_autore_flaminio"?n.name===av:n.category==="rubrica_fonte_flaminio"?n.author_label===av:workIds.has(n.id)||otherIds.has(n.id));
+ }
+ var ids=new Set(chosen.map(n=>n.id));
+ var root={id:"flaminio:source-root:lotto01",name:"Flaminio — 500 schede",category:"fonte_raccolta",_focus:true,_forceLabel:true,_depth:0};
+ var n=chosen.map(n=>Object.assign({},n,{_depth:n.category==="intestazione_autore_flaminio"?1:n.category==="rubrica_fonte_flaminio"?2:n.category==="scheda_catalogo_flaminio"?3:4,
+ _forceLabel:n.category==="intestazione_autore_flaminio"||n.category==="opera_identita_e_autore_riscontrati"||n.category==="raccolta_identita_catalografica"||n.category==="opera_elaborazione_popolare_attestata"||n.category==="scheda_audit_attribuzione_non_opera"||(n.id===selected)}));
+ var l=all.links.filter(e=>ids.has(e.source)&&ids.has(e.target)).map(e=>Object.assign({},e));
+ for(var a of n.filter(x=>x.category==="intestazione_autore_flaminio"))l.push({id:"flaminio:source-edge:root:"+a.id,source:root.id,target:a.id,relation:"parte_del_lotto",status:"PROVENANCE_ASSERTION_ONLY"});
+ n.unshift(root);shown={nodes:n,links:l};engine.graphData(shown).zoomToFit();
+ $("stats").textContent=(n.length-1)+" nodi (fonte + riscontri) · "+l.length+" archi · "+chosen.filter(x=>x.category==="scheda_catalogo_flaminio").length+"/500 schede";
+}
+function search(){
+ if(!all)return;var q=$("search").value.trim().toLowerCase(),filtered=records.filter(n=>(n.name+" "+n.author+" "+n.number+" "+n.genre_raw+" "+n.excel_row).toLowerCase().includes(q));
+ $("searchStats").textContent=filtered.length+"/500 schede trovate"+(filtered.length>35?" · visualizzate le prime 35":"");
+ var box=$("results");box.replaceChildren();
+ for(var n of filtered.slice(0,35)){
+  var b=document.createElement("button");b.type="button";b.textContent=n.name+" · "+n.author+" · riga "+n.excel_row;
+  b.addEventListener("click",function(node){return function(){choose(node.id)}}(n));box.append(b);
+ }
+}
+function report(){
+ var j={schema:"flaminio-lotto01-source-graph-visual-manual-check-v1",date:new Date().toISOString(),loaded:loaded,
+ total_source_records:records.length,total_source_nodes:all.nodes.length,total_source_links:all.links.length,
+ currently_displayed_nodes:shown.nodes.length,currently_displayed_links:shown.links.length,
+ selected_node:selected,manual_canonical_atlas_acceptance:"NOT_CERTIFIED",hardware_android_acceptance:"NOT_CERTIFIED"};
+ var blob=new Blob([JSON.stringify(j,null,2)],{type:"application/json"});
+ var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="flaminio-lotto01-vista-fonte.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+}
+function boot(data){
+ all=data;nodesById=new Map(data.nodes.map(n=>[n.id,n]));records=data.nodes.filter(n=>n.category==="scheda_catalogo_flaminio");
+ authors=data.nodes.filter(n=>n.category==="intestazione_autore_flaminio");rubrics=data.nodes.filter(n=>n.category==="rubrica_fonte_flaminio");
+ if(records.length!==500||authors.length!==10||data.links.length!==1092||data.nodes.length!==628)throw Error("Invarianti fonte + overlay critico non rispettati");
+ if(new Set(data.nodes.map(n=>n.id)).size!==data.nodes.length)throw Error("Identificativi duplicati nel grafo");
+ if(data.links.some(e=>!nodesById.has(e.source)||!nodesById.has(e.target)))throw Error("Arco orfano nel grafo");
+ authors.sort((a,b)=>a.name.localeCompare(b.name,"it"));for(var a of authors){var option=document.createElement("option");option.value=a.name;option.textContent=a.name;$("author").append(option)}
+ engine=window.AtlantisAuditCompatGraph($("graph")).nodeColor(n=>n.category==="scheda_catalogo_flaminio"?"#eac48c":n.category==="intestazione_autore_flaminio"?"#75d8c0":n.category==="rubrica_fonte_flaminio"?"#98aee3":n.category==="opera_identita_e_autore_riscontrati"?"#73e19e":n.category==="opera_identita_verificata_autore_in_hold"?"#e59c72":n.category==="persona_con_riscontro"?"#6fb7ff":n.category==="genere_forma_riscontrato"?"#e0c6fc":n.category==="raccolta_identita_catalografica"?"#ffd278":n.category==="opera_elaborazione_popolare_attestata"?"#eac1fc":n.category==="scheda_audit_attribuzione_non_opera"?"#f8a15d":"#f5f0d0")
+ .nodeVal(n=>n.category==="scheda_catalogo_flaminio"?3:n.category==="rubrica_fonte_flaminio"?6:n.category==="opera_identita_e_autore_riscontrati"||n.category==="opera_identita_verificata_autore_in_hold"?10:9)
+ .linkColor(e=>e.relation==="rubrica_editoriale_flaminio"?"#8290aa":"#5b9f8e")
+ .linkOpacity(.2).onNodeClick(showNode).onNodeDoubleClick(showNode)
+ .onLinkClick(e=>{var p=$("info");p.replaceChildren(detailTitle("Relazione documentata"));p.append(line(e.relation));p.append(line("Stato: "+e.status));p.append(line(e.note||""));if(e.source_url&&/^https:\/\//.test(e.source_url)){var a=document.createElement("a");a.href=e.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Apri fonte della relazione";p.append(a)}else p.append(line("Fonte: Excel Flaminio, relazione documentaria non verificata come fatto storico."))})
+ .onBackgroundClick(()=>showNode(null));
+ loaded=true;draw();search();
+ window.AtlantisFlaminioLotto01={status:()=>({loaded,source_records:records.length,authors:authors.length,rubrics:rubrics.length,
+ graph_nodes:all.nodes.length,graph_edges:all.links.length,visible_nodes:shown.nodes.length,visible_edges:shown.links.length,
+ matching_row_ids:records.map(n=>n.excel_row),renderer:engine?"canvas_2d_3d_projection":"not_constructed"}),
+ selectRow:row=>{var n=records.find(n=>n.excel_row===Number(row));return n?choose(n.id):false},
+ getRow:row=>records.find(n=>n.excel_row===Number(row))||null,
+ displayedGraph:()=>({nodes:shown.nodes.length,links:shown.links.length})};
+}
+$("author").addEventListener("change",draw);$("reset").addEventListener("click",()=>{$("author").value="";draw()});
+$("search").addEventListener("input",search);$("report").addEventListener("click",report);
+Promise.all(["./GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json","./OVERLAY_CRITICO_IDENTITA_E_ATTRIBUZIONI_LOTTO01_2026-11-12.json","./OVERLAY_BEETHOVEN_RACCOLTE_12_GUIDE_LOTTO01_2026-11-13.json","./OVERLAY_AUDIT_ATTRIBUZIONI_17_LOTTO01_2026-11-13.json"].map(url=>fetch(url,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status+" "+url);return r.json()})))
+ .then(([base,overlay,beethoven,audit])=>{if(base.nodes.length!==574||base.links.length!==1000||overlay.nodes.length!==20||overlay.links.length!==30||beethoven.nodes.length!==17||beethoven.links.length!==45||audit.nodes.length!==17||audit.links.length!==17)throw Error("I quattro layer non superano le invarianti");return boot({nodes:base.nodes.concat(overlay.nodes,beethoven.nodes,audit.nodes),links:base.links.concat(overlay.links,beethoven.links,audit.links)})})
+ .catch(err=>{$("stats").textContent="ERRORE: "+err.message;console.error(err)});
+})();
+</script></body></html>
