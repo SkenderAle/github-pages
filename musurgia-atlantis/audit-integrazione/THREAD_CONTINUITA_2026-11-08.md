@@ -2326,3 +2326,28 @@ Esaminate le **12 righe originali** già comprese nelle prime 500 (4632–4635, 
 **Decisione filologica:** `op.108` e `WoO155` = **Beethoven elaboratore di melodie tradizionali**, non compositore originario della melodia e non Lied tedesco automaticamente; `op.83` e `op.52` = **Lieder originali** da testi poetici, collegati alla forma Lied. Conservare i 12 originali Flaminio e gli 11 legami ai singoli brani più l'unico link alla raccolta op.108; non importare automaticamente gli altri pezzi delle raccolte privi di guida nella selezione 7.412.
 
 **Limiti NON superati:** nessun browser/Canvas reale eseguito, non validati live tutti e 12 gli URL Flaminio, non completato crosswalk di tutti gli staging disgiunti, **0 identità promosse nel grafo canonico**. `Lotto01` resta **OPEN**, **0/15** chiusi, `Lotto02` ancora vietato. Prossima ripresa: 17 alert attributivi residui, 408 schede senza match rigoroso negli overlay, controllo guide individuali e accettazione grafica reale per tutte le 500; poi verifica finale del protocollo prima di chiudere.
+
+
+### Lotto Flaminio 01 — 17 attribuzioni residue: riscontro documentario e preview audit (13 novembre 2026)
+
+**Ripresa effettivamente pubblicata su `main`, SOLO staging `audit-integrazione/`.** Tutte le **17/17** schede precedentemente classificate `SOURCE_TEXT_ALERT_INDEPENDENT_VERIFICATION_REQUIRED` nel registro delle 28 segnalazioni musicali sono ora dotate di **verifica di fonti esterne, stato qualificato e gate**. Non affermare «17 attribuzioni certificate»: la maggioranza mantiene dubbi sulla paternità, sulla trascrizione o sulla variante; **zero archi compositore→opera promossi nel grafo storico**.
+
+**Riscontri prioritari:**
+- **C. P. E. Bach H 484.1 / Wq 22 (Excel 1152):** fonti dell'edizione critica CPEB:CW supportano la versione per flauto come probabilmente anteriore a quella per tastiera H425; la precedente etichetta Flaminio «attribuzione incerta» è ora storicizzata, non ripetuta come stato finale immotivato.
+- **BWV 587 (2854):** origine **François Couperin, `Les Nations`**, ma autore della trascrizione per organo non identificato con sicurezza: relazione `trascrizione_da` candidata, **non `J. S. Bach compone L'Impériale`**.
+- **BWV 230 (3593):** la Nederlandse Bachvereniging riferisce prevalente giudizio specialistico contro l'autenticità bachiana; nessun altro autore identificato.
+- **BWV 576 (3791):** giudicata spuria rispetto a Bach dal *Grove* citato su IMSLP; compositore alternativo ignoto.
+- **BWV 553–556 (3798, 3799, 3801, 3802):** membri degli otto piccoli preludi e fughe; J. S. Bach generalmente non ritenuto autore, ma niente certezza su Johann Tobias/Johann Ludwig Krebs e altri candidati.
+- **BWV 209 (2660)** e **BWV 922 (3713):** letteratura con **interpretazioni discordanti**; non convertirle in condanne o assoluzioni certe. **BWV 1027a (3667):** derivato dal IV movimento della Sonata BWV1027, arrangiatore dubbio. **BWV713a:** variante distinta da BWV713. Gli altri casi (BWV597,763,921,561,571) con gate specifici nel registro.
+- **Tre anomalie di qualità della fonte:** (i) BWV1027a riga 3667, testo Flaminio menziona «Andante» e «ultimo tempo» in modo incoerente; (ii) BWV561 riga 3778, titolo HTML della pagina dichiara BWV583 mentre H1 e URL sono BWV561; **(iii) BWV556 riga 3799, GRAVE: guida Flaminio `Bach-Preludio556.html` contiene titolo e analisi della Toccata e fuga **BWV540**, non del piccolo preludio e fuga BWV556**. Dati raw conservati; quest'ultima guida marcata `BLOCKED_WRONG_WORK_PAGE` e non utilizzabile come prova della BWV556.
+
+**File prodotti, con commit:**
+- `CHECKPOINT_LOTTO01_17_ATTRIBUZIONI_AUDIT_2026-11-13.json` (`ccd894bde4f7db2baa75fda0faed461b78060316`): 17 record individuali con fonti, esiti, eccezioni.
+- `OVERLAY_AUDIT_ATTRIBUZIONI_17_LOTTO01_2026-11-13.json` (`c9d4180f3c7444af1d807d73707822c5b8c113fe`): **17 nodi documentari di AUDIT** + **17 archi source→audit**, ZERO nuove opere e ZERO paternità storiche autorizzate.
+- `VISTA_GRAFO_FONTE_FLAMINIO_LOTTO01_ATTRIBUZIONI_17_2026-11-13.html` (`42c691da92bfc95d3b1cae25d75a22111d050521`): nuova preview che legge 4 layer (fonte, overlay critico, Beethoven, audit attribuzioni), mantenendo precedenti anteprime intatte.
+- `REGRESSIONE_LOTTO01_17_ATTRIBUZIONI_2026-11-13.json` (`1ca80b8fcf14c123a933239b384212365c0b0967`): `PASS_STRUCTURAL_AND_JS_SYNTAX_ONLY`: **500 schede fonte / 628 nodi / 1.092 archi**, 0 duplicati/0 orfani, **17/17** documenti collegati alla riga giusta. Filtro J. S. Bach = 16 audit; filtro C. P. E. Bach = 1; filtro Beethoven conserva 15 entità precedenti; JS analizzato sintatticamente.
+- `AUDIT_LOTTO01_17_ATTRIBUZIONI_RISCONTRI_2026-11-13.md` (`343d944277a6e20afc18b787285cd11ff27a4ed7`): verbale completo e fonti.
+
+**NON eseguiti** browser/Canvas/WebGL reali, test touch, certificazione 500/500 delle identità d'opera e dell'intero grafo canonico, né promozione in produzione. Il triage preliminare dei 17 non sostituisce la conclusione storica dei singoli HOLD e la verifica integrale degli URL. **Lotto01 rimane OPEN, chiusi 0/15; Lotto02 resta BLOCCATO.** `musurgia-atlantis/grafo.json` e `index.html` non modificati.
+
+**Prossima ripresa:** consolidare 500/500 righe fonte contro identità dell'opera, raccolta/parte/versione, trattare anomalie guide (in particolare BWV556), completare crosswalk e fonti individuali, poi collaudo browser visivo vero e accettazione prima di aprire Lotto02.
