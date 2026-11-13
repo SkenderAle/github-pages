@@ -1,0 +1,419 @@
+{
+  "schema": "musurgia-atlantis-flaminio-lotto01-17-authorship-evidence-triage-v1",
+  "date": "2026-11-13",
+  "lot": 1,
+  "scope": "17 of 28 musician-authorship flags from prior audit, all within the 500 linked-source rows",
+  "status": "17_17_CASES_RESEARCHED_SOURCE_GATES_QUALIFIED_NOT_CERTIFIED_GLOBAL_GRAPH",
+  "source_register": "AUDIT_ATTRIBUZIONI_REALI_28_LOTTO01_2026-11-12.json",
+  "source_register_sha": "8a5ddd99fe785ad247fab21aa0c6f8361d2f7df6",
+  "policy": {
+    "source_raw_never_rewritten": true,
+    "historical_work_identity_independent_of_composer_authorship": true,
+    "source_composer_distinct_from_arranger": true,
+    "version_independent_of_work": true,
+    "never_substitute_hypothesis_for_certain_author": true,
+    "source_page_mismatch_blocks_evidence_for_that_record": true,
+    "reference_id_canonical_merge_only_after_full_dedup": true,
+    "no_production_modification": true
+  },
+  "counts": {
+    "rows_researched": 17,
+    "unresolved_rows_prior": 17,
+    "source_quality_alert_rows": 3,
+    "source_quality_alert_ids": [
+      "flaminio:excel:3667",
+      "flaminio:excel:3778",
+      "flaminio:excel:3799"
+    ],
+    "supported_positive_cpe_bach_flute_version": 1,
+    "source_composer_couperin_confirmed_arranger_open": 1,
+    "author_or_arranger_gates_still_qualified_or_closed": 16,
+    "new_automatic_jsbach_composer_edges": 0,
+    "rows_promoted_to_canonical_graph": 0,
+    "browser_tests_executed": 0,
+    "lots_closed": 0
+  },
+  "items": [
+    {
+      "source_id": "flaminio:excel:1152",
+      "source_excel_row": 1152,
+      "source_catalogue_number_raw": "484.1",
+      "source_title_raw": "Concerto in re minore per flauto traverso e archi",
+      "source_author_label_raw": "BACH, Carl Philipp Emanuel",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto4841.html",
+      "source_guide_consulted": true,
+      "decision": "CPE_FLUTE_VERSION_SUPPORTED_CRITICAL_EDITION",
+      "composer_assertion": "C_P_E_BACH_AUTHORSHIP_SUPPORTED",
+      "version": "Flute H.484.1 = Wq22 (flute); keyboard H.425 separate version. Critical edition favors flute earlier, not 'later transcription'.",
+      "confidence": "CRITICAL_EDITION_HIGH_WITH_DATE_UNCERTAINTY",
+      "evidence": [
+        "https://cpebach.org/toc/III-4-1",
+        "https://cpebach.org/pdfs/introductions/III-9-7-Intro.pdf"
+      ],
+      "qualified_edges": [
+        "CPEB -> version_flute : compone_con_documentazione_critica",
+        "version_flute -> version_keyboard : versione_correlata (direzione cronologica probabile, da non rendere assoluta)"
+      ],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:2660",
+      "source_excel_row": 2660,
+      "source_catalogue_number_raw": "209",
+      "source_title_raw": "Non sa che sia dolore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Cantata209.html",
+      "source_guide_consulted": true,
+      "decision": "JSB_AUTHORSHIP_DEBATED",
+      "composer_assertion": "HOLD_NO_UNQUALIFIED_AUTHOR_EDGE",
+      "version": "Italian cantata BWV209; Hofmann argues in favor of J.S.Bach whereas other scholarship questions authenticity and patron/dedication; no asserted Hasse authorship.",
+      "confidence": "SCHOLARLY_DISAGREEMENT",
+      "evidence": [
+        "https://bjb.publia.org/bjb/article/view/1871",
+        "https://bachipedia.org/en/werke/non-sa-che-sia-dolore/"
+      ],
+      "qualified_edges": [],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:2854",
+      "source_excel_row": 2854,
+      "source_catalogue_number_raw": "587",
+      "source_title_raw": "Aria in fa maggiore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Aria587.html",
+      "source_guide_consulted": true,
+      "decision": "COUPERIN_SOURCE_COMPOSITION_CONFIRMED_ARRANGER_UNCERTAIN",
+      "composer_assertion": "COUPERIN_AUTHOR_OF_SOURCE; ARRANGER_BWV587_HOLD",
+      "version": "Organ transcription of fourth movement of L'Impériale in Les Nations by François Couperin; don't attribute original trio sonata to J.S.Bach.",
+      "confidence": "SCHOLARLY_SOURCE_IDENTIFICATION",
+      "evidence": [
+        "https://bjb.publia.org/bjb/article/view/2212",
+        "https://bwv.info/en/bwv/587/"
+      ],
+      "qualified_edges": [
+        "BWV587 -> Les Nations : trascrizione_da (movimento specifico); organ-arranger unresolved"
+      ],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3097",
+      "source_excel_row": 3097,
+      "source_catalogue_number_raw": "597",
+      "source_title_raw": "Concerto in mi bemolle maggiore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Concerto597.html",
+      "source_guide_consulted": true,
+      "decision": "ORGAN_ARRANGEMENT_OF_UNKNOWN_CONCERTO",
+      "composer_assertion": "ORIGINAL_COMPOSER_UNKNOWN; ARRANGER_JSB_HOLD",
+      "version": "Organ BWV597, uncertain arranger, source violin concerto not identified; avoid attaching both 'concerto per violino' and 'concerto organo' as the same original entity.",
+      "confidence": "SOURCE_AND_CATALOGUE_CROSSCHECK",
+      "evidence": [
+        "https://imslp.org/wiki/Organ_Concerto_in_E-flat_major%2C_BWV_597_%28Bach%2C_Johann_Sebastian%29",
+        "https://bwv.info/en/bwv/597/"
+      ],
+      "qualified_edges": [],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3384",
+      "source_excel_row": 3384,
+      "source_catalogue_number_raw": "713a",
+      "source_title_raw": "Fantasia super Jesu, meine Freude",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Fantasia713a.html",
+      "source_guide_consulted": true,
+      "decision": "BWV713A_DISTINCT_VARIANT_WITH_UNCERTAIN_AUTHENTICITY",
+      "composer_assertion": "VARIANT_HOLD",
+      "version": "BWV713a a distinct variant/testimony of BWV713, which must not lose parent identity; copies Hauser/Oley different.",
+      "confidence": "VARIANT_CORRESPONDENCE_SUPPORTED_AUTHENTICITY_OPEN",
+      "evidence": [
+        "https://bwv.info/en/bwv/713a/",
+        "https://bwv.info/en/bwv/713/"
+      ],
+      "qualified_edges": [
+        "BWV713a -> BWV713 : variante_di (not identical node)"
+      ],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3450",
+      "source_excel_row": 3450,
+      "source_catalogue_number_raw": "763",
+      "source_title_raw": "Wie schön leuchtet uns der Morgenstern",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Corale763.html",
+      "source_guide_consulted": true,
+      "decision": "BWV763_ORGAN_CHORALE_AUTHORSHIP_UNCERTAIN",
+      "composer_assertion": "JSB_AUTHOR_HOLD",
+      "version": "The hymn melody is associated with Philipp Nicolai; this does NOT certify the author of organ setting BWV763.",
+      "confidence": "ATTRIBUTION_UNCERTAIN",
+      "evidence": [
+        "https://bwv.info/en/bwv/763/"
+      ],
+      "qualified_edges": [],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3593",
+      "source_excel_row": 3593,
+      "source_catalogue_number_raw": "230",
+      "source_title_raw": "Lobet den Herrn, alle Heiden",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Mottetto230.html",
+      "source_guide_consulted": true,
+      "decision": "BWV230_JSB_ATTRIBUTION_DISFAVORED_NOT_OTHER_COMPOSER_CERTIFIED",
+      "composer_assertion": "J_S_BACH_AS_AUTHOR_NOT_ASSERTABLE; ANON_AUTHOR",
+      "version": "The Nederlandse Bachvereniging reports majority of specialists no longer see BWV230 as a work by J.S.Bach; earliest source says only 'Signor Bach'. Do not assign another Bach by surname.",
+      "confidence": "SPECIALIST_CONSENSUS_AGAINST_JSB_AS_REPORTED",
+      "evidence": [
+        "https://www.bachvereniging.nl/en/bwv/bwv-230"
+      ],
+      "qualified_edges": [],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3667",
+      "source_excel_row": 3667,
+      "source_catalogue_number_raw": "1027a",
+      "source_title_raw": "Trio in sol maggiore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Trio1027a.html",
+      "source_guide_consulted": true,
+      "decision": "BWV1027A_IS_ARRANGEMENT_OF_BWV1027_MOVEMENT_IV",
+      "composer_assertion": "BWV1027_ORIGINAL_BY_JSB; ARRANGEMENT_AUTHOR_HOLD",
+      "version": "Source: Sonata for viola da gamba & keyboard BWV1027, movement IV Allegro moderato (also corresponding to BWV1039). Flaminio guide says 'Andante' and 'last movement' inconsistently: don't infer movement III.",
+      "confidence": "WORK_DERIVATION_SUPPORTED_ARRANGER_OPEN",
+      "evidence": [
+        "https://imslp.org/wiki/Trio_in_G_major%2C_BWV_1027a_%28Bach%2C_Johann_Sebastian%29",
+        "https://imslp.org/wiki/Sonata_for_Viola_da_Gamba_in_G_major%2C_BWV_1027_%28Bach%2C_Johann_Sebastian%29"
+      ],
+      "qualified_edges": [
+        "BWV1027a -> BWV1027 movement IV : trascrizione_di"
+      ],
+      "source_quality_alert": "FLAMINIO_MOVEMENT_NAME_AND_POSITION_INCONSISTENT",
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3712",
+      "source_excel_row": 3712,
+      "source_catalogue_number_raw": "921",
+      "source_title_raw": "Preludio (Fantasia) in do minore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Fantasia921.html",
+      "source_guide_consulted": true,
+      "decision": "BWV921_SOURCE_AUTHENTICITY_DOUBTED",
+      "composer_assertion": "JSB_AUTHOR_HOLD",
+      "version": "Flaminio reports incomplete and Andreas-Bach-Buch transmission; points out newer critical corrections of attributions in that collection. No specific alternative composer proven.",
+      "confidence": "SOURCE_SPECIFIC_DOUBT_NEEDS_CRITICAL_EDITION",
+      "evidence": [
+        "https://bwv.info/en/bwv/921/"
+      ],
+      "qualified_edges": [],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3713",
+      "source_excel_row": 3713,
+      "source_catalogue_number_raw": "922",
+      "source_title_raw": "Preludio (Fantasia) in la minore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Fantasia922.html",
+      "source_guide_consulted": true,
+      "decision": "BWV922_CONFLICTING_SOURCE_ASSESSMENTS",
+      "composer_assertion": "JSB_AUTHOR_HOLD_CONFLICT",
+      "version": "Flaminio's commentary calls it spurious; Dutch Bach Society presents it under Bach and relates it to Weimar. Conflicting assessments cannot be flattened into certain false/authentic.",
+      "confidence": "DOCUMENTED_SOURCE_CONFLICT",
+      "evidence": [
+        "https://www.bachvereniging.nl/en/bwv/bwv-922"
+      ],
+      "qualified_edges": [],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3778",
+      "source_excel_row": 3778,
+      "source_catalogue_number_raw": "561",
+      "source_title_raw": "Fantasia e fuga in la minore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Fantasia561.html",
+      "source_guide_consulted": true,
+      "decision": "BWV561_JSB_AUTHORSHIP_DOUBTED_COMPOSER_UNKNOWN",
+      "composer_assertion": "JSB_AUTHOR_HOLD",
+      "version": "Flaminio H1 is BWV561 but browser title claims BWV583: metadata mismatch. Specialist literature questions Bach and considers other authors; do not assign to W.F.Bach, Kittel, etc as certain.",
+      "confidence": "SCHOLARLY_DISPUTE",
+      "evidence": [
+        "https://www.cambridge.org/core/books/abs/organ-music-of-j-s-bach/miscellaneous-pieces-bwv-561591/82839036118D33033554D0E7E35413F6",
+        "https://imslp.org/wiki/Fantasia_and_Fugue_in_A_minor%2C_BWV_561_%28Bach%2C_Johann_Sebastian%29"
+      ],
+      "qualified_edges": [],
+      "source_quality_alert": "FLAMINIO_HTML_TITLE_SAYS_BWV583_BUT_H1_BWV561",
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3783",
+      "source_excel_row": 3783,
+      "source_catalogue_number_raw": "571",
+      "source_title_raw": "Fantasia in sol maggiore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Fantasia571.html",
+      "source_guide_consulted": true,
+      "decision": "BWV571_ATTRIBUTION_UNRESOLVED",
+      "composer_assertion": "JSB_AUTHOR_HOLD",
+      "version": "Netherlands Bach Society reports difficulty in establishing attribution and stylistic relation with early Bach; Flaminio more категорic 'attribuzione errata'; no specific composer proven.",
+      "confidence": "SOURCE_DISAGREEMENT_OPEN",
+      "evidence": [
+        "https://www.bachvereniging.nl/en/bwv/bwv-571"
+      ],
+      "qualified_edges": [],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3791",
+      "source_excel_row": 3791,
+      "source_catalogue_number_raw": "576",
+      "source_title_raw": "Fuga in sol maggiore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Fuga576.html",
+      "source_guide_consulted": true,
+      "decision": "BWV576_JSB_ATTRIBUTION_SPURIOUS_COMPOSER_UNKNOWN",
+      "composer_assertion": "JSB_AS_AUTHOR_NOT_ASSERTABLE; ANON_AUTHOR",
+      "version": "Grove calls JSB attribution spurious, unnamed original author; preserve old BWV as attribution history only.",
+      "confidence": "SPECIALIST_REFERENCE_AGAINST_JSB_AS_REPORTED",
+      "evidence": [
+        "https://imslp.org/wiki/Fugue_in_G_major%2C_BWV_576_%28Bach%2C_Johann_Sebastian%29"
+      ],
+      "qualified_edges": [],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3798",
+      "source_excel_row": 3798,
+      "source_catalogue_number_raw": "553",
+      "source_title_raw": "Piccolo preludio e fuga in do maggiore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Preludio553.html",
+      "source_guide_consulted": true,
+      "decision": "BWV553_MEMBER_EIGHT_SHORT_PRELUDES_NON_JSB_PROBABLE",
+      "composer_assertion": "JSB_AUTHORSHIP_DISFAVORED; ALTERNATIVE_AUTHOR_HOLD",
+      "version": "Belongs to BWV553–560 group; arguments for Tobias/Ludwig Krebs and others remain unproven. Do not ascribe all to J.T.Krebs.",
+      "confidence": "HIGH_CONSENSUS_NON_JSB_BUT_UNKNOWN_POSITIVE_AUTHOR",
+      "evidence": [
+        "https://www.cambridge.org/core/books/abs/organ-music-of-j-s-bach/eight-short-preludes-and-fugues-bwv-553560/21C4572BD7AF2286E7ACD3035E57BE14",
+        "https://imslp.org/wiki/8_Kleine_Pr%C3%A4ludien_und_Fugen%2C_BWV_553-560_%28Bach%2C_Johann_Sebastian%29"
+      ],
+      "qualified_edges": [
+        "BWV553 -> collection BWV553-560 : membro_n1"
+      ],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3799",
+      "source_excel_row": 3799,
+      "source_catalogue_number_raw": "556",
+      "source_title_raw": "Piccolo preludio e fuga in fa maggiore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Preludio556.html",
+      "source_guide_consulted": true,
+      "decision": "BWV556_MEMBER_EIGHT_SHORT_PRELUDES_WRONG_GUIDE_BODY",
+      "composer_assertion": "JSB_AUTHORSHIP_DISFAVORED; ALTERNATIVE_AUTHOR_HOLD",
+      "version": "The expected short prelude and fugue in F major BWV556 is NOT described by Flaminio link: HTML title and full commentary belong to Toccata and Fugue in F major BWV540. The Excel guide is an unrelated work-body and must be quarantined for evidentiary use.",
+      "confidence": "HIGH_CONSENSUS_NON_JSB_AND_CONFIRMED_SOURCE_ERROR",
+      "evidence": [
+        "https://www.cambridge.org/core/books/abs/organ-music-of-j-s-bach/eight-short-preludes-and-fugues-bwv-553560/21C4572BD7AF2286E7ACD3035E57BE14",
+        "https://www.flaminioonline.it/Guide/Bach/Bach-Toccata540.html"
+      ],
+      "qualified_edges": [
+        "BWV556 -> collection BWV553-560 : membro_n4"
+      ],
+      "source_quality_alert": "FLAMINIO_GUIDE_BWV556_BODY_AND_HTML_TITLE_ARE_BWV540_NOT_BWV556",
+      "guide_integrity_gate": "BLOCKED_WRONG_WORK_PAGE",
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3801",
+      "source_excel_row": 3801,
+      "source_catalogue_number_raw": "555",
+      "source_title_raw": "Piccolo preludio e fuga in mi minore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Preludio555.html",
+      "source_guide_consulted": true,
+      "decision": "BWV555_MEMBER_EIGHT_SHORT_PRELUDES_NON_JSB_PROBABLE",
+      "composer_assertion": "JSB_AUTHORSHIP_DISFAVORED; ALTERNATIVE_AUTHOR_HOLD",
+      "version": "Shared attribution caution of eight short preludes; Johann Tobias Krebs a hypothesis only.",
+      "confidence": "HIGH_CONSENSUS_NON_JSB_BUT_UNKNOWN_POSITIVE_AUTHOR",
+      "evidence": [
+        "https://www.cambridge.org/core/books/abs/organ-music-of-j-s-bach/eight-short-preludes-and-fugues-bwv-553560/21C4572BD7AF2286E7ACD3035E57BE14",
+        "https://imslp.org/wiki/8_Kleine_Pr%C3%A4ludien_und_Fugen%2C_BWV_553-560_%28Bach%2C_Johann_Sebastian%29"
+      ],
+      "qualified_edges": [
+        "BWV555 -> collection BWV553-560 : membro_n3"
+      ],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    },
+    {
+      "source_id": "flaminio:excel:3802",
+      "source_excel_row": 3802,
+      "source_catalogue_number_raw": "554",
+      "source_title_raw": "Piccolo preludio e fuga in re minore",
+      "source_author_label_raw": "BACH, Johann Sebastian",
+      "guide_url_raw": "https://www.flaminioonline.it/Guide/Bach/Bach-Preludio554.html",
+      "source_guide_consulted": true,
+      "decision": "BWV554_MEMBER_EIGHT_SHORT_PRELUDES_NON_JSB_PROBABLE",
+      "composer_assertion": "JSB_AUTHORSHIP_DISFAVORED; ALTERNATIVE_AUTHOR_HOLD",
+      "version": "Shared attribution caution of eight short preludes; Johann Tobias Krebs a hypothesis only.",
+      "confidence": "HIGH_CONSENSUS_NON_JSB_BUT_UNKNOWN_POSITIVE_AUTHOR",
+      "evidence": [
+        "https://www.cambridge.org/core/books/abs/organ-music-of-j-s-bach/eight-short-preludes-and-fugues-bwv-553560/21C4572BD7AF2286E7ACD3035E57BE14",
+        "https://imslp.org/wiki/8_Kleine_Pr%C3%A4ludien_und_Fugen%2C_BWV_553-560_%28Bach%2C_Johann_Sebastian%29"
+      ],
+      "qualified_edges": [
+        "BWV554 -> collection BWV553-560 : membro_n2"
+      ],
+      "source_data_preserved": true,
+      "canonical_merge_authorization": "NO",
+      "visual_browser_acceptance": "NOT_TESTED"
+    }
+  ],
+  "summary": [
+    "CPE Bach H484.1: critical edition now outweighs old doubtful classification; flute and keyboard must remain distinct versions.",
+    "BWV587: Couperin source musical authorship fixed; organ arranger remains contested.",
+    "BWV230, BWV576 and BWV553–556 should not receive an unqualified J.S. Bach 'compone' edge; no asserted alternative composer is justified.",
+    "BWV922 sources explicitly conflict (Flaminio spurious, Netherlands Bach Society presented under Bach), so do not claim consensus against Bach.",
+    "BWV1027a derivative of BWV1027/1039 mvt IV; Flaminio textual mismatch 'Andante' vs 'ultimo tempo' requires caution.",
+    "BWV556 Flaminio guide URL has title/commentary of different work BWV540: blocked as work-specific evidence.",
+    "BWV561 Flaminio HTML browser title BWV583 while H1 says BWV561: metadata mismatch."
+  ]
+}
