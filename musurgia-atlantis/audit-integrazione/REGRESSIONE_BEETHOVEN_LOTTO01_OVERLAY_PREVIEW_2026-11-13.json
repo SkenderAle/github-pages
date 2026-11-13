@@ -1,0 +1,63 @@
+{
+  "schema": "musurgia-atlantis-flaminio-lotto01-beethoven-extended-preview-regression-v1",
+  "date": "2026-11-13",
+  "status": "PASS_STAGING_LOGIC_AND_JS_PARSE_ONLY",
+  "files_checked": [
+    "VISTA_GRAFO_FONTE_FLAMINIO_LOTTO01_BEETHOVEN_2026-11-13.html",
+    "GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json",
+    "OVERLAY_CRITICO_IDENTITA_E_ATTRIBUZIONI_LOTTO01_2026-11-12.json",
+    "OVERLAY_BEETHOVEN_RACCOLTE_12_GUIDE_LOTTO01_2026-11-13.json",
+    "CROSSWALK_LOTTO01_BEETHOVEN_12_GUIDE_2026-11-13.json",
+    "musurgia-atlantis/grafo.json"
+  ],
+  "checks": {
+    "source_records": 500,
+    "nodes": 611,
+    "edges": 1075,
+    "duplicate_ids": [],
+    "orphan_links": 0,
+    "beethoven_new_entities": 15,
+    "beethoven_ref_anchors": 2,
+    "beethoven_collection_nodes": 4,
+    "member_nodes": 11,
+    "source_links": 12,
+    "all_12_sources_map_exactly_once": true,
+    "no_folk_links_to_lied": true,
+    "reuse_atlantis_beethoven": true,
+    "author_filter_preview": {
+      "sourceRecords": 41,
+      "workNodes": 15,
+      "refNodes": [
+        "pers:beethoven",
+        "legacy:gf:genere-lied"
+      ],
+      "newCollections": 4,
+      "newMembers": 11
+    },
+    "non_beethoven_filter_preview": {
+      "sourceRecords": 312,
+      "workNodes": 6,
+      "refNodes": [
+        "audit:fl01:person:johann-michael-bach",
+        "audit:fl01:genre:preludio-corale",
+        "audit:fl01:person:nicolaus-vetter",
+        "audit:fl01:genre:variazioni-per-organo",
+        "audit:fl01:person:johann-ludwig-krebs",
+        "audit:fl01:genre:preludio-per-organo"
+      ],
+      "newCollections": 0,
+      "newMembers": 0
+    },
+    "js_parse": "PASS",
+    "browser_real_test": "NOT_EXECUTED",
+    "canonical_integration": "NOT_EXECUTED",
+    "file_matches_in_active_23_overlay": "0 source matches from exact source ID/row/URL in prior batch audit",
+    "source_url_check": "4 Beethoven-Haus collection pages inspected on web, 12 Flaminio guide URLs preserved from Excel, NOT 12/12 individually fetched"
+  },
+  "limitations": [
+    "Non è stata eseguita una sessione browser/Canvas/WebGL reale, né test hardware Android.",
+    "Le 15 entità candidate restano in staging e richiedono crosswalk con tutti i registri non caricati negli overlay attivi.",
+    "La ripartizione opera/raccolta è verificata come tassonomia di fonte, non ancora integrata nel database storico canonico.",
+    "Lotto01 non è chiudibile: 500/500 identità e guide, generi/attribuzioni e accettazione grafica reale restano incompleti."
+  ]
+}
