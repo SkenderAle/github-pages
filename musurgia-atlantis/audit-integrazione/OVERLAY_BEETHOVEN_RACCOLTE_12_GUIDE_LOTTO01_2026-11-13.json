@@ -1,0 +1,854 @@
+{
+  "schema": "musurgia-atlantis-flaminio-lotto01-beethoven-arrangements-lieder-overlay-v1",
+  "date": "2026-11-13",
+  "status": "STAGING_ONLY_INTEGRATABLE_NOT_GLOBALLY_CERTIFIED",
+  "scope": "12 Flaminio linked guides, 4 collections, 11 individual songs; no production alterations",
+  "verified_existing_canonical_anchors": [
+    {
+      "id": "pers:beethoven",
+      "origin": "musurgia-atlantis/grafo.json"
+    },
+    {
+      "id": "legacy:gf:genere-lied",
+      "origin": "musurgia-atlantis/audit-integrazione/GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json"
+    }
+  ],
+  "counts": {
+    "new_collection_entities": 4,
+    "new_individual_song_entities": 11,
+    "existing_reference_nodes": 2,
+    "overlay_nodes": 17,
+    "overlay_links": 45,
+    "source_records_mapped": 12,
+    "folk_song_members": 7,
+    "original_lied_members": 4,
+    "folk_song_to_lied_links": 0,
+    "source_graph_and_first_overlay_plus_new_unique_nodes": 611,
+    "source_graph_and_first_overlay_plus_new_links": 1075
+  },
+  "nodes": [
+    {
+      "id": "pers:beethoven",
+      "name": "Ludwig van Beethoven",
+      "category": "persona",
+      "subtype": "compositore",
+      "staging_reference_only": true,
+      "origin": "musurgia-atlantis/grafo.json",
+      "entity_is_new": false
+    },
+    {
+      "id": "legacy:gf:genere-lied",
+      "name": "Lied",
+      "category": "genere-forma",
+      "subtype": "genere",
+      "url": "../romanticismo/",
+      "description": "Genere di canto poetico in lingua tedesca, con storia anteriore e successiva al Lied romantico per voce e pianoforte.",
+      "catalogue_status": "attivo",
+      "legacy_id": "genere-lied",
+      "source_repository_path": "atlante3d/database/grafo.json",
+      "original_legacy_record": {
+        "id": "genere-lied",
+        "label": "Lied",
+        "description": "Genere di canto poetico in lingua tedesca, con storia anteriore e successiva al Lied romantico per voce e pianoforte.",
+        "url": "../romanticismo/",
+        "type": "corrente",
+        "status": "attivo",
+        "taxonomy": {
+          "class": "genere",
+          "visibility": "principale",
+          "audit": "2026-10-18"
+        }
+      },
+      "staging_reference_only": true,
+      "origin": "GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json",
+      "entity_is_new": false
+    },
+    {
+      "id": "audit:fl01:collection:beethoven-op108",
+      "name": "25 Scottish Songs, op. 108",
+      "category": "raccolta_identita_catalografica",
+      "kind": "folksong_arrangements",
+      "member_count_catalogue": 25,
+      "source_rows": [
+        4632,
+        4633,
+        4634,
+        4635
+      ],
+      "catalogue_number": "Op. 108",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "work_identity_status": "COLLECTION_IDENTIFIED_CATALOGUE_CORRELATED_STAGING_ONLY",
+      "origin": "Beethoven-Haus Bonn + Flaminio catalogue headings",
+      "production_gate": "CLOSED",
+      "entity_is_new": true,
+      "source_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108"
+    },
+    {
+      "id": "audit:fl01:collection:beethoven-woo155",
+      "name": "26 Welsh Songs, WoO 155",
+      "category": "raccolta_identita_catalografica",
+      "kind": "folksong_arrangements",
+      "member_count_catalogue": 26,
+      "source_rows": [
+        4637,
+        4638,
+        4639,
+        4640
+      ],
+      "catalogue_number": "WoO 155",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "work_identity_status": "COLLECTION_IDENTIFIED_CATALOGUE_CORRELATED_STAGING_ONLY",
+      "origin": "Beethoven-Haus Bonn + Flaminio catalogue headings",
+      "production_gate": "CLOSED",
+      "entity_is_new": true,
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155"
+    },
+    {
+      "id": "audit:fl01:collection:beethoven-op83",
+      "name": "3 Gesänge, op. 83",
+      "category": "raccolta_identita_catalografica",
+      "kind": "original_lieder",
+      "member_count_catalogue": 3,
+      "source_rows": [
+        4691,
+        4692
+      ],
+      "catalogue_number": "Op. 83",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "work_identity_status": "COLLECTION_IDENTIFIED_CATALOGUE_CORRELATED_STAGING_ONLY",
+      "origin": "Beethoven-Haus Bonn + Flaminio catalogue headings",
+      "production_gate": "CLOSED",
+      "entity_is_new": true,
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83"
+    },
+    {
+      "id": "audit:fl01:collection:beethoven-op52",
+      "name": "8 Lieder, op. 52",
+      "category": "raccolta_identita_catalografica",
+      "kind": "original_lieder",
+      "member_count_catalogue": 8,
+      "source_rows": [
+        4696,
+        4697
+      ],
+      "catalogue_number": "Op. 52",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "work_identity_status": "COLLECTION_IDENTIFIED_CATALOGUE_CORRELATED_STAGING_ONLY",
+      "origin": "Beethoven-Haus Bonn + Flaminio catalogue headings",
+      "production_gate": "CLOSED",
+      "entity_is_new": true,
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52"
+    },
+    {
+      "id": "audit:fl01:work:beethoven-op108-06",
+      "name": "Dim, dim is my eye",
+      "category": "opera_elaborazione_popolare_attestata",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 6,
+      "collection_id": "audit:fl01:collection:beethoven-op108",
+      "source_rows": [
+        4632
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Dim108-6.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "role_beethoven": "arrangiatore_o_elaboratore",
+      "canonical_author_assertion": false,
+      "attribution_note": "Melodia tradizionale: non attribuirne la composizione originaria a Beethoven",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-op108-05",
+      "name": "The sweetest lad was Jamie",
+      "category": "opera_elaborazione_popolare_attestata",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 5,
+      "collection_id": "audit:fl01:collection:beethoven-op108",
+      "source_rows": [
+        4634
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sweetest108-5.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "role_beethoven": "arrangiatore_o_elaboratore",
+      "canonical_author_assertion": false,
+      "attribution_note": "Melodia tradizionale: non attribuirne la composizione originaria a Beethoven",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-op108-11",
+      "name": "Oh! Thou art the lad of my heart, Willy!",
+      "category": "opera_elaborazione_popolare_attestata",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 11,
+      "collection_id": "audit:fl01:collection:beethoven-op108",
+      "source_rows": [
+        4635
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Willy108-11.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "role_beethoven": "arrangiatore_o_elaboratore",
+      "canonical_author_assertion": false,
+      "attribution_note": "Melodia tradizionale: non attribuirne la composizione originaria a Beethoven",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-woo155-09",
+      "name": "To the Aeolian Harp",
+      "category": "opera_elaborazione_popolare_attestata",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 9,
+      "collection_id": "audit:fl01:collection:beethoven-woo155",
+      "source_rows": [
+        4637
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-AeolianO155-9.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "role_beethoven": "arrangiatore_o_elaboratore",
+      "canonical_author_assertion": false,
+      "attribution_note": "Melodia tradizionale: non attribuirne la composizione originaria a Beethoven",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-woo155-17",
+      "name": "The Dairy House",
+      "category": "opera_elaborazione_popolare_attestata",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 17,
+      "collection_id": "audit:fl01:collection:beethoven-woo155",
+      "source_rows": [
+        4638
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-HouseO155-17.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "role_beethoven": "arrangiatore_o_elaboratore",
+      "canonical_author_assertion": false,
+      "attribution_note": "Melodia tradizionale: non attribuirne la composizione originaria a Beethoven",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-woo155-15",
+      "name": "When mortals all to rest retire",
+      "category": "opera_elaborazione_popolare_attestata",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 15,
+      "collection_id": "audit:fl01:collection:beethoven-woo155",
+      "source_rows": [
+        4639
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-MortalsO155-15.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "role_beethoven": "arrangiatore_o_elaboratore",
+      "canonical_author_assertion": false,
+      "attribution_note": "Melodia tradizionale: non attribuirne la composizione originaria a Beethoven",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-woo155-07",
+      "name": "O let the night my blushes hide (Oh Let the Night)",
+      "category": "opera_elaborazione_popolare_attestata",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 7,
+      "collection_id": "audit:fl01:collection:beethoven-woo155",
+      "source_rows": [
+        4640
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-NightO155-7.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "role_beethoven": "arrangiatore_o_elaboratore",
+      "canonical_author_assertion": false,
+      "attribution_note": "Melodia tradizionale: non attribuirne la composizione originaria a Beethoven",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-op83-02",
+      "name": "Sehnsucht",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 2,
+      "collection_id": "audit:fl01:collection:beethoven-op83",
+      "source_rows": [
+        4691
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sehnsucht.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "role_beethoven": "compositore_della_musica",
+      "canonical_author_assertion": true,
+      "attribution_note": "Musica di Beethoven su testo poetico",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-op83-01",
+      "name": "Wonne der Wehmut (Flaminio: Wehmuth)",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 1,
+      "collection_id": "audit:fl01:collection:beethoven-op83",
+      "source_rows": [
+        4692
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Wonne.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "role_beethoven": "compositore_della_musica",
+      "canonical_author_assertion": true,
+      "attribution_note": "Musica di Beethoven su testo poetico",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-op52-08",
+      "name": "Das Blümchen Wunderhold",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 8,
+      "collection_id": "audit:fl01:collection:beethoven-op52",
+      "source_rows": [
+        4696
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Blumchen.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "role_beethoven": "compositore_della_musica",
+      "canonical_author_assertion": true,
+      "attribution_note": "Musica di Beethoven su testo poetico",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    },
+    {
+      "id": "audit:fl01:work:beethoven-op52-04",
+      "name": "Maigesang",
+      "category": "opera_identita_e_autore_riscontrati",
+      "work_identity_status": "INDIVIDUAL_SONG_NUMBER_CORROBORATED_STAGING_ONLY",
+      "member_number": 4,
+      "collection_id": "audit:fl01:collection:beethoven-op52",
+      "source_rows": [
+        4697
+      ],
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Maigesang.html",
+      "beethoven_haus_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "role_beethoven": "compositore_della_musica",
+      "canonical_author_assertion": true,
+      "attribution_note": "Musica di Beethoven su testo poetico",
+      "production_gate": "CLOSED",
+      "entity_is_new": true
+    }
+  ],
+  "links": [
+    {
+      "id": "audit:fl01:beethoven:edge:001",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:collection:beethoven-op108",
+      "relation": "elabora_raccolta_di_canti_tradizionali",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "description": "Beethoven elaborò o armonizzò canti preesistenti, non è automaticamente il compositore della melodia",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:002",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:collection:beethoven-woo155",
+      "relation": "elabora_raccolta_di_canti_tradizionali",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Beethoven elaborò o armonizzò canti preesistenti, non è automaticamente il compositore della melodia",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:003",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:collection:beethoven-op83",
+      "relation": "compone_musiche_riunite_in_raccolta",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Raccolta di Lieder con musica di Beethoven; distinguere singolo canto e raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:004",
+      "source": "audit:fl01:collection:beethoven-op83",
+      "target": "legacy:gf:genere-lied",
+      "relation": "ha_genere_forma",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Lieder originali per voce e pianoforte; non traslare il genere ai canti popolari scozzesi/gallesi",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:005",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:collection:beethoven-op52",
+      "relation": "compone_musiche_riunite_in_raccolta",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "description": "Raccolta di Lieder con musica di Beethoven; distinguere singolo canto e raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:006",
+      "source": "audit:fl01:collection:beethoven-op52",
+      "target": "legacy:gf:genere-lied",
+      "relation": "ha_genere_forma",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "description": "Lieder originali per voce e pianoforte; non traslare il genere ai canti popolari scozzesi/gallesi",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:007",
+      "source": "audit:fl01:collection:beethoven-op108",
+      "target": "audit:fl01:work:beethoven-op108-06",
+      "relation": "contiene_brano_numero_6",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "description": "Il brano è il n. 6 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:008",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-op108-06",
+      "relation": "elabora_melodia_tradizionale",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "description": "Arrangiamento beethoveniano di melodia preesistente; non attribuire a Beethoven la melodia di tradizione",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:009",
+      "source": "flaminio:excel:4632",
+      "target": "audit:fl01:work:beethoven-op108-06",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Dim108-6.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:010",
+      "source": "flaminio:excel:4633",
+      "target": "audit:fl01:collection:beethoven-op108",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Schottische108.html",
+      "description": "Guida Flaminio della raccolta intera",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:011",
+      "source": "audit:fl01:collection:beethoven-op108",
+      "target": "audit:fl01:work:beethoven-op108-05",
+      "relation": "contiene_brano_numero_5",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "description": "Il brano è il n. 5 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:012",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-op108-05",
+      "relation": "elabora_melodia_tradizionale",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "description": "Arrangiamento beethoveniano di melodia preesistente; non attribuire a Beethoven la melodia di tradizione",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:013",
+      "source": "flaminio:excel:4634",
+      "target": "audit:fl01:work:beethoven-op108-05",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sweetest108-5.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:014",
+      "source": "audit:fl01:collection:beethoven-op108",
+      "target": "audit:fl01:work:beethoven-op108-11",
+      "relation": "contiene_brano_numero_11",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "description": "Il brano è il n. 11 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:015",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-op108-11",
+      "relation": "elabora_melodia_tradizionale",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5444611451387904/25%2BScottish%2BSongs%2Bfor%2Bvoice%252C%2Bviolin%252C%2Bvioloncello%2Band%2Bpiano%2Bop.%2B108",
+      "description": "Arrangiamento beethoveniano di melodia preesistente; non attribuire a Beethoven la melodia di tradizione",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:016",
+      "source": "flaminio:excel:4635",
+      "target": "audit:fl01:work:beethoven-op108-11",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Willy108-11.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:017",
+      "source": "audit:fl01:collection:beethoven-woo155",
+      "target": "audit:fl01:work:beethoven-woo155-09",
+      "relation": "contiene_brano_numero_9",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Il brano è il n. 9 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:018",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-woo155-09",
+      "relation": "elabora_melodia_tradizionale",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Arrangiamento beethoveniano di melodia preesistente; non attribuire a Beethoven la melodia di tradizione",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:019",
+      "source": "flaminio:excel:4637",
+      "target": "audit:fl01:work:beethoven-woo155-09",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-AeolianO155-9.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:020",
+      "source": "audit:fl01:collection:beethoven-woo155",
+      "target": "audit:fl01:work:beethoven-woo155-17",
+      "relation": "contiene_brano_numero_17",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Il brano è il n. 17 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:021",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-woo155-17",
+      "relation": "elabora_melodia_tradizionale",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Arrangiamento beethoveniano di melodia preesistente; non attribuire a Beethoven la melodia di tradizione",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:022",
+      "source": "flaminio:excel:4638",
+      "target": "audit:fl01:work:beethoven-woo155-17",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-HouseO155-17.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:023",
+      "source": "audit:fl01:collection:beethoven-woo155",
+      "target": "audit:fl01:work:beethoven-woo155-15",
+      "relation": "contiene_brano_numero_15",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Il brano è il n. 15 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:024",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-woo155-15",
+      "relation": "elabora_melodia_tradizionale",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Arrangiamento beethoveniano di melodia preesistente; non attribuire a Beethoven la melodia di tradizione",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:025",
+      "source": "flaminio:excel:4639",
+      "target": "audit:fl01:work:beethoven-woo155-15",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-MortalsO155-15.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:026",
+      "source": "audit:fl01:collection:beethoven-woo155",
+      "target": "audit:fl01:work:beethoven-woo155-07",
+      "relation": "contiene_brano_numero_7",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Il brano è il n. 7 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:027",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-woo155-07",
+      "relation": "elabora_melodia_tradizionale",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/5959321271664640/26%2BWelsh%2BSongs%2Bfor%2Bone%2Bor%2Btwo%2Bvoices%2C%2Bviolin%2C%2Bvioloncello%2Band%2Bpiano%2BWoO%2B155",
+      "description": "Arrangiamento beethoveniano di melodia preesistente; non attribuire a Beethoven la melodia di tradizione",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:028",
+      "source": "flaminio:excel:4640",
+      "target": "audit:fl01:work:beethoven-woo155-07",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-NightO155-7.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:029",
+      "source": "audit:fl01:collection:beethoven-op83",
+      "target": "audit:fl01:work:beethoven-op83-02",
+      "relation": "contiene_brano_numero_2",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Il brano è il n. 2 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:030",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-op83-02",
+      "relation": "compone_la_musica_di",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Composizione originale del Lied su testo di poesia",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:031",
+      "source": "audit:fl01:work:beethoven-op83-02",
+      "target": "legacy:gf:genere-lied",
+      "relation": "ha_genere_forma",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Lied originale; genere radicato nella singola opera, non ponte verso i repertori degli altri compositori",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:032",
+      "source": "flaminio:excel:4691",
+      "target": "audit:fl01:work:beethoven-op83-02",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sehnsucht.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:033",
+      "source": "audit:fl01:collection:beethoven-op83",
+      "target": "audit:fl01:work:beethoven-op83-01",
+      "relation": "contiene_brano_numero_1",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Il brano è il n. 1 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:034",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-op83-01",
+      "relation": "compone_la_musica_di",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Composizione originale del Lied su testo di poesia",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:035",
+      "source": "audit:fl01:work:beethoven-op83-01",
+      "target": "legacy:gf:genere-lied",
+      "relation": "ha_genere_forma",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Lied originale; genere radicato nella singola opera, non ponte verso i repertori degli altri compositori",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:036",
+      "source": "flaminio:excel:4692",
+      "target": "audit:fl01:work:beethoven-op83-01",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Wonne.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:037",
+      "source": "audit:fl01:collection:beethoven-op52",
+      "target": "audit:fl01:work:beethoven-op52-08",
+      "relation": "contiene_brano_numero_8",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "description": "Il brano è il n. 8 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:038",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-op52-08",
+      "relation": "compone_la_musica_di",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "description": "Composizione originale del Lied su testo di poesia",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:039",
+      "source": "audit:fl01:work:beethoven-op52-08",
+      "target": "legacy:gf:genere-lied",
+      "relation": "ha_genere_forma",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "description": "Lied originale; genere radicato nella singola opera, non ponte verso i repertori degli altri compositori",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:040",
+      "source": "flaminio:excel:4696",
+      "target": "audit:fl01:work:beethoven-op52-08",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Blumchen.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:041",
+      "source": "audit:fl01:collection:beethoven-op52",
+      "target": "audit:fl01:work:beethoven-op52-04",
+      "relation": "contiene_brano_numero_4",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "description": "Il brano è il n. 4 della raccolta; n. di catalogo e raccolta non coincidono con identificativo del singolo",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:042",
+      "source": "pers:beethoven",
+      "target": "audit:fl01:work:beethoven-op52-04",
+      "relation": "compone_la_musica_di",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "description": "Composizione originale del Lied su testo di poesia",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:043",
+      "source": "audit:fl01:work:beethoven-op52-04",
+      "target": "legacy:gf:genere-lied",
+      "relation": "ha_genere_forma",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArNzZrQgM/Eight%2BSongs%2Bof%2Bvarious%2Bpoets%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B52",
+      "description": "Lied originale; genere radicato nella singola opera, non ponte verso i repertori degli altri compositori",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:044",
+      "source": "flaminio:excel:4697",
+      "target": "audit:fl01:work:beethoven-op52-04",
+      "relation": "documenta_opera_identificata",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Maigesang.html",
+      "description": "Guida Flaminio del brano individuale; l'Excel riporta il titolo della raccolta",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    },
+    {
+      "id": "audit:fl01:beethoven:edge:045",
+      "source": "pers:beethoven",
+      "target": "legacy:gf:genere-lied",
+      "relation": "ha_genere_documentato_da_op83_op52",
+      "status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
+      "quality_gate": "STAGING_DO_NOT_PROMOTE_BEFORE_GLOBAL_CROSSWALK_AND_GRAPHIC_TEST",
+      "source_url": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICA3N2ntgoM/Three%2BSongs%2Bfor%2Bvoice%2Band%2Bpiano%2Bop.%2B83",
+      "description": "Attestato tramite Lieder op.83 e op.52, esclusi op.108 e WoO155 dalla stessa classe",
+      "root_scope": "no_transitive_genre_or_collection_bridge"
+    }
+  ],
+  "quality_policy": {
+    "no_cross_autor_traversal_through_lied": true,
+    "work_level_vs_collection_level_separate": true,
+    "source_labels_preserved": true,
+    "raw_source_untouched": true,
+    "beethoven_folk_role": "arranger_not_presumed_original_melody_composer",
+    "id_status": "provisional_except_reused_existing_anchors",
+    "web_page_links": "source_urls_not_exhaustively_live_checked",
+    "certification_gate": "OPEN_LOTTO01; NOT_PRODUCTION; NOT_BROWSER_ACCEPTED"
+  },
+  "evidence_files": [
+    "FLAMINIO_LINKATI_LOTTO01_500_RECORD_RAW_2026-11-12.csv",
+    "CROSSWALK_LOTTO01_BEETHOVEN_12_GUIDE_2026-11-13.json",
+    "GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json",
+    "GENERI_FORME_LEGACY_PREVIEW_CHECKPOINT11_2026-11-09.json"
+  ]
+}
