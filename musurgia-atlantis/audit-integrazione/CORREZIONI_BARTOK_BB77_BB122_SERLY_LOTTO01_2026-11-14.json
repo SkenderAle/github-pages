@@ -1,0 +1,63 @@
+{
+  "schema": "musurgia-atlantis-fl01-bbb-source-catalogue-critique-v1",
+  "date": "2026-11-14",
+  "status": "HISTORICAL_CATALOGUE_CORRECTIONS_STAGING_ONLY",
+  "source_originals_preserved": true,
+  "evidence": [
+    "https://www.flaminioonline.it/Guide/Bartok/Bartok-Popolari78.html",
+    "https://www.flaminioonline.it/Guide/Bartok/Bartok-Suite4b.html",
+    "https://zti.abtk.hu/en/ba/bartok-compositions/chronology"
+  ],
+  "corrections": [
+    {
+      "excel_row": 4228,
+      "staging_id": "audit:fl01:bbb:work:excel4228",
+      "source_title": "Négy szlovák népdal / Quattro canti popolari slovacchi",
+      "raw_guide_catalogue": {
+        "BB": "78",
+        "Sz": "70"
+      },
+      "accepted_catalogue": {
+        "BB": "77",
+        "Sz": "69",
+        "previous_BB_numbering": "olim BB 78"
+      },
+      "correction": "Four Slovak Folksongs, mixed choir and piano: current BB77/Sz69; modern BB78/Sz70 is a different set, Slovak Folksongs for male choir",
+      "raw_source_heading": "Canto > Coro senza accompagnamento",
+      "accepted_instrumentation": "coro misto e pianoforte",
+      "severity": "P0_BLOCK_AUTOMATIC_MERGE_ON_RAW_BB78_SZ70"
+    },
+    {
+      "excel_row": 4233,
+      "staging_id": "audit:fl01:bbb:work:excel4233",
+      "source_title": "Suite per due pianoforti op.4b",
+      "raw_guide_catalogue": {
+        "BB": "122",
+        "Sz": "34a"
+      },
+      "accepted_catalogue": {
+        "BB": "122",
+        "Sz": "115a"
+      },
+      "correction": "Current HUN-REN Bartók Archives catalogue BB122/Sz115a; arrangement of orchestral Suite No.2 op.4 BB40/Sz34. Keep Sz34a raw as source variant but DO NOT promote as corrected Sz number.",
+      "severity": "P0_CATALOGUE_CROSSWALK"
+    },
+    {
+      "excel_row": 4296,
+      "staging_id": "audit:fl01:bbb:work:excel4296",
+      "source_title": "Concerto per pianoforte n. 3",
+      "accepted_catalogue": {
+        "BB": "127",
+        "Sz": "119"
+      },
+      "correction": "Author's composition posthumously completed with final seventeen bars orchestrated by Tibor Serly; do not ascribe entire concerto to Serly",
+      "severity": "ROLE_VERSION_SPECIFIC"
+    }
+  ],
+  "no_changes_to_production": true,
+  "limitations": [
+    "Three corrections document critical catalogue or completion roles; not completed global dedup of all staging or full canonical graph",
+    "Do not overwrite raw Flaminio data or earlier staging checkpoints",
+    "Editorial acceptance is not equal to visual or canonical promotion"
+  ]
+}
