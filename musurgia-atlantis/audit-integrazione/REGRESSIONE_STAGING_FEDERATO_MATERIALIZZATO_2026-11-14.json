@@ -1,0 +1,63 @@
+{
+  "schema": "musurgia-atlantis-lot01-materialized-742-nodes-regression-v1",
+  "date": "2026-11-14",
+  "status": "PASS_MATERIALIZED_JSON_STRUCTURE_ONLY",
+  "source_graph_file": "musurgia-atlantis/audit-integrazione/STAGING_GRAFO_FEDERATO_LOTTO01_MATERIALIZZATO_2026-11-14.json",
+  "checks": {
+    "declared_nodes_correct": true,
+    "declared_links_correct": true,
+    "unique_ids": true,
+    "unique_edges": true,
+    "no_orphans": true,
+    "source_500": true,
+    "only_6_external_anchors": true,
+    "wq43_patch_applied": true,
+    "wq43_genre_correct": true,
+    "wq59_added": true,
+    "wq118_not_fictive_cycle": true,
+    "wq118_connected": true,
+    "wq22_separate": true,
+    "no_second_22_cpe_aliases": true,
+    "cpe_g_major_two_symphonies": true,
+    "production_not_changed": true
+  },
+  "metrics": {
+    "check_count": 16,
+    "nodes": 742,
+    "links": 1350,
+    "source_excel_rows": 500,
+    "isolated_nodes_count": 0,
+    "isolated_nodes": [],
+    "connected_components": 7,
+    "largest_component": 365,
+    "category_counts": {
+      "intestazione_autore_flaminio": 10,
+      "scheda_catalogo_flaminio": 500,
+      "rubrica_fonte_flaminio": 64,
+      "persona_con_riscontro": 4,
+      "genere_forma_riscontrato": 6,
+      "opera_identita_e_autore_riscontrati": 11,
+      "opera_identita_verificata_autore_in_hold": 3,
+      "persona": 4,
+      "genere-forma": 5,
+      "raccolta_identita_catalografica": 5,
+      "opera_elaborazione_popolare_attestata": 7,
+      "scheda_audit_attribuzione_non_opera": 17,
+      "cantata_identita_fonte": 4,
+      "opera_identita_fonte": 6,
+      "opera_identita_fonte_con_libretto": 5,
+      "raccolta_candidata": 13,
+      "opera_candidata": 62,
+      "riferimento_documentario_non_importato": 11,
+      "raggruppamento_catalografico_candidato": 1,
+      "genere_forma": 4
+    },
+    "external_anchor_snapshots": 6
+  },
+  "limitations": [
+    "Structural data tests only. No browser, 3D, WebGL, Android or on-page relevance checks",
+    "Source graphs Atlantis/Mundi are linked by 6 external anchor IDs but their full historical nodes and edges are not embedded",
+    "No independent philological certification of all source-work associations",
+    "No canonical historical graph promotion"
+  ]
+}
