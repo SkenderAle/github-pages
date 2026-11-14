@@ -1,0 +1,106 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Musurgia Atlantis | Lotto01 · 1061 nodi, J. S. Bach sottolotto 03</title><style>
+:root{color-scheme:dark;--bg:#091822;--side:#102a37;--line:#395564;--ink:#e9f0ef;--muted:#bad0d5;--accent:#90d8cd}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif}header{padding:12px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}h1{margin:0;font-size:19px;font-family:Georgia,serif}header span{color:var(--muted);font-size:12px}
+main{display:grid;grid-template-columns:290px 1fr;min-height:calc(100dvh - 72px)}aside{background:var(--side);padding:14px;border-right:1px solid var(--line);overflow:auto;max-height:calc(100dvh - 72px)}h2{font-size:15px;margin:16px 0 9px}h3{font-size:15px;color:#f3dca1}label{display:block;margin:9px 0 4px;font-size:12px;color:#d5e2e3}input,select,button{font:inherit;background:#173c4b;border:1px solid #547583;border-radius:7px;color:var(--ink);padding:9px}input:not([type=checkbox]),select{width:100%}input[type=range]{padding:0;accent-color:#d8bf80}.row{display:flex;align-items:center;gap:8px}.row>*{flex:1}button{cursor:pointer}button:hover{border-color:#90d8cd}#results{display:grid;gap:5px;max-height:210px;overflow:auto}#results button{text-align:left;padding:6px;font-size:12px}#details{overflow-wrap:anywhere;white-space:pre-wrap}#details p{margin:7px 0}#details a{color:#98e0d8}#viz{position:relative;min-width:0;min-height:600px}#graph{width:100%;height:calc(100dvh - 72px);min-height:600px}#dock{position:absolute;bottom:16px;right:16px;display:flex;gap:8px}#dock button{font-size:20px;width:45px;height:45px}#found,#visible{font-size:12px;color:var(--muted);margin:6px 0}.notice{padding:10px;border:1px solid #8e784d;border-radius:7px;font-size:12px;line-height:1.45;color:#e9d29b;margin-top:14px}
+@media(max-width:780px){main{display:flex;flex-direction:column}aside{max-height:38dvh;min-height:210px;border-right:0;border-bottom:1px solid var(--line)}#viz{min-height:55dvh}#graph{min-height:55dvh;height:55dvh}}
+</style></head><body><header><h1>Musurgia Atlantis · Lotto Flaminio 01 — 348 schede collegate in staging</h1><span id="total">Caricamento…</span></header><main><aside>
+<label for="search">Cerca autori, opere, raccolte, righe</label><input id="search" placeholder="Alfano, H 417, Sakuntala, 1152…" autocomplete="off"><div id="found"></div><div id="results"></div>
+<h2>Esplorazione</h2><div class="row"><button id="all">Grafo completo</button><button id="report">Esporta controllo</button></div>
+<label>Radice: <b id="focusLabel">nessuno</b></label><label for="depth">Profondità <output id="depthOut">2</output></label><input id="depth" type="range" min="1" max="4" step="1" value="2">
+<label for="categories">Filtra nodi per categoria</label><select id="categories"><option value="all">Tutte</option><option value="person">Persone</option><option value="work">Opere</option><option value="collection">Raccolte</option><option value="genre">Generi e forme</option><option value="source">Schede fonte</option><option value="audit">Schede audit</option></select>
+<label class="row"><input id="sources" type="checkbox" checked style="flex:0 0 auto"><span>Mostra nodi della fonte</span></label><p id="visible"></p>
+<h2>Dettaglio</h2><div id="details">Clicca un nodo o seleziona un risultato per centrare la rete.</div>
+<div class="notice">Solo staging. Le 500 schede Excel NON equivalgono a 500 opere musicali. I riferimenti documentari esterni non sono nuove opere certificate. La rubrica fonte Corali dall'Autografo di Lipsia non implica appartenenza ai Diciotto corali: solo BWV 654, 658, 659, 660 e 661 risultano membri nel lotto corrente. Doppio clic su un nodo per esplorare la rete radicata. Nessuna certificazione visiva Android/WebGL, nessuna modifica al grafo di produzione.</div>
+</aside><section id="viz"><div id="graph" aria-label="Proiezione tridimensionale del grafo di staging"></div><div id="dock"><button id="zin" aria-label="Ingrandisci">+</button><button id="zout" aria-label="Riduci">−</button></div></section></main><script src="./compat-graph-checkpoint08.js"></script><script>(()=>{
+"use strict";
+const $=id=>document.getElementById(id);
+const FILE="./STAGING_GRAFO_FEDERATO_LOTTO01_JSB03_V8_2026-11-14.json";
+let data=null,engine=null,byId=new Map(),neighbors=new Map(),shown={nodes:[],links:[]},focus=null,selected=null,categoryMode="all";
+const lexical=n=>(n.name||n.id||"")+" "+(n.source_excel_row||n.excel_row||"")+" "+(n.helm_number||"")+" "+(n.wotquenne_number||"")+" "+(n.author||"");
+const group=n=>{
+ const c=(n.category||"").toLowerCase();
+ if(c==="scheda_catalogo_flaminio"||c==="intestazione_autore_flaminio"||c==="rubrica_fonte_flaminio")return "source";
+ if(c.includes("audit"))return "audit";
+ if(c.includes("raccolta")||c.includes("raggruppamento"))return "collection";
+ if(c.includes("persona")||c.includes("compositore"))return "person";
+ if(c.includes("genere")||c.includes("forma"))return "genre";
+ return "work";
+};
+const colors={source:"#d5b783",audit:"#f5a974",collection:"#f5d174",person:"#87bded",genre:"#ba9de9",work:"#87d5ab"};
+const title=(n)=>(n.name||n.id)+" ("+group(n)+")";
+function elem(tag,txt){const e=document.createElement(tag);if(txt!==undefined)e.textContent=String(txt);return e}
+function detail(n){
+ const panel=$("details");panel.replaceChildren();selected=n?.id||null;
+ if(!n){panel.textContent="Scegli un nodo dal grafo o dai risultati.";return}
+ const h=elem("h3",n.name||n.id);panel.append(h);
+ for(const [lab,value] of [["Categoria",n.category],["ID",n.id],["Riga Excel",n.excel_row||n.source_excel_row],["Numero originale",n.number||n.source_catalogue_raw],["Autore",n.author],["Tipo",n.subtype],["Stato",n.production_gate||"Staging documentario"]])if(value!==null&&value!==undefined)panel.append(elem("p",lab+": "+value));
+ if(n.staging_reference_only)panel.append(elem("p","Ancora di riferimento: NON è una nuova identità storica."));
+ const url=n.source_url_effective||n.source_url||n.source_guide_url;
+ if(typeof url==="string"&&url.startsWith("https://")){const a=elem("a","Apri fonte");a.href=url;a.target="_blank";a.rel="noopener noreferrer";panel.append(a)}
+ const joined=[];for(const k of ["source_notes","quality_alerts","notes","description","critical_note"]){const v=n[k];if(v)joined.push(k+": "+(Array.isArray(v)?v.join("; "):v))}
+ if(joined.length)panel.append(elem("p",joined.join("\n")));
+ const degree=(neighbors.get(n.id)||[]).length;
+ panel.append(elem("p","Relazioni nel file: "+degree));
+}
+function resultList(){
+ const q=$("search").value.trim().toLocaleLowerCase("it");
+ const box=$("results");box.replaceChildren();
+ if(!data)return;
+ let arr=q?data.nodes.filter(n=>lexical(n).toLocaleLowerCase("it").includes(q)):data.nodes.filter(n=>n.category==="persona"||n.category==="intestazione_autore_flaminio");
+ arr=arr.slice(0,25);$("found").textContent=(q?data.nodes.filter(n=>lexical(n).toLocaleLowerCase("it").includes(q)).length:"Suggeriti")+" risultati";
+ for(const n of arr){const b=elem("button",title(n));b.type="button";b.addEventListener("click",()=>rootAt(n));box.append(b)}
+}
+function rootAt(n){focus=n.id;draw();detail(n);$("focusLabel").textContent=(n.name||n.id)}
+function draw(){
+ if(!data||!engine)return;
+ const maxDepth=Number($("depth").value),sourceAllowed=$("sources").checked;
+ let allowed=new Set();
+ if(focus){
+   const q=[[focus,0]],visited=new Set([focus]);for(let i=0;i<q.length;i++){
+     const [id,depth]=q[i],n=byId.get(id);if(!n)continue;
+     if((sourceAllowed||group(n)!=="source")&&(categoryMode==="all"||group(n)===categoryMode||id===focus))allowed.add(id);
+     const gate=(id!==focus && (group(n)==="genre"||n.category==="rubrica_fonte_flaminio"||n.category==="intestazione_autore_flaminio"));
+     if(depth>=maxDepth||gate)continue;
+     for(const v of neighbors.get(id)||[]){if(!visited.has(v)){visited.add(v);q.push([v,depth+1])}}
+   }
+ }else for(const n of data.nodes)if((sourceAllowed||group(n)!=="source")&&(categoryMode==="all"||group(n)===categoryMode))allowed.add(n.id);
+ const nodes=data.nodes.filter(n=>allowed.has(n.id)).map(n=>({...n,_focus:!!focus&&n.id===focus,_forceLabel:!!focus&&n.id===focus||n.category==="intestazione_autore_flaminio",_depth:focus?Math.max(1,calcDepth(n.id)):group(n)==="person"?1:group(n)==="collection"?2:3}));
+ const links=data.links.filter(e=>allowed.has(e.source)&&allowed.has(e.target)).map(e=>({...e}));
+ shown={nodes,links};engine.graphData({nodes,links});$("visible").textContent=nodes.length+" nodi · "+links.length+" archi visibili";
+}
+function calcDepth(id){
+ if(!focus)return 3;if(id===focus)return 0;
+ const q=[[focus,0]],seen=new Set([focus]);for(let i=0;i<q.length;i++){let [cur,d]=q[i];if(d>=5)break;for(const v of neighbors.get(cur)||[]){if(v===id)return d+1;if(!seen.has(v)){seen.add(v);q.push([v,d+1])}}}return 4;
+}
+function report(){
+ const value={schema:"atlantis-lotto01-manual-view-report-v1",created_at:new Date().toISOString(),file:FILE,loaded:!!data,all_nodes:data?.nodes.length||0,all_links:data?.links.length||0,visible_nodes:shown.nodes.length,visible_links:shown.links.length,selected,focus,real_browser_visual_certification:"MANUAL_INSPECTION_NOT_YET_ATTESTED",production_changes:0};
+ const blob=new Blob([JSON.stringify(value,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=elem("a");a.href=url;a.download="atlantis-lotto01-manual-view-report.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
+async function init(){
+ const response=await fetch(FILE,{cache:"no-store"});if(!response.ok)throw Error("HTTP "+response.status);
+ data=await response.json();if(data.nodes.length!==1061||data.links.length!==2085)throw Error("Dimensioni del grafo inattese");
+ byId=new Map(data.nodes.map(n=>[n.id,n]));if(byId.size!==1061||new Set(data.links.map(e=>e.id)).size!==2085)throw Error("ID duplicati");
+ neighbors=new Map(data.nodes.map(n=>[n.id,[]]));
+ for(const e of data.links){if(!neighbors.has(e.source)||!neighbors.has(e.target))throw Error("Relazione orfana: "+e.id);neighbors.get(e.source).push(e.target);neighbors.get(e.target).push(e.source);}
+ engine=window.AtlantisAuditCompatGraph($("graph"))
+ .nodeColor(n=>colors[group(n)]||"#ddd")
+ .nodeVal(n=>n._focus?13:group(n)==="person"?9:group(n)==="collection"?7:group(n)==="source"?2.3:5)
+ .linkColor(e=>e.relation==="rubrica_editoriale_flaminio"?"#59707c":"#709d9b").linkOpacity(.22)
+ .onNodeClick(n=>{detail(n);$("focusLabel").textContent=focus?(byId.get(focus)?.name||focus):"nessuno"})
+ .onNodeDoubleClick(rootAt).onBackgroundClick(()=>detail(null))
+ .onLinkClick(e=>{const pane=$("details");pane.replaceChildren(elem("h3","Relazione: "+e.relation),elem("p","Da "+(byId.get(e.source)?.name||e.source)+" a "+(byId.get(e.target)?.name||e.target)));if(e.description)pane.append(elem("p",e.description));});
+ $("total").textContent=data.nodes.length+" nodi · "+data.links.length+" archi · 500 schede fonte · STAGING";
+ draw();resultList();
+ window.AtlantisStagingLotto01={status:()=>({loaded:true,all_nodes:data.nodes.length,all_links:data.links.length,visible_nodes:shown.nodes.length,visible_links:shown.links.length,focus,selected,renderer:"canvas_2d_3d_projection",webgl_tested:false}),selectNode:id=>{const n=byId.get(id);if(n){rootAt(n);return true}return false}};
+}
+$("search").addEventListener("input",resultList);
+$("depth").addEventListener("input",()=>{$("depthOut").textContent=$("depth").value;draw()});
+$("sources").addEventListener("change",draw);
+$("categories").addEventListener("change",()=>{categoryMode=$("categories").value;draw()});
+$("all").addEventListener("click",()=>{focus=null;$("focusLabel").textContent="nessuno";draw()});
+$("zin").addEventListener("click",()=>{if(engine)engine.zoom(Math.min(8,engine.zoom()*1.25))});
+$("zout").addEventListener("click",()=>{if(engine)engine.zoom(Math.max(.2,engine.zoom()/1.25))});
+$("report").addEventListener("click",report);
+init().catch(e=>{$("total").textContent="ERRORE: "+e.message;console.error(e)});
+})();</script></body></html>
