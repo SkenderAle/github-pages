@@ -1,0 +1,48 @@
+{
+  "schema": "musurgia-atlantis-fl01-63-delta-staging-data-regression-v1",
+  "date": "2026-11-14",
+  "result": "PASS_SOURCE_AND_DELTA_STRUCTURAL_ONLY",
+  "inputs": [
+    "CROSSWALK_OVERLAY_LOTTO01_ALFANO_41_CPE_BACH_22_DUE_GRAFI_2026-11-13.json",
+    "DELTA_RICONCILIAZIONE_ALFANO_CPE_63_VS_OVERLAY_2026-11-14.json"
+  ],
+  "checks": {
+    "source_63_complete": true,
+    "source_partition": true,
+    "exact_source_ID_alignment": true,
+    "exact_url_alignment": true,
+    "preexisting_work_refs_valid": true,
+    "aliases_22_to_existing_only": true,
+    "new_nodes_noncollision": true,
+    "new_edges_unique": true,
+    "new_edges_have_endpoints": true,
+    "wq43_metadata_patch_exact": true,
+    "wq43_existing_member_preserved": true,
+    "wq59_h284": true,
+    "wq118_h263_catalogue_only": true,
+    "raw_titles_correctly_separated": true,
+    "zero_canonical_merge": true
+  },
+  "computed_counts": {
+    "tests": 15,
+    "tests_passed": 15,
+    "old_63_overlay_new_node_candidates": 74,
+    "old_external_documentary_refs": 11,
+    "old_overlay_edges": 211,
+    "delta_new_nodes": 2,
+    "delta_new_edges": 2,
+    "delta_proposed_metadata_corrections": 1,
+    "post_delta_overlay_nodes_including_documentary_refs": 87,
+    "post_delta_overlay_edges": 213,
+    "source_plus_four_prior_overlays_nodes_as_in_prior_audit": 649,
+    "source_plus_four_prior_overlays_edges_as_in_prior_audit": 1137,
+    "post_delta_federated_staging_nodes_expected": 736,
+    "post_delta_federated_staging_edges_expected": 1350
+  },
+  "limitations": [
+    "Computed federated totals rely on prior staging audit 649/1137, not an in-memory reload of all graph layers here",
+    "No current real-browser, touch or WebGL acceptance",
+    "No direct binary full-read of large historical production graph files in this turn",
+    "No promotion to canonical production; delta is an unapplied patch proposal"
+  ]
+}
