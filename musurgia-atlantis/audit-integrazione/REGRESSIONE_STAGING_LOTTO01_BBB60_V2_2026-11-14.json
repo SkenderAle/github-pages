@@ -1,0 +1,62 @@
+{
+  "schema": "musurgia-atlantis-lot01-bbb60-v2-materialized-regression-v1",
+  "date": "2026-11-14",
+  "result": "PASS_STAGING_MATERIALIZED_STRUCTURAL_AND_PROVENANCE_ONLY",
+  "inputs": [
+    "STAGING_GRAFO_FEDERATO_LOTTO01_BBB60_V2_2026-11-14.json",
+    "OVERLAY_LOTTO01_BARTOK_BARBER_BEACH_60_GUIDE_2026-11-14.json",
+    "CHECKPOINT_LOTTO01_BARTOK43_BARBER12_BEACH5_GUIDE_2026-11-14.json"
+  ],
+  "checks": {
+    "816_nodi": true,
+    "1486_archi": true,
+    "id_nodi_univoci": true,
+    "id_archi_univoci": true,
+    "nessun_orfano": true,
+    "500_righe_fonte": true,
+    "60_righe_nuove_univoche": true,
+    "43_bartok_12_barber_5_beach": true,
+    "57_nuovi_candidati": true,
+    "3_riusi_gia_noti": true,
+    "nessun_duplicato_opera_dei_3_riusi": true,
+    "bb20_due_brani_distinti": true,
+    "bb82a_suite_bb82_origine": true,
+    "bb120_da_mikrokosmos_bb105": true,
+    "bb115_con_versione_bb121": true,
+    "bb76_da_bb68": true,
+    "adagio_barber_da_quartetto": true,
+    "medea_barber_da_balletto": true,
+    "beach_op44_three_and_op35_two": true,
+    "barber_crucifixion_29_5": true,
+    "bartok_two_bb20_existence": true,
+    "no_promotion": true,
+    "same_source_no_raw_mutations": true
+  },
+  "metrics": {
+    "checks_passed": 23,
+    "total_nodes": 816,
+    "total_edges": 1486,
+    "source_rows": 500,
+    "source_rows_with_materialized_work_evidence": 165,
+    "source_rows_newly_evidenced_by_bbb": 60,
+    "preexisting_candidates_reused": 3,
+    "new_work_id_candidates": 57,
+    "isolated_nodes": [],
+    "connected_component_sizes": [
+      365,
+      231,
+      104,
+      64,
+      34,
+      15,
+      3
+    ]
+  },
+  "limitations": [
+    "No independent complete historic atlas dedup over all disjoint staging",
+    "Only source guide and external musicological checks for selected relationships",
+    "Textual web guide retrieval is not a live visual browser/Android Canvas verification",
+    "No permanent or canonical graph promotion; no review of all 500 musical work identities",
+    "The 165 covered source rows measure presence of a materialized evidence edge, NOT 165 historically certified works"
+  ]
+}
