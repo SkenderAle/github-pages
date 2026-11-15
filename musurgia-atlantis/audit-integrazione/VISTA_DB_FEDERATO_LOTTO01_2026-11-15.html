@@ -382,6 +382,7 @@ function rootedProjection(db){
  const edges=db.links.filter(e=>!isBlocked(e)&&(e.collection!=="lenti-originali"||state.lenses.has(lensGroupToUI[e.group]||"musica")));
  const adj=new Map();
  for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
+ if(state.comparison)return comparisonProjection(db,edges,index);
  if(!state.root){
    // Apertura globale: l'intera rete musicale disponibile, senza selezione.
    // Le 500 schede documentarie e gli archi HOLD restano esclusi dalla vista
@@ -514,21 +515,23 @@ function draw(){
  let filtered;
  try{filtered=rootedProjection(state.db)}catch(e){status("Errore proiezione: "+e.message,true);return}
  state.parents=filtered.parents;state.distances=filtered.distance;
- const overview=!!filtered.overview;
+ const overview=!!filtered.overview,comparing=!!filtered.comparison;
  const nodes=filtered.nodes.map(n=>{
-   const center=!overview&&n.id===(state.focus||state.root);
+   const center=!overview&&n.id===(comparing?state.comparison.from:(state.focus||state.root));
    return {...n,_focus:center,_depth:filtered.distance.get(n.id)??0,
      ...(center?{fx:0,fy:0,fz:0}:{}),
-     _overview:overview,_label:!overview&&(state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))};
+     _overview:overview,_label:!overview&&(comparing?(n.id===state.comparison.from||n.id===state.comparison.to):state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))};
  });
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
- $("graphSummary").textContent=overview
-  ?"Nebulosa completa · "+nodes.length+" nodi musicali · "+links.length+" archi"
-  :state.focus
+ $("graphSummary").textContent=comparing
+  ?visibleTitle(state.comparison.from)+" ↔ "+visibleTitle(state.comparison.to)+" · "+(filtered.paths?.length||0)+" percorsi · "+nodes.length+" nodi · "+links.length+" archi"
+  :overview
+    ?"Nebulosa completa · "+nodes.length+" nodi musicali · "+links.length+" archi"
+    :state.focus
     ?"Percorso: "+state.trail.map(visibleTitle).join(" → ")+" · "+state.depth+" livelli dal centro · "+nodes.length+" nodi · "+links.length+" archi"
     :nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+visibleTitle(state.root);
- $("backFocus").disabled=state.trail.length<=1;
+ $("backFocus").disabled=!comparing&&state.trail.length<=1;
  $("showAll").disabled=overview;
  $("visibleCount").textContent=nodes.length+" nodi visibili ("+links.length+" relazioni)";
  const h=$("visibleList");h.replaceChildren();
@@ -540,16 +543,33 @@ function draw(){
  if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
  try{const g=graphInstance().graphData({nodes:nodes.map(n=>({...n})),links:links.map(e=>({...e}))});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
  displayEdgeHover(null);
- const active=overview?null:state.db.nodes.find(n=>n.id===(state.focus||state.root));
- if(active)showNode(active);
+ const active=overview||comparing?null:state.db.nodes.find(n=>n.id===(state.focus||state.root));
+ if(comparing){
+   $("detailTitle").textContent="Collegamento tra due lemmi";
+   const panel=$("detail");panel.replaceChildren();
+   panel.append(make("p",visibleTitle(state.comparison.from)+" ↔ "+visibleTitle(state.comparison.to),"reason"));
+   if(filtered.error)panel.append(make("p",filtered.error,"bad"));
+   else for(const [i,path] of (filtered.paths||[]).entries()){
+     panel.append(make("h2","Percorso "+(i+1)+" · "+path.links.length+" archi"));
+     for(let j=0;j<path.links.length;j++){
+       const item=make("div",visibleTitle(path.path[j])+" → "+visibleTitle(path.path[j+1])+"\n"+edgeReason(path.links[j]),"reason");
+       item.style.whiteSpace="pre-wrap";panel.append(item);
+     }
+   }
+ }else if(active)showNode(active);
  else {$("detailTitle").textContent="Relazioni del nodo";$("detail").textContent="Seleziona un nodo per esplorarlo. La nebulosa mostra tutte le entità musicali abilitate dai filtri.";}
- if(state.focus&&active?.category==="opere"&&!filtered.hasTaxonomyPath){
+ if(!comparing&&state.focus&&active?.category==="opere"&&!filtered.hasTaxonomyPath){
    const notice=make("p","Per questa composizione non è stato trovato un percorso attraverso generi e forme nei collegamenti attivi. Il rapporto diretto con l'autore resta visibile; la collocazione tassonomica deve essere verificata e collegata nel database.","reason");
    notice.style.borderLeftColor="#d8a56e";
    $("detail").append(notice);
  }
 }
 $("searchEntity").addEventListener("input",showEntityResults);
+$("searchTarget").addEventListener("input",showTargetResults);
+$("clearConnection").onclick=()=>{
+ state.comparison=null;$("searchTarget").value="";showTargetResults();
+ $("clearConnection").disabled=true;draw();
+};
 $("backFocus").onclick=goBackFocus;
 $("detailsToggle").onclick=()=>openDetails($("detailsPanel").hidden);
 $("zoomIn").onclick=()=>changeZoom(1.3);
@@ -562,7 +582,7 @@ try{
  const db=await loadFederatedDatabase();state.db=db;
  if(db.flaminio_records.length!==500||db.counts.orphan_links!==0)throw Error("Integrità non confermata: lotto o archi incompleti");
  status("500/500 schede · "+db.counts.integrated_people+" identità Mundi–Atlantis · "+db.counts.nodes+" nodi · "+db.counts.links+" archi");
- refreshToggles();showEntityResults();
+ refreshToggles();showEntityResults();showTargetResults();
  showNebula();
 }catch(e){
  let summary=e.message;
