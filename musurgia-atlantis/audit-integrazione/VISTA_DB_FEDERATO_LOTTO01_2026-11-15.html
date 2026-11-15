@@ -99,7 +99,7 @@ function status(t,err=false){$("loadStatus").textContent=t;$("loadStatus").class
 function shortlistNodes(q){
  const norm=normalize(q).trim();
  if(!norm)return [];
- return state.db.nodes.filter(n=>(n.visibility!=="documentary")&&(normalize(n.name).includes(norm)||normalize(n.id).includes(norm)))
+ return state.db.nodes.filter(n=>(n.visibility!=="documentary")&&(normalize(n.name).includes(norm)||normalize(n.id).includes(norm)||(n.aliases||[]).some(a=>normalize(a).includes(norm))||(n.provenance||[]).some(p=>normalize(p.original_id).includes(norm))))
    .sort((a,b)=>Number(b.name.toLowerCase().startsWith(norm))-Number(a.name.toLowerCase().startsWith(norm)))
    .slice(0,24)
 }
