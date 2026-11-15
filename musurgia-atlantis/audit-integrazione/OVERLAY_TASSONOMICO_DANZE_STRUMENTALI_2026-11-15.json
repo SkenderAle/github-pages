@@ -411,5 +411,29 @@
     "identity_guard": "Non generare nuove opere per ciascun movimento di una suite; parti e raccolte conservano identità distinte.",
     "reuse": "Riutilizzare i nodi forma esistenti dopo riconciliazione; non forzare duplicazioni."
   },
-  "unverified_taxonomy_note": "Le voci qui elencate sono forme da cercare anche come movimenti delle suite, NON nuove opere necessariamente mancanti."
+  "unverified_taxonomy_note": "Le voci qui elencate sono forme da cercare anche come movimenti delle suite, NON nuove opere necessariamente mancanti.",
+  "composition_identity_rule": {
+    "status": "IN_REVIEW",
+    "cardinality": "UNA suite identificata = UNA composizione (opera) anche se plurimovimentale",
+    "movement_representation": "Movimenti eventualmente identificati come entità di tipo PARTE e visualizzati subordinati all'opera; MAI contati come opere indipendenti per il solo fatto di avere titoli o forme propri",
+    "catalog_count": "conteggio composizioni calcolato solo sulle opere canoniche, escludendo parti, numeri, movimenti e documenti sorgente",
+    "examples": [
+      {
+        "work": "Suite n. 1 per violoncello BWV 1007",
+        "work_count": 1,
+        "parts": [
+          "Prélude",
+          "Allemande",
+          "Courante",
+          "Sarabande",
+          "Menuet I",
+          "Menuet II",
+          "Gigue"
+        ],
+        "caveat": "Rappresentazione strutturale; le etichette Menuet I e II sono sezioni/movimenti a seconda della granularità catalografica. Non diventano nuove opere."
+      }
+    ],
+    "display_rule": "Espansione dei movimenti nel dettaglio di una sola opera, non duplicazione tra risultati del filtro Opere",
+    "exception": "Una danza pubblicata come opera indipendente ha propria identità, distinto da movimento incluso in una suite"
+  }
 }
