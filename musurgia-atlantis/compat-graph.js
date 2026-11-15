@@ -5,7 +5,7 @@ function makeGraph(host){
   const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
   const ctx=canvas.getContext('2d',{alpha:false});
   let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,hoveredEdge=null,drag=null,active=true,last=0;
-  let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},nodeSize=n=>3;
+  let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},onDragEnd=()=>{},nodeSize=n=>3;
   const options={linkOpacity:.3,disableDoubleClickZoom:false};
   const hashed=str=>{let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619);return h>>>0};
   const rnd=(str,k)=>((hashed(str+'-'+k)%100003)/100003);
@@ -106,6 +106,10 @@ function makeGraph(host){
         n.z=z+(rnd(n.id,2)-.5)*spread*2;
       });
       chapters.forEach(n=>Object.assign(n,centers.get(n.id)));
+    }
+    // Le posizioni manuali prevalgono sul layout finché il nodo resta visibile.
+    for(const n of current.nodes)if(n._manualPos){
+      n.x=n._manualPos.x;n.y=n._manualPos.y;n.z=n._manualPos.z;
     }
     points=current.nodes;
     const byId=new Map(points.map(n=>[n.id,n]));
@@ -224,6 +228,12 @@ function makeGraph(host){
     return nearest?.edge||null;
   }
   function coordinates(evt){const b=canvas.getBoundingClientRect();return {x:evt.clientX-b.left,y:evt.clientY-b.top};}
+  function hitNode(p,radius=20){
+    return projected.reduce((best,q)=>{
+      const d=Math.hypot(q.x-p.x,q.y-p.y);
+      return d<Math.max(radius,q.r||0)&&(!best||d<best.d)?{d,node:q.n}:best;
+    },null)?.node||null;
+  }
   const pointers=new Map();let pinch=null,ignoreTap=false;
   function zoomAt(value,anchorX=W/2,anchorY=H/2){
     const next=Math.max(.3,Math.min(10,Number(value)||zoom)),ratio=next/zoom;
@@ -239,7 +249,14 @@ function makeGraph(host){
     ev.preventDefault();
     const p=coordinates(ev);pointers.set(ev.pointerId,p);
     try{canvas.setPointerCapture(ev.pointerId)}catch(_){}
-    if(pointers.size===1){drag={...p,rotY,rotX,moved:false};ignoreTap=false}
+    if(pointers.size===1){
+      const node=hitNode(p);
+      const proj=node?project(node):null;
+      drag={...p,rotY,rotX,moved:false,node:node||null,
+        position:node?{x:node.x,y:node.y,z:node.z}:null,
+        scale:proj?Math.max(.0001,proj.s):1};
+      ignoreTap=false;
+    }
     else{drag=null;ignoreTap=true;pinch=pinchPose()}
     canvas.style.cursor='grabbing';
   });
@@ -253,8 +270,22 @@ function makeGraph(host){
         pinch=now;return;
       }
       if(drag){
-        const dx=p.x-drag.x,dy=p.y-drag.y;if(Math.abs(dx)+Math.abs(dy)>4)drag.moved=true;
-        rotY=drag.rotY+dx*.006;rotX=Math.max(-1.15,Math.min(1.15,drag.rotX+dy*.005));return;
+        const dx=p.x-drag.x,dy=p.y-drag.y;
+        if(Math.abs(dx)+Math.abs(dy)>4)drag.moved=true;
+        if(drag.node){
+          // Deproiezione del movimento sul piano della camera: gli archi
+          // seguono il nodo perché ne condividono l'oggetto nella scena.
+          const cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),sx=Math.sin(rotX);
+          const right=dx/drag.scale,up=dy/drag.scale;
+          drag.node.x=drag.position.x+right*cy-up*sy*sx;
+          drag.node.y=drag.position.y+up*cx;
+          drag.node.z=drag.position.z-right*sy-up*cy*sx;
+          canvas.style.cursor='grabbing';
+        }else{
+          rotY=drag.rotY+dx*.006;
+          rotX=Math.max(-1.15,Math.min(1.15,drag.rotX+dy*.005));
+        }
+        return;
       }
     }
     const near=projected.reduce((best,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);return d<15&&(!best||d<best.d)?{d,id:q.n.id}:best},null);
@@ -272,6 +303,7 @@ function makeGraph(host){
     }
     if(pointers.size>1){pinch=pinchPose();return}
     drag=null;pinch=null;ignoreTap=false;canvas.style.cursor='grab';
+    if(was?.node&&was.moved&&!multi)onDragEnd(was.node);
     if(!was||was.moved||multi)return;
     const p=coordinates(ev);
     const near=projected.reduce((best,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);return d<19&&(!best||d<best.d)?{d,n:q.n}:best},null);
@@ -304,7 +336,7 @@ function makeGraph(host){
     d3Force(){return {strength(){return this}}},
     width(v){if(v===undefined)return W;W=v;resize();return api},height(v){if(v===undefined)return H;H=v;resize();return api},
     disableDoubleClickZoom(value){options.disableDoubleClickZoom=!!value;return api},
-    onNodeClick(fn){onNode=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onLinkHover(fn){onLinkHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
+    onNodeClick(fn){onNode=fn;return api},onNodeDragEnd(fn){onDragEnd=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onLinkHover(fn){onLinkHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
     nodeColor(fn){if(fn===undefined)return nodeColors;nodeColors=fn;return api},linkColor(fn){if(fn===undefined)return linkColors;linkColors=fn;return api},nodeVal(fn){nodeSize=fn;return api},linkOpacity(n){options.linkOpacity=n;return api}
   };
   for(const prop of ['backgroundColor','showNavInfo','nodeRelSize','nodeResolution','nodeLabel','linkWidth','linkDirectionalArrowLength','warmupTicks','cooldownTicks'])api[prop]=()=>api;
