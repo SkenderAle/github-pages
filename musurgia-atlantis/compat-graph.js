@@ -40,6 +40,25 @@ function makeGraph(host){
         });
       }
       rotY=-.52;rotX=.33;shiftX=0;shiftY=0;
+    }else if(current.nodes.some(n=>n._compareEndpoint)){
+      // Confronto paritario: nessuno dei due lemmi costituisce il centro.
+      // I due estremi occupano posizioni speculari; i nodi intermedi
+      // seguono le distanze documentate da entrambi.
+      const first=current.nodes.find(n=>n._compareStart);
+      const second=current.nodes.find(n=>n._compareEnd);
+      if(first)Object.assign(first,{x:-170,y:0,z:0});
+      if(second)Object.assign(second,{x:170,y:0,z:0});
+      const common=current.nodes.filter(n=>!n._compareEndpoint).sort((a,b)=>a.id.localeCompare(b.id));
+      const golden=Math.PI*(3-Math.sqrt(5));
+      for(let i=0;i<common.length;i++){
+        const n=common[i],a=Number(n._compareDistA),b=Number(n._compareDistB);
+        const fraction=Number.isFinite(a)&&Number.isFinite(b)&&a+b>0?a/(a+b):.5;
+        const angle=golden*i,ring=Math.sqrt(i+1)*11;
+        n.x=(fraction-.5)*310+(rnd(n.id,9)-.5)*28;
+        n.y=Math.cos(angle)*ring;
+        n.z=Math.sin(angle)*ring;
+      }
+      rotY=-.22;rotX=.11;shiftX=0;shiftY=0;
     }else if(current.nodes.some(n=>n._overview)){
       // Vista globale: nebulosa tridimensionale suddivisa in regioni morbide
       // per categoria, senza creare nodi o relazioni supplementari.
