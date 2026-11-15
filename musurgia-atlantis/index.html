@@ -198,6 +198,24 @@ function nodeDetailHeader(n){const ty=n.category==='capitolo'?'Capitolo e percor
  return html;
 }
 function renderNodeDetail(id){const n=lookup.get(id);if(!n)return;let html=nodeDetailHeader(n);
+ // Elenco composizioni verificabili nel grafo caricato, indipendente dai filtri visuali.
+ // Mostra soltanto legami diretti di paternita', non opere raggiunte attraverso generi condivisi.
+ if(n.category==='persona'){
+  const authored=DATA.links.filter(e=>e.source===id||e.target===id).filter(e=>{
+   const other=lookup.get(e.source===id?e.target:e.source);
+   return other&&workTypes.has(other.category)&&/^(compone|ha_composto|composizione_|autore_di|musica_composta)/.test(e.relation||'')&&e.tier!=='sospeso'&&e.tier!=='ipotesi';
+  });
+  const unique=new Map();
+  for(const e of authored){const otherId=e.source===id?e.target:e.source;if(!unique.has(otherId))unique.set(otherId,e)}
+  html+='<hr class="sep"><div class="controltitle">Composizioni presenti nel grafo · '+unique.size+'</div>';
+  html+='<p class="hint">Elenco dei soli collegamenti diretti documentati nel grafo attualmente caricato. Non equivale al catalogo completo delle opere dell’autore.</p>';
+  if(unique.size){html+='<div class="detail-list">';
+   for(const [workId,e] of [...unique].sort((a,b)=>lookup.get(a[0]).name.localeCompare(lookup.get(b[0]).name,'it'))){
+    html+='<button class="connection" data-focus="'+textSafe(workId)+'">'+textSafe(lookup.get(workId).name)+'<small>'+textSafe((e.relation||'').replace(/_/g,' '))+'</small></button>';
+   }
+   html+='</div>';
+  }else html+='<p class="detail-intro">Non risultano composizioni con un collegamento diretto di autore nel grafo caricato. Questo non significa che l’autore non abbia composto opere.</p>';
+ }
  const connections=(neighbors.get(id)||[]);const byType=new Map();for(const z of connections){const k=z.id;let v=byType.get(k);if(!v){byType.set(k,{id:k,count:0,tier:z.e.tier});v=byType.get(k)}v.count++;}
  const xs=[...byType.values()].sort((a,b)=>{const ca=lookup.get(a.id)?.category==='capitolo'?0:1,cb=lookup.get(b.id)?.category==='capitolo'?0:1;return ca-cb||b.count-a.count||lookup.get(a.id).name.localeCompare(lookup.get(b.id).name,'it')});
  html+='<hr class="sep"><div class="controltitle">Connessioni visibili · '+connections.length+'</div><div class="detail-list">';
@@ -220,7 +238,7 @@ function renderEdgeDetail(e){selectedEdge=e;selectedId=null;const a=lookup.get(i
 function searchResults(){const q=norm($('search').value.trim());const panel=$('suggestions');if(!q){panel.classList.remove('visible');panel.innerHTML='';return;}
  const tokens=q.split(/\s+/).filter(Boolean);let matches=DATA.nodes.filter(n=>tokens.every(t=>norm(n.name).includes(t)||norm(n.id).includes(t)));
  matches.sort((a,b)=>(norm(a.name).startsWith(q)?-10:0)-(norm(b.name).startsWith(q)?-10:0)||(a.category==='capitolo'?-1:1)-(b.category==='capitolo'?-1:1)||a.name.localeCompare(b.name,'it'));
- panel.innerHTML='';for(const n of matches.slice(0,14)){const btn=document.createElement('button');btn.className='suggestion';btn.type='button';btn.innerHTML='<span style="color:'+colorClass(n.id)+'">●</span><span>'+textSafe(n.name)+'<small>'+textSafe(n.category)+'</small></span>';btn.onclick=()=>{$('search').value=n.name;panel.classList.remove('visible');focusNode(n.id)};panel.appendChild(btn)}
+ panel.innerHTML='';for(const n of matches.slice(0,14)){const btn=document.createElement('button');btn.className='suggestion';btn.type='button';btn.innerHTML='<span style="color:'+colorClass(n.id)+'">●</span><span>'+textSafe(n.name)+'<small>'+textSafe(n.category)+'</small></span>';btn.onclick=()=>{$('search').value=n.name;panel.classList.remove('visible');focusNode(n.id,n.category==='persona')};panel.appendChild(btn)}
  if(!matches.length)panel.innerHTML='<div class="hint" style="padding:12px">Nessun nodo corrispondente</div>';panel.classList.add('visible');
 }
 function setupUI(){
