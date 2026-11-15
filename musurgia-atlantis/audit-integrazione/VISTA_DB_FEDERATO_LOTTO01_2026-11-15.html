@@ -67,7 +67,8 @@ main.details-collapsed #detailsPanel{display:none}
 <p class="meta" id="connectionHint">Seleziona prima il lemma iniziale, poi un secondo nodo: mostrerò i percorsi attraverso gli archi esistenti.</p>
 <button id="clearConnection" type="button" disabled>Chiudi confronto</button>
 <fieldset><legend>Nodi visibili</legend><div class="chips" id="visibleCategories"></div></fieldset>
-<fieldset><legend>Relazioni · lenti originali Mundi</legend><div class="chips" id="mundiLenses"></div></fieldset>
+<fieldset><legend>Relazioni · lenti Mundi</legend><div class="chips" id="mundiLenses"></div>
+<p class="meta" id="lensStatus" role="status">Le lenti filtrano gli archi Mundi; gli archi Atlantis e Flaminio rimangono disponibili.</p></fieldset>
 <fieldset><legend>Etichette mostrate (indipendenti dai nodi)</legend><div class="chips" id="labelCategories"></div></fieldset>
 <div style="display:flex;gap:8px;align-items:center;margin:9px 0"><label for="depth">Livelli:</label><select id="depth"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><button id="allCategories">Tutte le categorie</button></div>
 <p class="footer">Le 500 schede bibliografiche Flaminio restano conservate nel database di staging, ma non vengono mostrate come nodi musicali autonomi. Seleziona un nodo per esplorare le relazioni motivate.</p>
@@ -101,9 +102,42 @@ const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"")
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
 const lensChoices=[["musica","Storia e appartenenze"],["trasmissioni","Maestri, allievi e influenze"],["genealogie","Altri autori correlati"],["collaborazioni","Incontri e collaborazioni"]];
+const lensGroupToUI={scuole:"musica",formazione:"trasmissioni",influenze:"trasmissioni",genealogie:"genealogie",collaborazioni:"collaborazioni"};
+function lensBucket(e){
+  // Solo gli archi provenienti da Mundi appartengono a queste lenti;
+  // i crosswalk e gli archi Atlantis/Flaminio non vanno classificati
+  // per analogia nominale.
+  if(e.layer!=="mundi"&&e.layer!=="mundi_extension")return null;
+  const group=e.group||e.original?.group;
+  if(group&&lensGroupToUI[group])return lensGroupToUI[group];
+  // Grafo storico, raccordi di forma, relazioni originali non classificate:
+  // corrispondono alla lente "Storia e appartenenze" di Mundi.
+  return "musica";
+}
+function availableLensCounts(){
+ const totals=new Map(lensChoices.map(([id])=>[id,0]));
+ for(const e of state.db?.links||[]){
+   if(e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.original?.status,e.original?.verification_status].filter(Boolean).join(" ")))continue;
+   const bucket=lensBucket(e);
+   if(bucket)totals.set(bucket,(totals.get(bucket)||0)+1);
+ }
+ return totals;
+}
 function refreshToggles(){
  const lensHost=$("mundiLenses");lensHost.replaceChildren();
- for(const [id,name] of lensChoices){const label=make("label"),box=document.createElement("input");box.type="checkbox";box.checked=state.lenses.has(id);box.onchange=()=>{box.checked?state.lenses.add(id):state.lenses.delete(id);draw()};label.append(box,make("span",name));lensHost.append(label)}
+ const lensCounts=availableLensCounts();
+ for(const [id,name] of lensChoices){
+   const count=lensCounts.get(id)||0,label=make("label"),box=document.createElement("input");
+   box.type="checkbox";box.checked=count>0&&state.lenses.has(id);box.disabled=count===0;
+   label.title=count?count+" archi Mundi consultabili in questa lente":"Nessun arco Mundi classificato in questa lente";
+   box.onchange=()=>{box.checked?state.lenses.add(id):state.lenses.delete(id);draw()};
+   label.append(box,make("span",name+" ("+count+")"));lensHost.append(label);
+ }
+ const active=[...lensCounts].filter(([id,count])=>count>0&&state.lenses.has(id))
+   .reduce((sum,[,count])=>sum+count,0);
+ const total=[...lensCounts.values()].reduce((sum,count)=>sum+count,0);
+ $("lensStatus").textContent="Archi Mundi abilitati: "+active+"/"+total+
+   ". Le categorie con 0 relazioni sono disabilitate. Gli archi degli altri database restano indipendenti.";
 
  for(const [which,container] of [["cats","visibleCategories"],["labels","labelCategories"]]){
   const host=$(container);host.replaceChildren();
@@ -410,8 +444,8 @@ function showEdge(e){
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
- const lensGroupToUI={scuole:"musica",formazione:"trasmissioni",influenze:"trasmissioni",genealogie:"genealogie",collaborazioni:"collaborazioni"};
- const edges=db.links.filter(e=>!isBlocked(e)&&(e.collection!=="lenti-originali"||state.lenses.has(lensGroupToUI[e.group]||"musica")));
+ const edges=db.links.filter(e=>!isBlocked(e)&&
+   (lensBucket(e)===null||state.lenses.has(lensBucket(e))));
  const adj=new Map();
  for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
  if(state.comparison)return comparisonProjection(db,edges,index);
