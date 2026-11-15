@@ -133,6 +133,20 @@ export function buildUnifiedDatabase(d){
    insert("flaminio",n,share?"atlantis::"+a.id:mergedLegacy);
  });
  if(legacyReferences.length!==curated.flaminio_legacy_mundi.length)throw Error("Riferimenti legacy non completamente consumati");
+ const curatedMusicNodes=[];
+ for(const n of curated.musicological_nodes||[]){
+   if(!n.id.startsWith("curated::")||byID.has(n.id)||n.category!=="opere"||!n.source_urls?.length)
+     throw Error("Nuovo nodo musicologico non ammesso: "+n.id);
+   const obj={id:n.id,name:n.name,category:"opere",subtype:n.subtype||"concerto-per-violino",layer:"curated",visibility:"musical",
+     categories_by_layer:{curated:"opere"},aliases:[],provenance:[{layer:"curated",original_id:n.id,payload:n}]};
+   byID.set(n.id,obj);nodes.push(obj);curatedMusicNodes.push(n.id);
+ }
+ for(const x of curated.node_annotations||[]){
+   const n=byID.get(x.id);
+   if(!n||!x.subtype)throw Error("Annotazione senza nodo: "+x.id);
+   n.subtype=x.subtype;
+   n.curated_annotation={rationale:x.rationale,source:"staging_only_original_payload_unchanged"};
+ }
  const orphans=[],dupes=[];
  function append(layer,collection,e,i){
    const sid=typeof e.source==="object"?e.source?.id:e.source,tid=typeof e.target==="object"?e.target?.id:e.target;
@@ -187,18 +201,18 @@ export function buildUnifiedDatabase(d){
  const connectedRecords=new Set(staging.links.flatMap(e=>[typeof e.source==="object"?e.source?.id:e.source,typeof e.target==="object"?e.target?.id:e.target]));
  const missing=registry.records.filter(r=>!stageRecords.has(r.source_id)||!connectedRecords.has(r.source_id)).map(r=>r.source_id);
  const originalEdges=atlantis.links.length+mundi.edges.length+special.relations.length+extension.relations.length+staging.links.length;
- const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length;
+ const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length;
  const counts={mundi_nodes:mundi.nodes.length,mundi_extension_records:extension.nodes.length,mundi_extension_new_nodes:extension.nodes.filter(n=>!baseID.has(n.id)).length,
    atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,
    mundi_special_relations:special.relations.length,mundi_extension_relations:extension.relations.length,
    atlantis_links:atlantis.links.length,flaminio_links:staging.links.length,original_source_edges:originalEdges,
    integrated_people:identity.length,shared_flaminio_people:sharedFlaminio.length,
    integrated_taxonomy:taxonomyIdentity.length,flaminio_legacy_reconciled:legacyReferences.length,
-   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,nodes:nodes.length,links:links.length,
+   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,nodes:nodes.length,links:links.length,
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- if(identity.length!==162||taxonomyIdentity.length!==8||legacyReferences.length!==10||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length||
+ if(identity.length!==162||taxonomyIdentity.length!==8||legacyReferences.length!==10||curatedMusicNodes.length!==4||semanticCurated.length!==18||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length||
     counts.orphan_links||counts.duplicate_link_ids||counts.flaminio_source_records!==500||
     counts.unique_flaminio_source_records!==500||counts.flaminio_source_nodes!==500||counts.missing_source_rows){
    throw Error("Gate integrita' NON superato: "+JSON.stringify({counts,expectedNodes,orphans:orphans.slice(0,5),duplicateIDs:dupes.slice(0,5),missing:missing.slice(0,5)}));
@@ -207,8 +221,8 @@ export function buildUnifiedDatabase(d){
    status:"STAGING_UNIFICATO_NAVIGABILE_IDENTITA_STORICHE_NON_TUTTE_CERTIFICATE",
    counts,nodes,links,flaminio_records:registry.records,
    crosswalk:{mundi_atlantis:identity,mundi_atlantis_taxonomy:taxonomyIdentity,flaminio_atlantis:sharedFlaminio,flaminio_legacy_mundi:legacyReferences,
-     editorial_bridges:bridges,semantic_curated_links:semanticCurated,excluded:ignored,curated_pending:curated.excluded_or_pending},
-   policy:{preserve_all_source_nodes_and_relations:true,merge_person_pairs_and_explicit_curated_taxonomy_pairs:true,legacy_reference_id_redirects:true,
+     editorial_bridges:bridges,semantic_curated_links:semanticCurated,curated_music_nodes:curatedMusicNodes,excluded:ignored,curated_pending:curated.excluded_or_pending},
+   policy:{preserve_all_source_nodes_and_relations:true,merge_person_pairs_and_explicit_curated_taxonomy_pairs:true,legacy_reference_id_redirects:true,curated_vivaldi_works_are_distinct_from_collection:true,
      homonyms_require_external_review:true,chapters_are_not_periods:true,genres_not_merged_by_name:true,
      hold_excluded_by_default:true,production_graphs_unchanged:true}};
 }
