@@ -1,0 +1,187 @@
+{
+  "schema": "musurgia-atlantis-gate04c-mobile-category-filter-regression-v1",
+  "date": "2026-11-15",
+  "incident": "Android screenshot: apparent work nodes under Others and empty genre/shape filter",
+  "root": "pers:bach",
+  "diagnosis": "All category chips are initially active; previously tapping genre disabled it rather than isolating. Source graph has 25 Bach-linked genre nodes. Two historically disputed work nodes had category identita_opera_attribuzione_dubbia and fell through as Others; fix maps them to Works without promoting their HOLD attribution. Viewer now has explicit category-only shortcuts and forces graph state refresh when filters change.",
+  "viewer_sha": "9bfff5d6e66410e6f7133b329ad4a68581cec731",
+  "tester_sha": "b5f08652162322259780149fde89cbefbfad1787",
+  "staging_sha": "6f1793f3d8b07469a458c7bbbd768eb8cb37050e",
+  "code_test_status": "PASS_SOURCE_LEVEL_NOT_REAL_BROWSER",
+  "checks": [
+    {
+      "name": "Preview JS parses",
+      "status": "PASS"
+    },
+    {
+      "name": "Browser harness JS parses",
+      "status": "PASS"
+    },
+    {
+      "name": "Genre filter shows 25 genre nodes + Bach",
+      "status": "PASS",
+      "actual": {
+        "nodes": 26,
+        "links": 25
+      }
+    },
+    {
+      "name": "Genre filter shows only genres plus rooted Bach",
+      "status": "PASS"
+    },
+    {
+      "name": "Genre nodes carry first-tier labels",
+      "status": "PASS"
+    },
+    {
+      "name": "Genre filter preserves Bach root",
+      "status": "PASS"
+    },
+    {
+      "name": "Work filter shows Bach + 283 work nodes",
+      "status": "PASS",
+      "actual": {
+        "nodes": 284,
+        "links": 299
+      }
+    },
+    {
+      "name": "Work filter never groups candidates as altro",
+      "status": "PASS"
+    },
+    {
+      "name": "Other-nodes filter has Bach + exactly 1 documentary reference",
+      "status": "PASS",
+      "actual": {
+        "nodes": 2,
+        "links": 1
+      }
+    },
+    {
+      "name": "All category filter has Bach + 309 neighbors",
+      "status": "PASS",
+      "actual": {
+        "nodes": 310,
+        "links": 325
+      }
+    },
+    {
+      "name": "Doubtful Bach aria identity is an opera type",
+      "status": "PASS"
+    },
+    {
+      "name": "Doubtful Bach cantata identity is an opera type",
+      "status": "PASS"
+    },
+    {
+      "name": "Documentation-only source stays in Others",
+      "status": "PASS"
+    },
+    {
+      "name": "Source sheet retained as other",
+      "status": "PASS"
+    },
+    {
+      "name": "Single tap from all isolates Genres",
+      "status": "PASS"
+    },
+    {
+      "name": "Tapping works adds second category",
+      "status": "PASS"
+    },
+    {
+      "name": "Tapping genre again removes it",
+      "status": "PASS"
+    },
+    {
+      "name": "Tapping last category restores all",
+      "status": "PASS"
+    },
+    {
+      "name": "Solo Generi is explicit one-click action",
+      "status": "PASS"
+    },
+    {
+      "name": "Solo Opere is explicit one-click action",
+      "status": "PASS"
+    },
+    {
+      "name": "Tutte restores all on click",
+      "status": "PASS"
+    },
+    {
+      "name": "Preview signature includes category set",
+      "status": "PASS"
+    },
+    {
+      "name": "Preview state refresh includes _bridge",
+      "status": "PASS"
+    },
+    {
+      "name": "Browser harness explicitly tests new genres button",
+      "status": "PASS"
+    },
+    {
+      "name": "Browser harness explicitly tests single-tap genre chip",
+      "status": "PASS"
+    },
+    {
+      "name": "Original staging V11 unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Production graph unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Production UI unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Source rows count 500",
+      "status": "PASS"
+    },
+    {
+      "name": "Staging graph cardinalities unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Staging data source unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "No public graph data fetched in preview",
+      "status": "PASS"
+    }
+  ],
+  "metrics": {
+    "passed": 32,
+    "failed": 0,
+    "bach_all": {
+      "nodes": 310,
+      "links": 325
+    },
+    "bach_genres": {
+      "nodes": 26,
+      "links": 25
+    },
+    "bach_works": {
+      "nodes": 284,
+      "links": 299
+    },
+    "bach_other": {
+      "nodes": 2,
+      "links": 1
+    },
+    "source_rows": 500,
+    "staging_nodes": 1365,
+    "staging_links": 2780,
+    "real_android_interaction_tests": 0,
+    "production_mutations": 0
+  },
+  "pending": [
+    "User validates a cache-busted preview on actual Android",
+    "User executes Gate04C browser harness and exports result",
+    "Visual check of genre labels and category chips"
+  ]
+}
