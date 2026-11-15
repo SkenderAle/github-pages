@@ -2,7 +2,7 @@
    Used when the WebGL ForceGraph3D engine cannot load. Creative Commons-free original code. */
 (function(){'use strict';
 function makeGraph(host){
-  const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
+  const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.dataset.atlantisTransparent="true";canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
   const ctx=canvas.getContext('2d',{alpha:true});
   let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,hoveredEdge=null,drag=null,active=true,last=0;
   let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onNodeDblClick=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},onDragEnd=()=>{},nodeSize=n=>3;
