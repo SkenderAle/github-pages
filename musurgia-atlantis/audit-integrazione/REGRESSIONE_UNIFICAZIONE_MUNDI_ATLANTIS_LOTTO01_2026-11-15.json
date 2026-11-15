@@ -1,0 +1,147 @@
+{
+  "schema": "musurgia-unification-regression-lot01-v1",
+  "date": "2026-11-15",
+  "branch": "main",
+  "scope": "NON_DESTRUCTIVE_STAGING",
+  "status": "PASS_RUNTIME_DATA_BROWSER_PENDING",
+  "module_path": "musurgia-atlantis/audit-integrazione/DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs",
+  "module_sha": "574db27f2b955a52d88fb367a2deb7976d3a611f",
+  "viewer_path": "musurgia-atlantis/audit-integrazione/VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html",
+  "viewer_sha": "7cef544aa8c160fa535aeca159dd39fbf564a85b",
+  "original_source_shas": {
+    "mundi": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "atlantis": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "special": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+    "staging": "6f1793f3d8b07469a458c7bbbd768eb8cb37050e",
+    "registry": "25cafe3ebff7a19ab4ee207342071decd8971e2d"
+  },
+  "data_counts": {
+    "mundi_nodes": 869,
+    "mundi_extension_records": 15,
+    "mundi_extension_new_nodes": 14,
+    "atlantis_nodes": 754,
+    "flaminio_nodes": 1365,
+    "mundi_edges": 2437,
+    "mundi_special_relations": 1389,
+    "mundi_extension_relations": 30,
+    "atlantis_links": 1718,
+    "flaminio_links": 2780,
+    "original_source_edges": 8354,
+    "integrated_people": 162,
+    "shared_flaminio_people": 5,
+    "editorial_bridges": 10,
+    "nodes": 2835,
+    "links": 8364,
+    "flaminio_source_records": 500,
+    "unique_flaminio_source_records": 500,
+    "flaminio_source_nodes": 500,
+    "missing_source_rows": 0,
+    "orphan_links": 0,
+    "duplicate_link_ids": 0
+  },
+  "provenance": {
+    "node_source_records": 3003,
+    "edge_source_records": 8354,
+    "editorial_bridges": 10
+  },
+  "composer_examples": [
+    {
+      "id": "atlantis::pers:bach",
+      "name": "Johann Sebastian Bach",
+      "sources": [
+        "atlantis",
+        "mundi",
+        "flaminio"
+      ],
+      "edgeLayers": {
+        "atlantis": 12,
+        "mundi": 55,
+        "flaminio": 329
+      },
+      "projected_nodes": 394,
+      "projected_links": 783
+    },
+    {
+      "id": "atlantis::pers:beethoven",
+      "name": "Ludwig van Beethoven",
+      "sources": [
+        "atlantis",
+        "mundi",
+        "flaminio"
+      ],
+      "edgeLayers": {
+        "atlantis": 21,
+        "mundi": 44,
+        "flaminio": 48
+      },
+      "projected_nodes": 109,
+      "projected_links": 371
+    },
+    {
+      "id": "atlantis::pers:mozart",
+      "name": "Wolfgang Amadeus Mozart",
+      "sources": [
+        "atlantis",
+        "mundi"
+      ],
+      "edgeLayers": {
+        "atlantis": 16,
+        "mundi": 46
+      },
+      "projected_nodes": 57,
+      "projected_links": 299
+    },
+    {
+      "id": "atlantis::pers:chopin",
+      "name": "Fryderyk Chopin",
+      "sources": [
+        "atlantis",
+        "mundi"
+      ],
+      "edgeLayers": {
+        "atlantis": 4,
+        "mundi": 22
+      },
+      "projected_nodes": 25,
+      "projected_links": 79
+    }
+  ],
+  "filters": {
+    "bach_genres": {
+      "nodes": 39,
+      "links": 44
+    },
+    "bach_works": {
+      "nodes": 308,
+      "links": 333
+    }
+  },
+  "tests": {
+    "viewer_syntax": true,
+    "viewer_imports_unified_module": true,
+    "module_runtime_complete_data": true,
+    "all_original_node_payloads_preserved": true,
+    "all_original_edge_payloads_preserved": true,
+    "162_existing_person_pairs_joined": true,
+    "5_flaminio_person_identifiers_shared": true,
+    "15_extension_nodes_preserved": true,
+    "500_raw_source_records_preserved": true,
+    "zero_orphan_links": true,
+    "zero_duplicate_link_ids": true,
+    "5_period_chapter_bridges": true,
+    "5_contextual_genre_bridges": true,
+    "bach_three_source_provenance": true,
+    "mozart_original_graphs_connected": true,
+    "filter_genres_category": true,
+    "filter_works_category": true,
+    "hold_excluded_by_default": true
+  },
+  "failed": [],
+  "pending": [
+    "No physical browser, Android or touch test yet",
+    "Human identity view based on 162 pre-existing ledger entries, no independent confirmation of all homonyms",
+    "Other genre/work identities need further review",
+    "No production changes",
+    "Flaminio Lotto02 remains blocked"
+  ]
+}
