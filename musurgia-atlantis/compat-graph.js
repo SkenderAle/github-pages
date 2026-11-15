@@ -140,7 +140,7 @@ function makeGraph(host){
     // etichetta imposta e rispetto della profondità prospettica.
     // La scelta delle etichette prevale su selezione, hover, numero nodi
     // e categorie persone: nessuna categoria selezionata = zero nomi.
-    if(!n.name||!(n._label||(n._overview&&n.id===hovered)))return;
+    if(!n.name||!n._label)return;
     if(n._overview&&!n._featuredOverview&&n.id!==hovered&&frontness(p)<.68)return;
     const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
     const author=n.category==='persone';
@@ -263,7 +263,7 @@ function makeGraph(host){
     const priority=p=>p.n._overview&&p.n.id===hovered?120:p.n._featuredOverview?110:p.n._compareEndpoint?100:p.n._focus?95:
       p.n.category==='persone'?85:p.n._depth===1?55:40;
     const captions=projected
-      .filter(p=>(p.n._label||(p.n._overview&&p.n.id===hovered))&&
+      .filter(p=>p.n._label&&
         p.x>=-12&&p.x<=W+12&&p.y>=40&&p.y<=H+12)
       .sort((a,b)=>priority(b)-priority(a)||a.z-b.z);
     for(const p of captions)drawCaption(p,p.r||4,occupied);
@@ -313,12 +313,16 @@ function makeGraph(host){
     },null);
     const n=near?.node||null,id=n?.id||null;
     if(hovered!==id){hovered=id;onHover(n)}
-    if(n&&n._overview){
+    if(n){
+      // Nome SEMPRE disponibile su ogni nodo, indipendentemente da
+      // ricerca, confronto, filtri delle etichette e profondità.
       hoverLabel.textContent=n.name||n.id;
       hoverLabel.style.display='block';
-      // Il cartellino accompagna il cursore; non interferisce con la selezione.
-      hoverLabel.style.left=Math.max(6,Math.min(W-230,p.x+17))+'px';
-      hoverLabel.style.top=Math.max(55,Math.min(H-40,p.y-14))+'px';
+      // Misura il testo per non tagliarlo contro il bordo del riquadro.
+      const width=hoverLabel.offsetWidth||200;
+      const height=hoverLabel.offsetHeight||24;
+      hoverLabel.style.left=Math.max(6,Math.min(W-width-6,p.x+17))+'px';
+      hoverLabel.style.top=Math.max(6,Math.min(H-height-6,p.y+17))+'px';
     }else hoverLabel.style.display='none';
     const edge=id?null:pickLink(p,5);
     if(hoveredEdge!==edge){hoveredEdge=edge;onLinkHover(edge)}
