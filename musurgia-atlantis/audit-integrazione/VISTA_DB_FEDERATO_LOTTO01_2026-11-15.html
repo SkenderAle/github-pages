@@ -111,7 +111,7 @@ function shortlistNodes(q){
 function showEntityResults(){
  const h=$("entityResults");h.replaceChildren();
  for(const n of shortlistNodes($("searchEntity").value)){
-  const b=make("button",n.name,"record");b.append(make("small",categoryName(n.category)+" · "+n.id));
+  const b=make("button",n.name,"record");b.append(make("small",categoryName(n.category)+" · "+(n.provenance||[]).map(p=>p.layer).filter((v,i,a)=>a.indexOf(v)===i).join(" + ")+" · "+n.id));
   b.onclick=()=>selectRoot(n.id);h.append(b)
  }
  if(!h.children.length)h.append(make("div","Digita per cercare nei "+state.db.counts.nodes+" nodi unificati.","meta"))
