@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Musurgia Mundi–Atlantis · Database federato, 500 schede Flaminio (staging)</title>
+<style>
+:root{color-scheme:dark;--bg:#07131e;--panel:#0d2431;--edge:#375664;--ink:#e6f2f1;--muted:#abc1c9;--accent:#e8c084}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif}
+header{padding:13px 18px;background:#0b1e2b;border-bottom:1px solid var(--edge);display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font:22px/1.2 Georgia,serif;color:var(--accent);margin:0 0 5px}h2{font-size:15px;margin:0 0 9px;color:var(--accent)}p{margin:5px 0;color:var(--muted)}
+main{display:grid;grid-template-columns:minmax(270px,355px) minmax(0,1fr) minmax(280px,340px);height:calc(100dvh - 86px);min-height:480px}
+aside,section{min-width:0;min-height:0;overflow:auto;border-right:1px solid var(--edge)}
+aside{padding:15px;background:var(--panel)}section{position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#123343,#06131e 68%)}
+#graph{position:absolute;inset:0}#graph canvas{touch-action:none}
+.graphbar{position:absolute;top:12px;left:12px;right:12px;z-index:3;display:flex;gap:8px;align-items:center;flex-wrap:wrap;pointer-events:none}
+.graphbar>*{pointer-events:auto}
+.summary{background:#102936ed;border:1px solid var(--edge);border-radius:9px;padding:7px 10px;max-width:100%;overflow-wrap:anywhere}
+input[type=search]{display:block;width:100%;border:1px solid #527380;border-radius:8px;padding:10px;background:#071721;color:var(--ink);margin:7px 0 8px}
+button,select{background:#193746;border:1px solid #597783;color:var(--ink);border-radius:7px;padding:7px 9px;cursor:pointer;font:inherit}
+button:hover,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 9px}
+.chips label{display:flex;gap:5px;align-items:center;font-size:12px;line-height:1.2;padding:5px 0}
+fieldset{border:1px solid var(--edge);border-radius:10px;margin:10px 0;padding:7px 10px}
+legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
+.scroller{max-height:210px;overflow:auto;margin:6px 0 14px;border:1px solid var(--edge);border-radius:8px}
+.record{width:100%;text-align:left;border:0;border-bottom:1px solid #33505c;border-radius:0;background:transparent;padding:10px;display:block;font-size:12px;overflow-wrap:anywhere}
+.record.active{background:#295466}
+.record small{display:block;color:var(--muted);margin-top:3px}
+.meta{color:var(--muted);font-size:12px}
+#detail,#visibleList{font-size:12px;overflow-wrap:anywhere}
+#detail pre{max-height:260px;overflow:auto;white-space:pre-wrap;background:#06131d;padding:9px;border:1px solid var(--edge);border-radius:8px;font-size:11px}
+.edgeItem,.nodeItem{display:block;text-align:left;width:100%;margin:4px 0;padding:7px;background:#102f3c;border:1px solid #365967;border-radius:7px;white-space:normal;word-break:break-word}
+.nodeItem small,.edgeItem small{display:block;font-size:11px;color:var(--muted)}
+.bad{color:#f4ad9c}.ok{color:#aee8d1}
+.footer{font-size:11px;line-height:1.5;margin-top:12px;color:var(--muted)}
+#detailsToggle{display:none}
+@media(max-width:1000px){main{grid-template-columns:minmax(250px,36%) minmax(0,64%);height:auto;min-height:calc(100dvh - 85px)}section{height:58dvh;min-height:340px}aside:last-child{grid-column:1 / -1;min-height:260px;max-height:46dvh;border-top:1px solid var(--edge)}}
+@media(max-width:640px){header{padding:10px}h1{font-size:18px}main{display:flex;flex-direction:column;height:auto}aside:first-child{order:2;max-height:none}section{order:1;height:50dvh;min-height:340px;flex:none}aside:last-child{order:3;max-height:none}.graphbar{top:6px;left:6px;right:6px}}
+</style>
+<script src="../compat-graph.js"></script>
+</head>
+<body>
+<header><div><h1>Musurgia Mundi – Atlantis · database federato</h1><p>Staging autonomo · lotto 01 · 500 schede Flaminio · dati originali intatti</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle quattro fonti…</div></header>
+<main>
+<aside>
+<h2>Ricerca musicale</h2>
+<input type="search" id="searchEntity" placeholder="Autore, opera, genere, ID…">
+<div id="entityResults" class="scroller" aria-label="Risultati della ricerca musicale"></div>
+<fieldset><legend>Nodi visibili</legend><div class="chips" id="visibleCategories"></div></fieldset>
+<fieldset><legend>Etichette mostrate (indipendenti dai nodi)</legend><div class="chips" id="labelCategories"></div></fieldset>
+<div style="display:flex;gap:8px;align-items:center;margin:9px 0"><label for="depth">Livelli:</label><select id="depth"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><button id="allCategories">Tutte le categorie</button></div>
+<h2>Archivio delle 500 schede</h2>
+<input type="search" id="searchSources" placeholder="Cerca in tutte le schede, anche per riga Excel…">
+<div id="sourceCount" class="meta"></div>
+<div id="sources" class="scroller" style="max-height:340px"></div>
+<button id="moreSources">Mostra altre schede</button>
+<p class="footer">I record Flaminio sono testimonianze bibliografiche, non 500 opere nuove. Le fonti sono cercabili anche quando le relative identità musicali sono ancora candidate.</p>
+</aside>
+<section aria-label="Grafo musicale esplorabile">
+<div id="graph"></div>
+<div class="graphbar"><span class="summary" id="graphSummary">Grafo non ancora caricato</span><button id="resetView">Ritorna a Bach</button></div>
+</section>
+<aside>
+<h2 id="detailTitle">Dettagli e provenienza</h2>
+<div id="detail" class="meta">Seleziona una scheda Flaminio, un autore o un nodo musicale.</div>
+<h2 style="margin-top:18px">Nodi effettivamente visibili</h2>
+<div id="visibleCount" class="meta">I filtri si applicano al grafo e a questo elenco.</div>
+<div id="visibleList" class="scroller" style="max-height:38dvh"></div>
+<p class="footer"><strong>Nota di qualità:</strong> relazioni in HOLD, sospese o contestate non compaiono nella navigazione ordinaria. Le corrispondenze nominali tra i due atlanti restano candidate. Questa pagina non modifica i database pubblici e non rappresenta un collaudo Android.</p>
+</aside>
+</main>
+<script type="module">
+import {loadFederatedDatabase,projectForViewer} from "./DB_FEDERATO_LOTTO01_2026-11-15.mjs";
+const $=id=>document.getElementById(id);
+const catList=[
+ ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
+ ["generi_forme","Generi e forme"],["strumenti","Strumenti"],["luoghi","Luoghi"],
+ ["istituzioni","Istituzioni"],["concetti","Concetti"],["capitoli","Capitoli"],
+ ["eventi","Eventi"],["documentazione","Documentazione"]
+];
+const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
+const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme"]),labels:new Set(["persone","generi_forme"]),depth:1,searchSource:"",selectedRecord:null,pageSize:25,graph:null,rendered:[]};
+const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
+function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
+function refreshToggles(){
+ for(const [which,container] of [["cats","visibleCategories"],["labels","labelCategories"]]){
+  const host=$(container);host.replaceChildren();
+  for(const [value,label] of catList){if(value==="documentazione"&&which==="labels")continue;
+    const row=make("label"),box=document.createElement("input");box.type="checkbox";box.checked=state[which].has(value);
+    box.addEventListener("change",()=>{box.checked?state[which].add(value):state[which].delete(value);draw()});
+    row.append(box,make("span",label));host.append(row)}
+ }
+}
+function status(t,err=false){$("loadStatus").textContent=t;$("loadStatus").className=err?"bad":"meta"}
+function shortlistNodes(q){
+ const norm=normalize(q).trim();
+ if(!norm)return [];
+ return state.db.nodes.filter(n=>(n.visibility!=="documentary")&&(normalize(n.name).includes(norm)||normalize(n.id).includes(norm)))
+   .sort((a,b)=>Number(b.name.toLowerCase().startsWith(norm))-Number(a.name.toLowerCase().startsWith(norm)))
+   .slice(0,24)
+}
+function showEntityResults(){
+ const h=$("entityResults");h.replaceChildren();
+ for(const n of shortlistNodes($("searchEntity").value)){
+  const b=make("button",n.name,"record");b.append(make("small",categoryName(n.category)+" · "+n.id));
+  b.onclick=()=>selectRoot(n.id);h.append(b)
+ }
+ if(!h.children.length)h.append(make("div","Digita per cercare nei 2.983 nodi federati.","meta"))
+}
+function selectRoot(id){
+ const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
+ if(n.visibility==="documentary"){showNode(n);return}
+ state.root=id;$("searchEntity").value=n.name;showEntityResults();showNode(n);draw()
+}
+function showNode(n){
+ $("detailTitle").textContent="Nodo · "+n.name;
+ const target=$("detail");target.replaceChildren();
+ target.append(make("p",categoryName(n.category)+" · "+n.id));
+ if(n.subtype)target.append(make("p","Sottotipo: "+n.subtype));
+ for(const p of n.provenance||[]){
+  const title=make("p","Fonte: "+p.layer+" · ID originale: "+p.original_id,"meta");target.append(title);
+ }
+ const pre=make("pre",JSON.stringify(n.provenance||[],null,2));target.append(pre)
+}
+function sourceLabel(r){
+ const raw=r.original||r.raw||r.fields||r.csv||r;
+ const parts=[raw.titolo,raw.brano,raw.opera,raw.nome,raw.title,raw.descrizione].filter(x=>typeof x==="string"&&x.trim());
+ return parts[0]||r.source_id
+}
+function showSources(){
+ const q=state.searchSource,h=$("sources");h.replaceChildren();
+ const matches=state.db.flaminio_records.filter(r=>!q||normalize(JSON.stringify(r)).includes(q));
+ $("sourceCount").textContent=matches.length+" / "+state.db.flaminio_records.length+" schede";
+ for(const r of matches.slice(0,state.pageSize)){
+  const b=make("button",sourceLabel(r),"record"+(state.selectedRecord===r.source_id?" active":""));
+  b.append(make("small",r.source_id+" · riga Excel "+String(r.source_id).split(":").pop()));
+  b.onclick=()=>selectRecord(r);h.append(b)
+ }
+ $("moreSources").disabled=matches.length<=state.pageSize
+}
+function selectRecord(r){
+ state.selectedRecord=r.source_id;showSources();
+ const sourceId="flaminio::"+r.source_id;
+ $("detailTitle").textContent="Scheda Flaminio · "+r.source_id;
+ const h=$("detail");h.replaceChildren();
+ h.append(make("p","Registro di provenienza originale. Gli abbinamenti non equivalgono a certificazione.","meta"));
+ const related=state.db.links.filter(e=>e.source===sourceId||e.target===sourceId);
+ const index=new Map(state.db.nodes.map(n=>[n.id,n]));
+ const nonDoc=related.map(e=>({e,n:index.get(e.source===sourceId?e.target:e.source)})).filter(x=>x.n&&x.n.visibility!=="documentary");
+ h.append(make("p",nonDoc.length+" collegamenti a nodi musicali/candidati · "+related.length+" relazioni totali","meta"));
+ for(const x of nonDoc){
+  const b=make("button",x.n.name,"edgeItem");
+  b.append(make("small",categoryName(x.n.category)+" · "+x.e.relation+" · qualità: "+x.e.quality));
+  b.onclick=()=>selectRoot(x.n.id);h.append(b)
+ }
+ if(!nonDoc.length)h.append(make("p","Nessun nodo musicale diretto; riferimento conservato a livello documentario.","bad"));
+ h.append(make("h2","Record integrale"));
+ h.append(make("pre",JSON.stringify(r,null,2)));
+ if(nonDoc.length===1)selectRoot(nonDoc[0].n.id)
+}
+function graphInstance(){
+ if(state.graph)return state.graph;
+ const host=$("graph"), webgl=(()=>{try{return !!document.createElement("canvas").getContext("webgl2")}catch{return false}})();
+ const maker=webgl&&typeof window.ForceGraph3D==="function"?window.ForceGraph3D:window.AtlantisCompatGraph;
+ if(typeof maker!=="function")throw Error("Nessun renderer disponibile");
+ const g=maker===window.ForceGraph3D?maker()(host):maker(host);
+ state.graph=g.backgroundColor("#07131e").nodeColor(n=>colors[n.category]||"#c9d5dd")
+  .linkColor(e=>e.visibility==="documentary"?"#526773":"#558093")
+  .nodeVal(n=>n.id===state.root?7:3)
+  .nodeLabel(n=>state.labels.has(n.category)?n.name:"")
+  .onNodeClick(n=>selectRoot(n.id));
+ return g
+}
+function draw(){
+ if(!state.db)return;
+ const includeDocumentary=state.cats.has("documentazione");
+ let filtered;
+ try{filtered=projectForViewer(state.db,{rootId:state.root,depth:state.depth,visibleCategories:[...state.cats],labelCategories:[...state.labels],includeDocumentary})}
+ catch(e){status("Errore proiezione: "+e.message,true);return}
+ const nodes=filtered.nodes.map(n=>({id:n.id,name:n.name,category:n.category,subtype:n.subtype,visibility:n.visibility}));
+ const links=filtered.links.map(e=>({id:e.id,source:e.source,target:e.target,relation:e.relation,visibility:e.visibility,quality:e.quality}));
+ state.rendered=nodes;
+ $("graphSummary").textContent=nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+(nodes.find(n=>n.id===state.root)?.name||state.root);
+ $("visibleCount").textContent=nodes.length+" nodi visibili ("+links.length+" relazioni)";
+ const h=$("visibleList");h.replaceChildren();
+ for(const n of nodes.slice(0,180)){
+  const b=make("button",n.name,"nodeItem");b.append(make("small",categoryName(n.category)));
+  b.onclick=()=>selectRoot(n.id);h.append(b)
+ }
+ if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
+ try{graphInstance().graphData({nodes,links})}catch(e){status("Renderer non disponibile: "+e.message,true)}
+}
+$("searchEntity").addEventListener("input",showEntityResults);
+$("searchSources").addEventListener("input",e=>{state.searchSource=normalize(e.target.value).trim();state.pageSize=25;showSources()});
+$("moreSources").onclick=()=>{state.pageSize+=50;showSources()};
+$("depth").addEventListener("change",e=>{state.depth=Number(e.target.value);draw()});
+$("allCategories").onclick=()=>{state.cats=new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0]));refreshToggles();draw()};
+$("resetView").onclick=()=>selectRoot("atlantis::pers:bach");
+try{
+ const db=await loadFederatedDatabase();state.db=db;
+ if(db.flaminio_records.length!==500||db.counts.orphan_edges!==0)throw Error("Integrità non confermata: lotto o archi incompleti");
+ status("500/500 schede · "+db.counts.nodes+" nodi · "+db.counts.links+" archi · sola lettura");
+ refreshToggles();showEntityResults();showSources();
+ if(!db.nodes.find(n=>n.id===state.root))state.root=db.nodes.find(n=>n.visibility!=="documentary")?.id;
+ if(state.root)selectRoot(state.root);
+}catch(e){status("ERRORE: "+e.message,true);$("detail").textContent="Il modulo federato non è stato caricato. Verificare la console e le sorgenti; i grafi originali non sono stati modificati."}
+</script>
+</body>
+</html>
