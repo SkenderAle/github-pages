@@ -4,6 +4,11 @@
 function makeGraph(host){
   const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.dataset.atlantisTransparent="true";canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
   const ctx=canvas.getContext('2d',{alpha:true});
+  // Tooltip HTML indipendente dal disegno nel canvas: nome leggibile anche
+  // quando il nodo si muove, collide con un'etichetta o ruota nello spazio.
+  const hoverLabel=document.createElement('div');
+  hoverLabel.style.cssText='position:absolute;left:0;top:0;z-index:4;pointer-events:none;display:none;white-space:nowrap;max-width:65%;overflow:hidden;text-overflow:ellipsis;padding:4px 8px;border:1px solid rgba(231,196,126,.55);border-radius:5px;background:rgba(5,22,33,.96);color:#ffe4aa;font:600 12px system-ui;box-shadow:0 2px 12px rgba(0,0,0,.45)';
+  host.appendChild(hoverLabel);
   let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,hoveredEdge=null,drag=null,active=true,last=0;
   let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onNodeDblClick=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},onDragEnd=()=>{},nodeSize=n=>3;
   const options={linkOpacity:.3,disableDoubleClickZoom:false,cosmicBackground:false};
@@ -60,28 +65,20 @@ function makeGraph(host){
       }
       rotY=-.22;rotX=.11;shiftX=0;shiftY=0;
     }else if(current.nodes.some(n=>n._overview)){
-      // Vista globale: nebulosa tridimensionale suddivisa in regioni morbide
-      // per categoria, senza creare nodi o relazioni supplementari.
-      const categories=[...new Set(current.nodes.map(n=>n.category))].sort();
-      const count=Math.max(1,categories.length),golden=Math.PI*(3-Math.sqrt(5));
-      const centers=new Map(categories.map((category,i)=>{
-        const y=1-2*(i+.5)/count,phi=golden*i,rad=Math.sqrt(Math.max(0,1-y*y));
-        return [category,{x:rad*Math.cos(phi)*255,y:y*255,z:rad*Math.sin(phi)*255}];
-      }));
-      const grouped=new Map();
-      for(const n of current.nodes){if(!grouped.has(n.category))grouped.set(n.category,[]);grouped.get(n.category).push(n)}
-      for(const [category,group] of grouped){
-        group.sort((a,b)=>a.id.localeCompare(b.id));
-        const center=centers.get(category);
-        const spread=Math.max(68,Math.min(215,42+Math.cbrt(group.length)*13));
-        group.forEach((n,i)=>{
-          const y=1-2*(i+.5)/group.length,phi=golden*i;
-          const rad=Math.sqrt(Math.max(0,1-y*y));
-          const rr=spread*(.3+.7*Math.cbrt((i+.5)/group.length));
-          n.x=center.x+rad*Math.cos(phi)*rr+(rnd(n.id,1)-.5)*12;
-          n.y=center.y+y*rr+(rnd(n.id,2)-.5)*12;
-          n.z=center.z+rad*Math.sin(phi)*rr+(rnd(n.id,3)-.5)*12;
-        });
+      // Forma sferica organica, come la costellazione delle prime versioni:
+      // non più un insieme di satelliti ordinati per categoria.
+      // L'ordine stabile conserva la riconoscibilità fra i ricaricamenti.
+      const cloud=[...current.nodes].sort((a,b)=>a.id.localeCompare(b.id));
+      const N=Math.max(1,cloud.length),golden=Math.PI*(3-Math.sqrt(5));
+      for(let i=0;i<cloud.length;i++){
+        const n=cloud[i];
+        const latitude=1-2*(i+.5)/N;
+        const ring=Math.sqrt(Math.max(0,1-latitude*latitude));
+        const phi=golden*i;
+        const radial=160+Math.cbrt((i+.5)/N)*215+(rnd(n.id,6)-.5)*60;
+        n.x=radial*ring*Math.cos(phi);
+        n.y=radial*latitude*.84;
+        n.z=radial*ring*Math.sin(phi);
       }
       rotY=-.42;rotX=.17;shiftX=0;shiftY=0;
     }else{
@@ -209,14 +206,15 @@ function makeGraph(host){
       }
     }
     projected=points.map(project);
+    if(pointerPosition)updateHoverAt(pointerPosition);
     const map=new Map(projected.map(p=>[p.n.id,p]));
-    ctx.lineWidth=overview?.38:.65;
+    ctx.lineWidth=overview?.18:.65;
     for(const o of linkObjects){
       const a=map.get(o.a.id),b=map.get(o.b.id);if(!a||!b)continue;
       const near=Math.max(frontness(a),frontness(b));
       const direct=o.a._depth===0||o.b._depth===0;
       ctx.strokeStyle=colorRgba(linkColors(o.e),
-        (overview?.13:direct?.33:options.linkOpacity*.48)*(.30+.70*near));
+        (overview?.017:direct?.33:options.linkOpacity*.48)*(.30+.70*near));
       ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     }
     projected.sort((a,b)=>b.z-a.z);
@@ -293,6 +291,29 @@ function makeGraph(host){
     },null)?.node||null;
   }
   const pointers=new Map();let pinch=null,ignoreTap=false,lastTap=null,pendingTap=null;
+  let pointerPosition=null;
+  function updateHoverAt(p){
+    if(!p||pointers.size>0)return;
+    // La nube ruota anche sotto un puntatore fermo: ricalcolare ogni frame.
+    // Raggio in pixel sufficiente per afferrare un punto molto piccolo.
+    const near=projected.reduce((best,q)=>{
+      const d=Math.hypot(q.x-p.x,q.y-p.y);
+      const radius=q.n._overview?21:Math.max(15,q.r||0);
+      return d<radius&&(!best||d<best.d)?{d,node:q.n}:best;
+    },null);
+    const n=near?.node||null,id=n?.id||null;
+    if(hovered!==id){hovered=id;onHover(n)}
+    if(n&&n._overview){
+      hoverLabel.textContent=n.name||n.id;
+      hoverLabel.style.display='block';
+      // Il cartellino accompagna il cursore; non interferisce con la selezione.
+      hoverLabel.style.left=Math.max(6,Math.min(W-230,p.x+17))+'px';
+      hoverLabel.style.top=Math.max(55,Math.min(H-40,p.y-14))+'px';
+    }else hoverLabel.style.display='none';
+    const edge=id?null:pickLink(p,5);
+    if(hoveredEdge!==edge){hoveredEdge=edge;onLinkHover(edge)}
+    canvas.style.cursor=id?'pointer':edge?'help':'grab';
+  }
   function zoomAt(value,anchorX=W/2,anchorY=H/2){
     const next=Math.max(.3,Math.min(10,Number(value)||zoom)),ratio=next/zoom;
     shiftX=anchorX-W/2-(anchorX-W/2-shiftX)*ratio;
@@ -303,6 +324,9 @@ function makeGraph(host){
     const pair=[...pointers.values()];if(pair.length<2)return null;
     return {distance:Math.max(1,Math.hypot(pair[0].x-pair[1].x,pair[0].y-pair[1].y)),x:(pair[0].x+pair[1].x)/2,y:(pair[0].y+pair[1].y)/2};
   }
+  canvas.addEventListener('pointerleave',()=>{
+    pointerPosition=null;hovered=null;hoverLabel.style.display='none';onHover(null);
+  });
   canvas.addEventListener('pointerdown',ev=>{
     ev.preventDefault();
     const p=coordinates(ev);pointers.set(ev.pointerId,p);
@@ -346,12 +370,7 @@ function makeGraph(host){
         return;
       }
     }
-    const near=projected.reduce((best,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);return d<15&&(!best||d<best.d)?{d,id:q.n.id}:best},null);
-    const id=near?.id||null;
-    if(hovered!==id){hovered=id;onHover(id?points.find(n=>n.id===id):null)}
-    const edge=id?null:pickLink(p);
-    if(hoveredEdge!==edge){hoveredEdge=edge;onLinkHover(edge)}
-    canvas.style.cursor=id?'pointer':edge?'help':'grab';
+    pointerPosition=p;updateHoverAt(p);
   });
   canvas.addEventListener('pointerup',ev=>{
     const was=drag,multi=ignoreTap||pointers.size>1;
@@ -385,7 +404,7 @@ function makeGraph(host){
   canvas.addEventListener('pointercancel',ev=>{pointers.delete(ev.pointerId);drag=null;pinch=null;ignoreTap=true;canvas.style.cursor='grab'});
   canvas.addEventListener('wheel',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*Math.exp(-ev.deltaY*.001),p.x,p.y)},{passive:false});
   canvas.addEventListener('dblclick',ev=>{ev.preventDefault();if(!options.disableDoubleClickZoom){const p=coordinates(ev);zoomAt(zoom*1.6,p.x,p.y)}});
-  let api={isFallback:true,destroy(){active=false;if(pendingTap!==null)clearTimeout(pendingTap);canvas.remove()},graphData(v){if(v===undefined)return current;current=v;layout();return api},
+  let api={isFallback:true,destroy(){active=false;if(pendingTap!==null)clearTimeout(pendingTap);hoverLabel.remove();canvas.remove()},graphData(v){if(v===undefined)return current;current=v;layout();return api},
     zoomToFit(){
       zoom=1;shiftX=0;shiftY=0;selected=null;
       const focus=points.find(n=>n._focus);
