@@ -151,7 +151,12 @@ function selectComparisonTarget(id){
 }
 function comparisonProjection(db,edges,index){
  const {from,to}=state.comparison;
- const allowed=new Set(db.nodes.filter(n=>n.visibility!=="documentary").map(n=>n.id));
+ // Gli estremi selezionati restano visibili anche quando la loro categoria
+ // è spenta, mentre i nodi intermedi rispettano strettamente i filtri.
+ const allowed=new Set(db.nodes.filter(n=>n.visibility!=="documentary"&&
+   (state.cats.has(n.category)||n.id===from||n.id===to)).map(n=>n.id));
+ const depthLimit=Math.max(1,Math.min(5,Number(state.depth)||1));
+ const maxAllowedHops=depthLimit*2;
  const empty=message=>({nodes:db.nodes.filter(n=>n.id===from||n.id===to),links:[],
    parents:new Map(),distance:new Map([[from,0],[to,0]]),comparison:true,error:message,paths:[],pathCoverage:"none"});
  if(!allowed.has(from)||!allowed.has(to))return empty("Uno dei lemmi non appartiene alla rete musicale.");
@@ -169,7 +174,7 @@ function comparisonProjection(db,edges,index){
    const dist=new Map([[start,0]]),queue=[start];
    for(let i=0;i<queue.length;i++){
      const id=queue[i],d=dist.get(id);
-     if(d>=10)continue;
+     if(d>=maxAllowedHops)continue;
      for(const {to:next} of adj.get(id)||[]){
        if(dist.has(next))continue;
        dist.set(next,d+1);queue.push(next);
@@ -178,17 +183,22 @@ function comparisonProjection(db,edges,index){
    return dist;
  }
  const distFrom=bfs(from),distTo=bfs(to),shortest=distFrom.get(to);
- if(shortest===undefined)return empty("Nessun collegamento documentato trovato entro dieci archi.");
+ if(shortest===undefined)return empty("Nessun percorso con le categorie attive e "+depthLimit+
+   " livello/i per estremo. Amplia i livelli oppure abilita altri tipi di nodo.");
  // TUTTI gli archi che partecipano ad almeno un cammino semplice
  // vicino alla distanza minima. Evita l'enumerazione esponenziale di tutti
  // i cammini del grafo e non riduce la rete a tre esempi.
- const extraHops=3,maxLength=Math.min(10,shortest+extraHops);
+ // Livello 1: al massimo A→X→B; livello 2: al massimo quattro archi.
+ // Escludi inoltre lunghe deviazioni prive di significato esplicativo.
+ const maxLength=Math.min(maxAllowedHops,shortest+1);
  const corridor=new Set([from,to]),corridorEdges=[];
  for(const e of meaningful){
    const da=distFrom.get(e.source),db=distFrom.get(e.target);
    const ta=distTo.get(e.source),tb=distTo.get(e.target);
-   const forward=da!==undefined&&tb!==undefined&&da+1+tb<=maxLength&&da<db;
-   const reverse=db!==undefined&&ta!==undefined&&db+1+ta<=maxLength&&db<da;
+   const forward=da!==undefined&&tb!==undefined&&da+1+tb<=maxLength&&da<db&&
+     da<=depthLimit&&tb<=depthLimit;
+   const reverse=db!==undefined&&ta!==undefined&&db+1+ta<=maxLength&&db<da&&
+     db<=depthLimit&&ta<=depthLimit;
    if(!forward&&!reverse)continue;
    corridor.add(e.source);corridor.add(e.target);corridorEdges.push(e);
  }
@@ -236,7 +246,7 @@ function comparisonProjection(db,edges,index){
  }
  return {nodes:db.nodes.filter(n=>corridor.has(n.id)),links:corridorEdges,parents,
    distance,comparison:true,paths:examplePaths.slice(0,8),shortest,maxLength,
-   pathCoverage:"corridoio",categories,exampleCount:examplePaths.length,
+   pathCoverage:"corridoio",categories,depthLimit,exampleCount:examplePaths.length,
    corridorCount:corridor.size,meaningfulLinkCount:meaningful.length};
 }
 function selectRoot(id){
