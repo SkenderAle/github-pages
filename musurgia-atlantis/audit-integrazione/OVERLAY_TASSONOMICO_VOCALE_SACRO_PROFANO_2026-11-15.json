@@ -1,0 +1,628 @@
+{
+  "schema": "musurgia-vocal-sacred-profane-overlay-v1",
+  "date": "2026-11-15",
+  "status": "IN_REVIEW_STAGING_ONLY_NOT_LOADED",
+  "sources": {
+    "mundi": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "atlantis": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "flaminio": "6f1793f3d8b07469a458c7bbbd768eb8cb37050e"
+  },
+  "notes": [
+    "La ricognizione nominale non equivale a tutte le opere vocali classificate",
+    "Genere e funzione sacra/profana sono dimensioni indipendenti",
+    "La stessa composizione può ricevere più forme/testi/funzioni senza duplicati",
+    "Non caricato nel builder né nell'atlante pubblico",
+    "Evita di creare nuove identità laddove il crosswalk precedente ne contiene già una"
+  ],
+  "crosswalk_identities_preexisting": [
+    "genere-cantata ⇄ senso:cantata",
+    "genere-oratorio ⇄ senso:oratorio",
+    "genere-lied ⇄ senso:lied",
+    "madrigale ⇄ senso:madrigale",
+    "genere-lauda ⇄ senso:lauda"
+  ],
+  "nodes": [
+    {
+      "id": "tax20261115vf::family:sacro",
+      "name": "Repertorio vocale sacro e devozionale",
+      "kind": "famiglia_repertoriale",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::family:profano",
+      "name": "Repertorio vocale profano",
+      "kind": "famiglia_repertoriale",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::family:vocale",
+      "name": "Musica vocale",
+      "kind": "repertorio_trasversale",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:messa",
+      "name": "Messa come composizione musicale",
+      "kind": "genere",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:requiem",
+      "name": "Messa dei defunti / Requiem",
+      "kind": "genere_liturgico",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:mottetto",
+      "name": "Mottetto",
+      "kind": "genere_storico_trasversale",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:passione",
+      "name": "Passione musicale",
+      "kind": "genere_testuale_e_musicale",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:cantata-sacra",
+      "name": "Cantata sacra",
+      "kind": "articolazione_per_funzione_testo",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:cantata-profana",
+      "name": "Cantata profana",
+      "kind": "articolazione_per_funzione_testo",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:oratorio-sacro",
+      "name": "Oratorio sacro",
+      "kind": "articolazione",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:oratorio-profano",
+      "name": "Oratorio profano",
+      "kind": "articolazione",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:lied-voce-pianoforte",
+      "name": "Lied per voce e pianoforte",
+      "kind": "tipologia_di_organico",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:lied-ciclo",
+      "name": "Ciclo di Lieder",
+      "kind": "forma_di_raccolta_opera",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:corale-luterano",
+      "name": "Corale luterano vocale",
+      "kind": "genere_prassi",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:preludio-corale-organo",
+      "name": "Preludio corale per organo",
+      "kind": "forma_strumentale_da_tema_vocale",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:magnificat",
+      "name": "Magnificat",
+      "kind": "genere_testuale_liturgico",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:madrigale-trecento",
+      "name": "Madrigale trecentesco",
+      "kind": "genere_storico",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:madrigale-cinquecento",
+      "name": "Madrigale cinquecentesco",
+      "kind": "genere_storico",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:chanson",
+      "name": "Chanson",
+      "kind": "famiglia_storica_vocale",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:ballata-trecento",
+      "name": "Ballata italiana trecentesca",
+      "kind": "genere_storico",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:inno-civico",
+      "name": "Inno civico e politico",
+      "kind": "genere_di_funzione",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:mottetto-medievale",
+      "name": "Mottetto medievale",
+      "kind": "genere_storico",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:mottetto-rinascimentale",
+      "name": "Mottetto polifonico rinascimentale",
+      "kind": "genere_storico",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115vf::genre:mottetto-barocco",
+      "name": "Mottetto barocco e concerto sacro",
+      "kind": "famiglia_storica_da_specificare",
+      "status": "PROPOSED_STAGING_ONLY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "vf20261115:001",
+      "source": "mundi::genere-messa",
+      "target": "tax20261115vf::genre:messa",
+      "relation": "canonical_role_alignment",
+      "rationale": "Identità musicale distinta dal rito liturgico della Messa",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:002",
+      "source": "tax20261115vf::genre:messa",
+      "target": "tax20261115vf::family:sacro",
+      "relation": "member_of_repertoire",
+      "rationale": "Collocazione sacrale per genere e testo, distinguere impiego concertistico",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:003",
+      "source": "tax20261115vf::genre:requiem",
+      "target": "tax20261115vf::genre:messa",
+      "relation": "historical_liturgical_specialization",
+      "rationale": "Messa dei defunti come sottotipo liturgico; il War Requiem ha anche testi non liturgici e specificità proprie",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:004",
+      "source": "atlantis::opera:beethoven-missa-solemnis-op123",
+      "target": "tax20261115vf::genre:messa",
+      "relation": "work_has_genre",
+      "rationale": "Missa solemnis op.123",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:005",
+      "source": "atlantis::opera:britten-war-requiem-op66-1962",
+      "target": "tax20261115vf::genre:requiem",
+      "relation": "work_uses_requiem_tradition",
+      "rationale": "War Requiem: interpolazione poesie di Wilfred Owen; non esclusivamente semplice Messa rituale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:006",
+      "source": "atlantis::opera:victoria-officium-defunctorum-1605",
+      "target": "tax20261115vf::genre:requiem",
+      "relation": "contains_requiem_component",
+      "rationale": "Officium defunctorum è ufficio e messa, non soltanto singola messa",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:007",
+      "source": "atlantis::opera:messe-notre-dame",
+      "target": "tax20261115vf::genre:messa",
+      "relation": "work_has_genre",
+      "rationale": "Messa polifonica trecentesca",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:008",
+      "source": "atlantis::opera:missa-papae-marcelli",
+      "target": "tax20261115vf::genre:messa",
+      "relation": "work_has_genre",
+      "rationale": "Messa rinascimentale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:009",
+      "source": "mundi::genere-mottetto",
+      "target": "tax20261115vf::genre:mottetto",
+      "relation": "canonical_role_alignment",
+      "rationale": "Distinguere famiglia storica da singoli sottotipi",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:010",
+      "source": "tax20261115vf::genre:mottetto",
+      "target": "tax20261115vf::family:vocale",
+      "relation": "member_of_repertoire",
+      "rationale": "Genere vocale con usi sacri e civici anche storici, non sempre esclusivamente liturgico",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:011",
+      "source": "tax20261115vf::genre:mottetto-medievale",
+      "target": "tax20261115vf::genre:mottetto",
+      "relation": "historical_specialization",
+      "rationale": "Storia del genere, non dedurre una gerarchia filogenetica lineare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:012",
+      "source": "atlantis::senso:motetto-medievale",
+      "target": "tax20261115vf::genre:mottetto-medievale",
+      "relation": "candidate_taxonomic_alignment",
+      "rationale": "La denominazione di Atlantis comprende contesto e forme vicine: non fondere senza qualifiche",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:013",
+      "source": "tax20261115vf::genre:mottetto-rinascimentale",
+      "target": "tax20261115vf::genre:mottetto",
+      "relation": "historical_specialization",
+      "rationale": "Storia del genere, non dedurre una gerarchia filogenetica lineare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:014",
+      "source": "atlantis::senso:motetto-rinascimentale",
+      "target": "tax20261115vf::genre:mottetto-rinascimentale",
+      "relation": "candidate_taxonomic_alignment",
+      "rationale": "La denominazione di Atlantis comprende contesto e forme vicine: non fondere senza qualifiche",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:015",
+      "source": "tax20261115vf::genre:mottetto-barocco",
+      "target": "tax20261115vf::genre:mottetto",
+      "relation": "historical_specialization",
+      "rationale": "Storia del genere, non dedurre una gerarchia filogenetica lineare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:016",
+      "source": "atlantis::senso:motetto-barocco",
+      "target": "tax20261115vf::genre:mottetto-barocco",
+      "relation": "candidate_taxonomic_alignment",
+      "rationale": "La denominazione di Atlantis comprende contesto e forme vicine: non fondere senza qualifiche",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:017",
+      "source": "atlantis::opera:dufay-nuper-rosarum-flores-1436",
+      "target": "tax20261115vf::genre:mottetto-rinascimentale",
+      "relation": "work_has_historical_genre",
+      "rationale": "Mottetto occasionale nel primo Quattrocento, precisione periodizzazione da verificare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:018",
+      "source": "atlantis::opera:isaac-quis-dabit-capiti-meo-1492",
+      "target": "tax20261115vf::genre:mottetto-rinascimentale",
+      "relation": "work_has_historical_genre",
+      "rationale": "Mottetto funebre",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:019",
+      "source": "tax20261115vf::genre:passione",
+      "target": "tax20261115vf::family:sacro",
+      "relation": "member_of_repertoire",
+      "rationale": "Testo evangelico e forme musicali variabili",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:020",
+      "source": "tax20261115vf::genre:passione",
+      "target": "mundi::genere-oratorio",
+      "relation": "historically_related_not_identity",
+      "rationale": "Passione-oratorio può combinare caratteristiche, ma Passione e Oratorio non sono sinonimi",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:021",
+      "source": "flaminio::audit:fl01:jsb04:genre:passione",
+      "target": "tax20261115vf::genre:passione",
+      "relation": "candidate_alignment",
+      "rationale": "Passioni secondo Giovanni e Matteo; varianti documentarie distinte",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:022",
+      "source": "atlantis::opera:passione-matteo",
+      "target": "tax20261115vf::genre:passione",
+      "relation": "work_has_genre",
+      "rationale": "Passione secondo Matteo, collegamento distintivo",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:023",
+      "source": "tax20261115vf::genre:cantata-sacra",
+      "target": "mundi::genere-cantata",
+      "relation": "function_classification",
+      "rationale": "Radice Cantata già riconciliata fra Mundi/Atlantis",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:024",
+      "source": "tax20261115vf::genre:cantata-profana",
+      "target": "mundi::genere-cantata",
+      "relation": "function_classification",
+      "rationale": "Il genere non implica uso sacro",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:025",
+      "source": "tax20261115vf::genre:cantata-sacra",
+      "target": "tax20261115vf::family:sacro",
+      "relation": "member_of_repertoire",
+      "rationale": "Cantata su testo sacro / liturgica",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:026",
+      "source": "tax20261115vf::genre:cantata-profana",
+      "target": "tax20261115vf::family:profano",
+      "relation": "member_of_repertoire",
+      "rationale": "Cantata di corte, congratulazione, occasionale, ecc.",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:027",
+      "source": "tax20261115vf::genre:oratorio-sacro",
+      "target": "mundi::genere-oratorio",
+      "relation": "qualified_subtype",
+      "rationale": "Oratorio a soggetto sacro",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:028",
+      "source": "tax20261115vf::genre:oratorio-profano",
+      "target": "mundi::genere-oratorio",
+      "relation": "qualified_subtype",
+      "rationale": "Oratorio di soggetto profano",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:029",
+      "source": "atlantis::opera:handel-messiah-hwv56",
+      "target": "tax20261115vf::genre:oratorio-sacro",
+      "relation": "work_has_genre",
+      "rationale": "Messiah, HWV 56, oratorio con fonte testuale scritturale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:030",
+      "source": "atlantis::opera:haydn-die-schoepfung-1798",
+      "target": "tax20261115vf::genre:oratorio-sacro",
+      "relation": "work_has_genre",
+      "rationale": "La Creazione: testo biblico e poetico, lingue/versioni da preservare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:031",
+      "source": "tax20261115vf::genre:lied-voce-pianoforte",
+      "target": "mundi::genere-lied",
+      "relation": "instrumentation_subtype",
+      "rationale": "Una frequentissima destinazione, non definizione esclusiva del Lied",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:032",
+      "source": "tax20261115vf::genre:lied-ciclo",
+      "target": "mundi::genere-lied",
+      "relation": "collection_form_related",
+      "rationale": "Ciclo di Lieder come entità composita con singoli pezzi: non genere parallelo al Lied",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:033",
+      "source": "atlantis::opera:an-die-ferne-geliebte-op98",
+      "target": "tax20261115vf::genre:lied-ciclo",
+      "relation": "work_has_collection_form",
+      "rationale": "Ciclo di Beethoven op98",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:034",
+      "source": "atlantis::opera:schubert-erlkoenig-d328",
+      "target": "mundi::genere-lied",
+      "relation": "work_has_genre",
+      "rationale": "Lied D328 distinto da cicli",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:035",
+      "source": "tax20261115vf::genre:corale-luterano",
+      "target": "tax20261115vf::family:sacro",
+      "relation": "member_of_repertoire",
+      "rationale": "Corale vocale liturgico e comunitario",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:036",
+      "source": "atlantis::senso:corale",
+      "target": "tax20261115vf::genre:corale-luterano",
+      "relation": "qualified_alignment",
+      "rationale": "Atlantis comprende anche tradizione protestante e pratiche di trasmissione",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:037",
+      "source": "tax20261115vf::genre:preludio-corale-organo",
+      "target": "tax20261115vf::genre:corale-luterano",
+      "relation": "based_on_chorale_not_subtype",
+      "rationale": "Forma strumentale basata su corale, NON tipo di musica vocale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:038",
+      "source": "tax20261115vf::genre:magnificat",
+      "target": "tax20261115vf::family:sacro",
+      "relation": "member_of_repertoire",
+      "rationale": "Testo biblico Cantico di Maria, intonazioni vocali e strumentali",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:039",
+      "source": "flaminio::audit:fl01:jsb04:genre:magnificat",
+      "target": "tax20261115vf::genre:magnificat",
+      "relation": "candidate_alignment",
+      "rationale": "Genere Magnificat liturgico nel Lotto 1",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:040",
+      "source": "tax20261115vf::genre:madrigale-trecento",
+      "target": "mundi::madrigale",
+      "relation": "historical_specialization",
+      "rationale": "Madrigale trecentesco italiano non coincide pienamente col cinquecentesco",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:041",
+      "source": "tax20261115vf::genre:madrigale-cinquecento",
+      "target": "mundi::madrigale",
+      "relation": "historical_specialization",
+      "rationale": "Madrigale cinquecentesco con prassi e poetica distinte",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:042",
+      "source": "atlantis::senso:madrigale-trecentesco",
+      "target": "tax20261115vf::genre:madrigale-trecento",
+      "relation": "candidate_alignment",
+      "rationale": "Madrigale del Trecento in Atlantis",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:043",
+      "source": "atlantis::senso:madrigale-cinquecentesco",
+      "target": "tax20261115vf::genre:madrigale-cinquecento",
+      "relation": "candidate_alignment",
+      "rationale": "Madrigale del Cinquecento in Atlantis",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:044",
+      "source": "tax20261115vf::genre:chanson",
+      "target": "tax20261115vf::family:profano",
+      "relation": "member_of_repertoire_qualified",
+      "rationale": "Genere storico francese, non ogni chanson è profana",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:045",
+      "source": "mundi::genere-chanson",
+      "target": "tax20261115vf::genre:chanson",
+      "relation": "canonical_role_alignment",
+      "rationale": "Radice Mundi conservata",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:046",
+      "source": "tax20261115vf::genre:ballata-trecento",
+      "target": "tax20261115vf::family:profano",
+      "relation": "member_of_repertoire",
+      "rationale": "Ballata italiana del Trecento come specifico genere storico",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:047",
+      "source": "mundi::ballata-italiana-trecento",
+      "target": "tax20261115vf::genre:ballata-trecento",
+      "relation": "candidate_historical_alignment",
+      "rationale": "Non sinonimo di qualunque ballata storica",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:048",
+      "source": "tax20261115vf::genre:inno-civico",
+      "target": "tax20261115vf::family:profano",
+      "relation": "function_and_repertoire",
+      "rationale": "Categoria funzionale: l'inno può essere sacro, civico, politico",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:049",
+      "source": "atlantis::senso:inno",
+      "target": "tax20261115vf::genre:inno-civico",
+      "relation": "qualified_alignment",
+      "rationale": "Il nodo Atlantis è inno politico e canto civico",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "vf20261115:050",
+      "source": "atlantis::opera:inno-italiani",
+      "target": "tax20261115vf::genre:inno-civico",
+      "relation": "work_has_function",
+      "rationale": "Canto degli Italiani opera specifica",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    }
+  ],
+  "holds": [
+    {
+      "edge": "vf20261115:038",
+      "reason": "ID da controllare: NON promuovere nodo inesistente"
+    }
+  ]
+}
