@@ -544,7 +544,7 @@ function draw(){
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
  $("graphSummary").textContent=comparing
-  ?visibleTitle(state.comparison.from)+" ↔ "+visibleTitle(state.comparison.to)+" · "+(filtered.paths?.length||0)+" percorsi · "+nodes.length+" nodi · "+links.length+" archi"
+  ?visibleTitle(state.comparison.from)+" ↔ "+visibleTitle(state.comparison.to)+" · rete dei percorsi pertinenti · "+nodes.length+" nodi · "+links.length+" archi"
   :overview
     ?"Nebulosa completa · "+nodes.length+" nodi musicali · "+links.length+" archi"
     :state.focus
@@ -568,12 +568,19 @@ function draw(){
    const panel=$("detail");panel.replaceChildren();
    panel.append(make("p",visibleTitle(state.comparison.from)+" ↔ "+visibleTitle(state.comparison.to),"reason"));
    if(filtered.error)panel.append(make("p",filtered.error,"bad"));
-   else for(const [i,path] of (filtered.paths||[]).entries()){
+   else {
+     panel.append(make("p","Rete pertinente: "+nodes.length+" nodi e "+links.length+
+       " archi, su percorsi fino a "+filtered.maxLength+" passaggi. Sono mostrate le relazioni, non soltanto i primi percorsi trovati.","meta"));
+     const groups=Object.entries(filtered.categories||{}).filter(([,count])=>count>0);
+     if(groups.length)panel.append(make("p","Categorie coinvolte: "+groups.map(([cat,count])=>categoryName(cat)+" "+count).join(" · "),"meta"));
+     panel.append(make("h2","Alcuni percorsi di esempio — non esaustivi"));
+     for(const [i,path] of (filtered.paths||[]).entries()){
      panel.append(make("h2","Percorso "+(i+1)+" · "+path.links.length+" archi"));
      for(let j=0;j<path.links.length;j++){
        const item=make("div",visibleTitle(path.path[j])+" → "+visibleTitle(path.path[j+1])+"\n"+edgeReason(path.links[j]),"reason");
        item.style.whiteSpace="pre-wrap";panel.append(item);
      }
+   }
    }
  }else if(active)showNode(active);
  else {$("detailTitle").textContent="Relazioni del nodo";$("detail").textContent="Seleziona un nodo per esplorarlo. La nebulosa mostra tutte le entità musicali abilitate dai filtri.";}
