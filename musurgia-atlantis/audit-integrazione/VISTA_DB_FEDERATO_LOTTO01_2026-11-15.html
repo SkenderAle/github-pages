@@ -226,7 +226,17 @@ function showNode(n){
  const h=$("detail");h.replaceChildren();
  h.append(make("p",categoryName(n.category)+(n.subtype?" · "+n.subtype:""),"meta"));
  const d=state.distances.get(n.id);
- if(d!==undefined)h.append(make("p",d===0?"Radice della ricerca":"Distanza dalla radice: "+d+" archi","meta"));
+ if(d!==undefined)h.append(make("p",d===0?(state.focus?"Centro di esplorazione attuale":"Radice della ricerca"):"Distanza dal centro attuale: "+d+" archi","meta"));
+ if(state.trail.length>1){
+   h.append(make("h2","Percorso conservato"));
+   const nav=make("div",null,"reason");nav.style.display="flex";nav.style.flexWrap="wrap";nav.style.gap="5px";
+   state.trail.forEach((id,i)=>{
+     const btn=make("button",visibleTitle(id));
+     btn.title=i===0?"Autore o radice originaria":"Torna a questo livello";
+     btn.onclick=()=>selectSubnode(id);nav.append(btn);
+     if(i<state.trail.length-1)nav.append(make("span","→"));
+   });h.append(nav);
+ }
  if(d>0){
    const path=[],seen=new Set();let pos=n.id;
    while(pos!==state.root&&state.parents.has(pos)&&!seen.has(pos)){seen.add(pos);const p=state.parents.get(pos);path.unshift({from:p.from,to:pos,edge:p.edge});pos=p.from}
@@ -324,6 +334,7 @@ function rootedProjection(db){
      if(e)focusParents.set(trail[i],{from:trail[i-1],edge:e});
      if(!focusDistance.has(trail[i]))focusDistance.set(trail[i],trail.length-1-i);
    }
+   for(let i=0;i<trail.length-1;i++)focusDistance.set(trail[i],trail.length-1-i);
    const frontier=[center],visited=new Set(trail);
    const isPeriod=(root?.provenance||[]).some(p=>p.payload?.type==="periodo");
    for(let depth=1;depth<=state.depth;depth++){
