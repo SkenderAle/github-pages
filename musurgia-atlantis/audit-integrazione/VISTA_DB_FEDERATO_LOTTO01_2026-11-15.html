@@ -312,6 +312,54 @@ function rootedProjection(db){
    if(n.category==="opere"&&to.category==="opere")return parts.test(e.relation||"")||!/menziona|condivide|rimanda/i.test(e.relation||"");
    return true;
  }
+ // La radice storica rimane fissata; il selettore Profondita' misura
+ // invece la distanza dal nodo centrale ATTUALE (ultimo clic).
+ if(state.focus&&index.has(state.focus)&&state.focus!==state.root){
+   const center=state.focus,trail=state.trail.length?state.trail:[state.root,center];
+   const pathIds=new Set(trail),pathEdges=new Set(state.trailEdges);
+   const included=new Set(trail),focusParents=new Map(),focusDistance=new Map([[center,0]]);
+   const byEdgeId=new Map(edges.map(e=>[e.id,e]));
+   for(let i=1;i<trail.length;i++){
+     const e=byEdgeId.get(state.trailEdges[i-1]);
+     if(e)focusParents.set(trail[i],{from:trail[i-1],edge:e});
+     if(!focusDistance.has(trail[i]))focusDistance.set(trail[i],trail.length-1-i);
+   }
+   const frontier=[center],visited=new Set(trail);
+   const isPeriod=(root?.provenance||[]).some(p=>p.payload?.type==="periodo");
+   for(let depth=1;depth<=state.depth;depth++){
+     const next=[];
+     for(const from of frontier){
+       const n=index.get(from);
+       if(!n||isChapter(n)||n.visibility==="documentary")continue;
+       for(const {id:toId,e} of adj.get(from)||[]){
+         const to=index.get(toId);
+         if(!to||to.visibility==="documentary"||visited.has(toId)||generic.test(e.relation||""))continue;
+         // I nodi a monte sono memoria del percorso, non nuovi centri di
+         // espansione. Le forme non devono richiamare altri compositori.
+         if(pathIds.has(toId))continue;
+         if(root?.category==="persone"&&to.category==="persone"&&toId!==state.root)continue;
+         if(isPeriod&&to.category==="persone"&&toId!==state.root)continue;
+         if(isChapter(to)&&depth>1)continue;
+         if(depth>1&&!pass(n,to,e,depth-1))continue;
+         visited.add(toId);included.add(toId);focusDistance.set(toId,depth);
+         focusParents.set(toId,{from,edge:e});next.push(toId);
+       }
+     }
+     // Primo livello: tutti gli archi pertinenti; a profondita' maggiori
+     // i nodi gia' visualizzati restano, ma niente espansione non radicata.
+     frontier.splice(0,frontier.length,...next);
+     if(!frontier.length)break;
+   }
+   const nodes=db.nodes.filter(n=>included.has(n.id)&&n.visibility!=="documentary"&&
+     (pathIds.has(n.id)||show.has(n.category)));
+   const permitted=new Set(nodes.map(n=>n.id));
+   const links=edges.filter(e=>permitted.has(e.source)&&permitted.has(e.target)&&
+     (pathEdges.has(e.id)||focusParents.get(e.source)?.edge?.id===e.id||
+      focusParents.get(e.target)?.edge?.id===e.id));
+   const hasTaxonomyPath=trail.some(id=>id!==state.root&&id!==center&&index.get(id)?.category==="generi_forme");
+   return {nodes,links,parents:focusParents,distance:focusDistance,focused:true,center,hasTaxonomyPath,
+     historicalTrail:trail};
+ }
  for(let qi=0;qi<queue.length;qi++){
    const id=queue[qi],d=distance.get(id),n=index.get(id);
    if(d>=state.depth||!canExpand(n,d))continue;
@@ -324,79 +372,6 @@ function rootedProjection(db){
  // Mantenere i nodi intermedi indispensabili per spiegare i percorsi filtrati.
  for(const [id,d] of distance){if(id!==state.root&&!show.has(index.get(id)?.category))continue;
    let p=id;while(p&&!selected.has(p)){selected.add(p);p=parents.get(p)?.from}
- }
- // Un clic non sposta la radice: crea una sottovista lungo i percorsi
- // documentati radice -> nodo e conserva i suoi vicini di primo livello.
- // I sottogeneri sono ponti validi; una forma condivisa NON permette
- // di includere altri compositori e tutte le loro opere.
- if(state.focus&&index.has(state.focus)&&state.focus!==state.root){
-   const goal=state.focus;
-   const maxLength=Math.max(4,Math.min(7,state.depth+3));
-   const found=[],stack=[{id:state.root,path:[state.root],links:[]}];
-   let examined=0;
-   while(stack.length&&examined++<16000&&found.length<18){
-     const cur=stack.pop();
-     if(cur.id===goal){found.push(cur);continue}
-     if(cur.links.length>=maxLength)continue;
-     const options=(adj.get(cur.id)||[]).filter(({id,e})=>{
-       const n=index.get(id);
-       if(!n||n.visibility==="documentary"||cur.path.includes(id))return false;
-       if(generic.test(e.relation||"")&&cur.links.length>0)return false;
-       // Solo la radice e il bersaglio possono essere persone o composizioni.
-       // Così Mozart -> Opera -> Dramma giocoso -> Don Giovanni
-       // non apre automaticamente tutta l'opera di Mozart.
-       if(id!==goal&&id!==state.root&&(n.category==="persone"||n.category==="opere"||isChapter(n)))return false;
-       if((root?.provenance||[]).some(p=>p.payload?.type==="periodo")&&id!==goal&&n.category==="persone")return false;
-       return true;
-     }).sort((a,b)=>{
-       const score=id=>id===goal?10:index.get(id)?.category==="generi_forme"?5:0;
-       return score(a.id)-score(b.id);
-     });
-     for(const opt of options)stack.push({id:opt.id,path:[...cur.path,opt.id],links:[...cur.links,opt.e]});
-   }
-   // Conservarne diversi quando sono musicalmente pertinenti: una
-   // relazione diretta e il passaggio attraverso le forme possono coesistere.
-   found.sort((a,b)=>{
-     const score=p=>p.path.slice(1,-1).filter(id=>index.get(id)?.category==="generi_forme").length*3-p.links.length;
-     return score(b)-score(a)||a.links.length-b.links.length;
-   });
-   const chosenPaths=found.slice(0,6);
-   const focusIds=new Set([state.root,goal]),focusEdges=new Set(),focusParents=new Map(),focusDistance=new Map([[state.root,0]]);
-   for(const route of chosenPaths){
-     route.path.forEach((id,i)=>{
-       focusIds.add(id);
-       if(!focusDistance.has(id)||i<focusDistance.get(id))focusDistance.set(id,i);
-       if(i>0){
-         focusEdges.add(route.links[i-1].id);
-         if(!focusParents.has(id))focusParents.set(id,{from:route.path[i-1],edge:route.links[i-1]});
-       }
-     });
-   }
-   // Se il percorso era stato raggiunto dall'esploratore corrente,
-   // resta leggibile anche se il filtro tassonomico non offre alternative.
-   if(!chosenPaths.length&&parents.has(goal)){
-     let here=goal,guard=0;
-     while(here!==state.root&&parents.has(here)&&guard++<12){
-       const p=parents.get(here);focusIds.add(here);focusIds.add(p.from);
-       focusEdges.add(p.edge.id);focusParents.set(here,p);
-       here=p.from;
-     }
-   }
-   // Espansione di UN SOLO livello intorno al nodo selezionato.
-   // Evitare vecchi rami della radice: rimane visibile solo la catena.
-   for(const {id,e} of adj.get(goal)||[]){
-     const n=index.get(id);
-     if(!n||n.visibility==="documentary"||!show.has(n.category))continue;
-     if(generic.test(e.relation||""))continue;
-     focusIds.add(id);focusEdges.add(e.id);
-     if(!focusDistance.has(id))focusDistance.set(id,(focusDistance.get(goal)??1)+1);
-     if(!focusParents.has(id)&&id!==state.root)focusParents.set(id,{from:goal,edge:e});
-   }
-   const nodes=db.nodes.filter(n=>focusIds.has(n.id)&&n.visibility!=="documentary");
-   const allowed=new Set(nodes.map(n=>n.id));
-   const links=edges.filter(e=>focusEdges.has(e.id)&&allowed.has(e.source)&&allowed.has(e.target));
-   const hasTaxonomyPath=chosenPaths.some(route=>route.path.slice(1,-1).some(id=>index.get(id)?.category==="generi_forme"));
-   return {nodes,links,parents:focusParents,distance:focusDistance,focused:true,paths:chosenPaths.length,hasTaxonomyPath};
  }
  const nodes=db.nodes.filter(n=>selected.has(n.id)&&n.visibility!=="documentary");
  const allowed=new Set(nodes.map(n=>n.id));
@@ -431,16 +406,16 @@ function draw(){
  try{filtered=rootedProjection(state.db)}catch(e){status("Errore proiezione: "+e.message,true);return}
  state.parents=filtered.parents;state.distances=filtered.distance;
  const overview=!!filtered.overview;
- const nodes=filtered.nodes.map(n=>({...n,_focus:!overview&&n.id===state.root,_depth:filtered.distance.get(n.id)??0,
+ const nodes=filtered.nodes.map(n=>({...n,_focus:!overview&&n.id===(state.focus||state.root),_depth:filtered.distance.get(n.id)??0,
    _overview:overview,_label:!overview&&(state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))}));
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
  $("graphSummary").textContent=overview
   ?"Nebulosa completa · "+nodes.length+" nodi musicali · "+links.length+" archi"
   :state.focus
-    ?"Percorso: "+visibleTitle(state.root)+" → "+visibleTitle(state.focus)+" · "+nodes.length+" nodi · "+links.length+" archi"
+    ?"Percorso: "+state.trail.map(visibleTitle).join(" → ")+" · "+state.depth+" livelli dal centro · "+nodes.length+" nodi · "+links.length+" archi"
     :nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+visibleTitle(state.root);
- $("backFocus").disabled=!state.focusHistory.length;
+ $("backFocus").disabled=state.trail.length<=1;
  $("showAll").disabled=overview;
  $("visibleCount").textContent=nodes.length+" nodi visibili ("+links.length+" relazioni)";
  const h=$("visibleList");h.replaceChildren();
