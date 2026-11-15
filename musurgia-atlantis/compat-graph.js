@@ -349,7 +349,7 @@ function makeGraph(host){
         pendingTap=setTimeout(()=>{
           pendingTap=null;const tap=lastTap;lastTap=null;
           if(tap)onNode(points.find(n=>n.id===tap.id)||near.n);
-        },275);
+        },385);
       }
     }else {const edge=pickLink(p);if(edge)onLink(edge);else onBackground()}
   });
