@@ -52,7 +52,7 @@ main.details-collapsed #detailsPanel{display:none}
  #detailsPanel{grid-column:1 / -1;min-height:260px;max-height:46dvh;border-top:1px solid var(--edge)}}
 @media(max-width:640px){header{padding:10px}h1{font-size:18px}main,main.details-collapsed{display:flex;flex-direction:column;height:auto}aside:first-child{order:2;max-height:none}section{order:1;height:58dvh;min-height:390px;flex:none}#detailsPanel{order:3;max-height:none}.graphbar{top:6px;left:6px;right:6px;gap:5px}.graphbar button{font-size:12px}}
 </style>
-<script src="../compat-graph.js?v=doubleclick-restart-20261115"></script>
+<script src="../compat-graph.js?v=labels-respect-filters-20261115"></script>
 </head>
 <body>
 <header><div><h1>Musurgia Mundi – Atlantis · rete unificata</h1><p>Staging non distruttivo · Mundi + Atlantis riuniti · 500 schede Flaminio</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle sorgenti…</div></header>
@@ -615,7 +615,7 @@ function graphInstance(){
  state.graph=g.backgroundColor("#07131e").nodeColor(n=>n._compareEndpoint?"#ffdc76":colors[n.category]||"#c9d5dd")
   .linkColor(e=>e.visibility==="documentary"?"#526773":"#558093")
   .nodeVal(n=>n._compareEndpoint?12:n.id===state.root?8:n.id===state.focus?7:3)
-  .nodeLabel(n=>state.comparison||n.id===state.root||n.id===state.focus||state.labels.has(n.category)?n.name:"")
+  .nodeLabel(n=>state.labels.has(n.category)?n.name:"")
   .onNodeClick(n=>handleGraphClick(n));
  if(typeof g.onNodeDblClick==="function")g.onNodeDblClick(n=>restartFromNode(n.id));
  if(typeof g.onNodeDragEnd==="function")g.onNodeDragEnd(recordNodePosition);
@@ -644,7 +644,7 @@ function draw(){
      _depth:filtered.distance.get(n.id)??0,
      ...(manuallyPlaced?{fx:manuallyPlaced.x,fy:manuallyPlaced.y,fz:manuallyPlaced.z}:
        center?{fx:0,fy:0,fz:0}:pairX!==null?{fx:pairX,fy:0,fz:0}:{}) ,
-     _overview:overview,_label:!overview&&(comparing?true:state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))};
+     _overview:overview,_label:!overview&&state.labels.has(n.category)};
  });
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
