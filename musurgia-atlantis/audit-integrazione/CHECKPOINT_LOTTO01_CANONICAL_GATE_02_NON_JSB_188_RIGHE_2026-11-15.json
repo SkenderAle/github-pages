@@ -1,0 +1,4128 @@
+{
+  "schema": "musurgia-atlantis-lot01-canonical-gate-02-non-JSB-188-v1",
+  "date": "2026-11-15",
+  "baseline_commit": "f04c4565007d70a0bae626064828847162f016c4",
+  "source_staging": "STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_2026-11-14.json",
+  "prior_gate": "CHECKPOINT_LOTTO01_CANONICAL_GATE_01_CROSSWALK_2026-11-15.json",
+  "status": "188_188_NON_JSB_SOURCE_LINKS_AUDITED_GLOBALLY_CANONICAL_GATE_NOT_CLOSED",
+  "metrics": {
+    "source_rows_non_JSB": 188,
+    "authors": 9,
+    "one_documentary_identity_edge": 188,
+    "zero_documentary_edges": 0,
+    "multiple_documentary_edges": 0,
+    "distinct_documentary_identity_ids": 184,
+    "shared_id_groups": 4,
+    "source_rows_on_shared_ids": 8,
+    "BBB_prior_legacy_ids_reused": 3,
+    "alfano_cpe_reconciliation_rows": 63,
+    "historical_manifest38_entries": 24,
+    "historical_manifest42_entries": 39,
+    "direct_source_row_overlap_with_manifests38_42": 0,
+    "production_identity_merges": 0,
+    "real_browser_tests": 0
+  },
+  "author_breakdown": [
+    {
+      "author": "BARTÓK, Béla",
+      "source_rows": 43,
+      "distinct_work_refs": 43
+    },
+    {
+      "author": "ALFANO, Franco",
+      "source_rows": 41,
+      "distinct_work_refs": 41
+    },
+    {
+      "author": "BEETHOVEN, Ludwig van",
+      "source_rows": 41,
+      "distinct_work_refs": 41
+    },
+    {
+      "author": "BACH, Carl Philipp Emanuel",
+      "source_rows": 22,
+      "distinct_work_refs": 22
+    },
+    {
+      "author": "ALBINONI, Tomaso",
+      "source_rows": 20,
+      "distinct_work_refs": 16
+    },
+    {
+      "author": "BARBER, Samuel",
+      "source_rows": 12,
+      "distinct_work_refs": 12
+    },
+    {
+      "author": "BEACH, Amy",
+      "source_rows": 5,
+      "distinct_work_refs": 5
+    },
+    {
+      "author": "ALBÉNIZ, Isaac",
+      "source_rows": 3,
+      "distinct_work_refs": 3
+    },
+    {
+      "author": "BACH, Johann Christoph Friedrich",
+      "source_rows": 1,
+      "distinct_work_refs": 1
+    }
+  ],
+  "shared_documentary_work_refs": [
+    {
+      "id": "audit:fl01:work:albinoni-pimpinone",
+      "name": "Vespetta e Pimpinone",
+      "rows": [
+        78,
+        401
+      ],
+      "policy": "ONE_CANONICAL_WORK_TWO_ORIGINAL_SOURCE_HEADINGS"
+    },
+    {
+      "id": "audit:fl01:work:albinoni-astarto",
+      "name": "Astarto",
+      "rows": [
+        87,
+        345
+      ],
+      "policy": "ONE_CANONICAL_WORK_TWO_ORIGINAL_SOURCE_HEADINGS"
+    },
+    {
+      "id": "audit:fl01:work:albinoni-incostanza",
+      "name": "L'incostanza schernita",
+      "rows": [
+        95,
+        389
+      ],
+      "policy": "ONE_CANONICAL_WORK_TWO_ORIGINAL_SOURCE_HEADINGS"
+    },
+    {
+      "id": "audit:fl01:work:albinoni-statira",
+      "name": "Statira",
+      "rows": [
+        98,
+        399
+      ],
+      "policy": "ONE_CANONICAL_WORK_TWO_ORIGINAL_SOURCE_HEADINGS"
+    }
+  ],
+  "proposed_existing_production_crosswalks_not_promoted": [
+    {
+      "source_row": 4292,
+      "stage_id": "audit:fl01:bbb:work:excel4292",
+      "production_id": "opera:bartok-musica-archi-percussioni-celesta-1936",
+      "matched_catalogue": "BB114 / Sz106",
+      "type": "SAME_COMPOSITION_CANDIDATE",
+      "source_url": "https://imslp.org/wiki/Music%20for%20Strings%2C%20Percussion%20and%20Celesta%2C%20Sz.106%20%28Bart%C3%B3k%2C%20B%C3%A9la%29",
+      "approved_merge": false
+    },
+    {
+      "source_row": 4280,
+      "stage_id": "audit:fl01:bbb:work:excel4280",
+      "production_id": "opera:mandarino-suite-1927",
+      "type": "SAME_CONCERT_SUITE_CANDIDATE_NOT_WHOLE_BALLET",
+      "pantomime_different_source_row": 4274,
+      "source_url": "https://www.berliner-philharmoniker.de/en/programme-notes/bela-bartok-the-miraculous-mandarin-suite-sz-73/",
+      "approved_merge": false
+    }
+  ],
+  "critical_gates": [
+    {
+      "severity": "P0",
+      "subject": "ALBINONI duplicate source headings",
+      "rows": [
+        78,
+        401,
+        87,
+        345,
+        95,
+        389,
+        98,
+        399
+      ],
+      "decision": "4 pairs already share work IDs; do not create 8 separate works"
+    },
+    {
+      "severity": "P0",
+      "subject": "CPE alias crosswalk",
+      "rows": [
+        575,
+        576,
+        577,
+        579,
+        581,
+        584,
+        585,
+        606,
+        608,
+        609,
+        612,
+        614,
+        616,
+        618,
+        619,
+        620,
+        621,
+        622,
+        623,
+        627,
+        628,
+        629,
+        630,
+        631,
+        633,
+        634,
+        636,
+        638,
+        639,
+        642,
+        645,
+        647,
+        653,
+        654,
+        656,
+        667,
+        668,
+        673,
+        678,
+        680,
+        681,
+        894,
+        1097,
+        1117,
+        1118,
+        1124,
+        1133,
+        1143,
+        1149,
+        1152,
+        1167,
+        1178,
+        1197,
+        1219,
+        1306,
+        1309,
+        1651,
+        1996,
+        2000,
+        2001,
+        2004,
+        2005,
+        2024
+      ],
+      "decision": "41 Alfano + 22 CPE sources already tied to existing 63 identity refs; 22 later H-id proposals are aliases, not new works"
+    },
+    {
+      "severity": "P0",
+      "subject": "CPE Wq43",
+      "rows": [
+        1143
+      ],
+      "decision": "Correct provisional parent label Sonatine Wq 43 to Six concerti per cembalo concertato, Wq43; keep raw evidence and never fabricate five additional concertos"
+    },
+    {
+      "severity": "P0",
+      "subject": "CPE H657/H666",
+      "rows": [
+        2004,
+        2005
+      ],
+      "decision": "Two distinct G major symphonies, Wq182/1 and Wq183/4; no title merge"
+    },
+    {
+      "severity": "P0",
+      "subject": "CPE H484.1/Wq22",
+      "rows": [
+        1152
+      ],
+      "decision": "Do not treat distinct flute and keyboard concerto versions with same Wq root as one instrument-identical composition"
+    },
+    {
+      "severity": "P0",
+      "subject": "BARTOK original Mandarin and suite",
+      "rows": [
+        4274,
+        4280
+      ],
+      "decision": "Pantomime source 4274 distinct from later concert suite 4280; production suite crosswalk only to 4280"
+    },
+    {
+      "severity": "P0",
+      "subject": "BARTOK BB77 and BB122",
+      "rows": [
+        4228,
+        4233
+      ],
+      "decision": "Accepted BB77/Sz69 vs source BB78/Sz70; accepted BB122/Sz115a vs source Sz34a. Preserve raw variants as errors, do not auto merge",
+      "authority": "https://zti.abtk.hu/en/ba/bartok-compositions/chronology"
+    },
+    {
+      "severity": "P1",
+      "subject": "BARTOK Piano concerto 3 Serly",
+      "rows": [
+        4296
+      ],
+      "decision": "Tibor Serly orchestrated the final 17 measures posthumously; not composer of entire concerto"
+    },
+    {
+      "severity": "P1",
+      "subject": "BEACH With Thee",
+      "rows": [
+        4502
+      ],
+      "decision": "Raw With The truncated; normalize display to With Thee (Nähe des Geliebten) op.35 no3",
+      "authority": "https://www.amybeach.org/music/works-list/; https://imslp.org/wiki/4_Songs%2C_Op.35_%28Beach%2C_Amy_Marcy%29"
+    },
+    {
+      "severity": "P0",
+      "subject": "ALBENIZ Navarra completion",
+      "rows": [
+        468
+      ],
+      "decision": "Navarra by Albéniz unfinished and completed by Déodat de Séverac; two different roles, one work",
+      "authority": "https://flaminioonline.it/Biografie/Albeniz-catalogo-cronologico.html"
+    },
+    {
+      "severity": "P1",
+      "subject": "ALFANO Sakuntala",
+      "rows": [
+        575,
+        681
+      ],
+      "decision": "An excerpt and opera revision are not necessarily 2 unrelated original compositions nor identical to Sakuntala 1921"
+    },
+    {
+      "severity": "P1",
+      "subject": "BEETHOVEN op108 collection",
+      "rows": [
+        4632,
+        4633,
+        4634,
+        4635
+      ],
+      "decision": "One collection guide and specific individual song guides; cannot multiply the full collection by source row count"
+    },
+    {
+      "severity": "P1",
+      "subject": "BARTOK BB20 songs",
+      "rows": [
+        4308,
+        4309,
+        4312
+      ],
+      "decision": "Distinct song members share a group catalogue number; do not deduplicate on BB20/Sz13"
+    },
+    {
+      "severity": "P1",
+      "subject": "Previous staging ids",
+      "rows": [
+        4182,
+        4298,
+        4299
+      ],
+      "decision": "Three inherited prior LOTTO35/40 identities already reused by current source rows"
+    },
+    {
+      "severity": "P1",
+      "subject": "Historical manifests 38 and 42",
+      "rows": [],
+      "decision": "24 Beethoven items and 39 quartet manifest entries are outside the 188 source rows by Excel ID; don't import them as newly checked Lotto01 entries"
+    }
+  ],
+  "historical_manifest_source_boundary": {
+    "lotto38": 24,
+    "lotto42": 39,
+    "direct_source_excel_row_overlap": [],
+    "explicit_warning": "Absence of Excel row overlap doesn't exclude shared historical work identity; historical manifests are out of Lotto01 worklist."
+  },
+  "per_source_rows": [
+    {
+      "excel_row": 78,
+      "source_id": "flaminio:excel:78",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Vespetta e Pimpinone",
+      "catalogue_raw": "IV.B.4.1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-pimpinone",
+      "documentary_identity_name": "Vespetta e Pimpinone",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 87,
+      "source_id": "flaminio:excel:87",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Astarto",
+      "catalogue_raw": "IV.B.5.2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-astarto",
+      "documentary_identity_name": "Astarto",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 95,
+      "source_id": "flaminio:excel:95",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "L’incostanza schernita",
+      "catalogue_raw": "IV.B.5.8",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-incostanza",
+      "documentary_identity_name": "L'incostanza schernita",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 98,
+      "source_id": "flaminio:excel:98",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Statira",
+      "catalogue_raw": "IV.B.5.11",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-statira",
+      "documentary_identity_name": "Statira",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 152,
+      "source_id": "flaminio:excel:152",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Bel fantasma tu fosti",
+      "catalogue_raw": "IV.B.1.4",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-4.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-bel-fantasma-IVB14",
+      "documentary_identity_name": "Bel fantasma tu fosti",
+      "documentary_identity_type": "cantata_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 153,
+      "source_id": "flaminio:excel:153",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Bella perché tu fosti",
+      "catalogue_raw": "IV.B.1.5",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-5.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-bella-perche-IVB15",
+      "documentary_identity_name": "Bella perché tu fosti",
+      "documentary_identity_type": "cantata_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 161,
+      "source_id": "flaminio:excel:161",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Dove sei che fai cor mio",
+      "catalogue_raw": "IV.B.1.13",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-13.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-dove-sei-IVB113",
+      "documentary_identity_name": "Dove sei che fai cor mio",
+      "documentary_identity_type": "cantata_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 170,
+      "source_id": "flaminio:excel:170",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Io che per colpa sol",
+      "catalogue_raw": "IV.B.1.22",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Cantata4b1-22.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-io-per-colpa-IVB122",
+      "documentary_identity_name": "Io che per colpa sol del fato rio",
+      "documentary_identity_type": "cantata_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 228,
+      "source_id": "flaminio:excel:228",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "11. Sinfonia in sol minore, op. 2 n. 11",
+      "catalogue_raw": "II.D.1.6.1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Sinfonia2-11.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-sinfonia-op2-n11",
+      "documentary_identity_name": "Sinfonia in sol minore, op. 2 n. 11",
+      "documentary_identity_type": "opera_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 238,
+      "source_id": "flaminio:excel:238",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Sinfonia in la maggiore, op. 2 n. 5",
+      "catalogue_raw": "II.D.1.7.1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Sinfonia2-5.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-sinfonia-op2-n5",
+      "documentary_identity_name": "Sinfonia in la maggiore, op. 2 n. 5",
+      "documentary_identity_type": "opera_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 267,
+      "source_id": "flaminio:excel:267",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Concerto a cinque in si bemolle maggiore, op. 5 n. 1",
+      "catalogue_raw": "II.E.1.11.2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Concerto5-1.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-concerto-op5-n1",
+      "documentary_identity_name": "Concerto a cinque in si bemolle maggiore, op. 5 n. 1",
+      "documentary_identity_type": "opera_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 300,
+      "source_id": "flaminio:excel:300",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Concerto in do maggiore per due oboi, archi e basso continuo, op. 9 n. 9",
+      "catalogue_raw": "II.F.1.1.4",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Concerto9-9.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-concerto-op9-n9",
+      "documentary_identity_name": "Concerto in do maggiore per due oboi, op. 9 n. 9",
+      "documentary_identity_type": "opera_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 345,
+      "source_id": "flaminio:excel:345",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Astarto",
+      "catalogue_raw": "VI.A.10",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Astarto6-10.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-astarto",
+      "documentary_identity_name": "Astarto",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 352,
+      "source_id": "flaminio:excel:352",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Diomede punito da Alcide",
+      "catalogue_raw": "VI.A.18",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Diomede618.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-diomede-punito-1701",
+      "documentary_identity_name": "Diomede punito da Alcide",
+      "documentary_identity_type": "opera_identita_fonte_con_libretto",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 369,
+      "source_id": "flaminio:excel:369",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Il prodigio dell’innocenza",
+      "catalogue_raw": "VI.A.46",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Prodigio646.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-prodigio-innocenza-1695",
+      "documentary_identity_name": "Il prodigio dell’innocenza",
+      "documentary_identity_type": "opera_identita_fonte_con_libretto",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 372,
+      "source_id": "flaminio:excel:372",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Il trionfo di Armida",
+      "catalogue_raw": "VI.A.59",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Armida59.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-trionfo-armida-1726",
+      "documentary_identity_name": "Il trionfo di Armida",
+      "documentary_identity_type": "opera_identita_fonte_con_libretto",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 381,
+      "source_id": "flaminio:excel:381",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Laodice",
+      "catalogue_raw": "VI.A.37",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Laodice637.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-laodice-1724",
+      "documentary_identity_name": "Laodice",
+      "documentary_identity_type": "opera_identita_fonte_con_libretto",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 389,
+      "source_id": "flaminio:excel:389",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "L’incostanza schernita",
+      "catalogue_raw": "VI.A.33",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Incostanza33.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-incostanza",
+      "documentary_identity_name": "L'incostanza schernita",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 399,
+      "source_id": "flaminio:excel:399",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Statira",
+      "catalogue_raw": "VI.A.53",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Statira511.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-statira",
+      "documentary_identity_name": "Statira",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 401,
+      "source_id": "flaminio:excel:401",
+      "author": "ALBINONI, Tomaso",
+      "title_raw": "Vespetta e Pimpinone",
+      "catalogue_raw": "VI.A.62",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albinoni/Albinoni-Pimpinone41.html",
+      "documentary_identity_id": "audit:fl01:work:albinoni-pimpinone",
+      "documentary_identity_name": "Vespetta e Pimpinone",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 409,
+      "source_id": "flaminio:excel:409",
+      "author": "ALBÉNIZ, Isaac",
+      "title_raw": "Henry Clifford",
+      "catalogue_raw": "8",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albeniz/Albeniz-Clifford8.html",
+      "documentary_identity_id": "audit:fl01:work:albeniz-henry-clifford-1895",
+      "documentary_identity_name": "Henry Clifford",
+      "documentary_identity_type": "opera_identita_fonte_con_libretto",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 436,
+      "source_id": "flaminio:excel:436",
+      "author": "ALBÉNIZ, Isaac",
+      "title_raw": "4. Córdoba",
+      "catalogue_raw": "",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albeniz/Albeniz-Cordoba1014.html",
+      "documentary_identity_id": "audit:fl01:work:albeniz-cordoba-op232-n4",
+      "documentary_identity_name": "Córdoba",
+      "documentary_identity_type": "opera_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 468,
+      "source_id": "flaminio:excel:468",
+      "author": "ALBÉNIZ, Isaac",
+      "title_raw": "Navarra",
+      "catalogue_raw": "106",
+      "guide_url": "https://www.flaminioonline.it/Guide/Albeniz/Albeniz-Navarra106.html",
+      "documentary_identity_id": "audit:fl01:work:albeniz-navarra-severac-1908",
+      "documentary_identity_name": "Navarra",
+      "documentary_identity_type": "opera_identita_fonte",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "ALBINONI_ALBENIZ_CROSSWALK",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 575,
+      "source_id": "flaminio:excel:575",
+      "author": "ALFANO, Franco",
+      "title_raw": "Danza e finale da Sakuntala",
+      "catalogue_raw": "35",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Sakuntala35.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel575",
+      "documentary_identity_name": "Danza e finale da Sakuntala",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 576,
+      "source_id": "flaminio:excel:576",
+      "author": "ALFANO, Franco",
+      "title_raw": "Divertimento per orchestra ridotta e pianoforte obbligato",
+      "catalogue_raw": "56",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Divertimento56.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel576",
+      "documentary_identity_name": "Divertimento per orchestra ridotta e pianoforte obbligato",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 577,
+      "source_id": "flaminio:excel:577",
+      "author": "ALFANO, Franco",
+      "title_raw": "Due Intermezzi per archi",
+      "catalogue_raw": "47",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Intermezzi47.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel577",
+      "documentary_identity_name": "Due Intermezzi per archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 579,
+      "source_id": "flaminio:excel:579",
+      "author": "ALFANO, Franco",
+      "title_raw": "Prima Sinfonia in mi maggiore in quattro tempi",
+      "catalogue_raw": "25",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Sinfonia25.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel579",
+      "documentary_identity_name": "Prima Sinfonia in mi maggiore in quattro tempi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 581,
+      "source_id": "flaminio:excel:581",
+      "author": "ALFANO, Franco",
+      "title_raw": "Seconda Sinfonia in do maggiore",
+      "catalogue_raw": "49",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Sinfonia49.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel581",
+      "documentary_identity_name": "Seconda Sinfonia in do maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 584,
+      "source_id": "flaminio:excel:584",
+      "author": "ALFANO, Franco",
+      "title_raw": "Suite romantica (Poema italico)",
+      "catalogue_raw": "23",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Suite23.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel584",
+      "documentary_identity_name": "Suite romantica (Poema italico)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 585,
+      "source_id": "flaminio:excel:585",
+      "author": "ALFANO, Franco",
+      "title_raw": "Una danza per orchestra",
+      "catalogue_raw": "72",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Danza72.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel585",
+      "documentary_identity_name": "Una danza per orchestra",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 606,
+      "source_id": "flaminio:excel:606",
+      "author": "ALFANO, Franco",
+      "title_raw": "1. Dormiveglia",
+      "catalogue_raw": "32 n. 1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Dormiveglia32-1.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel606",
+      "documentary_identity_name": "Dormiveglia",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 608,
+      "source_id": "flaminio:excel:608",
+      "author": "ALFANO, Franco",
+      "title_raw": "1. Lungo la via del mare...",
+      "catalogue_raw": "66 n. 1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Lungo661.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel608",
+      "documentary_identity_name": "Lungo la via del mare...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 609,
+      "source_id": "flaminio:excel:609",
+      "author": "ALFANO, Franco",
+      "title_raw": "1. Mamma, il giovine principe",
+      "catalogue_raw": "30 n. 1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Mamma301.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel609",
+      "documentary_identity_name": "Mamma, il giovine principe",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 612,
+      "source_id": "flaminio:excel:612",
+      "author": "ALFANO, Franco",
+      "title_raw": "1. Perché allo spuntar del giorno...",
+      "catalogue_raw": "42 n. 1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Giorno421.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel612",
+      "documentary_identity_name": "Perché allo spuntar del giorno...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 614,
+      "source_id": "flaminio:excel:614",
+      "author": "ALFANO, Franco",
+      "title_raw": "1. Si addensano le nubi...",
+      "catalogue_raw": "70 n. 1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Addensano701.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel614",
+      "documentary_identity_name": "Si addensano le nubi...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 616,
+      "source_id": "flaminio:excel:616",
+      "author": "ALFANO, Franco",
+      "title_raw": "1. Sì, lo so...",
+      "catalogue_raw": "73 n. 1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Siloso73-1.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel616",
+      "documentary_identity_name": "Sì, lo so...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 618,
+      "source_id": "flaminio:excel:618",
+      "author": "ALFANO, Franco",
+      "title_raw": "2. Cogli, prendi questo fiorellino",
+      "catalogue_raw": "73 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Cogli73-2.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel618",
+      "documentary_identity_name": "Cogli, prendi questo fiorellino",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 619,
+      "source_id": "flaminio:excel:619",
+      "author": "ALFANO, Franco",
+      "title_raw": "2. Egli mormorò: amor mio",
+      "catalogue_raw": "30 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Mormoro30-2.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel619",
+      "documentary_identity_name": "Egli mormorò: amor mio",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 620,
+      "source_id": "flaminio:excel:620",
+      "author": "ALFANO, Franco",
+      "title_raw": "2. Finisci l'ultimo canto...",
+      "catalogue_raw": "42 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Finisci422.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel620",
+      "documentary_identity_name": "Finisci l'ultimo canto...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 621,
+      "source_id": "flaminio:excel:621",
+      "author": "ALFANO, Franco",
+      "title_raw": "2. I miei piedi son stanchi...",
+      "catalogue_raw": "66 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Piedi662.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel621",
+      "documentary_identity_name": "I miei piedi son stanchi...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 622,
+      "source_id": "flaminio:excel:622",
+      "author": "ALFANO, Franco",
+      "title_raw": "2. I tuoi occhi",
+      "catalogue_raw": "32 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Occhi32-2.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel622",
+      "documentary_identity_name": "I tuoi occhi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 623,
+      "source_id": "flaminio:excel:623",
+      "author": "ALFANO, Franco",
+      "title_raw": "2. Il giorno non è più",
+      "catalogue_raw": "75 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Preludio75-2.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel623",
+      "documentary_identity_name": "Il giorno non è più",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 627,
+      "source_id": "flaminio:excel:627",
+      "author": "ALFANO, Franco",
+      "title_raw": "2. Venne e mi sedette accanto...",
+      "catalogue_raw": "70 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Venne702.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel627",
+      "documentary_identity_name": "Venne e mi sedette accanto...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 628,
+      "source_id": "flaminio:excel:628",
+      "author": "ALFANO, Franco",
+      "title_raw": "3. Al chiarore della mattina...",
+      "catalogue_raw": "32 n. 3",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Mattina323.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel628",
+      "documentary_identity_name": "Al chiarore della mattina...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 629,
+      "source_id": "flaminio:excel:629",
+      "author": "ALFANO, Franco",
+      "title_raw": "3. Giorno per giorno...",
+      "catalogue_raw": "42 n. 3",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Giorno42-3.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel629",
+      "documentary_identity_name": "Giorno per giorno...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 630,
+      "source_id": "flaminio:excel:630",
+      "author": "ALFANO, Franco",
+      "title_raw": "3. Parlami, amor mio",
+      "catalogue_raw": "30 n. 3",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Parlami30-3.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel630",
+      "documentary_identity_name": "Parlami, amor mio",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 631,
+      "source_id": "flaminio:excel:631",
+      "author": "ALFANO, Franco",
+      "title_raw": "3. Preghiera alla Madonna",
+      "catalogue_raw": "61 n. 3",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Madonna613.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel631",
+      "documentary_identity_name": "Preghiera alla Madonna",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 633,
+      "source_id": "flaminio:excel:633",
+      "author": "ALFANO, Franco",
+      "title_raw": "3. Scendesti dal tuo trono...",
+      "catalogue_raw": "70 n. 3",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Scendesti703.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel633",
+      "documentary_identity_name": "Scendesti dal tuo trono...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 634,
+      "source_id": "flaminio:excel:634",
+      "author": "ALFANO, Franco",
+      "title_raw": "3. Scrivimi, amor mio...",
+      "catalogue_raw": "66 n. 3",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Scrivimi663.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel634",
+      "documentary_identity_name": "Scrivimi, amor mio...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 636,
+      "source_id": "flaminio:excel:636",
+      "author": "ALFANO, Franco",
+      "title_raw": "4. Colsi il tuo fiore, o mondo!",
+      "catalogue_raw": "73 n. 4",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Colsi73-4.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel636",
+      "documentary_identity_name": "Colsi il tuo fiore, o mondo!",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 638,
+      "source_id": "flaminio:excel:638",
+      "author": "ALFANO, Franco",
+      "title_raw": "4. Perché piangi?",
+      "catalogue_raw": "32 n. 4",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Piangi324.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel638",
+      "documentary_identity_name": "Perché piangi?",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 639,
+      "source_id": "flaminio:excel:639",
+      "author": "ALFANO, Franco",
+      "title_raw": "4. Se taci...",
+      "catalogue_raw": "70 n. 4",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Taci704.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel639",
+      "documentary_identity_name": "Se taci...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 642,
+      "source_id": "flaminio:excel:642",
+      "author": "ALFANO, Franco",
+      "title_raw": "5. Non so...",
+      "catalogue_raw": "70 n. 5",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Nonso705.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel642",
+      "documentary_identity_name": "Non so...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 645,
+      "source_id": "flaminio:excel:645",
+      "author": "ALFANO, Franco",
+      "title_raw": "6. Non partire, amor mio...",
+      "catalogue_raw": "32 n. 6",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Partire326.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel645",
+      "documentary_identity_name": "Non partire, amor mio...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 647,
+      "source_id": "flaminio:excel:647",
+      "author": "ALFANO, Franco",
+      "title_raw": "Antica ninna-nanna partenopea",
+      "catalogue_raw": "58",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Antica58.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel647",
+      "documentary_identity_name": "Antica ninna-nanna partenopea",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 653,
+      "source_id": "flaminio:excel:653",
+      "author": "ALFANO, Franco",
+      "title_raw": "Felicità",
+      "catalogue_raw": "27",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Felicita27.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel653",
+      "documentary_identity_name": "Felicità",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 654,
+      "source_id": "flaminio:excel:654",
+      "author": "ALFANO, Franco",
+      "title_raw": "Luce",
+      "catalogue_raw": "74",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Luce74.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel654",
+      "documentary_identity_name": "Luce",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 656,
+      "source_id": "flaminio:excel:656",
+      "author": "ALFANO, Franco",
+      "title_raw": "Nuove liriche tagoriane",
+      "catalogue_raw": "57",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Liriche57.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel656",
+      "documentary_identity_name": "Nuove liriche tagoriane",
+      "documentary_identity_type": "raccolta_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 667,
+      "source_id": "flaminio:excel:667",
+      "author": "ALFANO, Franco",
+      "title_raw": "È giunto il nostro ultimo autunno",
+      "catalogue_raw": "65",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Autunno65.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel667",
+      "documentary_identity_name": "È giunto il nostro ultimo autunno",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 668,
+      "source_id": "flaminio:excel:668",
+      "author": "ALFANO, Franco",
+      "title_raw": "Cyrano de Bergerac",
+      "catalogue_raw": "55",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Cyrano55.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel668",
+      "documentary_identity_name": "Cyrano de Bergerac",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 673,
+      "source_id": "flaminio:excel:673",
+      "author": "ALFANO, Franco",
+      "title_raw": "Il principe Zilah",
+      "catalogue_raw": "22",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Zilah22.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel673",
+      "documentary_identity_name": "Il principe Zilah",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 678,
+      "source_id": "flaminio:excel:678",
+      "author": "ALFANO, Franco",
+      "title_raw": "Madonna Imperia",
+      "catalogue_raw": "39",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Imperia39.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel678",
+      "documentary_identity_name": "Madonna Imperia",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 680,
+      "source_id": "flaminio:excel:680",
+      "author": "ALFANO, Franco",
+      "title_raw": "Risurrezione",
+      "catalogue_raw": "21",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Risurrezione21.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel680",
+      "documentary_identity_name": "Risurrezione",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 681,
+      "source_id": "flaminio:excel:681",
+      "author": "ALFANO, Franco",
+      "title_raw": "Sakuntala",
+      "catalogue_raw": "77",
+      "guide_url": "https://www.flaminioonline.it/Guide/Alfano/Alfano-Sakuntala77.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel681",
+      "documentary_identity_name": "Sakuntala",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": null,
+        "alias_same_work": false
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 894,
+      "source_id": "flaminio:excel:894",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Duetto in mi minore",
+      "catalogue_raw": "598",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Duetto598.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel894",
+      "documentary_identity_name": "Duetto in mi minore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H598",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1097,
+      "source_id": "flaminio:excel:1097",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in do maggiore per clavicembalo e archi",
+      "catalogue_raw": "423",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto423.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1097",
+      "documentary_identity_name": "Concerto in do maggiore per clavicembalo e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H423",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1117,
+      "source_id": "flaminio:excel:1117",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in la maggiore per flauto traverso e archi",
+      "catalogue_raw": "438",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto438.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1117",
+      "documentary_identity_name": "Concerto in la maggiore per flauto traverso e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H438",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1118,
+      "source_id": "flaminio:excel:1118",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in la maggiore per violoncello e archi",
+      "catalogue_raw": "439",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto439.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1118",
+      "documentary_identity_name": "Concerto in la maggiore per violoncello e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H439",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1124,
+      "source_id": "flaminio:excel:1124",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in la minore per violoncello e archi",
+      "catalogue_raw": "432",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto432.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1124",
+      "documentary_identity_name": "Concerto in la minore per violoncello e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H432",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1133,
+      "source_id": "flaminio:excel:1133",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in mi maggiore per clavicembalo e archi",
+      "catalogue_raw": "417",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto417.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1133",
+      "documentary_identity_name": "Concerto in mi maggiore per clavicembalo e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H417",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1143,
+      "source_id": "flaminio:excel:1143",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in re maggiore per clavicembalo e orchestra",
+      "catalogue_raw": "472",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto472.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1143",
+      "documentary_identity_name": "Concerto in re maggiore per clavicembalo e orchestra",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H472",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1149,
+      "source_id": "flaminio:excel:1149",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in re minore per clavicembalo e archi",
+      "catalogue_raw": "427",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto427.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1149",
+      "documentary_identity_name": "Concerto in re minore per clavicembalo e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H427",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1152,
+      "source_id": "flaminio:excel:1152",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in re minore per flauto traverso e archi",
+      "catalogue_raw": "484.1",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto4841.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1152",
+      "documentary_identity_name": "Concerto in re minore per flauto traverso e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H484-1",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1167,
+      "source_id": "flaminio:excel:1167",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in si bemolle maggiore per violoncello e archi",
+      "catalogue_raw": "436",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto436.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1167",
+      "documentary_identity_name": "Concerto in si bemolle maggiore per violoncello e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H436",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1178,
+      "source_id": "flaminio:excel:1178",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Concerto in sol maggiore per flauto traverso e archi",
+      "catalogue_raw": "445",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Concerto445.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1178",
+      "documentary_identity_name": "Concerto in sol maggiore per flauto traverso e archi",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H445",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1197,
+      "source_id": "flaminio:excel:1197",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Sonatina in re maggiore per clavicembalo e orchestra",
+      "catalogue_raw": "449",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Sonatina449.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1197",
+      "documentary_identity_name": "Sonatina in re maggiore per clavicembalo e orchestra",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H449",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1219,
+      "source_id": "flaminio:excel:1219",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Magnificat in re maggiore",
+      "catalogue_raw": "772",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Magnificat772.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1219",
+      "documentary_identity_name": "Magnificat in re maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H772",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1306,
+      "source_id": "flaminio:excel:1306",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Fantasia in do maggiore",
+      "catalogue_raw": "284",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Fantasia284.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1306",
+      "documentary_identity_name": "Fantasia in do maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H284",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1309,
+      "source_id": "flaminio:excel:1309",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Fantasia in fa diesis minore",
+      "catalogue_raw": "300",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Fantasia300.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1309",
+      "documentary_identity_name": "Fantasia in fa diesis minore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H300",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1651,
+      "source_id": "flaminio:excel:1651",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Variazioni in re minore su \"Les folies d'Espagne\"",
+      "catalogue_raw": "263",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Espagne263.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1651",
+      "documentary_identity_name": "Variazioni in re minore su \"Les folies d'Espagne\"",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H263",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 1996,
+      "source_id": "flaminio:excel:1996",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Sinfonia in mi minore",
+      "catalogue_raw": "652",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Sinfonia652.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel1996",
+      "documentary_identity_name": "Sinfonia in mi minore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H652",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 2000,
+      "source_id": "flaminio:excel:2000",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Sinfonia in si bemolle maggiore",
+      "catalogue_raw": "658",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Sinfonia658.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel2000",
+      "documentary_identity_name": "Sinfonia in si bemolle maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H658",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 2001,
+      "source_id": "flaminio:excel:2001",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Sinfonia in si minore",
+      "catalogue_raw": "661",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Sinfonia661.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel2001",
+      "documentary_identity_name": "Sinfonia in si minore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H661",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 2004,
+      "source_id": "flaminio:excel:2004",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Sinfonia in sol maggiore",
+      "catalogue_raw": "657",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Sinfonia657.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel2004",
+      "documentary_identity_name": "Sinfonia in sol maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H657",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 2005,
+      "source_id": "flaminio:excel:2005",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Sinfonia in sol maggiore",
+      "catalogue_raw": "666",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Sinfonia666.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel2005",
+      "documentary_identity_name": "Sinfonia in sol maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H666",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 2024,
+      "source_id": "flaminio:excel:2024",
+      "author": "BACH, Carl Philipp Emanuel",
+      "title_raw": "Sonata in sol maggiore",
+      "catalogue_raw": "563",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Sonata563.html",
+      "documentary_identity_id": "audit:fl01:alf-cpe:work:excel2024",
+      "documentary_identity_name": "Sonata in sol maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "documenta_opera_o_raccolta_proposta",
+      "evidence": {
+        "source": "ALFANO_CPE63_DELTA",
+        "previous_alias_id": "audit:fl01:cpebach:work:H563",
+        "alias_same_work": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 2542,
+      "source_id": "flaminio:excel:2542",
+      "author": "BACH, Johann Christoph Friedrich",
+      "title_raw": "Sinfonia in si bemolle maggiore",
+      "catalogue_raw": "C28",
+      "guide_url": "https://www.flaminioonline.it/Guide/BachF/Bachf-Sinfonia28.html",
+      "documentary_identity_id": "audit:fl01:jcf:work:br-c28",
+      "documentary_identity_name": "Sinfonia in si bemolle maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "JCF_WORK_AUDIT",
+        "need_live_check": true
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4012,
+      "source_id": "flaminio:excel:4012",
+      "author": "BARBER, Samuel",
+      "title_raw": "5. The Crucifixion",
+      "catalogue_raw": "120 n. 5",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Crucifixion120-5.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4012",
+      "documentary_identity_name": "The Crucifixion",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "29/5"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4126,
+      "source_id": "flaminio:excel:4126",
+      "author": "BARBER, Samuel",
+      "title_raw": "Adagio per archi",
+      "catalogue_raw": "91",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Adagio91.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4126",
+      "documentary_identity_name": "Adagio per archi",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "11a (arr. of Quartet op.11 II)"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4135,
+      "source_id": "flaminio:excel:4135",
+      "author": "BARBER, Samuel",
+      "title_raw": "Medea's Meditation and Dance of Vengeance",
+      "catalogue_raw": "123",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Medeadance123.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4135",
+      "documentary_identity_name": "Medea's Meditation and Dance of Vengeance",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "23a"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4136,
+      "source_id": "flaminio:excel:4136",
+      "author": "BARBER, Samuel",
+      "title_raw": "Music for a Scene from Shelley",
+      "catalogue_raw": "68",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Shelley68.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4136",
+      "documentary_identity_name": "Music for a Scene from Shelley",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "7"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4138,
+      "source_id": "flaminio:excel:4138",
+      "author": "BARBER, Samuel",
+      "title_raw": "Ouverture per The School for Scandal",
+      "catalogue_raw": "64",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Scandal64.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4138",
+      "documentary_identity_name": "Ouverture per The School for Scandal",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "5"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4141,
+      "source_id": "flaminio:excel:4141",
+      "author": "BARBER, Samuel",
+      "title_raw": "Sinfonia in un movimento",
+      "catalogue_raw": "84",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Sinfonia84.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4141",
+      "documentary_identity_name": "Sinfonia in un movimento",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "9"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4160,
+      "source_id": "flaminio:excel:4160",
+      "author": "BARBER, Samuel",
+      "title_raw": "Excursions",
+      "catalogue_raw": "108",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Excursions108.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4160",
+      "documentary_identity_name": "Excursions",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "20"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4172,
+      "source_id": "flaminio:excel:4172",
+      "author": "BARBER, Samuel",
+      "title_raw": "Sonata per pianoforte",
+      "catalogue_raw": "117",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Sonata117.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4172",
+      "documentary_identity_name": "Sonata per pianoforte",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "26"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4181,
+      "source_id": "flaminio:excel:4181",
+      "author": "BARBER, Samuel",
+      "title_raw": "Concerto per pianoforte e orchestra",
+      "catalogue_raw": "132",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Concerto132.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4181",
+      "documentary_identity_name": "Concerto per pianoforte e orchestra",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "38"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4182,
+      "source_id": "flaminio:excel:4182",
+      "author": "BARBER, Samuel",
+      "title_raw": "Concerto per violino e orchestra",
+      "catalogue_raw": "94",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Concerto94.html",
+      "documentary_identity_id": "fl:cert35:barber-op14",
+      "documentary_identity_name": "Concerto per violino e orchestra",
+      "documentary_identity_type": "opera_staging_pre_esistente_riferimento",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "14"
+        },
+        "earlier_staging_ids": [
+          "fl:cert35:barber-op14"
+        ]
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4192,
+      "source_id": "flaminio:excel:4192",
+      "author": "BARBER, Samuel",
+      "title_raw": "A Hand of Bridge",
+      "catalogue_raw": "128",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Bridge128.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4192",
+      "documentary_identity_name": "A Hand of Bridge",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "35"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4195,
+      "source_id": "flaminio:excel:4195",
+      "author": "BARBER, Samuel",
+      "title_raw": "Vanessa",
+      "catalogue_raw": "125",
+      "guide_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Vanessa125.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4195",
+      "documentary_identity_name": "Vanessa",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "32"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4198,
+      "source_id": "flaminio:excel:4198",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Contrasti per violino, clarinetto e pianoforte",
+      "catalogue_raw": "116",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Contrasti.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4198",
+      "documentary_identity_name": "Contrasti per violino, clarinetto e pianoforte",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "116",
+          "sz": "111",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4204,
+      "source_id": "flaminio:excel:4204",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Quartetto per archi n. 1",
+      "catalogue_raw": "52",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Quartetto1.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4204",
+      "documentary_identity_name": "Quartetto per archi n. 1",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "52",
+          "sz": "40",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4205,
+      "source_id": "flaminio:excel:4205",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Quartetto per archi n. 2",
+      "catalogue_raw": "75",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Quartetto2.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4205",
+      "documentary_identity_name": "Quartetto per archi n. 2",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "75",
+          "sz": "67",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4206,
+      "source_id": "flaminio:excel:4206",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Quartetto per archi n. 3",
+      "catalogue_raw": "93",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Quartetto3.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4206",
+      "documentary_identity_name": "Quartetto per archi n. 3",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "93",
+          "sz": "85",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4207,
+      "source_id": "flaminio:excel:4207",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Quartetto per archi n. 4",
+      "catalogue_raw": "95",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Quartetto4.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4207",
+      "documentary_identity_name": "Quartetto per archi n. 4",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "95",
+          "sz": "91",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4208,
+      "source_id": "flaminio:excel:4208",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Quartetto per archi n. 5 in si bemolle maggiore",
+      "catalogue_raw": "110",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Quartetto5.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4208",
+      "documentary_identity_name": "Quartetto per archi n. 5 in si bemolle maggiore",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "110",
+          "sz": "102",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4209,
+      "source_id": "flaminio:excel:4209",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Quartetto per archi n. 6",
+      "catalogue_raw": "119",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Quartetto6.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4209",
+      "documentary_identity_name": "Quartetto per archi n. 6",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "119",
+          "sz": "114",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4211,
+      "source_id": "flaminio:excel:4211",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Rapsodia per violino e pianoforte n. 1",
+      "catalogue_raw": "94a",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Rapsodia94a.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4211",
+      "documentary_identity_name": "Rapsodia per violino e pianoforte n. 1",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "94a",
+          "sz": "86",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4217,
+      "source_id": "flaminio:excel:4217",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Sonata per violino e pianoforte n. 1",
+      "catalogue_raw": "84",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonataviolinopf1.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4217",
+      "documentary_identity_name": "Sonata per violino e pianoforte n. 1",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "84",
+          "sz": "75",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4218,
+      "source_id": "flaminio:excel:4218",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Sonata per violino e pianoforte n. 2",
+      "catalogue_raw": "85",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonataviolinopf2.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4218",
+      "documentary_identity_name": "Sonata per violino e pianoforte n. 2",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "85",
+          "sz": "76",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4219,
+      "source_id": "flaminio:excel:4219",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Sonata per violino solo in sol minore",
+      "catalogue_raw": "124",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonataviolino.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4219",
+      "documentary_identity_name": "Sonata per violino solo in sol minore",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "124",
+          "sz": "117",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4228,
+      "source_id": "flaminio:excel:4228",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Négy szlovak nèpalok (4 Canti popolari slovacchi)",
+      "catalogue_raw": "78",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Popolari78.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4228",
+      "documentary_identity_name": "Négy szlovak nèpalok (4 Canti popolari slovacchi)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "78",
+          "sz": "70",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4231,
+      "source_id": "flaminio:excel:4231",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Sette pezzi da Mikrokosmos",
+      "catalogue_raw": "120",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Mikrokosmos120.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4231",
+      "documentary_identity_name": "Sette pezzi da Mikrokosmos",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "120",
+          "sz": "108",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4232,
+      "source_id": "flaminio:excel:4232",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Sonata per due pianoforti e percussioni",
+      "catalogue_raw": "115",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonata2pf.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4232",
+      "documentary_identity_name": "Sonata per due pianoforti e percussioni",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "115",
+          "sz": "110",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4233,
+      "source_id": "flaminio:excel:4233",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Suite per due pianoforti",
+      "catalogue_raw": "122",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Suite4b.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4233",
+      "documentary_identity_name": "Suite per due pianoforti",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "122",
+          "sz": "34a",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4234,
+      "source_id": "flaminio:excel:4234",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Allegro barbaro",
+      "catalogue_raw": "63",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Barbaro.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4234",
+      "documentary_identity_name": "Allegro barbaro",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "63",
+          "sz": "49",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4237,
+      "source_id": "flaminio:excel:4237",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Gyermekeknek / Pro dêti (Per i bambini)",
+      "catalogue_raw": "53",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Gyermekeknek.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4237",
+      "documentary_identity_name": "Gyermekeknek / Pro dêti (Per i bambini)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "53",
+          "sz": "42",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4261,
+      "source_id": "flaminio:excel:4261",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Sonata",
+      "catalogue_raw": "88",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonata.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4261",
+      "documentary_identity_name": "Sonata",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "88",
+          "sz": "80",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4263,
+      "source_id": "flaminio:excel:4263",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Suite per pianoforte in quattro movimenti",
+      "catalogue_raw": "70",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Suite14.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4263",
+      "documentary_identity_name": "Suite per pianoforte in quattro movimenti",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "70",
+          "sz": "62",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4264,
+      "source_id": "flaminio:excel:4264",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Szabadban (All'aria aperta), 5 pezzi",
+      "catalogue_raw": "89",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Aria89.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4264",
+      "documentary_identity_name": "Szabadban (All'aria aperta), 5 pezzi",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "89",
+          "sz": "81",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4266,
+      "source_id": "flaminio:excel:4266",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Tizennégy bagatell (14 Bagatelle)",
+      "catalogue_raw": "50",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Bagatelleop6.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4266",
+      "documentary_identity_name": "Tizennégy bagatell (14 Bagatelle)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "50",
+          "sz": "38",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4274,
+      "source_id": "flaminio:excel:4274",
+      "author": "BARTÓK, Béla",
+      "title_raw": "A csodálatos mandarin (Il mandarino miracoloso)",
+      "catalogue_raw": "82",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Mandarino82.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4274",
+      "documentary_identity_name": "A csodálatos mandarin (Il mandarino miracoloso)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "82",
+          "sz": "73",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4275,
+      "source_id": "flaminio:excel:4275",
+      "author": "BARTÓK, Béla",
+      "title_raw": "A fàból faragott királyfi (Il principe di legno)",
+      "catalogue_raw": "74",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Principedilegno.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4275",
+      "documentary_identity_name": "A fàból faragott királyfi (Il principe di legno)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "74",
+          "sz": "60",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4276,
+      "source_id": "flaminio:excel:4276",
+      "author": "BARTÓK, Béla",
+      "title_raw": "A kékszakàllù Herceg vara (Il castello del principe Barbablù)",
+      "catalogue_raw": "62",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Barbablu.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4276",
+      "documentary_identity_name": "A kékszakàllù Herceg vara (Il castello del principe Barbablù)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "62",
+          "sz": "48",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4277,
+      "source_id": "flaminio:excel:4277",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Concerto per orchestra",
+      "catalogue_raw": "123",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Concertoorchestra.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4277",
+      "documentary_identity_name": "Concerto per orchestra",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "123",
+          "sz": "116",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4278,
+      "source_id": "flaminio:excel:4278",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Divertimento per archi",
+      "catalogue_raw": "118",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Divertimento.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4278",
+      "documentary_identity_name": "Divertimento per archi",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "118",
+          "sz": "113",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4280,
+      "source_id": "flaminio:excel:4280",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Il Mandarino miracoloso",
+      "catalogue_raw": "82a",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Mandarinosuite.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4280",
+      "documentary_identity_name": "Il Mandarino miracoloso",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "82a",
+          "sz": "73b",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4281,
+      "source_id": "flaminio:excel:4281",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Kossuth",
+      "catalogue_raw": "31",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Kossut.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4281",
+      "documentary_identity_name": "Kossuth",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "31",
+          "sz": "21",
+          "dd": "75"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4282,
+      "source_id": "flaminio:excel:4282",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Két kép (Due immagini)",
+      "catalogue_raw": "59",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Immagini10.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4282",
+      "documentary_identity_name": "Két kép (Due immagini)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "59",
+          "sz": "46",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4283,
+      "source_id": "flaminio:excel:4283",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Magyar képek (Scene ungheresi)",
+      "catalogue_raw": "103",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sceneungheresi.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4283",
+      "documentary_identity_name": "Magyar képek (Scene ungheresi)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "103",
+          "sz": "97",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4286,
+      "source_id": "flaminio:excel:4286",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Romàn népi tàncok (Danze popolari rumene)",
+      "catalogue_raw": "76",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Danzerumene76.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4286",
+      "documentary_identity_name": "Romàn népi tàncok (Danze popolari rumene)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "76",
+          "sz": "68",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4291,
+      "source_id": "flaminio:excel:4291",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Tancszvit (Suite di sei danze)",
+      "catalogue_raw": "86",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Suitedanze.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4291",
+      "documentary_identity_name": "Tancszvit (Suite di sei danze)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "86",
+          "sz": "77",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4292,
+      "source_id": "flaminio:excel:4292",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Zene (Musica) per archi, percussione e celesta",
+      "catalogue_raw": "114",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Musica114.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4292",
+      "documentary_identity_name": "Zene (Musica) per archi, percussione e celesta",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "114",
+          "sz": "106",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4294,
+      "source_id": "flaminio:excel:4294",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Concerto per pianoforte n. 1",
+      "catalogue_raw": "91",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Concertopianoforte1.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4294",
+      "documentary_identity_name": "Concerto per pianoforte n. 1",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "91",
+          "sz": "83",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4295,
+      "source_id": "flaminio:excel:4295",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Concerto per pianoforte n. 2",
+      "catalogue_raw": "101",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Concertopianoforte2.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4295",
+      "documentary_identity_name": "Concerto per pianoforte n. 2",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "101",
+          "sz": "95",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4296,
+      "source_id": "flaminio:excel:4296",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Concerto per pianoforte n. 3",
+      "catalogue_raw": "127",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Concertopianoforte3.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4296",
+      "documentary_identity_name": "Concerto per pianoforte n. 3",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "127",
+          "sz": "119",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4297,
+      "source_id": "flaminio:excel:4297",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Concerto per viola",
+      "catalogue_raw": "128",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Concertoviola.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4297",
+      "documentary_identity_name": "Concerto per viola",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "128",
+          "sz": "120",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4298,
+      "source_id": "flaminio:excel:4298",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Concerto per violino n. 1",
+      "catalogue_raw": "48a",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Concertoviolino1.html",
+      "documentary_identity_id": "fl:cert35:bartok-sz36",
+      "documentary_identity_name": "Concerto per violino n. 1",
+      "documentary_identity_type": "opera_staging_pre_esistente_riferimento",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "48a",
+          "sz": "36",
+          "dd": null
+        },
+        "earlier_staging_ids": [
+          "fl:cert35:bartok-sz36"
+        ]
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4299,
+      "source_id": "flaminio:excel:4299",
+      "author": "BARTÓK, Béla",
+      "title_raw": "Concerto per violino n. 2",
+      "catalogue_raw": "117",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Concertoviolino2.html",
+      "documentary_identity_id": "fl:cert35:bartok-sz112",
+      "documentary_identity_name": "Concerto per violino n. 2",
+      "documentary_identity_type": "opera_staging_pre_esistente_riferimento",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "117",
+          "sz": "112",
+          "dd": null
+        },
+        "earlier_staging_ids": [
+          "fl:cert35:bartok-sz112"
+        ]
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4304,
+      "source_id": "flaminio:excel:4304",
+      "author": "BARTÓK, Béla",
+      "title_raw": "A kilenc csodaszarvas (I nove cervi fatati)",
+      "catalogue_raw": "100",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Novecervi.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4304",
+      "documentary_identity_name": "A kilenc csodaszarvas (I nove cervi fatati)",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "100",
+          "sz": "94",
+          "dd": null
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4308,
+      "source_id": "flaminio:excel:4308",
+      "author": "BARTÓK, Béla",
+      "title_raw": "1. Du meine Liebe, du mein Herz",
+      "catalogue_raw": "",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Lied201.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4308",
+      "documentary_identity_name": "Du meine Liebe, du mein Herz",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "20",
+          "sz": "13",
+          "dd": "62"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4309,
+      "source_id": "flaminio:excel:4309",
+      "author": "BARTÓK, Béla",
+      "title_raw": "1. Im wunderschönen Monat Mai",
+      "catalogue_raw": "",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Mai15-1.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4309",
+      "documentary_identity_name": "Im wunderschönen Monat Mai",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "15",
+          "sz": "10",
+          "dd": "54"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4312,
+      "source_id": "flaminio:excel:4312",
+      "author": "BARTÓK, Béla",
+      "title_raw": "5. Wie herrlich leuchtet",
+      "catalogue_raw": "",
+      "guide_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Lied205.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4312",
+      "documentary_identity_name": "Wie herrlich leuchtet",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "bb": "20",
+          "sz": "13",
+          "dd": "62"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4431,
+      "source_id": "flaminio:excel:4431",
+      "author": "BEACH, Amy",
+      "title_raw": "1. The Year's at the Spring",
+      "catalogue_raw": "44 n. 1",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beach/Beach-Year441.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4431",
+      "documentary_identity_name": "The Year's at the Spring",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "44/1"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4443,
+      "source_id": "flaminio:excel:4443",
+      "author": "BEACH, Amy",
+      "title_raw": "2. Ah, Love, but a Day!",
+      "catalogue_raw": "44 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beach/Beach-Love442.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4443",
+      "documentary_identity_name": "Ah, Love, but a Day!",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "44/2"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4444,
+      "source_id": "flaminio:excel:4444",
+      "author": "BEACH, Amy",
+      "title_raw": "2. Alone",
+      "catalogue_raw": "35 n. 2",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beach/Beach-Alone352.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4444",
+      "documentary_identity_name": "Alone",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "35/2"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4489,
+      "source_id": "flaminio:excel:4489",
+      "author": "BEACH, Amy",
+      "title_raw": "3. I Send My Heart up to Thee!",
+      "catalogue_raw": "44 n. 3",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beach/Beach-Send443.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4489",
+      "documentary_identity_name": "I Send My Heart up to Thee!",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "44/3"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4502,
+      "source_id": "flaminio:excel:4502",
+      "author": "BEACH, Amy",
+      "title_raw": "3. With The",
+      "catalogue_raw": "35 n. 3",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beach/Beach-With353.html",
+      "documentary_identity_id": "audit:fl01:bbb:work:excel4502",
+      "documentary_identity_name": "With The",
+      "documentary_identity_type": "opera_candidata_staging",
+      "source_identity_relation": "guida_documenta_opera_o_brano",
+      "evidence": {
+        "source": "BBB60",
+        "prior_guide_opened": true,
+        "guide_catalogue": {
+          "opus": "35/3"
+        },
+        "earlier_staging_ids": []
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4617,
+      "source_id": "flaminio:excel:4617",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Ouverture \"Coriolano\" in do minore",
+      "catalogue_raw": "Op. 62",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Coriolano-ouverture.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4617",
+      "documentary_identity_name": "Ouverture \"Coriolano\" in do minore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4618,
+      "source_id": "flaminio:excel:4618",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Ouverture \"Zur Namensfeier\" (Per l'onomastico) in do maggiore",
+      "catalogue_raw": "Op. 115",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Ouvimperatore.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4618",
+      "documentary_identity_name": "Ouverture \"Zur Namensfeier\" (Per l'onomastico) in do maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4619,
+      "source_id": "flaminio:excel:4619",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Ouverture Leonora n. 1 in do maggiore",
+      "catalogue_raw": "Op. 138",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Leonore1.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4619",
+      "documentary_identity_name": "Ouverture Leonora n. 1 in do maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4620,
+      "source_id": "flaminio:excel:4620",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Ouverture Leonora n. 2 in do maggiore",
+      "catalogue_raw": "Op. 72a",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Leonore2.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4620",
+      "documentary_identity_name": "Ouverture Leonora n. 2 in do maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4621,
+      "source_id": "flaminio:excel:4621",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Ouverture Leonora n. 3 in do maggiore",
+      "catalogue_raw": "Op. 72b",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Leonore3.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4621",
+      "documentary_identity_name": "Ouverture Leonora n. 3 in do maggiore",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4622,
+      "source_id": "flaminio:excel:4622",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Wellingtons Sieg oder die Schlacht bei Vittoria",
+      "catalogue_raw": "Op. 91",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Vittoria.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4622",
+      "documentary_identity_name": "Wellingtons Sieg oder die Schlacht bei Vittoria",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4624,
+      "source_id": "flaminio:excel:4624",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Canti italiani a cappella",
+      "catalogue_raw": "WoO 99",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-CantiO99.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:collection:excel4624",
+      "documentary_identity_name": "Canti italiani a cappella",
+      "documentary_identity_type": "raccolta_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4630,
+      "source_id": "flaminio:excel:4630",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "20 canzoni irlandesi",
+      "catalogue_raw": "WoO 153",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-RichesO153-2.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4630",
+      "documentary_identity_name": "No riches from his scanty store",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4632,
+      "source_id": "flaminio:excel:4632",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "25 Schottische lieder (Lieder scozzesi)",
+      "catalogue_raw": "Op. 108",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Dim108-6.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-op108-06",
+      "documentary_identity_name": "Dim, dim is my eye",
+      "documentary_identity_type": "opera_elaborazione_popolare_attestata",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4633,
+      "source_id": "flaminio:excel:4633",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "25 Schottische lieder (Lieder scozzesi)",
+      "catalogue_raw": "Op. 108",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Schottische108.html",
+      "documentary_identity_id": "audit:fl01:collection:beethoven-op108",
+      "documentary_identity_name": "25 Scottish Songs, op. 108",
+      "documentary_identity_type": "raccolta_identita_catalografica",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4634,
+      "source_id": "flaminio:excel:4634",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "25 Schottische lieder (Lieder scozzesi)",
+      "catalogue_raw": "Op. 108",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sweetest108-5.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-op108-05",
+      "documentary_identity_name": "The sweetest lad was Jamie",
+      "documentary_identity_type": "opera_elaborazione_popolare_attestata",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4635,
+      "source_id": "flaminio:excel:4635",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "25 Schottische lieder (Lieder scozzesi)",
+      "catalogue_raw": "Op. 108",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Willy108-11.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-op108-11",
+      "documentary_identity_name": "Oh! Thou art the lad of my heart, Willy!",
+      "documentary_identity_type": "opera_elaborazione_popolare_attestata",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4636,
+      "source_id": "flaminio:excel:4636",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "25 canzoni irlandesi",
+      "catalogue_raw": "WoO 152",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-GypseyO152-23.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4636",
+      "documentary_identity_name": "The Wand'ring Gypsy",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4637,
+      "source_id": "flaminio:excel:4637",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "26 canzoni gallesi",
+      "catalogue_raw": "WoO 155",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-AeolianO155-9.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-woo155-09",
+      "documentary_identity_name": "To the Aeolian Harp",
+      "documentary_identity_type": "opera_elaborazione_popolare_attestata",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4638,
+      "source_id": "flaminio:excel:4638",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "26 canzoni gallesi",
+      "catalogue_raw": "WoO 155",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-HouseO155-17.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-woo155-17",
+      "documentary_identity_name": "The Dairy House",
+      "documentary_identity_type": "opera_elaborazione_popolare_attestata",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4639,
+      "source_id": "flaminio:excel:4639",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "26 canzoni gallesi",
+      "catalogue_raw": "WoO 155",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-MortalsO155-15.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-woo155-15",
+      "documentary_identity_name": "When mortals all to rest retire",
+      "documentary_identity_type": "opera_elaborazione_popolare_attestata",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4640,
+      "source_id": "flaminio:excel:4640",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "26 canzoni gallesi",
+      "catalogue_raw": "WoO 155",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-NightO155-7.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-woo155-07",
+      "documentary_identity_name": "O let the night my blushes hide (Oh Let the Night)",
+      "documentary_identity_type": "opera_elaborazione_popolare_attestata",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4686,
+      "source_id": "flaminio:excel:4686",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Signor Abate...",
+      "catalogue_raw": "WoO 178",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-AbateO178.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4686",
+      "documentary_identity_name": "Signor Abate...",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4688,
+      "source_id": "flaminio:excel:4688",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Te solo adoro",
+      "catalogue_raw": "WoO 186",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-AdoroO186.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4688",
+      "documentary_identity_name": "Te solo adoro",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4691,
+      "source_id": "flaminio:excel:4691",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "3 Lieder per voce e pianoforte",
+      "catalogue_raw": "Op. 83",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sehnsucht.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-op83-02",
+      "documentary_identity_name": "Sehnsucht",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4692,
+      "source_id": "flaminio:excel:4692",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "3 Lieder per voce e pianoforte",
+      "catalogue_raw": "Op. 83",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Wonne.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-op83-01",
+      "documentary_identity_name": "Wonne der Wehmut (Flaminio: Wehmuth)",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4693,
+      "source_id": "flaminio:excel:4693",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "4 Ariette ed 1 duetto per voce e pianoforte",
+      "catalogue_raw": "Op. 82",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Ariette82.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:collection:excel4693",
+      "documentary_identity_name": "4 Ariette ed 1 duetto per voce e pianoforte",
+      "documentary_identity_type": "raccolta_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4694,
+      "source_id": "flaminio:excel:4694",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "6 Lieder da poesie di Gellert",
+      "catalogue_raw": "Op. 48",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sechslieder.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:collection:excel4694",
+      "documentary_identity_name": "6 Lieder da poesie di Gellert",
+      "documentary_identity_type": "raccolta_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4695,
+      "source_id": "flaminio:excel:4695",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "6 Lieder per voce e pianoforte",
+      "catalogue_raw": "Op. 75",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Liebe.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4695",
+      "documentary_identity_name": "Neue Liebe, neues Leben",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4696,
+      "source_id": "flaminio:excel:4696",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "8 Lieder per voce e pianoforte",
+      "catalogue_raw": "Op. 52",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Blumchen.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-op52-08",
+      "documentary_identity_name": "Das Blümchen Wunderhold",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4697,
+      "source_id": "flaminio:excel:4697",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "8 Lieder per voce e pianoforte",
+      "catalogue_raw": "Op. 52",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Maigesang.html",
+      "documentary_identity_id": "audit:fl01:work:beethoven-op52-04",
+      "documentary_identity_name": "Maigesang",
+      "documentary_identity_type": "opera_identita_e_autore_riscontrati",
+      "source_identity_relation": "documenta_opera_identificata",
+      "evidence": {
+        "source": "BEETHOVEN12",
+        "prior_guide_status": "GUIDE_SPECIFIC_AND_COLLECTION_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4698,
+      "source_id": "flaminio:excel:4698",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Abendlied unter'm gestirnten Himmel (Canto della sera sotto il cielo stellato)",
+      "catalogue_raw": "WoO 150",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Abendlied.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4698",
+      "documentary_identity_name": "Abendlied unter'm gestirnten Himmel (Canto della sera sotto il cielo stellato)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4700,
+      "source_id": "flaminio:excel:4700",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Adelaide",
+      "catalogue_raw": "Op. 46",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Adelaide.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4700",
+      "documentary_identity_name": "Adelaide",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4704,
+      "source_id": "flaminio:excel:4704",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "An die Geliebte (All'amata)",
+      "catalogue_raw": "WoO 140a",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-GeliebteO140.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4704",
+      "documentary_identity_name": "An die Geliebte",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4707,
+      "source_id": "flaminio:excel:4707",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "An die Hoffnung (Alla speranza)",
+      "catalogue_raw": "Op. 94",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Hoffnung.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4707",
+      "documentary_identity_name": "An die Hoffnung (seconda versione, op. 94)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4708,
+      "source_id": "flaminio:excel:4708",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "An die ferne Geliebte (All'amata lontana)",
+      "catalogue_raw": "Op. 98",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Geliebte.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:collection:excel4708",
+      "documentary_identity_name": "An die ferne Geliebte (All'amata lontana)",
+      "documentary_identity_type": "raccolta_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4710,
+      "source_id": "flaminio:excel:4710",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Andenken (Ricordo)",
+      "catalogue_raw": "WoO 136",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-AndenkenO136.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4710",
+      "documentary_identity_name": "Andenken (Ricordo)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "RATE_LIMITED_HTTP_429_INDEPENDENT_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4712,
+      "source_id": "flaminio:excel:4712",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Das Gluck der Freundschaft (La gioia dell'amicizia)",
+      "catalogue_raw": "Op. 88",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Gluck88.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4712",
+      "documentary_identity_name": "Das Gluck der Freundschaft (La gioia dell'amicizia)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4716,
+      "source_id": "flaminio:excel:4716",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Der Kuss (Il bacio)",
+      "catalogue_raw": "Op. 128",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Kuss.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4716",
+      "documentary_identity_name": "Der Kuss (Il bacio)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4718,
+      "source_id": "flaminio:excel:4718",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Der Mann von Wort (L'uomo di parola)",
+      "catalogue_raw": "Op. 99",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Mann99.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4718",
+      "documentary_identity_name": "Der Mann von Wort (L'uomo di parola)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4719,
+      "source_id": "flaminio:excel:4719",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Der Wachtelschlag (Il canto della quaglia)",
+      "catalogue_raw": "WoO 129",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Wachtrlschlag.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4719",
+      "documentary_identity_name": "Der Wachtelschlag (Il canto della quaglia)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "RATE_LIMITED_HTTP_429_INDEPENDENT_CATALOGUE_CORROBORATED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4725,
+      "source_id": "flaminio:excel:4725",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Elegie auf den Tod eines Pudels (Elegia per la morte di un barboncino)",
+      "catalogue_raw": "WoO 110",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-ElegieO110.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4725",
+      "documentary_identity_name": "Elegie auf den Tod eines Pudels (Elegia per la morte di un barboncino)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4730,
+      "source_id": "flaminio:excel:4730",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "In questa tomba oscura",
+      "catalogue_raw": "WoO 133",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Tombaoscura.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4730",
+      "documentary_identity_name": "In questa tomba oscura",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4733,
+      "source_id": "flaminio:excel:4733",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "La partenza (Der Abschied)",
+      "catalogue_raw": "WoO 124",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-LiedO124.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4733",
+      "documentary_identity_name": "La partenza (Der Abschied)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4738,
+      "source_id": "flaminio:excel:4738",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Neue Liebe, neues Leben (Nuovo amore, nuova vita)",
+      "catalogue_raw": "WoO 127",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-LiebeO127.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4738",
+      "documentary_identity_name": "Neue Liebe, neues Leben (prima versione, WoO 127)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    },
+    {
+      "excel_row": 4743,
+      "source_id": "flaminio:excel:4743",
+      "author": "BEETHOVEN, Ludwig van",
+      "title_raw": "Resignation (Rassegnazione)",
+      "catalogue_raw": "WoO 149",
+      "guide_url": "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Resignation.html",
+      "documentary_identity_id": "audit:fl01:beethoven29:work:excel4743",
+      "documentary_identity_name": "Resignation (Rassegnazione)",
+      "documentary_identity_type": "opera_candidata",
+      "source_identity_relation": "guida_documenta_identita_candidata",
+      "evidence": {
+        "source": "BEETHOVEN29",
+        "prior_guide_status": "WEB_OPEN_TEXT_CONTENT_CONFIRMED"
+      },
+      "source_preserved": true,
+      "canonical_promoted": false
+    }
+  ],
+  "next_actions": [
+    "Review crosswalk of other historical manifests and rejected/hold cases",
+    "Validate corrections in reversible staging overlay before any canonical import",
+    "Test rooted graph search on desktop and Android in actual browser",
+    "Record explicit quality approval for each canonical promotion"
+  ],
+  "production_files_modified": false,
+  "canonical_promotions": 0
+}
