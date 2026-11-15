@@ -1,0 +1,392 @@
+{
+  "schema": "musurgia-composition-collection-cycle-taxonomy-overlay-v1",
+  "date": "2026-11-15",
+  "status": "IN_REVIEW_STAGING_PROPOSAL_NOT_LOADED",
+  "source_inventory": "CENSIMENTO_TASSONOMICO_TUTTI_RECORD_2026-11-15.jsonl",
+  "source_baseline_commit": "debe507dae340483879fe44976066548b747ba8a",
+  "nodes": [
+    {
+      "id": "tax20261115strutture::composition",
+      "name": "Composizione individuale",
+      "role": "entity_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::multipart_work",
+      "name": "Composizione plurimovimentale",
+      "role": "composition_structure",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::movement",
+      "name": "Movimento o numero musicale",
+      "role": "part_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::section",
+      "name": "Sezione interna",
+      "role": "part_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::integrated_cycle",
+      "name": "Ciclo musicale unitario",
+      "role": "grouping_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::editorial_collection",
+      "name": "Raccolta editoriale o catalografica",
+      "role": "grouping_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::group_of_works",
+      "name": "Insieme di opere autonome",
+      "role": "grouping_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::version",
+      "name": "Versione o revisione",
+      "role": "derivative_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::arrangement",
+      "name": "Arrangiamento o trascrizione",
+      "role": "derivative_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::extraction",
+      "name": "Estratto o suite derivata",
+      "role": "derivative_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::catalogue_ref",
+      "name": "Numero di catalogo o opus",
+      "role": "identifier_kind",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115strutture::publication",
+      "name": "Edizione o pubblicazione",
+      "role": "document_kind",
+      "status": "PROPOSED_STAGING"
+    }
+  ],
+  "edges": [
+    {
+      "id": "structures20261115:001",
+      "source": "tax20261115strutture::multipart_work",
+      "target": "tax20261115strutture::composition",
+      "relation": "subtype_of",
+      "rationale": "Opera unica nonostante sia articolata in movimenti",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:002",
+      "source": "tax20261115strutture::movement",
+      "target": "tax20261115strutture::multipart_work",
+      "relation": "part_of_when_attested",
+      "rationale": "Movimento subordinato, non composizione autonoma se parte dell'opera",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:003",
+      "source": "tax20261115strutture::section",
+      "target": "tax20261115strutture::composition",
+      "relation": "part_of_when_attested",
+      "rationale": "Parte interna di un'opera: identificare livello gerarchico",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:004",
+      "source": "tax20261115strutture::integrated_cycle",
+      "target": "tax20261115strutture::group_of_works",
+      "relation": "qualified_cycle_relationship",
+      "rationale": "Ciclo unitario: verificare se componenti sono opere distinte o parti",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:005",
+      "source": "tax20261115strutture::editorial_collection",
+      "target": "tax20261115strutture::group_of_works",
+      "relation": "collection_relationship",
+      "rationale": "Raccolta di opere: raggruppamento non sinonimo di opera",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:006",
+      "source": "tax20261115strutture::publication",
+      "target": "tax20261115strutture::editorial_collection",
+      "relation": "documents_when_attested",
+      "rationale": "Edizione e raccolta musicale non sono identità coincidenti",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:007",
+      "source": "tax20261115strutture::catalogue_ref",
+      "target": "tax20261115strutture::composition",
+      "relation": "identifier_of_when_attested",
+      "rationale": "Numero d'opus o catalogo può descrivere una singola composizione o gruppo",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:008",
+      "source": "tax20261115strutture::version",
+      "target": "tax20261115strutture::composition",
+      "relation": "version_of_when_attested",
+      "rationale": "Versione diversa della stessa composizione, salvo revisioni ontologiche documentate",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:009",
+      "source": "tax20261115strutture::arrangement",
+      "target": "tax20261115strutture::composition",
+      "relation": "derived_from_when_attested",
+      "rationale": "Trascrizione, arrangiamento e originale conservano relazioni qualificate",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:010",
+      "source": "tax20261115strutture::extraction",
+      "target": "tax20261115strutture::composition",
+      "relation": "extracted_from_when_attested",
+      "rationale": "Una suite derivata può essere distinta dall'opera originale; non è automaticamente un movimento",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:011",
+      "source": "atlantis::opera:quattro-stagioni",
+      "target": "tax20261115strutture::editorial_collection",
+      "relation": "candidate_classification",
+      "rationale": "Il nodo storico richiede disambiguazione: raccolta di quattro concerti autonomi, non composizione unica",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:012",
+      "source": "atlantis::opera:sei-quartetti-haydn-mozart-1785",
+      "target": "tax20261115strutture::editorial_collection",
+      "relation": "candidate_classification",
+      "rationale": "Sei quartetti individuali, con insieme editoriale o dedicatario",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:013",
+      "source": "atlantis::opera:sonate-beethoven-op2-1796",
+      "target": "tax20261115strutture::editorial_collection",
+      "relation": "candidate_classification",
+      "rationale": "Op. 2 comprende tre sonate individuali",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:014",
+      "source": "atlantis::opera:smetana-ma-vlast-1874-1879",
+      "target": "tax20261115strutture::integrated_cycle",
+      "relation": "candidate_classification",
+      "rationale": "Sei poemi sinfonici con identità compositive distinte",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:015",
+      "source": "atlantis::opera:an-die-ferne-geliebte-op98",
+      "target": "tax20261115strutture::integrated_cycle",
+      "relation": "candidate_classification",
+      "rationale": "Ciclo di sei Lieder, non sei raccolte",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:016",
+      "source": "flaminio_lotto1::audit:fl01:alf-cpe:collection:cpe:wq43",
+      "target": "tax20261115strutture::editorial_collection",
+      "relation": "candidate_classification",
+      "rationale": "Sei concerti distinti nel Wq 43",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:017",
+      "source": "flaminio_lotto1::audit:fl01:alf-cpe:collection:cpe:wq182",
+      "target": "tax20261115strutture::editorial_collection",
+      "relation": "candidate_classification",
+      "rationale": "Sinfonie con identità individuali",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:018",
+      "source": "flaminio_lotto1::audit:fl01:beethoven29:collection:excel4708",
+      "target": "tax20261115strutture::integrated_cycle",
+      "relation": "candidate_classification",
+      "rationale": "Possibile allineamento a An die ferne Geliebte; verificare forme, date e catalogo",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:019",
+      "source": "flaminio_lotto1::audit:fl01:jsb03:work:excel3081",
+      "target": "tax20261115strutture::composition",
+      "relation": "candidate_classification",
+      "rationale": "Concerto brandeburghese n.1, composizione autonoma",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:020",
+      "source": "flaminio_lotto1::audit:fl01:jsb03:work:excel3082",
+      "target": "tax20261115strutture::composition",
+      "relation": "candidate_classification",
+      "rationale": "Concerto brandeburghese n.2, composizione autonoma",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:021",
+      "source": "flaminio_lotto1::audit:fl01:bbb:work:excel4263",
+      "target": "tax20261115strutture::multipart_work",
+      "relation": "candidate_classification",
+      "rationale": "Suite per pianoforte in quattro movimenti, una composizione",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:022",
+      "source": "flaminio_lotto1::audit:fl01:bbb:work:excel4291",
+      "target": "tax20261115strutture::multipart_work",
+      "relation": "candidate_classification",
+      "rationale": "Dance Suite di Bartók, opera unica a più danze",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "structures20261115:023",
+      "source": "flaminio_lotto1::audit:fl01:jsb04:doc:part:BWV1004-5",
+      "target": "tax20261115strutture::movement",
+      "relation": "candidate_classification",
+      "rationale": "Ciaccona come movimento della partita",
+      "status": "PROPOSED",
+      "production_gate": "CLOSED",
+      "rooted_expansion_only": true
+    }
+  ],
+  "grounded_candidates": [
+    {
+      "source_key": "atlantis::opera:quattro-stagioni",
+      "role": "collection_candidate",
+      "reason": "Il nodo storico richiede disambiguazione: raccolta di quattro concerti autonomi, non composizione unica"
+    },
+    {
+      "source_key": "atlantis::opera:sei-quartetti-haydn-mozart-1785",
+      "role": "collection_candidate",
+      "reason": "Sei quartetti individuali, con insieme editoriale o dedicatario"
+    },
+    {
+      "source_key": "atlantis::opera:sonate-beethoven-op2-1796",
+      "role": "collection_candidate",
+      "reason": "Op. 2 comprende tre sonate individuali"
+    },
+    {
+      "source_key": "atlantis::opera:smetana-ma-vlast-1874-1879",
+      "role": "cycle_candidate",
+      "reason": "Sei poemi sinfonici con identità compositive distinte"
+    },
+    {
+      "source_key": "atlantis::opera:an-die-ferne-geliebte-op98",
+      "role": "integrated_song_cycle_candidate",
+      "reason": "Ciclo di sei Lieder, non sei raccolte"
+    },
+    {
+      "source_key": "flaminio_lotto1::audit:fl01:alf-cpe:collection:cpe:wq43",
+      "role": "collection_candidate",
+      "reason": "Sei concerti distinti nel Wq 43"
+    },
+    {
+      "source_key": "flaminio_lotto1::audit:fl01:alf-cpe:collection:cpe:wq182",
+      "role": "collection_candidate",
+      "reason": "Sinfonie con identità individuali"
+    },
+    {
+      "source_key": "flaminio_lotto1::audit:fl01:beethoven29:collection:excel4708",
+      "role": "crossdb_identity_candidate",
+      "reason": "Possibile allineamento a An die ferne Geliebte; verificare forme, date e catalogo"
+    },
+    {
+      "source_key": "flaminio_lotto1::audit:fl01:jsb03:work:excel3081",
+      "role": "individual_work_candidate",
+      "reason": "Concerto brandeburghese n.1, composizione autonoma"
+    },
+    {
+      "source_key": "flaminio_lotto1::audit:fl01:jsb03:work:excel3082",
+      "role": "individual_work_candidate",
+      "reason": "Concerto brandeburghese n.2, composizione autonoma"
+    },
+    {
+      "source_key": "flaminio_lotto1::audit:fl01:bbb:work:excel4263",
+      "role": "multipart_work_candidate",
+      "reason": "Suite per pianoforte in quattro movimenti, una composizione"
+    },
+    {
+      "source_key": "flaminio_lotto1::audit:fl01:bbb:work:excel4291",
+      "role": "multipart_work_candidate",
+      "reason": "Dance Suite di Bartók, opera unica a più danze"
+    },
+    {
+      "source_key": "flaminio_lotto1::audit:fl01:jsb04:doc:part:BWV1004-5",
+      "role": "movement_candidate",
+      "reason": "Ciaccona come movimento della partita"
+    }
+  ],
+  "classification_rules": [
+    "Una Suite o Sonata con movimenti è una composizione e compare una sola volta fra le Opere.",
+    "Una raccolta o un numero d'opus può contenere più opere autonome; non identificare la raccolta con ogni singola opera.",
+    "Cicli vocali e sinfonici richiedono distinzione fra ciclo e parti/opere componenti; evitare soluzione unica per tutti.",
+    "La forma di un movimento non rende il movimento un'opera indipendente.",
+    "Distinguiamo version_of, part_of, member_of_cycle, part_of_collection, derived_from, has_form e catalogue_identifier.",
+    "Non dedurre una relazione di appartenenza cronologica dalla semplice concatenazione dei collegamenti.",
+    "Tutte le relazioni mantengono il loro rationale e provenienza.",
+    "Esempi con status candidate non sono merge convalidati."
+  ],
+  "production_gate": "CLOSED",
+  "flaminio_lotto2": "BLOCKED"
+}
