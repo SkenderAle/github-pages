@@ -97,7 +97,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[],comparison:null,manualPositions:new Map()};
+const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[],comparison:null,manualPositions:new Map()};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
