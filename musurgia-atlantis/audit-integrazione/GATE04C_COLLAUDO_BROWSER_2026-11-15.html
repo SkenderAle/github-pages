@@ -102,6 +102,20 @@ async function run(){
   record("Amy Beach al II livello = 5 nodi",nodes()===5,"nodi "+nodes());
   d.getElementById("resetBtn").click();await delay(180);
   record("Reset ripristina BWV 140 al livello 1",focus().includes("BWV 140")&&nodes()===5&&d.getElementById("levelRange").value==="1","nodi "+nodes());
+  // Regressione reale: dopo la segnalazione Android «generi vuoti / opere in altri».
+  var bachPreset=Array.from(d.querySelectorAll("#chapters button")).find(function(x){return x.textContent==="Bach"});
+  if(bachPreset)bachPreset.click();await delay(280);
+  record("Radice Bach: tutti i collegamenti filtrati",!!bachPreset&&nodes()===310&&links()===325,"nodi "+nodes()+", archi "+links());
+  d.getElementById("soloGeneri").click();await delay(180);
+  record("Bach + SOLO generi e forme: 26 nodi e 25 archi",nodes()===26&&links()===25,"nodi "+nodes()+", archi "+links());
+  record("La categoria Generi e forme risulta selezionata",d.querySelector('[data-type="nodo-di-senso"]').getAttribute("aria-pressed")==="true"&&d.querySelector('[data-type="opera"]').getAttribute("aria-pressed")==="false");
+  d.getElementById("soloOpere").click();await delay(180);
+  record("Bach + SOLO opere: 284 nodi / 299 archi",nodes()===284&&links()===299,"nodi "+nodes()+", archi "+links());
+  d.getElementById("tutteCategorie").click();await delay(180);
+  record("Ripristino di tutte le categorie: 310 nodi",nodes()===310,"nodi "+nodes());
+  d.querySelector('[data-type="nodo-di-senso"]').click();await delay(180);
+  record("Un tocco sul chip Generi isola la categoria",nodes()===26&&links()===25,"nodi "+nodes()+", archi "+links());
+  d.getElementById("tutteCategorie").click();await delay(180);
   // Campionamento bitmap soltanto se esiste un contesto 2D del renderer compatibile.
   if(canvas&&footer.toLowerCase().includes("due dita")){
    try{
