@@ -74,7 +74,7 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=gate-20261115-cantate119-2";
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=gate-structural-20261115-3";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -387,7 +387,18 @@ try{
  refreshToggles();showEntityResults();
  if(!db.nodes.find(n=>n.id===state.root))state.root=db.nodes.find(n=>n.visibility!=="documentary")?.id;
  if(state.root)selectRoot(state.root);
-}catch(e){status("ERRORE: "+e.message,true);$("detail").textContent="Il modulo federato non è stato caricato. Verificare la console e le sorgenti; i grafi originali non sono stati modificati."}
+}catch(e){
+ let summary=e.message;
+ if(summary.startsWith("Gate integrita' NON superato: ")){
+   try{const info=JSON.parse(summary.slice("Gate integrita' NON superato: ".length));
+     summary="Controlli non superati: "+(info.failed||[]).join(", ");
+   }catch(_){}
+ }
+ status("ERRORE: "+summary,true);
+ $("detail").textContent="Controllo integrità non superato. Nessun dato originale è stato modificato.";
+ const details=document.createElement("details"),label=document.createElement("summary");
+ label.textContent="Dettagli tecnici dell'errore";details.append(label,make("pre",e.message));$("detail").append(details);
+}
 </script>
 </body>
 </html>
