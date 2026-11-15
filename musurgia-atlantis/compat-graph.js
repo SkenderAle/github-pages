@@ -103,18 +103,18 @@ function makeGraph(host){
   // Negative camera depth is toward the viewer. Far-side nodes remain visible
   // as translucent points, but their captions appear only when rotated forward.
   function frontness(p){return Math.max(0,Math.min(1,.5-p.z/125));}
-  function alphaAt(p){return p.n._focus?1:.19+.81*frontness(p);}
+  function alphaAt(p){return p.n._focus||p.n._compareEndpoint?1:.19+.81*frontness(p);}
   function drawCaption(p,r,occupied){
-    const n=p.n,root=!!n._focus;
+    const n=p.n,root=!!n._focus,endpoint=!!n._compareEndpoint;
     if(!root){
       if(!n._label && n.id!==hovered && n.id!==selected)return;
-      if(frontness(p)<.68)return; // Same foreground threshold as opaque nodes.
+      if(!endpoint&&frontness(p)<.68)return; // Gli estremi restano visibili anche sul retro.
     }
     const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
-    const size=root?13:n._depth===1?11.5:11;
-    ctx.font=(root||n._depth===1?'600 ':'500 ')+size+'px system-ui';
+    const size=root||endpoint?13:n._depth===1?11.5:11;
+    ctx.font=(root||endpoint||n._depth===1?'600 ':'500 ')+size+'px system-ui';
     const labelWidth=Math.ceil(ctx.measureText(label).width+13);
-    const width=Math.min(W-12,labelWidth),height=root?24:21;
+    const width=Math.min(W-12,labelWidth),height=root||endpoint?24:21;
     const shift=r+9;
     const candidates=[
       [p.x-width/2,p.y-shift-height],
@@ -137,9 +137,9 @@ function makeGraph(host){
     if(!rect)return;
     occupied.push(rect);
     ctx.globalAlpha=1;
-    ctx.fillStyle=root?'rgba(24,43,49,.94)':'rgba(4,19,30,.88)';
+    ctx.fillStyle=endpoint?'rgba(70,55,16,.96)':root?'rgba(24,43,49,.94)':'rgba(4,19,30,.88)';
     ctx.fillRect(rect.x,rect.y,rect.w,rect.h);
-    ctx.fillStyle=root?'#ffe1a1':n._depth===1?'#ecf8f3':'#d7e6e3';
+    ctx.fillStyle=endpoint?'#fff0b2':root?'#ffe1a1':n._depth===1?'#ecf8f3':'#d7e6e3';
     ctx.textAlign='left';ctx.textBaseline='middle';
     ctx.fillText(label,rect.x+6,rect.y+rect.h/2,Math.max(10,rect.w-12));
     ctx.textBaseline='alphabetic';
@@ -169,13 +169,13 @@ function makeGraph(host){
     }
     projected.sort((a,b)=>b.z-a.z);
     for(const p of projected){
-      const n=p.n,chapter=n.category==='capitolo',root=!!n._focus;
+      const n=p.n,chapter=n.category==='capitolo',root=!!n._focus,endpoint=!!n._compareEndpoint;
       const base=nodeColors(n);
-      const r=(root?9.5:chapter?6.8:Math.min(4.5,2+Math.sqrt(Math.max(1,nodeSize(n)))*.3))*Math.max(.52,Math.min(2.4,p.scale*Math.sqrt(zoom)));
+      const r=(endpoint?11:root?9.5:chapter?6.8:Math.min(4.5,2+Math.sqrt(Math.max(1,nodeSize(n)))*.3))*Math.max(.52,Math.min(2.4,p.scale*Math.sqrt(zoom)));
       p.r=r;
       if(p.x<-40||p.y<-30||p.x>W+40||p.y>H+40)continue;
       ctx.globalAlpha=alphaAt(p);ctx.fillStyle=base;
-      ctx.shadowBlur=root?23:frontness(p)>.68?chapter?15:8:2;
+      ctx.shadowBlur=endpoint?28:root?23:frontness(p)>.68?chapter?15:8:2;
       ctx.shadowColor=colorRgba(base,.55);
       ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*Math.PI);ctx.fill();
       ctx.shadowBlur=0;ctx.globalAlpha=1;
@@ -183,8 +183,8 @@ function makeGraph(host){
     // Draw labels in one foreground-only pass; keep the center first and avoid
     // collisions. Rotating naturally reveals captions hidden behind the nebula.
     const occupied=[];
-    const captions=projected.filter(p=>p.n._focus||p.n._label||p.n.id===hovered||p.n.id===selected)
-      .sort((a,b)=>(b.n._focus?1:0)-(a.n._focus?1:0)
+    const captions=projected.filter(p=>p.n._focus||p.n._compareEndpoint||p.n._label||p.n.id===hovered||p.n.id===selected)
+      .sort((a,b)=>(b.n._compareEndpoint?2:b.n._focus?1:0)-(a.n._compareEndpoint?2:a.n._focus?1:0)
         ||(a.n._depth===1?0:1)-(b.n._depth===1?0:1)
         ||a.z-b.z);
     for(const p of captions)drawCaption(p,p.r||4,occupied);
