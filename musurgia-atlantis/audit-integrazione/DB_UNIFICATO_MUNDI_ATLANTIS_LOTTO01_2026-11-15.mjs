@@ -165,9 +165,11 @@ export function buildUnifiedDatabase(d){
  const mundiLensRelations=(mundi.lenses?.relations||[]).filter(e=>
    typeof e.status==="string"&&e.status.startsWith("documentato")&&
    Array.isArray(e.sources)&&e.sources.length>0&&
-   maps.mundi.has(e.source)&&maps.mundi.has(e.target));
+   (maps.mundi.has(e.source)||maps.mundi_extension.has(e.source))&&
+   (maps.mundi.has(e.target)||maps.mundi_extension.has(e.target)));
  mundiLensRelations.forEach((e,i)=>{
-   const source=maps.mundi.get(e.source),target=maps.mundi.get(e.target);
+   const source=maps.mundi.get(e.source)||maps.mundi_extension.get(e.source);
+   const target=maps.mundi.get(e.target)||maps.mundi_extension.get(e.target);
    links.push({id:"mundi::lenti::"+(e.id||i),source,target,
      relation:e.kind||e.group||"relazione_documentata",group:e.group||null,
      forward:e.forward||null,reverse:e.reverse||null,
