@@ -195,9 +195,12 @@ function comparisonProjection(db,edges,index){
  for(const e of meaningful){
    const da=distFrom.get(e.source),db=distFrom.get(e.target);
    const ta=distTo.get(e.source),tb=distTo.get(e.target);
-   const forward=da!==undefined&&tb!==undefined&&da+1+tb<=maxLength&&da<db&&
+   // Valuta ogni arco dai DUE estremi simmetricamente. La distanza BFS
+   // orientata da 'from' non può decidere da sola quali archi conservare:
+   // un legame genere-autore vale indipendentemente dall'ordine delle ricerche.
+   const forward=da!==undefined&&tb!==undefined&&da+1+tb<=maxLength&&
      da<=depthLimit&&tb<=depthLimit;
-   const reverse=db!==undefined&&ta!==undefined&&db+1+ta<=maxLength&&db<da&&
+   const reverse=db!==undefined&&ta!==undefined&&db+1+ta<=maxLength&&
      db<=depthLimit&&ta<=depthLimit;
    if(!forward&&!reverse)continue;
    corridor.add(e.source);corridor.add(e.target);corridorEdges.push(e);
@@ -246,7 +249,7 @@ function comparisonProjection(db,edges,index){
  }
  return {nodes:db.nodes.filter(n=>corridor.has(n.id)),links:corridorEdges,parents,
    distance,comparison:true,paths:examplePaths.slice(0,8),shortest,maxLength,
-   pathCoverage:"corridoio",categories,depthLimit,exampleCount:examplePaths.length,
+   pathCoverage:"corridoio",categories,depthLimit,distFrom,distTo,exampleCount:examplePaths.length,
    corridorCount:corridor.size,meaningfulLinkCount:meaningful.length};
 }
 function selectRoot(id){
@@ -546,9 +549,16 @@ function draw(){
  state.parents=filtered.parents;state.distances=filtered.distance;
  const overview=!!filtered.overview,comparing=!!filtered.comparison;
  const nodes=filtered.nodes.map(n=>{
-   const center=!overview&&n.id===(comparing?state.comparison.from:(state.focus||state.root));
-   return {...n,_focus:center,_compareEndpoint:comparing&&(n.id===state.comparison.from||n.id===state.comparison.to),_depth:filtered.distance.get(n.id)??0,
-     ...(center?{fx:0,fy:0,fz:0}:{}),
+   const center=!overview&&!comparing&&n.id===(state.focus||state.root);
+   const compareEndpoint=comparing&&(n.id===state.comparison.from||n.id===state.comparison.to);
+   const pairX=comparing&&n.id===state.comparison.from?-170:comparing&&n.id===state.comparison.to?170:null;
+   return {...n,_focus:center,_compareEndpoint:compareEndpoint,
+     _compareStart:comparing&&n.id===state.comparison.from,
+     _compareEnd:comparing&&n.id===state.comparison.to,
+     _compareDistA:comparing?(filtered.distFrom?.get(n.id)??null):null,
+     _compareDistB:comparing?(filtered.distTo?.get(n.id)??null):null,
+     _depth:filtered.distance.get(n.id)??0,
+     ...(center?{fx:0,fy:0,fz:0}:pairX!==null?{fx:pairX,fy:0,fz:0}:{}),
      _overview:overview,_label:!overview&&(comparing?true:state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))};
  });
  const links=filtered.links.map(e=>({...e}));
