@@ -52,7 +52,7 @@ main.details-collapsed #detailsPanel{display:none}
  #detailsPanel{grid-column:1 / -1;min-height:260px;max-height:46dvh;border-top:1px solid var(--edge)}}
 @media(max-width:640px){header{padding:10px}h1{font-size:18px}main,main.details-collapsed{display:flex;flex-direction:column;height:auto}aside:first-child{order:2;max-height:none}section{order:1;height:58dvh;min-height:390px;flex:none}#detailsPanel{order:3;max-height:none}.graphbar{top:6px;left:6px;right:6px;gap:5px}.graphbar button{font-size:12px}}
 </style>
-<script src="../compat-graph.js"></script>
+<script src="../compat-graph.js?v=nebula-zoom-20261115"></script>
 </head>
 <body>
 <header><div><h1>Musurgia Mundi – Atlantis · rete unificata</h1><p>Staging non distruttivo · Mundi + Atlantis riuniti · 500 schede Flaminio</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle sorgenti…</div></header>
@@ -91,7 +91,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:null,cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[]};
+const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[]};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
