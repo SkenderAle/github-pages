@@ -318,7 +318,7 @@ async function init(){
  .linkColor(linkColor).linkOpacity(0.27).linkWidth(e=>(e.tier==='trattazione'?1.2:.75))
  .linkDirectionalArrowLength(0)
  .onNodeClick(n=>focusNode(n.id,true))
- .onLinkClick(e=>renderEdgeDetail(e))
+ .linkLabel(atlasLinkTooltip).onLinkClick(e=>renderEdgeDetail(e))
  .onNodeHover(n=>document.body.style.cursor=n?'pointer':'default')
  .onBackgroundClick(()=>{$('suggestions').classList.remove('visible')})
  .width(innerWidth).height(innerHeight)
@@ -602,7 +602,7 @@ const external=$('atlantis3DEngine');
 if(external) external.addEventListener('load',()=>{if(preferCanvas||typeof ForceGraph3D!=='function'||!graph?.isFallback||!DATA)return;
 let mountPoint=null; try {const oldGraph=graph;mountPoint=document.createElement('div');mountPoint.style.cssText='position:absolute;inset:0;z-index:3';$('graph').appendChild(mountPoint);const newGraph=ForceGraph3D(mountPoint,{controlType:'orbit'}).backgroundColor('#07141f').showNavInfo(false).nodeRelSize(4.5).nodeResolution(7)
  .nodeVal(n=>n.category==='capitolo'?14:(grp(n)==='nodo-di-senso'?3.7:(grp(n)==='opera'?3:2.5))).nodeLabel(n=>textSafe(n.name)).nodeColor(nodeColor)
- .linkColor(linkColor).linkOpacity(.27).linkWidth(e=>e.tier==='trattazione'?1.2:.75).onNodeClick(n=>focusNode(n.id,true)).onLinkClick(e=>renderEdgeDetail(e))
+ .linkColor(linkColor).linkOpacity(.27).linkWidth(e=>e.tier==='trattazione'?1.2:.75).onNodeClick(n=>focusNode(n.id,true)).linkLabel(atlasLinkTooltip).onLinkClick(e=>renderEdgeDetail(e))
  .onNodeHover(n=>document.body.style.cursor=n?'pointer':'default').onBackgroundClick(()=>$('suggestions').classList.remove('visible'))
  .width(innerWidth).height(innerHeight).warmupTicks(25).cooldownTicks(250);if(newGraph.d3Force('charge'))newGraph.d3Force('charge').strength(-95);
  graph=newGraph;atlasSignature='';oldGraph.destroy();update();$('footer').textContent='Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo';setTimeout(()=>graph.zoomToFit(700,80),1200);
