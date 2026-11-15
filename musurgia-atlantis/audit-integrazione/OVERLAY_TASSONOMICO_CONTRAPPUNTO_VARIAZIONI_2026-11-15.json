@@ -1,0 +1,423 @@
+{
+  "schema": "musurgia-taxonomy-contrapuntal-variation-v1",
+  "status": "IN_REVIEW_STAGING_ONLY",
+  "date": "2026-11-15",
+  "source_blobs": {
+    "mundi": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "atlantis": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "flaminio": "6f1793f3d8b07469a458c7bbbd768eb8cb37050e"
+  },
+  "notes": [
+    "Non caricato dal builder e non pubblicato nel grafo pubblico",
+    "Allineamenti di ruolo non rappresentano fusioni né nuovi nodi canonici",
+    "Distingue opera, raccolta, parte, tecnica, forma e organico",
+    "Ricerca lessicale non significa copertura musicologica completa",
+    "Verificare tutte le relazioni storiche e fonti prima di FAMILY_VALIDATED"
+  ],
+  "nodes": [
+    {
+      "id": "tax20261115cf::family:contrappunto",
+      "name": "Scrittura contrappuntistica",
+      "kind": "procedimento",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::family:variazione",
+      "name": "Procedimenti di variazione",
+      "kind": "procedimento",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::processo:imitazione",
+      "name": "Imitazione contrappuntistica",
+      "kind": "tecnica",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::processo:canone",
+      "name": "Canone",
+      "kind": "tecnica_forma",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::processo:ostinato",
+      "name": "Basso ostinato",
+      "kind": "tecnica",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::form:fuga",
+      "name": "Fuga",
+      "kind": "forma_e_tecnica",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::form:ricercare",
+      "name": "Ricercare",
+      "kind": "forma_storica",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::form:passacaglia",
+      "name": "Passacaglia",
+      "kind": "forma",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::form:ciaccona",
+      "name": "Ciaccona",
+      "kind": "forma",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::form:tema-variazioni",
+      "name": "Tema e variazioni",
+      "kind": "forma",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::form:variazioni-corale",
+      "name": "Variazioni su corale",
+      "kind": "forma",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::form:variazioni-canoniche",
+      "name": "Variazioni canoniche",
+      "kind": "forma",
+      "status": "PROPOSED_STAGING_ONLY"
+    },
+    {
+      "id": "tax20261115cf::form:invenzione",
+      "name": "Invenzione",
+      "kind": "forma_contrappuntistica",
+      "status": "PROPOSED_STAGING_ONLY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "cf20261115:001",
+      "source": "mundi::forma-fuga",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "canonical_role_alignment",
+      "rationale": "La Fuga Mundi è una forma-tecnica, non un sottotipo di Suite",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:002",
+      "source": "atlantis::senso:fuga",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "related_broader_sense_not_identity",
+      "rationale": "Atlantis include anche contrappunto: evitare fusione integrale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:003",
+      "source": "mundi::forma-ricercare",
+      "target": "tax20261115cf::form:ricercare",
+      "predicate": "canonical_role_alignment",
+      "rationale": "Identità Mundi–Atlantis già curata; nodo solo di navigazione, non duplicare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:004",
+      "source": "atlantis::senso:ricercare",
+      "target": "tax20261115cf::form:ricercare",
+      "predicate": "canonical_role_alignment",
+      "rationale": "Identità curata preesistente",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:005",
+      "source": "mundi::forma-variazioni",
+      "target": "tax20261115cf::form:tema-variazioni",
+      "predicate": "broader_to_narrower",
+      "rationale": "Variazioni è famiglia storicamente ampia, tema e variazioni una forma specifica",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:006",
+      "source": "mundi::famiglia-ciaccona-passacaglia",
+      "target": "tax20261115cf::form:ciaccona",
+      "predicate": "has_distinct_member",
+      "rationale": "Ciaccona e passacaglia non sono due sinonimi universali",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:007",
+      "source": "mundi::famiglia-ciaccona-passacaglia",
+      "target": "tax20261115cf::form:passacaglia",
+      "predicate": "has_distinct_member",
+      "rationale": "Tradizioni differenti e sovrapposizioni storiche",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:008",
+      "source": "tax20261115cf::processo:canone",
+      "target": "tax20261115cf::family:contrappunto",
+      "predicate": "related_to_contrapuntal_practice",
+      "rationale": "Relazione di tecnica/formazione, non genealogia rigida",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:009",
+      "source": "tax20261115cf::processo:imitazione",
+      "target": "tax20261115cf::family:contrappunto",
+      "predicate": "related_to_contrapuntal_practice",
+      "rationale": "Relazione di tecnica/formazione, non genealogia rigida",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:010",
+      "source": "tax20261115cf::form:fuga",
+      "target": "tax20261115cf::family:contrappunto",
+      "predicate": "related_to_contrapuntal_practice",
+      "rationale": "Relazione di tecnica/formazione, non genealogia rigida",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:011",
+      "source": "tax20261115cf::form:ricercare",
+      "target": "tax20261115cf::family:contrappunto",
+      "predicate": "related_to_contrapuntal_practice",
+      "rationale": "Relazione di tecnica/formazione, non genealogia rigida",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:012",
+      "source": "tax20261115cf::form:invenzione",
+      "target": "tax20261115cf::family:contrappunto",
+      "predicate": "related_to_contrapuntal_practice",
+      "rationale": "Relazione di tecnica/formazione, non genealogia rigida",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:013",
+      "source": "tax20261115cf::form:passacaglia",
+      "target": "tax20261115cf::family:variazione",
+      "predicate": "belongs_to_variation_family",
+      "rationale": "Affinità procedurale: storicità e strutture specifiche da preservare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:014",
+      "source": "tax20261115cf::form:ciaccona",
+      "target": "tax20261115cf::family:variazione",
+      "predicate": "belongs_to_variation_family",
+      "rationale": "Affinità procedurale: storicità e strutture specifiche da preservare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:015",
+      "source": "tax20261115cf::form:tema-variazioni",
+      "target": "tax20261115cf::family:variazione",
+      "predicate": "belongs_to_variation_family",
+      "rationale": "Affinità procedurale: storicità e strutture specifiche da preservare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:016",
+      "source": "tax20261115cf::form:variazioni-corale",
+      "target": "tax20261115cf::family:variazione",
+      "predicate": "belongs_to_variation_family",
+      "rationale": "Affinità procedurale: storicità e strutture specifiche da preservare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:017",
+      "source": "tax20261115cf::form:variazioni-canoniche",
+      "target": "tax20261115cf::family:variazione",
+      "predicate": "belongs_to_variation_family",
+      "rationale": "Affinità procedurale: storicità e strutture specifiche da preservare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:018",
+      "source": "tax20261115cf::processo:ostinato",
+      "target": "tax20261115cf::form:passacaglia",
+      "predicate": "characteristic_procedure",
+      "rationale": "Spesso fondata su basso ostinato, ma non essenza esclusiva",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:019",
+      "source": "tax20261115cf::processo:ostinato",
+      "target": "tax20261115cf::form:ciaccona",
+      "predicate": "characteristic_procedure",
+      "rationale": "Relazione frequente, non identità",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:020",
+      "source": "tax20261115cf::processo:canone",
+      "target": "tax20261115cf::form:variazioni-canoniche",
+      "predicate": "technique_used_in",
+      "rationale": "La forma impiega procedure canoniche, non tutte le variazioni lo fanno",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:021",
+      "source": "tax20261115cf::form:fuga",
+      "target": "tax20261115cf::form:ricercare",
+      "predicate": "historical_relationship_not_identity",
+      "rationale": "Continuità storiche documentabili ma non sinonimia generale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:022",
+      "source": "flaminio::audit:fl01:jsb03:genre:partita-corale",
+      "target": "tax20261115cf::form:variazioni-corale",
+      "predicate": "qualified_form_alignment",
+      "rationale": "Partita su corale come ciclo di variazioni; non collegare automaticamente a Suite",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:023",
+      "source": "flaminio::audit:fl01:jsb03:genre:variazioni-canoniche-corale",
+      "target": "tax20261115cf::form:variazioni-canoniche",
+      "predicate": "qualified_form_alignment",
+      "rationale": "Variazioni canoniche basate su corale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:024",
+      "source": "flaminio::audit:fl01:jsb06:genre:passacaglia-fuga-organo",
+      "target": "tax20261115cf::form:passacaglia",
+      "predicate": "contains_form",
+      "rationale": "Tipo composito Passacaglia e Fuga; distinguere movimenti",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:025",
+      "source": "flaminio::audit:fl01:jsb06:genre:passacaglia-fuga-organo",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "contains_form",
+      "rationale": "Non creare due composizioni autonome",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:026",
+      "source": "flaminio::audit:fl01:jsb06:genre:aria-variazioni",
+      "target": "tax20261115cf::form:tema-variazioni",
+      "predicate": "qualified_form_alignment",
+      "rationale": "Goldberg: aria e variazioni; singole variazioni sono parti",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:027",
+      "source": "flaminio::audit:fl01:jsb04:doc:part:BWV1004-5",
+      "target": "tax20261115cf::form:ciaccona",
+      "predicate": "documented_movement_has_form",
+      "rationale": "Ciaccona è movimento della Partita per violino BWV1004",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:028",
+      "source": "flaminio::audit:fl01:jsb06:doc:part:bwv582-passacaglia",
+      "target": "tax20261115cf::form:passacaglia",
+      "predicate": "documented_part_has_form",
+      "rationale": "Passacaglia di BWV582, parte non opera separata",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:029",
+      "source": "flaminio::audit:fl01:jsb06:doc:part:bwv582-fuga",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "documented_part_has_form",
+      "rationale": "Fuga conclusiva BWV582",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:030",
+      "source": "flaminio::audit:fl01:jsb06:work:excel3797",
+      "target": "tax20261115cf::form:passacaglia",
+      "predicate": "candidate_work_has_form",
+      "rationale": "La verifica dell'identità e attribuzione non si deduce dal titolo",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:031",
+      "source": "flaminio::audit:fl01:jsb06:work:excel3977",
+      "target": "tax20261115cf::form:tema-variazioni",
+      "predicate": "candidate_work_has_form",
+      "rationale": "Variazioni Goldberg BWV988 come composizione unica",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:032",
+      "source": "flaminio::audit:fl01:jsb04:doc:part:BWV1079-ricercar3",
+      "target": "tax20261115cf::form:ricercare",
+      "predicate": "documented_part_has_form",
+      "rationale": "Ricercar a 3 è parte della raccolta Offerta musicale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:033",
+      "source": "flaminio::audit:fl01:jsb04:doc:part:BWV1079-ricercar6",
+      "target": "tax20261115cf::form:ricercare",
+      "predicate": "documented_part_has_form",
+      "rationale": "Ricercar a 6 è parte della raccolta Offerta musicale",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:034",
+      "source": "atlantis::opera:webern-passacaglia-op1-1908",
+      "target": "tax20261115cf::form:passacaglia",
+      "predicate": "work_has_form",
+      "rationale": "Passacaglia op.1 nel grafo Atlantis",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:035",
+      "source": "atlantis::opera:grosse-fuge-op133",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "work_has_form",
+      "rationale": "Relazione storica con finale originario del Quartetto op130 da preservare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:036",
+      "source": "atlantis::opera:variazioni-eroica-op35",
+      "target": "tax20261115cf::form:tema-variazioni",
+      "predicate": "work_has_form",
+      "rationale": "Variazioni e fuga op35: forma composita, non due opere",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true
+    }
+  ]
+}
