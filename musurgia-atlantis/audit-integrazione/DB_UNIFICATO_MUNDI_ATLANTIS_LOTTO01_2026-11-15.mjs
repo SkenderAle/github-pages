@@ -277,10 +277,28 @@ export function buildUnifiedDatabase(d){
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- if(identity.length!==162||taxonomyIdentity.length!==21||legacyReferences.length!==12||curatedMusicNodes.length!==4||semanticCurated.length!==119||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length||
-    counts.orphan_links||counts.duplicate_link_ids||counts.flaminio_source_records!==500||
-    counts.unique_flaminio_source_records!==500||counts.flaminio_source_nodes!==500||counts.missing_source_rows){
-   throw Error("Gate integrita' NON superato: "+JSON.stringify({counts,expectedNodes,orphans:orphans.slice(0,5),duplicateIDs:dupes.slice(0,5),missing:missing.slice(0,5)}));
+ const expectedLinks=originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length;
+ const failedChecks={
+   persone_riconciliate:identity.length===162,
+   tassonomie_riconciliate:taxonomyIdentity.length===21,
+   riferimenti_legacy:legacyReferences.length===12,
+   nuovi_nodi_curati:curatedMusicNodes.length===4,
+   archi_semantici_curati:semanticCurated.length===curated.semantic_edges.length,
+   nodi_totali:counts.nodes===expectedNodes,
+   archi_totali:counts.links===expectedLinks,
+   archi_orfani:counts.orphan_links===0,
+   identificativi_arco_univoci:counts.duplicate_link_ids===0,
+   schede_registro:counts.flaminio_source_records===500,
+   schede_registro_univoche:counts.unique_flaminio_source_records===500,
+   nodi_scheda:counts.flaminio_source_nodes===500,
+   righe_scheda_collegate:counts.missing_source_rows===0
+ };
+ const failed=Object.entries(failedChecks).filter(([,ok])=>!ok).map(([name])=>name);
+ if(failed.length){
+   throw Error("Gate integrita' NON superato: "+JSON.stringify({
+     failed,counts,expectedNodes,expectedLinks,curatedExpected:curated.semantic_edges.length,
+     orphanSample:orphans.slice(0,5),duplicateIDs:dupes.slice(0,5),missing:missing.slice(0,5)
+   }));
  }
  return {schema:"musurgia-unified-mundi-atlantis-flaminio-lot01-v1",
    status:"STAGING_UNIFICATO_NAVIGABILE_IDENTITA_STORICHE_NON_TUTTE_CERTIFICATE",
