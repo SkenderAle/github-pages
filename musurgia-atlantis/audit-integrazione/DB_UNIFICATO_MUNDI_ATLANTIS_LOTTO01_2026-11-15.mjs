@@ -11,7 +11,8 @@ export const sourcePaths=[
   {key:"atlantis",path:"musurgia-atlantis/grafo.json"},
   {key:"staging",path:"musurgia-atlantis/audit-integrazione/STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_GATE04_COPIA_2026-11-15.json"},
   {key:"registry",path:"musurgia-atlantis/audit-integrazione/DB_FEDERATO_LOTTO01_2026-11-15_REGISTRO_500.json"},
-  {key:"crosswalk",path:"musurgia-atlantis/audit-integrazione/CROSSWALK_GLOBALE_PERSONE_CHECKPOINT21_2026-11-10.json"}
+  {key:"crosswalk",path:"musurgia-atlantis/audit-integrazione/CROSSWALK_GLOBALE_PERSONE_CHECKPOINT21_2026-11-10.json"},
+  {key:"curated",path:"musurgia-atlantis/audit-integrazione/CROSSWALK_TASSONOMICO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.json"}
 ];
 const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[‘’´']/g,"").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
 function categoryFor(layer,n){
@@ -52,12 +53,25 @@ function categoryFor(layer,n){
  return "concetti";
 }
 export function buildUnifiedDatabase(d){
- const {mundi,extension,special,atlantis,staging,registry,crosswalk}=d;
+ const {mundi,extension,special,atlantis,staging,registry,crosswalk,curated}=d;
  const nodes=[],links=[],byID=new Map(),maps={mundi:new Map(),mundi_extension:new Map(),atlantis:new Map(),flaminio:new Map()};
  const atID=new Map(atlantis.nodes.map(n=>[n.id,n]));
  const baseID=new Map(mundi.nodes.map(n=>[n.id,n]));
  const allM=new Map([...mundi.nodes,...extension.nodes].map(n=>[n.id,n]));
  const identity=[],ignored=[],redirect=new Map(),usedA=new Set(),usedM=new Set(),sharedFlaminio=[];
+ const taxonomyIdentity=[],legacyReferences=[],taxSeen=new Set();
+ for(const x of curated.mundi_atlantis){
+   const from=allM.get(x.mundi_id),to=atID.get(x.atlantis_id),tax=String(from?.taxonomy?.class||"").toLowerCase(),sub=String(to?.subtype||"").toLowerCase();
+   const compatible=x.kind==="genere"
+     ?from?.type==="corrente"&&/genere|forma|sottogenere/.test(tax)&&to?.category==="nodo-di-senso"&&/genere|forma/.test(sub)
+     :x.kind==="tradizione"&&from?.type==="corrente"&&/tradizione/.test(tax)&&to?.category==="nodo-di-senso"&&/tradizione/.test(sub);
+   if(!compatible||!x.canonical_label||taxSeen.has(x.mundi_id)||taxSeen.has(x.atlantis_id))throw Error("Crosswalk tassonomico non accettato: "+JSON.stringify(x));
+   taxSeen.add(x.mundi_id);taxSeen.add(x.atlantis_id);
+   redirect.set(x.mundi_id,"atlantis::"+x.atlantis_id);
+   taxonomyIdentity.push({from:"mundi::"+x.mundi_id,to:"atlantis::"+x.atlantis_id,kind:x.kind,canonical_label:x.canonical_label,
+     rationale:x.rationale,status:"EXPLICIT_CURATED_TAXONOMIC_IDENTITY_STAGING"});
+ }
+
  for(const x of crosswalk.records){
    if(x.identity_class!=="documented_nominal"&&x.identity_class!=="documented_alias")continue;
    const from=allM.get(x.legacy_id),to=atID.get(x.target_id);
@@ -90,12 +104,35 @@ export function buildUnifiedDatabase(d){
  atlantis.nodes.forEach(n=>insert("atlantis",n));
  mundi.nodes.forEach(n=>insert("mundi",n,redirect.get(n.id)));
  extension.nodes.forEach(n=>insert("mundi_extension",n,maps.mundi.get(n.id)||redirect.get(n.id)||"mundi::"+n.id));
+ for(const x of curated.mundi_atlantis){
+   const node=byID.get(maps.atlantis.get(x.atlantis_id));
+   if(!node||node.provenance.length<2)throw Error("Unione tassonomica senza entrambe le fonti: "+x.atlantis_id);
+   if(node.name!==x.canonical_label){
+     if(!node.aliases.includes(node.name))node.aliases.push(node.name);
+     node.name=x.canonical_label;
+   }
+ }
+ const legacyById=new Map(curated.flaminio_legacy_mundi.map(x=>[x.flaminio_id,x]));
+ if(legacyById.size!==curated.flaminio_legacy_mundi.length)throw Error("ID legacy ripetuti nel registro");
  staging.nodes.forEach(n=>{
    const a=atID.get(n.id);
    const share=a&&a.category==="persona"&&/persona/.test(String(n.category||""))&&norm(a.name)===norm(n.name);
+   const legacy=legacyById.get(n.id);
+   let mergedLegacy=null;
+   if(legacy){
+     const from=allM.get(legacy.mundi_id),tax=String(from?.taxonomy?.class||"");
+     const rightType=legacy.kind==="persona"
+       ?["persona","compositore"].includes(from?.type)&&n.category==="persona"
+       :from?.type==="corrente"&&/genere|forma/.test(tax)&&/genere|forma/.test(n.category||"");
+     if(!rightType||norm(from?.label)!==norm(n.name)||share)throw Error("Riferimento Flaminio legacy incompatibile: "+n.id);
+     mergedLegacy=maps.mundi.get(legacy.mundi_id)||maps.mundi_extension.get(legacy.mundi_id);
+     if(!mergedLegacy)throw Error("ID Mundi assente nel registro legacy: "+legacy.mundi_id);
+     legacyReferences.push({from:"flaminio::"+n.id,to:mergedLegacy,kind:legacy.kind,status:"EXPLICIT_LEGACY_ID_AND_NAME_MATCH"});
+   }
    if(share)sharedFlaminio.push({source:n.id,target:a.id});
-   insert("flaminio",n,share?"atlantis::"+a.id:null);
+   insert("flaminio",n,share?"atlantis::"+a.id:mergedLegacy);
  });
+ if(legacyReferences.length!==curated.flaminio_legacy_mundi.length)throw Error("Riferimenti legacy non completamente consumati");
  const orphans=[],dupes=[];
  function append(layer,collection,e,i){
    const sid=typeof e.source==="object"?e.source?.id:e.source,tid=typeof e.target==="object"?e.target?.id:e.target;
@@ -137,23 +174,31 @@ export function buildUnifiedDatabase(d){
        note:period?"Il capitolo riguarda il periodo, ma non è lo stesso ente.":"Rubrica affine, non identità musicologica o fusione."}};
    links.push(record);bridges.push({source,target,relation});
  }
+ const semanticCurated=[];
+ for(const x of curated.semantic_edges){
+   if(!byID.has(x.source)||!byID.has(x.target))throw Error("Arco curato senza estremi: "+x.id);
+   const e={id:"crosswalk::semantic::"+x.id,source:x.source,target:x.target,relation:x.relation,layer:"crosswalk",
+     collection:"archi-musicologici-curati",quality:x.quality||"CURATED_STAGING",visibility:"musical",original:x};
+   links.push(e);semanticCurated.push({id:e.id,source:e.source,target:e.target,relation:e.relation});
+ }
  const seen=new Set();for(const e of links){if(seen.has(e.id))dupes.push(e.id);seen.add(e.id);}
  const idRecords=new Set(registry.records.map(r=>r.source_id));
  const stageRecords=new Set(staging.nodes.filter(n=>n.category==="scheda_catalogo_flaminio").map(n=>n.id));
  const connectedRecords=new Set(staging.links.flatMap(e=>[typeof e.source==="object"?e.source?.id:e.source,typeof e.target==="object"?e.target?.id:e.target]));
  const missing=registry.records.filter(r=>!stageRecords.has(r.source_id)||!connectedRecords.has(r.source_id)).map(r=>r.source_id);
  const originalEdges=atlantis.links.length+mundi.edges.length+special.relations.length+extension.relations.length+staging.links.length;
- const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length;
+ const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length;
  const counts={mundi_nodes:mundi.nodes.length,mundi_extension_records:extension.nodes.length,mundi_extension_new_nodes:extension.nodes.filter(n=>!baseID.has(n.id)).length,
    atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,
    mundi_special_relations:special.relations.length,mundi_extension_relations:extension.relations.length,
    atlantis_links:atlantis.links.length,flaminio_links:staging.links.length,original_source_edges:originalEdges,
    integrated_people:identity.length,shared_flaminio_people:sharedFlaminio.length,
-   editorial_bridges:bridges.length,nodes:nodes.length,links:links.length,
+   integrated_taxonomy:taxonomyIdentity.length,flaminio_legacy_reconciled:legacyReferences.length,
+   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,nodes:nodes.length,links:links.length,
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- if(identity.length!==162||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length||
+ if(identity.length!==162||taxonomyIdentity.length!==8||legacyReferences.length!==10||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length||
     counts.orphan_links||counts.duplicate_link_ids||counts.flaminio_source_records!==500||
     counts.unique_flaminio_source_records!==500||counts.flaminio_source_nodes!==500||counts.missing_source_rows){
    throw Error("Gate integrita' NON superato: "+JSON.stringify({counts,expectedNodes,orphans:orphans.slice(0,5),duplicateIDs:dupes.slice(0,5),missing:missing.slice(0,5)}));
@@ -161,8 +206,9 @@ export function buildUnifiedDatabase(d){
  return {schema:"musurgia-unified-mundi-atlantis-flaminio-lot01-v1",
    status:"STAGING_UNIFICATO_NAVIGABILE_IDENTITA_STORICHE_NON_TUTTE_CERTIFICATE",
    counts,nodes,links,flaminio_records:registry.records,
-   crosswalk:{mundi_atlantis:identity,flaminio_atlantis:sharedFlaminio,editorial_bridges:bridges,excluded:ignored},
-   policy:{preserve_all_source_nodes_and_relations:true,merge_only_preexisting_documented_person_pairs:true,
+   crosswalk:{mundi_atlantis:identity,mundi_atlantis_taxonomy:taxonomyIdentity,flaminio_atlantis:sharedFlaminio,flaminio_legacy_mundi:legacyReferences,
+     editorial_bridges:bridges,semantic_curated_links:semanticCurated,excluded:ignored,curated_pending:curated.excluded_or_pending},
+   policy:{preserve_all_source_nodes_and_relations:true,merge_person_pairs_and_explicit_curated_taxonomy_pairs:true,legacy_reference_id_redirects:true,
      homonyms_require_external_review:true,chapters_are_not_periods:true,genres_not_merged_by_name:true,
      hold_excluded_by_default:true,production_graphs_unchanged:true}};
 }
