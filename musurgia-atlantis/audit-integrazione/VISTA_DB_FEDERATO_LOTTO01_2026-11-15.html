@@ -136,8 +136,10 @@ function refreshToggles(){
  const active=[...lensCounts].filter(([id,count])=>count>0&&state.lenses.has(id))
    .reduce((sum,[,count])=>sum+count,0);
  const total=[...lensCounts.values()].reduce((sum,count)=>sum+count,0);
- $("lensStatus").textContent="Archi Mundi abilitati: "+active+"/"+total+
-   ". Le categorie con 0 relazioni sono disabilitate. Gli archi degli altri database restano indipendenti.";
+ $("lensStatus").textContent=state.lenses.size===0
+   ?"Tutte le lenti spente: zero archi anche da Atlantis e Flaminio."
+   :"Archi Mundi abilitati: "+active+"/"+total+
+   ". Con almeno una lente attiva, gli archi Atlantis, Flaminio e crosswalk restano indipendenti.";
 
  for(const [which,container] of [["cats","visibleCategories"],["labels","labelCategories"]]){
   const host=$(container);host.replaceChildren();
@@ -476,7 +478,10 @@ function showEdge(e){
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
- const edges=db.links.filter(e=>!isBlocked(e)&&
+ // Quando tutte le lenti sono spente, nessuna relazione deve sopravvivere
+ // attraverso Atlantis, Flaminio o crosswalk: la ricerca singola mostra
+ // soltanto il nodo radice.
+ const edges=state.lenses.size===0?[]:db.links.filter(e=>!isBlocked(e)&&
    (lensBucket(e)===null||state.lenses.has(lensBucket(e))));
  const adj=new Map();
  for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
@@ -645,9 +650,11 @@ function draw(){
  state.rendered=nodes;state.renderedLinks=links;
  const activeLensEdges=links.filter(e=>lensBucket(e)!==null).length;
  const availableLensEdges=[...availableLensCounts().values()].reduce((sum,n)=>sum+n,0);
- $("lensStatus").textContent="Archi Mundi visibili con questi filtri: "+activeLensEdges+
+ $("lensStatus").textContent=state.lenses.size===0
+   ?"Tutte le lenti disattivate: nessun arco mostrato. Nella ricerca singola resta soltanto il nodo selezionato."
+   :"Archi Mundi visibili con questi filtri: "+activeLensEdges+
    " · archivio Mundi consultabile: "+availableLensEdges+
-   ". Gli archi Atlantis, Flaminio e crosswalk non sono controllati da queste lenti.";
+   ". Con almeno una lente attiva, gli archi Atlantis, Flaminio e crosswalk rimangono indipendenti.";
  $("graphSummary").textContent=comparing
   ?visibleTitle(state.comparison.from)+" ↔ "+visibleTitle(state.comparison.to)+" · rete dei percorsi pertinenti · "+nodes.length+" nodi · "+links.length+" archi"
   :overview
