@@ -234,6 +234,15 @@ function rootedProjection(db){
  const edges=db.links.filter(e=>!isBlocked(e)&&(e.collection!=="lenti-originali"||state.lenses.has(lensGroupToUI[e.group]||"musica")));
  const adj=new Map();
  for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
+ if(!state.root){
+   // Apertura globale: l'intera rete musicale disponibile, senza selezione.
+   // Le 500 schede documentarie e gli archi HOLD restano esclusi dalla vista
+   // ma vengono conservati integralmente nel database federato.
+   const nodes=db.nodes.filter(n=>n.visibility!=="documentary"&&show.has(n.category));
+   const ids=new Set(nodes.map(n=>n.id));
+   const links=edges.filter(e=>ids.has(e.source)&&ids.has(e.target));
+   return {nodes,links,parents:new Map(),distance:new Map(),focused:false,overview:true};
+ }
  const distance=new Map([[state.root,0]]),parents=new Map(),queue=[state.root],selected=new Set([state.root]);
  const generic=/^(tratta|menziona|rimanda|analizza|condivide|citazione|richiamo|documenta|stesso_tema_editoriale|capitolo_tratta_periodo)/i;
  const authored=/compone|ha_composto|composizione_|autore_di|musica_composta|composed_by|written_by|opera_di/i;
@@ -380,15 +389,18 @@ function draw(){
  let filtered;
  try{filtered=rootedProjection(state.db)}catch(e){status("Errore proiezione: "+e.message,true);return}
  state.parents=filtered.parents;state.distances=filtered.distance;
- const nodes=filtered.nodes.map(n=>({...n,_focus:n.id===state.root,_depth:filtered.distance.get(n.id)??0,
-   _label:state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus)}));
+ const overview=!!filtered.overview;
+ const nodes=filtered.nodes.map(n=>({...n,_focus:!overview&&n.id===state.root,_depth:filtered.distance.get(n.id)??0,
+   _label:!overview&&(state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))}));
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
- $("graphSummary").textContent=state.focus
-  ?"Percorso: "+visibleTitle(state.root)+" → "+visibleTitle(state.focus)+" · "+nodes.length+" nodi · "+links.length+" archi"
-  :nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+visibleTitle(state.root);
+ $("graphSummary").textContent=overview
+  ?"Nebulosa completa · "+nodes.length+" nodi musicali · "+links.length+" archi"
+  :state.focus
+    ?"Percorso: "+visibleTitle(state.root)+" → "+visibleTitle(state.focus)+" · "+nodes.length+" nodi · "+links.length+" archi"
+    :nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+visibleTitle(state.root);
  $("backFocus").disabled=!state.focusHistory.length;
- $("showAll").disabled=!state.focus;
+ $("showAll").disabled=overview;
  $("visibleCount").textContent=nodes.length+" nodi visibili ("+links.length+" relazioni)";
  const h=$("visibleList");h.replaceChildren();
  for(const n of nodes.slice(0,180)){
@@ -399,7 +411,9 @@ function draw(){
  if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
  try{const g=graphInstance().graphData({nodes:nodes.map(n=>({...n})),links:links.map(e=>({...e}))});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
  displayEdgeHover(null);
- const active=state.db.nodes.find(n=>n.id===(state.focus||state.root));if(active)showNode(active);
+ const active=overview?null:state.db.nodes.find(n=>n.id===(state.focus||state.root));
+ if(active)showNode(active);
+ else {$("detailTitle").textContent="Relazioni del nodo";$("detail").textContent="Seleziona un nodo per esplorarlo. La nebulosa mostra tutte le entità musicali abilitate dai filtri.";}
  if(state.focus&&active?.category==="opere"&&!filtered.hasTaxonomyPath){
    const notice=make("p","Per questa composizione non è stato trovato un percorso attraverso generi e forme nei collegamenti attivi. Il rapporto diretto con l'autore resta visibile; la collocazione tassonomica deve essere verificata e collegata nel database.","reason");
    notice.style.borderLeftColor="#d8a56e";
