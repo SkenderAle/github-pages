@@ -43,7 +43,7 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 <script src="../compat-graph.js"></script>
 </head>
 <body>
-<header><div><h1>Musurgia Mundi – Atlantis · rete unificata</h1><p>Staging non distruttivo · Mundi + Atlantis riuniti · 500 schede Flaminio</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle quattro fonti…</div></header>
+<header><div><h1>Musurgia Mundi – Atlantis · rete unificata</h1><p>Staging non distruttivo · Mundi + Atlantis riuniti · 500 schede Flaminio</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle sorgenti…</div></header>
 <main>
 <aside>
 <h2>Ricerca musicale</h2>
@@ -109,7 +109,7 @@ function showEntityResults(){
   const b=make("button",n.name,"record");b.append(make("small",categoryName(n.category)+" · "+n.id));
   b.onclick=()=>selectRoot(n.id);h.append(b)
  }
- if(!h.children.length)h.append(make("div","Digita per cercare nei 2.983 nodi federati.","meta"))
+ if(!h.children.length)h.append(make("div","Digita per cercare nei "+state.db.counts.nodes+" nodi unificati.","meta"))
 }
 function selectRoot(id){
  const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
@@ -172,6 +172,8 @@ function graphInstance(){
  const maker=webgl&&typeof window.ForceGraph3D==="function"?window.ForceGraph3D:window.AtlantisCompatGraph;
  if(typeof maker!=="function")throw Error("Nessun renderer disponibile");
  const g=maker===window.ForceGraph3D?maker()(host):maker(host);
+ if(typeof g.width==="function"&&typeof g.height==="function"){g.width(Math.max(1,host.clientWidth));g.height(Math.max(1,host.clientHeight));}
+ if(typeof ResizeObserver==="function")new ResizeObserver(()=>{if(state.graph&&typeof state.graph.width==="function"){state.graph.width(Math.max(1,host.clientWidth));state.graph.height(Math.max(1,host.clientHeight));}}).observe(host);
  state.graph=g.backgroundColor("#07131e").nodeColor(n=>colors[n.category]||"#c9d5dd")
   .linkColor(e=>e.visibility==="documentary"?"#526773":"#558093")
   .nodeVal(n=>n.id===state.root?7:3)
@@ -185,7 +187,17 @@ function draw(){
  let filtered;
  try{filtered=projectForViewer(state.db,{rootId:state.root,depth:state.depth,visibleCategories:[...state.cats],labelCategories:[...state.labels],includeDocumentary})}
  catch(e){status("Errore proiezione: "+e.message,true);return}
- const nodes=filtered.nodes.map(n=>({id:n.id,name:n.name,category:n.category,subtype:n.subtype,visibility:n.visibility}));
+ const neighbors=new Map();
+ for(const e of filtered.links){
+  if(!neighbors.has(e.source))neighbors.set(e.source,[]);
+  if(!neighbors.has(e.target))neighbors.set(e.target,[]);
+  neighbors.get(e.source).push(e.target);neighbors.get(e.target).push(e.source);
+ }
+ const levels=new Map([[state.root,0]]),queue=[state.root];
+ for(let i=0;i<queue.length;i++)for(const other of neighbors.get(queue[i])||[])
+   if(!levels.has(other)){levels.set(other,levels.get(queue[i])+1);queue.push(other)}
+ const nodes=filtered.nodes.map(n=>({id:n.id,name:n.name,category:n.category,subtype:n.subtype,visibility:n.visibility,
+  _focus:n.id===state.root,_depth:levels.get(n.id)??state.depth,_label:state.labels.has(n.category)}));
  const links=filtered.links.map(e=>({id:e.id,source:e.source,target:e.target,relation:e.relation,visibility:e.visibility,quality:e.quality}));
  state.rendered=nodes;
  $("graphSummary").textContent=nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+(nodes.find(n=>n.id===state.root)?.name||state.root);
@@ -196,7 +208,7 @@ function draw(){
   b.onclick=()=>selectRoot(n.id);h.append(b)
  }
  if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
- try{graphInstance().graphData({nodes,links})}catch(e){status("Renderer non disponibile: "+e.message,true)}
+ try{const g=graphInstance().graphData({nodes,links});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
 }
 $("searchEntity").addEventListener("input",showEntityResults);
 $("searchSources").addEventListener("input",e=>{state.searchSource=normalize(e.target.value).trim();state.pageSize=25;showSources()});
@@ -206,7 +218,7 @@ $("allCategories").onclick=()=>{state.cats=new Set(catList.filter(c=>c[0]!=="doc
 $("resetView").onclick=()=>selectRoot("atlantis::pers:bach");
 try{
  const db=await loadFederatedDatabase();state.db=db;
- if(db.flaminio_records.length!==500||db.counts.orphan_edges!==0)throw Error("Integrità non confermata: lotto o archi incompleti");
+ if(db.flaminio_records.length!==500||db.counts.orphan_links!==0)throw Error("Integrità non confermata: lotto o archi incompleti");
  status("500/500 schede · "+db.counts.integrated_people+" identità Mundi–Atlantis · "+db.counts.nodes+" nodi · "+db.counts.links+" archi");
  refreshToggles();showEntityResults();showSources();
  if(!db.nodes.find(n=>n.id===state.root))state.root=db.nodes.find(n=>n.visibility!=="documentary")?.id;
