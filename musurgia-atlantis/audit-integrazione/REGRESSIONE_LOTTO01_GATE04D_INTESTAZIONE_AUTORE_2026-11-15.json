@@ -1,0 +1,146 @@
+{
+  "schema": "musurgia-atlantis-gate04d-canonical-source-author-navigation-regression-v1",
+  "date": "2026-11-15",
+  "cause": "Autocomplete and node interaction selected the Flaminio source-author heading (BACH, Johann Sebastian) instead of the person (Johann Sebastian Bach); these are distinct nodes and source-author links point to raw records, not works/genres.",
+  "rule": "When exactly one persona/persona_con_riscontro has normalized First Last name matching the Flaminio 'LAST, First' source heading, open that existing person node in the viewer. Do not merge IDs, nodes, links or raw source rows.",
+  "source_heading": {
+    "id": "flaminio:source-author:bach-johann-sebastian",
+    "links": 312
+  },
+  "canonical_author": {
+    "id": "pers:bach",
+    "links": 330
+  },
+  "visibility": [
+    {
+      "type": "nodo-di-senso",
+      "root": "pers:bach",
+      "nodes": 26,
+      "links": 25,
+      "items": 25
+    },
+    {
+      "type": "opera",
+      "root": "pers:bach",
+      "nodes": 284,
+      "links": 299,
+      "items": 283
+    },
+    {
+      "type": "altro",
+      "root": "pers:bach",
+      "nodes": 2,
+      "links": 1,
+      "items": 1
+    }
+  ],
+  "files": {
+    "viewer": "GATE04D_AUTORE_CANONICO_FILTRI_2026-11-15.html",
+    "viewer_sha": "1919ae5ee02864ac48d71da2850f4b2fbd1ceb76",
+    "tester": "GATE04D_COLLAUDO_AUTORE_2026-11-15.html",
+    "tester_sha": "ce903914e1131262b1af12f8f243f1fd810bf1b1"
+  },
+  "checks": [
+    {
+      "name": "Dataset has separate Bach source heading and composer",
+      "result": "PASS"
+    },
+    {
+      "name": "Source heading has 312 raw catalogue edges",
+      "result": "PASS"
+    },
+    {
+      "name": "Composer has 330 musical edges",
+      "result": "PASS"
+    },
+    {
+      "name": "Selected heading resolves to musical author for genres",
+      "result": "PASS"
+    },
+    {
+      "name": "Genres shows 25+author and 25 edges",
+      "result": "PASS"
+    },
+    {
+      "name": "Works shows 283+author and 299 edges",
+      "result": "PASS"
+    },
+    {
+      "name": "Source-only category not mistaken for works",
+      "result": "PASS"
+    },
+    {
+      "name": "UI autocomplete prioritizes person nodes",
+      "result": "PASS"
+    },
+    {
+      "name": "UI source-heading click gives feedback",
+      "result": "PASS"
+    },
+    {
+      "name": "UI contains user-readable category result list",
+      "result": "PASS"
+    },
+    {
+      "name": "URL root=bach supported",
+      "result": "PASS"
+    },
+    {
+      "name": "URL category genres supported",
+      "result": "PASS"
+    },
+    {
+      "name": "URL category works supported",
+      "result": "PASS"
+    },
+    {
+      "name": "Actual browser harness tests title redirect",
+      "result": "PASS"
+    },
+    {
+      "name": "Actual browser harness tests 25 listed genres",
+      "result": "PASS"
+    },
+    {
+      "name": "Actual browser harness tests 283 listed works",
+      "result": "PASS"
+    },
+    {
+      "name": "No production graph fetch",
+      "result": "PASS"
+    },
+    {
+      "name": "Main production graph unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "Main production HTML unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "Original sources preserved",
+      "result": "PASS"
+    },
+    {
+      "name": "Staging graph cardinalities unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "Viewer syntax parses",
+      "result": "PASS"
+    },
+    {
+      "name": "Browser harness syntax parses",
+      "result": "PASS"
+    }
+  ],
+  "metrics": {
+    "pass": 23,
+    "fail": 0,
+    "real_android_browser_runs": 0,
+    "source_nodes_modified": 0,
+    "source_links_modified": 0,
+    "production_mutations": 0
+  },
+  "important_caveat": "Code and graph logic tested directly. The new GitHub Pages URL and real Android interaction require confirmation from a browser. 25 direct genre/shape nodes are not a complete global canonical taxonomy; candidate nodes remain noncanonical."
+}
