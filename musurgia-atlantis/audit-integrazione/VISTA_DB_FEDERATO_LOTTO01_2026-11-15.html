@@ -40,15 +40,23 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 .nodeItem small,.edgeItem small{display:block;font-size:11px;color:var(--muted)}
 .bad{color:#f4ad9c}.ok{color:#aee8d1}
 .footer{font-size:11px;line-height:1.5;margin-top:12px;color:var(--muted)}
-#detailsToggle{display:none}
-@media(max-width:1000px){main{grid-template-columns:minmax(250px,36%) minmax(0,64%);height:auto;min-height:calc(100dvh - 85px)}section{height:58dvh;min-height:340px}aside:last-child{grid-column:1 / -1;min-height:260px;max-height:46dvh;border-top:1px solid var(--edge)}}
-@media(max-width:640px){header{padding:10px}h1{font-size:18px}main{display:flex;flex-direction:column;height:auto}aside:first-child{order:2;max-height:none}section{order:1;height:50dvh;min-height:340px;flex:none}aside:last-child{order:3;max-height:none}.graphbar{top:6px;left:6px;right:6px}}
+#detailsPanel{transition:opacity .18s ease}
+main.details-collapsed{grid-template-columns:minmax(270px,355px) minmax(0,1fr)}
+main.details-collapsed #detailsPanel{display:none}
+#detailsPanel h2{padding-right:40px}
+.graphbar .zoom-btn{min-width:34px;font-size:20px;font-weight:700;padding:3px 9px}
+#detailsToggle[aria-expanded="true"]{border-color:var(--accent)}
+#detailsToggle{white-space:nowrap}
+#graph canvas{outline:none}
+@media(max-width:1000px){main,main.details-collapsed{grid-template-columns:minmax(250px,36%) minmax(0,64%);height:auto;min-height:calc(100dvh - 85px)}section{height:58dvh;min-height:340px}
+ #detailsPanel{grid-column:1 / -1;min-height:260px;max-height:46dvh;border-top:1px solid var(--edge)}}
+@media(max-width:640px){header{padding:10px}h1{font-size:18px}main,main.details-collapsed{display:flex;flex-direction:column;height:auto}aside:first-child{order:2;max-height:none}section{order:1;height:58dvh;min-height:390px;flex:none}#detailsPanel{order:3;max-height:none}.graphbar{top:6px;left:6px;right:6px;gap:5px}.graphbar button{font-size:12px}}
 </style>
 <script src="../compat-graph.js"></script>
 </head>
 <body>
 <header><div><h1>Musurgia Mundi – Atlantis · rete unificata</h1><p>Staging non distruttivo · Mundi + Atlantis riuniti · 500 schede Flaminio</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle sorgenti…</div></header>
-<main>
+<main id="mainLayout" class="details-collapsed">
 <aside>
 <h2>Ricerca musicale</h2>
 <input type="search" id="searchEntity" placeholder="Autore, opera, genere, ID…">
@@ -62,9 +70,9 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 <section aria-label="Grafo musicale esplorabile">
 <div id="graph"></div>
 <div id="hoverReason" role="status" hidden></div>
-<div class="graphbar"><span class="summary" id="graphSummary">Grafo non ancora caricato</span><button id="backFocus" disabled>Torna indietro</button><button id="showAll">Mostra la rete</button><button id="resetView">Ritorna a Bach</button></div>
+<div class="graphbar"><span class="summary" id="graphSummary">Grafo non ancora caricato</span><button id="zoomIn" class="zoom-btn" type="button" aria-label="Ingrandisci grafo">+</button><button id="zoomOut" class="zoom-btn" type="button" aria-label="Rimpicciolisci grafo">−</button><button id="backFocus" disabled>Torna indietro</button><button id="showAll">Nebulosa completa</button><button id="detailsToggle" type="button" aria-expanded="false" aria-controls="detailsPanel">Apri dettagli ◀</button></div>
 </section>
-<aside>
+<aside id="detailsPanel" aria-label="Dettagli del nodo" hidden>
 <h2 id="detailTitle">Relazioni del nodo</h2>
 <div id="detail" class="meta">Seleziona un nodo per vedere perché è collegato agli altri. Passa il mouse sugli archi per leggerne la motivazione.</div>
 <h2 style="margin-top:18px">Nodi effettivamente visibili</h2>
@@ -83,7 +91,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[]};
+const state={db:null,root:null,cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[]};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
@@ -119,16 +127,40 @@ function showEntityResults(){
 function selectRoot(id){
  const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
  if(n.visibility==="documentary"){showNode(n);return}
- state.root=id;state.focus=null;state.focusHistory=[];$("searchEntity").value=n.name;showEntityResults();draw()
+ state.root=id;state.focus=null;state.focusHistory=[];$("searchEntity").value=n.name;showEntityResults();draw();openDetails(true)
+}
+function openDetails(open){
+ const panel=$("detailsPanel"),layout=$("mainLayout"),toggle=$("detailsToggle");
+ panel.hidden=!open;layout.classList.toggle("details-collapsed",!open);
+ toggle.setAttribute("aria-expanded",String(open));
+ toggle.textContent=open?"Chiudi dettagli ▶":"Apri dettagli ◀";
+ if(state.graph&&typeof state.graph.width==="function"){
+   const host=$("graph");
+   state.graph.width(Math.max(1,host.clientWidth));
+   if(typeof state.graph.height==="function")state.graph.height(Math.max(1,host.clientHeight));
+ }
+}
+function showNebula(){
+ state.root=null;state.focus=null;state.focusHistory=[];
+ $("searchEntity").value="";showEntityResults();
+ draw();
+}
+function changeZoom(factor){
+ const g=graphInstance();
+ if(typeof g.zoom==="function"){
+   const before=Number(g.zoom());
+   g.zoom(Math.max(.15,Math.min(12,(Number.isFinite(before)?before:1)*factor)),350);
+ }
 }
 function selectSubnode(id){
  const n=state.db?.nodes.find(x=>x.id===id);
  if(!n||n.visibility==="documentary")return;
+ if(!state.root){selectRoot(id);return}
  if(id===state.root){state.focus=null;state.focusHistory=[];draw();return}
  if(state.focus===id){showNode(n);return}
  state.focusHistory.push(state.focus);
  state.focus=id;
- draw();showNode(n);
+ draw();showNode(n);openDetails(true);
 }
 function goBackFocus(){
  if(!state.focusHistory.length)return;
@@ -376,17 +408,19 @@ function draw(){
 }
 $("searchEntity").addEventListener("input",showEntityResults);
 $("backFocus").onclick=goBackFocus;
-$("showAll").onclick=()=>{state.focus=null;state.focusHistory=[];draw()};
+$("detailsToggle").onclick=()=>openDetails($("detailsPanel").hidden);
+$("zoomIn").onclick=()=>changeZoom(1.3);
+$("zoomOut").onclick=()=>changeZoom(1/1.3);
+$("showAll").onclick=showNebula;
 $("depth").addEventListener("change",e=>{state.depth=Number(e.target.value);draw()});
 $("allCategories").onclick=()=>{state.cats=new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0]));refreshToggles();draw()};
-$("resetView").onclick=()=>selectRoot("atlantis::pers:bach");
+
 try{
  const db=await loadFederatedDatabase();state.db=db;
  if(db.flaminio_records.length!==500||db.counts.orphan_links!==0)throw Error("Integrità non confermata: lotto o archi incompleti");
  status("500/500 schede · "+db.counts.integrated_people+" identità Mundi–Atlantis · "+db.counts.nodes+" nodi · "+db.counts.links+" archi");
  refreshToggles();showEntityResults();
- if(!db.nodes.find(n=>n.id===state.root))state.root=db.nodes.find(n=>n.visibility!=="documentary")?.id;
- if(state.root)selectRoot(state.root);
+ showNebula();
 }catch(e){
  let summary=e.message;
  if(summary.startsWith("Gate integrita' NON superato: ")){
