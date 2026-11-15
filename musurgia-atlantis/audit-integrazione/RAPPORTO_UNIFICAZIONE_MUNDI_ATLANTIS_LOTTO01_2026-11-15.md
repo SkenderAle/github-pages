@@ -1,0 +1,51 @@
+# Musurgia Mundi–Atlantis — Unificazione strutturale prima del Lotto02 Flaminio
+
+**Data:** 15 novembre 2026. **Repository:** `SkenderAle/github-pages`, `main`. **Stato:** unificazione tecnica e navigabile in **staging**; canonizzazione filologica e browser reali ancora da completare. **Lotto02 Flaminio BLOCCATO**.
+
+## Risultato eseguito sui dati reali
+
+Il modulo `DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs` applica il crosswalk storico di persone *prima* di aggiungere lo staging Flaminio; conserva tutti i nodi originali nella proprietà `provenance` e tutti gli archi originali nella proprietà `original`. Il viewer isolato `VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html` carica ora questo modulo, non l'adattatore non unificante precedente.
+
+| Elemento | Numero |
+| --- | ---: |
+| Mundi: nodi di base | 869 |
+| Mundi: record estensione operetta/musical | 15 (14 nuovi, uno già presente) |
+| Atlantis: nodi base | 754 |
+| Flaminio: nodi staging | 1.365 |
+| Identità Mundi–Atlantis riunite nella vista tramite crosswalk preesistente | 162 |
+| Identità persona Atlantis–Flaminio tecnicamente condivise | 5 |
+| Nodi della vista unificata | **2.835** |
+| Archi originali conservati (Mundi base, speciali, estensione, Atlantis, Flaminio) | **8.354** |
+| Ponti editoriali, NON fusioni di identità | 10 |
+| Archi totali della vista | **8.364** |
+| Record Flaminio originari conservati e collegati | **500/500** |
+| Archi orfani e ID arco duplicati | **0/0** |
+
+Le **162 identità di navigazione** provengono da `CROSSWALK_GLOBALE_PERSONE_CHECKPOINT21_2026-11-10.json` (155 forme nominali + 7 varianti/alias). Si tratta di riuso di una riconciliazione editoriale precedente, **non di nuova certificazione indipendente contro omonimi**. Ogni record originario rimane reversibile e ispezionabile.
+
+Il modulo aggiunge 5 ponti **capitolo tratta periodo** (Medioevo, Rinascimento, Barocco, Classicismo, Romanticismo) e 5 ponti **stesso tema editoriale, non stessa identità** (Opera buffa, Opera seria, Dramma giocoso, Quartetto d'archi, Operetta viennese). Non si uniscono per omonimia generi, opere, raccolte o versioni.
+
+## Regres­sione reale dei dati
+
+Il registro `REGRESSIONE_UNIFICAZIONE_MUNDI_ATLANTIS_LOTTO01_2026-11-15.json` documenta **18/18 PASS**, usando l'esecuzione effettiva del modulo JavaScript su tutti i JSON di input, più il controllo di sintassi della pagina HTML: 0 righe Flaminio mancanti; 0 archi orfani o ID doppi; ogni provenienza e relazione originale mantenuta; i 15 nodi di estensione preservati; filtri per categorie funzionalmente coerenti; nessun HOLD visualizzato nel test predefinito.
+
+Esempi di radici: **Bach** conserva archi Atlantis + Mundi + Flaminio; **Beethoven** idem; **Mozart** e **Chopin** conservano i due patrimoni originali. Bach filtro solo generi: 39 nodi/44 archi; filtro solo opere: 308 nodi/333 archi, sempre nella proiezione runtime, **non test Android**.
+
+## Differenza tra unificazione e certificazione
+
+L'unificazione **tecnica** è avvenuta per le identità documentate nel registro, e le reti sono ora attraversabili tramite nodi comuni; **non è una deduplicazione indiscriminata**. Tutte le persone fuori crosswalk e le categorie di opere/forme omonime mantengono la propria identità fino a revisione. Rimangono piccoli componenti isolati da valutare, inclusi alcuni nodi musicali che non hanno collegamenti navigabili approvati.
+
+Il pubblico `musurgia-atlantis/index.html`, `musurgia-atlantis/grafo.json` e `atlante3d/database/grafo.json` non sono modificati. `atlante3d/database/collegamenti-sito.json`, `consultazione.json`, `identita-esterne.json` e `video.json` restano archivi specialistici sorgente, non scartati.
+
+## Gate che devono chiudersi PRIMA del Lotto02
+
+1. Collaudo reale dell'anteprima in browser desktop e Android (apertura/ricerca/etichette/filtri/gesti fluidi), incluso campione di compositori diversi da Bach.
+2. Verifica documentale del crosswalk di identità, soprattutto omonimi e 7 alias; schema reversibile dei casi dubbi.
+3. Riconciliazione controllata di opere, raccolte, versioni e generi/formati comuni, senza derivare identità da soli titoli simili.
+4. Revisione dei componenti rimasti isolati e delle relazioni storiche semanticamente diverse; nessuna conflazione di archi Mundi e Atlantis con direzione o significati differenti.
+5. Conferma che tutte le 500 schede sono ricercabili dal viewer e che HOLD/attribuzioni dubbie rimangono documentate ma non promosse.
+6. Solo dopo collaudo positivo e report filologico, decidere promozione del database di produzione; il Lotto02 rimane fermo fino ad allora.
+
+**Commit rilevanti:** modulo `762c2e5a88ee59ad39f3fcbf04f79c9494d9b5a1`; viewer collegato `3a600ece7efcfee3c69c63ec4cf6bf6176082aca` (poi ricerca alias `f793219370ddb52eff8fd18db0319ddb4d7d38d8`); regressione `aca40103851a398586a05a4bbff8ed1dfc4844d0`.
+
+**Decisione operativa:** NON iniziare Lotto02 finché l'unificazione Mundi–Atlantis non sia verificata sostanzialmente e sul dispositivo.
