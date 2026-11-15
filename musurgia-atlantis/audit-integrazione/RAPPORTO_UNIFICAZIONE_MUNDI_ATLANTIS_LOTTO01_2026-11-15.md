@@ -49,3 +49,13 @@ Il pubblico `musurgia-atlantis/index.html`, `musurgia-atlantis/grafo.json` e `at
 **Commit rilevanti:** modulo `762c2e5a88ee59ad39f3fcbf04f79c9494d9b5a1`; viewer collegato `3a600ece7efcfee3c69c63ec4cf6bf6176082aca` (poi ricerca alias `f793219370ddb52eff8fd18db0319ddb4d7d38d8`); regressione `aca40103851a398586a05a4bbff8ed1dfc4844d0`.
 
 **Decisione operativa:** NON iniziare Lotto02 finché l'unificazione Mundi–Atlantis non sia verificata sostanzialmente e sul dispositivo.
+
+## Addendum: correzione viewer prima del collaudo, 15 novembre 2026
+
+**Commit:** `a4ffdb8ebca6783a6f67ec54703d5ecb4e3357b5`.
+
+La regressione strutturale 18/18 era relativa al modulo dati e alla sintassi del viewer, non dimostrava l'avvio nel browser. Nell'HTML è stato individuato un controllo errato `db.counts.orphan_edges!==0`: il database unificato espone `orphan_links`, dunque il test originale rifiutava anche un grafo integro. La guardia è stata sostituita con `db.counts.orphan_links!==0`.
+
+Corrette inoltre le proprietà necessarie al renderer Canvas di compatibilità: `_focus` per la radice, `_depth` per i livelli, `_label` per le etichette filtrate; introdotte dimensioni del canvas coerenti con il contenitore e ridimensionamento responsivo. Il contatore dei risultati usa ora `db.counts.nodes` anziché la precedente cifra federata di 2.983.
+
+**Verifica post-commit:** rilettura remota dell'HTML e 7 verifiche statiche sulle modifiche: PASS. **Non ancora eseguiti:** avvio reale del viewer in un browser con dati remoti, confronto visivo dei filtri su Android, verifica filologica indipendente di tutte le corrispondenze. I 18 test strutturali del modulo restano documentati nel file di regressione precedente, senza attribuire loro un collaudo browser. `musurgia-atlantis/grafo.json`, `atlante3d/database/grafo.json` e le pagine pubbliche non sono stati modificati. **Lotto02 Flaminio BLOCCATO.**
