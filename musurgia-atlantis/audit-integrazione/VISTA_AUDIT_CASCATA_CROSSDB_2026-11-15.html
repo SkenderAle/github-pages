@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Musurgia · Audit della cascata tre database</title>
+<style>
+:root{color-scheme:dark;--bg:#081521;--panel:#102638;--edge:#345268;--text:#e5f1f6;--muted:#a9bdca;--gold:#edc67f}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--text);font:14px/1.5 system-ui,sans-serif;margin:0}
+header,main,footer{max-width:1200px;margin:0 auto;padding:18px}header{border-bottom:1px solid var(--edge)}
+h1{font:26px/1.2 Georgia,serif;color:var(--gold);margin:0 0 8px}p{color:var(--muted);margin:5px 0}
+a{color:var(--gold)}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin:18px 0}
+.stat{background:var(--panel);padding:13px;border:1px solid var(--edge);border-radius:9px}.val{font-size:25px;font-weight:700}
+label{display:flex;flex-direction:column;gap:4px;color:var(--muted)}.filters{display:grid;grid-template-columns:minmax(130px,2fr) minmax(130px,1fr) minmax(160px,1fr);gap:10px;margin:12px 0}
+input,select{background:var(--panel);border:1px solid var(--edge);border-radius:7px;color:var(--text);padding:9px;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:8px;border-bottom:1px solid #284457;text-align:left;vertical-align:top}tr:hover{background:#132f42}th{position:sticky;top:0;background:#0c2030}small{color:var(--muted)}.scroll{max-height:58vh;overflow:auto;border:1px solid var(--edge);border-radius:9px}
+.muted{color:var(--muted)}.tag{display:inline-block;border:1px solid #47687a;border-radius:6px;padding:1px 5px;font-size:11px;max-width:250px}
+button{color:var(--gold);background:var(--panel);border:1px solid var(--edge);padding:7px;border-radius:7px;cursor:pointer}
+@media(max-width:630px){.filters{grid-template-columns:1fr}.hide-sm{display:none}td,th{padding:6px;font-size:12px}}
+</style>
+</head><body>
+<header><h1>Musurgia · Cascata dei tre database</h1><p>Controllo di copertura dei nodi: Mundi + Atlantis + 500 schede Flaminio, staging non distruttivo.</p>
+<p><a href="./VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html">Apri il grafo 3D unificato</a> · <a href="./RAPPORTO_CASCATA_CROSSDB_2026-11-15.md">Leggi il rapporto</a></p></header>
+<main><p id="status" role="status">Lettura dei tre archivi…</p><div class="stats" id="stats"></div>
+<p>«Connessione» significa raggiungibilità nel grafo, non dimostra automaticamente un'identità musicologica o una relazione storica. Le schede documentarie sono conservate ma nascoste nella vista musicale predefinita.</p>
+<div class="filters"><label>Cerca nodo o identificativo<input id="search" type="search" placeholder="Es. Sinfonia, Mozart, Bayreuth…"></label>
+<label>Categoria<select id="category"><option value="">Tutte</option></select></label>
+<label>Situazione<select id="state"><option value="">Tutte</option></select></label></div>
+<p><span id="found">—</span> <button id="download" type="button">Esporta audit JSON</button></p>
+<div class="scroll"><table><thead><tr><th>Nodo e ID</th><th>Stato</th><th class="hide-sm">Categoria / fonti</th><th>Archi musicali</th><th class="hide-sm">Componente</th></tr></thead><tbody id="rows"></tbody></table></div>
+</main><footer><small>La pagina calcola la diagnostica sul momento: nessun file di produzione è modificato. Non certifica la qualità semantica di ogni singolo arco.</small></footer>
+<script type="module">
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs";
+import {auditCascade} from "./AUDIT_CASCATA_CROSSDB_2026-11-15.mjs";
+const $=id=>document.getElementById(id);
+let audit=null;
+const esc=s=>String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+function render(){
+ if(!audit)return;
+ const q=$("search").value.toLocaleLowerCase("it").trim(),cat=$("category").value,status=$("state").value;
+ const filtered=audit.records.filter(n=>(!q||(n.name+" "+n.id+" "+n.layers.join(" ")).toLocaleLowerCase("it").includes(q))&&(!cat||n.category===cat)&&(!status||n.status===status));
+ $("found").textContent=filtered.length.toLocaleString("it")+" / "+audit.records.length.toLocaleString("it")+" nodi";
+ $("rows").innerHTML=filtered.slice(0,250).map(n=>"<tr><td><strong>"+esc(n.name)+"</strong><div class='muted'>"+esc(n.id)+"</div></td><td><span class='tag'>"+esc(n.status)+"</span></td><td class='hide-sm'>"+esc(n.category)+"<br><small>"+esc(n.layers.join(", "))+"</small></td><td>"+n.degree_musical+"</td><td class='hide-sm'>"+n.musical_component_size+"</td></tr>").join("");
+ if(filtered.length>250)$("found").textContent+=" · visualizzati i primi 250; restringere i filtri o esportare il JSON";
+}
+function stat(key,val){return '<div class="stat"><div class="val">'+esc(val.toLocaleString("it"))+'</div><div class="muted">'+esc(key)+'</div></div>'}
+for(const id of ["search","category","state"])$(id).addEventListener("input",render);
+$("download").addEventListener("click",()=>{
+ if(!audit)return;
+ const blob=new Blob([JSON.stringify(audit,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="musurgia-audit-cascata-3db.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+try{
+ const db=await loadFederatedDatabase();
+ audit=auditCascade(db);
+ $("status").textContent="Audit calcolato sui file aggiornati · "+db.counts.flaminio_source_records+"/500 schede fonte · "+db.counts.orphan_links+" archi orfani.";
+ $("stats").innerHTML=[stat("Nodi unificati",audit.counts.nodes),stat("Archi totali",audit.counts.links_total),stat("Componente integrale maggiore",audit.counts.largest_full),stat("Nodi con identità condivisa",audit.counts.shared_identity_nodes),stat("Componenti integrali",audit.counts.components_full),stat("Nodi da verificare",audit.counts.remaining_review)].join("");
+ for(const c of Object.keys(audit.categories).sort())$("category").insertAdjacentHTML("beforeend",'<option value="'+esc(c)+'">'+esc(c)+" ("+audit.categories[c]+")</option>");
+ for(const [k,v] of Object.entries(audit.statuses).sort())$("state").insertAdjacentHTML("beforeend",'<option value="'+esc(k)+'">'+esc(k)+" ("+v+")</option>");
+ render();
+}catch(e){$("status").textContent="ERRORE nell'audit: "+e.message;console.error(e)}
+</script></body></html>

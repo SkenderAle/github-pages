@@ -111,6 +111,87 @@
         "https://www.treccani.it/enciclopedia/opera/"
       ],
       "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION"
+    },
+    {
+      "mundi_id": "genere-sinfonia",
+      "atlantis_id": "senso:sinfonia",
+      "canonical_label": "Sinfonia",
+      "kind": "genere",
+      "rationale": "Il macrogenere Sinfonia è identico; il sinfonismo e le forme orchestrali sono contesti, non generi coestensivi.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "genere-cantata",
+      "atlantis_id": "senso:cantata",
+      "canonical_label": "Cantata",
+      "kind": "genere",
+      "rationale": "Il genere cantata è condiviso; cantata sacra e profana sono distinzioni da preservare.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "genere-oratorio",
+      "atlantis_id": "senso:oratorio",
+      "canonical_label": "Oratorio",
+      "kind": "genere",
+      "rationale": "La radice Oratorio è condivisa, senza identificare parti, raccolte o opere singole.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "genere-lied",
+      "atlantis_id": "senso:lied",
+      "canonical_label": "Lied",
+      "kind": "genere",
+      "rationale": "Categoria di Lied vocale da mantenere distinta da tutte le altre canzoni e songs.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "genere-operetta",
+      "atlantis_id": "senso:operetta",
+      "canonical_label": "Operetta",
+      "kind": "genere",
+      "rationale": "Un'unica radice Operetta, con tradizioni francese, viennese, britannica e americana distinte.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "genere-musical",
+      "atlantis_id": "senso:musical",
+      "canonical_label": "Musical",
+      "kind": "genere",
+      "rationale": "Unica identità di genere musical scenico; Broadway resta tradizione produttiva e luogo.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "madrigale",
+      "atlantis_id": "senso:madrigale",
+      "canonical_label": "Madrigale",
+      "kind": "genere",
+      "rationale": "Il focus comune è il genere madrigale, senza trasformare il rapporto parola-musica in un genere esclusivo.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "genere-lauda",
+      "atlantis_id": "senso:lauda",
+      "canonical_label": "Lauda",
+      "kind": "genere",
+      "rationale": "Medesimo genere di canto religioso e devozionale storicamente attestato.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "forma-ricercare",
+      "atlantis_id": "senso:ricercare",
+      "canonical_label": "Ricercare",
+      "kind": "forma",
+      "rationale": "Medesima forma storica strumentale; non la si identifica automaticamente con la fuga.",
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION",
+      "audit_batch": "CASCATA_2026-11-15"
     }
   ],
   "flaminio_legacy_mundi": [
@@ -183,6 +264,24 @@
       "kind": "persona",
       "rule": "EXPLICIT_LEGACY_REFERENCE_PLUS_EXACT_LABEL_PLUS_CATEGORY",
       "status": "STAGING_CANONICAL_ID_REDIRECT"
+    },
+    {
+      "flaminio_id": "legacy:gf:compositore-samuel-barber",
+      "mundi_id": "compositore-samuel-barber",
+      "kind": "persona",
+      "rule": "EXPLICIT_LEGACY_REFERENCE_AND_ORIGIN_PLUS_EXACT_ID_LABEL",
+      "status": "STAGING_CANONICAL_ID_REDIRECT",
+      "audit_batch": "CASCATA_2026-11-15",
+      "note": "Il record Flaminio dichiara già la provenienza Mundi, senza nuova attribuzione."
+    },
+    {
+      "flaminio_id": "legacy:gf:compositore-amy-beach",
+      "mundi_id": "compositore-amy-beach",
+      "kind": "persona",
+      "rule": "EXPLICIT_LEGACY_REFERENCE_AND_ORIGIN_PLUS_EXACT_ID_LABEL",
+      "status": "STAGING_CANONICAL_ID_REDIRECT",
+      "audit_batch": "CASCATA_2026-11-15",
+      "note": "Il record Flaminio dichiara già la provenienza Mundi, senza nuova attribuzione."
     }
   ],
   "semantic_edges": [
@@ -491,6 +590,84 @@
       ],
       "quality": "CURATED_STAGING_PRIMARY_AUTHORITY",
       "identity_merge": false
+    },
+    {
+      "id": "cascata-01-bayreuth",
+      "source": "atlantis::luogo:bayreuth-festspielhaus",
+      "target": "atlantis::pers:wagner",
+      "relation": "festspielhaus_realizzato_per_il_progetto_teatrale_di",
+      "rationale": "Teatro di Bayreuth voluto e realizzato per i drammi musicali di Wagner, iniziato 1872, primo festival 1876.",
+      "source_urls": [
+        "https://www.bayreuther-festspiele.de/en/festival/history/"
+      ],
+      "quality": "CURATED_STAGING_EVIDENCE_BACKED",
+      "identity_merge": false,
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "id": "cascata-02-ballet-de-cour",
+      "source": "atlantis::senso:ballet-de-cour",
+      "target": "atlantis::senso:balletto",
+      "relation": "tradizione_storica_di_spettacolo_coreutico",
+      "rationale": "Ballet de cour come spettacolo francese di corte, comprendente danza, canto e apparato scenico; collegamento storico NON equivalenza con il balletto teatrale moderno.",
+      "source_urls": [
+        "https://www.operadeparis.fr/en/visits/exhibitions/a-certain-air-of-italy-the-paris-opera-from-louis-xiv-to-the-revolution/11-how-it-all-started-court-ballets"
+      ],
+      "quality": "CURATED_STAGING_EVIDENCE_BACKED",
+      "identity_merge": false,
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "id": "cascata-03-cinema-sonoro",
+      "source": "atlantis::opera:the-jazz-singer-1927",
+      "target": "atlantis::senso:cinema-sonoro",
+      "relation": "esempio_storico_di_cinema_parzialmente_sonoro",
+      "rationale": "The Jazz Singer (1927): film con sequenze vocali e dialoghi sincronizzati via Vitaphone; non primo film interamente sonoro.",
+      "source_urls": [
+        "https://www.loc.gov/static/programs/national-film-preservation-board/documents/jazz_singer.pdf"
+      ],
+      "quality": "CURATED_STAGING_EVIDENCE_BACKED",
+      "identity_merge": false,
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "id": "cascata-04-jcf-sinfonia",
+      "source": "flaminio::audit:fl01:jcf:work:br-c28",
+      "target": "atlantis::senso:sinfonia",
+      "relation": "opera_classificata_come_sinfonia",
+      "rationale": "Sinfonia in si bemolle maggiore di Johann Christoph Friedrich Bach: opera candidata nello staging, collegata alla radice del genere senza promuovere l'attribuzione oltre i riscontri di fonte.",
+      "source_urls": [
+        "https://www.flaminioonline.it/Guide/BachF/Bachf-Sinfonia28.html"
+      ],
+      "quality": "CURATED_STAGING_EVIDENCE_BACKED",
+      "identity_merge": false,
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "id": "cascata-05-vetter-variazioni",
+      "source": "flaminio::audit:fl01:work:bwv771",
+      "target": "mundi::forma-variazioni",
+      "relation": "opera_di_variazioni_per_organo",
+      "rationale": "Variazioni su Allein Gott in der Höh sei Ehr: opera attribuita a Nicolaus Vetter, già BWV 771; mantenere distinta l'attribuzione da J. S. Bach.",
+      "source_urls": [
+        "https://imslp.org/wiki/Allein_Gott_in_der_H%C3%B6h_sei_Ehr_%28Vetter%2C_Nicolaus%29"
+      ],
+      "quality": "CURATED_STAGING_EVIDENCE_BACKED",
+      "identity_merge": false,
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "id": "cascata-06-bouilly-fidelio",
+      "source": "atlantis::pers:jean-nicolas-bouilly",
+      "target": "atlantis::opera:fidelio",
+      "relation": "soggetto_teatrale_fonte_per",
+      "rationale": "Bouilly è autore del dramma Léonore, ou L’amour conjugal, fonte del soggetto del Fidelio; non va confuso con il librettista tedesco delle redazioni dell'opera.",
+      "source_urls": [
+        "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICAnPmr7QgM/"
+      ],
+      "quality": "CURATED_STAGING_EVIDENCE_BACKED",
+      "identity_merge": false,
+      "audit_batch": "CASCATA_2026-11-15"
     }
   ],
   "excluded_or_pending": [
@@ -551,6 +728,48 @@
     {
       "atlantis_id": "senso:opera-bouffe",
       "reason": "Connessa all'operetta e al teatro comico francese ma NON sinonimo di opera buffa italiana, né di tutta l'opéra-comique."
+    },
+    {
+      "mundi_id": "genere-balletto",
+      "atlantis_id": "senso:balletto",
+      "reason": "Mundi usa teatro-danza, non classe genere; tassonomia e focus storico da rivedere.",
+      "status": "HOLD_TAXONOMY_REVIEW",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "genere-jazz",
+      "atlantis_id": "senso:jazz",
+      "reason": "Mundi usa genere, Atlantis tradizione: non sinonimia di campo semantico.",
+      "status": "HOLD_TAXONOMY_REVIEW",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "genere-ragtime",
+      "atlantis_id": "senso:ragtime",
+      "reason": "Atlantis collega il ragtime anche al teatro musicale afroamericano; confronto più ampio.",
+      "status": "HOLD_TAXONOMY_REVIEW",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "poema-sinfonico-ottocentesco",
+      "atlantis_id": "senso:poema-sinfonico",
+      "reason": "Mundi delimita ottocentesco, Atlantis categoria più ampia; aggiungere relazione storica, non fusione.",
+      "status": "HOLD_TAXONOMY_REVIEW",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "forma-fuga",
+      "atlantis_id": "senso:fuga",
+      "reason": "Il nodo Atlantis incorpora contrappunto E fuga; evitare fusione con Fuga intesa come forma autonoma.",
+      "status": "HOLD_TAXONOMY_REVIEW",
+      "audit_batch": "CASCATA_2026-11-15"
+    },
+    {
+      "mundi_id": "frottola-corti-italiane",
+      "atlantis_id": "senso:frottola",
+      "reason": "Corrispondenza probabile, da verificare estensione storico-geografica prima della fusione.",
+      "status": "HOLD_TAXONOMY_REVIEW",
+      "audit_batch": "CASCATA_2026-11-15"
     }
   ],
   "safeguards": {

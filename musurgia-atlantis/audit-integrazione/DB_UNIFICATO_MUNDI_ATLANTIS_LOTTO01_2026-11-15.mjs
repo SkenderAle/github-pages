@@ -123,7 +123,7 @@ export function buildUnifiedDatabase(d){
    if(legacy){
      const from=allM.get(legacy.mundi_id),tax=String(from?.taxonomy?.class||"");
      const rightType=legacy.kind==="persona"
-       ?["persona","compositore"].includes(from?.type)&&n.category==="persona"
+       ?["persona","compositore"].includes(from?.type)&&(n.category==="persona"||(n.category==="persona_riferimento_esterno"&&n.origin==="atlante3d/database/grafo.json"&&n.staging_reference_only===true&&n.id==="legacy:gf:"+legacy.mundi_id))
        :from?.type==="corrente"&&/genere|forma/.test(tax)&&/genere|forma/.test(n.category||"");
      if(!rightType||norm(from?.label)!==norm(n.name)||share)throw Error("Riferimento Flaminio legacy incompatibile: "+n.id);
      mergedLegacy=maps.mundi.get(legacy.mundi_id)||maps.mundi_extension.get(legacy.mundi_id);
@@ -213,7 +213,7 @@ export function buildUnifiedDatabase(d){
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- if(identity.length!==162||taxonomyIdentity.length!==12||legacyReferences.length!==10||curatedMusicNodes.length!==4||semanticCurated.length!==25||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length||
+ if(identity.length!==162||taxonomyIdentity.length!==21||legacyReferences.length!==12||curatedMusicNodes.length!==4||semanticCurated.length!==31||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length||
     counts.orphan_links||counts.duplicate_link_ids||counts.flaminio_source_records!==500||
     counts.unique_flaminio_source_records!==500||counts.flaminio_source_nodes!==500||counts.missing_source_rows){
    throw Error("Gate integrita' NON superato: "+JSON.stringify({counts,expectedNodes,orphans:orphans.slice(0,5),duplicateIDs:dupes.slice(0,5),missing:missing.slice(0,5)}));
