@@ -314,7 +314,8 @@ function rootedProjection(db){
    const nodes=db.nodes.filter(n=>focusIds.has(n.id)&&n.visibility!=="documentary");
    const allowed=new Set(nodes.map(n=>n.id));
    const links=edges.filter(e=>focusEdges.has(e.id)&&allowed.has(e.source)&&allowed.has(e.target));
-   return {nodes,links,parents:focusParents,distance:focusDistance,focused:true,paths:chosenPaths.length};
+   const hasTaxonomyPath=chosenPaths.some(route=>route.path.slice(1,-1).some(id=>index.get(id)?.category==="generi_forme"));
+   return {nodes,links,parents:focusParents,distance:focusDistance,focused:true,paths:chosenPaths.length,hasTaxonomyPath};
  }
  const nodes=db.nodes.filter(n=>selected.has(n.id)&&n.visibility!=="documentary");
  const allowed=new Set(nodes.map(n=>n.id));
@@ -348,7 +349,7 @@ function draw(){
  try{filtered=rootedProjection(state.db)}catch(e){status("Errore proiezione: "+e.message,true);return}
  state.parents=filtered.parents;state.distances=filtered.distance;
  const nodes=filtered.nodes.map(n=>({...n,_focus:n.id===state.root,_depth:filtered.distance.get(n.id)??0,
-   _label:state.labels.has(n.category)||(n.id===state.root)}));
+   _label:state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus)}));
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
  $("graphSummary").textContent=state.focus
@@ -367,6 +368,11 @@ function draw(){
  try{const g=graphInstance().graphData({nodes:nodes.map(n=>({...n})),links:links.map(e=>({...e}))});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
  displayEdgeHover(null);
  const active=state.db.nodes.find(n=>n.id===(state.focus||state.root));if(active)showNode(active);
+ if(state.focus&&active?.category==="opere"&&!filtered.hasTaxonomyPath){
+   const notice=make("p","Per questa composizione non è stato trovato un percorso attraverso generi e forme nei collegamenti attivi. Il rapporto diretto con l'autore resta visibile; la collocazione tassonomica deve essere verificata e collegata nel database.","reason");
+   notice.style.borderLeftColor="#d8a56e";
+   $("detail").append(notice);
+ }
 }
 $("searchEntity").addEventListener("input",showEntityResults);
 $("backFocus").onclick=goBackFocus;
