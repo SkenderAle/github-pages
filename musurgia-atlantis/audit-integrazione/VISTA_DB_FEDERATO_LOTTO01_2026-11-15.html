@@ -61,6 +61,11 @@ main.details-collapsed #detailsPanel{display:none}
 <h2>Ricerca musicale</h2>
 <input type="search" id="searchEntity" placeholder="Autore, opera, genere, ID…">
 <div id="entityResults" class="scroller" aria-label="Risultati della ricerca musicale"></div>
+<label for="searchTarget" class="meta" style="display:block;margin-top:12px;font-weight:700">Collega un secondo lemma</label>
+<input type="search" id="searchTarget" placeholder="Secondo autore, opera, genere…" aria-describedby="connectionHint">
+<div id="targetResults" class="scroller" aria-label="Risultati per il secondo lemma"></div>
+<p class="meta" id="connectionHint">Seleziona prima il lemma iniziale, poi un secondo nodo: mostrerò i percorsi attraverso gli archi esistenti.</p>
+<button id="clearConnection" type="button" disabled>Chiudi confronto</button>
 <fieldset><legend>Nodi visibili</legend><div class="chips" id="visibleCategories"></div></fieldset>
 <fieldset><legend>Relazioni · lenti originali Mundi</legend><div class="chips" id="mundiLenses"></div></fieldset>
 <fieldset><legend>Etichette mostrate (indipendenti dai nodi)</legend><div class="chips" id="labelCategories"></div></fieldset>
@@ -91,7 +96,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[]};
+const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[],comparison:null};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
@@ -124,10 +129,101 @@ function showEntityResults(){
  }
  if(!h.children.length)h.append(make("div","Digita per cercare nei "+state.db.counts.nodes+" nodi unificati.","meta"))
 }
+function showTargetResults(){
+ const h=$("targetResults");h.replaceChildren();
+ if(!state.db)return;
+ for(const n of shortlistNodes($("searchTarget").value)){
+   const b=make("button",n.name,"record");
+   b.append(make("small",categoryName(n.category)+" · "+n.id));
+   b.onclick=()=>selectComparisonTarget(n.id);
+   h.append(b);
+ }
+ if(!h.children.length)h.append(make("div","Cerca il secondo lemma e selezionalo dai risultati.","meta"));
+}
+function selectComparisonTarget(id){
+ if(!state.root){$("connectionHint").textContent="Seleziona prima il lemma di partenza nella ricerca superiore.";return}
+ const node=state.db.nodes.find(n=>n.id===id&&n.visibility!=="documentary");
+ if(!node)return;
+ $("searchTarget").value=node.name;showTargetResults();
+ state.comparison={from:state.root,to:id};
+ $("clearConnection").disabled=false;
+ draw();openDetails(true);
+}
+function comparisonProjection(db,edges,index){
+ const {from,to}=state.comparison;
+ const allowedNodes=new Set(db.nodes.filter(n=>n.visibility!=="documentary").map(n=>n.id));
+ if(!allowedNodes.has(from)||!allowedNodes.has(to))return {nodes:[],links:[],parents:new Map(),distance:new Map(),comparison:true,error:"Estremi non disponibili nei dati musicali"};
+ const generic=/^(tratta|menziona|rimanda|analizza|condivide|citazione|richiamo|documenta|stesso_tema_editoriale|capitolo_tratta_periodo)/i;
+ const adj=new Map();
+ for(const e of edges){
+   if(!allowedNodes.has(e.source)||!allowedNodes.has(e.target)||generic.test(e.relation||""))continue;
+   for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){
+     if(!adj.has(a))adj.set(a,[]);
+     adj.get(a).push({to:b,edge:e});
+   }
+ }
+ // BFS su tutta la rete: niente limite artificiale dei livelli UI;
+ // evitare i grandi hub editoriali come scorciatoie non musicali.
+ const dist=new Map([[from,0]]),queue=[from],maxHops=10;
+ for(let i=0;i<queue.length;i++){
+   const id=queue[i],d=dist.get(id);
+   if(d>=maxHops)continue;
+   for(const {to:next} of adj.get(id)||[]){
+     if(dist.has(next))continue;
+     dist.set(next,d+1);queue.push(next);
+   }
+ }
+ if(!dist.has(to))return {nodes:db.nodes.filter(n=>n.id===from||n.id===to),links:[],parents:new Map(),distance:new Map([[from,0],[to,0]]),comparison:true,error:"Nessun percorso documentato trovato entro 10 archi con le lenti attive",paths:[]};
+ const min=dist.get(to),maxLength=Math.min(maxHops,min+2),routes=[];
+ const routeCount=new Set(),stack=[{id:from,path:[from],links:[]}];
+ let checked=0;
+ while(stack.length&&routes.length<5&&checked++<35000){
+   const cur=stack.pop();
+   if(cur.id===to){
+     const signature=cur.links.map(e=>e.id).join("|");
+     if(!routeCount.has(signature)){routeCount.add(signature);routes.push(cur)}
+     continue;
+   }
+   if(cur.links.length>=maxLength)continue;
+   const options=(adj.get(cur.id)||[]).filter(({to:next})=>!cur.path.includes(next));
+   options.sort((a,b)=>{
+     const da=dist.get(a.to)??99,dbb=dist.get(b.to)??99;
+     // Lo stack è LIFO: privilegia i tragitti corti e tassonomici.
+     const score=x=>-(dist.get(x.to)??99)+(index.get(x.to)?.category==="generi_forme"?1:0);
+     return score(a)-score(b);
+   });
+   for(const opt of options)stack.push({id:opt.to,path:[...cur.path,opt.to],links:[...cur.links,opt.edge]});
+ }
+ // Se la DFS non raggiunge il bersaglio in tempo, ricostruisci
+ // il cammino minimo direttamente dalla BFS precedente.
+ if(!routes.length){
+   let cur=to;const reverse=[to],rels=[];
+   while(cur!==from){
+     const p=(adj.get(cur)||[]).find(x=>dist.get(x.to)===dist.get(cur)-1);
+     if(!p)break;
+     rels.unshift(p.edge);cur=p.to;reverse.unshift(cur);
+   }
+   if(cur===from)routes.push({path:reverse,links:rels});
+ }
+ routes.sort((a,b)=>a.links.length-b.links.length);
+ const pathNodes=new Set([from,to]),pathEdges=new Set(),parents=new Map(),distance=new Map([[from,0]]);
+ for(const route of routes.slice(0,3)){
+   route.path.forEach((id,i)=>{
+     pathNodes.add(id);
+     if(!distance.has(id)||i<distance.get(id))distance.set(id,i);
+     if(i>0){
+       pathEdges.add(route.links[i-1].id);
+       if(!parents.has(id))parents.set(id,{from:route.path[i-1],edge:route.links[i-1]});
+     }
+   });
+ }
+ return {nodes:db.nodes.filter(n=>pathNodes.has(n.id)),links:edges.filter(e=>pathEdges.has(e.id)),
+   parents,distance,comparison:true,paths:routes.slice(0,3)};
+}
 function selectRoot(id){
  const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
  if(n.visibility==="documentary"){showNode(n);return}
- state.root=id;state.focus=null;state.focusHistory=[];state.trail=[id];state.trailEdges=[];$("searchEntity").value=n.name;showEntityResults();draw();openDetails(true)
+ state.root=id;state.focus=null;state.focusHistory=[];state.trail=[id];state.trailEdges=[];state.comparison=null;$("searchTarget").value="";showTargetResults();$("searchEntity").value=n.name;showEntityResults();draw();openDetails(true)
 }
 function openDetails(open){
  const panel=$("detailsPanel"),layout=$("mainLayout"),toggle=$("detailsToggle");
@@ -141,7 +237,7 @@ function openDetails(open){
  }
 }
 function showNebula(){
- state.root=null;state.focus=null;state.focusHistory=[];state.trail=[];state.trailEdges=[];
+ state.root=null;state.focus=null;state.focusHistory=[];state.trail=[];state.trailEdges=[];state.comparison=null;$("searchTarget").value="";showTargetResults();
  $("searchEntity").value="";showEntityResults();
  draw();
 }
@@ -156,6 +252,7 @@ function selectSubnode(id){
  const n=state.db?.nodes.find(x=>x.id===id);
  if(!n||n.visibility==="documentary")return;
  if(!state.root){selectRoot(id);return}
+ if(state.comparison){state.comparison=null;$("clearConnection").disabled=true;}
  if(id===state.focus){showNode(n);openDetails(true);return}
  // Il percorso storico resta in memoria, non viene ricalcolato partendo
  // da un qualunque arco di genere che potrebbe condurre ad altri autori.
@@ -202,6 +299,7 @@ function selectSubnode(id){
  draw();showNode(n);openDetails(true);
 }
 function goBackFocus(){
+ if(state.comparison){state.comparison=null;$("clearConnection").disabled=true;draw();return}
  if(state.trail.length<=1)return;
  state.trail.pop();state.trailEdges.pop();
  state.focus=state.trail.length>1?state.trail.at(-1):null;
