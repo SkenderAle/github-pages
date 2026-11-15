@@ -23,7 +23,7 @@ export const sourcePaths = [
   }
 ];
 export const registryPath = "musurgia-atlantis/audit-integrazione/DB_FEDERATO_LOTTO01_2026-11-15_REGISTRO_500.json";
-s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[‘’´']/g,"").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ")
+const normName = s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[‘’´']/g,"").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ")
 function categoryFor(layer,node) {
   const c=String(node.category||node.type||"").toLowerCase(), sub=String(node.subtype||"").toLowerCase(), tax=String(node.taxonomy?.class||"").toLowerCase(),id=String(node.id||"").toLowerCase();
   if(layer==="flaminio" && (/scheda_catalogo|rubrica_fonte|intestazione_autore|scheda_audit|riferimento_documentario|annotazione_organologica|fonte_manoscritta/.test(c)))return "documentazione";
