@@ -6,7 +6,7 @@ function makeGraph(host){
   const ctx=canvas.getContext('2d',{alpha:false});
   let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,hoveredEdge=null,drag=null,active=true,last=0;
   let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},nodeSize=n=>3;
-  const options={linkOpacity:.3};
+  const options={linkOpacity:.3,disableDoubleClickZoom:false};
   const hashed=str=>{let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619);return h>>>0};
   const rnd=(str,k)=>((hashed(str+'-'+k)%100003)/100003);
   function layout(){
@@ -40,6 +40,31 @@ function makeGraph(host){
         });
       }
       rotY=-.52;rotX=.33;shiftX=0;shiftY=0;
+    }else if(current.nodes.some(n=>n._overview)){
+      // Vista globale: nebulosa tridimensionale suddivisa in regioni morbide
+      // per categoria, senza creare nodi o relazioni supplementari.
+      const categories=[...new Set(current.nodes.map(n=>n.category))].sort();
+      const count=Math.max(1,categories.length),golden=Math.PI*(3-Math.sqrt(5));
+      const centers=new Map(categories.map((category,i)=>{
+        const y=1-2*(i+.5)/count,phi=golden*i,rad=Math.sqrt(Math.max(0,1-y*y));
+        return [category,{x:rad*Math.cos(phi)*255,y:y*255,z:rad*Math.sin(phi)*255}];
+      }));
+      const grouped=new Map();
+      for(const n of current.nodes){if(!grouped.has(n.category))grouped.set(n.category,[]);grouped.get(n.category).push(n)}
+      for(const [category,group] of grouped){
+        group.sort((a,b)=>a.id.localeCompare(b.id));
+        const center=centers.get(category);
+        const spread=Math.max(68,Math.min(215,42+Math.cbrt(group.length)*13));
+        group.forEach((n,i)=>{
+          const y=1-2*(i+.5)/group.length,phi=golden*i;
+          const rad=Math.sqrt(Math.max(0,1-y*y));
+          const rr=spread*(.3+.7*Math.cbrt((i+.5)/group.length));
+          n.x=center.x+rad*Math.cos(phi)*rr+(rnd(n.id,1)-.5)*12;
+          n.y=center.y+y*rr+(rnd(n.id,2)-.5)*12;
+          n.z=center.z+rad*Math.sin(phi)*rr+(rnd(n.id,3)-.5)*12;
+        });
+      }
+      rotY=-.42;rotX=.17;shiftX=0;shiftY=0;
     }else{
       const chapters=current.nodes.filter(n=>n.category==='capitolo').sort((a,b)=>a.name.localeCompare(b.name,'it'));
       const centers=new Map();
@@ -236,12 +261,18 @@ function makeGraph(host){
   });
   canvas.addEventListener('pointercancel',ev=>{pointers.delete(ev.pointerId);drag=null;pinch=null;ignoreTap=true;canvas.style.cursor='grab'});
   canvas.addEventListener('wheel',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*Math.exp(-ev.deltaY*.001),p.x,p.y)},{passive:false});
-  canvas.addEventListener('dblclick',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*1.6,p.x,p.y)});
+  canvas.addEventListener('dblclick',ev=>{ev.preventDefault();if(!options.disableDoubleClickZoom){const p=coordinates(ev);zoomAt(zoom*1.6,p.x,p.y)}});
   let api={isFallback:true,destroy(){active=false;canvas.remove()},graphData(v){if(v===undefined)return current;current=v;layout();return api},
     zoomToFit(){
       zoom=1;shiftX=0;shiftY=0;selected=null;
       const focus=points.find(n=>n._focus);
-      if(!focus){zoom=.95;return api}
+      if(!focus){
+        if(points.some(n=>n._overview)){
+          const p=points.map(project),dx=Math.max(35,...p.map(q=>Math.abs(q.x-W/2))),dy=Math.max(35,...p.map(q=>Math.abs(q.y-H/2)));
+          zoom=Math.max(.18,Math.min(1.2,(W-75)/(dx*2),(H-145)/(dy*2)));
+        }else zoom=.95;
+        return api;
+      }
       const p=points.map(project);
       const dx=Math.max(35,...p.map(q=>Math.abs(q.x-W/2)));
       const dy=Math.max(35,...p.map(q=>Math.abs(q.y-H/2)));
@@ -253,6 +284,7 @@ function makeGraph(host){
     cameraPosition(_pos,lookAt){if(lookAt&&Number.isFinite(lookAt.x)){const p=project(lookAt);shiftX+=W/2-p.x;shiftY+=H/2-p.y;selected=lookAt.id||null;zoomAt(Math.max(zoom,1.7),W/2,H/2)}return api},
     d3Force(){return {strength(){return this}}},
     width(v){if(v===undefined)return W;W=v;resize();return api},height(v){if(v===undefined)return H;H=v;resize();return api},
+    disableDoubleClickZoom(value){options.disableDoubleClickZoom=!!value;return api},
     onNodeClick(fn){onNode=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onLinkHover(fn){onLinkHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
     nodeColor(fn){if(fn===undefined)return nodeColors;nodeColors=fn;return api},linkColor(fn){if(fn===undefined)return linkColors;linkColors=fn;return api},nodeVal(fn){nodeSize=fn;return api},linkOpacity(n){options.linkOpacity=n;return api}
   };
