@@ -55,7 +55,7 @@ function categoryFor(layer,node) {
     }
   }
   if(layer==="flaminio"){
-    if(/persona|autore/.test(c))return "persone";
+    if(/^persona(?:_|$)/.test(c))return "persone";
     if(/genere|forma/.test(c))return "generi_forme";
     if(/opera|cantata|raccolta|versione|variazione|parte_di|parte_di_oratorio|parte_di_raccolta|frammento_di_movimento|tema_musicale/.test(c))return "opere";
     if(/fonte|documentaria|riferimento|rubrica|scheda/.test(c))return "documentazione";
@@ -145,8 +145,9 @@ function projectForViewer(db,{rootId,depth=1,visibleCategories=["persone","opere
  const nodeById=new Map(db.nodes.map(n=>[n.id,n]));
  if(!nodeById.has(rootId))throw Error("Unknown root "+rootId);
  const neighbors=new Map();
+ const isSuspended = e=>/(HOLD|SOSPES|CONTESTAT)/i.test([e.quality,e.relation,e.original?.quality_gate,e.original?.status].filter(Boolean).join(" "));
  for(const e of db.links){
-   if(!e.source||!e.target||(!includeDocumentary&&e.visibility==="documentary"))continue;
+   if(!e.source||!e.target||isSuspended(e)||(!includeDocumentary&&e.visibility==="documentary"))continue;
    const x=neighbors.get(e.source)||[];x.push([e.target,e]);neighbors.set(e.source,x);
    const y=neighbors.get(e.target)||[];y.push([e.source,e]);neighbors.set(e.target,y);
  }
@@ -162,7 +163,7 @@ function projectForViewer(db,{rootId,depth=1,visibleCategories=["persone","opere
  }
  const nodes=db.nodes.filter(n=>visited.has(n.id)&&(n.id===rootId||visibleSet.has(n.category))&&(includeDocumentary||n.visibility!=="documentary"));
  const kept=new Set(nodes.map(n=>n.id));
- const links=db.links.filter(e=>e.source&&e.target&&kept.has(e.source)&&kept.has(e.target)&&(includeDocumentary||e.visibility!=="documentary"));
+ const links=db.links.filter(e=>e.source&&e.target&&!isSuspended(e)&&kept.has(e.source)&&kept.has(e.target)&&(includeDocumentary||e.visibility!=="documentary"));
  return {nodes:nodes.map(n=>({...n,forceLabel:labelSet.has(n.category)})),links,rootId,depth,filter:visibleCategories,labelCategories};
 }
 export {assembleFederation as buildFederatedDatabase, projectForViewer, categoryFor};

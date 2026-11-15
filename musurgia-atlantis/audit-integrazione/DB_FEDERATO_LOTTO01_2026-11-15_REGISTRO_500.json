@@ -5,7 +5,7 @@
   "source_rows": 500,
   "source_file": "musurgia-atlantis/audit-integrazione/FLAMINIO_LINKATI_LOTTO01_500_RECORD_RAW_2026-11-12.csv",
   "source_csv_blob_sha": "116c0cabe2f64d7e2428f26752a3a995a414efc4",
-  "notes": "Ogni original_csv conserva tutti i 13 campi della riga Flaminio; staging_source e original_edge conservano la provenienza e gli archi senza promuovere i candidati a certezze.",
+  "notes": "Ogni original_csv conserva tutti i 13 campi della riga Flaminio; staging_source e original_edge conservano la provenienza e gli archi senza promuovere i candidati a certezze. Correzione: la stringa categoria 'opera_*_autore_*' denota un'opera, non una persona; sono state rietichettate 19 occorrenze di riferimento, lasciando invariati i payload e i gate.",
   "records": [
     {
       "source_id": "flaminio:excel:78",
@@ -58,7 +58,7 @@
           "target_id": "audit:fl01:work:albinoni-pimpinone",
           "name": "Vespetta e Pimpinone",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:78",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -73,7 +73,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -129,7 +129,7 @@
           "target_id": "audit:fl01:work:albinoni-astarto",
           "name": "Astarto",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:87",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -144,7 +144,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -200,7 +200,7 @@
           "target_id": "audit:fl01:work:albinoni-incostanza",
           "name": "L'incostanza schernita",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:95",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -215,7 +215,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -271,7 +271,7 @@
           "target_id": "audit:fl01:work:albinoni-statira",
           "name": "Statira",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:98",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -286,7 +286,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -934,7 +934,7 @@
           "target_id": "audit:fl01:work:albinoni-astarto",
           "name": "Astarto",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:345",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -949,7 +949,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -1302,7 +1302,7 @@
           "target_id": "audit:fl01:work:albinoni-incostanza",
           "name": "L'incostanza schernita",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:389",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -1317,7 +1317,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -1373,7 +1373,7 @@
           "target_id": "audit:fl01:work:albinoni-statira",
           "name": "Statira",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:399",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -1388,7 +1388,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -1444,7 +1444,7 @@
           "target_id": "audit:fl01:work:albinoni-pimpinone",
           "name": "Vespetta e Pimpinone",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:401",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -1459,7 +1459,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -13005,7 +13005,7 @@
           "target_id": "audit:fl01:work:bwv53",
           "name": "Schlage doch, gewünschte Stunde (già BWV 53)",
           "original_category": "opera_identita_verificata_autore_in_hold",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:3028",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -13020,7 +13020,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -17226,7 +17226,7 @@
           "target_id": "audit:fl01:work:bwv723",
           "name": "Gelobet seist du, Jesu Christ (già BWV 723)",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:3390",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -17241,7 +17241,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -17947,7 +17947,7 @@
           "target_id": "audit:fl01:work:bwv771",
           "name": "Variazioni su Allein Gott in der Höh sei Ehr (già BWV 771)",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:3434",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -17962,7 +17962,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -19293,7 +19293,7 @@
           "target_id": "audit:fl01:work:bwv1070",
           "name": "Ouverture in sol minore (BWV 1070)",
           "original_category": "opera_identita_verificata_autore_in_hold",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:3596",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -19308,7 +19308,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -27427,7 +27427,7 @@
           "target_id": "audit:fl01:work:bwv567",
           "name": "Preludio in do maggiore (già BWV 567; Krebs-WV 401)",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:3831",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -27442,7 +27442,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -28744,7 +28744,7 @@
           "target_id": "audit:fl01:work:bwv968",
           "name": "Adagio in sol maggiore (BWV 968)",
           "original_category": "opera_identita_verificata_autore_in_hold",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:3942",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -28759,7 +28759,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -28817,7 +28817,7 @@
           "target_id": "audit:fl01:work:bwv968",
           "name": "Adagio in sol maggiore (BWV 968)",
           "original_category": "opera_identita_verificata_autore_in_hold",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:edge:source:3943",
           "evidence_status": "SOURCE_IDENTITY_CORROBORATED",
@@ -28832,7 +28832,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -35326,7 +35326,7 @@
           "target_id": "audit:fl01:work:beethoven-op83-02",
           "name": "Sehnsucht",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:beethoven:edge:032",
           "evidence_status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
@@ -35344,7 +35344,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -35402,7 +35402,7 @@
           "target_id": "audit:fl01:work:beethoven-op83-01",
           "name": "Wonne der Wehmut (Flaminio: Wehmuth)",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:beethoven:edge:036",
           "evidence_status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
@@ -35420,7 +35420,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -35696,7 +35696,7 @@
           "target_id": "audit:fl01:work:beethoven-op52-08",
           "name": "Das Blümchen Wunderhold",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:beethoven:edge:040",
           "evidence_status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
@@ -35714,7 +35714,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false
@@ -35772,7 +35772,7 @@
           "target_id": "audit:fl01:work:beethoven-op52-04",
           "name": "Maigesang",
           "original_category": "opera_identita_e_autore_riscontrati",
-          "display_category": "persone",
+          "display_category": "opere",
           "relation": "documenta_opera_identificata",
           "edge_id": "audit:fl01:beethoven:edge:044",
           "evidence_status": "CATALOGUE_AND_SOURCE_GUIDE_CORRELATED_STAGING_ONLY",
@@ -35790,7 +35790,7 @@
           }
         }
       ],
-      "has_work_or_collection_target": false,
+      "has_work_or_collection_target": true,
       "has_attribution_audit": false,
       "identity_certified": false,
       "canonical_merge_approved": false

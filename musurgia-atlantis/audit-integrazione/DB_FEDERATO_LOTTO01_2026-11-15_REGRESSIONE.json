@@ -15,7 +15,9 @@
     "no_orphans": true,
     "five_exact_person_ids_reconciled": true,
     "tentative_name_matches_not_merged": true,
-    "production_untouched": true
+    "production_untouched": true,
+    "work_nodes_never_misclassified_as_people": true,
+    "hold_edges_not_visible_by_default": true
   },
   "metrics": {
     "nodes": 2983,
@@ -33,10 +35,12 @@
     "nominal_crosswalk_candidates": 146,
     "orphan_edges": 0,
     "duplicate_edge_ids": 0,
-    "work_associations": 480,
+    "work_associations": 499,
     "records_with_attribution_audit": 17,
     "source_refs_total": 517,
-    "raw_fields_per_row": 13
+    "raw_fields_per_row": 13,
+    "source_documentary_only": 1,
+    "display_work_category_corrections": 19
   },
   "samples": {
     "first_source": "flaminio:excel:78",
@@ -77,5 +81,10 @@
     "Test nel browser e collegamento della UI Atlantis al nuovo adattatore",
     "Non sostituire i grafi pubblici prima del collaudo"
   ],
-  "no_production_edit": true
+  "no_production_edit": true,
+  "notes": [
+    "La categorizzazione UI è stata corretta per 19 occorrenze opera_*_autore_*",
+    "Riga excel 3635 non acquisisce identità musicale fittizia",
+    "HOLD e sospesi esclusi dalla proiezione visiva predefinita, mantenuti integri nel database"
+  ]
 }

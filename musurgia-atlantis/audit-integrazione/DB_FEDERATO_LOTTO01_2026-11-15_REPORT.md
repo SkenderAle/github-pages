@@ -17,7 +17,7 @@ Tutte le 500 righe originali Flaminio del lotto 01 entrano in un registro di fon
 - Staging Flaminio: **1.365 nodi, 2.780 archi**.
 - Fusioni tecniche di identità da ID e nome coincidenti: **5 persone**.
 - Chiavi federate: **2983 nodi**; relazioni sorgente mantenute: **8324**.
-- Schede Flaminio: **500/500 con riga originaria e almeno un arco di riconciliazione**; **517** riferimenti a entità/audit; **17** con audit attributivo associato.
+- Schede Flaminio: **500/500 con riga originaria e almeno un arco di riconciliazione**; **517** riferimenti a entità/audit; **499/500** schede hanno un collegamento a entità musicali o raccolte con diversi livelli di certezza; **1** scheda resta collegata a un riferimento documentario esterno; **17** con audit attributivo associato.
 - Corrispondenze nominali Mundi↔Atlantis proposte: **146**, NON automaticamente fuse.
 
 ## Regole irrinunciabili
@@ -28,6 +28,11 @@ Tutte le 500 righe originali Flaminio del lotto 01 entrano in un registro di fon
 5. Fonte/rubrica/intestazione sono nel livello **documentazione**, normalmente escluso dalla rete di navigazione musicale; accessibili per audit.
 6. Gli abbinamenti per nome fra i grafi sono candidati non attivi; qualità e attribuzioni dubbie non vengono promosse.
 7. Il modulo implementa una proiezione con categorie e etichette indipendenti, ma **non è ancora collegato** al renderer pubblico. `projectForViewer` impedisce un fan-out indiscriminato oltre il primo livello attraverso autori e generi.
+
+## Correzioni di qualità prima del rilascio
+- 19 riferimenti a opere con categoria `opera_*_autore_*` erano erroneamente presentati come persone nel primo adattatore; corretti nella proiezione e nel registro, senza alterare le schede originali.
+- La riga Excel **3635**, `Weihnachts Oratorium`, è collegata a un riferimento documentario esterno, non viene automaticamente promossa a una nuova entità opera.
+- I legami esplicitamente `HOLD`, sospesi o contestati sono esclusi dalla navigazione grafica predefinita ma restano rintracciabili nel database.
 
 ## Da completare
 - Collaudo reale browser e Android, anche con Bach e compositori meno documentati.

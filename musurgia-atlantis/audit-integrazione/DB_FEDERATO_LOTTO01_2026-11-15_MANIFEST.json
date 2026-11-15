@@ -78,7 +78,9 @@
     "no_orphans": true,
     "five_exact_person_ids_reconciled": true,
     "tentative_name_matches_not_merged": true,
-    "production_untouched": true
+    "production_untouched": true,
+    "work_nodes_never_misclassified_as_people": true,
+    "hold_edges_not_visible_by_default": true
   },
   "categories": [
     "persone",
@@ -95,5 +97,14 @@
   ],
   "merge_policy": "Soltanto cinque ID persona condivisi, con nome coincidente, vengono rappresentati da una sola chiave federata; le corrispondenze di nome fra Mundi e Atlantis sono candidate e non sono fuse. Le fonti rimangono nel nodo con provenance separate.",
   "provenance_policy": "I 500 record raw, le 1.389 relazioni specialistiche Mundi e i quattro grafi originali sono leggibili da un unico adattatore. Nessun campo originale viene sovrascritto o cancellato.",
-  "status": "FEDERATED_DATA_READY_VIEWER_INTEGRATION_PENDING"
+  "status": "FEDERATED_DATA_READY_VIEWER_INTEGRATION_PENDING",
+  "notes_500": "499/500 righe hanno almeno un riferimento a opera/raccolta (con diverso grado di affidabilità); riga 3635 'Weihnachts Oratorium' è conservata con riferimento documentario esterno, senza forzare un nuovo nodo opera.",
+  "metrics_500": {
+    "sources": 500,
+    "source_to_work_or_collection_refs": 499,
+    "source_only_to_documentary_ref": 1,
+    "source_refs_total": 517,
+    "corrected_display_category_refs": 19,
+    "attribution_audits": 17
+  }
 }
