@@ -1,0 +1,199 @@
+{
+  "schema": "musurgia-atlantis-lotto01-gate04-isolated-projection-regression-v1",
+  "date": "2026-11-15",
+  "base_commit": "6e47dc25416ea94b022ef44c3e207362da7a66ea",
+  "projection_commit": "277d7d154e8154c71472941fbf7fa2795dfb8991",
+  "baseline_staging_blob_sha": "a8d0bbee9806925ca5750cc3990b4cbde1c44a0f",
+  "projection_blob_sha": "6f1793f3d8b07469a458c7bbbd768eb8cb37050e",
+  "production_blob_sha": "4863b3fe263154387de3388c0b813b5f94546f12",
+  "projection_file": "STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_GATE04_COPIA_2026-11-15.json",
+  "status": "PASS_DATA_ONLY_UI_UNTESTED",
+  "checks": [
+    {
+      "test": "Guard V11 SHA invariato",
+      "status": "PASS"
+    },
+    {
+      "test": "Guard produzione SHA invariato",
+      "status": "PASS"
+    },
+    {
+      "test": "Copia separata da V11",
+      "status": "PASS"
+    },
+    {
+      "test": "Schema e metadati top-level invariati",
+      "status": "PASS"
+    },
+    {
+      "test": "Nodi = 1365",
+      "status": "PASS"
+    },
+    {
+      "test": "Archi = 2780",
+      "status": "PASS"
+    },
+    {
+      "test": "Schede fonte = 500",
+      "status": "PASS"
+    },
+    {
+      "test": "Una scheda per riga Excel",
+      "status": "PASS"
+    },
+    {
+      "test": "Nodi ID unici",
+      "status": "PASS"
+    },
+    {
+      "test": "Archi ID unici",
+      "status": "PASS"
+    },
+    {
+      "test": "Tutti gli archi hanno estremi esistenti",
+      "status": "PASS"
+    },
+    {
+      "test": "Tutti gli archi identici a V11",
+      "status": "PASS"
+    },
+    {
+      "test": "Sole tre identità modificate",
+      "status": "PASS"
+    },
+    {
+      "test": "Solo campo name modificato",
+      "status": "PASS"
+    },
+    {
+      "test": "Nodi fonte grezza non modificati",
+      "status": "PASS"
+    },
+    {
+      "test": "Tre patch coincidono con overlay",
+      "status": "PASS"
+    },
+    {
+      "test": "Tre patch con precondizione fonte",
+      "status": "PASS"
+    },
+    {
+      "test": "Tre patch con arco fonte→opera",
+      "status": "PASS"
+    },
+    {
+      "test": "Tutte le schede fonte hanno arco verso lavoro",
+      "status": "PASS"
+    },
+    {
+      "test": "Riconoscimenti Wq43/BWV578 già presenti",
+      "status": "PASS"
+    },
+    {
+      "test": "Riconoscimenti Bartók critici già presenti",
+      "status": "PASS"
+    },
+    {
+      "test": "Due crosswalk candidati hanno entrambi gli estremi",
+      "status": "PASS"
+    },
+    {
+      "test": "Due crosswalk hanno fonte di provenienza",
+      "status": "PASS"
+    },
+    {
+      "test": "Nessun nuovo arco candidato in stage",
+      "status": "PASS"
+    },
+    {
+      "test": "Suite Mandarino distinta dalla pantomima",
+      "status": "PASS"
+    },
+    {
+      "test": "Tre HOLD conservati come condizioni editoriali",
+      "status": "PASS"
+    },
+    {
+      "test": "Espansione dati 1 livello contiene fonte giusta",
+      "status": "PASS"
+    },
+    {
+      "test": "Espansione dati 2 livelli calcolabile",
+      "status": "PASS"
+    },
+    {
+      "test": "Nessun nodo di produzione aggiunto",
+      "status": "PASS"
+    },
+    {
+      "test": "Nessun arco di produzione aggiunto",
+      "status": "PASS"
+    },
+    {
+      "test": "Nessun ID nuovo in staging",
+      "status": "PASS"
+    },
+    {
+      "test": "Categorie dei nodi inalterate",
+      "status": "PASS"
+    },
+    {
+      "test": "Rollback integrale esatto",
+      "status": "PASS"
+    },
+    {
+      "test": "Precondizione blocca doppia applicazione",
+      "status": "PASS"
+    },
+    {
+      "test": "Zero promozioni canoniche",
+      "status": "PASS"
+    }
+  ],
+  "metrics": {
+    "passed": 35,
+    "failed": 0,
+    "source_rows": 500,
+    "staging_nodes": 1365,
+    "staging_links": 2780,
+    "production_nodes": 754,
+    "production_links": 1718,
+    "metadata_names_changed": 3,
+    "source_rows_mutated": 0,
+    "links_added": 0,
+    "canonical_promotions": 0,
+    "rollback_exact": true,
+    "desktop_browser_tests": 0,
+    "android_browser_tests": 0,
+    "canvas_webgl_tests": 0
+  },
+  "rooted_expansion_data_diagnostics": {
+    "fl49:jsbach:bwv140": {
+      "first_hop": 4,
+      "first_hop_contains_source": true,
+      "second_hop_unique": 336
+    },
+    "fl50:jsbach:bwv149": {
+      "first_hop": 4,
+      "first_hop_contains_source": true,
+      "second_hop_unique": 335
+    },
+    "audit:fl01:bbb:work:excel4502": {
+      "first_hop": 3,
+      "first_hop_contains_source": true,
+      "second_hop_unique": 6
+    }
+  },
+  "pending": [
+    "Check real filter and rooted-expansion behavior in actual browser using a viewer that loads isolated projection",
+    "Check desktop Chromium Canvas/WebGL",
+    "Check Android real device",
+    "Widen old LOTTO38/LOTTO42 crosswalk beyond 500 source rows, keeping distinct archives",
+    "Do not change production grafo.json or index.html until all gates signed off"
+  ],
+  "notes": [
+    "Tests validate the exported staged GRAPH DATA and not the UI runtime.",
+    "Stage patching is restricted to three name fields and does not imply historical identity approval.",
+    "Category distribution and links are preserved; real visual filtering has not been executed."
+  ]
+}
