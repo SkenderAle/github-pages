@@ -1,0 +1,99 @@
+{
+  "schema": "musurgia-federated-db-manifest-v1",
+  "date": "2026-11-15",
+  "mode": "NON_DISTRUTTIVO_STAGING",
+  "canonical_identity_approved": false,
+  "description": "Ingresso unificato che proietta tutti i grafi originari e le 500 schede Flaminio nello stesso spazio di dati; salvaguarda ogni nodo e relazione originaria, senza confondere schede fonte con opere o creare fusioni identitarie nominali.",
+  "entrypoint": "musurgia-atlantis/audit-integrazione/DB_FEDERATO_LOTTO01_2026-11-15.mjs",
+  "registry": "musurgia-atlantis/audit-integrazione/DB_FEDERATO_LOTTO01_2026-11-15_REGISTRO_500.json",
+  "sources": [
+    {
+      "key": "mundi",
+      "path": "atlante3d/database/grafo.json",
+      "blob_sha": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+      "nodes": 869,
+      "edges": 2437
+    },
+    {
+      "key": "mundi_specialist",
+      "path": "atlante3d/database/relazioni.json",
+      "blob_sha": "b25f0487d05bdab261d2e0df9044fff5aaf98e47",
+      "edges": 1389
+    },
+    {
+      "key": "atlantis",
+      "path": "musurgia-atlantis/grafo.json",
+      "blob_sha": "4863b3fe263154387de3388c0b813b5f94546f12",
+      "nodes": 754,
+      "edges": 1718
+    },
+    {
+      "key": "flaminio_staging",
+      "path": "musurgia-atlantis/audit-integrazione/STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_GATE04_COPIA_2026-11-15.json",
+      "blob_sha": "6f1793f3d8b07469a458c7bbbd768eb8cb37050e",
+      "nodes": 1365,
+      "edges": 2780
+    },
+    {
+      "key": "flaminio_csv_raw",
+      "path": "musurgia-atlantis/audit-integrazione/FLAMINIO_LINKATI_LOTTO01_500_RECORD_RAW_2026-11-12.csv",
+      "blob_sha": "116c0cabe2f64d7e2428f26752a3a995a414efc4",
+      "records": 500
+    }
+  ],
+  "supporting_originals": [
+    "atlante3d/database/collegamenti-sito.json",
+    "atlante3d/database/identita-esterne.json",
+    "atlante3d/database/consultazione.json",
+    "atlante3d/database/video.json",
+    "musurgia-atlantis/PROTOCOLLO_AGGIORNAMENTI.json"
+  ],
+  "counts": {
+    "nodes": 2983,
+    "links": 8324,
+    "source_records": 500,
+    "source_nodes_in_staging": 500,
+    "mundi_nodes": 869,
+    "mundi_edges": 2437,
+    "specialist_relations": 1389,
+    "atlantis_nodes": 754,
+    "atlantis_links": 1718,
+    "flaminio_nodes": 1365,
+    "flaminio_links": 2780,
+    "exact_shared_person_ids": 5,
+    "nominal_crosswalk_candidates": 146,
+    "orphan_edges": 0,
+    "duplicate_edge_ids": 0
+  },
+  "checks": {
+    "registry_has_500": true,
+    "every_raw_record_retained": true,
+    "every_stage_record_retained": true,
+    "all_500_have_source_links": true,
+    "category_adaptation_complete": true,
+    "all_three_original_graphs_present": true,
+    "all_edges_including_specialist_present": true,
+    "unique_entity_ids": true,
+    "unique_link_ids": true,
+    "no_orphans": true,
+    "five_exact_person_ids_reconciled": true,
+    "tentative_name_matches_not_merged": true,
+    "production_untouched": true
+  },
+  "categories": [
+    "persone",
+    "opere",
+    "reti_culturali",
+    "generi_forme",
+    "strumenti",
+    "luoghi",
+    "istituzioni",
+    "concetti",
+    "capitoli",
+    "eventi",
+    "documentazione"
+  ],
+  "merge_policy": "Soltanto cinque ID persona condivisi, con nome coincidente, vengono rappresentati da una sola chiave federata; le corrispondenze di nome fra Mundi e Atlantis sono candidate e non sono fuse. Le fonti rimangono nel nodo con provenance separate.",
+  "provenance_policy": "I 500 record raw, le 1.389 relazioni specialistiche Mundi e i quattro grafi originali sono leggibili da un unico adattatore. Nessun campo originale viene sovrascritto o cancellato.",
+  "status": "FEDERATED_DATA_READY_VIEWER_INTEGRATION_PENDING"
+}

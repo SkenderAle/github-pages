@@ -1,0 +1,81 @@
+{
+  "schema": "musurgia-federated-db-lot01-regression-v1",
+  "date": "2026-11-15",
+  "status": "PASS_DATA_STRUCTURE_ONLY_NO_BROWSER",
+  "checks": {
+    "registry_has_500": true,
+    "every_raw_record_retained": true,
+    "every_stage_record_retained": true,
+    "all_500_have_source_links": true,
+    "category_adaptation_complete": true,
+    "all_three_original_graphs_present": true,
+    "all_edges_including_specialist_present": true,
+    "unique_entity_ids": true,
+    "unique_link_ids": true,
+    "no_orphans": true,
+    "five_exact_person_ids_reconciled": true,
+    "tentative_name_matches_not_merged": true,
+    "production_untouched": true
+  },
+  "metrics": {
+    "nodes": 2983,
+    "links": 8324,
+    "source_records": 500,
+    "source_nodes_in_staging": 500,
+    "mundi_nodes": 869,
+    "mundi_edges": 2437,
+    "specialist_relations": 1389,
+    "atlantis_nodes": 754,
+    "atlantis_links": 1718,
+    "flaminio_nodes": 1365,
+    "flaminio_links": 2780,
+    "exact_shared_person_ids": 5,
+    "nominal_crosswalk_candidates": 146,
+    "orphan_edges": 0,
+    "duplicate_edge_ids": 0,
+    "work_associations": 480,
+    "records_with_attribution_audit": 17,
+    "source_refs_total": 517,
+    "raw_fields_per_row": 13
+  },
+  "samples": {
+    "first_source": "flaminio:excel:78",
+    "last_source": "flaminio:excel:4743",
+    "first_targets": [
+      {
+        "id": "audit:fl01:work:albinoni-pimpinone",
+        "type": "persone",
+        "status": "SOURCE_IDENTITY_CORROBORATED"
+      }
+    ],
+    "bach_authors": [
+      {
+        "from": "flaminio::flaminio:source-author:bach-carl-philipp-emanuel",
+        "targets": [],
+        "status": "NO_UNIQUE_AUTHOR_MATCH",
+        "automatic_merge": false
+      },
+      {
+        "from": "flaminio::flaminio:source-author:bach-johann-christoph-friedrich",
+        "targets": [],
+        "status": "NO_UNIQUE_AUTHOR_MATCH",
+        "automatic_merge": false
+      },
+      {
+        "from": "flaminio::flaminio:source-author:bach-johann-sebastian",
+        "targets": [
+          "atlantis::pers:bach"
+        ],
+        "status": "NAVIGAZIONE_AUTORE_NON_FUSIONE",
+        "automatic_merge": false
+      }
+    ]
+  },
+  "pending": [
+    "Validazione storica e deduplicazione dei candidati Mundi-Atlantis",
+    "Risoluzione delle identità opere e raccolte ancora candidate",
+    "Test nel browser e collegamento della UI Atlantis al nuovo adattatore",
+    "Non sostituire i grafi pubblici prima del collaudo"
+  ],
+  "no_production_edit": true
+}
