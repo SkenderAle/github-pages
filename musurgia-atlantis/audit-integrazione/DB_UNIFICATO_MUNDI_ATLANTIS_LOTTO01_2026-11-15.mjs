@@ -176,6 +176,53 @@ export function buildUnifiedDatabase(d){
      quality:e.status,layer:"mundi",collection:"lenti-originali",
      visibility:"musical",original:e});
  });
+ // Mundi mostra anche raccordi tassonomici di navigazione CALCOLATI
+ // (app-livelli.js: compileDerivedGenreEdges). Non sono archi documentari
+ // diretti: etichetta esplicita e percorso tramite la specializzazione.
+ const genreContextNotInherited=new Set(["impresa-teatrale-storica","riforma-storico-teatrale","ambiente-storico-musicale",
+   "ambiente-di-corte","contesto-teatrale-vocale","teoria-acustica","tecnologia-di-diffusione",
+   "caso-tecnico-biografico","ricerca-etnomusicologica"]);
+ function mainGenreAncestor(n){
+   if(!n||n.type!=="corrente"||n.taxonomy?.presentation==="scheda"||n.work_archive||n.document_archive)return null;
+   const seen=new Set([n.id]);let here=n;
+   while(here?.taxonomy?.parent){
+     if(genreContextNotInherited.has(here.taxonomy.class))return null;
+     const parent=allM.get(here.taxonomy.parent);
+     if(!parent||seen.has(parent.id))return null;
+     if(parent.type==="corrente"&&parent.taxonomy?.visibility==="principale")return parent;
+     seen.add(parent.id);here=parent;
+   }
+   return null;
+ }
+ const derivedGenreMap=new Map(),directGenre=new Set();
+ for(const e of mundi.edges){
+   const a=allM.get(e.source),b=allM.get(e.target);
+   const author=a?.type==="compositore"?a:b?.type==="compositore"?b:null;
+   const other=author&&(author.id===e.source?b:a);
+   if(author&&other?.type==="corrente"&&other.taxonomy?.visibility==="principale")
+     directGenre.add(author.id+"|"+other.id);
+ }
+ for(const e of mundi.edges){
+   const a=allM.get(e.source),b=allM.get(e.target);
+   const author=a?.type==="compositore"?a:b?.type==="compositore"?b:null;
+   const child=author&&(author.id===e.source?b:a),parent=mainGenreAncestor(child);
+   if(!parent||directGenre.has(author.id+"|"+parent.id))continue;
+   const source=maps.mundi.get(author.id)||maps.mundi_extension.get(author.id);
+   const target=maps.mundi.get(parent.id)||maps.mundi_extension.get(parent.id);
+   if(!source||!target)continue;
+   const key=author.id+"|"+parent.id;
+   if(!derivedGenreMap.has(key))derivedGenreMap.set(key,{source,target,via:new Set(),sources:new Set()});
+   const row=derivedGenreMap.get(key);row.via.add(child.label||child.id);
+   for(const url of e.sources||[])if(typeof url==="string"&&url.startsWith("https://"))row.sources.add(url);
+ }
+ const derivedGenreRelations=[...derivedGenreMap].map(([key,row],i)=>({
+   id:"mundi::raccordo-tassonomico::"+i,source:row.source,target:row.target,
+   relation:"accesso_indiretto_alla_famiglia",group:"tassonomia",layer:"mundi",
+   collection:"raccordi-derivati-originali",quality:"DERIVED_NAVIGATION_NOT_DIRECT",
+   visibility:"musical",original:{taxonomyDerived:true,via_labels:[...row.via],
+     sources:[...row.sources],note:"Risalita attraverso specializzazioni esplicite: "+[...row.via].join(", ")+
+       ". NON è una seconda relazione storica diretta.",mundi_key:key}}));
+ links.push(...derivedGenreRelations);
  special.relations.forEach((e,i)=>append("mundi","relazioni-specialistiche",e,i));
  extension.relations.forEach((e,i)=>{
    const source=maps.mundi_extension.get(e.source)||maps.mundi.get(e.source);
@@ -221,7 +268,7 @@ export function buildUnifiedDatabase(d){
  const originalEdges=atlantis.links.length+mundi.edges.length+special.relations.length+extension.relations.length+staging.links.length+mundiLensRelations.length;
  const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length;
  const counts={mundi_nodes:mundi.nodes.length,mundi_extension_records:extension.nodes.length,mundi_extension_new_nodes:extension.nodes.filter(n=>!baseID.has(n.id)).length,
-   atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,mundi_lens_relations:mundiLensRelations.length,
+   atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,mundi_lens_relations:mundiLensRelations.length,mundi_derived_taxonomy_bridges:derivedGenreRelations.length,
    mundi_special_relations:special.relations.length,mundi_extension_relations:extension.relations.length,
    atlantis_links:atlantis.links.length,flaminio_links:staging.links.length,original_source_edges:originalEdges,
    integrated_people:identity.length,shared_flaminio_people:sharedFlaminio.length,
@@ -230,7 +277,7 @@ export function buildUnifiedDatabase(d){
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- if(identity.length!==162||taxonomyIdentity.length!==21||legacyReferences.length!==12||curatedMusicNodes.length!==4||semanticCurated.length!==31||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length||
+ if(identity.length!==162||taxonomyIdentity.length!==21||legacyReferences.length!==12||curatedMusicNodes.length!==4||semanticCurated.length!==31||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length||
     counts.orphan_links||counts.duplicate_link_ids||counts.flaminio_source_records!==500||
     counts.unique_flaminio_source_records!==500||counts.flaminio_source_nodes!==500||counts.missing_source_rows){
    throw Error("Gate integrita' NON superato: "+JSON.stringify({counts,expectedNodes,orphans:orphans.slice(0,5),duplicateIDs:dupes.slice(0,5),missing:missing.slice(0,5)}));
