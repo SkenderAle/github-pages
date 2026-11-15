@@ -4,8 +4,8 @@
 function makeGraph(host){
   const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
   const ctx=canvas.getContext('2d',{alpha:false});
-  let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,drag=null,active=true,last=0;
-  let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onLink=()=>{},onHover=()=>{},onBackground=()=>{},nodeSize=n=>3;
+  let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,hoveredEdge=null,drag=null,active=true,last=0;
+  let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},nodeSize=n=>3;
   const options={linkOpacity:.3};
   const hashed=str=>{let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619);return h>>>0};
   const rnd=(str,k)=>((hashed(str+'-'+k)%100003)/100003);
@@ -165,6 +165,20 @@ function makeGraph(host){
     for(const p of captions)drawCaption(p,p.r||4,occupied);
     if(!drag&&pointers.size===0){rotY+=.00037;rotX+=.000085;if(rotX>Math.PI)rotX-=2*Math.PI;}
   }
+  function pickLink(p,threshold=8){
+    const byId=new Map(projected.map(q=>[q.n.id,q]));
+    let nearest=null;
+    for(const o of linkObjects){
+      const a=byId.get(o.a.id),b=byId.get(o.b.id);if(!a||!b)continue;
+      const dx=b.x-a.x,dy=b.y-a.y,len2=dx*dx+dy*dy;
+      if(len2<1)continue;
+      const t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/len2));
+      if(t<.06||t>.94)continue;
+      const distance=Math.hypot(p.x-(a.x+t*dx),p.y-(a.y+t*dy));
+      if(distance<threshold&&(!nearest||distance<nearest.distance))nearest={distance,edge:o.e};
+    }
+    return nearest?.edge||null;
+  }
   function coordinates(evt){const b=canvas.getBoundingClientRect();return {x:evt.clientX-b.left,y:evt.clientY-b.top};}
   const pointers=new Map();let pinch=null,ignoreTap=false;
   function zoomAt(value,anchorX=W/2,anchorY=H/2){
@@ -201,7 +215,10 @@ function makeGraph(host){
     }
     const near=projected.reduce((best,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);return d<15&&(!best||d<best.d)?{d,id:q.n.id}:best},null);
     const id=near?.id||null;
-    if(hovered!==id){hovered=id;onHover(id?points.find(n=>n.id===id):null);canvas.style.cursor=id?'pointer':'grab'}
+    if(hovered!==id){hovered=id;onHover(id?points.find(n=>n.id===id):null)}
+    const edge=id?null:pickLink(p);
+    if(hoveredEdge!==edge){hoveredEdge=edge;onLinkHover(edge)}
+    canvas.style.cursor=id?'pointer':edge?'help':'grab';
   });
   canvas.addEventListener('pointerup',ev=>{
     const was=drag,multi=ignoreTap||pointers.size>1;
@@ -214,7 +231,8 @@ function makeGraph(host){
     if(!was||was.moved||multi)return;
     const p=coordinates(ev);
     const near=projected.reduce((best,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);return d<19&&(!best||d<best.d)?{d,n:q.n}:best},null);
-    if(near){selected=near.n.id;onNode(near.n)}else onBackground();
+    if(near){selected=near.n.id;onNode(near.n)}
+    else {const edge=pickLink(p);if(edge)onLink(edge);else onBackground()}
   });
   canvas.addEventListener('pointercancel',ev=>{pointers.delete(ev.pointerId);drag=null;pinch=null;ignoreTap=true;canvas.style.cursor='grab'});
   canvas.addEventListener('wheel',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*Math.exp(-ev.deltaY*.001),p.x,p.y)},{passive:false});
@@ -235,7 +253,7 @@ function makeGraph(host){
     cameraPosition(_pos,lookAt){if(lookAt&&Number.isFinite(lookAt.x)){const p=project(lookAt);shiftX+=W/2-p.x;shiftY+=H/2-p.y;selected=lookAt.id||null;zoomAt(Math.max(zoom,1.7),W/2,H/2)}return api},
     d3Force(){return {strength(){return this}}},
     width(v){if(v===undefined)return W;W=v;resize();return api},height(v){if(v===undefined)return H;H=v;resize();return api},
-    onNodeClick(fn){onNode=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
+    onNodeClick(fn){onNode=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onLinkHover(fn){onLinkHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
     nodeColor(fn){if(fn===undefined)return nodeColors;nodeColors=fn;return api},linkColor(fn){if(fn===undefined)return linkColors;linkColors=fn;return api},nodeVal(fn){nodeSize=fn;return api},linkOpacity(n){options.linkOpacity=n;return api}
   };
   for(const prop of ['backgroundColor','showNavInfo','nodeRelSize','nodeResolution','nodeLabel','linkWidth','linkDirectionalArrowLength','warmupTicks','cooldownTicks'])api[prop]=()=>api;
