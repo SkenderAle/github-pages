@@ -1,0 +1,93 @@
+{
+  "schema": "musurgia-atlantis-gate04c-browser-test-harness-validation-v1",
+  "date": "2026-11-15",
+  "status": "HARNESS_SOURCE_VALIDATED_REAL_BROWSER_UNRUN",
+  "viewer_sha": "d34d5b0ae057ca5add4db9bd219a77e3eb1029c8",
+  "tester_sha": "46fdb15232ababe1c84b20c9a3c215ae803f745f",
+  "production_index_sha": "e60830cbe31638a15765891d03bc1b1de48e9ca3",
+  "production_graph_sha": "4863b3fe263154387de3388c0b813b5f94546f12",
+  "browser_tester": "GATE04C_COLLAUDO_BROWSER_2026-11-15.html",
+  "expected_checks": "Browser-run self-test automatically attempts dynamic checks for rendering presence, root data, level changes, category filter, search, reset, Canvas sampling.",
+  "checks": [
+    {
+      "check": "Main browser tester parses",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester iframe points to Gate04B",
+      "status": "PASS"
+    },
+    {
+      "check": "Gate04B file is still unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "Production index remains unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "Production graph remains unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester has level buttons event code",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester has category filter event",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester searches Beach through UI",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester has reset event test",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester checks canvas visibility/size",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester tests 2D canvas pixel variation where possible",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester exports JSON",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester checks user agent and touch capability",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester has no outgoing report upload",
+      "status": "PASS"
+    },
+    {
+      "check": "Tester has robots noindex",
+      "status": "PASS"
+    },
+    {
+      "check": "Existing Gate04B in-memory tests still 51/51",
+      "status": "PASS"
+    }
+  ],
+  "metrics": {
+    "source_checks_passed": 16,
+    "source_checks_failed": 0,
+    "real_desktop_browser_runs": 0,
+    "real_android_browser_runs": 0,
+    "real_touch_gesture_runs": 0,
+    "production_files_changed": 0
+  },
+  "manual_ui_acceptance": [
+    "Open browser tester and confirm PASS/FAIL on-device",
+    "Inspect actual Canvas/WebGL nodes labels and absence of blank/black render",
+    "Android: rotate map with one finger and pinch with two fingers",
+    "Review root BWV140 level 1/2/3 visually and filter works-only",
+    "Export browser report and record browser/Android version, if possible"
+  ],
+  "caveat": "The browser tester is present in GitHub; external site availability and real client-side execution have NOT been verified by this agent because network and navigation are blocked."
+}
