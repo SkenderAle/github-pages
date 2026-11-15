@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Musurgia Mundi–Atlantis · Database federato, 500 schede Flaminio (staging)</title>
+<title>Musurgia Mundi–Atlantis · rete unificata con 500 schede Flaminio (staging)</title>
 <style>
 :root{color-scheme:dark;--bg:#07131e;--panel:#0d2431;--edge:#375664;--ink:#e6f2f1;--muted:#abc1c9;--accent:#e8c084}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif}
@@ -43,7 +43,7 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 <script src="../compat-graph.js"></script>
 </head>
 <body>
-<header><div><h1>Musurgia Mundi – Atlantis · database federato</h1><p>Staging autonomo · lotto 01 · 500 schede Flaminio · dati originali intatti</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle quattro fonti…</div></header>
+<header><div><h1>Musurgia Mundi – Atlantis · rete unificata</h1><p>Staging non distruttivo · Mundi + Atlantis riuniti · 500 schede Flaminio</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle quattro fonti…</div></header>
 <main>
 <aside>
 <h2>Ricerca musicale</h2>
@@ -57,7 +57,7 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 <div id="sourceCount" class="meta"></div>
 <div id="sources" class="scroller" style="max-height:340px"></div>
 <button id="moreSources">Mostra altre schede</button>
-<p class="footer">I record Flaminio sono testimonianze bibliografiche, non 500 opere nuove. Le fonti sono cercabili anche quando le relative identità musicali sono ancora candidate.</p>
+<p class="footer">I 500 record Flaminio sono testimonianze bibliografiche, non 500 opere nuove. Le identità personali riunite provengono dal crosswalk storico e sono reversibili. Le fonti sono cercabili anche quando le relative identità musicali sono ancora candidate.</p>
 </aside>
 <section aria-label="Grafo musicale esplorabile">
 <div id="graph"></div>
@@ -69,11 +69,11 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 <h2 style="margin-top:18px">Nodi effettivamente visibili</h2>
 <div id="visibleCount" class="meta">I filtri si applicano al grafo e a questo elenco.</div>
 <div id="visibleList" class="scroller" style="max-height:38dvh"></div>
-<p class="footer"><strong>Nota di qualità:</strong> relazioni in HOLD, sospese o contestate non compaiono nella navigazione ordinaria. Le corrispondenze nominali tra i due atlanti restano candidate. Questa pagina non modifica i database pubblici e non rappresenta un collaudo Android.</p>
+<p class="footer"><strong>Staging unificato:</strong> i nodi persona già associati nei due atlanti aggregano i rispettivi archi, senza perdere i record originali. Le omonimie e le corrispondenze fra opere/generi ancora in verifica restano separate.<br><strong>Nota di qualità:</strong> relazioni in HOLD, sospese o contestate non compaiono nella navigazione ordinaria. Le corrispondenze nominali tra i due atlanti restano candidate. Questa pagina non modifica i database pubblici e non rappresenta un collaudo Android.</p>
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase,projectForViewer} from "./DB_FEDERATO_LOTTO01_2026-11-15.mjs";
+import {loadFederatedDatabase,projectForViewer} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -82,7 +82,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme"]),labels:new Set(["persone","generi_forme"]),depth:1,searchSource:"",selectedRecord:null,pageSize:25,graph:null,rendered:[]};
+const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,searchSource:"",selectedRecord:null,pageSize:25,graph:null,rendered:[]};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
@@ -207,7 +207,7 @@ $("resetView").onclick=()=>selectRoot("atlantis::pers:bach");
 try{
  const db=await loadFederatedDatabase();state.db=db;
  if(db.flaminio_records.length!==500||db.counts.orphan_edges!==0)throw Error("Integrità non confermata: lotto o archi incompleti");
- status("500/500 schede · "+db.counts.nodes+" nodi · "+db.counts.links+" archi · sola lettura");
+ status("500/500 schede · "+db.counts.integrated_people+" identità Mundi–Atlantis · "+db.counts.nodes+" nodi · "+db.counts.links+" archi");
  refreshToggles();showEntityResults();showSources();
  if(!db.nodes.find(n=>n.id===state.root))state.root=db.nodes.find(n=>n.visibility!=="documentary")?.id;
  if(state.root)selectRoot(state.root);
