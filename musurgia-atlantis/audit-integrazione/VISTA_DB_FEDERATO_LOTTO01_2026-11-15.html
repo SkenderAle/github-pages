@@ -160,7 +160,11 @@ function selectRecord(r){
  if(!nonDoc.length)h.append(make("p","Nessun nodo musicale diretto; riferimento conservato a livello documentario.","bad"));
  h.append(make("h2","Record integrale"));
  h.append(make("pre",JSON.stringify(r,null,2)));
- if(nonDoc.length===1)selectRoot(nonDoc[0].n.id)
+ if(nonDoc.length===1){
+  state.root=nonDoc[0].n.id;
+  $("searchEntity").value=nonDoc[0].n.name;
+  showEntityResults();draw();
+ }
 }
 function graphInstance(){
  if(state.graph)return state.graph;
