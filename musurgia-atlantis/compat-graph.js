@@ -5,7 +5,7 @@ function makeGraph(host){
   const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
   const ctx=canvas.getContext('2d',{alpha:false});
   let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,hoveredEdge=null,drag=null,active=true,last=0;
-  let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},onDragEnd=()=>{},nodeSize=n=>3;
+  let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onNodeDblClick=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},onDragEnd=()=>{},nodeSize=n=>3;
   const options={linkOpacity:.3,disableDoubleClickZoom:false};
   const hashed=str=>{let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619);return h>>>0};
   const rnd=(str,k)=>((hashed(str+'-'+k)%100003)/100003);
@@ -263,7 +263,7 @@ function makeGraph(host){
       return d<Math.max(radius,q.r||0)&&(!best||d<best.d)?{d,node:q.n}:best;
     },null)?.node||null;
   }
-  const pointers=new Map();let pinch=null,ignoreTap=false;
+  const pointers=new Map();let pinch=null,ignoreTap=false,lastTap=null,pendingTap=null;
   function zoomAt(value,anchorX=W/2,anchorY=H/2){
     const next=Math.max(.3,Math.min(10,Number(value)||zoom)),ratio=next/zoom;
     shiftX=anchorX-W/2-(anchorX-W/2-shiftX)*ratio;
@@ -336,13 +336,27 @@ function makeGraph(host){
     if(!was||was.moved||multi)return;
     const p=coordinates(ev);
     const near=projected.reduce((best,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);return d<19&&(!best||d<best.d)?{d,n:q.n}:best},null);
-    if(near){selected=near.n.id;onNode(near.n)}
-    else {const edge=pickLink(p);if(edge)onLink(edge);else onBackground()}
+    if(near){
+      selected=near.n.id;
+      const now=Date.now();
+      if(lastTap&&lastTap.id===near.n.id&&now-lastTap.when<370&&
+        Math.hypot(lastTap.x-p.x,lastTap.y-p.y)<25){
+        if(pendingTap!==null)clearTimeout(pendingTap);
+        pendingTap=null;lastTap=null;onNodeDblClick(near.n);
+      }else{
+        if(pendingTap!==null){clearTimeout(pendingTap);pendingTap=null;lastTap=null}
+        lastTap={id:near.n.id,when:now,x:p.x,y:p.y};
+        pendingTap=setTimeout(()=>{
+          pendingTap=null;const tap=lastTap;lastTap=null;
+          if(tap)onNode(points.find(n=>n.id===tap.id)||near.n);
+        },275);
+      }
+    }else {const edge=pickLink(p);if(edge)onLink(edge);else onBackground()}
   });
   canvas.addEventListener('pointercancel',ev=>{pointers.delete(ev.pointerId);drag=null;pinch=null;ignoreTap=true;canvas.style.cursor='grab'});
   canvas.addEventListener('wheel',ev=>{ev.preventDefault();const p=coordinates(ev);zoomAt(zoom*Math.exp(-ev.deltaY*.001),p.x,p.y)},{passive:false});
   canvas.addEventListener('dblclick',ev=>{ev.preventDefault();if(!options.disableDoubleClickZoom){const p=coordinates(ev);zoomAt(zoom*1.6,p.x,p.y)}});
-  let api={isFallback:true,destroy(){active=false;canvas.remove()},graphData(v){if(v===undefined)return current;current=v;layout();return api},
+  let api={isFallback:true,destroy(){active=false;if(pendingTap!==null)clearTimeout(pendingTap);canvas.remove()},graphData(v){if(v===undefined)return current;current=v;layout();return api},
     zoomToFit(){
       zoom=1;shiftX=0;shiftY=0;selected=null;
       const focus=points.find(n=>n._focus);
@@ -365,7 +379,7 @@ function makeGraph(host){
     d3Force(){return {strength(){return this}}},
     width(v){if(v===undefined)return W;W=v;resize();return api},height(v){if(v===undefined)return H;H=v;resize();return api},
     disableDoubleClickZoom(value){options.disableDoubleClickZoom=!!value;return api},
-    onNodeClick(fn){onNode=fn;return api},onNodeDragEnd(fn){onDragEnd=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onLinkHover(fn){onLinkHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
+    onNodeClick(fn){onNode=fn;return api},onNodeDblClick(fn){onNodeDblClick=fn;return api},onNodeDragEnd(fn){onDragEnd=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onLinkHover(fn){onLinkHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
     nodeColor(fn){if(fn===undefined)return nodeColors;nodeColors=fn;return api},linkColor(fn){if(fn===undefined)return linkColors;linkColors=fn;return api},nodeVal(fn){nodeSize=fn;return api},linkOpacity(n){options.linkOpacity=n;return api}
   };
   for(const prop of ['backgroundColor','showNavInfo','nodeRelSize','nodeResolution','nodeLabel','linkWidth','linkDirectionalArrowLength','warmupTicks','cooldownTicks'])api[prop]=()=>api;
