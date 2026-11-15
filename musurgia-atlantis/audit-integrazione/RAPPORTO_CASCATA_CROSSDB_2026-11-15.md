@@ -55,3 +55,20 @@ Sono stati aggiunti **6 archi musicali motivati**:
 4. Per ogni altro nodo senza arco musicale, distinguere fonti mancanti, errore di categoria e assenza vera di relazione; non colmare il vuoto con collegamenti generici a «Musica».
 
 **Stato:** integrazione dei checkpoint svolta e analizzatore predisposto; interazione reale desktop/Android ancora da collaudare. Non è certificata una riconciliazione semantica completa di tutti i nodi. Il lotto 2 resta bloccato.
+
+## Verifica indipendente dopo il checkpoint
+**Controllo eseguito dopo il commit d09c264:** ricalcolato il quoziente di identità e la connettività a partire dai tre JSON originali, dall'estensione Mundi, dalle relazioni specialistiche, dai 162 redirect di persona e dalle 21 identità tassonomiche curate. Sono stati verificati anche i 12 redirect Flaminio e gli estremi dei 31 archi semantici curati. I ponti editoriali generati dinamicamente non sono stati conteggiati.
+
+| Indicatore | Prima del checkpoint | Dopo il checkpoint |
+|---|---:|---:|
+| Nodi canonici di navigazione | 2.817 | **2.806** |
+| Archi (originali + semantici curati, senza ponti editoriali) | 8.379 | **8.385** |
+| Componenti connesse integrali | 7 | **1** |
+| Dimensione della componente integrale maggiore | 2.757 | **2.806** |
+| Endpoint mancanti | 0 | **0** |
+
+**Risultato:** tutti i 2.806 nodi appartengono ora a un'unica componente quando si considerano tutte le relazioni, comprese quelle documentarie e in HOLD. È una **condizione topologica**, non certificazione che ognuna delle 2.806 entità abbia una corrispondenza musicologica con tutte le altre.
+
+**Gate di compatibilità ricontrollato sui dati originali:** 21/21 coppie tassonomiche hanno classi compatibili; 12/12 rinvii Flaminio hanno tipo, ID e nome coerenti con la regola dichiarata; 31/31 archi curati hanno entrambi gli estremi esistenti; 0 ID di arco curato duplicati. I test reali del motore ES module e della resa browser/Android restano da eseguire.
+
+**Nota sulle componenti della sola vista musicale:** nascondendo documenti e HOLD alcuni nodi continuano a non disporre di un arco visualizzabile; l'analizzatore dinamico registra separatamente questo problema. Non convertire documenti in opere, non sbloccare attribuzioni sospese e non aggiungere una relazione generica soltanto per forzare il valore «una componente».
