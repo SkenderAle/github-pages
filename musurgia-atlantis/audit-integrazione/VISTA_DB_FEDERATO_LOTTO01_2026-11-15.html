@@ -97,7 +97,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[],comparison:null,manualPositions:new Map()};
+const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[],comparison:null,labelsBeforeComparison:null,manualPositions:new Map()};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
@@ -176,11 +176,24 @@ function showTargetResults(){
  }
  if(!h.children.length)h.append(make("div","Cerca il secondo lemma e selezionalo dai risultati.","meta"));
 }
+function beginComparisonLabels(){
+ if(state.labelsBeforeComparison!==null)return;
+ state.labelsBeforeComparison=new Set(state.labels);
+ state.labels=new Set(catList.filter(([category])=>category!=="documentazione").map(([category])=>category));
+ refreshToggles();
+}
+function restoreComparisonLabels(){
+ if(state.labelsBeforeComparison===null)return;
+ state.labels=new Set(state.labelsBeforeComparison);
+ state.labelsBeforeComparison=null;
+ refreshToggles();
+}
 function selectComparisonTarget(id){
  if(!state.root){$("connectionHint").textContent="Seleziona prima il lemma di partenza nella ricerca superiore.";return}
  const node=state.db.nodes.find(n=>n.id===id&&n.visibility!=="documentary");
  if(!node)return;
  $("searchTarget").value=node.name;showTargetResults();
+ beginComparisonLabels();
  state.comparison={from:state.root,to:id};
  $("clearConnection").disabled=false;
  draw();openDetails(true);
@@ -323,6 +336,7 @@ function handleGraphClick(n){
 function selectRoot(id){
  const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
  if(n.visibility==="documentary"){showNode(n);return}
+ restoreComparisonLabels();
  state.root=id;state.focus=null;state.focusHistory=[];state.trail=[id];state.trailEdges=[];state.comparison=null;$("searchTarget").value="";showTargetResults();$("searchEntity").value=n.name;showEntityResults();draw();openDetails(true)
 }
 function openDetails(open){
@@ -337,6 +351,7 @@ function openDetails(open){
  }
 }
 function showNebula(){
+ restoreComparisonLabels();
  state.root=null;state.focus=null;state.focusHistory=[];state.trail=[];state.trailEdges=[];state.comparison=null;$("searchTarget").value="";showTargetResults();
  $("searchEntity").value="";showEntityResults();
  draw();
@@ -352,7 +367,7 @@ function selectSubnode(id){
  const n=state.db?.nodes.find(x=>x.id===id);
  if(!n||n.visibility==="documentary")return;
  if(!state.root){selectRoot(id);return}
- if(state.comparison){state.comparison=null;$("clearConnection").disabled=true;}
+ if(state.comparison){state.comparison=null;restoreComparisonLabels();$("clearConnection").disabled=true;}
  if(id===state.focus){showNode(n);openDetails(true);return}
  // Il percorso storico resta in memoria, non viene ricalcolato partendo
  // da un qualunque arco di genere che potrebbe condurre ad altri autori.
@@ -399,7 +414,7 @@ function selectSubnode(id){
  draw();showNode(n);openDetails(true);
 }
 function goBackFocus(){
- if(state.comparison){state.comparison=null;$("clearConnection").disabled=true;draw();return}
+ if(state.comparison){state.comparison=null;restoreComparisonLabels();$("clearConnection").disabled=true;draw();return}
  if(state.trail.length<=1)return;
  state.trail.pop();state.trailEdges.pop();
  state.focus=state.trail.length>1?state.trail.at(-1):null;
@@ -706,7 +721,7 @@ function draw(){
 $("searchEntity").addEventListener("input",showEntityResults);
 $("searchTarget").addEventListener("input",showTargetResults);
 $("clearConnection").onclick=()=>{
- state.comparison=null;$("searchTarget").value="";showTargetResults();
+ state.comparison=null;restoreComparisonLabels();$("searchTarget").value="";showTargetResults();
  $("clearConnection").disabled=true;draw();
 };
 $("backFocus").onclick=goBackFocus;
