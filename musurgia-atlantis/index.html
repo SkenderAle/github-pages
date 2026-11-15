@@ -433,6 +433,7 @@ buildVisible=function(){
     _bridge:!shown,
     _convergences:incoming.get(n.id)?.size||0,
     _path:path,
+    _pathEdges:path.slice(1).map(pid=>{const e=parentLinks.get(pid);return e?{relation:e.relation,description:e.description,quality_gate:e.quality_gate}:null}),
     _label:shown&&(n.id===selectedId||(atlasFirstLabels&&distance.get(n.id)===1)||atlasLabelTypes.has(grp(n)))};
   });
   return {nodes,links};
@@ -481,7 +482,7 @@ renderNodeDetail=function(id){
   expl.className='detail-intro';
   expl.style.cssText='padding:9px 10px;margin:9px 0 13px;background:#102f3b;border:1px solid #355968;border-radius:9px';
   const annotated=n._path.slice(1).map((key,i)=>{
-     const prev=n._path[i];const e=DATA.links.find(z=>(z.source===prev&&z.target===key)||(z.source===key&&z.target===prev));
+     const e=n._pathEdges?.[i];
      return '<div style="margin-top:5px">↳ '+textSafe(lookup.get(key)?.name||key)+' <small style="display:block;color:#bad4d4;margin-left:15px">'+textSafe(e?atlasEdgeReason(e):'motivazione non disponibile')+'</small></div>';
    }).join('');
    expl.innerHTML='<strong>Percorso indiretto ('+n._depth+' passaggi)</strong><div style="margin-top:5px">'+textSafe(names[0])+'</div>'+annotated+'<small>Il percorso nel grafo non dimostra necessariamente un’influenza storica.</small>';
