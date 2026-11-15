@@ -244,13 +244,85 @@ function rootedProjection(db){
  for(const [id,d] of distance){if(id!==state.root&&!show.has(index.get(id)?.category))continue;
    let p=id;while(p&&!selected.has(p)){selected.add(p);p=parents.get(p)?.from}
  }
+ // Un clic non sposta la radice: crea una sottovista lungo i percorsi
+ // documentati radice -> nodo e conserva i suoi vicini di primo livello.
+ // I sottogeneri sono ponti validi; una forma condivisa NON permette
+ // di includere altri compositori e tutte le loro opere.
+ if(state.focus&&index.has(state.focus)&&state.focus!==state.root){
+   const goal=state.focus;
+   const maxLength=Math.max(4,Math.min(7,state.depth+3));
+   const found=[],stack=[{id:state.root,path:[state.root],links:[]}];
+   let examined=0;
+   while(stack.length&&examined++<16000&&found.length<18){
+     const cur=stack.pop();
+     if(cur.id===goal){found.push(cur);continue}
+     if(cur.links.length>=maxLength)continue;
+     const options=(adj.get(cur.id)||[]).filter(({id,e})=>{
+       const n=index.get(id);
+       if(!n||n.visibility==="documentary"||cur.path.includes(id))return false;
+       if(generic.test(e.relation||"")&&cur.links.length>0)return false;
+       // Solo la radice e il bersaglio possono essere persone o composizioni.
+       // Così Mozart -> Opera -> Dramma giocoso -> Don Giovanni
+       // non apre automaticamente tutta l'opera di Mozart.
+       if(id!==goal&&id!==state.root&&(n.category==="persone"||n.category==="opere"||isChapter(n)))return false;
+       if((root?.provenance||[]).some(p=>p.payload?.type==="periodo")&&id!==goal&&n.category==="persone")return false;
+       return true;
+     }).sort((a,b)=>{
+       const score=id=>id===goal?10:index.get(id)?.category==="generi_forme"?5:0;
+       return score(a.id)-score(b.id);
+     });
+     for(const opt of options)stack.push({id:opt.id,path:[...cur.path,opt.id],links:[...cur.links,opt.e]});
+   }
+   // Conservarne diversi quando sono musicalmente pertinenti: una
+   // relazione diretta e il passaggio attraverso le forme possono coesistere.
+   found.sort((a,b)=>{
+     const score=p=>p.path.slice(1,-1).filter(id=>index.get(id)?.category==="generi_forme").length*3-p.links.length;
+     return score(b)-score(a)||a.links.length-b.links.length;
+   });
+   const chosenPaths=found.slice(0,6);
+   const focusIds=new Set([state.root,goal]),focusEdges=new Set(),focusParents=new Map(),focusDistance=new Map([[state.root,0]]);
+   for(const route of chosenPaths){
+     route.path.forEach((id,i)=>{
+       focusIds.add(id);
+       if(!focusDistance.has(id)||i<focusDistance.get(id))focusDistance.set(id,i);
+       if(i>0){
+         focusEdges.add(route.links[i-1].id);
+         if(!focusParents.has(id))focusParents.set(id,{from:route.path[i-1],edge:route.links[i-1]});
+       }
+     });
+   }
+   // Se il percorso era stato raggiunto dall'esploratore corrente,
+   // resta leggibile anche se il filtro tassonomico non offre alternative.
+   if(!chosenPaths.length&&parents.has(goal)){
+     let here=goal,guard=0;
+     while(here!==state.root&&parents.has(here)&&guard++<12){
+       const p=parents.get(here);focusIds.add(here);focusIds.add(p.from);
+       focusEdges.add(p.edge.id);focusParents.set(here,p);
+       here=p.from;
+     }
+   }
+   // Espansione di UN SOLO livello intorno al nodo selezionato.
+   // Evitare vecchi rami della radice: rimane visibile solo la catena.
+   for(const {id,e} of adj.get(goal)||[]){
+     const n=index.get(id);
+     if(!n||n.visibility==="documentary"||!show.has(n.category))continue;
+     if(generic.test(e.relation||""))continue;
+     focusIds.add(id);focusEdges.add(e.id);
+     if(!focusDistance.has(id))focusDistance.set(id,(focusDistance.get(goal)??1)+1);
+     if(!focusParents.has(id)&&id!==state.root)focusParents.set(id,{from:goal,edge:e});
+   }
+   const nodes=db.nodes.filter(n=>focusIds.has(n.id)&&n.visibility!=="documentary");
+   const allowed=new Set(nodes.map(n=>n.id));
+   const links=edges.filter(e=>focusEdges.has(e.id)&&allowed.has(e.source)&&allowed.has(e.target));
+   return {nodes,links,parents:focusParents,distance:focusDistance,focused:true,paths:chosenPaths.length};
+ }
  const nodes=db.nodes.filter(n=>selected.has(n.id)&&n.visibility!=="documentary");
  const allowed=new Set(nodes.map(n=>n.id));
  const links=edges.filter(e=>allowed.has(e.source)&&allowed.has(e.target)&&(
    distance.get(e.source)===0||distance.get(e.target)===0||
    Math.abs((distance.get(e.source)??99)-(distance.get(e.target)??99))<=1
  ));
- return {nodes,links,parents,distance};
+ return {nodes,links,parents,distance,focused:false};
 }
 function graphInstance(){
  if(state.graph)return state.graph;
@@ -279,7 +351,11 @@ function draw(){
    _label:state.labels.has(n.category)||(n.id===state.root)}));
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
- $("graphSummary").textContent=nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+visibleTitle(state.root);
+ $("graphSummary").textContent=state.focus
+  ?"Percorso: "+visibleTitle(state.root)+" → "+visibleTitle(state.focus)+" · "+nodes.length+" nodi · "+links.length+" archi"
+  :nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+visibleTitle(state.root);
+ $("backFocus").disabled=!state.focusHistory.length;
+ $("showAll").disabled=!state.focus;
  $("visibleCount").textContent=nodes.length+" nodi visibili ("+links.length+" relazioni)";
  const h=$("visibleList");h.replaceChildren();
  for(const n of nodes.slice(0,180)){
@@ -290,7 +366,7 @@ function draw(){
  if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
  try{const g=graphInstance().graphData({nodes:nodes.map(n=>({...n})),links:links.map(e=>({...e}))});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
  displayEdgeHover(null);
- const root=state.db.nodes.find(n=>n.id===state.root);if(root)showNode(root);
+ const active=state.db.nodes.find(n=>n.id===(state.focus||state.root));if(active)showNode(active);
 }
 $("searchEntity").addEventListener("input",showEntityResults);
 $("backFocus").onclick=goBackFocus;
