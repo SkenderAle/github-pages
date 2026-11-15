@@ -286,6 +286,38 @@ function comparisonProjection(db,edges,index){
    pathCoverage:"corridoio",categories,depthLimit,distFrom,distTo,exampleCount:examplePaths.length,
    corridorCount:corridor.size,meaningfulLinkCount:meaningful.length};
 }
+// Il doppio clic crea una nuova esplorazione indipendente: conserva soltanto
+// i filtri volontariamente impostati dall'utente, non i vecchi percorsi.
+function restartFromNode(id){
+ const node=state.db?.nodes.find(n=>n.id===id);
+ if(!node||node.visibility==="documentary")return;
+ state.manualPositions.clear();
+ state.depth=1;$("depth").value="1";
+ $("clearConnection").disabled=true;
+ selectRoot(id);
+}
+let delayedWebGLClick=null;
+function handleGraphClick(n){
+ // Il renderer Canvas distingue autonomamente i due gesti; WebGL usa
+ // questa finestra di riconoscimento, senza cambiare nodo al primo clic.
+ if(state.graph?.isFallback){selectSubnode(n.id);return;}
+ const now=Date.now();
+ if(delayedWebGLClick&&delayedWebGLClick.id===n.id&&now-delayedWebGLClick.when<370){
+   clearTimeout(delayedWebGLClick.timer);delayedWebGLClick=null;
+   restartFromNode(n.id);return;
+ }
+ if(delayedWebGLClick){
+   clearTimeout(delayedWebGLClick.timer);
+   const previous=delayedWebGLClick.id;delayedWebGLClick=null;
+   selectSubnode(previous);
+ }
+ const record={id:n.id,when:now};
+ record.timer=setTimeout(()=>{
+   if(delayedWebGLClick!==record)return;
+   delayedWebGLClick=null;selectSubnode(record.id);
+ },370);
+ delayedWebGLClick=record;
+}
 function selectRoot(id){
  const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
  if(n.visibility==="documentary"){showNode(n);return}
@@ -579,7 +611,8 @@ function graphInstance(){
   .linkColor(e=>e.visibility==="documentary"?"#526773":"#558093")
   .nodeVal(n=>n._compareEndpoint?12:n.id===state.root?8:n.id===state.focus?7:3)
   .nodeLabel(n=>state.comparison||n.id===state.root||n.id===state.focus||state.labels.has(n.category)?n.name:"")
-  .onNodeClick(n=>selectSubnode(n.id));
+  .onNodeClick(n=>handleGraphClick(n));
+ if(typeof g.onNodeDblClick==="function")g.onNodeDblClick(n=>restartFromNode(n.id));
  if(typeof g.onNodeDragEnd==="function")g.onNodeDragEnd(recordNodePosition);
  if(typeof g.onLinkClick==="function")g.onLinkClick(showEdge);
  if(typeof g.onLinkHover==="function")g.onLinkHover(displayEdgeHover);
