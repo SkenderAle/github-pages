@@ -659,7 +659,7 @@ function graphInstance(){
   .nodeColor(n=>n._compareEndpoint?"#ffdc76":colors[n.category]||"#c9d5dd")
   .linkColor(e=>e.visibility==="documentary"?"#526773":"#558093")
   .nodeVal(n=>n._compareEndpoint?12:n.id===state.root?8:n.id===state.focus?7:3)
-  .nodeLabel(n=>state.labels.has(n.category)?n.name:"")
+  .nodeLabel(n=>n._overview?(n._featuredOverview?n.name:""):(state.labels.has(n.category)?n.name:""))
   .onNodeClick(n=>handleGraphClick(n));
  if(typeof g.onNodeDblClick==="function")g.onNodeDblClick(n=>restartFromNode(n.id));
  if(typeof g.onNodeDragEnd==="function")g.onNodeDragEnd(recordNodePosition);
@@ -681,6 +681,10 @@ function draw(){
  state.parents=filtered.parents;state.distances=filtered.distance;
  const overview=!!filtered.overview,comparing=!!filtered.comparison;
  const nodes=filtered.nodes.map(n=>{
+   // Nella nebulosa generale i soli tre riferimenti principali hanno
+   // etichetta permanente, indipendentemente dalle caselle.
+   const featuredOverview=overview&&n.category==="persone"&&
+     /^(?:johann sebastian bach|wolfgang amadeus mozart|ludwig van beethoven)$/i.test(n.name.trim());
    const center=!overview&&!comparing&&n.id===(state.focus||state.root);
    const compareEndpoint=comparing&&(n.id===state.comparison.from||n.id===state.comparison.to);
    const pairX=comparing&&n.id===state.comparison.from?-170:comparing&&n.id===state.comparison.to?170:null;
@@ -693,7 +697,8 @@ function draw(){
      _depth:filtered.distance.get(n.id)??0,
      ...(manuallyPlaced?{fx:manuallyPlaced.x,fy:manuallyPlaced.y,fz:manuallyPlaced.z}:
        center?{fx:0,fy:0,fz:0}:pairX!==null?{fx:pairX,fy:0,fz:0}:{}) ,
-     _overview:overview,_label:!overview&&state.labels.has(n.category)};
+     _overview:overview,_featuredOverview:featuredOverview,
+     _label:overview?featuredOverview:state.labels.has(n.category)};
  });
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
