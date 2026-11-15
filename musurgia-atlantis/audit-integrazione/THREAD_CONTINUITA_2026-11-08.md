@@ -2737,3 +2737,26 @@ Le **quattro doppie intestazioni Albinoni** sono già correttamente ricondotte a
 **Confine di perimetro:** manifest `LOTTO38` con 24 brani Beethoven e `LOTTO42` con 39 quartetti NON condividono numeri di riga Excel con le 188 schede Lotto01; non si può dichiarare la loro acquisizione come nuove fonti del lotto. Identità storiche equivalenti eventualmente vanno valutate a parte. Le collezioni, singoli numeri, estratti, versioni e riusi non sono transitivamente propagabili.
 
 **Prossima ripresa:** `LOTTO01-CANONICAL-GATE-03` — costruire overlay reversibile delle correzioni verificate e delle due identità Bartók riusabili, aggiungere validazione di titoli grezzi vs normalizzati e verificare altre concordanze archivistiche; nessuna fusione in `grafo.json` o `index.html` senza gate completi e test browser/Android. **Lotto01 OPEN, Lotto02 BLOCKED, 0/15 lotti chiusi; staging V11 invariato (1365/2780).**
+
+
+### LOTTO01-CANONICAL-GATE-03 — overlay reversibile e 34 test di regressione (15 novembre 2026)
+
+**Ripresa:** commit `5d7022844f5814331c16e596e6957a081a73628f` (Gate02). Aggiunti in `musurgia-atlantis/audit-integrazione/`:
+
+- `OVERLAY_LOTTO01_CANONICAL_GATE_03_REVERSIBILE_2026-11-15.json`, commit `028d25f2eb6f4ffcd2b89dfe865c5dd748c11338`.
+- `REGRESSIONE_LOTTO01_CANONICAL_GATE_03_REVERSIBILE_2026-11-15.json`, commit `75b41123cd5e096ea1632ebbc594901340997fd6`: **34/34 PASS**, test strutturali in memoria e rollback esatto, NON browser/Android/Canvas/WebGL.
+
+**Tre sole patch proposte sui `name` di identità staging (non applicate a V11 o produzione):**
+1. **BWV140**, fonte riga **3050** `Wachet auf, ruft und die Stimme` → nome di visualizzazione `Wachet auf, ruft uns die Stimme · BWV 140`, id `fl49:jsbach:bwv140`; riscontro: https://www.bachvereniging.nl/en/bwv/bwv-140 .
+2. **BWV149**, riga **3001** `Man singet mir Freuden vom Sieg` → `Man singet mit Freuden vom Sieg · BWV 149`, id `fl50:jsbach:bwv149`; riscontro: https://bachipedia.org/en/werke/bwv-149-man-singet-mit-freuden-vom-sieg-2/ .
+3. **Amy Beach op.35 n.3**, riga **4502**, `With The` → `With Thee (Nähe des Geliebten)` id `audit:fl01:bbb:work:excel4502`; riscontri: https://imslp.org/wiki/4_Songs%2C_Op.35_%28Beach%2C_Amy_Marcy%29 e https://www.amybeach.org/music/discography/ .
+
+**Precondizioni e reversibilità:** ogni modifica dichiara `target`, `old_value`, `new_value`, `rollback` e ID fonte. Testato su **copia in memoria** di V11, con ripristino JSON-esattamente uguale all'origine. Tutte le **500 schede fonte immutate**, cardinalità **1.365 nodi e 2.780 archi** invariata; nessun arco inventato.
+
+**Quattro correzioni già presenti V11, non ripetere (solo ASSERT_NO_CHANGE):** Wq43 è correttamente `Sei concerti per il cembalo concertato`; Bartók `audit:fl01:bbb:work:excel4228` ha già catalogazione critica **BB77/Sz69** (fonte grezza BB78/Sz70 preservata); `audit:fl01:bbb:work:excel4233` ha già **BB122/Sz115a** (fonte Sz34a mantenuta come testimonianza); J. S. Bach BWV578 riga 3793 mostra già **Fuga in sol minore** pur conservando `source_title_raw=Fuga in sol maggiore`.
+
+**Due concordanze fra staging e produzione proposte ma NON convertite in archi:** Bartók BB114/Sz106 `audit:fl01:bbb:work:excel4292` ↔ `opera:bartok-musica-archi-percussioni-celesta-1936`; *Il mandarino miracoloso* versione suite BB82a/Sz73b `audit:fl01:bbb:work:excel4280` ↔ `opera:mandarino-suite-1927`. La pantomima `audit:fl01:bbb:work:excel4274` / `opera:mandarino` **non** è identica alla suite, va conservata separata; il grafo di produzione già documenta un arco dal lavoro scenico alla suite, NON duplicarlo.
+
+**HOLD preservati:** BWV53 paternità Bach spuria; BWV966 divergenza fonte Flaminio Reincken Sonata II vs critica Sonata III (nessuna falsa identità aggiuntiva); Bartók Concerto pianoforte n.3 solo 17 battute finali orchestrate da Tibor Serly. L'overlay non tocca le asserzioni di paternità.
+
+**Prossimo checkpoint `LOTTO01-CANONICAL-GATE-04`:** materializzare solo una copia staging con le 3 patch e controllare filtri/espansione radicata; ampliare crosswalk dei manifest storici fuori 500 righe; pianificare collaudo desktop e Android reale. Mai promuovere opere nella produzione fino al superamento dei gate. **Lotto01 OPEN, Lotto02 BLOCKED, 0/15 lotti chiusi; V11 e produzione non modificati.**
