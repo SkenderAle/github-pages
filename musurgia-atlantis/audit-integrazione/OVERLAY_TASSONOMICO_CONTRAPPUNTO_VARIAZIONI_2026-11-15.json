@@ -12,7 +12,8 @@
     "Allineamenti di ruolo non rappresentano fusioni né nuovi nodi canonici",
     "Distingue opera, raccolta, parte, tecnica, forma e organico",
     "Ricerca lessicale non significa copertura musicologica completa",
-    "Verificare tutte le relazioni storiche e fonti prima di FAMILY_VALIDATED"
+    "Verificare tutte le relazioni storiche e fonti prima di FAMILY_VALIDATED",
+    "Rilievo visivo sul preview: Fuga per organo e Toccata e fuga per organo erano scollegati da Fuga nella vista. Sei archi candidati aggiunti, NON caricati dal builder; eventuali duplicati Flaminio e identità delle fughe in do minore richiedono confronto BWV."
   ],
   "nodes": [
     {
@@ -418,6 +419,66 @@
       "rationale": "Variazioni e fuga op35: forma composita, non due opere",
       "status": "PROPOSED_STAGING",
       "rooted_expansion_only": true
+    },
+    {
+      "id": "cf20261115:037",
+      "source": "flaminio::audit:fl01:jsb05:genre:fuga-organo",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "instrumentation_specialization_of",
+      "rationale": "Fuga per organo specializza Fuga secondo l'organico; identità tra registri Flaminio ancora da riconciliare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "cf20261115:038",
+      "source": "flaminio::audit:fl01:jsb06:genre:fuga-organo",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "instrumentation_specialization_of",
+      "rationale": "Secondo registro del genere Fuga per organo; non creare duplicato canonico",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "cf20261115:039",
+      "source": "flaminio::audit:fl01:jsb06:genre:toccata-fuga-organo",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "composite_type_contains_form",
+      "rationale": "Toccata e fuga per organo include una sezione in forma di fuga; non è un sottogenere semplice di fuga",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "cf20261115:040",
+      "source": "flaminio::audit:fl01:jsb06:genre:toccata-fuga-organo",
+      "target": "mundi::forma-toccata",
+      "predicate": "composite_type_contains_form",
+      "rationale": "La tipologia composita include anche Toccata; senza creare due opere catalografiche",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "cf20261115:041",
+      "source": "flaminio::audit:fl01:jsb05:work:excel3785",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "work_has_form_candidate",
+      "rationale": "Fuga in do minore: opera da identificare per BWV e attribuzione prima di canonizzare",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "cf20261115:042",
+      "source": "flaminio::audit:fl01:jsb06:work:excel3788",
+      "target": "tax20261115cf::form:fuga",
+      "predicate": "work_has_form_candidate",
+      "rationale": "Fuga in do minore di altra scheda: non unificare per titolo omonimo",
+      "status": "PROPOSED_STAGING",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
     }
   ]
 }
