@@ -2838,3 +2838,12 @@ Le **quattro doppie intestazioni Albinoni** sono già correttamente ricondotte a
 
 **Produzione:** `musurgia-atlantis/index.html`, `musurgia-atlantis/grafo.json` e `atlante3d/database/grafo.json` non modificati da questa operazione. **Stato del Lotto01:** acquisizione documentaria 500/500; federazione logica pronta; collaudo e canonizzazione aperti; 0/15 lotti storicamente chiusi. Prossimo gate: collaudo in browser della nuova vista con autori non-Bach, filtri categoria/etichetta, ricerca di ogni scheda e controllo delle relazioni HOLD; solo dopo valutare l'aggancio al renderer definitivo.
 
+
+
+### LOTTO01 — UNIFICAZIONE MUNDI–ATLANTIS E BLOCCO LOTTO02 (15 novembre 2026)
+
+**Decisione:** completare e validare l'unificazione Mundi–Atlantis PRIMA di aprire Lotto02 Flaminio. Riunificata in **staging** la struttura con `DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs` (commit `762c2e5a88ee59ad39f3fcbf04f79c9494d9b5a1`). Il crosswalk persone già esistente fornisce 162 identità condivise (155 nominali + 7 alias), l'estensione operetta/musical è integralmente compresa (15 record, 14 nuovi; 30 archi), e sono presenti 10 ponti editoriali non-identitari. Flaminio resta 500/500 fonte documentaria nello stesso ingresso, senza promozione fittizia di opere. **2.835 nodi e 8.364 archi** nella vista; **8.354** archi originali preservati; **0** orfani / **0** ID arco duplicati. Non si sostituiscono né `musurgia-atlantis/index.html` né alcun `grafo.json` di produzione.
+
+Il viewer precedente `VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html` ora legge il nuovo modulo di unificazione (commit `3a600ece7efcfee3c69c63ec4cf6bf6176082aca` e ricerca alias `f793219370ddb52eff8fd18db0319ddb4d7d38d8`). Il registro runtime `REGRESSIONE_UNIFICAZIONE_MUNDI_ATLANTIS_LOTTO01_2026-11-15.json` (commit `aca40103851a398586a05a4bbff8ed1dfc4844d0`) indica **18/18 PASS** sui JSON effettivi e sulla sintassi del codice UI. Bach riceve archi da Mundi/Atlantis/Flaminio, Mozart/Chopin da entrambi i grafi iniziali; filtri tipologici restano distinti. **Nessun collaudo browser/Android reale certificato.**
+
+Rapporto operativo: `RAPPORTO_UNIFICAZIONE_MUNDI_ATLANTIS_LOTTO01_2026-11-15.md` (commit `262308d2fb6baf095ca08bfad1c051959b94de1d`). Restano obbligatori audit identità e omonimi, deduplicazione filologica opere/generi, revisione componenti isolati, collaudo fisico Android/desktop e verifica tracciabilità 500/500 in UI. **Lotto01 OPEN: unificazione strutturale staging PASS, certificazione storica/visiva PENDING. Lotto02 BLOCCATO. 0/15 lotti dichiarati chiusi.**
