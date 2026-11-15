@@ -1,0 +1,571 @@
+{
+  "schema": "musurgia-scenes-dance-taxonomy-overlay-v1",
+  "date": "2026-11-15",
+  "status": "IN_REVIEW_STAGING_PROPOSAL_NOT_LOADED",
+  "sources": {
+    "mundi": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "atlantis": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "flaminio": "6f1793f3d8b07469a458c7bbbd768eb8cb37050e"
+  },
+  "precedents": [
+    "Opera/Musical/Operetta e Suite sono già rappresentati in crosswalk precedenti",
+    "HOLD per genere-balletto Mundi vs senso:balletto Atlantis da preservare",
+    "Manca prova di identità in repertori derivati dalla scena e dalle rispettive suite da concerto"
+  ],
+  "nodes": [
+    {
+      "id": "tax20261115scena::family:scena",
+      "name": "Musica per la scena",
+      "role": "repertorio_trasversale",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::family:danza",
+      "name": "Musica per la danza",
+      "role": "repertorio_trasversale",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::family:spettacolo",
+      "name": "Teatro musicale e spettacolo",
+      "role": "repertorio_trasversale",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:balletto",
+      "name": "Balletto (opera coreografico-musicale)",
+      "role": "genere",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:ballet-action",
+      "name": "Ballet d'action",
+      "role": "genere_storico",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:ballet-cour",
+      "name": "Ballet de cour",
+      "role": "genere_storico",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:opera-ballet",
+      "name": "Opéra-ballet",
+      "role": "genere_teatrale",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:comedie-ballet",
+      "name": "Comédie-ballet",
+      "role": "genere_teatrale",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:ballet-pantomime",
+      "name": "Balletto-pantomima",
+      "role": "genere_storico",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:musiche-scena",
+      "name": "Musiche di scena",
+      "role": "genere_funzione",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:melologo",
+      "name": "Melologo",
+      "role": "genere_parola_musica",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:operetta",
+      "name": "Operetta",
+      "role": "genere_teatrale",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::genre:musical",
+      "name": "Musical",
+      "role": "genere_teatrale",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::form:suite-balletto",
+      "name": "Suite da balletto",
+      "role": "forma_derivata",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::form:suite-scena",
+      "name": "Suite da musiche di scena",
+      "role": "forma_derivata",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::kind:partitura-scena",
+      "name": "Partitura per la scena",
+      "role": "natura_opera",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::kind:opera-coreografica",
+      "name": "Opera coreografica",
+      "role": "natura_opera",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::kind:produzione",
+      "name": "Produzione / allestimento scenico",
+      "role": "entita_eventuale",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::kind:coreografia",
+      "name": "Coreografia",
+      "role": "entita_artistica",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::kind:versione",
+      "name": "Versione o revisione della partitura",
+      "role": "identita_versione",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::kind:trascrizione",
+      "name": "Trascrizione/adattamento da concerto",
+      "role": "natura_relazione",
+      "status": "PROPOSED_STAGING"
+    },
+    {
+      "id": "tax20261115scena::kind:numero-scena",
+      "name": "Numero o movimento scenico",
+      "role": "parte_di_opera",
+      "status": "PROPOSED_STAGING"
+    }
+  ],
+  "edges": [
+    {
+      "id": "scene20261115:001",
+      "source": "atlantis::senso:balletto",
+      "target": "tax20261115scena::genre:balletto",
+      "relation": "candidate_role_alignment",
+      "rationale": "Atlantis comprende balletto e danza teatrale: allineamento di ruolo non identità piena",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:002",
+      "source": "mundi::genere-balletto",
+      "target": "tax20261115scena::genre:balletto",
+      "relation": "candidate_role_alignment",
+      "rationale": "Mundi identifica teatro-danza; crosswalk Mundi–Atlantis resta HOLD, nessuna fusione",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:003",
+      "source": "tax20261115scena::genre:balletto",
+      "target": "tax20261115scena::family:danza",
+      "relation": "member_of_repertoire",
+      "rationale": "La coreografia e la musica hanno identità distinte",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:004",
+      "source": "tax20261115scena::genre:balletto",
+      "target": "tax20261115scena::family:scena",
+      "relation": "member_of_repertoire",
+      "rationale": "Balletto nel repertorio scenico",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:005",
+      "source": "atlantis::senso:ballet-daction",
+      "target": "tax20261115scena::genre:ballet-action",
+      "relation": "candidate_alignment",
+      "rationale": "Ballet d'action, non tutti i balletti",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:006",
+      "source": "atlantis::senso:ballet-de-cour",
+      "target": "tax20261115scena::genre:ballet-cour",
+      "relation": "candidate_alignment",
+      "rationale": "Ballet de cour non equivalente a balletto classico moderno",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:007",
+      "source": "tax20261115scena::genre:ballet-action",
+      "target": "tax20261115scena::genre:balletto",
+      "relation": "historical_specialization",
+      "rationale": "Una genealogia storico-coreografica, non un sottogenere simultaneo in ogni epoca",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:008",
+      "source": "tax20261115scena::genre:ballet-cour",
+      "target": "tax20261115scena::genre:balletto",
+      "relation": "historical_relation",
+      "rationale": "Spettacolo di corte con musica, danza e recitazione, genealogia storica",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:009",
+      "source": "atlantis::senso:opera-ballet",
+      "target": "tax20261115scena::genre:opera-ballet",
+      "relation": "candidate_alignment",
+      "rationale": "Forma teatrale francese con componenti cantate e danzate",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:010",
+      "source": "atlantis::senso:comedie-ballet",
+      "target": "tax20261115scena::genre:comedie-ballet",
+      "relation": "candidate_alignment",
+      "rationale": "Comédie-ballet: teatro, danza, musica, distinta da opéra-ballet",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:011",
+      "source": "tax20261115scena::genre:opera-ballet",
+      "target": "atlantis::senso:opera",
+      "relation": "historical_relation_to_opera",
+      "rationale": "Non genere Balletto in senso puramente coreografico",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:012",
+      "source": "tax20261115scena::genre:comedie-ballet",
+      "target": "tax20261115scena::family:spettacolo",
+      "relation": "member_of_repertoire",
+      "rationale": "Spettacolo misto teatro, danza e musica",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:013",
+      "source": "tax20261115scena::genre:ballet-pantomime",
+      "target": "tax20261115scena::genre:balletto",
+      "relation": "historical_specialization",
+      "rationale": "Pantomima coreografica scenica",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:014",
+      "source": "atlantis::opera:don-juan-gluck-angiolini-1761",
+      "target": "tax20261115scena::genre:ballet-pantomime",
+      "relation": "work_has_genre",
+      "rationale": "Don Juan del 1761 è balletto-pantomima storico",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:015",
+      "source": "tax20261115scena::genre:musiche-scena",
+      "target": "tax20261115scena::family:scena",
+      "relation": "member_of_repertoire",
+      "rationale": "Musiche di scena possono essere composte per dramma di prosa, non sempre Opera",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:016",
+      "source": "atlantis::opera:egmont-op84",
+      "target": "tax20261115scena::genre:musiche-scena",
+      "relation": "work_has_genre",
+      "rationale": "Beethoven, Egmont op.84 musiche di scena per Goethe",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:017",
+      "source": "tax20261115scena::genre:melologo",
+      "target": "tax20261115scena::family:spettacolo",
+      "relation": "member_of_repertoire_qualified",
+      "rationale": "Voce recitante e musica, anche non scenico; non ogni narrazione con orchestra è un melologo",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:018",
+      "source": "atlantis::senso:operetta",
+      "target": "tax20261115scena::genre:operetta",
+      "relation": "existing_identity_role",
+      "rationale": "Già identità Mundi–Atlantis nel crosswalk: non crearne una seconda",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:019",
+      "source": "atlantis::senso:musical",
+      "target": "tax20261115scena::genre:musical",
+      "relation": "existing_identity_role",
+      "rationale": "Già identità Mundi–Atlantis nel crosswalk: non crearne una seconda",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:020",
+      "source": "tax20261115scena::genre:operetta",
+      "target": "tax20261115scena::family:spettacolo",
+      "relation": "member_of_repertoire",
+      "rationale": "Musica e teatro, legami con Opera storicamente qualificati",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:021",
+      "source": "tax20261115scena::genre:musical",
+      "target": "tax20261115scena::family:spettacolo",
+      "relation": "member_of_repertoire",
+      "rationale": "Musical teatrale, non confondere col film musicale o con l'opera",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:022",
+      "source": "atlantis::senso:film-musicale",
+      "target": "tax20261115scena::genre:musical",
+      "relation": "historical_related_not_identity",
+      "rationale": "Film musicale e musical teatrale condividono pratiche e repertori, non sono lo stesso genere",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:023",
+      "source": "atlantis::produzione:west-side-story-broadway-1957",
+      "target": "tax20261115scena::genre:musical",
+      "relation": "production_of_genre",
+      "rationale": "Produzione teatrale del 1957, non nodo-opera generico da confondere con le successive versioni filmiche",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:024",
+      "source": "tax20261115scena::form:suite-balletto",
+      "target": "mundi::genere-suite",
+      "relation": "form_specialization",
+      "rationale": "Suite da balletto è una Suite, non un Balletto completo",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:025",
+      "source": "tax20261115scena::form:suite-scena",
+      "target": "mundi::genere-suite",
+      "relation": "form_specialization",
+      "rationale": "Suite da musiche di scena rispetto alla partitura teatrale originale",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:026",
+      "source": "tax20261115scena::form:suite-balletto",
+      "target": "tax20261115scena::family:danza",
+      "relation": "derived_from_dance_music",
+      "rationale": "Può essere destinata al concerto, anche se la musica deriva dal balletto",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:027",
+      "source": "tax20261115scena::form:suite-balletto",
+      "target": "tax20261115scena::kind:trascrizione",
+      "relation": "can_be_derived_arrangement",
+      "rationale": "La suite può essere estratto, montaggio o riorchestrazione: qualificare per fonte",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:028",
+      "source": "atlantis::opera:daphnis-suite-1",
+      "target": "tax20261115scena::form:suite-balletto",
+      "relation": "work_has_form",
+      "rationale": "Suite n.1 da Daphnis et Chloé; confermare opera di origine e relazione con la suite n.2",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:029",
+      "source": "atlantis::opera:daphnis-suite-2",
+      "target": "tax20261115scena::form:suite-balletto",
+      "relation": "work_has_form",
+      "rationale": "Suite n.2, opera derivata non duplicato del balletto",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:030",
+      "source": "atlantis::opera:mandarino-suite-1927",
+      "target": "tax20261115scena::form:suite-balletto",
+      "relation": "work_has_form",
+      "rationale": "Suite di Bartók distinta dalla pantomima originale",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:031",
+      "source": "flaminio::audit:fl01:bbb:work:excel4274",
+      "target": "tax20261115scena::genre:ballet-pantomime",
+      "relation": "candidate_work_has_genre",
+      "rationale": "Opera scenica Il mandarino meraviglioso; identità ancora da verificare",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:032",
+      "source": "flaminio::audit:fl01:bbb:work:excel4280",
+      "target": "atlantis::opera:mandarino-suite-1927",
+      "relation": "candidate_same_arrangement_not_certified",
+      "rationale": "Due schede relative alla suite: verificare data/versione e numero di catalogo prima di same_as",
+      "status": "HOLD_SAME_AS",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:033",
+      "source": "flaminio::audit:fl01:bbb:work:excel4274",
+      "target": "flaminio::audit:fl01:bbb:work:excel4280",
+      "relation": "original_work_to_concert_suite",
+      "rationale": "Nell'archivio Flaminio sono già distinti l'originale scenico e la suite orchestrale",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:034",
+      "source": "flaminio::audit:fl01:bbb:work:excel4275",
+      "target": "tax20261115scena::genre:balletto",
+      "relation": "candidate_work_has_genre",
+      "rationale": "Il principe di legno, balletto",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:035",
+      "source": "atlantis::opera:la-valse-ravel-1920",
+      "target": "tax20261115scena::kind:opera-coreografica",
+      "relation": "work_has_nature",
+      "rationale": "Poème chorégraphique, non solo una partitura di balletto realizzata successivamente",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:036",
+      "source": "atlantis::produzione:la-valse-rubinstein-nizinska-1929",
+      "target": "tax20261115scena::kind:produzione",
+      "relation": "entity_has_kind",
+      "rationale": "Allestimento distinto dalla composizione di Ravel",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:037",
+      "source": "atlantis::produzione:sagra-bausch-1975",
+      "target": "tax20261115scena::kind:produzione",
+      "relation": "entity_has_kind",
+      "rationale": "Coreografia del 1975 distinta dal balletto e dalla prima produzione del 1913",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:038",
+      "source": "atlantis::produzione:sagra-nizinskij-1913",
+      "target": "tax20261115scena::kind:produzione",
+      "relation": "entity_has_kind",
+      "rationale": "Prima coreografia 1913 distinta da coreografie successive",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:039",
+      "source": "atlantis::opera:bolero-ravel-1928",
+      "target": "tax20261115scena::family:danza",
+      "relation": "work_has_dance_origin",
+      "rationale": "Opera con dimensione coreografica, non inferire identità con ogni produzione",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:040",
+      "source": "atlantis::senso:riuso-musica-preesistente-danza",
+      "target": "tax20261115scena::kind:coreografia",
+      "relation": "historical_practice_related",
+      "rationale": "Coreografia nuova su partitura preesistente: rapporto di riuso, non trascrizione automatica della musica",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:041",
+      "source": "atlantis::parte:finale-prometeo-op43",
+      "target": "tax20261115scena::kind:numero-scena",
+      "relation": "entity_has_kind",
+      "rationale": "Finale del balletto Prometeo: parte di opera, non lavoro indipendente",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    },
+    {
+      "id": "scene20261115:042",
+      "source": "atlantis::senso:musical-integrato",
+      "target": "tax20261115scena::genre:musical",
+      "relation": "dramaturgical_trait",
+      "rationale": "Musical integrato è poetica/tecnica di organizzazione, non secondo genere Musical",
+      "status": "PROPOSED",
+      "rooted_expansion_only": true,
+      "production_gate": "CLOSED"
+    }
+  ]
+}
