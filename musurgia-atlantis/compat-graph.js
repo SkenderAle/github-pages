@@ -129,10 +129,13 @@ function makeGraph(host){
   function alphaAt(p){return p.n._focus||p.n._compareEndpoint?1:.19+.81*frontness(p);}
   function drawCaption(p,r,occupied){
     const n=p.n,root=!!n._focus,endpoint=!!n._compareEndpoint;
-    // Le etichette degli autori non dipendono dalla posizione davanti o
-    // dietro la nebulosa; le altre compaiono quando c'è spazio disponibile.
-    // Il controllo anticollisione decide se e dove disegnarle.
+    // Nella nebulosa generale valgono le vecchie regole: nessuna
+    // etichetta imposta e rispetto della profondità prospettica.
     if(!n.name)return;
+    if(n._overview){
+      if(!n._label&&n.id!==hovered&&n.id!==selected)return;
+      if(frontness(p)<.68)return;
+    }
     const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
     const author=n.category==='persone';
     const size=root||endpoint?13:author?12:n._depth===1?11.5:11;
@@ -205,7 +208,7 @@ function makeGraph(host){
       ctx.shadowColor=colorRgba(base,.55);
       ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*Math.PI);ctx.fill();
       ctx.shadowBlur=0;ctx.globalAlpha=1;
-      if(n.category==='persone'){
+      if(n.category==='persone'&&!n._overview){
         // Due anelli ellittici, leggermente inclinati, sempre ancorati al nodo:
         // identità astronomica delle persone, senza cambiare i dati musicali.
         const orbit=(r*1.8)+3;
@@ -226,14 +229,15 @@ function makeGraph(host){
     // etichette abilitate. Con pochi nodi, tutti i nomi entrano candidati.
     // La verifica dei rettangoli evita le sovrapposizioni.
     const occupied=[];
-    const smallGraph=projected.length<=65;
+    const overview=projected.some(p=>p.n._overview);
+    const smallGraph=!overview&&projected.length<=65;
     const priority=p=>p.n._compareEndpoint?100:p.n._focus?95:
-      p.n.category==='persone'?85:p.n.id===hovered||p.n.id===selected?80:
+      !overview&&p.n.category==='persone'?85:p.n.id===hovered||p.n.id===selected?80:
       p.n._label?55:p.n._depth===1?40:10;
     const captions=projected
       .filter(p=>p.x>=-12&&p.x<=W+12&&p.y>=40&&p.y<=H+12&&
-        (smallGraph||p.n._label||p.n._focus||p.n._compareEndpoint||
-         p.n.category==='persone'||p.n.id===hovered||p.n.id===selected))
+        (overview?(p.n._label||p.n._focus||p.n._compareEndpoint||p.n.id===hovered||p.n.id===selected):
+         (smallGraph||p.n._label||p.n._focus||p.n._compareEndpoint||p.n.category==='persone'||p.n.id===hovered||p.n.id===selected)))
       .sort((a,b)=>priority(b)-priority(a)||a.z-b.z);
     for(const p of captions)drawCaption(p,p.r||4,occupied);
     if(!drag&&pointers.size===0){rotY+=.00037;rotX+=.000085;if(rotX>Math.PI)rotX-=2*Math.PI;}
