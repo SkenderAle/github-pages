@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="it"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#07141f">
+<title>Musurgia Atlantis — Gate04C collaudo browser</title>
+<style>
+:root{font-family:system-ui,Arial,sans-serif;background:#07141f;color:#e8f3f1}*{box-sizing:border-box}body{margin:0}
+header{padding:14px;background:#0b2530;border-bottom:1px solid #43636d;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h1{font-size:18px;color:#ffdfad;margin:0}h2{font-size:14px;margin:0 0 10px}p{font-size:12px;color:#a4c4cb;line-height:1.5}
+.copy{flex:1;min-width:220px}
+button,a.action{padding:10px 12px;border-radius:9px;border:1px solid #6c9296;background:#173a49;color:#f5ead1;font-size:12px;text-decoration:none;font-weight:600;cursor:pointer}
+button:disabled{opacity:.4;cursor:default}
+main{display:grid;grid-template-columns:minmax(280px,360px) minmax(330px,1fr);height:calc(100dvh - 100px);min-height:510px}
+section{padding:14px;border-right:1px solid #324c54;overflow:auto}
+#summary{background:#102e3a;border:1px solid #2d5260;border-radius:10px;padding:10px;margin:8px 0;font-size:13px}
+#status{font-size:12px;color:#f9d39b;margin:12px 0}
+#tests{display:grid;gap:6px}.test{background:#0c2631;border:1px solid #314f59;border-radius:8px;padding:8px 10px;font-size:12px}
+.good{border-left:4px solid #67bc98}.bad{border-left:4px solid #e59e85}
+.test small{display:block;color:#9bb8bd;margin-top:4px;overflow-wrap:anywhere}
+#viewer{border:0;width:100%;height:100%;background:#07141f}
+footer{font-size:11px;color:#9cbbc4;line-height:1.5;padding:12px 3px}
+@media(max-width:760px){main{grid-template-columns:1fr;grid-template-rows:48dvh auto;height:auto}section{order:2;border-right:0;border-top:1px solid #324c54}#viewer{order:1;width:100%;height:48dvh}}
+</style></head>
+<body>
+<header>
+ <div class="copy"><h1>Musurgia Atlantis · Gate 04C</h1><p>Prova nel browser reale della copia staging. Nessuna modifica alla produzione. Usa i pulsanti per salvare il responso.</p></div>
+ <button id="rerun">Riesegui</button><button id="download" disabled>Esporta JSON</button><button id="copy" disabled>Copia rapporto</button>
+ <a class="action" href="./GATE04B_VIEWER_ISOLATO_2026-11-15.html" target="_blank" rel="noopener">Apri anteprima</a>
+</header>
+<main>
+<section>
+<h2>Controlli automatici su dati, pulsanti e canvas</h2>
+<div id="status" role="status">Avvio del collaudo…</div>
+<div id="summary">In attesa del caricamento</div><div id="tests" aria-live="polite"></div>
+<footer>Questi test verificano il funzionamento dell'interfaccia nel browser in cui vengono eseguiti. Non sostituiscono l'osservazione visiva dei nodi né il controllo manuale dei gesti touch o della fluidità.</footer>
+</section>
+<iframe id="viewer" title="Atlantis Gate04B staging isolato" src="./GATE04B_VIEWER_ISOLATO_2026-11-15.html"></iframe>
+</main>
+<script>
+(function(){"use strict";
+var $=function(id){return document.getElementById(id)};
+var running=false,lastReport=null,tests=[];
+var delay=function(ms){return new Promise(function(resolve){setTimeout(resolve,ms)})};
+var number=function(text){return Number(String(text||"").replace(/\./g,"").replace(/[^0-9]/g,""))||0};
+function record(name,pass,detail){
+ var row={name:name,status:pass?"PASS":"FAIL",detail:String(detail||"")};tests.push(row);
+ var el=document.createElement("div");el.className="test "+(pass?"good":"bad");el.appendChild(document.createTextNode((pass?"✓ ":"✕ ")+name));
+ if(detail!==undefined){var small=document.createElement("small");small.textContent=String(detail);el.appendChild(small)}
+ $("tests").appendChild(el);return pass;
+}
+async function waitFor(fn,limit){
+ var start=Date.now();while(Date.now()-start<(limit||25000)){try{var val=fn();if(val)return val}catch(e){}await delay(130)}
+ throw new Error("Caricamento o risultato non disponibile");
+}
+function change(w,d,id,value,event){
+ var el=d.getElementById(id);if(!el)throw Error("Controllo mancante: "+id);
+ el.value=value;el.dispatchEvent(new w.Event(event||"change",{bubbles:true}));return el;
+}
+async function run(){
+ if(running)return;running=true;tests=[];$("tests").innerHTML="";
+ $("rerun").disabled=true;$("download").disabled=true;$("copy").disabled=true;
+ $("status").textContent="Apro l'anteprima ed eseguo gli eventi…";
+ var iframe=$("viewer"), w=null, d=null, footer="", nodes=()=>0, links=()=>0, focus=()=>"", canvas=null;
+ try{
+  iframe.src="./GATE04B_VIEWER_ISOLATO_2026-11-15.html?testRun="+Date.now();
+  w=await waitFor(function(){var z=iframe.contentWindow,doc=z&&z.document;return doc&&doc.getElementById("loading")&&doc.getElementById("loading").style.display==="none"?z:null},30000);
+  d=w.document;
+  nodes=function(){return number(d.getElementById("visibleNodes").textContent)};
+  links=function(){return number(d.getElementById("visibleLinks").textContent)};
+  focus=function(){return d.getElementById("focusName").textContent};
+  canvas=d.querySelector("#graph canvas");
+  await delay(280);
+  record("Caricamento HTML completato",!!d.querySelector("#graph")&&!!d.getElementById("search"),d.title);
+  record("BWV 140: inizialmente 5 nodi / 5 archi",nodes()===5&&links()===5,"nodi "+nodes()+", archi "+links());
+  record("Radice BWV 140 selezionata",focus().includes("BWV 140"),focus());
+  record("Canvas presente e dimensionato",!!canvas&&canvas.width>20&&canvas.height>20,canvas?canvas.width+"×"+canvas.height:"assente");
+  record("Assenza di errore applicativo",d.getElementById("error").style.display!=="block",d.getElementById("errorMessage").textContent.slice(0,180));
+  footer=d.getElementById("footer").textContent;
+  record("Motore grafico inizializzato",footer.length>10,footer);
+  $("status").textContent="Controllo livelli, filtri, ricerca, reset…";
+  d.getElementById("depthPlus").click();await delay(220);
+  record("BWV 140: livello 2 = 6 nodi / 6 archi",nodes()===6&&links()===6,"nodi "+nodes()+", archi "+links());
+  d.getElementById("depthPlus").click();await delay(220);
+  record("BWV 140: livello 3 = 11 nodi / 11 archi",nodes()===11&&links()===11,"nodi "+nodes()+", archi "+links());
+  change(w,d,"quickFilter","opera");await delay(160);
+  record("Filtro Solo opere riduce la rete",nodes()>0&&nodes()<11&&focus().includes("BWV 140"),"nodi "+nodes());
+  change(w,d,"quickFilter","all");await delay(160);
+  record("Ripristino categorie = 11 nodi",nodes()===11,"nodi "+nodes());
+  var hold=d.querySelector('[data-tier="sospeso"]');
+  record("HOLD disattivati all'avvio",!!hold&&!hold.checked,hold?"checked="+hold.checked:"checkbox assente");
+  var preset=Array.from(d.querySelectorAll("#chapters button")).find(function(x){return x.textContent.includes("BWV 149")});
+  if(preset)preset.click();await delay(180);
+  record("Pulsante BWV 149 = 5 nodi / 4 archi",!!preset&&focus().includes("BWV 149")&&nodes()===5&&links()===4,"nodi "+nodes()+", archi "+links());
+  d.getElementById("depthPlus").click();await delay(170);
+  record("BWV 149: livello 2 = 6 nodi / 5 archi",nodes()===6&&links()===5,"nodi "+nodes()+", archi "+links());
+  change(w,d,"search","With Thee","input");await delay(170);
+  var suggestion=d.querySelector("#suggestions button");
+  record("Ricerca titolo corretto Amy Beach",!!suggestion&&suggestion.textContent.includes("With Thee"),suggestion?suggestion.textContent:"non trovato");
+  if(suggestion)suggestion.click();await delay(180);
+  record("Amy Beach selezionata con 4 nodi",focus().includes("With Thee")&&nodes()===4,"nodi "+nodes()+", titolo "+focus());
+  d.getElementById("depthPlus").click();await delay(150);
+  record("Amy Beach al II livello = 5 nodi",nodes()===5,"nodi "+nodes());
+  d.getElementById("resetBtn").click();await delay(180);
+  record("Reset ripristina BWV 140 al livello 1",focus().includes("BWV 140")&&nodes()===5&&d.getElementById("levelRange").value==="1","nodi "+nodes());
+  // Campionamento bitmap soltanto se esiste un contesto 2D del renderer compatibile.
+  if(canvas&&footer.toLowerCase().includes("due dita")){
+   try{
+    await delay(300);var ctx=canvas.getContext("2d"),colors=new Set();
+    if(ctx){for(var i=1;i<=3;i++)for(var j=1;j<=3;j++){
+      var pix=ctx.getImageData(Math.max(0,Math.floor(canvas.width*i/4)),Math.max(0,Math.floor(canvas.height*j/4)),1,1).data;
+      colors.add(pix[0]+","+pix[1]+","+pix[2]);
+    }}
+    record("Canvas 2D con contenuto cromatico",colors.size>1,"campioni diversi "+colors.size);
+   }catch(err){record("Lettura campioni Canvas 2D",false,String(err))}
+  }else record("Canvas presente (WebGL non certificato visivamente)",!!canvas,footer);
+ }catch(err){record("Sequenza completa di collaudo",false,err.stack||String(err))}
+ var passed=tests.filter(function(t){return t.status==="PASS"}).length,failed=tests.length-passed;
+ lastReport={schema:"musurgia-atlantis-gate04c-real-browser-smoke-v1",generated_at:new Date().toISOString(),
+   device:{userAgent:navigator.userAgent,touchPoints:navigator.maxTouchPoints||0,devicePixelRatio:devicePixelRatio,
+    viewport:{width:innerWidth,height:innerHeight}},
+   tested_page:"GATE04B_VIEWER_ISOLATO_2026-11-15.html",
+   metrics:{passed:passed,failed:failed,total:tests.length},checks:tests.slice(),
+   caveat:"Page events and canvas existence tested here; manual Android gestures and full visual quality require human verification."};
+ $("summary").textContent=passed+"/"+tests.length+" PASS · "+failed+" problemi · "+(navigator.maxTouchPoints?"touch":"desktop");
+ $("status").textContent=failed?"Test completati: alcune verifiche richiedono correzione.":"Test completati: salva il rapporto e verifica visivamente la mappa.";
+ $("rerun").disabled=false;$("download").disabled=false;$("copy").disabled=false;running=false;
+}
+$("rerun").onclick=run;
+$("download").onclick=function(){
+ if(!lastReport)return;
+ var href=URL.createObjectURL(new Blob([JSON.stringify(lastReport,null,2)],{type:"application/json"}));
+ var a=document.createElement("a");a.href=href;a.download="atlantis-gate04c-collaudo-browser.json";a.click();
+ setTimeout(function(){URL.revokeObjectURL(href)},2500);
+};
+$("copy").onclick=async function(){
+ if(!lastReport)return;
+ try{await navigator.clipboard.writeText(JSON.stringify(lastReport,null,2));$("status").textContent="Rapporto copiato."}
+ catch(err){$("status").textContent="Copia non consentita: usa Esporta JSON."}
+};
+window.addEventListener("load",run);
+})();
+</script></body></html>
