@@ -238,9 +238,13 @@ export function projectForViewer(db,{rootId,depth=1,visibleCategories=["persone"
    adj.get(e.source).push(e.target);adj.get(e.target).push(e.source);
  }
  const depthLimit=Math.max(1,Math.min(5,Number(depth)||1)),visited=new Set([rootId]),queue=[[rootId,0]];
+ // A taxonomy-rooted journey must traverse nested genre/forma nodes. For an
+ // author-rooted view they remain terminal to avoid flooding with unrelated
+ // compositions from a shared genre (rooted expansion policy).
+ const expandTaxonomy=index.get(rootId)?.category==="generi_forme";
  for(let i=0;i<queue.length;i++){
    const [id,d]=queue[i],n=index.get(id);if(!n||d>=depthLimit)continue;
-   if(d>0&&!["opere","concetti","strumenti","eventi"].includes(n.category))continue;
+   if(d>0&&!["opere","concetti","strumenti","eventi"].includes(n.category)&&!(expandTaxonomy&&n.category==="generi_forme"))continue;
    for(const other of adj.get(id)||[])if(!visited.has(other)){visited.add(other);queue.push([other,d+1]);}
  }
  const nodes=db.nodes.filter(n=>visited.has(n.id)&&(n.id===rootId||show.has(n.category))&&(includeDocumentary||n.visibility!=="documentary"));
