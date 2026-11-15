@@ -3,18 +3,11 @@
   "date": "2026-11-16",
   "status": "STAGING_ONLY_CURATED_STRUCTURAL_RELATIONS_NOT_PRODUCTION",
   "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json",
-  "principle": "Raccordi espliciti di famiglia e tipologia, non fusioni di singole opere. Identità Sonata Mundi–Atlantis già condivisa. Le opere Flaminio rimangono in audit.",
+  "principle": "Raccordi espliciti di famiglia e tipologia, non fusioni di singole opere. Identità Sonata Mundi–Atlantis già condivisa. Le opere Flaminio rimangono in audit. Il repertorio Musica da camera riusa il nodo Mundi esistente; nessun duplicato famiglia.",
   "nodes": [
     {
       "id": "tax20261115sc::family:strumento-solo",
       "name": "Repertorio per strumento solo",
-      "kind": "repertorio",
-      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
-      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
-    },
-    {
-      "id": "tax20261115sc::family:camera",
-      "name": "Musica da camera",
       "kind": "repertorio",
       "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
       "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
@@ -63,16 +56,6 @@
     }
   ],
   "edges": [
-    {
-      "id": "sc20261115:002",
-      "source": "mundi::genere-musica-da-camera",
-      "target": "tax20261115sc::family:camera",
-      "predicate": "represent_as_repertoire",
-      "rationale": "Musica da camera è famiglia repertoriale, non forma compositiva unica",
-      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
-      "rooted_expansion_only": true,
-      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
-    },
     {
       "id": "sc20261115:003",
       "source": "mundi::genere-sonata",
@@ -146,7 +129,7 @@
     {
       "id": "sc20261115:010",
       "source": "tax20261115sc::form:sonata-due",
-      "target": "tax20261115sc::family:camera",
+      "target": "mundi::genere-musica-da-camera",
       "predicate": "member_of_repertoire",
       "rationale": "Due esecutori in repertorio cameristico (qualificare con organico effettivo)",
       "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
@@ -156,7 +139,7 @@
     {
       "id": "sc20261115:011",
       "source": "tax20261115sc::form:sonata-tre",
-      "target": "tax20261115sc::family:camera",
+      "target": "mundi::genere-musica-da-camera",
       "predicate": "member_of_repertoire",
       "rationale": "Sonata a tre storica con basso continuo",
       "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
@@ -185,6 +168,16 @@
     }
   ],
   "excluded_or_pending": [
+    {
+      "id": "sc20261115:002",
+      "source": "mundi::genere-musica-da-camera",
+      "target": "tax20261115sc::family:camera",
+      "predicate": "represent_as_repertoire",
+      "rationale": "La famiglia Musica da camera esiste già in Mundi: riutilizzare il nodo invece di crearne uno omonimo.",
+      "status": "REDUNDANT_REPLACED_BY_EXISTING_MUNDI_ID",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
     {
       "id": "sc20261115:001",
       "status": "HOLD_IDENTITY",
