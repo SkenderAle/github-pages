@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07141f">
+<meta name="description" content="Musurgia Atlantis: atlante sperimentale delle relazioni tra epoche, opere, persone, forme e luoghi musicali. Grafo 3D esplorabile.">
+<title>Atlantis Gate04D — autore canonico, opere e generi (solo staging)</title>
+<style>
+:root{--deep:#07141f;--panel:rgba(8,23,34,.92);--border:rgba(148,190,197,.21);--ink:#e4f0ee;--muted:#9db4bd;--gold:#eebd78;--aqua:#8bd9ce;--red:#e8a095;--blue:#88b7de;--shadow:0 18px 50px rgba(0,0,0,.32)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;height:100%;overflow:hidden;background:var(--deep);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}a{color:#abd9f0}
+#graph{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 58% 47%,#0a2837 0,#071521 41%,#030a11 100%)}
+#graph::before{content:"";pointer-events:none;position:absolute;inset:0;z-index:2;background:radial-gradient(circle at 50% 52%,transparent 35%,rgba(2,9,16,.47) 100%)}
+#graph canvas{display:block;outline:none;position:absolute;inset:0;z-index:3;touch-action:none}#graphBackdrop{z-index:0}
+header{position:absolute;top:0;left:0;right:0;z-index:5;min-height:81px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(14px,2.1vw,34px);background:linear-gradient(180deg,rgba(3,12,19,.96),rgba(3,12,19,.75) 72%,transparent);pointer-events:none}
+header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;min-width:0}.sigil{display:grid;place-items:center;width:48px;height:48px;border:1px solid #ab8a59;border-radius:50%;color:var(--gold);background:linear-gradient(145deg,#1a3540,#0b1c25);box-shadow:inset 0 0 22px #d6ac4f20;flex:none;font-size:26px;font-family:Georgia,serif}.brand{font-family:Georgia,"Times New Roman",serif;letter-spacing:.09em;font-size:clamp(17px,2vw,25px);font-weight:500;color:#f1d3a2;white-space:nowrap}.tagline{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:#a5bbc2;margin-top:2px}
+.topstats{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.stat{font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:30px;padding:7px 11px;background:#0e2530bb}.stat strong{color:#d4f5ed;font-weight:600}.ghost{border:1px solid var(--border);background:#0e2530cc;color:var(--ink);padding:9px 12px;border-radius:10px;font-size:12px}.ghost:hover{background:#1d3642}
+.side{position:absolute;z-index:5;top:94px;left:18px;width:300px;max-height:calc(100vh - 116px);max-height:calc(100dvh - 116px);overflow:auto;overscroll-behavior:contain;border:1px solid var(--border);border-radius:18px;background:var(--panel);box-shadow:var(--shadow);backdrop-filter:blur(16px);padding:17px;scrollbar-width:thin;scrollbar-color:#3c5960 transparent}
+.panelheader{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}.smallcaps{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}.heading{font-family:Georgia,serif;font-size:22px;letter-spacing:.025em;margin:4px 0 10px}.subcopy{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 13px}
+.searchwrap{position:relative}#search{width:100%;height:41px;padding:0 12px;border:1px solid #607d833b;border-radius:10px;background:#081a27;color:white;outline:0}#search:focus{border-color:#9acdc4}#search::placeholder{color:#7e9da9}#suggestions{margin:5px 0 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#091c29;display:none;max-height:215px;overflow-y:auto}#suggestions.visible{display:block}.suggestion{display:flex;width:100%;gap:8px;text-align:left;align-items:center;padding:8px 10px;border:0;border-bottom:1px solid #ffffff0c;background:transparent;color:#e6f0ee;font-size:12px}.suggestion:hover{background:#173443}.suggestion small{font-size:10px;color:var(--muted);display:block}
+.sep{border:0;border-top:1px solid var(--border);margin:16px 0}.controltitle{font-size:11px;color:#cde1e0;font-weight:700;text-transform:uppercase;letter-spacing:.11em;margin:0 0 10px}.segmented{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;background:#071823;padding:4px;border:1px solid #2c4b55;border-radius:11px}.segmented button{padding:10px 4px;background:transparent;border:0;color:var(--muted);border-radius:8px;font-size:11px}.segmented button.active{background:#24535b;color:#e3fcf5;box-shadow:0 2px 7px #0006}
+.toggles{display:grid;gap:9px}.choice{display:flex;align-items:center;gap:8px;font-size:12px;color:#d8e7e4;cursor:pointer}.choice input{appearance:none;width:16px;height:16px;border:1px solid #5d8491;border-radius:4px;display:grid;place-items:center;margin:0;flex:none}.choice input:checked{background:#4e9a95;border-color:#4e9a95}.choice input:checked:after{content:'✓';font-size:11px;color:#041b1d}.swatch{height:8px;width:8px;border-radius:50%;flex:none}.choice .count{margin-left:auto;color:#819ba3;font-size:10px}
+.pillgrid{display:flex;flex-wrap:wrap;gap:6px}.chip{border:1px solid #42656d;background:#102c38;color:#b7d6d4;font-size:11px;border-radius:18px;padding:7px 9px}.chip.active{border-color:#efc387;color:#ffe3b7;background:#3b302a}.chip:hover{filter:brightness(1.22)}
+.bottomtools{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.depthrow{display:flex;align-items:center;gap:10px;margin:9px 0}.depthrow input{flex:1;min-width:40px;accent-color:#eec482}.depthvalue{background:#234752;border:1px solid #c8a575;border-radius:9px;padding:6px 9px;min-width:36px;text-align:center;color:#ffdfaa;font-weight:700}
+#levelSection{display:none}#levelSection.open{display:block}
+#exploreDock{display:none;position:absolute;z-index:6;bottom:66px;left:335px;max-width:min(360px,calc(100vw - 120px));background:#081c29ed;border:1px solid #69878b;border-radius:15px;padding:10px 12px;box-shadow:0 9px 25px #0008;backdrop-filter:blur(9px)}
+#exploreDock.open{display:block}#exploreDock.hidden{display:none}
+#exploreDock .focusline{display:flex;align-items:center;gap:7px;justify-content:space-between;margin-bottom:8px}
+#focusName{color:#ffddb0;font-weight:650;font-size:13px;line-height:1.25;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#detailBtn{font-size:11px;background:#214653;border:1px solid #547e88;color:#e9f3f1;border-radius:8px;padding:6px 9px;flex:none}
+#exploreDock .depthdock{display:flex;gap:8px;align-items:center;justify-content:space-between;color:#b9d5d3;font-size:12px}
+#exploreDock .depthdock button{border:1px solid #5d818b;background:#173440;border-radius:9px;width:32px;height:32px;color:#ffddb0;font-size:20px}
+#exploreDock .depthdock button:disabled{opacity:.35}
+#depthDockValue{font-weight:700;color:#f5daaf}
+#labelOverlay{position:absolute;inset:0;z-index:4;overflow:hidden;pointer-events:none}
+.map-label{position:absolute;white-space:nowrap;padding:3px 5px;border-radius:5px;background:#061722e5;color:#e9f3f0;font:11px system-ui;border:1px solid #79929770;transform:translate(-50%,-130%);text-shadow:0 1px 2px #000;max-width:220px;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:680px){#exploreDock{bottom:67px;left:10px;right:10px;max-width:none;padding:9px 11px}.side.open ~ #exploreDock{display:none}}.btn{border:1px solid #41606a;border-radius:10px;background:#0d2b39;color:#e4f3ef;font-size:12px;padding:9px 11px}.btn:hover{background:#1b404b}.btn.primary{background:#b38d5e;color:#09151b;border-color:#ddb982;font-weight:700}
+#detail{position:absolute;z-index:5;top:95px;right:18px;width:320px;max-height:calc(100vh - 116px);max-height:calc(100dvh - 116px);overflow:auto;border:1px solid var(--border);border-radius:18px;background:var(--panel);box-shadow:var(--shadow);backdrop-filter:blur(16px);padding:18px;display:none;scrollbar-width:thin}#detail.open{display:block}.detail-close{position:absolute;right:12px;top:10px;background:transparent;color:#cde2df;border:0;font-size:22px}.detail-kind{color:var(--gold);text-transform:uppercase;font-size:10px;letter-spacing:.14em;margin:4px 30px 8px 0}.detail-name{font-family:Georgia,serif;font-size:25px;line-height:1.18;margin:0 20px 10px 0}.detail-tag{color:var(--muted);font-size:11px;margin-bottom:12px;word-break:break-word}.detail-list{display:grid;gap:7px;margin:11px 0}.connection{background:#102b39;border:1px solid #294a54;border-radius:10px;width:100%;padding:9px;text-align:left;color:#d6f1eb;font-size:12px}.connection small{display:block;color:#8fabaf;font-size:10px;margin-top:2px}.connection:hover{background:#21414a}.source-link{display:inline-block;border:1px solid #456c73;padding:7px 9px;font-size:11px;border-radius:8px;text-decoration:none;margin:2px 3px 3px 0}.source-link:hover{background:#193943}.detail-intro{color:#b1c9ca;font-size:12px;line-height:1.55}
+#zoomTools{position:absolute;z-index:6;right:14px;bottom:65px;display:flex;flex-direction:column;gap:7px;align-items:center;pointer-events:auto}
+#zoomTools button{width:46px;height:46px;border:1px solid #7faaa8;border-radius:13px;background:#0b2938ed;color:#f4dbad;font-size:29px;font-weight:400;line-height:1;display:grid;place-items:center;box-shadow:0 5px 18px #0007;touch-action:manipulation}
+#zoomTools button:hover,#zoomTools button:active{background:#22505c}
+#zoomTools small{font-size:10px;color:#b7cbd0;text-shadow:0 1px 4px #000;letter-spacing:.06em}
+@media(max-width:680px){#zoomTools{top:101px;bottom:auto;right:11px}#zoomTools button{width:45px;height:45px}}
+#footer{position:absolute;z-index:3;bottom:10px;left:50%;transform:translateX(-50%);pointer-events:none;background:#081924b8;border:1px solid #34525b7a;border-radius:30px;color:#a6c3c7;padding:8px 16px;text-align:center;font-size:11px;white-space:nowrap}
+#toast{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);z-index:15;background:#25454b;color:white;border:1px solid #65959c;border-radius:10px;padding:10px 15px;font-size:12px;display:none;box-shadow:var(--shadow);max-width:85vw}#toast.show{display:block}
+#error{position:absolute;z-index:6;top:50%;left:50%;transform:translate(-50%,-50%);background:#102834;border:1px solid #577784;border-radius:17px;padding:25px;max-width:520px;text-align:center;display:none}#error p{line-height:1.6;color:#bed5d7}#error h2{font-family:Georgia,serif;font-size:24px;color:#f4cd9c}
+#mobileFilters{display:none}.hint{font-size:10px;color:#829fa6;line-height:1.5}.loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;color:#b5d5d4;font-size:12px;text-align:center;letter-spacing:.08em}.loader{margin:0 auto 15px;width:38px;height:38px;border:1px solid #bb996d;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:1020px){#detail{width:285px;right:10px}.side{width:260px;left:10px}.topstats .stat{display:none}}
+@media(max-width:680px){header{min-height:69px;padding:10px 12px}.brand{font-size:18px}.tagline{font-size:9px}.sigil{width:40px;height:40px;font-size:22px}.topstats{gap:4px}.topstats>.ghost{padding:8px;font-size:11px}#mobileFilters{display:inline-block}.side{display:none;left:9px;right:9px;top:auto;bottom:10px;width:auto;max-height:64dvh;max-height:64vh;border-radius:17px;padding:14px}.side.open{display:block}#detail{top:auto;bottom:10px;left:9px;right:9px;width:auto;max-height:62dvh}#footer{bottom:12px;padding:8px 11px;font-size:10px;max-width:calc(100vw - 20px);white-space:normal}#footer.hidden{display:none}#toast{bottom:75px}.heading{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.loader{animation:none}}
+.audit-results{margin:13px 0;padding:11px;border:1px solid #4a7781;border-radius:12px;background:#092331}
+.audit-results strong{font-size:12px;color:#f3d6a2}
+.audit-results .note{font-size:11px;line-height:1.5;color:#afd2d1;margin:6px 0 8px}
+.audit-itemlist{display:grid;gap:5px;max-height:235px;overflow-y:auto;overscroll-behavior:contain}
+.audit-item{font-size:12px;text-align:left;background:#173a45;color:#e0f4ef;border:1px solid #345c67;border-radius:8px;padding:8px 10px;width:100%;overflow-wrap:anywhere}
+.audit-item:hover,.audit-item:focus-visible{background:#285562}
+</style>
+<script id="atlantis3DEngine"></script>
+</head>
+<body>
+<div id="graph" aria-label="Grafo tridimensionale delle connessioni musicali"><img id="graphBackdrop" src="../fallback.svg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none" /><div id="labelOverlay" aria-hidden="true"></div></div>
+<div id="loading" class="loading"><div class="loader"></div>Sto aprendo la costellazione…</div>
+<header>
+ <div class="identity"><div class="sigil" aria-hidden="true">✧</div><div><div class="brand">MUSURGIA ATLANTIS</div><div class="tagline">Gate 04D · ricerca autore canonico · staging isolato</div></div></div>
+ <div class="topstats"><span class="stat"><strong id="visibleNodes">—</strong> nodi · <strong id="visibleLinks">—</strong> relazioni</span><button class="ghost" id="centerBtn" title="Inquadra la rete">◎ Centra</button><button class="ghost" id="mobileFilters" aria-expanded="false" aria-controls="side">☷ Filtri</button></div>
+</header>
+<div id="zoomTools" role="group" aria-label="Controlli di ingrandimento della mappa"><button type="button" id="zoomIn" aria-label="Ingrandisci la costellazione" title="Zoom avanti">+</button><button type="button" id="zoomOut" aria-label="Riduci la costellazione" title="Zoom indietro">−</button><small>ZOOM</small></div>
+<aside class="side" id="side" aria-label="Filtri della mappa">
+ <div class="panelheader"><span class="smallcaps">Laboratorio delle connessioni</span><span style="font-size:11px;color:#869da5">Gate 04D · V11</span></div>
+ <h1 class="heading">Esplora la costellazione</h1>
+ <p class="subcopy">Staging Flaminio: 500 schede documentarie non canoniche, 1.365 nodi, 2.780 archi. Fonte, candidata e HOLD restano distinte; nessuna modifica alla produzione.</p>
+ <div class="searchwrap"><input id="search" type="search" placeholder="Cerca BWV 140, Bach, Bartók, Beach…" aria-label="Cerca un nodo" autocomplete="off"><div id="suggestions" role="listbox" aria-label="Risultati della ricerca"></div></div>
+ <hr class="sep"><div class="controltitle">Prospettiva</div>
+ <div class="segmented" id="viewSelect"><button data-view="chapters" aria-pressed="false" disabled title="Non presente nello staging isolato">Capitoli</button><button data-view="all" aria-pressed="false">Rete staging</button><button data-view="near" class="active" aria-pressed="true" title="Collegamenti del nodo selezionato">Espansione radicata</button></div>
+ <div class="hint" style="margin-top:8px">Cerca un nome: il I livello mostra i collegamenti diretti. I capitoli e i rimandi editoriali restano nella prospettiva «Capitoli», mai nella rete storico-musicale. Dal II livello si attraversano solo relazioni specifiche fra opere. Autori, generi, schede, rubriche e HOLD NON propagano la ricerca.</div>
+ <div id="levelSection"><hr class="sep"><label class="controltitle" for="levelRange">Distanza dal nodo cercato</label>
+ <div class="depthrow"><input type="range" id="levelRange" min="1" max="5" step="1" value="1" aria-label="Livelli di relazioni"><output id="levelValue" class="depthvalue" for="levelRange">1</output></div>
+ <div id="levelCount" class="hint">Primo livello · collegamenti diretti</div></div>
+ <hr class="sep"><div class="controltitle">Quale tipo di relazione?</div>
+ <div class="toggles" id="tiers">
+  <label class="choice"><input type="checkbox" data-tier="trattazione" checked><i class="swatch" style="background:#81ddbd"></i>Riscontri specifici documentati <span class="count" id="n-trattazione"></span></label>
+  <label class="choice"><input type="checkbox" data-tier="menzione" checked><i class="swatch" style="background:#8eacda"></i>Menzioni e confronti <span class="count" id="n-menzione"></span></label>
+  <label class="choice"><input type="checkbox" data-tier="navigazione"><i class="swatch" style="background:#e4c782"></i>Provenienza e rubriche Flaminio <span class="count" id="n-navigazione"></span></label>
+  <label class="choice"><input type="checkbox" data-tier="ipotesi"><i class="swatch" style="background:#d59bdb"></i>Relazioni candidate nello staging <span class="count" id="n-ipotesi"></span></label>
+  <label class="choice"><input type="checkbox" data-tier="sospeso"><i class="swatch" style="background:#e18d8d"></i>Attribuzioni in HOLD o contestate <span class="count" id="n-sospeso"></span></label>
+ </div>
+ <hr class="sep"><div class="controltitle">Entità visibili</div>
+ <label class="hint" for="quickFilter">Filtro rapido delle categorie</label>
+ <select id="quickFilter" aria-label="Filtro rapido per tipo di nodo" style="display:block;width:100%;margin:7px 0 10px;background:#0c2b39;color:#e4f0ee;border:1px solid #557580;border-radius:9px;padding:10px">
+  <option value="all">Tutte le categorie</option>
+  <option value="capitolo">Solo capitoli</option>
+  <option value="persona">Solo persone</option>
+  <option value="opera">Solo opere</option>
+  <option value="nodo-di-senso">Solo generi e forme</option>
+  <option value="strumento">Solo strumenti</option>
+  <option value="luogo">Solo luoghi</option>
+  <option value="altro">Solo altri nodi</option>
+  <option value="custom" disabled>Selezione personalizzata</option>
+ </select>
+ <div class="bottomtools" style="margin:8px 0 12px">
+  <button class="btn" type="button" id="soloGeneri">Solo generi e forme</button>
+  <button class="btn" type="button" id="soloOpere">Solo opere</button>
+  <button class="btn" type="button" id="tutteCategorie">Tutte le categorie</button>
+ </div>
+ <div class="hint" style="margin-bottom:7px">Un tocco su una categoria, quando sono tutte attive, la isola. Poi puoi aggiungere o togliere altre categorie con i pulsanti. Il nodo cercato resta sempre visibile anche quando appartiene a un tipo escluso. I generi si esplorano come nodi autonomi; la spunta delle didascalie, più in basso, cambia soltanto le etichette.</div>
+ <div class="pillgrid" id="types">
+  <button class="chip active" data-type="capitolo" aria-pressed="true">Capitoli</button>
+  <button class="chip active" data-type="persona" aria-pressed="true">Persone</button>
+  <button class="chip active" data-type="opera" aria-pressed="true">Opere e versioni</button>
+  <button class="chip active" data-type="nodo-di-senso" aria-pressed="true">Generi e forme</button>
+  <button class="chip active" data-type="luogo" aria-pressed="true">Luoghi</button>
+  <button class="chip active" data-type="strumento" aria-pressed="true">Strumenti</button>
+  <button class="chip active" data-type="altro" aria-pressed="true">Altri nodi</button>
+ </div>
+ <div class="audit-results" id="categoryResults" aria-live="polite">
+  <strong id="categoryResultsTitle">Nodi per categoria</strong>
+  <p class="note" id="categoryResultsHint">Seleziona un autore e usa «Solo generi e forme» o «Solo opere».</p>
+  <div class="audit-itemlist" id="categoryResultsList" aria-label="Risultati della categoria scelta"></div>
+ </div>
+ <hr class="sep"><div class="controltitle">Didascalie sulla mappa</div>
+ <label class="choice"><input id="labelFirst" type="checkbox" checked> Centro e I livello, quando sono in primo piano</label>
+ <div class="hint" style="margin:9px 0 6px">Mostra inoltre queste categorie (solo sul lato anteriore della nebulosa). I nodi intermedi necessari ai percorsi restano attenuati:</div>
+ <div class="pillgrid" id="labelsByType">
+  <button class="chip" data-label-type="capitolo" aria-pressed="false">Capitoli</button>
+  <button class="chip" data-label-type="persona" aria-pressed="false">Persone</button>
+  <button class="chip" data-label-type="opera" aria-pressed="false">Opere</button>
+  <button class="chip" data-label-type="nodo-di-senso" aria-pressed="false">Generi e forme</button>
+  <button class="chip" data-label-type="luogo" aria-pressed="false">Luoghi</button>
+  <button class="chip" data-label-type="strumento" aria-pressed="false">Strumenti</button>
+  <button class="chip" data-label-type="altro" aria-pressed="false">Altri nodi</button>
+ </div>
+ <div class="bottomtools"><button class="btn primary" id="resetBtn">↺ Reimposta vista</button><button class="btn" id="unfoldBtn">◎ Livello successivo</button></div>
+ <hr class="sep"><div class="controltitle">Esempi di esplorazione</div><div id="chapters" class="pillgrid"></div>
+ <hr class="sep"><p class="hint">Anteprima isolata basata sull’interfaccia Atlantis, <strong>NON produzione</strong>. Anche i riscontri specifici non sono una validazione canonica. Gli HOLD sono disattivati per impostazione iniziale.</p>
+</aside>
+<div id="exploreDock" aria-live="polite">
+ <div class="focusline"><span id="focusName"></span><button id="detailBtn" type="button">Scheda</button></div>
+ <div class="depthdock"><span>Rete · <span id="depthDockValue">I livello</span></span><button id="depthMinus" type="button" aria-label="Riduci i livelli">−</button><button id="depthPlus" type="button" aria-label="Aumenta i livelli">+</button></div>
+</div>
+<aside id="detail" aria-label="Scheda di approfondimento"><button class="detail-close" id="closeDetail" aria-label="Chiudi scheda">×</button><div id="detailContent"></div></aside>
+<div id="footer">Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo</div>
+<div id="toast" role="status"></div>
+<div id="error"><h2>La costellazione non si è aperta</h2><p id="errorMessage"></p><button class="btn" onclick="location.reload()">Riprova</button></div>
+<script src="../compat-graph.js?v=front-labels-0476965"></script>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const COLORS={capitolo:'#eec482',persona:'#b1a2ec','nodo-di-senso':'#71d5c5',opera:'#e9a092',luogo:'#83bceb',strumento:'#c5d885',altro:'#b8cbd0'};
+const TIER_COLORS={trattazione:'#80d8bc',menzione:'#88aedd',navigazione:'#d4bc82',ipotesi:'#ca95d7',sospeso:'#dd9292'};
+const TIER_LABEL={trattazione:'Riscontro specifico documentato (non canonico)',menzione:'Menzione o confronto',navigazione:'Provenienza Flaminio / rubrica',ipotesi:'Relazione candidata (staging)',sospeso:'Attribuzione o rapporto in HOLD'};
+const ALL_TYPES=new Set(['capitolo','persona','opera','nodo-di-senso','luogo','strumento','altro']);
+const workTypes=new Set(['opera','versione-opera','allestimento','produzione','parte-di-opera']);
+// On Android, mobile WebViews and touch-screen browsers, a WebGL context can exist but render black.
+// Use the local rotating 3D Canvas renderer by default on these devices; native 3D remains available on desktop.
+const preferCanvas=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||navigator.maxTouchPoints>0||(window.matchMedia&&window.matchMedia('(pointer:coarse)').matches)||new URLSearchParams(location.search).get('renderer')==='canvas';
+let DATA,graph,view='near',selectedId='fl49:jsbach:bwv140',selectedEdge=null,steps=1,types=new Set(ALL_TYPES),tiers=new Set(['trattazione','menzione','navigazione','ipotesi']),visible={nodes:[],links:[]},neighbors=new Map(),lookup=new Map();
+let toastTimeout;
+const textSafe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const idOf=x=>typeof x==='object'?x.id:x;
+const grp=n=>{
+ if(!n)return 'altro';
+ const c=String(n.category||'');
+ if(c==='capitolo'||c==='luogo'||c==='strumento')return c;
+ if(c==='persona'||c.startsWith('persona_'))return 'persona';
+ if(/genere|forma|concetto|tema_corale/.test(c))return 'nodo-di-senso';
+ if(workTypes.has(c)||/^(opera|raccolta|cantata|versione|parte_di|parte_documentaria|riferimento_a_opera|riferimento_opera|frammento|identita_opera)/.test(c))return 'opera';
+ return 'altro';
+};
+function tier(e){
+ // Staging audit only: quality_gate of production is NOT applicable.
+ const q=[e.status||'',e.quality_gate||'',e.relation||''].join(' ').toUpperCase();
+ if(/HOLD|SPURIA|SPURIO|DUBBIA|CONTESTAT|REJECTED|FALSA_EQUIVALENZA|RITIRATA/.test(q))return 'sospeso';
+ if(e.status==='PROVENANCE_ASSERTION_ONLY')return 'navigazione';
+ if(/^(WORK_SPECIFIC_|SOURCE_IDENTITY_CORROBORATED)/.test(String(e.status||''))||e.quality_gate==='SOURCE_AND_INDEPENDENT_CATALOGUE_CROSSCHECK')return 'trattazione';
+ return 'ipotesi'; // Qualsiasi altro legame è una proposta NON promossa.
+}
+function showToast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove('show'),3200)}
+function error(message){$('loading').style.display='none';$('errorMessage').textContent=message;$('error').style.display='block'}
+function edgesAccepted(){return DATA.links.filter(e=>tiers.has(e.tier)&&types.has(grp(lookup.get(e.source)))&&types.has(grp(lookup.get(e.target))))}
+function buildVisible(){
+ let links=edgesAccepted();
+ if(view==='chapters') links=links.filter(e=>e.source.startsWith('cap:')||e.target.startsWith('cap:'));
+ if(view==='near'){
+  if(!selectedId){view='chapters';syncTabs();showToast('Seleziona prima un nodo della mappa');return buildVisible();}
+  const reached=new Set([selectedId]);
+  for(let i=0;i<steps;i++){const frontier=new Set(reached);for(const e of links){if(frontier.has(e.source)||frontier.has(e.target)){reached.add(e.source);reached.add(e.target)}}}
+  links=links.filter(e=>reached.has(e.source)&&reached.has(e.target));
+ }
+ const ids=new Set(links.flatMap(e=>[e.source,e.target]));
+ if(types.has('capitolo')&&view==='chapters') for(const n of DATA.nodes)if(n.category==='capitolo')ids.add(n.id);
+ if(selectedId&&types.has(grp(lookup.get(selectedId))))ids.add(selectedId);
+ const nodes=DATA.nodes.filter(n=>ids.has(n.id));
+ return {nodes,links};
+}
+function update(){if(!DATA||!graph)return;const filtered=buildVisible();visible=filtered;
+ neighbors=new Map();for(const e of filtered.links){if(!neighbors.has(e.source))neighbors.set(e.source,[]);if(!neighbors.has(e.target))neighbors.set(e.target,[]);neighbors.get(e.source).push({id:e.target,e});neighbors.get(e.target).push({id:e.source,e});}
+ const clonedNodes=filtered.nodes.map(n=>({...n}));const clonedLinks=filtered.links.map(e=>({...e}));
+ graph.graphData({nodes:clonedNodes,links:clonedLinks});
+ $('visibleNodes').textContent=clonedNodes.length.toLocaleString('it-IT');$('visibleLinks').textContent=clonedLinks.length.toLocaleString('it-IT');
+ if(selectedId)renderNodeDetail(selectedId);
+}
+function syncTabs(){for(const b of document.querySelectorAll('[data-view]')){b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-pressed',String(b.dataset.view===view))}}
+function focusNode(id){const n=lookup.get(id);if(!n)return;selectedId=id;selectedEdge=null;
+ const matched=graph.graphData().nodes.find(x=>x.id===id);
+ if(!matched){view='near';steps=1;syncTabs();update();setTimeout(()=>flyTo(id),700)}else flyTo(id);
+ renderNodeDetail(id);if(innerWidth<=680){$('side').classList.remove('open');$('mobileFilters').setAttribute('aria-expanded','false')}
+}
+function flyTo(id){const n=graph.graphData().nodes.find(x=>x.id===id);if(!n)return;const dist=Math.hypot(n.x||0,n.y||0,n.z||0),ratio=1+135/(dist||150);graph.cameraPosition({x:(n.x||0)*ratio+((dist<10)?130:0),y:(n.y||0)*ratio+((dist<10)?75:0),z:(n.z||0)*ratio+((dist<10)?155:0)},n,850);graph.nodeColor(nodeColor);graph.linkColor(linkColor)}
+function nodeColor(n){const base=COLORS[grp(n)]||COLORS.altro;if(!selectedId)return base;if(n.id===selectedId)return '#fdf1c6';return neighbors.get(selectedId)?.some(x=>x.id===n.id)?base:'#354955'}
+function linkColor(e){if(selectedId&&(idOf(e.source)===selectedId||idOf(e.target)===selectedId))return '#f2d6a4';return TIER_COLORS[e.tier]||'#9fb3b4'}
+function colorClass(id){return COLORS[grp(lookup.get(id))]||'#b8cbd0'}
+function nodeDetailHeader(n){const ty=n.category==='capitolo'?'Capitolo e percorso':n.category==='persona'?'Persona':workTypes.has(n.category)?'Opera e redazioni':n.category==='luogo'?'Luogo':n.category==='nodo-di-senso'?'Concetto, genere o forma':n.category==='strumento'?'Strumento':n.category;
+ let html='<div class="detail-kind">'+textSafe(ty)+'</div><h2 class="detail-name">'+textSafe(n.name)+'</h2><div class="detail-tag">'+textSafe(n.historical_year||n.subtype||n.id)+'</div>';
+ if(n.version_kind)html+='<p class="detail-intro">Versione: '+textSafe(n.version_kind)+'</p>';
+ if(n.parent_work_id&&lookup.has(n.parent_work_id))html+='<p class="detail-intro">Opera di riferimento: '+textSafe(lookup.get(n.parent_work_id).name)+'</p>';
+ const sourceUrl=n.source_url_effective||n.source_url||n.url;if(sourceUrl&&/^https:\/\//.test(sourceUrl))html+='<p><a class="source-link" href="'+textSafe(sourceUrl)+'" target="_blank" rel="noopener noreferrer">Consulta la fonte ↗</a></p>';
+ return html;
+}
+function renderNodeDetail(id){const n=lookup.get(id);if(!n)return;let html=nodeDetailHeader(n);
+ const connections=(neighbors.get(id)||[]);const byType=new Map();for(const z of connections){const k=z.id;let v=byType.get(k);if(!v){byType.set(k,{id:k,count:0,tier:z.e.tier});v=byType.get(k)}v.count++;}
+ const xs=[...byType.values()].sort((a,b)=>{const ca=lookup.get(a.id)?.category==='capitolo'?0:1,cb=lookup.get(b.id)?.category==='capitolo'?0:1;return ca-cb||b.count-a.count||lookup.get(a.id).name.localeCompare(lookup.get(b.id).name,'it')});
+ html+='<hr class="sep"><div class="controltitle">Connessioni visibili · '+connections.length+'</div><div class="detail-list">';
+ if(xs.length===0)html+='<p class="detail-intro">Nessuna relazione visibile con i filtri attuali. Attiva altre categorie o le proposte nel pannello filtri.</p>';
+ for(const x of xs.slice(0,28)){const name=lookup.get(x.id)?.name||x.id;html+='<button class="connection" data-focus="'+textSafe(x.id)+'"><span style="color:'+colorClass(x.id)+'">●</span> '+textSafe(name)+'<small>'+textSafe(TIER_LABEL[x.tier])+(x.count>1?' · '+x.count+' relazioni':'')+'</small></button>'}
+ if(xs.length>28)html+='<div class="hint">Altre '+(xs.length-28)+' connessioni non elencate: usa la ricerca per raggiungerle.</div>';
+ html+='</div>';
+ $('detailContent').innerHTML=html;$('detail').classList.add('open');$('footer').classList.add('hidden');
+ document.querySelectorAll('[data-focus]').forEach(b=>b.addEventListener('click',()=>focusNode(b.dataset.focus)));
+}
+function renderEdgeDetail(e){selectedEdge=e;selectedId=null;const a=lookup.get(idOf(e.source)),b=lookup.get(idOf(e.target));if(!a||!b)return;
+ let html='<div class="detail-kind">'+textSafe(TIER_LABEL[e.tier])+'</div><h2 class="detail-name">'+textSafe(a.name)+'<span style="color:#80c5c1"> ↔ </span>'+textSafe(b.name)+'</h2><div class="detail-tag">'+textSafe(String(e.relation||'').replace(/_/g,' '))+' · '+textSafe(e.quality_gate||e.status||'STAGING_NON_CANONICO')+'</div>';
+ if(e.description)html+='<p class="detail-intro">'+textSafe(e.description)+'</p>';
+ html+='<p class="hint">Questa relazione non equivale necessariamente a un’influenza storica dimostrata.</p>';
+ const arr=(e.evidence_urls||[]).filter(url=>/^https:\/\//.test(url)).slice(0,5);
+ if(arr.length){html+='<hr class="sep"><div class="controltitle">Provenienza del collegamento</div>';arr.forEach((url,i)=>html+='<a class="source-link" href="'+textSafe(url)+'" rel="noopener noreferrer" target="_blank">Riferimento '+(i+1)+' ↗</a>')}
+ html+='<hr class="sep"><button class="connection" id="toSource">◎ '+textSafe(a.name)+'</button><button class="connection" id="toTarget">◎ '+textSafe(b.name)+'</button>';
+ $('detailContent').innerHTML=html;$('detail').classList.add('open');$('footer').classList.add('hidden');$('toSource').onclick=()=>focusNode(a.id);$('toTarget').onclick=()=>focusNode(b.id);graph.nodeColor(nodeColor);graph.linkColor(linkColor);
+}
+function searchResults(){const q=norm($('search').value.trim());const panel=$('suggestions');if(!q){panel.classList.remove('visible');panel.innerHTML='';return;}
+ const tokens=q.split(/\s+/).filter(Boolean);let matches=DATA.nodes.filter(n=>tokens.every(t=>norm(n.name).includes(t)||norm(n.id).includes(t)));
+ matches.sort((a,b)=>{
+  const priority=n=>n.category==='persona'||n.category==='persona_con_riscontro'?-100:n.category==='intestazione_autore_flaminio'?100:0;
+  return priority(a)-priority(b)
+   ||(norm(a.name).startsWith(q)?-10:0)-(norm(b.name).startsWith(q)?-10:0)
+   ||(a.category==='capitolo'?-1:1)-(b.category==='capitolo'?-1:1)
+   ||a.name.localeCompare(b.name,'it');
+ });
+ panel.innerHTML='';for(const n of matches.slice(0,14)){const btn=document.createElement('button');btn.className='suggestion';btn.type='button';btn.innerHTML='<span style="color:'+colorClass(n.id)+'">●</span><span>'+textSafe(n.name)+'<small>'+textSafe(n.category==='intestazione_autore_flaminio'?'Intestazione fonte Flaminio: aprirà il compositore':n.category)+'</small></span>';btn.onclick=()=>{$('search').value=n.name;panel.classList.remove('visible');focusNode(n.id)};panel.appendChild(btn)}
+ if(!matches.length)panel.innerHTML='<div class="hint" style="padding:12px">Nessun nodo corrispondente</div>';panel.classList.add('visible');
+}
+function setupUI(){
+ const counts={};for(const e of DATA.links)counts[e.tier]=(counts[e.tier]||0)+1;
+ for(const k of Object.keys(TIER_COLORS))$('n-'+k).textContent=counts[k]||0;
+ for(const b of document.querySelectorAll('[data-view]'))b.onclick=()=>{view=b.dataset.view;steps=1;syncTabs();update()};
+ for(const input of document.querySelectorAll('[data-tier]'))input.onchange=()=>{input.checked?tiers.add(input.dataset.tier):tiers.delete(input.dataset.tier);update()};
+ for(const b of document.querySelectorAll('[data-type]'))b.onclick=()=>{const t=b.dataset.type;types.has(t)?types.delete(t):types.add(t);b.classList.toggle('active',types.has(t));b.setAttribute('aria-pressed',String(types.has(t)));update()};
+ for(const n of DATA.nodes.filter(n=>n.category==='capitolo').sort((a,b)=>a.name.localeCompare(b.name,'it'))){const b=document.createElement('button');b.className='chip';b.textContent=n.name;b.onclick=()=>focusNode(n.id);$('chapters').appendChild(b)}
+ $('search').addEventListener('input',searchResults);
+ $('search').addEventListener('keydown',e=>{if(e.key==='Enter'){$('suggestions').querySelector('button')?.click();e.preventDefault()}if(e.key==='Escape')$('suggestions').classList.remove('visible')});
+ $('resetBtn').onclick=()=>{view='chapters';tiers=new Set(['trattazione','menzione']);types=new Set(ALL_TYPES);steps=1;selectedId=null;selectedEdge=null;for(const x of document.querySelectorAll('[data-tier]'))x.checked=tiers.has(x.dataset.tier);for(const b of document.querySelectorAll('[data-type]')){b.classList.add('active');b.setAttribute('aria-pressed','true')}syncTabs();$('detail').classList.remove('open');$('footer').classList.remove('hidden');$('search').value='';$('suggestions').classList.remove('visible');update();setTimeout(()=>graph.zoomToFit(700,110),450)};
+ $('unfoldBtn').onclick=()=>{if(!selectedId){showToast('Prima seleziona un nodo');return}steps=2;view='near';syncTabs();update()};
+ $('centerBtn').onclick=()=>graph.zoomToFit(800,90);
+ function changeZoom(factor){
+  if(!graph)return;
+  if(graph.isFallback&&typeof graph.zoom==='function'){graph.zoom(graph.zoom()*factor);return}
+  const camera=graph.cameraPosition();const n=selectedId?graph.graphData().nodes.find(x=>x.id===selectedId):null;
+  const target=n||{x:0,y:0,z:0};const q={x:target.x+(camera.x-target.x)/factor,y:target.y+(camera.y-target.y)/factor,z:target.z+(camera.z-target.z)/factor};
+  graph.cameraPosition(q,target,350);
+ }
+ $('zoomIn').onclick=()=>changeZoom(1.55);
+ $('zoomOut').onclick=()=>changeZoom(1/1.55);
+ $('closeDetail').onclick=()=>{selectedId=null;selectedEdge=null;$('detail').classList.remove('open');$('footer').classList.remove('hidden');graph.nodeColor(nodeColor);graph.linkColor(linkColor)};
+ $('mobileFilters').onclick=()=>{const yes=$('side').classList.toggle('open');$('mobileFilters').setAttribute('aria-expanded',String(yes));if(yes)$('detail').classList.remove('open')};
+}
+// Flaminio: overlay documentato inserito nell'unico grafo runtime di Atlantis.
+// La sorgente originale rimane intatta; NON importiamo righe incerte come fatti storici.
+async function mergeFlaminioVerified(data){
+ const url='./catalogo-flaminio/overlay-verificati-pilota.json';
+ const response=await fetch(url,{cache:'no-store'});
+ if(!response.ok)throw Error('Impossibile caricare il registro Flaminio ('+response.status+')');
+ const overlay=await response.json();
+ if(!Array.isArray(overlay.nodes)||!Array.isArray(overlay.links)||!Array.isArray(overlay.sources))throw Error('Formato overlay Flaminio non valido');
+ const originalNodes=data.nodes.length,originalLinks=data.links.length;
+ const ids=new Set(data.nodes.map(n=>n.id));
+ const knownByName=new Map();
+ for(const n of data.nodes)if(n.category==='persona'){const k=norm(n.name);if(!knownByName.has(k))knownByName.set(k,n.id)}
+ const alias=new Map();
+ for(const n of overlay.nodes){
+   if(n.category==='persona'&&knownByName.has(norm(n.name))){alias.set(n.id,knownByName.get(norm(n.name)));continue}
+   if(ids.has(n.id))throw Error('Collisione ID Flaminio: '+n.id);
+   if(!['persona','opera'].includes(n.category))throw Error('Categoria Flaminio non ammessa');
+   data.nodes.push({...n,source_collection:'Flaminio — attribuzione documentata',evidence_status:n.status});
+   ids.add(n.id);
+ }
+ const refs=new Map(overlay.sources.map(s=>[s.id,s.url]));
+ const edgeIds=new Set(data.links.map(e=>e.id));
+ for(const e of overlay.links){
+   const from=alias.get(e.source)||e.source,to=alias.get(e.target)||e.target;
+   if(!ids.has(from)||!ids.has(to))throw Error('Estremo Flaminio non risolto: '+e.id);
+   if(edgeIds.has(e.id))throw Error('Collisione relazione Flaminio: '+e.id);
+   const evidence=refs.get(e.source_ref);
+   data.links.push({...e,source:from,target:to,quality_gate:'relazione_specifica_riscontrata',tier:'trattazione',description:'Attribuzione documentata a livello di opera. La vecchia intestazione del catalogo Flaminio non è una relazione di paternità.',evidence_urls:evidence?[evidence]:[]});
+   edgeIds.add(e.id);
+ }
+ console.info('Atlantis: overlay Flaminio unificato nel grafo principale', {newNodes:data.nodes.length-originalNodes,newLinks:data.links.length-originalLinks});
+ return data;
+}
+async function init(){
+ // A compatibility renderer guarantees a visible 3D network even when the CDN is blocked.
+ const response=await fetch('./STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_GATE04_COPIA_2026-11-15.json',{cache:'no-store'});if(!response.ok)throw Error('Copia staging non disponibile ('+response.status+').');
+ DATA=await response.json();if(!Array.isArray(DATA.nodes)||!Array.isArray(DATA.links))throw Error('Il grafo non contiene nodi e relazioni validi.');
+ // Gate04B: la copia comprende le 500 schede Flaminio; non effettuare alcun merge.
+ lookup=new Map(DATA.nodes.map(n=>[n.id,n]));
+ const params=new URLSearchParams(location.search);
+ if(params.get('root')==='bach')selectedId='pers:bach';
+ if(params.get('category')==='genres')types=new Set(['nodo-di-senso']);
+ else if(params.get('category')==='works')types=new Set(['opera']);
+ else if(params.get('category')==='sources')types=new Set(['altro']);
+ for(const e of DATA.links){if(!lookup.has(e.source)||!lookup.has(e.target))throw Error('È presente un collegamento verso un nodo mancante: '+e.id);e.tier=tier(e)}
+ const webglOK=(()=>{try{const c=document.createElement('canvas');return !!(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return false}})();
+ const Engine=!preferCanvas&&typeof ForceGraph3D==='function'&&webglOK?ForceGraph3D:window.AtlantisCompatGraph;
+ if(typeof Engine!=='function')throw Error('Impossibile inizializzare anche la grafica di compatibilità.');
+ let mountPoint=null;
+ try { if(Engine===window.ForceGraph3D){mountPoint=document.createElement('div');mountPoint.style.cssText='position:absolute;inset:0;z-index:3';$('graph').appendChild(mountPoint)}
+ graph=Engine(mountPoint||$('graph'), {controlType:'orbit'})
+ .backgroundColor('#07141f').showNavInfo(false).nodeRelSize(4.5).nodeResolution(7)
+ .nodeVal(n=>n.category==='capitolo'?14:(grp(n)==='nodo-di-senso'?3.7:(grp(n)==='opera'?3:2.5)))
+ .nodeLabel(n=>textSafe(n.name)+'<br><span style="opacity:.75;font-size:10px">'+textSafe(n.category)+'</span>')
+ .nodeColor(nodeColor)
+ .linkColor(linkColor).linkOpacity(0.27).linkWidth(e=>(e.tier==='trattazione'?1.2:.75))
+ .linkDirectionalArrowLength(0)
+ .onNodeClick(n=>focusNode(n.id,true))
+ .onLinkClick(e=>renderEdgeDetail(e))
+ .onNodeHover(n=>document.body.style.cursor=n?'pointer':'default')
+ .onBackgroundClick(()=>{$('suggestions').classList.remove('visible')})
+ .width(innerWidth).height(innerHeight)
+ .warmupTicks(25).cooldownTicks(250);
+ }catch(e){console.warn('WebGL non disponibile, passo alla vista compatibile',e);mountPoint?.remove();graph=window.AtlantisCompatGraph($('graph'),{controlType:'orbit'}).nodeVal(n=>n.category==='capitolo'?14:2.8).nodeColor(nodeColor).linkColor(linkColor).linkOpacity(.3).onNodeClick(n=>focusNode(n.id,true)).onNodeHover(n=>document.body.style.cursor=n?'pointer':'default').onBackgroundClick(()=>$('suggestions').classList.remove('visible')).width(innerWidth).height(innerHeight)}
+ if(graph.d3Force('charge'))graph.d3Force('charge').strength(-95);
+ setupUI();syncTabs();
+ const presets=[['Cantata BWV 140','fl49:jsbach:bwv140'],['Cantata BWV 149','fl50:jsbach:bwv149'],['Amy Beach op. 35 n. 3','audit:fl01:bbb:work:excel4502'],['Bach','pers:bach'],['Cantata sacra','atlas:gf:cantata-sacra']];
+ for(const [label,id] of presets){if(!lookup.has(id))continue;const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=label;b.onclick=()=>focusNode(id,true);$('chapters').appendChild(b)}
+ update();$('graphBackdrop').style.display='none';$('loading').style.display='none';
+ $('footer').textContent=graph.isFallback?'Un dito: ruota · Due dita: zoom · Tocca un nodo':'Trascina per ruotare · scorri per zoom · tocca un nodo';
+ window.addEventListener('resize',()=>{graph.width(innerWidth).height(innerHeight)});
+ setTimeout(()=>graph.zoomToFit(1000,95),1700);
+}
+
+/* Atlantis Explorer v2: rooted breadth-first graph, independent node/label filters. */
+tiers=new Set(['trattazione','menzione','navigazione','ipotesi']);
+const atlasLabelTypes=new Set();let atlasFirstLabels=true,atlasSignature='';
+edgesAccepted=()=>DATA.links.filter(e=>tiers.has(e.tier));
+// A co-mention in a chapter, generic topic, place or instrument is not a
+// relationship between all the entities mentioned there. Only people and
+// concrete works can serve as intermediate bridges; and only named semantic
+// relations may be traversed beyond one hop.
+// Capitoli e rimandi al sito sono risorse editoriali: non nodi storico-musicali.
+function atlasIsEditorialNode(n){return !!n&&(n.category==='capitolo'||String(n.id||'').startsWith('cap:'))}
+function atlasIsHistoricalEdge(e){return !atlasIsEditorialNode(lookup.get(e.source))&&!atlasIsEditorialNode(lookup.get(e.target))}
+const atlasGenericRelations=new Set([
+ 'tratta_o_menziona','analizza_o_richiama','rimanda_a',
+ 'sviluppa_o_illumina','documenta_o_trasforma','condivide_un_nodo_di_senso',
+ 'si_svolge_anche_a','menziona_con_identita_separata','tratta_in_modo_specifico',
+ 'analizzata_in','tratta_nel_contesto_storico','tratta_la_collaborazione_coreografico_musicale',
+ 'concorre_alla_storia_di','accoglie_il_lavoro_di','tratta_in_contesto','si_colloca_nella_storia_di'
+]);
+function atlasMayBridge(n){return !!n&&grp(n)==='opera'} // Esclusi autore/genere come ponti
+function atlasIsSpecific(e){
+ if(e.tier==='sospeso'||e.tier==='navigazione')return false;
+ const a=lookup.get(e.source),b=lookup.get(e.target);
+ if(grp(a)!=='opera'||grp(b)!=='opera')return false;
+ const r=String(e.relation||'').toLowerCase();
+ // Espandere solo rapporti esplicitamente specifici fra due opere o redazioni.
+ return /trascriz|rielabor|riutilizz|versione|estratt|arrangi|movimento|variazion|contiene_|include_/.test(r)
+   && !/attribuzion|gener|documenta_|fonte|hold|spuri|contestat/.test(r);
+}
+buildVisible=function(){
+ // Protezione dagli stati UI preesistenti: un capitolo non diventa mai radice storica.
+ if(view==='near'&&atlasIsEditorialNode(lookup.get(selectedId))){view='chapters';syncTabs()}
+ if(view==='all'&&atlasIsEditorialNode(lookup.get(selectedId)))selectedId=null;
+ // Solo la prospettiva Capitoli mostra nodi/archi editoriali.
+ // Filtrare PRIMA di calcolare la distanza, anche per il livello I.
+ const accepted=edgesAccepted().filter(e=>view==='chapters'||atlasIsHistoricalEdge(e));
+ if(view==='near'&&selectedId&&lookup.has(selectedId)){
+  const distance=new Map([[selectedId,0]]);
+  const parents=new Map();
+  const parentLinks=new Map();
+  let frontier=new Set([selectedId]);
+  const tieScore=e=>({trattazione:4,ipotesi:3,menzione:2,navigazione:1,sospeso:0}[e.tier]||0);
+  for(let depth=1;depth<=steps;depth++){
+   const next=new Set();
+   const candidate=new Map();
+   for(const e of accepted){
+    if(depth>1&&!atlasIsSpecific(e))continue;
+    for(const [from,to] of [[e.source,e.target],[e.target,e.source]]){
+     if(!frontier.has(from)||distance.has(to))continue;
+     if(depth>1&&!atlasMayBridge(lookup.get(from)))continue;
+     // Chapter nodes are end points: they cannot be used to infer historical links.
+     if(depth>1&&lookup.get(to)?.category==='capitolo')continue;
+     const best=candidate.get(to);
+     if(!best||tieScore(e)>tieScore(best.edge))candidate.set(to,{from,edge:e});
+    }
+   }
+   for(const [id,choice] of candidate){
+    distance.set(id,depth);parents.set(id,choice.from);parentLinks.set(id,choice.edge);next.add(id);
+   }
+   frontier=next;if(!frontier.size)break;
+  }
+  // Category filtering is only a display choice. Include the minimal chain of
+  // muted intermediary nodes needed to keep paths to displayed entities intact.
+  const chosen=new Set([selectedId]);
+  for(const id of distance.keys()){
+   if(id===selectedId||!types.has(grp(lookup.get(id))))continue;
+   let current=id;
+   while(current&&!chosen.has(current)){chosen.add(current);current=parents.get(current)}
+  }
+  // Keep independently supported links when multiple Mozart branches converge.
+  // A chapter can never create new relationships between its mentioned entities.
+  const links=accepted.filter(e=>{
+   if(!chosen.has(e.source)||!chosen.has(e.target))return false;
+   if(e.source===selectedId||e.target===selectedId)return true;
+   if(lookup.get(e.source)?.category==='capitolo'||lookup.get(e.target)?.category==='capitolo')return false;
+   if(!atlasIsSpecific(e))return false;
+   const a=distance.get(e.source),b=distance.get(e.target);
+   return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<=1;
+  });
+  const incoming=new Map();
+  for(const e of links){
+   const a=distance.get(e.source),b=distance.get(e.target);
+   if(a===b)continue;
+   const farther=a>b?e.source:e.target,closer=a>b?e.target:e.source;
+   if(!incoming.has(farther))incoming.set(farther,new Set());
+   incoming.get(farther).add(closer);
+  }
+  const nodes=DATA.nodes.filter(n=>chosen.has(n.id)).map(n=>{
+   const shown=n.id===selectedId||types.has(grp(n));
+   const path=[];let current=n.id;
+   for(let i=0;current&&i<=steps;i++){path.unshift(current);current=parents.get(current)}
+   return {...n,_depth:distance.get(n.id)??-1,_focus:n.id===selectedId,
+    _bridge:!shown,
+    _convergences:incoming.get(n.id)?.size||0,
+    _path:path,
+    _label:shown&&(n.id===selectedId||(atlasFirstLabels&&distance.get(n.id)===1)||atlasLabelTypes.has(grp(n)))};
+  });
+  return {nodes,links};
+ }
+ const links=accepted.filter(e=>(view!=='chapters'||e.source.startsWith('cap:')||e.target.startsWith('cap:'))&&types.has(grp(lookup.get(e.source)))&&types.has(grp(lookup.get(e.target))));
+ const ids=new Set(links.flatMap(e=>[e.source,e.target]));
+ if(view==='chapters'&&types.has('capitolo'))for(const n of DATA.nodes)if(n.category==='capitolo')ids.add(n.id);
+ return {nodes:DATA.nodes.filter(n=>ids.has(n.id)).map(n=>({...n,_depth:-1,_focus:false,_bridge:false,_path:[],_label:atlasLabelTypes.has(grp(n))||(view==='chapters'&&n.category==='capitolo')})),links};
+};
+function atlasSync(){
+ const active=view==='near'&&!!selectedId;
+ $('levelSection').classList.toggle('open',active);$('exploreDock').classList.toggle('open',active);
+ $('exploreDock').classList.toggle('hidden',$('detail').classList.contains('open'));
+ $('levelRange').value=steps;$('levelValue').textContent=steps;
+ $('depthDockValue').textContent=steps===1?'I livello':steps+' livelli';
+ $('depthMinus').disabled=steps<=1;$('depthPlus').disabled=steps>=5;
+ if(active){$('focusName').textContent=lookup.get(selectedId)?.name||'';
+ $('levelCount').textContent=steps===1?'Collegamenti diretti: '+visible.nodes.filter(n=>n._depth===1).length+' nodi visibili':'Fino al '+steps+'° livello: '+visible.nodes.length+' nodi visibili'}
+}
+function atlasLabels(){
+ const layer=$('labelOverlay');layer.replaceChildren();
+ if(!graph||graph.isFallback||typeof graph.graph2ScreenCoords!=='function')return;
+ for(const n of graph.graphData().nodes.filter(n=>n._label).sort((a,b)=>a._depth-b._depth).slice(0,130)){
+  const el=document.createElement('span');el.className='map-label';el.textContent=n.name;el.dataset.nodeId=n.id;
+  el.style.borderColor=(COLORS[grp(n)]||'#b8cbd0')+'99';layer.appendChild(el);
+ }
+}
+function atlasLabelLoop(){
+ requestAnimationFrame(atlasLabelLoop);
+ if(!graph||graph.isFallback||typeof graph.graph2ScreenCoords!=='function')return;
+ const byId=new Map(graph.graphData().nodes.map(n=>[n.id,n]));
+ for(const el of $('labelOverlay').children){
+  const n=byId.get(el.dataset.nodeId);if(!n||!Number.isFinite(n.x)){el.style.display='none';continue}
+  const p=graph.graph2ScreenCoords(n.x,n.y,n.z),ok=!!p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=-150&&p.x<=innerWidth+150&&p.y>=-50&&p.y<=innerHeight+50;
+  el.style.display=ok?'block':'none';if(ok){el.style.left=p.x+'px';el.style.top=(p.y-11)+'px'}
+ }
+}
+const oldRenderNodeDetail=renderNodeDetail;
+renderNodeDetail=function(id){
+ oldRenderNodeDetail(id);
+ $('exploreDock').classList.add('hidden');
+ const n=visible.nodes.find(x=>x.id===id);
+ if(n&&n._depth>=2&&n._path?.length){
+  const names=n._path.map(k=>lookup.get(k)?.name||k);
+  const expl=document.createElement('div');
+  expl.className='detail-intro';
+  expl.style.cssText='padding:9px 10px;margin:9px 0 13px;background:#102f3b;border:1px solid #355968;border-radius:9px';
+  expl.innerHTML='<strong>Percorso indiretto ('+n._depth+' passaggi)</strong><div style="margin-top:5px">'+names.map(textSafe).join(' → ')+'</div><small>È un percorso fra entità del grafo, non la prova di un’influenza o di un rapporto diretto.</small>';
+  if(n._convergences>1){
+   const extra=document.createElement('p');
+   extra.style.cssText='margin:9px 0 0;color:#d5eddf;font-size:11px';
+   extra.textContent='Convergenza: '+n._convergences+' collegamenti specifici da nodi del livello precedente.';
+   expl.appendChild(extra);
+  }
+  $('detailContent').prepend(expl);
+ }
+};
+const oldRenderEdgeDetail=renderEdgeDetail;
+renderEdgeDetail=function(e){oldRenderEdgeDetail(e);$('exploreDock').classList.add('hidden')};
+update=function(){
+ if(!DATA||!graph)return;
+ const g=buildVisible();visible=g;neighbors=new Map();
+ for(const e of g.links){if(!neighbors.has(e.source))neighbors.set(e.source,[]);if(!neighbors.has(e.target))neighbors.set(e.target,[]);
+  neighbors.get(e.source).push({id:e.target,e});neighbors.get(e.target).push({id:e.source,e})}
+ const signature=view+'|'+selectedId+'|'+steps+'|types:'+Array.from(types).sort().join(',')+'|tiers:'+Array.from(tiers).sort().join(',')+'|'+g.nodes.map(n=>n.id).join(',')+'|'+g.links.map(e=>(e.id||e.source+'>'+e.target)+'/'+e.tier).join(',');
+ if(signature!==atlasSignature){
+  graph.graphData({nodes:g.nodes.map(n=>({...n})),links:g.links.map(e=>({...e}))});atlasSignature=signature;
+ }else{
+  const ids=new Map(g.nodes.map(n=>[n.id,n]));
+  for(const n of graph.graphData().nodes){const found=ids.get(n.id);if(found){n._label=found._label;n._depth=found._depth;n._focus=found._focus;n._bridge=found._bridge;n._convergences=found._convergences;n._path=found._path}}
+ }
+function renderCategoryResults(g){
+ const title=$('categoryResultsTitle'),hint=$('categoryResultsHint'),list=$('categoryResultsList');
+ if(!title||!hint||!list)return;
+ list.replaceChildren();
+ const name=lookup.get(selectedId)?.name||'nessuna radice';
+ if(types.size!==1){
+  const totals={};
+  for(const n of g.nodes){if(n.id===selectedId)continue;const k=grp(n);totals[k]=(totals[k]||0)+1;}
+  title.textContent='Categorie collegate a '+name;
+  hint.textContent='Opere '+(totals.opera||0)+' · Generi e forme '+(totals['nodo-di-senso']||0)+' · Fonti e altri '+(totals.altro||0)+'. Premi «Solo generi e forme» o «Solo opere» per l’elenco navigabile.';
+  return;
+ }
+ const type=Array.from(types)[0],labels={opera:'Opere e versioni','nodo-di-senso':'Generi e forme',persona:'Persone',altro:'Fonti e altri nodi',capitolo:'Capitoli',strumento:'Strumenti',luogo:'Luoghi'};
+ const nodes=g.nodes.filter(n=>n.id!==selectedId&&grp(n)===type).sort((a,b)=>a.name.localeCompare(b.name,'it'));
+ title.textContent=(labels[type]||type)+': '+nodes.length+' · '+name;
+ hint.textContent=nodes.length?'Tocca una voce per esplorarne i collegamenti. I candidati non sono automaticamente certificati.':'Nessun nodo di questa categoria direttamente collegato alla radice con i filtri di relazione attivi.';
+ for(const n of nodes){
+  const button=document.createElement('button');button.className='audit-item';button.type='button';
+  button.textContent=n.name;
+  if(/candidata|provvisorio|audit|dubbia/.test(n.category||'')){
+   const small=document.createElement('small');small.textContent='Record di staging · da validare';button.appendChild(small);
+  }
+  button.onclick=()=>focusNode(n.id,true);
+  list.appendChild(button);
+ }
+}
+ $('visibleNodes').textContent=g.nodes.length.toLocaleString('it-IT');$('visibleLinks').textContent=g.links.length.toLocaleString('it-IT');
+ atlasSync();atlasLabels();renderCategoryResults(g);
+ if(selectedId&&$('detail').classList.contains('open'))renderNodeDetail(selectedId);
+};
+function atlasDepth(v){
+ if(atlasIsEditorialNode(lookup.get(selectedId))){showToast('I capitoli sono risorse editoriali: scegli un autore o un’opera');return}
+ if(!selectedId){showToast('Seleziona prima un nodo');return}
+ view='near';steps=Math.max(1,Math.min(5,Math.round(Number(v)||1)));
+ syncTabs();update();
+ const reached=Math.max(0,...visible.nodes.map(n=>n._depth));
+ if(steps>reached&&steps>1){
+  steps=Math.max(1,reached);
+  update();
+  showToast('Nessun altro rapporto specifico documentato oltre questo livello');
+ }
+ graph.zoomToFit(500,80);
+}
+function canonicalPersonFromHeading(id){
+ const n=lookup.get(id);
+ if(n?.category!=='intestazione_autore_flaminio')return id;
+ const parts=String(n.name||'').split(',');
+ if(parts.length!==2)return id;
+ const fullName=norm(parts[1].trim()+' '+parts[0].trim());
+ const matches=DATA.nodes.filter(person=>
+   (person.category==='persona'||person.category==='persona_con_riscontro')&&norm(person.name)===fullName);
+ return matches.length===1?matches[0].id:id;
+}
+focusNode=function(id,showDetail=false){
+ if(!lookup.has(id))return;
+ const originalId=id;
+ id=canonicalPersonFromHeading(id);
+ if(id!==originalId){
+  $('search').value=lookup.get(id).name;
+  showToast('Intestazione Flaminio → compositore '+lookup.get(id).name+'. Le schede fonte restano separate.');
+ }
+ const editorial=atlasIsEditorialNode(lookup.get(id));
+ selectedId=id;selectedEdge=null;view=editorial?'chapters':'near';steps=1;
+ $('detail').classList.remove('open');$('footer').classList.remove('hidden');
+ syncTabs();update();graph.zoomToFit(600,80);
+ if(showDetail)renderNodeDetail(id);
+ if(innerWidth<=680){$('side').classList.remove('open');$('mobileFilters').setAttribute('aria-expanded','false')}
+ if(!graph.isFallback)setTimeout(()=>{if(selectedId===id&&view==='near')graph.zoomToFit(550,85)},700);
+};
+nodeColor=function(n){
+ const c=COLORS[grp(n)]||COLORS.altro;
+ if(n._bridge)return '#47616a';
+ return !selectedId?c:n.id===selectedId?'#fdf1c6':n._depth===1?c:'#69848c';
+};
+linkColor=function(e){
+ if(e.tier==='ipotesi'||e.tier==='sospeso')return TIER_COLORS[e.tier];
+ return selectedId&&(idOf(e.source)===selectedId||idOf(e.target)===selectedId)?'#f2d6a4':TIER_COLORS[e.tier]||'#9fb3b4';
+};
+const baseSetupUI=setupUI;
+setupUI=function(){
+ baseSetupUI();
+ for(const c of document.querySelectorAll('[data-tier]'))c.checked=tiers.has(c.dataset.tier);
+ for(const b of document.querySelectorAll('[data-view]'))b.onclick=()=>{
+  if(b.dataset.view==='near'&&(!selectedId||atlasIsEditorialNode(lookup.get(selectedId)))){showToast('Seleziona un nodo storico-musicale');return}
+  view=b.dataset.view;syncTabs();update();graph.zoomToFit(500,80);
+ };
+ for(const c of document.querySelectorAll('[data-tier]'))c.onchange=()=>{
+  c.checked?tiers.add(c.dataset.tier):tiers.delete(c.dataset.tier);update();graph.zoomToFit(500,80)
+ };
+ function syncTypeButtons(){
+  for(const b of document.querySelectorAll('[data-type]')){
+   const enabled=types.has(b.dataset.type);b.classList.toggle('active',enabled);b.setAttribute('aria-pressed',String(enabled));
+  }
+ }
+ function showTypes(next){
+  types=new Set(next);
+  atlasSignature=''; // Forza aggiornamento del renderer
+  $('quickFilter').value=types.size===ALL_TYPES.size?'all':types.size===1?Array.from(types)[0]:'custom';
+  syncTypeButtons();update();graph.zoomToFit(500,80);
+ }
+ syncTypeButtons();
+ $('quickFilter').value=types.size===ALL_TYPES.size?'all':types.size===1?Array.from(types)[0]:'custom';
+ $('quickFilter').onchange=e=>{
+  const choice=e.target.value;
+  if(choice==='custom')return;
+  showTypes(choice==='all'?ALL_TYPES:[choice]);
+ };
+ for(const b of document.querySelectorAll('[data-type]'))b.onclick=()=>{
+  const t=b.dataset.type;
+  if(types.size===ALL_TYPES.size){showTypes([t]);return}
+  const next=new Set(types);
+  if(next.has(t))next.delete(t);else next.add(t);
+  showTypes(next.size?next:ALL_TYPES);
+ };
+ $('soloGeneri').onclick=()=>showTypes(['nodo-di-senso']);
+ $('soloOpere').onclick=()=>showTypes(['opera']);
+ $('tutteCategorie').onclick=()=>showTypes(ALL_TYPES);
+ $('levelRange').oninput=e=>atlasDepth(e.target.value);
+ $('depthMinus').onclick=()=>atlasDepth(steps-1);
+ $('depthPlus').onclick=()=>atlasDepth(steps+1);
+ $('unfoldBtn').onclick=()=>atlasDepth(steps+1);
+ $('detailBtn').onclick=()=>{if(selectedId)renderNodeDetail(selectedId)};
+ $('labelFirst').onchange=e=>{atlasFirstLabels=e.target.checked;update()};
+ for(const b of document.querySelectorAll('[data-label-type]'))b.onclick=()=>{
+  const t=b.dataset.labelType;atlasLabelTypes.has(t)?atlasLabelTypes.delete(t):atlasLabelTypes.add(t);
+  b.classList.toggle('active',atlasLabelTypes.has(t));b.setAttribute('aria-pressed',String(atlasLabelTypes.has(t)));update()
+ };
+ $('resetBtn').onclick=()=>{
+  view='near';selectedId='fl49:jsbach:bwv140';selectedEdge=null;steps=1;atlasFirstLabels=true;atlasLabelTypes.clear();
+  tiers=new Set(['trattazione','menzione','navigazione','ipotesi']);types=new Set(ALL_TYPES);
+  for(const c of document.querySelectorAll('[data-tier]'))c.checked=tiers.has(c.dataset.tier);
+  for(const b of document.querySelectorAll('[data-type]')){b.classList.add('active');b.setAttribute('aria-pressed','true')}
+  for(const b of document.querySelectorAll('[data-label-type]')){b.classList.remove('active');b.setAttribute('aria-pressed','false')}
+  $('quickFilter').value='all';$('labelFirst').checked=true;$('detail').classList.remove('open');$('footer').classList.remove('hidden');$('search').value='';$('suggestions').classList.remove('visible');
+  syncTabs();update();graph.zoomToFit(600,85);
+ };
+ $('closeDetail').onclick=()=>{$('detail').classList.remove('open');$('footer').classList.remove('hidden');atlasSync();graph.nodeColor(nodeColor);graph.linkColor(linkColor)};
+ $('mobileFilters').onclick=()=>{
+  const yes=$('side').classList.toggle('open');$('mobileFilters').setAttribute('aria-expanded',String(yes));
+  if(yes){$('detail').classList.remove('open');atlasSync()}
+ };
+ requestAnimationFrame(atlasLabelLoop);
+};
+
+window.addEventListener('DOMContentLoaded',()=>init().catch(err=>{console.error(err);error(err.message||'Impossibile inizializzare la mappa.') }));
+const external=$('atlantis3DEngine');
+if(external) external.addEventListener('load',()=>{if(preferCanvas||typeof ForceGraph3D!=='function'||!graph?.isFallback||!DATA)return;
+let mountPoint=null; try {const oldGraph=graph;mountPoint=document.createElement('div');mountPoint.style.cssText='position:absolute;inset:0;z-index:3';$('graph').appendChild(mountPoint);const newGraph=ForceGraph3D(mountPoint,{controlType:'orbit'}).backgroundColor('#07141f').showNavInfo(false).nodeRelSize(4.5).nodeResolution(7)
+ .nodeVal(n=>n.category==='capitolo'?14:(grp(n)==='nodo-di-senso'?3.7:(grp(n)==='opera'?3:2.5))).nodeLabel(n=>textSafe(n.name)).nodeColor(nodeColor)
+ .linkColor(linkColor).linkOpacity(.27).linkWidth(e=>e.tier==='trattazione'?1.2:.75).onNodeClick(n=>focusNode(n.id,true)).onLinkClick(e=>renderEdgeDetail(e))
+ .onNodeHover(n=>document.body.style.cursor=n?'pointer':'default').onBackgroundClick(()=>$('suggestions').classList.remove('visible'))
+ .width(innerWidth).height(innerHeight).warmupTicks(25).cooldownTicks(250);if(newGraph.d3Force('charge'))newGraph.d3Force('charge').strength(-95);
+ graph=newGraph;atlasSignature='';oldGraph.destroy();update();$('footer').textContent='Trascina per ruotare · scorri per avvicinare · tocca un nodo per esplorarlo';setTimeout(()=>graph.zoomToFit(700,80),1200);
+} catch(e) {mountPoint?.remove();console.warn('Motore 3D non disponibile; vista compatibile conservata',e);if(graph?.isFallback){$('footer').textContent='Vista 3D semplificata · Trascina per ruotare · Tocca un nodo';}}}); 
+if(external&&!preferCanvas) external.src='https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.1/dist/3d-force-graph.min.js';
+})();
+</script>
+</body></html>
