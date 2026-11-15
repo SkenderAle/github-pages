@@ -89,18 +89,23 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
   <option value="capitolo">Solo capitoli</option>
   <option value="persona">Solo persone</option>
   <option value="opera">Solo opere</option>
-  <option value="nodo-di-senso">Solo generi e idee</option>
+  <option value="nodo-di-senso">Solo generi e forme</option>
   <option value="strumento">Solo strumenti</option>
   <option value="luogo">Solo luoghi</option>
   <option value="altro">Solo altri nodi</option>
   <option value="custom" disabled>Selezione personalizzata</option>
  </select>
- <div class="hint" style="margin-bottom:7px">Puoi anche combinare più categorie usando i pulsanti qui sotto. Il nodo cercato resta sempre visibile.</div>
+ <div class="bottomtools" style="margin:8px 0 12px">
+  <button class="btn" type="button" id="soloGeneri">Solo generi e forme</button>
+  <button class="btn" type="button" id="soloOpere">Solo opere</button>
+  <button class="btn" type="button" id="tutteCategorie">Tutte le categorie</button>
+ </div>
+ <div class="hint" style="margin-bottom:7px">Un tocco su una categoria, quando sono tutte attive, la isola. Poi puoi aggiungere o togliere altre categorie con i pulsanti. Il nodo cercato resta sempre visibile anche quando appartiene a un tipo escluso. I generi si esplorano come nodi autonomi; la spunta delle didascalie, più in basso, cambia soltanto le etichette.</div>
  <div class="pillgrid" id="types">
   <button class="chip active" data-type="capitolo" aria-pressed="true">Capitoli</button>
   <button class="chip active" data-type="persona" aria-pressed="true">Persone</button>
   <button class="chip active" data-type="opera" aria-pressed="true">Opere e versioni</button>
-  <button class="chip active" data-type="nodo-di-senso" aria-pressed="true">Generi e idee</button>
+  <button class="chip active" data-type="nodo-di-senso" aria-pressed="true">Generi e forme</button>
   <button class="chip active" data-type="luogo" aria-pressed="true">Luoghi</button>
   <button class="chip active" data-type="strumento" aria-pressed="true">Strumenti</button>
   <button class="chip active" data-type="altro" aria-pressed="true">Altri nodi</button>
@@ -112,7 +117,7 @@ header>*{pointer-events:auto}.identity{display:flex;align-items:center;gap:12px;
   <button class="chip" data-label-type="capitolo" aria-pressed="false">Capitoli</button>
   <button class="chip" data-label-type="persona" aria-pressed="false">Persone</button>
   <button class="chip" data-label-type="opera" aria-pressed="false">Opere</button>
-  <button class="chip" data-label-type="nodo-di-senso" aria-pressed="false">Generi e idee</button>
+  <button class="chip" data-label-type="nodo-di-senso" aria-pressed="false">Generi e forme</button>
   <button class="chip" data-label-type="luogo" aria-pressed="false">Luoghi</button>
   <button class="chip" data-label-type="strumento" aria-pressed="false">Strumenti</button>
   <button class="chip" data-label-type="altro" aria-pressed="false">Altri nodi</button>
@@ -152,7 +157,7 @@ const grp=n=>{
  if(c==='capitolo'||c==='luogo'||c==='strumento')return c;
  if(c==='persona'||c.startsWith('persona_'))return 'persona';
  if(/genere|forma|concetto|tema_corale/.test(c))return 'nodo-di-senso';
- if(workTypes.has(c)||/^(opera|raccolta|cantata|versione|parte_di|parte_documentaria|riferimento_a_opera|riferimento_opera|frammento)/.test(c))return 'opera';
+ if(workTypes.has(c)||/^(opera|raccolta|cantata|versione|parte_di|parte_documentaria|riferimento_a_opera|riferimento_opera|frammento|identita_opera)/.test(c))return 'opera';
  return 'altro';
 };
 function tier(e){
@@ -482,12 +487,12 @@ update=function(){
  const g=buildVisible();visible=g;neighbors=new Map();
  for(const e of g.links){if(!neighbors.has(e.source))neighbors.set(e.source,[]);if(!neighbors.has(e.target))neighbors.set(e.target,[]);
   neighbors.get(e.source).push({id:e.target,e});neighbors.get(e.target).push({id:e.source,e})}
- const signature=view+'|'+selectedId+'|'+steps+'|'+g.nodes.map(n=>n.id).join(',')+'|'+g.links.map(e=>(e.id||e.source+'>'+e.target)+'/'+e.tier).join(',');
+ const signature=view+'|'+selectedId+'|'+steps+'|types:'+Array.from(types).sort().join(',')+'|tiers:'+Array.from(tiers).sort().join(',')+'|'+g.nodes.map(n=>n.id).join(',')+'|'+g.links.map(e=>(e.id||e.source+'>'+e.target)+'/'+e.tier).join(',');
  if(signature!==atlasSignature){
   graph.graphData({nodes:g.nodes.map(n=>({...n})),links:g.links.map(e=>({...e}))});atlasSignature=signature;
  }else{
   const ids=new Map(g.nodes.map(n=>[n.id,n]));
-  for(const n of graph.graphData().nodes){const found=ids.get(n.id);if(found){n._label=found._label;n._depth=found._depth;n._focus=found._focus}}
+  for(const n of graph.graphData().nodes){const found=ids.get(n.id);if(found){n._label=found._label;n._depth=found._depth;n._focus=found._focus;n._bridge=found._bridge;n._convergences=found._convergences;n._path=found._path}}
  }
  $('visibleNodes').textContent=g.nodes.length.toLocaleString('it-IT');$('visibleLinks').textContent=g.links.length.toLocaleString('it-IT');
  atlasSync();atlasLabels();
@@ -538,19 +543,29 @@ setupUI=function(){
  };
  function syncTypeButtons(){
   for(const b of document.querySelectorAll('[data-type]')){
-   const enabled=types.has(b.dataset.type);b.classList.toggle('active',enabled);b.setAttribute('aria-pressed',String(enabled))
+   const enabled=types.has(b.dataset.type);b.classList.toggle('active',enabled);b.setAttribute('aria-pressed',String(enabled));
   }
+ }
+ function showTypes(next){
+  types=new Set(next);
+  $('quickFilter').value=types.size===ALL_TYPES.size?'all':types.size===1?Array.from(types)[0]:'custom';
+  syncTypeButtons();update();graph.zoomToFit(500,80);
  }
  $('quickFilter').onchange=e=>{
   const choice=e.target.value;
   if(choice==='custom')return;
-  types=choice==='all'?new Set(ALL_TYPES):new Set([choice]);
-  syncTypeButtons();update();graph.zoomToFit(500,80);
+  showTypes(choice==='all'?ALL_TYPES:[choice]);
  };
  for(const b of document.querySelectorAll('[data-type]'))b.onclick=()=>{
-  const t=b.dataset.type;types.has(t)?types.delete(t):types.add(t);
-  $('quickFilter').value='custom';syncTypeButtons();update();graph.zoomToFit(500,80)
+  const t=b.dataset.type;
+  if(types.size===ALL_TYPES.size){showTypes([t]);return}
+  const next=new Set(types);
+  if(next.has(t))next.delete(t);else next.add(t);
+  showTypes(next.size?next:ALL_TYPES);
  };
+ $('soloGeneri').onclick=()=>showTypes(['nodo-di-senso']);
+ $('soloOpere').onclick=()=>showTypes(['opera']);
+ $('tutteCategorie').onclick=()=>showTypes(ALL_TYPES);
  $('levelRange').oninput=e=>atlasDepth(e.target.value);
  $('depthMinus').onclick=()=>atlasDepth(steps-1);
  $('depthPlus').onclick=()=>atlasDepth(steps+1);
