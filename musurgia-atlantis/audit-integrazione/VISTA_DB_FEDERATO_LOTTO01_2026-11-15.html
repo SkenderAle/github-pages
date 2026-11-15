@@ -382,6 +382,7 @@ function graphInstance(){
  if(typeof g.onLinkClick==="function")g.onLinkClick(showEdge);
  if(typeof g.onLinkHover==="function")g.onLinkHover(displayEdgeHover);
  if(typeof g.linkLabel==="function")g.linkLabel(edgeTooltip);
+ if(typeof g.disableDoubleClickZoom==="function")g.disableDoubleClickZoom(true);
  return g
 }
 function draw(){
@@ -391,7 +392,7 @@ function draw(){
  state.parents=filtered.parents;state.distances=filtered.distance;
  const overview=!!filtered.overview;
  const nodes=filtered.nodes.map(n=>({...n,_focus:!overview&&n.id===state.root,_depth:filtered.distance.get(n.id)??0,
-   _label:!overview&&(state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))}));
+   _overview:overview,_label:!overview&&(state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))}));
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
  $("graphSummary").textContent=overview
