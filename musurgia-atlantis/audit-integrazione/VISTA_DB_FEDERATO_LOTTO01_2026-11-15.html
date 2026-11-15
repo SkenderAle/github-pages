@@ -501,8 +501,8 @@ function graphInstance(){
  if(typeof ResizeObserver==="function")new ResizeObserver(()=>{if(state.graph&&typeof state.graph.width==="function"){state.graph.width(Math.max(1,host.clientWidth));state.graph.height(Math.max(1,host.clientHeight));}}).observe(host);
  state.graph=g.backgroundColor("#07131e").nodeColor(n=>colors[n.category]||"#c9d5dd")
   .linkColor(e=>e.visibility==="documentary"?"#526773":"#558093")
-  .nodeVal(n=>n.id===state.root?8:n.id===state.focus?7:3)
-  .nodeLabel(n=>n.id===state.root||n.id===state.focus||state.labels.has(n.category)?n.name:"")
+  .nodeVal(n=>n.id===state.root?8:n.id===state.comparison?.to?7:n.id===state.focus?7:3)
+  .nodeLabel(n=>state.comparison||n.id===state.root||n.id===state.focus||state.labels.has(n.category)?n.name:"")
   .onNodeClick(n=>selectSubnode(n.id));
  if(typeof g.onLinkClick==="function")g.onLinkClick(showEdge);
  if(typeof g.onLinkHover==="function")g.onLinkHover(displayEdgeHover);
@@ -520,7 +520,7 @@ function draw(){
    const center=!overview&&n.id===(comparing?state.comparison.from:(state.focus||state.root));
    return {...n,_focus:center,_depth:filtered.distance.get(n.id)??0,
      ...(center?{fx:0,fy:0,fz:0}:{}),
-     _overview:overview,_label:!overview&&(comparing?(n.id===state.comparison.from||n.id===state.comparison.to):state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))};
+     _overview:overview,_label:!overview&&(comparing?true:state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))};
  });
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
