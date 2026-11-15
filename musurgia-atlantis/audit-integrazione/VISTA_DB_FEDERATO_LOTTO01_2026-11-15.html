@@ -579,8 +579,9 @@ function draw(){
    panel.append(make("p",visibleTitle(state.comparison.from)+" ↔ "+visibleTitle(state.comparison.to),"reason"));
    if(filtered.error)panel.append(make("p",filtered.error,"bad"));
    else {
-     panel.append(make("p","Rete pertinente: "+nodes.length+" nodi e "+links.length+
-       " archi, su percorsi fino a "+filtered.maxLength+" passaggi. Sono mostrate le relazioni, non soltanto i primi percorsi trovati.","meta"));
+     panel.append(make("p","Rete filtrata: "+nodes.length+" nodi e "+links.length+
+       " archi. Livelli per estremo: "+filtered.depthLimit+"; percorsi di massimo "+filtered.maxLength+
+       " passaggi. I tipi di nodo esclusi non sono usati neppure come intermedi.","meta"));
      const groups=Object.entries(filtered.categories||{}).filter(([,count])=>count>0);
      if(groups.length)panel.append(make("p","Categorie coinvolte: "+groups.map(([cat,count])=>categoryName(cat)+" "+count).join(" · "),"meta"));
      panel.append(make("h2","Alcuni percorsi di esempio — non esaustivi"));
