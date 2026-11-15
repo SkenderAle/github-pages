@@ -81,7 +81,11 @@ main.details-collapsed #detailsPanel{display:none}
 <div id="targetResults" class="scroller" aria-label="Risultati per il secondo lemma"></div>
 <p class="meta" id="connectionHint">Seleziona prima il lemma iniziale, poi un secondo nodo: mostrerò i percorsi attraverso gli archi esistenti.</p>
 <button id="clearConnection" type="button" disabled>Chiudi confronto</button>
-<fieldset><legend>Nodi visibili</legend><div class="chips" id="visibleCategories"></div></fieldset>
+<fieldset><legend>Nodi visibili</legend>
+<div style="display:flex;justify-content:flex-end;margin:0 0 7px">
+<button id="clearCategories" type="button" title="Deseleziona tutte le categorie dei nodi">Svuota tutto</button>
+</div>
+<div class="chips" id="visibleCategories"></div></fieldset>
 <fieldset><legend>Relazioni · lenti Mundi</legend><div class="chips" id="mundiLenses"></div>
 <p class="meta" id="lensStatus" role="status">Le lenti filtrano gli archi Mundi; gli archi Atlantis e Flaminio rimangono disponibili.</p></fieldset>
 <fieldset><legend>Etichette mostrate (indipendenti dai nodi)</legend><div class="chips" id="labelCategories"></div></fieldset>
@@ -782,6 +786,7 @@ toggleCosmicBackground(true);
 $("showAll").onclick=showNebula;
 $("depth").addEventListener("change",e=>{state.depth=Number(e.target.value);draw()});
 $("allCategories").onclick=()=>{state.cats=new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0]));refreshToggles();draw()};
+$("clearCategories").onclick=()=>{state.cats.clear();refreshToggles();draw()};
 
 try{
  const db=await loadFederatedDatabase();state.db=db;
