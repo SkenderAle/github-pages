@@ -67,6 +67,50 @@
       "kind": "tradizione",
       "rationale": "Stessa tradizione operettistica americana; gli archi originali restano distinti",
       "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION"
+    },
+    {
+      "mundi_id": "genere-opera",
+      "atlantis_id": "senso:opera",
+      "canonical_label": "Opera",
+      "kind": "genere",
+      "rationale": "La radice di genere del teatro operistico è la stessa; 'melodramma' è un sinonimo contestuale italiano, ma i capitoli/ambiti storici restano distinti.",
+      "source_urls": [
+        "https://www.treccani.it/enciclopedia/opera/"
+      ],
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION"
+    },
+    {
+      "mundi_id": "opera-comique",
+      "atlantis_id": "senso:opera-comique",
+      "canonical_label": "Opéra-comique",
+      "kind": "genere",
+      "rationale": "Medesimo genere francese storicamente caratterizzato da dialoghi parlati e numeri musicali; non è sinonimo dell'opera buffa italiana, né necessariamente comico.",
+      "source_urls": [
+        "https://www.opera-comique.com/en/opera-comique"
+      ],
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION"
+    },
+    {
+      "mundi_id": "tragedie-en-musique-francese",
+      "atlantis_id": "senso:tragedie-en-musique",
+      "canonical_label": "Tragédie en musique",
+      "kind": "genere",
+      "rationale": "Medesimo genere operistico francese barocco, anche detto tragédie lyrique; distinto da tutte le opere francesi e dal grand opéra.",
+      "source_urls": [
+        "https://mediatheque.philharmoniedeparis.fr/contexte-opera-classique.aspx?_lg=fr-FR"
+      ],
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION"
+    },
+    {
+      "mundi_id": "intermezzo-comico",
+      "atlantis_id": "senso:intermezzo",
+      "canonical_label": "Intermezzo comico",
+      "kind": "genere",
+      "rationale": "Medesimo concetto storico di intermezzo comico teatrale; non è un'opera integrale, né sinonimo della sua forma generica in ogni epoca.",
+      "source_urls": [
+        "https://www.treccani.it/enciclopedia/opera/"
+      ],
+      "status": "CURATED_STAGING_REVERSIBLE_NOT_EXTERNAL_IDENTITY_CERTIFICATION"
     }
   ],
   "flaminio_legacy_mundi": [
@@ -362,6 +406,78 @@
       ],
       "quality": "CURATED_STAGING_SOURCE_NOTES",
       "identity_merge": false
+    },
+    {
+      "id": "curated-opera01-singspiel",
+      "source": "atlantis::senso:opera",
+      "target": "atlantis::senso:singspiel",
+      "relation": "tipologia_operistica_con_dialoghi_parlati",
+      "rationale": "Il Singspiel appartiene alle tradizioni teatrali operistiche in lingua tedesca e comprende dialoghi parlati; non è identico all'opéra-comique.",
+      "source_urls": [
+        "https://www.eno.org/discover-opera/articles/beginners-guide-to-comic-opera/"
+      ],
+      "quality": "CURATED_STAGING_SOURCE_NOTES",
+      "identity_merge": false
+    },
+    {
+      "id": "curated-opera02-opera-ballet",
+      "source": "atlantis::senso:opera",
+      "target": "atlantis::senso:opera-ballet",
+      "relation": "articolazione_operistica_francese",
+      "rationale": "L'opéra-ballet è una specifica tradizione storico-teatrale francese, non una forma equivalente a tutta l'opera.",
+      "source_urls": [
+        "https://www.treccani.it/enciclopedia/opera/"
+      ],
+      "quality": "CURATED_STAGING_SOURCE_NOTES",
+      "identity_merge": false
+    },
+    {
+      "id": "curated-opera03-opera-bouffe",
+      "source": "atlantis::senso:opera",
+      "target": "atlantis::senso:opera-bouffe",
+      "relation": "intersezione_storica_opera_operetta_non_identita",
+      "rationale": "Opéra-bouffe ha collocazione storica tra opera comica e operetta francese; si collega senza identificare opera buffa, opéra-comique e operetta.",
+      "source_urls": [
+        "https://www.eno.org/discover-opera/articles/beginners-guide-to-comic-opera/"
+      ],
+      "quality": "CURATED_STAGING_SOURCE_NOTES",
+      "identity_merge": false
+    },
+    {
+      "id": "curated-opera04-rettungsoper",
+      "source": "atlantis::senso:opera",
+      "target": "atlantis::senso:opera-di-salvataggio",
+      "relation": "tipologia_drammaturgica_storica",
+      "rationale": "Opera di salvataggio è una tipologia tematica/dinamica drammatica, non equivalente a un'organizzazione musicale o a un genere operistico nazionale.",
+      "source_urls": [
+        "https://www.treccani.it/enciclopedia/opera/"
+      ],
+      "quality": "CURATED_STAGING_SOURCE_NOTES",
+      "identity_merge": false
+    },
+    {
+      "id": "curated-opera05-romantica",
+      "source": "atlantis::senso:opera",
+      "target": "atlantis::senso:opera-romantica",
+      "relation": "tradizione_operistica_romantica",
+      "rationale": "La tradizione operistica romantica è articolazione storico-stilistica, non un'opera individuale né identificabile interamente con la tradizione tedesca.",
+      "source_urls": [
+        "https://www.treccani.it/enciclopedia/opera/"
+      ],
+      "quality": "CURATED_STAGING_SOURCE_NOTES",
+      "identity_merge": false
+    },
+    {
+      "id": "curated-opera06-grand-opera",
+      "source": "mundi::grand-opera",
+      "target": "atlantis::senso:grand-opera-francese",
+      "relation": "stesso_nucleo_storico_editoriale_non_identita",
+      "rationale": "Mundi delimita il genere Grand opéra, Atlantis associa genere e istituzione parigina: relazioni tematiche, non fusione di due enti semantici di diversa ampiezza.",
+      "source_urls": [
+        "https://www.treccani.it/vocabolario/opera/"
+      ],
+      "quality": "CURATED_STAGING_SOURCE_NOTES",
+      "identity_merge": false
     }
   ],
   "excluded_or_pending": [
@@ -383,6 +499,45 @@
     {
       "atlantis_id": "opera:quattro-stagioni",
       "reason": "Quattro concerti RV 269, 315, 293, 297 ora distinti nello staging curato; ancora da verificare la riconciliazione con eventuali fonti catalografiche ulteriori"
+    },
+    {
+      "mundi_id": "melodramma",
+      "atlantis_id": "senso:opera",
+      "reason": "'Melodramma barocco' in Mundi è un ambito cronologico/editoriale, non una seconda radice canonica del genere Opera."
+    },
+    {
+      "mundi_id": "opera-lirica",
+      "atlantis_id": "senso:opera",
+      "reason": "'Opera lirica' in Mundi è ambito storico/editoriale (XIX-XX secolo) e deve restare distinta dal macrogenere."
+    },
+    {
+      "mundi_id": "grand-opera",
+      "atlantis_id": "senso:grand-opera-francese",
+      "reason": "Atlantis accorpa il genere alla dimensione istituzionale: ponte editoriale, non identità finché la componente istituzionale non sia modellata separatamente."
+    },
+    {
+      "mundi_id": "opera-romantica-tedesca",
+      "atlantis_id": "senso:opera-romantica",
+      "reason": "Tradizione specificamente tedesca versus romanticismo operistico in generale; collegare senza fondere."
+    },
+    {
+      "flaminio_id": "audit:fl01:genre:dramma-per-musica",
+      "mundi_id": "genere-opera",
+      "reason": "Denominazione storica con uso fortemente contestuale, talora relativa al libretto; registrare historical_designation, NON equivalenza automatica."
+    },
+    {
+      "flaminio_id": "audit:fl01:genre:dramma-comico-pastorale",
+      "mundi_id": "genere-opera",
+      "reason": "Denominazione testuale specifica; richiede ricognizione della fonte e dell'opera, non nuova classe generica."
+    },
+    {
+      "flaminio_id": "audit:fl01:genre:intermezzo",
+      "atlantis_id": "senso:intermezzo",
+      "reason": "L'etichetta 'Intermezzo' della scheda Flaminio può essere più ampia della classe specifica Intermezzo comico; candidato non fuso."
+    },
+    {
+      "atlantis_id": "senso:opera-bouffe",
+      "reason": "Connessa all'operetta e al teatro comico francese ma NON sinonimo di opera buffa italiana, né di tutta l'opéra-comique."
     }
   ],
   "safeguards": {

@@ -212,7 +212,7 @@ export function buildUnifiedDatabase(d){
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- if(identity.length!==162||taxonomyIdentity.length!==8||legacyReferences.length!==10||curatedMusicNodes.length!==4||semanticCurated.length!==18||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length||
+ if(identity.length!==162||taxonomyIdentity.length!==12||legacyReferences.length!==10||curatedMusicNodes.length!==4||semanticCurated.length!==24||counts.nodes!==expectedNodes||counts.links!==originalEdges+bridges.length+semanticCurated.length||
     counts.orphan_links||counts.duplicate_link_ids||counts.flaminio_source_records!==500||
     counts.unique_flaminio_source_records!==500||counts.flaminio_source_nodes!==500||counts.missing_source_rows){
    throw Error("Gate integrita' NON superato: "+JSON.stringify({counts,expectedNodes,orphans:orphans.slice(0,5),duplicateIDs:dupes.slice(0,5),missing:missing.slice(0,5)}));
