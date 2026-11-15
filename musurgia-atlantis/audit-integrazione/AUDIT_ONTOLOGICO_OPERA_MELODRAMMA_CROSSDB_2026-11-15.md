@@ -68,3 +68,6 @@ Il crosswalk curato passa da **8 a 12 identità tassonomiche** e da **18 a 24 ar
 6. Filtri indipendenti `Persone`, `Opere`, `Generi e forme` e relative etichette, profondità fino a 5; nessun HOLD nell'impostazione base, zero orfani e duplicati di archi. Verifica su browser/Android ancora necessaria.
 
 **Decisione:** proseguire la riconciliazione delle altre famiglie e delle singole opere **prima del Lotto 2**; nessuna promozione alla produzione in questo intervento.
+
+## Nota di precisione ontologica
+Nel registro aggiornato `intermezzo-comico` ↔ `senso:intermezzo` ha **kind=`forma`**, non `genere`. Il validatore accetta le fusioni di classe `forma` solo quando la tassonomia Mundi e il sottotipo Atlantis attestano entrambe la forma. Non mutano gli altri crosswalk e la cardinalità 12/24.

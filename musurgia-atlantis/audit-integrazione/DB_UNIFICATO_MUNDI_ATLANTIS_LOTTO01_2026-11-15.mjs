@@ -62,8 +62,9 @@ export function buildUnifiedDatabase(d){
  const taxonomyIdentity=[],legacyReferences=[],taxSeen=new Set();
  for(const x of curated.mundi_atlantis){
    const from=allM.get(x.mundi_id),to=atID.get(x.atlantis_id),tax=String(from?.taxonomy?.class||"").toLowerCase(),sub=String(to?.subtype||"").toLowerCase();
-   const compatible=x.kind==="genere"
-     ?from?.type==="corrente"&&/genere|forma|sottogenere/.test(tax)&&to?.category==="nodo-di-senso"&&/genere|forma/.test(sub)
+   const compatible=(x.kind==="genere"||x.kind==="forma")
+     ?from?.type==="corrente"&&to?.category==="nodo-di-senso"&&
+       (x.kind==="genere"?/genere|sottogenere/.test(tax)&&/genere/.test(sub):/forma/.test(tax)&&/forma/.test(sub))
      :x.kind==="tradizione"&&from?.type==="corrente"&&/tradizione/.test(tax)&&to?.category==="nodo-di-senso"&&/tradizione/.test(sub);
    if(!compatible||!x.canonical_label||taxSeen.has(x.mundi_id)||taxSeen.has(x.atlantis_id))throw Error("Crosswalk tassonomico non accettato: "+JSON.stringify(x));
    taxSeen.add(x.mundi_id);taxSeen.add(x.atlantis_id);
