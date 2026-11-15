@@ -59,3 +59,13 @@ La regressione strutturale 18/18 era relativa al modulo dati e alla sintassi del
 Corrette inoltre le proprietà necessarie al renderer Canvas di compatibilità: `_focus` per la radice, `_depth` per i livelli, `_label` per le etichette filtrate; introdotte dimensioni del canvas coerenti con il contenitore e ridimensionamento responsivo. Il contatore dei risultati usa ora `db.counts.nodes` anziché la precedente cifra federata di 2.983.
 
 **Verifica post-commit:** rilettura remota dell'HTML e 7 verifiche statiche sulle modifiche: PASS. **Non ancora eseguiti:** avvio reale del viewer in un browser con dati remoti, confronto visivo dei filtri su Android, verifica filologica indipendente di tutte le corrispondenze. I 18 test strutturali del modulo restano documentati nel file di regressione precedente, senza attribuire loro un collaudo browser. `musurgia-atlantis/grafo.json`, `atlante3d/database/grafo.json` e le pagine pubbliche non sono stati modificati. **Lotto02 Flaminio BLOCCATO.**
+
+## Addendum: navigazione radicata dei generi, 15 novembre 2026
+
+**Commit:** `1ee39b7608b47a7987d452721eb7ea700918a5b3`.
+
+È stata corretta la proiezione `projectForViewer`: con una radice appartenente a `generi_forme`, i sottogeneri intermedi possono ora espandersi sino alle opere già collegate da archi nel database. Partendo invece da una persona (ad esempio Bach), una forma ombrello non espande indiscriminatamente l'intero repertorio di altri compositori. I filtri di visibilità continuano ad applicarsi alla proiezione senza alterare dati o identità.
+
+**Prova isolata della funzione, eseguita su un grafo sintetico:** 3 verifiche funzionali PASS: (1) radice Concerto → sottogenere → opere; (2) radice autore senza espansione estranea dal genere; (3) filtro solo opere mantenendo la radice. Una quarta verifica conferma la conservazione dell'intestazione originale del modulo. I test sintetici non sono un certificato di completezza musicologica delle fonti effettive.
+
+**Contesto concorrente rilevato sul ramo main:** al momento dell'intervento risultavano già integrati il crosswalk curato di 8 tassonomie Mundi–Atlantis, 10 riferimenti legacy Flaminio, 4 opere RV 269/315/293/297 e 18 archi semantici. Non sono stati duplicati né alterati. Le metriche della precedente regressione 18/18 appartengono alla revisione precedente del modulo e non devono essere considerate un test runtime della revisione più recente. **Collaudo reale browser/Android ancora aperto. Lotto02 Flaminio BLOCCATO.**
