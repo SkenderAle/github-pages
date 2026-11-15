@@ -3,10 +3,10 @@
 (function(){'use strict';
 function makeGraph(host){
   const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Vista tridimensionale di compatibilità della costellazione');canvas.style.cssText='width:100%;height:100%;display:block;touch-action:none;cursor:grab';host.appendChild(canvas);
-  const ctx=canvas.getContext('2d',{alpha:false});
+  const ctx=canvas.getContext('2d',{alpha:true});
   let W=innerWidth,H=innerHeight,pxRatio=1,rotY=-0.42,rotX=0.17,zoom=1,shiftX=0,shiftY=0,selected=null,hovered=null,hoveredEdge=null,drag=null,active=true,last=0;
   let current={nodes:[],links:[]},points=[],linkObjects=[],projected=[],nodeColors=n=>'#8bd9ce',linkColors=e=>'#719ca8',onNode=()=>{},onNodeDblClick=()=>{},onLink=()=>{},onHover=()=>{},onLinkHover=()=>{},onBackground=()=>{},onDragEnd=()=>{},nodeSize=n=>3;
-  const options={linkOpacity:.3,disableDoubleClickZoom:false};
+  const options={linkOpacity:.3,disableDoubleClickZoom:false,cosmicBackground:false};
   const hashed=str=>{let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619);return h>>>0};
   const rnd=(str,k)=>((hashed(str+'-'+k)%100003)/100003);
   function layout(){
@@ -177,13 +177,18 @@ function makeGraph(host){
     requestAnimationFrame(frame);
     if(time-last<30)return;
     last=time;
-    ctx.fillStyle='#061522';ctx.fillRect(0,0,W,H);
-    const grd=ctx.createRadialGradient(W*.51,H*.53,20,W*.5,H*.5,Math.max(W,H)*.68);
-    grd.addColorStop(0,'#123648');grd.addColorStop(.55,'#071724');grd.addColorStop(1,'#020b14');
-    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
-    for(let i=0;i<125;i++){
-      const x=rnd('stars',i)*W,y=rnd('far',i)*H,r=.3+rnd('radius',i)*1.1;
-      ctx.fillStyle='rgba(197,220,236,'+(.10+rnd('alpha',i)*.3)+')';ctx.fillRect(x,y,r,r);
+    ctx.clearRect(0,0,W,H);
+    // Con fondale cosmico, il canvas resta trasparente e gli archi sono
+    // disegnati sopra il paesaggio. In modalità classica torna il cielo.
+    if(!options.cosmicBackground){
+      ctx.fillStyle='#061522';ctx.fillRect(0,0,W,H);
+      const grd=ctx.createRadialGradient(W*.51,H*.53,20,W*.5,H*.5,Math.max(W,H)*.68);
+      grd.addColorStop(0,'#123648');grd.addColorStop(.55,'#071724');grd.addColorStop(1,'#020b14');
+      ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+      for(let i=0;i<125;i++){
+        const x=rnd('stars',i)*W,y=rnd('far',i)*H,r=.3+rnd('radius',i)*1.1;
+        ctx.fillStyle='rgba(197,220,236,'+(.10+rnd('alpha',i)*.3)+')';ctx.fillRect(x,y,r,r);
+      }
     }
     projected=points.map(project);
     const map=new Map(projected.map(p=>[p.n.id,p]));
@@ -373,6 +378,7 @@ function makeGraph(host){
     d3Force(){return {strength(){return this}}},
     width(v){if(v===undefined)return W;W=v;resize();return api},height(v){if(v===undefined)return H;H=v;resize();return api},
     disableDoubleClickZoom(value){options.disableDoubleClickZoom=!!value;return api},
+    cosmicBackground(value){options.cosmicBackground=!!value;return api},
     onNodeClick(fn){onNode=fn;return api},onNodeDblClick(fn){onNodeDblClick=fn;return api},onNodeDragEnd(fn){onDragEnd=fn;return api},onLinkClick(fn){onLink=fn;return api},onNodeHover(fn){onHover=fn;return api},onLinkHover(fn){onLinkHover=fn;return api},onBackgroundClick(fn){onBackground=fn;return api},
     nodeColor(fn){if(fn===undefined)return nodeColors;nodeColors=fn;return api},linkColor(fn){if(fn===undefined)return linkColors;linkColors=fn;return api},nodeVal(fn){nodeSize=fn;return api},linkOpacity(n){options.linkOpacity=n;return api}
   };
