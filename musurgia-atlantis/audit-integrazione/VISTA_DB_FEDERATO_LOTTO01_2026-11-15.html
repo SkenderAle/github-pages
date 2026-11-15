@@ -54,6 +54,7 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 <input type="search" id="searchEntity" placeholder="Autore, opera, genere, ID…">
 <div id="entityResults" class="scroller" aria-label="Risultati della ricerca musicale"></div>
 <fieldset><legend>Nodi visibili</legend><div class="chips" id="visibleCategories"></div></fieldset>
+<fieldset><legend>Relazioni · lenti originali Mundi</legend><div class="chips" id="mundiLenses"></div></fieldset>
 <fieldset><legend>Etichette mostrate (indipendenti dai nodi)</legend><div class="chips" id="labelCategories"></div></fieldset>
 <div style="display:flex;gap:8px;align-items:center;margin:9px 0"><label for="depth">Livelli:</label><select id="depth"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><button id="allCategories">Tutte le categorie</button></div>
 <p class="footer">Le 500 schede bibliografiche Flaminio restano conservate nel database di staging, ma non vengono mostrate come nodi musicali autonomi. Seleziona un nodo per esplorare le relazioni motivate.</p>
@@ -82,11 +83,15 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set()};
+const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set()};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
+const lensChoices=[["musica","Storia e appartenenze"],["trasmissioni","Maestri, allievi e influenze"],["genealogie","Altri autori correlati"],["collaborazioni","Incontri e collaborazioni"]];
 function refreshToggles(){
+ const lensHost=$("mundiLenses");lensHost.replaceChildren();
+ for(const [id,name] of lensChoices){const label=make("label"),box=document.createElement("input");box.type="checkbox";box.checked=state.lenses.has(id);box.onchange=()=>{box.checked?state.lenses.add(id):state.lenses.delete(id);draw()};label.append(box,make("span",name));lensHost.append(label)}
+
  for(const [which,container] of [["cats","visibleCategories"],["labels","labelCategories"]]){
   const host=$(container);host.replaceChildren();
   for(const [value,label] of catList){if(value==="documentazione"&&which==="labels")continue;
@@ -121,6 +126,11 @@ function edgeReason(e){
  const relation=String(e.relation||"relazione da documentare").replace(/_/g," ");
  const note=orig.description||orig.rationale||orig.reason||orig.note||orig.motivation||"";
  const quality=e.quality&&e.quality!=="non_certificato"?" · "+e.quality:"";
+ if(e.collection==="lenti-originali"){
+   const verb=e.forward||orig.forward||"",reverse=e.reverse||orig.reverse||"";
+   const proof=(orig.sources||[]).length?" · "+orig.sources.length+" fonti documentate":"";
+   return (e.group||"lente storica")+" · "+relation+(verb?" — "+verb:"")+(reverse?" / inversa: "+reverse:"")+(note?" — "+String(note):"")+proof+quality;
+ }
  return relation+(note?" — "+String(note):" — Motivazione specifica non documentata nella sorgente")+quality;
 }
 function visibleTitle(id){return state.db.nodes.find(n=>n.id===id)?.name||id}
@@ -166,12 +176,15 @@ function showEdge(e){
  h.append(make("div",edgeReason(e),"reason"));
  const orig=e.original||{};
  const src=make("p","Fonte: "+(e.layer||"non specificata")+(e.collection?" · "+e.collection:""),"meta");h.append(src);
+ const sources=orig.sources||orig.evidence_urls||[];
+ for(const item of sources.slice(0,8)){const uri=typeof item==="string"?item:item?.url||item?.uri; if(typeof uri==="string"&&/^https:\/\//.test(uri)){const a=document.createElement("a");a.href=uri;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Fonte documentale";a.style.display="block";h.append(a)}}
  for(const id of [a,b]){const btn=make("button","Esplora "+visibleTitle(id),"edgeItem");btn.onclick=()=>selectRoot(id);h.append(btn)}
 }
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
- const edges=db.links.filter(e=>!isBlocked(e));
+ const lensGroupToUI={scuole:"musica",formazione:"trasmissioni",influenze:"trasmissioni",genealogie:"genealogie",collaborazioni:"collaborazioni"};
+ const edges=db.links.filter(e=>!isBlocked(e)&&(e.collection!=="lenti-originali"||state.lenses.has(lensGroupToUI[e.group]||"musica")));
  const adj=new Map();
  for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
  const distance=new Map([[state.root,0]]),parents=new Map(),queue=[state.root],selected=new Set([state.root]);
@@ -183,13 +196,21 @@ function rootedProjection(db){
  function canExpand(n,d){
    if(d===0)return true;
    if(isChapter(n)||n?.category==="documentazione")return false;
-   if(n?.category==="generi_forme"||n?.category==="concetti")return root?.category===n.category;
-   return n?.category==="persone"||n?.category==="opere"||n?.category==="reti_culturali";
+   // In Mundi generi, forme e correnti sono ponti storici realmente documentati.
+   // Il divieto assoluto oltre il livello I nascondeva i collegamenti originali.
+   if(n?.category==="generi_forme"||n?.category==="concetti")
+     return (n.provenance||[]).some(p=>p.layer==="mundi"||p.layer==="mundi_extension")||root?.category===n.category;
+   return n?.category==="persone"||n?.category==="opere"||n?.category==="reti_culturali"||n?.category==="istituzioni";
  }
  function pass(n,to,e,d){
    if(d===0)return true;
    if(generic.test(e.relation||""))return false;
+   // Le lenti documentate da Mundi non sono co-menzioni generiche.
+   if(e.collection==="lenti-originali")return true;
    if(isChapter(root)&&to.category==="persone"&&d>0)return false;
+   // Non trasformare un collegamento attraverso un periodo in una falsa
+   // appartenenza storica per autori molto posteriori.
+   if((root?.provenance||[]).some(p=>p.payload?.type==="periodo")&&to.category==="persone"&&d>0)return false;
    if(n.category==="persone"&&to.category==="opere")return authored.test(e.relation||"")||parts.test(e.relation||"");
    if(n.category==="opere"&&to.category==="persone")return authored.test(e.relation||"")||parts.test(e.relation||"");
    if(n.category==="opere"&&to.category==="opere")return parts.test(e.relation||"")||!/menziona|condivide|rimanda/i.test(e.relation||"");
