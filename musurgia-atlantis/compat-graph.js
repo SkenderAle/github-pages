@@ -131,11 +131,10 @@ function makeGraph(host){
     const n=p.n,root=!!n._focus,endpoint=!!n._compareEndpoint;
     // Nella nebulosa generale valgono le vecchie regole: nessuna
     // etichetta imposta e rispetto della profondità prospettica.
-    if(!n.name)return;
-    if(n._overview){
-      if(!n._label&&n.id!==hovered&&n.id!==selected)return;
-      if(frontness(p)<.68)return;
-    }
+    // La scelta delle etichette prevale su selezione, hover, numero nodi
+    // e categorie persone: nessuna categoria selezionata = zero nomi.
+    if(!n.name||!n._label)return;
+    if(n._overview&&frontness(p)<.68)return;
     const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
     const author=n.category==='persone';
     const size=root||endpoint?13:author?12:n._depth===1?11.5:11;
@@ -225,19 +224,14 @@ function makeGraph(host){
         ctx.restore();
       }
     }
-    // Priorità: estremi del confronto, centro, persone, altri nodi con
-    // etichette abilitate. Con pochi nodi, tutti i nomi entrano candidati.
-    // La verifica dei rettangoli evita le sovrapposizioni.
+    // I filtri delle etichette sono indipendenti dai filtri dei nodi.
+    // Fra le sole etichette autorizzate, priorità a estremi e autori;
+    // il controllo dei rettangoli evita sovrapposizioni.
     const occupied=[];
-    const overview=projected.some(p=>p.n._overview);
-    const smallGraph=!overview&&projected.length<=65;
     const priority=p=>p.n._compareEndpoint?100:p.n._focus?95:
-      !overview&&p.n.category==='persone'?85:p.n.id===hovered||p.n.id===selected?80:
-      p.n._label?55:p.n._depth===1?40:10;
+      p.n.category==='persone'?85:p.n._depth===1?55:40;
     const captions=projected
-      .filter(p=>p.x>=-12&&p.x<=W+12&&p.y>=40&&p.y<=H+12&&
-        (overview?(p.n._label||p.n._focus||p.n._compareEndpoint||p.n.id===hovered||p.n.id===selected):
-         (smallGraph||p.n._label||p.n._focus||p.n._compareEndpoint||p.n.category==='persone'||p.n.id===hovered||p.n.id===selected)))
+      .filter(p=>p.n._label&&p.x>=-12&&p.x<=W+12&&p.y>=40&&p.y<=H+12)
       .sort((a,b)=>priority(b)-priority(a)||a.z-b.z);
     for(const p of captions)drawCaption(p,p.r||4,occupied);
     if(!drag&&pointers.size===0){rotY+=.00037;rotX+=.000085;if(rotX>Math.PI)rotX-=2*Math.PI;}
