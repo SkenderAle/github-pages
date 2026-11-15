@@ -252,7 +252,7 @@ function draw(){
    b.onclick=()=>selectRoot(n.id);h.append(b);
  }
  if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
- try{const g=graphInstance().graphData({nodes,links});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
+ try{const g=graphInstance().graphData({nodes:nodes.map(n=>({...n})),links:links.map(e=>({...e}))});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
  displayEdgeHover(null);
  const root=state.db.nodes.find(n=>n.id===state.root);if(root)showNode(root);
 }
