@@ -329,7 +329,7 @@ export function buildUnifiedDatabase(d){
  const countWarnings=Object.entries(historicalCountWarnings).filter(([,mismatch])=>mismatch).map(([name])=>name);
  const failedChecks={
    archi_semantici_curati:semanticCurated.length===curated.semantic_edges.length,
-   sonata_raccordi_strutturali:sonataNodes.length===8&&sonataLinks.length===12,
+   sonata_raccordi_strutturali:sonataNodes.length===7&&sonataLinks.length===11,
    nodi_indicizzati:counts.nodes===byID.size,
    archi_totali:counts.links===expectedLinks,
    archi_orfani:counts.orphan_links===0,
