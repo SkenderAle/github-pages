@@ -417,8 +417,12 @@ function draw(){
  try{filtered=rootedProjection(state.db)}catch(e){status("Errore proiezione: "+e.message,true);return}
  state.parents=filtered.parents;state.distances=filtered.distance;
  const overview=!!filtered.overview;
- const nodes=filtered.nodes.map(n=>({...n,_focus:!overview&&n.id===(state.focus||state.root),_depth:filtered.distance.get(n.id)??0,
-   _overview:overview,_label:!overview&&(state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))}));
+ const nodes=filtered.nodes.map(n=>{
+   const center=!overview&&n.id===(state.focus||state.root);
+   return {...n,_focus:center,_depth:filtered.distance.get(n.id)??0,
+     ...(center?{fx:0,fy:0,fz:0}:{}),
+     _overview:overview,_label:!overview&&(state.labels.has(n.category)||(n.id===state.root)||(n.id===state.focus))};
+ });
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
  $("graphSummary").textContent=overview
