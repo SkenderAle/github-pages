@@ -1,0 +1,365 @@
+{
+  "schema": "musurgia-sonata-camera-operational-staging-v1",
+  "date": "2026-11-16",
+  "status": "STAGING_ONLY_CURATED_STRUCTURAL_RELATIONS_NOT_PRODUCTION",
+  "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json",
+  "principle": "Raccordi espliciti di famiglia e tipologia, non fusioni di singole opere. Identità Sonata Mundi–Atlantis già condivisa. Le opere Flaminio rimangono in audit.",
+  "nodes": [
+    {
+      "id": "tax20261115sc::family:strumento-solo",
+      "name": "Repertorio per strumento solo",
+      "kind": "repertorio",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
+    },
+    {
+      "id": "tax20261115sc::family:camera",
+      "name": "Musica da camera",
+      "kind": "repertorio",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
+    },
+    {
+      "id": "tax20261115sc::form:sonata-solo",
+      "name": "Sonata per strumento solo",
+      "kind": "tipologia",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
+    },
+    {
+      "id": "tax20261115sc::form:sonata-due",
+      "name": "Sonata per due strumenti",
+      "kind": "tipologia",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
+    },
+    {
+      "id": "tax20261115sc::form:sonata-tre",
+      "name": "Sonata a tre (trio sonata)",
+      "kind": "tipologia_storica",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
+    },
+    {
+      "id": "tax20261115sc::form:sonata-chiesa",
+      "name": "Sonata da chiesa",
+      "kind": "tipologia_storica",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
+    },
+    {
+      "id": "tax20261115sc::form:sonata-camera",
+      "name": "Sonata da camera",
+      "kind": "tipologia_storica",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
+    },
+    {
+      "id": "tax20261115sc::form:sonata-trio-organo",
+      "name": "Sonata in trio per organo solo",
+      "kind": "tipologia_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "source_overlay": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SONATA_MUSICA_CAMERA_2026-11-15.json"
+    }
+  ],
+  "edges": [
+    {
+      "id": "sc20261115:002",
+      "source": "mundi::genere-musica-da-camera",
+      "target": "tax20261115sc::family:camera",
+      "predicate": "represent_as_repertoire",
+      "rationale": "Musica da camera è famiglia repertoriale, non forma compositiva unica",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:003",
+      "source": "mundi::genere-sonata",
+      "target": "tax20261115sc::form:sonata-solo",
+      "predicate": "has_instrumentation_subtype",
+      "rationale": "Non confondere genere Sonata e destinazione per solo",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:004",
+      "source": "mundi::genere-sonata",
+      "target": "tax20261115sc::form:sonata-due",
+      "predicate": "has_instrumentation_subtype",
+      "rationale": "Sonata a due strumenti nel repertorio cameristico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:005",
+      "source": "mundi::genere-sonata",
+      "target": "tax20261115sc::form:sonata-tre",
+      "predicate": "has_historical_subtype",
+      "rationale": "Sonata a tre con due voci melodiche e continuo, non semplicemente tre esecutori",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:006",
+      "source": "mundi::genere-sonata",
+      "target": "tax20261115sc::form:sonata-chiesa",
+      "predicate": "historical_type",
+      "rationale": "Etichetta storica per funzione/organizzazione: non implica presenza di forma-sonata",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:007",
+      "source": "mundi::genere-sonata",
+      "target": "tax20261115sc::form:sonata-camera",
+      "predicate": "historical_type",
+      "rationale": "Etichetta storica non sinonima dell'intero repertorio cameristico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:008",
+      "source": "mundi::genere-sonata",
+      "target": "tax20261115sc::form:sonata-trio-organo",
+      "predicate": "has_instrumentation_subtype",
+      "rationale": "Trio per organo solo: tre voci ma un esecutore",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:009",
+      "source": "tax20261115sc::form:sonata-solo",
+      "target": "tax20261115sc::family:strumento-solo",
+      "predicate": "member_of_repertoire",
+      "rationale": "Solo strumentale",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:010",
+      "source": "tax20261115sc::form:sonata-due",
+      "target": "tax20261115sc::family:camera",
+      "predicate": "member_of_repertoire",
+      "rationale": "Due esecutori in repertorio cameristico (qualificare con organico effettivo)",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:011",
+      "source": "tax20261115sc::form:sonata-tre",
+      "target": "tax20261115sc::family:camera",
+      "predicate": "member_of_repertoire",
+      "rationale": "Sonata a tre storica con basso continuo",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:012",
+      "source": "tax20261115sc::form:sonata-trio-organo",
+      "target": "tax20261115sc::family:strumento-solo",
+      "predicate": "member_of_repertoire",
+      "rationale": "Organo solo, non trio cameristico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    },
+    {
+      "id": "sc20261115:014",
+      "source": "atlantis::senso:sonata-strumentale-1590",
+      "target": "mundi::genere-sonata",
+      "predicate": "historical_specialization_of",
+      "rationale": "Sonata strumentale tardocinquecentesca, non identità con ogni sonata",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rooted_expansion_only": true,
+      "evidence": "PREEXISTING_CROSSDB_AUDIT_2026-11-15"
+    }
+  ],
+  "excluded_or_pending": [
+    {
+      "id": "sc20261115:001",
+      "status": "HOLD_IDENTITY",
+      "predicate": "candidate_identity",
+      "source": "mundi::genere-musica-da-camera",
+      "target": "atlantis::senso:musica-camera",
+      "rationale": "Il nodo Atlantis associa musica da camera e sociabilità: mantenere le note storico-sociali, verificare ambito prima di canonizzare"
+    },
+    {
+      "id": "sc20261115:013",
+      "status": "DISTINCTION_VALIDATED",
+      "predicate": "distinct_from",
+      "source": "atlantis::senso:forma-sonata",
+      "target": "mundi::genere-sonata",
+      "rationale": "La forma-sonata può comparire in sinfonie, quartetti o concerti; non è sottotipo del genere Sonata"
+    },
+    {
+      "id": "sc20261115:015",
+      "status": "PROPOSED",
+      "predicate": "candidate_taxonomic_alignment",
+      "source": "flaminio::audit:fl01:jsb04:genre:sonata-camera",
+      "target": "tax20261115sc::form:sonata-camera",
+      "rationale": "Verificare dati storici della categoria Flaminio"
+    },
+    {
+      "id": "sc20261115:016",
+      "status": "PROPOSED",
+      "predicate": "candidate_taxonomic_alignment",
+      "source": "flaminio::audit:fl01:jsb06:genre:sonata-trio-organo",
+      "target": "tax20261115sc::form:sonata-trio-organo",
+      "rationale": "Sonate per organo solo BWV 525–530"
+    },
+    {
+      "id": "sc20261115:017",
+      "status": "PROPOSED",
+      "predicate": "candidate_taxonomic_alignment",
+      "source": "flaminio::audit:fl01:jsb04:genre:sonata-violino-clavicembalo",
+      "target": "tax20261115sc::form:sonata-due",
+      "rationale": "Bach sonate per violino e clavicembalo"
+    },
+    {
+      "id": "sc20261115:018",
+      "status": "PROPOSED",
+      "predicate": "candidate_taxonomic_alignment",
+      "source": "flaminio::audit:fl01:jsb04:genre:sonata-flauto",
+      "target": "tax20261115sc::form:sonata-due",
+      "rationale": "Distinguere clavicembalo obbligato dal basso continuo eventualmente suonato da più persone"
+    },
+    {
+      "id": "sc20261115:019",
+      "status": "PROPOSED",
+      "predicate": "candidate_taxonomic_alignment",
+      "source": "flaminio::audit:fl01:jsb04:genre:sonata-viola-da-gamba",
+      "target": "tax20261115sc::form:sonata-due",
+      "rationale": "Sonate per viola da gamba e clavicembalo"
+    },
+    {
+      "id": "sc20261115:020",
+      "status": "PROPOSED",
+      "predicate": "candidate_taxonomic_alignment",
+      "source": "flaminio::audit:fl01:jsb05:genre:sonata-violino-solo",
+      "target": "tax20261115sc::form:sonata-solo",
+      "rationale": "Tre sonate BWV 1001, 1003, 1005"
+    },
+    {
+      "id": "sc20261115:021",
+      "status": "PROPOSED",
+      "predicate": "candidate_taxonomic_alignment",
+      "source": "flaminio::audit:fl01:jsb06:genre:sonata-tastiera",
+      "target": "tax20261115sc::form:sonata-solo",
+      "rationale": "Tastiera sola"
+    },
+    {
+      "id": "sc20261115:022",
+      "status": "NO_SECOND_IDENTITY",
+      "predicate": "candidate_identity_role_alignment",
+      "source": "mundi::genere-quartetto-archi",
+      "target": "tax20261115sc::form:quartetto-archi",
+      "rationale": "L'identità canonica Mundi–Atlantis quartetto è già nel crosswalk; non duplicare come un nuovo genere"
+    },
+    {
+      "id": "sc20261115:023",
+      "status": "PROPOSED",
+      "predicate": "member_of_repertoire",
+      "source": "tax20261115sc::form:quartetto-archi",
+      "target": "tax20261115sc::family:camera",
+      "rationale": "Quartetto d'archi = genere/organico cameristico"
+    },
+    {
+      "id": "sc20261115:024",
+      "status": "PROPOSED",
+      "predicate": "member_of_repertoire",
+      "source": "tax20261115sc::form:trio-camera",
+      "target": "tax20261115sc::family:camera",
+      "rationale": "Famiglia d'organico: non classificare automaticamente ogni brano contenente il termine"
+    },
+    {
+      "id": "sc20261115:025",
+      "status": "PROPOSED",
+      "predicate": "member_of_repertoire",
+      "source": "tax20261115sc::form:quintetto-camera",
+      "target": "tax20261115sc::family:camera",
+      "rationale": "Famiglia d'organico: non classificare automaticamente ogni brano contenente il termine"
+    },
+    {
+      "id": "sc20261115:026",
+      "status": "PROPOSED",
+      "predicate": "member_of_repertoire",
+      "source": "tax20261115sc::form:sestetto-camera",
+      "target": "tax20261115sc::family:camera",
+      "rationale": "Famiglia d'organico: non classificare automaticamente ogni brano contenente il termine"
+    },
+    {
+      "id": "sc20261115:027",
+      "status": "PROPOSED",
+      "predicate": "member_of_repertoire",
+      "source": "tax20261115sc::form:settimino-camera",
+      "target": "tax20261115sc::family:camera",
+      "rationale": "Famiglia d'organico: non classificare automaticamente ogni brano contenente il termine"
+    },
+    {
+      "id": "sc20261115:028",
+      "status": "PROPOSED",
+      "predicate": "member_of_repertoire",
+      "source": "tax20261115sc::form:ottetto-camera",
+      "target": "tax20261115sc::family:camera",
+      "rationale": "Famiglia d'organico: non classificare automaticamente ogni brano contenente il termine"
+    },
+    {
+      "id": "sc20261115:029",
+      "status": "PROPOSED",
+      "predicate": "member_of_repertoire",
+      "source": "tax20261115sc::form:nonetto-camera",
+      "target": "tax20261115sc::family:camera",
+      "rationale": "Famiglia d'organico: non classificare automaticamente ogni brano contenente il termine"
+    },
+    {
+      "id": "sc20261115:030",
+      "status": "PROPOSED",
+      "predicate": "collection_contains_works_of_form",
+      "source": "atlantis::opera:sonate-beethoven-op2-1796",
+      "target": "tax20261115sc::form:sonata-solo",
+      "rationale": "Raccolta di tre sonate per pianoforte: non una singola sonata"
+    },
+    {
+      "id": "sc20261115:031",
+      "status": "PROPOSED",
+      "predicate": "work_has_form",
+      "source": "atlantis::opera:quartetto-op130",
+      "target": "tax20261115sc::form:quartetto-archi",
+      "rationale": "Quartetto op.130; Grosse Fuge op.133 mantiene lo status filologico di finale originario"
+    },
+    {
+      "id": "sc20261115:032",
+      "status": "PROPOSED",
+      "predicate": "work_has_form",
+      "source": "atlantis::opera:schubert-quartetto-d810",
+      "target": "tax20261115sc::form:quartetto-archi",
+      "rationale": "Quartetto D810"
+    },
+    {
+      "id": "sc20261115:033",
+      "status": "PROPOSED",
+      "predicate": "collection_contains_works_of_form",
+      "source": "atlantis::opera:sei-quartetti-haydn-mozart-1785",
+      "target": "tax20261115sc::form:quartetto-archi",
+      "rationale": "Raccolta di sei quartetti; singole opere da distinguere"
+    },
+    {
+      "id": "sc20261115:034",
+      "status": "PROPOSED",
+      "predicate": "work_has_historical_form",
+      "source": "atlantis::opera:sonata-pian-e-forte-1597",
+      "target": "atlantis::senso:sonata-strumentale-1590",
+      "rationale": "Sonata strumentale primo periodo; non presumere forma-sonata classica"
+    }
+  ]
+}
