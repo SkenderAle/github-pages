@@ -75,10 +75,20 @@ function makeGraph(host){
         const latitude=1-2*(i+.5)/N;
         const ring=Math.sqrt(Math.max(0,1-latitude*latitude));
         const phi=golden*i;
-        const radial=160+Math.cbrt((i+.5)/N)*215+(rnd(n.id,6)-.5)*60;
-        n.x=radial*ring*Math.cos(phi);
-        n.y=radial*latitude*.84;
-        n.z=radial*ring*Math.sin(phi);
+        // Circa il 7% dei nodi è distribuito in una corona esterna
+        // irregolare; un piccolo gruppo si allontana ancora di più.
+        // Nessun nodo/legame è aggiunto o cancellato.
+        const scatter=rnd(n.id,22);
+        const halo=!n._featuredOverview&&scatter<.07;
+        const distant=halo&&scatter<.014;
+        const radial=halo
+          ?(distant?790+rnd(n.id,23)*380:425+rnd(n.id,24)*350)
+          :160+Math.cbrt((i+.5)/N)*215+(rnd(n.id,6)-.5)*60;
+        const offset=halo?(rnd(n.id,25)-.5)*.36:0;
+        n.x=radial*ring*Math.cos(phi+offset);
+        n.y=radial*latitude*(halo?1:.84);
+        n.z=radial*ring*Math.sin(phi+offset);
+        n._haloStar=halo;
       }
       rotY=-.42;rotX=.17;shiftX=0;shiftY=0;
     }else{
@@ -410,8 +420,13 @@ function makeGraph(host){
       const focus=points.find(n=>n._focus);
       if(!focus){
         if(points.some(n=>n._overview)){
-          const p=points.map(project),dx=Math.max(35,...p.map(q=>Math.abs(q.x-W/2))),dy=Math.max(35,...p.map(q=>Math.abs(q.y-H/2)));
-          zoom=Math.max(.18,Math.min(1.2,(W-75)/(dx*2),(H-145)/(dy*2)));
+          // Calibrare sul corpo della nebulosa, non sui pochi punti lontani:
+          // gli outlier possono uscire dal quadro senza rimpicciolire il nucleo.
+          const core=points.filter(n=>!n._haloStar);
+          const p=(core.length?core:points).map(project);
+          const dx=Math.max(35,...p.map(q=>Math.abs(q.x-W/2)));
+          const dy=Math.max(35,...p.map(q=>Math.abs(q.y-H/2)));
+          zoom=Math.max(.18,Math.min(1.2,(W-110)/(dx*2),(H-170)/(dy*2)));
         }else zoom=.95;
         return api;
       }
