@@ -71,3 +71,13 @@ Il crosswalk curato passa da **8 a 12 identità tassonomiche** e da **18 a 24 ar
 
 ## Nota di precisione ontologica
 Nel registro aggiornato `intermezzo-comico` ↔ `senso:intermezzo` ha **kind=`forma`**, non `genere`. Il validatore accetta le fusioni di classe `forma` solo quando la tassonomia Mundi e il sottotipo Atlantis attestano entrambe la forma. Non mutano gli altri crosswalk e la cardinalità 12/24.
+
+
+## Addendum di verifica: *Il flauto magico* e Singspiel
+La sorgente pubblica `musurgia-atlantis/grafo.json` (SHA `4863b3fe263154387de3388c0b813b5f94546f12`) conserva **`opera:flauto-magico`** e **`senso:singspiel`**, ma non ha alcun arco diretto tra essi. La partitura è già collegata a Mozart da `compone_la_musica_di` e a Schikaneder da `scrive_libretto_di`; Atlantis conserva inoltre archi dai capitoli alle due voci. Nessuno di essi sostituisce la classificazione tassonomica esplicita.
+
+**Rimedio applicato nello staging unificato:** `atlantis::opera:flauto-magico` → `atlantis::senso:singspiel`, relazione `appartiene_al_genere_singspiel`, ID `curated-opera07-zauberflote-singspiel`; `identity_merge: false`. Fonte primaria: [catalogo Köchel della Internationale Stiftung Mozarteum, KV 620](https://kv.mozarteum.at/de/work/die-zauberflote-7137), che classifica *Die Zauberflöte* come «Singspiel („Große Oper“) in 2 Aufzügen», e [catalogo dei libretti](https://dme.mozarteum.at/DME/libretti-catalog/liste.php?r=192&t=2). Si aggiunge **un solo arco**, non un'opera artificiale né un'identità fusa.
+
+**Integrità statica:** ID presenti nel JSON di produzione, relazione curata non duplicata, cardinalità archi curati da 24 a 25, gate JavaScript coerentemente aggiornato. I grafi pubblici `musurgia-atlantis/grafo.json` e `atlante3d/database/grafo.json` rimangono invariati. Perciò il **viewer pubblico non mostra ancora necessariamente questo arco**; lo deve caricare la vista federata sperimentale. Il collaudo effettivo del renderer resta aperto.
+
+**Ulteriore questione:** nel JSON pubblico esaminato non è presente come opera distinta *Die Entführung aus dem Serail*. Non introdurre un'opera dal solo titolo: richiede la sua consueta verifica e ammissione catalografica prima di aggiungere la relazione `appartiene_al_genere_singspiel`.
