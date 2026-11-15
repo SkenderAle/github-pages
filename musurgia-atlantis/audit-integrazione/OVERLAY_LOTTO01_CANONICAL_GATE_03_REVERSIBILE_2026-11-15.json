@@ -1,0 +1,188 @@
+{
+  "schema": "musurgia-atlantis-gate03-reversible-metadata-and-crosswalk-v1",
+  "date": "2026-11-15",
+  "base_commit": "5d7022844f5814331c16e596e6957a081a73628f",
+  "base_staging_file": "STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_2026-11-14.json",
+  "base_staging_blob_sha": "a8d0bbee9806925ca5750cc3990b4cbde1c44a0f",
+  "base_production_blob_sha": "4863b3fe263154387de3388c0b813b5f94546f12",
+  "status": "REVERSIBLE_OVERLAY_ONLY_NO_GRAPH_EDITS",
+  "apply_policy": {
+    "staging_copy_only": true,
+    "preserve_all_source_rows": true,
+    "production_merge_never_automatic": true,
+    "no_transitive_author_genre_work_relations": true,
+    "identity_crosswalk_is_not_edge": true,
+    "no_new_work_nodes": true,
+    "no_new_graph_links": true,
+    "require_preconditions": true,
+    "rollback_supported": true
+  },
+  "metadata_patches": [
+    {
+      "id": "gate03:patch:1",
+      "operation": "REPLACE_STAGING_WORK_DISPLAY_NAME",
+      "target": "fl49:jsbach:bwv140",
+      "source_id": "flaminio:excel:3050",
+      "excel_row": 3050,
+      "field": "name",
+      "old_value": "Wachet auf, ruft und die Stimme · BWV 140",
+      "new_value": "Wachet auf, ruft uns die Stimme · BWV 140",
+      "evidence_urls": [
+        "https://www.bachvereniging.nl/en/bwv/bwv-140"
+      ],
+      "rollback": {
+        "target": "fl49:jsbach:bwv140",
+        "field": "name",
+        "old_value": "Wachet auf, ruft uns die Stimme · BWV 140",
+        "new_value": "Wachet auf, ruft und die Stimme · BWV 140"
+      },
+      "raw_source_immutable": true,
+      "quality_gate": "DOCUMENTED_NOT_CANONICAL_APPROVED"
+    },
+    {
+      "id": "gate03:patch:2",
+      "operation": "REPLACE_STAGING_WORK_DISPLAY_NAME",
+      "target": "fl50:jsbach:bwv149",
+      "source_id": "flaminio:excel:3001",
+      "excel_row": 3001,
+      "field": "name",
+      "old_value": "Man singet mir Freuden vom Sieg · BWV 149",
+      "new_value": "Man singet mit Freuden vom Sieg · BWV 149",
+      "evidence_urls": [
+        "https://bachipedia.org/en/werke/bwv-149-man-singet-mit-freuden-vom-sieg-2/"
+      ],
+      "rollback": {
+        "target": "fl50:jsbach:bwv149",
+        "field": "name",
+        "old_value": "Man singet mit Freuden vom Sieg · BWV 149",
+        "new_value": "Man singet mir Freuden vom Sieg · BWV 149"
+      },
+      "raw_source_immutable": true,
+      "quality_gate": "DOCUMENTED_NOT_CANONICAL_APPROVED"
+    },
+    {
+      "id": "gate03:patch:3",
+      "operation": "REPLACE_STAGING_WORK_DISPLAY_NAME",
+      "target": "audit:fl01:bbb:work:excel4502",
+      "source_id": "flaminio:excel:4502",
+      "excel_row": 4502,
+      "field": "name",
+      "old_value": "With The",
+      "new_value": "With Thee (Nähe des Geliebten)",
+      "evidence_urls": [
+        "https://imslp.org/wiki/4_Songs%2C_Op.35_%28Beach%2C_Amy_Marcy%29"
+      ],
+      "rollback": {
+        "target": "audit:fl01:bbb:work:excel4502",
+        "field": "name",
+        "old_value": "With Thee (Nähe des Geliebten)",
+        "new_value": "With The"
+      },
+      "raw_source_immutable": true,
+      "quality_gate": "DOCUMENTED_NOT_CANONICAL_APPROVED"
+    }
+  ],
+  "already_correct_in_V11_assertions": [
+    {
+      "id": "wq43",
+      "target": "audit:fl01:alf-cpe:collection:cpe:wq43",
+      "field": "name",
+      "expected": "Sei concerti per il cembalo concertato, Wq 43",
+      "evidence_url": "https://cpebach.org/pdfs/introductions/III-8-Intro.pdf",
+      "decision": "ASSERT_ALREADY_CORRECT_IN_V11_NO_PATCH"
+    },
+    {
+      "id": "bartok-bb77",
+      "target": "audit:fl01:bbb:work:excel4228",
+      "field": "accepted_critical_catalogue",
+      "expected": {
+        "BB": "77",
+        "Sz": "69",
+        "previous_BB_numbering": "olim BB 78"
+      },
+      "evidence_url": "https://www.zti.hu/en/ba/bartok-compositions/chronology",
+      "decision": "ASSERT_ALREADY_CORRECT_IN_V11_NO_PATCH"
+    },
+    {
+      "id": "bartok-bb122",
+      "target": "audit:fl01:bbb:work:excel4233",
+      "field": "accepted_critical_catalogue",
+      "expected": {
+        "BB": "122",
+        "Sz": "115a"
+      },
+      "evidence_url": "https://www.zti.hu/en/ba/bartok-compositions/chronology",
+      "decision": "ASSERT_ALREADY_CORRECT_IN_V11_NO_PATCH"
+    },
+    {
+      "id": "bwv578",
+      "target": "audit:fl01:jsb06:work:excel3793",
+      "field": "name",
+      "expected": "Fuga in sol minore",
+      "evidence_url": "https://www.bachvereniging.nl/en/bwv/bwv-578",
+      "decision": "ASSERT_ALREADY_CORRECT_IN_V11_NO_PATCH"
+    }
+  ],
+  "candidate_crosswalks_not_edges": [
+    {
+      "id": "gate03:candidate:bb114",
+      "source_id": "flaminio:excel:4292",
+      "stage_id": "audit:fl01:bbb:work:excel4292",
+      "production_id": "opera:bartok-musica-archi-percussioni-celesta-1936",
+      "relation": "IDENTICAL_COMPOSITION_CANDIDATE",
+      "catalogue": "BB114/Sz106",
+      "evidence_urls": [
+        "https://www.boosey.com/cr/music/Bela-Bartok-Music-for-String-Percussion-and-Celesta/3147"
+      ],
+      "production_link_creation": false,
+      "canonical_promotion": false
+    },
+    {
+      "id": "gate03:candidate:mandarin-suite",
+      "source_id": "flaminio:excel:4280",
+      "stage_id": "audit:fl01:bbb:work:excel4280",
+      "production_id": "opera:mandarino-suite-1927",
+      "relation": "SAME_ORCHESTRAL_SUITE_CANDIDATE_NOT_FULL_PANTOMIME",
+      "catalogue": "BB82a/Sz73b",
+      "different_from_stage_id": "audit:fl01:bbb:work:excel4274",
+      "different_from_production_id": "opera:mandarino",
+      "evidence_urls": [
+        "https://www.flaminioonline.it/Guide/Bartok/Bartok-Mandarinosuite.html",
+        "https://www.berliner-philharmoniker.de/en/programme-notes/bela-bartok-the-miraculous-mandarin-suite-sz-73/"
+      ],
+      "production_link_creation": false,
+      "canonical_promotion": false
+    }
+  ],
+  "holds": [
+    {
+      "id": "BWV53",
+      "target": "audit:fl01:work:bwv53",
+      "status": "BACH_ATTRIBUTION_HOLD",
+      "note": "Historical BWV reference is not composer attestation"
+    },
+    {
+      "id": "BWV966",
+      "target": "audit:fl01:jsb06:work:excel3946",
+      "status": "SOURCE_CONFLICT_HOLD",
+      "note": "Flaminio says Reincken Hortus Musicus Sonata II; prior JSB06 audit uses Sonata III and preserves conflict"
+    },
+    {
+      "id": "BARTOK_BB127",
+      "target": "audit:fl01:bbb:work:excel4296",
+      "status": "SCOPED_COMPLETION_ROLE",
+      "note": "Tibor Serly orchestration of final seventeen measures, not authorship of entire concerto"
+    }
+  ],
+  "summary": {
+    "metadata_patches": 3,
+    "already_correct_assertions": 4,
+    "production_crosswalk_candidates": 2,
+    "holds": 3,
+    "source_records_added": 0,
+    "nodes_added": 0,
+    "links_added": 0,
+    "canonical_promotions": 0
+  },
+  "next_gate": "LOTTO01-CANONICAL-GATE-04: materialize isolated staging projection, audit work/collection versioning and browser UI; no production merge before quality signoff."
+}
