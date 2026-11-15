@@ -32,6 +32,10 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 .meta{color:var(--muted);font-size:12px}
 #detail,#visibleList{font-size:12px;overflow-wrap:anywhere}
 #detail pre{max-height:260px;overflow:auto;white-space:pre-wrap;background:#06131d;padding:9px;border:1px solid var(--edge);border-radius:8px;font-size:11px}
+#hoverReason{position:absolute;right:12px;bottom:12px;max-width:min(480px,85%);z-index:4;background:#09232fe8;border:1px solid #678b91;border-radius:9px;padding:9px 12px;pointer-events:none;font-size:12px;line-height:1.45;white-space:pre-wrap}
+#hoverReason[hidden]{display:none}
+#detail .reason{background:#102f3c;border-left:3px solid var(--accent);padding:8px 10px;margin:8px 0;color:var(--ink)}
+
 .edgeItem,.nodeItem{display:block;text-align:left;width:100%;margin:4px 0;padding:7px;background:#102f3c;border:1px solid #365967;border-radius:7px;white-space:normal;word-break:break-word}
 .nodeItem small,.edgeItem small{display:block;font-size:11px;color:var(--muted)}
 .bad{color:#f4ad9c}.ok{color:#aee8d1}
@@ -52,20 +56,16 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 <fieldset><legend>Nodi visibili</legend><div class="chips" id="visibleCategories"></div></fieldset>
 <fieldset><legend>Etichette mostrate (indipendenti dai nodi)</legend><div class="chips" id="labelCategories"></div></fieldset>
 <div style="display:flex;gap:8px;align-items:center;margin:9px 0"><label for="depth">Livelli:</label><select id="depth"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><button id="allCategories">Tutte le categorie</button></div>
-<h2>Archivio delle 500 schede</h2>
-<input type="search" id="searchSources" placeholder="Cerca in tutte le schede, anche per riga Excel…">
-<div id="sourceCount" class="meta"></div>
-<div id="sources" class="scroller" style="max-height:340px"></div>
-<button id="moreSources">Mostra altre schede</button>
-<p class="footer">I 500 record Flaminio sono testimonianze bibliografiche, non 500 opere nuove. Le identità personali riunite provengono dal crosswalk storico e sono reversibili. Le fonti sono cercabili anche quando le relative identità musicali sono ancora candidate.</p>
+<p class="footer">Le 500 schede bibliografiche Flaminio restano conservate nel database di staging, ma non vengono mostrate come nodi musicali autonomi. Seleziona un nodo per esplorare le relazioni motivate.</p>
 </aside>
 <section aria-label="Grafo musicale esplorabile">
 <div id="graph"></div>
+<div id="hoverReason" role="status" hidden></div>
 <div class="graphbar"><span class="summary" id="graphSummary">Grafo non ancora caricato</span><button id="resetView">Ritorna a Bach</button></div>
 </section>
 <aside>
-<h2 id="detailTitle">Dettagli e provenienza</h2>
-<div id="detail" class="meta">Seleziona una scheda Flaminio, un autore o un nodo musicale.</div>
+<h2 id="detailTitle">Relazioni del nodo</h2>
+<div id="detail" class="meta">Seleziona un nodo per vedere perché è collegato agli altri. Passa il mouse sugli archi per leggerne la motivazione.</div>
 <h2 style="margin-top:18px">Nodi effettivamente visibili</h2>
 <div id="visibleCount" class="meta">I filtri si applicano al grafo e a questo elenco.</div>
 <div id="visibleList" class="scroller" style="max-height:38dvh"></div>
@@ -73,7 +73,7 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase,projectForViewer} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs";
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -82,7 +82,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,searchSource:"",selectedRecord:null,pageSize:25,graph:null,rendered:[]};
+const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set()};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
@@ -116,55 +116,105 @@ function selectRoot(id){
  if(n.visibility==="documentary"){showNode(n);return}
  state.root=id;$("searchEntity").value=n.name;showEntityResults();showNode(n);draw()
 }
+function edgeReason(e){
+ const orig=e.original||{};
+ const relation=String(e.relation||"relazione da documentare").replace(/_/g," ");
+ const note=orig.description||orig.rationale||orig.reason||orig.note||orig.motivation||"";
+ const quality=e.quality&&e.quality!=="non_certificato"?" · "+e.quality:"";
+ return relation+(note?" — "+String(note):" — Motivazione specifica non documentata nella sorgente")+quality;
+}
+function visibleTitle(id){return state.db.nodes.find(n=>n.id===id)?.name||id}
 function showNode(n){
- $("detailTitle").textContent="Nodo · "+n.name;
- const target=$("detail");target.replaceChildren();
- target.append(make("p",categoryName(n.category)+" · "+n.id));
- if(n.subtype)target.append(make("p","Sottotipo: "+n.subtype));
- for(const p of n.provenance||[]){
-  const title=make("p","Fonte: "+p.layer+" · ID originale: "+p.original_id,"meta");target.append(title);
- }
- const pre=make("pre",JSON.stringify(n.provenance||[],null,2));target.append(pre)
-}
-function sourceLabel(r){
- const raw=r.original||r.raw||r.fields||r.csv||r;
- const parts=[raw.titolo,raw.brano,raw.opera,raw.nome,raw.title,raw.descrizione].filter(x=>typeof x==="string"&&x.trim());
- return parts[0]||r.source_id
-}
-function showSources(){
- const q=state.searchSource,h=$("sources");h.replaceChildren();
- const matches=state.db.flaminio_records.filter(r=>!q||normalize(JSON.stringify(r)).includes(q));
- $("sourceCount").textContent=matches.length+" / "+state.db.flaminio_records.length+" schede";
- for(const r of matches.slice(0,state.pageSize)){
-  const b=make("button",sourceLabel(r),"record"+(state.selectedRecord===r.source_id?" active":""));
-  b.append(make("small",r.source_id+" · riga Excel "+String(r.source_id).split(":").pop()));
-  b.onclick=()=>selectRecord(r);h.append(b)
- }
- $("moreSources").disabled=matches.length<=state.pageSize
-}
-function selectRecord(r){
- state.selectedRecord=r.source_id;showSources();
- const sourceId="flaminio::"+r.source_id;
- $("detailTitle").textContent="Scheda Flaminio · "+r.source_id;
+ $("detailTitle").textContent=n.name;
  const h=$("detail");h.replaceChildren();
- h.append(make("p","Registro di provenienza originale. Gli abbinamenti non equivalgono a certificazione.","meta"));
- const related=state.db.links.filter(e=>e.source===sourceId||e.target===sourceId);
- const index=new Map(state.db.nodes.map(n=>[n.id,n]));
- const nonDoc=related.map(e=>({e,n:index.get(e.source===sourceId?e.target:e.source)})).filter(x=>x.n&&x.n.visibility!=="documentary");
- h.append(make("p",nonDoc.length+" collegamenti a nodi musicali/candidati · "+related.length+" relazioni totali","meta"));
- for(const x of nonDoc){
-  const b=make("button",x.n.name,"edgeItem");
-  b.append(make("small",categoryName(x.n.category)+" · "+x.e.relation+" · qualità: "+x.e.quality));
-  b.onclick=()=>selectRoot(x.n.id);h.append(b)
+ h.append(make("p",categoryName(n.category)+(n.subtype?" · "+n.subtype:""),"meta"));
+ const d=state.distances.get(n.id);
+ if(d!==undefined)h.append(make("p",d===0?"Radice della ricerca":"Distanza dalla radice: "+d+" archi","meta"));
+ if(d>0){
+   const path=[],seen=new Set();let pos=n.id;
+   while(pos!==state.root&&state.parents.has(pos)&&!seen.has(pos)){seen.add(pos);const p=state.parents.get(pos);path.unshift({from:p.from,to:pos,edge:p.edge});pos=p.from}
+   if(path.length){
+     const title=make("h2","Perché compare questo nodo");h.append(title);
+     for(const step of path){const p=make("div",visibleTitle(step.from)+" → "+visibleTitle(step.to)+"\n"+edgeReason(step.edge),"reason");p.style.whiteSpace="pre-wrap";h.append(p)}
+   }
  }
- if(!nonDoc.length)h.append(make("p","Nessun nodo musicale diretto; riferimento conservato a livello documentario.","bad"));
- h.append(make("h2","Record integrale"));
- h.append(make("pre",JSON.stringify(r,null,2)));
- if(nonDoc.length===1){
-  state.root=nonDoc[0].n.id;
-  $("searchEntity").value=nonDoc[0].n.name;
-  showEntityResults();draw();
+ h.append(make("h2","Archi visibili"));
+ const connections=state.renderedLinks.filter(e=>e.source===n.id||e.target===n.id);
+ if(!connections.length)h.append(make("p","Nessun arco con i filtri correnti.","meta"));
+ for(const e of connections.slice(0,100)){
+   const to=e.source===n.id?e.target:e.source,b=make("button",visibleTitle(to),"edgeItem");
+   b.append(make("small",edgeReason(e)));b.title=edgeReason(e);
+   b.onclick=()=>selectRoot(to);h.append(b)
  }
+ if(connections.length>100)h.append(make("p","Mostrate 100 relazioni: restringi i filtri per le altre.","meta"));
+}
+function edgeTooltip(e){
+ if(!e)return "";
+ const source=typeof e.source==="object"?e.source.id:e.source,target=typeof e.target==="object"?e.target.id:e.target;
+ return visibleTitle(source)+" ↔ "+visibleTitle(target)+"\n"+edgeReason(e);
+}
+function displayEdgeHover(e){
+ const pane=$("hoverReason");
+ if(!e){pane.hidden=true;pane.textContent="";return}
+ pane.textContent=edgeTooltip(e);pane.hidden=false;
+}
+function showEdge(e){
+ const a=typeof e.source==="object"?e.source.id:e.source,b=typeof e.target==="object"?e.target.id:e.target;
+ $("detailTitle").textContent="Motivo dell'arco";
+ const h=$("detail");h.replaceChildren();
+ h.append(make("h2",visibleTitle(a)+" ↔ "+visibleTitle(b)));
+ h.append(make("div",edgeReason(e),"reason"));
+ const orig=e.original||{};
+ const src=make("p","Fonte: "+(e.layer||"non specificata")+(e.collection?" · "+e.collection:""),"meta");h.append(src);
+ for(const id of [a,b]){const btn=make("button","Esplora "+visibleTitle(id),"edgeItem");btn.onclick=()=>selectRoot(id);h.append(btn)}
+}
+function rootedProjection(db){
+ const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
+ const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
+ const edges=db.links.filter(e=>!isBlocked(e));
+ const adj=new Map();
+ for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
+ const distance=new Map([[state.root,0]]),parents=new Map(),queue=[state.root],selected=new Set([state.root]);
+ const generic=/^(tratta|menziona|rimanda|analizza|condivide|citazione|richiamo|documenta|stesso_tema_editoriale|capitolo_tratta_periodo)/i;
+ const authored=/compone|ha_composto|composizione_|autore_di|musica_composta|composed_by|written_by|opera_di/i;
+ const parts=/part_of|has_part|contiene|movimento|membro_di|member_of|suite_derived|version_of/i;
+ const isChapter=n=>n?.category==="capitoli"||n?.category==="capitolo";
+ // L'espansione radicata non attraversa liberamente capitoli, periodi, forme e documentazione.
+ function canExpand(n,d){
+   if(d===0)return true;
+   if(isChapter(n)||n?.category==="documentazione")return false;
+   if(n?.category==="generi_forme"||n?.category==="concetti")return root?.category===n.category;
+   return n?.category==="persone"||n?.category==="opere"||n?.category==="reti_culturali";
+ }
+ function pass(n,to,e,d){
+   if(d===0)return true;
+   if(generic.test(e.relation||""))return false;
+   if(isChapter(root)&&to.category==="persone"&&d>0)return false;
+   if(n.category==="persone"&&to.category==="opere")return authored.test(e.relation||"")||parts.test(e.relation||"");
+   if(n.category==="opere"&&to.category==="persone")return authored.test(e.relation||"")||parts.test(e.relation||"");
+   if(n.category==="opere"&&to.category==="opere")return parts.test(e.relation||"")||!/menziona|condivide|rimanda/i.test(e.relation||"");
+   return true;
+ }
+ for(let qi=0;qi<queue.length;qi++){
+   const id=queue[qi],d=distance.get(id),n=index.get(id);
+   if(d>=state.depth||!canExpand(n,d))continue;
+   for(const {id:other,e} of adj.get(id)||[]){
+     const to=index.get(other);
+     if(!to||to.visibility==="documentary"||distance.has(other)||!pass(n,to,e,d))continue;
+     distance.set(other,d+1);parents.set(other,{from:id,edge:e});queue.push(other);
+   }
+ }
+ // Mantenere i nodi intermedi indispensabili per spiegare i percorsi filtrati.
+ for(const [id,d] of distance){if(id!==state.root&&!show.has(index.get(id)?.category))continue;
+   let p=id;while(p&&!selected.has(p)){selected.add(p);p=parents.get(p)?.from}
+ }
+ const nodes=db.nodes.filter(n=>selected.has(n.id)&&n.visibility!=="documentary");
+ const allowed=new Set(nodes.map(n=>n.id));
+ const links=edges.filter(e=>allowed.has(e.source)&&allowed.has(e.target)&&(
+   distance.get(e.source)===0||distance.get(e.target)===0||
+   Math.abs((distance.get(e.source)??99)-(distance.get(e.target)??99))<=1
+ ));
+ return {nodes,links,parents,distance};
 }
 function graphInstance(){
  if(state.graph)return state.graph;
@@ -179,40 +229,34 @@ function graphInstance(){
   .nodeVal(n=>n.id===state.root?7:3)
   .nodeLabel(n=>state.labels.has(n.category)?n.name:"")
   .onNodeClick(n=>selectRoot(n.id));
+ if(typeof g.onLinkClick==="function")g.onLinkClick(showEdge);
+ if(typeof g.onLinkHover==="function")g.onLinkHover(displayEdgeHover);
+ if(typeof g.linkLabel==="function")g.linkLabel(edgeTooltip);
  return g
 }
 function draw(){
  if(!state.db)return;
- const includeDocumentary=state.cats.has("documentazione");
  let filtered;
- try{filtered=projectForViewer(state.db,{rootId:state.root,depth:state.depth,visibleCategories:[...state.cats],labelCategories:[...state.labels],includeDocumentary})}
- catch(e){status("Errore proiezione: "+e.message,true);return}
- const neighbors=new Map();
- for(const e of filtered.links){
-  if(!neighbors.has(e.source))neighbors.set(e.source,[]);
-  if(!neighbors.has(e.target))neighbors.set(e.target,[]);
-  neighbors.get(e.source).push(e.target);neighbors.get(e.target).push(e.source);
- }
- const levels=new Map([[state.root,0]]),queue=[state.root];
- for(let i=0;i<queue.length;i++)for(const other of neighbors.get(queue[i])||[])
-   if(!levels.has(other)){levels.set(other,levels.get(queue[i])+1);queue.push(other)}
- const nodes=filtered.nodes.map(n=>({id:n.id,name:n.name,category:n.category,subtype:n.subtype,visibility:n.visibility,
-  _focus:n.id===state.root,_depth:levels.get(n.id)??state.depth,_label:state.labels.has(n.category)}));
- const links=filtered.links.map(e=>({id:e.id,source:e.source,target:e.target,relation:e.relation,visibility:e.visibility,quality:e.quality}));
- state.rendered=nodes;
- $("graphSummary").textContent=nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+(nodes.find(n=>n.id===state.root)?.name||state.root);
+ try{filtered=rootedProjection(state.db)}catch(e){status("Errore proiezione: "+e.message,true);return}
+ state.parents=filtered.parents;state.distances=filtered.distance;
+ const nodes=filtered.nodes.map(n=>({...n,_focus:n.id===state.root,_depth:filtered.distance.get(n.id)??0,
+   _label:state.labels.has(n.category)||(n.id===state.root)}));
+ const links=filtered.links.map(e=>({...e}));
+ state.rendered=nodes;state.renderedLinks=links;
+ $("graphSummary").textContent=nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+visibleTitle(state.root);
  $("visibleCount").textContent=nodes.length+" nodi visibili ("+links.length+" relazioni)";
  const h=$("visibleList");h.replaceChildren();
  for(const n of nodes.slice(0,180)){
-  const b=make("button",n.name,"nodeItem");b.append(make("small",categoryName(n.category)));
-  b.onclick=()=>selectRoot(n.id);h.append(b)
+   const b=make("button",n.name,"nodeItem");
+   b.append(make("small",categoryName(n.category)+" · livello "+(filtered.distance.get(n.id)??0)));
+   b.onclick=()=>selectRoot(n.id);h.append(b);
  }
  if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
  try{const g=graphInstance().graphData({nodes,links});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
+ displayEdgeHover(null);
+ const root=state.db.nodes.find(n=>n.id===state.root);if(root)showNode(root);
 }
 $("searchEntity").addEventListener("input",showEntityResults);
-$("searchSources").addEventListener("input",e=>{state.searchSource=normalize(e.target.value).trim();state.pageSize=25;showSources()});
-$("moreSources").onclick=()=>{state.pageSize+=50;showSources()};
 $("depth").addEventListener("change",e=>{state.depth=Number(e.target.value);draw()});
 $("allCategories").onclick=()=>{state.cats=new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0]));refreshToggles();draw()};
 $("resetView").onclick=()=>selectRoot("atlantis::pers:bach");
@@ -220,7 +264,7 @@ try{
  const db=await loadFederatedDatabase();state.db=db;
  if(db.flaminio_records.length!==500||db.counts.orphan_links!==0)throw Error("Integrità non confermata: lotto o archi incompleti");
  status("500/500 schede · "+db.counts.integrated_people+" identità Mundi–Atlantis · "+db.counts.nodes+" nodi · "+db.counts.links+" archi");
- refreshToggles();showEntityResults();showSources();
+ refreshToggles();showEntityResults();
  if(!db.nodes.find(n=>n.id===state.root))state.root=db.nodes.find(n=>n.visibility!=="documentary")?.id;
  if(state.root)selectRoot(state.root);
 }catch(e){status("ERRORE: "+e.message,true);$("detail").textContent="Il modulo federato non è stato caricato. Verificare la console e le sorgenti; i grafi originali non sono stati modificati."}
