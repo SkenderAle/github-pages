@@ -1,0 +1,166 @@
+{
+  "schema": "musurgia-atlantis-gate03-reversible-overlay-regression-v1",
+  "date": "2026-11-15",
+  "overlay_file": "OVERLAY_LOTTO01_CANONICAL_GATE_03_REVERSIBILE_2026-11-15.json",
+  "overlay_blob_sha": "f78905e4223f7279483dab6665b728bde4d67d63",
+  "baseline_staging_sha": "a8d0bbee9806925ca5750cc3990b4cbde1c44a0f",
+  "baseline_production_sha": "4863b3fe263154387de3388c0b813b5f94546f12",
+  "status": "PASS_STRUCTURAL_IN_MEMORY_ONLY_NOT_BROWSER_OR_CANONICAL",
+  "checks": [
+    {
+      "test": "500 source records",
+      "status": "PASS"
+    },
+    {
+      "test": "1365 nodes",
+      "status": "PASS"
+    },
+    {
+      "test": "2780 links",
+      "status": "PASS"
+    },
+    {
+      "test": "754 production nodes",
+      "status": "PASS"
+    },
+    {
+      "test": "1718 production links",
+      "status": "PASS"
+    },
+    {
+      "test": "all stage node IDs unique",
+      "status": "PASS"
+    },
+    {
+      "test": "all stage edge IDs unique",
+      "status": "PASS"
+    },
+    {
+      "test": "all stage edges have valid endpoints",
+      "status": "PASS"
+    },
+    {
+      "test": "overlay references correct sha guard",
+      "status": "PASS"
+    },
+    {
+      "test": "overlay production sha guard",
+      "status": "PASS"
+    },
+    {
+      "test": "three patch operations",
+      "status": "PASS"
+    },
+    {
+      "test": "four no-op assertions",
+      "status": "PASS"
+    },
+    {
+      "test": "two external candidate crosswalks",
+      "status": "PASS"
+    },
+    {
+      "test": "patch nodes exist",
+      "status": "PASS"
+    },
+    {
+      "test": "patch expected old value preconditions",
+      "status": "PASS"
+    },
+    {
+      "test": "patch raw source nodes exist",
+      "status": "PASS"
+    },
+    {
+      "test": "patch is one-to-one documented source to work",
+      "status": "PASS"
+    },
+    {
+      "test": "patched field uniqueness",
+      "status": "PASS"
+    },
+    {
+      "test": "previous critical correction assertions valid",
+      "status": "PASS"
+    },
+    {
+      "test": "candidate endpoints exist",
+      "status": "PASS"
+    },
+    {
+      "test": "candidate source→work edge exists",
+      "status": "PASS"
+    },
+    {
+      "test": "Mandarin original distinct",
+      "status": "PASS"
+    },
+    {
+      "test": "Mandarin production suite distinct",
+      "status": "PASS"
+    },
+    {
+      "test": "candidate stage IDs not leaked into production",
+      "status": "PASS"
+    },
+    {
+      "test": "Bartok original BB source 78 preserved",
+      "status": "PASS"
+    },
+    {
+      "test": "Wq43 contains only documented reviewed member",
+      "status": "PASS"
+    },
+    {
+      "test": "simulation changes exactly 3 work names",
+      "status": "PASS"
+    },
+    {
+      "test": "simulation preserves all source records",
+      "status": "PASS"
+    },
+    {
+      "test": "simulation preserves all links",
+      "status": "PASS"
+    },
+    {
+      "test": "simulation preserves cardinality",
+      "status": "PASS"
+    },
+    {
+      "test": "rollback reproduces entire node array exactly",
+      "status": "PASS"
+    },
+    {
+      "test": "rollback reproduces entire edge array exactly",
+      "status": "PASS"
+    },
+    {
+      "test": "no new graph records in overlay",
+      "status": "PASS"
+    },
+    {
+      "test": "no canonical promotion in overlay",
+      "status": "PASS"
+    }
+  ],
+  "metrics": {
+    "passed": 34,
+    "failed": 0,
+    "work_display_patches_simulated": 3,
+    "source_row_mutations": 0,
+    "staging_added_nodes": 0,
+    "staging_added_links": 0,
+    "rollback_exact": true,
+    "production_mutations": 0,
+    "canonical_promotions": 0,
+    "real_desktop_browser_tests": 0,
+    "real_android_browser_tests": 0,
+    "real_webgl_tests": 0
+  },
+  "notes": [
+    "Overlay was applied to an in-memory copy and reversed to an exact JSON-equivalent baseline; not a runtime browser render.",
+    "Candidate stage↔production references are crosswalk proposals, not production graph links.",
+    "All external source annotations are retained without normalizing raw Flaminio source data."
+  ]
+}
