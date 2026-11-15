@@ -12,7 +12,22 @@ header{padding:13px 18px;background:#0b1e2b;border-bottom:1px solid var(--edge);
 h1{font:22px/1.2 Georgia,serif;color:var(--accent);margin:0 0 5px}h2{font-size:15px;margin:0 0 9px;color:var(--accent)}p{margin:5px 0;color:var(--muted)}
 main{display:grid;grid-template-columns:minmax(270px,355px) minmax(0,1fr) minmax(280px,340px);height:calc(100dvh - 86px);min-height:480px}
 aside,section{min-width:0;min-height:0;overflow:auto;border-right:1px solid var(--edge)}
-aside{padding:15px;background:var(--panel)}section{position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#123343,#06131e 68%)}
+aside{padding:15px;background:var(--panel)}
+section{position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#123343,#06131e 68%)}
+section.cosmic-sky{
+  background:
+    linear-gradient(135deg,rgba(2,10,17,.34),rgba(3,14,24,.50) 45%,rgba(2,11,19,.32)),
+    url("../assets/sfondo-cosmico-atlantis.svg") center center / cover no-repeat,
+    #06131d;
+}
+section.cosmic-sky #graph:after{
+  /* WebGL può utilizzare un canvas opaco: la nebulosa rimane visibile,
+     ma viene sovrapposta con intensità minima e senza catturare il mouse. */
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:url("../assets/sfondo-cosmico-atlantis.svg") center center / cover no-repeat;
+  opacity:.22;mix-blend-mode:screen;
+}
+section.cosmic-sky #graph:has(canvas[data-atlantis-transparent="true"]):after{display:none}
 #graph{position:absolute;inset:0}#graph canvas{touch-action:none}
 .graphbar{position:absolute;top:12px;left:12px;right:12px;z-index:3;display:flex;gap:8px;align-items:center;flex-wrap:wrap;pointer-events:none}
 .graphbar>*{pointer-events:auto}
@@ -52,7 +67,7 @@ main.details-collapsed #detailsPanel{display:none}
  #detailsPanel{grid-column:1 / -1;min-height:260px;max-height:46dvh;border-top:1px solid var(--edge)}}
 @media(max-width:640px){header{padding:10px}h1{font-size:18px}main,main.details-collapsed{display:flex;flex-direction:column;height:auto}aside:first-child{order:2;max-height:none}section{order:1;height:58dvh;min-height:390px;flex:none}#detailsPanel{order:3;max-height:none}.graphbar{top:6px;left:6px;right:6px;gap:5px}.graphbar button{font-size:12px}}
 </style>
-<script src="../compat-graph.js?v=labels-respect-filters-20261115"></script>
+<script src="../compat-graph.js?v=cosmic-background-20261115"></script>
 </head>
 <body>
 <header><div><h1>Musurgia Mundi – Atlantis · rete unificata</h1><p>Staging non distruttivo · Mundi + Atlantis riuniti · 500 schede Flaminio</p></div><div id="loadStatus" class="meta" role="status">Caricamento delle sorgenti…</div></header>
@@ -76,7 +91,7 @@ main.details-collapsed #detailsPanel{display:none}
 <section aria-label="Grafo musicale esplorabile">
 <div id="graph"></div>
 <div id="hoverReason" role="status" hidden></div>
-<div class="graphbar"><span class="summary" id="graphSummary">Grafo non ancora caricato</span><button id="zoomIn" class="zoom-btn" type="button" aria-label="Ingrandisci grafo">+</button><button id="zoomOut" class="zoom-btn" type="button" aria-label="Rimpicciolisci grafo">−</button><button id="resetPositions" type="button" title="Ripristina le posizioni automatiche dei nodi">Ricomponi</button><button id="backFocus" disabled>Torna indietro</button><button id="showAll">Nebulosa completa</button><button id="detailsToggle" type="button" aria-expanded="false" aria-controls="detailsPanel">Apri dettagli ◀</button></div>
+<div class="graphbar"><span class="summary" id="graphSummary">Grafo non ancora caricato</span><button id="zoomIn" class="zoom-btn" type="button" aria-label="Ingrandisci grafo">+</button><button id="zoomOut" class="zoom-btn" type="button" aria-label="Rimpicciolisci grafo">−</button><button id="resetPositions" type="button" title="Ripristina le posizioni automatiche dei nodi">Ricomponi</button><button id="cosmicToggle" type="button" aria-pressed="true" title="Attiva o disattiva il paesaggio spaziale">Sfondo spaziale: sì</button><button id="backFocus" disabled>Torna indietro</button><button id="showAll">Nebulosa completa</button><button id="detailsToggle" type="button" aria-expanded="false" aria-controls="detailsPanel">Apri dettagli ◀</button></div>
 </section>
 <aside id="detailsPanel" aria-label="Dettagli del nodo" hidden>
 <h2 id="detailTitle">Relazioni del nodo</h2>
@@ -97,7 +112,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[],comparison:null,labelsBeforeComparison:null,manualPositions:new Map()};
+const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[],comparison:null,labelsBeforeComparison:null,manualPositions:new Map(),cosmicBackground:true};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
@@ -619,6 +634,19 @@ function recordNodePosition(n){
  if(state.graph?.isFallback)n._manualPos=pos;
  else{n.fx=pos.x;n.fy=pos.y;n.fz=pos.z;}
 }
+function toggleCosmicBackground(enabled){
+ state.cosmicBackground=!!enabled;
+ const stage=$("graph").closest("section");
+ stage?.classList.toggle("cosmic-sky",state.cosmicBackground);
+ const toggle=$("cosmicToggle");
+ toggle.setAttribute("aria-pressed",String(state.cosmicBackground));
+ toggle.textContent="Sfondo spaziale: "+(state.cosmicBackground?"sì":"no");
+ if(state.graph){
+   if(typeof state.graph.cosmicBackground==="function")state.graph.cosmicBackground(state.cosmicBackground);
+   if(!state.graph.isFallback&&typeof state.graph.backgroundColor==="function")
+     state.graph.backgroundColor(state.cosmicBackground?"rgba(0,0,0,0)":"#07131e");
+ }
+}
 function graphInstance(){
  if(state.graph)return state.graph;
  const host=$("graph"), webgl=(()=>{try{return !!document.createElement("canvas").getContext("webgl2")}catch{return false}})();
@@ -627,7 +655,8 @@ function graphInstance(){
  const g=maker===window.ForceGraph3D?maker()(host):maker(host);
  if(typeof g.width==="function"&&typeof g.height==="function"){g.width(Math.max(1,host.clientWidth));g.height(Math.max(1,host.clientHeight));}
  if(typeof ResizeObserver==="function")new ResizeObserver(()=>{if(state.graph&&typeof state.graph.width==="function"){state.graph.width(Math.max(1,host.clientWidth));state.graph.height(Math.max(1,host.clientHeight));}}).observe(host);
- state.graph=g.backgroundColor("#07131e").nodeColor(n=>n._compareEndpoint?"#ffdc76":colors[n.category]||"#c9d5dd")
+ state.graph=g.backgroundColor(state.cosmicBackground?"rgba(0,0,0,0)":"#07131e")
+  .nodeColor(n=>n._compareEndpoint?"#ffdc76":colors[n.category]||"#c9d5dd")
   .linkColor(e=>e.visibility==="documentary"?"#526773":"#558093")
   .nodeVal(n=>n._compareEndpoint?12:n.id===state.root?8:n.id===state.focus?7:3)
   .nodeLabel(n=>state.labels.has(n.category)?n.name:"")
@@ -638,6 +667,11 @@ function graphInstance(){
  if(typeof g.onLinkHover==="function")g.onLinkHover(displayEdgeHover);
  if(typeof g.linkLabel==="function")g.linkLabel(edgeTooltip);
  if(typeof g.disableDoubleClickZoom==="function")g.disableDoubleClickZoom(true);
+ if(typeof g.cosmicBackground==="function")g.cosmicBackground(state.cosmicBackground);
+ if(!g.isFallback&&typeof g.renderer==="function"){
+   // Trasparenza reale quando il renderer WebGL la supporta.
+   try{g.renderer()?.setClearAlpha?.(state.cosmicBackground?0:1)}catch(_){}
+ }
  return g
 }
 function draw(){
@@ -729,6 +763,8 @@ $("detailsToggle").onclick=()=>openDetails($("detailsPanel").hidden);
 $("zoomIn").onclick=()=>changeZoom(1.3);
 $("zoomOut").onclick=()=>changeZoom(1/1.3);
 $("resetPositions").onclick=()=>{state.manualPositions.clear();draw()};
+$("cosmicToggle").onclick=()=>toggleCosmicBackground(!state.cosmicBackground);
+toggleCosmicBackground(true);
 $("showAll").onclick=showNebula;
 $("depth").addEventListener("change",e=>{state.depth=Number(e.target.value);draw()});
 $("allCategories").onclick=()=>{state.cats=new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0]));refreshToggles();draw()};
