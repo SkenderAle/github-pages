@@ -151,74 +151,93 @@ function selectComparisonTarget(id){
 }
 function comparisonProjection(db,edges,index){
  const {from,to}=state.comparison;
- const allowedNodes=new Set(db.nodes.filter(n=>n.visibility!=="documentary").map(n=>n.id));
- if(!allowedNodes.has(from)||!allowedNodes.has(to))return {nodes:[],links:[],parents:new Map(),distance:new Map(),comparison:true,error:"Estremi non disponibili nei dati musicali"};
+ const allowed=new Set(db.nodes.filter(n=>n.visibility!=="documentary").map(n=>n.id));
+ const empty=message=>({nodes:db.nodes.filter(n=>n.id===from||n.id===to),links:[],
+   parents:new Map(),distance:new Map([[from,0],[to,0]]),comparison:true,error:message,paths:[],pathCoverage:"none"});
+ if(!allowed.has(from)||!allowed.has(to))return empty("Uno dei lemmi non appartiene alla rete musicale.");
+ if(from===to)return empty("I lemmi coincidono: seleziona due nodi diversi.");
  const generic=/^(tratta|menziona|rimanda|analizza|condivide|citazione|richiamo|documenta|stesso_tema_editoriale|capitolo_tratta_periodo)/i;
+ const meaningful=edges.filter(e=>allowed.has(e.source)&&allowed.has(e.target)&&!generic.test(e.relation||""));
  const adj=new Map();
- for(const e of edges){
-   if(!allowedNodes.has(e.source)||!allowedNodes.has(e.target)||generic.test(e.relation||""))continue;
+ for(const e of meaningful){
    for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){
      if(!adj.has(a))adj.set(a,[]);
      adj.get(a).push({to:b,edge:e});
    }
  }
- // BFS su tutta la rete: niente limite artificiale dei livelli UI;
- // evitare i grandi hub editoriali come scorciatoie non musicali.
- const dist=new Map([[from,0]]),queue=[from],maxHops=10;
- for(let i=0;i<queue.length;i++){
-   const id=queue[i],d=dist.get(id);
-   if(d>=maxHops)continue;
-   for(const {to:next} of adj.get(id)||[]){
-     if(dist.has(next))continue;
-     dist.set(next,d+1);queue.push(next);
+ function bfs(start){
+   const dist=new Map([[start,0]]),queue=[start];
+   for(let i=0;i<queue.length;i++){
+     const id=queue[i],d=dist.get(id);
+     if(d>=10)continue;
+     for(const {to:next} of adj.get(id)||[]){
+       if(dist.has(next))continue;
+       dist.set(next,d+1);queue.push(next);
+     }
    }
+   return dist;
  }
- if(!dist.has(to))return {nodes:db.nodes.filter(n=>n.id===from||n.id===to),links:[],parents:new Map(),distance:new Map([[from,0],[to,0]]),comparison:true,error:"Nessun percorso documentato trovato entro 10 archi con le lenti attive",paths:[]};
- const min=dist.get(to),maxLength=Math.min(maxHops,min+2),routes=[];
- const routeCount=new Set(),stack=[{id:from,path:[from],links:[]}];
+ const distFrom=bfs(from),distTo=bfs(to),shortest=distFrom.get(to);
+ if(shortest===undefined)return empty("Nessun collegamento documentato trovato entro dieci archi.");
+ // TUTTI gli archi che partecipano ad almeno un cammino semplice
+ // vicino alla distanza minima. Evita l'enumerazione esponenziale di tutti
+ // i cammini del grafo e non riduce la rete a tre esempi.
+ const extraHops=3,maxLength=Math.min(10,shortest+extraHops);
+ const corridor=new Set([from,to]),corridorEdges=[];
+ for(const e of meaningful){
+   const da=distFrom.get(e.source),db=distFrom.get(e.target);
+   const ta=distTo.get(e.source),tb=distTo.get(e.target);
+   const forward=da!==undefined&&tb!==undefined&&da+1+tb<=maxLength&&da<db;
+   const reverse=db!==undefined&&ta!==undefined&&db+1+ta<=maxLength&&db<da;
+   if(!forward&&!reverse)continue;
+   corridor.add(e.source);corridor.add(e.target);corridorEdges.push(e);
+ }
+ // Conservare tutta la rete del corridoio, non soltanto i primi tre cammini.
+ // Le vie alternative sono ricercate solo per il racconto nel pannello.
+ const examplePaths=[],seen=new Set();
+ const stack=[{id:from,path:[from],links:[]}];
  let checked=0;
- while(stack.length&&routes.length<5&&checked++<35000){
-   const cur=stack.pop();
-   if(cur.id===to){
-     const signature=cur.links.map(e=>e.id).join("|");
-     if(!routeCount.has(signature)){routeCount.add(signature);routes.push(cur)}
+ while(stack.length&&examplePaths.length<12&&checked++<45000){
+   const item=stack.pop();
+   if(item.id===to){
+     const signature=item.links.map(e=>e.id).join("|");
+     if(!seen.has(signature)){seen.add(signature);examplePaths.push(item)}
      continue;
    }
-   if(cur.links.length>=maxLength)continue;
-   const options=(adj.get(cur.id)||[]).filter(({to:next})=>!cur.path.includes(next));
-   options.sort((a,b)=>{
-     const da=dist.get(a.to)??99,dbb=dist.get(b.to)??99;
-     // Lo stack è LIFO: privilegia i tragitti corti e tassonomici.
-     const score=x=>-(dist.get(x.to)??99)+(index.get(x.to)?.category==="generi_forme"?1:0);
+   if(item.links.length>=maxLength)continue;
+   const candidates=(adj.get(item.id)||[]).filter(({to:next})=>
+     corridor.has(next)&&!item.path.includes(next)&&distTo.has(next)&&
+     item.links.length+1+distTo.get(next)<=maxLength&&
+     (distFrom.get(next)??Infinity)>=distFrom.get(item.id));
+   candidates.sort((a,b)=>{
+     const score=v=>(v.to===to?10:0)+(index.get(v.to)?.category==="generi_forme"?3:0)
+       -(distTo.get(v.to)??99)*2;
      return score(a)-score(b);
    });
-   for(const opt of options)stack.push({id:opt.to,path:[...cur.path,opt.to],links:[...cur.links,opt.edge]});
- }
- // Se la DFS non raggiunge il bersaglio in tempo, ricostruisci
- // il cammino minimo direttamente dalla BFS precedente.
- if(!routes.length){
-   let cur=to;const reverse=[to],rels=[];
-   while(cur!==from){
-     const p=(adj.get(cur)||[]).find(x=>dist.get(x.to)===dist.get(cur)-1);
-     if(!p)break;
-     rels.unshift(p.edge);cur=p.to;reverse.unshift(cur);
-   }
-   if(cur===from)routes.push({path:reverse,links:rels});
- }
- routes.sort((a,b)=>a.links.length-b.links.length);
- const pathNodes=new Set([from,to]),pathEdges=new Set(),parents=new Map(),distance=new Map([[from,0]]);
- for(const route of routes.slice(0,3)){
-   route.path.forEach((id,i)=>{
-     pathNodes.add(id);
-     if(!distance.has(id)||i<distance.get(id))distance.set(id,i);
-     if(i>0){
-       pathEdges.add(route.links[i-1].id);
-       if(!parents.has(id))parents.set(id,{from:route.path[i-1],edge:route.links[i-1]});
-     }
+   for(const option of candidates)stack.push({
+     id:option.to,path:[...item.path,option.to],links:[...item.links,option.edge]
    });
  }
- return {nodes:db.nodes.filter(n=>pathNodes.has(n.id)),links:edges.filter(e=>pathEdges.has(e.id)),
-   parents,distance,comparison:true,paths:routes.slice(0,3)};
+ examplePaths.sort((a,b)=>a.links.length-b.links.length);
+ const parents=new Map(),distance=new Map([[from,0]]);
+ for(const item of examplePaths){
+   item.path.forEach((id,i)=>{
+     if(!distance.has(id)||i<distance.get(id))distance.set(id,i);
+     if(i>0&&!parents.has(id))parents.set(id,{from:item.path[i-1],edge:item.links[i-1]});
+   });
+ }
+ // Anche se gli esempi non sono stati enumerati, la rete degli archi
+ // pertinenti resta pienamente disponibile per la visualizzazione.
+ for(const id of corridor)if(!distance.has(id))distance.set(id,distFrom.get(id)??0);
+ const categories={};
+ for(const id of corridor){
+   const category=index.get(id)?.category||"altro";
+   categories[category]=(categories[category]||0)+1;
+ }
+ return {nodes:db.nodes.filter(n=>corridor.has(n.id)),links:corridorEdges,parents,
+   distance,comparison:true,paths:examplePaths.slice(0,8),shortest,maxLength,
+   pathCoverage:"corridoio",categories,exampleCount:examplePaths.length,
+   corridorCount:corridor.size,meaningfulLinkCount:meaningful.length};
 }
 function selectRoot(id){
  const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
