@@ -133,8 +133,8 @@ function makeGraph(host){
     // etichetta imposta e rispetto della profondità prospettica.
     // La scelta delle etichette prevale su selezione, hover, numero nodi
     // e categorie persone: nessuna categoria selezionata = zero nomi.
-    if(!n.name||!n._label)return;
-    if(n._overview&&!n._featuredOverview&&frontness(p)<.68)return;
+    if(!n.name||!(n._label||(n._overview&&n.id===hovered)))return;
+    if(n._overview&&!n._featuredOverview&&n.id!==hovered&&frontness(p)<.68)return;
     const label=n.name.length>42?n.name.slice(0,40)+'…':n.name;
     const author=n.category==='persone';
     const size=root||endpoint?13:author?12:n._depth===1?11.5:11;
@@ -210,12 +210,13 @@ function makeGraph(host){
     }
     projected=points.map(project);
     const map=new Map(projected.map(p=>[p.n.id,p]));
-    ctx.lineWidth=.8;
+    ctx.lineWidth=overview?.38:.65;
     for(const o of linkObjects){
       const a=map.get(o.a.id),b=map.get(o.b.id);if(!a||!b)continue;
       const near=Math.max(frontness(a),frontness(b));
       const direct=o.a._depth===0||o.b._depth===0;
-      ctx.strokeStyle=colorRgba(linkColors(o.e),(direct?.48:options.linkOpacity*.65)*(.30+.70*near));
+      ctx.strokeStyle=colorRgba(linkColors(o.e),
+        (overview?.13:direct?.33:options.linkOpacity*.48)*(.30+.70*near));
       ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     }
     projected.sort((a,b)=>b.z-a.z);
@@ -251,10 +252,11 @@ function makeGraph(host){
     // Fra le sole etichette autorizzate, priorità a estremi e autori;
     // il controllo dei rettangoli evita sovrapposizioni.
     const occupied=[];
-    const priority=p=>p.n._featuredOverview?110:p.n._compareEndpoint?100:p.n._focus?95:
+    const priority=p=>p.n._overview&&p.n.id===hovered?120:p.n._featuredOverview?110:p.n._compareEndpoint?100:p.n._focus?95:
       p.n.category==='persone'?85:p.n._depth===1?55:40;
     const captions=projected
-      .filter(p=>p.n._label&&p.x>=-12&&p.x<=W+12&&p.y>=40&&p.y<=H+12)
+      .filter(p=>(p.n._label||(p.n._overview&&p.n.id===hovered))&&
+        p.x>=-12&&p.x<=W+12&&p.y>=40&&p.y<=H+12)
       .sort((a,b)=>priority(b)-priority(a)||a.z-b.z);
     for(const p of captions)drawCaption(p,p.r||4,occupied);
     if(!drag&&pointers.size===0){
