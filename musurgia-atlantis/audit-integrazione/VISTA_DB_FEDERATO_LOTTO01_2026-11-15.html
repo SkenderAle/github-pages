@@ -62,7 +62,7 @@ legend{color:var(--accent);font-weight:600;font-size:12px;padding:0 4px}
 <section aria-label="Grafo musicale esplorabile">
 <div id="graph"></div>
 <div id="hoverReason" role="status" hidden></div>
-<div class="graphbar"><span class="summary" id="graphSummary">Grafo non ancora caricato</span><button id="resetView">Ritorna a Bach</button></div>
+<div class="graphbar"><span class="summary" id="graphSummary">Grafo non ancora caricato</span><button id="backFocus" disabled>Torna indietro</button><button id="showAll">Mostra la rete</button><button id="resetView">Ritorna a Bach</button></div>
 </section>
 <aside>
 <h2 id="detailTitle">Relazioni del nodo</h2>
@@ -83,7 +83,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set()};
+const state={db:null,root:"atlantis::pers:bach",cats:new Set(["persone","opere","reti_culturali","generi_forme","capitoli"]),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[]};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
@@ -119,7 +119,22 @@ function showEntityResults(){
 function selectRoot(id){
  const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
  if(n.visibility==="documentary"){showNode(n);return}
- state.root=id;$("searchEntity").value=n.name;showEntityResults();showNode(n);draw()
+ state.root=id;state.focus=null;state.focusHistory=[];$("searchEntity").value=n.name;showEntityResults();draw()
+}
+function selectSubnode(id){
+ const n=state.db?.nodes.find(x=>x.id===id);
+ if(!n||n.visibility==="documentary")return;
+ if(id===state.root){state.focus=null;state.focusHistory=[];draw();return}
+ if(state.focus===id){showNode(n);return}
+ state.focusHistory.push(state.focus);
+ state.focus=id;
+ draw();showNode(n);
+}
+function goBackFocus(){
+ if(!state.focusHistory.length)return;
+ state.focus=state.focusHistory.pop();
+ draw();
+ if(state.focus){const n=state.db.nodes.find(x=>x.id===state.focus);if(n)showNode(n)}
 }
 function edgeReason(e){
  const orig=e.original||{};
@@ -154,7 +169,7 @@ function showNode(n){
  for(const e of connections.slice(0,100)){
    const to=e.source===n.id?e.target:e.source,b=make("button",visibleTitle(to),"edgeItem");
    b.append(make("small",edgeReason(e)));b.title=edgeReason(e);
-   b.onclick=()=>selectRoot(to);h.append(b)
+   b.onclick=()=>selectSubnode(to);h.append(b)
  }
  if(connections.length>100)h.append(make("p","Mostrate 100 relazioni: restringi i filtri per le altre.","meta"));
 }
@@ -178,7 +193,7 @@ function showEdge(e){
  const src=make("p","Fonte: "+(e.layer||"non specificata")+(e.collection?" · "+e.collection:""),"meta");h.append(src);
  const sources=orig.sources||orig.evidence_urls||[];
  for(const item of sources.slice(0,8)){const uri=typeof item==="string"?item:item?.url||item?.uri; if(typeof uri==="string"&&/^https:\/\//.test(uri)){const a=document.createElement("a");a.href=uri;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Fonte documentale";a.style.display="block";h.append(a)}}
- for(const id of [a,b]){const btn=make("button","Esplora "+visibleTitle(id),"edgeItem");btn.onclick=()=>selectRoot(id);h.append(btn)}
+ for(const id of [a,b]){const btn=make("button","Esplora "+visibleTitle(id),"edgeItem");btn.onclick=()=>selectSubnode(id);h.append(btn)}
 }
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
@@ -247,9 +262,9 @@ function graphInstance(){
  if(typeof ResizeObserver==="function")new ResizeObserver(()=>{if(state.graph&&typeof state.graph.width==="function"){state.graph.width(Math.max(1,host.clientWidth));state.graph.height(Math.max(1,host.clientHeight));}}).observe(host);
  state.graph=g.backgroundColor("#07131e").nodeColor(n=>colors[n.category]||"#c9d5dd")
   .linkColor(e=>e.visibility==="documentary"?"#526773":"#558093")
-  .nodeVal(n=>n.id===state.root?7:3)
-  .nodeLabel(n=>state.labels.has(n.category)?n.name:"")
-  .onNodeClick(n=>selectRoot(n.id));
+  .nodeVal(n=>n.id===state.root?8:n.id===state.focus?7:3)
+  .nodeLabel(n=>n.id===state.root||n.id===state.focus||state.labels.has(n.category)?n.name:"")
+  .onNodeClick(n=>selectSubnode(n.id));
  if(typeof g.onLinkClick==="function")g.onLinkClick(showEdge);
  if(typeof g.onLinkHover==="function")g.onLinkHover(displayEdgeHover);
  if(typeof g.linkLabel==="function")g.linkLabel(edgeTooltip);
@@ -270,7 +285,7 @@ function draw(){
  for(const n of nodes.slice(0,180)){
    const b=make("button",n.name,"nodeItem");
    b.append(make("small",categoryName(n.category)+" · livello "+(filtered.distance.get(n.id)??0)));
-   b.onclick=()=>selectRoot(n.id);h.append(b);
+   b.onclick=()=>selectSubnode(n.id);h.append(b);
  }
  if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
  try{const g=graphInstance().graphData({nodes:nodes.map(n=>({...n})),links:links.map(e=>({...e}))});if(typeof g.zoomToFit==="function")g.zoomToFit()}catch(e){status("Renderer non disponibile: "+e.message,true)}
@@ -278,6 +293,8 @@ function draw(){
  const root=state.db.nodes.find(n=>n.id===state.root);if(root)showNode(root);
 }
 $("searchEntity").addEventListener("input",showEntityResults);
+$("backFocus").onclick=goBackFocus;
+$("showAll").onclick=()=>{state.focus=null;state.focusHistory=[];draw()};
 $("depth").addEventListener("change",e=>{state.depth=Number(e.target.value);draw()});
 $("allCategories").onclick=()=>{state.cats=new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0]));refreshToggles();draw()};
 $("resetView").onclick=()=>selectRoot("atlantis::pers:bach");
