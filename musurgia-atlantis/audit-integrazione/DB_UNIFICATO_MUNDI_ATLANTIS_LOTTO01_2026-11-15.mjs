@@ -159,6 +159,21 @@ export function buildUnifiedDatabase(d){
  }
  atlantis.links.forEach((e,i)=>append("atlantis","grafo",e,i));
  mundi.edges.forEach((e,i)=>append("mundi","grafo",e,i));
+ // In Mundi le lenti sono una SECONDA famiglia di archi storici, distinta
+ // dagli edges di base. Il visualizzatore originale le include in currentEdges.
+ // Solo relazioni documentate, con fonte e estremi esistenti, come in app-livelli.js.
+ const mundiLensRelations=(mundi.lenses?.relations||[]).filter(e=>
+   typeof e.status==="string"&&e.status.startsWith("documentato")&&
+   Array.isArray(e.sources)&&e.sources.length>0&&
+   maps.mundi.has(e.source)&&maps.mundi.has(e.target));
+ mundiLensRelations.forEach((e,i)=>{
+   const source=maps.mundi.get(e.source),target=maps.mundi.get(e.target);
+   links.push({id:"mundi::lenti::"+(e.id||i),source,target,
+     relation:e.kind||e.group||"relazione_documentata",group:e.group||null,
+     forward:e.forward||null,reverse:e.reverse||null,
+     quality:e.status,layer:"mundi",collection:"lenti-originali",
+     visibility:"musical",original:e});
+ });
  special.relations.forEach((e,i)=>append("mundi","relazioni-specialistiche",e,i));
  extension.relations.forEach((e,i)=>{
    const source=maps.mundi_extension.get(e.source)||maps.mundi.get(e.source);
@@ -201,10 +216,10 @@ export function buildUnifiedDatabase(d){
  const stageRecords=new Set(staging.nodes.filter(n=>n.category==="scheda_catalogo_flaminio").map(n=>n.id));
  const connectedRecords=new Set(staging.links.flatMap(e=>[typeof e.source==="object"?e.source?.id:e.source,typeof e.target==="object"?e.target?.id:e.target]));
  const missing=registry.records.filter(r=>!stageRecords.has(r.source_id)||!connectedRecords.has(r.source_id)).map(r=>r.source_id);
- const originalEdges=atlantis.links.length+mundi.edges.length+special.relations.length+extension.relations.length+staging.links.length;
+ const originalEdges=atlantis.links.length+mundi.edges.length+special.relations.length+extension.relations.length+staging.links.length+mundiLensRelations.length;
  const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length;
  const counts={mundi_nodes:mundi.nodes.length,mundi_extension_records:extension.nodes.length,mundi_extension_new_nodes:extension.nodes.filter(n=>!baseID.has(n.id)).length,
-   atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,
+   atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,mundi_lens_relations:mundiLensRelations.length,
    mundi_special_relations:special.relations.length,mundi_extension_relations:extension.relations.length,
    atlantis_links:atlantis.links.length,flaminio_links:staging.links.length,original_source_edges:originalEdges,
    integrated_people:identity.length,shared_flaminio_people:sharedFlaminio.length,
