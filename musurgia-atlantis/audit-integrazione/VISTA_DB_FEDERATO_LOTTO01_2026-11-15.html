@@ -91,7 +91,7 @@ const catList=[
  ["eventi","Eventi"],["documentazione","Documentazione"]
 ];
 const colors={persone:"#f2cf89",opere:"#76c5e6",generi_forme:"#b6e4ad",reti_culturali:"#c9adfa",strumenti:"#dbb595",luoghi:"#a1d6bd",istituzioni:"#b5bfe8",concetti:"#e0b3cf",capitoli:"#c2e7bd",eventi:"#e4b8a3",documentazione:"#888"};
-const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[]};
+const state={db:null,root:null,cats:new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0])),labels:new Set(["persone","generi_forme"]),depth:1,lenses:new Set(["musica","trasmissioni","genealogie","collaborazioni"]),graph:null,rendered:[],renderedLinks:[],parents:new Map(),distances:new Map(),expanded:new Set(),focus:null,focusHistory:[],trail:[],trailEdges:[]};
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function make(tag,txt,cls){const x=document.createElement(tag);if(txt!==undefined&&txt!==null)x.textContent=String(txt);if(cls)x.className=cls;return x}
 function categoryName(key){return catList.find(c=>c[0]===key)?.[1]||key}
@@ -127,7 +127,7 @@ function showEntityResults(){
 function selectRoot(id){
  const n=state.db.nodes.find(x=>x.id===id);if(!n)return;
  if(n.visibility==="documentary"){showNode(n);return}
- state.root=id;state.focus=null;state.focusHistory=[];$("searchEntity").value=n.name;showEntityResults();draw();openDetails(true)
+ state.root=id;state.focus=null;state.focusHistory=[];state.trail=[id];state.trailEdges=[];$("searchEntity").value=n.name;showEntityResults();draw();openDetails(true)
 }
 function openDetails(open){
  const panel=$("detailsPanel"),layout=$("mainLayout"),toggle=$("detailsToggle");
@@ -141,7 +141,7 @@ function openDetails(open){
  }
 }
 function showNebula(){
- state.root=null;state.focus=null;state.focusHistory=[];
+ state.root=null;state.focus=null;state.focusHistory=[];state.trail=[];state.trailEdges=[];
  $("searchEntity").value="";showEntityResults();
  draw();
 }
@@ -156,17 +156,57 @@ function selectSubnode(id){
  const n=state.db?.nodes.find(x=>x.id===id);
  if(!n||n.visibility==="documentary")return;
  if(!state.root){selectRoot(id);return}
- if(id===state.root){state.focus=null;state.focusHistory=[];draw();return}
- if(state.focus===id){showNode(n);return}
- state.focusHistory.push(state.focus);
- state.focus=id;
+ if(id===state.focus){showNode(n);openDetails(true);return}
+ // Il percorso storico resta in memoria, non viene ricalcolato partendo
+ // da un qualunque arco di genere che potrebbe condurre ad altri autori.
+ const prior=state.trail.indexOf(id);
+ if(prior>=0){
+   state.trail=state.trail.slice(0,prior+1);
+   state.trailEdges=state.trailEdges.slice(0,prior);
+ }else{
+   const center=state.focus||state.root;
+   // Usa esclusivamente gli archi ATTUALMENTE visibili e non sospesi.
+   const adj=new Map();
+   for(const e of state.renderedLinks){
+     const a=typeof e.source==="object"?e.source.id:e.source;
+     const b=typeof e.target==="object"?e.target.id:e.target;
+     for(const [from,to] of [[a,b],[b,a]]){
+       if(!adj.has(from))adj.set(from,[]);
+       adj.get(from).push({to,e});
+     }
+   }
+   const visited=new Set([center]),parents=new Map(),queue=[center];
+   for(let qi=0;qi<queue.length&&!visited.has(id);qi++){
+     for(const {to,e} of adj.get(queue[qi])||[]){
+       if(visited.has(to))continue;
+       visited.add(to);parents.set(to,{from:queue[qi],edge:e});
+       queue.push(to);
+     }
+   }
+   if(!parents.has(id))return;
+   const extension=[];let here=id;
+   while(here!==center&&parents.has(here)){
+     const link=parents.get(here);
+     extension.unshift({id:here,edgeId:link.edge.id});
+     here=link.from;
+   }
+   if(here!==center)return;
+   for(const step of extension){
+     const ancestor=state.trail.indexOf(step.id);
+     if(ancestor>=0){state.trail=state.trail.slice(0,ancestor+1);state.trailEdges=state.trailEdges.slice(0,ancestor)}
+     else{state.trail.push(step.id);state.trailEdges.push(step.edgeId)}
+   }
+ }
+ state.focus=state.trail.length>1?state.trail.at(-1):null;
+ state.focusHistory=state.trail.slice(0,-1);
  draw();showNode(n);openDetails(true);
 }
 function goBackFocus(){
- if(!state.focusHistory.length)return;
- state.focus=state.focusHistory.pop();
+ if(state.trail.length<=1)return;
+ state.trail.pop();state.trailEdges.pop();
+ state.focus=state.trail.length>1?state.trail.at(-1):null;
+ state.focusHistory=state.trail.slice(0,-1);
  draw();
- if(state.focus){const n=state.db.nodes.find(x=>x.id===state.focus);if(n)showNode(n)}
 }
 function edgeReason(e){
  const orig=e.original||{};
