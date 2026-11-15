@@ -12,7 +12,8 @@ export const sourcePaths=[
   {key:"staging",path:"musurgia-atlantis/audit-integrazione/STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_GATE04_COPIA_2026-11-15.json"},
   {key:"registry",path:"musurgia-atlantis/audit-integrazione/DB_FEDERATO_LOTTO01_2026-11-15_REGISTRO_500.json"},
   {key:"crosswalk",path:"musurgia-atlantis/audit-integrazione/CROSSWALK_GLOBALE_PERSONE_CHECKPOINT21_2026-11-10.json"},
-  {key:"curated",path:"musurgia-atlantis/audit-integrazione/CROSSWALK_TASSONOMICO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.json"}
+  {key:"curated",path:"musurgia-atlantis/audit-integrazione/CROSSWALK_TASSONOMICO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.json"},
+  {key:"sonata_overlay",path:"musurgia-atlantis/audit-integrazione/SONATA_CAMERA_RACCORDI_OPERATIVI_2026-11-16.json"}
 ];
 const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[‘’´']/g,"").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
 function categoryFor(layer,n){
@@ -53,7 +54,7 @@ function categoryFor(layer,n){
  return "concetti";
 }
 export function buildUnifiedDatabase(d){
- const {mundi,extension,special,atlantis,staging,registry,crosswalk,curated}=d;
+ const {mundi,extension,special,atlantis,staging,registry,crosswalk,curated,sonata_overlay}=d;
  const nodes=[],links=[],byID=new Map(),maps={mundi:new Map(),mundi_extension:new Map(),atlantis:new Map(),flaminio:new Map()};
  const atID=new Map(atlantis.nodes.map(n=>[n.id,n]));
  const baseID=new Map(mundi.nodes.map(n=>[n.id,n]));
@@ -260,24 +261,61 @@ export function buildUnifiedDatabase(d){
      collection:"archi-musicologici-curati",quality:x.quality||"CURATED_STAGING",visibility:"musical",original:x};
    links.push(e);semanticCurated.push({id:e.id,source:e.source,target:e.target,relation:e.relation});
  }
+ // SONATA: prima famiglia tassonomica dell'overlay generale resa
+ // operativa nello staging, senza fondere identità né promuovere le opere
+ // candidate. Gli altri overlay restano registri di revisione.
+ const sonataNodes=[],sonataLinks=[];
+ if(sonata_overlay?.schema!=="musurgia-sonata-camera-operational-staging-v1")
+   throw Error("Overlay Sonata operativo mancante o schema incompatibile");
+ const sonataID=new Set(sonata_overlay.nodes.map(n=>n.id));
+ if(sonataID.size!==sonata_overlay.nodes.length)throw Error("Overlay Sonata: ID nodo duplicati");
+ for(const n of sonata_overlay.nodes){
+   if(!n.id.startsWith("tax20261115sc::")||byID.has(n.id)||!n.name||n.status!=="STAGING_CURATED_STRUCTURE_REVERSIBLE")
+     throw Error("Overlay Sonata: nodo ambiguo "+n.id);
+   const obj={id:n.id,name:n.name,category:"generi_forme",subtype:n.kind||"tipologia",
+     layer:"sonata_staging",visibility:"musical",categories_by_layer:{sonata_staging:"generi_forme"},
+     aliases:[],provenance:[{layer:"sonata_staging",original_id:n.id,payload:n}]};
+   nodes.push(obj);byID.set(n.id,obj);sonataNodes.push(obj.id);
+ }
+ function resolveSonataID(id){
+   if(id.startsWith("tax20261115sc::"))return byID.has(id)?id:null;
+   for(const layer of ["mundi","mundi_extension","atlantis","flaminio"]){
+     const prefix=layer+"::";
+     if(id.startsWith(prefix))return maps[layer].get(id.slice(prefix.length))||null;
+   }
+   return null;
+ }
+ const sonataEdgeSeen=new Set();
+ for(const e of sonata_overlay.edges){
+   if(e.status!=="STAGING_CURATED_STRUCTURE_REVERSIBLE"||sonataEdgeSeen.has(e.id))
+     throw Error("Overlay Sonata: arco non curato o ID duplicato "+e.id);
+   sonataEdgeSeen.add(e.id);
+   const source=resolveSonataID(e.source),target=resolveSonataID(e.target);
+   if(!source||!target||source===target)throw Error("Overlay Sonata: estremi non validi "+e.id);
+   const link={id:"sonata_staging::"+e.id,source,target,relation:e.predicate,
+     quality:"CURATED_STRUCTURAL_STAGING_NOT_SOURCE_WORK_VERIFIED",
+     layer:"sonata_staging",collection:"raccordi-tassonomici-sonata",visibility:"musical",
+     original:e};
+   links.push(link);sonataLinks.push(link.id);
+ }
  const seen=new Set();for(const e of links){if(seen.has(e.id))dupes.push(e.id);seen.add(e.id);}
  const idRecords=new Set(registry.records.map(r=>r.source_id));
  const stageRecords=new Set(staging.nodes.filter(n=>n.category==="scheda_catalogo_flaminio").map(n=>n.id));
  const connectedRecords=new Set(staging.links.flatMap(e=>[typeof e.source==="object"?e.source?.id:e.source,typeof e.target==="object"?e.target?.id:e.target]));
  const missing=registry.records.filter(r=>!stageRecords.has(r.source_id)||!connectedRecords.has(r.source_id)).map(r=>r.source_id);
  const originalEdges=atlantis.links.length+mundi.edges.length+special.relations.length+extension.relations.length+staging.links.length+mundiLensRelations.length;
- const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length;
+ const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length+sonataNodes.length;
  const counts={mundi_nodes:mundi.nodes.length,mundi_extension_records:extension.nodes.length,mundi_extension_new_nodes:extension.nodes.filter(n=>!baseID.has(n.id)).length,
    atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,mundi_lens_relations:mundiLensRelations.length,mundi_derived_taxonomy_bridges:derivedGenreRelations.length,
    mundi_special_relations:special.relations.length,mundi_extension_relations:extension.relations.length,
    atlantis_links:atlantis.links.length,flaminio_links:staging.links.length,original_source_edges:originalEdges,
    integrated_people:identity.length,shared_flaminio_people:sharedFlaminio.length,
    integrated_taxonomy:taxonomyIdentity.length,flaminio_legacy_reconciled:legacyReferences.length,
-   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,nodes:nodes.length,links:links.length,
+   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,sonata_staging_nodes:sonataNodes.length,sonata_staging_links:sonataLinks.length,nodes:nodes.length,links:links.length,
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- const expectedLinks=originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length;
+ const expectedLinks=originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length+sonataLinks.length;
  // Distinguere invarianti di integrita' da cardinalita' storiche di audit.
  // I conteggi nominali dei crosswalk possono mutare durante l'unificazione;
  // la loro discrepanza deve essere segnalata, non scambiata per dati corrotti.
@@ -291,6 +329,7 @@ export function buildUnifiedDatabase(d){
  const countWarnings=Object.entries(historicalCountWarnings).filter(([,mismatch])=>mismatch).map(([name])=>name);
  const failedChecks={
    archi_semantici_curati:semanticCurated.length===curated.semantic_edges.length,
+   sonata_raccordi_strutturali:sonataNodes.length===8&&sonataLinks.length===12,
    nodi_indicizzati:counts.nodes===byID.size,
    archi_totali:counts.links===expectedLinks,
    archi_orfani:counts.orphan_links===0,
@@ -312,7 +351,7 @@ export function buildUnifiedDatabase(d){
    status:"STAGING_UNIFICATO_NAVIGABILE_IDENTITA_STORICHE_NON_TUTTE_CERTIFICATE",
    counts,nodes,links,flaminio_records:registry.records,
    crosswalk:{mundi_atlantis:identity,mundi_atlantis_taxonomy:taxonomyIdentity,flaminio_atlantis:sharedFlaminio,flaminio_legacy_mundi:legacyReferences,
-     editorial_bridges:bridges,semantic_curated_links:semanticCurated,curated_music_nodes:curatedMusicNodes,excluded:ignored,curated_pending:curated.excluded_or_pending},
+     editorial_bridges:bridges,semantic_curated_links:semanticCurated,curated_music_nodes:curatedMusicNodes,sonata_staging_nodes:sonataNodes,sonata_staging_links:sonataLinks,sonata_pending:sonata_overlay.excluded_or_pending,excluded:ignored,curated_pending:curated.excluded_or_pending},
    policy:{preserve_all_source_nodes_and_relations:true,merge_person_pairs_and_explicit_curated_taxonomy_pairs:true,legacy_reference_id_redirects:true,curated_vivaldi_works_are_distinct_from_collection:true,
      homonyms_require_external_review:true,chapters_are_not_periods:true,genres_not_merged_by_name:true,
      hold_excluded_by_default:true,production_graphs_unchanged:true}};
