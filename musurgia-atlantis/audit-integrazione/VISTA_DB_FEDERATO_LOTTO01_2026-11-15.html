@@ -610,6 +610,11 @@ function draw(){
  });
  const links=filtered.links.map(e=>({...e}));
  state.rendered=nodes;state.renderedLinks=links;
+ const activeLensEdges=links.filter(e=>lensBucket(e)!==null).length;
+ const availableLensEdges=[...availableLensCounts().values()].reduce((sum,n)=>sum+n,0);
+ $("lensStatus").textContent="Archi Mundi visibili con questi filtri: "+activeLensEdges+
+   " · archivio Mundi consultabile: "+availableLensEdges+
+   ". Gli archi Atlantis, Flaminio e crosswalk non sono controllati da queste lenti.";
  $("graphSummary").textContent=comparing
   ?visibleTitle(state.comparison.from)+" ↔ "+visibleTitle(state.comparison.to)+" · rete dei percorsi pertinenti · "+nodes.length+" nodi · "+links.length+" archi"
   :overview
