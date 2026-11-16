@@ -13,7 +13,8 @@ export const sourcePaths=[
   {key:"registry",path:"musurgia-atlantis/audit-integrazione/DB_FEDERATO_LOTTO01_2026-11-15_REGISTRO_500.json"},
   {key:"crosswalk",path:"musurgia-atlantis/audit-integrazione/CROSSWALK_GLOBALE_PERSONE_CHECKPOINT21_2026-11-10.json"},
   {key:"curated",path:"musurgia-atlantis/audit-integrazione/CROSSWALK_TASSONOMICO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.json"},
-  {key:"sonata_overlay",path:"musurgia-atlantis/audit-integrazione/SONATA_CAMERA_RACCORDI_OPERATIVI_2026-11-16.json"}
+  {key:"sonata_overlay",path:"musurgia-atlantis/audit-integrazione/SONATA_CAMERA_RACCORDI_OPERATIVI_2026-11-16.json"},
+  {key:"sonata_works",path:"musurgia-atlantis/audit-integrazione/SONATA_OPERE_RACCORDI_FONTE_LOTTO01_2026-11-16.json"}
 ];
 const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[‘’´']/g,"").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
 function categoryFor(layer,n){
@@ -54,7 +55,7 @@ function categoryFor(layer,n){
  return "concetti";
 }
 export function buildUnifiedDatabase(d){
- const {mundi,extension,special,atlantis,staging,registry,crosswalk,curated,sonata_overlay}=d;
+ const {mundi,extension,special,atlantis,staging,registry,crosswalk,curated,sonata_overlay,sonata_works}=d;
  const nodes=[],links=[],byID=new Map(),maps={mundi:new Map(),mundi_extension:new Map(),atlantis:new Map(),flaminio:new Map()};
  const atID=new Map(atlantis.nodes.map(n=>[n.id,n]));
  const baseID=new Map(mundi.nodes.map(n=>[n.id,n]));
@@ -298,24 +299,81 @@ export function buildUnifiedDatabase(d){
      original:e};
    links.push(link);sonataLinks.push(link.id);
  }
+
+ // SONATA: opere già presenti nei 500 record Flaminio; nessuna nuova
+ // identità canonica e nessuna attribuzione autore dedotta dal titolo.
+ if(sonata_works?.schema!=="musurgia-sonata-worklinks-lot01-staging-v1")
+   throw Error("Overlay Sonata opere mancante o schema incompatibile");
+ const sonataWorkNodes=[],sonataWorkLinks=[];
+ const workNodeIds=new Set(sonata_works.nodes.map(n=>n.id));
+ if(workNodeIds.size!==sonata_works.nodes.length)throw Error("Sonata opere: ID ripetuti");
+ for(const n of sonata_works.nodes){
+   if(!n.id.startsWith("tax20261116son::")||byID.has(n.id)||!n.name||
+      n.status!=="STAGING_CURATED_STRUCTURE_REVERSIBLE")
+     throw Error("Sonata opere: nodo non ammesso "+n.id);
+   const obj={id:n.id,name:n.name,category:"generi_forme",subtype:n.kind,
+     layer:"sonata_staging",visibility:"musical",categories_by_layer:{sonata_staging:"generi_forme"},
+     aliases:[],provenance:[{layer:"sonata_staging",original_id:n.id,payload:n}]};
+   nodes.push(obj);byID.set(n.id,obj);sonataWorkNodes.push(n.id);
+ }
+ // Il riferimento documentario già esistente BWV 527 viene reso
+ // leggibile come opera nello STAGING, senza duplicarlo né alterare l'originale.
+ for(const o of sonata_works.presentation_overrides||[]){
+   const key=resolveSonataID(o.source),n=byID.get(key);
+   if(!n||n.layer!=="flaminio"||o.source!=="flaminio::audit:fl01:jsb03:doc:bwv527"||
+      o.status!=="STAGING_PRESENTATION_ONLY_SOURCE_DOCUMENTARY_PAYLOAD_UNCHANGED"||
+      o.category!=="opere"||o.visibility!=="musical")
+     throw Error("Sonata opere: override non ammesso "+o.source);
+   if(o.name&&n.name!==o.name){if(!n.aliases.includes(n.name))n.aliases.push(n.name);n.name=o.name;}
+   n.category=o.category;n.visibility=o.visibility;
+   n.sonata_staging_presentation={rationale:o.rationale,status:o.status};
+ }
+ const resolveWorkID=id=>id.startsWith("tax20261116son::")?(byID.has(id)?id:null):resolveSonataID(id);
+ const newEdgeIds=new Set(),workSourceRows=new Set();
+ for(const e of sonata_works.edges){
+   if(newEdgeIds.has(e.id)||!["STAGING_CURATED_STRUCTURE_REVERSIBLE","STAGING_SOURCE_CORRELATED_NOT_CANONICAL"].includes(e.status))
+     throw Error("Sonata opere: stato o ID arco incompatibile "+e.id);
+   newEdgeIds.add(e.id);
+   const source=resolveWorkID(e.source),target=resolveWorkID(e.target);
+   if(!source||!target||source===target)throw Error("Sonata opere: estremo assente "+e.id);
+   if(e.status==="STAGING_SOURCE_CORRELATED_NOT_CANONICAL"){
+     const rowID="flaminio:excel:"+e.source_excel_row;
+     const workID=e.target.slice("flaminio::".length);
+     if(!target.startsWith("flaminio::")||!Number.isInteger(e.source_excel_row)||
+        !String(e.source_url||"").startsWith("https://")||workSourceRows.has(e.source_excel_row)||
+        !staging.nodes.some(n=>n.id===rowID&&n.category==="scheda_catalogo_flaminio")||
+        !staging.links.some(x=>x.source===rowID&&x.target===workID))
+       throw Error("Sonata opere: assenza prova fonte→opera "+e.id);
+     workSourceRows.add(e.source_excel_row);
+   }
+   const link={id:"sonata_works::"+e.id,source,target,relation:e.predicate,
+     quality:e.quality,layer:"sonata_staging",collection:"opere-sonata-fonte-lotto01",
+     visibility:byID.get(source).visibility==="documentary"||byID.get(target).visibility==="documentary"?"documentary":"musical",original:e};
+   links.push(link);sonataWorkLinks.push(link.id);
+ }
+ if(sonataWorkNodes.length!==sonata_works.counts.new_taxonomy_nodes||
+    sonataWorkLinks.length!==sonata_works.counts.all_new_links||
+    workSourceRows.size!==sonata_works.counts.source_work_links||
+    sonata_works.counts.sonata_source_rows!==workSourceRows.size+sonata_works.excluded_or_pending.length)
+   throw Error("Sonata opere: gate copertura non superato");
  const seen=new Set();for(const e of links){if(seen.has(e.id))dupes.push(e.id);seen.add(e.id);}
  const idRecords=new Set(registry.records.map(r=>r.source_id));
  const stageRecords=new Set(staging.nodes.filter(n=>n.category==="scheda_catalogo_flaminio").map(n=>n.id));
  const connectedRecords=new Set(staging.links.flatMap(e=>[typeof e.source==="object"?e.source?.id:e.source,typeof e.target==="object"?e.target?.id:e.target]));
  const missing=registry.records.filter(r=>!stageRecords.has(r.source_id)||!connectedRecords.has(r.source_id)).map(r=>r.source_id);
  const originalEdges=atlantis.links.length+mundi.edges.length+special.relations.length+extension.relations.length+staging.links.length+mundiLensRelations.length;
- const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length+sonataNodes.length;
+ const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length+sonataNodes.length+sonataWorkNodes.length;
  const counts={mundi_nodes:mundi.nodes.length,mundi_extension_records:extension.nodes.length,mundi_extension_new_nodes:extension.nodes.filter(n=>!baseID.has(n.id)).length,
    atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,mundi_lens_relations:mundiLensRelations.length,mundi_derived_taxonomy_bridges:derivedGenreRelations.length,
    mundi_special_relations:special.relations.length,mundi_extension_relations:extension.relations.length,
    atlantis_links:atlantis.links.length,flaminio_links:staging.links.length,original_source_edges:originalEdges,
    integrated_people:identity.length,shared_flaminio_people:sharedFlaminio.length,
    integrated_taxonomy:taxonomyIdentity.length,flaminio_legacy_reconciled:legacyReferences.length,
-   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,sonata_staging_nodes:sonataNodes.length,sonata_staging_links:sonataLinks.length,nodes:nodes.length,links:links.length,
+   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,sonata_staging_nodes:sonataNodes.length,sonata_staging_links:sonataLinks.length,sonata_work_nodes:sonataWorkNodes.length,sonata_work_links:sonataWorkLinks.length,nodes:nodes.length,links:links.length,
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- const expectedLinks=originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length+sonataLinks.length;
+ const expectedLinks=originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length+sonataLinks.length+sonataWorkLinks.length;
  // Distinguere invarianti di integrita' da cardinalita' storiche di audit.
  // I conteggi nominali dei crosswalk possono mutare durante l'unificazione;
  // la loro discrepanza deve essere segnalata, non scambiata per dati corrotti.
@@ -330,6 +388,7 @@ export function buildUnifiedDatabase(d){
  const failedChecks={
    archi_semantici_curati:semanticCurated.length===curated.semantic_edges.length,
    sonata_raccordi_strutturali:sonataNodes.length===7&&sonataLinks.length===11,
+   sonata_opere_raccordi:sonataWorkNodes.length===10&&sonataWorkLinks.length===42&&workSourceRows.size===29,
    nodi_indicizzati:counts.nodes===byID.size,
    archi_totali:counts.links===expectedLinks,
    archi_orfani:counts.orphan_links===0,
@@ -351,7 +410,8 @@ export function buildUnifiedDatabase(d){
    status:"STAGING_UNIFICATO_NAVIGABILE_IDENTITA_STORICHE_NON_TUTTE_CERTIFICATE",
    counts,nodes,links,flaminio_records:registry.records,
    crosswalk:{mundi_atlantis:identity,mundi_atlantis_taxonomy:taxonomyIdentity,flaminio_atlantis:sharedFlaminio,flaminio_legacy_mundi:legacyReferences,
-     editorial_bridges:bridges,semantic_curated_links:semanticCurated,curated_music_nodes:curatedMusicNodes,sonata_staging_nodes:sonataNodes,sonata_staging_links:sonataLinks,sonata_pending:sonata_overlay.excluded_or_pending,excluded:ignored,curated_pending:curated.excluded_or_pending},
+     editorial_bridges:bridges,semantic_curated_links:semanticCurated,curated_music_nodes:curatedMusicNodes,sonata_staging_nodes:sonataNodes,sonata_staging_links:sonataLinks,sonata_pending:sonata_overlay.excluded_or_pending,
+     sonata_work_nodes:sonataWorkNodes,sonata_work_links:sonataWorkLinks,sonata_work_pending:sonata_works.excluded_or_pending,excluded:ignored,curated_pending:curated.excluded_or_pending},
    policy:{preserve_all_source_nodes_and_relations:true,merge_person_pairs_and_explicit_curated_taxonomy_pairs:true,legacy_reference_id_redirects:true,curated_vivaldi_works_are_distinct_from_collection:true,
      homonyms_require_external_review:true,chapters_are_not_periods:true,genres_not_merged_by_name:true,
      hold_excluded_by_default:true,production_graphs_unchanged:true}};
