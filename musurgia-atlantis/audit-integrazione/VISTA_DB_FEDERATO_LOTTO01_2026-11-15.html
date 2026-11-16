@@ -698,6 +698,78 @@ function suiteScopedProjection(db,edges,index,root){
    scope:"suite_sinfonico"};
 }
 
+
+ // Struttura dell'opera: l'ontologia è un sistema di TIPI, non un nuovo genere.
+ // La radice mostra classi figlie e opere/raccolte assegnate esplicitamente.
+ // I singoli elementi di una raccolta si aprono soltanto sul focus della raccolta.
+ function structureScopedProjection(db,edges,index,root){
+   if(root?.layer!=="structure_staging"||root.category!=="concetti")return null;
+   const isType=n=>n?.layer==="structure_staging"&&n.category==="concetti";
+   const schemaRel=r=>r?.startsWith("structural_");
+   const classRel=r=>r==="classified_as_structure";
+   const center=state.focus&&index.has(state.focus)?state.focus:root.id;
+   const trail=state.focus&&state.trail?.at(-1)===center?state.trail:[root.id];
+   const pathIDs=new Set(trail),pathEdgeIDs=new Set(state.trailEdges||[]);
+   const edgeByID=new Map(edges.map(e=>[e.id,e])),adj=new Map();
+   for(const e of edges){
+     for(const [from,to] of [[e.source,e.target],[e.target,e.source]]){
+       if(!adj.has(from))adj.set(from,[]);
+       adj.get(from).push({next:to,edge:e});
+     }
+   }
+   const heldRows=new Set((db.crosswalk?.sonata_work_pending||[]).map(x=>x.source_excel_row));
+   const heldWorks=new Set(db.nodes.filter(n=>n.category==="opere"&&(n.provenance||[])
+     .some(p=>heldRows.has(p.payload?.source_excel_row))).map(n=>n.id));
+   function permit(from,to,e){
+     if(!from||!to||to.visibility==="documentary"||pathIDs.has(to.id)||heldWorks.has(to.id))return false;
+     const rel=e.relation||"";
+     if(isType(from)){
+       if(e.layer!=="structure_staging")return false;
+       // Gli schemi sono scritti figlio -> supertipo; percorriamo solo il verso inverso.
+       if(isType(to)&&schemaRel(rel))return e.target===from.id&&e.source===to.id;
+       // La classificazione è opera -> tipo, non una fusione e non un rapporto autore.
+       if(to.category==="opere"&&classRel(rel))return e.target===from.id&&e.source===to.id;
+       return false;
+     }
+     // Una raccolta già visibile è una foglia finché non viene espressamente aperta.
+     if(from.category==="opere"&&state.focus===from.id&&from.id===center&&
+        to.category==="opere"&&e.layer!=="structure_staging")
+       return e.source===from.id&&/^(include|contien|raccolta_.*contien|ciclo_.*contien)/i.test(rel);
+     return false;
+   }
+   const parents=new Map(),distance=new Map([[center,0]]);
+   for(let i=1;i<trail.length;i++){
+     const e=edgeByID.get(state.trailEdges?.[i-1]);
+     if(e)parents.set(trail[i],{from:trail[i-1],edge:e});
+   }
+   for(let i=0;i<trail.length-1;i++)distance.set(trail[i],trail.length-1-i);
+   const queue=[center],seen=new Set(trail);
+   for(let i=0;i<queue.length;i++){
+     const id=queue[i],from=index.get(id),d=distance.get(id);
+     if(!from||d>=state.depth)continue;
+     for(const {next,edge} of adj.get(id)||[]){
+       if(seen.has(next)||!permit(from,index.get(next),edge))continue;
+       seen.add(next);distance.set(next,d+1);
+       parents.set(next,{from:id,edge});queue.push(next);
+     }
+   }
+   const selected=new Set(trail),show=new Set(state.cats);
+   for(const id of queue){
+     if(!show.has(index.get(id)?.category)&&!pathIDs.has(id))continue;
+     let p=id,safety=0;
+     while(p&&!selected.has(p)&&safety++<30){
+       selected.add(p);p=parents.get(p)?.from;
+     }
+   }
+   const nodes=db.nodes.filter(n=>selected.has(n.id)&&n.visibility!=="documentary");
+   const ids=new Set(nodes.map(n=>n.id));
+   const links=edges.filter(e=>ids.has(e.source)&&ids.has(e.target)&&(
+     pathEdgeIDs.has(e.id)||parents.get(e.source)?.edge?.id===e.id||
+     parents.get(e.target)?.edge?.id===e.id));
+   return {nodes,links,parents,distance,focused:!!state.focus,center,
+     hasTaxonomyPath:true,scope:"structural_types"};
+ }
+
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
@@ -712,6 +784,7 @@ function rootedProjection(db){
  if(root){
     const sonataView=sonataScopedProjection(db,edges,index,root);if(sonataView)return sonataView;
     const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return suiteView;
+    const structureView=structureScopedProjection(db,edges,index,root);if(structureView)return structureView;
   }
  if(!state.root){
    // Apertura globale: l'intera rete musicale disponibile, senza selezione.
