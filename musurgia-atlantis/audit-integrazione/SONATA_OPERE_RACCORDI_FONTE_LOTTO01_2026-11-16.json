@@ -1,0 +1,741 @@
+{
+  "schema": "musurgia-sonata-worklinks-lot01-staging-v1",
+  "date": "2026-11-16",
+  "status": "STAGING_ONLY_SOURCE_CORRELATED_WORK_IDS_NOT_CANONICAL",
+  "source_staging": "STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_GATE04_COPIA_2026-11-15.json",
+  "source_graph": "GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json",
+  "rules": [
+    "Sonata e forma-sonata restano distinte",
+    "No attribuzione autore dedotta dal solo titolo",
+    "Nessuna duplicazione di opere o raccolte",
+    "Sonata in trio per organo = un organista",
+    "Basso continuo non equivale a organico di due esecutori",
+    "Due pianoforti e percussioni BB115 non equivale a due strumenti",
+    "Solo indicizzazione tipologica nello staging; le fonti e i quality gate originali non sono promossi"
+  ],
+  "counts": {
+    "sonata_source_rows": 33,
+    "source_work_links": 29,
+    "held_source_rows": 4,
+    "new_taxonomy_nodes": 10,
+    "structural_links": 13,
+    "all_new_links": 42,
+    "unique_work_targets": 29
+  },
+  "nodes": [
+    {
+      "id": "tax20261116son::violino-solo",
+      "name": "Sonata per violino solo",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::tastiera-sola",
+      "name": "Sonata per tastiera sola",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::pianoforte-solo",
+      "name": "Sonata per pianoforte solo",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::arpa-sola",
+      "name": "Sonata per arpa sola",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::violino-clavicembalo",
+      "name": "Sonata per violino e clavicembalo",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::violino-pianoforte",
+      "name": "Sonata per violino e pianoforte",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::viola-gamba-clavicembalo",
+      "name": "Sonata per viola da gamba e clavicembalo",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::flauto-clavicembalo",
+      "name": "Sonata per flauto e clavicembalo obbligato",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::flauto-continuo",
+      "name": "Sonata per flauto e basso continuo",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    },
+    {
+      "id": "tax20261116son::due-pianoforti-percussioni",
+      "name": "Sonata per due pianoforti e percussioni",
+      "kind": "tipologia_per_organico",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "authority": "TAXONOMIC_NAVIGATION_NOT_IDENTITY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "sonop:struct:violino-solo",
+      "source": "tax20261115sc::form:sonata-solo",
+      "target": "tax20261116son::violino-solo",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:tastiera-sola",
+      "source": "tax20261115sc::form:sonata-solo",
+      "target": "tax20261116son::tastiera-sola",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:pianoforte-solo",
+      "source": "tax20261116son::tastiera-sola",
+      "target": "tax20261116son::pianoforte-solo",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:arpa-sola",
+      "source": "tax20261115sc::form:sonata-solo",
+      "target": "tax20261116son::arpa-sola",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:violino-clavicembalo",
+      "source": "tax20261115sc::form:sonata-due",
+      "target": "tax20261116son::violino-clavicembalo",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:violino-pianoforte",
+      "source": "tax20261115sc::form:sonata-due",
+      "target": "tax20261116son::violino-pianoforte",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:viola-gamba-clavicembalo",
+      "source": "tax20261115sc::form:sonata-due",
+      "target": "tax20261116son::viola-gamba-clavicembalo",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:flauto-clavicembalo",
+      "source": "tax20261115sc::form:sonata-due",
+      "target": "tax20261116son::flauto-clavicembalo",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:flauto-continuo",
+      "source": "mundi::genere-sonata",
+      "target": "tax20261116son::flauto-continuo",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:due-pianoforti-percussioni",
+      "source": "mundi::genere-sonata",
+      "target": "tax20261116son::due-pianoforti-percussioni",
+      "predicate": "has_instrumentation_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Arco di tipologia, non equivalenza"
+    },
+    {
+      "id": "sonop:struct:organ-trio-is-solo",
+      "source": "tax20261115sc::form:sonata-solo",
+      "target": "tax20261115sc::form:sonata-trio-organo",
+      "predicate": "has_specialized_solo_instrumentation",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Tre voci, un organista: non trio cameristico"
+    },
+    {
+      "id": "sonop:struct:continuo-camera",
+      "source": "tax20261116son::flauto-continuo",
+      "target": "mundi::genere-musica-da-camera",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "Il continuo può essere realizzato da più di uno strumentista"
+    },
+    {
+      "id": "sonop:struct:pianos-percussion-camera",
+      "source": "tax20261116son::due-pianoforti-percussioni",
+      "target": "mundi::genere-musica-da-camera",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "quality": "CURATED_STRUCTURAL_STAGING",
+      "rationale": "BB115 è musica cameristica, non sonata per due strumenti"
+    },
+    {
+      "id": "sonop:work:3675",
+      "source": "tax20261116son::violino-solo",
+      "target": "flaminio::audit:fl01:jsb05:work:excel3675",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3675,
+      "source_title": "Sonata n. 1 in sol minore",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUINTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1001.html",
+      "catalogue_identifier": "1001",
+      "evidence_status": "WEB_TEXT_OPENED_THIS_CHECKPOINT",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3676",
+      "source": "tax20261116son::violino-solo",
+      "target": "flaminio::audit:fl01:jsb05:work:excel3676",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3676,
+      "source_title": "Sonata n. 2 in la minore",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUINTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1003.html",
+      "catalogue_identifier": "1003",
+      "evidence_status": "WEB_TEXT_OPENED_THIS_CHECKPOINT",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3677",
+      "source": "tax20261116son::violino-solo",
+      "target": "flaminio::audit:fl01:jsb05:work:excel3677",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3677,
+      "source_title": "Sonata n. 3 in do maggiore",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUINTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1005.html",
+      "catalogue_identifier": "1005",
+      "evidence_status": "WEB_TEXT_OPENED_THIS_CHECKPOINT",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:4219",
+      "source": "tax20261116son::violino-solo",
+      "target": "flaminio::audit:fl01:bbb:work:excel4219",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 4219,
+      "source_title": "Sonata per violino solo in sol minore",
+      "source_overlay": "OVERLAY_LOTTO01_BARTOK_BARBER_BEACH_60_GUIDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonataviolino.html",
+      "catalogue_identifier": {
+        "bb": "124",
+        "sz": "117",
+        "dd": null
+      },
+      "evidence_status": "SOURCE_OVERLAY_CORRELATED_NOT_REVERIFIED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3949",
+      "source": "tax20261116son::tastiera-sola",
+      "target": "flaminio::audit:fl01:jsb06:work:excel3949",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3949,
+      "source_title": "Sonata in re maggiore",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_50_SESTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata963.html",
+      "catalogue_identifier": "963",
+      "evidence_status": "DIRECT_SOURCE_TEXT_OPENED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:4172",
+      "source": "tax20261116son::pianoforte-solo",
+      "target": "flaminio::audit:fl01:bbb:work:excel4172",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 4172,
+      "source_title": "Sonata per pianoforte",
+      "source_overlay": "OVERLAY_LOTTO01_BARTOK_BARBER_BEACH_60_GUIDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Barber/Barber-Sonata117.html",
+      "catalogue_identifier": {
+        "opus": "26"
+      },
+      "evidence_status": "SOURCE_OVERLAY_CORRELATED_NOT_REVERIFIED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:4261",
+      "source": "tax20261116son::pianoforte-solo",
+      "target": "flaminio::audit:fl01:bbb:work:excel4261",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 4261,
+      "source_title": "Sonata",
+      "source_overlay": "OVERLAY_LOTTO01_BARTOK_BARBER_BEACH_60_GUIDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonata.html",
+      "catalogue_identifier": {
+        "bb": "88",
+        "sz": "80",
+        "dd": null
+      },
+      "evidence_status": "SOURCE_OVERLAY_CORRELATED_NOT_REVERIFIED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:2024",
+      "source": "tax20261116son::arpa-sola",
+      "target": "flaminio::audit:fl01:alf-cpe:work:excel2024",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 2024,
+      "source_title": "Sonata in sol maggiore",
+      "source_overlay": "OVERLAY_LOTTO01_ALFANO_41_CPE_BACH_22_GUIDE_2026-11-13.json",
+      "source_url": "https://www.flaminioonline.it/Guide/BachC/Bachc-Sonata563.html",
+      "catalogue_identifier": "563",
+      "evidence_status": "SOURCE_OVERLAY_CORRELATED_NOT_REVERIFIED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3655",
+      "source": "tax20261116son::violino-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3655",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3655,
+      "source_title": "Sonata n. 1 in si minore per violino e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1014.html",
+      "catalogue_identifier": "1014",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3657",
+      "source": "tax20261116son::violino-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3657",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3657,
+      "source_title": "Sonata n. 2 in la maggiore per violino e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1015.html",
+      "catalogue_identifier": "1015",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3659",
+      "source": "tax20261116son::violino-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3659",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3659,
+      "source_title": "Sonata n. 3 in mi maggiore per violino e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1016.html",
+      "catalogue_identifier": "1016",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3661",
+      "source": "tax20261116son::violino-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3661",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3661,
+      "source_title": "Sonata n. 4 in do minore per violino e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1017.html",
+      "catalogue_identifier": "1017",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3662",
+      "source": "tax20261116son::violino-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3662",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3662,
+      "source_title": "Sonata n. 5 in fa minore per violino e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1018.html",
+      "catalogue_identifier": "1018",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3663",
+      "source": "tax20261116son::violino-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3663",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3663,
+      "source_title": "Sonata n. 6 in sol maggiore per violino e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1019.html",
+      "catalogue_identifier": "1019",
+      "evidence_status": "WEB_TEXT_OPENED_THIS_CHECKPOINT",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:4217",
+      "source": "tax20261116son::violino-pianoforte",
+      "target": "flaminio::audit:fl01:bbb:work:excel4217",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 4217,
+      "source_title": "Sonata per violino e pianoforte n. 1",
+      "source_overlay": "OVERLAY_LOTTO01_BARTOK_BARBER_BEACH_60_GUIDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonataviolinopf1.html",
+      "catalogue_identifier": {
+        "bb": "84",
+        "sz": "75",
+        "dd": null
+      },
+      "evidence_status": "SOURCE_OVERLAY_CORRELATED_NOT_REVERIFIED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:4218",
+      "source": "tax20261116son::violino-pianoforte",
+      "target": "flaminio::audit:fl01:bbb:work:excel4218",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 4218,
+      "source_title": "Sonata per violino e pianoforte n. 2",
+      "source_overlay": "OVERLAY_LOTTO01_BARTOK_BARBER_BEACH_60_GUIDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonataviolinopf2.html",
+      "catalogue_identifier": {
+        "bb": "85",
+        "sz": "76",
+        "dd": null
+      },
+      "evidence_status": "SOURCE_OVERLAY_CORRELATED_NOT_REVERIFIED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3656",
+      "source": "tax20261116son::viola-gamba-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3656",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3656,
+      "source_title": "Sonata n. 1 in sol maggiore per viola da gamba e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1027.html",
+      "catalogue_identifier": "1027",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3658",
+      "source": "tax20261116son::viola-gamba-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3658",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3658,
+      "source_title": "Sonata n. 2 in re maggiore per viola da gamba e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1028.html",
+      "catalogue_identifier": "1028",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3660",
+      "source": "tax20261116son::viola-gamba-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3660",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3660,
+      "source_title": "Sonata n. 3 in sol minore per viola da gamba e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1029.html",
+      "catalogue_identifier": "1029",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3649",
+      "source": "tax20261116son::flauto-clavicembalo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3649",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3649,
+      "source_title": "Sonata in si minore per flauto traverso e clavicembalo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1030.html",
+      "catalogue_identifier": "1030",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3646",
+      "source": "tax20261116son::flauto-continuo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3646",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3646,
+      "source_title": "Sonata in mi maggiore per flauto traverso e continuo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1035.html",
+      "catalogue_identifier": "1035",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3647",
+      "source": "tax20261116son::flauto-continuo",
+      "target": "flaminio::audit:fl01:jsb04:work:excel3647",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3647,
+      "source_title": "Sonata in mi minore per flauto traverso e continuo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_51_QUARTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata1034.html",
+      "catalogue_identifier": "1034",
+      "evidence_status": "WORKLIST_URL_ONLY_NOT_DIRECTLY_REREAD",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:4232",
+      "source": "tax20261116son::due-pianoforti-percussioni",
+      "target": "flaminio::audit:fl01:bbb:work:excel4232",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 4232,
+      "source_title": "Sonata per due pianoforti e percussioni",
+      "source_overlay": "OVERLAY_LOTTO01_BARTOK_BARBER_BEACH_60_GUIDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bartok/Bartok-Sonata2pf.html",
+      "catalogue_identifier": {
+        "bb": "115",
+        "sz": "110",
+        "dd": null
+      },
+      "evidence_status": "SOURCE_OVERLAY_CORRELATED_NOT_REVERIFIED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3936",
+      "source": "tax20261115sc::form:sonata-trio-organo",
+      "target": "flaminio::audit:fl01:jsb06:work:excel3936",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3936,
+      "source_title": "Sonata in do maggiore per organo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_50_SESTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata529.html",
+      "catalogue_identifier": "529",
+      "evidence_status": "INDIRECT_SEARCH_EXCERPT_DIRECT_HTTP_429",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3937",
+      "source": "tax20261115sc::form:sonata-trio-organo",
+      "target": "flaminio::audit:fl01:jsb06:work:excel3937",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3937,
+      "source_title": "Sonata in do minore per organo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_50_SESTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata526.html",
+      "catalogue_identifier": "526",
+      "evidence_status": "DIRECT_SOURCE_TEXT_OPENED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3938",
+      "source": "tax20261115sc::form:sonata-trio-organo",
+      "target": "flaminio::audit:fl01:jsb06:work:excel3938",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3938,
+      "source_title": "Sonata in mi bemolle maggiore per organo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_50_SESTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata525.html",
+      "catalogue_identifier": "525",
+      "evidence_status": "DIRECT_SOURCE_TEXT_OPENED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3939",
+      "source": "tax20261115sc::form:sonata-trio-organo",
+      "target": "flaminio::audit:fl01:jsb06:work:excel3939",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3939,
+      "source_title": "Sonata in mi minore per organo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_50_SESTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata528.html",
+      "catalogue_identifier": "528",
+      "evidence_status": "DIRECT_SOURCE_TEXT_OPENED",
+      "original_composer_attribution_not_promoted": true
+    },
+    {
+      "id": "sonop:work:3940",
+      "source": "tax20261115sc::form:sonata-trio-organo",
+      "target": "flaminio::audit:fl01:jsb03:doc:bwv527",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3940,
+      "source_title": "Sonata in re minore per organo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_50_SESTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata527.html",
+      "catalogue_identifier": null,
+      "evidence_status": "SOURCE_OVERLAY_CORRELATED_NOT_REVERIFIED",
+      "original_composer_attribution_not_promoted": true,
+      "documentary_reuse_of_existing_entity": true
+    },
+    {
+      "id": "sonop:work:3941",
+      "source": "tax20261115sc::form:sonata-trio-organo",
+      "target": "flaminio::audit:fl01:jsb06:work:excel3941",
+      "predicate": "subtype_has_source_correlated_work",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "quality": "SOURCE_CORRELATED_STAGING_NOT_CANONICAL",
+      "source_excel_row": 3941,
+      "source_title": "Sonata in sol maggiore per organo",
+      "source_overlay": "OVERLAY_LOTTO01_JSBACH_50_SESTE_SCHEDE_2026-11-14.json",
+      "source_url": "https://www.flaminioonline.it/Guide/Bach/Bach-Sonata530.html",
+      "catalogue_identifier": "530",
+      "evidence_status": "DIRECT_SOURCE_TEXT_OPENED",
+      "original_composer_attribution_not_promoted": true
+    }
+  ],
+  "presentation_overrides": [
+    {
+      "source": "flaminio::audit:fl01:jsb03:doc:bwv527",
+      "status": "STAGING_PRESENTATION_ONLY_SOURCE_DOCUMENTARY_PAYLOAD_UNCHANGED",
+      "category": "opere",
+      "visibility": "musical",
+      "name": "Sonata in re minore per organo, BWV 527",
+      "rationale": "Il sottolotto 06 collega esplicitamente la riga 3940 e la raccolta BWV 525–530 al riferimento documentario già esistente. Renderlo navigabile senza creare una seconda opera; resta candidata, non certificata."
+    }
+  ],
+  "excluded_or_pending": [
+    {
+      "source_excel_row": 3641,
+      "title": "Sonata in do maggiore per flauto traverso e clavicembalo",
+      "source_id": "flaminio:excel:3641",
+      "status": "HOLD_WORK_AUTHORSHIP_OR_DERIVATION",
+      "reason": "BWV 1033: attribuzione a Bach in HOLD nell'overlay JSB04; organico e fonte da riesaminare"
+    },
+    {
+      "source_excel_row": 3645,
+      "title": "Sonata in mi bemolle maggiore per flauto traverso e clavicembalo",
+      "source_id": "flaminio:excel:3645",
+      "status": "HOLD_WORK_AUTHORSHIP_OR_DERIVATION",
+      "reason": "BWV 1031: attribuzione a Bach in HOLD nell'overlay JSB04; possibile diversa autorialità"
+    },
+    {
+      "source_excel_row": 3654,
+      "title": "Sonata in sol minore per violino (o flauto traverso) e clavicembalo",
+      "source_id": "flaminio:excel:3654",
+      "status": "HOLD_WORK_AUTHORSHIP_OR_DERIVATION",
+      "reason": "BWV 1020: attribuzione a Bach in HOLD nell'overlay JSB04; possibile attribuzione a C. P. E. Bach"
+    },
+    {
+      "source_excel_row": 3946,
+      "title": "Sonata in do maggiore",
+      "source_id": "flaminio:excel:3946",
+      "status": "HOLD_WORK_AUTHORSHIP_OR_DERIVATION",
+      "reason": "BWV 966: attribuzione a Bach non attestata nel record JSB06 (composer_ref null); possibili questioni di derivazione da Reincken"
+    }
+  ],
+  "exceptions": [
+    {
+      "source_excel_row": 3940,
+      "work_id": "audit:fl01:jsb03:doc:bwv527",
+      "status": "REUSE_EXISTING_ENTITY_AS_STAGING_VIEW",
+      "notes": "Non duplicare BWV 527, conservare originale documentalità come payload/provenance"
+    },
+    {
+      "source_excel_row": 4232,
+      "work_id": "audit:fl01:bbb:work:excel4232",
+      "status": "MULTI_PERFORMER_INSTRUMENTATION",
+      "evidence_url": "https://ressources.ircam.fr/en/work/sonate-pour-deux-pianos-et-percussion",
+      "notes": "2 pianoforti + percussioni, non la tipologia 'Sonata per due strumenti'"
+    },
+    {
+      "source_excel_row": 4261,
+      "work_id": "audit:fl01:bbb:work:excel4261",
+      "status": "SOURCE_RUBRIC_NOT_TAXONOMY",
+      "notes": "Rubrica Flaminio 'Musica da camera > Pianoforte solo' non determina appartenenza alla camera; organico piano solo"
+    },
+    {
+      "source_excel_row": 3949,
+      "work_id": "audit:fl01:jsb06:work:excel3949",
+      "status": "HISTORICAL_KEYBOARD_UNSPECIFIED",
+      "notes": "Non dedurre pianoforte moderno dalla sola parola tastiera"
+    }
+  ]
+}
