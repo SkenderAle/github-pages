@@ -57,8 +57,64 @@
       "original_status": "IN_REVIEW_STAGING_ONLY",
       "nodes": 13,
       "edges": 42,
-      "mode": "proposte censite ma non caricate",
-      "operational_file": null
+      "mode": "In staging: 11 nuovi nodi, 36 archi (31 navigabili + 5 documentari); riusate Fuga Mundi e Ricercare già condiviso senza creare omonimi. Sei proposte ancora HOLD, incluse due identità di Fughe in do minore distinte da BWV 574/575. Partita su corale raccordata alle variazioni, mai a Suite.",
+      "operational_file": "CONTRAPPUNTO_VARIAZIONI_RACCORDI_OPERATIVI_2026-11-16.json",
+      "operational_nodes_added": 11,
+      "operational_links_added": 36,
+      "operational_links_documentary_only": 5,
+      "operational_links_navigable": 31,
+      "existing_identical_form_nodes_reused": 2,
+      "operational_source_proposals_not_loaded": 6,
+      "preflight_status": "PARTIAL_STAGING_LOADED_LOGICAL_RUNTIME_PASS_NOT_BROWSER",
+      "runtime_report": "REGRESSIONE_CONTRAPPUNTO_VARIAZIONI_DATI_REALI_2026-11-16.json",
+      "runtime_harness": "TEST_CONTRAPPUNTO_VARIAZIONI_RUNTIME_2026-11-16.mjs",
+      "actual_builder_counts": {
+        "sources": 13,
+        "nodes": 2843,
+        "links": 8614,
+        "orphans": 0,
+        "duplicate_link_ids": 0,
+        "flaminio_rows": 500
+      },
+      "rooted_projection": {
+        "contrappunto": {
+          "nodes": 21,
+          "links": 20
+        },
+        "variazioni": {
+          "nodes": 28,
+          "links": 27
+        },
+        "fuga": {
+          "nodes": 17,
+          "links": 16
+        },
+        "ricercare": {
+          "nodes": 2,
+          "links": 1
+        },
+        "passacaglia": {
+          "nodes": 9,
+          "links": 8
+        },
+        "ciaccona": {
+          "nodes": 4,
+          "links": 3
+        },
+        "partita_su_corale": {
+          "nodes": 7,
+          "links": 6
+        },
+        "toccata_e_fuga": {
+          "nodes": 7,
+          "links": 6
+        }
+      },
+      "open_identity_issues": [
+        "Fuga per organo: 2 nodi Flaminio jsb05/jsb06 da riconciliare, non fusi",
+        "Fuga in do minore BWV 574 e BWV 575: stesso titolo generico ma opere distinte",
+        "5 parti documentarie BWV 1004/582/1079 non pubblicate né promosse automaticamente"
+      ]
     },
     {
       "name": "DANZE_STRUMENTALI",
@@ -193,8 +249,8 @@
   "totals": {
     "source_overlay_nodes": 122,
     "source_overlay_edges": 253,
-    "operational_staging_new_nodes": 26,
-    "operational_staging_new_edges": 72,
+    "operational_staging_new_nodes": 37,
+    "operational_staging_new_edges": 108,
     "operational_existing_genre_nodes_reused": 4,
     "operational_existing_genre_work_edges_reused": 19,
     "sonata_source_records_examined": 33,
@@ -203,12 +259,16 @@
     "operational_builder_runtime": "PASS_ISOLATED_V8",
     "suite_sinfonico_staging_nodes": 8,
     "suite_sinfonico_staging_edges": 21,
-    "current_builder_nodes": 2832,
-    "current_builder_links": 8578,
-    "current_builder_runtime": "PASS_ISOLATED_V8_12_REAL_SOURCES",
+    "current_builder_nodes": 2843,
+    "current_builder_links": 8614,
+    "current_builder_runtime": "PASS_ISOLATED_V8_13_REAL_SOURCES",
     "structure_staging_new_nodes": 5,
     "structure_staging_new_edges": 13,
-    "current_builder_sources": 12
+    "current_builder_sources": 13,
+    "counterpoint_staging_new_nodes": 11,
+    "counterpoint_staging_new_edges": 36,
+    "counterpoint_staging_documentary_edges": 5,
+    "counterpoint_source_anchor_reuses": 2
   },
-  "next": "Composizioni/Cicli/Raccolte: completare audit dei membri delle raccolte, identità crossDB An die ferne Geliebte, Quattro stagioni e parte/documento BWV1004. Poi aprire Contrappunto e Variazioni e gli altri quattro overlay. Collaudo WebGL/Canvas/Android ancora aperto. Lotto 2 Flaminio BLOCCATO."
+  "next": "Prossima famiglia: Danze strumentali, distinguendo danza come genere da forma-suite e da organizzazione di raccolte. Sospesi: audit d'identità Fuga per organo jsb05/jsb06; dettagli BWV574/575 e movimenti documentari BWV1004/582/1079; controllo nel browser WebGL/Canvas/Android. Lotto 2 Flaminio BLOCCATO."
 }
