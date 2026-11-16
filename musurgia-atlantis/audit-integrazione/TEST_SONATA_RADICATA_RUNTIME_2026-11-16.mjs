@@ -14,8 +14,9 @@ const source=Object.fromEntries(sourcePaths.map(({key,path})=>[
  key,JSON.parse(readFileSync(resolve(repoRoot,path),"utf8"))
 ]));
 const db=buildUnifiedDatabase(source);
-assert.equal(db.counts.nodes,2819);
-assert.equal(db.counts.links,8544);
+// Lo staging include ora l'overlay Suite/Sinfonico (8 nodi + 21 archi): Sonata invariata.
+assert.equal(db.counts.nodes,2827);
+assert.equal(db.counts.links,8565);
 assert.equal(db.counts.flaminio_source_records,500);
 assert.equal(db.counts.orphan_links,0);
 assert.equal(db.counts.duplicate_link_ids,0);
