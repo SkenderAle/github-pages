@@ -515,10 +515,16 @@ export function buildUnifiedDatabase(d){
     if(["instrumented_form","composite_form","qualified_form"].includes(e.role)&&
        (sourceNode.category!=="generi_forme"||targetNode.category!=="generi_forme"))
       throw Error("Contrappunto: due forme non compatibili "+e.id);
+    // Le parti solo documentarie (BWV 1004, 582, 1079) conservano i
+    // raccordi in audit, ma non sono promosse a nodi musicali visibili.
+    const documentaryPart=e.role==="documented_part_form"&&
+      sourceNode.provenance?.some(p=>p.payload?.documentary_only===true);
+    if(e.role==="documented_part_form"&&!documentaryPart)
+      throw Error("Contrappunto: parte documentaria non qualificata "+e.id);
     const link={id:"counterpoint_staging::"+e.id,source,target,relation:e.predicate,
        quality:e.status,layer:"counterpoint_staging",
        collection:"contrappunto-variazioni-forme-composte",
-       visibility:sourceNode.visibility==="documentary"||targetNode.visibility==="documentary"?"documentary":"musical",
+       visibility:documentaryPart||sourceNode.visibility==="documentary"||targetNode.visibility==="documentary"?"documentary":"musical",
        original:e};
     links.push(link);counterpointLinks.push(link.id);
   }
@@ -540,7 +546,7 @@ export function buildUnifiedDatabase(d){
    atlantis_links:atlantis.links.length,flaminio_links:staging.links.length,original_source_edges:originalEdges,
    integrated_people:identity.length,shared_flaminio_people:sharedFlaminio.length,
    integrated_taxonomy:taxonomyIdentity.length,flaminio_legacy_reconciled:legacyReferences.length,
-   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,sonata_staging_nodes:sonataNodes.length,sonata_staging_links:sonataLinks.length,sonata_work_nodes:sonataWorkNodes.length,sonata_work_links:sonataWorkLinks.length,suite_staging_nodes:suiteNodes.length,suite_staging_links:suiteLinks.length,structure_staging_nodes:structureNodes.length,structure_staging_links:structureLinks.length,counterpoint_staging_nodes:counterpointNodes.length,counterpoint_staging_links:counterpointLinks.length,nodes:nodes.length,links:links.length,
+   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,sonata_staging_nodes:sonataNodes.length,sonata_staging_links:sonataLinks.length,sonata_work_nodes:sonataWorkNodes.length,sonata_work_links:sonataWorkLinks.length,suite_staging_nodes:suiteNodes.length,suite_staging_links:suiteLinks.length,structure_staging_nodes:structureNodes.length,structure_staging_links:structureLinks.length,counterpoint_staging_nodes:counterpointNodes.length,counterpoint_staging_links:counterpointLinks.length,counterpoint_documentary_links:counterpointLinks.filter(id=>links.find(e=>e.id===id)?.visibility==="documentary").length,nodes:nodes.length,links:links.length,
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
@@ -562,7 +568,7 @@ export function buildUnifiedDatabase(d){
    sonata_opere_raccordi:sonataWorkNodes.length===6&&sonataWorkLinks.length===27&&workSourceRows.size===10&&reusedWorkRows.size===19,
    suite_raccordi_strutturali:suiteNodes.length===8&&suiteLinks.length===21,
     strutture_raccordi_operativi:structureNodes.length===5&&structureLinks.length===13,
-    contrappunto_variazioni_operativi:counterpointNodes.length===11&&counterpointLinks.length===36,
+    contrappunto_variazioni_operativi:counterpointNodes.length===11&&counterpointLinks.length===36&&counterpointLinks.filter(id=>links.find(e=>e.id===id)?.visibility==="documentary").length===5,
     nodi_indicizzati:counts.nodes===byID.size,
    archi_totali:counts.links===expectedLinks,
    archi_orfani:counts.orphan_links===0,
