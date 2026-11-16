@@ -1,0 +1,137 @@
+{
+  "schema": "musurgia-sonata-projection-runtime-audit-v1",
+  "date": "2026-11-16",
+  "branch": "main",
+  "environment": "V8 isolated full builder + actual rootedProjection extracted from latest staging HTML",
+  "builder": {
+    "sources_loaded": 10,
+    "nodes": 2819,
+    "links": 8544,
+    "flaminio_rows": 500,
+    "orphans": 0,
+    "duplicate_link_ids": 0,
+    "count_warnings": 0,
+    "passed": true
+  },
+  "projection": {
+    "method": "Execute actual HTML rootedProjection with mock UI state and all lenses enabled; no browser/WebGL",
+    "selected_test_cases": [
+      {
+        "root": "atlantis::senso:sonata",
+        "depth": 5,
+        "nodes": 109,
+        "edges": 108,
+        "no_aida": true,
+        "no_don_giovanni": true,
+        "hold_work_rows_absent": [
+          3641,
+          3645,
+          3654,
+          3946
+        ]
+      },
+      {
+        "root": "tax20261115sc::form:sonata-trio-organo",
+        "depth": 5,
+        "nodes": 11,
+        "edges": 10,
+        "expected_bwv": [
+          525,
+          526,
+          527,
+          528,
+          529,
+          530
+        ],
+        "no_violino_solo": true,
+        "no_1044_concerto": true
+      },
+      {
+        "root": "flaminio::audit:fl01:jsb05:genre:sonata-violino-solo",
+        "depth": 5,
+        "nodes": 8,
+        "edges": 7,
+        "bach_bwv": [
+          1001,
+          1003,
+          1005
+        ],
+        "bartok_bb124": true,
+        "partite_hidden_until_collection_focus": true
+      },
+      {
+        "root": "tax20261116son::due-pianoforti-percussioni",
+        "depth": 5,
+        "nodes": 4,
+        "edges": 3,
+        "bartok_bb115": true,
+        "bach_bwv1001_absent": true
+      },
+      {
+        "root": "atlantis::pers:bach",
+        "depth": 5,
+        "nodes": 467,
+        "edges": 466,
+        "bwv1001": true,
+        "bwv525": true,
+        "bartok_bb124_absent": true,
+        "foreign_opera_absent": true
+      },
+      {
+        "root": "atlantis::pers:bach",
+        "focus": "atlantis::senso:sonata",
+        "depth": 5,
+        "nodes": 58,
+        "edges": 56,
+        "bach_works_visible": true,
+        "bartok_works_absent": true
+      },
+      {
+        "root": "atlantis::senso:sonata",
+        "focus": "flaminio::audit:fl01:jsb05:collection:sei-sonate-partite-violino",
+        "depth": 4,
+        "nodes": 10,
+        "partite_visible_on_explicit_focus": true
+      },
+      {
+        "root": "atlantis::senso:sonata",
+        "focus": "flaminio::audit:fl01:jsb03:doc:bwv527",
+        "depth": 4,
+        "nodes": 7,
+        "reuse_to_bwv1044_visible_on_explicit_focus": true
+      }
+    ],
+    "passed": true
+  },
+  "failure_detected_before_fix": {
+    "sonata_depth5_nodes": 1805,
+    "bach_depth5_nodes": 1794,
+    "includes_unrelated_opere": [
+      "Aida",
+      "Don Giovanni"
+    ],
+    "hold_edges_visible_in_original_preview": true
+  },
+  "fixes": [
+    "UI HOLD filter also checks original and current relation and quality gate",
+    "Sonata scoped projection traverses genre hierarchy only parent-to-child",
+    "Author nodes are leaves, not bridges to whole catalogues",
+    "Original source-type works and their distinct category metadata preserved",
+    "Collections do not expand members automatically, but do when selected",
+    "Inter-work quotations/derivations open on explicit work focus, not automatically"
+  ],
+  "unchanged": [
+    "musurgia-atlantis/grafo.json",
+    "musurgia-atlantis/index.html",
+    "atlante3d/database/grafo.json"
+  ],
+  "next_gates": [
+    "Browser DOM runtime including actual ForceGraph3D / Canvas fallback",
+    "Android/WebGL performance and label hover",
+    "Compare two lemmas regression",
+    "Legacy overlay family integration beyond Sonata (7 remaining)",
+    "No Lotto 2 Flaminio until unified taxonomy is reviewed"
+  ],
+  "runnable_harness": "TEST_SONATA_RADICATA_RUNTIME_2026-11-16.mjs",
+  "status": "PASS_LOGICAL_RUNTIME_NOT_BROWSER_OR_HISTORICAL_CERTIFICATION"
+}
