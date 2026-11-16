@@ -351,10 +351,23 @@ export function buildUnifiedDatabase(d){
      visibility:byID.get(source).visibility==="documentary"||byID.get(target).visibility==="documentary"?"documentary":"musical",original:e};
    links.push(link);sonataWorkLinks.push(link.id);
  }
+ // Non ricreare gli archi fonte già presenti, ma verificarne l'identità
+ // originale e contarli nella copertura delle 33 schede Sonata.
+ const reusedWorkRows=new Set();
+ for(const e of sonata_works.existing_source_work_links||[]){
+   const sourceID=e.source.slice("flaminio::".length),targetID=e.target.slice("flaminio::".length);
+   if(!e.source.startsWith("flaminio::")||!e.target.startsWith("flaminio::")||
+      reusedWorkRows.has(e.source_excel_row)||workSourceRows.has(e.source_excel_row)||
+      !staging.links.some(x=>x.id===e.original_link_id&&x.source===sourceID&&x.target===targetID&&x.relation===e.predicate)||
+      !staging.links.some(x=>x.source==="flaminio:excel:"+e.source_excel_row&&x.target===targetID))
+     throw Error("Sonata opere: riuso arco originale non valido "+e.original_link_id);
+   reusedWorkRows.add(e.source_excel_row);
+ }
  if(sonataWorkNodes.length!==sonata_works.counts.new_taxonomy_nodes||
     sonataWorkLinks.length!==sonata_works.counts.all_new_links||
     workSourceRows.size!==sonata_works.counts.source_work_links||
-    sonata_works.counts.sonata_source_rows!==workSourceRows.size+sonata_works.excluded_or_pending.length)
+    reusedWorkRows.size!==sonata_works.counts.existing_source_work_links_reused||
+    sonata_works.counts.sonata_source_rows!==workSourceRows.size+reusedWorkRows.size+sonata_works.excluded_or_pending.length)
    throw Error("Sonata opere: gate copertura non superato");
  const seen=new Set();for(const e of links){if(seen.has(e.id))dupes.push(e.id);seen.add(e.id);}
  const idRecords=new Set(registry.records.map(r=>r.source_id));
@@ -388,7 +401,7 @@ export function buildUnifiedDatabase(d){
  const failedChecks={
    archi_semantici_curati:semanticCurated.length===curated.semantic_edges.length,
    sonata_raccordi_strutturali:sonataNodes.length===7&&sonataLinks.length===11,
-   sonata_opere_raccordi:sonataWorkNodes.length===10&&sonataWorkLinks.length===42&&workSourceRows.size===29,
+   sonata_opere_raccordi:sonataWorkNodes.length===6&&sonataWorkLinks.length===27&&workSourceRows.size===10&&reusedWorkRows.size===19,
    nodi_indicizzati:counts.nodes===byID.size,
    archi_totali:counts.links===expectedLinks,
    archi_orfani:counts.orphan_links===0,
