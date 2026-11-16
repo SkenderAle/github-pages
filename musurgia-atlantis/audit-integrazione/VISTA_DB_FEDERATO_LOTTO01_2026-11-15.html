@@ -107,7 +107,7 @@ main.details-collapsed #detailsPanel{display:none}
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=sonata-root-safe-20261116-v1";
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=sonata-root-safe-20261116-v2";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -545,7 +545,14 @@ function sonataScopedProjection(db,edges,index,root){
    const relation=e.relation||"";
    if(sonata){
      if(genre(from)){
-       if(to.category==="generi_forme")return genre(to)||(d===0&&from.id===center);
+       if(to.category==="generi_forme"){
+         // I sottotipi si espandono solo nel verso superiore→inferiore
+         // attestato dall'arco, mai risalendo a Sonata e scendendo
+         // negli altri sottogeneri attraverso la radice condivisa.
+         const downward=e.source===from.id&&e.target===to.id;
+         return downward&&genre(to)||(d===0&&from.id===center&&!genre(to))||
+           (from.id==="atlantis::senso:sonata"&&/sonata-strumentale-1590/.test(to.id));
+       }
        if(to.category==="opere")return form.test(relation);
        return d===0&&from.id===center; // autori e periodi solo come foglie
      }
@@ -558,7 +565,7 @@ function sonataScopedProjection(db,edges,index,root){
    if(from.category==="opere")return to.category==="generi_forme"||
      (to.category==="opere"&&parts.test(relation));
    if(genre(from)&&genre(index.get(center))){
-     if(to.category==="generi_forme")return genre(to);
+     if(to.category==="generi_forme")return genre(to)&&e.source===from.id&&e.target===to.id;
      if(to.category==="opere")return bachWorks.has(to.id)&&form.test(relation);
    }
    return false;
