@@ -1,0 +1,313 @@
+{
+  "schema": "musurgia-suite-sinfonico-operational-staging-v1",
+  "date": "2026-11-16",
+  "status": "PARTIAL_CURATED_STAGING_NOT_FAMILY_VALIDATED",
+  "scope": "Suite, Repertorio sinfonico, repertorio concertante; Opera semiseria rinviata a famiglia Opera",
+  "source_proposal": "musurgia-atlantis/audit-integrazione/OVERLAY_TASSONOMICO_SUITE_SINFONICO_OPERA_2026-11-15.json",
+  "source_snapshots": {
+    "mundi": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "atlantis": "4863b3fe263154387de3388c0b813b5f94546f12",
+    "flaminio": "6f1793f3d8b07469a458c7bbbd768eb8cb37050e"
+  },
+  "no_sonata_dependency": true,
+  "no_publication": true,
+  "flaminio_lotto2": "BLOCKED",
+  "nodes": [
+    {
+      "id": "tax20261115::family:repertorio-sinfonico",
+      "name": "Repertorio sinfonico",
+      "category": "famiglia_repertoriale",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE"
+    },
+    {
+      "id": "tax20261115::family:repertorio-concertante",
+      "name": "Repertorio concertante",
+      "category": "famiglia_repertoriale",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE"
+    },
+    {
+      "id": "tax20261115::form:suite-sinfonica",
+      "name": "Suite sinfonica",
+      "category": "forma",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE"
+    },
+    {
+      "id": "tax20261115::form:partita-strumento-solo",
+      "name": "Partita per strumento solo",
+      "category": "forma",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE"
+    },
+    {
+      "id": "tax20261115::form:sinfonia-concertante",
+      "name": "Sinfonia concertante",
+      "category": "forma_genere",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE"
+    },
+    {
+      "id": "tax20261115::form:ouverture-concerto",
+      "name": "Ouverture da concerto",
+      "category": "forma_genere",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE"
+    },
+    {
+      "id": "tax20261115::form:suite-orchestrale",
+      "name": "Suite orchestrale",
+      "category": "forma",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE"
+    },
+    {
+      "id": "tax20261115::form:rapsodia-sinfonica",
+      "name": "Rapsodia sinfonica",
+      "category": "forma_genere",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "tax20261115:e001",
+      "source": "mundi::genere-suite",
+      "target": "tax20261115::form:partita-strumento-solo",
+      "predicate": "has_historical_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Partita come successione di danze; non comprende automaticamente la partita su corale",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e002",
+      "source": "mundi::genere-suite",
+      "target": "tax20261115::form:suite-orchestrale",
+      "predicate": "has_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Suite orchestrale come articolazione per organico",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e003",
+      "source": "tax20261115::form:suite-orchestrale",
+      "target": "tax20261115::form:suite-sinfonica",
+      "predicate": "has_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Articolazione non sinonima di tutte le suites orchestrali",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e004",
+      "source": "tax20261115::form:suite-sinfonica",
+      "target": "tax20261115::family:repertorio-sinfonico",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Doppia appartenenza senza duplicazione",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e005",
+      "source": "tax20261115::form:suite-orchestrale",
+      "target": "tax20261115::family:repertorio-sinfonico",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Suite orchestrale nel repertorio sinfonico, secondo funzione ed organico",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e006",
+      "source": "flaminio::audit:fl01:jsb04:genre:partita-solista",
+      "target": "tax20261115::form:partita-strumento-solo",
+      "predicate": "taxonomic_alignment_not_identity",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Il gruppo Flaminio offre attestazioni, non è un nuovo nodo canonico",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e009",
+      "source": "flaminio::audit:fl01:jsb04:genre:suite-orchestrale",
+      "target": "tax20261115::form:suite-orchestrale",
+      "predicate": "taxonomic_alignment_not_identity",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Famiglia di opere BWV1066–1069",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e010",
+      "source": "flaminio::audit:fl01:jsb05:genre:suite-violoncello-solo",
+      "target": "mundi::genere-suite",
+      "predicate": "is_specialization_of",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Sei suites per violoncello solo",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e011",
+      "source": "flaminio::audit:fl01:jsb06:genre:suite-inglese",
+      "target": "mundi::genere-suite",
+      "predicate": "is_specialization_of",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Sei suites inglesi per clavicembalo",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e012",
+      "source": "mundi::forma-suite-orchestrale-novecento",
+      "target": "tax20261115::form:suite-orchestrale",
+      "predicate": "historical_specialization_of",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Novecento come specificazione storico-cronologica",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e013",
+      "source": "atlantis::opera:rimskij-korsakov-sheherazade-op35-1888",
+      "target": "tax20261115::form:suite-sinfonica",
+      "predicate": "work_has_form",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "rationale": "Shéhérazade op.35 qualificata suite sinfonica nel corpus Atlantis",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e014",
+      "source": "atlantis::opera:grieg-peer-gynt-suite1-op46-1888",
+      "target": "tax20261115::form:suite-orchestrale",
+      "predicate": "work_has_form",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "rationale": "Suite orchestrale derivata dalle musiche per Peer Gynt; altra relazione necessaria con opera di origine",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e015",
+      "source": "atlantis::senso:sinfonia",
+      "target": "tax20261115::family:repertorio-sinfonico",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Genere Sinfonia sotto repertorio, non viceversa",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e016",
+      "source": "atlantis::senso:poema-sinfonico",
+      "target": "tax20261115::family:repertorio-sinfonico",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Poema sinfonico non è sottotipo di Sinfonia",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e017",
+      "source": "mundi::genere-rapsodia",
+      "target": "tax20261115::form:rapsodia-sinfonica",
+      "predicate": "has_subtype_qualified",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Solo rapsodie di specifico organico o concezione sinfonica",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e018",
+      "source": "tax20261115::form:rapsodia-sinfonica",
+      "target": "tax20261115::family:repertorio-sinfonico",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Rapsodia sinfonica/orchestrale",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e020",
+      "source": "tax20261115::form:sinfonia-concertante",
+      "target": "atlantis::senso:sinfonia",
+      "predicate": "related_form_to",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Sinfonia concertante in relazione alla Sinfonia senza esserne semplice sinonimo",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e021",
+      "source": "tax20261115::form:sinfonia-concertante",
+      "target": "tax20261115::family:repertorio-concertante",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Forma a doppia appartenenza repertoriale",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e022",
+      "source": "tax20261115::form:sinfonia-concertante",
+      "target": "tax20261115::family:repertorio-sinfonico",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Forma a doppia appartenenza repertoriale",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e023",
+      "source": "tax20261115::form:ouverture-concerto",
+      "target": "tax20261115::family:repertorio-sinfonico",
+      "predicate": "member_of_repertoire",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Non classificare automaticamente ouverture operistiche",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    },
+    {
+      "id": "tax20261115:e024",
+      "source": "mundi::forma-ouverture",
+      "target": "tax20261115::form:ouverture-concerto",
+      "predicate": "has_contextual_subtype",
+      "status": "STAGING_CURATED_STRUCTURE_REVERSIBLE",
+      "rationale": "Ouverture da concerto autonoma distinta da ouverture teatrale",
+      "provenance": "Mundi/Atlantis/Flaminio Lotto 1 + decisioni tassonomiche utente",
+      "original_status": "PROPOSED_NOT_PRODUCTION"
+    }
+  ],
+  "excluded_or_pending": [
+    {
+      "id": "tax20261115:e007",
+      "status": "HOLD_PROPOSAL",
+      "reason": "Predicato e orientamento dell'organico da verificare"
+    },
+    {
+      "id": "tax20261115:e008",
+      "status": "HOLD_PROPOSAL",
+      "reason": "Partita su corale è variazione, non sottotipo Suite"
+    },
+    {
+      "id": "tax20261115:e019",
+      "status": "HOLD_PROPOSAL",
+      "reason": "Equivalenza storica non validata"
+    },
+    {
+      "id": "tax20261115:e025",
+      "status": "HOLD_PROPOSAL",
+      "reason": "Opera semiseria appartiene ad audit Opera"
+    }
+  ],
+  "counts": {
+    "new_nodes": 8,
+    "new_links": 21,
+    "source_correlated_work_links": 2,
+    "source_proposal_edges": 25,
+    "pending": 4
+  },
+  "rules": [
+    "Non connettere Sonata al Repertorio sinfonico",
+    "Famiglia di repertorio distinta dalla forma; doppia appartenenza senza duplicati",
+    "Predicati diretti, navigazione contestuale; non attraversare autori verso cataloghi estranei",
+    "Non dedurre opere dal solo titolo o dalla sola parentela del genere",
+    "Il presente overlay non certifica le 25 proposte originarie: solo sottoinsieme esplicitamente rivisto"
+  ]
+}
