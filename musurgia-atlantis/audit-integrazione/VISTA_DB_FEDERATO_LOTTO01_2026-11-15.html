@@ -778,6 +778,8 @@ function suiteScopedProjection(db,edges,index,root){
  function counterpointScopedProjection(db,edges,index,root){
    const scoped=edges.filter(e=>e.layer==="counterpoint_staging");
    const scopedIDs=new Set(scoped.flatMap(e=>[e.source,e.target]));
+   const compositeRoot=scoped.some(e=>e.source===root?.id&&
+     /^(contains_form|composite_type_contains_form)$/.test(e.relation||""));
    if(!root||!["generi_forme","concetti"].includes(root.category)||!scopedIDs.has(root.id))return null;
    const familyRel=/^(related_to_contrapuntal_practice|belongs_to_variation_family|broader_to_narrower|has_distinct_member)$/;
    const qualifiedRel=/^(qualified_form_alignment|instrumentation_specialization_of)$/;
@@ -801,9 +803,13 @@ function suiteScopedProjection(db,edges,index,root){
      }
    }
    function permit(from,to,e,d){
-     if(!from||!to||to.visibility==="documentary"||pathIDs.has(to.id)||heldWorks.has(to.id))
+     if(!from||!to||to.visibility==="documentary"||pathIDs.has(to.id)||heldWorks.has(to.id)||
+        (to.provenance||[]).some(p=>p.payload?.documentary_only===true))
        return false;
      const rel=e.relation||"";
+     // Un genere composito apre le sue COMPONENTI, non tutto il catalogo
+     // dei generi da esse toccati. Il focus sul componente riabilita la discesa.
+     if(compositeRoot&&from.id!==center&&from.category==="generi_forme")return false;
      if(from.category==="persone")return false;
      if(from.category==="opere"){
        if(to.category==="persone")return authorRel.test(rel);
@@ -818,7 +824,7 @@ function suiteScopedProjection(db,edges,index,root){
          const topDown=/^(has_distinct_member|broader_to_narrower)$/.test(rel);
          const parent=topDown?e.source:e.target,child=topDown?e.target:e.source;
          if(from.id===parent&&to.id===child)return from.id===center;
-         if(from.id===child&&to.id===parent)return d===0;
+         if(from.id===child&&to.id===parent)return d<=1;
          return false;
        }
        if(qualifiedRel.test(rel)){
