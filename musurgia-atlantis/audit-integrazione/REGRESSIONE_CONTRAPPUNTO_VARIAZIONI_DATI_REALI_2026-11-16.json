@@ -1,0 +1,127 @@
+{
+  "schema": "musurgia-counterpoint-variation-real-data-runtime-audit-v1",
+  "date": "2026-11-16",
+  "branch": "main",
+  "environment": "V8 isolato: buildUnifiedDatabase + rootedProjection estratta dall'HTML di staging, 13 JSON sorgente reali; non DOM/browser/WebGL/Android",
+  "result": "PASS_REAL_DATA_LOGICAL_RUNTIME_NOT_BROWSER_NOT_FAMILY_VALIDATED",
+  "builder": {
+    "sources": 13,
+    "nodes": 2843,
+    "links": 8614,
+    "flaminio_source_records": 500,
+    "orphan_links": 0,
+    "duplicate_link_ids": 0
+  },
+  "counterpoint": {
+    "new_nodes": 11,
+    "new_links": 36,
+    "links_documentary_only": 5,
+    "links_musical": 31,
+    "reused_existing_anchors": {
+      "Fuga": "mundi::forma-fuga",
+      "Ricercare": "atlantis::senso:ricercare"
+    },
+    "original_proposals": 42,
+    "proposals_not_loaded": 6
+  },
+  "rooted_depth5": {
+    "Scrittura contrappuntistica": {
+      "nodes": 21,
+      "links": 20
+    },
+    "Procedimenti di variazione": {
+      "nodes": 28,
+      "links": 27
+    },
+    "Fuga": {
+      "nodes": 17,
+      "links": 16
+    },
+    "Ricercare": {
+      "nodes": 2,
+      "links": 1
+    },
+    "Passacaglia": {
+      "nodes": 9,
+      "links": 8
+    },
+    "Ciaccona": {
+      "nodes": 4,
+      "links": 3
+    },
+    "Partita su corale": {
+      "nodes": 7,
+      "links": 6
+    },
+    "Variazioni canoniche": {
+      "nodes": 7,
+      "links": 6
+    },
+    "Toccata e fuga per organo": {
+      "nodes": 7,
+      "links": 6
+    },
+    "Passacaglia e fuga per organo": {
+      "nodes": 5,
+      "links": 4
+    },
+    "Variazioni (Mundi)": {
+      "nodes": 11,
+      "links": 10
+    }
+  },
+  "regressions": {
+    "sonata": {
+      "nodes": 109,
+      "links": 108
+    },
+    "suite": {
+      "nodes": 35,
+      "links": 34
+    },
+    "raccolta_editoriale": {
+      "nodes": 5,
+      "links": 4
+    }
+  },
+  "ontological_controls": {
+    "partita_su_corale_under_variazioni_su_corale": true,
+    "partita_su_corale_under_suite": false,
+    "ciaccona_not_passacaglia_synonym": true,
+    "fuga_and_ricercare_not_duplicated": true,
+    "contrappunto_e_fuga_atlantis_broader_sense_not_merged": true,
+    "toccata_e_fuga_composite_no_general_fugue_catalogue_spill": true,
+    "explicit_focus_on_fugue_opens_its_subtypes": true,
+    "five_parts_documentary_only_not_visible_in_counterpoint_projection": true,
+    "no_aida_don_giovanni_spill": true,
+    "no_canonical_work_merge_by_title": true,
+    "no_hold_links_auto_promoted": true
+  },
+  "observations": {
+    "fuga_per_organo_two_source_nodes": "Flaminio jsb05 e jsb06; collegate per organico alla Fuga, ma non fuse: audit d'identità ancora necessario",
+    "two_fughe_in_do_minore": "Lotto 1 riporta BWV 574 (riga 3785) e BWV 575 (riga 3788): composizioni distinte, da non accorpare per titolo; cf041/042 non promossi come archi diretti",
+    "documentary_parts": [
+      "BWV 1004/5 Ciaccona",
+      "BWV 582 Passacaglia",
+      "BWV 582 Fuga",
+      "BWV 1079 Ricercar a 3",
+      "BWV 1079 Ricercar a 6"
+    ],
+    "grosse_fuge": "Op.133 visibile in Fuga come opera distinta; relazione storica con op.130 non fusa",
+    "goldberg": "BWV 988 mantenuta come una composizione con 30 variazioni, non 30 opere autonome"
+  },
+  "runnable_harness": "TEST_CONTRAPPUNTO_VARIAZIONI_RUNTIME_2026-11-16.mjs",
+  "not_performed": [
+    "Esecuzione Node dello script committato (logica equivalente eseguita nel V8 isolato)",
+    "Rendering DOM/WebGL/Canvas/Android",
+    "Revisione indipendente completa delle attribuzioni",
+    "Prova approfondita del confronto due lemmi"
+  ],
+  "public_unchanged": [
+    "atlante3d/database/grafo.json",
+    "musurgia-atlantis/grafo.json",
+    "musurgia-atlantis/index.html"
+  ],
+  "flaminio_lot2": "BLOCKED",
+  "next": "Audit identità Fuga per organo jsb05/jsb06; verificare nodo documentario BWV1004 e le parti BWV1079/582 prima di qualsiasi promozione; passare al prossimo overlay Danze strumentali. Collaudo browser ancora aperto."
+}
