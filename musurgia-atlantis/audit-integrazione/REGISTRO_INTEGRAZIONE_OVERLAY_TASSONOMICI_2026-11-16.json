@@ -99,10 +99,48 @@
       "original_status": "STAGING_ONLY_NOT_FULLY_VALIDATED",
       "nodes": 9,
       "edges": 25,
-      "mode": "9 nodi e 25 relazioni in proposta; audit statico avviato, zero nuove promozioni nel builder.",
-      "operational_file": null,
+      "mode": "Sottoinsieme operativo caricato in staging: 8 nodi nuovi, 21 archi; 4 relazioni del rilievo originale restano HOLD, tra cui Partita su corale, specificazione Partita per clavicembalo, raccordo Rapsodia storico e Opera semiseria (famiglia teatrale).",
+      "operational_file": "SUITE_SINFONICO_RACCORDI_OPERATIVI_2026-11-16.json",
       "preflight_file": "AUDIT_PREFLIGHT_SUITE_SINFONICO_OPERA_2026-11-16.md",
-      "preflight_status": "PREFLIGHT_REVIEW_ONLY_NOT_LOADED"
+      "preflight_status": "PARTIAL_STAGING_LOADED_LOGICAL_RUNTIME_PASS_NOT_BROWSER",
+      "operational_nodes_added": 8,
+      "operational_links_added": 21,
+      "operational_source_proposal_edges_not_loaded": 4,
+      "runtime_report": "REGRESSIONE_SUITE_SINFONICO_DATI_REALI_2026-11-16.json",
+      "runtime_harness": "TEST_SUITE_SINFONICO_RADICATO_RUNTIME_2026-11-16.mjs",
+      "actual_builder_counts": {
+        "nodes": 2827,
+        "links": 8565,
+        "orphans": 0,
+        "duplicate_link_ids": 0,
+        "flaminio_rows": 500
+      },
+      "runtime_projection": {
+        "suite": {
+          "nodes": 35,
+          "links": 34
+        },
+        "suite_sinfonica": {
+          "nodes": 4,
+          "links": 3
+        },
+        "suite_orchestrale": {
+          "nodes": 13,
+          "links": 12
+        },
+        "repertorio_sinfonico": {
+          "nodes": 34,
+          "links": 33
+        },
+        "sinfonia_concertante": {
+          "nodes": 20,
+          "links": 19
+        },
+        "sonata_regression": {
+          "nodes": 109,
+          "links": 108
+        }
+      }
     },
     {
       "name": "VOCALE_SACRO_PROFANO",
@@ -117,14 +155,19 @@
   "totals": {
     "source_overlay_nodes": 122,
     "source_overlay_edges": 253,
-    "operational_staging_new_nodes": 13,
-    "operational_staging_new_edges": 38,
+    "operational_staging_new_nodes": 21,
+    "operational_staging_new_edges": 59,
     "operational_existing_genre_nodes_reused": 4,
     "operational_existing_genre_work_edges_reused": 19,
     "sonata_source_records_examined": 33,
     "sonata_work_classifications": 29,
     "sonata_source_records_held": 4,
-    "operational_builder_runtime": "PASS_ISOLATED_V8"
+    "operational_builder_runtime": "PASS_ISOLATED_V8",
+    "suite_sinfonico_staging_nodes": 8,
+    "suite_sinfonico_staging_edges": 21,
+    "current_builder_nodes": 2827,
+    "current_builder_links": 8565,
+    "current_builder_runtime": "PASS_ISOLATED_V8_11_REAL_SOURCES"
   },
-  "next": "Suite/Repertorio sinfonico: verificare estremi, semantica e direzione degli archi, implementare navigazione radicata generale e collaudo browser/WebGL/Android; le altre sei famiglie restano IN_REVIEW. Lotto 2 Flaminio bloccato."
+  "next": "Suite/Sinfonico: collaudo UI browser/WebGL/Android e profondità 1–5, confronti fra due lemmi e audit filologico opera-per-opera; sei overlay ulteriori ancora da riconciliare. Lotto 2 Flaminio BLOCCATO."
 }
