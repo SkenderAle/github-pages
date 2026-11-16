@@ -16,7 +16,8 @@ export const sourcePaths=[
   {key:"sonata_overlay",path:"musurgia-atlantis/audit-integrazione/SONATA_CAMERA_RACCORDI_OPERATIVI_2026-11-16.json"},
   {key:"sonata_works",path:"musurgia-atlantis/audit-integrazione/SONATA_OPERE_RACCORDI_FONTE_LOTTO01_2026-11-16.json"},
   {key:"suite_overlay",path:"musurgia-atlantis/audit-integrazione/SUITE_SINFONICO_RACCORDI_OPERATIVI_2026-11-16.json"},
-  {key:"structures_overlay",path:"musurgia-atlantis/audit-integrazione/STRUTTURE_COMPOSIZIONI_RACCOLTE_OPERATIVO_2026-11-16.json"}
+  {key:"structures_overlay",path:"musurgia-atlantis/audit-integrazione/STRUTTURE_COMPOSIZIONI_RACCOLTE_OPERATIVO_2026-11-16.json"},
+  {key:"counterpoint_overlay",path:"musurgia-atlantis/audit-integrazione/CONTRAPPUNTO_VARIAZIONI_RACCORDI_OPERATIVI_2026-11-16.json"}
 ];
 const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[‘’´']/g,"").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
 function categoryFor(layer,n){
@@ -57,7 +58,7 @@ function categoryFor(layer,n){
  return "concetti";
 }
 export function buildUnifiedDatabase(d){
- const {mundi,extension,special,atlantis,staging,registry,crosswalk,curated,sonata_overlay,sonata_works,suite_overlay,structures_overlay}=d;
+ const {mundi,extension,special,atlantis,staging,registry,crosswalk,curated,sonata_overlay,sonata_works,suite_overlay,structures_overlay,counterpoint_overlay}=d;
  const nodes=[],links=[],byID=new Map(),maps={mundi:new Map(),mundi_extension:new Map(),atlantis:new Map(),flaminio:new Map()};
  const atID=new Map(atlantis.nodes.map(n=>[n.id,n]));
  const baseID=new Map(mundi.nodes.map(n=>[n.id,n]));
@@ -463,24 +464,87 @@ export function buildUnifiedDatabase(d){
      structureLinks.length!==structures_overlay.counts?.new_edges||
      structures_overlay.excluded_or_pending?.length!==10)
     throw Error("Strutture: copertura parziale o HOLD non coerenti");
+
+  // CONTRAPPUNTO E VARIAZIONI. La Fuga Mundi e il Ricercare già
+  // riconciliato rimangono i loro nodi canonici di navigazione.
+  // Generi composti, procedimenti e singole opere NON sono identità equivalenti.
+  if(counterpoint_overlay?.schema!=="musurgia-contrapuntal-variation-operational-staging-v1"||
+     counterpoint_overlay.status!=="PARTIAL_CURATED_STAGING_NOT_FAMILY_VALIDATED"||
+     counterpoint_overlay.flaminio_lotto2!=="BLOCKED"||
+     counterpoint_overlay.policy?.production_graphs_unchanged!==true)
+    throw Error("Contrappunto: schema/gate incompatibile");
+  const counterpointNodes=[],counterpointLinks=[],counterpointNodeSet=new Set(),counterpointEdgeSet=new Set();
+  const anchorMap=counterpoint_overlay.anchors_existing||{};
+  if(anchorMap["tax20261115cf::form:fuga"]!=="mundi::forma-fuga"||
+     anchorMap["tax20261115cf::form:ricercare"]!=="atlantis::senso:ricercare")
+    throw Error("Contrappunto: identità preesistenti non riconciliate");
+  const fugaAnchor=resolveStructureID(anchorMap["tax20261115cf::form:fuga"]);
+  const ricercareAnchor=resolveStructureID(anchorMap["tax20261115cf::form:ricercare"]);
+  if(!fugaAnchor||!ricercareAnchor||byID.get(fugaAnchor)?.name!=="Fuga"||
+     byID.get(ricercareAnchor)?.name!=="Ricercare"||fugaAnchor===ricercareAnchor)
+    throw Error("Contrappunto: ancore Fuga/Ricercare non valide");
+  for(const n of counterpoint_overlay.nodes){
+    if(!n.id.startsWith("tax20261115cf::")||byID.has(n.id)||
+       counterpointNodeSet.has(n.id)||!["concetti","generi_forme"].includes(n.category)||
+       n.status!=="STAGING_STRUCTURAL_ROLE_REVIEWED_NOT_CANONICAL"||!n.name)
+       throw Error("Contrappunto: nodo non ammissibile "+n.id);
+    counterpointNodeSet.add(n.id);
+    const obj={id:n.id,name:n.name,category:n.category,subtype:n.kind,
+       layer:"counterpoint_staging",visibility:"musical",
+       categories_by_layer:{counterpoint_staging:n.category},aliases:[],
+       provenance:[{layer:"counterpoint_staging",original_id:n.id,payload:n}]};
+    nodes.push(obj);byID.set(obj.id,obj);counterpointNodes.push(obj.id);
+  }
+  const resolveCounterpointID=id=>
+    id.startsWith("tax20261115cf::")?(counterpointNodeSet.has(id)?id:null):resolveStructureID(id);
+  for(const e of counterpoint_overlay.edges){
+    if(counterpointEdgeSet.has(e.id)||!/^cf20261115:\d{3}$/.test(e.id)||
+       !["STAGING_RELATION_REVIEWED_REVERSIBLE","STAGING_DOCUMENTED_PART_FORM_NON_DUPLICATIVE",
+         "STAGING_CANDIDATE_FORM_LINK_NOT_IDENTITY"].includes(e.status)||
+       e.no_identity_merge!==true||e.production_gate!=="CLOSED")
+      throw Error("Contrappunto: arco fuori gate "+e.id);
+    counterpointEdgeSet.add(e.id);
+    const source=resolveCounterpointID(e.source),target=resolveCounterpointID(e.target);
+    if(!source||!target||source===target)throw Error("Contrappunto: estremi irrisolti "+e.id);
+    const sourceNode=byID.get(source),targetNode=byID.get(target);
+    if(["documented_part_form","candidate_work_form","source_work_form"].includes(e.role)){
+      if(sourceNode.category!=="opere"||targetNode.category!=="generi_forme"||
+         !sourceNode.provenance.some(p=>p.layer==="atlantis"||p.layer==="flaminio"))
+        throw Error("Contrappunto: il raccordo opera/forma non è attestato "+e.id);
+    }
+    if(["instrumented_form","composite_form","qualified_form"].includes(e.role)&&
+       (sourceNode.category!=="generi_forme"||targetNode.category!=="generi_forme"))
+      throw Error("Contrappunto: due forme non compatibili "+e.id);
+    const link={id:"counterpoint_staging::"+e.id,source,target,relation:e.predicate,
+       quality:e.status,layer:"counterpoint_staging",
+       collection:"contrappunto-variazioni-forme-composte",
+       visibility:sourceNode.visibility==="documentary"||targetNode.visibility==="documentary"?"documentary":"musical",
+       original:e};
+    links.push(link);counterpointLinks.push(link.id);
+  }
+  if(counterpointNodes.length!==11||counterpointLinks.length!==36||
+     counterpointNodes.length!==counterpoint_overlay.counts?.new_nodes||
+     counterpointLinks.length!==counterpoint_overlay.counts?.new_edges||
+     counterpoint_overlay.excluded_or_pending?.length!==6)
+    throw Error("Contrappunto: gate di integrità del sottoinsieme fallito");
   const seen=new Set();for(const e of links){if(seen.has(e.id))dupes.push(e.id);seen.add(e.id);}
  const idRecords=new Set(registry.records.map(r=>r.source_id));
  const stageRecords=new Set(staging.nodes.filter(n=>n.category==="scheda_catalogo_flaminio").map(n=>n.id));
  const connectedRecords=new Set(staging.links.flatMap(e=>[typeof e.source==="object"?e.source?.id:e.source,typeof e.target==="object"?e.target?.id:e.target]));
  const missing=registry.records.filter(r=>!stageRecords.has(r.source_id)||!connectedRecords.has(r.source_id)).map(r=>r.source_id);
  const originalEdges=atlantis.links.length+mundi.edges.length+special.relations.length+extension.relations.length+staging.links.length+mundiLensRelations.length;
- const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length+sonataNodes.length+sonataWorkNodes.length+suiteNodes.length+structureNodes.length;
+ const expectedNodes=mundi.nodes.length+extension.nodes.filter(n=>!baseID.has(n.id)).length+atlantis.nodes.length+staging.nodes.length-identity.length-sharedFlaminio.length-taxonomyIdentity.length-legacyReferences.length+curatedMusicNodes.length+sonataNodes.length+sonataWorkNodes.length+suiteNodes.length+structureNodes.length+counterpointNodes.length;
  const counts={mundi_nodes:mundi.nodes.length,mundi_extension_records:extension.nodes.length,mundi_extension_new_nodes:extension.nodes.filter(n=>!baseID.has(n.id)).length,
    atlantis_nodes:atlantis.nodes.length,flaminio_nodes:staging.nodes.length,mundi_edges:mundi.edges.length,mundi_lens_relations:mundiLensRelations.length,mundi_derived_taxonomy_bridges:derivedGenreRelations.length,
    mundi_special_relations:special.relations.length,mundi_extension_relations:extension.relations.length,
    atlantis_links:atlantis.links.length,flaminio_links:staging.links.length,original_source_edges:originalEdges,
    integrated_people:identity.length,shared_flaminio_people:sharedFlaminio.length,
    integrated_taxonomy:taxonomyIdentity.length,flaminio_legacy_reconciled:legacyReferences.length,
-   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,sonata_staging_nodes:sonataNodes.length,sonata_staging_links:sonataLinks.length,sonata_work_nodes:sonataWorkNodes.length,sonata_work_links:sonataWorkLinks.length,suite_staging_nodes:suiteNodes.length,suite_staging_links:suiteLinks.length,structure_staging_nodes:structureNodes.length,structure_staging_links:structureLinks.length,nodes:nodes.length,links:links.length,
+   editorial_bridges:bridges.length,semantic_curated_links:semanticCurated.length,curated_musicological_nodes:curatedMusicNodes.length,sonata_staging_nodes:sonataNodes.length,sonata_staging_links:sonataLinks.length,sonata_work_nodes:sonataWorkNodes.length,sonata_work_links:sonataWorkLinks.length,suite_staging_nodes:suiteNodes.length,suite_staging_links:suiteLinks.length,structure_staging_nodes:structureNodes.length,structure_staging_links:structureLinks.length,counterpoint_staging_nodes:counterpointNodes.length,counterpoint_staging_links:counterpointLinks.length,nodes:nodes.length,links:links.length,
    flaminio_source_records:registry.records.length,unique_flaminio_source_records:idRecords.size,
    flaminio_source_nodes:stageRecords.size,missing_source_rows:missing.length,
    orphan_links:orphans.length,duplicate_link_ids:dupes.length};
- const expectedLinks=originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length+sonataLinks.length+sonataWorkLinks.length+suiteLinks.length+structureLinks.length;
+ const expectedLinks=originalEdges+bridges.length+semanticCurated.length+derivedGenreRelations.length+sonataLinks.length+sonataWorkLinks.length+suiteLinks.length+structureLinks.length+counterpointLinks.length;
  // Distinguere invarianti di integrita' da cardinalita' storiche di audit.
  // I conteggi nominali dei crosswalk possono mutare durante l'unificazione;
  // la loro discrepanza deve essere segnalata, non scambiata per dati corrotti.
@@ -498,6 +562,7 @@ export function buildUnifiedDatabase(d){
    sonata_opere_raccordi:sonataWorkNodes.length===6&&sonataWorkLinks.length===27&&workSourceRows.size===10&&reusedWorkRows.size===19,
    suite_raccordi_strutturali:suiteNodes.length===8&&suiteLinks.length===21,
     strutture_raccordi_operativi:structureNodes.length===5&&structureLinks.length===13,
+    contrappunto_variazioni_operativi:counterpointNodes.length===11&&counterpointLinks.length===36,
     nodi_indicizzati:counts.nodes===byID.size,
    archi_totali:counts.links===expectedLinks,
    archi_orfani:counts.orphan_links===0,
@@ -520,10 +585,10 @@ export function buildUnifiedDatabase(d){
    counts,nodes,links,flaminio_records:registry.records,
    crosswalk:{mundi_atlantis:identity,mundi_atlantis_taxonomy:taxonomyIdentity,flaminio_atlantis:sharedFlaminio,flaminio_legacy_mundi:legacyReferences,
      editorial_bridges:bridges,semantic_curated_links:semanticCurated,curated_music_nodes:curatedMusicNodes,sonata_staging_nodes:sonataNodes,sonata_staging_links:sonataLinks,sonata_pending:sonata_overlay.excluded_or_pending,
-     sonata_work_nodes:sonataWorkNodes,sonata_work_links:sonataWorkLinks,sonata_work_pending:sonata_works.excluded_or_pending,suite_staging_nodes:suiteNodes,suite_staging_links:suiteLinks,suite_pending:suite_overlay.excluded_or_pending,structure_staging_nodes:structureNodes,structure_staging_links:structureLinks,structures_pending:structures_overlay.excluded_or_pending,excluded:ignored,curated_pending:curated.excluded_or_pending},
+     sonata_work_nodes:sonataWorkNodes,sonata_work_links:sonataWorkLinks,sonata_work_pending:sonata_works.excluded_or_pending,suite_staging_nodes:suiteNodes,suite_staging_links:suiteLinks,suite_pending:suite_overlay.excluded_or_pending,structure_staging_nodes:structureNodes,structure_staging_links:structureLinks,structures_pending:structures_overlay.excluded_or_pending,counterpoint_staging_nodes:counterpointNodes,counterpoint_staging_links:counterpointLinks,counterpoint_pending:counterpoint_overlay.excluded_or_pending,excluded:ignored,curated_pending:curated.excluded_or_pending},
    policy:{preserve_all_source_nodes_and_relations:true,merge_person_pairs_and_explicit_curated_taxonomy_pairs:true,legacy_reference_id_redirects:true,curated_vivaldi_works_are_distinct_from_collection:true,
      homonyms_require_external_review:true,chapters_are_not_periods:true,genres_not_merged_by_name:true,
-     hold_excluded_by_default:true,suite_sinfonico_ontology_independent_of_sonata:true,structure_classification_does_not_merge_work:true,production_graphs_unchanged:true}};
+     hold_excluded_by_default:true,suite_sinfonico_ontology_independent_of_sonata:true,structure_classification_does_not_merge_work:true,counterpoint_fuga_ricercare_reused_not_duplicated:true,production_graphs_unchanged:true}};
 }
 export function projectForViewer(db,{rootId,depth=1,visibleCategories=["persone","opere","reti_culturali","generi_forme","strumenti","luoghi","istituzioni","concetti","capitoli","eventi"],labelCategories=["persone","generi_forme"],includeDocumentary=false}={}){
  const index=new Map(db.nodes.map(n=>[n.id,n]));
