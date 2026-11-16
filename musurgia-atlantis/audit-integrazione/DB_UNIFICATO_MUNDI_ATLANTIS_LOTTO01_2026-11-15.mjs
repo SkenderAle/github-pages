@@ -434,7 +434,7 @@ export function buildUnifiedDatabase(d){
     return resolveSuiteID(id);
   }
   for(const e of structures_overlay.edges){
-    if(structureEdgeSet.has(e.id)||!/^structures20261115:\\d{3}$/.test(e.id)||
+    if(structureEdgeSet.has(e.id)||!/^structures20261115:\d{3}$/.test(e.id)||
        !["STAGING_ONTOLOGY_SCHEMA_REVERSIBLE","STAGING_SOURCE_CORRELATED_NOT_CANONICAL"].includes(e.status))
       throw Error("Strutture: arco ambiguo "+e.id);
     structureEdgeSet.add(e.id);
