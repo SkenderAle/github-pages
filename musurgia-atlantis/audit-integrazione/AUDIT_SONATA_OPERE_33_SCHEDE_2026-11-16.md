@@ -46,3 +46,18 @@ Le schede 3641 (**BWV 1033**), 3645 (**BWV 1031**), 3654 (**BWV 1020**) e 3946 (
 
 ## Passo successivo
 Collaudo della vista unificata: ricerca **Sonata → sottotipo → opera**, poi **Bach → BWV 1001/1003/1005** e **Bach → BWV 525–530**, con soppressione dell'attribuzione HOLD e assenza di composizioni d'altro autore nell'espansione radicata. Proseguire alla successiva famiglia soltanto con le prove complete e senza sbloccare il Lotto 2.
+
+
+## Addendum — collaudo del builder e della proiezione radicata (16 novembre 2026)
+
+**ESECUZIONE REALE DEL BUILDER SUPERATA:** tutti i 10 JSON del repository sono stati caricati, la funzione `buildUnifiedDatabase` del modulo reale è stata eseguita in ambiente JavaScript isolato; **2.819 nodi e 8.544 archi**, 500/500 schede Flaminio, **0 archi orfani, 0 ID arco duplicati, 0 avvisi sui conteggi storici**. Questo supera il precedente test statico e conferma i numeri attesi.
+
+**Difetto della preview individuato:** l'HTML sperimentale usava una propria funzione `rootedProjection` più permissiva, che dalla radice Sonata a profondità 5 espandeva 1.805 nodi, inclusi `Don Giovanni` e `Aida`. Inoltre non filtrava `HOLD` quando questo era nel predicato dell'arco, anziché nel campo di qualità. Corretto senza cambiare alcun file di produzione.
+
+**Collaudo logico dell'HTML reale dopo la correzione:** Sonata 109 nodi/108 archi; Sonata in trio per organo 11/10; Sonata per violino solo 8/7; Sonata per due pianoforti e percussioni 4/3; Bach 467/466; Bach→Sonata focalizzato 58/56. Escluse nei casi controllati le attribuzioni sospese BWV 1033, 1031, 1020 e 966 e le opere estranee `Don Giovanni` e `Aida`.
+
+Gli archi di opere e raccolte rimangono conservati. I membri non pertinenti di una raccolta mista e i riusi verso altre composizioni compaiono **solo quando si focalizza esplicitamente** la raccolta o l'opera: nell'insieme delle sonate e partite per violino solo, il clic sulla raccolta rende nuovamente visibili le Partite; il clic su BWV 527 rende visibili i riusi verso il Concerto BWV 1044.
+
+**Prove riproducibili:** `TEST_SONATA_RADICATA_RUNTIME_2026-11-16.mjs` (test Node da eseguire nella copia locale del repository) e `REGRESSIONE_PROIEZIONE_RADICATA_SONATA_2026-11-16.json` (risultati del collaudo logico già eseguito in ambiente isolato).
+
+**Ancora non certificati:** avvio in un browser grafico reale, fallback Canvas, Three.js/WebGL, prestazioni Android, navigazione completa della funzione di confronto fra lemmi, verifica storico-filologica indipendente di tutte le attribuzioni. **Lotto 2 Flaminio ancora BLOCCATO; il grafo pubblico rimane invariato.**
