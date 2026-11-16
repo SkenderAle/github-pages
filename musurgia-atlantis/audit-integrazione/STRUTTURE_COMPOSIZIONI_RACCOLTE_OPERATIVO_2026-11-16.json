@@ -1,0 +1,324 @@
+{
+  "schema": "musurgia-structures-operational-staging-v1",
+  "date": "2026-11-16",
+  "status": "PARTIAL_CURATED_STAGING_NOT_FAMILY_VALIDATED",
+  "flaminio_lotto2": "BLOCKED",
+  "source_file": "OVERLAY_TASSONOMICO_COMPOSIZIONI_CICLI_RACCOLTE_2026-11-15.json",
+  "source_snapshots": "CENSIMENTO_TASSONOMICO_TUTTI_RECORD_2026-11-15.jsonl",
+  "source_baseline_commit": "debe507dae340483879fe44976066548b747ba8a",
+  "identity_policy": "CLASSIFICATION_IS_NOT_IDENTITY; retain all original nodes, links and provenance",
+  "notes": [
+    "I cinque nuovi nodi descrivono tipi di entità, non opere fittizie.",
+    "I 10 raccordi opera/raccolta→tipo sono correlazioni documentali di staging, non promozioni canoniche.",
+    "Raccolte e cicli sono nodi storici già presenti: non creare duplicati e non inferire i membri assenti.",
+    "Mai espandere una tipologia attraverso autori e altre forme musicali.",
+    "Le quattro stagioni non equivalgono automaticamente alla raccolta editoriale; in HOLD.",
+    "Lotto 2 Flaminio e grafo pubblico invariati."
+  ],
+  "nodes": [
+    {
+      "id": "tax20261115strutture::composition",
+      "name": "Composizione individuale",
+      "role": "entity_kind",
+      "status": "STAGING_STRUCTURAL_CLASS_REVERSIBLE",
+      "category": "concetti",
+      "note": "Tipologia ontologica, non una composizione musicale autonoma."
+    },
+    {
+      "id": "tax20261115strutture::multipart_work",
+      "name": "Composizione plurimovimentale",
+      "role": "composition_structure",
+      "status": "STAGING_STRUCTURAL_CLASS_REVERSIBLE",
+      "category": "concetti",
+      "note": "Tipologia ontologica, non una composizione musicale autonoma."
+    },
+    {
+      "id": "tax20261115strutture::integrated_cycle",
+      "name": "Ciclo musicale unitario",
+      "role": "grouping_kind",
+      "status": "STAGING_STRUCTURAL_CLASS_REVERSIBLE",
+      "category": "concetti",
+      "note": "Tipologia ontologica, non una composizione musicale autonoma."
+    },
+    {
+      "id": "tax20261115strutture::editorial_collection",
+      "name": "Raccolta editoriale o catalografica",
+      "role": "grouping_kind",
+      "status": "STAGING_STRUCTURAL_CLASS_REVERSIBLE",
+      "category": "concetti",
+      "note": "Tipologia ontologica, non una composizione musicale autonoma."
+    },
+    {
+      "id": "tax20261115strutture::group_of_works",
+      "name": "Insieme di opere autonome",
+      "role": "grouping_kind",
+      "status": "STAGING_STRUCTURAL_CLASS_REVERSIBLE",
+      "category": "concetti",
+      "note": "Tipologia ontologica, non una composizione musicale autonoma."
+    }
+  ],
+  "edges": [
+    {
+      "id": "structures20261115:001",
+      "source": "tax20261115strutture::multipart_work",
+      "target": "tax20261115strutture::composition",
+      "predicate": "structural_subtype_of",
+      "status": "STAGING_ONTOLOGY_SCHEMA_REVERSIBLE",
+      "class_relation": true,
+      "original_predicate": "subtype_of",
+      "original_source": "tax20261115strutture::multipart_work",
+      "rationale": "Opera unica nonostante sia articolata in movimenti",
+      "source_overlay": "structures20261115:001",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "SCHEMA_QUALIFIED"
+    },
+    {
+      "id": "structures20261115:004",
+      "source": "tax20261115strutture::integrated_cycle",
+      "target": "tax20261115strutture::group_of_works",
+      "predicate": "structural_qualified_cycle_relationship",
+      "status": "STAGING_ONTOLOGY_SCHEMA_REVERSIBLE",
+      "class_relation": true,
+      "original_predicate": "qualified_cycle_relationship",
+      "original_source": "tax20261115strutture::integrated_cycle",
+      "rationale": "Ciclo unitario: verificare se componenti sono opere distinte o parti",
+      "source_overlay": "structures20261115:004",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "SCHEMA_QUALIFIED"
+    },
+    {
+      "id": "structures20261115:005",
+      "source": "tax20261115strutture::editorial_collection",
+      "target": "tax20261115strutture::group_of_works",
+      "predicate": "structural_collection_relationship",
+      "status": "STAGING_ONTOLOGY_SCHEMA_REVERSIBLE",
+      "class_relation": true,
+      "original_predicate": "collection_relationship",
+      "original_source": "tax20261115strutture::editorial_collection",
+      "rationale": "Raccolta di opere: raggruppamento non sinonimo di opera",
+      "source_overlay": "structures20261115:005",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "SCHEMA_QUALIFIED"
+    },
+    {
+      "id": "structures20261115:012",
+      "source": "atlantis::opera:sei-quartetti-haydn-mozart-1785",
+      "target": "tax20261115strutture::editorial_collection",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "atlantis::opera:sei-quartetti-haydn-mozart-1785",
+      "rationale": "Sei quartetti individuali, con insieme editoriale o dedicatario",
+      "source_overlay": "structures20261115:012",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:013",
+      "source": "atlantis::opera:sonate-beethoven-op2-1796",
+      "target": "tax20261115strutture::editorial_collection",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "atlantis::opera:sonate-beethoven-op2-1796",
+      "rationale": "Op. 2 comprende tre sonate individuali",
+      "source_overlay": "structures20261115:013",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:014",
+      "source": "atlantis::opera:smetana-ma-vlast-1874-1879",
+      "target": "tax20261115strutture::integrated_cycle",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "atlantis::opera:smetana-ma-vlast-1874-1879",
+      "rationale": "Sei poemi sinfonici con identità compositive distinte",
+      "source_overlay": "structures20261115:014",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:015",
+      "source": "atlantis::opera:an-die-ferne-geliebte-op98",
+      "target": "tax20261115strutture::integrated_cycle",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "atlantis::opera:an-die-ferne-geliebte-op98",
+      "rationale": "Ciclo di sei Lieder, non sei raccolte",
+      "source_overlay": "structures20261115:015",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:016",
+      "source": "flaminio::audit:fl01:alf-cpe:collection:cpe:wq43",
+      "target": "tax20261115strutture::editorial_collection",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "flaminio_lotto1::audit:fl01:alf-cpe:collection:cpe:wq43",
+      "rationale": "Sei concerti distinti nel Wq 43",
+      "source_overlay": "structures20261115:016",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:017",
+      "source": "flaminio::audit:fl01:alf-cpe:collection:cpe:wq182",
+      "target": "tax20261115strutture::editorial_collection",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "flaminio_lotto1::audit:fl01:alf-cpe:collection:cpe:wq182",
+      "rationale": "Sinfonie con identità individuali",
+      "source_overlay": "structures20261115:017",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:019",
+      "source": "flaminio::audit:fl01:jsb03:work:excel3081",
+      "target": "tax20261115strutture::composition",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "flaminio_lotto1::audit:fl01:jsb03:work:excel3081",
+      "rationale": "Concerto brandeburghese n.1, composizione autonoma",
+      "source_overlay": "structures20261115:019",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:020",
+      "source": "flaminio::audit:fl01:jsb03:work:excel3082",
+      "target": "tax20261115strutture::composition",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "flaminio_lotto1::audit:fl01:jsb03:work:excel3082",
+      "rationale": "Concerto brandeburghese n.2, composizione autonoma",
+      "source_overlay": "structures20261115:020",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:021",
+      "source": "flaminio::audit:fl01:bbb:work:excel4263",
+      "target": "tax20261115strutture::multipart_work",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "flaminio_lotto1::audit:fl01:bbb:work:excel4263",
+      "rationale": "Suite per pianoforte in quattro movimenti, una composizione",
+      "source_overlay": "structures20261115:021",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    },
+    {
+      "id": "structures20261115:022",
+      "source": "flaminio::audit:fl01:bbb:work:excel4291",
+      "target": "tax20261115strutture::multipart_work",
+      "predicate": "classified_as_structure",
+      "status": "STAGING_SOURCE_CORRELATED_NOT_CANONICAL",
+      "class_relation": false,
+      "original_predicate": "candidate_classification",
+      "original_source": "flaminio_lotto1::audit:fl01:bbb:work:excel4291",
+      "rationale": "Dance Suite di Bartók, opera unica a più danze",
+      "source_overlay": "structures20261115:022",
+      "provenance": "EXISTING_SOURCE_RECORD_PLUS_OVERLAY_CANDIDATE",
+      "certainty": "CLASSIFICATION_CORRELATED_NOT_HISTORICALLY_CERTIFIED"
+    }
+  ],
+  "excluded_or_pending": [
+    {
+      "id": "structures20261115:002",
+      "source": "tax20261115strutture::movement",
+      "target": "tax20261115strutture::multipart_work",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Relazione schematica contingente (when_attested), non gerarchia ontologica universale: richiede gate su dati concreti"
+    },
+    {
+      "id": "structures20261115:003",
+      "source": "tax20261115strutture::section",
+      "target": "tax20261115strutture::composition",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Relazione schematica contingente (when_attested), non gerarchia ontologica universale: richiede gate su dati concreti"
+    },
+    {
+      "id": "structures20261115:006",
+      "source": "tax20261115strutture::publication",
+      "target": "tax20261115strutture::editorial_collection",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Relazione schematica contingente (when_attested), non gerarchia ontologica universale: richiede gate su dati concreti"
+    },
+    {
+      "id": "structures20261115:007",
+      "source": "tax20261115strutture::catalogue_ref",
+      "target": "tax20261115strutture::composition",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Relazione schematica contingente (when_attested), non gerarchia ontologica universale: richiede gate su dati concreti"
+    },
+    {
+      "id": "structures20261115:008",
+      "source": "tax20261115strutture::version",
+      "target": "tax20261115strutture::composition",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Relazione schematica contingente (when_attested), non gerarchia ontologica universale: richiede gate su dati concreti"
+    },
+    {
+      "id": "structures20261115:009",
+      "source": "tax20261115strutture::arrangement",
+      "target": "tax20261115strutture::composition",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Relazione schematica contingente (when_attested), non gerarchia ontologica universale: richiede gate su dati concreti"
+    },
+    {
+      "id": "structures20261115:010",
+      "source": "tax20261115strutture::extraction",
+      "target": "tax20261115strutture::composition",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Relazione schematica contingente (when_attested), non gerarchia ontologica universale: richiede gate su dati concreti"
+    },
+    {
+      "id": "structures20261115:011",
+      "source": "atlantis::opera:quattro-stagioni",
+      "target": "tax20261115strutture::editorial_collection",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Le quattro stagioni: distinguere insieme di quattro concerti, loro appartenenza a op. 8 e raccolta editoriale"
+    },
+    {
+      "id": "structures20261115:018",
+      "source": "flaminio_lotto1::audit:fl01:beethoven29:collection:excel4708",
+      "target": "tax20261115strutture::integrated_cycle",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "Possibile identità crossDB di An die ferne Geliebte: verificare prima del merge"
+    },
+    {
+      "id": "structures20261115:023",
+      "source": "flaminio_lotto1::audit:fl01:jsb04:doc:part:BWV1004-5",
+      "target": "tax20261115strutture::movement",
+      "status": "HOLD_OR_SCHEMA_PROPOSAL_NOT_LOADED",
+      "reason": "La Ciaccona è un movimento, ma il nodo fonte è di tipo documentario: servono categoria musicale e attestazione senza mutare la fonte"
+    }
+  ],
+  "counts": {
+    "new_nodes": 5,
+    "new_edges": 13,
+    "schema_edges": 3,
+    "source_classifications": 10,
+    "pending": 10,
+    "original_edges": 23
+  }
+}
