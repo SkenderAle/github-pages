@@ -107,7 +107,7 @@ main.details-collapsed #detailsPanel{display:none}
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=sonata-root-safe-20261116-v2";
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=sonata-root-safe-20261116-v3";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -556,8 +556,19 @@ function sonataScopedProjection(db,edges,index,root){
        if(to.category==="opere")return form.test(relation);
        return d===0&&from.id===center; // autori e periodi solo come foglie
      }
-     if(from.category==="opere")return to.category==="persone"?authored.test(relation):
-       to.category==="opere"&&parts.test(relation);
+     if(from.category==="opere"){
+       if(to.category==="persone")return authored.test(relation);
+       if(to.category==="opere"){
+         // Le raccolte possono essere mostrate come contesto, senza
+         // espanderle automaticamente in membri di altra tipologia.
+         const collection=n=>(n.provenance||[]).some(p=>/raccolta|ciclo|collection/.test(String(p.payload?.category||"")));
+         if(collection(to)&&/raccolta|part_of_collection|member_of|membro/i.test(relation))return true;
+         // Soltanto il clic sulla singola opera/raccolta apre riusi,
+         // varianti, partite, movimenti o altri collegamenti documentati.
+         if(from.id===center)return parts.test(relation);
+       }
+       return false;
+     }
      return false;
    }
    // Percorsi radicati in Bach: nessuna opera di altro autore entra da un genere.
