@@ -611,6 +611,93 @@ function sonataScopedProjection(db,edges,index,root){
  return {nodes,links,parents,distance,focused:!!state.focus,center,
    hasTaxonomyPath:trail.some(id=>index.get(id)?.category==="generi_forme"),scope:bach?"bach":"sonata"};
 }
+
+// Una navigazione radicata per Suite e Repertorio sinfonico, distinta da Sonata.
+// Usa solo i raccordi verificati nell'overlay e gli archi opera/genere di fonte.
+function suiteScopedProjection(db,edges,index,root){
+ const curated=edges.filter(e=>e.layer==="suite_staging");
+ const taxonomyIDs=new Set(curated.flatMap(e=>[e.source,e.target]).filter(id=>index.get(id)?.category==="generi_forme"));
+ if(root?.category!=="generi_forme"||!taxonomyIDs.has(root.id))return null;
+ const isRepertoire=id=>/^tax20261115::family:repertorio-/.test(id);
+ const repertoireRoot=isRepertoire(root.id);
+ const heldRows=new Set((db.crosswalk?.sonata_work_pending||[]).map(x=>x.source_excel_row));
+ const heldWorks=new Set(db.nodes.filter(n=>n.category==="opere"&&(n.provenance||[])
+   .some(p=>heldRows.has(p.payload?.source_excel_row))).map(n=>n.id));
+ const authorRel=/compone|ha_composto|composizione_|autore_di|musica_composta|composed_by|written_by|opera_di|attribuita_/i;
+ const genreRel=/genere|forma|form|classific|subtype|typolog|esempio-storico/i;
+ const partRel=/part_of|has_part|contien|member|membro|raccolta|version|movimento|parte_di|derived|estratt/i;
+ const center=state.focus&&index.has(state.focus)?state.focus:root.id;
+ const trail=state.focus&&state.trail?.at(-1)===center?state.trail:[root.id];
+ const pathIDs=new Set(trail),pathEdges=new Set(state.trailEdges||[]);
+ const edgesByID=new Map(edges.map(e=>[e.id,e])),adj=new Map();
+ for(const e of edges){
+   for(const [from,to] of [[e.source,e.target],[e.target,e.source]]){
+     if(!adj.has(from))adj.set(from,[]);
+     adj.get(from).push({next:to,e});
+   }
+ }
+ const parents=new Map(),distance=new Map([[center,0]]);
+ for(let i=1;i<trail.length;i++){
+   const e=edgesByID.get(state.trailEdges?.[i-1]);
+   if(e)parents.set(trail[i],{from:trail[i-1],edge:e});
+ }
+ for(let i=0;i<trail.length-1;i++)distance.set(trail[i],trail.length-1-i);
+ function permitted(from,to,e){
+   if(!to||to.visibility==="documentary"||pathIDs.has(to.id)||heldWorks.has(to.id))return false;
+   const r=e.relation||"";
+   if(from.category==="generi_forme"){
+     // Il repertorio generale è un contesto terminale, salvo che sia la radice.
+     if(isRepertoire(from.id)&&!repertoireRoot)return false;
+     if(e.layer==="suite_staging"){
+       if(/^has_(historical_|contextual_)?subtype/.test(r))return e.source===from.id&&e.target===to.id;
+       if(/^(is_specialization_of|historical_specialization_of|taxonomic_alignment_not_identity)$/.test(r))
+         return e.target===from.id&&e.source===to.id;
+       if(r==="member_of_repertoire"){
+         if(repertoireRoot)return e.target===from.id&&e.source===to.id;
+         return e.source===from.id&&e.target===to.id;
+       }
+       if(r==="work_has_form")return e.target===from.id&&to.category==="opere";
+       if(r==="related_form_to")return e.source===from.id&&e.target===to.id;
+       return false;
+     }
+     // Opere del catalogo già direttamente classificate: nessun salto attraverso altri autori.
+     return to.category==="opere"&&genreRel.test(r);
+   }
+   if(from.category==="opere"){
+     if(to.category==="persone")return authorRel.test(r);
+     if(to.category==="opere"&&from.id===center)return partRel.test(r);
+     if(to.category==="opere"&&/(raccolta|ciclo|collection)/i.test(to.subtype||""))
+       return partRel.test(r);
+     return false;
+   }
+   return false;
+ }
+ const queue=[center],visited=new Set(trail);
+ for(let i=0;i<queue.length;i++){
+   const id=queue[i],from=index.get(id),d=distance.get(id);
+   if(!from||d>=state.depth)continue;
+   if(d>0&&from.category==="persone")continue;
+   if(d>0&&from.category==="generi_forme"&&!taxonomyIDs.has(id))continue;
+   for(const {next,e} of adj.get(id)||[]){
+     if(visited.has(next)||!permitted(from,index.get(next),e))continue;
+     visited.add(next);distance.set(next,d+1);parents.set(next,{from:id,edge:e});queue.push(next);
+   }
+ }
+ const chosen=new Set(trail),show=new Set(state.cats);
+ for(const id of queue){
+   if(!show.has(index.get(id)?.category)&&!pathIDs.has(id))continue;
+   let p=id,safety=0;
+   while(p&&!chosen.has(p)&&safety++<30){chosen.add(p);p=parents.get(p)?.from;}
+ }
+ const nodes=db.nodes.filter(n=>chosen.has(n.id)&&n.visibility!=="documentary");
+ const ids=new Set(nodes.map(n=>n.id));
+ const links=edges.filter(e=>ids.has(e.source)&&ids.has(e.target)&&(
+   pathEdges.has(e.id)||parents.get(e.source)?.edge?.id===e.id||parents.get(e.target)?.edge?.id===e.id));
+ return {nodes,links,parents,distance,focused:!!state.focus,center,
+   hasTaxonomyPath:trail.some(id=>index.get(id)?.category==="generi_forme"),
+   scope:"suite_sinfonico"};
+}
+
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
@@ -622,7 +709,10 @@ function rootedProjection(db){
  const adj=new Map();
  for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
  if(state.comparison)return comparisonProjection(db,edges,index);
- if(root){const scoped=sonataScopedProjection(db,edges,index,root);if(scoped)return scoped;}
+ if(root){
+    const sonataView=sonataScopedProjection(db,edges,index,root);if(sonataView)return sonataView;
+    const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return suiteView;
+  }
  if(!state.root){
    // Apertura globale: l'intera rete musicale disponibile, senza selezione.
    // Le 500 schede documentarie e gli archi HOLD restano esclusi dalla vista
