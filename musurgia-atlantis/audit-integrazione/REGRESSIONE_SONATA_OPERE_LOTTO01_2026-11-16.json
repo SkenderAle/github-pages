@@ -1,0 +1,83 @@
+{
+  "schema": "musurgia-sonata-worklinks-static-regression-v1",
+  "date": "2026-11-16",
+  "environment": "GitHub repo main, real JSON fetched via connector",
+  "status": "STATIC_REFERENTIAL_AND_PROVENANCE_CHECKS_PASS_BROWSER_NODE_RUNTIME_NOT_EXECUTED",
+  "input_files": [
+    "musurgia-atlantis/audit-integrazione/SONATA_CAMERA_RACCORDI_OPERATIVI_2026-11-16.json",
+    "musurgia-atlantis/audit-integrazione/SONATA_OPERE_RACCORDI_FONTE_LOTTO01_2026-11-16.json",
+    "musurgia-atlantis/audit-integrazione/STAGING_GRAFO_FEDERATO_LOTTO01_JSB06_V11_GATE04_COPIA_2026-11-15.json",
+    "musurgia-atlantis/audit-integrazione/GRAFO_FONTE_FLAMINIO_LOTTO01_500_2026-11-12.json",
+    "atlante3d/database/grafo.json",
+    "musurgia-atlantis/grafo.json"
+  ],
+  "baseline_counts_from_prior_2026_11_16_builder_test": {
+    "nodes": 2813,
+    "links": 8517
+  },
+  "overlay_counts": {
+    "first_structure_nodes": 7,
+    "first_structure_links": 11,
+    "new_work_taxonomy_nodes": 6,
+    "new_work_structure_links": 17,
+    "new_work_links": 10,
+    "reused_existing_genre_nodes": 4,
+    "reused_existing_work_classification_links": 19,
+    "source_rows": 33,
+    "classifications": 29,
+    "held_source_rows": 4
+  },
+  "expected_after_updated_builder": {
+    "nodes": 2819,
+    "links": 8544
+  },
+  "checks": {
+    "all_new_edges_have_existing_endpoints": true,
+    "newly_added_edges_have_unique_ids": true,
+    "original_flaminio_stage_has_unique_node_ids": true,
+    "original_flaminio_stage_has_unique_edge_ids": true,
+    "original_flaminio_stage_has_zero_orphans": true,
+    "all_33_sonata_source_rows_covered": true,
+    "no_source_row_counted_twice": true,
+    "all_19_original_genre_work_edges_reused_verbatim": true,
+    "all_10_new_work_links_have_source_to_work_provenance": true,
+    "hold_links_excluded_from_new_work_links": true,
+    "no_new_canonical_author_claims": true
+  },
+  "hold_source_rows": [
+    {
+      "row": 3641,
+      "title": "Sonata in do maggiore per flauto traverso e clavicembalo",
+      "reason": "BWV 1033: attribuzione a Bach in HOLD nell'overlay JSB04; organico e fonte da riesaminare"
+    },
+    {
+      "row": 3645,
+      "title": "Sonata in mi bemolle maggiore per flauto traverso e clavicembalo",
+      "reason": "BWV 1031: attribuzione a Bach in HOLD nell'overlay JSB04; possibile diversa autorialità"
+    },
+    {
+      "row": 3654,
+      "title": "Sonata in sol minore per violino (o flauto traverso) e clavicembalo",
+      "reason": "BWV 1020: attribuzione a Bach in HOLD nell'overlay JSB04; possibile attribuzione a C. P. E. Bach"
+    },
+    {
+      "row": 3946,
+      "title": "Sonata in do maggiore",
+      "reason": "BWV 966: attribuzione a Bach non attestata nel record JSB06 (composer_ref null); possibili questioni di derivazione da Reincken"
+    }
+  ],
+  "original_relation_hold_examples": [
+    "attribuzione_Bach_IN_HOLD",
+    "attribuzione_trascrizione_Bach_IN_HOLD",
+    "attribuzione_Bach_versione_8_voci_IN_HOLD",
+    "attribuzione_Bach_IN_HOLD",
+    "attribuzione_Bach_IN_HOLD",
+    "attribuzione_Bach_IN_HOLD"
+  ],
+  "limitations": [
+    "No full buildUnifiedDatabase execution in Node/browser during this check",
+    "No WebGL or Android browser regression",
+    "No independent musicological certification for 29 classifications",
+    "No production graph mutation"
+  ]
+}
