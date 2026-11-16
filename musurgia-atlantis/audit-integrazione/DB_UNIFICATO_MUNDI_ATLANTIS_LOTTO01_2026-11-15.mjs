@@ -433,7 +433,7 @@ export function projectForViewer(db,{rootId,depth=1,visibleCategories=["persone"
  const index=new Map(db.nodes.map(n=>[n.id,n]));
  if(!index.has(rootId))throw Error("Radice sconosciuta: "+rootId);
  const show=new Set(visibleCategories),labels=new Set(labelCategories);
- const isHold=e=>/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
+ const isHold=e=>/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
  const adj=new Map();
  for(const e of db.links){
    if(isHold(e)||(!includeDocumentary&&e.visibility==="documentary"))continue;
