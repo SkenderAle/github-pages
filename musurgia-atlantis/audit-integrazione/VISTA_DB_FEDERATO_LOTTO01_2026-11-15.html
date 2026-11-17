@@ -107,7 +107,7 @@ main.details-collapsed #detailsPanel{display:none}
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=sonata-root-safe-20261116-v3";
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=dance-staging-20261117-v1";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -615,9 +615,12 @@ function sonataScopedProjection(db,edges,index,root){
 // Una navigazione radicata per Suite e Repertorio sinfonico, distinta da Sonata.
 // Usa solo i raccordi verificati nell'overlay e gli archi opera/genere di fonte.
 function suiteScopedProjection(db,edges,index,root){
- const curated=edges.filter(e=>e.layer==="suite_staging");
+ const curated=edges.filter(e=>e.layer==="suite_staging"||e.layer==="dance_staging");
  const taxonomyIDs=new Set(curated.flatMap(e=>[e.source,e.target]).filter(id=>index.get(id)?.category==="generi_forme"));
- if(root?.category!=="generi_forme"||!taxonomyIDs.has(root.id))return null;
+ const danceFamilyID="tax20261115danze::suite-dances";
+ const danceRoot=root?.layer==="dance_staging"&&root?.id!==danceFamilyID;
+ const danceFamilyRoot=root?.id===danceFamilyID;
+ if(!((root?.category==="generi_forme"&&taxonomyIDs.has(root.id))||danceFamilyRoot))return null;
  const isRepertoire=id=>/^tax20261115::family:repertorio-/.test(id);
  const repertoireRoot=isRepertoire(root.id);
  const heldRows=new Set((db.crosswalk?.sonata_work_pending||[]).map(x=>x.source_excel_row));
@@ -645,6 +648,21 @@ function suiteScopedProjection(db,edges,index,root){
  function permitted(from,to,e){
    if(!to||to.visibility==="documentary"||pathIDs.has(to.id)||heldWorks.has(to.id))return false;
    const r=e.relation||"";
+   if(e.layer==="dance_staging"){
+     if(r==="may_function_as_suite_movement"){
+       // Una danza apre il proprio contesto, senza propagarsi alle danze sorelle.
+       if(from.id===e.target&&to.id===e.source)return !danceRoot||from.id===center;
+       if(from.id===e.source&&to.id===e.target)return from.id===center;
+     }
+     if(r==="historical_formal_context"){
+       if(from.id===e.target&&to.id===e.source)return !danceRoot&&!danceFamilyRoot;
+       if(from.id===e.source&&to.id===e.target)return from.id===center||danceRoot||danceFamilyRoot;
+     }
+     return false;
+   }
+   // Il contesto Suite e' un nodo terminale quando la ricerca nasce
+   // da una singola danza o da "Danza nella suite".
+   if((danceRoot||danceFamilyRoot)&&from.id==="mundi::genere-suite")return false;
    if(from.category==="generi_forme"){
      // Il repertorio generale è un contesto terminale, salvo che sia la radice.
      if(isRepertoire(from.id)&&!repertoireRoot)return false;
