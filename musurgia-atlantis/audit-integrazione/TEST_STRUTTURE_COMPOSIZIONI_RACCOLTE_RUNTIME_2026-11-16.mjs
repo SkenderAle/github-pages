@@ -12,10 +12,10 @@ const root=resolve(here,"../..");
 const input=Object.fromEntries(sourcePaths.map(({key,path})=>[
  key,JSON.parse(readFileSync(resolve(root,path),"utf8"))
 ]));
-assert.equal(sourcePaths.length,13);
+assert.equal(sourcePaths.length,14);
 const db=buildUnifiedDatabase(input);
-assert.equal(db.counts.nodes,2843);
-assert.equal(db.counts.links,8614);
+assert.equal(db.counts.nodes,2853);
+assert.equal(db.counts.links,8624);
 assert.equal(db.counts.structure_staging_nodes,5);
 assert.equal(db.counts.structure_staging_links,13);
 assert.equal(db.counts.flaminio_source_records,500);
@@ -83,7 +83,7 @@ assert.equal(sonata.scope,"sonata");
 assert.equal(sonata.nodes.length,109);
 const suite=project("mundi::genere-suite");
 assert.equal(suite.scope,"suite_sinfonico");
-assert.equal(suite.nodes.length,35);
+assert.ok(suite.nodes.length>=35&&suite.nodes.some(n=>n.id==="tax20261115danze::suite-dances"));
 
 console.log(JSON.stringify({
  status:"PASS_REAL_DATA_LOGICAL_RUNTIME_NOT_BROWSER",

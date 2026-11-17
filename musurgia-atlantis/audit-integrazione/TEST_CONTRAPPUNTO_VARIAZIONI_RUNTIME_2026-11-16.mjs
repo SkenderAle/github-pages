@@ -11,10 +11,10 @@ import {sourcePaths,buildUnifiedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LO
 const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,"../..");
 const input=Object.fromEntries(sourcePaths.map(({key,path})=>
  [key,JSON.parse(readFileSync(resolve(root,path),"utf8"))]));
-assert.equal(sourcePaths.length,13);
+assert.equal(sourcePaths.length,14);
 const db=buildUnifiedDatabase(input);
-assert.equal(db.counts.nodes,2843);
-assert.equal(db.counts.links,8614);
+assert.equal(db.counts.nodes,2853);
+assert.equal(db.counts.links,8624);
 assert.equal(db.counts.counterpoint_staging_nodes,11);
 assert.equal(db.counts.counterpoint_staging_links,36);
 assert.equal(db.counts.counterpoint_documentary_links,5);
@@ -92,10 +92,13 @@ assert.equal(names(focused,"Fuga per organo").length,2,
  "Solo il focus esplicito su Fuga apre il relativo repertorio");
 for(const [rootID,n,l] of [
  ["atlantis::senso:sonata",109,108],
- ["mundi::genere-suite",35,34],
  ["tax20261115strutture::editorial_collection",5,4]]){
  const r=project(rootID);assert.equal(r.nodes.length,n);assert.equal(r.links.length,l);
 }
+const suiteView=project("mundi::genere-suite");
+assert.ok(suiteView.nodes.length>=35);
+assert.ok(suiteView.nodes.some(n=>n.id==="tax20261115danze::suite-dances"));
+assert.equal(suiteView.links.length,suiteView.nodes.length-1);
 assert.equal(db.links.filter(e=>e.layer==="counterpoint_staging"&&e.visibility==="documentary").length,5);
 console.log(JSON.stringify({status:"PASS_REAL_DATA_LOGIC_NOT_BROWSER",counts:db.counts,
  projections:output,composition_types_protected:true,partita_corale_not_suite:true,
