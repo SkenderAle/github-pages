@@ -15,8 +15,8 @@ const source=Object.fromEntries(sourcePaths.map(({key,path})=>[
 ]));
 const db=buildUnifiedDatabase(source);
 // Lo staging include Suite/Sinfonico e Strutture delle composizioni: Sonata invariata.
-assert.equal(db.counts.nodes,2853);
-assert.equal(db.counts.links,8624);
+assert.equal(db.counts.nodes,2862);
+assert.equal(db.counts.links,8638);
 assert.equal(db.counts.flaminio_source_records,500);
 assert.equal(db.counts.orphan_links,0);
 assert.equal(db.counts.duplicate_link_ids,0);

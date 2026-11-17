@@ -12,10 +12,10 @@ const root=resolve(here,"../..");
 const input=Object.fromEntries(sourcePaths.map(({key,path})=>[
  key,JSON.parse(readFileSync(resolve(root,path),"utf8"))
 ]));
-assert.equal(sourcePaths.length,14);
+assert.equal(sourcePaths.length,15);
 const db=buildUnifiedDatabase(input);
-assert.equal(db.counts.nodes,2853);
-assert.equal(db.counts.links,8624);
+assert.equal(db.counts.nodes,2862);
+assert.equal(db.counts.links,8638);
 assert.equal(db.counts.structure_staging_nodes,5);
 assert.equal(db.counts.structure_staging_links,13);
 assert.equal(db.counts.flaminio_source_records,500);

@@ -107,7 +107,7 @@ main.details-collapsed #detailsPanel{display:none}
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=dance-staging-20261117-v1";
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=short-forms-staging-20261118-v1";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -903,6 +903,57 @@ function suiteScopedProjection(db,edges,index,root){
      hasTaxonomyPath:true,scope:"counterpoint_variation"};
  }
 
+
+function shortFormScopedProjection(db,edges,index,root){
+ const short=edges.filter(e=>e.layer==="short_staging");
+ const family="tax20261115brevi::family";
+ const members=new Set(short.filter(e=>e.relation==="member_of_analytical_family").map(e=>e.source));
+ if(!root||!(root.id===family||members.has(root.id)||root.id==="mundi::toccata-organistica-rinascimentale"))return null;
+ const center=state.focus&&index.has(state.focus)?state.focus:root.id;
+ const trail=state.focus&&state.trail?.at(-1)===center?state.trail:[root.id];
+ const pathIDs=new Set(trail),pathEdges=new Set(state.trailEdges||[]);
+ const byEdge=new Map(short.map(e=>[e.id,e])),adj=new Map();
+ for(const e of short)for(const [from,to] of [[e.source,e.target],[e.target,e.source]]){
+   if(!adj.has(from))adj.set(from,[]);
+   adj.get(from).push({next:to,edge:e});
+ }
+ function permit(from,to,e){
+   if(!from||!to||to.visibility==="documentary"||pathIDs.has(to.id))return false;
+   if(e.relation==="member_of_analytical_family"){
+     if(from.id===family&&to.id===e.source)return center===family;
+     return from.id===e.source&&to.id===family&&from.id===center;
+   }
+   if(e.relation==="historical_specialization_of")
+     return (from.id===e.target&&to.id===e.source&&from.id===center)||
+       (from.id===e.source&&to.id===e.target&&from.id===center);
+   return false;
+ }
+ const parents=new Map(),distance=new Map([[center,0]]);
+ for(let i=1;i<trail.length;i++){const e=byEdge.get(state.trailEdges?.[i-1]);if(e)parents.set(trail[i],{from:trail[i-1],edge:e})}
+ for(let i=0;i<trail.length-1;i++)distance.set(trail[i],trail.length-1-i);
+ const queue=[center],visited=new Set(trail);
+ for(let i=0;i<queue.length;i++){
+   const id=queue[i],from=index.get(id),d=distance.get(id);
+   if(!from||d>=state.depth)continue;
+   for(const {next,edge} of adj.get(id)||[]){
+     if(visited.has(next)||!permit(from,index.get(next),edge))continue;
+     visited.add(next);distance.set(next,d+1);parents.set(next,{from:id,edge});queue.push(next);
+   }
+ }
+ const chosen=new Set(trail),show=new Set(state.cats);
+ for(const id of queue){
+   if(!show.has(index.get(id)?.category)&&!pathIDs.has(id))continue;
+   let p=id,count=0;
+   while(p&&!chosen.has(p)&&count++<30){chosen.add(p);p=parents.get(p)?.from;}
+ }
+ const nodes=db.nodes.filter(n=>chosen.has(n.id)&&n.visibility!=="documentary");
+ const ids=new Set(nodes.map(n=>n.id));
+ const links=short.filter(e=>ids.has(e.source)&&ids.has(e.target)&&(
+   pathEdges.has(e.id)||parents.get(e.source)?.edge?.id===e.id||parents.get(e.target)?.edge?.id===e.id));
+ return {nodes,links,parents,distance,focused:!!state.focus,center,
+  hasTaxonomyPath:true,scope:"forme_brevi"};
+}
+
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
@@ -919,6 +970,7 @@ function rootedProjection(db){
     const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return suiteView;
     const structureView=structureScopedProjection(db,edges,index,root);if(structureView)return structureView;
     const counterpointView=counterpointScopedProjection(db,edges,index,root);if(counterpointView)return counterpointView;
+    const shortView=shortFormScopedProjection(db,edges,index,root);if(shortView)return shortView;
   }
  if(!state.root){
    // Apertura globale: l'intera rete musicale disponibile, senza selezione.

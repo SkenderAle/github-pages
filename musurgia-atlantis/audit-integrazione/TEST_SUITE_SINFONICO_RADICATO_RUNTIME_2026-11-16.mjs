@@ -12,10 +12,10 @@ const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,"../..");
 const inputs=Object.fromEntries(sourcePaths.map(({key,path})=>[
   key,JSON.parse(readFileSync(resolve(root,path),"utf8"))
 ]));
-assert.equal(sourcePaths.length,14);
+assert.equal(sourcePaths.length,15);
 const db=buildUnifiedDatabase(inputs);
-assert.equal(db.counts.nodes,2853);
-assert.equal(db.counts.links,8624);
+assert.equal(db.counts.nodes,2862);
+assert.equal(db.counts.links,8638);
 assert.equal(db.counts.suite_staging_nodes,8);
 assert.equal(db.counts.suite_staging_links,21);
 assert.equal(db.counts.flaminio_source_records,500);
