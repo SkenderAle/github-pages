@@ -11,7 +11,7 @@ const inputs=Object.fromEntries(sourcePaths.map(({key,path})=>[key,JSON.parse(re
 assert.equal(sourcePaths.length,17);
 const db=buildUnifiedDatabase(inputs);
 assert.equal(db.counts.nodes,2897);
-assert.equal(db.counts.links,8725);
+assert.equal(db.counts.links,8729);
 assert.equal(db.counts.dance_staging_nodes,10);
 assert.equal(db.counts.dance_staging_links,10);
 assert.equal(db.counts.flaminio_source_records,500);

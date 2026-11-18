@@ -84,3 +84,18 @@ Questo aggiornamento **integra senza sovrascrivere** il checkpoint storico ripor
 4. Non modificare i grafi pubblici prima del gate complessivo e **non aprire Lotto 2 Flaminio**.
 
 **Stato aggiornato:** integrità strutturale reale **PASS**; regressione logica radicata **PASS**; collaudo browser e audit musicologico **OPEN**; Lotto 2 **BLOCKED**; produzione **immutata**.
+
+
+---
+
+## Aggiornamento — raccordi specifici Mozart → Opera (18 novembre, sera)
+
+La prova strutturale e logica in JavaScript V8, alimentata dalle 17 sorgenti JSON reali del Lotto 1 e dalla funzione di proiezione estratta dalla vista HTML di staging, conferma l'integrazione di quattro raccordi **opera individuale → genere Opera**: *Le nozze di Figaro* (K. 492), *Don Giovanni* (K. 527), *Die Zauberflöte* (K. 620) e *Così fan tutte* (K. 588). Gli archi sono registrati in `CROSSWALK_TASSONOMICO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.json` e puntano a nodi già presenti, senza crearne nuovi.
+
+**Nuovi conteggi dello staging:** 17 sorgenti, **2.897 nodi, 8.729 archi**, 500 schede Flaminio, **zero archi orfani** e **zero identificativi d'arco duplicati**. Le 162 identità personali e le 21 identità tassonomiche curate restano invariate. I numeri 2.897/8.725 del checkpoint precedente rimangono testimonianza storica della versione anteriore ai quattro archi.
+
+**Navigazione verificata in V8 sul dataset reale:** Mozart → Opera, profondità 5, passa da **zero a quattro opere**, precisamente le quattro sopra elencate. Non compaiono *Les Petits Riens*, i quartetti dedicati a Haydn o opere di altri compositori. Sono state aggiornate le aspettative numeriche nei nove test runtime esistenti e aggiunte asserzioni opera-specifiche nel test radicato; il loro aggiornamento **non costituisce un'esecuzione completa da CLI Node**.
+
+**Rapporto di verifica:** [AUDIT_MOZART_OPERA_RACCORDI_SPECIFICI_2026-11-18.md](AUDIT_MOZART_OPERA_RACCORDI_SPECIFICI_2026-11-18.md).
+
+**Restano aperti:** prova browser/WebGL/Android, batteria runtime integrale da CLI, repertorio Singspiel mancante (compresa *Die Entführung aus dem Serail*) e audit musicologico di tutte le opere. **Lotto 2 Flaminio bloccato; grafi di produzione invariati.**

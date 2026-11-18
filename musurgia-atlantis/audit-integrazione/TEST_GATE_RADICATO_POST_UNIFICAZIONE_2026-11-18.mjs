@@ -18,7 +18,7 @@ const inputs=Object.fromEntries(sourcePaths.map(({key,path})=>[
 ]));
 const db=buildUnifiedDatabase(inputs);
 assert.equal(db.counts.nodes,2897);
-assert.equal(db.counts.links,8725);
+assert.equal(db.counts.links,8729);
 assert.equal(db.counts.orphan_links,0);
 assert.equal(db.counts.duplicate_link_ids,0);
 assert.equal(db.counts.flaminio_source_records,500);
@@ -91,6 +91,18 @@ for(const [name,rootId,center] of focusCases){
  assert.ok(v.nodes.length<100,name+": espansione generica non radicata");
  focuses[name]={nodes:v.nodes.length,links:v.links.length,works:ids};
 }
+// Gate opera-specifico: Mozart -> Opera ha esattamente quattro composizioni
+// già presenti e assegnate individualmente a questo genere.
+const fourMozartOperas=new Set([
+ "atlantis::opera:figaro",
+ "atlantis::opera:Don-giovanni",
+ "atlantis::opera:flauto-magico",
+ "atlantis::opera:cosi-fan-tutte-1790"
+]);
+assert.deepEqual(new Set(focuses.mozart_opera.works),fourMozartOperas);
+assert.equal(focuses.mozart_opera.works.length,4);
+assert.ok(!focuses.mozart_opera.works.some(id=>/petits-riens|quartetti/i.test(id)));
+
 for(const id of ["counterpoint_staging::cf20261115:030",
                  "counterpoint_staging::cf20261115:031"]){
  const edge=db.links.find(e=>e.id===id);
