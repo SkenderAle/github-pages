@@ -1247,8 +1247,22 @@ function rootedProjection(db){
    }
    for(let i=0;i<trail.length-1;i++)focusDistance.set(trail[i],trail.length-1-i);
    const frontier=[center],visited=new Set(trail);
+   // In un percorso autore/opera/genere si conserva il perimetro
+   // della radice: niente opere altrui ereditate da hub condivisi.
+   const anchoredFocus=["persone","opere","generi_forme"].includes(root?.category);
+   const rootNeighbors=new Set((adj.get(state.root)||[]).map(x=>x.id));
+   rootNeighbors.add(state.root);
+   const isTaxonomyChild=e=>!!e&&
+      /(articolazione.del.genere|sottogenere|specificazione|ramo.del.genere)/i.test(e.relation||"");
+   const focusIsChildGenre=root?.category==="generi_forme"&&trail.length>1&&
+      trail.slice(1).every((id,i)=>{
+         const edge=byEdgeId.get(state.trailEdges[i]);
+         return edge?.source===trail[i]&&edge?.target===id&&isTaxonomyChild(edge);
+      });
    const isPeriod=(root?.provenance||[]).some(p=>p.payload?.type==="periodo");
    for(let depth=1;depth<=state.depth;depth++){
+     // Un click espande un passo pertinente, senza accendere tutta la rete.
+     if(anchoredFocus&&depth>1)break;
      const next=[];
      for(const from of frontier){
        const n=index.get(from);
@@ -1259,6 +1273,14 @@ function rootedProjection(db){
          // I nodi a monte sono memoria del percorso, non nuovi centri di
          // espansione. Le forme non devono richiamare altri compositori.
          if(pathIds.has(toId))continue;
+         if(anchoredFocus&&!rootNeighbors.has(toId)){
+           const isWorkPart=n.category==="opere"&&to.category==="opere"&&parts.test(e.relation||"");
+           const downGenre=focusIsChildGenre&&n.category==="generi_forme"&&
+             to.category==="generi_forme"&&e.source===from&&e.target===toId&&isTaxonomyChild(e);
+           const attachedWork=focusIsChildGenre&&n.category==="generi_forme"&&
+             to.category==="opere"&&/appartiene|repertorio|composizione|esempio|genere|forma|tipo|documentato/i.test(e.relation||"");
+           if(!isWorkPart&&!downGenre&&!attachedWork)continue;
+         }
          if(root?.category==="persone"&&to.category==="persone"&&toId!==state.root)continue;
          if(isPeriod&&to.category==="persone"&&toId!==state.root)continue;
          if(isChapter(to)&&depth>1)continue;
