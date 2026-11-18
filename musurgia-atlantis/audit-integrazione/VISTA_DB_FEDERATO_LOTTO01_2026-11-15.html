@@ -1193,6 +1193,25 @@ function rootedProjection(db){
  // L'espansione radicata non attraversa liberamente capitoli, periodi, forme e documentazione.
  function canExpand(n,d){
    if(d===0)return true;
+   // La profondita' non deve allargarsi da un autore verso il repertorio
+   // di altri compositori attraverso un genere condiviso, ne' da un'opera
+   // alle altre composizioni dell'autore.
+   if(root?.category==="persone"||root?.category==="opere"){
+     if(n?.category!=="opere")return false;
+     const via=parents.get(n.id);
+     if(!via)return false;
+     const rel=String(via.edge.relation||"");
+     if(root.category==="persone"&&via.from===state.root)return authored.test(rel);
+     return parts.test(rel);
+   }
+   // La categoria di un genere puo' aprire solo sottogeneri discendenti
+   // documentati, non il genitore, gli autori o tutte le loro opere.
+   if(root?.category==="generi_forme"){
+     if(n?.category!=="generi_forme")return false;
+     const via=parents.get(n.id),rel=String(via?.edge?.relation||"");
+     return !!via&&via.edge.source===via.from&&via.edge.target===n.id&&
+       /(articolazione.del.genere|sottogenere|specificazione|ramo.del.genere)/i.test(rel);
+   }
    if(isChapter(n)||n?.category==="documentazione")return false;
    // In Mundi generi, forme e correnti sono ponti storici realmente documentati.
    // Il divieto assoluto oltre il livello I nascondeva i collegamenti originali.
