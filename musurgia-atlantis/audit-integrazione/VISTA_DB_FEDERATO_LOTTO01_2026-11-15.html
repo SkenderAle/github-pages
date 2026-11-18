@@ -136,7 +136,7 @@ function lensBucket(e){
 function availableLensCounts(){
  const totals=new Map(lensChoices.map(([id])=>[id,0]));
  for(const e of state.db?.links||[]){
-   if(e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" ")))continue;
+   if(e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED|STAGING_CANDIDATE_FORM_LINK_NOT_IDENTITY)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" ")))continue;
    const bucket=lensBucket(e);
    if(bucket)totals.set(bucket,(totals.get(bucket)||0)+1);
  }
@@ -1158,7 +1158,7 @@ function vocalScopedProjection(db,edges,index,root){
 
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
- const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
+ const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED|STAGING_CANDIDATE_FORM_LINK_NOT_IDENTITY)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
  // Quando tutte le lenti sono spente, nessuna relazione deve sopravvivere
  // attraverso Atlantis, Flaminio o crosswalk: la ricerca singola mostra
  // soltanto il nodo radice.
