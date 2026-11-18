@@ -62,3 +62,25 @@
 - [Ultimo commit verificato](https://github.com/SkenderAle/github-pages/commit/07c6e067975284012c90610a757f5be4e22d39f3)
 
 **Stato finale checkpoint:** Lotto 1 **OPEN / audit e collaudo in corso**; Lotto 2 **BLOCKED**; grafi pubblici invariati. Non equiparare la preparazione dei test alla loro esecuzione.
+
+
+---
+
+## Aggiornamento del checkpoint — gate reali e navigazione radicata (18 novembre, pomeriggio)
+
+Questo aggiornamento **integra senza sovrascrivere** il checkpoint storico riportato sopra. Dove il checkpoint iniziale recita che il builder completo non era stato eseguito, il risultato è **superato da questa prova successiva**.
+
+- **PASS REALE del builder:** 17 JSON effettivi caricati tramite GitHub blob SHA, 2.897 nodi, 8.725 archi, 500 schede Flaminio univoche, **0 archi orfani**, **0 ID arco duplicati**, **0 righe fonte mancanti**. Sono state riprodotte le 162 identità di persone e le 21 tassonomiche curate. Non si tratta più di semplici previsioni.
+- **PASS LOGICO della regressione radicata:** esecuzione in JavaScript V8 sul dataset reale, con HTML di staging effettivo e I/O virtualizzato, del test [TEST_GATE_RADICATO_POST_UNIFICAZIONE_2026-11-18.mjs](TEST_GATE_RADICATO_POST_UNIFICAZIONE_2026-11-18.mjs). Non è un PASS browser/WebGL/Android e non equivale all'esecuzione da CLI Node dell'intera batteria storica.
+- **Archi candidati** `cf20261115:030` / `cf20261115:031` conservati nel database ma esclusi dalla vista ordinaria. Commit `23c84d7`, `4a715c7`.
+- **Espansione generica con radice conservata:** Singspiel 1.851→6 nodi, Mozart 1.808→62, Opera 1.864→197, Concerto 1.862→154; focus Mozart→Concerto 781→6, Singspiel→Mozart 1.923→4. Commit `8cc4e1b`, `411e600`, aggiornamento nota UI `59c60ec`.
+- **Report con metodo, conteggi, regressioni e questioni aperte:** [REGRESSIONE_DATI_REALI_RADICATA_2026-11-18.md](REGRESSIONE_DATI_REALI_RADICATA_2026-11-18.md).
+
+### Prossima ripresa
+
+1. Verificare gli **archi opera-specifici** per autore → composizione → genere/forma: in particolare Mozart, Opera, Concerto e Singspiel. **Non** popolare categorie trasferendo indistintamente tutti i figli di un autore o di un genere.
+2. Verificare il repertorio Singspiel mancante: *Die Entführung aus dem Serail* non è stato reperito come nodo nei tre inventari verificati; non inventare schede né identità.
+3. Eseguire nel browser la vista di prova con filtri, etichette, click/focus e prestazioni su desktop/Android, quindi completare la batteria di harness Node.
+4. Non modificare i grafi pubblici prima del gate complessivo e **non aprire Lotto 2 Flaminio**.
+
+**Stato aggiornato:** integrità strutturale reale **PASS**; regressione logica radicata **PASS**; collaudo browser e audit musicologico **OPEN**; Lotto 2 **BLOCKED**; produzione **immutata**.
