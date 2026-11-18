@@ -9,10 +9,10 @@ import {sourcePaths,buildUnifiedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LO
 const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,"../..");
 const input=Object.fromEntries(sourcePaths.map(({key,path})=>[
  key,JSON.parse(readFileSync(resolve(root,path),"utf8"))]));
-assert.equal(sourcePaths.length,16);
+assert.equal(sourcePaths.length,17);
 const db=buildUnifiedDatabase(input);
-assert.equal(db.counts.nodes,2877);
-assert.equal(db.counts.links,8676);
+assert.equal(db.counts.nodes,2897);
+assert.equal(db.counts.links,8725);
 assert.equal(db.counts.scene_staging_nodes,15);
 assert.equal(db.counts.scene_staging_links,38);
 assert.equal(db.counts.flaminio_source_records,500);

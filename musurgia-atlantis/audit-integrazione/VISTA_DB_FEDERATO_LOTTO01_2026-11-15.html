@@ -107,7 +107,7 @@ main.details-collapsed #detailsPanel{display:none}
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=scene-stage-20261118-v1";
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=vocal-stage-20261118-v1";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -1069,6 +1069,93 @@ function sceneScopedProjection(db,edges,index,root){
    hasTaxonomyPath:true,scope:"scena_danza"};
 }
 
+
+function vocalScopedProjection(db,edges,index,root){
+ const scoped=edges.filter(e=>e.layer==="vocal_staging");
+ const activeIDs=new Set(scoped.flatMap(e=>[e.source,e.target]));
+ if(!root||!activeIDs.has(root.id))return null;
+ const vocal="tax20261115vf::family:vocale";
+ const families=new Set([vocal,"tax20261115vf::family:sacro",
+   "tax20261115vf::family:profano"]);
+ const isFamilyRoot=families.has(root.id);
+ const center=state.focus&&index.has(state.focus)?state.focus:root.id;
+ const trail=state.focus&&state.trail?.at(-1)===center?state.trail:[root.id];
+ const pathIDs=new Set(trail),pathEdges=new Set(state.trailEdges||[]);
+ const byEdge=new Map(scoped.map(e=>[e.id,e])),adj=new Map();
+ for(const e of scoped)for(const [from,to] of [[e.source,e.target],[e.target,e.source]]){
+   if(!adj.has(from))adj.set(from,[]);
+   adj.get(from).push({next:to,edge:e});
+ }
+ const familyRel=new Set(["member_of_repertoire","member_of_repertoire_qualified",
+   "contextual_vocal_genre","qualified_function_context","function_and_repertoire",
+   "vocal_function_branch"]);
+ const subtypeRel=new Set(["historical_liturgical_specialization",
+   "historical_specialization","function_classification","qualified_subtype",
+   "instrumentation_subtype","collection_form_related"]);
+ const workRel=new Set(["work_has_genre","work_has_historical_genre",
+   "work_uses_requiem_tradition","contains_requiem_component",
+   "work_has_collection_form","work_has_function"]);
+ const contextRel=new Set(["historically_related_not_identity","based_on_chorale_not_subtype"]);
+ const parents=new Map(),distance=new Map([[center,0]]);
+ for(let i=1;i<trail.length;i++){
+   const edge=byEdge.get(state.trailEdges?.[i-1]);
+   if(edge)parents.set(trail[i],{from:trail[i-1],edge});
+ }
+ for(let i=0;i<trail.length-1;i++)distance.set(trail[i],trail.length-1-i);
+ function permitted(from,to,e){
+   if(!from||!to||to.visibility==="documentary"||pathIDs.has(to.id))return false;
+   const r=e.relation||"";
+   if(familyRel.has(r)){
+     if(from.id===e.target&&to.id===e.source)
+       return from.id===center||(root.id===vocal&&families.has(from.id));
+     return from.id===e.source&&to.id===e.target&&from.id===center;
+   }
+   if(subtypeRel.has(r)){
+     if(from.id===e.target&&to.id===e.source)
+       return from.id===center||
+         (root.id===vocal&&from.id==="atlantis::senso:cantata");
+     return from.id===e.source&&to.id===e.target&&from.id===center;
+   }
+   if(workRel.has(r)){
+     if(isFamilyRoot)return false;
+     if(from.id===e.target&&to.id===e.source)return from.id===center;
+     return from.id===e.source&&to.id===e.target&&from.id===center;
+   }
+   if(contextRel.has(r)){
+     // Il preludio per organo deriva dal corale ma non e' musica vocale.
+     return from.id===center&&(
+       (from.id===e.source&&to.id===e.target)||
+       (from.id===e.target&&to.id===e.source));
+   }
+   return false;
+ }
+ const queue=[center],visited=new Set(trail);
+ for(let i=0;i<queue.length;i++){
+   const id=queue[i],from=index.get(id),d=distance.get(id);
+   if(!from||d>=state.depth)continue;
+   if(d>0&&["opere","persone","documentazione","eventi"].includes(from.category))continue;
+   for(const {next,edge} of adj.get(id)||[]){
+     if(visited.has(next)||!permitted(from,index.get(next),edge))continue;
+     visited.add(next);distance.set(next,d+1);parents.set(next,{from:id,edge});queue.push(next);
+   }
+ }
+ const chosen=new Set(trail),show=new Set(state.cats);
+ for(const id of queue){
+   if(!show.has(index.get(id)?.category)&&!pathIDs.has(id))continue;
+   let p=id,guard=0;
+   while(p&&!chosen.has(p)&&guard++<30){
+     chosen.add(p);p=parents.get(p)?.from;
+   }
+ }
+ const nodes=db.nodes.filter(n=>chosen.has(n.id)&&n.visibility!=="documentary");
+ const ids=new Set(nodes.map(n=>n.id));
+ const links=scoped.filter(e=>ids.has(e.source)&&ids.has(e.target)&&(
+   pathEdges.has(e.id)||parents.get(e.source)?.edge?.id===e.id||
+   parents.get(e.target)?.edge?.id===e.id));
+ return {nodes,links,parents,distance,focused:!!state.focus,center,
+   hasTaxonomyPath:true,scope:"vocale_sacro_profano"};
+}
+
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
@@ -1083,6 +1170,7 @@ function rootedProjection(db){
  if(root){
     const sonataView=sonataScopedProjection(db,edges,index,root);if(sonataView)return sonataView;
     const sceneView=sceneScopedProjection(db,edges,index,root);if(sceneView)return sceneView;
+    const vocalView=vocalScopedProjection(db,edges,index,root);if(vocalView)return vocalView;
     const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return suiteView;
     const structureView=structureScopedProjection(db,edges,index,root);if(structureView)return structureView;
     const counterpointView=counterpointScopedProjection(db,edges,index,root);if(counterpointView)return counterpointView;
