@@ -107,7 +107,7 @@ main.details-collapsed #detailsPanel{display:none}
 </aside>
 </main>
 <script type="module">
-import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=short-forms-staging-20261118-v1";
+import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=scene-stage-20261118-v1";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -615,7 +615,8 @@ function sonataScopedProjection(db,edges,index,root){
 // Una navigazione radicata per Suite e Repertorio sinfonico, distinta da Sonata.
 // Usa solo i raccordi verificati nell'overlay e gli archi opera/genere di fonte.
 function suiteScopedProjection(db,edges,index,root){
- const curated=edges.filter(e=>e.layer==="suite_staging"||e.layer==="dance_staging");
+ const curated=edges.filter(e=>e.layer==="suite_staging"||e.layer==="dance_staging"||
+   (e.layer==="scene_staging"&&e.relation==="form_specialization"));
  const taxonomyIDs=new Set(curated.flatMap(e=>[e.source,e.target]).filter(id=>index.get(id)?.category==="generi_forme"));
  const danceFamilyID="tax20261115danze::suite-dances";
  const danceRoot=root?.layer==="dance_staging"&&root?.id!==danceFamilyID;
@@ -648,6 +649,9 @@ function suiteScopedProjection(db,edges,index,root){
  function permitted(from,to,e){
    if(!to||to.visibility==="documentary"||pathIDs.has(to.id)||heldWorks.has(to.id))return false;
    const r=e.relation||"";
+   if(e.layer==="scene_staging"){
+     return r==="form_specialization"&&e.target===from.id&&e.source===to.id;
+   }
    if(e.layer==="dance_staging"){
      if(r==="may_function_as_suite_movement"){
        // Una danza apre il proprio contesto, senza propagarsi alle danze sorelle.
@@ -954,6 +958,117 @@ function shortFormScopedProjection(db,edges,index,root){
   hasTaxonomyPath:true,scope:"forme_brevi"};
 }
 
+
+// Scena/danza: una composizione, una sua versione o suite e un allestimento
+// sono entita' distinte. L'esplorazione rimane radicata e non attraversa
+// liberamente famiglie generiche, opere altrui o cataloghi di altri autori.
+function sceneScopedProjection(db,edges,index,root){
+ const scoped=edges.filter(e=>e.layer==="scene_staging");
+ const stageIDs=new Set(scoped.flatMap(e=>[e.source,e.target]));
+ const stopIDs=new Set(["mundi::genere-suite","atlantis::senso:opera"]);
+ if(!root||stopIDs.has(root.id)||!stageIDs.has(root.id))return null;
+ const families=new Set([
+   "tax20261115scena::family:scena",
+   "tax20261115scena::family:danza",
+   "tax20261115scena::family:spettacolo"]);
+ const familyRoot=families.has(root.id);
+ const center=state.focus&&index.has(state.focus)?state.focus:root.id;
+ const trail=state.focus&&state.trail?.at(-1)===center?state.trail:[root.id];
+ const trailIDs=new Set(trail),trailLinks=new Set(state.trailEdges||[]);
+ const edgeByID=new Map(scoped.map(e=>[e.id,e]));
+ const adj=new Map();
+ for(const e of scoped){
+   for(const [from,to] of [[e.source,e.target],[e.target,e.source]]){
+     if(!adj.has(from))adj.set(from,[]);
+     adj.get(from).push({to,edge:e});
+   }
+ }
+ const familyRelations=new Set([
+   "member_of_repertoire","member_of_repertoire_qualified",
+   "derived_from_dance_music","work_has_dance_origin",
+   "is_entity_kind_in_repertoire","is_adaptation_kind_from_stage",
+   "is_creative_component_of_dance","is_event_kind_in_repertoire",
+   "is_work_kind_in_repertoire","parallel_context_without_identity",
+   "is_derived_stage_repertoire"]);
+ const subtypeRelations=new Set([
+   "historical_specialization","historical_relation","form_specialization",
+   "is_version_kind_of_stage_score","is_part_kind_of_stage_score"]);
+ const sourceToTax=new Set([
+   "work_has_genre","work_has_form","work_has_nature",
+   "production_of_genre","entity_has_kind"]);
+ const contextRelations=new Set([
+   "historical_relation_to_opera","historical_practice_related",
+   "dramaturgical_trait"]);
+ const heldRows=new Set((db.crosswalk?.sonata_work_pending||[]).map(x=>x.source_excel_row));
+ const heldWorks=new Set(db.nodes.filter(n=>n.category==="opere"&&(n.provenance||[])
+   .some(p=>heldRows.has(p.payload?.source_excel_row))).map(n=>n.id));
+ const distances=new Map([[center,0]]),parents=new Map();
+ for(let i=1;i<trail.length;i++){
+   const e=edgeByID.get(state.trailEdges?.[i-1]);
+   if(e)parents.set(trail[i],{from:trail[i-1],edge:e});
+ }
+ for(let i=0;i<trail.length-1;i++)distances.set(trail[i],trail.length-1-i);
+ function permitted(from,to,e){
+   if(!from||!to||to.visibility==="documentary"||trailIDs.has(to.id)||
+     heldWorks.has(to.id)||stopIDs.has(from.id))return false;
+   const r=e.relation||"";
+   if(familyRelations.has(r)){
+     // Membro -> famiglia; la famiglia apre soltanto i propri membri.
+     if(from.id===e.target&&to.id===e.source)
+       return from.id===center;
+     if(from.id===e.source&&to.id===e.target)
+       return from.id===center;
+     return false;
+   }
+   if(subtypeRelations.has(r)){
+     // Specializzazione -> forma superiore. Da una famiglia si discende
+     // nelle specializzazioni solo lungo il primo ramo selezionato.
+     if(from.id===e.target&&to.id===e.source)
+       return from.id===center||
+         (familyRoot&&from.id==="atlantis::senso:balletto"&&r!=="form_specialization");
+     return from.id===e.source&&to.id===e.target&&from.id===center;
+   }
+   if(sourceToTax.has(r)){
+     if(from.id===e.target&&to.id===e.source)
+       return from.id===center||
+         (familyRoot&&from.id!==root.id&&
+           (from.category==="generi_forme"||from.category==="concetti"));
+     return from.id===e.source&&to.id===e.target&&from.id===center;
+   }
+   if(contextRelations.has(r)){
+     return from.id===center&&(
+       (from.id===e.source&&to.id===e.target)||
+       (from.id===e.target&&to.id===e.source));
+   }
+   return false;
+ }
+ const queue=[center],seen=new Set(trail);
+ for(let i=0;i<queue.length;i++){
+   const id=queue[i],from=index.get(id),d=distances.get(id);
+   if(!from||d>=state.depth)continue;
+   if(d>0&&["persone","opere","eventi","documentazione"].includes(from.category))continue;
+   for(const {to,edge} of adj.get(id)||[]){
+     if(seen.has(to)||!permitted(from,index.get(to),edge))continue;
+     seen.add(to);distances.set(to,d+1);parents.set(to,{from:id,edge});queue.push(to);
+   }
+ }
+ const selected=new Set(trail),show=new Set(state.cats);
+ for(const id of queue){
+   if(!show.has(index.get(id)?.category)&&!trailIDs.has(id))continue;
+   let p=id,guard=0;
+   while(p&&!selected.has(p)&&guard++<30){
+     selected.add(p);p=parents.get(p)?.from;
+   }
+ }
+ const nodes=db.nodes.filter(n=>selected.has(n.id)&&n.visibility!=="documentary");
+ const ids=new Set(nodes.map(n=>n.id));
+ const links=scoped.filter(e=>ids.has(e.source)&&ids.has(e.target)&&(
+    trailLinks.has(e.id)||parents.get(e.source)?.edge?.id===e.id||
+    parents.get(e.target)?.edge?.id===e.id));
+ return {nodes,links,parents,distance:distances,focused:!!state.focus,center,
+   hasTaxonomyPath:true,scope:"scena_danza"};
+}
+
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
@@ -967,6 +1082,7 @@ function rootedProjection(db){
  if(state.comparison)return comparisonProjection(db,edges,index);
  if(root){
     const sonataView=sonataScopedProjection(db,edges,index,root);if(sonataView)return sonataView;
+    const sceneView=sceneScopedProjection(db,edges,index,root);if(sceneView)return sceneView;
     const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return suiteView;
     const structureView=structureScopedProjection(db,edges,index,root);if(structureView)return structureView;
     const counterpointView=counterpointScopedProjection(db,edges,index,root);if(counterpointView)return counterpointView;
