@@ -107,6 +107,22 @@ assert.ok(!focuses.mozart_opera.works.some(id=>/petits-riens|quartetti/i.test(id
 // Due archi nuovi: Figaro -> Opera buffa, Così -> Dramma giocoso.
 // Don Giovanni e Flauto magico erano già correttamente classificati.
 const workIDs=v=>new Set(works(v).map(n=>n.id));
+// Gate di regressione: L02-A35 e' un arco storico gia' presente in Atlantis.
+// La vista specializzata Scena/Danza deve visualizzarlo senza generare
+// un ulteriore raccordo, ne' portare opere non pertinenti nel sottogenere.
+const sourceIndes=db.links.filter(e=>e.layer==="atlantis"&&e.original?.id==="L02-A35");
+assert.equal(sourceIndes.length,1,"Arco Atlantis L02-A35 assente o duplicato");
+assert.equal(sourceIndes[0].source,"atlantis::opera:indes-galantes");
+assert.equal(sourceIndes[0].target,"atlantis::senso:opera-ballet");
+const operaBalletRoot=project("atlantis::senso:opera-ballet");
+assert.equal(operaBalletRoot.scope,"scena_danza");
+assert.ok(workIDs(operaBalletRoot).has("atlantis::opera:indes-galantes"));
+assert.ok(operaBalletRoot.links.some(e=>e.original?.id==="L02-A35"));
+assert.ok(!workIDs(operaBalletRoot).has("atlantis::opera:aida"));
+const operaBalletFocus=project("tax20261115scena::family:spettacolo","atlantis::senso:opera-ballet");
+assert.ok(workIDs(operaBalletFocus).has("atlantis::opera:indes-galantes"));
+assert.ok(!workIDs(operaBalletFocus).has("atlantis::opera:aida"));
+
 const buffaWorks=workIDs(project("atlantis::senso:opera-buffa"));
 const giocosoWorks=workIDs(project("atlantis::senso:dramma-giocoso"));
 const singspielWorksAfter=workIDs(project("atlantis::senso:singspiel"));
