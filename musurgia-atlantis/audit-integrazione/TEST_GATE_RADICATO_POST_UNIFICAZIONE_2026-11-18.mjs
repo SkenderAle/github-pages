@@ -18,7 +18,7 @@ const inputs=Object.fromEntries(sourcePaths.map(({key,path})=>[
 ]));
 const db=buildUnifiedDatabase(inputs);
 assert.equal(db.counts.nodes,2897);
-assert.equal(db.counts.links,8729);
+assert.equal(db.counts.links,8731);
 assert.equal(db.counts.orphan_links,0);
 assert.equal(db.counts.duplicate_link_ids,0);
 assert.equal(db.counts.flaminio_source_records,500);
@@ -102,6 +102,32 @@ const fourMozartOperas=new Set([
 assert.deepEqual(new Set(focuses.mozart_opera.works),fourMozartOperas);
 assert.equal(focuses.mozart_opera.works.length,4);
 assert.ok(!focuses.mozart_opera.works.some(id=>/petits-riens|quartetti/i.test(id)));
+
+// Gate delle classificazioni opera-specifiche dopo la riconciliazione.
+// Due archi nuovi: Figaro -> Opera buffa, Così -> Dramma giocoso.
+// Don Giovanni e Flauto magico erano già correttamente classificati.
+const workIDs=v=>new Set(works(v).map(n=>n.id));
+const buffaWorks=workIDs(project("atlantis::senso:opera-buffa"));
+const giocosoWorks=workIDs(project("atlantis::senso:dramma-giocoso"));
+const singspielWorksAfter=workIDs(project("atlantis::senso:singspiel"));
+const mozartBuffaWorks=workIDs(project("atlantis::pers:mozart","atlantis::senso:opera-buffa"));
+assert.deepEqual(buffaWorks,new Set(["atlantis::opera:figaro"]));
+assert.deepEqual(mozartBuffaWorks,new Set(["atlantis::opera:figaro"]));
+assert.deepEqual(giocosoWorks,new Set([
+ "atlantis::opera:Don-giovanni",
+ "atlantis::opera:cosi-fan-tutte-1790"
+]));
+assert.deepEqual(singspielWorksAfter,new Set(["atlantis::opera:flauto-magico"]));
+for(const [id,source,target] of [
+ ["curated-opera09-figaro-opera-buffa","atlantis::senso:opera-buffa","atlantis::opera:figaro"],
+ ["curated-opera09-cosi-dramma-giocoso","atlantis::senso:dramma-giocoso","atlantis::opera:cosi-fan-tutte-1790"]
+]){
+ const links=db.links.filter(e=>e.original?.id===id&&e.layer==="crosswalk");
+ assert.equal(links.length,1,id+": raccordo assente o duplicato");
+ assert.equal(links[0].source,source);
+ assert.equal(links[0].target,target);
+ assert.match(links[0].quality,/PRIMARY_AUTHORITY/);
+}
 
 for(const id of ["counterpoint_staging::cf20261115:030",
                  "counterpoint_staging::cf20261115:031"]){

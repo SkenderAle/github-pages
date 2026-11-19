@@ -99,3 +99,18 @@ La prova strutturale e logica in JavaScript V8, alimentata dalle 17 sorgenti JSO
 **Rapporto di verifica:** [AUDIT_MOZART_OPERA_RACCORDI_SPECIFICI_2026-11-18.md](AUDIT_MOZART_OPERA_RACCORDI_SPECIFICI_2026-11-18.md).
 
 **Restano aperti:** prova browser/WebGL/Android, batteria runtime integrale da CLI, repertorio Singspiel mancante (compresa *Die Entführung aus dem Serail*) e audit musicologico di tutte le opere. **Lotto 2 Flaminio bloccato; grafi di produzione invariati.**
+
+
+---
+
+## Aggiornamento di continuità — sottogeneri operistici, 19 novembre 2026
+
+Sono stati integrati due **archi opera-specifici**, nello staging soltanto: `atlantis::senso:opera-buffa → atlantis::opera:figaro` e `atlantis::senso:dramma-giocoso → atlantis::opera:cosi-fan-tutte-1790`. Gli archi già presenti Don Giovanni → Dramma giocoso e Il flauto magico → Singspiel sono stati **riutilizzati**, non duplicati. Fonte primaria delle nuove classificazioni: Stiftung Mozarteum, con riscontri bibliografici allegati a ogni arco.
+
+**Gate V8 su 17 JSON reali:** 2.897 nodi, **8.731 archi**, 500 schede Flaminio, zero archi orfani, zero ID arco duplicati. La vista Opera buffa passa da 0 a 1 opera, Dramma giocoso da 1 a 2, Singspiel rimane a 1. Mozart → Opera mantiene le quattro opere; Mozart → Opera buffa visualizza ora Figaro.
+
+Sono aggiornate le asserzioni numeriche della batteria dei nove test runtime e il gate radicato include nuove verifiche opera-specifiche. **Non si dichiara PASS CLI Node della batteria, né PASS browser/WebGL/Android.**
+
+[Rapporto specifico del 19 novembre](AUDIT_MOZART_SOTTOGENERI_OPERA_2026-11-19.md).
+
+**Lotto 1 OPEN** per audit musicologico e collaudo; **Lotto 2 BLOCKED**; produzione invariata. Restano aperti il caso *Die Entführung aus dem Serail* e l'esecuzione integrale dei gate.

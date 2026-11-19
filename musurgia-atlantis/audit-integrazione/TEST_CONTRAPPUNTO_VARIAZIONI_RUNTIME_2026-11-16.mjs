@@ -14,7 +14,7 @@ const input=Object.fromEntries(sourcePaths.map(({key,path})=>
 assert.equal(sourcePaths.length,17);
 const db=buildUnifiedDatabase(input);
 assert.equal(db.counts.nodes,2897);
-assert.equal(db.counts.links,8729);
+assert.equal(db.counts.links,8731);
 assert.equal(db.counts.counterpoint_staging_nodes,11);
 assert.equal(db.counts.counterpoint_staging_links,36);
 assert.equal(db.counts.counterpoint_documentary_links,5);
