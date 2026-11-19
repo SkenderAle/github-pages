@@ -131,3 +131,18 @@ Dopo l'audit Mozart, è stato completato nello staging un primo lotto **interaut
 [Audit interautore del 19 novembre](AUDIT_OPERE_TEATRALI_INTERAUTORE_2026-11-19.md).
 
 **Lotto 1 OPEN per audit e browser; Lotto 2 BLOCKED; produzione invariata.**
+
+
+---
+
+## Aggiornamento — ripristino visualizzazione Opéra-ballet, 19 novembre 2026
+
+**Bug identificato e corretto nello staging:** l'arco originale Atlantis `L02-A35` (`atlantis::opera:indes-galantes → atlantis::senso:opera-ballet`), già verificato con fonti esterne, era presente nel database ma veniva scartato da `sceneScopedProjection`, che includeva soltanto gli archi `scene_staging`.
+
+La vista `VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html` ora conserva nella sola proiezione specializzata il collegamento originale, con controllo di ID, estremi e relazione, ed espande l'opera esclusivamente quando Opéra-ballet è il centro corrente. **Nessun nuovo nodo, arco o fusione**. Commit HTML `f421d86a919f0147cdf91b57449828a90b27b016`; commit regressione `e7066f7fadc00ad27dbe7c37a5485be5d73d771c`.
+
+**PASS reale V8 dopo la correzione:** ricostruzione dalle 17 sorgenti JSON effettive di main, **2.897 nodi / 8.743 archi / 500 schede Flaminio**, zero archi orfani e zero ID arco duplicati. Radice Opéra-ballet: **4 nodi, 3 archi, una composizione (*Les Indes galantes*)**. Il focus Spettacolo → Opéra-ballet visualizza la stessa composizione; *Aida* non compare erroneamente; Mozart → Opera conserva le quattro opere verificate. L'arco originale `L02-A35` è uno solo.
+
+**Rapporto:** [AUDIT_OPERA_BALLET_VISTA_RADICATA_2026-11-19.md](AUDIT_OPERA_BALLET_VISTA_RADICATA_2026-11-19.md).
+
+**Gate ancora aperti:** esecuzione integrale da Node CLI dei nove harness, collaudo browser/DOM/WebGL/Canvas e Android, audit sistematico di altre possibili relazioni originali schermate dalle proiezioni specializzate, classificazione e identità/versioni delle opere Flaminio. **Lotto 1 OPEN, Lotto 2 BLOCKED, produzione invariata.**
