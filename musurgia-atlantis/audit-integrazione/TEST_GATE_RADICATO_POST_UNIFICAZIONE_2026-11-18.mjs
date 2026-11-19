@@ -18,7 +18,7 @@ const inputs=Object.fromEntries(sourcePaths.map(({key,path})=>[
 ]));
 const db=buildUnifiedDatabase(inputs);
 assert.equal(db.counts.nodes,2897);
-assert.equal(db.counts.links,8731);
+assert.equal(db.counts.links,8743);
 assert.equal(db.counts.orphan_links,0);
 assert.equal(db.counts.duplicate_link_ids,0);
 assert.equal(db.counts.flaminio_source_records,500);
@@ -128,6 +128,56 @@ for(const [id,source,target] of [
  assert.equal(links[0].target,target);
  assert.match(links[0].quality,/PRIMARY_AUTHORITY/);
 }
+
+
+ // Gate di pertinenza interautore: opere già esistenti, non nuovi nodi.
+ const newOperas=new Set([
+  "atlantis::opera:barbiere-rossini",
+  "atlantis::opera:carmen",
+  "atlantis::opera:freischutz",
+  "atlantis::opera:l-orfeo",
+  "atlantis::opera:fidelio",
+  "atlantis::opera:indes-galantes",
+  "atlantis::opera:aida",
+  "atlantis::opera:boheme"
+ ]);
+ const operaWorkSet=workIDs(project("atlantis::senso:opera"));
+ assert.ok([...newOperas].every(id=>operaWorkSet.has(id)));
+ assert.deepEqual(workIDs(project("atlantis::senso:opera-buffa")),new Set([
+   "atlantis::opera:figaro","atlantis::opera:barbiere-rossini"
+ ]));
+ assert.deepEqual(workIDs(project("atlantis::senso:opera-comique")),new Set([
+   "atlantis::opera:carmen"
+ ]));
+ assert.deepEqual(workIDs(project("atlantis::senso:opera-romantica")),new Set([
+   "atlantis::opera:freischutz"
+ ]));
+ assert.deepEqual(workIDs(project("atlantis::pers:beethoven","atlantis::senso:opera")),
+   new Set(["atlantis::opera:fidelio"]));
+ assert.deepEqual(workIDs(project("atlantis::pers:rossini","atlantis::senso:opera-buffa")),
+   new Set(["atlantis::opera:barbiere-rossini"]));
+ assert.deepEqual(workIDs(project("atlantis::pers:bizet","atlantis::senso:opera")),
+   new Set(["atlantis::opera:carmen"]));
+ assert.deepEqual(workIDs(project("atlantis::pers:weber","atlantis::senso:opera")),
+   new Set(["atlantis::opera:freischutz"]));
+ assert.deepEqual(workIDs(project("atlantis::pers:verdi","atlantis::senso:opera")),
+   new Set(["atlantis::opera:aida"]));
+ assert.deepEqual(workIDs(project("atlantis::pers:puccini","atlantis::senso:opera")),
+   new Set(["atlantis::opera:boheme"]));
+ assert.deepEqual(workIDs(project("atlantis::pers:mozart","atlantis::senso:opera")),
+   fourMozartOperas);
+ // "Il barbiere" di Paisiello resta una composizione diversa, senza propagazione.
+ assert.ok(!workIDs(project("atlantis::senso:opera-buffa"))
+   .has("atlantis::opera:barbiere-paisiello-1782"));
+ for(const [suffix,source,target] of [["rossini-barbiere-genere","atlantis::senso:opera","atlantis::opera:barbiere-rossini"],["rossini-barbiere-buffa","atlantis::senso:opera-buffa","atlantis::opera:barbiere-rossini"],["bizet-carmen-genere","atlantis::senso:opera","atlantis::opera:carmen"],["bizet-carmen-comique","atlantis::senso:opera-comique","atlantis::opera:carmen"],["weber-freischutz-genere","atlantis::senso:opera","atlantis::opera:freischutz"],["weber-freischutz-romantica","atlantis::senso:opera-romantica","atlantis::opera:freischutz"],["monteverdi-orfeo-genere","atlantis::senso:opera","atlantis::opera:l-orfeo"],["beethoven-fidelio-genere","atlantis::senso:opera","atlantis::opera:fidelio"],["rameau-indes-genere","atlantis::senso:opera","atlantis::opera:indes-galantes"],["verdi-aida-genere","atlantis::senso:opera","atlantis::opera:aida"],["puccini-boheme-genere","atlantis::senso:opera","atlantis::opera:boheme"],["beethoven-opera-repertorio","atlantis::pers:beethoven","atlantis::senso:opera"]]){
+   const id="curated-opera10-"+suffix;
+   const edges=db.links.filter(e=>e.layer==="crosswalk"&&e.original?.id===id);
+   assert.equal(edges.length,1,id+": arco assente o duplicato");
+   assert.equal(edges[0].source,source);
+   assert.equal(edges[0].target,target);
+   assert.ok(edges[0].original?.source_urls?.length>0,id+": fonte assente");
+   assert.equal(edges[0].visibility,"musical");
+ }
 
 for(const id of ["counterpoint_staging::cf20261115:030",
                  "counterpoint_staging::cf20261115:031"]){

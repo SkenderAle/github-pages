@@ -114,3 +114,20 @@ Sono aggiornate le asserzioni numeriche della batteria dei nove test runtime e i
 [Rapporto specifico del 19 novembre](AUDIT_MOZART_SOTTOGENERI_OPERA_2026-11-19.md).
 
 **Lotto 1 OPEN** per audit musicologico e collaudo; **Lotto 2 BLOCKED**; produzione invariata. Restano aperti il caso *Die Entführung aus dem Serail* e l'esecuzione integrale dei gate.
+
+
+---
+
+## Aggiornamento — opere teatrali di altri compositori (19 novembre 2026)
+
+Dopo l'audit Mozart, è stato completato nello staging un primo lotto **interautore di otto opere teatrali già esistenti**, senza nuovi nodi: *L'Orfeo* (Monteverdi), *Les Indes galantes* (Rameau), *Fidelio* (Beethoven), *Il barbiere di Siviglia* di Rossini (1816), *Carmen* (Bizet), *Der Freischütz* (Weber), *Aida* (Verdi), *La bohème* (Puccini).
+
+**Dodici archi qualificati:** otto `Opera → singola composizione`, tre specializzazioni (*Barbiere* Rossini→Opera buffa, *Carmen*→Opéra-comique, *Freischütz*→Opera romantica), un `Beethoven → Opera` motivato dall'attestazione di *Fidelio*. Nessuna fusione o duplicazione delle opere. Non estendere automaticamente il genere Opera agli altri nodi di tipo tecnico `category: opera` (che comprende anche film, balletto e musica strumentale).
+
+**PASS strutturale e logico in V8 su 17 JSON reali:** 2.897 nodi, **8.743 archi**, 500 schede Flaminio, 0 orfani, 0 ID duplicati. Il gate radicato conferma l'accesso ai singoli titoli e non trasferisce il *Barbiere* di Paisiello nel sottogenere assegnato al *Barbiere* di Rossini. **Gli harness aggiornati non sono attestati come eseguiti tutti da Node CLI e la prova browser/Android rimane aperta.**
+
+**Nuova questione da verificare:** la proiezione radicata Opéra-ballet non mostra ancora *Les Indes galantes* pur disponendo dell'arco Atlantis originale `L02-A35`. Non alterare la classificazione per aggirare un possibile problema di visualizzazione.
+
+[Audit interautore del 19 novembre](AUDIT_OPERE_TEATRALI_INTERAUTORE_2026-11-19.md).
+
+**Lotto 1 OPEN per audit e browser; Lotto 2 BLOCKED; produzione invariata.**

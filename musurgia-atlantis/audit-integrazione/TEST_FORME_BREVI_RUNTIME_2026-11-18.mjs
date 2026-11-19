@@ -9,7 +9,7 @@ const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,"../..");
 const d=Object.fromEntries(sourcePaths.map(({key,path})=>[key,JSON.parse(readFileSync(resolve(root,path),"utf8"))]));
 assert.equal(sourcePaths.length,17);
 const db=buildUnifiedDatabase(d);
-assert.equal(db.counts.nodes,2897);assert.equal(db.counts.links,8731);
+assert.equal(db.counts.nodes,2897);assert.equal(db.counts.links,8743);
 assert.equal(db.counts.short_staging_nodes,9);assert.equal(db.counts.short_staging_links,14);
 assert.equal(db.counts.orphan_links,0);assert.equal(db.counts.duplicate_link_ids,0);
 assert.equal(db.counts.flaminio_source_records,500);

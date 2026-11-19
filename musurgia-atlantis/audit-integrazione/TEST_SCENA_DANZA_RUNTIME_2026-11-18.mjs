@@ -12,7 +12,7 @@ const input=Object.fromEntries(sourcePaths.map(({key,path})=>[
 assert.equal(sourcePaths.length,17);
 const db=buildUnifiedDatabase(input);
 assert.equal(db.counts.nodes,2897);
-assert.equal(db.counts.links,8731);
+assert.equal(db.counts.links,8743);
 assert.equal(db.counts.scene_staging_nodes,15);
 assert.equal(db.counts.scene_staging_links,38);
 assert.equal(db.counts.flaminio_source_records,500);

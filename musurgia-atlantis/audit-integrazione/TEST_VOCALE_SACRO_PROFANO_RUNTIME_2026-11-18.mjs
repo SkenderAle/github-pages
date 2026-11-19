@@ -10,7 +10,7 @@ const data=Object.fromEntries(sourcePaths.map(({key,path})=>[
  key,JSON.parse(readFileSync(resolve(root,path),"utf8"))]));
 assert.equal(sourcePaths.length,17);
 const db=buildUnifiedDatabase(data);
-assert.equal(db.counts.nodes,2897);assert.equal(db.counts.links,8731);
+assert.equal(db.counts.nodes,2897);assert.equal(db.counts.links,8743);
 assert.equal(db.counts.vocal_staging_nodes,20);
 assert.equal(db.counts.vocal_staging_links,49);
 assert.equal(db.counts.flaminio_source_records,500);
