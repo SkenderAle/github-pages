@@ -963,8 +963,17 @@ function shortFormScopedProjection(db,edges,index,root){
 // sono entita' distinte. L'esplorazione rimane radicata e non attraversa
 // liberamente famiglie generiche, opere altrui o cataloghi di altri autori.
 function sceneScopedProjection(db,edges,index,root){
- const scoped=edges.filter(e=>e.layer==="scene_staging");
- const stageIDs=new Set(scoped.flatMap(e=>[e.source,e.target]));
+ const stageEdges=edges.filter(e=>e.layer==="scene_staging");
+ const stageIDs=new Set(stageEdges.flatMap(e=>[e.source,e.target]));
+ // Il ramo Scena/Danza non deve perdere gli esempi di opere attestati
+ // nel grafo Atlantis. L02-A35 e' un arco fonte gia' verificato:
+ // Les Indes galantes (1735-1736) -> Opéra-ballet, senza fusioni.
+ const sourceWorkEdges=edges.filter(e=>e.layer==="atlantis"&&
+   e.original?.id==="L02-A35"&&
+   e.source==="atlantis::opera:indes-galantes"&&
+   e.target==="atlantis::senso:opera-ballet"&&
+   e.relation==="esempio_documentato_di_opera_ballet");
+ const scoped=stageEdges.concat(sourceWorkEdges);
  const stopIDs=new Set(["mundi::genere-suite","atlantis::senso:opera"]);
  if(!root||stopIDs.has(root.id)||!stageIDs.has(root.id))return null;
  const families=new Set([
@@ -1012,6 +1021,10 @@ function sceneScopedProjection(db,edges,index,root){
    if(!from||!to||to.visibility==="documentary"||trailIDs.has(to.id)||
      heldWorks.has(to.id)||stopIDs.has(from.id))return false;
    const r=e.relation||"";
+   // Solo il genere selezionato puo' mostrare la composizione esemplare:
+   // non propagare il repertorio passando da famiglie o generi contigui.
+   if(e.layer==="atlantis"&&e.original?.id==="L02-A35")
+     return from.id===e.target&&to.id===e.source&&from.id===center;
    if(familyRelations.has(r)){
      // Membro -> famiglia; la famiglia apre soltanto i propri membri.
      if(from.id===e.target&&to.id===e.source)
