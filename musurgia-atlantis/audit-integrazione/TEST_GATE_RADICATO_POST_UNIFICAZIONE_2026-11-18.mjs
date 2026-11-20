@@ -67,7 +67,8 @@ assert.ok(works(roots.mozart).some(n=>n.name==="Il flauto magico"));
 assert.ok(!works(roots.mozart).some(n=>n.name==="Aida"));
 assert.ok(roots.opera.nodes.length<=250);
 assert.ok(roots.concerto.nodes.length<=200);
-assert.equal(roots.flauto.nodes.length,6);
+// Il nuovo raccordo specifico Il flauto magico → Opera aggiunge una radice.
+assert.equal(roots.flauto.nodes.length,7);
 assert.equal(roots.bach.scope,"bach");
 assert.equal(roots.sonata.scope,"sonata");
 assert.equal(roots.suite.scope,"suite_sinfonico");
@@ -161,7 +162,8 @@ const buffaWorks=workIDs(project("atlantis::senso:opera-buffa"));
 const giocosoWorks=workIDs(project("atlantis::senso:dramma-giocoso"));
 const singspielWorksAfter=workIDs(project("atlantis::senso:singspiel"));
 const mozartBuffaWorks=workIDs(project("atlantis::pers:mozart","atlantis::senso:opera-buffa"));
-assert.deepEqual(buffaWorks,new Set(["atlantis::opera:figaro"]));
+// Dopo il lotto interautore, Rossini entra in Opera buffa senza duplicare Figaro.
+assert.deepEqual(buffaWorks,new Set(["atlantis::opera:figaro","atlantis::opera:barbiere-rossini"]));
 assert.deepEqual(mozartBuffaWorks,new Set(["atlantis::opera:figaro"]));
 assert.deepEqual(giocosoWorks,new Set([
  "atlantis::opera:Don-giovanni",
