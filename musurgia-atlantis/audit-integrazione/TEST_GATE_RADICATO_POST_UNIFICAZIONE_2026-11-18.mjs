@@ -114,6 +114,40 @@ const sourceIndes=db.links.filter(e=>e.layer==="atlantis"&&e.original?.id==="L02
 assert.equal(sourceIndes.length,1,"Arco Atlantis L02-A35 assente o duplicato");
 assert.equal(sourceIndes[0].source,"atlantis::opera:indes-galantes");
 assert.equal(sourceIndes[0].target,"atlantis::senso:opera-ballet");
+// Audit crossfamiglia: esempi documentati sopravvivono alle proiezioni
+// specializzate senza duplicare archi fonte o promuovere un confronto.
+for(const [edgeId,genreId,workId] of [
+ ["L02-A03","atlantis::senso:ballet-daction","atlantis::opera:don-juan-gluck-angiolini-1761"],
+ ["L02-A32","atlantis::senso:comedie-ballet","atlantis::opera:bourgeois-gentilhomme"],
+ ["L03-A42","atlantis::senso:lied","atlantis::opera:an-die-ferne-geliebte-op98"]
+]){
+ const originals=db.links.filter(e=>e.layer==="atlantis"&&e.original?.id===edgeId);
+ assert.equal(originals.length,1,edgeId+": originale assente o duplicato");
+ assert.equal(originals[0].source,workId);
+ assert.equal(originals[0].target,genreId);
+ const projected=project(genreId);
+ assert.ok(projected.nodes.some(n=>n.id===workId),
+   edgeId+": opera originale non raggiungibile dal genere");
+ assert.ok(projected.links.some(e=>e.id===originals[0].id),
+   edgeId+": arco originale filtrato dalla proiezione specializzata");
+}
+const balletAction=project("atlantis::senso:ballet-daction");
+assert.ok(!balletAction.links.some(e=>e.original?.id==="L02-A25"),
+ "Les Petits Riens: un confronto non causale non e' appartenenza di genere");
+assert.ok(!works(balletAction).some(n=>n.id==="atlantis::opera:les-petits-riens-1778"),
+ "Les Petits Riens non va assimilato automaticamente a Don Juan");
+const liedCycleOriginal=db.links.find(e=>e.layer==="atlantis"&&e.original?.id==="L03-A42");
+assert.equal(liedCycleOriginal.relation,"e_ciclo_di",
+ "An die ferne Geliebte resta ciclo, non Lied isolato");
+assert.ok(db.links.some(e=>e.layer==="vocal_staging"&&
+ e.original?.id==="vf20261115:033"),
+ "Conservare l'overlay Lied ciclo distinto dall'arco originale");
+const comedieFocus=project("tax20261115scena::family:spettacolo",
+ "atlantis::senso:comedie-ballet");
+assert.ok(works(comedieFocus).some(n=>n.id==="atlantis::opera:bourgeois-gentilhomme"));
+const liedFocus=project("tax20261115vf::family:profano","atlantis::senso:lied");
+assert.ok(works(liedFocus).some(n=>n.id==="atlantis::opera:an-die-ferne-geliebte-op98"));
+
 const operaBalletRoot=project("atlantis::senso:opera-ballet");
 assert.equal(operaBalletRoot.scope,"scena_danza");
 assert.ok(workIDs(operaBalletRoot).has("atlantis::opera:indes-galantes"));
