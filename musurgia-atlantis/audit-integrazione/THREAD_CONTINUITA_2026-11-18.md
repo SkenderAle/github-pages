@@ -146,3 +146,24 @@ La vista `VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html` ora conserva nella sola pro
 **Rapporto:** [AUDIT_OPERA_BALLET_VISTA_RADICATA_2026-11-19.md](AUDIT_OPERA_BALLET_VISTA_RADICATA_2026-11-19.md).
 
 **Gate ancora aperti:** esecuzione integrale da Node CLI dei nove harness, collaudo browser/DOM/WebGL/Canvas e Android, audit sistematico di altre possibili relazioni originali schermate dalle proiezioni specializzate, classificazione e identità/versioni delle opere Flaminio. **Lotto 1 OPEN, Lotto 2 BLOCKED, produzione invariata.**
+
+
+---
+
+## Aggiornamento — audit trasversale dei collegamenti originali visibili (20 novembre 2026)
+
+**Esaminate 87 radici di genere e forma** tramite builder completo sulle 17 sorgenti effettive e proiezione reale estratta dall'HTML di staging. Prima della correzione erano oscurati quattro collegamenti diretti originali Atlantis verso opere/cicli, distribuiti in tre radici: Ballet d'action (`L02-A03` per *Don Juan* e `L02-A25` per *Les Petits Riens*), Comédie-ballet (`L02-A32` per *Le Bourgeois gentilhomme*) e Lied (`L03-A42` per *An die ferne Geliebte* op. 98).
+
+**Risolti in proiezione tre collegamenti originali già verificati**, senza nuovi nodi, archi o attribuzioni e senza scritture ai grafi di produzione: `L02-A03`, `L02-A32`, `L03-A42`. Per quest'ultimo resta esplicito `e_ciclo_di`: *An die ferne Geliebte* è un Liederkreis e non un Lied singolo. Lo stesso meccanismo conserva l'originario `L02-A35` di *Les Indes galantes* dal gate precedente.
+
+Il quarto arco `L02-A25` è **conservato nel database ma non promosso alla vista di appartenenza al genere**, perché `sviluppa_o_illumina` è un confronto non causale e non una classificazione forte di *Les Petits Riens*. Dopo la correzione, tra gli archi diretti genere→opera di questa verifica resta oscurato solo questo confronto, **intenzionalmente**. L'audit non copre ancora tutte le categorie di relazioni originali.
+
+**Aggiornati i test** per le nuove proiezioni e corretti due vecchi valori di riferimento: *Il flauto magico* ha 7 nodi (raccordo a Opera), Opera buffa contiene sia *Figaro* sia il *Barbiere* di Rossini. **PASS effettivo di tutte le 170 asserzioni dell'harness radicato in V8** con le 17 sorgenti reali e letture virtualizzate; **non** dichiarare PASS Node CLI né browser/Android.
+
+**Conteggi invariati:** 17 sorgenti, **2.897 nodi, 8.743 archi**, 500 schede Flaminio, **0 archi orfani, 0 ID arco duplicati**.
+
+**Rapporto dettagliato:** [AUDIT_RELAZIONI_ORIGINALI_OSCURATE_2026-11-20.md](AUDIT_RELAZIONI_ORIGINALI_OSCURATE_2026-11-20.md).
+
+**Commit:** HTML `d81024fbc1cf5ffe426e3850fd6b00ff1499fac2`, asserzioni `610fc5749353f89c6d17c67b3e5b9f3d6c521a72`, allineamento harness `fedd3325d0668f20cc88feb362482869aac3ef72`, rapporto `9a11c2cfe824143a59dd269e6d2b1cc0a87f9c3c`.
+
+**Prossimo gate:** analizzare altre relazioni di fonte oscurate (persone, capitoli, concetti, parti/versioni e confronti) e collaudare la UI reale nel browser. **Lotto 1 OPEN; Lotto 2 BLOCKED; produzione invariata.**
