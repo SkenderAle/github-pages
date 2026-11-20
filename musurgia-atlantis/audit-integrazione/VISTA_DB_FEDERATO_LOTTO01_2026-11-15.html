@@ -965,14 +965,23 @@ function shortFormScopedProjection(db,edges,index,root){
 function sceneScopedProjection(db,edges,index,root){
  const stageEdges=edges.filter(e=>e.layer==="scene_staging");
  const stageIDs=new Set(stageEdges.flatMap(e=>[e.source,e.target]));
- // Il ramo Scena/Danza non deve perdere gli esempi di opere attestati
- // nel grafo Atlantis. L02-A35 e' un arco fonte gia' verificato:
- // Les Indes galantes (1735-1736) -> Opéra-ballet, senza fusioni.
- const sourceWorkEdges=edges.filter(e=>e.layer==="atlantis"&&
-   e.original?.id==="L02-A35"&&
-   e.source==="atlantis::opera:indes-galantes"&&
-   e.target==="atlantis::senso:opera-ballet"&&
-   e.relation==="esempio_documentato_di_opera_ballet");
+ // Recupera solo gli esempi originali Atlantis verificati; non interpreta
+ // l'arco comparativo L02-A25 come assegnazione di genere.
+ const verifiedSourceWorks=new Map([
+  ["L02-A03",{source:"atlantis::opera:don-juan-gluck-angiolini-1761",
+    target:"atlantis::senso:ballet-daction",relation:"e_esempio_storico_di"}],
+  ["L02-A32",{source:"atlantis::opera:bourgeois-gentilhomme",
+    target:"atlantis::senso:comedie-ballet",relation:"esempio_documentato_di_comedie_ballet"}],
+  ["L02-A35",{source:"atlantis::opera:indes-galantes",
+    target:"atlantis::senso:opera-ballet",relation:"esempio_documentato_di_opera_ballet"}]
+ ]);
+ const sourceWorkEdges=edges.filter(e=>{
+   const rule=verifiedSourceWorks.get(e.original?.id);
+   return e.layer==="atlantis"&&!!rule&&e.source===rule.source&&
+     e.target===rule.target&&e.relation===rule.relation&&
+     e.original?.historical_verified_independently===true&&
+     e.original?.verification_status==="confermato_da_fonti_esterne";
+ });
  const scoped=stageEdges.concat(sourceWorkEdges);
  const stopIDs=new Set(["mundi::genere-suite","atlantis::senso:opera"]);
  if(!root||stopIDs.has(root.id)||!stageIDs.has(root.id))return null;
@@ -1021,9 +1030,8 @@ function sceneScopedProjection(db,edges,index,root){
    if(!from||!to||to.visibility==="documentary"||trailIDs.has(to.id)||
      heldWorks.has(to.id)||stopIDs.has(from.id))return false;
    const r=e.relation||"";
-   // Solo il genere selezionato puo' mostrare la composizione esemplare:
-   // non propagare il repertorio passando da famiglie o generi contigui.
-   if(e.layer==="atlantis"&&e.original?.id==="L02-A35")
+   // Esempio diretto del genere selezionato, mai propagazione a cascata.
+   if(e.layer==="atlantis"&&verifiedSourceWorks.has(e.original?.id))
      return from.id===e.target&&to.id===e.source&&from.id===center;
    if(familyRelations.has(r)){
      // Membro -> famiglia; la famiglia apre soltanto i propri membri.
@@ -1084,8 +1092,17 @@ function sceneScopedProjection(db,edges,index,root){
 
 
 function vocalScopedProjection(db,edges,index,root){
- const scoped=edges.filter(e=>e.layer==="vocal_staging");
- const activeIDs=new Set(scoped.flatMap(e=>[e.source,e.target]));
+ const stagingEdges=edges.filter(e=>e.layer==="vocal_staging");
+ const activeIDs=new Set(stagingEdges.flatMap(e=>[e.source,e.target]));
+ // Un ciclo di sei Lieder non va confuso con il singolo Lied: recupero
+ // dell'arco storico e_ciclo_di, senza creare un'altra opera o un nuovo arco.
+ const verifiedCycleEdges=edges.filter(e=>e.layer==="atlantis"&&
+   e.original?.id==="L03-A42"&&
+   e.source==="atlantis::opera:an-die-ferne-geliebte-op98"&&
+   e.target==="atlantis::senso:lied"&&e.relation==="e_ciclo_di"&&
+   e.original?.historical_verified_independently===true&&
+   e.original?.verification_status==="confermato_da_fonti_esterne");
+ const scoped=stagingEdges.concat(verifiedCycleEdges);
  if(!root||!activeIDs.has(root.id))return null;
  const vocal="tax20261115vf::family:vocale";
  const families=new Set([vocal,"tax20261115vf::family:sacro",
@@ -1118,6 +1135,9 @@ function vocalScopedProjection(db,edges,index,root){
  function permitted(from,to,e){
    if(!from||!to||to.visibility==="documentary"||pathIDs.has(to.id))return false;
    const r=e.relation||"";
+   // Percorso dal genere al ciclo documentato; nessuna espansione dal ciclo.
+   if(e.layer==="atlantis"&&e.original?.id==="L03-A42")
+     return from.id===e.target&&to.id===e.source&&from.id===center;
    if(familyRel.has(r)){
      if(from.id===e.target&&to.id===e.source)
        return from.id===center||(root.id===vocal&&families.has(from.id));
