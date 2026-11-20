@@ -274,6 +274,45 @@ assert.ok([...sinfoniaOriginals,...actionArchive].every(e=>
 assert.equal(db.counts.links,8743,
  "La consultazione non deve alterare il numero di archi");
 
+// Otto archi fonte score–suite–parte–produzione scenica, con gate di
+// identita' e pertinenza: mai creare una nuova opera dalla somiglianza.
+for(const [rootId,edgeId,otherId] of [
+ ["atlantis::produzione:west-side-story-broadway-1957","L06-A039","atlantis::opera:west-side-story"],
+ ["atlantis::opera:daphnis-suite-1","L05-A045","atlantis::opera:daphnis"],
+ ["atlantis::opera:daphnis-suite-2","L05-A046","atlantis::opera:daphnis"],
+ ["atlantis::opera:mandarino-suite-1927","L05-A057","atlantis::opera:mandarino"],
+ ["atlantis::produzione:la-valse-rubinstein-nizinska-1929","L05-A053","atlantis::opera:la-valse-ravel-1920"],
+ ["atlantis::produzione:sagra-bausch-1975","L05-A036","atlantis::opera:sagra"],
+ ["atlantis::produzione:sagra-nizinskij-1913","L05-A030","atlantis::opera:sagra"],
+ ["atlantis::parte:finale-prometeo-op43","L03-A02","atlantis::opera:prometeo"]
+]){
+ const links=db.links.filter(e=>e.layer==="atlantis"&&e.original?.id===edgeId);
+ assert.equal(links.length,1,edgeId+": link fonte presente una volta sola");
+ const v=project(rootId);
+ assert.ok(v.nodes.some(n=>n.id===otherId),
+   edgeId+": opera/partitura associata non raggiungibile");
+ assert.ok(v.links.some(e=>e.id===links[0].id),
+   edgeId+": relazione originale non mostrata");
+}
+const daphnisOnly=project("atlantis::opera:daphnis-suite-1","atlantis::opera:daphnis");
+assert.ok(!daphnisOnly.links.some(e=>e.original?.id==="L05-A046"),
+ "Dalla suite n.1 non si devono ereditare tutte le altre suite della partitura");
+const bachView=project("atlantis::pers:bach");
+for(const edgeId of ["L175-A02","L177-A01"]){
+ const original=db.links.filter(e=>e.layer==="atlantis"&&e.original?.id===edgeId);
+ assert.equal(original.length,1,edgeId+": fonte Bach duplicata");
+ assert.ok(bachView.links.some(e=>e.id===original[0].id),
+   edgeId+": legame di trascrizione/manoscritto non visibile");
+}
+for(const [rootId,edgeId] of [
+ ["atlantis::senso:ballet-daction","L02-A25"],
+ ["atlantis::senso:riuso-musica-preesistente-danza","L05-A018"],
+ ["atlantis::opera:inno-italiani","L04-A05"]
+]){
+ assert.ok(!project(rootId).links.some(e=>e.original?.id===edgeId),
+   edgeId+": confronto non causale promosso nella navigazione");
+}
+
 console.log(JSON.stringify({
  schema:"musurgia-unified-real-data-rooted-focus-gate-v1",
  status:"PASS_LOGICAL_RUNTIME_NOT_BROWSER",
