@@ -167,3 +167,22 @@ Il quarto arco `L02-A25` è **conservato nel database ma non promosso alla vista
 **Commit:** HTML `d81024fbc1cf5ffe426e3850fd6b00ff1499fac2`, asserzioni `610fc5749353f89c6d17c67b3e5b9f3d6c521a72`, allineamento harness `fedd3325d0668f20cc88feb362482869aac3ef72`, rapporto `9a11c2cfe824143a59dd269e6d2b1cc0a87f9c3c`.
 
 **Prossimo gate:** analizzare altre relazioni di fonte oscurate (persone, capitoli, concetti, parti/versioni e confronti) e collaudare la UI reale nel browser. **Lotto 1 OPEN; Lotto 2 BLOCKED; produzione invariata.**
+
+
+---
+
+## Aggiornamento — archivio delle relazioni originali e gate parti/versioni (20 novembre 2026, sera)
+
+Il controllo è stato esteso dai generi alle **relazioni originali dirette fra persone, capitoli, reti, concetti, opere, eventi e forme** su **159 nodi candidati**, **137 radici effettivamente specializzate**. **57 radici** hanno almeno un arco originale escluso dalla rispettiva vista radicata; sono state rilevate **713 occorrenze radice–arco**, non necessariamente 713 archi univoci: **531** verso persone, **49** capitoli, **44** reti culturali, **39** concetti, **32** generi/forme, **13** opere e **5** eventi. Per provenienza, **566 Mundi** e **147 Atlantis**. Sinfonia 91 occorrenze, Messa 46, Madrigale 45.
+
+**Intervento UI nello staging:** pannello espandibile «Archivio: N relazioni originali fuori dalla vista», consultazione per gruppi di 30, con predicato, qualità, ID fonte, descrizione, URL documentali e «Nuova ricerca da …» che azzera il percorso; gli archi non sono aggiunti automaticamente al Canvas/WebGL. Esclusi archi HOLD e documentari. Commit `fc799750e0e579afc783cf2d45654614111b2c60`. [Report del censimento e della consultazione](AUDIT_ARCHIVIO_RELAZIONI_ORIGINALI_2026-11-20.md).
+
+**Audit successivo dei 13 casi verso «Opere»:** otto collegamenti originali verificati fra partitura, suite, parte e produzione scenica sono ora nuovamente percorribili solo dalla radice direttamente pertinente: prima produzione *West Side Story* (1957), due suite di *Daphnis et Chloé*, suite del *Mandarino meraviglioso*, *La Valse* produzione 1929, due coreografie distinte della *Sagra*, Finale delle *Creature di Prometeo*. Due azioni attestate di Bach sono state recuperate con verbi specifici: `L175-A02` (trascrive BWV 593) e `L177-A01` (presenta manoscritto dei sei concerti, 1721), **senza inferire nuova attribuzione compositiva**.
+
+I tre confronti `L02-A25` (*Les Petits Riens*), `L05-A018` (*Prélude à l’après-midi d’un faune*) e `L04-A05` (*Il Canto degli Italiani* / *Suona la tromba*) **rimangono fuori dal percorso radicato**, ma restano consultabili nell'archivio. Una suite non eredita automaticamente le altre suite passando per la partitura.
+
+**Commit correttivo:** `937c0b134047f389c6d021636d0b6ac463b0d090`. **Commit test:** `9e0d6d27656097bc526173915f333b21f43c0672`. [Rapporto parti, versioni, produzioni e Bach](AUDIT_PARTI_VERSIONI_PRODUZIONI_BACH_2026-11-20.md).
+
+**PASS logico reale:** ricostruzione da **17 JSON**, builder originale e proiezione estratta dall'HTML aggiornato; **211 asserzioni superate in V8** con I/O virtualizzato, parsing JS del modulo HTML PASS. **2.897 nodi, 8.743 archi, 500 schede Flaminio, zero archi orfani e zero ID duplicati**. Non equiparare questo esito ai test Node CLI e browser/Android **non ancora eseguiti**.
+
+**Prossimo gate prioritario:** classificare i **531 collegamenti diretti verso persone** per qualità e semantica (autore→opera verificata vs pratica di un genere, influenza, menzione e contesto) e non aggiungere opere Flaminio non attestate. Continuare l'audit delle viste specializzate e collaudare la UI su browser/Android prima della pubblicazione. **Lotto 1 OPEN; Lotto 2 BLOCKED; produzione invariata.**
