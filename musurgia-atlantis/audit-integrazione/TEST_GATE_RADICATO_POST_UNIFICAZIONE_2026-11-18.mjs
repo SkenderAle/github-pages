@@ -242,6 +242,38 @@ for(const id of ["counterpoint_staging::cf20261115:030",
    .links.some(e=>e.id===id),id+" visibile nella vista HTML");
 }
 
+// Nuova consultazione esplicita degli archi fonte fuori dalla proiezione.
+// Il solo recupero di queste relazioni NON espande la rete 3D.
+const archiveBegin=html.indexOf("function hiddenOriginalRelations(");
+const archiveEnd=html.indexOf("function showArchivedEdge(",archiveBegin);
+assert.ok(archiveBegin>=0&&archiveEnd>archiveBegin,
+ "La funzione di consultazione degli archi originali deve esistere");
+const hiddenOriginalRelations=new Function(html.slice(archiveBegin,archiveEnd)+
+ "\nreturn hiddenOriginalRelations;")();
+const sinfoniaRoot=project("atlantis::senso:sinfonia");
+const sinfoniaOriginals=hiddenOriginalRelations(db,"atlantis::senso:sinfonia",
+ sinfoniaRoot.links);
+assert.ok(sinfoniaOriginals.some(e=>e.original?.id==="E0437"),
+ "Il rapporto editoriale Classicismo–Sinfonia non va perso");
+assert.ok(sinfoniaOriginals.length>=70,
+ "Sinfonia deve permettere di consultare i collegamenti originali oscurati");
+const actionRoot=project("atlantis::senso:ballet-daction");
+const actionArchive=hiddenOriginalRelations(db,"atlantis::senso:ballet-daction",
+ actionRoot.links);
+assert.ok(actionArchive.some(e=>e.original?.id==="L02-A25"),
+ "Il confronto Les Petits Riens va conservato in archivio");
+assert.ok(!actionArchive.some(e=>e.original?.id==="L02-A03"),
+ "L'esempio Don Juan gia' visibile non va duplicato tra gli esclusi");
+assert.ok(!actionRoot.links.some(e=>e.original?.id==="L02-A25"),
+ "Un confronto non causale non deve entrare automaticamente nel grafo");
+assert.ok([...sinfoniaOriginals,...actionArchive].every(e=>
+ e.visibility!=="documentary"&&
+ !/(HOLD|SOSPES|CONTESTAT|REJECTED)/i.test([
+ e.quality,e.original?.status,e.original?.verification_status].join(" "))),
+ "L'archivio consultabile non deve reintrodurre archi HOLD o documentari");
+assert.equal(db.counts.links,8743,
+ "La consultazione non deve alterare il numero di archi");
+
 console.log(JSON.stringify({
  schema:"musurgia-unified-real-data-rooted-focus-gate-v1",
  status:"PASS_LOGICAL_RUNTIME_NOT_BROWSER",
