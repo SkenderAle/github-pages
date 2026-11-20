@@ -453,6 +453,48 @@ function edgeReason(e){
  return relation+(note?" — "+String(note):" — Motivazione specifica non documentata nella sorgente")+quality;
 }
 function visibleTitle(id){return state.db.nodes.find(n=>n.id===id)?.name||id}
+// Gli archi originali non percorsi dalla proiezione sono consultabili
+// separatamente. Non diventano archi del grafo e non autorizzano inferenze
+// di appartenenza, identita' o trasferimento di repertori.
+function hiddenOriginalRelations(db,nodeId,renderedLinks){
+ const visible=new Set((renderedLinks||[]).map(e=>e.id));
+ const originalLayers=new Set(["mundi","mundi_extension","atlantis"]);
+ const disallowed=/(HOLD|SOSPES|CONTESTAT|REJECTED|STAGING_CANDIDATE_FORM_LINK_NOT_IDENTITY)/i;
+ return (db?.links||[]).filter(e=>{
+   if(!originalLayers.has(e.layer)||e.visibility==="documentary"||
+      visible.has(e.id)||!(e.source===nodeId||e.target===nodeId))return false;
+   const gate=[e.quality,e.relation,e.original?.relation,
+     e.original?.quality_gate,e.original?.status,e.original?.verification_status]
+     .filter(Boolean).join(" ");
+   return !disallowed.test(gate);
+ }).sort((a,b)=>{
+   const certified=e=>e.original?.historical_verified_independently===true?0:1;
+   if(certified(a)!==certified(b))return certified(a)-certified(b);
+   const other=e=>e.source===nodeId?e.target:e.source;
+   return (db.nodes.find(n=>n.id===other(a))?.name||other(a)).localeCompare(
+     db.nodes.find(n=>n.id===other(b))?.name||other(b),"it");
+ });
+}
+function showArchivedEdge(e){
+ const h=$("detail");h.replaceChildren();
+ $("detailTitle").textContent="Relazione originale fuori dal grafo radicato";
+ h.append(make("h2",visibleTitle(e.source)+" ↔ "+visibleTitle(e.target)));
+ h.append(make("p","Collegamento conservato nel database, ma non mostrato in questa proiezione. Puo' rappresentare appartenenza, menzione, confronto, funzione o contesto: il predicato originale resta determinante.","meta"));
+ h.append(make("div",edgeReason(e),"reason"));
+ h.append(make("p","Provenienza: "+e.layer+" · ID fonte: "+(e.original?.id||e.id)+
+   " · Stato: "+(e.original?.verification_status||e.quality||"non specificato"),"meta"));
+ const srcs=e.original?.evidence_urls||e.original?.source_urls||e.original?.sources||[];
+ for(const item of (Array.isArray(srcs)?srcs:[]).slice(0,10)){
+   const url=typeof item==="string"?item:item?.url||item?.uri;
+   if(typeof url!=="string"||!/^https:\/\//.test(url))continue;
+   const a=document.createElement("a");a.href=url;a.target="_blank";
+   a.rel="noopener noreferrer";a.textContent="Apri fonte documentale";a.style.display="block";h.append(a);
+ }
+ for(const id of [e.source,e.target]){
+   const btn=make("button","Nuova ricerca da "+visibleTitle(id),"edgeItem");
+   btn.onclick=()=>restartFromNode(id);h.append(btn);
+ }
+}
 function showNode(n){
  $("detailTitle").textContent=n.name;
  const h=$("detail");h.replaceChildren();
@@ -486,6 +528,40 @@ function showNode(n){
    b.onclick=()=>selectSubnode(to);h.append(b)
  }
  if(connections.length>100)h.append(make("p","Mostrate 100 relazioni: restringi i filtri per le altre.","meta"));
+ // Elenco separato, su richiesta, delle relazioni originali non
+ // attraversate dalla vista radicata. Non modifica state.renderedLinks.
+ const originalHidden=hiddenOriginalRelations(state.db,n.id,state.renderedLinks);
+ if(originalHidden.length){
+   const disclosure=make("details");
+   disclosure.style.marginTop="12px";
+   const summary=make("summary","Archivio: "+originalHidden.length+
+     " relazioni originali fuori dalla vista");
+   summary.style.cursor="pointer";summary.style.fontWeight="600";
+   disclosure.append(summary);
+   disclosure.append(make("p","Consultazione documentaria: queste relazioni sono nel database ma non appartengono necessariamente al percorso musicale selezionato. La nuova ricerca da un altro nodo riparte da zero, senza ereditare opere o autori.","meta"));
+   const records=make("div");disclosure.append(records);
+   const more=make("button","Mostra altre relazioni");
+   let shown=0;
+   function showNext(){
+     const end=Math.min(shown+30,originalHidden.length);
+     for(;shown<end;shown++){
+       const edge=originalHidden[shown];
+       const other=edge.source===n.id?edge.target:edge.source;
+       const b=make("button",visibleTitle(other),"edgeItem");
+       b.append(make("small",categoryName(state.db.nodes.find(x=>x.id===other)?.category)+
+         " · "+edge.layer+" · "+String(edge.relation||"relazione").replace(/_/g," ")));
+       b.title=edgeReason(edge);
+       b.onclick=()=>showArchivedEdge(edge);
+       records.append(b);
+     }
+     more.textContent="Mostra altre relazioni ("+(originalHidden.length-shown)+")";
+     more.hidden=shown>=originalHidden.length;
+   }
+   more.onclick=showNext;
+   disclosure.append(more);
+   showNext();
+   h.append(disclosure);
+ }
 }
 function edgeTooltip(e){
  if(!e)return "";
