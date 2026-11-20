@@ -613,8 +613,25 @@ function sonataScopedProjection(db,edges,index,root){
    }
  }
  const bachWorks=new Set();
+ // Due legami non autoriali, entrambi documentati: trascrizione BWV 593
+ // (da Vivaldi) e manoscritto con sei concerti dedicato nel 1721.
+ // Non convertirli in nuove attribuzioni di composizione.
+ const bachAttestedActions=new Map([
+  ["L175-A02",{work:"atlantis::opera:bach-bwv593",
+    relation:"trascrive_per_organo_bwv593"}],
+  ["L177-A01",{work:"atlantis::opera:bach-sei-concerti-brandeburghesi-1721",
+    relation:"presenta_sei_concerti_in_manoscritto_1721"}]
+ ]);
+ const bachOtherWorkEdges=new Set();
  if(bach)for(const {next,edge} of adj.get(root.id)||[]){
-   if(index.get(next)?.category==="opere"&&authored.test(edge.relation||"")&&!heldWorks.has(next))bachWorks.add(next);
+   if(index.get(next)?.category!=="opere"||heldWorks.has(next))continue;
+   const rule=bachAttestedActions.get(edge.original?.id);
+   if(edge.layer==="atlantis"&&rule&&next===rule.work&&
+      edge.relation===rule.relation&&
+      edge.original?.historical_verified_independently===true&&
+      edge.original?.verification_status==="confermato_da_fonti_esterne_consultate"){
+     bachWorks.add(next);bachOtherWorkEdges.add(edge.id);
+   }else if(authored.test(edge.relation||""))bachWorks.add(next);
  }
  function permit(from,to,e,d){
    if(!to||to.visibility==="documentary"||heldWorks.has(to.id)||pathIDs.has(to.id))return false;
@@ -648,7 +665,9 @@ function sonataScopedProjection(db,edges,index,root){
      return false;
    }
    // Percorsi radicati in Bach: nessuna opera di altro autore entra da un genere.
-   if(from.id===root.id)return to.category!=="opere"||(authored.test(relation)&&bachWorks.has(to.id));
+   if(from.id===root.id)return to.category!=="opere"||
+     (bachWorks.has(to.id)&&(authored.test(relation)||
+       (from.id===center&&bachOtherWorkEdges.has(e.id))));
    if(from.category==="opere")return to.category==="generi_forme"||
      (to.category==="opere"&&parts.test(relation));
    if(genre(from)&&genre(index.get(center))){
@@ -1058,7 +1077,24 @@ function sceneScopedProjection(db,edges,index,root){
      e.original?.historical_verified_independently===true&&
      e.original?.verification_status==="confermato_da_fonti_esterne";
  });
- const scoped=stageEdges.concat(sourceWorkEdges);
+ // Recupera soltanto i collegamenti originali verificati fra score,
+ // suite estratte, parti e produzioni sceniche. Nessuna fusione di identita':
+ // una suite non coincide con il balletto, una coreografia non e' la partitura.
+ const derivativePredicates=new Map([
+  ["L06-A039","ha_prima_produzione_broadway"],
+  ["L05-A045","ha_suite_orchestrale_estratta"],
+  ["L05-A046","ha_suite_orchestrale_estratta"],
+  ["L05-A057","rielabora_in_suite_orchestrale"],
+  ["L05-A053","viene_allestita_in"],
+  ["L05-A036","usa_musica_in_nuova_coreografia"],
+  ["L05-A030","ha_prima_coreografia"],
+  ["L03-A02","contiene_numero"]
+ ]);
+ const derivativeEdges=edges.filter(e=>e.layer==="atlantis"&&
+   derivativePredicates.get(e.original?.id)===e.relation&&
+   e.original?.historical_verified_independently===true&&
+   e.original?.verification_status==="confermato_da_fonti_esterne");
+ const scoped=stageEdges.concat(sourceWorkEdges,derivativeEdges);
  const stopIDs=new Set(["mundi::genere-suite","atlantis::senso:opera"]);
  if(!root||stopIDs.has(root.id)||!stageIDs.has(root.id))return null;
  const families=new Set([
@@ -1109,6 +1145,12 @@ function sceneScopedProjection(db,edges,index,root){
    // Esempio diretto del genere selezionato, mai propagazione a cascata.
    if(e.layer==="atlantis"&&verifiedSourceWorks.has(e.original?.id))
      return from.id===e.target&&to.id===e.source&&from.id===center;
+   // Parte/versione/allestimento: un solo passo dalla radice corrente.
+   // Se si raggiunge la partitura non si ereditano le altre produzioni.
+   if(e.layer==="atlantis"&&derivativePredicates.has(e.original?.id))
+     return from.id===root.id&&from.id===center&&
+       ((from.id===e.source&&to.id===e.target)||
+        (from.id===e.target&&to.id===e.source));
    if(familyRelations.has(r)){
      // Membro -> famiglia; la famiglia apre soltanto i propri membri.
      if(from.id===e.target&&to.id===e.source)
