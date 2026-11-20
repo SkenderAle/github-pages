@@ -186,3 +186,17 @@ I tre confronti `L02-A25` (*Les Petits Riens*), `L05-A018` (*Prélude à l’apr
 **PASS logico reale:** ricostruzione da **17 JSON**, builder originale e proiezione estratta dall'HTML aggiornato; **211 asserzioni superate in V8** con I/O virtualizzato, parsing JS del modulo HTML PASS. **2.897 nodi, 8.743 archi, 500 schede Flaminio, zero archi orfani e zero ID duplicati**. Non equiparare questo esito ai test Node CLI e browser/Android **non ancora eseguiti**.
 
 **Prossimo gate prioritario:** classificare i **531 collegamenti diretti verso persone** per qualità e semantica (autore→opera verificata vs pratica di un genere, influenza, menzione e contesto) e non aggiungere opere Flaminio non attestate. Continuare l'audit delle viste specializzate e collaudare la UI su browser/Android prima della pubblicazione. **Lotto 1 OPEN; Lotto 2 BLOCKED; produzione invariata.**
+
+---
+
+## Aggiornamento — censimento preliminare autore–genere della fonte Mundi (20 novembre 2026)
+
+Avviato il gate prioritario delle relazioni verso persone con una ricognizione **distinta** delle dodici radici Mundi più rilevanti, direttamente sull'originale `atlante3d/database/grafo.json` (blob `57c65e209628b0fe43d0d5040bd27deb7e1624c8`). Il risultato è **382 archi originali distinti** verso **216 compositori**. Tutti presentano note e URL fonte; **176** riportano un `evidence_status` strutturato, **206** no (pur avendo fonti). Predicati: 229 `forma-o-pratica-documentata`, 119 `repertorio-formale-documentato`, 14 `musica-per-spettacolo-coreografico`, 13 `relazione-storico-musicale`, 6 `repertorio-storico-documentato`, 1 `repertorio-vocale-documentato`.
+
+**Non sono le 531 occorrenze radice–arco del precedente audit del DB unificato**: il perimetro è diverso e la riconciliazione 382↔531 è il prossimo gate. Nessuna associazione compositore→genere è stata promossa ad attribuzione di singola opera; nessun nodo o arco creato nella base dati. Nessuna fonte esterna riaperta per verifica musicologica individuale.
+
+- [Registro macchina dei 382 archi](REGISTRO_PERSONE_GENERI_MUNDI_12_FAMIGLIE_2026-11-20.json).
+- [Rapporto metodologico e regole di non-propagazione](AUDIT_PERSONE_GENERI_MUNDI_12_FAMIGLIE_2026-11-20.md).
+- Commit registro `b43edb941f728e081b819e656c5cfffa12b9875a`; rapporto `ae40fa397422de0d7ac1f417b253eb7aab32efb0`.
+
+**Stato:** gate censimento delle 12 radici Mundi **PASS limitato**; classificazione delle 531 occorrenze unificate **OPEN**, così come test Node CLI, browser/DOM/WebGL/Android. **Lotto 1 OPEN; Lotto 2 BLOCKED; produzione invariata.**
