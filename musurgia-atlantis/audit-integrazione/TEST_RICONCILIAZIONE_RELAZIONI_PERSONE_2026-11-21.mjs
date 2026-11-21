@@ -69,8 +69,11 @@ for(const root of db.nodes){
        semanticClass="PRATICA_O_REPERTORIO_GENERE";
      else semanticClass="RELAZIONE_STORICA_SPECIFICA_NON_OPERA_INFERITA";
    }else if(edge.layer==="atlantis"){
-     if(/firma_coreografia|crea_coreografia|commissiona|produce|dirige|cura_scene|assiste_documenta_coreografia|riforme_del_balletto|commemora|destinata_inizialmente/.test(pred))
-       semanticClass="RUOLO_SCENICO_STORICO_O_EVENTO";
+     if(["compone_musiche_per_la_comedie_ballet","compone_nel_genere_opera_ballet",
+       "compone_e_pubblica_ricercari","compone_ricercari_nell_offerta_musicale"].includes(pred))
+       semanticClass="PRATICA_O_REPERTORIO_GENERE";
+     else if(/firma_coreografia|crea_coreografia|commissiona|produce|dirige|cura_scene|assiste_documenta_coreografia|riforme_del_balletto|commemora|destinata_inizialmente|composto_per_esequie/.test(pred))
+       semanticClass="RUOLO_SCENICO_STORICO_O_OCCASIONE";
      else if(/scrive|autore_|compila_libretto|cura_libretto/.test(pred))
        semanticClass="RUOLO_LETTERARIO_LIBRETTISTICO";
      else if(/compone|composto_per|compone_la_musica/.test(pred))
