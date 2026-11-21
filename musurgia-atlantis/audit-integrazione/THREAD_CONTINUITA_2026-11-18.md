@@ -200,3 +200,17 @@ Avviato il gate prioritario delle relazioni verso persone con una ricognizione *
 - Commit registro `b43edb941f728e081b819e656c5cfffa12b9875a`; rapporto `ae40fa397422de0d7ac1f417b253eb7aab32efb0`.
 
 **Stato:** gate censimento delle 12 radici Mundi **PASS limitato**; classificazione delle 531 occorrenze unificate **OPEN**, così come test Node CLI, browser/DOM/WebGL/Android. **Lotto 1 OPEN; Lotto 2 BLOCKED; produzione invariata.**
+
+---
+
+## Aggiornamento — riconciliazione canonica dei 382 archi Mundi e harness 531 (21 novembre 2026)
+
+Sulle dodici famiglie Mundi già censite (382 collegamenti autore–genere) è stato eseguito un **controllo concreto dei crosswalk di identità** usando i file fonte Mundi, Atlantis, estensione, crosswalk persone e crosswalk tassonomico. Verificate **162** identità personali accettabili nel crosswalk globale; nei **382** archi selezionati **151** puntano a persone condivise Mundi–Atlantis e **231** restano su persone Mundi separate. **169** archi hanno una radice di genere condivisa. **Zero** coppie canoniche autore–genere ripetute nel sottoinsieme e **zero** coppie con identici estremi collegate direttamente nel grafo originale Atlantis (ciò non esclude corrispondenze indirette).
+
+**Attenzione al perimetro:** 231 è numero di archi, non persone o duplicati. **Non è stata ancora ricostruita l'intersezione fra questi 382 archi sorgente e le 531 occorrenze radice–arco verso persone oscurate** dal precedente gate. Non effettuare la sottrazione 531−382 come se fossero insiemi equivalenti; nessuna attribuzione di opera certificata è stata inferita dalle note autore–genere.
+
+- [Registro machine-readable dei 382 ID canonici](REGISTRO_RICONCILIAZIONE_382_ARCHI_MUNDI_ATLANTIS_2026-11-21.json), commit `ee1faacfb3545b91de16d5a81025cb4087421f35`.
+- [Rapporto del controllo crosswalk](AUDIT_RICONCILIAZIONE_PERSONE_GENERI_2026-11-21.md), commit `0de86180efb0f42693bff0fc297071ecf6e0b0ba`.
+- [Harness Node per ricostruire archivio originale nascosto e intersezione 382↔531](TEST_RICONCILIAZIONE_RELAZIONI_PERSONE_2026-11-21.mjs), commit `0911051f6b58e904dc015e48be15a303c9c39a0d`. **Solo parsing sintattico del corpo (senza import): PASS; non ancora eseguito da Node CLI sul corpus completo**. Esegue il confronto delle 17 sorgenti e dell'HTML di staging, salva JSON solo quando invocato con `--write`, non modifica i file pubblici.
+
+**Stato:** crosswalk del sottoinsieme 382 **PASS verificato sulle fonti**; gate 531 completo **OPEN** e nuovo harness **NON ESEGUITO**; collaudo browser/Android **OPEN**; Lotto 1 **OPEN**, Lotto 2 **BLOCKED**, produzione invariata.
