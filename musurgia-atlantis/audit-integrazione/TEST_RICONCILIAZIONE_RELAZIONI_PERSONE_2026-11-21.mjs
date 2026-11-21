@@ -56,22 +56,38 @@ for(const root of db.nodes){
   const otherID=edge.source===root.id?edge.target:edge.source;
   const other=byID.get(otherID);
   assert.ok(other,"Arco verso nodo inesistente: "+edge.id);
-  let semanticClass="RELATION_OR_CONTEXT_REQUIRES_REVIEW";
-  const pred=String(edge.relation||"");
-  if(/tratta|menziona|rimanda|citazione|richiamo|documenta/i.test(pred))
-   semanticClass="MENZIONE_O_CONTESTO";
-  else if(/confront|illumina|parallel|analogia|influenza/i.test(pred))
-   semanticClass="CONFRONTO_O_INFLUENZA";
-  else if(/forma|pratica|repertorio|genere|attivita|storico.musicale/i.test(pred))
-   semanticClass="PRATICA_O_REPERTORIO_DI_GENERE";
-  else if(other.category==="persone"&&root.category==="opere"&&/compone|scrive|trascrive/i.test(pred))
-   semanticClass="RELAZIONE_OPERA_PERSONA_DA_VERIFICARE";
+  const pred=String(edge.relation||"").toLowerCase();
+  let semanticClass;
+  if(other.category==="persone"){
+   if(edge.layer==="mundi"){
+     if(pred==="accesso_indiretto_alla_famiglia")
+       semanticClass="NAVIGAZIONE_DERIVATA_NON_ATTESTAZIONE";
+     else if(["forma-o-pratica-documentata","repertorio-formale-documentato",
+       "repertorio-storico-documentato","repertorio-vocale-documentato",
+       "musica-per-spettacolo-coreografico","relazione-storico-musicale",
+       "pratica-di-genere"].includes(pred))
+       semanticClass="PRATICA_O_REPERTORIO_GENERE";
+     else semanticClass="RELAZIONE_STORICA_SPECIFICA_NON_OPERA_INFERITA";
+   }else if(edge.layer==="atlantis"){
+     if(/firma_coreografia|crea_coreografia|commissiona|produce|dirige|cura_scene|assiste_documenta_coreografia|riforme_del_balletto|commemora|destinata_inizialmente/.test(pred))
+       semanticClass="RUOLO_SCENICO_STORICO_O_EVENTO";
+     else if(/scrive|autore_|compila_libretto|cura_libretto/.test(pred))
+       semanticClass="RUOLO_LETTERARIO_LIBRETTISTICO";
+     else if(/compone|composto_per|compone_la_musica/.test(pred))
+       semanticClass="ATTRIBUZIONE_COMPOSIZIONE_FONTE_DA_VERIFICARE";
+     else semanticClass="RELAZIONE_STORICA_ATLANTIS";
+   }else semanticClass="ALTRA_RELAZIONE_PERSONA_DA_RIVEDERE";
+  }else if(/sviluppa_o_illumina|condivide_partitura_ma_non_coreografia|confronto_non_causale/.test(pred))
+    semanticClass="CONFRONTO_NON_CLASSIFICANTE";
+  else if(other.category==="opere")
+    semanticClass="OPERA_DOCUMENTATA_O_ESEMPIO_DA_VERIFICARE";
+  else semanticClass="ALTRO_CONTESTO_O_RIMANDO_NON_AUTOMATICO";
   const key=root.id+"|"+edge.id;
   records.push({
    root_id:root.id,root_name:root.name,root_category:root.category,scope:view.scope,
    original_link_id:edge.id,original_layer:edge.layer,original_predicate:edge.relation,
    original_quality:edge.quality,other_id:otherID,other_name:other.name,other_category:other.category,
-   semantic_preclassification:semanticClass,
+   preclassification:semanticClass,
    in_382_mundi_register:referencePairs.has(key),
    original_source_id:edge.original?.id||null,
    action:"ARCHIVE_ONLY_NO_AUTOMATIC_PROMOTION"
@@ -87,6 +103,11 @@ for(const r of records){
 }
 const actualPersonCount=perOtherCategory.persone||0;
 const direct382Hits=records.filter(r=>r.in_382_mundi_register).length;
+assert.equal(specialized.length,169,"Numero radici specializzate differente: verificare i gate UI");
+assert.equal(records.length,704,"Numero di occorrenze dirette: il corpus o la UI sono cambiati");
+assert.equal(actualPersonCount,531,"Il gate persone non restituisce le 531 occorrenze");
+assert.equal(direct382Hits,382,"Non tutti i 382 archi Mundi sono presenti tra i 531");
+
 const matched382Set=new Set(records.filter(r=>r.in_382_mundi_register).map(r=>r.root_id+"|"+r.original_link_id));
 const original382NotFound=canonical.records
  .filter(r=>!matched382Set.has(r.canonical_genre_id+"|"+r.source_edge_id))
