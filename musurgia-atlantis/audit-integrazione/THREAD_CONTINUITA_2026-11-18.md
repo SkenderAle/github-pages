@@ -214,3 +214,24 @@ Sulle dodici famiglie Mundi già censite (382 collegamenti autore–genere) è s
 - [Harness Node per ricostruire archivio originale nascosto e intersezione 382↔531](TEST_RICONCILIAZIONE_RELAZIONI_PERSONE_2026-11-21.mjs), commit `0911051f6b58e904dc015e48be15a303c9c39a0d`. **Solo parsing sintattico del corpo (senza import): PASS; non ancora eseguito da Node CLI sul corpus completo**. Esegue il confronto delle 17 sorgenti e dell'HTML di staging, salva JSON solo quando invocato con `--write`, non modifica i file pubblici.
 
 **Stato:** crosswalk del sottoinsieme 382 **PASS verificato sulle fonti**; gate 531 completo **OPEN** e nuovo harness **NON ESEGUITO**; collaudo browser/Android **OPEN**; Lotto 1 **OPEN**, Lotto 2 **BLOCKED**, produzione invariata.
+
+---
+
+## Aggiornamento — gate reale 531 relazioni persona e intersezione 382/382 (21 novembre 2026)
+
+**Esecuzione reale in JavaScript V8** del builder originale sulle **17 sorgenti JSON effettive**, seguita dall'esecuzione del corpo delle funzioni `rootedProjection` e `hiddenOriginalRelations` estratte dall'HTML di staging attuale; non mera previsione. Confermati **2.897 nodi, 8.743 archi, 500 schede Flaminio, zero orfani e zero ID arco duplicati**.
+
+La scansione di tutte le **169 radici specializzate** dell'HTML corrente restituisce **704 occorrenze radice–arco originali nascoste**, delle quali **531 verso persone**. **Tutti e 382 gli archi del censimento Mundi precedente** si trovano tra le 531 (**382/382, zero mancanti**). Restano perciò **149** occorrenze persona non incluse nelle 382, **106 Mundi** e **43 Atlantis**. La differenza 531−382=149 è ora un confronto per `root_id|link_id` realmente eseguito, non una sottrazione speculativa. I 531 ID arco verso persone risultano distinti nell'attuale perimetro.
+
+**Preclassificazione delle 149 occorrenze residue:** 89 pratiche/repertori di genere; **16 attribuzioni compositive a opere specifiche** presenti nei dati Atlantis con `riscontro_storico_indipendente`, da valutare prima di renderle navigabili; 15 ruoli scenici/storici o occasioni; 13 relazioni storiche Mundi; 8 ruoli letterari/librettistici; 8 collegamenti di navigazione derivata. Si mantiene la distinzione rigorosa fra chi compone, scrive testi, coreografa, commissiona o è il destinatario storico di un'opera.
+
+**Nota storica sui conteggi:** l'audit del 20 novembre riguardava 159 candidati/137 radici, con 713 occorrenze; la scansione attuale riguarda tutte le 169 radici specializzate dell'HTML aggiornato e restituisce 704. **Le 531 verso persone non cambiano**. Non attribuire le differenze negli altri tipi di relazione a una singola correzione senza ulteriore diff per commit.
+
+**Documenti verificabili:**
+- [Registro dati reali completo, 704 occorrenze](REGRESSIONE_RICONCILIAZIONE_531_PERSONE_2026-11-21.json) (commit iniziale `91fa620c2df1cb70a6fa043e75023ca39ac7b874`, successiva rettifica delle classi semantiche `b25ab7fc2a8f1d40eafa3b69f9bab44e8cdcf2e2`).
+- [Rapporto gate 531 ↔ 382](AUDIT_531_PERSONE_INTERSEZIONE_382_2026-11-21.md), commit `d43c5258a8f68adf3c457bcaa6df771a7ecb7ea6`.
+- [Harness Node completo con gate 169/704/531/382](TEST_RICONCILIAZIONE_RELAZIONI_PERSONE_2026-11-21.mjs), commit `36f1f37bfdb1685066f0a8b5b12072e3d4f8ead6`. **Il corpo classificatore è verificato in V8, ma il file completo non è stato lanciato da Node CLI.**
+
+**Prossimo gate:** ispezionare e rendere eventualmente percorribili, in staging e soltanto dalla radice opera pertinente, i **16 archi autore–opera con fonti qualificate**, senza trasformare i 133 collegamenti di altra natura in paternità musicale. Completare i test CLI e UI/Android prima di proporre pubblicazione.
+
+**Stato:** gate identità 382↔531 **PASS V8 su dati reali**; gate autorialità specifiche **OPEN**; browser/CLI **OPEN**; Lotto 1 **OPEN**, Lotto 2 Flaminio **BLOCKED**, grafi pubblici **immutati**.
