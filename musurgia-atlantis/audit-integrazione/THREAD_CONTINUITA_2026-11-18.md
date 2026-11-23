@@ -235,3 +235,31 @@ La scansione di tutte le **169 radici specializzate** dell'HTML corrente restitu
 **Prossimo gate:** ispezionare e rendere eventualmente percorribili, in staging e soltanto dalla radice opera pertinente, i **16 archi autore–opera con fonti qualificate**, senza trasformare i 133 collegamenti di altra natura in paternità musicale. Completare i test CLI e UI/Android prima di proporre pubblicazione.
 
 **Stato:** gate identità 382↔531 **PASS V8 su dati reali**; gate autorialità specifiche **OPEN**; browser/CLI **OPEN**; Lotto 1 **OPEN**, Lotto 2 Flaminio **BLOCKED**, grafi pubblici **immutati**.
+
+---
+
+## Aggiornamento — 16 rapporti autore–opera nuovamente navigabili nello staging (23 novembre 2026)
+
+Eseguito il gate prioritario del 21/11: esaminati **i 16 archi originali Atlantis** fra composizioni e autori della musica, ciascuno con ID, estremi, predicato, `historical_verified_independently=true`, stato `confermato_da_*` e URL fonte presenti nel database. La qualificazione storico-bibliografica è stata **letta dalla fonte Atlantis esistente, non riconvalidata esternamente in questa sessione**.
+
+**Correzione confinata alla vista di staging:** in `VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html` sono state aggiunte `verifiedRootWorkComposerRules` (16 casi nominativi) e `withVerifiedRootWorkComposers`: l'arco già presente compare solo partendo dalla **specifica opera radice**, con categoria Persone e lente attiva, e soltanto quando ID fonte, estremi, predicato e attestazioni coincidono. Il clic sull'autore mantiene il breadcrumb opera→compositore ma non eredita il suo repertorio o i vicini di un genere. Nessun nodo/arco aggiunto al builder, nessuna scrittura a `atlante3d/database/grafo.json`, `musurgia-atlantis/grafo.json` o `musurgia-atlantis/index.html`.
+
+**Casi negativi protetti:** Jeitteles (poeta), Angiolini (coreografo), Ida Rubinstein (committente), Mameli (autore versi), Maria d'Austria (figura commemorata). I loro predicati restano consultabili nell'archivio ma non diventano autorialità musicale.
+
+**PASS effettivi in JavaScript V8 sulle 17 sorgenti JSON di main con I/O virtualizzato**:
+- [Nuovo harness dei 16 rapporti](TEST_AUTORI_OPERE_RADICATI_2026-11-23.mjs): **321 asserzioni PASS**.
+- [Harness radicato precedente](TEST_GATE_RADICATO_POST_UNIFICAZIONE_2026-11-18.mjs): **211 asserzioni PASS**.
+- [Harness di riconciliazione persone aggiornato](TEST_RICONCILIAZIONE_RELAZIONI_PERSONE_2026-11-21.mjs): **700 controlli PASS**, ora fissati al gate **169 radici / 688 relazioni nascoste / 515 persone / 382 archi Mundi originari**. Il vecchio report 531 del 21/11 rimane storico, non è stato sovrascritto.
+
+**Totale 1.232 asserzioni V8 superate.** Prima del recupero: 169 radici, 704 relazioni originali archiviate (531 verso persone). Dopo: **169 radici, 688 relazioni archiviate (515 verso persone)**; le 16 attribuzioni recuperate sono tutte visualizzate una sola volta e rispettano clic/focus e filtro Persone. Dei 515 collegamenti persona ancora archivistici, **382** sono gli archi autore–genere originali di Mundi e **133** restano da valutare separatamente. **Database invariato: 2.897 nodi, 8.743 archi, 500 schede Flaminio, zero archi orfani/ID arco duplicati.**
+
+**Documenti e commit:**
+- [Rapporto dei 16 autori–opere](AUDIT_AUTORI_OPERE_RADICATI_2026-11-23.md), commit `59fb1c283538647c4fb4d4a1915c41eaae0ab5ef`.
+- [Registro machine-readable con tutte le attestazioni e i gate](REGRESSIONE_AUTORI_OPERE_RADICATI_2026-11-23.json), commit `693cb273bddce8e32c49562e6d00404fb32fdfe8`.
+- [Correzione UI staging](https://github.com/SkenderAle/github-pages/commit/2cd9ceada2d9980657d8bdc57f539369fc243286).
+- [Nuovo test](TEST_AUTORI_OPERE_RADICATI_2026-11-23.mjs), commit `59bf36d0b24ad68281a5ed5b9b9de4c02bf9029a` e adeguamento messaggio `bb59a2182958f3671801bab85712273320c23a5f`.
+- [Allineamento harness 382↔515](TEST_RICONCILIAZIONE_RELAZIONI_PERSONE_2026-11-21.mjs), commit `09d13c2e6db7d4861cd2a2b377ae024d1073b75b`.
+
+**Gate ancora OPEN:** **Node CLI locale** degli harness e collaudo DOM/browser/WebGL/Canvas/Android con filtri, hover, tap, etichette e tempi di rendering. Poi audit mirato delle **133** relazioni residue e degli altri **4** rimandi verso opere. Non pubblicare o aprire Lotto 2 per il solo successo logico.
+
+**Stato:** 16 recuperi opera→autore **PASS V8**; Lotto 1 **OPEN** per UI/CLI e audit residui; Lotto 2 **BLOCKED**; produzione **immutata**.
