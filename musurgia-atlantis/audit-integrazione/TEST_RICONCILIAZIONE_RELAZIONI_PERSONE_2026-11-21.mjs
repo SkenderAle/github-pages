@@ -2,7 +2,8 @@
 // Eseguire dalla radice della copia locale del repository:
 // node musurgia-atlantis/audit-integrazione/TEST_RICONCILIAZIONE_RELAZIONI_PERSONE_2026-11-21.mjs
 // Con --write salva il registro in audit-integrazione. Senza --write stampa soltanto il riepilogo.
-// Non modifica mai i database pubblici, né la vista HTML.
+// Aggiornato 23/11/2026 per l'integrazione delle 16 relazioni autore–opera.
+// Non modifica mai i database pubblici, né la vista HTML. Il vecchio report del 21/11 resta storico.
 import assert from "node:assert/strict";
 import {readFileSync,writeFileSync} from "node:fs";
 import {dirname,resolve} from "node:path";
@@ -107,9 +108,9 @@ for(const r of records){
 const actualPersonCount=perOtherCategory.persone||0;
 const direct382Hits=records.filter(r=>r.in_382_mundi_register).length;
 assert.equal(specialized.length,169,"Numero radici specializzate differente: verificare i gate UI");
-assert.equal(records.length,704,"Numero di occorrenze dirette: il corpus o la UI sono cambiati");
-assert.equal(actualPersonCount,531,"Il gate persone non restituisce le 531 occorrenze");
-assert.equal(direct382Hits,382,"Non tutti i 382 archi Mundi sono presenti tra i 531");
+assert.equal(records.length,688,"Numero di occorrenze dopo il recupero dei 16 archi autore–opera");
+assert.equal(actualPersonCount,515,"Le relazioni persone residue devono essere 515 dopo il recupero dei 16 archi");
+assert.equal(direct382Hits,382,"Non tutti i 382 archi Mundi rimangono nell’archivio");
 
 const matched382Set=new Set(records.filter(r=>r.in_382_mundi_register).map(r=>r.root_id+"|"+r.original_link_id));
 const original382NotFound=canonical.records
@@ -119,20 +120,23 @@ const historicalReference={
  from:"AUDIT_ARCHIVIO_RELAZIONI_ORIGINALI_2026-11-20.md",
  original_candidate_roots:159,specialized_roots:137,
  hidden_direct_occurrences:713,hidden_person_occurrences:531,
+ intermediate_gate_2026_11_21:{specialized_roots:169,hidden_direct_occurrences:704,hidden_person_occurrences:531},
  comparability_note:"La scansione attuale include TUTTE le radici specializzate, non solo il campione originale di 159 candidati."
 };
 const result={
- schema:"musurgia-people-hidden-original-relations-v1",date:"2026-11-21",
- status:"RUNTIME_RESULT_IF_EXECUTED_LOCAL_NODE",
+ schema:"musurgia-people-hidden-original-relations-v2",date:"2026-11-23",
+ status:"RUNTIME_RESULT_NOT_BROWSER",
  source_count:sourcePaths.length,counts:db.counts,
  current_scope:{all_specialized_roots: specialized.length,all_hidden_direct_occurrences:records.length,
   hidden_person_occurrences:actualPersonCount,in_382_mundi_register:direct382Hits,
-  original_382_not_in_hidden_scope:original382NotFound.length},
+  original_382_not_in_hidden_scope:original382NotFound.length,
+  hidden_person_occurrences_outside_382:actualPersonCount-direct382Hits},
  historical_reference:historicalReference,
- matches_historical_counts:{
-  specialized_roots:specialized.length===137,
-  hidden_occurrences:records.length===713,
-  hidden_person_occurrences:actualPersonCount===531
+ matches_current_counts:{
+  specialized_roots:specialized.length===169,
+  hidden_occurrences:records.length===688,
+  hidden_person_occurrences:actualPersonCount===515,
+  original_mundi_382_preserved:direct382Hits===382
  },
  hidden_by_category:perOtherCategory,hidden_by_origin:perOriginalLayer,
  hidden_by_scope:perScope,person_predicates:personPredicates,
@@ -140,14 +144,14 @@ const result={
  records
 };
 if(process.argv.includes("--write")){
- const out=resolve(here,"REGRESSIONE_RICONCILIAZIONE_531_PERSONE_2026-11-21.json");
+ const out=resolve(here,"REGRESSIONE_PERSONE_POST_AUTORI_2026-11-23.json");
  writeFileSync(out,JSON.stringify(result,null,2)+"\n","utf8");
  console.log("Registro scritto:",out);
 }
 console.log(JSON.stringify({
  counts:result.current_scope,
- comparison:result.matches_historical_counts,
+ comparison:result.matches_current_counts,
  by_category:result.hidden_by_category,
  matched_382:direct382Hits,
- note:"PASS esecutivo soltanto dopo esecuzione in Node CLI: non implica test browser o verifica musicologica."
+ note:"Esecuzione logica; il risultato non implica test browser o verifica musicologica esterna."
 },null,2));
