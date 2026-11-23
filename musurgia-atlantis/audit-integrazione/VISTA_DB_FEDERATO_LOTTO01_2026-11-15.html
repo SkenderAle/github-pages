@@ -1307,6 +1307,61 @@ function vocalScopedProjection(db,edges,index,root){
    hasTaxonomyPath:true,scope:"vocale_sacro_profano"};
 }
 
+
+// Solo sedici attributi musicali fonte-originali e verificati.
+// Il rapporto opera -> compositore resta percorribile anche come breadcrumb
+// del focus, ma non propaghiamo alcuna composizione attraverso autore/genere.
+const verifiedRootWorkComposerRules=new Map([
+  ["L03-A40",{work:"atlantis::opera:an-die-ferne-geliebte-op98",person:"atlantis::pers:beethoven",relation:"compone_ciclo_di_lieder"}],
+  ["L05-A048",{work:"atlantis::opera:bolero-ravel-1928",person:"atlantis::pers:ravel",relation:"compone"}],
+  ["L02-A01",{work:"atlantis::opera:don-juan-gluck-angiolini-1761",person:"atlantis::pers:gluck",relation:"compone_musica_per"}],
+  ["L03-A28",{work:"atlantis::opera:egmont-op84",person:"atlantis::pers:beethoven",relation:"compone_musiche_per"}],
+  ["E0754",{work:"atlantis::opera:inno-italiani",person:"atlantis::pers:novaro",relation:"compone_la_musica_di"}],
+  ["L05-A051",{work:"atlantis::opera:la-valse-ravel-1920",person:"atlantis::pers:ravel",relation:"compone"}],
+  ["E0699",{work:"atlantis::opera:messe-notre-dame",person:"atlantis::pers:machaut",relation:"compone_la_musica_di"}],
+  ["E0706",{work:"atlantis::opera:missa-papae-marcelli",person:"atlantis::pers:palestrina",relation:"compone_la_musica_di"}],
+  ["E0717",{work:"atlantis::opera:passione-matteo",person:"atlantis::pers:bach",relation:"compone_la_musica_di"}],
+  ["L165-A01",{work:"atlantis::opera:isaac-quis-dabit-capiti-meo-1492",person:"atlantis::pers:heinrich-isaac",relation:"compone_mottetto_funebre_nel_1492"}],
+  ["L169-A01",{work:"atlantis::opera:handel-messiah-hwv56",person:"atlantis::pers:handel",relation:"compone_oratorio_nel_1741"}],
+  ["L174-A01",{work:"atlantis::opera:victoria-officium-defunctorum-1605",person:"atlantis::pers:tomas-luis-de-victoria",relation:"compone_e_pubblica_officium_1605"}],
+  ["L181-A01",{work:"atlantis::opera:haydn-die-schoepfung-1798",person:"atlantis::pers:haydn",relation:"compone_oratorio_die_schoepfung"}],
+  ["L182-A01",{work:"atlantis::opera:beethoven-missa-solemnis-op123",person:"atlantis::pers:beethoven",relation:"compone_missa_solemnis_1819_1823"}],
+  ["L183-A01",{work:"atlantis::opera:schubert-erlkoenig-d328",person:"atlantis::pers:schubert",relation:"compone_lied_erlkoenig_d328"}],
+  ["L205-A01",{work:"atlantis::opera:britten-war-requiem-op66-1962",person:"atlantis::pers:britten",relation:"compone_war_requiem_op66_per_coventry"}]
+]);
+function withVerifiedRootWorkComposers(db,edges,index,root,view){
+ if(!view||!root||root.category!=="opere"||
+    state.lenses.size===0||Number(state.depth)<1)return view;
+ const isFocused=!!state.focus&&state.focus!==root.id;
+ if(isFocused&&!(state.trail?.length===2&&state.trail[0]===root.id&&
+     state.trail[1]===state.focus))return view;
+ if(!state.cats.has("persone")&&!isFocused)return view;
+ const wanted=[...verifiedRootWorkComposerRules].filter(([,rule])=>rule.work===root.id);
+ if(!wanted.length)return view;
+ const addedNodes=[],addedLinks=[],existingNodes=new Set(view.nodes.map(n=>n.id)),
+   existingLinks=new Set(view.links.map(e=>e.id));
+ const parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
+ for(const [sourceID,rule] of wanted){
+   if(isFocused&&state.focus!==rule.person)continue;
+   const person=index.get(rule.person);
+   if(!person||person.category!=="persone"||person.visibility==="documentary")continue;
+   const edge=edges.find(e=>e.layer==="atlantis"&&e.original?.id===sourceID&&
+     e.source===rule.person&&e.target===root.id&&e.relation===rule.relation&&
+     e.original?.historical_verified_independently===true&&
+     /^confermato_da_/.test(e.original?.verification_status||"")&&
+     Array.isArray(e.original?.evidence_urls)&&e.original.evidence_urls.length>0);
+   if(!edge||(isFocused&&state.trailEdges?.[0]!==edge.id))continue;
+   if(!existingNodes.has(person.id)){addedNodes.push(person);existingNodes.add(person.id)}
+   if(!existingLinks.has(edge.id)){addedLinks.push(edge);existingLinks.add(edge.id)}
+   if(!parents.has(person.id))parents.set(person.id,{from:root.id,edge});
+   if(isFocused){distance.set(person.id,0);distance.set(root.id,1)}
+   else if(!distance.has(person.id))distance.set(person.id,1);
+ }
+ if(!addedLinks.length)return view;
+ return {...view,nodes:[...view.nodes,...addedNodes],
+   links:[...view.links,...addedLinks],parents,distance};
+}
+
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED|STAGING_CANDIDATE_FORM_LINK_NOT_IDENTITY)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
@@ -1319,13 +1374,13 @@ function rootedProjection(db){
  for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
  if(state.comparison)return comparisonProjection(db,edges,index);
  if(root){
-    const sonataView=sonataScopedProjection(db,edges,index,root);if(sonataView)return sonataView;
-    const sceneView=sceneScopedProjection(db,edges,index,root);if(sceneView)return sceneView;
-    const vocalView=vocalScopedProjection(db,edges,index,root);if(vocalView)return vocalView;
-    const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return suiteView;
-    const structureView=structureScopedProjection(db,edges,index,root);if(structureView)return structureView;
-    const counterpointView=counterpointScopedProjection(db,edges,index,root);if(counterpointView)return counterpointView;
-    const shortView=shortFormScopedProjection(db,edges,index,root);if(shortView)return shortView;
+    const sonataView=sonataScopedProjection(db,edges,index,root);if(sonataView)return withVerifiedRootWorkComposers(db,edges,index,root,sonataView);
+    const sceneView=sceneScopedProjection(db,edges,index,root);if(sceneView)return withVerifiedRootWorkComposers(db,edges,index,root,sceneView);
+    const vocalView=vocalScopedProjection(db,edges,index,root);if(vocalView)return withVerifiedRootWorkComposers(db,edges,index,root,vocalView);
+    const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return withVerifiedRootWorkComposers(db,edges,index,root,suiteView);
+    const structureView=structureScopedProjection(db,edges,index,root);if(structureView)return withVerifiedRootWorkComposers(db,edges,index,root,structureView);
+    const counterpointView=counterpointScopedProjection(db,edges,index,root);if(counterpointView)return withVerifiedRootWorkComposers(db,edges,index,root,counterpointView);
+    const shortView=shortFormScopedProjection(db,edges,index,root);if(shortView)return withVerifiedRootWorkComposers(db,edges,index,root,shortView);
   }
  if(!state.root){
    // Apertura globale: l'intera rete musicale disponibile, senza selezione.
