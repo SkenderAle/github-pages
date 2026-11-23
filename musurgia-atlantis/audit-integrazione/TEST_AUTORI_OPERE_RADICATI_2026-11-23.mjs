@@ -119,7 +119,7 @@ assert.ok(opera.scope===undefined||opera.scope!=="composer_rooted_work");
 assert.equal(db.counts.nodes,2897);
 assert.equal(db.counts.links,8743);
 console.log(JSON.stringify({
- status:"PASS_NODE_CLI_IF_EXECUTED",
+ status:"PASS_AUTORI_OPERE_RADICATI_RUNTIME",
  source_count:17,verified_composer_links:expected.length,
  original_nodes:db.counts.nodes,original_links:db.counts.links,
  tested_negative_roles:5,browser_tested:false,production_changed:false
