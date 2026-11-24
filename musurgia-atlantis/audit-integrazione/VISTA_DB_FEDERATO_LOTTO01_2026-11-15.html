@@ -1435,9 +1435,59 @@ function withVerifiedRootContextRoles(db,edges,index,root,view){
  return {...view,nodes:[...view.nodes,...extraNodes],
    links:[...view.links,...extraLinks],parents,distance};
 }
+// Tredici rapporti storico-musicali puntuali della fonte Mundi.
+// Non indicano paternita' di opere: Telemann/Kuhnau con Bach,
+// gli autori collegati al Madrigale e Merulo con la Toccata organistica.
+const verifiedRootHistoricalRelations=new Map([
+ ["mundi::relazioni-specialistiche::lotto02-infl-telemann-bach-concerto", {root:"atlantis::pers:bach", person:"atlantis::pers:telemann", relation:"ricezione-composizione-copiata"}],
+ ["mundi::relazioni-specialistiche::audit26-kuhnau-bach-precedente-lipsia", {root:"atlantis::pers:bach", person:"mundi::compositore-johann-kuhnau", relation:"precedente-thomaskantorat-e-cantata-lipsia"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-willaert", {root:"atlantis::senso:madrigale", person:"atlantis::pers:adriano-willaert", relation:"musica-nova-e-madrigale-colto"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-barbara-strozzi", {root:"atlantis::senso:madrigale", person:"atlantis::pers:strozzi", relation:"primo-libro-di-madrigali-1644"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-gesualdo", {root:"atlantis::senso:madrigale", person:"mundi::compositore-carlo-gesualdo", relation:"cromatismo-madrigalistico-tardo-cinquecento"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-rore", {root:"atlantis::senso:madrigale", person:"mundi::compositore-cipriano-de-rore", relation:"madrigale-cromatico-cinquecentesco"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-monteverdi", {root:"atlantis::senso:madrigale", person:"atlantis::pers:monteverdi", relation:"trasformazione-madrigale-tra-cinque-e-seicento"}],
+ ["mundi::relazioni-specialistiche::audit8g-festa-madrigale-primo-cinquecento", {root:"atlantis::senso:madrigale", person:"mundi::compositore-costanzo-festa", relation:"madrigali-cinquecenteschi-prima-generazione"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-marenzio", {root:"atlantis::senso:madrigale", person:"mundi::compositore-luca-marenzio", relation:"perfezionamento-madrigale-polifonico"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-casulana", {root:"atlantis::senso:madrigale", person:"mundi::compositore-maddalena-casulana", relation:"primo-libro-madrigali-femminili-1568"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-lasso", {root:"atlantis::senso:madrigale", person:"atlantis::pers:orlando-di-lasso", relation:"madrigale-europeo-del-cinquecento"}],
+ ["mundi::relazioni-specialistiche::audit8f-madrigale-vittoria-aleotti", {root:"atlantis::senso:madrigale", person:"mundi::compositore-vittoria-aleotti", relation:"madrigali-pubblicati-1593"}],
+ ["mundi::relazioni-specialistiche::audit8g-merulo-toccata-organo", {root:"mundi::toccata-organistica-rinascimentale", person:"mundi::compositore-claudio-merulo", relation:"toccate-organistiche-stampate"}]
+]);
+function withVerifiedRootHistoricalRelations(db,edges,index,root,view){
+ if(!root||!view||state.lenses.size===0||Number(state.depth)<1)return view;
+ const isFocused=!!state.focus&&state.focus!==root.id;
+ if(isFocused&&!(state.trail?.length===2&&state.trail[0]===root.id&&
+    state.trail[1]===state.focus))return view;
+ if(!state.cats.has("persone")&&!isFocused)return view;
+ const relevant=[...verifiedRootHistoricalRelations].filter(([,rule])=>rule.root===root.id);
+ if(!relevant.length)return view;
+ const newNodes=[],newLinks=[],nodeIDs=new Set(view.nodes.map(n=>n.id)),
+   linkIDs=new Set(view.links.map(e=>e.id));
+ const parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
+ for(const [edgeID,rule] of relevant){
+   if(isFocused&&state.focus!==rule.person)continue;
+   const person=index.get(rule.person);
+   if(!person||person.category!=="persone"||person.visibility==="documentary")continue;
+   const e=edges.find(e=>e.id===edgeID&&e.layer==="mundi"&&
+     e.quality==="documentato"&&e.relation===rule.relation&&
+     ((e.source===root.id&&e.target===rule.person)||
+      (e.target===root.id&&e.source===rule.person)));
+   if(!e||(isFocused&&state.trailEdges?.[0]!==e.id))continue;
+   if(!nodeIDs.has(person.id)){newNodes.push(person);nodeIDs.add(person.id)}
+   if(!linkIDs.has(e.id)){newLinks.push(e);linkIDs.add(e.id)}
+   if(!parents.has(person.id))parents.set(person.id,{from:root.id,edge:e});
+   if(isFocused){distance.set(person.id,0);distance.set(root.id,1)}
+   else if(!distance.has(person.id))distance.set(person.id,1);
+ }
+ if(!newLinks.length)return view;
+ return {...view,nodes:[...view.nodes,...newNodes],
+   links:[...view.links,...newLinks],parents,distance};
+}
+
 function withVerifiedRootRelations(db,edges,index,root,view){
- return withVerifiedRootContextRoles(db,edges,index,root,
-   withVerifiedRootWorkComposers(db,edges,index,root,view));
+ return withVerifiedRootHistoricalRelations(db,edges,index,root,
+   withVerifiedRootContextRoles(db,edges,index,root,
+     withVerifiedRootWorkComposers(db,edges,index,root,view)));
 }
 
 function rootedProjection(db){
