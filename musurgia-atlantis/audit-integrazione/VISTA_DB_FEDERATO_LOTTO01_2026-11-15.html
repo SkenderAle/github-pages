@@ -646,7 +646,20 @@ function sonataScopedProjection(db,edges,index,root){
          return downward&&genre(to)||(d===0&&from.id===center&&!genre(to))||
            (from.id==="atlantis::senso:sonata"&&/sonata-strumentale-1590/.test(to.id));
        }
-       if(to.category==="opere")return form.test(relation);
+       if(to.category==="opere"){
+         // L07-A050 e' un esempio storico documentato della Sonata
+         // strumentale tardocinquecentesca, non un raccordo nominale.
+         // Riattivalo solo per questa coppia fonte -> opera, senza
+         // estendere la regola a tutti i predicati "esemplifica".
+         const gabrieliExample=from.id==="atlantis::senso:sonata-strumentale-1590"&&
+           to.id==="atlantis::opera:sonata-pian-e-forte-1597"&&
+           e.layer==="atlantis"&&e.original?.id==="L07-A050"&&
+           relation==="esemplifica_sonata_strumentale_tardocinquecentesca"&&
+           e.quality==="riscontro_storico_indipendente"&&
+           ((e.source===from.id&&e.target===to.id)||
+             (e.target===from.id&&e.source===to.id));
+         return gabrieliExample||form.test(relation);
+       }
        return d===0&&from.id===center; // autori e periodi solo come foglie
      }
      if(from.category==="opere"){
