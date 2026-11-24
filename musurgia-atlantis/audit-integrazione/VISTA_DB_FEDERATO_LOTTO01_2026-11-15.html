@@ -1375,6 +1375,71 @@ function withVerifiedRootWorkComposers(db,edges,index,root,view){
    links:[...view.links,...addedLinks],parents,distance};
 }
 
+
+// Collegamenti contestuali a singole opere e produzioni, NON autorialita' musicale.
+// Gli ID, le coppie di estremi e i predicati provengono dall'audit 133/23.
+const verifiedRootContextRoleRules=new Map([
+ ["L03-A41",{root:"atlantis::opera:an-die-ferne-geliebte-op98",person:"atlantis::pers:alois-jeitteles",relation:"scrive_testi_poetici"}],
+ ["L05-A049",{root:"atlantis::opera:bolero-ravel-1928",person:"atlantis::pers:ida-rubinstein",relation:"commissiona"}],
+ ["L02-A02",{root:"atlantis::opera:don-juan-gluck-angiolini-1761",person:"atlantis::pers:angiolini",relation:"crea_coreografia_di"}],
+ ["E0872",{root:"atlantis::opera:inno-italiani",person:"atlantis::pers:mameli",relation:"scrive_il_testo_di"}],
+ ["L05-A052",{root:"atlantis::opera:la-valse-ravel-1920",person:"atlantis::pers:diaghilev",relation:"commissiona_ma_non_mette_in_scena"}],
+ ["L05-A055",{root:"atlantis::produzione:la-valse-rubinstein-nizinska-1929",person:"atlantis::pers:bronislava-nizinskaja",relation:"firma_coreografia"}],
+ ["L05-A054",{root:"atlantis::produzione:la-valse-rubinstein-nizinska-1929",person:"atlantis::pers:ida-rubinstein",relation:"produce"}],
+ ["L05-A037",{root:"atlantis::produzione:sagra-bausch-1975",person:"atlantis::pers:bausch",relation:"firma_coreografia"}],
+ ["L05-A033",{root:"atlantis::produzione:sagra-nizinskij-1913",person:"atlantis::pers:marie-rambert",relation:"assiste_documenta_coreografia"}],
+ ["L05-A032",{root:"atlantis::produzione:sagra-nizinskij-1913",person:"atlantis::pers:nikolaj-roerich",relation:"cura_scene_e_costumi"}],
+ ["L05-A035",{root:"atlantis::produzione:sagra-nizinskij-1913",person:"atlantis::pers:pierre-monteux",relation:"dirige_prima"}],
+ ["L05-A034",{root:"atlantis::produzione:sagra-nizinskij-1913",person:"atlantis::pers:diaghilev",relation:"produce"}],
+ ["L05-A031",{root:"atlantis::produzione:sagra-nizinskij-1913",person:"atlantis::pers:nizinskij",relation:"firma_coreografia"}],
+ ["L165-A02",{root:"atlantis::opera:isaac-quis-dabit-capiti-meo-1492",person:"atlantis::pers:angelo-poliziano",relation:"scrive_testo_poetico_per"}],
+ ["L165-A03",{root:"atlantis::opera:isaac-quis-dabit-capiti-meo-1492",person:"atlantis::pers:lorenzo-il-magnifico",relation:"commemora_morte_del_1492"}],
+ ["L169-A02",{root:"atlantis::opera:handel-messiah-hwv56",person:"atlantis::pers:charles-jennens",relation:"compila_libretto_biblico"}],
+ ["L174-A02",{root:"atlantis::opera:victoria-officium-defunctorum-1605",person:"atlantis::pers:maria-d-austria-imperatrice",relation:"composto_per_esequie_imperatrice_1603"}],
+ ["L181-A02",{root:"atlantis::opera:haydn-die-schoepfung-1798",person:"atlantis::pers:gottfried-van-swieten",relation:"cura_libretto_bilingue_e_sua_revisione"}],
+ ["L182-A02",{root:"atlantis::opera:beethoven-missa-solemnis-op123",person:"atlantis::pers:rudolfo-arciduca-austria",relation:"destinata_inizialmente_a_insediamento_1820"}],
+ ["L183-A02",{root:"atlantis::opera:schubert-erlkoenig-d328",person:"atlantis::pers:johann-wolfgang-goethe",relation:"autore_della_ballata_poetica_messa_in_musica"}],
+ ["L205-A02",{root:"atlantis::opera:britten-war-requiem-op66-1962",person:"atlantis::pers:wilfred-owen",relation:"autore_poesie_inserite_accanto_testo_liturgico"}]
+]);
+function withVerifiedRootContextRoles(db,edges,index,root,view){
+ if(!view||!root||root.category!=="opere"||
+    state.lenses.size===0||Number(state.depth)<1)return view;
+ const isFocused=!!state.focus&&state.focus!==root.id;
+ if(isFocused&&!(state.trail?.length===2&&state.trail[0]===root.id&&
+    state.trail[1]===state.focus))return view;
+ if(!state.cats.has("persone")&&!isFocused)return view;
+ const wanted=[...verifiedRootContextRoleRules].filter(([,rule])=>rule.root===root.id);
+ if(!wanted.length)return view;
+ const extraNodes=[],extraLinks=[],ids=new Set(view.nodes.map(n=>n.id)),
+   linkIDs=new Set(view.links.map(e=>e.id));
+ const parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
+ for(const [sourceID,rule] of wanted){
+   if(isFocused&&state.focus!==rule.person)continue;
+   const person=index.get(rule.person);
+   if(!person||person.category!=="persone"||person.visibility==="documentary")continue;
+   const edge=edges.find(e=>e.layer==="atlantis"&&e.original?.id===sourceID&&
+     ((e.source===rule.person&&e.target===root.id)||
+      (e.target===rule.person&&e.source===root.id))&&
+     e.relation===rule.relation&&
+     e.original?.historical_verified_independently===true&&
+     /^confermato_da_/.test(e.original?.verification_status||"")&&
+     Array.isArray(e.original?.evidence_urls)&&e.original.evidence_urls.length>0);
+   if(!edge||(isFocused&&state.trailEdges?.[0]!==edge.id))continue;
+   if(!ids.has(person.id)){extraNodes.push(person);ids.add(person.id)}
+   if(!linkIDs.has(edge.id)){extraLinks.push(edge);linkIDs.add(edge.id)}
+   if(!parents.has(person.id))parents.set(person.id,{from:root.id,edge});
+   if(isFocused){distance.set(person.id,0);distance.set(root.id,1)}
+   else if(!distance.has(person.id))distance.set(person.id,1);
+ }
+ if(!extraLinks.length)return view;
+ return {...view,nodes:[...view.nodes,...extraNodes],
+   links:[...view.links,...extraLinks],parents,distance};
+}
+function withVerifiedRootRelations(db,edges,index,root,view){
+ return withVerifiedRootContextRoles(db,edges,index,root,
+   withVerifiedRootWorkComposers(db,edges,index,root,view));
+}
+
 function rootedProjection(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED|STAGING_CANDIDATE_FORM_LINK_NOT_IDENTITY)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
@@ -1387,13 +1452,13 @@ function rootedProjection(db){
  for(const e of edges){for(const [a,b] of [[e.source,e.target],[e.target,e.source]]){if(!adj.has(a))adj.set(a,[]);adj.get(a).push({id:b,e})}}
  if(state.comparison)return comparisonProjection(db,edges,index);
  if(root){
-    const sonataView=sonataScopedProjection(db,edges,index,root);if(sonataView)return withVerifiedRootWorkComposers(db,edges,index,root,sonataView);
-    const sceneView=sceneScopedProjection(db,edges,index,root);if(sceneView)return withVerifiedRootWorkComposers(db,edges,index,root,sceneView);
-    const vocalView=vocalScopedProjection(db,edges,index,root);if(vocalView)return withVerifiedRootWorkComposers(db,edges,index,root,vocalView);
-    const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return withVerifiedRootWorkComposers(db,edges,index,root,suiteView);
-    const structureView=structureScopedProjection(db,edges,index,root);if(structureView)return withVerifiedRootWorkComposers(db,edges,index,root,structureView);
-    const counterpointView=counterpointScopedProjection(db,edges,index,root);if(counterpointView)return withVerifiedRootWorkComposers(db,edges,index,root,counterpointView);
-    const shortView=shortFormScopedProjection(db,edges,index,root);if(shortView)return withVerifiedRootWorkComposers(db,edges,index,root,shortView);
+    const sonataView=sonataScopedProjection(db,edges,index,root);if(sonataView)return withVerifiedRootRelations(db,edges,index,root,sonataView);
+    const sceneView=sceneScopedProjection(db,edges,index,root);if(sceneView)return withVerifiedRootRelations(db,edges,index,root,sceneView);
+    const vocalView=vocalScopedProjection(db,edges,index,root);if(vocalView)return withVerifiedRootRelations(db,edges,index,root,vocalView);
+    const suiteView=suiteScopedProjection(db,edges,index,root);if(suiteView)return withVerifiedRootRelations(db,edges,index,root,suiteView);
+    const structureView=structureScopedProjection(db,edges,index,root);if(structureView)return withVerifiedRootRelations(db,edges,index,root,structureView);
+    const counterpointView=counterpointScopedProjection(db,edges,index,root);if(counterpointView)return withVerifiedRootRelations(db,edges,index,root,counterpointView);
+    const shortView=shortFormScopedProjection(db,edges,index,root);if(shortView)return withVerifiedRootRelations(db,edges,index,root,shortView);
   }
  if(!state.root){
    // Apertura globale: l'intera rete musicale disponibile, senza selezione.
