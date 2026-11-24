@@ -42,7 +42,7 @@ assert.deepEqual(new Set([edge.source,edge.target]),new Set([genreId,workId]));
 assert.equal(edge.relation,"esemplifica_sonata_strumentale_tardocinquecentesca");
 assert.equal(edge.quality,"riscontro_storico_indipendente");
 
-let assertions=10;
+let assertions=13;
 function project({depth=1,cats=new Set(["generi_forme","opere"]),edges=db.links}={}){
  const state={focus:null,trail:[genreId],trailEdges:[],depth,cats};
  const fn=new Function("state",implementation+"\nreturn sonataScopedProjection;")(state);
