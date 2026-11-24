@@ -52,7 +52,9 @@ function check(value,description){assert.ok(value,description);checks++}
 const index=new Map(db.nodes.map(n=>[n.id,n]));
 for(const [rootId,personId,originalId,relation] of expected){
  const root=index.get(rootId),person=index.get(personId);
- check(root?.category==="opere","Work or production root absent: "+rootId);
+ check(root?.category==="opere"||
+   (root?.category==="eventi"&&rootId.startsWith("atlantis::produzione:")),
+   "Work or production root absent: "+rootId);
  check(person?.category==="persone","Person missing: "+personId);
  const links=db.links.filter(e=>e.layer==="atlantis"&&e.original?.id===originalId);
  check(links.length===1,"Missing/duplicate original edge "+originalId);
@@ -68,7 +70,7 @@ for(const [rootId,personId,originalId,relation] of expected){
  check(Array.isArray(edge.original?.evidence_urls)&&edge.original.evidence_urls.length>0,
    "No sources "+originalId);
  const state={focus:null,trail:[rootId],trailEdges:[],depth:1,
-   cats:new Set(["opere","persone"]),lenses:new Set(["musica"])};
+   cats:new Set(["opere","eventi","persone"]),lenses:new Set(["musica"])};
  const fn=new Function("state","withVerifiedRootWorkComposers",excerpt+
    "\nreturn withVerifiedRootContextRoles;")(state,(_db,_edges,_index,_root,view)=>view);
  const base={nodes:[root],links:[],parents:new Map(),distance:new Map([[rootId,0]])};
