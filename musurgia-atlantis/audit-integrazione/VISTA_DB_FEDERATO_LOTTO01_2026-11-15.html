@@ -1402,7 +1402,12 @@ const verifiedRootContextRoleRules=new Map([
  ["L205-A02",{root:"atlantis::opera:britten-war-requiem-op66-1962",person:"atlantis::pers:wilfred-owen",relation:"autore_poesie_inserite_accanto_testo_liturgico"}]
 ]);
 function withVerifiedRootContextRoles(db,edges,index,root,view){
- if(!view||!root||root.category!=="opere"||
+ // Le produzioni sceniche sono "eventi" nel database, non "opere".
+ // Restano ammissibili solo gli ID di produzione gia' esplicitati
+ // nelle regole, senza confondere lo spettacolo con la partitura.
+ const contextualRoot=!!root&&(root.category==="opere"||
+   (root.category==="eventi"&&root.id.startsWith("atlantis::produzione:")));
+ if(!view||!contextualRoot||
     state.lenses.size===0||Number(state.depth)<1)return view;
  const isFocused=!!state.focus&&state.focus!==root.id;
  if(isFocused&&!(state.trail?.length===2&&state.trail[0]===root.id&&
