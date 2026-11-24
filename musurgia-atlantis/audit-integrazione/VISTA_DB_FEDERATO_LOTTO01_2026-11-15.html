@@ -1526,11 +1526,53 @@ function withVerifiedRootGenrePractices(db,edges,index,root,view){
    links:[...view.links,...links],parents,distance};
 }
 
+// Ruoli storici di genere attestati, NON autorialita' di singole opere.
+// L02-A20 Hilverding: riforma del balletto pantomimico.
+// L02-A31 Moliere: testi per Comedie-ballet.
+const verifiedRootGenreContextRules=new Map([
+ ["L02-A20",{root:"atlantis::senso:ballet-daction",person:"atlantis::pers:franz-anton-hilverding",relation:"contribuisce_alle_prime_riforme_del_balletto_pantomimico"}],
+ ["L02-A31",{root:"atlantis::senso:comedie-ballet",person:"atlantis::pers:moliere",relation:"scrive_testi_per_la_comedie_ballet"}]
+]);
+function withVerifiedRootGenreContexts(db,edges,index,root,view){
+ if(!root||!view||state.lenses.size===0||Number(state.depth)<1)return view;
+ const focused=!!state.focus&&state.focus!==root.id;
+ if(focused&&!(state.trail?.length===2&&state.trail[0]===root.id&&
+   state.trail[1]===state.focus))return view;
+ if(!state.cats.has("persone")&&!focused)return view;
+ const wanted=[...verifiedRootGenreContextRules].filter(([,rule])=>rule.root===root.id);
+ if(!wanted.length)return view;
+ const addNodes=[],addLinks=[],nodeIDs=new Set(view.nodes.map(n=>n.id)),
+    linkIDs=new Set(view.links.map(e=>e.id));
+ const parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
+ for(const [sourceId,rule] of wanted){
+   if(focused&&state.focus!==rule.person)continue;
+   const person=index.get(rule.person);
+   if(!person||person.category!=="persone"||person.visibility==="documentary")continue;
+   const edge=edges.find(e=>e.layer==="atlantis"&&e.original?.id===sourceId&&
+     e.relation===rule.relation&&e.quality==="riscontro_storico_indipendente"&&
+     ((e.source===root.id&&e.target===person.id)||
+      (e.target===root.id&&e.source===person.id))&&
+     e.original?.historical_verified_independently===true&&
+     /^confermato_da_/.test(e.original?.verification_status||"")&&
+     Array.isArray(e.original?.evidence_urls)&&e.original.evidence_urls.length>0);
+   if(!edge||(focused&&state.trailEdges?.[0]!==edge.id))continue;
+   if(!nodeIDs.has(person.id)){addNodes.push(person);nodeIDs.add(person.id)}
+   if(!linkIDs.has(edge.id)){addLinks.push(edge);linkIDs.add(edge.id)}
+   if(!parents.has(person.id))parents.set(person.id,{from:root.id,edge});
+   if(focused){distance.set(person.id,0);distance.set(root.id,1)}
+   else if(!distance.has(person.id))distance.set(person.id,1);
+ }
+ if(!addLinks.length)return view;
+ return {...view,nodes:[...view.nodes,...addNodes],
+   links:[...view.links,...addLinks],parents,distance};
+}
+
 function withVerifiedRootRelations(db,edges,index,root,view){
- return withVerifiedRootGenrePractices(db,edges,index,root,
-   withVerifiedRootHistoricalRelations(db,edges,index,root,
-     withVerifiedRootContextRoles(db,edges,index,root,
-       withVerifiedRootWorkComposers(db,edges,index,root,view))));
+ return withVerifiedRootGenreContexts(db,edges,index,root,
+   withVerifiedRootGenrePractices(db,edges,index,root,
+     withVerifiedRootHistoricalRelations(db,edges,index,root,
+       withVerifiedRootContextRoles(db,edges,index,root,
+         withVerifiedRootWorkComposers(db,edges,index,root,view)))));
 }
 
 function rootedProjection(db){
