@@ -495,10 +495,35 @@ function showArchivedEdge(e){
    btn.onclick=()=>restartFromNode(id);h.append(btn);
  }
 }
+// Presentation only; graph identities and traversal are unchanged.
+let workPresentationDB=null,workPresentationIndex=new Map();
+function workPresentation(n){
+ if(n?.category!=="opere")return null;
+ if(workPresentationDB!==state.db){
+   workPresentationDB=state.db;workPresentationIndex=new Map();
+   for(const e of state.db?.links||[])for(const id of new Set([e.source,e.target])){
+     if(!workPresentationIndex.has(id))workPresentationIndex.set(id,[]);
+     workPresentationIndex.get(id).push(e);
+   }
+ }
+ const c=(n.provenance||[]).map(p=>String(p.payload?.category||"").toLowerCase()).join(" ");
+ const incident=workPresentationIndex.get(n.id)||[];
+ const rel=incident.filter(e=>e.target===n.id).map(e=>e.relation||"").join(" ");
+ let type="Opera / riferimento a opera",color="#76c5e6";
+ if(/frammento_di_movimento|parte_di_movimento/.test(c)){type="Frammento / parte";color="#e8c084";}
+ else if(/riferimento_opera_da_sottolotto_non_importato|variazione_documentaria_non_opera|opera_documentaria|documentary_only/.test(c)){type="Riferimento documentario";color="#999999";}
+ else if(/versione[-_]opera|redazione/.test(c)){type="Versione / redazione";color="#c9adfa";}
+ else if(/raccolta|collection|ciclo/.test(c)){type="Raccolta";color="#b6e4ad";}
+ else if(/opera_candidata/.test(c)&&/raccolta_contiene_questa_trascrizione_corale|rielaborato_in_corale_Schuebler/i.test(rel)){type="Trascrizione / rielaborazione";color="#dbb595";}
+ const candidate=/opera_candidata|non_certificat|non_importato/.test(c)||incident.some(e=>/SOURCE_CORRELATED_STAGING_NOT_CANONICAL/.test(e.quality||""));
+ return {type,color,candidate};
+}
+function workDisplay(n){const p=workPresentation(n);return p?p.type+(p.candidate?" · non canonico / candidato":" · stato da fonte"):categoryName(n.category);}
+
 function showNode(n){
  $("detailTitle").textContent=n.name;
  const h=$("detail");h.replaceChildren();
- h.append(make("p",categoryName(n.category)+(n.subtype?" · "+n.subtype:""),"meta"));
+ h.append(make("p",workDisplay(n)+(n.subtype?" · "+n.subtype:""),"meta"));
  const d=state.distances.get(n.id);
  if(d!==undefined)h.append(make("p",d===0?(state.focus?"Centro di esplorazione attuale":"Radice della ricerca"):"Distanza dal centro attuale: "+d+" archi","meta"));
  if(state.trail.length>1){
@@ -1781,11 +1806,11 @@ function graphInstance(){
  if(typeof g.width==="function"&&typeof g.height==="function"){g.width(Math.max(1,host.clientWidth));g.height(Math.max(1,host.clientHeight));}
  if(typeof ResizeObserver==="function")new ResizeObserver(()=>{if(state.graph&&typeof state.graph.width==="function"){state.graph.width(Math.max(1,host.clientWidth));state.graph.height(Math.max(1,host.clientHeight));}}).observe(host);
  state.graph=g.backgroundColor(state.cosmicBackground?"rgba(0,0,0,0)":"#07131e")
-  .nodeColor(n=>n._compareEndpoint?"#ffdc76":colors[n.category]||"#c9d5dd")
+  .nodeColor(n=>n._compareEndpoint?"#ffdc76":n._workColor||colors[n.category]||"#c9d5dd")
   .linkColor(e=>e.visibility==="documentary"?"#526773":!state.root?"#365764":"#558093")
   .linkWidth(e=>!state.root?.055:.52)
   .nodeVal(n=>n._compareEndpoint?12:n.id===state.root?8:n.id===state.focus?7:3)
-  .nodeLabel(n=>n.name||n.id)
+  .nodeLabel(n=>(n.name||n.id)+(n._workLabel?" · "+n._workLabel:""))
   .onNodeClick(n=>handleGraphClick(n));
  // In vista globale le migliaia di archi restano nel grafo dati ma
  // diventano un reticolo di contesto, non una ragnatela dominante.
@@ -1818,7 +1843,8 @@ function draw(){
    const compareEndpoint=comparing&&(n.id===state.comparison.from||n.id===state.comparison.to);
    const pairX=comparing&&n.id===state.comparison.from?-170:comparing&&n.id===state.comparison.to?170:null;
    const manuallyPlaced=state.manualPositions.get(n.id);
-   return {...n,_manualPos:manuallyPlaced||null,_focus:center,_compareEndpoint:compareEndpoint,
+   const work=workPresentation(n);
+   return {...n,_workColor:work?.color,_workLabel:work?workDisplay(n):null,_manualPos:manuallyPlaced||null,_focus:center,_compareEndpoint:compareEndpoint,
      _compareStart:comparing&&n.id===state.comparison.from,
      _compareEnd:comparing&&n.id===state.comparison.to,
      _compareDistA:comparing?(filtered.distFrom?.get(n.id)??null):null,
@@ -1847,11 +1873,11 @@ function draw(){
     :nodes.length+" nodi · "+links.length+" archi · "+state.depth+" liv. · radice "+visibleTitle(state.root);
  $("backFocus").disabled=!comparing&&state.trail.length<=1;
  $("showAll").disabled=overview;
- $("visibleCount").textContent=nodes.length+" nodi visibili ("+links.length+" relazioni)";
+ $("visibleCount").textContent=nodes.length+" nodi visibili ("+links.length+" relazioni) · "+nodes.filter(n=>n.category==="opere").length+" nodi categoria opere (non conteggio di composizioni autonome)";
  const h=$("visibleList");h.replaceChildren();
  for(const n of nodes.slice(0,180)){
    const b=make("button",n.name,"nodeItem");
-   b.append(make("small",categoryName(n.category)+" · livello "+(filtered.distance.get(n.id)??0)));
+   b.append(make("small",workDisplay(n)+" · livello "+(filtered.distance.get(n.id)??0)));
    b.onclick=()=>selectSubnode(n.id);h.append(b);
  }
  if(nodes.length>180)h.append(make("p","Altri "+(nodes.length-180)+" nodi: restringi il filtro o usa la ricerca.","meta"));
