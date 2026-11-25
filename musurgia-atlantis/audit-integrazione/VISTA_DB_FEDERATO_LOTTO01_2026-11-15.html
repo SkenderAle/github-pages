@@ -63,6 +63,7 @@ main.details-collapsed #detailsPanel{display:none}
 #detailsToggle[aria-expanded="true"]{border-color:var(--accent)}
 #detailsToggle{white-space:nowrap}
 #graph canvas{outline:none}
+.workLegend{border:1px solid var(--edge);border-radius:8px;padding:8px;margin:9px 0}.workLegend summary{cursor:pointer;color:var(--accent);font-weight:600}.workLegendGrid{display:grid;gap:6px;margin-top:8px;font-size:12px}.workLegendGrid span{display:flex;align-items:center;gap:7px}.workLegendGrid i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--swatch);flex:none}
 @media(max-width:1000px){main,main.details-collapsed{grid-template-columns:minmax(250px,36%) minmax(0,64%);height:auto;min-height:calc(100dvh - 85px)}section{height:58dvh;min-height:340px}
  #detailsPanel{grid-column:1 / -1;min-height:260px;max-height:46dvh;border-top:1px solid var(--edge)}}
 @media(max-width:640px){header{padding:10px}h1{font-size:18px}main,main.details-collapsed{display:flex;flex-direction:column;height:auto}aside:first-child{order:2;max-height:none}section{order:1;height:58dvh;min-height:390px;flex:none}#detailsPanel{order:3;max-height:none}.graphbar{top:6px;left:6px;right:6px;gap:5px}.graphbar button{font-size:12px}}
@@ -86,6 +87,16 @@ main.details-collapsed #detailsPanel{display:none}
 <button id="clearCategories" type="button" title="Deseleziona tutte le categorie dei nodi">Svuota tutto</button>
 </div>
 <div class="chips" id="visibleCategories"></div></fieldset>
+<details class="workLegend"><summary>Legenda delle entità musicali</summary>
+<div class="workLegendGrid">
+<span><i style="--swatch:#76c5e6"></i>Opera / riferimento a opera</span>
+<span><i style="--swatch:#b6e4ad"></i>Raccolta</span>
+<span><i style="--swatch:#c9adfa"></i>Versione / redazione</span>
+<span><i style="--swatch:#e8c084"></i>Frammento / parte / variazione</span>
+<span><i style="--swatch:#dbb595"></i>Trascrizione / rielaborazione</span>
+<span><i style="--swatch:#999999"></i>Riferimento documentario</span>
+<span><i style="--swatch:#f4ad9c"></i>Tema musicale</span>
+</div><p class="meta">Tipologia di presentazione, non certificazione. Le etichette distinguono candidati e attribuzioni dubbie. Gli estremi del confronto possono mantenere il colore di evidenziazione. I nodi categoria opere non sono necessariamente composizioni autonome.</p></details>
 <fieldset><legend>Relazioni · lenti Mundi</legend><div class="chips" id="mundiLenses"></div>
 <p class="meta" id="lensStatus" role="status">Le lenti filtrano gli archi Mundi; gli archi Atlantis e Flaminio rimangono disponibili.</p></fieldset>
 <fieldset><legend>Etichette mostrate (indipendenti dai nodi)</legend><div class="chips" id="labelCategories"></div></fieldset>
@@ -510,15 +521,18 @@ function workPresentation(n){
  const incident=workPresentationIndex.get(n.id)||[];
  const rel=incident.filter(e=>e.target===n.id).map(e=>e.relation||"").join(" ");
  let type="Opera / riferimento a opera",color="#76c5e6";
- if(/frammento_di_movimento|parte_di_movimento/.test(c)){type="Frammento / parte";color="#e8c084";}
+ if(/frammento_di_movimento|parte_di_movimento|parte[-_]di[-_]opera|parte_di_oratorio|parte_di_raccolta|parte_documentaria_di_opera|variazione_documentaria_non_opera/.test(c)){type="Frammento / parte";color="#e8c084";}
+ else if(/tema_(musicale|corale)_non_opera/.test(c)){type="Tema musicale";color="#f4ad9c";}
+ else if(/opera_originale_di_altro_autore_documentaria/.test(c)){type="Riferimento documentario";color="#999999";}
  else if(/riferimento_opera_da_sottolotto_non_importato|variazione_documentaria_non_opera|opera_documentaria|documentary_only/.test(c)){type="Riferimento documentario";color="#999999";}
- else if(/versione[-_]opera|redazione/.test(c)){type="Versione / redazione";color="#c9adfa";}
+ else if(/versione[-_]opera|versione_documentaria_non_opera_indipendente|redazione/.test(c)){type="Versione / redazione";color="#c9adfa";}
  else if(/raccolta|collection|ciclo/.test(c)){type="Raccolta";color="#b6e4ad";}
- else if(/opera_candidata/.test(c)&&/raccolta_contiene_questa_trascrizione_corale|rielaborato_in_corale_Schuebler/i.test(rel)){type="Trascrizione / rielaborazione";color="#dbb595";}
+ else if(/opera_elaborazione_popolare_attestata/.test(c)||(/opera_candidata/.test(c)&&/raccolta_contiene_questa_trascrizione_corale|rielaborato_in_corale_Schuebler/i.test(rel))){type="Trascrizione / rielaborazione";color="#dbb595";}
  const candidate=/opera_candidata|non_certificat|non_importato/.test(c)||incident.some(e=>/SOURCE_CORRELATED_STAGING_NOT_CANONICAL/.test(e.quality||""));
- return {type,color,candidate};
+ const attributionHold=/autore_in_hold|attribuzione_dubbia/.test(c);
+ return {type,color,candidate,attributionHold};
 }
-function workDisplay(n){const p=workPresentation(n);return p?p.type+(p.candidate?" · non canonico / candidato":" · stato da fonte"):categoryName(n.category);}
+function workDisplay(n){const p=workPresentation(n);return p?p.type+(p.attributionHold?" · attribuzione sospesa o dubbia":p.candidate?" · non canonico / candidato":" · stato da fonte"):categoryName(n.category);}
 
 function showNode(n){
  $("detailTitle").textContent=n.name;
