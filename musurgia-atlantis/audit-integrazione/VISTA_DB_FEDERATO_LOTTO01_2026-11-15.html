@@ -1637,12 +1637,34 @@ function withCatalogRicercare(edges,index,root,view){
  }
  return {...view,nodes,links,parents,distance};
 }
+// Catalogue-audited theatre practices; keep original predicates and qualities.
+const theatrePracticeRules=new Map([["mundi_extension::relazioni::10",{"root":"atlantis::senso:musical","person":"atlantis::pers:george-gershwin","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/"}],["mundi_extension::relazioni::6",{"root":"atlantis::senso:musical","person":"atlantis::pers:kern","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://findingaids.loc.gov/repositories/15/resources/1109"}],["mundi::grafo::2060",{"root":"atlantis::senso:musical","person":"atlantis::pers:kurt-weill","relation":"repertorio-formale-documentato","quality":"non_certificato","reverse":true,"url":"https://www.kwf.org/works/lady-in-the-dark/"}],["mundi_extension::relazioni::8",{"root":"atlantis::senso:musical","person":"atlantis::pers:bernstein","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/"}],["mundi_extension::relazioni::7",{"root":"atlantis::senso:musical","person":"atlantis::pers:rodgers","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/"}],["mundi_extension::relazioni::9",{"root":"atlantis::senso:musical","person":"atlantis::pers:sondheim","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.ibdb.com/broadway-production/follies-3596"}],["mundi_extension::relazioni::3",{"root":"atlantis::senso:operetta","person":"atlantis::pers:sullivan","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.doylycarte.org.uk/operas/the-mikado"}],["mundi_extension::relazioni::13",{"root":"atlantis::senso:operetta","person":"atlantis::pers:emmerich-kalman","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.naxos.com/LibrettiSungText/Libretti?id=F654C392-6F2B-41F6-A294-670C41101E55"}],["mundi_extension::relazioni::4",{"root":"atlantis::senso:operetta","person":"atlantis::pers:lehar","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.eno.org/discover-opera/articles/the-beginners-guide-to-operetta/"}],["mundi_extension::relazioni::12",{"root":"atlantis::senso:operetta","person":"atlantis::pers:franz-von-suppe","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.wienersymphoniker.at/en/opus/boccaccio-operetta-three-acts"}],["mundi_extension::relazioni::11",{"root":"atlantis::senso:operetta","person":"atlantis::pers:herve","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.bruzanemediabase.com/it/esplorazione/opere/mamzelle-nitouche-meilhac-millaud-herve"}],["mundi_extension::relazioni::1",{"root":"atlantis::senso:operetta","person":"atlantis::pers:offenbach","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.bruzanemediabase.com/en/exploration/exhibitions/herve-1825-1892"}],["mundi_extension::relazioni::2",{"root":"atlantis::senso:operetta","person":"atlantis::pers:strauss-ii","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.treccani.it/enciclopedia/operetta_%28Enciclopedia-Italiana%29/"}],["mundi_extension::relazioni::14",{"root":"atlantis::senso:operetta","person":"atlantis::pers:friml","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://natlib.govt.nz/records/38049112"}],["mundi_extension::relazioni::15",{"root":"atlantis::senso:operetta","person":"atlantis::pers:romberg","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.ibdb.com/broadway-show/the-student-prince-8381"}],["mundi_extension::relazioni::5",{"root":"atlantis::senso:operetta","person":"atlantis::pers:victor-herbert","relation":"pratica-di-genere","quality":"fonte_originale_non_ricertificata","reverse":false,"url":"https://www.loc.gov/item/2012564338/"}]]);
+function withTheatrePractices(edges,index,root,view){
+ if(!view||!root||!state.lenses.size||Number(state.depth)<1)return view;
+ const wanted=[...theatrePracticeRules].filter(([,r])=>r.root===root.id);
+ if(!wanted.length)return view;
+ const focused=!!state.focus&&state.focus!==root.id;
+ if(focused&&!(state.trail?.length===2&&state.trail[0]===root.id&&state.trail[1]===state.focus))return view;
+ if(!state.cats.has("persone")&&!focused)return view;
+ const nodes=[...view.nodes],links=[...view.links],ids=new Set(nodes.map(n=>n.id)),linkIDs=new Set(links.map(e=>e.id)),parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
+ for(const [id,r] of wanted){
+   if(focused&&state.focus!==r.person)continue;
+   const p=index.get(r.person);
+   const e=edges.find(e=>e.id===id&&e.layer==="mundi"&&e.source===(r.reverse?r.person:r.root)&&e.target===(r.reverse?r.root:r.person)&&e.relation===r.relation&&e.quality===r.quality&&e.original?.sources?.length>0);
+   if(!p||p.category!=="persone"||p.visibility==="documentary"||!e||(focused&&state.trailEdges?.[0]!==e.id))continue;
+   if(!ids.has(p.id)){nodes.push(p);ids.add(p.id)}
+   if(!linkIDs.has(id)){links.push(e);linkIDs.add(id)}
+   if(!parents.has(p.id))parents.set(p.id,{from:root.id,edge:e});
+   if(focused){distance.set(p.id,0);distance.set(root.id,1)}else if(!distance.has(p.id))distance.set(p.id,1);
+ }
+ return {...view,nodes,links,parents,distance};
+}
 function withVerifiedRootRelations(db,edges,index,root,view){
- return withCatalogRicercare(edges,index,root,withVerifiedRootGenreContexts(db,edges,index,root,
+ return withTheatrePractices(edges,index,root,withCatalogRicercare(edges,index,root,withVerifiedRootGenreContexts(db,edges,index,root,
    withVerifiedRootGenrePractices(db,edges,index,root,
      withVerifiedRootHistoricalRelations(db,edges,index,root,
        withVerifiedRootContextRoles(db,edges,index,root,
-         withVerifiedRootWorkComposers(db,edges,index,root,view))))));
+         withVerifiedRootWorkComposers(db,edges,index,root,view)))))));
 }
 
 function rootedProjection(db){
