@@ -1611,12 +1611,38 @@ function withVerifiedRootGenreContexts(db,edges,index,root,view){
    links:[...view.links,...addLinks],parents,distance};
 }
 
+// Ricercare: recupero delle cinque coppie con riscontro catalografico.
+const catalogRicercareRules=new Map([
+ ["mundi::grafo::1874","atlantis::pers:andrea-gabrieli"],
+ ["mundi::grafo::1875","atlantis::pers:giovanni-gabrieli"],
+ ["mundi::grafo::1876","mundi::compositore-claudio-merulo"],
+ ["mundi::grafo::1877","mundi::compositore-luzzasco-luzzaschi"],
+ ["mundi::grafo::1879","mundi::compositore-johann-jakob-froberger"]
+]);
+function withCatalogRicercare(edges,index,root,view){
+ if(!view||root?.id!=="atlantis::senso:ricercare"||!state.lenses.size||Number(state.depth)<1)return view;
+ const focused=!!state.focus&&state.focus!==root.id;
+ if(focused&&!(state.trail?.length===2&&state.trail[0]===root.id&&state.trail[1]===state.focus))return view;
+ if(!state.cats.has("persone")&&!focused)return view;
+ const nodes=[...view.nodes],links=[...view.links],ids=new Set(nodes.map(n=>n.id)),linkIDs=new Set(links.map(e=>e.id)),parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
+ for(const [id,pid] of catalogRicercareRules){
+   if(focused&&state.focus!==pid)continue;
+   const p=index.get(pid);
+   const e=edges.find(e=>e.id===id&&e.layer==="mundi"&&e.source===pid&&e.target===root.id&&e.relation==="forma-o-pratica-documentata"&&e.quality==="opera-verificata-in-catalogo"&&e.original?.catalogue_review?.review_status==="opera-verificata-in-catalogo"&&e.original?.catalogue_review?.work_level_sources?.length>0);
+   if(!p||p.category!=="persone"||p.visibility==="documentary"||!e||(focused&&state.trailEdges?.[0]!==e.id))continue;
+   if(!ids.has(pid)){nodes.push(p);ids.add(pid)}
+   if(!linkIDs.has(id)){links.push(e);linkIDs.add(id)}
+   if(!parents.has(pid))parents.set(pid,{from:root.id,edge:e});
+   if(focused){distance.set(pid,0);distance.set(root.id,1)}else if(!distance.has(pid))distance.set(pid,1);
+ }
+ return {...view,nodes,links,parents,distance};
+}
 function withVerifiedRootRelations(db,edges,index,root,view){
- return withVerifiedRootGenreContexts(db,edges,index,root,
+ return withCatalogRicercare(edges,index,root,withVerifiedRootGenreContexts(db,edges,index,root,
    withVerifiedRootGenrePractices(db,edges,index,root,
      withVerifiedRootHistoricalRelations(db,edges,index,root,
        withVerifiedRootContextRoles(db,edges,index,root,
-         withVerifiedRootWorkComposers(db,edges,index,root,view)))));
+         withVerifiedRootWorkComposers(db,edges,index,root,view))))));
 }
 
 function rootedProjection(db){
