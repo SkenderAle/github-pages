@@ -90,3 +90,7 @@ Commit [1a21e31](https://github.com/SkenderAle/github-pages/commit/1a21e31986376
 
 ### Avanzamento 26 novembre — avvio macro B
 Commit [c647fd7](https://github.com/SkenderAle/github-pages/commit/c647fd76522981f5033f1a06c4e200c5769940d2), [registro 24 archi](AUDIT_MACRO_LOTTO_B_2026-11-26.json). Sette riscontri esterni specifici acquisiti: Holst, Scalero, Scelsi, Leibowitz, Goldmark, Lili Boulanger, Verdi (notturno vocale). Holst privo di fonte nell'arco originario: necessaria regola esplicita con audit, senza alterare qualità originale. Goldmark cronologia non uniformata; Boulanger distinguere versione orchestrale da originale. 17 riscontri residui da documentare. Nessuna modifica viewer né nuovo gate; ultimo gate 108 recuperi/596 archiviate. Fase 1 OPEN, Lotto 2 BLOCKED, produzione invariata.
+
+
+### Avanzamento 26 novembre — inventario macro B completato
+Commit [5260366](https://github.com/SkenderAle/github-pages/commit/526036674664d5bb31dc763270087d8af1b0d7a9): registro 24/24 con riferimenti specifici, 17 riscontri aggiunti. 23 candidati alla proiezione; Schumann–Notturno (2071) resta HOLD tassonomico: Nachtstücke op.23 non prova da solo identità di genere. Holst richiede eccezione esplicita per fonte mancante nell'arco originale. Nessun viewer modificato, nessun nuovo gate. Ultimo gate 108 recuperi/596 archiviate; obiettivo condizionale 131/573 se tutti i 23 candidati superano il test. Fase 1 OPEN, Lotto 2 BLOCKED.
