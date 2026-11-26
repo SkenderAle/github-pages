@@ -1681,12 +1681,34 @@ function withMacroAFormPractices(edges,index,root,view){
  }
  return {...view,nodes,links,parents,distance};
 }
+// Macro B: scoped author-form evidence; Holst uses explicit external audit only.
+const macroBFormRules=new Map([["mundi::grafo::1120",{"root":"mundi::forma-suite-orchestrale-novecento","person":"mundi::compositore-gustav-holst","relation":"forma-o-pratica-documentata","quality":"non_certificato","externalAudit":{"record":"AUDIT_MACRO_LOTTO_B_2026-11-26.json","example":"St Paul's Suite op.29 n.2","url":"https://www.fabermusic.com/music/st-pauls-suite-992"}}],["mundi::grafo::2014",{"root":"mundi::forma-preludio","person":"atlantis::pers:debussy","relation":"forma-o-pratica-documentata","quality":"fonte-lessicografica-e-repertoriale"}],["mundi::grafo::2013",{"root":"mundi::forma-preludio","person":"atlantis::pers:chopin","relation":"forma-o-pratica-documentata","quality":"fonte-lessicografica-e-repertoriale"}],["mundi::grafo::2274",{"root":"mundi::forma-preludio","person":"mundi::compositore-giacinto-scelsi","relation":"repertorio-formale-documentato","quality":"fonte-biografica-catalografica-specifica"}],["mundi::grafo::2015",{"root":"mundi::forma-preludio","person":"atlantis::pers:verdi","relation":"forma-o-pratica-documentata","quality":"fonte-lessicografica-e-repertoriale"}],["mundi::grafo::2012",{"root":"mundi::forma-preludio","person":"atlantis::pers:bach","relation":"forma-o-pratica-documentata","quality":"fonte-lessicografica-e-repertoriale"}],["mundi::grafo::2016",{"root":"mundi::forma-preludio","person":"atlantis::pers:wagner","relation":"forma-o-pratica-documentata","quality":"fonte-lessicografica-e-repertoriale"}],["mundi::grafo::2218",{"root":"mundi::forma-preludio","person":"mundi::compositore-rosario-scalero","relation":"repertorio-formale-documentato","quality":"fonte-biografica-catalografica-specifica"}],["mundi::grafo::2032",{"root":"mundi::genere-rapsodia","person":"atlantis::pers:antonin-dvorak","relation":"repertorio-formale-documentato","quality":"fonti-indicate"}],["mundi::grafo::2035",{"root":"mundi::genere-rapsodia","person":"mundi::compositore-emmanuel-chabrier","relation":"repertorio-formale-documentato","quality":"fonti-indicate"}],["mundi::grafo::2030",{"root":"mundi::genere-rapsodia","person":"atlantis::pers:liszt","relation":"repertorio-formale-documentato","quality":"fonti-indicate"}],["mundi::grafo::2034",{"root":"mundi::genere-rapsodia","person":"atlantis::pers:george-gershwin","relation":"repertorio-formale-documentato","quality":"fonti-indicate"}],["mundi::grafo::2031",{"root":"mundi::genere-rapsodia","person":"atlantis::pers:brahms","relation":"repertorio-formale-documentato","quality":"fonti-indicate"}],["mundi::grafo::2033",{"root":"mundi::genere-rapsodia","person":"atlantis::pers:ravel","relation":"repertorio-formale-documentato","quality":"fonti-indicate"}],["mundi::grafo::2332",{"root":"mundi::genere-rapsodia","person":"mundi::compositore-rene-leibowitz","relation":"repertorio-formale-documentato","quality":"fonte-biografica-catalografica-specifica"}],["mundi::grafo::2232",{"root":"mundi::genere-rapsodia","person":"mundi::compositore-rubin-goldmark","relation":"repertorio-formale-documentato","quality":"fonte-biografica-catalografica-specifica"}],["mundi::grafo::2070",{"root":"mundi::forma-notturno","person":"atlantis::pers:debussy","relation":"repertorio-formale-documentato","quality":"non_certificato"}],["mundi::grafo::2069",{"root":"mundi::forma-notturno","person":"atlantis::pers:mendelssohn","relation":"repertorio-formale-documentato","quality":"non_certificato"}],["mundi::grafo::2067",{"root":"mundi::forma-notturno","person":"atlantis::pers:chopin","relation":"repertorio-formale-documentato","quality":"non_certificato"}],["mundi::grafo::2068",{"root":"mundi::forma-notturno","person":"mundi::compositore-gabriel-faure","relation":"repertorio-formale-documentato","quality":"non_certificato"}],["mundi::grafo::2072",{"root":"mundi::forma-notturno","person":"atlantis::pers:verdi","relation":"repertorio-formale-documentato","quality":"non_certificato"}],["mundi::grafo::2066",{"root":"mundi::forma-notturno","person":"mundi::compositore-john-field","relation":"repertorio-formale-documentato","quality":"non_certificato"}],["mundi::grafo::2338",{"root":"mundi::forma-notturno","person":"mundi::compositore-lili-boulanger","relation":"repertorio-formale-documentato","quality":"fonte-biografica-catalografica-specifica"}]]);
+function withMacroBFormPractices(edges,index,root,view){
+ if(!view||!root||!state.lenses.size||Number(state.depth)<1)return view;
+ const wanted=[...macroBFormRules].filter(([,r])=>r.root===root.id);
+ if(!wanted.length)return view;
+ const focused=!!state.focus&&state.focus!==root.id;
+ if(focused&&!(state.trail?.length===2&&state.trail[0]===root.id&&state.trail[1]===state.focus))return view;
+ if(!state.cats.has("persone")&&!focused)return view;
+ const nodes=[...view.nodes],links=[...view.links],ids=new Set(nodes.map(n=>n.id)),linkIDs=new Set(links.map(e=>e.id)),parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
+ for(const [id,r] of wanted){
+   if(focused&&state.focus!==r.person)continue;
+   const p=index.get(r.person);
+   const e=edges.find(e=>e.id===id&&e.layer==="mundi"&&e.source===r.person&&e.target===r.root&&e.relation===r.relation&&e.quality===r.quality&&(e.original?.sources?.length>0||(id==="mundi::grafo::1120"&&r.externalAudit?.url==="https://www.fabermusic.com/music/st-pauls-suite-992")));
+   if(!p||p.category!=="persone"||p.visibility==="documentary"||!e||(focused&&state.trailEdges?.[0]!==e.id))continue;
+   if(!ids.has(p.id)){nodes.push(p);ids.add(p.id)}
+   if(!linkIDs.has(id)){links.push(e);linkIDs.add(id)}
+   if(!parents.has(p.id))parents.set(p.id,{from:root.id,edge:e});
+   if(focused){distance.set(p.id,0);distance.set(root.id,1)}else if(!distance.has(p.id))distance.set(p.id,1);
+ }
+ return {...view,nodes,links,parents,distance};
+}
 function withVerifiedRootRelations(db,edges,index,root,view){
- return withMacroAFormPractices(edges,index,root,withTheatrePractices(edges,index,root,withCatalogRicercare(edges,index,root,withVerifiedRootGenreContexts(db,edges,index,root,
+ return withMacroBFormPractices(edges,index,root,withMacroAFormPractices(edges,index,root,withTheatrePractices(edges,index,root,withCatalogRicercare(edges,index,root,withVerifiedRootGenreContexts(db,edges,index,root,
    withVerifiedRootGenrePractices(db,edges,index,root,
      withVerifiedRootHistoricalRelations(db,edges,index,root,
        withVerifiedRootContextRoles(db,edges,index,root,
-         withVerifiedRootWorkComposers(db,edges,index,root,view))))))));
+         withVerifiedRootWorkComposers(db,edges,index,root,view)))))))));
 }
 
 function rootedProjection(db){
