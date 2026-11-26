@@ -94,3 +94,7 @@ Commit [c647fd7](https://github.com/SkenderAle/github-pages/commit/c647fd7652298
 
 ### Avanzamento 26 novembre — inventario macro B completato
 Commit [5260366](https://github.com/SkenderAle/github-pages/commit/526036674664d5bb31dc763270087d8af1b0d7a9): registro 24/24 con riferimenti specifici, 17 riscontri aggiunti. 23 candidati alla proiezione; Schumann–Notturno (2071) resta HOLD tassonomico: Nachtstücke op.23 non prova da solo identità di genere. Holst richiede eccezione esplicita per fonte mancante nell'arco originale. Nessun viewer modificato, nessun nuovo gate. Ultimo gate 108 recuperi/596 archiviate; obiettivo condizionale 131/573 se tutti i 23 candidati superano il test. Fase 1 OPEN, Lotto 2 BLOCKED.
+
+
+### Avanzamento 26 novembre — implementazione macro B
+Commit [3cd2881](https://github.com/SkenderAle/github-pages/commit/3cd2881760c16e541fccdc83f3936cb394edfb54). Ispezionati 24 archi originali Mundi: tutti con direzione autore→forma, Holst 1120 senza fonti originali. Inserite 23 regole circoscritte nel viewer; Holst eccezione esplicita per ID e URL Faber registrato nell'audit, qualità originale conservata. Schumann 2071 escluso dalla nuova allowlist. Test sintetici V8: 23/23 recupero, focus, filtro persone e rifiuto qualità difforme; snippet compilato. Non ancora eseguito gate reale integrale o browser. Ultimo gate 108 recuperi/596 archiviate; attesi 131/573, subordinati a verifica reale. Prossimo gate 17 sorgenti/169 radici, verifica Holst e Schumann, macro C. Fase 1 OPEN, Lotto 2 BLOCKED, produzione invariata.
