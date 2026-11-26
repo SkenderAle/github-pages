@@ -82,3 +82,7 @@ Commit [add089a](https://github.com/SkenderAle/github-pages/commit/add089aba9659
 
 ### Avanzamento 26 novembre — riscontro macro A sui dati Mundi originali
 Acquisito integralmente blob Mundi 57c65e209628b0fe43d0d5040bd27deb7e1624c8 (1.610.351 caratteri, 2437 edges). Confrontati tutti i 30 ID del registro macro A: 30 presenti, direzione originale persona→forma, 30 predicati e qualità corrispondenti, tutti con fonti non vuote. Equivalenze canoniche e proiezione integrale ancora da testare. Nessuna modifica al viewer o ai grafi, nessun nuovo gate 169 radici. Tentativo precedente di acquisizione simultanea 17 sorgenti bloccato dal limite chiamate; fetch_file del grafo grande vuoto, fetch_blob riuscito. Prossimo: acquisire restanti blob e ripetere gate unificato. Fase 1 OPEN, Lotto 2 BLOCKED, produzione invariata.
+
+
+### Avanzamento 26 novembre — gate reale macro A
+Commit [1a21e31](https://github.com/SkenderAle/github-pages/commit/1a21e3198637618729e7d1c9d2c084329d388a93), [rapporto gate](GATE_MACRO_A_169_RADICI_2026-11-26.md). V8 reale su 17 JSON integrali via SHA blob, builder e rootedProjection effettivi con stub lenti storico: 2897 nodi/8743 archi/500 schede univoche, 0 mancanti/orfani/duplicati. 169 radici, 108 recuperi, 596 archiviate, 0 nuove esclusioni, Bach 469/470. Macro A 30/30 visibili, direzione canonica, focus conserva arco, filtro persone e lente musica rispettati. Non Node CLI/browser; nessun nuovo intervento al viewer. Macro A gate V8 concluso, prossimo macro B 24 relazioni. Fase 1 OPEN, Lotto 2 BLOCKED, produzione invariata.
