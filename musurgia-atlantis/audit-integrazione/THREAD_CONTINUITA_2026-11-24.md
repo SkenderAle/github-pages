@@ -86,3 +86,7 @@ Acquisito integralmente blob Mundi 57c65e209628b0fe43d0d5040bd27deb7e1624c8 (1.6
 
 ### Avanzamento 26 novembre — gate reale macro A
 Commit [1a21e31](https://github.com/SkenderAle/github-pages/commit/1a21e3198637618729e7d1c9d2c084329d388a93), [rapporto gate](GATE_MACRO_A_169_RADICI_2026-11-26.md). V8 reale su 17 JSON integrali via SHA blob, builder e rootedProjection effettivi con stub lenti storico: 2897 nodi/8743 archi/500 schede univoche, 0 mancanti/orfani/duplicati. 169 radici, 108 recuperi, 596 archiviate, 0 nuove esclusioni, Bach 469/470. Macro A 30/30 visibili, direzione canonica, focus conserva arco, filtro persone e lente musica rispettati. Non Node CLI/browser; nessun nuovo intervento al viewer. Macro A gate V8 concluso, prossimo macro B 24 relazioni. Fase 1 OPEN, Lotto 2 BLOCKED, produzione invariata.
+
+
+### Avanzamento 26 novembre — avvio macro B
+Commit [c647fd7](https://github.com/SkenderAle/github-pages/commit/c647fd76522981f5033f1a06c4e200c5769940d2), [registro 24 archi](AUDIT_MACRO_LOTTO_B_2026-11-26.json). Sette riscontri esterni specifici acquisiti: Holst, Scalero, Scelsi, Leibowitz, Goldmark, Lili Boulanger, Verdi (notturno vocale). Holst privo di fonte nell'arco originario: necessaria regola esplicita con audit, senza alterare qualità originale. Goldmark cronologia non uniformata; Boulanger distinguere versione orchestrale da originale. 17 riscontri residui da documentare. Nessuna modifica viewer né nuovo gate; ultimo gate 108 recuperi/596 archiviate. Fase 1 OPEN, Lotto 2 BLOCKED, produzione invariata.
