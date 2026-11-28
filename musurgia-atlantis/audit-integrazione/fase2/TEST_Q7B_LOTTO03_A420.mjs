@@ -28,6 +28,9 @@ export function auditQ7B(db,preview){
  }
  // Inspect author->collection->member traversal only when that collection is actually attached to an author.
  const chains=roles.filter(e=>collections.some(p=>p.target===e.target));
+ const authorCollections=new Map();for(const a of roles){for(const p of collections.filter(p=>p.source===a.target)){if(!authorCollections.has(a.source))authorCollections.set(a.source,new Set());authorCollections.get(a.source).add(p.target);}}
+ for(const [author,expected] of authorCollections)check("author member collection traversal "+author,()=>{const i=ids(project(author,2)),missing=[...expected].filter(id=>!i.has(id));assert(!missing.length,"missing "+missing.length+"/"+expected.size+" collections "+missing.slice(0,6).join(","));return expected.size;});
+ for(const [author,expected] of authorCollections)check("author member collection focused traversal "+author,()=>{const a=roles.find(a=>a.source===author&&collections.some(p=>p.source===a.target));const i=ids(project(author,1,a.target,[author,a.target],[a.id])),needed=collections.filter(p=>p.source===a.target).map(p=>p.target);assert(needed.every(id=>i.has(id)),"missing focused collection");return needed.length;});
  for(const a of chains)check("author collection recursion "+a.id,()=>{const i=ids(project(a.source,2)),expected=collections.filter(e=>e.target===a.target);assert(expected.every(e=>i.has(e.source)),"missing recursive members "+expected.filter(e=>!i.has(e.source)).length);return expected.length;});
  const tax=edges.filter(e=>e.relation==="appartiene_al_genere_o_forma");
  for(const root of new Set(tax.map(e=>e.target)))check("canonical taxonomy direct "+root,()=>{const i=ids(project(root,1)),expected=tax.filter(e=>e.target===root),missing=expected.filter(e=>!i.has(e.source));assert(!missing.length,"missing "+missing.length+"/"+expected.length);return expected.length;});
