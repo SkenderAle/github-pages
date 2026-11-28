@@ -119,6 +119,7 @@ main.details-collapsed #detailsPanel{display:none}
 </main>
 <script type="module">
 import {loadFederatedDatabase} from "./DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs?v=vocal-stage-20261118-v1";
+import {buildContextIndex,contextRows,contextGroups,safeContextURLs} from "./CONTEXT_INDEX_STAGING_2026-11-28.mjs?v=1";
 const $=id=>document.getElementById(id);
 const catList=[
  ["persone","Persone"],["opere","Opere"],["reti_culturali","Reti culturali"],
@@ -468,6 +469,74 @@ function visibleTitle(id){return state.db.nodes.find(n=>n.id===id)?.name||id}
 // Gli archi originali non percorsi dalla proiezione sono consultabili
 // separatamente. Non diventano archi del grafo e non autorizzano inferenze
 // di appartenenza, identita' o trasferimento di repertori.
+// Pannello M3–P: consultazione separata, senza mutare gli archi attraversati.
+let auditedContextIndex=null,auditedContextError=null;
+const contextModeLabels={
+ CONTEXT_ONLY_PENDING_UI_GATE:"Contesti storici, editoriali e documentari",
+ ARCHIVE_ONLY:"Attestazioni archivistiche e accessi derivati",
+ CANDIDATE_DIRECT_TYPED_AFTER_GATE:"Collegamenti candidati — non attivati"
+};
+const contextTypeLabels={
+ PERSON_CONTEXT:"Contesto personale",PERSON_DOCUMENTARY:"Attestazione documentaria",
+ ARCHIVE_PARALLEL:"Attestazione parallela",ARCHIVE_DERIVED:"Accesso derivato (non diretto)",
+ EDITORIAL_CHAPTER_LINK:"Rimando al capitolo",EDITORIAL_MENTION:"Menzione editoriale",
+ EDITORIAL_HOMONYM:"Disambiguazione editoriale",EDITORIAL_ANALYSIS:"Analisi nel capitolo",
+ EDITORIAL_NON_CAUSAL:"Rimando non causale",NON_CAUSAL_COMPARISON:"Confronto non causale",
+ PLURAL_GENEALOGY:"Genealogia plurale",PERIOD_CONTEXT:"Contesto cronologico",
+ HISTORICAL_TRADITION:"Tradizione storica",WORK_EXAMPLE:"Esempio storico",
+ WORK_PRODUCTION:"Opera e produzione",WORK_CYCLE:"Ciclo di opere",
+ SHARED_MATERIAL:"Materiale tematico condiviso",PRODUCTION_COMPARISON:"Confronto fra produzioni"
+};
+function contextTypeLabel(r){return contextTypeLabels[r.semantic_type]||r.semantic_type.toLowerCase().replace(/_/g," ")}
+function appendContextSources(host,values,label){
+ for(const url of safeContextURLs(values)){
+  const a=make("a",label+" · "+url);a.href=url;a.target="_blank";a.rel="noopener noreferrer";
+  a.style.display="block";a.style.overflowWrap="anywhere";host.append(a);
+ }
+}
+function showAuditedContext(item){
+ const {record:r,edge:e}=item,h=$("detail");h.replaceChildren();
+ $("detailTitle").textContent="Relazione contestuale / documentaria";
+ h.append(make("h2",visibleTitle(r.root_id)+" · "+visibleTitle(r.other_id)));
+ h.append(make("p",contextModeLabels[r.presentation]+" · "+contextTypeLabel(r),"meta"));
+ h.append(make("div",r.reason,"reason"));
+ h.append(make("p","Direzione originale: "+visibleTitle(e.source)+" → "+visibleTitle(e.target),"meta"));
+ h.append(make("p","Predicato: "+e.relation+" · qualità: "+e.quality+" · provenienza: "+e.layer+" · ID: "+e.id,"meta"));
+ h.append(make("div",edgeReason(e),"reason"));
+ h.append(make("p","Nessuna equivalenza o trasmissione automatica del repertorio. Le fonti seguenti sono conservate dall'audit; non tutte sono state ricontrollate.","meta"));
+ appendContextSources(h,r.original_urls,"Fonte originaria");
+ appendContextSources(h,r.additional_urls,"Riferimento aggiuntivo");
+ if(!safeContextURLs(r.original_urls).length)h.append(make("p","Nessun URL registrato sull'arco originale.","meta"));
+ const back=make("button","Torna alle relazioni di "+visibleTitle(r.root_id),"edgeItem");
+ back.onclick=()=>{const n=state.db.nodes.find(n=>n.id===r.root_id);if(n)showNode(n)};h.append(back);
+ const restart=make("button","Nuova ricerca indipendente: "+visibleTitle(r.other_id),"edgeItem");
+ restart.onclick=()=>restartFromNode(r.other_id);h.append(restart);
+}
+function appendAuditedContext(host,n){
+ if(auditedContextError){host.append(make("p","Indice contestuale non disponibile: archivio originale ancora consultabile.","meta"));return}
+ if(!auditedContextIndex||!auditedContextIndex.byRoot.has(n.id))return;
+ const rows=contextRows(auditedContextIndex,n.id,{cats:state.cats,lenses:state.lenses,renderedLinks:state.renderedLinks,lensBucket});
+ const panel=make("details");panel.style.marginTop="12px";
+ const heading=make("summary","Contesti e fonti auditati ("+rows.length+")");heading.style.fontWeight="600";heading.style.cursor="pointer";panel.append(heading);
+ panel.append(make("p","Consultazione separata del nodo selezionato, secondo categorie e lenti attive. Nessun arco aggiunto al grafo; una nuova ricerca riparte senza ereditare repertorio.","meta"));
+ if(!rows.length)panel.append(make("p","Nessuna relazione contestuale con i filtri correnti.","meta"));
+ const groups=contextGroups(rows);
+ for(const mode of ["CONTEXT_ONLY_PENDING_UI_GATE","CANDIDATE_DIRECT_TYPED_AFTER_GATE","ARCHIVE_ONLY"]){
+  const section=groups.filter(g=>g.presentation===mode);if(!section.length)continue;
+  panel.append(make("h2",contextModeLabels[mode]+" ("+section.reduce((s,g)=>s+g.items.length,0)+")"));
+  for(const group of section){
+   const list=make("div");list.append(make("p",visibleTitle(group.otherId)+(group.items.length>1?" · "+group.items.length+" attestazioni":""),"meta"));
+   for(const item of group.items){
+    const r=item.record,b=make("button",contextTypeLabel(r),"edgeItem");
+    b.append(make("small",r.predicate+" · "+r.quality+" · "+r.layer+" · "+r.edge_id));
+    b.title=r.reason;b.onclick=()=>showAuditedContext(item);list.append(b);
+   }
+   panel.append(list);
+  }
+ }
+ host.append(panel);
+}
+
 function hiddenOriginalRelations(db,nodeId,renderedLinks){
  const visible=new Set((renderedLinks||[]).map(e=>e.id));
  const originalLayers=new Set(["mundi","mundi_extension","atlantis"]);
@@ -570,7 +639,8 @@ function showNode(n){
  if(connections.length>100)h.append(make("p","Mostrate 100 relazioni: restringi i filtri per le altre.","meta"));
  // Elenco separato, su richiesta, delle relazioni originali non
  // attraversate dalla vista radicata. Non modifica state.renderedLinks.
- const originalHidden=hiddenOriginalRelations(state.db,n.id,state.renderedLinks);
+ appendAuditedContext(h,n);
+ const originalHidden=hiddenOriginalRelations(state.db,n.id,state.renderedLinks).filter(e=>!auditedContextIndex?.keys.has(n.id+"|"+e.id));
  if(originalHidden.length){
    const disclosure=make("details");
    disclosure.style.marginTop="12px";
@@ -2161,6 +2231,11 @@ $("clearCategories").onclick=()=>{state.cats.clear();refreshToggles();draw()};
 
 try{
  const db=await loadFederatedDatabase();state.db=db;
+ try{
+  const response=await fetch(new URL("./INDICE_CONSULTAZIONE_204_RESIDUI_2026-11-28.json",import.meta.url),{cache:"no-store"});
+  if(!response.ok)throw Error("HTTP "+response.status);
+  auditedContextIndex=buildContextIndex(db,await response.json());
+ }catch(error){auditedContextError=String(error.message||error);console.warn("Indice contestuale M3–P:",auditedContextError)}
  if(db.flaminio_records.length!==500||db.counts.orphan_links!==0)throw Error("Integrità non confermata: lotto o archi incompleti");
  status("500/500 schede · "+db.counts.integrated_people+" identità Mundi–Atlantis · "+db.counts.nodes+" nodi · "+db.counts.links+" archi");
  refreshToggles();showEntityResults();showTargetResults();
