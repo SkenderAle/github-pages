@@ -1,0 +1,24 @@
+name: Atlantis Q8 pinned Node validation
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/atlantis-q8-node.yml'
+permissions:
+  contents: read
+jobs:
+  pinned-node:
+    if: github.head_ref == 'audit-q8-node-2026-11-28'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Node and candidate syntax
+        run: |
+          node --version
+          node --check musurgia-atlantis/audit-integrazione/COMPAT_GRAPH_STAGING_Q7_2026-11-28.js
+      - name: Execute pinned Q5 suite
+        run: node musurgia-atlantis/audit-integrazione/TEST_COLLAUDO_Q5_HEAD_2026-11-28.mjs
