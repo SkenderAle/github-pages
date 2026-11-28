@@ -95,3 +95,6 @@ check("base unchanged",()=>assert.equal(JSON.stringify(base),before));
 report.pass=report.checks.filter(c=>c.pass).length;report.fail=report.checks.length-report.pass;report.status=report.fail?"FAIL":"PASS_STRUCTURAL_PREVIEW_NOT_GUI_CERTIFIED";
 writeFileSync("flaminio-ci-report.json",JSON.stringify(report,null,2)+"\n");
 console.log(JSON.stringify(report,null,2));if(report.fail)process.exitCode=1;
+
+// A401: retain prior regression, then execute cumulative Lotto03 suite in the same CI checkout.
+if (!process.exitCode) await import("./TEST_COLLAUDO_FLAMINIO_A400.mjs");
