@@ -1,0 +1,161 @@
+<!doctype html><html lang="it"><head><base href="./musurgia-atlantis/audit-integrazione/"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Musurgia Atlantis — collaudo browser Q7B</title><style>body{font:15px system-ui;background:#07131e;color:#e6f2f1;margin:16px}h1{font-size:24px;color:#e8c084}button{font:inherit;padding:9px;margin:4px;background:#193746;color:white;border:1px solid #597783;border-radius:5px}table{border-collapse:collapse;width:100%}td,th{padding:7px;border-bottom:1px solid #365967;text-align:left;overflow-wrap:anywhere}.pass td:nth-child(3){color:#aee8d1}.fail td:nth-child(3){color:#f4ad9c}textarea{width:98%;height:180px;background:#0d2431;color:#e6f2f1}#frames{overflow:auto;max-width:100%}#fixture{position:relative;width:360px;height:320px;max-width:100%;background:#0d2431}</style><script src="./COMPAT_GRAPH_STAGING_Q7B_2026-11-28.js?v=q7b-20261128"></script></head><body><h1>Collaudo browser Q7B</h1><p>Prove sul Canvas effettivo e sul viewer staging in due viewport. Nessun dato del database viene modificato. Verifica Q5 sul candidato Q7B, poi misura la nebulosa A/B con ordine ABBA nelle due viewport, una sola iframe attiva. Non certifica un desktop fisico, gesti manuali o ForceGraph3D. Lascia questa scheda in primo piano durante il test.</p><button id="run">Esegui collaudo</button><button id="download" disabled>Scarica risultati JSON</button><p id="status" role="status">Non eseguito</p><div id="fixture"></div><div id="frames"></div><table><thead><tr><th>Ambiente</th><th>Controllo</th><th>Esito</th><th>Dettagli</th></tr></thead><tbody id="results"></tbody></table><h2>Risultati riproducibili</h2><textarea id="json" readonly></textarea><script>(function browserHarness(){
+ const $=id=>document.getElementById(id), results=[], metrics=[], frames=[];
+ let running=false;
+ const wait=ms=>new Promise(r=>setTimeout(r,ms));
+ function check(scope,name,ok,detail=""){const r={scope,name,pass:!!ok,detail:String(detail)};results.push(r);const tr=document.createElement("tr");for(const s of [scope,name,ok?"PASS":"FAIL",r.detail]){const td=document.createElement("td");td.textContent=s;tr.append(td)}tr.className=ok?"pass":"fail";$("results").append(tr);return !!ok}
+ async function until(fn,ms=45000){const end=performance.now()+ms;while(performance.now()<end){const v=fn();if(v)return v;await wait(100)}throw Error("Timeout attesa del visualizzatore")}
+ async function cadence(w,n=40){return new Promise(resolve=>{let last=null,delta=[];function tick(now){if(last!==null)delta.push(now-last);last=now;if(delta.length>=n){const s=[...delta].sort((a,b)=>a-b);resolve({samples:s.length,medianMs:s[Math.floor(s.length/2)],p95Ms:s[Math.floor(s.length*.95)]})}else w.requestAnimationFrame(tick)}w.requestAnimationFrame(tick)})}
+ const pair=s=>{const m=s.match(/(\d+)\s+nodi(?: musicali)?\s+·\s+(\d+)\s+archi/);return m?[Number(m[1]),Number(m[2])]:null};
+ const same=(a,b)=>!!a&&a.length===b.length&&a.every((x,i)=>x===b[i]);
+
+ const pins={
+ "VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html":"dc55234a02548becddb2e6b1dea3bb5f71f01124",
+ "DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs":"60007a33134e08cea451478d17d9d4d2f88ff558",
+ "CONTEXT_INDEX_STAGING_2026-11-28.mjs":"b0efbf22f1be62114e518a4b93593428301339be",
+ "INDICE_CONSULTAZIONE_204_Q5_EVENTO_2026-11-28.json":"e82ebccce8e82ca3eb2a3094d71f644541cf2953",
+ "COMPAT_GRAPH_STAGING_Q3_2026-11-28.js":"7fc3927cf9946d2c442da85656dbeac8bac84599",
+ "COMPAT_GRAPH_STAGING_Q7B_2026-11-28.js":"0a58d32730455344691ee4eb5ee1110871b6dffb",
+ "VISTA_DB_FEDERATO_Q7B_CANDIDATO_2026-11-28.html":"0ab95474072f8abb16be2a5e68d5b1c328df5f23"};
+ async function verifyPins(phase){
+  let ok=true;
+  for(const [path,expected] of Object.entries(pins)){
+   try{const res=await fetch(new URL(path,document.baseURI),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);
+    const bytes=new Uint8Array(await res.arrayBuffer()),prefix=new TextEncoder().encode("blob "+bytes.length+"\0"),buf=new Uint8Array(prefix.length+bytes.length);
+    buf.set(prefix);buf.set(bytes,prefix.length);
+    const hash=Array.from(new Uint8Array(await crypto.subtle.digest("SHA-1",buf)),x=>x.toString(16).padStart(2,"0")).join("");
+    if(!check("Checkpoint "+phase,path,hash===expected,hash+" atteso "+expected))ok=false;
+   }catch(e){check("Checkpoint "+phase,path,false,e.message);ok=false}
+  }
+  return ok;
+ }
+ async function fixture(){
+  const scope="Canvas diretto",host=$("fixture");host.replaceChildren();
+  const g=window.AtlantisCompatGraph(host);g.width(360).height(320).disableDoubleClickZoom(true).cosmicBackground(true);
+  const canvas=host.querySelector("canvas"),tip=canvas.nextElementSibling;const clicks=[];
+  g.onNodeClick(n=>clicks.push(["single",n.id])).onNodeDblClick(n=>clicks.push(["double",n.id])).onNodeDragEnd(n=>clicks.push(["drag",n.id]));
+  const root=id=>({nodes:[{id,name:id,_focus:true,category:"persone",_label:false}],links:[]});
+  function event(type,x,y,id=1,extra={}){const b=canvas.getBoundingClientRect();canvas.dispatchEvent(new PointerEvent(type,{clientX:b.left+x,clientY:b.top+y,pointerId:id,pointerType:"touch",bubbles:true,cancelable:true,...extra}))}
+  const tap=()=>{event("pointerdown",180,160);event("pointerup",180,160)};
+  try{
+   g.graphData(root("Bach")).zoomToFit();await wait(150);
+   check(scope,"Canvas reale e dimensioni",canvas.getContext("2d")!==null&&canvas.width>0&&canvas.height>0,canvas.width+"×"+canvas.height);
+   event("pointermove",180,160);check(scope,"Hover con etichetta spenta",tip.textContent==="Bach"&&tip.style.display==="block",tip.textContent);
+   event("pointerleave",180,160);
+   tap();await wait(450);check(scope,"Tap singolo",JSON.stringify(clicks)===JSON.stringify([["single","Bach"]]),JSON.stringify(clicks));
+   clicks.length=0;tap();await wait(70);tap();await wait(450);check(scope,"Doppio tap senza click singolo",JSON.stringify(clicks)===JSON.stringify([["double","Bach"]]),JSON.stringify(clicks));
+   clicks.length=0;tap();g.graphData(root("Mozart")).zoomToFit();await wait(450);check(scope,"Annullamento tap obsoleto",clicks.length===0,JSON.stringify(clicks));
+   await wait(100);event("pointerdown",180,160);event("pointermove",220,175);event("pointerup",220,175);check(scope,"Trascinamento",clicks.some(x=>x[0]==="drag"&&x[1]==="Mozart"),JSON.stringify(clicks));
+   g.graphData(root("Bach")).zoomToFit();await wait(100);let before=g.zoom();canvas.dispatchEvent(new WheelEvent("wheel",{deltaY:-100,bubbles:true,cancelable:true,clientX:canvas.getBoundingClientRect().left+180,clientY:canvas.getBoundingClientRect().top+160}));check(scope,"Zoom rotellina",g.zoom()>before,before+" → "+g.zoom());
+   before=g.zoom();event("pointerdown",80,100,1);event("pointerdown",160,100,2);event("pointermove",210,100,2);event("pointerup",210,100,2);event("pointerup",80,100,1);check(scope,"Pinch sintetico",g.zoom()>before,before+" → "+g.zoom());
+   // Q7b: cambio dati sincrono prima del frame successivo.
+   g.graphData(root("Bach")).zoomToFit();await wait(100);event("pointermove",180,160);
+   g.graphData(root("Mozart")).zoomToFit();
+   check(scope,"Tooltip precedente rimosso",tip.style.display==="none",tip.style.display);
+   clicks.length=0;tap();await wait(450);
+   check(scope,"Nessun tap su proiezione obsoleta",!clicks.some(x=>x[1]==="Bach"),JSON.stringify(clicks));
+   await wait(100);clicks.length=0;event("pointerdown",180,160);event("pointermove",220,175);
+   g.graphData(root("Vivaldi")).zoomToFit();event("pointerup",220,175);
+   check(scope,"Nessun drag obsoleto",!clicks.some(x=>x[0]==="drag"&&x[1]==="Mozart"),JSON.stringify(clicks));
+   await wait(100);clicks.length=0;tap();await wait(450);
+   check(scope,"Tap dopo cambio grafo",JSON.stringify(clicks)===JSON.stringify([["single","Vivaldi"]]),JSON.stringify(clicks));
+
+  }finally{g.destroy()}
+ }
+ async function viewer(width,height){
+  const scope=width<=640?"Viewport mobile "+width:"Viewport desktop "+width;
+  const frame=document.createElement("iframe");frame.title=scope;frame.style.cssText="display:block;border:1px solid #496274;width:"+width+"px;height:"+height+"px;max-width:none";
+  $("frames").append(frame);frames.push(frame);
+  try{
+   const start=performance.now();frame.src="./VISTA_DB_FEDERATO_Q7B_CANDIDATO_2026-11-28.html?q7b="+Date.now();
+   await until(()=>{try{return frame.contentDocument?.getElementById("loadStatus")?.textContent.includes("500/500 schede")}catch(e){return false}});
+   const d=frame.contentDocument,w=frame.contentWindow,el=id=>d.getElementById(id),summary=()=>el("graphSummary").textContent;
+   const input=(id,value)=>{const i=el(id);i.value=value;i.dispatchEvent(new w.Event("input",{bubbles:true}))};
+   const choose=(search,list,id)=>{input(search,id);const b=[...el(list).querySelectorAll("button")].find(b=>b.querySelector("small")?.textContent.includes(id));if(!b)throw Error("Risultato non trovato "+id);b.click()};
+   const depth=n=>{el("depth").value=String(n);el("depth").dispatchEvent(new w.Event("change",{bubbles:true}))};
+   check(scope,"Caricamento 500 schede",/500\/500 schede.*2897 nodi.*8743 archi/.test(el("loadStatus").textContent),el("loadStatus").textContent);
+   check(scope,"Nebulosa 2238/6980",same(pair(summary()),[2238,6980]),summary());
+   check(scope,"Renderer Canvas effettivo",!!d.querySelector("#graph canvas[data-atlantis-transparent='true']"),"ForceGraph3D="+typeof w.ForceGraph3D);
+   const layout=w.getComputedStyle(el("mainLayout")).display;check(scope,"Layout responsive",width<=640?layout==="flex":layout==="grid",layout);
+   const box=el("graph").getBoundingClientRect();check(scope,"Area grafo non nulla",box.width>0&&box.height>=300,Math.round(box.width)+"×"+Math.round(box.height));
+   metrics.push({scope,loadMs:Math.round(performance.now()-start),rafOverview:await Promise.race([cadence(w),wait(12000).then(()=>({timeout:true}))])});
+   choose("searchEntity","entityResults","atlantis::pers:bach");depth(5);check(scope,"Bach livello 5: 469/470",same(pair(summary()),[469,470]),summary());
+   // Lista nodi: interazione DOM reale, non click fisico sul canvas.
+   const node=[...el("visibleList").querySelectorAll("button")].find(b=>!b.textContent.startsWith("Johann Sebastian Bach"));
+   if(node){node.click();check(scope,"Focus e breadcrumb",summary().startsWith("Percorso:")&&!el("backFocus").disabled,summary());el("backFocus").click();check(scope,"Ritorno radice",summary().includes("radice Johann Sebastian Bach"),summary())}else check(scope,"Focus e breadcrumb",false,"Nessun nodo intermedio");
+   depth(1);choose("searchTarget","targetResults","atlantis::pers:mozart");check(scope,"Confronto Bach–Mozart",same(pair(summary()),[11,20])&&summary().includes("↔"),summary());el("clearConnection").click();
+   choose("searchEntity","entityResults","atlantis::pers:mozart");choose("searchTarget","targetResults","atlantis::pers:bach");check(scope,"Confronto invertito",same(pair(summary()),[11,20]),summary());el("clearConnection").click();
+   for(const box of el("mundiLenses").querySelectorAll("input:checked"))box.click();
+   check(scope,"Tutte le lenti spente",same(pair(summary()),[1,0]),summary());
+   for(const box of el("mundiLenses").querySelectorAll("input:not(:checked):not(:disabled)"))box.click();
+   const labels=[...el("labelCategories").querySelectorAll("input")];if(labels.length){const old=summary();labels[0].click();check(scope,"Etichette indipendenti",summary()===old,summary());labels[0].click()}
+   const toggle=el("detailsToggle");const was=toggle.getAttribute("aria-expanded");toggle.click();check(scope,"Pannello dettagli",toggle.getAttribute("aria-expanded")!==was,toggle.getAttribute("aria-expanded"));
+   el("zoomIn").click();el("zoomOut").click();el("resetPositions").click();check(scope,"Comandi zoom e ricomposizione",!el("loadStatus").classList.contains("bad"),el("loadStatus").textContent);
+
+   metrics.push({scope,rafRoot:await Promise.race([cadence(w),wait(12000).then(()=>({timeout:true}))])});
+   // Q7B: real DOM, historical context panel and independent navigation.
+   choose("searchEntity","entityResults","atlantis::senso:sinfonia");depth(5);
+   const context=()=>[...el("detail").querySelectorAll("details")].find(x=>x.querySelector("summary")?.textContent.startsWith("Contesti e fonti auditati"));
+   const contextButton=id=>[...(context()?.querySelectorAll("button")||[])].find(x=>x.querySelector("small")?.textContent.endsWith(id));
+   const countContext=()=>Number(context()?.querySelector("summary")?.textContent.match(/\((\d+)\)$/)?.[1]??-1);
+   const partial="mundi::grafo::1173", initial=summary();
+   let panel=context();check(scope,"Pannello contestuale Sinfonia",!!panel&&countContext()>0,panel?.querySelector("summary")?.textContent);
+   if(panel)panel.open=true;
+   let cb=contextButton(partial);check(scope,"Riscontro parziale presente",!!cb,cb?.textContent);
+   if(cb){
+     cb.click();const t=el("detail").textContent;
+     check(scope,"Metadati contestuali e provenienza",["Direzione originale:","Predicato: sviluppo-storico","qualità: non_certificato","provenienza: mundi","ID: "+partial].every(x=>t.includes(x)),el("detailTitle").textContent);
+     check(scope,"Q4b: fonte parziale, non equivalenza",t.includes("Audit fonti Q4–Q4b")&&t.includes("Riscontro parziale:")&&t.includes("non stabilisce equivalenza")&&[...el("detail").querySelectorAll("a")].some(a=>a.href==="https://www.berliner-philharmoniker.de/en/stories/bruckner-and-mahler/"),t.slice(0,500));
+     check(scope,"Apertura contesto non altera il grafo",summary()===initial,summary());
+     [...el("detail").querySelectorAll("button")].find(b=>b.textContent.startsWith("Torna alle relazioni"))?.click();
+     check(scope,"Ritorno al pannello",!!contextButton(partial)&&summary()===initial,summary());
+     // The archive must not repeat an indexed occurrence.
+     const archive=[...el("detail").querySelectorAll("details")].find(x=>x.querySelector("summary")?.textContent.startsWith("Archivio:"));
+     check(scope,"Nessun duplicato nel vecchio archivio",!archive?.textContent.includes(partial)&&![...(archive?.querySelectorAll("button")||[])].some(b=>b.textContent.includes("Post-romanticismo")&&b.textContent.includes("sviluppo-storico")),archive?.querySelector("summary")?.textContent||"Archivio generico assente");
+     const filter=[...el("visibleCategories").querySelectorAll("label")].find(x=>/reti culturali/i.test(x.textContent))?.querySelector("input");
+     if(filter?.checked){filter.click();check(scope,"Filtro categorie esclude contesto",!contextButton(partial),"Reti culturali disattivate");el("allCategories").click()}
+     else check(scope,"Filtro categorie esclude contesto",false,"Filtro reti culturali non trovato");
+     for(const b of el("mundiLenses").querySelectorAll("input:checked"))b.click();
+     check(scope,"Lenti spente: zero contesti e archi",countContext()===0&&same(pair(summary()),[1,0]),summary());
+     for(const b of el("mundiLenses").querySelectorAll("input:not(:checked):not(:disabled)"))b.click();
+     cb=contextButton(partial);
+     if(cb){context().open=true;cb.click();const restart=[...el("detail").querySelectorAll("button")].find(b=>b.textContent.startsWith("Nuova ricerca indipendente"));restart?.click();
+       check(scope,"Ricerca indipendente senza trail ereditato",!!restart&&el("depth").value==="1"&&el("searchEntity").value.toLowerCase().includes("post-romanticismo")&&el("backFocus").disabled,summary());
+     }else check(scope,"Ricerca indipendente senza trail ereditato",false,"Contesto non ripristinato");
+   }
+   choose("searchEntity","entityResults","atlantis::opera:passione-matteo");depth(5);
+   check(scope,"Evento 1829 recuperato senza duplicato contestuale",[...el("detail").querySelectorAll("button.edgeItem")].some(b=>b.textContent.includes("1829"))&&!contextButton("atlantis::grafo::L07-A082"),summary());
+   choose("searchEntity","entityResults","atlantis::evento:bach-matteo-berlino-1829");depth(5);
+   check(scope,"Evento Berlino 1829: perimetro 5/4",same(pair(summary()),[5,4]),summary());
+   check(scope,"Evento classificato nel pannello",/evento/i.test(el("detail").querySelector("p")?.textContent||""),el("detail").querySelector("p")?.textContent);
+   metrics.push({scope,rafEvent:await Promise.race([cadence(w),wait(12000).then(()=>({timeout:true}))])});
+  }catch(e){check(scope,"Esecuzione viewer",false,e.message)}finally{frame.remove()}
+ }
+ async function benchmark(width,height){
+  const files={A:"VISTA_DB_FEDERATO_LOTTO01_2026-11-15.html",B:"VISTA_DB_FEDERATO_Q7B_CANDIDATO_2026-11-28.html"};
+  const series=[];
+  for(const [i,variant] of ["A","B","B","A"].entries()){
+   const scope="A/B "+width+" "+(i+1)+" "+variant,frame=document.createElement("iframe");
+   frame.title=scope;frame.style.cssText="display:block;border:1px solid #496274;width:"+width+"px;height:"+height+"px;max-width:none";
+   $("frames").append(frame);
+   try{
+    const start=performance.now();frame.src=files[variant]+"?ab="+Date.now();
+    await until(()=>{try{return frame.contentDocument?.getElementById("loadStatus")?.textContent.includes("500/500 schede")}catch(e){return false}});
+    const d=frame.contentDocument,w=frame.contentWindow;
+    const loadMs=performance.now()-start;
+    const summary=d.getElementById("graphSummary").textContent;
+    check(scope,"Integrità nebulosa",same(pair(summary),[2238,6980])&&!!d.querySelector("#graph canvas[data-atlantis-transparent='true']"),summary);
+    await wait(500);
+    const raf=await Promise.race([cadence(w,120),wait(25000).then(()=>({timeout:true}))]);
+    check(scope,"Campioni RAF completi",raf.samples===120&&!document.hidden,JSON.stringify(raf));
+    series.push({variant,order:i+1,loadMs:Math.round(loadMs),raf});
+   }catch(e){check(scope,"Benchmark",false,e.message)}finally{frame.remove()}
+  }
+  metrics.push({scope:"ABBA "+width,series});
+ }
+ async function run(){if(running)return;running=true;results.length=0;metrics.length=0;$("results").replaceChildren();$("run").disabled=true;$("status").textContent="Collaudo in esecuzione";
+  try{if(!await verifyPins("prima"))throw Error("Checkpoint Q5 non servito: interrompere e riprovare dopo pubblicazione.");await fixture();await viewer(1280,800);await viewer(390,844);await benchmark(1280,800);await benchmark(390,844);await verifyPins("dopo")}catch(e){check("Harness","Errore",false,e.message)}
+  finally{const pass=results.filter(r=>r.pass).length;const report={checkpoint:"Q7B candidate vs Q5",expectedBlobs:pins,date:new Date().toISOString(),userAgent:navigator.userAgent,viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,touch:navigator.maxTouchPoints,webgl2:!!document.createElement("canvas").getContext("webgl2"),pass,fail:results.length-pass,results,metrics,limitations:"Viewport iframe mobile non equivale a dispositivo Android fisico; eventi sintetici, RAF non misura FPS del renderer; nessun WebGL ForceGraph3D. Hash delle risposte HTTP separate, non delle risorse effettivamente consumate dagli iframe. A/B ABBA: due campioni per variante e viewport, RAF non misura FPS del renderer."};$("status").textContent=pass+"/"+results.length+" PASS; "+report.fail+" FAIL";$("json").value=JSON.stringify(report,null,2);$("download").disabled=false;$("run").disabled=false;running=false;}
+ }
+ $("run").onclick=run;
+ $("download").onclick=()=>{const u=URL.createObjectURL(new Blob([$("json").value],{type:"application/json"})),a=document.createElement("a");a.href=u;a.download="collaudo-Q7B.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
+})();</script></body></html>
