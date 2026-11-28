@@ -1,0 +1,53 @@
+{
+  "schema": "musurgia-lot02-a4-gate-v1",
+  "date": "2026-11-28",
+  "checks": {
+    "off_same_object": true,
+    "base_unmodified": true,
+    "counts": true,
+    "old_nodes_same_refs": true,
+    "old_edges_same_refs": true,
+    "flaminio_baseline_same": true,
+    "source_counts": true,
+    "documentary_count": true,
+    "duplicate_rejected": true,
+    "orphan_rejected": true,
+    "source_change_rejected": true,
+    "doc_leak_rejected": true,
+    "no_evidence_rejected": true,
+    "wrong_baseline_rejected": true,
+    "existing_only_edge_rejected": true
+  },
+  "pass": 15,
+  "fail": 0,
+  "counts": {
+    "fixture_union_nodes": 3413,
+    "fixture_union_edges": 8776
+  },
+  "endpointIds": [
+    "atlantis::opera:fidelio-ouverture-1814",
+    "atlantis::opera:fidelio",
+    "atlantis::opera:norma",
+    "mundi::forma-notturno",
+    "atlantis::pers:beethoven",
+    "atlantis::senso:quartetto",
+    "tax20261116son::pianoforte-solo",
+    "atlantis::pers:alban-berg",
+    "atlantis::senso:lied",
+    "atlantis::pers:boccherini",
+    "mundi::forma-ouverture",
+    "atlantis::opera:egmont-op84",
+    "atlantis::pers:bizet",
+    "atlantis::pers:saint-saens"
+  ],
+  "baseline_cli": {
+    "pass": 3511,
+    "fail": 0,
+    "sha256": "a7262af2d6ade00e84ed6b341b30330ed20c68e60aa3a90a99658a0e58e74bcc"
+  },
+  "limitations": [
+    "Loader tests executed in V8 with actual remote overlays and synthetic base sized as Phase 1, containing all required existing endpoint IDs. Not a real merged database projection test.",
+    "Original unmodified Q5 Node suite rerun locally against reconstructed pinned Phase 1, identical stdout hash. Existing musical endpoints separately checked against real local database; remaining documentary endpoint checks and enabled-mode projection/browser gate pending.",
+    "Browser candidate is not certified; no production changes."
+  ]
+}
