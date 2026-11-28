@@ -1,0 +1,15 @@
+export const overlayPins=[["documentary","LOTTO02_OVERLAY_DOCUMENTARIO_A1_2026-11-28.json","9be69c625f79c0a7538da597f75b9c29f47fc2bf"],["musical","LOTTO02_OVERLAY_MUSICALE_A4_2026-11-28.json","760c3533f6e02cfeeac8c754a3e96877c598c330"]];
+export function withLot02(base,enabled,documentary,musical){
+ if(!enabled)return base;
+ if(base.nodes.length!==2897||base.links.length!==8743||base.flaminio_records.length!==500||base.counts.orphan_links!==0)throw Error("Baseline Fase 1 non corrispondente");
+ if(documentary.nodes.length!==500||documentary.links.length!==3||musical.nodes.length!==16||musical.links.length!==30)throw Error("Perimetro A4 inatteso");
+ const nodes=new Map(base.nodes.map(n=>[n.id,n])),ids=new Set(base.links.map(e=>e.id));
+ const records=new Map();
+ for(const n of documentary.nodes){if(n.category!=="documentazione"||n.visibility!=="documentary"||nodes.has(n.id)||n.provenance?.length!==1)throw Error("Nodo documentario invalido: "+n.id);const p=n.provenance[0];if(records.has(p.original_id)||p.original_id!==p.payload.id_sorgente)throw Error("ID sorgente invalido");records.set(p.original_id,p.payload);nodes.set(n.id,n)}
+ for(const n of musical.nodes){const p=n.provenance?.[0];if(n.category!=="opere"||n.visibility!=="musical"||nodes.has(n.id)||!p||JSON.stringify(records.get(p.original_id))!==JSON.stringify(p.payload))throw Error("Nodo musicale invalido: "+n.id);nodes.set(n.id,n)}
+ const promoted=new Set(musical.nodes.map(n=>n.id));
+ for(const [group,items] of [["documentary",documentary.links],["musical",musical.links]])for(const e of items){if(ids.has(e.id)||!nodes.has(e.source)||!nodes.has(e.target)||e.source===e.target||e.visibility!==group)throw Error("Arco invalido: "+e.id);if(group==="musical"&&(!promoted.has(e.source)&&!promoted.has(e.target)||nodes.get(e.source).visibility==="documentary"||nodes.get(e.target).visibility==="documentary"||!e.original?.evidence_urls?.length))throw Error("Arco musicale non autorizzato: "+e.id);ids.add(e.id)}
+ const links=[...base.links,...documentary.links,...musical.links];
+ return {...base,nodes:[...nodes.values()],links,counts:{...base.counts,nodes:nodes.size,links:links.length,lot02_source_records:records.size,lot02_musical_nodes:promoted.size,lot02_musical_links:musical.links.length},lot02:{enabled:true,source_records:records.size,promoted:promoted.size,status:"A4_STAGING_NOT_CERTIFIED"}}
+}
+export async function loadLot02(base,enabled){if(!enabled)return base;const data=[];for(const [key,path,expected] of overlayPins){const r=await fetch(new URL(path,import.meta.url),{cache:"no-store"});if(!r.ok)throw Error(path+" HTTP "+r.status);const bytes=new Uint8Array(await r.arrayBuffer()),head=new TextEncoder().encode("blob "+bytes.length+"\0"),joined=new Uint8Array(head.length+bytes.length);joined.set(head);joined.set(bytes,head.length);const actual=Array.from(new Uint8Array(await crypto.subtle.digest("SHA-1",joined)),b=>b.toString(16).padStart(2,"0")).join("");if(actual!==expected)throw Error("Hash A4 non corrispondente: "+path);data.push(JSON.parse(new TextDecoder().decode(bytes)))}return withLot02(base,true,...data)}
