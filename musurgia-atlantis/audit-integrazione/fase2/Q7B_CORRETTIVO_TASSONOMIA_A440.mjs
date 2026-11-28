@@ -8,7 +8,26 @@ export function candidateQ7BSource(src){
  const wrapper=`
 function rootedProjection(db){
  const view=rootedProjectionLegacyA440(db);
- if(state.comparison||!state.root||!state.lenses.size||Number(state.depth)<1||state.focus&&state.focus!==state.root||!state.cats.has("opere"))return view;
+ if(state.comparison||!state.root||!state.lenses.size||Number(state.depth)<1||!state.cats.has("opere"))return view;
+ const person=db.nodes.find(n=>n.id===state.root&&n.category==="persone");
+ if(person){
+  const focused=state.focus&&state.focus!==person.id;
+  if(!focused&&Number(state.depth)<2)return view;
+  const candidate=e=>e.id.startsWith("flaminio_lot03::preview:")&&e.visibility==="musical"&&e.quality==="AUDIT_PREVIEW_NOT_CERTIFIED"&&e.status==="PROPOSED_NOT_ACTIVE";
+  const nodes=[...view.nodes],links=[...view.links],ids=new Set(nodes.map(n=>n.id)),edgeIds=new Set(links.map(e=>e.id)),parents=new Map(view.parents||[]),distance=new Map(view.distance||[]),index=new Map(db.nodes.map(n=>[n.id,n]));
+  const authored=db.links.filter(e=>candidate(e)&&e.source===person.id&&["compone","elabora_melodia_tradizionale"].includes(e.relation)&&ids.has(e.target));
+  const members=new Set(authored.filter(e=>!focused||(e.target===state.focus&&state.trail?.length===2&&state.trail[0]===person.id&&state.trail[1]===e.target&&state.trailEdges?.[0]===e.id)).map(e=>e.target));
+  for(const e of db.links){
+   if(!candidate(e)||e.relation!=="parte_di_raccolta"||!members.has(e.source))continue;
+   const n=index.get(e.target);if(!n||n.category!=="opere"||n.visibility!=="musical"||!n.id.startsWith("flaminio_lot03::preview:collection:"))continue;
+   if(!ids.has(n.id)){nodes.push(n);ids.add(n.id);}
+   if(!edgeIds.has(e.id)){links.push(e);edgeIds.add(e.id);}
+   if(!parents.has(n.id))parents.set(n.id,{from:e.source,edge:e});
+   if(!distance.has(n.id))distance.set(n.id,focused?1:2);
+  }
+  return {...view,nodes,links,parents,distance};
+ }
+ if(state.focus&&state.focus!==state.root)return view;
  const root=db.nodes.find(n=>n.id===state.root&&n.category==="generi_forme");
  if(!root)return view;
  const nodes=[...view.nodes],links=[...view.links],ids=new Set(nodes.map(n=>n.id)),edgeIds=new Set(links.map(e=>e.id)),parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
