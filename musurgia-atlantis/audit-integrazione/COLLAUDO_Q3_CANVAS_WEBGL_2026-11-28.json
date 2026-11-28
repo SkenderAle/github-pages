@@ -1,0 +1,276 @@
+{
+  "date": "2026-11-28",
+  "scope": "Q3 Canvas, audit caricamento WebGL, regressione tap",
+  "old_compat_blob": "e5180baa44480f942b51fcbbb60ccdd53df25ad7",
+  "old_viewer_blob": "fd179ac8943ff7d9ed4245e42298cbfa886ff82a",
+  "new_viewer_blob": "166b4b0bb09c0288716370ff7ca40c74b1a3b8c7",
+  "staging_renderer": "COMPAT_GRAPH_STAGING_Q3_2026-11-28.js",
+  "renderer_commit": "db6b6dc8345cfefdc1c384854731b0d863350862",
+  "viewer_commit": "7704100c71b85a8e77947111360d29278934587a",
+  "environment": "V8: sorgente reale renderer, DOM, Canvas 2D, RAF, timer e pointer simulati; fixture 2 nodi/1 arco. Chromium locale su pagina vuota: Canvas 2D disponibile, WebGL2 non disponibile; DNS github.com e musurgiamundi.com non risolto.",
+  "before": [
+    {
+      "name": "canvas_hidpi",
+      "pass": true,
+      "detail": [
+        1440,
+        1120
+      ]
+    },
+    {
+      "name": "draw_nodes_and_edge",
+      "pass": true,
+      "detail": 2
+    },
+    {
+      "name": "finite_3d",
+      "pass": true,
+      "detail": [
+        [
+          "a",
+          0,
+          0,
+          0
+        ],
+        [
+          "b",
+          -1.1043063959259494,
+          4.195394763157105,
+          142.1709852855583
+        ]
+      ]
+    },
+    {
+      "name": "hover_without_label",
+      "pass": true,
+      "detail": "Bach"
+    },
+    {
+      "name": "hover_leave",
+      "pass": true,
+      "detail": "none"
+    },
+    {
+      "name": "single_tap",
+      "pass": true,
+      "detail": [
+        [
+          "single",
+          "a"
+        ]
+      ]
+    },
+    {
+      "name": "double_tap_no_single",
+      "pass": true,
+      "detail": [
+        [
+          "double",
+          "a"
+        ]
+      ]
+    },
+    {
+      "name": "node_drag",
+      "pass": true,
+      "detail": [
+        [
+          "drag",
+          "a"
+        ]
+      ]
+    },
+    {
+      "name": "wheel_zoom",
+      "pass": true,
+      "detail": [
+        2.35,
+        2.5971516574777724
+      ]
+    },
+    {
+      "name": "pinch_zoom",
+      "pass": true,
+      "detail": [
+        2.5971516574777724,
+        3.895727486216659
+      ]
+    },
+    {
+      "name": "zoom_upper_bound",
+      "pass": true,
+      "detail": 10
+    },
+    {
+      "name": "zoom_lower_bound",
+      "pass": true,
+      "detail": 0.3
+    },
+    {
+      "name": "mobile_canvas_dimensions",
+      "pass": true,
+      "detail": [
+        624,
+        800
+      ]
+    },
+    {
+      "name": "comparison_layout",
+      "pass": true,
+      "detail": [
+        -170,
+        170
+      ]
+    },
+    {
+      "name": "pending_tap_after_graph_change",
+      "pass": false,
+      "detail": [
+        [
+          "single",
+          "old"
+        ]
+      ]
+    },
+    {
+      "name": "destroy",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "after": [
+    {
+      "name": "canvas_hidpi",
+      "pass": true,
+      "detail": [
+        1440,
+        1120
+      ]
+    },
+    {
+      "name": "draw_nodes_and_edge",
+      "pass": true,
+      "detail": 2
+    },
+    {
+      "name": "finite_3d",
+      "pass": true,
+      "detail": [
+        [
+          "a",
+          0,
+          0,
+          0
+        ],
+        [
+          "b",
+          -1.1043063959259494,
+          4.195394763157105,
+          142.1709852855583
+        ]
+      ]
+    },
+    {
+      "name": "hover_without_label",
+      "pass": true,
+      "detail": "Bach"
+    },
+    {
+      "name": "hover_leave",
+      "pass": true,
+      "detail": "none"
+    },
+    {
+      "name": "single_tap",
+      "pass": true,
+      "detail": [
+        [
+          "single",
+          "a"
+        ]
+      ]
+    },
+    {
+      "name": "double_tap_no_single",
+      "pass": true,
+      "detail": [
+        [
+          "double",
+          "a"
+        ]
+      ]
+    },
+    {
+      "name": "node_drag",
+      "pass": true,
+      "detail": [
+        [
+          "drag",
+          "a"
+        ]
+      ]
+    },
+    {
+      "name": "wheel_zoom",
+      "pass": true,
+      "detail": [
+        2.35,
+        2.5971516574777724
+      ]
+    },
+    {
+      "name": "pinch_zoom",
+      "pass": true,
+      "detail": [
+        2.5971516574777724,
+        3.895727486216659
+      ]
+    },
+    {
+      "name": "zoom_upper_bound",
+      "pass": true,
+      "detail": 10
+    },
+    {
+      "name": "zoom_lower_bound",
+      "pass": true,
+      "detail": 0.3
+    },
+    {
+      "name": "mobile_canvas_dimensions",
+      "pass": true,
+      "detail": [
+        624,
+        800
+      ]
+    },
+    {
+      "name": "comparison_layout",
+      "pass": true,
+      "detail": [
+        -170,
+        170
+      ]
+    },
+    {
+      "name": "pending_tap_after_graph_change",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "destroy",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "viewer_script_change_only": true,
+  "webgl": {
+    "status": "NOT_LOADED",
+    "finding": "La pagina staging include solo compat-graph.js e modulo builder; nessun import ForceGraph3D. La scelta WebGL richiede globale non caricato."
+  },
+  "limits": [
+    "Non browser reale sul viewer o sui dati reali; niente prestazioni/Android fisico.",
+    "Nessuna nuova esecuzione gate 17 JSON/169 radici dopo cambio tag, logica inline invariata per sostituzione unica.",
+    "Non alterato compat-graph.js pubblico; nessuna dipendenza WebGL esterna introdotta. La suite Q2 è ancorata al precedente hash viewer; nuovo checkpoint richiede aggiornamento motivato della suite."
+  ]
+}
