@@ -1,0 +1,84 @@
+{
+  "schema": "musurgia-atlantis-phase2-a8-structural-review-v1",
+  "date": "2026-11-28",
+  "status": "STRUCTURAL_GATE_PASSED_PROJECTION_GATE_PENDING",
+  "input": {
+    "baseline": "CERTIFICAZIONE_FASE1_2026-11-28.json",
+    "builder": "60007a33134e08cea451478d17d9d4d2f88ff558",
+    "documentary": "9be69c625f79c0a7538da597f75b9c29f47fc2bf",
+    "musical": "760c3533f6e02cfeeac8c754a3e96877c598c330",
+    "crosswalk_reference": "725c6889cb4dcc3cf6f08b376b5b8ac54e882f51"
+  },
+  "method": "V8 executed actual pinned builder with 17 complete source JSON blobs retrieved by SHA, plus full A1/A4 JSON blobs. Independent structural union and redirection using exact 11 alias pairs, 2 HOLD IDs and 13 documentary source/target IDs transcribed from A7. Did not execute original A4 loader or A7 applicator in this gate; did not append full A7 documentary payloads. No fresh cryptographic hash of bytes; retrieved by SHA. No projection/runtime test.",
+  "checks": {
+    "base_counts": true,
+    "base_source_count": true,
+    "doc_counts": true,
+    "musical_counts": true,
+    "unique_nodes": true,
+    "unique_edges": true,
+    "all_endpoints": true,
+    "payloads": true,
+    "musical_evidence": true,
+    "alias_category_scope": true,
+    "projected_endpoints": true,
+    "hold_ids": true,
+    "documentary_refs": true,
+    "counts_after_redirect": true
+  },
+  "counts": {
+    "baseline_nodes": 2897,
+    "baseline_edges": 8743,
+    "a4_union_nodes": 3413,
+    "a4_union_edges": 8776,
+    "redirected_nodes": 3402,
+    "redirected_edges": 8776,
+    "expected_edges_with_13_A7_documentary_refs": 8789,
+    "redirected_edges_affected": 170,
+    "a4_musical_edges_affected": 0,
+    "source_records": 1000,
+    "lot02_promoted_musical": 16
+  },
+  "taxonomy_review": {
+    "sonata_da_camera": {
+      "decision": "PROPOSE_REPAIR_BEFORE_MERGE_KEEP_HOLD",
+      "ids": [
+        "flaminio::audit:fl01:jsb04:genre:sonata-camera",
+        "tax20261115sc::form:sonata-camera"
+      ],
+      "observed_edges_to_review": [
+        "flaminio::staging::audit:fl01:jsb04:edge:taxonomy:sonata-violino-clavicembalo",
+        "flaminio::staging::audit:fl01:jsb04:edge:taxonomy:sonata-flauto",
+        "flaminio::staging::audit:fl01:jsb04:edge:taxonomy:sonata-viola-da-gamba",
+        "flaminio::staging::audit:fl01:jsb04:edge:taxonomy:trascrizione-organo"
+      ],
+      "reason": "Historical type is not equivalent to scoring. Three instrumentation types should be assessed under general Sonata, and organ transcription is a version/part relation, not a subtype of historical chamber sonata. Retain original predicates and endpoints in review archive. Bach practice edge also needs scope evidence before merge.",
+      "sources": [
+        "https://sscm-jscm.org/v6/no2/barnett.html",
+        "https://mark-harbold.elmhurst.edu/history1/BaroqueSonata.htm"
+      ]
+    },
+    "partita": {
+      "decision": "PROPOSE_REVERSIBLE_EQUIVALENCE_PENDING_GATE",
+      "source": "flaminio::audit:fl01:jsb04:genre:partita-solista",
+      "target": "tax20261115::form:partita-strumento-solo",
+      "existing_nonidentity_edge": "suite_staging::tax20261115:e006",
+      "parent_edge": "suite_staging::tax20261115:e001",
+      "work_edges": [
+        "flaminio::staging::audit:fl01:jsb04:edge:genre:3669",
+        "flaminio::staging::audit:fl01:jsb04:edge:genre:3670",
+        "flaminio::staging::audit:fl01:jsb04:edge:genre:3671",
+        "flaminio::staging::audit:fl01:jsb04:edge:genre:3672"
+      ],
+      "reason": "Observed catalog node classifies solo flute partita and three solo violin partitas; structural node has Suite as parent. Same dance-suite scope is supported; distinguish chorale partitas. Explicit nonidentity edge cannot become self-loop or silently vanish: retain historical attestation in separate archive if equivalence approved.",
+      "sources": [
+        "https://imslp.org/wiki/List_of_works_by_Johann_Sebastian_Bach"
+      ]
+    }
+  },
+  "new_promotions": 0,
+  "new_raw_records": 0,
+  "gui_changed": false,
+  "phase1_changed": false,
+  "next": "Execute exact A4+A7 application on full pinned baseline and check real projection allowlists/root IDs and context index; prepare reversible scope corrections and family promotions, retaining all HOLD; then linked positions 1001–1500."
+}
