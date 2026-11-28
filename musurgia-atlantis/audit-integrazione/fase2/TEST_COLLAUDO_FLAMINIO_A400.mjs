@@ -115,6 +115,8 @@ report.a400={nodes:a400.nodes.length,links:a400.links.length,added:added400.leng
 // A420: Q7B is a separate diagnostic; failures explicitly prevent GUI certification, not structural certification.
 try{report.q7b=auditQ7B(a400,preview03);report.q7b.status=report.q7b.fail?"BLOCKED_Q7B":"PASS_LOGIC_ONLY";}catch(e){report.q7b={status:"BLOCKED_Q7B_EXECUTION",error:String(e.stack||e)};}
 writeFileSync("flaminio-q7b-a420-report.json",JSON.stringify(report.q7b,null,2)+"\n");
+try{const q=auditQ7B(a400,preview03,"A440");report.q7b_a440={...q,status:q.fail?"BLOCKED_Q7B_CANDIDATE":"PASS_LOGIC_ONLY_NOT_DEPLOYED"};const prior=new Map((report.q7b.checks||[]).map(c=>[c.name,c]));report.q7b_a440.regressions=q.checks.filter(c=>!c.pass&&prior.get(c.name)?.pass).map(c=>c.name);}catch(e){report.q7b_a440={status:"BLOCKED_Q7B_EXECUTION",error:String(e.stack||e)};}
+writeFileSync("flaminio-q7b-a440-report.json",JSON.stringify(report.q7b_a440,null,2)+"\n");
 check("base unchanged",()=>assert.equal(JSON.stringify(base),before));
 }catch(e){report.checks.push({name:"execution",pass:false,detail:String(e.stack||e)});}
 report.pass=report.checks.filter(c=>c.pass).length;report.fail=report.checks.length-report.pass;report.status=report.fail?"FAIL":"PASS_STRUCTURAL_PREVIEW_NOT_GUI_CERTIFIED";
