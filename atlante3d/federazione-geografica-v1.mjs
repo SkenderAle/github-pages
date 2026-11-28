@@ -23,7 +23,7 @@ export function adaptGeographicAtlas(legacy,federated,lot02,audit02){
   if(!v){const q=p?.payload||{};v={...q,id,label:n.name,type:p?q.type:asType(n),description:q.description||list(n.provenance).map(p=>p.payload?.description).find(s=>typeof s==="string")||n.subtype||"",aliases:unique([n.name,...list(n.aliases),...list(q.aliases)])};if(!p&&n.category==="persone")v.music_relevance=true;if(!p&&n.category==="generi_forme")v.taxonomy={class:n.subtype||"categoria-musicale",visibility:"principale"};if(!p&&n.category==="opere")v.work_archive={kind:"opera-specifica"};if(!p&&n.category==="documentazione")v.document_archive={kind:"fonte-editoriale",presentation:"scheda"};if(!p&&["contesto","strumento"].includes(v.type))v.document_archive={kind:"contesto",presentation:"scheda"};by.set(id,v);baseNodes.push(v)}
   v.federatedCategory=n.category;v.federatedIds=[n.id];v.federatedSources=list(n.provenance);v.federatedVisibility=n.visibility;v.aliases=unique([...list(v.aliases),n.name,...list(n.aliases),n.id]);
   if(n.category==="opere"&&list(n.provenance).some(p=>p.payload?.documentary_only===true))v.federatedNote="Riferimento documentario: identità non certificata, fuori sottolotto.";
-  for(const p of list(n.provenance))if(/^flaminio:excel:\d+$/.test(p.original_id))sourceMap.set(p.original_id,id);
+  for(const p of list(n.provenance))if(n.category==="documentazione"&&/^flaminio:excel:\d+$/.test(p.original_id))sourceMap.set(p.original_id,id);
  }
  // Explicit UI alias only: both payloads and original edges survive, no database merge.
  const m=canonical.get(messa),d=canonical.get(duplicate);
