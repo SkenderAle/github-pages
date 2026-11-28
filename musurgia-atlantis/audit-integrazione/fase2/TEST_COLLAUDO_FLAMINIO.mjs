@@ -5,6 +5,7 @@ import {fileURLToPath} from "node:url";
 import {createHash} from "node:crypto";
 import {buildUnifiedDatabase,sourcePaths,projectForViewer} from "../DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs";
 import {withLot02A17,candidatePins} from "./LOTTO02_LOADER_A17_PREVIEW_2026-11-28.mjs";
+import {applyReviewA25} from "./APPLICA_REVISIONE_A25.mjs";
 import {applyReviewA24} from "./APPLICA_REVISIONE_A24.mjs";
 import {applyReviewA21} from "./APPLICA_REVISIONE_A21.mjs";
 const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,"../../..");
@@ -73,6 +74,21 @@ for(const g of [f24,l24]){
 }
 check("A24 held exceptions remain excluded",()=>{for(const d of r23.rows.filter(r=>r.status==="HOLD_REVIEW"))assert.ok(!l24.nodes.some(n=>n.id===d.id));});
 report.a24={reviewed:43,remaining:83,full:{nodes:f24.nodes.length,links:f24.links.length},limited:{nodes:l24.nodes.length,links:l24.links.length},status:"STRUCTURAL_PREVIEW_ONLY"};
+
+
+read(resolve(here,"APPLICA_REVISIONE_A25.mjs"),"ff9138eb6004be0a7bfba95b39f90850e47a4bc8");
+const r25=JSON.parse(read(resolve(here,"LOTTO02_A25_RESIDUI_CLORI_2026-11-28.json"),"49d3a77def29307c2764f8249da12561e07d184c"));
+const prior24=JSON.stringify(a24overlays),o25=applyReviewA25(a24overlays,r25),a25=mode=>withLot02A17(base,mode,o25[0],o25[1],o25[2],o25.slice(3)),f25=a25("full-review-preview"),l25=a25("corroborated-preview");
+check("A25 preserves A24",()=>assert.equal(JSON.stringify(a24overlays),prior24));
+check("A25 coverage",()=>{assert.equal(l25.lot02_a17.candidate_source_nodes,398);assert.equal(l25.lot02_a17.index_only_deferred,3);assert.equal(f25.nodes.length,f24.nodes.length);assert.equal(f25.links.length,f24.links.length);});
+for(const g of [f25,l25]){
+ const ids=new Set(g.nodes.map(n=>n.id)),emap=new Map(g.links.map(e=>[e.id,e])),nmap=new Map(g.nodes.map(n=>[n.id,n]));
+ check("A25 "+g.lot02_a17.mode+" integrity",()=>{assert.equal(ids.size,g.nodes.length);assert.equal(emap.size,g.links.length);assert.ok(g.links.every(e=>ids.has(e.source)&&ids.has(e.target)&&e.source!==e.target));});
+ check("A25 "+g.lot02_a17.mode+" serenata correction",()=>{assert.ok(!ids.has(r25.parent_patch.id));assert.equal(nmap.get(r25.parent_patch.replacement_id).metadata.year,1693);assert.ok(r25.parent_patch.affected_edges.every(id=>[emap.get(id).source,emap.get(id).target].includes(r25.parent_patch.replacement_id)));});
+ for(const d of r25.rows.filter(r=>r.status!=="HOLD_REVIEW"))check("A25 "+g.lot02_a17.mode+" "+d.id,()=>{const n=nmap.get(d.id);assert.ok(n);assert.ok(d.evidence.every(u=>n.metadata.evidence_urls.includes(u)));assert.deepEqual(n.provenance,oldNodes.get(n.id).provenance);assert.ok(d.edge_ids.every(id=>emap.has(id)&&!emap.get(id).quality.includes("PENDING_INDEPENDENT_REVIEW")));});
+}
+check("A25 held exceptions excluded",()=>{for(const d of r25.rows.filter(r=>r.status==="HOLD_REVIEW"))assert.ok(!l25.nodes.some(n=>n.id===d.id));});
+report.a25={reviewed:80,remaining:3,full:{nodes:f25.nodes.length,links:f25.links.length},limited:{nodes:l25.nodes.length,links:l25.links.length},status:"STRUCTURAL_PREVIEW_ONLY"};
 
 check("base unchanged",()=>assert.equal(JSON.stringify(base),before));
 }catch(e){report.checks.push({name:"execution",pass:false,detail:String(e.stack||e)});}
