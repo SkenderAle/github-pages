@@ -2573,15 +2573,15 @@
     },
     {
       "id": "flaminio_lot02::a9:037",
-      "source": "flaminio_lot02::work:excel4958",
-      "target": "atlantis::opera:sonate-beethoven-op2-1796",
-      "relation": "parte_di_raccolta",
+      "source": "atlantis::opera:sonate-beethoven-op2-1796",
+      "target": "flaminio_lot02::work:excel4958",
+      "relation": "raccolta_contiene_sonata_individuale",
       "quality": "STAGING_EXTERNAL_CATALOGUE_CORROBORATED",
       "layer": "flaminio_lot02",
       "collection": "a9",
       "visibility": "musical",
       "original": {
-        "relation": "parte_di_raccolta",
+        "relation": "raccolta_contiene_sonata_individuale",
         "source_id": "flaminio:excel:4958",
         "evidence_urls": [
           "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sonata1.html",
@@ -3033,15 +3033,15 @@
     },
     {
       "id": "flaminio_lot02::a9:060",
-      "source": "flaminio_lot02::work:excel4969",
-      "target": "atlantis::opera:sonate-beethoven-op2-1796",
-      "relation": "parte_di_raccolta",
+      "source": "atlantis::opera:sonate-beethoven-op2-1796",
+      "target": "flaminio_lot02::work:excel4969",
+      "relation": "raccolta_contiene_sonata_individuale",
       "quality": "STAGING_EXTERNAL_CATALOGUE_CORROBORATED",
       "layer": "flaminio_lot02",
       "collection": "a9",
       "visibility": "musical",
       "original": {
-        "relation": "parte_di_raccolta",
+        "relation": "raccolta_contiene_sonata_individuale",
         "source_id": "flaminio:excel:4969",
         "evidence_urls": [
           "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sonata2.html",
@@ -3493,15 +3493,15 @@
     },
     {
       "id": "flaminio_lot02::a9:083",
-      "source": "flaminio_lot02::work:excel4980",
-      "target": "atlantis::opera:sonate-beethoven-op2-1796",
-      "relation": "parte_di_raccolta",
+      "source": "atlantis::opera:sonate-beethoven-op2-1796",
+      "target": "flaminio_lot02::work:excel4980",
+      "relation": "raccolta_contiene_sonata_individuale",
       "quality": "STAGING_EXTERNAL_CATALOGUE_CORROBORATED",
       "layer": "flaminio_lot02",
       "collection": "a9",
       "visibility": "musical",
       "original": {
-        "relation": "parte_di_raccolta",
+        "relation": "raccolta_contiene_sonata_individuale",
         "source_id": "flaminio:excel:4980",
         "evidence_urls": [
           "https://www.flaminioonline.it/Guide/Beethoven/Beethoven-Sonata3.html",
@@ -4456,7 +4456,8 @@
     "op2_parts": true,
     "expected_cardinality": true,
     "held_excluded": true,
-    "no_canonical_merge": true
+    "no_canonical_merge": true,
+    "op2_existing_predicate_direction": true
   },
   "counts": {
     "source_rows": 54,
@@ -4468,6 +4469,6 @@
   },
   "limitations": [
     "Collective catalogue corroboration of work identity and scoring; no claim that each Flaminio guide was opened individually. Opus keys manually transcribed and validated against the two external catalogues. Source title/year left unchanged; no individual year audit.",
-    "Endpoint membership for Beethoven, collection and three taxonomy targets checked on real Q8 separately; Alban Berg actual canonical ID from A5 checked in its prior gate; combined A9 endpoint, projection, A4+A7 and runtime regression still pending. No new canonical merges. Not loaded or published in GUI."
+    "All six external endpoints checked on actual Q8, including Alban Berg; actual baseline+A4+A9 independent structural checks passed (10/10 before adapting three op.2 edges to the existing collection-to-work predicate and direction). A1/A7 joint application and projection/runtime regression still pending. No canonical merges. Not loaded in GUI."
   ]
 }
