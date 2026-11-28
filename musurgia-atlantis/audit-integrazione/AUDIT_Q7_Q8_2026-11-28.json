@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-28",
+  "scope": "Q7 isolated Canvas candidate and Q8 execution setup",
+  "baseline": {
+    "viewer": "dc55234a02548becddb2e6b1dea3bb5f71f01124",
+    "renderer": "7fc3927cf9946d2c442da85656dbeac8bac84599"
+  },
+  "candidate": {
+    "viewer": "09b19a668c79936eed9a628a86b355a358a97d7e",
+    "renderer": "6a7d522259532bf48ac26b5ee11d7c753fb0f6c6",
+    "alias": "4daa17f8c3f513bd5280cc6af3ac3ec5e77f2a0c"
+  },
+  "changes": [
+    "Cache orbital phases at layout",
+    "Compute projection trigonometry once per frame",
+    "Cache parsed RGB prefixes bounded to 256",
+    "Reuse projected ID map for drawing and edge hit testing",
+    "Cache overview mode at layout"
+  ],
+  "verified": {
+    "syntax": true,
+    "viewer_diff_only_script_tag": true,
+    "fixture": "V8 simulated DOM and Canvas; synthetic nodes/edges; 3 frames per scenario; exact serialized drawing commands, node/link payloads",
+    "scenarios": [
+      {
+        "mode": "overview",
+        "nodes": 2238,
+        "links": 6980,
+        "trace_equal": true,
+        "nodes_equal": true,
+        "links_equal": true
+      },
+      {
+        "mode": "root",
+        "nodes": 469,
+        "links": 470,
+        "trace_equal": true,
+        "nodes_equal": true,
+        "links_equal": true
+      },
+      {
+        "mode": "comparison",
+        "nodes": 11,
+        "links": 20,
+        "trace_equal": true,
+        "nodes_equal": true,
+        "links_equal": true
+      },
+      {
+        "mode": "event-sized root",
+        "nodes": 5,
+        "links": 4,
+        "trace_equal": true,
+        "nodes_equal": true,
+        "links_equal": true
+      }
+    ]
+  },
+  "limitations": [
+    "No real GPU or browser performance measurement yet",
+    "No full pointer event regression for candidate; transient projected map after graphData differs until next frame; test in browser and resolve if needed",
+    "Fixture shape counts match Q5 but edges are synthetic",
+    "No new full data gate; original Q5 viewer unchanged"
+  ],
+  "browser": {
+    "url": "https://musurgiamundi.com/collaudo-atlantis-q7.html",
+    "status": "NOT_RUN",
+    "method": "Q6 functional suite on Q7 candidate; ABBA per viewport, 120 RAF intervals each; seven HTTP blob hashes before and after, not executed byte proof"
+  },
+  "q8": {
+    "local_node": "v22.16.0",
+    "checkout": "DNS github.com unresolved",
+    "branch": "audit-q8-node-2026-11-28",
+    "workflow_commit": "66e5dd56d6db76a9663ff73bc21ad47a2e4faba1",
+    "pull_request": "https://github.com/SkenderAle/github-pages/pull/1",
+    "workflow_runs_visible": 0,
+    "status": "NOT_VERIFIED",
+    "merge_authorized": false
+  },
+  "phase1": "OPEN",
+  "lot2": "BLOCKED"
+}
