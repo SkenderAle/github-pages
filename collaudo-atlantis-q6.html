@@ -77,6 +77,7 @@
    const toggle=el("detailsToggle");const was=toggle.getAttribute("aria-expanded");toggle.click();check(scope,"Pannello dettagli",toggle.getAttribute("aria-expanded")!==was,toggle.getAttribute("aria-expanded"));
    el("zoomIn").click();el("zoomOut").click();el("resetPositions").click();check(scope,"Comandi zoom e ricomposizione",!el("loadStatus").classList.contains("bad"),el("loadStatus").textContent);
 
+   metrics.push({scope,rafRoot:await Promise.race([cadence(w),wait(12000).then(()=>({timeout:true}))])});
    // Q6: real DOM, historical context panel and independent navigation.
    choose("searchEntity","entityResults","atlantis::senso:sinfonia");depth(5);
    const context=()=>[...el("detail").querySelectorAll("details")].find(x=>x.querySelector("summary")?.textContent.startsWith("Contesti e fonti auditati"));
@@ -95,7 +96,7 @@
      check(scope,"Ritorno al pannello",!!contextButton(partial)&&summary()===initial,summary());
      // The archive must not repeat an indexed occurrence.
      const archive=[...el("detail").querySelectorAll("details")].find(x=>x.querySelector("summary")?.textContent.startsWith("Archivio:"));
-     check(scope,"Nessun duplicato nel vecchio archivio",!archive?.textContent.includes(partial),archive?.querySelector("summary")?.textContent||"Archivio generico assente");
+     check(scope,"Nessun duplicato nel vecchio archivio",!archive?.textContent.includes(partial)&&![...(archive?.querySelectorAll("button")||[])].some(b=>b.textContent.includes("Post-romanticismo")&&b.textContent.includes("sviluppo-storico")),archive?.querySelector("summary")?.textContent||"Archivio generico assente");
      const filter=[...el("visibleCategories").querySelectorAll("label")].find(x=>/reti culturali/i.test(x.textContent))?.querySelector("input");
      if(filter?.checked){filter.click();check(scope,"Filtro categorie esclude contesto",!contextButton(partial),"Reti culturali disattivate");el("allCategories").click()}
      else check(scope,"Filtro categorie esclude contesto",false,"Filtro reti culturali non trovato");
@@ -112,7 +113,7 @@
    choose("searchEntity","entityResults","atlantis::evento:bach-matteo-berlino-1829");depth(5);
    check(scope,"Evento Berlino 1829: perimetro 5/4",same(pair(summary()),[5,4]),summary());
    check(scope,"Evento classificato nel pannello",/evento/i.test(el("detail").querySelector("p")?.textContent||""),el("detail").querySelector("p")?.textContent);
-   metrics.push({scope,rafRoot:await Promise.race([cadence(w),wait(12000).then(()=>({timeout:true}))])});
+   metrics.push({scope,rafEvent:await Promise.race([cadence(w),wait(12000).then(()=>({timeout:true}))])});
   }catch(e){check(scope,"Esecuzione viewer",false,e.message)}finally{frame.remove()}
  }
  async function run(){if(running)return;running=true;results.length=0;metrics.length=0;$("results").replaceChildren();$("run").disabled=true;$("status").textContent="Collaudo in esecuzione";
