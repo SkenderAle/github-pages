@@ -1,15 +1,16 @@
+import {candidateQ7BSource} from "./Q7B_CORRETTIVO_TASSONOMIA_A440.mjs";
 // A420: isolated evaluation of the actual Q7B rootedProjection, not a browser/rendering test.
 import {readFileSync} from "node:fs";
 import {createHash} from "node:crypto";
 import {runInNewContext} from "node:vm";
-export function auditQ7B(db,preview){
+export function auditQ7B(db,preview,variant='original'){
  const raw=readFileSync(new URL("../VISTA_DB_FEDERATO_Q7B_CANDIDATO_2026-11-28.html",import.meta.url));
  const sha=createHash("sha1").update("blob "+raw.length+"\0").update(raw).digest("hex");
  if(sha!=="0ab95474072f8abb16be2a5e68d5b1c328df5f23")throw Error("Q7B source changed: "+sha);
  const html=raw.toString("utf8"),start=html.indexOf("const $=id=>document.getElementById(id);"),end=html.indexOf('$("searchEntity").addEventListener("input",showEntityResults);');
  if(start<0||end<=start)throw Error("Q7B boundaries");
  const sandbox={db,preview,console,URL};
- const project=runInNewContext(html.slice(start,end)+`\n(root,depth,focus=null,trail=[],trailEdges=[],lenses=true)=>{state.db=db;state.root=root;state.depth=depth;state.focus=focus;state.trail=trail;state.trailEdges=trailEdges;state.comparison=null;state.cats=new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0]));state.lenses=new Set(lenses?["musica","trasmissioni","genealogie","collaborazioni"]:[]);return rootedProjection(db);}`,sandbox,{timeout:15000});
+ const project=runInNewContext((variant==='A440'?candidateQ7BSource(html.slice(start,end)):html.slice(start,end))+`\n(root,depth,focus=null,trail=[],trailEdges=[],lenses=true)=>{state.db=db;state.root=root;state.depth=depth;state.focus=focus;state.trail=trail;state.trailEdges=trailEdges;state.comparison=null;state.cats=new Set(catList.filter(c=>c[0]!=="documentazione").map(c=>c[0]));state.lenses=new Set(lenses?["musica","trasmissioni","genealogie","collaborazioni"]:[]);return rootedProjection(db);}`,sandbox,{timeout:15000});
  const checks=[],nodes=new Map(db.nodes.map(n=>[n.id,n])),edges=db.links.filter(e=>e.id.startsWith("flaminio_lot03::"));
  const check=(name,fn)=>{try{const detail=fn();checks.push({name,pass:true,detail});}catch(e){checks.push({name,pass:false,detail:String(e.message||e)});}};
  const assert=(ok,msg)=>{if(!ok)throw Error(msg);};
@@ -34,5 +35,5 @@ export function auditQ7B(db,preview){
  for(const a of chains)check("author collection recursion "+a.id,()=>{const i=ids(project(a.source,2)),expected=collections.filter(e=>e.target===a.target);assert(expected.every(e=>i.has(e.source)),"missing recursive members "+expected.filter(e=>!i.has(e.source)).length);return expected.length;});
  const tax=edges.filter(e=>e.relation==="appartiene_al_genere_o_forma");
  for(const root of new Set(tax.map(e=>e.target)))check("canonical taxonomy direct "+root,()=>{const i=ids(project(root,1)),expected=tax.filter(e=>e.target===root),missing=expected.filter(e=>!i.has(e.source));assert(!missing.length,"missing "+missing.length+"/"+expected.length);return expected.length;});
- return {schema:"lot03-q7b-audit-v1",source_blob:sha,scope:"real Q7B logic in VM; no DOM, no GUI deployment",checks,pass:checks.filter(c=>c.pass).length,fail:checks.filter(c=>!c.pass).length};
+ return {schema:"lot03-q7b-audit-v1",source_blob:sha,scope:"real Q7B logic in VM; no DOM, no GUI deployment",variant,checks,pass:checks.filter(c=>c.pass).length,fail:checks.filter(c=>!c.pass).length};
 }
