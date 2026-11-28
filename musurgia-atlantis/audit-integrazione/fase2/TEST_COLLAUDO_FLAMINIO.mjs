@@ -5,6 +5,7 @@ import {fileURLToPath} from "node:url";
 import {createHash} from "node:crypto";
 import {buildUnifiedDatabase,sourcePaths,projectForViewer} from "../DB_UNIFICATO_MUNDI_ATLANTIS_LOTTO01_2026-11-15.mjs";
 import {withLot02A17,candidatePins} from "./LOTTO02_LOADER_A17_PREVIEW_2026-11-28.mjs";
+import {applyReviewA24} from "./APPLICA_REVISIONE_A24.mjs";
 import {applyReviewA21} from "./APPLICA_REVISIONE_A21.mjs";
 const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,"../../..");
 const read=(p,pin)=>{const b=readFileSync(p);const actual=createHash("sha1").update("blob "+b.length+"\0").update(b).digest("hex");assert.equal(actual,pin,p);return b;};
@@ -56,6 +57,23 @@ for(const g of [newFull,newLimited]){
 check("A21 all previous limited nodes retained",()=>{const ids=new Set(newLimited.nodes.map(n=>n.id));assert.ok(oldLimited.nodes.every(n=>ids.has(n.id)));});
 check("A21 full graph adds only one edge",()=>{const prior=new Set(oldFull.links.map(e=>e.id));assert.deepEqual(newFull.links.filter(e=>!prior.has(e.id)).map(e=>e.id),[review.taxonomy_patch.id]);});
 report.a21={reviewed:7,remaining:126,full:{nodes:newFull.nodes.length,links:newFull.links.length},limited:{nodes:newLimited.nodes.length,links:newLimited.links.length},status:"STRUCTURAL_PREVIEW_ONLY"};
+
+read(resolve(here,"APPLICA_REVISIONE_A24.mjs"),"9223d24a7f899b96c800dd71e9b2f7073d36bd98");
+const r23=JSON.parse(read(resolve(here,"LOTTO02_A23_CONFRONTO_OVERLAY_2026-11-28.json"),"cf4b29c35a79b808f9b0e6e452602d4bcc171b0f"));
+const a21Before=JSON.stringify(revised),a24overlays=applyReviewA24(revised,r23);
+const a24=mode=>withLot02A17(base,mode,a24overlays[0],a24overlays[1],a24overlays[2],a24overlays.slice(3));
+const f24=a24("full-review-preview"),l24=a24("corroborated-preview"),selected=r23.rows.filter(r=>r.status==="IDENTITY_AND_SCOPE_CORROBORATED_PENDING_CI");
+check("A24 A21 unchanged",()=>assert.equal(JSON.stringify(revised),a21Before));
+check("A24 coverage",()=>{assert.equal(l24.lot02_a17.candidate_source_nodes,318);assert.equal(l24.lot02_a17.index_only_deferred,83);assert.equal(f24.nodes.length,newFull.nodes.length);assert.equal(f24.links.length,newFull.links.length);});
+check("A24 preserves previous limited graph",()=>{const n=new Set(l24.nodes.map(n=>n.id)),e=new Set(l24.links.map(e=>e.id));assert.ok(newLimited.nodes.every(x=>n.has(x.id)));assert.ok(newLimited.links.every(x=>e.has(x.id)));});
+for(const g of [f24,l24]){
+ const ids=new Set(g.nodes.map(n=>n.id)),emap=new Map(g.links.map(e=>[e.id,e])),nmap=new Map(g.nodes.map(n=>[n.id,n]));
+ check("A24 "+g.lot02_a17.mode+" integrity",()=>{assert.equal(ids.size,g.nodes.length);assert.equal(emap.size,g.links.length);assert.ok(g.links.every(e=>ids.has(e.source)&&ids.has(e.target)&&e.source!==e.target));});
+ for(const d of selected)check("A24 "+g.lot02_a17.mode+" "+d.id,()=>{const n=nmap.get(d.id);assert.ok(n);assert.ok(n.metadata.evidence_urls.includes(d.independent_record));assert.deepEqual(n.provenance,oldNodes.get(n.id).provenance);assert.ok(d.edge_ids.every(id=>emap.has(id)&&!emap.get(id).quality.includes("PENDING_INDEPENDENT_REVIEW")));});
+}
+check("A24 held exceptions remain excluded",()=>{for(const d of r23.rows.filter(r=>r.status==="HOLD_REVIEW"))assert.ok(!l24.nodes.some(n=>n.id===d.id));});
+report.a24={reviewed:43,remaining:83,full:{nodes:f24.nodes.length,links:f24.links.length},limited:{nodes:l24.nodes.length,links:l24.links.length},status:"STRUCTURAL_PREVIEW_ONLY"};
+
 check("base unchanged",()=>assert.equal(JSON.stringify(base),before));
 }catch(e){report.checks.push({name:"execution",pass:false,detail:String(e.stack||e)});}
 report.pass=report.checks.filter(c=>c.pass).length;report.fail=report.checks.length-report.pass;report.status=report.fail?"FAIL":"PASS_STRUCTURAL_PREVIEW_NOT_GUI_CERTIFIED";
