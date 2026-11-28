@@ -1,3 +1,4 @@
+import {auditQ7B} from "./TEST_Q7B_LOTTO03_A420.mjs";
 import assert from "node:assert/strict";
 import {readFileSync,writeFileSync} from "node:fs";
 import {resolve,dirname} from "node:path";
@@ -111,6 +112,9 @@ for(const rootId of roots400)for(let depth=1;depth<=5;depth++)check("A400 projec
 check("A400 vocal family reaches all four works at depth 2",()=>{const ids=new Set(projectForViewer(a400,{rootId:preview03.taxonomy_node_proposals[0].id,depth:2}).nodes.map(n=>n.id));for(const n of ["8204","8205","8209","8756"])assert.ok(ids.has("flaminio_lot03::preview:work:"+n));});
 report.a400={nodes:a400.nodes.length,links:a400.links.length,added:added400.length,roots:roots400.length,redirected:a400.lot03_a400.redirected,status:"STRUCTURAL_PREVIEW_ONLY"};
 
+// A420: Q7B is a separate diagnostic; failures explicitly prevent GUI certification, not structural certification.
+try{report.q7b=auditQ7B(a400,preview03);report.q7b.status=report.q7b.fail?"BLOCKED_Q7B":"PASS_LOGIC_ONLY";}catch(e){report.q7b={status:"BLOCKED_Q7B_EXECUTION",error:String(e.stack||e)};}
+writeFileSync("flaminio-q7b-a420-report.json",JSON.stringify(report.q7b,null,2)+"\n");
 check("base unchanged",()=>assert.equal(JSON.stringify(base),before));
 }catch(e){report.checks.push({name:"execution",pass:false,detail:String(e.stack||e)});}
 report.pass=report.checks.filter(c=>c.pass).length;report.fail=report.checks.length-report.pass;report.status=report.fail?"FAIL":"PASS_STRUCTURAL_PREVIEW_NOT_GUI_CERTIFIED";
