@@ -506,6 +506,15 @@ function showAuditedContext(item){
  h.append(make("p","Nessuna equivalenza o trasmissione automatica del repertorio. Le fonti seguenti sono conservate dall'audit; non tutte sono state ricontrollate.","meta"));
  appendContextSources(h,r.original_urls,"Fonte originaria");
  appendContextSources(h,r.additional_urls,"Riferimento aggiuntivo");
+ if(r.q4_source_review){
+  const q=r.q4_source_review;
+  h.append(make("h2","Audit fonti Q4–Q4b"));
+  h.append(make("p",q.checkpoint==="Q4B_ACTUAL_WEB_REVIEW"?"Riscontro esterno Q4b":"Riscontro Q4 riportato, non ricontrollato in Q4b","meta"));
+  h.append(make("p",q.status==="PARTIAL_CONTEXT_SUPPORT"?"Riscontro parziale: "+q.finding:"Riscontro contestuale: "+q.finding,"reason"));
+  appendContextSources(h,q.review_urls,"Fonte del riscontro");
+  appendContextSources(h,q.node_urls,"URL presente nei nodi originali (non certificato per presenza)");
+  if(q.node_internal_urls.length)h.append(make("p","Rimandi editoriali interni (non collaudati): "+q.node_internal_urls.join(" · "),"meta"));
+ }
  if(!safeContextURLs(r.original_urls).length)h.append(make("p","Nessun URL registrato sull'arco originale.","meta"));
  const back=make("button","Torna alle relazioni di "+visibleTitle(r.root_id),"edgeItem");
  back.onclick=()=>{const n=state.db.nodes.find(n=>n.id===r.root_id);if(n)showNode(n)};h.append(back);
@@ -2260,7 +2269,7 @@ $("clearCategories").onclick=()=>{state.cats.clear();refreshToggles();draw()};
 try{
  const db=await loadFederatedDatabase();state.db=db;
  try{
-  const response=await fetch(new URL("./INDICE_CONSULTAZIONE_204_RESIDUI_2026-11-28.json",import.meta.url),{cache:"no-store"});
+  const response=await fetch(new URL("./INDICE_CONSULTAZIONE_204_CON_FONTI_Q4B_2026-11-28.json",import.meta.url),{cache:"no-store"});
   if(!response.ok)throw Error("HTTP "+response.status);
   auditedContextIndex=buildContextIndex(db,await response.json());
  }catch(error){auditedContextError=String(error.message||error);console.warn("Indice contestuale M3–P:",auditedContextError)}
