@@ -1,0 +1,70 @@
+{
+  "schema": "flaminio-lot03-preflight-v1",
+  "date": "2026-11-28",
+  "status": "LOCAL_RAW_PREPARED_REPOSITORY_IMPORT_BLOCKED",
+  "source": {
+    "file": "Musurgia_Atlantis_Flaminio_Explorer_52150.html",
+    "sha256": "254e388768e66ed52a7daa0dd8249645c0632a72c15cbd3fae61925ce87c84f0",
+    "rows": 52150,
+    "linked": 7412
+  },
+  "previous_lots": {
+    "method": "FNV-1a 32-bit over UTF-16 code units, original Excel row ID and eight source fields in position order, field separator U+001F, record separator U+001E. Screening checksum, not cryptographic proof.",
+    "lot1": {
+      "local": "8e86165b",
+      "remote": "8e86165b"
+    },
+    "lot2": {
+      "local": "c3c149f0",
+      "remote": "c3c149f0"
+    }
+  },
+  "new_lot": {
+    "positions": [
+      1001,
+      1500
+    ],
+    "excel_rows": [
+      6792,
+      8823
+    ],
+    "records": 500,
+    "previous_id_overlap": 0,
+    "previous_url_overlap": 0,
+    "authors": {
+      "Bononcini": 47,
+      "Borodin": 16,
+      "Bossi": 12,
+      "Bottesini": 17,
+      "Brahms": 305,
+      "Britten": 42,
+      "Bruch": 14,
+      "Bruckner": 24,
+      "Busoni": 23
+    },
+    "rubrics": 52,
+    "author_rubric_groups": 69,
+    "distinct_urls": 441,
+    "shared_url_groups": 10,
+    "rows_in_shared_url_groups": 69,
+    "flagged": 28,
+    "flags": {
+      "attribution": 2,
+      "incomplete": 3,
+      "number": 5,
+      "version": 22
+    },
+    "raw_sha256": "8bcd9788ad483dc491dc96e610423dfebf7af3261750b518fe67e4d3b539523f",
+    "triage_sha256": "74f084f32de77b8edfd7f725c29f158553505edddc1db916a74f028318807f2d",
+    "payload_location": "local working container only; not committed"
+  },
+  "gates": {
+    "lot2_disposition": "500/500 reconciled (16 A4 staging,398 candidates,16 references,70 holds)",
+    "remote_ci": "UNVERIFIED",
+    "full_baseline_rebuild": "BLOCKED tool-call limit and wrapper import.meta",
+    "index_gate": "BLOCKED tool-call limit or service disconnection",
+    "gui": "Static inspection only; actual specialized projection gate pending",
+    "production": "UNCHANGED"
+  },
+  "next": "Recover CI for exact head 10b84fc411381e9d7f53ac682bccf496f47d8bc5; run specialized projections; close Lot02 with explicit HOLD; only then commit Lot03 raw and documentary overlay."
+}
