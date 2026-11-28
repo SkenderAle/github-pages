@@ -1,0 +1,1953 @@
+{
+  "date": "2026-11-28",
+  "scope": "Audit Q4: 57 occorrenze prive di URL sull'arco originale",
+  "source_blobs": {
+    "register": "7280e0a5fc705d09d2f45bdcc932477ef72b7db9",
+    "mundi": "57c65e209628b0fe43d0d5040bd27deb7e1624c8",
+    "atlantis": "4863b3fe263154387de3388c0b813b5f94546f12"
+  },
+  "counts": {
+    "occurrences": 57,
+    "distinct_edges": 56,
+    "raw_endpoints_verified": 57,
+    "by_source_inventory": {
+      "INTERNAL_EDITORIAL_ONLY": 24,
+      "NODE_EXTERNAL_URL_PRESENT": 28,
+      "NO_ENDPOINT_URL": 5
+    },
+    "web_reviewed": 15,
+    "web_review_by_status": {
+      "NOT_RECHECKED": 42,
+      "CONTEXT_SUPPORT": 13,
+      "PARTIAL_CONTEXT_SUPPORT": 2
+    },
+    "remaining_web_review": 44
+  },
+  "limits": [
+    "URL estratti dai nodi originali: presenza non equivale a validazione. I nuovi riscontri derivano da risultati web consultati, non verifica HTTP di tutti gli URL.",
+    "Rimandi interni non verificati in browser; nessun cambiamento di qualità, proiezione, viewer o dati. Confronti non causali restano tali."
+  ],
+  "records": [
+    {
+      "root_id": "atlantis::senso:cantata",
+      "edge_id": "mundi::grafo::1208",
+      "root_name": "Cantata",
+      "other_name": "Barocco",
+      "raw_source": "barocco",
+      "raw_target": "genere-cantata",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "barocco",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": null
+        },
+        {
+          "id": "genere-cantata",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Genere vocale di storia plurale, sacra e profana, con articolazioni mutevoli dal Seicento ai secoli successivi."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:cantata",
+      "edge_id": "mundi::grafo::1209",
+      "root_name": "Cantata",
+      "other_name": "Oratorio e cantata nei salotti romani del primo Settecento",
+      "raw_source": "genere-cantata",
+      "raw_target": "musica-oratorio-romano-settecento",
+      "predicate": "contesto-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Relazione storica specifica secondo il predicato e la nota originali; non tassonomia o repertorio ereditato.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-cantata",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Genere vocale di storia plurale, sacra e profana, con articolazioni mutevoli dal Seicento ai secoli successivi."
+        },
+        {
+          "id": "musica-oratorio-romano-settecento",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/antonio-caldara_%28Dizionario-Biografico%29/"
+          ],
+          "internal_url": null,
+          "description": "Reti di patronage cardinalizio e aristocratico romano, come quelle di Pietro Ottoboni e Francesco Maria Ruspoli: cantate, oratori, concerti e scambi fra compositori di provenienza diversa."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://www.treccani.it/enciclopedia/antonio-caldara_%28Dizionario-Biografico%29/",
+          "https://journals.phil.muni.cz/musicologica-brunensia/article/view/23783"
+        ],
+        "finding": "Caldara a Roma, cantate e oratori presso Ottoboni e Ruspoli; non tutte le cantate sono romane.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:lied",
+      "edge_id": "mundi::grafo::1223",
+      "root_name": "Lied",
+      "other_name": "Lied romantico tedesco",
+      "raw_source": "genere-lied",
+      "raw_target": "tradizione-lied-romantico",
+      "predicate": "contesto-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Relazione storica specifica secondo il predicato e la nota originali; non tassonomia o repertorio ereditato.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-lied",
+          "external_urls": [],
+          "internal_url": "../romanticismo/",
+          "description": "Genere di canto poetico in lingua tedesca, con storia anteriore e successiva al Lied romantico per voce e pianoforte."
+        },
+        {
+          "id": "tradizione-lied-romantico",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/germania/"
+          ],
+          "internal_url": null,
+          "description": "Lied per voce e pianoforte nell'Ottocento, da Schubert e Schumann a Brahms e Wolf, con molte compositrici: il ruolo del poema e l'autonomia dell'accompagnamento."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:lied",
+      "edge_id": "mundi::grafo::1224",
+      "root_name": "Lied",
+      "other_name": "Lied tedesco su testi di Eduard Mörike",
+      "raw_source": "genere-lied",
+      "raw_target": "lied-su-poesia-morike",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Repertorio liederistico su testi di Mörike: non singola opera e non sottogenere.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-lied",
+          "external_urls": [],
+          "internal_url": "../romanticismo/",
+          "description": "Genere di canto poetico in lingua tedesca, con storia anteriore e successiva al Lied romantico per voce e pianoforte."
+        },
+        {
+          "id": "lied-su-poesia-morike",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/hugo-wolf/"
+          ],
+          "internal_url": null,
+          "description": "Messa in musica di testi del poeta Eduard Mörike da parte di Hugo Wolf, all’interno del suo corpus liederistico di fine Ottocento."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://imslp.org/wiki/M%C3%B6rike-Lieder_%28Wolf%2C_Hugo%29"
+        ],
+        "finding": "Catalogo delle 53 liriche su Mörike di Wolf: esempio di repertorio, non unico Lied.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:lied",
+      "edge_id": "mundi::grafo::1222",
+      "root_name": "Lied",
+      "other_name": "Romanticismo",
+      "raw_source": "romanticismo",
+      "raw_target": "genere-lied",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "romanticismo",
+          "external_urls": [],
+          "internal_url": "../romanticismo/",
+          "description": null
+        },
+        {
+          "id": "genere-lied",
+          "external_urls": [],
+          "internal_url": "../romanticismo/",
+          "description": "Genere di canto poetico in lingua tedesca, con storia anteriore e successiva al Lied romantico per voce e pianoforte."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:madrigale",
+      "edge_id": "mundi::grafo::1967",
+      "root_name": "Madrigale",
+      "other_name": "Madrigale profano dell’Ars nova italiana · primo Trecento",
+      "raw_source": "madrigale",
+      "raw_target": "madrigale-ars-nova-primo-trecento",
+      "predicate": "omonimia-di-generi-storici",
+      "quality": "non_certificato",
+      "reason": "Madrigale trecentesco e madrigale cinquecentesco: tradizioni distinte, non fusione.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "madrigale",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Polifonia profana fra Trecento e Cinquecento: un nome condiviso da tradizioni storicamente differenti, unite dal rapporto fra poesia e musica."
+        },
+        {
+          "id": "madrigale-ars-nova-primo-trecento",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/jacopo-da-bologna_%28Dizionario-Biografico%29/"
+          ],
+          "internal_url": null,
+          "description": "Madrigale italiano a due o tre voci sviluppato nelle corti del Trecento, distinto dal madrigale rinascimentale del Cinquecento."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:madrigale",
+      "edge_id": "mundi::grafo::346",
+      "root_name": "Madrigale",
+      "other_name": "Rinascimento",
+      "raw_source": "rinascimento",
+      "raw_target": "madrigale",
+      "predicate": "connessione-storico-artistica",
+      "quality": "non_certificato",
+      "reason": "Relazione storica specifica secondo il predicato e la nota originali; non tassonomia o repertorio ereditato.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "rinascimento",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": null
+        },
+        {
+          "id": "madrigale",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Polifonia profana fra Trecento e Cinquecento: un nome condiviso da tradizioni storicamente differenti, unite dal rapporto fra poesia e musica."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://publishing.cdlib.org/ucpressebooks/public/book/city-culture-and-the-madrigal-at-venice.html"
+        ],
+        "finding": "Riscontro sul madrigale veneziano cinquecentesco, non delimitazione assoluta del genere.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:madrigale",
+      "edge_id": "mundi::grafo::415",
+      "root_name": "Madrigale",
+      "other_name": "Scuola franco-fiamminga",
+      "raw_source": "scuola-fiamminga",
+      "raw_target": "madrigale",
+      "predicate": "influenza-musicale",
+      "quality": "non_certificato",
+      "reason": "Relazione storica specifica secondo il predicato e la nota originali; non tassonomia o repertorio ereditato.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "scuola-fiamminga",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/fiammingo/"
+          ],
+          "internal_url": "../rinascimento/",
+          "description": "Tradizione internazionale di polifonia vocale tra Quattrocento e Cinquecento, irradiata dai territori borgognoni e dai Paesi Bassi. Da Dufay e Ockeghem a Josquin, Obrecht, Willaert e Orlando di Lasso, sviluppa un contrappunto che circola in tutta Europa."
+        },
+        {
+          "id": "madrigale",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Polifonia profana fra Trecento e Cinquecento: un nome condiviso da tradizioni storicamente differenti, unite dal rapporto fra poesia e musica."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://publishing.cdlib.org/ucpressebooks/public/book/city-culture-and-the-madrigal-at-venice.html"
+        ],
+        "finding": "Willaert e Rore, compositori dei Paesi Bassi attivi a Venezia; contributo della polifonia settentrionale, non causalità universale.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:madrigale",
+      "edge_id": "mundi::grafo::414",
+      "root_name": "Madrigale",
+      "other_name": "Scuola veneziana",
+      "raw_source": "scuola-veneziana",
+      "raw_target": "madrigale",
+      "predicate": "repertorio-e-tradizione",
+      "quality": "non_certificato",
+      "reason": "Relazione storica specifica secondo il predicato e la nota originali; non tassonomia o repertorio ereditato.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "scuola-veneziana",
+          "external_urls": [
+            "https://en.wikipedia.org/wiki/Venetian_School_%28music%29",
+            "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Gabrieli%2C_Giovanni"
+          ],
+          "internal_url": "../rinascimento/",
+          "description": "Ambiente musicale rinascimentale di San Marco, dalla guida di Willaert alla scrittura policorale e al dialogo tra voci e strumenti con Andrea e Giovanni Gabrieli, Merulo e altri maestri. Un tramite fondamentale verso il primo Barocco e la musica protestante tedesca."
+        },
+        {
+          "id": "madrigale",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Polifonia profana fra Trecento e Cinquecento: un nome condiviso da tradizioni storicamente differenti, unite dal rapporto fra poesia e musica."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://publishing.cdlib.org/ucpressebooks/public/book/city-culture-and-the-madrigal-at-venice.html"
+        ],
+        "finding": "Studio monografico sul madrigale veneziano, Willaert e Rore.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:musical",
+      "edge_id": "atlantis::grafo::E0956",
+      "root_name": "Musical",
+      "other_name": "Jazz e improvvisazione",
+      "raw_source": "senso:jazz",
+      "raw_target": "senso:musical",
+      "predicate": "confronto_non_causale",
+      "quality": "confronto_non_causale",
+      "reason": "Accostamento fra categorie distinte, senza inferire identità, influenza o ereditarietà.",
+      "source_inventory": "NO_ENDPOINT_URL",
+      "source_nodes": [
+        {
+          "id": "senso:jazz",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        },
+        {
+          "id": "senso:musical",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/",
+          "https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/popular-songs-of-the-day/jazz/"
+        ],
+        "finding": "Il jazz influenza Broadway e l'improvvisazione può caratterizzare l'esecuzione jazz; non proprietà necessaria del musical.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:operetta",
+      "edge_id": "atlantis::grafo::E0952",
+      "root_name": "Operetta",
+      "other_name": "Opera",
+      "raw_source": "senso:operetta",
+      "raw_target": "senso:opera",
+      "predicate": "confronto_non_causale",
+      "quality": "confronto_non_causale",
+      "reason": "Accostamento fra categorie distinte, senza inferire identità, influenza o ereditarietà.",
+      "source_inventory": "NO_ENDPOINT_URL",
+      "source_nodes": [
+        {
+          "id": "senso:operetta",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        },
+        {
+          "id": "senso:opera",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://explore.lib.virginia.edu/exhibits/show/theatre/musicals",
+          "https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/"
+        ],
+        "finding": "Opera e operetta come forme distinte di teatro musicale; fonti generali, non prova specifica della parodia di Offenbach.",
+        "status": "PARTIAL_CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:operetta",
+      "edge_id": "atlantis::grafo::E0953",
+      "root_name": "Operetta",
+      "other_name": "Vaudeville, varietà e rivista",
+      "raw_source": "senso:operetta",
+      "raw_target": "senso:vaudeville",
+      "predicate": "confronto_non_causale",
+      "quality": "confronto_non_causale",
+      "reason": "Accostamento fra categorie distinte, senza inferire identità, influenza o ereditarietà.",
+      "source_inventory": "NO_ENDPOINT_URL",
+      "source_nodes": [
+        {
+          "id": "senso:operetta",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        },
+        {
+          "id": "senso:vaudeville",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://explore.lib.virginia.edu/exhibits/show/theatre/musicals",
+          "https://www.loc.gov/collections/songs-of-america/articles-and-essays/musical-styles/parlor-and-concert-stage/musicals/"
+        ],
+        "finding": "Coesistenza e distinzione delle forme teatrali; non relazione di discendenza necessaria.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:oratorio",
+      "edge_id": "mundi::grafo::1210",
+      "root_name": "Oratorio",
+      "other_name": "Barocco",
+      "raw_source": "barocco",
+      "raw_target": "genere-oratorio",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "barocco",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": null
+        },
+        {
+          "id": "genere-oratorio",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Genere vocale prevalentemente sacro e narrativo-drammatico, sviluppato in tradizioni storiche e linguistiche differenti."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:oratorio",
+      "edge_id": "mundi::grafo::1211",
+      "root_name": "Oratorio",
+      "other_name": "Classicismo",
+      "raw_source": "classicismo",
+      "raw_target": "genere-oratorio",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "classicismo",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": null
+        },
+        {
+          "id": "genere-oratorio",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Genere vocale prevalentemente sacro e narrativo-drammatico, sviluppato in tradizioni storiche e linguistiche differenti."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:oratorio",
+      "edge_id": "mundi::grafo::1213",
+      "root_name": "Oratorio",
+      "other_name": "Dialogo spirituale e oratorio in volgare nel Seicento",
+      "raw_source": "genere-oratorio",
+      "raw_target": "oratorio-drammatico-volgare-seicento",
+      "predicate": "articolazione-del-genere",
+      "quality": "non_certificato",
+      "reason": "Dialogo spirituale e oratorio volgare: contiguità storica, non equivalenza di tutte le forme dialogiche.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-oratorio",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Genere vocale prevalentemente sacro e narrativo-drammatico, sviluppato in tradizioni storiche e linguistiche differenti."
+        },
+        {
+          "id": "oratorio-drammatico-volgare-seicento",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/giovanni-francesco-anerio_%28Dizionario-Biografico%29/"
+          ],
+          "internal_url": null,
+          "description": "Dalla lauda e dal dialogo spirituale a una narrazione musicata, con testimonianza importante del Teatro armonico spirituale di Giovanni Francesco Anerio del 1619."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:oratorio",
+      "edge_id": "mundi::grafo::1214",
+      "root_name": "Oratorio",
+      "other_name": "Hora novissima · oratorio di Horatio Parker (1893)",
+      "raw_source": "genere-oratorio",
+      "raw_target": "oratorio-parker-hora-novissima-1893",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Scheda relativa a Hora novissima, non opera autonoma aggiuntiva.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-oratorio",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Genere vocale prevalentemente sacro e narrativo-drammatico, sviluppato in tradizioni storiche e linguistiche differenti."
+        },
+        {
+          "id": "oratorio-parker-hora-novissima-1893",
+          "external_urls": [
+            "https://onlineexhibits.library.yale.edu/s/stoeckel/page/hp"
+          ],
+          "internal_url": null,
+          "description": "Nodo di repertorio, prassi o istituzione: Yale documenta la prima di Hora novissima a New York nel 1893, su versi latini di Bernardo di Cluny. Questa è produzione musicale concreta oltre all'insegnamento di Parker a Ives."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:oratorio",
+      "edge_id": "mundi::grafo::1215",
+      "root_name": "Oratorio",
+      "other_name": "Jeanne d’Arc au bûcher · oratorio drammatico novecentesco",
+      "raw_source": "genere-oratorio",
+      "raw_target": "jeanne-au-bucher-oratorio-drammatico",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Scheda relativa all'oratorio drammatico di Honegger, non opera autonoma aggiuntiva.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-oratorio",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Genere vocale prevalentemente sacro e narrativo-drammatico, sviluppato in tradizioni storiche e linguistiche differenti."
+        },
+        {
+          "id": "jeanne-au-bucher-oratorio-drammatico",
+          "external_urls": [
+            "https://societe.paul-claudel.net/oeuvre/jeanne-darc-au-bucher/"
+          ],
+          "internal_url": null,
+          "description": "Mistero drammatico con parola recitata, solisti, coro e orchestra, composto nel 1935 da Honegger sul testo di Claudel."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:oratorio",
+      "edge_id": "mundi::grafo::1212",
+      "root_name": "Oratorio",
+      "other_name": "Oratorio inglese del Settecento",
+      "raw_source": "genere-oratorio",
+      "raw_target": "oratorio-inglese-handeliano",
+      "predicate": "articolazione-del-genere",
+      "quality": "non_certificato",
+      "reason": "Tradizione inglese settecentesca, non sinonimo universale di oratorio.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-oratorio",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Genere vocale prevalentemente sacro e narrativo-drammatico, sviluppato in tradizioni storiche e linguistiche differenti."
+        },
+        {
+          "id": "oratorio-inglese-handeliano",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/georg-friedrich-handel/"
+          ],
+          "internal_url": null,
+          "description": "Trasformazione dell'oratorio di tradizione italiana nel contesto londinese, con Handel e la pratica dei concerti pubblici, coro e drammaturgia senza scena."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:ricercare",
+      "edge_id": "mundi::grafo::1242",
+      "root_name": "Ricercare",
+      "other_name": "Ricercare strumentale imitativo del Cinquecento",
+      "raw_source": "forma-ricercare",
+      "raw_target": "ricercare-contrappuntistico-cinquecento",
+      "predicate": "articolazione-del-genere",
+      "quality": "non_certificato",
+      "reason": "Ricercare strumentale imitativo come pratica storica; non definizione esaustiva.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "forma-ricercare",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Famiglia storica di forme strumentali, in particolare del Rinascimento e primo Barocco, con pratiche imitative e non imitative."
+        },
+        {
+          "id": "ricercare-contrappuntistico-cinquecento",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/ricercare_%28Enciclopedia-Italiana%29/"
+          ],
+          "internal_url": null,
+          "description": "Genere strumentale di elaborazione imitativa che trovò sviluppo nei ricercari di Andrea Gabrieli, pubblicati dal nipote Giovanni nel 1595."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:ricercare",
+      "edge_id": "mundi::grafo::1241",
+      "root_name": "Ricercare",
+      "other_name": "Rinascimento",
+      "raw_source": "rinascimento",
+      "raw_target": "forma-ricercare",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "rinascimento",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": null
+        },
+        {
+          "id": "forma-ricercare",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Famiglia storica di forme strumentali, in particolare del Rinascimento e primo Barocco, con pratiche imitative e non imitative."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1171",
+      "root_name": "Sinfonia",
+      "other_name": "Classicismo",
+      "raw_source": "classicismo",
+      "raw_target": "genere-sinfonia",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "classicismo",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": null
+        },
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://web.stanford.edu/~shinton/symphony.html"
+        ],
+        "finding": "Rapido sviluppo settecentesco della sinfonia, non nascita esclusiva nel Classicismo.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1194",
+      "root_name": "Sinfonia",
+      "other_name": "Florence Price · Prima sinfonia a Chicago (1933)",
+      "raw_source": "genere-sinfonia",
+      "raw_target": "price-prima-sinfonia-chicago-1933",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Prima sinfonia di Price e circostanza esecutiva Chicago 1933: distinguere opera ed evento.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        },
+        {
+          "id": "price-prima-sinfonia-chicago-1933",
+          "external_urls": [
+            "https://chicagosymphony.org/inside-the-music/article/17666/florence-prices-symphony-no-1"
+          ],
+          "internal_url": null,
+          "description": "La Prima sinfonia di Florence Price fu eseguita dalla Chicago Symphony Orchestra nel 1933, nell’ambiente del Black Chicago Renaissance; il nodo registra il contributo sinfonico e l’esecuzione storica senza inventare una scuola compositiva."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "atlantis::grafo::E0932",
+      "root_name": "Sinfonia",
+      "other_name": "Musica a programma e narrazione strumentale",
+      "raw_source": "senso:sinfonia",
+      "raw_target": "senso:musica-programma",
+      "predicate": "confronto_non_causale",
+      "quality": "confronto_non_causale",
+      "reason": "Accostamento fra categorie distinte, senza inferire identità, influenza o ereditarietà.",
+      "source_inventory": "NO_ENDPOINT_URL",
+      "source_nodes": [
+        {
+          "id": "senso:sinfonia",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        },
+        {
+          "id": "senso:musica-programma",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://ocw.mit.edu/courses/21m-011-introduction-to-western-music-fall-2024/pages/week-9-lecture-9-continental-europe-in-the-19th-century-music-and-storytelling/",
+          "https://courses.lumenlearning.com/vccs-tcc-music-rford/chapter/program-symphony/"
+        ],
+        "finding": "Symphonie fantastique come sinfonia a programma; non tutte le sinfonie sono programmatiche.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "atlantis::grafo::E0931",
+      "root_name": "Sinfonia",
+      "other_name": "Musica assoluta e autonomia delle forme",
+      "raw_source": "senso:sinfonia",
+      "raw_target": "senso:musica-assoluta",
+      "predicate": "confronto_non_causale",
+      "quality": "confronto_non_causale",
+      "reason": "Accostamento fra categorie distinte, senza inferire identità, influenza o ereditarietà.",
+      "source_inventory": "NO_ENDPOINT_URL",
+      "source_nodes": [
+        {
+          "id": "senso:sinfonia",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        },
+        {
+          "id": "senso:musica-assoluta",
+          "external_urls": [],
+          "internal_url": null,
+          "description": null
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://courses.lumenlearning.com/vccs-tcc-music-rford/chapter/program-symphony/",
+          "https://ocw.mit.edu/courses/21m-011-introduction-to-western-music-fall-2024/pages/week-9-lecture-9-continental-europe-in-the-19th-century-music-and-storytelling/"
+        ],
+        "finding": "Distinzione musica assoluta e programmatica; confronto didattico non causale.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1173",
+      "root_name": "Sinfonia",
+      "other_name": "Post-romanticismo",
+      "raw_source": "post-romanticismo",
+      "raw_target": "genere-sinfonia",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "post-romanticismo",
+          "external_urls": [],
+          "internal_url": "../post-romanticismo/",
+          "description": null
+        },
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://oyc.yale.edu/music/musi-112/lecture-20"
+        ],
+        "finding": "Mahler e ampliamento sinfonico; riscontro parziale, periodizzazione post-romantica non definita dalla fonte.",
+        "status": "PARTIAL_CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1172",
+      "root_name": "Sinfonia",
+      "other_name": "Romanticismo",
+      "raw_source": "romanticismo",
+      "raw_target": "genere-sinfonia",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "romanticismo",
+          "external_urls": [],
+          "internal_url": "../romanticismo/",
+          "description": null
+        },
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://oyc.yale.edu/music/musi-112/lecture-20"
+        ],
+        "finding": "Sviluppo ottocentesco della sinfonia da Mozart a Mahler.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1192",
+      "root_name": "Sinfonia",
+      "other_name": "Settima sinfonia di Šostakovič · esecuzione a Leningrado 1942",
+      "raw_source": "genere-sinfonia",
+      "raw_target": "sinfonia-leningrado-1942-esecuzione",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Esecuzione della Settima a Leningrado 1942: evento distinto dalla composizione.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        },
+        {
+          "id": "sinfonia-leningrado-1942-esecuzione",
+          "external_urls": [
+            "https://shostakovich-en.ru/152en"
+          ],
+          "internal_url": null,
+          "description": "Sinfonia n. 7 op. 60, dedicata alla città assediata, eseguita a Leningrado il 9 agosto 1942 da un’orchestra ricostituita sotto Karl Eliasberg."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1193",
+      "root_name": "Sinfonia",
+      "other_name": "Sinfonia dei canti dolorosi · Górecki 1976",
+      "raw_source": "genere-sinfonia",
+      "raw_target": "sinfonia-canti-dolenti-gorecki-1976",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Scheda sulla Terza sinfonia di Górecki, non opera autonoma aggiuntiva.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        },
+        {
+          "id": "sinfonia-canti-dolenti-gorecki-1976",
+          "external_urls": [
+            "https://polmic.pl/en/encyclopedia/subject-entries/g/gorecki-henryk-mikolaj-en"
+          ],
+          "internal_url": null,
+          "description": "Terza sinfonia op. 36 per soprano e orchestra di Henryk Górecki, composta nel 1976 e rappresentativa della sua fase di scrittura lenta e lirica."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1181",
+      "root_name": "Sinfonia",
+      "other_name": "Sinfonismo italiano del primo Settecento",
+      "raw_source": "genere-sinfonia",
+      "raw_target": "sinfonismo-italiano-settecento",
+      "predicate": "contesto-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Relazione storica specifica secondo il predicato e la nota originali; non tassonomia o repertorio ereditato.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        },
+        {
+          "id": "sinfonismo-italiano-settecento",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/sinfonia_%28Enciclopedia-Italiana%29/"
+          ],
+          "internal_url": null,
+          "description": "Sviluppo della sinfonia strumentale italiana prima e parallelamente a Mannheim, con un ruolo significativo del milanese Sammartini; genealogia non riducibile a una sola invenzione."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1191",
+      "root_name": "Sinfonia",
+      "other_name": "Sinfonismo romantico francese · Louise Farrenc",
+      "raw_source": "genere-sinfonia",
+      "raw_target": "sinfonismo-francese-farrenc-1849",
+      "predicate": "contesto-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Relazione storica specifica secondo il predicato e la nota originali; non tassonomia o repertorio ereditato.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        },
+        {
+          "id": "sinfonismo-francese-farrenc-1849",
+          "external_urls": [
+            "https://www.bruzanemediabase.com/en/exploration/works/symphony-no-3-g-minor-louise-farrenc"
+          ],
+          "internal_url": null,
+          "description": "Terza sinfonia di Louise Farrenc, completata nel 1847 ed eseguita dalla Société des concerts du Conservatoire il 22 aprile 1849, prova concreta di affermazione femminile nel genere."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "atlantis::senso:sinfonia",
+      "edge_id": "mundi::grafo::1182",
+      "root_name": "Sinfonia",
+      "other_name": "Sinfonismo tardo-romantico",
+      "raw_source": "genere-sinfonia",
+      "raw_target": "sinfonismo-tardoromantico",
+      "predicate": "contesto-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Relazione storica specifica secondo il predicato e la nota originali; non tassonomia o repertorio ereditato.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-sinfonia",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Genere orchestrale sviluppatosi in forme diverse tra Settecento, Ottocento e Novecento; non coincidente con l'intero sinfonismo né con il poema sinfonico."
+        },
+        {
+          "id": "sinfonismo-tardoromantico",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/storia-della-musica/"
+          ],
+          "internal_url": null,
+          "description": "Eredità della forma sinfonica nel tardo Ottocento fra Brahms, Bruckner e Mahler, con scelte compositive molto differenti."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::forma-sonata-viola-novecento",
+      "edge_id": "mundi::grafo::1188",
+      "root_name": "Sonata per viola nel Novecento",
+      "other_name": "Sonata",
+      "raw_source": "genere-sonata",
+      "raw_target": "forma-sonata-viola-novecento",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Sonata per viola nel Novecento è un perimetro d'organico e cronologia, non singola opera; predicato esempio da precisare prima dell'attivazione.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-sonata",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/la-forma-sonata_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/",
+            "https://www.treccani.it/enciclopedia/sonata/"
+          ],
+          "internal_url": "../classicismo/",
+          "description": "Genere strumentale dalle molte trasformazioni storiche, dalla sonata barocca alla sonata classica e romantica. La forma-sonata è invece l'architettura di un movimento, spesso con esposizione, sviluppo e ripresa: si usa anche nelle sinfonie, nei concerti e nei quartetti, e non costituisce qui un genere o un nodo autonomo."
+        },
+        {
+          "id": "forma-sonata-viola-novecento",
+          "external_urls": [],
+          "internal_url": null,
+          "description": "Categoria formale. Non implica scuola o rapporto interpersonale."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://www.schott-music.com/en/sonata-noc33645.html"
+        ],
+        "finding": "Sonata di Hindemith 1938/39: esempio concreto di sonata per viola nel Novecento, non singola opera equivalente alla categoria.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::forma-suite-orchestrale-novecento",
+      "edge_id": "mundi::grafo::1102",
+      "root_name": "Suite orchestrale novecentesca",
+      "other_name": "Novecento",
+      "raw_source": "forma-suite-orchestrale-novecento",
+      "raw_target": "novecento",
+      "predicate": "collocazione-storico-formale",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "forma-suite-orchestrale-novecento",
+          "external_urls": [],
+          "internal_url": null,
+          "description": "Categoria formale. Non implica scuola o rapporto interpersonale."
+        },
+        {
+          "id": "novecento",
+          "external_urls": [],
+          "internal_url": "../post-romanticismo/#colori",
+          "description": null
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::forma-suite-orchestrale-novecento",
+      "edge_id": "mundi::grafo::1179",
+      "root_name": "Suite orchestrale novecentesca",
+      "other_name": "Suite",
+      "raw_source": "genere-suite",
+      "raw_target": "forma-suite-orchestrale-novecento",
+      "predicate": "articolazione-del-genere",
+      "quality": "non_certificato",
+      "reason": "Suite orchestrale novecentesca, tipologia d'organico e periodo; unico arco, due radici; nessun trasferimento automatico del repertorio.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "genere-suite",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive."
+        },
+        {
+          "id": "forma-suite-orchestrale-novecento",
+          "external_urls": [],
+          "internal_url": null,
+          "description": "Categoria formale. Non implica scuola o rapporto interpersonale."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-suite",
+      "edge_id": "mundi::grafo::1198",
+      "root_name": "Suite",
+      "other_name": "Antiche arie e danze · trascrizioni di Respighi",
+      "raw_source": "genere-suite",
+      "raw_target": "antiche-arie-danze-respighi-1917",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Antiche arie e danze: distinguere le suite orchestrali di Respighi dalle fonti antiche e dalle trascrizioni.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-suite",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive."
+        },
+        {
+          "id": "antiche-arie-danze-respighi-1917",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/ottorino-respighi_%28Dizionario-Biografico%29/"
+          ],
+          "internal_url": null,
+          "description": "La prima serie delle Antiche arie e danze per liuto di Respighi, eseguita nel 1917, rielabora musiche antiche di Molinaro, Vincenzo Galilei e anonimi; Treccani documenta una ricezione di fonti rinascimentali e non un rapporto personale impossibile."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-suite",
+      "edge_id": "mundi::grafo::1180",
+      "root_name": "Suite",
+      "other_name": "Banchetto musicale e raccolte di suite di danze nel Seicento",
+      "raw_source": "genere-suite",
+      "raw_target": "suite-danze-banchetto-musicale",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Banchetto musicale di Schein e raccolte di danze: distinguere raccolta, suite interne e contesto.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-suite",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive."
+        },
+        {
+          "id": "suite-danze-banchetto-musicale",
+          "external_urls": [
+            "https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648/johann-hermann-schein-suite-no-2-from-banchetto-musicale-1617"
+          ],
+          "internal_url": null,
+          "description": "Raccolte di danze a più voci e per occasioni conviviali, testimoniate dal Banchetto musicale di Johann Hermann Schein (1617)."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-suite",
+      "edge_id": "mundi::grafo::1174",
+      "root_name": "Suite",
+      "other_name": "Barocco",
+      "raw_source": "barocco",
+      "raw_target": "genere-suite",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "barocco",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": null
+        },
+        {
+          "id": "genere-suite",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-suite",
+      "edge_id": "mundi::grafo::1197",
+      "root_name": "Suite",
+      "other_name": "Grand Canyon Suite · paesaggio orchestrale (1931)",
+      "raw_source": "genere-suite",
+      "raw_target": "suite-paesaggistica-grand-canyon-grofe",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Grand Canyon Suite: esempio di suite orchestrale, scheda non duplicato dell'opera.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-suite",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive."
+        },
+        {
+          "id": "suite-paesaggistica-grand-canyon-grofe",
+          "external_urls": [
+            "https://archives.nyphil.org/index.php/artifact/ec06c8d7-3935-4439-9429-8eda43139b29-0.1/fullview"
+          ],
+          "internal_url": null,
+          "description": "Nodo di repertorio, prassi o istituzione: Gli archivi della New York Philharmonic conservano materiali di Grand Canyon Suite di Ferde Grofé, testimonianza verificabile della sua scrittura orchestrale di paesaggio."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-suite",
+      "edge_id": "mundi::grafo::1175",
+      "root_name": "Suite",
+      "other_name": "Novecento",
+      "raw_source": "novecento",
+      "raw_target": "genere-suite",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "novecento",
+          "external_urls": [],
+          "internal_url": "../post-romanticismo/#colori",
+          "description": null
+        },
+        {
+          "id": "genere-suite",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-suite",
+      "edge_id": "mundi::grafo::1179",
+      "root_name": "Suite",
+      "other_name": "Suite orchestrale novecentesca",
+      "raw_source": "genere-suite",
+      "raw_target": "forma-suite-orchestrale-novecento",
+      "predicate": "articolazione-del-genere",
+      "quality": "non_certificato",
+      "reason": "Suite orchestrale novecentesca, tipologia d'organico e periodo; unico arco, due radici; nessun trasferimento automatico del repertorio.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "genere-suite",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive."
+        },
+        {
+          "id": "forma-suite-orchestrale-novecento",
+          "external_urls": [],
+          "internal_url": null,
+          "description": "Categoria formale. Non implica scuola o rapporto interpersonale."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-suite",
+      "edge_id": "mundi::grafo::1196",
+      "root_name": "Suite",
+      "other_name": "Suites per tastiera · recezione dei modelli francesi in Froberger",
+      "raw_source": "genere-suite",
+      "raw_target": "suite-tastiera-froberger-francese",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Ricezione di modelli francesi nelle suite per tastiera di Froberger, non singola opera.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-suite",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Famiglia di composizioni organizzate in successioni di movimenti o pezzi, dalla suite di danze barocca alle suite orchestrali di epoche successive."
+        },
+        {
+          "id": "suite-tastiera-froberger-francese",
+          "external_urls": [
+            "https://www.deutsche-biographie.de/sfz17730.html"
+          ],
+          "internal_url": null,
+          "description": "Nodo di repertorio, prassi o istituzione: Le suite per tastiera di Froberger attingono alla cultura francese; la Deutsche Biographie mette in guardia dall'imporre agli autografi l'ordine delle danze di edizioni posteriori."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-messa",
+      "edge_id": "mundi::grafo::1217",
+      "root_name": "Messa",
+      "other_name": "Barocco",
+      "raw_source": "barocco",
+      "raw_target": "genere-messa",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "barocco",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": null
+        },
+        {
+          "id": "genere-messa",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere di composizione liturgica sui testi dell'Ordinario della messa; distinguere la messa polifonica dalle singole realizzazioni."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-messa",
+      "edge_id": "mundi::grafo::1219",
+      "root_name": "Messa",
+      "other_name": "Messa parafrasi · Missa Pange lingua",
+      "raw_source": "genere-messa",
+      "raw_target": "messa-parafrasi-pange-lingua",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Missa Pange lingua come esempio di tecnica parafrastica; distinguere tecnica e opera.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-messa",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere di composizione liturgica sui testi dell'Ordinario della messa; distinguere la messa polifonica dalle singole realizzazioni."
+        },
+        {
+          "id": "messa-parafrasi-pange-lingua",
+          "external_urls": [
+            "https://imslp.org/wiki/Missa_Pange_lingua_%28Josquin_Desprez%29"
+          ],
+          "internal_url": null,
+          "description": "La Missa Pange lingua, in quattro voci, elabora l’inno Pange lingua; la fonte catalografica collega esplicitamente l’opera all’inno, esemplificando il processo di parafrasi polifonica, non la composizione originale della melodia liturgica."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-messa",
+      "edge_id": "mundi::grafo::1218",
+      "root_name": "Messa",
+      "other_name": "Messa polifonica in ciclo d’autore nel Trecento",
+      "raw_source": "genere-messa",
+      "raw_target": "messa-polifonica-ciclo-unitario-medievale",
+      "predicate": "articolazione-del-genere",
+      "quality": "non_certificato",
+      "reason": "Ciclo polifonico d'autore medievale, non tutte le messe polifoniche né una nuova opera.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-messa",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere di composizione liturgica sui testi dell'Ordinario della messa; distinguere la messa polifonica dalle singole realizzazioni."
+        },
+        {
+          "id": "messa-polifonica-ciclo-unitario-medievale",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/guillaume-de-machaut/"
+          ],
+          "internal_url": null,
+          "description": "Ciclo polifonico dei movimenti dell’ordinario della messa attribuito unitariamente a uno stesso compositore, testimoniato dalla Messe de Nostre Dame di Machaut."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-messa",
+      "edge_id": "mundi::grafo::1221",
+      "root_name": "Messa",
+      "other_name": "Missa Maria zart · Obrecht e il cantus firmus",
+      "raw_source": "genere-messa",
+      "raw_target": "missa-maria-zart-obrecht",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Missa Maria zart di Obrecht e uso del cantus firmus, distinguere tecnica e opera.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-messa",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere di composizione liturgica sui testi dell'Ordinario della messa; distinguere la messa polifonica dalle singole realizzazioni."
+        },
+        {
+          "id": "missa-maria-zart-obrecht",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/i-fiamminghi-nelle-corti-e-nelle-cappelle-le-prime-generazioni-di-compositori_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+          ],
+          "internal_url": null,
+          "description": "La Missa Maria zart di Jacob Obrecht rielabora un canto mariano: nella ricostruzione Treccani, il cantus firmus compare per intero nell’Agnus Dei mentre gli altri movimenti ne impiegano segmenti."
+        }
+      ],
+      "web_review": {
+        "urls": [
+          "https://www.treccani.it/enciclopedia/i-fiamminghi-nelle-corti-e-nelle-cappelle-le-prime-generazioni-di-compositori_%28Storia-della-civilt%C3%A0-europea-a-cura-di-Umberto-Eco%29/"
+        ],
+        "finding": "La fonte esplicita il cantus firmus della Missa Maria zart e il trattamento segmentale.",
+        "status": "CONTEXT_SUPPORT"
+      },
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-messa",
+      "edge_id": "mundi::grafo::1220",
+      "root_name": "Messa",
+      "other_name": "Missa Papae Marcelli · polifonia e leggenda tridentina",
+      "raw_source": "genere-messa",
+      "raw_target": "missa-papae-marcelli-palestrina",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Missa Papae Marcelli: distinguere opera e leggenda tridentina; non trattare la leggenda come causa verificata.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-messa",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere di composizione liturgica sui testi dell'Ordinario della messa; distinguere la messa polifonica dalle singole realizzazioni."
+        },
+        {
+          "id": "missa-papae-marcelli-palestrina",
+          "external_urls": [
+            "https://www.treccani.it/enciclopedia/pierluigi-da-palestrina-giovanni-detto-anche-il-palestrina_%28Dizionario-Biografico%29/"
+          ],
+          "internal_url": null,
+          "description": "La Missa Papae Marcelli è attestata nel manoscritto della Cappella Sistina intorno al 1564 e a stampa nel 1567; il mito della salvezza della polifonia al Concilio di Trento non costituisce un fatto storico da attribuirle."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-messa",
+      "edge_id": "mundi::grafo::1216",
+      "root_name": "Messa",
+      "other_name": "Rinascimento",
+      "raw_source": "rinascimento",
+      "raw_target": "genere-messa",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "rinascimento",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": null
+        },
+        {
+          "id": "genere-messa",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere di composizione liturgica sui testi dell'Ordinario della messa; distinguere la messa polifonica dalle singole realizzazioni."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-mottetto",
+      "edge_id": "mundi::grafo::1236",
+      "root_name": "Mottetto",
+      "other_name": "Medioevo",
+      "raw_source": "medioevo",
+      "raw_target": "genere-mottetto",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "medioevo",
+          "external_urls": [],
+          "internal_url": "../medioevo/",
+          "description": null
+        },
+        {
+          "id": "genere-mottetto",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere vocale polifonico dalla storia mutevole, medievale e rinascimentale, sacro e talora celebrativo."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-mottetto",
+      "edge_id": "mundi::grafo::1238",
+      "root_name": "Mottetto",
+      "other_name": "Mottetto per celebrazioni civiche nel Quattrocento",
+      "raw_source": "genere-mottetto",
+      "raw_target": "mottetto-civico-cerimoniale-quattrocento",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Uso civico e cerimoniale del mottetto: funzione, non un'unica opera.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "genere-mottetto",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere vocale polifonico dalla storia mutevole, medievale e rinascimentale, sacro e talora celebrativo."
+        },
+        {
+          "id": "mottetto-civico-cerimoniale-quattrocento",
+          "external_urls": [
+            "https://catalogue.bnf.fr/ark:/12148/cb139117026"
+          ],
+          "internal_url": null,
+          "description": "Mottetto legato a solennità pubbliche, inaugurazioni, consacrazioni e rappresentazioni civico-religiose; esempio documentato è Nuper rosarum flores per Firenze nel 1436."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-mottetto",
+      "edge_id": "mundi::grafo::1237",
+      "root_name": "Mottetto",
+      "other_name": "Rinascimento",
+      "raw_source": "rinascimento",
+      "raw_target": "genere-mottetto",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "rinascimento",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": null
+        },
+        {
+          "id": "genere-mottetto",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Genere vocale polifonico dalla storia mutevole, medievale e rinascimentale, sacro e talora celebrativo."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::forma-fuga",
+      "edge_id": "mundi::grafo::1239",
+      "root_name": "Fuga",
+      "other_name": "Barocco",
+      "raw_source": "barocco",
+      "raw_target": "forma-fuga",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "barocco",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": null
+        },
+        {
+          "id": "forma-fuga",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Procedimento e forma contrappuntistica imperniata su soggetto, imitazione e sviluppo; non un genere esclusivo di un periodo."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::forma-variazioni",
+      "edge_id": "mundi::grafo::1240",
+      "root_name": "Variazioni",
+      "other_name": "Classicismo",
+      "raw_source": "classicismo",
+      "raw_target": "forma-variazioni",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "classicismo",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": null
+        },
+        {
+          "id": "forma-variazioni",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Principio e forma di elaborazione di un tema o materiale musicale, presente in generi e periodi differenti."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::forma-fantasia",
+      "edge_id": "mundi::grafo::1244",
+      "root_name": "Fantasia",
+      "other_name": "Fantasie per quattro viole · consort inglese",
+      "raw_source": "forma-fantasia",
+      "raw_target": "fantasie-consort-viole-gibbons",
+      "predicate": "esempio-storico-del-genere",
+      "quality": "non_certificato",
+      "reason": "Fantasie per consort di quattro viole: organico e prassi, non singola opera.",
+      "source_inventory": "NODE_EXTERNAL_URL_PRESENT",
+      "source_nodes": [
+        {
+          "id": "forma-fantasia",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Denominazione di composizioni strumentali spesso caratterizzate da libertà progettuale, con significati storici differenti."
+        },
+        {
+          "id": "fantasie-consort-viole-gibbons",
+          "external_urls": [
+            "https://imslp.org/wiki/Fantasias_for_4_Viols_%28Gibbons%2C_Orlando%29"
+          ],
+          "internal_url": null,
+          "description": "Le Fantasias for 4 Viols di Gibbons documentano il consort inglese di viole e l’elaborazione contrappuntistica strumentale. Il dato proviene dal catalogo delle opere, senza inferire una discendenza diretta dai madrigalisti italiani."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::forma-fantasia",
+      "edge_id": "mundi::grafo::1243",
+      "root_name": "Fantasia",
+      "other_name": "Rinascimento",
+      "raw_source": "rinascimento",
+      "raw_target": "forma-fantasia",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "rinascimento",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": null
+        },
+        {
+          "id": "forma-fantasia",
+          "external_urls": [],
+          "internal_url": "../rinascimento/",
+          "description": "Denominazione di composizioni strumentali spesso caratterizzate da libertà progettuale, con significati storici differenti."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-balletto",
+      "edge_id": "mundi::grafo::1245",
+      "root_name": "Balletto",
+      "other_name": "Barocco",
+      "raw_source": "barocco",
+      "raw_target": "genere-balletto",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "barocco",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": null
+        },
+        {
+          "id": "genere-balletto",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Spettacolo coreografico e musica destinata alla danza scenica; forme e funzioni mutano dalla corte all'età contemporanea."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::genere-balletto",
+      "edge_id": "mundi::grafo::1246",
+      "root_name": "Balletto",
+      "other_name": "Romanticismo",
+      "raw_source": "romanticismo",
+      "raw_target": "genere-balletto",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "romanticismo",
+          "external_urls": [],
+          "internal_url": "../romanticismo/",
+          "description": null
+        },
+        {
+          "id": "genere-balletto",
+          "external_urls": [],
+          "internal_url": "../barocco/",
+          "description": "Spettacolo coreografico e musica destinata alla danza scenica; forme e funzioni mutano dalla corte all'età contemporanea."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    },
+    {
+      "root_id": "mundi::forma-ouverture",
+      "edge_id": "mundi::grafo::1248",
+      "root_name": "Ouverture",
+      "other_name": "Classicismo",
+      "raw_source": "classicismo",
+      "raw_target": "forma-ouverture",
+      "predicate": "sviluppo-storico",
+      "quality": "non_certificato",
+      "reason": "Collocazione o sviluppo in un periodo, non limite cronologico assoluto né appartenenza di tutte le opere.",
+      "source_inventory": "INTERNAL_EDITORIAL_ONLY",
+      "source_nodes": [
+        {
+          "id": "classicismo",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": null
+        },
+        {
+          "id": "forma-ouverture",
+          "external_urls": [],
+          "internal_url": "../classicismo/",
+          "description": "Brano strumentale d'apertura teatrale o composizione autonoma da concerto, con tipologie storiche differenti."
+        }
+      ],
+      "web_review": null,
+      "presentation": "CONTEXT_ONLY_PENDING_UI_GATE",
+      "projection_authorized": false,
+      "inherit_repertoire": false,
+      "merge_identity": false
+    }
+  ]
+}
