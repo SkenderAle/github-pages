@@ -44,6 +44,8 @@ function categoryFor(layer,n){
    if(/allestimento|produzione|evento-storico/.test(c))return "eventi";
    if(/documento/.test(c))return "documentazione";
    if(c==="nodo-di-senso"){
+     // Q5: il nodo sorgente identifica un evento storico, non un concetto.
+     if(id==="evento:bach-matteo-berlino-1829"&&s==="evento")return "eventi";
      if(/genere|forma|sottogenere/.test(s))return "generi_forme";
      if(/istituzion/.test(s))return "istituzioni";
      if(/scuola|tradizion|corrente|rete|ambiente/.test(s))return "reti_culturali";
