@@ -1899,7 +1899,35 @@ function withVerifiedRootRelations(db,edges,index,root,view){
          withVerifiedRootWorkComposers(db,edges,index,root,view))))))))))) ) ) );
 }
 
+// Sette rapporti storicamente verificati: accesso circoscritto alla radice opera/parte.
+const terminalWorkRules=[{"id":"atlantis::grafo::L03-A42","root":"atlantis::opera:an-die-ferne-geliebte-op98","other":"atlantis::senso:lied","relation":"e_ciclo_di","category":"generi_forme","source":"atlantis::opera:an-die-ferne-geliebte-op98","target":"atlantis::senso:lied","url":"https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICArN6Q8QkM/"},{"id":"atlantis::grafo::L05-A047","root":"atlantis::opera:bolero-ravel-1928","other":"atlantis::produzione:bolero-rubinstein-nizinska-1928","relation":"ha_prima_coreografia","category":"eventi","source":"atlantis::opera:bolero-ravel-1928","target":"atlantis::produzione:bolero-rubinstein-nizinska-1928","url":"https://resources.ircam.fr/en/work/bolero"},{"id":"atlantis::grafo::L02-A03","root":"atlantis::opera:don-juan-gluck-angiolini-1761","other":"atlantis::senso:ballet-daction","relation":"e_esempio_storico_di","category":"generi_forme","source":"atlantis::opera:don-juan-gluck-angiolini-1761","target":"atlantis::senso:ballet-daction","url":"https://www.berliner-philharmoniker.de/en/programme-notes/christoph-willibald-gluck-don-juan-ballet/"},{"id":"atlantis::grafo::L02-A04","root":"atlantis::opera:don-juan-gluck-angiolini-1761","other":"atlantis::senso:mito-don-juan","relation":"rielabora_soggetto_di","category":"concetti","source":"atlantis::opera:don-juan-gluck-angiolini-1761","target":"atlantis::senso:mito-don-juan","url":"https://www.berliner-philharmoniker.de/en/programme-notes/christoph-willibald-gluck-don-juan-ballet/"},{"id":"atlantis::grafo::L03-A29","root":"atlantis::opera:egmont-op84","other":"atlantis::senso:musica-scena","relation":"e_musica_di_scena_per_dramma_parlato","category":"concetti","source":"atlantis::opera:egmont-op84","target":"atlantis::senso:musica-scena","url":"https://www.berliner-philharmoniker.de/en/programme-notes/ludwig-van-beethoven-incidental-music-to-goethes-egmont-op-84/"},{"id":"atlantis::grafo::L07-A082","root":"atlantis::opera:passione-matteo","other":"atlantis::evento:bach-matteo-berlino-1829","relation":"esegue_versione_adattata_dell_opera","category":"concetti","source":"atlantis::evento:bach-matteo-berlino-1829","target":"atlantis::opera:passione-matteo","url":"https://www.loc.gov/collections/felix-mendelssohn/articles-and-essays/felix-mendelssohn-reviving-the-works-of-bach/"},{"id":"atlantis::grafo::L03-A03","root":"atlantis::parte:finale-prometeo-op43","other":"atlantis::senso:tema-prometeo-eroica","relation":"utilizza_materiale_tematico","category":"concetti","source":"atlantis::parte:finale-prometeo-op43","target":"atlantis::senso:tema-prometeo-eroica","url":"https://www.beethovenfest.de/en/magazine/beethoven-symphony-no-3/286"}];
 function rootedProjection(db){
+ const view=rootedProjectionCore(db);
+ if(!state.root||state.comparison||!state.lenses.size||Number(state.depth)<1)return view;
+ const rules=terminalWorkRules.filter(r=>r.root===state.root);
+ if(!rules.length)return view;
+ const root=db.nodes.find(n=>n.id===state.root);
+ if(!root||root.category!=="opere")return view;
+ const focused=!!state.focus&&state.focus!==state.root;
+ const nodes=[...view.nodes],links=[...view.links],ids=new Set(nodes.map(n=>n.id)),linkIds=new Set(links.map(e=>e.id)),parents=new Map(view.parents||[]),distance=new Map(view.distance||[]);
+ for(const r of rules){
+   const other=db.nodes.find(n=>n.id===r.other&&n.category===r.category&&n.visibility!=="documentary");
+   const e=db.links.find(e=>e.id===r.id&&e.layer==="atlantis"&&e.source===r.source&&e.target===r.target&&e.relation===r.relation&&e.quality==="riscontro_storico_indipendente"&&e.visibility==="musical"&&e.original?.historical_verified_independently===true&&e.original?.evidence_urls?.includes(r.url)&&!/(HOLD|SOSPES|CONTESTAT|REJECTED|STAGING_CANDIDATE_FORM_LINK_NOT_IDENTITY)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" ")));
+   if(!other||!e)continue;
+   if(focused){
+     if(state.focus===r.other&&state.trail?.length===2&&state.trail[0]===root.id&&state.trail[1]===other.id&&state.trailEdges?.length===1&&state.trailEdges[0]===e.id)
+       return {...view,nodes:[root,other],links:[e],parents:new Map([[other.id,{from:root.id,edge:e}]]),distance:new Map([[root.id,1],[other.id,0]]),focused:true,center:other.id,historicalTrail:[root.id,other.id]};
+     continue;
+   }
+   if(!state.cats.has(other.category)||!ids.has(root.id))continue;
+   if(!ids.has(other.id)){nodes.push(other);ids.add(other.id)}
+   if(!linkIds.has(e.id)){links.push(e);linkIds.add(e.id)}
+   if(!parents.has(other.id))parents.set(other.id,{from:root.id,edge:e});
+   if(!distance.has(other.id))distance.set(other.id,1);
+ }
+ return {...view,nodes,links,parents,distance};
+}
+function rootedProjectionCore(db){
  const index=new Map(db.nodes.map(n=>[n.id,n])),show=new Set(state.cats),root=index.get(state.root);
  const isBlocked=e=>e.visibility==="documentary"||/(HOLD|SOSPES|CONTESTAT|REJECTED|STAGING_CANDIDATE_FORM_LINK_NOT_IDENTITY)/i.test([e.quality,e.relation,e.original?.relation,e.original?.quality_gate,e.original?.status,e.original?.verification_status].filter(Boolean).join(" "));
  // Quando tutte le lenti sono spente, nessuna relazione deve sopravvivere
